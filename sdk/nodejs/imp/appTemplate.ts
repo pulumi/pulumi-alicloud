@@ -71,29 +71,29 @@ export class AppTemplate extends pulumi.CustomResource {
     /**
      * The name of the resource.
      */
-    public readonly appTemplateName!: pulumi.Output<string>;
+    declare public readonly appTemplateName: pulumi.Output<string>;
     /**
      * List of components. Its element valid values: ["component.live","component.liveRecord","component.liveBeauty","component.rtc","component.rtcRecord","component.im","component.whiteboard","component.liveSecurity","component.chatSecurity"].
      */
-    public readonly componentLists!: pulumi.Output<string[]>;
+    declare public readonly componentLists: pulumi.Output<string[]>;
     /**
      * Configuration list. It have several default configs after the resource is created. See the following `Block configList`.
      */
-    public readonly configLists!: pulumi.Output<outputs.imp.AppTemplateConfigList[]>;
+    declare public readonly configLists: pulumi.Output<outputs.imp.AppTemplateConfigList[]>;
     /**
      * Integration mode. Valid values:
      * * paasSDK: Integrated SDK.
      * * standardRoom: Model Room.
      */
-    public readonly integrationMode!: pulumi.Output<string | undefined>;
+    declare public readonly integrationMode: pulumi.Output<string | undefined>;
     /**
      * Application Template scenario. Valid values: ["business", "classroom"].
      */
-    public readonly scene!: pulumi.Output<string | undefined>;
+    declare public readonly scene: pulumi.Output<string | undefined>;
     /**
      * Application template usage status.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a AppTemplate resource with the given unique name, arguments, and options.
@@ -108,25 +108,25 @@ export class AppTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppTemplateState | undefined;
-            resourceInputs["appTemplateName"] = state ? state.appTemplateName : undefined;
-            resourceInputs["componentLists"] = state ? state.componentLists : undefined;
-            resourceInputs["configLists"] = state ? state.configLists : undefined;
-            resourceInputs["integrationMode"] = state ? state.integrationMode : undefined;
-            resourceInputs["scene"] = state ? state.scene : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["appTemplateName"] = state?.appTemplateName;
+            resourceInputs["componentLists"] = state?.componentLists;
+            resourceInputs["configLists"] = state?.configLists;
+            resourceInputs["integrationMode"] = state?.integrationMode;
+            resourceInputs["scene"] = state?.scene;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as AppTemplateArgs | undefined;
-            if ((!args || args.appTemplateName === undefined) && !opts.urn) {
+            if (args?.appTemplateName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appTemplateName'");
             }
-            if ((!args || args.componentLists === undefined) && !opts.urn) {
+            if (args?.componentLists === undefined && !opts.urn) {
                 throw new Error("Missing required property 'componentLists'");
             }
-            resourceInputs["appTemplateName"] = args ? args.appTemplateName : undefined;
-            resourceInputs["componentLists"] = args ? args.componentLists : undefined;
-            resourceInputs["configLists"] = args ? args.configLists : undefined;
-            resourceInputs["integrationMode"] = args ? args.integrationMode : undefined;
-            resourceInputs["scene"] = args ? args.scene : undefined;
+            resourceInputs["appTemplateName"] = args?.appTemplateName;
+            resourceInputs["componentLists"] = args?.componentLists;
+            resourceInputs["configLists"] = args?.configLists;
+            resourceInputs["integrationMode"] = args?.integrationMode;
+            resourceInputs["scene"] = args?.scene;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

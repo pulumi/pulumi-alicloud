@@ -69,35 +69,35 @@ export class Group extends pulumi.CustomResource {
     /**
      * The base path of the api gateway group. Defaults to `/`.
      */
-    public readonly basePath!: pulumi.Output<string>;
+    declare public readonly basePath: pulumi.Output<string>;
     /**
      * The description of the api gateway group. Defaults to null.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The id of the api gateway.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The name of the api gateway group. Defaults to null.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * (Available in 1.69.0+)	Second-level domain name automatically assigned to the API group.
      */
-    public /*out*/ readonly subDomain!: pulumi.Output<string>;
+    declare public /*out*/ readonly subDomain: pulumi.Output<string>;
     /**
      * user_log_config defines the config of user log of the group. See `userLogConfig` below.
      */
-    public readonly userLogConfig!: pulumi.Output<outputs.apigateway.GroupUserLogConfig | undefined>;
+    declare public readonly userLogConfig: pulumi.Output<outputs.apigateway.GroupUserLogConfig | undefined>;
     /**
      * (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
      */
-    public /*out*/ readonly vpcDomain!: pulumi.Output<string>;
+    declare public /*out*/ readonly vpcDomain: pulumi.Output<string>;
     /**
      * Whether to enable `vpcDomain`. Defaults to `false`.
      */
-    public readonly vpcIntranetEnable!: pulumi.Output<boolean | undefined>;
+    declare public readonly vpcIntranetEnable: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -112,22 +112,22 @@ export class Group extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
-            resourceInputs["basePath"] = state ? state.basePath : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["subDomain"] = state ? state.subDomain : undefined;
-            resourceInputs["userLogConfig"] = state ? state.userLogConfig : undefined;
-            resourceInputs["vpcDomain"] = state ? state.vpcDomain : undefined;
-            resourceInputs["vpcIntranetEnable"] = state ? state.vpcIntranetEnable : undefined;
+            resourceInputs["basePath"] = state?.basePath;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["subDomain"] = state?.subDomain;
+            resourceInputs["userLogConfig"] = state?.userLogConfig;
+            resourceInputs["vpcDomain"] = state?.vpcDomain;
+            resourceInputs["vpcIntranetEnable"] = state?.vpcIntranetEnable;
         } else {
             const args = argsOrState as GroupArgs | undefined;
-            resourceInputs["basePath"] = args ? args.basePath : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["userLogConfig"] = args ? args.userLogConfig : undefined;
-            resourceInputs["vpcIntranetEnable"] = args ? args.vpcIntranetEnable : undefined;
+            resourceInputs["basePath"] = args?.basePath;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["userLogConfig"] = args?.userLogConfig;
+            resourceInputs["vpcIntranetEnable"] = args?.vpcIntranetEnable;
             resourceInputs["subDomain"] = undefined /*out*/;
             resourceInputs["vpcDomain"] = undefined /*out*/;
         }

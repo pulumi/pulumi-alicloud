@@ -96,36 +96,36 @@ export class ImageImport extends pulumi.CustomResource {
     /**
      * The architecture of the image. Default value: `x8664`. Valid values: `x8664`, `i386`.
      */
-    public readonly architecture!: pulumi.Output<string | undefined>;
+    declare public readonly architecture: pulumi.Output<string | undefined>;
     /**
      * The boot mode of the image. Valid values: `BIOS`, `UEFI`.
      */
-    public readonly bootMode!: pulumi.Output<string>;
+    declare public readonly bootMode: pulumi.Output<string>;
     /**
      * The description of the image. The `description` must be 2 to 256 characters in length and cannot start with http:// or https://.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The information about the custom image. See `diskDeviceMapping` below.
      */
-    public readonly diskDeviceMappings!: pulumi.Output<outputs.ecs.ImageImportDiskDeviceMapping[]>;
+    declare public readonly diskDeviceMappings: pulumi.Output<outputs.ecs.ImageImportDiskDeviceMapping[]>;
     /**
      * The name of the image. The `imageName` must be `2` to `128` characters in length. The `imageName` must start with a letter and cannot start with acs: or aliyun. The `imageName` cannot contain http:// or https://. The `imageName` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
      */
-    public readonly imageName!: pulumi.Output<string>;
+    declare public readonly imageName: pulumi.Output<string>;
     /**
      * The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`, `Aliyun`, `BYOL`.
      */
-    public readonly licenseType!: pulumi.Output<string | undefined>;
+    declare public readonly licenseType: pulumi.Output<string | undefined>;
     /**
      * The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
      */
-    public readonly osType!: pulumi.Output<string | undefined>;
+    declare public readonly osType: pulumi.Output<string | undefined>;
     /**
      * The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
      * > **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
      */
-    public readonly platform!: pulumi.Output<string>;
+    declare public readonly platform: pulumi.Output<string>;
 
     /**
      * Create a ImageImport resource with the given unique name, arguments, and options.
@@ -140,27 +140,27 @@ export class ImageImport extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImageImportState | undefined;
-            resourceInputs["architecture"] = state ? state.architecture : undefined;
-            resourceInputs["bootMode"] = state ? state.bootMode : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["diskDeviceMappings"] = state ? state.diskDeviceMappings : undefined;
-            resourceInputs["imageName"] = state ? state.imageName : undefined;
-            resourceInputs["licenseType"] = state ? state.licenseType : undefined;
-            resourceInputs["osType"] = state ? state.osType : undefined;
-            resourceInputs["platform"] = state ? state.platform : undefined;
+            resourceInputs["architecture"] = state?.architecture;
+            resourceInputs["bootMode"] = state?.bootMode;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["diskDeviceMappings"] = state?.diskDeviceMappings;
+            resourceInputs["imageName"] = state?.imageName;
+            resourceInputs["licenseType"] = state?.licenseType;
+            resourceInputs["osType"] = state?.osType;
+            resourceInputs["platform"] = state?.platform;
         } else {
             const args = argsOrState as ImageImportArgs | undefined;
-            if ((!args || args.diskDeviceMappings === undefined) && !opts.urn) {
+            if (args?.diskDeviceMappings === undefined && !opts.urn) {
                 throw new Error("Missing required property 'diskDeviceMappings'");
             }
-            resourceInputs["architecture"] = args ? args.architecture : undefined;
-            resourceInputs["bootMode"] = args ? args.bootMode : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["diskDeviceMappings"] = args ? args.diskDeviceMappings : undefined;
-            resourceInputs["imageName"] = args ? args.imageName : undefined;
-            resourceInputs["licenseType"] = args ? args.licenseType : undefined;
-            resourceInputs["osType"] = args ? args.osType : undefined;
-            resourceInputs["platform"] = args ? args.platform : undefined;
+            resourceInputs["architecture"] = args?.architecture;
+            resourceInputs["bootMode"] = args?.bootMode;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["diskDeviceMappings"] = args?.diskDeviceMappings;
+            resourceInputs["imageName"] = args?.imageName;
+            resourceInputs["licenseType"] = args?.licenseType;
+            resourceInputs["osType"] = args?.osType;
+            resourceInputs["platform"] = args?.platform;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ImageImport.__pulumiType, name, resourceInputs, opts);

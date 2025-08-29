@@ -82,30 +82,30 @@ export class SchedulerRule extends pulumi.CustomResource {
     /**
      * The cname is the traffic scheduler corresponding to rules.
      */
-    public /*out*/ readonly cname!: pulumi.Output<string>;
+    declare public /*out*/ readonly cname: pulumi.Output<string>;
     /**
      * The scheduling rule for the Global Accelerator instance that interacts with Anti-DDoS Pro or Anti-DDoS Premium.
      */
-    public readonly param!: pulumi.Output<string | undefined>;
+    declare public readonly param: pulumi.Output<string | undefined>;
     /**
      * The ID of the resource group to which the anti-DDoS pro instance belongs in resource management. By default, no value is specified, indicating that the domains in the default resource group are listed.
      */
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly resourceGroupId: pulumi.Output<string | undefined>;
     /**
      * The name of the rule.
      */
-    public readonly ruleName!: pulumi.Output<string>;
+    declare public readonly ruleName: pulumi.Output<string>;
     /**
      * The rule type. Valid values:
      * `2`: tiered protection.
      * `3`: globalization acceleration.
      * `6`: Cloud product interaction.
      */
-    public readonly ruleType!: pulumi.Output<number>;
+    declare public readonly ruleType: pulumi.Output<number>;
     /**
      * The information about the scheduling rules. See `rules` below.
      */
-    public readonly rules!: pulumi.Output<outputs.ddos.SchedulerRuleRule[]>;
+    declare public readonly rules: pulumi.Output<outputs.ddos.SchedulerRuleRule[]>;
 
     /**
      * Create a SchedulerRule resource with the given unique name, arguments, and options.
@@ -120,28 +120,28 @@ export class SchedulerRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SchedulerRuleState | undefined;
-            resourceInputs["cname"] = state ? state.cname : undefined;
-            resourceInputs["param"] = state ? state.param : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["ruleName"] = state ? state.ruleName : undefined;
-            resourceInputs["ruleType"] = state ? state.ruleType : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
+            resourceInputs["cname"] = state?.cname;
+            resourceInputs["param"] = state?.param;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["ruleName"] = state?.ruleName;
+            resourceInputs["ruleType"] = state?.ruleType;
+            resourceInputs["rules"] = state?.rules;
         } else {
             const args = argsOrState as SchedulerRuleArgs | undefined;
-            if ((!args || args.ruleName === undefined) && !opts.urn) {
+            if (args?.ruleName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ruleName'");
             }
-            if ((!args || args.ruleType === undefined) && !opts.urn) {
+            if (args?.ruleType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ruleType'");
             }
-            if ((!args || args.rules === undefined) && !opts.urn) {
+            if (args?.rules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rules'");
             }
-            resourceInputs["param"] = args ? args.param : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["ruleName"] = args ? args.ruleName : undefined;
-            resourceInputs["ruleType"] = args ? args.ruleType : undefined;
-            resourceInputs["rules"] = args ? args.rules : undefined;
+            resourceInputs["param"] = args?.param;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["ruleName"] = args?.ruleName;
+            resourceInputs["ruleType"] = args?.ruleType;
+            resourceInputs["rules"] = args?.rules;
             resourceInputs["cname"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

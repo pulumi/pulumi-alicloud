@@ -46,66 +46,66 @@ export class PasswordPolicy extends pulumi.CustomResource {
      * - true: After the password expires, you cannot log in to the console. You must reset the password of the RAM user through the main account or a RAM user with administrator permissions to log on normally.
      * - false (default): After the password expires, the RAM user can change the password and log on normally.
      */
-    public readonly hardExpiry!: pulumi.Output<boolean | undefined>;
+    declare public readonly hardExpiry: pulumi.Output<boolean | undefined>;
     /**
      * Password retry constraint. After entering the wrong password continuously for the set number of times, the account will be locked for one hour.
      * Value range: 0~32.
      * Default value: 0, which means that the password retry constraint is not enabled.
      */
-    public readonly maxLoginAttemps!: pulumi.Output<number | undefined>;
+    declare public readonly maxLoginAttemps: pulumi.Output<number | undefined>;
     /**
      * Password validity period.
      * Value range: 0~1095. Unit: days.
      * Default value: 0, which means never expires.
      */
-    public readonly maxPasswordAge!: pulumi.Output<number | undefined>;
+    declare public readonly maxPasswordAge: pulumi.Output<number | undefined>;
     /**
      * The minimum number of unique characters in the password.
      * Valid values: 0 to 8.
      * The default value is 0, which indicates that no limits are imposed on the number of unique characters in a password.
      */
-    public readonly minimumPasswordDifferentCharacter!: pulumi.Output<number | undefined>;
+    declare public readonly minimumPasswordDifferentCharacter: pulumi.Output<number | undefined>;
     /**
      * The minimum number of characters in the password.
      * Valid values: 8 to 32. Default value: 8.
      */
-    public readonly minimumPasswordLength!: pulumi.Output<number>;
+    declare public readonly minimumPasswordLength: pulumi.Output<number>;
     /**
      * Whether the user name is not allowed in the password. Value:
      * - true: The password cannot contain the user name.
      * - false (default): The user name can be included in the password.
      */
-    public readonly passwordNotContainUserName!: pulumi.Output<boolean | undefined>;
+    declare public readonly passwordNotContainUserName: pulumi.Output<boolean | undefined>;
     /**
      * Historical password check policy.
      * Do not use the previous N Passwords. The value range of N is 0 to 24.
      * Default value: 0, indicating that the historical password check policy is not enabled.
      */
-    public readonly passwordReusePrevention!: pulumi.Output<number | undefined>;
+    declare public readonly passwordReusePrevention: pulumi.Output<number | undefined>;
     /**
      * Specifies whether the password must contain lowercase letters. Valid values:
      * - true
      * - false (default)
      */
-    public readonly requireLowercaseCharacters!: pulumi.Output<boolean | undefined>;
+    declare public readonly requireLowercaseCharacters: pulumi.Output<boolean | undefined>;
     /**
      * Specifies whether the password must contain digits. Valid values:
      * - true
      * - false (default)
      */
-    public readonly requireNumbers!: pulumi.Output<boolean | undefined>;
+    declare public readonly requireNumbers: pulumi.Output<boolean | undefined>;
     /**
      * Specifies whether the password must contain special characters. Valid values:
      * - true
      * - false (default)
      */
-    public readonly requireSymbols!: pulumi.Output<boolean | undefined>;
+    declare public readonly requireSymbols: pulumi.Output<boolean | undefined>;
     /**
      * Specifies whether the password must contain uppercase letters. Valid values:
      * - true
      * - false (default)
      */
-    public readonly requireUppercaseCharacters!: pulumi.Output<boolean | undefined>;
+    declare public readonly requireUppercaseCharacters: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a PasswordPolicy resource with the given unique name, arguments, and options.
@@ -120,30 +120,30 @@ export class PasswordPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PasswordPolicyState | undefined;
-            resourceInputs["hardExpiry"] = state ? state.hardExpiry : undefined;
-            resourceInputs["maxLoginAttemps"] = state ? state.maxLoginAttemps : undefined;
-            resourceInputs["maxPasswordAge"] = state ? state.maxPasswordAge : undefined;
-            resourceInputs["minimumPasswordDifferentCharacter"] = state ? state.minimumPasswordDifferentCharacter : undefined;
-            resourceInputs["minimumPasswordLength"] = state ? state.minimumPasswordLength : undefined;
-            resourceInputs["passwordNotContainUserName"] = state ? state.passwordNotContainUserName : undefined;
-            resourceInputs["passwordReusePrevention"] = state ? state.passwordReusePrevention : undefined;
-            resourceInputs["requireLowercaseCharacters"] = state ? state.requireLowercaseCharacters : undefined;
-            resourceInputs["requireNumbers"] = state ? state.requireNumbers : undefined;
-            resourceInputs["requireSymbols"] = state ? state.requireSymbols : undefined;
-            resourceInputs["requireUppercaseCharacters"] = state ? state.requireUppercaseCharacters : undefined;
+            resourceInputs["hardExpiry"] = state?.hardExpiry;
+            resourceInputs["maxLoginAttemps"] = state?.maxLoginAttemps;
+            resourceInputs["maxPasswordAge"] = state?.maxPasswordAge;
+            resourceInputs["minimumPasswordDifferentCharacter"] = state?.minimumPasswordDifferentCharacter;
+            resourceInputs["minimumPasswordLength"] = state?.minimumPasswordLength;
+            resourceInputs["passwordNotContainUserName"] = state?.passwordNotContainUserName;
+            resourceInputs["passwordReusePrevention"] = state?.passwordReusePrevention;
+            resourceInputs["requireLowercaseCharacters"] = state?.requireLowercaseCharacters;
+            resourceInputs["requireNumbers"] = state?.requireNumbers;
+            resourceInputs["requireSymbols"] = state?.requireSymbols;
+            resourceInputs["requireUppercaseCharacters"] = state?.requireUppercaseCharacters;
         } else {
             const args = argsOrState as PasswordPolicyArgs | undefined;
-            resourceInputs["hardExpiry"] = args ? args.hardExpiry : undefined;
-            resourceInputs["maxLoginAttemps"] = args ? args.maxLoginAttemps : undefined;
-            resourceInputs["maxPasswordAge"] = args ? args.maxPasswordAge : undefined;
-            resourceInputs["minimumPasswordDifferentCharacter"] = args ? args.minimumPasswordDifferentCharacter : undefined;
-            resourceInputs["minimumPasswordLength"] = args ? args.minimumPasswordLength : undefined;
-            resourceInputs["passwordNotContainUserName"] = args ? args.passwordNotContainUserName : undefined;
-            resourceInputs["passwordReusePrevention"] = args ? args.passwordReusePrevention : undefined;
-            resourceInputs["requireLowercaseCharacters"] = args ? args.requireLowercaseCharacters : undefined;
-            resourceInputs["requireNumbers"] = args ? args.requireNumbers : undefined;
-            resourceInputs["requireSymbols"] = args ? args.requireSymbols : undefined;
-            resourceInputs["requireUppercaseCharacters"] = args ? args.requireUppercaseCharacters : undefined;
+            resourceInputs["hardExpiry"] = args?.hardExpiry;
+            resourceInputs["maxLoginAttemps"] = args?.maxLoginAttemps;
+            resourceInputs["maxPasswordAge"] = args?.maxPasswordAge;
+            resourceInputs["minimumPasswordDifferentCharacter"] = args?.minimumPasswordDifferentCharacter;
+            resourceInputs["minimumPasswordLength"] = args?.minimumPasswordLength;
+            resourceInputs["passwordNotContainUserName"] = args?.passwordNotContainUserName;
+            resourceInputs["passwordReusePrevention"] = args?.passwordReusePrevention;
+            resourceInputs["requireLowercaseCharacters"] = args?.requireLowercaseCharacters;
+            resourceInputs["requireNumbers"] = args?.requireNumbers;
+            resourceInputs["requireSymbols"] = args?.requireSymbols;
+            resourceInputs["requireUppercaseCharacters"] = args?.requireUppercaseCharacters;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PasswordPolicy.__pulumiType, name, resourceInputs, opts);

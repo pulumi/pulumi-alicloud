@@ -98,11 +98,11 @@ export class EcsAutoSnapshotPolicyAttachment extends pulumi.CustomResource {
     /**
      * The auto snapshot policy id.
      */
-    public readonly autoSnapshotPolicyId!: pulumi.Output<string>;
+    declare public readonly autoSnapshotPolicyId: pulumi.Output<string>;
     /**
      * The disk id.
      */
-    public readonly diskId!: pulumi.Output<string>;
+    declare public readonly diskId: pulumi.Output<string>;
 
     /**
      * Create a EcsAutoSnapshotPolicyAttachment resource with the given unique name, arguments, and options.
@@ -117,18 +117,18 @@ export class EcsAutoSnapshotPolicyAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcsAutoSnapshotPolicyAttachmentState | undefined;
-            resourceInputs["autoSnapshotPolicyId"] = state ? state.autoSnapshotPolicyId : undefined;
-            resourceInputs["diskId"] = state ? state.diskId : undefined;
+            resourceInputs["autoSnapshotPolicyId"] = state?.autoSnapshotPolicyId;
+            resourceInputs["diskId"] = state?.diskId;
         } else {
             const args = argsOrState as EcsAutoSnapshotPolicyAttachmentArgs | undefined;
-            if ((!args || args.autoSnapshotPolicyId === undefined) && !opts.urn) {
+            if (args?.autoSnapshotPolicyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'autoSnapshotPolicyId'");
             }
-            if ((!args || args.diskId === undefined) && !opts.urn) {
+            if (args?.diskId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'diskId'");
             }
-            resourceInputs["autoSnapshotPolicyId"] = args ? args.autoSnapshotPolicyId : undefined;
-            resourceInputs["diskId"] = args ? args.diskId : undefined;
+            resourceInputs["autoSnapshotPolicyId"] = args?.autoSnapshotPolicyId;
+            resourceInputs["diskId"] = args?.diskId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EcsAutoSnapshotPolicyAttachment.__pulumiType, name, resourceInputs, opts);

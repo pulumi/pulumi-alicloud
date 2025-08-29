@@ -89,19 +89,19 @@ export class UserGroup extends pulumi.CustomResource {
     /**
      * Specify the New Group of Remark Information. Supports up to 500 Characters.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * Specify the New Group of the Bastion Host of Instance Id.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The User Group self ID.
      */
-    public /*out*/ readonly userGroupId!: pulumi.Output<string>;
+    declare public /*out*/ readonly userGroupId: pulumi.Output<string>;
     /**
      * Specify the New Group Name. Supports up to 128 Characters.
      */
-    public readonly userGroupName!: pulumi.Output<string>;
+    declare public readonly userGroupName: pulumi.Output<string>;
 
     /**
      * Create a UserGroup resource with the given unique name, arguments, and options.
@@ -116,21 +116,21 @@ export class UserGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserGroupState | undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["userGroupId"] = state ? state.userGroupId : undefined;
-            resourceInputs["userGroupName"] = state ? state.userGroupName : undefined;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["userGroupId"] = state?.userGroupId;
+            resourceInputs["userGroupName"] = state?.userGroupName;
         } else {
             const args = argsOrState as UserGroupArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.userGroupName === undefined) && !opts.urn) {
+            if (args?.userGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userGroupName'");
             }
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["userGroupName"] = args ? args.userGroupName : undefined;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["userGroupName"] = args?.userGroupName;
             resourceInputs["userGroupId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

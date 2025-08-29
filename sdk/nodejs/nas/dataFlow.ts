@@ -50,44 +50,44 @@ export class DataFlow extends pulumi.CustomResource {
     /**
      * The ID of the Data flow.
      */
-    public /*out*/ readonly dataFlowId!: pulumi.Output<string>;
+    declare public /*out*/ readonly dataFlowId: pulumi.Output<string>;
     /**
      * The Description of the data flow. Restrictions:
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The dry run.
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the file system.
      */
-    public readonly fileSystemId!: pulumi.Output<string>;
+    declare public readonly fileSystemId: pulumi.Output<string>;
     /**
      * The ID of the Fileset.
      */
-    public readonly fsetId!: pulumi.Output<string>;
+    declare public readonly fsetId: pulumi.Output<string>;
     /**
      * The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
      * - `NONE` (default): Indicates that the source storage does not need to be accessed through security protection.
      * - `SSL`: Protects access through SSL certificates.
      */
-    public readonly sourceSecurityType!: pulumi.Output<string>;
+    declare public readonly sourceSecurityType: pulumi.Output<string>;
     /**
      * The access path of the source store. Format: `<storage type>://<path>`. Among them:
      * - storage type: currently only OSS is supported.
      * - path: the bucket name of OSS.
      * - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
      */
-    public readonly sourceStorage!: pulumi.Output<string>;
+    declare public readonly sourceStorage: pulumi.Output<string>;
     /**
      * The status of the Data flow. Valid values: `Running`, `Stopped`.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The maximum transmission bandwidth of data flow, unit: `MB/s`. Valid values: `1200`, `1500`, `600`. **NOTE:** The transmission bandwidth of data flow must be less than the IO bandwidth of the file system.
      */
-    public readonly throughput!: pulumi.Output<number>;
+    declare public readonly throughput: pulumi.Output<number>;
 
     /**
      * Create a DataFlow resource with the given unique name, arguments, and options.
@@ -102,37 +102,37 @@ export class DataFlow extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DataFlowState | undefined;
-            resourceInputs["dataFlowId"] = state ? state.dataFlowId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["fileSystemId"] = state ? state.fileSystemId : undefined;
-            resourceInputs["fsetId"] = state ? state.fsetId : undefined;
-            resourceInputs["sourceSecurityType"] = state ? state.sourceSecurityType : undefined;
-            resourceInputs["sourceStorage"] = state ? state.sourceStorage : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["throughput"] = state ? state.throughput : undefined;
+            resourceInputs["dataFlowId"] = state?.dataFlowId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["fileSystemId"] = state?.fileSystemId;
+            resourceInputs["fsetId"] = state?.fsetId;
+            resourceInputs["sourceSecurityType"] = state?.sourceSecurityType;
+            resourceInputs["sourceStorage"] = state?.sourceStorage;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["throughput"] = state?.throughput;
         } else {
             const args = argsOrState as DataFlowArgs | undefined;
-            if ((!args || args.fileSystemId === undefined) && !opts.urn) {
+            if (args?.fileSystemId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fileSystemId'");
             }
-            if ((!args || args.fsetId === undefined) && !opts.urn) {
+            if (args?.fsetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fsetId'");
             }
-            if ((!args || args.sourceStorage === undefined) && !opts.urn) {
+            if (args?.sourceStorage === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceStorage'");
             }
-            if ((!args || args.throughput === undefined) && !opts.urn) {
+            if (args?.throughput === undefined && !opts.urn) {
                 throw new Error("Missing required property 'throughput'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["fileSystemId"] = args ? args.fileSystemId : undefined;
-            resourceInputs["fsetId"] = args ? args.fsetId : undefined;
-            resourceInputs["sourceSecurityType"] = args ? args.sourceSecurityType : undefined;
-            resourceInputs["sourceStorage"] = args ? args.sourceStorage : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["throughput"] = args ? args.throughput : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["fileSystemId"] = args?.fileSystemId;
+            resourceInputs["fsetId"] = args?.fsetId;
+            resourceInputs["sourceSecurityType"] = args?.sourceSecurityType;
+            resourceInputs["sourceStorage"] = args?.sourceStorage;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["throughput"] = args?.throughput;
             resourceInputs["dataFlowId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

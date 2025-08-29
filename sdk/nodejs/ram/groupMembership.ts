@@ -48,11 +48,11 @@ export class GroupMembership extends pulumi.CustomResource {
     /**
      * Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
      */
-    public readonly groupName!: pulumi.Output<string>;
+    declare public readonly groupName: pulumi.Output<string>;
     /**
      * Set of user name which will be added to group. Each name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
      */
-    public readonly userNames!: pulumi.Output<string[]>;
+    declare public readonly userNames: pulumi.Output<string[]>;
 
     /**
      * Create a GroupMembership resource with the given unique name, arguments, and options.
@@ -67,18 +67,18 @@ export class GroupMembership extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupMembershipState | undefined;
-            resourceInputs["groupName"] = state ? state.groupName : undefined;
-            resourceInputs["userNames"] = state ? state.userNames : undefined;
+            resourceInputs["groupName"] = state?.groupName;
+            resourceInputs["userNames"] = state?.userNames;
         } else {
             const args = argsOrState as GroupMembershipArgs | undefined;
-            if ((!args || args.groupName === undefined) && !opts.urn) {
+            if (args?.groupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupName'");
             }
-            if ((!args || args.userNames === undefined) && !opts.urn) {
+            if (args?.userNames === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userNames'");
             }
-            resourceInputs["groupName"] = args ? args.groupName : undefined;
-            resourceInputs["userNames"] = args ? args.userNames : undefined;
+            resourceInputs["groupName"] = args?.groupName;
+            resourceInputs["userNames"] = args?.userNames;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GroupMembership.__pulumiType, name, resourceInputs, opts);

@@ -64,11 +64,11 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * The description of the namespace.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
      */
-    public readonly namespace!: pulumi.Output<string>;
+    declare public readonly namespace: pulumi.Output<string>;
     /**
      * The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
      * - `cms.s1.large`: Data storage duration is 15 days.
@@ -78,7 +78,7 @@ export class Namespace extends pulumi.CustomResource {
      * - `cms.s1.6xlarge`: Data storage duration 185 days.
      * - `cms.s1.12xlarge`: Data storage duration 376 days.
      */
-    public readonly specification!: pulumi.Output<string>;
+    declare public readonly specification: pulumi.Output<string>;
 
     /**
      * Create a Namespace resource with the given unique name, arguments, and options.
@@ -93,17 +93,17 @@ export class Namespace extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NamespaceState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["specification"] = state ? state.specification : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["specification"] = state?.specification;
         } else {
             const args = argsOrState as NamespaceArgs | undefined;
-            if ((!args || args.namespace === undefined) && !opts.urn) {
+            if (args?.namespace === undefined && !opts.urn) {
                 throw new Error("Missing required property 'namespace'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["specification"] = args ? args.specification : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["specification"] = args?.specification;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Namespace.__pulumiType, name, resourceInputs, opts);

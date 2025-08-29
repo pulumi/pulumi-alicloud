@@ -44,15 +44,15 @@ export class BucketHttpsConfig extends pulumi.CustomResource {
     /**
      * The name of the bucket.
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * Specifies whether to enable TLS version management for the bucket. Valid values: true, false.
      */
-    public readonly enable!: pulumi.Output<boolean>;
+    declare public readonly enable: pulumi.Output<boolean>;
     /**
      * Specifies the TLS versions allowed to access this buckets.
      */
-    public readonly tlsVersions!: pulumi.Output<string[] | undefined>;
+    declare public readonly tlsVersions: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a BucketHttpsConfig resource with the given unique name, arguments, and options.
@@ -67,20 +67,20 @@ export class BucketHttpsConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketHttpsConfigState | undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["enable"] = state ? state.enable : undefined;
-            resourceInputs["tlsVersions"] = state ? state.tlsVersions : undefined;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["enable"] = state?.enable;
+            resourceInputs["tlsVersions"] = state?.tlsVersions;
         } else {
             const args = argsOrState as BucketHttpsConfigArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if ((!args || args.enable === undefined) && !opts.urn) {
+            if (args?.enable === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enable'");
             }
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["enable"] = args ? args.enable : undefined;
-            resourceInputs["tlsVersions"] = args ? args.tlsVersions : undefined;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["enable"] = args?.enable;
+            resourceInputs["tlsVersions"] = args?.tlsVersions;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BucketHttpsConfig.__pulumiType, name, resourceInputs, opts);

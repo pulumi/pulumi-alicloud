@@ -96,26 +96,26 @@ export class ServerGroup extends pulumi.CustomResource {
     /**
      * Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `deleteProtectionValidation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
      */
-    public readonly deleteProtectionValidation!: pulumi.Output<boolean | undefined>;
+    declare public readonly deleteProtectionValidation: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the Server Load Balancer (SLB) instance.
      */
-    public readonly loadBalancerId!: pulumi.Output<string>;
+    declare public readonly loadBalancerId: pulumi.Output<string>;
     /**
      * The name of the vServer group. Default value: `tf-server-group`.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The list of backend servers to be added. See `servers` below.
      * > **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
      *
      * @deprecated Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
      */
-    public readonly servers!: pulumi.Output<outputs.slb.ServerGroupServer[]>;
+    declare public readonly servers: pulumi.Output<outputs.slb.ServerGroupServer[]>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a ServerGroup resource with the given unique name, arguments, and options.
@@ -130,21 +130,21 @@ export class ServerGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServerGroupState | undefined;
-            resourceInputs["deleteProtectionValidation"] = state ? state.deleteProtectionValidation : undefined;
-            resourceInputs["loadBalancerId"] = state ? state.loadBalancerId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["servers"] = state ? state.servers : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["deleteProtectionValidation"] = state?.deleteProtectionValidation;
+            resourceInputs["loadBalancerId"] = state?.loadBalancerId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["servers"] = state?.servers;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as ServerGroupArgs | undefined;
-            if ((!args || args.loadBalancerId === undefined) && !opts.urn) {
+            if (args?.loadBalancerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'loadBalancerId'");
             }
-            resourceInputs["deleteProtectionValidation"] = args ? args.deleteProtectionValidation : undefined;
-            resourceInputs["loadBalancerId"] = args ? args.loadBalancerId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["servers"] = args ? args.servers : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["deleteProtectionValidation"] = args?.deleteProtectionValidation;
+            resourceInputs["loadBalancerId"] = args?.loadBalancerId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["servers"] = args?.servers;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServerGroup.__pulumiType, name, resourceInputs, opts);

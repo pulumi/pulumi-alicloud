@@ -147,59 +147,59 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * cluster description
      */
-    public readonly clusterDescription!: pulumi.Output<string | undefined>;
+    declare public readonly clusterDescription: pulumi.Output<string | undefined>;
     /**
      * ClusterName
      */
-    public readonly clusterName!: pulumi.Output<string | undefined>;
+    declare public readonly clusterName: pulumi.Output<string | undefined>;
     /**
      * cluster type
      */
-    public readonly clusterType!: pulumi.Output<string | undefined>;
+    declare public readonly clusterType: pulumi.Output<string | undefined>;
     /**
      * Component (software instance) See `components` below.
      */
-    public readonly components!: pulumi.Output<outputs.eflo.ClusterComponent[] | undefined>;
+    declare public readonly components: pulumi.Output<outputs.eflo.ClusterComponent[] | undefined>;
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Cluster Number
      */
-    public readonly hpnZone!: pulumi.Output<string | undefined>;
+    declare public readonly hpnZone: pulumi.Output<string | undefined>;
     /**
      * Whether to allow skipping failed nodes. Default value: False
      */
-    public readonly ignoreFailedNodeTasks!: pulumi.Output<boolean | undefined>;
+    declare public readonly ignoreFailedNodeTasks: pulumi.Output<boolean | undefined>;
     /**
      * Network Information See `networks` below.
      */
-    public readonly networks!: pulumi.Output<outputs.eflo.ClusterNetworks | undefined>;
+    declare public readonly networks: pulumi.Output<outputs.eflo.ClusterNetworks | undefined>;
     /**
      * Node virtual switch
      */
-    public readonly nimizVswitches!: pulumi.Output<string[] | undefined>;
+    declare public readonly nimizVswitches: pulumi.Output<string[] | undefined>;
     /**
      * Node Group List See `nodeGroups` below.
      */
-    public readonly nodeGroups!: pulumi.Output<outputs.eflo.ClusterNodeGroup[] | undefined>;
+    declare public readonly nodeGroups: pulumi.Output<outputs.eflo.ClusterNodeGroup[] | undefined>;
     /**
      * Whether the network interface supports jumbo frames
      */
-    public readonly openEniJumboFrame!: pulumi.Output<boolean | undefined>;
+    declare public readonly openEniJumboFrame: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the resource group
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The status of the resource
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * tag
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -214,34 +214,34 @@ export class Cluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
-            resourceInputs["clusterDescription"] = state ? state.clusterDescription : undefined;
-            resourceInputs["clusterName"] = state ? state.clusterName : undefined;
-            resourceInputs["clusterType"] = state ? state.clusterType : undefined;
-            resourceInputs["components"] = state ? state.components : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["hpnZone"] = state ? state.hpnZone : undefined;
-            resourceInputs["ignoreFailedNodeTasks"] = state ? state.ignoreFailedNodeTasks : undefined;
-            resourceInputs["networks"] = state ? state.networks : undefined;
-            resourceInputs["nimizVswitches"] = state ? state.nimizVswitches : undefined;
-            resourceInputs["nodeGroups"] = state ? state.nodeGroups : undefined;
-            resourceInputs["openEniJumboFrame"] = state ? state.openEniJumboFrame : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["clusterDescription"] = state?.clusterDescription;
+            resourceInputs["clusterName"] = state?.clusterName;
+            resourceInputs["clusterType"] = state?.clusterType;
+            resourceInputs["components"] = state?.components;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["hpnZone"] = state?.hpnZone;
+            resourceInputs["ignoreFailedNodeTasks"] = state?.ignoreFailedNodeTasks;
+            resourceInputs["networks"] = state?.networks;
+            resourceInputs["nimizVswitches"] = state?.nimizVswitches;
+            resourceInputs["nodeGroups"] = state?.nodeGroups;
+            resourceInputs["openEniJumboFrame"] = state?.openEniJumboFrame;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            resourceInputs["clusterDescription"] = args ? args.clusterDescription : undefined;
-            resourceInputs["clusterName"] = args ? args.clusterName : undefined;
-            resourceInputs["clusterType"] = args ? args.clusterType : undefined;
-            resourceInputs["components"] = args ? args.components : undefined;
-            resourceInputs["hpnZone"] = args ? args.hpnZone : undefined;
-            resourceInputs["ignoreFailedNodeTasks"] = args ? args.ignoreFailedNodeTasks : undefined;
-            resourceInputs["networks"] = args ? args.networks : undefined;
-            resourceInputs["nimizVswitches"] = args ? args.nimizVswitches : undefined;
-            resourceInputs["nodeGroups"] = args ? args.nodeGroups : undefined;
-            resourceInputs["openEniJumboFrame"] = args ? args.openEniJumboFrame : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["clusterDescription"] = args?.clusterDescription;
+            resourceInputs["clusterName"] = args?.clusterName;
+            resourceInputs["clusterType"] = args?.clusterType;
+            resourceInputs["components"] = args?.components;
+            resourceInputs["hpnZone"] = args?.hpnZone;
+            resourceInputs["ignoreFailedNodeTasks"] = args?.ignoreFailedNodeTasks;
+            resourceInputs["networks"] = args?.networks;
+            resourceInputs["nimizVswitches"] = args?.nimizVswitches;
+            resourceInputs["nodeGroups"] = args?.nodeGroups;
+            resourceInputs["openEniJumboFrame"] = args?.openEniJumboFrame;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

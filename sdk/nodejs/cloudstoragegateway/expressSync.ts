@@ -50,23 +50,23 @@ export class ExpressSync extends pulumi.CustomResource {
     /**
      * The name of the OSS Bucket.
      */
-    public readonly bucketName!: pulumi.Output<string>;
+    declare public readonly bucketName: pulumi.Output<string>;
     /**
      * The prefix of the OSS Bucket.
      */
-    public readonly bucketPrefix!: pulumi.Output<string | undefined>;
+    declare public readonly bucketPrefix: pulumi.Output<string | undefined>;
     /**
      * The region of the OSS Bucket.
      */
-    public readonly bucketRegion!: pulumi.Output<string>;
+    declare public readonly bucketRegion: pulumi.Output<string>;
     /**
      * The description of the Express Sync. The length of the name is limited to `1` to `255` characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of the ExpressSync. The length of the name is limited to `1` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, English periods (.), underscores (_), or hyphens (-), and must start with  letters.
      */
-    public readonly expressSyncName!: pulumi.Output<string>;
+    declare public readonly expressSyncName: pulumi.Output<string>;
 
     /**
      * Create a ExpressSync resource with the given unique name, arguments, and options.
@@ -81,27 +81,27 @@ export class ExpressSync extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ExpressSyncState | undefined;
-            resourceInputs["bucketName"] = state ? state.bucketName : undefined;
-            resourceInputs["bucketPrefix"] = state ? state.bucketPrefix : undefined;
-            resourceInputs["bucketRegion"] = state ? state.bucketRegion : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["expressSyncName"] = state ? state.expressSyncName : undefined;
+            resourceInputs["bucketName"] = state?.bucketName;
+            resourceInputs["bucketPrefix"] = state?.bucketPrefix;
+            resourceInputs["bucketRegion"] = state?.bucketRegion;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["expressSyncName"] = state?.expressSyncName;
         } else {
             const args = argsOrState as ExpressSyncArgs | undefined;
-            if ((!args || args.bucketName === undefined) && !opts.urn) {
+            if (args?.bucketName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucketName'");
             }
-            if ((!args || args.bucketRegion === undefined) && !opts.urn) {
+            if (args?.bucketRegion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucketRegion'");
             }
-            if ((!args || args.expressSyncName === undefined) && !opts.urn) {
+            if (args?.expressSyncName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'expressSyncName'");
             }
-            resourceInputs["bucketName"] = args ? args.bucketName : undefined;
-            resourceInputs["bucketPrefix"] = args ? args.bucketPrefix : undefined;
-            resourceInputs["bucketRegion"] = args ? args.bucketRegion : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["expressSyncName"] = args ? args.expressSyncName : undefined;
+            resourceInputs["bucketName"] = args?.bucketName;
+            resourceInputs["bucketPrefix"] = args?.bucketPrefix;
+            resourceInputs["bucketRegion"] = args?.bucketRegion;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["expressSyncName"] = args?.expressSyncName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ExpressSync.__pulumiType, name, resourceInputs, opts);

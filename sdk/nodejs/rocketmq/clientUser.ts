@@ -76,35 +76,35 @@ export class ClientUser extends pulumi.CustomResource {
     /**
      * The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
      */
-    public readonly bandwidth!: pulumi.Output<number>;
+    declare public readonly bandwidth: pulumi.Output<number>;
     /**
      * The IP address of the SAG APP. If you specify this parameter, the current account always uses the specified IP address.Note The IP address must be in the private CIDR block of the SAG client.If you do not specify this parameter, the system automatically allocates an IP address from the private CIDR block of the SAG client. In this case, each re-connection uses a different IP address.
      */
-    public readonly clientIp!: pulumi.Output<string | undefined>;
+    declare public readonly clientIp: pulumi.Output<string | undefined>;
     /**
      * The password of the KMS Encryption.
      */
-    public readonly kmsEncryptedPassword!: pulumi.Output<string | undefined>;
+    declare public readonly kmsEncryptedPassword: pulumi.Output<string | undefined>;
     /**
      * The context of the KMS Encryption.
      */
-    public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly kmsEncryptionContext: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
      */
-    public readonly password!: pulumi.Output<string>;
+    declare public readonly password: pulumi.Output<string>;
     /**
      * The ID of the SAG instance created for the SAG APP.
      */
-    public readonly sagId!: pulumi.Output<string>;
+    declare public readonly sagId: pulumi.Output<string>;
     /**
      * The email address of the user. The administrator uses this address to send the account information for logging on to the APP to the user.
      */
-    public readonly userMail!: pulumi.Output<string>;
+    declare public readonly userMail: pulumi.Output<string>;
     /**
      * The user name. User names in the same SAG APP must be unique.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
      */
-    public readonly userName!: pulumi.Output<string>;
+    declare public readonly userName: pulumi.Output<string>;
 
     /**
      * Create a ClientUser resource with the given unique name, arguments, and options.
@@ -122,33 +122,33 @@ export class ClientUser extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClientUserState | undefined;
-            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
-            resourceInputs["clientIp"] = state ? state.clientIp : undefined;
-            resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
-            resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["sagId"] = state ? state.sagId : undefined;
-            resourceInputs["userMail"] = state ? state.userMail : undefined;
-            resourceInputs["userName"] = state ? state.userName : undefined;
+            resourceInputs["bandwidth"] = state?.bandwidth;
+            resourceInputs["clientIp"] = state?.clientIp;
+            resourceInputs["kmsEncryptedPassword"] = state?.kmsEncryptedPassword;
+            resourceInputs["kmsEncryptionContext"] = state?.kmsEncryptionContext;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["sagId"] = state?.sagId;
+            resourceInputs["userMail"] = state?.userMail;
+            resourceInputs["userName"] = state?.userName;
         } else {
             const args = argsOrState as ClientUserArgs | undefined;
-            if ((!args || args.bandwidth === undefined) && !opts.urn) {
+            if (args?.bandwidth === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bandwidth'");
             }
-            if ((!args || args.sagId === undefined) && !opts.urn) {
+            if (args?.sagId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sagId'");
             }
-            if ((!args || args.userMail === undefined) && !opts.urn) {
+            if (args?.userMail === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userMail'");
             }
-            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
-            resourceInputs["clientIp"] = args ? args.clientIp : undefined;
-            resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
-            resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
-            resourceInputs["sagId"] = args ? args.sagId : undefined;
-            resourceInputs["userMail"] = args ? args.userMail : undefined;
-            resourceInputs["userName"] = args ? args.userName : undefined;
+            resourceInputs["bandwidth"] = args?.bandwidth;
+            resourceInputs["clientIp"] = args?.clientIp;
+            resourceInputs["kmsEncryptedPassword"] = args?.kmsEncryptedPassword;
+            resourceInputs["kmsEncryptionContext"] = args?.kmsEncryptionContext;
+            resourceInputs["password"] = args?.password;
+            resourceInputs["sagId"] = args?.sagId;
+            resourceInputs["userMail"] = args?.userMail;
+            resourceInputs["userName"] = args?.userName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ClientUser.__pulumiType, name, resourceInputs, opts);

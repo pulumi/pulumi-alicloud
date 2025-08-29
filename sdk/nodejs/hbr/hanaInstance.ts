@@ -84,59 +84,59 @@ export class HanaInstance extends pulumi.CustomResource {
     /**
      * The alert settings. Valid value: `INHERITED`, which indicates that the backup client sends alert notifications in the same way as the backup vault.
      */
-    public readonly alertSetting!: pulumi.Output<string>;
+    declare public readonly alertSetting: pulumi.Output<string>;
     /**
      * The IDs of ECS instances that host the SAP HANA instance to be registered. HBR installs backup clients on the specified ECS instances.
      */
-    public readonly ecsInstanceIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly ecsInstanceIds: pulumi.Output<string[] | undefined>;
     /**
      * The id of the Hana Instance.
      */
-    public /*out*/ readonly hanaInstanceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly hanaInstanceId: pulumi.Output<string>;
     /**
      * The name of the SAP HANA instance.
      */
-    public readonly hanaName!: pulumi.Output<string | undefined>;
+    declare public readonly hanaName: pulumi.Output<string | undefined>;
     /**
      * The private or internal IP address of the host where the primary node of the SAP HANA instance resides.
      */
-    public readonly host!: pulumi.Output<string | undefined>;
+    declare public readonly host: pulumi.Output<string | undefined>;
     /**
      * The instance number of the SAP HANA system.
      */
-    public readonly instanceNumber!: pulumi.Output<number | undefined>;
+    declare public readonly instanceNumber: pulumi.Output<number | undefined>;
     /**
      * The password that is used to connect with the SAP HANA database.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The security identifier (SID) of the SAP HANA database.
      */
-    public readonly sid!: pulumi.Output<string | undefined>;
+    declare public readonly sid: pulumi.Output<string | undefined>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Specifies whether to connect with the SAP HANA database over Secure Sockets Layer (SSL).
      */
-    public readonly useSsl!: pulumi.Output<boolean | undefined>;
+    declare public readonly useSsl: pulumi.Output<boolean | undefined>;
     /**
      * The username of the SYSTEMDB database.
      */
-    public readonly userName!: pulumi.Output<string | undefined>;
+    declare public readonly userName: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to verify the SSL certificate of the SAP HANA database.
      */
-    public readonly validateCertificate!: pulumi.Output<boolean | undefined>;
+    declare public readonly validateCertificate: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the backup vault.
      */
-    public readonly vaultId!: pulumi.Output<string>;
+    declare public readonly vaultId: pulumi.Output<string>;
 
     /**
      * Create a HanaInstance resource with the given unique name, arguments, and options.
@@ -151,37 +151,37 @@ export class HanaInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HanaInstanceState | undefined;
-            resourceInputs["alertSetting"] = state ? state.alertSetting : undefined;
-            resourceInputs["ecsInstanceIds"] = state ? state.ecsInstanceIds : undefined;
-            resourceInputs["hanaInstanceId"] = state ? state.hanaInstanceId : undefined;
-            resourceInputs["hanaName"] = state ? state.hanaName : undefined;
-            resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["instanceNumber"] = state ? state.instanceNumber : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["sid"] = state ? state.sid : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["useSsl"] = state ? state.useSsl : undefined;
-            resourceInputs["userName"] = state ? state.userName : undefined;
-            resourceInputs["validateCertificate"] = state ? state.validateCertificate : undefined;
-            resourceInputs["vaultId"] = state ? state.vaultId : undefined;
+            resourceInputs["alertSetting"] = state?.alertSetting;
+            resourceInputs["ecsInstanceIds"] = state?.ecsInstanceIds;
+            resourceInputs["hanaInstanceId"] = state?.hanaInstanceId;
+            resourceInputs["hanaName"] = state?.hanaName;
+            resourceInputs["host"] = state?.host;
+            resourceInputs["instanceNumber"] = state?.instanceNumber;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["sid"] = state?.sid;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["useSsl"] = state?.useSsl;
+            resourceInputs["userName"] = state?.userName;
+            resourceInputs["validateCertificate"] = state?.validateCertificate;
+            resourceInputs["vaultId"] = state?.vaultId;
         } else {
             const args = argsOrState as HanaInstanceArgs | undefined;
-            if ((!args || args.vaultId === undefined) && !opts.urn) {
+            if (args?.vaultId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vaultId'");
             }
-            resourceInputs["alertSetting"] = args ? args.alertSetting : undefined;
-            resourceInputs["ecsInstanceIds"] = args ? args.ecsInstanceIds : undefined;
-            resourceInputs["hanaName"] = args ? args.hanaName : undefined;
-            resourceInputs["host"] = args ? args.host : undefined;
-            resourceInputs["instanceNumber"] = args ? args.instanceNumber : undefined;
+            resourceInputs["alertSetting"] = args?.alertSetting;
+            resourceInputs["ecsInstanceIds"] = args?.ecsInstanceIds;
+            resourceInputs["hanaName"] = args?.hanaName;
+            resourceInputs["host"] = args?.host;
+            resourceInputs["instanceNumber"] = args?.instanceNumber;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["sid"] = args ? args.sid : undefined;
-            resourceInputs["useSsl"] = args ? args.useSsl : undefined;
-            resourceInputs["userName"] = args ? args.userName : undefined;
-            resourceInputs["validateCertificate"] = args ? args.validateCertificate : undefined;
-            resourceInputs["vaultId"] = args ? args.vaultId : undefined;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["sid"] = args?.sid;
+            resourceInputs["useSsl"] = args?.useSsl;
+            resourceInputs["userName"] = args?.userName;
+            resourceInputs["validateCertificate"] = args?.validateCertificate;
+            resourceInputs["vaultId"] = args?.vaultId;
             resourceInputs["hanaInstanceId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

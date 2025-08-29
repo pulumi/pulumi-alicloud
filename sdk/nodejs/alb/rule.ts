@@ -56,35 +56,35 @@ export class Rule extends pulumi.CustomResource {
      * - `Request`: The forwarding rule is applied to the client requests received by ALB.
      * - `Response`: The forwarding rule is applied to the responses returned by backend servers.
      */
-    public readonly direction!: pulumi.Output<string>;
+    declare public readonly direction: pulumi.Output<string>;
     /**
      * Specifies whether to precheck this request.
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the listener to which the forwarding rule belongs.
      */
-    public readonly listenerId!: pulumi.Output<string>;
+    declare public readonly listenerId: pulumi.Output<string>;
     /**
      * The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
      */
-    public readonly priority!: pulumi.Output<number>;
+    declare public readonly priority: pulumi.Output<number>;
     /**
      * The actions of the forwarding rules. See `ruleActions` below.
      */
-    public readonly ruleActions!: pulumi.Output<outputs.alb.RuleRuleAction[]>;
+    declare public readonly ruleActions: pulumi.Output<outputs.alb.RuleRuleAction[]>;
     /**
      * The conditions of the forwarding rule. See `ruleConditions` below.
      */
-    public readonly ruleConditions!: pulumi.Output<outputs.alb.RuleRuleCondition[]>;
+    declare public readonly ruleConditions: pulumi.Output<outputs.alb.RuleRuleCondition[]>;
     /**
      * The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
      */
-    public readonly ruleName!: pulumi.Output<string>;
+    declare public readonly ruleName: pulumi.Output<string>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a Rule resource with the given unique name, arguments, and options.
@@ -99,38 +99,38 @@ export class Rule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RuleState | undefined;
-            resourceInputs["direction"] = state ? state.direction : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["listenerId"] = state ? state.listenerId : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["ruleActions"] = state ? state.ruleActions : undefined;
-            resourceInputs["ruleConditions"] = state ? state.ruleConditions : undefined;
-            resourceInputs["ruleName"] = state ? state.ruleName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["direction"] = state?.direction;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["listenerId"] = state?.listenerId;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["ruleActions"] = state?.ruleActions;
+            resourceInputs["ruleConditions"] = state?.ruleConditions;
+            resourceInputs["ruleName"] = state?.ruleName;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as RuleArgs | undefined;
-            if ((!args || args.listenerId === undefined) && !opts.urn) {
+            if (args?.listenerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'listenerId'");
             }
-            if ((!args || args.priority === undefined) && !opts.urn) {
+            if (args?.priority === undefined && !opts.urn) {
                 throw new Error("Missing required property 'priority'");
             }
-            if ((!args || args.ruleActions === undefined) && !opts.urn) {
+            if (args?.ruleActions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ruleActions'");
             }
-            if ((!args || args.ruleConditions === undefined) && !opts.urn) {
+            if (args?.ruleConditions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ruleConditions'");
             }
-            if ((!args || args.ruleName === undefined) && !opts.urn) {
+            if (args?.ruleName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ruleName'");
             }
-            resourceInputs["direction"] = args ? args.direction : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["listenerId"] = args ? args.listenerId : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["ruleActions"] = args ? args.ruleActions : undefined;
-            resourceInputs["ruleConditions"] = args ? args.ruleConditions : undefined;
-            resourceInputs["ruleName"] = args ? args.ruleName : undefined;
+            resourceInputs["direction"] = args?.direction;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["listenerId"] = args?.listenerId;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["ruleActions"] = args?.ruleActions;
+            resourceInputs["ruleConditions"] = args?.ruleConditions;
+            resourceInputs["ruleName"] = args?.ruleName;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

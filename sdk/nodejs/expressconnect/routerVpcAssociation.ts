@@ -77,36 +77,36 @@ export class RouterVpcAssociation extends pulumi.CustomResource {
     /**
      * The list of allowed route prefixes.
      */
-    public readonly allowedPrefixes!: pulumi.Output<string[] | undefined>;
+    declare public readonly allowedPrefixes: pulumi.Output<string[] | undefined>;
     /**
      * The ID of the association between the ECR and the VPC.
      */
-    public /*out*/ readonly associationId!: pulumi.Output<string>;
+    declare public /*out*/ readonly associationId: pulumi.Output<string>;
     /**
      * The region ID of the resource to be associated.
      */
-    public readonly associationRegionId!: pulumi.Output<string>;
+    declare public readonly associationRegionId: pulumi.Output<string>;
     /**
      * The time when the association was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The ECR ID.
      */
-    public readonly ecrId!: pulumi.Output<string>;
+    declare public readonly ecrId: pulumi.Output<string>;
     /**
      * The deployment state of the associated resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The VPC ID.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * The ID of the Alibaba Cloud account that owns the VPC.
      * > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
      */
-    public readonly vpcOwnerId!: pulumi.Output<number>;
+    declare public readonly vpcOwnerId: pulumi.Output<number>;
 
     /**
      * Create a RouterVpcAssociation resource with the given unique name, arguments, and options.
@@ -121,30 +121,30 @@ export class RouterVpcAssociation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouterVpcAssociationState | undefined;
-            resourceInputs["allowedPrefixes"] = state ? state.allowedPrefixes : undefined;
-            resourceInputs["associationId"] = state ? state.associationId : undefined;
-            resourceInputs["associationRegionId"] = state ? state.associationRegionId : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["ecrId"] = state ? state.ecrId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vpcOwnerId"] = state ? state.vpcOwnerId : undefined;
+            resourceInputs["allowedPrefixes"] = state?.allowedPrefixes;
+            resourceInputs["associationId"] = state?.associationId;
+            resourceInputs["associationRegionId"] = state?.associationRegionId;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["ecrId"] = state?.ecrId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vpcOwnerId"] = state?.vpcOwnerId;
         } else {
             const args = argsOrState as RouterVpcAssociationArgs | undefined;
-            if ((!args || args.associationRegionId === undefined) && !opts.urn) {
+            if (args?.associationRegionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'associationRegionId'");
             }
-            if ((!args || args.ecrId === undefined) && !opts.urn) {
+            if (args?.ecrId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ecrId'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["allowedPrefixes"] = args ? args.allowedPrefixes : undefined;
-            resourceInputs["associationRegionId"] = args ? args.associationRegionId : undefined;
-            resourceInputs["ecrId"] = args ? args.ecrId : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vpcOwnerId"] = args ? args.vpcOwnerId : undefined;
+            resourceInputs["allowedPrefixes"] = args?.allowedPrefixes;
+            resourceInputs["associationRegionId"] = args?.associationRegionId;
+            resourceInputs["ecrId"] = args?.ecrId;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vpcOwnerId"] = args?.vpcOwnerId;
             resourceInputs["associationId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

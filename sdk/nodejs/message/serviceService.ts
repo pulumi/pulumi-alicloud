@@ -35,7 +35,7 @@ export class ServiceService extends pulumi.CustomResource {
     /**
      * The status of the Service.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a ServiceService resource with the given unique name, arguments, and options.
@@ -50,7 +50,7 @@ export class ServiceService extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceServiceState | undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as ServiceServiceArgs | undefined;
             resourceInputs["status"] = undefined /*out*/;

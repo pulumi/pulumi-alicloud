@@ -93,11 +93,11 @@ export class ControlPolicyAttachment extends pulumi.CustomResource {
     /**
      * The ID of the access control policy.
      */
-    public readonly policyId!: pulumi.Output<string>;
+    declare public readonly policyId: pulumi.Output<string>;
     /**
      * The ID of the object to which you want to attach the access control policy.
      */
-    public readonly targetId!: pulumi.Output<string>;
+    declare public readonly targetId: pulumi.Output<string>;
 
     /**
      * Create a ControlPolicyAttachment resource with the given unique name, arguments, and options.
@@ -112,18 +112,18 @@ export class ControlPolicyAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ControlPolicyAttachmentState | undefined;
-            resourceInputs["policyId"] = state ? state.policyId : undefined;
-            resourceInputs["targetId"] = state ? state.targetId : undefined;
+            resourceInputs["policyId"] = state?.policyId;
+            resourceInputs["targetId"] = state?.targetId;
         } else {
             const args = argsOrState as ControlPolicyAttachmentArgs | undefined;
-            if ((!args || args.policyId === undefined) && !opts.urn) {
+            if (args?.policyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyId'");
             }
-            if ((!args || args.targetId === undefined) && !opts.urn) {
+            if (args?.targetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetId'");
             }
-            resourceInputs["policyId"] = args ? args.policyId : undefined;
-            resourceInputs["targetId"] = args ? args.targetId : undefined;
+            resourceInputs["policyId"] = args?.policyId;
+            resourceInputs["targetId"] = args?.targetId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ControlPolicyAttachment.__pulumiType, name, resourceInputs, opts);

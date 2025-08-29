@@ -37,66 +37,66 @@ export class Domain extends pulumi.CustomResource {
     /**
      * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
      */
-    public readonly authConfig!: pulumi.Output<outputs.cdn.DomainAuthConfig | undefined>;
+    declare public readonly authConfig: pulumi.Output<outputs.cdn.DomainAuthConfig | undefined>;
     /**
      * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
      */
-    public readonly blockIps!: pulumi.Output<string[] | undefined>;
+    declare public readonly blockIps: pulumi.Output<string[] | undefined>;
     /**
      * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
      */
-    public readonly cacheConfigs!: pulumi.Output<outputs.cdn.DomainCacheConfig[] | undefined>;
-    public readonly cdnType!: pulumi.Output<string>;
+    declare public readonly cacheConfigs: pulumi.Output<outputs.cdn.DomainCacheConfig[] | undefined>;
+    declare public readonly cdnType: pulumi.Output<string>;
     /**
      * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
      */
-    public readonly certificateConfig!: pulumi.Output<outputs.cdn.DomainCertificateConfig | undefined>;
-    public readonly domainName!: pulumi.Output<string>;
+    declare public readonly certificateConfig: pulumi.Output<outputs.cdn.DomainCertificateConfig | undefined>;
+    declare public readonly domainName: pulumi.Output<string>;
     /**
      * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
      */
-    public readonly httpHeaderConfigs!: pulumi.Output<outputs.cdn.DomainHttpHeaderConfig[] | undefined>;
+    declare public readonly httpHeaderConfigs: pulumi.Output<outputs.cdn.DomainHttpHeaderConfig[] | undefined>;
     /**
      * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
      */
-    public readonly optimizeEnable!: pulumi.Output<string | undefined>;
+    declare public readonly optimizeEnable: pulumi.Output<string | undefined>;
     /**
      * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
      */
-    public readonly page404Config!: pulumi.Output<outputs.cdn.DomainPage404Config | undefined>;
+    declare public readonly page404Config: pulumi.Output<outputs.cdn.DomainPage404Config | undefined>;
     /**
      * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
      */
-    public readonly pageCompressEnable!: pulumi.Output<string | undefined>;
+    declare public readonly pageCompressEnable: pulumi.Output<string | undefined>;
     /**
      * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
      */
-    public readonly parameterFilterConfig!: pulumi.Output<outputs.cdn.DomainParameterFilterConfig | undefined>;
+    declare public readonly parameterFilterConfig: pulumi.Output<outputs.cdn.DomainParameterFilterConfig | undefined>;
     /**
      * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
      */
-    public readonly rangeEnable!: pulumi.Output<string | undefined>;
+    declare public readonly rangeEnable: pulumi.Output<string | undefined>;
     /**
      * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
      */
-    public readonly referConfig!: pulumi.Output<outputs.cdn.DomainReferConfig | undefined>;
-    public readonly scope!: pulumi.Output<string>;
+    declare public readonly referConfig: pulumi.Output<outputs.cdn.DomainReferConfig | undefined>;
+    declare public readonly scope: pulumi.Output<string>;
     /**
      * @deprecated Use `alicloud.cdn.DomainNew` configuration `sources` block `port` argument instead.
      */
-    public readonly sourcePort!: pulumi.Output<number | undefined>;
+    declare public readonly sourcePort: pulumi.Output<number | undefined>;
     /**
      * @deprecated Use `alicloud.cdn.DomainNew` configuration `sources` block `type` argument instead.
      */
-    public readonly sourceType!: pulumi.Output<string | undefined>;
+    declare public readonly sourceType: pulumi.Output<string | undefined>;
     /**
      * @deprecated Use `alicloud.cdn.DomainNew` configuration `sources` argument instead.
      */
-    public readonly sources!: pulumi.Output<string[] | undefined>;
+    declare public readonly sources: pulumi.Output<string[] | undefined>;
     /**
      * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
      */
-    public readonly videoSeekEnable!: pulumi.Output<string | undefined>;
+    declare public readonly videoSeekEnable: pulumi.Output<string | undefined>;
 
     /**
      * Create a Domain resource with the given unique name, arguments, and options.
@@ -111,50 +111,50 @@ export class Domain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainState | undefined;
-            resourceInputs["authConfig"] = state ? state.authConfig : undefined;
-            resourceInputs["blockIps"] = state ? state.blockIps : undefined;
-            resourceInputs["cacheConfigs"] = state ? state.cacheConfigs : undefined;
-            resourceInputs["cdnType"] = state ? state.cdnType : undefined;
-            resourceInputs["certificateConfig"] = state ? state.certificateConfig : undefined;
-            resourceInputs["domainName"] = state ? state.domainName : undefined;
-            resourceInputs["httpHeaderConfigs"] = state ? state.httpHeaderConfigs : undefined;
-            resourceInputs["optimizeEnable"] = state ? state.optimizeEnable : undefined;
-            resourceInputs["page404Config"] = state ? state.page404Config : undefined;
-            resourceInputs["pageCompressEnable"] = state ? state.pageCompressEnable : undefined;
-            resourceInputs["parameterFilterConfig"] = state ? state.parameterFilterConfig : undefined;
-            resourceInputs["rangeEnable"] = state ? state.rangeEnable : undefined;
-            resourceInputs["referConfig"] = state ? state.referConfig : undefined;
-            resourceInputs["scope"] = state ? state.scope : undefined;
-            resourceInputs["sourcePort"] = state ? state.sourcePort : undefined;
-            resourceInputs["sourceType"] = state ? state.sourceType : undefined;
-            resourceInputs["sources"] = state ? state.sources : undefined;
-            resourceInputs["videoSeekEnable"] = state ? state.videoSeekEnable : undefined;
+            resourceInputs["authConfig"] = state?.authConfig;
+            resourceInputs["blockIps"] = state?.blockIps;
+            resourceInputs["cacheConfigs"] = state?.cacheConfigs;
+            resourceInputs["cdnType"] = state?.cdnType;
+            resourceInputs["certificateConfig"] = state?.certificateConfig;
+            resourceInputs["domainName"] = state?.domainName;
+            resourceInputs["httpHeaderConfigs"] = state?.httpHeaderConfigs;
+            resourceInputs["optimizeEnable"] = state?.optimizeEnable;
+            resourceInputs["page404Config"] = state?.page404Config;
+            resourceInputs["pageCompressEnable"] = state?.pageCompressEnable;
+            resourceInputs["parameterFilterConfig"] = state?.parameterFilterConfig;
+            resourceInputs["rangeEnable"] = state?.rangeEnable;
+            resourceInputs["referConfig"] = state?.referConfig;
+            resourceInputs["scope"] = state?.scope;
+            resourceInputs["sourcePort"] = state?.sourcePort;
+            resourceInputs["sourceType"] = state?.sourceType;
+            resourceInputs["sources"] = state?.sources;
+            resourceInputs["videoSeekEnable"] = state?.videoSeekEnable;
         } else {
             const args = argsOrState as DomainArgs | undefined;
-            if ((!args || args.cdnType === undefined) && !opts.urn) {
+            if (args?.cdnType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cdnType'");
             }
-            if ((!args || args.domainName === undefined) && !opts.urn) {
+            if (args?.domainName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
-            resourceInputs["authConfig"] = args ? args.authConfig : undefined;
-            resourceInputs["blockIps"] = args ? args.blockIps : undefined;
-            resourceInputs["cacheConfigs"] = args ? args.cacheConfigs : undefined;
-            resourceInputs["cdnType"] = args ? args.cdnType : undefined;
-            resourceInputs["certificateConfig"] = args ? args.certificateConfig : undefined;
-            resourceInputs["domainName"] = args ? args.domainName : undefined;
-            resourceInputs["httpHeaderConfigs"] = args ? args.httpHeaderConfigs : undefined;
-            resourceInputs["optimizeEnable"] = args ? args.optimizeEnable : undefined;
-            resourceInputs["page404Config"] = args ? args.page404Config : undefined;
-            resourceInputs["pageCompressEnable"] = args ? args.pageCompressEnable : undefined;
-            resourceInputs["parameterFilterConfig"] = args ? args.parameterFilterConfig : undefined;
-            resourceInputs["rangeEnable"] = args ? args.rangeEnable : undefined;
-            resourceInputs["referConfig"] = args ? args.referConfig : undefined;
-            resourceInputs["scope"] = args ? args.scope : undefined;
-            resourceInputs["sourcePort"] = args ? args.sourcePort : undefined;
-            resourceInputs["sourceType"] = args ? args.sourceType : undefined;
-            resourceInputs["sources"] = args ? args.sources : undefined;
-            resourceInputs["videoSeekEnable"] = args ? args.videoSeekEnable : undefined;
+            resourceInputs["authConfig"] = args?.authConfig;
+            resourceInputs["blockIps"] = args?.blockIps;
+            resourceInputs["cacheConfigs"] = args?.cacheConfigs;
+            resourceInputs["cdnType"] = args?.cdnType;
+            resourceInputs["certificateConfig"] = args?.certificateConfig;
+            resourceInputs["domainName"] = args?.domainName;
+            resourceInputs["httpHeaderConfigs"] = args?.httpHeaderConfigs;
+            resourceInputs["optimizeEnable"] = args?.optimizeEnable;
+            resourceInputs["page404Config"] = args?.page404Config;
+            resourceInputs["pageCompressEnable"] = args?.pageCompressEnable;
+            resourceInputs["parameterFilterConfig"] = args?.parameterFilterConfig;
+            resourceInputs["rangeEnable"] = args?.rangeEnable;
+            resourceInputs["referConfig"] = args?.referConfig;
+            resourceInputs["scope"] = args?.scope;
+            resourceInputs["sourcePort"] = args?.sourcePort;
+            resourceInputs["sourceType"] = args?.sourceType;
+            resourceInputs["sources"] = args?.sources;
+            resourceInputs["videoSeekEnable"] = args?.videoSeekEnable;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Domain.__pulumiType, name, resourceInputs, opts);

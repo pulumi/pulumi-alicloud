@@ -73,39 +73,39 @@ export class FirewallVpcFirewallCen extends pulumi.CustomResource {
     /**
      * The ID of the CEN instance.
      */
-    public readonly cenId!: pulumi.Output<string>;
+    declare public readonly cenId: pulumi.Output<string>;
     /**
      * Intercommunication type, value: expressconnect: Express Channel cen: Cloud Enterprise Network
      */
-    public /*out*/ readonly connectType!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectType: pulumi.Output<string>;
     /**
      * The language type of the requested and received messages. Valid values:
      */
-    public readonly lang!: pulumi.Output<string | undefined>;
+    declare public readonly lang: pulumi.Output<string | undefined>;
     /**
      * The details of the VPC. See `localVpc` below.
      */
-    public readonly localVpc!: pulumi.Output<outputs.cloudfirewall.FirewallVpcFirewallCenLocalVpc>;
+    declare public readonly localVpc: pulumi.Output<outputs.cloudfirewall.FirewallVpcFirewallCenLocalVpc>;
     /**
      * The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
      */
-    public readonly memberUid!: pulumi.Output<string | undefined>;
+    declare public readonly memberUid: pulumi.Output<string | undefined>;
     /**
      * Firewall switch status.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * VPC firewall ID
      */
-    public /*out*/ readonly vpcFirewallId!: pulumi.Output<string>;
+    declare public /*out*/ readonly vpcFirewallId: pulumi.Output<string>;
     /**
      * The name of the VPC firewall instance.
      */
-    public readonly vpcFirewallName!: pulumi.Output<string>;
+    declare public readonly vpcFirewallName: pulumi.Output<string>;
     /**
      * The ID of the region to which the VPC is created.
      */
-    public readonly vpcRegion!: pulumi.Output<string>;
+    declare public readonly vpcRegion: pulumi.Output<string>;
 
     /**
      * Create a FirewallVpcFirewallCen resource with the given unique name, arguments, and options.
@@ -120,39 +120,39 @@ export class FirewallVpcFirewallCen extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FirewallVpcFirewallCenState | undefined;
-            resourceInputs["cenId"] = state ? state.cenId : undefined;
-            resourceInputs["connectType"] = state ? state.connectType : undefined;
-            resourceInputs["lang"] = state ? state.lang : undefined;
-            resourceInputs["localVpc"] = state ? state.localVpc : undefined;
-            resourceInputs["memberUid"] = state ? state.memberUid : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vpcFirewallId"] = state ? state.vpcFirewallId : undefined;
-            resourceInputs["vpcFirewallName"] = state ? state.vpcFirewallName : undefined;
-            resourceInputs["vpcRegion"] = state ? state.vpcRegion : undefined;
+            resourceInputs["cenId"] = state?.cenId;
+            resourceInputs["connectType"] = state?.connectType;
+            resourceInputs["lang"] = state?.lang;
+            resourceInputs["localVpc"] = state?.localVpc;
+            resourceInputs["memberUid"] = state?.memberUid;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vpcFirewallId"] = state?.vpcFirewallId;
+            resourceInputs["vpcFirewallName"] = state?.vpcFirewallName;
+            resourceInputs["vpcRegion"] = state?.vpcRegion;
         } else {
             const args = argsOrState as FirewallVpcFirewallCenArgs | undefined;
-            if ((!args || args.cenId === undefined) && !opts.urn) {
+            if (args?.cenId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cenId'");
             }
-            if ((!args || args.localVpc === undefined) && !opts.urn) {
+            if (args?.localVpc === undefined && !opts.urn) {
                 throw new Error("Missing required property 'localVpc'");
             }
-            if ((!args || args.status === undefined) && !opts.urn) {
+            if (args?.status === undefined && !opts.urn) {
                 throw new Error("Missing required property 'status'");
             }
-            if ((!args || args.vpcFirewallName === undefined) && !opts.urn) {
+            if (args?.vpcFirewallName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcFirewallName'");
             }
-            if ((!args || args.vpcRegion === undefined) && !opts.urn) {
+            if (args?.vpcRegion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcRegion'");
             }
-            resourceInputs["cenId"] = args ? args.cenId : undefined;
-            resourceInputs["lang"] = args ? args.lang : undefined;
-            resourceInputs["localVpc"] = args ? args.localVpc : undefined;
-            resourceInputs["memberUid"] = args ? args.memberUid : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["vpcFirewallName"] = args ? args.vpcFirewallName : undefined;
-            resourceInputs["vpcRegion"] = args ? args.vpcRegion : undefined;
+            resourceInputs["cenId"] = args?.cenId;
+            resourceInputs["lang"] = args?.lang;
+            resourceInputs["localVpc"] = args?.localVpc;
+            resourceInputs["memberUid"] = args?.memberUid;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["vpcFirewallName"] = args?.vpcFirewallName;
+            resourceInputs["vpcRegion"] = args?.vpcRegion;
             resourceInputs["connectType"] = undefined /*out*/;
             resourceInputs["vpcFirewallId"] = undefined /*out*/;
         }

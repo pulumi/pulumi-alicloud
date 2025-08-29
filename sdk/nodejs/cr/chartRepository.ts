@@ -84,23 +84,23 @@ export class ChartRepository extends pulumi.CustomResource {
     /**
      * The ID of the Container Registry instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The name of the repository that you want to create.
      */
-    public readonly repoName!: pulumi.Output<string>;
+    declare public readonly repoName: pulumi.Output<string>;
     /**
      * The namespace to which the repository belongs.
      */
-    public readonly repoNamespaceName!: pulumi.Output<string>;
+    declare public readonly repoNamespaceName: pulumi.Output<string>;
     /**
      * The default repository type. Valid values: `PUBLIC`,`PRIVATE`.
      */
-    public readonly repoType!: pulumi.Output<string>;
+    declare public readonly repoType: pulumi.Output<string>;
     /**
      * The summary about the repository.
      */
-    public readonly summary!: pulumi.Output<string | undefined>;
+    declare public readonly summary: pulumi.Output<string | undefined>;
 
     /**
      * Create a ChartRepository resource with the given unique name, arguments, and options.
@@ -115,27 +115,27 @@ export class ChartRepository extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ChartRepositoryState | undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["repoName"] = state ? state.repoName : undefined;
-            resourceInputs["repoNamespaceName"] = state ? state.repoNamespaceName : undefined;
-            resourceInputs["repoType"] = state ? state.repoType : undefined;
-            resourceInputs["summary"] = state ? state.summary : undefined;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["repoName"] = state?.repoName;
+            resourceInputs["repoNamespaceName"] = state?.repoNamespaceName;
+            resourceInputs["repoType"] = state?.repoType;
+            resourceInputs["summary"] = state?.summary;
         } else {
             const args = argsOrState as ChartRepositoryArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.repoName === undefined) && !opts.urn) {
+            if (args?.repoName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'repoName'");
             }
-            if ((!args || args.repoNamespaceName === undefined) && !opts.urn) {
+            if (args?.repoNamespaceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'repoNamespaceName'");
             }
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["repoName"] = args ? args.repoName : undefined;
-            resourceInputs["repoNamespaceName"] = args ? args.repoNamespaceName : undefined;
-            resourceInputs["repoType"] = args ? args.repoType : undefined;
-            resourceInputs["summary"] = args ? args.summary : undefined;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["repoName"] = args?.repoName;
+            resourceInputs["repoNamespaceName"] = args?.repoNamespaceName;
+            resourceInputs["repoType"] = args?.repoType;
+            resourceInputs["summary"] = args?.summary;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ChartRepository.__pulumiType, name, resourceInputs, opts);

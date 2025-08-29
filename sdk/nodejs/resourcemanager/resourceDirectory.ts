@@ -73,23 +73,23 @@ export class ResourceDirectory extends pulumi.CustomResource {
     /**
      * The ID of the master account.
      */
-    public /*out*/ readonly masterAccountId!: pulumi.Output<string>;
+    declare public /*out*/ readonly masterAccountId: pulumi.Output<string>;
     /**
      * The name of the master account.
      */
-    public /*out*/ readonly masterAccountName!: pulumi.Output<string>;
+    declare public /*out*/ readonly masterAccountName: pulumi.Output<string>;
     /**
      * Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
      */
-    public readonly memberDeletionStatus!: pulumi.Output<string>;
+    declare public readonly memberDeletionStatus: pulumi.Output<string>;
     /**
      * The ID of the root folder.
      */
-    public /*out*/ readonly rootFolderId!: pulumi.Output<string>;
+    declare public /*out*/ readonly rootFolderId: pulumi.Output<string>;
     /**
      * The status of control policy. Valid values:`Enabled` and `Disabled`.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
 
     /**
      * Create a ResourceDirectory resource with the given unique name, arguments, and options.
@@ -104,15 +104,15 @@ export class ResourceDirectory extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ResourceDirectoryState | undefined;
-            resourceInputs["masterAccountId"] = state ? state.masterAccountId : undefined;
-            resourceInputs["masterAccountName"] = state ? state.masterAccountName : undefined;
-            resourceInputs["memberDeletionStatus"] = state ? state.memberDeletionStatus : undefined;
-            resourceInputs["rootFolderId"] = state ? state.rootFolderId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["masterAccountId"] = state?.masterAccountId;
+            resourceInputs["masterAccountName"] = state?.masterAccountName;
+            resourceInputs["memberDeletionStatus"] = state?.memberDeletionStatus;
+            resourceInputs["rootFolderId"] = state?.rootFolderId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as ResourceDirectoryArgs | undefined;
-            resourceInputs["memberDeletionStatus"] = args ? args.memberDeletionStatus : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["memberDeletionStatus"] = args?.memberDeletionStatus;
+            resourceInputs["status"] = args?.status;
             resourceInputs["masterAccountId"] = undefined /*out*/;
             resourceInputs["masterAccountName"] = undefined /*out*/;
             resourceInputs["rootFolderId"] = undefined /*out*/;

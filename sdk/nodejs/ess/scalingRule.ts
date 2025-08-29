@@ -136,102 +136,102 @@ export class ScalingRule extends pulumi.CustomResource {
      * - PercentChangeInCapacity: It is used to increase or decrease a specified proportion of ECS instances.
      * - TotalCapacity: It is used to adjust the quantity of ECS instances in the current scaling group to a specified value.
      */
-    public readonly adjustmentType!: pulumi.Output<string | undefined>;
+    declare public readonly adjustmentType: pulumi.Output<string | undefined>;
     /**
      * The number of ECS instances to be adjusted in the scaling rule. This parameter is required and applicable only to simple scaling rules. The number of ECS instances to be adjusted in a single scaling activity cannot exceed 500. Value range:
      * - QuantityChangeInCapacity：(0, 500] U (-500, 0]
      * - PercentChangeInCapacity：[0, 10000] U [-100, 0]
      * - TotalCapacity：[0, 1000]
      */
-    public readonly adjustmentValue!: pulumi.Output<number | undefined>;
+    declare public readonly adjustmentValue: pulumi.Output<number | undefined>;
     /**
      * AlarmDimension for StepScalingRule. See `alarmDimension` below.
      */
-    public readonly alarmDimension!: pulumi.Output<outputs.ess.ScalingRuleAlarmDimension | undefined>;
+    declare public readonly alarmDimension: pulumi.Output<outputs.ess.ScalingRuleAlarmDimension | undefined>;
     /**
      * The unique identifier of the scaling rule.
      */
-    public /*out*/ readonly ari!: pulumi.Output<string>;
+    declare public /*out*/ readonly ari: pulumi.Output<string>;
     /**
      * The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
      */
-    public readonly cooldown!: pulumi.Output<number | undefined>;
+    declare public readonly cooldown: pulumi.Output<number | undefined>;
     /**
      * Indicates whether scale in by the target tracking policy is disabled. Default to false.
      */
-    public readonly disableScaleIn!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableScaleIn: pulumi.Output<boolean | undefined>;
     /**
      * The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
      */
-    public readonly estimatedInstanceWarmup!: pulumi.Output<number>;
+    declare public readonly estimatedInstanceWarmup: pulumi.Output<number>;
     /**
      * The Hybrid Cloud Monitoring metrics. See `hybridMetrics` below.
      */
-    public readonly hybridMetrics!: pulumi.Output<outputs.ess.ScalingRuleHybridMetric[] | undefined>;
+    declare public readonly hybridMetrics: pulumi.Output<outputs.ess.ScalingRuleHybridMetric[] | undefined>;
     /**
      * The ID of the Hybrid Cloud Monitoring metric repository.
      */
-    public readonly hybridMonitorNamespace!: pulumi.Output<string | undefined>;
+    declare public readonly hybridMonitorNamespace: pulumi.Output<string | undefined>;
     /**
      * The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
      */
-    public readonly initialMaxSize!: pulumi.Output<number>;
+    declare public readonly initialMaxSize: pulumi.Output<number>;
     /**
      * A CloudMonitor metric name.
      */
-    public readonly metricName!: pulumi.Output<string | undefined>;
+    declare public readonly metricName: pulumi.Output<string | undefined>;
     /**
      * The type of the metric. Valid values: system, custom, hybrid.
      */
-    public readonly metricType!: pulumi.Output<string>;
+    declare public readonly metricType: pulumi.Output<string>;
     /**
      * The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
      */
-    public readonly minAdjustmentMagnitude!: pulumi.Output<number | undefined>;
+    declare public readonly minAdjustmentMagnitude: pulumi.Output<number | undefined>;
     /**
      * The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
      */
-    public readonly predictiveScalingMode!: pulumi.Output<string>;
+    declare public readonly predictiveScalingMode: pulumi.Output<string>;
     /**
      * The amount of buffer time before the prediction task runs. By default, all prediction tasks that are automatically created by a predictive scaling rule run on the hour. You can specify a buffer time to run prediction tasks and prepare resources in advance. Valid values: 0 to 60. Unit: minutes.
      */
-    public readonly predictiveTaskBufferTime!: pulumi.Output<number>;
+    declare public readonly predictiveTaskBufferTime: pulumi.Output<number>;
     /**
      * The action on the predicted maximum value. Valid values: MaxOverridePredictiveValue, PredictiveValueOverrideMax, PredictiveValueOverrideMaxWithBuffer.
      */
-    public readonly predictiveValueBehavior!: pulumi.Output<string>;
+    declare public readonly predictiveValueBehavior: pulumi.Output<string>;
     /**
      * The ratio based on which the predicted value is increased if you set PredictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
      */
-    public readonly predictiveValueBuffer!: pulumi.Output<number>;
+    declare public readonly predictiveValueBuffer: pulumi.Output<number>;
     /**
      * The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
      */
-    public readonly scaleInEvaluationCount!: pulumi.Output<number>;
+    declare public readonly scaleInEvaluationCount: pulumi.Output<number>;
     /**
      * The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
      */
-    public readonly scaleOutEvaluationCount!: pulumi.Output<number>;
+    declare public readonly scaleOutEvaluationCount: pulumi.Output<number>;
     /**
      * ID of the scaling group of a scaling rule.
      */
-    public readonly scalingGroupId!: pulumi.Output<string>;
+    declare public readonly scalingGroupId: pulumi.Output<string>;
     /**
      * Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
      */
-    public readonly scalingRuleName!: pulumi.Output<string>;
+    declare public readonly scalingRuleName: pulumi.Output<string>;
     /**
      * The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule", "PredictiveScalingRule". Default to "SimpleScalingRule".
      */
-    public readonly scalingRuleType!: pulumi.Output<string | undefined>;
+    declare public readonly scalingRuleType: pulumi.Output<string | undefined>;
     /**
      * Steps for StepScalingRule. See `stepAdjustment` below.
      */
-    public readonly stepAdjustments!: pulumi.Output<outputs.ess.ScalingRuleStepAdjustment[] | undefined>;
+    declare public readonly stepAdjustments: pulumi.Output<outputs.ess.ScalingRuleStepAdjustment[] | undefined>;
     /**
      * The target value for the metric.
      */
-    public readonly targetValue!: pulumi.Output<number | undefined>;
+    declare public readonly targetValue: pulumi.Output<number | undefined>;
 
     /**
      * Create a ScalingRule resource with the given unique name, arguments, and options.
@@ -246,58 +246,58 @@ export class ScalingRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ScalingRuleState | undefined;
-            resourceInputs["adjustmentType"] = state ? state.adjustmentType : undefined;
-            resourceInputs["adjustmentValue"] = state ? state.adjustmentValue : undefined;
-            resourceInputs["alarmDimension"] = state ? state.alarmDimension : undefined;
-            resourceInputs["ari"] = state ? state.ari : undefined;
-            resourceInputs["cooldown"] = state ? state.cooldown : undefined;
-            resourceInputs["disableScaleIn"] = state ? state.disableScaleIn : undefined;
-            resourceInputs["estimatedInstanceWarmup"] = state ? state.estimatedInstanceWarmup : undefined;
-            resourceInputs["hybridMetrics"] = state ? state.hybridMetrics : undefined;
-            resourceInputs["hybridMonitorNamespace"] = state ? state.hybridMonitorNamespace : undefined;
-            resourceInputs["initialMaxSize"] = state ? state.initialMaxSize : undefined;
-            resourceInputs["metricName"] = state ? state.metricName : undefined;
-            resourceInputs["metricType"] = state ? state.metricType : undefined;
-            resourceInputs["minAdjustmentMagnitude"] = state ? state.minAdjustmentMagnitude : undefined;
-            resourceInputs["predictiveScalingMode"] = state ? state.predictiveScalingMode : undefined;
-            resourceInputs["predictiveTaskBufferTime"] = state ? state.predictiveTaskBufferTime : undefined;
-            resourceInputs["predictiveValueBehavior"] = state ? state.predictiveValueBehavior : undefined;
-            resourceInputs["predictiveValueBuffer"] = state ? state.predictiveValueBuffer : undefined;
-            resourceInputs["scaleInEvaluationCount"] = state ? state.scaleInEvaluationCount : undefined;
-            resourceInputs["scaleOutEvaluationCount"] = state ? state.scaleOutEvaluationCount : undefined;
-            resourceInputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
-            resourceInputs["scalingRuleName"] = state ? state.scalingRuleName : undefined;
-            resourceInputs["scalingRuleType"] = state ? state.scalingRuleType : undefined;
-            resourceInputs["stepAdjustments"] = state ? state.stepAdjustments : undefined;
-            resourceInputs["targetValue"] = state ? state.targetValue : undefined;
+            resourceInputs["adjustmentType"] = state?.adjustmentType;
+            resourceInputs["adjustmentValue"] = state?.adjustmentValue;
+            resourceInputs["alarmDimension"] = state?.alarmDimension;
+            resourceInputs["ari"] = state?.ari;
+            resourceInputs["cooldown"] = state?.cooldown;
+            resourceInputs["disableScaleIn"] = state?.disableScaleIn;
+            resourceInputs["estimatedInstanceWarmup"] = state?.estimatedInstanceWarmup;
+            resourceInputs["hybridMetrics"] = state?.hybridMetrics;
+            resourceInputs["hybridMonitorNamespace"] = state?.hybridMonitorNamespace;
+            resourceInputs["initialMaxSize"] = state?.initialMaxSize;
+            resourceInputs["metricName"] = state?.metricName;
+            resourceInputs["metricType"] = state?.metricType;
+            resourceInputs["minAdjustmentMagnitude"] = state?.minAdjustmentMagnitude;
+            resourceInputs["predictiveScalingMode"] = state?.predictiveScalingMode;
+            resourceInputs["predictiveTaskBufferTime"] = state?.predictiveTaskBufferTime;
+            resourceInputs["predictiveValueBehavior"] = state?.predictiveValueBehavior;
+            resourceInputs["predictiveValueBuffer"] = state?.predictiveValueBuffer;
+            resourceInputs["scaleInEvaluationCount"] = state?.scaleInEvaluationCount;
+            resourceInputs["scaleOutEvaluationCount"] = state?.scaleOutEvaluationCount;
+            resourceInputs["scalingGroupId"] = state?.scalingGroupId;
+            resourceInputs["scalingRuleName"] = state?.scalingRuleName;
+            resourceInputs["scalingRuleType"] = state?.scalingRuleType;
+            resourceInputs["stepAdjustments"] = state?.stepAdjustments;
+            resourceInputs["targetValue"] = state?.targetValue;
         } else {
             const args = argsOrState as ScalingRuleArgs | undefined;
-            if ((!args || args.scalingGroupId === undefined) && !opts.urn) {
+            if (args?.scalingGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scalingGroupId'");
             }
-            resourceInputs["adjustmentType"] = args ? args.adjustmentType : undefined;
-            resourceInputs["adjustmentValue"] = args ? args.adjustmentValue : undefined;
-            resourceInputs["alarmDimension"] = args ? args.alarmDimension : undefined;
-            resourceInputs["cooldown"] = args ? args.cooldown : undefined;
-            resourceInputs["disableScaleIn"] = args ? args.disableScaleIn : undefined;
-            resourceInputs["estimatedInstanceWarmup"] = args ? args.estimatedInstanceWarmup : undefined;
-            resourceInputs["hybridMetrics"] = args ? args.hybridMetrics : undefined;
-            resourceInputs["hybridMonitorNamespace"] = args ? args.hybridMonitorNamespace : undefined;
-            resourceInputs["initialMaxSize"] = args ? args.initialMaxSize : undefined;
-            resourceInputs["metricName"] = args ? args.metricName : undefined;
-            resourceInputs["metricType"] = args ? args.metricType : undefined;
-            resourceInputs["minAdjustmentMagnitude"] = args ? args.minAdjustmentMagnitude : undefined;
-            resourceInputs["predictiveScalingMode"] = args ? args.predictiveScalingMode : undefined;
-            resourceInputs["predictiveTaskBufferTime"] = args ? args.predictiveTaskBufferTime : undefined;
-            resourceInputs["predictiveValueBehavior"] = args ? args.predictiveValueBehavior : undefined;
-            resourceInputs["predictiveValueBuffer"] = args ? args.predictiveValueBuffer : undefined;
-            resourceInputs["scaleInEvaluationCount"] = args ? args.scaleInEvaluationCount : undefined;
-            resourceInputs["scaleOutEvaluationCount"] = args ? args.scaleOutEvaluationCount : undefined;
-            resourceInputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
-            resourceInputs["scalingRuleName"] = args ? args.scalingRuleName : undefined;
-            resourceInputs["scalingRuleType"] = args ? args.scalingRuleType : undefined;
-            resourceInputs["stepAdjustments"] = args ? args.stepAdjustments : undefined;
-            resourceInputs["targetValue"] = args ? args.targetValue : undefined;
+            resourceInputs["adjustmentType"] = args?.adjustmentType;
+            resourceInputs["adjustmentValue"] = args?.adjustmentValue;
+            resourceInputs["alarmDimension"] = args?.alarmDimension;
+            resourceInputs["cooldown"] = args?.cooldown;
+            resourceInputs["disableScaleIn"] = args?.disableScaleIn;
+            resourceInputs["estimatedInstanceWarmup"] = args?.estimatedInstanceWarmup;
+            resourceInputs["hybridMetrics"] = args?.hybridMetrics;
+            resourceInputs["hybridMonitorNamespace"] = args?.hybridMonitorNamespace;
+            resourceInputs["initialMaxSize"] = args?.initialMaxSize;
+            resourceInputs["metricName"] = args?.metricName;
+            resourceInputs["metricType"] = args?.metricType;
+            resourceInputs["minAdjustmentMagnitude"] = args?.minAdjustmentMagnitude;
+            resourceInputs["predictiveScalingMode"] = args?.predictiveScalingMode;
+            resourceInputs["predictiveTaskBufferTime"] = args?.predictiveTaskBufferTime;
+            resourceInputs["predictiveValueBehavior"] = args?.predictiveValueBehavior;
+            resourceInputs["predictiveValueBuffer"] = args?.predictiveValueBuffer;
+            resourceInputs["scaleInEvaluationCount"] = args?.scaleInEvaluationCount;
+            resourceInputs["scaleOutEvaluationCount"] = args?.scaleOutEvaluationCount;
+            resourceInputs["scalingGroupId"] = args?.scalingGroupId;
+            resourceInputs["scalingRuleName"] = args?.scalingRuleName;
+            resourceInputs["scalingRuleType"] = args?.scalingRuleType;
+            resourceInputs["stepAdjustments"] = args?.stepAdjustments;
+            resourceInputs["targetValue"] = args?.targetValue;
             resourceInputs["ari"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

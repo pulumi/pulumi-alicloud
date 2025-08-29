@@ -50,49 +50,49 @@ export class Environment extends pulumi.CustomResource {
     /**
      * The locale. The default is Chinese zh | en.
      */
-    public readonly aliyunLang!: pulumi.Output<string | undefined>;
+    declare public readonly aliyunLang: pulumi.Output<string | undefined>;
     /**
      * The id or vpcId of the bound container instance.
      */
-    public readonly bindResourceId!: pulumi.Output<string | undefined>;
+    declare public readonly bindResourceId: pulumi.Output<string | undefined>;
     /**
      * List of abandoned indicators.
      */
-    public readonly dropMetrics!: pulumi.Output<string | undefined>;
+    declare public readonly dropMetrics: pulumi.Output<string | undefined>;
     /**
      * The first ID of the resource.
      */
-    public /*out*/ readonly environmentId!: pulumi.Output<string>;
+    declare public /*out*/ readonly environmentId: pulumi.Output<string>;
     /**
      * The name of the resource.
      */
-    public readonly environmentName!: pulumi.Output<string | undefined>;
+    declare public readonly environmentName: pulumi.Output<string | undefined>;
     /**
      * Subtype of environment:
      * - Type of CS: ACK is currently supported. ManagedKubernetes, Kubernetes, ExternalKubernetes, and One are also supported.
      * - Type of ECS: currently supports ECS.
      * - Type of Cloud: currently supports Cloud.
      */
-    public readonly environmentSubType!: pulumi.Output<string>;
+    declare public readonly environmentSubType: pulumi.Output<string>;
     /**
      * Type of environment.
      */
-    public readonly environmentType!: pulumi.Output<string>;
+    declare public readonly environmentType: pulumi.Output<string>;
     /**
      * Hosting type:
      * - none: unmanaged. The default value of the ACK cluster.
      * - agent: Managed agent (including ksm). Default values of ASK, ACS, and Acone clusters.
      * - agent-exproter: Managed agent and exporter. The default value of the cloud service type.
      */
-    public readonly managedType!: pulumi.Output<string>;
+    declare public readonly managedType: pulumi.Output<string>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The tag of the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Environment resource with the given unique name, arguments, and options.
@@ -107,33 +107,33 @@ export class Environment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnvironmentState | undefined;
-            resourceInputs["aliyunLang"] = state ? state.aliyunLang : undefined;
-            resourceInputs["bindResourceId"] = state ? state.bindResourceId : undefined;
-            resourceInputs["dropMetrics"] = state ? state.dropMetrics : undefined;
-            resourceInputs["environmentId"] = state ? state.environmentId : undefined;
-            resourceInputs["environmentName"] = state ? state.environmentName : undefined;
-            resourceInputs["environmentSubType"] = state ? state.environmentSubType : undefined;
-            resourceInputs["environmentType"] = state ? state.environmentType : undefined;
-            resourceInputs["managedType"] = state ? state.managedType : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["aliyunLang"] = state?.aliyunLang;
+            resourceInputs["bindResourceId"] = state?.bindResourceId;
+            resourceInputs["dropMetrics"] = state?.dropMetrics;
+            resourceInputs["environmentId"] = state?.environmentId;
+            resourceInputs["environmentName"] = state?.environmentName;
+            resourceInputs["environmentSubType"] = state?.environmentSubType;
+            resourceInputs["environmentType"] = state?.environmentType;
+            resourceInputs["managedType"] = state?.managedType;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as EnvironmentArgs | undefined;
-            if ((!args || args.environmentSubType === undefined) && !opts.urn) {
+            if (args?.environmentSubType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environmentSubType'");
             }
-            if ((!args || args.environmentType === undefined) && !opts.urn) {
+            if (args?.environmentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environmentType'");
             }
-            resourceInputs["aliyunLang"] = args ? args.aliyunLang : undefined;
-            resourceInputs["bindResourceId"] = args ? args.bindResourceId : undefined;
-            resourceInputs["dropMetrics"] = args ? args.dropMetrics : undefined;
-            resourceInputs["environmentName"] = args ? args.environmentName : undefined;
-            resourceInputs["environmentSubType"] = args ? args.environmentSubType : undefined;
-            resourceInputs["environmentType"] = args ? args.environmentType : undefined;
-            resourceInputs["managedType"] = args ? args.managedType : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["aliyunLang"] = args?.aliyunLang;
+            resourceInputs["bindResourceId"] = args?.bindResourceId;
+            resourceInputs["dropMetrics"] = args?.dropMetrics;
+            resourceInputs["environmentName"] = args?.environmentName;
+            resourceInputs["environmentSubType"] = args?.environmentSubType;
+            resourceInputs["environmentType"] = args?.environmentType;
+            resourceInputs["managedType"] = args?.managedType;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["environmentId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

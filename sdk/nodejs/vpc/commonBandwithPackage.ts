@@ -45,28 +45,28 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
      * The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
      * Valid values: `1` to `1000`. Default value: `1`.
      */
-    public readonly bandwidth!: pulumi.Output<string>;
+    declare public readonly bandwidth: pulumi.Output<string>;
     /**
      * The description of the EIP bandwidth plan. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
      */
-    public readonly bandwidthPackageName!: pulumi.Output<string>;
+    declare public readonly bandwidthPackageName: pulumi.Output<string>;
     /**
      * The creation time.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Specifies whether to enable deletion protection. Valid values:
      */
-    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
+    declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * The description of the Internet Shared Bandwidth instance.
      * The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to forcefully delete the Internet Shared Bandwidth instance. Valid values:
      */
-    public readonly force!: pulumi.Output<string | undefined>;
+    declare public readonly force: pulumi.Output<string | undefined>;
     /**
      * Billing method of Internet Shared Bandwidth. Valid values:
      * `PayByTraffic`: billed by primary traffic.
@@ -75,7 +75,7 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
      * - `PayBy95`: Billed as Enhanced 95.
      * - `PayByDominantTraffic`: billed by primary traffic.
      */
-    public readonly internetChargeType!: pulumi.Output<string | undefined>;
+    declare public readonly internetChargeType: pulumi.Output<string | undefined>;
     /**
      * The line type. Valid values:
      *
@@ -93,17 +93,17 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
      *
      * If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to `BGP_FinanceCloud`.
      */
-    public readonly isp!: pulumi.Output<string>;
+    declare public readonly isp: pulumi.Output<string>;
     /**
      * . Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.120.0. New field 'bandwidth_package_name' instead.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The billing type of the Internet Shared Bandwidth instance. Valid values: `PayAsYouGo`, `Subscription`.
      */
-    public /*out*/ readonly paymentType!: pulumi.Output<string>;
+    declare public /*out*/ readonly paymentType: pulumi.Output<string>;
     /**
      * The percentage of the minimum bandwidth commitment. The value is only `20`.
      *
@@ -111,31 +111,31 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
      *
      * > **NOTE:** This parameter is available only on the Alibaba Cloud China site.
      */
-    public readonly ratio!: pulumi.Output<number>;
+    declare public readonly ratio: pulumi.Output<number>;
     /**
      * The ID of the resource group to which you want to move the resource.
      *
      * > **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internetChargeType` is `PayBy95`.
      */
-    public readonly securityProtectionTypes!: pulumi.Output<string[] | undefined>;
+    declare public readonly securityProtectionTypes: pulumi.Output<string[] | undefined>;
     /**
      * The status of the Internet Shared Bandwidth instance. Default value: `Available`.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tag of the resource
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    public readonly zone!: pulumi.Output<string | undefined>;
+    declare public readonly zone: pulumi.Output<string | undefined>;
 
     /**
      * Create a CommonBandwithPackage resource with the given unique name, arguments, and options.
@@ -150,40 +150,40 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CommonBandwithPackageState | undefined;
-            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
-            resourceInputs["bandwidthPackageName"] = state ? state.bandwidthPackageName : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["force"] = state ? state.force : undefined;
-            resourceInputs["internetChargeType"] = state ? state.internetChargeType : undefined;
-            resourceInputs["isp"] = state ? state.isp : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["ratio"] = state ? state.ratio : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["securityProtectionTypes"] = state ? state.securityProtectionTypes : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["bandwidth"] = state?.bandwidth;
+            resourceInputs["bandwidthPackageName"] = state?.bandwidthPackageName;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["force"] = state?.force;
+            resourceInputs["internetChargeType"] = state?.internetChargeType;
+            resourceInputs["isp"] = state?.isp;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["ratio"] = state?.ratio;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["securityProtectionTypes"] = state?.securityProtectionTypes;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as CommonBandwithPackageArgs | undefined;
-            if ((!args || args.bandwidth === undefined) && !opts.urn) {
+            if (args?.bandwidth === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bandwidth'");
             }
-            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
-            resourceInputs["bandwidthPackageName"] = args ? args.bandwidthPackageName : undefined;
-            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["force"] = args ? args.force : undefined;
-            resourceInputs["internetChargeType"] = args ? args.internetChargeType : undefined;
-            resourceInputs["isp"] = args ? args.isp : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["ratio"] = args ? args.ratio : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["securityProtectionTypes"] = args ? args.securityProtectionTypes : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["bandwidth"] = args?.bandwidth;
+            resourceInputs["bandwidthPackageName"] = args?.bandwidthPackageName;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["force"] = args?.force;
+            resourceInputs["internetChargeType"] = args?.internetChargeType;
+            resourceInputs["isp"] = args?.isp;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["ratio"] = args?.ratio;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["securityProtectionTypes"] = args?.securityProtectionTypes;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["zone"] = args?.zone;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["paymentType"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

@@ -75,83 +75,83 @@ export class RouterInterface extends pulumi.CustomResource {
      *
      * @deprecated Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
      */
-    public /*out*/ readonly accessPointId!: pulumi.Output<string>;
+    declare public /*out*/ readonly accessPointId: pulumi.Output<string>;
     /**
      * Description of the router interface. It can be 2-256 characters long or left blank. It cannot start with http:// and https://.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckTargetIp` must be specified at the same time.
      */
-    public readonly healthCheckSourceIp!: pulumi.Output<string | undefined>;
+    declare public readonly healthCheckSourceIp: pulumi.Output<string | undefined>;
     /**
      * Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckSourceIp` must be specified at the same time.
      */
-    public readonly healthCheckTargetIp!: pulumi.Output<string | undefined>;
+    declare public readonly healthCheckTargetIp: pulumi.Output<string | undefined>;
     /**
      * The billing method of the router interface. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid". Router Interface doesn't support "PrePaid" when region and oppositeRegion are the same.
      */
-    public readonly instanceChargeType!: pulumi.Output<string | undefined>;
+    declare public readonly instanceChargeType: pulumi.Output<string | undefined>;
     /**
      * Name of the router interface. Length must be 2-80 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
      * If it is not specified, the default value is interface ID. The name cannot start with http:// and https://.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * It has been deprecated from version 1.11.0.
      *
      * @deprecated Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
      */
-    public readonly oppositeAccessPointId!: pulumi.Output<string | undefined>;
+    declare public readonly oppositeAccessPointId: pulumi.Output<string | undefined>;
     /**
      * It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
      *
      * @deprecated Attribute 'opposite_interface_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
      */
-    public /*out*/ readonly oppositeInterfaceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly oppositeInterfaceId: pulumi.Output<string>;
     /**
      * It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
      *
      * @deprecated Attribute 'opposite_interface_owner_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_owner_id' instead.
      */
-    public /*out*/ readonly oppositeInterfaceOwnerId!: pulumi.Output<string>;
+    declare public /*out*/ readonly oppositeInterfaceOwnerId: pulumi.Output<string>;
     /**
      * The Region of peer side.
      */
-    public readonly oppositeRegion!: pulumi.Output<string>;
+    declare public readonly oppositeRegion: pulumi.Output<string>;
     /**
      * It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
      *
      * @deprecated Attribute 'opposite_router_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
      */
-    public /*out*/ readonly oppositeRouterId!: pulumi.Output<string>;
+    declare public /*out*/ readonly oppositeRouterId: pulumi.Output<string>;
     /**
      * It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
      *
      * @deprecated Attribute 'opposite_router_type' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_type' instead.
      */
-    public /*out*/ readonly oppositeRouterType!: pulumi.Output<string>;
+    declare public /*out*/ readonly oppositeRouterType: pulumi.Output<string>;
     /**
      * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
     /**
      * The Router ID.
      */
-    public readonly routerId!: pulumi.Output<string>;
+    declare public readonly routerId: pulumi.Output<string>;
     /**
      * Router Type. Optional value: VRouter, VBR. Accepting side router interface type only be VRouter.
      */
-    public readonly routerType!: pulumi.Output<string>;
+    declare public readonly routerType: pulumi.Output<string>;
     /**
      * Specification of router interfaces. It is valid when `role` is `InitiatingSide`. Accepting side's role is default to set as 'Negative'. For more about the specification, refer to [Router interface specification](https://www.alibabacloud.com/help/doc-detail/36037.htm).
      */
-    public readonly specification!: pulumi.Output<string | undefined>;
+    declare public readonly specification: pulumi.Output<string | undefined>;
 
     /**
      * Create a RouterInterface resource with the given unique name, arguments, and options.
@@ -166,49 +166,49 @@ export class RouterInterface extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouterInterfaceState | undefined;
-            resourceInputs["accessPointId"] = state ? state.accessPointId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["healthCheckSourceIp"] = state ? state.healthCheckSourceIp : undefined;
-            resourceInputs["healthCheckTargetIp"] = state ? state.healthCheckTargetIp : undefined;
-            resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["oppositeAccessPointId"] = state ? state.oppositeAccessPointId : undefined;
-            resourceInputs["oppositeInterfaceId"] = state ? state.oppositeInterfaceId : undefined;
-            resourceInputs["oppositeInterfaceOwnerId"] = state ? state.oppositeInterfaceOwnerId : undefined;
-            resourceInputs["oppositeRegion"] = state ? state.oppositeRegion : undefined;
-            resourceInputs["oppositeRouterId"] = state ? state.oppositeRouterId : undefined;
-            resourceInputs["oppositeRouterType"] = state ? state.oppositeRouterType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["routerId"] = state ? state.routerId : undefined;
-            resourceInputs["routerType"] = state ? state.routerType : undefined;
-            resourceInputs["specification"] = state ? state.specification : undefined;
+            resourceInputs["accessPointId"] = state?.accessPointId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["healthCheckSourceIp"] = state?.healthCheckSourceIp;
+            resourceInputs["healthCheckTargetIp"] = state?.healthCheckTargetIp;
+            resourceInputs["instanceChargeType"] = state?.instanceChargeType;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["oppositeAccessPointId"] = state?.oppositeAccessPointId;
+            resourceInputs["oppositeInterfaceId"] = state?.oppositeInterfaceId;
+            resourceInputs["oppositeInterfaceOwnerId"] = state?.oppositeInterfaceOwnerId;
+            resourceInputs["oppositeRegion"] = state?.oppositeRegion;
+            resourceInputs["oppositeRouterId"] = state?.oppositeRouterId;
+            resourceInputs["oppositeRouterType"] = state?.oppositeRouterType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["routerId"] = state?.routerId;
+            resourceInputs["routerType"] = state?.routerType;
+            resourceInputs["specification"] = state?.specification;
         } else {
             const args = argsOrState as RouterInterfaceArgs | undefined;
-            if ((!args || args.oppositeRegion === undefined) && !opts.urn) {
+            if (args?.oppositeRegion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'oppositeRegion'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            if ((!args || args.routerId === undefined) && !opts.urn) {
+            if (args?.routerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'routerId'");
             }
-            if ((!args || args.routerType === undefined) && !opts.urn) {
+            if (args?.routerType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'routerType'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["healthCheckSourceIp"] = args ? args.healthCheckSourceIp : undefined;
-            resourceInputs["healthCheckTargetIp"] = args ? args.healthCheckTargetIp : undefined;
-            resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["oppositeAccessPointId"] = args ? args.oppositeAccessPointId : undefined;
-            resourceInputs["oppositeRegion"] = args ? args.oppositeRegion : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
-            resourceInputs["routerId"] = args ? args.routerId : undefined;
-            resourceInputs["routerType"] = args ? args.routerType : undefined;
-            resourceInputs["specification"] = args ? args.specification : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["healthCheckSourceIp"] = args?.healthCheckSourceIp;
+            resourceInputs["healthCheckTargetIp"] = args?.healthCheckTargetIp;
+            resourceInputs["instanceChargeType"] = args?.instanceChargeType;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["oppositeAccessPointId"] = args?.oppositeAccessPointId;
+            resourceInputs["oppositeRegion"] = args?.oppositeRegion;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["role"] = args?.role;
+            resourceInputs["routerId"] = args?.routerId;
+            resourceInputs["routerType"] = args?.routerType;
+            resourceInputs["specification"] = args?.specification;
             resourceInputs["accessPointId"] = undefined /*out*/;
             resourceInputs["oppositeInterfaceId"] = undefined /*out*/;
             resourceInputs["oppositeInterfaceOwnerId"] = undefined /*out*/;

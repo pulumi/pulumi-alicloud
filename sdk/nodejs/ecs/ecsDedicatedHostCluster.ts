@@ -70,23 +70,23 @@ export class EcsDedicatedHostCluster extends pulumi.CustomResource {
     /**
      * The name of the dedicated host cluster. The name must be `2` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It cannot contain `http://` or `https://`.
      */
-    public readonly dedicatedHostClusterName!: pulumi.Output<string | undefined>;
+    declare public readonly dedicatedHostClusterName: pulumi.Output<string | undefined>;
     /**
      * The description of the dedicated host cluster. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The dry run.
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the zone in which to create the dedicated host cluster.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a EcsDedicatedHostCluster resource with the given unique name, arguments, and options.
@@ -101,21 +101,21 @@ export class EcsDedicatedHostCluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcsDedicatedHostClusterState | undefined;
-            resourceInputs["dedicatedHostClusterName"] = state ? state.dedicatedHostClusterName : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["dedicatedHostClusterName"] = state?.dedicatedHostClusterName;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as EcsDedicatedHostClusterArgs | undefined;
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["dedicatedHostClusterName"] = args ? args.dedicatedHostClusterName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["dedicatedHostClusterName"] = args?.dedicatedHostClusterName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EcsDedicatedHostCluster.__pulumiType, name, resourceInputs, opts);

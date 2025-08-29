@@ -68,35 +68,35 @@ export class IndustrialPidLoop extends pulumi.CustomResource {
     /**
      * The Pid Loop Configuration.
      */
-    public readonly pidLoopConfiguration!: pulumi.Output<string>;
+    declare public readonly pidLoopConfiguration: pulumi.Output<string>;
     /**
      * The dcs type of Pid Loop. Valid values: `standard`.
      */
-    public readonly pidLoopDcsType!: pulumi.Output<string>;
+    declare public readonly pidLoopDcsType: pulumi.Output<string>;
     /**
      * The desc of Pid Loop.
      */
-    public readonly pidLoopDesc!: pulumi.Output<string | undefined>;
+    declare public readonly pidLoopDesc: pulumi.Output<string | undefined>;
     /**
      * Whether is crucial Pid Loop.
      */
-    public readonly pidLoopIsCrucial!: pulumi.Output<boolean>;
+    declare public readonly pidLoopIsCrucial: pulumi.Output<boolean>;
     /**
      * The name of Pid Loop.
      */
-    public readonly pidLoopName!: pulumi.Output<string>;
+    declare public readonly pidLoopName: pulumi.Output<string>;
     /**
      * The type of Pid Loop. Valid values: `0`, `1`, `2`, `3`, `4`, `5`.
      */
-    public readonly pidLoopType!: pulumi.Output<string>;
+    declare public readonly pidLoopType: pulumi.Output<string>;
     /**
      * The pid project id.
      */
-    public readonly pidProjectId!: pulumi.Output<string>;
+    declare public readonly pidProjectId: pulumi.Output<string>;
     /**
      * The status of Pid Loop.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a IndustrialPidLoop resource with the given unique name, arguments, and options.
@@ -111,41 +111,41 @@ export class IndustrialPidLoop extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IndustrialPidLoopState | undefined;
-            resourceInputs["pidLoopConfiguration"] = state ? state.pidLoopConfiguration : undefined;
-            resourceInputs["pidLoopDcsType"] = state ? state.pidLoopDcsType : undefined;
-            resourceInputs["pidLoopDesc"] = state ? state.pidLoopDesc : undefined;
-            resourceInputs["pidLoopIsCrucial"] = state ? state.pidLoopIsCrucial : undefined;
-            resourceInputs["pidLoopName"] = state ? state.pidLoopName : undefined;
-            resourceInputs["pidLoopType"] = state ? state.pidLoopType : undefined;
-            resourceInputs["pidProjectId"] = state ? state.pidProjectId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["pidLoopConfiguration"] = state?.pidLoopConfiguration;
+            resourceInputs["pidLoopDcsType"] = state?.pidLoopDcsType;
+            resourceInputs["pidLoopDesc"] = state?.pidLoopDesc;
+            resourceInputs["pidLoopIsCrucial"] = state?.pidLoopIsCrucial;
+            resourceInputs["pidLoopName"] = state?.pidLoopName;
+            resourceInputs["pidLoopType"] = state?.pidLoopType;
+            resourceInputs["pidProjectId"] = state?.pidProjectId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as IndustrialPidLoopArgs | undefined;
-            if ((!args || args.pidLoopConfiguration === undefined) && !opts.urn) {
+            if (args?.pidLoopConfiguration === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pidLoopConfiguration'");
             }
-            if ((!args || args.pidLoopDcsType === undefined) && !opts.urn) {
+            if (args?.pidLoopDcsType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pidLoopDcsType'");
             }
-            if ((!args || args.pidLoopIsCrucial === undefined) && !opts.urn) {
+            if (args?.pidLoopIsCrucial === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pidLoopIsCrucial'");
             }
-            if ((!args || args.pidLoopName === undefined) && !opts.urn) {
+            if (args?.pidLoopName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pidLoopName'");
             }
-            if ((!args || args.pidLoopType === undefined) && !opts.urn) {
+            if (args?.pidLoopType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pidLoopType'");
             }
-            if ((!args || args.pidProjectId === undefined) && !opts.urn) {
+            if (args?.pidProjectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pidProjectId'");
             }
-            resourceInputs["pidLoopConfiguration"] = args ? args.pidLoopConfiguration : undefined;
-            resourceInputs["pidLoopDcsType"] = args ? args.pidLoopDcsType : undefined;
-            resourceInputs["pidLoopDesc"] = args ? args.pidLoopDesc : undefined;
-            resourceInputs["pidLoopIsCrucial"] = args ? args.pidLoopIsCrucial : undefined;
-            resourceInputs["pidLoopName"] = args ? args.pidLoopName : undefined;
-            resourceInputs["pidLoopType"] = args ? args.pidLoopType : undefined;
-            resourceInputs["pidProjectId"] = args ? args.pidProjectId : undefined;
+            resourceInputs["pidLoopConfiguration"] = args?.pidLoopConfiguration;
+            resourceInputs["pidLoopDcsType"] = args?.pidLoopDcsType;
+            resourceInputs["pidLoopDesc"] = args?.pidLoopDesc;
+            resourceInputs["pidLoopIsCrucial"] = args?.pidLoopIsCrucial;
+            resourceInputs["pidLoopName"] = args?.pidLoopName;
+            resourceInputs["pidLoopType"] = args?.pidLoopType;
+            resourceInputs["pidProjectId"] = args?.pidProjectId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

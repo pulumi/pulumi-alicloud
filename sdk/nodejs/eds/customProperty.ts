@@ -70,11 +70,11 @@ export class CustomProperty extends pulumi.CustomResource {
     /**
      * The Custom attribute key.
      */
-    public readonly propertyKey!: pulumi.Output<string>;
+    declare public readonly propertyKey: pulumi.Output<string>;
     /**
      * Custom attribute sets the value of. See `propertyValues` below.
      */
-    public readonly propertyValues!: pulumi.Output<outputs.eds.CustomPropertyPropertyValue[] | undefined>;
+    declare public readonly propertyValues: pulumi.Output<outputs.eds.CustomPropertyPropertyValue[] | undefined>;
 
     /**
      * Create a CustomProperty resource with the given unique name, arguments, and options.
@@ -89,15 +89,15 @@ export class CustomProperty extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomPropertyState | undefined;
-            resourceInputs["propertyKey"] = state ? state.propertyKey : undefined;
-            resourceInputs["propertyValues"] = state ? state.propertyValues : undefined;
+            resourceInputs["propertyKey"] = state?.propertyKey;
+            resourceInputs["propertyValues"] = state?.propertyValues;
         } else {
             const args = argsOrState as CustomPropertyArgs | undefined;
-            if ((!args || args.propertyKey === undefined) && !opts.urn) {
+            if (args?.propertyKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'propertyKey'");
             }
-            resourceInputs["propertyKey"] = args ? args.propertyKey : undefined;
-            resourceInputs["propertyValues"] = args ? args.propertyValues : undefined;
+            resourceInputs["propertyKey"] = args?.propertyKey;
+            resourceInputs["propertyValues"] = args?.propertyValues;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CustomProperty.__pulumiType, name, resourceInputs, opts);

@@ -65,11 +65,11 @@ export class SasTrail extends pulumi.CustomResource {
     /**
      * The service trace creation timestamp, in milliseconds.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly createTime: pulumi.Output<number>;
     /**
      * Service trace configuration information.
      */
-    public /*out*/ readonly serviceTrail!: pulumi.Output<outputs.threatdetection.SasTrailServiceTrail>;
+    declare public /*out*/ readonly serviceTrail: pulumi.Output<outputs.threatdetection.SasTrailServiceTrail>;
 
     /**
      * Create a SasTrail resource with the given unique name, arguments, and options.
@@ -84,8 +84,8 @@ export class SasTrail extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SasTrailState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["serviceTrail"] = state ? state.serviceTrail : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["serviceTrail"] = state?.serviceTrail;
         } else {
             const args = argsOrState as SasTrailArgs | undefined;
             resourceInputs["createTime"] = undefined /*out*/;

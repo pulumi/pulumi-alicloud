@@ -46,15 +46,15 @@ export class QuotaSchedule extends pulumi.CustomResource {
     /**
      * The nickname of level-1 compute quota.
      */
-    public readonly nickname!: pulumi.Output<string>;
+    declare public readonly nickname: pulumi.Output<string>;
     /**
      * schedule list See `scheduleList` below.
      */
-    public readonly scheduleLists!: pulumi.Output<outputs.maxcompute.QuotaScheduleScheduleList[] | undefined>;
+    declare public readonly scheduleLists: pulumi.Output<outputs.maxcompute.QuotaScheduleScheduleList[] | undefined>;
     /**
      * Time zone, reference value: UTC +8
      */
-    public readonly timezone!: pulumi.Output<string>;
+    declare public readonly timezone: pulumi.Output<string>;
 
     /**
      * Create a QuotaSchedule resource with the given unique name, arguments, and options.
@@ -69,20 +69,20 @@ export class QuotaSchedule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QuotaScheduleState | undefined;
-            resourceInputs["nickname"] = state ? state.nickname : undefined;
-            resourceInputs["scheduleLists"] = state ? state.scheduleLists : undefined;
-            resourceInputs["timezone"] = state ? state.timezone : undefined;
+            resourceInputs["nickname"] = state?.nickname;
+            resourceInputs["scheduleLists"] = state?.scheduleLists;
+            resourceInputs["timezone"] = state?.timezone;
         } else {
             const args = argsOrState as QuotaScheduleArgs | undefined;
-            if ((!args || args.nickname === undefined) && !opts.urn) {
+            if (args?.nickname === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nickname'");
             }
-            if ((!args || args.timezone === undefined) && !opts.urn) {
+            if (args?.timezone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'timezone'");
             }
-            resourceInputs["nickname"] = args ? args.nickname : undefined;
-            resourceInputs["scheduleLists"] = args ? args.scheduleLists : undefined;
-            resourceInputs["timezone"] = args ? args.timezone : undefined;
+            resourceInputs["nickname"] = args?.nickname;
+            resourceInputs["scheduleLists"] = args?.scheduleLists;
+            resourceInputs["timezone"] = args?.timezone;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(QuotaSchedule.__pulumiType, name, resourceInputs, opts);

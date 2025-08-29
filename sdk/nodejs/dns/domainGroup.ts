@@ -57,17 +57,17 @@ export class DomainGroup extends pulumi.CustomResource {
     /**
      * The Name of the domain group. The `domainGroupName` is required when the value of the `groupName`  is Empty.
      */
-    public readonly domainGroupName!: pulumi.Output<string>;
+    declare public readonly domainGroupName: pulumi.Output<string>;
     /**
      * The Name of the domain group. The `groupName` has been deprecated from provider version 1.97.0. Please use `domainGroupName` instead.
      *
      * @deprecated Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.
      */
-    public readonly groupName!: pulumi.Output<string>;
+    declare public readonly groupName: pulumi.Output<string>;
     /**
      * User language.
      */
-    public readonly lang!: pulumi.Output<string | undefined>;
+    declare public readonly lang: pulumi.Output<string | undefined>;
 
     /**
      * Create a DomainGroup resource with the given unique name, arguments, and options.
@@ -82,14 +82,14 @@ export class DomainGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainGroupState | undefined;
-            resourceInputs["domainGroupName"] = state ? state.domainGroupName : undefined;
-            resourceInputs["groupName"] = state ? state.groupName : undefined;
-            resourceInputs["lang"] = state ? state.lang : undefined;
+            resourceInputs["domainGroupName"] = state?.domainGroupName;
+            resourceInputs["groupName"] = state?.groupName;
+            resourceInputs["lang"] = state?.lang;
         } else {
             const args = argsOrState as DomainGroupArgs | undefined;
-            resourceInputs["domainGroupName"] = args ? args.domainGroupName : undefined;
-            resourceInputs["groupName"] = args ? args.groupName : undefined;
-            resourceInputs["lang"] = args ? args.lang : undefined;
+            resourceInputs["domainGroupName"] = args?.domainGroupName;
+            resourceInputs["groupName"] = args?.groupName;
+            resourceInputs["lang"] = args?.lang;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DomainGroup.__pulumiType, name, resourceInputs, opts);

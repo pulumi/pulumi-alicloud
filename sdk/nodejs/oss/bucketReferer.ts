@@ -82,27 +82,27 @@ export class BucketReferer extends pulumi.CustomResource {
     /**
      * Whether to allow empty Referer request headers.
      */
-    public readonly allowEmptyReferer!: pulumi.Output<boolean>;
+    declare public readonly allowEmptyReferer: pulumi.Output<boolean>;
     /**
      * Specifies whether to truncate the query string in the URL when the Referer is matched. Valid values: true, false.
      */
-    public readonly allowTruncateQueryString!: pulumi.Output<boolean>;
+    declare public readonly allowTruncateQueryString: pulumi.Output<boolean>;
     /**
      * Name of the Bucket.
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * The container that holds the Referer blacklist.
      */
-    public readonly refererBlacklists!: pulumi.Output<string[] | undefined>;
+    declare public readonly refererBlacklists: pulumi.Output<string[] | undefined>;
     /**
      * The container that holds the Referer whitelist.
      */
-    public readonly refererLists!: pulumi.Output<string[] | undefined>;
+    declare public readonly refererLists: pulumi.Output<string[] | undefined>;
     /**
      * Specifies whether to truncate the path and parts that follow the path in the URL when the Referer is matched. Valid values: true, false. If TruncatePath is set to true, the value of AllowTruncateQueryString must be also true because the query string follows the path component. When the path is truncated, the query string is also truncated.
      */
-    public readonly truncatePath!: pulumi.Output<boolean | undefined>;
+    declare public readonly truncatePath: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a BucketReferer resource with the given unique name, arguments, and options.
@@ -117,26 +117,26 @@ export class BucketReferer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketRefererState | undefined;
-            resourceInputs["allowEmptyReferer"] = state ? state.allowEmptyReferer : undefined;
-            resourceInputs["allowTruncateQueryString"] = state ? state.allowTruncateQueryString : undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["refererBlacklists"] = state ? state.refererBlacklists : undefined;
-            resourceInputs["refererLists"] = state ? state.refererLists : undefined;
-            resourceInputs["truncatePath"] = state ? state.truncatePath : undefined;
+            resourceInputs["allowEmptyReferer"] = state?.allowEmptyReferer;
+            resourceInputs["allowTruncateQueryString"] = state?.allowTruncateQueryString;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["refererBlacklists"] = state?.refererBlacklists;
+            resourceInputs["refererLists"] = state?.refererLists;
+            resourceInputs["truncatePath"] = state?.truncatePath;
         } else {
             const args = argsOrState as BucketRefererArgs | undefined;
-            if ((!args || args.allowEmptyReferer === undefined) && !opts.urn) {
+            if (args?.allowEmptyReferer === undefined && !opts.urn) {
                 throw new Error("Missing required property 'allowEmptyReferer'");
             }
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            resourceInputs["allowEmptyReferer"] = args ? args.allowEmptyReferer : undefined;
-            resourceInputs["allowTruncateQueryString"] = args ? args.allowTruncateQueryString : undefined;
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["refererBlacklists"] = args ? args.refererBlacklists : undefined;
-            resourceInputs["refererLists"] = args ? args.refererLists : undefined;
-            resourceInputs["truncatePath"] = args ? args.truncatePath : undefined;
+            resourceInputs["allowEmptyReferer"] = args?.allowEmptyReferer;
+            resourceInputs["allowTruncateQueryString"] = args?.allowTruncateQueryString;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["refererBlacklists"] = args?.refererBlacklists;
+            resourceInputs["refererLists"] = args?.refererLists;
+            resourceInputs["truncatePath"] = args?.truncatePath;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BucketReferer.__pulumiType, name, resourceInputs, opts);

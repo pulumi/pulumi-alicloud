@@ -44,11 +44,11 @@ export class BucketAccessMonitor extends pulumi.CustomResource {
     /**
      * The name of the bucket.
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * Specifies whether to enable access tracking for the bucket. Valid values: Enabled: enables access tracking. Disabled: disables access tracking.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
 
     /**
      * Create a BucketAccessMonitor resource with the given unique name, arguments, and options.
@@ -63,18 +63,18 @@ export class BucketAccessMonitor extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketAccessMonitorState | undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as BucketAccessMonitorArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if ((!args || args.status === undefined) && !opts.urn) {
+            if (args?.status === undefined && !opts.urn) {
                 throw new Error("Missing required property 'status'");
             }
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["status"] = args?.status;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BucketAccessMonitor.__pulumiType, name, resourceInputs, opts);

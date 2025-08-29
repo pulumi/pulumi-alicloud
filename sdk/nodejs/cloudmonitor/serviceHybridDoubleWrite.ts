@@ -71,19 +71,19 @@ export class ServiceHybridDoubleWrite extends pulumi.CustomResource {
     /**
      * Target Namespace.
      */
-    public readonly namespace!: pulumi.Output<string>;
+    declare public readonly namespace: pulumi.Output<string>;
     /**
      * Source Namespace.
      */
-    public readonly sourceNamespace!: pulumi.Output<string>;
+    declare public readonly sourceNamespace: pulumi.Output<string>;
     /**
      * Source UserId.
      */
-    public readonly sourceUserId!: pulumi.Output<string>;
+    declare public readonly sourceUserId: pulumi.Output<string>;
     /**
      * Target UserId.
      */
-    public readonly userId!: pulumi.Output<string>;
+    declare public readonly userId: pulumi.Output<string>;
 
     /**
      * Create a ServiceHybridDoubleWrite resource with the given unique name, arguments, and options.
@@ -98,28 +98,28 @@ export class ServiceHybridDoubleWrite extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceHybridDoubleWriteState | undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["sourceNamespace"] = state ? state.sourceNamespace : undefined;
-            resourceInputs["sourceUserId"] = state ? state.sourceUserId : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["sourceNamespace"] = state?.sourceNamespace;
+            resourceInputs["sourceUserId"] = state?.sourceUserId;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as ServiceHybridDoubleWriteArgs | undefined;
-            if ((!args || args.namespace === undefined) && !opts.urn) {
+            if (args?.namespace === undefined && !opts.urn) {
                 throw new Error("Missing required property 'namespace'");
             }
-            if ((!args || args.sourceNamespace === undefined) && !opts.urn) {
+            if (args?.sourceNamespace === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceNamespace'");
             }
-            if ((!args || args.sourceUserId === undefined) && !opts.urn) {
+            if (args?.sourceUserId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceUserId'");
             }
-            if ((!args || args.userId === undefined) && !opts.urn) {
+            if (args?.userId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["sourceNamespace"] = args ? args.sourceNamespace : undefined;
-            resourceInputs["sourceUserId"] = args ? args.sourceUserId : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["sourceNamespace"] = args?.sourceNamespace;
+            resourceInputs["sourceUserId"] = args?.sourceUserId;
+            resourceInputs["userId"] = args?.userId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServiceHybridDoubleWrite.__pulumiType, name, resourceInputs, opts);

@@ -67,33 +67,33 @@ export class EcsDeploymentSet extends pulumi.CustomResource {
     /**
      * The name of the deployment set. The name must be `2` to `128` characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
      */
-    public readonly deploymentSetName!: pulumi.Output<string | undefined>;
+    declare public readonly deploymentSetName: pulumi.Output<string | undefined>;
     /**
      * The description of the deployment set. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Field `domain` has been deprecated from provider version 1.243.0.
      *
      * @deprecated Field `domain` has been deprecated from provider version 1.243.0.
      */
-    public readonly domain!: pulumi.Output<string>;
+    declare public readonly domain: pulumi.Output<string>;
     /**
      * Field `granularity` has been deprecated from provider version 1.243.0.
      *
      * @deprecated Field `granularity` has been deprecated from provider version 1.243.0.
      */
-    public readonly granularity!: pulumi.Output<string>;
+    declare public readonly granularity: pulumi.Output<string>;
     /**
      * The emergency solution to use in the situation where instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
      * - `CancelMembershipAndStart` - Removes the instances from the deployment set and starts the instances immediately after they are failed over.
      * - `KeepStopped`- Leaves the instances in the Stopped state and starts them after resources are replenished.
      */
-    public readonly onUnableToRedeployFailedInstance!: pulumi.Output<string | undefined>;
+    declare public readonly onUnableToRedeployFailedInstance: pulumi.Output<string | undefined>;
     /**
      * The deployment strategy. Default value: `Availability`. Valid values: `Availability`, `AvailabilityGroup`, `LowLatency`.
      */
-    public readonly strategy!: pulumi.Output<string>;
+    declare public readonly strategy: pulumi.Output<string>;
 
     /**
      * Create a EcsDeploymentSet resource with the given unique name, arguments, and options.
@@ -108,20 +108,20 @@ export class EcsDeploymentSet extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcsDeploymentSetState | undefined;
-            resourceInputs["deploymentSetName"] = state ? state.deploymentSetName : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["granularity"] = state ? state.granularity : undefined;
-            resourceInputs["onUnableToRedeployFailedInstance"] = state ? state.onUnableToRedeployFailedInstance : undefined;
-            resourceInputs["strategy"] = state ? state.strategy : undefined;
+            resourceInputs["deploymentSetName"] = state?.deploymentSetName;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["granularity"] = state?.granularity;
+            resourceInputs["onUnableToRedeployFailedInstance"] = state?.onUnableToRedeployFailedInstance;
+            resourceInputs["strategy"] = state?.strategy;
         } else {
             const args = argsOrState as EcsDeploymentSetArgs | undefined;
-            resourceInputs["deploymentSetName"] = args ? args.deploymentSetName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["domain"] = args ? args.domain : undefined;
-            resourceInputs["granularity"] = args ? args.granularity : undefined;
-            resourceInputs["onUnableToRedeployFailedInstance"] = args ? args.onUnableToRedeployFailedInstance : undefined;
-            resourceInputs["strategy"] = args ? args.strategy : undefined;
+            resourceInputs["deploymentSetName"] = args?.deploymentSetName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["domain"] = args?.domain;
+            resourceInputs["granularity"] = args?.granularity;
+            resourceInputs["onUnableToRedeployFailedInstance"] = args?.onUnableToRedeployFailedInstance;
+            resourceInputs["strategy"] = args?.strategy;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EcsDeploymentSet.__pulumiType, name, resourceInputs, opts);

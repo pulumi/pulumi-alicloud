@@ -89,86 +89,86 @@ export class HttpsBasicConfiguration extends pulumi.CustomResource {
     /**
      * Custom cipher suite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
      */
-    public readonly ciphersuite!: pulumi.Output<string | undefined>;
+    declare public readonly ciphersuite: pulumi.Output<string | undefined>;
     /**
      * Cipher suite group. Default is all cipher suites. Possible values:
      * - all: All cipher suites.
      * - strict: Strong cipher suites.
      * - custom: Custom cipher suites.
      */
-    public readonly ciphersuiteGroup!: pulumi.Output<string | undefined>;
+    declare public readonly ciphersuiteGroup: pulumi.Output<string | undefined>;
     /**
      * ConfigId of the configuration, which can be obtained by calling the [ListHttpsBasicConfigurations](https://www.alibabacloud.com/help/en/doc-detail/2867470.html) interface.
      */
-    public /*out*/ readonly configId!: pulumi.Output<number>;
+    declare public /*out*/ readonly configId: pulumi.Output<number>;
     /**
      * Indicates whether HTTP2 is enabled. Default is on. Possible values:
      * - on: Enabled.
      * - off: Disabled.
      */
-    public readonly http2!: pulumi.Output<string | undefined>;
+    declare public readonly http2: pulumi.Output<string | undefined>;
     /**
      * Whether to enable HTTP3, which is enabled by default. The value can be:
      * - on: Enabled.
      * - off: Disabled.
      */
-    public readonly http3!: pulumi.Output<string | undefined>;
+    declare public readonly http3: pulumi.Output<string | undefined>;
     /**
      * Whether to enable HTTPS. Default is enabled. Possible values:
      * - on: Enable.
      * - off: Disable.
      */
-    public readonly https!: pulumi.Output<string | undefined>;
+    declare public readonly https: pulumi.Output<string | undefined>;
     /**
      * Indicates whether OCSP is enabled. Default is off. Possible values:
      * - on: Enabled.
      * - off: Disabled.
      */
-    public readonly ocspStapling!: pulumi.Output<string | undefined>;
+    declare public readonly ocspStapling: pulumi.Output<string | undefined>;
     /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * -  Match all incoming requests: value set to true
      * -  Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
-    public readonly rule!: pulumi.Output<string | undefined>;
+    declare public readonly rule: pulumi.Output<string | undefined>;
     /**
      * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      * - on: open.
      * - off: close.
      */
-    public readonly ruleEnable!: pulumi.Output<string | undefined>;
+    declare public readonly ruleEnable: pulumi.Output<string | undefined>;
     /**
      * Rule name. When adding global configuration, this parameter does not need to be set.
      */
-    public readonly ruleName!: pulumi.Output<string | undefined>;
+    declare public readonly ruleName: pulumi.Output<string | undefined>;
     /**
      * Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
      */
-    public readonly siteId!: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<number>;
     /**
      * Whether to enable TLS1.0. Default is disabled. Possible values:
      * - on: Enable.
      * - off: Disable.
      */
-    public readonly tls10!: pulumi.Output<string | undefined>;
+    declare public readonly tls10: pulumi.Output<string | undefined>;
     /**
      * Whether to enable TLS1.1. Default is enabled. Possible values:
      * - on: Enable.
      * - off: Disable.
      */
-    public readonly tls11!: pulumi.Output<string | undefined>;
+    declare public readonly tls11: pulumi.Output<string | undefined>;
     /**
      * Whether to enable TLS1.2. Default is enabled. Possible values:
      * - on: Enable.
      * - off: Disable.
      */
-    public readonly tls12!: pulumi.Output<string | undefined>;
+    declare public readonly tls12: pulumi.Output<string | undefined>;
     /**
      * Whether to enable TLS1.3. Default is enabled. Possible values:
      * - on: Enable.
      * - off: Disable.
      */
-    public readonly tls13!: pulumi.Output<string | undefined>;
+    declare public readonly tls13: pulumi.Output<string | undefined>;
 
     /**
      * Create a HttpsBasicConfiguration resource with the given unique name, arguments, and options.
@@ -183,40 +183,40 @@ export class HttpsBasicConfiguration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HttpsBasicConfigurationState | undefined;
-            resourceInputs["ciphersuite"] = state ? state.ciphersuite : undefined;
-            resourceInputs["ciphersuiteGroup"] = state ? state.ciphersuiteGroup : undefined;
-            resourceInputs["configId"] = state ? state.configId : undefined;
-            resourceInputs["http2"] = state ? state.http2 : undefined;
-            resourceInputs["http3"] = state ? state.http3 : undefined;
-            resourceInputs["https"] = state ? state.https : undefined;
-            resourceInputs["ocspStapling"] = state ? state.ocspStapling : undefined;
-            resourceInputs["rule"] = state ? state.rule : undefined;
-            resourceInputs["ruleEnable"] = state ? state.ruleEnable : undefined;
-            resourceInputs["ruleName"] = state ? state.ruleName : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["tls10"] = state ? state.tls10 : undefined;
-            resourceInputs["tls11"] = state ? state.tls11 : undefined;
-            resourceInputs["tls12"] = state ? state.tls12 : undefined;
-            resourceInputs["tls13"] = state ? state.tls13 : undefined;
+            resourceInputs["ciphersuite"] = state?.ciphersuite;
+            resourceInputs["ciphersuiteGroup"] = state?.ciphersuiteGroup;
+            resourceInputs["configId"] = state?.configId;
+            resourceInputs["http2"] = state?.http2;
+            resourceInputs["http3"] = state?.http3;
+            resourceInputs["https"] = state?.https;
+            resourceInputs["ocspStapling"] = state?.ocspStapling;
+            resourceInputs["rule"] = state?.rule;
+            resourceInputs["ruleEnable"] = state?.ruleEnable;
+            resourceInputs["ruleName"] = state?.ruleName;
+            resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["tls10"] = state?.tls10;
+            resourceInputs["tls11"] = state?.tls11;
+            resourceInputs["tls12"] = state?.tls12;
+            resourceInputs["tls13"] = state?.tls13;
         } else {
             const args = argsOrState as HttpsBasicConfigurationArgs | undefined;
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            resourceInputs["ciphersuite"] = args ? args.ciphersuite : undefined;
-            resourceInputs["ciphersuiteGroup"] = args ? args.ciphersuiteGroup : undefined;
-            resourceInputs["http2"] = args ? args.http2 : undefined;
-            resourceInputs["http3"] = args ? args.http3 : undefined;
-            resourceInputs["https"] = args ? args.https : undefined;
-            resourceInputs["ocspStapling"] = args ? args.ocspStapling : undefined;
-            resourceInputs["rule"] = args ? args.rule : undefined;
-            resourceInputs["ruleEnable"] = args ? args.ruleEnable : undefined;
-            resourceInputs["ruleName"] = args ? args.ruleName : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
-            resourceInputs["tls10"] = args ? args.tls10 : undefined;
-            resourceInputs["tls11"] = args ? args.tls11 : undefined;
-            resourceInputs["tls12"] = args ? args.tls12 : undefined;
-            resourceInputs["tls13"] = args ? args.tls13 : undefined;
+            resourceInputs["ciphersuite"] = args?.ciphersuite;
+            resourceInputs["ciphersuiteGroup"] = args?.ciphersuiteGroup;
+            resourceInputs["http2"] = args?.http2;
+            resourceInputs["http3"] = args?.http3;
+            resourceInputs["https"] = args?.https;
+            resourceInputs["ocspStapling"] = args?.ocspStapling;
+            resourceInputs["rule"] = args?.rule;
+            resourceInputs["ruleEnable"] = args?.ruleEnable;
+            resourceInputs["ruleName"] = args?.ruleName;
+            resourceInputs["siteId"] = args?.siteId;
+            resourceInputs["tls10"] = args?.tls10;
+            resourceInputs["tls11"] = args?.tls11;
+            resourceInputs["tls12"] = args?.tls12;
+            resourceInputs["tls13"] = args?.tls13;
             resourceInputs["configId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

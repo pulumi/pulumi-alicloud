@@ -123,15 +123,15 @@ export class Instance extends pulumi.CustomResource {
     /**
      * (Available since v1.228.0) The CIDR blocks that can be accessed by the Vpc integration instance.
      */
-    public /*out*/ readonly connectCidrBlocks!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectCidrBlocks: pulumi.Output<string>;
     /**
      * Creation time.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Indicates whether to delete the IP block that the VPC can access, conflict with `toConnectVpcIpBlock`.
      */
-    public readonly deleteVpcIpBlock!: pulumi.Output<string | undefined>;
+    declare public readonly deleteVpcIpBlock: pulumi.Output<string | undefined>;
     /**
      * The time of the instance package. Valid values:
      * - PricingCycle is **Month**, indicating monthly payment. The value range is **1** to **9**.
@@ -139,89 +139,89 @@ export class Instance extends pulumi.CustomResource {
      *
      * When the value of> ChargeType is **PrePaid**, this parameter is available and must be passed in.
      */
-    public readonly duration!: pulumi.Output<number | undefined>;
+    declare public readonly duration: pulumi.Output<number | undefined>;
     /**
      * Specifies whether IPv6 egress capability is enabled.
      */
-    public readonly egressIpv6Enable!: pulumi.Output<boolean | undefined>;
+    declare public readonly egressIpv6Enable: pulumi.Output<boolean | undefined>;
     /**
      * Https policy.
      */
-    public readonly httpsPolicy!: pulumi.Output<string>;
+    declare public readonly httpsPolicy: pulumi.Output<string>;
     /**
      * The VpcID which the client at.
      */
-    public readonly ingressVpcId!: pulumi.Output<string | undefined>;
+    declare public readonly ingressVpcId: pulumi.Output<string | undefined>;
     /**
      * The user ID that the VpcID of `ingressVpcId` belongs to.
      */
-    public readonly ingressVpcOwnerId!: pulumi.Output<string | undefined>;
+    declare public readonly ingressVpcOwnerId: pulumi.Output<string | undefined>;
     /**
      * The VSwitch ID that belongs to the Vpc of `ingressVpcId`. Required when `ingressVpcId` is set.
      */
-    public readonly ingressVswitchId!: pulumi.Output<string | undefined>;
+    declare public readonly ingressVswitchId: pulumi.Output<string | undefined>;
     /**
      * The CIDR block for the instance deployment. Valid values are:
      * - `192.168.0.0/16`.
      * - `172.16.0.0/12`.
      */
-    public readonly instanceCidr!: pulumi.Output<string>;
+    declare public readonly instanceCidr: pulumi.Output<string>;
     /**
      * Instance name.
      */
-    public readonly instanceName!: pulumi.Output<string>;
+    declare public readonly instanceName: pulumi.Output<string>;
     /**
      * Instance spec.
      */
-    public readonly instanceSpec!: pulumi.Output<string>;
+    declare public readonly instanceSpec: pulumi.Output<string>;
     /**
      * The type of the instance. Valid values are:
      */
-    public readonly instanceType!: pulumi.Output<string>;
+    declare public readonly instanceType: pulumi.Output<string>;
     /**
      * Specifies whether IPv6 ingress capability is enabled.
      */
-    public readonly ipv6Enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly ipv6Enabled: pulumi.Output<boolean | undefined>;
     /**
      * The payment type of the resource.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
      */
-    public readonly pricingCycle!: pulumi.Output<string | undefined>;
+    declare public readonly pricingCycle: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
      */
-    public readonly skipWaitSwitch!: pulumi.Output<boolean | undefined>;
+    declare public readonly skipWaitSwitch: pulumi.Output<boolean | undefined>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Does ipv6 support.
      */
-    public /*out*/ readonly supportIpv6!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly supportIpv6: pulumi.Output<boolean>;
     /**
      * The additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
      */
-    public readonly toConnectVpcIpBlock!: pulumi.Output<outputs.apigateway.InstanceToConnectVpcIpBlock | undefined>;
+    declare public readonly toConnectVpcIpBlock: pulumi.Output<outputs.apigateway.InstanceToConnectVpcIpBlock | undefined>;
     /**
      * User's VpcID.
      */
-    public readonly userVpcId!: pulumi.Output<string | undefined>;
+    declare public readonly userVpcId: pulumi.Output<string | undefined>;
     /**
      * Whether the slb of the Vpc supports.
      */
-    public readonly vpcSlbIntranetEnable!: pulumi.Output<boolean | undefined>;
+    declare public readonly vpcSlbIntranetEnable: pulumi.Output<boolean | undefined>;
     /**
      * The zone where the instance is deployed.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
     /**
      * Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zoneVswitchSecurityGroup` below.
      */
-    public readonly zoneVswitchSecurityGroups!: pulumi.Output<outputs.apigateway.InstanceZoneVswitchSecurityGroup[] | undefined>;
+    declare public readonly zoneVswitchSecurityGroups: pulumi.Output<outputs.apigateway.InstanceZoneVswitchSecurityGroup[] | undefined>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -236,64 +236,64 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["connectCidrBlocks"] = state ? state.connectCidrBlocks : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deleteVpcIpBlock"] = state ? state.deleteVpcIpBlock : undefined;
-            resourceInputs["duration"] = state ? state.duration : undefined;
-            resourceInputs["egressIpv6Enable"] = state ? state.egressIpv6Enable : undefined;
-            resourceInputs["httpsPolicy"] = state ? state.httpsPolicy : undefined;
-            resourceInputs["ingressVpcId"] = state ? state.ingressVpcId : undefined;
-            resourceInputs["ingressVpcOwnerId"] = state ? state.ingressVpcOwnerId : undefined;
-            resourceInputs["ingressVswitchId"] = state ? state.ingressVswitchId : undefined;
-            resourceInputs["instanceCidr"] = state ? state.instanceCidr : undefined;
-            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
-            resourceInputs["instanceSpec"] = state ? state.instanceSpec : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["ipv6Enabled"] = state ? state.ipv6Enabled : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["pricingCycle"] = state ? state.pricingCycle : undefined;
-            resourceInputs["skipWaitSwitch"] = state ? state.skipWaitSwitch : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["supportIpv6"] = state ? state.supportIpv6 : undefined;
-            resourceInputs["toConnectVpcIpBlock"] = state ? state.toConnectVpcIpBlock : undefined;
-            resourceInputs["userVpcId"] = state ? state.userVpcId : undefined;
-            resourceInputs["vpcSlbIntranetEnable"] = state ? state.vpcSlbIntranetEnable : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
-            resourceInputs["zoneVswitchSecurityGroups"] = state ? state.zoneVswitchSecurityGroups : undefined;
+            resourceInputs["connectCidrBlocks"] = state?.connectCidrBlocks;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deleteVpcIpBlock"] = state?.deleteVpcIpBlock;
+            resourceInputs["duration"] = state?.duration;
+            resourceInputs["egressIpv6Enable"] = state?.egressIpv6Enable;
+            resourceInputs["httpsPolicy"] = state?.httpsPolicy;
+            resourceInputs["ingressVpcId"] = state?.ingressVpcId;
+            resourceInputs["ingressVpcOwnerId"] = state?.ingressVpcOwnerId;
+            resourceInputs["ingressVswitchId"] = state?.ingressVswitchId;
+            resourceInputs["instanceCidr"] = state?.instanceCidr;
+            resourceInputs["instanceName"] = state?.instanceName;
+            resourceInputs["instanceSpec"] = state?.instanceSpec;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["ipv6Enabled"] = state?.ipv6Enabled;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["pricingCycle"] = state?.pricingCycle;
+            resourceInputs["skipWaitSwitch"] = state?.skipWaitSwitch;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["supportIpv6"] = state?.supportIpv6;
+            resourceInputs["toConnectVpcIpBlock"] = state?.toConnectVpcIpBlock;
+            resourceInputs["userVpcId"] = state?.userVpcId;
+            resourceInputs["vpcSlbIntranetEnable"] = state?.vpcSlbIntranetEnable;
+            resourceInputs["zoneId"] = state?.zoneId;
+            resourceInputs["zoneVswitchSecurityGroups"] = state?.zoneVswitchSecurityGroups;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.httpsPolicy === undefined) && !opts.urn) {
+            if (args?.httpsPolicy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'httpsPolicy'");
             }
-            if ((!args || args.instanceName === undefined) && !opts.urn) {
+            if (args?.instanceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceName'");
             }
-            if ((!args || args.instanceSpec === undefined) && !opts.urn) {
+            if (args?.instanceSpec === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceSpec'");
             }
-            if ((!args || args.paymentType === undefined) && !opts.urn) {
+            if (args?.paymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            resourceInputs["deleteVpcIpBlock"] = args ? args.deleteVpcIpBlock : undefined;
-            resourceInputs["duration"] = args ? args.duration : undefined;
-            resourceInputs["egressIpv6Enable"] = args ? args.egressIpv6Enable : undefined;
-            resourceInputs["httpsPolicy"] = args ? args.httpsPolicy : undefined;
-            resourceInputs["ingressVpcId"] = args ? args.ingressVpcId : undefined;
-            resourceInputs["ingressVpcOwnerId"] = args ? args.ingressVpcOwnerId : undefined;
-            resourceInputs["ingressVswitchId"] = args ? args.ingressVswitchId : undefined;
-            resourceInputs["instanceCidr"] = args ? args.instanceCidr : undefined;
-            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
-            resourceInputs["instanceSpec"] = args ? args.instanceSpec : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["ipv6Enabled"] = args ? args.ipv6Enabled : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["pricingCycle"] = args ? args.pricingCycle : undefined;
-            resourceInputs["skipWaitSwitch"] = args ? args.skipWaitSwitch : undefined;
-            resourceInputs["toConnectVpcIpBlock"] = args ? args.toConnectVpcIpBlock : undefined;
-            resourceInputs["userVpcId"] = args ? args.userVpcId : undefined;
-            resourceInputs["vpcSlbIntranetEnable"] = args ? args.vpcSlbIntranetEnable : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
-            resourceInputs["zoneVswitchSecurityGroups"] = args ? args.zoneVswitchSecurityGroups : undefined;
+            resourceInputs["deleteVpcIpBlock"] = args?.deleteVpcIpBlock;
+            resourceInputs["duration"] = args?.duration;
+            resourceInputs["egressIpv6Enable"] = args?.egressIpv6Enable;
+            resourceInputs["httpsPolicy"] = args?.httpsPolicy;
+            resourceInputs["ingressVpcId"] = args?.ingressVpcId;
+            resourceInputs["ingressVpcOwnerId"] = args?.ingressVpcOwnerId;
+            resourceInputs["ingressVswitchId"] = args?.ingressVswitchId;
+            resourceInputs["instanceCidr"] = args?.instanceCidr;
+            resourceInputs["instanceName"] = args?.instanceName;
+            resourceInputs["instanceSpec"] = args?.instanceSpec;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["ipv6Enabled"] = args?.ipv6Enabled;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["pricingCycle"] = args?.pricingCycle;
+            resourceInputs["skipWaitSwitch"] = args?.skipWaitSwitch;
+            resourceInputs["toConnectVpcIpBlock"] = args?.toConnectVpcIpBlock;
+            resourceInputs["userVpcId"] = args?.userVpcId;
+            resourceInputs["vpcSlbIntranetEnable"] = args?.vpcSlbIntranetEnable;
+            resourceInputs["zoneId"] = args?.zoneId;
+            resourceInputs["zoneVswitchSecurityGroups"] = args?.zoneVswitchSecurityGroups;
             resourceInputs["connectCidrBlocks"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

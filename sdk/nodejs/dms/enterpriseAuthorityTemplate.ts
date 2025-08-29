@@ -70,23 +70,23 @@ export class EnterpriseAuthorityTemplate extends pulumi.CustomResource {
     /**
      * Permission template ID.
      */
-    public /*out*/ readonly authorityTemplateId!: pulumi.Output<number>;
+    declare public /*out*/ readonly authorityTemplateId: pulumi.Output<number>;
     /**
      * Permission Template name.
      */
-    public readonly authorityTemplateName!: pulumi.Output<string>;
+    declare public readonly authorityTemplateName: pulumi.Output<string>;
     /**
      * The creation time of the resource.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Permission template description information.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Tenant ID.
      */
-    public readonly tid!: pulumi.Output<number>;
+    declare public readonly tid: pulumi.Output<number>;
 
     /**
      * Create a EnterpriseAuthorityTemplate resource with the given unique name, arguments, and options.
@@ -101,22 +101,22 @@ export class EnterpriseAuthorityTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnterpriseAuthorityTemplateState | undefined;
-            resourceInputs["authorityTemplateId"] = state ? state.authorityTemplateId : undefined;
-            resourceInputs["authorityTemplateName"] = state ? state.authorityTemplateName : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["tid"] = state ? state.tid : undefined;
+            resourceInputs["authorityTemplateId"] = state?.authorityTemplateId;
+            resourceInputs["authorityTemplateName"] = state?.authorityTemplateName;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["tid"] = state?.tid;
         } else {
             const args = argsOrState as EnterpriseAuthorityTemplateArgs | undefined;
-            if ((!args || args.authorityTemplateName === undefined) && !opts.urn) {
+            if (args?.authorityTemplateName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'authorityTemplateName'");
             }
-            if ((!args || args.tid === undefined) && !opts.urn) {
+            if (args?.tid === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tid'");
             }
-            resourceInputs["authorityTemplateName"] = args ? args.authorityTemplateName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["tid"] = args ? args.tid : undefined;
+            resourceInputs["authorityTemplateName"] = args?.authorityTemplateName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["tid"] = args?.tid;
             resourceInputs["authorityTemplateId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
         }

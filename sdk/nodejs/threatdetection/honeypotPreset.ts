@@ -82,23 +82,23 @@ export class HoneypotPreset extends pulumi.CustomResource {
     /**
      * Honeypot mirror name
      */
-    public readonly honeypotImageName!: pulumi.Output<string>;
+    declare public readonly honeypotImageName: pulumi.Output<string>;
     /**
      * Unique ID of honeypot Template
      */
-    public /*out*/ readonly honeypotPresetId!: pulumi.Output<string>;
+    declare public /*out*/ readonly honeypotPresetId: pulumi.Output<string>;
     /**
      * Honeypot template custom parameters. See `meta` below.
      */
-    public readonly meta!: pulumi.Output<outputs.threatdetection.HoneypotPresetMeta>;
+    declare public readonly meta: pulumi.Output<outputs.threatdetection.HoneypotPresetMeta>;
     /**
      * Unique id of management node
      */
-    public readonly nodeId!: pulumi.Output<string>;
+    declare public readonly nodeId: pulumi.Output<string>;
     /**
      * Honeypot template custom name
      */
-    public readonly presetName!: pulumi.Output<string>;
+    declare public readonly presetName: pulumi.Output<string>;
 
     /**
      * Create a HoneypotPreset resource with the given unique name, arguments, and options.
@@ -113,29 +113,29 @@ export class HoneypotPreset extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HoneypotPresetState | undefined;
-            resourceInputs["honeypotImageName"] = state ? state.honeypotImageName : undefined;
-            resourceInputs["honeypotPresetId"] = state ? state.honeypotPresetId : undefined;
-            resourceInputs["meta"] = state ? state.meta : undefined;
-            resourceInputs["nodeId"] = state ? state.nodeId : undefined;
-            resourceInputs["presetName"] = state ? state.presetName : undefined;
+            resourceInputs["honeypotImageName"] = state?.honeypotImageName;
+            resourceInputs["honeypotPresetId"] = state?.honeypotPresetId;
+            resourceInputs["meta"] = state?.meta;
+            resourceInputs["nodeId"] = state?.nodeId;
+            resourceInputs["presetName"] = state?.presetName;
         } else {
             const args = argsOrState as HoneypotPresetArgs | undefined;
-            if ((!args || args.honeypotImageName === undefined) && !opts.urn) {
+            if (args?.honeypotImageName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'honeypotImageName'");
             }
-            if ((!args || args.meta === undefined) && !opts.urn) {
+            if (args?.meta === undefined && !opts.urn) {
                 throw new Error("Missing required property 'meta'");
             }
-            if ((!args || args.nodeId === undefined) && !opts.urn) {
+            if (args?.nodeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodeId'");
             }
-            if ((!args || args.presetName === undefined) && !opts.urn) {
+            if (args?.presetName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'presetName'");
             }
-            resourceInputs["honeypotImageName"] = args ? args.honeypotImageName : undefined;
-            resourceInputs["meta"] = args ? args.meta : undefined;
-            resourceInputs["nodeId"] = args ? args.nodeId : undefined;
-            resourceInputs["presetName"] = args ? args.presetName : undefined;
+            resourceInputs["honeypotImageName"] = args?.honeypotImageName;
+            resourceInputs["meta"] = args?.meta;
+            resourceInputs["nodeId"] = args?.nodeId;
+            resourceInputs["presetName"] = args?.presetName;
             resourceInputs["honeypotPresetId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

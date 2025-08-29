@@ -44,7 +44,7 @@ export class BandwidthPackage extends pulumi.CustomResource {
     /**
      * The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
      */
-    public readonly bandwidth!: pulumi.Output<number>;
+    declare public readonly bandwidth: pulumi.Output<number>;
     /**
      * The name of the bandwidth package. Defaults to null.
      *
@@ -52,54 +52,54 @@ export class BandwidthPackage extends pulumi.CustomResource {
      *
      * ->**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
      */
-    public readonly cenBandwidthPackageName!: pulumi.Output<string>;
+    declare public readonly cenBandwidthPackageName: pulumi.Output<string>;
     /**
      * Field `chargeType` has been deprecated from version 1.97.0. Use `paymentType` and instead.
      *
      * @deprecated Field 'charge_type' has been deprecated from version 1.98.0. Use 'payment_type' and instead.
      */
-    public readonly chargeType!: pulumi.Output<string>;
+    declare public readonly chargeType: pulumi.Output<string>;
     /**
      * The description of the bandwidth package. Default to null.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The time of the bandwidth package to expire.
      */
-    public /*out*/ readonly expiredTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly expiredTime: pulumi.Output<string>;
     /**
      * The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
      */
-    public readonly geographicRegionAId!: pulumi.Output<string>;
+    declare public readonly geographicRegionAId: pulumi.Output<string>;
     /**
      * The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
      */
-    public readonly geographicRegionBId!: pulumi.Output<string>;
+    declare public readonly geographicRegionBId: pulumi.Output<string>;
     /**
      * Field `geographicRegionIds` has been deprecated from version 1.97.0. Use `geographicRegionAId` and `geographicRegionBId` instead.
      *
      * @deprecated Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead.
      */
-    public readonly geographicRegionIds!: pulumi.Output<string[]>;
+    declare public readonly geographicRegionIds: pulumi.Output<string[]>;
     /**
      * Field `name` has been deprecated from version 1.97.0. Use `cenBandwidthPackageName` and instead.
      *
      * @deprecated Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * The association status of the bandwidth package.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a BandwidthPackage resource with the given unique name, arguments, and options.
@@ -114,33 +114,33 @@ export class BandwidthPackage extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BandwidthPackageState | undefined;
-            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
-            resourceInputs["cenBandwidthPackageName"] = state ? state.cenBandwidthPackageName : undefined;
-            resourceInputs["chargeType"] = state ? state.chargeType : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["expiredTime"] = state ? state.expiredTime : undefined;
-            resourceInputs["geographicRegionAId"] = state ? state.geographicRegionAId : undefined;
-            resourceInputs["geographicRegionBId"] = state ? state.geographicRegionBId : undefined;
-            resourceInputs["geographicRegionIds"] = state ? state.geographicRegionIds : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["bandwidth"] = state?.bandwidth;
+            resourceInputs["cenBandwidthPackageName"] = state?.cenBandwidthPackageName;
+            resourceInputs["chargeType"] = state?.chargeType;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["expiredTime"] = state?.expiredTime;
+            resourceInputs["geographicRegionAId"] = state?.geographicRegionAId;
+            resourceInputs["geographicRegionBId"] = state?.geographicRegionBId;
+            resourceInputs["geographicRegionIds"] = state?.geographicRegionIds;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as BandwidthPackageArgs | undefined;
-            if ((!args || args.bandwidth === undefined) && !opts.urn) {
+            if (args?.bandwidth === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bandwidth'");
             }
-            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
-            resourceInputs["cenBandwidthPackageName"] = args ? args.cenBandwidthPackageName : undefined;
-            resourceInputs["chargeType"] = args ? args.chargeType : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["geographicRegionAId"] = args ? args.geographicRegionAId : undefined;
-            resourceInputs["geographicRegionBId"] = args ? args.geographicRegionBId : undefined;
-            resourceInputs["geographicRegionIds"] = args ? args.geographicRegionIds : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["bandwidth"] = args?.bandwidth;
+            resourceInputs["cenBandwidthPackageName"] = args?.cenBandwidthPackageName;
+            resourceInputs["chargeType"] = args?.chargeType;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["geographicRegionAId"] = args?.geographicRegionAId;
+            resourceInputs["geographicRegionBId"] = args?.geographicRegionBId;
+            resourceInputs["geographicRegionIds"] = args?.geographicRegionIds;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["period"] = args?.period;
             resourceInputs["expiredTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

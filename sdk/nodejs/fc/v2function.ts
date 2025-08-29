@@ -52,83 +52,83 @@ export class V2Function extends pulumi.CustomResource {
     /**
      * The listening port of the HTTP Server when the Custom Runtime or Custom Container is running.
      */
-    public readonly caPort!: pulumi.Output<number>;
+    declare public readonly caPort: pulumi.Output<number>;
     /**
      * Function Code ZIP package. code and customContainerConfig choose one. See `code` below.
      */
-    public readonly code!: pulumi.Output<outputs.fc.V2FunctionCode | undefined>;
+    declare public readonly code: pulumi.Output<outputs.fc.V2FunctionCode | undefined>;
     /**
      * crc64 of function code.
      */
-    public readonly codeChecksum!: pulumi.Output<string>;
+    declare public readonly codeChecksum: pulumi.Output<string>;
     /**
      * The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
      */
-    public readonly cpu!: pulumi.Output<number | undefined>;
+    declare public readonly cpu: pulumi.Output<number | undefined>;
     /**
      * create time of function.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Custom-container runtime related function configuration. See `customContainerConfig` below.
      */
-    public readonly customContainerConfig!: pulumi.Output<outputs.fc.V2FunctionCustomContainerConfig | undefined>;
+    declare public readonly customContainerConfig: pulumi.Output<outputs.fc.V2FunctionCustomContainerConfig | undefined>;
     /**
      * Function custom DNS configuration. See `customDns` below.
      */
-    public readonly customDns!: pulumi.Output<outputs.fc.V2FunctionCustomDns | undefined>;
+    declare public readonly customDns: pulumi.Output<outputs.fc.V2FunctionCustomDns | undefined>;
     /**
      * Custom runtime/container Custom health check configuration. See `customHealthCheckConfig` below.
      */
-    public readonly customHealthCheckConfig!: pulumi.Output<outputs.fc.V2FunctionCustomHealthCheckConfig | undefined>;
+    declare public readonly customHealthCheckConfig: pulumi.Output<outputs.fc.V2FunctionCustomHealthCheckConfig | undefined>;
     /**
      * Detailed configuration of Custom Runtime function. See `customRuntimeConfig` below.
      */
-    public readonly customRuntimeConfig!: pulumi.Output<outputs.fc.V2FunctionCustomRuntimeConfig | undefined>;
+    declare public readonly customRuntimeConfig: pulumi.Output<outputs.fc.V2FunctionCustomRuntimeConfig | undefined>;
     /**
      * description of function.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The disk specification of the function. The unit is MB. The optional value is 512 MB or 10240MB.
      */
-    public readonly diskSize!: pulumi.Output<number | undefined>;
+    declare public readonly diskSize: pulumi.Output<number | undefined>;
     /**
      * The environment variable set for the function can get the value of the environment variable in the function. For more information, see Environment Variables.
      */
-    public readonly environmentVariables!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly environmentVariables: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The Function Compute service function arn. It formats as `acs:fc:<region>:<uid>:services/<serviceName>.LATEST/functions/<functionName>`.
      */
-    public /*out*/ readonly functionArn!: pulumi.Output<string>;
+    declare public /*out*/ readonly functionArn: pulumi.Output<string>;
     /**
      * function name.
      */
-    public readonly functionName!: pulumi.Output<string>;
+    declare public readonly functionName: pulumi.Output<string>;
     /**
      * The GPU memory specification of the function, in MB, is a multiple of 1024MB.
      */
-    public readonly gpuMemorySize!: pulumi.Output<number | undefined>;
+    declare public readonly gpuMemorySize: pulumi.Output<number | undefined>;
     /**
      * entry point of function.
      */
-    public readonly handler!: pulumi.Output<string>;
+    declare public readonly handler: pulumi.Output<string>;
     /**
      * max running time of initializer.
      */
-    public readonly initializationTimeout!: pulumi.Output<number>;
+    declare public readonly initializationTimeout: pulumi.Output<number>;
     /**
      * initializer entry point of function.
      */
-    public readonly initializer!: pulumi.Output<string | undefined>;
+    declare public readonly initializer: pulumi.Output<string | undefined>;
     /**
      * The maximum concurrency allowed for a single function instance.
      */
-    public readonly instanceConcurrency!: pulumi.Output<number>;
+    declare public readonly instanceConcurrency: pulumi.Output<number>;
     /**
      * Instance lifecycle configuration. See `instanceLifecycleConfig` below.
      */
-    public readonly instanceLifecycleConfig!: pulumi.Output<outputs.fc.V2FunctionInstanceLifecycleConfig | undefined>;
+    declare public readonly instanceLifecycleConfig: pulumi.Output<outputs.fc.V2FunctionInstanceLifecycleConfig | undefined>;
     /**
      * The instance type of the function. Valid values:
      * - **e1**: Elastic instance.
@@ -137,28 +137,28 @@ export class V2Function extends pulumi.CustomResource {
      * - **fc.gpu.ampere.1**: The Ampere series A10 card type of the GPU instance.
      * - **g1**: Same as **fc.gpu.tesla.1**.
      */
-    public readonly instanceType!: pulumi.Output<string>;
+    declare public readonly instanceType: pulumi.Output<string>;
     /**
      * List of layers.
      * > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
      */
-    public readonly layers!: pulumi.Output<string[] | undefined>;
+    declare public readonly layers: pulumi.Output<string[] | undefined>;
     /**
      * memory size needed by function.
      */
-    public readonly memorySize!: pulumi.Output<number>;
+    declare public readonly memorySize: pulumi.Output<number>;
     /**
      * runtime of function code.
      */
-    public readonly runtime!: pulumi.Output<string>;
+    declare public readonly runtime: pulumi.Output<string>;
     /**
      * The name of the function Service.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
     /**
      * max running time of function.
      */
-    public readonly timeout!: pulumi.Output<number>;
+    declare public readonly timeout: pulumi.Output<number>;
 
     /**
      * Create a V2Function resource with the given unique name, arguments, and options.
@@ -173,70 +173,70 @@ export class V2Function extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as V2FunctionState | undefined;
-            resourceInputs["caPort"] = state ? state.caPort : undefined;
-            resourceInputs["code"] = state ? state.code : undefined;
-            resourceInputs["codeChecksum"] = state ? state.codeChecksum : undefined;
-            resourceInputs["cpu"] = state ? state.cpu : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["customContainerConfig"] = state ? state.customContainerConfig : undefined;
-            resourceInputs["customDns"] = state ? state.customDns : undefined;
-            resourceInputs["customHealthCheckConfig"] = state ? state.customHealthCheckConfig : undefined;
-            resourceInputs["customRuntimeConfig"] = state ? state.customRuntimeConfig : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["diskSize"] = state ? state.diskSize : undefined;
-            resourceInputs["environmentVariables"] = state ? state.environmentVariables : undefined;
-            resourceInputs["functionArn"] = state ? state.functionArn : undefined;
-            resourceInputs["functionName"] = state ? state.functionName : undefined;
-            resourceInputs["gpuMemorySize"] = state ? state.gpuMemorySize : undefined;
-            resourceInputs["handler"] = state ? state.handler : undefined;
-            resourceInputs["initializationTimeout"] = state ? state.initializationTimeout : undefined;
-            resourceInputs["initializer"] = state ? state.initializer : undefined;
-            resourceInputs["instanceConcurrency"] = state ? state.instanceConcurrency : undefined;
-            resourceInputs["instanceLifecycleConfig"] = state ? state.instanceLifecycleConfig : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["layers"] = state ? state.layers : undefined;
-            resourceInputs["memorySize"] = state ? state.memorySize : undefined;
-            resourceInputs["runtime"] = state ? state.runtime : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["timeout"] = state ? state.timeout : undefined;
+            resourceInputs["caPort"] = state?.caPort;
+            resourceInputs["code"] = state?.code;
+            resourceInputs["codeChecksum"] = state?.codeChecksum;
+            resourceInputs["cpu"] = state?.cpu;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["customContainerConfig"] = state?.customContainerConfig;
+            resourceInputs["customDns"] = state?.customDns;
+            resourceInputs["customHealthCheckConfig"] = state?.customHealthCheckConfig;
+            resourceInputs["customRuntimeConfig"] = state?.customRuntimeConfig;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["diskSize"] = state?.diskSize;
+            resourceInputs["environmentVariables"] = state?.environmentVariables;
+            resourceInputs["functionArn"] = state?.functionArn;
+            resourceInputs["functionName"] = state?.functionName;
+            resourceInputs["gpuMemorySize"] = state?.gpuMemorySize;
+            resourceInputs["handler"] = state?.handler;
+            resourceInputs["initializationTimeout"] = state?.initializationTimeout;
+            resourceInputs["initializer"] = state?.initializer;
+            resourceInputs["instanceConcurrency"] = state?.instanceConcurrency;
+            resourceInputs["instanceLifecycleConfig"] = state?.instanceLifecycleConfig;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["layers"] = state?.layers;
+            resourceInputs["memorySize"] = state?.memorySize;
+            resourceInputs["runtime"] = state?.runtime;
+            resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["timeout"] = state?.timeout;
         } else {
             const args = argsOrState as V2FunctionArgs | undefined;
-            if ((!args || args.functionName === undefined) && !opts.urn) {
+            if (args?.functionName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'functionName'");
             }
-            if ((!args || args.handler === undefined) && !opts.urn) {
+            if (args?.handler === undefined && !opts.urn) {
                 throw new Error("Missing required property 'handler'");
             }
-            if ((!args || args.runtime === undefined) && !opts.urn) {
+            if (args?.runtime === undefined && !opts.urn) {
                 throw new Error("Missing required property 'runtime'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            resourceInputs["caPort"] = args ? args.caPort : undefined;
-            resourceInputs["code"] = args ? args.code : undefined;
-            resourceInputs["codeChecksum"] = args ? args.codeChecksum : undefined;
-            resourceInputs["cpu"] = args ? args.cpu : undefined;
-            resourceInputs["customContainerConfig"] = args ? args.customContainerConfig : undefined;
-            resourceInputs["customDns"] = args ? args.customDns : undefined;
-            resourceInputs["customHealthCheckConfig"] = args ? args.customHealthCheckConfig : undefined;
-            resourceInputs["customRuntimeConfig"] = args ? args.customRuntimeConfig : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["diskSize"] = args ? args.diskSize : undefined;
-            resourceInputs["environmentVariables"] = args ? args.environmentVariables : undefined;
-            resourceInputs["functionName"] = args ? args.functionName : undefined;
-            resourceInputs["gpuMemorySize"] = args ? args.gpuMemorySize : undefined;
-            resourceInputs["handler"] = args ? args.handler : undefined;
-            resourceInputs["initializationTimeout"] = args ? args.initializationTimeout : undefined;
-            resourceInputs["initializer"] = args ? args.initializer : undefined;
-            resourceInputs["instanceConcurrency"] = args ? args.instanceConcurrency : undefined;
-            resourceInputs["instanceLifecycleConfig"] = args ? args.instanceLifecycleConfig : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["layers"] = args ? args.layers : undefined;
-            resourceInputs["memorySize"] = args ? args.memorySize : undefined;
-            resourceInputs["runtime"] = args ? args.runtime : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["timeout"] = args ? args.timeout : undefined;
+            resourceInputs["caPort"] = args?.caPort;
+            resourceInputs["code"] = args?.code;
+            resourceInputs["codeChecksum"] = args?.codeChecksum;
+            resourceInputs["cpu"] = args?.cpu;
+            resourceInputs["customContainerConfig"] = args?.customContainerConfig;
+            resourceInputs["customDns"] = args?.customDns;
+            resourceInputs["customHealthCheckConfig"] = args?.customHealthCheckConfig;
+            resourceInputs["customRuntimeConfig"] = args?.customRuntimeConfig;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["diskSize"] = args?.diskSize;
+            resourceInputs["environmentVariables"] = args?.environmentVariables;
+            resourceInputs["functionName"] = args?.functionName;
+            resourceInputs["gpuMemorySize"] = args?.gpuMemorySize;
+            resourceInputs["handler"] = args?.handler;
+            resourceInputs["initializationTimeout"] = args?.initializationTimeout;
+            resourceInputs["initializer"] = args?.initializer;
+            resourceInputs["instanceConcurrency"] = args?.instanceConcurrency;
+            resourceInputs["instanceLifecycleConfig"] = args?.instanceLifecycleConfig;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["layers"] = args?.layers;
+            resourceInputs["memorySize"] = args?.memorySize;
+            resourceInputs["runtime"] = args?.runtime;
+            resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["timeout"] = args?.timeout;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["functionArn"] = undefined /*out*/;
         }

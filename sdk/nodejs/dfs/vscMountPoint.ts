@@ -83,23 +83,23 @@ export class VscMountPoint extends pulumi.CustomResource {
     /**
      * Mount point alias prefix, which is used as the prefix for generating VSC mount point aliases.
      */
-    public readonly aliasPrefix!: pulumi.Output<string | undefined>;
+    declare public readonly aliasPrefix: pulumi.Output<string | undefined>;
     /**
      * The description of the Mount point.  The length is 0 to 100 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The ID of the HDFS file system resource associated with the VSC mount point.
      */
-    public readonly fileSystemId!: pulumi.Output<string>;
+    declare public readonly fileSystemId: pulumi.Output<string>;
     /**
      * The collection of ECS instances on which the HDFS file system is mounted. **The current property is not available**.
      */
-    public /*out*/ readonly instances!: pulumi.Output<outputs.dfs.VscMountPointInstance[]>;
+    declare public /*out*/ readonly instances: pulumi.Output<outputs.dfs.VscMountPointInstance[]>;
     /**
      * VSC mount point ID, which is the unique identifier of the vsc mount point and is used to access the associated HDFS file system.
      */
-    public /*out*/ readonly mountPointId!: pulumi.Output<string>;
+    declare public /*out*/ readonly mountPointId: pulumi.Output<string>;
 
     /**
      * Create a VscMountPoint resource with the given unique name, arguments, and options.
@@ -114,19 +114,19 @@ export class VscMountPoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VscMountPointState | undefined;
-            resourceInputs["aliasPrefix"] = state ? state.aliasPrefix : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["fileSystemId"] = state ? state.fileSystemId : undefined;
-            resourceInputs["instances"] = state ? state.instances : undefined;
-            resourceInputs["mountPointId"] = state ? state.mountPointId : undefined;
+            resourceInputs["aliasPrefix"] = state?.aliasPrefix;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["fileSystemId"] = state?.fileSystemId;
+            resourceInputs["instances"] = state?.instances;
+            resourceInputs["mountPointId"] = state?.mountPointId;
         } else {
             const args = argsOrState as VscMountPointArgs | undefined;
-            if ((!args || args.fileSystemId === undefined) && !opts.urn) {
+            if (args?.fileSystemId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fileSystemId'");
             }
-            resourceInputs["aliasPrefix"] = args ? args.aliasPrefix : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["fileSystemId"] = args ? args.fileSystemId : undefined;
+            resourceInputs["aliasPrefix"] = args?.aliasPrefix;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["fileSystemId"] = args?.fileSystemId;
             resourceInputs["instances"] = undefined /*out*/;
             resourceInputs["mountPointId"] = undefined /*out*/;
         }

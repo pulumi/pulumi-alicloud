@@ -200,93 +200,93 @@ export class GatewayVpnAttachment extends pulumi.CustomResource {
      * Bgp configuration information.
      * - This parameter is supported when you create an vpn attachment in single-tunnel mode. See `bgpConfig` below.
      */
-    public readonly bgpConfig!: pulumi.Output<outputs.vpn.GatewayVpnAttachmentBgpConfig>;
+    declare public readonly bgpConfig: pulumi.Output<outputs.vpn.GatewayVpnAttachmentBgpConfig>;
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Customer gateway ID.
      * - This parameter is required when creating a single-tunnel mode vpn attachment.
      */
-    public readonly customerGatewayId!: pulumi.Output<string | undefined>;
+    declare public readonly customerGatewayId: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to immediately start IPsec negotiations after the configuration takes effect. Valid values:
      */
-    public readonly effectImmediately!: pulumi.Output<boolean>;
+    declare public readonly effectImmediately: pulumi.Output<boolean>;
     /**
      * This parameter is supported if you create an vpn attachment in single-tunnel mode.
      * Whether to enable the DPD (peer survival detection) function.
      * - true (default): enables DPD. The initiator of the IPsec-VPN connection sends DPD packets to check the existence and availability of the peer. If no feedback is received from the peer within the specified period of time, the connection fails. In this case, ISAKMP SA and IPsec SA are deleted along with the security tunnel.
      * - false: disables DPD. The initiator of the IPsec-VPN connection does not send DPD packets.
      */
-    public readonly enableDpd!: pulumi.Output<boolean>;
+    declare public readonly enableDpd: pulumi.Output<boolean>;
     /**
      * This parameter is supported if you create an vpn attachment in single-tunnel mode.
      * Specifies whether to enable NAT traversal. Valid values:
      * - true (default): enables NAT traversal. After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the vpn attachment tunnel.
      * - false: disables NAT traversal.
      */
-    public readonly enableNatTraversal!: pulumi.Output<boolean>;
+    declare public readonly enableNatTraversal: pulumi.Output<boolean>;
     /**
      * You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `true` or `false` (default).
      *
      * > **NOTE:**  before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
      */
-    public readonly enableTunnelsBgp!: pulumi.Output<boolean>;
+    declare public readonly enableTunnelsBgp: pulumi.Output<boolean>;
     /**
      * This parameter is supported if you create an vpn attachment in single-tunnel mode.
      * Health check configuration information. See `healthCheckConfig` below.
      */
-    public readonly healthCheckConfig!: pulumi.Output<outputs.vpn.GatewayVpnAttachmentHealthCheckConfig>;
+    declare public readonly healthCheckConfig: pulumi.Output<outputs.vpn.GatewayVpnAttachmentHealthCheckConfig>;
     /**
      * The configurations of Phase 1 negotiations. 
      * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ikeConfig` below.
      */
-    public readonly ikeConfig!: pulumi.Output<outputs.vpn.GatewayVpnAttachmentIkeConfig>;
+    declare public readonly ikeConfig: pulumi.Output<outputs.vpn.GatewayVpnAttachmentIkeConfig>;
     /**
      * Configuration negotiated in the second stage. 
      * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsecConfig` below.
      */
-    public readonly ipsecConfig!: pulumi.Output<outputs.vpn.GatewayVpnAttachmentIpsecConfig>;
+    declare public readonly ipsecConfig: pulumi.Output<outputs.vpn.GatewayVpnAttachmentIpsecConfig>;
     /**
      * The CIDR block on the VPC side. The CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.The following routing modes are supported:
      * - If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
      * - If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
      */
-    public readonly localSubnet!: pulumi.Output<string>;
+    declare public readonly localSubnet: pulumi.Output<string>;
     /**
      * network type
      */
-    public readonly networkType!: pulumi.Output<string>;
+    declare public readonly networkType: pulumi.Output<string>;
     /**
      * The CIDR block on the data center side. This CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.3.0/24,192.168.4.0/24.The following routing modes are supported:
      * - If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
      * - If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
      */
-    public readonly remoteSubnet!: pulumi.Output<string>;
+    declare public readonly remoteSubnet: pulumi.Output<string>;
     /**
      * The ID of the resource group
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The negotiation status of Tunnel.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Tags
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Configure the tunnel.
      * - You can configure parameters in the `tunnelOptionsSpecification` array when you create a vpn attachment in dual-tunnel mode.
      * - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnelOptionsSpecification` below.
      */
-    public readonly tunnelOptionsSpecifications!: pulumi.Output<outputs.vpn.GatewayVpnAttachmentTunnelOptionsSpecification[]>;
+    declare public readonly tunnelOptionsSpecifications: pulumi.Output<outputs.vpn.GatewayVpnAttachmentTunnelOptionsSpecification[]>;
     /**
      * vpn attachment name
      */
-    public readonly vpnAttachmentName!: pulumi.Output<string | undefined>;
+    declare public readonly vpnAttachmentName: pulumi.Output<string | undefined>;
 
     /**
      * Create a GatewayVpnAttachment resource with the given unique name, arguments, and options.
@@ -301,48 +301,48 @@ export class GatewayVpnAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GatewayVpnAttachmentState | undefined;
-            resourceInputs["bgpConfig"] = state ? state.bgpConfig : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["customerGatewayId"] = state ? state.customerGatewayId : undefined;
-            resourceInputs["effectImmediately"] = state ? state.effectImmediately : undefined;
-            resourceInputs["enableDpd"] = state ? state.enableDpd : undefined;
-            resourceInputs["enableNatTraversal"] = state ? state.enableNatTraversal : undefined;
-            resourceInputs["enableTunnelsBgp"] = state ? state.enableTunnelsBgp : undefined;
-            resourceInputs["healthCheckConfig"] = state ? state.healthCheckConfig : undefined;
-            resourceInputs["ikeConfig"] = state ? state.ikeConfig : undefined;
-            resourceInputs["ipsecConfig"] = state ? state.ipsecConfig : undefined;
-            resourceInputs["localSubnet"] = state ? state.localSubnet : undefined;
-            resourceInputs["networkType"] = state ? state.networkType : undefined;
-            resourceInputs["remoteSubnet"] = state ? state.remoteSubnet : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["tunnelOptionsSpecifications"] = state ? state.tunnelOptionsSpecifications : undefined;
-            resourceInputs["vpnAttachmentName"] = state ? state.vpnAttachmentName : undefined;
+            resourceInputs["bgpConfig"] = state?.bgpConfig;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["customerGatewayId"] = state?.customerGatewayId;
+            resourceInputs["effectImmediately"] = state?.effectImmediately;
+            resourceInputs["enableDpd"] = state?.enableDpd;
+            resourceInputs["enableNatTraversal"] = state?.enableNatTraversal;
+            resourceInputs["enableTunnelsBgp"] = state?.enableTunnelsBgp;
+            resourceInputs["healthCheckConfig"] = state?.healthCheckConfig;
+            resourceInputs["ikeConfig"] = state?.ikeConfig;
+            resourceInputs["ipsecConfig"] = state?.ipsecConfig;
+            resourceInputs["localSubnet"] = state?.localSubnet;
+            resourceInputs["networkType"] = state?.networkType;
+            resourceInputs["remoteSubnet"] = state?.remoteSubnet;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["tunnelOptionsSpecifications"] = state?.tunnelOptionsSpecifications;
+            resourceInputs["vpnAttachmentName"] = state?.vpnAttachmentName;
         } else {
             const args = argsOrState as GatewayVpnAttachmentArgs | undefined;
-            if ((!args || args.localSubnet === undefined) && !opts.urn) {
+            if (args?.localSubnet === undefined && !opts.urn) {
                 throw new Error("Missing required property 'localSubnet'");
             }
-            if ((!args || args.remoteSubnet === undefined) && !opts.urn) {
+            if (args?.remoteSubnet === undefined && !opts.urn) {
                 throw new Error("Missing required property 'remoteSubnet'");
             }
-            resourceInputs["bgpConfig"] = args ? args.bgpConfig : undefined;
-            resourceInputs["customerGatewayId"] = args ? args.customerGatewayId : undefined;
-            resourceInputs["effectImmediately"] = args ? args.effectImmediately : undefined;
-            resourceInputs["enableDpd"] = args ? args.enableDpd : undefined;
-            resourceInputs["enableNatTraversal"] = args ? args.enableNatTraversal : undefined;
-            resourceInputs["enableTunnelsBgp"] = args ? args.enableTunnelsBgp : undefined;
-            resourceInputs["healthCheckConfig"] = args ? args.healthCheckConfig : undefined;
-            resourceInputs["ikeConfig"] = args ? args.ikeConfig : undefined;
-            resourceInputs["ipsecConfig"] = args ? args.ipsecConfig : undefined;
-            resourceInputs["localSubnet"] = args ? args.localSubnet : undefined;
-            resourceInputs["networkType"] = args ? args.networkType : undefined;
-            resourceInputs["remoteSubnet"] = args ? args.remoteSubnet : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["tunnelOptionsSpecifications"] = args ? args.tunnelOptionsSpecifications : undefined;
-            resourceInputs["vpnAttachmentName"] = args ? args.vpnAttachmentName : undefined;
+            resourceInputs["bgpConfig"] = args?.bgpConfig;
+            resourceInputs["customerGatewayId"] = args?.customerGatewayId;
+            resourceInputs["effectImmediately"] = args?.effectImmediately;
+            resourceInputs["enableDpd"] = args?.enableDpd;
+            resourceInputs["enableNatTraversal"] = args?.enableNatTraversal;
+            resourceInputs["enableTunnelsBgp"] = args?.enableTunnelsBgp;
+            resourceInputs["healthCheckConfig"] = args?.healthCheckConfig;
+            resourceInputs["ikeConfig"] = args?.ikeConfig;
+            resourceInputs["ipsecConfig"] = args?.ipsecConfig;
+            resourceInputs["localSubnet"] = args?.localSubnet;
+            resourceInputs["networkType"] = args?.networkType;
+            resourceInputs["remoteSubnet"] = args?.remoteSubnet;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["tunnelOptionsSpecifications"] = args?.tunnelOptionsSpecifications;
+            resourceInputs["vpnAttachmentName"] = args?.vpnAttachmentName;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

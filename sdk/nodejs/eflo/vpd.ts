@@ -68,27 +68,27 @@ export class Vpd extends pulumi.CustomResource {
     /**
      * CIDR network segment.
      */
-    public readonly cidr!: pulumi.Output<string>;
+    declare public readonly cidr: pulumi.Output<string>;
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Modification time
      */
-    public /*out*/ readonly gmtModified!: pulumi.Output<string>;
+    declare public /*out*/ readonly gmtModified: pulumi.Output<string>;
     /**
      * The Resource group id.
      */
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly resourceGroupId: pulumi.Output<string | undefined>;
     /**
      * The Vpd status.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The Name of the VPD.
      */
-    public readonly vpdName!: pulumi.Output<string>;
+    declare public readonly vpdName: pulumi.Output<string>;
 
     /**
      * Create a Vpd resource with the given unique name, arguments, and options.
@@ -103,23 +103,23 @@ export class Vpd extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpdState | undefined;
-            resourceInputs["cidr"] = state ? state.cidr : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["gmtModified"] = state ? state.gmtModified : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vpdName"] = state ? state.vpdName : undefined;
+            resourceInputs["cidr"] = state?.cidr;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["gmtModified"] = state?.gmtModified;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vpdName"] = state?.vpdName;
         } else {
             const args = argsOrState as VpdArgs | undefined;
-            if ((!args || args.cidr === undefined) && !opts.urn) {
+            if (args?.cidr === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cidr'");
             }
-            if ((!args || args.vpdName === undefined) && !opts.urn) {
+            if (args?.vpdName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpdName'");
             }
-            resourceInputs["cidr"] = args ? args.cidr : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["vpdName"] = args ? args.vpdName : undefined;
+            resourceInputs["cidr"] = args?.cidr;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["vpdName"] = args?.vpdName;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["gmtModified"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

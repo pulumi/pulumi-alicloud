@@ -118,35 +118,35 @@ export class SlbAttachment extends pulumi.CustomResource {
     /**
      * The ID of the application to which you want to bind an SLB instance.
      */
-    public readonly appId!: pulumi.Output<string>;
+    declare public readonly appId: pulumi.Output<string>;
     /**
      * The listening port for the bound SLB instance.
      */
-    public readonly listenerPort!: pulumi.Output<number | undefined>;
+    declare public readonly listenerPort: pulumi.Output<number | undefined>;
     /**
      * The ID of the SLB instance that is going to be bound.
      */
-    public readonly slbId!: pulumi.Output<string>;
+    declare public readonly slbId: pulumi.Output<string>;
     /**
      * The IP address that is allocated to the bound SLB instance.
      */
-    public readonly slbIp!: pulumi.Output<string>;
+    declare public readonly slbIp: pulumi.Output<string>;
     /**
      * Running Status of SLB instance. Inactive：The instance is stopped, and listener will not monitor and forward traffic. Active：The instance is running. After the instance is created, the default state is active. Locked：The instance is locked, the instance has been owed or locked by Alibaba Cloud. Expired: The instance has expired.
      */
-    public /*out*/ readonly slbStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly slbStatus: pulumi.Output<string>;
     /**
      * The type of the bound SLB instance.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The ID of the virtual server (VServer) group associated with the intranet SLB instance.
      */
-    public readonly vserverGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly vserverGroupId: pulumi.Output<string | undefined>;
     /**
      * VPC related vswitch ID.
      */
-    public /*out*/ readonly vswitchId!: pulumi.Output<string>;
+    declare public /*out*/ readonly vswitchId: pulumi.Output<string>;
 
     /**
      * Create a SlbAttachment resource with the given unique name, arguments, and options.
@@ -161,34 +161,34 @@ export class SlbAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SlbAttachmentState | undefined;
-            resourceInputs["appId"] = state ? state.appId : undefined;
-            resourceInputs["listenerPort"] = state ? state.listenerPort : undefined;
-            resourceInputs["slbId"] = state ? state.slbId : undefined;
-            resourceInputs["slbIp"] = state ? state.slbIp : undefined;
-            resourceInputs["slbStatus"] = state ? state.slbStatus : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["vserverGroupId"] = state ? state.vserverGroupId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["appId"] = state?.appId;
+            resourceInputs["listenerPort"] = state?.listenerPort;
+            resourceInputs["slbId"] = state?.slbId;
+            resourceInputs["slbIp"] = state?.slbIp;
+            resourceInputs["slbStatus"] = state?.slbStatus;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["vserverGroupId"] = state?.vserverGroupId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
         } else {
             const args = argsOrState as SlbAttachmentArgs | undefined;
-            if ((!args || args.appId === undefined) && !opts.urn) {
+            if (args?.appId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            if ((!args || args.slbId === undefined) && !opts.urn) {
+            if (args?.slbId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'slbId'");
             }
-            if ((!args || args.slbIp === undefined) && !opts.urn) {
+            if (args?.slbIp === undefined && !opts.urn) {
                 throw new Error("Missing required property 'slbIp'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["appId"] = args ? args.appId : undefined;
-            resourceInputs["listenerPort"] = args ? args.listenerPort : undefined;
-            resourceInputs["slbId"] = args ? args.slbId : undefined;
-            resourceInputs["slbIp"] = args ? args.slbIp : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["vserverGroupId"] = args ? args.vserverGroupId : undefined;
+            resourceInputs["appId"] = args?.appId;
+            resourceInputs["listenerPort"] = args?.listenerPort;
+            resourceInputs["slbId"] = args?.slbId;
+            resourceInputs["slbIp"] = args?.slbIp;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["vserverGroupId"] = args?.vserverGroupId;
             resourceInputs["slbStatus"] = undefined /*out*/;
             resourceInputs["vswitchId"] = undefined /*out*/;
         }

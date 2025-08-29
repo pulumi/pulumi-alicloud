@@ -85,51 +85,51 @@ export class EnterpriseSnapshotPolicy extends pulumi.CustomResource {
     /**
      * The creation time of the resource.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Snapshot replication information. See `crossRegionCopyInfo` below.
      */
-    public readonly crossRegionCopyInfo!: pulumi.Output<outputs.ebs.EnterpriseSnapshotPolicyCrossRegionCopyInfo>;
+    declare public readonly crossRegionCopyInfo: pulumi.Output<outputs.ebs.EnterpriseSnapshotPolicyCrossRegionCopyInfo>;
     /**
      * Description information representing the resource.
      */
-    public readonly desc!: pulumi.Output<string | undefined>;
+    declare public readonly desc: pulumi.Output<string | undefined>;
     /**
      * The name of the resource.
      */
-    public readonly enterpriseSnapshotPolicyName!: pulumi.Output<string>;
+    declare public readonly enterpriseSnapshotPolicyName: pulumi.Output<string>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Snapshot retention policy representing resources. See `retainRule` below.
      */
-    public readonly retainRule!: pulumi.Output<outputs.ebs.EnterpriseSnapshotPolicyRetainRule>;
+    declare public readonly retainRule: pulumi.Output<outputs.ebs.EnterpriseSnapshotPolicyRetainRule>;
     /**
      * The scheduling plan that represents the resource. See `schedule` below.
      */
-    public readonly schedule!: pulumi.Output<outputs.ebs.EnterpriseSnapshotPolicySchedule>;
+    declare public readonly schedule: pulumi.Output<outputs.ebs.EnterpriseSnapshotPolicySchedule>;
     /**
      * Snapshot special retention rules. See `specialRetainRules` below.
      */
-    public readonly specialRetainRules!: pulumi.Output<outputs.ebs.EnterpriseSnapshotPolicySpecialRetainRules>;
+    declare public readonly specialRetainRules: pulumi.Output<outputs.ebs.EnterpriseSnapshotPolicySpecialRetainRules>;
     /**
      * The status of the resource.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * Snapshot storage policy. See `storageRule` below.
      */
-    public readonly storageRule!: pulumi.Output<outputs.ebs.EnterpriseSnapshotPolicyStorageRule | undefined>;
+    declare public readonly storageRule: pulumi.Output<outputs.ebs.EnterpriseSnapshotPolicyStorageRule | undefined>;
     /**
      * The tag of the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Represents the target type of resource binding.
      */
-    public readonly targetType!: pulumi.Output<string>;
+    declare public readonly targetType: pulumi.Output<string>;
 
     /**
      * Create a EnterpriseSnapshotPolicy resource with the given unique name, arguments, and options.
@@ -144,43 +144,43 @@ export class EnterpriseSnapshotPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnterpriseSnapshotPolicyState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["crossRegionCopyInfo"] = state ? state.crossRegionCopyInfo : undefined;
-            resourceInputs["desc"] = state ? state.desc : undefined;
-            resourceInputs["enterpriseSnapshotPolicyName"] = state ? state.enterpriseSnapshotPolicyName : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["retainRule"] = state ? state.retainRule : undefined;
-            resourceInputs["schedule"] = state ? state.schedule : undefined;
-            resourceInputs["specialRetainRules"] = state ? state.specialRetainRules : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["storageRule"] = state ? state.storageRule : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["targetType"] = state ? state.targetType : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["crossRegionCopyInfo"] = state?.crossRegionCopyInfo;
+            resourceInputs["desc"] = state?.desc;
+            resourceInputs["enterpriseSnapshotPolicyName"] = state?.enterpriseSnapshotPolicyName;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["retainRule"] = state?.retainRule;
+            resourceInputs["schedule"] = state?.schedule;
+            resourceInputs["specialRetainRules"] = state?.specialRetainRules;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["storageRule"] = state?.storageRule;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["targetType"] = state?.targetType;
         } else {
             const args = argsOrState as EnterpriseSnapshotPolicyArgs | undefined;
-            if ((!args || args.enterpriseSnapshotPolicyName === undefined) && !opts.urn) {
+            if (args?.enterpriseSnapshotPolicyName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enterpriseSnapshotPolicyName'");
             }
-            if ((!args || args.retainRule === undefined) && !opts.urn) {
+            if (args?.retainRule === undefined && !opts.urn) {
                 throw new Error("Missing required property 'retainRule'");
             }
-            if ((!args || args.schedule === undefined) && !opts.urn) {
+            if (args?.schedule === undefined && !opts.urn) {
                 throw new Error("Missing required property 'schedule'");
             }
-            if ((!args || args.targetType === undefined) && !opts.urn) {
+            if (args?.targetType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetType'");
             }
-            resourceInputs["crossRegionCopyInfo"] = args ? args.crossRegionCopyInfo : undefined;
-            resourceInputs["desc"] = args ? args.desc : undefined;
-            resourceInputs["enterpriseSnapshotPolicyName"] = args ? args.enterpriseSnapshotPolicyName : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["retainRule"] = args ? args.retainRule : undefined;
-            resourceInputs["schedule"] = args ? args.schedule : undefined;
-            resourceInputs["specialRetainRules"] = args ? args.specialRetainRules : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["storageRule"] = args ? args.storageRule : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["targetType"] = args ? args.targetType : undefined;
+            resourceInputs["crossRegionCopyInfo"] = args?.crossRegionCopyInfo;
+            resourceInputs["desc"] = args?.desc;
+            resourceInputs["enterpriseSnapshotPolicyName"] = args?.enterpriseSnapshotPolicyName;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["retainRule"] = args?.retainRule;
+            resourceInputs["schedule"] = args?.schedule;
+            resourceInputs["specialRetainRules"] = args?.specialRetainRules;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["storageRule"] = args?.storageRule;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["targetType"] = args?.targetType;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

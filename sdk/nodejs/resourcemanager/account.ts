@@ -75,47 +75,47 @@ export class Account extends pulumi.CustomResource {
      *
      * @deprecated Field 'abandon_able_check_id' has been deprecated since provider version 1.248.0. New field 'abandonable_check_id' instead.
      */
-    public readonly abandonAbleCheckIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly abandonAbleCheckIds: pulumi.Output<string[] | undefined>;
     /**
      * The ID of the check item that can choose to abandon and continue to perform member deletion.
      * The ID is obtained from the return parameter AbandonableChecks of GetAccountDeletionCheckResult.
      */
-    public readonly abandonableCheckIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly abandonableCheckIds: pulumi.Output<string[] | undefined>;
     /**
      * Account name prefix. Empty the system randomly generated.
      * Format: English letters, numbers, and special characters_.-can be entered. It must start and end with an English letter or number, and continuous special characters_.-cannot be entered '_.-'.
      * The format of the full account name is @< ResourceDirectoryId>.aliyunid.com, for example: 'alice @ rd-3G ****.aliyunid.com'
      * The account name must be unique in the resource directory.
      */
-    public readonly accountNamePrefix!: pulumi.Output<string | undefined>;
+    declare public readonly accountNamePrefix: pulumi.Output<string | undefined>;
     /**
      * Member name
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * The ID of the parent folder
      */
-    public readonly folderId!: pulumi.Output<string>;
+    declare public readonly folderId: pulumi.Output<string>;
     /**
      * Whether to force delete the account.
      */
-    public readonly forceDelete!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDelete: pulumi.Output<boolean | undefined>;
     /**
      * Ways for members to join the resource directory.  invited, created
      */
-    public /*out*/ readonly joinMethod!: pulumi.Output<string>;
+    declare public /*out*/ readonly joinMethod: pulumi.Output<string>;
     /**
      * The time when the member joined the resource directory
      */
-    public /*out*/ readonly joinTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly joinTime: pulumi.Output<string>;
     /**
      * The modification time of the invitation
      */
-    public /*out*/ readonly modifyTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly modifyTime: pulumi.Output<string>;
     /**
      * The settlement account ID. If it is left blank, the newly created member will be used for self-settlement.
      */
-    public readonly payerAccountId!: pulumi.Output<string | undefined>;
+    declare public readonly payerAccountId: pulumi.Output<string | undefined>;
     /**
      * The identity type of the member. Valid values:
      * - resell: The member is an account for a reseller. This is the default value. A relationship is automatically established between the member and the reseller. The management account of the resource directory must be used as the billing account of the member.
@@ -123,25 +123,25 @@ export class Account extends pulumi.CustomResource {
      *
      * > **NOTE:**  This parameter is available only for resellers at the international site (alibabacloud.com).
      */
-    public readonly resellAccountType!: pulumi.Output<string | undefined>;
+    declare public readonly resellAccountType: pulumi.Output<string | undefined>;
     /**
      * Resource directory ID
      */
-    public /*out*/ readonly resourceDirectoryId!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceDirectoryId: pulumi.Output<string>;
     /**
      * Member joining status.  CreateSuccess,CreateVerifying,CreateFailed,CreateExpired,CreateCancelled,PromoteVerifying,PromoteFailed,PromoteExpired,PromoteCancelled,PromoteSuccess,InviteSuccess,Removed
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tag of the resource
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Member type. The value of ResourceAccount indicates the resource account
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a Account resource with the given unique name, arguments, and options.
@@ -156,36 +156,36 @@ export class Account extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountState | undefined;
-            resourceInputs["abandonAbleCheckIds"] = state ? state.abandonAbleCheckIds : undefined;
-            resourceInputs["abandonableCheckIds"] = state ? state.abandonableCheckIds : undefined;
-            resourceInputs["accountNamePrefix"] = state ? state.accountNamePrefix : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["folderId"] = state ? state.folderId : undefined;
-            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
-            resourceInputs["joinMethod"] = state ? state.joinMethod : undefined;
-            resourceInputs["joinTime"] = state ? state.joinTime : undefined;
-            resourceInputs["modifyTime"] = state ? state.modifyTime : undefined;
-            resourceInputs["payerAccountId"] = state ? state.payerAccountId : undefined;
-            resourceInputs["resellAccountType"] = state ? state.resellAccountType : undefined;
-            resourceInputs["resourceDirectoryId"] = state ? state.resourceDirectoryId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["abandonAbleCheckIds"] = state?.abandonAbleCheckIds;
+            resourceInputs["abandonableCheckIds"] = state?.abandonableCheckIds;
+            resourceInputs["accountNamePrefix"] = state?.accountNamePrefix;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["folderId"] = state?.folderId;
+            resourceInputs["forceDelete"] = state?.forceDelete;
+            resourceInputs["joinMethod"] = state?.joinMethod;
+            resourceInputs["joinTime"] = state?.joinTime;
+            resourceInputs["modifyTime"] = state?.modifyTime;
+            resourceInputs["payerAccountId"] = state?.payerAccountId;
+            resourceInputs["resellAccountType"] = state?.resellAccountType;
+            resourceInputs["resourceDirectoryId"] = state?.resourceDirectoryId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as AccountArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            resourceInputs["abandonAbleCheckIds"] = args ? args.abandonAbleCheckIds : undefined;
-            resourceInputs["abandonableCheckIds"] = args ? args.abandonableCheckIds : undefined;
-            resourceInputs["accountNamePrefix"] = args ? args.accountNamePrefix : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["folderId"] = args ? args.folderId : undefined;
-            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
-            resourceInputs["payerAccountId"] = args ? args.payerAccountId : undefined;
-            resourceInputs["resellAccountType"] = args ? args.resellAccountType : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["abandonAbleCheckIds"] = args?.abandonAbleCheckIds;
+            resourceInputs["abandonableCheckIds"] = args?.abandonableCheckIds;
+            resourceInputs["accountNamePrefix"] = args?.accountNamePrefix;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["folderId"] = args?.folderId;
+            resourceInputs["forceDelete"] = args?.forceDelete;
+            resourceInputs["payerAccountId"] = args?.payerAccountId;
+            resourceInputs["resellAccountType"] = args?.resellAccountType;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["type"] = args?.type;
             resourceInputs["joinMethod"] = undefined /*out*/;
             resourceInputs["joinTime"] = undefined /*out*/;
             resourceInputs["modifyTime"] = undefined /*out*/;

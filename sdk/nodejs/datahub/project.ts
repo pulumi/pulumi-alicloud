@@ -66,19 +66,19 @@ export class Project extends pulumi.CustomResource {
     /**
      * Comment of the datahub project. It cannot be longer than 255 characters.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * Create time of the datahub project. It is a human-readable string rather than 64-bits UTC.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Last modify time of the datahub project. It is the same as *create_time* at the beginning. It is also a human-readable string rather than 64-bits UTC.
      */
-    public /*out*/ readonly lastModifyTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastModifyTime: pulumi.Output<string>;
     /**
      * The name of the datahub project. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -93,14 +93,14 @@ export class Project extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["lastModifyTime"] = state ? state.lastModifyTime : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["lastModifyTime"] = state?.lastModifyTime;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["name"] = args?.name;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["lastModifyTime"] = undefined /*out*/;
         }

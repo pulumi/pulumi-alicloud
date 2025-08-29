@@ -95,23 +95,23 @@ export class EnvCustomJob extends pulumi.CustomResource {
     /**
      * The locale. The default is Chinese zh | en.
      */
-    public readonly aliyunLang!: pulumi.Output<string | undefined>;
+    declare public readonly aliyunLang: pulumi.Output<string | undefined>;
     /**
      * Yaml configuration string.
      */
-    public readonly configYaml!: pulumi.Output<string>;
+    declare public readonly configYaml: pulumi.Output<string>;
     /**
      * Custom job name.
      */
-    public readonly envCustomJobName!: pulumi.Output<string>;
+    declare public readonly envCustomJobName: pulumi.Output<string>;
     /**
      * Environment id.
      */
-    public readonly environmentId!: pulumi.Output<string>;
+    declare public readonly environmentId: pulumi.Output<string>;
     /**
      * Status: run, stop.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
 
     /**
      * Create a EnvCustomJob resource with the given unique name, arguments, and options.
@@ -126,27 +126,27 @@ export class EnvCustomJob extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnvCustomJobState | undefined;
-            resourceInputs["aliyunLang"] = state ? state.aliyunLang : undefined;
-            resourceInputs["configYaml"] = state ? state.configYaml : undefined;
-            resourceInputs["envCustomJobName"] = state ? state.envCustomJobName : undefined;
-            resourceInputs["environmentId"] = state ? state.environmentId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["aliyunLang"] = state?.aliyunLang;
+            resourceInputs["configYaml"] = state?.configYaml;
+            resourceInputs["envCustomJobName"] = state?.envCustomJobName;
+            resourceInputs["environmentId"] = state?.environmentId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as EnvCustomJobArgs | undefined;
-            if ((!args || args.configYaml === undefined) && !opts.urn) {
+            if (args?.configYaml === undefined && !opts.urn) {
                 throw new Error("Missing required property 'configYaml'");
             }
-            if ((!args || args.envCustomJobName === undefined) && !opts.urn) {
+            if (args?.envCustomJobName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'envCustomJobName'");
             }
-            if ((!args || args.environmentId === undefined) && !opts.urn) {
+            if (args?.environmentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environmentId'");
             }
-            resourceInputs["aliyunLang"] = args ? args.aliyunLang : undefined;
-            resourceInputs["configYaml"] = args ? args.configYaml : undefined;
-            resourceInputs["envCustomJobName"] = args ? args.envCustomJobName : undefined;
-            resourceInputs["environmentId"] = args ? args.environmentId : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["aliyunLang"] = args?.aliyunLang;
+            resourceInputs["configYaml"] = args?.configYaml;
+            resourceInputs["envCustomJobName"] = args?.envCustomJobName;
+            resourceInputs["environmentId"] = args?.environmentId;
+            resourceInputs["status"] = args?.status;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EnvCustomJob.__pulumiType, name, resourceInputs, opts);

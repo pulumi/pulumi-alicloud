@@ -85,25 +85,25 @@ export class Policy extends pulumi.CustomResource {
     /**
      * Policy creation time
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The policy description.
      */
-    public readonly policyDescription!: pulumi.Output<string | undefined>;
+    declare public readonly policyDescription: pulumi.Output<string | undefined>;
     /**
      * Policy Name
      */
-    public readonly policyName!: pulumi.Output<string | undefined>;
+    declare public readonly policyName: pulumi.Output<string | undefined>;
     /**
      * The policy type. Valid values:
      * - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
      * - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
      */
-    public readonly policyType!: pulumi.Output<string>;
+    declare public readonly policyType: pulumi.Output<string>;
     /**
      * A list of policy rules See `rules` below.
      */
-    public readonly rules!: pulumi.Output<outputs.hbr.PolicyRule[] | undefined>;
+    declare public readonly rules: pulumi.Output<outputs.hbr.PolicyRule[] | undefined>;
 
     /**
      * Create a Policy resource with the given unique name, arguments, and options.
@@ -118,17 +118,17 @@ export class Policy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["policyDescription"] = state ? state.policyDescription : undefined;
-            resourceInputs["policyName"] = state ? state.policyName : undefined;
-            resourceInputs["policyType"] = state ? state.policyType : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["policyDescription"] = state?.policyDescription;
+            resourceInputs["policyName"] = state?.policyName;
+            resourceInputs["policyType"] = state?.policyType;
+            resourceInputs["rules"] = state?.rules;
         } else {
             const args = argsOrState as PolicyArgs | undefined;
-            resourceInputs["policyDescription"] = args ? args.policyDescription : undefined;
-            resourceInputs["policyName"] = args ? args.policyName : undefined;
-            resourceInputs["policyType"] = args ? args.policyType : undefined;
-            resourceInputs["rules"] = args ? args.rules : undefined;
+            resourceInputs["policyDescription"] = args?.policyDescription;
+            resourceInputs["policyName"] = args?.policyName;
+            resourceInputs["policyType"] = args?.policyType;
+            resourceInputs["rules"] = args?.rules;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

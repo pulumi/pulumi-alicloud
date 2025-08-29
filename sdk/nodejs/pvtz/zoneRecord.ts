@@ -62,52 +62,52 @@ export class ZoneRecord extends pulumi.CustomResource {
     /**
      * User language.
      */
-    public readonly lang!: pulumi.Output<string | undefined>;
+    declare public readonly lang: pulumi.Output<string | undefined>;
     /**
      * The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-99]. Default to 1.
      */
-    public readonly priority!: pulumi.Output<number | undefined>;
+    declare public readonly priority: pulumi.Output<number | undefined>;
     /**
      * The Private Zone Record ID.
      */
-    public /*out*/ readonly recordId!: pulumi.Output<string>;
+    declare public /*out*/ readonly recordId: pulumi.Output<string>;
     /**
      * The remark of the Private Zone Record.
      */
-    public readonly remark!: pulumi.Output<string | undefined>;
+    declare public readonly remark: pulumi.Output<string | undefined>;
     /**
      * The resource record of the Private Zone Record.
      *
      * @deprecated Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead.
      */
-    public readonly resourceRecord!: pulumi.Output<string>;
+    declare public readonly resourceRecord: pulumi.Output<string>;
     /**
      * The rr of the Private Zone Record.
      */
-    public readonly rr!: pulumi.Output<string>;
+    declare public readonly rr: pulumi.Output<string>;
     /**
      * Resolve record status. Value:
      * - ENABLE: enable resolution.
      * - DISABLE: pause parsing.
      */
-    public readonly status!: pulumi.Output<string | undefined>;
+    declare public readonly status: pulumi.Output<string | undefined>;
     /**
      * The ttl of the Private Zone Record. Default to `60`.
      */
-    public readonly ttl!: pulumi.Output<number | undefined>;
+    declare public readonly ttl: pulumi.Output<number | undefined>;
     /**
      * The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
      */
-    public readonly type!: pulumi.Output<string>;
-    public readonly userClientIp!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string>;
+    declare public readonly userClientIp: pulumi.Output<string | undefined>;
     /**
      * The value of the Private Zone Record.
      */
-    public readonly value!: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string>;
     /**
      * The name of the Private Zone Record.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a ZoneRecord resource with the given unique name, arguments, and options.
@@ -122,40 +122,40 @@ export class ZoneRecord extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZoneRecordState | undefined;
-            resourceInputs["lang"] = state ? state.lang : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["recordId"] = state ? state.recordId : undefined;
-            resourceInputs["remark"] = state ? state.remark : undefined;
-            resourceInputs["resourceRecord"] = state ? state.resourceRecord : undefined;
-            resourceInputs["rr"] = state ? state.rr : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["ttl"] = state ? state.ttl : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["userClientIp"] = state ? state.userClientIp : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["lang"] = state?.lang;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["recordId"] = state?.recordId;
+            resourceInputs["remark"] = state?.remark;
+            resourceInputs["resourceRecord"] = state?.resourceRecord;
+            resourceInputs["rr"] = state?.rr;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["ttl"] = state?.ttl;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["userClientIp"] = state?.userClientIp;
+            resourceInputs["value"] = state?.value;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ZoneRecordArgs | undefined;
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            if ((!args || args.value === undefined) && !opts.urn) {
+            if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["lang"] = args ? args.lang : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["remark"] = args ? args.remark : undefined;
-            resourceInputs["resourceRecord"] = args ? args.resourceRecord : undefined;
-            resourceInputs["rr"] = args ? args.rr : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["ttl"] = args ? args.ttl : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["userClientIp"] = args ? args.userClientIp : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["lang"] = args?.lang;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["remark"] = args?.remark;
+            resourceInputs["resourceRecord"] = args?.resourceRecord;
+            resourceInputs["rr"] = args?.rr;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["ttl"] = args?.ttl;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["userClientIp"] = args?.userClientIp;
+            resourceInputs["value"] = args?.value;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["recordId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

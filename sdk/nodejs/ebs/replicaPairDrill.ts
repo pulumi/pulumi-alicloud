@@ -63,15 +63,15 @@ export class ReplicaPairDrill extends pulumi.CustomResource {
     /**
      * Copy the ID of the pair. You can call DescribeDiskReplicaPairs to query the list of asynchronous replication pairs to obtain the replication pair ID.
      */
-    public readonly pairId!: pulumi.Output<string>;
+    declare public readonly pairId: pulumi.Output<string>;
     /**
      * The first ID of the resource.
      */
-    public /*out*/ readonly replicaPairDrillId!: pulumi.Output<string>;
+    declare public /*out*/ readonly replicaPairDrillId: pulumi.Output<string>;
     /**
      * Walkthrough status. _failed: Execution failed._failed: Cleanup failed.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a ReplicaPairDrill resource with the given unique name, arguments, and options.
@@ -86,15 +86,15 @@ export class ReplicaPairDrill extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ReplicaPairDrillState | undefined;
-            resourceInputs["pairId"] = state ? state.pairId : undefined;
-            resourceInputs["replicaPairDrillId"] = state ? state.replicaPairDrillId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["pairId"] = state?.pairId;
+            resourceInputs["replicaPairDrillId"] = state?.replicaPairDrillId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as ReplicaPairDrillArgs | undefined;
-            if ((!args || args.pairId === undefined) && !opts.urn) {
+            if (args?.pairId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pairId'");
             }
-            resourceInputs["pairId"] = args ? args.pairId : undefined;
+            resourceInputs["pairId"] = args?.pairId;
             resourceInputs["replicaPairDrillId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

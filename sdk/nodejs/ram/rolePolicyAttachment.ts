@@ -112,17 +112,17 @@ export class RolePolicyAttachment extends pulumi.CustomResource {
     /**
      * The name of the policy.
      */
-    public readonly policyName!: pulumi.Output<string>;
+    declare public readonly policyName: pulumi.Output<string>;
     /**
      * Policy type.
      * - Custom: Custom policy.
      * - System: System policy.
      */
-    public readonly policyType!: pulumi.Output<string>;
+    declare public readonly policyType: pulumi.Output<string>;
     /**
      * The RAM role name.
      */
-    public readonly roleName!: pulumi.Output<string>;
+    declare public readonly roleName: pulumi.Output<string>;
 
     /**
      * Create a RolePolicyAttachment resource with the given unique name, arguments, and options.
@@ -137,23 +137,23 @@ export class RolePolicyAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RolePolicyAttachmentState | undefined;
-            resourceInputs["policyName"] = state ? state.policyName : undefined;
-            resourceInputs["policyType"] = state ? state.policyType : undefined;
-            resourceInputs["roleName"] = state ? state.roleName : undefined;
+            resourceInputs["policyName"] = state?.policyName;
+            resourceInputs["policyType"] = state?.policyType;
+            resourceInputs["roleName"] = state?.roleName;
         } else {
             const args = argsOrState as RolePolicyAttachmentArgs | undefined;
-            if ((!args || args.policyName === undefined) && !opts.urn) {
+            if (args?.policyName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyName'");
             }
-            if ((!args || args.policyType === undefined) && !opts.urn) {
+            if (args?.policyType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyType'");
             }
-            if ((!args || args.roleName === undefined) && !opts.urn) {
+            if (args?.roleName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roleName'");
             }
-            resourceInputs["policyName"] = args ? args.policyName : undefined;
-            resourceInputs["policyType"] = args ? args.policyType : undefined;
-            resourceInputs["roleName"] = args ? args.roleName : undefined;
+            resourceInputs["policyName"] = args?.policyName;
+            resourceInputs["policyType"] = args?.policyType;
+            resourceInputs["roleName"] = args?.roleName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RolePolicyAttachment.__pulumiType, name, resourceInputs, opts);

@@ -69,39 +69,39 @@ export class RdsBackup extends pulumi.CustomResource {
     /**
      * The backup id.
      */
-    public /*out*/ readonly backupId!: pulumi.Output<string>;
+    declare public /*out*/ readonly backupId: pulumi.Output<string>;
     /**
      * The type of backup that you want to perform. Default value: `Physical`. Valid values: `Logical`, `Physical` and `Snapshot`.
      */
-    public readonly backupMethod!: pulumi.Output<string>;
+    declare public readonly backupMethod: pulumi.Output<string>;
     /**
      * The policy that you want to use for the backup task. Valid values:
      * * **db**: specifies to perform a database-level backup.
      * * **instance**: specifies to perform an instance-level backup.
      */
-    public readonly backupStrategy!: pulumi.Output<string | undefined>;
+    declare public readonly backupStrategy: pulumi.Output<string | undefined>;
     /**
      * The method that you want to use for the backup task. Default value: `Auto`. Valid values:
      * * **Auto**: specifies to automatically perform a full or incremental backup.
      * * **FullBackup**: specifies to perform a full backup.
      */
-    public readonly backupType!: pulumi.Output<string>;
+    declare public readonly backupType: pulumi.Output<string>;
     /**
      * The db instance id.
      */
-    public readonly dbInstanceId!: pulumi.Output<string>;
+    declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
      * The names of the databases whose data you want to back up. Separate the names of the databases with commas (,).
      */
-    public readonly dbName!: pulumi.Output<string | undefined>;
+    declare public readonly dbName: pulumi.Output<string | undefined>;
     /**
      * Remove form state when resource cannot be deleted. Valid values: `true` and `false`.
      */
-    public readonly removeFromState!: pulumi.Output<boolean | undefined>;
+    declare public readonly removeFromState: pulumi.Output<boolean | undefined>;
     /**
      * Indicates whether the data backup file can be deleted. Valid values: `Enabled` and `Disabled`.
      */
-    public /*out*/ readonly storeStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly storeStatus: pulumi.Output<string>;
 
     /**
      * Create a RdsBackup resource with the given unique name, arguments, and options.
@@ -116,25 +116,25 @@ export class RdsBackup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RdsBackupState | undefined;
-            resourceInputs["backupId"] = state ? state.backupId : undefined;
-            resourceInputs["backupMethod"] = state ? state.backupMethod : undefined;
-            resourceInputs["backupStrategy"] = state ? state.backupStrategy : undefined;
-            resourceInputs["backupType"] = state ? state.backupType : undefined;
-            resourceInputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
-            resourceInputs["dbName"] = state ? state.dbName : undefined;
-            resourceInputs["removeFromState"] = state ? state.removeFromState : undefined;
-            resourceInputs["storeStatus"] = state ? state.storeStatus : undefined;
+            resourceInputs["backupId"] = state?.backupId;
+            resourceInputs["backupMethod"] = state?.backupMethod;
+            resourceInputs["backupStrategy"] = state?.backupStrategy;
+            resourceInputs["backupType"] = state?.backupType;
+            resourceInputs["dbInstanceId"] = state?.dbInstanceId;
+            resourceInputs["dbName"] = state?.dbName;
+            resourceInputs["removeFromState"] = state?.removeFromState;
+            resourceInputs["storeStatus"] = state?.storeStatus;
         } else {
             const args = argsOrState as RdsBackupArgs | undefined;
-            if ((!args || args.dbInstanceId === undefined) && !opts.urn) {
+            if (args?.dbInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceId'");
             }
-            resourceInputs["backupMethod"] = args ? args.backupMethod : undefined;
-            resourceInputs["backupStrategy"] = args ? args.backupStrategy : undefined;
-            resourceInputs["backupType"] = args ? args.backupType : undefined;
-            resourceInputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
-            resourceInputs["dbName"] = args ? args.dbName : undefined;
-            resourceInputs["removeFromState"] = args ? args.removeFromState : undefined;
+            resourceInputs["backupMethod"] = args?.backupMethod;
+            resourceInputs["backupStrategy"] = args?.backupStrategy;
+            resourceInputs["backupType"] = args?.backupType;
+            resourceInputs["dbInstanceId"] = args?.dbInstanceId;
+            resourceInputs["dbName"] = args?.dbName;
+            resourceInputs["removeFromState"] = args?.removeFromState;
             resourceInputs["backupId"] = undefined /*out*/;
             resourceInputs["storeStatus"] = undefined /*out*/;
         }

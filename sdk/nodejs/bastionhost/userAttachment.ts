@@ -100,15 +100,15 @@ export class UserAttachment extends pulumi.CustomResource {
     /**
      * Specifies the user group to add the user's bastion host ID of.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Specifies the user group to which you want to add the user ID.
      */
-    public readonly userGroupId!: pulumi.Output<string>;
+    declare public readonly userGroupId: pulumi.Output<string>;
     /**
      * Specify that you want to add to the policy attached to the user group ID. This includes response parameters in a Json-formatted string supports up to set up 100 USER ID.
      */
-    public readonly userId!: pulumi.Output<string>;
+    declare public readonly userId: pulumi.Output<string>;
 
     /**
      * Create a UserAttachment resource with the given unique name, arguments, and options.
@@ -123,23 +123,23 @@ export class UserAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserAttachmentState | undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["userGroupId"] = state ? state.userGroupId : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["userGroupId"] = state?.userGroupId;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as UserAttachmentArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.userGroupId === undefined) && !opts.urn) {
+            if (args?.userGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userGroupId'");
             }
-            if ((!args || args.userId === undefined) && !opts.urn) {
+            if (args?.userId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["userGroupId"] = args ? args.userGroupId : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["userGroupId"] = args?.userGroupId;
+            resourceInputs["userId"] = args?.userId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(UserAttachment.__pulumiType, name, resourceInputs, opts);

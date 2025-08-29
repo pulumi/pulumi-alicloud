@@ -111,23 +111,23 @@ export class ApplicationDeployment extends pulumi.CustomResource {
     /**
      * The ID of the application that you want to deploy.
      */
-    public readonly appId!: pulumi.Output<string>;
+    declare public readonly appId: pulumi.Output<string>;
     /**
      * The ID of the instance group where the application is going to be deployed. Set this parameter to all if you want to deploy the application to all groups.
      */
-    public readonly groupId!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string>;
     /**
      * Last package version deployed.
      */
-    public /*out*/ readonly lastPackageVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastPackageVersion: pulumi.Output<string>;
     /**
      * The version of the application that you want to deploy. It must be unique for every application. The length cannot exceed 64 characters. We recommended you to use a timestamp.
      */
-    public readonly packageVersion!: pulumi.Output<string | undefined>;
+    declare public readonly packageVersion: pulumi.Output<string | undefined>;
     /**
      * The address to store the uploaded web application (WAR) package for application deployment. This parameter is required when the deployType parameter is set as url.
      */
-    public readonly warUrl!: pulumi.Output<string>;
+    declare public readonly warUrl: pulumi.Output<string>;
 
     /**
      * Create a ApplicationDeployment resource with the given unique name, arguments, and options.
@@ -142,26 +142,26 @@ export class ApplicationDeployment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationDeploymentState | undefined;
-            resourceInputs["appId"] = state ? state.appId : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["lastPackageVersion"] = state ? state.lastPackageVersion : undefined;
-            resourceInputs["packageVersion"] = state ? state.packageVersion : undefined;
-            resourceInputs["warUrl"] = state ? state.warUrl : undefined;
+            resourceInputs["appId"] = state?.appId;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["lastPackageVersion"] = state?.lastPackageVersion;
+            resourceInputs["packageVersion"] = state?.packageVersion;
+            resourceInputs["warUrl"] = state?.warUrl;
         } else {
             const args = argsOrState as ApplicationDeploymentArgs | undefined;
-            if ((!args || args.appId === undefined) && !opts.urn) {
+            if (args?.appId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            if ((!args || args.groupId === undefined) && !opts.urn) {
+            if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.warUrl === undefined) && !opts.urn) {
+            if (args?.warUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'warUrl'");
             }
-            resourceInputs["appId"] = args ? args.appId : undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["packageVersion"] = args ? args.packageVersion : undefined;
-            resourceInputs["warUrl"] = args ? args.warUrl : undefined;
+            resourceInputs["appId"] = args?.appId;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["packageVersion"] = args?.packageVersion;
+            resourceInputs["warUrl"] = args?.warUrl;
             resourceInputs["lastPackageVersion"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

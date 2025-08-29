@@ -150,101 +150,101 @@ export class Job extends pulumi.CustomResource {
     /**
      * Error retry interval, unit s, default value 30.
      */
-    public readonly attemptInterval!: pulumi.Output<number | undefined>;
+    declare public readonly attemptInterval: pulumi.Output<number | undefined>;
     /**
      * Full path of the task interface class.
      *
      * This field is available only when your task is of the Java task type.
      */
-    public readonly className!: pulumi.Output<string | undefined>;
+    declare public readonly className: pulumi.Output<string | undefined>;
     /**
      * The script code of the python, shell, and go task types.
      */
-    public readonly content!: pulumi.Output<string | undefined>;
+    declare public readonly content: pulumi.Output<string | undefined>;
     /**
      * Task description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Task execution mode, the possible results are as follows:
      */
-    public readonly executeMode!: pulumi.Output<string>;
+    declare public readonly executeMode: pulumi.Output<string>;
     /**
      * Number of consecutive failed alarms
      */
-    public readonly failTimes!: pulumi.Output<number | undefined>;
+    declare public readonly failTimes: pulumi.Output<number | undefined>;
     /**
      * The application ID, which is obtained from the **application management** page of the console.
      */
-    public readonly groupId!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string>;
     /**
      * JobId
      */
-    public /*out*/ readonly jobId!: pulumi.Output<number>;
+    declare public /*out*/ readonly jobId: pulumi.Output<number>;
     /**
      * Task monitoring information See `jobMonitorInfo` below.
      */
-    public readonly jobMonitorInfo!: pulumi.Output<outputs.schedulerx.JobJobMonitorInfo | undefined>;
+    declare public readonly jobMonitorInfo: pulumi.Output<outputs.schedulerx.JobJobMonitorInfo | undefined>;
     /**
      * JobName
      */
-    public readonly jobName!: pulumi.Output<string>;
+    declare public readonly jobName: pulumi.Output<string>;
     /**
      * Job Type
      */
-    public readonly jobType!: pulumi.Output<string>;
+    declare public readonly jobType: pulumi.Output<string>;
     /**
      * Advanced configuration, limited to parallel computing, memory grid, and grid computing. See `mapTaskXattrs` below.
      */
-    public readonly mapTaskXattrs!: pulumi.Output<outputs.schedulerx.JobMapTaskXattrs | undefined>;
+    declare public readonly mapTaskXattrs: pulumi.Output<outputs.schedulerx.JobMapTaskXattrs | undefined>;
     /**
      * The maximum number of error retries, which is set based on business requirements. The default value is 0.
      */
-    public readonly maxAttempt!: pulumi.Output<number | undefined>;
+    declare public readonly maxAttempt: pulumi.Output<number | undefined>;
     /**
      * The maximum number of instances running at the same time. The default value is 1, that is, the last trigger is not completed, and the next trigger will not be performed even at the running time.
      */
-    public readonly maxConcurrency!: pulumi.Output<string | undefined>;
+    declare public readonly maxConcurrency: pulumi.Output<string | undefined>;
     /**
      * Namespace, which is obtained on the `Namespace` page of the console.
      */
-    public readonly namespace!: pulumi.Output<string>;
+    declare public readonly namespace: pulumi.Output<string>;
     /**
      * Special third parties are required.
      */
-    public readonly namespaceSource!: pulumi.Output<string | undefined>;
+    declare public readonly namespaceSource: pulumi.Output<string | undefined>;
     /**
      * User-defined parameters, which can be obtained at runtime.
      */
-    public readonly parameters!: pulumi.Output<string | undefined>;
+    declare public readonly parameters: pulumi.Output<string | undefined>;
     /**
      * Task status. The values are as follows:
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * Success Notification Switch
      */
-    public readonly successNoticeEnable!: pulumi.Output<boolean | undefined>;
+    declare public readonly successNoticeEnable: pulumi.Output<boolean | undefined>;
     /**
      * Advanced configuration of parallel grid tasks, push model or pull model
      */
-    public readonly taskDispatchMode!: pulumi.Output<string | undefined>;
+    declare public readonly taskDispatchMode: pulumi.Output<string | undefined>;
     /**
      * K8s task type custom task template
      */
-    public readonly template!: pulumi.Output<string | undefined>;
+    declare public readonly template: pulumi.Output<string | undefined>;
     /**
      * Time configuration information See `timeConfig` below.
      */
-    public readonly timeConfig!: pulumi.Output<outputs.schedulerx.JobTimeConfig>;
+    declare public readonly timeConfig: pulumi.Output<outputs.schedulerx.JobTimeConfig>;
     /**
      * Time Zone
      */
-    public readonly timezone!: pulumi.Output<string | undefined>;
+    declare public readonly timezone: pulumi.Output<string | undefined>;
     /**
      * Task Extension Field
      */
-    public readonly xAttrs!: pulumi.Output<string>;
+    declare public readonly xAttrs: pulumi.Output<string>;
 
     /**
      * Create a Job resource with the given unique name, arguments, and options.
@@ -259,73 +259,73 @@ export class Job extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as JobState | undefined;
-            resourceInputs["attemptInterval"] = state ? state.attemptInterval : undefined;
-            resourceInputs["className"] = state ? state.className : undefined;
-            resourceInputs["content"] = state ? state.content : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["executeMode"] = state ? state.executeMode : undefined;
-            resourceInputs["failTimes"] = state ? state.failTimes : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["jobId"] = state ? state.jobId : undefined;
-            resourceInputs["jobMonitorInfo"] = state ? state.jobMonitorInfo : undefined;
-            resourceInputs["jobName"] = state ? state.jobName : undefined;
-            resourceInputs["jobType"] = state ? state.jobType : undefined;
-            resourceInputs["mapTaskXattrs"] = state ? state.mapTaskXattrs : undefined;
-            resourceInputs["maxAttempt"] = state ? state.maxAttempt : undefined;
-            resourceInputs["maxConcurrency"] = state ? state.maxConcurrency : undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["namespaceSource"] = state ? state.namespaceSource : undefined;
-            resourceInputs["parameters"] = state ? state.parameters : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["successNoticeEnable"] = state ? state.successNoticeEnable : undefined;
-            resourceInputs["taskDispatchMode"] = state ? state.taskDispatchMode : undefined;
-            resourceInputs["template"] = state ? state.template : undefined;
-            resourceInputs["timeConfig"] = state ? state.timeConfig : undefined;
-            resourceInputs["timezone"] = state ? state.timezone : undefined;
-            resourceInputs["xAttrs"] = state ? state.xAttrs : undefined;
+            resourceInputs["attemptInterval"] = state?.attemptInterval;
+            resourceInputs["className"] = state?.className;
+            resourceInputs["content"] = state?.content;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["executeMode"] = state?.executeMode;
+            resourceInputs["failTimes"] = state?.failTimes;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["jobId"] = state?.jobId;
+            resourceInputs["jobMonitorInfo"] = state?.jobMonitorInfo;
+            resourceInputs["jobName"] = state?.jobName;
+            resourceInputs["jobType"] = state?.jobType;
+            resourceInputs["mapTaskXattrs"] = state?.mapTaskXattrs;
+            resourceInputs["maxAttempt"] = state?.maxAttempt;
+            resourceInputs["maxConcurrency"] = state?.maxConcurrency;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["namespaceSource"] = state?.namespaceSource;
+            resourceInputs["parameters"] = state?.parameters;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["successNoticeEnable"] = state?.successNoticeEnable;
+            resourceInputs["taskDispatchMode"] = state?.taskDispatchMode;
+            resourceInputs["template"] = state?.template;
+            resourceInputs["timeConfig"] = state?.timeConfig;
+            resourceInputs["timezone"] = state?.timezone;
+            resourceInputs["xAttrs"] = state?.xAttrs;
         } else {
             const args = argsOrState as JobArgs | undefined;
-            if ((!args || args.executeMode === undefined) && !opts.urn) {
+            if (args?.executeMode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'executeMode'");
             }
-            if ((!args || args.groupId === undefined) && !opts.urn) {
+            if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.jobName === undefined) && !opts.urn) {
+            if (args?.jobName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'jobName'");
             }
-            if ((!args || args.jobType === undefined) && !opts.urn) {
+            if (args?.jobType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'jobType'");
             }
-            if ((!args || args.namespace === undefined) && !opts.urn) {
+            if (args?.namespace === undefined && !opts.urn) {
                 throw new Error("Missing required property 'namespace'");
             }
-            if ((!args || args.timeConfig === undefined) && !opts.urn) {
+            if (args?.timeConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'timeConfig'");
             }
-            resourceInputs["attemptInterval"] = args ? args.attemptInterval : undefined;
-            resourceInputs["className"] = args ? args.className : undefined;
-            resourceInputs["content"] = args ? args.content : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["executeMode"] = args ? args.executeMode : undefined;
-            resourceInputs["failTimes"] = args ? args.failTimes : undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["jobMonitorInfo"] = args ? args.jobMonitorInfo : undefined;
-            resourceInputs["jobName"] = args ? args.jobName : undefined;
-            resourceInputs["jobType"] = args ? args.jobType : undefined;
-            resourceInputs["mapTaskXattrs"] = args ? args.mapTaskXattrs : undefined;
-            resourceInputs["maxAttempt"] = args ? args.maxAttempt : undefined;
-            resourceInputs["maxConcurrency"] = args ? args.maxConcurrency : undefined;
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["namespaceSource"] = args ? args.namespaceSource : undefined;
-            resourceInputs["parameters"] = args ? args.parameters : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["successNoticeEnable"] = args ? args.successNoticeEnable : undefined;
-            resourceInputs["taskDispatchMode"] = args ? args.taskDispatchMode : undefined;
-            resourceInputs["template"] = args ? args.template : undefined;
-            resourceInputs["timeConfig"] = args ? args.timeConfig : undefined;
-            resourceInputs["timezone"] = args ? args.timezone : undefined;
-            resourceInputs["xAttrs"] = args ? args.xAttrs : undefined;
+            resourceInputs["attemptInterval"] = args?.attemptInterval;
+            resourceInputs["className"] = args?.className;
+            resourceInputs["content"] = args?.content;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["executeMode"] = args?.executeMode;
+            resourceInputs["failTimes"] = args?.failTimes;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["jobMonitorInfo"] = args?.jobMonitorInfo;
+            resourceInputs["jobName"] = args?.jobName;
+            resourceInputs["jobType"] = args?.jobType;
+            resourceInputs["mapTaskXattrs"] = args?.mapTaskXattrs;
+            resourceInputs["maxAttempt"] = args?.maxAttempt;
+            resourceInputs["maxConcurrency"] = args?.maxConcurrency;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["namespaceSource"] = args?.namespaceSource;
+            resourceInputs["parameters"] = args?.parameters;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["successNoticeEnable"] = args?.successNoticeEnable;
+            resourceInputs["taskDispatchMode"] = args?.taskDispatchMode;
+            resourceInputs["template"] = args?.template;
+            resourceInputs["timeConfig"] = args?.timeConfig;
+            resourceInputs["timezone"] = args?.timezone;
+            resourceInputs["xAttrs"] = args?.xAttrs;
             resourceInputs["jobId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

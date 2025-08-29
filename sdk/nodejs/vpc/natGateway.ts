@@ -121,104 +121,104 @@ export class NatGateway extends pulumi.CustomResource {
     /**
      * The access mode for reverse access to the VPC NAT gateway. See `accessMode` below.
      */
-    public readonly accessMode!: pulumi.Output<outputs.vpc.NatGatewayAccessMode>;
+    declare public readonly accessMode: pulumi.Output<outputs.vpc.NatGatewayAccessMode>;
     /**
      * Whether enable the deletion protection or not. Default value: `false`.
      * - true: Enable deletion protection.
      * - false: Disable deletion protection.
      */
-    public readonly deletionProtection!: pulumi.Output<boolean>;
+    declare public readonly deletionProtection: pulumi.Output<boolean>;
     /**
      * Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to only precheck this request. Default value: `false`.
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
      * - `MULTI_BINDED`: Multi EIP network card visible mode.
      * - `NAT`: EIP normal mode, compatible with IPv4 gateway.
      */
-    public readonly eipBindMode!: pulumi.Output<string>;
+    declare public readonly eipBindMode: pulumi.Output<string>;
     /**
      * Specifies whether to forcefully delete the NAT gateway.
      */
-    public readonly force!: pulumi.Output<boolean | undefined>;
+    declare public readonly force: pulumi.Output<boolean | undefined>;
     /**
      * The nat gateway will auto create a forward item.
      */
-    public /*out*/ readonly forwardTableIds!: pulumi.Output<string>;
+    declare public /*out*/ readonly forwardTableIds: pulumi.Output<string>;
     /**
      * Specifies whether to enable ICMP retrieval. Default value: `true`. Valid values:
      */
-    public readonly icmpReplyEnabled!: pulumi.Output<boolean>;
+    declare public readonly icmpReplyEnabled: pulumi.Output<boolean>;
     /**
      * Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
      *
      * @deprecated Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
      */
-    public readonly instanceChargeType!: pulumi.Output<string>;
+    declare public readonly instanceChargeType: pulumi.Output<string>;
     /**
      * The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internetChargeType` cannot be set to `PayBySpec`.
      */
-    public readonly internetChargeType!: pulumi.Output<string>;
+    declare public readonly internetChargeType: pulumi.Output<string>;
     /**
      * Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
      *
      * @deprecated Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
      */
-    public readonly natGatewayName!: pulumi.Output<string>;
+    declare public readonly natGatewayName: pulumi.Output<string>;
     /**
      * The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`.
      */
-    public readonly natType!: pulumi.Output<string>;
+    declare public readonly natType: pulumi.Output<string>;
     /**
      * Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
      */
-    public readonly networkType!: pulumi.Output<string>;
+    declare public readonly networkType: pulumi.Output<string>;
     /**
      * The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
      */
-    public readonly privateLinkEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly privateLinkEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The nat gateway will auto create a snat item.
      */
-    public /*out*/ readonly snatTableIds!: pulumi.Output<string>;
+    declare public /*out*/ readonly snatTableIds: pulumi.Output<string>;
     /**
      * The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internetChargeType` is `PayBySpec` and `networkType` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
      */
-    public readonly specification!: pulumi.Output<string>;
+    declare public readonly specification: pulumi.Output<string>;
     /**
      * (Available since v1.121.0) The status of NAT gateway.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tags of NAT gateway.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The VPC ID.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * The id of VSwitch.
      */
-    public readonly vswitchId!: pulumi.Output<string | undefined>;
+    declare public readonly vswitchId: pulumi.Output<string | undefined>;
 
     /**
      * Create a NatGateway resource with the given unique name, arguments, and options.
@@ -233,54 +233,54 @@ export class NatGateway extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NatGatewayState | undefined;
-            resourceInputs["accessMode"] = state ? state.accessMode : undefined;
-            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["eipBindMode"] = state ? state.eipBindMode : undefined;
-            resourceInputs["force"] = state ? state.force : undefined;
-            resourceInputs["forwardTableIds"] = state ? state.forwardTableIds : undefined;
-            resourceInputs["icmpReplyEnabled"] = state ? state.icmpReplyEnabled : undefined;
-            resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
-            resourceInputs["internetChargeType"] = state ? state.internetChargeType : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["natGatewayName"] = state ? state.natGatewayName : undefined;
-            resourceInputs["natType"] = state ? state.natType : undefined;
-            resourceInputs["networkType"] = state ? state.networkType : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["privateLinkEnabled"] = state ? state.privateLinkEnabled : undefined;
-            resourceInputs["snatTableIds"] = state ? state.snatTableIds : undefined;
-            resourceInputs["specification"] = state ? state.specification : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["accessMode"] = state?.accessMode;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["eipBindMode"] = state?.eipBindMode;
+            resourceInputs["force"] = state?.force;
+            resourceInputs["forwardTableIds"] = state?.forwardTableIds;
+            resourceInputs["icmpReplyEnabled"] = state?.icmpReplyEnabled;
+            resourceInputs["instanceChargeType"] = state?.instanceChargeType;
+            resourceInputs["internetChargeType"] = state?.internetChargeType;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["natGatewayName"] = state?.natGatewayName;
+            resourceInputs["natType"] = state?.natType;
+            resourceInputs["networkType"] = state?.networkType;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["privateLinkEnabled"] = state?.privateLinkEnabled;
+            resourceInputs["snatTableIds"] = state?.snatTableIds;
+            resourceInputs["specification"] = state?.specification;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
         } else {
             const args = argsOrState as NatGatewayArgs | undefined;
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["accessMode"] = args ? args.accessMode : undefined;
-            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["eipBindMode"] = args ? args.eipBindMode : undefined;
-            resourceInputs["force"] = args ? args.force : undefined;
-            resourceInputs["icmpReplyEnabled"] = args ? args.icmpReplyEnabled : undefined;
-            resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
-            resourceInputs["internetChargeType"] = args ? args.internetChargeType : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["natGatewayName"] = args ? args.natGatewayName : undefined;
-            resourceInputs["natType"] = args ? args.natType : undefined;
-            resourceInputs["networkType"] = args ? args.networkType : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["privateLinkEnabled"] = args ? args.privateLinkEnabled : undefined;
-            resourceInputs["specification"] = args ? args.specification : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["accessMode"] = args?.accessMode;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["eipBindMode"] = args?.eipBindMode;
+            resourceInputs["force"] = args?.force;
+            resourceInputs["icmpReplyEnabled"] = args?.icmpReplyEnabled;
+            resourceInputs["instanceChargeType"] = args?.instanceChargeType;
+            resourceInputs["internetChargeType"] = args?.internetChargeType;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["natGatewayName"] = args?.natGatewayName;
+            resourceInputs["natType"] = args?.natType;
+            resourceInputs["networkType"] = args?.networkType;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["privateLinkEnabled"] = args?.privateLinkEnabled;
+            resourceInputs["specification"] = args?.specification;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["forwardTableIds"] = undefined /*out*/;
             resourceInputs["snatTableIds"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

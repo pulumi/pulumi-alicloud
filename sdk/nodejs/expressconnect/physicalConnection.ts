@@ -80,19 +80,19 @@ export class PhysicalConnection extends pulumi.CustomResource {
     /**
      * The access point ID of the Express Connect circuit.
      */
-    public readonly accessPointId!: pulumi.Output<string>;
+    declare public readonly accessPointId: pulumi.Output<string>;
     /**
      * The maximum bandwidth of the hosted connection.
      */
-    public readonly bandwidth!: pulumi.Output<string>;
+    declare public readonly bandwidth: pulumi.Output<string>;
     /**
      * The circuit code of the Express Connect circuit.
      */
-    public readonly circuitCode!: pulumi.Output<string | undefined>;
+    declare public readonly circuitCode: pulumi.Output<string | undefined>;
     /**
      * The description of the Express Connect circuit.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The connectivity provider of the Express Connect circuit. Valid values:
      * - `CT`: China Telecom.
@@ -102,25 +102,25 @@ export class PhysicalConnection extends pulumi.CustomResource {
      * - `Equinix`: Equinix.
      * - `Other`: Other connectivity providers outside the Chinese mainland.
      */
-    public readonly lineOperator!: pulumi.Output<string>;
+    declare public readonly lineOperator: pulumi.Output<string>;
     /**
      * The ID of the order that is placed. **Note:** `orderId` takes effect only if `status` is set to `Enabled`.
      */
-    public /*out*/ readonly orderId!: pulumi.Output<string>;
+    declare public /*out*/ readonly orderId: pulumi.Output<string>;
     /**
      * The geographical location of the data center.
      */
-    public readonly peerLocation!: pulumi.Output<string>;
+    declare public readonly peerLocation: pulumi.Output<string>;
     /**
      * The subscription duration. Valid values:
      * - If `pricingCycle` is set to `Month`. Valid values: `1` to `9`.
      * - If `pricingCycle` is set to `Year`. Valid values: `1` to `5`.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * The name of the Express Connect circuit.
      */
-    public readonly physicalConnectionName!: pulumi.Output<string | undefined>;
+    declare public readonly physicalConnectionName: pulumi.Output<string | undefined>;
     /**
      * The port type of the Express Connect circuit. Valid values:
      * - `100Base-T`: 100 Mbit/s copper Ethernet port.
@@ -132,24 +132,24 @@ export class PhysicalConnection extends pulumi.CustomResource {
      * - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
      * > **NOTE:** From version 1.185.0, `portType` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `portType` cannot be modified.
      */
-    public readonly portType!: pulumi.Output<string | undefined>;
+    declare public readonly portType: pulumi.Output<string | undefined>;
     /**
      * The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
      * > **NOTE:** `period` and `pricingCycle` are valid only when `status` is set to `Enabled`.
      */
-    public readonly pricingCycle!: pulumi.Output<string | undefined>;
+    declare public readonly pricingCycle: pulumi.Output<string | undefined>;
     /**
      * The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundantPhysicalConnectionId` cannot be modified.
      */
-    public readonly redundantPhysicalConnectionId!: pulumi.Output<string | undefined>;
+    declare public readonly redundantPhysicalConnectionId: pulumi.Output<string | undefined>;
     /**
      * The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The type of Express Connect circuit. Default value: `VPC`. Valid values: `VPC`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a PhysicalConnection resource with the given unique name, arguments, and options.
@@ -164,41 +164,41 @@ export class PhysicalConnection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PhysicalConnectionState | undefined;
-            resourceInputs["accessPointId"] = state ? state.accessPointId : undefined;
-            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
-            resourceInputs["circuitCode"] = state ? state.circuitCode : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["lineOperator"] = state ? state.lineOperator : undefined;
-            resourceInputs["orderId"] = state ? state.orderId : undefined;
-            resourceInputs["peerLocation"] = state ? state.peerLocation : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["physicalConnectionName"] = state ? state.physicalConnectionName : undefined;
-            resourceInputs["portType"] = state ? state.portType : undefined;
-            resourceInputs["pricingCycle"] = state ? state.pricingCycle : undefined;
-            resourceInputs["redundantPhysicalConnectionId"] = state ? state.redundantPhysicalConnectionId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["accessPointId"] = state?.accessPointId;
+            resourceInputs["bandwidth"] = state?.bandwidth;
+            resourceInputs["circuitCode"] = state?.circuitCode;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["lineOperator"] = state?.lineOperator;
+            resourceInputs["orderId"] = state?.orderId;
+            resourceInputs["peerLocation"] = state?.peerLocation;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["physicalConnectionName"] = state?.physicalConnectionName;
+            resourceInputs["portType"] = state?.portType;
+            resourceInputs["pricingCycle"] = state?.pricingCycle;
+            resourceInputs["redundantPhysicalConnectionId"] = state?.redundantPhysicalConnectionId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as PhysicalConnectionArgs | undefined;
-            if ((!args || args.accessPointId === undefined) && !opts.urn) {
+            if (args?.accessPointId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accessPointId'");
             }
-            if ((!args || args.lineOperator === undefined) && !opts.urn) {
+            if (args?.lineOperator === undefined && !opts.urn) {
                 throw new Error("Missing required property 'lineOperator'");
             }
-            resourceInputs["accessPointId"] = args ? args.accessPointId : undefined;
-            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
-            resourceInputs["circuitCode"] = args ? args.circuitCode : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["lineOperator"] = args ? args.lineOperator : undefined;
-            resourceInputs["peerLocation"] = args ? args.peerLocation : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["physicalConnectionName"] = args ? args.physicalConnectionName : undefined;
-            resourceInputs["portType"] = args ? args.portType : undefined;
-            resourceInputs["pricingCycle"] = args ? args.pricingCycle : undefined;
-            resourceInputs["redundantPhysicalConnectionId"] = args ? args.redundantPhysicalConnectionId : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["accessPointId"] = args?.accessPointId;
+            resourceInputs["bandwidth"] = args?.bandwidth;
+            resourceInputs["circuitCode"] = args?.circuitCode;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["lineOperator"] = args?.lineOperator;
+            resourceInputs["peerLocation"] = args?.peerLocation;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["physicalConnectionName"] = args?.physicalConnectionName;
+            resourceInputs["portType"] = args?.portType;
+            resourceInputs["pricingCycle"] = args?.pricingCycle;
+            resourceInputs["redundantPhysicalConnectionId"] = args?.redundantPhysicalConnectionId;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["type"] = args?.type;
             resourceInputs["orderId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

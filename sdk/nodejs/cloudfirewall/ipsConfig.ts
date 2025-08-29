@@ -46,40 +46,40 @@ export class IpsConfig extends pulumi.CustomResource {
      * - 1: Open.
      * - 0: Closed (Default).
      */
-    public readonly basicRules!: pulumi.Output<number | undefined>;
+    declare public readonly basicRules: pulumi.Output<number | undefined>;
     /**
      * Threat intelligence. Value:
      * - 1: Open.
      * - 0: Closed (Default).
      */
-    public readonly ctiRules!: pulumi.Output<number | undefined>;
+    declare public readonly ctiRules: pulumi.Output<number | undefined>;
     /**
      * Language
      */
-    public readonly lang!: pulumi.Output<string | undefined>;
+    declare public readonly lang: pulumi.Output<string | undefined>;
     /**
      * Sensitive data detection Daily detection traffic limit. Defaults to 0.
      */
-    public readonly maxSdl!: pulumi.Output<number | undefined>;
+    declare public readonly maxSdl: pulumi.Output<number | undefined>;
     /**
      * Virtual patch switch. Value:
      * - 1: Open.
      * - 0: Closed (Default).
      */
-    public readonly patchRules!: pulumi.Output<number | undefined>;
+    declare public readonly patchRules: pulumi.Output<number | undefined>;
     /**
      * The IPS rule Group. Value:
      * - 1: loose rule Group.
      * - 2: Medium rule Group.
      * - 3: Strict rule groups.
      */
-    public readonly ruleClass!: pulumi.Output<number | undefined>;
+    declare public readonly ruleClass: pulumi.Output<number | undefined>;
     /**
      * IPS defense mode. Value:
      * - 1: Intercept mode.
      * - 0: Observation mode (Default).
      */
-    public readonly runMode!: pulumi.Output<number | undefined>;
+    declare public readonly runMode: pulumi.Output<number | undefined>;
 
     /**
      * Create a IpsConfig resource with the given unique name, arguments, and options.
@@ -94,22 +94,22 @@ export class IpsConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IpsConfigState | undefined;
-            resourceInputs["basicRules"] = state ? state.basicRules : undefined;
-            resourceInputs["ctiRules"] = state ? state.ctiRules : undefined;
-            resourceInputs["lang"] = state ? state.lang : undefined;
-            resourceInputs["maxSdl"] = state ? state.maxSdl : undefined;
-            resourceInputs["patchRules"] = state ? state.patchRules : undefined;
-            resourceInputs["ruleClass"] = state ? state.ruleClass : undefined;
-            resourceInputs["runMode"] = state ? state.runMode : undefined;
+            resourceInputs["basicRules"] = state?.basicRules;
+            resourceInputs["ctiRules"] = state?.ctiRules;
+            resourceInputs["lang"] = state?.lang;
+            resourceInputs["maxSdl"] = state?.maxSdl;
+            resourceInputs["patchRules"] = state?.patchRules;
+            resourceInputs["ruleClass"] = state?.ruleClass;
+            resourceInputs["runMode"] = state?.runMode;
         } else {
             const args = argsOrState as IpsConfigArgs | undefined;
-            resourceInputs["basicRules"] = args ? args.basicRules : undefined;
-            resourceInputs["ctiRules"] = args ? args.ctiRules : undefined;
-            resourceInputs["lang"] = args ? args.lang : undefined;
-            resourceInputs["maxSdl"] = args ? args.maxSdl : undefined;
-            resourceInputs["patchRules"] = args ? args.patchRules : undefined;
-            resourceInputs["ruleClass"] = args ? args.ruleClass : undefined;
-            resourceInputs["runMode"] = args ? args.runMode : undefined;
+            resourceInputs["basicRules"] = args?.basicRules;
+            resourceInputs["ctiRules"] = args?.ctiRules;
+            resourceInputs["lang"] = args?.lang;
+            resourceInputs["maxSdl"] = args?.maxSdl;
+            resourceInputs["patchRules"] = args?.patchRules;
+            resourceInputs["ruleClass"] = args?.ruleClass;
+            resourceInputs["runMode"] = args?.runMode;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IpsConfig.__pulumiType, name, resourceInputs, opts);

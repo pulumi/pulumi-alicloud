@@ -167,7 +167,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      * - **ipv4:** IPv4. This is the default value.
      * - **DualStack:** dual stack.
      */
-    public readonly addressIpVersion!: pulumi.Output<string>;
+    declare public readonly addressIpVersion: pulumi.Output<string>;
     /**
      * The type of IPv4 address used by the NLB instance. Valid values:
      * - `Internet`: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
@@ -175,107 +175,107 @@ export class LoadBalancer extends pulumi.CustomResource {
      *
      * > **NOTE:**   To enable a public IPv6 address for an NLB instance, call the [EnableLoadBalancerIpv6Internet](https://www.alibabacloud.com/help/en/doc-detail/445878.html) operation.
      */
-    public readonly addressType!: pulumi.Output<string>;
+    declare public readonly addressType: pulumi.Output<string>;
     /**
      * The ID of the EIP bandwidth plan that is associated with the Internet-facing NLB instance.
      */
-    public readonly bandwidthPackageId!: pulumi.Output<string>;
+    declare public readonly bandwidthPackageId: pulumi.Output<string>;
     /**
      * The speed limit of new connections per second processed by NLB instances in each VIP. Value range: `0` to `1000000`.
      *
      * - *0** means no speed limit.
      */
-    public readonly cps!: pulumi.Output<number | undefined>;
+    declare public readonly cps: pulumi.Output<number | undefined>;
     /**
      * Resource creation time, using Greenwich Mean Time, formating' yyyy-MM-ddTHH:mm:ssZ '.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Specifies whether to enable cross-zone load balancing for the NLB instance. Valid values:
      */
-    public readonly crossZoneEnabled!: pulumi.Output<boolean>;
+    declare public readonly crossZoneEnabled: pulumi.Output<boolean>;
     /**
      * Specifies whether to enable deletion protection. Default value: `false`. See `deletionProtectionConfig` below.
      */
-    public readonly deletionProtectionConfig!: pulumi.Output<outputs.nlb.LoadBalancerDeletionProtectionConfig>;
+    declare public readonly deletionProtectionConfig: pulumi.Output<outputs.nlb.LoadBalancerDeletionProtectionConfig>;
     /**
      * Specifies whether to enable deletion protection. Default value: `false`. Valid values:
      */
-    public readonly deletionProtectionEnabled!: pulumi.Output<boolean>;
+    declare public readonly deletionProtectionEnabled: pulumi.Output<boolean>;
     /**
      * The reason why the deletion protection feature is enabled or disabled. The `deletionProtectionReason` takes effect only when `deletionProtectionEnabled` is set to `true`.
      */
-    public readonly deletionProtectionReason!: pulumi.Output<string>;
+    declare public readonly deletionProtectionReason: pulumi.Output<string>;
     /**
      * The domain name of the NLB instance.
      */
-    public /*out*/ readonly dnsName!: pulumi.Output<string>;
+    declare public /*out*/ readonly dnsName: pulumi.Output<string>;
     /**
      * The type of IPv6 address used by the NLB instance. Valid values:
      * - `Internet`: a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
      * - `Intranet`: a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the VPC where the NLB instance is deployed.
      */
-    public readonly ipv6AddressType!: pulumi.Output<string>;
+    declare public readonly ipv6AddressType: pulumi.Output<string>;
     /**
      * The business status of the NLB instance.
      */
-    public /*out*/ readonly loadBalancerBusinessStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly loadBalancerBusinessStatus: pulumi.Output<string>;
     /**
      * The name of the NLB instance.
      * The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
      */
-    public readonly loadBalancerName!: pulumi.Output<string | undefined>;
+    declare public readonly loadBalancerName: pulumi.Output<string | undefined>;
     /**
      * The type of the Server Load Balancer (SLB) instance. Set the value to `network`, which specifies NLB.
      */
-    public readonly loadBalancerType!: pulumi.Output<string>;
+    declare public readonly loadBalancerType: pulumi.Output<string>;
     /**
      * Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. See `modificationProtectionConfig` below.
      */
-    public readonly modificationProtectionConfig!: pulumi.Output<outputs.nlb.LoadBalancerModificationProtectionConfig>;
+    declare public readonly modificationProtectionConfig: pulumi.Output<outputs.nlb.LoadBalancerModificationProtectionConfig>;
     /**
      * The reason why the configuration read-only mode is enabled. The `modificationProtectionReason` takes effect only when `modificationProtectionStatus` is set to `ConsoleProtection`.
      */
-    public readonly modificationProtectionReason!: pulumi.Output<string>;
+    declare public readonly modificationProtectionReason: pulumi.Output<string>;
     /**
      * Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
      * - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modificationProtectionReason`. If the `modificationProtectionReason` is set, the value is cleared.
      * - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modificationProtectionReason`.
      */
-    public readonly modificationProtectionStatus!: pulumi.Output<string>;
+    declare public readonly modificationProtectionStatus: pulumi.Output<string>;
     /**
      * The payment type of the resource
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * The ID of the region where the NLB instance is deployed.
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The ID of the new resource group.
      * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The security group to which the network-based SLB instance belongs.
      */
-    public readonly securityGroupIds!: pulumi.Output<string[]>;
+    declare public readonly securityGroupIds: pulumi.Output<string[]>;
     /**
      * Zone Status
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * List of labels.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the VPC where the NLB instance is deployed.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zoneMappings` below.
      */
-    public readonly zoneMappings!: pulumi.Output<outputs.nlb.LoadBalancerZoneMapping[]>;
+    declare public readonly zoneMappings: pulumi.Output<outputs.nlb.LoadBalancerZoneMapping[]>;
 
     /**
      * Create a LoadBalancer resource with the given unique name, arguments, and options.
@@ -290,62 +290,62 @@ export class LoadBalancer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadBalancerState | undefined;
-            resourceInputs["addressIpVersion"] = state ? state.addressIpVersion : undefined;
-            resourceInputs["addressType"] = state ? state.addressType : undefined;
-            resourceInputs["bandwidthPackageId"] = state ? state.bandwidthPackageId : undefined;
-            resourceInputs["cps"] = state ? state.cps : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["crossZoneEnabled"] = state ? state.crossZoneEnabled : undefined;
-            resourceInputs["deletionProtectionConfig"] = state ? state.deletionProtectionConfig : undefined;
-            resourceInputs["deletionProtectionEnabled"] = state ? state.deletionProtectionEnabled : undefined;
-            resourceInputs["deletionProtectionReason"] = state ? state.deletionProtectionReason : undefined;
-            resourceInputs["dnsName"] = state ? state.dnsName : undefined;
-            resourceInputs["ipv6AddressType"] = state ? state.ipv6AddressType : undefined;
-            resourceInputs["loadBalancerBusinessStatus"] = state ? state.loadBalancerBusinessStatus : undefined;
-            resourceInputs["loadBalancerName"] = state ? state.loadBalancerName : undefined;
-            resourceInputs["loadBalancerType"] = state ? state.loadBalancerType : undefined;
-            resourceInputs["modificationProtectionConfig"] = state ? state.modificationProtectionConfig : undefined;
-            resourceInputs["modificationProtectionReason"] = state ? state.modificationProtectionReason : undefined;
-            resourceInputs["modificationProtectionStatus"] = state ? state.modificationProtectionStatus : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["zoneMappings"] = state ? state.zoneMappings : undefined;
+            resourceInputs["addressIpVersion"] = state?.addressIpVersion;
+            resourceInputs["addressType"] = state?.addressType;
+            resourceInputs["bandwidthPackageId"] = state?.bandwidthPackageId;
+            resourceInputs["cps"] = state?.cps;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["crossZoneEnabled"] = state?.crossZoneEnabled;
+            resourceInputs["deletionProtectionConfig"] = state?.deletionProtectionConfig;
+            resourceInputs["deletionProtectionEnabled"] = state?.deletionProtectionEnabled;
+            resourceInputs["deletionProtectionReason"] = state?.deletionProtectionReason;
+            resourceInputs["dnsName"] = state?.dnsName;
+            resourceInputs["ipv6AddressType"] = state?.ipv6AddressType;
+            resourceInputs["loadBalancerBusinessStatus"] = state?.loadBalancerBusinessStatus;
+            resourceInputs["loadBalancerName"] = state?.loadBalancerName;
+            resourceInputs["loadBalancerType"] = state?.loadBalancerType;
+            resourceInputs["modificationProtectionConfig"] = state?.modificationProtectionConfig;
+            resourceInputs["modificationProtectionReason"] = state?.modificationProtectionReason;
+            resourceInputs["modificationProtectionStatus"] = state?.modificationProtectionStatus;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["securityGroupIds"] = state?.securityGroupIds;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["zoneMappings"] = state?.zoneMappings;
         } else {
             const args = argsOrState as LoadBalancerArgs | undefined;
-            if ((!args || args.addressType === undefined) && !opts.urn) {
+            if (args?.addressType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'addressType'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            if ((!args || args.zoneMappings === undefined) && !opts.urn) {
+            if (args?.zoneMappings === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneMappings'");
             }
-            resourceInputs["addressIpVersion"] = args ? args.addressIpVersion : undefined;
-            resourceInputs["addressType"] = args ? args.addressType : undefined;
-            resourceInputs["bandwidthPackageId"] = args ? args.bandwidthPackageId : undefined;
-            resourceInputs["cps"] = args ? args.cps : undefined;
-            resourceInputs["crossZoneEnabled"] = args ? args.crossZoneEnabled : undefined;
-            resourceInputs["deletionProtectionConfig"] = args ? args.deletionProtectionConfig : undefined;
-            resourceInputs["deletionProtectionEnabled"] = args ? args.deletionProtectionEnabled : undefined;
-            resourceInputs["deletionProtectionReason"] = args ? args.deletionProtectionReason : undefined;
-            resourceInputs["ipv6AddressType"] = args ? args.ipv6AddressType : undefined;
-            resourceInputs["loadBalancerName"] = args ? args.loadBalancerName : undefined;
-            resourceInputs["loadBalancerType"] = args ? args.loadBalancerType : undefined;
-            resourceInputs["modificationProtectionConfig"] = args ? args.modificationProtectionConfig : undefined;
-            resourceInputs["modificationProtectionReason"] = args ? args.modificationProtectionReason : undefined;
-            resourceInputs["modificationProtectionStatus"] = args ? args.modificationProtectionStatus : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["zoneMappings"] = args ? args.zoneMappings : undefined;
+            resourceInputs["addressIpVersion"] = args?.addressIpVersion;
+            resourceInputs["addressType"] = args?.addressType;
+            resourceInputs["bandwidthPackageId"] = args?.bandwidthPackageId;
+            resourceInputs["cps"] = args?.cps;
+            resourceInputs["crossZoneEnabled"] = args?.crossZoneEnabled;
+            resourceInputs["deletionProtectionConfig"] = args?.deletionProtectionConfig;
+            resourceInputs["deletionProtectionEnabled"] = args?.deletionProtectionEnabled;
+            resourceInputs["deletionProtectionReason"] = args?.deletionProtectionReason;
+            resourceInputs["ipv6AddressType"] = args?.ipv6AddressType;
+            resourceInputs["loadBalancerName"] = args?.loadBalancerName;
+            resourceInputs["loadBalancerType"] = args?.loadBalancerType;
+            resourceInputs["modificationProtectionConfig"] = args?.modificationProtectionConfig;
+            resourceInputs["modificationProtectionReason"] = args?.modificationProtectionReason;
+            resourceInputs["modificationProtectionStatus"] = args?.modificationProtectionStatus;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["securityGroupIds"] = args?.securityGroupIds;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["zoneMappings"] = args?.zoneMappings;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["dnsName"] = undefined /*out*/;
             resourceInputs["loadBalancerBusinessStatus"] = undefined /*out*/;

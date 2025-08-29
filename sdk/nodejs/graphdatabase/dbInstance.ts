@@ -74,63 +74,63 @@ export class DbInstance extends pulumi.CustomResource {
     /**
      * (Available in 1.196.0+)  The connection string of the instance.
      */
-    public /*out*/ readonly connectionString!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectionString: pulumi.Output<string>;
     /**
      * The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
      */
-    public readonly dbInstanceCategory!: pulumi.Output<string>;
+    declare public readonly dbInstanceCategory: pulumi.Output<string>;
     /**
      * According to the practical example or notes.
      */
-    public readonly dbInstanceDescription!: pulumi.Output<string | undefined>;
+    declare public readonly dbInstanceDescription: pulumi.Output<string | undefined>;
     /**
      * IP ADDRESS whitelist for the instance group list. See `dbInstanceIpArray` below.
      */
-    public readonly dbInstanceIpArrays!: pulumi.Output<outputs.graphdatabase.DbInstanceDbInstanceIpArray[]>;
+    declare public readonly dbInstanceIpArrays: pulumi.Output<outputs.graphdatabase.DbInstanceDbInstanceIpArray[]>;
     /**
      * The network type of the db instance. Valid values: `vpc`.
      */
-    public readonly dbInstanceNetworkType!: pulumi.Output<string>;
+    declare public readonly dbInstanceNetworkType: pulumi.Output<string>;
     /**
      * Disk storage type. Valid values: `cloudEssd`, `cloudSsd`. Modification is not supported.
      */
-    public readonly dbInstanceStorageType!: pulumi.Output<string>;
+    declare public readonly dbInstanceStorageType: pulumi.Output<string>;
     /**
      * The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`, `gdb.r.xlarge_basic`, `gdb.r.2xlarge_basic`, `gdb.r.4xlarge_basic`, `gdb.r.8xlarge_basic`, `gdb.r.16xlarge_basic`.
      */
-    public readonly dbNodeClass!: pulumi.Output<string>;
+    declare public readonly dbNodeClass: pulumi.Output<string>;
     /**
      * Instance storage space, which is measured in GB.
      */
-    public readonly dbNodeStorage!: pulumi.Output<number>;
+    declare public readonly dbNodeStorage: pulumi.Output<number>;
     /**
      * Kernel Version. Valid values: `1.0` or `1.0-OpenCypher`. `1.0`: represented as gremlin, `1.0-OpenCypher`: said opencypher.
      */
-    public readonly dbVersion!: pulumi.Output<string>;
+    declare public readonly dbVersion: pulumi.Output<string>;
     /**
      * The paymen type of the resource. Valid values: `PayAsYouGo`.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * (Available in 1.196.0+) The connection port of the instance.
      */
-    public /*out*/ readonly port!: pulumi.Output<string>;
+    declare public /*out*/ readonly port: pulumi.Output<string>;
     /**
      * Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * ID of the VPC.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * The ID of attaching vswitch to instance.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
     /**
      * The zone ID of the resource.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a DbInstance resource with the given unique name, arguments, and options.
@@ -145,56 +145,56 @@ export class DbInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DbInstanceState | undefined;
-            resourceInputs["connectionString"] = state ? state.connectionString : undefined;
-            resourceInputs["dbInstanceCategory"] = state ? state.dbInstanceCategory : undefined;
-            resourceInputs["dbInstanceDescription"] = state ? state.dbInstanceDescription : undefined;
-            resourceInputs["dbInstanceIpArrays"] = state ? state.dbInstanceIpArrays : undefined;
-            resourceInputs["dbInstanceNetworkType"] = state ? state.dbInstanceNetworkType : undefined;
-            resourceInputs["dbInstanceStorageType"] = state ? state.dbInstanceStorageType : undefined;
-            resourceInputs["dbNodeClass"] = state ? state.dbNodeClass : undefined;
-            resourceInputs["dbNodeStorage"] = state ? state.dbNodeStorage : undefined;
-            resourceInputs["dbVersion"] = state ? state.dbVersion : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["connectionString"] = state?.connectionString;
+            resourceInputs["dbInstanceCategory"] = state?.dbInstanceCategory;
+            resourceInputs["dbInstanceDescription"] = state?.dbInstanceDescription;
+            resourceInputs["dbInstanceIpArrays"] = state?.dbInstanceIpArrays;
+            resourceInputs["dbInstanceNetworkType"] = state?.dbInstanceNetworkType;
+            resourceInputs["dbInstanceStorageType"] = state?.dbInstanceStorageType;
+            resourceInputs["dbNodeClass"] = state?.dbNodeClass;
+            resourceInputs["dbNodeStorage"] = state?.dbNodeStorage;
+            resourceInputs["dbVersion"] = state?.dbVersion;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as DbInstanceArgs | undefined;
-            if ((!args || args.dbInstanceCategory === undefined) && !opts.urn) {
+            if (args?.dbInstanceCategory === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceCategory'");
             }
-            if ((!args || args.dbInstanceNetworkType === undefined) && !opts.urn) {
+            if (args?.dbInstanceNetworkType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceNetworkType'");
             }
-            if ((!args || args.dbInstanceStorageType === undefined) && !opts.urn) {
+            if (args?.dbInstanceStorageType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceStorageType'");
             }
-            if ((!args || args.dbNodeClass === undefined) && !opts.urn) {
+            if (args?.dbNodeClass === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbNodeClass'");
             }
-            if ((!args || args.dbNodeStorage === undefined) && !opts.urn) {
+            if (args?.dbNodeStorage === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbNodeStorage'");
             }
-            if ((!args || args.dbVersion === undefined) && !opts.urn) {
+            if (args?.dbVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbVersion'");
             }
-            if ((!args || args.paymentType === undefined) && !opts.urn) {
+            if (args?.paymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            resourceInputs["dbInstanceCategory"] = args ? args.dbInstanceCategory : undefined;
-            resourceInputs["dbInstanceDescription"] = args ? args.dbInstanceDescription : undefined;
-            resourceInputs["dbInstanceIpArrays"] = args ? args.dbInstanceIpArrays : undefined;
-            resourceInputs["dbInstanceNetworkType"] = args ? args.dbInstanceNetworkType : undefined;
-            resourceInputs["dbInstanceStorageType"] = args ? args.dbInstanceStorageType : undefined;
-            resourceInputs["dbNodeClass"] = args ? args.dbNodeClass : undefined;
-            resourceInputs["dbNodeStorage"] = args ? args.dbNodeStorage : undefined;
-            resourceInputs["dbVersion"] = args ? args.dbVersion : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["dbInstanceCategory"] = args?.dbInstanceCategory;
+            resourceInputs["dbInstanceDescription"] = args?.dbInstanceDescription;
+            resourceInputs["dbInstanceIpArrays"] = args?.dbInstanceIpArrays;
+            resourceInputs["dbInstanceNetworkType"] = args?.dbInstanceNetworkType;
+            resourceInputs["dbInstanceStorageType"] = args?.dbInstanceStorageType;
+            resourceInputs["dbNodeClass"] = args?.dbNodeClass;
+            resourceInputs["dbNodeStorage"] = args?.dbNodeStorage;
+            resourceInputs["dbVersion"] = args?.dbVersion;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["connectionString"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

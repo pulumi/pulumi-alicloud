@@ -156,39 +156,39 @@ export class FunctionAsyncInvokeConfig extends pulumi.CustomResource {
     /**
      * The date this resource was created.
      */
-    public /*out*/ readonly createdTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdTime: pulumi.Output<string>;
     /**
      * Configuration block with destination configuration. See `destinationConfig` below.
      */
-    public readonly destinationConfig!: pulumi.Output<outputs.fc.FunctionAsyncInvokeConfigDestinationConfig | undefined>;
+    declare public readonly destinationConfig: pulumi.Output<outputs.fc.FunctionAsyncInvokeConfigDestinationConfig | undefined>;
     /**
      * Name of the Function Compute Function.
      */
-    public readonly functionName!: pulumi.Output<string>;
+    declare public readonly functionName: pulumi.Output<string>;
     /**
      * The date this resource was last modified.
      */
-    public /*out*/ readonly lastModifiedTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastModifiedTime: pulumi.Output<string>;
     /**
      * Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 1 and 2592000 (between 60 and 21600 before v1.167.0).
      */
-    public readonly maximumEventAgeInSeconds!: pulumi.Output<number | undefined>;
+    declare public readonly maximumEventAgeInSeconds: pulumi.Output<number | undefined>;
     /**
      * Maximum number of times to retry when the function returns an error. Valid values between 0 and 8 (between 0 and 2 before v1.167.0). Defaults to 2.
      */
-    public readonly maximumRetryAttempts!: pulumi.Output<number | undefined>;
+    declare public readonly maximumRetryAttempts: pulumi.Output<number | undefined>;
     /**
      * Function Compute Function published version, `LATEST`, or Function Compute Alias name. The default value is `LATEST`.
      */
-    public readonly qualifier!: pulumi.Output<string | undefined>;
+    declare public readonly qualifier: pulumi.Output<string | undefined>;
     /**
      * Name of the Function Compute Function, omitting any version or alias qualifier.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
     /**
      * Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
      */
-    public readonly statefulInvocation!: pulumi.Output<boolean | undefined>;
+    declare public readonly statefulInvocation: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a FunctionAsyncInvokeConfig resource with the given unique name, arguments, and options.
@@ -203,30 +203,30 @@ export class FunctionAsyncInvokeConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FunctionAsyncInvokeConfigState | undefined;
-            resourceInputs["createdTime"] = state ? state.createdTime : undefined;
-            resourceInputs["destinationConfig"] = state ? state.destinationConfig : undefined;
-            resourceInputs["functionName"] = state ? state.functionName : undefined;
-            resourceInputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
-            resourceInputs["maximumEventAgeInSeconds"] = state ? state.maximumEventAgeInSeconds : undefined;
-            resourceInputs["maximumRetryAttempts"] = state ? state.maximumRetryAttempts : undefined;
-            resourceInputs["qualifier"] = state ? state.qualifier : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["statefulInvocation"] = state ? state.statefulInvocation : undefined;
+            resourceInputs["createdTime"] = state?.createdTime;
+            resourceInputs["destinationConfig"] = state?.destinationConfig;
+            resourceInputs["functionName"] = state?.functionName;
+            resourceInputs["lastModifiedTime"] = state?.lastModifiedTime;
+            resourceInputs["maximumEventAgeInSeconds"] = state?.maximumEventAgeInSeconds;
+            resourceInputs["maximumRetryAttempts"] = state?.maximumRetryAttempts;
+            resourceInputs["qualifier"] = state?.qualifier;
+            resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["statefulInvocation"] = state?.statefulInvocation;
         } else {
             const args = argsOrState as FunctionAsyncInvokeConfigArgs | undefined;
-            if ((!args || args.functionName === undefined) && !opts.urn) {
+            if (args?.functionName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'functionName'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            resourceInputs["destinationConfig"] = args ? args.destinationConfig : undefined;
-            resourceInputs["functionName"] = args ? args.functionName : undefined;
-            resourceInputs["maximumEventAgeInSeconds"] = args ? args.maximumEventAgeInSeconds : undefined;
-            resourceInputs["maximumRetryAttempts"] = args ? args.maximumRetryAttempts : undefined;
-            resourceInputs["qualifier"] = args ? args.qualifier : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["statefulInvocation"] = args ? args.statefulInvocation : undefined;
+            resourceInputs["destinationConfig"] = args?.destinationConfig;
+            resourceInputs["functionName"] = args?.functionName;
+            resourceInputs["maximumEventAgeInSeconds"] = args?.maximumEventAgeInSeconds;
+            resourceInputs["maximumRetryAttempts"] = args?.maximumRetryAttempts;
+            resourceInputs["qualifier"] = args?.qualifier;
+            resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["statefulInvocation"] = args?.statefulInvocation;
             resourceInputs["createdTime"] = undefined /*out*/;
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
         }

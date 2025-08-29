@@ -90,43 +90,43 @@ export class FirewallVpcFirewall extends pulumi.CustomResource {
     /**
      * Bandwidth specifications for high-speed channels. Unit: Mbps.
      */
-    public /*out*/ readonly bandwidth!: pulumi.Output<number>;
+    declare public /*out*/ readonly bandwidth: pulumi.Output<number>;
     /**
      * The communication type of the VPC firewall.
      */
-    public /*out*/ readonly connectType!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectType: pulumi.Output<string>;
     /**
      * The language type of the requested and received messages. Valid values:
      */
-    public readonly lang!: pulumi.Output<string | undefined>;
+    declare public readonly lang: pulumi.Output<string | undefined>;
     /**
      * The details of the local VPC. See `localVpc` below.
      */
-    public readonly localVpc!: pulumi.Output<outputs.cloudfirewall.FirewallVpcFirewallLocalVpc>;
+    declare public readonly localVpc: pulumi.Output<outputs.cloudfirewall.FirewallVpcFirewallLocalVpc>;
     /**
      * The UID of the Alibaba Cloud member account.
      */
-    public readonly memberUid!: pulumi.Output<string | undefined>;
+    declare public readonly memberUid: pulumi.Output<string | undefined>;
     /**
      * The details of the peer VPC. See `peerVpc` below.
      */
-    public readonly peerVpc!: pulumi.Output<outputs.cloudfirewall.FirewallVpcFirewallPeerVpc>;
+    declare public readonly peerVpc: pulumi.Output<outputs.cloudfirewall.FirewallVpcFirewallPeerVpc>;
     /**
      * The region is open.
      */
-    public /*out*/ readonly regionStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionStatus: pulumi.Output<string>;
     /**
      * The status of the resource. Valid values:
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The ID of the VPC firewall instance.
      */
-    public /*out*/ readonly vpcFirewallId!: pulumi.Output<string>;
+    declare public /*out*/ readonly vpcFirewallId: pulumi.Output<string>;
     /**
      * The name of the VPC firewall instance.
      */
-    public readonly vpcFirewallName!: pulumi.Output<string>;
+    declare public readonly vpcFirewallName: pulumi.Output<string>;
 
     /**
      * Create a FirewallVpcFirewall resource with the given unique name, arguments, and options.
@@ -141,36 +141,36 @@ export class FirewallVpcFirewall extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FirewallVpcFirewallState | undefined;
-            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
-            resourceInputs["connectType"] = state ? state.connectType : undefined;
-            resourceInputs["lang"] = state ? state.lang : undefined;
-            resourceInputs["localVpc"] = state ? state.localVpc : undefined;
-            resourceInputs["memberUid"] = state ? state.memberUid : undefined;
-            resourceInputs["peerVpc"] = state ? state.peerVpc : undefined;
-            resourceInputs["regionStatus"] = state ? state.regionStatus : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vpcFirewallId"] = state ? state.vpcFirewallId : undefined;
-            resourceInputs["vpcFirewallName"] = state ? state.vpcFirewallName : undefined;
+            resourceInputs["bandwidth"] = state?.bandwidth;
+            resourceInputs["connectType"] = state?.connectType;
+            resourceInputs["lang"] = state?.lang;
+            resourceInputs["localVpc"] = state?.localVpc;
+            resourceInputs["memberUid"] = state?.memberUid;
+            resourceInputs["peerVpc"] = state?.peerVpc;
+            resourceInputs["regionStatus"] = state?.regionStatus;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vpcFirewallId"] = state?.vpcFirewallId;
+            resourceInputs["vpcFirewallName"] = state?.vpcFirewallName;
         } else {
             const args = argsOrState as FirewallVpcFirewallArgs | undefined;
-            if ((!args || args.localVpc === undefined) && !opts.urn) {
+            if (args?.localVpc === undefined && !opts.urn) {
                 throw new Error("Missing required property 'localVpc'");
             }
-            if ((!args || args.peerVpc === undefined) && !opts.urn) {
+            if (args?.peerVpc === undefined && !opts.urn) {
                 throw new Error("Missing required property 'peerVpc'");
             }
-            if ((!args || args.status === undefined) && !opts.urn) {
+            if (args?.status === undefined && !opts.urn) {
                 throw new Error("Missing required property 'status'");
             }
-            if ((!args || args.vpcFirewallName === undefined) && !opts.urn) {
+            if (args?.vpcFirewallName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcFirewallName'");
             }
-            resourceInputs["lang"] = args ? args.lang : undefined;
-            resourceInputs["localVpc"] = args ? args.localVpc : undefined;
-            resourceInputs["memberUid"] = args ? args.memberUid : undefined;
-            resourceInputs["peerVpc"] = args ? args.peerVpc : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["vpcFirewallName"] = args ? args.vpcFirewallName : undefined;
+            resourceInputs["lang"] = args?.lang;
+            resourceInputs["localVpc"] = args?.localVpc;
+            resourceInputs["memberUid"] = args?.memberUid;
+            resourceInputs["peerVpc"] = args?.peerVpc;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["vpcFirewallName"] = args?.vpcFirewallName;
             resourceInputs["bandwidth"] = undefined /*out*/;
             resourceInputs["connectType"] = undefined /*out*/;
             resourceInputs["regionStatus"] = undefined /*out*/;

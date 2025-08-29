@@ -59,11 +59,11 @@ export class ServiceLinkedRole extends pulumi.CustomResource {
     /**
      * The product name for SLR. Dbfs can automatically create the following service-linked roles: `AliyunServiceRoleForDbfs`.
      */
-    public readonly productName!: pulumi.Output<string>;
+    declare public readonly productName: pulumi.Output<string>;
     /**
      * The status of the service Associated role. Valid Values: `true`: Created. `false`: not created.
      */
-    public /*out*/ readonly status!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly status: pulumi.Output<boolean>;
 
     /**
      * Create a ServiceLinkedRole resource with the given unique name, arguments, and options.
@@ -78,14 +78,14 @@ export class ServiceLinkedRole extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceLinkedRoleState | undefined;
-            resourceInputs["productName"] = state ? state.productName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["productName"] = state?.productName;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as ServiceLinkedRoleArgs | undefined;
-            if ((!args || args.productName === undefined) && !opts.urn) {
+            if (args?.productName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'productName'");
             }
-            resourceInputs["productName"] = args ? args.productName : undefined;
+            resourceInputs["productName"] = args?.productName;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

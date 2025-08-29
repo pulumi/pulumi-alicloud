@@ -144,19 +144,19 @@ export class EnterpriseProxy extends pulumi.CustomResource {
     /**
      * The ID of the database instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The password of the database account.
      */
-    public readonly password!: pulumi.Output<string>;
+    declare public readonly password: pulumi.Output<string>;
     /**
      * The ID of the tenant.
      */
-    public readonly tid!: pulumi.Output<string | undefined>;
+    declare public readonly tid: pulumi.Output<string | undefined>;
     /**
      * The username of the database account.
      */
-    public readonly username!: pulumi.Output<string>;
+    declare public readonly username: pulumi.Output<string>;
 
     /**
      * Create a EnterpriseProxy resource with the given unique name, arguments, and options.
@@ -171,24 +171,24 @@ export class EnterpriseProxy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnterpriseProxyState | undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["tid"] = state ? state.tid : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["tid"] = state?.tid;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as EnterpriseProxyArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.password === undefined) && !opts.urn) {
+            if (args?.password === undefined && !opts.urn) {
                 throw new Error("Missing required property 'password'");
             }
-            if ((!args || args.username === undefined) && !opts.urn) {
+            if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["instanceId"] = args?.instanceId;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["tid"] = args ? args.tid : undefined;
+            resourceInputs["tid"] = args?.tid;
             resourceInputs["username"] = args?.username ? pulumi.secret(args.username) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

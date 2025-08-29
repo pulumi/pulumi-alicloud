@@ -105,47 +105,47 @@ export class VirtualNode extends pulumi.CustomResource {
     /**
      * The Id of eip.
      */
-    public readonly eipInstanceId!: pulumi.Output<string>;
+    declare public readonly eipInstanceId: pulumi.Output<string>;
     /**
      * Whether to enable public network. **NOTE:** If `eipInstanceId` is not configured and `enablePublicNetwork` is true, the system will create an elastic public network IP.
      */
-    public readonly enablePublicNetwork!: pulumi.Output<boolean | undefined>;
+    declare public readonly enablePublicNetwork: pulumi.Output<boolean | undefined>;
     /**
      * The kube config for the k8s cluster. It needs to be connected after Base64 encoding.
      */
-    public readonly kubeConfig!: pulumi.Output<string>;
+    declare public readonly kubeConfig: pulumi.Output<string>;
     /**
      * The resource group ID.
      */
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly resourceGroupId: pulumi.Output<string | undefined>;
     /**
      * The security group ID.
      */
-    public readonly securityGroupId!: pulumi.Output<string>;
+    declare public readonly securityGroupId: pulumi.Output<string>;
     /**
      * The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The taint. See `taints` below.
      */
-    public readonly taints!: pulumi.Output<outputs.eci.VirtualNodeTaint[] | undefined>;
+    declare public readonly taints: pulumi.Output<outputs.eci.VirtualNodeTaint[] | undefined>;
     /**
      * The name of the virtual node. The length of the name is limited to `2` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, half-width colon (:), underscores (_), or hyphens (-), and must start with letters.
      */
-    public readonly virtualNodeName!: pulumi.Output<string | undefined>;
+    declare public readonly virtualNodeName: pulumi.Output<string | undefined>;
     /**
      * The vswitch id.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
     /**
      * The Zone.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a VirtualNode resource with the given unique name, arguments, and options.
@@ -160,38 +160,38 @@ export class VirtualNode extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VirtualNodeState | undefined;
-            resourceInputs["eipInstanceId"] = state ? state.eipInstanceId : undefined;
-            resourceInputs["enablePublicNetwork"] = state ? state.enablePublicNetwork : undefined;
-            resourceInputs["kubeConfig"] = state ? state.kubeConfig : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["taints"] = state ? state.taints : undefined;
-            resourceInputs["virtualNodeName"] = state ? state.virtualNodeName : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["eipInstanceId"] = state?.eipInstanceId;
+            resourceInputs["enablePublicNetwork"] = state?.enablePublicNetwork;
+            resourceInputs["kubeConfig"] = state?.kubeConfig;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["taints"] = state?.taints;
+            resourceInputs["virtualNodeName"] = state?.virtualNodeName;
+            resourceInputs["vswitchId"] = state?.vswitchId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as VirtualNodeArgs | undefined;
-            if ((!args || args.kubeConfig === undefined) && !opts.urn) {
+            if (args?.kubeConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'kubeConfig'");
             }
-            if ((!args || args.securityGroupId === undefined) && !opts.urn) {
+            if (args?.securityGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupId'");
             }
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+            if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            resourceInputs["eipInstanceId"] = args ? args.eipInstanceId : undefined;
-            resourceInputs["enablePublicNetwork"] = args ? args.enablePublicNetwork : undefined;
-            resourceInputs["kubeConfig"] = args ? args.kubeConfig : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["taints"] = args ? args.taints : undefined;
-            resourceInputs["virtualNodeName"] = args ? args.virtualNodeName : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["eipInstanceId"] = args?.eipInstanceId;
+            resourceInputs["enablePublicNetwork"] = args?.enablePublicNetwork;
+            resourceInputs["kubeConfig"] = args?.kubeConfig;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["taints"] = args?.taints;
+            resourceInputs["virtualNodeName"] = args?.virtualNodeName;
+            resourceInputs["vswitchId"] = args?.vswitchId;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

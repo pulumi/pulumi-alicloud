@@ -72,31 +72,31 @@ export class FcTrigger extends pulumi.CustomResource {
     /**
      * The name of the Event.
      */
-    public readonly eventMetaName!: pulumi.Output<string>;
+    declare public readonly eventMetaName: pulumi.Output<string>;
     /**
      * The version of the Event.
      */
-    public readonly eventMetaVersion!: pulumi.Output<string>;
+    declare public readonly eventMetaVersion: pulumi.Output<string>;
     /**
      * The function arn. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`.
      */
-    public readonly functionArn!: pulumi.Output<string | undefined>;
+    declare public readonly functionArn: pulumi.Output<string | undefined>;
     /**
      * The Note information.
      */
-    public readonly notes!: pulumi.Output<string>;
+    declare public readonly notes: pulumi.Output<string>;
     /**
      * The role authorized by RAM. The value formats as `acs:ram::{AccountID}:role/{RoleName}`.
      */
-    public readonly roleArn!: pulumi.Output<string>;
+    declare public readonly roleArn: pulumi.Output<string>;
     /**
      * Resources and filters for event listening. The value formats as `acs:cdn:{RegionID}:{AccountID}:{Filter}`.
      */
-    public readonly sourceArn!: pulumi.Output<string>;
+    declare public readonly sourceArn: pulumi.Output<string>;
     /**
      * The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger) for more details.
      */
-    public readonly triggerArn!: pulumi.Output<string>;
+    declare public readonly triggerArn: pulumi.Output<string>;
 
     /**
      * Create a FcTrigger resource with the given unique name, arguments, and options.
@@ -111,40 +111,40 @@ export class FcTrigger extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FcTriggerState | undefined;
-            resourceInputs["eventMetaName"] = state ? state.eventMetaName : undefined;
-            resourceInputs["eventMetaVersion"] = state ? state.eventMetaVersion : undefined;
-            resourceInputs["functionArn"] = state ? state.functionArn : undefined;
-            resourceInputs["notes"] = state ? state.notes : undefined;
-            resourceInputs["roleArn"] = state ? state.roleArn : undefined;
-            resourceInputs["sourceArn"] = state ? state.sourceArn : undefined;
-            resourceInputs["triggerArn"] = state ? state.triggerArn : undefined;
+            resourceInputs["eventMetaName"] = state?.eventMetaName;
+            resourceInputs["eventMetaVersion"] = state?.eventMetaVersion;
+            resourceInputs["functionArn"] = state?.functionArn;
+            resourceInputs["notes"] = state?.notes;
+            resourceInputs["roleArn"] = state?.roleArn;
+            resourceInputs["sourceArn"] = state?.sourceArn;
+            resourceInputs["triggerArn"] = state?.triggerArn;
         } else {
             const args = argsOrState as FcTriggerArgs | undefined;
-            if ((!args || args.eventMetaName === undefined) && !opts.urn) {
+            if (args?.eventMetaName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'eventMetaName'");
             }
-            if ((!args || args.eventMetaVersion === undefined) && !opts.urn) {
+            if (args?.eventMetaVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'eventMetaVersion'");
             }
-            if ((!args || args.notes === undefined) && !opts.urn) {
+            if (args?.notes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'notes'");
             }
-            if ((!args || args.roleArn === undefined) && !opts.urn) {
+            if (args?.roleArn === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roleArn'");
             }
-            if ((!args || args.sourceArn === undefined) && !opts.urn) {
+            if (args?.sourceArn === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceArn'");
             }
-            if ((!args || args.triggerArn === undefined) && !opts.urn) {
+            if (args?.triggerArn === undefined && !opts.urn) {
                 throw new Error("Missing required property 'triggerArn'");
             }
-            resourceInputs["eventMetaName"] = args ? args.eventMetaName : undefined;
-            resourceInputs["eventMetaVersion"] = args ? args.eventMetaVersion : undefined;
-            resourceInputs["functionArn"] = args ? args.functionArn : undefined;
-            resourceInputs["notes"] = args ? args.notes : undefined;
-            resourceInputs["roleArn"] = args ? args.roleArn : undefined;
-            resourceInputs["sourceArn"] = args ? args.sourceArn : undefined;
-            resourceInputs["triggerArn"] = args ? args.triggerArn : undefined;
+            resourceInputs["eventMetaName"] = args?.eventMetaName;
+            resourceInputs["eventMetaVersion"] = args?.eventMetaVersion;
+            resourceInputs["functionArn"] = args?.functionArn;
+            resourceInputs["notes"] = args?.notes;
+            resourceInputs["roleArn"] = args?.roleArn;
+            resourceInputs["sourceArn"] = args?.sourceArn;
+            resourceInputs["triggerArn"] = args?.triggerArn;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FcTrigger.__pulumiType, name, resourceInputs, opts);

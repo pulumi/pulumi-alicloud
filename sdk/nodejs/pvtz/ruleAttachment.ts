@@ -52,11 +52,11 @@ export class RuleAttachment extends pulumi.CustomResource {
     /**
      * The ID of the rule.
      */
-    public readonly ruleId!: pulumi.Output<string>;
+    declare public readonly ruleId: pulumi.Output<string>;
     /**
      * The List of the VPC. See `vpcs` below.
      */
-    public readonly vpcs!: pulumi.Output<outputs.pvtz.RuleAttachmentVpc[]>;
+    declare public readonly vpcs: pulumi.Output<outputs.pvtz.RuleAttachmentVpc[]>;
 
     /**
      * Create a RuleAttachment resource with the given unique name, arguments, and options.
@@ -71,18 +71,18 @@ export class RuleAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RuleAttachmentState | undefined;
-            resourceInputs["ruleId"] = state ? state.ruleId : undefined;
-            resourceInputs["vpcs"] = state ? state.vpcs : undefined;
+            resourceInputs["ruleId"] = state?.ruleId;
+            resourceInputs["vpcs"] = state?.vpcs;
         } else {
             const args = argsOrState as RuleAttachmentArgs | undefined;
-            if ((!args || args.ruleId === undefined) && !opts.urn) {
+            if (args?.ruleId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ruleId'");
             }
-            if ((!args || args.vpcs === undefined) && !opts.urn) {
+            if (args?.vpcs === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcs'");
             }
-            resourceInputs["ruleId"] = args ? args.ruleId : undefined;
-            resourceInputs["vpcs"] = args ? args.vpcs : undefined;
+            resourceInputs["ruleId"] = args?.ruleId;
+            resourceInputs["vpcs"] = args?.vpcs;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RuleAttachment.__pulumiType, name, resourceInputs, opts);

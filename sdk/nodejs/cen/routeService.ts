@@ -86,33 +86,33 @@ export class RouteService extends pulumi.CustomResource {
     /**
      * The region of the network instances that access the cloud services.
      */
-    public readonly accessRegionId!: pulumi.Output<string>;
+    declare public readonly accessRegionId: pulumi.Output<string>;
     /**
      * The ID of the CEN instance.
      */
-    public readonly cenId!: pulumi.Output<string>;
+    declare public readonly cenId: pulumi.Output<string>;
     /**
      * The description of the cloud service.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The domain name or IP address of the cloud service.
      */
-    public readonly host!: pulumi.Output<string>;
+    declare public readonly host: pulumi.Output<string>;
     /**
      * The region of the cloud service.
      */
-    public readonly hostRegionId!: pulumi.Output<string>;
+    declare public readonly hostRegionId: pulumi.Output<string>;
     /**
      * The VPC associated with the cloud service.
      *
      * > **NOTE:** The values of `hostRegionId` and `accessRegionId` must be consistent.
      */
-    public readonly hostVpcId!: pulumi.Output<string>;
+    declare public readonly hostVpcId: pulumi.Output<string>;
     /**
      * The status of the cloud service.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a RouteService resource with the given unique name, arguments, and options.
@@ -127,36 +127,36 @@ export class RouteService extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouteServiceState | undefined;
-            resourceInputs["accessRegionId"] = state ? state.accessRegionId : undefined;
-            resourceInputs["cenId"] = state ? state.cenId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["hostRegionId"] = state ? state.hostRegionId : undefined;
-            resourceInputs["hostVpcId"] = state ? state.hostVpcId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["accessRegionId"] = state?.accessRegionId;
+            resourceInputs["cenId"] = state?.cenId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["host"] = state?.host;
+            resourceInputs["hostRegionId"] = state?.hostRegionId;
+            resourceInputs["hostVpcId"] = state?.hostVpcId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as RouteServiceArgs | undefined;
-            if ((!args || args.accessRegionId === undefined) && !opts.urn) {
+            if (args?.accessRegionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accessRegionId'");
             }
-            if ((!args || args.cenId === undefined) && !opts.urn) {
+            if (args?.cenId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cenId'");
             }
-            if ((!args || args.host === undefined) && !opts.urn) {
+            if (args?.host === undefined && !opts.urn) {
                 throw new Error("Missing required property 'host'");
             }
-            if ((!args || args.hostRegionId === undefined) && !opts.urn) {
+            if (args?.hostRegionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostRegionId'");
             }
-            if ((!args || args.hostVpcId === undefined) && !opts.urn) {
+            if (args?.hostVpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostVpcId'");
             }
-            resourceInputs["accessRegionId"] = args ? args.accessRegionId : undefined;
-            resourceInputs["cenId"] = args ? args.cenId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["host"] = args ? args.host : undefined;
-            resourceInputs["hostRegionId"] = args ? args.hostRegionId : undefined;
-            resourceInputs["hostVpcId"] = args ? args.hostVpcId : undefined;
+            resourceInputs["accessRegionId"] = args?.accessRegionId;
+            resourceInputs["cenId"] = args?.cenId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["host"] = args?.host;
+            resourceInputs["hostRegionId"] = args?.hostRegionId;
+            resourceInputs["hostVpcId"] = args?.hostVpcId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

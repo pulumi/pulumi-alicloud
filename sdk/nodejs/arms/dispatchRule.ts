@@ -120,35 +120,35 @@ export class DispatchRule extends pulumi.CustomResource {
     /**
      * The name of the dispatch policy.
      */
-    public readonly dispatchRuleName!: pulumi.Output<string>;
+    declare public readonly dispatchRuleName: pulumi.Output<string>;
     /**
      * The alert handling method. Valid values: CREATE_ALERT: generates an alert. DISCARD_ALERT: discards the alert event and generates no alert.
      */
-    public readonly dispatchType!: pulumi.Output<string | undefined>;
+    declare public readonly dispatchType: pulumi.Output<string | undefined>;
     /**
      * Sets the event group. See `groupRules` below. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
      */
-    public readonly groupRules!: pulumi.Output<outputs.arms.DispatchRuleGroupRule[]>;
+    declare public readonly groupRules: pulumi.Output<outputs.arms.DispatchRuleGroupRule[]>;
     /**
      * Specifies whether to send the restored alert. Valid values: true: sends the alert. false: does not send the alert.
      */
-    public readonly isRecover!: pulumi.Output<boolean | undefined>;
+    declare public readonly isRecover: pulumi.Output<boolean | undefined>;
     /**
      * Sets the dispatch rule. See `labelMatchExpressionGrid` below.
      */
-    public readonly labelMatchExpressionGrids!: pulumi.Output<outputs.arms.DispatchRuleLabelMatchExpressionGrid[]>;
+    declare public readonly labelMatchExpressionGrids: pulumi.Output<outputs.arms.DispatchRuleLabelMatchExpressionGrid[]>;
     /**
      * Sets the notification rule. See `notifyRules` below. It will be ignored  when `dispatchType = "DISCARD_ALERT"`.
      */
-    public readonly notifyRules!: pulumi.Output<outputs.arms.DispatchRuleNotifyRule[]>;
+    declare public readonly notifyRules: pulumi.Output<outputs.arms.DispatchRuleNotifyRule[]>;
     /**
      * Sets the notification template. See `notifyTemplate` below.
      */
-    public readonly notifyTemplates!: pulumi.Output<outputs.arms.DispatchRuleNotifyTemplate[] | undefined>;
+    declare public readonly notifyTemplates: pulumi.Output<outputs.arms.DispatchRuleNotifyTemplate[] | undefined>;
     /**
      * The resource status of Alert Dispatch Rule.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a DispatchRule resource with the given unique name, arguments, and options.
@@ -163,35 +163,35 @@ export class DispatchRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DispatchRuleState | undefined;
-            resourceInputs["dispatchRuleName"] = state ? state.dispatchRuleName : undefined;
-            resourceInputs["dispatchType"] = state ? state.dispatchType : undefined;
-            resourceInputs["groupRules"] = state ? state.groupRules : undefined;
-            resourceInputs["isRecover"] = state ? state.isRecover : undefined;
-            resourceInputs["labelMatchExpressionGrids"] = state ? state.labelMatchExpressionGrids : undefined;
-            resourceInputs["notifyRules"] = state ? state.notifyRules : undefined;
-            resourceInputs["notifyTemplates"] = state ? state.notifyTemplates : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["dispatchRuleName"] = state?.dispatchRuleName;
+            resourceInputs["dispatchType"] = state?.dispatchType;
+            resourceInputs["groupRules"] = state?.groupRules;
+            resourceInputs["isRecover"] = state?.isRecover;
+            resourceInputs["labelMatchExpressionGrids"] = state?.labelMatchExpressionGrids;
+            resourceInputs["notifyRules"] = state?.notifyRules;
+            resourceInputs["notifyTemplates"] = state?.notifyTemplates;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as DispatchRuleArgs | undefined;
-            if ((!args || args.dispatchRuleName === undefined) && !opts.urn) {
+            if (args?.dispatchRuleName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dispatchRuleName'");
             }
-            if ((!args || args.groupRules === undefined) && !opts.urn) {
+            if (args?.groupRules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupRules'");
             }
-            if ((!args || args.labelMatchExpressionGrids === undefined) && !opts.urn) {
+            if (args?.labelMatchExpressionGrids === undefined && !opts.urn) {
                 throw new Error("Missing required property 'labelMatchExpressionGrids'");
             }
-            if ((!args || args.notifyRules === undefined) && !opts.urn) {
+            if (args?.notifyRules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'notifyRules'");
             }
-            resourceInputs["dispatchRuleName"] = args ? args.dispatchRuleName : undefined;
-            resourceInputs["dispatchType"] = args ? args.dispatchType : undefined;
-            resourceInputs["groupRules"] = args ? args.groupRules : undefined;
-            resourceInputs["isRecover"] = args ? args.isRecover : undefined;
-            resourceInputs["labelMatchExpressionGrids"] = args ? args.labelMatchExpressionGrids : undefined;
-            resourceInputs["notifyRules"] = args ? args.notifyRules : undefined;
-            resourceInputs["notifyTemplates"] = args ? args.notifyTemplates : undefined;
+            resourceInputs["dispatchRuleName"] = args?.dispatchRuleName;
+            resourceInputs["dispatchType"] = args?.dispatchType;
+            resourceInputs["groupRules"] = args?.groupRules;
+            resourceInputs["isRecover"] = args?.isRecover;
+            resourceInputs["labelMatchExpressionGrids"] = args?.labelMatchExpressionGrids;
+            resourceInputs["notifyRules"] = args?.notifyRules;
+            resourceInputs["notifyTemplates"] = args?.notifyTemplates;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

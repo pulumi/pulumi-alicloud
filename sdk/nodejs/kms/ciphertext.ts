@@ -53,19 +53,19 @@ export class Ciphertext extends pulumi.CustomResource {
     /**
      * The ciphertext of the data key encrypted with the primary CMK version.
      */
-    public /*out*/ readonly ciphertextBlob!: pulumi.Output<string>;
+    declare public /*out*/ readonly ciphertextBlob: pulumi.Output<string>;
     /**
      * The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
      */
-    public readonly encryptionContext!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly encryptionContext: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The globally unique ID of the CMK.
      */
-    public readonly keyId!: pulumi.Output<string>;
+    declare public readonly keyId: pulumi.Output<string>;
     /**
      * The plaintext to be encrypted which must be encoded in Base64.
      */
-    public readonly plaintext!: pulumi.Output<string>;
+    declare public readonly plaintext: pulumi.Output<string>;
 
     /**
      * Create a Ciphertext resource with the given unique name, arguments, and options.
@@ -80,20 +80,20 @@ export class Ciphertext extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CiphertextState | undefined;
-            resourceInputs["ciphertextBlob"] = state ? state.ciphertextBlob : undefined;
-            resourceInputs["encryptionContext"] = state ? state.encryptionContext : undefined;
-            resourceInputs["keyId"] = state ? state.keyId : undefined;
-            resourceInputs["plaintext"] = state ? state.plaintext : undefined;
+            resourceInputs["ciphertextBlob"] = state?.ciphertextBlob;
+            resourceInputs["encryptionContext"] = state?.encryptionContext;
+            resourceInputs["keyId"] = state?.keyId;
+            resourceInputs["plaintext"] = state?.plaintext;
         } else {
             const args = argsOrState as CiphertextArgs | undefined;
-            if ((!args || args.keyId === undefined) && !opts.urn) {
+            if (args?.keyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'keyId'");
             }
-            if ((!args || args.plaintext === undefined) && !opts.urn) {
+            if (args?.plaintext === undefined && !opts.urn) {
                 throw new Error("Missing required property 'plaintext'");
             }
-            resourceInputs["encryptionContext"] = args ? args.encryptionContext : undefined;
-            resourceInputs["keyId"] = args ? args.keyId : undefined;
+            resourceInputs["encryptionContext"] = args?.encryptionContext;
+            resourceInputs["keyId"] = args?.keyId;
             resourceInputs["plaintext"] = args?.plaintext ? pulumi.secret(args.plaintext) : undefined;
             resourceInputs["ciphertextBlob"] = undefined /*out*/;
         }

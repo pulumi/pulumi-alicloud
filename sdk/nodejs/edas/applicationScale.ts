@@ -118,23 +118,23 @@ export class ApplicationScale extends pulumi.CustomResource {
     /**
      * The ID of the application that you want to deploy.
      */
-    public readonly appId!: pulumi.Output<string>;
+    declare public readonly appId: pulumi.Output<string>;
     /**
      * The ID of the instance group to which you want to add ECS instances to scale out the application.
      */
-    public readonly deployGroup!: pulumi.Output<string>;
+    declare public readonly deployGroup: pulumi.Output<string>;
     /**
      * The ecc information of the resource supplied above. The value is formulated as `<ecc1,ecc2>`.
      */
-    public /*out*/ readonly eccInfo!: pulumi.Output<string>;
+    declare public /*out*/ readonly eccInfo: pulumi.Output<string>;
     /**
      * The IDs of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
      */
-    public readonly ecuInfos!: pulumi.Output<string[]>;
+    declare public readonly ecuInfos: pulumi.Output<string[]>;
     /**
      * This parameter specifies whether to forcibly remove an ECS instance where the application is deployed. It is set as true only after the ECS instance expires. In normal cases, this parameter do not need to be specified.
      */
-    public readonly forceStatus!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceStatus: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a ApplicationScale resource with the given unique name, arguments, and options.
@@ -149,26 +149,26 @@ export class ApplicationScale extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationScaleState | undefined;
-            resourceInputs["appId"] = state ? state.appId : undefined;
-            resourceInputs["deployGroup"] = state ? state.deployGroup : undefined;
-            resourceInputs["eccInfo"] = state ? state.eccInfo : undefined;
-            resourceInputs["ecuInfos"] = state ? state.ecuInfos : undefined;
-            resourceInputs["forceStatus"] = state ? state.forceStatus : undefined;
+            resourceInputs["appId"] = state?.appId;
+            resourceInputs["deployGroup"] = state?.deployGroup;
+            resourceInputs["eccInfo"] = state?.eccInfo;
+            resourceInputs["ecuInfos"] = state?.ecuInfos;
+            resourceInputs["forceStatus"] = state?.forceStatus;
         } else {
             const args = argsOrState as ApplicationScaleArgs | undefined;
-            if ((!args || args.appId === undefined) && !opts.urn) {
+            if (args?.appId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            if ((!args || args.deployGroup === undefined) && !opts.urn) {
+            if (args?.deployGroup === undefined && !opts.urn) {
                 throw new Error("Missing required property 'deployGroup'");
             }
-            if ((!args || args.ecuInfos === undefined) && !opts.urn) {
+            if (args?.ecuInfos === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ecuInfos'");
             }
-            resourceInputs["appId"] = args ? args.appId : undefined;
-            resourceInputs["deployGroup"] = args ? args.deployGroup : undefined;
-            resourceInputs["ecuInfos"] = args ? args.ecuInfos : undefined;
-            resourceInputs["forceStatus"] = args ? args.forceStatus : undefined;
+            resourceInputs["appId"] = args?.appId;
+            resourceInputs["deployGroup"] = args?.deployGroup;
+            resourceInputs["ecuInfos"] = args?.ecuInfos;
+            resourceInputs["forceStatus"] = args?.forceStatus;
             resourceInputs["eccInfo"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

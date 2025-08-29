@@ -94,15 +94,15 @@ export class AuditPolicy extends pulumi.CustomResource {
     /**
      * The status of the audit log. Valid values: `disabled`, `enable`.
      */
-    public readonly auditStatus!: pulumi.Output<string>;
+    declare public readonly auditStatus: pulumi.Output<string>;
     /**
      * The ID of the instance.
      */
-    public readonly dbInstanceId!: pulumi.Output<string>;
+    declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
      * The retention period of audit logs. Valid values: `1` to `30`. Default value: `30`.
      */
-    public readonly storagePeriod!: pulumi.Output<number | undefined>;
+    declare public readonly storagePeriod: pulumi.Output<number | undefined>;
 
     /**
      * Create a AuditPolicy resource with the given unique name, arguments, and options.
@@ -117,20 +117,20 @@ export class AuditPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AuditPolicyState | undefined;
-            resourceInputs["auditStatus"] = state ? state.auditStatus : undefined;
-            resourceInputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
-            resourceInputs["storagePeriod"] = state ? state.storagePeriod : undefined;
+            resourceInputs["auditStatus"] = state?.auditStatus;
+            resourceInputs["dbInstanceId"] = state?.dbInstanceId;
+            resourceInputs["storagePeriod"] = state?.storagePeriod;
         } else {
             const args = argsOrState as AuditPolicyArgs | undefined;
-            if ((!args || args.auditStatus === undefined) && !opts.urn) {
+            if (args?.auditStatus === undefined && !opts.urn) {
                 throw new Error("Missing required property 'auditStatus'");
             }
-            if ((!args || args.dbInstanceId === undefined) && !opts.urn) {
+            if (args?.dbInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceId'");
             }
-            resourceInputs["auditStatus"] = args ? args.auditStatus : undefined;
-            resourceInputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
-            resourceInputs["storagePeriod"] = args ? args.storagePeriod : undefined;
+            resourceInputs["auditStatus"] = args?.auditStatus;
+            resourceInputs["dbInstanceId"] = args?.dbInstanceId;
+            resourceInputs["storagePeriod"] = args?.storagePeriod;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AuditPolicy.__pulumiType, name, resourceInputs, opts);

@@ -68,33 +68,33 @@ export class ResourceGroup extends pulumi.CustomResource {
     /**
      * The ID of the Alibaba Cloud account to which the resource group belongs.
      */
-    public /*out*/ readonly accountId!: pulumi.Output<string>;
+    declare public /*out*/ readonly accountId: pulumi.Output<string>;
     /**
      * The display name of the resource group. The name must be 1 to 50 characters in length.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Field `name` has been deprecated from provider version 1.114.0. New field `resourceGroupName` instead.
      *
      * @deprecated Field `name` has been deprecated from provider version 1.114.0. New field `resourceGroupName` instead.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The status of the resource group in all regions.
      */
-    public /*out*/ readonly regionStatuses!: pulumi.Output<outputs.resourcemanager.ResourceGroupRegionStatus[]>;
+    declare public /*out*/ readonly regionStatuses: pulumi.Output<outputs.resourcemanager.ResourceGroupRegionStatus[]>;
     /**
      * The unique identifier of the resource group. The identifier must be 3 to 50 characters in length and can contain letters, digits, and hyphens (-). The identifier must start with a letter.
      */
-    public readonly resourceGroupName!: pulumi.Output<string>;
+    declare public readonly resourceGroupName: pulumi.Output<string>;
     /**
      * The status of the resource group.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a ResourceGroup resource with the given unique name, arguments, and options.
@@ -109,22 +109,22 @@ export class ResourceGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ResourceGroupState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["regionStatuses"] = state ? state.regionStatuses : undefined;
-            resourceInputs["resourceGroupName"] = state ? state.resourceGroupName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["regionStatuses"] = state?.regionStatuses;
+            resourceInputs["resourceGroupName"] = state?.resourceGroupName;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as ResourceGroupArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["accountId"] = undefined /*out*/;
             resourceInputs["regionStatuses"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

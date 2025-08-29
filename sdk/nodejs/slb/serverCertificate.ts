@@ -96,43 +96,43 @@ export class ServerCertificate extends pulumi.CustomResource {
     /**
      * @deprecated Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.
      */
-    public readonly alicloudCertifacteId!: pulumi.Output<string | undefined>;
+    declare public readonly alicloudCertifacteId: pulumi.Output<string | undefined>;
     /**
      * @deprecated Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.
      */
-    public readonly alicloudCertifacteName!: pulumi.Output<string | undefined>;
+    declare public readonly alicloudCertifacteName: pulumi.Output<string | undefined>;
     /**
      * an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
      */
-    public readonly alicloudCertificateId!: pulumi.Output<string | undefined>;
+    declare public readonly alicloudCertificateId: pulumi.Output<string | undefined>;
     /**
      * the name of the certificate specified by `alicloudCertificateId`.but it is not supported on the international site of alibaba cloud now.
      */
-    public readonly alicloudCertificateName!: pulumi.Output<string | undefined>;
+    declare public readonly alicloudCertificateName: pulumi.Output<string | undefined>;
     /**
      * the region of the certificate specified by `alicloudCertificateId`. but it is not supported on the international site of alibaba cloud now.
      */
-    public readonly alicloudCertificateRegionId!: pulumi.Output<string | undefined>;
+    declare public readonly alicloudCertificateRegionId: pulumi.Output<string | undefined>;
     /**
      * Name of the Server Certificate.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * the content of privat key of the ssl certificate specified by `serverCertificate`. where `alicloudCertificateId` is null, it is required, otherwise it is ignored.
      */
-    public readonly privateKey!: pulumi.Output<string | undefined>;
+    declare public readonly privateKey: pulumi.Output<string | undefined>;
     /**
      * The Id of resource group which the slb server certificate belongs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * the content of the ssl certificate. where `alicloudCertificateId` is null, it is required, otherwise it is ignored.
      */
-    public readonly serverCertificate!: pulumi.Output<string | undefined>;
+    declare public readonly serverCertificate: pulumi.Output<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a ServerCertificate resource with the given unique name, arguments, and options.
@@ -147,28 +147,28 @@ export class ServerCertificate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServerCertificateState | undefined;
-            resourceInputs["alicloudCertifacteId"] = state ? state.alicloudCertifacteId : undefined;
-            resourceInputs["alicloudCertifacteName"] = state ? state.alicloudCertifacteName : undefined;
-            resourceInputs["alicloudCertificateId"] = state ? state.alicloudCertificateId : undefined;
-            resourceInputs["alicloudCertificateName"] = state ? state.alicloudCertificateName : undefined;
-            resourceInputs["alicloudCertificateRegionId"] = state ? state.alicloudCertificateRegionId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["serverCertificate"] = state ? state.serverCertificate : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["alicloudCertifacteId"] = state?.alicloudCertifacteId;
+            resourceInputs["alicloudCertifacteName"] = state?.alicloudCertifacteName;
+            resourceInputs["alicloudCertificateId"] = state?.alicloudCertificateId;
+            resourceInputs["alicloudCertificateName"] = state?.alicloudCertificateName;
+            resourceInputs["alicloudCertificateRegionId"] = state?.alicloudCertificateRegionId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["privateKey"] = state?.privateKey;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["serverCertificate"] = state?.serverCertificate;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as ServerCertificateArgs | undefined;
-            resourceInputs["alicloudCertifacteId"] = args ? args.alicloudCertifacteId : undefined;
-            resourceInputs["alicloudCertifacteName"] = args ? args.alicloudCertifacteName : undefined;
-            resourceInputs["alicloudCertificateId"] = args ? args.alicloudCertificateId : undefined;
-            resourceInputs["alicloudCertificateName"] = args ? args.alicloudCertificateName : undefined;
-            resourceInputs["alicloudCertificateRegionId"] = args ? args.alicloudCertificateRegionId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["privateKey"] = args ? args.privateKey : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["serverCertificate"] = args ? args.serverCertificate : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["alicloudCertifacteId"] = args?.alicloudCertifacteId;
+            resourceInputs["alicloudCertifacteName"] = args?.alicloudCertifacteName;
+            resourceInputs["alicloudCertificateId"] = args?.alicloudCertificateId;
+            resourceInputs["alicloudCertificateName"] = args?.alicloudCertificateName;
+            resourceInputs["alicloudCertificateRegionId"] = args?.alicloudCertificateRegionId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["privateKey"] = args?.privateKey;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["serverCertificate"] = args?.serverCertificate;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServerCertificate.__pulumiType, name, resourceInputs, opts);

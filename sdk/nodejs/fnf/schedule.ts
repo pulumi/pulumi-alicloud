@@ -79,35 +79,35 @@ export class Schedule extends pulumi.CustomResource {
     /**
      * The CRON expression of the time-based schedule to be created.
      */
-    public readonly cronExpression!: pulumi.Output<string>;
+    declare public readonly cronExpression: pulumi.Output<string>;
     /**
      * The description of the time-based schedule to be created.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to enable the time-based schedule you want to create. Valid values: `false`, `true`.
      */
-    public readonly enable!: pulumi.Output<boolean | undefined>;
+    declare public readonly enable: pulumi.Output<boolean | undefined>;
     /**
      * The name of the flow bound to the time-based schedule you want to create.
      */
-    public readonly flowName!: pulumi.Output<string>;
+    declare public readonly flowName: pulumi.Output<string>;
     /**
      * The time when the time-based schedule was last updated.
      */
-    public /*out*/ readonly lastModifiedTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastModifiedTime: pulumi.Output<string>;
     /**
      * The trigger message of the time-based schedule to be created. It must be in JSON object format.
      */
-    public readonly payload!: pulumi.Output<string | undefined>;
+    declare public readonly payload: pulumi.Output<string | undefined>;
     /**
      * The ID of the time-based schedule.
      */
-    public /*out*/ readonly scheduleId!: pulumi.Output<string>;
+    declare public /*out*/ readonly scheduleId: pulumi.Output<string>;
     /**
      * The name of the time-based schedule to be created.
      */
-    public readonly scheduleName!: pulumi.Output<string>;
+    declare public readonly scheduleName: pulumi.Output<string>;
 
     /**
      * Create a Schedule resource with the given unique name, arguments, and options.
@@ -122,31 +122,31 @@ export class Schedule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ScheduleState | undefined;
-            resourceInputs["cronExpression"] = state ? state.cronExpression : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enable"] = state ? state.enable : undefined;
-            resourceInputs["flowName"] = state ? state.flowName : undefined;
-            resourceInputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
-            resourceInputs["payload"] = state ? state.payload : undefined;
-            resourceInputs["scheduleId"] = state ? state.scheduleId : undefined;
-            resourceInputs["scheduleName"] = state ? state.scheduleName : undefined;
+            resourceInputs["cronExpression"] = state?.cronExpression;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enable"] = state?.enable;
+            resourceInputs["flowName"] = state?.flowName;
+            resourceInputs["lastModifiedTime"] = state?.lastModifiedTime;
+            resourceInputs["payload"] = state?.payload;
+            resourceInputs["scheduleId"] = state?.scheduleId;
+            resourceInputs["scheduleName"] = state?.scheduleName;
         } else {
             const args = argsOrState as ScheduleArgs | undefined;
-            if ((!args || args.cronExpression === undefined) && !opts.urn) {
+            if (args?.cronExpression === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cronExpression'");
             }
-            if ((!args || args.flowName === undefined) && !opts.urn) {
+            if (args?.flowName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'flowName'");
             }
-            if ((!args || args.scheduleName === undefined) && !opts.urn) {
+            if (args?.scheduleName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scheduleName'");
             }
-            resourceInputs["cronExpression"] = args ? args.cronExpression : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enable"] = args ? args.enable : undefined;
-            resourceInputs["flowName"] = args ? args.flowName : undefined;
-            resourceInputs["payload"] = args ? args.payload : undefined;
-            resourceInputs["scheduleName"] = args ? args.scheduleName : undefined;
+            resourceInputs["cronExpression"] = args?.cronExpression;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enable"] = args?.enable;
+            resourceInputs["flowName"] = args?.flowName;
+            resourceInputs["payload"] = args?.payload;
+            resourceInputs["scheduleName"] = args?.scheduleName;
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
             resourceInputs["scheduleId"] = undefined /*out*/;
         }

@@ -68,36 +68,36 @@ export class EcsKeyPair extends pulumi.CustomResource {
     /**
      * (Available since v1.237.0) The time when the key pair was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The fingerprint of the key pair.
      */
-    public /*out*/ readonly fingerPrint!: pulumi.Output<string>;
+    declare public /*out*/ readonly fingerPrint: pulumi.Output<string>;
     /**
      * The key file.
      */
-    public readonly keyFile!: pulumi.Output<string | undefined>;
+    declare public readonly keyFile: pulumi.Output<string | undefined>;
     /**
      * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      */
-    public readonly keyName!: pulumi.Output<string>;
-    public readonly keyNamePrefix!: pulumi.Output<string | undefined>;
+    declare public readonly keyName: pulumi.Output<string>;
+    declare public readonly keyNamePrefix: pulumi.Output<string | undefined>;
     /**
      * The name of the key pair. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      */
-    public readonly keyPairName!: pulumi.Output<string>;
+    declare public readonly keyPairName: pulumi.Output<string>;
     /**
      * The public key of the key pair.
      */
-    public readonly publicKey!: pulumi.Output<string | undefined>;
+    declare public readonly publicKey: pulumi.Output<string | undefined>;
     /**
      * The ID of the resource group to which to add the key pair.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a EcsKeyPair resource with the given unique name, arguments, and options.
@@ -112,24 +112,24 @@ export class EcsKeyPair extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcsKeyPairState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["fingerPrint"] = state ? state.fingerPrint : undefined;
-            resourceInputs["keyFile"] = state ? state.keyFile : undefined;
-            resourceInputs["keyName"] = state ? state.keyName : undefined;
-            resourceInputs["keyNamePrefix"] = state ? state.keyNamePrefix : undefined;
-            resourceInputs["keyPairName"] = state ? state.keyPairName : undefined;
-            resourceInputs["publicKey"] = state ? state.publicKey : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["fingerPrint"] = state?.fingerPrint;
+            resourceInputs["keyFile"] = state?.keyFile;
+            resourceInputs["keyName"] = state?.keyName;
+            resourceInputs["keyNamePrefix"] = state?.keyNamePrefix;
+            resourceInputs["keyPairName"] = state?.keyPairName;
+            resourceInputs["publicKey"] = state?.publicKey;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as EcsKeyPairArgs | undefined;
-            resourceInputs["keyFile"] = args ? args.keyFile : undefined;
-            resourceInputs["keyName"] = args ? args.keyName : undefined;
-            resourceInputs["keyNamePrefix"] = args ? args.keyNamePrefix : undefined;
-            resourceInputs["keyPairName"] = args ? args.keyPairName : undefined;
-            resourceInputs["publicKey"] = args ? args.publicKey : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["keyFile"] = args?.keyFile;
+            resourceInputs["keyName"] = args?.keyName;
+            resourceInputs["keyNamePrefix"] = args?.keyNamePrefix;
+            resourceInputs["keyPairName"] = args?.keyPairName;
+            resourceInputs["publicKey"] = args?.publicKey;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["fingerPrint"] = undefined /*out*/;
         }

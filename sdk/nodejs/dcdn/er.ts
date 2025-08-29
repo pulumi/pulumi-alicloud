@@ -78,15 +78,15 @@ export class Er extends pulumi.CustomResource {
     /**
      * Routine The description of the routine.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The configurations of the specified environment. See `envConf` below.
      */
-    public readonly envConf!: pulumi.Output<outputs.dcdn.ErEnvConf>;
+    declare public readonly envConf: pulumi.Output<outputs.dcdn.ErEnvConf>;
     /**
      * The name of the routine. The name must be unique among the routines that belong to the same Alibaba Cloud account.
      */
-    public readonly erName!: pulumi.Output<string>;
+    declare public readonly erName: pulumi.Output<string>;
 
     /**
      * Create a Er resource with the given unique name, arguments, and options.
@@ -101,17 +101,17 @@ export class Er extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ErState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["envConf"] = state ? state.envConf : undefined;
-            resourceInputs["erName"] = state ? state.erName : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["envConf"] = state?.envConf;
+            resourceInputs["erName"] = state?.erName;
         } else {
             const args = argsOrState as ErArgs | undefined;
-            if ((!args || args.erName === undefined) && !opts.urn) {
+            if (args?.erName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'erName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["envConf"] = args ? args.envConf : undefined;
-            resourceInputs["erName"] = args ? args.erName : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["envConf"] = args?.envConf;
+            resourceInputs["erName"] = args?.erName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Er.__pulumiType, name, resourceInputs, opts);

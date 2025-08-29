@@ -69,31 +69,31 @@ export class ScimServerCredential extends pulumi.CustomResource {
     /**
      * (Available since v1.245.0) The time when the SCIM credential was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The ID of the SCIM credential.
      */
-    public /*out*/ readonly credentialId!: pulumi.Output<string>;
+    declare public /*out*/ readonly credentialId: pulumi.Output<string>;
     /**
      * The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn't get its secret ever.
      */
-    public readonly credentialSecretFile!: pulumi.Output<string | undefined>;
+    declare public readonly credentialSecretFile: pulumi.Output<string | undefined>;
     /**
      * (Available since v1.245.0) The type of the SCIM credential.
      */
-    public /*out*/ readonly credentialType!: pulumi.Output<string>;
+    declare public /*out*/ readonly credentialType: pulumi.Output<string>;
     /**
      * The ID of the Directory.
      */
-    public readonly directoryId!: pulumi.Output<string>;
+    declare public readonly directoryId: pulumi.Output<string>;
     /**
      * (Available since v1.245.0) The time when the SCIM credential expires.
      */
-    public /*out*/ readonly expireTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly expireTime: pulumi.Output<string>;
     /**
      * The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
 
     /**
      * Create a ScimServerCredential resource with the given unique name, arguments, and options.
@@ -108,21 +108,21 @@ export class ScimServerCredential extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ScimServerCredentialState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["credentialId"] = state ? state.credentialId : undefined;
-            resourceInputs["credentialSecretFile"] = state ? state.credentialSecretFile : undefined;
-            resourceInputs["credentialType"] = state ? state.credentialType : undefined;
-            resourceInputs["directoryId"] = state ? state.directoryId : undefined;
-            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["credentialId"] = state?.credentialId;
+            resourceInputs["credentialSecretFile"] = state?.credentialSecretFile;
+            resourceInputs["credentialType"] = state?.credentialType;
+            resourceInputs["directoryId"] = state?.directoryId;
+            resourceInputs["expireTime"] = state?.expireTime;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as ScimServerCredentialArgs | undefined;
-            if ((!args || args.directoryId === undefined) && !opts.urn) {
+            if (args?.directoryId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'directoryId'");
             }
-            resourceInputs["credentialSecretFile"] = args ? args.credentialSecretFile : undefined;
-            resourceInputs["directoryId"] = args ? args.directoryId : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["credentialSecretFile"] = args?.credentialSecretFile;
+            resourceInputs["directoryId"] = args?.directoryId;
+            resourceInputs["status"] = args?.status;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["credentialId"] = undefined /*out*/;
             resourceInputs["credentialType"] = undefined /*out*/;

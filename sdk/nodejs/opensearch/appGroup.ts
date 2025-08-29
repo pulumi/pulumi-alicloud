@@ -74,47 +74,47 @@ export class AppGroup extends pulumi.CustomResource {
     /**
      * Application Group Name.
      */
-    public readonly appGroupName!: pulumi.Output<string>;
+    declare public readonly appGroupName: pulumi.Output<string>;
     /**
      * Billing model. Valid values:`computeResource` and `qps`.
      */
-    public readonly chargeWay!: pulumi.Output<string>;
+    declare public readonly chargeWay: pulumi.Output<string>;
     /**
      * The version of Application Group Name.
      */
-    public readonly currentVersion!: pulumi.Output<string | undefined>;
+    declare public readonly currentVersion: pulumi.Output<string | undefined>;
     /**
      * The description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The instance id.
      */
-    public /*out*/ readonly instanceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly instanceId: pulumi.Output<string>;
     /**
      * Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
      */
-    public readonly orderType!: pulumi.Output<string>;
+    declare public readonly orderType: pulumi.Output<string>;
     /**
      * Order cycle information. The details see Block order.
      */
-    public readonly orders!: pulumi.Output<outputs.opensearch.AppGroupOrder[] | undefined>;
+    declare public readonly orders: pulumi.Output<outputs.opensearch.AppGroupOrder[] | undefined>;
     /**
      * The billing method of the resource. Valid values: `Subscription` and `PayAsYouGo`.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * Quota information.  The details see Block quota.
      */
-    public readonly quota!: pulumi.Output<outputs.opensearch.AppGroupQuota>;
+    declare public readonly quota: pulumi.Output<outputs.opensearch.AppGroupQuota>;
     /**
      * The status of the resource. Valid values: `producing`,`reviewPending`,`configPending`,`normal`,`frozen`.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Application type. Valid Values: `standard`, `enhanced`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a AppGroup resource with the given unique name, arguments, and options.
@@ -129,40 +129,40 @@ export class AppGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppGroupState | undefined;
-            resourceInputs["appGroupName"] = state ? state.appGroupName : undefined;
-            resourceInputs["chargeWay"] = state ? state.chargeWay : undefined;
-            resourceInputs["currentVersion"] = state ? state.currentVersion : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["orderType"] = state ? state.orderType : undefined;
-            resourceInputs["orders"] = state ? state.orders : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["quota"] = state ? state.quota : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["appGroupName"] = state?.appGroupName;
+            resourceInputs["chargeWay"] = state?.chargeWay;
+            resourceInputs["currentVersion"] = state?.currentVersion;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["orderType"] = state?.orderType;
+            resourceInputs["orders"] = state?.orders;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["quota"] = state?.quota;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as AppGroupArgs | undefined;
-            if ((!args || args.appGroupName === undefined) && !opts.urn) {
+            if (args?.appGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appGroupName'");
             }
-            if ((!args || args.paymentType === undefined) && !opts.urn) {
+            if (args?.paymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            if ((!args || args.quota === undefined) && !opts.urn) {
+            if (args?.quota === undefined && !opts.urn) {
                 throw new Error("Missing required property 'quota'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["appGroupName"] = args ? args.appGroupName : undefined;
-            resourceInputs["chargeWay"] = args ? args.chargeWay : undefined;
-            resourceInputs["currentVersion"] = args ? args.currentVersion : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["orderType"] = args ? args.orderType : undefined;
-            resourceInputs["orders"] = args ? args.orders : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["quota"] = args ? args.quota : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["appGroupName"] = args?.appGroupName;
+            resourceInputs["chargeWay"] = args?.chargeWay;
+            resourceInputs["currentVersion"] = args?.currentVersion;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["orderType"] = args?.orderType;
+            resourceInputs["orders"] = args?.orders;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["quota"] = args?.quota;
+            resourceInputs["type"] = args?.type;
             resourceInputs["instanceId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

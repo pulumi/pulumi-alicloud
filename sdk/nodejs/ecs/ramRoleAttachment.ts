@@ -127,15 +127,15 @@ export class RamRoleAttachment extends pulumi.CustomResource {
     /**
      * The ID of the instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The additional policy. When you attach an instance RAM role to instances, you can specify an additional policy to further limit the permissions of the role.
      */
-    public readonly policy!: pulumi.Output<string | undefined>;
+    declare public readonly policy: pulumi.Output<string | undefined>;
     /**
      * The name of the instance RAM role.
      */
-    public readonly ramRoleName!: pulumi.Output<string>;
+    declare public readonly ramRoleName: pulumi.Output<string>;
 
     /**
      * Create a RamRoleAttachment resource with the given unique name, arguments, and options.
@@ -150,20 +150,20 @@ export class RamRoleAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RamRoleAttachmentState | undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["policy"] = state ? state.policy : undefined;
-            resourceInputs["ramRoleName"] = state ? state.ramRoleName : undefined;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["policy"] = state?.policy;
+            resourceInputs["ramRoleName"] = state?.ramRoleName;
         } else {
             const args = argsOrState as RamRoleAttachmentArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.ramRoleName === undefined) && !opts.urn) {
+            if (args?.ramRoleName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ramRoleName'");
             }
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["policy"] = args ? args.policy : undefined;
-            resourceInputs["ramRoleName"] = args ? args.ramRoleName : undefined;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["policy"] = args?.policy;
+            resourceInputs["ramRoleName"] = args?.ramRoleName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RamRoleAttachment.__pulumiType, name, resourceInputs, opts);

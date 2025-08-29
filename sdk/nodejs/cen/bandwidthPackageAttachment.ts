@@ -72,11 +72,11 @@ export class BandwidthPackageAttachment extends pulumi.CustomResource {
     /**
      * The ID of the bandwidth package.
      */
-    public readonly bandwidthPackageId!: pulumi.Output<string>;
+    declare public readonly bandwidthPackageId: pulumi.Output<string>;
     /**
      * The ID of the CEN.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
 
     /**
      * Create a BandwidthPackageAttachment resource with the given unique name, arguments, and options.
@@ -91,18 +91,18 @@ export class BandwidthPackageAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BandwidthPackageAttachmentState | undefined;
-            resourceInputs["bandwidthPackageId"] = state ? state.bandwidthPackageId : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["bandwidthPackageId"] = state?.bandwidthPackageId;
+            resourceInputs["instanceId"] = state?.instanceId;
         } else {
             const args = argsOrState as BandwidthPackageAttachmentArgs | undefined;
-            if ((!args || args.bandwidthPackageId === undefined) && !opts.urn) {
+            if (args?.bandwidthPackageId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bandwidthPackageId'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["bandwidthPackageId"] = args ? args.bandwidthPackageId : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["bandwidthPackageId"] = args?.bandwidthPackageId;
+            resourceInputs["instanceId"] = args?.instanceId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BandwidthPackageAttachment.__pulumiType, name, resourceInputs, opts);

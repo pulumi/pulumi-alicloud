@@ -69,50 +69,50 @@ export class EnterpriseProxyAccess extends pulumi.CustomResource {
     /**
      * The authorized account of the security agent.
      */
-    public /*out*/ readonly accessId!: pulumi.Output<string>;
+    declare public /*out*/ readonly accessId: pulumi.Output<string>;
     /**
      * Secure access agent authorization password.
      */
-    public /*out*/ readonly accessSecret!: pulumi.Output<string>;
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly accessSecret: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Database account.
      */
-    public readonly indepAccount!: pulumi.Output<string | undefined>;
+    declare public readonly indepAccount: pulumi.Output<string | undefined>;
     /**
      * Database password.
      */
-    public readonly indepPassword!: pulumi.Output<string | undefined>;
+    declare public readonly indepPassword: pulumi.Output<string | undefined>;
     /**
      * The ID of the instance.
      */
-    public /*out*/ readonly instanceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly instanceId: pulumi.Output<string>;
     /**
      * The source information of the security access agent permission is enabled, and the return value is as follows:
      * * **Owner Authorization**: The UID of the owner in parentheses.
      * * **Work Order Authorization**: The ticket number in parentheses is the number of the user to apply for permission.
      */
-    public /*out*/ readonly originInfo!: pulumi.Output<string>;
+    declare public /*out*/ readonly originInfo: pulumi.Output<string>;
     /**
      * Security Protection authorization ID. After the target user is authorized by the security protection agent, the system automatically generates a security protection authorization ID, which is globally unique.
      */
-    public readonly proxyAccessId!: pulumi.Output<string>;
+    declare public readonly proxyAccessId: pulumi.Output<string>;
     /**
      * The ID of the security agent.
      */
-    public readonly proxyId!: pulumi.Output<string>;
+    declare public readonly proxyId: pulumi.Output<string>;
     /**
      * The user ID.
      */
-    public readonly userId!: pulumi.Output<string>;
+    declare public readonly userId: pulumi.Output<string>;
     /**
      * User nickname.
      */
-    public /*out*/ readonly userName!: pulumi.Output<string>;
+    declare public /*out*/ readonly userName: pulumi.Output<string>;
     /**
      * User UID.
      */
-    public /*out*/ readonly userUid!: pulumi.Output<string>;
+    declare public /*out*/ readonly userUid: pulumi.Output<string>;
 
     /**
      * Create a EnterpriseProxyAccess resource with the given unique name, arguments, and options.
@@ -127,31 +127,31 @@ export class EnterpriseProxyAccess extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnterpriseProxyAccessState | undefined;
-            resourceInputs["accessId"] = state ? state.accessId : undefined;
-            resourceInputs["accessSecret"] = state ? state.accessSecret : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["indepAccount"] = state ? state.indepAccount : undefined;
-            resourceInputs["indepPassword"] = state ? state.indepPassword : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["originInfo"] = state ? state.originInfo : undefined;
-            resourceInputs["proxyAccessId"] = state ? state.proxyAccessId : undefined;
-            resourceInputs["proxyId"] = state ? state.proxyId : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
-            resourceInputs["userName"] = state ? state.userName : undefined;
-            resourceInputs["userUid"] = state ? state.userUid : undefined;
+            resourceInputs["accessId"] = state?.accessId;
+            resourceInputs["accessSecret"] = state?.accessSecret;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["indepAccount"] = state?.indepAccount;
+            resourceInputs["indepPassword"] = state?.indepPassword;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["originInfo"] = state?.originInfo;
+            resourceInputs["proxyAccessId"] = state?.proxyAccessId;
+            resourceInputs["proxyId"] = state?.proxyId;
+            resourceInputs["userId"] = state?.userId;
+            resourceInputs["userName"] = state?.userName;
+            resourceInputs["userUid"] = state?.userUid;
         } else {
             const args = argsOrState as EnterpriseProxyAccessArgs | undefined;
-            if ((!args || args.proxyId === undefined) && !opts.urn) {
+            if (args?.proxyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'proxyId'");
             }
-            if ((!args || args.userId === undefined) && !opts.urn) {
+            if (args?.userId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            resourceInputs["indepAccount"] = args ? args.indepAccount : undefined;
+            resourceInputs["indepAccount"] = args?.indepAccount;
             resourceInputs["indepPassword"] = args?.indepPassword ? pulumi.secret(args.indepPassword) : undefined;
-            resourceInputs["proxyAccessId"] = args ? args.proxyAccessId : undefined;
-            resourceInputs["proxyId"] = args ? args.proxyId : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["proxyAccessId"] = args?.proxyAccessId;
+            resourceInputs["proxyId"] = args?.proxyId;
+            resourceInputs["userId"] = args?.userId;
             resourceInputs["accessId"] = undefined /*out*/;
             resourceInputs["accessSecret"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;

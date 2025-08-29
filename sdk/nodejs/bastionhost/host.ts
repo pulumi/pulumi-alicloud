@@ -93,50 +93,50 @@ export class Host extends pulumi.CustomResource {
     /**
      * Specify the new create a host of address types. Valid values: `Public`: the IP address of a Public network. `Private`: Private network address.
      */
-    public readonly activeAddressType!: pulumi.Output<string>;
+    declare public readonly activeAddressType: pulumi.Output<string>;
     /**
      * Specify a host of notes, supports up to 500 characters.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * The host ID.
      */
-    public /*out*/ readonly hostId!: pulumi.Output<string>;
+    declare public /*out*/ readonly hostId: pulumi.Output<string>;
     /**
      * Specify the new create a host name of the supports up to 128 characters.
      */
-    public readonly hostName!: pulumi.Output<string>;
+    declare public readonly hostName: pulumi.Output<string>;
     /**
      * Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `activeAddressType` parameter is set to `Private`.
      */
-    public readonly hostPrivateAddress!: pulumi.Output<string | undefined>;
+    declare public readonly hostPrivateAddress: pulumi.Output<string | undefined>;
     /**
      * Specify the new create a host of the IP address of a public network, it is possible to use the domain name or IP ADDRESS.
      */
-    public readonly hostPublicAddress!: pulumi.Output<string | undefined>;
+    declare public readonly hostPublicAddress: pulumi.Output<string | undefined>;
     /**
      * Specify the new create a host where the Bastion host ID of.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The instance region id.
      */
-    public readonly instanceRegionId!: pulumi.Output<string | undefined>;
+    declare public readonly instanceRegionId: pulumi.Output<string | undefined>;
     /**
      * Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
      */
-    public readonly osType!: pulumi.Output<string>;
+    declare public readonly osType: pulumi.Output<string>;
     /**
      * Specify the new create a host of source. Valid values: 
      * * `Local`: localhost
      * * `Ecs`:ECS instance
      * * `Rds`:RDS exclusive cluster host.
      */
-    public readonly source!: pulumi.Output<string>;
+    declare public readonly source: pulumi.Output<string>;
     /**
      * Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
      */
-    public readonly sourceInstanceId!: pulumi.Output<string | undefined>;
+    declare public readonly sourceInstanceId: pulumi.Output<string | undefined>;
 
     /**
      * Create a Host resource with the given unique name, arguments, and options.
@@ -151,44 +151,44 @@ export class Host extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HostState | undefined;
-            resourceInputs["activeAddressType"] = state ? state.activeAddressType : undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["hostId"] = state ? state.hostId : undefined;
-            resourceInputs["hostName"] = state ? state.hostName : undefined;
-            resourceInputs["hostPrivateAddress"] = state ? state.hostPrivateAddress : undefined;
-            resourceInputs["hostPublicAddress"] = state ? state.hostPublicAddress : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["instanceRegionId"] = state ? state.instanceRegionId : undefined;
-            resourceInputs["osType"] = state ? state.osType : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
-            resourceInputs["sourceInstanceId"] = state ? state.sourceInstanceId : undefined;
+            resourceInputs["activeAddressType"] = state?.activeAddressType;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["hostId"] = state?.hostId;
+            resourceInputs["hostName"] = state?.hostName;
+            resourceInputs["hostPrivateAddress"] = state?.hostPrivateAddress;
+            resourceInputs["hostPublicAddress"] = state?.hostPublicAddress;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["instanceRegionId"] = state?.instanceRegionId;
+            resourceInputs["osType"] = state?.osType;
+            resourceInputs["source"] = state?.source;
+            resourceInputs["sourceInstanceId"] = state?.sourceInstanceId;
         } else {
             const args = argsOrState as HostArgs | undefined;
-            if ((!args || args.activeAddressType === undefined) && !opts.urn) {
+            if (args?.activeAddressType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'activeAddressType'");
             }
-            if ((!args || args.hostName === undefined) && !opts.urn) {
+            if (args?.hostName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostName'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.osType === undefined) && !opts.urn) {
+            if (args?.osType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'osType'");
             }
-            if ((!args || args.source === undefined) && !opts.urn) {
+            if (args?.source === undefined && !opts.urn) {
                 throw new Error("Missing required property 'source'");
             }
-            resourceInputs["activeAddressType"] = args ? args.activeAddressType : undefined;
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["hostName"] = args ? args.hostName : undefined;
-            resourceInputs["hostPrivateAddress"] = args ? args.hostPrivateAddress : undefined;
-            resourceInputs["hostPublicAddress"] = args ? args.hostPublicAddress : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["instanceRegionId"] = args ? args.instanceRegionId : undefined;
-            resourceInputs["osType"] = args ? args.osType : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
-            resourceInputs["sourceInstanceId"] = args ? args.sourceInstanceId : undefined;
+            resourceInputs["activeAddressType"] = args?.activeAddressType;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["hostName"] = args?.hostName;
+            resourceInputs["hostPrivateAddress"] = args?.hostPrivateAddress;
+            resourceInputs["hostPublicAddress"] = args?.hostPublicAddress;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["instanceRegionId"] = args?.instanceRegionId;
+            resourceInputs["osType"] = args?.osType;
+            resourceInputs["source"] = args?.source;
+            resourceInputs["sourceInstanceId"] = args?.sourceInstanceId;
             resourceInputs["hostId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

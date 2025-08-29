@@ -84,67 +84,67 @@ export class PeerConnectionAccepter extends pulumi.CustomResource {
     /**
      * The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.-to-peer connection to the VPC account.-account VPC peer-to-peer connection.
      */
-    public /*out*/ readonly acceptingOwnerUid!: pulumi.Output<number>;
+    declare public /*out*/ readonly acceptingOwnerUid: pulumi.Output<number>;
     /**
      * The region ID of the recipient of the VPC peering connection to be created.-to-peer connection in the same region, enter the same region ID as the region ID of the initiator.-region VPC peer-to-peer connection, enter a region ID that is different from the region ID of the initiator.
      */
-    public /*out*/ readonly acceptingRegionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly acceptingRegionId: pulumi.Output<string>;
     /**
      * The VPC ID of the receiving end of the VPC peer connection.
      */
-    public /*out*/ readonly acceptingVpcId!: pulumi.Output<string>;
+    declare public /*out*/ readonly acceptingVpcId: pulumi.Output<string>;
     /**
      * The new bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0.
      */
-    public readonly bandwidth!: pulumi.Output<number>;
+    declare public readonly bandwidth: pulumi.Output<number>;
     /**
      * The creation time of the VPC peer connection. Use UTC time in the format' YYYY-MM-DDThh:mm:ssZ '.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The new description of the VPC peering connection.
      * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * Specifies whether to forcefully delete the VPC peering connection. Valid values:
      */
-    public readonly forceDelete!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDelete: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the VPC peering connection whose name or description you want to modify.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Link Type
      */
-    public readonly linkType!: pulumi.Output<string>;
+    declare public readonly linkType: pulumi.Output<string>;
     /**
      * The new name of the VPC peering connection.
      * The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
      */
-    public readonly peerConnectionAccepterName!: pulumi.Output<string>;
+    declare public readonly peerConnectionAccepterName: pulumi.Output<string>;
     /**
      * The ID of the region where you want to query VPC peering connections.
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The ID of the new resource group.
      *
      * > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The status of the resource
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The VPC ID of the initiator of the VPC peering connection.
      */
-    public /*out*/ readonly vpcId!: pulumi.Output<string>;
+    declare public /*out*/ readonly vpcId: pulumi.Output<string>;
 
     /**
      * Create a PeerConnectionAccepter resource with the given unique name, arguments, and options.
@@ -159,34 +159,34 @@ export class PeerConnectionAccepter extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PeerConnectionAccepterState | undefined;
-            resourceInputs["acceptingOwnerUid"] = state ? state.acceptingOwnerUid : undefined;
-            resourceInputs["acceptingRegionId"] = state ? state.acceptingRegionId : undefined;
-            resourceInputs["acceptingVpcId"] = state ? state.acceptingVpcId : undefined;
-            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["linkType"] = state ? state.linkType : undefined;
-            resourceInputs["peerConnectionAccepterName"] = state ? state.peerConnectionAccepterName : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["acceptingOwnerUid"] = state?.acceptingOwnerUid;
+            resourceInputs["acceptingRegionId"] = state?.acceptingRegionId;
+            resourceInputs["acceptingVpcId"] = state?.acceptingVpcId;
+            resourceInputs["bandwidth"] = state?.bandwidth;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["forceDelete"] = state?.forceDelete;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["linkType"] = state?.linkType;
+            resourceInputs["peerConnectionAccepterName"] = state?.peerConnectionAccepterName;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as PeerConnectionAccepterArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["linkType"] = args ? args.linkType : undefined;
-            resourceInputs["peerConnectionAccepterName"] = args ? args.peerConnectionAccepterName : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["bandwidth"] = args?.bandwidth;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["forceDelete"] = args?.forceDelete;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["linkType"] = args?.linkType;
+            resourceInputs["peerConnectionAccepterName"] = args?.peerConnectionAccepterName;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
             resourceInputs["acceptingOwnerUid"] = undefined /*out*/;
             resourceInputs["acceptingRegionId"] = undefined /*out*/;
             resourceInputs["acceptingVpcId"] = undefined /*out*/;

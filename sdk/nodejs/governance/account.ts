@@ -48,33 +48,33 @@ export class Account extends pulumi.CustomResource {
      * - If you are creating a new resource account, this parameter is not required.
      * - If you are enrolling a existing account to account factory, this parameter is required.
      */
-    public readonly accountId!: pulumi.Output<number>;
+    declare public readonly accountId: pulumi.Output<number>;
     /**
      * Account name prefix.
      * - This parameter is required if you are creating a new resource account.
      * - If the registration application is applied to an existing account, this parameter does not need to be filled in.
      */
-    public readonly accountNamePrefix!: pulumi.Output<string | undefined>;
+    declare public readonly accountNamePrefix: pulumi.Output<string | undefined>;
     /**
      * The tags of the account See `accountTags` below.
      */
-    public readonly accountTags!: pulumi.Output<outputs.governance.AccountAccountTag[] | undefined>;
+    declare public readonly accountTags: pulumi.Output<outputs.governance.AccountAccountTag[] | undefined>;
     /**
      * The baseline ID.
      *
      * If it is left blank, the system default baseline is used by default.
      */
-    public readonly baselineId!: pulumi.Output<string>;
+    declare public readonly baselineId: pulumi.Output<string>;
     /**
      * The domain name is used to qualify the login name of RAM users and RAM roles.
      */
-    public readonly defaultDomainName!: pulumi.Output<string | undefined>;
+    declare public readonly defaultDomainName: pulumi.Output<string | undefined>;
     /**
      * The account display name.
      * - This parameter is required if you are creating a new resource account.
      * - If the registration application is applied to an existing account, this parameter does not need to be filled in.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * The ID of the parent resource folder.
      *
@@ -82,15 +82,15 @@ export class Account extends pulumi.CustomResource {
      *
      * If the registration application is applied to an existing account, this parameter does not need to be filled in.
      */
-    public readonly folderId!: pulumi.Output<string | undefined>;
+    declare public readonly folderId: pulumi.Output<string | undefined>;
     /**
      * The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
      */
-    public readonly payerAccountId!: pulumi.Output<number | undefined>;
+    declare public readonly payerAccountId: pulumi.Output<number | undefined>;
     /**
      * Account registration status. Value:
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a Account resource with the given unique name, arguments, and options.
@@ -105,28 +105,28 @@ export class Account extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["accountNamePrefix"] = state ? state.accountNamePrefix : undefined;
-            resourceInputs["accountTags"] = state ? state.accountTags : undefined;
-            resourceInputs["baselineId"] = state ? state.baselineId : undefined;
-            resourceInputs["defaultDomainName"] = state ? state.defaultDomainName : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["folderId"] = state ? state.folderId : undefined;
-            resourceInputs["payerAccountId"] = state ? state.payerAccountId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["accountNamePrefix"] = state?.accountNamePrefix;
+            resourceInputs["accountTags"] = state?.accountTags;
+            resourceInputs["baselineId"] = state?.baselineId;
+            resourceInputs["defaultDomainName"] = state?.defaultDomainName;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["folderId"] = state?.folderId;
+            resourceInputs["payerAccountId"] = state?.payerAccountId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as AccountArgs | undefined;
-            if ((!args || args.baselineId === undefined) && !opts.urn) {
+            if (args?.baselineId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'baselineId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["accountNamePrefix"] = args ? args.accountNamePrefix : undefined;
-            resourceInputs["accountTags"] = args ? args.accountTags : undefined;
-            resourceInputs["baselineId"] = args ? args.baselineId : undefined;
-            resourceInputs["defaultDomainName"] = args ? args.defaultDomainName : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["folderId"] = args ? args.folderId : undefined;
-            resourceInputs["payerAccountId"] = args ? args.payerAccountId : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["accountNamePrefix"] = args?.accountNamePrefix;
+            resourceInputs["accountTags"] = args?.accountTags;
+            resourceInputs["baselineId"] = args?.baselineId;
+            resourceInputs["defaultDomainName"] = args?.defaultDomainName;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["folderId"] = args?.folderId;
+            resourceInputs["payerAccountId"] = args?.payerAccountId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

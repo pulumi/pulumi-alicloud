@@ -52,15 +52,15 @@ export class FaceConfig extends pulumi.CustomResource {
     /**
      * Scene name.
      */
-    public readonly bizName!: pulumi.Output<string>;
+    declare public readonly bizName: pulumi.Output<string>;
     /**
      * Scene type. **NOTE:** The bizType cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
      */
-    public readonly bizType!: pulumi.Output<string>;
+    declare public readonly bizType: pulumi.Output<string>;
     /**
      * Last Modified Date.
      */
-    public /*out*/ readonly gmtModified!: pulumi.Output<string>;
+    declare public /*out*/ readonly gmtModified: pulumi.Output<string>;
 
     /**
      * Create a FaceConfig resource with the given unique name, arguments, and options.
@@ -75,19 +75,19 @@ export class FaceConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FaceConfigState | undefined;
-            resourceInputs["bizName"] = state ? state.bizName : undefined;
-            resourceInputs["bizType"] = state ? state.bizType : undefined;
-            resourceInputs["gmtModified"] = state ? state.gmtModified : undefined;
+            resourceInputs["bizName"] = state?.bizName;
+            resourceInputs["bizType"] = state?.bizType;
+            resourceInputs["gmtModified"] = state?.gmtModified;
         } else {
             const args = argsOrState as FaceConfigArgs | undefined;
-            if ((!args || args.bizName === undefined) && !opts.urn) {
+            if (args?.bizName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bizName'");
             }
-            if ((!args || args.bizType === undefined) && !opts.urn) {
+            if (args?.bizType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bizType'");
             }
-            resourceInputs["bizName"] = args ? args.bizName : undefined;
-            resourceInputs["bizType"] = args ? args.bizType : undefined;
+            resourceInputs["bizName"] = args?.bizName;
+            resourceInputs["bizType"] = args?.bizType;
             resourceInputs["gmtModified"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

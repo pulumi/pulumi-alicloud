@@ -81,77 +81,77 @@ export class ElasticityAssurance extends pulumi.CustomResource {
     /**
      * The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
      */
-    public readonly assuranceTimes!: pulumi.Output<string>;
+    declare public readonly assuranceTimes: pulumi.Output<string>;
     /**
      * Description of flexible guarantee service.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The first ID of the resource
      */
-    public /*out*/ readonly elasticityAssuranceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly elasticityAssuranceId: pulumi.Output<string>;
     /**
      * Flexible guarantee service failure time.
      */
-    public /*out*/ readonly endTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly endTime: pulumi.Output<string>;
     /**
      * The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
      */
-    public readonly instanceAmount!: pulumi.Output<number>;
+    declare public readonly instanceAmount: pulumi.Output<number>;
     /**
      * The billing method of the instance. Possible value: PostPaid. Currently, only pay-as-you-go is supported.
      */
-    public /*out*/ readonly instanceChargeType!: pulumi.Output<string>;
+    declare public /*out*/ readonly instanceChargeType: pulumi.Output<string>;
     /**
      * Instance type. Currently, only one instance type is supported.
      */
-    public readonly instanceType!: pulumi.Output<string>;
+    declare public readonly instanceType: pulumi.Output<string>;
     /**
      * Length of purchase. The unit of duration is determined by the 'period_unit' parameter. Default value: 1.
      * - When the `periodUnit` parameter is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
      * - When the `periodUnit` parameter is set to Year, the valid values are 1, 2, 3, 4, and 5.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * Duration unit. Value range:-Month: Month-Year: YearDefault value: Year
      */
-    public readonly periodUnit!: pulumi.Output<string | undefined>;
+    declare public readonly periodUnit: pulumi.Output<string | undefined>;
     /**
      * The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
      */
-    public readonly privatePoolOptionsMatchCriteria!: pulumi.Output<string>;
+    declare public readonly privatePoolOptionsMatchCriteria: pulumi.Output<string>;
     /**
      * The name of the flexible protection service.
      */
-    public readonly privatePoolOptionsName!: pulumi.Output<string>;
+    declare public readonly privatePoolOptionsName: pulumi.Output<string>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly resourceGroupId: pulumi.Output<string | undefined>;
     /**
      * Flexible guarantee service effective time.
      */
-    public readonly startTime!: pulumi.Output<string>;
+    declare public readonly startTime: pulumi.Output<string>;
     /**
      * Flexible guarantee effective way. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
      */
-    public /*out*/ readonly startTimeType!: pulumi.Output<string>;
+    declare public /*out*/ readonly startTimeType: pulumi.Output<string>;
     /**
      * The status of flexible guarantee services. Possible values:-Preparing: in preparation.-Prepared: to take effect.-Active: in effect.-Released: Released.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tag key-value pair information bound by the elastic guarantee service.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * This parameter is not yet available.
      */
-    public /*out*/ readonly usedAssuranceTimes!: pulumi.Output<number>;
+    declare public /*out*/ readonly usedAssuranceTimes: pulumi.Output<number>;
     /**
      * The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
      */
-    public readonly zoneIds!: pulumi.Output<string[]>;
+    declare public readonly zoneIds: pulumi.Output<string[]>;
 
     /**
      * Create a ElasticityAssurance resource with the given unique name, arguments, and options.
@@ -166,47 +166,47 @@ export class ElasticityAssurance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ElasticityAssuranceState | undefined;
-            resourceInputs["assuranceTimes"] = state ? state.assuranceTimes : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["elasticityAssuranceId"] = state ? state.elasticityAssuranceId : undefined;
-            resourceInputs["endTime"] = state ? state.endTime : undefined;
-            resourceInputs["instanceAmount"] = state ? state.instanceAmount : undefined;
-            resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
-            resourceInputs["privatePoolOptionsMatchCriteria"] = state ? state.privatePoolOptionsMatchCriteria : undefined;
-            resourceInputs["privatePoolOptionsName"] = state ? state.privatePoolOptionsName : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["startTime"] = state ? state.startTime : undefined;
-            resourceInputs["startTimeType"] = state ? state.startTimeType : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["usedAssuranceTimes"] = state ? state.usedAssuranceTimes : undefined;
-            resourceInputs["zoneIds"] = state ? state.zoneIds : undefined;
+            resourceInputs["assuranceTimes"] = state?.assuranceTimes;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["elasticityAssuranceId"] = state?.elasticityAssuranceId;
+            resourceInputs["endTime"] = state?.endTime;
+            resourceInputs["instanceAmount"] = state?.instanceAmount;
+            resourceInputs["instanceChargeType"] = state?.instanceChargeType;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["periodUnit"] = state?.periodUnit;
+            resourceInputs["privatePoolOptionsMatchCriteria"] = state?.privatePoolOptionsMatchCriteria;
+            resourceInputs["privatePoolOptionsName"] = state?.privatePoolOptionsName;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["startTime"] = state?.startTime;
+            resourceInputs["startTimeType"] = state?.startTimeType;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["usedAssuranceTimes"] = state?.usedAssuranceTimes;
+            resourceInputs["zoneIds"] = state?.zoneIds;
         } else {
             const args = argsOrState as ElasticityAssuranceArgs | undefined;
-            if ((!args || args.instanceAmount === undefined) && !opts.urn) {
+            if (args?.instanceAmount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceAmount'");
             }
-            if ((!args || args.instanceType === undefined) && !opts.urn) {
+            if (args?.instanceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceType'");
             }
-            if ((!args || args.zoneIds === undefined) && !opts.urn) {
+            if (args?.zoneIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneIds'");
             }
-            resourceInputs["assuranceTimes"] = args ? args.assuranceTimes : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["instanceAmount"] = args ? args.instanceAmount : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
-            resourceInputs["privatePoolOptionsMatchCriteria"] = args ? args.privatePoolOptionsMatchCriteria : undefined;
-            resourceInputs["privatePoolOptionsName"] = args ? args.privatePoolOptionsName : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["startTime"] = args ? args.startTime : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["zoneIds"] = args ? args.zoneIds : undefined;
+            resourceInputs["assuranceTimes"] = args?.assuranceTimes;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["instanceAmount"] = args?.instanceAmount;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["periodUnit"] = args?.periodUnit;
+            resourceInputs["privatePoolOptionsMatchCriteria"] = args?.privatePoolOptionsMatchCriteria;
+            resourceInputs["privatePoolOptionsName"] = args?.privatePoolOptionsName;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["startTime"] = args?.startTime;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["zoneIds"] = args?.zoneIds;
             resourceInputs["elasticityAssuranceId"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;
             resourceInputs["instanceChargeType"] = undefined /*out*/;

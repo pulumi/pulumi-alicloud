@@ -81,59 +81,59 @@ export class FlowLog extends pulumi.CustomResource {
     /**
      * cen id
      */
-    public readonly cenId!: pulumi.Output<string>;
+    declare public readonly cenId: pulumi.Output<string>;
     /**
      * CreateTime
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The description of the flowlog.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of the flowlog.
      */
-    public readonly flowLogName!: pulumi.Output<string | undefined>;
+    declare public readonly flowLogName: pulumi.Output<string | undefined>;
     /**
      * The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: `60` or **600 * *. Default value: **600 * *.
      */
-    public readonly interval!: pulumi.Output<number | undefined>;
+    declare public readonly interval: pulumi.Output<number | undefined>;
     /**
      * Log Format
      */
-    public readonly logFormatString!: pulumi.Output<string | undefined>;
+    declare public readonly logFormatString: pulumi.Output<string | undefined>;
     /**
      * The LogStore that stores the flowlog.
      */
-    public readonly logStoreName!: pulumi.Output<string>;
+    declare public readonly logStoreName: pulumi.Output<string>;
     /**
      * The Project that stores the flowlog.
      */
-    public readonly projectName!: pulumi.Output<string>;
+    declare public readonly projectName: pulumi.Output<string>;
     /**
      * region id
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The status of the flow log. Valid values:
      * - `Active`: started.
      * - `InActive`: not started.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The tag of the resource
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Cross-region Connection ID or VBR connection ID.
      *
      * > **NOTE:**  This parameter is required.
      */
-    public readonly transitRouterAttachmentId!: pulumi.Output<string | undefined>;
+    declare public readonly transitRouterAttachmentId: pulumi.Output<string | undefined>;
     /**
      * Transit Router ID
      */
-    public readonly transitRouterId!: pulumi.Output<string | undefined>;
+    declare public readonly transitRouterId: pulumi.Output<string | undefined>;
 
     /**
      * Create a FlowLog resource with the given unique name, arguments, and options.
@@ -148,41 +148,41 @@ export class FlowLog extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FlowLogState | undefined;
-            resourceInputs["cenId"] = state ? state.cenId : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["flowLogName"] = state ? state.flowLogName : undefined;
-            resourceInputs["interval"] = state ? state.interval : undefined;
-            resourceInputs["logFormatString"] = state ? state.logFormatString : undefined;
-            resourceInputs["logStoreName"] = state ? state.logStoreName : undefined;
-            resourceInputs["projectName"] = state ? state.projectName : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["transitRouterAttachmentId"] = state ? state.transitRouterAttachmentId : undefined;
-            resourceInputs["transitRouterId"] = state ? state.transitRouterId : undefined;
+            resourceInputs["cenId"] = state?.cenId;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["flowLogName"] = state?.flowLogName;
+            resourceInputs["interval"] = state?.interval;
+            resourceInputs["logFormatString"] = state?.logFormatString;
+            resourceInputs["logStoreName"] = state?.logStoreName;
+            resourceInputs["projectName"] = state?.projectName;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["transitRouterAttachmentId"] = state?.transitRouterAttachmentId;
+            resourceInputs["transitRouterId"] = state?.transitRouterId;
         } else {
             const args = argsOrState as FlowLogArgs | undefined;
-            if ((!args || args.cenId === undefined) && !opts.urn) {
+            if (args?.cenId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cenId'");
             }
-            if ((!args || args.logStoreName === undefined) && !opts.urn) {
+            if (args?.logStoreName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'logStoreName'");
             }
-            if ((!args || args.projectName === undefined) && !opts.urn) {
+            if (args?.projectName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectName'");
             }
-            resourceInputs["cenId"] = args ? args.cenId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["flowLogName"] = args ? args.flowLogName : undefined;
-            resourceInputs["interval"] = args ? args.interval : undefined;
-            resourceInputs["logFormatString"] = args ? args.logFormatString : undefined;
-            resourceInputs["logStoreName"] = args ? args.logStoreName : undefined;
-            resourceInputs["projectName"] = args ? args.projectName : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["transitRouterAttachmentId"] = args ? args.transitRouterAttachmentId : undefined;
-            resourceInputs["transitRouterId"] = args ? args.transitRouterId : undefined;
+            resourceInputs["cenId"] = args?.cenId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["flowLogName"] = args?.flowLogName;
+            resourceInputs["interval"] = args?.interval;
+            resourceInputs["logFormatString"] = args?.logFormatString;
+            resourceInputs["logStoreName"] = args?.logStoreName;
+            resourceInputs["projectName"] = args?.projectName;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["transitRouterAttachmentId"] = args?.transitRouterAttachmentId;
+            resourceInputs["transitRouterId"] = args?.transitRouterId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
         }

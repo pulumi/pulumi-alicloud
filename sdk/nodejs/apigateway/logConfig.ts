@@ -84,15 +84,15 @@ export class LogConfig extends pulumi.CustomResource {
     /**
      * The type the of log. Valid values: `PROVIDER`.
      */
-    public readonly logType!: pulumi.Output<string>;
+    declare public readonly logType: pulumi.Output<string>;
     /**
      * The name of the Log Store.
      */
-    public readonly slsLogStore!: pulumi.Output<string>;
+    declare public readonly slsLogStore: pulumi.Output<string>;
     /**
      * The name of the Project.
      */
-    public readonly slsProject!: pulumi.Output<string>;
+    declare public readonly slsProject: pulumi.Output<string>;
 
     /**
      * Create a LogConfig resource with the given unique name, arguments, and options.
@@ -107,23 +107,23 @@ export class LogConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LogConfigState | undefined;
-            resourceInputs["logType"] = state ? state.logType : undefined;
-            resourceInputs["slsLogStore"] = state ? state.slsLogStore : undefined;
-            resourceInputs["slsProject"] = state ? state.slsProject : undefined;
+            resourceInputs["logType"] = state?.logType;
+            resourceInputs["slsLogStore"] = state?.slsLogStore;
+            resourceInputs["slsProject"] = state?.slsProject;
         } else {
             const args = argsOrState as LogConfigArgs | undefined;
-            if ((!args || args.logType === undefined) && !opts.urn) {
+            if (args?.logType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'logType'");
             }
-            if ((!args || args.slsLogStore === undefined) && !opts.urn) {
+            if (args?.slsLogStore === undefined && !opts.urn) {
                 throw new Error("Missing required property 'slsLogStore'");
             }
-            if ((!args || args.slsProject === undefined) && !opts.urn) {
+            if (args?.slsProject === undefined && !opts.urn) {
                 throw new Error("Missing required property 'slsProject'");
             }
-            resourceInputs["logType"] = args ? args.logType : undefined;
-            resourceInputs["slsLogStore"] = args ? args.slsLogStore : undefined;
-            resourceInputs["slsProject"] = args ? args.slsProject : undefined;
+            resourceInputs["logType"] = args?.logType;
+            resourceInputs["slsLogStore"] = args?.slsLogStore;
+            resourceInputs["slsProject"] = args?.slsProject;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(LogConfig.__pulumiType, name, resourceInputs, opts);

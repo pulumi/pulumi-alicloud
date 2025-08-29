@@ -63,15 +63,15 @@ export class ReplicaGroupDrill extends pulumi.CustomResource {
     /**
      * The ID of the replication group. You can use the describediskreplicaggroups interface to query the asynchronous replication group list to obtain the value of the replication group ID input parameter.
      */
-    public readonly groupId!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string>;
     /**
      * The first ID of the resource.
      */
-    public /*out*/ readonly replicaGroupDrillId!: pulumi.Output<string>;
+    declare public /*out*/ readonly replicaGroupDrillId: pulumi.Output<string>;
     /**
      * Walkthrough status. _failed: Execution failed._failed: Cleanup failed.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a ReplicaGroupDrill resource with the given unique name, arguments, and options.
@@ -86,15 +86,15 @@ export class ReplicaGroupDrill extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ReplicaGroupDrillState | undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["replicaGroupDrillId"] = state ? state.replicaGroupDrillId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["replicaGroupDrillId"] = state?.replicaGroupDrillId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as ReplicaGroupDrillArgs | undefined;
-            if ((!args || args.groupId === undefined) && !opts.urn) {
+            if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["groupId"] = args?.groupId;
             resourceInputs["replicaGroupDrillId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

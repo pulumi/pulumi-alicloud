@@ -156,27 +156,27 @@ export class DiJob extends pulumi.CustomResource {
     /**
      * Description of the integration task
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Destination data source See `destinationDataSourceSettings` below.
      */
-    public readonly destinationDataSourceSettings!: pulumi.Output<outputs.dataworks.DiJobDestinationDataSourceSetting[]>;
+    declare public readonly destinationDataSourceSettings: pulumi.Output<outputs.dataworks.DiJobDestinationDataSourceSetting[]>;
     /**
      * The type of the target data source. Enumerated values: Hologres and Hive.
      */
-    public readonly destinationDataSourceType!: pulumi.Output<string>;
+    declare public readonly destinationDataSourceType: pulumi.Output<string>;
     /**
      * Integration Task Id
      */
-    public /*out*/ readonly diJobId!: pulumi.Output<number>;
+    declare public /*out*/ readonly diJobId: pulumi.Output<number>;
     /**
      * Task Name.
      */
-    public readonly jobName!: pulumi.Output<string>;
+    declare public readonly jobName: pulumi.Output<string>;
     /**
      * The dimension settings of the synchronization task, including the DDL processing policy, the source and destination column data type mapping policy, and the task runtime parameters. See `jobSettings` below.
      */
-    public readonly jobSettings!: pulumi.Output<outputs.dataworks.DiJobJobSettings | undefined>;
+    declare public readonly jobSettings: pulumi.Output<outputs.dataworks.DiJobJobSettings | undefined>;
     /**
      * Synchronization type, optional enumeration values are:
      *
@@ -190,31 +190,31 @@ export class DiJob extends pulumi.CustomResource {
      *
      * FullAndOfflineIncremental (full amount + offline increment)
      */
-    public readonly migrationType!: pulumi.Output<string>;
+    declare public readonly migrationType: pulumi.Output<string>;
     /**
      * Project Id
      */
-    public readonly projectId!: pulumi.Output<number>;
+    declare public readonly projectId: pulumi.Output<number>;
     /**
      * Resource Group Properties See `resourceSettings` below.
      */
-    public readonly resourceSettings!: pulumi.Output<outputs.dataworks.DiJobResourceSettings>;
+    declare public readonly resourceSettings: pulumi.Output<outputs.dataworks.DiJobResourceSettings>;
     /**
      * Source data source setting List See `sourceDataSourceSettings` below.
      */
-    public readonly sourceDataSourceSettings!: pulumi.Output<outputs.dataworks.DiJobSourceDataSourceSetting[]>;
+    declare public readonly sourceDataSourceSettings: pulumi.Output<outputs.dataworks.DiJobSourceDataSourceSetting[]>;
     /**
      * The type of the source data source. The enumerated value is MySQL.
      */
-    public readonly sourceDataSourceType!: pulumi.Output<string>;
+    declare public readonly sourceDataSourceType: pulumi.Output<string>;
     /**
      * Synchronize object transformation mapping list See `tableMappings` below.
      */
-    public readonly tableMappings!: pulumi.Output<outputs.dataworks.DiJobTableMapping[]>;
+    declare public readonly tableMappings: pulumi.Output<outputs.dataworks.DiJobTableMapping[]>;
     /**
      * Definition list of synchronization object conversion rules See `transformationRules` below.
      */
-    public readonly transformationRules!: pulumi.Output<outputs.dataworks.DiJobTransformationRule[] | undefined>;
+    declare public readonly transformationRules: pulumi.Output<outputs.dataworks.DiJobTransformationRule[] | undefined>;
 
     /**
      * Create a DiJob resource with the given unique name, arguments, and options.
@@ -229,57 +229,57 @@ export class DiJob extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DiJobState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["destinationDataSourceSettings"] = state ? state.destinationDataSourceSettings : undefined;
-            resourceInputs["destinationDataSourceType"] = state ? state.destinationDataSourceType : undefined;
-            resourceInputs["diJobId"] = state ? state.diJobId : undefined;
-            resourceInputs["jobName"] = state ? state.jobName : undefined;
-            resourceInputs["jobSettings"] = state ? state.jobSettings : undefined;
-            resourceInputs["migrationType"] = state ? state.migrationType : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["resourceSettings"] = state ? state.resourceSettings : undefined;
-            resourceInputs["sourceDataSourceSettings"] = state ? state.sourceDataSourceSettings : undefined;
-            resourceInputs["sourceDataSourceType"] = state ? state.sourceDataSourceType : undefined;
-            resourceInputs["tableMappings"] = state ? state.tableMappings : undefined;
-            resourceInputs["transformationRules"] = state ? state.transformationRules : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["destinationDataSourceSettings"] = state?.destinationDataSourceSettings;
+            resourceInputs["destinationDataSourceType"] = state?.destinationDataSourceType;
+            resourceInputs["diJobId"] = state?.diJobId;
+            resourceInputs["jobName"] = state?.jobName;
+            resourceInputs["jobSettings"] = state?.jobSettings;
+            resourceInputs["migrationType"] = state?.migrationType;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["resourceSettings"] = state?.resourceSettings;
+            resourceInputs["sourceDataSourceSettings"] = state?.sourceDataSourceSettings;
+            resourceInputs["sourceDataSourceType"] = state?.sourceDataSourceType;
+            resourceInputs["tableMappings"] = state?.tableMappings;
+            resourceInputs["transformationRules"] = state?.transformationRules;
         } else {
             const args = argsOrState as DiJobArgs | undefined;
-            if ((!args || args.destinationDataSourceSettings === undefined) && !opts.urn) {
+            if (args?.destinationDataSourceSettings === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationDataSourceSettings'");
             }
-            if ((!args || args.destinationDataSourceType === undefined) && !opts.urn) {
+            if (args?.destinationDataSourceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationDataSourceType'");
             }
-            if ((!args || args.jobName === undefined) && !opts.urn) {
+            if (args?.jobName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'jobName'");
             }
-            if ((!args || args.migrationType === undefined) && !opts.urn) {
+            if (args?.migrationType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'migrationType'");
             }
-            if ((!args || args.resourceSettings === undefined) && !opts.urn) {
+            if (args?.resourceSettings === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceSettings'");
             }
-            if ((!args || args.sourceDataSourceSettings === undefined) && !opts.urn) {
+            if (args?.sourceDataSourceSettings === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceDataSourceSettings'");
             }
-            if ((!args || args.sourceDataSourceType === undefined) && !opts.urn) {
+            if (args?.sourceDataSourceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceDataSourceType'");
             }
-            if ((!args || args.tableMappings === undefined) && !opts.urn) {
+            if (args?.tableMappings === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tableMappings'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["destinationDataSourceSettings"] = args ? args.destinationDataSourceSettings : undefined;
-            resourceInputs["destinationDataSourceType"] = args ? args.destinationDataSourceType : undefined;
-            resourceInputs["jobName"] = args ? args.jobName : undefined;
-            resourceInputs["jobSettings"] = args ? args.jobSettings : undefined;
-            resourceInputs["migrationType"] = args ? args.migrationType : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["resourceSettings"] = args ? args.resourceSettings : undefined;
-            resourceInputs["sourceDataSourceSettings"] = args ? args.sourceDataSourceSettings : undefined;
-            resourceInputs["sourceDataSourceType"] = args ? args.sourceDataSourceType : undefined;
-            resourceInputs["tableMappings"] = args ? args.tableMappings : undefined;
-            resourceInputs["transformationRules"] = args ? args.transformationRules : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["destinationDataSourceSettings"] = args?.destinationDataSourceSettings;
+            resourceInputs["destinationDataSourceType"] = args?.destinationDataSourceType;
+            resourceInputs["jobName"] = args?.jobName;
+            resourceInputs["jobSettings"] = args?.jobSettings;
+            resourceInputs["migrationType"] = args?.migrationType;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["resourceSettings"] = args?.resourceSettings;
+            resourceInputs["sourceDataSourceSettings"] = args?.sourceDataSourceSettings;
+            resourceInputs["sourceDataSourceType"] = args?.sourceDataSourceType;
+            resourceInputs["tableMappings"] = args?.tableMappings;
+            resourceInputs["transformationRules"] = args?.transformationRules;
             resourceInputs["diJobId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

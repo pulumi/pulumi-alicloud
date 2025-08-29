@@ -51,53 +51,53 @@ export class WorkspaceDatasetversion extends pulumi.CustomResource {
     /**
      * Update time.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Data count.
      */
-    public readonly dataCount!: pulumi.Output<number | undefined>;
+    declare public readonly dataCount: pulumi.Output<number | undefined>;
     /**
      * Data size.
      */
-    public readonly dataSize!: pulumi.Output<number | undefined>;
+    declare public readonly dataSize: pulumi.Output<number | undefined>;
     /**
      * The data source type. The following values are supported:
      * - OSS: Alibaba Cloud Object Storage (OSS).
      * - NAS: Alibaba cloud file storage (NAS).
      */
-    public readonly dataSourceType!: pulumi.Output<string>;
+    declare public readonly dataSourceType: pulumi.Output<string>;
     /**
      * The first ID of the resource
      */
-    public readonly datasetId!: pulumi.Output<string>;
+    declare public readonly datasetId: pulumi.Output<string>;
     /**
      * Description of dataset version.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The tag of the resource See `labels` below.
      */
-    public readonly labels!: pulumi.Output<outputs.pai.WorkspaceDatasetversionLabel[] | undefined>;
+    declare public readonly labels: pulumi.Output<outputs.pai.WorkspaceDatasetversionLabel[] | undefined>;
     /**
      * The extended field, which is of the JsonString type.
      *
      * When DLC uses a dataset, you can specify the default Mount path for the dataset by configuring the mountPath field.
      */
-    public readonly options!: pulumi.Output<string | undefined>;
+    declare public readonly options: pulumi.Output<string | undefined>;
     /**
      * The properties of the dataset. The following values are supported:
      * - FILE: FILE.
      * - DIRECTORY: folder.
      */
-    public readonly property!: pulumi.Output<string>;
+    declare public readonly property: pulumi.Output<string>;
     /**
      * The data source ID.
      */
-    public readonly sourceId!: pulumi.Output<string | undefined>;
+    declare public readonly sourceId: pulumi.Output<string | undefined>;
     /**
      * The data source type. The default value is USER.
      */
-    public readonly sourceType!: pulumi.Output<string | undefined>;
+    declare public readonly sourceType: pulumi.Output<string | undefined>;
     /**
      * The Uri configuration sample is as follows:
      * - The data source type is OSS:'oss:// bucket.endpoint/object'
@@ -111,11 +111,11 @@ export class WorkspaceDatasetversion extends pulumi.CustomResource {
      *
      * CPFS1.0 and CPFS2.0 are distinguished by the format of fsid: CPFS1.0 is cpfs-;CPFS2.0 is cpfs-.
      */
-    public readonly uri!: pulumi.Output<string>;
+    declare public readonly uri: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public /*out*/ readonly versionName!: pulumi.Output<string>;
+    declare public /*out*/ readonly versionName: pulumi.Output<string>;
 
     /**
      * Create a WorkspaceDatasetversion resource with the given unique name, arguments, and options.
@@ -130,44 +130,44 @@ export class WorkspaceDatasetversion extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkspaceDatasetversionState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dataCount"] = state ? state.dataCount : undefined;
-            resourceInputs["dataSize"] = state ? state.dataSize : undefined;
-            resourceInputs["dataSourceType"] = state ? state.dataSourceType : undefined;
-            resourceInputs["datasetId"] = state ? state.datasetId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["options"] = state ? state.options : undefined;
-            resourceInputs["property"] = state ? state.property : undefined;
-            resourceInputs["sourceId"] = state ? state.sourceId : undefined;
-            resourceInputs["sourceType"] = state ? state.sourceType : undefined;
-            resourceInputs["uri"] = state ? state.uri : undefined;
-            resourceInputs["versionName"] = state ? state.versionName : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dataCount"] = state?.dataCount;
+            resourceInputs["dataSize"] = state?.dataSize;
+            resourceInputs["dataSourceType"] = state?.dataSourceType;
+            resourceInputs["datasetId"] = state?.datasetId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["options"] = state?.options;
+            resourceInputs["property"] = state?.property;
+            resourceInputs["sourceId"] = state?.sourceId;
+            resourceInputs["sourceType"] = state?.sourceType;
+            resourceInputs["uri"] = state?.uri;
+            resourceInputs["versionName"] = state?.versionName;
         } else {
             const args = argsOrState as WorkspaceDatasetversionArgs | undefined;
-            if ((!args || args.dataSourceType === undefined) && !opts.urn) {
+            if (args?.dataSourceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataSourceType'");
             }
-            if ((!args || args.datasetId === undefined) && !opts.urn) {
+            if (args?.datasetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
-            if ((!args || args.property === undefined) && !opts.urn) {
+            if (args?.property === undefined && !opts.urn) {
                 throw new Error("Missing required property 'property'");
             }
-            if ((!args || args.uri === undefined) && !opts.urn) {
+            if (args?.uri === undefined && !opts.urn) {
                 throw new Error("Missing required property 'uri'");
             }
-            resourceInputs["dataCount"] = args ? args.dataCount : undefined;
-            resourceInputs["dataSize"] = args ? args.dataSize : undefined;
-            resourceInputs["dataSourceType"] = args ? args.dataSourceType : undefined;
-            resourceInputs["datasetId"] = args ? args.datasetId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["options"] = args ? args.options : undefined;
-            resourceInputs["property"] = args ? args.property : undefined;
-            resourceInputs["sourceId"] = args ? args.sourceId : undefined;
-            resourceInputs["sourceType"] = args ? args.sourceType : undefined;
-            resourceInputs["uri"] = args ? args.uri : undefined;
+            resourceInputs["dataCount"] = args?.dataCount;
+            resourceInputs["dataSize"] = args?.dataSize;
+            resourceInputs["dataSourceType"] = args?.dataSourceType;
+            resourceInputs["datasetId"] = args?.datasetId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["options"] = args?.options;
+            resourceInputs["property"] = args?.property;
+            resourceInputs["sourceId"] = args?.sourceId;
+            resourceInputs["sourceType"] = args?.sourceType;
+            resourceInputs["uri"] = args?.uri;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["versionName"] = undefined /*out*/;
         }

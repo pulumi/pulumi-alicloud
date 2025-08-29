@@ -81,11 +81,11 @@ export class SharedResource extends pulumi.CustomResource {
     /**
      * The resource ID need shared.
      */
-    public readonly resourceId!: pulumi.Output<string>;
+    declare public readonly resourceId: pulumi.Output<string>;
     /**
      * The resource share ID of resource manager.
      */
-    public readonly resourceShareId!: pulumi.Output<string>;
+    declare public readonly resourceShareId: pulumi.Output<string>;
     /**
      * The resource type of should shared. Valid values:
      * - `VSwitch`.
@@ -96,11 +96,11 @@ export class SharedResource extends pulumi.CustomResource {
      * - The following types are added after v1.240.0: `Snapshot`.
      * - For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/zh/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing?spm=api-workbench.API%20Document.0.0.32fff3cdFveEud)
      */
-    public readonly resourceType!: pulumi.Output<string>;
+    declare public readonly resourceType: pulumi.Output<string>;
     /**
      * The status of the Shared Resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a SharedResource resource with the given unique name, arguments, and options.
@@ -115,24 +115,24 @@ export class SharedResource extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SharedResourceState | undefined;
-            resourceInputs["resourceId"] = state ? state.resourceId : undefined;
-            resourceInputs["resourceShareId"] = state ? state.resourceShareId : undefined;
-            resourceInputs["resourceType"] = state ? state.resourceType : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["resourceId"] = state?.resourceId;
+            resourceInputs["resourceShareId"] = state?.resourceShareId;
+            resourceInputs["resourceType"] = state?.resourceType;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as SharedResourceArgs | undefined;
-            if ((!args || args.resourceId === undefined) && !opts.urn) {
+            if (args?.resourceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceId'");
             }
-            if ((!args || args.resourceShareId === undefined) && !opts.urn) {
+            if (args?.resourceShareId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceShareId'");
             }
-            if ((!args || args.resourceType === undefined) && !opts.urn) {
+            if (args?.resourceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceType'");
             }
-            resourceInputs["resourceId"] = args ? args.resourceId : undefined;
-            resourceInputs["resourceShareId"] = args ? args.resourceShareId : undefined;
-            resourceInputs["resourceType"] = args ? args.resourceType : undefined;
+            resourceInputs["resourceId"] = args?.resourceId;
+            resourceInputs["resourceShareId"] = args?.resourceShareId;
+            resourceInputs["resourceType"] = args?.resourceType;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

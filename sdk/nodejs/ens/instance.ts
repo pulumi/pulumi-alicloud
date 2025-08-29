@@ -46,198 +46,198 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The number of instances created, with a minimum of 1 and a maximum of 100
      */
-    public readonly amount!: pulumi.Output<number | undefined>;
+    declare public readonly amount: pulumi.Output<number | undefined>;
     /**
      * The automatic release time of the pay-as-you-go instance. According to the [ISO 8601] standard, UTC +0 time is used. The format is: 'yyyy-MM-ddTHH:mm:ssZ '.
      * - If the second ('ss') value is not '00', it is automatically taken as the start of the current minute ('mm').
      * - The minimum release time is one hour after the current time.
      */
-    public readonly autoReleaseTime!: pulumi.Output<string | undefined>;
+    declare public readonly autoReleaseTime: pulumi.Output<string | undefined>;
     /**
      * Whether to automatically renew the logo. The default value is false. This parameter is invalid when you pay by volume.
      */
-    public readonly autoRenew!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoRenew: pulumi.Output<boolean | undefined>;
     /**
      * Whether to use vouchers. The default is to use. Value:
      * - true (used)
      * - false (not used)
      */
-    public readonly autoUseCoupon!: pulumi.Output<string | undefined>;
+    declare public readonly autoUseCoupon: pulumi.Output<string | undefined>;
     /**
      * The billing cycle for instance computing resources. Only instance-level pay-as-you-go is supported. Value
      * - Hour: hourly billing
      * - Day: Daily billing
      * - Month: monthly billing
      */
-    public readonly billingCycle!: pulumi.Output<string | undefined>;
+    declare public readonly billingCycle: pulumi.Output<string | undefined>;
     /**
      * Operator, required for regional scheduling. Optional values:
      * - cmcc (mobile)
      * - unicom
      * - telecom
      */
-    public readonly carrier!: pulumi.Output<string | undefined>;
+    declare public readonly carrier: pulumi.Output<string | undefined>;
     /**
      * Data disk specifications See `dataDisk` below.
      */
-    public readonly dataDisks!: pulumi.Output<outputs.ens.InstanceDataDisk[]>;
+    declare public readonly dataDisks: pulumi.Output<outputs.ens.InstanceDataDisk[]>;
     /**
      * The node ID. When ScheduleAreaLevel is Region, EnsRegionId is required. When ScheduleAreaLevel is Big,Middle,Small, EnsRegionId is invalid.
      */
-    public readonly ensRegionId!: pulumi.Output<string>;
+    declare public readonly ensRegionId: pulumi.Output<string>;
     /**
      * Whether to force the identity when operating the instance. Optional values:
      * - true: Force
      * - false (default): non-mandatory
      */
-    public readonly forceStop!: pulumi.Output<string | undefined>;
+    declare public readonly forceStop: pulumi.Output<string | undefined>;
     /**
      * The host name of the instance. Example value: test-HostName
      */
-    public readonly hostName!: pulumi.Output<string>;
+    declare public readonly hostName: pulumi.Output<string>;
     /**
      * The image ID of the instance. The arm version card cannot be filled in. Other specifications are required. Example value: m-5si16wo6simkt267p8b7h * * * *
      */
-    public readonly imageId!: pulumi.Output<string | undefined>;
+    declare public readonly imageId: pulumi.Output<string | undefined>;
     /**
      * Whether the Payment type of the disk created with the instance is converted.
      */
-    public readonly includeDataDisks!: pulumi.Output<boolean | undefined>;
+    declare public readonly includeDataDisks: pulumi.Output<boolean | undefined>;
     /**
      * The instance billing policy. Optional values:
      * - instance: instance granularity (the subscription method does not support instance)
      * - user: user Dimension (user is not transmitted or supported in the prepaid mode)
      */
-    public readonly instanceChargeStrategy!: pulumi.Output<string | undefined>;
+    declare public readonly instanceChargeStrategy: pulumi.Output<string | undefined>;
     /**
      * The instance name. Example value: test-InstanceName. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-)
      *
      * The default value is the InstanceId of the instance.
      */
-    public readonly instanceName!: pulumi.Output<string>;
+    declare public readonly instanceName: pulumi.Output<string>;
     /**
      * The specification of the instance. Example value: ens.sn1.small
      */
-    public readonly instanceType!: pulumi.Output<string>;
+    declare public readonly instanceType: pulumi.Output<string>;
     /**
      * Instance bandwidth billing method. If the billing method can be selected for the first purchase, the subsequent value of this field will be processed by default according to the billing method selected for the first time. Optional values:
      * - BandwidthByDay: Daily peak bandwidth
      * - 95bandwidthbymonth: 95 peak bandwidth
      */
-    public readonly internetChargeType!: pulumi.Output<string | undefined>;
+    declare public readonly internetChargeType: pulumi.Output<string | undefined>;
     /**
      * Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991
      */
-    public readonly internetMaxBandwidthOut!: pulumi.Output<number>;
+    declare public readonly internetMaxBandwidthOut: pulumi.Output<number>;
     /**
      * The IP type. Value:
      * - ipv4 (default):IPv4
      * - ipv6:IPv6
      * - ipv4Andipv6:IPv4 and IPv6
      */
-    public readonly ipType!: pulumi.Output<string | undefined>;
+    declare public readonly ipType: pulumi.Output<string | undefined>;
     /**
      * The key pair name.
      *
      * > **NOTE:**  At least one of `Password`, `KeyPairName`, and **PasswordInherit.
      */
-    public readonly keyPairName!: pulumi.Output<string | undefined>;
+    declare public readonly keyPairName: pulumi.Output<string | undefined>;
     /**
      * The area code. Example value: 350000. Required for regional-level scheduling, invalid for node-level scheduling
      */
-    public readonly netDistrictCode!: pulumi.Output<string | undefined>;
+    declare public readonly netDistrictCode: pulumi.Output<string | undefined>;
     /**
      * The network ID of the instance. Can only be used in node-level scheduling
      */
-    public readonly netWorkId!: pulumi.Output<string>;
+    declare public readonly netWorkId: pulumi.Output<string>;
     /**
      * The instance password. At least one of Password, KeyPairName, and PasswordInherit
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * Whether to use image preset password prompt: Password and KeyPairNamePasswordInherit must be passed
      */
-    public readonly passwordInherit!: pulumi.Output<boolean | undefined>;
+    declare public readonly passwordInherit: pulumi.Output<boolean | undefined>;
     /**
      * Instance payment method. Since v1.230.0, you can modify payment_type. Optional values:
      * - Subscription: prepaid, annual and monthly
      * - PayAsYouGo: Pay by volume
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * The duration of the resource purchase. Value method:
      * - If PeriodUnit is set to Day, Period can only be set to 3.
      * - If PeriodUnit is set to Month, Period can be set to 1-9,12.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * The unit of time for purchasing resources. Value:
      * - Month (default): purchase by Month
      * - Day: buy by Day
      */
-    public readonly periodUnit!: pulumi.Output<string | undefined>;
+    declare public readonly periodUnit: pulumi.Output<string | undefined>;
     /**
      * The private IP address. Can only be used for node-level scheduling. If a private IP address is specified, the number of instances can only be one, and both the private IP address and the vSwitch ID are not empty, the private IP address takes effect.
      */
-    public readonly privateIpAddress!: pulumi.Output<string>;
+    declare public readonly privateIpAddress: pulumi.Output<string>;
     /**
      * Whether to assign a public IP identifier. Value:
      * - true (default): Assign
      * - false: do not assign
      */
-    public readonly publicIpIdentification!: pulumi.Output<boolean | undefined>;
+    declare public readonly publicIpIdentification: pulumi.Output<boolean | undefined>;
     /**
      * Scheduling level, through which node-level scheduling or area scheduling is performed. Optional values:
      * - Node-level scheduling: Region
      * - Regional scheduling: Big (region),Middle (province),Small (city)
      */
-    public readonly scheduleAreaLevel!: pulumi.Output<string>;
+    declare public readonly scheduleAreaLevel: pulumi.Output<string>;
     /**
      * Scheduling price policy. If it is not filled in, the default priority is low price. Value:
      * - PriceLowPriority
      * - PriceLowPriority (priority low price)
      */
-    public readonly schedulingPriceStrategy!: pulumi.Output<string | undefined>;
+    declare public readonly schedulingPriceStrategy: pulumi.Output<string | undefined>;
     /**
      * Scheduling policy. Optional values:
      * - Concentrate for node-level scheduling
      * - For regional scheduling, Concentrate, Disperse
      */
-    public readonly schedulingStrategy!: pulumi.Output<string | undefined>;
+    declare public readonly schedulingStrategy: pulumi.Output<string | undefined>;
     /**
      * ID of the security group to which the instance belongs.
      */
-    public readonly securityId!: pulumi.Output<string>;
+    declare public readonly securityId: pulumi.Output<string>;
     /**
      * The bidding strategy for pay-as-you-go instances. It takes effect when the value of the 'InstanceChargeType' parameter is set to 'PostPaid. Value range:
      * - NoSpot: normal pay-as-you-go instance (default)
      * - SpotAsPriceGo: The system automatically bids, following the actual price in the current market.
      */
-    public readonly spotStrategy!: pulumi.Output<string | undefined>;
+    declare public readonly spotStrategy: pulumi.Output<string | undefined>;
     /**
      * Status of the instance
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `systemDisk` below.
      */
-    public readonly systemDisk!: pulumi.Output<outputs.ens.InstanceSystemDisk | undefined>;
+    declare public readonly systemDisk: pulumi.Output<outputs.ens.InstanceSystemDisk | undefined>;
     /**
      * The tag bound to the instance
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Indicates whether to add an ordered suffix to HostName and InstanceName. The ordered suffix starts from 001 and cannot exceed 999.
      */
-    public readonly uniqueSuffix!: pulumi.Output<boolean | undefined>;
+    declare public readonly uniqueSuffix: pulumi.Output<boolean | undefined>;
     /**
      * User-defined data, maximum support 16KB. You can pass in the UserData information. The UserData is encoded in Base64 format.
      */
-    public readonly userData!: pulumi.Output<string | undefined>;
+    declare public readonly userData: pulumi.Output<string | undefined>;
     /**
      * The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -252,95 +252,95 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["amount"] = state ? state.amount : undefined;
-            resourceInputs["autoReleaseTime"] = state ? state.autoReleaseTime : undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["autoUseCoupon"] = state ? state.autoUseCoupon : undefined;
-            resourceInputs["billingCycle"] = state ? state.billingCycle : undefined;
-            resourceInputs["carrier"] = state ? state.carrier : undefined;
-            resourceInputs["dataDisks"] = state ? state.dataDisks : undefined;
-            resourceInputs["ensRegionId"] = state ? state.ensRegionId : undefined;
-            resourceInputs["forceStop"] = state ? state.forceStop : undefined;
-            resourceInputs["hostName"] = state ? state.hostName : undefined;
-            resourceInputs["imageId"] = state ? state.imageId : undefined;
-            resourceInputs["includeDataDisks"] = state ? state.includeDataDisks : undefined;
-            resourceInputs["instanceChargeStrategy"] = state ? state.instanceChargeStrategy : undefined;
-            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["internetChargeType"] = state ? state.internetChargeType : undefined;
-            resourceInputs["internetMaxBandwidthOut"] = state ? state.internetMaxBandwidthOut : undefined;
-            resourceInputs["ipType"] = state ? state.ipType : undefined;
-            resourceInputs["keyPairName"] = state ? state.keyPairName : undefined;
-            resourceInputs["netDistrictCode"] = state ? state.netDistrictCode : undefined;
-            resourceInputs["netWorkId"] = state ? state.netWorkId : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["passwordInherit"] = state ? state.passwordInherit : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
-            resourceInputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
-            resourceInputs["publicIpIdentification"] = state ? state.publicIpIdentification : undefined;
-            resourceInputs["scheduleAreaLevel"] = state ? state.scheduleAreaLevel : undefined;
-            resourceInputs["schedulingPriceStrategy"] = state ? state.schedulingPriceStrategy : undefined;
-            resourceInputs["schedulingStrategy"] = state ? state.schedulingStrategy : undefined;
-            resourceInputs["securityId"] = state ? state.securityId : undefined;
-            resourceInputs["spotStrategy"] = state ? state.spotStrategy : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["systemDisk"] = state ? state.systemDisk : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["uniqueSuffix"] = state ? state.uniqueSuffix : undefined;
-            resourceInputs["userData"] = state ? state.userData : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["amount"] = state?.amount;
+            resourceInputs["autoReleaseTime"] = state?.autoReleaseTime;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["autoUseCoupon"] = state?.autoUseCoupon;
+            resourceInputs["billingCycle"] = state?.billingCycle;
+            resourceInputs["carrier"] = state?.carrier;
+            resourceInputs["dataDisks"] = state?.dataDisks;
+            resourceInputs["ensRegionId"] = state?.ensRegionId;
+            resourceInputs["forceStop"] = state?.forceStop;
+            resourceInputs["hostName"] = state?.hostName;
+            resourceInputs["imageId"] = state?.imageId;
+            resourceInputs["includeDataDisks"] = state?.includeDataDisks;
+            resourceInputs["instanceChargeStrategy"] = state?.instanceChargeStrategy;
+            resourceInputs["instanceName"] = state?.instanceName;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["internetChargeType"] = state?.internetChargeType;
+            resourceInputs["internetMaxBandwidthOut"] = state?.internetMaxBandwidthOut;
+            resourceInputs["ipType"] = state?.ipType;
+            resourceInputs["keyPairName"] = state?.keyPairName;
+            resourceInputs["netDistrictCode"] = state?.netDistrictCode;
+            resourceInputs["netWorkId"] = state?.netWorkId;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["passwordInherit"] = state?.passwordInherit;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["periodUnit"] = state?.periodUnit;
+            resourceInputs["privateIpAddress"] = state?.privateIpAddress;
+            resourceInputs["publicIpIdentification"] = state?.publicIpIdentification;
+            resourceInputs["scheduleAreaLevel"] = state?.scheduleAreaLevel;
+            resourceInputs["schedulingPriceStrategy"] = state?.schedulingPriceStrategy;
+            resourceInputs["schedulingStrategy"] = state?.schedulingStrategy;
+            resourceInputs["securityId"] = state?.securityId;
+            resourceInputs["spotStrategy"] = state?.spotStrategy;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["systemDisk"] = state?.systemDisk;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["uniqueSuffix"] = state?.uniqueSuffix;
+            resourceInputs["userData"] = state?.userData;
+            resourceInputs["vswitchId"] = state?.vswitchId;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.instanceType === undefined) && !opts.urn) {
+            if (args?.instanceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceType'");
             }
-            if ((!args || args.paymentType === undefined) && !opts.urn) {
+            if (args?.paymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            if ((!args || args.scheduleAreaLevel === undefined) && !opts.urn) {
+            if (args?.scheduleAreaLevel === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scheduleAreaLevel'");
             }
-            resourceInputs["amount"] = args ? args.amount : undefined;
-            resourceInputs["autoReleaseTime"] = args ? args.autoReleaseTime : undefined;
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["autoUseCoupon"] = args ? args.autoUseCoupon : undefined;
-            resourceInputs["billingCycle"] = args ? args.billingCycle : undefined;
-            resourceInputs["carrier"] = args ? args.carrier : undefined;
-            resourceInputs["dataDisks"] = args ? args.dataDisks : undefined;
-            resourceInputs["ensRegionId"] = args ? args.ensRegionId : undefined;
-            resourceInputs["forceStop"] = args ? args.forceStop : undefined;
-            resourceInputs["hostName"] = args ? args.hostName : undefined;
-            resourceInputs["imageId"] = args ? args.imageId : undefined;
-            resourceInputs["includeDataDisks"] = args ? args.includeDataDisks : undefined;
-            resourceInputs["instanceChargeStrategy"] = args ? args.instanceChargeStrategy : undefined;
-            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["internetChargeType"] = args ? args.internetChargeType : undefined;
-            resourceInputs["internetMaxBandwidthOut"] = args ? args.internetMaxBandwidthOut : undefined;
-            resourceInputs["ipType"] = args ? args.ipType : undefined;
-            resourceInputs["keyPairName"] = args ? args.keyPairName : undefined;
-            resourceInputs["netDistrictCode"] = args ? args.netDistrictCode : undefined;
-            resourceInputs["netWorkId"] = args ? args.netWorkId : undefined;
+            resourceInputs["amount"] = args?.amount;
+            resourceInputs["autoReleaseTime"] = args?.autoReleaseTime;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["autoUseCoupon"] = args?.autoUseCoupon;
+            resourceInputs["billingCycle"] = args?.billingCycle;
+            resourceInputs["carrier"] = args?.carrier;
+            resourceInputs["dataDisks"] = args?.dataDisks;
+            resourceInputs["ensRegionId"] = args?.ensRegionId;
+            resourceInputs["forceStop"] = args?.forceStop;
+            resourceInputs["hostName"] = args?.hostName;
+            resourceInputs["imageId"] = args?.imageId;
+            resourceInputs["includeDataDisks"] = args?.includeDataDisks;
+            resourceInputs["instanceChargeStrategy"] = args?.instanceChargeStrategy;
+            resourceInputs["instanceName"] = args?.instanceName;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["internetChargeType"] = args?.internetChargeType;
+            resourceInputs["internetMaxBandwidthOut"] = args?.internetMaxBandwidthOut;
+            resourceInputs["ipType"] = args?.ipType;
+            resourceInputs["keyPairName"] = args?.keyPairName;
+            resourceInputs["netDistrictCode"] = args?.netDistrictCode;
+            resourceInputs["netWorkId"] = args?.netWorkId;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["passwordInherit"] = args ? args.passwordInherit : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
-            resourceInputs["privateIpAddress"] = args ? args.privateIpAddress : undefined;
-            resourceInputs["publicIpIdentification"] = args ? args.publicIpIdentification : undefined;
-            resourceInputs["scheduleAreaLevel"] = args ? args.scheduleAreaLevel : undefined;
-            resourceInputs["schedulingPriceStrategy"] = args ? args.schedulingPriceStrategy : undefined;
-            resourceInputs["schedulingStrategy"] = args ? args.schedulingStrategy : undefined;
-            resourceInputs["securityId"] = args ? args.securityId : undefined;
-            resourceInputs["spotStrategy"] = args ? args.spotStrategy : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["systemDisk"] = args ? args.systemDisk : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["uniqueSuffix"] = args ? args.uniqueSuffix : undefined;
-            resourceInputs["userData"] = args ? args.userData : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["passwordInherit"] = args?.passwordInherit;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["periodUnit"] = args?.periodUnit;
+            resourceInputs["privateIpAddress"] = args?.privateIpAddress;
+            resourceInputs["publicIpIdentification"] = args?.publicIpIdentification;
+            resourceInputs["scheduleAreaLevel"] = args?.scheduleAreaLevel;
+            resourceInputs["schedulingPriceStrategy"] = args?.schedulingPriceStrategy;
+            resourceInputs["schedulingStrategy"] = args?.schedulingStrategy;
+            resourceInputs["securityId"] = args?.securityId;
+            resourceInputs["spotStrategy"] = args?.spotStrategy;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["systemDisk"] = args?.systemDisk;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["uniqueSuffix"] = args?.uniqueSuffix;
+            resourceInputs["userData"] = args?.userData;
+            resourceInputs["vswitchId"] = args?.vswitchId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password"] };

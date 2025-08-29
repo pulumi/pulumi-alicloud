@@ -74,31 +74,31 @@ export class V3Alias extends pulumi.CustomResource {
     /**
      * Grayscale version
      */
-    public readonly additionalVersionWeight!: pulumi.Output<{[key: string]: number} | undefined>;
+    declare public readonly additionalVersionWeight: pulumi.Output<{[key: string]: number} | undefined>;
     /**
      * Function Alias
      */
-    public readonly aliasName!: pulumi.Output<string>;
+    declare public readonly aliasName: pulumi.Output<string>;
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Description
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Function Name
      */
-    public readonly functionName!: pulumi.Output<string>;
+    declare public readonly functionName: pulumi.Output<string>;
     /**
      * (Available since v1.234.0) Last modification time
      */
-    public /*out*/ readonly lastModifiedTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastModifiedTime: pulumi.Output<string>;
     /**
      * The version that the alias points
      */
-    public readonly versionId!: pulumi.Output<string | undefined>;
+    declare public readonly versionId: pulumi.Output<string | undefined>;
 
     /**
      * Create a V3Alias resource with the given unique name, arguments, and options.
@@ -113,23 +113,23 @@ export class V3Alias extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as V3AliasState | undefined;
-            resourceInputs["additionalVersionWeight"] = state ? state.additionalVersionWeight : undefined;
-            resourceInputs["aliasName"] = state ? state.aliasName : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["functionName"] = state ? state.functionName : undefined;
-            resourceInputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
-            resourceInputs["versionId"] = state ? state.versionId : undefined;
+            resourceInputs["additionalVersionWeight"] = state?.additionalVersionWeight;
+            resourceInputs["aliasName"] = state?.aliasName;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["functionName"] = state?.functionName;
+            resourceInputs["lastModifiedTime"] = state?.lastModifiedTime;
+            resourceInputs["versionId"] = state?.versionId;
         } else {
             const args = argsOrState as V3AliasArgs | undefined;
-            if ((!args || args.functionName === undefined) && !opts.urn) {
+            if (args?.functionName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'functionName'");
             }
-            resourceInputs["additionalVersionWeight"] = args ? args.additionalVersionWeight : undefined;
-            resourceInputs["aliasName"] = args ? args.aliasName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["functionName"] = args ? args.functionName : undefined;
-            resourceInputs["versionId"] = args ? args.versionId : undefined;
+            resourceInputs["additionalVersionWeight"] = args?.additionalVersionWeight;
+            resourceInputs["aliasName"] = args?.aliasName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["functionName"] = args?.functionName;
+            resourceInputs["versionId"] = args?.versionId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
         }

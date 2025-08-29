@@ -78,16 +78,16 @@ export class ControlPolicyOrder extends pulumi.CustomResource {
     /**
      * The unique ID of the access control policy.
      */
-    public readonly aclUuid!: pulumi.Output<string>;
+    declare public readonly aclUuid: pulumi.Output<string>;
     /**
      * The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
      */
-    public readonly direction!: pulumi.Output<string>;
+    declare public readonly direction: pulumi.Output<string>;
     /**
      * The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
      * > **NOTE:** From version 1.227.1, `order` must be set.
      */
-    public readonly order!: pulumi.Output<number>;
+    declare public readonly order: pulumi.Output<number>;
 
     /**
      * Create a ControlPolicyOrder resource with the given unique name, arguments, and options.
@@ -102,23 +102,23 @@ export class ControlPolicyOrder extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ControlPolicyOrderState | undefined;
-            resourceInputs["aclUuid"] = state ? state.aclUuid : undefined;
-            resourceInputs["direction"] = state ? state.direction : undefined;
-            resourceInputs["order"] = state ? state.order : undefined;
+            resourceInputs["aclUuid"] = state?.aclUuid;
+            resourceInputs["direction"] = state?.direction;
+            resourceInputs["order"] = state?.order;
         } else {
             const args = argsOrState as ControlPolicyOrderArgs | undefined;
-            if ((!args || args.aclUuid === undefined) && !opts.urn) {
+            if (args?.aclUuid === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aclUuid'");
             }
-            if ((!args || args.direction === undefined) && !opts.urn) {
+            if (args?.direction === undefined && !opts.urn) {
                 throw new Error("Missing required property 'direction'");
             }
-            if ((!args || args.order === undefined) && !opts.urn) {
+            if (args?.order === undefined && !opts.urn) {
                 throw new Error("Missing required property 'order'");
             }
-            resourceInputs["aclUuid"] = args ? args.aclUuid : undefined;
-            resourceInputs["direction"] = args ? args.direction : undefined;
-            resourceInputs["order"] = args ? args.order : undefined;
+            resourceInputs["aclUuid"] = args?.aclUuid;
+            resourceInputs["direction"] = args?.direction;
+            resourceInputs["order"] = args?.order;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ControlPolicyOrder.__pulumiType, name, resourceInputs, opts);

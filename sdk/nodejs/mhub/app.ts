@@ -71,31 +71,31 @@ export class App extends pulumi.CustomResource {
     /**
      * AppName.
      */
-    public readonly appName!: pulumi.Output<string>;
+    declare public readonly appName: pulumi.Output<string>;
     /**
      * The app id of iOS. **NOTE:** Either `bundleId` or `packageName` must be set.
      */
-    public readonly bundleId!: pulumi.Output<string | undefined>;
+    declare public readonly bundleId: pulumi.Output<string | undefined>;
     /**
      * Base64 string of picture.
      */
-    public readonly encodedIcon!: pulumi.Output<string | undefined>;
+    declare public readonly encodedIcon: pulumi.Output<string | undefined>;
     /**
      * The Industry ID of the app. For information about Industry and how to use it, MHUB[Industry](https://help.aliyun.com/document_detail/201638.html).
      */
-    public readonly industryId!: pulumi.Output<string>;
+    declare public readonly industryId: pulumi.Output<string>;
     /**
      * Android App package name. **NOTE:** Either `bundleId` or `packageName` must be set.
      */
-    public readonly packageName!: pulumi.Output<string | undefined>;
+    declare public readonly packageName: pulumi.Output<string | undefined>;
     /**
      * The ID of the Product.
      */
-    public readonly productId!: pulumi.Output<string>;
+    declare public readonly productId: pulumi.Output<string>;
     /**
      * The type of the Product. Valid values: `Android` and `iOS`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a App resource with the given unique name, arguments, and options.
@@ -110,31 +110,31 @@ export class App extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppState | undefined;
-            resourceInputs["appName"] = state ? state.appName : undefined;
-            resourceInputs["bundleId"] = state ? state.bundleId : undefined;
-            resourceInputs["encodedIcon"] = state ? state.encodedIcon : undefined;
-            resourceInputs["industryId"] = state ? state.industryId : undefined;
-            resourceInputs["packageName"] = state ? state.packageName : undefined;
-            resourceInputs["productId"] = state ? state.productId : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["appName"] = state?.appName;
+            resourceInputs["bundleId"] = state?.bundleId;
+            resourceInputs["encodedIcon"] = state?.encodedIcon;
+            resourceInputs["industryId"] = state?.industryId;
+            resourceInputs["packageName"] = state?.packageName;
+            resourceInputs["productId"] = state?.productId;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as AppArgs | undefined;
-            if ((!args || args.appName === undefined) && !opts.urn) {
+            if (args?.appName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appName'");
             }
-            if ((!args || args.productId === undefined) && !opts.urn) {
+            if (args?.productId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'productId'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["appName"] = args ? args.appName : undefined;
-            resourceInputs["bundleId"] = args ? args.bundleId : undefined;
-            resourceInputs["encodedIcon"] = args ? args.encodedIcon : undefined;
-            resourceInputs["industryId"] = args ? args.industryId : undefined;
-            resourceInputs["packageName"] = args ? args.packageName : undefined;
-            resourceInputs["productId"] = args ? args.productId : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["appName"] = args?.appName;
+            resourceInputs["bundleId"] = args?.bundleId;
+            resourceInputs["encodedIcon"] = args?.encodedIcon;
+            resourceInputs["industryId"] = args?.industryId;
+            resourceInputs["packageName"] = args?.packageName;
+            resourceInputs["productId"] = args?.productId;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(App.__pulumiType, name, resourceInputs, opts);

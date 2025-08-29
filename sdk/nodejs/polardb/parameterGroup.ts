@@ -72,23 +72,23 @@ export class ParameterGroup extends pulumi.CustomResource {
     /**
      * The type of the database engine. Only `MySQL` is supported.
      */
-    public readonly dbType!: pulumi.Output<string>;
+    declare public readonly dbType: pulumi.Output<string>;
     /**
      * The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
      */
-    public readonly dbVersion!: pulumi.Output<string>;
+    declare public readonly dbVersion: pulumi.Output<string>;
     /**
      * The description of the parameter template. It must be 0 to 200 characters in length.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of the parameter template. It must be 8 to 64 characters in length, and can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The parameter template. See the following `Block parameters`.
      */
-    public readonly parameters!: pulumi.Output<outputs.polardb.ParameterGroupParameter[]>;
+    declare public readonly parameters: pulumi.Output<outputs.polardb.ParameterGroupParameter[]>;
 
     /**
      * Create a ParameterGroup resource with the given unique name, arguments, and options.
@@ -103,27 +103,27 @@ export class ParameterGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ParameterGroupState | undefined;
-            resourceInputs["dbType"] = state ? state.dbType : undefined;
-            resourceInputs["dbVersion"] = state ? state.dbVersion : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parameters"] = state ? state.parameters : undefined;
+            resourceInputs["dbType"] = state?.dbType;
+            resourceInputs["dbVersion"] = state?.dbVersion;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parameters"] = state?.parameters;
         } else {
             const args = argsOrState as ParameterGroupArgs | undefined;
-            if ((!args || args.dbType === undefined) && !opts.urn) {
+            if (args?.dbType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbType'");
             }
-            if ((!args || args.dbVersion === undefined) && !opts.urn) {
+            if (args?.dbVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbVersion'");
             }
-            if ((!args || args.parameters === undefined) && !opts.urn) {
+            if (args?.parameters === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parameters'");
             }
-            resourceInputs["dbType"] = args ? args.dbType : undefined;
-            resourceInputs["dbVersion"] = args ? args.dbVersion : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["parameters"] = args ? args.parameters : undefined;
+            resourceInputs["dbType"] = args?.dbType;
+            resourceInputs["dbVersion"] = args?.dbVersion;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["parameters"] = args?.parameters;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ParameterGroup.__pulumiType, name, resourceInputs, opts);

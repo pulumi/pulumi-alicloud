@@ -76,44 +76,44 @@ export class TrafficMarkingPolicy extends pulumi.CustomResource {
     /**
      * TrafficMarkingPolicyDescription
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether to PreCheck only this request. Value:
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * Whether to forcibly delete the traffic marker policy. Valid values:
      */
-    public readonly force!: pulumi.Output<boolean | undefined>;
+    declare public readonly force: pulumi.Output<boolean | undefined>;
     /**
      * MarkingDscp
      */
-    public readonly markingDscp!: pulumi.Output<number>;
+    declare public readonly markingDscp: pulumi.Output<number>;
     /**
      * Priority
      */
-    public readonly priority!: pulumi.Output<number>;
+    declare public readonly priority: pulumi.Output<number>;
     /**
      * The status of the resource
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The first ID of the resource
      */
-    public /*out*/ readonly trafficMarkingPolicyId!: pulumi.Output<string>;
+    declare public /*out*/ readonly trafficMarkingPolicyId: pulumi.Output<string>;
     /**
      * TrafficMarkingPolicyName
      */
-    public readonly trafficMarkingPolicyName!: pulumi.Output<string | undefined>;
+    declare public readonly trafficMarkingPolicyName: pulumi.Output<string | undefined>;
     /**
      * List of stream classification rules.
      * You can add up to 50 stream classification rules at a time. See `trafficMatchRules` below.
      */
-    public readonly trafficMatchRules!: pulumi.Output<outputs.cen.TrafficMarkingPolicyTrafficMatchRule[] | undefined>;
+    declare public readonly trafficMatchRules: pulumi.Output<outputs.cen.TrafficMarkingPolicyTrafficMatchRule[] | undefined>;
     /**
      * TransitRouterId
      */
-    public readonly transitRouterId!: pulumi.Output<string>;
+    declare public readonly transitRouterId: pulumi.Output<string>;
 
     /**
      * Create a TrafficMarkingPolicy resource with the given unique name, arguments, and options.
@@ -128,35 +128,35 @@ export class TrafficMarkingPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TrafficMarkingPolicyState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["force"] = state ? state.force : undefined;
-            resourceInputs["markingDscp"] = state ? state.markingDscp : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["trafficMarkingPolicyId"] = state ? state.trafficMarkingPolicyId : undefined;
-            resourceInputs["trafficMarkingPolicyName"] = state ? state.trafficMarkingPolicyName : undefined;
-            resourceInputs["trafficMatchRules"] = state ? state.trafficMatchRules : undefined;
-            resourceInputs["transitRouterId"] = state ? state.transitRouterId : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["force"] = state?.force;
+            resourceInputs["markingDscp"] = state?.markingDscp;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["trafficMarkingPolicyId"] = state?.trafficMarkingPolicyId;
+            resourceInputs["trafficMarkingPolicyName"] = state?.trafficMarkingPolicyName;
+            resourceInputs["trafficMatchRules"] = state?.trafficMatchRules;
+            resourceInputs["transitRouterId"] = state?.transitRouterId;
         } else {
             const args = argsOrState as TrafficMarkingPolicyArgs | undefined;
-            if ((!args || args.markingDscp === undefined) && !opts.urn) {
+            if (args?.markingDscp === undefined && !opts.urn) {
                 throw new Error("Missing required property 'markingDscp'");
             }
-            if ((!args || args.priority === undefined) && !opts.urn) {
+            if (args?.priority === undefined && !opts.urn) {
                 throw new Error("Missing required property 'priority'");
             }
-            if ((!args || args.transitRouterId === undefined) && !opts.urn) {
+            if (args?.transitRouterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'transitRouterId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["force"] = args ? args.force : undefined;
-            resourceInputs["markingDscp"] = args ? args.markingDscp : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["trafficMarkingPolicyName"] = args ? args.trafficMarkingPolicyName : undefined;
-            resourceInputs["trafficMatchRules"] = args ? args.trafficMatchRules : undefined;
-            resourceInputs["transitRouterId"] = args ? args.transitRouterId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["force"] = args?.force;
+            resourceInputs["markingDscp"] = args?.markingDscp;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["trafficMarkingPolicyName"] = args?.trafficMarkingPolicyName;
+            resourceInputs["trafficMatchRules"] = args?.trafficMatchRules;
+            resourceInputs["transitRouterId"] = args?.transitRouterId;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["trafficMarkingPolicyId"] = undefined /*out*/;
         }

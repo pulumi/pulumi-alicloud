@@ -63,7 +63,7 @@ export class ServiceLinkedRole extends pulumi.CustomResource {
     /**
      * The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
      */
-    public readonly productName!: pulumi.Output<string>;
+    declare public readonly productName: pulumi.Output<string>;
 
     /**
      * Create a ServiceLinkedRole resource with the given unique name, arguments, and options.
@@ -78,13 +78,13 @@ export class ServiceLinkedRole extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceLinkedRoleState | undefined;
-            resourceInputs["productName"] = state ? state.productName : undefined;
+            resourceInputs["productName"] = state?.productName;
         } else {
             const args = argsOrState as ServiceLinkedRoleArgs | undefined;
-            if ((!args || args.productName === undefined) && !opts.urn) {
+            if (args?.productName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'productName'");
             }
-            resourceInputs["productName"] = args ? args.productName : undefined;
+            resourceInputs["productName"] = args?.productName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServiceLinkedRole.__pulumiType, name, resourceInputs, opts);

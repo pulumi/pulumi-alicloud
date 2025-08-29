@@ -112,15 +112,15 @@ export class EipAssociation extends pulumi.CustomResource {
     /**
      * The ID of the EIP instance.
      */
-    public readonly allocationId!: pulumi.Output<string>;
+    declare public readonly allocationId: pulumi.Output<string>;
     /**
      * Specifies whether to disassociate the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway. Valid values:
      */
-    public readonly force!: pulumi.Output<boolean | undefined>;
+    declare public readonly force: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the instance with which you want to associate the EIP. You can enter the ID of a NAT gateway, CLB instance, ECS instance, secondary ENI, HAVIP, or IP address.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The type of the instance with which you want to associate the EIP. Valid values:
      * - `Nat`: NAT gateway
@@ -132,7 +132,7 @@ export class EipAssociation extends pulumi.CustomResource {
      *
      * > **NOTE:**   The default value is `EcsInstance`. If the instance with which you want to associate the EIP is not an ECS instance, this parameter is required.
      */
-    public readonly instanceType!: pulumi.Output<string>;
+    declare public readonly instanceType: pulumi.Output<string>;
     /**
      * The association mode. Valid values:
      * - `NAT` (default): NAT mode
@@ -141,7 +141,7 @@ export class EipAssociation extends pulumi.CustomResource {
      *
      * > **NOTE:**   This parameter is required only when `instanceType` is set to `NetworkInterface`.
      */
-    public readonly mode!: pulumi.Output<string>;
+    declare public readonly mode: pulumi.Output<string>;
     /**
      * The IP address in the CIDR block of the vSwitch.
      *
@@ -149,7 +149,7 @@ export class EipAssociation extends pulumi.CustomResource {
      *
      * > **NOTE:**   This parameter is required if `instanceType` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
      */
-    public readonly privateIpAddress!: pulumi.Output<string | undefined>;
+    declare public readonly privateIpAddress: pulumi.Output<string | undefined>;
     /**
      * The ID of the VPC in which an IPv4 gateway is created. The VPC and the EIP must be in the same region.
      *
@@ -157,7 +157,7 @@ export class EipAssociation extends pulumi.CustomResource {
      *
      * > **NOTE:**   This parameter is required if `instanceType` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
      */
-    public readonly vpcId!: pulumi.Output<string | undefined>;
+    declare public readonly vpcId: pulumi.Output<string | undefined>;
 
     /**
      * Create a EipAssociation resource with the given unique name, arguments, and options.
@@ -172,28 +172,28 @@ export class EipAssociation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EipAssociationState | undefined;
-            resourceInputs["allocationId"] = state ? state.allocationId : undefined;
-            resourceInputs["force"] = state ? state.force : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["mode"] = state ? state.mode : undefined;
-            resourceInputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["allocationId"] = state?.allocationId;
+            resourceInputs["force"] = state?.force;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["mode"] = state?.mode;
+            resourceInputs["privateIpAddress"] = state?.privateIpAddress;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as EipAssociationArgs | undefined;
-            if ((!args || args.allocationId === undefined) && !opts.urn) {
+            if (args?.allocationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'allocationId'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["allocationId"] = args ? args.allocationId : undefined;
-            resourceInputs["force"] = args ? args.force : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["mode"] = args ? args.mode : undefined;
-            resourceInputs["privateIpAddress"] = args ? args.privateIpAddress : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["allocationId"] = args?.allocationId;
+            resourceInputs["force"] = args?.force;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["mode"] = args?.mode;
+            resourceInputs["privateIpAddress"] = args?.privateIpAddress;
+            resourceInputs["vpcId"] = args?.vpcId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EipAssociation.__pulumiType, name, resourceInputs, opts);

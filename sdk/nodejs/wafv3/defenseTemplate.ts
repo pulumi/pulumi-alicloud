@@ -83,43 +83,43 @@ export class DefenseTemplate extends pulumi.CustomResource {
      * - **tamperproof**: the website tamper-proofing module.
      * - **dlp**: the data leakage prevention module.
      */
-    public readonly defenseScene!: pulumi.Output<string>;
+    declare public readonly defenseScene: pulumi.Output<string>;
     /**
      * Template ID.
      */
-    public /*out*/ readonly defenseTemplateId!: pulumi.Output<number>;
+    declare public /*out*/ readonly defenseTemplateId: pulumi.Output<number>;
     /**
      * The name of the protection rule template.
      */
-    public readonly defenseTemplateName!: pulumi.Output<string>;
+    declare public readonly defenseTemplateName: pulumi.Output<string>;
     /**
      * The description of the protection rule template. .
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The ID of the Web Application Firewall (WAF) instance. .
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The ID of the Alibaba Cloud resource group. .
      */
-    public readonly resourceManagerResourceGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly resourceManagerResourceGroupId: pulumi.Output<string | undefined>;
     /**
      * The status of the protection rule template. Valid values:
      * - **0**: disabled.
      * - **1**: enabled.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The origin of the protection rule template that you want to create. Set the value to **custom**. The value specifies that the protection rule template is a custom template. .
      */
-    public readonly templateOrigin!: pulumi.Output<string>;
+    declare public readonly templateOrigin: pulumi.Output<string>;
     /**
      * The type of the protection rule template. Valid values:
      * - **user_default:** default template.
      * - **user_custom:** custom template.
      */
-    public readonly templateType!: pulumi.Output<string>;
+    declare public readonly templateType: pulumi.Output<string>;
 
     /**
      * Create a DefenseTemplate resource with the given unique name, arguments, and options.
@@ -134,43 +134,43 @@ export class DefenseTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DefenseTemplateState | undefined;
-            resourceInputs["defenseScene"] = state ? state.defenseScene : undefined;
-            resourceInputs["defenseTemplateId"] = state ? state.defenseTemplateId : undefined;
-            resourceInputs["defenseTemplateName"] = state ? state.defenseTemplateName : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["resourceManagerResourceGroupId"] = state ? state.resourceManagerResourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["templateOrigin"] = state ? state.templateOrigin : undefined;
-            resourceInputs["templateType"] = state ? state.templateType : undefined;
+            resourceInputs["defenseScene"] = state?.defenseScene;
+            resourceInputs["defenseTemplateId"] = state?.defenseTemplateId;
+            resourceInputs["defenseTemplateName"] = state?.defenseTemplateName;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["resourceManagerResourceGroupId"] = state?.resourceManagerResourceGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["templateOrigin"] = state?.templateOrigin;
+            resourceInputs["templateType"] = state?.templateType;
         } else {
             const args = argsOrState as DefenseTemplateArgs | undefined;
-            if ((!args || args.defenseScene === undefined) && !opts.urn) {
+            if (args?.defenseScene === undefined && !opts.urn) {
                 throw new Error("Missing required property 'defenseScene'");
             }
-            if ((!args || args.defenseTemplateName === undefined) && !opts.urn) {
+            if (args?.defenseTemplateName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'defenseTemplateName'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.status === undefined) && !opts.urn) {
+            if (args?.status === undefined && !opts.urn) {
                 throw new Error("Missing required property 'status'");
             }
-            if ((!args || args.templateOrigin === undefined) && !opts.urn) {
+            if (args?.templateOrigin === undefined && !opts.urn) {
                 throw new Error("Missing required property 'templateOrigin'");
             }
-            if ((!args || args.templateType === undefined) && !opts.urn) {
+            if (args?.templateType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'templateType'");
             }
-            resourceInputs["defenseScene"] = args ? args.defenseScene : undefined;
-            resourceInputs["defenseTemplateName"] = args ? args.defenseTemplateName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["resourceManagerResourceGroupId"] = args ? args.resourceManagerResourceGroupId : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["templateOrigin"] = args ? args.templateOrigin : undefined;
-            resourceInputs["templateType"] = args ? args.templateType : undefined;
+            resourceInputs["defenseScene"] = args?.defenseScene;
+            resourceInputs["defenseTemplateName"] = args?.defenseTemplateName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["resourceManagerResourceGroupId"] = args?.resourceManagerResourceGroupId;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["templateOrigin"] = args?.templateOrigin;
+            resourceInputs["templateType"] = args?.templateType;
             resourceInputs["defenseTemplateId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

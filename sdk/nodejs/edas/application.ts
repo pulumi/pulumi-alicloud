@@ -84,47 +84,47 @@ export class Application extends pulumi.CustomResource {
     /**
      * Name of your EDAS application. Only letters '-' '_' and numbers are allowed. The length cannot exceed 36 characters.
      */
-    public readonly applicationName!: pulumi.Output<string>;
+    declare public readonly applicationName: pulumi.Output<string>;
     /**
      * The package ID of Enterprise Distributed Application Service (EDAS) Container, which can be retrieved by calling container version list interface ListBuildPack or the "Pack ID" column in container version list. When creating High-speed Service Framework (HSF) application, this parameter is required.
      */
-    public readonly buildPackId!: pulumi.Output<number | undefined>;
+    declare public readonly buildPackId: pulumi.Output<number | undefined>;
     /**
      * The ID of the cluster that you want to create the application. The default cluster will be used if you do not specify this parameter.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The description of the application that you want to create.
      */
-    public readonly descriotion!: pulumi.Output<string | undefined>;
+    declare public readonly descriotion: pulumi.Output<string | undefined>;
     /**
      * The ID of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
      */
-    public readonly ecuInfos!: pulumi.Output<string[] | undefined>;
+    declare public readonly ecuInfos: pulumi.Output<string[] | undefined>;
     /**
      * The ID of the instance group where the application is going to be deployed. Set this parameter to all if you want to deploy the application to all groups.
      */
-    public readonly groupId!: pulumi.Output<string | undefined>;
+    declare public readonly groupId: pulumi.Output<string | undefined>;
     /**
      * The URL for health checking of the application.
      */
-    public readonly healthCheckUrl!: pulumi.Output<string | undefined>;
+    declare public readonly healthCheckUrl: pulumi.Output<string | undefined>;
     /**
      * The ID of the namespace where you want to create the application. You can call the ListUserDefineRegion operation to query the namespace ID.
      */
-    public readonly logicalRegionId!: pulumi.Output<string | undefined>;
+    declare public readonly logicalRegionId: pulumi.Output<string | undefined>;
     /**
      * The type of the package for the deployment of the application that you want to create. The valid values are: WAR and JAR. We strongly recommend you to set this parameter when creating the application.
      */
-    public readonly packageType!: pulumi.Output<string>;
+    declare public readonly packageType: pulumi.Output<string>;
     /**
      * The version of the application that you want to deploy. It must be unique for every application. The length cannot exceed 64 characters. We recommended you to use a timestamp.
      */
-    public readonly packageVersion!: pulumi.Output<string | undefined>;
+    declare public readonly packageVersion: pulumi.Output<string | undefined>;
     /**
      * The address to store the uploaded web application (WAR) package for application deployment. This parameter is required when the deployType parameter is set as url.
      */
-    public readonly warUrl!: pulumi.Output<string | undefined>;
+    declare public readonly warUrl: pulumi.Output<string | undefined>;
 
     /**
      * Create a Application resource with the given unique name, arguments, and options.
@@ -139,39 +139,39 @@ export class Application extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationState | undefined;
-            resourceInputs["applicationName"] = state ? state.applicationName : undefined;
-            resourceInputs["buildPackId"] = state ? state.buildPackId : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["descriotion"] = state ? state.descriotion : undefined;
-            resourceInputs["ecuInfos"] = state ? state.ecuInfos : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["healthCheckUrl"] = state ? state.healthCheckUrl : undefined;
-            resourceInputs["logicalRegionId"] = state ? state.logicalRegionId : undefined;
-            resourceInputs["packageType"] = state ? state.packageType : undefined;
-            resourceInputs["packageVersion"] = state ? state.packageVersion : undefined;
-            resourceInputs["warUrl"] = state ? state.warUrl : undefined;
+            resourceInputs["applicationName"] = state?.applicationName;
+            resourceInputs["buildPackId"] = state?.buildPackId;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["descriotion"] = state?.descriotion;
+            resourceInputs["ecuInfos"] = state?.ecuInfos;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["healthCheckUrl"] = state?.healthCheckUrl;
+            resourceInputs["logicalRegionId"] = state?.logicalRegionId;
+            resourceInputs["packageType"] = state?.packageType;
+            resourceInputs["packageVersion"] = state?.packageVersion;
+            resourceInputs["warUrl"] = state?.warUrl;
         } else {
             const args = argsOrState as ApplicationArgs | undefined;
-            if ((!args || args.applicationName === undefined) && !opts.urn) {
+            if (args?.applicationName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applicationName'");
             }
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.packageType === undefined) && !opts.urn) {
+            if (args?.packageType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'packageType'");
             }
-            resourceInputs["applicationName"] = args ? args.applicationName : undefined;
-            resourceInputs["buildPackId"] = args ? args.buildPackId : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["descriotion"] = args ? args.descriotion : undefined;
-            resourceInputs["ecuInfos"] = args ? args.ecuInfos : undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["healthCheckUrl"] = args ? args.healthCheckUrl : undefined;
-            resourceInputs["logicalRegionId"] = args ? args.logicalRegionId : undefined;
-            resourceInputs["packageType"] = args ? args.packageType : undefined;
-            resourceInputs["packageVersion"] = args ? args.packageVersion : undefined;
-            resourceInputs["warUrl"] = args ? args.warUrl : undefined;
+            resourceInputs["applicationName"] = args?.applicationName;
+            resourceInputs["buildPackId"] = args?.buildPackId;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["descriotion"] = args?.descriotion;
+            resourceInputs["ecuInfos"] = args?.ecuInfos;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["healthCheckUrl"] = args?.healthCheckUrl;
+            resourceInputs["logicalRegionId"] = args?.logicalRegionId;
+            resourceInputs["packageType"] = args?.packageType;
+            resourceInputs["packageVersion"] = args?.packageVersion;
+            resourceInputs["warUrl"] = args?.warUrl;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Application.__pulumiType, name, resourceInputs, opts);

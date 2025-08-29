@@ -73,19 +73,19 @@ export class WafPolicy extends pulumi.CustomResource {
     /**
      * The type of protection policy. Valid values: `wafGroup`, `customAcl`, `whitelist`, `ipBlacklist`, `regionBlock`.
      */
-    public readonly defenseScene!: pulumi.Output<string>;
+    declare public readonly defenseScene: pulumi.Output<string>;
     /**
      * The name of the protection policy. The name must be 1 to 64 characters in length, and can contain letters, digits,and underscores (_).
      */
-    public readonly policyName!: pulumi.Output<string>;
+    declare public readonly policyName: pulumi.Output<string>;
     /**
      * The type of the protection policy. Valid values: `default`, `custom`.
      */
-    public readonly policyType!: pulumi.Output<string>;
+    declare public readonly policyType: pulumi.Output<string>;
     /**
      * The status of the resource. Valid values: `on`, `off`.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
 
     /**
      * Create a WafPolicy resource with the given unique name, arguments, and options.
@@ -100,28 +100,28 @@ export class WafPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WafPolicyState | undefined;
-            resourceInputs["defenseScene"] = state ? state.defenseScene : undefined;
-            resourceInputs["policyName"] = state ? state.policyName : undefined;
-            resourceInputs["policyType"] = state ? state.policyType : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["defenseScene"] = state?.defenseScene;
+            resourceInputs["policyName"] = state?.policyName;
+            resourceInputs["policyType"] = state?.policyType;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as WafPolicyArgs | undefined;
-            if ((!args || args.defenseScene === undefined) && !opts.urn) {
+            if (args?.defenseScene === undefined && !opts.urn) {
                 throw new Error("Missing required property 'defenseScene'");
             }
-            if ((!args || args.policyName === undefined) && !opts.urn) {
+            if (args?.policyName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyName'");
             }
-            if ((!args || args.policyType === undefined) && !opts.urn) {
+            if (args?.policyType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyType'");
             }
-            if ((!args || args.status === undefined) && !opts.urn) {
+            if (args?.status === undefined && !opts.urn) {
                 throw new Error("Missing required property 'status'");
             }
-            resourceInputs["defenseScene"] = args ? args.defenseScene : undefined;
-            resourceInputs["policyName"] = args ? args.policyName : undefined;
-            resourceInputs["policyType"] = args ? args.policyType : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["defenseScene"] = args?.defenseScene;
+            resourceInputs["policyName"] = args?.policyName;
+            resourceInputs["policyType"] = args?.policyType;
+            resourceInputs["status"] = args?.status;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WafPolicy.__pulumiType, name, resourceInputs, opts);

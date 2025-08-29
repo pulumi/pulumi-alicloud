@@ -44,15 +44,15 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
      */
-    public readonly autoRenew!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoRenew: pulumi.Output<boolean | undefined>;
     /**
      * OrderCreateTime.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly createTime: pulumi.Output<number>;
     /**
      * The instance name.
      */
-    public readonly instanceName!: pulumi.Output<string>;
+    declare public readonly instanceName: pulumi.Output<string>;
     /**
      * Instance type. Valid values: 
      * - professional: professional Edition
@@ -61,79 +61,79 @@ export class Instance extends pulumi.CustomResource {
      * - serverless: Serverless Edition.
      * > **NOTE:** There should not set the `instanceType` parameter when creating a serverless instance. Only need to set `paymentType = "PayAsYouGo"` and `serverlessChargeType = "onDemand"`.
      */
-    public readonly instanceType!: pulumi.Output<string>;
+    declare public readonly instanceType: pulumi.Output<string>;
     /**
      * The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
      */
-    public readonly maxConnections!: pulumi.Output<number>;
+    declare public readonly maxConnections: pulumi.Output<number>;
     /**
      * Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
      */
-    public readonly maxEipTps!: pulumi.Output<string>;
+    declare public readonly maxEipTps: pulumi.Output<string>;
     /**
      * Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
      */
-    public readonly maxTps!: pulumi.Output<string>;
+    declare public readonly maxTps: pulumi.Output<string>;
     /**
      * This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
      * - Upgrade: Upgrade
      * - Downgrade: Downgrading.
      */
-    public readonly modifyType!: pulumi.Output<string | undefined>;
+    declare public readonly modifyType: pulumi.Output<string | undefined>;
     /**
      * The Payment type. Valid value: 
      * - Subscription: Pre-paid.
      * - PayAsYouGo: Post-paid, and for serverless Edition.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * Prepaid cycle units. Value: Month, Year.
      */
-    public readonly periodCycle!: pulumi.Output<string | undefined>;
+    declare public readonly periodCycle: pulumi.Output<string | undefined>;
     /**
      * Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
      */
-    public readonly queueCapacity!: pulumi.Output<string>;
+    declare public readonly queueCapacity: pulumi.Output<string>;
     /**
      * The number of automatic renewal cycles.
      */
-    public readonly renewalDuration!: pulumi.Output<number>;
+    declare public readonly renewalDuration: pulumi.Output<number>;
     /**
      * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
      */
-    public readonly renewalDurationUnit!: pulumi.Output<string>;
+    declare public readonly renewalDurationUnit: pulumi.Output<string>;
     /**
      * The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
      */
-    public readonly renewalStatus!: pulumi.Output<string>;
+    declare public readonly renewalStatus: pulumi.Output<string>;
     /**
      * The billing type of the serverless instance. Value: onDemand.
      */
-    public readonly serverlessChargeType!: pulumi.Output<string | undefined>;
+    declare public readonly serverlessChargeType: pulumi.Output<string | undefined>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
      */
-    public readonly storageSize!: pulumi.Output<string>;
+    declare public readonly storageSize: pulumi.Output<string>;
     /**
      * Whether to support public network.
      */
-    public readonly supportEip!: pulumi.Output<boolean | undefined>;
+    declare public readonly supportEip: pulumi.Output<boolean | undefined>;
     /**
      * Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
      */
-    public readonly supportTracing!: pulumi.Output<boolean>;
+    declare public readonly supportTracing: pulumi.Output<boolean>;
     /**
      * Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
      */
-    public readonly tracingStorageTime!: pulumi.Output<number>;
+    declare public readonly tracingStorageTime: pulumi.Output<number>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -148,51 +148,51 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["maxConnections"] = state ? state.maxConnections : undefined;
-            resourceInputs["maxEipTps"] = state ? state.maxEipTps : undefined;
-            resourceInputs["maxTps"] = state ? state.maxTps : undefined;
-            resourceInputs["modifyType"] = state ? state.modifyType : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["periodCycle"] = state ? state.periodCycle : undefined;
-            resourceInputs["queueCapacity"] = state ? state.queueCapacity : undefined;
-            resourceInputs["renewalDuration"] = state ? state.renewalDuration : undefined;
-            resourceInputs["renewalDurationUnit"] = state ? state.renewalDurationUnit : undefined;
-            resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
-            resourceInputs["serverlessChargeType"] = state ? state.serverlessChargeType : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["storageSize"] = state ? state.storageSize : undefined;
-            resourceInputs["supportEip"] = state ? state.supportEip : undefined;
-            resourceInputs["supportTracing"] = state ? state.supportTracing : undefined;
-            resourceInputs["tracingStorageTime"] = state ? state.tracingStorageTime : undefined;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["instanceName"] = state?.instanceName;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["maxConnections"] = state?.maxConnections;
+            resourceInputs["maxEipTps"] = state?.maxEipTps;
+            resourceInputs["maxTps"] = state?.maxTps;
+            resourceInputs["modifyType"] = state?.modifyType;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["periodCycle"] = state?.periodCycle;
+            resourceInputs["queueCapacity"] = state?.queueCapacity;
+            resourceInputs["renewalDuration"] = state?.renewalDuration;
+            resourceInputs["renewalDurationUnit"] = state?.renewalDurationUnit;
+            resourceInputs["renewalStatus"] = state?.renewalStatus;
+            resourceInputs["serverlessChargeType"] = state?.serverlessChargeType;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["storageSize"] = state?.storageSize;
+            resourceInputs["supportEip"] = state?.supportEip;
+            resourceInputs["supportTracing"] = state?.supportTracing;
+            resourceInputs["tracingStorageTime"] = state?.tracingStorageTime;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.paymentType === undefined) && !opts.urn) {
+            if (args?.paymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["maxConnections"] = args ? args.maxConnections : undefined;
-            resourceInputs["maxEipTps"] = args ? args.maxEipTps : undefined;
-            resourceInputs["maxTps"] = args ? args.maxTps : undefined;
-            resourceInputs["modifyType"] = args ? args.modifyType : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["periodCycle"] = args ? args.periodCycle : undefined;
-            resourceInputs["queueCapacity"] = args ? args.queueCapacity : undefined;
-            resourceInputs["renewalDuration"] = args ? args.renewalDuration : undefined;
-            resourceInputs["renewalDurationUnit"] = args ? args.renewalDurationUnit : undefined;
-            resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
-            resourceInputs["serverlessChargeType"] = args ? args.serverlessChargeType : undefined;
-            resourceInputs["storageSize"] = args ? args.storageSize : undefined;
-            resourceInputs["supportEip"] = args ? args.supportEip : undefined;
-            resourceInputs["supportTracing"] = args ? args.supportTracing : undefined;
-            resourceInputs["tracingStorageTime"] = args ? args.tracingStorageTime : undefined;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["instanceName"] = args?.instanceName;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["maxConnections"] = args?.maxConnections;
+            resourceInputs["maxEipTps"] = args?.maxEipTps;
+            resourceInputs["maxTps"] = args?.maxTps;
+            resourceInputs["modifyType"] = args?.modifyType;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["periodCycle"] = args?.periodCycle;
+            resourceInputs["queueCapacity"] = args?.queueCapacity;
+            resourceInputs["renewalDuration"] = args?.renewalDuration;
+            resourceInputs["renewalDurationUnit"] = args?.renewalDurationUnit;
+            resourceInputs["renewalStatus"] = args?.renewalStatus;
+            resourceInputs["serverlessChargeType"] = args?.serverlessChargeType;
+            resourceInputs["storageSize"] = args?.storageSize;
+            resourceInputs["supportEip"] = args?.supportEip;
+            resourceInputs["supportTracing"] = args?.supportTracing;
+            resourceInputs["tracingStorageTime"] = args?.tracingStorageTime;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

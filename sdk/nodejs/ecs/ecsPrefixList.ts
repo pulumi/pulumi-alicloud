@@ -72,23 +72,23 @@ export class EcsPrefixList extends pulumi.CustomResource {
     /**
      * The IP address family. Valid values: `IPv4`,`IPv6`.
      */
-    public readonly addressFamily!: pulumi.Output<string>;
+    declare public readonly addressFamily: pulumi.Output<string>;
     /**
      * The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The Entry. The details see Block `entry`.
      */
-    public readonly entries!: pulumi.Output<outputs.ecs.EcsPrefixListEntry[]>;
+    declare public readonly entries: pulumi.Output<outputs.ecs.EcsPrefixListEntry[]>;
     /**
      * The maximum number of entries that the prefix list can contain.  Valid values: 1 to 200.
      */
-    public readonly maxEntries!: pulumi.Output<number>;
+    declare public readonly maxEntries: pulumi.Output<number>;
     /**
      * The name of the prefix. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://`, `https://`, `com.aliyun`, or `com.alibabacloud`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
      */
-    public readonly prefixListName!: pulumi.Output<string>;
+    declare public readonly prefixListName: pulumi.Output<string>;
 
     /**
      * Create a EcsPrefixList resource with the given unique name, arguments, and options.
@@ -103,30 +103,30 @@ export class EcsPrefixList extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcsPrefixListState | undefined;
-            resourceInputs["addressFamily"] = state ? state.addressFamily : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["entries"] = state ? state.entries : undefined;
-            resourceInputs["maxEntries"] = state ? state.maxEntries : undefined;
-            resourceInputs["prefixListName"] = state ? state.prefixListName : undefined;
+            resourceInputs["addressFamily"] = state?.addressFamily;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["entries"] = state?.entries;
+            resourceInputs["maxEntries"] = state?.maxEntries;
+            resourceInputs["prefixListName"] = state?.prefixListName;
         } else {
             const args = argsOrState as EcsPrefixListArgs | undefined;
-            if ((!args || args.addressFamily === undefined) && !opts.urn) {
+            if (args?.addressFamily === undefined && !opts.urn) {
                 throw new Error("Missing required property 'addressFamily'");
             }
-            if ((!args || args.entries === undefined) && !opts.urn) {
+            if (args?.entries === undefined && !opts.urn) {
                 throw new Error("Missing required property 'entries'");
             }
-            if ((!args || args.maxEntries === undefined) && !opts.urn) {
+            if (args?.maxEntries === undefined && !opts.urn) {
                 throw new Error("Missing required property 'maxEntries'");
             }
-            if ((!args || args.prefixListName === undefined) && !opts.urn) {
+            if (args?.prefixListName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'prefixListName'");
             }
-            resourceInputs["addressFamily"] = args ? args.addressFamily : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["entries"] = args ? args.entries : undefined;
-            resourceInputs["maxEntries"] = args ? args.maxEntries : undefined;
-            resourceInputs["prefixListName"] = args ? args.prefixListName : undefined;
+            resourceInputs["addressFamily"] = args?.addressFamily;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["entries"] = args?.entries;
+            resourceInputs["maxEntries"] = args?.maxEntries;
+            resourceInputs["prefixListName"] = args?.prefixListName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EcsPrefixList.__pulumiType, name, resourceInputs, opts);

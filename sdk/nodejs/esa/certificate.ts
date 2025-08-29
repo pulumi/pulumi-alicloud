@@ -70,54 +70,54 @@ export class Certificate extends pulumi.CustomResource {
     /**
      * Cloud certificate ID.
      */
-    public readonly casId!: pulumi.Output<string | undefined>;
+    declare public readonly casId: pulumi.Output<string | undefined>;
     /**
      * The certificate Id.
      */
-    public readonly certId!: pulumi.Output<string>;
+    declare public readonly certId: pulumi.Output<string>;
     /**
      * The certificate name.
      */
-    public readonly certName!: pulumi.Output<string>;
+    declare public readonly certName: pulumi.Output<string>;
     /**
      * Certificate content.
      */
-    public readonly certificate!: pulumi.Output<string>;
+    declare public readonly certificate: pulumi.Output<string>;
     /**
      * Creation time.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The certificate type.
      * - cas (Certificate Center Certificate)
      * - upload (custom upload certificate)
      * - free( Free certificate).
      */
-    public readonly createdType!: pulumi.Output<string>;
+    declare public readonly createdType: pulumi.Output<string>;
     /**
      * A list of domain names. Multiple domain names are separated by commas.
      */
-    public readonly domains!: pulumi.Output<string | undefined>;
+    declare public readonly domains: pulumi.Output<string | undefined>;
     /**
      * The certificate private key.
      */
-    public readonly privateKey!: pulumi.Output<string | undefined>;
+    declare public readonly privateKey: pulumi.Output<string | undefined>;
     /**
      * Geographical information.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The site ID, which can be obtained by calling the ListSites interface.
      */
-    public readonly siteId!: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<number>;
     /**
      * Certificate status.(within 30 days).- issued.- applying.- application failed.- canceled.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a Certificate resource with the given unique name, arguments, and options.
@@ -132,36 +132,36 @@ export class Certificate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CertificateState | undefined;
-            resourceInputs["casId"] = state ? state.casId : undefined;
-            resourceInputs["certId"] = state ? state.certId : undefined;
-            resourceInputs["certName"] = state ? state.certName : undefined;
-            resourceInputs["certificate"] = state ? state.certificate : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["createdType"] = state ? state.createdType : undefined;
-            resourceInputs["domains"] = state ? state.domains : undefined;
-            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["casId"] = state?.casId;
+            resourceInputs["certId"] = state?.certId;
+            resourceInputs["certName"] = state?.certName;
+            resourceInputs["certificate"] = state?.certificate;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["createdType"] = state?.createdType;
+            resourceInputs["domains"] = state?.domains;
+            resourceInputs["privateKey"] = state?.privateKey;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as CertificateArgs | undefined;
-            if ((!args || args.createdType === undefined) && !opts.urn) {
+            if (args?.createdType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'createdType'");
             }
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            resourceInputs["casId"] = args ? args.casId : undefined;
-            resourceInputs["certId"] = args ? args.certId : undefined;
-            resourceInputs["certName"] = args ? args.certName : undefined;
-            resourceInputs["certificate"] = args ? args.certificate : undefined;
-            resourceInputs["createdType"] = args ? args.createdType : undefined;
-            resourceInputs["domains"] = args ? args.domains : undefined;
-            resourceInputs["privateKey"] = args ? args.privateKey : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["casId"] = args?.casId;
+            resourceInputs["certId"] = args?.certId;
+            resourceInputs["certName"] = args?.certName;
+            resourceInputs["certificate"] = args?.certificate;
+            resourceInputs["createdType"] = args?.createdType;
+            resourceInputs["domains"] = args?.domains;
+            resourceInputs["privateKey"] = args?.privateKey;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["siteId"] = args?.siteId;
+            resourceInputs["type"] = args?.type;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

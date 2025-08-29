@@ -18,18 +18,15 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
-	// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-	// console.
+	// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
 	AccessKey pulumi.StringPtrOutput `pulumi:"accessKey"`
-	// The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
-	// Alibaba Cloud console.
+	// The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the Alibaba Cloud console.
 	AccountId           pulumi.StringPtrOutput `pulumi:"accountId"`
 	AccountType         pulumi.StringPtrOutput `pulumi:"accountType"`
 	ConfigurationSource pulumi.StringPtrOutput `pulumi:"configurationSource"`
 	// The URI of sidecar credentials service.
 	CredentialsUri pulumi.StringPtrOutput `pulumi:"credentialsUri"`
-	// The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
-	// of the Alibaba Cloud console.
+	// The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section of the Alibaba Cloud console.
 	EcsRoleName pulumi.StringPtrOutput `pulumi:"ecsRoleName"`
 	// Deprecated: Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead.
 	Fc pulumi.StringPtrOutput `pulumi:"fc"`
@@ -44,8 +41,7 @@ type Provider struct {
 	Protocol pulumi.StringPtrOutput `pulumi:"protocol"`
 	// The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
-	// The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-	// console.
+	// The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
 	SecretKey pulumi.StringPtrOutput `pulumi:"secretKey"`
 	// The security transport for the assume role invoking.
 	SecureTransport pulumi.StringPtrOutput `pulumi:"secureTransport"`
@@ -90,11 +86,9 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-	// console.
+	// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
 	AccessKey *string `pulumi:"accessKey"`
-	// The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
-	// Alibaba Cloud console.
+	// The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the Alibaba Cloud console.
 	AccountId          *string                     `pulumi:"accountId"`
 	AccountType        *string                     `pulumi:"accountType"`
 	AssumeRole         *ProviderAssumeRole         `pulumi:"assumeRole"`
@@ -106,8 +100,7 @@ type providerArgs struct {
 	ConfigurationSource *string `pulumi:"configurationSource"`
 	// The URI of sidecar credentials service.
 	CredentialsUri *string `pulumi:"credentialsUri"`
-	// The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
-	// of the Alibaba Cloud console.
+	// The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section of the Alibaba Cloud console.
 	EcsRoleName *string            `pulumi:"ecsRoleName"`
 	Endpoints   []ProviderEndpoint `pulumi:"endpoints"`
 	// Deprecated: Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead.
@@ -125,8 +118,7 @@ type providerArgs struct {
 	Protocol *string `pulumi:"protocol"`
 	// The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
 	Region *string `pulumi:"region"`
-	// The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-	// console.
+	// The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
 	SecretKey *string `pulumi:"secretKey"`
 	// The security transport for the assume role invoking.
 	SecureTransport *string `pulumi:"secureTransport"`
@@ -136,8 +128,7 @@ type providerArgs struct {
 	// The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
 	SharedCredentialsFile *string              `pulumi:"sharedCredentialsFile"`
 	SignVersion           *ProviderSignVersion `pulumi:"signVersion"`
-	// Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
-	// that are not public (yet).
+	// Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
 	SkipRegionValidation *bool `pulumi:"skipRegionValidation"`
 	// The source ip for the assume role invoking.
 	SourceIp *string `pulumi:"sourceIp"`
@@ -145,11 +136,9 @@ type providerArgs struct {
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-	// console.
+	// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
 	AccessKey pulumi.StringPtrInput
-	// The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
-	// Alibaba Cloud console.
+	// The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the Alibaba Cloud console.
 	AccountId          pulumi.StringPtrInput
 	AccountType        pulumi.StringPtrInput
 	AssumeRole         ProviderAssumeRolePtrInput
@@ -161,8 +150,7 @@ type ProviderArgs struct {
 	ConfigurationSource pulumi.StringPtrInput
 	// The URI of sidecar credentials service.
 	CredentialsUri pulumi.StringPtrInput
-	// The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
-	// of the Alibaba Cloud console.
+	// The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section of the Alibaba Cloud console.
 	EcsRoleName pulumi.StringPtrInput
 	Endpoints   ProviderEndpointArrayInput
 	// Deprecated: Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead.
@@ -180,8 +168,7 @@ type ProviderArgs struct {
 	Protocol pulumi.StringPtrInput
 	// The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
 	Region pulumi.StringPtrInput
-	// The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-	// console.
+	// The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
 	SecretKey pulumi.StringPtrInput
 	// The security transport for the assume role invoking.
 	SecureTransport pulumi.StringPtrInput
@@ -191,8 +178,7 @@ type ProviderArgs struct {
 	// The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
 	SharedCredentialsFile pulumi.StringPtrInput
 	SignVersion           ProviderSignVersionPtrInput
-	// Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
-	// that are not public (yet).
+	// Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
 	SkipRegionValidation pulumi.BoolPtrInput
 	// The source ip for the assume role invoking.
 	SourceIp pulumi.StringPtrInput
@@ -258,14 +244,12 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
-// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-// console.
+// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
 func (o ProviderOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
-// The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
-// Alibaba Cloud console.
+// The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the Alibaba Cloud console.
 func (o ProviderOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
@@ -283,8 +267,7 @@ func (o ProviderOutput) CredentialsUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CredentialsUri }).(pulumi.StringPtrOutput)
 }
 
-// The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
-// of the Alibaba Cloud console.
+// The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section of the Alibaba Cloud console.
 func (o ProviderOutput) EcsRoleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.EcsRoleName }).(pulumi.StringPtrOutput)
 }
@@ -323,8 +306,7 @@ func (o ProviderOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-// console.
+// The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
 func (o ProviderOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SecretKey }).(pulumi.StringPtrOutput)
 }

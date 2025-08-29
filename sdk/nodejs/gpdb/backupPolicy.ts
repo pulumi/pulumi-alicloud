@@ -44,18 +44,18 @@ export class BackupPolicy extends pulumi.CustomResource {
     /**
      * Data backup retention days.
      */
-    public readonly backupRetentionPeriod!: pulumi.Output<number>;
+    declare public readonly backupRetentionPeriod: pulumi.Output<number>;
     /**
      * The instance ID.
      * > **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
      */
-    public readonly dbInstanceId!: pulumi.Output<string>;
+    declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
      * Whether to enable automatic recovery points. Value Description:
      * - **true**: enabled.
      * - **false**: Closed.
      */
-    public readonly enableRecoveryPoint!: pulumi.Output<boolean>;
+    declare public readonly enableRecoveryPoint: pulumi.Output<boolean>;
     /**
      * Data backup cycle. Separate multiple values with commas (,). Value Description:
      * - **Monday**: Monday.
@@ -66,11 +66,11 @@ export class BackupPolicy extends pulumi.CustomResource {
      * - **Saturday**: Saturday.
      * - **Sunday**: Sunday.
      */
-    public readonly preferredBackupPeriod!: pulumi.Output<string>;
+    declare public readonly preferredBackupPeriod: pulumi.Output<string>;
     /**
      * Data backup time. Format: HH:mmZ-HH:mmZ(UTC time).
      */
-    public readonly preferredBackupTime!: pulumi.Output<string>;
+    declare public readonly preferredBackupTime: pulumi.Output<string>;
     /**
      * Recovery point frequency. Value Description:
      * - **1**: Hourly.
@@ -78,7 +78,7 @@ export class BackupPolicy extends pulumi.CustomResource {
      * - **4**: Every four hours.
      * - **8**: Every eight hours.
      */
-    public readonly recoveryPointPeriod!: pulumi.Output<string>;
+    declare public readonly recoveryPointPeriod: pulumi.Output<string>;
 
     /**
      * Create a BackupPolicy resource with the given unique name, arguments, and options.
@@ -93,29 +93,29 @@ export class BackupPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackupPolicyState | undefined;
-            resourceInputs["backupRetentionPeriod"] = state ? state.backupRetentionPeriod : undefined;
-            resourceInputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
-            resourceInputs["enableRecoveryPoint"] = state ? state.enableRecoveryPoint : undefined;
-            resourceInputs["preferredBackupPeriod"] = state ? state.preferredBackupPeriod : undefined;
-            resourceInputs["preferredBackupTime"] = state ? state.preferredBackupTime : undefined;
-            resourceInputs["recoveryPointPeriod"] = state ? state.recoveryPointPeriod : undefined;
+            resourceInputs["backupRetentionPeriod"] = state?.backupRetentionPeriod;
+            resourceInputs["dbInstanceId"] = state?.dbInstanceId;
+            resourceInputs["enableRecoveryPoint"] = state?.enableRecoveryPoint;
+            resourceInputs["preferredBackupPeriod"] = state?.preferredBackupPeriod;
+            resourceInputs["preferredBackupTime"] = state?.preferredBackupTime;
+            resourceInputs["recoveryPointPeriod"] = state?.recoveryPointPeriod;
         } else {
             const args = argsOrState as BackupPolicyArgs | undefined;
-            if ((!args || args.dbInstanceId === undefined) && !opts.urn) {
+            if (args?.dbInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceId'");
             }
-            if ((!args || args.preferredBackupPeriod === undefined) && !opts.urn) {
+            if (args?.preferredBackupPeriod === undefined && !opts.urn) {
                 throw new Error("Missing required property 'preferredBackupPeriod'");
             }
-            if ((!args || args.preferredBackupTime === undefined) && !opts.urn) {
+            if (args?.preferredBackupTime === undefined && !opts.urn) {
                 throw new Error("Missing required property 'preferredBackupTime'");
             }
-            resourceInputs["backupRetentionPeriod"] = args ? args.backupRetentionPeriod : undefined;
-            resourceInputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
-            resourceInputs["enableRecoveryPoint"] = args ? args.enableRecoveryPoint : undefined;
-            resourceInputs["preferredBackupPeriod"] = args ? args.preferredBackupPeriod : undefined;
-            resourceInputs["preferredBackupTime"] = args ? args.preferredBackupTime : undefined;
-            resourceInputs["recoveryPointPeriod"] = args ? args.recoveryPointPeriod : undefined;
+            resourceInputs["backupRetentionPeriod"] = args?.backupRetentionPeriod;
+            resourceInputs["dbInstanceId"] = args?.dbInstanceId;
+            resourceInputs["enableRecoveryPoint"] = args?.enableRecoveryPoint;
+            resourceInputs["preferredBackupPeriod"] = args?.preferredBackupPeriod;
+            resourceInputs["preferredBackupTime"] = args?.preferredBackupTime;
+            resourceInputs["recoveryPointPeriod"] = args?.recoveryPointPeriod;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BackupPolicy.__pulumiType, name, resourceInputs, opts);

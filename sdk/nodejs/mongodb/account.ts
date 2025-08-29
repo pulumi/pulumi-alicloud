@@ -46,33 +46,33 @@ export class Account extends pulumi.CustomResource {
      *
      * > **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
      */
-    public readonly accountDescription!: pulumi.Output<string | undefined>;
+    declare public readonly accountDescription: pulumi.Output<string | undefined>;
     /**
      * The new password.
      *
      * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ & * ( ) _ + - =`
      * - The password must be 8 to 32 characters in length.
      */
-    public readonly accountName!: pulumi.Output<string>;
+    declare public readonly accountName: pulumi.Output<string>;
     /**
      * The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ & \* ( ) \_ + - =
      */
-    public readonly accountPassword!: pulumi.Output<string>;
+    declare public readonly accountPassword: pulumi.Output<string>;
     /**
      * The role type of the instance. Value description
      *
      * - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
      * - When the instance type is a replica set, charactertype can be null or pass in normal.
      */
-    public readonly characterType!: pulumi.Output<string>;
+    declare public readonly characterType: pulumi.Output<string>;
     /**
      * The account whose password needs to be reset. Set the value to `root`.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Account Status
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a Account resource with the given unique name, arguments, and options.
@@ -87,28 +87,28 @@ export class Account extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountState | undefined;
-            resourceInputs["accountDescription"] = state ? state.accountDescription : undefined;
-            resourceInputs["accountName"] = state ? state.accountName : undefined;
-            resourceInputs["accountPassword"] = state ? state.accountPassword : undefined;
-            resourceInputs["characterType"] = state ? state.characterType : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["accountDescription"] = state?.accountDescription;
+            resourceInputs["accountName"] = state?.accountName;
+            resourceInputs["accountPassword"] = state?.accountPassword;
+            resourceInputs["characterType"] = state?.characterType;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as AccountArgs | undefined;
-            if ((!args || args.accountName === undefined) && !opts.urn) {
+            if (args?.accountName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountName'");
             }
-            if ((!args || args.accountPassword === undefined) && !opts.urn) {
+            if (args?.accountPassword === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountPassword'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["accountDescription"] = args ? args.accountDescription : undefined;
-            resourceInputs["accountName"] = args ? args.accountName : undefined;
+            resourceInputs["accountDescription"] = args?.accountDescription;
+            resourceInputs["accountName"] = args?.accountName;
             resourceInputs["accountPassword"] = args?.accountPassword ? pulumi.secret(args.accountPassword) : undefined;
-            resourceInputs["characterType"] = args ? args.characterType : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["characterType"] = args?.characterType;
+            resourceInputs["instanceId"] = args?.instanceId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

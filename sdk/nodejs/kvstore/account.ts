@@ -102,43 +102,43 @@ export class Account extends pulumi.CustomResource {
      * * The name can be up to 100 characters in length.
      * * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts) section.
      */
-    public readonly accountName!: pulumi.Output<string>;
+    declare public readonly accountName: pulumi.Output<string>;
     /**
      * The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
      */
-    public readonly accountPassword!: pulumi.Output<string | undefined>;
+    declare public readonly accountPassword: pulumi.Output<string | undefined>;
     /**
      * The privilege of account access database. Default value: `RoleReadWrite` 
      * - `RoleReadOnly`: This value is only for Redis and Memcache
      * - `RoleReadWrite`: This value is only for Redis and Memcache
      */
-    public readonly accountPrivilege!: pulumi.Output<string | undefined>;
+    declare public readonly accountPrivilege: pulumi.Output<string | undefined>;
     /**
      * Privilege type of account.
      * - Normal: Common privilege.
      * Default to Normal.
      */
-    public readonly accountType!: pulumi.Output<string | undefined>;
+    declare public readonly accountType: pulumi.Output<string | undefined>;
     /**
      * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `accountPassword` is filled in, this field will be ignored.
      */
-    public readonly kmsEncryptedPassword!: pulumi.Output<string | undefined>;
+    declare public readonly kmsEncryptedPassword: pulumi.Output<string | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a Tair (Redis OSS-Compatible) And Memcache (KVStore) account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly kmsEncryptionContext: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a Account resource with the given unique name, arguments, and options.
@@ -153,31 +153,31 @@ export class Account extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountState | undefined;
-            resourceInputs["accountName"] = state ? state.accountName : undefined;
-            resourceInputs["accountPassword"] = state ? state.accountPassword : undefined;
-            resourceInputs["accountPrivilege"] = state ? state.accountPrivilege : undefined;
-            resourceInputs["accountType"] = state ? state.accountType : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
-            resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["accountName"] = state?.accountName;
+            resourceInputs["accountPassword"] = state?.accountPassword;
+            resourceInputs["accountPrivilege"] = state?.accountPrivilege;
+            resourceInputs["accountType"] = state?.accountType;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["kmsEncryptedPassword"] = state?.kmsEncryptedPassword;
+            resourceInputs["kmsEncryptionContext"] = state?.kmsEncryptionContext;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as AccountArgs | undefined;
-            if ((!args || args.accountName === undefined) && !opts.urn) {
+            if (args?.accountName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountName'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["accountName"] = args ? args.accountName : undefined;
+            resourceInputs["accountName"] = args?.accountName;
             resourceInputs["accountPassword"] = args?.accountPassword ? pulumi.secret(args.accountPassword) : undefined;
-            resourceInputs["accountPrivilege"] = args ? args.accountPrivilege : undefined;
-            resourceInputs["accountType"] = args ? args.accountType : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
-            resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
+            resourceInputs["accountPrivilege"] = args?.accountPrivilege;
+            resourceInputs["accountType"] = args?.accountType;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["kmsEncryptedPassword"] = args?.kmsEncryptedPassword;
+            resourceInputs["kmsEncryptionContext"] = args?.kmsEncryptionContext;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

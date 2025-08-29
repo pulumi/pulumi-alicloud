@@ -117,23 +117,23 @@ export class EcsNetworkInterfaceAttachment extends pulumi.CustomResource {
     /**
      * The ID of the ECS instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The index of the network card.
      */
-    public readonly networkCardIndex!: pulumi.Output<number | undefined>;
+    declare public readonly networkCardIndex: pulumi.Output<number | undefined>;
     /**
      * The ID of the network interface.
      */
-    public readonly networkInterfaceId!: pulumi.Output<string>;
+    declare public readonly networkInterfaceId: pulumi.Output<string>;
     /**
      * The ID of the trunk network instance.
      */
-    public readonly trunkNetworkInstanceId!: pulumi.Output<string | undefined>;
+    declare public readonly trunkNetworkInstanceId: pulumi.Output<string | undefined>;
     /**
      * The wait for network configuration ready.
      */
-    public readonly waitForNetworkConfigurationReady!: pulumi.Output<boolean | undefined>;
+    declare public readonly waitForNetworkConfigurationReady: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a EcsNetworkInterfaceAttachment resource with the given unique name, arguments, and options.
@@ -148,24 +148,24 @@ export class EcsNetworkInterfaceAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcsNetworkInterfaceAttachmentState | undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["networkCardIndex"] = state ? state.networkCardIndex : undefined;
-            resourceInputs["networkInterfaceId"] = state ? state.networkInterfaceId : undefined;
-            resourceInputs["trunkNetworkInstanceId"] = state ? state.trunkNetworkInstanceId : undefined;
-            resourceInputs["waitForNetworkConfigurationReady"] = state ? state.waitForNetworkConfigurationReady : undefined;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["networkCardIndex"] = state?.networkCardIndex;
+            resourceInputs["networkInterfaceId"] = state?.networkInterfaceId;
+            resourceInputs["trunkNetworkInstanceId"] = state?.trunkNetworkInstanceId;
+            resourceInputs["waitForNetworkConfigurationReady"] = state?.waitForNetworkConfigurationReady;
         } else {
             const args = argsOrState as EcsNetworkInterfaceAttachmentArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.networkInterfaceId === undefined) && !opts.urn) {
+            if (args?.networkInterfaceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkInterfaceId'");
             }
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["networkCardIndex"] = args ? args.networkCardIndex : undefined;
-            resourceInputs["networkInterfaceId"] = args ? args.networkInterfaceId : undefined;
-            resourceInputs["trunkNetworkInstanceId"] = args ? args.trunkNetworkInstanceId : undefined;
-            resourceInputs["waitForNetworkConfigurationReady"] = args ? args.waitForNetworkConfigurationReady : undefined;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["networkCardIndex"] = args?.networkCardIndex;
+            resourceInputs["networkInterfaceId"] = args?.networkInterfaceId;
+            resourceInputs["trunkNetworkInstanceId"] = args?.trunkNetworkInstanceId;
+            resourceInputs["waitForNetworkConfigurationReady"] = args?.waitForNetworkConfigurationReady;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EcsNetworkInterfaceAttachment.__pulumiType, name, resourceInputs, opts);

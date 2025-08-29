@@ -83,51 +83,51 @@ export class PrefixList extends pulumi.CustomResource {
     /**
      * The time when the prefix list was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The CIDR address block list of the prefix list.See the following `Block Entrys`.
      */
-    public readonly entrys!: pulumi.Output<outputs.vpc.PrefixListEntry[] | undefined>;
+    declare public readonly entrys: pulumi.Output<outputs.vpc.PrefixListEntry[] | undefined>;
     /**
      * The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
      */
-    public readonly ipVersion!: pulumi.Output<string>;
+    declare public readonly ipVersion: pulumi.Output<string>;
     /**
      * The maximum number of entries for CIDR address blocks in the prefix list.
      */
-    public readonly maxEntries!: pulumi.Output<number>;
+    declare public readonly maxEntries: pulumi.Output<number>;
     /**
      * The association list information of the prefix list.
      */
-    public /*out*/ readonly prefixListAssociations!: pulumi.Output<outputs.vpc.PrefixListPrefixListAssociation[]>;
+    declare public /*out*/ readonly prefixListAssociations: pulumi.Output<outputs.vpc.PrefixListPrefixListAssociation[]>;
     /**
      * The description of the prefix list.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
      */
-    public readonly prefixListDescription!: pulumi.Output<string | undefined>;
+    declare public readonly prefixListDescription: pulumi.Output<string | undefined>;
     /**
      * The ID of the query Prefix List.
      */
-    public /*out*/ readonly prefixListId!: pulumi.Output<string>;
+    declare public /*out*/ readonly prefixListId: pulumi.Output<string>;
     /**
      * The name of the prefix list. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
      */
-    public readonly prefixListName!: pulumi.Output<string | undefined>;
+    declare public readonly prefixListName: pulumi.Output<string | undefined>;
     /**
      * The ID of the resource group to which the PrefixList belongs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The share type of the prefix list. Value:-**Shared**: indicates that the prefix list is a Shared prefix list.-Null: indicates that the prefix list is not a shared prefix list.
      */
-    public /*out*/ readonly shareType!: pulumi.Output<string>;
+    declare public /*out*/ readonly shareType: pulumi.Output<string>;
     /**
      * Resource attribute fields that represent the status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tags of PrefixList.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a PrefixList resource with the given unique name, arguments, and options.
@@ -142,27 +142,27 @@ export class PrefixList extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PrefixListState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["entrys"] = state ? state.entrys : undefined;
-            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
-            resourceInputs["maxEntries"] = state ? state.maxEntries : undefined;
-            resourceInputs["prefixListAssociations"] = state ? state.prefixListAssociations : undefined;
-            resourceInputs["prefixListDescription"] = state ? state.prefixListDescription : undefined;
-            resourceInputs["prefixListId"] = state ? state.prefixListId : undefined;
-            resourceInputs["prefixListName"] = state ? state.prefixListName : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["shareType"] = state ? state.shareType : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["entrys"] = state?.entrys;
+            resourceInputs["ipVersion"] = state?.ipVersion;
+            resourceInputs["maxEntries"] = state?.maxEntries;
+            resourceInputs["prefixListAssociations"] = state?.prefixListAssociations;
+            resourceInputs["prefixListDescription"] = state?.prefixListDescription;
+            resourceInputs["prefixListId"] = state?.prefixListId;
+            resourceInputs["prefixListName"] = state?.prefixListName;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["shareType"] = state?.shareType;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as PrefixListArgs | undefined;
-            resourceInputs["entrys"] = args ? args.entrys : undefined;
-            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
-            resourceInputs["maxEntries"] = args ? args.maxEntries : undefined;
-            resourceInputs["prefixListDescription"] = args ? args.prefixListDescription : undefined;
-            resourceInputs["prefixListName"] = args ? args.prefixListName : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["entrys"] = args?.entrys;
+            resourceInputs["ipVersion"] = args?.ipVersion;
+            resourceInputs["maxEntries"] = args?.maxEntries;
+            resourceInputs["prefixListDescription"] = args?.prefixListDescription;
+            resourceInputs["prefixListName"] = args?.prefixListName;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["prefixListAssociations"] = undefined /*out*/;
             resourceInputs["prefixListId"] = undefined /*out*/;

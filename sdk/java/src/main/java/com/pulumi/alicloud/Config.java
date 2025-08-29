@@ -19,16 +19,14 @@ public final class Config {
 
     private static final com.pulumi.Config config = com.pulumi.Config.of("alicloud");
 /**
- * The access key for API operations. You can retrieve this from the &#39;Security Management&#39; section of the Alibaba Cloud
- * console.
+ * The access key for API operations. You can retrieve this from the &#39;Security Management&#39; section of the Alibaba Cloud console.
  * 
  */
     public Optional<String> accessKey() {
         return Codegen.stringProp("accessKey").config(config).get();
     }
 /**
- * The account ID for some service API operations. You can retrieve this from the &#39;Security Settings&#39; section of the
- * Alibaba Cloud console.
+ * The account ID for some service API operations. You can retrieve this from the &#39;Security Settings&#39; section of the Alibaba Cloud console.
  * 
  */
     public Optional<String> accountId() {
@@ -68,8 +66,7 @@ public final class Config {
         return Codegen.stringProp("credentialsUri").config(config).get();
     }
 /**
- * The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the &#39;Access Control&#39; section
- * of the Alibaba Cloud console.
+ * The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the &#39;Access Control&#39; section of the Alibaba Cloud console.
  * 
  */
     public Optional<String> ecsRoleName() {
@@ -115,8 +112,7 @@ public final class Config {
         return Codegen.stringProp("region").config(config).env("ALICLOUD_REGION").get();
     }
 /**
- * The secret key for API operations. You can retrieve this from the &#39;Security Management&#39; section of the Alibaba Cloud
- * console.
+ * The secret key for API operations. You can retrieve this from the &#39;Security Management&#39; section of the Alibaba Cloud console.
  * 
  */
     public Optional<String> secretKey() {
@@ -150,8 +146,7 @@ public final class Config {
         return Codegen.objectProp("signVersion", SignVersion.class).config(config).get();
     }
 /**
- * Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
- * that are not public (yet).
+ * Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
  * 
  */
     public Optional<Boolean> skipRegionValidation() {

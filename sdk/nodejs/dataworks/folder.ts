@@ -61,16 +61,16 @@ export class Folder extends pulumi.CustomResource {
         return obj['__pulumiType'] === Folder.__pulumiType;
     }
 
-    public /*out*/ readonly folderId!: pulumi.Output<string>;
+    declare public /*out*/ readonly folderId: pulumi.Output<string>;
     /**
      * Folder Path. The folder path composed with for part: `Business Flow/{Business Flow Name}/[folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined]/{Directory Name}`. The first segment of path must be `Business Flow`, and sencond segment of path must be a Business Flow Name within the project. The third part of path must be one of those keywords:`folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined`. Then the finial part of folder path can be specified in yourself.
      */
-    public readonly folderPath!: pulumi.Output<string>;
+    declare public readonly folderPath: pulumi.Output<string>;
     /**
      * The ID of the project.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
-    public readonly projectIdentifier!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
+    declare public readonly projectIdentifier: pulumi.Output<string | undefined>;
 
     /**
      * Create a Folder resource with the given unique name, arguments, and options.
@@ -85,18 +85,18 @@ export class Folder extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FolderState | undefined;
-            resourceInputs["folderId"] = state ? state.folderId : undefined;
-            resourceInputs["folderPath"] = state ? state.folderPath : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["projectIdentifier"] = state ? state.projectIdentifier : undefined;
+            resourceInputs["folderId"] = state?.folderId;
+            resourceInputs["folderPath"] = state?.folderPath;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["projectIdentifier"] = state?.projectIdentifier;
         } else {
             const args = argsOrState as FolderArgs | undefined;
-            if ((!args || args.folderPath === undefined) && !opts.urn) {
+            if (args?.folderPath === undefined && !opts.urn) {
                 throw new Error("Missing required property 'folderPath'");
             }
-            resourceInputs["folderPath"] = args ? args.folderPath : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["projectIdentifier"] = args ? args.projectIdentifier : undefined;
+            resourceInputs["folderPath"] = args?.folderPath;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["projectIdentifier"] = args?.projectIdentifier;
             resourceInputs["folderId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -89,35 +89,35 @@ export class BgpGroup extends pulumi.CustomResource {
     /**
      * The authentication key of the BGP group.
      */
-    public readonly authKey!: pulumi.Output<string | undefined>;
+    declare public readonly authKey: pulumi.Output<string | undefined>;
     /**
      * The name of the BGP group. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
      */
-    public readonly bgpGroupName!: pulumi.Output<string | undefined>;
+    declare public readonly bgpGroupName: pulumi.Output<string | undefined>;
     /**
      * The description of the BGP group. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The is fake asn. A router that runs BGP typically belongs to only one AS. In some cases, for example, the AS needs to be migrated or is merged with another AS, a new AS number replaces the original one.
      */
-    public readonly isFakeAsn!: pulumi.Output<boolean>;
+    declare public readonly isFakeAsn: pulumi.Output<boolean>;
     /**
      * The AS number on the Alibaba Cloud side.
      */
-    public readonly localAsn!: pulumi.Output<number>;
+    declare public readonly localAsn: pulumi.Output<number>;
     /**
      * The AS number of the BGP peer.
      */
-    public readonly peerAsn!: pulumi.Output<number>;
+    declare public readonly peerAsn: pulumi.Output<number>;
     /**
      * The ID of the VBR.
      */
-    public readonly routerId!: pulumi.Output<string>;
+    declare public readonly routerId: pulumi.Output<string>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a BgpGroup resource with the given unique name, arguments, and options.
@@ -132,29 +132,29 @@ export class BgpGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BgpGroupState | undefined;
-            resourceInputs["authKey"] = state ? state.authKey : undefined;
-            resourceInputs["bgpGroupName"] = state ? state.bgpGroupName : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["isFakeAsn"] = state ? state.isFakeAsn : undefined;
-            resourceInputs["localAsn"] = state ? state.localAsn : undefined;
-            resourceInputs["peerAsn"] = state ? state.peerAsn : undefined;
-            resourceInputs["routerId"] = state ? state.routerId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["authKey"] = state?.authKey;
+            resourceInputs["bgpGroupName"] = state?.bgpGroupName;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["isFakeAsn"] = state?.isFakeAsn;
+            resourceInputs["localAsn"] = state?.localAsn;
+            resourceInputs["peerAsn"] = state?.peerAsn;
+            resourceInputs["routerId"] = state?.routerId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as BgpGroupArgs | undefined;
-            if ((!args || args.peerAsn === undefined) && !opts.urn) {
+            if (args?.peerAsn === undefined && !opts.urn) {
                 throw new Error("Missing required property 'peerAsn'");
             }
-            if ((!args || args.routerId === undefined) && !opts.urn) {
+            if (args?.routerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'routerId'");
             }
-            resourceInputs["authKey"] = args ? args.authKey : undefined;
-            resourceInputs["bgpGroupName"] = args ? args.bgpGroupName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["isFakeAsn"] = args ? args.isFakeAsn : undefined;
-            resourceInputs["localAsn"] = args ? args.localAsn : undefined;
-            resourceInputs["peerAsn"] = args ? args.peerAsn : undefined;
-            resourceInputs["routerId"] = args ? args.routerId : undefined;
+            resourceInputs["authKey"] = args?.authKey;
+            resourceInputs["bgpGroupName"] = args?.bgpGroupName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["isFakeAsn"] = args?.isFakeAsn;
+            resourceInputs["localAsn"] = args?.localAsn;
+            resourceInputs["peerAsn"] = args?.peerAsn;
+            resourceInputs["routerId"] = args?.routerId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

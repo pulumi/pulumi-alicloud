@@ -93,51 +93,51 @@ export class ForwardEntry extends pulumi.CustomResource {
     /**
      * The external ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidthPackages`.
      */
-    public readonly externalIp!: pulumi.Output<string>;
+    declare public readonly externalIp: pulumi.Output<string>;
     /**
      * The external port, valid value is 1~65535|any.
      */
-    public readonly externalPort!: pulumi.Output<string>;
+    declare public readonly externalPort: pulumi.Output<string>;
     /**
      * The id of the forward entry on the server.
      */
-    public /*out*/ readonly forwardEntryId!: pulumi.Output<string>;
+    declare public /*out*/ readonly forwardEntryId: pulumi.Output<string>;
     /**
      * The name of forward entry.
      */
-    public readonly forwardEntryName!: pulumi.Output<string>;
+    declare public readonly forwardEntryName: pulumi.Output<string>;
     /**
      * The value can get from `alicloud.vpc.NatGateway` Attributes "forwardTableIds".
      */
-    public readonly forwardTableId!: pulumi.Output<string>;
+    declare public readonly forwardTableId: pulumi.Output<string>;
     /**
      * The internal ip, must a private ip.
      */
-    public readonly internalIp!: pulumi.Output<string>;
+    declare public readonly internalIp: pulumi.Output<string>;
     /**
      * The internal port, valid value is 1~65535|any.
      */
-    public readonly internalPort!: pulumi.Output<string>;
+    declare public readonly internalPort: pulumi.Output<string>;
     /**
      * The ip protocol, valid value is tcp|udp|any.
      */
-    public readonly ipProtocol!: pulumi.Output<string>;
+    declare public readonly ipProtocol: pulumi.Output<string>;
     /**
      * Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies whether to remove limits on the port range. Default value is `false`.
      *
      * > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `portBreak` to true.
      */
-    public readonly portBreak!: pulumi.Output<boolean | undefined>;
+    declare public readonly portBreak: pulumi.Output<boolean | undefined>;
     /**
      * (Available since v1.119.1) The status of forward entry.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a ForwardEntry resource with the given unique name, arguments, and options.
@@ -152,46 +152,46 @@ export class ForwardEntry extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ForwardEntryState | undefined;
-            resourceInputs["externalIp"] = state ? state.externalIp : undefined;
-            resourceInputs["externalPort"] = state ? state.externalPort : undefined;
-            resourceInputs["forwardEntryId"] = state ? state.forwardEntryId : undefined;
-            resourceInputs["forwardEntryName"] = state ? state.forwardEntryName : undefined;
-            resourceInputs["forwardTableId"] = state ? state.forwardTableId : undefined;
-            resourceInputs["internalIp"] = state ? state.internalIp : undefined;
-            resourceInputs["internalPort"] = state ? state.internalPort : undefined;
-            resourceInputs["ipProtocol"] = state ? state.ipProtocol : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["portBreak"] = state ? state.portBreak : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["externalIp"] = state?.externalIp;
+            resourceInputs["externalPort"] = state?.externalPort;
+            resourceInputs["forwardEntryId"] = state?.forwardEntryId;
+            resourceInputs["forwardEntryName"] = state?.forwardEntryName;
+            resourceInputs["forwardTableId"] = state?.forwardTableId;
+            resourceInputs["internalIp"] = state?.internalIp;
+            resourceInputs["internalPort"] = state?.internalPort;
+            resourceInputs["ipProtocol"] = state?.ipProtocol;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["portBreak"] = state?.portBreak;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as ForwardEntryArgs | undefined;
-            if ((!args || args.externalIp === undefined) && !opts.urn) {
+            if (args?.externalIp === undefined && !opts.urn) {
                 throw new Error("Missing required property 'externalIp'");
             }
-            if ((!args || args.externalPort === undefined) && !opts.urn) {
+            if (args?.externalPort === undefined && !opts.urn) {
                 throw new Error("Missing required property 'externalPort'");
             }
-            if ((!args || args.forwardTableId === undefined) && !opts.urn) {
+            if (args?.forwardTableId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'forwardTableId'");
             }
-            if ((!args || args.internalIp === undefined) && !opts.urn) {
+            if (args?.internalIp === undefined && !opts.urn) {
                 throw new Error("Missing required property 'internalIp'");
             }
-            if ((!args || args.internalPort === undefined) && !opts.urn) {
+            if (args?.internalPort === undefined && !opts.urn) {
                 throw new Error("Missing required property 'internalPort'");
             }
-            if ((!args || args.ipProtocol === undefined) && !opts.urn) {
+            if (args?.ipProtocol === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ipProtocol'");
             }
-            resourceInputs["externalIp"] = args ? args.externalIp : undefined;
-            resourceInputs["externalPort"] = args ? args.externalPort : undefined;
-            resourceInputs["forwardEntryName"] = args ? args.forwardEntryName : undefined;
-            resourceInputs["forwardTableId"] = args ? args.forwardTableId : undefined;
-            resourceInputs["internalIp"] = args ? args.internalIp : undefined;
-            resourceInputs["internalPort"] = args ? args.internalPort : undefined;
-            resourceInputs["ipProtocol"] = args ? args.ipProtocol : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["portBreak"] = args ? args.portBreak : undefined;
+            resourceInputs["externalIp"] = args?.externalIp;
+            resourceInputs["externalPort"] = args?.externalPort;
+            resourceInputs["forwardEntryName"] = args?.forwardEntryName;
+            resourceInputs["forwardTableId"] = args?.forwardTableId;
+            resourceInputs["internalIp"] = args?.internalIp;
+            resourceInputs["internalPort"] = args?.internalPort;
+            resourceInputs["ipProtocol"] = args?.ipProtocol;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["portBreak"] = args?.portBreak;
             resourceInputs["forwardEntryId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

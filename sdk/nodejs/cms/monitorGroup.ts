@@ -70,23 +70,23 @@ export class MonitorGroup extends pulumi.CustomResource {
     /**
      * The alert group to which alert notifications will be sent.
      */
-    public readonly contactGroups!: pulumi.Output<string[] | undefined>;
+    declare public readonly contactGroups: pulumi.Output<string[] | undefined>;
     /**
      * The name of the application group.
      */
-    public readonly monitorGroupName!: pulumi.Output<string>;
+    declare public readonly monitorGroupName: pulumi.Output<string>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly resourceGroupId: pulumi.Output<string | undefined>;
     /**
      * The name of the resource group.
      */
-    public readonly resourceGroupName!: pulumi.Output<string | undefined>;
+    declare public readonly resourceGroupName: pulumi.Output<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a MonitorGroup resource with the given unique name, arguments, and options.
@@ -101,18 +101,18 @@ export class MonitorGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MonitorGroupState | undefined;
-            resourceInputs["contactGroups"] = state ? state.contactGroups : undefined;
-            resourceInputs["monitorGroupName"] = state ? state.monitorGroupName : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["resourceGroupName"] = state ? state.resourceGroupName : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["contactGroups"] = state?.contactGroups;
+            resourceInputs["monitorGroupName"] = state?.monitorGroupName;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["resourceGroupName"] = state?.resourceGroupName;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as MonitorGroupArgs | undefined;
-            resourceInputs["contactGroups"] = args ? args.contactGroups : undefined;
-            resourceInputs["monitorGroupName"] = args ? args.monitorGroupName : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["contactGroups"] = args?.contactGroups;
+            resourceInputs["monitorGroupName"] = args?.monitorGroupName;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MonitorGroup.__pulumiType, name, resourceInputs, opts);

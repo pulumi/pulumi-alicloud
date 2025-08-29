@@ -50,35 +50,35 @@ export class ScheduledTask extends pulumi.CustomResource {
     /**
      * Description of the scheduled task, which is 2-200 characters (English or Chinese) long.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The expected number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group. **NOTE:** You must specify the `DesiredCapacity` parameter when you create the scaling group.
      */
-    public readonly desiredCapacity!: pulumi.Output<number | undefined>;
+    declare public readonly desiredCapacity: pulumi.Output<number | undefined>;
     /**
      * The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 1800, Available since v1.240.0. Default value: 600
      */
-    public readonly launchExpirationTime!: pulumi.Output<number | undefined>;
+    declare public readonly launchExpirationTime: pulumi.Output<number | undefined>;
     /**
      * The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. 
      * The time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.
      * If the `recurrenceType` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.
      * Otherwise, the task is only executed once at the date and time specified by LaunchTime.
      */
-    public readonly launchTime!: pulumi.Output<string | undefined>;
+    declare public readonly launchTime: pulumi.Output<string | undefined>;
     /**
      * The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
      */
-    public readonly maxValue!: pulumi.Output<number | undefined>;
+    declare public readonly maxValue: pulumi.Output<number | undefined>;
     /**
      * The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
      */
-    public readonly minValue!: pulumi.Output<number | undefined>;
+    declare public readonly minValue: pulumi.Output<number | undefined>;
     /**
      * Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. 
      * The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time.
      */
-    public readonly recurrenceEndTime!: pulumi.Output<string>;
+    declare public readonly recurrenceEndTime: pulumi.Output<string>;
     /**
      * Specifies the recurrence type of the scheduled task. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. Valid values:
      * - Daily: The scheduled task is executed once every specified number of days.
@@ -86,7 +86,7 @@ export class ScheduledTask extends pulumi.CustomResource {
      * - Monthly: The scheduled task is executed on each specified day of a month.
      * - Cron: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.
      */
-    public readonly recurrenceType!: pulumi.Output<string>;
+    declare public readonly recurrenceType: pulumi.Output<string>;
     /**
      * Specifies how often a scheduled task recurs. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. The valid value depends on `recurrenceType`
      * - Daily: You can enter one value. Valid values: 1 to 31.
@@ -94,23 +94,23 @@ export class ScheduledTask extends pulumi.CustomResource {
      * - Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.
      * - Cron: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.
      */
-    public readonly recurrenceValue!: pulumi.Output<string>;
+    declare public readonly recurrenceValue: pulumi.Output<string>;
     /**
      * The ID of the scaling group where the number of instances is modified when the scheduled task is triggered. After the `ScalingGroupId` parameter is specified, the scaling method of the scheduled task is to specify the number of instances in a scaling group. You must specify at least one of the following parameters: `MinValue`, `MaxValue`, and `DesiredCapacity`. **NOTE:** You cannot specify `scheduledAction` and `scalingGroupId` at the same time.
      */
-    public readonly scalingGroupId!: pulumi.Output<string>;
+    declare public readonly scalingGroupId: pulumi.Output<string>;
     /**
      * The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule. **NOTE:** You cannot specify `scheduledAction` and `scalingGroupId` at the same time.
      */
-    public readonly scheduledAction!: pulumi.Output<string | undefined>;
+    declare public readonly scheduledAction: pulumi.Output<string | undefined>;
     /**
      * Display name of the scheduled task, which must be 2-40 characters (English or Chinese) long.
      */
-    public readonly scheduledTaskName!: pulumi.Output<string | undefined>;
+    declare public readonly scheduledTaskName: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to start the scheduled task. Default to true.
      */
-    public readonly taskEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly taskEnabled: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a ScheduledTask resource with the given unique name, arguments, and options.
@@ -125,34 +125,34 @@ export class ScheduledTask extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ScheduledTaskState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
-            resourceInputs["launchExpirationTime"] = state ? state.launchExpirationTime : undefined;
-            resourceInputs["launchTime"] = state ? state.launchTime : undefined;
-            resourceInputs["maxValue"] = state ? state.maxValue : undefined;
-            resourceInputs["minValue"] = state ? state.minValue : undefined;
-            resourceInputs["recurrenceEndTime"] = state ? state.recurrenceEndTime : undefined;
-            resourceInputs["recurrenceType"] = state ? state.recurrenceType : undefined;
-            resourceInputs["recurrenceValue"] = state ? state.recurrenceValue : undefined;
-            resourceInputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
-            resourceInputs["scheduledAction"] = state ? state.scheduledAction : undefined;
-            resourceInputs["scheduledTaskName"] = state ? state.scheduledTaskName : undefined;
-            resourceInputs["taskEnabled"] = state ? state.taskEnabled : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["desiredCapacity"] = state?.desiredCapacity;
+            resourceInputs["launchExpirationTime"] = state?.launchExpirationTime;
+            resourceInputs["launchTime"] = state?.launchTime;
+            resourceInputs["maxValue"] = state?.maxValue;
+            resourceInputs["minValue"] = state?.minValue;
+            resourceInputs["recurrenceEndTime"] = state?.recurrenceEndTime;
+            resourceInputs["recurrenceType"] = state?.recurrenceType;
+            resourceInputs["recurrenceValue"] = state?.recurrenceValue;
+            resourceInputs["scalingGroupId"] = state?.scalingGroupId;
+            resourceInputs["scheduledAction"] = state?.scheduledAction;
+            resourceInputs["scheduledTaskName"] = state?.scheduledTaskName;
+            resourceInputs["taskEnabled"] = state?.taskEnabled;
         } else {
             const args = argsOrState as ScheduledTaskArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
-            resourceInputs["launchExpirationTime"] = args ? args.launchExpirationTime : undefined;
-            resourceInputs["launchTime"] = args ? args.launchTime : undefined;
-            resourceInputs["maxValue"] = args ? args.maxValue : undefined;
-            resourceInputs["minValue"] = args ? args.minValue : undefined;
-            resourceInputs["recurrenceEndTime"] = args ? args.recurrenceEndTime : undefined;
-            resourceInputs["recurrenceType"] = args ? args.recurrenceType : undefined;
-            resourceInputs["recurrenceValue"] = args ? args.recurrenceValue : undefined;
-            resourceInputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
-            resourceInputs["scheduledAction"] = args ? args.scheduledAction : undefined;
-            resourceInputs["scheduledTaskName"] = args ? args.scheduledTaskName : undefined;
-            resourceInputs["taskEnabled"] = args ? args.taskEnabled : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["desiredCapacity"] = args?.desiredCapacity;
+            resourceInputs["launchExpirationTime"] = args?.launchExpirationTime;
+            resourceInputs["launchTime"] = args?.launchTime;
+            resourceInputs["maxValue"] = args?.maxValue;
+            resourceInputs["minValue"] = args?.minValue;
+            resourceInputs["recurrenceEndTime"] = args?.recurrenceEndTime;
+            resourceInputs["recurrenceType"] = args?.recurrenceType;
+            resourceInputs["recurrenceValue"] = args?.recurrenceValue;
+            resourceInputs["scalingGroupId"] = args?.scalingGroupId;
+            resourceInputs["scheduledAction"] = args?.scheduledAction;
+            resourceInputs["scheduledTaskName"] = args?.scheduledTaskName;
+            resourceInputs["taskEnabled"] = args?.taskEnabled;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ScheduledTask.__pulumiType, name, resourceInputs, opts);

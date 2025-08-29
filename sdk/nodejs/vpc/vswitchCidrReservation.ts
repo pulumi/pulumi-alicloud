@@ -83,47 +83,47 @@ export class VswitchCidrReservation extends pulumi.CustomResource {
     /**
      * Reserved network segment CIdrBlock.
      */
-    public readonly cidrReservationCidr!: pulumi.Output<string>;
+    declare public readonly cidrReservationCidr: pulumi.Output<string>;
     /**
      * The description of the reserved CIDR block.
      */
-    public readonly cidrReservationDescription!: pulumi.Output<string | undefined>;
+    declare public readonly cidrReservationDescription: pulumi.Output<string | undefined>;
     /**
      * Reserved segment mask.
      */
-    public readonly cidrReservationMask!: pulumi.Output<string | undefined>;
+    declare public readonly cidrReservationMask: pulumi.Output<string | undefined>;
     /**
      * Reserved CIDR Block Type.Valid values: `Prefix`. Default value: Prefix.
      */
-    public readonly cidrReservationType!: pulumi.Output<string>;
+    declare public readonly cidrReservationType: pulumi.Output<string>;
     /**
      * The creation time of the resource.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Reserved ip version of network segment, valid values: `IPv4`, `IPv6`, default IPv4.
      */
-    public readonly ipVersion!: pulumi.Output<string>;
+    declare public readonly ipVersion: pulumi.Output<string>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The id of the vpc instance to which the reserved CIDR block belongs.
      */
-    public /*out*/ readonly vpcId!: pulumi.Output<string>;
+    declare public /*out*/ readonly vpcId: pulumi.Output<string>;
     /**
      * The resource attribute field of the resource ID.
      */
-    public /*out*/ readonly vswitchCidrReservationId!: pulumi.Output<string>;
+    declare public /*out*/ readonly vswitchCidrReservationId: pulumi.Output<string>;
     /**
      * The name of the resource.
      */
-    public readonly vswitchCidrReservationName!: pulumi.Output<string | undefined>;
+    declare public readonly vswitchCidrReservationName: pulumi.Output<string | undefined>;
     /**
      * The Id of the switch instance.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
 
     /**
      * Create a VswitchCidrReservation resource with the given unique name, arguments, and options.
@@ -138,29 +138,29 @@ export class VswitchCidrReservation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VswitchCidrReservationState | undefined;
-            resourceInputs["cidrReservationCidr"] = state ? state.cidrReservationCidr : undefined;
-            resourceInputs["cidrReservationDescription"] = state ? state.cidrReservationDescription : undefined;
-            resourceInputs["cidrReservationMask"] = state ? state.cidrReservationMask : undefined;
-            resourceInputs["cidrReservationType"] = state ? state.cidrReservationType : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchCidrReservationId"] = state ? state.vswitchCidrReservationId : undefined;
-            resourceInputs["vswitchCidrReservationName"] = state ? state.vswitchCidrReservationName : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["cidrReservationCidr"] = state?.cidrReservationCidr;
+            resourceInputs["cidrReservationDescription"] = state?.cidrReservationDescription;
+            resourceInputs["cidrReservationMask"] = state?.cidrReservationMask;
+            resourceInputs["cidrReservationType"] = state?.cidrReservationType;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["ipVersion"] = state?.ipVersion;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchCidrReservationId"] = state?.vswitchCidrReservationId;
+            resourceInputs["vswitchCidrReservationName"] = state?.vswitchCidrReservationName;
+            resourceInputs["vswitchId"] = state?.vswitchId;
         } else {
             const args = argsOrState as VswitchCidrReservationArgs | undefined;
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+            if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            resourceInputs["cidrReservationCidr"] = args ? args.cidrReservationCidr : undefined;
-            resourceInputs["cidrReservationDescription"] = args ? args.cidrReservationDescription : undefined;
-            resourceInputs["cidrReservationMask"] = args ? args.cidrReservationMask : undefined;
-            resourceInputs["cidrReservationType"] = args ? args.cidrReservationType : undefined;
-            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
-            resourceInputs["vswitchCidrReservationName"] = args ? args.vswitchCidrReservationName : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["cidrReservationCidr"] = args?.cidrReservationCidr;
+            resourceInputs["cidrReservationDescription"] = args?.cidrReservationDescription;
+            resourceInputs["cidrReservationMask"] = args?.cidrReservationMask;
+            resourceInputs["cidrReservationType"] = args?.cidrReservationType;
+            resourceInputs["ipVersion"] = args?.ipVersion;
+            resourceInputs["vswitchCidrReservationName"] = args?.vswitchCidrReservationName;
+            resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["vpcId"] = undefined /*out*/;

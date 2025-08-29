@@ -84,32 +84,32 @@ export class IpSet extends pulumi.CustomResource {
     /**
      * The ID of an acceleration region.
      */
-    public readonly accelerateRegionId!: pulumi.Output<string>;
+    declare public readonly accelerateRegionId: pulumi.Output<string>;
     /**
      * The ID of the Global Accelerator (GA) instance.
      */
-    public readonly acceleratorId!: pulumi.Output<string>;
+    declare public readonly acceleratorId: pulumi.Output<string>;
     /**
      * The bandwidth allocated to the acceleration region.
      * > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
      */
-    public readonly bandwidth!: pulumi.Output<number | undefined>;
+    declare public readonly bandwidth: pulumi.Output<number | undefined>;
     /**
      * The list of accelerated IP addresses in the acceleration region.
      */
-    public /*out*/ readonly ipAddressLists!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly ipAddressLists: pulumi.Output<string[]>;
     /**
      * The IP protocol used by the GA instance. Default value: `IPv4`. Valid values: `IPv4`, `IPv6`, `DUAL_STACK`. **NOTE:** From version 1.220.0, `ipVersion` can be set to `DUAL_STACK`.
      */
-    public readonly ipVersion!: pulumi.Output<string>;
+    declare public readonly ipVersion: pulumi.Output<string>;
     /**
      * The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
      */
-    public readonly ispType!: pulumi.Output<string | undefined>;
+    declare public readonly ispType: pulumi.Output<string | undefined>;
     /**
      * The status of the acceleration region.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a IpSet resource with the given unique name, arguments, and options.
@@ -124,26 +124,26 @@ export class IpSet extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IpSetState | undefined;
-            resourceInputs["accelerateRegionId"] = state ? state.accelerateRegionId : undefined;
-            resourceInputs["acceleratorId"] = state ? state.acceleratorId : undefined;
-            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
-            resourceInputs["ipAddressLists"] = state ? state.ipAddressLists : undefined;
-            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
-            resourceInputs["ispType"] = state ? state.ispType : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["accelerateRegionId"] = state?.accelerateRegionId;
+            resourceInputs["acceleratorId"] = state?.acceleratorId;
+            resourceInputs["bandwidth"] = state?.bandwidth;
+            resourceInputs["ipAddressLists"] = state?.ipAddressLists;
+            resourceInputs["ipVersion"] = state?.ipVersion;
+            resourceInputs["ispType"] = state?.ispType;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as IpSetArgs | undefined;
-            if ((!args || args.accelerateRegionId === undefined) && !opts.urn) {
+            if (args?.accelerateRegionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accelerateRegionId'");
             }
-            if ((!args || args.acceleratorId === undefined) && !opts.urn) {
+            if (args?.acceleratorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'acceleratorId'");
             }
-            resourceInputs["accelerateRegionId"] = args ? args.accelerateRegionId : undefined;
-            resourceInputs["acceleratorId"] = args ? args.acceleratorId : undefined;
-            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
-            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
-            resourceInputs["ispType"] = args ? args.ispType : undefined;
+            resourceInputs["accelerateRegionId"] = args?.accelerateRegionId;
+            resourceInputs["acceleratorId"] = args?.acceleratorId;
+            resourceInputs["bandwidth"] = args?.bandwidth;
+            resourceInputs["ipVersion"] = args?.ipVersion;
+            resourceInputs["ispType"] = args?.ispType;
             resourceInputs["ipAddressLists"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

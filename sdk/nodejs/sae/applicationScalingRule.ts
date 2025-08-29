@@ -157,35 +157,35 @@ export class ApplicationScalingRule extends pulumi.CustomResource {
     /**
      * Application ID.
      */
-    public readonly appId!: pulumi.Output<string>;
+    declare public readonly appId: pulumi.Output<string>;
     /**
      * The min ready instance ratio.
      */
-    public readonly minReadyInstanceRatio!: pulumi.Output<number | undefined>;
+    declare public readonly minReadyInstanceRatio: pulumi.Output<number | undefined>;
     /**
      * The min ready instances.
      */
-    public readonly minReadyInstances!: pulumi.Output<number | undefined>;
+    declare public readonly minReadyInstances: pulumi.Output<number | undefined>;
     /**
      * True whether the auto scaling policy is enabled. The value description is as follows: true: enabled state. false: disabled status. Valid values: `false`, `true`.
      */
-    public readonly scalingRuleEnable!: pulumi.Output<boolean>;
+    declare public readonly scalingRuleEnable: pulumi.Output<boolean>;
     /**
      * Monitor the configuration of the indicator elasticity strategy. See `scalingRuleMetric` below.
      */
-    public readonly scalingRuleMetric!: pulumi.Output<outputs.sae.ApplicationScalingRuleScalingRuleMetric | undefined>;
+    declare public readonly scalingRuleMetric: pulumi.Output<outputs.sae.ApplicationScalingRuleScalingRuleMetric | undefined>;
     /**
      * The name of a custom elastic scaling policy. In the application, the policy name cannot be repeated. It must start with a lowercase letter, and can only contain lowercase letters, numbers, and dashes (-), and no more than 32 characters. After the scaling policy is successfully created, the policy name cannot be modified.
      */
-    public readonly scalingRuleName!: pulumi.Output<string>;
+    declare public readonly scalingRuleName: pulumi.Output<string>;
     /**
      * Configuration of Timing Resilient Policies. See `scalingRuleTimer` below.
      */
-    public readonly scalingRuleTimer!: pulumi.Output<outputs.sae.ApplicationScalingRuleScalingRuleTimer | undefined>;
+    declare public readonly scalingRuleTimer: pulumi.Output<outputs.sae.ApplicationScalingRuleScalingRuleTimer | undefined>;
     /**
      * Flexible strategy type. Valid values: `mix`, `timing` and `metric`.
      */
-    public readonly scalingRuleType!: pulumi.Output<string>;
+    declare public readonly scalingRuleType: pulumi.Output<string>;
 
     /**
      * Create a ApplicationScalingRule resource with the given unique name, arguments, and options.
@@ -200,33 +200,33 @@ export class ApplicationScalingRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationScalingRuleState | undefined;
-            resourceInputs["appId"] = state ? state.appId : undefined;
-            resourceInputs["minReadyInstanceRatio"] = state ? state.minReadyInstanceRatio : undefined;
-            resourceInputs["minReadyInstances"] = state ? state.minReadyInstances : undefined;
-            resourceInputs["scalingRuleEnable"] = state ? state.scalingRuleEnable : undefined;
-            resourceInputs["scalingRuleMetric"] = state ? state.scalingRuleMetric : undefined;
-            resourceInputs["scalingRuleName"] = state ? state.scalingRuleName : undefined;
-            resourceInputs["scalingRuleTimer"] = state ? state.scalingRuleTimer : undefined;
-            resourceInputs["scalingRuleType"] = state ? state.scalingRuleType : undefined;
+            resourceInputs["appId"] = state?.appId;
+            resourceInputs["minReadyInstanceRatio"] = state?.minReadyInstanceRatio;
+            resourceInputs["minReadyInstances"] = state?.minReadyInstances;
+            resourceInputs["scalingRuleEnable"] = state?.scalingRuleEnable;
+            resourceInputs["scalingRuleMetric"] = state?.scalingRuleMetric;
+            resourceInputs["scalingRuleName"] = state?.scalingRuleName;
+            resourceInputs["scalingRuleTimer"] = state?.scalingRuleTimer;
+            resourceInputs["scalingRuleType"] = state?.scalingRuleType;
         } else {
             const args = argsOrState as ApplicationScalingRuleArgs | undefined;
-            if ((!args || args.appId === undefined) && !opts.urn) {
+            if (args?.appId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            if ((!args || args.scalingRuleName === undefined) && !opts.urn) {
+            if (args?.scalingRuleName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scalingRuleName'");
             }
-            if ((!args || args.scalingRuleType === undefined) && !opts.urn) {
+            if (args?.scalingRuleType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scalingRuleType'");
             }
-            resourceInputs["appId"] = args ? args.appId : undefined;
-            resourceInputs["minReadyInstanceRatio"] = args ? args.minReadyInstanceRatio : undefined;
-            resourceInputs["minReadyInstances"] = args ? args.minReadyInstances : undefined;
-            resourceInputs["scalingRuleEnable"] = args ? args.scalingRuleEnable : undefined;
-            resourceInputs["scalingRuleMetric"] = args ? args.scalingRuleMetric : undefined;
-            resourceInputs["scalingRuleName"] = args ? args.scalingRuleName : undefined;
-            resourceInputs["scalingRuleTimer"] = args ? args.scalingRuleTimer : undefined;
-            resourceInputs["scalingRuleType"] = args ? args.scalingRuleType : undefined;
+            resourceInputs["appId"] = args?.appId;
+            resourceInputs["minReadyInstanceRatio"] = args?.minReadyInstanceRatio;
+            resourceInputs["minReadyInstances"] = args?.minReadyInstances;
+            resourceInputs["scalingRuleEnable"] = args?.scalingRuleEnable;
+            resourceInputs["scalingRuleMetric"] = args?.scalingRuleMetric;
+            resourceInputs["scalingRuleName"] = args?.scalingRuleName;
+            resourceInputs["scalingRuleTimer"] = args?.scalingRuleTimer;
+            resourceInputs["scalingRuleType"] = args?.scalingRuleType;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApplicationScalingRule.__pulumiType, name, resourceInputs, opts);

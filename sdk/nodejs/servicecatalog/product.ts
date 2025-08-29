@@ -70,23 +70,23 @@ export class Product extends pulumi.CustomResource {
     /**
      * The creation time of the product
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The description of the product
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of the product
      */
-    public readonly productName!: pulumi.Output<string>;
+    declare public readonly productName: pulumi.Output<string>;
     /**
      * The type of the product
      */
-    public readonly productType!: pulumi.Output<string>;
+    declare public readonly productType: pulumi.Output<string>;
     /**
      * The provider name of the product
      */
-    public readonly providerName!: pulumi.Output<string>;
+    declare public readonly providerName: pulumi.Output<string>;
 
     /**
      * Create a Product resource with the given unique name, arguments, and options.
@@ -101,26 +101,26 @@ export class Product extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProductState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["productName"] = state ? state.productName : undefined;
-            resourceInputs["productType"] = state ? state.productType : undefined;
-            resourceInputs["providerName"] = state ? state.providerName : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["productName"] = state?.productName;
+            resourceInputs["productType"] = state?.productType;
+            resourceInputs["providerName"] = state?.providerName;
         } else {
             const args = argsOrState as ProductArgs | undefined;
-            if ((!args || args.productName === undefined) && !opts.urn) {
+            if (args?.productName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'productName'");
             }
-            if ((!args || args.productType === undefined) && !opts.urn) {
+            if (args?.productType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'productType'");
             }
-            if ((!args || args.providerName === undefined) && !opts.urn) {
+            if (args?.providerName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'providerName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["productName"] = args ? args.productName : undefined;
-            resourceInputs["productType"] = args ? args.productType : undefined;
-            resourceInputs["providerName"] = args ? args.providerName : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["productName"] = args?.productName;
+            resourceInputs["productType"] = args?.productType;
+            resourceInputs["providerName"] = args?.providerName;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

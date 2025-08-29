@@ -98,11 +98,11 @@ export class EipInstanceAttachment extends pulumi.CustomResource {
     /**
      * The first ID of the resource
      */
-    public readonly allocationId!: pulumi.Output<string>;
+    declare public readonly allocationId: pulumi.Output<string>;
     /**
      * Instance ID
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The type of the EIP instance. Value:
      * - `Nat`:NAT gateway.
@@ -110,17 +110,17 @@ export class EipInstanceAttachment extends pulumi.CustomResource {
      * - `NetworkInterface`: Secondary ENI.
      * - `EnsInstance` (default): The ENS instance.
      */
-    public readonly instanceType!: pulumi.Output<string>;
+    declare public readonly instanceType: pulumi.Output<string>;
     /**
      * Indicates whether the EIP is a backup EIP. Value:
      * - true: Spare.
      * - false: not standby.
      */
-    public readonly standby!: pulumi.Output<boolean | undefined>;
+    declare public readonly standby: pulumi.Output<boolean | undefined>;
     /**
      * The status of the EIP.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a EipInstanceAttachment resource with the given unique name, arguments, and options.
@@ -135,23 +135,23 @@ export class EipInstanceAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EipInstanceAttachmentState | undefined;
-            resourceInputs["allocationId"] = state ? state.allocationId : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["standby"] = state ? state.standby : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["allocationId"] = state?.allocationId;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["standby"] = state?.standby;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as EipInstanceAttachmentArgs | undefined;
-            if ((!args || args.allocationId === undefined) && !opts.urn) {
+            if (args?.allocationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'allocationId'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["allocationId"] = args ? args.allocationId : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["standby"] = args ? args.standby : undefined;
+            resourceInputs["allocationId"] = args?.allocationId;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["standby"] = args?.standby;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

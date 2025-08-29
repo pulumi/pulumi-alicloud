@@ -50,14 +50,14 @@ export class NetworkInterfaceAttachment extends pulumi.CustomResource {
     /**
      * The instance ID to attach.
      */
-    public readonly instanceId!: pulumi.Output<string>;
-    public readonly networkCardIndex!: pulumi.Output<number | undefined>;
+    declare public readonly instanceId: pulumi.Output<string>;
+    declare public readonly networkCardIndex: pulumi.Output<number | undefined>;
     /**
      * The ENI ID to attach.
      */
-    public readonly networkInterfaceId!: pulumi.Output<string>;
-    public readonly trunkNetworkInstanceId!: pulumi.Output<string | undefined>;
-    public readonly waitForNetworkConfigurationReady!: pulumi.Output<boolean | undefined>;
+    declare public readonly networkInterfaceId: pulumi.Output<string>;
+    declare public readonly trunkNetworkInstanceId: pulumi.Output<string | undefined>;
+    declare public readonly waitForNetworkConfigurationReady: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a NetworkInterfaceAttachment resource with the given unique name, arguments, and options.
@@ -72,24 +72,24 @@ export class NetworkInterfaceAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkInterfaceAttachmentState | undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["networkCardIndex"] = state ? state.networkCardIndex : undefined;
-            resourceInputs["networkInterfaceId"] = state ? state.networkInterfaceId : undefined;
-            resourceInputs["trunkNetworkInstanceId"] = state ? state.trunkNetworkInstanceId : undefined;
-            resourceInputs["waitForNetworkConfigurationReady"] = state ? state.waitForNetworkConfigurationReady : undefined;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["networkCardIndex"] = state?.networkCardIndex;
+            resourceInputs["networkInterfaceId"] = state?.networkInterfaceId;
+            resourceInputs["trunkNetworkInstanceId"] = state?.trunkNetworkInstanceId;
+            resourceInputs["waitForNetworkConfigurationReady"] = state?.waitForNetworkConfigurationReady;
         } else {
             const args = argsOrState as NetworkInterfaceAttachmentArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.networkInterfaceId === undefined) && !opts.urn) {
+            if (args?.networkInterfaceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkInterfaceId'");
             }
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["networkCardIndex"] = args ? args.networkCardIndex : undefined;
-            resourceInputs["networkInterfaceId"] = args ? args.networkInterfaceId : undefined;
-            resourceInputs["trunkNetworkInstanceId"] = args ? args.trunkNetworkInstanceId : undefined;
-            resourceInputs["waitForNetworkConfigurationReady"] = args ? args.waitForNetworkConfigurationReady : undefined;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["networkCardIndex"] = args?.networkCardIndex;
+            resourceInputs["networkInterfaceId"] = args?.networkInterfaceId;
+            resourceInputs["trunkNetworkInstanceId"] = args?.trunkNetworkInstanceId;
+            resourceInputs["waitForNetworkConfigurationReady"] = args?.waitForNetworkConfigurationReady;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(NetworkInterfaceAttachment.__pulumiType, name, resourceInputs, opts);

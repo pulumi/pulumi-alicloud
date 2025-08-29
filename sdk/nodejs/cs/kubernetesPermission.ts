@@ -49,11 +49,11 @@ export class KubernetesPermission extends pulumi.CustomResource {
     /**
      * A list of user permission. See `permissions` below.
      */
-    public readonly permissions!: pulumi.Output<outputs.cs.KubernetesPermissionPermission[] | undefined>;
+    declare public readonly permissions: pulumi.Output<outputs.cs.KubernetesPermissionPermission[] | undefined>;
     /**
      * The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `isRamRole` to `true` during authorization.
      */
-    public readonly uid!: pulumi.Output<string>;
+    declare public readonly uid: pulumi.Output<string>;
 
     /**
      * Create a KubernetesPermission resource with the given unique name, arguments, and options.
@@ -68,15 +68,15 @@ export class KubernetesPermission extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KubernetesPermissionState | undefined;
-            resourceInputs["permissions"] = state ? state.permissions : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
+            resourceInputs["permissions"] = state?.permissions;
+            resourceInputs["uid"] = state?.uid;
         } else {
             const args = argsOrState as KubernetesPermissionArgs | undefined;
-            if ((!args || args.uid === undefined) && !opts.urn) {
+            if (args?.uid === undefined && !opts.urn) {
                 throw new Error("Missing required property 'uid'");
             }
-            resourceInputs["permissions"] = args ? args.permissions : undefined;
-            resourceInputs["uid"] = args ? args.uid : undefined;
+            resourceInputs["permissions"] = args?.permissions;
+            resourceInputs["uid"] = args?.uid;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(KubernetesPermission.__pulumiType, name, resourceInputs, opts);

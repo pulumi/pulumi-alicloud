@@ -88,31 +88,31 @@ export class BucketCname extends pulumi.CustomResource {
     /**
      * The bucket to which the custom domain name belongs
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * The container for the certificate configuration. See `certificate` below.
      */
-    public readonly certificate!: pulumi.Output<outputs.oss.BucketCnameCertificate | undefined>;
+    declare public readonly certificate: pulumi.Output<outputs.oss.BucketCnameCertificate | undefined>;
     /**
      * Whether to delete the certificate.
      */
-    public readonly deleteCertificate!: pulumi.Output<boolean | undefined>;
+    declare public readonly deleteCertificate: pulumi.Output<boolean | undefined>;
     /**
      * User-defined domain name
      */
-    public readonly domain!: pulumi.Output<string>;
+    declare public readonly domain: pulumi.Output<string>;
     /**
      * Whether to force overwrite certificate.
      */
-    public readonly force!: pulumi.Output<boolean | undefined>;
+    declare public readonly force: pulumi.Output<boolean | undefined>;
     /**
      * The current certificate ID. If the Force value is not true, the OSS Server checks whether the value matches the current certificate ID. If the value does not match, an error is reported.
      */
-    public readonly previousCertId!: pulumi.Output<string | undefined>;
+    declare public readonly previousCertId: pulumi.Output<string | undefined>;
     /**
      * Cname status
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a BucketCname resource with the given unique name, arguments, and options.
@@ -127,27 +127,27 @@ export class BucketCname extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketCnameState | undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["certificate"] = state ? state.certificate : undefined;
-            resourceInputs["deleteCertificate"] = state ? state.deleteCertificate : undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["force"] = state ? state.force : undefined;
-            resourceInputs["previousCertId"] = state ? state.previousCertId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["certificate"] = state?.certificate;
+            resourceInputs["deleteCertificate"] = state?.deleteCertificate;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["force"] = state?.force;
+            resourceInputs["previousCertId"] = state?.previousCertId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as BucketCnameArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if ((!args || args.domain === undefined) && !opts.urn) {
+            if (args?.domain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domain'");
             }
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["certificate"] = args ? args.certificate : undefined;
-            resourceInputs["deleteCertificate"] = args ? args.deleteCertificate : undefined;
-            resourceInputs["domain"] = args ? args.domain : undefined;
-            resourceInputs["force"] = args ? args.force : undefined;
-            resourceInputs["previousCertId"] = args ? args.previousCertId : undefined;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["certificate"] = args?.certificate;
+            resourceInputs["deleteCertificate"] = args?.deleteCertificate;
+            resourceInputs["domain"] = args?.domain;
+            resourceInputs["force"] = args?.force;
+            resourceInputs["previousCertId"] = args?.previousCertId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

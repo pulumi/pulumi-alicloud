@@ -52,39 +52,39 @@ export class AScript extends pulumi.CustomResource {
     /**
      * AScript name.
      */
-    public readonly ascriptName!: pulumi.Output<string>;
+    declare public readonly ascriptName: pulumi.Output<string>;
     /**
      * Whether to PreCheck only this request
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * Whether AScript is enabled.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * Whether extension parameters are enabled. When ExtAttributeEnabled is true, ExtAttributes must be set.
      */
-    public readonly extAttributeEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly extAttributeEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `extAttributes` below.
      */
-    public readonly extAttributes!: pulumi.Output<outputs.alb.AScriptExtAttribute[] | undefined>;
+    declare public readonly extAttributes: pulumi.Output<outputs.alb.AScriptExtAttribute[] | undefined>;
     /**
      * Listener ID of script attribution
      */
-    public readonly listenerId!: pulumi.Output<string>;
+    declare public readonly listenerId: pulumi.Output<string>;
     /**
      * Script execution location.
      */
-    public readonly position!: pulumi.Output<string>;
+    declare public readonly position: pulumi.Output<string>;
     /**
      * AScript script content.
      */
-    public readonly scriptContent!: pulumi.Output<string>;
+    declare public readonly scriptContent: pulumi.Output<string>;
     /**
      * Script status
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a AScript resource with the given unique name, arguments, and options.
@@ -99,37 +99,37 @@ export class AScript extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AScriptState | undefined;
-            resourceInputs["ascriptName"] = state ? state.ascriptName : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["extAttributeEnabled"] = state ? state.extAttributeEnabled : undefined;
-            resourceInputs["extAttributes"] = state ? state.extAttributes : undefined;
-            resourceInputs["listenerId"] = state ? state.listenerId : undefined;
-            resourceInputs["position"] = state ? state.position : undefined;
-            resourceInputs["scriptContent"] = state ? state.scriptContent : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["ascriptName"] = state?.ascriptName;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["extAttributeEnabled"] = state?.extAttributeEnabled;
+            resourceInputs["extAttributes"] = state?.extAttributes;
+            resourceInputs["listenerId"] = state?.listenerId;
+            resourceInputs["position"] = state?.position;
+            resourceInputs["scriptContent"] = state?.scriptContent;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as AScriptArgs | undefined;
-            if ((!args || args.ascriptName === undefined) && !opts.urn) {
+            if (args?.ascriptName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ascriptName'");
             }
-            if ((!args || args.listenerId === undefined) && !opts.urn) {
+            if (args?.listenerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'listenerId'");
             }
-            if ((!args || args.position === undefined) && !opts.urn) {
+            if (args?.position === undefined && !opts.urn) {
                 throw new Error("Missing required property 'position'");
             }
-            if ((!args || args.scriptContent === undefined) && !opts.urn) {
+            if (args?.scriptContent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scriptContent'");
             }
-            resourceInputs["ascriptName"] = args ? args.ascriptName : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["extAttributeEnabled"] = args ? args.extAttributeEnabled : undefined;
-            resourceInputs["extAttributes"] = args ? args.extAttributes : undefined;
-            resourceInputs["listenerId"] = args ? args.listenerId : undefined;
-            resourceInputs["position"] = args ? args.position : undefined;
-            resourceInputs["scriptContent"] = args ? args.scriptContent : undefined;
+            resourceInputs["ascriptName"] = args?.ascriptName;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["extAttributeEnabled"] = args?.extAttributeEnabled;
+            resourceInputs["extAttributes"] = args?.extAttributes;
+            resourceInputs["listenerId"] = args?.listenerId;
+            resourceInputs["position"] = args?.position;
+            resourceInputs["scriptContent"] = args?.scriptContent;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -116,31 +116,31 @@ export class ReadWriteSplittingConnection extends pulumi.CustomResource {
     /**
      * Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + 'rw'.
      */
-    public readonly connectionPrefix!: pulumi.Output<string | undefined>;
+    declare public readonly connectionPrefix: pulumi.Output<string | undefined>;
     /**
      * Connection instance string.
      */
-    public /*out*/ readonly connectionString!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectionString: pulumi.Output<string>;
     /**
      * Read weight distribution mode. Values are as follows: `Standard` indicates automatic weight distribution based on types, `Custom` indicates custom weight distribution.
      */
-    public readonly distributionType!: pulumi.Output<string>;
+    declare public readonly distributionType: pulumi.Output<string>;
     /**
      * The Id of instance that can run database.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.
      */
-    public readonly maxDelayTime!: pulumi.Output<number>;
+    declare public readonly maxDelayTime: pulumi.Output<number>;
     /**
      * Intranet connection port. Valid value: [3001-3999]. Default to 3306.
      */
-    public readonly port!: pulumi.Output<number>;
+    declare public readonly port: pulumi.Output<number>;
     /**
      * Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distributionType is set to Custom.
      */
-    public readonly weight!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly weight: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a ReadWriteSplittingConnection resource with the given unique name, arguments, and options.
@@ -155,27 +155,27 @@ export class ReadWriteSplittingConnection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ReadWriteSplittingConnectionState | undefined;
-            resourceInputs["connectionPrefix"] = state ? state.connectionPrefix : undefined;
-            resourceInputs["connectionString"] = state ? state.connectionString : undefined;
-            resourceInputs["distributionType"] = state ? state.distributionType : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["maxDelayTime"] = state ? state.maxDelayTime : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["weight"] = state ? state.weight : undefined;
+            resourceInputs["connectionPrefix"] = state?.connectionPrefix;
+            resourceInputs["connectionString"] = state?.connectionString;
+            resourceInputs["distributionType"] = state?.distributionType;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["maxDelayTime"] = state?.maxDelayTime;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["weight"] = state?.weight;
         } else {
             const args = argsOrState as ReadWriteSplittingConnectionArgs | undefined;
-            if ((!args || args.distributionType === undefined) && !opts.urn) {
+            if (args?.distributionType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'distributionType'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["connectionPrefix"] = args ? args.connectionPrefix : undefined;
-            resourceInputs["distributionType"] = args ? args.distributionType : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["maxDelayTime"] = args ? args.maxDelayTime : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["weight"] = args ? args.weight : undefined;
+            resourceInputs["connectionPrefix"] = args?.connectionPrefix;
+            resourceInputs["distributionType"] = args?.distributionType;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["maxDelayTime"] = args?.maxDelayTime;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["weight"] = args?.weight;
             resourceInputs["connectionString"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

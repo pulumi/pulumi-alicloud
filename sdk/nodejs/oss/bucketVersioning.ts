@@ -44,11 +44,11 @@ export class BucketVersioning extends pulumi.CustomResource {
     /**
      * The name of the bucket.
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * A bucket can be in one of the following versioning states: disabled, enabled, or suspended. By default, versioning is disabled for a bucket. Updating the value from Enabled or Suspended to Disabled will result in errors, because OSS does not support returning buckets to an unversioned state. .
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
 
     /**
      * Create a BucketVersioning resource with the given unique name, arguments, and options.
@@ -63,15 +63,15 @@ export class BucketVersioning extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketVersioningState | undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as BucketVersioningArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["status"] = args?.status;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BucketVersioning.__pulumiType, name, resourceInputs, opts);

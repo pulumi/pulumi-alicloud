@@ -66,11 +66,11 @@ export class SecurityGroup extends pulumi.CustomResource {
     /**
      * Security group description informationIt must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
      */
-    public readonly securityGroupName!: pulumi.Output<string | undefined>;
+    declare public readonly securityGroupName: pulumi.Output<string | undefined>;
 
     /**
      * Create a SecurityGroup resource with the given unique name, arguments, and options.
@@ -85,12 +85,12 @@ export class SecurityGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecurityGroupState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["securityGroupName"] = state ? state.securityGroupName : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["securityGroupName"] = state?.securityGroupName;
         } else {
             const args = argsOrState as SecurityGroupArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["securityGroupName"] = args ? args.securityGroupName : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["securityGroupName"] = args?.securityGroupName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SecurityGroup.__pulumiType, name, resourceInputs, opts);

@@ -77,55 +77,55 @@ export class HoneypotProbe extends pulumi.CustomResource {
     /**
      * ARP spoofing detection.**true**: Enable **false**: Disabled
      */
-    public readonly arp!: pulumi.Output<boolean | undefined>;
+    declare public readonly arp: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the management node.
      */
-    public readonly controlNodeId!: pulumi.Output<string>;
+    declare public readonly controlNodeId: pulumi.Output<string>;
     /**
      * Probe display name.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Configure the service.See the following `Block HoneypotBindList`.
      */
-    public readonly honeypotBindLists!: pulumi.Output<outputs.threatdetection.HoneypotProbeHoneypotBindList[] | undefined>;
+    declare public readonly honeypotBindLists: pulumi.Output<outputs.threatdetection.HoneypotProbeHoneypotBindList[] | undefined>;
     /**
      * The first ID of the resource
      */
-    public /*out*/ readonly honeypotProbeId!: pulumi.Output<string>;
+    declare public /*out*/ readonly honeypotProbeId: pulumi.Output<string>;
     /**
      * Ping scan detection. Value: **true**: Enable **false**: Disabled
      */
-    public readonly ping!: pulumi.Output<boolean | undefined>;
+    declare public readonly ping: pulumi.Output<boolean | undefined>;
     /**
      * Probe type, support `hostProbe` and `vpcBlackHoleProbe`.
      */
-    public readonly probeType!: pulumi.Output<string>;
+    declare public readonly probeType: pulumi.Output<string>;
     /**
      * The version of the probe.
      */
-    public readonly probeVersion!: pulumi.Output<string>;
+    declare public readonly probeVersion: pulumi.Output<string>;
     /**
      * The IP address of the proxy.
      */
-    public readonly proxyIp!: pulumi.Output<string | undefined>;
+    declare public readonly proxyIp: pulumi.Output<string | undefined>;
     /**
      * Listen to the IP address list.
      */
-    public readonly serviceIpLists!: pulumi.Output<string[]>;
+    declare public readonly serviceIpLists: pulumi.Output<string[]>;
     /**
      * The status of the resource
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Machine uuid, **probe_type** is `hostProbe`. This value cannot be empty.
      */
-    public readonly uuid!: pulumi.Output<string | undefined>;
+    declare public readonly uuid: pulumi.Output<string | undefined>;
     /**
      * The ID of the VPC. **probe_type** is `vpcBlackHoleProbe`. This value cannot be empty.
      */
-    public readonly vpcId!: pulumi.Output<string | undefined>;
+    declare public readonly vpcId: pulumi.Output<string | undefined>;
 
     /**
      * Create a HoneypotProbe resource with the given unique name, arguments, and options.
@@ -140,41 +140,41 @@ export class HoneypotProbe extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HoneypotProbeState | undefined;
-            resourceInputs["arp"] = state ? state.arp : undefined;
-            resourceInputs["controlNodeId"] = state ? state.controlNodeId : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["honeypotBindLists"] = state ? state.honeypotBindLists : undefined;
-            resourceInputs["honeypotProbeId"] = state ? state.honeypotProbeId : undefined;
-            resourceInputs["ping"] = state ? state.ping : undefined;
-            resourceInputs["probeType"] = state ? state.probeType : undefined;
-            resourceInputs["probeVersion"] = state ? state.probeVersion : undefined;
-            resourceInputs["proxyIp"] = state ? state.proxyIp : undefined;
-            resourceInputs["serviceIpLists"] = state ? state.serviceIpLists : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["uuid"] = state ? state.uuid : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["arp"] = state?.arp;
+            resourceInputs["controlNodeId"] = state?.controlNodeId;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["honeypotBindLists"] = state?.honeypotBindLists;
+            resourceInputs["honeypotProbeId"] = state?.honeypotProbeId;
+            resourceInputs["ping"] = state?.ping;
+            resourceInputs["probeType"] = state?.probeType;
+            resourceInputs["probeVersion"] = state?.probeVersion;
+            resourceInputs["proxyIp"] = state?.proxyIp;
+            resourceInputs["serviceIpLists"] = state?.serviceIpLists;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["uuid"] = state?.uuid;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as HoneypotProbeArgs | undefined;
-            if ((!args || args.controlNodeId === undefined) && !opts.urn) {
+            if (args?.controlNodeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'controlNodeId'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.probeType === undefined) && !opts.urn) {
+            if (args?.probeType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'probeType'");
             }
-            resourceInputs["arp"] = args ? args.arp : undefined;
-            resourceInputs["controlNodeId"] = args ? args.controlNodeId : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["honeypotBindLists"] = args ? args.honeypotBindLists : undefined;
-            resourceInputs["ping"] = args ? args.ping : undefined;
-            resourceInputs["probeType"] = args ? args.probeType : undefined;
-            resourceInputs["probeVersion"] = args ? args.probeVersion : undefined;
-            resourceInputs["proxyIp"] = args ? args.proxyIp : undefined;
-            resourceInputs["serviceIpLists"] = args ? args.serviceIpLists : undefined;
-            resourceInputs["uuid"] = args ? args.uuid : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["arp"] = args?.arp;
+            resourceInputs["controlNodeId"] = args?.controlNodeId;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["honeypotBindLists"] = args?.honeypotBindLists;
+            resourceInputs["ping"] = args?.ping;
+            resourceInputs["probeType"] = args?.probeType;
+            resourceInputs["probeVersion"] = args?.probeVersion;
+            resourceInputs["proxyIp"] = args?.proxyIp;
+            resourceInputs["serviceIpLists"] = args?.serviceIpLists;
+            resourceInputs["uuid"] = args?.uuid;
+            resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["honeypotProbeId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

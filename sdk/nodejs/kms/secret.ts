@@ -68,63 +68,63 @@ export class Secret extends pulumi.CustomResource {
     /**
      * The ARN of the secret.
      */
-    public /*out*/ readonly arn!: pulumi.Output<string>;
+    declare public /*out*/ readonly arn: pulumi.Output<string>;
     /**
      * (Available since v1.224.0) The time when the secret is created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The description of the secret.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The ID of the KMS instance.
      */
-    public readonly dkmsInstanceId!: pulumi.Output<string | undefined>;
+    declare public readonly dkmsInstanceId: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to enable automatic rotation. Default value: `false`. Valid values: `true`, `false`.
      */
-    public readonly enableAutomaticRotation!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableAutomaticRotation: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the KMS key.
      */
-    public readonly encryptionKeyId!: pulumi.Output<string | undefined>;
+    declare public readonly encryptionKeyId: pulumi.Output<string | undefined>;
     /**
      * The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      */
-    public readonly extendedConfig!: pulumi.Output<string | undefined>;
+    declare public readonly extendedConfig: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to immediately delete a secret. Default value: `false`. Valid values: `true`, `false`.
      */
-    public readonly forceDeleteWithoutRecovery!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDeleteWithoutRecovery: pulumi.Output<boolean | undefined>;
     /**
      * The time when the secret is scheduled to be deleted.
      */
-    public /*out*/ readonly plannedDeleteTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly plannedDeleteTime: pulumi.Output<string>;
     /**
      * The content of the secret policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setsecretpolicy).
      */
-    public readonly policy!: pulumi.Output<string>;
+    declare public readonly policy: pulumi.Output<string>;
     /**
      * Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `forceDeleteWithoutRecovery` is set to `true`, `recoveryWindowInDays` will be ignored.
      */
-    public readonly recoveryWindowInDays!: pulumi.Output<number | undefined>;
+    declare public readonly recoveryWindowInDays: pulumi.Output<number | undefined>;
     /**
      * The interval for automatic rotation. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      */
-    public readonly rotationInterval!: pulumi.Output<string | undefined>;
+    declare public readonly rotationInterval: pulumi.Output<string | undefined>;
     /**
      * The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`.
      */
-    public readonly secretData!: pulumi.Output<string>;
+    declare public readonly secretData: pulumi.Output<string>;
     /**
      * The type of the secret value. Default value: `text`. Valid values: `text`, `binary`.
      */
-    public readonly secretDataType!: pulumi.Output<string | undefined>;
+    declare public readonly secretDataType: pulumi.Output<string | undefined>;
     /**
      * The name of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      */
-    public readonly secretName!: pulumi.Output<string>;
+    declare public readonly secretName: pulumi.Output<string>;
     /**
      * The type of the secret. Valid values:
      * - `Generic`: Generic secret.
@@ -134,19 +134,19 @@ export class Secret extends pulumi.CustomResource {
      * - `ECS`: ECS secret.
      * - `PolarDB`: (Available since v1.253.0) PolarDB secret.
      */
-    public readonly secretType!: pulumi.Output<string>;
+    declare public readonly secretType: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The version number of the initial version.
      */
-    public readonly versionId!: pulumi.Output<string>;
+    declare public readonly versionId: pulumi.Output<string>;
     /**
      * The stage label that is used to mark the new version.
      */
-    public readonly versionStages!: pulumi.Output<string[]>;
+    declare public readonly versionStages: pulumi.Output<string[]>;
 
     /**
      * Create a Secret resource with the given unique name, arguments, and options.
@@ -161,52 +161,52 @@ export class Secret extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretState | undefined;
-            resourceInputs["arn"] = state ? state.arn : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dkmsInstanceId"] = state ? state.dkmsInstanceId : undefined;
-            resourceInputs["enableAutomaticRotation"] = state ? state.enableAutomaticRotation : undefined;
-            resourceInputs["encryptionKeyId"] = state ? state.encryptionKeyId : undefined;
-            resourceInputs["extendedConfig"] = state ? state.extendedConfig : undefined;
-            resourceInputs["forceDeleteWithoutRecovery"] = state ? state.forceDeleteWithoutRecovery : undefined;
-            resourceInputs["plannedDeleteTime"] = state ? state.plannedDeleteTime : undefined;
-            resourceInputs["policy"] = state ? state.policy : undefined;
-            resourceInputs["recoveryWindowInDays"] = state ? state.recoveryWindowInDays : undefined;
-            resourceInputs["rotationInterval"] = state ? state.rotationInterval : undefined;
-            resourceInputs["secretData"] = state ? state.secretData : undefined;
-            resourceInputs["secretDataType"] = state ? state.secretDataType : undefined;
-            resourceInputs["secretName"] = state ? state.secretName : undefined;
-            resourceInputs["secretType"] = state ? state.secretType : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["versionId"] = state ? state.versionId : undefined;
-            resourceInputs["versionStages"] = state ? state.versionStages : undefined;
+            resourceInputs["arn"] = state?.arn;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dkmsInstanceId"] = state?.dkmsInstanceId;
+            resourceInputs["enableAutomaticRotation"] = state?.enableAutomaticRotation;
+            resourceInputs["encryptionKeyId"] = state?.encryptionKeyId;
+            resourceInputs["extendedConfig"] = state?.extendedConfig;
+            resourceInputs["forceDeleteWithoutRecovery"] = state?.forceDeleteWithoutRecovery;
+            resourceInputs["plannedDeleteTime"] = state?.plannedDeleteTime;
+            resourceInputs["policy"] = state?.policy;
+            resourceInputs["recoveryWindowInDays"] = state?.recoveryWindowInDays;
+            resourceInputs["rotationInterval"] = state?.rotationInterval;
+            resourceInputs["secretData"] = state?.secretData;
+            resourceInputs["secretDataType"] = state?.secretDataType;
+            resourceInputs["secretName"] = state?.secretName;
+            resourceInputs["secretType"] = state?.secretType;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["versionId"] = state?.versionId;
+            resourceInputs["versionStages"] = state?.versionStages;
         } else {
             const args = argsOrState as SecretArgs | undefined;
-            if ((!args || args.secretData === undefined) && !opts.urn) {
+            if (args?.secretData === undefined && !opts.urn) {
                 throw new Error("Missing required property 'secretData'");
             }
-            if ((!args || args.secretName === undefined) && !opts.urn) {
+            if (args?.secretName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'secretName'");
             }
-            if ((!args || args.versionId === undefined) && !opts.urn) {
+            if (args?.versionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'versionId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dkmsInstanceId"] = args ? args.dkmsInstanceId : undefined;
-            resourceInputs["enableAutomaticRotation"] = args ? args.enableAutomaticRotation : undefined;
-            resourceInputs["encryptionKeyId"] = args ? args.encryptionKeyId : undefined;
-            resourceInputs["extendedConfig"] = args ? args.extendedConfig : undefined;
-            resourceInputs["forceDeleteWithoutRecovery"] = args ? args.forceDeleteWithoutRecovery : undefined;
-            resourceInputs["policy"] = args ? args.policy : undefined;
-            resourceInputs["recoveryWindowInDays"] = args ? args.recoveryWindowInDays : undefined;
-            resourceInputs["rotationInterval"] = args ? args.rotationInterval : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dkmsInstanceId"] = args?.dkmsInstanceId;
+            resourceInputs["enableAutomaticRotation"] = args?.enableAutomaticRotation;
+            resourceInputs["encryptionKeyId"] = args?.encryptionKeyId;
+            resourceInputs["extendedConfig"] = args?.extendedConfig;
+            resourceInputs["forceDeleteWithoutRecovery"] = args?.forceDeleteWithoutRecovery;
+            resourceInputs["policy"] = args?.policy;
+            resourceInputs["recoveryWindowInDays"] = args?.recoveryWindowInDays;
+            resourceInputs["rotationInterval"] = args?.rotationInterval;
             resourceInputs["secretData"] = args?.secretData ? pulumi.secret(args.secretData) : undefined;
-            resourceInputs["secretDataType"] = args ? args.secretDataType : undefined;
-            resourceInputs["secretName"] = args ? args.secretName : undefined;
-            resourceInputs["secretType"] = args ? args.secretType : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["versionId"] = args ? args.versionId : undefined;
-            resourceInputs["versionStages"] = args ? args.versionStages : undefined;
+            resourceInputs["secretDataType"] = args?.secretDataType;
+            resourceInputs["secretName"] = args?.secretName;
+            resourceInputs["secretType"] = args?.secretType;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["versionId"] = args?.versionId;
+            resourceInputs["versionStages"] = args?.versionStages;
             resourceInputs["arn"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["plannedDeleteTime"] = undefined /*out*/;

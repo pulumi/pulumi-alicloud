@@ -52,29 +52,29 @@ export class ServerGroup extends pulumi.CustomResource {
     /**
      * Connected graceful interrupt configuration. See `connectionDrainConfig` below.
      */
-    public readonly connectionDrainConfig!: pulumi.Output<outputs.gwlb.ServerGroupConnectionDrainConfig>;
+    declare public readonly connectionDrainConfig: pulumi.Output<outputs.gwlb.ServerGroupConnectionDrainConfig>;
     /**
      * The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * Health check configurations. See `healthCheckConfig` below.
      */
-    public readonly healthCheckConfig!: pulumi.Output<outputs.gwlb.ServerGroupHealthCheckConfig>;
+    declare public readonly healthCheckConfig: pulumi.Output<outputs.gwlb.ServerGroupHealthCheckConfig>;
     /**
      * The backend protocol. Valid values:
      *
      * - `GENEVE`(default)
      */
-    public readonly protocol!: pulumi.Output<string>;
+    declare public readonly protocol: pulumi.Output<string>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The scheduling algorithm. Valid values:
      *
@@ -82,43 +82,43 @@ export class ServerGroup extends pulumi.CustomResource {
      * - `3TCH`: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
      * - `2TCH`: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
      */
-    public readonly scheduler!: pulumi.Output<string>;
+    declare public readonly scheduler: pulumi.Output<string>;
     /**
      * The server group name.
      *
      * The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
      */
-    public readonly serverGroupName!: pulumi.Output<string | undefined>;
+    declare public readonly serverGroupName: pulumi.Output<string | undefined>;
     /**
      * The type of server group. Valid values:
      *
      * - `Instance` (default): allows you to specify servers of the `Ecs`, `Eni`, or `Eci` type.
      * - `Ip`: allows you to add servers of by specifying IP addresses.
      */
-    public readonly serverGroupType!: pulumi.Output<string>;
+    declare public readonly serverGroupType: pulumi.Output<string>;
     /**
      * The backend servers that you want to remove.
      *
      * > **NOTE:**  You can remove at most 200 backend servers in each call.
      * See `servers` below.
      */
-    public readonly servers!: pulumi.Output<outputs.gwlb.ServerGroupServer[] | undefined>;
+    declare public readonly servers: pulumi.Output<outputs.gwlb.ServerGroupServer[] | undefined>;
     /**
      * Indicates the status of the backend server.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tag keys.
      *
      * You can specify at most 20 tags in each call.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The VPC ID.
      *
      * > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
 
     /**
      * Create a ServerGroup resource with the given unique name, arguments, and options.
@@ -133,35 +133,35 @@ export class ServerGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServerGroupState | undefined;
-            resourceInputs["connectionDrainConfig"] = state ? state.connectionDrainConfig : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["healthCheckConfig"] = state ? state.healthCheckConfig : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["scheduler"] = state ? state.scheduler : undefined;
-            resourceInputs["serverGroupName"] = state ? state.serverGroupName : undefined;
-            resourceInputs["serverGroupType"] = state ? state.serverGroupType : undefined;
-            resourceInputs["servers"] = state ? state.servers : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["connectionDrainConfig"] = state?.connectionDrainConfig;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["healthCheckConfig"] = state?.healthCheckConfig;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["scheduler"] = state?.scheduler;
+            resourceInputs["serverGroupName"] = state?.serverGroupName;
+            resourceInputs["serverGroupType"] = state?.serverGroupType;
+            resourceInputs["servers"] = state?.servers;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as ServerGroupArgs | undefined;
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["connectionDrainConfig"] = args ? args.connectionDrainConfig : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["healthCheckConfig"] = args ? args.healthCheckConfig : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["scheduler"] = args ? args.scheduler : undefined;
-            resourceInputs["serverGroupName"] = args ? args.serverGroupName : undefined;
-            resourceInputs["serverGroupType"] = args ? args.serverGroupType : undefined;
-            resourceInputs["servers"] = args ? args.servers : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["connectionDrainConfig"] = args?.connectionDrainConfig;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["healthCheckConfig"] = args?.healthCheckConfig;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["scheduler"] = args?.scheduler;
+            resourceInputs["serverGroupName"] = args?.serverGroupName;
+            resourceInputs["serverGroupType"] = args?.serverGroupType;
+            resourceInputs["servers"] = args?.servers;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

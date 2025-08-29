@@ -83,115 +83,115 @@ export class Rule extends pulumi.CustomResource {
     /**
      * The ID of Alicloud account.
      */
-    public /*out*/ readonly accountId!: pulumi.Output<number>;
+    declare public /*out*/ readonly accountId: pulumi.Output<number>;
     /**
      * compliance information.
      */
-    public /*out*/ readonly compliance!: pulumi.Output<outputs.cfg.RuleCompliance>;
+    declare public /*out*/ readonly compliance: pulumi.Output<outputs.cfg.RuleCompliance>;
     /**
      * Compliance Package ID.
      */
-    public /*out*/ readonly compliancePackId!: pulumi.Output<string>;
+    declare public /*out*/ readonly compliancePackId: pulumi.Output<string>;
     /**
      * config rule arn.
      */
-    public /*out*/ readonly configRuleArn!: pulumi.Output<string>;
+    declare public /*out*/ readonly configRuleArn: pulumi.Output<string>;
     /**
      * The ID of the rule.
      */
-    public /*out*/ readonly configRuleId!: pulumi.Output<string>;
+    declare public /*out*/ readonly configRuleId: pulumi.Output<string>;
     /**
      * The trigger type of the rule. Valid values:  `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
      */
-    public readonly configRuleTriggerTypes!: pulumi.Output<string>;
+    declare public readonly configRuleTriggerTypes: pulumi.Output<string>;
     /**
      * The timestamp when the rule was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly createTime: pulumi.Output<number>;
     /**
      * The description of the rule.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The event source of the rule.
      */
-    public /*out*/ readonly eventSource!: pulumi.Output<string>;
+    declare public /*out*/ readonly eventSource: pulumi.Output<string>;
     /**
      * The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
      */
-    public readonly excludeResourceIdsScope!: pulumi.Output<string | undefined>;
+    declare public readonly excludeResourceIdsScope: pulumi.Output<string | undefined>;
     /**
      * The settings of the input parameters for the rule.
      */
-    public readonly inputParameters!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly inputParameters: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
      */
-    public readonly maximumExecutionFrequency!: pulumi.Output<string>;
+    declare public readonly maximumExecutionFrequency: pulumi.Output<string>;
     /**
      * The timestamp when the rule was last modified.
      */
-    public /*out*/ readonly modifiedTimestamp!: pulumi.Output<number>;
+    declare public /*out*/ readonly modifiedTimestamp: pulumi.Output<number>;
     /**
      * The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
      */
-    public readonly regionIdsScope!: pulumi.Output<string | undefined>;
+    declare public readonly regionIdsScope: pulumi.Output<string | undefined>;
     /**
      * The rule monitors resource group IDs, separated by commas, only applies to rules created based on managed rules.
      */
-    public readonly resourceGroupIdsScope!: pulumi.Output<string | undefined>;
+    declare public readonly resourceGroupIdsScope: pulumi.Output<string | undefined>;
     /**
      * The types of the resources to be evaluated against the rule.
      */
-    public readonly resourceTypesScopes!: pulumi.Output<string[]>;
+    declare public readonly resourceTypesScopes: pulumi.Output<string[]>;
     /**
      * The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info
      */
-    public readonly riskLevel!: pulumi.Output<number>;
+    declare public readonly riskLevel: pulumi.Output<number>;
     /**
      * The name of the rule.
      */
-    public readonly ruleName!: pulumi.Output<string>;
+    declare public readonly ruleName: pulumi.Output<string>;
     /**
      * Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
      *
      * @deprecated Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
      */
-    public readonly scopeComplianceResourceTypes!: pulumi.Output<string>;
+    declare public readonly scopeComplianceResourceTypes: pulumi.Output<string>;
     /**
      * Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
      *
      * @deprecated Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
      */
-    public readonly sourceDetailMessageType!: pulumi.Output<string>;
+    declare public readonly sourceDetailMessageType: pulumi.Output<string>;
     /**
      * The identifier of the rule.  For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule.
      */
-    public readonly sourceIdentifier!: pulumi.Output<string>;
+    declare public readonly sourceIdentifier: pulumi.Output<string>;
     /**
      * Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
      *
      * @deprecated Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
      */
-    public readonly sourceMaximumExecutionFrequency!: pulumi.Output<string>;
+    declare public readonly sourceMaximumExecutionFrequency: pulumi.Output<string>;
     /**
      * Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values:  `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule
      */
-    public readonly sourceOwner!: pulumi.Output<string>;
+    declare public readonly sourceOwner: pulumi.Output<string>;
     /**
      * The status of the rule. Valid values: ACTIVE: The rule is monitoring the configurations of target resources. DELETING_RESULTS: The compliance evaluation result returned by the rule is being deleted. EVALUATING: The rule is triggered and is evaluating whether the configurations of target resources are compliant. INACTIVE: The rule is disabled from monitoring the configurations of target resources.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The rule monitors the tag key, only applies to rules created based on managed rules.
      */
-    public readonly tagKeyScope!: pulumi.Output<string | undefined>;
+    declare public readonly tagKeyScope: pulumi.Output<string | undefined>;
     /**
      * The rule monitors the tag value, only applies to rules created based on managed rules.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    public readonly tagValueScope!: pulumi.Output<string | undefined>;
+    declare public readonly tagValueScope: pulumi.Output<string | undefined>;
 
     /**
      * Create a Rule resource with the given unique name, arguments, and options.
@@ -206,64 +206,64 @@ export class Rule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RuleState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["compliance"] = state ? state.compliance : undefined;
-            resourceInputs["compliancePackId"] = state ? state.compliancePackId : undefined;
-            resourceInputs["configRuleArn"] = state ? state.configRuleArn : undefined;
-            resourceInputs["configRuleId"] = state ? state.configRuleId : undefined;
-            resourceInputs["configRuleTriggerTypes"] = state ? state.configRuleTriggerTypes : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["eventSource"] = state ? state.eventSource : undefined;
-            resourceInputs["excludeResourceIdsScope"] = state ? state.excludeResourceIdsScope : undefined;
-            resourceInputs["inputParameters"] = state ? state.inputParameters : undefined;
-            resourceInputs["maximumExecutionFrequency"] = state ? state.maximumExecutionFrequency : undefined;
-            resourceInputs["modifiedTimestamp"] = state ? state.modifiedTimestamp : undefined;
-            resourceInputs["regionIdsScope"] = state ? state.regionIdsScope : undefined;
-            resourceInputs["resourceGroupIdsScope"] = state ? state.resourceGroupIdsScope : undefined;
-            resourceInputs["resourceTypesScopes"] = state ? state.resourceTypesScopes : undefined;
-            resourceInputs["riskLevel"] = state ? state.riskLevel : undefined;
-            resourceInputs["ruleName"] = state ? state.ruleName : undefined;
-            resourceInputs["scopeComplianceResourceTypes"] = state ? state.scopeComplianceResourceTypes : undefined;
-            resourceInputs["sourceDetailMessageType"] = state ? state.sourceDetailMessageType : undefined;
-            resourceInputs["sourceIdentifier"] = state ? state.sourceIdentifier : undefined;
-            resourceInputs["sourceMaximumExecutionFrequency"] = state ? state.sourceMaximumExecutionFrequency : undefined;
-            resourceInputs["sourceOwner"] = state ? state.sourceOwner : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tagKeyScope"] = state ? state.tagKeyScope : undefined;
-            resourceInputs["tagValueScope"] = state ? state.tagValueScope : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["compliance"] = state?.compliance;
+            resourceInputs["compliancePackId"] = state?.compliancePackId;
+            resourceInputs["configRuleArn"] = state?.configRuleArn;
+            resourceInputs["configRuleId"] = state?.configRuleId;
+            resourceInputs["configRuleTriggerTypes"] = state?.configRuleTriggerTypes;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["eventSource"] = state?.eventSource;
+            resourceInputs["excludeResourceIdsScope"] = state?.excludeResourceIdsScope;
+            resourceInputs["inputParameters"] = state?.inputParameters;
+            resourceInputs["maximumExecutionFrequency"] = state?.maximumExecutionFrequency;
+            resourceInputs["modifiedTimestamp"] = state?.modifiedTimestamp;
+            resourceInputs["regionIdsScope"] = state?.regionIdsScope;
+            resourceInputs["resourceGroupIdsScope"] = state?.resourceGroupIdsScope;
+            resourceInputs["resourceTypesScopes"] = state?.resourceTypesScopes;
+            resourceInputs["riskLevel"] = state?.riskLevel;
+            resourceInputs["ruleName"] = state?.ruleName;
+            resourceInputs["scopeComplianceResourceTypes"] = state?.scopeComplianceResourceTypes;
+            resourceInputs["sourceDetailMessageType"] = state?.sourceDetailMessageType;
+            resourceInputs["sourceIdentifier"] = state?.sourceIdentifier;
+            resourceInputs["sourceMaximumExecutionFrequency"] = state?.sourceMaximumExecutionFrequency;
+            resourceInputs["sourceOwner"] = state?.sourceOwner;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tagKeyScope"] = state?.tagKeyScope;
+            resourceInputs["tagValueScope"] = state?.tagValueScope;
         } else {
             const args = argsOrState as RuleArgs | undefined;
-            if ((!args || args.riskLevel === undefined) && !opts.urn) {
+            if (args?.riskLevel === undefined && !opts.urn) {
                 throw new Error("Missing required property 'riskLevel'");
             }
-            if ((!args || args.ruleName === undefined) && !opts.urn) {
+            if (args?.ruleName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ruleName'");
             }
-            if ((!args || args.sourceIdentifier === undefined) && !opts.urn) {
+            if (args?.sourceIdentifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceIdentifier'");
             }
-            if ((!args || args.sourceOwner === undefined) && !opts.urn) {
+            if (args?.sourceOwner === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceOwner'");
             }
-            resourceInputs["configRuleTriggerTypes"] = args ? args.configRuleTriggerTypes : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["excludeResourceIdsScope"] = args ? args.excludeResourceIdsScope : undefined;
-            resourceInputs["inputParameters"] = args ? args.inputParameters : undefined;
-            resourceInputs["maximumExecutionFrequency"] = args ? args.maximumExecutionFrequency : undefined;
-            resourceInputs["regionIdsScope"] = args ? args.regionIdsScope : undefined;
-            resourceInputs["resourceGroupIdsScope"] = args ? args.resourceGroupIdsScope : undefined;
-            resourceInputs["resourceTypesScopes"] = args ? args.resourceTypesScopes : undefined;
-            resourceInputs["riskLevel"] = args ? args.riskLevel : undefined;
-            resourceInputs["ruleName"] = args ? args.ruleName : undefined;
-            resourceInputs["scopeComplianceResourceTypes"] = args ? args.scopeComplianceResourceTypes : undefined;
-            resourceInputs["sourceDetailMessageType"] = args ? args.sourceDetailMessageType : undefined;
-            resourceInputs["sourceIdentifier"] = args ? args.sourceIdentifier : undefined;
-            resourceInputs["sourceMaximumExecutionFrequency"] = args ? args.sourceMaximumExecutionFrequency : undefined;
-            resourceInputs["sourceOwner"] = args ? args.sourceOwner : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["tagKeyScope"] = args ? args.tagKeyScope : undefined;
-            resourceInputs["tagValueScope"] = args ? args.tagValueScope : undefined;
+            resourceInputs["configRuleTriggerTypes"] = args?.configRuleTriggerTypes;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["excludeResourceIdsScope"] = args?.excludeResourceIdsScope;
+            resourceInputs["inputParameters"] = args?.inputParameters;
+            resourceInputs["maximumExecutionFrequency"] = args?.maximumExecutionFrequency;
+            resourceInputs["regionIdsScope"] = args?.regionIdsScope;
+            resourceInputs["resourceGroupIdsScope"] = args?.resourceGroupIdsScope;
+            resourceInputs["resourceTypesScopes"] = args?.resourceTypesScopes;
+            resourceInputs["riskLevel"] = args?.riskLevel;
+            resourceInputs["ruleName"] = args?.ruleName;
+            resourceInputs["scopeComplianceResourceTypes"] = args?.scopeComplianceResourceTypes;
+            resourceInputs["sourceDetailMessageType"] = args?.sourceDetailMessageType;
+            resourceInputs["sourceIdentifier"] = args?.sourceIdentifier;
+            resourceInputs["sourceMaximumExecutionFrequency"] = args?.sourceMaximumExecutionFrequency;
+            resourceInputs["sourceOwner"] = args?.sourceOwner;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["tagKeyScope"] = args?.tagKeyScope;
+            resourceInputs["tagValueScope"] = args?.tagValueScope;
             resourceInputs["accountId"] = undefined /*out*/;
             resourceInputs["compliance"] = undefined /*out*/;
             resourceInputs["compliancePackId"] = undefined /*out*/;

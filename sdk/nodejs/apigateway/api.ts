@@ -94,67 +94,67 @@ export class Api extends pulumi.CustomResource {
     /**
      * The ID of the api of api gateway.
      */
-    public /*out*/ readonly apiId!: pulumi.Output<string>;
+    declare public /*out*/ readonly apiId: pulumi.Output<string>;
     /**
      * The authorization Type including APP and ANONYMOUS. Defaults to null.
      */
-    public readonly authType!: pulumi.Output<string>;
+    declare public readonly authType: pulumi.Output<string>;
     /**
      * constant_parameters defines the constant parameters of the api. See `constantParameters` below.
      */
-    public readonly constantParameters!: pulumi.Output<outputs.apigateway.ApiConstantParameter[] | undefined>;
+    declare public readonly constantParameters: pulumi.Output<outputs.apigateway.ApiConstantParameter[] | undefined>;
     /**
      * The description of the api. Defaults to null.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * fc_service_config defines the config when serviceType selected 'FunctionCompute'. See `fcServiceConfig` below.
      */
-    public readonly fcServiceConfig!: pulumi.Output<outputs.apigateway.ApiFcServiceConfig | undefined>;
+    declare public readonly fcServiceConfig: pulumi.Output<outputs.apigateway.ApiFcServiceConfig | undefined>;
     /**
      * Whether to prevent API replay attack. Default value: `false`.
      */
-    public readonly forceNonceCheck!: pulumi.Output<boolean>;
+    declare public readonly forceNonceCheck: pulumi.Output<boolean>;
     /**
      * The api gateway that the api belongs to. Defaults to null.
      */
-    public readonly groupId!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string>;
     /**
      * http_service_config defines the config when serviceType selected 'HTTP'. See `httpServiceConfig` below.
      */
-    public readonly httpServiceConfig!: pulumi.Output<outputs.apigateway.ApiHttpServiceConfig | undefined>;
+    declare public readonly httpServiceConfig: pulumi.Output<outputs.apigateway.ApiHttpServiceConfig | undefined>;
     /**
      * http_vpc_service_config defines the config when serviceType selected 'HTTP-VPC'. See `httpVpcServiceConfig` below.
      */
-    public readonly httpVpcServiceConfig!: pulumi.Output<outputs.apigateway.ApiHttpVpcServiceConfig | undefined>;
+    declare public readonly httpVpcServiceConfig: pulumi.Output<outputs.apigateway.ApiHttpVpcServiceConfig | undefined>;
     /**
      * http_service_config defines the config when serviceType selected 'MOCK'. See `mockServiceConfig` below.
      */
-    public readonly mockServiceConfig!: pulumi.Output<outputs.apigateway.ApiMockServiceConfig | undefined>;
+    declare public readonly mockServiceConfig: pulumi.Output<outputs.apigateway.ApiMockServiceConfig | undefined>;
     /**
      * The name of the api gateway api. Defaults to null.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Request_config defines how users can send requests to your API. See `requestConfig` below.
      */
-    public readonly requestConfig!: pulumi.Output<outputs.apigateway.ApiRequestConfig>;
+    declare public readonly requestConfig: pulumi.Output<outputs.apigateway.ApiRequestConfig>;
     /**
      * request_parameters defines the request parameters of the api. See `requestParameters` below.
      */
-    public readonly requestParameters!: pulumi.Output<outputs.apigateway.ApiRequestParameter[] | undefined>;
+    declare public readonly requestParameters: pulumi.Output<outputs.apigateway.ApiRequestParameter[] | undefined>;
     /**
      * The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
      */
-    public readonly serviceType!: pulumi.Output<string>;
+    declare public readonly serviceType: pulumi.Output<string>;
     /**
      * Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
      */
-    public readonly stageNames!: pulumi.Output<string[] | undefined>;
+    declare public readonly stageNames: pulumi.Output<string[] | undefined>;
     /**
      * system_parameters defines the system parameters of the api. See `systemParameters` below.
      */
-    public readonly systemParameters!: pulumi.Output<outputs.apigateway.ApiSystemParameter[] | undefined>;
+    declare public readonly systemParameters: pulumi.Output<outputs.apigateway.ApiSystemParameter[] | undefined>;
 
     /**
      * Create a Api resource with the given unique name, arguments, and options.
@@ -169,54 +169,54 @@ export class Api extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApiState | undefined;
-            resourceInputs["apiId"] = state ? state.apiId : undefined;
-            resourceInputs["authType"] = state ? state.authType : undefined;
-            resourceInputs["constantParameters"] = state ? state.constantParameters : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["fcServiceConfig"] = state ? state.fcServiceConfig : undefined;
-            resourceInputs["forceNonceCheck"] = state ? state.forceNonceCheck : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["httpServiceConfig"] = state ? state.httpServiceConfig : undefined;
-            resourceInputs["httpVpcServiceConfig"] = state ? state.httpVpcServiceConfig : undefined;
-            resourceInputs["mockServiceConfig"] = state ? state.mockServiceConfig : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["requestConfig"] = state ? state.requestConfig : undefined;
-            resourceInputs["requestParameters"] = state ? state.requestParameters : undefined;
-            resourceInputs["serviceType"] = state ? state.serviceType : undefined;
-            resourceInputs["stageNames"] = state ? state.stageNames : undefined;
-            resourceInputs["systemParameters"] = state ? state.systemParameters : undefined;
+            resourceInputs["apiId"] = state?.apiId;
+            resourceInputs["authType"] = state?.authType;
+            resourceInputs["constantParameters"] = state?.constantParameters;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["fcServiceConfig"] = state?.fcServiceConfig;
+            resourceInputs["forceNonceCheck"] = state?.forceNonceCheck;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["httpServiceConfig"] = state?.httpServiceConfig;
+            resourceInputs["httpVpcServiceConfig"] = state?.httpVpcServiceConfig;
+            resourceInputs["mockServiceConfig"] = state?.mockServiceConfig;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["requestConfig"] = state?.requestConfig;
+            resourceInputs["requestParameters"] = state?.requestParameters;
+            resourceInputs["serviceType"] = state?.serviceType;
+            resourceInputs["stageNames"] = state?.stageNames;
+            resourceInputs["systemParameters"] = state?.systemParameters;
         } else {
             const args = argsOrState as ApiArgs | undefined;
-            if ((!args || args.authType === undefined) && !opts.urn) {
+            if (args?.authType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'authType'");
             }
-            if ((!args || args.description === undefined) && !opts.urn) {
+            if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.groupId === undefined) && !opts.urn) {
+            if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.requestConfig === undefined) && !opts.urn) {
+            if (args?.requestConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'requestConfig'");
             }
-            if ((!args || args.serviceType === undefined) && !opts.urn) {
+            if (args?.serviceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceType'");
             }
-            resourceInputs["authType"] = args ? args.authType : undefined;
-            resourceInputs["constantParameters"] = args ? args.constantParameters : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["fcServiceConfig"] = args ? args.fcServiceConfig : undefined;
-            resourceInputs["forceNonceCheck"] = args ? args.forceNonceCheck : undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["httpServiceConfig"] = args ? args.httpServiceConfig : undefined;
-            resourceInputs["httpVpcServiceConfig"] = args ? args.httpVpcServiceConfig : undefined;
-            resourceInputs["mockServiceConfig"] = args ? args.mockServiceConfig : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["requestConfig"] = args ? args.requestConfig : undefined;
-            resourceInputs["requestParameters"] = args ? args.requestParameters : undefined;
-            resourceInputs["serviceType"] = args ? args.serviceType : undefined;
-            resourceInputs["stageNames"] = args ? args.stageNames : undefined;
-            resourceInputs["systemParameters"] = args ? args.systemParameters : undefined;
+            resourceInputs["authType"] = args?.authType;
+            resourceInputs["constantParameters"] = args?.constantParameters;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["fcServiceConfig"] = args?.fcServiceConfig;
+            resourceInputs["forceNonceCheck"] = args?.forceNonceCheck;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["httpServiceConfig"] = args?.httpServiceConfig;
+            resourceInputs["httpVpcServiceConfig"] = args?.httpVpcServiceConfig;
+            resourceInputs["mockServiceConfig"] = args?.mockServiceConfig;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["requestConfig"] = args?.requestConfig;
+            resourceInputs["requestParameters"] = args?.requestParameters;
+            resourceInputs["serviceType"] = args?.serviceType;
+            resourceInputs["stageNames"] = args?.stageNames;
+            resourceInputs["systemParameters"] = args?.systemParameters;
             resourceInputs["apiId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -103,17 +103,17 @@ export class DbInstanceIpArray extends pulumi.CustomResource {
      *
      * > **NOTE:**  You can call the [DescribeDBInstances](https://www.alibabacloud.com/help/en/doc-detail/86911.html) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
      */
-    public readonly dbInstanceId!: pulumi.Output<string>;
+    declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
      * The default is empty. To distinguish between different attribute values, the console does not display groups with the 'hidden' attribute.
      */
-    public readonly dbInstanceIpArrayAttribute!: pulumi.Output<string | undefined>;
+    declare public readonly dbInstanceIpArrayAttribute: pulumi.Output<string | undefined>;
     /**
      * The name of the IP address whitelist. If you do not specify this parameter, the default whitelist is queried.
      *
      * > **NOTE:**   Each instance supports up to 50 IP address whitelists.
      */
-    public readonly dbInstanceIpArrayName!: pulumi.Output<string>;
+    declare public readonly dbInstanceIpArrayName: pulumi.Output<string>;
     /**
      * The method of modification. Valid values:
      *
@@ -121,14 +121,14 @@ export class DbInstanceIpArray extends pulumi.CustomResource {
      * - `Append`: appends data to the whitelist.
      * - `Delete`: deletes the whitelist.
      */
-    public readonly modifyMode!: pulumi.Output<string | undefined>;
+    declare public readonly modifyMode: pulumi.Output<string | undefined>;
     /**
      * The IP address whitelist contains a maximum of 1000 IP addresses separated by commas in the following three formats:
      * - 0.0.0.0/0
      * - 10.23.12.24(IP)
      * - 10.23.12.24/24(CIDR mode, Classless Inter-Domain Routing, '/24' indicates the length of the prefix in the address, and the range is '[1,32]')
      */
-    public readonly securityIpLists!: pulumi.Output<string[]>;
+    declare public readonly securityIpLists: pulumi.Output<string[]>;
 
     /**
      * Create a DbInstanceIpArray resource with the given unique name, arguments, and options.
@@ -143,27 +143,27 @@ export class DbInstanceIpArray extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DbInstanceIpArrayState | undefined;
-            resourceInputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
-            resourceInputs["dbInstanceIpArrayAttribute"] = state ? state.dbInstanceIpArrayAttribute : undefined;
-            resourceInputs["dbInstanceIpArrayName"] = state ? state.dbInstanceIpArrayName : undefined;
-            resourceInputs["modifyMode"] = state ? state.modifyMode : undefined;
-            resourceInputs["securityIpLists"] = state ? state.securityIpLists : undefined;
+            resourceInputs["dbInstanceId"] = state?.dbInstanceId;
+            resourceInputs["dbInstanceIpArrayAttribute"] = state?.dbInstanceIpArrayAttribute;
+            resourceInputs["dbInstanceIpArrayName"] = state?.dbInstanceIpArrayName;
+            resourceInputs["modifyMode"] = state?.modifyMode;
+            resourceInputs["securityIpLists"] = state?.securityIpLists;
         } else {
             const args = argsOrState as DbInstanceIpArrayArgs | undefined;
-            if ((!args || args.dbInstanceId === undefined) && !opts.urn) {
+            if (args?.dbInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceId'");
             }
-            if ((!args || args.dbInstanceIpArrayName === undefined) && !opts.urn) {
+            if (args?.dbInstanceIpArrayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceIpArrayName'");
             }
-            if ((!args || args.securityIpLists === undefined) && !opts.urn) {
+            if (args?.securityIpLists === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securityIpLists'");
             }
-            resourceInputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
-            resourceInputs["dbInstanceIpArrayAttribute"] = args ? args.dbInstanceIpArrayAttribute : undefined;
-            resourceInputs["dbInstanceIpArrayName"] = args ? args.dbInstanceIpArrayName : undefined;
-            resourceInputs["modifyMode"] = args ? args.modifyMode : undefined;
-            resourceInputs["securityIpLists"] = args ? args.securityIpLists : undefined;
+            resourceInputs["dbInstanceId"] = args?.dbInstanceId;
+            resourceInputs["dbInstanceIpArrayAttribute"] = args?.dbInstanceIpArrayAttribute;
+            resourceInputs["dbInstanceIpArrayName"] = args?.dbInstanceIpArrayName;
+            resourceInputs["modifyMode"] = args?.modifyMode;
+            resourceInputs["securityIpLists"] = args?.securityIpLists;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DbInstanceIpArray.__pulumiType, name, resourceInputs, opts);

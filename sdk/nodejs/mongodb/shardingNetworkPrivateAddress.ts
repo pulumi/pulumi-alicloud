@@ -110,29 +110,29 @@ export class ShardingNetworkPrivateAddress extends pulumi.CustomResource {
      * - You need to set the account name and password only when you apply for an endpoint for a shard or ConfigServer node for the first time. In this case, the account name and password are used for all shard and ConfigServer nodes.
      * - The permissions of this account are fixed to read-only.
      */
-    public readonly accountName!: pulumi.Output<string | undefined>;
+    declare public readonly accountName: pulumi.Output<string | undefined>;
     /**
      * The password for the account.
      * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
      * - The password must be 8 to 32 characters in length.
      */
-    public readonly accountPassword!: pulumi.Output<string | undefined>;
+    declare public readonly accountPassword: pulumi.Output<string | undefined>;
     /**
      * The ID of the sharded cluster instance.
      */
-    public readonly dbInstanceId!: pulumi.Output<string>;
+    declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
      * The connection string of the instance.
      */
-    public /*out*/ readonly networkAddresses!: pulumi.Output<outputs.mongodb.ShardingNetworkPrivateAddressNetworkAddress[]>;
+    declare public /*out*/ readonly networkAddresses: pulumi.Output<outputs.mongodb.ShardingNetworkPrivateAddressNetworkAddress[]>;
     /**
      * The ID of the Shard node or ConfigServer node.
      */
-    public readonly nodeId!: pulumi.Output<string>;
+    declare public readonly nodeId: pulumi.Output<string>;
     /**
      * The zone ID of the instance.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a ShardingNetworkPrivateAddress resource with the given unique name, arguments, and options.
@@ -147,28 +147,28 @@ export class ShardingNetworkPrivateAddress extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ShardingNetworkPrivateAddressState | undefined;
-            resourceInputs["accountName"] = state ? state.accountName : undefined;
-            resourceInputs["accountPassword"] = state ? state.accountPassword : undefined;
-            resourceInputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
-            resourceInputs["networkAddresses"] = state ? state.networkAddresses : undefined;
-            resourceInputs["nodeId"] = state ? state.nodeId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["accountName"] = state?.accountName;
+            resourceInputs["accountPassword"] = state?.accountPassword;
+            resourceInputs["dbInstanceId"] = state?.dbInstanceId;
+            resourceInputs["networkAddresses"] = state?.networkAddresses;
+            resourceInputs["nodeId"] = state?.nodeId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ShardingNetworkPrivateAddressArgs | undefined;
-            if ((!args || args.dbInstanceId === undefined) && !opts.urn) {
+            if (args?.dbInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceId'");
             }
-            if ((!args || args.nodeId === undefined) && !opts.urn) {
+            if (args?.nodeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodeId'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["accountName"] = args ? args.accountName : undefined;
+            resourceInputs["accountName"] = args?.accountName;
             resourceInputs["accountPassword"] = args?.accountPassword ? pulumi.secret(args.accountPassword) : undefined;
-            resourceInputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
-            resourceInputs["nodeId"] = args ? args.nodeId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["dbInstanceId"] = args?.dbInstanceId;
+            resourceInputs["nodeId"] = args?.nodeId;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["networkAddresses"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

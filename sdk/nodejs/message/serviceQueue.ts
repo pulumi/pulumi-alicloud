@@ -72,43 +72,43 @@ export class ServiceQueue extends pulumi.CustomResource {
     /**
      * (Available since v1.223.2) The time when the queue was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly createTime: pulumi.Output<number>;
     /**
      * The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
      */
-    public readonly delaySeconds!: pulumi.Output<number>;
+    declare public readonly delaySeconds: pulumi.Output<number>;
     /**
      * The dead-letter queue policy. See `dlqPolicy` below.
      */
-    public readonly dlqPolicy!: pulumi.Output<outputs.message.ServiceQueueDlqPolicy>;
+    declare public readonly dlqPolicy: pulumi.Output<outputs.message.ServiceQueueDlqPolicy>;
     /**
      * Specifies whether to enable the logging feature. Default value: `false`. Valid values:
      */
-    public readonly loggingEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly loggingEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
      */
-    public readonly maximumMessageSize!: pulumi.Output<number>;
+    declare public readonly maximumMessageSize: pulumi.Output<number>;
     /**
      * The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
      */
-    public readonly messageRetentionPeriod!: pulumi.Output<number>;
+    declare public readonly messageRetentionPeriod: pulumi.Output<number>;
     /**
      * The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
      */
-    public readonly pollingWaitSeconds!: pulumi.Output<number>;
+    declare public readonly pollingWaitSeconds: pulumi.Output<number>;
     /**
      * The name of the queue.
      */
-    public readonly queueName!: pulumi.Output<string>;
+    declare public readonly queueName: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
      */
-    public readonly visibilityTimeout!: pulumi.Output<number>;
+    declare public readonly visibilityTimeout: pulumi.Output<number>;
 
     /**
      * Create a ServiceQueue resource with the given unique name, arguments, and options.
@@ -123,30 +123,30 @@ export class ServiceQueue extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceQueueState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["delaySeconds"] = state ? state.delaySeconds : undefined;
-            resourceInputs["dlqPolicy"] = state ? state.dlqPolicy : undefined;
-            resourceInputs["loggingEnabled"] = state ? state.loggingEnabled : undefined;
-            resourceInputs["maximumMessageSize"] = state ? state.maximumMessageSize : undefined;
-            resourceInputs["messageRetentionPeriod"] = state ? state.messageRetentionPeriod : undefined;
-            resourceInputs["pollingWaitSeconds"] = state ? state.pollingWaitSeconds : undefined;
-            resourceInputs["queueName"] = state ? state.queueName : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["visibilityTimeout"] = state ? state.visibilityTimeout : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["delaySeconds"] = state?.delaySeconds;
+            resourceInputs["dlqPolicy"] = state?.dlqPolicy;
+            resourceInputs["loggingEnabled"] = state?.loggingEnabled;
+            resourceInputs["maximumMessageSize"] = state?.maximumMessageSize;
+            resourceInputs["messageRetentionPeriod"] = state?.messageRetentionPeriod;
+            resourceInputs["pollingWaitSeconds"] = state?.pollingWaitSeconds;
+            resourceInputs["queueName"] = state?.queueName;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["visibilityTimeout"] = state?.visibilityTimeout;
         } else {
             const args = argsOrState as ServiceQueueArgs | undefined;
-            if ((!args || args.queueName === undefined) && !opts.urn) {
+            if (args?.queueName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'queueName'");
             }
-            resourceInputs["delaySeconds"] = args ? args.delaySeconds : undefined;
-            resourceInputs["dlqPolicy"] = args ? args.dlqPolicy : undefined;
-            resourceInputs["loggingEnabled"] = args ? args.loggingEnabled : undefined;
-            resourceInputs["maximumMessageSize"] = args ? args.maximumMessageSize : undefined;
-            resourceInputs["messageRetentionPeriod"] = args ? args.messageRetentionPeriod : undefined;
-            resourceInputs["pollingWaitSeconds"] = args ? args.pollingWaitSeconds : undefined;
-            resourceInputs["queueName"] = args ? args.queueName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["visibilityTimeout"] = args ? args.visibilityTimeout : undefined;
+            resourceInputs["delaySeconds"] = args?.delaySeconds;
+            resourceInputs["dlqPolicy"] = args?.dlqPolicy;
+            resourceInputs["loggingEnabled"] = args?.loggingEnabled;
+            resourceInputs["maximumMessageSize"] = args?.maximumMessageSize;
+            resourceInputs["messageRetentionPeriod"] = args?.messageRetentionPeriod;
+            resourceInputs["pollingWaitSeconds"] = args?.pollingWaitSeconds;
+            resourceInputs["queueName"] = args?.queueName;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["visibilityTimeout"] = args?.visibilityTimeout;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -100,35 +100,35 @@ export class CustomRoutingEndpointGroupDestination extends pulumi.CustomResource
     /**
      * The ID of the GA instance.
      */
-    public /*out*/ readonly acceleratorId!: pulumi.Output<string>;
+    declare public /*out*/ readonly acceleratorId: pulumi.Output<string>;
     /**
      * The ID of the Custom Routing Endpoint Group Destination.
      */
-    public /*out*/ readonly customRoutingEndpointGroupDestinationId!: pulumi.Output<string>;
+    declare public /*out*/ readonly customRoutingEndpointGroupDestinationId: pulumi.Output<string>;
     /**
      * The ID of the endpoint group.
      */
-    public readonly endpointGroupId!: pulumi.Output<string>;
+    declare public readonly endpointGroupId: pulumi.Output<string>;
     /**
      * The start port of the backend service port range of the endpoint group. The `fromPort` value must be smaller than or equal to the `toPort` value. Valid values: `1` to `65499`.
      */
-    public readonly fromPort!: pulumi.Output<number>;
+    declare public readonly fromPort: pulumi.Output<number>;
     /**
      * The ID of the listener.
      */
-    public /*out*/ readonly listenerId!: pulumi.Output<string>;
+    declare public /*out*/ readonly listenerId: pulumi.Output<string>;
     /**
      * The backend service protocol of the endpoint group. Valid values: `TCP`, `UDP`, `TCP, UDP`.
      */
-    public readonly protocols!: pulumi.Output<string[]>;
+    declare public readonly protocols: pulumi.Output<string[]>;
     /**
      * The status of the Custom Routing Endpoint Group Destination.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The end port of the backend service port range of the endpoint group. The `fromPort` value must be smaller than or equal to the `toPort` value. Valid values: `1` to `65499`.
      */
-    public readonly toPort!: pulumi.Output<number>;
+    declare public readonly toPort: pulumi.Output<number>;
 
     /**
      * Create a CustomRoutingEndpointGroupDestination resource with the given unique name, arguments, and options.
@@ -143,32 +143,32 @@ export class CustomRoutingEndpointGroupDestination extends pulumi.CustomResource
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomRoutingEndpointGroupDestinationState | undefined;
-            resourceInputs["acceleratorId"] = state ? state.acceleratorId : undefined;
-            resourceInputs["customRoutingEndpointGroupDestinationId"] = state ? state.customRoutingEndpointGroupDestinationId : undefined;
-            resourceInputs["endpointGroupId"] = state ? state.endpointGroupId : undefined;
-            resourceInputs["fromPort"] = state ? state.fromPort : undefined;
-            resourceInputs["listenerId"] = state ? state.listenerId : undefined;
-            resourceInputs["protocols"] = state ? state.protocols : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["toPort"] = state ? state.toPort : undefined;
+            resourceInputs["acceleratorId"] = state?.acceleratorId;
+            resourceInputs["customRoutingEndpointGroupDestinationId"] = state?.customRoutingEndpointGroupDestinationId;
+            resourceInputs["endpointGroupId"] = state?.endpointGroupId;
+            resourceInputs["fromPort"] = state?.fromPort;
+            resourceInputs["listenerId"] = state?.listenerId;
+            resourceInputs["protocols"] = state?.protocols;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["toPort"] = state?.toPort;
         } else {
             const args = argsOrState as CustomRoutingEndpointGroupDestinationArgs | undefined;
-            if ((!args || args.endpointGroupId === undefined) && !opts.urn) {
+            if (args?.endpointGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpointGroupId'");
             }
-            if ((!args || args.fromPort === undefined) && !opts.urn) {
+            if (args?.fromPort === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fromPort'");
             }
-            if ((!args || args.protocols === undefined) && !opts.urn) {
+            if (args?.protocols === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protocols'");
             }
-            if ((!args || args.toPort === undefined) && !opts.urn) {
+            if (args?.toPort === undefined && !opts.urn) {
                 throw new Error("Missing required property 'toPort'");
             }
-            resourceInputs["endpointGroupId"] = args ? args.endpointGroupId : undefined;
-            resourceInputs["fromPort"] = args ? args.fromPort : undefined;
-            resourceInputs["protocols"] = args ? args.protocols : undefined;
-            resourceInputs["toPort"] = args ? args.toPort : undefined;
+            resourceInputs["endpointGroupId"] = args?.endpointGroupId;
+            resourceInputs["fromPort"] = args?.fromPort;
+            resourceInputs["protocols"] = args?.protocols;
+            resourceInputs["toPort"] = args?.toPort;
             resourceInputs["acceleratorId"] = undefined /*out*/;
             resourceInputs["customRoutingEndpointGroupDestinationId"] = undefined /*out*/;
             resourceInputs["listenerId"] = undefined /*out*/;

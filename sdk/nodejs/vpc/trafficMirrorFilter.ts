@@ -97,35 +97,35 @@ export class TrafficMirrorFilter extends pulumi.CustomResource {
      * - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
      * - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * Information about the outbound rule. See the following `Block EgressRules`.
      */
-    public readonly egressRules!: pulumi.Output<outputs.vpc.TrafficMirrorFilterEgressRule[]>;
+    declare public readonly egressRules: pulumi.Output<outputs.vpc.TrafficMirrorFilterEgressRule[]>;
     /**
      * Inward direction rule information. See the following `Block IngressRules`.
      */
-    public readonly ingressRules!: pulumi.Output<outputs.vpc.TrafficMirrorFilterIngressRule[]>;
+    declare public readonly ingressRules: pulumi.Output<outputs.vpc.TrafficMirrorFilterIngressRule[]>;
     /**
      * The ID of the resource group to which the VPC belongs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tags of this resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The description of the TrafficMirrorFilter.
      */
-    public readonly trafficMirrorFilterDescription!: pulumi.Output<string | undefined>;
+    declare public readonly trafficMirrorFilterDescription: pulumi.Output<string | undefined>;
     /**
      * The name of the TrafficMirrorFilter.
      */
-    public readonly trafficMirrorFilterName!: pulumi.Output<string | undefined>;
+    declare public readonly trafficMirrorFilterName: pulumi.Output<string | undefined>;
 
     /**
      * Create a TrafficMirrorFilter resource with the given unique name, arguments, and options.
@@ -140,23 +140,23 @@ export class TrafficMirrorFilter extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TrafficMirrorFilterState | undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["egressRules"] = state ? state.egressRules : undefined;
-            resourceInputs["ingressRules"] = state ? state.ingressRules : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["trafficMirrorFilterDescription"] = state ? state.trafficMirrorFilterDescription : undefined;
-            resourceInputs["trafficMirrorFilterName"] = state ? state.trafficMirrorFilterName : undefined;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["egressRules"] = state?.egressRules;
+            resourceInputs["ingressRules"] = state?.ingressRules;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["trafficMirrorFilterDescription"] = state?.trafficMirrorFilterDescription;
+            resourceInputs["trafficMirrorFilterName"] = state?.trafficMirrorFilterName;
         } else {
             const args = argsOrState as TrafficMirrorFilterArgs | undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["egressRules"] = args ? args.egressRules : undefined;
-            resourceInputs["ingressRules"] = args ? args.ingressRules : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["trafficMirrorFilterDescription"] = args ? args.trafficMirrorFilterDescription : undefined;
-            resourceInputs["trafficMirrorFilterName"] = args ? args.trafficMirrorFilterName : undefined;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["egressRules"] = args?.egressRules;
+            resourceInputs["ingressRules"] = args?.ingressRules;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["trafficMirrorFilterDescription"] = args?.trafficMirrorFilterDescription;
+            resourceInputs["trafficMirrorFilterName"] = args?.trafficMirrorFilterName;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

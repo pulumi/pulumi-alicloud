@@ -50,23 +50,23 @@ export class EnvFeature extends pulumi.CustomResource {
     /**
      * The name of the resource.
      */
-    public readonly envFeatureName!: pulumi.Output<string>;
+    declare public readonly envFeatureName: pulumi.Output<string>;
     /**
      * The first ID of the resource.
      */
-    public readonly environmentId!: pulumi.Output<string>;
+    declare public readonly environmentId: pulumi.Output<string>;
     /**
      * Version information of the Feature. You can query Feature information by using ListEnvironmentFeatures.
      */
-    public readonly featureVersion!: pulumi.Output<string>;
+    declare public readonly featureVersion: pulumi.Output<string>;
     /**
      * Namespace.
      */
-    public /*out*/ readonly namespace!: pulumi.Output<string>;
+    declare public /*out*/ readonly namespace: pulumi.Output<string>;
     /**
      * Status.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a EnvFeature resource with the given unique name, arguments, and options.
@@ -81,25 +81,25 @@ export class EnvFeature extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnvFeatureState | undefined;
-            resourceInputs["envFeatureName"] = state ? state.envFeatureName : undefined;
-            resourceInputs["environmentId"] = state ? state.environmentId : undefined;
-            resourceInputs["featureVersion"] = state ? state.featureVersion : undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["envFeatureName"] = state?.envFeatureName;
+            resourceInputs["environmentId"] = state?.environmentId;
+            resourceInputs["featureVersion"] = state?.featureVersion;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as EnvFeatureArgs | undefined;
-            if ((!args || args.envFeatureName === undefined) && !opts.urn) {
+            if (args?.envFeatureName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'envFeatureName'");
             }
-            if ((!args || args.environmentId === undefined) && !opts.urn) {
+            if (args?.environmentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environmentId'");
             }
-            if ((!args || args.featureVersion === undefined) && !opts.urn) {
+            if (args?.featureVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'featureVersion'");
             }
-            resourceInputs["envFeatureName"] = args ? args.envFeatureName : undefined;
-            resourceInputs["environmentId"] = args ? args.environmentId : undefined;
-            resourceInputs["featureVersion"] = args ? args.featureVersion : undefined;
+            resourceInputs["envFeatureName"] = args?.envFeatureName;
+            resourceInputs["environmentId"] = args?.environmentId;
+            resourceInputs["featureVersion"] = args?.featureVersion;
             resourceInputs["namespace"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

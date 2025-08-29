@@ -66,11 +66,11 @@ export class KeyPair extends pulumi.CustomResource {
     /**
      * The name of the key pair.
      */
-    public readonly keyPairName!: pulumi.Output<string>;
+    declare public readonly keyPairName: pulumi.Output<string>;
     /**
      * The version number.
      */
-    public readonly version!: pulumi.Output<string>;
+    declare public readonly version: pulumi.Output<string>;
 
     /**
      * Create a KeyPair resource with the given unique name, arguments, and options.
@@ -85,18 +85,18 @@ export class KeyPair extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KeyPairState | undefined;
-            resourceInputs["keyPairName"] = state ? state.keyPairName : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["keyPairName"] = state?.keyPairName;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as KeyPairArgs | undefined;
-            if ((!args || args.keyPairName === undefined) && !opts.urn) {
+            if (args?.keyPairName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'keyPairName'");
             }
-            if ((!args || args.version === undefined) && !opts.urn) {
+            if (args?.version === undefined && !opts.urn) {
                 throw new Error("Missing required property 'version'");
             }
-            resourceInputs["keyPairName"] = args ? args.keyPairName : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["keyPairName"] = args?.keyPairName;
+            resourceInputs["version"] = args?.version;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(KeyPair.__pulumiType, name, resourceInputs, opts);

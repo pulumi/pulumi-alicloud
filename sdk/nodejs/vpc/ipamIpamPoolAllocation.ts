@@ -79,40 +79,40 @@ export class IpamIpamPoolAllocation extends pulumi.CustomResource {
     /**
      * The allocated address segment.
      */
-    public readonly cidr!: pulumi.Output<string>;
+    declare public readonly cidr: pulumi.Output<string>;
     /**
      * Create a custom reserved network segment from The IPAM address pool by entering a mask.
      *
      * > **NOTE:**  Enter at least one of `Cidr` or **CidrMask.
      */
-    public readonly cidrMask!: pulumi.Output<number | undefined>;
+    declare public readonly cidrMask: pulumi.Output<number | undefined>;
     /**
      * Instance creation time.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The description of the ipam pool alloctaion.
      * It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
      */
-    public readonly ipamPoolAllocationDescription!: pulumi.Output<string | undefined>;
+    declare public readonly ipamPoolAllocationDescription: pulumi.Output<string | undefined>;
     /**
      * The name of the ipam pool allocation.
      * It must be 1 to 128 characters in length and cannot start with 'http:// 'or 'https.
      */
-    public readonly ipamPoolAllocationName!: pulumi.Output<string | undefined>;
+    declare public readonly ipamPoolAllocationName: pulumi.Output<string | undefined>;
     /**
      * The ID of the IPAM Pool.
      */
-    public readonly ipamPoolId!: pulumi.Output<string>;
+    declare public readonly ipamPoolId: pulumi.Output<string>;
     /**
      * When the IPAM Pool to which CIDR is allocated has the region attribute, this attribute is the IPAM Pool region.
      * When the IPAM Pool to which CIDR is allocated does not have the region attribute, this attribute is the IPAM region.
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The status of the instance. Value:
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a IpamIpamPoolAllocation resource with the given unique name, arguments, and options.
@@ -127,24 +127,24 @@ export class IpamIpamPoolAllocation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IpamIpamPoolAllocationState | undefined;
-            resourceInputs["cidr"] = state ? state.cidr : undefined;
-            resourceInputs["cidrMask"] = state ? state.cidrMask : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["ipamPoolAllocationDescription"] = state ? state.ipamPoolAllocationDescription : undefined;
-            resourceInputs["ipamPoolAllocationName"] = state ? state.ipamPoolAllocationName : undefined;
-            resourceInputs["ipamPoolId"] = state ? state.ipamPoolId : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["cidr"] = state?.cidr;
+            resourceInputs["cidrMask"] = state?.cidrMask;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["ipamPoolAllocationDescription"] = state?.ipamPoolAllocationDescription;
+            resourceInputs["ipamPoolAllocationName"] = state?.ipamPoolAllocationName;
+            resourceInputs["ipamPoolId"] = state?.ipamPoolId;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as IpamIpamPoolAllocationArgs | undefined;
-            if ((!args || args.ipamPoolId === undefined) && !opts.urn) {
+            if (args?.ipamPoolId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ipamPoolId'");
             }
-            resourceInputs["cidr"] = args ? args.cidr : undefined;
-            resourceInputs["cidrMask"] = args ? args.cidrMask : undefined;
-            resourceInputs["ipamPoolAllocationDescription"] = args ? args.ipamPoolAllocationDescription : undefined;
-            resourceInputs["ipamPoolAllocationName"] = args ? args.ipamPoolAllocationName : undefined;
-            resourceInputs["ipamPoolId"] = args ? args.ipamPoolId : undefined;
+            resourceInputs["cidr"] = args?.cidr;
+            resourceInputs["cidrMask"] = args?.cidrMask;
+            resourceInputs["ipamPoolAllocationDescription"] = args?.ipamPoolAllocationDescription;
+            resourceInputs["ipamPoolAllocationName"] = args?.ipamPoolAllocationName;
+            resourceInputs["ipamPoolId"] = args?.ipamPoolId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

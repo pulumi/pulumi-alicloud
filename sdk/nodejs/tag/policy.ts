@@ -68,19 +68,19 @@ export class Policy extends pulumi.CustomResource {
     /**
      * The document of the tag policy.
      */
-    public readonly policyContent!: pulumi.Output<string>;
+    declare public readonly policyContent: pulumi.Output<string>;
     /**
      * The description of the policy. The description must be 1 to 512 characters in length.
      */
-    public readonly policyDesc!: pulumi.Output<string | undefined>;
+    declare public readonly policyDesc: pulumi.Output<string | undefined>;
     /**
      * The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
      */
-    public readonly policyName!: pulumi.Output<string>;
+    declare public readonly policyName: pulumi.Output<string>;
     /**
      * The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
      */
-    public readonly userType!: pulumi.Output<string>;
+    declare public readonly userType: pulumi.Output<string>;
 
     /**
      * Create a Policy resource with the given unique name, arguments, and options.
@@ -95,22 +95,22 @@ export class Policy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyState | undefined;
-            resourceInputs["policyContent"] = state ? state.policyContent : undefined;
-            resourceInputs["policyDesc"] = state ? state.policyDesc : undefined;
-            resourceInputs["policyName"] = state ? state.policyName : undefined;
-            resourceInputs["userType"] = state ? state.userType : undefined;
+            resourceInputs["policyContent"] = state?.policyContent;
+            resourceInputs["policyDesc"] = state?.policyDesc;
+            resourceInputs["policyName"] = state?.policyName;
+            resourceInputs["userType"] = state?.userType;
         } else {
             const args = argsOrState as PolicyArgs | undefined;
-            if ((!args || args.policyContent === undefined) && !opts.urn) {
+            if (args?.policyContent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyContent'");
             }
-            if ((!args || args.policyName === undefined) && !opts.urn) {
+            if (args?.policyName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyName'");
             }
-            resourceInputs["policyContent"] = args ? args.policyContent : undefined;
-            resourceInputs["policyDesc"] = args ? args.policyDesc : undefined;
-            resourceInputs["policyName"] = args ? args.policyName : undefined;
-            resourceInputs["userType"] = args ? args.userType : undefined;
+            resourceInputs["policyContent"] = args?.policyContent;
+            resourceInputs["policyDesc"] = args?.policyDesc;
+            resourceInputs["policyName"] = args?.policyName;
+            resourceInputs["userType"] = args?.userType;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Policy.__pulumiType, name, resourceInputs, opts);

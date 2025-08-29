@@ -75,19 +75,19 @@ export class NetworkPackage extends pulumi.CustomResource {
     /**
      * The bandwidth of package public network bandwidth peak. Valid values: 1~200. Unit:Mbps.
      */
-    public readonly bandwidth!: pulumi.Output<number>;
+    declare public readonly bandwidth: pulumi.Output<number>;
     /**
      * The internet charge type  of  package.
      */
-    public /*out*/ readonly internetChargeType!: pulumi.Output<string>;
+    declare public /*out*/ readonly internetChargeType: pulumi.Output<string>;
     /**
      * The ID of office site.
      */
-    public readonly officeSiteId!: pulumi.Output<string>;
+    declare public readonly officeSiteId: pulumi.Output<string>;
     /**
      * The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a NetworkPackage resource with the given unique name, arguments, and options.
@@ -102,20 +102,20 @@ export class NetworkPackage extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkPackageState | undefined;
-            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
-            resourceInputs["internetChargeType"] = state ? state.internetChargeType : undefined;
-            resourceInputs["officeSiteId"] = state ? state.officeSiteId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["bandwidth"] = state?.bandwidth;
+            resourceInputs["internetChargeType"] = state?.internetChargeType;
+            resourceInputs["officeSiteId"] = state?.officeSiteId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as NetworkPackageArgs | undefined;
-            if ((!args || args.bandwidth === undefined) && !opts.urn) {
+            if (args?.bandwidth === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bandwidth'");
             }
-            if ((!args || args.officeSiteId === undefined) && !opts.urn) {
+            if (args?.officeSiteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'officeSiteId'");
             }
-            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
-            resourceInputs["officeSiteId"] = args ? args.officeSiteId : undefined;
+            resourceInputs["bandwidth"] = args?.bandwidth;
+            resourceInputs["officeSiteId"] = args?.officeSiteId;
             resourceInputs["internetChargeType"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

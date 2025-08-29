@@ -136,24 +136,24 @@ export class AlbServerGroupAttachment extends pulumi.CustomResource {
     /**
      * ID of Alb Server Group.
      */
-    public readonly albServerGroupId!: pulumi.Output<string>;
+    declare public readonly albServerGroupId: pulumi.Output<string>;
     /**
      * If instances of scaling group are attached/removed from slb backend server when attach/detach alb
      * server group from scaling group. Default to false.
      */
-    public readonly forceAttach!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceAttach: pulumi.Output<boolean | undefined>;
     /**
      * The port will be used for Alb Server Group backend server.
      */
-    public readonly port!: pulumi.Output<number>;
+    declare public readonly port: pulumi.Output<number>;
     /**
      * ID of the scaling group.
      */
-    public readonly scalingGroupId!: pulumi.Output<string>;
+    declare public readonly scalingGroupId: pulumi.Output<string>;
     /**
      * The weight of an ECS instance attached to the Alb Server Group.
      */
-    public readonly weight!: pulumi.Output<number>;
+    declare public readonly weight: pulumi.Output<number>;
 
     /**
      * Create a AlbServerGroupAttachment resource with the given unique name, arguments, and options.
@@ -168,30 +168,30 @@ export class AlbServerGroupAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlbServerGroupAttachmentState | undefined;
-            resourceInputs["albServerGroupId"] = state ? state.albServerGroupId : undefined;
-            resourceInputs["forceAttach"] = state ? state.forceAttach : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
-            resourceInputs["weight"] = state ? state.weight : undefined;
+            resourceInputs["albServerGroupId"] = state?.albServerGroupId;
+            resourceInputs["forceAttach"] = state?.forceAttach;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["scalingGroupId"] = state?.scalingGroupId;
+            resourceInputs["weight"] = state?.weight;
         } else {
             const args = argsOrState as AlbServerGroupAttachmentArgs | undefined;
-            if ((!args || args.albServerGroupId === undefined) && !opts.urn) {
+            if (args?.albServerGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'albServerGroupId'");
             }
-            if ((!args || args.port === undefined) && !opts.urn) {
+            if (args?.port === undefined && !opts.urn) {
                 throw new Error("Missing required property 'port'");
             }
-            if ((!args || args.scalingGroupId === undefined) && !opts.urn) {
+            if (args?.scalingGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scalingGroupId'");
             }
-            if ((!args || args.weight === undefined) && !opts.urn) {
+            if (args?.weight === undefined && !opts.urn) {
                 throw new Error("Missing required property 'weight'");
             }
-            resourceInputs["albServerGroupId"] = args ? args.albServerGroupId : undefined;
-            resourceInputs["forceAttach"] = args ? args.forceAttach : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
-            resourceInputs["weight"] = args ? args.weight : undefined;
+            resourceInputs["albServerGroupId"] = args?.albServerGroupId;
+            resourceInputs["forceAttach"] = args?.forceAttach;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["scalingGroupId"] = args?.scalingGroupId;
+            resourceInputs["weight"] = args?.weight;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AlbServerGroupAttachment.__pulumiType, name, resourceInputs, opts);

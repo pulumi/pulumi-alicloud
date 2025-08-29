@@ -127,31 +127,31 @@ export class SecondaryIndex extends pulumi.CustomResource {
     /**
      * A list of defined column for index, referenced from Table's primary keys or predefined columns.
      */
-    public readonly definedColumns!: pulumi.Output<string[] | undefined>;
+    declare public readonly definedColumns: pulumi.Output<string[] | undefined>;
     /**
      * whether the index contains data that already exists in the data table. When includeBaseData is set to true, it means that stock data is included.
      */
-    public readonly includeBaseData!: pulumi.Output<boolean>;
+    declare public readonly includeBaseData: pulumi.Output<boolean>;
     /**
      * The index name of the OTS Table. If changed, a new index would be created.
      */
-    public readonly indexName!: pulumi.Output<string>;
+    declare public readonly indexName: pulumi.Output<string>;
     /**
      * The index type of the OTS Table. If changed, a new index would be created, only `Global` or `Local` is allowed.
      */
-    public readonly indexType!: pulumi.Output<string>;
+    declare public readonly indexType: pulumi.Output<string>;
     /**
      * The name of the OTS instance in which table will located.
      */
-    public readonly instanceName!: pulumi.Output<string>;
+    declare public readonly instanceName: pulumi.Output<string>;
     /**
      * A list of primary keys for index, referenced from Table's primary keys or predefined columns.
      */
-    public readonly primaryKeys!: pulumi.Output<string[]>;
+    declare public readonly primaryKeys: pulumi.Output<string[]>;
     /**
      * The name of the OTS table. If changed, a new table would be created.
      */
-    public readonly tableName!: pulumi.Output<string>;
+    declare public readonly tableName: pulumi.Output<string>;
 
     /**
      * Create a SecondaryIndex resource with the given unique name, arguments, and options.
@@ -166,40 +166,40 @@ export class SecondaryIndex extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecondaryIndexState | undefined;
-            resourceInputs["definedColumns"] = state ? state.definedColumns : undefined;
-            resourceInputs["includeBaseData"] = state ? state.includeBaseData : undefined;
-            resourceInputs["indexName"] = state ? state.indexName : undefined;
-            resourceInputs["indexType"] = state ? state.indexType : undefined;
-            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
-            resourceInputs["primaryKeys"] = state ? state.primaryKeys : undefined;
-            resourceInputs["tableName"] = state ? state.tableName : undefined;
+            resourceInputs["definedColumns"] = state?.definedColumns;
+            resourceInputs["includeBaseData"] = state?.includeBaseData;
+            resourceInputs["indexName"] = state?.indexName;
+            resourceInputs["indexType"] = state?.indexType;
+            resourceInputs["instanceName"] = state?.instanceName;
+            resourceInputs["primaryKeys"] = state?.primaryKeys;
+            resourceInputs["tableName"] = state?.tableName;
         } else {
             const args = argsOrState as SecondaryIndexArgs | undefined;
-            if ((!args || args.includeBaseData === undefined) && !opts.urn) {
+            if (args?.includeBaseData === undefined && !opts.urn) {
                 throw new Error("Missing required property 'includeBaseData'");
             }
-            if ((!args || args.indexName === undefined) && !opts.urn) {
+            if (args?.indexName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'indexName'");
             }
-            if ((!args || args.indexType === undefined) && !opts.urn) {
+            if (args?.indexType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'indexType'");
             }
-            if ((!args || args.instanceName === undefined) && !opts.urn) {
+            if (args?.instanceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceName'");
             }
-            if ((!args || args.primaryKeys === undefined) && !opts.urn) {
+            if (args?.primaryKeys === undefined && !opts.urn) {
                 throw new Error("Missing required property 'primaryKeys'");
             }
-            if ((!args || args.tableName === undefined) && !opts.urn) {
+            if (args?.tableName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tableName'");
             }
-            resourceInputs["definedColumns"] = args ? args.definedColumns : undefined;
-            resourceInputs["includeBaseData"] = args ? args.includeBaseData : undefined;
-            resourceInputs["indexName"] = args ? args.indexName : undefined;
-            resourceInputs["indexType"] = args ? args.indexType : undefined;
-            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
-            resourceInputs["primaryKeys"] = args ? args.primaryKeys : undefined;
-            resourceInputs["tableName"] = args ? args.tableName : undefined;
+            resourceInputs["definedColumns"] = args?.definedColumns;
+            resourceInputs["includeBaseData"] = args?.includeBaseData;
+            resourceInputs["indexName"] = args?.indexName;
+            resourceInputs["indexType"] = args?.indexType;
+            resourceInputs["instanceName"] = args?.instanceName;
+            resourceInputs["primaryKeys"] = args?.primaryKeys;
+            resourceInputs["tableName"] = args?.tableName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SecondaryIndex.__pulumiType, name, resourceInputs, opts);

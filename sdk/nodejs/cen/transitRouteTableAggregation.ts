@@ -76,7 +76,7 @@ export class TransitRouteTableAggregation extends pulumi.CustomResource {
     /**
      * The status of the resource
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The destination CIDR block of the aggregate route.
      *
@@ -86,31 +86,31 @@ export class TransitRouteTableAggregation extends pulumi.CustomResource {
      *
      * > **NOTE:** *   Multicast CIDR blocks, including 224.0.0.1 to 239.255.255.254.
      */
-    public readonly transitRouteTableAggregationCidr!: pulumi.Output<string>;
+    declare public readonly transitRouteTableAggregationCidr: pulumi.Output<string>;
     /**
      * The list of propagation ranges of the aggregation route.
      *
      * > **NOTE:**   You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
      */
-    public readonly transitRouteTableAggregationDescription!: pulumi.Output<string | undefined>;
+    declare public readonly transitRouteTableAggregationDescription: pulumi.Output<string | undefined>;
     /**
      * The name of the aggregate route.
      * The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
      */
-    public readonly transitRouteTableAggregationName!: pulumi.Output<string | undefined>;
+    declare public readonly transitRouteTableAggregationName: pulumi.Output<string | undefined>;
     /**
      * The scope of networks that you want to advertise the aggregate route.
      * The valid value is `VPC`, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
      */
-    public readonly transitRouteTableAggregationScope!: pulumi.Output<string | undefined>;
+    declare public readonly transitRouteTableAggregationScope: pulumi.Output<string | undefined>;
     /**
      * Aggregation Route Scopes
      */
-    public readonly transitRouteTableAggregationScopeLists!: pulumi.Output<string[] | undefined>;
+    declare public readonly transitRouteTableAggregationScopeLists: pulumi.Output<string[] | undefined>;
     /**
      * The list of route table IDs of the Enterprise Edition transit router.
      */
-    public readonly transitRouteTableId!: pulumi.Output<string>;
+    declare public readonly transitRouteTableId: pulumi.Output<string>;
 
     /**
      * Create a TransitRouteTableAggregation resource with the given unique name, arguments, and options.
@@ -125,27 +125,27 @@ export class TransitRouteTableAggregation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TransitRouteTableAggregationState | undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["transitRouteTableAggregationCidr"] = state ? state.transitRouteTableAggregationCidr : undefined;
-            resourceInputs["transitRouteTableAggregationDescription"] = state ? state.transitRouteTableAggregationDescription : undefined;
-            resourceInputs["transitRouteTableAggregationName"] = state ? state.transitRouteTableAggregationName : undefined;
-            resourceInputs["transitRouteTableAggregationScope"] = state ? state.transitRouteTableAggregationScope : undefined;
-            resourceInputs["transitRouteTableAggregationScopeLists"] = state ? state.transitRouteTableAggregationScopeLists : undefined;
-            resourceInputs["transitRouteTableId"] = state ? state.transitRouteTableId : undefined;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["transitRouteTableAggregationCidr"] = state?.transitRouteTableAggregationCidr;
+            resourceInputs["transitRouteTableAggregationDescription"] = state?.transitRouteTableAggregationDescription;
+            resourceInputs["transitRouteTableAggregationName"] = state?.transitRouteTableAggregationName;
+            resourceInputs["transitRouteTableAggregationScope"] = state?.transitRouteTableAggregationScope;
+            resourceInputs["transitRouteTableAggregationScopeLists"] = state?.transitRouteTableAggregationScopeLists;
+            resourceInputs["transitRouteTableId"] = state?.transitRouteTableId;
         } else {
             const args = argsOrState as TransitRouteTableAggregationArgs | undefined;
-            if ((!args || args.transitRouteTableAggregationCidr === undefined) && !opts.urn) {
+            if (args?.transitRouteTableAggregationCidr === undefined && !opts.urn) {
                 throw new Error("Missing required property 'transitRouteTableAggregationCidr'");
             }
-            if ((!args || args.transitRouteTableId === undefined) && !opts.urn) {
+            if (args?.transitRouteTableId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'transitRouteTableId'");
             }
-            resourceInputs["transitRouteTableAggregationCidr"] = args ? args.transitRouteTableAggregationCidr : undefined;
-            resourceInputs["transitRouteTableAggregationDescription"] = args ? args.transitRouteTableAggregationDescription : undefined;
-            resourceInputs["transitRouteTableAggregationName"] = args ? args.transitRouteTableAggregationName : undefined;
-            resourceInputs["transitRouteTableAggregationScope"] = args ? args.transitRouteTableAggregationScope : undefined;
-            resourceInputs["transitRouteTableAggregationScopeLists"] = args ? args.transitRouteTableAggregationScopeLists : undefined;
-            resourceInputs["transitRouteTableId"] = args ? args.transitRouteTableId : undefined;
+            resourceInputs["transitRouteTableAggregationCidr"] = args?.transitRouteTableAggregationCidr;
+            resourceInputs["transitRouteTableAggregationDescription"] = args?.transitRouteTableAggregationDescription;
+            resourceInputs["transitRouteTableAggregationName"] = args?.transitRouteTableAggregationName;
+            resourceInputs["transitRouteTableAggregationScope"] = args?.transitRouteTableAggregationScope;
+            resourceInputs["transitRouteTableAggregationScopeLists"] = args?.transitRouteTableAggregationScopeLists;
+            resourceInputs["transitRouteTableId"] = args?.transitRouteTableId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

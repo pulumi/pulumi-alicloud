@@ -92,11 +92,11 @@ export class FileSystem extends pulumi.CustomResource {
      * -[Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_cpfs_post#/buy)
      * -[Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=cpfs#/buy)
      */
-    public readonly capacity!: pulumi.Output<number>;
+    declare public readonly capacity: pulumi.Output<number>;
     /**
      * CreateTime
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * File system description.
      *
@@ -105,7 +105,7 @@ export class FileSystem extends pulumi.CustomResource {
      * - Must start with upper and lower case letters or Chinese, and cannot start with'http: // 'and'https.
      * - Can contain numbers, colons (:), underscores (_), or dashes (-).
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether the file system is encrypted.
      *
@@ -116,7 +116,7 @@ export class FileSystem extends pulumi.CustomResource {
      * - 1:NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
      * - 2: User management key. You can manage keys only when FileSystemType = extreme.
      */
-    public readonly encryptType!: pulumi.Output<number>;
+    declare public readonly encryptType: pulumi.Output<number>;
     /**
      * File system type.
      *
@@ -125,84 +125,84 @@ export class FileSystem extends pulumi.CustomResource {
      * - extreme: extreme NAS
      * - cpfs: file storage CPFS
      */
-    public readonly fileSystemType!: pulumi.Output<string>;
+    declare public readonly fileSystemType: pulumi.Output<string>;
     /**
      * String of keytab file content encrypted by base64
      */
-    public readonly keytab!: pulumi.Output<string | undefined>;
+    declare public readonly keytab: pulumi.Output<string | undefined>;
     /**
      * String of the keytab file content encrypted by MD5
      */
-    public readonly keytabMd5!: pulumi.Output<string | undefined>;
+    declare public readonly keytabMd5: pulumi.Output<string | undefined>;
     /**
      * The ID of the KMS key.
      * This parameter is required only when EncryptType = 2.
      */
-    public readonly kmsKeyId!: pulumi.Output<string>;
+    declare public readonly kmsKeyId: pulumi.Output<string>;
     /**
      * NFS ACL See `nfsAcl` below.
      */
-    public readonly nfsAcl!: pulumi.Output<outputs.nas.FileSystemNfsAcl>;
+    declare public readonly nfsAcl: pulumi.Output<outputs.nas.FileSystemNfsAcl>;
     /**
      * Option. See `options` below.
      */
-    public readonly options!: pulumi.Output<outputs.nas.FileSystemOptions>;
+    declare public readonly options: pulumi.Output<outputs.nas.FileSystemOptions>;
     /**
      * File transfer protocol type.
      * - When FileSystemType = standard, the values are NFS and SMB.
      * - When FileSystemType = extreme, the value is NFS.
      * - When FileSystemType = cpfs, the value is cpfs.
      */
-    public readonly protocolType!: pulumi.Output<string>;
+    declare public readonly protocolType: pulumi.Output<string>;
     /**
      * Recycle Bin See `recycleBin` below.
      */
-    public readonly recycleBin!: pulumi.Output<outputs.nas.FileSystemRecycleBin>;
+    declare public readonly recycleBin: pulumi.Output<outputs.nas.FileSystemRecycleBin>;
     /**
      * RegionId
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * SMB ACL See `smbAcl` below.
      */
-    public readonly smbAcl!: pulumi.Output<outputs.nas.FileSystemSmbAcl>;
+    declare public readonly smbAcl: pulumi.Output<outputs.nas.FileSystemSmbAcl>;
     /**
      * Only extreme NAS is supported.
      *
      * > **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
      */
-    public readonly snapshotId!: pulumi.Output<string | undefined>;
+    declare public readonly snapshotId: pulumi.Output<string | undefined>;
     /**
      * File system status. Includes:(such as creating a mount point) can only be performed when the file system is in the Running state.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The storage type.
      * - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
      * - When FileSystemType = extreme, the value is standard or advance.
      * - When FileSystemType = cpfs, the values are advance_100(100MB/s/TiB baseline) and advance_200(200MB/s/TiB baseline).
      */
-    public readonly storageType!: pulumi.Output<string>;
+    declare public readonly storageType: pulumi.Output<string>;
     /**
      * Label information collection.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the VPC network.
      * This parameter must be configured when FileSystemType = cpfs.
      * When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
      */
-    public readonly vpcId!: pulumi.Output<string | undefined>;
+    declare public readonly vpcId: pulumi.Output<string | undefined>;
     /**
      * The ID of the switch.
      * This parameter must be configured when FileSystemType = cpfs.
      * When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
      */
-    public readonly vswitchId!: pulumi.Output<string | undefined>;
+    declare public readonly vswitchId: pulumi.Output<string | undefined>;
     /**
      * The zone ID.
      *
@@ -214,7 +214,7 @@ export class FileSystem extends pulumi.CustomResource {
      *
      * > **NOTE:** - We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a FileSystem resource with the given unique name, arguments, and options.
@@ -229,55 +229,55 @@ export class FileSystem extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FileSystemState | undefined;
-            resourceInputs["capacity"] = state ? state.capacity : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["encryptType"] = state ? state.encryptType : undefined;
-            resourceInputs["fileSystemType"] = state ? state.fileSystemType : undefined;
-            resourceInputs["keytab"] = state ? state.keytab : undefined;
-            resourceInputs["keytabMd5"] = state ? state.keytabMd5 : undefined;
-            resourceInputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
-            resourceInputs["nfsAcl"] = state ? state.nfsAcl : undefined;
-            resourceInputs["options"] = state ? state.options : undefined;
-            resourceInputs["protocolType"] = state ? state.protocolType : undefined;
-            resourceInputs["recycleBin"] = state ? state.recycleBin : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["smbAcl"] = state ? state.smbAcl : undefined;
-            resourceInputs["snapshotId"] = state ? state.snapshotId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["storageType"] = state ? state.storageType : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["capacity"] = state?.capacity;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["encryptType"] = state?.encryptType;
+            resourceInputs["fileSystemType"] = state?.fileSystemType;
+            resourceInputs["keytab"] = state?.keytab;
+            resourceInputs["keytabMd5"] = state?.keytabMd5;
+            resourceInputs["kmsKeyId"] = state?.kmsKeyId;
+            resourceInputs["nfsAcl"] = state?.nfsAcl;
+            resourceInputs["options"] = state?.options;
+            resourceInputs["protocolType"] = state?.protocolType;
+            resourceInputs["recycleBin"] = state?.recycleBin;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["smbAcl"] = state?.smbAcl;
+            resourceInputs["snapshotId"] = state?.snapshotId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["storageType"] = state?.storageType;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as FileSystemArgs | undefined;
-            if ((!args || args.protocolType === undefined) && !opts.urn) {
+            if (args?.protocolType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protocolType'");
             }
-            if ((!args || args.storageType === undefined) && !opts.urn) {
+            if (args?.storageType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storageType'");
             }
-            resourceInputs["capacity"] = args ? args.capacity : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["encryptType"] = args ? args.encryptType : undefined;
-            resourceInputs["fileSystemType"] = args ? args.fileSystemType : undefined;
-            resourceInputs["keytab"] = args ? args.keytab : undefined;
-            resourceInputs["keytabMd5"] = args ? args.keytabMd5 : undefined;
-            resourceInputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
-            resourceInputs["nfsAcl"] = args ? args.nfsAcl : undefined;
-            resourceInputs["options"] = args ? args.options : undefined;
-            resourceInputs["protocolType"] = args ? args.protocolType : undefined;
-            resourceInputs["recycleBin"] = args ? args.recycleBin : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["smbAcl"] = args ? args.smbAcl : undefined;
-            resourceInputs["snapshotId"] = args ? args.snapshotId : undefined;
-            resourceInputs["storageType"] = args ? args.storageType : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["capacity"] = args?.capacity;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["encryptType"] = args?.encryptType;
+            resourceInputs["fileSystemType"] = args?.fileSystemType;
+            resourceInputs["keytab"] = args?.keytab;
+            resourceInputs["keytabMd5"] = args?.keytabMd5;
+            resourceInputs["kmsKeyId"] = args?.kmsKeyId;
+            resourceInputs["nfsAcl"] = args?.nfsAcl;
+            resourceInputs["options"] = args?.options;
+            resourceInputs["protocolType"] = args?.protocolType;
+            resourceInputs["recycleBin"] = args?.recycleBin;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["smbAcl"] = args?.smbAcl;
+            resourceInputs["snapshotId"] = args?.snapshotId;
+            resourceInputs["storageType"] = args?.storageType;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

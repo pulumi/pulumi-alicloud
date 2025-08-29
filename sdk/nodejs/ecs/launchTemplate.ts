@@ -114,33 +114,33 @@ export class LaunchTemplate extends pulumi.CustomResource {
     /**
      * Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
      */
-    public readonly autoReleaseTime!: pulumi.Output<string | undefined>;
-    public readonly autoRenew!: pulumi.Output<boolean>;
-    public readonly autoRenewPeriod!: pulumi.Output<number>;
+    declare public readonly autoReleaseTime: pulumi.Output<string | undefined>;
+    declare public readonly autoRenew: pulumi.Output<boolean>;
+    declare public readonly autoRenewPeriod: pulumi.Output<number>;
     /**
      * The list of data disks created with instance.
      */
-    public readonly dataDisks!: pulumi.Output<outputs.ecs.LaunchTemplateDataDisk[] | undefined>;
-    public readonly defaultVersionNumber!: pulumi.Output<number>;
-    public readonly deploymentSetId!: pulumi.Output<string | undefined>;
+    declare public readonly dataDisks: pulumi.Output<outputs.ecs.LaunchTemplateDataDisk[] | undefined>;
+    declare public readonly defaultVersionNumber: pulumi.Output<number>;
+    declare public readonly deploymentSetId: pulumi.Output<string | undefined>;
     /**
      * Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
-    public readonly enableVmOsConfig!: pulumi.Output<boolean | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly enableVmOsConfig: pulumi.Output<boolean | undefined>;
     /**
      * Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
      */
-    public readonly hostName!: pulumi.Output<string | undefined>;
-    public readonly httpEndpoint!: pulumi.Output<string>;
-    public readonly httpPutResponseHopLimit!: pulumi.Output<number>;
-    public readonly httpTokens!: pulumi.Output<string>;
+    declare public readonly hostName: pulumi.Output<string | undefined>;
+    declare public readonly httpEndpoint: pulumi.Output<string>;
+    declare public readonly httpPutResponseHopLimit: pulumi.Output<number>;
+    declare public readonly httpTokens: pulumi.Output<string>;
     /**
      * Image ID.
      */
-    public readonly imageId!: pulumi.Output<string | undefined>;
-    public readonly imageOptions!: pulumi.Output<outputs.ecs.LaunchTemplateImageOptions>;
-    public readonly imageOwnerAlias!: pulumi.Output<string | undefined>;
+    declare public readonly imageId: pulumi.Output<string | undefined>;
+    declare public readonly imageOptions: pulumi.Output<outputs.ecs.LaunchTemplateImageOptions>;
+    declare public readonly imageOwnerAlias: pulumi.Output<string | undefined>;
     /**
      * Billing methods. Optional values:
      * - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
@@ -148,86 +148,86 @@ export class LaunchTemplate extends pulumi.CustomResource {
      *
      * Default value: PostPaid.
      */
-    public readonly instanceChargeType!: pulumi.Output<string | undefined>;
+    declare public readonly instanceChargeType: pulumi.Output<string | undefined>;
     /**
      * The name of the instance. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
      */
-    public readonly instanceName!: pulumi.Output<string | undefined>;
+    declare public readonly instanceName: pulumi.Output<string | undefined>;
     /**
      * Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
      */
-    public readonly instanceType!: pulumi.Output<string | undefined>;
+    declare public readonly instanceType: pulumi.Output<string | undefined>;
     /**
      * Internet bandwidth billing method. Optional values: `PayByTraffic` | `PayByBandwidth`.
      */
-    public readonly internetChargeType!: pulumi.Output<string | undefined>;
+    declare public readonly internetChargeType: pulumi.Output<string | undefined>;
     /**
      * The maximum inbound bandwidth from the Internet network, measured in Mbit/s. Value range: [1, 200].
      */
-    public readonly internetMaxBandwidthIn!: pulumi.Output<number>;
+    declare public readonly internetMaxBandwidthIn: pulumi.Output<number>;
     /**
      * Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s. Value range: [0, 100].
      */
-    public readonly internetMaxBandwidthOut!: pulumi.Output<number | undefined>;
+    declare public readonly internetMaxBandwidthOut: pulumi.Output<number | undefined>;
     /**
      * Whether it is an I/O-optimized instance or not. Optional values:
      * - none
      * - optimized
      */
-    public readonly ioOptimized!: pulumi.Output<string | undefined>;
+    declare public readonly ioOptimized: pulumi.Output<string | undefined>;
     /**
      * The name of the key pair.
      * - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
      * - The password logon method for Linux instances is set to forbidden upon initialization.
      */
-    public readonly keyPairName!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly latestVersionNumber!: pulumi.Output<number>;
-    public readonly launchTemplateName!: pulumi.Output<string>;
+    declare public readonly keyPairName: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly latestVersionNumber: pulumi.Output<number>;
+    declare public readonly launchTemplateName: pulumi.Output<string>;
     /**
      * Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The list of network interfaces created with instance.
      */
-    public readonly networkInterfaces!: pulumi.Output<outputs.ecs.LaunchTemplateNetworkInterfaces | undefined>;
+    declare public readonly networkInterfaces: pulumi.Output<outputs.ecs.LaunchTemplateNetworkInterfaces | undefined>;
     /**
      * Network type of the instance. Value options: `classic` | `vpc`.
      */
-    public readonly networkType!: pulumi.Output<string | undefined>;
-    public readonly passwordInherit!: pulumi.Output<boolean | undefined>;
-    public readonly period!: pulumi.Output<number>;
-    public readonly periodUnit!: pulumi.Output<string>;
-    public readonly privateIpAddress!: pulumi.Output<string | undefined>;
+    declare public readonly networkType: pulumi.Output<string | undefined>;
+    declare public readonly passwordInherit: pulumi.Output<boolean | undefined>;
+    declare public readonly period: pulumi.Output<number>;
+    declare public readonly periodUnit: pulumi.Output<string>;
+    declare public readonly privateIpAddress: pulumi.Output<string | undefined>;
     /**
      * The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
      */
-    public readonly ramRoleName!: pulumi.Output<string | undefined>;
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly ramRoleName: pulumi.Output<string | undefined>;
+    declare public readonly resourceGroupId: pulumi.Output<string | undefined>;
     /**
      * Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
      */
-    public readonly securityEnhancementStrategy!: pulumi.Output<string | undefined>;
+    declare public readonly securityEnhancementStrategy: pulumi.Output<string | undefined>;
     /**
      * The security group ID.
      */
-    public readonly securityGroupId!: pulumi.Output<string | undefined>;
-    public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
-    public readonly spotDuration!: pulumi.Output<string | undefined>;
+    declare public readonly securityGroupId: pulumi.Output<string | undefined>;
+    declare public readonly securityGroupIds: pulumi.Output<string[] | undefined>;
+    declare public readonly spotDuration: pulumi.Output<string | undefined>;
     /**
      * Sets the maximum hourly instance price. Supports up to three decimal places.
      */
-    public readonly spotPriceLimit!: pulumi.Output<number | undefined>;
+    declare public readonly spotPriceLimit: pulumi.Output<number | undefined>;
     /**
      * The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
      * - NoSpot: Normal Pay-As-You-Go instance.
      * - SpotWithPriceLimit: Sets the maximum price for a spot instance.
      * - SpotAsPriceGo: The system automatically calculates the price. The maximum value is the Pay-As-You-Go price.
      */
-    public readonly spotStrategy!: pulumi.Output<string | undefined>;
-    public readonly systemDisk!: pulumi.Output<outputs.ecs.LaunchTemplateSystemDisk>;
+    declare public readonly spotStrategy: pulumi.Output<string | undefined>;
+    declare public readonly systemDisk: pulumi.Output<outputs.ecs.LaunchTemplateSystemDisk>;
     /**
      * The category of the system disk. System disk type. Optional values:
      * - cloud: Basic cloud disk.
@@ -238,51 +238,51 @@ export class LaunchTemplate extends pulumi.CustomResource {
      *
      * @deprecated Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
-    public readonly systemDiskCategory!: pulumi.Output<string>;
+    declare public readonly systemDiskCategory: pulumi.Output<string>;
     /**
      * System disk description. It cannot begin with http:// or https://.
      *
      * @deprecated Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
-    public readonly systemDiskDescription!: pulumi.Output<string>;
+    declare public readonly systemDiskDescription: pulumi.Output<string>;
     /**
      * System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
      *
      * @deprecated Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
-    public readonly systemDiskName!: pulumi.Output<string>;
+    declare public readonly systemDiskName: pulumi.Output<string>;
     /**
      * Size of the system disk, measured in GB. Value range: [20, 500].
      *
      * @deprecated Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
-    public readonly systemDiskSize!: pulumi.Output<number>;
+    declare public readonly systemDiskSize: pulumi.Output<number>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly templateResourceGroupId!: pulumi.Output<string | undefined>;
-    public readonly templateTags!: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly updateDefaultVersionNumber!: pulumi.Output<boolean | undefined>;
-    public readonly userData!: pulumi.Output<string>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly templateResourceGroupId: pulumi.Output<string | undefined>;
+    declare public readonly templateTags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly updateDefaultVersionNumber: pulumi.Output<boolean | undefined>;
+    declare public readonly userData: pulumi.Output<string>;
     /**
      * User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
      *
      * @deprecated Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
      */
-    public readonly userdata!: pulumi.Output<string>;
-    public readonly versionDescription!: pulumi.Output<string | undefined>;
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly userdata: pulumi.Output<string>;
+    declare public readonly versionDescription: pulumi.Output<string | undefined>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * When creating a VPC-Connected instance, you must specify its VSwitch ID.
      */
-    public readonly vswitchId!: pulumi.Output<string | undefined>;
+    declare public readonly vswitchId: pulumi.Output<string | undefined>;
     /**
      * The zone ID of the instance.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a LaunchTemplate resource with the given unique name, arguments, and options.
@@ -297,117 +297,117 @@ export class LaunchTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LaunchTemplateState | undefined;
-            resourceInputs["autoReleaseTime"] = state ? state.autoReleaseTime : undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
-            resourceInputs["dataDisks"] = state ? state.dataDisks : undefined;
-            resourceInputs["defaultVersionNumber"] = state ? state.defaultVersionNumber : undefined;
-            resourceInputs["deploymentSetId"] = state ? state.deploymentSetId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enableVmOsConfig"] = state ? state.enableVmOsConfig : undefined;
-            resourceInputs["hostName"] = state ? state.hostName : undefined;
-            resourceInputs["httpEndpoint"] = state ? state.httpEndpoint : undefined;
-            resourceInputs["httpPutResponseHopLimit"] = state ? state.httpPutResponseHopLimit : undefined;
-            resourceInputs["httpTokens"] = state ? state.httpTokens : undefined;
-            resourceInputs["imageId"] = state ? state.imageId : undefined;
-            resourceInputs["imageOptions"] = state ? state.imageOptions : undefined;
-            resourceInputs["imageOwnerAlias"] = state ? state.imageOwnerAlias : undefined;
-            resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
-            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["internetChargeType"] = state ? state.internetChargeType : undefined;
-            resourceInputs["internetMaxBandwidthIn"] = state ? state.internetMaxBandwidthIn : undefined;
-            resourceInputs["internetMaxBandwidthOut"] = state ? state.internetMaxBandwidthOut : undefined;
-            resourceInputs["ioOptimized"] = state ? state.ioOptimized : undefined;
-            resourceInputs["keyPairName"] = state ? state.keyPairName : undefined;
-            resourceInputs["latestVersionNumber"] = state ? state.latestVersionNumber : undefined;
-            resourceInputs["launchTemplateName"] = state ? state.launchTemplateName : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
-            resourceInputs["networkType"] = state ? state.networkType : undefined;
-            resourceInputs["passwordInherit"] = state ? state.passwordInherit : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
-            resourceInputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
-            resourceInputs["ramRoleName"] = state ? state.ramRoleName : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["securityEnhancementStrategy"] = state ? state.securityEnhancementStrategy : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            resourceInputs["spotDuration"] = state ? state.spotDuration : undefined;
-            resourceInputs["spotPriceLimit"] = state ? state.spotPriceLimit : undefined;
-            resourceInputs["spotStrategy"] = state ? state.spotStrategy : undefined;
-            resourceInputs["systemDisk"] = state ? state.systemDisk : undefined;
-            resourceInputs["systemDiskCategory"] = state ? state.systemDiskCategory : undefined;
-            resourceInputs["systemDiskDescription"] = state ? state.systemDiskDescription : undefined;
-            resourceInputs["systemDiskName"] = state ? state.systemDiskName : undefined;
-            resourceInputs["systemDiskSize"] = state ? state.systemDiskSize : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["templateResourceGroupId"] = state ? state.templateResourceGroupId : undefined;
-            resourceInputs["templateTags"] = state ? state.templateTags : undefined;
-            resourceInputs["updateDefaultVersionNumber"] = state ? state.updateDefaultVersionNumber : undefined;
-            resourceInputs["userData"] = state ? state.userData : undefined;
-            resourceInputs["userdata"] = state ? state.userdata : undefined;
-            resourceInputs["versionDescription"] = state ? state.versionDescription : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["autoReleaseTime"] = state?.autoReleaseTime;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["autoRenewPeriod"] = state?.autoRenewPeriod;
+            resourceInputs["dataDisks"] = state?.dataDisks;
+            resourceInputs["defaultVersionNumber"] = state?.defaultVersionNumber;
+            resourceInputs["deploymentSetId"] = state?.deploymentSetId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enableVmOsConfig"] = state?.enableVmOsConfig;
+            resourceInputs["hostName"] = state?.hostName;
+            resourceInputs["httpEndpoint"] = state?.httpEndpoint;
+            resourceInputs["httpPutResponseHopLimit"] = state?.httpPutResponseHopLimit;
+            resourceInputs["httpTokens"] = state?.httpTokens;
+            resourceInputs["imageId"] = state?.imageId;
+            resourceInputs["imageOptions"] = state?.imageOptions;
+            resourceInputs["imageOwnerAlias"] = state?.imageOwnerAlias;
+            resourceInputs["instanceChargeType"] = state?.instanceChargeType;
+            resourceInputs["instanceName"] = state?.instanceName;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["internetChargeType"] = state?.internetChargeType;
+            resourceInputs["internetMaxBandwidthIn"] = state?.internetMaxBandwidthIn;
+            resourceInputs["internetMaxBandwidthOut"] = state?.internetMaxBandwidthOut;
+            resourceInputs["ioOptimized"] = state?.ioOptimized;
+            resourceInputs["keyPairName"] = state?.keyPairName;
+            resourceInputs["latestVersionNumber"] = state?.latestVersionNumber;
+            resourceInputs["launchTemplateName"] = state?.launchTemplateName;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkInterfaces"] = state?.networkInterfaces;
+            resourceInputs["networkType"] = state?.networkType;
+            resourceInputs["passwordInherit"] = state?.passwordInherit;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["periodUnit"] = state?.periodUnit;
+            resourceInputs["privateIpAddress"] = state?.privateIpAddress;
+            resourceInputs["ramRoleName"] = state?.ramRoleName;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["securityEnhancementStrategy"] = state?.securityEnhancementStrategy;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["securityGroupIds"] = state?.securityGroupIds;
+            resourceInputs["spotDuration"] = state?.spotDuration;
+            resourceInputs["spotPriceLimit"] = state?.spotPriceLimit;
+            resourceInputs["spotStrategy"] = state?.spotStrategy;
+            resourceInputs["systemDisk"] = state?.systemDisk;
+            resourceInputs["systemDiskCategory"] = state?.systemDiskCategory;
+            resourceInputs["systemDiskDescription"] = state?.systemDiskDescription;
+            resourceInputs["systemDiskName"] = state?.systemDiskName;
+            resourceInputs["systemDiskSize"] = state?.systemDiskSize;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["templateResourceGroupId"] = state?.templateResourceGroupId;
+            resourceInputs["templateTags"] = state?.templateTags;
+            resourceInputs["updateDefaultVersionNumber"] = state?.updateDefaultVersionNumber;
+            resourceInputs["userData"] = state?.userData;
+            resourceInputs["userdata"] = state?.userdata;
+            resourceInputs["versionDescription"] = state?.versionDescription;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as LaunchTemplateArgs | undefined;
-            resourceInputs["autoReleaseTime"] = args ? args.autoReleaseTime : undefined;
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
-            resourceInputs["dataDisks"] = args ? args.dataDisks : undefined;
-            resourceInputs["defaultVersionNumber"] = args ? args.defaultVersionNumber : undefined;
-            resourceInputs["deploymentSetId"] = args ? args.deploymentSetId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enableVmOsConfig"] = args ? args.enableVmOsConfig : undefined;
-            resourceInputs["hostName"] = args ? args.hostName : undefined;
-            resourceInputs["httpEndpoint"] = args ? args.httpEndpoint : undefined;
-            resourceInputs["httpPutResponseHopLimit"] = args ? args.httpPutResponseHopLimit : undefined;
-            resourceInputs["httpTokens"] = args ? args.httpTokens : undefined;
-            resourceInputs["imageId"] = args ? args.imageId : undefined;
-            resourceInputs["imageOptions"] = args ? args.imageOptions : undefined;
-            resourceInputs["imageOwnerAlias"] = args ? args.imageOwnerAlias : undefined;
-            resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
-            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["internetChargeType"] = args ? args.internetChargeType : undefined;
-            resourceInputs["internetMaxBandwidthIn"] = args ? args.internetMaxBandwidthIn : undefined;
-            resourceInputs["internetMaxBandwidthOut"] = args ? args.internetMaxBandwidthOut : undefined;
-            resourceInputs["ioOptimized"] = args ? args.ioOptimized : undefined;
-            resourceInputs["keyPairName"] = args ? args.keyPairName : undefined;
-            resourceInputs["launchTemplateName"] = args ? args.launchTemplateName : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
-            resourceInputs["networkType"] = args ? args.networkType : undefined;
-            resourceInputs["passwordInherit"] = args ? args.passwordInherit : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
-            resourceInputs["privateIpAddress"] = args ? args.privateIpAddress : undefined;
-            resourceInputs["ramRoleName"] = args ? args.ramRoleName : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["securityEnhancementStrategy"] = args ? args.securityEnhancementStrategy : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            resourceInputs["spotDuration"] = args ? args.spotDuration : undefined;
-            resourceInputs["spotPriceLimit"] = args ? args.spotPriceLimit : undefined;
-            resourceInputs["spotStrategy"] = args ? args.spotStrategy : undefined;
-            resourceInputs["systemDisk"] = args ? args.systemDisk : undefined;
-            resourceInputs["systemDiskCategory"] = args ? args.systemDiskCategory : undefined;
-            resourceInputs["systemDiskDescription"] = args ? args.systemDiskDescription : undefined;
-            resourceInputs["systemDiskName"] = args ? args.systemDiskName : undefined;
-            resourceInputs["systemDiskSize"] = args ? args.systemDiskSize : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["templateResourceGroupId"] = args ? args.templateResourceGroupId : undefined;
-            resourceInputs["templateTags"] = args ? args.templateTags : undefined;
-            resourceInputs["updateDefaultVersionNumber"] = args ? args.updateDefaultVersionNumber : undefined;
-            resourceInputs["userData"] = args ? args.userData : undefined;
-            resourceInputs["userdata"] = args ? args.userdata : undefined;
-            resourceInputs["versionDescription"] = args ? args.versionDescription : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["autoReleaseTime"] = args?.autoReleaseTime;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["autoRenewPeriod"] = args?.autoRenewPeriod;
+            resourceInputs["dataDisks"] = args?.dataDisks;
+            resourceInputs["defaultVersionNumber"] = args?.defaultVersionNumber;
+            resourceInputs["deploymentSetId"] = args?.deploymentSetId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enableVmOsConfig"] = args?.enableVmOsConfig;
+            resourceInputs["hostName"] = args?.hostName;
+            resourceInputs["httpEndpoint"] = args?.httpEndpoint;
+            resourceInputs["httpPutResponseHopLimit"] = args?.httpPutResponseHopLimit;
+            resourceInputs["httpTokens"] = args?.httpTokens;
+            resourceInputs["imageId"] = args?.imageId;
+            resourceInputs["imageOptions"] = args?.imageOptions;
+            resourceInputs["imageOwnerAlias"] = args?.imageOwnerAlias;
+            resourceInputs["instanceChargeType"] = args?.instanceChargeType;
+            resourceInputs["instanceName"] = args?.instanceName;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["internetChargeType"] = args?.internetChargeType;
+            resourceInputs["internetMaxBandwidthIn"] = args?.internetMaxBandwidthIn;
+            resourceInputs["internetMaxBandwidthOut"] = args?.internetMaxBandwidthOut;
+            resourceInputs["ioOptimized"] = args?.ioOptimized;
+            resourceInputs["keyPairName"] = args?.keyPairName;
+            resourceInputs["launchTemplateName"] = args?.launchTemplateName;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkInterfaces"] = args?.networkInterfaces;
+            resourceInputs["networkType"] = args?.networkType;
+            resourceInputs["passwordInherit"] = args?.passwordInherit;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["periodUnit"] = args?.periodUnit;
+            resourceInputs["privateIpAddress"] = args?.privateIpAddress;
+            resourceInputs["ramRoleName"] = args?.ramRoleName;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["securityEnhancementStrategy"] = args?.securityEnhancementStrategy;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["securityGroupIds"] = args?.securityGroupIds;
+            resourceInputs["spotDuration"] = args?.spotDuration;
+            resourceInputs["spotPriceLimit"] = args?.spotPriceLimit;
+            resourceInputs["spotStrategy"] = args?.spotStrategy;
+            resourceInputs["systemDisk"] = args?.systemDisk;
+            resourceInputs["systemDiskCategory"] = args?.systemDiskCategory;
+            resourceInputs["systemDiskDescription"] = args?.systemDiskDescription;
+            resourceInputs["systemDiskName"] = args?.systemDiskName;
+            resourceInputs["systemDiskSize"] = args?.systemDiskSize;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["templateResourceGroupId"] = args?.templateResourceGroupId;
+            resourceInputs["templateTags"] = args?.templateTags;
+            resourceInputs["updateDefaultVersionNumber"] = args?.updateDefaultVersionNumber;
+            resourceInputs["userData"] = args?.userData;
+            resourceInputs["userdata"] = args?.userdata;
+            resourceInputs["versionDescription"] = args?.versionDescription;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["latestVersionNumber"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

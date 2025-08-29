@@ -34,28 +34,28 @@ export class Cluster extends pulumi.CustomResource {
         return obj['__pulumiType'] === Cluster.__pulumiType;
     }
 
-    public /*out*/ readonly agentVersion!: pulumi.Output<string>;
-    public readonly cidrBlock!: pulumi.Output<string>;
-    public readonly diskCategory!: pulumi.Output<string | undefined>;
-    public readonly diskSize!: pulumi.Output<number | undefined>;
-    public readonly imageId!: pulumi.Output<string | undefined>;
-    public readonly instanceType!: pulumi.Output<string>;
-    public readonly isOutdated!: pulumi.Output<boolean | undefined>;
-    public readonly name!: pulumi.Output<string>;
-    public readonly namePrefix!: pulumi.Output<string | undefined>;
-    public readonly needSlb!: pulumi.Output<boolean | undefined>;
-    public readonly nodeNumber!: pulumi.Output<number | undefined>;
-    public /*out*/ readonly nodes!: pulumi.Output<outputs.cs.ClusterNode[]>;
-    public readonly password!: pulumi.Output<string>;
-    public readonly releaseEip!: pulumi.Output<boolean | undefined>;
-    public /*out*/ readonly securityGroupId!: pulumi.Output<string>;
+    declare public /*out*/ readonly agentVersion: pulumi.Output<string>;
+    declare public readonly cidrBlock: pulumi.Output<string>;
+    declare public readonly diskCategory: pulumi.Output<string | undefined>;
+    declare public readonly diskSize: pulumi.Output<number | undefined>;
+    declare public readonly imageId: pulumi.Output<string | undefined>;
+    declare public readonly instanceType: pulumi.Output<string>;
+    declare public readonly isOutdated: pulumi.Output<boolean | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly namePrefix: pulumi.Output<string | undefined>;
+    declare public readonly needSlb: pulumi.Output<boolean | undefined>;
+    declare public readonly nodeNumber: pulumi.Output<number | undefined>;
+    declare public /*out*/ readonly nodes: pulumi.Output<outputs.cs.ClusterNode[]>;
+    declare public readonly password: pulumi.Output<string>;
+    declare public readonly releaseEip: pulumi.Output<boolean | undefined>;
+    declare public /*out*/ readonly securityGroupId: pulumi.Output<string>;
     /**
      * @deprecated Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
      */
-    public readonly size!: pulumi.Output<number | undefined>;
-    public /*out*/ readonly slbId!: pulumi.Output<string>;
-    public /*out*/ readonly vpcId!: pulumi.Output<string>;
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly size: pulumi.Output<number | undefined>;
+    declare public /*out*/ readonly slbId: pulumi.Output<string>;
+    declare public /*out*/ readonly vpcId: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -70,53 +70,53 @@ export class Cluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
-            resourceInputs["agentVersion"] = state ? state.agentVersion : undefined;
-            resourceInputs["cidrBlock"] = state ? state.cidrBlock : undefined;
-            resourceInputs["diskCategory"] = state ? state.diskCategory : undefined;
-            resourceInputs["diskSize"] = state ? state.diskSize : undefined;
-            resourceInputs["imageId"] = state ? state.imageId : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["isOutdated"] = state ? state.isOutdated : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namePrefix"] = state ? state.namePrefix : undefined;
-            resourceInputs["needSlb"] = state ? state.needSlb : undefined;
-            resourceInputs["nodeNumber"] = state ? state.nodeNumber : undefined;
-            resourceInputs["nodes"] = state ? state.nodes : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["releaseEip"] = state ? state.releaseEip : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["slbId"] = state ? state.slbId : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["agentVersion"] = state?.agentVersion;
+            resourceInputs["cidrBlock"] = state?.cidrBlock;
+            resourceInputs["diskCategory"] = state?.diskCategory;
+            resourceInputs["diskSize"] = state?.diskSize;
+            resourceInputs["imageId"] = state?.imageId;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["isOutdated"] = state?.isOutdated;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namePrefix"] = state?.namePrefix;
+            resourceInputs["needSlb"] = state?.needSlb;
+            resourceInputs["nodeNumber"] = state?.nodeNumber;
+            resourceInputs["nodes"] = state?.nodes;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["releaseEip"] = state?.releaseEip;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["slbId"] = state?.slbId;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            if ((!args || args.cidrBlock === undefined) && !opts.urn) {
+            if (args?.cidrBlock === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cidrBlock'");
             }
-            if ((!args || args.instanceType === undefined) && !opts.urn) {
+            if (args?.instanceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceType'");
             }
-            if ((!args || args.password === undefined) && !opts.urn) {
+            if (args?.password === undefined && !opts.urn) {
                 throw new Error("Missing required property 'password'");
             }
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+            if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            resourceInputs["cidrBlock"] = args ? args.cidrBlock : undefined;
-            resourceInputs["diskCategory"] = args ? args.diskCategory : undefined;
-            resourceInputs["diskSize"] = args ? args.diskSize : undefined;
-            resourceInputs["imageId"] = args ? args.imageId : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["isOutdated"] = args ? args.isOutdated : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namePrefix"] = args ? args.namePrefix : undefined;
-            resourceInputs["needSlb"] = args ? args.needSlb : undefined;
-            resourceInputs["nodeNumber"] = args ? args.nodeNumber : undefined;
+            resourceInputs["cidrBlock"] = args?.cidrBlock;
+            resourceInputs["diskCategory"] = args?.diskCategory;
+            resourceInputs["diskSize"] = args?.diskSize;
+            resourceInputs["imageId"] = args?.imageId;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["isOutdated"] = args?.isOutdated;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namePrefix"] = args?.namePrefix;
+            resourceInputs["needSlb"] = args?.needSlb;
+            resourceInputs["nodeNumber"] = args?.nodeNumber;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["releaseEip"] = args ? args.releaseEip : undefined;
-            resourceInputs["size"] = args ? args.size : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["releaseEip"] = args?.releaseEip;
+            resourceInputs["size"] = args?.size;
+            resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["agentVersion"] = undefined /*out*/;
             resourceInputs["nodes"] = undefined /*out*/;
             resourceInputs["securityGroupId"] = undefined /*out*/;

@@ -67,15 +67,15 @@ export class AclEntryAttachment extends pulumi.CustomResource {
     /**
      * The ID of the Acl.
      */
-    public readonly aclId!: pulumi.Output<string>;
+    declare public readonly aclId: pulumi.Output<string>;
     /**
      * The comment of the entry.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * The CIDR blocks.
      */
-    public readonly entry!: pulumi.Output<string>;
+    declare public readonly entry: pulumi.Output<string>;
 
     /**
      * Create a AclEntryAttachment resource with the given unique name, arguments, and options.
@@ -90,20 +90,20 @@ export class AclEntryAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclEntryAttachmentState | undefined;
-            resourceInputs["aclId"] = state ? state.aclId : undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["entry"] = state ? state.entry : undefined;
+            resourceInputs["aclId"] = state?.aclId;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["entry"] = state?.entry;
         } else {
             const args = argsOrState as AclEntryAttachmentArgs | undefined;
-            if ((!args || args.aclId === undefined) && !opts.urn) {
+            if (args?.aclId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aclId'");
             }
-            if ((!args || args.entry === undefined) && !opts.urn) {
+            if (args?.entry === undefined && !opts.urn) {
                 throw new Error("Missing required property 'entry'");
             }
-            resourceInputs["aclId"] = args ? args.aclId : undefined;
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["entry"] = args ? args.entry : undefined;
+            resourceInputs["aclId"] = args?.aclId;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["entry"] = args?.entry;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AclEntryAttachment.__pulumiType, name, resourceInputs, opts);

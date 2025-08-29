@@ -68,31 +68,31 @@ export class SecurityPolicy extends pulumi.CustomResource {
     /**
      * The supported cipher suites, which are determined by the TLS protocol version.The specified cipher suites must be supported by at least one TLS protocol version that you select.
      */
-    public readonly ciphers!: pulumi.Output<string[]>;
+    declare public readonly ciphers: pulumi.Output<string[]>;
     /**
      * The dry run.
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
      */
-    public readonly securityPolicyName!: pulumi.Output<string>;
+    declare public readonly securityPolicyName: pulumi.Output<string>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
      */
-    public readonly tlsVersions!: pulumi.Output<string[]>;
+    declare public readonly tlsVersions: pulumi.Output<string[]>;
 
     /**
      * Create a SecurityPolicy resource with the given unique name, arguments, and options.
@@ -107,30 +107,30 @@ export class SecurityPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecurityPolicyState | undefined;
-            resourceInputs["ciphers"] = state ? state.ciphers : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["securityPolicyName"] = state ? state.securityPolicyName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["tlsVersions"] = state ? state.tlsVersions : undefined;
+            resourceInputs["ciphers"] = state?.ciphers;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["securityPolicyName"] = state?.securityPolicyName;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["tlsVersions"] = state?.tlsVersions;
         } else {
             const args = argsOrState as SecurityPolicyArgs | undefined;
-            if ((!args || args.ciphers === undefined) && !opts.urn) {
+            if (args?.ciphers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ciphers'");
             }
-            if ((!args || args.securityPolicyName === undefined) && !opts.urn) {
+            if (args?.securityPolicyName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securityPolicyName'");
             }
-            if ((!args || args.tlsVersions === undefined) && !opts.urn) {
+            if (args?.tlsVersions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tlsVersions'");
             }
-            resourceInputs["ciphers"] = args ? args.ciphers : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["securityPolicyName"] = args ? args.securityPolicyName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["tlsVersions"] = args ? args.tlsVersions : undefined;
+            resourceInputs["ciphers"] = args?.ciphers;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["securityPolicyName"] = args?.securityPolicyName;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["tlsVersions"] = args?.tlsVersions;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

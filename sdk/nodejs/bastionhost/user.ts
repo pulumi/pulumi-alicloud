@@ -108,23 +108,23 @@ export class User extends pulumi.CustomResource {
     /**
      * Specify the New of the User That Created the Remark Information. Supports up to 500 Characters.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * Specify the New Created the User's Display Name. Supports up to 128 Characters.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Specify the New User's Mailbox.
      */
-    public readonly email!: pulumi.Output<string | undefined>;
+    declare public readonly email: pulumi.Output<string | undefined>;
     /**
      * You Want to Query the User the Bastion Host ID of.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Specify the New of the User That Created a Different Mobile Phone Number from Your.
      */
-    public readonly mobile!: pulumi.Output<string | undefined>;
+    declare public readonly mobile: pulumi.Output<string | undefined>;
     /**
      * Specify the New Create User Mobile Phone Number of the International Domain Name. The Default Value Is the CN. Valid Values:
      * * CN: Mainland China (+86)
@@ -147,11 +147,11 @@ export class User extends pulumi.CustomResource {
      * * CH: Switzerland (+41)
      * * SE: Sweden (+46)
      */
-    public readonly mobileCountryCode!: pulumi.Output<string>;
+    declare public readonly mobileCountryCode: pulumi.Output<string>;
     /**
      * Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User That Is, Source Value for Local, this Parameter Is Required.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * Specify the New of the User That Created the Source. Valid Values:
      * * Local: Local User
@@ -160,23 +160,23 @@ export class User extends pulumi.CustomResource {
      * * LDAP: LDAP-authenticated User
      * > **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
      */
-    public readonly source!: pulumi.Output<string>;
+    declare public readonly source: pulumi.Output<string>;
     /**
      * Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
      */
-    public readonly sourceUserId!: pulumi.Output<string | undefined>;
+    declare public readonly sourceUserId: pulumi.Output<string | undefined>;
     /**
      * The status of the resource. Valid values: `Frozen`, `Normal`.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The User ID.
      */
-    public /*out*/ readonly userId!: pulumi.Output<string>;
+    declare public /*out*/ readonly userId: pulumi.Output<string>;
     /**
      * Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
      */
-    public readonly userName!: pulumi.Output<string>;
+    declare public readonly userName: pulumi.Output<string>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -191,40 +191,40 @@ export class User extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["mobile"] = state ? state.mobile : undefined;
-            resourceInputs["mobileCountryCode"] = state ? state.mobileCountryCode : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
-            resourceInputs["sourceUserId"] = state ? state.sourceUserId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
-            resourceInputs["userName"] = state ? state.userName : undefined;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["mobile"] = state?.mobile;
+            resourceInputs["mobileCountryCode"] = state?.mobileCountryCode;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["source"] = state?.source;
+            resourceInputs["sourceUserId"] = state?.sourceUserId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["userId"] = state?.userId;
+            resourceInputs["userName"] = state?.userName;
         } else {
             const args = argsOrState as UserArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.source === undefined) && !opts.urn) {
+            if (args?.source === undefined && !opts.urn) {
                 throw new Error("Missing required property 'source'");
             }
-            if ((!args || args.userName === undefined) && !opts.urn) {
+            if (args?.userName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userName'");
             }
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["mobile"] = args ? args.mobile : undefined;
-            resourceInputs["mobileCountryCode"] = args ? args.mobileCountryCode : undefined;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["mobile"] = args?.mobile;
+            resourceInputs["mobileCountryCode"] = args?.mobileCountryCode;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
-            resourceInputs["sourceUserId"] = args ? args.sourceUserId : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["userName"] = args ? args.userName : undefined;
+            resourceInputs["source"] = args?.source;
+            resourceInputs["sourceUserId"] = args?.sourceUserId;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["userName"] = args?.userName;
             resourceInputs["userId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

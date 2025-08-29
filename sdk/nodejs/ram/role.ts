@@ -87,69 +87,69 @@ export class Role extends pulumi.CustomResource {
     /**
      * The Alibaba Cloud Resource Name (ARN) of the RAM role.
      */
-    public /*out*/ readonly arn!: pulumi.Output<string>;
+    declare public /*out*/ readonly arn: pulumi.Output<string>;
     /**
      * The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
      */
-    public readonly assumeRolePolicyDocument!: pulumi.Output<string>;
+    declare public readonly assumeRolePolicyDocument: pulumi.Output<string>;
     /**
      * (Available since v1.252.0) The time when the RAM role was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The description of the RAM role.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Field `document` has been deprecated from provider version 1.252.0. New field `assumeRolePolicyDocument` instead.
      *
      * @deprecated Field 'document' has been deprecated from provider version 1.252.0. New field 'assume_role_policy_document' instead.
      */
-    public readonly document!: pulumi.Output<string>;
+    declare public readonly document: pulumi.Output<string>;
     /**
      * Specifies whether to force delete the Role. Default value: `false`. Valid values:
      */
-    public readonly force!: pulumi.Output<boolean | undefined>;
+    declare public readonly force: pulumi.Output<boolean | undefined>;
     /**
      * The maximum session time of the RAM role. Default value: `3600`. Valid values: `3600` to `43200`.
      */
-    public readonly maxSessionDuration!: pulumi.Output<number>;
+    declare public readonly maxSessionDuration: pulumi.Output<number>;
     /**
      * Field `name` has been deprecated from provider version 1.252.0. New field `roleName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.252.0. New field 'role_name' instead.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Field `ramUsers` has been deprecated from provider version 1.49.0. New field `document` instead.
      *
      * @deprecated Field 'ram_users' has been deprecated from provider version 1.49.0. New field 'document' instead.
      */
-    public readonly ramUsers!: pulumi.Output<string[]>;
+    declare public readonly ramUsers: pulumi.Output<string[]>;
     /**
      * The ID of the RAM role.
      */
-    public /*out*/ readonly roleId!: pulumi.Output<string>;
+    declare public /*out*/ readonly roleId: pulumi.Output<string>;
     /**
      * The name of the RAM role.
      */
-    public readonly roleName!: pulumi.Output<string>;
+    declare public readonly roleName: pulumi.Output<string>;
     /**
      * Field `services` has been deprecated from provider version 1.49.0. New field `document` instead.
      *
      * @deprecated Field 'services' has been deprecated from provider version 1.49.0. New field 'document' instead.
      */
-    public readonly services!: pulumi.Output<string[]>;
+    declare public readonly services: pulumi.Output<string[]>;
     /**
      * The list of tags for the role.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
      *
      * @deprecated Field 'version' has been deprecated from provider version 1.49.0. New field 'document' instead.
      */
-    public readonly version!: pulumi.Output<string | undefined>;
+    declare public readonly version: pulumi.Output<string | undefined>;
 
     /**
      * Create a Role resource with the given unique name, arguments, and options.
@@ -164,33 +164,33 @@ export class Role extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RoleState | undefined;
-            resourceInputs["arn"] = state ? state.arn : undefined;
-            resourceInputs["assumeRolePolicyDocument"] = state ? state.assumeRolePolicyDocument : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["document"] = state ? state.document : undefined;
-            resourceInputs["force"] = state ? state.force : undefined;
-            resourceInputs["maxSessionDuration"] = state ? state.maxSessionDuration : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["ramUsers"] = state ? state.ramUsers : undefined;
-            resourceInputs["roleId"] = state ? state.roleId : undefined;
-            resourceInputs["roleName"] = state ? state.roleName : undefined;
-            resourceInputs["services"] = state ? state.services : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["arn"] = state?.arn;
+            resourceInputs["assumeRolePolicyDocument"] = state?.assumeRolePolicyDocument;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["document"] = state?.document;
+            resourceInputs["force"] = state?.force;
+            resourceInputs["maxSessionDuration"] = state?.maxSessionDuration;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["ramUsers"] = state?.ramUsers;
+            resourceInputs["roleId"] = state?.roleId;
+            resourceInputs["roleName"] = state?.roleName;
+            resourceInputs["services"] = state?.services;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as RoleArgs | undefined;
-            resourceInputs["assumeRolePolicyDocument"] = args ? args.assumeRolePolicyDocument : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["document"] = args ? args.document : undefined;
-            resourceInputs["force"] = args ? args.force : undefined;
-            resourceInputs["maxSessionDuration"] = args ? args.maxSessionDuration : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["ramUsers"] = args ? args.ramUsers : undefined;
-            resourceInputs["roleName"] = args ? args.roleName : undefined;
-            resourceInputs["services"] = args ? args.services : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["assumeRolePolicyDocument"] = args?.assumeRolePolicyDocument;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["document"] = args?.document;
+            resourceInputs["force"] = args?.force;
+            resourceInputs["maxSessionDuration"] = args?.maxSessionDuration;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["ramUsers"] = args?.ramUsers;
+            resourceInputs["roleName"] = args?.roleName;
+            resourceInputs["services"] = args?.services;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["version"] = args?.version;
             resourceInputs["arn"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["roleId"] = undefined /*out*/;

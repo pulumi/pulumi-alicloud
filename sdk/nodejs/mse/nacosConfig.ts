@@ -103,51 +103,51 @@ export class NacosConfig extends pulumi.CustomResource {
     /**
      * The language type of the returned information. Valid values: `zh`, `en`.
      */
-    public readonly acceptLanguage!: pulumi.Output<string | undefined>;
+    declare public readonly acceptLanguage: pulumi.Output<string | undefined>;
     /**
      * The name of the application.
      */
-    public readonly appName!: pulumi.Output<string | undefined>;
+    declare public readonly appName: pulumi.Output<string | undefined>;
     /**
      * The list of IP addresses where the beta release of the configuration is performed.
      */
-    public readonly betaIps!: pulumi.Output<string>;
+    declare public readonly betaIps: pulumi.Output<string>;
     /**
      * The content of the configuration.
      */
-    public readonly content!: pulumi.Output<string>;
+    declare public readonly content: pulumi.Output<string>;
     /**
      * The ID of the data.
      */
-    public readonly dataId!: pulumi.Output<string>;
+    declare public readonly dataId: pulumi.Output<string>;
     /**
      * The description of the configuration.
      */
-    public readonly desc!: pulumi.Output<string | undefined>;
+    declare public readonly desc: pulumi.Output<string | undefined>;
     /**
      * The encryption key.
      */
-    public /*out*/ readonly encryptedDataKey!: pulumi.Output<string>;
+    declare public /*out*/ readonly encryptedDataKey: pulumi.Output<string>;
     /**
      * The ID of the group.
      */
-    public readonly group!: pulumi.Output<string>;
+    declare public readonly group: pulumi.Output<string>;
     /**
      * The ID of the instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The id of Namespace. If you want to create a config under the `public` namespace, this parameter can be set to an empty string  *`""`* or just not set this parameter.
      */
-    public readonly namespaceId!: pulumi.Output<string | undefined>;
+    declare public readonly namespaceId: pulumi.Output<string | undefined>;
     /**
      * The tags of the configuration.
      */
-    public readonly tags!: pulumi.Output<string | undefined>;
+    declare public readonly tags: pulumi.Output<string | undefined>;
     /**
      * The format of the configuration. Supported formats include TEXT, JSON, and XML.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a NacosConfig resource with the given unique name, arguments, and options.
@@ -162,43 +162,43 @@ export class NacosConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NacosConfigState | undefined;
-            resourceInputs["acceptLanguage"] = state ? state.acceptLanguage : undefined;
-            resourceInputs["appName"] = state ? state.appName : undefined;
-            resourceInputs["betaIps"] = state ? state.betaIps : undefined;
-            resourceInputs["content"] = state ? state.content : undefined;
-            resourceInputs["dataId"] = state ? state.dataId : undefined;
-            resourceInputs["desc"] = state ? state.desc : undefined;
-            resourceInputs["encryptedDataKey"] = state ? state.encryptedDataKey : undefined;
-            resourceInputs["group"] = state ? state.group : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["namespaceId"] = state ? state.namespaceId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["acceptLanguage"] = state?.acceptLanguage;
+            resourceInputs["appName"] = state?.appName;
+            resourceInputs["betaIps"] = state?.betaIps;
+            resourceInputs["content"] = state?.content;
+            resourceInputs["dataId"] = state?.dataId;
+            resourceInputs["desc"] = state?.desc;
+            resourceInputs["encryptedDataKey"] = state?.encryptedDataKey;
+            resourceInputs["group"] = state?.group;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["namespaceId"] = state?.namespaceId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as NacosConfigArgs | undefined;
-            if ((!args || args.content === undefined) && !opts.urn) {
+            if (args?.content === undefined && !opts.urn) {
                 throw new Error("Missing required property 'content'");
             }
-            if ((!args || args.dataId === undefined) && !opts.urn) {
+            if (args?.dataId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataId'");
             }
-            if ((!args || args.group === undefined) && !opts.urn) {
+            if (args?.group === undefined && !opts.urn) {
                 throw new Error("Missing required property 'group'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["acceptLanguage"] = args ? args.acceptLanguage : undefined;
-            resourceInputs["appName"] = args ? args.appName : undefined;
-            resourceInputs["betaIps"] = args ? args.betaIps : undefined;
-            resourceInputs["content"] = args ? args.content : undefined;
-            resourceInputs["dataId"] = args ? args.dataId : undefined;
-            resourceInputs["desc"] = args ? args.desc : undefined;
-            resourceInputs["group"] = args ? args.group : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["acceptLanguage"] = args?.acceptLanguage;
+            resourceInputs["appName"] = args?.appName;
+            resourceInputs["betaIps"] = args?.betaIps;
+            resourceInputs["content"] = args?.content;
+            resourceInputs["dataId"] = args?.dataId;
+            resourceInputs["desc"] = args?.desc;
+            resourceInputs["group"] = args?.group;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["namespaceId"] = args?.namespaceId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["type"] = args?.type;
             resourceInputs["encryptedDataKey"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

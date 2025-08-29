@@ -100,19 +100,19 @@ export class DbResourceGroup extends pulumi.CustomResource {
     /**
      * The instance ID.> You can call the DescribeDBInstances operation to view the instance IDs of all AnalyticDB PostgreSQL instances in the target region.
      */
-    public readonly dbInstanceId!: pulumi.Output<string>;
+    declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
      * Resource group configuration.
      */
-    public readonly resourceGroupConfig!: pulumi.Output<string>;
+    declare public readonly resourceGroupConfig: pulumi.Output<string>;
     /**
      * Resource group name.
      */
-    public readonly resourceGroupName!: pulumi.Output<string>;
+    declare public readonly resourceGroupName: pulumi.Output<string>;
     /**
      * Role List
      */
-    public readonly roleLists!: pulumi.Output<string[] | undefined>;
+    declare public readonly roleLists: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a DbResourceGroup resource with the given unique name, arguments, and options.
@@ -127,25 +127,25 @@ export class DbResourceGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DbResourceGroupState | undefined;
-            resourceInputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
-            resourceInputs["resourceGroupConfig"] = state ? state.resourceGroupConfig : undefined;
-            resourceInputs["resourceGroupName"] = state ? state.resourceGroupName : undefined;
-            resourceInputs["roleLists"] = state ? state.roleLists : undefined;
+            resourceInputs["dbInstanceId"] = state?.dbInstanceId;
+            resourceInputs["resourceGroupConfig"] = state?.resourceGroupConfig;
+            resourceInputs["resourceGroupName"] = state?.resourceGroupName;
+            resourceInputs["roleLists"] = state?.roleLists;
         } else {
             const args = argsOrState as DbResourceGroupArgs | undefined;
-            if ((!args || args.dbInstanceId === undefined) && !opts.urn) {
+            if (args?.dbInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceId'");
             }
-            if ((!args || args.resourceGroupConfig === undefined) && !opts.urn) {
+            if (args?.resourceGroupConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupConfig'");
             }
-            if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
+            if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
-            resourceInputs["resourceGroupConfig"] = args ? args.resourceGroupConfig : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["roleLists"] = args ? args.roleLists : undefined;
+            resourceInputs["dbInstanceId"] = args?.dbInstanceId;
+            resourceInputs["resourceGroupConfig"] = args?.resourceGroupConfig;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["roleLists"] = args?.roleLists;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DbResourceGroup.__pulumiType, name, resourceInputs, opts);

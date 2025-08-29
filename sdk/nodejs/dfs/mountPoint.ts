@@ -95,47 +95,47 @@ export class MountPoint extends pulumi.CustomResource {
     /**
      * The id of the permission group associated with the Mount point, which is used to set the access permissions of the Mount point.
      */
-    public readonly accessGroupId!: pulumi.Output<string>;
+    declare public readonly accessGroupId: pulumi.Output<string>;
     /**
      * The mount point alias prefix, which specifies the mount point alias prefix.
      */
-    public readonly aliasPrefix!: pulumi.Output<string | undefined>;
+    declare public readonly aliasPrefix: pulumi.Output<string | undefined>;
     /**
      * The creation time of the Mount point resource.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The description of the Mount point.  No more than 32 characters in length.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Unique file system identifier, used to retrieve specified file system resources.
      */
-    public readonly fileSystemId!: pulumi.Output<string>;
+    declare public readonly fileSystemId: pulumi.Output<string>;
     /**
      * The unique identifier of the Mount point, which is used to retrieve the specified mount point resources.
      */
-    public /*out*/ readonly mountPointId!: pulumi.Output<string>;
+    declare public /*out*/ readonly mountPointId: pulumi.Output<string>;
     /**
      * The network type of the Mount point.  Only VPC (VPC) is supported.
      */
-    public readonly networkType!: pulumi.Output<string>;
+    declare public readonly networkType: pulumi.Output<string>;
     /**
      * (Available since v1.242.0) The region ID of the Mount Point.
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * VSwitch ID, which specifies the VSwitch resource used to create the mount point.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
 
     /**
      * Create a MountPoint resource with the given unique name, arguments, and options.
@@ -150,42 +150,42 @@ export class MountPoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MountPointState | undefined;
-            resourceInputs["accessGroupId"] = state ? state.accessGroupId : undefined;
-            resourceInputs["aliasPrefix"] = state ? state.aliasPrefix : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["fileSystemId"] = state ? state.fileSystemId : undefined;
-            resourceInputs["mountPointId"] = state ? state.mountPointId : undefined;
-            resourceInputs["networkType"] = state ? state.networkType : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["accessGroupId"] = state?.accessGroupId;
+            resourceInputs["aliasPrefix"] = state?.aliasPrefix;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["fileSystemId"] = state?.fileSystemId;
+            resourceInputs["mountPointId"] = state?.mountPointId;
+            resourceInputs["networkType"] = state?.networkType;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
         } else {
             const args = argsOrState as MountPointArgs | undefined;
-            if ((!args || args.accessGroupId === undefined) && !opts.urn) {
+            if (args?.accessGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accessGroupId'");
             }
-            if ((!args || args.fileSystemId === undefined) && !opts.urn) {
+            if (args?.fileSystemId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fileSystemId'");
             }
-            if ((!args || args.networkType === undefined) && !opts.urn) {
+            if (args?.networkType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkType'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+            if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            resourceInputs["accessGroupId"] = args ? args.accessGroupId : undefined;
-            resourceInputs["aliasPrefix"] = args ? args.aliasPrefix : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["fileSystemId"] = args ? args.fileSystemId : undefined;
-            resourceInputs["networkType"] = args ? args.networkType : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["accessGroupId"] = args?.accessGroupId;
+            resourceInputs["aliasPrefix"] = args?.aliasPrefix;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["fileSystemId"] = args?.fileSystemId;
+            resourceInputs["networkType"] = args?.networkType;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["mountPointId"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;

@@ -73,39 +73,39 @@ export class Eip extends pulumi.CustomResource {
     /**
      * The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
      */
-    public readonly bandwidth!: pulumi.Output<number>;
+    declare public readonly bandwidth: pulumi.Output<number>;
     /**
      * The creation time of the EIP instance.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The description of the EIP.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of the EIP.
      */
-    public readonly eipName!: pulumi.Output<string | undefined>;
+    declare public readonly eipName: pulumi.Output<string | undefined>;
     /**
      * Ens node ID.
      */
-    public readonly ensRegionId!: pulumi.Output<string>;
+    declare public readonly ensRegionId: pulumi.Output<string>;
     /**
      * The metering method of the EIP. Valid value: `95BandwidthByMonth`.
      */
-    public readonly internetChargeType!: pulumi.Output<string>;
+    declare public readonly internetChargeType: pulumi.Output<string>;
     /**
      * The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
      */
-    public readonly isp!: pulumi.Output<string>;
+    declare public readonly isp: pulumi.Output<string>;
     /**
      * The billing method of the EIP. Valid value: `PayAsYouGo`.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * The status of the EIP.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a Eip resource with the given unique name, arguments, and options.
@@ -120,33 +120,33 @@ export class Eip extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EipState | undefined;
-            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["eipName"] = state ? state.eipName : undefined;
-            resourceInputs["ensRegionId"] = state ? state.ensRegionId : undefined;
-            resourceInputs["internetChargeType"] = state ? state.internetChargeType : undefined;
-            resourceInputs["isp"] = state ? state.isp : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["bandwidth"] = state?.bandwidth;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["eipName"] = state?.eipName;
+            resourceInputs["ensRegionId"] = state?.ensRegionId;
+            resourceInputs["internetChargeType"] = state?.internetChargeType;
+            resourceInputs["isp"] = state?.isp;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as EipArgs | undefined;
-            if ((!args || args.ensRegionId === undefined) && !opts.urn) {
+            if (args?.ensRegionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ensRegionId'");
             }
-            if ((!args || args.internetChargeType === undefined) && !opts.urn) {
+            if (args?.internetChargeType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'internetChargeType'");
             }
-            if ((!args || args.paymentType === undefined) && !opts.urn) {
+            if (args?.paymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["eipName"] = args ? args.eipName : undefined;
-            resourceInputs["ensRegionId"] = args ? args.ensRegionId : undefined;
-            resourceInputs["internetChargeType"] = args ? args.internetChargeType : undefined;
-            resourceInputs["isp"] = args ? args.isp : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
+            resourceInputs["bandwidth"] = args?.bandwidth;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["eipName"] = args?.eipName;
+            resourceInputs["ensRegionId"] = args?.ensRegionId;
+            resourceInputs["internetChargeType"] = args?.internetChargeType;
+            resourceInputs["isp"] = args?.isp;
+            resourceInputs["paymentType"] = args?.paymentType;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

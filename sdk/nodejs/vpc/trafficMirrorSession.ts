@@ -133,59 +133,59 @@ export class TrafficMirrorSession extends pulumi.CustomResource {
      * - **true**: sends a check request and does not create a mirror session. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
      * - **false** (default): Sends a normal request and directly creates a mirror session after checking.
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * Specifies whether to enable traffic mirror sessions. default to `false`.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * Maximum Transmission Unit (MTU).
      */
-    public readonly packetLength!: pulumi.Output<number>;
+    declare public readonly packetLength: pulumi.Output<number>;
     /**
      * The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
      */
-    public readonly priority!: pulumi.Output<number>;
+    declare public readonly priority: pulumi.Output<number>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tags of this resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the filter.
      */
-    public readonly trafficMirrorFilterId!: pulumi.Output<string>;
+    declare public readonly trafficMirrorFilterId: pulumi.Output<string>;
     /**
      * The description of the traffic mirror session. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
      */
-    public readonly trafficMirrorSessionDescription!: pulumi.Output<string | undefined>;
+    declare public readonly trafficMirrorSessionDescription: pulumi.Output<string | undefined>;
     /**
      * The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
      */
-    public readonly trafficMirrorSessionName!: pulumi.Output<string | undefined>;
+    declare public readonly trafficMirrorSessionName: pulumi.Output<string | undefined>;
     /**
      * The ID of the image source instance. Currently, the Eni is supported as the image source. The default value of N is 1, that is, only one mirror source can be added to a mirror session.
      */
-    public readonly trafficMirrorSourceIds!: pulumi.Output<string[]>;
+    declare public readonly trafficMirrorSourceIds: pulumi.Output<string[]>;
     /**
      * The ID of the mirror destination. You can specify only an ENI or a Server Load Balancer (SLB) instance as a mirror destination.
      */
-    public readonly trafficMirrorTargetId!: pulumi.Output<string>;
+    declare public readonly trafficMirrorTargetId: pulumi.Output<string>;
     /**
      * The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance.
      */
-    public readonly trafficMirrorTargetType!: pulumi.Output<string>;
+    declare public readonly trafficMirrorTargetType: pulumi.Output<string>;
     /**
      * The VXLAN network identifier (VNI) that is used to distinguish different mirrored traffic. Valid values: `0` to `16777215`. You can specify VNIs for the traffic mirror destination to identify mirrored traffic from different sessions. If you do not specify a VNI, the system randomly allocates a VNI. If you want the system to randomly allocate a VNI, ignore this parameter.
      */
-    public readonly virtualNetworkId!: pulumi.Output<number>;
+    declare public readonly virtualNetworkId: pulumi.Output<number>;
 
     /**
      * Create a TrafficMirrorSession resource with the given unique name, arguments, and options.
@@ -200,50 +200,50 @@ export class TrafficMirrorSession extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TrafficMirrorSessionState | undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["packetLength"] = state ? state.packetLength : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["trafficMirrorFilterId"] = state ? state.trafficMirrorFilterId : undefined;
-            resourceInputs["trafficMirrorSessionDescription"] = state ? state.trafficMirrorSessionDescription : undefined;
-            resourceInputs["trafficMirrorSessionName"] = state ? state.trafficMirrorSessionName : undefined;
-            resourceInputs["trafficMirrorSourceIds"] = state ? state.trafficMirrorSourceIds : undefined;
-            resourceInputs["trafficMirrorTargetId"] = state ? state.trafficMirrorTargetId : undefined;
-            resourceInputs["trafficMirrorTargetType"] = state ? state.trafficMirrorTargetType : undefined;
-            resourceInputs["virtualNetworkId"] = state ? state.virtualNetworkId : undefined;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["packetLength"] = state?.packetLength;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["trafficMirrorFilterId"] = state?.trafficMirrorFilterId;
+            resourceInputs["trafficMirrorSessionDescription"] = state?.trafficMirrorSessionDescription;
+            resourceInputs["trafficMirrorSessionName"] = state?.trafficMirrorSessionName;
+            resourceInputs["trafficMirrorSourceIds"] = state?.trafficMirrorSourceIds;
+            resourceInputs["trafficMirrorTargetId"] = state?.trafficMirrorTargetId;
+            resourceInputs["trafficMirrorTargetType"] = state?.trafficMirrorTargetType;
+            resourceInputs["virtualNetworkId"] = state?.virtualNetworkId;
         } else {
             const args = argsOrState as TrafficMirrorSessionArgs | undefined;
-            if ((!args || args.priority === undefined) && !opts.urn) {
+            if (args?.priority === undefined && !opts.urn) {
                 throw new Error("Missing required property 'priority'");
             }
-            if ((!args || args.trafficMirrorFilterId === undefined) && !opts.urn) {
+            if (args?.trafficMirrorFilterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'trafficMirrorFilterId'");
             }
-            if ((!args || args.trafficMirrorSourceIds === undefined) && !opts.urn) {
+            if (args?.trafficMirrorSourceIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'trafficMirrorSourceIds'");
             }
-            if ((!args || args.trafficMirrorTargetId === undefined) && !opts.urn) {
+            if (args?.trafficMirrorTargetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'trafficMirrorTargetId'");
             }
-            if ((!args || args.trafficMirrorTargetType === undefined) && !opts.urn) {
+            if (args?.trafficMirrorTargetType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'trafficMirrorTargetType'");
             }
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["packetLength"] = args ? args.packetLength : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["trafficMirrorFilterId"] = args ? args.trafficMirrorFilterId : undefined;
-            resourceInputs["trafficMirrorSessionDescription"] = args ? args.trafficMirrorSessionDescription : undefined;
-            resourceInputs["trafficMirrorSessionName"] = args ? args.trafficMirrorSessionName : undefined;
-            resourceInputs["trafficMirrorSourceIds"] = args ? args.trafficMirrorSourceIds : undefined;
-            resourceInputs["trafficMirrorTargetId"] = args ? args.trafficMirrorTargetId : undefined;
-            resourceInputs["trafficMirrorTargetType"] = args ? args.trafficMirrorTargetType : undefined;
-            resourceInputs["virtualNetworkId"] = args ? args.virtualNetworkId : undefined;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["packetLength"] = args?.packetLength;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["trafficMirrorFilterId"] = args?.trafficMirrorFilterId;
+            resourceInputs["trafficMirrorSessionDescription"] = args?.trafficMirrorSessionDescription;
+            resourceInputs["trafficMirrorSessionName"] = args?.trafficMirrorSessionName;
+            resourceInputs["trafficMirrorSourceIds"] = args?.trafficMirrorSourceIds;
+            resourceInputs["trafficMirrorTargetId"] = args?.trafficMirrorTargetId;
+            resourceInputs["trafficMirrorTargetType"] = args?.trafficMirrorTargetType;
+            resourceInputs["virtualNetworkId"] = args?.virtualNetworkId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

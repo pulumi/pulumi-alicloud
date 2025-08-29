@@ -81,23 +81,23 @@ export class AlertRobot extends pulumi.CustomResource {
     /**
      * The name of the resource.
      */
-    public readonly alertRobotName!: pulumi.Output<string>;
+    declare public readonly alertRobotName: pulumi.Output<string>;
     /**
      * Specifies whether the alert robot receives daily notifications. Valid values: `true`: receives daily notifications. `false`: does not receive daily notifications, default to `false`.
      */
-    public readonly dailyNoc!: pulumi.Output<boolean | undefined>;
+    declare public readonly dailyNoc: pulumi.Output<boolean | undefined>;
     /**
      * The time of the daily notification.
      */
-    public readonly dailyNocTime!: pulumi.Output<string | undefined>;
+    declare public readonly dailyNocTime: pulumi.Output<string | undefined>;
     /**
      * The webhook url of the robot.
      */
-    public readonly robotAddr!: pulumi.Output<string>;
+    declare public readonly robotAddr: pulumi.Output<string>;
     /**
      * The type of the robot, Valid values: `wechat`, `dingding`, `feishu`.
      */
-    public readonly robotType!: pulumi.Output<string>;
+    declare public readonly robotType: pulumi.Output<string>;
 
     /**
      * Create a AlertRobot resource with the given unique name, arguments, and options.
@@ -112,27 +112,27 @@ export class AlertRobot extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlertRobotState | undefined;
-            resourceInputs["alertRobotName"] = state ? state.alertRobotName : undefined;
-            resourceInputs["dailyNoc"] = state ? state.dailyNoc : undefined;
-            resourceInputs["dailyNocTime"] = state ? state.dailyNocTime : undefined;
-            resourceInputs["robotAddr"] = state ? state.robotAddr : undefined;
-            resourceInputs["robotType"] = state ? state.robotType : undefined;
+            resourceInputs["alertRobotName"] = state?.alertRobotName;
+            resourceInputs["dailyNoc"] = state?.dailyNoc;
+            resourceInputs["dailyNocTime"] = state?.dailyNocTime;
+            resourceInputs["robotAddr"] = state?.robotAddr;
+            resourceInputs["robotType"] = state?.robotType;
         } else {
             const args = argsOrState as AlertRobotArgs | undefined;
-            if ((!args || args.alertRobotName === undefined) && !opts.urn) {
+            if (args?.alertRobotName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'alertRobotName'");
             }
-            if ((!args || args.robotAddr === undefined) && !opts.urn) {
+            if (args?.robotAddr === undefined && !opts.urn) {
                 throw new Error("Missing required property 'robotAddr'");
             }
-            if ((!args || args.robotType === undefined) && !opts.urn) {
+            if (args?.robotType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'robotType'");
             }
-            resourceInputs["alertRobotName"] = args ? args.alertRobotName : undefined;
-            resourceInputs["dailyNoc"] = args ? args.dailyNoc : undefined;
-            resourceInputs["dailyNocTime"] = args ? args.dailyNocTime : undefined;
-            resourceInputs["robotAddr"] = args ? args.robotAddr : undefined;
-            resourceInputs["robotType"] = args ? args.robotType : undefined;
+            resourceInputs["alertRobotName"] = args?.alertRobotName;
+            resourceInputs["dailyNoc"] = args?.dailyNoc;
+            resourceInputs["dailyNocTime"] = args?.dailyNocTime;
+            resourceInputs["robotAddr"] = args?.robotAddr;
+            resourceInputs["robotType"] = args?.robotType;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AlertRobot.__pulumiType, name, resourceInputs, opts);

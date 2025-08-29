@@ -83,13 +83,13 @@ export class BaseInstance extends pulumi.CustomResource {
      * - true: automatic renewal.
      * - false (default): no automatic renewal.
      */
-    public readonly autoRenew!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoRenew: pulumi.Output<boolean | undefined>;
     /**
      * The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.
      * - PeriodUnit is Week, AutoRenewPeriod is {"1", "2", "3"}.
      * - PeriodUnit is Month, AutoRenewPeriod is {"1", "2", "3", "6", "12"}.
      */
-    public readonly autoRenewPeriod!: pulumi.Output<number | undefined>;
+    declare public readonly autoRenewPeriod: pulumi.Output<number | undefined>;
     /**
      * The backup retention policy after the cluster is deleted. The values are as follows:
      * - receive_all: Keep all backup sets;
@@ -98,23 +98,23 @@ export class BaseInstance extends pulumi.CustomResource {
      *
      * > **NOTE:**   The default value is delete_all.
      */
-    public readonly backupRetainMode!: pulumi.Output<string | undefined>;
+    declare public readonly backupRetainMode: pulumi.Output<string | undefined>;
     /**
      * The product code of the OceanBase cluster._oceanbasepre_public_cn: Domestic station cloud database package Year-to-month package._oceanbasepost_public_cn: The domestic station cloud database is paid by the hour._obpre_public_intl: International Station Cloud Database Package Monthly Package.
      */
-    public /*out*/ readonly commodityCode!: pulumi.Output<string>;
+    declare public /*out*/ readonly commodityCode: pulumi.Output<string>;
     /**
      * The number of CPU cores of the cluster.
      */
-    public /*out*/ readonly cpu!: pulumi.Output<number>;
+    declare public /*out*/ readonly cpu: pulumi.Output<number>;
     /**
      * Cpu architecture, x86, arm. If no, the default value is x86
      */
-    public readonly cpuArch!: pulumi.Output<string>;
+    declare public readonly cpuArch: pulumi.Output<string>;
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The size of the storage space, in GB.
      *
@@ -126,7 +126,7 @@ export class BaseInstance extends pulumi.CustomResource {
      *
      * The default value of each package is its minimum value.
      */
-    public readonly diskSize!: pulumi.Output<number>;
+    declare public readonly diskSize: pulumi.Output<number>;
     /**
      * The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
      *
@@ -134,7 +134,7 @@ export class BaseInstance extends pulumi.CustomResource {
      * - cloud_essd_pl1: cloud disk ESSD pl1.
      * - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
      */
-    public readonly diskType!: pulumi.Output<string>;
+    declare public readonly diskType: pulumi.Output<string>;
     /**
      * Cluster specification information. Note Please enter the shape as xCxxG, not xCxxGB
      *
@@ -162,7 +162,7 @@ export class BaseInstance extends pulumi.CustomResource {
      * - 16C70G:16 core 70GB
      * - 32C180G:32 core 180GB
      */
-    public readonly instanceClass!: pulumi.Output<string>;
+    declare public readonly instanceClass: pulumi.Output<string>;
     /**
      * OceanBase cluster name.
      *
@@ -170,25 +170,25 @@ export class BaseInstance extends pulumi.CustomResource {
      *
      * If this parameter is not specified, the default value is the InstanceId of the cluster.
      */
-    public readonly instanceName!: pulumi.Output<string>;
+    declare public readonly instanceName: pulumi.Output<string>;
     /**
      * The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3
      */
-    public readonly nodeNum!: pulumi.Output<string>;
+    declare public readonly nodeNum: pulumi.Output<string>;
     /**
      * The OceanBase Server version number.
      */
-    public readonly obVersion!: pulumi.Output<string>;
+    declare public readonly obVersion: pulumi.Output<string>;
     /**
      * The payment method of the instance. Value range:
      * - Subscription: Package year and month. When you select this type of payment method, you must make sure that your account supports balance payment or credit payment. Otherwise, an InvalidPayMethod error message will be returned.
      * - PayAsYouGo (default): Pay-as-you-go (default hourly billing).
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When PeriodUnit = Week, Period values: {"1", "2", "3", "4"}. When PeriodUnit = Month, Period values: {"1", "2", "3", "4", "5", "6", "7", "8", "9", "12", "24", "36", "48", "60"}.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * The duration of the purchase of resources.
      *
@@ -196,37 +196,37 @@ export class BaseInstance extends pulumi.CustomResource {
      *
      * Default value: Month of the package, which is billed by volume. The default period is Hour.
      */
-    public readonly periodUnit!: pulumi.Output<string | undefined>;
+    declare public readonly periodUnit: pulumi.Output<string | undefined>;
     /**
      * The ID of the primary instance.
      */
-    public readonly primaryInstance!: pulumi.Output<string | undefined>;
+    declare public readonly primaryInstance: pulumi.Output<string | undefined>;
     /**
      * The primary instance Region.
      */
-    public readonly primaryRegion!: pulumi.Output<string | undefined>;
+    declare public readonly primaryRegion: pulumi.Output<string | undefined>;
     /**
      * The ID of the enterprise resource group to which the instance resides.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Series of OceanBase cluster instances-normal (default): Standard cluster version (cloud disk)-normal_SSD: Standard cluster version (local disk)-history: history Library cluster version.
      */
-    public readonly series!: pulumi.Output<string>;
+    declare public readonly series: pulumi.Output<string>;
     /**
      * The status of the resource
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Valid values:
      * - false: migration and configuration change.
      * - true: in-situ matching
      */
-    public readonly upgradeSpecNative!: pulumi.Output<boolean | undefined>;
+    declare public readonly upgradeSpecNative: pulumi.Output<boolean | undefined>;
     /**
      * Information about the zone where the cluster is deployed.
      */
-    public readonly zones!: pulumi.Output<string[]>;
+    declare public readonly zones: pulumi.Output<string[]>;
 
     /**
      * Create a BaseInstance resource with the given unique name, arguments, and options.
@@ -241,65 +241,65 @@ export class BaseInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BaseInstanceState | undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
-            resourceInputs["backupRetainMode"] = state ? state.backupRetainMode : undefined;
-            resourceInputs["commodityCode"] = state ? state.commodityCode : undefined;
-            resourceInputs["cpu"] = state ? state.cpu : undefined;
-            resourceInputs["cpuArch"] = state ? state.cpuArch : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["diskSize"] = state ? state.diskSize : undefined;
-            resourceInputs["diskType"] = state ? state.diskType : undefined;
-            resourceInputs["instanceClass"] = state ? state.instanceClass : undefined;
-            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
-            resourceInputs["nodeNum"] = state ? state.nodeNum : undefined;
-            resourceInputs["obVersion"] = state ? state.obVersion : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
-            resourceInputs["primaryInstance"] = state ? state.primaryInstance : undefined;
-            resourceInputs["primaryRegion"] = state ? state.primaryRegion : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["series"] = state ? state.series : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["upgradeSpecNative"] = state ? state.upgradeSpecNative : undefined;
-            resourceInputs["zones"] = state ? state.zones : undefined;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["autoRenewPeriod"] = state?.autoRenewPeriod;
+            resourceInputs["backupRetainMode"] = state?.backupRetainMode;
+            resourceInputs["commodityCode"] = state?.commodityCode;
+            resourceInputs["cpu"] = state?.cpu;
+            resourceInputs["cpuArch"] = state?.cpuArch;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["diskSize"] = state?.diskSize;
+            resourceInputs["diskType"] = state?.diskType;
+            resourceInputs["instanceClass"] = state?.instanceClass;
+            resourceInputs["instanceName"] = state?.instanceName;
+            resourceInputs["nodeNum"] = state?.nodeNum;
+            resourceInputs["obVersion"] = state?.obVersion;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["periodUnit"] = state?.periodUnit;
+            resourceInputs["primaryInstance"] = state?.primaryInstance;
+            resourceInputs["primaryRegion"] = state?.primaryRegion;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["series"] = state?.series;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["upgradeSpecNative"] = state?.upgradeSpecNative;
+            resourceInputs["zones"] = state?.zones;
         } else {
             const args = argsOrState as BaseInstanceArgs | undefined;
-            if ((!args || args.diskSize === undefined) && !opts.urn) {
+            if (args?.diskSize === undefined && !opts.urn) {
                 throw new Error("Missing required property 'diskSize'");
             }
-            if ((!args || args.instanceClass === undefined) && !opts.urn) {
+            if (args?.instanceClass === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceClass'");
             }
-            if ((!args || args.paymentType === undefined) && !opts.urn) {
+            if (args?.paymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            if ((!args || args.series === undefined) && !opts.urn) {
+            if (args?.series === undefined && !opts.urn) {
                 throw new Error("Missing required property 'series'");
             }
-            if ((!args || args.zones === undefined) && !opts.urn) {
+            if (args?.zones === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zones'");
             }
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
-            resourceInputs["backupRetainMode"] = args ? args.backupRetainMode : undefined;
-            resourceInputs["cpuArch"] = args ? args.cpuArch : undefined;
-            resourceInputs["diskSize"] = args ? args.diskSize : undefined;
-            resourceInputs["diskType"] = args ? args.diskType : undefined;
-            resourceInputs["instanceClass"] = args ? args.instanceClass : undefined;
-            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
-            resourceInputs["nodeNum"] = args ? args.nodeNum : undefined;
-            resourceInputs["obVersion"] = args ? args.obVersion : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
-            resourceInputs["primaryInstance"] = args ? args.primaryInstance : undefined;
-            resourceInputs["primaryRegion"] = args ? args.primaryRegion : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["series"] = args ? args.series : undefined;
-            resourceInputs["upgradeSpecNative"] = args ? args.upgradeSpecNative : undefined;
-            resourceInputs["zones"] = args ? args.zones : undefined;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["autoRenewPeriod"] = args?.autoRenewPeriod;
+            resourceInputs["backupRetainMode"] = args?.backupRetainMode;
+            resourceInputs["cpuArch"] = args?.cpuArch;
+            resourceInputs["diskSize"] = args?.diskSize;
+            resourceInputs["diskType"] = args?.diskType;
+            resourceInputs["instanceClass"] = args?.instanceClass;
+            resourceInputs["instanceName"] = args?.instanceName;
+            resourceInputs["nodeNum"] = args?.nodeNum;
+            resourceInputs["obVersion"] = args?.obVersion;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["periodUnit"] = args?.periodUnit;
+            resourceInputs["primaryInstance"] = args?.primaryInstance;
+            resourceInputs["primaryRegion"] = args?.primaryRegion;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["series"] = args?.series;
+            resourceInputs["upgradeSpecNative"] = args?.upgradeSpecNative;
+            resourceInputs["zones"] = args?.zones;
             resourceInputs["commodityCode"] = undefined /*out*/;
             resourceInputs["cpu"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;

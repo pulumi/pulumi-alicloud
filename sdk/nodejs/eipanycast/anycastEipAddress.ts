@@ -70,43 +70,43 @@ export class AnycastEipAddress extends pulumi.CustomResource {
     /**
      * Anycast EIP instance name.
      */
-    public readonly anycastEipAddressName!: pulumi.Output<string | undefined>;
+    declare public readonly anycastEipAddressName: pulumi.Output<string | undefined>;
     /**
      * The peak bandwidth of the Anycast EIP instance, in Mbps.
      */
-    public readonly bandwidth!: pulumi.Output<number>;
+    declare public readonly bandwidth: pulumi.Output<number>;
     /**
      * Anycast EIP instance creation time.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Anycast EIP instance description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The billing method of Anycast EIP instance. "PayByBandwidth": refers to the method of billing based on traffic.
      */
-    public readonly internetChargeType!: pulumi.Output<string | undefined>;
+    declare public readonly internetChargeType: pulumi.Output<string | undefined>;
     /**
      * The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
      */
-    public readonly paymentType!: pulumi.Output<string | undefined>;
+    declare public readonly paymentType: pulumi.Output<string | undefined>;
     /**
      * The ID of the resource group to which the instance belongs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
      */
-    public readonly serviceLocation!: pulumi.Output<string>;
+    declare public readonly serviceLocation: pulumi.Output<string>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * List of resource-bound tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a AnycastEipAddress resource with the given unique name, arguments, and options.
@@ -121,29 +121,29 @@ export class AnycastEipAddress extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AnycastEipAddressState | undefined;
-            resourceInputs["anycastEipAddressName"] = state ? state.anycastEipAddressName : undefined;
-            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["internetChargeType"] = state ? state.internetChargeType : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["serviceLocation"] = state ? state.serviceLocation : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["anycastEipAddressName"] = state?.anycastEipAddressName;
+            resourceInputs["bandwidth"] = state?.bandwidth;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["internetChargeType"] = state?.internetChargeType;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["serviceLocation"] = state?.serviceLocation;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as AnycastEipAddressArgs | undefined;
-            if ((!args || args.serviceLocation === undefined) && !opts.urn) {
+            if (args?.serviceLocation === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceLocation'");
             }
-            resourceInputs["anycastEipAddressName"] = args ? args.anycastEipAddressName : undefined;
-            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["internetChargeType"] = args ? args.internetChargeType : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["serviceLocation"] = args ? args.serviceLocation : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["anycastEipAddressName"] = args?.anycastEipAddressName;
+            resourceInputs["bandwidth"] = args?.bandwidth;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["internetChargeType"] = args?.internetChargeType;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["serviceLocation"] = args?.serviceLocation;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

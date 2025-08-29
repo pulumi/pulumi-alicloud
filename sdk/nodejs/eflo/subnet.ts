@@ -75,50 +75,50 @@ export class Subnet extends pulumi.CustomResource {
     /**
      * CIDR network segment.
      */
-    public readonly cidr!: pulumi.Output<string>;
+    declare public readonly cidr: pulumi.Output<string>;
     /**
      * The creation time of the resource.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Modification time.
      */
-    public /*out*/ readonly gmtModified!: pulumi.Output<string>;
+    declare public /*out*/ readonly gmtModified: pulumi.Output<string>;
     /**
      * Error message.
      */
-    public /*out*/ readonly message!: pulumi.Output<string>;
+    declare public /*out*/ readonly message: pulumi.Output<string>;
     /**
      * Resource Group ID.
      */
-    public /*out*/ readonly resourceGroupId!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The id of the subnet.
      */
-    public /*out*/ readonly subnetId!: pulumi.Output<string>;
+    declare public /*out*/ readonly subnetId: pulumi.Output<string>;
     /**
      * The Subnet name.
      */
-    public readonly subnetName!: pulumi.Output<string>;
+    declare public readonly subnetName: pulumi.Output<string>;
     /**
      * Eflo subnet usage type. optional value:
      * - General type is not filled in
      * - OOB:OOB type
      * - LB: LB type
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
     /**
      * The Eflo VPD ID.
      */
-    public readonly vpdId!: pulumi.Output<string>;
+    declare public readonly vpdId: pulumi.Output<string>;
     /**
      * The zone ID  of the resource.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a Subnet resource with the given unique name, arguments, and options.
@@ -133,36 +133,36 @@ export class Subnet extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SubnetState | undefined;
-            resourceInputs["cidr"] = state ? state.cidr : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["gmtModified"] = state ? state.gmtModified : undefined;
-            resourceInputs["message"] = state ? state.message : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
-            resourceInputs["subnetName"] = state ? state.subnetName : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["vpdId"] = state ? state.vpdId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["cidr"] = state?.cidr;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["gmtModified"] = state?.gmtModified;
+            resourceInputs["message"] = state?.message;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["subnetId"] = state?.subnetId;
+            resourceInputs["subnetName"] = state?.subnetName;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["vpdId"] = state?.vpdId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as SubnetArgs | undefined;
-            if ((!args || args.cidr === undefined) && !opts.urn) {
+            if (args?.cidr === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cidr'");
             }
-            if ((!args || args.subnetName === undefined) && !opts.urn) {
+            if (args?.subnetName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subnetName'");
             }
-            if ((!args || args.vpdId === undefined) && !opts.urn) {
+            if (args?.vpdId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpdId'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["cidr"] = args ? args.cidr : undefined;
-            resourceInputs["subnetName"] = args ? args.subnetName : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["vpdId"] = args ? args.vpdId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["cidr"] = args?.cidr;
+            resourceInputs["subnetName"] = args?.subnetName;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["vpdId"] = args?.vpdId;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["gmtModified"] = undefined /*out*/;
             resourceInputs["message"] = undefined /*out*/;

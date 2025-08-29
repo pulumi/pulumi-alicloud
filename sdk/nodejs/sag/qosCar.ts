@@ -75,43 +75,43 @@ export class QosCar extends pulumi.CustomResource {
     /**
      * The description of the QoS speed limiting rule.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The speed limiting method. Valid values: `Absolute`, `Percent`.
      */
-    public readonly limitType!: pulumi.Output<string>;
+    declare public readonly limitType: pulumi.Output<string>;
     /**
      * The maximum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType is Absolute.
      */
-    public readonly maxBandwidthAbs!: pulumi.Output<number | undefined>;
+    declare public readonly maxBandwidthAbs: pulumi.Output<number | undefined>;
     /**
      * The maximum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated Smart Access Gateway (SAG) instance.This parameter is required when the value of the LimitType parameter is Percent.
      */
-    public readonly maxBandwidthPercent!: pulumi.Output<number | undefined>;
+    declare public readonly maxBandwidthPercent: pulumi.Output<number | undefined>;
     /**
      * The minimum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType parameter is Absolute.
      */
-    public readonly minBandwidthAbs!: pulumi.Output<number | undefined>;
+    declare public readonly minBandwidthAbs: pulumi.Output<number | undefined>;
     /**
      * The minimum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated SAG instance.This parameter is required when the value of the LimitType parameter is Percent.
      */
-    public readonly minBandwidthPercent!: pulumi.Output<number | undefined>;
+    declare public readonly minBandwidthPercent: pulumi.Output<number | undefined>;
     /**
      * The name of the QoS speed limiting rule..
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The bandwidth type when the speed is limited based on percentage. Valid values: CcnBandwidth, InternetUpBandwidth.The default value is InternetUpBandwidth.
      */
-    public readonly percentSourceType!: pulumi.Output<string | undefined>;
+    declare public readonly percentSourceType: pulumi.Output<string | undefined>;
     /**
      * The priority of the specified stream.
      */
-    public readonly priority!: pulumi.Output<number>;
+    declare public readonly priority: pulumi.Output<number>;
     /**
      * The instance ID of the QoS.
      */
-    public readonly qosId!: pulumi.Output<string>;
+    declare public readonly qosId: pulumi.Output<string>;
 
     /**
      * Create a QosCar resource with the given unique name, arguments, and options.
@@ -126,37 +126,37 @@ export class QosCar extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QosCarState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["limitType"] = state ? state.limitType : undefined;
-            resourceInputs["maxBandwidthAbs"] = state ? state.maxBandwidthAbs : undefined;
-            resourceInputs["maxBandwidthPercent"] = state ? state.maxBandwidthPercent : undefined;
-            resourceInputs["minBandwidthAbs"] = state ? state.minBandwidthAbs : undefined;
-            resourceInputs["minBandwidthPercent"] = state ? state.minBandwidthPercent : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["percentSourceType"] = state ? state.percentSourceType : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["qosId"] = state ? state.qosId : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["limitType"] = state?.limitType;
+            resourceInputs["maxBandwidthAbs"] = state?.maxBandwidthAbs;
+            resourceInputs["maxBandwidthPercent"] = state?.maxBandwidthPercent;
+            resourceInputs["minBandwidthAbs"] = state?.minBandwidthAbs;
+            resourceInputs["minBandwidthPercent"] = state?.minBandwidthPercent;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["percentSourceType"] = state?.percentSourceType;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["qosId"] = state?.qosId;
         } else {
             const args = argsOrState as QosCarArgs | undefined;
-            if ((!args || args.limitType === undefined) && !opts.urn) {
+            if (args?.limitType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'limitType'");
             }
-            if ((!args || args.priority === undefined) && !opts.urn) {
+            if (args?.priority === undefined && !opts.urn) {
                 throw new Error("Missing required property 'priority'");
             }
-            if ((!args || args.qosId === undefined) && !opts.urn) {
+            if (args?.qosId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'qosId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["limitType"] = args ? args.limitType : undefined;
-            resourceInputs["maxBandwidthAbs"] = args ? args.maxBandwidthAbs : undefined;
-            resourceInputs["maxBandwidthPercent"] = args ? args.maxBandwidthPercent : undefined;
-            resourceInputs["minBandwidthAbs"] = args ? args.minBandwidthAbs : undefined;
-            resourceInputs["minBandwidthPercent"] = args ? args.minBandwidthPercent : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["percentSourceType"] = args ? args.percentSourceType : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["qosId"] = args ? args.qosId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["limitType"] = args?.limitType;
+            resourceInputs["maxBandwidthAbs"] = args?.maxBandwidthAbs;
+            resourceInputs["maxBandwidthPercent"] = args?.maxBandwidthPercent;
+            resourceInputs["minBandwidthAbs"] = args?.minBandwidthAbs;
+            resourceInputs["minBandwidthPercent"] = args?.minBandwidthPercent;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["percentSourceType"] = args?.percentSourceType;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["qosId"] = args?.qosId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "alicloud:rocketmq/qosCar:QosCar" }] };

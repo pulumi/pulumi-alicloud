@@ -75,11 +75,11 @@ export class NetworkAttachment extends pulumi.CustomResource {
     /**
      * The ID of the CCN instance.
      */
-    public readonly ccnId!: pulumi.Output<string>;
+    declare public readonly ccnId: pulumi.Output<string>;
     /**
      * The ID of the Smart Access Gateway instance.
      */
-    public readonly sagId!: pulumi.Output<string>;
+    declare public readonly sagId: pulumi.Output<string>;
 
     /**
      * Create a NetworkAttachment resource with the given unique name, arguments, and options.
@@ -94,18 +94,18 @@ export class NetworkAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkAttachmentState | undefined;
-            resourceInputs["ccnId"] = state ? state.ccnId : undefined;
-            resourceInputs["sagId"] = state ? state.sagId : undefined;
+            resourceInputs["ccnId"] = state?.ccnId;
+            resourceInputs["sagId"] = state?.sagId;
         } else {
             const args = argsOrState as NetworkAttachmentArgs | undefined;
-            if ((!args || args.ccnId === undefined) && !opts.urn) {
+            if (args?.ccnId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ccnId'");
             }
-            if ((!args || args.sagId === undefined) && !opts.urn) {
+            if (args?.sagId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sagId'");
             }
-            resourceInputs["ccnId"] = args ? args.ccnId : undefined;
-            resourceInputs["sagId"] = args ? args.sagId : undefined;
+            resourceInputs["ccnId"] = args?.ccnId;
+            resourceInputs["sagId"] = args?.sagId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(NetworkAttachment.__pulumiType, name, resourceInputs, opts);

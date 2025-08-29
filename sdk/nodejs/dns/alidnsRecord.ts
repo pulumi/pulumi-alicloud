@@ -75,47 +75,47 @@ export class AlidnsRecord extends pulumi.CustomResource {
     /**
      * Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      */
-    public readonly domainName!: pulumi.Output<string>;
+    declare public readonly domainName: pulumi.Output<string>;
     /**
      * User language.
      */
-    public readonly lang!: pulumi.Output<string | undefined>;
+    declare public readonly lang: pulumi.Output<string | undefined>;
     /**
      * The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/adding-a-dns-record) or using alicloud.dns.getResolutionLines in data source to get the value.
      */
-    public readonly line!: pulumi.Output<string | undefined>;
+    declare public readonly line: pulumi.Output<string | undefined>;
     /**
      * The priority of domain record. Valid values: `[1-10]`. When the `type` is `MX`, this parameter is required.
      */
-    public readonly priority!: pulumi.Output<number | undefined>;
+    declare public readonly priority: pulumi.Output<number | undefined>;
     /**
      * The remark of the domain record.
      */
-    public readonly remark!: pulumi.Output<string | undefined>;
+    declare public readonly remark: pulumi.Output<string | undefined>;
     /**
      * Host record for the domain record. This hostRecord can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `@`, and must not begin or end with `-`.
      */
-    public readonly rr!: pulumi.Output<string>;
+    declare public readonly rr: pulumi.Output<string>;
     /**
      * The status of the domain record. Valid values: `ENABLE`,`DISABLE`.
      */
-    public readonly status!: pulumi.Output<string | undefined>;
+    declare public readonly status: pulumi.Output<string | undefined>;
     /**
      * The effective time of domain record. Its scope depends on the edition of the cloud resolution. Free is `[600, 86400]`, Basic is `[120, 86400]`, Standard is `[60, 86400]`, Ultimate is `[10, 86400]`, Exclusive is `[1, 86400]`. Default value is `600`.
      */
-    public readonly ttl!: pulumi.Output<number | undefined>;
+    declare public readonly ttl: pulumi.Output<number | undefined>;
     /**
      * The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The IP address of the client.
      */
-    public readonly userClientIp!: pulumi.Output<string | undefined>;
+    declare public readonly userClientIp: pulumi.Output<string | undefined>;
     /**
      * The value of domain record, When the `type` is `MX`,`NS`,`CNAME`,`SRV`, the server will treat the `value` as a fully qualified domain name, so it's no need to add a `.` at the end.
      */
-    public readonly value!: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string>;
 
     /**
      * Create a AlidnsRecord resource with the given unique name, arguments, and options.
@@ -130,42 +130,42 @@ export class AlidnsRecord extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlidnsRecordState | undefined;
-            resourceInputs["domainName"] = state ? state.domainName : undefined;
-            resourceInputs["lang"] = state ? state.lang : undefined;
-            resourceInputs["line"] = state ? state.line : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["remark"] = state ? state.remark : undefined;
-            resourceInputs["rr"] = state ? state.rr : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["ttl"] = state ? state.ttl : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["userClientIp"] = state ? state.userClientIp : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["domainName"] = state?.domainName;
+            resourceInputs["lang"] = state?.lang;
+            resourceInputs["line"] = state?.line;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["remark"] = state?.remark;
+            resourceInputs["rr"] = state?.rr;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["ttl"] = state?.ttl;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["userClientIp"] = state?.userClientIp;
+            resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as AlidnsRecordArgs | undefined;
-            if ((!args || args.domainName === undefined) && !opts.urn) {
+            if (args?.domainName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
-            if ((!args || args.rr === undefined) && !opts.urn) {
+            if (args?.rr === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rr'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            if ((!args || args.value === undefined) && !opts.urn) {
+            if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            resourceInputs["domainName"] = args ? args.domainName : undefined;
-            resourceInputs["lang"] = args ? args.lang : undefined;
-            resourceInputs["line"] = args ? args.line : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["remark"] = args ? args.remark : undefined;
-            resourceInputs["rr"] = args ? args.rr : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["ttl"] = args ? args.ttl : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["userClientIp"] = args ? args.userClientIp : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["domainName"] = args?.domainName;
+            resourceInputs["lang"] = args?.lang;
+            resourceInputs["line"] = args?.line;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["remark"] = args?.remark;
+            resourceInputs["rr"] = args?.rr;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["ttl"] = args?.ttl;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["userClientIp"] = args?.userClientIp;
+            resourceInputs["value"] = args?.value;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AlidnsRecord.__pulumiType, name, resourceInputs, opts);

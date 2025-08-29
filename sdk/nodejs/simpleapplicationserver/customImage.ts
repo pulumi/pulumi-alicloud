@@ -86,25 +86,25 @@ export class CustomImage extends pulumi.CustomResource {
     /**
      * The name of the resource. The name must be `2` to `128` characters in length. It must start with a letter or a number. It can contain letters, digits, colons (:), underscores (_) and hyphens (-).
      */
-    public readonly customImageName!: pulumi.Output<string>;
+    declare public readonly customImageName: pulumi.Output<string>;
     /**
      * The description of the Custom Image.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The ID of the instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
      *
      * **NOTE:** The `status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
      */
-    public readonly status!: pulumi.Output<string | undefined>;
+    declare public readonly status: pulumi.Output<string | undefined>;
     /**
      * The ID of the system snapshot.
      */
-    public readonly systemSnapshotId!: pulumi.Output<string>;
+    declare public readonly systemSnapshotId: pulumi.Output<string>;
 
     /**
      * Create a CustomImage resource with the given unique name, arguments, and options.
@@ -119,27 +119,27 @@ export class CustomImage extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomImageState | undefined;
-            resourceInputs["customImageName"] = state ? state.customImageName : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["systemSnapshotId"] = state ? state.systemSnapshotId : undefined;
+            resourceInputs["customImageName"] = state?.customImageName;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["systemSnapshotId"] = state?.systemSnapshotId;
         } else {
             const args = argsOrState as CustomImageArgs | undefined;
-            if ((!args || args.customImageName === undefined) && !opts.urn) {
+            if (args?.customImageName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'customImageName'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.systemSnapshotId === undefined) && !opts.urn) {
+            if (args?.systemSnapshotId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'systemSnapshotId'");
             }
-            resourceInputs["customImageName"] = args ? args.customImageName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["systemSnapshotId"] = args ? args.systemSnapshotId : undefined;
+            resourceInputs["customImageName"] = args?.customImageName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["systemSnapshotId"] = args?.systemSnapshotId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CustomImage.__pulumiType, name, resourceInputs, opts);

@@ -76,15 +76,15 @@ export class BucketLogging extends pulumi.CustomResource {
     /**
      * The name of the bucket.
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * The bucket that stores access logs.
      */
-    public readonly targetBucket!: pulumi.Output<string>;
+    declare public readonly targetBucket: pulumi.Output<string>;
     /**
      * The prefix of the saved log objects. This element can be left empty.
      */
-    public readonly targetPrefix!: pulumi.Output<string | undefined>;
+    declare public readonly targetPrefix: pulumi.Output<string | undefined>;
 
     /**
      * Create a BucketLogging resource with the given unique name, arguments, and options.
@@ -99,20 +99,20 @@ export class BucketLogging extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketLoggingState | undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["targetBucket"] = state ? state.targetBucket : undefined;
-            resourceInputs["targetPrefix"] = state ? state.targetPrefix : undefined;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["targetBucket"] = state?.targetBucket;
+            resourceInputs["targetPrefix"] = state?.targetPrefix;
         } else {
             const args = argsOrState as BucketLoggingArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if ((!args || args.targetBucket === undefined) && !opts.urn) {
+            if (args?.targetBucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetBucket'");
             }
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["targetBucket"] = args ? args.targetBucket : undefined;
-            resourceInputs["targetPrefix"] = args ? args.targetPrefix : undefined;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["targetBucket"] = args?.targetBucket;
+            resourceInputs["targetPrefix"] = args?.targetPrefix;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BucketLogging.__pulumiType, name, resourceInputs, opts);

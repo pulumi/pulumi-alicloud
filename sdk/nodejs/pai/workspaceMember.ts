@@ -83,23 +83,23 @@ export class WorkspaceMember extends pulumi.CustomResource {
     /**
      * The time when the workspace is created, in UTC. The time follows the ISO 8601 standard.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The member ID.
      */
-    public /*out*/ readonly memberId!: pulumi.Output<string>;
+    declare public /*out*/ readonly memberId: pulumi.Output<string>;
     /**
      * The list of roles. see [how to use it](https://www.alibabacloud.com/help/en/pai/developer-reference/api-aiworkspace-2021-02-04-createmember).
      */
-    public readonly roles!: pulumi.Output<string[]>;
+    declare public readonly roles: pulumi.Output<string[]>;
     /**
      * The ID of the User.
      */
-    public readonly userId!: pulumi.Output<string>;
+    declare public readonly userId: pulumi.Output<string>;
     /**
      * The ID of the Workspace.
      */
-    public readonly workspaceId!: pulumi.Output<string>;
+    declare public readonly workspaceId: pulumi.Output<string>;
 
     /**
      * Create a WorkspaceMember resource with the given unique name, arguments, and options.
@@ -114,25 +114,25 @@ export class WorkspaceMember extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkspaceMemberState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["memberId"] = state ? state.memberId : undefined;
-            resourceInputs["roles"] = state ? state.roles : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
-            resourceInputs["workspaceId"] = state ? state.workspaceId : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["memberId"] = state?.memberId;
+            resourceInputs["roles"] = state?.roles;
+            resourceInputs["userId"] = state?.userId;
+            resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as WorkspaceMemberArgs | undefined;
-            if ((!args || args.roles === undefined) && !opts.urn) {
+            if (args?.roles === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roles'");
             }
-            if ((!args || args.userId === undefined) && !opts.urn) {
+            if (args?.userId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            if ((!args || args.workspaceId === undefined) && !opts.urn) {
+            if (args?.workspaceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workspaceId'");
             }
-            resourceInputs["roles"] = args ? args.roles : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
-            resourceInputs["workspaceId"] = args ? args.workspaceId : undefined;
+            resourceInputs["roles"] = args?.roles;
+            resourceInputs["userId"] = args?.userId;
+            resourceInputs["workspaceId"] = args?.workspaceId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["memberId"] = undefined /*out*/;
         }

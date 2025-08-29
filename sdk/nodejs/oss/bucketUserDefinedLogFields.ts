@@ -83,15 +83,15 @@ export class BucketUserDefinedLogFields extends pulumi.CustomResource {
     /**
      * The name of the bucket.
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * Container for custom request header configuration information.
      */
-    public readonly headerSets!: pulumi.Output<string[] | undefined>;
+    declare public readonly headerSets: pulumi.Output<string[] | undefined>;
     /**
      * Container for custom request parameters configuration information.
      */
-    public readonly paramSets!: pulumi.Output<string[] | undefined>;
+    declare public readonly paramSets: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a BucketUserDefinedLogFields resource with the given unique name, arguments, and options.
@@ -106,17 +106,17 @@ export class BucketUserDefinedLogFields extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketUserDefinedLogFieldsState | undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["headerSets"] = state ? state.headerSets : undefined;
-            resourceInputs["paramSets"] = state ? state.paramSets : undefined;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["headerSets"] = state?.headerSets;
+            resourceInputs["paramSets"] = state?.paramSets;
         } else {
             const args = argsOrState as BucketUserDefinedLogFieldsArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["headerSets"] = args ? args.headerSets : undefined;
-            resourceInputs["paramSets"] = args ? args.paramSets : undefined;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["headerSets"] = args?.headerSets;
+            resourceInputs["paramSets"] = args?.paramSets;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BucketUserDefinedLogFields.__pulumiType, name, resourceInputs, opts);

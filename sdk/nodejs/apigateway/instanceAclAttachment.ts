@@ -82,15 +82,15 @@ export class InstanceAclAttachment extends pulumi.CustomResource {
     /**
      * The ID of the ACL to attach.
      */
-    public readonly aclId!: pulumi.Output<string>;
+    declare public readonly aclId: pulumi.Output<string>;
     /**
      * The type of the ACL. Valid values: `white`, `black`.
      */
-    public readonly aclType!: pulumi.Output<string>;
+    declare public readonly aclType: pulumi.Output<string>;
     /**
      * The ID of the API Gateway instance that the ACL will be attached to.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
 
     /**
      * Create a InstanceAclAttachment resource with the given unique name, arguments, and options.
@@ -105,23 +105,23 @@ export class InstanceAclAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceAclAttachmentState | undefined;
-            resourceInputs["aclId"] = state ? state.aclId : undefined;
-            resourceInputs["aclType"] = state ? state.aclType : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["aclId"] = state?.aclId;
+            resourceInputs["aclType"] = state?.aclType;
+            resourceInputs["instanceId"] = state?.instanceId;
         } else {
             const args = argsOrState as InstanceAclAttachmentArgs | undefined;
-            if ((!args || args.aclId === undefined) && !opts.urn) {
+            if (args?.aclId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aclId'");
             }
-            if ((!args || args.aclType === undefined) && !opts.urn) {
+            if (args?.aclType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aclType'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["aclId"] = args ? args.aclId : undefined;
-            resourceInputs["aclType"] = args ? args.aclType : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["aclId"] = args?.aclId;
+            resourceInputs["aclType"] = args?.aclType;
+            resourceInputs["instanceId"] = args?.instanceId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InstanceAclAttachment.__pulumiType, name, resourceInputs, opts);

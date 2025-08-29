@@ -81,37 +81,37 @@ export class RouterVbrChildInstance extends pulumi.CustomResource {
     /**
      * The ID of the leased line gateway subinstance.
      */
-    public readonly childInstanceId!: pulumi.Output<string>;
+    declare public readonly childInstanceId: pulumi.Output<string>;
     /**
      * The ID of the Alibaba Cloud account (primary account) to which the VBR instance belongs.
      *
      * > **NOTE:**  This parameter is required if you want to load a cross-account network instance.
      */
-    public readonly childInstanceOwnerId!: pulumi.Output<string>;
+    declare public readonly childInstanceOwnerId: pulumi.Output<string>;
     /**
      * Region of the leased line gateway sub-instance
      */
-    public readonly childInstanceRegionId!: pulumi.Output<string>;
+    declare public readonly childInstanceRegionId: pulumi.Output<string>;
     /**
      * The type of the network instance. Value: `VBR`: VBR instance.
      */
-    public readonly childInstanceType!: pulumi.Output<string>;
+    declare public readonly childInstanceType: pulumi.Output<string>;
     /**
      * The creation time of the resource.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Resource attribute fields that represent descriptive information
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * ID of the representative leased line gateway instance.
      */
-    public readonly ecrId!: pulumi.Output<string>;
+    declare public readonly ecrId: pulumi.Output<string>;
     /**
      * Binding relationship status of leased line gateway subinstances.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a RouterVbrChildInstance resource with the given unique name, arguments, and options.
@@ -126,34 +126,34 @@ export class RouterVbrChildInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouterVbrChildInstanceState | undefined;
-            resourceInputs["childInstanceId"] = state ? state.childInstanceId : undefined;
-            resourceInputs["childInstanceOwnerId"] = state ? state.childInstanceOwnerId : undefined;
-            resourceInputs["childInstanceRegionId"] = state ? state.childInstanceRegionId : undefined;
-            resourceInputs["childInstanceType"] = state ? state.childInstanceType : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["ecrId"] = state ? state.ecrId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["childInstanceId"] = state?.childInstanceId;
+            resourceInputs["childInstanceOwnerId"] = state?.childInstanceOwnerId;
+            resourceInputs["childInstanceRegionId"] = state?.childInstanceRegionId;
+            resourceInputs["childInstanceType"] = state?.childInstanceType;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["ecrId"] = state?.ecrId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as RouterVbrChildInstanceArgs | undefined;
-            if ((!args || args.childInstanceId === undefined) && !opts.urn) {
+            if (args?.childInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'childInstanceId'");
             }
-            if ((!args || args.childInstanceRegionId === undefined) && !opts.urn) {
+            if (args?.childInstanceRegionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'childInstanceRegionId'");
             }
-            if ((!args || args.childInstanceType === undefined) && !opts.urn) {
+            if (args?.childInstanceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'childInstanceType'");
             }
-            if ((!args || args.ecrId === undefined) && !opts.urn) {
+            if (args?.ecrId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ecrId'");
             }
-            resourceInputs["childInstanceId"] = args ? args.childInstanceId : undefined;
-            resourceInputs["childInstanceOwnerId"] = args ? args.childInstanceOwnerId : undefined;
-            resourceInputs["childInstanceRegionId"] = args ? args.childInstanceRegionId : undefined;
-            resourceInputs["childInstanceType"] = args ? args.childInstanceType : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["ecrId"] = args ? args.ecrId : undefined;
+            resourceInputs["childInstanceId"] = args?.childInstanceId;
+            resourceInputs["childInstanceOwnerId"] = args?.childInstanceOwnerId;
+            resourceInputs["childInstanceRegionId"] = args?.childInstanceRegionId;
+            resourceInputs["childInstanceType"] = args?.childInstanceType;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["ecrId"] = args?.ecrId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

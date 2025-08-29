@@ -102,51 +102,51 @@ export class NetworkAcl extends pulumi.CustomResource {
     /**
      * The creation time of the resource.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Out direction rule information. See `egressAclEntries` below.
      */
-    public readonly egressAclEntries!: pulumi.Output<outputs.vpc.NetworkAclEgressAclEntry[]>;
+    declare public readonly egressAclEntries: pulumi.Output<outputs.vpc.NetworkAclEgressAclEntry[]>;
     /**
      * Inward direction rule information. See `ingressAclEntries` below.
      */
-    public readonly ingressAclEntries!: pulumi.Output<outputs.vpc.NetworkAclIngressAclEntry[]>;
+    declare public readonly ingressAclEntries: pulumi.Output<outputs.vpc.NetworkAclIngressAclEntry[]>;
     /**
      * . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.122.0. New field 'network_acl_name' instead.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
      */
-    public readonly networkAclName!: pulumi.Output<string>;
+    declare public readonly networkAclName: pulumi.Output<string>;
     /**
      * The associated resource. See `resources` below.
      */
-    public readonly resources!: pulumi.Output<outputs.vpc.NetworkAclResource[]>;
+    declare public readonly resources: pulumi.Output<outputs.vpc.NetworkAclResource[]>;
     /**
      * SOURCE NetworkAcl specified by CopyNetworkAclEntries.
      */
-    public readonly sourceNetworkAclId!: pulumi.Output<string | undefined>;
+    declare public readonly sourceNetworkAclId: pulumi.Output<string | undefined>;
     /**
      * The state of the network ACL.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tags of this resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the associated VPC.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
 
     /**
      * Create a NetworkAcl resource with the given unique name, arguments, and options.
@@ -161,31 +161,31 @@ export class NetworkAcl extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkAclState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["egressAclEntries"] = state ? state.egressAclEntries : undefined;
-            resourceInputs["ingressAclEntries"] = state ? state.ingressAclEntries : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkAclName"] = state ? state.networkAclName : undefined;
-            resourceInputs["resources"] = state ? state.resources : undefined;
-            resourceInputs["sourceNetworkAclId"] = state ? state.sourceNetworkAclId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["egressAclEntries"] = state?.egressAclEntries;
+            resourceInputs["ingressAclEntries"] = state?.ingressAclEntries;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkAclName"] = state?.networkAclName;
+            resourceInputs["resources"] = state?.resources;
+            resourceInputs["sourceNetworkAclId"] = state?.sourceNetworkAclId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as NetworkAclArgs | undefined;
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["egressAclEntries"] = args ? args.egressAclEntries : undefined;
-            resourceInputs["ingressAclEntries"] = args ? args.ingressAclEntries : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkAclName"] = args ? args.networkAclName : undefined;
-            resourceInputs["resources"] = args ? args.resources : undefined;
-            resourceInputs["sourceNetworkAclId"] = args ? args.sourceNetworkAclId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["egressAclEntries"] = args?.egressAclEntries;
+            resourceInputs["ingressAclEntries"] = args?.ingressAclEntries;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkAclName"] = args?.networkAclName;
+            resourceInputs["resources"] = args?.resources;
+            resourceInputs["sourceNetworkAclId"] = args?.sourceNetworkAclId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

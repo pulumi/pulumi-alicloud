@@ -92,53 +92,53 @@ export class VbrPconnAssociation extends pulumi.CustomResource {
     /**
      * The circuit code provided by the operator for the physical connection.
      */
-    public /*out*/ readonly circuitCode!: pulumi.Output<string>;
+    declare public /*out*/ readonly circuitCode: pulumi.Output<string>;
     /**
      * Whether IPv6 is enabled. Value:
      * - **true**: on.
      * - **false** (default): Off.
      */
-    public readonly enableIpv6!: pulumi.Output<boolean>;
+    declare public readonly enableIpv6: pulumi.Output<boolean>;
     /**
      * The Alibaba cloud IP address of the VBR instance.
      */
-    public readonly localGatewayIp!: pulumi.Output<string | undefined>;
+    declare public readonly localGatewayIp: pulumi.Output<string | undefined>;
     /**
      * The IPv6 address on the Alibaba Cloud side of the VBR instance.
      */
-    public readonly localIpv6GatewayIp!: pulumi.Output<string | undefined>;
+    declare public readonly localIpv6GatewayIp: pulumi.Output<string | undefined>;
     /**
      * The client IP address of the VBR instance. This attribute only allows the VBR owner to specify or modify. **NOTE:** Required when creating a VBR instance for the physical connection owner.
      */
-    public readonly peerGatewayIp!: pulumi.Output<string | undefined>;
+    declare public readonly peerGatewayIp: pulumi.Output<string | undefined>;
     /**
      * The IPv6 address of the client side of the VBR instance. This attribute only allows the VBR owner to specify or modify. **NOTE:** Required when creating a VBR instance for the physical connection owner.
      */
-    public readonly peerIpv6GatewayIp!: pulumi.Output<string | undefined>;
+    declare public readonly peerIpv6GatewayIp: pulumi.Output<string | undefined>;
     /**
      * The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.Two IPv6 addresses must be in the same subnet.
      */
-    public readonly peeringIpv6SubnetMask!: pulumi.Output<string | undefined>;
+    declare public readonly peeringIpv6SubnetMask: pulumi.Output<string | undefined>;
     /**
      * The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.The two IP addresses must be in the same subnet.
      */
-    public readonly peeringSubnetMask!: pulumi.Output<string | undefined>;
+    declare public readonly peeringSubnetMask: pulumi.Output<string | undefined>;
     /**
      * The ID of the leased line instance.
      */
-    public readonly physicalConnectionId!: pulumi.Output<string>;
+    declare public readonly physicalConnectionId: pulumi.Output<string>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The ID of the VBR instance.
      */
-    public readonly vbrId!: pulumi.Output<string>;
+    declare public readonly vbrId: pulumi.Output<string>;
     /**
      * VLAN ID of the VBR. Valid values: **0 to 2999**. **NOTE:** only the owner of the physical connection can specify this parameter. The VLAN ID of two VBRs under the same physical connection cannot be the same.
      */
-    public readonly vlanId!: pulumi.Output<number>;
+    declare public readonly vlanId: pulumi.Output<number>;
 
     /**
      * Create a VbrPconnAssociation resource with the given unique name, arguments, and options.
@@ -153,39 +153,39 @@ export class VbrPconnAssociation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VbrPconnAssociationState | undefined;
-            resourceInputs["circuitCode"] = state ? state.circuitCode : undefined;
-            resourceInputs["enableIpv6"] = state ? state.enableIpv6 : undefined;
-            resourceInputs["localGatewayIp"] = state ? state.localGatewayIp : undefined;
-            resourceInputs["localIpv6GatewayIp"] = state ? state.localIpv6GatewayIp : undefined;
-            resourceInputs["peerGatewayIp"] = state ? state.peerGatewayIp : undefined;
-            resourceInputs["peerIpv6GatewayIp"] = state ? state.peerIpv6GatewayIp : undefined;
-            resourceInputs["peeringIpv6SubnetMask"] = state ? state.peeringIpv6SubnetMask : undefined;
-            resourceInputs["peeringSubnetMask"] = state ? state.peeringSubnetMask : undefined;
-            resourceInputs["physicalConnectionId"] = state ? state.physicalConnectionId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vbrId"] = state ? state.vbrId : undefined;
-            resourceInputs["vlanId"] = state ? state.vlanId : undefined;
+            resourceInputs["circuitCode"] = state?.circuitCode;
+            resourceInputs["enableIpv6"] = state?.enableIpv6;
+            resourceInputs["localGatewayIp"] = state?.localGatewayIp;
+            resourceInputs["localIpv6GatewayIp"] = state?.localIpv6GatewayIp;
+            resourceInputs["peerGatewayIp"] = state?.peerGatewayIp;
+            resourceInputs["peerIpv6GatewayIp"] = state?.peerIpv6GatewayIp;
+            resourceInputs["peeringIpv6SubnetMask"] = state?.peeringIpv6SubnetMask;
+            resourceInputs["peeringSubnetMask"] = state?.peeringSubnetMask;
+            resourceInputs["physicalConnectionId"] = state?.physicalConnectionId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vbrId"] = state?.vbrId;
+            resourceInputs["vlanId"] = state?.vlanId;
         } else {
             const args = argsOrState as VbrPconnAssociationArgs | undefined;
-            if ((!args || args.physicalConnectionId === undefined) && !opts.urn) {
+            if (args?.physicalConnectionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'physicalConnectionId'");
             }
-            if ((!args || args.vbrId === undefined) && !opts.urn) {
+            if (args?.vbrId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vbrId'");
             }
-            if ((!args || args.vlanId === undefined) && !opts.urn) {
+            if (args?.vlanId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vlanId'");
             }
-            resourceInputs["enableIpv6"] = args ? args.enableIpv6 : undefined;
-            resourceInputs["localGatewayIp"] = args ? args.localGatewayIp : undefined;
-            resourceInputs["localIpv6GatewayIp"] = args ? args.localIpv6GatewayIp : undefined;
-            resourceInputs["peerGatewayIp"] = args ? args.peerGatewayIp : undefined;
-            resourceInputs["peerIpv6GatewayIp"] = args ? args.peerIpv6GatewayIp : undefined;
-            resourceInputs["peeringIpv6SubnetMask"] = args ? args.peeringIpv6SubnetMask : undefined;
-            resourceInputs["peeringSubnetMask"] = args ? args.peeringSubnetMask : undefined;
-            resourceInputs["physicalConnectionId"] = args ? args.physicalConnectionId : undefined;
-            resourceInputs["vbrId"] = args ? args.vbrId : undefined;
-            resourceInputs["vlanId"] = args ? args.vlanId : undefined;
+            resourceInputs["enableIpv6"] = args?.enableIpv6;
+            resourceInputs["localGatewayIp"] = args?.localGatewayIp;
+            resourceInputs["localIpv6GatewayIp"] = args?.localIpv6GatewayIp;
+            resourceInputs["peerGatewayIp"] = args?.peerGatewayIp;
+            resourceInputs["peerIpv6GatewayIp"] = args?.peerIpv6GatewayIp;
+            resourceInputs["peeringIpv6SubnetMask"] = args?.peeringIpv6SubnetMask;
+            resourceInputs["peeringSubnetMask"] = args?.peeringSubnetMask;
+            resourceInputs["physicalConnectionId"] = args?.physicalConnectionId;
+            resourceInputs["vbrId"] = args?.vbrId;
+            resourceInputs["vlanId"] = args?.vlanId;
             resourceInputs["circuitCode"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

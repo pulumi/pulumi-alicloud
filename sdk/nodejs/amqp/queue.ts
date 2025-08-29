@@ -89,58 +89,58 @@ export class Queue extends pulumi.CustomResource {
      * * true: The Auto Delete attribute is configured. The queue is automatically deleted after the last subscription from consumers to this queue is canceled.
      * * false: The Auto Delete attribute is not configured.
      */
-    public readonly autoDeleteState!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoDeleteState: pulumi.Output<boolean | undefined>;
     /**
      * The validity period after which the queue is automatically deleted.
      * If the queue is not accessed within a specified period of time, it is automatically deleted.
      */
-    public readonly autoExpireState!: pulumi.Output<string | undefined>;
+    declare public readonly autoExpireState: pulumi.Output<string | undefined>;
     /**
      * The dead-letter exchange. A dead-letter exchange is used to receive rejected messages. 
      * If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
      * Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
      */
-    public readonly deadLetterExchange!: pulumi.Output<string | undefined>;
+    declare public readonly deadLetterExchange: pulumi.Output<string | undefined>;
     /**
      * The dead letter routing key.
      */
-    public readonly deadLetterRoutingKey!: pulumi.Output<string | undefined>;
+    declare public readonly deadLetterRoutingKey: pulumi.Output<string | undefined>;
     /**
      * Specifies whether the queue is an exclusive queue. Valid values:
      * * true: The queue is an exclusive queue. It can be used only for the connection that declares the exclusive queue. After the connection is closed, the exclusive queue is automatically deleted.
      * * false: The queue is not an exclusive queue.
      */
-    public readonly exclusiveState!: pulumi.Output<boolean | undefined>;
+    declare public readonly exclusiveState: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The maximum number of messages that can be stored in the queue.
      * If this threshold is exceeded, the earliest messages that are routed to the queue are discarded.
      */
-    public readonly maxLength!: pulumi.Output<string | undefined>;
+    declare public readonly maxLength: pulumi.Output<string | undefined>;
     /**
      * The highest priority supported by the queue. This parameter is set to a positive integer.
      * Valid values: 0 to 255. Recommended values: 1 to 10
      */
-    public readonly maximumPriority!: pulumi.Output<number | undefined>;
+    declare public readonly maximumPriority: pulumi.Output<number | undefined>;
     /**
      * The message TTL of the queue.
      * If the retention period of a message in the queue exceeds the message TTL of the queue, the message expires.
      * Message TTL must be set to a non-negative integer, in milliseconds.
      * For example, if the message TTL of the queue is 1000, messages survive for at most 1 second in the queue.
      */
-    public readonly messageTtl!: pulumi.Output<string | undefined>;
+    declare public readonly messageTtl: pulumi.Output<string | undefined>;
     /**
      * The name of the queue.
      * The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
      */
-    public readonly queueName!: pulumi.Output<string>;
+    declare public readonly queueName: pulumi.Output<string>;
     /**
      * The name of the virtual host.
      */
-    public readonly virtualHostName!: pulumi.Output<string>;
+    declare public readonly virtualHostName: pulumi.Output<string>;
 
     /**
      * Create a Queue resource with the given unique name, arguments, and options.
@@ -155,39 +155,39 @@ export class Queue extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QueueState | undefined;
-            resourceInputs["autoDeleteState"] = state ? state.autoDeleteState : undefined;
-            resourceInputs["autoExpireState"] = state ? state.autoExpireState : undefined;
-            resourceInputs["deadLetterExchange"] = state ? state.deadLetterExchange : undefined;
-            resourceInputs["deadLetterRoutingKey"] = state ? state.deadLetterRoutingKey : undefined;
-            resourceInputs["exclusiveState"] = state ? state.exclusiveState : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["maxLength"] = state ? state.maxLength : undefined;
-            resourceInputs["maximumPriority"] = state ? state.maximumPriority : undefined;
-            resourceInputs["messageTtl"] = state ? state.messageTtl : undefined;
-            resourceInputs["queueName"] = state ? state.queueName : undefined;
-            resourceInputs["virtualHostName"] = state ? state.virtualHostName : undefined;
+            resourceInputs["autoDeleteState"] = state?.autoDeleteState;
+            resourceInputs["autoExpireState"] = state?.autoExpireState;
+            resourceInputs["deadLetterExchange"] = state?.deadLetterExchange;
+            resourceInputs["deadLetterRoutingKey"] = state?.deadLetterRoutingKey;
+            resourceInputs["exclusiveState"] = state?.exclusiveState;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["maxLength"] = state?.maxLength;
+            resourceInputs["maximumPriority"] = state?.maximumPriority;
+            resourceInputs["messageTtl"] = state?.messageTtl;
+            resourceInputs["queueName"] = state?.queueName;
+            resourceInputs["virtualHostName"] = state?.virtualHostName;
         } else {
             const args = argsOrState as QueueArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.queueName === undefined) && !opts.urn) {
+            if (args?.queueName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'queueName'");
             }
-            if ((!args || args.virtualHostName === undefined) && !opts.urn) {
+            if (args?.virtualHostName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'virtualHostName'");
             }
-            resourceInputs["autoDeleteState"] = args ? args.autoDeleteState : undefined;
-            resourceInputs["autoExpireState"] = args ? args.autoExpireState : undefined;
-            resourceInputs["deadLetterExchange"] = args ? args.deadLetterExchange : undefined;
-            resourceInputs["deadLetterRoutingKey"] = args ? args.deadLetterRoutingKey : undefined;
-            resourceInputs["exclusiveState"] = args ? args.exclusiveState : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["maxLength"] = args ? args.maxLength : undefined;
-            resourceInputs["maximumPriority"] = args ? args.maximumPriority : undefined;
-            resourceInputs["messageTtl"] = args ? args.messageTtl : undefined;
-            resourceInputs["queueName"] = args ? args.queueName : undefined;
-            resourceInputs["virtualHostName"] = args ? args.virtualHostName : undefined;
+            resourceInputs["autoDeleteState"] = args?.autoDeleteState;
+            resourceInputs["autoExpireState"] = args?.autoExpireState;
+            resourceInputs["deadLetterExchange"] = args?.deadLetterExchange;
+            resourceInputs["deadLetterRoutingKey"] = args?.deadLetterRoutingKey;
+            resourceInputs["exclusiveState"] = args?.exclusiveState;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["maxLength"] = args?.maxLength;
+            resourceInputs["maximumPriority"] = args?.maximumPriority;
+            resourceInputs["messageTtl"] = args?.messageTtl;
+            resourceInputs["queueName"] = args?.queueName;
+            resourceInputs["virtualHostName"] = args?.virtualHostName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Queue.__pulumiType, name, resourceInputs, opts);

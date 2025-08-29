@@ -120,51 +120,51 @@ export class DbInstanceEndpoint extends pulumi.CustomResource {
     /**
      * The internal endpoint.
      */
-    public /*out*/ readonly connectionString!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectionString: pulumi.Output<string>;
     /**
      * The IP address of the internal endpoint.
      */
-    public readonly connectionStringPrefix!: pulumi.Output<string>;
+    declare public readonly connectionStringPrefix: pulumi.Output<string>;
     /**
      * The user-defined description of the endpoint.
      */
-    public readonly dbInstanceEndpointDescription!: pulumi.Output<string>;
+    declare public readonly dbInstanceEndpointDescription: pulumi.Output<string>;
     /**
      * The Endpoint ID of the instance.
      */
-    public /*out*/ readonly dbInstanceEndpointId!: pulumi.Output<string>;
+    declare public /*out*/ readonly dbInstanceEndpointId: pulumi.Output<string>;
     /**
      * The type of the endpoint.
      */
-    public /*out*/ readonly dbInstanceEndpointType!: pulumi.Output<string>;
+    declare public /*out*/ readonly dbInstanceEndpointType: pulumi.Output<string>;
     /**
      * The ID of the instance.
      */
-    public readonly dbInstanceId!: pulumi.Output<string>;
+    declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
      * The type of the IP address.
      */
-    public /*out*/ readonly ipType!: pulumi.Output<string>;
+    declare public /*out*/ readonly ipType: pulumi.Output<string>;
     /**
      * The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `nodeItems` below.
      */
-    public readonly nodeItems!: pulumi.Output<outputs.rds.DbInstanceEndpointNodeItem[]>;
+    declare public readonly nodeItems: pulumi.Output<outputs.rds.DbInstanceEndpointNodeItem[]>;
     /**
      * The port number of the internal endpoint. You can specify the port number for the internal endpoint.Valid values: 3000 to 5999.
      */
-    public readonly port!: pulumi.Output<string>;
+    declare public readonly port: pulumi.Output<string>;
     /**
      * The IP address of the internal endpoint.
      */
-    public /*out*/ readonly privateIpAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly privateIpAddress: pulumi.Output<string>;
     /**
      * The virtual private cloud (VPC) ID of the internal endpoint.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * The vSwitch ID of the internal endpoint.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
 
     /**
      * Create a DbInstanceEndpoint resource with the given unique name, arguments, and options.
@@ -179,45 +179,45 @@ export class DbInstanceEndpoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DbInstanceEndpointState | undefined;
-            resourceInputs["connectionString"] = state ? state.connectionString : undefined;
-            resourceInputs["connectionStringPrefix"] = state ? state.connectionStringPrefix : undefined;
-            resourceInputs["dbInstanceEndpointDescription"] = state ? state.dbInstanceEndpointDescription : undefined;
-            resourceInputs["dbInstanceEndpointId"] = state ? state.dbInstanceEndpointId : undefined;
-            resourceInputs["dbInstanceEndpointType"] = state ? state.dbInstanceEndpointType : undefined;
-            resourceInputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
-            resourceInputs["ipType"] = state ? state.ipType : undefined;
-            resourceInputs["nodeItems"] = state ? state.nodeItems : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["connectionString"] = state?.connectionString;
+            resourceInputs["connectionStringPrefix"] = state?.connectionStringPrefix;
+            resourceInputs["dbInstanceEndpointDescription"] = state?.dbInstanceEndpointDescription;
+            resourceInputs["dbInstanceEndpointId"] = state?.dbInstanceEndpointId;
+            resourceInputs["dbInstanceEndpointType"] = state?.dbInstanceEndpointType;
+            resourceInputs["dbInstanceId"] = state?.dbInstanceId;
+            resourceInputs["ipType"] = state?.ipType;
+            resourceInputs["nodeItems"] = state?.nodeItems;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["privateIpAddress"] = state?.privateIpAddress;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
         } else {
             const args = argsOrState as DbInstanceEndpointArgs | undefined;
-            if ((!args || args.connectionStringPrefix === undefined) && !opts.urn) {
+            if (args?.connectionStringPrefix === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectionStringPrefix'");
             }
-            if ((!args || args.dbInstanceId === undefined) && !opts.urn) {
+            if (args?.dbInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceId'");
             }
-            if ((!args || args.nodeItems === undefined) && !opts.urn) {
+            if (args?.nodeItems === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodeItems'");
             }
-            if ((!args || args.port === undefined) && !opts.urn) {
+            if (args?.port === undefined && !opts.urn) {
                 throw new Error("Missing required property 'port'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+            if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            resourceInputs["connectionStringPrefix"] = args ? args.connectionStringPrefix : undefined;
-            resourceInputs["dbInstanceEndpointDescription"] = args ? args.dbInstanceEndpointDescription : undefined;
-            resourceInputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
-            resourceInputs["nodeItems"] = args ? args.nodeItems : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["connectionStringPrefix"] = args?.connectionStringPrefix;
+            resourceInputs["dbInstanceEndpointDescription"] = args?.dbInstanceEndpointDescription;
+            resourceInputs["dbInstanceId"] = args?.dbInstanceId;
+            resourceInputs["nodeItems"] = args?.nodeItems;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["connectionString"] = undefined /*out*/;
             resourceInputs["dbInstanceEndpointId"] = undefined /*out*/;
             resourceInputs["dbInstanceEndpointType"] = undefined /*out*/;

@@ -78,26 +78,26 @@ export class Instance extends pulumi.CustomResource {
      *
      * Default to "Any".
      */
-    public readonly accessedBy!: pulumi.Output<string>;
+    declare public readonly accessedBy: pulumi.Output<string>;
     /**
      * The description of the instance. Currently, it does not support modifying.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The type of instance. Valid values are "Capacity" and "HighPerformance". Default to "HighPerformance".
      */
-    public readonly instanceType!: pulumi.Output<string | undefined>;
+    declare public readonly instanceType: pulumi.Output<string | undefined>;
     /**
      * The name of the instance.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The set of request sources that are allowed access. Valid optional values:
      * * `TRUST_PROXY` - Trusted proxy, usually the Alibaba Cloud console.
      *
      * Default to ["TRUST_PROXY"].
      */
-    public readonly networkSourceAcls!: pulumi.Output<string[]>;
+    declare public readonly networkSourceAcls: pulumi.Output<string[]>;
     /**
      * The set of network types that are allowed access. Valid optional values:
      * * `CLASSIC` - Classic network.
@@ -106,16 +106,16 @@ export class Instance extends pulumi.CustomResource {
      *
      * Default to ["VPC", "CLASSIC", "INTERNET"].
      */
-    public readonly networkTypeAcls!: pulumi.Output<string[]>;
+    declare public readonly networkTypeAcls: pulumi.Output<string[]>;
     /**
      * The resource group the instance belongs to.
      * Default to Alibaba Cloud default resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the instance.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -130,24 +130,24 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["accessedBy"] = state ? state.accessedBy : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkSourceAcls"] = state ? state.networkSourceAcls : undefined;
-            resourceInputs["networkTypeAcls"] = state ? state.networkTypeAcls : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["accessedBy"] = state?.accessedBy;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkSourceAcls"] = state?.networkSourceAcls;
+            resourceInputs["networkTypeAcls"] = state?.networkTypeAcls;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            resourceInputs["accessedBy"] = args ? args.accessedBy : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkSourceAcls"] = args ? args.networkSourceAcls : undefined;
-            resourceInputs["networkTypeAcls"] = args ? args.networkTypeAcls : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["accessedBy"] = args?.accessedBy;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkSourceAcls"] = args?.networkSourceAcls;
+            resourceInputs["networkTypeAcls"] = args?.networkTypeAcls;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Instance.__pulumiType, name, resourceInputs, opts);

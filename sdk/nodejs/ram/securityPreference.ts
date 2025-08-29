@@ -46,42 +46,42 @@ export class SecurityPreference extends pulumi.CustomResource {
      * - true (default): Allowed.
      * - false: not allowed.
      */
-    public readonly allowUserToChangePassword!: pulumi.Output<boolean>;
+    declare public readonly allowUserToChangePassword: pulumi.Output<boolean>;
     /**
      * Whether to allow RAM users to log on using a passkey. Value:
      * - true (default): Allowed.
      * - false: not allowed.
      */
-    public readonly allowUserToLoginWithPasskey!: pulumi.Output<boolean>;
+    declare public readonly allowUserToLoginWithPasskey: pulumi.Output<boolean>;
     /**
      * Whether to allow RAM users to manage their own access keys. Value:
      * - true: Allow.
      * - false (default): Not allowed.
      */
-    public readonly allowUserToManageAccessKeys!: pulumi.Output<boolean>;
+    declare public readonly allowUserToManageAccessKeys: pulumi.Output<boolean>;
     /**
      * Whether to allow RAM users to manage multi-factor authentication devices. Value:
      * - true (default): Allowed.
      * - false: not allowed.
      */
-    public readonly allowUserToManageMfaDevices!: pulumi.Output<boolean>;
+    declare public readonly allowUserToManageMfaDevices: pulumi.Output<boolean>;
     /**
      * Whether to allow RAM users to independently manage the binding and unbinding of personal DingTalk. Value:
      * - true (default): Allowed.
      * - false: not allowed.
      */
-    public readonly allowUserToManagePersonalDingTalk!: pulumi.Output<boolean>;
+    declare public readonly allowUserToManagePersonalDingTalk: pulumi.Output<boolean>;
     /**
      * Whether to save the verification status of a RAM user after logging in using multi-factor authentication. The validity period is 7 days. Value:
      * - true: Allow.
      * - false (default): Not allowed.
      */
-    public readonly enableSaveMfaTicket!: pulumi.Output<boolean>;
+    declare public readonly enableSaveMfaTicket: pulumi.Output<boolean>;
     /**
      * Field `enforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `mfaOperationForLogin` instead. 
      * Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
      */
-    public readonly enforceMfaForLogin!: pulumi.Output<boolean>;
+    declare public readonly enforceMfaForLogin: pulumi.Output<boolean>;
     /**
      * The login mask. The logon mask determines which IP addresses are affected by the logon console, including password logon and single sign-on (SSO), but API calls made using the access key are not affected.
      * - If the mask is specified, RAM users can only log on from the specified IP address.
@@ -91,26 +91,26 @@ export class SecurityPreference extends pulumi.CustomResource {
      *
      * Configure a maximum of 40 logon masks, with a total length of 512 characters.
      */
-    public readonly loginNetworkMasks!: pulumi.Output<string | undefined>;
+    declare public readonly loginNetworkMasks: pulumi.Output<string | undefined>;
     /**
      * The validity period of the logon session of RAM users.
      * Valid values: 1 to 24. Unit: hours.
      * Default value: 6.
      */
-    public readonly loginSessionDuration!: pulumi.Output<number>;
+    declare public readonly loginSessionDuration: pulumi.Output<number>;
     /**
      * MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:
      * - mandatory: mandatory for all RAM users. The original value of EnforceMFAForLogin is true.
      * - independent (default): depends on the independent configuration of each RAM user. The original value of EnforceMFAForLogin is false.
      * - adaptive: Used only during abnormal login.
      */
-    public readonly mfaOperationForLogin!: pulumi.Output<string>;
+    declare public readonly mfaOperationForLogin: pulumi.Output<string>;
     /**
      * Whether MFA is verified twice during abnormal logon. Value:
      * - autonomous (default): Skip, do not force binding.
      * - enforceVerify: Force binding validation.
      */
-    public readonly operationForRiskLogin!: pulumi.Output<string>;
+    declare public readonly operationForRiskLogin: pulumi.Output<string>;
     /**
      * Means of multi-factor authentication. Value:
      * - sms: secure phone.
@@ -118,7 +118,7 @@ export class SecurityPreference extends pulumi.CustomResource {
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    public readonly verificationTypes!: pulumi.Output<string[] | undefined>;
+    declare public readonly verificationTypes: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a SecurityPreference resource with the given unique name, arguments, and options.
@@ -133,32 +133,32 @@ export class SecurityPreference extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecurityPreferenceState | undefined;
-            resourceInputs["allowUserToChangePassword"] = state ? state.allowUserToChangePassword : undefined;
-            resourceInputs["allowUserToLoginWithPasskey"] = state ? state.allowUserToLoginWithPasskey : undefined;
-            resourceInputs["allowUserToManageAccessKeys"] = state ? state.allowUserToManageAccessKeys : undefined;
-            resourceInputs["allowUserToManageMfaDevices"] = state ? state.allowUserToManageMfaDevices : undefined;
-            resourceInputs["allowUserToManagePersonalDingTalk"] = state ? state.allowUserToManagePersonalDingTalk : undefined;
-            resourceInputs["enableSaveMfaTicket"] = state ? state.enableSaveMfaTicket : undefined;
-            resourceInputs["enforceMfaForLogin"] = state ? state.enforceMfaForLogin : undefined;
-            resourceInputs["loginNetworkMasks"] = state ? state.loginNetworkMasks : undefined;
-            resourceInputs["loginSessionDuration"] = state ? state.loginSessionDuration : undefined;
-            resourceInputs["mfaOperationForLogin"] = state ? state.mfaOperationForLogin : undefined;
-            resourceInputs["operationForRiskLogin"] = state ? state.operationForRiskLogin : undefined;
-            resourceInputs["verificationTypes"] = state ? state.verificationTypes : undefined;
+            resourceInputs["allowUserToChangePassword"] = state?.allowUserToChangePassword;
+            resourceInputs["allowUserToLoginWithPasskey"] = state?.allowUserToLoginWithPasskey;
+            resourceInputs["allowUserToManageAccessKeys"] = state?.allowUserToManageAccessKeys;
+            resourceInputs["allowUserToManageMfaDevices"] = state?.allowUserToManageMfaDevices;
+            resourceInputs["allowUserToManagePersonalDingTalk"] = state?.allowUserToManagePersonalDingTalk;
+            resourceInputs["enableSaveMfaTicket"] = state?.enableSaveMfaTicket;
+            resourceInputs["enforceMfaForLogin"] = state?.enforceMfaForLogin;
+            resourceInputs["loginNetworkMasks"] = state?.loginNetworkMasks;
+            resourceInputs["loginSessionDuration"] = state?.loginSessionDuration;
+            resourceInputs["mfaOperationForLogin"] = state?.mfaOperationForLogin;
+            resourceInputs["operationForRiskLogin"] = state?.operationForRiskLogin;
+            resourceInputs["verificationTypes"] = state?.verificationTypes;
         } else {
             const args = argsOrState as SecurityPreferenceArgs | undefined;
-            resourceInputs["allowUserToChangePassword"] = args ? args.allowUserToChangePassword : undefined;
-            resourceInputs["allowUserToLoginWithPasskey"] = args ? args.allowUserToLoginWithPasskey : undefined;
-            resourceInputs["allowUserToManageAccessKeys"] = args ? args.allowUserToManageAccessKeys : undefined;
-            resourceInputs["allowUserToManageMfaDevices"] = args ? args.allowUserToManageMfaDevices : undefined;
-            resourceInputs["allowUserToManagePersonalDingTalk"] = args ? args.allowUserToManagePersonalDingTalk : undefined;
-            resourceInputs["enableSaveMfaTicket"] = args ? args.enableSaveMfaTicket : undefined;
-            resourceInputs["enforceMfaForLogin"] = args ? args.enforceMfaForLogin : undefined;
-            resourceInputs["loginNetworkMasks"] = args ? args.loginNetworkMasks : undefined;
-            resourceInputs["loginSessionDuration"] = args ? args.loginSessionDuration : undefined;
-            resourceInputs["mfaOperationForLogin"] = args ? args.mfaOperationForLogin : undefined;
-            resourceInputs["operationForRiskLogin"] = args ? args.operationForRiskLogin : undefined;
-            resourceInputs["verificationTypes"] = args ? args.verificationTypes : undefined;
+            resourceInputs["allowUserToChangePassword"] = args?.allowUserToChangePassword;
+            resourceInputs["allowUserToLoginWithPasskey"] = args?.allowUserToLoginWithPasskey;
+            resourceInputs["allowUserToManageAccessKeys"] = args?.allowUserToManageAccessKeys;
+            resourceInputs["allowUserToManageMfaDevices"] = args?.allowUserToManageMfaDevices;
+            resourceInputs["allowUserToManagePersonalDingTalk"] = args?.allowUserToManagePersonalDingTalk;
+            resourceInputs["enableSaveMfaTicket"] = args?.enableSaveMfaTicket;
+            resourceInputs["enforceMfaForLogin"] = args?.enforceMfaForLogin;
+            resourceInputs["loginNetworkMasks"] = args?.loginNetworkMasks;
+            resourceInputs["loginSessionDuration"] = args?.loginSessionDuration;
+            resourceInputs["mfaOperationForLogin"] = args?.mfaOperationForLogin;
+            resourceInputs["operationForRiskLogin"] = args?.operationForRiskLogin;
+            resourceInputs["verificationTypes"] = args?.verificationTypes;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SecurityPreference.__pulumiType, name, resourceInputs, opts);

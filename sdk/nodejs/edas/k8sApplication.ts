@@ -48,137 +48,137 @@ export class K8sApplication extends pulumi.CustomResource {
     /**
      * The description of the application
      */
-    public readonly applicationDescriotion!: pulumi.Output<string | undefined>;
+    declare public readonly applicationDescriotion: pulumi.Output<string | undefined>;
     /**
      * The name of the application you want to create. Must start with character,supports numbers, letters and dashes (-), supports up to 36 characters
      */
-    public readonly applicationName!: pulumi.Output<string>;
+    declare public readonly applicationName: pulumi.Output<string>;
     /**
      * The ID of the alicloud container service kubernetes cluster that you want to import to. You can call the ListCluster operation to query.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The set command, if set, will replace the startup command in the mirror when the mirror is started.
      */
-    public readonly command!: pulumi.Output<string | undefined>;
+    declare public readonly command: pulumi.Output<string | undefined>;
     /**
      * Used in combination with the command, the parameter of the command is a JsonArray string in the format: `[{"argument":"-c"},{"argument":"test"}]`. Among them, -c and test are two parameters that need to be set.
      */
-    public readonly commandArgs!: pulumi.Output<string[] | undefined>;
+    declare public readonly commandArgs: pulumi.Output<string[] | undefined>;
     /**
      * EDAS-Container version that the deployed package depends on. Image does not support this parameter.
      */
-    public readonly edasContainerVersion!: pulumi.Output<string | undefined>;
+    declare public readonly edasContainerVersion: pulumi.Output<string | undefined>;
     /**
      * Deployment environment variables, the format must conform to the JSON object array, such as: `{"name":"x","value":"y"},{"name":"x2","value":"y2"}`, If you want to cancel the configuration, you need to set an empty JSON array "" to indicate no configuration.
      */
-    public readonly envs!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly envs: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Mirror address. When the packageType is set to 'Image', this parameter item is required.
      */
-    public readonly imageUrl!: pulumi.Output<string | undefined>;
+    declare public readonly imageUrl: pulumi.Output<string | undefined>;
     /**
      * Public network SLB ID. If not configured, EDAS will automatically purchase a new SLB for the user.
      * It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
      *
      * @deprecated Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
      */
-    public readonly internetSlbId!: pulumi.Output<string | undefined>;
+    declare public readonly internetSlbId: pulumi.Output<string | undefined>;
     /**
      * The public network SLB front-end port, range 1~65535. It has been deprecated and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
      *
      * @deprecated Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
      */
-    public readonly internetSlbPort!: pulumi.Output<number | undefined>;
+    declare public readonly internetSlbPort: pulumi.Output<number | undefined>;
     /**
      * The public network SLB protocol supports TCP, HTTP and HTTPS protocols. It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
      *
      * @deprecated Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
      */
-    public readonly internetSlbProtocol!: pulumi.Output<string | undefined>;
+    declare public readonly internetSlbProtocol: pulumi.Output<string | undefined>;
     /**
      * The private SLB back-end port, is also the service port of the application, ranging from 1 to 65535.
      * It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
      *
      * @deprecated Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
      */
-    public readonly internetTargetPort!: pulumi.Output<number | undefined>;
+    declare public readonly internetTargetPort: pulumi.Output<number | undefined>;
     /**
      * The JDK version that the deployed package depends on. The optional parameter values are Open JDK 7 and Open JDK 8. Image does not support this parameter.
      */
-    public readonly jdk!: pulumi.Output<string | undefined>;
+    declare public readonly jdk: pulumi.Output<string | undefined>;
     /**
      * The CPU quota of the application instance during application operation. Unit: Number of millcores, set to 0 means unlimited, similar to request_cpu.
      */
-    public readonly limitMCpu!: pulumi.Output<number | undefined>;
+    declare public readonly limitMCpu: pulumi.Output<number | undefined>;
     /**
      * The memory limit of the application instance during application operation, unit: M.
      */
-    public readonly limitMem!: pulumi.Output<number | undefined>;
+    declare public readonly limitMem: pulumi.Output<number | undefined>;
     /**
      * Container survival status monitoring, format such as: `{"failureThreshold": 3,"initialDelaySeconds": 5,"successThreshold": 1,"timeoutSeconds": 1,"tcpSocket":{"host":"", "port":8080} }`.
      */
-    public readonly liveness!: pulumi.Output<string | undefined>;
+    declare public readonly liveness: pulumi.Output<string | undefined>;
     /**
      * The configuration of the host file mounted to the container. For example: `[{"type":"","nodePath":"/localfiles","mountPath":"/app/files"},{"type":"Directory","nodePath":"/mnt", "mountPath":"/app/storage"}]`. Among them, nodePath is the host path; mountPath is the path in the container; type is the mount type.
      */
-    public readonly localVolume!: pulumi.Output<string | undefined>;
+    declare public readonly localVolume: pulumi.Output<string | undefined>;
     /**
      * The ID corresponding to the EDAS namespace, the non-default namespace must be filled in.
      */
-    public readonly logicalRegionId!: pulumi.Output<string | undefined>;
+    declare public readonly logicalRegionId: pulumi.Output<string | undefined>;
     /**
      * Mount configuration description, as a serialized JSON. For example: `[{"nasPath": "/k8s","mountPath": "/mnt"},{"nasPath": "/files","mountPath": "/app/files"}]`. Among them, nasPath refers to the file storage path; mountPath refers to the path mounted in the container.
      */
-    public readonly mountDescs!: pulumi.Output<string | undefined>;
+    declare public readonly mountDescs: pulumi.Output<string | undefined>;
     /**
      * The namespace of the K8s cluster, it will determine which K8s namespace your application is deployed in. The default is 'default'.
      */
-    public readonly namespace!: pulumi.Output<string | undefined>;
+    declare public readonly namespace: pulumi.Output<string | undefined>;
     /**
      * The ID of the mounted NAS must be in the same region as the cluster. It must have an available mount point creation quota, or its mount point must be on a switch in the VPC. If it is not filled in and the mountDescs field exists, a NAS will be automatically purchased and mounted on the switch in the VPC by default.
      */
-    public readonly nasId!: pulumi.Output<string | undefined>;
+    declare public readonly nasId: pulumi.Output<string | undefined>;
     /**
      * Application package type. Optional parameter values include: FatJar, WAR and Image.
      */
-    public readonly packageType!: pulumi.Output<string | undefined>;
+    declare public readonly packageType: pulumi.Output<string | undefined>;
     /**
      * The url of the package to deploy.Applications deployed through FatJar or WAR packages need to configure it.
      */
-    public readonly packageUrl!: pulumi.Output<string | undefined>;
+    declare public readonly packageUrl: pulumi.Output<string | undefined>;
     /**
      * The version number of the deployment package. WAR and FatJar types are required. Please customize its meaning.
      */
-    public readonly packageVersion!: pulumi.Output<string>;
+    declare public readonly packageVersion: pulumi.Output<string>;
     /**
      * Execute script after startup
      */
-    public readonly postStart!: pulumi.Output<string | undefined>;
+    declare public readonly postStart: pulumi.Output<string | undefined>;
     /**
      * Execute script before stopping
      */
-    public readonly preStop!: pulumi.Output<string | undefined>;
+    declare public readonly preStop: pulumi.Output<string | undefined>;
     /**
      * Container service status check. If the check fails, the traffic passing through K8s Service will not be transferred to the container. The format is: `{"failureThreshold": 3,"initialDelaySeconds": 5,"successThreshold": 1,"timeoutSeconds": 1, "httpGet": {"path": "/consumer","port": 8080,"scheme": "HTTP","httpHeaders": [{"name": "test","value": "testvalue"} ]}}`.
      */
-    public readonly readiness!: pulumi.Output<string | undefined>;
+    declare public readonly readiness: pulumi.Output<string | undefined>;
     /**
      * Number of application instances.
      */
-    public readonly replicas!: pulumi.Output<number | undefined>;
+    declare public readonly replicas: pulumi.Output<number | undefined>;
     /**
      * When the application is created, the CPU quota of the application instance, unit: number of millcores, similar to request_cpu
      */
-    public readonly requestsMCpu!: pulumi.Output<number | undefined>;
+    declare public readonly requestsMCpu: pulumi.Output<number | undefined>;
     /**
      * When the application is created, the memory limit of the application instance, unit: M. When set to 0, it means unlimited.
      */
-    public readonly requestsMem!: pulumi.Output<number | undefined>;
+    declare public readonly requestsMem: pulumi.Output<number | undefined>;
     /**
      * The Tomcat version that the deployment package depends on. Applicable to Spring Cloud and Dubbo applications deployed through WAR packages. Image does not support this parameter.
      */
-    public readonly webContainer!: pulumi.Output<string | undefined>;
+    declare public readonly webContainer: pulumi.Output<string | undefined>;
 
     /**
      * Create a K8sApplication resource with the given unique name, arguments, and options.
@@ -193,76 +193,76 @@ export class K8sApplication extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as K8sApplicationState | undefined;
-            resourceInputs["applicationDescriotion"] = state ? state.applicationDescriotion : undefined;
-            resourceInputs["applicationName"] = state ? state.applicationName : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["command"] = state ? state.command : undefined;
-            resourceInputs["commandArgs"] = state ? state.commandArgs : undefined;
-            resourceInputs["edasContainerVersion"] = state ? state.edasContainerVersion : undefined;
-            resourceInputs["envs"] = state ? state.envs : undefined;
-            resourceInputs["imageUrl"] = state ? state.imageUrl : undefined;
-            resourceInputs["internetSlbId"] = state ? state.internetSlbId : undefined;
-            resourceInputs["internetSlbPort"] = state ? state.internetSlbPort : undefined;
-            resourceInputs["internetSlbProtocol"] = state ? state.internetSlbProtocol : undefined;
-            resourceInputs["internetTargetPort"] = state ? state.internetTargetPort : undefined;
-            resourceInputs["jdk"] = state ? state.jdk : undefined;
-            resourceInputs["limitMCpu"] = state ? state.limitMCpu : undefined;
-            resourceInputs["limitMem"] = state ? state.limitMem : undefined;
-            resourceInputs["liveness"] = state ? state.liveness : undefined;
-            resourceInputs["localVolume"] = state ? state.localVolume : undefined;
-            resourceInputs["logicalRegionId"] = state ? state.logicalRegionId : undefined;
-            resourceInputs["mountDescs"] = state ? state.mountDescs : undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["nasId"] = state ? state.nasId : undefined;
-            resourceInputs["packageType"] = state ? state.packageType : undefined;
-            resourceInputs["packageUrl"] = state ? state.packageUrl : undefined;
-            resourceInputs["packageVersion"] = state ? state.packageVersion : undefined;
-            resourceInputs["postStart"] = state ? state.postStart : undefined;
-            resourceInputs["preStop"] = state ? state.preStop : undefined;
-            resourceInputs["readiness"] = state ? state.readiness : undefined;
-            resourceInputs["replicas"] = state ? state.replicas : undefined;
-            resourceInputs["requestsMCpu"] = state ? state.requestsMCpu : undefined;
-            resourceInputs["requestsMem"] = state ? state.requestsMem : undefined;
-            resourceInputs["webContainer"] = state ? state.webContainer : undefined;
+            resourceInputs["applicationDescriotion"] = state?.applicationDescriotion;
+            resourceInputs["applicationName"] = state?.applicationName;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["command"] = state?.command;
+            resourceInputs["commandArgs"] = state?.commandArgs;
+            resourceInputs["edasContainerVersion"] = state?.edasContainerVersion;
+            resourceInputs["envs"] = state?.envs;
+            resourceInputs["imageUrl"] = state?.imageUrl;
+            resourceInputs["internetSlbId"] = state?.internetSlbId;
+            resourceInputs["internetSlbPort"] = state?.internetSlbPort;
+            resourceInputs["internetSlbProtocol"] = state?.internetSlbProtocol;
+            resourceInputs["internetTargetPort"] = state?.internetTargetPort;
+            resourceInputs["jdk"] = state?.jdk;
+            resourceInputs["limitMCpu"] = state?.limitMCpu;
+            resourceInputs["limitMem"] = state?.limitMem;
+            resourceInputs["liveness"] = state?.liveness;
+            resourceInputs["localVolume"] = state?.localVolume;
+            resourceInputs["logicalRegionId"] = state?.logicalRegionId;
+            resourceInputs["mountDescs"] = state?.mountDescs;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["nasId"] = state?.nasId;
+            resourceInputs["packageType"] = state?.packageType;
+            resourceInputs["packageUrl"] = state?.packageUrl;
+            resourceInputs["packageVersion"] = state?.packageVersion;
+            resourceInputs["postStart"] = state?.postStart;
+            resourceInputs["preStop"] = state?.preStop;
+            resourceInputs["readiness"] = state?.readiness;
+            resourceInputs["replicas"] = state?.replicas;
+            resourceInputs["requestsMCpu"] = state?.requestsMCpu;
+            resourceInputs["requestsMem"] = state?.requestsMem;
+            resourceInputs["webContainer"] = state?.webContainer;
         } else {
             const args = argsOrState as K8sApplicationArgs | undefined;
-            if ((!args || args.applicationName === undefined) && !opts.urn) {
+            if (args?.applicationName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applicationName'");
             }
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            resourceInputs["applicationDescriotion"] = args ? args.applicationDescriotion : undefined;
-            resourceInputs["applicationName"] = args ? args.applicationName : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["command"] = args ? args.command : undefined;
-            resourceInputs["commandArgs"] = args ? args.commandArgs : undefined;
-            resourceInputs["edasContainerVersion"] = args ? args.edasContainerVersion : undefined;
-            resourceInputs["envs"] = args ? args.envs : undefined;
-            resourceInputs["imageUrl"] = args ? args.imageUrl : undefined;
-            resourceInputs["internetSlbId"] = args ? args.internetSlbId : undefined;
-            resourceInputs["internetSlbPort"] = args ? args.internetSlbPort : undefined;
-            resourceInputs["internetSlbProtocol"] = args ? args.internetSlbProtocol : undefined;
-            resourceInputs["internetTargetPort"] = args ? args.internetTargetPort : undefined;
-            resourceInputs["jdk"] = args ? args.jdk : undefined;
-            resourceInputs["limitMCpu"] = args ? args.limitMCpu : undefined;
-            resourceInputs["limitMem"] = args ? args.limitMem : undefined;
-            resourceInputs["liveness"] = args ? args.liveness : undefined;
-            resourceInputs["localVolume"] = args ? args.localVolume : undefined;
-            resourceInputs["logicalRegionId"] = args ? args.logicalRegionId : undefined;
-            resourceInputs["mountDescs"] = args ? args.mountDescs : undefined;
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["nasId"] = args ? args.nasId : undefined;
-            resourceInputs["packageType"] = args ? args.packageType : undefined;
-            resourceInputs["packageUrl"] = args ? args.packageUrl : undefined;
-            resourceInputs["packageVersion"] = args ? args.packageVersion : undefined;
-            resourceInputs["postStart"] = args ? args.postStart : undefined;
-            resourceInputs["preStop"] = args ? args.preStop : undefined;
-            resourceInputs["readiness"] = args ? args.readiness : undefined;
-            resourceInputs["replicas"] = args ? args.replicas : undefined;
-            resourceInputs["requestsMCpu"] = args ? args.requestsMCpu : undefined;
-            resourceInputs["requestsMem"] = args ? args.requestsMem : undefined;
-            resourceInputs["webContainer"] = args ? args.webContainer : undefined;
+            resourceInputs["applicationDescriotion"] = args?.applicationDescriotion;
+            resourceInputs["applicationName"] = args?.applicationName;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["command"] = args?.command;
+            resourceInputs["commandArgs"] = args?.commandArgs;
+            resourceInputs["edasContainerVersion"] = args?.edasContainerVersion;
+            resourceInputs["envs"] = args?.envs;
+            resourceInputs["imageUrl"] = args?.imageUrl;
+            resourceInputs["internetSlbId"] = args?.internetSlbId;
+            resourceInputs["internetSlbPort"] = args?.internetSlbPort;
+            resourceInputs["internetSlbProtocol"] = args?.internetSlbProtocol;
+            resourceInputs["internetTargetPort"] = args?.internetTargetPort;
+            resourceInputs["jdk"] = args?.jdk;
+            resourceInputs["limitMCpu"] = args?.limitMCpu;
+            resourceInputs["limitMem"] = args?.limitMem;
+            resourceInputs["liveness"] = args?.liveness;
+            resourceInputs["localVolume"] = args?.localVolume;
+            resourceInputs["logicalRegionId"] = args?.logicalRegionId;
+            resourceInputs["mountDescs"] = args?.mountDescs;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["nasId"] = args?.nasId;
+            resourceInputs["packageType"] = args?.packageType;
+            resourceInputs["packageUrl"] = args?.packageUrl;
+            resourceInputs["packageVersion"] = args?.packageVersion;
+            resourceInputs["postStart"] = args?.postStart;
+            resourceInputs["preStop"] = args?.preStop;
+            resourceInputs["readiness"] = args?.readiness;
+            resourceInputs["replicas"] = args?.replicas;
+            resourceInputs["requestsMCpu"] = args?.requestsMCpu;
+            resourceInputs["requestsMem"] = args?.requestsMem;
+            resourceInputs["webContainer"] = args?.webContainer;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(K8sApplication.__pulumiType, name, resourceInputs, opts);

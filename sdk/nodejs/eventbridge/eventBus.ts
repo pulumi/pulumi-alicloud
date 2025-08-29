@@ -63,11 +63,11 @@ export class EventBus extends pulumi.CustomResource {
     /**
      * The description of event bus.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
      */
-    public readonly eventBusName!: pulumi.Output<string>;
+    declare public readonly eventBusName: pulumi.Output<string>;
 
     /**
      * Create a EventBus resource with the given unique name, arguments, and options.
@@ -82,15 +82,15 @@ export class EventBus extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EventBusState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["eventBusName"] = state ? state.eventBusName : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["eventBusName"] = state?.eventBusName;
         } else {
             const args = argsOrState as EventBusArgs | undefined;
-            if ((!args || args.eventBusName === undefined) && !opts.urn) {
+            if (args?.eventBusName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'eventBusName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["eventBusName"] = args ? args.eventBusName : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["eventBusName"] = args?.eventBusName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EventBus.__pulumiType, name, resourceInputs, opts);

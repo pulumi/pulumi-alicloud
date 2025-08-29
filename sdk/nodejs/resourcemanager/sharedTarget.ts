@@ -68,15 +68,15 @@ export class SharedTarget extends pulumi.CustomResource {
     /**
      * The resource share ID of resource manager.
      */
-    public readonly resourceShareId!: pulumi.Output<string>;
+    declare public readonly resourceShareId: pulumi.Output<string>;
     /**
      * The status of shared target.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The member account ID in resource directory.
      */
-    public readonly targetId!: pulumi.Output<string>;
+    declare public readonly targetId: pulumi.Output<string>;
 
     /**
      * Create a SharedTarget resource with the given unique name, arguments, and options.
@@ -91,19 +91,19 @@ export class SharedTarget extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SharedTargetState | undefined;
-            resourceInputs["resourceShareId"] = state ? state.resourceShareId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["targetId"] = state ? state.targetId : undefined;
+            resourceInputs["resourceShareId"] = state?.resourceShareId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["targetId"] = state?.targetId;
         } else {
             const args = argsOrState as SharedTargetArgs | undefined;
-            if ((!args || args.resourceShareId === undefined) && !opts.urn) {
+            if (args?.resourceShareId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceShareId'");
             }
-            if ((!args || args.targetId === undefined) && !opts.urn) {
+            if (args?.targetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetId'");
             }
-            resourceInputs["resourceShareId"] = args ? args.resourceShareId : undefined;
-            resourceInputs["targetId"] = args ? args.targetId : undefined;
+            resourceInputs["resourceShareId"] = args?.resourceShareId;
+            resourceInputs["targetId"] = args?.targetId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -68,19 +68,19 @@ export class TlsCipherPolicy extends pulumi.CustomResource {
     /**
      * The encryption algorithms supported. It depends on the value of `tlsVersions`.
      */
-    public readonly ciphers!: pulumi.Output<string[]>;
+    declare public readonly ciphers: pulumi.Output<string[]>;
     /**
      * TLS policy instance state.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
      */
-    public readonly tlsCipherPolicyName!: pulumi.Output<string>;
+    declare public readonly tlsCipherPolicyName: pulumi.Output<string>;
     /**
      * The version of TLS protocol. You can find the corresponding value description in the document center [What is Tls Cipher Policy](https://www.alibabacloud.com/help/doc-detail/196714.htm).
      */
-    public readonly tlsVersions!: pulumi.Output<string[]>;
+    declare public readonly tlsVersions: pulumi.Output<string[]>;
 
     /**
      * Create a TlsCipherPolicy resource with the given unique name, arguments, and options.
@@ -95,24 +95,24 @@ export class TlsCipherPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TlsCipherPolicyState | undefined;
-            resourceInputs["ciphers"] = state ? state.ciphers : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tlsCipherPolicyName"] = state ? state.tlsCipherPolicyName : undefined;
-            resourceInputs["tlsVersions"] = state ? state.tlsVersions : undefined;
+            resourceInputs["ciphers"] = state?.ciphers;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tlsCipherPolicyName"] = state?.tlsCipherPolicyName;
+            resourceInputs["tlsVersions"] = state?.tlsVersions;
         } else {
             const args = argsOrState as TlsCipherPolicyArgs | undefined;
-            if ((!args || args.ciphers === undefined) && !opts.urn) {
+            if (args?.ciphers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ciphers'");
             }
-            if ((!args || args.tlsCipherPolicyName === undefined) && !opts.urn) {
+            if (args?.tlsCipherPolicyName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tlsCipherPolicyName'");
             }
-            if ((!args || args.tlsVersions === undefined) && !opts.urn) {
+            if (args?.tlsVersions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tlsVersions'");
             }
-            resourceInputs["ciphers"] = args ? args.ciphers : undefined;
-            resourceInputs["tlsCipherPolicyName"] = args ? args.tlsCipherPolicyName : undefined;
-            resourceInputs["tlsVersions"] = args ? args.tlsVersions : undefined;
+            resourceInputs["ciphers"] = args?.ciphers;
+            resourceInputs["tlsCipherPolicyName"] = args?.tlsCipherPolicyName;
+            resourceInputs["tlsVersions"] = args?.tlsVersions;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

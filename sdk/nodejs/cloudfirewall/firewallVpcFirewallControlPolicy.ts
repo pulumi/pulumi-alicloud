@@ -88,104 +88,104 @@ export class FirewallVpcFirewallControlPolicy extends pulumi.CustomResource {
     /**
      * The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
      */
-    public readonly aclAction!: pulumi.Output<string>;
+    declare public readonly aclAction: pulumi.Output<string>;
     /**
      * Access control over VPC firewalls strategy unique identifier.
      */
-    public /*out*/ readonly aclUuid!: pulumi.Output<string>;
+    declare public /*out*/ readonly aclUuid: pulumi.Output<string>;
     /**
      * Policy specifies the application ID.
      */
-    public /*out*/ readonly applicationId!: pulumi.Output<string>;
+    declare public /*out*/ readonly applicationId: pulumi.Output<string>;
     /**
      * The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
      */
-    public readonly applicationName!: pulumi.Output<string>;
+    declare public readonly applicationName: pulumi.Output<string>;
     /**
      * Access control over VPC firewalls description of the strategy information.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify this parameter.
      */
-    public readonly destPort!: pulumi.Output<string>;
+    declare public readonly destPort: pulumi.Output<string>;
     /**
      * Access control policy in the access traffic of the destination port address book name. **Note:** If `destPortType` is set to `group`, you must specify this parameter.
      */
-    public readonly destPortGroup!: pulumi.Output<string | undefined>;
+    declare public readonly destPortGroup: pulumi.Output<string | undefined>;
     /**
      * Port Address Book port list.
      */
-    public /*out*/ readonly destPortGroupPorts!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly destPortGroupPorts: pulumi.Output<string[]>;
     /**
      * The type of the destination port in the access control policy. Valid values: `port`, `group`.
      */
-    public readonly destPortType!: pulumi.Output<string>;
+    declare public readonly destPortType: pulumi.Output<string>;
     /**
      * The destination address in the access control policy. Valid values:
      * - If `destinationType` is set to `net`, the value of `destination` must be a CIDR block.
      * - If `destinationType` is set to `group`, the value of `destination` must be an address book.
      * - If `destinationType` is set to `domain`, the value of `destination` must be a domain name.
      */
-    public readonly destination!: pulumi.Output<string>;
+    declare public readonly destination: pulumi.Output<string>;
     /**
      * Destination address book defined in the address list.
      */
-    public /*out*/ readonly destinationGroupCidrs!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly destinationGroupCidrs: pulumi.Output<string[]>;
     /**
      * The destination address book type in the access control policy.
      */
-    public /*out*/ readonly destinationGroupType!: pulumi.Output<string>;
+    declare public /*out*/ readonly destinationGroupType: pulumi.Output<string>;
     /**
      * The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`.
      */
-    public readonly destinationType!: pulumi.Output<string>;
+    declare public readonly destinationType: pulumi.Output<string>;
     /**
      * Control strategy of hits per second.
      */
-    public /*out*/ readonly hitTimes!: pulumi.Output<number>;
+    declare public /*out*/ readonly hitTimes: pulumi.Output<number>;
     /**
      * The language of the content within the request and response. Valid values: `zh`, `en`.
      */
-    public readonly lang!: pulumi.Output<string | undefined>;
+    declare public readonly lang: pulumi.Output<string | undefined>;
     /**
      * The UID of the member account of the current Alibaba cloud account.
      */
-    public readonly memberUid!: pulumi.Output<string>;
+    declare public readonly memberUid: pulumi.Output<string>;
     /**
      * The priority of the access control policy. The priority value starts from 1. A smaller priority value indicates a higher priority.
      */
-    public readonly order!: pulumi.Output<number>;
+    declare public readonly order: pulumi.Output<number>;
     /**
      * The type of the protocol in the access control policy. Valid values: `ANY`, `TCP`, `UDP`, `ICMP`.
      */
-    public readonly proto!: pulumi.Output<string>;
+    declare public readonly proto: pulumi.Output<string>;
     /**
      * The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
      */
-    public readonly release!: pulumi.Output<boolean>;
+    declare public readonly release: pulumi.Output<boolean>;
     /**
      * Access control over VPC firewalls strategy in the source address.
      */
-    public readonly source!: pulumi.Output<string>;
+    declare public readonly source: pulumi.Output<string>;
     /**
      * SOURCE address of the address list.
      */
-    public /*out*/ readonly sourceGroupCidrs!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly sourceGroupCidrs: pulumi.Output<string[]>;
     /**
      * The source address type in the access control policy.
      */
-    public /*out*/ readonly sourceGroupType!: pulumi.Output<string>;
+    declare public /*out*/ readonly sourceGroupType: pulumi.Output<string>;
     /**
      * The type of the source address in the access control policy. Valid values: `net`, `group`.
      */
-    public readonly sourceType!: pulumi.Output<string>;
+    declare public readonly sourceType: pulumi.Output<string>;
     /**
      * The ID of the VPC firewall instance. Valid values:
      * - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
      * - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
      */
-    public readonly vpcFirewallId!: pulumi.Output<string>;
+    declare public readonly vpcFirewallId: pulumi.Output<string>;
 
     /**
      * Create a FirewallVpcFirewallControlPolicy resource with the given unique name, arguments, and options.
@@ -200,78 +200,78 @@ export class FirewallVpcFirewallControlPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FirewallVpcFirewallControlPolicyState | undefined;
-            resourceInputs["aclAction"] = state ? state.aclAction : undefined;
-            resourceInputs["aclUuid"] = state ? state.aclUuid : undefined;
-            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
-            resourceInputs["applicationName"] = state ? state.applicationName : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["destPort"] = state ? state.destPort : undefined;
-            resourceInputs["destPortGroup"] = state ? state.destPortGroup : undefined;
-            resourceInputs["destPortGroupPorts"] = state ? state.destPortGroupPorts : undefined;
-            resourceInputs["destPortType"] = state ? state.destPortType : undefined;
-            resourceInputs["destination"] = state ? state.destination : undefined;
-            resourceInputs["destinationGroupCidrs"] = state ? state.destinationGroupCidrs : undefined;
-            resourceInputs["destinationGroupType"] = state ? state.destinationGroupType : undefined;
-            resourceInputs["destinationType"] = state ? state.destinationType : undefined;
-            resourceInputs["hitTimes"] = state ? state.hitTimes : undefined;
-            resourceInputs["lang"] = state ? state.lang : undefined;
-            resourceInputs["memberUid"] = state ? state.memberUid : undefined;
-            resourceInputs["order"] = state ? state.order : undefined;
-            resourceInputs["proto"] = state ? state.proto : undefined;
-            resourceInputs["release"] = state ? state.release : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
-            resourceInputs["sourceGroupCidrs"] = state ? state.sourceGroupCidrs : undefined;
-            resourceInputs["sourceGroupType"] = state ? state.sourceGroupType : undefined;
-            resourceInputs["sourceType"] = state ? state.sourceType : undefined;
-            resourceInputs["vpcFirewallId"] = state ? state.vpcFirewallId : undefined;
+            resourceInputs["aclAction"] = state?.aclAction;
+            resourceInputs["aclUuid"] = state?.aclUuid;
+            resourceInputs["applicationId"] = state?.applicationId;
+            resourceInputs["applicationName"] = state?.applicationName;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["destPort"] = state?.destPort;
+            resourceInputs["destPortGroup"] = state?.destPortGroup;
+            resourceInputs["destPortGroupPorts"] = state?.destPortGroupPorts;
+            resourceInputs["destPortType"] = state?.destPortType;
+            resourceInputs["destination"] = state?.destination;
+            resourceInputs["destinationGroupCidrs"] = state?.destinationGroupCidrs;
+            resourceInputs["destinationGroupType"] = state?.destinationGroupType;
+            resourceInputs["destinationType"] = state?.destinationType;
+            resourceInputs["hitTimes"] = state?.hitTimes;
+            resourceInputs["lang"] = state?.lang;
+            resourceInputs["memberUid"] = state?.memberUid;
+            resourceInputs["order"] = state?.order;
+            resourceInputs["proto"] = state?.proto;
+            resourceInputs["release"] = state?.release;
+            resourceInputs["source"] = state?.source;
+            resourceInputs["sourceGroupCidrs"] = state?.sourceGroupCidrs;
+            resourceInputs["sourceGroupType"] = state?.sourceGroupType;
+            resourceInputs["sourceType"] = state?.sourceType;
+            resourceInputs["vpcFirewallId"] = state?.vpcFirewallId;
         } else {
             const args = argsOrState as FirewallVpcFirewallControlPolicyArgs | undefined;
-            if ((!args || args.aclAction === undefined) && !opts.urn) {
+            if (args?.aclAction === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aclAction'");
             }
-            if ((!args || args.applicationName === undefined) && !opts.urn) {
+            if (args?.applicationName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applicationName'");
             }
-            if ((!args || args.description === undefined) && !opts.urn) {
+            if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.destination === undefined) && !opts.urn) {
+            if (args?.destination === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destination'");
             }
-            if ((!args || args.destinationType === undefined) && !opts.urn) {
+            if (args?.destinationType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationType'");
             }
-            if ((!args || args.order === undefined) && !opts.urn) {
+            if (args?.order === undefined && !opts.urn) {
                 throw new Error("Missing required property 'order'");
             }
-            if ((!args || args.proto === undefined) && !opts.urn) {
+            if (args?.proto === undefined && !opts.urn) {
                 throw new Error("Missing required property 'proto'");
             }
-            if ((!args || args.source === undefined) && !opts.urn) {
+            if (args?.source === undefined && !opts.urn) {
                 throw new Error("Missing required property 'source'");
             }
-            if ((!args || args.sourceType === undefined) && !opts.urn) {
+            if (args?.sourceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceType'");
             }
-            if ((!args || args.vpcFirewallId === undefined) && !opts.urn) {
+            if (args?.vpcFirewallId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcFirewallId'");
             }
-            resourceInputs["aclAction"] = args ? args.aclAction : undefined;
-            resourceInputs["applicationName"] = args ? args.applicationName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["destPort"] = args ? args.destPort : undefined;
-            resourceInputs["destPortGroup"] = args ? args.destPortGroup : undefined;
-            resourceInputs["destPortType"] = args ? args.destPortType : undefined;
-            resourceInputs["destination"] = args ? args.destination : undefined;
-            resourceInputs["destinationType"] = args ? args.destinationType : undefined;
-            resourceInputs["lang"] = args ? args.lang : undefined;
-            resourceInputs["memberUid"] = args ? args.memberUid : undefined;
-            resourceInputs["order"] = args ? args.order : undefined;
-            resourceInputs["proto"] = args ? args.proto : undefined;
-            resourceInputs["release"] = args ? args.release : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
-            resourceInputs["sourceType"] = args ? args.sourceType : undefined;
-            resourceInputs["vpcFirewallId"] = args ? args.vpcFirewallId : undefined;
+            resourceInputs["aclAction"] = args?.aclAction;
+            resourceInputs["applicationName"] = args?.applicationName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["destPort"] = args?.destPort;
+            resourceInputs["destPortGroup"] = args?.destPortGroup;
+            resourceInputs["destPortType"] = args?.destPortType;
+            resourceInputs["destination"] = args?.destination;
+            resourceInputs["destinationType"] = args?.destinationType;
+            resourceInputs["lang"] = args?.lang;
+            resourceInputs["memberUid"] = args?.memberUid;
+            resourceInputs["order"] = args?.order;
+            resourceInputs["proto"] = args?.proto;
+            resourceInputs["release"] = args?.release;
+            resourceInputs["source"] = args?.source;
+            resourceInputs["sourceType"] = args?.sourceType;
+            resourceInputs["vpcFirewallId"] = args?.vpcFirewallId;
             resourceInputs["aclUuid"] = undefined /*out*/;
             resourceInputs["applicationId"] = undefined /*out*/;
             resourceInputs["destPortGroupPorts"] = undefined /*out*/;

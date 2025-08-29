@@ -87,25 +87,25 @@ export class CaCertificate extends pulumi.CustomResource {
     /**
      * the content of the CA certificate.
      */
-    public readonly caCertificate!: pulumi.Output<string>;
+    declare public readonly caCertificate: pulumi.Output<string>;
     /**
      * Name of the CA Certificate.
      */
-    public readonly caCertificateName!: pulumi.Output<string>;
+    declare public readonly caCertificateName: pulumi.Output<string>;
     /**
      * Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The Id of resource group which the slbCa certificate belongs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a CaCertificate resource with the given unique name, arguments, and options.
@@ -120,21 +120,21 @@ export class CaCertificate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CaCertificateState | undefined;
-            resourceInputs["caCertificate"] = state ? state.caCertificate : undefined;
-            resourceInputs["caCertificateName"] = state ? state.caCertificateName : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["caCertificate"] = state?.caCertificate;
+            resourceInputs["caCertificateName"] = state?.caCertificateName;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as CaCertificateArgs | undefined;
-            if ((!args || args.caCertificate === undefined) && !opts.urn) {
+            if (args?.caCertificate === undefined && !opts.urn) {
                 throw new Error("Missing required property 'caCertificate'");
             }
-            resourceInputs["caCertificate"] = args ? args.caCertificate : undefined;
-            resourceInputs["caCertificateName"] = args ? args.caCertificateName : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["caCertificate"] = args?.caCertificate;
+            resourceInputs["caCertificateName"] = args?.caCertificateName;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CaCertificate.__pulumiType, name, resourceInputs, opts);

@@ -67,19 +67,19 @@ export class WorkspaceUserConfig extends pulumi.CustomResource {
     /**
      * The category. Valid values: `DataPrivacyConfig`.
      */
-    public readonly categoryName!: pulumi.Output<string>;
+    declare public readonly categoryName: pulumi.Output<string>;
     /**
      * The key of the configuration.
      */
-    public readonly configKey!: pulumi.Output<string>;
+    declare public readonly configKey: pulumi.Output<string>;
     /**
      * The value of the configuration.
      */
-    public readonly configValue!: pulumi.Output<string>;
+    declare public readonly configValue: pulumi.Output<string>;
     /**
      * The scope. Default value: `owner`. Valid values: `owner`, `subUser`.
      */
-    public readonly scope!: pulumi.Output<string>;
+    declare public readonly scope: pulumi.Output<string>;
 
     /**
      * Create a WorkspaceUserConfig resource with the given unique name, arguments, and options.
@@ -94,25 +94,25 @@ export class WorkspaceUserConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkspaceUserConfigState | undefined;
-            resourceInputs["categoryName"] = state ? state.categoryName : undefined;
-            resourceInputs["configKey"] = state ? state.configKey : undefined;
-            resourceInputs["configValue"] = state ? state.configValue : undefined;
-            resourceInputs["scope"] = state ? state.scope : undefined;
+            resourceInputs["categoryName"] = state?.categoryName;
+            resourceInputs["configKey"] = state?.configKey;
+            resourceInputs["configValue"] = state?.configValue;
+            resourceInputs["scope"] = state?.scope;
         } else {
             const args = argsOrState as WorkspaceUserConfigArgs | undefined;
-            if ((!args || args.categoryName === undefined) && !opts.urn) {
+            if (args?.categoryName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'categoryName'");
             }
-            if ((!args || args.configKey === undefined) && !opts.urn) {
+            if (args?.configKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'configKey'");
             }
-            if ((!args || args.configValue === undefined) && !opts.urn) {
+            if (args?.configValue === undefined && !opts.urn) {
                 throw new Error("Missing required property 'configValue'");
             }
-            resourceInputs["categoryName"] = args ? args.categoryName : undefined;
-            resourceInputs["configKey"] = args ? args.configKey : undefined;
-            resourceInputs["configValue"] = args ? args.configValue : undefined;
-            resourceInputs["scope"] = args ? args.scope : undefined;
+            resourceInputs["categoryName"] = args?.categoryName;
+            resourceInputs["configKey"] = args?.configKey;
+            resourceInputs["configValue"] = args?.configValue;
+            resourceInputs["scope"] = args?.scope;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WorkspaceUserConfig.__pulumiType, name, resourceInputs, opts);

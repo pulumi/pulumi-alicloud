@@ -100,33 +100,33 @@ export class Remediation extends pulumi.CustomResource {
     /**
      * Rule ID.
      */
-    public readonly configRuleId!: pulumi.Output<string>;
+    declare public readonly configRuleId: pulumi.Output<string>;
     /**
      * Execution type, valid values: `Manual`, `Automatic`.
      */
-    public readonly invokeType!: pulumi.Output<string>;
+    declare public readonly invokeType: pulumi.Output<string>;
     /**
      * Remediation parameter.
      */
-    public readonly params!: pulumi.Output<string>;
+    declare public readonly params: pulumi.Output<string>;
     /**
      * Remediation ID.
      */
-    public /*out*/ readonly remediationId!: pulumi.Output<string>;
+    declare public /*out*/ readonly remediationId: pulumi.Output<string>;
     /**
      * Remediation resource type, valid values: `ALIYUN` , `CUSTOMER`.
      */
-    public readonly remediationSourceType!: pulumi.Output<string>;
+    declare public readonly remediationSourceType: pulumi.Output<string>;
     /**
      * Remediation template ID.
      */
-    public readonly remediationTemplateId!: pulumi.Output<string>;
+    declare public readonly remediationTemplateId: pulumi.Output<string>;
     /**
      * Remediation type, valid values: `OOS`, `FC`.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    public readonly remediationType!: pulumi.Output<string>;
+    declare public readonly remediationType: pulumi.Output<string>;
 
     /**
      * Create a Remediation resource with the given unique name, arguments, and options.
@@ -141,36 +141,36 @@ export class Remediation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RemediationState | undefined;
-            resourceInputs["configRuleId"] = state ? state.configRuleId : undefined;
-            resourceInputs["invokeType"] = state ? state.invokeType : undefined;
-            resourceInputs["params"] = state ? state.params : undefined;
-            resourceInputs["remediationId"] = state ? state.remediationId : undefined;
-            resourceInputs["remediationSourceType"] = state ? state.remediationSourceType : undefined;
-            resourceInputs["remediationTemplateId"] = state ? state.remediationTemplateId : undefined;
-            resourceInputs["remediationType"] = state ? state.remediationType : undefined;
+            resourceInputs["configRuleId"] = state?.configRuleId;
+            resourceInputs["invokeType"] = state?.invokeType;
+            resourceInputs["params"] = state?.params;
+            resourceInputs["remediationId"] = state?.remediationId;
+            resourceInputs["remediationSourceType"] = state?.remediationSourceType;
+            resourceInputs["remediationTemplateId"] = state?.remediationTemplateId;
+            resourceInputs["remediationType"] = state?.remediationType;
         } else {
             const args = argsOrState as RemediationArgs | undefined;
-            if ((!args || args.configRuleId === undefined) && !opts.urn) {
+            if (args?.configRuleId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'configRuleId'");
             }
-            if ((!args || args.invokeType === undefined) && !opts.urn) {
+            if (args?.invokeType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'invokeType'");
             }
-            if ((!args || args.params === undefined) && !opts.urn) {
+            if (args?.params === undefined && !opts.urn) {
                 throw new Error("Missing required property 'params'");
             }
-            if ((!args || args.remediationTemplateId === undefined) && !opts.urn) {
+            if (args?.remediationTemplateId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'remediationTemplateId'");
             }
-            if ((!args || args.remediationType === undefined) && !opts.urn) {
+            if (args?.remediationType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'remediationType'");
             }
-            resourceInputs["configRuleId"] = args ? args.configRuleId : undefined;
-            resourceInputs["invokeType"] = args ? args.invokeType : undefined;
-            resourceInputs["params"] = args ? args.params : undefined;
-            resourceInputs["remediationSourceType"] = args ? args.remediationSourceType : undefined;
-            resourceInputs["remediationTemplateId"] = args ? args.remediationTemplateId : undefined;
-            resourceInputs["remediationType"] = args ? args.remediationType : undefined;
+            resourceInputs["configRuleId"] = args?.configRuleId;
+            resourceInputs["invokeType"] = args?.invokeType;
+            resourceInputs["params"] = args?.params;
+            resourceInputs["remediationSourceType"] = args?.remediationSourceType;
+            resourceInputs["remediationTemplateId"] = args?.remediationTemplateId;
+            resourceInputs["remediationType"] = args?.remediationType;
             resourceInputs["remediationId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

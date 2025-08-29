@@ -97,19 +97,19 @@ export class StoreIndex extends pulumi.CustomResource {
     /**
      * List configurations of field search index. Valid item as follows:
      */
-    public readonly fieldSearches!: pulumi.Output<outputs.log.StoreIndexFieldSearch[] | undefined>;
+    declare public readonly fieldSearches: pulumi.Output<outputs.log.StoreIndexFieldSearch[] | undefined>;
     /**
      * The configuration of full text index. Valid item as follows:
      */
-    public readonly fullText!: pulumi.Output<outputs.log.StoreIndexFullText | undefined>;
+    declare public readonly fullText: pulumi.Output<outputs.log.StoreIndexFullText | undefined>;
     /**
      * The log store name to the query index belongs.
      */
-    public readonly logstore!: pulumi.Output<string>;
+    declare public readonly logstore: pulumi.Output<string>;
     /**
      * The project name to the log store belongs.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a StoreIndex resource with the given unique name, arguments, and options.
@@ -124,22 +124,22 @@ export class StoreIndex extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StoreIndexState | undefined;
-            resourceInputs["fieldSearches"] = state ? state.fieldSearches : undefined;
-            resourceInputs["fullText"] = state ? state.fullText : undefined;
-            resourceInputs["logstore"] = state ? state.logstore : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["fieldSearches"] = state?.fieldSearches;
+            resourceInputs["fullText"] = state?.fullText;
+            resourceInputs["logstore"] = state?.logstore;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as StoreIndexArgs | undefined;
-            if ((!args || args.logstore === undefined) && !opts.urn) {
+            if (args?.logstore === undefined && !opts.urn) {
                 throw new Error("Missing required property 'logstore'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["fieldSearches"] = args ? args.fieldSearches : undefined;
-            resourceInputs["fullText"] = args ? args.fullText : undefined;
-            resourceInputs["logstore"] = args ? args.logstore : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["fieldSearches"] = args?.fieldSearches;
+            resourceInputs["fullText"] = args?.fullText;
+            resourceInputs["logstore"] = args?.logstore;
+            resourceInputs["project"] = args?.project;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(StoreIndex.__pulumiType, name, resourceInputs, opts);

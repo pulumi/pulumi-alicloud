@@ -80,48 +80,48 @@ export class OssBackupPlan extends pulumi.CustomResource {
     /**
      * Backup type. Valid values: `COMPLETE`.
      */
-    public readonly backupType!: pulumi.Output<string>;
+    declare public readonly backupType: pulumi.Output<string>;
     /**
      * The name of OSS bucket.
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * The role name created in the original account RAM backup by the cross account managed by the current account.
      */
-    public readonly crossAccountRoleName!: pulumi.Output<string | undefined>;
+    declare public readonly crossAccountRoleName: pulumi.Output<string | undefined>;
     /**
      * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
      */
-    public readonly crossAccountType!: pulumi.Output<string>;
+    declare public readonly crossAccountType: pulumi.Output<string>;
     /**
      * The original account ID of the cross account backup managed by the current account.
      */
-    public readonly crossAccountUserId!: pulumi.Output<number | undefined>;
+    declare public readonly crossAccountUserId: pulumi.Output<number | undefined>;
     /**
      * Whether to disable the backup task. Valid values: `true`, `false`.
      */
-    public readonly disabled!: pulumi.Output<boolean>;
+    declare public readonly disabled: pulumi.Output<boolean>;
     /**
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
-    public readonly ossBackupPlanName!: pulumi.Output<string>;
+    declare public readonly ossBackupPlanName: pulumi.Output<string>;
     /**
      * Backup prefix. Once specified, only objects with matching prefixes will be backed up.
      */
-    public readonly prefix!: pulumi.Output<string | undefined>;
+    declare public readonly prefix: pulumi.Output<string | undefined>;
     /**
      * Backup retention days, the minimum is 1.
      */
-    public readonly retention!: pulumi.Output<string>;
+    declare public readonly retention: pulumi.Output<string>;
     /**
      * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      * * `startTime` Backup start time, UNIX time seconds.
      */
-    public readonly schedule!: pulumi.Output<string>;
+    declare public readonly schedule: pulumi.Output<string>;
     /**
      * The ID of backup vault.
      */
-    public readonly vaultId!: pulumi.Output<string>;
+    declare public readonly vaultId: pulumi.Output<string>;
 
     /**
      * Create a OssBackupPlan resource with the given unique name, arguments, and options.
@@ -136,48 +136,48 @@ export class OssBackupPlan extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OssBackupPlanState | undefined;
-            resourceInputs["backupType"] = state ? state.backupType : undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["crossAccountRoleName"] = state ? state.crossAccountRoleName : undefined;
-            resourceInputs["crossAccountType"] = state ? state.crossAccountType : undefined;
-            resourceInputs["crossAccountUserId"] = state ? state.crossAccountUserId : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["ossBackupPlanName"] = state ? state.ossBackupPlanName : undefined;
-            resourceInputs["prefix"] = state ? state.prefix : undefined;
-            resourceInputs["retention"] = state ? state.retention : undefined;
-            resourceInputs["schedule"] = state ? state.schedule : undefined;
-            resourceInputs["vaultId"] = state ? state.vaultId : undefined;
+            resourceInputs["backupType"] = state?.backupType;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["crossAccountRoleName"] = state?.crossAccountRoleName;
+            resourceInputs["crossAccountType"] = state?.crossAccountType;
+            resourceInputs["crossAccountUserId"] = state?.crossAccountUserId;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["ossBackupPlanName"] = state?.ossBackupPlanName;
+            resourceInputs["prefix"] = state?.prefix;
+            resourceInputs["retention"] = state?.retention;
+            resourceInputs["schedule"] = state?.schedule;
+            resourceInputs["vaultId"] = state?.vaultId;
         } else {
             const args = argsOrState as OssBackupPlanArgs | undefined;
-            if ((!args || args.backupType === undefined) && !opts.urn) {
+            if (args?.backupType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'backupType'");
             }
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if ((!args || args.ossBackupPlanName === undefined) && !opts.urn) {
+            if (args?.ossBackupPlanName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ossBackupPlanName'");
             }
-            if ((!args || args.retention === undefined) && !opts.urn) {
+            if (args?.retention === undefined && !opts.urn) {
                 throw new Error("Missing required property 'retention'");
             }
-            if ((!args || args.schedule === undefined) && !opts.urn) {
+            if (args?.schedule === undefined && !opts.urn) {
                 throw new Error("Missing required property 'schedule'");
             }
-            if ((!args || args.vaultId === undefined) && !opts.urn) {
+            if (args?.vaultId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vaultId'");
             }
-            resourceInputs["backupType"] = args ? args.backupType : undefined;
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["crossAccountRoleName"] = args ? args.crossAccountRoleName : undefined;
-            resourceInputs["crossAccountType"] = args ? args.crossAccountType : undefined;
-            resourceInputs["crossAccountUserId"] = args ? args.crossAccountUserId : undefined;
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["ossBackupPlanName"] = args ? args.ossBackupPlanName : undefined;
-            resourceInputs["prefix"] = args ? args.prefix : undefined;
-            resourceInputs["retention"] = args ? args.retention : undefined;
-            resourceInputs["schedule"] = args ? args.schedule : undefined;
-            resourceInputs["vaultId"] = args ? args.vaultId : undefined;
+            resourceInputs["backupType"] = args?.backupType;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["crossAccountRoleName"] = args?.crossAccountRoleName;
+            resourceInputs["crossAccountType"] = args?.crossAccountType;
+            resourceInputs["crossAccountUserId"] = args?.crossAccountUserId;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["ossBackupPlanName"] = args?.ossBackupPlanName;
+            resourceInputs["prefix"] = args?.prefix;
+            resourceInputs["retention"] = args?.retention;
+            resourceInputs["schedule"] = args?.schedule;
+            resourceInputs["vaultId"] = args?.vaultId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OssBackupPlan.__pulumiType, name, resourceInputs, opts);

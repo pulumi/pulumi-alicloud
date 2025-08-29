@@ -107,39 +107,39 @@ export class TransitRouterRouteEntry extends pulumi.CustomResource {
      * > **NOTE:** If transitRouterRouteEntryNextHopType is `Attachment`, transitRouterRouteEntryNextHopId is required.
      * If transitRouterRouteEntryNextHopType is `BlackHole`, transitRouterRouteEntryNextHopId cannot be filled.
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * The associating status of the Transit Router.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The description of the transit router route entry.
      */
-    public readonly transitRouterRouteEntryDescription!: pulumi.Output<string | undefined>;
+    declare public readonly transitRouterRouteEntryDescription: pulumi.Output<string | undefined>;
     /**
      * The CIDR of the transit router route entry.
      */
-    public readonly transitRouterRouteEntryDestinationCidrBlock!: pulumi.Output<string>;
+    declare public readonly transitRouterRouteEntryDestinationCidrBlock: pulumi.Output<string>;
     /**
      * The ID of the route entry.
      */
-    public /*out*/ readonly transitRouterRouteEntryId!: pulumi.Output<string>;
+    declare public /*out*/ readonly transitRouterRouteEntryId: pulumi.Output<string>;
     /**
      * The name of the transit router route entry.
      */
-    public readonly transitRouterRouteEntryName!: pulumi.Output<string | undefined>;
+    declare public readonly transitRouterRouteEntryName: pulumi.Output<string | undefined>;
     /**
      * The ID of the transit router route entry next hop.
      */
-    public readonly transitRouterRouteEntryNextHopId!: pulumi.Output<string | undefined>;
+    declare public readonly transitRouterRouteEntryNextHopId: pulumi.Output<string | undefined>;
     /**
      * The Type of the transit router route entry next hop,Valid values `Attachment` and `BlackHole`.
      */
-    public readonly transitRouterRouteEntryNextHopType!: pulumi.Output<string>;
+    declare public readonly transitRouterRouteEntryNextHopType: pulumi.Output<string>;
     /**
      * The ID of the transit router route table.
      */
-    public readonly transitRouterRouteTableId!: pulumi.Output<string>;
+    declare public readonly transitRouterRouteTableId: pulumi.Output<string>;
 
     /**
      * Create a TransitRouterRouteEntry resource with the given unique name, arguments, and options.
@@ -154,33 +154,33 @@ export class TransitRouterRouteEntry extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TransitRouterRouteEntryState | undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["transitRouterRouteEntryDescription"] = state ? state.transitRouterRouteEntryDescription : undefined;
-            resourceInputs["transitRouterRouteEntryDestinationCidrBlock"] = state ? state.transitRouterRouteEntryDestinationCidrBlock : undefined;
-            resourceInputs["transitRouterRouteEntryId"] = state ? state.transitRouterRouteEntryId : undefined;
-            resourceInputs["transitRouterRouteEntryName"] = state ? state.transitRouterRouteEntryName : undefined;
-            resourceInputs["transitRouterRouteEntryNextHopId"] = state ? state.transitRouterRouteEntryNextHopId : undefined;
-            resourceInputs["transitRouterRouteEntryNextHopType"] = state ? state.transitRouterRouteEntryNextHopType : undefined;
-            resourceInputs["transitRouterRouteTableId"] = state ? state.transitRouterRouteTableId : undefined;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["transitRouterRouteEntryDescription"] = state?.transitRouterRouteEntryDescription;
+            resourceInputs["transitRouterRouteEntryDestinationCidrBlock"] = state?.transitRouterRouteEntryDestinationCidrBlock;
+            resourceInputs["transitRouterRouteEntryId"] = state?.transitRouterRouteEntryId;
+            resourceInputs["transitRouterRouteEntryName"] = state?.transitRouterRouteEntryName;
+            resourceInputs["transitRouterRouteEntryNextHopId"] = state?.transitRouterRouteEntryNextHopId;
+            resourceInputs["transitRouterRouteEntryNextHopType"] = state?.transitRouterRouteEntryNextHopType;
+            resourceInputs["transitRouterRouteTableId"] = state?.transitRouterRouteTableId;
         } else {
             const args = argsOrState as TransitRouterRouteEntryArgs | undefined;
-            if ((!args || args.transitRouterRouteEntryDestinationCidrBlock === undefined) && !opts.urn) {
+            if (args?.transitRouterRouteEntryDestinationCidrBlock === undefined && !opts.urn) {
                 throw new Error("Missing required property 'transitRouterRouteEntryDestinationCidrBlock'");
             }
-            if ((!args || args.transitRouterRouteEntryNextHopType === undefined) && !opts.urn) {
+            if (args?.transitRouterRouteEntryNextHopType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'transitRouterRouteEntryNextHopType'");
             }
-            if ((!args || args.transitRouterRouteTableId === undefined) && !opts.urn) {
+            if (args?.transitRouterRouteTableId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'transitRouterRouteTableId'");
             }
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["transitRouterRouteEntryDescription"] = args ? args.transitRouterRouteEntryDescription : undefined;
-            resourceInputs["transitRouterRouteEntryDestinationCidrBlock"] = args ? args.transitRouterRouteEntryDestinationCidrBlock : undefined;
-            resourceInputs["transitRouterRouteEntryName"] = args ? args.transitRouterRouteEntryName : undefined;
-            resourceInputs["transitRouterRouteEntryNextHopId"] = args ? args.transitRouterRouteEntryNextHopId : undefined;
-            resourceInputs["transitRouterRouteEntryNextHopType"] = args ? args.transitRouterRouteEntryNextHopType : undefined;
-            resourceInputs["transitRouterRouteTableId"] = args ? args.transitRouterRouteTableId : undefined;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["transitRouterRouteEntryDescription"] = args?.transitRouterRouteEntryDescription;
+            resourceInputs["transitRouterRouteEntryDestinationCidrBlock"] = args?.transitRouterRouteEntryDestinationCidrBlock;
+            resourceInputs["transitRouterRouteEntryName"] = args?.transitRouterRouteEntryName;
+            resourceInputs["transitRouterRouteEntryNextHopId"] = args?.transitRouterRouteEntryNextHopId;
+            resourceInputs["transitRouterRouteEntryNextHopType"] = args?.transitRouterRouteEntryNextHopType;
+            resourceInputs["transitRouterRouteTableId"] = args?.transitRouterRouteTableId;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["transitRouterRouteEntryId"] = undefined /*out*/;
         }

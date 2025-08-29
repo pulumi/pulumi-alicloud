@@ -55,7 +55,7 @@ export class GlobalEventsStorageRegion extends pulumi.CustomResource {
     /**
      * Global Events Storage Region.
      */
-    public readonly storageRegion!: pulumi.Output<string>;
+    declare public readonly storageRegion: pulumi.Output<string>;
 
     /**
      * Create a GlobalEventsStorageRegion resource with the given unique name, arguments, and options.
@@ -70,10 +70,10 @@ export class GlobalEventsStorageRegion extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GlobalEventsStorageRegionState | undefined;
-            resourceInputs["storageRegion"] = state ? state.storageRegion : undefined;
+            resourceInputs["storageRegion"] = state?.storageRegion;
         } else {
             const args = argsOrState as GlobalEventsStorageRegionArgs | undefined;
-            resourceInputs["storageRegion"] = args ? args.storageRegion : undefined;
+            resourceInputs["storageRegion"] = args?.storageRegion;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GlobalEventsStorageRegion.__pulumiType, name, resourceInputs, opts);

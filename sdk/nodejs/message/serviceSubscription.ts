@@ -78,11 +78,11 @@ export class ServiceSubscription extends pulumi.CustomResource {
     /**
      * (Available since v1.244.0) The time when the subscription was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly createTime: pulumi.Output<number>;
     /**
      * The dead-letter queue policy. See `dlqPolicy` below.
      */
-    public readonly dlqPolicy!: pulumi.Output<outputs.message.ServiceSubscriptionDlqPolicy>;
+    declare public readonly dlqPolicy: pulumi.Output<outputs.message.ServiceSubscriptionDlqPolicy>;
     /**
      * The endpoint has three format. Available values format:
      * - `HTTP Format`: An HTTP URL that starts with http:// or https://.
@@ -91,33 +91,33 @@ export class ServiceSubscription extends pulumi.CustomResource {
      * - `Sms Format`: A mobile number
      * - `Email Format`: An email address.
      */
-    public readonly endpoint!: pulumi.Output<string>;
+    declare public readonly endpoint: pulumi.Output<string>;
     /**
      * The tag that is used to filter messages. Only the messages that have the same tag can be pushed. A tag is a string that can be up to 16 characters in length. By default, no tag is specified to filter messages.
      */
-    public readonly filterTag!: pulumi.Output<string | undefined>;
+    declare public readonly filterTag: pulumi.Output<string | undefined>;
     /**
      * The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. Valid values: `XML`, `JSON` and `SIMPLIFIED`. Default value: `XML`.
      */
-    public readonly notifyContentFormat!: pulumi.Output<string>;
+    declare public readonly notifyContentFormat: pulumi.Output<string>;
     /**
      * The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. Default value: `BACKOFF_RETRY`. Valid values:
      * - `BACKOFF_RETRY`: retries with a fixed backoff interval.
      * - `EXPONENTIAL_DECAY_RETRY`: retries with exponential backoff.
      */
-    public readonly notifyStrategy!: pulumi.Output<string>;
+    declare public readonly notifyStrategy: pulumi.Output<string>;
     /**
      * The Push type of Subscription. The Valid values: `http`, `queue`, `mpush`, `alisms` and `email`.
      */
-    public readonly pushType!: pulumi.Output<string>;
+    declare public readonly pushType: pulumi.Output<string>;
     /**
      * Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
      */
-    public readonly subscriptionName!: pulumi.Output<string>;
+    declare public readonly subscriptionName: pulumi.Output<string>;
     /**
      * The topic which The subscription belongs to was named with the name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
      */
-    public readonly topicName!: pulumi.Output<string>;
+    declare public readonly topicName: pulumi.Output<string>;
 
     /**
      * Create a ServiceSubscription resource with the given unique name, arguments, and options.
@@ -132,37 +132,37 @@ export class ServiceSubscription extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceSubscriptionState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dlqPolicy"] = state ? state.dlqPolicy : undefined;
-            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
-            resourceInputs["filterTag"] = state ? state.filterTag : undefined;
-            resourceInputs["notifyContentFormat"] = state ? state.notifyContentFormat : undefined;
-            resourceInputs["notifyStrategy"] = state ? state.notifyStrategy : undefined;
-            resourceInputs["pushType"] = state ? state.pushType : undefined;
-            resourceInputs["subscriptionName"] = state ? state.subscriptionName : undefined;
-            resourceInputs["topicName"] = state ? state.topicName : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dlqPolicy"] = state?.dlqPolicy;
+            resourceInputs["endpoint"] = state?.endpoint;
+            resourceInputs["filterTag"] = state?.filterTag;
+            resourceInputs["notifyContentFormat"] = state?.notifyContentFormat;
+            resourceInputs["notifyStrategy"] = state?.notifyStrategy;
+            resourceInputs["pushType"] = state?.pushType;
+            resourceInputs["subscriptionName"] = state?.subscriptionName;
+            resourceInputs["topicName"] = state?.topicName;
         } else {
             const args = argsOrState as ServiceSubscriptionArgs | undefined;
-            if ((!args || args.endpoint === undefined) && !opts.urn) {
+            if (args?.endpoint === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpoint'");
             }
-            if ((!args || args.pushType === undefined) && !opts.urn) {
+            if (args?.pushType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pushType'");
             }
-            if ((!args || args.subscriptionName === undefined) && !opts.urn) {
+            if (args?.subscriptionName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subscriptionName'");
             }
-            if ((!args || args.topicName === undefined) && !opts.urn) {
+            if (args?.topicName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'topicName'");
             }
-            resourceInputs["dlqPolicy"] = args ? args.dlqPolicy : undefined;
-            resourceInputs["endpoint"] = args ? args.endpoint : undefined;
-            resourceInputs["filterTag"] = args ? args.filterTag : undefined;
-            resourceInputs["notifyContentFormat"] = args ? args.notifyContentFormat : undefined;
-            resourceInputs["notifyStrategy"] = args ? args.notifyStrategy : undefined;
-            resourceInputs["pushType"] = args ? args.pushType : undefined;
-            resourceInputs["subscriptionName"] = args ? args.subscriptionName : undefined;
-            resourceInputs["topicName"] = args ? args.topicName : undefined;
+            resourceInputs["dlqPolicy"] = args?.dlqPolicy;
+            resourceInputs["endpoint"] = args?.endpoint;
+            resourceInputs["filterTag"] = args?.filterTag;
+            resourceInputs["notifyContentFormat"] = args?.notifyContentFormat;
+            resourceInputs["notifyStrategy"] = args?.notifyStrategy;
+            resourceInputs["pushType"] = args?.pushType;
+            resourceInputs["subscriptionName"] = args?.subscriptionName;
+            resourceInputs["topicName"] = args?.topicName;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

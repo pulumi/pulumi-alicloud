@@ -125,31 +125,31 @@ export class LakeAccount extends pulumi.CustomResource {
     /**
      * The description of the account.
      */
-    public readonly accountDescription!: pulumi.Output<string | undefined>;
+    declare public readonly accountDescription: pulumi.Output<string | undefined>;
     /**
      * The name of the account.
      */
-    public readonly accountName!: pulumi.Output<string>;
+    declare public readonly accountName: pulumi.Output<string>;
     /**
      * AccountPassword.
      */
-    public readonly accountPassword!: pulumi.Output<string>;
+    declare public readonly accountPassword: pulumi.Output<string>;
     /**
      * List of permissions granted. See `accountPrivileges` below.
      */
-    public readonly accountPrivileges!: pulumi.Output<outputs.adb.LakeAccountAccountPrivilege[]>;
+    declare public readonly accountPrivileges: pulumi.Output<outputs.adb.LakeAccountAccountPrivilege[]>;
     /**
      * The type of the account.
      */
-    public readonly accountType!: pulumi.Output<string | undefined>;
+    declare public readonly accountType: pulumi.Output<string | undefined>;
     /**
      * The DBCluster ID.
      */
-    public readonly dbClusterId!: pulumi.Output<string>;
+    declare public readonly dbClusterId: pulumi.Output<string>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a LakeAccount resource with the given unique name, arguments, and options.
@@ -164,30 +164,30 @@ export class LakeAccount extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LakeAccountState | undefined;
-            resourceInputs["accountDescription"] = state ? state.accountDescription : undefined;
-            resourceInputs["accountName"] = state ? state.accountName : undefined;
-            resourceInputs["accountPassword"] = state ? state.accountPassword : undefined;
-            resourceInputs["accountPrivileges"] = state ? state.accountPrivileges : undefined;
-            resourceInputs["accountType"] = state ? state.accountType : undefined;
-            resourceInputs["dbClusterId"] = state ? state.dbClusterId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["accountDescription"] = state?.accountDescription;
+            resourceInputs["accountName"] = state?.accountName;
+            resourceInputs["accountPassword"] = state?.accountPassword;
+            resourceInputs["accountPrivileges"] = state?.accountPrivileges;
+            resourceInputs["accountType"] = state?.accountType;
+            resourceInputs["dbClusterId"] = state?.dbClusterId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as LakeAccountArgs | undefined;
-            if ((!args || args.accountName === undefined) && !opts.urn) {
+            if (args?.accountName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountName'");
             }
-            if ((!args || args.accountPassword === undefined) && !opts.urn) {
+            if (args?.accountPassword === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountPassword'");
             }
-            if ((!args || args.dbClusterId === undefined) && !opts.urn) {
+            if (args?.dbClusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbClusterId'");
             }
-            resourceInputs["accountDescription"] = args ? args.accountDescription : undefined;
-            resourceInputs["accountName"] = args ? args.accountName : undefined;
+            resourceInputs["accountDescription"] = args?.accountDescription;
+            resourceInputs["accountName"] = args?.accountName;
             resourceInputs["accountPassword"] = args?.accountPassword ? pulumi.secret(args.accountPassword) : undefined;
-            resourceInputs["accountPrivileges"] = args ? args.accountPrivileges : undefined;
-            resourceInputs["accountType"] = args ? args.accountType : undefined;
-            resourceInputs["dbClusterId"] = args ? args.dbClusterId : undefined;
+            resourceInputs["accountPrivileges"] = args?.accountPrivileges;
+            resourceInputs["accountType"] = args?.accountType;
+            resourceInputs["dbClusterId"] = args?.dbClusterId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

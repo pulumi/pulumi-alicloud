@@ -70,19 +70,19 @@ export class Network extends pulumi.CustomResource {
     /**
      * The CidrBlock of the CCN instance. Defaults to null.
      */
-    public readonly cidrBlock!: pulumi.Output<string | undefined>;
+    declare public readonly cidrBlock: pulumi.Output<string | undefined>;
     /**
      * The description of the CCN instance. The description can contain 2 to 256 characters. The description must start with English letters, but cannot start with http:// or https://.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Created by default. If the client does not have ccn in the binding, it will create a ccn for the user to replace.
      */
-    public readonly isDefault!: pulumi.Output<boolean>;
+    declare public readonly isDefault: pulumi.Output<boolean>;
     /**
      * The name of the CCN instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a Network resource with the given unique name, arguments, and options.
@@ -97,19 +97,19 @@ export class Network extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkState | undefined;
-            resourceInputs["cidrBlock"] = state ? state.cidrBlock : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["isDefault"] = state ? state.isDefault : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["cidrBlock"] = state?.cidrBlock;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["isDefault"] = state?.isDefault;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as NetworkArgs | undefined;
-            if ((!args || args.isDefault === undefined) && !opts.urn) {
+            if (args?.isDefault === undefined && !opts.urn) {
                 throw new Error("Missing required property 'isDefault'");
             }
-            resourceInputs["cidrBlock"] = args ? args.cidrBlock : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["isDefault"] = args ? args.isDefault : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["cidrBlock"] = args?.cidrBlock;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["isDefault"] = args?.isDefault;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Network.__pulumiType, name, resourceInputs, opts);

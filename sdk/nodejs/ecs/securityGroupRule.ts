@@ -80,62 +80,62 @@ export class SecurityGroupRule extends pulumi.CustomResource {
     /**
      * The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
      */
-    public readonly cidrIp!: pulumi.Output<string | undefined>;
+    declare public readonly cidrIp: pulumi.Output<string | undefined>;
     /**
      * The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
      *
      * > **NOTE:**  You must specify one of the following field: `cidrIp`,`sourceSecurityGroupId`,`prefixListId`,`ipv6CidrIp`.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
      */
-    public readonly ipProtocol!: pulumi.Output<string>;
+    declare public readonly ipProtocol: pulumi.Output<string>;
     /**
      * Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidrIp` parameter.
      */
-    public readonly ipv6CidrIp!: pulumi.Output<string | undefined>;
+    declare public readonly ipv6CidrIp: pulumi.Output<string | undefined>;
     /**
      * Network type, can be either `internet` or `intranet`, the default value is `internet`.
      */
-    public readonly nicType!: pulumi.Output<string>;
+    declare public readonly nicType: pulumi.Output<string>;
     /**
      * The action of the Security Group Rule that determines whether to allow inbound access. Default value: `accept`. Valid values: `accept`, `drop`.
      */
-    public readonly policy!: pulumi.Output<string | undefined>;
+    declare public readonly policy: pulumi.Output<string | undefined>;
     /**
      * The range of port numbers relevant to the IP protocol. Default to "-1/-1". When the protocol is tcp or udp, each side port number range from 1 to 65535 and '-1/-1' will be invalid.
      * For example, `1/200` means that the range of the port numbers is 1-200. Other protocols' 'port_range' can only be "-1/-1", and other values will be invalid.
      */
-    public readonly portRange!: pulumi.Output<string | undefined>;
+    declare public readonly portRange: pulumi.Output<string | undefined>;
     /**
      * The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidrIp`,`sourceSecurityGroupId`,`ipv6CidrIp` parameter, this parameter is ignored.
      */
-    public readonly prefixListId!: pulumi.Output<string>;
+    declare public readonly prefixListId: pulumi.Output<string>;
     /**
      * The priority of the Security Group Rule. Default value: `1`. Valid values: `1` to `100`.
      */
-    public readonly priority!: pulumi.Output<number | undefined>;
+    declare public readonly priority: pulumi.Output<number | undefined>;
     /**
      * The ID of the Security Group.
      */
-    public readonly securityGroupId!: pulumi.Output<string>;
+    declare public readonly securityGroupId: pulumi.Output<string>;
     /**
      * The ID of the Security Group Rule.
      */
-    public /*out*/ readonly securityGroupRuleId!: pulumi.Output<string>;
+    declare public /*out*/ readonly securityGroupRuleId: pulumi.Output<string>;
     /**
      * The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
      */
-    public readonly sourceGroupOwnerAccount!: pulumi.Output<string | undefined>;
+    declare public readonly sourceGroupOwnerAccount: pulumi.Output<string | undefined>;
     /**
      * The target security group ID within the same region. If this field is specified, the `nicType` can only select `intranet`.
      */
-    public readonly sourceSecurityGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly sourceSecurityGroupId: pulumi.Output<string | undefined>;
     /**
      * The type of the Security Group Rule. Valid values:
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a SecurityGroupRule resource with the given unique name, arguments, and options.
@@ -150,44 +150,44 @@ export class SecurityGroupRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecurityGroupRuleState | undefined;
-            resourceInputs["cidrIp"] = state ? state.cidrIp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["ipProtocol"] = state ? state.ipProtocol : undefined;
-            resourceInputs["ipv6CidrIp"] = state ? state.ipv6CidrIp : undefined;
-            resourceInputs["nicType"] = state ? state.nicType : undefined;
-            resourceInputs["policy"] = state ? state.policy : undefined;
-            resourceInputs["portRange"] = state ? state.portRange : undefined;
-            resourceInputs["prefixListId"] = state ? state.prefixListId : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["securityGroupRuleId"] = state ? state.securityGroupRuleId : undefined;
-            resourceInputs["sourceGroupOwnerAccount"] = state ? state.sourceGroupOwnerAccount : undefined;
-            resourceInputs["sourceSecurityGroupId"] = state ? state.sourceSecurityGroupId : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["cidrIp"] = state?.cidrIp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["ipProtocol"] = state?.ipProtocol;
+            resourceInputs["ipv6CidrIp"] = state?.ipv6CidrIp;
+            resourceInputs["nicType"] = state?.nicType;
+            resourceInputs["policy"] = state?.policy;
+            resourceInputs["portRange"] = state?.portRange;
+            resourceInputs["prefixListId"] = state?.prefixListId;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["securityGroupRuleId"] = state?.securityGroupRuleId;
+            resourceInputs["sourceGroupOwnerAccount"] = state?.sourceGroupOwnerAccount;
+            resourceInputs["sourceSecurityGroupId"] = state?.sourceSecurityGroupId;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as SecurityGroupRuleArgs | undefined;
-            if ((!args || args.ipProtocol === undefined) && !opts.urn) {
+            if (args?.ipProtocol === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ipProtocol'");
             }
-            if ((!args || args.securityGroupId === undefined) && !opts.urn) {
+            if (args?.securityGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupId'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["cidrIp"] = args ? args.cidrIp : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["ipProtocol"] = args ? args.ipProtocol : undefined;
-            resourceInputs["ipv6CidrIp"] = args ? args.ipv6CidrIp : undefined;
-            resourceInputs["nicType"] = args ? args.nicType : undefined;
-            resourceInputs["policy"] = args ? args.policy : undefined;
-            resourceInputs["portRange"] = args ? args.portRange : undefined;
-            resourceInputs["prefixListId"] = args ? args.prefixListId : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            resourceInputs["sourceGroupOwnerAccount"] = args ? args.sourceGroupOwnerAccount : undefined;
-            resourceInputs["sourceSecurityGroupId"] = args ? args.sourceSecurityGroupId : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["cidrIp"] = args?.cidrIp;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["ipProtocol"] = args?.ipProtocol;
+            resourceInputs["ipv6CidrIp"] = args?.ipv6CidrIp;
+            resourceInputs["nicType"] = args?.nicType;
+            resourceInputs["policy"] = args?.policy;
+            resourceInputs["portRange"] = args?.portRange;
+            resourceInputs["prefixListId"] = args?.prefixListId;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["sourceGroupOwnerAccount"] = args?.sourceGroupOwnerAccount;
+            resourceInputs["sourceSecurityGroupId"] = args?.sourceSecurityGroupId;
+            resourceInputs["type"] = args?.type;
             resourceInputs["securityGroupRuleId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

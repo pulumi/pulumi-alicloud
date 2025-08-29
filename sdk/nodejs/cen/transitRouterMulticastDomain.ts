@@ -78,31 +78,31 @@ export class TransitRouterMulticastDomain extends pulumi.CustomResource {
     /**
      * The function options of the multicast domain. See `options` below.
      */
-    public readonly options!: pulumi.Output<outputs.cen.TransitRouterMulticastDomainOptions>;
+    declare public readonly options: pulumi.Output<outputs.cen.TransitRouterMulticastDomainOptions>;
     /**
      * (Available since v1.242.0) The region ID of the transit router.
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The status of the Transit Router Multicast Domain.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the forwarding router instance.
      */
-    public readonly transitRouterId!: pulumi.Output<string>;
+    declare public readonly transitRouterId: pulumi.Output<string>;
     /**
      * The description of the multicast domain.
      */
-    public readonly transitRouterMulticastDomainDescription!: pulumi.Output<string | undefined>;
+    declare public readonly transitRouterMulticastDomainDescription: pulumi.Output<string | undefined>;
     /**
      * The name of the multicast domain.
      */
-    public readonly transitRouterMulticastDomainName!: pulumi.Output<string | undefined>;
+    declare public readonly transitRouterMulticastDomainName: pulumi.Output<string | undefined>;
 
     /**
      * Create a TransitRouterMulticastDomain resource with the given unique name, arguments, and options.
@@ -117,23 +117,23 @@ export class TransitRouterMulticastDomain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TransitRouterMulticastDomainState | undefined;
-            resourceInputs["options"] = state ? state.options : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["transitRouterId"] = state ? state.transitRouterId : undefined;
-            resourceInputs["transitRouterMulticastDomainDescription"] = state ? state.transitRouterMulticastDomainDescription : undefined;
-            resourceInputs["transitRouterMulticastDomainName"] = state ? state.transitRouterMulticastDomainName : undefined;
+            resourceInputs["options"] = state?.options;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["transitRouterId"] = state?.transitRouterId;
+            resourceInputs["transitRouterMulticastDomainDescription"] = state?.transitRouterMulticastDomainDescription;
+            resourceInputs["transitRouterMulticastDomainName"] = state?.transitRouterMulticastDomainName;
         } else {
             const args = argsOrState as TransitRouterMulticastDomainArgs | undefined;
-            if ((!args || args.transitRouterId === undefined) && !opts.urn) {
+            if (args?.transitRouterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'transitRouterId'");
             }
-            resourceInputs["options"] = args ? args.options : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["transitRouterId"] = args ? args.transitRouterId : undefined;
-            resourceInputs["transitRouterMulticastDomainDescription"] = args ? args.transitRouterMulticastDomainDescription : undefined;
-            resourceInputs["transitRouterMulticastDomainName"] = args ? args.transitRouterMulticastDomainName : undefined;
+            resourceInputs["options"] = args?.options;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["transitRouterId"] = args?.transitRouterId;
+            resourceInputs["transitRouterMulticastDomainDescription"] = args?.transitRouterMulticastDomainDescription;
+            resourceInputs["transitRouterMulticastDomainName"] = args?.transitRouterMulticastDomainName;
             resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

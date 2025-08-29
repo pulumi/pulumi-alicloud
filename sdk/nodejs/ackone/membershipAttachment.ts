@@ -50,11 +50,11 @@ export class MembershipAttachment extends pulumi.CustomResource {
     /**
      * The ID of the cluster to which the membership is being attached.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The ID of the member being attached to the cluster.
      */
-    public readonly subClusterId!: pulumi.Output<string>;
+    declare public readonly subClusterId: pulumi.Output<string>;
 
     /**
      * Create a MembershipAttachment resource with the given unique name, arguments, and options.
@@ -69,18 +69,18 @@ export class MembershipAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MembershipAttachmentState | undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["subClusterId"] = state ? state.subClusterId : undefined;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["subClusterId"] = state?.subClusterId;
         } else {
             const args = argsOrState as MembershipAttachmentArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.subClusterId === undefined) && !opts.urn) {
+            if (args?.subClusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subClusterId'");
             }
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["subClusterId"] = args ? args.subClusterId : undefined;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["subClusterId"] = args?.subClusterId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MembershipAttachment.__pulumiType, name, resourceInputs, opts);

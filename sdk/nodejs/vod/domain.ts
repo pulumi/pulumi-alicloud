@@ -80,65 +80,65 @@ export class Domain extends pulumi.CustomResource {
     /**
      * The name of the certificate. The value of this parameter is returned if HTTPS is enabled.
      */
-    public /*out*/ readonly certName!: pulumi.Output<string>;
+    declare public /*out*/ readonly certName: pulumi.Output<string>;
     /**
      * The URL that is used for health checks.
      */
-    public readonly checkUrl!: pulumi.Output<string | undefined>;
+    declare public readonly checkUrl: pulumi.Output<string | undefined>;
     /**
      * The CNAME that is assigned to the domain name for CDN. You must add a CNAME record in the system of your Domain Name System (DNS) service provider to map the domain name for CDN to the CNAME.
      */
-    public /*out*/ readonly cname!: pulumi.Output<string>;
+    declare public /*out*/ readonly cname: pulumi.Output<string>;
     /**
      * The description of the domain name for CDN.
      */
-    public /*out*/ readonly description!: pulumi.Output<string>;
+    declare public /*out*/ readonly description: pulumi.Output<string>;
     /**
      * The domain name for CDN that you want to add to ApsaraVideo VOD. Wildcard domain names are supported. Start the domain name with a period (.). Example: `.example.com.`.
      */
-    public readonly domainName!: pulumi.Output<string>;
+    declare public readonly domainName: pulumi.Output<string>;
     /**
      * The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
-    public /*out*/ readonly gmtCreated!: pulumi.Output<string>;
+    declare public /*out*/ readonly gmtCreated: pulumi.Output<string>;
     /**
      * The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
-    public /*out*/ readonly gmtModified!: pulumi.Output<string>;
+    declare public /*out*/ readonly gmtModified: pulumi.Output<string>;
     /**
      * This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
      */
-    public readonly scope!: pulumi.Output<string | undefined>;
+    declare public readonly scope: pulumi.Output<string | undefined>;
     /**
      * The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
      */
-    public readonly sources!: pulumi.Output<outputs.vod.DomainSource[]>;
+    declare public readonly sources: pulumi.Output<outputs.vod.DomainSource[]>;
     /**
      * Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
      */
-    public /*out*/ readonly sslProtocol!: pulumi.Output<string>;
+    declare public /*out*/ readonly sslProtocol: pulumi.Output<string>;
     /**
      * The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
      */
-    public /*out*/ readonly sslPub!: pulumi.Output<string>;
+    declare public /*out*/ readonly sslPub: pulumi.Output<string>;
     /**
      * The status of the domain name for CDN. Valid values:
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
      * * `Value`: It can be up to 128 characters in length. It can be a null string.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The top-level domain name.
      */
-    public readonly topLevelDomain!: pulumi.Output<string | undefined>;
+    declare public readonly topLevelDomain: pulumi.Output<string | undefined>;
     /**
      * The weight of the origin server.
      */
-    public /*out*/ readonly weight!: pulumi.Output<string>;
+    declare public /*out*/ readonly weight: pulumi.Output<string>;
 
     /**
      * Create a Domain resource with the given unique name, arguments, and options.
@@ -153,35 +153,35 @@ export class Domain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainState | undefined;
-            resourceInputs["certName"] = state ? state.certName : undefined;
-            resourceInputs["checkUrl"] = state ? state.checkUrl : undefined;
-            resourceInputs["cname"] = state ? state.cname : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["domainName"] = state ? state.domainName : undefined;
-            resourceInputs["gmtCreated"] = state ? state.gmtCreated : undefined;
-            resourceInputs["gmtModified"] = state ? state.gmtModified : undefined;
-            resourceInputs["scope"] = state ? state.scope : undefined;
-            resourceInputs["sources"] = state ? state.sources : undefined;
-            resourceInputs["sslProtocol"] = state ? state.sslProtocol : undefined;
-            resourceInputs["sslPub"] = state ? state.sslPub : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["topLevelDomain"] = state ? state.topLevelDomain : undefined;
-            resourceInputs["weight"] = state ? state.weight : undefined;
+            resourceInputs["certName"] = state?.certName;
+            resourceInputs["checkUrl"] = state?.checkUrl;
+            resourceInputs["cname"] = state?.cname;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["domainName"] = state?.domainName;
+            resourceInputs["gmtCreated"] = state?.gmtCreated;
+            resourceInputs["gmtModified"] = state?.gmtModified;
+            resourceInputs["scope"] = state?.scope;
+            resourceInputs["sources"] = state?.sources;
+            resourceInputs["sslProtocol"] = state?.sslProtocol;
+            resourceInputs["sslPub"] = state?.sslPub;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["topLevelDomain"] = state?.topLevelDomain;
+            resourceInputs["weight"] = state?.weight;
         } else {
             const args = argsOrState as DomainArgs | undefined;
-            if ((!args || args.domainName === undefined) && !opts.urn) {
+            if (args?.domainName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
-            if ((!args || args.sources === undefined) && !opts.urn) {
+            if (args?.sources === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sources'");
             }
-            resourceInputs["checkUrl"] = args ? args.checkUrl : undefined;
-            resourceInputs["domainName"] = args ? args.domainName : undefined;
-            resourceInputs["scope"] = args ? args.scope : undefined;
-            resourceInputs["sources"] = args ? args.sources : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["topLevelDomain"] = args ? args.topLevelDomain : undefined;
+            resourceInputs["checkUrl"] = args?.checkUrl;
+            resourceInputs["domainName"] = args?.domainName;
+            resourceInputs["scope"] = args?.scope;
+            resourceInputs["sources"] = args?.sources;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["topLevelDomain"] = args?.topLevelDomain;
             resourceInputs["certName"] = undefined /*out*/;
             resourceInputs["cname"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;

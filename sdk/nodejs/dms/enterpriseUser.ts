@@ -71,41 +71,41 @@ export class EnterpriseUser extends pulumi.CustomResource {
     /**
      * Maximum number of inquiries on the day.
      */
-    public readonly maxExecuteCount!: pulumi.Output<number | undefined>;
+    declare public readonly maxExecuteCount: pulumi.Output<number | undefined>;
     /**
      * Query the maximum number of rows on the day.
      */
-    public readonly maxResultCount!: pulumi.Output<number | undefined>;
+    declare public readonly maxResultCount: pulumi.Output<number | undefined>;
     /**
      * The DingTalk number or mobile number of the user.
      */
-    public readonly mobile!: pulumi.Output<string | undefined>;
+    declare public readonly mobile: pulumi.Output<string | undefined>;
     /**
      * It has been deprecated from 1.100.0 and use `userName` instead.
      *
      * @deprecated Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.
      */
-    public readonly nickName!: pulumi.Output<string>;
+    declare public readonly nickName: pulumi.Output<string>;
     /**
      * The roles that the user plays.
      */
-    public readonly roleNames!: pulumi.Output<string[] | undefined>;
+    declare public readonly roleNames: pulumi.Output<string[] | undefined>;
     /**
      * The state of DMS Enterprise User. Valid values: `NORMAL`, `DISABLE`.
      */
-    public readonly status!: pulumi.Output<string | undefined>;
+    declare public readonly status: pulumi.Output<string | undefined>;
     /**
      * The tenant ID.
      */
-    public readonly tid!: pulumi.Output<number | undefined>;
+    declare public readonly tid: pulumi.Output<number | undefined>;
     /**
      * The Alibaba Cloud unique ID (UID) of the user to add.
      */
-    public readonly uid!: pulumi.Output<string>;
+    declare public readonly uid: pulumi.Output<string>;
     /**
      * The nickname of the user.
      */
-    public readonly userName!: pulumi.Output<string>;
+    declare public readonly userName: pulumi.Output<string>;
 
     /**
      * Create a EnterpriseUser resource with the given unique name, arguments, and options.
@@ -120,29 +120,29 @@ export class EnterpriseUser extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnterpriseUserState | undefined;
-            resourceInputs["maxExecuteCount"] = state ? state.maxExecuteCount : undefined;
-            resourceInputs["maxResultCount"] = state ? state.maxResultCount : undefined;
-            resourceInputs["mobile"] = state ? state.mobile : undefined;
-            resourceInputs["nickName"] = state ? state.nickName : undefined;
-            resourceInputs["roleNames"] = state ? state.roleNames : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tid"] = state ? state.tid : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["userName"] = state ? state.userName : undefined;
+            resourceInputs["maxExecuteCount"] = state?.maxExecuteCount;
+            resourceInputs["maxResultCount"] = state?.maxResultCount;
+            resourceInputs["mobile"] = state?.mobile;
+            resourceInputs["nickName"] = state?.nickName;
+            resourceInputs["roleNames"] = state?.roleNames;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tid"] = state?.tid;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["userName"] = state?.userName;
         } else {
             const args = argsOrState as EnterpriseUserArgs | undefined;
-            if ((!args || args.uid === undefined) && !opts.urn) {
+            if (args?.uid === undefined && !opts.urn) {
                 throw new Error("Missing required property 'uid'");
             }
-            resourceInputs["maxExecuteCount"] = args ? args.maxExecuteCount : undefined;
-            resourceInputs["maxResultCount"] = args ? args.maxResultCount : undefined;
-            resourceInputs["mobile"] = args ? args.mobile : undefined;
-            resourceInputs["nickName"] = args ? args.nickName : undefined;
-            resourceInputs["roleNames"] = args ? args.roleNames : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["tid"] = args ? args.tid : undefined;
-            resourceInputs["uid"] = args ? args.uid : undefined;
-            resourceInputs["userName"] = args ? args.userName : undefined;
+            resourceInputs["maxExecuteCount"] = args?.maxExecuteCount;
+            resourceInputs["maxResultCount"] = args?.maxResultCount;
+            resourceInputs["mobile"] = args?.mobile;
+            resourceInputs["nickName"] = args?.nickName;
+            resourceInputs["roleNames"] = args?.roleNames;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["tid"] = args?.tid;
+            resourceInputs["uid"] = args?.uid;
+            resourceInputs["userName"] = args?.userName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EnterpriseUser.__pulumiType, name, resourceInputs, opts);

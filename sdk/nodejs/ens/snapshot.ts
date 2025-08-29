@@ -74,27 +74,27 @@ export class Snapshot extends pulumi.CustomResource {
     /**
      * Instance creation timeIt is expressed in accordance with the ISO8601 standard and uses UTC +0 time in the format of yyyy-MM-ddTHH:mm:ssZ.Example value: 2020-08-20 T14:52:28Z.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Snapshot Description Information.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Cloud Disk ID.
      */
-    public readonly diskId!: pulumi.Output<string>;
+    declare public readonly diskId: pulumi.Output<string>;
     /**
      * The node ID of ENS.
      */
-    public readonly ensRegionId!: pulumi.Output<string>;
+    declare public readonly ensRegionId: pulumi.Output<string>;
     /**
      * Name of the snapshot instance.
      */
-    public readonly snapshotName!: pulumi.Output<string | undefined>;
+    declare public readonly snapshotName: pulumi.Output<string | undefined>;
     /**
      * Snapshot Status. Valid values: creating, available, deleting, error.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a Snapshot resource with the given unique name, arguments, and options.
@@ -109,24 +109,24 @@ export class Snapshot extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SnapshotState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["diskId"] = state ? state.diskId : undefined;
-            resourceInputs["ensRegionId"] = state ? state.ensRegionId : undefined;
-            resourceInputs["snapshotName"] = state ? state.snapshotName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["diskId"] = state?.diskId;
+            resourceInputs["ensRegionId"] = state?.ensRegionId;
+            resourceInputs["snapshotName"] = state?.snapshotName;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as SnapshotArgs | undefined;
-            if ((!args || args.diskId === undefined) && !opts.urn) {
+            if (args?.diskId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'diskId'");
             }
-            if ((!args || args.ensRegionId === undefined) && !opts.urn) {
+            if (args?.ensRegionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ensRegionId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["diskId"] = args ? args.diskId : undefined;
-            resourceInputs["ensRegionId"] = args ? args.ensRegionId : undefined;
-            resourceInputs["snapshotName"] = args ? args.snapshotName : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["diskId"] = args?.diskId;
+            resourceInputs["ensRegionId"] = args?.ensRegionId;
+            resourceInputs["snapshotName"] = args?.snapshotName;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

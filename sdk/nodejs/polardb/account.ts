@@ -86,31 +86,31 @@ export class Account extends pulumi.CustomResource {
     /**
      * Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
      */
-    public readonly accountDescription!: pulumi.Output<string | undefined>;
+    declare public readonly accountDescription: pulumi.Output<string | undefined>;
     /**
      * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
      */
-    public readonly accountName!: pulumi.Output<string>;
+    declare public readonly accountName: pulumi.Output<string>;
     /**
      * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
      */
-    public readonly accountPassword!: pulumi.Output<string>;
+    declare public readonly accountPassword: pulumi.Output<string>;
     /**
      * Account type, Valid values are `Normal`, `Super`, Default to `Normal`.
      */
-    public readonly accountType!: pulumi.Output<string | undefined>;
+    declare public readonly accountType: pulumi.Output<string | undefined>;
     /**
      * The Id of cluster in which account belongs.
      */
-    public readonly dbClusterId!: pulumi.Output<string>;
+    declare public readonly dbClusterId: pulumi.Output<string>;
     /**
      * An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
      */
-    public readonly kmsEncryptedPassword!: pulumi.Output<string | undefined>;
+    declare public readonly kmsEncryptedPassword: pulumi.Output<string | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly kmsEncryptionContext: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Account resource with the given unique name, arguments, and options.
@@ -125,31 +125,31 @@ export class Account extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountState | undefined;
-            resourceInputs["accountDescription"] = state ? state.accountDescription : undefined;
-            resourceInputs["accountName"] = state ? state.accountName : undefined;
-            resourceInputs["accountPassword"] = state ? state.accountPassword : undefined;
-            resourceInputs["accountType"] = state ? state.accountType : undefined;
-            resourceInputs["dbClusterId"] = state ? state.dbClusterId : undefined;
-            resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
-            resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
+            resourceInputs["accountDescription"] = state?.accountDescription;
+            resourceInputs["accountName"] = state?.accountName;
+            resourceInputs["accountPassword"] = state?.accountPassword;
+            resourceInputs["accountType"] = state?.accountType;
+            resourceInputs["dbClusterId"] = state?.dbClusterId;
+            resourceInputs["kmsEncryptedPassword"] = state?.kmsEncryptedPassword;
+            resourceInputs["kmsEncryptionContext"] = state?.kmsEncryptionContext;
         } else {
             const args = argsOrState as AccountArgs | undefined;
-            if ((!args || args.accountName === undefined) && !opts.urn) {
+            if (args?.accountName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountName'");
             }
-            if ((!args || args.accountPassword === undefined) && !opts.urn) {
+            if (args?.accountPassword === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountPassword'");
             }
-            if ((!args || args.dbClusterId === undefined) && !opts.urn) {
+            if (args?.dbClusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbClusterId'");
             }
-            resourceInputs["accountDescription"] = args ? args.accountDescription : undefined;
-            resourceInputs["accountName"] = args ? args.accountName : undefined;
+            resourceInputs["accountDescription"] = args?.accountDescription;
+            resourceInputs["accountName"] = args?.accountName;
             resourceInputs["accountPassword"] = args?.accountPassword ? pulumi.secret(args.accountPassword) : undefined;
-            resourceInputs["accountType"] = args ? args.accountType : undefined;
-            resourceInputs["dbClusterId"] = args ? args.dbClusterId : undefined;
-            resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
-            resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
+            resourceInputs["accountType"] = args?.accountType;
+            resourceInputs["dbClusterId"] = args?.dbClusterId;
+            resourceInputs["kmsEncryptedPassword"] = args?.kmsEncryptedPassword;
+            resourceInputs["kmsEncryptionContext"] = args?.kmsEncryptionContext;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["accountPassword"] };

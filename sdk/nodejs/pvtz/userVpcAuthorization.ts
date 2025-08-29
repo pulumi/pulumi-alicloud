@@ -64,15 +64,15 @@ export class UserVpcAuthorization extends pulumi.CustomResource {
     /**
      * The auth channel. Valid values: `RESOURCE_DIRECTORY`.
      */
-    public readonly authChannel!: pulumi.Output<string | undefined>;
+    declare public readonly authChannel: pulumi.Output<string | undefined>;
     /**
      * The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
      */
-    public readonly authType!: pulumi.Output<string | undefined>;
+    declare public readonly authType: pulumi.Output<string | undefined>;
     /**
      * The primary account ID of the user who authorizes the resource.
      */
-    public readonly authorizedUserId!: pulumi.Output<string>;
+    declare public readonly authorizedUserId: pulumi.Output<string>;
 
     /**
      * Create a UserVpcAuthorization resource with the given unique name, arguments, and options.
@@ -87,17 +87,17 @@ export class UserVpcAuthorization extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserVpcAuthorizationState | undefined;
-            resourceInputs["authChannel"] = state ? state.authChannel : undefined;
-            resourceInputs["authType"] = state ? state.authType : undefined;
-            resourceInputs["authorizedUserId"] = state ? state.authorizedUserId : undefined;
+            resourceInputs["authChannel"] = state?.authChannel;
+            resourceInputs["authType"] = state?.authType;
+            resourceInputs["authorizedUserId"] = state?.authorizedUserId;
         } else {
             const args = argsOrState as UserVpcAuthorizationArgs | undefined;
-            if ((!args || args.authorizedUserId === undefined) && !opts.urn) {
+            if (args?.authorizedUserId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'authorizedUserId'");
             }
-            resourceInputs["authChannel"] = args ? args.authChannel : undefined;
-            resourceInputs["authType"] = args ? args.authType : undefined;
-            resourceInputs["authorizedUserId"] = args ? args.authorizedUserId : undefined;
+            resourceInputs["authChannel"] = args?.authChannel;
+            resourceInputs["authType"] = args?.authType;
+            resourceInputs["authorizedUserId"] = args?.authorizedUserId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(UserVpcAuthorization.__pulumiType, name, resourceInputs, opts);

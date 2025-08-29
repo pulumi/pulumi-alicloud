@@ -109,59 +109,59 @@ export class MetricRuleBlackList extends pulumi.CustomResource {
     /**
      * Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
      */
-    public readonly category!: pulumi.Output<string>;
+    declare public readonly category: pulumi.Output<string>;
     /**
      * The timestamp for creating an alert blacklist policy.Unit: milliseconds.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The effective time range of the alert blacklist policy.
      */
-    public readonly effectiveTime!: pulumi.Output<string | undefined>;
+    declare public readonly effectiveTime: pulumi.Output<string | undefined>;
     /**
      * The start timestamp of the alert blacklist policy.Unit: milliseconds.
      */
-    public readonly enableEndTime!: pulumi.Output<string | undefined>;
+    declare public readonly enableEndTime: pulumi.Output<string | undefined>;
     /**
      * The end timestamp of the alert blacklist policy.Unit: milliseconds.
      */
-    public readonly enableStartTime!: pulumi.Output<string | undefined>;
+    declare public readonly enableStartTime: pulumi.Output<string | undefined>;
     /**
      * The list of instances of cloud services specified in the alert blacklist policy.
      */
-    public readonly instances!: pulumi.Output<string[]>;
+    declare public readonly instances: pulumi.Output<string[]>;
     /**
      * The status of the alert blacklist policy. Value:-true: enabled.-false: disabled.
      */
-    public readonly isEnable!: pulumi.Output<boolean>;
+    declare public readonly isEnable: pulumi.Output<boolean>;
     /**
      * The ID of the blacklist policy.
      */
-    public /*out*/ readonly metricRuleBlackListId!: pulumi.Output<string>;
+    declare public /*out*/ readonly metricRuleBlackListId: pulumi.Output<string>;
     /**
      * The name of the alert blacklist policy.
      */
-    public readonly metricRuleBlackListName!: pulumi.Output<string>;
+    declare public readonly metricRuleBlackListName: pulumi.Output<string>;
     /**
      * Monitoring metrics in the instance. See `metrics` below.
      */
-    public readonly metrics!: pulumi.Output<outputs.cms.MetricRuleBlackListMetric[] | undefined>;
+    declare public readonly metrics: pulumi.Output<outputs.cms.MetricRuleBlackListMetric[] | undefined>;
     /**
      * The data namespace of the cloud service.
      */
-    public readonly namespace!: pulumi.Output<string>;
+    declare public readonly namespace: pulumi.Output<string>;
     /**
      * The effective range of the alert blacklist policy. Value:-USER: The alert blacklist policy only takes effect in the current Alibaba cloud account.-GROUP: The alert blacklist policy takes effect in the specified application GROUP.
      */
-    public readonly scopeType!: pulumi.Output<string>;
+    declare public readonly scopeType: pulumi.Output<string>;
     /**
      * Application Group ID list. The format is JSON Array.> This parameter is displayed only when 'ScopeType' is 'GROUP.
      */
-    public readonly scopeValues!: pulumi.Output<string[] | undefined>;
+    declare public readonly scopeValues: pulumi.Output<string[] | undefined>;
     /**
      * Modify the timestamp of the alert blacklist policy.Unit: milliseconds.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a MetricRuleBlackList resource with the given unique name, arguments, and options.
@@ -176,45 +176,45 @@ export class MetricRuleBlackList extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MetricRuleBlackListState | undefined;
-            resourceInputs["category"] = state ? state.category : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["effectiveTime"] = state ? state.effectiveTime : undefined;
-            resourceInputs["enableEndTime"] = state ? state.enableEndTime : undefined;
-            resourceInputs["enableStartTime"] = state ? state.enableStartTime : undefined;
-            resourceInputs["instances"] = state ? state.instances : undefined;
-            resourceInputs["isEnable"] = state ? state.isEnable : undefined;
-            resourceInputs["metricRuleBlackListId"] = state ? state.metricRuleBlackListId : undefined;
-            resourceInputs["metricRuleBlackListName"] = state ? state.metricRuleBlackListName : undefined;
-            resourceInputs["metrics"] = state ? state.metrics : undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["scopeType"] = state ? state.scopeType : undefined;
-            resourceInputs["scopeValues"] = state ? state.scopeValues : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["category"] = state?.category;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["effectiveTime"] = state?.effectiveTime;
+            resourceInputs["enableEndTime"] = state?.enableEndTime;
+            resourceInputs["enableStartTime"] = state?.enableStartTime;
+            resourceInputs["instances"] = state?.instances;
+            resourceInputs["isEnable"] = state?.isEnable;
+            resourceInputs["metricRuleBlackListId"] = state?.metricRuleBlackListId;
+            resourceInputs["metricRuleBlackListName"] = state?.metricRuleBlackListName;
+            resourceInputs["metrics"] = state?.metrics;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["scopeType"] = state?.scopeType;
+            resourceInputs["scopeValues"] = state?.scopeValues;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as MetricRuleBlackListArgs | undefined;
-            if ((!args || args.category === undefined) && !opts.urn) {
+            if (args?.category === undefined && !opts.urn) {
                 throw new Error("Missing required property 'category'");
             }
-            if ((!args || args.instances === undefined) && !opts.urn) {
+            if (args?.instances === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instances'");
             }
-            if ((!args || args.metricRuleBlackListName === undefined) && !opts.urn) {
+            if (args?.metricRuleBlackListName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'metricRuleBlackListName'");
             }
-            if ((!args || args.namespace === undefined) && !opts.urn) {
+            if (args?.namespace === undefined && !opts.urn) {
                 throw new Error("Missing required property 'namespace'");
             }
-            resourceInputs["category"] = args ? args.category : undefined;
-            resourceInputs["effectiveTime"] = args ? args.effectiveTime : undefined;
-            resourceInputs["enableEndTime"] = args ? args.enableEndTime : undefined;
-            resourceInputs["enableStartTime"] = args ? args.enableStartTime : undefined;
-            resourceInputs["instances"] = args ? args.instances : undefined;
-            resourceInputs["isEnable"] = args ? args.isEnable : undefined;
-            resourceInputs["metricRuleBlackListName"] = args ? args.metricRuleBlackListName : undefined;
-            resourceInputs["metrics"] = args ? args.metrics : undefined;
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["scopeType"] = args ? args.scopeType : undefined;
-            resourceInputs["scopeValues"] = args ? args.scopeValues : undefined;
+            resourceInputs["category"] = args?.category;
+            resourceInputs["effectiveTime"] = args?.effectiveTime;
+            resourceInputs["enableEndTime"] = args?.enableEndTime;
+            resourceInputs["enableStartTime"] = args?.enableStartTime;
+            resourceInputs["instances"] = args?.instances;
+            resourceInputs["isEnable"] = args?.isEnable;
+            resourceInputs["metricRuleBlackListName"] = args?.metricRuleBlackListName;
+            resourceInputs["metrics"] = args?.metrics;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["scopeType"] = args?.scopeType;
+            resourceInputs["scopeValues"] = args?.scopeValues;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["metricRuleBlackListId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

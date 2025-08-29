@@ -66,23 +66,23 @@ export class Domain extends pulumi.CustomResource {
     /**
      * A list of the dns server name.
      */
-    public /*out*/ readonly dnsServers!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly dnsServers: pulumi.Output<string[]>;
     /**
      * The domain ID.
      */
-    public /*out*/ readonly domainId!: pulumi.Output<string>;
+    declare public /*out*/ readonly domainId: pulumi.Output<string>;
     /**
      * Id of the group in which the domain will add. If not supplied, then use default group.
      */
-    public readonly groupId!: pulumi.Output<string | undefined>;
+    declare public readonly groupId: pulumi.Output<string | undefined>;
     /**
      * Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The Id of resource group which the dns belongs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly resourceGroupId: pulumi.Output<string | undefined>;
 
     /**
      * Create a Domain resource with the given unique name, arguments, and options.
@@ -100,16 +100,16 @@ export class Domain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainState | undefined;
-            resourceInputs["dnsServers"] = state ? state.dnsServers : undefined;
-            resourceInputs["domainId"] = state ? state.domainId : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["dnsServers"] = state?.dnsServers;
+            resourceInputs["domainId"] = state?.domainId;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
         } else {
             const args = argsOrState as DomainArgs | undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
             resourceInputs["dnsServers"] = undefined /*out*/;
             resourceInputs["domainId"] = undefined /*out*/;
         }

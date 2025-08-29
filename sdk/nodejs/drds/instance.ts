@@ -83,30 +83,30 @@ export class Instance extends pulumi.CustomResource {
     /**
      * (Available since v1.196.0) The connection string of the DRDS instance.
      */
-    public /*out*/ readonly connectionString!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectionString: pulumi.Output<string>;
     /**
      * Description of the DRDS instance, This description can have a string of 2 to 256 characters.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
      */
-    public readonly instanceChargeType!: pulumi.Output<string | undefined>;
+    declare public readonly instanceChargeType: pulumi.Output<string | undefined>;
     /**
      * The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
      * - `drds.sn2.4c16g` Starter Edition.
      * - `drds.sn2.8c32g` Standard Edition.
      * - `drds.sn2.16c64g` Enterprise Edition.
      */
-    public readonly instanceSeries!: pulumi.Output<string>;
+    declare public readonly instanceSeries: pulumi.Output<string>;
     /**
      * The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
      */
-    public readonly mysqlVersion!: pulumi.Output<number>;
+    declare public readonly mysqlVersion: pulumi.Output<number>;
     /**
      * (Available since v1.196.0) The connection port of the DRDS instance.
      */
-    public /*out*/ readonly port!: pulumi.Output<string>;
+    declare public /*out*/ readonly port: pulumi.Output<string>;
     /**
      * User-defined DRDS instance specification. Value range:
      * - `drds.sn1.4c8g` for DRDS instance Starter version;
@@ -118,19 +118,19 @@ export class Instance extends pulumi.CustomResource {
      * - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
      * - value range : `drds.sn1.32c64g.128c256g`
      */
-    public readonly specification!: pulumi.Output<string>;
+    declare public readonly specification: pulumi.Output<string>;
     /**
      * The id of the VPC.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * The VSwitch ID to launch in.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
     /**
      * The Zone to launch the DRDS instance.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -145,41 +145,41 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["connectionString"] = state ? state.connectionString : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
-            resourceInputs["instanceSeries"] = state ? state.instanceSeries : undefined;
-            resourceInputs["mysqlVersion"] = state ? state.mysqlVersion : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["specification"] = state ? state.specification : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["connectionString"] = state?.connectionString;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["instanceChargeType"] = state?.instanceChargeType;
+            resourceInputs["instanceSeries"] = state?.instanceSeries;
+            resourceInputs["mysqlVersion"] = state?.mysqlVersion;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["specification"] = state?.specification;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.description === undefined) && !opts.urn) {
+            if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.instanceSeries === undefined) && !opts.urn) {
+            if (args?.instanceSeries === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceSeries'");
             }
-            if ((!args || args.specification === undefined) && !opts.urn) {
+            if (args?.specification === undefined && !opts.urn) {
                 throw new Error("Missing required property 'specification'");
             }
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+            if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
-            resourceInputs["instanceSeries"] = args ? args.instanceSeries : undefined;
-            resourceInputs["mysqlVersion"] = args ? args.mysqlVersion : undefined;
-            resourceInputs["specification"] = args ? args.specification : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["instanceChargeType"] = args?.instanceChargeType;
+            resourceInputs["instanceSeries"] = args?.instanceSeries;
+            resourceInputs["mysqlVersion"] = args?.mysqlVersion;
+            resourceInputs["specification"] = args?.specification;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["connectionString"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;
         }

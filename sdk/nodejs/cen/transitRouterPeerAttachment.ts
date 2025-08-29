@@ -90,107 +90,107 @@ export class TransitRouterPeerAttachment extends pulumi.CustomResource {
     /**
      * Specifies whether to enable the local Enterprise Edition transit router to automatically advertise the routes of the inter-region connection to the peer transit router. Valid values:
      */
-    public readonly autoPublishRouteEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoPublishRouteEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The bandwidth value of the inter-region connection. Unit: Mbit/s.
      *
      * - This parameter specifies the maximum bandwidth value for the inter-region connection if you set `BandwidthType` to `BandwidthPackage`.
      * - This parameter specifies the bandwidth throttling threshold for the inter-region connection if you set `BandwidthType` to `DataTransfer`.
      */
-    public readonly bandwidth!: pulumi.Output<number | undefined>;
+    declare public readonly bandwidth: pulumi.Output<number | undefined>;
     /**
      * The method that is used to allocate bandwidth to the inter-region connection. Valid values:
      *
      * - `BandwidthPackage`: allocates bandwidth from a bandwidth plan.
      * - `DataTransfer`: bandwidth is billed based on the pay-by-data-transfer metering method.
      */
-    public readonly bandwidthType!: pulumi.Output<string>;
+    declare public readonly bandwidthType: pulumi.Output<string>;
     /**
      * The ID of the bandwidth plan that is used to allocate bandwidth to the inter-region connection.
      *
      * > **NOTE:**   If you set `BandwidthType` to `DataTransfer`, you do not need to set this parameter.
      */
-    public readonly cenBandwidthPackageId!: pulumi.Output<string | undefined>;
+    declare public readonly cenBandwidthPackageId: pulumi.Output<string | undefined>;
     /**
      * The ID of the Cloud Enterprise Network (CEN) instance.
      */
-    public readonly cenId!: pulumi.Output<string | undefined>;
+    declare public readonly cenId: pulumi.Output<string | undefined>;
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The default line type.
      * Valid values: Platinum and Gold.
      * Platinum is supported only when BandwidthType is set to DataTransfer.
      */
-    public readonly defaultLinkType!: pulumi.Output<string>;
+    declare public readonly defaultLinkType: pulumi.Output<string>;
     /**
      * Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the peer transit router.
      */
-    public readonly peerTransitRouterId!: pulumi.Output<string>;
+    declare public readonly peerTransitRouterId: pulumi.Output<string>;
     /**
      * The ID of the region where the peer transit router is deployed.
      */
-    public readonly peerTransitRouterRegionId!: pulumi.Output<string | undefined>;
+    declare public readonly peerTransitRouterRegionId: pulumi.Output<string | undefined>;
     /**
      * The ID of the region where the local Enterprise Edition transit router is deployed.
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The resource type to attachment. Only support `VR` and default value is `VR`.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    public readonly resourceType!: pulumi.Output<string | undefined>;
+    declare public readonly resourceType: pulumi.Output<string | undefined>;
     /**
      * Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
      *
      * @deprecated Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
      */
-    public readonly routeTableAssociationEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly routeTableAssociationEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
      *
      * @deprecated Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
      */
-    public readonly routeTablePropagationEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly routeTablePropagationEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The status of the resource
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tag of the resource
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The new description of the inter-region connection.
      * This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
      */
-    public readonly transitRouterAttachmentDescription!: pulumi.Output<string | undefined>;
+    declare public readonly transitRouterAttachmentDescription: pulumi.Output<string | undefined>;
     /**
      * The ID of the inter-region connection.
      */
-    public /*out*/ readonly transitRouterAttachmentId!: pulumi.Output<string>;
+    declare public /*out*/ readonly transitRouterAttachmentId: pulumi.Output<string>;
     /**
      * . Field 'transit_router_attachment_name' has been deprecated from provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead.
      *
      * @deprecated Field 'transit_router_attachment_name' has been deprecated since provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead.
      */
-    public readonly transitRouterAttachmentName!: pulumi.Output<string>;
+    declare public readonly transitRouterAttachmentName: pulumi.Output<string>;
     /**
      * The ID of the local Enterprise Edition transit router.
      */
-    public readonly transitRouterId!: pulumi.Output<string | undefined>;
+    declare public readonly transitRouterId: pulumi.Output<string | undefined>;
     /**
      * The new name of the inter-region connection.
      * The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
      */
-    public readonly transitRouterPeerAttachmentName!: pulumi.Output<string>;
+    declare public readonly transitRouterPeerAttachmentName: pulumi.Output<string>;
 
     /**
      * Create a TransitRouterPeerAttachment resource with the given unique name, arguments, and options.
@@ -205,49 +205,49 @@ export class TransitRouterPeerAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TransitRouterPeerAttachmentState | undefined;
-            resourceInputs["autoPublishRouteEnabled"] = state ? state.autoPublishRouteEnabled : undefined;
-            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
-            resourceInputs["bandwidthType"] = state ? state.bandwidthType : undefined;
-            resourceInputs["cenBandwidthPackageId"] = state ? state.cenBandwidthPackageId : undefined;
-            resourceInputs["cenId"] = state ? state.cenId : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["defaultLinkType"] = state ? state.defaultLinkType : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["peerTransitRouterId"] = state ? state.peerTransitRouterId : undefined;
-            resourceInputs["peerTransitRouterRegionId"] = state ? state.peerTransitRouterRegionId : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["resourceType"] = state ? state.resourceType : undefined;
-            resourceInputs["routeTableAssociationEnabled"] = state ? state.routeTableAssociationEnabled : undefined;
-            resourceInputs["routeTablePropagationEnabled"] = state ? state.routeTablePropagationEnabled : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["transitRouterAttachmentDescription"] = state ? state.transitRouterAttachmentDescription : undefined;
-            resourceInputs["transitRouterAttachmentId"] = state ? state.transitRouterAttachmentId : undefined;
-            resourceInputs["transitRouterAttachmentName"] = state ? state.transitRouterAttachmentName : undefined;
-            resourceInputs["transitRouterId"] = state ? state.transitRouterId : undefined;
-            resourceInputs["transitRouterPeerAttachmentName"] = state ? state.transitRouterPeerAttachmentName : undefined;
+            resourceInputs["autoPublishRouteEnabled"] = state?.autoPublishRouteEnabled;
+            resourceInputs["bandwidth"] = state?.bandwidth;
+            resourceInputs["bandwidthType"] = state?.bandwidthType;
+            resourceInputs["cenBandwidthPackageId"] = state?.cenBandwidthPackageId;
+            resourceInputs["cenId"] = state?.cenId;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["defaultLinkType"] = state?.defaultLinkType;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["peerTransitRouterId"] = state?.peerTransitRouterId;
+            resourceInputs["peerTransitRouterRegionId"] = state?.peerTransitRouterRegionId;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["resourceType"] = state?.resourceType;
+            resourceInputs["routeTableAssociationEnabled"] = state?.routeTableAssociationEnabled;
+            resourceInputs["routeTablePropagationEnabled"] = state?.routeTablePropagationEnabled;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["transitRouterAttachmentDescription"] = state?.transitRouterAttachmentDescription;
+            resourceInputs["transitRouterAttachmentId"] = state?.transitRouterAttachmentId;
+            resourceInputs["transitRouterAttachmentName"] = state?.transitRouterAttachmentName;
+            resourceInputs["transitRouterId"] = state?.transitRouterId;
+            resourceInputs["transitRouterPeerAttachmentName"] = state?.transitRouterPeerAttachmentName;
         } else {
             const args = argsOrState as TransitRouterPeerAttachmentArgs | undefined;
-            if ((!args || args.peerTransitRouterId === undefined) && !opts.urn) {
+            if (args?.peerTransitRouterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'peerTransitRouterId'");
             }
-            resourceInputs["autoPublishRouteEnabled"] = args ? args.autoPublishRouteEnabled : undefined;
-            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
-            resourceInputs["bandwidthType"] = args ? args.bandwidthType : undefined;
-            resourceInputs["cenBandwidthPackageId"] = args ? args.cenBandwidthPackageId : undefined;
-            resourceInputs["cenId"] = args ? args.cenId : undefined;
-            resourceInputs["defaultLinkType"] = args ? args.defaultLinkType : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["peerTransitRouterId"] = args ? args.peerTransitRouterId : undefined;
-            resourceInputs["peerTransitRouterRegionId"] = args ? args.peerTransitRouterRegionId : undefined;
-            resourceInputs["resourceType"] = args ? args.resourceType : undefined;
-            resourceInputs["routeTableAssociationEnabled"] = args ? args.routeTableAssociationEnabled : undefined;
-            resourceInputs["routeTablePropagationEnabled"] = args ? args.routeTablePropagationEnabled : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["transitRouterAttachmentDescription"] = args ? args.transitRouterAttachmentDescription : undefined;
-            resourceInputs["transitRouterAttachmentName"] = args ? args.transitRouterAttachmentName : undefined;
-            resourceInputs["transitRouterId"] = args ? args.transitRouterId : undefined;
-            resourceInputs["transitRouterPeerAttachmentName"] = args ? args.transitRouterPeerAttachmentName : undefined;
+            resourceInputs["autoPublishRouteEnabled"] = args?.autoPublishRouteEnabled;
+            resourceInputs["bandwidth"] = args?.bandwidth;
+            resourceInputs["bandwidthType"] = args?.bandwidthType;
+            resourceInputs["cenBandwidthPackageId"] = args?.cenBandwidthPackageId;
+            resourceInputs["cenId"] = args?.cenId;
+            resourceInputs["defaultLinkType"] = args?.defaultLinkType;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["peerTransitRouterId"] = args?.peerTransitRouterId;
+            resourceInputs["peerTransitRouterRegionId"] = args?.peerTransitRouterRegionId;
+            resourceInputs["resourceType"] = args?.resourceType;
+            resourceInputs["routeTableAssociationEnabled"] = args?.routeTableAssociationEnabled;
+            resourceInputs["routeTablePropagationEnabled"] = args?.routeTablePropagationEnabled;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["transitRouterAttachmentDescription"] = args?.transitRouterAttachmentDescription;
+            resourceInputs["transitRouterAttachmentName"] = args?.transitRouterAttachmentName;
+            resourceInputs["transitRouterId"] = args?.transitRouterId;
+            resourceInputs["transitRouterPeerAttachmentName"] = args?.transitRouterPeerAttachmentName;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

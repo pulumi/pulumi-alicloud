@@ -50,23 +50,23 @@ export class JobMonitorRule extends pulumi.CustomResource {
     /**
      * Trigger delay alarm threshold, which is measured in seconds.
      */
-    public readonly delayRuleTime!: pulumi.Output<string>;
+    declare public readonly delayRuleTime: pulumi.Output<string>;
     /**
      * Migration, synchronization or subscription task ID can be by calling the [DescribeDtsJobs] get.
      */
-    public readonly dtsJobId!: pulumi.Output<string>;
+    declare public readonly dtsJobId: pulumi.Output<string>;
     /**
      * The alarm is triggered after notification of the contact phone number, A plurality of phone numbers between them with a comma (,) to separate.
      */
-    public readonly phone!: pulumi.Output<string | undefined>;
+    declare public readonly phone: pulumi.Output<string | undefined>;
     /**
      * Whether to enable monitoring rules, valid values: `Y`, `N`.
      */
-    public readonly state!: pulumi.Output<string>;
+    declare public readonly state: pulumi.Output<string>;
     /**
      * Monitoring rules of type, valid values: `delay`, `error`. **delay**: delay alarm. **error**: abnormal alarm.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a JobMonitorRule resource with the given unique name, arguments, and options.
@@ -81,24 +81,24 @@ export class JobMonitorRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as JobMonitorRuleState | undefined;
-            resourceInputs["delayRuleTime"] = state ? state.delayRuleTime : undefined;
-            resourceInputs["dtsJobId"] = state ? state.dtsJobId : undefined;
-            resourceInputs["phone"] = state ? state.phone : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["delayRuleTime"] = state?.delayRuleTime;
+            resourceInputs["dtsJobId"] = state?.dtsJobId;
+            resourceInputs["phone"] = state?.phone;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as JobMonitorRuleArgs | undefined;
-            if ((!args || args.dtsJobId === undefined) && !opts.urn) {
+            if (args?.dtsJobId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dtsJobId'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["delayRuleTime"] = args ? args.delayRuleTime : undefined;
-            resourceInputs["dtsJobId"] = args ? args.dtsJobId : undefined;
-            resourceInputs["phone"] = args ? args.phone : undefined;
-            resourceInputs["state"] = args ? args.state : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["delayRuleTime"] = args?.delayRuleTime;
+            resourceInputs["dtsJobId"] = args?.dtsJobId;
+            resourceInputs["phone"] = args?.phone;
+            resourceInputs["state"] = args?.state;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(JobMonitorRule.__pulumiType, name, resourceInputs, opts);

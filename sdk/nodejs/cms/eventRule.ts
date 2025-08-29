@@ -79,51 +79,51 @@ export class EventRule extends pulumi.CustomResource {
     /**
      * The information about the alert contact groups that receive alert notifications. See `contactParameters` below.
      */
-    public readonly contactParameters!: pulumi.Output<outputs.cms.EventRuleContactParameter[] | undefined>;
+    declare public readonly contactParameters: pulumi.Output<outputs.cms.EventRuleContactParameter[] | undefined>;
     /**
      * The description of the event-triggered alert rule.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Event mode, used to describe the trigger conditions for this event. See `eventPattern` below.
      */
-    public readonly eventPattern!: pulumi.Output<outputs.cms.EventRuleEventPattern>;
+    declare public readonly eventPattern: pulumi.Output<outputs.cms.EventRuleEventPattern>;
     /**
      * The information about the recipients in Function Compute. See `fcParameters` below.
      */
-    public readonly fcParameters!: pulumi.Output<outputs.cms.EventRuleFcParameter[] | undefined>;
+    declare public readonly fcParameters: pulumi.Output<outputs.cms.EventRuleFcParameter[] | undefined>;
     /**
      * The ID of the application group to which the event-triggered alert rule belongs.
      */
-    public readonly groupId!: pulumi.Output<string | undefined>;
+    declare public readonly groupId: pulumi.Output<string | undefined>;
     /**
      * The information about the recipients in Message Service (MNS). See `mnsParameters` below.
      */
-    public readonly mnsParameters!: pulumi.Output<outputs.cms.EventRuleMnsParameter[] | undefined>;
+    declare public readonly mnsParameters: pulumi.Output<outputs.cms.EventRuleMnsParameter[] | undefined>;
     /**
      * The parameters of API callback notification. See `openApiParameters` below.
      */
-    public readonly openApiParameters!: pulumi.Output<outputs.cms.EventRuleOpenApiParameter[] | undefined>;
+    declare public readonly openApiParameters: pulumi.Output<outputs.cms.EventRuleOpenApiParameter[] | undefined>;
     /**
      * The name of the event-triggered alert rule.
      */
-    public readonly ruleName!: pulumi.Output<string>;
+    declare public readonly ruleName: pulumi.Output<string>;
     /**
      * The silence time.
      */
-    public readonly silenceTime!: pulumi.Output<number | undefined>;
+    declare public readonly silenceTime: pulumi.Output<number | undefined>;
     /**
      * The information about the recipients in Simple Log Service. See `slsParameters` below.
      */
-    public readonly slsParameters!: pulumi.Output<outputs.cms.EventRuleSlsParameter[] | undefined>;
+    declare public readonly slsParameters: pulumi.Output<outputs.cms.EventRuleSlsParameter[] | undefined>;
     /**
      * The status of the resource. Valid values: `ENABLED`, `DISABLED`.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The information about the callback URLs that are used to receive alert notifications. See `webhookParameters` below.
      */
-    public readonly webhookParameters!: pulumi.Output<outputs.cms.EventRuleWebhookParameter[] | undefined>;
+    declare public readonly webhookParameters: pulumi.Output<outputs.cms.EventRuleWebhookParameter[] | undefined>;
 
     /**
      * Create a EventRule resource with the given unique name, arguments, and options.
@@ -138,38 +138,38 @@ export class EventRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EventRuleState | undefined;
-            resourceInputs["contactParameters"] = state ? state.contactParameters : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["eventPattern"] = state ? state.eventPattern : undefined;
-            resourceInputs["fcParameters"] = state ? state.fcParameters : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["mnsParameters"] = state ? state.mnsParameters : undefined;
-            resourceInputs["openApiParameters"] = state ? state.openApiParameters : undefined;
-            resourceInputs["ruleName"] = state ? state.ruleName : undefined;
-            resourceInputs["silenceTime"] = state ? state.silenceTime : undefined;
-            resourceInputs["slsParameters"] = state ? state.slsParameters : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["webhookParameters"] = state ? state.webhookParameters : undefined;
+            resourceInputs["contactParameters"] = state?.contactParameters;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["eventPattern"] = state?.eventPattern;
+            resourceInputs["fcParameters"] = state?.fcParameters;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["mnsParameters"] = state?.mnsParameters;
+            resourceInputs["openApiParameters"] = state?.openApiParameters;
+            resourceInputs["ruleName"] = state?.ruleName;
+            resourceInputs["silenceTime"] = state?.silenceTime;
+            resourceInputs["slsParameters"] = state?.slsParameters;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["webhookParameters"] = state?.webhookParameters;
         } else {
             const args = argsOrState as EventRuleArgs | undefined;
-            if ((!args || args.eventPattern === undefined) && !opts.urn) {
+            if (args?.eventPattern === undefined && !opts.urn) {
                 throw new Error("Missing required property 'eventPattern'");
             }
-            if ((!args || args.ruleName === undefined) && !opts.urn) {
+            if (args?.ruleName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ruleName'");
             }
-            resourceInputs["contactParameters"] = args ? args.contactParameters : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["eventPattern"] = args ? args.eventPattern : undefined;
-            resourceInputs["fcParameters"] = args ? args.fcParameters : undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["mnsParameters"] = args ? args.mnsParameters : undefined;
-            resourceInputs["openApiParameters"] = args ? args.openApiParameters : undefined;
-            resourceInputs["ruleName"] = args ? args.ruleName : undefined;
-            resourceInputs["silenceTime"] = args ? args.silenceTime : undefined;
-            resourceInputs["slsParameters"] = args ? args.slsParameters : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["webhookParameters"] = args ? args.webhookParameters : undefined;
+            resourceInputs["contactParameters"] = args?.contactParameters;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["eventPattern"] = args?.eventPattern;
+            resourceInputs["fcParameters"] = args?.fcParameters;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["mnsParameters"] = args?.mnsParameters;
+            resourceInputs["openApiParameters"] = args?.openApiParameters;
+            resourceInputs["ruleName"] = args?.ruleName;
+            resourceInputs["silenceTime"] = args?.silenceTime;
+            resourceInputs["slsParameters"] = args?.slsParameters;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["webhookParameters"] = args?.webhookParameters;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EventRule.__pulumiType, name, resourceInputs, opts);

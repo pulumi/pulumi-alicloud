@@ -50,57 +50,57 @@ export class NodePool extends pulumi.CustomResource {
     /**
      * Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `false`. Valid values:
      */
-    public readonly autoRenew!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoRenew: pulumi.Output<boolean | undefined>;
     /**
      * The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
      */
-    public readonly autoRenewPeriod!: pulumi.Output<number | undefined>;
+    declare public readonly autoRenewPeriod: pulumi.Output<number | undefined>;
     /**
      * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
      *
      * @deprecated Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
      */
-    public readonly cisEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly cisEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The id of kubernetes cluster.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multiAzPolicy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
      */
-    public readonly compensateWithOnDemand!: pulumi.Output<boolean | undefined>;
+    declare public readonly compensateWithOnDemand: pulumi.Output<boolean | undefined>;
     /**
      * Node CPU management policies. Default value: `none`. When the cluster version is 1.12.6 or later, the following two policies are supported:
      */
-    public readonly cpuPolicy!: pulumi.Output<string>;
+    declare public readonly cpuPolicy: pulumi.Output<string>;
     /**
      * Configure the data disk of the node in the node pool. See `dataDisks` below.
      */
-    public readonly dataDisks!: pulumi.Output<outputs.cs.NodePoolDataDisk[] | undefined>;
+    declare public readonly dataDisks: pulumi.Output<outputs.cs.NodePoolDataDisk[] | undefined>;
     /**
      * The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
      */
-    public readonly deploymentSetId!: pulumi.Output<string | undefined>;
+    declare public readonly deploymentSetId: pulumi.Output<string | undefined>;
     /**
      * Number of expected nodes in the node pool.
      */
-    public readonly desiredSize!: pulumi.Output<string | undefined>;
+    declare public readonly desiredSize: pulumi.Output<string | undefined>;
     /**
      * Lingjun node pool configuration. See `efloNodeGroup` below.
      */
-    public readonly efloNodeGroup!: pulumi.Output<outputs.cs.NodePoolEfloNodeGroup | undefined>;
+    declare public readonly efloNodeGroup: pulumi.Output<outputs.cs.NodePoolEfloNodeGroup | undefined>;
     /**
      * Whether to force deletion.
      */
-    public readonly forceDelete!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDelete: pulumi.Output<boolean | undefined>;
     /**
      * After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
      */
-    public readonly formatDisk!: pulumi.Output<boolean>;
+    declare public readonly formatDisk: pulumi.Output<boolean>;
     /**
      * The custom image ID. The system-provided image is used by default.
      */
-    public readonly imageId!: pulumi.Output<string>;
+    declare public readonly imageId: pulumi.Output<string>;
     /**
      * The operating system image type and the `platform` parameter can be selected from the following values:
      * - `AliyunLinux` : Alinux2 image.
@@ -114,128 +114,128 @@ export class NodePool extends pulumi.CustomResource {
      * - `Ubuntu`: Ubuntu image.
      * - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
      */
-    public readonly imageType!: pulumi.Output<string>;
+    declare public readonly imageType: pulumi.Output<string>;
     /**
      * Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
      */
-    public readonly installCloudMonitor!: pulumi.Output<boolean | undefined>;
+    declare public readonly installCloudMonitor: pulumi.Output<boolean | undefined>;
     /**
      * Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
      */
-    public readonly instanceChargeType!: pulumi.Output<string>;
+    declare public readonly instanceChargeType: pulumi.Output<string>;
     /**
      * In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
      */
-    public readonly instanceTypes!: pulumi.Output<string[] | undefined>;
+    declare public readonly instanceTypes: pulumi.Output<string[] | undefined>;
     /**
      * The instance list. Add existing nodes under the same cluster VPC to the node pool.
      */
-    public readonly instances!: pulumi.Output<string[] | undefined>;
+    declare public readonly instances: pulumi.Output<string[] | undefined>;
     /**
      * The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
      */
-    public readonly internetChargeType!: pulumi.Output<string | undefined>;
+    declare public readonly internetChargeType: pulumi.Output<string | undefined>;
     /**
      * The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
      */
-    public readonly internetMaxBandwidthOut!: pulumi.Output<number | undefined>;
+    declare public readonly internetMaxBandwidthOut: pulumi.Output<number | undefined>;
     /**
      * Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
      */
-    public readonly keepInstanceName!: pulumi.Output<boolean>;
+    declare public readonly keepInstanceName: pulumi.Output<boolean>;
     /**
      * The name of the key pair. When the node pool is a managed node pool, only `keyName` is supported.
      */
-    public readonly keyName!: pulumi.Output<string | undefined>;
+    declare public readonly keyName: pulumi.Output<string | undefined>;
     /**
      * An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
-    public readonly kmsEncryptedPassword!: pulumi.Output<string | undefined>;
+    declare public readonly kmsEncryptedPassword: pulumi.Output<string | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly kmsEncryptionContext: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Kubelet configuration parameters for worker nodes. See `kubeletConfiguration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/). See `kubeletConfiguration` below.
      */
-    public readonly kubeletConfiguration!: pulumi.Output<outputs.cs.NodePoolKubeletConfiguration | undefined>;
+    declare public readonly kubeletConfiguration: pulumi.Output<outputs.cs.NodePoolKubeletConfiguration | undefined>;
     /**
      * A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). See `labels` below.
      */
-    public readonly labels!: pulumi.Output<outputs.cs.NodePoolLabel[] | undefined>;
+    declare public readonly labels: pulumi.Output<outputs.cs.NodePoolLabel[] | undefined>;
     /**
      * Whether the ECS instance is logged on as a ecs-user user. Valid value: `true` and `false`.
      */
-    public readonly loginAsNonRoot!: pulumi.Output<boolean | undefined>;
+    declare public readonly loginAsNonRoot: pulumi.Output<boolean | undefined>;
     /**
      * Managed node pool configuration. See `management` below.
      */
-    public readonly management!: pulumi.Output<outputs.cs.NodePoolManagement>;
+    declare public readonly management: pulumi.Output<outputs.cs.NodePoolManagement>;
     /**
      * The scaling policy for ECS instances in a multi-zone scaling group. Valid value: `PRIORITY`, `COST_OPTIMIZED` and `BALANCE`. `PRIORITY`: scales the capacity according to the virtual switches you define (VSwitchIds.N). When an ECS instance cannot be created in the zone where the higher-priority vSwitch is located, the next-priority vSwitch is automatically used to create an ECS instance. `COST_OPTIMIZED`: try to create by vCPU unit price from low to high. When the scaling configuration is configured with multiple instances of preemptible billing, preemptible instances are created first. You can continue to use the `CompensateWithOnDemand` parameter to specify whether to automatically try to create a preemptible instance by paying for it. It takes effect only when the scaling configuration has multi-instance specifications or preemptible instances. `BALANCE`: distributes ECS instances evenly among the multi-zone specified by the scaling group. If the zones become unbalanced due to insufficient inventory, you can use the API RebalanceInstances to balance resources.
      */
-    public readonly multiAzPolicy!: pulumi.Output<string>;
+    declare public readonly multiAzPolicy: pulumi.Output<string>;
     /**
      * . Field 'name' has been deprecated from provider version 1.219.0. New field 'node_pool_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.219.0. New field 'node_pool_name' instead.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The worker node number of the node pool. From version 1.111.0, `nodeCount` is not required.
      *
      * @deprecated Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.
      */
-    public readonly nodeCount!: pulumi.Output<number>;
+    declare public readonly nodeCount: pulumi.Output<number>;
     /**
      * Each node name consists of a prefix, its private network IP, and a suffix, separated by commas. The input format is `customized,,ip,`.
      * - The prefix and suffix can be composed of one or more parts separated by '.', each part can use lowercase letters, numbers and '-', and the beginning and end of the node name must be lowercase letters and numbers.
      * - The node IP address is the complete private IP address of the node.
      * - For example, if the string `customized,aliyun,ip,com` is passed in (where 'customized' and 'ip' are fixed strings, 'aliyun' is the prefix, and 'com' is the suffix), the name of the node is `aliyun192.168.xxx.xxxcom`.
      */
-    public readonly nodeNameMode!: pulumi.Output<string>;
+    declare public readonly nodeNameMode: pulumi.Output<string>;
     /**
      * The first ID of the resource.
      */
-    public /*out*/ readonly nodePoolId!: pulumi.Output<string>;
+    declare public /*out*/ readonly nodePoolId: pulumi.Output<string>;
     /**
      * The name of node pool.
      */
-    public readonly nodePoolName!: pulumi.Output<string>;
+    declare public readonly nodePoolName: pulumi.Output<string>;
     /**
      * The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
      */
-    public readonly onDemandBaseCapacity!: pulumi.Output<string | undefined>;
+    declare public readonly onDemandBaseCapacity: pulumi.Output<string | undefined>;
     /**
      * The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `onDemandBaseCapacity`. Valid values: 0 to 100.
      */
-    public readonly onDemandPercentageAboveBaseCapacity!: pulumi.Output<string | undefined>;
+    declare public readonly onDemandPercentageAboveBaseCapacity: pulumi.Output<string | undefined>;
     /**
      * The password of ssh login. You have to specify one of `password` and `keyName` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * Node payment period. Its valid value is one of {1, 2, 3, 6, 12}.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * Node payment period unit, valid value: `Month`. Default is `Month`.
      */
-    public readonly periodUnit!: pulumi.Output<string | undefined>;
+    declare public readonly periodUnit: pulumi.Output<string | undefined>;
     /**
      * Operating system release, using `imageType` instead.
      *
      * @deprecated Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `imageType` instead.
      */
-    public readonly platform!: pulumi.Output<string>;
+    declare public readonly platform: pulumi.Output<string>;
     /**
      * Node pre custom data, base64-encoded, the script executed before the node is initialized.
      */
-    public readonly preUserData!: pulumi.Output<string | undefined>;
+    declare public readonly preUserData: pulumi.Output<string | undefined>;
     /**
      * Private node pool configuration. See `privatePoolOptions` below.
      */
-    public readonly privatePoolOptions!: pulumi.Output<outputs.cs.NodePoolPrivatePoolOptions | undefined>;
+    declare public readonly privatePoolOptions: pulumi.Output<outputs.cs.NodePoolPrivatePoolOptions | undefined>;
     /**
      * The name of the Worker RAM role.
      * * If it is empty, the default Worker RAM role created in the cluster will be used.
@@ -243,102 +243,102 @@ export class NodePool extends pulumi.CustomResource {
      *
      * > **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
      */
-    public readonly ramRoleName!: pulumi.Output<string>;
+    declare public readonly ramRoleName: pulumi.Output<string>;
     /**
      * The list of RDS instances.
      */
-    public readonly rdsInstances!: pulumi.Output<string[] | undefined>;
+    declare public readonly rdsInstances: pulumi.Output<string[] | undefined>;
     /**
      * The ID of the resource group
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Rotary configuration. See `rollingPolicy` below.
      */
-    public readonly rollingPolicy!: pulumi.Output<outputs.cs.NodePoolRollingPolicy | undefined>;
+    declare public readonly rollingPolicy: pulumi.Output<outputs.cs.NodePoolRollingPolicy | undefined>;
     /**
      * The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
      */
-    public readonly runtimeName!: pulumi.Output<string>;
+    declare public readonly runtimeName: pulumi.Output<string>;
     /**
      * The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
      */
-    public readonly runtimeVersion!: pulumi.Output<string>;
+    declare public readonly runtimeVersion: pulumi.Output<string>;
     /**
      * Automatic scaling configuration. See `scalingConfig` below.
      */
-    public readonly scalingConfig!: pulumi.Output<outputs.cs.NodePoolScalingConfig>;
+    declare public readonly scalingConfig: pulumi.Output<outputs.cs.NodePoolScalingConfig>;
     /**
      * The ID of the scaling group.
      */
-    public /*out*/ readonly scalingGroupId!: pulumi.Output<string>;
+    declare public /*out*/ readonly scalingGroupId: pulumi.Output<string>;
     /**
      * Scaling group mode, default value: `release`. Valid values:
      */
-    public readonly scalingPolicy!: pulumi.Output<string>;
+    declare public readonly scalingPolicy: pulumi.Output<string>;
     /**
      * The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
      *
      * @deprecated Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
      */
-    public readonly securityGroupId!: pulumi.Output<string>;
+    declare public readonly securityGroupId: pulumi.Output<string>;
     /**
      * Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
      */
-    public readonly securityGroupIds!: pulumi.Output<string[]>;
+    declare public readonly securityGroupIds: pulumi.Output<string[]>;
     /**
      * Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
      */
-    public readonly securityHardeningOs!: pulumi.Output<boolean | undefined>;
+    declare public readonly securityHardeningOs: pulumi.Output<boolean | undefined>;
     /**
      * Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
      *
      * > **NOTE:**  It is forbidden to set both `securityHardeningOs` and `socEnabled` to `true` at the same time.
      */
-    public readonly socEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly socEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
      */
-    public readonly spotInstancePools!: pulumi.Output<number | undefined>;
+    declare public readonly spotInstancePools: pulumi.Output<number | undefined>;
     /**
      * Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If you set the value to true, Auto Scaling attempts to create a new preemptible instance when the system notifies that an existing preemptible instance is about to be reclaimed. Valid values: `true`: enables the supplementation of preemptible instances. `false`: disables the supplementation of preemptible instances.
      */
-    public readonly spotInstanceRemedy!: pulumi.Output<boolean | undefined>;
+    declare public readonly spotInstanceRemedy: pulumi.Output<boolean | undefined>;
     /**
      * The current single preemptible instance type market price range configuration. See `spotPriceLimit` below.
      */
-    public readonly spotPriceLimits!: pulumi.Output<outputs.cs.NodePoolSpotPriceLimit[] | undefined>;
+    declare public readonly spotPriceLimits: pulumi.Output<outputs.cs.NodePoolSpotPriceLimit[] | undefined>;
     /**
      * The preemptible instance type. Value:
      * - `NoSpot` : Non-preemptible instance.
      * - `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.
      * - `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
      */
-    public readonly spotStrategy!: pulumi.Output<string>;
+    declare public readonly spotStrategy: pulumi.Output<string>;
     /**
      * Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
      */
-    public readonly systemDiskBurstingEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly systemDiskBurstingEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `systemDiskCategory`.
      */
-    public readonly systemDiskCategories!: pulumi.Output<string[]>;
+    declare public readonly systemDiskCategories: pulumi.Output<string[]>;
     /**
      * The category of the system disk for nodes. Default value: `cloudEfficiency`. Valid values:
      */
-    public readonly systemDiskCategory!: pulumi.Output<string>;
+    declare public readonly systemDiskCategory: pulumi.Output<string>;
     /**
      * The encryption algorithm used by the system disk. Value range: aes-256.
      */
-    public readonly systemDiskEncryptAlgorithm!: pulumi.Output<string | undefined>;
+    declare public readonly systemDiskEncryptAlgorithm: pulumi.Output<string | undefined>;
     /**
      * Whether to encrypt the system disk. Value range: `true`: encryption. `false`: Do not encrypt.
      */
-    public readonly systemDiskEncrypted!: pulumi.Output<boolean | undefined>;
+    declare public readonly systemDiskEncrypted: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the KMS key used by the system disk.
      */
-    public readonly systemDiskKmsKey!: pulumi.Output<string | undefined>;
+    declare public readonly systemDiskKmsKey: pulumi.Output<string | undefined>;
     /**
      * The system disk performance of the node takes effect only for the ESSD disk.
      * - `PL0`: maximum random read/write IOPS 10000 for a single disk.
@@ -346,11 +346,11 @@ export class NodePool extends pulumi.CustomResource {
      * - `PL2`: highest random read/write IOPS 100000 for a single disk.
      * - `PL3`: maximum random read/write IOPS 1 million for a single disk.
      */
-    public readonly systemDiskPerformanceLevel!: pulumi.Output<string | undefined>;
+    declare public readonly systemDiskPerformanceLevel: pulumi.Output<string | undefined>;
     /**
      * The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
      */
-    public readonly systemDiskProvisionedIops!: pulumi.Output<number | undefined>;
+    declare public readonly systemDiskProvisionedIops: pulumi.Output<number | undefined>;
     /**
      * The size of the system disk. Unit: GiB. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.
      * - Basic disk: 20 to 500.
@@ -358,45 +358,45 @@ export class NodePool extends pulumi.CustomResource {
      * - ESSD AutoPL disk (cloud_auto): 1 to 2048.
      * - Other disk categories: 20 to 2048.
      */
-    public readonly systemDiskSize!: pulumi.Output<number | undefined>;
+    declare public readonly systemDiskSize: pulumi.Output<number | undefined>;
     /**
      * The ID of the automatic snapshot policy used by the system disk.
      */
-    public readonly systemDiskSnapshotPolicyId!: pulumi.Output<string | undefined>;
+    declare public readonly systemDiskSnapshotPolicyId: pulumi.Output<string | undefined>;
     /**
      * Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
      */
-    public readonly taints!: pulumi.Output<outputs.cs.NodePoolTaint[] | undefined>;
+    declare public readonly taints: pulumi.Output<outputs.cs.NodePoolTaint[] | undefined>;
     /**
      * The configuration about confidential computing for the cluster. See `teeConfig` below.
      */
-    public readonly teeConfig!: pulumi.Output<outputs.cs.NodePoolTeeConfig>;
+    declare public readonly teeConfig: pulumi.Output<outputs.cs.NodePoolTeeConfig>;
     /**
      * Node pool type, value range:
      * -'ess': common node pool (including hosting function and auto scaling function).
      * -'lingjun': Lingjun node pool.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * Whether the node after expansion can be scheduled.
      */
-    public readonly unschedulable!: pulumi.Output<boolean | undefined>;
+    declare public readonly unschedulable: pulumi.Output<boolean | undefined>;
     /**
      * Synchronously update node labels and taints.
      */
-    public readonly updateNodes!: pulumi.Output<boolean | undefined>;
+    declare public readonly updateNodes: pulumi.Output<boolean | undefined>;
     /**
      * Node custom data, base64-encoded.
      */
-    public readonly userData!: pulumi.Output<string | undefined>;
+    declare public readonly userData: pulumi.Output<string | undefined>;
     /**
      * The vswitches used by node pool workers.
      */
-    public readonly vswitchIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly vswitchIds: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a NodePool resource with the given unique name, arguments, and options.
@@ -411,163 +411,163 @@ export class NodePool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodePoolState | undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
-            resourceInputs["cisEnabled"] = state ? state.cisEnabled : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["compensateWithOnDemand"] = state ? state.compensateWithOnDemand : undefined;
-            resourceInputs["cpuPolicy"] = state ? state.cpuPolicy : undefined;
-            resourceInputs["dataDisks"] = state ? state.dataDisks : undefined;
-            resourceInputs["deploymentSetId"] = state ? state.deploymentSetId : undefined;
-            resourceInputs["desiredSize"] = state ? state.desiredSize : undefined;
-            resourceInputs["efloNodeGroup"] = state ? state.efloNodeGroup : undefined;
-            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
-            resourceInputs["formatDisk"] = state ? state.formatDisk : undefined;
-            resourceInputs["imageId"] = state ? state.imageId : undefined;
-            resourceInputs["imageType"] = state ? state.imageType : undefined;
-            resourceInputs["installCloudMonitor"] = state ? state.installCloudMonitor : undefined;
-            resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
-            resourceInputs["instanceTypes"] = state ? state.instanceTypes : undefined;
-            resourceInputs["instances"] = state ? state.instances : undefined;
-            resourceInputs["internetChargeType"] = state ? state.internetChargeType : undefined;
-            resourceInputs["internetMaxBandwidthOut"] = state ? state.internetMaxBandwidthOut : undefined;
-            resourceInputs["keepInstanceName"] = state ? state.keepInstanceName : undefined;
-            resourceInputs["keyName"] = state ? state.keyName : undefined;
-            resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
-            resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
-            resourceInputs["kubeletConfiguration"] = state ? state.kubeletConfiguration : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["loginAsNonRoot"] = state ? state.loginAsNonRoot : undefined;
-            resourceInputs["management"] = state ? state.management : undefined;
-            resourceInputs["multiAzPolicy"] = state ? state.multiAzPolicy : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nodeCount"] = state ? state.nodeCount : undefined;
-            resourceInputs["nodeNameMode"] = state ? state.nodeNameMode : undefined;
-            resourceInputs["nodePoolId"] = state ? state.nodePoolId : undefined;
-            resourceInputs["nodePoolName"] = state ? state.nodePoolName : undefined;
-            resourceInputs["onDemandBaseCapacity"] = state ? state.onDemandBaseCapacity : undefined;
-            resourceInputs["onDemandPercentageAboveBaseCapacity"] = state ? state.onDemandPercentageAboveBaseCapacity : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
-            resourceInputs["platform"] = state ? state.platform : undefined;
-            resourceInputs["preUserData"] = state ? state.preUserData : undefined;
-            resourceInputs["privatePoolOptions"] = state ? state.privatePoolOptions : undefined;
-            resourceInputs["ramRoleName"] = state ? state.ramRoleName : undefined;
-            resourceInputs["rdsInstances"] = state ? state.rdsInstances : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["rollingPolicy"] = state ? state.rollingPolicy : undefined;
-            resourceInputs["runtimeName"] = state ? state.runtimeName : undefined;
-            resourceInputs["runtimeVersion"] = state ? state.runtimeVersion : undefined;
-            resourceInputs["scalingConfig"] = state ? state.scalingConfig : undefined;
-            resourceInputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
-            resourceInputs["scalingPolicy"] = state ? state.scalingPolicy : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            resourceInputs["securityHardeningOs"] = state ? state.securityHardeningOs : undefined;
-            resourceInputs["socEnabled"] = state ? state.socEnabled : undefined;
-            resourceInputs["spotInstancePools"] = state ? state.spotInstancePools : undefined;
-            resourceInputs["spotInstanceRemedy"] = state ? state.spotInstanceRemedy : undefined;
-            resourceInputs["spotPriceLimits"] = state ? state.spotPriceLimits : undefined;
-            resourceInputs["spotStrategy"] = state ? state.spotStrategy : undefined;
-            resourceInputs["systemDiskBurstingEnabled"] = state ? state.systemDiskBurstingEnabled : undefined;
-            resourceInputs["systemDiskCategories"] = state ? state.systemDiskCategories : undefined;
-            resourceInputs["systemDiskCategory"] = state ? state.systemDiskCategory : undefined;
-            resourceInputs["systemDiskEncryptAlgorithm"] = state ? state.systemDiskEncryptAlgorithm : undefined;
-            resourceInputs["systemDiskEncrypted"] = state ? state.systemDiskEncrypted : undefined;
-            resourceInputs["systemDiskKmsKey"] = state ? state.systemDiskKmsKey : undefined;
-            resourceInputs["systemDiskPerformanceLevel"] = state ? state.systemDiskPerformanceLevel : undefined;
-            resourceInputs["systemDiskProvisionedIops"] = state ? state.systemDiskProvisionedIops : undefined;
-            resourceInputs["systemDiskSize"] = state ? state.systemDiskSize : undefined;
-            resourceInputs["systemDiskSnapshotPolicyId"] = state ? state.systemDiskSnapshotPolicyId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["taints"] = state ? state.taints : undefined;
-            resourceInputs["teeConfig"] = state ? state.teeConfig : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["unschedulable"] = state ? state.unschedulable : undefined;
-            resourceInputs["updateNodes"] = state ? state.updateNodes : undefined;
-            resourceInputs["userData"] = state ? state.userData : undefined;
-            resourceInputs["vswitchIds"] = state ? state.vswitchIds : undefined;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["autoRenewPeriod"] = state?.autoRenewPeriod;
+            resourceInputs["cisEnabled"] = state?.cisEnabled;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["compensateWithOnDemand"] = state?.compensateWithOnDemand;
+            resourceInputs["cpuPolicy"] = state?.cpuPolicy;
+            resourceInputs["dataDisks"] = state?.dataDisks;
+            resourceInputs["deploymentSetId"] = state?.deploymentSetId;
+            resourceInputs["desiredSize"] = state?.desiredSize;
+            resourceInputs["efloNodeGroup"] = state?.efloNodeGroup;
+            resourceInputs["forceDelete"] = state?.forceDelete;
+            resourceInputs["formatDisk"] = state?.formatDisk;
+            resourceInputs["imageId"] = state?.imageId;
+            resourceInputs["imageType"] = state?.imageType;
+            resourceInputs["installCloudMonitor"] = state?.installCloudMonitor;
+            resourceInputs["instanceChargeType"] = state?.instanceChargeType;
+            resourceInputs["instanceTypes"] = state?.instanceTypes;
+            resourceInputs["instances"] = state?.instances;
+            resourceInputs["internetChargeType"] = state?.internetChargeType;
+            resourceInputs["internetMaxBandwidthOut"] = state?.internetMaxBandwidthOut;
+            resourceInputs["keepInstanceName"] = state?.keepInstanceName;
+            resourceInputs["keyName"] = state?.keyName;
+            resourceInputs["kmsEncryptedPassword"] = state?.kmsEncryptedPassword;
+            resourceInputs["kmsEncryptionContext"] = state?.kmsEncryptionContext;
+            resourceInputs["kubeletConfiguration"] = state?.kubeletConfiguration;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["loginAsNonRoot"] = state?.loginAsNonRoot;
+            resourceInputs["management"] = state?.management;
+            resourceInputs["multiAzPolicy"] = state?.multiAzPolicy;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nodeCount"] = state?.nodeCount;
+            resourceInputs["nodeNameMode"] = state?.nodeNameMode;
+            resourceInputs["nodePoolId"] = state?.nodePoolId;
+            resourceInputs["nodePoolName"] = state?.nodePoolName;
+            resourceInputs["onDemandBaseCapacity"] = state?.onDemandBaseCapacity;
+            resourceInputs["onDemandPercentageAboveBaseCapacity"] = state?.onDemandPercentageAboveBaseCapacity;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["periodUnit"] = state?.periodUnit;
+            resourceInputs["platform"] = state?.platform;
+            resourceInputs["preUserData"] = state?.preUserData;
+            resourceInputs["privatePoolOptions"] = state?.privatePoolOptions;
+            resourceInputs["ramRoleName"] = state?.ramRoleName;
+            resourceInputs["rdsInstances"] = state?.rdsInstances;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["rollingPolicy"] = state?.rollingPolicy;
+            resourceInputs["runtimeName"] = state?.runtimeName;
+            resourceInputs["runtimeVersion"] = state?.runtimeVersion;
+            resourceInputs["scalingConfig"] = state?.scalingConfig;
+            resourceInputs["scalingGroupId"] = state?.scalingGroupId;
+            resourceInputs["scalingPolicy"] = state?.scalingPolicy;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["securityGroupIds"] = state?.securityGroupIds;
+            resourceInputs["securityHardeningOs"] = state?.securityHardeningOs;
+            resourceInputs["socEnabled"] = state?.socEnabled;
+            resourceInputs["spotInstancePools"] = state?.spotInstancePools;
+            resourceInputs["spotInstanceRemedy"] = state?.spotInstanceRemedy;
+            resourceInputs["spotPriceLimits"] = state?.spotPriceLimits;
+            resourceInputs["spotStrategy"] = state?.spotStrategy;
+            resourceInputs["systemDiskBurstingEnabled"] = state?.systemDiskBurstingEnabled;
+            resourceInputs["systemDiskCategories"] = state?.systemDiskCategories;
+            resourceInputs["systemDiskCategory"] = state?.systemDiskCategory;
+            resourceInputs["systemDiskEncryptAlgorithm"] = state?.systemDiskEncryptAlgorithm;
+            resourceInputs["systemDiskEncrypted"] = state?.systemDiskEncrypted;
+            resourceInputs["systemDiskKmsKey"] = state?.systemDiskKmsKey;
+            resourceInputs["systemDiskPerformanceLevel"] = state?.systemDiskPerformanceLevel;
+            resourceInputs["systemDiskProvisionedIops"] = state?.systemDiskProvisionedIops;
+            resourceInputs["systemDiskSize"] = state?.systemDiskSize;
+            resourceInputs["systemDiskSnapshotPolicyId"] = state?.systemDiskSnapshotPolicyId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["taints"] = state?.taints;
+            resourceInputs["teeConfig"] = state?.teeConfig;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["unschedulable"] = state?.unschedulable;
+            resourceInputs["updateNodes"] = state?.updateNodes;
+            resourceInputs["userData"] = state?.userData;
+            resourceInputs["vswitchIds"] = state?.vswitchIds;
         } else {
             const args = argsOrState as NodePoolArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
-            resourceInputs["cisEnabled"] = args ? args.cisEnabled : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["compensateWithOnDemand"] = args ? args.compensateWithOnDemand : undefined;
-            resourceInputs["cpuPolicy"] = args ? args.cpuPolicy : undefined;
-            resourceInputs["dataDisks"] = args ? args.dataDisks : undefined;
-            resourceInputs["deploymentSetId"] = args ? args.deploymentSetId : undefined;
-            resourceInputs["desiredSize"] = args ? args.desiredSize : undefined;
-            resourceInputs["efloNodeGroup"] = args ? args.efloNodeGroup : undefined;
-            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
-            resourceInputs["formatDisk"] = args ? args.formatDisk : undefined;
-            resourceInputs["imageId"] = args ? args.imageId : undefined;
-            resourceInputs["imageType"] = args ? args.imageType : undefined;
-            resourceInputs["installCloudMonitor"] = args ? args.installCloudMonitor : undefined;
-            resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
-            resourceInputs["instanceTypes"] = args ? args.instanceTypes : undefined;
-            resourceInputs["instances"] = args ? args.instances : undefined;
-            resourceInputs["internetChargeType"] = args ? args.internetChargeType : undefined;
-            resourceInputs["internetMaxBandwidthOut"] = args ? args.internetMaxBandwidthOut : undefined;
-            resourceInputs["keepInstanceName"] = args ? args.keepInstanceName : undefined;
-            resourceInputs["keyName"] = args ? args.keyName : undefined;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["autoRenewPeriod"] = args?.autoRenewPeriod;
+            resourceInputs["cisEnabled"] = args?.cisEnabled;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["compensateWithOnDemand"] = args?.compensateWithOnDemand;
+            resourceInputs["cpuPolicy"] = args?.cpuPolicy;
+            resourceInputs["dataDisks"] = args?.dataDisks;
+            resourceInputs["deploymentSetId"] = args?.deploymentSetId;
+            resourceInputs["desiredSize"] = args?.desiredSize;
+            resourceInputs["efloNodeGroup"] = args?.efloNodeGroup;
+            resourceInputs["forceDelete"] = args?.forceDelete;
+            resourceInputs["formatDisk"] = args?.formatDisk;
+            resourceInputs["imageId"] = args?.imageId;
+            resourceInputs["imageType"] = args?.imageType;
+            resourceInputs["installCloudMonitor"] = args?.installCloudMonitor;
+            resourceInputs["instanceChargeType"] = args?.instanceChargeType;
+            resourceInputs["instanceTypes"] = args?.instanceTypes;
+            resourceInputs["instances"] = args?.instances;
+            resourceInputs["internetChargeType"] = args?.internetChargeType;
+            resourceInputs["internetMaxBandwidthOut"] = args?.internetMaxBandwidthOut;
+            resourceInputs["keepInstanceName"] = args?.keepInstanceName;
+            resourceInputs["keyName"] = args?.keyName;
             resourceInputs["kmsEncryptedPassword"] = args?.kmsEncryptedPassword ? pulumi.secret(args.kmsEncryptedPassword) : undefined;
-            resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
-            resourceInputs["kubeletConfiguration"] = args ? args.kubeletConfiguration : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["loginAsNonRoot"] = args ? args.loginAsNonRoot : undefined;
-            resourceInputs["management"] = args ? args.management : undefined;
-            resourceInputs["multiAzPolicy"] = args ? args.multiAzPolicy : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nodeCount"] = args ? args.nodeCount : undefined;
-            resourceInputs["nodeNameMode"] = args ? args.nodeNameMode : undefined;
-            resourceInputs["nodePoolName"] = args ? args.nodePoolName : undefined;
-            resourceInputs["onDemandBaseCapacity"] = args ? args.onDemandBaseCapacity : undefined;
-            resourceInputs["onDemandPercentageAboveBaseCapacity"] = args ? args.onDemandPercentageAboveBaseCapacity : undefined;
+            resourceInputs["kmsEncryptionContext"] = args?.kmsEncryptionContext;
+            resourceInputs["kubeletConfiguration"] = args?.kubeletConfiguration;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["loginAsNonRoot"] = args?.loginAsNonRoot;
+            resourceInputs["management"] = args?.management;
+            resourceInputs["multiAzPolicy"] = args?.multiAzPolicy;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nodeCount"] = args?.nodeCount;
+            resourceInputs["nodeNameMode"] = args?.nodeNameMode;
+            resourceInputs["nodePoolName"] = args?.nodePoolName;
+            resourceInputs["onDemandBaseCapacity"] = args?.onDemandBaseCapacity;
+            resourceInputs["onDemandPercentageAboveBaseCapacity"] = args?.onDemandPercentageAboveBaseCapacity;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
-            resourceInputs["platform"] = args ? args.platform : undefined;
-            resourceInputs["preUserData"] = args ? args.preUserData : undefined;
-            resourceInputs["privatePoolOptions"] = args ? args.privatePoolOptions : undefined;
-            resourceInputs["ramRoleName"] = args ? args.ramRoleName : undefined;
-            resourceInputs["rdsInstances"] = args ? args.rdsInstances : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["rollingPolicy"] = args ? args.rollingPolicy : undefined;
-            resourceInputs["runtimeName"] = args ? args.runtimeName : undefined;
-            resourceInputs["runtimeVersion"] = args ? args.runtimeVersion : undefined;
-            resourceInputs["scalingConfig"] = args ? args.scalingConfig : undefined;
-            resourceInputs["scalingPolicy"] = args ? args.scalingPolicy : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            resourceInputs["securityHardeningOs"] = args ? args.securityHardeningOs : undefined;
-            resourceInputs["socEnabled"] = args ? args.socEnabled : undefined;
-            resourceInputs["spotInstancePools"] = args ? args.spotInstancePools : undefined;
-            resourceInputs["spotInstanceRemedy"] = args ? args.spotInstanceRemedy : undefined;
-            resourceInputs["spotPriceLimits"] = args ? args.spotPriceLimits : undefined;
-            resourceInputs["spotStrategy"] = args ? args.spotStrategy : undefined;
-            resourceInputs["systemDiskBurstingEnabled"] = args ? args.systemDiskBurstingEnabled : undefined;
-            resourceInputs["systemDiskCategories"] = args ? args.systemDiskCategories : undefined;
-            resourceInputs["systemDiskCategory"] = args ? args.systemDiskCategory : undefined;
-            resourceInputs["systemDiskEncryptAlgorithm"] = args ? args.systemDiskEncryptAlgorithm : undefined;
-            resourceInputs["systemDiskEncrypted"] = args ? args.systemDiskEncrypted : undefined;
-            resourceInputs["systemDiskKmsKey"] = args ? args.systemDiskKmsKey : undefined;
-            resourceInputs["systemDiskPerformanceLevel"] = args ? args.systemDiskPerformanceLevel : undefined;
-            resourceInputs["systemDiskProvisionedIops"] = args ? args.systemDiskProvisionedIops : undefined;
-            resourceInputs["systemDiskSize"] = args ? args.systemDiskSize : undefined;
-            resourceInputs["systemDiskSnapshotPolicyId"] = args ? args.systemDiskSnapshotPolicyId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["taints"] = args ? args.taints : undefined;
-            resourceInputs["teeConfig"] = args ? args.teeConfig : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["unschedulable"] = args ? args.unschedulable : undefined;
-            resourceInputs["updateNodes"] = args ? args.updateNodes : undefined;
-            resourceInputs["userData"] = args ? args.userData : undefined;
-            resourceInputs["vswitchIds"] = args ? args.vswitchIds : undefined;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["periodUnit"] = args?.periodUnit;
+            resourceInputs["platform"] = args?.platform;
+            resourceInputs["preUserData"] = args?.preUserData;
+            resourceInputs["privatePoolOptions"] = args?.privatePoolOptions;
+            resourceInputs["ramRoleName"] = args?.ramRoleName;
+            resourceInputs["rdsInstances"] = args?.rdsInstances;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["rollingPolicy"] = args?.rollingPolicy;
+            resourceInputs["runtimeName"] = args?.runtimeName;
+            resourceInputs["runtimeVersion"] = args?.runtimeVersion;
+            resourceInputs["scalingConfig"] = args?.scalingConfig;
+            resourceInputs["scalingPolicy"] = args?.scalingPolicy;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["securityGroupIds"] = args?.securityGroupIds;
+            resourceInputs["securityHardeningOs"] = args?.securityHardeningOs;
+            resourceInputs["socEnabled"] = args?.socEnabled;
+            resourceInputs["spotInstancePools"] = args?.spotInstancePools;
+            resourceInputs["spotInstanceRemedy"] = args?.spotInstanceRemedy;
+            resourceInputs["spotPriceLimits"] = args?.spotPriceLimits;
+            resourceInputs["spotStrategy"] = args?.spotStrategy;
+            resourceInputs["systemDiskBurstingEnabled"] = args?.systemDiskBurstingEnabled;
+            resourceInputs["systemDiskCategories"] = args?.systemDiskCategories;
+            resourceInputs["systemDiskCategory"] = args?.systemDiskCategory;
+            resourceInputs["systemDiskEncryptAlgorithm"] = args?.systemDiskEncryptAlgorithm;
+            resourceInputs["systemDiskEncrypted"] = args?.systemDiskEncrypted;
+            resourceInputs["systemDiskKmsKey"] = args?.systemDiskKmsKey;
+            resourceInputs["systemDiskPerformanceLevel"] = args?.systemDiskPerformanceLevel;
+            resourceInputs["systemDiskProvisionedIops"] = args?.systemDiskProvisionedIops;
+            resourceInputs["systemDiskSize"] = args?.systemDiskSize;
+            resourceInputs["systemDiskSnapshotPolicyId"] = args?.systemDiskSnapshotPolicyId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["taints"] = args?.taints;
+            resourceInputs["teeConfig"] = args?.teeConfig;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["unschedulable"] = args?.unschedulable;
+            resourceInputs["updateNodes"] = args?.updateNodes;
+            resourceInputs["userData"] = args?.userData;
+            resourceInputs["vswitchIds"] = args?.vswitchIds;
             resourceInputs["nodePoolId"] = undefined /*out*/;
             resourceInputs["scalingGroupId"] = undefined /*out*/;
         }

@@ -81,45 +81,45 @@ export class Node extends pulumi.CustomResource {
     /**
      * Billing cycle
      */
-    public readonly billingCycle!: pulumi.Output<string | undefined>;
+    declare public readonly billingCycle: pulumi.Output<string | undefined>;
     /**
      * Classification
      */
-    public readonly classify!: pulumi.Output<string | undefined>;
+    declare public readonly classify: pulumi.Output<string | undefined>;
     /**
      * Node Model
      */
-    public readonly computingServer!: pulumi.Output<string | undefined>;
+    declare public readonly computingServer: pulumi.Output<string | undefined>;
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Offer Information
      */
-    public readonly discountLevel!: pulumi.Output<string | undefined>;
+    declare public readonly discountLevel: pulumi.Output<string | undefined>;
     /**
      * Cluster Number
      */
-    public readonly hpnZone!: pulumi.Output<string | undefined>;
+    declare public readonly hpnZone: pulumi.Output<string | undefined>;
     /**
      * Down payment ratio
      */
-    public readonly paymentRatio!: pulumi.Output<string | undefined>;
+    declare public readonly paymentRatio: pulumi.Output<string | undefined>;
     /**
      * Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * Form
      */
-    public readonly productForm!: pulumi.Output<string | undefined>;
+    declare public readonly productForm: pulumi.Output<string | undefined>;
     /**
      * Automatic renewal period, in months.
      *
      * > **NOTE:**  When setting `RenewalStatus` to `AutoRenewal`, it must be set.
      */
-    public readonly renewPeriod!: pulumi.Output<number | undefined>;
+    declare public readonly renewPeriod: pulumi.Output<number | undefined>;
     /**
      * Automatic renewal status, value:
      * - AutoRenewal: automatic renewal.
@@ -127,31 +127,31 @@ export class Node extends pulumi.CustomResource {
      *
      * The default ManualRenewal.
      */
-    public readonly renewalStatus!: pulumi.Output<string | undefined>;
+    declare public readonly renewalStatus: pulumi.Output<string | undefined>;
     /**
      * The ID of the resource group
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Architecture
      */
-    public readonly serverArch!: pulumi.Output<string | undefined>;
+    declare public readonly serverArch: pulumi.Output<string | undefined>;
     /**
      * Number of stages
      */
-    public readonly stageNum!: pulumi.Output<string | undefined>;
+    declare public readonly stageNum: pulumi.Output<string | undefined>;
     /**
      * The status of the resource
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The tag of the resource
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Availability Zone
      */
-    public readonly zone!: pulumi.Output<string | undefined>;
+    declare public readonly zone: pulumi.Output<string | undefined>;
 
     /**
      * Create a Node resource with the given unique name, arguments, and options.
@@ -166,41 +166,41 @@ export class Node extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodeState | undefined;
-            resourceInputs["billingCycle"] = state ? state.billingCycle : undefined;
-            resourceInputs["classify"] = state ? state.classify : undefined;
-            resourceInputs["computingServer"] = state ? state.computingServer : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["discountLevel"] = state ? state.discountLevel : undefined;
-            resourceInputs["hpnZone"] = state ? state.hpnZone : undefined;
-            resourceInputs["paymentRatio"] = state ? state.paymentRatio : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["productForm"] = state ? state.productForm : undefined;
-            resourceInputs["renewPeriod"] = state ? state.renewPeriod : undefined;
-            resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["serverArch"] = state ? state.serverArch : undefined;
-            resourceInputs["stageNum"] = state ? state.stageNum : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["billingCycle"] = state?.billingCycle;
+            resourceInputs["classify"] = state?.classify;
+            resourceInputs["computingServer"] = state?.computingServer;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["discountLevel"] = state?.discountLevel;
+            resourceInputs["hpnZone"] = state?.hpnZone;
+            resourceInputs["paymentRatio"] = state?.paymentRatio;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["productForm"] = state?.productForm;
+            resourceInputs["renewPeriod"] = state?.renewPeriod;
+            resourceInputs["renewalStatus"] = state?.renewalStatus;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["serverArch"] = state?.serverArch;
+            resourceInputs["stageNum"] = state?.stageNum;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as NodeArgs | undefined;
-            resourceInputs["billingCycle"] = args ? args.billingCycle : undefined;
-            resourceInputs["classify"] = args ? args.classify : undefined;
-            resourceInputs["computingServer"] = args ? args.computingServer : undefined;
-            resourceInputs["discountLevel"] = args ? args.discountLevel : undefined;
-            resourceInputs["hpnZone"] = args ? args.hpnZone : undefined;
-            resourceInputs["paymentRatio"] = args ? args.paymentRatio : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["productForm"] = args ? args.productForm : undefined;
-            resourceInputs["renewPeriod"] = args ? args.renewPeriod : undefined;
-            resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["serverArch"] = args ? args.serverArch : undefined;
-            resourceInputs["stageNum"] = args ? args.stageNum : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["billingCycle"] = args?.billingCycle;
+            resourceInputs["classify"] = args?.classify;
+            resourceInputs["computingServer"] = args?.computingServer;
+            resourceInputs["discountLevel"] = args?.discountLevel;
+            resourceInputs["hpnZone"] = args?.hpnZone;
+            resourceInputs["paymentRatio"] = args?.paymentRatio;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["productForm"] = args?.productForm;
+            resourceInputs["renewPeriod"] = args?.renewPeriod;
+            resourceInputs["renewalStatus"] = args?.renewalStatus;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["serverArch"] = args?.serverArch;
+            resourceInputs["stageNum"] = args?.stageNum;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["zone"] = args?.zone;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

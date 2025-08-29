@@ -65,24 +65,24 @@ export class SamlProvider extends pulumi.CustomResource {
     /**
      * The identity provider's ARN.
      */
-    public /*out*/ readonly arn!: pulumi.Output<string>;
+    declare public /*out*/ readonly arn: pulumi.Output<string>;
     /**
      * The description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The metadata file which is Base64-encoded.
      * The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
      */
-    public readonly encodedsamlMetadataDocument!: pulumi.Output<string>;
+    declare public readonly encodedsamlMetadataDocument: pulumi.Output<string>;
     /**
      * The name of the IdP.  The name can be up to 128 characters in length. The name can contain letters, digits, periods (.), hyphens (-), and underscores (_). The name cannot start or end with periods (.), hyphens (-), or underscores (_).
      */
-    public readonly samlProviderName!: pulumi.Output<string>;
+    declare public readonly samlProviderName: pulumi.Output<string>;
     /**
      * Update time.
      */
-    public /*out*/ readonly updateDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateDate: pulumi.Output<string>;
 
     /**
      * Create a SamlProvider resource with the given unique name, arguments, and options.
@@ -97,22 +97,22 @@ export class SamlProvider extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SamlProviderState | undefined;
-            resourceInputs["arn"] = state ? state.arn : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["encodedsamlMetadataDocument"] = state ? state.encodedsamlMetadataDocument : undefined;
-            resourceInputs["samlProviderName"] = state ? state.samlProviderName : undefined;
-            resourceInputs["updateDate"] = state ? state.updateDate : undefined;
+            resourceInputs["arn"] = state?.arn;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["encodedsamlMetadataDocument"] = state?.encodedsamlMetadataDocument;
+            resourceInputs["samlProviderName"] = state?.samlProviderName;
+            resourceInputs["updateDate"] = state?.updateDate;
         } else {
             const args = argsOrState as SamlProviderArgs | undefined;
-            if ((!args || args.encodedsamlMetadataDocument === undefined) && !opts.urn) {
+            if (args?.encodedsamlMetadataDocument === undefined && !opts.urn) {
                 throw new Error("Missing required property 'encodedsamlMetadataDocument'");
             }
-            if ((!args || args.samlProviderName === undefined) && !opts.urn) {
+            if (args?.samlProviderName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'samlProviderName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["encodedsamlMetadataDocument"] = args ? args.encodedsamlMetadataDocument : undefined;
-            resourceInputs["samlProviderName"] = args ? args.samlProviderName : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["encodedsamlMetadataDocument"] = args?.encodedsamlMetadataDocument;
+            resourceInputs["samlProviderName"] = args?.samlProviderName;
             resourceInputs["arn"] = undefined /*out*/;
             resourceInputs["updateDate"] = undefined /*out*/;
         }

@@ -73,39 +73,39 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
      */
-    public readonly instanceName!: pulumi.Output<string>;
+    declare public readonly instanceName: pulumi.Output<string>;
     /**
      * The status of instance. 1 represents the platinum edition instance is in deployment. 2 represents the postpaid edition instance are overdue. 5 represents the postpaid or platinum edition instance is in service. 7 represents the platinum version instance is in upgrade and the service is available.
      */
-    public /*out*/ readonly instanceStatus!: pulumi.Output<number>;
+    declare public /*out*/ readonly instanceStatus: pulumi.Output<number>;
     /**
      * The edition of instance. 1 represents the postPaid edition, and 2 represents the platinum edition.
      */
-    public /*out*/ readonly instanceType!: pulumi.Output<number>;
+    declare public /*out*/ readonly instanceType: pulumi.Output<number>;
     /**
      * Replaced by `instanceName` after version 1.97.0.
      *
      * @deprecated Field 'name' has been deprecated from version 1.97.0. Use 'instance_name' instead.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Platinum edition instance expiration time.
      */
-    public /*out*/ readonly releaseTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly releaseTime: pulumi.Output<string>;
     /**
      * This attribute is a concise description of instance. The length cannot exceed 128.
      */
-    public readonly remark!: pulumi.Output<string | undefined>;
+    declare public readonly remark: pulumi.Output<string | undefined>;
     /**
      * The status of instance. 1 represents the platinum edition instance is in deployment. 2 represents the postpaid edition instance are overdue. 5 represents the postpaid or platinum edition instance is in service. 7 represents the platinum version instance is in upgrade and the service is available.
      */
-    public /*out*/ readonly status!: pulumi.Output<number>;
+    declare public /*out*/ readonly status: pulumi.Output<number>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -120,20 +120,20 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
-            resourceInputs["instanceStatus"] = state ? state.instanceStatus : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["releaseTime"] = state ? state.releaseTime : undefined;
-            resourceInputs["remark"] = state ? state.remark : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["instanceName"] = state?.instanceName;
+            resourceInputs["instanceStatus"] = state?.instanceStatus;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["releaseTime"] = state?.releaseTime;
+            resourceInputs["remark"] = state?.remark;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["remark"] = args ? args.remark : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["instanceName"] = args?.instanceName;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["remark"] = args?.remark;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["instanceStatus"] = undefined /*out*/;
             resourceInputs["instanceType"] = undefined /*out*/;
             resourceInputs["releaseTime"] = undefined /*out*/;

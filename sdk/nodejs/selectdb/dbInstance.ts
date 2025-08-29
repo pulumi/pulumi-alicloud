@@ -84,143 +84,143 @@ export class DbInstance extends pulumi.CustomResource {
     /**
      * The password for DBInstance using admin account.
      */
-    public readonly adminPass!: pulumi.Output<string | undefined>;
+    declare public readonly adminPass: pulumi.Output<string | undefined>;
     /**
      * The cache size in DBInstance on creating default cluster. The number should be divided by 100.
      */
-    public readonly cacheSize!: pulumi.Output<number>;
+    declare public readonly cacheSize: pulumi.Output<number>;
     /**
      * The sum of cache size for every `PayAsYouGo` clusters in DBInstance.
      */
-    public /*out*/ readonly cacheSizePostpaid!: pulumi.Output<number>;
+    declare public /*out*/ readonly cacheSizePostpaid: pulumi.Output<number>;
     /**
      * The sum of cache size for every `Subscription` clusters in DBInstance.
      */
-    public /*out*/ readonly cacheSizePrepaid!: pulumi.Output<number>;
+    declare public /*out*/ readonly cacheSizePrepaid: pulumi.Output<number>;
     /**
      * The sum of cluster counts for `PayAsYouGo` clusters in DBInstance.
      */
-    public /*out*/ readonly clusterCountPostpaid!: pulumi.Output<number>;
+    declare public /*out*/ readonly clusterCountPostpaid: pulumi.Output<number>;
     /**
      * The sum of cluster counts for `Subscription` clusters in DBInstance.
      */
-    public /*out*/ readonly clusterCountPrepaid!: pulumi.Output<number>;
+    declare public /*out*/ readonly clusterCountPrepaid: pulumi.Output<number>;
     /**
      * The sum of cpu resource amount for every `PayAsYouGo` clusters in DBInstance.
      */
-    public /*out*/ readonly cpuPostpaid!: pulumi.Output<number>;
+    declare public /*out*/ readonly cpuPostpaid: pulumi.Output<number>;
     /**
      * The sum of cpu resource amount for every `Subscription` clusters in DBInstance.
      */
-    public /*out*/ readonly cpuPrepaid!: pulumi.Output<number>;
+    declare public /*out*/ readonly cpuPrepaid: pulumi.Output<number>;
     /**
      * The class for default cluster in DBInstance. dbClusterClass has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
      */
-    public readonly dbInstanceClass!: pulumi.Output<string>;
+    declare public readonly dbInstanceClass: pulumi.Output<string>;
     /**
      * The DBInstance description.
      */
-    public readonly dbInstanceDescription!: pulumi.Output<string>;
+    declare public readonly dbInstanceDescription: pulumi.Output<string>;
     /**
      * The modified IP address whitelists. See `desiredSecurityIpLists` below.
      */
-    public readonly desiredSecurityIpLists!: pulumi.Output<outputs.selectdb.DbInstanceDesiredSecurityIpList[] | undefined>;
+    declare public readonly desiredSecurityIpLists: pulumi.Output<outputs.selectdb.DbInstanceDesiredSecurityIpList[] | undefined>;
     /**
      * If DBInstance need to open public network, set it to `true`.
      */
-    public readonly enablePublicNetwork!: pulumi.Output<boolean | undefined>;
+    declare public readonly enablePublicNetwork: pulumi.Output<boolean | undefined>;
     /**
      * The engine of DBInstance. Always `selectdb`.
      */
-    public /*out*/ readonly engine!: pulumi.Output<string>;
+    declare public /*out*/ readonly engine: pulumi.Output<string>;
     /**
      * The DBInstance minor version. Valid values: `3.0.12`,`4.0.4`.
      */
-    public readonly engineMinorVersion!: pulumi.Output<string>;
+    declare public readonly engineMinorVersion: pulumi.Output<string>;
     /**
      * The time when DBInstance is created.
      */
-    public /*out*/ readonly gmtCreated!: pulumi.Output<string>;
+    declare public /*out*/ readonly gmtCreated: pulumi.Output<string>;
     /**
      * The time when DBInstance will be expired. Available on `Subscription` DBInstance.
      */
-    public /*out*/ readonly gmtExpired!: pulumi.Output<string>;
+    declare public /*out*/ readonly gmtExpired: pulumi.Output<string>;
     /**
      * The time when DBInstance is modified.
      */
-    public /*out*/ readonly gmtModified!: pulumi.Output<string>;
+    declare public /*out*/ readonly gmtModified: pulumi.Output<string>;
     /**
      * The net infos for instances.
      */
-    public /*out*/ readonly instanceNetInfos!: pulumi.Output<outputs.selectdb.DbInstanceInstanceNetInfo[]>;
+    declare public /*out*/ readonly instanceNetInfos: pulumi.Output<outputs.selectdb.DbInstanceInstanceNetInfo[]>;
     /**
      * The lock mode of the instance. Set the value to lock, which specifies that the instance is locked when it automatically expires or has an overdue payment.
      */
-    public /*out*/ readonly lockMode!: pulumi.Output<string>;
+    declare public /*out*/ readonly lockMode: pulumi.Output<string>;
     /**
      * The reason why the instance is locked.
      */
-    public /*out*/ readonly lockReason!: pulumi.Output<string>;
+    declare public /*out*/ readonly lockReason: pulumi.Output<string>;
     /**
      * The sum of memory resource amount offor every `PayAsYouGo` clusters in DBInstance.
      */
-    public /*out*/ readonly memoryPostpaid!: pulumi.Output<number>;
+    declare public /*out*/ readonly memoryPostpaid: pulumi.Output<number>;
     /**
      * The sum of memory resource amount offor every `Subscription` clusters in DBInstance.
      */
-    public /*out*/ readonly memoryPrepaid!: pulumi.Output<number>;
+    declare public /*out*/ readonly memoryPrepaid: pulumi.Output<number>;
     /**
      * The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * It is valid when paymentType is `Subscription`. Valid values are `Year`, `Month`.
      */
-    public readonly period!: pulumi.Output<string | undefined>;
+    declare public readonly period: pulumi.Output<string | undefined>;
     /**
      * The duration that you will buy DBInstance. It is valid when paymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
      */
-    public readonly periodTime!: pulumi.Output<number | undefined>;
+    declare public readonly periodTime: pulumi.Output<number | undefined>;
     /**
      * The region ID of the instance.
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The details about each IP address whitelist returned.
      */
-    public /*out*/ readonly securityIpLists!: pulumi.Output<outputs.selectdb.DbInstanceSecurityIpList[]>;
+    declare public /*out*/ readonly securityIpLists: pulumi.Output<outputs.selectdb.DbInstanceSecurityIpList[]>;
     /**
      * The status of the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The sub domain of DBInstance.
      */
-    public /*out*/ readonly subDomain!: pulumi.Output<string>;
+    declare public /*out*/ readonly subDomain: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
      *
      * @deprecated Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
      */
-    public readonly upgradedEngineMinorVersion!: pulumi.Output<string>;
+    declare public readonly upgradedEngineMinorVersion: pulumi.Output<string>;
     /**
      * The ID of the VPC for DBInstance.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * The ID of vswitch for DBInstance.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
     /**
      * The ID of zone for DBInstance.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a DbInstance resource with the given unique name, arguments, and options.
@@ -235,78 +235,78 @@ export class DbInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DbInstanceState | undefined;
-            resourceInputs["adminPass"] = state ? state.adminPass : undefined;
-            resourceInputs["cacheSize"] = state ? state.cacheSize : undefined;
-            resourceInputs["cacheSizePostpaid"] = state ? state.cacheSizePostpaid : undefined;
-            resourceInputs["cacheSizePrepaid"] = state ? state.cacheSizePrepaid : undefined;
-            resourceInputs["clusterCountPostpaid"] = state ? state.clusterCountPostpaid : undefined;
-            resourceInputs["clusterCountPrepaid"] = state ? state.clusterCountPrepaid : undefined;
-            resourceInputs["cpuPostpaid"] = state ? state.cpuPostpaid : undefined;
-            resourceInputs["cpuPrepaid"] = state ? state.cpuPrepaid : undefined;
-            resourceInputs["dbInstanceClass"] = state ? state.dbInstanceClass : undefined;
-            resourceInputs["dbInstanceDescription"] = state ? state.dbInstanceDescription : undefined;
-            resourceInputs["desiredSecurityIpLists"] = state ? state.desiredSecurityIpLists : undefined;
-            resourceInputs["enablePublicNetwork"] = state ? state.enablePublicNetwork : undefined;
-            resourceInputs["engine"] = state ? state.engine : undefined;
-            resourceInputs["engineMinorVersion"] = state ? state.engineMinorVersion : undefined;
-            resourceInputs["gmtCreated"] = state ? state.gmtCreated : undefined;
-            resourceInputs["gmtExpired"] = state ? state.gmtExpired : undefined;
-            resourceInputs["gmtModified"] = state ? state.gmtModified : undefined;
-            resourceInputs["instanceNetInfos"] = state ? state.instanceNetInfos : undefined;
-            resourceInputs["lockMode"] = state ? state.lockMode : undefined;
-            resourceInputs["lockReason"] = state ? state.lockReason : undefined;
-            resourceInputs["memoryPostpaid"] = state ? state.memoryPostpaid : undefined;
-            resourceInputs["memoryPrepaid"] = state ? state.memoryPrepaid : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["periodTime"] = state ? state.periodTime : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["securityIpLists"] = state ? state.securityIpLists : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["subDomain"] = state ? state.subDomain : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["upgradedEngineMinorVersion"] = state ? state.upgradedEngineMinorVersion : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["adminPass"] = state?.adminPass;
+            resourceInputs["cacheSize"] = state?.cacheSize;
+            resourceInputs["cacheSizePostpaid"] = state?.cacheSizePostpaid;
+            resourceInputs["cacheSizePrepaid"] = state?.cacheSizePrepaid;
+            resourceInputs["clusterCountPostpaid"] = state?.clusterCountPostpaid;
+            resourceInputs["clusterCountPrepaid"] = state?.clusterCountPrepaid;
+            resourceInputs["cpuPostpaid"] = state?.cpuPostpaid;
+            resourceInputs["cpuPrepaid"] = state?.cpuPrepaid;
+            resourceInputs["dbInstanceClass"] = state?.dbInstanceClass;
+            resourceInputs["dbInstanceDescription"] = state?.dbInstanceDescription;
+            resourceInputs["desiredSecurityIpLists"] = state?.desiredSecurityIpLists;
+            resourceInputs["enablePublicNetwork"] = state?.enablePublicNetwork;
+            resourceInputs["engine"] = state?.engine;
+            resourceInputs["engineMinorVersion"] = state?.engineMinorVersion;
+            resourceInputs["gmtCreated"] = state?.gmtCreated;
+            resourceInputs["gmtExpired"] = state?.gmtExpired;
+            resourceInputs["gmtModified"] = state?.gmtModified;
+            resourceInputs["instanceNetInfos"] = state?.instanceNetInfos;
+            resourceInputs["lockMode"] = state?.lockMode;
+            resourceInputs["lockReason"] = state?.lockReason;
+            resourceInputs["memoryPostpaid"] = state?.memoryPostpaid;
+            resourceInputs["memoryPrepaid"] = state?.memoryPrepaid;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["periodTime"] = state?.periodTime;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["securityIpLists"] = state?.securityIpLists;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["subDomain"] = state?.subDomain;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["upgradedEngineMinorVersion"] = state?.upgradedEngineMinorVersion;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as DbInstanceArgs | undefined;
-            if ((!args || args.cacheSize === undefined) && !opts.urn) {
+            if (args?.cacheSize === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cacheSize'");
             }
-            if ((!args || args.dbInstanceClass === undefined) && !opts.urn) {
+            if (args?.dbInstanceClass === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceClass'");
             }
-            if ((!args || args.dbInstanceDescription === undefined) && !opts.urn) {
+            if (args?.dbInstanceDescription === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceDescription'");
             }
-            if ((!args || args.paymentType === undefined) && !opts.urn) {
+            if (args?.paymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+            if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["adminPass"] = args?.adminPass ? pulumi.secret(args.adminPass) : undefined;
-            resourceInputs["cacheSize"] = args ? args.cacheSize : undefined;
-            resourceInputs["dbInstanceClass"] = args ? args.dbInstanceClass : undefined;
-            resourceInputs["dbInstanceDescription"] = args ? args.dbInstanceDescription : undefined;
-            resourceInputs["desiredSecurityIpLists"] = args ? args.desiredSecurityIpLists : undefined;
-            resourceInputs["enablePublicNetwork"] = args ? args.enablePublicNetwork : undefined;
-            resourceInputs["engineMinorVersion"] = args ? args.engineMinorVersion : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["periodTime"] = args ? args.periodTime : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["upgradedEngineMinorVersion"] = args ? args.upgradedEngineMinorVersion : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["cacheSize"] = args?.cacheSize;
+            resourceInputs["dbInstanceClass"] = args?.dbInstanceClass;
+            resourceInputs["dbInstanceDescription"] = args?.dbInstanceDescription;
+            resourceInputs["desiredSecurityIpLists"] = args?.desiredSecurityIpLists;
+            resourceInputs["enablePublicNetwork"] = args?.enablePublicNetwork;
+            resourceInputs["engineMinorVersion"] = args?.engineMinorVersion;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["periodTime"] = args?.periodTime;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["upgradedEngineMinorVersion"] = args?.upgradedEngineMinorVersion;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["cacheSizePostpaid"] = undefined /*out*/;
             resourceInputs["cacheSizePrepaid"] = undefined /*out*/;
             resourceInputs["clusterCountPostpaid"] = undefined /*out*/;

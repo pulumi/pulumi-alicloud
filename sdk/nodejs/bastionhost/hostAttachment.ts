@@ -100,15 +100,15 @@ export class HostAttachment extends pulumi.CustomResource {
     /**
      * Specifies the added to the host group ID.
      */
-    public readonly hostGroupId!: pulumi.Output<string>;
+    declare public readonly hostGroupId: pulumi.Output<string>;
     /**
      * Specified to be part of a host group of host ID.
      */
-    public readonly hostId!: pulumi.Output<string>;
+    declare public readonly hostId: pulumi.Output<string>;
     /**
      * The bastion host instance id.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
 
     /**
      * Create a HostAttachment resource with the given unique name, arguments, and options.
@@ -123,23 +123,23 @@ export class HostAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HostAttachmentState | undefined;
-            resourceInputs["hostGroupId"] = state ? state.hostGroupId : undefined;
-            resourceInputs["hostId"] = state ? state.hostId : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["hostGroupId"] = state?.hostGroupId;
+            resourceInputs["hostId"] = state?.hostId;
+            resourceInputs["instanceId"] = state?.instanceId;
         } else {
             const args = argsOrState as HostAttachmentArgs | undefined;
-            if ((!args || args.hostGroupId === undefined) && !opts.urn) {
+            if (args?.hostGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostGroupId'");
             }
-            if ((!args || args.hostId === undefined) && !opts.urn) {
+            if (args?.hostId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostId'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["hostGroupId"] = args ? args.hostGroupId : undefined;
-            resourceInputs["hostId"] = args ? args.hostId : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["hostGroupId"] = args?.hostGroupId;
+            resourceInputs["hostId"] = args?.hostId;
+            resourceInputs["instanceId"] = args?.instanceId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(HostAttachment.__pulumiType, name, resourceInputs, opts);

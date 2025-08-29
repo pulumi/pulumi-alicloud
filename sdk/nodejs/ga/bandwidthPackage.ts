@@ -69,83 +69,83 @@ export class BandwidthPackage extends pulumi.CustomResource {
     /**
      * Whether to pay automatically. Valid values:
      */
-    public readonly autoPay!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoPay: pulumi.Output<boolean | undefined>;
     /**
      * Auto renewal period of a bandwidth packet, in the unit of month. Valid values: `1` to `12`.
      */
-    public readonly autoRenewDuration!: pulumi.Output<number>;
+    declare public readonly autoRenewDuration: pulumi.Output<number>;
     /**
      * Whether use vouchers. Default value: `false`. Valid values:
      */
-    public readonly autoUseCoupon!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoUseCoupon: pulumi.Output<boolean | undefined>;
     /**
      * The bandwidth value of bandwidth packet.
      */
-    public readonly bandwidth!: pulumi.Output<number>;
+    declare public readonly bandwidth: pulumi.Output<number>;
     /**
      * The name of the bandwidth packet.
      */
-    public readonly bandwidthPackageName!: pulumi.Output<string | undefined>;
+    declare public readonly bandwidthPackageName: pulumi.Output<string | undefined>;
     /**
      * The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
      * > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
      */
-    public readonly bandwidthType!: pulumi.Output<string | undefined>;
+    declare public readonly bandwidthType: pulumi.Output<string | undefined>;
     /**
      * The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billingType` is valid only when `paymentType` is set to `PayAsYouGo`.
      */
-    public readonly billingType!: pulumi.Output<string | undefined>;
+    declare public readonly billingType: pulumi.Output<string | undefined>;
     /**
      * Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value: `China-mainland`.
      */
-    public readonly cbnGeographicRegionIda!: pulumi.Output<string>;
+    declare public readonly cbnGeographicRegionIda: pulumi.Output<string>;
     /**
      * Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value: `Global`.
      */
-    public readonly cbnGeographicRegionIdb!: pulumi.Output<string>;
+    declare public readonly cbnGeographicRegionIdb: pulumi.Output<string>;
     /**
      * The description of bandwidth package.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `paymentType` is set to `Subscription`, this parameter is required.
      */
-    public readonly duration!: pulumi.Output<string | undefined>;
+    declare public readonly duration: pulumi.Output<string | undefined>;
     /**
      * The payment type of the bandwidth. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
      */
-    public readonly paymentType!: pulumi.Output<string | undefined>;
+    declare public readonly paymentType: pulumi.Output<string | undefined>;
     /**
      * The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
      */
-    public readonly promotionOptionNo!: pulumi.Output<string | undefined>;
+    declare public readonly promotionOptionNo: pulumi.Output<string | undefined>;
     /**
      * The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billingType` is set to `PayBy95`.
      */
-    public readonly ratio!: pulumi.Output<number | undefined>;
+    declare public readonly ratio: pulumi.Output<number | undefined>;
     /**
      * Whether to renew a bandwidth packet. automatically or not. Valid values:
      * - `AutoRenewal`: Enable auto renewal.
      * - `Normal`: Disable auto renewal.
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      */
-    public readonly renewalStatus!: pulumi.Output<string>;
+    declare public readonly renewalStatus: pulumi.Output<string>;
     /**
      * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The status of the Bandwidth Package.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a BandwidthPackage resource with the given unique name, arguments, and options.
@@ -160,51 +160,51 @@ export class BandwidthPackage extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BandwidthPackageState | undefined;
-            resourceInputs["autoPay"] = state ? state.autoPay : undefined;
-            resourceInputs["autoRenewDuration"] = state ? state.autoRenewDuration : undefined;
-            resourceInputs["autoUseCoupon"] = state ? state.autoUseCoupon : undefined;
-            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
-            resourceInputs["bandwidthPackageName"] = state ? state.bandwidthPackageName : undefined;
-            resourceInputs["bandwidthType"] = state ? state.bandwidthType : undefined;
-            resourceInputs["billingType"] = state ? state.billingType : undefined;
-            resourceInputs["cbnGeographicRegionIda"] = state ? state.cbnGeographicRegionIda : undefined;
-            resourceInputs["cbnGeographicRegionIdb"] = state ? state.cbnGeographicRegionIdb : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["duration"] = state ? state.duration : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["promotionOptionNo"] = state ? state.promotionOptionNo : undefined;
-            resourceInputs["ratio"] = state ? state.ratio : undefined;
-            resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["autoPay"] = state?.autoPay;
+            resourceInputs["autoRenewDuration"] = state?.autoRenewDuration;
+            resourceInputs["autoUseCoupon"] = state?.autoUseCoupon;
+            resourceInputs["bandwidth"] = state?.bandwidth;
+            resourceInputs["bandwidthPackageName"] = state?.bandwidthPackageName;
+            resourceInputs["bandwidthType"] = state?.bandwidthType;
+            resourceInputs["billingType"] = state?.billingType;
+            resourceInputs["cbnGeographicRegionIda"] = state?.cbnGeographicRegionIda;
+            resourceInputs["cbnGeographicRegionIdb"] = state?.cbnGeographicRegionIdb;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["duration"] = state?.duration;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["promotionOptionNo"] = state?.promotionOptionNo;
+            resourceInputs["ratio"] = state?.ratio;
+            resourceInputs["renewalStatus"] = state?.renewalStatus;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as BandwidthPackageArgs | undefined;
-            if ((!args || args.bandwidth === undefined) && !opts.urn) {
+            if (args?.bandwidth === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bandwidth'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["autoPay"] = args ? args.autoPay : undefined;
-            resourceInputs["autoRenewDuration"] = args ? args.autoRenewDuration : undefined;
-            resourceInputs["autoUseCoupon"] = args ? args.autoUseCoupon : undefined;
-            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
-            resourceInputs["bandwidthPackageName"] = args ? args.bandwidthPackageName : undefined;
-            resourceInputs["bandwidthType"] = args ? args.bandwidthType : undefined;
-            resourceInputs["billingType"] = args ? args.billingType : undefined;
-            resourceInputs["cbnGeographicRegionIda"] = args ? args.cbnGeographicRegionIda : undefined;
-            resourceInputs["cbnGeographicRegionIdb"] = args ? args.cbnGeographicRegionIdb : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["duration"] = args ? args.duration : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["promotionOptionNo"] = args ? args.promotionOptionNo : undefined;
-            resourceInputs["ratio"] = args ? args.ratio : undefined;
-            resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["autoPay"] = args?.autoPay;
+            resourceInputs["autoRenewDuration"] = args?.autoRenewDuration;
+            resourceInputs["autoUseCoupon"] = args?.autoUseCoupon;
+            resourceInputs["bandwidth"] = args?.bandwidth;
+            resourceInputs["bandwidthPackageName"] = args?.bandwidthPackageName;
+            resourceInputs["bandwidthType"] = args?.bandwidthType;
+            resourceInputs["billingType"] = args?.billingType;
+            resourceInputs["cbnGeographicRegionIda"] = args?.cbnGeographicRegionIda;
+            resourceInputs["cbnGeographicRegionIdb"] = args?.cbnGeographicRegionIdb;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["duration"] = args?.duration;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["promotionOptionNo"] = args?.promotionOptionNo;
+            resourceInputs["ratio"] = args?.ratio;
+            resourceInputs["renewalStatus"] = args?.renewalStatus;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["type"] = args?.type;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

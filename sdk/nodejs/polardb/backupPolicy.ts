@@ -44,78 +44,78 @@ export class BackupPolicy extends pulumi.CustomResource {
     /**
      * The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
      */
-    public readonly backupFrequency!: pulumi.Output<string>;
+    declare public readonly backupFrequency: pulumi.Output<string>;
     /**
      * Cluster backup retention days, Fixed for 7 days, not modified.
      */
-    public readonly backupRetentionPeriod!: pulumi.Output<string>;
+    declare public readonly backupRetentionPeriod: pulumi.Output<string>;
     /**
      * Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://www.alibabacloud.com/help/en/polardb/latest/modifybackuppolicy)
      */
-    public readonly backupRetentionPolicyOnClusterDeletion!: pulumi.Output<string>;
+    declare public readonly backupRetentionPolicyOnClusterDeletion: pulumi.Output<string>;
     /**
      * The Id of cluster that can run database.The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
      */
-    public readonly dataLevel1BackupFrequency!: pulumi.Output<string>;
+    declare public readonly dataLevel1BackupFrequency: pulumi.Output<string>;
     /**
      * PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
      * > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
      */
-    public readonly dataLevel1BackupPeriods!: pulumi.Output<string[]>;
+    declare public readonly dataLevel1BackupPeriods: pulumi.Output<string[]>;
     /**
      * The retention period of level-1 backups. Valid values: 3 to 14. Unit: days.
      */
-    public readonly dataLevel1BackupRetentionPeriod!: pulumi.Output<number>;
+    declare public readonly dataLevel1BackupRetentionPeriod: pulumi.Output<number>;
     /**
      * The time period during which automatic backup is performed. The format is HH: MMZ HH: MMZ (UTC time), and the entered value must be an hour apart, such as 14:00z-15:00z.
      */
-    public readonly dataLevel1BackupTime!: pulumi.Output<string>;
+    declare public readonly dataLevel1BackupTime: pulumi.Output<string>;
     /**
      * PolarDB Cluster of level-2 backup is a cross regional backup area.
      */
-    public readonly dataLevel2BackupAnotherRegionRegion!: pulumi.Output<string | undefined>;
+    declare public readonly dataLevel2BackupAnotherRegionRegion: pulumi.Output<string | undefined>;
     /**
      * PolarDB Cluster of level-2 backup cross region backup retention period. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
      */
-    public readonly dataLevel2BackupAnotherRegionRetentionPeriod!: pulumi.Output<number>;
+    declare public readonly dataLevel2BackupAnotherRegionRetentionPeriod: pulumi.Output<number>;
     /**
      * PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
      * > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
      */
-    public readonly dataLevel2BackupPeriods!: pulumi.Output<string[] | undefined>;
+    declare public readonly dataLevel2BackupPeriods: pulumi.Output<string[] | undefined>;
     /**
      * The retention period of level-2 backups. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
      */
-    public readonly dataLevel2BackupRetentionPeriod!: pulumi.Output<number>;
+    declare public readonly dataLevel2BackupRetentionPeriod: pulumi.Output<number>;
     /**
      * The Id of cluster that can run database.
      */
-    public readonly dbClusterId!: pulumi.Output<string>;
+    declare public readonly dbClusterId: pulumi.Output<string>;
     /**
      * Indicates whether the log backup feature was enabled. Valid values are `0`, `1`. `1` By default, the log backup feature is enabled and cannot be disabled.
      */
-    public /*out*/ readonly enableBackupLog!: pulumi.Output<number>;
+    declare public /*out*/ readonly enableBackupLog: pulumi.Output<number>;
     /**
      * The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview.](https://www.alibabacloud.com/help/en/polardb/latest/backup-and-restoration-overview)
      */
-    public readonly logBackupAnotherRegionRegion!: pulumi.Output<string | undefined>;
+    declare public readonly logBackupAnotherRegionRegion: pulumi.Output<string | undefined>;
     /**
      * The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
      * > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
      */
-    public readonly logBackupAnotherRegionRetentionPeriod!: pulumi.Output<number | undefined>;
+    declare public readonly logBackupAnotherRegionRetentionPeriod: pulumi.Output<number | undefined>;
     /**
      * The retention period of the log backups. Valid values are `3 to 7300`, `-1`.
      */
-    public readonly logBackupRetentionPeriod!: pulumi.Output<number>;
+    declare public readonly logBackupRetentionPeriod: pulumi.Output<number>;
     /**
      * PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].
      */
-    public readonly preferredBackupPeriods!: pulumi.Output<string[]>;
+    declare public readonly preferredBackupPeriods: pulumi.Output<string[]>;
     /**
      * PolarDB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
      */
-    public readonly preferredBackupTime!: pulumi.Output<string>;
+    declare public readonly preferredBackupTime: pulumi.Output<string>;
 
     /**
      * Create a BackupPolicy resource with the given unique name, arguments, and options.
@@ -130,46 +130,46 @@ export class BackupPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackupPolicyState | undefined;
-            resourceInputs["backupFrequency"] = state ? state.backupFrequency : undefined;
-            resourceInputs["backupRetentionPeriod"] = state ? state.backupRetentionPeriod : undefined;
-            resourceInputs["backupRetentionPolicyOnClusterDeletion"] = state ? state.backupRetentionPolicyOnClusterDeletion : undefined;
-            resourceInputs["dataLevel1BackupFrequency"] = state ? state.dataLevel1BackupFrequency : undefined;
-            resourceInputs["dataLevel1BackupPeriods"] = state ? state.dataLevel1BackupPeriods : undefined;
-            resourceInputs["dataLevel1BackupRetentionPeriod"] = state ? state.dataLevel1BackupRetentionPeriod : undefined;
-            resourceInputs["dataLevel1BackupTime"] = state ? state.dataLevel1BackupTime : undefined;
-            resourceInputs["dataLevel2BackupAnotherRegionRegion"] = state ? state.dataLevel2BackupAnotherRegionRegion : undefined;
-            resourceInputs["dataLevel2BackupAnotherRegionRetentionPeriod"] = state ? state.dataLevel2BackupAnotherRegionRetentionPeriod : undefined;
-            resourceInputs["dataLevel2BackupPeriods"] = state ? state.dataLevel2BackupPeriods : undefined;
-            resourceInputs["dataLevel2BackupRetentionPeriod"] = state ? state.dataLevel2BackupRetentionPeriod : undefined;
-            resourceInputs["dbClusterId"] = state ? state.dbClusterId : undefined;
-            resourceInputs["enableBackupLog"] = state ? state.enableBackupLog : undefined;
-            resourceInputs["logBackupAnotherRegionRegion"] = state ? state.logBackupAnotherRegionRegion : undefined;
-            resourceInputs["logBackupAnotherRegionRetentionPeriod"] = state ? state.logBackupAnotherRegionRetentionPeriod : undefined;
-            resourceInputs["logBackupRetentionPeriod"] = state ? state.logBackupRetentionPeriod : undefined;
-            resourceInputs["preferredBackupPeriods"] = state ? state.preferredBackupPeriods : undefined;
-            resourceInputs["preferredBackupTime"] = state ? state.preferredBackupTime : undefined;
+            resourceInputs["backupFrequency"] = state?.backupFrequency;
+            resourceInputs["backupRetentionPeriod"] = state?.backupRetentionPeriod;
+            resourceInputs["backupRetentionPolicyOnClusterDeletion"] = state?.backupRetentionPolicyOnClusterDeletion;
+            resourceInputs["dataLevel1BackupFrequency"] = state?.dataLevel1BackupFrequency;
+            resourceInputs["dataLevel1BackupPeriods"] = state?.dataLevel1BackupPeriods;
+            resourceInputs["dataLevel1BackupRetentionPeriod"] = state?.dataLevel1BackupRetentionPeriod;
+            resourceInputs["dataLevel1BackupTime"] = state?.dataLevel1BackupTime;
+            resourceInputs["dataLevel2BackupAnotherRegionRegion"] = state?.dataLevel2BackupAnotherRegionRegion;
+            resourceInputs["dataLevel2BackupAnotherRegionRetentionPeriod"] = state?.dataLevel2BackupAnotherRegionRetentionPeriod;
+            resourceInputs["dataLevel2BackupPeriods"] = state?.dataLevel2BackupPeriods;
+            resourceInputs["dataLevel2BackupRetentionPeriod"] = state?.dataLevel2BackupRetentionPeriod;
+            resourceInputs["dbClusterId"] = state?.dbClusterId;
+            resourceInputs["enableBackupLog"] = state?.enableBackupLog;
+            resourceInputs["logBackupAnotherRegionRegion"] = state?.logBackupAnotherRegionRegion;
+            resourceInputs["logBackupAnotherRegionRetentionPeriod"] = state?.logBackupAnotherRegionRetentionPeriod;
+            resourceInputs["logBackupRetentionPeriod"] = state?.logBackupRetentionPeriod;
+            resourceInputs["preferredBackupPeriods"] = state?.preferredBackupPeriods;
+            resourceInputs["preferredBackupTime"] = state?.preferredBackupTime;
         } else {
             const args = argsOrState as BackupPolicyArgs | undefined;
-            if ((!args || args.dbClusterId === undefined) && !opts.urn) {
+            if (args?.dbClusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbClusterId'");
             }
-            resourceInputs["backupFrequency"] = args ? args.backupFrequency : undefined;
-            resourceInputs["backupRetentionPeriod"] = args ? args.backupRetentionPeriod : undefined;
-            resourceInputs["backupRetentionPolicyOnClusterDeletion"] = args ? args.backupRetentionPolicyOnClusterDeletion : undefined;
-            resourceInputs["dataLevel1BackupFrequency"] = args ? args.dataLevel1BackupFrequency : undefined;
-            resourceInputs["dataLevel1BackupPeriods"] = args ? args.dataLevel1BackupPeriods : undefined;
-            resourceInputs["dataLevel1BackupRetentionPeriod"] = args ? args.dataLevel1BackupRetentionPeriod : undefined;
-            resourceInputs["dataLevel1BackupTime"] = args ? args.dataLevel1BackupTime : undefined;
-            resourceInputs["dataLevel2BackupAnotherRegionRegion"] = args ? args.dataLevel2BackupAnotherRegionRegion : undefined;
-            resourceInputs["dataLevel2BackupAnotherRegionRetentionPeriod"] = args ? args.dataLevel2BackupAnotherRegionRetentionPeriod : undefined;
-            resourceInputs["dataLevel2BackupPeriods"] = args ? args.dataLevel2BackupPeriods : undefined;
-            resourceInputs["dataLevel2BackupRetentionPeriod"] = args ? args.dataLevel2BackupRetentionPeriod : undefined;
-            resourceInputs["dbClusterId"] = args ? args.dbClusterId : undefined;
-            resourceInputs["logBackupAnotherRegionRegion"] = args ? args.logBackupAnotherRegionRegion : undefined;
-            resourceInputs["logBackupAnotherRegionRetentionPeriod"] = args ? args.logBackupAnotherRegionRetentionPeriod : undefined;
-            resourceInputs["logBackupRetentionPeriod"] = args ? args.logBackupRetentionPeriod : undefined;
-            resourceInputs["preferredBackupPeriods"] = args ? args.preferredBackupPeriods : undefined;
-            resourceInputs["preferredBackupTime"] = args ? args.preferredBackupTime : undefined;
+            resourceInputs["backupFrequency"] = args?.backupFrequency;
+            resourceInputs["backupRetentionPeriod"] = args?.backupRetentionPeriod;
+            resourceInputs["backupRetentionPolicyOnClusterDeletion"] = args?.backupRetentionPolicyOnClusterDeletion;
+            resourceInputs["dataLevel1BackupFrequency"] = args?.dataLevel1BackupFrequency;
+            resourceInputs["dataLevel1BackupPeriods"] = args?.dataLevel1BackupPeriods;
+            resourceInputs["dataLevel1BackupRetentionPeriod"] = args?.dataLevel1BackupRetentionPeriod;
+            resourceInputs["dataLevel1BackupTime"] = args?.dataLevel1BackupTime;
+            resourceInputs["dataLevel2BackupAnotherRegionRegion"] = args?.dataLevel2BackupAnotherRegionRegion;
+            resourceInputs["dataLevel2BackupAnotherRegionRetentionPeriod"] = args?.dataLevel2BackupAnotherRegionRetentionPeriod;
+            resourceInputs["dataLevel2BackupPeriods"] = args?.dataLevel2BackupPeriods;
+            resourceInputs["dataLevel2BackupRetentionPeriod"] = args?.dataLevel2BackupRetentionPeriod;
+            resourceInputs["dbClusterId"] = args?.dbClusterId;
+            resourceInputs["logBackupAnotherRegionRegion"] = args?.logBackupAnotherRegionRegion;
+            resourceInputs["logBackupAnotherRegionRetentionPeriod"] = args?.logBackupAnotherRegionRetentionPeriod;
+            resourceInputs["logBackupRetentionPeriod"] = args?.logBackupRetentionPeriod;
+            resourceInputs["preferredBackupPeriods"] = args?.preferredBackupPeriods;
+            resourceInputs["preferredBackupTime"] = args?.preferredBackupTime;
             resourceInputs["enableBackupLog"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

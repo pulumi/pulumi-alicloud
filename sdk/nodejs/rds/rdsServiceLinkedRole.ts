@@ -61,19 +61,19 @@ export class RdsServiceLinkedRole extends pulumi.CustomResource {
     /**
      * The Alibaba Cloud Resource Name (ARN) of the role.
      */
-    public /*out*/ readonly arn!: pulumi.Output<string>;
+    declare public /*out*/ readonly arn: pulumi.Output<string>;
     /**
      * The ID of the role.
      */
-    public /*out*/ readonly roleId!: pulumi.Output<string>;
+    declare public /*out*/ readonly roleId: pulumi.Output<string>;
     /**
      * The name of the role.
      */
-    public /*out*/ readonly roleName!: pulumi.Output<string>;
+    declare public /*out*/ readonly roleName: pulumi.Output<string>;
     /**
      * The product name for SLR. RDS can automatically create the following service-linked roles: `AliyunServiceRoleForRdsPgsqlOnEcs`, `AliyunServiceRoleForRDSProxyOnEcs`.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
 
     /**
      * Create a RdsServiceLinkedRole resource with the given unique name, arguments, and options.
@@ -88,16 +88,16 @@ export class RdsServiceLinkedRole extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RdsServiceLinkedRoleState | undefined;
-            resourceInputs["arn"] = state ? state.arn : undefined;
-            resourceInputs["roleId"] = state ? state.roleId : undefined;
-            resourceInputs["roleName"] = state ? state.roleName : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["arn"] = state?.arn;
+            resourceInputs["roleId"] = state?.roleId;
+            resourceInputs["roleName"] = state?.roleName;
+            resourceInputs["serviceName"] = state?.serviceName;
         } else {
             const args = argsOrState as RdsServiceLinkedRoleArgs | undefined;
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["serviceName"] = args?.serviceName;
             resourceInputs["arn"] = undefined /*out*/;
             resourceInputs["roleId"] = undefined /*out*/;
             resourceInputs["roleName"] = undefined /*out*/;

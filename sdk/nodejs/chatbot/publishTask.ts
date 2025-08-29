@@ -65,27 +65,27 @@ export class PublishTask extends pulumi.CustomResource {
     /**
      * The business space key. If you do not set it, the default business space is accessed. The key value is obtained on the business management page of the primary account.
      */
-    public readonly agentKey!: pulumi.Output<string>;
+    declare public readonly agentKey: pulumi.Output<string>;
     /**
      * The type of the publishing unit. Please use the CreateInstancePublishTask API to publish the robot.
      */
-    public readonly bizType!: pulumi.Output<string>;
+    declare public readonly bizType: pulumi.Output<string>;
     /**
      * UTC time of task creation
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Additional release information. Currently supported: If the BizType is faq, enter the category Id in this field to indicate that only the knowledge under these categories is published.
      */
-    public readonly dataIdLists!: pulumi.Output<string[] | undefined>;
+    declare public readonly dataIdLists: pulumi.Output<string[] | undefined>;
     /**
      * UTC time for task modification
      */
-    public /*out*/ readonly modifyTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly modifyTime: pulumi.Output<string>;
     /**
      * The status of the task.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a PublishTask resource with the given unique name, arguments, and options.
@@ -100,20 +100,20 @@ export class PublishTask extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PublishTaskState | undefined;
-            resourceInputs["agentKey"] = state ? state.agentKey : undefined;
-            resourceInputs["bizType"] = state ? state.bizType : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dataIdLists"] = state ? state.dataIdLists : undefined;
-            resourceInputs["modifyTime"] = state ? state.modifyTime : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["agentKey"] = state?.agentKey;
+            resourceInputs["bizType"] = state?.bizType;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dataIdLists"] = state?.dataIdLists;
+            resourceInputs["modifyTime"] = state?.modifyTime;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as PublishTaskArgs | undefined;
-            if ((!args || args.bizType === undefined) && !opts.urn) {
+            if (args?.bizType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bizType'");
             }
-            resourceInputs["agentKey"] = args ? args.agentKey : undefined;
-            resourceInputs["bizType"] = args ? args.bizType : undefined;
-            resourceInputs["dataIdLists"] = args ? args.dataIdLists : undefined;
+            resourceInputs["agentKey"] = args?.agentKey;
+            resourceInputs["bizType"] = args?.bizType;
+            resourceInputs["dataIdLists"] = args?.dataIdLists;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["modifyTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

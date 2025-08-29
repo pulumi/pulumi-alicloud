@@ -77,43 +77,43 @@ export class AclRule extends pulumi.CustomResource {
     /**
      * The ID of the ACL.
      */
-    public readonly aclId!: pulumi.Output<string>;
+    declare public readonly aclId: pulumi.Output<string>;
     /**
      * The description of the ACL rule. It must be 1 to 512 characters in length.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The destination address. It is an IPv4 address range in CIDR format. Default value: 0.0.0.0/0.
      */
-    public readonly destCidr!: pulumi.Output<string>;
+    declare public readonly destCidr: pulumi.Output<string>;
     /**
      * The range of the destination port. Valid value: 80/80.
      */
-    public readonly destPortRange!: pulumi.Output<string>;
+    declare public readonly destPortRange: pulumi.Output<string>;
     /**
      * The direction of the ACL rule. Valid values: in|out.
      */
-    public readonly direction!: pulumi.Output<string>;
+    declare public readonly direction: pulumi.Output<string>;
     /**
      * The protocol used by the ACL rule. The value is not case sensitive.
      */
-    public readonly ipProtocol!: pulumi.Output<string>;
+    declare public readonly ipProtocol: pulumi.Output<string>;
     /**
      * The policy used by the ACL rule. Valid values: accept|drop.
      */
-    public readonly policy!: pulumi.Output<string>;
+    declare public readonly policy: pulumi.Output<string>;
     /**
      * The priority of the ACL rule. Value range: 1 to 100.
      */
-    public readonly priority!: pulumi.Output<number | undefined>;
+    declare public readonly priority: pulumi.Output<number | undefined>;
     /**
      * The source address. It is an IPv4 address range in the CIDR format. Default value: 0.0.0.0/0.
      */
-    public readonly sourceCidr!: pulumi.Output<string>;
+    declare public readonly sourceCidr: pulumi.Output<string>;
     /**
      * The range of the source port. Valid value: 80/80.
      */
-    public readonly sourcePortRange!: pulumi.Output<string>;
+    declare public readonly sourcePortRange: pulumi.Output<string>;
 
     /**
      * Create a AclRule resource with the given unique name, arguments, and options.
@@ -128,52 +128,52 @@ export class AclRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclRuleState | undefined;
-            resourceInputs["aclId"] = state ? state.aclId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["destCidr"] = state ? state.destCidr : undefined;
-            resourceInputs["destPortRange"] = state ? state.destPortRange : undefined;
-            resourceInputs["direction"] = state ? state.direction : undefined;
-            resourceInputs["ipProtocol"] = state ? state.ipProtocol : undefined;
-            resourceInputs["policy"] = state ? state.policy : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["sourceCidr"] = state ? state.sourceCidr : undefined;
-            resourceInputs["sourcePortRange"] = state ? state.sourcePortRange : undefined;
+            resourceInputs["aclId"] = state?.aclId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["destCidr"] = state?.destCidr;
+            resourceInputs["destPortRange"] = state?.destPortRange;
+            resourceInputs["direction"] = state?.direction;
+            resourceInputs["ipProtocol"] = state?.ipProtocol;
+            resourceInputs["policy"] = state?.policy;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["sourceCidr"] = state?.sourceCidr;
+            resourceInputs["sourcePortRange"] = state?.sourcePortRange;
         } else {
             const args = argsOrState as AclRuleArgs | undefined;
-            if ((!args || args.aclId === undefined) && !opts.urn) {
+            if (args?.aclId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aclId'");
             }
-            if ((!args || args.destCidr === undefined) && !opts.urn) {
+            if (args?.destCidr === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destCidr'");
             }
-            if ((!args || args.destPortRange === undefined) && !opts.urn) {
+            if (args?.destPortRange === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destPortRange'");
             }
-            if ((!args || args.direction === undefined) && !opts.urn) {
+            if (args?.direction === undefined && !opts.urn) {
                 throw new Error("Missing required property 'direction'");
             }
-            if ((!args || args.ipProtocol === undefined) && !opts.urn) {
+            if (args?.ipProtocol === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ipProtocol'");
             }
-            if ((!args || args.policy === undefined) && !opts.urn) {
+            if (args?.policy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policy'");
             }
-            if ((!args || args.sourceCidr === undefined) && !opts.urn) {
+            if (args?.sourceCidr === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceCidr'");
             }
-            if ((!args || args.sourcePortRange === undefined) && !opts.urn) {
+            if (args?.sourcePortRange === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourcePortRange'");
             }
-            resourceInputs["aclId"] = args ? args.aclId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["destCidr"] = args ? args.destCidr : undefined;
-            resourceInputs["destPortRange"] = args ? args.destPortRange : undefined;
-            resourceInputs["direction"] = args ? args.direction : undefined;
-            resourceInputs["ipProtocol"] = args ? args.ipProtocol : undefined;
-            resourceInputs["policy"] = args ? args.policy : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["sourceCidr"] = args ? args.sourceCidr : undefined;
-            resourceInputs["sourcePortRange"] = args ? args.sourcePortRange : undefined;
+            resourceInputs["aclId"] = args?.aclId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["destCidr"] = args?.destCidr;
+            resourceInputs["destPortRange"] = args?.destPortRange;
+            resourceInputs["direction"] = args?.direction;
+            resourceInputs["ipProtocol"] = args?.ipProtocol;
+            resourceInputs["policy"] = args?.policy;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["sourceCidr"] = args?.sourceCidr;
+            resourceInputs["sourcePortRange"] = args?.sourcePortRange;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AclRule.__pulumiType, name, resourceInputs, opts);

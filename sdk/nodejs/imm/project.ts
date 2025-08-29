@@ -86,11 +86,11 @@ export class Project extends pulumi.CustomResource {
     /**
      * The name of Project.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The service role authorized to the Intelligent Media Management service to access other cloud resources. Default value: `AliyunIMMDefaultRole`. You can also create authorization  roles through the `alicloud.ram.Role`.
      */
-    public readonly serviceRole!: pulumi.Output<string>;
+    declare public readonly serviceRole: pulumi.Output<string>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -105,15 +105,15 @@ export class Project extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["serviceRole"] = state ? state.serviceRole : undefined;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["serviceRole"] = state?.serviceRole;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["serviceRole"] = args ? args.serviceRole : undefined;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["serviceRole"] = args?.serviceRole;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Project.__pulumiType, name, resourceInputs, opts);

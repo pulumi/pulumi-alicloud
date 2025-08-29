@@ -50,15 +50,15 @@ export class BackendServer extends pulumi.CustomResource {
     /**
      * A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
      */
-    public readonly backendServers!: pulumi.Output<outputs.slb.BackendServerBackendServer[] | undefined>;
+    declare public readonly backendServers: pulumi.Output<outputs.slb.BackendServerBackendServer[] | undefined>;
     /**
      * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
      */
-    public readonly deleteProtectionValidation!: pulumi.Output<boolean | undefined>;
+    declare public readonly deleteProtectionValidation: pulumi.Output<boolean | undefined>;
     /**
      * ID of the load balancer.
      */
-    public readonly loadBalancerId!: pulumi.Output<string>;
+    declare public readonly loadBalancerId: pulumi.Output<string>;
 
     /**
      * Create a BackendServer resource with the given unique name, arguments, and options.
@@ -73,17 +73,17 @@ export class BackendServer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackendServerState | undefined;
-            resourceInputs["backendServers"] = state ? state.backendServers : undefined;
-            resourceInputs["deleteProtectionValidation"] = state ? state.deleteProtectionValidation : undefined;
-            resourceInputs["loadBalancerId"] = state ? state.loadBalancerId : undefined;
+            resourceInputs["backendServers"] = state?.backendServers;
+            resourceInputs["deleteProtectionValidation"] = state?.deleteProtectionValidation;
+            resourceInputs["loadBalancerId"] = state?.loadBalancerId;
         } else {
             const args = argsOrState as BackendServerArgs | undefined;
-            if ((!args || args.loadBalancerId === undefined) && !opts.urn) {
+            if (args?.loadBalancerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'loadBalancerId'");
             }
-            resourceInputs["backendServers"] = args ? args.backendServers : undefined;
-            resourceInputs["deleteProtectionValidation"] = args ? args.deleteProtectionValidation : undefined;
-            resourceInputs["loadBalancerId"] = args ? args.loadBalancerId : undefined;
+            resourceInputs["backendServers"] = args?.backendServers;
+            resourceInputs["deleteProtectionValidation"] = args?.deleteProtectionValidation;
+            resourceInputs["loadBalancerId"] = args?.loadBalancerId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BackendServer.__pulumiType, name, resourceInputs, opts);

@@ -91,19 +91,19 @@ export class Znode extends pulumi.CustomResource {
     /**
      * The language type of the returned information. Valid values: `zh` or `en`.
      */
-    public readonly acceptLanguage!: pulumi.Output<string | undefined>;
+    declare public readonly acceptLanguage: pulumi.Output<string | undefined>;
     /**
      * The ID of the Cluster.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The Node data.
      */
-    public readonly data!: pulumi.Output<string | undefined>;
+    declare public readonly data: pulumi.Output<string | undefined>;
     /**
      * The Node path. The value must start with a forward slash (/).
      */
-    public readonly path!: pulumi.Output<string>;
+    declare public readonly path: pulumi.Output<string>;
 
     /**
      * Create a Znode resource with the given unique name, arguments, and options.
@@ -118,22 +118,22 @@ export class Znode extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZnodeState | undefined;
-            resourceInputs["acceptLanguage"] = state ? state.acceptLanguage : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["data"] = state ? state.data : undefined;
-            resourceInputs["path"] = state ? state.path : undefined;
+            resourceInputs["acceptLanguage"] = state?.acceptLanguage;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["data"] = state?.data;
+            resourceInputs["path"] = state?.path;
         } else {
             const args = argsOrState as ZnodeArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.path === undefined) && !opts.urn) {
+            if (args?.path === undefined && !opts.urn) {
                 throw new Error("Missing required property 'path'");
             }
-            resourceInputs["acceptLanguage"] = args ? args.acceptLanguage : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["data"] = args ? args.data : undefined;
-            resourceInputs["path"] = args ? args.path : undefined;
+            resourceInputs["acceptLanguage"] = args?.acceptLanguage;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["data"] = args?.data;
+            resourceInputs["path"] = args?.path;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Znode.__pulumiType, name, resourceInputs, opts);

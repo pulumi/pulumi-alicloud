@@ -96,32 +96,32 @@ export class Account extends pulumi.CustomResource {
     /**
      * The name of the database account.
      */
-    public readonly account!: pulumi.Output<string>;
+    declare public readonly account: pulumi.Output<string>;
     /**
      * The type of the database account. Valid values:
      * - `NormalAccount`: Normal account number.
      * - `SuperAccount`: The privileged account.
      */
-    public readonly accountType!: pulumi.Output<string>;
+    declare public readonly accountType: pulumi.Output<string>;
     /**
      * The cluster ID.
      */
-    public readonly dbInstanceId!: pulumi.Output<string>;
+    declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
      * Note information.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Authorization information. See `dmlAuthSetting` below.
      */
-    public readonly dmlAuthSetting!: pulumi.Output<outputs.clickhouseenterprisedbcluster.AccountDmlAuthSetting | undefined>;
+    declare public readonly dmlAuthSetting: pulumi.Output<outputs.clickhouseenterprisedbcluster.AccountDmlAuthSetting | undefined>;
     /**
      * Database account password. Set the following rules.
      * - Consists of at least three of uppercase letters, lowercase letters, numbers, and special characters.
      * - Oh-! @#$%^& *()_+-= is a special character.
      * - Length is 8~32 characters.
      */
-    public readonly password!: pulumi.Output<string>;
+    declare public readonly password: pulumi.Output<string>;
 
     /**
      * Create a Account resource with the given unique name, arguments, and options.
@@ -136,31 +136,31 @@ export class Account extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountState | undefined;
-            resourceInputs["account"] = state ? state.account : undefined;
-            resourceInputs["accountType"] = state ? state.accountType : undefined;
-            resourceInputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dmlAuthSetting"] = state ? state.dmlAuthSetting : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["account"] = state?.account;
+            resourceInputs["accountType"] = state?.accountType;
+            resourceInputs["dbInstanceId"] = state?.dbInstanceId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dmlAuthSetting"] = state?.dmlAuthSetting;
+            resourceInputs["password"] = state?.password;
         } else {
             const args = argsOrState as AccountArgs | undefined;
-            if ((!args || args.account === undefined) && !opts.urn) {
+            if (args?.account === undefined && !opts.urn) {
                 throw new Error("Missing required property 'account'");
             }
-            if ((!args || args.accountType === undefined) && !opts.urn) {
+            if (args?.accountType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountType'");
             }
-            if ((!args || args.dbInstanceId === undefined) && !opts.urn) {
+            if (args?.dbInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceId'");
             }
-            if ((!args || args.password === undefined) && !opts.urn) {
+            if (args?.password === undefined && !opts.urn) {
                 throw new Error("Missing required property 'password'");
             }
-            resourceInputs["account"] = args ? args.account : undefined;
-            resourceInputs["accountType"] = args ? args.accountType : undefined;
-            resourceInputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dmlAuthSetting"] = args ? args.dmlAuthSetting : undefined;
+            resourceInputs["account"] = args?.account;
+            resourceInputs["accountType"] = args?.accountType;
+            resourceInputs["dbInstanceId"] = args?.dbInstanceId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dmlAuthSetting"] = args?.dmlAuthSetting;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

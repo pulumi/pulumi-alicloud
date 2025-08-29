@@ -83,56 +83,56 @@ export class Network extends pulumi.CustomResource {
      * - You can specify one of the following CIDR blocks or their subsets as the primary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8. These CIDR blocks are standard private CIDR blocks as defined by Request for Comments (RFC) documents. The subnet mask must be 8 to 28 bits in length.
      * - You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, and their subnets as the primary IPv4 CIDR block of the VPC.
      */
-    public readonly cidrBlock!: pulumi.Output<string>;
+    declare public readonly cidrBlock: pulumi.Output<string>;
     /**
      * The status of ClassicLink function.
      */
-    public readonly classicLinkEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly classicLinkEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The creation time of the VPC.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The new description of the VPC.
      * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The status of VPC DNS Hostname
      */
-    public readonly dnsHostnameStatus!: pulumi.Output<string>;
+    declare public readonly dnsHostnameStatus: pulumi.Output<string>;
     /**
      * Whether to PreCheck only this request. Value:
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * Whether to enable the IPv6 network segment. Value:
      */
-    public readonly enableIpv6!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableIpv6: pulumi.Output<boolean | undefined>;
     /**
      * Force delete vpc or not.
      */
-    public readonly forceDelete!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDelete: pulumi.Output<boolean | undefined>;
     /**
      * Allocate VPC from The IPAM address pool by entering a mask.
      *
      * > **NOTE:**  when you specify the IPAM address pool to create a VPC, enter at least one of the CidrBlock or Ipv4CidrMask parameters.
      */
-    public readonly ipv4CidrMask!: pulumi.Output<number | undefined>;
+    declare public readonly ipv4CidrMask: pulumi.Output<number | undefined>;
     /**
      * The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
      */
-    public readonly ipv4IpamPoolId!: pulumi.Output<string | undefined>;
+    declare public readonly ipv4IpamPoolId: pulumi.Output<string | undefined>;
     /**
      * The IPv6 CIDR block of the default VPC.
      *
      * > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
      */
-    public readonly ipv6CidrBlock!: pulumi.Output<string>;
+    declare public readonly ipv6CidrBlock: pulumi.Output<string>;
     /**
      * The IPv6 CIDR block information of the VPC.
      */
-    public /*out*/ readonly ipv6CidrBlocks!: pulumi.Output<outputs.vpc.NetworkIpv6CidrBlock[]>;
+    declare public /*out*/ readonly ipv6CidrBlocks: pulumi.Output<outputs.vpc.NetworkIpv6CidrBlock[]>;
     /**
      * The IPv6 address segment type of the VPC. Value:
      * - `BGP` (default): Alibaba Cloud BGP IPv6.
@@ -142,86 +142,86 @@ export class Network extends pulumi.CustomResource {
      *
      * > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
      */
-    public readonly ipv6Isp!: pulumi.Output<string | undefined>;
+    declare public readonly ipv6Isp: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to create the default VPC in the specified region. Valid values:
      */
-    public readonly isDefault!: pulumi.Output<boolean | undefined>;
+    declare public readonly isDefault: pulumi.Output<boolean | undefined>;
     /**
      * . Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.119.0. New field 'vpc_name' instead.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the region where the VPC is located.
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The ID of the resource group to which you want to move the resource.
      *
      * > **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The ID of the system route table.
      */
-    public /*out*/ readonly routeTableId!: pulumi.Output<string>;
+    declare public /*out*/ readonly routeTableId: pulumi.Output<string>;
     /**
      * The region ID of the VPC to which the route table belongs.
      */
-    public /*out*/ readonly routerId!: pulumi.Output<string>;
+    declare public /*out*/ readonly routerId: pulumi.Output<string>;
     /**
      * . Field 'router_table_id' has been deprecated from provider version 1.227.1. New field 'route_table_id' instead.
      *
      * @deprecated Field 'router_table_id' has been deprecated since provider version 1.221.0. New field 'route_table_id' instead.
      */
-    public /*out*/ readonly routerTableId!: pulumi.Output<string>;
+    declare public /*out*/ readonly routerTableId: pulumi.Output<string>;
     /**
      * Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
      *
      * @deprecated Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
      */
-    public readonly secondaryCidrBlocks!: pulumi.Output<string[]>;
+    declare public readonly secondaryCidrBlocks: pulumi.Output<string[]>;
     /**
      * Field 'router_table_id' has been deprecated from provider version 1.248.0. New resource 'alicloud_vpc_ipv4_cidr_block' instead.
      *
      * @deprecated Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.248.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrMask` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
      */
-    public readonly secondaryCidrMask!: pulumi.Output<number | undefined>;
+    declare public readonly secondaryCidrMask: pulumi.Output<number | undefined>;
     /**
      * The status of the VPC.   `Pending`: The VPC is being configured. `Available`: The VPC is available.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The description of the route table.
      * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      */
-    public readonly systemRouteTableDescription!: pulumi.Output<string | undefined>;
+    declare public readonly systemRouteTableDescription: pulumi.Output<string | undefined>;
     /**
      * The name of the route table.
      * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      */
-    public readonly systemRouteTableName!: pulumi.Output<string | undefined>;
+    declare public readonly systemRouteTableName: pulumi.Output<string | undefined>;
     /**
      * Whether the system route table receives propagation routes.
      */
-    public readonly systemRouteTableRoutePropagationEnable!: pulumi.Output<boolean>;
+    declare public readonly systemRouteTableRoutePropagationEnable: pulumi.Output<boolean>;
     /**
      * The tags of Vpc.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A list of user CIDRs.
      */
-    public readonly userCidrs!: pulumi.Output<string[]>;
+    declare public readonly userCidrs: pulumi.Output<string[]>;
     /**
      * The new name of the VPC.
      * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    public readonly vpcName!: pulumi.Output<string>;
+    declare public readonly vpcName: pulumi.Output<string>;
 
     /**
      * Create a Network resource with the given unique name, arguments, and options.
@@ -236,59 +236,59 @@ export class Network extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkState | undefined;
-            resourceInputs["cidrBlock"] = state ? state.cidrBlock : undefined;
-            resourceInputs["classicLinkEnabled"] = state ? state.classicLinkEnabled : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dnsHostnameStatus"] = state ? state.dnsHostnameStatus : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["enableIpv6"] = state ? state.enableIpv6 : undefined;
-            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
-            resourceInputs["ipv4CidrMask"] = state ? state.ipv4CidrMask : undefined;
-            resourceInputs["ipv4IpamPoolId"] = state ? state.ipv4IpamPoolId : undefined;
-            resourceInputs["ipv6CidrBlock"] = state ? state.ipv6CidrBlock : undefined;
-            resourceInputs["ipv6CidrBlocks"] = state ? state.ipv6CidrBlocks : undefined;
-            resourceInputs["ipv6Isp"] = state ? state.ipv6Isp : undefined;
-            resourceInputs["isDefault"] = state ? state.isDefault : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["routeTableId"] = state ? state.routeTableId : undefined;
-            resourceInputs["routerId"] = state ? state.routerId : undefined;
-            resourceInputs["routerTableId"] = state ? state.routerTableId : undefined;
-            resourceInputs["secondaryCidrBlocks"] = state ? state.secondaryCidrBlocks : undefined;
-            resourceInputs["secondaryCidrMask"] = state ? state.secondaryCidrMask : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["systemRouteTableDescription"] = state ? state.systemRouteTableDescription : undefined;
-            resourceInputs["systemRouteTableName"] = state ? state.systemRouteTableName : undefined;
-            resourceInputs["systemRouteTableRoutePropagationEnable"] = state ? state.systemRouteTableRoutePropagationEnable : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["userCidrs"] = state ? state.userCidrs : undefined;
-            resourceInputs["vpcName"] = state ? state.vpcName : undefined;
+            resourceInputs["cidrBlock"] = state?.cidrBlock;
+            resourceInputs["classicLinkEnabled"] = state?.classicLinkEnabled;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dnsHostnameStatus"] = state?.dnsHostnameStatus;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["enableIpv6"] = state?.enableIpv6;
+            resourceInputs["forceDelete"] = state?.forceDelete;
+            resourceInputs["ipv4CidrMask"] = state?.ipv4CidrMask;
+            resourceInputs["ipv4IpamPoolId"] = state?.ipv4IpamPoolId;
+            resourceInputs["ipv6CidrBlock"] = state?.ipv6CidrBlock;
+            resourceInputs["ipv6CidrBlocks"] = state?.ipv6CidrBlocks;
+            resourceInputs["ipv6Isp"] = state?.ipv6Isp;
+            resourceInputs["isDefault"] = state?.isDefault;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["routeTableId"] = state?.routeTableId;
+            resourceInputs["routerId"] = state?.routerId;
+            resourceInputs["routerTableId"] = state?.routerTableId;
+            resourceInputs["secondaryCidrBlocks"] = state?.secondaryCidrBlocks;
+            resourceInputs["secondaryCidrMask"] = state?.secondaryCidrMask;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["systemRouteTableDescription"] = state?.systemRouteTableDescription;
+            resourceInputs["systemRouteTableName"] = state?.systemRouteTableName;
+            resourceInputs["systemRouteTableRoutePropagationEnable"] = state?.systemRouteTableRoutePropagationEnable;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["userCidrs"] = state?.userCidrs;
+            resourceInputs["vpcName"] = state?.vpcName;
         } else {
             const args = argsOrState as NetworkArgs | undefined;
-            resourceInputs["cidrBlock"] = args ? args.cidrBlock : undefined;
-            resourceInputs["classicLinkEnabled"] = args ? args.classicLinkEnabled : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dnsHostnameStatus"] = args ? args.dnsHostnameStatus : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["enableIpv6"] = args ? args.enableIpv6 : undefined;
-            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
-            resourceInputs["ipv4CidrMask"] = args ? args.ipv4CidrMask : undefined;
-            resourceInputs["ipv4IpamPoolId"] = args ? args.ipv4IpamPoolId : undefined;
-            resourceInputs["ipv6CidrBlock"] = args ? args.ipv6CidrBlock : undefined;
-            resourceInputs["ipv6Isp"] = args ? args.ipv6Isp : undefined;
-            resourceInputs["isDefault"] = args ? args.isDefault : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["secondaryCidrBlocks"] = args ? args.secondaryCidrBlocks : undefined;
-            resourceInputs["secondaryCidrMask"] = args ? args.secondaryCidrMask : undefined;
-            resourceInputs["systemRouteTableDescription"] = args ? args.systemRouteTableDescription : undefined;
-            resourceInputs["systemRouteTableName"] = args ? args.systemRouteTableName : undefined;
-            resourceInputs["systemRouteTableRoutePropagationEnable"] = args ? args.systemRouteTableRoutePropagationEnable : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["userCidrs"] = args ? args.userCidrs : undefined;
-            resourceInputs["vpcName"] = args ? args.vpcName : undefined;
+            resourceInputs["cidrBlock"] = args?.cidrBlock;
+            resourceInputs["classicLinkEnabled"] = args?.classicLinkEnabled;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dnsHostnameStatus"] = args?.dnsHostnameStatus;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["enableIpv6"] = args?.enableIpv6;
+            resourceInputs["forceDelete"] = args?.forceDelete;
+            resourceInputs["ipv4CidrMask"] = args?.ipv4CidrMask;
+            resourceInputs["ipv4IpamPoolId"] = args?.ipv4IpamPoolId;
+            resourceInputs["ipv6CidrBlock"] = args?.ipv6CidrBlock;
+            resourceInputs["ipv6Isp"] = args?.ipv6Isp;
+            resourceInputs["isDefault"] = args?.isDefault;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["secondaryCidrBlocks"] = args?.secondaryCidrBlocks;
+            resourceInputs["secondaryCidrMask"] = args?.secondaryCidrMask;
+            resourceInputs["systemRouteTableDescription"] = args?.systemRouteTableDescription;
+            resourceInputs["systemRouteTableName"] = args?.systemRouteTableName;
+            resourceInputs["systemRouteTableRoutePropagationEnable"] = args?.systemRouteTableRoutePropagationEnable;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["userCidrs"] = args?.userCidrs;
+            resourceInputs["vpcName"] = args?.vpcName;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["ipv6CidrBlocks"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;

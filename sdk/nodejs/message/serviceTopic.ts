@@ -67,31 +67,31 @@ export class ServiceTopic extends pulumi.CustomResource {
     /**
      * (Available since v1.241.0) The time when the topic was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Specifies whether to enable the logging feature. Default value: `false`. Valid values:
      */
-    public readonly enableLogging!: pulumi.Output<boolean>;
+    declare public readonly enableLogging: pulumi.Output<boolean>;
     /**
      * . Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
      *
      * @deprecated Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
      */
-    public readonly loggingEnabled!: pulumi.Output<boolean>;
+    declare public readonly loggingEnabled: pulumi.Output<boolean>;
     /**
      * The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
      */
-    public readonly maxMessageSize!: pulumi.Output<number>;
+    declare public readonly maxMessageSize: pulumi.Output<number>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the topic.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    public readonly topicName!: pulumi.Output<string>;
+    declare public readonly topicName: pulumi.Output<string>;
 
     /**
      * Create a ServiceTopic resource with the given unique name, arguments, and options.
@@ -106,22 +106,22 @@ export class ServiceTopic extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceTopicState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["enableLogging"] = state ? state.enableLogging : undefined;
-            resourceInputs["loggingEnabled"] = state ? state.loggingEnabled : undefined;
-            resourceInputs["maxMessageSize"] = state ? state.maxMessageSize : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["topicName"] = state ? state.topicName : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["enableLogging"] = state?.enableLogging;
+            resourceInputs["loggingEnabled"] = state?.loggingEnabled;
+            resourceInputs["maxMessageSize"] = state?.maxMessageSize;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["topicName"] = state?.topicName;
         } else {
             const args = argsOrState as ServiceTopicArgs | undefined;
-            if ((!args || args.topicName === undefined) && !opts.urn) {
+            if (args?.topicName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'topicName'");
             }
-            resourceInputs["enableLogging"] = args ? args.enableLogging : undefined;
-            resourceInputs["loggingEnabled"] = args ? args.loggingEnabled : undefined;
-            resourceInputs["maxMessageSize"] = args ? args.maxMessageSize : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["topicName"] = args ? args.topicName : undefined;
+            resourceInputs["enableLogging"] = args?.enableLogging;
+            resourceInputs["loggingEnabled"] = args?.loggingEnabled;
+            resourceInputs["maxMessageSize"] = args?.maxMessageSize;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["topicName"] = args?.topicName;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

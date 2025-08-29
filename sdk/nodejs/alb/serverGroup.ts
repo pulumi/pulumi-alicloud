@@ -140,35 +140,35 @@ export class ServerGroup extends pulumi.CustomResource {
     /**
      * Elegant interrupt configuration. See `connectionDrainConfig` below.
      */
-    public readonly connectionDrainConfig!: pulumi.Output<outputs.alb.ServerGroupConnectionDrainConfig>;
+    declare public readonly connectionDrainConfig: pulumi.Output<outputs.alb.ServerGroupConnectionDrainConfig>;
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Indicates whether cross-zone load balancing is enabled for the server group. Valid values:
      */
-    public readonly crossZoneEnabled!: pulumi.Output<boolean>;
+    declare public readonly crossZoneEnabled: pulumi.Output<boolean>;
     /**
      * Whether to PreCheck only this request. Value:
      * true: Send a check request,
      * false (default): Send a normal request.
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * The configuration of health checks See `healthCheckConfig` below.
      */
-    public readonly healthCheckConfig!: pulumi.Output<outputs.alb.ServerGroupHealthCheckConfig>;
+    declare public readonly healthCheckConfig: pulumi.Output<outputs.alb.ServerGroupHealthCheckConfig>;
     /**
      * The ID of the resource group to which you want to transfer the cloud resource.
      *
      * > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      */
-    public readonly healthCheckTemplateId!: pulumi.Output<string | undefined>;
+    declare public readonly healthCheckTemplateId: pulumi.Output<string | undefined>;
     /**
      * Enable Ipv6
      */
-    public readonly ipv6Enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly ipv6Enabled: pulumi.Output<boolean | undefined>;
     /**
      * The backend protocol. Valid values:
      *
@@ -180,11 +180,11 @@ export class ServerGroup extends pulumi.CustomResource {
      *
      * > **NOTE:**   You do not need to specify a backend protocol if you set `ServerGroupType` to `Fc`.
      */
-    public readonly protocol!: pulumi.Output<string>;
+    declare public readonly protocol: pulumi.Output<string>;
     /**
      * Elegant interrupt configuration.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The scheduling algorithm. Valid values:
      *
@@ -196,11 +196,11 @@ export class ServerGroup extends pulumi.CustomResource {
      *
      * > **NOTE:**  This parameter takes effect when the `ServerGroupType` parameter is set to `Instance` or `Ip`.
      */
-    public readonly scheduler!: pulumi.Output<string>;
+    declare public readonly scheduler: pulumi.Output<string>;
     /**
      * The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
      */
-    public readonly serverGroupName!: pulumi.Output<string>;
+    declare public readonly serverGroupName: pulumi.Output<string>;
     /**
      * The type of server group. Valid values:
      *
@@ -208,45 +208,45 @@ export class ServerGroup extends pulumi.CustomResource {
      * - `Ip`: allows you to add servers by specifying IP addresses.
      * - `Fc`: allows you to add servers by specifying functions of Function Compute.
      */
-    public readonly serverGroupType!: pulumi.Output<string>;
+    declare public readonly serverGroupType: pulumi.Output<string>;
     /**
      * List of servers. See `servers` below.
      */
-    public readonly servers!: pulumi.Output<outputs.alb.ServerGroupServer[] | undefined>;
+    declare public readonly servers: pulumi.Output<outputs.alb.ServerGroupServer[] | undefined>;
     /**
      * Only applicable to the ALB Ingress scenario, indicating the K8s Service name corresponding to the server group.
      */
-    public readonly serviceName!: pulumi.Output<string | undefined>;
+    declare public readonly serviceName: pulumi.Output<string | undefined>;
     /**
      * Slow start configuration. See `slowStartConfig` below.
      */
-    public readonly slowStartConfig!: pulumi.Output<outputs.alb.ServerGroupSlowStartConfig>;
+    declare public readonly slowStartConfig: pulumi.Output<outputs.alb.ServerGroupSlowStartConfig>;
     /**
      * The status of the resource
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The configuration of health checks See `stickySessionConfig` below.
      */
-    public readonly stickySessionConfig!: pulumi.Output<outputs.alb.ServerGroupStickySessionConfig | undefined>;
+    declare public readonly stickySessionConfig: pulumi.Output<outputs.alb.ServerGroupStickySessionConfig | undefined>;
     /**
      * The creation time of the resource
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Url consistency hash parameter configuration See `uchConfig` below.
      */
-    public readonly uchConfig!: pulumi.Output<outputs.alb.ServerGroupUchConfig | undefined>;
+    declare public readonly uchConfig: pulumi.Output<outputs.alb.ServerGroupUchConfig | undefined>;
     /**
      * Specifies whether to enable persistent TCP connections.
      */
-    public readonly upstreamKeepaliveEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly upstreamKeepaliveEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the virtual private cloud (VPC). You can add only servers that are deployed in the specified VPC to the server group.
      *
      * > **NOTE:**   This parameter takes effect when the `ServerGroupType` parameter is set to `Instance` or `Ip`.
      */
-    public readonly vpcId!: pulumi.Output<string | undefined>;
+    declare public readonly vpcId: pulumi.Output<string | undefined>;
 
     /**
      * Create a ServerGroup resource with the given unique name, arguments, and options.
@@ -261,54 +261,54 @@ export class ServerGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServerGroupState | undefined;
-            resourceInputs["connectionDrainConfig"] = state ? state.connectionDrainConfig : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["crossZoneEnabled"] = state ? state.crossZoneEnabled : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["healthCheckConfig"] = state ? state.healthCheckConfig : undefined;
-            resourceInputs["healthCheckTemplateId"] = state ? state.healthCheckTemplateId : undefined;
-            resourceInputs["ipv6Enabled"] = state ? state.ipv6Enabled : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["scheduler"] = state ? state.scheduler : undefined;
-            resourceInputs["serverGroupName"] = state ? state.serverGroupName : undefined;
-            resourceInputs["serverGroupType"] = state ? state.serverGroupType : undefined;
-            resourceInputs["servers"] = state ? state.servers : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["slowStartConfig"] = state ? state.slowStartConfig : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["stickySessionConfig"] = state ? state.stickySessionConfig : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["uchConfig"] = state ? state.uchConfig : undefined;
-            resourceInputs["upstreamKeepaliveEnabled"] = state ? state.upstreamKeepaliveEnabled : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["connectionDrainConfig"] = state?.connectionDrainConfig;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["crossZoneEnabled"] = state?.crossZoneEnabled;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["healthCheckConfig"] = state?.healthCheckConfig;
+            resourceInputs["healthCheckTemplateId"] = state?.healthCheckTemplateId;
+            resourceInputs["ipv6Enabled"] = state?.ipv6Enabled;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["scheduler"] = state?.scheduler;
+            resourceInputs["serverGroupName"] = state?.serverGroupName;
+            resourceInputs["serverGroupType"] = state?.serverGroupType;
+            resourceInputs["servers"] = state?.servers;
+            resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["slowStartConfig"] = state?.slowStartConfig;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["stickySessionConfig"] = state?.stickySessionConfig;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["uchConfig"] = state?.uchConfig;
+            resourceInputs["upstreamKeepaliveEnabled"] = state?.upstreamKeepaliveEnabled;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as ServerGroupArgs | undefined;
-            if ((!args || args.healthCheckConfig === undefined) && !opts.urn) {
+            if (args?.healthCheckConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'healthCheckConfig'");
             }
-            if ((!args || args.serverGroupName === undefined) && !opts.urn) {
+            if (args?.serverGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serverGroupName'");
             }
-            resourceInputs["connectionDrainConfig"] = args ? args.connectionDrainConfig : undefined;
-            resourceInputs["crossZoneEnabled"] = args ? args.crossZoneEnabled : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["healthCheckConfig"] = args ? args.healthCheckConfig : undefined;
-            resourceInputs["healthCheckTemplateId"] = args ? args.healthCheckTemplateId : undefined;
-            resourceInputs["ipv6Enabled"] = args ? args.ipv6Enabled : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["scheduler"] = args ? args.scheduler : undefined;
-            resourceInputs["serverGroupName"] = args ? args.serverGroupName : undefined;
-            resourceInputs["serverGroupType"] = args ? args.serverGroupType : undefined;
-            resourceInputs["servers"] = args ? args.servers : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["slowStartConfig"] = args ? args.slowStartConfig : undefined;
-            resourceInputs["stickySessionConfig"] = args ? args.stickySessionConfig : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["uchConfig"] = args ? args.uchConfig : undefined;
-            resourceInputs["upstreamKeepaliveEnabled"] = args ? args.upstreamKeepaliveEnabled : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["connectionDrainConfig"] = args?.connectionDrainConfig;
+            resourceInputs["crossZoneEnabled"] = args?.crossZoneEnabled;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["healthCheckConfig"] = args?.healthCheckConfig;
+            resourceInputs["healthCheckTemplateId"] = args?.healthCheckTemplateId;
+            resourceInputs["ipv6Enabled"] = args?.ipv6Enabled;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["scheduler"] = args?.scheduler;
+            resourceInputs["serverGroupName"] = args?.serverGroupName;
+            resourceInputs["serverGroupType"] = args?.serverGroupType;
+            resourceInputs["servers"] = args?.servers;
+            resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["slowStartConfig"] = args?.slowStartConfig;
+            resourceInputs["stickySessionConfig"] = args?.stickySessionConfig;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["uchConfig"] = args?.uchConfig;
+            resourceInputs["upstreamKeepaliveEnabled"] = args?.upstreamKeepaliveEnabled;
+            resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

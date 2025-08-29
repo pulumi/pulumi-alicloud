@@ -78,154 +78,154 @@ export class DBClusterLakeVersion extends pulumi.CustomResource {
     /**
      * The ID of the backup set that you want to use to restore data.
      */
-    public readonly backupSetId!: pulumi.Output<string | undefined>;
+    declare public readonly backupSetId: pulumi.Output<string | undefined>;
     /**
      * The name of the service.
      */
-    public /*out*/ readonly commodityCode!: pulumi.Output<string>;
+    declare public /*out*/ readonly commodityCode: pulumi.Output<string>;
     /**
      * The computing resources of the cluster.
      */
-    public readonly computeResource!: pulumi.Output<string>;
+    declare public readonly computeResource: pulumi.Output<string>;
     /**
      * The endpoint of the cluster.
      */
-    public /*out*/ readonly connectionString!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectionString: pulumi.Output<string>;
     /**
      * The createTime of the cluster.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The description of the cluster.
      */
-    public readonly dbClusterDescription!: pulumi.Output<string>;
+    declare public readonly dbClusterDescription: pulumi.Output<string>;
     /**
      * The version of the cluster. Valid values: `5.0`.
      */
-    public readonly dbClusterVersion!: pulumi.Output<string>;
+    declare public readonly dbClusterVersion: pulumi.Output<string>;
     /**
      * Specifies whether to enable disk encryption. Valid values: `true`, `false`.
      */
-    public readonly diskEncryption!: pulumi.Output<boolean | undefined>;
+    declare public readonly diskEncryption: pulumi.Output<boolean | undefined>;
     /**
      * Whether to enable default allocation of resources to userDefault resource groups.
      */
-    public readonly enableDefaultResourceGroup!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableDefaultResourceGroup: pulumi.Output<boolean | undefined>;
     /**
      * Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
      */
-    public readonly enableSsl!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableSsl: pulumi.Output<boolean | undefined>;
     /**
      * The engine of the database.
      */
-    public /*out*/ readonly engine!: pulumi.Output<string>;
+    declare public /*out*/ readonly engine: pulumi.Output<string>;
     /**
      * The engine version of the database.
      */
-    public /*out*/ readonly engineVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly engineVersion: pulumi.Output<string>;
     /**
      * The time when the cluster expires.
      */
-    public /*out*/ readonly expireTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly expireTime: pulumi.Output<string>;
     /**
      * Indicates whether the cluster has expired.
      */
-    public /*out*/ readonly expired!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly expired: pulumi.Output<boolean>;
     /**
      * The ID of the key that is used to encrypt disk data. `kmsId` is valid only when `diskEncryption` is set to `true`.
      */
-    public readonly kmsId!: pulumi.Output<string | undefined>;
+    declare public readonly kmsId: pulumi.Output<string | undefined>;
     /**
      * The lock mode of the cluster.
      */
-    public /*out*/ readonly lockMode!: pulumi.Output<string>;
+    declare public /*out*/ readonly lockMode: pulumi.Output<string>;
     /**
      * The reason why the cluster is locked.
      */
-    public /*out*/ readonly lockReason!: pulumi.Output<string>;
+    declare public /*out*/ readonly lockReason: pulumi.Output<string>;
     /**
      * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * The port that is used to access the cluster.
      */
-    public /*out*/ readonly port!: pulumi.Output<string>;
+    declare public /*out*/ readonly port: pulumi.Output<string>;
     /**
      * The product form of the cluster. Valid values:
      * - `IntegrationForm`: Integrated.
      * - `LegacyForm`: Data Lakehouse Edition.
      */
-    public readonly productForm!: pulumi.Output<string>;
+    declare public readonly productForm: pulumi.Output<string>;
     /**
      * The edition of the cluster. Valid values:
      * - `BasicVersion`: Basic Edition.
      * - `EnterpriseVersion`: Enterprise Edition.
      * > **NOTE:** `productVersion` must be specified only when `productForm` is set to `IntegrationForm`.
      */
-    public readonly productVersion!: pulumi.Output<string>;
+    declare public readonly productVersion: pulumi.Output<string>;
     /**
      * The number of reserved resource nodes.
      */
-    public readonly reservedNodeCount!: pulumi.Output<number>;
+    declare public readonly reservedNodeCount: pulumi.Output<number>;
     /**
      * The specifications of reserved resource nodes.
      */
-    public readonly reservedNodeSize!: pulumi.Output<string>;
+    declare public readonly reservedNodeSize: pulumi.Output<string>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The point in time to which you want to restore data from the backup set.
      */
-    public readonly restoreToTime!: pulumi.Output<string | undefined>;
+    declare public readonly restoreToTime: pulumi.Output<string | undefined>;
     /**
      * The method that you want to use to restore data. Valid values:
      */
-    public readonly restoreType!: pulumi.Output<string | undefined>;
+    declare public readonly restoreType: pulumi.Output<string | undefined>;
     /**
      * The ID of the secondary zone.
      */
-    public readonly secondaryVswitchId!: pulumi.Output<string | undefined>;
+    declare public readonly secondaryVswitchId: pulumi.Output<string | undefined>;
     /**
      * The ID of the secondary vSwitch.
      */
-    public readonly secondaryZoneId!: pulumi.Output<string | undefined>;
+    declare public readonly secondaryZoneId: pulumi.Output<string | undefined>;
     /**
      * The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
      * - IP addresses, such as 10.23.XX.XX.
      * - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
      */
-    public readonly securityIps!: pulumi.Output<string>;
+    declare public readonly securityIps: pulumi.Output<string>;
     /**
      * The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
      */
-    public readonly sourceDbClusterId!: pulumi.Output<string | undefined>;
+    declare public readonly sourceDbClusterId: pulumi.Output<string | undefined>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The storage resources of the cluster.
      */
-    public readonly storageResource!: pulumi.Output<string>;
+    declare public readonly storageResource: pulumi.Output<string>;
     /**
      * The vpc ID of the resource.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * The ID of the vSwitch.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
     /**
      * The zone ID of the resource.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a DBClusterLakeVersion resource with the given unique name, arguments, and options.
@@ -240,84 +240,84 @@ export class DBClusterLakeVersion extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DBClusterLakeVersionState | undefined;
-            resourceInputs["backupSetId"] = state ? state.backupSetId : undefined;
-            resourceInputs["commodityCode"] = state ? state.commodityCode : undefined;
-            resourceInputs["computeResource"] = state ? state.computeResource : undefined;
-            resourceInputs["connectionString"] = state ? state.connectionString : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dbClusterDescription"] = state ? state.dbClusterDescription : undefined;
-            resourceInputs["dbClusterVersion"] = state ? state.dbClusterVersion : undefined;
-            resourceInputs["diskEncryption"] = state ? state.diskEncryption : undefined;
-            resourceInputs["enableDefaultResourceGroup"] = state ? state.enableDefaultResourceGroup : undefined;
-            resourceInputs["enableSsl"] = state ? state.enableSsl : undefined;
-            resourceInputs["engine"] = state ? state.engine : undefined;
-            resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
-            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
-            resourceInputs["expired"] = state ? state.expired : undefined;
-            resourceInputs["kmsId"] = state ? state.kmsId : undefined;
-            resourceInputs["lockMode"] = state ? state.lockMode : undefined;
-            resourceInputs["lockReason"] = state ? state.lockReason : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["productForm"] = state ? state.productForm : undefined;
-            resourceInputs["productVersion"] = state ? state.productVersion : undefined;
-            resourceInputs["reservedNodeCount"] = state ? state.reservedNodeCount : undefined;
-            resourceInputs["reservedNodeSize"] = state ? state.reservedNodeSize : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["restoreToTime"] = state ? state.restoreToTime : undefined;
-            resourceInputs["restoreType"] = state ? state.restoreType : undefined;
-            resourceInputs["secondaryVswitchId"] = state ? state.secondaryVswitchId : undefined;
-            resourceInputs["secondaryZoneId"] = state ? state.secondaryZoneId : undefined;
-            resourceInputs["securityIps"] = state ? state.securityIps : undefined;
-            resourceInputs["sourceDbClusterId"] = state ? state.sourceDbClusterId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["storageResource"] = state ? state.storageResource : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["backupSetId"] = state?.backupSetId;
+            resourceInputs["commodityCode"] = state?.commodityCode;
+            resourceInputs["computeResource"] = state?.computeResource;
+            resourceInputs["connectionString"] = state?.connectionString;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dbClusterDescription"] = state?.dbClusterDescription;
+            resourceInputs["dbClusterVersion"] = state?.dbClusterVersion;
+            resourceInputs["diskEncryption"] = state?.diskEncryption;
+            resourceInputs["enableDefaultResourceGroup"] = state?.enableDefaultResourceGroup;
+            resourceInputs["enableSsl"] = state?.enableSsl;
+            resourceInputs["engine"] = state?.engine;
+            resourceInputs["engineVersion"] = state?.engineVersion;
+            resourceInputs["expireTime"] = state?.expireTime;
+            resourceInputs["expired"] = state?.expired;
+            resourceInputs["kmsId"] = state?.kmsId;
+            resourceInputs["lockMode"] = state?.lockMode;
+            resourceInputs["lockReason"] = state?.lockReason;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["productForm"] = state?.productForm;
+            resourceInputs["productVersion"] = state?.productVersion;
+            resourceInputs["reservedNodeCount"] = state?.reservedNodeCount;
+            resourceInputs["reservedNodeSize"] = state?.reservedNodeSize;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["restoreToTime"] = state?.restoreToTime;
+            resourceInputs["restoreType"] = state?.restoreType;
+            resourceInputs["secondaryVswitchId"] = state?.secondaryVswitchId;
+            resourceInputs["secondaryZoneId"] = state?.secondaryZoneId;
+            resourceInputs["securityIps"] = state?.securityIps;
+            resourceInputs["sourceDbClusterId"] = state?.sourceDbClusterId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["storageResource"] = state?.storageResource;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as DBClusterLakeVersionArgs | undefined;
-            if ((!args || args.dbClusterVersion === undefined) && !opts.urn) {
+            if (args?.dbClusterVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbClusterVersion'");
             }
-            if ((!args || args.paymentType === undefined) && !opts.urn) {
+            if (args?.paymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+            if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["backupSetId"] = args ? args.backupSetId : undefined;
-            resourceInputs["computeResource"] = args ? args.computeResource : undefined;
-            resourceInputs["dbClusterDescription"] = args ? args.dbClusterDescription : undefined;
-            resourceInputs["dbClusterVersion"] = args ? args.dbClusterVersion : undefined;
-            resourceInputs["diskEncryption"] = args ? args.diskEncryption : undefined;
-            resourceInputs["enableDefaultResourceGroup"] = args ? args.enableDefaultResourceGroup : undefined;
-            resourceInputs["enableSsl"] = args ? args.enableSsl : undefined;
-            resourceInputs["kmsId"] = args ? args.kmsId : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["productForm"] = args ? args.productForm : undefined;
-            resourceInputs["productVersion"] = args ? args.productVersion : undefined;
-            resourceInputs["reservedNodeCount"] = args ? args.reservedNodeCount : undefined;
-            resourceInputs["reservedNodeSize"] = args ? args.reservedNodeSize : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["restoreToTime"] = args ? args.restoreToTime : undefined;
-            resourceInputs["restoreType"] = args ? args.restoreType : undefined;
-            resourceInputs["secondaryVswitchId"] = args ? args.secondaryVswitchId : undefined;
-            resourceInputs["secondaryZoneId"] = args ? args.secondaryZoneId : undefined;
-            resourceInputs["securityIps"] = args ? args.securityIps : undefined;
-            resourceInputs["sourceDbClusterId"] = args ? args.sourceDbClusterId : undefined;
-            resourceInputs["storageResource"] = args ? args.storageResource : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["backupSetId"] = args?.backupSetId;
+            resourceInputs["computeResource"] = args?.computeResource;
+            resourceInputs["dbClusterDescription"] = args?.dbClusterDescription;
+            resourceInputs["dbClusterVersion"] = args?.dbClusterVersion;
+            resourceInputs["diskEncryption"] = args?.diskEncryption;
+            resourceInputs["enableDefaultResourceGroup"] = args?.enableDefaultResourceGroup;
+            resourceInputs["enableSsl"] = args?.enableSsl;
+            resourceInputs["kmsId"] = args?.kmsId;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["productForm"] = args?.productForm;
+            resourceInputs["productVersion"] = args?.productVersion;
+            resourceInputs["reservedNodeCount"] = args?.reservedNodeCount;
+            resourceInputs["reservedNodeSize"] = args?.reservedNodeSize;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["restoreToTime"] = args?.restoreToTime;
+            resourceInputs["restoreType"] = args?.restoreType;
+            resourceInputs["secondaryVswitchId"] = args?.secondaryVswitchId;
+            resourceInputs["secondaryZoneId"] = args?.secondaryZoneId;
+            resourceInputs["securityIps"] = args?.securityIps;
+            resourceInputs["sourceDbClusterId"] = args?.sourceDbClusterId;
+            resourceInputs["storageResource"] = args?.storageResource;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["commodityCode"] = undefined /*out*/;
             resourceInputs["connectionString"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;

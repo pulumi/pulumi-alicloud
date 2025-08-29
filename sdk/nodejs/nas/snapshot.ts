@@ -80,24 +80,24 @@ export class Snapshot extends pulumi.CustomResource {
     /**
      * The description of the snapshot. It must be `2` to `256` characters in length and cannot start with `https://` or `https://`.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The ID of the file system.
      */
-    public readonly fileSystemId!: pulumi.Output<string>;
+    declare public readonly fileSystemId: pulumi.Output<string>;
     /**
      * The retention period of the snapshot. Unit: days. Valid values:
      * * `-1`: The default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
      */
-    public readonly retentionDays!: pulumi.Output<number | undefined>;
+    declare public readonly retentionDays: pulumi.Output<number | undefined>;
     /**
      * SnapshotName. It must be `2` to `128` characters in length and must start with a letter, but cannot start with `https://` or `https://`.
      */
-    public readonly snapshotName!: pulumi.Output<string | undefined>;
+    declare public readonly snapshotName: pulumi.Output<string | undefined>;
     /**
      * The status of the snapshot.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a Snapshot resource with the given unique name, arguments, and options.
@@ -112,20 +112,20 @@ export class Snapshot extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SnapshotState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["fileSystemId"] = state ? state.fileSystemId : undefined;
-            resourceInputs["retentionDays"] = state ? state.retentionDays : undefined;
-            resourceInputs["snapshotName"] = state ? state.snapshotName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["fileSystemId"] = state?.fileSystemId;
+            resourceInputs["retentionDays"] = state?.retentionDays;
+            resourceInputs["snapshotName"] = state?.snapshotName;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as SnapshotArgs | undefined;
-            if ((!args || args.fileSystemId === undefined) && !opts.urn) {
+            if (args?.fileSystemId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fileSystemId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["fileSystemId"] = args ? args.fileSystemId : undefined;
-            resourceInputs["retentionDays"] = args ? args.retentionDays : undefined;
-            resourceInputs["snapshotName"] = args ? args.snapshotName : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["fileSystemId"] = args?.fileSystemId;
+            resourceInputs["retentionDays"] = args?.retentionDays;
+            resourceInputs["snapshotName"] = args?.snapshotName;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

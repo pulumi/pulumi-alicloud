@@ -86,11 +86,11 @@ export class PublicNetworkAddress extends pulumi.CustomResource {
     /**
      * The instance ID.
      */
-    public readonly dbInstanceId!: pulumi.Output<string>;
+    declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
      * Replica set instance information.
      */
-    public /*out*/ readonly replicaSets!: pulumi.Output<outputs.mongodb.PublicNetworkAddressReplicaSet[]>;
+    declare public /*out*/ readonly replicaSets: pulumi.Output<outputs.mongodb.PublicNetworkAddressReplicaSet[]>;
 
     /**
      * Create a PublicNetworkAddress resource with the given unique name, arguments, and options.
@@ -105,14 +105,14 @@ export class PublicNetworkAddress extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PublicNetworkAddressState | undefined;
-            resourceInputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
-            resourceInputs["replicaSets"] = state ? state.replicaSets : undefined;
+            resourceInputs["dbInstanceId"] = state?.dbInstanceId;
+            resourceInputs["replicaSets"] = state?.replicaSets;
         } else {
             const args = argsOrState as PublicNetworkAddressArgs | undefined;
-            if ((!args || args.dbInstanceId === undefined) && !opts.urn) {
+            if (args?.dbInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceId'");
             }
-            resourceInputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
+            resourceInputs["dbInstanceId"] = args?.dbInstanceId;
             resourceInputs["replicaSets"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -63,7 +63,7 @@ export class Product extends pulumi.CustomResource {
     /**
      * ProductName.
      */
-    public readonly productName!: pulumi.Output<string>;
+    declare public readonly productName: pulumi.Output<string>;
 
     /**
      * Create a Product resource with the given unique name, arguments, and options.
@@ -78,13 +78,13 @@ export class Product extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProductState | undefined;
-            resourceInputs["productName"] = state ? state.productName : undefined;
+            resourceInputs["productName"] = state?.productName;
         } else {
             const args = argsOrState as ProductArgs | undefined;
-            if ((!args || args.productName === undefined) && !opts.urn) {
+            if (args?.productName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'productName'");
             }
-            resourceInputs["productName"] = args ? args.productName : undefined;
+            resourceInputs["productName"] = args?.productName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Product.__pulumiType, name, resourceInputs, opts);

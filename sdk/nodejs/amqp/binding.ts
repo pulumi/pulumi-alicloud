@@ -99,7 +99,7 @@ export class Binding extends pulumi.CustomResource {
      * - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
      * - > **NOTE:** If the exchange type is not 'HEADERS', the `argument` should not been set, otherwise, there are always "forces replacement" changes.
      */
-    public readonly argument!: pulumi.Output<string>;
+    declare public readonly argument: pulumi.Output<string>;
     /**
      * The Binding Key.
      * * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
@@ -108,27 +108,27 @@ export class Binding extends pulumi.CustomResource {
      * If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
      * The binding key must be 1 to 255 characters in length.
      */
-    public readonly bindingKey!: pulumi.Output<string>;
+    declare public readonly bindingKey: pulumi.Output<string>;
     /**
      * The type of the object that you want to bind to the source exchange. Valid values: `EXCHANGE`, `QUEUE`.
      */
-    public readonly bindingType!: pulumi.Output<string>;
+    declare public readonly bindingType: pulumi.Output<string>;
     /**
      * The name of the object that you want to bind to the source exchange.
      */
-    public readonly destinationName!: pulumi.Output<string>;
+    declare public readonly destinationName: pulumi.Output<string>;
     /**
      * The ID of the instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The name of the source exchange.
      */
-    public readonly sourceExchange!: pulumi.Output<string>;
+    declare public readonly sourceExchange: pulumi.Output<string>;
     /**
      * The name of the vhost.
      */
-    public readonly virtualHostName!: pulumi.Output<string>;
+    declare public readonly virtualHostName: pulumi.Output<string>;
 
     /**
      * Create a Binding resource with the given unique name, arguments, and options.
@@ -143,40 +143,40 @@ export class Binding extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BindingState | undefined;
-            resourceInputs["argument"] = state ? state.argument : undefined;
-            resourceInputs["bindingKey"] = state ? state.bindingKey : undefined;
-            resourceInputs["bindingType"] = state ? state.bindingType : undefined;
-            resourceInputs["destinationName"] = state ? state.destinationName : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["sourceExchange"] = state ? state.sourceExchange : undefined;
-            resourceInputs["virtualHostName"] = state ? state.virtualHostName : undefined;
+            resourceInputs["argument"] = state?.argument;
+            resourceInputs["bindingKey"] = state?.bindingKey;
+            resourceInputs["bindingType"] = state?.bindingType;
+            resourceInputs["destinationName"] = state?.destinationName;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["sourceExchange"] = state?.sourceExchange;
+            resourceInputs["virtualHostName"] = state?.virtualHostName;
         } else {
             const args = argsOrState as BindingArgs | undefined;
-            if ((!args || args.bindingKey === undefined) && !opts.urn) {
+            if (args?.bindingKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bindingKey'");
             }
-            if ((!args || args.bindingType === undefined) && !opts.urn) {
+            if (args?.bindingType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bindingType'");
             }
-            if ((!args || args.destinationName === undefined) && !opts.urn) {
+            if (args?.destinationName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationName'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.sourceExchange === undefined) && !opts.urn) {
+            if (args?.sourceExchange === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceExchange'");
             }
-            if ((!args || args.virtualHostName === undefined) && !opts.urn) {
+            if (args?.virtualHostName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'virtualHostName'");
             }
-            resourceInputs["argument"] = args ? args.argument : undefined;
-            resourceInputs["bindingKey"] = args ? args.bindingKey : undefined;
-            resourceInputs["bindingType"] = args ? args.bindingType : undefined;
-            resourceInputs["destinationName"] = args ? args.destinationName : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["sourceExchange"] = args ? args.sourceExchange : undefined;
-            resourceInputs["virtualHostName"] = args ? args.virtualHostName : undefined;
+            resourceInputs["argument"] = args?.argument;
+            resourceInputs["bindingKey"] = args?.bindingKey;
+            resourceInputs["bindingType"] = args?.bindingType;
+            resourceInputs["destinationName"] = args?.destinationName;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["sourceExchange"] = args?.sourceExchange;
+            resourceInputs["virtualHostName"] = args?.virtualHostName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Binding.__pulumiType, name, resourceInputs, opts);

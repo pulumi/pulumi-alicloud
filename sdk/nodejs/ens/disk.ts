@@ -70,35 +70,35 @@ export class Disk extends pulumi.CustomResource {
     /**
      * The category of the disk. Valid values: `cloudEfficiency` (high-efficiency cloud disk), `cloudSsd` (full Flash cloud disk), `localHdd` (local HDD), `localSsd` (local ssd).
      */
-    public readonly category!: pulumi.Output<string>;
+    declare public readonly category: pulumi.Output<string>;
     /**
      * The time when the disk was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The name of the disk.
      */
-    public readonly diskName!: pulumi.Output<string | undefined>;
+    declare public readonly diskName: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to encrypt the new system disk. Valid values: `true`, `false`(default).
      */
-    public readonly encrypted!: pulumi.Output<boolean | undefined>;
+    declare public readonly encrypted: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the edge node.
      */
-    public readonly ensRegionId!: pulumi.Output<string>;
+    declare public readonly ensRegionId: pulumi.Output<string>;
     /**
      * The ID of the KMS key used by the cloud disk. If `encrypted` is set to `true`, the service default key is used when KMSKeyId is empty.
      */
-    public readonly kmsKeyId!: pulumi.Output<string>;
+    declare public readonly kmsKeyId: pulumi.Output<string>;
     /**
      * The billing method of the instance. Valid values: `PayAsYouGo`.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * The size of the disk instance. Unit: GiB.
      */
-    public readonly size!: pulumi.Output<number | undefined>;
+    declare public readonly size: pulumi.Output<number | undefined>;
     /**
      * The ID of the snapshot used to create the cloud disk.
      *
@@ -106,15 +106,15 @@ export class Disk extends pulumi.CustomResource {
      * - If the snapshot capacity corresponding to the `snapshotId` parameter is greater than the specified `size` parameter, the Size of the cloud disk created is the Size of the specified snapshot.
      * - If the snapshot capacity corresponding to the `snapshotId` parameter is less than the set `size` parameter value, the Size of the cloud disk created is the specified `size` parameter value.
      */
-    public readonly snapshotId!: pulumi.Output<string | undefined>;
+    declare public readonly snapshotId: pulumi.Output<string | undefined>;
     /**
      * The status of the disk.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The label to which the instance is bound.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Disk resource with the given unique name, arguments, and options.
@@ -129,37 +129,37 @@ export class Disk extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DiskState | undefined;
-            resourceInputs["category"] = state ? state.category : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["diskName"] = state ? state.diskName : undefined;
-            resourceInputs["encrypted"] = state ? state.encrypted : undefined;
-            resourceInputs["ensRegionId"] = state ? state.ensRegionId : undefined;
-            resourceInputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["snapshotId"] = state ? state.snapshotId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["category"] = state?.category;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["diskName"] = state?.diskName;
+            resourceInputs["encrypted"] = state?.encrypted;
+            resourceInputs["ensRegionId"] = state?.ensRegionId;
+            resourceInputs["kmsKeyId"] = state?.kmsKeyId;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["snapshotId"] = state?.snapshotId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as DiskArgs | undefined;
-            if ((!args || args.category === undefined) && !opts.urn) {
+            if (args?.category === undefined && !opts.urn) {
                 throw new Error("Missing required property 'category'");
             }
-            if ((!args || args.ensRegionId === undefined) && !opts.urn) {
+            if (args?.ensRegionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ensRegionId'");
             }
-            if ((!args || args.paymentType === undefined) && !opts.urn) {
+            if (args?.paymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            resourceInputs["category"] = args ? args.category : undefined;
-            resourceInputs["diskName"] = args ? args.diskName : undefined;
-            resourceInputs["encrypted"] = args ? args.encrypted : undefined;
-            resourceInputs["ensRegionId"] = args ? args.ensRegionId : undefined;
-            resourceInputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["size"] = args ? args.size : undefined;
-            resourceInputs["snapshotId"] = args ? args.snapshotId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["category"] = args?.category;
+            resourceInputs["diskName"] = args?.diskName;
+            resourceInputs["encrypted"] = args?.encrypted;
+            resourceInputs["ensRegionId"] = args?.ensRegionId;
+            resourceInputs["kmsKeyId"] = args?.kmsKeyId;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["size"] = args?.size;
+            resourceInputs["snapshotId"] = args?.snapshotId;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

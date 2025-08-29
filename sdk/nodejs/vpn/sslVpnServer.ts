@@ -51,47 +51,47 @@ export class SslVpnServer extends pulumi.CustomResource {
      * * `AES-192-CBC` - the AES-192-CBC algorithm.
      * * `AES-256-CBC` - the AES-256-CBC algorithm.
      */
-    public readonly cipher!: pulumi.Output<string | undefined>;
+    declare public readonly cipher: pulumi.Output<string | undefined>;
     /**
      * The CIDR block from which access addresses are allocated to the virtual network interface card of the client.
      */
-    public readonly clientIpPool!: pulumi.Output<string>;
+    declare public readonly clientIpPool: pulumi.Output<string>;
     /**
      * Specifies whether to enable data compression. Valid values: `true`,`false`. Default value: `false`
      */
-    public readonly compress!: pulumi.Output<boolean | undefined>;
+    declare public readonly compress: pulumi.Output<boolean | undefined>;
     /**
      * The number of current connections.
      */
-    public /*out*/ readonly connections!: pulumi.Output<number>;
+    declare public /*out*/ readonly connections: pulumi.Output<number>;
     /**
      * The internet IP of the SSL-VPN server.
      */
-    public /*out*/ readonly internetIp!: pulumi.Output<string>;
+    declare public /*out*/ readonly internetIp: pulumi.Output<string>;
     /**
      * The CIDR block to be accessed by the client through the SSL-VPN connection. It supports to set multi CIDRs by comma join ways, like `10.0.1.0/24,10.0.2.0/24,10.0.3.0/24`.
      */
-    public readonly localSubnet!: pulumi.Output<string>;
+    declare public readonly localSubnet: pulumi.Output<string>;
     /**
      * The maximum number of connections.
      */
-    public /*out*/ readonly maxConnections!: pulumi.Output<number>;
+    declare public /*out*/ readonly maxConnections: pulumi.Output<number>;
     /**
      * The name of the SSL-VPN server.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The port used by the SSL-VPN server. The default value is `1194`.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
      */
-    public readonly port!: pulumi.Output<number | undefined>;
+    declare public readonly port: pulumi.Output<number | undefined>;
     /**
      * The protocol used by the SSL-VPN server. Valid value: UDP(default) |TCP
      */
-    public readonly protocol!: pulumi.Output<string | undefined>;
+    declare public readonly protocol: pulumi.Output<string | undefined>;
     /**
      * The ID of the VPN gateway.
      */
-    public readonly vpnGatewayId!: pulumi.Output<string>;
+    declare public readonly vpnGatewayId: pulumi.Output<string>;
 
     /**
      * Create a SslVpnServer resource with the given unique name, arguments, and options.
@@ -106,36 +106,36 @@ export class SslVpnServer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SslVpnServerState | undefined;
-            resourceInputs["cipher"] = state ? state.cipher : undefined;
-            resourceInputs["clientIpPool"] = state ? state.clientIpPool : undefined;
-            resourceInputs["compress"] = state ? state.compress : undefined;
-            resourceInputs["connections"] = state ? state.connections : undefined;
-            resourceInputs["internetIp"] = state ? state.internetIp : undefined;
-            resourceInputs["localSubnet"] = state ? state.localSubnet : undefined;
-            resourceInputs["maxConnections"] = state ? state.maxConnections : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["vpnGatewayId"] = state ? state.vpnGatewayId : undefined;
+            resourceInputs["cipher"] = state?.cipher;
+            resourceInputs["clientIpPool"] = state?.clientIpPool;
+            resourceInputs["compress"] = state?.compress;
+            resourceInputs["connections"] = state?.connections;
+            resourceInputs["internetIp"] = state?.internetIp;
+            resourceInputs["localSubnet"] = state?.localSubnet;
+            resourceInputs["maxConnections"] = state?.maxConnections;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["vpnGatewayId"] = state?.vpnGatewayId;
         } else {
             const args = argsOrState as SslVpnServerArgs | undefined;
-            if ((!args || args.clientIpPool === undefined) && !opts.urn) {
+            if (args?.clientIpPool === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clientIpPool'");
             }
-            if ((!args || args.localSubnet === undefined) && !opts.urn) {
+            if (args?.localSubnet === undefined && !opts.urn) {
                 throw new Error("Missing required property 'localSubnet'");
             }
-            if ((!args || args.vpnGatewayId === undefined) && !opts.urn) {
+            if (args?.vpnGatewayId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpnGatewayId'");
             }
-            resourceInputs["cipher"] = args ? args.cipher : undefined;
-            resourceInputs["clientIpPool"] = args ? args.clientIpPool : undefined;
-            resourceInputs["compress"] = args ? args.compress : undefined;
-            resourceInputs["localSubnet"] = args ? args.localSubnet : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["vpnGatewayId"] = args ? args.vpnGatewayId : undefined;
+            resourceInputs["cipher"] = args?.cipher;
+            resourceInputs["clientIpPool"] = args?.clientIpPool;
+            resourceInputs["compress"] = args?.compress;
+            resourceInputs["localSubnet"] = args?.localSubnet;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["vpnGatewayId"] = args?.vpnGatewayId;
             resourceInputs["connections"] = undefined /*out*/;
             resourceInputs["internetIp"] = undefined /*out*/;
             resourceInputs["maxConnections"] = undefined /*out*/;

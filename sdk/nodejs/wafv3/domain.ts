@@ -52,31 +52,31 @@ export class Domain extends pulumi.CustomResource {
     /**
      * The access type of the WAF instance. Value: **share** (default): CNAME access.
      */
-    public readonly accessType!: pulumi.Output<string | undefined>;
+    declare public readonly accessType: pulumi.Output<string | undefined>;
     /**
      * The name of the domain name to query.
      */
-    public readonly domain!: pulumi.Output<string>;
+    declare public readonly domain: pulumi.Output<string>;
     /**
      * WAF instance ID
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Configure listening information. See `listen` below.
      */
-    public readonly listen!: pulumi.Output<outputs.wafv3.DomainListen>;
+    declare public readonly listen: pulumi.Output<outputs.wafv3.DomainListen>;
     /**
      * Configure forwarding information. See `redirect` below.
      */
-    public readonly redirect!: pulumi.Output<outputs.wafv3.DomainRedirect>;
+    declare public readonly redirect: pulumi.Output<outputs.wafv3.DomainRedirect>;
     /**
      * The ID of the resource group.
      */
-    public /*out*/ readonly resourceManagerResourceGroupId!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceManagerResourceGroupId: pulumi.Output<string>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a Domain resource with the given unique name, arguments, and options.
@@ -91,32 +91,32 @@ export class Domain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainState | undefined;
-            resourceInputs["accessType"] = state ? state.accessType : undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["listen"] = state ? state.listen : undefined;
-            resourceInputs["redirect"] = state ? state.redirect : undefined;
-            resourceInputs["resourceManagerResourceGroupId"] = state ? state.resourceManagerResourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["accessType"] = state?.accessType;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["listen"] = state?.listen;
+            resourceInputs["redirect"] = state?.redirect;
+            resourceInputs["resourceManagerResourceGroupId"] = state?.resourceManagerResourceGroupId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as DomainArgs | undefined;
-            if ((!args || args.domain === undefined) && !opts.urn) {
+            if (args?.domain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domain'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.listen === undefined) && !opts.urn) {
+            if (args?.listen === undefined && !opts.urn) {
                 throw new Error("Missing required property 'listen'");
             }
-            if ((!args || args.redirect === undefined) && !opts.urn) {
+            if (args?.redirect === undefined && !opts.urn) {
                 throw new Error("Missing required property 'redirect'");
             }
-            resourceInputs["accessType"] = args ? args.accessType : undefined;
-            resourceInputs["domain"] = args ? args.domain : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["listen"] = args ? args.listen : undefined;
-            resourceInputs["redirect"] = args ? args.redirect : undefined;
+            resourceInputs["accessType"] = args?.accessType;
+            resourceInputs["domain"] = args?.domain;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["listen"] = args?.listen;
+            resourceInputs["redirect"] = args?.redirect;
             resourceInputs["resourceManagerResourceGroupId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

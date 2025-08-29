@@ -61,27 +61,27 @@ export class ServiceLinkedRole extends pulumi.CustomResource {
     /**
      * The Alibaba Cloud Resource Name (ARN) of the role.
      */
-    public /*out*/ readonly arn!: pulumi.Output<string>;
+    declare public /*out*/ readonly arn: pulumi.Output<string>;
     /**
      * The suffix of the role name. Only a few service linked roles support custom suffixes. The role name (including its suffix) must be 1 to 64 characters in length and can contain letters, digits, periods (.), and hyphens (-). For example, if the suffix is Example, the role name is ServiceLinkedRoleName_Example.
      */
-    public readonly customSuffix!: pulumi.Output<string | undefined>;
+    declare public readonly customSuffix: pulumi.Output<string | undefined>;
     /**
      * The description of the service linked role.  This parameter must be specified for only the service linked roles that support custom suffixes. Otherwise, the preset value is used and cannot be modified. The description must be 1 to 1,024 characters in length.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The ID of the role.
      */
-    public /*out*/ readonly roleId!: pulumi.Output<string>;
+    declare public /*out*/ readonly roleId: pulumi.Output<string>;
     /**
      * The name of the role.
      */
-    public /*out*/ readonly roleName!: pulumi.Output<string>;
+    declare public /*out*/ readonly roleName: pulumi.Output<string>;
     /**
      * The service name. For more information about the service name, see [Cloud services that support service linked roles](https://www.alibabacloud.com/help/en/doc-detail/160674.htm)
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
 
     /**
      * Create a ServiceLinkedRole resource with the given unique name, arguments, and options.
@@ -96,20 +96,20 @@ export class ServiceLinkedRole extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceLinkedRoleState | undefined;
-            resourceInputs["arn"] = state ? state.arn : undefined;
-            resourceInputs["customSuffix"] = state ? state.customSuffix : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["roleId"] = state ? state.roleId : undefined;
-            resourceInputs["roleName"] = state ? state.roleName : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["arn"] = state?.arn;
+            resourceInputs["customSuffix"] = state?.customSuffix;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["roleId"] = state?.roleId;
+            resourceInputs["roleName"] = state?.roleName;
+            resourceInputs["serviceName"] = state?.serviceName;
         } else {
             const args = argsOrState as ServiceLinkedRoleArgs | undefined;
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            resourceInputs["customSuffix"] = args ? args.customSuffix : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["customSuffix"] = args?.customSuffix;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["serviceName"] = args?.serviceName;
             resourceInputs["arn"] = undefined /*out*/;
             resourceInputs["roleId"] = undefined /*out*/;
             resourceInputs["roleName"] = undefined /*out*/;

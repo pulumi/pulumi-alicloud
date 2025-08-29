@@ -34,17 +34,17 @@ export class Application extends pulumi.CustomResource {
         return obj['__pulumiType'] === Application.__pulumiType;
     }
 
-    public readonly blueGreen!: pulumi.Output<boolean | undefined>;
-    public readonly blueGreenConfirm!: pulumi.Output<boolean | undefined>;
-    public readonly clusterName!: pulumi.Output<string>;
-    public /*out*/ readonly defaultDomain!: pulumi.Output<string>;
-    public readonly description!: pulumi.Output<string | undefined>;
-    public readonly environment!: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly latestImage!: pulumi.Output<boolean | undefined>;
-    public readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly services!: pulumi.Output<outputs.cs.ApplicationService[]>;
-    public readonly template!: pulumi.Output<string>;
-    public readonly version!: pulumi.Output<string | undefined>;
+    declare public readonly blueGreen: pulumi.Output<boolean | undefined>;
+    declare public readonly blueGreenConfirm: pulumi.Output<boolean | undefined>;
+    declare public readonly clusterName: pulumi.Output<string>;
+    declare public /*out*/ readonly defaultDomain: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly environment: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly latestImage: pulumi.Output<boolean | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public /*out*/ readonly services: pulumi.Output<outputs.cs.ApplicationService[]>;
+    declare public readonly template: pulumi.Output<string>;
+    declare public readonly version: pulumi.Output<string | undefined>;
 
     /**
      * Create a Application resource with the given unique name, arguments, and options.
@@ -59,34 +59,34 @@ export class Application extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationState | undefined;
-            resourceInputs["blueGreen"] = state ? state.blueGreen : undefined;
-            resourceInputs["blueGreenConfirm"] = state ? state.blueGreenConfirm : undefined;
-            resourceInputs["clusterName"] = state ? state.clusterName : undefined;
-            resourceInputs["defaultDomain"] = state ? state.defaultDomain : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["environment"] = state ? state.environment : undefined;
-            resourceInputs["latestImage"] = state ? state.latestImage : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["services"] = state ? state.services : undefined;
-            resourceInputs["template"] = state ? state.template : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["blueGreen"] = state?.blueGreen;
+            resourceInputs["blueGreenConfirm"] = state?.blueGreenConfirm;
+            resourceInputs["clusterName"] = state?.clusterName;
+            resourceInputs["defaultDomain"] = state?.defaultDomain;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["environment"] = state?.environment;
+            resourceInputs["latestImage"] = state?.latestImage;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["services"] = state?.services;
+            resourceInputs["template"] = state?.template;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as ApplicationArgs | undefined;
-            if ((!args || args.clusterName === undefined) && !opts.urn) {
+            if (args?.clusterName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterName'");
             }
-            if ((!args || args.template === undefined) && !opts.urn) {
+            if (args?.template === undefined && !opts.urn) {
                 throw new Error("Missing required property 'template'");
             }
-            resourceInputs["blueGreen"] = args ? args.blueGreen : undefined;
-            resourceInputs["blueGreenConfirm"] = args ? args.blueGreenConfirm : undefined;
-            resourceInputs["clusterName"] = args ? args.clusterName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["environment"] = args ? args.environment : undefined;
-            resourceInputs["latestImage"] = args ? args.latestImage : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["template"] = args ? args.template : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["blueGreen"] = args?.blueGreen;
+            resourceInputs["blueGreenConfirm"] = args?.blueGreenConfirm;
+            resourceInputs["clusterName"] = args?.clusterName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["environment"] = args?.environment;
+            resourceInputs["latestImage"] = args?.latestImage;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["template"] = args?.template;
+            resourceInputs["version"] = args?.version;
             resourceInputs["defaultDomain"] = undefined /*out*/;
             resourceInputs["services"] = undefined /*out*/;
         }

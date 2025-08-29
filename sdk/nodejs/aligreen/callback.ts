@@ -79,27 +79,27 @@ export class Callback extends pulumi.CustomResource {
     /**
      * The Callback name defined by the customer. It can contain no more than 20 characters in Chinese, English, underscore (_), and digits.
      */
-    public readonly callbackName!: pulumi.Output<string>;
+    declare public readonly callbackName: pulumi.Output<string>;
     /**
      * List of audit results supported by message notification. Value: block: confirmed violation, review: Suspected violation, review: normal.
      */
-    public readonly callbackSuggestions!: pulumi.Output<string[]>;
+    declare public readonly callbackSuggestions: pulumi.Output<string[]>;
     /**
      * A list of Callback types. Value: machineScan: Machine audit result notification, selfAudit: self-service audit notification.
      */
-    public readonly callbackTypes!: pulumi.Output<string[]>;
+    declare public readonly callbackTypes: pulumi.Output<string[]>;
     /**
      * The detection result will be called back to the url.
      */
-    public readonly callbackUrl!: pulumi.Output<string>;
+    declare public readonly callbackUrl: pulumi.Output<string>;
     /**
      * The creation time of the Callback.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The encryption algorithm is used to verify that the callback request is sent by the Aliyun Green Service to your business service. Value: 0:SHA256,1: SM3.
      */
-    public readonly cryptType!: pulumi.Output<number | undefined>;
+    declare public readonly cryptType: pulumi.Output<number | undefined>;
 
     /**
      * Create a Callback resource with the given unique name, arguments, and options.
@@ -114,31 +114,31 @@ export class Callback extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CallbackState | undefined;
-            resourceInputs["callbackName"] = state ? state.callbackName : undefined;
-            resourceInputs["callbackSuggestions"] = state ? state.callbackSuggestions : undefined;
-            resourceInputs["callbackTypes"] = state ? state.callbackTypes : undefined;
-            resourceInputs["callbackUrl"] = state ? state.callbackUrl : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["cryptType"] = state ? state.cryptType : undefined;
+            resourceInputs["callbackName"] = state?.callbackName;
+            resourceInputs["callbackSuggestions"] = state?.callbackSuggestions;
+            resourceInputs["callbackTypes"] = state?.callbackTypes;
+            resourceInputs["callbackUrl"] = state?.callbackUrl;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["cryptType"] = state?.cryptType;
         } else {
             const args = argsOrState as CallbackArgs | undefined;
-            if ((!args || args.callbackName === undefined) && !opts.urn) {
+            if (args?.callbackName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'callbackName'");
             }
-            if ((!args || args.callbackSuggestions === undefined) && !opts.urn) {
+            if (args?.callbackSuggestions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'callbackSuggestions'");
             }
-            if ((!args || args.callbackTypes === undefined) && !opts.urn) {
+            if (args?.callbackTypes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'callbackTypes'");
             }
-            if ((!args || args.callbackUrl === undefined) && !opts.urn) {
+            if (args?.callbackUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'callbackUrl'");
             }
-            resourceInputs["callbackName"] = args ? args.callbackName : undefined;
-            resourceInputs["callbackSuggestions"] = args ? args.callbackSuggestions : undefined;
-            resourceInputs["callbackTypes"] = args ? args.callbackTypes : undefined;
-            resourceInputs["callbackUrl"] = args ? args.callbackUrl : undefined;
-            resourceInputs["cryptType"] = args ? args.cryptType : undefined;
+            resourceInputs["callbackName"] = args?.callbackName;
+            resourceInputs["callbackSuggestions"] = args?.callbackSuggestions;
+            resourceInputs["callbackTypes"] = args?.callbackTypes;
+            resourceInputs["callbackUrl"] = args?.callbackUrl;
+            resourceInputs["cryptType"] = args?.cryptType;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

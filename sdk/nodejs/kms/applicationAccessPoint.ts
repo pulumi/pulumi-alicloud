@@ -71,15 +71,15 @@ export class ApplicationAccessPoint extends pulumi.CustomResource {
     /**
      * Application Access Point Name.
      */
-    public readonly applicationAccessPointName!: pulumi.Output<string>;
+    declare public readonly applicationAccessPointName: pulumi.Output<string>;
     /**
      * Description .
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The policies that have bound to the Application Access Point (AAP).
      */
-    public readonly policies!: pulumi.Output<string[]>;
+    declare public readonly policies: pulumi.Output<string[]>;
 
     /**
      * Create a ApplicationAccessPoint resource with the given unique name, arguments, and options.
@@ -94,20 +94,20 @@ export class ApplicationAccessPoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationAccessPointState | undefined;
-            resourceInputs["applicationAccessPointName"] = state ? state.applicationAccessPointName : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["policies"] = state ? state.policies : undefined;
+            resourceInputs["applicationAccessPointName"] = state?.applicationAccessPointName;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["policies"] = state?.policies;
         } else {
             const args = argsOrState as ApplicationAccessPointArgs | undefined;
-            if ((!args || args.applicationAccessPointName === undefined) && !opts.urn) {
+            if (args?.applicationAccessPointName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applicationAccessPointName'");
             }
-            if ((!args || args.policies === undefined) && !opts.urn) {
+            if (args?.policies === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policies'");
             }
-            resourceInputs["applicationAccessPointName"] = args ? args.applicationAccessPointName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["policies"] = args ? args.policies : undefined;
+            resourceInputs["applicationAccessPointName"] = args?.applicationAccessPointName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["policies"] = args?.policies;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApplicationAccessPoint.__pulumiType, name, resourceInputs, opts);

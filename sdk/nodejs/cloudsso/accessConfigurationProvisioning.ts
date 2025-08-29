@@ -50,23 +50,23 @@ export class AccessConfigurationProvisioning extends pulumi.CustomResource {
     /**
      * The Access configuration ID.
      */
-    public readonly accessConfigurationId!: pulumi.Output<string>;
+    declare public readonly accessConfigurationId: pulumi.Output<string>;
     /**
      * The ID of the Directory.
      */
-    public readonly directoryId!: pulumi.Output<string>;
+    declare public readonly directoryId: pulumi.Output<string>;
     /**
      * The status of the resource. Valid values: `Provisioned`, `ReprovisionRequired` and `DeprovisionFailed`.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The ID of the target to create the resource range.
      */
-    public readonly targetId!: pulumi.Output<string>;
+    declare public readonly targetId: pulumi.Output<string>;
     /**
      * The type of the resource range target to be accessed. Valid values: `RD-Account`.
      */
-    public readonly targetType!: pulumi.Output<string>;
+    declare public readonly targetType: pulumi.Output<string>;
 
     /**
      * Create a AccessConfigurationProvisioning resource with the given unique name, arguments, and options.
@@ -81,30 +81,30 @@ export class AccessConfigurationProvisioning extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessConfigurationProvisioningState | undefined;
-            resourceInputs["accessConfigurationId"] = state ? state.accessConfigurationId : undefined;
-            resourceInputs["directoryId"] = state ? state.directoryId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["targetId"] = state ? state.targetId : undefined;
-            resourceInputs["targetType"] = state ? state.targetType : undefined;
+            resourceInputs["accessConfigurationId"] = state?.accessConfigurationId;
+            resourceInputs["directoryId"] = state?.directoryId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["targetId"] = state?.targetId;
+            resourceInputs["targetType"] = state?.targetType;
         } else {
             const args = argsOrState as AccessConfigurationProvisioningArgs | undefined;
-            if ((!args || args.accessConfigurationId === undefined) && !opts.urn) {
+            if (args?.accessConfigurationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accessConfigurationId'");
             }
-            if ((!args || args.directoryId === undefined) && !opts.urn) {
+            if (args?.directoryId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'directoryId'");
             }
-            if ((!args || args.targetId === undefined) && !opts.urn) {
+            if (args?.targetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetId'");
             }
-            if ((!args || args.targetType === undefined) && !opts.urn) {
+            if (args?.targetType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetType'");
             }
-            resourceInputs["accessConfigurationId"] = args ? args.accessConfigurationId : undefined;
-            resourceInputs["directoryId"] = args ? args.directoryId : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["targetId"] = args ? args.targetId : undefined;
-            resourceInputs["targetType"] = args ? args.targetType : undefined;
+            resourceInputs["accessConfigurationId"] = args?.accessConfigurationId;
+            resourceInputs["directoryId"] = args?.directoryId;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["targetId"] = args?.targetId;
+            resourceInputs["targetType"] = args?.targetType;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccessConfigurationProvisioning.__pulumiType, name, resourceInputs, opts);

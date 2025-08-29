@@ -90,15 +90,15 @@ export class DiskInstanceAttachment extends pulumi.CustomResource {
     /**
      * Whether the cloud disk to be mounted is released with the instance  Value: true: When the instance is released, the cloud disk is released together with the instance. false: When the instance is released, the cloud disk is retained and is not released together with the instance. Empty means false by default.
      */
-    public readonly deleteWithInstance!: pulumi.Output<string | undefined>;
+    declare public readonly deleteWithInstance: pulumi.Output<string | undefined>;
     /**
      * The ID of the cloud disk to be mounted. The Cloud Disk (DiskId) and the instance (InstanceId) must be on the same node.
      */
-    public readonly diskId!: pulumi.Output<string>;
+    declare public readonly diskId: pulumi.Output<string>;
     /**
      * Instance ID.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
 
     /**
      * Create a DiskInstanceAttachment resource with the given unique name, arguments, and options.
@@ -113,20 +113,20 @@ export class DiskInstanceAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DiskInstanceAttachmentState | undefined;
-            resourceInputs["deleteWithInstance"] = state ? state.deleteWithInstance : undefined;
-            resourceInputs["diskId"] = state ? state.diskId : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["deleteWithInstance"] = state?.deleteWithInstance;
+            resourceInputs["diskId"] = state?.diskId;
+            resourceInputs["instanceId"] = state?.instanceId;
         } else {
             const args = argsOrState as DiskInstanceAttachmentArgs | undefined;
-            if ((!args || args.diskId === undefined) && !opts.urn) {
+            if (args?.diskId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'diskId'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["deleteWithInstance"] = args ? args.deleteWithInstance : undefined;
-            resourceInputs["diskId"] = args ? args.diskId : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["deleteWithInstance"] = args?.deleteWithInstance;
+            resourceInputs["diskId"] = args?.diskId;
+            resourceInputs["instanceId"] = args?.instanceId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DiskInstanceAttachment.__pulumiType, name, resourceInputs, opts);

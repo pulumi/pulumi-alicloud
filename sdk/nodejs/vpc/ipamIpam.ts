@@ -70,40 +70,40 @@ export class IpamIpam extends pulumi.CustomResource {
     /**
      * The creation time of the resource.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The description of IPAM.
      * It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with 'http: // 'or 'https. If the description is not filled in, it is blank. The default value is blank.
      */
-    public readonly ipamDescription!: pulumi.Output<string | undefined>;
+    declare public readonly ipamDescription: pulumi.Output<string | undefined>;
     /**
      * The name of the resource.
      */
-    public readonly ipamName!: pulumi.Output<string | undefined>;
+    declare public readonly ipamName: pulumi.Output<string | undefined>;
     /**
      * List of IPAM effective regions.
      */
-    public readonly operatingRegionLists!: pulumi.Output<string[]>;
+    declare public readonly operatingRegionLists: pulumi.Output<string[]>;
     /**
      * After an IPAM is created, the scope of the private network IPAM created by the system by default.
      */
-    public /*out*/ readonly privateDefaultScopeId!: pulumi.Output<string>;
+    declare public /*out*/ readonly privateDefaultScopeId: pulumi.Output<string>;
     /**
      * The region ID of the resource.
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tag of the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a IpamIpam resource with the given unique name, arguments, and options.
@@ -118,25 +118,25 @@ export class IpamIpam extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IpamIpamState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["ipamDescription"] = state ? state.ipamDescription : undefined;
-            resourceInputs["ipamName"] = state ? state.ipamName : undefined;
-            resourceInputs["operatingRegionLists"] = state ? state.operatingRegionLists : undefined;
-            resourceInputs["privateDefaultScopeId"] = state ? state.privateDefaultScopeId : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["ipamDescription"] = state?.ipamDescription;
+            resourceInputs["ipamName"] = state?.ipamName;
+            resourceInputs["operatingRegionLists"] = state?.operatingRegionLists;
+            resourceInputs["privateDefaultScopeId"] = state?.privateDefaultScopeId;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as IpamIpamArgs | undefined;
-            if ((!args || args.operatingRegionLists === undefined) && !opts.urn) {
+            if (args?.operatingRegionLists === undefined && !opts.urn) {
                 throw new Error("Missing required property 'operatingRegionLists'");
             }
-            resourceInputs["ipamDescription"] = args ? args.ipamDescription : undefined;
-            resourceInputs["ipamName"] = args ? args.ipamName : undefined;
-            resourceInputs["operatingRegionLists"] = args ? args.operatingRegionLists : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["ipamDescription"] = args?.ipamDescription;
+            resourceInputs["ipamName"] = args?.ipamName;
+            resourceInputs["operatingRegionLists"] = args?.operatingRegionLists;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["privateDefaultScopeId"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;

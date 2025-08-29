@@ -67,35 +67,35 @@ export class HealthCheckTemplate extends pulumi.CustomResource {
      * true: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
      * false (default): Sends a normal request, returns the http2xx status code after the check, and directly performs the operation.
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * The HTTP code of the health check. The default value is http_2xx. The normal HTTP code for health check. Separate multiple codes with commas (,). Valid values: http_2xx, http_3xx, http_4xx, or http_5xx.
      */
-    public readonly healthCheckCodes!: pulumi.Output<string[]>;
+    declare public readonly healthCheckCodes: pulumi.Output<string[]>;
     /**
      * The number of the port that is used for health checks.  Valid values: 0 to 65535.  Default value: 0. This value indicates that the backend server is used for health checks.
      */
-    public readonly healthCheckConnectPort!: pulumi.Output<number>;
+    declare public readonly healthCheckConnectPort: pulumi.Output<number>;
     /**
      * The domain name that is used for health checks. Valid values:  $SERVER_IP (default value): The private IP addresses of backend servers. If the $_ip parameter is set or the HealthCheckHost parameter is not set, SLB uses the private IP addresses of backend servers as the domain names for health checks.  domain: The domain name must be 1 to 80 characters in length, and can contain only letters, digits, periods (.),and hyphens (-).
      */
-    public readonly healthCheckHost!: pulumi.Output<string>;
+    declare public readonly healthCheckHost: pulumi.Output<string>;
     /**
      * The version of the HTTP protocol.  Valid values: HTTP 1.0 and HTTP 1.1.  Default value: HTTP 1.1.
      */
-    public readonly healthCheckHttpVersion!: pulumi.Output<string>;
+    declare public readonly healthCheckHttpVersion: pulumi.Output<string>;
     /**
      * The time interval between two consecutive health checks.  Valid values: 1 to 50. Unit: seconds.  Default value: 2.
      */
-    public readonly healthCheckInterval!: pulumi.Output<number>;
+    declare public readonly healthCheckInterval: pulumi.Output<number>;
     /**
      * The health check method.  Valid values: GET and HEAD.  Default value: HEAD.
      */
-    public readonly healthCheckMethod!: pulumi.Output<string>;
+    declare public readonly healthCheckMethod: pulumi.Output<string>;
     /**
      * The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/).
      */
-    public readonly healthCheckPath!: pulumi.Output<string>;
+    declare public readonly healthCheckPath: pulumi.Output<string>;
     /**
      * The protocol used for the health check. Value:
      * HTTP (default): Sends a HEAD or GET request to simulate the browser's access behavior to check whether the server application is healthy.
@@ -103,31 +103,31 @@ export class HealthCheckTemplate extends pulumi.CustomResource {
      * TCP: Sends a SYN handshake packet to check whether the server port is alive.
      * gRPC: Check whether the server application is healthy by sending a POST or GET request.
      */
-    public readonly healthCheckProtocol!: pulumi.Output<string>;
+    declare public readonly healthCheckProtocol: pulumi.Output<string>;
     /**
      * The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
      */
-    public readonly healthCheckTemplateName!: pulumi.Output<string>;
+    declare public readonly healthCheckTemplateName: pulumi.Output<string>;
     /**
      * The timeout period of a health check response. If the backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the health check fails.  Valid values: 1 to 300. Unit: seconds.  Default value: 5.
      */
-    public readonly healthCheckTimeout!: pulumi.Output<number>;
+    declare public readonly healthCheckTimeout: pulumi.Output<number>;
     /**
      * The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy (from fail to success).
      */
-    public readonly healthyThreshold!: pulumi.Output<number>;
+    declare public readonly healthyThreshold: pulumi.Output<number>;
     /**
      * The ID of the resource group
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The tag of the resource
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies the number of times that an healthy backend server must consecutively fail health checks before it is declared unhealthy (from success to fail).
      */
-    public readonly unhealthyThreshold!: pulumi.Output<number>;
+    declare public readonly unhealthyThreshold: pulumi.Output<number>;
 
     /**
      * Create a HealthCheckTemplate resource with the given unique name, arguments, and options.
@@ -142,41 +142,41 @@ export class HealthCheckTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HealthCheckTemplateState | undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["healthCheckCodes"] = state ? state.healthCheckCodes : undefined;
-            resourceInputs["healthCheckConnectPort"] = state ? state.healthCheckConnectPort : undefined;
-            resourceInputs["healthCheckHost"] = state ? state.healthCheckHost : undefined;
-            resourceInputs["healthCheckHttpVersion"] = state ? state.healthCheckHttpVersion : undefined;
-            resourceInputs["healthCheckInterval"] = state ? state.healthCheckInterval : undefined;
-            resourceInputs["healthCheckMethod"] = state ? state.healthCheckMethod : undefined;
-            resourceInputs["healthCheckPath"] = state ? state.healthCheckPath : undefined;
-            resourceInputs["healthCheckProtocol"] = state ? state.healthCheckProtocol : undefined;
-            resourceInputs["healthCheckTemplateName"] = state ? state.healthCheckTemplateName : undefined;
-            resourceInputs["healthCheckTimeout"] = state ? state.healthCheckTimeout : undefined;
-            resourceInputs["healthyThreshold"] = state ? state.healthyThreshold : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["unhealthyThreshold"] = state ? state.unhealthyThreshold : undefined;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["healthCheckCodes"] = state?.healthCheckCodes;
+            resourceInputs["healthCheckConnectPort"] = state?.healthCheckConnectPort;
+            resourceInputs["healthCheckHost"] = state?.healthCheckHost;
+            resourceInputs["healthCheckHttpVersion"] = state?.healthCheckHttpVersion;
+            resourceInputs["healthCheckInterval"] = state?.healthCheckInterval;
+            resourceInputs["healthCheckMethod"] = state?.healthCheckMethod;
+            resourceInputs["healthCheckPath"] = state?.healthCheckPath;
+            resourceInputs["healthCheckProtocol"] = state?.healthCheckProtocol;
+            resourceInputs["healthCheckTemplateName"] = state?.healthCheckTemplateName;
+            resourceInputs["healthCheckTimeout"] = state?.healthCheckTimeout;
+            resourceInputs["healthyThreshold"] = state?.healthyThreshold;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["unhealthyThreshold"] = state?.unhealthyThreshold;
         } else {
             const args = argsOrState as HealthCheckTemplateArgs | undefined;
-            if ((!args || args.healthCheckTemplateName === undefined) && !opts.urn) {
+            if (args?.healthCheckTemplateName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'healthCheckTemplateName'");
             }
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["healthCheckCodes"] = args ? args.healthCheckCodes : undefined;
-            resourceInputs["healthCheckConnectPort"] = args ? args.healthCheckConnectPort : undefined;
-            resourceInputs["healthCheckHost"] = args ? args.healthCheckHost : undefined;
-            resourceInputs["healthCheckHttpVersion"] = args ? args.healthCheckHttpVersion : undefined;
-            resourceInputs["healthCheckInterval"] = args ? args.healthCheckInterval : undefined;
-            resourceInputs["healthCheckMethod"] = args ? args.healthCheckMethod : undefined;
-            resourceInputs["healthCheckPath"] = args ? args.healthCheckPath : undefined;
-            resourceInputs["healthCheckProtocol"] = args ? args.healthCheckProtocol : undefined;
-            resourceInputs["healthCheckTemplateName"] = args ? args.healthCheckTemplateName : undefined;
-            resourceInputs["healthCheckTimeout"] = args ? args.healthCheckTimeout : undefined;
-            resourceInputs["healthyThreshold"] = args ? args.healthyThreshold : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["unhealthyThreshold"] = args ? args.unhealthyThreshold : undefined;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["healthCheckCodes"] = args?.healthCheckCodes;
+            resourceInputs["healthCheckConnectPort"] = args?.healthCheckConnectPort;
+            resourceInputs["healthCheckHost"] = args?.healthCheckHost;
+            resourceInputs["healthCheckHttpVersion"] = args?.healthCheckHttpVersion;
+            resourceInputs["healthCheckInterval"] = args?.healthCheckInterval;
+            resourceInputs["healthCheckMethod"] = args?.healthCheckMethod;
+            resourceInputs["healthCheckPath"] = args?.healthCheckPath;
+            resourceInputs["healthCheckProtocol"] = args?.healthCheckProtocol;
+            resourceInputs["healthCheckTemplateName"] = args?.healthCheckTemplateName;
+            resourceInputs["healthCheckTimeout"] = args?.healthCheckTimeout;
+            resourceInputs["healthyThreshold"] = args?.healthyThreshold;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["unhealthyThreshold"] = args?.unhealthyThreshold;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(HealthCheckTemplate.__pulumiType, name, resourceInputs, opts);

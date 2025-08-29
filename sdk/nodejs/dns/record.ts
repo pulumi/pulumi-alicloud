@@ -65,37 +65,37 @@ export class Record extends pulumi.CustomResource {
     /**
      * Host record for the domain record. This hostRecord can have at most 253 characters, and each part split with "." can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as "-",".","*","@",  and must not begin or end with "-".
      */
-    public readonly hostRecord!: pulumi.Output<string>;
-    public /*out*/ readonly locked!: pulumi.Output<boolean>;
+    declare public readonly hostRecord: pulumi.Output<string>;
+    declare public /*out*/ readonly locked: pulumi.Output<boolean>;
     /**
      * Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The priority of domain record. Valid values are `[1-10]`. When the `type` is `MX`, this parameter is required.
      */
-    public readonly priority!: pulumi.Output<number | undefined>;
+    declare public readonly priority: pulumi.Output<number | undefined>;
     /**
      * The resolution line of domain record. Valid values are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/what-is-alibaba-cloud-dns) or using alicloud.dns.getResolutionLines in data source to get the value.
      */
-    public readonly routing!: pulumi.Output<string | undefined>;
+    declare public readonly routing: pulumi.Output<string | undefined>;
     /**
      * The record status. `Enable` or `Disable`.
      * * `Locked` - The record locked state. `true` or `false`.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The effective time of domain record. Its scope depends on the edition of the cloud resolution. Free is `[600, 86400]`, Basic is `[120, 86400]`, Standard is `[60, 86400]`, Ultimate is `[10, 86400]`, Exclusive is `[1, 86400]`. Default value is `600`.
      */
-    public readonly ttl!: pulumi.Output<number | undefined>;
+    declare public readonly ttl: pulumi.Output<number | undefined>;
     /**
      * The type of domain record. Valid values are `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The value of domain record, When the `type` is `MX`,`NS`,`CNAME`,`SRV`, the server will treat the `value` as a fully qualified domain name, so it's no need to add a `.` at the end.
      */
-    public readonly value!: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string>;
 
     /**
      * Create a Record resource with the given unique name, arguments, and options.
@@ -110,33 +110,33 @@ export class Record extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RecordState | undefined;
-            resourceInputs["hostRecord"] = state ? state.hostRecord : undefined;
-            resourceInputs["locked"] = state ? state.locked : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["routing"] = state ? state.routing : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["ttl"] = state ? state.ttl : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["hostRecord"] = state?.hostRecord;
+            resourceInputs["locked"] = state?.locked;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["routing"] = state?.routing;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["ttl"] = state?.ttl;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as RecordArgs | undefined;
-            if ((!args || args.hostRecord === undefined) && !opts.urn) {
+            if (args?.hostRecord === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostRecord'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            if ((!args || args.value === undefined) && !opts.urn) {
+            if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            resourceInputs["hostRecord"] = args ? args.hostRecord : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["routing"] = args ? args.routing : undefined;
-            resourceInputs["ttl"] = args ? args.ttl : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["hostRecord"] = args?.hostRecord;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["routing"] = args?.routing;
+            resourceInputs["ttl"] = args?.ttl;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["value"] = args?.value;
             resourceInputs["locked"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

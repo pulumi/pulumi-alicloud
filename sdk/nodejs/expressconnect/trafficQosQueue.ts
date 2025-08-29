@@ -84,23 +84,23 @@ export class TrafficQosQueue extends pulumi.CustomResource {
      * - When the QoS queue type is **Medium**, this field must be entered. Valid values: 1 to 100.
      * - When the QoS queue type is **Default**, this field is "-".
      */
-    public readonly bandwidthPercent!: pulumi.Output<string>;
+    declare public readonly bandwidthPercent: pulumi.Output<string>;
     /**
      * The QoS policy ID.
      */
-    public readonly qosId!: pulumi.Output<string>;
+    declare public readonly qosId: pulumi.Output<string>;
     /**
      * The description of the QoS queue.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
      */
-    public readonly queueDescription!: pulumi.Output<string | undefined>;
+    declare public readonly queueDescription: pulumi.Output<string | undefined>;
     /**
      * The QoS queue ID.
      */
-    public /*out*/ readonly queueId!: pulumi.Output<string>;
+    declare public /*out*/ readonly queueId: pulumi.Output<string>;
     /**
      * The name of the QoS queue.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
      */
-    public readonly queueName!: pulumi.Output<string | undefined>;
+    declare public readonly queueName: pulumi.Output<string | undefined>;
     /**
      * QoS queue type, value:
      * - **High**: High priority queue.
@@ -108,11 +108,11 @@ export class TrafficQosQueue extends pulumi.CustomResource {
      * - **Default**: the Default priority queue.
      * > **NOTE:**  Default priority queue cannot be created.
      */
-    public readonly queueType!: pulumi.Output<string>;
+    declare public readonly queueType: pulumi.Output<string>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a TrafficQosQueue resource with the given unique name, arguments, and options.
@@ -127,26 +127,26 @@ export class TrafficQosQueue extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TrafficQosQueueState | undefined;
-            resourceInputs["bandwidthPercent"] = state ? state.bandwidthPercent : undefined;
-            resourceInputs["qosId"] = state ? state.qosId : undefined;
-            resourceInputs["queueDescription"] = state ? state.queueDescription : undefined;
-            resourceInputs["queueId"] = state ? state.queueId : undefined;
-            resourceInputs["queueName"] = state ? state.queueName : undefined;
-            resourceInputs["queueType"] = state ? state.queueType : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["bandwidthPercent"] = state?.bandwidthPercent;
+            resourceInputs["qosId"] = state?.qosId;
+            resourceInputs["queueDescription"] = state?.queueDescription;
+            resourceInputs["queueId"] = state?.queueId;
+            resourceInputs["queueName"] = state?.queueName;
+            resourceInputs["queueType"] = state?.queueType;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as TrafficQosQueueArgs | undefined;
-            if ((!args || args.qosId === undefined) && !opts.urn) {
+            if (args?.qosId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'qosId'");
             }
-            if ((!args || args.queueType === undefined) && !opts.urn) {
+            if (args?.queueType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'queueType'");
             }
-            resourceInputs["bandwidthPercent"] = args ? args.bandwidthPercent : undefined;
-            resourceInputs["qosId"] = args ? args.qosId : undefined;
-            resourceInputs["queueDescription"] = args ? args.queueDescription : undefined;
-            resourceInputs["queueName"] = args ? args.queueName : undefined;
-            resourceInputs["queueType"] = args ? args.queueType : undefined;
+            resourceInputs["bandwidthPercent"] = args?.bandwidthPercent;
+            resourceInputs["qosId"] = args?.qosId;
+            resourceInputs["queueDescription"] = args?.queueDescription;
+            resourceInputs["queueName"] = args?.queueName;
+            resourceInputs["queueType"] = args?.queueType;
             resourceInputs["queueId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

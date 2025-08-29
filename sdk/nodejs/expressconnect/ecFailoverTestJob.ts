@@ -76,31 +76,31 @@ export class EcFailoverTestJob extends pulumi.CustomResource {
     /**
      * Job description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Job name.
      */
-    public readonly ecFailoverTestJobName!: pulumi.Output<string | undefined>;
+    declare public readonly ecFailoverTestJobName: pulumi.Output<string | undefined>;
     /**
      * Job duration.
      */
-    public readonly jobDuration!: pulumi.Output<number>;
+    declare public readonly jobDuration: pulumi.Output<number>;
     /**
      * Job type.
      */
-    public readonly jobType!: pulumi.Output<string>;
+    declare public readonly jobType: pulumi.Output<string>;
     /**
      * Resource id list.
      */
-    public readonly resourceIds!: pulumi.Output<string[]>;
+    declare public readonly resourceIds: pulumi.Output<string[]>;
     /**
      * Resource type.
      */
-    public readonly resourceType!: pulumi.Output<string>;
+    declare public readonly resourceType: pulumi.Output<string>;
     /**
      * The status of the resource.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
 
     /**
      * Create a EcFailoverTestJob resource with the given unique name, arguments, and options.
@@ -115,34 +115,34 @@ export class EcFailoverTestJob extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcFailoverTestJobState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["ecFailoverTestJobName"] = state ? state.ecFailoverTestJobName : undefined;
-            resourceInputs["jobDuration"] = state ? state.jobDuration : undefined;
-            resourceInputs["jobType"] = state ? state.jobType : undefined;
-            resourceInputs["resourceIds"] = state ? state.resourceIds : undefined;
-            resourceInputs["resourceType"] = state ? state.resourceType : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["ecFailoverTestJobName"] = state?.ecFailoverTestJobName;
+            resourceInputs["jobDuration"] = state?.jobDuration;
+            resourceInputs["jobType"] = state?.jobType;
+            resourceInputs["resourceIds"] = state?.resourceIds;
+            resourceInputs["resourceType"] = state?.resourceType;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as EcFailoverTestJobArgs | undefined;
-            if ((!args || args.jobDuration === undefined) && !opts.urn) {
+            if (args?.jobDuration === undefined && !opts.urn) {
                 throw new Error("Missing required property 'jobDuration'");
             }
-            if ((!args || args.jobType === undefined) && !opts.urn) {
+            if (args?.jobType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'jobType'");
             }
-            if ((!args || args.resourceIds === undefined) && !opts.urn) {
+            if (args?.resourceIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceIds'");
             }
-            if ((!args || args.resourceType === undefined) && !opts.urn) {
+            if (args?.resourceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceType'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["ecFailoverTestJobName"] = args ? args.ecFailoverTestJobName : undefined;
-            resourceInputs["jobDuration"] = args ? args.jobDuration : undefined;
-            resourceInputs["jobType"] = args ? args.jobType : undefined;
-            resourceInputs["resourceIds"] = args ? args.resourceIds : undefined;
-            resourceInputs["resourceType"] = args ? args.resourceType : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["ecFailoverTestJobName"] = args?.ecFailoverTestJobName;
+            resourceInputs["jobDuration"] = args?.jobDuration;
+            resourceInputs["jobType"] = args?.jobType;
+            resourceInputs["resourceIds"] = args?.resourceIds;
+            resourceInputs["resourceType"] = args?.resourceType;
+            resourceInputs["status"] = args?.status;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EcFailoverTestJob.__pulumiType, name, resourceInputs, opts);

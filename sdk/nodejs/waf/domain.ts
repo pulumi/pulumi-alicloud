@@ -79,80 +79,80 @@ export class Domain extends pulumi.CustomResource {
     /**
      * The type of the WAF cluster. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
      */
-    public readonly clusterType!: pulumi.Output<string | undefined>;
+    declare public readonly clusterType: pulumi.Output<string | undefined>;
     /**
      * The CNAME record assigned by the WAF instance to the specified domain.
      */
-    public /*out*/ readonly cname!: pulumi.Output<string>;
+    declare public /*out*/ readonly cname: pulumi.Output<string>;
     /**
      * The connection timeout for WAF exclusive clusters. Unit: seconds.
      */
-    public readonly connectionTime!: pulumi.Output<number | undefined>;
+    declare public readonly connectionTime: pulumi.Output<number | undefined>;
     /**
      * Field `domain` has been deprecated from version 1.94.0. Use `domainName` instead.
      *
      * @deprecated Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.
      */
-    public readonly domain!: pulumi.Output<string>;
+    declare public readonly domain: pulumi.Output<string>;
     /**
      * The domain that you want to add to WAF. The `domainName` is required when the value of the `domain`  is Empty.
      */
-    public readonly domainName!: pulumi.Output<string>;
+    declare public readonly domainName: pulumi.Output<string>;
     /**
      * List of the HTTP 2.0 ports.
      */
-    public readonly http2Ports!: pulumi.Output<string[] | undefined>;
+    declare public readonly http2Ports: pulumi.Output<string[] | undefined>;
     /**
      * List of the HTTP ports.
      */
-    public readonly httpPorts!: pulumi.Output<string[] | undefined>;
+    declare public readonly httpPorts: pulumi.Output<string[] | undefined>;
     /**
      * Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
      * By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
      */
-    public readonly httpToUserIp!: pulumi.Output<string | undefined>;
+    declare public readonly httpToUserIp: pulumi.Output<string | undefined>;
     /**
      * List of the HTTPS ports.
      */
-    public readonly httpsPorts!: pulumi.Output<string[] | undefined>;
+    declare public readonly httpsPorts: pulumi.Output<string[] | undefined>;
     /**
      * Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and `Off`. Default to `Off`.
      */
-    public readonly httpsRedirect!: pulumi.Output<string | undefined>;
+    declare public readonly httpsRedirect: pulumi.Output<string | undefined>;
     /**
      * The ID of the WAF instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and `Off`. Default to `Off`.
      */
-    public readonly isAccessProduct!: pulumi.Output<string>;
+    declare public readonly isAccessProduct: pulumi.Output<string>;
     /**
      * The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
      */
-    public readonly loadBalancing!: pulumi.Output<string | undefined>;
+    declare public readonly loadBalancing: pulumi.Output<string | undefined>;
     /**
      * The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
      * * key: The key of label
      * * value: The value of label
      */
-    public readonly logHeaders!: pulumi.Output<outputs.waf.DomainLogHeader[] | undefined>;
+    declare public readonly logHeaders: pulumi.Output<outputs.waf.DomainLogHeader[] | undefined>;
     /**
      * The read timeout of a WAF exclusive cluster. Unit: seconds.
      */
-    public readonly readTime!: pulumi.Output<number | undefined>;
+    declare public readonly readTime: pulumi.Output<number | undefined>;
     /**
      * The ID of the resource group to which the queried domain belongs in Resource Management. By default, no value is specified, indicating that the domain belongs to the default resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * List of the IP address or domain of the origin server to which the specified domain points.
      */
-    public readonly sourceIps!: pulumi.Output<string[] | undefined>;
+    declare public readonly sourceIps: pulumi.Output<string[] | undefined>;
     /**
      * The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
      */
-    public readonly writeTime!: pulumi.Output<number | undefined>;
+    declare public readonly writeTime: pulumi.Output<number | undefined>;
 
     /**
      * Create a Domain resource with the given unique name, arguments, and options.
@@ -167,49 +167,49 @@ export class Domain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainState | undefined;
-            resourceInputs["clusterType"] = state ? state.clusterType : undefined;
-            resourceInputs["cname"] = state ? state.cname : undefined;
-            resourceInputs["connectionTime"] = state ? state.connectionTime : undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["domainName"] = state ? state.domainName : undefined;
-            resourceInputs["http2Ports"] = state ? state.http2Ports : undefined;
-            resourceInputs["httpPorts"] = state ? state.httpPorts : undefined;
-            resourceInputs["httpToUserIp"] = state ? state.httpToUserIp : undefined;
-            resourceInputs["httpsPorts"] = state ? state.httpsPorts : undefined;
-            resourceInputs["httpsRedirect"] = state ? state.httpsRedirect : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["isAccessProduct"] = state ? state.isAccessProduct : undefined;
-            resourceInputs["loadBalancing"] = state ? state.loadBalancing : undefined;
-            resourceInputs["logHeaders"] = state ? state.logHeaders : undefined;
-            resourceInputs["readTime"] = state ? state.readTime : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["sourceIps"] = state ? state.sourceIps : undefined;
-            resourceInputs["writeTime"] = state ? state.writeTime : undefined;
+            resourceInputs["clusterType"] = state?.clusterType;
+            resourceInputs["cname"] = state?.cname;
+            resourceInputs["connectionTime"] = state?.connectionTime;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["domainName"] = state?.domainName;
+            resourceInputs["http2Ports"] = state?.http2Ports;
+            resourceInputs["httpPorts"] = state?.httpPorts;
+            resourceInputs["httpToUserIp"] = state?.httpToUserIp;
+            resourceInputs["httpsPorts"] = state?.httpsPorts;
+            resourceInputs["httpsRedirect"] = state?.httpsRedirect;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["isAccessProduct"] = state?.isAccessProduct;
+            resourceInputs["loadBalancing"] = state?.loadBalancing;
+            resourceInputs["logHeaders"] = state?.logHeaders;
+            resourceInputs["readTime"] = state?.readTime;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["sourceIps"] = state?.sourceIps;
+            resourceInputs["writeTime"] = state?.writeTime;
         } else {
             const args = argsOrState as DomainArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.isAccessProduct === undefined) && !opts.urn) {
+            if (args?.isAccessProduct === undefined && !opts.urn) {
                 throw new Error("Missing required property 'isAccessProduct'");
             }
-            resourceInputs["clusterType"] = args ? args.clusterType : undefined;
-            resourceInputs["connectionTime"] = args ? args.connectionTime : undefined;
-            resourceInputs["domain"] = args ? args.domain : undefined;
-            resourceInputs["domainName"] = args ? args.domainName : undefined;
-            resourceInputs["http2Ports"] = args ? args.http2Ports : undefined;
-            resourceInputs["httpPorts"] = args ? args.httpPorts : undefined;
-            resourceInputs["httpToUserIp"] = args ? args.httpToUserIp : undefined;
-            resourceInputs["httpsPorts"] = args ? args.httpsPorts : undefined;
-            resourceInputs["httpsRedirect"] = args ? args.httpsRedirect : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["isAccessProduct"] = args ? args.isAccessProduct : undefined;
-            resourceInputs["loadBalancing"] = args ? args.loadBalancing : undefined;
-            resourceInputs["logHeaders"] = args ? args.logHeaders : undefined;
-            resourceInputs["readTime"] = args ? args.readTime : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["sourceIps"] = args ? args.sourceIps : undefined;
-            resourceInputs["writeTime"] = args ? args.writeTime : undefined;
+            resourceInputs["clusterType"] = args?.clusterType;
+            resourceInputs["connectionTime"] = args?.connectionTime;
+            resourceInputs["domain"] = args?.domain;
+            resourceInputs["domainName"] = args?.domainName;
+            resourceInputs["http2Ports"] = args?.http2Ports;
+            resourceInputs["httpPorts"] = args?.httpPorts;
+            resourceInputs["httpToUserIp"] = args?.httpToUserIp;
+            resourceInputs["httpsPorts"] = args?.httpsPorts;
+            resourceInputs["httpsRedirect"] = args?.httpsRedirect;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["isAccessProduct"] = args?.isAccessProduct;
+            resourceInputs["loadBalancing"] = args?.loadBalancing;
+            resourceInputs["logHeaders"] = args?.logHeaders;
+            resourceInputs["readTime"] = args?.readTime;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["sourceIps"] = args?.sourceIps;
+            resourceInputs["writeTime"] = args?.writeTime;
             resourceInputs["cname"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

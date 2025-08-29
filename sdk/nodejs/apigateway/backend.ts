@@ -67,19 +67,19 @@ export class Backend extends pulumi.CustomResource {
     /**
      * The name of the Backend.
      */
-    public readonly backendName!: pulumi.Output<string>;
+    declare public readonly backendName: pulumi.Output<string>;
     /**
      * The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_EVENT_V3`, `FC_HTTP`, `FC_HTTP_V3`, `OSS`, `MOCK`.
      */
-    public readonly backendType!: pulumi.Output<string>;
+    declare public readonly backendType: pulumi.Output<string>;
     /**
      * Whether to create an Event bus service association role.
      */
-    public readonly createEventBridgeServiceLinkedRole!: pulumi.Output<boolean>;
+    declare public readonly createEventBridgeServiceLinkedRole: pulumi.Output<boolean>;
     /**
      * The description of the Backend.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
 
     /**
      * Create a Backend resource with the given unique name, arguments, and options.
@@ -94,22 +94,22 @@ export class Backend extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackendState | undefined;
-            resourceInputs["backendName"] = state ? state.backendName : undefined;
-            resourceInputs["backendType"] = state ? state.backendType : undefined;
-            resourceInputs["createEventBridgeServiceLinkedRole"] = state ? state.createEventBridgeServiceLinkedRole : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["backendName"] = state?.backendName;
+            resourceInputs["backendType"] = state?.backendType;
+            resourceInputs["createEventBridgeServiceLinkedRole"] = state?.createEventBridgeServiceLinkedRole;
+            resourceInputs["description"] = state?.description;
         } else {
             const args = argsOrState as BackendArgs | undefined;
-            if ((!args || args.backendName === undefined) && !opts.urn) {
+            if (args?.backendName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'backendName'");
             }
-            if ((!args || args.backendType === undefined) && !opts.urn) {
+            if (args?.backendType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'backendType'");
             }
-            resourceInputs["backendName"] = args ? args.backendName : undefined;
-            resourceInputs["backendType"] = args ? args.backendType : undefined;
-            resourceInputs["createEventBridgeServiceLinkedRole"] = args ? args.createEventBridgeServiceLinkedRole : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["backendName"] = args?.backendName;
+            resourceInputs["backendType"] = args?.backendType;
+            resourceInputs["createEventBridgeServiceLinkedRole"] = args?.createEventBridgeServiceLinkedRole;
+            resourceInputs["description"] = args?.description;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Backend.__pulumiType, name, resourceInputs, opts);

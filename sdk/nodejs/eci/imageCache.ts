@@ -97,51 +97,51 @@ export class ImageCache extends pulumi.CustomResource {
     /**
      * The ID of the container group job that is used to create the image cache.
      */
-    public /*out*/ readonly containerGroupId!: pulumi.Output<string>;
+    declare public /*out*/ readonly containerGroupId: pulumi.Output<string>;
     /**
      * The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
      */
-    public readonly eipInstanceId!: pulumi.Output<string | undefined>;
+    declare public readonly eipInstanceId: pulumi.Output<string | undefined>;
     /**
      * The name of the image cache.
      */
-    public readonly imageCacheName!: pulumi.Output<string>;
+    declare public readonly imageCacheName: pulumi.Output<string>;
     /**
      * The size of the image cache. Default to `20`. Unit: GiB.
      */
-    public readonly imageCacheSize!: pulumi.Output<number | undefined>;
+    declare public readonly imageCacheSize: pulumi.Output<number | undefined>;
     /**
      * The Image Registry parameters about the image to be cached. See `imageRegistryCredential` below.
      */
-    public readonly imageRegistryCredentials!: pulumi.Output<outputs.eci.ImageCacheImageRegistryCredential[] | undefined>;
+    declare public readonly imageRegistryCredentials: pulumi.Output<outputs.eci.ImageCacheImageRegistryCredential[] | undefined>;
     /**
      * The images to be cached. The image name must be versioned.
      */
-    public readonly images!: pulumi.Output<string[]>;
+    declare public readonly images: pulumi.Output<string[]>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly resourceGroupId: pulumi.Output<string | undefined>;
     /**
      * The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
      */
-    public readonly retentionDays!: pulumi.Output<number | undefined>;
+    declare public readonly retentionDays: pulumi.Output<number | undefined>;
     /**
      * The ID of the security group. You do not need to specify the same security group as the container group.
      */
-    public readonly securityGroupId!: pulumi.Output<string>;
+    declare public readonly securityGroupId: pulumi.Output<string>;
     /**
      * The status of the image cache.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
     /**
      * The zone id to cache image.
      */
-    public readonly zoneId!: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a ImageCache resource with the given unique name, arguments, and options.
@@ -156,42 +156,42 @@ export class ImageCache extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImageCacheState | undefined;
-            resourceInputs["containerGroupId"] = state ? state.containerGroupId : undefined;
-            resourceInputs["eipInstanceId"] = state ? state.eipInstanceId : undefined;
-            resourceInputs["imageCacheName"] = state ? state.imageCacheName : undefined;
-            resourceInputs["imageCacheSize"] = state ? state.imageCacheSize : undefined;
-            resourceInputs["imageRegistryCredentials"] = state ? state.imageRegistryCredentials : undefined;
-            resourceInputs["images"] = state ? state.images : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["retentionDays"] = state ? state.retentionDays : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["containerGroupId"] = state?.containerGroupId;
+            resourceInputs["eipInstanceId"] = state?.eipInstanceId;
+            resourceInputs["imageCacheName"] = state?.imageCacheName;
+            resourceInputs["imageCacheSize"] = state?.imageCacheSize;
+            resourceInputs["imageRegistryCredentials"] = state?.imageRegistryCredentials;
+            resourceInputs["images"] = state?.images;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["retentionDays"] = state?.retentionDays;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vswitchId"] = state?.vswitchId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ImageCacheArgs | undefined;
-            if ((!args || args.imageCacheName === undefined) && !opts.urn) {
+            if (args?.imageCacheName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'imageCacheName'");
             }
-            if ((!args || args.images === undefined) && !opts.urn) {
+            if (args?.images === undefined && !opts.urn) {
                 throw new Error("Missing required property 'images'");
             }
-            if ((!args || args.securityGroupId === undefined) && !opts.urn) {
+            if (args?.securityGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupId'");
             }
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+            if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            resourceInputs["eipInstanceId"] = args ? args.eipInstanceId : undefined;
-            resourceInputs["imageCacheName"] = args ? args.imageCacheName : undefined;
-            resourceInputs["imageCacheSize"] = args ? args.imageCacheSize : undefined;
-            resourceInputs["imageRegistryCredentials"] = args ? args.imageRegistryCredentials : undefined;
-            resourceInputs["images"] = args ? args.images : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["retentionDays"] = args ? args.retentionDays : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["eipInstanceId"] = args?.eipInstanceId;
+            resourceInputs["imageCacheName"] = args?.imageCacheName;
+            resourceInputs["imageCacheSize"] = args?.imageCacheSize;
+            resourceInputs["imageRegistryCredentials"] = args?.imageRegistryCredentials;
+            resourceInputs["images"] = args?.images;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["retentionDays"] = args?.retentionDays;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["containerGroupId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

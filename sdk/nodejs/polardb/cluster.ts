@@ -46,355 +46,355 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`. This parameter is valid only for serverless clusters.
      */
-    public readonly allowShutDown!: pulumi.Output<string | undefined>;
+    declare public readonly allowShutDown: pulumi.Output<string | undefined>;
     /**
      * Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
      */
-    public readonly autoRenewPeriod!: pulumi.Output<number | undefined>;
+    declare public readonly autoRenewPeriod: pulumi.Output<number | undefined>;
     /**
      * The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/deletedbcluster-1)
      */
-    public readonly backupRetentionPolicyOnClusterDeletion!: pulumi.Output<string>;
+    declare public readonly backupRetentionPolicyOnClusterDeletion: pulumi.Output<string>;
     /**
      * The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
      * > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
      */
-    public readonly cloneDataPoint!: pulumi.Output<string | undefined>;
+    declare public readonly cloneDataPoint: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
      */
-    public readonly collectorStatus!: pulumi.Output<string>;
+    declare public readonly collectorStatus: pulumi.Output<string>;
     /**
      * Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
      * > **NOTE:** When the value of dbType is not MySQL, the value of creationOption is neither empty nor Normal, and the value of storageType is not PSL4, this field will be ignored.
      */
-    public readonly compressStorage!: pulumi.Output<string>;
+    declare public readonly compressStorage: pulumi.Output<string>;
     /**
      * (Available since 1.81.0) PolarDB cluster connection string.
      */
-    public /*out*/ readonly connectionString!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectionString: pulumi.Output<string>;
     /**
      * (Available since 1.204.1) PolarDB cluster creation time.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
      * > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`. From version 1.203.0, `creationCategory` can be set to `SENormal`.
      */
-    public readonly creationCategory!: pulumi.Output<string>;
+    declare public readonly creationCategory: pulumi.Output<string>;
     /**
      * The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`,`RecoverFromRecyclebin`. **NOTE:** From version 1.233.0, `creationOption` can be set to `RecoverFromRecyclebin`. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
      * * > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby. If `creationOption` is RecoverFromRecyclebin, you need to pass in the released source PolarDB cluster ID for this parameter. The DBType of the cluster recovered from the recycle bin and the source cluster must be consistent. For example, if the source cluster is MySQL 8.0, the cluster recovered from the recycle bin also needs to have its DBType set to MySQL and DBVersion set to 8.0.
      */
-    public readonly creationOption!: pulumi.Output<string>;
+    declare public readonly creationOption: pulumi.Output<string>;
     /**
      * db_cluster_ip_array defines how users can send requests to your API. See `dbClusterIpArray` below.
      */
-    public readonly dbClusterIpArrays!: pulumi.Output<outputs.polardb.ClusterDbClusterIpArray[]>;
+    declare public readonly dbClusterIpArrays: pulumi.Output<outputs.polardb.ClusterDbClusterIpArray[]>;
     /**
      * Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `dbType` is MySQL and `dbVersion` is 8.0.
      */
-    public readonly dbMinorVersion!: pulumi.Output<string>;
+    declare public readonly dbMinorVersion: pulumi.Output<string>;
     /**
      * The dbNodeClass of cluster node.
      * > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
      * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small`.
      * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL 14 using the SENormal edition, `dbNodeClass` can be set to `polar.pg.sl.small.c`(x86 Architecture). Region can refer to the latest docs(https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC).
      */
-    public readonly dbNodeClass!: pulumi.Output<string>;
+    declare public readonly dbNodeClass: pulumi.Output<string>;
     /**
      * Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
      * > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
      */
-    public readonly dbNodeCount!: pulumi.Output<number>;
+    declare public readonly dbNodeCount: pulumi.Output<number>;
     /**
      * The ID of the node or node subscript. Node subscript values: 1 to 15.
      */
-    public readonly dbNodeId!: pulumi.Output<string | undefined>;
+    declare public readonly dbNodeId: pulumi.Output<string | undefined>;
     /**
      * The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
      */
-    public readonly dbNodeNum!: pulumi.Output<number | undefined>;
+    declare public readonly dbNodeNum: pulumi.Output<number | undefined>;
     /**
      * (Available since v1.216.0) The dbRevisionVersionList supports the following:
      */
-    public /*out*/ readonly dbRevisionVersionLists!: pulumi.Output<outputs.polardb.ClusterDbRevisionVersionList[]>;
+    declare public /*out*/ readonly dbRevisionVersionLists: pulumi.Output<outputs.polardb.ClusterDbRevisionVersionList[]>;
     /**
      * Database type. Value options: MySQL, Oracle, PostgreSQL.
      */
-    public readonly dbType!: pulumi.Output<string>;
+    declare public readonly dbType: pulumi.Output<string>;
     /**
      * Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
      */
-    public readonly dbVersion!: pulumi.Output<string>;
+    declare public readonly dbVersion: pulumi.Output<string>;
     /**
      * The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
      * > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
      */
-    public readonly defaultTimeZone!: pulumi.Output<string>;
+    declare public readonly defaultTimeZone: pulumi.Output<string>;
     /**
      * turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
      * > **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
      */
-    public readonly deletionLock!: pulumi.Output<number | undefined>;
+    declare public readonly deletionLock: pulumi.Output<number | undefined>;
     /**
      * The description of cluster.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
      * > **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
      */
-    public readonly encryptNewTables!: pulumi.Output<string | undefined>;
+    declare public readonly encryptNewTables: pulumi.Output<string | undefined>;
     /**
      * The ID of the custom key. `encryptionKey` cannot be modified after TDE is opened.
      */
-    public readonly encryptionKey!: pulumi.Output<string | undefined>;
+    declare public readonly encryptionKey: pulumi.Output<string | undefined>;
     /**
      * Immediate or scheduled kernel version upgrade. Valid values are `true`, `false`. True means immediate execution, False means scheduled execution.
      */
-    public readonly fromTimeService!: pulumi.Output<string | undefined>;
+    declare public readonly fromTimeService: pulumi.Output<string | undefined>;
     /**
      * The ID of the global database network (GDN).
      * > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
      */
-    public readonly gdnId!: pulumi.Output<string | undefined>;
+    declare public readonly gdnId: pulumi.Output<string | undefined>;
     /**
      * Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
      */
-    public readonly hotReplicaMode!: pulumi.Output<string>;
+    declare public readonly hotReplicaMode: pulumi.Output<string>;
     /**
      * Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
      * > **NOTE:** From version 1.249.0, `hotStandbyCluster` can be set to `EQUAL`, and this value is only valid for MySQL.
      */
-    public readonly hotStandbyCluster!: pulumi.Output<string>;
+    declare public readonly hotStandbyCluster: pulumi.Output<string>;
     /**
      * Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
      * > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
      * > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
      */
-    public readonly imciSwitch!: pulumi.Output<string>;
+    declare public readonly imciSwitch: pulumi.Output<string>;
     /**
      * Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
      * > **NOTE:** This parameter is valid only MySQL Engine supports.
      */
-    public readonly loosePolarLogBin!: pulumi.Output<string>;
+    declare public readonly loosePolarLogBin: pulumi.Output<string>;
     /**
      * Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
      * > **NOTE:** This parameter takes effect only if you do not set `creationOption` to CreateGdnStandby and you set `dbType` to MySQL and `dbVersion` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
      */
-    public readonly looseXengine!: pulumi.Output<string>;
+    declare public readonly looseXengine: pulumi.Output<string>;
     /**
      * Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
      * > **NOTE:** When the parameter `looseXengine` is ON, `looseXengineUseMemoryPct` takes effect.
      */
-    public readonly looseXengineUseMemoryPct!: pulumi.Output<number>;
+    declare public readonly looseXengineUseMemoryPct: pulumi.Output<number>;
     /**
      * Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
      * > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
      */
-    public readonly lowerCaseTableNames!: pulumi.Output<number>;
+    declare public readonly lowerCaseTableNames: pulumi.Output<number>;
     /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      */
-    public readonly maintainTime!: pulumi.Output<string>;
+    declare public readonly maintainTime: pulumi.Output<string>;
     /**
      * Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
      */
-    public readonly modifyType!: pulumi.Output<string | undefined>;
+    declare public readonly modifyType: pulumi.Output<string | undefined>;
     /**
      * The ID of the parameter template
      * > **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
      */
-    public readonly parameterGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly parameterGroupId: pulumi.Output<string | undefined>;
     /**
      * Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
      */
-    public readonly parameters!: pulumi.Output<outputs.polardb.ClusterParameter[]>;
+    declare public readonly parameters: pulumi.Output<outputs.polardb.ClusterParameter[]>;
     /**
      * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
      */
-    public readonly payType!: pulumi.Output<string | undefined>;
+    declare public readonly payType: pulumi.Output<string | undefined>;
     /**
      * The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * The latest time to start executing the target scheduled task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
      * > **NOTE:** The latest time must be 30 minutes or more later than the start time. If PlannedStartTime is set but this parameter is not specified, the latest time to execute the target task defaults to the start time+30 minutes. For example, when the PlannedStartTime is set to 2021-01-14T09:00:00Z and this parameter is left blank, the target task will start executing at the latest on 2021-01-14T09:30:00Z.
      */
-    public readonly plannedEndTime!: pulumi.Output<string | undefined>;
+    declare public readonly plannedEndTime: pulumi.Output<string | undefined>;
     /**
      * The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
      * > **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
      */
-    public readonly plannedStartTime!: pulumi.Output<string | undefined>;
+    declare public readonly plannedStartTime: pulumi.Output<string | undefined>;
     /**
      * (Available since 1.196.0) PolarDB cluster connection port.
      */
-    public /*out*/ readonly port!: pulumi.Output<string>;
+    declare public /*out*/ readonly port: pulumi.Output<string>;
     /**
      * The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
      * > **NOTE:** This parameter is available only if the StorageType parameter is set to ESSDAUTOPL.
      */
-    public readonly provisionedIops!: pulumi.Output<string>;
+    declare public readonly provisionedIops: pulumi.Output<string>;
     /**
      * The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
      * > **NOTE:** This parameter is valid only for standard edition clusters.
      */
-    public readonly proxyClass!: pulumi.Output<string | undefined>;
+    declare public readonly proxyClass: pulumi.Output<string | undefined>;
     /**
      * The type of PolarProxy. Valid values are `EXCLUSIVE` `GENERAL`.
      * > **NOTE:** This parameter is valid for both standard and enterprise clusters.
      */
-    public readonly proxyType!: pulumi.Output<string | undefined>;
+    declare public readonly proxyType: pulumi.Output<string | undefined>;
     /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
      */
-    public readonly renewalStatus!: pulumi.Output<string | undefined>;
+    declare public readonly renewalStatus: pulumi.Output<string | undefined>;
     /**
      * The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
      * > **NOTE:** From version 1.250.0, `resourceGroupId` can be modified.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
      */
-    public readonly roleArn!: pulumi.Output<string>;
+    declare public readonly roleArn: pulumi.Output<string>;
     /**
      * Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
      */
-    public readonly scaleApRoNumMax!: pulumi.Output<number>;
+    declare public readonly scaleApRoNumMax: pulumi.Output<number>;
     /**
      * Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
      */
-    public readonly scaleApRoNumMin!: pulumi.Output<number>;
+    declare public readonly scaleApRoNumMin: pulumi.Output<number>;
     /**
      * The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs when serverlessType is `AgileServerless` and 0 PCU to 8 PCUs when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
      */
-    public readonly scaleMax!: pulumi.Output<number | undefined>;
+    declare public readonly scaleMax: pulumi.Output<number | undefined>;
     /**
      * The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs when serverlessType is `AgileServerless` and 0 PCU to 8 PCUs when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
      */
-    public readonly scaleMin!: pulumi.Output<number | undefined>;
+    declare public readonly scaleMin: pulumi.Output<number | undefined>;
     /**
      * The maximum number of read-only nodes for scaling. Valid values: 0 to 15 when serverlessType is `AgileServerless` and 0 to 7 when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
      */
-    public readonly scaleRoNumMax!: pulumi.Output<number | undefined>;
+    declare public readonly scaleRoNumMax: pulumi.Output<number | undefined>;
     /**
      * The minimum number of read-only nodes for scaling. Valid values: 0 to 15 when serverlessType is `AgileServerless` and 0 to 7 when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
      */
-    public readonly scaleRoNumMin!: pulumi.Output<number | undefined>;
+    declare public readonly scaleRoNumMin: pulumi.Output<number | undefined>;
     /**
      * The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds. This parameter is valid only for serverless clusters.
      */
-    public readonly secondsUntilAutoPause!: pulumi.Output<number>;
+    declare public readonly secondsUntilAutoPause: pulumi.Output<number>;
     /**
      * The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
      * > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
      */
-    public readonly securityGroupIds!: pulumi.Output<string[]>;
+    declare public readonly securityGroupIds: pulumi.Output<string[]>;
     /**
      * This attribute has been deprecated from v1.130.0 and using `dbClusterIpArray` sub-element `securityIps` instead.
      * Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is "default".
      */
-    public readonly securityIps!: pulumi.Output<string[]>;
+    declare public readonly securityIps: pulumi.Output<string[]>;
     /**
      * CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
      * > **NOTE:** `serverlessRuleCpuEnlargeThreshold` should be at least 30 greater than `serverlessRuleCpuShrinkThreshold`.
      */
-    public readonly serverlessRuleCpuEnlargeThreshold!: pulumi.Output<number>;
+    declare public readonly serverlessRuleCpuEnlargeThreshold: pulumi.Output<number>;
     /**
      * CPU downscale threshold. Valid values: 10 to 100. This parameter is valid only for serverless clusters.
      */
-    public readonly serverlessRuleCpuShrinkThreshold!: pulumi.Output<number>;
+    declare public readonly serverlessRuleCpuShrinkThreshold: pulumi.Output<number>;
     /**
      * Elasticity sensitivity. Valid values: `normal` for standard and `flexible` for sensitive. This parameter is valid only for serverless clusters.
      */
-    public readonly serverlessRuleMode!: pulumi.Output<string>;
+    declare public readonly serverlessRuleMode: pulumi.Output<string>;
     /**
      * Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
      * > **NOTE:** When serverlessSteadySwitch is `ON` and serverlessType is `SteadyServerless`, parameters `scaleMin`, `scaleMax`, `scaleRoNumMin` and `scaleRoNumMax` are all required.
      */
-    public readonly serverlessSteadySwitch!: pulumi.Output<string | undefined>;
+    declare public readonly serverlessSteadySwitch: pulumi.Output<string | undefined>;
     /**
      * The type of the serverless cluster. Valid values `AgileServerless`, `SteadyServerless`. This parameter is valid only for serverless clusters.
      */
-    public readonly serverlessType!: pulumi.Output<string | undefined>;
+    declare public readonly serverlessType: pulumi.Output<string | undefined>;
     /**
      * The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
      */
-    public readonly sourceResourceId!: pulumi.Output<string | undefined>;
+    declare public readonly sourceResourceId: pulumi.Output<string | undefined>;
     /**
      * The availability zone where the hot standby cluster is stored, takes effect when `hotStandbyCluster` is `ON` or `EQUAL`.
      * > **NOTE:** `standbyAz` is required when `hotStandbyCluster` is `EQUAL`.
      */
-    public readonly standbyAz!: pulumi.Output<string>;
+    declare public readonly standbyAz: pulumi.Output<string>;
     /**
      * (Available since 1.204.1) PolarDB cluster status.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
      */
-    public readonly storagePayType!: pulumi.Output<string>;
+    declare public readonly storagePayType: pulumi.Output<string>;
     /**
      * Storage space charged by space (monthly package). Unit: GB.
      * > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
      * > **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when payType is `PrePaid`.
      */
-    public readonly storageSpace!: pulumi.Output<number>;
+    declare public readonly storageSpace: pulumi.Output<number>;
     /**
      * The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`, `ESSDPL0`, `ESSDAUTOPL`. The standard version only supports MySQL and PostgreSQL.
      */
-    public readonly storageType!: pulumi.Output<string>;
+    declare public readonly storageType: pulumi.Output<string>;
     /**
      * Whether the cluster has enabled strong data consistency across multiple zones. Valid values are `ON`, `OFF`. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
      */
-    public readonly strictConsistency!: pulumi.Output<string>;
+    declare public readonly strictConsistency: pulumi.Output<string>;
     /**
      * The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
      */
-    public readonly subCategory!: pulumi.Output<string>;
+    declare public readonly subCategory: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
      */
-    public readonly targetDbRevisionVersionCode!: pulumi.Output<string | undefined>;
+    declare public readonly targetDbRevisionVersionCode: pulumi.Output<string | undefined>;
     /**
      * (Available since 1.200.0) The region where the TDE key resides.
      * > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
      * > **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
      */
-    public /*out*/ readonly tdeRegion!: pulumi.Output<string>;
+    declare public /*out*/ readonly tdeRegion: pulumi.Output<string>;
     /**
      * turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
      * > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
      */
-    public readonly tdeStatus!: pulumi.Output<string | undefined>;
+    declare public readonly tdeStatus: pulumi.Output<string | undefined>;
     /**
      * Version upgrade type. Valid values are PROXY, DB, ALL. PROXY means upgrading the proxy version, DB means upgrading the db version, ALL means upgrading both db and proxy versions simultaneously.
      */
-    public readonly upgradeType!: pulumi.Output<string | undefined>;
+    declare public readonly upgradeType: pulumi.Output<string | undefined>;
     /**
      * The id of the VPC.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      * > **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
      */
-    public readonly vswitchId!: pulumi.Output<string | undefined>;
+    declare public readonly vswitchId: pulumi.Output<string | undefined>;
     /**
      * The Zone to launch the DB cluster. it supports multiple zone.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -409,167 +409,167 @@ export class Cluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
-            resourceInputs["allowShutDown"] = state ? state.allowShutDown : undefined;
-            resourceInputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
-            resourceInputs["backupRetentionPolicyOnClusterDeletion"] = state ? state.backupRetentionPolicyOnClusterDeletion : undefined;
-            resourceInputs["cloneDataPoint"] = state ? state.cloneDataPoint : undefined;
-            resourceInputs["collectorStatus"] = state ? state.collectorStatus : undefined;
-            resourceInputs["compressStorage"] = state ? state.compressStorage : undefined;
-            resourceInputs["connectionString"] = state ? state.connectionString : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["creationCategory"] = state ? state.creationCategory : undefined;
-            resourceInputs["creationOption"] = state ? state.creationOption : undefined;
-            resourceInputs["dbClusterIpArrays"] = state ? state.dbClusterIpArrays : undefined;
-            resourceInputs["dbMinorVersion"] = state ? state.dbMinorVersion : undefined;
-            resourceInputs["dbNodeClass"] = state ? state.dbNodeClass : undefined;
-            resourceInputs["dbNodeCount"] = state ? state.dbNodeCount : undefined;
-            resourceInputs["dbNodeId"] = state ? state.dbNodeId : undefined;
-            resourceInputs["dbNodeNum"] = state ? state.dbNodeNum : undefined;
-            resourceInputs["dbRevisionVersionLists"] = state ? state.dbRevisionVersionLists : undefined;
-            resourceInputs["dbType"] = state ? state.dbType : undefined;
-            resourceInputs["dbVersion"] = state ? state.dbVersion : undefined;
-            resourceInputs["defaultTimeZone"] = state ? state.defaultTimeZone : undefined;
-            resourceInputs["deletionLock"] = state ? state.deletionLock : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["encryptNewTables"] = state ? state.encryptNewTables : undefined;
-            resourceInputs["encryptionKey"] = state ? state.encryptionKey : undefined;
-            resourceInputs["fromTimeService"] = state ? state.fromTimeService : undefined;
-            resourceInputs["gdnId"] = state ? state.gdnId : undefined;
-            resourceInputs["hotReplicaMode"] = state ? state.hotReplicaMode : undefined;
-            resourceInputs["hotStandbyCluster"] = state ? state.hotStandbyCluster : undefined;
-            resourceInputs["imciSwitch"] = state ? state.imciSwitch : undefined;
-            resourceInputs["loosePolarLogBin"] = state ? state.loosePolarLogBin : undefined;
-            resourceInputs["looseXengine"] = state ? state.looseXengine : undefined;
-            resourceInputs["looseXengineUseMemoryPct"] = state ? state.looseXengineUseMemoryPct : undefined;
-            resourceInputs["lowerCaseTableNames"] = state ? state.lowerCaseTableNames : undefined;
-            resourceInputs["maintainTime"] = state ? state.maintainTime : undefined;
-            resourceInputs["modifyType"] = state ? state.modifyType : undefined;
-            resourceInputs["parameterGroupId"] = state ? state.parameterGroupId : undefined;
-            resourceInputs["parameters"] = state ? state.parameters : undefined;
-            resourceInputs["payType"] = state ? state.payType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["plannedEndTime"] = state ? state.plannedEndTime : undefined;
-            resourceInputs["plannedStartTime"] = state ? state.plannedStartTime : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["provisionedIops"] = state ? state.provisionedIops : undefined;
-            resourceInputs["proxyClass"] = state ? state.proxyClass : undefined;
-            resourceInputs["proxyType"] = state ? state.proxyType : undefined;
-            resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["roleArn"] = state ? state.roleArn : undefined;
-            resourceInputs["scaleApRoNumMax"] = state ? state.scaleApRoNumMax : undefined;
-            resourceInputs["scaleApRoNumMin"] = state ? state.scaleApRoNumMin : undefined;
-            resourceInputs["scaleMax"] = state ? state.scaleMax : undefined;
-            resourceInputs["scaleMin"] = state ? state.scaleMin : undefined;
-            resourceInputs["scaleRoNumMax"] = state ? state.scaleRoNumMax : undefined;
-            resourceInputs["scaleRoNumMin"] = state ? state.scaleRoNumMin : undefined;
-            resourceInputs["secondsUntilAutoPause"] = state ? state.secondsUntilAutoPause : undefined;
-            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            resourceInputs["securityIps"] = state ? state.securityIps : undefined;
-            resourceInputs["serverlessRuleCpuEnlargeThreshold"] = state ? state.serverlessRuleCpuEnlargeThreshold : undefined;
-            resourceInputs["serverlessRuleCpuShrinkThreshold"] = state ? state.serverlessRuleCpuShrinkThreshold : undefined;
-            resourceInputs["serverlessRuleMode"] = state ? state.serverlessRuleMode : undefined;
-            resourceInputs["serverlessSteadySwitch"] = state ? state.serverlessSteadySwitch : undefined;
-            resourceInputs["serverlessType"] = state ? state.serverlessType : undefined;
-            resourceInputs["sourceResourceId"] = state ? state.sourceResourceId : undefined;
-            resourceInputs["standbyAz"] = state ? state.standbyAz : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["storagePayType"] = state ? state.storagePayType : undefined;
-            resourceInputs["storageSpace"] = state ? state.storageSpace : undefined;
-            resourceInputs["storageType"] = state ? state.storageType : undefined;
-            resourceInputs["strictConsistency"] = state ? state.strictConsistency : undefined;
-            resourceInputs["subCategory"] = state ? state.subCategory : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["targetDbRevisionVersionCode"] = state ? state.targetDbRevisionVersionCode : undefined;
-            resourceInputs["tdeRegion"] = state ? state.tdeRegion : undefined;
-            resourceInputs["tdeStatus"] = state ? state.tdeStatus : undefined;
-            resourceInputs["upgradeType"] = state ? state.upgradeType : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["allowShutDown"] = state?.allowShutDown;
+            resourceInputs["autoRenewPeriod"] = state?.autoRenewPeriod;
+            resourceInputs["backupRetentionPolicyOnClusterDeletion"] = state?.backupRetentionPolicyOnClusterDeletion;
+            resourceInputs["cloneDataPoint"] = state?.cloneDataPoint;
+            resourceInputs["collectorStatus"] = state?.collectorStatus;
+            resourceInputs["compressStorage"] = state?.compressStorage;
+            resourceInputs["connectionString"] = state?.connectionString;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["creationCategory"] = state?.creationCategory;
+            resourceInputs["creationOption"] = state?.creationOption;
+            resourceInputs["dbClusterIpArrays"] = state?.dbClusterIpArrays;
+            resourceInputs["dbMinorVersion"] = state?.dbMinorVersion;
+            resourceInputs["dbNodeClass"] = state?.dbNodeClass;
+            resourceInputs["dbNodeCount"] = state?.dbNodeCount;
+            resourceInputs["dbNodeId"] = state?.dbNodeId;
+            resourceInputs["dbNodeNum"] = state?.dbNodeNum;
+            resourceInputs["dbRevisionVersionLists"] = state?.dbRevisionVersionLists;
+            resourceInputs["dbType"] = state?.dbType;
+            resourceInputs["dbVersion"] = state?.dbVersion;
+            resourceInputs["defaultTimeZone"] = state?.defaultTimeZone;
+            resourceInputs["deletionLock"] = state?.deletionLock;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["encryptNewTables"] = state?.encryptNewTables;
+            resourceInputs["encryptionKey"] = state?.encryptionKey;
+            resourceInputs["fromTimeService"] = state?.fromTimeService;
+            resourceInputs["gdnId"] = state?.gdnId;
+            resourceInputs["hotReplicaMode"] = state?.hotReplicaMode;
+            resourceInputs["hotStandbyCluster"] = state?.hotStandbyCluster;
+            resourceInputs["imciSwitch"] = state?.imciSwitch;
+            resourceInputs["loosePolarLogBin"] = state?.loosePolarLogBin;
+            resourceInputs["looseXengine"] = state?.looseXengine;
+            resourceInputs["looseXengineUseMemoryPct"] = state?.looseXengineUseMemoryPct;
+            resourceInputs["lowerCaseTableNames"] = state?.lowerCaseTableNames;
+            resourceInputs["maintainTime"] = state?.maintainTime;
+            resourceInputs["modifyType"] = state?.modifyType;
+            resourceInputs["parameterGroupId"] = state?.parameterGroupId;
+            resourceInputs["parameters"] = state?.parameters;
+            resourceInputs["payType"] = state?.payType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["plannedEndTime"] = state?.plannedEndTime;
+            resourceInputs["plannedStartTime"] = state?.plannedStartTime;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["provisionedIops"] = state?.provisionedIops;
+            resourceInputs["proxyClass"] = state?.proxyClass;
+            resourceInputs["proxyType"] = state?.proxyType;
+            resourceInputs["renewalStatus"] = state?.renewalStatus;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["roleArn"] = state?.roleArn;
+            resourceInputs["scaleApRoNumMax"] = state?.scaleApRoNumMax;
+            resourceInputs["scaleApRoNumMin"] = state?.scaleApRoNumMin;
+            resourceInputs["scaleMax"] = state?.scaleMax;
+            resourceInputs["scaleMin"] = state?.scaleMin;
+            resourceInputs["scaleRoNumMax"] = state?.scaleRoNumMax;
+            resourceInputs["scaleRoNumMin"] = state?.scaleRoNumMin;
+            resourceInputs["secondsUntilAutoPause"] = state?.secondsUntilAutoPause;
+            resourceInputs["securityGroupIds"] = state?.securityGroupIds;
+            resourceInputs["securityIps"] = state?.securityIps;
+            resourceInputs["serverlessRuleCpuEnlargeThreshold"] = state?.serverlessRuleCpuEnlargeThreshold;
+            resourceInputs["serverlessRuleCpuShrinkThreshold"] = state?.serverlessRuleCpuShrinkThreshold;
+            resourceInputs["serverlessRuleMode"] = state?.serverlessRuleMode;
+            resourceInputs["serverlessSteadySwitch"] = state?.serverlessSteadySwitch;
+            resourceInputs["serverlessType"] = state?.serverlessType;
+            resourceInputs["sourceResourceId"] = state?.sourceResourceId;
+            resourceInputs["standbyAz"] = state?.standbyAz;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["storagePayType"] = state?.storagePayType;
+            resourceInputs["storageSpace"] = state?.storageSpace;
+            resourceInputs["storageType"] = state?.storageType;
+            resourceInputs["strictConsistency"] = state?.strictConsistency;
+            resourceInputs["subCategory"] = state?.subCategory;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["targetDbRevisionVersionCode"] = state?.targetDbRevisionVersionCode;
+            resourceInputs["tdeRegion"] = state?.tdeRegion;
+            resourceInputs["tdeStatus"] = state?.tdeStatus;
+            resourceInputs["upgradeType"] = state?.upgradeType;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            if ((!args || args.dbNodeClass === undefined) && !opts.urn) {
+            if (args?.dbNodeClass === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbNodeClass'");
             }
-            if ((!args || args.dbType === undefined) && !opts.urn) {
+            if (args?.dbType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbType'");
             }
-            if ((!args || args.dbVersion === undefined) && !opts.urn) {
+            if (args?.dbVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbVersion'");
             }
-            resourceInputs["allowShutDown"] = args ? args.allowShutDown : undefined;
-            resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
-            resourceInputs["backupRetentionPolicyOnClusterDeletion"] = args ? args.backupRetentionPolicyOnClusterDeletion : undefined;
-            resourceInputs["cloneDataPoint"] = args ? args.cloneDataPoint : undefined;
-            resourceInputs["collectorStatus"] = args ? args.collectorStatus : undefined;
-            resourceInputs["compressStorage"] = args ? args.compressStorage : undefined;
-            resourceInputs["creationCategory"] = args ? args.creationCategory : undefined;
-            resourceInputs["creationOption"] = args ? args.creationOption : undefined;
-            resourceInputs["dbClusterIpArrays"] = args ? args.dbClusterIpArrays : undefined;
-            resourceInputs["dbMinorVersion"] = args ? args.dbMinorVersion : undefined;
-            resourceInputs["dbNodeClass"] = args ? args.dbNodeClass : undefined;
-            resourceInputs["dbNodeCount"] = args ? args.dbNodeCount : undefined;
-            resourceInputs["dbNodeId"] = args ? args.dbNodeId : undefined;
-            resourceInputs["dbNodeNum"] = args ? args.dbNodeNum : undefined;
-            resourceInputs["dbType"] = args ? args.dbType : undefined;
-            resourceInputs["dbVersion"] = args ? args.dbVersion : undefined;
-            resourceInputs["defaultTimeZone"] = args ? args.defaultTimeZone : undefined;
-            resourceInputs["deletionLock"] = args ? args.deletionLock : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["encryptNewTables"] = args ? args.encryptNewTables : undefined;
-            resourceInputs["encryptionKey"] = args ? args.encryptionKey : undefined;
-            resourceInputs["fromTimeService"] = args ? args.fromTimeService : undefined;
-            resourceInputs["gdnId"] = args ? args.gdnId : undefined;
-            resourceInputs["hotReplicaMode"] = args ? args.hotReplicaMode : undefined;
-            resourceInputs["hotStandbyCluster"] = args ? args.hotStandbyCluster : undefined;
-            resourceInputs["imciSwitch"] = args ? args.imciSwitch : undefined;
-            resourceInputs["loosePolarLogBin"] = args ? args.loosePolarLogBin : undefined;
-            resourceInputs["looseXengine"] = args ? args.looseXengine : undefined;
-            resourceInputs["looseXengineUseMemoryPct"] = args ? args.looseXengineUseMemoryPct : undefined;
-            resourceInputs["lowerCaseTableNames"] = args ? args.lowerCaseTableNames : undefined;
-            resourceInputs["maintainTime"] = args ? args.maintainTime : undefined;
-            resourceInputs["modifyType"] = args ? args.modifyType : undefined;
-            resourceInputs["parameterGroupId"] = args ? args.parameterGroupId : undefined;
-            resourceInputs["parameters"] = args ? args.parameters : undefined;
-            resourceInputs["payType"] = args ? args.payType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["plannedEndTime"] = args ? args.plannedEndTime : undefined;
-            resourceInputs["plannedStartTime"] = args ? args.plannedStartTime : undefined;
-            resourceInputs["provisionedIops"] = args ? args.provisionedIops : undefined;
-            resourceInputs["proxyClass"] = args ? args.proxyClass : undefined;
-            resourceInputs["proxyType"] = args ? args.proxyType : undefined;
-            resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["roleArn"] = args ? args.roleArn : undefined;
-            resourceInputs["scaleApRoNumMax"] = args ? args.scaleApRoNumMax : undefined;
-            resourceInputs["scaleApRoNumMin"] = args ? args.scaleApRoNumMin : undefined;
-            resourceInputs["scaleMax"] = args ? args.scaleMax : undefined;
-            resourceInputs["scaleMin"] = args ? args.scaleMin : undefined;
-            resourceInputs["scaleRoNumMax"] = args ? args.scaleRoNumMax : undefined;
-            resourceInputs["scaleRoNumMin"] = args ? args.scaleRoNumMin : undefined;
-            resourceInputs["secondsUntilAutoPause"] = args ? args.secondsUntilAutoPause : undefined;
-            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            resourceInputs["securityIps"] = args ? args.securityIps : undefined;
-            resourceInputs["serverlessRuleCpuEnlargeThreshold"] = args ? args.serverlessRuleCpuEnlargeThreshold : undefined;
-            resourceInputs["serverlessRuleCpuShrinkThreshold"] = args ? args.serverlessRuleCpuShrinkThreshold : undefined;
-            resourceInputs["serverlessRuleMode"] = args ? args.serverlessRuleMode : undefined;
-            resourceInputs["serverlessSteadySwitch"] = args ? args.serverlessSteadySwitch : undefined;
-            resourceInputs["serverlessType"] = args ? args.serverlessType : undefined;
-            resourceInputs["sourceResourceId"] = args ? args.sourceResourceId : undefined;
-            resourceInputs["standbyAz"] = args ? args.standbyAz : undefined;
-            resourceInputs["storagePayType"] = args ? args.storagePayType : undefined;
-            resourceInputs["storageSpace"] = args ? args.storageSpace : undefined;
-            resourceInputs["storageType"] = args ? args.storageType : undefined;
-            resourceInputs["strictConsistency"] = args ? args.strictConsistency : undefined;
-            resourceInputs["subCategory"] = args ? args.subCategory : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["targetDbRevisionVersionCode"] = args ? args.targetDbRevisionVersionCode : undefined;
-            resourceInputs["tdeStatus"] = args ? args.tdeStatus : undefined;
-            resourceInputs["upgradeType"] = args ? args.upgradeType : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["allowShutDown"] = args?.allowShutDown;
+            resourceInputs["autoRenewPeriod"] = args?.autoRenewPeriod;
+            resourceInputs["backupRetentionPolicyOnClusterDeletion"] = args?.backupRetentionPolicyOnClusterDeletion;
+            resourceInputs["cloneDataPoint"] = args?.cloneDataPoint;
+            resourceInputs["collectorStatus"] = args?.collectorStatus;
+            resourceInputs["compressStorage"] = args?.compressStorage;
+            resourceInputs["creationCategory"] = args?.creationCategory;
+            resourceInputs["creationOption"] = args?.creationOption;
+            resourceInputs["dbClusterIpArrays"] = args?.dbClusterIpArrays;
+            resourceInputs["dbMinorVersion"] = args?.dbMinorVersion;
+            resourceInputs["dbNodeClass"] = args?.dbNodeClass;
+            resourceInputs["dbNodeCount"] = args?.dbNodeCount;
+            resourceInputs["dbNodeId"] = args?.dbNodeId;
+            resourceInputs["dbNodeNum"] = args?.dbNodeNum;
+            resourceInputs["dbType"] = args?.dbType;
+            resourceInputs["dbVersion"] = args?.dbVersion;
+            resourceInputs["defaultTimeZone"] = args?.defaultTimeZone;
+            resourceInputs["deletionLock"] = args?.deletionLock;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["encryptNewTables"] = args?.encryptNewTables;
+            resourceInputs["encryptionKey"] = args?.encryptionKey;
+            resourceInputs["fromTimeService"] = args?.fromTimeService;
+            resourceInputs["gdnId"] = args?.gdnId;
+            resourceInputs["hotReplicaMode"] = args?.hotReplicaMode;
+            resourceInputs["hotStandbyCluster"] = args?.hotStandbyCluster;
+            resourceInputs["imciSwitch"] = args?.imciSwitch;
+            resourceInputs["loosePolarLogBin"] = args?.loosePolarLogBin;
+            resourceInputs["looseXengine"] = args?.looseXengine;
+            resourceInputs["looseXengineUseMemoryPct"] = args?.looseXengineUseMemoryPct;
+            resourceInputs["lowerCaseTableNames"] = args?.lowerCaseTableNames;
+            resourceInputs["maintainTime"] = args?.maintainTime;
+            resourceInputs["modifyType"] = args?.modifyType;
+            resourceInputs["parameterGroupId"] = args?.parameterGroupId;
+            resourceInputs["parameters"] = args?.parameters;
+            resourceInputs["payType"] = args?.payType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["plannedEndTime"] = args?.plannedEndTime;
+            resourceInputs["plannedStartTime"] = args?.plannedStartTime;
+            resourceInputs["provisionedIops"] = args?.provisionedIops;
+            resourceInputs["proxyClass"] = args?.proxyClass;
+            resourceInputs["proxyType"] = args?.proxyType;
+            resourceInputs["renewalStatus"] = args?.renewalStatus;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["roleArn"] = args?.roleArn;
+            resourceInputs["scaleApRoNumMax"] = args?.scaleApRoNumMax;
+            resourceInputs["scaleApRoNumMin"] = args?.scaleApRoNumMin;
+            resourceInputs["scaleMax"] = args?.scaleMax;
+            resourceInputs["scaleMin"] = args?.scaleMin;
+            resourceInputs["scaleRoNumMax"] = args?.scaleRoNumMax;
+            resourceInputs["scaleRoNumMin"] = args?.scaleRoNumMin;
+            resourceInputs["secondsUntilAutoPause"] = args?.secondsUntilAutoPause;
+            resourceInputs["securityGroupIds"] = args?.securityGroupIds;
+            resourceInputs["securityIps"] = args?.securityIps;
+            resourceInputs["serverlessRuleCpuEnlargeThreshold"] = args?.serverlessRuleCpuEnlargeThreshold;
+            resourceInputs["serverlessRuleCpuShrinkThreshold"] = args?.serverlessRuleCpuShrinkThreshold;
+            resourceInputs["serverlessRuleMode"] = args?.serverlessRuleMode;
+            resourceInputs["serverlessSteadySwitch"] = args?.serverlessSteadySwitch;
+            resourceInputs["serverlessType"] = args?.serverlessType;
+            resourceInputs["sourceResourceId"] = args?.sourceResourceId;
+            resourceInputs["standbyAz"] = args?.standbyAz;
+            resourceInputs["storagePayType"] = args?.storagePayType;
+            resourceInputs["storageSpace"] = args?.storageSpace;
+            resourceInputs["storageType"] = args?.storageType;
+            resourceInputs["strictConsistency"] = args?.strictConsistency;
+            resourceInputs["subCategory"] = args?.subCategory;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["targetDbRevisionVersionCode"] = args?.targetDbRevisionVersionCode;
+            resourceInputs["tdeStatus"] = args?.tdeStatus;
+            resourceInputs["upgradeType"] = args?.upgradeType;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["connectionString"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["dbRevisionVersionLists"] = undefined /*out*/;

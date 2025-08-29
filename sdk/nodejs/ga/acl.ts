@@ -73,31 +73,31 @@ export class Acl extends pulumi.CustomResource {
      *
      * @deprecated Field `aclEntries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.
      */
-    public readonly aclEntries!: pulumi.Output<outputs.ga.AclAclEntry[]>;
+    declare public readonly aclEntries: pulumi.Output<outputs.ga.AclAclEntry[]>;
     /**
      * The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), hyphens (-) and underscores (_). It must start with a letter.
      */
-    public readonly aclName!: pulumi.Output<string | undefined>;
+    declare public readonly aclName: pulumi.Output<string | undefined>;
     /**
      * The IP version. Valid values: `IPv4` and `IPv6`.
      */
-    public readonly addressIpVersion!: pulumi.Output<string>;
+    declare public readonly addressIpVersion: pulumi.Output<string>;
     /**
      * The dry run.
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Acl resource with the given unique name, arguments, and options.
@@ -112,24 +112,24 @@ export class Acl extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclState | undefined;
-            resourceInputs["aclEntries"] = state ? state.aclEntries : undefined;
-            resourceInputs["aclName"] = state ? state.aclName : undefined;
-            resourceInputs["addressIpVersion"] = state ? state.addressIpVersion : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["aclEntries"] = state?.aclEntries;
+            resourceInputs["aclName"] = state?.aclName;
+            resourceInputs["addressIpVersion"] = state?.addressIpVersion;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as AclArgs | undefined;
-            if ((!args || args.addressIpVersion === undefined) && !opts.urn) {
+            if (args?.addressIpVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'addressIpVersion'");
             }
-            resourceInputs["aclEntries"] = args ? args.aclEntries : undefined;
-            resourceInputs["aclName"] = args ? args.aclName : undefined;
-            resourceInputs["addressIpVersion"] = args ? args.addressIpVersion : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["aclEntries"] = args?.aclEntries;
+            resourceInputs["aclName"] = args?.aclName;
+            resourceInputs["addressIpVersion"] = args?.addressIpVersion;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -82,11 +82,11 @@ export class WafDomain extends pulumi.CustomResource {
     /**
      * The client ip tag.
      */
-    public readonly clientIpTag!: pulumi.Output<string | undefined>;
+    declare public readonly clientIpTag: pulumi.Output<string | undefined>;
     /**
      * The accelerated domain name.
      */
-    public readonly domainName!: pulumi.Output<string>;
+    declare public readonly domainName: pulumi.Output<string>;
 
     /**
      * Create a WafDomain resource with the given unique name, arguments, and options.
@@ -101,15 +101,15 @@ export class WafDomain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WafDomainState | undefined;
-            resourceInputs["clientIpTag"] = state ? state.clientIpTag : undefined;
-            resourceInputs["domainName"] = state ? state.domainName : undefined;
+            resourceInputs["clientIpTag"] = state?.clientIpTag;
+            resourceInputs["domainName"] = state?.domainName;
         } else {
             const args = argsOrState as WafDomainArgs | undefined;
-            if ((!args || args.domainName === undefined) && !opts.urn) {
+            if (args?.domainName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
-            resourceInputs["clientIpTag"] = args ? args.clientIpTag : undefined;
-            resourceInputs["domainName"] = args ? args.domainName : undefined;
+            resourceInputs["clientIpTag"] = args?.clientIpTag;
+            resourceInputs["domainName"] = args?.domainName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WafDomain.__pulumiType, name, resourceInputs, opts);

@@ -131,27 +131,27 @@ export class ServerGroupAttachment extends pulumi.CustomResource {
      * If instances of scaling group are attached/removed from backend server when
      * server group from scaling group. Default to false.
      */
-    public readonly forceAttach!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceAttach: pulumi.Output<boolean | undefined>;
     /**
      * The port will be used for Server Group backend server.
      */
-    public readonly port!: pulumi.Output<number>;
+    declare public readonly port: pulumi.Output<number>;
     /**
      * ID of the scaling group.
      */
-    public readonly scalingGroupId!: pulumi.Output<string>;
+    declare public readonly scalingGroupId: pulumi.Output<string>;
     /**
      * ID of Server Group.
      */
-    public readonly serverGroupId!: pulumi.Output<string>;
+    declare public readonly serverGroupId: pulumi.Output<string>;
     /**
      * The type of server group N. Valid values: ALB, NLB.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The weight of an ECS instance attached to the Server Group.
      */
-    public readonly weight!: pulumi.Output<number>;
+    declare public readonly weight: pulumi.Output<number>;
 
     /**
      * Create a ServerGroupAttachment resource with the given unique name, arguments, and options.
@@ -166,35 +166,35 @@ export class ServerGroupAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServerGroupAttachmentState | undefined;
-            resourceInputs["forceAttach"] = state ? state.forceAttach : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
-            resourceInputs["serverGroupId"] = state ? state.serverGroupId : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["weight"] = state ? state.weight : undefined;
+            resourceInputs["forceAttach"] = state?.forceAttach;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["scalingGroupId"] = state?.scalingGroupId;
+            resourceInputs["serverGroupId"] = state?.serverGroupId;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["weight"] = state?.weight;
         } else {
             const args = argsOrState as ServerGroupAttachmentArgs | undefined;
-            if ((!args || args.port === undefined) && !opts.urn) {
+            if (args?.port === undefined && !opts.urn) {
                 throw new Error("Missing required property 'port'");
             }
-            if ((!args || args.scalingGroupId === undefined) && !opts.urn) {
+            if (args?.scalingGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scalingGroupId'");
             }
-            if ((!args || args.serverGroupId === undefined) && !opts.urn) {
+            if (args?.serverGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serverGroupId'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            if ((!args || args.weight === undefined) && !opts.urn) {
+            if (args?.weight === undefined && !opts.urn) {
                 throw new Error("Missing required property 'weight'");
             }
-            resourceInputs["forceAttach"] = args ? args.forceAttach : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
-            resourceInputs["serverGroupId"] = args ? args.serverGroupId : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["weight"] = args ? args.weight : undefined;
+            resourceInputs["forceAttach"] = args?.forceAttach;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["scalingGroupId"] = args?.scalingGroupId;
+            resourceInputs["serverGroupId"] = args?.serverGroupId;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["weight"] = args?.weight;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServerGroupAttachment.__pulumiType, name, resourceInputs, opts);

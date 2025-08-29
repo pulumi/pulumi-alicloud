@@ -49,12 +49,12 @@ export class Instance extends pulumi.CustomResource {
      * - false: only generate orders, not pay
      * > **NOTE:**  The default value is true. If the balance of your payment method is insufficient, you can set the parameter AutoPay to false, and an unpaid order will be generated. You can log in to the user Center to pay by yourself.
      */
-    public readonly autoPay!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoPay: pulumi.Output<boolean | undefined>;
     /**
      * Instance low-frequency storage space. Unit: GB.
      * > **NOTE:**  PayAsYouGo (PostPaid) instances ignore this parameter.
      */
-    public readonly coldStorageSize!: pulumi.Output<number | undefined>;
+    declare public readonly coldStorageSize: pulumi.Output<number | undefined>;
     /**
      * Instance specifications. Value:
      * - 8 cores 32 GB (number of compute nodes: 1)
@@ -65,31 +65,31 @@ export class Instance extends pulumi.CustomResource {
      * - 128 core 512 GB (number of compute nodes: 8)
      * > **NOTE:** Just fill in the audit number. Please submit a work order application for purchasing 1024 or above specifications. Shared instance types do not need to specify specifications. The specification of - 8 core 32GB (number of computing nodes: 1) is only for experience use and cannot be used for production.
      */
-    public readonly cpu!: pulumi.Output<number>;
+    declare public readonly cpu: pulumi.Output<number>;
     /**
      * The creation time of the resource.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The buying cycle. Buy for 2 months. If the Payment type is PayAsYouGo (PostPaid), you do not need to specify it.
      */
-    public readonly duration!: pulumi.Output<number | undefined>;
+    declare public readonly duration: pulumi.Output<number | undefined>;
     /**
      * List of domain names. See `endpoints` below.
      */
-    public readonly endpoints!: pulumi.Output<outputs.hologram.InstanceEndpoint[]>;
+    declare public readonly endpoints: pulumi.Output<outputs.hologram.InstanceEndpoint[]>;
     /**
      * Number of gateway nodes.
      */
-    public readonly gatewayCount!: pulumi.Output<number | undefined>;
+    declare public readonly gatewayCount: pulumi.Output<number | undefined>;
     /**
      * Initialize the database and split multiple database names ",".
      */
-    public readonly initialDatabases!: pulumi.Output<string | undefined>;
+    declare public readonly initialDatabases: pulumi.Output<string | undefined>;
     /**
      * The name of the resource.
      */
-    public readonly instanceName!: pulumi.Output<string>;
+    declare public readonly instanceName: pulumi.Output<string>;
     /**
      * The instance type. Value:
      * - Standard: Universal.
@@ -97,50 +97,50 @@ export class Instance extends pulumi.CustomResource {
      * - Warehouse: calculation group type.
      * - Shared: Shared.
      */
-    public readonly instanceType!: pulumi.Output<string>;
+    declare public readonly instanceType: pulumi.Output<string>;
     /**
      * The ID of the primary instance.
      */
-    public readonly leaderInstanceId!: pulumi.Output<string | undefined>;
+    declare public readonly leaderInstanceId: pulumi.Output<string | undefined>;
     /**
      * The payment type of the resource.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * Billing cycle. Value:
      * - Month: monthly billing
      * - Hour: hourly billing
      * > **NOTE:**  Subscription instances (PrePaid) only supports Month. PayAsYouGo instances (PostPaid) only supports Hour. The Shared type is automatically set to Hour without specifying it.
      */
-    public readonly pricingCycle!: pulumi.Output<string | undefined>;
+    declare public readonly pricingCycle: pulumi.Output<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Change matching type. Value:
      * - UPGRADE: UPGRADE
      * - DOWNGRADE: Downgrading
      * > **NOTE:** The upgrade specification cannot be less than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is larger than the original specification. The downgrading specification cannot be greater than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is smaller than the original specification.
      */
-    public readonly scaleType!: pulumi.Output<string | undefined>;
+    declare public readonly scaleType: pulumi.Output<string | undefined>;
     /**
      * The status of the resource.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The standard storage space of the instance. Unit: GB.
      * > **NOTE:**  PayAsYouGo instances (PostPaid) ignore this parameter.
      */
-    public readonly storageSize!: pulumi.Output<number | undefined>;
+    declare public readonly storageSize: pulumi.Output<number | undefined>;
     /**
      * Instance tag.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The zone Id. Refer to "Instructions for Use".
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -155,57 +155,57 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["autoPay"] = state ? state.autoPay : undefined;
-            resourceInputs["coldStorageSize"] = state ? state.coldStorageSize : undefined;
-            resourceInputs["cpu"] = state ? state.cpu : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["duration"] = state ? state.duration : undefined;
-            resourceInputs["endpoints"] = state ? state.endpoints : undefined;
-            resourceInputs["gatewayCount"] = state ? state.gatewayCount : undefined;
-            resourceInputs["initialDatabases"] = state ? state.initialDatabases : undefined;
-            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["leaderInstanceId"] = state ? state.leaderInstanceId : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["pricingCycle"] = state ? state.pricingCycle : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["scaleType"] = state ? state.scaleType : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["storageSize"] = state ? state.storageSize : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["autoPay"] = state?.autoPay;
+            resourceInputs["coldStorageSize"] = state?.coldStorageSize;
+            resourceInputs["cpu"] = state?.cpu;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["duration"] = state?.duration;
+            resourceInputs["endpoints"] = state?.endpoints;
+            resourceInputs["gatewayCount"] = state?.gatewayCount;
+            resourceInputs["initialDatabases"] = state?.initialDatabases;
+            resourceInputs["instanceName"] = state?.instanceName;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["leaderInstanceId"] = state?.leaderInstanceId;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["pricingCycle"] = state?.pricingCycle;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["scaleType"] = state?.scaleType;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["storageSize"] = state?.storageSize;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.instanceName === undefined) && !opts.urn) {
+            if (args?.instanceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceName'");
             }
-            if ((!args || args.instanceType === undefined) && !opts.urn) {
+            if (args?.instanceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceType'");
             }
-            if ((!args || args.paymentType === undefined) && !opts.urn) {
+            if (args?.paymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["autoPay"] = args ? args.autoPay : undefined;
-            resourceInputs["coldStorageSize"] = args ? args.coldStorageSize : undefined;
-            resourceInputs["cpu"] = args ? args.cpu : undefined;
-            resourceInputs["duration"] = args ? args.duration : undefined;
-            resourceInputs["endpoints"] = args ? args.endpoints : undefined;
-            resourceInputs["gatewayCount"] = args ? args.gatewayCount : undefined;
-            resourceInputs["initialDatabases"] = args ? args.initialDatabases : undefined;
-            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["leaderInstanceId"] = args ? args.leaderInstanceId : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["pricingCycle"] = args ? args.pricingCycle : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["scaleType"] = args ? args.scaleType : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["storageSize"] = args ? args.storageSize : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["autoPay"] = args?.autoPay;
+            resourceInputs["coldStorageSize"] = args?.coldStorageSize;
+            resourceInputs["cpu"] = args?.cpu;
+            resourceInputs["duration"] = args?.duration;
+            resourceInputs["endpoints"] = args?.endpoints;
+            resourceInputs["gatewayCount"] = args?.gatewayCount;
+            resourceInputs["initialDatabases"] = args?.initialDatabases;
+            resourceInputs["instanceName"] = args?.instanceName;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["leaderInstanceId"] = args?.leaderInstanceId;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["pricingCycle"] = args?.pricingCycle;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["scaleType"] = args?.scaleType;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["storageSize"] = args?.storageSize;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

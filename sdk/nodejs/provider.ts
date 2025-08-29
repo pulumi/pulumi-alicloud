@@ -28,73 +28,69 @@ export class Provider extends pulumi.ProviderResource {
     }
 
     /**
-     * The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-     * console.
+     * The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
      */
-    public readonly accessKey!: pulumi.Output<string | undefined>;
+    declare public readonly accessKey: pulumi.Output<string | undefined>;
     /**
-     * The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
-     * Alibaba Cloud console.
+     * The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the Alibaba Cloud console.
      */
-    public readonly accountId!: pulumi.Output<string | undefined>;
-    public readonly accountType!: pulumi.Output<string | undefined>;
-    public readonly configurationSource!: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountType: pulumi.Output<string | undefined>;
+    declare public readonly configurationSource: pulumi.Output<string | undefined>;
     /**
      * The URI of sidecar credentials service.
      */
-    public readonly credentialsUri!: pulumi.Output<string | undefined>;
+    declare public readonly credentialsUri: pulumi.Output<string | undefined>;
     /**
-     * The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
-     * of the Alibaba Cloud console.
+     * The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section of the Alibaba Cloud console.
      */
-    public readonly ecsRoleName!: pulumi.Output<string | undefined>;
+    declare public readonly ecsRoleName: pulumi.Output<string | undefined>;
     /**
      * @deprecated Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead.
      */
-    public readonly fc!: pulumi.Output<string | undefined>;
+    declare public readonly fc: pulumi.Output<string | undefined>;
     /**
      * @deprecated Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.
      */
-    public readonly logEndpoint!: pulumi.Output<string | undefined>;
+    declare public readonly logEndpoint: pulumi.Output<string | undefined>;
     /**
      * @deprecated Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead.
      */
-    public readonly mnsEndpoint!: pulumi.Output<string | undefined>;
+    declare public readonly mnsEndpoint: pulumi.Output<string | undefined>;
     /**
      * @deprecated Field 'ots_instance_name' has been deprecated from provider version 1.10.0. New field 'instance_name' of resource 'alicloud_ots_table' instead.
      */
-    public readonly otsInstanceName!: pulumi.Output<string | undefined>;
+    declare public readonly otsInstanceName: pulumi.Output<string | undefined>;
     /**
      * The profile for API operations. If not set, the default profile created with `aliyun configure` will be used.
      */
-    public readonly profile!: pulumi.Output<string | undefined>;
-    public readonly protocol!: pulumi.Output<string | undefined>;
+    declare public readonly profile: pulumi.Output<string | undefined>;
+    declare public readonly protocol: pulumi.Output<string | undefined>;
     /**
      * The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
      */
-    public readonly region!: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string | undefined>;
     /**
-     * The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-     * console.
+     * The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
      */
-    public readonly secretKey!: pulumi.Output<string | undefined>;
+    declare public readonly secretKey: pulumi.Output<string | undefined>;
     /**
      * The security transport for the assume role invoking.
      */
-    public readonly secureTransport!: pulumi.Output<string | undefined>;
+    declare public readonly secureTransport: pulumi.Output<string | undefined>;
     /**
      * security token. A security token is only required if you are using Security Token Service.
      */
-    public readonly securityToken!: pulumi.Output<string | undefined>;
-    public readonly securityTransport!: pulumi.Output<string | undefined>;
+    declare public readonly securityToken: pulumi.Output<string | undefined>;
+    declare public readonly securityTransport: pulumi.Output<string | undefined>;
     /**
      * The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
      */
-    public readonly sharedCredentialsFile!: pulumi.Output<string | undefined>;
+    declare public readonly sharedCredentialsFile: pulumi.Output<string | undefined>;
     /**
      * The source ip for the assume role invoking.
      */
-    public readonly sourceIp!: pulumi.Output<string | undefined>;
+    declare public readonly sourceIp: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -107,33 +103,33 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["accessKey"] = args ? args.accessKey : undefined;
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["accountType"] = args ? args.accountType : undefined;
-            resourceInputs["assumeRole"] = pulumi.output(args ? args.assumeRole : undefined).apply(JSON.stringify);
-            resourceInputs["assumeRoleWithOidc"] = pulumi.output(args ? args.assumeRoleWithOidc : undefined).apply(JSON.stringify);
-            resourceInputs["clientConnectTimeout"] = pulumi.output(args ? args.clientConnectTimeout : undefined).apply(JSON.stringify);
-            resourceInputs["clientReadTimeout"] = pulumi.output(args ? args.clientReadTimeout : undefined).apply(JSON.stringify);
-            resourceInputs["configurationSource"] = args ? args.configurationSource : undefined;
-            resourceInputs["credentialsUri"] = args ? args.credentialsUri : undefined;
-            resourceInputs["ecsRoleName"] = (args ? args.ecsRoleName : undefined) ?? utilities.getEnv("ALICLOUD_ECS_ROLE_NAME");
-            resourceInputs["endpoints"] = pulumi.output(args ? args.endpoints : undefined).apply(JSON.stringify);
-            resourceInputs["fc"] = args ? args.fc : undefined;
-            resourceInputs["logEndpoint"] = args ? args.logEndpoint : undefined;
-            resourceInputs["maxRetryTimeout"] = pulumi.output(args ? args.maxRetryTimeout : undefined).apply(JSON.stringify);
-            resourceInputs["mnsEndpoint"] = args ? args.mnsEndpoint : undefined;
-            resourceInputs["otsInstanceName"] = args ? args.otsInstanceName : undefined;
-            resourceInputs["profile"] = (args ? args.profile : undefined) ?? utilities.getEnv("ALICLOUD_PROFILE");
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["region"] = (args ? args.region : undefined) ?? utilities.getEnv("ALICLOUD_REGION");
-            resourceInputs["secretKey"] = args ? args.secretKey : undefined;
-            resourceInputs["secureTransport"] = args ? args.secureTransport : undefined;
-            resourceInputs["securityToken"] = args ? args.securityToken : undefined;
-            resourceInputs["securityTransport"] = args ? args.securityTransport : undefined;
-            resourceInputs["sharedCredentialsFile"] = args ? args.sharedCredentialsFile : undefined;
-            resourceInputs["signVersion"] = pulumi.output(args ? args.signVersion : undefined).apply(JSON.stringify);
-            resourceInputs["skipRegionValidation"] = pulumi.output(args ? args.skipRegionValidation : undefined).apply(JSON.stringify);
-            resourceInputs["sourceIp"] = args ? args.sourceIp : undefined;
+            resourceInputs["accessKey"] = args?.accessKey;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["accountType"] = args?.accountType;
+            resourceInputs["assumeRole"] = pulumi.output(args?.assumeRole).apply(JSON.stringify);
+            resourceInputs["assumeRoleWithOidc"] = pulumi.output(args?.assumeRoleWithOidc).apply(JSON.stringify);
+            resourceInputs["clientConnectTimeout"] = pulumi.output(args?.clientConnectTimeout).apply(JSON.stringify);
+            resourceInputs["clientReadTimeout"] = pulumi.output(args?.clientReadTimeout).apply(JSON.stringify);
+            resourceInputs["configurationSource"] = args?.configurationSource;
+            resourceInputs["credentialsUri"] = args?.credentialsUri;
+            resourceInputs["ecsRoleName"] = (args?.ecsRoleName) ?? utilities.getEnv("ALICLOUD_ECS_ROLE_NAME");
+            resourceInputs["endpoints"] = pulumi.output(args?.endpoints).apply(JSON.stringify);
+            resourceInputs["fc"] = args?.fc;
+            resourceInputs["logEndpoint"] = args?.logEndpoint;
+            resourceInputs["maxRetryTimeout"] = pulumi.output(args?.maxRetryTimeout).apply(JSON.stringify);
+            resourceInputs["mnsEndpoint"] = args?.mnsEndpoint;
+            resourceInputs["otsInstanceName"] = args?.otsInstanceName;
+            resourceInputs["profile"] = (args?.profile) ?? utilities.getEnv("ALICLOUD_PROFILE");
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["region"] = (args?.region) ?? utilities.getEnv("ALICLOUD_REGION");
+            resourceInputs["secretKey"] = args?.secretKey;
+            resourceInputs["secureTransport"] = args?.secureTransport;
+            resourceInputs["securityToken"] = args?.securityToken;
+            resourceInputs["securityTransport"] = args?.securityTransport;
+            resourceInputs["sharedCredentialsFile"] = args?.sharedCredentialsFile;
+            resourceInputs["signVersion"] = pulumi.output(args?.signVersion).apply(JSON.stringify);
+            resourceInputs["skipRegionValidation"] = pulumi.output(args?.skipRegionValidation).apply(JSON.stringify);
+            resourceInputs["sourceIp"] = args?.sourceIp;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
@@ -154,13 +150,11 @@ export class Provider extends pulumi.ProviderResource {
  */
 export interface ProviderArgs {
     /**
-     * The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-     * console.
+     * The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
      */
     accessKey?: pulumi.Input<string>;
     /**
-     * The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
-     * Alibaba Cloud console.
+     * The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the Alibaba Cloud console.
      */
     accountId?: pulumi.Input<string>;
     accountType?: pulumi.Input<string>;
@@ -180,8 +174,7 @@ export interface ProviderArgs {
      */
     credentialsUri?: pulumi.Input<string>;
     /**
-     * The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
-     * of the Alibaba Cloud console.
+     * The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section of the Alibaba Cloud console.
      */
     ecsRoleName?: pulumi.Input<string>;
     endpoints?: pulumi.Input<pulumi.Input<inputs.ProviderEndpoint>[]>;
@@ -215,8 +208,7 @@ export interface ProviderArgs {
      */
     region?: pulumi.Input<string>;
     /**
-     * The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-     * console.
+     * The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
      */
     secretKey?: pulumi.Input<string>;
     /**
@@ -234,8 +226,7 @@ export interface ProviderArgs {
     sharedCredentialsFile?: pulumi.Input<string>;
     signVersion?: pulumi.Input<inputs.ProviderSignVersion>;
     /**
-     * Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
-     * that are not public (yet).
+     * Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
      */
     skipRegionValidation?: pulumi.Input<boolean>;
     /**

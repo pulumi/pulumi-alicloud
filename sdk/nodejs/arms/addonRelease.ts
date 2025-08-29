@@ -50,31 +50,31 @@ export class AddonRelease extends pulumi.CustomResource {
     /**
      * Addon Name.
      */
-    public readonly addonName!: pulumi.Output<string>;
+    declare public readonly addonName: pulumi.Output<string>;
     /**
      * The name of the resource.
      */
-    public readonly addonReleaseName!: pulumi.Output<string>;
+    declare public readonly addonReleaseName: pulumi.Output<string>;
     /**
      * Version number of Addon. Addon information can be obtained through ListAddons.
      */
-    public readonly addonVersion!: pulumi.Output<string>;
+    declare public readonly addonVersion: pulumi.Output<string>;
     /**
      * The installed locale.
      */
-    public readonly aliyunLang!: pulumi.Output<string>;
+    declare public readonly aliyunLang: pulumi.Output<string>;
     /**
      * Creation time.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Environment id.
      */
-    public readonly environmentId!: pulumi.Output<string>;
+    declare public readonly environmentId: pulumi.Output<string>;
     /**
      * Configuration information for installing Addon. Obtain the configuration template from ListAddonSchema, for example, {"host":"mysql-service.default","port":3306,"username":"root","password":"roots"}.
      */
-    public readonly values!: pulumi.Output<string | undefined>;
+    declare public readonly values: pulumi.Output<string | undefined>;
 
     /**
      * Create a AddonRelease resource with the given unique name, arguments, and options.
@@ -89,30 +89,30 @@ export class AddonRelease extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AddonReleaseState | undefined;
-            resourceInputs["addonName"] = state ? state.addonName : undefined;
-            resourceInputs["addonReleaseName"] = state ? state.addonReleaseName : undefined;
-            resourceInputs["addonVersion"] = state ? state.addonVersion : undefined;
-            resourceInputs["aliyunLang"] = state ? state.aliyunLang : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["environmentId"] = state ? state.environmentId : undefined;
-            resourceInputs["values"] = state ? state.values : undefined;
+            resourceInputs["addonName"] = state?.addonName;
+            resourceInputs["addonReleaseName"] = state?.addonReleaseName;
+            resourceInputs["addonVersion"] = state?.addonVersion;
+            resourceInputs["aliyunLang"] = state?.aliyunLang;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["environmentId"] = state?.environmentId;
+            resourceInputs["values"] = state?.values;
         } else {
             const args = argsOrState as AddonReleaseArgs | undefined;
-            if ((!args || args.addonName === undefined) && !opts.urn) {
+            if (args?.addonName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'addonName'");
             }
-            if ((!args || args.addonVersion === undefined) && !opts.urn) {
+            if (args?.addonVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'addonVersion'");
             }
-            if ((!args || args.environmentId === undefined) && !opts.urn) {
+            if (args?.environmentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environmentId'");
             }
-            resourceInputs["addonName"] = args ? args.addonName : undefined;
-            resourceInputs["addonReleaseName"] = args ? args.addonReleaseName : undefined;
-            resourceInputs["addonVersion"] = args ? args.addonVersion : undefined;
-            resourceInputs["aliyunLang"] = args ? args.aliyunLang : undefined;
-            resourceInputs["environmentId"] = args ? args.environmentId : undefined;
-            resourceInputs["values"] = args ? args.values : undefined;
+            resourceInputs["addonName"] = args?.addonName;
+            resourceInputs["addonReleaseName"] = args?.addonReleaseName;
+            resourceInputs["addonVersion"] = args?.addonVersion;
+            resourceInputs["aliyunLang"] = args?.aliyunLang;
+            resourceInputs["environmentId"] = args?.environmentId;
+            resourceInputs["values"] = args?.values;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

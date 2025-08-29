@@ -86,37 +86,37 @@ export class AccessConfiguration extends pulumi.CustomResource {
     /**
      * The ID of the Access Configuration.
      */
-    public /*out*/ readonly accessConfigurationId!: pulumi.Output<string>;
+    declare public /*out*/ readonly accessConfigurationId: pulumi.Output<string>;
     /**
      * The name of the access configuration. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
      */
-    public readonly accessConfigurationName!: pulumi.Output<string>;
+    declare public readonly accessConfigurationName: pulumi.Output<string>;
     /**
      * The description of the access configuration. The description can be up to `1024` characters in length.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The ID of the Directory.
      */
-    public readonly directoryId!: pulumi.Output<string>;
+    declare public readonly directoryId: pulumi.Output<string>;
     /**
      * This parameter is used to force deletion `permissionPolicies`. Valid Value: `true`, `false`.
      *
      * * **NOTE:** The `permissionPolicies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
      */
-    public readonly forceRemovePermissionPolicies!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceRemovePermissionPolicies: pulumi.Output<boolean | undefined>;
     /**
      * The Policy List. See `permissionPolicies` below.
      */
-    public readonly permissionPolicies!: pulumi.Output<outputs.cloudsso.AccessConfigurationPermissionPolicy[] | undefined>;
+    declare public readonly permissionPolicies: pulumi.Output<outputs.cloudsso.AccessConfigurationPermissionPolicy[] | undefined>;
     /**
      * The RelayState of the Access Configuration, Cloud SSO users use this access configuration to access the RD account, the initial access page address. Must be the Alibaba Cloud console page, the default is the console home page.
      */
-    public readonly relayState!: pulumi.Output<string | undefined>;
+    declare public readonly relayState: pulumi.Output<string | undefined>;
     /**
      * The SessionDuration of the Access Configuration. Unit: Seconds. Valid values: `900` to `43200`.
      */
-    public readonly sessionDuration!: pulumi.Output<number>;
+    declare public readonly sessionDuration: pulumi.Output<number>;
 
     /**
      * Create a AccessConfiguration resource with the given unique name, arguments, and options.
@@ -131,29 +131,29 @@ export class AccessConfiguration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessConfigurationState | undefined;
-            resourceInputs["accessConfigurationId"] = state ? state.accessConfigurationId : undefined;
-            resourceInputs["accessConfigurationName"] = state ? state.accessConfigurationName : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["directoryId"] = state ? state.directoryId : undefined;
-            resourceInputs["forceRemovePermissionPolicies"] = state ? state.forceRemovePermissionPolicies : undefined;
-            resourceInputs["permissionPolicies"] = state ? state.permissionPolicies : undefined;
-            resourceInputs["relayState"] = state ? state.relayState : undefined;
-            resourceInputs["sessionDuration"] = state ? state.sessionDuration : undefined;
+            resourceInputs["accessConfigurationId"] = state?.accessConfigurationId;
+            resourceInputs["accessConfigurationName"] = state?.accessConfigurationName;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["directoryId"] = state?.directoryId;
+            resourceInputs["forceRemovePermissionPolicies"] = state?.forceRemovePermissionPolicies;
+            resourceInputs["permissionPolicies"] = state?.permissionPolicies;
+            resourceInputs["relayState"] = state?.relayState;
+            resourceInputs["sessionDuration"] = state?.sessionDuration;
         } else {
             const args = argsOrState as AccessConfigurationArgs | undefined;
-            if ((!args || args.accessConfigurationName === undefined) && !opts.urn) {
+            if (args?.accessConfigurationName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accessConfigurationName'");
             }
-            if ((!args || args.directoryId === undefined) && !opts.urn) {
+            if (args?.directoryId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'directoryId'");
             }
-            resourceInputs["accessConfigurationName"] = args ? args.accessConfigurationName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["directoryId"] = args ? args.directoryId : undefined;
-            resourceInputs["forceRemovePermissionPolicies"] = args ? args.forceRemovePermissionPolicies : undefined;
-            resourceInputs["permissionPolicies"] = args ? args.permissionPolicies : undefined;
-            resourceInputs["relayState"] = args ? args.relayState : undefined;
-            resourceInputs["sessionDuration"] = args ? args.sessionDuration : undefined;
+            resourceInputs["accessConfigurationName"] = args?.accessConfigurationName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["directoryId"] = args?.directoryId;
+            resourceInputs["forceRemovePermissionPolicies"] = args?.forceRemovePermissionPolicies;
+            resourceInputs["permissionPolicies"] = args?.permissionPolicies;
+            resourceInputs["relayState"] = args?.relayState;
+            resourceInputs["sessionDuration"] = args?.sessionDuration;
             resourceInputs["accessConfigurationId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

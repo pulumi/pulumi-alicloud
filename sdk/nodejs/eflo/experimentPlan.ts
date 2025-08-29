@@ -117,31 +117,31 @@ export class ExperimentPlan extends pulumi.CustomResource {
     /**
      * The creation time of the resource.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Additional operating parameters. You can include information about the specified node.
      */
-    public readonly externalParams!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly externalParams: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Indicates the name of the experiment plan, which is used to distinguish different experiment plans.
      */
-    public readonly planName!: pulumi.Output<string>;
+    declare public readonly planName: pulumi.Output<string>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The ID of the resource.
      */
-    public readonly resourceId!: pulumi.Output<number>;
+    declare public readonly resourceId: pulumi.Output<number>;
     /**
      * The tag of the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the template.
      */
-    public readonly templateId!: pulumi.Output<number>;
+    declare public readonly templateId: pulumi.Output<number>;
 
     /**
      * Create a ExperimentPlan resource with the given unique name, arguments, and options.
@@ -156,27 +156,27 @@ export class ExperimentPlan extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ExperimentPlanState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["externalParams"] = state ? state.externalParams : undefined;
-            resourceInputs["planName"] = state ? state.planName : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["resourceId"] = state ? state.resourceId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["templateId"] = state ? state.templateId : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["externalParams"] = state?.externalParams;
+            resourceInputs["planName"] = state?.planName;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["resourceId"] = state?.resourceId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["templateId"] = state?.templateId;
         } else {
             const args = argsOrState as ExperimentPlanArgs | undefined;
-            if ((!args || args.resourceId === undefined) && !opts.urn) {
+            if (args?.resourceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceId'");
             }
-            if ((!args || args.templateId === undefined) && !opts.urn) {
+            if (args?.templateId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'templateId'");
             }
-            resourceInputs["externalParams"] = args ? args.externalParams : undefined;
-            resourceInputs["planName"] = args ? args.planName : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["resourceId"] = args ? args.resourceId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["templateId"] = args ? args.templateId : undefined;
+            resourceInputs["externalParams"] = args?.externalParams;
+            resourceInputs["planName"] = args?.planName;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["resourceId"] = args?.resourceId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["templateId"] = args?.templateId;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -76,59 +76,59 @@ export class AutoSnapshotPolicy extends pulumi.CustomResource {
     /**
      * The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      */
-    public readonly autoSnapshotPolicyName!: pulumi.Output<string>;
+    declare public readonly autoSnapshotPolicyName: pulumi.Output<string>;
     /**
      * The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
      * - `-1`: The snapshot copy is retained until it is deleted.
      */
-    public readonly copiedSnapshotsRetentionDays!: pulumi.Output<number>;
+    declare public readonly copiedSnapshotsRetentionDays: pulumi.Output<number>;
     /**
      * The encryption parameters for cross-region snapshot replication. See `copyEncryptionConfiguration` below.
      */
-    public readonly copyEncryptionConfiguration!: pulumi.Output<outputs.ecs.AutoSnapshotPolicyCopyEncryptionConfiguration | undefined>;
+    declare public readonly copyEncryptionConfiguration: pulumi.Output<outputs.ecs.AutoSnapshotPolicyCopyEncryptionConfiguration | undefined>;
     /**
      * (Available since v1.236.0) The time when the automatic snapshot policy was created. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Specifies whether to enable cross-region replication for snapshots. Valid values: `true`, `false`.
      */
-    public readonly enableCrossRegionCopy!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableCrossRegionCopy: pulumi.Output<boolean | undefined>;
     /**
      * . Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
      *
      * @deprecated Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * (Available since v1.236.0) The region ID of the automatic snapshot policy.
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The days of the week on which to create automatic snapshots. Valid values: `1` to `7`, which correspond to the days of the week. For example, `1` indicates Monday. One or more days can be specified.
      */
-    public readonly repeatWeekdays!: pulumi.Output<string[]>;
+    declare public readonly repeatWeekdays: pulumi.Output<string[]>;
     /**
      * The ID of the resource group. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
      */
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly resourceGroupId: pulumi.Output<string | undefined>;
     /**
      * The retention period of the automatic snapshots. Unit: days. Valid values:
      * - `-1`: Automatic snapshots are retained until they are deleted.
      */
-    public readonly retentionDays!: pulumi.Output<number>;
+    declare public readonly retentionDays: pulumi.Output<number>;
     /**
      * The status of the automatic snapshot policy.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The destination region to which to copy the snapshot. You can specify only a single destination region.
      */
-    public readonly targetCopyRegions!: pulumi.Output<string[] | undefined>;
+    declare public readonly targetCopyRegions: pulumi.Output<string[] | undefined>;
     /**
      * The points in time of the day at which to create automatic snapshots.
      *
@@ -138,7 +138,7 @@ export class AutoSnapshotPolicy extends pulumi.CustomResource {
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    public readonly timePoints!: pulumi.Output<string[]>;
+    declare public readonly timePoints: pulumi.Output<string[]>;
 
     /**
      * Create a AutoSnapshotPolicy resource with the given unique name, arguments, and options.
@@ -153,42 +153,42 @@ export class AutoSnapshotPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AutoSnapshotPolicyState | undefined;
-            resourceInputs["autoSnapshotPolicyName"] = state ? state.autoSnapshotPolicyName : undefined;
-            resourceInputs["copiedSnapshotsRetentionDays"] = state ? state.copiedSnapshotsRetentionDays : undefined;
-            resourceInputs["copyEncryptionConfiguration"] = state ? state.copyEncryptionConfiguration : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["enableCrossRegionCopy"] = state ? state.enableCrossRegionCopy : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["repeatWeekdays"] = state ? state.repeatWeekdays : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["retentionDays"] = state ? state.retentionDays : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["targetCopyRegions"] = state ? state.targetCopyRegions : undefined;
-            resourceInputs["timePoints"] = state ? state.timePoints : undefined;
+            resourceInputs["autoSnapshotPolicyName"] = state?.autoSnapshotPolicyName;
+            resourceInputs["copiedSnapshotsRetentionDays"] = state?.copiedSnapshotsRetentionDays;
+            resourceInputs["copyEncryptionConfiguration"] = state?.copyEncryptionConfiguration;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["enableCrossRegionCopy"] = state?.enableCrossRegionCopy;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["repeatWeekdays"] = state?.repeatWeekdays;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["retentionDays"] = state?.retentionDays;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["targetCopyRegions"] = state?.targetCopyRegions;
+            resourceInputs["timePoints"] = state?.timePoints;
         } else {
             const args = argsOrState as AutoSnapshotPolicyArgs | undefined;
-            if ((!args || args.repeatWeekdays === undefined) && !opts.urn) {
+            if (args?.repeatWeekdays === undefined && !opts.urn) {
                 throw new Error("Missing required property 'repeatWeekdays'");
             }
-            if ((!args || args.retentionDays === undefined) && !opts.urn) {
+            if (args?.retentionDays === undefined && !opts.urn) {
                 throw new Error("Missing required property 'retentionDays'");
             }
-            if ((!args || args.timePoints === undefined) && !opts.urn) {
+            if (args?.timePoints === undefined && !opts.urn) {
                 throw new Error("Missing required property 'timePoints'");
             }
-            resourceInputs["autoSnapshotPolicyName"] = args ? args.autoSnapshotPolicyName : undefined;
-            resourceInputs["copiedSnapshotsRetentionDays"] = args ? args.copiedSnapshotsRetentionDays : undefined;
-            resourceInputs["copyEncryptionConfiguration"] = args ? args.copyEncryptionConfiguration : undefined;
-            resourceInputs["enableCrossRegionCopy"] = args ? args.enableCrossRegionCopy : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["repeatWeekdays"] = args ? args.repeatWeekdays : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["retentionDays"] = args ? args.retentionDays : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["targetCopyRegions"] = args ? args.targetCopyRegions : undefined;
-            resourceInputs["timePoints"] = args ? args.timePoints : undefined;
+            resourceInputs["autoSnapshotPolicyName"] = args?.autoSnapshotPolicyName;
+            resourceInputs["copiedSnapshotsRetentionDays"] = args?.copiedSnapshotsRetentionDays;
+            resourceInputs["copyEncryptionConfiguration"] = args?.copyEncryptionConfiguration;
+            resourceInputs["enableCrossRegionCopy"] = args?.enableCrossRegionCopy;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["repeatWeekdays"] = args?.repeatWeekdays;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["retentionDays"] = args?.retentionDays;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["targetCopyRegions"] = args?.targetCopyRegions;
+            resourceInputs["timePoints"] = args?.timePoints;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

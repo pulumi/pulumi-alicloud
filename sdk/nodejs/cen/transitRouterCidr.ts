@@ -77,29 +77,29 @@ export class TransitRouterCidr extends pulumi.CustomResource {
     /**
      * The new CIDR block of the transit router.
      */
-    public readonly cidr!: pulumi.Output<string>;
+    declare public readonly cidr: pulumi.Output<string>;
     /**
      * The new description of the transit router CIDR block.
      * The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
      */
-    public readonly publishCidrRoute!: pulumi.Output<boolean | undefined>;
+    declare public readonly publishCidrRoute: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the CIDR block.
      */
-    public /*out*/ readonly transitRouterCidrId!: pulumi.Output<string>;
+    declare public /*out*/ readonly transitRouterCidrId: pulumi.Output<string>;
     /**
      * The new name of the transit router CIDR block.
      * The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      */
-    public readonly transitRouterCidrName!: pulumi.Output<string | undefined>;
+    declare public readonly transitRouterCidrName: pulumi.Output<string | undefined>;
     /**
      * The ID of the transit router.
      */
-    public readonly transitRouterId!: pulumi.Output<string>;
+    declare public readonly transitRouterId: pulumi.Output<string>;
 
     /**
      * Create a TransitRouterCidr resource with the given unique name, arguments, and options.
@@ -114,25 +114,25 @@ export class TransitRouterCidr extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TransitRouterCidrState | undefined;
-            resourceInputs["cidr"] = state ? state.cidr : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["publishCidrRoute"] = state ? state.publishCidrRoute : undefined;
-            resourceInputs["transitRouterCidrId"] = state ? state.transitRouterCidrId : undefined;
-            resourceInputs["transitRouterCidrName"] = state ? state.transitRouterCidrName : undefined;
-            resourceInputs["transitRouterId"] = state ? state.transitRouterId : undefined;
+            resourceInputs["cidr"] = state?.cidr;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["publishCidrRoute"] = state?.publishCidrRoute;
+            resourceInputs["transitRouterCidrId"] = state?.transitRouterCidrId;
+            resourceInputs["transitRouterCidrName"] = state?.transitRouterCidrName;
+            resourceInputs["transitRouterId"] = state?.transitRouterId;
         } else {
             const args = argsOrState as TransitRouterCidrArgs | undefined;
-            if ((!args || args.cidr === undefined) && !opts.urn) {
+            if (args?.cidr === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cidr'");
             }
-            if ((!args || args.transitRouterId === undefined) && !opts.urn) {
+            if (args?.transitRouterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'transitRouterId'");
             }
-            resourceInputs["cidr"] = args ? args.cidr : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["publishCidrRoute"] = args ? args.publishCidrRoute : undefined;
-            resourceInputs["transitRouterCidrName"] = args ? args.transitRouterCidrName : undefined;
-            resourceInputs["transitRouterId"] = args ? args.transitRouterId : undefined;
+            resourceInputs["cidr"] = args?.cidr;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["publishCidrRoute"] = args?.publishCidrRoute;
+            resourceInputs["transitRouterCidrName"] = args?.transitRouterCidrName;
+            resourceInputs["transitRouterId"] = args?.transitRouterId;
             resourceInputs["transitRouterCidrId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

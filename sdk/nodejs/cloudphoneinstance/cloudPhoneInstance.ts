@@ -44,11 +44,11 @@ export class CloudPhoneInstance extends pulumi.CustomResource {
     /**
      * The ID of the instance group to which the instance belongs
      */
-    public readonly androidInstanceGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly androidInstanceGroupId: pulumi.Output<string | undefined>;
     /**
      * The instance name
      */
-    public readonly androidInstanceName!: pulumi.Output<string | undefined>;
+    declare public readonly androidInstanceName: pulumi.Output<string | undefined>;
 
     /**
      * Create a CloudPhoneInstance resource with the given unique name, arguments, and options.
@@ -63,12 +63,12 @@ export class CloudPhoneInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CloudPhoneInstanceState | undefined;
-            resourceInputs["androidInstanceGroupId"] = state ? state.androidInstanceGroupId : undefined;
-            resourceInputs["androidInstanceName"] = state ? state.androidInstanceName : undefined;
+            resourceInputs["androidInstanceGroupId"] = state?.androidInstanceGroupId;
+            resourceInputs["androidInstanceName"] = state?.androidInstanceName;
         } else {
             const args = argsOrState as CloudPhoneInstanceArgs | undefined;
-            resourceInputs["androidInstanceGroupId"] = args ? args.androidInstanceGroupId : undefined;
-            resourceInputs["androidInstanceName"] = args ? args.androidInstanceName : undefined;
+            resourceInputs["androidInstanceGroupId"] = args?.androidInstanceGroupId;
+            resourceInputs["androidInstanceName"] = args?.androidInstanceName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CloudPhoneInstance.__pulumiType, name, resourceInputs, opts);

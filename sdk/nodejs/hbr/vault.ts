@@ -68,55 +68,55 @@ export class Vault extends pulumi.CustomResource {
     /**
      * (Available since v1.243.0) The time when the backup vault was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The description of Vault. Defaults to an empty string.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
      * - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
      * - `KMS`: Use Alibaba Cloud Kms to encryption.
      */
-    public readonly encryptType!: pulumi.Output<string>;
+    declare public readonly encryptType: pulumi.Output<string>;
     /**
      * The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encryptType is `KMS`.
      */
-    public readonly kmsKeyId!: pulumi.Output<string | undefined>;
+    declare public readonly kmsKeyId: pulumi.Output<string | undefined>;
     /**
      * (Available since v1.243.0) The ID of the region in which the backup vault resides.
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The status of the Vault.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tag of the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of Vault.
      */
-    public readonly vaultName!: pulumi.Output<string>;
+    declare public readonly vaultName: pulumi.Output<string>;
     /**
      * The storage class of Vault. Valid values: `STANDARD`.
      */
-    public readonly vaultStorageClass!: pulumi.Output<string>;
+    declare public readonly vaultStorageClass: pulumi.Output<string>;
     /**
      * The type of Vault. Valid values:
      * - `STANDARD`: Standard backup vault.
      * - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vaultType` will be changed from `OTS_BACKUP` to `STANDARD`.
      */
-    public readonly vaultType!: pulumi.Output<string>;
+    declare public readonly vaultType: pulumi.Output<string>;
     /**
      * Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
      */
-    public readonly wormEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly wormEnabled: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Vault resource with the given unique name, arguments, and options.
@@ -131,32 +131,32 @@ export class Vault extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VaultState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["encryptType"] = state ? state.encryptType : undefined;
-            resourceInputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vaultName"] = state ? state.vaultName : undefined;
-            resourceInputs["vaultStorageClass"] = state ? state.vaultStorageClass : undefined;
-            resourceInputs["vaultType"] = state ? state.vaultType : undefined;
-            resourceInputs["wormEnabled"] = state ? state.wormEnabled : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["encryptType"] = state?.encryptType;
+            resourceInputs["kmsKeyId"] = state?.kmsKeyId;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vaultName"] = state?.vaultName;
+            resourceInputs["vaultStorageClass"] = state?.vaultStorageClass;
+            resourceInputs["vaultType"] = state?.vaultType;
+            resourceInputs["wormEnabled"] = state?.wormEnabled;
         } else {
             const args = argsOrState as VaultArgs | undefined;
-            if ((!args || args.vaultName === undefined) && !opts.urn) {
+            if (args?.vaultName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vaultName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["encryptType"] = args ? args.encryptType : undefined;
-            resourceInputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vaultName"] = args ? args.vaultName : undefined;
-            resourceInputs["vaultStorageClass"] = args ? args.vaultStorageClass : undefined;
-            resourceInputs["vaultType"] = args ? args.vaultType : undefined;
-            resourceInputs["wormEnabled"] = args ? args.wormEnabled : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["encryptType"] = args?.encryptType;
+            resourceInputs["kmsKeyId"] = args?.kmsKeyId;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vaultName"] = args?.vaultName;
+            resourceInputs["vaultStorageClass"] = args?.vaultStorageClass;
+            resourceInputs["vaultType"] = args?.vaultType;
+            resourceInputs["wormEnabled"] = args?.wormEnabled;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

@@ -52,31 +52,31 @@ export class K8sCluster extends pulumi.CustomResource {
      * `3`: importing.
      * `4`: deleted.
      */
-    public /*out*/ readonly clusterImportStatus!: pulumi.Output<number>;
+    declare public /*out*/ readonly clusterImportStatus: pulumi.Output<number>;
     /**
      * The name of the cluster that you want to create.
      */
-    public /*out*/ readonly clusterName!: pulumi.Output<string>;
+    declare public /*out*/ readonly clusterName: pulumi.Output<string>;
     /**
      * The type of the cluster that you want to create. Valid values only: 5: K8s cluster.
      */
-    public /*out*/ readonly clusterType!: pulumi.Output<number>;
+    declare public /*out*/ readonly clusterType: pulumi.Output<number>;
     /**
      * The ID of the alicloud container service kubernetes cluster that you want to import.
      */
-    public readonly csClusterId!: pulumi.Output<string>;
+    declare public readonly csClusterId: pulumi.Output<string>;
     /**
      * The ID of the namespace where you want to import. You can call the [ListUserDefineRegion](https://www.alibabacloud.com/help/en/doc-detail/149377.htm?spm=a2c63.p38356.879954.34.331054faK2yNvC#doc-api-Edas-ListUserDefineRegion) operation to query the namespace ID.
      */
-    public readonly namespaceId!: pulumi.Output<string | undefined>;
+    declare public readonly namespaceId: pulumi.Output<string | undefined>;
     /**
      * The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
      */
-    public /*out*/ readonly networkMode!: pulumi.Output<number>;
+    declare public /*out*/ readonly networkMode: pulumi.Output<number>;
     /**
      * The ID of the Virtual Private Cloud (VPC) for the cluster.
      */
-    public /*out*/ readonly vpcId!: pulumi.Output<string>;
+    declare public /*out*/ readonly vpcId: pulumi.Output<string>;
 
     /**
      * Create a K8sCluster resource with the given unique name, arguments, and options.
@@ -91,20 +91,20 @@ export class K8sCluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as K8sClusterState | undefined;
-            resourceInputs["clusterImportStatus"] = state ? state.clusterImportStatus : undefined;
-            resourceInputs["clusterName"] = state ? state.clusterName : undefined;
-            resourceInputs["clusterType"] = state ? state.clusterType : undefined;
-            resourceInputs["csClusterId"] = state ? state.csClusterId : undefined;
-            resourceInputs["namespaceId"] = state ? state.namespaceId : undefined;
-            resourceInputs["networkMode"] = state ? state.networkMode : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["clusterImportStatus"] = state?.clusterImportStatus;
+            resourceInputs["clusterName"] = state?.clusterName;
+            resourceInputs["clusterType"] = state?.clusterType;
+            resourceInputs["csClusterId"] = state?.csClusterId;
+            resourceInputs["namespaceId"] = state?.namespaceId;
+            resourceInputs["networkMode"] = state?.networkMode;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as K8sClusterArgs | undefined;
-            if ((!args || args.csClusterId === undefined) && !opts.urn) {
+            if (args?.csClusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'csClusterId'");
             }
-            resourceInputs["csClusterId"] = args ? args.csClusterId : undefined;
-            resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
+            resourceInputs["csClusterId"] = args?.csClusterId;
+            resourceInputs["namespaceId"] = args?.namespaceId;
             resourceInputs["clusterImportStatus"] = undefined /*out*/;
             resourceInputs["clusterName"] = undefined /*out*/;
             resourceInputs["clusterType"] = undefined /*out*/;

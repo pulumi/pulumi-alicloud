@@ -101,41 +101,41 @@ export class AggregateCompliancePack extends pulumi.CustomResource {
     /**
      * The name of compliance package name. **NOTE:** From version 1.145.0, `aggregateCompliancePackName` can be modified.
      */
-    public readonly aggregateCompliancePackName!: pulumi.Output<string>;
+    declare public readonly aggregateCompliancePackName: pulumi.Output<string>;
     /**
      * The ID of the compliance package.
      */
-    public /*out*/ readonly aggregatorCompliancePackId!: pulumi.Output<string>;
+    declare public /*out*/ readonly aggregatorCompliancePackId: pulumi.Output<string>;
     /**
      * The ID of aggregator.
      */
-    public readonly aggregatorId!: pulumi.Output<string>;
+    declare public readonly aggregatorId: pulumi.Output<string>;
     /**
      * The Template ID of compliance package.
      */
-    public readonly compliancePackTemplateId!: pulumi.Output<string | undefined>;
+    declare public readonly compliancePackTemplateId: pulumi.Output<string | undefined>;
     /**
      * A list of Config Rule IDs. See `configRuleIds` below.
      */
-    public readonly configRuleIds!: pulumi.Output<outputs.cfg.AggregateCompliancePackConfigRuleId[] | undefined>;
+    declare public readonly configRuleIds: pulumi.Output<outputs.cfg.AggregateCompliancePackConfigRuleId[] | undefined>;
     /**
      * A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
      *
      * @deprecated Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
      */
-    public readonly configRules!: pulumi.Output<outputs.cfg.AggregateCompliancePackConfigRule[] | undefined>;
+    declare public readonly configRules: pulumi.Output<outputs.cfg.AggregateCompliancePackConfigRule[] | undefined>;
     /**
      * The description of compliance package.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The Risk Level. Valid values:
      */
-    public readonly riskLevel!: pulumi.Output<number>;
+    declare public readonly riskLevel: pulumi.Output<number>;
     /**
      * The status of the Aggregate Compliance Pack.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a AggregateCompliancePack resource with the given unique name, arguments, and options.
@@ -150,36 +150,36 @@ export class AggregateCompliancePack extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AggregateCompliancePackState | undefined;
-            resourceInputs["aggregateCompliancePackName"] = state ? state.aggregateCompliancePackName : undefined;
-            resourceInputs["aggregatorCompliancePackId"] = state ? state.aggregatorCompliancePackId : undefined;
-            resourceInputs["aggregatorId"] = state ? state.aggregatorId : undefined;
-            resourceInputs["compliancePackTemplateId"] = state ? state.compliancePackTemplateId : undefined;
-            resourceInputs["configRuleIds"] = state ? state.configRuleIds : undefined;
-            resourceInputs["configRules"] = state ? state.configRules : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["riskLevel"] = state ? state.riskLevel : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["aggregateCompliancePackName"] = state?.aggregateCompliancePackName;
+            resourceInputs["aggregatorCompliancePackId"] = state?.aggregatorCompliancePackId;
+            resourceInputs["aggregatorId"] = state?.aggregatorId;
+            resourceInputs["compliancePackTemplateId"] = state?.compliancePackTemplateId;
+            resourceInputs["configRuleIds"] = state?.configRuleIds;
+            resourceInputs["configRules"] = state?.configRules;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["riskLevel"] = state?.riskLevel;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as AggregateCompliancePackArgs | undefined;
-            if ((!args || args.aggregateCompliancePackName === undefined) && !opts.urn) {
+            if (args?.aggregateCompliancePackName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aggregateCompliancePackName'");
             }
-            if ((!args || args.aggregatorId === undefined) && !opts.urn) {
+            if (args?.aggregatorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aggregatorId'");
             }
-            if ((!args || args.description === undefined) && !opts.urn) {
+            if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.riskLevel === undefined) && !opts.urn) {
+            if (args?.riskLevel === undefined && !opts.urn) {
                 throw new Error("Missing required property 'riskLevel'");
             }
-            resourceInputs["aggregateCompliancePackName"] = args ? args.aggregateCompliancePackName : undefined;
-            resourceInputs["aggregatorId"] = args ? args.aggregatorId : undefined;
-            resourceInputs["compliancePackTemplateId"] = args ? args.compliancePackTemplateId : undefined;
-            resourceInputs["configRuleIds"] = args ? args.configRuleIds : undefined;
-            resourceInputs["configRules"] = args ? args.configRules : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["riskLevel"] = args ? args.riskLevel : undefined;
+            resourceInputs["aggregateCompliancePackName"] = args?.aggregateCompliancePackName;
+            resourceInputs["aggregatorId"] = args?.aggregatorId;
+            resourceInputs["compliancePackTemplateId"] = args?.compliancePackTemplateId;
+            resourceInputs["configRuleIds"] = args?.configRuleIds;
+            resourceInputs["configRules"] = args?.configRules;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["riskLevel"] = args?.riskLevel;
             resourceInputs["aggregatorCompliancePackId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

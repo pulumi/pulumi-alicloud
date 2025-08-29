@@ -81,35 +81,35 @@ export class AccessRule extends pulumi.CustomResource {
     /**
      * AccessGroupName.
      */
-    public readonly accessGroupName!: pulumi.Output<string>;
+    declare public readonly accessGroupName: pulumi.Output<string>;
     /**
      * The first ID of the resource.
      */
-    public /*out*/ readonly accessRuleId!: pulumi.Output<string>;
+    declare public /*out*/ readonly accessRuleId: pulumi.Output<string>;
     /**
      * filesystem type. include standard, extreme.
      */
-    public readonly fileSystemType!: pulumi.Output<string>;
+    declare public readonly fileSystemType: pulumi.Output<string>;
     /**
      * Ipv6SourceCidrIp.
      */
-    public readonly ipv6SourceCidrIp!: pulumi.Output<string | undefined>;
+    declare public readonly ipv6SourceCidrIp: pulumi.Output<string | undefined>;
     /**
      * Priority.
      */
-    public readonly priority!: pulumi.Output<number | undefined>;
+    declare public readonly priority: pulumi.Output<number | undefined>;
     /**
      * RWAccess.
      */
-    public readonly rwAccessType!: pulumi.Output<string>;
+    declare public readonly rwAccessType: pulumi.Output<string>;
     /**
      * SourceCidrIp.
      */
-    public readonly sourceCidrIp!: pulumi.Output<string | undefined>;
+    declare public readonly sourceCidrIp: pulumi.Output<string | undefined>;
     /**
      * UserAccess.
      */
-    public readonly userAccessType!: pulumi.Output<string>;
+    declare public readonly userAccessType: pulumi.Output<string>;
 
     /**
      * Create a AccessRule resource with the given unique name, arguments, and options.
@@ -124,26 +124,26 @@ export class AccessRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessRuleState | undefined;
-            resourceInputs["accessGroupName"] = state ? state.accessGroupName : undefined;
-            resourceInputs["accessRuleId"] = state ? state.accessRuleId : undefined;
-            resourceInputs["fileSystemType"] = state ? state.fileSystemType : undefined;
-            resourceInputs["ipv6SourceCidrIp"] = state ? state.ipv6SourceCidrIp : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["rwAccessType"] = state ? state.rwAccessType : undefined;
-            resourceInputs["sourceCidrIp"] = state ? state.sourceCidrIp : undefined;
-            resourceInputs["userAccessType"] = state ? state.userAccessType : undefined;
+            resourceInputs["accessGroupName"] = state?.accessGroupName;
+            resourceInputs["accessRuleId"] = state?.accessRuleId;
+            resourceInputs["fileSystemType"] = state?.fileSystemType;
+            resourceInputs["ipv6SourceCidrIp"] = state?.ipv6SourceCidrIp;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["rwAccessType"] = state?.rwAccessType;
+            resourceInputs["sourceCidrIp"] = state?.sourceCidrIp;
+            resourceInputs["userAccessType"] = state?.userAccessType;
         } else {
             const args = argsOrState as AccessRuleArgs | undefined;
-            if ((!args || args.accessGroupName === undefined) && !opts.urn) {
+            if (args?.accessGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accessGroupName'");
             }
-            resourceInputs["accessGroupName"] = args ? args.accessGroupName : undefined;
-            resourceInputs["fileSystemType"] = args ? args.fileSystemType : undefined;
-            resourceInputs["ipv6SourceCidrIp"] = args ? args.ipv6SourceCidrIp : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["rwAccessType"] = args ? args.rwAccessType : undefined;
-            resourceInputs["sourceCidrIp"] = args ? args.sourceCidrIp : undefined;
-            resourceInputs["userAccessType"] = args ? args.userAccessType : undefined;
+            resourceInputs["accessGroupName"] = args?.accessGroupName;
+            resourceInputs["fileSystemType"] = args?.fileSystemType;
+            resourceInputs["ipv6SourceCidrIp"] = args?.ipv6SourceCidrIp;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["rwAccessType"] = args?.rwAccessType;
+            resourceInputs["sourceCidrIp"] = args?.sourceCidrIp;
+            resourceInputs["userAccessType"] = args?.userAccessType;
             resourceInputs["accessRuleId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

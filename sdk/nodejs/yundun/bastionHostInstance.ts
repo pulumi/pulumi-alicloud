@@ -34,23 +34,23 @@ export class BastionHostInstance extends pulumi.CustomResource {
         return obj['__pulumiType'] === BastionHostInstance.__pulumiType;
     }
 
-    public readonly adAuthServers!: pulumi.Output<outputs.yundun.BastionHostInstanceAdAuthServer[]>;
-    public readonly bandwidth!: pulumi.Output<string>;
-    public readonly description!: pulumi.Output<string>;
-    public readonly enablePublicAccess!: pulumi.Output<boolean>;
-    public readonly ldapAuthServers!: pulumi.Output<outputs.yundun.BastionHostInstanceLdapAuthServer[]>;
-    public readonly licenseCode!: pulumi.Output<string>;
-    public readonly period!: pulumi.Output<number | undefined>;
-    public readonly planCode!: pulumi.Output<string>;
-    public readonly publicWhiteLists!: pulumi.Output<string[] | undefined>;
-    public readonly renewPeriod!: pulumi.Output<number | undefined>;
-    public readonly renewalPeriodUnit!: pulumi.Output<string>;
-    public readonly renewalStatus!: pulumi.Output<string>;
-    public readonly resourceGroupId!: pulumi.Output<string>;
-    public readonly securityGroupIds!: pulumi.Output<string[]>;
-    public readonly storage!: pulumi.Output<string>;
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly adAuthServers: pulumi.Output<outputs.yundun.BastionHostInstanceAdAuthServer[]>;
+    declare public readonly bandwidth: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
+    declare public readonly enablePublicAccess: pulumi.Output<boolean>;
+    declare public readonly ldapAuthServers: pulumi.Output<outputs.yundun.BastionHostInstanceLdapAuthServer[]>;
+    declare public readonly licenseCode: pulumi.Output<string>;
+    declare public readonly period: pulumi.Output<number | undefined>;
+    declare public readonly planCode: pulumi.Output<string>;
+    declare public readonly publicWhiteLists: pulumi.Output<string[] | undefined>;
+    declare public readonly renewPeriod: pulumi.Output<number | undefined>;
+    declare public readonly renewalPeriodUnit: pulumi.Output<string>;
+    declare public readonly renewalStatus: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
+    declare public readonly securityGroupIds: pulumi.Output<string[]>;
+    declare public readonly storage: pulumi.Output<string>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly vswitchId: pulumi.Output<string>;
 
     /**
      * Create a BastionHostInstance resource with the given unique name, arguments, and options.
@@ -65,63 +65,63 @@ export class BastionHostInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BastionHostInstanceState | undefined;
-            resourceInputs["adAuthServers"] = state ? state.adAuthServers : undefined;
-            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enablePublicAccess"] = state ? state.enablePublicAccess : undefined;
-            resourceInputs["ldapAuthServers"] = state ? state.ldapAuthServers : undefined;
-            resourceInputs["licenseCode"] = state ? state.licenseCode : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["planCode"] = state ? state.planCode : undefined;
-            resourceInputs["publicWhiteLists"] = state ? state.publicWhiteLists : undefined;
-            resourceInputs["renewPeriod"] = state ? state.renewPeriod : undefined;
-            resourceInputs["renewalPeriodUnit"] = state ? state.renewalPeriodUnit : undefined;
-            resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            resourceInputs["storage"] = state ? state.storage : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["adAuthServers"] = state?.adAuthServers;
+            resourceInputs["bandwidth"] = state?.bandwidth;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enablePublicAccess"] = state?.enablePublicAccess;
+            resourceInputs["ldapAuthServers"] = state?.ldapAuthServers;
+            resourceInputs["licenseCode"] = state?.licenseCode;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["planCode"] = state?.planCode;
+            resourceInputs["publicWhiteLists"] = state?.publicWhiteLists;
+            resourceInputs["renewPeriod"] = state?.renewPeriod;
+            resourceInputs["renewalPeriodUnit"] = state?.renewalPeriodUnit;
+            resourceInputs["renewalStatus"] = state?.renewalStatus;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["securityGroupIds"] = state?.securityGroupIds;
+            resourceInputs["storage"] = state?.storage;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vswitchId"] = state?.vswitchId;
         } else {
             const args = argsOrState as BastionHostInstanceArgs | undefined;
-            if ((!args || args.bandwidth === undefined) && !opts.urn) {
+            if (args?.bandwidth === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bandwidth'");
             }
-            if ((!args || args.description === undefined) && !opts.urn) {
+            if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.licenseCode === undefined) && !opts.urn) {
+            if (args?.licenseCode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'licenseCode'");
             }
-            if ((!args || args.planCode === undefined) && !opts.urn) {
+            if (args?.planCode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'planCode'");
             }
-            if ((!args || args.securityGroupIds === undefined) && !opts.urn) {
+            if (args?.securityGroupIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupIds'");
             }
-            if ((!args || args.storage === undefined) && !opts.urn) {
+            if (args?.storage === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storage'");
             }
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+            if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            resourceInputs["adAuthServers"] = args ? args.adAuthServers : undefined;
-            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enablePublicAccess"] = args ? args.enablePublicAccess : undefined;
-            resourceInputs["ldapAuthServers"] = args ? args.ldapAuthServers : undefined;
-            resourceInputs["licenseCode"] = args ? args.licenseCode : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["planCode"] = args ? args.planCode : undefined;
-            resourceInputs["publicWhiteLists"] = args ? args.publicWhiteLists : undefined;
-            resourceInputs["renewPeriod"] = args ? args.renewPeriod : undefined;
-            resourceInputs["renewalPeriodUnit"] = args ? args.renewalPeriodUnit : undefined;
-            resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            resourceInputs["storage"] = args ? args.storage : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["adAuthServers"] = args?.adAuthServers;
+            resourceInputs["bandwidth"] = args?.bandwidth;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enablePublicAccess"] = args?.enablePublicAccess;
+            resourceInputs["ldapAuthServers"] = args?.ldapAuthServers;
+            resourceInputs["licenseCode"] = args?.licenseCode;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["planCode"] = args?.planCode;
+            resourceInputs["publicWhiteLists"] = args?.publicWhiteLists;
+            resourceInputs["renewPeriod"] = args?.renewPeriod;
+            resourceInputs["renewalPeriodUnit"] = args?.renewalPeriodUnit;
+            resourceInputs["renewalStatus"] = args?.renewalStatus;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["securityGroupIds"] = args?.securityGroupIds;
+            resourceInputs["storage"] = args?.storage;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vswitchId"] = args?.vswitchId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BastionHostInstance.__pulumiType, name, resourceInputs, opts);

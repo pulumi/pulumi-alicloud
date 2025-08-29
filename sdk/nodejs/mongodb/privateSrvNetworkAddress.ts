@@ -87,11 +87,11 @@ export class PrivateSrvNetworkAddress extends pulumi.CustomResource {
     /**
      * The instance ID.
      */
-    public readonly dbInstanceId!: pulumi.Output<string>;
+    declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
      * Private network SRV highly available connection address
      */
-    public /*out*/ readonly privateSrvConnectionStringUri!: pulumi.Output<string>;
+    declare public /*out*/ readonly privateSrvConnectionStringUri: pulumi.Output<string>;
 
     /**
      * Create a PrivateSrvNetworkAddress resource with the given unique name, arguments, and options.
@@ -106,14 +106,14 @@ export class PrivateSrvNetworkAddress extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PrivateSrvNetworkAddressState | undefined;
-            resourceInputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
-            resourceInputs["privateSrvConnectionStringUri"] = state ? state.privateSrvConnectionStringUri : undefined;
+            resourceInputs["dbInstanceId"] = state?.dbInstanceId;
+            resourceInputs["privateSrvConnectionStringUri"] = state?.privateSrvConnectionStringUri;
         } else {
             const args = argsOrState as PrivateSrvNetworkAddressArgs | undefined;
-            if ((!args || args.dbInstanceId === undefined) && !opts.urn) {
+            if (args?.dbInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceId'");
             }
-            resourceInputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
+            resourceInputs["dbInstanceId"] = args?.dbInstanceId;
             resourceInputs["privateSrvConnectionStringUri"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

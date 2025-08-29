@@ -68,19 +68,19 @@ export class Page extends pulumi.CustomResource {
     /**
      * The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
      */
-    public readonly content!: pulumi.Output<string | undefined>;
+    declare public readonly content: pulumi.Output<string | undefined>;
     /**
      * The Content-Type field in the HTTP header.
      */
-    public readonly contentType!: pulumi.Output<string>;
+    declare public readonly contentType: pulumi.Output<string>;
     /**
      * The description of the custom error page.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of the custom response page.
      */
-    public readonly pageName!: pulumi.Output<string>;
+    declare public readonly pageName: pulumi.Output<string>;
 
     /**
      * Create a Page resource with the given unique name, arguments, and options.
@@ -95,22 +95,22 @@ export class Page extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PageState | undefined;
-            resourceInputs["content"] = state ? state.content : undefined;
-            resourceInputs["contentType"] = state ? state.contentType : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["pageName"] = state ? state.pageName : undefined;
+            resourceInputs["content"] = state?.content;
+            resourceInputs["contentType"] = state?.contentType;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["pageName"] = state?.pageName;
         } else {
             const args = argsOrState as PageArgs | undefined;
-            if ((!args || args.contentType === undefined) && !opts.urn) {
+            if (args?.contentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'contentType'");
             }
-            if ((!args || args.pageName === undefined) && !opts.urn) {
+            if (args?.pageName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pageName'");
             }
-            resourceInputs["content"] = args ? args.content : undefined;
-            resourceInputs["contentType"] = args ? args.contentType : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["pageName"] = args ? args.pageName : undefined;
+            resourceInputs["content"] = args?.content;
+            resourceInputs["contentType"] = args?.contentType;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["pageName"] = args?.pageName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Page.__pulumiType, name, resourceInputs, opts);

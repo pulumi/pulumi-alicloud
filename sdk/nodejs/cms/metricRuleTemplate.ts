@@ -81,49 +81,49 @@ export class MetricRuleTemplate extends pulumi.CustomResource {
     /**
      * The details of alert rules that are generated based on the alert template. See `alertTemplates` below.
      */
-    public readonly alertTemplates!: pulumi.Output<outputs.cms.MetricRuleTemplateAlertTemplate[] | undefined>;
+    declare public readonly alertTemplates: pulumi.Output<outputs.cms.MetricRuleTemplateAlertTemplate[] | undefined>;
     /**
      * The mode in which the alert template is applied. Valid values:
      * - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
      * - `ALARM_TEMPLATE_FIRST `: The metrics specified in the alert template take precedence.
      */
-    public readonly applyMode!: pulumi.Output<string | undefined>;
+    declare public readonly applyMode: pulumi.Output<string | undefined>;
     /**
      * The description of the alert template.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The end of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:59 and the value `23` indicates 23:59.
      */
-    public readonly enableEndTime!: pulumi.Output<string | undefined>;
+    declare public readonly enableEndTime: pulumi.Output<string | undefined>;
     /**
      * The beginning of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:00 and the value `23` indicates 23:00.
      */
-    public readonly enableStartTime!: pulumi.Output<string | undefined>;
+    declare public readonly enableStartTime: pulumi.Output<string | undefined>;
     /**
      * The ID of the application group.
      */
-    public readonly groupId!: pulumi.Output<string | undefined>;
+    declare public readonly groupId: pulumi.Output<string | undefined>;
     /**
      * The name of the alert template.
      */
-    public readonly metricRuleTemplateName!: pulumi.Output<string>;
+    declare public readonly metricRuleTemplateName: pulumi.Output<string>;
     /**
      * The alert notification method. Valid values:
      */
-    public readonly notifyLevel!: pulumi.Output<string | undefined>;
+    declare public readonly notifyLevel: pulumi.Output<string | undefined>;
     /**
      * The version of the alert template.
      */
-    public /*out*/ readonly restVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly restVersion: pulumi.Output<string>;
     /**
      * The mute period during which notifications are not repeatedly sent for an alert. Unit: seconds. Default value: `86400`. Valid values: `0` to `86400`.
      */
-    public readonly silenceTime!: pulumi.Output<number | undefined>;
+    declare public readonly silenceTime: pulumi.Output<number | undefined>;
     /**
      * The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
      */
-    public readonly webhook!: pulumi.Output<string | undefined>;
+    declare public readonly webhook: pulumi.Output<string | undefined>;
 
     /**
      * Create a MetricRuleTemplate resource with the given unique name, arguments, and options.
@@ -138,32 +138,32 @@ export class MetricRuleTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MetricRuleTemplateState | undefined;
-            resourceInputs["alertTemplates"] = state ? state.alertTemplates : undefined;
-            resourceInputs["applyMode"] = state ? state.applyMode : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enableEndTime"] = state ? state.enableEndTime : undefined;
-            resourceInputs["enableStartTime"] = state ? state.enableStartTime : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["metricRuleTemplateName"] = state ? state.metricRuleTemplateName : undefined;
-            resourceInputs["notifyLevel"] = state ? state.notifyLevel : undefined;
-            resourceInputs["restVersion"] = state ? state.restVersion : undefined;
-            resourceInputs["silenceTime"] = state ? state.silenceTime : undefined;
-            resourceInputs["webhook"] = state ? state.webhook : undefined;
+            resourceInputs["alertTemplates"] = state?.alertTemplates;
+            resourceInputs["applyMode"] = state?.applyMode;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enableEndTime"] = state?.enableEndTime;
+            resourceInputs["enableStartTime"] = state?.enableStartTime;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["metricRuleTemplateName"] = state?.metricRuleTemplateName;
+            resourceInputs["notifyLevel"] = state?.notifyLevel;
+            resourceInputs["restVersion"] = state?.restVersion;
+            resourceInputs["silenceTime"] = state?.silenceTime;
+            resourceInputs["webhook"] = state?.webhook;
         } else {
             const args = argsOrState as MetricRuleTemplateArgs | undefined;
-            if ((!args || args.metricRuleTemplateName === undefined) && !opts.urn) {
+            if (args?.metricRuleTemplateName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'metricRuleTemplateName'");
             }
-            resourceInputs["alertTemplates"] = args ? args.alertTemplates : undefined;
-            resourceInputs["applyMode"] = args ? args.applyMode : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enableEndTime"] = args ? args.enableEndTime : undefined;
-            resourceInputs["enableStartTime"] = args ? args.enableStartTime : undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["metricRuleTemplateName"] = args ? args.metricRuleTemplateName : undefined;
-            resourceInputs["notifyLevel"] = args ? args.notifyLevel : undefined;
-            resourceInputs["silenceTime"] = args ? args.silenceTime : undefined;
-            resourceInputs["webhook"] = args ? args.webhook : undefined;
+            resourceInputs["alertTemplates"] = args?.alertTemplates;
+            resourceInputs["applyMode"] = args?.applyMode;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enableEndTime"] = args?.enableEndTime;
+            resourceInputs["enableStartTime"] = args?.enableStartTime;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["metricRuleTemplateName"] = args?.metricRuleTemplateName;
+            resourceInputs["notifyLevel"] = args?.notifyLevel;
+            resourceInputs["silenceTime"] = args?.silenceTime;
+            resourceInputs["webhook"] = args?.webhook;
             resourceInputs["restVersion"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

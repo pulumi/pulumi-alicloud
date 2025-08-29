@@ -206,71 +206,71 @@ export class NodeGroup extends pulumi.CustomResource {
     /**
      * Az
      */
-    public readonly az!: pulumi.Output<string>;
+    declare public readonly az: pulumi.Output<string>;
     /**
      * Cluster ID
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * Create time
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Whether to allow skipping failed nodes. Default value: False
      */
-    public readonly ignoreFailedNodeTasks!: pulumi.Output<boolean | undefined>;
+    declare public readonly ignoreFailedNodeTasks: pulumi.Output<boolean | undefined>;
     /**
      * Image ID. You can modify the image ID since v1.252.0.
      */
-    public readonly imageId!: pulumi.Output<string>;
+    declare public readonly imageId: pulumi.Output<string>;
     /**
      * IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
      */
-    public readonly ipAllocationPolicies!: pulumi.Output<outputs.eflo.NodeGroupIpAllocationPolicy[] | undefined>;
+    declare public readonly ipAllocationPolicies: pulumi.Output<outputs.eflo.NodeGroupIpAllocationPolicy[] | undefined>;
     /**
      * key pair name
      */
-    public readonly keyPairName!: pulumi.Output<string | undefined>;
+    declare public readonly keyPairName: pulumi.Output<string | undefined>;
     /**
      * Login Password
      */
-    public readonly loginPassword!: pulumi.Output<string | undefined>;
+    declare public readonly loginPassword: pulumi.Output<string | undefined>;
     /**
      * Machine type
      */
-    public readonly machineType!: pulumi.Output<string>;
+    declare public readonly machineType: pulumi.Output<string>;
     /**
      * NodeGroupDescription
      */
-    public readonly nodeGroupDescription!: pulumi.Output<string | undefined>;
+    declare public readonly nodeGroupDescription: pulumi.Output<string | undefined>;
     /**
      * The first ID of the resource
      */
-    public /*out*/ readonly nodeGroupId!: pulumi.Output<string>;
+    declare public /*out*/ readonly nodeGroupId: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public readonly nodeGroupName!: pulumi.Output<string>;
+    declare public readonly nodeGroupName: pulumi.Output<string>;
     /**
      * Node List See `nodes` below.
      */
-    public readonly nodes!: pulumi.Output<outputs.eflo.NodeGroupNode[] | undefined>;
+    declare public readonly nodes: pulumi.Output<outputs.eflo.NodeGroupNode[] | undefined>;
     /**
      * Custom Data
      */
-    public readonly userData!: pulumi.Output<string | undefined>;
+    declare public readonly userData: pulumi.Output<string | undefined>;
     /**
      * Cluster subnet list
      */
-    public readonly vpdSubnets!: pulumi.Output<string[] | undefined>;
+    declare public readonly vpdSubnets: pulumi.Output<string[] | undefined>;
     /**
      * Zone ID of the switch
      */
-    public readonly vswitchZoneId!: pulumi.Output<string | undefined>;
+    declare public readonly vswitchZoneId: pulumi.Output<string | undefined>;
     /**
      * Zone ID
      */
-    public readonly zoneId!: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a NodeGroup resource with the given unique name, arguments, and options.
@@ -285,55 +285,55 @@ export class NodeGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodeGroupState | undefined;
-            resourceInputs["az"] = state ? state.az : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["ignoreFailedNodeTasks"] = state ? state.ignoreFailedNodeTasks : undefined;
-            resourceInputs["imageId"] = state ? state.imageId : undefined;
-            resourceInputs["ipAllocationPolicies"] = state ? state.ipAllocationPolicies : undefined;
-            resourceInputs["keyPairName"] = state ? state.keyPairName : undefined;
-            resourceInputs["loginPassword"] = state ? state.loginPassword : undefined;
-            resourceInputs["machineType"] = state ? state.machineType : undefined;
-            resourceInputs["nodeGroupDescription"] = state ? state.nodeGroupDescription : undefined;
-            resourceInputs["nodeGroupId"] = state ? state.nodeGroupId : undefined;
-            resourceInputs["nodeGroupName"] = state ? state.nodeGroupName : undefined;
-            resourceInputs["nodes"] = state ? state.nodes : undefined;
-            resourceInputs["userData"] = state ? state.userData : undefined;
-            resourceInputs["vpdSubnets"] = state ? state.vpdSubnets : undefined;
-            resourceInputs["vswitchZoneId"] = state ? state.vswitchZoneId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["az"] = state?.az;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["ignoreFailedNodeTasks"] = state?.ignoreFailedNodeTasks;
+            resourceInputs["imageId"] = state?.imageId;
+            resourceInputs["ipAllocationPolicies"] = state?.ipAllocationPolicies;
+            resourceInputs["keyPairName"] = state?.keyPairName;
+            resourceInputs["loginPassword"] = state?.loginPassword;
+            resourceInputs["machineType"] = state?.machineType;
+            resourceInputs["nodeGroupDescription"] = state?.nodeGroupDescription;
+            resourceInputs["nodeGroupId"] = state?.nodeGroupId;
+            resourceInputs["nodeGroupName"] = state?.nodeGroupName;
+            resourceInputs["nodes"] = state?.nodes;
+            resourceInputs["userData"] = state?.userData;
+            resourceInputs["vpdSubnets"] = state?.vpdSubnets;
+            resourceInputs["vswitchZoneId"] = state?.vswitchZoneId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as NodeGroupArgs | undefined;
-            if ((!args || args.az === undefined) && !opts.urn) {
+            if (args?.az === undefined && !opts.urn) {
                 throw new Error("Missing required property 'az'");
             }
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.imageId === undefined) && !opts.urn) {
+            if (args?.imageId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'imageId'");
             }
-            if ((!args || args.machineType === undefined) && !opts.urn) {
+            if (args?.machineType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'machineType'");
             }
-            if ((!args || args.nodeGroupName === undefined) && !opts.urn) {
+            if (args?.nodeGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodeGroupName'");
             }
-            resourceInputs["az"] = args ? args.az : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["ignoreFailedNodeTasks"] = args ? args.ignoreFailedNodeTasks : undefined;
-            resourceInputs["imageId"] = args ? args.imageId : undefined;
-            resourceInputs["ipAllocationPolicies"] = args ? args.ipAllocationPolicies : undefined;
-            resourceInputs["keyPairName"] = args ? args.keyPairName : undefined;
+            resourceInputs["az"] = args?.az;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["ignoreFailedNodeTasks"] = args?.ignoreFailedNodeTasks;
+            resourceInputs["imageId"] = args?.imageId;
+            resourceInputs["ipAllocationPolicies"] = args?.ipAllocationPolicies;
+            resourceInputs["keyPairName"] = args?.keyPairName;
             resourceInputs["loginPassword"] = args?.loginPassword ? pulumi.secret(args.loginPassword) : undefined;
-            resourceInputs["machineType"] = args ? args.machineType : undefined;
-            resourceInputs["nodeGroupDescription"] = args ? args.nodeGroupDescription : undefined;
-            resourceInputs["nodeGroupName"] = args ? args.nodeGroupName : undefined;
-            resourceInputs["nodes"] = args ? args.nodes : undefined;
-            resourceInputs["userData"] = args ? args.userData : undefined;
-            resourceInputs["vpdSubnets"] = args ? args.vpdSubnets : undefined;
-            resourceInputs["vswitchZoneId"] = args ? args.vswitchZoneId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["machineType"] = args?.machineType;
+            resourceInputs["nodeGroupDescription"] = args?.nodeGroupDescription;
+            resourceInputs["nodeGroupName"] = args?.nodeGroupName;
+            resourceInputs["nodes"] = args?.nodes;
+            resourceInputs["userData"] = args?.userData;
+            resourceInputs["vpdSubnets"] = args?.vpdSubnets;
+            resourceInputs["vswitchZoneId"] = args?.vswitchZoneId;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["nodeGroupId"] = undefined /*out*/;
         }

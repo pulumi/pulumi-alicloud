@@ -81,11 +81,11 @@ export class MonitorGroupInstances extends pulumi.CustomResource {
     /**
      * The id of Cms Group.
      */
-    public readonly groupId!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string>;
     /**
      * Instance information added to the Cms Group. See `instances` below.
      */
-    public readonly instances!: pulumi.Output<outputs.cms.MonitorGroupInstancesInstance[]>;
+    declare public readonly instances: pulumi.Output<outputs.cms.MonitorGroupInstancesInstance[]>;
 
     /**
      * Create a MonitorGroupInstances resource with the given unique name, arguments, and options.
@@ -100,18 +100,18 @@ export class MonitorGroupInstances extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MonitorGroupInstancesState | undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["instances"] = state ? state.instances : undefined;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["instances"] = state?.instances;
         } else {
             const args = argsOrState as MonitorGroupInstancesArgs | undefined;
-            if ((!args || args.groupId === undefined) && !opts.urn) {
+            if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.instances === undefined) && !opts.urn) {
+            if (args?.instances === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instances'");
             }
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["instances"] = args ? args.instances : undefined;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["instances"] = args?.instances;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MonitorGroupInstances.__pulumiType, name, resourceInputs, opts);

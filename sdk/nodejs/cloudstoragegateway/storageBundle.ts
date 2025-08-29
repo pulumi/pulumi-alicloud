@@ -61,11 +61,11 @@ export class StorageBundle extends pulumi.CustomResource {
     /**
      * The description of storage bundle.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of storage bundle.
      */
-    public readonly storageBundleName!: pulumi.Output<string>;
+    declare public readonly storageBundleName: pulumi.Output<string>;
 
     /**
      * Create a StorageBundle resource with the given unique name, arguments, and options.
@@ -80,15 +80,15 @@ export class StorageBundle extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StorageBundleState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["storageBundleName"] = state ? state.storageBundleName : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["storageBundleName"] = state?.storageBundleName;
         } else {
             const args = argsOrState as StorageBundleArgs | undefined;
-            if ((!args || args.storageBundleName === undefined) && !opts.urn) {
+            if (args?.storageBundleName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storageBundleName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["storageBundleName"] = args ? args.storageBundleName : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["storageBundleName"] = args?.storageBundleName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(StorageBundle.__pulumiType, name, resourceInputs, opts);

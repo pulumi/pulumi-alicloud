@@ -52,11 +52,11 @@ export class UserPermission extends pulumi.CustomResource {
     /**
      * List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
      */
-    public readonly permissions!: pulumi.Output<outputs.servicemesh.UserPermissionPermission[]>;
+    declare public readonly permissions: pulumi.Output<outputs.servicemesh.UserPermissionPermission[]>;
     /**
      * The configuration of the Load Balancer. See the following `Block loadBalancer`.
      */
-    public readonly subAccountUserId!: pulumi.Output<string>;
+    declare public readonly subAccountUserId: pulumi.Output<string>;
 
     /**
      * Create a UserPermission resource with the given unique name, arguments, and options.
@@ -71,15 +71,15 @@ export class UserPermission extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserPermissionState | undefined;
-            resourceInputs["permissions"] = state ? state.permissions : undefined;
-            resourceInputs["subAccountUserId"] = state ? state.subAccountUserId : undefined;
+            resourceInputs["permissions"] = state?.permissions;
+            resourceInputs["subAccountUserId"] = state?.subAccountUserId;
         } else {
             const args = argsOrState as UserPermissionArgs | undefined;
-            if ((!args || args.subAccountUserId === undefined) && !opts.urn) {
+            if (args?.subAccountUserId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subAccountUserId'");
             }
-            resourceInputs["permissions"] = args ? args.permissions : undefined;
-            resourceInputs["subAccountUserId"] = args ? args.subAccountUserId : undefined;
+            resourceInputs["permissions"] = args?.permissions;
+            resourceInputs["subAccountUserId"] = args?.subAccountUserId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(UserPermission.__pulumiType, name, resourceInputs, opts);

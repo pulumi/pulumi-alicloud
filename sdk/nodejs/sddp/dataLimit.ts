@@ -50,43 +50,43 @@ export class DataLimit extends pulumi.CustomResource {
     /**
      * Whether to enable the log auditing feature. Valid values: `0`, `1`.
      */
-    public readonly auditStatus!: pulumi.Output<number>;
+    declare public readonly auditStatus: pulumi.Output<number>;
     /**
      * The type of the database. Valid values: `MySQL`, `SQLServer`.
      */
-    public readonly engineType!: pulumi.Output<string | undefined>;
+    declare public readonly engineType: pulumi.Output<string | undefined>;
     /**
      * The lang.
      */
-    public readonly lang!: pulumi.Output<string | undefined>;
+    declare public readonly lang: pulumi.Output<string | undefined>;
     /**
      * The retention period of raw logs after you enable the log auditing feature. Unit: day. Valid values: `180`, `30`, `365`, `90`. **NOTE:** The`logStoreDay` is valid when the `auditStatus` is `1`.
      */
-    public readonly logStoreDay!: pulumi.Output<number | undefined>;
+    declare public readonly logStoreDay: pulumi.Output<number | undefined>;
     /**
      * The ID of the data asset.
      */
-    public readonly parentId!: pulumi.Output<string | undefined>;
+    declare public readonly parentId: pulumi.Output<string | undefined>;
     /**
      * The password that is used to connect to the database.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * The port that is used to connect to the database.
      */
-    public readonly port!: pulumi.Output<number | undefined>;
+    declare public readonly port: pulumi.Output<number | undefined>;
     /**
      * The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
      */
-    public readonly resourceType!: pulumi.Output<string>;
+    declare public readonly resourceType: pulumi.Output<string>;
     /**
      * The region ID of the data asset.
      */
-    public readonly serviceRegionId!: pulumi.Output<string | undefined>;
+    declare public readonly serviceRegionId: pulumi.Output<string | undefined>;
     /**
      * The name of the service to which the data asset belongs.
      */
-    public readonly userName!: pulumi.Output<string | undefined>;
+    declare public readonly userName: pulumi.Output<string | undefined>;
 
     /**
      * Create a DataLimit resource with the given unique name, arguments, and options.
@@ -101,31 +101,31 @@ export class DataLimit extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DataLimitState | undefined;
-            resourceInputs["auditStatus"] = state ? state.auditStatus : undefined;
-            resourceInputs["engineType"] = state ? state.engineType : undefined;
-            resourceInputs["lang"] = state ? state.lang : undefined;
-            resourceInputs["logStoreDay"] = state ? state.logStoreDay : undefined;
-            resourceInputs["parentId"] = state ? state.parentId : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["resourceType"] = state ? state.resourceType : undefined;
-            resourceInputs["serviceRegionId"] = state ? state.serviceRegionId : undefined;
-            resourceInputs["userName"] = state ? state.userName : undefined;
+            resourceInputs["auditStatus"] = state?.auditStatus;
+            resourceInputs["engineType"] = state?.engineType;
+            resourceInputs["lang"] = state?.lang;
+            resourceInputs["logStoreDay"] = state?.logStoreDay;
+            resourceInputs["parentId"] = state?.parentId;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["resourceType"] = state?.resourceType;
+            resourceInputs["serviceRegionId"] = state?.serviceRegionId;
+            resourceInputs["userName"] = state?.userName;
         } else {
             const args = argsOrState as DataLimitArgs | undefined;
-            if ((!args || args.resourceType === undefined) && !opts.urn) {
+            if (args?.resourceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceType'");
             }
-            resourceInputs["auditStatus"] = args ? args.auditStatus : undefined;
-            resourceInputs["engineType"] = args ? args.engineType : undefined;
-            resourceInputs["lang"] = args ? args.lang : undefined;
-            resourceInputs["logStoreDay"] = args ? args.logStoreDay : undefined;
-            resourceInputs["parentId"] = args ? args.parentId : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["resourceType"] = args ? args.resourceType : undefined;
-            resourceInputs["serviceRegionId"] = args ? args.serviceRegionId : undefined;
-            resourceInputs["userName"] = args ? args.userName : undefined;
+            resourceInputs["auditStatus"] = args?.auditStatus;
+            resourceInputs["engineType"] = args?.engineType;
+            resourceInputs["lang"] = args?.lang;
+            resourceInputs["logStoreDay"] = args?.logStoreDay;
+            resourceInputs["parentId"] = args?.parentId;
+            resourceInputs["password"] = args?.password;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["resourceType"] = args?.resourceType;
+            resourceInputs["serviceRegionId"] = args?.serviceRegionId;
+            resourceInputs["userName"] = args?.userName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DataLimit.__pulumiType, name, resourceInputs, opts);

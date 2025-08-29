@@ -106,35 +106,35 @@ export class ResourceGroup extends pulumi.CustomResource {
     /**
      * The time when the resource group was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The ID of the DBCluster.
      */
-    public readonly dbClusterId!: pulumi.Output<string>;
+    declare public readonly dbClusterId: pulumi.Output<string>;
     /**
      * The name of the resource group. The `groupName` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
      */
-    public readonly groupName!: pulumi.Output<string>;
+    declare public readonly groupName: pulumi.Output<string>;
     /**
      * The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
      */
-    public readonly groupType!: pulumi.Output<string>;
+    declare public readonly groupType: pulumi.Output<string>;
     /**
      * The number of nodes.
      */
-    public readonly nodeNum!: pulumi.Output<number | undefined>;
+    declare public readonly nodeNum: pulumi.Output<number | undefined>;
     /**
      * The time when the resource group was updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * The database accounts that are associated with the resource group.
      */
-    public /*out*/ readonly user!: pulumi.Output<string>;
+    declare public /*out*/ readonly user: pulumi.Output<string>;
     /**
      * The database accounts with which to associate the resource group.
      */
-    public readonly users!: pulumi.Output<string[] | undefined>;
+    declare public readonly users: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a ResourceGroup resource with the given unique name, arguments, and options.
@@ -149,27 +149,27 @@ export class ResourceGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ResourceGroupState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dbClusterId"] = state ? state.dbClusterId : undefined;
-            resourceInputs["groupName"] = state ? state.groupName : undefined;
-            resourceInputs["groupType"] = state ? state.groupType : undefined;
-            resourceInputs["nodeNum"] = state ? state.nodeNum : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["user"] = state ? state.user : undefined;
-            resourceInputs["users"] = state ? state.users : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dbClusterId"] = state?.dbClusterId;
+            resourceInputs["groupName"] = state?.groupName;
+            resourceInputs["groupType"] = state?.groupType;
+            resourceInputs["nodeNum"] = state?.nodeNum;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["user"] = state?.user;
+            resourceInputs["users"] = state?.users;
         } else {
             const args = argsOrState as ResourceGroupArgs | undefined;
-            if ((!args || args.dbClusterId === undefined) && !opts.urn) {
+            if (args?.dbClusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbClusterId'");
             }
-            if ((!args || args.groupName === undefined) && !opts.urn) {
+            if (args?.groupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupName'");
             }
-            resourceInputs["dbClusterId"] = args ? args.dbClusterId : undefined;
-            resourceInputs["groupName"] = args ? args.groupName : undefined;
-            resourceInputs["groupType"] = args ? args.groupType : undefined;
-            resourceInputs["nodeNum"] = args ? args.nodeNum : undefined;
-            resourceInputs["users"] = args ? args.users : undefined;
+            resourceInputs["dbClusterId"] = args?.dbClusterId;
+            resourceInputs["groupName"] = args?.groupName;
+            resourceInputs["groupType"] = args?.groupType;
+            resourceInputs["nodeNum"] = args?.nodeNum;
+            resourceInputs["users"] = args?.users;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["user"] = undefined /*out*/;

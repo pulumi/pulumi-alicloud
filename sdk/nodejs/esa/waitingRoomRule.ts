@@ -99,29 +99,29 @@ export class WaitingRoomRule extends pulumi.CustomResource {
     /**
      * The content of the rule, the implemented policy or conditional expression.
      */
-    public readonly rule!: pulumi.Output<string>;
+    declare public readonly rule: pulumi.Output<string>;
     /**
      * Rule name, optional, used to query by waiting room bypass rule name.
      */
-    public readonly ruleName!: pulumi.Output<string>;
+    declare public readonly ruleName: pulumi.Output<string>;
     /**
      * The site ID, which can be obtained by calling the ListSites API.
      */
-    public readonly siteId!: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<number>;
     /**
      * Rule enabled status, supporting:
      * -'on': means enabled.
      * -'off': means disabled.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
      */
-    public readonly waitingRoomId!: pulumi.Output<string>;
+    declare public readonly waitingRoomId: pulumi.Output<string>;
     /**
      * The rule ID, which can be used to query a specific rule.
      */
-    public /*out*/ readonly waitingRoomRuleId!: pulumi.Output<number>;
+    declare public /*out*/ readonly waitingRoomRuleId: pulumi.Output<number>;
 
     /**
      * Create a WaitingRoomRule resource with the given unique name, arguments, and options.
@@ -136,34 +136,34 @@ export class WaitingRoomRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WaitingRoomRuleState | undefined;
-            resourceInputs["rule"] = state ? state.rule : undefined;
-            resourceInputs["ruleName"] = state ? state.ruleName : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["waitingRoomId"] = state ? state.waitingRoomId : undefined;
-            resourceInputs["waitingRoomRuleId"] = state ? state.waitingRoomRuleId : undefined;
+            resourceInputs["rule"] = state?.rule;
+            resourceInputs["ruleName"] = state?.ruleName;
+            resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["waitingRoomId"] = state?.waitingRoomId;
+            resourceInputs["waitingRoomRuleId"] = state?.waitingRoomRuleId;
         } else {
             const args = argsOrState as WaitingRoomRuleArgs | undefined;
-            if ((!args || args.rule === undefined) && !opts.urn) {
+            if (args?.rule === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rule'");
             }
-            if ((!args || args.ruleName === undefined) && !opts.urn) {
+            if (args?.ruleName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ruleName'");
             }
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            if ((!args || args.status === undefined) && !opts.urn) {
+            if (args?.status === undefined && !opts.urn) {
                 throw new Error("Missing required property 'status'");
             }
-            if ((!args || args.waitingRoomId === undefined) && !opts.urn) {
+            if (args?.waitingRoomId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'waitingRoomId'");
             }
-            resourceInputs["rule"] = args ? args.rule : undefined;
-            resourceInputs["ruleName"] = args ? args.ruleName : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["waitingRoomId"] = args ? args.waitingRoomId : undefined;
+            resourceInputs["rule"] = args?.rule;
+            resourceInputs["ruleName"] = args?.ruleName;
+            resourceInputs["siteId"] = args?.siteId;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["waitingRoomId"] = args?.waitingRoomId;
             resourceInputs["waitingRoomRuleId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

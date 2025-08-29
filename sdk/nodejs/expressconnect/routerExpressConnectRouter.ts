@@ -46,36 +46,36 @@ export class RouterExpressConnectRouter extends pulumi.CustomResource {
     /**
      * ASN representing resources.
      */
-    public readonly alibabaSideAsn!: pulumi.Output<number>;
+    declare public readonly alibabaSideAsn: pulumi.Output<number>;
     /**
      * Represents the creation time of the resource.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Represents the description of the leased line gateway.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Name of the Gateway representing the leased line.
      */
-    public readonly ecrName!: pulumi.Output<string | undefined>;
+    declare public readonly ecrName: pulumi.Output<string | undefined>;
     /**
      * List of regions representing leased line gateways. See `regions` below.
      */
-    public readonly regions!: pulumi.Output<outputs.expressconnect.RouterExpressConnectRouterRegion[]>;
+    declare public readonly regions: pulumi.Output<outputs.expressconnect.RouterExpressConnectRouterRegion[]>;
     /**
      * The ID of the resource group to which the ECR instance belongs.
      * - A string consisting of letters, numbers, hyphens (-), and underscores (_), and the string length can be 0 to 64 characters.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tag of the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a RouterExpressConnectRouter resource with the given unique name, arguments, and options.
@@ -90,25 +90,25 @@ export class RouterExpressConnectRouter extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouterExpressConnectRouterState | undefined;
-            resourceInputs["alibabaSideAsn"] = state ? state.alibabaSideAsn : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["ecrName"] = state ? state.ecrName : undefined;
-            resourceInputs["regions"] = state ? state.regions : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["alibabaSideAsn"] = state?.alibabaSideAsn;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["ecrName"] = state?.ecrName;
+            resourceInputs["regions"] = state?.regions;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as RouterExpressConnectRouterArgs | undefined;
-            if ((!args || args.alibabaSideAsn === undefined) && !opts.urn) {
+            if (args?.alibabaSideAsn === undefined && !opts.urn) {
                 throw new Error("Missing required property 'alibabaSideAsn'");
             }
-            resourceInputs["alibabaSideAsn"] = args ? args.alibabaSideAsn : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["ecrName"] = args ? args.ecrName : undefined;
-            resourceInputs["regions"] = args ? args.regions : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["alibabaSideAsn"] = args?.alibabaSideAsn;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["ecrName"] = args?.ecrName;
+            resourceInputs["regions"] = args?.regions;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

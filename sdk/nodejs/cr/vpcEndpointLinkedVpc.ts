@@ -95,29 +95,29 @@ export class VpcEndpointLinkedVpc extends pulumi.CustomResource {
     /**
      * Specifies whether to automatically create an Alibaba Cloud DNS PrivateZone record. Valid Values:
      */
-    public readonly enableCreateDnsRecordInPvzt!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableCreateDnsRecordInPvzt: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The name of the module that you want to access. Valid Values:
      * - `Registry`: the image repository.
      * - `Chart`: a Helm chart.
      */
-    public readonly moduleName!: pulumi.Output<string>;
+    declare public readonly moduleName: pulumi.Output<string>;
     /**
      * The status of the Vpc Endpoint Linked Vpc.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The ID of the VPC.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * The ID of the vSwitch.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
 
     /**
      * Create a VpcEndpointLinkedVpc resource with the given unique name, arguments, and options.
@@ -132,31 +132,31 @@ export class VpcEndpointLinkedVpc extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpcEndpointLinkedVpcState | undefined;
-            resourceInputs["enableCreateDnsRecordInPvzt"] = state ? state.enableCreateDnsRecordInPvzt : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["moduleName"] = state ? state.moduleName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["enableCreateDnsRecordInPvzt"] = state?.enableCreateDnsRecordInPvzt;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["moduleName"] = state?.moduleName;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
         } else {
             const args = argsOrState as VpcEndpointLinkedVpcArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.moduleName === undefined) && !opts.urn) {
+            if (args?.moduleName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'moduleName'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+            if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            resourceInputs["enableCreateDnsRecordInPvzt"] = args ? args.enableCreateDnsRecordInPvzt : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["moduleName"] = args ? args.moduleName : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["enableCreateDnsRecordInPvzt"] = args?.enableCreateDnsRecordInPvzt;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["moduleName"] = args?.moduleName;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

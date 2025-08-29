@@ -113,15 +113,15 @@ export class LogTailAttachment extends pulumi.CustomResource {
     /**
      * The Logtail configuration name, which is unique in the same project.
      */
-    public readonly logtailConfigName!: pulumi.Output<string>;
+    declare public readonly logtailConfigName: pulumi.Output<string>;
     /**
      * The machine group name, which is unique in the same project.
      */
-    public readonly machineGroupName!: pulumi.Output<string>;
+    declare public readonly machineGroupName: pulumi.Output<string>;
     /**
      * The project name to the log store belongs.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
 
     /**
      * Create a LogTailAttachment resource with the given unique name, arguments, and options.
@@ -136,23 +136,23 @@ export class LogTailAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LogTailAttachmentState | undefined;
-            resourceInputs["logtailConfigName"] = state ? state.logtailConfigName : undefined;
-            resourceInputs["machineGroupName"] = state ? state.machineGroupName : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["logtailConfigName"] = state?.logtailConfigName;
+            resourceInputs["machineGroupName"] = state?.machineGroupName;
+            resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as LogTailAttachmentArgs | undefined;
-            if ((!args || args.logtailConfigName === undefined) && !opts.urn) {
+            if (args?.logtailConfigName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'logtailConfigName'");
             }
-            if ((!args || args.machineGroupName === undefined) && !opts.urn) {
+            if (args?.machineGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'machineGroupName'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["logtailConfigName"] = args ? args.logtailConfigName : undefined;
-            resourceInputs["machineGroupName"] = args ? args.machineGroupName : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["logtailConfigName"] = args?.logtailConfigName;
+            resourceInputs["machineGroupName"] = args?.machineGroupName;
+            resourceInputs["project"] = args?.project;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(LogTailAttachment.__pulumiType, name, resourceInputs, opts);

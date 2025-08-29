@@ -93,33 +93,33 @@ export class DomainResource extends pulumi.CustomResource {
      *
      * > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
      */
-    public readonly cert!: pulumi.Output<string | undefined>;
+    declare public readonly cert: pulumi.Output<string | undefined>;
     /**
      * The name of the certificate.
      *
      * > **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `certIdentifier` is in the "CertificateID-RegionId" format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `certIdentifier` is `123-cn-hangzhou`.
      */
-    public readonly certIdentifier!: pulumi.Output<string | undefined>;
+    declare public readonly certIdentifier: pulumi.Output<string | undefined>;
     /**
      * The public key of the certificate that you want to associate. This parameter must be used together with the CertName and Key parameters.
      *
      * > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
      */
-    public readonly certName!: pulumi.Output<string>;
+    declare public readonly certName: pulumi.Output<string>;
     /**
      * The region of the certificate. `cn-hangzhou` and `ap-southeast-1` are supported. The default value is `cn-hangzhou`.
      */
-    public readonly certRegion!: pulumi.Output<string | undefined>;
+    declare public readonly certRegion: pulumi.Output<string | undefined>;
     /**
      * The CNAME address to query.
      */
-    public /*out*/ readonly cname!: pulumi.Output<string>;
+    declare public /*out*/ readonly cname: pulumi.Output<string>;
     /**
      * The domain name for which you want to configure the Static Page Caching policy.
      *
      * > **NOTE:**  You can call the [DescribeDomains](https://www.alibabacloud.com/help/en/doc-detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
      */
-    public readonly domain!: pulumi.Output<string>;
+    declare public readonly domain: pulumi.Output<string>;
     /**
      * The advanced HTTPS settings. This parameter takes effect only when the value of the `ProxyType` parameter includes `https`. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
      *
@@ -135,33 +135,33 @@ export class DomainResource extends pulumi.CustomResource {
      *
      * After you turn on the switch, HTTP/2 is used.
      */
-    public readonly httpsExt!: pulumi.Output<string>;
+    declare public readonly httpsExt: pulumi.Output<string>;
     /**
      * InstanceIds
      */
-    public readonly instanceIds!: pulumi.Output<string[]>;
+    declare public readonly instanceIds: pulumi.Output<string[]>;
     /**
      * The globally unique ID of the certificate. The value is in the "Certificate ID-cn-hangzhou" format. For example, if the ID of the certificate is 123, the value of the CertIdentifier parameter is 123-cn-hangzhou.
      *
      * > **NOTE:**   You can specify only one of this parameter and the CertId parameter.
      */
-    public readonly key!: pulumi.Output<string | undefined>;
+    declare public readonly key: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to enable the OCSP feature. Valid values:
      */
-    public readonly ocspEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly ocspEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Protocol type and port number information. See `proxyTypes` below.
      */
-    public readonly proxyTypes!: pulumi.Output<outputs.ddos.DomainResourceProxyType[]>;
+    declare public readonly proxyTypes: pulumi.Output<outputs.ddos.DomainResourceProxyType[]>;
     /**
      * Server address information of the source station.
      */
-    public readonly realServers!: pulumi.Output<string[]>;
+    declare public readonly realServers: pulumi.Output<string[]>;
     /**
      * The address type of the origin server. Valid values:
      */
-    public readonly rsType!: pulumi.Output<number>;
+    declare public readonly rsType: pulumi.Output<number>;
 
     /**
      * Create a DomainResource resource with the given unique name, arguments, and options.
@@ -176,48 +176,48 @@ export class DomainResource extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainResourceState | undefined;
-            resourceInputs["cert"] = state ? state.cert : undefined;
-            resourceInputs["certIdentifier"] = state ? state.certIdentifier : undefined;
-            resourceInputs["certName"] = state ? state.certName : undefined;
-            resourceInputs["certRegion"] = state ? state.certRegion : undefined;
-            resourceInputs["cname"] = state ? state.cname : undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["httpsExt"] = state ? state.httpsExt : undefined;
-            resourceInputs["instanceIds"] = state ? state.instanceIds : undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["ocspEnabled"] = state ? state.ocspEnabled : undefined;
-            resourceInputs["proxyTypes"] = state ? state.proxyTypes : undefined;
-            resourceInputs["realServers"] = state ? state.realServers : undefined;
-            resourceInputs["rsType"] = state ? state.rsType : undefined;
+            resourceInputs["cert"] = state?.cert;
+            resourceInputs["certIdentifier"] = state?.certIdentifier;
+            resourceInputs["certName"] = state?.certName;
+            resourceInputs["certRegion"] = state?.certRegion;
+            resourceInputs["cname"] = state?.cname;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["httpsExt"] = state?.httpsExt;
+            resourceInputs["instanceIds"] = state?.instanceIds;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["ocspEnabled"] = state?.ocspEnabled;
+            resourceInputs["proxyTypes"] = state?.proxyTypes;
+            resourceInputs["realServers"] = state?.realServers;
+            resourceInputs["rsType"] = state?.rsType;
         } else {
             const args = argsOrState as DomainResourceArgs | undefined;
-            if ((!args || args.domain === undefined) && !opts.urn) {
+            if (args?.domain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domain'");
             }
-            if ((!args || args.instanceIds === undefined) && !opts.urn) {
+            if (args?.instanceIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceIds'");
             }
-            if ((!args || args.proxyTypes === undefined) && !opts.urn) {
+            if (args?.proxyTypes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'proxyTypes'");
             }
-            if ((!args || args.realServers === undefined) && !opts.urn) {
+            if (args?.realServers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'realServers'");
             }
-            if ((!args || args.rsType === undefined) && !opts.urn) {
+            if (args?.rsType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rsType'");
             }
             resourceInputs["cert"] = args?.cert ? pulumi.secret(args.cert) : undefined;
-            resourceInputs["certIdentifier"] = args ? args.certIdentifier : undefined;
-            resourceInputs["certName"] = args ? args.certName : undefined;
+            resourceInputs["certIdentifier"] = args?.certIdentifier;
+            resourceInputs["certName"] = args?.certName;
             resourceInputs["certRegion"] = args?.certRegion ? pulumi.secret(args.certRegion) : undefined;
-            resourceInputs["domain"] = args ? args.domain : undefined;
-            resourceInputs["httpsExt"] = args ? args.httpsExt : undefined;
-            resourceInputs["instanceIds"] = args ? args.instanceIds : undefined;
+            resourceInputs["domain"] = args?.domain;
+            resourceInputs["httpsExt"] = args?.httpsExt;
+            resourceInputs["instanceIds"] = args?.instanceIds;
             resourceInputs["key"] = args?.key ? pulumi.secret(args.key) : undefined;
-            resourceInputs["ocspEnabled"] = args ? args.ocspEnabled : undefined;
-            resourceInputs["proxyTypes"] = args ? args.proxyTypes : undefined;
-            resourceInputs["realServers"] = args ? args.realServers : undefined;
-            resourceInputs["rsType"] = args ? args.rsType : undefined;
+            resourceInputs["ocspEnabled"] = args?.ocspEnabled;
+            resourceInputs["proxyTypes"] = args?.proxyTypes;
+            resourceInputs["realServers"] = args?.realServers;
+            resourceInputs["rsType"] = args?.rsType;
             resourceInputs["cname"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

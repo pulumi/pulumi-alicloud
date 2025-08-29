@@ -85,15 +85,15 @@ export class ProtectionModule extends pulumi.CustomResource {
     /**
      * The Protection Module. Valid values: `acCc`, `antifraud`, `dld`, `normalized`, `waf`.
      */
-    public readonly defenseType!: pulumi.Output<string>;
+    declare public readonly defenseType: pulumi.Output<string>;
     /**
      * The domain name that is added to WAF.
      */
-    public readonly domain!: pulumi.Output<string>;
+    declare public readonly domain: pulumi.Output<string>;
     /**
      * The ID of the WAF instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The protection mode of the specified protection module. **NOTE:** The value of the Mode parameter varies based on the value of the `defenseType` parameter.
      * * The `defenseType` is `waf`. `0`: block mode. `1`: warn mode.
@@ -102,11 +102,11 @@ export class ProtectionModule extends pulumi.CustomResource {
      * * The `defenseType` is `antifraud`. `0`: warn mode. `1`: block mode. `2`: strict interception mode.
      * * The `defenseType` is `normalized`. `0`: warn mode. `1`: block mode.
      */
-    public readonly mode!: pulumi.Output<number>;
+    declare public readonly mode: pulumi.Output<number>;
     /**
      * The status of the resource. Valid values: `0`, `1`.
      */
-    public readonly status!: pulumi.Output<number | undefined>;
+    declare public readonly status: pulumi.Output<number | undefined>;
 
     /**
      * Create a ProtectionModule resource with the given unique name, arguments, and options.
@@ -121,30 +121,30 @@ export class ProtectionModule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProtectionModuleState | undefined;
-            resourceInputs["defenseType"] = state ? state.defenseType : undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["mode"] = state ? state.mode : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["defenseType"] = state?.defenseType;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["mode"] = state?.mode;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as ProtectionModuleArgs | undefined;
-            if ((!args || args.defenseType === undefined) && !opts.urn) {
+            if (args?.defenseType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'defenseType'");
             }
-            if ((!args || args.domain === undefined) && !opts.urn) {
+            if (args?.domain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domain'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.mode === undefined) && !opts.urn) {
+            if (args?.mode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'mode'");
             }
-            resourceInputs["defenseType"] = args ? args.defenseType : undefined;
-            resourceInputs["domain"] = args ? args.domain : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["mode"] = args ? args.mode : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["defenseType"] = args?.defenseType;
+            resourceInputs["domain"] = args?.domain;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["mode"] = args?.mode;
+            resourceInputs["status"] = args?.status;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProtectionModule.__pulumiType, name, resourceInputs, opts);

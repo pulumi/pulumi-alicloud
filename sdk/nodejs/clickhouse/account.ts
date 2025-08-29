@@ -95,55 +95,55 @@ export class Account extends pulumi.CustomResource {
     /**
      * In Chinese, English letter. May contain Chinese and English characters, lowercase letters, numbers, and underscores (_), the dash (-). Cannot start with http:// and https:// at the beginning. Length is from 2 to 256 characters.
      */
-    public readonly accountDescription!: pulumi.Output<string | undefined>;
+    declare public readonly accountDescription: pulumi.Output<string | undefined>;
     /**
      * Account name: lowercase letters, numbers, underscores, lowercase letter; length no more than 16 characters.
      */
-    public readonly accountName!: pulumi.Output<string>;
+    declare public readonly accountName: pulumi.Output<string>;
     /**
      * The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^& author (s):_+-=) in a length of 8-32 bit.
      */
-    public readonly accountPassword!: pulumi.Output<string>;
+    declare public readonly accountPassword: pulumi.Output<string>;
     /**
      * The list of databases to which you want to grant permissions. Separate databases with commas (,).
      */
-    public readonly allowDatabases!: pulumi.Output<string>;
+    declare public readonly allowDatabases: pulumi.Output<string>;
     /**
      * The list of dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
      */
-    public readonly allowDictionaries!: pulumi.Output<string>;
+    declare public readonly allowDictionaries: pulumi.Output<string>;
     /**
      * The db cluster id.
      */
-    public readonly dbClusterId!: pulumi.Output<string>;
+    declare public readonly dbClusterId: pulumi.Output<string>;
     /**
      * Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
      */
-    public readonly ddlAuthority!: pulumi.Output<boolean>;
+    declare public readonly ddlAuthority: pulumi.Output<boolean>;
     /**
      * Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
      */
-    public readonly dmlAuthority!: pulumi.Output<string>;
+    declare public readonly dmlAuthority: pulumi.Output<string>;
     /**
      * The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The list of all databases. Separate databases with commas (,). Field 'total_databases' has been deprecated from provider version 1.223.1.
      *
      * @deprecated Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version.
      */
-    public readonly totalDatabases!: pulumi.Output<string>;
+    declare public readonly totalDatabases: pulumi.Output<string>;
     /**
      * The list of all dictionaries. Separate dictionaries with commas (,). Field 'total_dictionaries' has been deprecated from provider version 1.223.1.
      *
      * @deprecated Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version.
      */
-    public readonly totalDictionaries!: pulumi.Output<string>;
+    declare public readonly totalDictionaries: pulumi.Output<string>;
     /**
      * The type of the database account. Valid values: `Normal` or `Super`.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
 
     /**
      * Create a Account resource with the given unique name, arguments, and options.
@@ -158,40 +158,40 @@ export class Account extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountState | undefined;
-            resourceInputs["accountDescription"] = state ? state.accountDescription : undefined;
-            resourceInputs["accountName"] = state ? state.accountName : undefined;
-            resourceInputs["accountPassword"] = state ? state.accountPassword : undefined;
-            resourceInputs["allowDatabases"] = state ? state.allowDatabases : undefined;
-            resourceInputs["allowDictionaries"] = state ? state.allowDictionaries : undefined;
-            resourceInputs["dbClusterId"] = state ? state.dbClusterId : undefined;
-            resourceInputs["ddlAuthority"] = state ? state.ddlAuthority : undefined;
-            resourceInputs["dmlAuthority"] = state ? state.dmlAuthority : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["totalDatabases"] = state ? state.totalDatabases : undefined;
-            resourceInputs["totalDictionaries"] = state ? state.totalDictionaries : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["accountDescription"] = state?.accountDescription;
+            resourceInputs["accountName"] = state?.accountName;
+            resourceInputs["accountPassword"] = state?.accountPassword;
+            resourceInputs["allowDatabases"] = state?.allowDatabases;
+            resourceInputs["allowDictionaries"] = state?.allowDictionaries;
+            resourceInputs["dbClusterId"] = state?.dbClusterId;
+            resourceInputs["ddlAuthority"] = state?.ddlAuthority;
+            resourceInputs["dmlAuthority"] = state?.dmlAuthority;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["totalDatabases"] = state?.totalDatabases;
+            resourceInputs["totalDictionaries"] = state?.totalDictionaries;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as AccountArgs | undefined;
-            if ((!args || args.accountName === undefined) && !opts.urn) {
+            if (args?.accountName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountName'");
             }
-            if ((!args || args.accountPassword === undefined) && !opts.urn) {
+            if (args?.accountPassword === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountPassword'");
             }
-            if ((!args || args.dbClusterId === undefined) && !opts.urn) {
+            if (args?.dbClusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbClusterId'");
             }
-            resourceInputs["accountDescription"] = args ? args.accountDescription : undefined;
-            resourceInputs["accountName"] = args ? args.accountName : undefined;
-            resourceInputs["accountPassword"] = args ? args.accountPassword : undefined;
-            resourceInputs["allowDatabases"] = args ? args.allowDatabases : undefined;
-            resourceInputs["allowDictionaries"] = args ? args.allowDictionaries : undefined;
-            resourceInputs["dbClusterId"] = args ? args.dbClusterId : undefined;
-            resourceInputs["ddlAuthority"] = args ? args.ddlAuthority : undefined;
-            resourceInputs["dmlAuthority"] = args ? args.dmlAuthority : undefined;
-            resourceInputs["totalDatabases"] = args ? args.totalDatabases : undefined;
-            resourceInputs["totalDictionaries"] = args ? args.totalDictionaries : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["accountDescription"] = args?.accountDescription;
+            resourceInputs["accountName"] = args?.accountName;
+            resourceInputs["accountPassword"] = args?.accountPassword;
+            resourceInputs["allowDatabases"] = args?.allowDatabases;
+            resourceInputs["allowDictionaries"] = args?.allowDictionaries;
+            resourceInputs["dbClusterId"] = args?.dbClusterId;
+            resourceInputs["ddlAuthority"] = args?.ddlAuthority;
+            resourceInputs["dmlAuthority"] = args?.dmlAuthority;
+            resourceInputs["totalDatabases"] = args?.totalDatabases;
+            resourceInputs["totalDictionaries"] = args?.totalDictionaries;
+            resourceInputs["type"] = args?.type;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

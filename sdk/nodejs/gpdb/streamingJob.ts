@@ -168,7 +168,7 @@ export class StreamingJob extends pulumi.CustomResource {
     /**
      * The name of the database account.
      */
-    public readonly account!: pulumi.Output<string | undefined>;
+    declare public readonly account: pulumi.Output<string | undefined>;
     /**
      * The delivery guarantee setting.
      *
@@ -177,67 +177,67 @@ export class StreamingJob extends pulumi.CustomResource {
      * - ATLEAST
      * - EXACTLY
      */
-    public readonly consistency!: pulumi.Output<string | undefined>;
+    declare public readonly consistency: pulumi.Output<string | undefined>;
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The data source ID.
      */
-    public readonly dataSourceId!: pulumi.Output<string>;
+    declare public readonly dataSourceId: pulumi.Output<string>;
     /**
      * The instance ID.
      */
-    public readonly dbInstanceId!: pulumi.Output<string>;
+    declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
      * Target Field
      */
-    public readonly destColumns!: pulumi.Output<string[] | undefined>;
+    declare public readonly destColumns: pulumi.Output<string[] | undefined>;
     /**
      * The name of the destination database.
      */
-    public readonly destDatabase!: pulumi.Output<string | undefined>;
+    declare public readonly destDatabase: pulumi.Output<string | undefined>;
     /**
      * Target Schema
      */
-    public readonly destSchema!: pulumi.Output<string | undefined>;
+    declare public readonly destSchema: pulumi.Output<string | undefined>;
     /**
      * The name of the destination table.
      */
-    public readonly destTable!: pulumi.Output<string | undefined>;
+    declare public readonly destTable: pulumi.Output<string | undefined>;
     /**
      * The number of allowed error rows. Write failures occur when Kafka data does not match the destination table in AnalyticDB for PostgreSQL. If the specified value is exceeded, the job fails.
      */
-    public readonly errorLimitCount!: pulumi.Output<number | undefined>;
+    declare public readonly errorLimitCount: pulumi.Output<number | undefined>;
     /**
      * Automatic offset reset
      */
-    public readonly fallbackOffset!: pulumi.Output<string | undefined>;
+    declare public readonly fallbackOffset: pulumi.Output<string | undefined>;
     /**
      * Group Name
      */
-    public readonly groupName!: pulumi.Output<string | undefined>;
+    declare public readonly groupName: pulumi.Output<string | undefined>;
     /**
      * The YAML configuration file of the job. This parameter must be specified when Mode is set to professional.
      */
-    public readonly jobConfig!: pulumi.Output<string | undefined>;
+    declare public readonly jobConfig: pulumi.Output<string | undefined>;
     /**
      * The description of the job.
      */
-    public readonly jobDescription!: pulumi.Output<string | undefined>;
+    declare public readonly jobDescription: pulumi.Output<string | undefined>;
     /**
      * The job ID.
      */
-    public /*out*/ readonly jobId!: pulumi.Output<string>;
+    declare public /*out*/ readonly jobId: pulumi.Output<string>;
     /**
      * The name of the job.
      */
-    public readonly jobName!: pulumi.Output<string>;
+    declare public readonly jobName: pulumi.Output<string>;
     /**
      * Match Field
      */
-    public readonly matchColumns!: pulumi.Output<string[] | undefined>;
+    declare public readonly matchColumns: pulumi.Output<string[] | undefined>;
     /**
      * The configuration mode. Valid values:
      *
@@ -245,19 +245,19 @@ export class StreamingJob extends pulumi.CustomResource {
      *
      * 2.  professional: In professional mode, you can submit a YAML configuration file.
      */
-    public readonly mode!: pulumi.Output<string | undefined>;
+    declare public readonly mode: pulumi.Output<string | undefined>;
     /**
      * The password of the database account.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * Source Field
      */
-    public readonly srcColumns!: pulumi.Output<string[] | undefined>;
+    declare public readonly srcColumns: pulumi.Output<string[] | undefined>;
     /**
      * Service status, value:
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Specifies whether to test the real-time job. Valid values:
      *
@@ -266,11 +266,11 @@ export class StreamingJob extends pulumi.CustomResource {
      *
      * Default value: false.
      */
-    public readonly tryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly tryRun: pulumi.Output<boolean | undefined>;
     /**
      * Update Field
      */
-    public readonly updateColumns!: pulumi.Output<string[] | undefined>;
+    declare public readonly updateColumns: pulumi.Output<string[] | undefined>;
     /**
      * The write mode.
      *
@@ -280,7 +280,7 @@ export class StreamingJob extends pulumi.CustomResource {
      * - update
      * - merge
      */
-    public readonly writeMode!: pulumi.Output<string | undefined>;
+    declare public readonly writeMode: pulumi.Output<string | undefined>;
 
     /**
      * Create a StreamingJob resource with the given unique name, arguments, and options.
@@ -295,62 +295,62 @@ export class StreamingJob extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StreamingJobState | undefined;
-            resourceInputs["account"] = state ? state.account : undefined;
-            resourceInputs["consistency"] = state ? state.consistency : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dataSourceId"] = state ? state.dataSourceId : undefined;
-            resourceInputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
-            resourceInputs["destColumns"] = state ? state.destColumns : undefined;
-            resourceInputs["destDatabase"] = state ? state.destDatabase : undefined;
-            resourceInputs["destSchema"] = state ? state.destSchema : undefined;
-            resourceInputs["destTable"] = state ? state.destTable : undefined;
-            resourceInputs["errorLimitCount"] = state ? state.errorLimitCount : undefined;
-            resourceInputs["fallbackOffset"] = state ? state.fallbackOffset : undefined;
-            resourceInputs["groupName"] = state ? state.groupName : undefined;
-            resourceInputs["jobConfig"] = state ? state.jobConfig : undefined;
-            resourceInputs["jobDescription"] = state ? state.jobDescription : undefined;
-            resourceInputs["jobId"] = state ? state.jobId : undefined;
-            resourceInputs["jobName"] = state ? state.jobName : undefined;
-            resourceInputs["matchColumns"] = state ? state.matchColumns : undefined;
-            resourceInputs["mode"] = state ? state.mode : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["srcColumns"] = state ? state.srcColumns : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tryRun"] = state ? state.tryRun : undefined;
-            resourceInputs["updateColumns"] = state ? state.updateColumns : undefined;
-            resourceInputs["writeMode"] = state ? state.writeMode : undefined;
+            resourceInputs["account"] = state?.account;
+            resourceInputs["consistency"] = state?.consistency;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dataSourceId"] = state?.dataSourceId;
+            resourceInputs["dbInstanceId"] = state?.dbInstanceId;
+            resourceInputs["destColumns"] = state?.destColumns;
+            resourceInputs["destDatabase"] = state?.destDatabase;
+            resourceInputs["destSchema"] = state?.destSchema;
+            resourceInputs["destTable"] = state?.destTable;
+            resourceInputs["errorLimitCount"] = state?.errorLimitCount;
+            resourceInputs["fallbackOffset"] = state?.fallbackOffset;
+            resourceInputs["groupName"] = state?.groupName;
+            resourceInputs["jobConfig"] = state?.jobConfig;
+            resourceInputs["jobDescription"] = state?.jobDescription;
+            resourceInputs["jobId"] = state?.jobId;
+            resourceInputs["jobName"] = state?.jobName;
+            resourceInputs["matchColumns"] = state?.matchColumns;
+            resourceInputs["mode"] = state?.mode;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["srcColumns"] = state?.srcColumns;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tryRun"] = state?.tryRun;
+            resourceInputs["updateColumns"] = state?.updateColumns;
+            resourceInputs["writeMode"] = state?.writeMode;
         } else {
             const args = argsOrState as StreamingJobArgs | undefined;
-            if ((!args || args.dataSourceId === undefined) && !opts.urn) {
+            if (args?.dataSourceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataSourceId'");
             }
-            if ((!args || args.dbInstanceId === undefined) && !opts.urn) {
+            if (args?.dbInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceId'");
             }
-            if ((!args || args.jobName === undefined) && !opts.urn) {
+            if (args?.jobName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'jobName'");
             }
-            resourceInputs["account"] = args ? args.account : undefined;
-            resourceInputs["consistency"] = args ? args.consistency : undefined;
-            resourceInputs["dataSourceId"] = args ? args.dataSourceId : undefined;
-            resourceInputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
-            resourceInputs["destColumns"] = args ? args.destColumns : undefined;
-            resourceInputs["destDatabase"] = args ? args.destDatabase : undefined;
-            resourceInputs["destSchema"] = args ? args.destSchema : undefined;
-            resourceInputs["destTable"] = args ? args.destTable : undefined;
-            resourceInputs["errorLimitCount"] = args ? args.errorLimitCount : undefined;
-            resourceInputs["fallbackOffset"] = args ? args.fallbackOffset : undefined;
-            resourceInputs["groupName"] = args ? args.groupName : undefined;
-            resourceInputs["jobConfig"] = args ? args.jobConfig : undefined;
-            resourceInputs["jobDescription"] = args ? args.jobDescription : undefined;
-            resourceInputs["jobName"] = args ? args.jobName : undefined;
-            resourceInputs["matchColumns"] = args ? args.matchColumns : undefined;
-            resourceInputs["mode"] = args ? args.mode : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
-            resourceInputs["srcColumns"] = args ? args.srcColumns : undefined;
-            resourceInputs["tryRun"] = args ? args.tryRun : undefined;
-            resourceInputs["updateColumns"] = args ? args.updateColumns : undefined;
-            resourceInputs["writeMode"] = args ? args.writeMode : undefined;
+            resourceInputs["account"] = args?.account;
+            resourceInputs["consistency"] = args?.consistency;
+            resourceInputs["dataSourceId"] = args?.dataSourceId;
+            resourceInputs["dbInstanceId"] = args?.dbInstanceId;
+            resourceInputs["destColumns"] = args?.destColumns;
+            resourceInputs["destDatabase"] = args?.destDatabase;
+            resourceInputs["destSchema"] = args?.destSchema;
+            resourceInputs["destTable"] = args?.destTable;
+            resourceInputs["errorLimitCount"] = args?.errorLimitCount;
+            resourceInputs["fallbackOffset"] = args?.fallbackOffset;
+            resourceInputs["groupName"] = args?.groupName;
+            resourceInputs["jobConfig"] = args?.jobConfig;
+            resourceInputs["jobDescription"] = args?.jobDescription;
+            resourceInputs["jobName"] = args?.jobName;
+            resourceInputs["matchColumns"] = args?.matchColumns;
+            resourceInputs["mode"] = args?.mode;
+            resourceInputs["password"] = args?.password;
+            resourceInputs["srcColumns"] = args?.srcColumns;
+            resourceInputs["tryRun"] = args?.tryRun;
+            resourceInputs["updateColumns"] = args?.updateColumns;
+            resourceInputs["writeMode"] = args?.writeMode;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["jobId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

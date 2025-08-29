@@ -84,30 +84,30 @@ export class Port extends pulumi.CustomResource {
     /**
      * The port of the origin server. Valid values: `0` to `65535`.
      */
-    public readonly backendPort!: pulumi.Output<string | undefined>;
+    declare public readonly backendPort: pulumi.Output<string | undefined>;
     /**
      * Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
      * - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
      */
-    public readonly config!: pulumi.Output<outputs.ddos.PortConfig>;
+    declare public readonly config: pulumi.Output<outputs.ddos.PortConfig>;
     /**
      * The forwarding port to query. Valid values: `0` to `65535`.
      */
-    public readonly frontendPort!: pulumi.Output<string>;
+    declare public readonly frontendPort: pulumi.Output<string>;
     /**
      * The type of the forwarding protocol to query. Valid values:
      */
-    public readonly frontendProtocol!: pulumi.Output<string>;
+    declare public readonly frontendProtocol: pulumi.Output<string>;
     /**
      * The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
      *
      * > **NOTE:**  You can call the [DescribeInstanceIds](https://www.alibabacloud.com/help/en/doc-detail/157459.html) operation to query the IDs of all instances.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * List of source IP addresses
      */
-    public readonly realServers!: pulumi.Output<string[]>;
+    declare public readonly realServers: pulumi.Output<string[]>;
 
     /**
      * Create a Port resource with the given unique name, arguments, and options.
@@ -122,32 +122,32 @@ export class Port extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PortState | undefined;
-            resourceInputs["backendPort"] = state ? state.backendPort : undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["frontendPort"] = state ? state.frontendPort : undefined;
-            resourceInputs["frontendProtocol"] = state ? state.frontendProtocol : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["realServers"] = state ? state.realServers : undefined;
+            resourceInputs["backendPort"] = state?.backendPort;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["frontendPort"] = state?.frontendPort;
+            resourceInputs["frontendProtocol"] = state?.frontendProtocol;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["realServers"] = state?.realServers;
         } else {
             const args = argsOrState as PortArgs | undefined;
-            if ((!args || args.frontendPort === undefined) && !opts.urn) {
+            if (args?.frontendPort === undefined && !opts.urn) {
                 throw new Error("Missing required property 'frontendPort'");
             }
-            if ((!args || args.frontendProtocol === undefined) && !opts.urn) {
+            if (args?.frontendProtocol === undefined && !opts.urn) {
                 throw new Error("Missing required property 'frontendProtocol'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.realServers === undefined) && !opts.urn) {
+            if (args?.realServers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'realServers'");
             }
-            resourceInputs["backendPort"] = args ? args.backendPort : undefined;
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["frontendPort"] = args ? args.frontendPort : undefined;
-            resourceInputs["frontendProtocol"] = args ? args.frontendProtocol : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["realServers"] = args ? args.realServers : undefined;
+            resourceInputs["backendPort"] = args?.backendPort;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["frontendPort"] = args?.frontendPort;
+            resourceInputs["frontendProtocol"] = args?.frontendProtocol;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["realServers"] = args?.realServers;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Port.__pulumiType, name, resourceInputs, opts);

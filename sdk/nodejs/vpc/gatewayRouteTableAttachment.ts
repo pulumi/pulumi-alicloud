@@ -79,19 +79,19 @@ export class GatewayRouteTableAttachment extends pulumi.CustomResource {
     /**
      * The creation time of the resource.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Specifies whether to only precheck this request. Default value: `false`.
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the IPv4 Gateway instance.
      */
-    public readonly ipv4GatewayId!: pulumi.Output<string>;
+    declare public readonly ipv4GatewayId: pulumi.Output<string>;
     /**
      * The ID of the Gateway route table to be bound.
      */
-    public readonly routeTableId!: pulumi.Output<string>;
+    declare public readonly routeTableId: pulumi.Output<string>;
     /**
      * The status of the IPv4 Gateway instance. Value:
      * - **Creating**: The function is being created.
@@ -101,7 +101,7 @@ export class GatewayRouteTableAttachment extends pulumi.CustomResource {
      * - **Deleted**: Deleted.
      * - **Activating**: enabled.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a GatewayRouteTableAttachment resource with the given unique name, arguments, and options.
@@ -116,22 +116,22 @@ export class GatewayRouteTableAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GatewayRouteTableAttachmentState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["ipv4GatewayId"] = state ? state.ipv4GatewayId : undefined;
-            resourceInputs["routeTableId"] = state ? state.routeTableId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["ipv4GatewayId"] = state?.ipv4GatewayId;
+            resourceInputs["routeTableId"] = state?.routeTableId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as GatewayRouteTableAttachmentArgs | undefined;
-            if ((!args || args.ipv4GatewayId === undefined) && !opts.urn) {
+            if (args?.ipv4GatewayId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ipv4GatewayId'");
             }
-            if ((!args || args.routeTableId === undefined) && !opts.urn) {
+            if (args?.routeTableId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'routeTableId'");
             }
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["ipv4GatewayId"] = args ? args.ipv4GatewayId : undefined;
-            resourceInputs["routeTableId"] = args ? args.routeTableId : undefined;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["ipv4GatewayId"] = args?.ipv4GatewayId;
+            resourceInputs["routeTableId"] = args?.routeTableId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

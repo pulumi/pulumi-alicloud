@@ -66,39 +66,39 @@ export class DnsDomain extends pulumi.CustomResource {
         return obj['__pulumiType'] === DnsDomain.__pulumiType;
     }
 
-    public /*out*/ readonly dnsServers!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly dnsServers: pulumi.Output<string[]>;
     /**
      * The domain ID.
      */
-    public /*out*/ readonly domainId!: pulumi.Output<string>;
+    declare public /*out*/ readonly domainId: pulumi.Output<string>;
     /**
      * Name of the domain. This name without suffix can have a string of 1 to 63 characters(domain name subject, excluding suffix), must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      */
-    public readonly domainName!: pulumi.Output<string>;
+    declare public readonly domainName: pulumi.Output<string>;
     /**
      * Id of the group in which the domain will add. If not supplied, then use default group.
      */
-    public readonly groupId!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly groupName!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly groupName: pulumi.Output<string>;
     /**
      * User language.
      */
-    public readonly lang!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly punyCode!: pulumi.Output<string>;
+    declare public readonly lang: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly punyCode: pulumi.Output<string>;
     /**
      * Remarks information for your domain name.
      */
-    public readonly remark!: pulumi.Output<string | undefined>;
+    declare public readonly remark: pulumi.Output<string | undefined>;
     /**
      * The Id of resource group which the dns domain belongs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a DnsDomain resource with the given unique name, arguments, and options.
@@ -113,27 +113,27 @@ export class DnsDomain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DnsDomainState | undefined;
-            resourceInputs["dnsServers"] = state ? state.dnsServers : undefined;
-            resourceInputs["domainId"] = state ? state.domainId : undefined;
-            resourceInputs["domainName"] = state ? state.domainName : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["groupName"] = state ? state.groupName : undefined;
-            resourceInputs["lang"] = state ? state.lang : undefined;
-            resourceInputs["punyCode"] = state ? state.punyCode : undefined;
-            resourceInputs["remark"] = state ? state.remark : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["dnsServers"] = state?.dnsServers;
+            resourceInputs["domainId"] = state?.domainId;
+            resourceInputs["domainName"] = state?.domainName;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["groupName"] = state?.groupName;
+            resourceInputs["lang"] = state?.lang;
+            resourceInputs["punyCode"] = state?.punyCode;
+            resourceInputs["remark"] = state?.remark;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as DnsDomainArgs | undefined;
-            if ((!args || args.domainName === undefined) && !opts.urn) {
+            if (args?.domainName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
-            resourceInputs["domainName"] = args ? args.domainName : undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["lang"] = args ? args.lang : undefined;
-            resourceInputs["remark"] = args ? args.remark : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["domainName"] = args?.domainName;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["lang"] = args?.lang;
+            resourceInputs["remark"] = args?.remark;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["dnsServers"] = undefined /*out*/;
             resourceInputs["domainId"] = undefined /*out*/;
             resourceInputs["groupName"] = undefined /*out*/;

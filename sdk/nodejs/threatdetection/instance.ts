@@ -44,7 +44,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Number of servers.
      */
-    public readonly buyNumber!: pulumi.Output<string | undefined>;
+    declare public readonly buyNumber: pulumi.Output<string | undefined>;
     /**
      * Container Image security scan. Interval type, value interval:[0,200000].
      *
@@ -52,49 +52,49 @@ export class Instance extends pulumi.CustomResource {
      *
      * @deprecated Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in.
      */
-    public readonly containerImageScan!: pulumi.Output<string | undefined>;
+    declare public readonly containerImageScan: pulumi.Output<string | undefined>;
     /**
      * Container Image security scan. Interval type, value interval:[0,200000].
      *
      * > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
      */
-    public readonly containerImageScanNew!: pulumi.Output<string | undefined>;
+    declare public readonly containerImageScanNew: pulumi.Output<string | undefined>;
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Number of cloud honeypot licenses. Interval type, value interval:[20,500].
      *
      * > **NOTE:**  This module can only be purchased when honeypotSwitch = 1, starting with 20.
      */
-    public readonly honeypot!: pulumi.Output<string | undefined>;
+    declare public readonly honeypot: pulumi.Output<string | undefined>;
     /**
      * Cloud honeypot. Value:
      * - 1: Yes.
      * - 2: No.
      */
-    public readonly honeypotSwitch!: pulumi.Output<string>;
+    declare public readonly honeypotSwitch: pulumi.Output<string>;
     /**
      * Change configuration type, value
      * - Upgrade: Upgrade.
      * - Downgrade: Downgrade.
      */
-    public readonly modifyType!: pulumi.Output<string | undefined>;
+    declare public readonly modifyType: pulumi.Output<string | undefined>;
     /**
      * The payment type of the resource
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
      *
      * > **NOTE:**  must be set when creating a prepaid instance.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * Post-paid signage. Value:
      */
-    public readonly postPaidFlag!: pulumi.Output<number | undefined>;
+    declare public readonly postPaidFlag: pulumi.Output<number | undefined>;
     /**
      * Pay-as-you-go module switch mapping, in JsonString format. Valid values:
      * - Key:
@@ -108,17 +108,17 @@ export class Instance extends pulumi.CustomResource {
      *
      * > **NOTE:**  The module value of the unpassed value will not change.
      */
-    public readonly postPayModuleSwitch!: pulumi.Output<string | undefined>;
+    declare public readonly postPayModuleSwitch: pulumi.Output<string | undefined>;
     /**
      * Number of application protection licenses. Interval type, value interval:[1,100000000].
      */
-    public readonly raspCount!: pulumi.Output<string | undefined>;
+    declare public readonly raspCount: pulumi.Output<string | undefined>;
     /**
      * Automatic renewal cycle, in months.
      *
      * > **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
      */
-    public readonly renewPeriod!: pulumi.Output<number>;
+    declare public readonly renewPeriod: pulumi.Output<number>;
     /**
      * Automatic renewal period unit, value:
      * - M: month.
@@ -126,7 +126,7 @@ export class Instance extends pulumi.CustomResource {
      *
      * > **NOTE:**  Must be set when RenewalStatus = AutoRenewal.
      */
-    public readonly renewalPeriodUnit!: pulumi.Output<string>;
+    declare public readonly renewalPeriodUnit: pulumi.Output<string>;
     /**
      * Automatic renewal status, value:
      * - AutoRenewal: automatic renewal.
@@ -134,103 +134,103 @@ export class Instance extends pulumi.CustomResource {
      *
      * Default ManualRenewal.
      */
-    public readonly renewalStatus!: pulumi.Output<string>;
+    declare public readonly renewalStatus: pulumi.Output<string>;
     /**
      * Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
      *
      * > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
      */
-    public readonly sasAntiRansomware!: pulumi.Output<string | undefined>;
+    declare public readonly sasAntiRansomware: pulumi.Output<string | undefined>;
     /**
      * Cloud platform configuration check scan times, interval type, value range:[15000,9999999999].
      *
      * > **NOTE:**  You must have sasCspmSwitch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
      */
-    public readonly sasCspm!: pulumi.Output<string | undefined>;
+    declare public readonly sasCspm: pulumi.Output<string | undefined>;
     /**
      * Cloud platform configuration check switch. Value:
      * - 0: No.
      * - 1: Yes.
      */
-    public readonly sasCspmSwitch!: pulumi.Output<string>;
+    declare public readonly sasCspmSwitch: pulumi.Output<string>;
     /**
      * Security screen. Value:
      * - true: Yes.
      * - false: No.
      */
-    public readonly sasSc!: pulumi.Output<boolean | undefined>;
+    declare public readonly sasSc: pulumi.Output<boolean | undefined>;
     /**
      * Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
      *
      * > **NOTE:**  This module can only be purchased when sasSdkSwitch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
      */
-    public readonly sasSdk!: pulumi.Output<string | undefined>;
+    declare public readonly sasSdk: pulumi.Output<string | undefined>;
     /**
      * Malicious file detection SDK.
      */
-    public readonly sasSdkSwitch!: pulumi.Output<string>;
+    declare public readonly sasSdkSwitch: pulumi.Output<string>;
     /**
      * Log analysis storage capacity. Unit: GB. Interval type, value interval:[0,600000].
      *
      * > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
      */
-    public readonly sasSlsStorage!: pulumi.Output<string | undefined>;
+    declare public readonly sasSlsStorage: pulumi.Output<string | undefined>;
     /**
      * Web tamper-proof switch. Value:
      * - 0: No.
      * - 1: Yes.
      */
-    public readonly sasWebguardBoolean!: pulumi.Output<string>;
+    declare public readonly sasWebguardBoolean: pulumi.Output<string>;
     /**
      * Tamper-proof authorization number. Value:
      * - 0: No
      * 1: Yes.
      */
-    public readonly sasWebguardOrderNum!: pulumi.Output<string | undefined>;
+    declare public readonly sasWebguardOrderNum: pulumi.Output<string | undefined>;
     /**
      * The resource attribute field representing the resource status.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The subscription type. Value:
      * - Subscription: Prepaid.
      * - PayAsYouGo: Post-paid.
      */
-    public readonly subscriptionType!: pulumi.Output<string | undefined>;
+    declare public readonly subscriptionType: pulumi.Output<string | undefined>;
     /**
      * Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
      *
      * > **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
      */
-    public readonly threatAnalysis!: pulumi.Output<string | undefined>;
+    declare public readonly threatAnalysis: pulumi.Output<string | undefined>;
     /**
      * Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
      *
      * > **NOTE:**  Step size is 100.
      */
-    public readonly threatAnalysisFlow!: pulumi.Output<string | undefined>;
+    declare public readonly threatAnalysisFlow: pulumi.Output<string | undefined>;
     /**
      * Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
      *
      * > **NOTE:**  The step size is 1000, that is, only multiples of 1000 can be filled in.
      */
-    public readonly threatAnalysisSlsStorage!: pulumi.Output<string | undefined>;
+    declare public readonly threatAnalysisSlsStorage: pulumi.Output<string | undefined>;
     /**
      * Threat analysis. Value:
      * - 0: No.
      * - 1: Yes.
      */
-    public readonly threatAnalysisSwitch!: pulumi.Output<string>;
+    declare public readonly threatAnalysisSwitch: pulumi.Output<string>;
     /**
      * Threat analysis and response switch (new), values:
      * - 0: No
      * - 1: Yes
      */
-    public readonly threatAnalysisSwitch1!: pulumi.Output<string>;
+    declare public readonly threatAnalysisSwitch1: pulumi.Output<string>;
     /**
      * Number of cores.
      */
-    public readonly vCore!: pulumi.Output<string | undefined>;
+    declare public readonly vCore: pulumi.Output<string | undefined>;
     /**
      * Select the security center version. Value:
      * - level7: Antivirus Edition.
@@ -239,13 +239,13 @@ export class Instance extends pulumi.CustomResource {
      * - level8: Ultimate.
      * - level10: Purchase value-added services only.
      */
-    public readonly versionCode!: pulumi.Output<string | undefined>;
+    declare public readonly versionCode: pulumi.Output<string | undefined>;
     /**
      * Vulnerability repair times, interval type, value range:[20,100000000].
      *
      * > **NOTE:**  This module can only be purchased when vulSwitch = 1. Only when the versionCode value is level7 or level10. other versions do not need to be purchased separately.
      */
-    public readonly vulCount!: pulumi.Output<string | undefined>;
+    declare public readonly vulCount: pulumi.Output<string | undefined>;
     /**
      * Vulnerability fix switch. Value:
      * - 0: No.
@@ -253,7 +253,7 @@ export class Instance extends pulumi.CustomResource {
      *
      * > **NOTE:**  When the value of versionCode is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
      */
-    public readonly vulSwitch!: pulumi.Output<string>;
+    declare public readonly vulSwitch: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -268,79 +268,79 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["buyNumber"] = state ? state.buyNumber : undefined;
-            resourceInputs["containerImageScan"] = state ? state.containerImageScan : undefined;
-            resourceInputs["containerImageScanNew"] = state ? state.containerImageScanNew : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["honeypot"] = state ? state.honeypot : undefined;
-            resourceInputs["honeypotSwitch"] = state ? state.honeypotSwitch : undefined;
-            resourceInputs["modifyType"] = state ? state.modifyType : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["postPaidFlag"] = state ? state.postPaidFlag : undefined;
-            resourceInputs["postPayModuleSwitch"] = state ? state.postPayModuleSwitch : undefined;
-            resourceInputs["raspCount"] = state ? state.raspCount : undefined;
-            resourceInputs["renewPeriod"] = state ? state.renewPeriod : undefined;
-            resourceInputs["renewalPeriodUnit"] = state ? state.renewalPeriodUnit : undefined;
-            resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
-            resourceInputs["sasAntiRansomware"] = state ? state.sasAntiRansomware : undefined;
-            resourceInputs["sasCspm"] = state ? state.sasCspm : undefined;
-            resourceInputs["sasCspmSwitch"] = state ? state.sasCspmSwitch : undefined;
-            resourceInputs["sasSc"] = state ? state.sasSc : undefined;
-            resourceInputs["sasSdk"] = state ? state.sasSdk : undefined;
-            resourceInputs["sasSdkSwitch"] = state ? state.sasSdkSwitch : undefined;
-            resourceInputs["sasSlsStorage"] = state ? state.sasSlsStorage : undefined;
-            resourceInputs["sasWebguardBoolean"] = state ? state.sasWebguardBoolean : undefined;
-            resourceInputs["sasWebguardOrderNum"] = state ? state.sasWebguardOrderNum : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["subscriptionType"] = state ? state.subscriptionType : undefined;
-            resourceInputs["threatAnalysis"] = state ? state.threatAnalysis : undefined;
-            resourceInputs["threatAnalysisFlow"] = state ? state.threatAnalysisFlow : undefined;
-            resourceInputs["threatAnalysisSlsStorage"] = state ? state.threatAnalysisSlsStorage : undefined;
-            resourceInputs["threatAnalysisSwitch"] = state ? state.threatAnalysisSwitch : undefined;
-            resourceInputs["threatAnalysisSwitch1"] = state ? state.threatAnalysisSwitch1 : undefined;
-            resourceInputs["vCore"] = state ? state.vCore : undefined;
-            resourceInputs["versionCode"] = state ? state.versionCode : undefined;
-            resourceInputs["vulCount"] = state ? state.vulCount : undefined;
-            resourceInputs["vulSwitch"] = state ? state.vulSwitch : undefined;
+            resourceInputs["buyNumber"] = state?.buyNumber;
+            resourceInputs["containerImageScan"] = state?.containerImageScan;
+            resourceInputs["containerImageScanNew"] = state?.containerImageScanNew;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["honeypot"] = state?.honeypot;
+            resourceInputs["honeypotSwitch"] = state?.honeypotSwitch;
+            resourceInputs["modifyType"] = state?.modifyType;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["postPaidFlag"] = state?.postPaidFlag;
+            resourceInputs["postPayModuleSwitch"] = state?.postPayModuleSwitch;
+            resourceInputs["raspCount"] = state?.raspCount;
+            resourceInputs["renewPeriod"] = state?.renewPeriod;
+            resourceInputs["renewalPeriodUnit"] = state?.renewalPeriodUnit;
+            resourceInputs["renewalStatus"] = state?.renewalStatus;
+            resourceInputs["sasAntiRansomware"] = state?.sasAntiRansomware;
+            resourceInputs["sasCspm"] = state?.sasCspm;
+            resourceInputs["sasCspmSwitch"] = state?.sasCspmSwitch;
+            resourceInputs["sasSc"] = state?.sasSc;
+            resourceInputs["sasSdk"] = state?.sasSdk;
+            resourceInputs["sasSdkSwitch"] = state?.sasSdkSwitch;
+            resourceInputs["sasSlsStorage"] = state?.sasSlsStorage;
+            resourceInputs["sasWebguardBoolean"] = state?.sasWebguardBoolean;
+            resourceInputs["sasWebguardOrderNum"] = state?.sasWebguardOrderNum;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["subscriptionType"] = state?.subscriptionType;
+            resourceInputs["threatAnalysis"] = state?.threatAnalysis;
+            resourceInputs["threatAnalysisFlow"] = state?.threatAnalysisFlow;
+            resourceInputs["threatAnalysisSlsStorage"] = state?.threatAnalysisSlsStorage;
+            resourceInputs["threatAnalysisSwitch"] = state?.threatAnalysisSwitch;
+            resourceInputs["threatAnalysisSwitch1"] = state?.threatAnalysisSwitch1;
+            resourceInputs["vCore"] = state?.vCore;
+            resourceInputs["versionCode"] = state?.versionCode;
+            resourceInputs["vulCount"] = state?.vulCount;
+            resourceInputs["vulSwitch"] = state?.vulSwitch;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.paymentType === undefined) && !opts.urn) {
+            if (args?.paymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            resourceInputs["buyNumber"] = args ? args.buyNumber : undefined;
-            resourceInputs["containerImageScan"] = args ? args.containerImageScan : undefined;
-            resourceInputs["containerImageScanNew"] = args ? args.containerImageScanNew : undefined;
-            resourceInputs["honeypot"] = args ? args.honeypot : undefined;
-            resourceInputs["honeypotSwitch"] = args ? args.honeypotSwitch : undefined;
-            resourceInputs["modifyType"] = args ? args.modifyType : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["postPaidFlag"] = args ? args.postPaidFlag : undefined;
-            resourceInputs["postPayModuleSwitch"] = args ? args.postPayModuleSwitch : undefined;
-            resourceInputs["raspCount"] = args ? args.raspCount : undefined;
-            resourceInputs["renewPeriod"] = args ? args.renewPeriod : undefined;
-            resourceInputs["renewalPeriodUnit"] = args ? args.renewalPeriodUnit : undefined;
-            resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
-            resourceInputs["sasAntiRansomware"] = args ? args.sasAntiRansomware : undefined;
-            resourceInputs["sasCspm"] = args ? args.sasCspm : undefined;
-            resourceInputs["sasCspmSwitch"] = args ? args.sasCspmSwitch : undefined;
-            resourceInputs["sasSc"] = args ? args.sasSc : undefined;
-            resourceInputs["sasSdk"] = args ? args.sasSdk : undefined;
-            resourceInputs["sasSdkSwitch"] = args ? args.sasSdkSwitch : undefined;
-            resourceInputs["sasSlsStorage"] = args ? args.sasSlsStorage : undefined;
-            resourceInputs["sasWebguardBoolean"] = args ? args.sasWebguardBoolean : undefined;
-            resourceInputs["sasWebguardOrderNum"] = args ? args.sasWebguardOrderNum : undefined;
-            resourceInputs["subscriptionType"] = args ? args.subscriptionType : undefined;
-            resourceInputs["threatAnalysis"] = args ? args.threatAnalysis : undefined;
-            resourceInputs["threatAnalysisFlow"] = args ? args.threatAnalysisFlow : undefined;
-            resourceInputs["threatAnalysisSlsStorage"] = args ? args.threatAnalysisSlsStorage : undefined;
-            resourceInputs["threatAnalysisSwitch"] = args ? args.threatAnalysisSwitch : undefined;
-            resourceInputs["threatAnalysisSwitch1"] = args ? args.threatAnalysisSwitch1 : undefined;
-            resourceInputs["vCore"] = args ? args.vCore : undefined;
-            resourceInputs["versionCode"] = args ? args.versionCode : undefined;
-            resourceInputs["vulCount"] = args ? args.vulCount : undefined;
-            resourceInputs["vulSwitch"] = args ? args.vulSwitch : undefined;
+            resourceInputs["buyNumber"] = args?.buyNumber;
+            resourceInputs["containerImageScan"] = args?.containerImageScan;
+            resourceInputs["containerImageScanNew"] = args?.containerImageScanNew;
+            resourceInputs["honeypot"] = args?.honeypot;
+            resourceInputs["honeypotSwitch"] = args?.honeypotSwitch;
+            resourceInputs["modifyType"] = args?.modifyType;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["postPaidFlag"] = args?.postPaidFlag;
+            resourceInputs["postPayModuleSwitch"] = args?.postPayModuleSwitch;
+            resourceInputs["raspCount"] = args?.raspCount;
+            resourceInputs["renewPeriod"] = args?.renewPeriod;
+            resourceInputs["renewalPeriodUnit"] = args?.renewalPeriodUnit;
+            resourceInputs["renewalStatus"] = args?.renewalStatus;
+            resourceInputs["sasAntiRansomware"] = args?.sasAntiRansomware;
+            resourceInputs["sasCspm"] = args?.sasCspm;
+            resourceInputs["sasCspmSwitch"] = args?.sasCspmSwitch;
+            resourceInputs["sasSc"] = args?.sasSc;
+            resourceInputs["sasSdk"] = args?.sasSdk;
+            resourceInputs["sasSdkSwitch"] = args?.sasSdkSwitch;
+            resourceInputs["sasSlsStorage"] = args?.sasSlsStorage;
+            resourceInputs["sasWebguardBoolean"] = args?.sasWebguardBoolean;
+            resourceInputs["sasWebguardOrderNum"] = args?.sasWebguardOrderNum;
+            resourceInputs["subscriptionType"] = args?.subscriptionType;
+            resourceInputs["threatAnalysis"] = args?.threatAnalysis;
+            resourceInputs["threatAnalysisFlow"] = args?.threatAnalysisFlow;
+            resourceInputs["threatAnalysisSlsStorage"] = args?.threatAnalysisSlsStorage;
+            resourceInputs["threatAnalysisSwitch"] = args?.threatAnalysisSwitch;
+            resourceInputs["threatAnalysisSwitch1"] = args?.threatAnalysisSwitch1;
+            resourceInputs["vCore"] = args?.vCore;
+            resourceInputs["versionCode"] = args?.versionCode;
+            resourceInputs["vulCount"] = args?.vulCount;
+            resourceInputs["vulSwitch"] = args?.vulSwitch;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

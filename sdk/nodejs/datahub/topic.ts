@@ -89,27 +89,27 @@ export class Topic extends pulumi.CustomResource {
      *
      * **Notes:** Currently `lifeCycle` can not be modified and it will be supported in the next future.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * Create time of the datahub topic. It is a human-readable string rather than 64-bits UTC.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Last modify time of the datahub topic. It is the same as *create_time* at the beginning. It is also a human-readable string rather than 64-bits UTC.
      */
-    public /*out*/ readonly lastModifyTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastModifyTime: pulumi.Output<string>;
     /**
      * How many days this topic lives. The permitted range of values is [1, 7]. The default value is 3.
      */
-    public readonly lifeCycle!: pulumi.Output<number | undefined>;
+    declare public readonly lifeCycle: pulumi.Output<number | undefined>;
     /**
      * The name of the datahub topic. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The name of the datahub project that this topic belongs to. It is case-insensitive.
      */
-    public readonly projectName!: pulumi.Output<string>;
+    declare public readonly projectName: pulumi.Output<string>;
     /**
      * Schema of this topic, required only for TUPLE topic. Supported data types (case-insensitive) are:
      * - BIGINT
@@ -118,15 +118,15 @@ export class Topic extends pulumi.CustomResource {
      * - DOUBLE
      * - TIMESTAMP
      */
-    public readonly recordSchema!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly recordSchema: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of this topic. Its value must be one of {BLOB, TUPLE}. For BLOB topic, data will be organized as binary and encoded by BASE64. For TUPLE topic, data has fixed schema. The default value is "TUPLE" with a schema {STRING}.
      */
-    public readonly recordType!: pulumi.Output<string | undefined>;
+    declare public readonly recordType: pulumi.Output<string | undefined>;
     /**
      * The number of shards this topic contains. The permitted range of values is [1, 10]. The default value is 1.
      */
-    public readonly shardCount!: pulumi.Output<number | undefined>;
+    declare public readonly shardCount: pulumi.Output<number | undefined>;
 
     /**
      * Create a Topic resource with the given unique name, arguments, and options.
@@ -141,27 +141,27 @@ export class Topic extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TopicState | undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["lastModifyTime"] = state ? state.lastModifyTime : undefined;
-            resourceInputs["lifeCycle"] = state ? state.lifeCycle : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectName"] = state ? state.projectName : undefined;
-            resourceInputs["recordSchema"] = state ? state.recordSchema : undefined;
-            resourceInputs["recordType"] = state ? state.recordType : undefined;
-            resourceInputs["shardCount"] = state ? state.shardCount : undefined;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["lastModifyTime"] = state?.lastModifyTime;
+            resourceInputs["lifeCycle"] = state?.lifeCycle;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectName"] = state?.projectName;
+            resourceInputs["recordSchema"] = state?.recordSchema;
+            resourceInputs["recordType"] = state?.recordType;
+            resourceInputs["shardCount"] = state?.shardCount;
         } else {
             const args = argsOrState as TopicArgs | undefined;
-            if ((!args || args.projectName === undefined) && !opts.urn) {
+            if (args?.projectName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectName'");
             }
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["lifeCycle"] = args ? args.lifeCycle : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["projectName"] = args ? args.projectName : undefined;
-            resourceInputs["recordSchema"] = args ? args.recordSchema : undefined;
-            resourceInputs["recordType"] = args ? args.recordType : undefined;
-            resourceInputs["shardCount"] = args ? args.shardCount : undefined;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["lifeCycle"] = args?.lifeCycle;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["projectName"] = args?.projectName;
+            resourceInputs["recordSchema"] = args?.recordSchema;
+            resourceInputs["recordType"] = args?.recordType;
+            resourceInputs["shardCount"] = args?.shardCount;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["lastModifyTime"] = undefined /*out*/;
         }

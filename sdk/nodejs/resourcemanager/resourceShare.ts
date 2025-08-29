@@ -63,15 +63,15 @@ export class ResourceShare extends pulumi.CustomResource {
     /**
      * The name of resource share.
      */
-    public readonly resourceShareName!: pulumi.Output<string>;
+    declare public readonly resourceShareName: pulumi.Output<string>;
     /**
      * The owner of the Resource Share.
      */
-    public /*out*/ readonly resourceShareOwner!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceShareOwner: pulumi.Output<string>;
     /**
      * The status of the Resource Share.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a ResourceShare resource with the given unique name, arguments, and options.
@@ -86,15 +86,15 @@ export class ResourceShare extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ResourceShareState | undefined;
-            resourceInputs["resourceShareName"] = state ? state.resourceShareName : undefined;
-            resourceInputs["resourceShareOwner"] = state ? state.resourceShareOwner : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["resourceShareName"] = state?.resourceShareName;
+            resourceInputs["resourceShareOwner"] = state?.resourceShareOwner;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as ResourceShareArgs | undefined;
-            if ((!args || args.resourceShareName === undefined) && !opts.urn) {
+            if (args?.resourceShareName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceShareName'");
             }
-            resourceInputs["resourceShareName"] = args ? args.resourceShareName : undefined;
+            resourceInputs["resourceShareName"] = args?.resourceShareName;
             resourceInputs["resourceShareOwner"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

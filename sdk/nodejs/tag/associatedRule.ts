@@ -67,15 +67,15 @@ export class AssociatedRule extends pulumi.CustomResource {
     /**
      * The setting name of the associated resource tag rule. For specific values, see the Rule Setting Name column in [Resources that Support Associated Resource Tag Settings](https://www.alibabacloud.com/help/en/resource-management/tag/user-guide/associated-resource-label-settings)
      */
-    public readonly associatedSettingName!: pulumi.Output<string>;
+    declare public readonly associatedSettingName: pulumi.Output<string>;
     /**
      * Whether to enable the associated resource tag rule. Valid values: `Enable`, `Disable`.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * List of tag keys for the associated resource tag rule.
      */
-    public readonly tagKeys!: pulumi.Output<string[] | undefined>;
+    declare public readonly tagKeys: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a AssociatedRule resource with the given unique name, arguments, and options.
@@ -90,20 +90,20 @@ export class AssociatedRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AssociatedRuleState | undefined;
-            resourceInputs["associatedSettingName"] = state ? state.associatedSettingName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tagKeys"] = state ? state.tagKeys : undefined;
+            resourceInputs["associatedSettingName"] = state?.associatedSettingName;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tagKeys"] = state?.tagKeys;
         } else {
             const args = argsOrState as AssociatedRuleArgs | undefined;
-            if ((!args || args.associatedSettingName === undefined) && !opts.urn) {
+            if (args?.associatedSettingName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'associatedSettingName'");
             }
-            if ((!args || args.status === undefined) && !opts.urn) {
+            if (args?.status === undefined && !opts.urn) {
                 throw new Error("Missing required property 'status'");
             }
-            resourceInputs["associatedSettingName"] = args ? args.associatedSettingName : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["tagKeys"] = args ? args.tagKeys : undefined;
+            resourceInputs["associatedSettingName"] = args?.associatedSettingName;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["tagKeys"] = args?.tagKeys;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AssociatedRule.__pulumiType, name, resourceInputs, opts);

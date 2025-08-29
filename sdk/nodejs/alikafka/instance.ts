@@ -47,162 +47,162 @@ export class Instance extends pulumi.CustomResource {
      * The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
      * * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
      */
-    public readonly config!: pulumi.Output<string>;
+    declare public readonly config: pulumi.Output<string>;
     /**
      * The configurations of Confluent. See `confluentConfig` below.
      * > **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `confluentConfig` is required.
      */
-    public readonly confluentConfig!: pulumi.Output<outputs.alikafka.InstanceConfluentConfig>;
+    declare public readonly confluentConfig: pulumi.Output<outputs.alikafka.InstanceConfluentConfig>;
     /**
      * The number of partitions in a topic that is automatically created.
      */
-    public readonly defaultTopicPartitionNum!: pulumi.Output<number>;
+    declare public readonly defaultTopicPartitionNum: pulumi.Output<number>;
     /**
      * The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
      */
-    public readonly deployType!: pulumi.Output<number>;
+    declare public readonly deployType: pulumi.Output<number>;
     /**
      * The disk size of the instance. When modify this value, it only supports adjust to a greater value.
      * > **NOTE:** If `instanceType` is set to `alikafka`, `diskSize` is required.
      */
-    public readonly diskSize!: pulumi.Output<number | undefined>;
+    declare public readonly diskSize: pulumi.Output<number | undefined>;
     /**
      * The disk type of the instance. Valid values:
      */
-    public readonly diskType!: pulumi.Output<number | undefined>;
+    declare public readonly diskType: pulumi.Output<number | undefined>;
     /**
      * (Available since v1.234.0) The default endpoint of the instance in domain name mode.
      */
-    public /*out*/ readonly domainEndpoint!: pulumi.Output<string>;
+    declare public /*out*/ readonly domainEndpoint: pulumi.Output<string>;
     /**
      * The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
      */
-    public readonly eipMax!: pulumi.Output<number>;
+    declare public readonly eipMax: pulumi.Output<number>;
     /**
      * Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
      */
-    public readonly enableAutoGroup!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableAutoGroup: pulumi.Output<boolean | undefined>;
     /**
      * Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
      */
-    public readonly enableAutoTopic!: pulumi.Output<string>;
+    declare public readonly enableAutoTopic: pulumi.Output<string>;
     /**
      * The EndPoint to access the kafka instance.
      */
-    public /*out*/ readonly endPoint!: pulumi.Output<string>;
+    declare public /*out*/ readonly endPoint: pulumi.Output<string>;
     /**
      * (Available since v1.214.1) The number of available groups.
      */
-    public /*out*/ readonly groupLeft!: pulumi.Output<number>;
+    declare public /*out*/ readonly groupLeft: pulumi.Output<number>;
     /**
      * (Available since v1.214.1) The number of used groups.
      */
-    public /*out*/ readonly groupUsed!: pulumi.Output<number>;
+    declare public /*out*/ readonly groupUsed: pulumi.Output<number>;
     /**
      * The type of the Instance. Default value: `alikafka`. Valid values:
      */
-    public readonly instanceType!: pulumi.Output<string>;
+    declare public readonly instanceType: pulumi.Output<string>;
     /**
      * The max value of io of the instance. When modify this value, it only support adjust to a greater value.
      */
-    public readonly ioMax!: pulumi.Output<number>;
+    declare public readonly ioMax: pulumi.Output<number>;
     /**
      * The traffic specification of the instance. We recommend that you configure this parameter.
      * - You should specify one of the `ioMax` and `ioMaxSpec` parameters, and `ioMaxSpec` is recommended.
      * - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
      */
-    public readonly ioMaxSpec!: pulumi.Output<string>;
+    declare public readonly ioMaxSpec: pulumi.Output<string>;
     /**
      * (Available since v1.214.1) The method that you use to purchase partitions.
      */
-    public /*out*/ readonly isPartitionBuy!: pulumi.Output<number>;
+    declare public /*out*/ readonly isPartitionBuy: pulumi.Output<number>;
     /**
      * The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
      */
-    public readonly kmsKeyId!: pulumi.Output<string | undefined>;
+    declare public readonly kmsKeyId: pulumi.Output<string | undefined>;
     /**
      * Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
      */
-    public readonly paidType!: pulumi.Output<string | undefined>;
+    declare public readonly paidType: pulumi.Output<string | undefined>;
     /**
      * (Available since v1.214.1) The number of available partitions.
      */
-    public /*out*/ readonly partitionLeft!: pulumi.Output<number>;
+    declare public /*out*/ readonly partitionLeft: pulumi.Output<number>;
     /**
      * The number of partitions.
      */
-    public readonly partitionNum!: pulumi.Output<number | undefined>;
+    declare public readonly partitionNum: pulumi.Output<number | undefined>;
     /**
      * (Available since v1.214.1) The number of used partitions.
      */
-    public /*out*/ readonly partitionUsed!: pulumi.Output<number>;
+    declare public /*out*/ readonly partitionUsed: pulumi.Output<number>;
     /**
      * The instance password. **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `password` is required.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * (Available since v1.234.0) The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode.
      */
-    public /*out*/ readonly saslDomainEndpoint!: pulumi.Output<string>;
+    declare public /*out*/ readonly saslDomainEndpoint: pulumi.Output<string>;
     /**
      * The ID of security group for this instance. If the security group is empty, system will create a default one.
      */
-    public readonly securityGroup!: pulumi.Output<string>;
+    declare public readonly securityGroup: pulumi.Output<string>;
     /**
      * The zones among which you want to deploy the instance.
      */
-    public readonly selectedZones!: pulumi.Output<string[] | undefined>;
+    declare public readonly selectedZones: pulumi.Output<string[] | undefined>;
     /**
      * The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverlessConfig` below.
      * > **NOTE:** If `instanceType` is set to `alikafkaServerless`, `serverlessConfig` is required.
      */
-    public readonly serverlessConfig!: pulumi.Output<outputs.alikafka.InstanceServerlessConfig>;
+    declare public readonly serverlessConfig: pulumi.Output<outputs.alikafka.InstanceServerlessConfig>;
     /**
      * The version of the Instance. Valid values:
      * - If `instanceType` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
      * - If `instanceType` is set to `alikafkaServerless`. Default value: `3.3.1`. Valid values: `3.3.1`.
      * - If `instanceType` is set to `alikafkaConfluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
      */
-    public readonly serviceVersion!: pulumi.Output<string>;
+    declare public readonly serviceVersion: pulumi.Output<string>;
     /**
      * The instance edition. Default value: `normal`. Valid values:
      * - If `instanceType` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
      * - If `instanceType` is set to `alikafkaServerless`. Valid values: `normal`.
      * - If `instanceType` is set to `alikafkaConfluent`. Valid values: `professional`, `enterprise`.
      */
-    public readonly specType!: pulumi.Output<string | undefined>;
+    declare public readonly specType: pulumi.Output<string | undefined>;
     /**
      * (Available since v1.234.0) The SSL endpoint of the instance in domain name mode.
      */
-    public /*out*/ readonly sslDomainEndpoint!: pulumi.Output<string>;
+    declare public /*out*/ readonly sslDomainEndpoint: pulumi.Output<string>;
     /**
      * (Available since v1.234.0) The Secure Sockets Layer (SSL) endpoint of the instance in IP address mode.
      */
-    public /*out*/ readonly sslEndpoint!: pulumi.Output<string>;
+    declare public /*out*/ readonly sslEndpoint: pulumi.Output<string>;
     /**
      * The status of the instance.
      */
-    public /*out*/ readonly status!: pulumi.Output<number>;
+    declare public /*out*/ readonly status: pulumi.Output<number>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * (Available since v1.214.1) The number of available topics.
      */
-    public /*out*/ readonly topicLeft!: pulumi.Output<number>;
+    declare public /*out*/ readonly topicLeft: pulumi.Output<number>;
     /**
      * (Available since v1.214.1) The number of purchased topics.
      */
-    public /*out*/ readonly topicNumOfBuy!: pulumi.Output<number>;
+    declare public /*out*/ readonly topicNumOfBuy: pulumi.Output<number>;
     /**
      * The max num of topic can be creation of the instance.
      * It has been deprecated since version 1.194.0 and using `partitionNum` instead.
@@ -211,27 +211,27 @@ export class Instance extends pulumi.CustomResource {
      *
      * @deprecated Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead.
      */
-    public readonly topicQuota!: pulumi.Output<number>;
+    declare public readonly topicQuota: pulumi.Output<number>;
     /**
      * (Available since v1.214.1) The number of used topics.
      */
-    public /*out*/ readonly topicUsed!: pulumi.Output<number>;
+    declare public /*out*/ readonly topicUsed: pulumi.Output<number>;
     /**
      * The VPC ID of the instance.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * The ID of attaching vswitch to instance.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
     /**
      * The IDs of the vSwitches with which the instance is associated.
      */
-    public readonly vswitchIds!: pulumi.Output<string[]>;
+    declare public readonly vswitchIds: pulumi.Output<string[]>;
     /**
      * The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -246,83 +246,83 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["confluentConfig"] = state ? state.confluentConfig : undefined;
-            resourceInputs["defaultTopicPartitionNum"] = state ? state.defaultTopicPartitionNum : undefined;
-            resourceInputs["deployType"] = state ? state.deployType : undefined;
-            resourceInputs["diskSize"] = state ? state.diskSize : undefined;
-            resourceInputs["diskType"] = state ? state.diskType : undefined;
-            resourceInputs["domainEndpoint"] = state ? state.domainEndpoint : undefined;
-            resourceInputs["eipMax"] = state ? state.eipMax : undefined;
-            resourceInputs["enableAutoGroup"] = state ? state.enableAutoGroup : undefined;
-            resourceInputs["enableAutoTopic"] = state ? state.enableAutoTopic : undefined;
-            resourceInputs["endPoint"] = state ? state.endPoint : undefined;
-            resourceInputs["groupLeft"] = state ? state.groupLeft : undefined;
-            resourceInputs["groupUsed"] = state ? state.groupUsed : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["ioMax"] = state ? state.ioMax : undefined;
-            resourceInputs["ioMaxSpec"] = state ? state.ioMaxSpec : undefined;
-            resourceInputs["isPartitionBuy"] = state ? state.isPartitionBuy : undefined;
-            resourceInputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["paidType"] = state ? state.paidType : undefined;
-            resourceInputs["partitionLeft"] = state ? state.partitionLeft : undefined;
-            resourceInputs["partitionNum"] = state ? state.partitionNum : undefined;
-            resourceInputs["partitionUsed"] = state ? state.partitionUsed : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["saslDomainEndpoint"] = state ? state.saslDomainEndpoint : undefined;
-            resourceInputs["securityGroup"] = state ? state.securityGroup : undefined;
-            resourceInputs["selectedZones"] = state ? state.selectedZones : undefined;
-            resourceInputs["serverlessConfig"] = state ? state.serverlessConfig : undefined;
-            resourceInputs["serviceVersion"] = state ? state.serviceVersion : undefined;
-            resourceInputs["specType"] = state ? state.specType : undefined;
-            resourceInputs["sslDomainEndpoint"] = state ? state.sslDomainEndpoint : undefined;
-            resourceInputs["sslEndpoint"] = state ? state.sslEndpoint : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["topicLeft"] = state ? state.topicLeft : undefined;
-            resourceInputs["topicNumOfBuy"] = state ? state.topicNumOfBuy : undefined;
-            resourceInputs["topicQuota"] = state ? state.topicQuota : undefined;
-            resourceInputs["topicUsed"] = state ? state.topicUsed : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
-            resourceInputs["vswitchIds"] = state ? state.vswitchIds : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["confluentConfig"] = state?.confluentConfig;
+            resourceInputs["defaultTopicPartitionNum"] = state?.defaultTopicPartitionNum;
+            resourceInputs["deployType"] = state?.deployType;
+            resourceInputs["diskSize"] = state?.diskSize;
+            resourceInputs["diskType"] = state?.diskType;
+            resourceInputs["domainEndpoint"] = state?.domainEndpoint;
+            resourceInputs["eipMax"] = state?.eipMax;
+            resourceInputs["enableAutoGroup"] = state?.enableAutoGroup;
+            resourceInputs["enableAutoTopic"] = state?.enableAutoTopic;
+            resourceInputs["endPoint"] = state?.endPoint;
+            resourceInputs["groupLeft"] = state?.groupLeft;
+            resourceInputs["groupUsed"] = state?.groupUsed;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["ioMax"] = state?.ioMax;
+            resourceInputs["ioMaxSpec"] = state?.ioMaxSpec;
+            resourceInputs["isPartitionBuy"] = state?.isPartitionBuy;
+            resourceInputs["kmsKeyId"] = state?.kmsKeyId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["paidType"] = state?.paidType;
+            resourceInputs["partitionLeft"] = state?.partitionLeft;
+            resourceInputs["partitionNum"] = state?.partitionNum;
+            resourceInputs["partitionUsed"] = state?.partitionUsed;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["saslDomainEndpoint"] = state?.saslDomainEndpoint;
+            resourceInputs["securityGroup"] = state?.securityGroup;
+            resourceInputs["selectedZones"] = state?.selectedZones;
+            resourceInputs["serverlessConfig"] = state?.serverlessConfig;
+            resourceInputs["serviceVersion"] = state?.serviceVersion;
+            resourceInputs["specType"] = state?.specType;
+            resourceInputs["sslDomainEndpoint"] = state?.sslDomainEndpoint;
+            resourceInputs["sslEndpoint"] = state?.sslEndpoint;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["topicLeft"] = state?.topicLeft;
+            resourceInputs["topicNumOfBuy"] = state?.topicNumOfBuy;
+            resourceInputs["topicQuota"] = state?.topicQuota;
+            resourceInputs["topicUsed"] = state?.topicUsed;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
+            resourceInputs["vswitchIds"] = state?.vswitchIds;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.deployType === undefined) && !opts.urn) {
+            if (args?.deployType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'deployType'");
             }
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["confluentConfig"] = args ? args.confluentConfig : undefined;
-            resourceInputs["defaultTopicPartitionNum"] = args ? args.defaultTopicPartitionNum : undefined;
-            resourceInputs["deployType"] = args ? args.deployType : undefined;
-            resourceInputs["diskSize"] = args ? args.diskSize : undefined;
-            resourceInputs["diskType"] = args ? args.diskType : undefined;
-            resourceInputs["eipMax"] = args ? args.eipMax : undefined;
-            resourceInputs["enableAutoGroup"] = args ? args.enableAutoGroup : undefined;
-            resourceInputs["enableAutoTopic"] = args ? args.enableAutoTopic : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["ioMax"] = args ? args.ioMax : undefined;
-            resourceInputs["ioMaxSpec"] = args ? args.ioMaxSpec : undefined;
-            resourceInputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["paidType"] = args ? args.paidType : undefined;
-            resourceInputs["partitionNum"] = args ? args.partitionNum : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["securityGroup"] = args ? args.securityGroup : undefined;
-            resourceInputs["selectedZones"] = args ? args.selectedZones : undefined;
-            resourceInputs["serverlessConfig"] = args ? args.serverlessConfig : undefined;
-            resourceInputs["serviceVersion"] = args ? args.serviceVersion : undefined;
-            resourceInputs["specType"] = args ? args.specType : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["topicQuota"] = args ? args.topicQuota : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
-            resourceInputs["vswitchIds"] = args ? args.vswitchIds : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["confluentConfig"] = args?.confluentConfig;
+            resourceInputs["defaultTopicPartitionNum"] = args?.defaultTopicPartitionNum;
+            resourceInputs["deployType"] = args?.deployType;
+            resourceInputs["diskSize"] = args?.diskSize;
+            resourceInputs["diskType"] = args?.diskType;
+            resourceInputs["eipMax"] = args?.eipMax;
+            resourceInputs["enableAutoGroup"] = args?.enableAutoGroup;
+            resourceInputs["enableAutoTopic"] = args?.enableAutoTopic;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["ioMax"] = args?.ioMax;
+            resourceInputs["ioMaxSpec"] = args?.ioMaxSpec;
+            resourceInputs["kmsKeyId"] = args?.kmsKeyId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["paidType"] = args?.paidType;
+            resourceInputs["partitionNum"] = args?.partitionNum;
+            resourceInputs["password"] = args?.password;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["securityGroup"] = args?.securityGroup;
+            resourceInputs["selectedZones"] = args?.selectedZones;
+            resourceInputs["serverlessConfig"] = args?.serverlessConfig;
+            resourceInputs["serviceVersion"] = args?.serviceVersion;
+            resourceInputs["specType"] = args?.specType;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["topicQuota"] = args?.topicQuota;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
+            resourceInputs["vswitchIds"] = args?.vswitchIds;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["domainEndpoint"] = undefined /*out*/;
             resourceInputs["endPoint"] = undefined /*out*/;
             resourceInputs["groupLeft"] = undefined /*out*/;

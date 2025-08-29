@@ -70,27 +70,27 @@ export class ClientCaCertificate extends pulumi.CustomResource {
     /**
      * Certificate content.
      */
-    public readonly certificate!: pulumi.Output<string>;
+    declare public readonly certificate: pulumi.Output<string>;
     /**
      * ClientCaCertificate Id
      */
-    public /*out*/ readonly clientCaCertId!: pulumi.Output<string>;
+    declare public /*out*/ readonly clientCaCertId: pulumi.Output<string>;
     /**
      * The certificate name.
      */
-    public readonly clientCaCertName!: pulumi.Output<string | undefined>;
+    declare public readonly clientCaCertName: pulumi.Output<string | undefined>;
     /**
      * Creation time.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Site Id
      */
-    public readonly siteId!: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<number>;
     /**
      * Certificate status.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a ClientCaCertificate resource with the given unique name, arguments, and options.
@@ -105,23 +105,23 @@ export class ClientCaCertificate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClientCaCertificateState | undefined;
-            resourceInputs["certificate"] = state ? state.certificate : undefined;
-            resourceInputs["clientCaCertId"] = state ? state.clientCaCertId : undefined;
-            resourceInputs["clientCaCertName"] = state ? state.clientCaCertName : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["certificate"] = state?.certificate;
+            resourceInputs["clientCaCertId"] = state?.clientCaCertId;
+            resourceInputs["clientCaCertName"] = state?.clientCaCertName;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as ClientCaCertificateArgs | undefined;
-            if ((!args || args.certificate === undefined) && !opts.urn) {
+            if (args?.certificate === undefined && !opts.urn) {
                 throw new Error("Missing required property 'certificate'");
             }
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            resourceInputs["certificate"] = args ? args.certificate : undefined;
-            resourceInputs["clientCaCertName"] = args ? args.clientCaCertName : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
+            resourceInputs["certificate"] = args?.certificate;
+            resourceInputs["clientCaCertName"] = args?.clientCaCertName;
+            resourceInputs["siteId"] = args?.siteId;
             resourceInputs["clientCaCertId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

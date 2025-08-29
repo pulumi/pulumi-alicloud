@@ -70,27 +70,27 @@ export class TopicSubscription extends pulumi.CustomResource {
      * - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
      * - `Email Format`: mail:directmail:{MailAddress}
      */
-    public readonly endpoint!: pulumi.Output<string>;
+    declare public readonly endpoint: pulumi.Output<string>;
     /**
      * The length should be shorter than 16.
      */
-    public readonly filterTag!: pulumi.Output<string | undefined>;
+    declare public readonly filterTag: pulumi.Output<string | undefined>;
     /**
      * Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: `SIMPLIFIED`, `XML` and `JSON`. Default to `SIMPLIFIED`.
      */
-    public readonly notifyContentFormat!: pulumi.Output<string | undefined>;
+    declare public readonly notifyContentFormat: pulumi.Output<string | undefined>;
     /**
      * The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. The Valid values: `EXPONENTIAL_DECAY_RETRY` and `BACKOFF_RETRY`. Default value to `BACKOFF_RETRY` .
      */
-    public readonly notifyStrategy!: pulumi.Output<string | undefined>;
+    declare public readonly notifyStrategy: pulumi.Output<string | undefined>;
     /**
      * The topic which The subscription belongs to was named with the name.A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
      */
-    public readonly topicName!: pulumi.Output<string>;
+    declare public readonly topicName: pulumi.Output<string>;
 
     /**
      * Create a TopicSubscription resource with the given unique name, arguments, and options.
@@ -105,26 +105,26 @@ export class TopicSubscription extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TopicSubscriptionState | undefined;
-            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
-            resourceInputs["filterTag"] = state ? state.filterTag : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["notifyContentFormat"] = state ? state.notifyContentFormat : undefined;
-            resourceInputs["notifyStrategy"] = state ? state.notifyStrategy : undefined;
-            resourceInputs["topicName"] = state ? state.topicName : undefined;
+            resourceInputs["endpoint"] = state?.endpoint;
+            resourceInputs["filterTag"] = state?.filterTag;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["notifyContentFormat"] = state?.notifyContentFormat;
+            resourceInputs["notifyStrategy"] = state?.notifyStrategy;
+            resourceInputs["topicName"] = state?.topicName;
         } else {
             const args = argsOrState as TopicSubscriptionArgs | undefined;
-            if ((!args || args.endpoint === undefined) && !opts.urn) {
+            if (args?.endpoint === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpoint'");
             }
-            if ((!args || args.topicName === undefined) && !opts.urn) {
+            if (args?.topicName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'topicName'");
             }
-            resourceInputs["endpoint"] = args ? args.endpoint : undefined;
-            resourceInputs["filterTag"] = args ? args.filterTag : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["notifyContentFormat"] = args ? args.notifyContentFormat : undefined;
-            resourceInputs["notifyStrategy"] = args ? args.notifyStrategy : undefined;
-            resourceInputs["topicName"] = args ? args.topicName : undefined;
+            resourceInputs["endpoint"] = args?.endpoint;
+            resourceInputs["filterTag"] = args?.filterTag;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["notifyContentFormat"] = args?.notifyContentFormat;
+            resourceInputs["notifyStrategy"] = args?.notifyStrategy;
+            resourceInputs["topicName"] = args?.topicName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TopicSubscription.__pulumiType, name, resourceInputs, opts);

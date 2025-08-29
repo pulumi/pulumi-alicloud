@@ -122,19 +122,19 @@ export class BasicAccelerateIpEndpointRelation extends pulumi.CustomResource {
     /**
      * The ID of the Basic Accelerate IP.
      */
-    public readonly accelerateIpId!: pulumi.Output<string>;
+    declare public readonly accelerateIpId: pulumi.Output<string>;
     /**
      * The ID of the Basic GA instance.
      */
-    public readonly acceleratorId!: pulumi.Output<string>;
+    declare public readonly acceleratorId: pulumi.Output<string>;
     /**
      * The ID of the Basic Endpoint.
      */
-    public readonly endpointId!: pulumi.Output<string>;
+    declare public readonly endpointId: pulumi.Output<string>;
     /**
      * The status of the Basic Accelerate Ip Endpoint Relation.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a BasicAccelerateIpEndpointRelation resource with the given unique name, arguments, and options.
@@ -149,24 +149,24 @@ export class BasicAccelerateIpEndpointRelation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BasicAccelerateIpEndpointRelationState | undefined;
-            resourceInputs["accelerateIpId"] = state ? state.accelerateIpId : undefined;
-            resourceInputs["acceleratorId"] = state ? state.acceleratorId : undefined;
-            resourceInputs["endpointId"] = state ? state.endpointId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["accelerateIpId"] = state?.accelerateIpId;
+            resourceInputs["acceleratorId"] = state?.acceleratorId;
+            resourceInputs["endpointId"] = state?.endpointId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as BasicAccelerateIpEndpointRelationArgs | undefined;
-            if ((!args || args.accelerateIpId === undefined) && !opts.urn) {
+            if (args?.accelerateIpId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accelerateIpId'");
             }
-            if ((!args || args.acceleratorId === undefined) && !opts.urn) {
+            if (args?.acceleratorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'acceleratorId'");
             }
-            if ((!args || args.endpointId === undefined) && !opts.urn) {
+            if (args?.endpointId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpointId'");
             }
-            resourceInputs["accelerateIpId"] = args ? args.accelerateIpId : undefined;
-            resourceInputs["acceleratorId"] = args ? args.acceleratorId : undefined;
-            resourceInputs["endpointId"] = args ? args.endpointId : undefined;
+            resourceInputs["accelerateIpId"] = args?.accelerateIpId;
+            resourceInputs["acceleratorId"] = args?.acceleratorId;
+            resourceInputs["endpointId"] = args?.endpointId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
