@@ -96,31 +96,31 @@ export class Topic extends pulumi.CustomResource {
     /**
      * Whether the topic is compactTopic or not. Compact topic must be a localTopic.
      */
-    public readonly compactTopic!: pulumi.Output<boolean | undefined>;
+    declare public readonly compactTopic: pulumi.Output<boolean | undefined>;
     /**
      * InstanceId of your Kafka resource, the topic will create in this instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Whether the topic is localTopic or not.
      */
-    public readonly localTopic!: pulumi.Output<boolean | undefined>;
+    declare public readonly localTopic: pulumi.Output<boolean | undefined>;
     /**
      * The number of partitions of the topic. The number should between 1 and 48.
      */
-    public readonly partitionNum!: pulumi.Output<number | undefined>;
+    declare public readonly partitionNum: pulumi.Output<number | undefined>;
     /**
      * This attribute is a concise description of topic. The length cannot exceed 64.
      */
-    public readonly remark!: pulumi.Output<string>;
+    declare public readonly remark: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
      */
-    public readonly topic!: pulumi.Output<string>;
+    declare public readonly topic: pulumi.Output<string>;
 
     /**
      * Create a Topic resource with the given unique name, arguments, and options.
@@ -135,31 +135,31 @@ export class Topic extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TopicState | undefined;
-            resourceInputs["compactTopic"] = state ? state.compactTopic : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["localTopic"] = state ? state.localTopic : undefined;
-            resourceInputs["partitionNum"] = state ? state.partitionNum : undefined;
-            resourceInputs["remark"] = state ? state.remark : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["topic"] = state ? state.topic : undefined;
+            resourceInputs["compactTopic"] = state?.compactTopic;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["localTopic"] = state?.localTopic;
+            resourceInputs["partitionNum"] = state?.partitionNum;
+            resourceInputs["remark"] = state?.remark;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["topic"] = state?.topic;
         } else {
             const args = argsOrState as TopicArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.remark === undefined) && !opts.urn) {
+            if (args?.remark === undefined && !opts.urn) {
                 throw new Error("Missing required property 'remark'");
             }
-            if ((!args || args.topic === undefined) && !opts.urn) {
+            if (args?.topic === undefined && !opts.urn) {
                 throw new Error("Missing required property 'topic'");
             }
-            resourceInputs["compactTopic"] = args ? args.compactTopic : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["localTopic"] = args ? args.localTopic : undefined;
-            resourceInputs["partitionNum"] = args ? args.partitionNum : undefined;
-            resourceInputs["remark"] = args ? args.remark : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["topic"] = args ? args.topic : undefined;
+            resourceInputs["compactTopic"] = args?.compactTopic;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["localTopic"] = args?.localTopic;
+            resourceInputs["partitionNum"] = args?.partitionNum;
+            resourceInputs["remark"] = args?.remark;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["topic"] = args?.topic;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Topic.__pulumiType, name, resourceInputs, opts);

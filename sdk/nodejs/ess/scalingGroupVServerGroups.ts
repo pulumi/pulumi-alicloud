@@ -66,15 +66,15 @@ export class ScalingGroupVServerGroups extends pulumi.CustomResource {
     /**
      * If instances of scaling group are attached/removed from slb backend server when attach/detach vserver group from scaling group. Default to true.
      */
-    public readonly force!: pulumi.Output<boolean | undefined>;
+    declare public readonly force: pulumi.Output<boolean | undefined>;
     /**
      * ID of the scaling group.
      */
-    public readonly scalingGroupId!: pulumi.Output<string>;
+    declare public readonly scalingGroupId: pulumi.Output<string>;
     /**
      * A list of vserver groups attached on scaling group. See `vserverGroups` below.
      */
-    public readonly vserverGroups!: pulumi.Output<outputs.ess.ScalingGroupVServerGroupsVserverGroup[]>;
+    declare public readonly vserverGroups: pulumi.Output<outputs.ess.ScalingGroupVServerGroupsVserverGroup[]>;
 
     /**
      * Create a ScalingGroupVServerGroups resource with the given unique name, arguments, and options.
@@ -89,20 +89,20 @@ export class ScalingGroupVServerGroups extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ScalingGroupVServerGroupsState | undefined;
-            resourceInputs["force"] = state ? state.force : undefined;
-            resourceInputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
-            resourceInputs["vserverGroups"] = state ? state.vserverGroups : undefined;
+            resourceInputs["force"] = state?.force;
+            resourceInputs["scalingGroupId"] = state?.scalingGroupId;
+            resourceInputs["vserverGroups"] = state?.vserverGroups;
         } else {
             const args = argsOrState as ScalingGroupVServerGroupsArgs | undefined;
-            if ((!args || args.scalingGroupId === undefined) && !opts.urn) {
+            if (args?.scalingGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scalingGroupId'");
             }
-            if ((!args || args.vserverGroups === undefined) && !opts.urn) {
+            if (args?.vserverGroups === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vserverGroups'");
             }
-            resourceInputs["force"] = args ? args.force : undefined;
-            resourceInputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
-            resourceInputs["vserverGroups"] = args ? args.vserverGroups : undefined;
+            resourceInputs["force"] = args?.force;
+            resourceInputs["scalingGroupId"] = args?.scalingGroupId;
+            resourceInputs["vserverGroups"] = args?.vserverGroups;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ScalingGroupVServerGroups.__pulumiType, name, resourceInputs, opts);

@@ -67,51 +67,51 @@ export class PatchBaseline extends pulumi.CustomResource {
     /**
      * Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
      */
-    public readonly approvalRules!: pulumi.Output<string>;
+    declare public readonly approvalRules: pulumi.Output<string>;
     /**
      * Approved Patch.
      */
-    public readonly approvedPatches!: pulumi.Output<string[] | undefined>;
+    declare public readonly approvedPatches: pulumi.Output<string[] | undefined>;
     /**
      * ApprovedPatchesEnableNonSecurity.
      */
-    public readonly approvedPatchesEnableNonSecurity!: pulumi.Output<boolean | undefined>;
+    declare public readonly approvedPatchesEnableNonSecurity: pulumi.Output<boolean | undefined>;
     /**
      * Creation time.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Patches baseline description information.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
      */
-    public readonly operationSystem!: pulumi.Output<string>;
+    declare public readonly operationSystem: pulumi.Output<string>;
     /**
      * The name of the patch baseline.
      */
-    public readonly patchBaselineName!: pulumi.Output<string>;
+    declare public readonly patchBaselineName: pulumi.Output<string>;
     /**
      * Reject patches.
      */
-    public readonly rejectedPatches!: pulumi.Output<string[] | undefined>;
+    declare public readonly rejectedPatches: pulumi.Output<string[] | undefined>;
     /**
      * Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
      */
-    public readonly rejectedPatchesAction!: pulumi.Output<string>;
+    declare public readonly rejectedPatchesAction: pulumi.Output<string>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Source.
      */
-    public readonly sources!: pulumi.Output<string[] | undefined>;
+    declare public readonly sources: pulumi.Output<string[] | undefined>;
     /**
      * Label.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a PatchBaseline resource with the given unique name, arguments, and options.
@@ -126,40 +126,40 @@ export class PatchBaseline extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PatchBaselineState | undefined;
-            resourceInputs["approvalRules"] = state ? state.approvalRules : undefined;
-            resourceInputs["approvedPatches"] = state ? state.approvedPatches : undefined;
-            resourceInputs["approvedPatchesEnableNonSecurity"] = state ? state.approvedPatchesEnableNonSecurity : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["operationSystem"] = state ? state.operationSystem : undefined;
-            resourceInputs["patchBaselineName"] = state ? state.patchBaselineName : undefined;
-            resourceInputs["rejectedPatches"] = state ? state.rejectedPatches : undefined;
-            resourceInputs["rejectedPatchesAction"] = state ? state.rejectedPatchesAction : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["sources"] = state ? state.sources : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["approvalRules"] = state?.approvalRules;
+            resourceInputs["approvedPatches"] = state?.approvedPatches;
+            resourceInputs["approvedPatchesEnableNonSecurity"] = state?.approvedPatchesEnableNonSecurity;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["operationSystem"] = state?.operationSystem;
+            resourceInputs["patchBaselineName"] = state?.patchBaselineName;
+            resourceInputs["rejectedPatches"] = state?.rejectedPatches;
+            resourceInputs["rejectedPatchesAction"] = state?.rejectedPatchesAction;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["sources"] = state?.sources;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as PatchBaselineArgs | undefined;
-            if ((!args || args.approvalRules === undefined) && !opts.urn) {
+            if (args?.approvalRules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'approvalRules'");
             }
-            if ((!args || args.operationSystem === undefined) && !opts.urn) {
+            if (args?.operationSystem === undefined && !opts.urn) {
                 throw new Error("Missing required property 'operationSystem'");
             }
-            if ((!args || args.patchBaselineName === undefined) && !opts.urn) {
+            if (args?.patchBaselineName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'patchBaselineName'");
             }
-            resourceInputs["approvalRules"] = args ? args.approvalRules : undefined;
-            resourceInputs["approvedPatches"] = args ? args.approvedPatches : undefined;
-            resourceInputs["approvedPatchesEnableNonSecurity"] = args ? args.approvedPatchesEnableNonSecurity : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["operationSystem"] = args ? args.operationSystem : undefined;
-            resourceInputs["patchBaselineName"] = args ? args.patchBaselineName : undefined;
-            resourceInputs["rejectedPatches"] = args ? args.rejectedPatches : undefined;
-            resourceInputs["rejectedPatchesAction"] = args ? args.rejectedPatchesAction : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["sources"] = args ? args.sources : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["approvalRules"] = args?.approvalRules;
+            resourceInputs["approvedPatches"] = args?.approvedPatches;
+            resourceInputs["approvedPatchesEnableNonSecurity"] = args?.approvedPatchesEnableNonSecurity;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["operationSystem"] = args?.operationSystem;
+            resourceInputs["patchBaselineName"] = args?.patchBaselineName;
+            resourceInputs["rejectedPatches"] = args?.rejectedPatches;
+            resourceInputs["rejectedPatchesAction"] = args?.rejectedPatchesAction;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["sources"] = args?.sources;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

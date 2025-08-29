@@ -78,77 +78,77 @@ export class EdgeContainerApp extends pulumi.CustomResource {
     /**
      * The time when the application was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The application name must start with a lowercase letter. Lowercase letters, numbers, and bars are supported. The length is limited to 6 to 128 characters.
      */
-    public readonly edgeContainerAppName!: pulumi.Output<string>;
+    declare public readonly edgeContainerAppName: pulumi.Output<string>;
     /**
      * The number of consecutive successful health checks required for an application to be considered as healthy. Valid values: 1 to 10. Default value: 2.
      */
-    public readonly healthCheckFailTimes!: pulumi.Output<number | undefined>;
+    declare public readonly healthCheckFailTimes: pulumi.Output<number | undefined>;
     /**
      * The health check type. By default, this parameter is left empty.
      *
      * Valid values:
      */
-    public readonly healthCheckHost!: pulumi.Output<string | undefined>;
+    declare public readonly healthCheckHost: pulumi.Output<string | undefined>;
     /**
      * The domain name that is used for health checks. This parameter is empty by default.
      */
-    public readonly healthCheckHttpCode!: pulumi.Output<string>;
+    declare public readonly healthCheckHttpCode: pulumi.Output<string>;
     /**
      * The timeout period of a health check response. If a backend ECS instance does not respond within the specified timeout period, the ECS instance fails the health check. Unit: seconds.
      * Valid values: `1` to `100`.
      * Default value: `3`.
      */
-    public readonly healthCheckInterval!: pulumi.Output<number>;
+    declare public readonly healthCheckInterval: pulumi.Output<number>;
     /**
      * The HTTP status code returned for a successful health check. Valid values:
      *
      * - **http\_2xx** (default)
      * - **http\_3xx**
      */
-    public readonly healthCheckMethod!: pulumi.Output<string>;
+    declare public readonly healthCheckMethod: pulumi.Output<string>;
     /**
      * The URI used for health checks. The URI must be `1` to `80` characters in length. Default value: "/".
      */
-    public readonly healthCheckPort!: pulumi.Output<number>;
+    declare public readonly healthCheckPort: pulumi.Output<number>;
     /**
      * The interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `5`.
      */
-    public readonly healthCheckSuccTimes!: pulumi.Output<number>;
+    declare public readonly healthCheckSuccTimes: pulumi.Output<number>;
     /**
      * The port used for health checks. Valid values: 1 to 65535. Default value: 80.
      */
-    public readonly healthCheckTimeout!: pulumi.Output<number>;
+    declare public readonly healthCheckTimeout: pulumi.Output<number>;
     /**
      * The remarks. This parameter is empty by default.
      */
-    public readonly healthCheckType!: pulumi.Output<string>;
+    declare public readonly healthCheckType: pulumi.Output<string>;
     /**
      * The HTTP request method for health checks. Valid values:
      *
      * - `HEAD` (default): requests the headers of the resource.
      * - `GET`: requests the specified resource and returns both the headers and entity body.
      */
-    public readonly healthCheckUri!: pulumi.Output<string>;
+    declare public readonly healthCheckUri: pulumi.Output<string>;
     /**
      * The backend port, which is also the service port of the application. Valid values: 1 to 65535.
      */
-    public readonly remarks!: pulumi.Output<string | undefined>;
+    declare public readonly remarks: pulumi.Output<string | undefined>;
     /**
      * The name of the application. The name must start with a lowercase letter and can contain lowercase letters, digits, and hyphens (-). The name must be 6 to 128 characters in length.
      */
-    public readonly servicePort!: pulumi.Output<number>;
+    declare public readonly servicePort: pulumi.Output<number>;
     /**
      * The status of the application.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The server port. Valid values: 1 to 65535.
      */
-    public readonly targetPort!: pulumi.Output<number>;
+    declare public readonly targetPort: pulumi.Output<number>;
 
     /**
      * Create a EdgeContainerApp resource with the given unique name, arguments, and options.
@@ -163,47 +163,47 @@ export class EdgeContainerApp extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EdgeContainerAppState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["edgeContainerAppName"] = state ? state.edgeContainerAppName : undefined;
-            resourceInputs["healthCheckFailTimes"] = state ? state.healthCheckFailTimes : undefined;
-            resourceInputs["healthCheckHost"] = state ? state.healthCheckHost : undefined;
-            resourceInputs["healthCheckHttpCode"] = state ? state.healthCheckHttpCode : undefined;
-            resourceInputs["healthCheckInterval"] = state ? state.healthCheckInterval : undefined;
-            resourceInputs["healthCheckMethod"] = state ? state.healthCheckMethod : undefined;
-            resourceInputs["healthCheckPort"] = state ? state.healthCheckPort : undefined;
-            resourceInputs["healthCheckSuccTimes"] = state ? state.healthCheckSuccTimes : undefined;
-            resourceInputs["healthCheckTimeout"] = state ? state.healthCheckTimeout : undefined;
-            resourceInputs["healthCheckType"] = state ? state.healthCheckType : undefined;
-            resourceInputs["healthCheckUri"] = state ? state.healthCheckUri : undefined;
-            resourceInputs["remarks"] = state ? state.remarks : undefined;
-            resourceInputs["servicePort"] = state ? state.servicePort : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["targetPort"] = state ? state.targetPort : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["edgeContainerAppName"] = state?.edgeContainerAppName;
+            resourceInputs["healthCheckFailTimes"] = state?.healthCheckFailTimes;
+            resourceInputs["healthCheckHost"] = state?.healthCheckHost;
+            resourceInputs["healthCheckHttpCode"] = state?.healthCheckHttpCode;
+            resourceInputs["healthCheckInterval"] = state?.healthCheckInterval;
+            resourceInputs["healthCheckMethod"] = state?.healthCheckMethod;
+            resourceInputs["healthCheckPort"] = state?.healthCheckPort;
+            resourceInputs["healthCheckSuccTimes"] = state?.healthCheckSuccTimes;
+            resourceInputs["healthCheckTimeout"] = state?.healthCheckTimeout;
+            resourceInputs["healthCheckType"] = state?.healthCheckType;
+            resourceInputs["healthCheckUri"] = state?.healthCheckUri;
+            resourceInputs["remarks"] = state?.remarks;
+            resourceInputs["servicePort"] = state?.servicePort;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["targetPort"] = state?.targetPort;
         } else {
             const args = argsOrState as EdgeContainerAppArgs | undefined;
-            if ((!args || args.edgeContainerAppName === undefined) && !opts.urn) {
+            if (args?.edgeContainerAppName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'edgeContainerAppName'");
             }
-            if ((!args || args.servicePort === undefined) && !opts.urn) {
+            if (args?.servicePort === undefined && !opts.urn) {
                 throw new Error("Missing required property 'servicePort'");
             }
-            if ((!args || args.targetPort === undefined) && !opts.urn) {
+            if (args?.targetPort === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetPort'");
             }
-            resourceInputs["edgeContainerAppName"] = args ? args.edgeContainerAppName : undefined;
-            resourceInputs["healthCheckFailTimes"] = args ? args.healthCheckFailTimes : undefined;
-            resourceInputs["healthCheckHost"] = args ? args.healthCheckHost : undefined;
-            resourceInputs["healthCheckHttpCode"] = args ? args.healthCheckHttpCode : undefined;
-            resourceInputs["healthCheckInterval"] = args ? args.healthCheckInterval : undefined;
-            resourceInputs["healthCheckMethod"] = args ? args.healthCheckMethod : undefined;
-            resourceInputs["healthCheckPort"] = args ? args.healthCheckPort : undefined;
-            resourceInputs["healthCheckSuccTimes"] = args ? args.healthCheckSuccTimes : undefined;
-            resourceInputs["healthCheckTimeout"] = args ? args.healthCheckTimeout : undefined;
-            resourceInputs["healthCheckType"] = args ? args.healthCheckType : undefined;
-            resourceInputs["healthCheckUri"] = args ? args.healthCheckUri : undefined;
-            resourceInputs["remarks"] = args ? args.remarks : undefined;
-            resourceInputs["servicePort"] = args ? args.servicePort : undefined;
-            resourceInputs["targetPort"] = args ? args.targetPort : undefined;
+            resourceInputs["edgeContainerAppName"] = args?.edgeContainerAppName;
+            resourceInputs["healthCheckFailTimes"] = args?.healthCheckFailTimes;
+            resourceInputs["healthCheckHost"] = args?.healthCheckHost;
+            resourceInputs["healthCheckHttpCode"] = args?.healthCheckHttpCode;
+            resourceInputs["healthCheckInterval"] = args?.healthCheckInterval;
+            resourceInputs["healthCheckMethod"] = args?.healthCheckMethod;
+            resourceInputs["healthCheckPort"] = args?.healthCheckPort;
+            resourceInputs["healthCheckSuccTimes"] = args?.healthCheckSuccTimes;
+            resourceInputs["healthCheckTimeout"] = args?.healthCheckTimeout;
+            resourceInputs["healthCheckType"] = args?.healthCheckType;
+            resourceInputs["healthCheckUri"] = args?.healthCheckUri;
+            resourceInputs["remarks"] = args?.remarks;
+            resourceInputs["servicePort"] = args?.servicePort;
+            resourceInputs["targetPort"] = args?.targetPort;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

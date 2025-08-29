@@ -107,43 +107,43 @@ export class BasicEndpoint extends pulumi.CustomResource {
     /**
      * The ID of the Basic GA instance.
      */
-    public readonly acceleratorId!: pulumi.Output<string>;
+    declare public readonly acceleratorId: pulumi.Output<string>;
     /**
      * The name of the Basic Endpoint.
      */
-    public readonly basicEndpointName!: pulumi.Output<string | undefined>;
+    declare public readonly basicEndpointName: pulumi.Output<string | undefined>;
     /**
      * The address of the Basic Endpoint.
      */
-    public readonly endpointAddress!: pulumi.Output<string>;
+    declare public readonly endpointAddress: pulumi.Output<string>;
     /**
      * The ID of the Basic Endpoint Group.
      */
-    public readonly endpointGroupId!: pulumi.Output<string>;
+    declare public readonly endpointGroupId: pulumi.Output<string>;
     /**
      * The ID of the Basic Endpoint.
      */
-    public /*out*/ readonly endpointId!: pulumi.Output<string>;
+    declare public /*out*/ readonly endpointId: pulumi.Output<string>;
     /**
      * The sub address of the Basic Endpoint.
      */
-    public readonly endpointSubAddress!: pulumi.Output<string | undefined>;
+    declare public readonly endpointSubAddress: pulumi.Output<string | undefined>;
     /**
      * The sub address type of the Basic Endpoint. Valid values: `primary`, `secondary`.
      */
-    public readonly endpointSubAddressType!: pulumi.Output<string | undefined>;
+    declare public readonly endpointSubAddressType: pulumi.Output<string | undefined>;
     /**
      * The type of the Basic Endpoint. Valid values: `ENI`, `SLB`, `ECS` and `NLB`.
      */
-    public readonly endpointType!: pulumi.Output<string>;
+    declare public readonly endpointType: pulumi.Output<string>;
     /**
      * The zone id of the Basic Endpoint.
      */
-    public readonly endpointZoneId!: pulumi.Output<string | undefined>;
+    declare public readonly endpointZoneId: pulumi.Output<string | undefined>;
     /**
      * The status of the Basic Endpoint.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a BasicEndpoint resource with the given unique name, arguments, and options.
@@ -158,38 +158,38 @@ export class BasicEndpoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BasicEndpointState | undefined;
-            resourceInputs["acceleratorId"] = state ? state.acceleratorId : undefined;
-            resourceInputs["basicEndpointName"] = state ? state.basicEndpointName : undefined;
-            resourceInputs["endpointAddress"] = state ? state.endpointAddress : undefined;
-            resourceInputs["endpointGroupId"] = state ? state.endpointGroupId : undefined;
-            resourceInputs["endpointId"] = state ? state.endpointId : undefined;
-            resourceInputs["endpointSubAddress"] = state ? state.endpointSubAddress : undefined;
-            resourceInputs["endpointSubAddressType"] = state ? state.endpointSubAddressType : undefined;
-            resourceInputs["endpointType"] = state ? state.endpointType : undefined;
-            resourceInputs["endpointZoneId"] = state ? state.endpointZoneId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["acceleratorId"] = state?.acceleratorId;
+            resourceInputs["basicEndpointName"] = state?.basicEndpointName;
+            resourceInputs["endpointAddress"] = state?.endpointAddress;
+            resourceInputs["endpointGroupId"] = state?.endpointGroupId;
+            resourceInputs["endpointId"] = state?.endpointId;
+            resourceInputs["endpointSubAddress"] = state?.endpointSubAddress;
+            resourceInputs["endpointSubAddressType"] = state?.endpointSubAddressType;
+            resourceInputs["endpointType"] = state?.endpointType;
+            resourceInputs["endpointZoneId"] = state?.endpointZoneId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as BasicEndpointArgs | undefined;
-            if ((!args || args.acceleratorId === undefined) && !opts.urn) {
+            if (args?.acceleratorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'acceleratorId'");
             }
-            if ((!args || args.endpointAddress === undefined) && !opts.urn) {
+            if (args?.endpointAddress === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpointAddress'");
             }
-            if ((!args || args.endpointGroupId === undefined) && !opts.urn) {
+            if (args?.endpointGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpointGroupId'");
             }
-            if ((!args || args.endpointType === undefined) && !opts.urn) {
+            if (args?.endpointType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpointType'");
             }
-            resourceInputs["acceleratorId"] = args ? args.acceleratorId : undefined;
-            resourceInputs["basicEndpointName"] = args ? args.basicEndpointName : undefined;
-            resourceInputs["endpointAddress"] = args ? args.endpointAddress : undefined;
-            resourceInputs["endpointGroupId"] = args ? args.endpointGroupId : undefined;
-            resourceInputs["endpointSubAddress"] = args ? args.endpointSubAddress : undefined;
-            resourceInputs["endpointSubAddressType"] = args ? args.endpointSubAddressType : undefined;
-            resourceInputs["endpointType"] = args ? args.endpointType : undefined;
-            resourceInputs["endpointZoneId"] = args ? args.endpointZoneId : undefined;
+            resourceInputs["acceleratorId"] = args?.acceleratorId;
+            resourceInputs["basicEndpointName"] = args?.basicEndpointName;
+            resourceInputs["endpointAddress"] = args?.endpointAddress;
+            resourceInputs["endpointGroupId"] = args?.endpointGroupId;
+            resourceInputs["endpointSubAddress"] = args?.endpointSubAddress;
+            resourceInputs["endpointSubAddressType"] = args?.endpointSubAddressType;
+            resourceInputs["endpointType"] = args?.endpointType;
+            resourceInputs["endpointZoneId"] = args?.endpointZoneId;
             resourceInputs["endpointId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

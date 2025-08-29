@@ -32,7 +32,7 @@ export class Alias extends pulumi.CustomResource {
         return obj['__pulumiType'] === Alias.__pulumiType;
     }
 
-    public readonly accountAlias!: pulumi.Output<string>;
+    declare public readonly accountAlias: pulumi.Output<string>;
 
     /**
      * Create a Alias resource with the given unique name, arguments, and options.
@@ -47,13 +47,13 @@ export class Alias extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AliasState | undefined;
-            resourceInputs["accountAlias"] = state ? state.accountAlias : undefined;
+            resourceInputs["accountAlias"] = state?.accountAlias;
         } else {
             const args = argsOrState as AliasArgs | undefined;
-            if ((!args || args.accountAlias === undefined) && !opts.urn) {
+            if (args?.accountAlias === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountAlias'");
             }
-            resourceInputs["accountAlias"] = args ? args.accountAlias : undefined;
+            resourceInputs["accountAlias"] = args?.accountAlias;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Alias.__pulumiType, name, resourceInputs, opts);

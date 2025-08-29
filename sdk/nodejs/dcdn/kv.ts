@@ -76,15 +76,15 @@ export class Kv extends pulumi.CustomResource {
     /**
      * The name of the key to Put, the longest 512, cannot contain spaces.
      */
-    public readonly key!: pulumi.Output<string>;
+    declare public readonly key: pulumi.Output<string>;
     /**
      * The name specified when the customer calls PutDcdnKvNamespace.
      */
-    public readonly namespace!: pulumi.Output<string>;
+    declare public readonly namespace: pulumi.Output<string>;
     /**
      * The content of key, up to 2M(2*1000*1000).
      */
-    public readonly value!: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string>;
 
     /**
      * Create a Kv resource with the given unique name, arguments, and options.
@@ -99,23 +99,23 @@ export class Kv extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KvState | undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as KvArgs | undefined;
-            if ((!args || args.key === undefined) && !opts.urn) {
+            if (args?.key === undefined && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            if ((!args || args.namespace === undefined) && !opts.urn) {
+            if (args?.namespace === undefined && !opts.urn) {
                 throw new Error("Missing required property 'namespace'");
             }
-            if ((!args || args.value === undefined) && !opts.urn) {
+            if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["key"] = args?.key;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["value"] = args?.value;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Kv.__pulumiType, name, resourceInputs, opts);

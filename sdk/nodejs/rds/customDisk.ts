@@ -78,37 +78,37 @@ export class CustomDisk extends pulumi.CustomResource {
     /**
      * Whether to pay automatically. Value range:
      */
-    public readonly autoPay!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoPay: pulumi.Output<boolean | undefined>;
     /**
      * Whether to automatically renew. This parameter is passed in only when you create a data disk. Valid values:
      */
-    public readonly autoRenew!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoRenew: pulumi.Output<boolean | undefined>;
     /**
      * Creation time.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
      * Default value: empty.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The type of the data disk. Value range:
      */
-    public readonly diskCategory!: pulumi.Output<string>;
+    declare public readonly diskCategory: pulumi.Output<string>;
     /**
      * The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
      * Default value: empty.
      */
-    public readonly diskName!: pulumi.Output<string | undefined>;
+    declare public readonly diskName: pulumi.Output<string | undefined>;
     /**
      * Whether to pre-check the instance creation operation. Valid values:
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
      */
-    public readonly instanceChargeType!: pulumi.Output<string | undefined>;
+    declare public readonly instanceChargeType: pulumi.Output<string | undefined>;
     /**
      * When creating an ESSD cloud disk, set the performance level of the disk. Value range:
      * - `PL0`: The maximum random read/write IOPS 10000 for a single disk.
@@ -118,48 +118,48 @@ export class CustomDisk extends pulumi.CustomResource {
      *
      * For more information about how to select an ESSD performance level, see ESSD cloud disk.
      */
-    public readonly performanceLevel!: pulumi.Output<string | undefined>;
+    declare public readonly performanceLevel: pulumi.Output<string | undefined>;
     /**
      * Reserved parameters, no need to fill in.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * Reserved parameters, no need to fill in.
      */
-    public readonly periodUnit!: pulumi.Output<string | undefined>;
+    declare public readonly periodUnit: pulumi.Output<string | undefined>;
     /**
      * The region ID. You can view the region ID through the DescribeRegions interface.
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The ID of the resource group to which the disk belongs.
      */
-    public /*out*/ readonly resourceGroupId!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Capacity size. Unit: GiB. You must pass in a parameter value for this parameter. Value range:
      */
-    public readonly size!: pulumi.Output<number>;
+    declare public readonly size: pulumi.Output<number>;
     /**
      * The snapshot used to create the cloud disk. Snapshots made on or before July 15, 2013 cannot be used to create cloud disks. The 'SnapshotId' parameter and the 'Size' parameter have the following limitations:
      * - If the snapshot capacity corresponding to the 'SnapshotId' parameter is greater than the set 'Size' parameter value, the actual size of the cloud disk created is the size of the specified snapshot.
      * - If the snapshot capacity corresponding to the 'SnapshotId' parameter is less than the set 'Size' parameter value, the size of the cloud disk created is the specified 'Size' parameter value.
      * - Snapshots are not supported for creating elastic temporary disks.
      */
-    public readonly snapshotId!: pulumi.Output<string | undefined>;
+    declare public readonly snapshotId: pulumi.Output<string | undefined>;
     /**
      * Disk status. Value Description:_use: In use.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The method of expanding the disk. Value range:
      * offline (default): offline expansion. After the expansion, the instance must be restarted to take effect.
      * online: online expansion, which can be completed without restarting the instance.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
     /**
      * The zone ID.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a CustomDisk resource with the given unique name, arguments, and options.
@@ -174,49 +174,49 @@ export class CustomDisk extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomDiskState | undefined;
-            resourceInputs["autoPay"] = state ? state.autoPay : undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["diskCategory"] = state ? state.diskCategory : undefined;
-            resourceInputs["diskName"] = state ? state.diskName : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
-            resourceInputs["performanceLevel"] = state ? state.performanceLevel : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["snapshotId"] = state ? state.snapshotId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["autoPay"] = state?.autoPay;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["diskCategory"] = state?.diskCategory;
+            resourceInputs["diskName"] = state?.diskName;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["instanceChargeType"] = state?.instanceChargeType;
+            resourceInputs["performanceLevel"] = state?.performanceLevel;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["periodUnit"] = state?.periodUnit;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["snapshotId"] = state?.snapshotId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as CustomDiskArgs | undefined;
-            if ((!args || args.diskCategory === undefined) && !opts.urn) {
+            if (args?.diskCategory === undefined && !opts.urn) {
                 throw new Error("Missing required property 'diskCategory'");
             }
-            if ((!args || args.size === undefined) && !opts.urn) {
+            if (args?.size === undefined && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["autoPay"] = args ? args.autoPay : undefined;
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["diskCategory"] = args ? args.diskCategory : undefined;
-            resourceInputs["diskName"] = args ? args.diskName : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
-            resourceInputs["performanceLevel"] = args ? args.performanceLevel : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
-            resourceInputs["size"] = args ? args.size : undefined;
-            resourceInputs["snapshotId"] = args ? args.snapshotId : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["autoPay"] = args?.autoPay;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["diskCategory"] = args?.diskCategory;
+            resourceInputs["diskName"] = args?.diskName;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["instanceChargeType"] = args?.instanceChargeType;
+            resourceInputs["performanceLevel"] = args?.performanceLevel;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["periodUnit"] = args?.periodUnit;
+            resourceInputs["size"] = args?.size;
+            resourceInputs["snapshotId"] = args?.snapshotId;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["resourceGroupId"] = undefined /*out*/;

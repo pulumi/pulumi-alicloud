@@ -73,53 +73,53 @@ export class DhcpOptionsSet extends pulumi.CustomResource {
      *
      * @deprecated Field 'associate_vpcs' has been deprecated from provider version 1.153.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
      */
-    public readonly associateVpcs!: pulumi.Output<outputs.vpc.DhcpOptionsSetAssociateVpc[]>;
+    declare public readonly associateVpcs: pulumi.Output<outputs.vpc.DhcpOptionsSetAssociateVpc[]>;
     /**
      * The description can be blank or contain 1 to 256 characters. It must start with a letter or Chinese character but cannot start with http:// or https://.
      */
-    public readonly dhcpOptionsSetDescription!: pulumi.Output<string | undefined>;
+    declare public readonly dhcpOptionsSetDescription: pulumi.Output<string | undefined>;
     /**
      * The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
      */
-    public readonly dhcpOptionsSetName!: pulumi.Output<string | undefined>;
+    declare public readonly dhcpOptionsSetName: pulumi.Output<string | undefined>;
     /**
      * The root domain, for example, example.com. After a DHCP options set is associated with a Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS instances in the VPC network.
      */
-    public readonly domainName!: pulumi.Output<string | undefined>;
+    declare public readonly domainName: pulumi.Output<string | undefined>;
     /**
      * The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are 100.100.2.136 and 100.100.2.138.
      */
-    public readonly domainNameServers!: pulumi.Output<string | undefined>;
+    declare public readonly domainNameServers: pulumi.Output<string | undefined>;
     /**
      * Whether to PreCheck only this request, value:
      * - **true**: sends a check request and does not delete the DHCP option set. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
      * - **false** (default): Sends a normal request and directly deletes the DHCP option set after checking.
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * The lease time of the IPv6 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
      */
-    public readonly ipv6LeaseTime!: pulumi.Output<string>;
+    declare public readonly ipv6LeaseTime: pulumi.Output<string>;
     /**
      * The lease time of the IPv4 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
      */
-    public readonly leaseTime!: pulumi.Output<string>;
+    declare public readonly leaseTime: pulumi.Output<string>;
     /**
      * The ID of the account to which the DHCP options set belongs.
      */
-    public /*out*/ readonly ownerId!: pulumi.Output<number>;
+    declare public /*out*/ readonly ownerId: pulumi.Output<number>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Tags of the current resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a DhcpOptionsSet resource with the given unique name, arguments, and options.
@@ -134,30 +134,30 @@ export class DhcpOptionsSet extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DhcpOptionsSetState | undefined;
-            resourceInputs["associateVpcs"] = state ? state.associateVpcs : undefined;
-            resourceInputs["dhcpOptionsSetDescription"] = state ? state.dhcpOptionsSetDescription : undefined;
-            resourceInputs["dhcpOptionsSetName"] = state ? state.dhcpOptionsSetName : undefined;
-            resourceInputs["domainName"] = state ? state.domainName : undefined;
-            resourceInputs["domainNameServers"] = state ? state.domainNameServers : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["ipv6LeaseTime"] = state ? state.ipv6LeaseTime : undefined;
-            resourceInputs["leaseTime"] = state ? state.leaseTime : undefined;
-            resourceInputs["ownerId"] = state ? state.ownerId : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["associateVpcs"] = state?.associateVpcs;
+            resourceInputs["dhcpOptionsSetDescription"] = state?.dhcpOptionsSetDescription;
+            resourceInputs["dhcpOptionsSetName"] = state?.dhcpOptionsSetName;
+            resourceInputs["domainName"] = state?.domainName;
+            resourceInputs["domainNameServers"] = state?.domainNameServers;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["ipv6LeaseTime"] = state?.ipv6LeaseTime;
+            resourceInputs["leaseTime"] = state?.leaseTime;
+            resourceInputs["ownerId"] = state?.ownerId;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as DhcpOptionsSetArgs | undefined;
-            resourceInputs["associateVpcs"] = args ? args.associateVpcs : undefined;
-            resourceInputs["dhcpOptionsSetDescription"] = args ? args.dhcpOptionsSetDescription : undefined;
-            resourceInputs["dhcpOptionsSetName"] = args ? args.dhcpOptionsSetName : undefined;
-            resourceInputs["domainName"] = args ? args.domainName : undefined;
-            resourceInputs["domainNameServers"] = args ? args.domainNameServers : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["ipv6LeaseTime"] = args ? args.ipv6LeaseTime : undefined;
-            resourceInputs["leaseTime"] = args ? args.leaseTime : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["associateVpcs"] = args?.associateVpcs;
+            resourceInputs["dhcpOptionsSetDescription"] = args?.dhcpOptionsSetDescription;
+            resourceInputs["dhcpOptionsSetName"] = args?.dhcpOptionsSetName;
+            resourceInputs["domainName"] = args?.domainName;
+            resourceInputs["domainNameServers"] = args?.domainNameServers;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["ipv6LeaseTime"] = args?.ipv6LeaseTime;
+            resourceInputs["leaseTime"] = args?.leaseTime;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["ownerId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

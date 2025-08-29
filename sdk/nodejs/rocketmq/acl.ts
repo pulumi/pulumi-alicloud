@@ -131,31 +131,31 @@ export class Acl extends pulumi.CustomResource {
      * - If `resourceType` is set to `Topic`. Valid values: `Pub`, `Sub`.
      * - If `resourceType` is set to `Group`. Valid values: `Sub`.
      */
-    public readonly actions!: pulumi.Output<string[]>;
+    declare public readonly actions: pulumi.Output<string[]>;
     /**
      * The decision result of the authorization. Valid values: `Deny`, `Allow`.
      */
-    public readonly decision!: pulumi.Output<string>;
+    declare public readonly decision: pulumi.Output<string>;
     /**
      * The instance ID.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The IP address whitelists.
      */
-    public readonly ipWhitelists!: pulumi.Output<string[]>;
+    declare public readonly ipWhitelists: pulumi.Output<string[]>;
     /**
      * The name of the resource on which you want to grant permissions.
      */
-    public readonly resourceName!: pulumi.Output<string>;
+    declare public readonly resourceName: pulumi.Output<string>;
     /**
      * The type of the resource on which you want to grant permissions. Valid values: `Group`, `Topic`.
      */
-    public readonly resourceType!: pulumi.Output<string>;
+    declare public readonly resourceType: pulumi.Output<string>;
     /**
      * The username of the account.
      */
-    public readonly username!: pulumi.Output<string>;
+    declare public readonly username: pulumi.Output<string>;
 
     /**
      * Create a Acl resource with the given unique name, arguments, and options.
@@ -170,40 +170,40 @@ export class Acl extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclState | undefined;
-            resourceInputs["actions"] = state ? state.actions : undefined;
-            resourceInputs["decision"] = state ? state.decision : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["ipWhitelists"] = state ? state.ipWhitelists : undefined;
-            resourceInputs["resourceName"] = state ? state.resourceName : undefined;
-            resourceInputs["resourceType"] = state ? state.resourceType : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["actions"] = state?.actions;
+            resourceInputs["decision"] = state?.decision;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["ipWhitelists"] = state?.ipWhitelists;
+            resourceInputs["resourceName"] = state?.resourceName;
+            resourceInputs["resourceType"] = state?.resourceType;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as AclArgs | undefined;
-            if ((!args || args.actions === undefined) && !opts.urn) {
+            if (args?.actions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'actions'");
             }
-            if ((!args || args.decision === undefined) && !opts.urn) {
+            if (args?.decision === undefined && !opts.urn) {
                 throw new Error("Missing required property 'decision'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.resourceName === undefined) && !opts.urn) {
+            if (args?.resourceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceName'");
             }
-            if ((!args || args.resourceType === undefined) && !opts.urn) {
+            if (args?.resourceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceType'");
             }
-            if ((!args || args.username === undefined) && !opts.urn) {
+            if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            resourceInputs["actions"] = args ? args.actions : undefined;
-            resourceInputs["decision"] = args ? args.decision : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["ipWhitelists"] = args ? args.ipWhitelists : undefined;
-            resourceInputs["resourceName"] = args ? args.resourceName : undefined;
-            resourceInputs["resourceType"] = args ? args.resourceType : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["actions"] = args?.actions;
+            resourceInputs["decision"] = args?.decision;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["ipWhitelists"] = args?.ipWhitelists;
+            resourceInputs["resourceName"] = args?.resourceName;
+            resourceInputs["resourceType"] = args?.resourceType;
+            resourceInputs["username"] = args?.username;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Acl.__pulumiType, name, resourceInputs, opts);

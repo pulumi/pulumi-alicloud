@@ -126,23 +126,23 @@ export class Connection extends pulumi.CustomResource {
     /**
      * The parameters that are configured for authentication. See `authParameters` below.
      */
-    public readonly authParameters!: pulumi.Output<outputs.eventbridge.ConnectionAuthParameters | undefined>;
+    declare public readonly authParameters: pulumi.Output<outputs.eventbridge.ConnectionAuthParameters | undefined>;
     /**
      * The name of the connection.
      */
-    public readonly connectionName!: pulumi.Output<string>;
+    declare public readonly connectionName: pulumi.Output<string>;
     /**
      * The creation time of the Connection.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The description of the connection.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The parameters that are configured for the network. See `networkParameters` below.
      */
-    public readonly networkParameters!: pulumi.Output<outputs.eventbridge.ConnectionNetworkParameters>;
+    declare public readonly networkParameters: pulumi.Output<outputs.eventbridge.ConnectionNetworkParameters>;
 
     /**
      * Create a Connection resource with the given unique name, arguments, and options.
@@ -157,23 +157,23 @@ export class Connection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
-            resourceInputs["authParameters"] = state ? state.authParameters : undefined;
-            resourceInputs["connectionName"] = state ? state.connectionName : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["networkParameters"] = state ? state.networkParameters : undefined;
+            resourceInputs["authParameters"] = state?.authParameters;
+            resourceInputs["connectionName"] = state?.connectionName;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["networkParameters"] = state?.networkParameters;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
-            if ((!args || args.connectionName === undefined) && !opts.urn) {
+            if (args?.connectionName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectionName'");
             }
-            if ((!args || args.networkParameters === undefined) && !opts.urn) {
+            if (args?.networkParameters === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkParameters'");
             }
-            resourceInputs["authParameters"] = args ? args.authParameters : undefined;
-            resourceInputs["connectionName"] = args ? args.connectionName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["networkParameters"] = args ? args.networkParameters : undefined;
+            resourceInputs["authParameters"] = args?.authParameters;
+            resourceInputs["connectionName"] = args?.connectionName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["networkParameters"] = args?.networkParameters;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -127,39 +127,39 @@ export class ConsumerGroup extends pulumi.CustomResource {
     /**
      * Consumption retry strategy. See `consumeRetryPolicy` below.
      */
-    public readonly consumeRetryPolicy!: pulumi.Output<outputs.rocketmq.ConsumerGroupConsumeRetryPolicy>;
+    declare public readonly consumeRetryPolicy: pulumi.Output<outputs.rocketmq.ConsumerGroupConsumeRetryPolicy>;
     /**
      * The first ID of the resource.
      */
-    public readonly consumerGroupId!: pulumi.Output<string>;
+    declare public readonly consumerGroupId: pulumi.Output<string>;
     /**
      * The creation time of the resource.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Delivery order.
      */
-    public readonly deliveryOrderType!: pulumi.Output<string | undefined>;
+    declare public readonly deliveryOrderType: pulumi.Output<string | undefined>;
     /**
      * Instance ID.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Maximum received message tps.
      */
-    public readonly maxReceiveTps!: pulumi.Output<number | undefined>;
+    declare public readonly maxReceiveTps: pulumi.Output<number | undefined>;
     /**
      * (Available since v1.247.0) The ID of the region in which the instance resides.
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * Custom remarks.
      */
-    public readonly remark!: pulumi.Output<string | undefined>;
+    declare public readonly remark: pulumi.Output<string | undefined>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a ConsumerGroup resource with the given unique name, arguments, and options.
@@ -174,32 +174,32 @@ export class ConsumerGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConsumerGroupState | undefined;
-            resourceInputs["consumeRetryPolicy"] = state ? state.consumeRetryPolicy : undefined;
-            resourceInputs["consumerGroupId"] = state ? state.consumerGroupId : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deliveryOrderType"] = state ? state.deliveryOrderType : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["maxReceiveTps"] = state ? state.maxReceiveTps : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["remark"] = state ? state.remark : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["consumeRetryPolicy"] = state?.consumeRetryPolicy;
+            resourceInputs["consumerGroupId"] = state?.consumerGroupId;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deliveryOrderType"] = state?.deliveryOrderType;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["maxReceiveTps"] = state?.maxReceiveTps;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["remark"] = state?.remark;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as ConsumerGroupArgs | undefined;
-            if ((!args || args.consumeRetryPolicy === undefined) && !opts.urn) {
+            if (args?.consumeRetryPolicy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'consumeRetryPolicy'");
             }
-            if ((!args || args.consumerGroupId === undefined) && !opts.urn) {
+            if (args?.consumerGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'consumerGroupId'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["consumeRetryPolicy"] = args ? args.consumeRetryPolicy : undefined;
-            resourceInputs["consumerGroupId"] = args ? args.consumerGroupId : undefined;
-            resourceInputs["deliveryOrderType"] = args ? args.deliveryOrderType : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["maxReceiveTps"] = args ? args.maxReceiveTps : undefined;
-            resourceInputs["remark"] = args ? args.remark : undefined;
+            resourceInputs["consumeRetryPolicy"] = args?.consumeRetryPolicy;
+            resourceInputs["consumerGroupId"] = args?.consumerGroupId;
+            resourceInputs["deliveryOrderType"] = args?.deliveryOrderType;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["maxReceiveTps"] = args?.maxReceiveTps;
+            resourceInputs["remark"] = args?.remark;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

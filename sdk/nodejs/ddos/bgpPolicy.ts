@@ -87,15 +87,15 @@ export class BgpPolicy extends pulumi.CustomResource {
     /**
      * Configuration Content See `content` below.
      */
-    public readonly content!: pulumi.Output<outputs.ddos.BgpPolicyContent>;
+    declare public readonly content: pulumi.Output<outputs.ddos.BgpPolicyContent>;
     /**
      * The name of the resource
      */
-    public readonly policyName!: pulumi.Output<string>;
+    declare public readonly policyName: pulumi.Output<string>;
     /**
      * Type
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a BgpPolicy resource with the given unique name, arguments, and options.
@@ -110,20 +110,20 @@ export class BgpPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BgpPolicyState | undefined;
-            resourceInputs["content"] = state ? state.content : undefined;
-            resourceInputs["policyName"] = state ? state.policyName : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["content"] = state?.content;
+            resourceInputs["policyName"] = state?.policyName;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as BgpPolicyArgs | undefined;
-            if ((!args || args.policyName === undefined) && !opts.urn) {
+            if (args?.policyName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyName'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["content"] = args ? args.content : undefined;
-            resourceInputs["policyName"] = args ? args.policyName : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["content"] = args?.content;
+            resourceInputs["policyName"] = args?.policyName;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BgpPolicy.__pulumiType, name, resourceInputs, opts);

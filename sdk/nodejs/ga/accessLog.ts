@@ -122,31 +122,31 @@ export class AccessLog extends pulumi.CustomResource {
     /**
      * The ID of the global acceleration instance.
      */
-    public readonly acceleratorId!: pulumi.Output<string>;
+    declare public readonly acceleratorId: pulumi.Output<string>;
     /**
      * The ID of the endpoint group instance.
      */
-    public readonly endpointGroupId!: pulumi.Output<string>;
+    declare public readonly endpointGroupId: pulumi.Output<string>;
     /**
      * The ID of the listener.
      */
-    public readonly listenerId!: pulumi.Output<string>;
+    declare public readonly listenerId: pulumi.Output<string>;
     /**
      * The name of the Log Store.
      */
-    public readonly slsLogStoreName!: pulumi.Output<string>;
+    declare public readonly slsLogStoreName: pulumi.Output<string>;
     /**
      * The name of the Log Service project.
      */
-    public readonly slsProjectName!: pulumi.Output<string>;
+    declare public readonly slsProjectName: pulumi.Output<string>;
     /**
      * The region ID of the Log Service project.
      */
-    public readonly slsRegionId!: pulumi.Output<string>;
+    declare public readonly slsRegionId: pulumi.Output<string>;
     /**
      * Whether access log is enabled.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a AccessLog resource with the given unique name, arguments, and options.
@@ -161,39 +161,39 @@ export class AccessLog extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessLogState | undefined;
-            resourceInputs["acceleratorId"] = state ? state.acceleratorId : undefined;
-            resourceInputs["endpointGroupId"] = state ? state.endpointGroupId : undefined;
-            resourceInputs["listenerId"] = state ? state.listenerId : undefined;
-            resourceInputs["slsLogStoreName"] = state ? state.slsLogStoreName : undefined;
-            resourceInputs["slsProjectName"] = state ? state.slsProjectName : undefined;
-            resourceInputs["slsRegionId"] = state ? state.slsRegionId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["acceleratorId"] = state?.acceleratorId;
+            resourceInputs["endpointGroupId"] = state?.endpointGroupId;
+            resourceInputs["listenerId"] = state?.listenerId;
+            resourceInputs["slsLogStoreName"] = state?.slsLogStoreName;
+            resourceInputs["slsProjectName"] = state?.slsProjectName;
+            resourceInputs["slsRegionId"] = state?.slsRegionId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as AccessLogArgs | undefined;
-            if ((!args || args.acceleratorId === undefined) && !opts.urn) {
+            if (args?.acceleratorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'acceleratorId'");
             }
-            if ((!args || args.endpointGroupId === undefined) && !opts.urn) {
+            if (args?.endpointGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpointGroupId'");
             }
-            if ((!args || args.listenerId === undefined) && !opts.urn) {
+            if (args?.listenerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'listenerId'");
             }
-            if ((!args || args.slsLogStoreName === undefined) && !opts.urn) {
+            if (args?.slsLogStoreName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'slsLogStoreName'");
             }
-            if ((!args || args.slsProjectName === undefined) && !opts.urn) {
+            if (args?.slsProjectName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'slsProjectName'");
             }
-            if ((!args || args.slsRegionId === undefined) && !opts.urn) {
+            if (args?.slsRegionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'slsRegionId'");
             }
-            resourceInputs["acceleratorId"] = args ? args.acceleratorId : undefined;
-            resourceInputs["endpointGroupId"] = args ? args.endpointGroupId : undefined;
-            resourceInputs["listenerId"] = args ? args.listenerId : undefined;
-            resourceInputs["slsLogStoreName"] = args ? args.slsLogStoreName : undefined;
-            resourceInputs["slsProjectName"] = args ? args.slsProjectName : undefined;
-            resourceInputs["slsRegionId"] = args ? args.slsRegionId : undefined;
+            resourceInputs["acceleratorId"] = args?.acceleratorId;
+            resourceInputs["endpointGroupId"] = args?.endpointGroupId;
+            resourceInputs["listenerId"] = args?.listenerId;
+            resourceInputs["slsLogStoreName"] = args?.slsLogStoreName;
+            resourceInputs["slsProjectName"] = args?.slsProjectName;
+            resourceInputs["slsRegionId"] = args?.slsRegionId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

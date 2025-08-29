@@ -67,25 +67,25 @@ export class Activation extends pulumi.CustomResource {
     /**
      * The description of the activation code. The description can be 1 to 100 characters in length and cannot start with `http://` or `https://`.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The maximum number of times that the activation code can be used to register managed instances. Valid values: `1` to `1000`. Default value: `10`.
      */
-    public readonly instanceCount!: pulumi.Output<number>;
+    declare public readonly instanceCount: pulumi.Output<number>;
     /**
      * The default instance name prefix. The instance name prefix must be 1 to 50 characters in length. It must start with a letter and cannot start with `http://` or `https://`. The instance name prefix can contain only letters, digits, periods (.), underscores (_), hyphens (-), and colons (:).
      * - If you use the activation code created by the CreateActivation operation to register managed instances, the instances are assigned sequential names that are prefixed by the value of this parameter. You can also specify a new instance name to override the assigned sequential name when you register a managed instance.
      * - If you specify InstanceName when you register a managed instance, an instance name in the format of `<InstanceName>-<Number>` is generated. The number of digits in the <Number> value is determined by that in the InstanceCount value. Example: 001. If you do not specify InstanceName, the hostname (Hostname) is used as the instance name.
      */
-    public readonly instanceName!: pulumi.Output<string | undefined>;
+    declare public readonly instanceName: pulumi.Output<string | undefined>;
     /**
      * The IP addresses of hosts that are allowed to use the activation code. The value can be IPv4 addresses, IPv6 addresses, or CIDR blocks.
      */
-    public readonly ipAddressRange!: pulumi.Output<string>;
+    declare public readonly ipAddressRange: pulumi.Output<string>;
     /**
      * The validity period of the activation code. The activation code cannot be used to register new instances after the validity period expires. Unit: hours. Valid values: `1` to `24`. Default value: `4`.
      */
-    public readonly timeToLiveInHours!: pulumi.Output<number>;
+    declare public readonly timeToLiveInHours: pulumi.Output<number>;
 
     /**
      * Create a Activation resource with the given unique name, arguments, and options.
@@ -100,18 +100,18 @@ export class Activation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ActivationState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["instanceCount"] = state ? state.instanceCount : undefined;
-            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
-            resourceInputs["ipAddressRange"] = state ? state.ipAddressRange : undefined;
-            resourceInputs["timeToLiveInHours"] = state ? state.timeToLiveInHours : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["instanceCount"] = state?.instanceCount;
+            resourceInputs["instanceName"] = state?.instanceName;
+            resourceInputs["ipAddressRange"] = state?.ipAddressRange;
+            resourceInputs["timeToLiveInHours"] = state?.timeToLiveInHours;
         } else {
             const args = argsOrState as ActivationArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["instanceCount"] = args ? args.instanceCount : undefined;
-            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
-            resourceInputs["ipAddressRange"] = args ? args.ipAddressRange : undefined;
-            resourceInputs["timeToLiveInHours"] = args ? args.timeToLiveInHours : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["instanceCount"] = args?.instanceCount;
+            resourceInputs["instanceName"] = args?.instanceName;
+            resourceInputs["ipAddressRange"] = args?.ipAddressRange;
+            resourceInputs["timeToLiveInHours"] = args?.timeToLiveInHours;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Activation.__pulumiType, name, resourceInputs, opts);

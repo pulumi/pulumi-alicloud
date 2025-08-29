@@ -46,19 +46,19 @@ export class TunnelQuotaTimer extends pulumi.CustomResource {
     /**
      * The nickname of the exclusive Resource Group (Tunnel Quota) for the level - 1 data transmission service.
      */
-    public readonly nickname!: pulumi.Output<string>;
+    declare public readonly nickname: pulumi.Output<string>;
     /**
      * Time-Sharing configuration
      *
      * > **NOTE:** -- The same reserved Quota resource group supports up to 48 time intervals. The minimum duration of a time interval is 30 minutes. -- After the current data transmission service is configured for time-sharing, if you need to perform a downgrade operation on the data transmission service (package year and month), please reduce the time-sharing concurrency first. -- The effective time of the time-sharing configuration is 0 to 5 minutes, and the billing will be calculated according to the actual effective time. -- Please make sure to set the time range completely from 00:00 to 24:00
      * See `quotaTimer` below.
      */
-    public readonly quotaTimers!: pulumi.Output<outputs.maxcompute.TunnelQuotaTimerQuotaTimer[] | undefined>;
+    declare public readonly quotaTimers: pulumi.Output<outputs.maxcompute.TunnelQuotaTimerQuotaTimer[] | undefined>;
     /**
      * Time zone, reference: Asia/Shanghai
      * In general, the system will automatically generate the time zone according to the region without configuration.
      */
-    public readonly timeZone!: pulumi.Output<string | undefined>;
+    declare public readonly timeZone: pulumi.Output<string | undefined>;
 
     /**
      * Create a TunnelQuotaTimer resource with the given unique name, arguments, and options.
@@ -73,17 +73,17 @@ export class TunnelQuotaTimer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TunnelQuotaTimerState | undefined;
-            resourceInputs["nickname"] = state ? state.nickname : undefined;
-            resourceInputs["quotaTimers"] = state ? state.quotaTimers : undefined;
-            resourceInputs["timeZone"] = state ? state.timeZone : undefined;
+            resourceInputs["nickname"] = state?.nickname;
+            resourceInputs["quotaTimers"] = state?.quotaTimers;
+            resourceInputs["timeZone"] = state?.timeZone;
         } else {
             const args = argsOrState as TunnelQuotaTimerArgs | undefined;
-            if ((!args || args.nickname === undefined) && !opts.urn) {
+            if (args?.nickname === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nickname'");
             }
-            resourceInputs["nickname"] = args ? args.nickname : undefined;
-            resourceInputs["quotaTimers"] = args ? args.quotaTimers : undefined;
-            resourceInputs["timeZone"] = args ? args.timeZone : undefined;
+            resourceInputs["nickname"] = args?.nickname;
+            resourceInputs["quotaTimers"] = args?.quotaTimers;
+            resourceInputs["timeZone"] = args?.timeZone;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TunnelQuotaTimer.__pulumiType, name, resourceInputs, opts);

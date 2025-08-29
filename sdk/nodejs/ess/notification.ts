@@ -104,19 +104,19 @@ export class Notification extends pulumi.CustomResource {
      * * account-id: the ID of your account.
      * * resource-relative-id: the notification method. Valid values : `cloudmonitor`, MNS queue: `queue/{queuename}`, Replace the queuename with the specific MNS queue name, MNS topic: `topic/{topicname}`, Replace the topicname with the specific MNS topic name.
      */
-    public readonly notificationArn!: pulumi.Output<string>;
+    declare public readonly notificationArn: pulumi.Output<string>;
     /**
      * The notification types of Auto Scaling events and resource changes. Supported notification types: 'AUTOSCALING:SCALE_OUT_SUCCESS', 'AUTOSCALING:SCALE_IN_SUCCESS', 'AUTOSCALING:SCALE_OUT_ERROR', 'AUTOSCALING:SCALE_IN_ERROR', 'AUTOSCALING:SCALE_REJECT', 'AUTOSCALING:SCALE_OUT_START', 'AUTOSCALING:SCALE_IN_START', 'AUTOSCALING:SCHEDULE_TASK_EXPIRING'.
      */
-    public readonly notificationTypes!: pulumi.Output<string[]>;
+    declare public readonly notificationTypes: pulumi.Output<string[]>;
     /**
      * The ID of the Auto Scaling group.
      */
-    public readonly scalingGroupId!: pulumi.Output<string>;
+    declare public readonly scalingGroupId: pulumi.Output<string>;
     /**
      * The time zone of the notification. Specify the value in UTC. For example, a value of UTC+8 specifies that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 specifies that the time is 7 hours behind Coordinated Universal Time.
      */
-    public readonly timeZone!: pulumi.Output<string | undefined>;
+    declare public readonly timeZone: pulumi.Output<string | undefined>;
 
     /**
      * Create a Notification resource with the given unique name, arguments, and options.
@@ -131,25 +131,25 @@ export class Notification extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NotificationState | undefined;
-            resourceInputs["notificationArn"] = state ? state.notificationArn : undefined;
-            resourceInputs["notificationTypes"] = state ? state.notificationTypes : undefined;
-            resourceInputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
-            resourceInputs["timeZone"] = state ? state.timeZone : undefined;
+            resourceInputs["notificationArn"] = state?.notificationArn;
+            resourceInputs["notificationTypes"] = state?.notificationTypes;
+            resourceInputs["scalingGroupId"] = state?.scalingGroupId;
+            resourceInputs["timeZone"] = state?.timeZone;
         } else {
             const args = argsOrState as NotificationArgs | undefined;
-            if ((!args || args.notificationArn === undefined) && !opts.urn) {
+            if (args?.notificationArn === undefined && !opts.urn) {
                 throw new Error("Missing required property 'notificationArn'");
             }
-            if ((!args || args.notificationTypes === undefined) && !opts.urn) {
+            if (args?.notificationTypes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'notificationTypes'");
             }
-            if ((!args || args.scalingGroupId === undefined) && !opts.urn) {
+            if (args?.scalingGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scalingGroupId'");
             }
-            resourceInputs["notificationArn"] = args ? args.notificationArn : undefined;
-            resourceInputs["notificationTypes"] = args ? args.notificationTypes : undefined;
-            resourceInputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
-            resourceInputs["timeZone"] = args ? args.timeZone : undefined;
+            resourceInputs["notificationArn"] = args?.notificationArn;
+            resourceInputs["notificationTypes"] = args?.notificationTypes;
+            resourceInputs["scalingGroupId"] = args?.scalingGroupId;
+            resourceInputs["timeZone"] = args?.timeZone;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Notification.__pulumiType, name, resourceInputs, opts);

@@ -89,49 +89,49 @@ export class CycleTask extends pulumi.CustomResource {
     /**
      * Whether to enable. Value:
      */
-    public readonly enable!: pulumi.Output<number>;
+    declare public readonly enable: pulumi.Output<number>;
     /**
      * First execution time.
      */
-    public readonly firstDateStr!: pulumi.Output<number>;
+    declare public readonly firstDateStr: pulumi.Output<number>;
     /**
      * Interval period.
      */
-    public readonly intervalPeriod!: pulumi.Output<number>;
+    declare public readonly intervalPeriod: pulumi.Output<number>;
     /**
      * Extended information field.
      */
-    public readonly param!: pulumi.Output<string | undefined>;
+    declare public readonly param: pulumi.Output<string | undefined>;
     /**
      * Unit of scan cycle, value:
      */
-    public readonly periodUnit!: pulumi.Output<string>;
+    declare public readonly periodUnit: pulumi.Output<string>;
     /**
      * Added the source of the task.
      */
-    public readonly source!: pulumi.Output<string | undefined>;
+    declare public readonly source: pulumi.Output<string | undefined>;
     /**
      * Task end time (hours).
      */
-    public readonly targetEndTime!: pulumi.Output<number>;
+    declare public readonly targetEndTime: pulumi.Output<number>;
     /**
      * Task start time (hours).
      */
-    public readonly targetStartTime!: pulumi.Output<number>;
+    declare public readonly targetStartTime: pulumi.Output<number>;
     /**
      * The task name.
      * - **VIRUS_VUL_SCHEDULE_SCAN**: scans for viruses.
      * - **IMAGE_SCAN**: Image scan.
      * - **EMG_VUL_SCHEDULE_SCAN**: Emergency vulnerability scanning.
      */
-    public readonly taskName!: pulumi.Output<string>;
+    declare public readonly taskName: pulumi.Output<string>;
     /**
      * The task type.
      * - **VIRUS_VUL_SCHEDULE_SCAN**: scans for viruses.
      * - **IMAGE_SCAN**: Image scan.
      * - **EMG_VUL_SCHEDULE_SCAN**: Emergency vulnerability scanning.
      */
-    public readonly taskType!: pulumi.Output<string>;
+    declare public readonly taskType: pulumi.Output<string>;
 
     /**
      * Create a CycleTask resource with the given unique name, arguments, and options.
@@ -146,52 +146,52 @@ export class CycleTask extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CycleTaskState | undefined;
-            resourceInputs["enable"] = state ? state.enable : undefined;
-            resourceInputs["firstDateStr"] = state ? state.firstDateStr : undefined;
-            resourceInputs["intervalPeriod"] = state ? state.intervalPeriod : undefined;
-            resourceInputs["param"] = state ? state.param : undefined;
-            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
-            resourceInputs["targetEndTime"] = state ? state.targetEndTime : undefined;
-            resourceInputs["targetStartTime"] = state ? state.targetStartTime : undefined;
-            resourceInputs["taskName"] = state ? state.taskName : undefined;
-            resourceInputs["taskType"] = state ? state.taskType : undefined;
+            resourceInputs["enable"] = state?.enable;
+            resourceInputs["firstDateStr"] = state?.firstDateStr;
+            resourceInputs["intervalPeriod"] = state?.intervalPeriod;
+            resourceInputs["param"] = state?.param;
+            resourceInputs["periodUnit"] = state?.periodUnit;
+            resourceInputs["source"] = state?.source;
+            resourceInputs["targetEndTime"] = state?.targetEndTime;
+            resourceInputs["targetStartTime"] = state?.targetStartTime;
+            resourceInputs["taskName"] = state?.taskName;
+            resourceInputs["taskType"] = state?.taskType;
         } else {
             const args = argsOrState as CycleTaskArgs | undefined;
-            if ((!args || args.enable === undefined) && !opts.urn) {
+            if (args?.enable === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enable'");
             }
-            if ((!args || args.firstDateStr === undefined) && !opts.urn) {
+            if (args?.firstDateStr === undefined && !opts.urn) {
                 throw new Error("Missing required property 'firstDateStr'");
             }
-            if ((!args || args.intervalPeriod === undefined) && !opts.urn) {
+            if (args?.intervalPeriod === undefined && !opts.urn) {
                 throw new Error("Missing required property 'intervalPeriod'");
             }
-            if ((!args || args.periodUnit === undefined) && !opts.urn) {
+            if (args?.periodUnit === undefined && !opts.urn) {
                 throw new Error("Missing required property 'periodUnit'");
             }
-            if ((!args || args.targetEndTime === undefined) && !opts.urn) {
+            if (args?.targetEndTime === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetEndTime'");
             }
-            if ((!args || args.targetStartTime === undefined) && !opts.urn) {
+            if (args?.targetStartTime === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetStartTime'");
             }
-            if ((!args || args.taskName === undefined) && !opts.urn) {
+            if (args?.taskName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'taskName'");
             }
-            if ((!args || args.taskType === undefined) && !opts.urn) {
+            if (args?.taskType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'taskType'");
             }
-            resourceInputs["enable"] = args ? args.enable : undefined;
-            resourceInputs["firstDateStr"] = args ? args.firstDateStr : undefined;
-            resourceInputs["intervalPeriod"] = args ? args.intervalPeriod : undefined;
-            resourceInputs["param"] = args ? args.param : undefined;
-            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
-            resourceInputs["targetEndTime"] = args ? args.targetEndTime : undefined;
-            resourceInputs["targetStartTime"] = args ? args.targetStartTime : undefined;
-            resourceInputs["taskName"] = args ? args.taskName : undefined;
-            resourceInputs["taskType"] = args ? args.taskType : undefined;
+            resourceInputs["enable"] = args?.enable;
+            resourceInputs["firstDateStr"] = args?.firstDateStr;
+            resourceInputs["intervalPeriod"] = args?.intervalPeriod;
+            resourceInputs["param"] = args?.param;
+            resourceInputs["periodUnit"] = args?.periodUnit;
+            resourceInputs["source"] = args?.source;
+            resourceInputs["targetEndTime"] = args?.targetEndTime;
+            resourceInputs["targetStartTime"] = args?.targetStartTime;
+            resourceInputs["taskName"] = args?.taskName;
+            resourceInputs["taskType"] = args?.taskType;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CycleTask.__pulumiType, name, resourceInputs, opts);

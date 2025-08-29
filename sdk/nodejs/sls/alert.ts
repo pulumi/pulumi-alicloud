@@ -200,35 +200,35 @@ export class Alert extends pulumi.CustomResource {
     /**
      * Alert rule ID, unique under Project.
      */
-    public readonly alertName!: pulumi.Output<string>;
+    declare public readonly alertName: pulumi.Output<string>;
     /**
      * Detailed configuration of alarm monitoring rules. See `configuration` below.
      */
-    public readonly configuration!: pulumi.Output<outputs.sls.AlertConfiguration>;
+    declare public readonly configuration: pulumi.Output<outputs.sls.AlertConfiguration>;
     /**
      * Alarm rule creation time.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly createTime: pulumi.Output<number>;
     /**
      * Compatible fields, set to empty strings.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Display name of the alarm rule.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Project Name.
      */
-    public readonly projectName!: pulumi.Output<string>;
+    declare public readonly projectName: pulumi.Output<string>;
     /**
      * Check the frequency-dependent configuration. See `schedule` below.
      */
-    public readonly schedule!: pulumi.Output<outputs.sls.AlertSchedule>;
+    declare public readonly schedule: pulumi.Output<outputs.sls.AlertSchedule>;
     /**
      * Resource attribute field representing alarm status.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
 
     /**
      * Create a Alert resource with the given unique name, arguments, and options.
@@ -243,38 +243,38 @@ export class Alert extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlertState | undefined;
-            resourceInputs["alertName"] = state ? state.alertName : undefined;
-            resourceInputs["configuration"] = state ? state.configuration : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["projectName"] = state ? state.projectName : undefined;
-            resourceInputs["schedule"] = state ? state.schedule : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["alertName"] = state?.alertName;
+            resourceInputs["configuration"] = state?.configuration;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["projectName"] = state?.projectName;
+            resourceInputs["schedule"] = state?.schedule;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as AlertArgs | undefined;
-            if ((!args || args.alertName === undefined) && !opts.urn) {
+            if (args?.alertName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'alertName'");
             }
-            if ((!args || args.configuration === undefined) && !opts.urn) {
+            if (args?.configuration === undefined && !opts.urn) {
                 throw new Error("Missing required property 'configuration'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.projectName === undefined) && !opts.urn) {
+            if (args?.projectName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectName'");
             }
-            if ((!args || args.schedule === undefined) && !opts.urn) {
+            if (args?.schedule === undefined && !opts.urn) {
                 throw new Error("Missing required property 'schedule'");
             }
-            resourceInputs["alertName"] = args ? args.alertName : undefined;
-            resourceInputs["configuration"] = args ? args.configuration : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["projectName"] = args ? args.projectName : undefined;
-            resourceInputs["schedule"] = args ? args.schedule : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["alertName"] = args?.alertName;
+            resourceInputs["configuration"] = args?.configuration;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["projectName"] = args?.projectName;
+            resourceInputs["schedule"] = args?.schedule;
+            resourceInputs["status"] = args?.status;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

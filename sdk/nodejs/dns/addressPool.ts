@@ -105,23 +105,23 @@ export class AddressPool extends pulumi.CustomResource {
     /**
      * The name of the address pool.
      */
-    public readonly addressPoolName!: pulumi.Output<string>;
+    declare public readonly addressPoolName: pulumi.Output<string>;
     /**
      * The address lists of the Address Pool. See `address` below for details.
      */
-    public readonly addresses!: pulumi.Output<outputs.dns.AddressPoolAddress[]>;
+    declare public readonly addresses: pulumi.Output<outputs.dns.AddressPoolAddress[]>;
     /**
      * The ID of the instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The load balancing policy of the address pool. Valid values:`ALL_RR` or `RATIO`. `ALL_RR`: returns all addresses. `RATIO`: returns addresses by weight.
      */
-    public readonly lbaStrategy!: pulumi.Output<string>;
+    declare public readonly lbaStrategy: pulumi.Output<string>;
     /**
      * The type of the address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a AddressPool resource with the given unique name, arguments, and options.
@@ -136,33 +136,33 @@ export class AddressPool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AddressPoolState | undefined;
-            resourceInputs["addressPoolName"] = state ? state.addressPoolName : undefined;
-            resourceInputs["addresses"] = state ? state.addresses : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["lbaStrategy"] = state ? state.lbaStrategy : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["addressPoolName"] = state?.addressPoolName;
+            resourceInputs["addresses"] = state?.addresses;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["lbaStrategy"] = state?.lbaStrategy;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as AddressPoolArgs | undefined;
-            if ((!args || args.addressPoolName === undefined) && !opts.urn) {
+            if (args?.addressPoolName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'addressPoolName'");
             }
-            if ((!args || args.addresses === undefined) && !opts.urn) {
+            if (args?.addresses === undefined && !opts.urn) {
                 throw new Error("Missing required property 'addresses'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.lbaStrategy === undefined) && !opts.urn) {
+            if (args?.lbaStrategy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'lbaStrategy'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["addressPoolName"] = args ? args.addressPoolName : undefined;
-            resourceInputs["addresses"] = args ? args.addresses : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["lbaStrategy"] = args ? args.lbaStrategy : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["addressPoolName"] = args?.addressPoolName;
+            resourceInputs["addresses"] = args?.addresses;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["lbaStrategy"] = args?.lbaStrategy;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AddressPool.__pulumiType, name, resourceInputs, opts);

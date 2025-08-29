@@ -111,31 +111,31 @@ export class InterRegionTrafficQosQueue extends pulumi.CustomResource {
     /**
      * The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
      */
-    public readonly bandwidth!: pulumi.Output<string | undefined>;
+    declare public readonly bandwidth: pulumi.Output<string | undefined>;
     /**
      * The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
      */
-    public readonly dscps!: pulumi.Output<number[]>;
+    declare public readonly dscps: pulumi.Output<number[]>;
     /**
      * The description information of the traffic scheduling policy.
      */
-    public readonly interRegionTrafficQosQueueDescription!: pulumi.Output<string | undefined>;
+    declare public readonly interRegionTrafficQosQueueDescription: pulumi.Output<string | undefined>;
     /**
      * The name of the traffic scheduling policy.
      */
-    public readonly interRegionTrafficQosQueueName!: pulumi.Output<string | undefined>;
+    declare public readonly interRegionTrafficQosQueueName: pulumi.Output<string | undefined>;
     /**
      * The percentage of cross-region bandwidth that the current queue can use.
      */
-    public readonly remainBandwidthPercent!: pulumi.Output<number | undefined>;
+    declare public readonly remainBandwidthPercent: pulumi.Output<number | undefined>;
     /**
      * The status of the traffic scheduling policy.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The ID of the traffic scheduling policy.
      */
-    public readonly trafficQosPolicyId!: pulumi.Output<string>;
+    declare public readonly trafficQosPolicyId: pulumi.Output<string>;
 
     /**
      * Create a InterRegionTrafficQosQueue resource with the given unique name, arguments, and options.
@@ -150,27 +150,27 @@ export class InterRegionTrafficQosQueue extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InterRegionTrafficQosQueueState | undefined;
-            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
-            resourceInputs["dscps"] = state ? state.dscps : undefined;
-            resourceInputs["interRegionTrafficQosQueueDescription"] = state ? state.interRegionTrafficQosQueueDescription : undefined;
-            resourceInputs["interRegionTrafficQosQueueName"] = state ? state.interRegionTrafficQosQueueName : undefined;
-            resourceInputs["remainBandwidthPercent"] = state ? state.remainBandwidthPercent : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["trafficQosPolicyId"] = state ? state.trafficQosPolicyId : undefined;
+            resourceInputs["bandwidth"] = state?.bandwidth;
+            resourceInputs["dscps"] = state?.dscps;
+            resourceInputs["interRegionTrafficQosQueueDescription"] = state?.interRegionTrafficQosQueueDescription;
+            resourceInputs["interRegionTrafficQosQueueName"] = state?.interRegionTrafficQosQueueName;
+            resourceInputs["remainBandwidthPercent"] = state?.remainBandwidthPercent;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["trafficQosPolicyId"] = state?.trafficQosPolicyId;
         } else {
             const args = argsOrState as InterRegionTrafficQosQueueArgs | undefined;
-            if ((!args || args.dscps === undefined) && !opts.urn) {
+            if (args?.dscps === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dscps'");
             }
-            if ((!args || args.trafficQosPolicyId === undefined) && !opts.urn) {
+            if (args?.trafficQosPolicyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'trafficQosPolicyId'");
             }
-            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
-            resourceInputs["dscps"] = args ? args.dscps : undefined;
-            resourceInputs["interRegionTrafficQosQueueDescription"] = args ? args.interRegionTrafficQosQueueDescription : undefined;
-            resourceInputs["interRegionTrafficQosQueueName"] = args ? args.interRegionTrafficQosQueueName : undefined;
-            resourceInputs["remainBandwidthPercent"] = args ? args.remainBandwidthPercent : undefined;
-            resourceInputs["trafficQosPolicyId"] = args ? args.trafficQosPolicyId : undefined;
+            resourceInputs["bandwidth"] = args?.bandwidth;
+            resourceInputs["dscps"] = args?.dscps;
+            resourceInputs["interRegionTrafficQosQueueDescription"] = args?.interRegionTrafficQosQueueDescription;
+            resourceInputs["interRegionTrafficQosQueueName"] = args?.interRegionTrafficQosQueueName;
+            resourceInputs["remainBandwidthPercent"] = args?.remainBandwidthPercent;
+            resourceInputs["trafficQosPolicyId"] = args?.trafficQosPolicyId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

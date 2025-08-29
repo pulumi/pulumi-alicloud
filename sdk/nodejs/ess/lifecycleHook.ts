@@ -114,31 +114,31 @@ export class LifecycleHook extends pulumi.CustomResource {
     /**
      * Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, ROLLBACK, default value: CONTINUE.
      */
-    public readonly defaultResult!: pulumi.Output<string | undefined>;
+    declare public readonly defaultResult: pulumi.Output<string | undefined>;
     /**
      * Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the defaultResult parameter. Default value: 600.
      */
-    public readonly heartbeatTimeout!: pulumi.Output<number | undefined>;
+    declare public readonly heartbeatTimeout: pulumi.Output<number | undefined>;
     /**
      * Type of Scaling activity attached to lifecycle hook. Supported value: SCALE_OUT, SCALE_IN.
      */
-    public readonly lifecycleTransition!: pulumi.Output<string>;
+    declare public readonly lifecycleTransition: pulumi.Output<string>;
     /**
      * The name of the lifecycle hook, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is lifecycle hook id.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The Arn of notification target.
      */
-    public readonly notificationArn!: pulumi.Output<string>;
+    declare public readonly notificationArn: pulumi.Output<string>;
     /**
      * Additional information that you want to include when Auto Scaling sends a message to the notification target.
      */
-    public readonly notificationMetadata!: pulumi.Output<string>;
+    declare public readonly notificationMetadata: pulumi.Output<string>;
     /**
      * The ID of the Auto Scaling group to which you want to assign the lifecycle hook.
      */
-    public readonly scalingGroupId!: pulumi.Output<string>;
+    declare public readonly scalingGroupId: pulumi.Output<string>;
 
     /**
      * Create a LifecycleHook resource with the given unique name, arguments, and options.
@@ -153,28 +153,28 @@ export class LifecycleHook extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LifecycleHookState | undefined;
-            resourceInputs["defaultResult"] = state ? state.defaultResult : undefined;
-            resourceInputs["heartbeatTimeout"] = state ? state.heartbeatTimeout : undefined;
-            resourceInputs["lifecycleTransition"] = state ? state.lifecycleTransition : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["notificationArn"] = state ? state.notificationArn : undefined;
-            resourceInputs["notificationMetadata"] = state ? state.notificationMetadata : undefined;
-            resourceInputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
+            resourceInputs["defaultResult"] = state?.defaultResult;
+            resourceInputs["heartbeatTimeout"] = state?.heartbeatTimeout;
+            resourceInputs["lifecycleTransition"] = state?.lifecycleTransition;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["notificationArn"] = state?.notificationArn;
+            resourceInputs["notificationMetadata"] = state?.notificationMetadata;
+            resourceInputs["scalingGroupId"] = state?.scalingGroupId;
         } else {
             const args = argsOrState as LifecycleHookArgs | undefined;
-            if ((!args || args.lifecycleTransition === undefined) && !opts.urn) {
+            if (args?.lifecycleTransition === undefined && !opts.urn) {
                 throw new Error("Missing required property 'lifecycleTransition'");
             }
-            if ((!args || args.scalingGroupId === undefined) && !opts.urn) {
+            if (args?.scalingGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scalingGroupId'");
             }
-            resourceInputs["defaultResult"] = args ? args.defaultResult : undefined;
-            resourceInputs["heartbeatTimeout"] = args ? args.heartbeatTimeout : undefined;
-            resourceInputs["lifecycleTransition"] = args ? args.lifecycleTransition : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["notificationArn"] = args ? args.notificationArn : undefined;
-            resourceInputs["notificationMetadata"] = args ? args.notificationMetadata : undefined;
-            resourceInputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
+            resourceInputs["defaultResult"] = args?.defaultResult;
+            resourceInputs["heartbeatTimeout"] = args?.heartbeatTimeout;
+            resourceInputs["lifecycleTransition"] = args?.lifecycleTransition;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["notificationArn"] = args?.notificationArn;
+            resourceInputs["notificationMetadata"] = args?.notificationMetadata;
+            resourceInputs["scalingGroupId"] = args?.scalingGroupId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(LifecycleHook.__pulumiType, name, resourceInputs, opts);

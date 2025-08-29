@@ -82,35 +82,35 @@ export class EcsImageComponent extends pulumi.CustomResource {
      *
      * > **NOTE:**  Build components can only be used in build templates and test components can only be used in test templates.
      */
-    public readonly componentType!: pulumi.Output<string>;
+    declare public readonly componentType: pulumi.Output<string>;
     /**
      * The component version number, which is used in conjunction with the component name, is in the format of major.minor.patch and is a non-negative integer.
      *
      * Default value:(x +1).0.0, where x is the maximum major version of the current component.
      */
-    public readonly componentVersion!: pulumi.Output<string>;
+    declare public readonly componentVersion: pulumi.Output<string>;
     /**
      * Component content. Consists of multiple commands. The maximum number of commands cannot exceed 127. Details of supported commands and command formats,
      */
-    public readonly content!: pulumi.Output<string>;
+    declare public readonly content: pulumi.Output<string>;
     /**
      * Component creation time.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Description information. It must be 2 to 256 characters in length and cannot start with http:// or https.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The component name. It must be 2 to 128 characters in length and start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).
      *
      * > **NOTE:**  When 'Name' is not set, the 'ImageComponentId' return value is used by default.
      */
-    public readonly imageComponentName!: pulumi.Output<string>;
+    declare public readonly imageComponentName: pulumi.Output<string>;
     /**
      * The ID of the enterprise resource group to which the created image component belongs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The operating system supported by the component.
      *
@@ -120,11 +120,11 @@ export class EcsImageComponent extends pulumi.CustomResource {
      *
      * Default value: Linux.
      */
-    public readonly systemType!: pulumi.Output<string>;
+    declare public readonly systemType: pulumi.Output<string>;
     /**
      * List of label key-value pairs.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a EcsImageComponent resource with the given unique name, arguments, and options.
@@ -139,28 +139,28 @@ export class EcsImageComponent extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcsImageComponentState | undefined;
-            resourceInputs["componentType"] = state ? state.componentType : undefined;
-            resourceInputs["componentVersion"] = state ? state.componentVersion : undefined;
-            resourceInputs["content"] = state ? state.content : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["imageComponentName"] = state ? state.imageComponentName : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["systemType"] = state ? state.systemType : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["componentType"] = state?.componentType;
+            resourceInputs["componentVersion"] = state?.componentVersion;
+            resourceInputs["content"] = state?.content;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["imageComponentName"] = state?.imageComponentName;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["systemType"] = state?.systemType;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as EcsImageComponentArgs | undefined;
-            if ((!args || args.content === undefined) && !opts.urn) {
+            if (args?.content === undefined && !opts.urn) {
                 throw new Error("Missing required property 'content'");
             }
-            resourceInputs["componentType"] = args ? args.componentType : undefined;
-            resourceInputs["componentVersion"] = args ? args.componentVersion : undefined;
-            resourceInputs["content"] = args ? args.content : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["imageComponentName"] = args ? args.imageComponentName : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["systemType"] = args ? args.systemType : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["componentType"] = args?.componentType;
+            resourceInputs["componentVersion"] = args?.componentVersion;
+            resourceInputs["content"] = args?.content;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["imageComponentName"] = args?.imageComponentName;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["systemType"] = args?.systemType;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

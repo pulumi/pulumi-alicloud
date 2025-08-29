@@ -95,15 +95,15 @@ export class PrincipalPortfolioAssociation extends pulumi.CustomResource {
     /**
      * Product Portfolio ID
      */
-    public readonly portfolioId!: pulumi.Output<string>;
+    declare public readonly portfolioId: pulumi.Output<string>;
     /**
      * RAM entity ID
      */
-    public readonly principalId!: pulumi.Output<string>;
+    declare public readonly principalId: pulumi.Output<string>;
     /**
      * RAM entity type
      */
-    public readonly principalType!: pulumi.Output<string>;
+    declare public readonly principalType: pulumi.Output<string>;
 
     /**
      * Create a PrincipalPortfolioAssociation resource with the given unique name, arguments, and options.
@@ -118,23 +118,23 @@ export class PrincipalPortfolioAssociation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PrincipalPortfolioAssociationState | undefined;
-            resourceInputs["portfolioId"] = state ? state.portfolioId : undefined;
-            resourceInputs["principalId"] = state ? state.principalId : undefined;
-            resourceInputs["principalType"] = state ? state.principalType : undefined;
+            resourceInputs["portfolioId"] = state?.portfolioId;
+            resourceInputs["principalId"] = state?.principalId;
+            resourceInputs["principalType"] = state?.principalType;
         } else {
             const args = argsOrState as PrincipalPortfolioAssociationArgs | undefined;
-            if ((!args || args.portfolioId === undefined) && !opts.urn) {
+            if (args?.portfolioId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'portfolioId'");
             }
-            if ((!args || args.principalId === undefined) && !opts.urn) {
+            if (args?.principalId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'principalId'");
             }
-            if ((!args || args.principalType === undefined) && !opts.urn) {
+            if (args?.principalType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'principalType'");
             }
-            resourceInputs["portfolioId"] = args ? args.portfolioId : undefined;
-            resourceInputs["principalId"] = args ? args.principalId : undefined;
-            resourceInputs["principalType"] = args ? args.principalType : undefined;
+            resourceInputs["portfolioId"] = args?.portfolioId;
+            resourceInputs["principalId"] = args?.principalId;
+            resourceInputs["principalType"] = args?.principalType;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PrincipalPortfolioAssociation.__pulumiType, name, resourceInputs, opts);

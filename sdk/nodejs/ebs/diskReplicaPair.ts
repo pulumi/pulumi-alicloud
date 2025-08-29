@@ -57,35 +57,35 @@ export class DiskReplicaPair extends pulumi.CustomResource {
      * Default value: 10240.
      * This parameter cannot be specified when the ChargeType value is PayAsYouGo The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
      */
-    public readonly bandwidth!: pulumi.Output<number | undefined>;
+    declare public readonly bandwidth: pulumi.Output<number | undefined>;
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly createTime: pulumi.Output<number>;
     /**
      * The description of the asynchronous replication relationship. 2 to 256 English or Chinese characters in length and cannot start with' http:// 'or' https.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The ID of the standby disk.
      */
-    public readonly destinationDiskId!: pulumi.Output<string>;
+    declare public readonly destinationDiskId: pulumi.Output<string>;
     /**
      * The ID of the region to which the disaster recovery site belongs.
      */
-    public readonly destinationRegionId!: pulumi.Output<string>;
+    declare public readonly destinationRegionId: pulumi.Output<string>;
     /**
      * The ID of the zone to which the disaster recovery site belongs.
      */
-    public readonly destinationZoneId!: pulumi.Output<string>;
+    declare public readonly destinationZoneId: pulumi.Output<string>;
     /**
      * The ID of the primary disk.
      */
-    public readonly diskId!: pulumi.Output<string>;
+    declare public readonly diskId: pulumi.Output<string>;
     /**
      * The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
      */
-    public readonly diskReplicaPairName!: pulumi.Output<string>;
+    declare public readonly diskReplicaPairName: pulumi.Output<string>;
     /**
      * Whether to synchronize immediately. Value range:
      * - true: Start data synchronization immediately.
@@ -93,23 +93,23 @@ export class DiskReplicaPair extends pulumi.CustomResource {
      *
      * Default value: false.
      */
-    public readonly oneShot!: pulumi.Output<boolean | undefined>;
+    declare public readonly oneShot: pulumi.Output<boolean | undefined>;
     /**
      * . Field 'pair_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_pair_name' instead.
      *
      * @deprecated Field 'pair_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_pair_name' instead.
      */
-    public readonly pairName!: pulumi.Output<string>;
+    declare public readonly pairName: pulumi.Output<string>;
     /**
      * The payment type of the resource
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * The purchase duration of the asynchronous replication relationship. This parameter is required when 'ChargeType = PrePay. The duration unit is specified by'periodunit', and the value range is:
      * - When 'PeriodUnit = Week', the value range of this parameter is 1, 2, 3, and 4.
      * - When 'PeriodUnit = Month', the value range of this parameter is 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, 60.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * The unit of the purchase time of the asynchronous replication relationship. Value range:
      * - Week: Week.
@@ -117,37 +117,37 @@ export class DiskReplicaPair extends pulumi.CustomResource {
      *
      * Default value: Month.
      */
-    public readonly periodUnit!: pulumi.Output<string | undefined>;
+    declare public readonly periodUnit: pulumi.Output<string | undefined>;
     /**
      * The region ID  of the resource
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The ID of the resource group
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
      */
-    public readonly reverseReplicate!: pulumi.Output<boolean | undefined>;
+    declare public readonly reverseReplicate: pulumi.Output<boolean | undefined>;
     /**
      * The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
      */
-    public readonly rpo!: pulumi.Output<number>;
+    declare public readonly rpo: pulumi.Output<number>;
     /**
      * The ID of the zone to which the production site belongs.
      */
-    public readonly sourceZoneId!: pulumi.Output<string>;
+    declare public readonly sourceZoneId: pulumi.Output<string>;
     /**
      * The status of the resource
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tag of the resource
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a DiskReplicaPair resource with the given unique name, arguments, and options.
@@ -162,60 +162,60 @@ export class DiskReplicaPair extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DiskReplicaPairState | undefined;
-            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["destinationDiskId"] = state ? state.destinationDiskId : undefined;
-            resourceInputs["destinationRegionId"] = state ? state.destinationRegionId : undefined;
-            resourceInputs["destinationZoneId"] = state ? state.destinationZoneId : undefined;
-            resourceInputs["diskId"] = state ? state.diskId : undefined;
-            resourceInputs["diskReplicaPairName"] = state ? state.diskReplicaPairName : undefined;
-            resourceInputs["oneShot"] = state ? state.oneShot : undefined;
-            resourceInputs["pairName"] = state ? state.pairName : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["reverseReplicate"] = state ? state.reverseReplicate : undefined;
-            resourceInputs["rpo"] = state ? state.rpo : undefined;
-            resourceInputs["sourceZoneId"] = state ? state.sourceZoneId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["bandwidth"] = state?.bandwidth;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["destinationDiskId"] = state?.destinationDiskId;
+            resourceInputs["destinationRegionId"] = state?.destinationRegionId;
+            resourceInputs["destinationZoneId"] = state?.destinationZoneId;
+            resourceInputs["diskId"] = state?.diskId;
+            resourceInputs["diskReplicaPairName"] = state?.diskReplicaPairName;
+            resourceInputs["oneShot"] = state?.oneShot;
+            resourceInputs["pairName"] = state?.pairName;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["periodUnit"] = state?.periodUnit;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["reverseReplicate"] = state?.reverseReplicate;
+            resourceInputs["rpo"] = state?.rpo;
+            resourceInputs["sourceZoneId"] = state?.sourceZoneId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as DiskReplicaPairArgs | undefined;
-            if ((!args || args.destinationDiskId === undefined) && !opts.urn) {
+            if (args?.destinationDiskId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationDiskId'");
             }
-            if ((!args || args.destinationRegionId === undefined) && !opts.urn) {
+            if (args?.destinationRegionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationRegionId'");
             }
-            if ((!args || args.destinationZoneId === undefined) && !opts.urn) {
+            if (args?.destinationZoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationZoneId'");
             }
-            if ((!args || args.diskId === undefined) && !opts.urn) {
+            if (args?.diskId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'diskId'");
             }
-            if ((!args || args.sourceZoneId === undefined) && !opts.urn) {
+            if (args?.sourceZoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceZoneId'");
             }
-            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["destinationDiskId"] = args ? args.destinationDiskId : undefined;
-            resourceInputs["destinationRegionId"] = args ? args.destinationRegionId : undefined;
-            resourceInputs["destinationZoneId"] = args ? args.destinationZoneId : undefined;
-            resourceInputs["diskId"] = args ? args.diskId : undefined;
-            resourceInputs["diskReplicaPairName"] = args ? args.diskReplicaPairName : undefined;
-            resourceInputs["oneShot"] = args ? args.oneShot : undefined;
-            resourceInputs["pairName"] = args ? args.pairName : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["reverseReplicate"] = args ? args.reverseReplicate : undefined;
-            resourceInputs["rpo"] = args ? args.rpo : undefined;
-            resourceInputs["sourceZoneId"] = args ? args.sourceZoneId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["bandwidth"] = args?.bandwidth;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["destinationDiskId"] = args?.destinationDiskId;
+            resourceInputs["destinationRegionId"] = args?.destinationRegionId;
+            resourceInputs["destinationZoneId"] = args?.destinationZoneId;
+            resourceInputs["diskId"] = args?.diskId;
+            resourceInputs["diskReplicaPairName"] = args?.diskReplicaPairName;
+            resourceInputs["oneShot"] = args?.oneShot;
+            resourceInputs["pairName"] = args?.pairName;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["periodUnit"] = args?.periodUnit;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["reverseReplicate"] = args?.reverseReplicate;
+            resourceInputs["rpo"] = args?.rpo;
+            resourceInputs["sourceZoneId"] = args?.sourceZoneId;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

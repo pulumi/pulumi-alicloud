@@ -63,25 +63,25 @@ export class ConfigurationRecorder extends pulumi.CustomResource {
     /**
      * Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
      */
-    public readonly enterpriseEdition!: pulumi.Output<boolean>;
+    declare public readonly enterpriseEdition: pulumi.Output<boolean>;
     /**
      * Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
      */
-    public /*out*/ readonly organizationEnableStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly organizationEnableStatus: pulumi.Output<string>;
     /**
      * The ID of the Enterprise management account.
      */
-    public /*out*/ readonly organizationMasterId!: pulumi.Output<number>;
+    declare public /*out*/ readonly organizationMasterId: pulumi.Output<number>;
     /**
      * A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
      * * If you use an ordinary account, the `resourceTypes` supports the update operation after the process of creation is completed.
      * * If you use an enterprise account, the `resourceTypes` does not support updating.
      */
-    public readonly resourceTypes!: pulumi.Output<string[]>;
+    declare public readonly resourceTypes: pulumi.Output<string[]>;
     /**
      * Status of resource monitoring. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a ConfigurationRecorder resource with the given unique name, arguments, and options.
@@ -96,15 +96,15 @@ export class ConfigurationRecorder extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConfigurationRecorderState | undefined;
-            resourceInputs["enterpriseEdition"] = state ? state.enterpriseEdition : undefined;
-            resourceInputs["organizationEnableStatus"] = state ? state.organizationEnableStatus : undefined;
-            resourceInputs["organizationMasterId"] = state ? state.organizationMasterId : undefined;
-            resourceInputs["resourceTypes"] = state ? state.resourceTypes : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["enterpriseEdition"] = state?.enterpriseEdition;
+            resourceInputs["organizationEnableStatus"] = state?.organizationEnableStatus;
+            resourceInputs["organizationMasterId"] = state?.organizationMasterId;
+            resourceInputs["resourceTypes"] = state?.resourceTypes;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as ConfigurationRecorderArgs | undefined;
-            resourceInputs["enterpriseEdition"] = args ? args.enterpriseEdition : undefined;
-            resourceInputs["resourceTypes"] = args ? args.resourceTypes : undefined;
+            resourceInputs["enterpriseEdition"] = args?.enterpriseEdition;
+            resourceInputs["resourceTypes"] = args?.resourceTypes;
             resourceInputs["organizationEnableStatus"] = undefined /*out*/;
             resourceInputs["organizationMasterId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

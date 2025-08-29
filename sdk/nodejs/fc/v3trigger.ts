@@ -143,59 +143,59 @@ export class V3Trigger extends pulumi.CustomResource {
     /**
      * Creation time
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Description of the trigger
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Function Name
      */
-    public readonly functionName!: pulumi.Output<string>;
+    declare public readonly functionName: pulumi.Output<string>;
     /**
      * (Available since v1.234.0) HTTP trigger information
      */
-    public /*out*/ readonly httpTrigger!: pulumi.Output<outputs.fc.V3TriggerHttpTrigger>;
+    declare public /*out*/ readonly httpTrigger: pulumi.Output<outputs.fc.V3TriggerHttpTrigger>;
     /**
      * The role required by the event source (such as OSS) to call the function.
      */
-    public readonly invocationRole!: pulumi.Output<string | undefined>;
+    declare public readonly invocationRole: pulumi.Output<string | undefined>;
     /**
      * (Available since v1.234.0) The last modified time of the trigger
      */
-    public /*out*/ readonly lastModifiedTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastModifiedTime: pulumi.Output<string>;
     /**
      * The version or alias of the function
      */
-    public readonly qualifier!: pulumi.Output<string>;
+    declare public readonly qualifier: pulumi.Output<string>;
     /**
      * Trigger Event source ARN
      */
-    public readonly sourceArn!: pulumi.Output<string>;
+    declare public readonly sourceArn: pulumi.Output<string>;
     /**
      * The state of the trigger
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * (Available since v1.234.0) Resource identity of the function
      */
-    public /*out*/ readonly targetArn!: pulumi.Output<string>;
+    declare public /*out*/ readonly targetArn: pulumi.Output<string>;
     /**
      * Trigger configuration. The configuration varies for different types of triggers.
      */
-    public readonly triggerConfig!: pulumi.Output<string | undefined>;
+    declare public readonly triggerConfig: pulumi.Output<string | undefined>;
     /**
      * (Available since v1.234.0) Trigger ID
      */
-    public /*out*/ readonly triggerId!: pulumi.Output<string>;
+    declare public /*out*/ readonly triggerId: pulumi.Output<string>;
     /**
      * Trigger Name
      */
-    public readonly triggerName!: pulumi.Output<string>;
+    declare public readonly triggerName: pulumi.Output<string>;
     /**
      * The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mnsTopic and eventbridge.
      */
-    public readonly triggerType!: pulumi.Output<string>;
+    declare public readonly triggerType: pulumi.Output<string>;
 
     /**
      * Create a V3Trigger resource with the given unique name, arguments, and options.
@@ -210,39 +210,39 @@ export class V3Trigger extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as V3TriggerState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["functionName"] = state ? state.functionName : undefined;
-            resourceInputs["httpTrigger"] = state ? state.httpTrigger : undefined;
-            resourceInputs["invocationRole"] = state ? state.invocationRole : undefined;
-            resourceInputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
-            resourceInputs["qualifier"] = state ? state.qualifier : undefined;
-            resourceInputs["sourceArn"] = state ? state.sourceArn : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["targetArn"] = state ? state.targetArn : undefined;
-            resourceInputs["triggerConfig"] = state ? state.triggerConfig : undefined;
-            resourceInputs["triggerId"] = state ? state.triggerId : undefined;
-            resourceInputs["triggerName"] = state ? state.triggerName : undefined;
-            resourceInputs["triggerType"] = state ? state.triggerType : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["functionName"] = state?.functionName;
+            resourceInputs["httpTrigger"] = state?.httpTrigger;
+            resourceInputs["invocationRole"] = state?.invocationRole;
+            resourceInputs["lastModifiedTime"] = state?.lastModifiedTime;
+            resourceInputs["qualifier"] = state?.qualifier;
+            resourceInputs["sourceArn"] = state?.sourceArn;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["targetArn"] = state?.targetArn;
+            resourceInputs["triggerConfig"] = state?.triggerConfig;
+            resourceInputs["triggerId"] = state?.triggerId;
+            resourceInputs["triggerName"] = state?.triggerName;
+            resourceInputs["triggerType"] = state?.triggerType;
         } else {
             const args = argsOrState as V3TriggerArgs | undefined;
-            if ((!args || args.functionName === undefined) && !opts.urn) {
+            if (args?.functionName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'functionName'");
             }
-            if ((!args || args.qualifier === undefined) && !opts.urn) {
+            if (args?.qualifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'qualifier'");
             }
-            if ((!args || args.triggerType === undefined) && !opts.urn) {
+            if (args?.triggerType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'triggerType'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["functionName"] = args ? args.functionName : undefined;
-            resourceInputs["invocationRole"] = args ? args.invocationRole : undefined;
-            resourceInputs["qualifier"] = args ? args.qualifier : undefined;
-            resourceInputs["sourceArn"] = args ? args.sourceArn : undefined;
-            resourceInputs["triggerConfig"] = args ? args.triggerConfig : undefined;
-            resourceInputs["triggerName"] = args ? args.triggerName : undefined;
-            resourceInputs["triggerType"] = args ? args.triggerType : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["functionName"] = args?.functionName;
+            resourceInputs["invocationRole"] = args?.invocationRole;
+            resourceInputs["qualifier"] = args?.qualifier;
+            resourceInputs["sourceArn"] = args?.sourceArn;
+            resourceInputs["triggerConfig"] = args?.triggerConfig;
+            resourceInputs["triggerName"] = args?.triggerName;
+            resourceInputs["triggerType"] = args?.triggerType;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["httpTrigger"] = undefined /*out*/;
             resourceInputs["lastModifiedTime"] = undefined /*out*/;

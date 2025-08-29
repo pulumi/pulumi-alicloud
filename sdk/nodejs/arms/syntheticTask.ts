@@ -235,51 +235,51 @@ export class SyntheticTask extends pulumi.CustomResource {
     /**
      * Assertion List. See `availableAssertions` below.
      */
-    public readonly availableAssertions!: pulumi.Output<outputs.arms.SyntheticTaskAvailableAssertion[] | undefined>;
+    declare public readonly availableAssertions: pulumi.Output<outputs.arms.SyntheticTaskAvailableAssertion[] | undefined>;
     /**
      * Common settings. See `commonSetting` below.
      */
-    public readonly commonSetting!: pulumi.Output<outputs.arms.SyntheticTaskCommonSetting>;
+    declare public readonly commonSetting: pulumi.Output<outputs.arms.SyntheticTaskCommonSetting>;
     /**
      * Custom Cycle. See `customPeriod` below.
      */
-    public readonly customPeriod!: pulumi.Output<outputs.arms.SyntheticTaskCustomPeriod | undefined>;
+    declare public readonly customPeriod: pulumi.Output<outputs.arms.SyntheticTaskCustomPeriod | undefined>;
     /**
      * Frequency.
      */
-    public readonly frequency!: pulumi.Output<string>;
+    declare public readonly frequency: pulumi.Output<string>;
     /**
      * Classification of selected monitors.
      */
-    public readonly monitorCategory!: pulumi.Output<number>;
+    declare public readonly monitorCategory: pulumi.Output<number>;
     /**
      * Monitoring configuration. See `monitorConf` below.
      */
-    public readonly monitorConf!: pulumi.Output<outputs.arms.SyntheticTaskMonitorConf>;
+    declare public readonly monitorConf: pulumi.Output<outputs.arms.SyntheticTaskMonitorConf>;
     /**
      * List of selected monitors. See `monitors` below.
      */
-    public readonly monitors!: pulumi.Output<outputs.arms.SyntheticTaskMonitor[]>;
+    declare public readonly monitors: pulumi.Output<outputs.arms.SyntheticTaskMonitor[]>;
     /**
      * Describes which resource group the resource belongs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * task status.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The name of synthetic task.
      */
-    public readonly syntheticTaskName!: pulumi.Output<string>;
+    declare public readonly syntheticTaskName: pulumi.Output<string>;
     /**
      * The list of tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of synthetic task.
      */
-    public readonly taskType!: pulumi.Output<number>;
+    declare public readonly taskType: pulumi.Output<number>;
 
     /**
      * Create a SyntheticTask resource with the given unique name, arguments, and options.
@@ -294,50 +294,50 @@ export class SyntheticTask extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SyntheticTaskState | undefined;
-            resourceInputs["availableAssertions"] = state ? state.availableAssertions : undefined;
-            resourceInputs["commonSetting"] = state ? state.commonSetting : undefined;
-            resourceInputs["customPeriod"] = state ? state.customPeriod : undefined;
-            resourceInputs["frequency"] = state ? state.frequency : undefined;
-            resourceInputs["monitorCategory"] = state ? state.monitorCategory : undefined;
-            resourceInputs["monitorConf"] = state ? state.monitorConf : undefined;
-            resourceInputs["monitors"] = state ? state.monitors : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["syntheticTaskName"] = state ? state.syntheticTaskName : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["taskType"] = state ? state.taskType : undefined;
+            resourceInputs["availableAssertions"] = state?.availableAssertions;
+            resourceInputs["commonSetting"] = state?.commonSetting;
+            resourceInputs["customPeriod"] = state?.customPeriod;
+            resourceInputs["frequency"] = state?.frequency;
+            resourceInputs["monitorCategory"] = state?.monitorCategory;
+            resourceInputs["monitorConf"] = state?.monitorConf;
+            resourceInputs["monitors"] = state?.monitors;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["syntheticTaskName"] = state?.syntheticTaskName;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["taskType"] = state?.taskType;
         } else {
             const args = argsOrState as SyntheticTaskArgs | undefined;
-            if ((!args || args.frequency === undefined) && !opts.urn) {
+            if (args?.frequency === undefined && !opts.urn) {
                 throw new Error("Missing required property 'frequency'");
             }
-            if ((!args || args.monitorCategory === undefined) && !opts.urn) {
+            if (args?.monitorCategory === undefined && !opts.urn) {
                 throw new Error("Missing required property 'monitorCategory'");
             }
-            if ((!args || args.monitorConf === undefined) && !opts.urn) {
+            if (args?.monitorConf === undefined && !opts.urn) {
                 throw new Error("Missing required property 'monitorConf'");
             }
-            if ((!args || args.monitors === undefined) && !opts.urn) {
+            if (args?.monitors === undefined && !opts.urn) {
                 throw new Error("Missing required property 'monitors'");
             }
-            if ((!args || args.syntheticTaskName === undefined) && !opts.urn) {
+            if (args?.syntheticTaskName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'syntheticTaskName'");
             }
-            if ((!args || args.taskType === undefined) && !opts.urn) {
+            if (args?.taskType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'taskType'");
             }
-            resourceInputs["availableAssertions"] = args ? args.availableAssertions : undefined;
-            resourceInputs["commonSetting"] = args ? args.commonSetting : undefined;
-            resourceInputs["customPeriod"] = args ? args.customPeriod : undefined;
-            resourceInputs["frequency"] = args ? args.frequency : undefined;
-            resourceInputs["monitorCategory"] = args ? args.monitorCategory : undefined;
-            resourceInputs["monitorConf"] = args ? args.monitorConf : undefined;
-            resourceInputs["monitors"] = args ? args.monitors : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["syntheticTaskName"] = args ? args.syntheticTaskName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["taskType"] = args ? args.taskType : undefined;
+            resourceInputs["availableAssertions"] = args?.availableAssertions;
+            resourceInputs["commonSetting"] = args?.commonSetting;
+            resourceInputs["customPeriod"] = args?.customPeriod;
+            resourceInputs["frequency"] = args?.frequency;
+            resourceInputs["monitorCategory"] = args?.monitorCategory;
+            resourceInputs["monitorConf"] = args?.monitorConf;
+            resourceInputs["monitors"] = args?.monitors;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["syntheticTaskName"] = args?.syntheticTaskName;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["taskType"] = args?.taskType;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SyntheticTask.__pulumiType, name, resourceInputs, opts);

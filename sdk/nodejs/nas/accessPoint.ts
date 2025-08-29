@@ -111,55 +111,55 @@ export class AccessPoint extends pulumi.CustomResource {
     /**
      * The name of the permission group.
      */
-    public readonly accessGroup!: pulumi.Output<string>;
+    declare public readonly accessGroup: pulumi.Output<string>;
     /**
      * The ID of the access point.
      */
-    public /*out*/ readonly accessPointId!: pulumi.Output<string>;
+    declare public /*out*/ readonly accessPointId: pulumi.Output<string>;
     /**
      * The name of the access point.
      */
-    public readonly accessPointName!: pulumi.Output<string | undefined>;
+    declare public readonly accessPointName: pulumi.Output<string | undefined>;
     /**
      * The time when the access point was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
      */
-    public readonly enabledRam!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabledRam: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the file system.
      */
-    public readonly fileSystemId!: pulumi.Output<string>;
+    declare public readonly fileSystemId: pulumi.Output<string>;
     /**
      * The Posix user. See `posixUser` below.
      */
-    public readonly posixUser!: pulumi.Output<outputs.nas.AccessPointPosixUser>;
+    declare public readonly posixUser: pulumi.Output<outputs.nas.AccessPointPosixUser>;
     /**
      * (Available since v1.254.0) The region ID.
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The root directory of the access point.
      */
-    public readonly rootPath!: pulumi.Output<string>;
+    declare public readonly rootPath: pulumi.Output<string>;
     /**
      * Root permissions. See `rootPathPermission` below.
      */
-    public readonly rootPathPermission!: pulumi.Output<outputs.nas.AccessPointRootPathPermission>;
+    declare public readonly rootPathPermission: pulumi.Output<outputs.nas.AccessPointRootPathPermission>;
     /**
      * The status of the access point.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The ID of the VPC.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * The vSwitch ID.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
 
     /**
      * Create a AccessPoint resource with the given unique name, arguments, and options.
@@ -174,42 +174,42 @@ export class AccessPoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessPointState | undefined;
-            resourceInputs["accessGroup"] = state ? state.accessGroup : undefined;
-            resourceInputs["accessPointId"] = state ? state.accessPointId : undefined;
-            resourceInputs["accessPointName"] = state ? state.accessPointName : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["enabledRam"] = state ? state.enabledRam : undefined;
-            resourceInputs["fileSystemId"] = state ? state.fileSystemId : undefined;
-            resourceInputs["posixUser"] = state ? state.posixUser : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["rootPath"] = state ? state.rootPath : undefined;
-            resourceInputs["rootPathPermission"] = state ? state.rootPathPermission : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["accessGroup"] = state?.accessGroup;
+            resourceInputs["accessPointId"] = state?.accessPointId;
+            resourceInputs["accessPointName"] = state?.accessPointName;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["enabledRam"] = state?.enabledRam;
+            resourceInputs["fileSystemId"] = state?.fileSystemId;
+            resourceInputs["posixUser"] = state?.posixUser;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["rootPath"] = state?.rootPath;
+            resourceInputs["rootPathPermission"] = state?.rootPathPermission;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
         } else {
             const args = argsOrState as AccessPointArgs | undefined;
-            if ((!args || args.accessGroup === undefined) && !opts.urn) {
+            if (args?.accessGroup === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accessGroup'");
             }
-            if ((!args || args.fileSystemId === undefined) && !opts.urn) {
+            if (args?.fileSystemId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fileSystemId'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+            if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            resourceInputs["accessGroup"] = args ? args.accessGroup : undefined;
-            resourceInputs["accessPointName"] = args ? args.accessPointName : undefined;
-            resourceInputs["enabledRam"] = args ? args.enabledRam : undefined;
-            resourceInputs["fileSystemId"] = args ? args.fileSystemId : undefined;
-            resourceInputs["posixUser"] = args ? args.posixUser : undefined;
-            resourceInputs["rootPath"] = args ? args.rootPath : undefined;
-            resourceInputs["rootPathPermission"] = args ? args.rootPathPermission : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["accessGroup"] = args?.accessGroup;
+            resourceInputs["accessPointName"] = args?.accessPointName;
+            resourceInputs["enabledRam"] = args?.enabledRam;
+            resourceInputs["fileSystemId"] = args?.fileSystemId;
+            resourceInputs["posixUser"] = args?.posixUser;
+            resourceInputs["rootPath"] = args?.rootPath;
+            resourceInputs["rootPathPermission"] = args?.rootPathPermission;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["accessPointId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;

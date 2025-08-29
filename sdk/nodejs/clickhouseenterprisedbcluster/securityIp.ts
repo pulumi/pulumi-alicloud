@@ -86,15 +86,15 @@ export class SecurityIp extends pulumi.CustomResource {
     /**
      * The cluster ID.
      */
-    public readonly dbInstanceId!: pulumi.Output<string>;
+    declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
      * The whitelist name.
      */
-    public readonly groupName!: pulumi.Output<string>;
+    declare public readonly groupName: pulumi.Output<string>;
     /**
      * The IP address list under the whitelist group.
      */
-    public readonly securityIpList!: pulumi.Output<string>;
+    declare public readonly securityIpList: pulumi.Output<string>;
 
     /**
      * Create a SecurityIp resource with the given unique name, arguments, and options.
@@ -109,23 +109,23 @@ export class SecurityIp extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecurityIpState | undefined;
-            resourceInputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
-            resourceInputs["groupName"] = state ? state.groupName : undefined;
-            resourceInputs["securityIpList"] = state ? state.securityIpList : undefined;
+            resourceInputs["dbInstanceId"] = state?.dbInstanceId;
+            resourceInputs["groupName"] = state?.groupName;
+            resourceInputs["securityIpList"] = state?.securityIpList;
         } else {
             const args = argsOrState as SecurityIpArgs | undefined;
-            if ((!args || args.dbInstanceId === undefined) && !opts.urn) {
+            if (args?.dbInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceId'");
             }
-            if ((!args || args.groupName === undefined) && !opts.urn) {
+            if (args?.groupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupName'");
             }
-            if ((!args || args.securityIpList === undefined) && !opts.urn) {
+            if (args?.securityIpList === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securityIpList'");
             }
-            resourceInputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
-            resourceInputs["groupName"] = args ? args.groupName : undefined;
-            resourceInputs["securityIpList"] = args ? args.securityIpList : undefined;
+            resourceInputs["dbInstanceId"] = args?.dbInstanceId;
+            resourceInputs["groupName"] = args?.groupName;
+            resourceInputs["securityIpList"] = args?.securityIpList;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SecurityIp.__pulumiType, name, resourceInputs, opts);

@@ -85,31 +85,31 @@ export class Service extends pulumi.CustomResource {
     /**
      * Creation time of the service
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Whether to enter the development mode.
      */
-    public readonly develop!: pulumi.Output<string | undefined>;
+    declare public readonly develop: pulumi.Output<string | undefined>;
     /**
      * The region ID of the resource
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
      */
-    public readonly serviceConfig!: pulumi.Output<string>;
+    declare public readonly serviceConfig: pulumi.Output<string>;
     /**
      * Service Current Status.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The tag of the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Workspace id
      */
-    public readonly workspaceId!: pulumi.Output<string | undefined>;
+    declare public readonly workspaceId: pulumi.Output<string | undefined>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -124,23 +124,23 @@ export class Service extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["develop"] = state ? state.develop : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["serviceConfig"] = state ? state.serviceConfig : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["workspaceId"] = state ? state.workspaceId : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["develop"] = state?.develop;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["serviceConfig"] = state?.serviceConfig;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
-            if ((!args || args.serviceConfig === undefined) && !opts.urn) {
+            if (args?.serviceConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceConfig'");
             }
-            resourceInputs["develop"] = args ? args.develop : undefined;
-            resourceInputs["serviceConfig"] = args ? args.serviceConfig : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["workspaceId"] = args ? args.workspaceId : undefined;
+            resourceInputs["develop"] = args?.develop;
+            resourceInputs["serviceConfig"] = args?.serviceConfig;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["workspaceId"] = args?.workspaceId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
         }

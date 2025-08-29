@@ -132,47 +132,47 @@ export class RemoteAdbDataSource extends pulumi.CustomResource {
     /**
      * Data Source Name
      */
-    public readonly dataSourceName!: pulumi.Output<string | undefined>;
+    declare public readonly dataSourceName: pulumi.Output<string | undefined>;
     /**
      * The database of the local instance which connection data.
      */
-    public readonly localDatabase!: pulumi.Output<string>;
+    declare public readonly localDatabase: pulumi.Output<string>;
     /**
      * The instanceId of the local instance which connection data.
      */
-    public readonly localDbInstanceId!: pulumi.Output<string>;
+    declare public readonly localDbInstanceId: pulumi.Output<string>;
     /**
      * The Management user name of the local instance.
      */
-    public readonly managerUserName!: pulumi.Output<string>;
+    declare public readonly managerUserName: pulumi.Output<string>;
     /**
      * Password of the Manager user of the local instance
      */
-    public readonly managerUserPassword!: pulumi.Output<string>;
+    declare public readonly managerUserPassword: pulumi.Output<string>;
     /**
      * The first ID of the resource
      */
-    public /*out*/ readonly remoteAdbDataSourceId!: pulumi.Output<number>;
+    declare public /*out*/ readonly remoteAdbDataSourceId: pulumi.Output<number>;
     /**
      * The database of the remote instance which provide data.
      */
-    public readonly remoteDatabase!: pulumi.Output<string>;
+    declare public readonly remoteDatabase: pulumi.Output<string>;
     /**
      * The instanceId of the remote instance which provide data.
      */
-    public readonly remoteDbInstanceId!: pulumi.Output<string>;
+    declare public readonly remoteDbInstanceId: pulumi.Output<string>;
     /**
      * The status of the resource
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The user name used to connect to the remote instance
      */
-    public readonly userName!: pulumi.Output<string>;
+    declare public readonly userName: pulumi.Output<string>;
     /**
      * The user password used to connect to the remote instance
      */
-    public readonly userPassword!: pulumi.Output<string>;
+    declare public readonly userPassword: pulumi.Output<string>;
 
     /**
      * Create a RemoteAdbDataSource resource with the given unique name, arguments, and options.
@@ -187,51 +187,51 @@ export class RemoteAdbDataSource extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RemoteAdbDataSourceState | undefined;
-            resourceInputs["dataSourceName"] = state ? state.dataSourceName : undefined;
-            resourceInputs["localDatabase"] = state ? state.localDatabase : undefined;
-            resourceInputs["localDbInstanceId"] = state ? state.localDbInstanceId : undefined;
-            resourceInputs["managerUserName"] = state ? state.managerUserName : undefined;
-            resourceInputs["managerUserPassword"] = state ? state.managerUserPassword : undefined;
-            resourceInputs["remoteAdbDataSourceId"] = state ? state.remoteAdbDataSourceId : undefined;
-            resourceInputs["remoteDatabase"] = state ? state.remoteDatabase : undefined;
-            resourceInputs["remoteDbInstanceId"] = state ? state.remoteDbInstanceId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["userName"] = state ? state.userName : undefined;
-            resourceInputs["userPassword"] = state ? state.userPassword : undefined;
+            resourceInputs["dataSourceName"] = state?.dataSourceName;
+            resourceInputs["localDatabase"] = state?.localDatabase;
+            resourceInputs["localDbInstanceId"] = state?.localDbInstanceId;
+            resourceInputs["managerUserName"] = state?.managerUserName;
+            resourceInputs["managerUserPassword"] = state?.managerUserPassword;
+            resourceInputs["remoteAdbDataSourceId"] = state?.remoteAdbDataSourceId;
+            resourceInputs["remoteDatabase"] = state?.remoteDatabase;
+            resourceInputs["remoteDbInstanceId"] = state?.remoteDbInstanceId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["userName"] = state?.userName;
+            resourceInputs["userPassword"] = state?.userPassword;
         } else {
             const args = argsOrState as RemoteAdbDataSourceArgs | undefined;
-            if ((!args || args.localDatabase === undefined) && !opts.urn) {
+            if (args?.localDatabase === undefined && !opts.urn) {
                 throw new Error("Missing required property 'localDatabase'");
             }
-            if ((!args || args.localDbInstanceId === undefined) && !opts.urn) {
+            if (args?.localDbInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'localDbInstanceId'");
             }
-            if ((!args || args.managerUserName === undefined) && !opts.urn) {
+            if (args?.managerUserName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'managerUserName'");
             }
-            if ((!args || args.managerUserPassword === undefined) && !opts.urn) {
+            if (args?.managerUserPassword === undefined && !opts.urn) {
                 throw new Error("Missing required property 'managerUserPassword'");
             }
-            if ((!args || args.remoteDatabase === undefined) && !opts.urn) {
+            if (args?.remoteDatabase === undefined && !opts.urn) {
                 throw new Error("Missing required property 'remoteDatabase'");
             }
-            if ((!args || args.remoteDbInstanceId === undefined) && !opts.urn) {
+            if (args?.remoteDbInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'remoteDbInstanceId'");
             }
-            if ((!args || args.userName === undefined) && !opts.urn) {
+            if (args?.userName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userName'");
             }
-            if ((!args || args.userPassword === undefined) && !opts.urn) {
+            if (args?.userPassword === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userPassword'");
             }
-            resourceInputs["dataSourceName"] = args ? args.dataSourceName : undefined;
-            resourceInputs["localDatabase"] = args ? args.localDatabase : undefined;
-            resourceInputs["localDbInstanceId"] = args ? args.localDbInstanceId : undefined;
-            resourceInputs["managerUserName"] = args ? args.managerUserName : undefined;
+            resourceInputs["dataSourceName"] = args?.dataSourceName;
+            resourceInputs["localDatabase"] = args?.localDatabase;
+            resourceInputs["localDbInstanceId"] = args?.localDbInstanceId;
+            resourceInputs["managerUserName"] = args?.managerUserName;
             resourceInputs["managerUserPassword"] = args?.managerUserPassword ? pulumi.secret(args.managerUserPassword) : undefined;
-            resourceInputs["remoteDatabase"] = args ? args.remoteDatabase : undefined;
-            resourceInputs["remoteDbInstanceId"] = args ? args.remoteDbInstanceId : undefined;
-            resourceInputs["userName"] = args ? args.userName : undefined;
+            resourceInputs["remoteDatabase"] = args?.remoteDatabase;
+            resourceInputs["remoteDbInstanceId"] = args?.remoteDbInstanceId;
+            resourceInputs["userName"] = args?.userName;
             resourceInputs["userPassword"] = args?.userPassword ? pulumi.secret(args.userPassword) : undefined;
             resourceInputs["remoteAdbDataSourceId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

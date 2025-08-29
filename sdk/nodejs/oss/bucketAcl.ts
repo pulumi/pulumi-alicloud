@@ -44,11 +44,11 @@ export class BucketAcl extends pulumi.CustomResource {
     /**
      * Bucket-level Access Control List (ACL)，Valid values: `private`, `public-read`, `public-read-write`.
      */
-    public readonly acl!: pulumi.Output<string>;
+    declare public readonly acl: pulumi.Output<string>;
     /**
      * The name of the bucket to which the current ACL configuration belongs.
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
 
     /**
      * Create a BucketAcl resource with the given unique name, arguments, and options.
@@ -63,18 +63,18 @@ export class BucketAcl extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketAclState | undefined;
-            resourceInputs["acl"] = state ? state.acl : undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
+            resourceInputs["acl"] = state?.acl;
+            resourceInputs["bucket"] = state?.bucket;
         } else {
             const args = argsOrState as BucketAclArgs | undefined;
-            if ((!args || args.acl === undefined) && !opts.urn) {
+            if (args?.acl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'acl'");
             }
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            resourceInputs["acl"] = args ? args.acl : undefined;
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
+            resourceInputs["acl"] = args?.acl;
+            resourceInputs["bucket"] = args?.bucket;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BucketAcl.__pulumiType, name, resourceInputs, opts);

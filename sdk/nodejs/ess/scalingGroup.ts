@@ -135,89 +135,89 @@ export class ScalingGroup extends pulumi.CustomResource {
     /**
      * If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `albServerGroup` below for details.
      */
-    public readonly albServerGroups!: pulumi.Output<outputs.ess.ScalingGroupAlbServerGroup[] | undefined>;
+    declare public readonly albServerGroups: pulumi.Output<outputs.ess.ScalingGroupAlbServerGroup[] | undefined>;
     /**
      * The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
      */
-    public readonly allocationStrategy!: pulumi.Output<string>;
+    declare public readonly allocationStrategy: pulumi.Output<string>;
     /**
      * Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
      */
-    public readonly azBalance!: pulumi.Output<boolean | undefined>;
+    declare public readonly azBalance: pulumi.Output<boolean | undefined>;
     /**
      * Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
      */
-    public readonly capacityOptionsCompensateWithOnDemand!: pulumi.Output<boolean>;
+    declare public readonly capacityOptionsCompensateWithOnDemand: pulumi.Output<boolean>;
     /**
      * The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 0.
      */
-    public readonly capacityOptionsOnDemandBaseCapacity!: pulumi.Output<number>;
+    declare public readonly capacityOptionsOnDemandBaseCapacity: pulumi.Output<number>;
     /**
      * The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. 'on_demand_base_capacity' specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 100.
      */
-    public readonly capacityOptionsOnDemandPercentageAboveBaseCapacity!: pulumi.Output<number>;
+    declare public readonly capacityOptionsOnDemandPercentageAboveBaseCapacity: pulumi.Output<number>;
     /**
      * The price comparison mode. Valid values: PricePerUnit,PricePerVCpu. Default value: PricePerUnit.
      */
-    public readonly capacityOptionsPriceComparisonMode!: pulumi.Output<string>;
+    declare public readonly capacityOptionsPriceComparisonMode: pulumi.Output<string>;
     /**
      * Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify 'compensate_with_on_demand', it may result in a higher percentage of pay-as-you-go instances compared to the value of 'on_demand_percentage_above_base_capacity'. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify 'compensate_with_on_demand', Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
      */
-    public readonly capacityOptionsSpotAutoReplaceOnDemand!: pulumi.Output<boolean>;
+    declare public readonly capacityOptionsSpotAutoReplaceOnDemand: pulumi.Output<boolean>;
     /**
      * Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
      */
-    public readonly compensateWithOnDemand!: pulumi.Output<boolean>;
+    declare public readonly compensateWithOnDemand: pulumi.Output<boolean>;
     /**
      * The ID of the elastic container instance.
      */
-    public readonly containerGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly containerGroupId: pulumi.Output<string | undefined>;
     /**
      * If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
      * - The specified RDS instance must be in running status.
      * - The specified RDS instance’s whitelist must have room for more IP addresses.
      */
-    public readonly dbInstanceIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly dbInstanceIds: pulumi.Output<string[] | undefined>;
     /**
      * Default cool-down time (in seconds) of the scaling group. Value range: [0, 86400]. The default value is 300s.
      */
-    public readonly defaultCooldown!: pulumi.Output<number | undefined>;
+    declare public readonly defaultCooldown: pulumi.Output<number | undefined>;
     /**
      * Expected number of ECS instances in the scaling group. Value range: [min_size, maxSize].
      */
-    public readonly desiredCapacity!: pulumi.Output<number | undefined>;
+    declare public readonly desiredCapacity: pulumi.Output<number | undefined>;
     /**
      * Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
      */
-    public readonly groupDeletionProtection!: pulumi.Output<boolean | undefined>;
+    declare public readonly groupDeletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
      */
-    public readonly groupType!: pulumi.Output<string>;
+    declare public readonly groupType: pulumi.Output<string>;
     /**
      * Resource type within scaling group. Optional values: ECS, ECI, NONE, LOAD_BALANCER. Default to ECS.
      */
-    public readonly healthCheckType!: pulumi.Output<string>;
+    declare public readonly healthCheckType: pulumi.Output<string>;
     /**
      * The health check modes of the scaling group. Valid values: ECS, NONE, LOAD_BALANCER.
      */
-    public readonly healthCheckTypes!: pulumi.Output<string[] | undefined>;
+    declare public readonly healthCheckTypes: pulumi.Output<string[] | undefined>;
     /**
      * The ID of the instance from which Auto Scaling obtains the required configuration information and uses the information to automatically create a scaling configuration.
      */
-    public readonly instanceId!: pulumi.Output<string | undefined>;
+    declare public readonly instanceId: pulumi.Output<string | undefined>;
     /**
      * Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
      */
-    public readonly launchTemplateId!: pulumi.Output<string | undefined>;
+    declare public readonly launchTemplateId: pulumi.Output<string | undefined>;
     /**
      * The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launchTemplateOverride` below for details.
      */
-    public readonly launchTemplateOverrides!: pulumi.Output<outputs.ess.ScalingGroupLaunchTemplateOverride[] | undefined>;
+    declare public readonly launchTemplateOverrides: pulumi.Output<outputs.ess.ScalingGroupLaunchTemplateOverride[] | undefined>;
     /**
      * The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
      */
-    public readonly launchTemplateVersion!: pulumi.Output<string | undefined>;
+    declare public readonly launchTemplateVersion: pulumi.Output<string | undefined>;
     /**
      * If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
      * - The Server Load Balancer instance must be enabled.
@@ -226,37 +226,37 @@ export class ScalingGroup extends pulumi.CustomResource {
      * - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
      * - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
      */
-    public readonly loadbalancerIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly loadbalancerIds: pulumi.Output<string[] | undefined>;
     /**
      * The maximum life span of an instance in the scaling group. Unit: seconds.
      */
-    public readonly maxInstanceLifetime!: pulumi.Output<number | undefined>;
+    declare public readonly maxInstanceLifetime: pulumi.Output<number | undefined>;
     /**
      * Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
      * **NOTE:** From version 1.204.1, `maxSize` can be set to `2000`.
      */
-    public readonly maxSize!: pulumi.Output<number>;
+    declare public readonly maxSize: pulumi.Output<number>;
     /**
      * Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
      * **NOTE:** From version 1.204.1, `minSize` can be set to `2000`.
      */
-    public readonly minSize!: pulumi.Output<number>;
+    declare public readonly minSize: pulumi.Output<number>;
     /**
      * Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, COMPOSABLE, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
      */
-    public readonly multiAzPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly multiAzPolicy: pulumi.Output<string | undefined>;
     /**
      * The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
      */
-    public readonly onDemandBaseCapacity!: pulumi.Output<number>;
+    declare public readonly onDemandBaseCapacity: pulumi.Output<number>;
     /**
      * Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
      */
-    public readonly onDemandPercentageAboveBaseCapacity!: pulumi.Output<number>;
+    declare public readonly onDemandPercentageAboveBaseCapacity: pulumi.Output<number>;
     /**
      * Set or unset instances within group into protected status.
      */
-    public readonly protectedInstances!: pulumi.Output<string[] | undefined>;
+    declare public readonly protectedInstances: pulumi.Output<string[] | undefined>;
     /**
      * RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
      * - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
@@ -264,51 +264,51 @@ export class ScalingGroup extends pulumi.CustomResource {
      * - OldestScalingConfiguration: removes the ECS instance that is created based on the earliest scaling configuration.
      * - Default values: Default value of RemovalPolicy.1: OldestScalingConfiguration. Default value of RemovalPolicy.2: OldestInstance.
      */
-    public readonly removalPolicies!: pulumi.Output<string[]>;
+    declare public readonly removalPolicies: pulumi.Output<string[]>;
     /**
      * The ID of the resource group to which you want to add the scaling group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
      */
-    public readonly scalingGroupName!: pulumi.Output<string | undefined>;
+    declare public readonly scalingGroupName: pulumi.Output<string | undefined>;
     /**
      * The reclaim mode of the scaling group. Optional values: recycle, release, forceRecycle, forceRelease.
      */
-    public readonly scalingPolicy!: pulumi.Output<string>;
+    declare public readonly scalingPolicy: pulumi.Output<string>;
     /**
      * The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
      */
-    public readonly spotAllocationStrategy!: pulumi.Output<string>;
+    declare public readonly spotAllocationStrategy: pulumi.Output<string>;
     /**
      * The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
      */
-    public readonly spotInstancePools!: pulumi.Output<number>;
+    declare public readonly spotInstancePools: pulumi.Output<number>;
     /**
      * Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
      */
-    public readonly spotInstanceRemedy!: pulumi.Output<boolean>;
+    declare public readonly spotInstanceRemedy: pulumi.Output<boolean>;
     /**
      * The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
      */
-    public readonly stopInstanceTimeout!: pulumi.Output<number | undefined>;
+    declare public readonly stopInstanceTimeout: pulumi.Output<number | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
      *
      * @deprecated Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
      */
-    public readonly vswitchId!: pulumi.Output<string | undefined>;
+    declare public readonly vswitchId: pulumi.Output<string | undefined>;
     /**
      * List of virtual switch IDs in which the ecs instances to be launched.
      */
-    public readonly vswitchIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly vswitchIds: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a ScalingGroup resource with the given unique name, arguments, and options.
@@ -323,94 +323,94 @@ export class ScalingGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ScalingGroupState | undefined;
-            resourceInputs["albServerGroups"] = state ? state.albServerGroups : undefined;
-            resourceInputs["allocationStrategy"] = state ? state.allocationStrategy : undefined;
-            resourceInputs["azBalance"] = state ? state.azBalance : undefined;
-            resourceInputs["capacityOptionsCompensateWithOnDemand"] = state ? state.capacityOptionsCompensateWithOnDemand : undefined;
-            resourceInputs["capacityOptionsOnDemandBaseCapacity"] = state ? state.capacityOptionsOnDemandBaseCapacity : undefined;
-            resourceInputs["capacityOptionsOnDemandPercentageAboveBaseCapacity"] = state ? state.capacityOptionsOnDemandPercentageAboveBaseCapacity : undefined;
-            resourceInputs["capacityOptionsPriceComparisonMode"] = state ? state.capacityOptionsPriceComparisonMode : undefined;
-            resourceInputs["capacityOptionsSpotAutoReplaceOnDemand"] = state ? state.capacityOptionsSpotAutoReplaceOnDemand : undefined;
-            resourceInputs["compensateWithOnDemand"] = state ? state.compensateWithOnDemand : undefined;
-            resourceInputs["containerGroupId"] = state ? state.containerGroupId : undefined;
-            resourceInputs["dbInstanceIds"] = state ? state.dbInstanceIds : undefined;
-            resourceInputs["defaultCooldown"] = state ? state.defaultCooldown : undefined;
-            resourceInputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
-            resourceInputs["groupDeletionProtection"] = state ? state.groupDeletionProtection : undefined;
-            resourceInputs["groupType"] = state ? state.groupType : undefined;
-            resourceInputs["healthCheckType"] = state ? state.healthCheckType : undefined;
-            resourceInputs["healthCheckTypes"] = state ? state.healthCheckTypes : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["launchTemplateId"] = state ? state.launchTemplateId : undefined;
-            resourceInputs["launchTemplateOverrides"] = state ? state.launchTemplateOverrides : undefined;
-            resourceInputs["launchTemplateVersion"] = state ? state.launchTemplateVersion : undefined;
-            resourceInputs["loadbalancerIds"] = state ? state.loadbalancerIds : undefined;
-            resourceInputs["maxInstanceLifetime"] = state ? state.maxInstanceLifetime : undefined;
-            resourceInputs["maxSize"] = state ? state.maxSize : undefined;
-            resourceInputs["minSize"] = state ? state.minSize : undefined;
-            resourceInputs["multiAzPolicy"] = state ? state.multiAzPolicy : undefined;
-            resourceInputs["onDemandBaseCapacity"] = state ? state.onDemandBaseCapacity : undefined;
-            resourceInputs["onDemandPercentageAboveBaseCapacity"] = state ? state.onDemandPercentageAboveBaseCapacity : undefined;
-            resourceInputs["protectedInstances"] = state ? state.protectedInstances : undefined;
-            resourceInputs["removalPolicies"] = state ? state.removalPolicies : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["scalingGroupName"] = state ? state.scalingGroupName : undefined;
-            resourceInputs["scalingPolicy"] = state ? state.scalingPolicy : undefined;
-            resourceInputs["spotAllocationStrategy"] = state ? state.spotAllocationStrategy : undefined;
-            resourceInputs["spotInstancePools"] = state ? state.spotInstancePools : undefined;
-            resourceInputs["spotInstanceRemedy"] = state ? state.spotInstanceRemedy : undefined;
-            resourceInputs["stopInstanceTimeout"] = state ? state.stopInstanceTimeout : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
-            resourceInputs["vswitchIds"] = state ? state.vswitchIds : undefined;
+            resourceInputs["albServerGroups"] = state?.albServerGroups;
+            resourceInputs["allocationStrategy"] = state?.allocationStrategy;
+            resourceInputs["azBalance"] = state?.azBalance;
+            resourceInputs["capacityOptionsCompensateWithOnDemand"] = state?.capacityOptionsCompensateWithOnDemand;
+            resourceInputs["capacityOptionsOnDemandBaseCapacity"] = state?.capacityOptionsOnDemandBaseCapacity;
+            resourceInputs["capacityOptionsOnDemandPercentageAboveBaseCapacity"] = state?.capacityOptionsOnDemandPercentageAboveBaseCapacity;
+            resourceInputs["capacityOptionsPriceComparisonMode"] = state?.capacityOptionsPriceComparisonMode;
+            resourceInputs["capacityOptionsSpotAutoReplaceOnDemand"] = state?.capacityOptionsSpotAutoReplaceOnDemand;
+            resourceInputs["compensateWithOnDemand"] = state?.compensateWithOnDemand;
+            resourceInputs["containerGroupId"] = state?.containerGroupId;
+            resourceInputs["dbInstanceIds"] = state?.dbInstanceIds;
+            resourceInputs["defaultCooldown"] = state?.defaultCooldown;
+            resourceInputs["desiredCapacity"] = state?.desiredCapacity;
+            resourceInputs["groupDeletionProtection"] = state?.groupDeletionProtection;
+            resourceInputs["groupType"] = state?.groupType;
+            resourceInputs["healthCheckType"] = state?.healthCheckType;
+            resourceInputs["healthCheckTypes"] = state?.healthCheckTypes;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["launchTemplateId"] = state?.launchTemplateId;
+            resourceInputs["launchTemplateOverrides"] = state?.launchTemplateOverrides;
+            resourceInputs["launchTemplateVersion"] = state?.launchTemplateVersion;
+            resourceInputs["loadbalancerIds"] = state?.loadbalancerIds;
+            resourceInputs["maxInstanceLifetime"] = state?.maxInstanceLifetime;
+            resourceInputs["maxSize"] = state?.maxSize;
+            resourceInputs["minSize"] = state?.minSize;
+            resourceInputs["multiAzPolicy"] = state?.multiAzPolicy;
+            resourceInputs["onDemandBaseCapacity"] = state?.onDemandBaseCapacity;
+            resourceInputs["onDemandPercentageAboveBaseCapacity"] = state?.onDemandPercentageAboveBaseCapacity;
+            resourceInputs["protectedInstances"] = state?.protectedInstances;
+            resourceInputs["removalPolicies"] = state?.removalPolicies;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["scalingGroupName"] = state?.scalingGroupName;
+            resourceInputs["scalingPolicy"] = state?.scalingPolicy;
+            resourceInputs["spotAllocationStrategy"] = state?.spotAllocationStrategy;
+            resourceInputs["spotInstancePools"] = state?.spotInstancePools;
+            resourceInputs["spotInstanceRemedy"] = state?.spotInstanceRemedy;
+            resourceInputs["stopInstanceTimeout"] = state?.stopInstanceTimeout;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vswitchId"] = state?.vswitchId;
+            resourceInputs["vswitchIds"] = state?.vswitchIds;
         } else {
             const args = argsOrState as ScalingGroupArgs | undefined;
-            if ((!args || args.maxSize === undefined) && !opts.urn) {
+            if (args?.maxSize === undefined && !opts.urn) {
                 throw new Error("Missing required property 'maxSize'");
             }
-            if ((!args || args.minSize === undefined) && !opts.urn) {
+            if (args?.minSize === undefined && !opts.urn) {
                 throw new Error("Missing required property 'minSize'");
             }
-            resourceInputs["albServerGroups"] = args ? args.albServerGroups : undefined;
-            resourceInputs["allocationStrategy"] = args ? args.allocationStrategy : undefined;
-            resourceInputs["azBalance"] = args ? args.azBalance : undefined;
-            resourceInputs["capacityOptionsCompensateWithOnDemand"] = args ? args.capacityOptionsCompensateWithOnDemand : undefined;
-            resourceInputs["capacityOptionsOnDemandBaseCapacity"] = args ? args.capacityOptionsOnDemandBaseCapacity : undefined;
-            resourceInputs["capacityOptionsOnDemandPercentageAboveBaseCapacity"] = args ? args.capacityOptionsOnDemandPercentageAboveBaseCapacity : undefined;
-            resourceInputs["capacityOptionsPriceComparisonMode"] = args ? args.capacityOptionsPriceComparisonMode : undefined;
-            resourceInputs["capacityOptionsSpotAutoReplaceOnDemand"] = args ? args.capacityOptionsSpotAutoReplaceOnDemand : undefined;
-            resourceInputs["compensateWithOnDemand"] = args ? args.compensateWithOnDemand : undefined;
-            resourceInputs["containerGroupId"] = args ? args.containerGroupId : undefined;
-            resourceInputs["dbInstanceIds"] = args ? args.dbInstanceIds : undefined;
-            resourceInputs["defaultCooldown"] = args ? args.defaultCooldown : undefined;
-            resourceInputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
-            resourceInputs["groupDeletionProtection"] = args ? args.groupDeletionProtection : undefined;
-            resourceInputs["groupType"] = args ? args.groupType : undefined;
-            resourceInputs["healthCheckType"] = args ? args.healthCheckType : undefined;
-            resourceInputs["healthCheckTypes"] = args ? args.healthCheckTypes : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["launchTemplateId"] = args ? args.launchTemplateId : undefined;
-            resourceInputs["launchTemplateOverrides"] = args ? args.launchTemplateOverrides : undefined;
-            resourceInputs["launchTemplateVersion"] = args ? args.launchTemplateVersion : undefined;
-            resourceInputs["loadbalancerIds"] = args ? args.loadbalancerIds : undefined;
-            resourceInputs["maxInstanceLifetime"] = args ? args.maxInstanceLifetime : undefined;
-            resourceInputs["maxSize"] = args ? args.maxSize : undefined;
-            resourceInputs["minSize"] = args ? args.minSize : undefined;
-            resourceInputs["multiAzPolicy"] = args ? args.multiAzPolicy : undefined;
-            resourceInputs["onDemandBaseCapacity"] = args ? args.onDemandBaseCapacity : undefined;
-            resourceInputs["onDemandPercentageAboveBaseCapacity"] = args ? args.onDemandPercentageAboveBaseCapacity : undefined;
-            resourceInputs["protectedInstances"] = args ? args.protectedInstances : undefined;
-            resourceInputs["removalPolicies"] = args ? args.removalPolicies : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["scalingGroupName"] = args ? args.scalingGroupName : undefined;
-            resourceInputs["scalingPolicy"] = args ? args.scalingPolicy : undefined;
-            resourceInputs["spotAllocationStrategy"] = args ? args.spotAllocationStrategy : undefined;
-            resourceInputs["spotInstancePools"] = args ? args.spotInstancePools : undefined;
-            resourceInputs["spotInstanceRemedy"] = args ? args.spotInstanceRemedy : undefined;
-            resourceInputs["stopInstanceTimeout"] = args ? args.stopInstanceTimeout : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
-            resourceInputs["vswitchIds"] = args ? args.vswitchIds : undefined;
+            resourceInputs["albServerGroups"] = args?.albServerGroups;
+            resourceInputs["allocationStrategy"] = args?.allocationStrategy;
+            resourceInputs["azBalance"] = args?.azBalance;
+            resourceInputs["capacityOptionsCompensateWithOnDemand"] = args?.capacityOptionsCompensateWithOnDemand;
+            resourceInputs["capacityOptionsOnDemandBaseCapacity"] = args?.capacityOptionsOnDemandBaseCapacity;
+            resourceInputs["capacityOptionsOnDemandPercentageAboveBaseCapacity"] = args?.capacityOptionsOnDemandPercentageAboveBaseCapacity;
+            resourceInputs["capacityOptionsPriceComparisonMode"] = args?.capacityOptionsPriceComparisonMode;
+            resourceInputs["capacityOptionsSpotAutoReplaceOnDemand"] = args?.capacityOptionsSpotAutoReplaceOnDemand;
+            resourceInputs["compensateWithOnDemand"] = args?.compensateWithOnDemand;
+            resourceInputs["containerGroupId"] = args?.containerGroupId;
+            resourceInputs["dbInstanceIds"] = args?.dbInstanceIds;
+            resourceInputs["defaultCooldown"] = args?.defaultCooldown;
+            resourceInputs["desiredCapacity"] = args?.desiredCapacity;
+            resourceInputs["groupDeletionProtection"] = args?.groupDeletionProtection;
+            resourceInputs["groupType"] = args?.groupType;
+            resourceInputs["healthCheckType"] = args?.healthCheckType;
+            resourceInputs["healthCheckTypes"] = args?.healthCheckTypes;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["launchTemplateId"] = args?.launchTemplateId;
+            resourceInputs["launchTemplateOverrides"] = args?.launchTemplateOverrides;
+            resourceInputs["launchTemplateVersion"] = args?.launchTemplateVersion;
+            resourceInputs["loadbalancerIds"] = args?.loadbalancerIds;
+            resourceInputs["maxInstanceLifetime"] = args?.maxInstanceLifetime;
+            resourceInputs["maxSize"] = args?.maxSize;
+            resourceInputs["minSize"] = args?.minSize;
+            resourceInputs["multiAzPolicy"] = args?.multiAzPolicy;
+            resourceInputs["onDemandBaseCapacity"] = args?.onDemandBaseCapacity;
+            resourceInputs["onDemandPercentageAboveBaseCapacity"] = args?.onDemandPercentageAboveBaseCapacity;
+            resourceInputs["protectedInstances"] = args?.protectedInstances;
+            resourceInputs["removalPolicies"] = args?.removalPolicies;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["scalingGroupName"] = args?.scalingGroupName;
+            resourceInputs["scalingPolicy"] = args?.scalingPolicy;
+            resourceInputs["spotAllocationStrategy"] = args?.spotAllocationStrategy;
+            resourceInputs["spotInstancePools"] = args?.spotInstancePools;
+            resourceInputs["spotInstanceRemedy"] = args?.spotInstanceRemedy;
+            resourceInputs["stopInstanceTimeout"] = args?.stopInstanceTimeout;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vswitchId"] = args?.vswitchId;
+            resourceInputs["vswitchIds"] = args?.vswitchIds;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ScalingGroup.__pulumiType, name, resourceInputs, opts);

@@ -63,7 +63,7 @@ export class Qos extends pulumi.CustomResource {
     /**
      * The name of the QoS policy to be created. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a Qos resource with the given unique name, arguments, and options.
@@ -78,10 +78,10 @@ export class Qos extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QosState | undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as QosArgs | undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "alicloud:rocketmq/qos:Qos" }] };

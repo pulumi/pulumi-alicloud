@@ -46,67 +46,67 @@ export class AutoscalingConfig extends pulumi.CustomResource {
     /**
      * The id of kubernetes cluster.
      */
-    public readonly clusterId!: pulumi.Output<string | undefined>;
+    declare public readonly clusterId: pulumi.Output<string | undefined>;
     /**
      * The cool down duration. Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
      */
-    public readonly coolDownDuration!: pulumi.Output<string | undefined>;
+    declare public readonly coolDownDuration: pulumi.Output<string | undefined>;
     /**
      * If true DaemonSet pods will be  terminated from nodes. Default is `false`.
      */
-    public readonly daemonsetEvictionForNodes!: pulumi.Output<boolean | undefined>;
+    declare public readonly daemonsetEvictionForNodes: pulumi.Output<boolean | undefined>;
     /**
      * The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
      */
-    public readonly expander!: pulumi.Output<string | undefined>;
+    declare public readonly expander: pulumi.Output<string | undefined>;
     /**
      * The scale-in threshold for GPU instance. Default is `0.5`.
      */
-    public readonly gpuUtilizationThreshold!: pulumi.Output<string | undefined>;
+    declare public readonly gpuUtilizationThreshold: pulumi.Output<string | undefined>;
     /**
      * Maximum number of seconds CA waits for pod termination when trying to scale down a node. Default is `14400`.
      */
-    public readonly maxGracefulTerminationSec!: pulumi.Output<number | undefined>;
+    declare public readonly maxGracefulTerminationSec: pulumi.Output<number | undefined>;
     /**
      * Minimum number of replicas that a replica set or replication controller should have to allow their pods deletion in scale down. Default is `0`.
      */
-    public readonly minReplicaCount!: pulumi.Output<number | undefined>;
+    declare public readonly minReplicaCount: pulumi.Output<number | undefined>;
     /**
      * Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
      */
-    public readonly recycleNodeDeletionEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly recycleNodeDeletionEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Specify whether to allow the scale-in of nodes. Default is `true`.
      */
-    public readonly scaleDownEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly scaleDownEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Should CA scale up when there 0 ready nodes. Default is `true`.
      */
-    public readonly scaleUpFromZero!: pulumi.Output<boolean | undefined>;
+    declare public readonly scaleUpFromZero: pulumi.Output<boolean | undefined>;
     /**
      * The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
      */
-    public readonly scalerType!: pulumi.Output<string | undefined>;
+    declare public readonly scalerType: pulumi.Output<string | undefined>;
     /**
      * The interval at which the cluster is reevaluated for scaling. Default is `30s`.
      */
-    public readonly scanInterval!: pulumi.Output<string | undefined>;
+    declare public readonly scanInterval: pulumi.Output<string | undefined>;
     /**
      * If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
      */
-    public readonly skipNodesWithLocalStorage!: pulumi.Output<boolean | undefined>;
+    declare public readonly skipNodesWithLocalStorage: pulumi.Output<boolean | undefined>;
     /**
      * If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `true`.
      */
-    public readonly skipNodesWithSystemPods!: pulumi.Output<boolean | undefined>;
+    declare public readonly skipNodesWithSystemPods: pulumi.Output<boolean | undefined>;
     /**
      * The unneeded duration. Default is `10m`.
      */
-    public readonly unneededDuration!: pulumi.Output<string | undefined>;
+    declare public readonly unneededDuration: pulumi.Output<string | undefined>;
     /**
      * The scale-in threshold. Default is `0.5`.
      */
-    public readonly utilizationThreshold!: pulumi.Output<string | undefined>;
+    declare public readonly utilizationThreshold: pulumi.Output<string | undefined>;
 
     /**
      * Create a AutoscalingConfig resource with the given unique name, arguments, and options.
@@ -121,40 +121,40 @@ export class AutoscalingConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AutoscalingConfigState | undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["coolDownDuration"] = state ? state.coolDownDuration : undefined;
-            resourceInputs["daemonsetEvictionForNodes"] = state ? state.daemonsetEvictionForNodes : undefined;
-            resourceInputs["expander"] = state ? state.expander : undefined;
-            resourceInputs["gpuUtilizationThreshold"] = state ? state.gpuUtilizationThreshold : undefined;
-            resourceInputs["maxGracefulTerminationSec"] = state ? state.maxGracefulTerminationSec : undefined;
-            resourceInputs["minReplicaCount"] = state ? state.minReplicaCount : undefined;
-            resourceInputs["recycleNodeDeletionEnabled"] = state ? state.recycleNodeDeletionEnabled : undefined;
-            resourceInputs["scaleDownEnabled"] = state ? state.scaleDownEnabled : undefined;
-            resourceInputs["scaleUpFromZero"] = state ? state.scaleUpFromZero : undefined;
-            resourceInputs["scalerType"] = state ? state.scalerType : undefined;
-            resourceInputs["scanInterval"] = state ? state.scanInterval : undefined;
-            resourceInputs["skipNodesWithLocalStorage"] = state ? state.skipNodesWithLocalStorage : undefined;
-            resourceInputs["skipNodesWithSystemPods"] = state ? state.skipNodesWithSystemPods : undefined;
-            resourceInputs["unneededDuration"] = state ? state.unneededDuration : undefined;
-            resourceInputs["utilizationThreshold"] = state ? state.utilizationThreshold : undefined;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["coolDownDuration"] = state?.coolDownDuration;
+            resourceInputs["daemonsetEvictionForNodes"] = state?.daemonsetEvictionForNodes;
+            resourceInputs["expander"] = state?.expander;
+            resourceInputs["gpuUtilizationThreshold"] = state?.gpuUtilizationThreshold;
+            resourceInputs["maxGracefulTerminationSec"] = state?.maxGracefulTerminationSec;
+            resourceInputs["minReplicaCount"] = state?.minReplicaCount;
+            resourceInputs["recycleNodeDeletionEnabled"] = state?.recycleNodeDeletionEnabled;
+            resourceInputs["scaleDownEnabled"] = state?.scaleDownEnabled;
+            resourceInputs["scaleUpFromZero"] = state?.scaleUpFromZero;
+            resourceInputs["scalerType"] = state?.scalerType;
+            resourceInputs["scanInterval"] = state?.scanInterval;
+            resourceInputs["skipNodesWithLocalStorage"] = state?.skipNodesWithLocalStorage;
+            resourceInputs["skipNodesWithSystemPods"] = state?.skipNodesWithSystemPods;
+            resourceInputs["unneededDuration"] = state?.unneededDuration;
+            resourceInputs["utilizationThreshold"] = state?.utilizationThreshold;
         } else {
             const args = argsOrState as AutoscalingConfigArgs | undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["coolDownDuration"] = args ? args.coolDownDuration : undefined;
-            resourceInputs["daemonsetEvictionForNodes"] = args ? args.daemonsetEvictionForNodes : undefined;
-            resourceInputs["expander"] = args ? args.expander : undefined;
-            resourceInputs["gpuUtilizationThreshold"] = args ? args.gpuUtilizationThreshold : undefined;
-            resourceInputs["maxGracefulTerminationSec"] = args ? args.maxGracefulTerminationSec : undefined;
-            resourceInputs["minReplicaCount"] = args ? args.minReplicaCount : undefined;
-            resourceInputs["recycleNodeDeletionEnabled"] = args ? args.recycleNodeDeletionEnabled : undefined;
-            resourceInputs["scaleDownEnabled"] = args ? args.scaleDownEnabled : undefined;
-            resourceInputs["scaleUpFromZero"] = args ? args.scaleUpFromZero : undefined;
-            resourceInputs["scalerType"] = args ? args.scalerType : undefined;
-            resourceInputs["scanInterval"] = args ? args.scanInterval : undefined;
-            resourceInputs["skipNodesWithLocalStorage"] = args ? args.skipNodesWithLocalStorage : undefined;
-            resourceInputs["skipNodesWithSystemPods"] = args ? args.skipNodesWithSystemPods : undefined;
-            resourceInputs["unneededDuration"] = args ? args.unneededDuration : undefined;
-            resourceInputs["utilizationThreshold"] = args ? args.utilizationThreshold : undefined;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["coolDownDuration"] = args?.coolDownDuration;
+            resourceInputs["daemonsetEvictionForNodes"] = args?.daemonsetEvictionForNodes;
+            resourceInputs["expander"] = args?.expander;
+            resourceInputs["gpuUtilizationThreshold"] = args?.gpuUtilizationThreshold;
+            resourceInputs["maxGracefulTerminationSec"] = args?.maxGracefulTerminationSec;
+            resourceInputs["minReplicaCount"] = args?.minReplicaCount;
+            resourceInputs["recycleNodeDeletionEnabled"] = args?.recycleNodeDeletionEnabled;
+            resourceInputs["scaleDownEnabled"] = args?.scaleDownEnabled;
+            resourceInputs["scaleUpFromZero"] = args?.scaleUpFromZero;
+            resourceInputs["scalerType"] = args?.scalerType;
+            resourceInputs["scanInterval"] = args?.scanInterval;
+            resourceInputs["skipNodesWithLocalStorage"] = args?.skipNodesWithLocalStorage;
+            resourceInputs["skipNodesWithSystemPods"] = args?.skipNodesWithSystemPods;
+            resourceInputs["unneededDuration"] = args?.unneededDuration;
+            resourceInputs["utilizationThreshold"] = args?.utilizationThreshold;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AutoscalingConfig.__pulumiType, name, resourceInputs, opts);

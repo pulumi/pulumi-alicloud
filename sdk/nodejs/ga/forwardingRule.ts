@@ -160,35 +160,35 @@ export class ForwardingRule extends pulumi.CustomResource {
     /**
      * The ID of the Global Accelerator instance.
      */
-    public readonly acceleratorId!: pulumi.Output<string>;
+    declare public readonly acceleratorId: pulumi.Output<string>;
     /**
      * The ID of the Forwarding Rule.
      */
-    public /*out*/ readonly forwardingRuleId!: pulumi.Output<string>;
+    declare public /*out*/ readonly forwardingRuleId: pulumi.Output<string>;
     /**
      * Forwarding policy name. The length of the name is 2-128 English or Chinese characters. It must start with uppercase and lowercase letters or Chinese characters. It can contain numbers, half width period (.), underscores (_) And dash (-).
      */
-    public readonly forwardingRuleName!: pulumi.Output<string | undefined>;
+    declare public readonly forwardingRuleName: pulumi.Output<string | undefined>;
     /**
      * The status of the Forwarding Rule.
      */
-    public /*out*/ readonly forwardingRuleStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly forwardingRuleStatus: pulumi.Output<string>;
     /**
      * The ID of the listener.
      */
-    public readonly listenerId!: pulumi.Output<string>;
+    declare public readonly listenerId: pulumi.Output<string>;
     /**
      * Forwarding policy priority.
      */
-    public readonly priority!: pulumi.Output<number>;
+    declare public readonly priority: pulumi.Output<number>;
     /**
      * Forward action. See `ruleActions` below.
      */
-    public readonly ruleActions!: pulumi.Output<outputs.ga.ForwardingRuleRuleAction[]>;
+    declare public readonly ruleActions: pulumi.Output<outputs.ga.ForwardingRuleRuleAction[]>;
     /**
      * Forwarding condition list. See `ruleConditions` below.
      */
-    public readonly ruleConditions!: pulumi.Output<outputs.ga.ForwardingRuleRuleCondition[]>;
+    declare public readonly ruleConditions: pulumi.Output<outputs.ga.ForwardingRuleRuleCondition[]>;
 
     /**
      * Create a ForwardingRule resource with the given unique name, arguments, and options.
@@ -203,34 +203,34 @@ export class ForwardingRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ForwardingRuleState | undefined;
-            resourceInputs["acceleratorId"] = state ? state.acceleratorId : undefined;
-            resourceInputs["forwardingRuleId"] = state ? state.forwardingRuleId : undefined;
-            resourceInputs["forwardingRuleName"] = state ? state.forwardingRuleName : undefined;
-            resourceInputs["forwardingRuleStatus"] = state ? state.forwardingRuleStatus : undefined;
-            resourceInputs["listenerId"] = state ? state.listenerId : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["ruleActions"] = state ? state.ruleActions : undefined;
-            resourceInputs["ruleConditions"] = state ? state.ruleConditions : undefined;
+            resourceInputs["acceleratorId"] = state?.acceleratorId;
+            resourceInputs["forwardingRuleId"] = state?.forwardingRuleId;
+            resourceInputs["forwardingRuleName"] = state?.forwardingRuleName;
+            resourceInputs["forwardingRuleStatus"] = state?.forwardingRuleStatus;
+            resourceInputs["listenerId"] = state?.listenerId;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["ruleActions"] = state?.ruleActions;
+            resourceInputs["ruleConditions"] = state?.ruleConditions;
         } else {
             const args = argsOrState as ForwardingRuleArgs | undefined;
-            if ((!args || args.acceleratorId === undefined) && !opts.urn) {
+            if (args?.acceleratorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'acceleratorId'");
             }
-            if ((!args || args.listenerId === undefined) && !opts.urn) {
+            if (args?.listenerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'listenerId'");
             }
-            if ((!args || args.ruleActions === undefined) && !opts.urn) {
+            if (args?.ruleActions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ruleActions'");
             }
-            if ((!args || args.ruleConditions === undefined) && !opts.urn) {
+            if (args?.ruleConditions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ruleConditions'");
             }
-            resourceInputs["acceleratorId"] = args ? args.acceleratorId : undefined;
-            resourceInputs["forwardingRuleName"] = args ? args.forwardingRuleName : undefined;
-            resourceInputs["listenerId"] = args ? args.listenerId : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["ruleActions"] = args ? args.ruleActions : undefined;
-            resourceInputs["ruleConditions"] = args ? args.ruleConditions : undefined;
+            resourceInputs["acceleratorId"] = args?.acceleratorId;
+            resourceInputs["forwardingRuleName"] = args?.forwardingRuleName;
+            resourceInputs["listenerId"] = args?.listenerId;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["ruleActions"] = args?.ruleActions;
+            resourceInputs["ruleConditions"] = args?.ruleConditions;
             resourceInputs["forwardingRuleId"] = undefined /*out*/;
             resourceInputs["forwardingRuleStatus"] = undefined /*out*/;
         }

@@ -169,15 +169,15 @@ export class FlowPipeline extends pulumi.CustomResource {
     /**
      * The creation time of the resource.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The pipeline definition. For more information, see the sample pipeline definition).
      */
-    public readonly manifest!: pulumi.Output<string>;
+    declare public readonly manifest: pulumi.Output<string>;
     /**
      * The ID of the workspace.
      */
-    public readonly workspaceId!: pulumi.Output<string>;
+    declare public readonly workspaceId: pulumi.Output<string>;
 
     /**
      * Create a FlowPipeline resource with the given unique name, arguments, and options.
@@ -192,19 +192,19 @@ export class FlowPipeline extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FlowPipelineState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["manifest"] = state ? state.manifest : undefined;
-            resourceInputs["workspaceId"] = state ? state.workspaceId : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["manifest"] = state?.manifest;
+            resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as FlowPipelineArgs | undefined;
-            if ((!args || args.manifest === undefined) && !opts.urn) {
+            if (args?.manifest === undefined && !opts.urn) {
                 throw new Error("Missing required property 'manifest'");
             }
-            if ((!args || args.workspaceId === undefined) && !opts.urn) {
+            if (args?.workspaceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workspaceId'");
             }
-            resourceInputs["manifest"] = args ? args.manifest : undefined;
-            resourceInputs["workspaceId"] = args ? args.workspaceId : undefined;
+            resourceInputs["manifest"] = args?.manifest;
+            resourceInputs["workspaceId"] = args?.workspaceId;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -97,15 +97,15 @@ export class Baseline extends pulumi.CustomResource {
      *
      * You can invoke [ListAccountFactoryBaselineItems](https://next.api.aliyun.com/document/governance/2021-01-20/ListAccountFactoryBaselineItems) to get a list of account factory baseline items supported by the Cloud Governance Center. See `baselineItems` below.
      */
-    public readonly baselineItems!: pulumi.Output<outputs.governance.BaselineBaselineItem[] | undefined>;
+    declare public readonly baselineItems: pulumi.Output<outputs.governance.BaselineBaselineItem[] | undefined>;
     /**
      * Baseline Name.
      */
-    public readonly baselineName!: pulumi.Output<string | undefined>;
+    declare public readonly baselineName: pulumi.Output<string | undefined>;
     /**
      * Baseline Description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
 
     /**
      * Create a Baseline resource with the given unique name, arguments, and options.
@@ -120,14 +120,14 @@ export class Baseline extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BaselineState | undefined;
-            resourceInputs["baselineItems"] = state ? state.baselineItems : undefined;
-            resourceInputs["baselineName"] = state ? state.baselineName : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["baselineItems"] = state?.baselineItems;
+            resourceInputs["baselineName"] = state?.baselineName;
+            resourceInputs["description"] = state?.description;
         } else {
             const args = argsOrState as BaselineArgs | undefined;
-            resourceInputs["baselineItems"] = args ? args.baselineItems : undefined;
-            resourceInputs["baselineName"] = args ? args.baselineName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["baselineItems"] = args?.baselineItems;
+            resourceInputs["baselineName"] = args?.baselineName;
+            resourceInputs["description"] = args?.description;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Baseline.__pulumiType, name, resourceInputs, opts);

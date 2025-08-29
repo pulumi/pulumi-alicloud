@@ -85,39 +85,39 @@ export class KeywordLib extends pulumi.CustomResource {
     /**
      * The business scenario. Example:["bizTypeA","bizTypeB"]
      */
-    public readonly bizTypes!: pulumi.Output<string[] | undefined>;
+    declare public readonly bizTypes: pulumi.Output<string[] | undefined>;
     /**
      * The category of the text library. Valid values: BLACK: a blacklist. WHITE: a whitelist. REVIEW: a review list
      */
-    public readonly category!: pulumi.Output<string>;
+    declare public readonly category: pulumi.Output<string>;
     /**
      * Specifies whether to enable text library.true: Enable the text library. This is the default value.false: Disable the text library.
      */
-    public readonly enable!: pulumi.Output<boolean>;
+    declare public readonly enable: pulumi.Output<boolean>;
     /**
      * The name of the keyword library defined by the customer. It can contain no more than 20 characters in Chinese, English, and underscore (_).
      */
-    public readonly keywordLibName!: pulumi.Output<string>;
+    declare public readonly keywordLibName: pulumi.Output<string>;
     /**
      * Language.
      */
-    public readonly lang!: pulumi.Output<string | undefined>;
+    declare public readonly lang: pulumi.Output<string | undefined>;
     /**
      * Language used by the text Library
      */
-    public readonly language!: pulumi.Output<string>;
+    declare public readonly language: pulumi.Output<string>;
     /**
      * The category of the text library in each moderation scenario. Valid values: textKeyword: a text library against which terms in text are matched. similarText: a text library against which text patterns are matched. textKeyword: a text library against which terms extracted from images are matched. voiceText: a text library against which terms converted from audio are matched.
      */
-    public readonly libType!: pulumi.Output<string>;
+    declare public readonly libType: pulumi.Output<string>;
     /**
      * The matching method. Valid values:fuzzy: fuzzy match precise: exact match
      */
-    public readonly matchMode!: pulumi.Output<string>;
+    declare public readonly matchMode: pulumi.Output<string>;
     /**
      * The moderation scenario to which the text library applies. Valid values:TEXT: text anti-spam、IMAGE: ad violation detection、VOICE: audio anti-spam
      */
-    public readonly resourceType!: pulumi.Output<string>;
+    declare public readonly resourceType: pulumi.Output<string>;
 
     /**
      * Create a KeywordLib resource with the given unique name, arguments, and options.
@@ -132,32 +132,32 @@ export class KeywordLib extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KeywordLibState | undefined;
-            resourceInputs["bizTypes"] = state ? state.bizTypes : undefined;
-            resourceInputs["category"] = state ? state.category : undefined;
-            resourceInputs["enable"] = state ? state.enable : undefined;
-            resourceInputs["keywordLibName"] = state ? state.keywordLibName : undefined;
-            resourceInputs["lang"] = state ? state.lang : undefined;
-            resourceInputs["language"] = state ? state.language : undefined;
-            resourceInputs["libType"] = state ? state.libType : undefined;
-            resourceInputs["matchMode"] = state ? state.matchMode : undefined;
-            resourceInputs["resourceType"] = state ? state.resourceType : undefined;
+            resourceInputs["bizTypes"] = state?.bizTypes;
+            resourceInputs["category"] = state?.category;
+            resourceInputs["enable"] = state?.enable;
+            resourceInputs["keywordLibName"] = state?.keywordLibName;
+            resourceInputs["lang"] = state?.lang;
+            resourceInputs["language"] = state?.language;
+            resourceInputs["libType"] = state?.libType;
+            resourceInputs["matchMode"] = state?.matchMode;
+            resourceInputs["resourceType"] = state?.resourceType;
         } else {
             const args = argsOrState as KeywordLibArgs | undefined;
-            if ((!args || args.keywordLibName === undefined) && !opts.urn) {
+            if (args?.keywordLibName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'keywordLibName'");
             }
-            if ((!args || args.resourceType === undefined) && !opts.urn) {
+            if (args?.resourceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceType'");
             }
-            resourceInputs["bizTypes"] = args ? args.bizTypes : undefined;
-            resourceInputs["category"] = args ? args.category : undefined;
-            resourceInputs["enable"] = args ? args.enable : undefined;
-            resourceInputs["keywordLibName"] = args ? args.keywordLibName : undefined;
-            resourceInputs["lang"] = args ? args.lang : undefined;
-            resourceInputs["language"] = args ? args.language : undefined;
-            resourceInputs["libType"] = args ? args.libType : undefined;
-            resourceInputs["matchMode"] = args ? args.matchMode : undefined;
-            resourceInputs["resourceType"] = args ? args.resourceType : undefined;
+            resourceInputs["bizTypes"] = args?.bizTypes;
+            resourceInputs["category"] = args?.category;
+            resourceInputs["enable"] = args?.enable;
+            resourceInputs["keywordLibName"] = args?.keywordLibName;
+            resourceInputs["lang"] = args?.lang;
+            resourceInputs["language"] = args?.language;
+            resourceInputs["libType"] = args?.libType;
+            resourceInputs["matchMode"] = args?.matchMode;
+            resourceInputs["resourceType"] = args?.resourceType;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(KeywordLib.__pulumiType, name, resourceInputs, opts);

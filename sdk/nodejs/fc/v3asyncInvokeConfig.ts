@@ -54,39 +54,39 @@ export class V3AsyncInvokeConfig extends pulumi.CustomResource {
     /**
      * Whether to enable an asynchronous task
      */
-    public readonly asyncTask!: pulumi.Output<boolean | undefined>;
+    declare public readonly asyncTask: pulumi.Output<boolean | undefined>;
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Target Configuration See `destinationConfig` below.
      */
-    public readonly destinationConfig!: pulumi.Output<outputs.fc.V3AsyncInvokeConfigDestinationConfig | undefined>;
+    declare public readonly destinationConfig: pulumi.Output<outputs.fc.V3AsyncInvokeConfigDestinationConfig | undefined>;
     /**
      * (Available since v1.234.0) Function resource identification
      */
-    public /*out*/ readonly functionArn!: pulumi.Output<string>;
+    declare public /*out*/ readonly functionArn: pulumi.Output<string>;
     /**
      * Function Name
      */
-    public readonly functionName!: pulumi.Output<string>;
+    declare public readonly functionName: pulumi.Output<string>;
     /**
      * (Available since v1.234.0) Last modification time
      */
-    public /*out*/ readonly lastModifiedTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastModifiedTime: pulumi.Output<string>;
     /**
      * Event maximum survival time
      */
-    public readonly maxAsyncEventAgeInSeconds!: pulumi.Output<number | undefined>;
+    declare public readonly maxAsyncEventAgeInSeconds: pulumi.Output<number | undefined>;
     /**
      * Number of Asynchronous call retries
      */
-    public readonly maxAsyncRetryAttempts!: pulumi.Output<number | undefined>;
+    declare public readonly maxAsyncRetryAttempts: pulumi.Output<number | undefined>;
     /**
      * Function version or alias
      */
-    public readonly qualifier!: pulumi.Output<string | undefined>;
+    declare public readonly qualifier: pulumi.Output<string | undefined>;
 
     /**
      * Create a V3AsyncInvokeConfig resource with the given unique name, arguments, and options.
@@ -101,26 +101,26 @@ export class V3AsyncInvokeConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as V3AsyncInvokeConfigState | undefined;
-            resourceInputs["asyncTask"] = state ? state.asyncTask : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["destinationConfig"] = state ? state.destinationConfig : undefined;
-            resourceInputs["functionArn"] = state ? state.functionArn : undefined;
-            resourceInputs["functionName"] = state ? state.functionName : undefined;
-            resourceInputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
-            resourceInputs["maxAsyncEventAgeInSeconds"] = state ? state.maxAsyncEventAgeInSeconds : undefined;
-            resourceInputs["maxAsyncRetryAttempts"] = state ? state.maxAsyncRetryAttempts : undefined;
-            resourceInputs["qualifier"] = state ? state.qualifier : undefined;
+            resourceInputs["asyncTask"] = state?.asyncTask;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["destinationConfig"] = state?.destinationConfig;
+            resourceInputs["functionArn"] = state?.functionArn;
+            resourceInputs["functionName"] = state?.functionName;
+            resourceInputs["lastModifiedTime"] = state?.lastModifiedTime;
+            resourceInputs["maxAsyncEventAgeInSeconds"] = state?.maxAsyncEventAgeInSeconds;
+            resourceInputs["maxAsyncRetryAttempts"] = state?.maxAsyncRetryAttempts;
+            resourceInputs["qualifier"] = state?.qualifier;
         } else {
             const args = argsOrState as V3AsyncInvokeConfigArgs | undefined;
-            if ((!args || args.functionName === undefined) && !opts.urn) {
+            if (args?.functionName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'functionName'");
             }
-            resourceInputs["asyncTask"] = args ? args.asyncTask : undefined;
-            resourceInputs["destinationConfig"] = args ? args.destinationConfig : undefined;
-            resourceInputs["functionName"] = args ? args.functionName : undefined;
-            resourceInputs["maxAsyncEventAgeInSeconds"] = args ? args.maxAsyncEventAgeInSeconds : undefined;
-            resourceInputs["maxAsyncRetryAttempts"] = args ? args.maxAsyncRetryAttempts : undefined;
-            resourceInputs["qualifier"] = args ? args.qualifier : undefined;
+            resourceInputs["asyncTask"] = args?.asyncTask;
+            resourceInputs["destinationConfig"] = args?.destinationConfig;
+            resourceInputs["functionName"] = args?.functionName;
+            resourceInputs["maxAsyncEventAgeInSeconds"] = args?.maxAsyncEventAgeInSeconds;
+            resourceInputs["maxAsyncRetryAttempts"] = args?.maxAsyncRetryAttempts;
+            resourceInputs["qualifier"] = args?.qualifier;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["functionArn"] = undefined /*out*/;
             resourceInputs["lastModifiedTime"] = undefined /*out*/;

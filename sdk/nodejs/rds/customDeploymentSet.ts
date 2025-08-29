@@ -71,11 +71,11 @@ export class CustomDeploymentSet extends pulumi.CustomResource {
     /**
      * The name of the resource
      */
-    public readonly customDeploymentSetName!: pulumi.Output<string | undefined>;
+    declare public readonly customDeploymentSetName: pulumi.Output<string | undefined>;
     /**
      * Deployment set description information. It must be 2 to 256 characters in length and cannot start with http:// or https.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Set the number of groups for the deployment set group high availability policy. Value range: 1~7.
      *
@@ -83,7 +83,7 @@ export class CustomDeploymentSet extends pulumi.CustomResource {
      *
      * > **NOTE:**  This parameter takes effect only when 'Strategy = AvailabilityGroup.
      */
-    public readonly groupCount!: pulumi.Output<number | undefined>;
+    declare public readonly groupCount: pulumi.Output<number | undefined>;
     /**
      * After the instance in the deployment set is down and migrated, there is no emergency solution for the scattered instance inventory. Value range:
      * - `CancelMembershipAndStart`: removes the instance from the deployment set and starts the instance immediately after the instance is down and migrated.
@@ -91,11 +91,11 @@ export class CustomDeploymentSet extends pulumi.CustomResource {
      *
      * Default value: CancelMembershipAndStart.
      */
-    public readonly onUnableToRedeployFailedInstance!: pulumi.Output<string | undefined>;
+    declare public readonly onUnableToRedeployFailedInstance: pulumi.Output<string | undefined>;
     /**
      * The status of the resource
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Deployment strategy. Value range:
      * - `Availability`: High Availability policy.
@@ -104,7 +104,7 @@ export class CustomDeploymentSet extends pulumi.CustomResource {
      *
      * Default value: Availability.
      */
-    public readonly strategy!: pulumi.Output<string>;
+    declare public readonly strategy: pulumi.Output<string>;
 
     /**
      * Create a CustomDeploymentSet resource with the given unique name, arguments, and options.
@@ -119,19 +119,19 @@ export class CustomDeploymentSet extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomDeploymentSetState | undefined;
-            resourceInputs["customDeploymentSetName"] = state ? state.customDeploymentSetName : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["groupCount"] = state ? state.groupCount : undefined;
-            resourceInputs["onUnableToRedeployFailedInstance"] = state ? state.onUnableToRedeployFailedInstance : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["strategy"] = state ? state.strategy : undefined;
+            resourceInputs["customDeploymentSetName"] = state?.customDeploymentSetName;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["groupCount"] = state?.groupCount;
+            resourceInputs["onUnableToRedeployFailedInstance"] = state?.onUnableToRedeployFailedInstance;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["strategy"] = state?.strategy;
         } else {
             const args = argsOrState as CustomDeploymentSetArgs | undefined;
-            resourceInputs["customDeploymentSetName"] = args ? args.customDeploymentSetName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["groupCount"] = args ? args.groupCount : undefined;
-            resourceInputs["onUnableToRedeployFailedInstance"] = args ? args.onUnableToRedeployFailedInstance : undefined;
-            resourceInputs["strategy"] = args ? args.strategy : undefined;
+            resourceInputs["customDeploymentSetName"] = args?.customDeploymentSetName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["groupCount"] = args?.groupCount;
+            resourceInputs["onUnableToRedeployFailedInstance"] = args?.onUnableToRedeployFailedInstance;
+            resourceInputs["strategy"] = args?.strategy;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

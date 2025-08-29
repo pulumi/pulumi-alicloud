@@ -71,47 +71,47 @@ export class RatePlanInstance extends pulumi.CustomResource {
     /**
      * Specifies whether to enable auto payment.
      */
-    public readonly autoPay!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoPay: pulumi.Output<boolean | undefined>;
     /**
      * Auto-renewal:
      */
-    public readonly autoRenew!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoRenew: pulumi.Output<boolean | undefined>;
     /**
      * The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
      */
-    public readonly coverage!: pulumi.Output<string | undefined>;
+    declare public readonly coverage: pulumi.Output<string | undefined>;
     /**
      * The time when the plan was purchased.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The plan instance status.
      * - `Renewing`: renewing
      */
-    public /*out*/ readonly instanceStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly instanceStatus: pulumi.Output<string>;
     /**
      * The payment type of the resource. Valid values:
      * - `Subscription`: subscription.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * Subscription period (in months).
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * Package name.Value range:
      */
-    public readonly planName!: pulumi.Output<string | undefined>;
+    declare public readonly planName: pulumi.Output<string | undefined>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The DNS setup option for the website. Valid values:
      * - `NS`
      * - `CNAME`
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
 
     /**
      * Create a RatePlanInstance resource with the given unique name, arguments, and options.
@@ -126,25 +126,25 @@ export class RatePlanInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RatePlanInstanceState | undefined;
-            resourceInputs["autoPay"] = state ? state.autoPay : undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["coverage"] = state ? state.coverage : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["instanceStatus"] = state ? state.instanceStatus : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["planName"] = state ? state.planName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["autoPay"] = state?.autoPay;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["coverage"] = state?.coverage;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["instanceStatus"] = state?.instanceStatus;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["planName"] = state?.planName;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as RatePlanInstanceArgs | undefined;
-            resourceInputs["autoPay"] = args ? args.autoPay : undefined;
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["coverage"] = args ? args.coverage : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["planName"] = args ? args.planName : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["autoPay"] = args?.autoPay;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["coverage"] = args?.coverage;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["planName"] = args?.planName;
+            resourceInputs["type"] = args?.type;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["instanceStatus"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

@@ -69,27 +69,27 @@ export class AntiBruteForceRule extends pulumi.CustomResource {
     /**
      * The name of the defense rule.
      */
-    public readonly antiBruteForceRuleName!: pulumi.Output<string>;
+    declare public readonly antiBruteForceRuleName: pulumi.Output<string>;
     /**
      * Specifies whether to set the defense rule as the default rule. Valid values:
      */
-    public readonly defaultRule!: pulumi.Output<boolean | undefined>;
+    declare public readonly defaultRule: pulumi.Output<boolean | undefined>;
     /**
      * FailCount
      */
-    public readonly failCount!: pulumi.Output<number>;
+    declare public readonly failCount: pulumi.Output<number>;
     /**
      * The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
      */
-    public readonly forbiddenTime!: pulumi.Output<number>;
+    declare public readonly forbiddenTime: pulumi.Output<number>;
     /**
      * The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
      */
-    public readonly span!: pulumi.Output<number>;
+    declare public readonly span: pulumi.Output<number>;
     /**
      * The UUIDs of the servers to which you want to apply the defense rule.
      */
-    public readonly uuidLists!: pulumi.Output<string[]>;
+    declare public readonly uuidLists: pulumi.Output<string[]>;
 
     /**
      * Create a AntiBruteForceRule resource with the given unique name, arguments, and options.
@@ -104,35 +104,35 @@ export class AntiBruteForceRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AntiBruteForceRuleState | undefined;
-            resourceInputs["antiBruteForceRuleName"] = state ? state.antiBruteForceRuleName : undefined;
-            resourceInputs["defaultRule"] = state ? state.defaultRule : undefined;
-            resourceInputs["failCount"] = state ? state.failCount : undefined;
-            resourceInputs["forbiddenTime"] = state ? state.forbiddenTime : undefined;
-            resourceInputs["span"] = state ? state.span : undefined;
-            resourceInputs["uuidLists"] = state ? state.uuidLists : undefined;
+            resourceInputs["antiBruteForceRuleName"] = state?.antiBruteForceRuleName;
+            resourceInputs["defaultRule"] = state?.defaultRule;
+            resourceInputs["failCount"] = state?.failCount;
+            resourceInputs["forbiddenTime"] = state?.forbiddenTime;
+            resourceInputs["span"] = state?.span;
+            resourceInputs["uuidLists"] = state?.uuidLists;
         } else {
             const args = argsOrState as AntiBruteForceRuleArgs | undefined;
-            if ((!args || args.antiBruteForceRuleName === undefined) && !opts.urn) {
+            if (args?.antiBruteForceRuleName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'antiBruteForceRuleName'");
             }
-            if ((!args || args.failCount === undefined) && !opts.urn) {
+            if (args?.failCount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'failCount'");
             }
-            if ((!args || args.forbiddenTime === undefined) && !opts.urn) {
+            if (args?.forbiddenTime === undefined && !opts.urn) {
                 throw new Error("Missing required property 'forbiddenTime'");
             }
-            if ((!args || args.span === undefined) && !opts.urn) {
+            if (args?.span === undefined && !opts.urn) {
                 throw new Error("Missing required property 'span'");
             }
-            if ((!args || args.uuidLists === undefined) && !opts.urn) {
+            if (args?.uuidLists === undefined && !opts.urn) {
                 throw new Error("Missing required property 'uuidLists'");
             }
-            resourceInputs["antiBruteForceRuleName"] = args ? args.antiBruteForceRuleName : undefined;
-            resourceInputs["defaultRule"] = args ? args.defaultRule : undefined;
-            resourceInputs["failCount"] = args ? args.failCount : undefined;
-            resourceInputs["forbiddenTime"] = args ? args.forbiddenTime : undefined;
-            resourceInputs["span"] = args ? args.span : undefined;
-            resourceInputs["uuidLists"] = args ? args.uuidLists : undefined;
+            resourceInputs["antiBruteForceRuleName"] = args?.antiBruteForceRuleName;
+            resourceInputs["defaultRule"] = args?.defaultRule;
+            resourceInputs["failCount"] = args?.failCount;
+            resourceInputs["forbiddenTime"] = args?.forbiddenTime;
+            resourceInputs["span"] = args?.span;
+            resourceInputs["uuidLists"] = args?.uuidLists;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AntiBruteForceRule.__pulumiType, name, resourceInputs, opts);

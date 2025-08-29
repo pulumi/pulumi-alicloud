@@ -97,19 +97,19 @@ export class EdgeContainerAppRecord extends pulumi.CustomResource {
     /**
      * The application ID
      */
-    public readonly appId!: pulumi.Output<string>;
+    declare public readonly appId: pulumi.Output<string>;
     /**
      * The time when the domain name was added. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The associated domain name.
      */
-    public readonly recordName!: pulumi.Output<string>;
+    declare public readonly recordName: pulumi.Output<string>;
     /**
      * The website ID.
      */
-    public readonly siteId!: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<number>;
 
     /**
      * Create a EdgeContainerAppRecord resource with the given unique name, arguments, and options.
@@ -124,21 +124,21 @@ export class EdgeContainerAppRecord extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EdgeContainerAppRecordState | undefined;
-            resourceInputs["appId"] = state ? state.appId : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["recordName"] = state ? state.recordName : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
+            resourceInputs["appId"] = state?.appId;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["recordName"] = state?.recordName;
+            resourceInputs["siteId"] = state?.siteId;
         } else {
             const args = argsOrState as EdgeContainerAppRecordArgs | undefined;
-            if ((!args || args.appId === undefined) && !opts.urn) {
+            if (args?.appId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            if ((!args || args.recordName === undefined) && !opts.urn) {
+            if (args?.recordName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'recordName'");
             }
-            resourceInputs["appId"] = args ? args.appId : undefined;
-            resourceInputs["recordName"] = args ? args.recordName : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
+            resourceInputs["appId"] = args?.appId;
+            resourceInputs["recordName"] = args?.recordName;
+            resourceInputs["siteId"] = args?.siteId;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

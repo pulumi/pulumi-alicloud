@@ -107,31 +107,31 @@ export class HttpResponseHeaderModificationRule extends pulumi.CustomResource {
     /**
      * Config Id
      */
-    public /*out*/ readonly configId!: pulumi.Output<number>;
+    declare public /*out*/ readonly configId: pulumi.Output<number>;
     /**
      * Modify response headers, supporting add, delete, and modify operations. See `responseHeaderModification` below.
      */
-    public readonly responseHeaderModifications!: pulumi.Output<outputs.esa.HttpResponseHeaderModificationRuleResponseHeaderModification[]>;
+    declare public readonly responseHeaderModifications: pulumi.Output<outputs.esa.HttpResponseHeaderModificationRuleResponseHeaderModification[]>;
     /**
      * Rule content.
      */
-    public readonly rule!: pulumi.Output<string | undefined>;
+    declare public readonly rule: pulumi.Output<string | undefined>;
     /**
      * Rule switch. Possible values:
      */
-    public readonly ruleEnable!: pulumi.Output<string | undefined>;
+    declare public readonly ruleEnable: pulumi.Output<string | undefined>;
     /**
      * Rule name.
      */
-    public readonly ruleName!: pulumi.Output<string | undefined>;
+    declare public readonly ruleName: pulumi.Output<string | undefined>;
     /**
      * The site ID.
      */
-    public readonly siteId!: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<number>;
     /**
      * The version number of the website configurations.
      */
-    public readonly siteVersion!: pulumi.Output<number | undefined>;
+    declare public readonly siteVersion: pulumi.Output<number | undefined>;
 
     /**
      * Create a HttpResponseHeaderModificationRule resource with the given unique name, arguments, and options.
@@ -146,27 +146,27 @@ export class HttpResponseHeaderModificationRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HttpResponseHeaderModificationRuleState | undefined;
-            resourceInputs["configId"] = state ? state.configId : undefined;
-            resourceInputs["responseHeaderModifications"] = state ? state.responseHeaderModifications : undefined;
-            resourceInputs["rule"] = state ? state.rule : undefined;
-            resourceInputs["ruleEnable"] = state ? state.ruleEnable : undefined;
-            resourceInputs["ruleName"] = state ? state.ruleName : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["siteVersion"] = state ? state.siteVersion : undefined;
+            resourceInputs["configId"] = state?.configId;
+            resourceInputs["responseHeaderModifications"] = state?.responseHeaderModifications;
+            resourceInputs["rule"] = state?.rule;
+            resourceInputs["ruleEnable"] = state?.ruleEnable;
+            resourceInputs["ruleName"] = state?.ruleName;
+            resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["siteVersion"] = state?.siteVersion;
         } else {
             const args = argsOrState as HttpResponseHeaderModificationRuleArgs | undefined;
-            if ((!args || args.responseHeaderModifications === undefined) && !opts.urn) {
+            if (args?.responseHeaderModifications === undefined && !opts.urn) {
                 throw new Error("Missing required property 'responseHeaderModifications'");
             }
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            resourceInputs["responseHeaderModifications"] = args ? args.responseHeaderModifications : undefined;
-            resourceInputs["rule"] = args ? args.rule : undefined;
-            resourceInputs["ruleEnable"] = args ? args.ruleEnable : undefined;
-            resourceInputs["ruleName"] = args ? args.ruleName : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
-            resourceInputs["siteVersion"] = args ? args.siteVersion : undefined;
+            resourceInputs["responseHeaderModifications"] = args?.responseHeaderModifications;
+            resourceInputs["rule"] = args?.rule;
+            resourceInputs["ruleEnable"] = args?.ruleEnable;
+            resourceInputs["ruleName"] = args?.ruleName;
+            resourceInputs["siteId"] = args?.siteId;
+            resourceInputs["siteVersion"] = args?.siteVersion;
             resourceInputs["configId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

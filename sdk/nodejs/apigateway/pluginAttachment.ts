@@ -104,19 +104,19 @@ export class PluginAttachment extends pulumi.CustomResource {
     /**
      * The apiId that plugin attaches to.
      */
-    public readonly apiId!: pulumi.Output<string>;
+    declare public readonly apiId: pulumi.Output<string>;
     /**
      * The group that the api belongs to.
      */
-    public readonly groupId!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string>;
     /**
      * The plugin that attaches to the api.
      */
-    public readonly pluginId!: pulumi.Output<string>;
+    declare public readonly pluginId: pulumi.Output<string>;
     /**
      * Stage that the plugin attaches to.
      */
-    public readonly stageName!: pulumi.Output<string>;
+    declare public readonly stageName: pulumi.Output<string>;
 
     /**
      * Create a PluginAttachment resource with the given unique name, arguments, and options.
@@ -131,28 +131,28 @@ export class PluginAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PluginAttachmentState | undefined;
-            resourceInputs["apiId"] = state ? state.apiId : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["pluginId"] = state ? state.pluginId : undefined;
-            resourceInputs["stageName"] = state ? state.stageName : undefined;
+            resourceInputs["apiId"] = state?.apiId;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["pluginId"] = state?.pluginId;
+            resourceInputs["stageName"] = state?.stageName;
         } else {
             const args = argsOrState as PluginAttachmentArgs | undefined;
-            if ((!args || args.apiId === undefined) && !opts.urn) {
+            if (args?.apiId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'apiId'");
             }
-            if ((!args || args.groupId === undefined) && !opts.urn) {
+            if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.pluginId === undefined) && !opts.urn) {
+            if (args?.pluginId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pluginId'");
             }
-            if ((!args || args.stageName === undefined) && !opts.urn) {
+            if (args?.stageName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'stageName'");
             }
-            resourceInputs["apiId"] = args ? args.apiId : undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["pluginId"] = args ? args.pluginId : undefined;
-            resourceInputs["stageName"] = args ? args.stageName : undefined;
+            resourceInputs["apiId"] = args?.apiId;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["pluginId"] = args?.pluginId;
+            resourceInputs["stageName"] = args?.stageName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PluginAttachment.__pulumiType, name, resourceInputs, opts);

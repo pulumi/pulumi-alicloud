@@ -74,15 +74,15 @@ export class PolicyAttachment extends pulumi.CustomResource {
     /**
      * The ID of the tag policy.
      */
-    public readonly policyId!: pulumi.Output<string>;
+    declare public readonly policyId: pulumi.Output<string>;
     /**
      * The ID of the object.
      */
-    public readonly targetId!: pulumi.Output<string>;
+    declare public readonly targetId: pulumi.Output<string>;
     /**
      * The type of the object. Valid values: `USER`, `ROOT`, `FOLDER`, `ACCOUNT`.
      */
-    public readonly targetType!: pulumi.Output<string>;
+    declare public readonly targetType: pulumi.Output<string>;
 
     /**
      * Create a PolicyAttachment resource with the given unique name, arguments, and options.
@@ -97,23 +97,23 @@ export class PolicyAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyAttachmentState | undefined;
-            resourceInputs["policyId"] = state ? state.policyId : undefined;
-            resourceInputs["targetId"] = state ? state.targetId : undefined;
-            resourceInputs["targetType"] = state ? state.targetType : undefined;
+            resourceInputs["policyId"] = state?.policyId;
+            resourceInputs["targetId"] = state?.targetId;
+            resourceInputs["targetType"] = state?.targetType;
         } else {
             const args = argsOrState as PolicyAttachmentArgs | undefined;
-            if ((!args || args.policyId === undefined) && !opts.urn) {
+            if (args?.policyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyId'");
             }
-            if ((!args || args.targetId === undefined) && !opts.urn) {
+            if (args?.targetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetId'");
             }
-            if ((!args || args.targetType === undefined) && !opts.urn) {
+            if (args?.targetType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetType'");
             }
-            resourceInputs["policyId"] = args ? args.policyId : undefined;
-            resourceInputs["targetId"] = args ? args.targetId : undefined;
-            resourceInputs["targetType"] = args ? args.targetType : undefined;
+            resourceInputs["policyId"] = args?.policyId;
+            resourceInputs["targetId"] = args?.targetId;
+            resourceInputs["targetType"] = args?.targetType;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PolicyAttachment.__pulumiType, name, resourceInputs, opts);

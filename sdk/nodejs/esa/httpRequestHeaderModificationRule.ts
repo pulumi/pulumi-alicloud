@@ -96,35 +96,35 @@ export class HttpRequestHeaderModificationRule extends pulumi.CustomResource {
     /**
      * Config Id
      */
-    public /*out*/ readonly configId!: pulumi.Output<number>;
+    declare public /*out*/ readonly configId: pulumi.Output<number>;
     /**
      * The configurations of modifying request headers. You can add, delete, or modify a request header. See `requestHeaderModification` below.
      */
-    public readonly requestHeaderModifications!: pulumi.Output<outputs.esa.HttpRequestHeaderModificationRuleRequestHeaderModification[]>;
+    declare public readonly requestHeaderModifications: pulumi.Output<outputs.esa.HttpRequestHeaderModificationRuleRequestHeaderModification[]>;
     /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * - Match all incoming requests: value set to true
      * - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
-    public readonly rule!: pulumi.Output<string | undefined>;
+    declare public readonly rule: pulumi.Output<string | undefined>;
     /**
      * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      * - on: open.
      * - off: close.
      */
-    public readonly ruleEnable!: pulumi.Output<string | undefined>;
+    declare public readonly ruleEnable: pulumi.Output<string | undefined>;
     /**
      * Rule name. When adding global configuration, this parameter does not need to be set.
      */
-    public readonly ruleName!: pulumi.Output<string | undefined>;
+    declare public readonly ruleName: pulumi.Output<string | undefined>;
     /**
      * The site ID.
      */
-    public readonly siteId!: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<number>;
     /**
      * The version number of the website configurations.
      */
-    public readonly siteVersion!: pulumi.Output<number | undefined>;
+    declare public readonly siteVersion: pulumi.Output<number | undefined>;
 
     /**
      * Create a HttpRequestHeaderModificationRule resource with the given unique name, arguments, and options.
@@ -139,27 +139,27 @@ export class HttpRequestHeaderModificationRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HttpRequestHeaderModificationRuleState | undefined;
-            resourceInputs["configId"] = state ? state.configId : undefined;
-            resourceInputs["requestHeaderModifications"] = state ? state.requestHeaderModifications : undefined;
-            resourceInputs["rule"] = state ? state.rule : undefined;
-            resourceInputs["ruleEnable"] = state ? state.ruleEnable : undefined;
-            resourceInputs["ruleName"] = state ? state.ruleName : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["siteVersion"] = state ? state.siteVersion : undefined;
+            resourceInputs["configId"] = state?.configId;
+            resourceInputs["requestHeaderModifications"] = state?.requestHeaderModifications;
+            resourceInputs["rule"] = state?.rule;
+            resourceInputs["ruleEnable"] = state?.ruleEnable;
+            resourceInputs["ruleName"] = state?.ruleName;
+            resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["siteVersion"] = state?.siteVersion;
         } else {
             const args = argsOrState as HttpRequestHeaderModificationRuleArgs | undefined;
-            if ((!args || args.requestHeaderModifications === undefined) && !opts.urn) {
+            if (args?.requestHeaderModifications === undefined && !opts.urn) {
                 throw new Error("Missing required property 'requestHeaderModifications'");
             }
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            resourceInputs["requestHeaderModifications"] = args ? args.requestHeaderModifications : undefined;
-            resourceInputs["rule"] = args ? args.rule : undefined;
-            resourceInputs["ruleEnable"] = args ? args.ruleEnable : undefined;
-            resourceInputs["ruleName"] = args ? args.ruleName : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
-            resourceInputs["siteVersion"] = args ? args.siteVersion : undefined;
+            resourceInputs["requestHeaderModifications"] = args?.requestHeaderModifications;
+            resourceInputs["rule"] = args?.rule;
+            resourceInputs["ruleEnable"] = args?.ruleEnable;
+            resourceInputs["ruleName"] = args?.ruleName;
+            resourceInputs["siteId"] = args?.siteId;
+            resourceInputs["siteVersion"] = args?.siteVersion;
             resourceInputs["configId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

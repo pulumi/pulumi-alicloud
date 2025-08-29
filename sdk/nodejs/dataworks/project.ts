@@ -78,39 +78,39 @@ export class Project extends pulumi.CustomResource {
     /**
      * Workspace Description
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Is Development Environment Enabled
      */
-    public readonly devEnvironmentEnabled!: pulumi.Output<boolean>;
+    declare public readonly devEnvironmentEnabled: pulumi.Output<boolean>;
     /**
      * Is Development Role Disabled
      */
-    public readonly devRoleDisabled!: pulumi.Output<boolean>;
+    declare public readonly devRoleDisabled: pulumi.Output<boolean>;
     /**
      * Workspace Display Name
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Create PAI Workspace Together
      */
-    public readonly paiTaskEnabled!: pulumi.Output<boolean>;
+    declare public readonly paiTaskEnabled: pulumi.Output<boolean>;
     /**
      * Workspace Name
      */
-    public readonly projectName!: pulumi.Output<string>;
+    declare public readonly projectName: pulumi.Output<string>;
     /**
      * Aliyun Resource Group Id
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Workspace Status
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * Aliyun Resource Tag
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -125,35 +125,35 @@ export class Project extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["devEnvironmentEnabled"] = state ? state.devEnvironmentEnabled : undefined;
-            resourceInputs["devRoleDisabled"] = state ? state.devRoleDisabled : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["paiTaskEnabled"] = state ? state.paiTaskEnabled : undefined;
-            resourceInputs["projectName"] = state ? state.projectName : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["devEnvironmentEnabled"] = state?.devEnvironmentEnabled;
+            resourceInputs["devRoleDisabled"] = state?.devRoleDisabled;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["paiTaskEnabled"] = state?.paiTaskEnabled;
+            resourceInputs["projectName"] = state?.projectName;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.paiTaskEnabled === undefined) && !opts.urn) {
+            if (args?.paiTaskEnabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paiTaskEnabled'");
             }
-            if ((!args || args.projectName === undefined) && !opts.urn) {
+            if (args?.projectName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["devEnvironmentEnabled"] = args ? args.devEnvironmentEnabled : undefined;
-            resourceInputs["devRoleDisabled"] = args ? args.devRoleDisabled : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["paiTaskEnabled"] = args ? args.paiTaskEnabled : undefined;
-            resourceInputs["projectName"] = args ? args.projectName : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["devEnvironmentEnabled"] = args?.devEnvironmentEnabled;
+            resourceInputs["devRoleDisabled"] = args?.devRoleDisabled;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["paiTaskEnabled"] = args?.paiTaskEnabled;
+            resourceInputs["projectName"] = args?.projectName;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Project.__pulumiType, name, resourceInputs, opts);

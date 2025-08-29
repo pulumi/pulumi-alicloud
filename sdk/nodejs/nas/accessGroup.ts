@@ -72,38 +72,38 @@ export class AccessGroup extends pulumi.CustomResource {
     /**
      * The name of the permission group.
      */
-    public readonly accessGroupName!: pulumi.Output<string>;
+    declare public readonly accessGroupName: pulumi.Output<string>;
     /**
      * Permission group types, including Vpc.
      */
-    public readonly accessGroupType!: pulumi.Output<string>;
+    declare public readonly accessGroupType: pulumi.Output<string>;
     /**
      * Creation time.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Permission group description information.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * File system type. Value:
      * - standard (default): Universal NAS
      * - extreme: extreme NAS
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    public readonly fileSystemType!: pulumi.Output<string | undefined>;
+    declare public readonly fileSystemType: pulumi.Output<string | undefined>;
     /**
      * . Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * . Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
      *
      * @deprecated Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a AccessGroup resource with the given unique name, arguments, and options.
@@ -118,21 +118,21 @@ export class AccessGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessGroupState | undefined;
-            resourceInputs["accessGroupName"] = state ? state.accessGroupName : undefined;
-            resourceInputs["accessGroupType"] = state ? state.accessGroupType : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["fileSystemType"] = state ? state.fileSystemType : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["accessGroupName"] = state?.accessGroupName;
+            resourceInputs["accessGroupType"] = state?.accessGroupType;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["fileSystemType"] = state?.fileSystemType;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as AccessGroupArgs | undefined;
-            resourceInputs["accessGroupName"] = args ? args.accessGroupName : undefined;
-            resourceInputs["accessGroupType"] = args ? args.accessGroupType : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["fileSystemType"] = args ? args.fileSystemType : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["accessGroupName"] = args?.accessGroupName;
+            resourceInputs["accessGroupType"] = args?.accessGroupType;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["fileSystemType"] = args?.fileSystemType;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["type"] = args?.type;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

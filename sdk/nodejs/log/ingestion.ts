@@ -113,39 +113,39 @@ export class Ingestion extends pulumi.CustomResource {
     /**
      * Ingestion job description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name displayed on the web page.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Ingestion job name, it can only contain lowercase letters, numbers, dashes `-` and underscores `_`. It must start and end with lowercase letters or numbers, and the name must be 2 to 128 characters long.
      */
-    public readonly ingestionName!: pulumi.Output<string>;
+    declare public readonly ingestionName: pulumi.Output<string>;
     /**
      * Task execution interval, support minute `m`, hour `h`, day `d`, for example 30 minutes `30m`.
      */
-    public readonly interval!: pulumi.Output<string>;
+    declare public readonly interval: pulumi.Output<string>;
     /**
      * The name of the target logstore.
      */
-    public readonly logstore!: pulumi.Output<string>;
+    declare public readonly logstore: pulumi.Output<string>;
     /**
      * The name of the log project. It is the only in one Alicloud account.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * Whether to run the ingestion job immediately, if false, wait for an interval before starting the ingestion.
      */
-    public readonly runImmediately!: pulumi.Output<boolean>;
+    declare public readonly runImmediately: pulumi.Output<boolean>;
     /**
      * Data source and data format details. [Refer to details](https://www.alibabacloud.com/help/en/doc-detail/147819.html).
      */
-    public readonly source!: pulumi.Output<string>;
+    declare public readonly source: pulumi.Output<string>;
     /**
      * Which time zone is the log time imported in, e.g. `+0800`.
      */
-    public readonly timeZone!: pulumi.Output<string | undefined>;
+    declare public readonly timeZone: pulumi.Output<string | undefined>;
 
     /**
      * Create a Ingestion resource with the given unique name, arguments, and options.
@@ -160,47 +160,47 @@ export class Ingestion extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IngestionState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["ingestionName"] = state ? state.ingestionName : undefined;
-            resourceInputs["interval"] = state ? state.interval : undefined;
-            resourceInputs["logstore"] = state ? state.logstore : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["runImmediately"] = state ? state.runImmediately : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
-            resourceInputs["timeZone"] = state ? state.timeZone : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["ingestionName"] = state?.ingestionName;
+            resourceInputs["interval"] = state?.interval;
+            resourceInputs["logstore"] = state?.logstore;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["runImmediately"] = state?.runImmediately;
+            resourceInputs["source"] = state?.source;
+            resourceInputs["timeZone"] = state?.timeZone;
         } else {
             const args = argsOrState as IngestionArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.ingestionName === undefined) && !opts.urn) {
+            if (args?.ingestionName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ingestionName'");
             }
-            if ((!args || args.interval === undefined) && !opts.urn) {
+            if (args?.interval === undefined && !opts.urn) {
                 throw new Error("Missing required property 'interval'");
             }
-            if ((!args || args.logstore === undefined) && !opts.urn) {
+            if (args?.logstore === undefined && !opts.urn) {
                 throw new Error("Missing required property 'logstore'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.runImmediately === undefined) && !opts.urn) {
+            if (args?.runImmediately === undefined && !opts.urn) {
                 throw new Error("Missing required property 'runImmediately'");
             }
-            if ((!args || args.source === undefined) && !opts.urn) {
+            if (args?.source === undefined && !opts.urn) {
                 throw new Error("Missing required property 'source'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["ingestionName"] = args ? args.ingestionName : undefined;
-            resourceInputs["interval"] = args ? args.interval : undefined;
-            resourceInputs["logstore"] = args ? args.logstore : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["runImmediately"] = args ? args.runImmediately : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
-            resourceInputs["timeZone"] = args ? args.timeZone : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["ingestionName"] = args?.ingestionName;
+            resourceInputs["interval"] = args?.interval;
+            resourceInputs["logstore"] = args?.logstore;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["runImmediately"] = args?.runImmediately;
+            resourceInputs["source"] = args?.source;
+            resourceInputs["timeZone"] = args?.timeZone;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Ingestion.__pulumiType, name, resourceInputs, opts);

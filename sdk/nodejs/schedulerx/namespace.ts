@@ -44,15 +44,15 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * Namespace description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Namespace name.
      */
-    public readonly namespaceName!: pulumi.Output<string>;
+    declare public readonly namespaceName: pulumi.Output<string>;
     /**
      * Namespace uid.
      */
-    public readonly namespaceUid!: pulumi.Output<string>;
+    declare public readonly namespaceUid: pulumi.Output<string>;
 
     /**
      * Create a Namespace resource with the given unique name, arguments, and options.
@@ -67,17 +67,17 @@ export class Namespace extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NamespaceState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["namespaceName"] = state ? state.namespaceName : undefined;
-            resourceInputs["namespaceUid"] = state ? state.namespaceUid : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["namespaceName"] = state?.namespaceName;
+            resourceInputs["namespaceUid"] = state?.namespaceUid;
         } else {
             const args = argsOrState as NamespaceArgs | undefined;
-            if ((!args || args.namespaceName === undefined) && !opts.urn) {
+            if (args?.namespaceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'namespaceName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["namespaceName"] = args ? args.namespaceName : undefined;
-            resourceInputs["namespaceUid"] = args ? args.namespaceUid : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["namespaceName"] = args?.namespaceName;
+            resourceInputs["namespaceUid"] = args?.namespaceUid;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Namespace.__pulumiType, name, resourceInputs, opts);

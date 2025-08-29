@@ -75,43 +75,43 @@ export class StateConfiguration extends pulumi.CustomResource {
     /**
      * Configuration mode. Valid values: `ApplyAndAutoCorrect`, `ApplyAndMonitor`, `ApplyOnly`.
      */
-    public readonly configureMode!: pulumi.Output<string>;
+    declare public readonly configureMode: pulumi.Output<string>;
     /**
      * The description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The parameter of the Template. This field is in the format of JSON strings. For detailed definition instructions, please refer to [Metadata types that are supported by a configuration list](https://www.alibabacloud.com/help/en/doc-detail/208276.html).
      */
-    public readonly parameters!: pulumi.Output<string | undefined>;
+    declare public readonly parameters: pulumi.Output<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Timing expression.
      */
-    public readonly scheduleExpression!: pulumi.Output<string>;
+    declare public readonly scheduleExpression: pulumi.Output<string>;
     /**
      * Timing type. Valid values: `rate`.
      */
-    public readonly scheduleType!: pulumi.Output<string>;
+    declare public readonly scheduleType: pulumi.Output<string>;
     /**
      * The tag of the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The Target resources.  This field is in the format of JSON strings. For detailed definition instructions, please refer to [Parameter](https://www.alibabacloud.com/help/en/doc-detail/120674.html).
      */
-    public readonly targets!: pulumi.Output<string>;
+    declare public readonly targets: pulumi.Output<string>;
     /**
      * The name of the template.
      */
-    public readonly templateName!: pulumi.Output<string>;
+    declare public readonly templateName: pulumi.Output<string>;
     /**
      * The version number. If you do not specify this parameter, the system uses the latest version.
      */
-    public readonly templateVersion!: pulumi.Output<string>;
+    declare public readonly templateVersion: pulumi.Output<string>;
 
     /**
      * Create a StateConfiguration resource with the given unique name, arguments, and options.
@@ -126,40 +126,40 @@ export class StateConfiguration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StateConfigurationState | undefined;
-            resourceInputs["configureMode"] = state ? state.configureMode : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["parameters"] = state ? state.parameters : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["scheduleExpression"] = state ? state.scheduleExpression : undefined;
-            resourceInputs["scheduleType"] = state ? state.scheduleType : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["targets"] = state ? state.targets : undefined;
-            resourceInputs["templateName"] = state ? state.templateName : undefined;
-            resourceInputs["templateVersion"] = state ? state.templateVersion : undefined;
+            resourceInputs["configureMode"] = state?.configureMode;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["parameters"] = state?.parameters;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["scheduleExpression"] = state?.scheduleExpression;
+            resourceInputs["scheduleType"] = state?.scheduleType;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["targets"] = state?.targets;
+            resourceInputs["templateName"] = state?.templateName;
+            resourceInputs["templateVersion"] = state?.templateVersion;
         } else {
             const args = argsOrState as StateConfigurationArgs | undefined;
-            if ((!args || args.scheduleExpression === undefined) && !opts.urn) {
+            if (args?.scheduleExpression === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scheduleExpression'");
             }
-            if ((!args || args.scheduleType === undefined) && !opts.urn) {
+            if (args?.scheduleType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scheduleType'");
             }
-            if ((!args || args.targets === undefined) && !opts.urn) {
+            if (args?.targets === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targets'");
             }
-            if ((!args || args.templateName === undefined) && !opts.urn) {
+            if (args?.templateName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'templateName'");
             }
-            resourceInputs["configureMode"] = args ? args.configureMode : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["parameters"] = args ? args.parameters : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["scheduleExpression"] = args ? args.scheduleExpression : undefined;
-            resourceInputs["scheduleType"] = args ? args.scheduleType : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["targets"] = args ? args.targets : undefined;
-            resourceInputs["templateName"] = args ? args.templateName : undefined;
-            resourceInputs["templateVersion"] = args ? args.templateVersion : undefined;
+            resourceInputs["configureMode"] = args?.configureMode;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["parameters"] = args?.parameters;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["scheduleExpression"] = args?.scheduleExpression;
+            resourceInputs["scheduleType"] = args?.scheduleType;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["targets"] = args?.targets;
+            resourceInputs["templateName"] = args?.templateName;
+            resourceInputs["templateVersion"] = args?.templateVersion;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(StateConfiguration.__pulumiType, name, resourceInputs, opts);

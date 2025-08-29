@@ -76,31 +76,31 @@ export class Parameter extends pulumi.CustomResource {
      * * `MinLength`: The minimum length of the common parameter.
      * * `MaxLength`: The maximum length of the common parameter.
      */
-    public readonly constraints!: pulumi.Output<string | undefined>;
+    declare public readonly constraints: pulumi.Output<string | undefined>;
     /**
      * The description of the common parameter. The description must be `1` to `200` characters in length.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The name of the common parameter. The name must be `2` to `180` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/) and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, `ALICLOUD`, or `OOS`.
      */
-    public readonly parameterName!: pulumi.Output<string>;
+    declare public readonly parameterName: pulumi.Output<string>;
     /**
      * The ID of the Resource Group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The data type of the common parameter. Valid values: `String` and `StringList`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The value of the common parameter. The value must be `1` to `4096` characters in length.
      */
-    public readonly value!: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string>;
 
     /**
      * Create a Parameter resource with the given unique name, arguments, and options.
@@ -115,31 +115,31 @@ export class Parameter extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ParameterState | undefined;
-            resourceInputs["constraints"] = state ? state.constraints : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["parameterName"] = state ? state.parameterName : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["constraints"] = state?.constraints;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["parameterName"] = state?.parameterName;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as ParameterArgs | undefined;
-            if ((!args || args.parameterName === undefined) && !opts.urn) {
+            if (args?.parameterName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parameterName'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            if ((!args || args.value === undefined) && !opts.urn) {
+            if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            resourceInputs["constraints"] = args ? args.constraints : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["parameterName"] = args ? args.parameterName : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["constraints"] = args?.constraints;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["parameterName"] = args?.parameterName;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["value"] = args?.value;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Parameter.__pulumiType, name, resourceInputs, opts);

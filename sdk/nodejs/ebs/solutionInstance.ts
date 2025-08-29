@@ -135,31 +135,31 @@ export class SolutionInstance extends pulumi.CustomResource {
     /**
      * Solution Instance Creation Time.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Solution Instance Description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Solution Instance Creation Parameters. See `parameters` below.
      */
-    public readonly parameters!: pulumi.Output<outputs.ebs.SolutionInstanceParameter[] | undefined>;
+    declare public readonly parameters: pulumi.Output<outputs.ebs.SolutionInstanceParameter[] | undefined>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Solution ID.
      */
-    public readonly solutionId!: pulumi.Output<string>;
+    declare public readonly solutionId: pulumi.Output<string>;
     /**
      * Solution Instance Name.
      */
-    public readonly solutionInstanceName!: pulumi.Output<string>;
+    declare public readonly solutionInstanceName: pulumi.Output<string>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a SolutionInstance resource with the given unique name, arguments, and options.
@@ -174,23 +174,23 @@ export class SolutionInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SolutionInstanceState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["parameters"] = state ? state.parameters : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["solutionId"] = state ? state.solutionId : undefined;
-            resourceInputs["solutionInstanceName"] = state ? state.solutionInstanceName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["parameters"] = state?.parameters;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["solutionId"] = state?.solutionId;
+            resourceInputs["solutionInstanceName"] = state?.solutionInstanceName;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as SolutionInstanceArgs | undefined;
-            if ((!args || args.solutionId === undefined) && !opts.urn) {
+            if (args?.solutionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'solutionId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["parameters"] = args ? args.parameters : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["solutionId"] = args ? args.solutionId : undefined;
-            resourceInputs["solutionInstanceName"] = args ? args.solutionInstanceName : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["parameters"] = args?.parameters;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["solutionId"] = args?.solutionId;
+            resourceInputs["solutionInstanceName"] = args?.solutionInstanceName;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

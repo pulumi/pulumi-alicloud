@@ -108,23 +108,23 @@ export class Snapshot extends pulumi.CustomResource {
     /**
      * The description of the Snapshot.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The ID of the Desktop.
      */
-    public readonly desktopId!: pulumi.Output<string>;
+    declare public readonly desktopId: pulumi.Output<string>;
     /**
      * The name of the Snapshot.
      */
-    public readonly snapshotName!: pulumi.Output<string>;
+    declare public readonly snapshotName: pulumi.Output<string>;
     /**
      * The type of the disk for which to create a snapshot. Valid values: `SYSTEM`, `DATA`.
      */
-    public readonly sourceDiskType!: pulumi.Output<string>;
+    declare public readonly sourceDiskType: pulumi.Output<string>;
     /**
      * The status of the snapshot.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a Snapshot resource with the given unique name, arguments, and options.
@@ -139,26 +139,26 @@ export class Snapshot extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SnapshotState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["desktopId"] = state ? state.desktopId : undefined;
-            resourceInputs["snapshotName"] = state ? state.snapshotName : undefined;
-            resourceInputs["sourceDiskType"] = state ? state.sourceDiskType : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["desktopId"] = state?.desktopId;
+            resourceInputs["snapshotName"] = state?.snapshotName;
+            resourceInputs["sourceDiskType"] = state?.sourceDiskType;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as SnapshotArgs | undefined;
-            if ((!args || args.desktopId === undefined) && !opts.urn) {
+            if (args?.desktopId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'desktopId'");
             }
-            if ((!args || args.snapshotName === undefined) && !opts.urn) {
+            if (args?.snapshotName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'snapshotName'");
             }
-            if ((!args || args.sourceDiskType === undefined) && !opts.urn) {
+            if (args?.sourceDiskType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceDiskType'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["desktopId"] = args ? args.desktopId : undefined;
-            resourceInputs["snapshotName"] = args ? args.snapshotName : undefined;
-            resourceInputs["sourceDiskType"] = args ? args.sourceDiskType : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["desktopId"] = args?.desktopId;
+            resourceInputs["snapshotName"] = args?.snapshotName;
+            resourceInputs["sourceDiskType"] = args?.sourceDiskType;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -72,63 +72,63 @@ export class SynchronizationInstance extends pulumi.CustomResource {
     /**
      * Whether to automatically renew when it expires. Valid values: `true`, `false`.
      */
-    public readonly autoPay!: pulumi.Output<string | undefined>;
+    declare public readonly autoPay: pulumi.Output<string | undefined>;
     /**
      * Whether to automatically start the task after the purchase completed. Valid values: `true`, `false`.
      */
-    public readonly autoStart!: pulumi.Output<string | undefined>;
+    declare public readonly autoStart: pulumi.Output<string | undefined>;
     /**
      * [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
      */
-    public readonly computeUnit!: pulumi.Output<number | undefined>;
+    declare public readonly computeUnit: pulumi.Output<number | undefined>;
     /**
      * The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `sourceEndpointEngineName` equals `drds`.
      */
-    public readonly databaseCount!: pulumi.Output<number | undefined>;
+    declare public readonly databaseCount: pulumi.Output<number | undefined>;
     /**
      * The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
      */
-    public readonly destinationEndpointEngineName!: pulumi.Output<string>;
+    declare public readonly destinationEndpointEngineName: pulumi.Output<string>;
     /**
      * The region of destination instance. List of [supported regions](https://help.aliyun.com/document_detail/141033.html).
      */
-    public readonly destinationEndpointRegion!: pulumi.Output<string>;
+    declare public readonly destinationEndpointRegion: pulumi.Output<string>;
     /**
      * The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
      */
-    public readonly instanceClass!: pulumi.Output<string>;
+    declare public readonly instanceClass: pulumi.Output<string>;
     /**
      * The duration of prepaid instance purchase. this parameter is required When `paymentType` equals `Subscription`.
      */
-    public readonly paymentDuration!: pulumi.Output<number | undefined>;
+    declare public readonly paymentDuration: pulumi.Output<number | undefined>;
     /**
      * The payment duration unit. Valid values: `Month`, `Year`. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
      */
-    public readonly paymentDurationUnit!: pulumi.Output<string | undefined>;
+    declare public readonly paymentDurationUnit: pulumi.Output<string | undefined>;
     /**
      * The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * The number of instances purchased.
      */
-    public readonly quantity!: pulumi.Output<number | undefined>;
+    declare public readonly quantity: pulumi.Output<number | undefined>;
     /**
      * The type of source endpoint engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
      */
-    public readonly sourceEndpointEngineName!: pulumi.Output<string>;
+    declare public readonly sourceEndpointEngineName: pulumi.Output<string>;
     /**
      * The region of source instance.
      */
-    public readonly sourceEndpointRegion!: pulumi.Output<string>;
+    declare public readonly sourceEndpointRegion: pulumi.Output<string>;
     /**
      * The status.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The sync architecture. Valid values: `oneway`, `bidirectional`.
      */
-    public readonly syncArchitecture!: pulumi.Output<string | undefined>;
+    declare public readonly syncArchitecture: pulumi.Output<string | undefined>;
 
     /**
      * Create a SynchronizationInstance resource with the given unique name, arguments, and options.
@@ -143,52 +143,52 @@ export class SynchronizationInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SynchronizationInstanceState | undefined;
-            resourceInputs["autoPay"] = state ? state.autoPay : undefined;
-            resourceInputs["autoStart"] = state ? state.autoStart : undefined;
-            resourceInputs["computeUnit"] = state ? state.computeUnit : undefined;
-            resourceInputs["databaseCount"] = state ? state.databaseCount : undefined;
-            resourceInputs["destinationEndpointEngineName"] = state ? state.destinationEndpointEngineName : undefined;
-            resourceInputs["destinationEndpointRegion"] = state ? state.destinationEndpointRegion : undefined;
-            resourceInputs["instanceClass"] = state ? state.instanceClass : undefined;
-            resourceInputs["paymentDuration"] = state ? state.paymentDuration : undefined;
-            resourceInputs["paymentDurationUnit"] = state ? state.paymentDurationUnit : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["quantity"] = state ? state.quantity : undefined;
-            resourceInputs["sourceEndpointEngineName"] = state ? state.sourceEndpointEngineName : undefined;
-            resourceInputs["sourceEndpointRegion"] = state ? state.sourceEndpointRegion : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["syncArchitecture"] = state ? state.syncArchitecture : undefined;
+            resourceInputs["autoPay"] = state?.autoPay;
+            resourceInputs["autoStart"] = state?.autoStart;
+            resourceInputs["computeUnit"] = state?.computeUnit;
+            resourceInputs["databaseCount"] = state?.databaseCount;
+            resourceInputs["destinationEndpointEngineName"] = state?.destinationEndpointEngineName;
+            resourceInputs["destinationEndpointRegion"] = state?.destinationEndpointRegion;
+            resourceInputs["instanceClass"] = state?.instanceClass;
+            resourceInputs["paymentDuration"] = state?.paymentDuration;
+            resourceInputs["paymentDurationUnit"] = state?.paymentDurationUnit;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["quantity"] = state?.quantity;
+            resourceInputs["sourceEndpointEngineName"] = state?.sourceEndpointEngineName;
+            resourceInputs["sourceEndpointRegion"] = state?.sourceEndpointRegion;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["syncArchitecture"] = state?.syncArchitecture;
         } else {
             const args = argsOrState as SynchronizationInstanceArgs | undefined;
-            if ((!args || args.destinationEndpointEngineName === undefined) && !opts.urn) {
+            if (args?.destinationEndpointEngineName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationEndpointEngineName'");
             }
-            if ((!args || args.destinationEndpointRegion === undefined) && !opts.urn) {
+            if (args?.destinationEndpointRegion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationEndpointRegion'");
             }
-            if ((!args || args.paymentType === undefined) && !opts.urn) {
+            if (args?.paymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            if ((!args || args.sourceEndpointEngineName === undefined) && !opts.urn) {
+            if (args?.sourceEndpointEngineName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceEndpointEngineName'");
             }
-            if ((!args || args.sourceEndpointRegion === undefined) && !opts.urn) {
+            if (args?.sourceEndpointRegion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceEndpointRegion'");
             }
-            resourceInputs["autoPay"] = args ? args.autoPay : undefined;
-            resourceInputs["autoStart"] = args ? args.autoStart : undefined;
-            resourceInputs["computeUnit"] = args ? args.computeUnit : undefined;
-            resourceInputs["databaseCount"] = args ? args.databaseCount : undefined;
-            resourceInputs["destinationEndpointEngineName"] = args ? args.destinationEndpointEngineName : undefined;
-            resourceInputs["destinationEndpointRegion"] = args ? args.destinationEndpointRegion : undefined;
-            resourceInputs["instanceClass"] = args ? args.instanceClass : undefined;
-            resourceInputs["paymentDuration"] = args ? args.paymentDuration : undefined;
-            resourceInputs["paymentDurationUnit"] = args ? args.paymentDurationUnit : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["quantity"] = args ? args.quantity : undefined;
-            resourceInputs["sourceEndpointEngineName"] = args ? args.sourceEndpointEngineName : undefined;
-            resourceInputs["sourceEndpointRegion"] = args ? args.sourceEndpointRegion : undefined;
-            resourceInputs["syncArchitecture"] = args ? args.syncArchitecture : undefined;
+            resourceInputs["autoPay"] = args?.autoPay;
+            resourceInputs["autoStart"] = args?.autoStart;
+            resourceInputs["computeUnit"] = args?.computeUnit;
+            resourceInputs["databaseCount"] = args?.databaseCount;
+            resourceInputs["destinationEndpointEngineName"] = args?.destinationEndpointEngineName;
+            resourceInputs["destinationEndpointRegion"] = args?.destinationEndpointRegion;
+            resourceInputs["instanceClass"] = args?.instanceClass;
+            resourceInputs["paymentDuration"] = args?.paymentDuration;
+            resourceInputs["paymentDurationUnit"] = args?.paymentDurationUnit;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["quantity"] = args?.quantity;
+            resourceInputs["sourceEndpointEngineName"] = args?.sourceEndpointEngineName;
+            resourceInputs["sourceEndpointRegion"] = args?.sourceEndpointRegion;
+            resourceInputs["syncArchitecture"] = args?.syncArchitecture;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

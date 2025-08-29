@@ -68,32 +68,32 @@ export class Instance extends pulumi.CustomResource {
     /**
      * DNS security level. Valid values: `no`, `basic`, `advanced`.
      */
-    public readonly dnsSecurity!: pulumi.Output<string>;
+    declare public readonly dnsSecurity: pulumi.Output<string>;
     /**
      * Number of domain names bound.
      */
-    public readonly domainNumbers!: pulumi.Output<string>;
-    public readonly paymentType!: pulumi.Output<string | undefined>;
+    declare public readonly domainNumbers: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string | undefined>;
     /**
      * Creating a pre-paid instance, it must be set, the unit is month, please enter an integer multiple of 12 for annually paid products.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * Automatic renewal period, the unit is month. When setting RenewalStatus to AutoRenewal, it must be set.
      */
-    public readonly renewPeriod!: pulumi.Output<number | undefined>;
+    declare public readonly renewPeriod: pulumi.Output<number | undefined>;
     /**
      * Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, default to `ManualRenewal`.
      */
-    public readonly renewalStatus!: pulumi.Output<string>;
+    declare public readonly renewalStatus: pulumi.Output<string>;
     /**
      * Paid package version. Valid values: `versionPersonal`, `versionEnterpriseBasic`, `versionEnterpriseAdvanced`.
      */
-    public readonly versionCode!: pulumi.Output<string>;
+    declare public readonly versionCode: pulumi.Output<string>;
     /**
      * Paid package version name.
      */
-    public /*out*/ readonly versionName!: pulumi.Output<string>;
+    declare public /*out*/ readonly versionName: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -108,32 +108,32 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["dnsSecurity"] = state ? state.dnsSecurity : undefined;
-            resourceInputs["domainNumbers"] = state ? state.domainNumbers : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["renewPeriod"] = state ? state.renewPeriod : undefined;
-            resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
-            resourceInputs["versionCode"] = state ? state.versionCode : undefined;
-            resourceInputs["versionName"] = state ? state.versionName : undefined;
+            resourceInputs["dnsSecurity"] = state?.dnsSecurity;
+            resourceInputs["domainNumbers"] = state?.domainNumbers;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["renewPeriod"] = state?.renewPeriod;
+            resourceInputs["renewalStatus"] = state?.renewalStatus;
+            resourceInputs["versionCode"] = state?.versionCode;
+            resourceInputs["versionName"] = state?.versionName;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.dnsSecurity === undefined) && !opts.urn) {
+            if (args?.dnsSecurity === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dnsSecurity'");
             }
-            if ((!args || args.domainNumbers === undefined) && !opts.urn) {
+            if (args?.domainNumbers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domainNumbers'");
             }
-            if ((!args || args.versionCode === undefined) && !opts.urn) {
+            if (args?.versionCode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'versionCode'");
             }
-            resourceInputs["dnsSecurity"] = args ? args.dnsSecurity : undefined;
-            resourceInputs["domainNumbers"] = args ? args.domainNumbers : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["renewPeriod"] = args ? args.renewPeriod : undefined;
-            resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
-            resourceInputs["versionCode"] = args ? args.versionCode : undefined;
+            resourceInputs["dnsSecurity"] = args?.dnsSecurity;
+            resourceInputs["domainNumbers"] = args?.domainNumbers;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["renewPeriod"] = args?.renewPeriod;
+            resourceInputs["renewalStatus"] = args?.renewalStatus;
+            resourceInputs["versionCode"] = args?.versionCode;
             resourceInputs["versionName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

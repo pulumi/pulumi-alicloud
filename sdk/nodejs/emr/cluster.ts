@@ -557,111 +557,111 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Boot action parameters.
      */
-    public readonly bootstrapActions!: pulumi.Output<outputs.emr.ClusterBootstrapAction[] | undefined>;
+    declare public readonly bootstrapActions: pulumi.Output<outputs.emr.ClusterBootstrapAction[] | undefined>;
     /**
      * Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
      */
-    public readonly chargeType!: pulumi.Output<string | undefined>;
+    declare public readonly chargeType: pulumi.Output<string | undefined>;
     /**
      * EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
      */
-    public readonly clusterType!: pulumi.Output<string>;
+    declare public readonly clusterType: pulumi.Output<string>;
     /**
      * The custom configurations of emr-cluster service.
      */
-    public readonly configs!: pulumi.Output<outputs.emr.ClusterConfig[] | undefined>;
+    declare public readonly configs: pulumi.Output<outputs.emr.ClusterConfig[] | undefined>;
     /**
      * Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
      */
-    public readonly depositType!: pulumi.Output<string | undefined>;
+    declare public readonly depositType: pulumi.Output<string | undefined>;
     /**
      * High security cluster (true) or not. Default value is false.
      */
-    public readonly easEnable!: pulumi.Output<boolean | undefined>;
+    declare public readonly easEnable: pulumi.Output<boolean | undefined>;
     /**
      * EMR Version, e.g. EMR-3.22.0. You can find the all valid EMR Version in emr web console.
      */
-    public readonly emrVer!: pulumi.Output<string>;
+    declare public readonly emrVer: pulumi.Output<string>;
     /**
      * High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
      */
-    public readonly highAvailabilityEnable!: pulumi.Output<boolean | undefined>;
+    declare public readonly highAvailabilityEnable: pulumi.Output<boolean | undefined>;
     /**
      * Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
      */
-    public readonly hostGroups!: pulumi.Output<outputs.emr.ClusterHostGroup[] | undefined>;
+    declare public readonly hostGroups: pulumi.Output<outputs.emr.ClusterHostGroup[] | undefined>;
     /**
      * Whether the MASTER node has a public IP address enabled. Default value is false.
      */
-    public readonly isOpenPublicIp!: pulumi.Output<boolean | undefined>;
+    declare public readonly isOpenPublicIp: pulumi.Output<boolean | undefined>;
     /**
      * Ssh key pair.
      */
-    public readonly keyPairName!: pulumi.Output<string | undefined>;
+    declare public readonly keyPairName: pulumi.Output<string | undefined>;
     /**
      * Master ssh password.
      */
-    public readonly masterPwd!: pulumi.Output<string | undefined>;
+    declare public readonly masterPwd: pulumi.Output<string | undefined>;
     /**
      * The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
      */
-    public readonly metaStoreConf!: pulumi.Output<outputs.emr.ClusterMetaStoreConf | undefined>;
+    declare public readonly metaStoreConf: pulumi.Output<outputs.emr.ClusterMetaStoreConf | undefined>;
     /**
      * The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
      */
-    public readonly metaStoreType!: pulumi.Output<string>;
+    declare public readonly metaStoreType: pulumi.Output<string>;
     /**
      * The configurations of emr-cluster service modification after cluster created.
      */
-    public readonly modifyClusterServiceConfig!: pulumi.Output<outputs.emr.ClusterModifyClusterServiceConfig | undefined>;
+    declare public readonly modifyClusterServiceConfig: pulumi.Output<outputs.emr.ClusterModifyClusterServiceConfig | undefined>;
     /**
      * The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Optional software list.
      */
-    public readonly optionSoftwareLists!: pulumi.Output<string[] | undefined>;
+    declare public readonly optionSoftwareLists: pulumi.Output<string[] | undefined>;
     /**
      * If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * This specify the related cluster id, if this cluster is a Gateway.
      */
-    public readonly relatedClusterId!: pulumi.Output<string | undefined>;
+    declare public readonly relatedClusterId: pulumi.Output<string | undefined>;
     /**
      * The Id of resource group which the emr-cluster belongs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly resourceGroupId: pulumi.Output<string | undefined>;
     /**
      * Security Group ID for Cluster, you can also specify this key for each host group.
      */
-    public readonly securityGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly securityGroupId: pulumi.Output<string | undefined>;
     /**
      * If this is set true, we can ssh into cluster. Default value is false.
      */
-    public readonly sshEnable!: pulumi.Output<boolean | undefined>;
+    declare public readonly sshEnable: pulumi.Output<boolean | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     /**
      * Use local metadb. Default is false.
      */
-    public readonly useLocalMetadb!: pulumi.Output<boolean | undefined>;
+    declare public readonly useLocalMetadb: pulumi.Output<boolean | undefined>;
     /**
      * Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
      */
-    public readonly userDefinedEmrEcsRole!: pulumi.Output<string | undefined>;
+    declare public readonly userDefinedEmrEcsRole: pulumi.Output<string | undefined>;
     /**
      * Global vswitch id, you can also specify it in host group.
      */
-    public readonly vswitchId!: pulumi.Output<string | undefined>;
+    declare public readonly vswitchId: pulumi.Output<string | undefined>;
     /**
      * Zone ID, e.g. cn-huhehaote-a
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -676,71 +676,71 @@ export class Cluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
-            resourceInputs["bootstrapActions"] = state ? state.bootstrapActions : undefined;
-            resourceInputs["chargeType"] = state ? state.chargeType : undefined;
-            resourceInputs["clusterType"] = state ? state.clusterType : undefined;
-            resourceInputs["configs"] = state ? state.configs : undefined;
-            resourceInputs["depositType"] = state ? state.depositType : undefined;
-            resourceInputs["easEnable"] = state ? state.easEnable : undefined;
-            resourceInputs["emrVer"] = state ? state.emrVer : undefined;
-            resourceInputs["highAvailabilityEnable"] = state ? state.highAvailabilityEnable : undefined;
-            resourceInputs["hostGroups"] = state ? state.hostGroups : undefined;
-            resourceInputs["isOpenPublicIp"] = state ? state.isOpenPublicIp : undefined;
-            resourceInputs["keyPairName"] = state ? state.keyPairName : undefined;
-            resourceInputs["masterPwd"] = state ? state.masterPwd : undefined;
-            resourceInputs["metaStoreConf"] = state ? state.metaStoreConf : undefined;
-            resourceInputs["metaStoreType"] = state ? state.metaStoreType : undefined;
-            resourceInputs["modifyClusterServiceConfig"] = state ? state.modifyClusterServiceConfig : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["optionSoftwareLists"] = state ? state.optionSoftwareLists : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["relatedClusterId"] = state ? state.relatedClusterId : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["sshEnable"] = state ? state.sshEnable : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["useLocalMetadb"] = state ? state.useLocalMetadb : undefined;
-            resourceInputs["userDefinedEmrEcsRole"] = state ? state.userDefinedEmrEcsRole : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["bootstrapActions"] = state?.bootstrapActions;
+            resourceInputs["chargeType"] = state?.chargeType;
+            resourceInputs["clusterType"] = state?.clusterType;
+            resourceInputs["configs"] = state?.configs;
+            resourceInputs["depositType"] = state?.depositType;
+            resourceInputs["easEnable"] = state?.easEnable;
+            resourceInputs["emrVer"] = state?.emrVer;
+            resourceInputs["highAvailabilityEnable"] = state?.highAvailabilityEnable;
+            resourceInputs["hostGroups"] = state?.hostGroups;
+            resourceInputs["isOpenPublicIp"] = state?.isOpenPublicIp;
+            resourceInputs["keyPairName"] = state?.keyPairName;
+            resourceInputs["masterPwd"] = state?.masterPwd;
+            resourceInputs["metaStoreConf"] = state?.metaStoreConf;
+            resourceInputs["metaStoreType"] = state?.metaStoreType;
+            resourceInputs["modifyClusterServiceConfig"] = state?.modifyClusterServiceConfig;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["optionSoftwareLists"] = state?.optionSoftwareLists;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["relatedClusterId"] = state?.relatedClusterId;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["sshEnable"] = state?.sshEnable;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["useLocalMetadb"] = state?.useLocalMetadb;
+            resourceInputs["userDefinedEmrEcsRole"] = state?.userDefinedEmrEcsRole;
+            resourceInputs["vswitchId"] = state?.vswitchId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            if ((!args || args.clusterType === undefined) && !opts.urn) {
+            if (args?.clusterType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterType'");
             }
-            if ((!args || args.emrVer === undefined) && !opts.urn) {
+            if (args?.emrVer === undefined && !opts.urn) {
                 throw new Error("Missing required property 'emrVer'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["bootstrapActions"] = args ? args.bootstrapActions : undefined;
-            resourceInputs["chargeType"] = args ? args.chargeType : undefined;
-            resourceInputs["clusterType"] = args ? args.clusterType : undefined;
-            resourceInputs["configs"] = args ? args.configs : undefined;
-            resourceInputs["depositType"] = args ? args.depositType : undefined;
-            resourceInputs["easEnable"] = args ? args.easEnable : undefined;
-            resourceInputs["emrVer"] = args ? args.emrVer : undefined;
-            resourceInputs["highAvailabilityEnable"] = args ? args.highAvailabilityEnable : undefined;
-            resourceInputs["hostGroups"] = args ? args.hostGroups : undefined;
-            resourceInputs["isOpenPublicIp"] = args ? args.isOpenPublicIp : undefined;
-            resourceInputs["keyPairName"] = args ? args.keyPairName : undefined;
-            resourceInputs["masterPwd"] = args ? args.masterPwd : undefined;
-            resourceInputs["metaStoreConf"] = args ? args.metaStoreConf : undefined;
-            resourceInputs["metaStoreType"] = args ? args.metaStoreType : undefined;
-            resourceInputs["modifyClusterServiceConfig"] = args ? args.modifyClusterServiceConfig : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["optionSoftwareLists"] = args ? args.optionSoftwareLists : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["relatedClusterId"] = args ? args.relatedClusterId : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            resourceInputs["sshEnable"] = args ? args.sshEnable : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["useLocalMetadb"] = args ? args.useLocalMetadb : undefined;
-            resourceInputs["userDefinedEmrEcsRole"] = args ? args.userDefinedEmrEcsRole : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["bootstrapActions"] = args?.bootstrapActions;
+            resourceInputs["chargeType"] = args?.chargeType;
+            resourceInputs["clusterType"] = args?.clusterType;
+            resourceInputs["configs"] = args?.configs;
+            resourceInputs["depositType"] = args?.depositType;
+            resourceInputs["easEnable"] = args?.easEnable;
+            resourceInputs["emrVer"] = args?.emrVer;
+            resourceInputs["highAvailabilityEnable"] = args?.highAvailabilityEnable;
+            resourceInputs["hostGroups"] = args?.hostGroups;
+            resourceInputs["isOpenPublicIp"] = args?.isOpenPublicIp;
+            resourceInputs["keyPairName"] = args?.keyPairName;
+            resourceInputs["masterPwd"] = args?.masterPwd;
+            resourceInputs["metaStoreConf"] = args?.metaStoreConf;
+            resourceInputs["metaStoreType"] = args?.metaStoreType;
+            resourceInputs["modifyClusterServiceConfig"] = args?.modifyClusterServiceConfig;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["optionSoftwareLists"] = args?.optionSoftwareLists;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["relatedClusterId"] = args?.relatedClusterId;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["sshEnable"] = args?.sshEnable;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["useLocalMetadb"] = args?.useLocalMetadb;
+            resourceInputs["userDefinedEmrEcsRole"] = args?.userDefinedEmrEcsRole;
+            resourceInputs["vswitchId"] = args?.vswitchId;
+            resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Cluster.__pulumiType, name, resourceInputs, opts);

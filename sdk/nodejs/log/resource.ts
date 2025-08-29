@@ -86,23 +86,23 @@ export class Resource extends pulumi.CustomResource {
     /**
      * The meta store's description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The ext info of meta store.
      */
-    public readonly extInfo!: pulumi.Output<string | undefined>;
+    declare public readonly extInfo: pulumi.Output<string | undefined>;
     /**
      * The meta store's name, can be used as table name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The meta store's schema info, which is json string format, used to define table's fields.
      */
-    public readonly schema!: pulumi.Output<string>;
+    declare public readonly schema: pulumi.Output<string>;
     /**
      * The meta store's type, userdefine e.g.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a Resource resource with the given unique name, arguments, and options.
@@ -117,24 +117,24 @@ export class Resource extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ResourceState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["extInfo"] = state ? state.extInfo : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["schema"] = state ? state.schema : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["extInfo"] = state?.extInfo;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["schema"] = state?.schema;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as ResourceArgs | undefined;
-            if ((!args || args.schema === undefined) && !opts.urn) {
+            if (args?.schema === undefined && !opts.urn) {
                 throw new Error("Missing required property 'schema'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["extInfo"] = args ? args.extInfo : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["schema"] = args ? args.schema : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["extInfo"] = args?.extInfo;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["schema"] = args?.schema;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Resource.__pulumiType, name, resourceInputs, opts);

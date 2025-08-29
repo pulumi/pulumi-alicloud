@@ -118,123 +118,123 @@ export class RouteMap extends pulumi.CustomResource {
     /**
      * A match statement. It indicates the mode in which the AS path attribute is matched. Valid values: ["Include", "Complete"].
      */
-    public readonly asPathMatchMode!: pulumi.Output<string | undefined>;
+    declare public readonly asPathMatchMode: pulumi.Output<string | undefined>;
     /**
      * The ID of the CEN instance.
      */
-    public readonly cenId!: pulumi.Output<string>;
+    declare public readonly cenId: pulumi.Output<string>;
     /**
      * The ID of the region to which the CEN instance belongs.
      */
-    public readonly cenRegionId!: pulumi.Output<string>;
+    declare public readonly cenRegionId: pulumi.Output<string>;
     /**
      * A match statement. It indicates the mode in which the prefix attribute is matched. Valid values: ["Include", "Complete"].
      */
-    public readonly cidrMatchMode!: pulumi.Output<string | undefined>;
+    declare public readonly cidrMatchMode: pulumi.Output<string | undefined>;
     /**
      * A match statement. It indicates the mode in which the community attribute is matched. Valid values: ["Include", "Complete"].
      */
-    public readonly communityMatchMode!: pulumi.Output<string | undefined>;
+    declare public readonly communityMatchMode: pulumi.Output<string | undefined>;
     /**
      * An action statement. It indicates the mode in which the community attribute is operated. Valid values: ["Additive", "Replace"].
      */
-    public readonly communityOperateMode!: pulumi.Output<string | undefined>;
+    declare public readonly communityOperateMode: pulumi.Output<string | undefined>;
     /**
      * The description of the route map.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN", "VPN"].
      */
-    public readonly destinationChildInstanceTypes!: pulumi.Output<string[] | undefined>;
+    declare public readonly destinationChildInstanceTypes: pulumi.Output<string[] | undefined>;
     /**
      * A match statement that indicates the prefix list. The prefix is in the CIDR format. You can enter a maximum of 32 CIDR blocks.
      */
-    public readonly destinationCidrBlocks!: pulumi.Output<string[] | undefined>;
+    declare public readonly destinationCidrBlocks: pulumi.Output<string[] | undefined>;
     /**
      * A match statement that indicates the list of IDs of the destination instances.
      */
-    public readonly destinationInstanceIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly destinationInstanceIds: pulumi.Output<string[] | undefined>;
     /**
      * Indicates whether to enable the reverse match method for the DestinationInstanceIds match condition. Valid values: ["false", "true"]. Default to "false".
      */
-    public readonly destinationInstanceIdsReverseMatch!: pulumi.Output<boolean | undefined>;
+    declare public readonly destinationInstanceIdsReverseMatch: pulumi.Output<boolean | undefined>;
     /**
      * A match statement that indicates the list of IDs of the destination route tables. You can enter a maximum of 32 route table IDs.
      */
-    public readonly destinationRouteTableIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly destinationRouteTableIds: pulumi.Output<string[] | undefined>;
     /**
      * The action that is performed to a route if the route matches all the match conditions. Valid values: ["Permit", "Deny"].
      */
-    public readonly mapResult!: pulumi.Output<string>;
+    declare public readonly mapResult: pulumi.Output<string>;
     /**
      * A match statement that indicates the AS path list. The AS path is a well-known mandatory attribute, which describes the numbers of the ASs that a BGP route passes through during transmission.
      */
-    public readonly matchAsns!: pulumi.Output<string[] | undefined>;
+    declare public readonly matchAsns: pulumi.Output<string[] | undefined>;
     /**
      * A match statement that indicates the community set. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
      */
-    public readonly matchCommunitySets!: pulumi.Output<string[] | undefined>;
+    declare public readonly matchCommunitySets: pulumi.Output<string[] | undefined>;
     /**
      * The priority of the next route map that is associated with the current route map. Value range: 1 to 100.
      */
-    public readonly nextPriority!: pulumi.Output<number | undefined>;
+    declare public readonly nextPriority: pulumi.Output<number | undefined>;
     /**
      * An action statement that operates the community attribute. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
      */
-    public readonly operateCommunitySets!: pulumi.Output<string[] | undefined>;
+    declare public readonly operateCommunitySets: pulumi.Output<string[] | undefined>;
     /**
      * An action statement that modifies the priority of the route. Value range: 1 to 100. The default priority of a route is 50. A lower value indicates a higher preference.
      */
-    public readonly preference!: pulumi.Output<number | undefined>;
+    declare public readonly preference: pulumi.Output<number | undefined>;
     /**
      * An action statement that indicates an AS path is prepended when the regional gateway receives or advertises a route.
      */
-    public readonly prependAsPaths!: pulumi.Output<string[] | undefined>;
+    declare public readonly prependAsPaths: pulumi.Output<string[] | undefined>;
     /**
      * The priority of the route map. Value range: 1 to 100. A lower value indicates a higher priority.
      */
-    public readonly priority!: pulumi.Output<number>;
+    declare public readonly priority: pulumi.Output<number>;
     /**
      * ID of the RouteMap. It is available in 1.161.0+.
      */
-    public /*out*/ readonly routeMapId!: pulumi.Output<string>;
+    declare public /*out*/ readonly routeMapId: pulumi.Output<string>;
     /**
      * A match statement that indicates the list of route types. Valid values: ["System", "Custom", "BGP"].
      */
-    public readonly routeTypes!: pulumi.Output<string[] | undefined>;
+    declare public readonly routeTypes: pulumi.Output<string[] | undefined>;
     /**
      * A match statement that indicates the list of source instance types. Valid values: ["VPC", "VBR", "CCN"].
      */
-    public readonly sourceChildInstanceTypes!: pulumi.Output<string[] | undefined>;
+    declare public readonly sourceChildInstanceTypes: pulumi.Output<string[] | undefined>;
     /**
      * A match statement that indicates the list of IDs of the source instances.
      */
-    public readonly sourceInstanceIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly sourceInstanceIds: pulumi.Output<string[] | undefined>;
     /**
      * Indicates whether to enable the reverse match method for the SourceInstanceIds match condition. Valid values: ["false", "true"]. Default to "false".
      */
-    public readonly sourceInstanceIdsReverseMatch!: pulumi.Output<boolean | undefined>;
+    declare public readonly sourceInstanceIdsReverseMatch: pulumi.Output<boolean | undefined>;
     /**
      * A match statement that indicates the list of IDs of the source regions. You can enter a maximum of 32 region IDs.
      */
-    public readonly sourceRegionIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly sourceRegionIds: pulumi.Output<string[] | undefined>;
     /**
      * A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs.
      */
-    public readonly sourceRouteTableIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly sourceRouteTableIds: pulumi.Output<string[] | undefined>;
     /**
      * (Computed) The status of route map. Valid values: ["Creating", "Active", "Deleting"].
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The routing table ID of the forwarding router. If you do not enter the routing table ID, the routing policy is automatically associated with the default routing table of the forwarding router.
      */
-    public readonly transitRouterRouteTableId!: pulumi.Output<string>;
+    declare public readonly transitRouterRouteTableId: pulumi.Output<string>;
     /**
      * The direction in which the route map is applied. Valid values: ["RegionIn", "RegionOut"].
      */
-    public readonly transmitDirection!: pulumi.Output<string>;
+    declare public readonly transmitDirection: pulumi.Output<string>;
 
     /**
      * Create a RouteMap resource with the given unique name, arguments, and options.
@@ -249,81 +249,81 @@ export class RouteMap extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouteMapState | undefined;
-            resourceInputs["asPathMatchMode"] = state ? state.asPathMatchMode : undefined;
-            resourceInputs["cenId"] = state ? state.cenId : undefined;
-            resourceInputs["cenRegionId"] = state ? state.cenRegionId : undefined;
-            resourceInputs["cidrMatchMode"] = state ? state.cidrMatchMode : undefined;
-            resourceInputs["communityMatchMode"] = state ? state.communityMatchMode : undefined;
-            resourceInputs["communityOperateMode"] = state ? state.communityOperateMode : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["destinationChildInstanceTypes"] = state ? state.destinationChildInstanceTypes : undefined;
-            resourceInputs["destinationCidrBlocks"] = state ? state.destinationCidrBlocks : undefined;
-            resourceInputs["destinationInstanceIds"] = state ? state.destinationInstanceIds : undefined;
-            resourceInputs["destinationInstanceIdsReverseMatch"] = state ? state.destinationInstanceIdsReverseMatch : undefined;
-            resourceInputs["destinationRouteTableIds"] = state ? state.destinationRouteTableIds : undefined;
-            resourceInputs["mapResult"] = state ? state.mapResult : undefined;
-            resourceInputs["matchAsns"] = state ? state.matchAsns : undefined;
-            resourceInputs["matchCommunitySets"] = state ? state.matchCommunitySets : undefined;
-            resourceInputs["nextPriority"] = state ? state.nextPriority : undefined;
-            resourceInputs["operateCommunitySets"] = state ? state.operateCommunitySets : undefined;
-            resourceInputs["preference"] = state ? state.preference : undefined;
-            resourceInputs["prependAsPaths"] = state ? state.prependAsPaths : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["routeMapId"] = state ? state.routeMapId : undefined;
-            resourceInputs["routeTypes"] = state ? state.routeTypes : undefined;
-            resourceInputs["sourceChildInstanceTypes"] = state ? state.sourceChildInstanceTypes : undefined;
-            resourceInputs["sourceInstanceIds"] = state ? state.sourceInstanceIds : undefined;
-            resourceInputs["sourceInstanceIdsReverseMatch"] = state ? state.sourceInstanceIdsReverseMatch : undefined;
-            resourceInputs["sourceRegionIds"] = state ? state.sourceRegionIds : undefined;
-            resourceInputs["sourceRouteTableIds"] = state ? state.sourceRouteTableIds : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["transitRouterRouteTableId"] = state ? state.transitRouterRouteTableId : undefined;
-            resourceInputs["transmitDirection"] = state ? state.transmitDirection : undefined;
+            resourceInputs["asPathMatchMode"] = state?.asPathMatchMode;
+            resourceInputs["cenId"] = state?.cenId;
+            resourceInputs["cenRegionId"] = state?.cenRegionId;
+            resourceInputs["cidrMatchMode"] = state?.cidrMatchMode;
+            resourceInputs["communityMatchMode"] = state?.communityMatchMode;
+            resourceInputs["communityOperateMode"] = state?.communityOperateMode;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["destinationChildInstanceTypes"] = state?.destinationChildInstanceTypes;
+            resourceInputs["destinationCidrBlocks"] = state?.destinationCidrBlocks;
+            resourceInputs["destinationInstanceIds"] = state?.destinationInstanceIds;
+            resourceInputs["destinationInstanceIdsReverseMatch"] = state?.destinationInstanceIdsReverseMatch;
+            resourceInputs["destinationRouteTableIds"] = state?.destinationRouteTableIds;
+            resourceInputs["mapResult"] = state?.mapResult;
+            resourceInputs["matchAsns"] = state?.matchAsns;
+            resourceInputs["matchCommunitySets"] = state?.matchCommunitySets;
+            resourceInputs["nextPriority"] = state?.nextPriority;
+            resourceInputs["operateCommunitySets"] = state?.operateCommunitySets;
+            resourceInputs["preference"] = state?.preference;
+            resourceInputs["prependAsPaths"] = state?.prependAsPaths;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["routeMapId"] = state?.routeMapId;
+            resourceInputs["routeTypes"] = state?.routeTypes;
+            resourceInputs["sourceChildInstanceTypes"] = state?.sourceChildInstanceTypes;
+            resourceInputs["sourceInstanceIds"] = state?.sourceInstanceIds;
+            resourceInputs["sourceInstanceIdsReverseMatch"] = state?.sourceInstanceIdsReverseMatch;
+            resourceInputs["sourceRegionIds"] = state?.sourceRegionIds;
+            resourceInputs["sourceRouteTableIds"] = state?.sourceRouteTableIds;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["transitRouterRouteTableId"] = state?.transitRouterRouteTableId;
+            resourceInputs["transmitDirection"] = state?.transmitDirection;
         } else {
             const args = argsOrState as RouteMapArgs | undefined;
-            if ((!args || args.cenId === undefined) && !opts.urn) {
+            if (args?.cenId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cenId'");
             }
-            if ((!args || args.cenRegionId === undefined) && !opts.urn) {
+            if (args?.cenRegionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cenRegionId'");
             }
-            if ((!args || args.mapResult === undefined) && !opts.urn) {
+            if (args?.mapResult === undefined && !opts.urn) {
                 throw new Error("Missing required property 'mapResult'");
             }
-            if ((!args || args.priority === undefined) && !opts.urn) {
+            if (args?.priority === undefined && !opts.urn) {
                 throw new Error("Missing required property 'priority'");
             }
-            if ((!args || args.transmitDirection === undefined) && !opts.urn) {
+            if (args?.transmitDirection === undefined && !opts.urn) {
                 throw new Error("Missing required property 'transmitDirection'");
             }
-            resourceInputs["asPathMatchMode"] = args ? args.asPathMatchMode : undefined;
-            resourceInputs["cenId"] = args ? args.cenId : undefined;
-            resourceInputs["cenRegionId"] = args ? args.cenRegionId : undefined;
-            resourceInputs["cidrMatchMode"] = args ? args.cidrMatchMode : undefined;
-            resourceInputs["communityMatchMode"] = args ? args.communityMatchMode : undefined;
-            resourceInputs["communityOperateMode"] = args ? args.communityOperateMode : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["destinationChildInstanceTypes"] = args ? args.destinationChildInstanceTypes : undefined;
-            resourceInputs["destinationCidrBlocks"] = args ? args.destinationCidrBlocks : undefined;
-            resourceInputs["destinationInstanceIds"] = args ? args.destinationInstanceIds : undefined;
-            resourceInputs["destinationInstanceIdsReverseMatch"] = args ? args.destinationInstanceIdsReverseMatch : undefined;
-            resourceInputs["destinationRouteTableIds"] = args ? args.destinationRouteTableIds : undefined;
-            resourceInputs["mapResult"] = args ? args.mapResult : undefined;
-            resourceInputs["matchAsns"] = args ? args.matchAsns : undefined;
-            resourceInputs["matchCommunitySets"] = args ? args.matchCommunitySets : undefined;
-            resourceInputs["nextPriority"] = args ? args.nextPriority : undefined;
-            resourceInputs["operateCommunitySets"] = args ? args.operateCommunitySets : undefined;
-            resourceInputs["preference"] = args ? args.preference : undefined;
-            resourceInputs["prependAsPaths"] = args ? args.prependAsPaths : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["routeTypes"] = args ? args.routeTypes : undefined;
-            resourceInputs["sourceChildInstanceTypes"] = args ? args.sourceChildInstanceTypes : undefined;
-            resourceInputs["sourceInstanceIds"] = args ? args.sourceInstanceIds : undefined;
-            resourceInputs["sourceInstanceIdsReverseMatch"] = args ? args.sourceInstanceIdsReverseMatch : undefined;
-            resourceInputs["sourceRegionIds"] = args ? args.sourceRegionIds : undefined;
-            resourceInputs["sourceRouteTableIds"] = args ? args.sourceRouteTableIds : undefined;
-            resourceInputs["transitRouterRouteTableId"] = args ? args.transitRouterRouteTableId : undefined;
-            resourceInputs["transmitDirection"] = args ? args.transmitDirection : undefined;
+            resourceInputs["asPathMatchMode"] = args?.asPathMatchMode;
+            resourceInputs["cenId"] = args?.cenId;
+            resourceInputs["cenRegionId"] = args?.cenRegionId;
+            resourceInputs["cidrMatchMode"] = args?.cidrMatchMode;
+            resourceInputs["communityMatchMode"] = args?.communityMatchMode;
+            resourceInputs["communityOperateMode"] = args?.communityOperateMode;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["destinationChildInstanceTypes"] = args?.destinationChildInstanceTypes;
+            resourceInputs["destinationCidrBlocks"] = args?.destinationCidrBlocks;
+            resourceInputs["destinationInstanceIds"] = args?.destinationInstanceIds;
+            resourceInputs["destinationInstanceIdsReverseMatch"] = args?.destinationInstanceIdsReverseMatch;
+            resourceInputs["destinationRouteTableIds"] = args?.destinationRouteTableIds;
+            resourceInputs["mapResult"] = args?.mapResult;
+            resourceInputs["matchAsns"] = args?.matchAsns;
+            resourceInputs["matchCommunitySets"] = args?.matchCommunitySets;
+            resourceInputs["nextPriority"] = args?.nextPriority;
+            resourceInputs["operateCommunitySets"] = args?.operateCommunitySets;
+            resourceInputs["preference"] = args?.preference;
+            resourceInputs["prependAsPaths"] = args?.prependAsPaths;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["routeTypes"] = args?.routeTypes;
+            resourceInputs["sourceChildInstanceTypes"] = args?.sourceChildInstanceTypes;
+            resourceInputs["sourceInstanceIds"] = args?.sourceInstanceIds;
+            resourceInputs["sourceInstanceIdsReverseMatch"] = args?.sourceInstanceIdsReverseMatch;
+            resourceInputs["sourceRegionIds"] = args?.sourceRegionIds;
+            resourceInputs["sourceRouteTableIds"] = args?.sourceRouteTableIds;
+            resourceInputs["transitRouterRouteTableId"] = args?.transitRouterRouteTableId;
+            resourceInputs["transmitDirection"] = args?.transmitDirection;
             resourceInputs["routeMapId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

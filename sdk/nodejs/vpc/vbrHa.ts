@@ -50,27 +50,27 @@ export class VbrHa extends pulumi.CustomResource {
     /**
      * The description of the VBR switching group. It must be `2` to `256` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The dry run.
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the other VBR in the VBR failover group.
      */
-    public readonly peerVbrId!: pulumi.Output<string>;
+    declare public readonly peerVbrId: pulumi.Output<string>;
     /**
      * The state of the VBR failover group.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The name of the VBR failover group.
      */
-    public readonly vbrHaName!: pulumi.Output<string | undefined>;
+    declare public readonly vbrHaName: pulumi.Output<string | undefined>;
     /**
      * The ID of the VBR instance.
      */
-    public readonly vbrId!: pulumi.Output<string>;
+    declare public readonly vbrId: pulumi.Output<string>;
 
     /**
      * Create a VbrHa resource with the given unique name, arguments, and options.
@@ -85,25 +85,25 @@ export class VbrHa extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VbrHaState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["peerVbrId"] = state ? state.peerVbrId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vbrHaName"] = state ? state.vbrHaName : undefined;
-            resourceInputs["vbrId"] = state ? state.vbrId : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["peerVbrId"] = state?.peerVbrId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vbrHaName"] = state?.vbrHaName;
+            resourceInputs["vbrId"] = state?.vbrId;
         } else {
             const args = argsOrState as VbrHaArgs | undefined;
-            if ((!args || args.peerVbrId === undefined) && !opts.urn) {
+            if (args?.peerVbrId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'peerVbrId'");
             }
-            if ((!args || args.vbrId === undefined) && !opts.urn) {
+            if (args?.vbrId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vbrId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["peerVbrId"] = args ? args.peerVbrId : undefined;
-            resourceInputs["vbrHaName"] = args ? args.vbrHaName : undefined;
-            resourceInputs["vbrId"] = args ? args.vbrId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["peerVbrId"] = args?.peerVbrId;
+            resourceInputs["vbrHaName"] = args?.vbrHaName;
+            resourceInputs["vbrId"] = args?.vbrId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

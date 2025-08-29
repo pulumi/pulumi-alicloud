@@ -76,35 +76,35 @@ export class HoneyPot extends pulumi.CustomResource {
     /**
      * Honeypot ID.
      */
-    public /*out*/ readonly honeypotId!: pulumi.Output<string>;
+    declare public /*out*/ readonly honeypotId: pulumi.Output<string>;
     /**
      * The image ID of the honeypot.
      */
-    public readonly honeypotImageId!: pulumi.Output<string>;
+    declare public readonly honeypotImageId: pulumi.Output<string>;
     /**
      * Honeypot mirror name.
      */
-    public readonly honeypotImageName!: pulumi.Output<string>;
+    declare public readonly honeypotImageName: pulumi.Output<string>;
     /**
      * Honeypot custom name.
      */
-    public readonly honeypotName!: pulumi.Output<string>;
+    declare public readonly honeypotName: pulumi.Output<string>;
     /**
      * The ID of the honeypot management node.
      */
-    public readonly nodeId!: pulumi.Output<string>;
+    declare public readonly nodeId: pulumi.Output<string>;
     /**
      * The custom parameter ID of honeypot.
      */
-    public /*out*/ readonly presetId!: pulumi.Output<string>;
+    declare public /*out*/ readonly presetId: pulumi.Output<string>;
     /**
      * Honeypot status.
      */
-    public /*out*/ readonly states!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly states: pulumi.Output<string[]>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a HoneyPot resource with the given unique name, arguments, and options.
@@ -119,32 +119,32 @@ export class HoneyPot extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HoneyPotState | undefined;
-            resourceInputs["honeypotId"] = state ? state.honeypotId : undefined;
-            resourceInputs["honeypotImageId"] = state ? state.honeypotImageId : undefined;
-            resourceInputs["honeypotImageName"] = state ? state.honeypotImageName : undefined;
-            resourceInputs["honeypotName"] = state ? state.honeypotName : undefined;
-            resourceInputs["nodeId"] = state ? state.nodeId : undefined;
-            resourceInputs["presetId"] = state ? state.presetId : undefined;
-            resourceInputs["states"] = state ? state.states : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["honeypotId"] = state?.honeypotId;
+            resourceInputs["honeypotImageId"] = state?.honeypotImageId;
+            resourceInputs["honeypotImageName"] = state?.honeypotImageName;
+            resourceInputs["honeypotName"] = state?.honeypotName;
+            resourceInputs["nodeId"] = state?.nodeId;
+            resourceInputs["presetId"] = state?.presetId;
+            resourceInputs["states"] = state?.states;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as HoneyPotArgs | undefined;
-            if ((!args || args.honeypotImageId === undefined) && !opts.urn) {
+            if (args?.honeypotImageId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'honeypotImageId'");
             }
-            if ((!args || args.honeypotImageName === undefined) && !opts.urn) {
+            if (args?.honeypotImageName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'honeypotImageName'");
             }
-            if ((!args || args.honeypotName === undefined) && !opts.urn) {
+            if (args?.honeypotName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'honeypotName'");
             }
-            if ((!args || args.nodeId === undefined) && !opts.urn) {
+            if (args?.nodeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodeId'");
             }
-            resourceInputs["honeypotImageId"] = args ? args.honeypotImageId : undefined;
-            resourceInputs["honeypotImageName"] = args ? args.honeypotImageName : undefined;
-            resourceInputs["honeypotName"] = args ? args.honeypotName : undefined;
-            resourceInputs["nodeId"] = args ? args.nodeId : undefined;
+            resourceInputs["honeypotImageId"] = args?.honeypotImageId;
+            resourceInputs["honeypotImageName"] = args?.honeypotImageName;
+            resourceInputs["honeypotName"] = args?.honeypotName;
+            resourceInputs["nodeId"] = args?.nodeId;
             resourceInputs["honeypotId"] = undefined /*out*/;
             resourceInputs["presetId"] = undefined /*out*/;
             resourceInputs["states"] = undefined /*out*/;

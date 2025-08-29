@@ -92,19 +92,19 @@ export class ConsumerGroup extends pulumi.CustomResource {
     /**
      * ID of the consumer group. The length cannot exceed 64 characters.
      */
-    public readonly consumerId!: pulumi.Output<string>;
+    declare public readonly consumerId: pulumi.Output<string>;
     /**
      * The description of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * ID of the ALIKAFKA Instance that owns the groups.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a ConsumerGroup resource with the given unique name, arguments, and options.
@@ -119,22 +119,22 @@ export class ConsumerGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConsumerGroupState | undefined;
-            resourceInputs["consumerId"] = state ? state.consumerId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["consumerId"] = state?.consumerId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as ConsumerGroupArgs | undefined;
-            if ((!args || args.consumerId === undefined) && !opts.urn) {
+            if (args?.consumerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'consumerId'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["consumerId"] = args ? args.consumerId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["consumerId"] = args?.consumerId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ConsumerGroup.__pulumiType, name, resourceInputs, opts);

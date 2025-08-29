@@ -111,27 +111,27 @@ export class Command extends pulumi.CustomResource {
     /**
      * The Contents of the Script to Base64 Encoded Transmission.
      */
-    public readonly commandContent!: pulumi.Output<string>;
+    declare public readonly commandContent: pulumi.Output<string>;
     /**
      * The Script Type. Valid values: `RunBatScript`, `RunPowerShellScript`.
      */
-    public readonly commandType!: pulumi.Output<string>;
+    declare public readonly commandType: pulumi.Output<string>;
     /**
      * That Returns the Data Encoding Method. Valid values: `Base64`, `PlainText`.
      */
-    public readonly contentEncoding!: pulumi.Output<string | undefined>;
+    declare public readonly contentEncoding: pulumi.Output<string | undefined>;
     /**
      * The desktop id of the Desktop.
      */
-    public readonly desktopId!: pulumi.Output<string>;
+    declare public readonly desktopId: pulumi.Output<string>;
     /**
      * Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The timeout period for script execution the unit is seconds. Default to: `60`.
      */
-    public readonly timeout!: pulumi.Output<string | undefined>;
+    declare public readonly timeout: pulumi.Output<string | undefined>;
 
     /**
      * Create a Command resource with the given unique name, arguments, and options.
@@ -146,28 +146,28 @@ export class Command extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CommandState | undefined;
-            resourceInputs["commandContent"] = state ? state.commandContent : undefined;
-            resourceInputs["commandType"] = state ? state.commandType : undefined;
-            resourceInputs["contentEncoding"] = state ? state.contentEncoding : undefined;
-            resourceInputs["desktopId"] = state ? state.desktopId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["timeout"] = state ? state.timeout : undefined;
+            resourceInputs["commandContent"] = state?.commandContent;
+            resourceInputs["commandType"] = state?.commandType;
+            resourceInputs["contentEncoding"] = state?.contentEncoding;
+            resourceInputs["desktopId"] = state?.desktopId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["timeout"] = state?.timeout;
         } else {
             const args = argsOrState as CommandArgs | undefined;
-            if ((!args || args.commandContent === undefined) && !opts.urn) {
+            if (args?.commandContent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'commandContent'");
             }
-            if ((!args || args.commandType === undefined) && !opts.urn) {
+            if (args?.commandType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'commandType'");
             }
-            if ((!args || args.desktopId === undefined) && !opts.urn) {
+            if (args?.desktopId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'desktopId'");
             }
-            resourceInputs["commandContent"] = args ? args.commandContent : undefined;
-            resourceInputs["commandType"] = args ? args.commandType : undefined;
-            resourceInputs["contentEncoding"] = args ? args.contentEncoding : undefined;
-            resourceInputs["desktopId"] = args ? args.desktopId : undefined;
-            resourceInputs["timeout"] = args ? args.timeout : undefined;
+            resourceInputs["commandContent"] = args?.commandContent;
+            resourceInputs["commandType"] = args?.commandType;
+            resourceInputs["contentEncoding"] = args?.contentEncoding;
+            resourceInputs["desktopId"] = args?.desktopId;
+            resourceInputs["timeout"] = args?.timeout;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

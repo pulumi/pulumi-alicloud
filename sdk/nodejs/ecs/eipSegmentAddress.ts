@@ -74,21 +74,21 @@ export class EipSegmentAddress extends pulumi.CustomResource {
      *
      * Default value: `5`. Unit: Mbit/s.
      */
-    public readonly bandwidth!: pulumi.Output<string | undefined>;
+    declare public readonly bandwidth: pulumi.Output<string | undefined>;
     /**
      * The time when the contiguous Elastic IP address group was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The subnet mask of the contiguous EIP group. Valid values:
      */
-    public readonly eipMask!: pulumi.Output<string>;
+    declare public readonly eipMask: pulumi.Output<string>;
     /**
      * The metering method of the contiguous EIP group. Valid values:
      * - `PayByBandwidth` (default)
      * - `PayByTraffic`
      */
-    public readonly internetChargeType!: pulumi.Output<string | undefined>;
+    declare public readonly internetChargeType: pulumi.Output<string | undefined>;
     /**
      * The line type. Valid values:
      * - `BGP` (default): BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
@@ -106,27 +106,27 @@ export class EipSegmentAddress extends pulumi.CustomResource {
      *
      * If your services are deployed in China East 1 Finance, this parameter is required and you must set the parameter to `BGP_FinanceCloud`.
      */
-    public readonly isp!: pulumi.Output<string | undefined>;
+    declare public readonly isp: pulumi.Output<string | undefined>;
     /**
      * The network type. Set the value to `public`, which specifies the public network type.
      */
-    public readonly netmode!: pulumi.Output<string | undefined>;
+    declare public readonly netmode: pulumi.Output<string | undefined>;
     /**
      * The resource group ID.
      */
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly resourceGroupId: pulumi.Output<string | undefined>;
     /**
      * The name of the contiguous Elastic IP address group.
      */
-    public /*out*/ readonly segmentAddressName!: pulumi.Output<string>;
+    declare public /*out*/ readonly segmentAddressName: pulumi.Output<string>;
     /**
      * The status of the resource
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The zone of the contiguous EIP group.
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a EipSegmentAddress resource with the given unique name, arguments, and options.
@@ -141,28 +141,28 @@ export class EipSegmentAddress extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EipSegmentAddressState | undefined;
-            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["eipMask"] = state ? state.eipMask : undefined;
-            resourceInputs["internetChargeType"] = state ? state.internetChargeType : undefined;
-            resourceInputs["isp"] = state ? state.isp : undefined;
-            resourceInputs["netmode"] = state ? state.netmode : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["segmentAddressName"] = state ? state.segmentAddressName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["bandwidth"] = state?.bandwidth;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["eipMask"] = state?.eipMask;
+            resourceInputs["internetChargeType"] = state?.internetChargeType;
+            resourceInputs["isp"] = state?.isp;
+            resourceInputs["netmode"] = state?.netmode;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["segmentAddressName"] = state?.segmentAddressName;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as EipSegmentAddressArgs | undefined;
-            if ((!args || args.eipMask === undefined) && !opts.urn) {
+            if (args?.eipMask === undefined && !opts.urn) {
                 throw new Error("Missing required property 'eipMask'");
             }
-            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
-            resourceInputs["eipMask"] = args ? args.eipMask : undefined;
-            resourceInputs["internetChargeType"] = args ? args.internetChargeType : undefined;
-            resourceInputs["isp"] = args ? args.isp : undefined;
-            resourceInputs["netmode"] = args ? args.netmode : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["bandwidth"] = args?.bandwidth;
+            resourceInputs["eipMask"] = args?.eipMask;
+            resourceInputs["internetChargeType"] = args?.internetChargeType;
+            resourceInputs["isp"] = args?.isp;
+            resourceInputs["netmode"] = args?.netmode;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["zone"] = args?.zone;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["segmentAddressName"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

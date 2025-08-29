@@ -52,75 +52,75 @@ export class AccessStrategy extends pulumi.CustomResource {
     /**
      * The primary/secondary switchover policy for address pool groups. Valid values: `AUTO`, `DEFAULT`, `FAILOVER`.
      */
-    public readonly accessMode!: pulumi.Output<string>;
+    declare public readonly accessMode: pulumi.Output<string>;
     /**
      * The type of the primary address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
      */
-    public readonly defaultAddrPoolType!: pulumi.Output<string>;
+    declare public readonly defaultAddrPoolType: pulumi.Output<string>;
     /**
      * List of primary address pool collections. See `defaultAddrPools` below for details.
      */
-    public readonly defaultAddrPools!: pulumi.Output<outputs.dns.AccessStrategyDefaultAddrPool[]>;
+    declare public readonly defaultAddrPools: pulumi.Output<outputs.dns.AccessStrategyDefaultAddrPool[]>;
     /**
      * Specifies whether to enable scheduling optimization for latency resolution for the primary address pool group. Valid values: `OPEN`, `CLOSE`.
      */
-    public readonly defaultLatencyOptimization!: pulumi.Output<string | undefined>;
+    declare public readonly defaultLatencyOptimization: pulumi.Output<string | undefined>;
     /**
      * The load balancing policy of the primary address pool group. Valid values: `ALL_RR`, `RATIO`. **NOTE:** The `defaultLbaStrategy` is required under the condition that `strategyMode` is `GEO`.
      */
-    public readonly defaultLbaStrategy!: pulumi.Output<string | undefined>;
+    declare public readonly defaultLbaStrategy: pulumi.Output<string | undefined>;
     /**
      * The maximum number of addresses returned by the primary address pool set. **NOTE:** The `defaultMaxReturnAddrNum` is required under the condition that `strategyMode` is `LATENCY`.
      */
-    public readonly defaultMaxReturnAddrNum!: pulumi.Output<number | undefined>;
+    declare public readonly defaultMaxReturnAddrNum: pulumi.Output<number | undefined>;
     /**
      * The minimum number of available addresses for the primary address pool set.
      */
-    public readonly defaultMinAvailableAddrNum!: pulumi.Output<number>;
+    declare public readonly defaultMinAvailableAddrNum: pulumi.Output<number>;
     /**
      * The type of the secondary address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
      */
-    public readonly failoverAddrPoolType!: pulumi.Output<string | undefined>;
+    declare public readonly failoverAddrPoolType: pulumi.Output<string | undefined>;
     /**
      * List of backup address pool sets. See `failoverAddrPools` below for details.
      */
-    public readonly failoverAddrPools!: pulumi.Output<outputs.dns.AccessStrategyFailoverAddrPool[] | undefined>;
+    declare public readonly failoverAddrPools: pulumi.Output<outputs.dns.AccessStrategyFailoverAddrPool[] | undefined>;
     /**
      * Specifies whether to enable scheduling optimization for latency resolution for the secondary address pool group. Valid values: `OPEN`, `CLOSE`.
      */
-    public readonly failoverLatencyOptimization!: pulumi.Output<string | undefined>;
+    declare public readonly failoverLatencyOptimization: pulumi.Output<string | undefined>;
     /**
      * The load balancing policy of the secondary address pool group. Valid values: `ALL_RR`, `RATIO`.
      */
-    public readonly failoverLbaStrategy!: pulumi.Output<string | undefined>;
+    declare public readonly failoverLbaStrategy: pulumi.Output<string | undefined>;
     /**
      * The maximum number of returned addresses in the standby address pool.
      */
-    public readonly failoverMaxReturnAddrNum!: pulumi.Output<number | undefined>;
+    declare public readonly failoverMaxReturnAddrNum: pulumi.Output<number | undefined>;
     /**
      * The minimum number of available addresses in the standby address pool.
      */
-    public readonly failoverMinAvailableAddrNum!: pulumi.Output<number | undefined>;
+    declare public readonly failoverMinAvailableAddrNum: pulumi.Output<number | undefined>;
     /**
      * The Id of the associated instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The lang.
      */
-    public readonly lang!: pulumi.Output<string | undefined>;
+    declare public readonly lang: pulumi.Output<string | undefined>;
     /**
      * The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategyMode` is `GEO`.
      */
-    public readonly lines!: pulumi.Output<outputs.dns.AccessStrategyLine[] | undefined>;
+    declare public readonly lines: pulumi.Output<outputs.dns.AccessStrategyLine[] | undefined>;
     /**
      * The type of the access policy. Valid values: `GEO` or `LATENCY`. `GEO`: based on geographic location. `LATENCY`: Based on delay.
      */
-    public readonly strategyMode!: pulumi.Output<string>;
+    declare public readonly strategyMode: pulumi.Output<string>;
     /**
      * The name of the access policy.
      */
-    public readonly strategyName!: pulumi.Output<string>;
+    declare public readonly strategyName: pulumi.Output<string>;
 
     /**
      * Create a AccessStrategy resource with the given unique name, arguments, and options.
@@ -135,62 +135,62 @@ export class AccessStrategy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessStrategyState | undefined;
-            resourceInputs["accessMode"] = state ? state.accessMode : undefined;
-            resourceInputs["defaultAddrPoolType"] = state ? state.defaultAddrPoolType : undefined;
-            resourceInputs["defaultAddrPools"] = state ? state.defaultAddrPools : undefined;
-            resourceInputs["defaultLatencyOptimization"] = state ? state.defaultLatencyOptimization : undefined;
-            resourceInputs["defaultLbaStrategy"] = state ? state.defaultLbaStrategy : undefined;
-            resourceInputs["defaultMaxReturnAddrNum"] = state ? state.defaultMaxReturnAddrNum : undefined;
-            resourceInputs["defaultMinAvailableAddrNum"] = state ? state.defaultMinAvailableAddrNum : undefined;
-            resourceInputs["failoverAddrPoolType"] = state ? state.failoverAddrPoolType : undefined;
-            resourceInputs["failoverAddrPools"] = state ? state.failoverAddrPools : undefined;
-            resourceInputs["failoverLatencyOptimization"] = state ? state.failoverLatencyOptimization : undefined;
-            resourceInputs["failoverLbaStrategy"] = state ? state.failoverLbaStrategy : undefined;
-            resourceInputs["failoverMaxReturnAddrNum"] = state ? state.failoverMaxReturnAddrNum : undefined;
-            resourceInputs["failoverMinAvailableAddrNum"] = state ? state.failoverMinAvailableAddrNum : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["lang"] = state ? state.lang : undefined;
-            resourceInputs["lines"] = state ? state.lines : undefined;
-            resourceInputs["strategyMode"] = state ? state.strategyMode : undefined;
-            resourceInputs["strategyName"] = state ? state.strategyName : undefined;
+            resourceInputs["accessMode"] = state?.accessMode;
+            resourceInputs["defaultAddrPoolType"] = state?.defaultAddrPoolType;
+            resourceInputs["defaultAddrPools"] = state?.defaultAddrPools;
+            resourceInputs["defaultLatencyOptimization"] = state?.defaultLatencyOptimization;
+            resourceInputs["defaultLbaStrategy"] = state?.defaultLbaStrategy;
+            resourceInputs["defaultMaxReturnAddrNum"] = state?.defaultMaxReturnAddrNum;
+            resourceInputs["defaultMinAvailableAddrNum"] = state?.defaultMinAvailableAddrNum;
+            resourceInputs["failoverAddrPoolType"] = state?.failoverAddrPoolType;
+            resourceInputs["failoverAddrPools"] = state?.failoverAddrPools;
+            resourceInputs["failoverLatencyOptimization"] = state?.failoverLatencyOptimization;
+            resourceInputs["failoverLbaStrategy"] = state?.failoverLbaStrategy;
+            resourceInputs["failoverMaxReturnAddrNum"] = state?.failoverMaxReturnAddrNum;
+            resourceInputs["failoverMinAvailableAddrNum"] = state?.failoverMinAvailableAddrNum;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["lang"] = state?.lang;
+            resourceInputs["lines"] = state?.lines;
+            resourceInputs["strategyMode"] = state?.strategyMode;
+            resourceInputs["strategyName"] = state?.strategyName;
         } else {
             const args = argsOrState as AccessStrategyArgs | undefined;
-            if ((!args || args.defaultAddrPoolType === undefined) && !opts.urn) {
+            if (args?.defaultAddrPoolType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'defaultAddrPoolType'");
             }
-            if ((!args || args.defaultAddrPools === undefined) && !opts.urn) {
+            if (args?.defaultAddrPools === undefined && !opts.urn) {
                 throw new Error("Missing required property 'defaultAddrPools'");
             }
-            if ((!args || args.defaultMinAvailableAddrNum === undefined) && !opts.urn) {
+            if (args?.defaultMinAvailableAddrNum === undefined && !opts.urn) {
                 throw new Error("Missing required property 'defaultMinAvailableAddrNum'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.strategyMode === undefined) && !opts.urn) {
+            if (args?.strategyMode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'strategyMode'");
             }
-            if ((!args || args.strategyName === undefined) && !opts.urn) {
+            if (args?.strategyName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'strategyName'");
             }
-            resourceInputs["accessMode"] = args ? args.accessMode : undefined;
-            resourceInputs["defaultAddrPoolType"] = args ? args.defaultAddrPoolType : undefined;
-            resourceInputs["defaultAddrPools"] = args ? args.defaultAddrPools : undefined;
-            resourceInputs["defaultLatencyOptimization"] = args ? args.defaultLatencyOptimization : undefined;
-            resourceInputs["defaultLbaStrategy"] = args ? args.defaultLbaStrategy : undefined;
-            resourceInputs["defaultMaxReturnAddrNum"] = args ? args.defaultMaxReturnAddrNum : undefined;
-            resourceInputs["defaultMinAvailableAddrNum"] = args ? args.defaultMinAvailableAddrNum : undefined;
-            resourceInputs["failoverAddrPoolType"] = args ? args.failoverAddrPoolType : undefined;
-            resourceInputs["failoverAddrPools"] = args ? args.failoverAddrPools : undefined;
-            resourceInputs["failoverLatencyOptimization"] = args ? args.failoverLatencyOptimization : undefined;
-            resourceInputs["failoverLbaStrategy"] = args ? args.failoverLbaStrategy : undefined;
-            resourceInputs["failoverMaxReturnAddrNum"] = args ? args.failoverMaxReturnAddrNum : undefined;
-            resourceInputs["failoverMinAvailableAddrNum"] = args ? args.failoverMinAvailableAddrNum : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["lang"] = args ? args.lang : undefined;
-            resourceInputs["lines"] = args ? args.lines : undefined;
-            resourceInputs["strategyMode"] = args ? args.strategyMode : undefined;
-            resourceInputs["strategyName"] = args ? args.strategyName : undefined;
+            resourceInputs["accessMode"] = args?.accessMode;
+            resourceInputs["defaultAddrPoolType"] = args?.defaultAddrPoolType;
+            resourceInputs["defaultAddrPools"] = args?.defaultAddrPools;
+            resourceInputs["defaultLatencyOptimization"] = args?.defaultLatencyOptimization;
+            resourceInputs["defaultLbaStrategy"] = args?.defaultLbaStrategy;
+            resourceInputs["defaultMaxReturnAddrNum"] = args?.defaultMaxReturnAddrNum;
+            resourceInputs["defaultMinAvailableAddrNum"] = args?.defaultMinAvailableAddrNum;
+            resourceInputs["failoverAddrPoolType"] = args?.failoverAddrPoolType;
+            resourceInputs["failoverAddrPools"] = args?.failoverAddrPools;
+            resourceInputs["failoverLatencyOptimization"] = args?.failoverLatencyOptimization;
+            resourceInputs["failoverLbaStrategy"] = args?.failoverLbaStrategy;
+            resourceInputs["failoverMaxReturnAddrNum"] = args?.failoverMaxReturnAddrNum;
+            resourceInputs["failoverMinAvailableAddrNum"] = args?.failoverMinAvailableAddrNum;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["lang"] = args?.lang;
+            resourceInputs["lines"] = args?.lines;
+            resourceInputs["strategyMode"] = args?.strategyMode;
+            resourceInputs["strategyName"] = args?.strategyName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccessStrategy.__pulumiType, name, resourceInputs, opts);

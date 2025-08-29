@@ -104,43 +104,43 @@ export class Tunnel extends pulumi.CustomResource {
     /**
      * The channels of OTS tunnel. Each element contains the following attributes:
      */
-    public /*out*/ readonly channels!: pulumi.Output<outputs.ots.TunnelChannel[]>;
+    declare public /*out*/ readonly channels: pulumi.Output<outputs.ots.TunnelChannel[]>;
     /**
      * The creation time of the Tunnel.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly createTime: pulumi.Output<number>;
     /**
      * Whether the tunnel has expired.
      */
-    public /*out*/ readonly expired!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly expired: pulumi.Output<boolean>;
     /**
      * The name of the OTS instance in which table will located.
      */
-    public readonly instanceName!: pulumi.Output<string>;
+    declare public readonly instanceName: pulumi.Output<string>;
     /**
      * The name of the OTS table. If changed, a new table would be created.
      */
-    public readonly tableName!: pulumi.Output<string>;
+    declare public readonly tableName: pulumi.Output<string>;
     /**
      * The tunnel id of the OTS which could not be changed.
      */
-    public /*out*/ readonly tunnelId!: pulumi.Output<string>;
+    declare public /*out*/ readonly tunnelId: pulumi.Output<string>;
     /**
      * The name of the OTS tunnel. If changed, a new tunnel would be created.
      */
-    public readonly tunnelName!: pulumi.Output<string>;
+    declare public readonly tunnelName: pulumi.Output<string>;
     /**
      * The latest consumption time of the tunnel, unix time in nanosecond.
      */
-    public /*out*/ readonly tunnelRpo!: pulumi.Output<number>;
+    declare public /*out*/ readonly tunnelRpo: pulumi.Output<number>;
     /**
      * The stage of OTS tunnel, valid values: `InitBaseDataAndStreamShard`, `ProcessBaseData`, `ProcessStream`.
      */
-    public /*out*/ readonly tunnelStage!: pulumi.Output<string>;
+    declare public /*out*/ readonly tunnelStage: pulumi.Output<string>;
     /**
      * The type of the OTS tunnel. Only `BaseAndStream`, `BaseData` or `Stream` is allowed.
      */
-    public readonly tunnelType!: pulumi.Output<string>;
+    declare public readonly tunnelType: pulumi.Output<string>;
 
     /**
      * Create a Tunnel resource with the given unique name, arguments, and options.
@@ -155,34 +155,34 @@ export class Tunnel extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TunnelState | undefined;
-            resourceInputs["channels"] = state ? state.channels : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["expired"] = state ? state.expired : undefined;
-            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
-            resourceInputs["tableName"] = state ? state.tableName : undefined;
-            resourceInputs["tunnelId"] = state ? state.tunnelId : undefined;
-            resourceInputs["tunnelName"] = state ? state.tunnelName : undefined;
-            resourceInputs["tunnelRpo"] = state ? state.tunnelRpo : undefined;
-            resourceInputs["tunnelStage"] = state ? state.tunnelStage : undefined;
-            resourceInputs["tunnelType"] = state ? state.tunnelType : undefined;
+            resourceInputs["channels"] = state?.channels;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["expired"] = state?.expired;
+            resourceInputs["instanceName"] = state?.instanceName;
+            resourceInputs["tableName"] = state?.tableName;
+            resourceInputs["tunnelId"] = state?.tunnelId;
+            resourceInputs["tunnelName"] = state?.tunnelName;
+            resourceInputs["tunnelRpo"] = state?.tunnelRpo;
+            resourceInputs["tunnelStage"] = state?.tunnelStage;
+            resourceInputs["tunnelType"] = state?.tunnelType;
         } else {
             const args = argsOrState as TunnelArgs | undefined;
-            if ((!args || args.instanceName === undefined) && !opts.urn) {
+            if (args?.instanceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceName'");
             }
-            if ((!args || args.tableName === undefined) && !opts.urn) {
+            if (args?.tableName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tableName'");
             }
-            if ((!args || args.tunnelName === undefined) && !opts.urn) {
+            if (args?.tunnelName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tunnelName'");
             }
-            if ((!args || args.tunnelType === undefined) && !opts.urn) {
+            if (args?.tunnelType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tunnelType'");
             }
-            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
-            resourceInputs["tableName"] = args ? args.tableName : undefined;
-            resourceInputs["tunnelName"] = args ? args.tunnelName : undefined;
-            resourceInputs["tunnelType"] = args ? args.tunnelType : undefined;
+            resourceInputs["instanceName"] = args?.instanceName;
+            resourceInputs["tableName"] = args?.tableName;
+            resourceInputs["tunnelName"] = args?.tunnelName;
+            resourceInputs["tunnelType"] = args?.tunnelType;
             resourceInputs["channels"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["expired"] = undefined /*out*/;

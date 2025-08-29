@@ -96,19 +96,19 @@ export class AccountPrivilege extends pulumi.CustomResource {
     /**
      * A specified account name.
      */
-    public readonly accountName!: pulumi.Output<string>;
+    declare public readonly accountName: pulumi.Output<string>;
     /**
      * The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"], ["DMLOnly", "DDLOnly"] added since version v1.101.0. Default to "ReadOnly".
      */
-    public readonly accountPrivilege!: pulumi.Output<string | undefined>;
+    declare public readonly accountPrivilege: pulumi.Output<string | undefined>;
     /**
      * The Id of cluster in which account belongs.
      */
-    public readonly dbClusterId!: pulumi.Output<string>;
+    declare public readonly dbClusterId: pulumi.Output<string>;
     /**
      * List of specified database name.
      */
-    public readonly dbNames!: pulumi.Output<string[]>;
+    declare public readonly dbNames: pulumi.Output<string[]>;
 
     /**
      * Create a AccountPrivilege resource with the given unique name, arguments, and options.
@@ -123,25 +123,25 @@ export class AccountPrivilege extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountPrivilegeState | undefined;
-            resourceInputs["accountName"] = state ? state.accountName : undefined;
-            resourceInputs["accountPrivilege"] = state ? state.accountPrivilege : undefined;
-            resourceInputs["dbClusterId"] = state ? state.dbClusterId : undefined;
-            resourceInputs["dbNames"] = state ? state.dbNames : undefined;
+            resourceInputs["accountName"] = state?.accountName;
+            resourceInputs["accountPrivilege"] = state?.accountPrivilege;
+            resourceInputs["dbClusterId"] = state?.dbClusterId;
+            resourceInputs["dbNames"] = state?.dbNames;
         } else {
             const args = argsOrState as AccountPrivilegeArgs | undefined;
-            if ((!args || args.accountName === undefined) && !opts.urn) {
+            if (args?.accountName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountName'");
             }
-            if ((!args || args.dbClusterId === undefined) && !opts.urn) {
+            if (args?.dbClusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbClusterId'");
             }
-            if ((!args || args.dbNames === undefined) && !opts.urn) {
+            if (args?.dbNames === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbNames'");
             }
-            resourceInputs["accountName"] = args ? args.accountName : undefined;
-            resourceInputs["accountPrivilege"] = args ? args.accountPrivilege : undefined;
-            resourceInputs["dbClusterId"] = args ? args.dbClusterId : undefined;
-            resourceInputs["dbNames"] = args ? args.dbNames : undefined;
+            resourceInputs["accountName"] = args?.accountName;
+            resourceInputs["accountPrivilege"] = args?.accountPrivilege;
+            resourceInputs["dbClusterId"] = args?.dbClusterId;
+            resourceInputs["dbNames"] = args?.dbNames;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccountPrivilege.__pulumiType, name, resourceInputs, opts);

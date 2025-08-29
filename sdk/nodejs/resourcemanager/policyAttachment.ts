@@ -49,23 +49,23 @@ export class PolicyAttachment extends pulumi.CustomResource {
     /**
      * The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
      */
-    public readonly policyName!: pulumi.Output<string>;
+    declare public readonly policyName: pulumi.Output<string>;
     /**
      * The type of the policy. Valid values: `Custom`, `System`.
      */
-    public readonly policyType!: pulumi.Output<string>;
+    declare public readonly policyType: pulumi.Output<string>;
     /**
      * The name of the object to which you want to attach the policy.
      */
-    public readonly principalName!: pulumi.Output<string>;
+    declare public readonly principalName: pulumi.Output<string>;
     /**
      * The type of the object to which you want to attach the policy. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
      */
-    public readonly principalType!: pulumi.Output<string>;
+    declare public readonly principalType: pulumi.Output<string>;
     /**
      * The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
 
     /**
      * Create a PolicyAttachment resource with the given unique name, arguments, and options.
@@ -80,33 +80,33 @@ export class PolicyAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyAttachmentState | undefined;
-            resourceInputs["policyName"] = state ? state.policyName : undefined;
-            resourceInputs["policyType"] = state ? state.policyType : undefined;
-            resourceInputs["principalName"] = state ? state.principalName : undefined;
-            resourceInputs["principalType"] = state ? state.principalType : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["policyName"] = state?.policyName;
+            resourceInputs["policyType"] = state?.policyType;
+            resourceInputs["principalName"] = state?.principalName;
+            resourceInputs["principalType"] = state?.principalType;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
         } else {
             const args = argsOrState as PolicyAttachmentArgs | undefined;
-            if ((!args || args.policyName === undefined) && !opts.urn) {
+            if (args?.policyName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyName'");
             }
-            if ((!args || args.policyType === undefined) && !opts.urn) {
+            if (args?.policyType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyType'");
             }
-            if ((!args || args.principalName === undefined) && !opts.urn) {
+            if (args?.principalName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'principalName'");
             }
-            if ((!args || args.principalType === undefined) && !opts.urn) {
+            if (args?.principalType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'principalType'");
             }
-            if ((!args || args.resourceGroupId === undefined) && !opts.urn) {
+            if (args?.resourceGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupId'");
             }
-            resourceInputs["policyName"] = args ? args.policyName : undefined;
-            resourceInputs["policyType"] = args ? args.policyType : undefined;
-            resourceInputs["principalName"] = args ? args.principalName : undefined;
-            resourceInputs["principalType"] = args ? args.principalType : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["policyName"] = args?.policyName;
+            resourceInputs["policyType"] = args?.policyType;
+            resourceInputs["principalName"] = args?.principalName;
+            resourceInputs["principalType"] = args?.principalType;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PolicyAttachment.__pulumiType, name, resourceInputs, opts);

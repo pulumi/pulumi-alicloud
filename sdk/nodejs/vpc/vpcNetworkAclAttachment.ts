@@ -50,19 +50,19 @@ export class VpcNetworkAclAttachment extends pulumi.CustomResource {
     /**
      * The ID of the network ACL.
      */
-    public readonly networkAclId!: pulumi.Output<string>;
+    declare public readonly networkAclId: pulumi.Output<string>;
     /**
      * The ID of the associated resource.
      */
-    public readonly resourceId!: pulumi.Output<string>;
+    declare public readonly resourceId: pulumi.Output<string>;
     /**
      * The type of the associated resource. Valid values: `VSwitch`.
      */
-    public readonly resourceType!: pulumi.Output<string>;
+    declare public readonly resourceType: pulumi.Output<string>;
     /**
      * The status of the Network Acl Attachment.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a VpcNetworkAclAttachment resource with the given unique name, arguments, and options.
@@ -77,24 +77,24 @@ export class VpcNetworkAclAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpcNetworkAclAttachmentState | undefined;
-            resourceInputs["networkAclId"] = state ? state.networkAclId : undefined;
-            resourceInputs["resourceId"] = state ? state.resourceId : undefined;
-            resourceInputs["resourceType"] = state ? state.resourceType : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["networkAclId"] = state?.networkAclId;
+            resourceInputs["resourceId"] = state?.resourceId;
+            resourceInputs["resourceType"] = state?.resourceType;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as VpcNetworkAclAttachmentArgs | undefined;
-            if ((!args || args.networkAclId === undefined) && !opts.urn) {
+            if (args?.networkAclId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkAclId'");
             }
-            if ((!args || args.resourceId === undefined) && !opts.urn) {
+            if (args?.resourceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceId'");
             }
-            if ((!args || args.resourceType === undefined) && !opts.urn) {
+            if (args?.resourceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceType'");
             }
-            resourceInputs["networkAclId"] = args ? args.networkAclId : undefined;
-            resourceInputs["resourceId"] = args ? args.resourceId : undefined;
-            resourceInputs["resourceType"] = args ? args.resourceType : undefined;
+            resourceInputs["networkAclId"] = args?.networkAclId;
+            resourceInputs["resourceId"] = args?.resourceId;
+            resourceInputs["resourceType"] = args?.resourceType;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

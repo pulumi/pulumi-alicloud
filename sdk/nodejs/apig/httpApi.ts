@@ -72,27 +72,27 @@ export class HttpApi extends pulumi.CustomResource {
     /**
      * API path
      */
-    public readonly basePath!: pulumi.Output<string | undefined>;
+    declare public readonly basePath: pulumi.Output<string | undefined>;
     /**
      * Description of API
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of the resource
      */
-    public readonly httpApiName!: pulumi.Output<string>;
+    declare public readonly httpApiName: pulumi.Output<string>;
     /**
      * API protocol
      */
-    public readonly protocols!: pulumi.Output<string[]>;
+    declare public readonly protocols: pulumi.Output<string[]>;
     /**
      * The ID of the resource group
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * API type
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
 
     /**
      * Create a HttpApi resource with the given unique name, arguments, and options.
@@ -107,26 +107,26 @@ export class HttpApi extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HttpApiState | undefined;
-            resourceInputs["basePath"] = state ? state.basePath : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["httpApiName"] = state ? state.httpApiName : undefined;
-            resourceInputs["protocols"] = state ? state.protocols : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["basePath"] = state?.basePath;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["httpApiName"] = state?.httpApiName;
+            resourceInputs["protocols"] = state?.protocols;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as HttpApiArgs | undefined;
-            if ((!args || args.httpApiName === undefined) && !opts.urn) {
+            if (args?.httpApiName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'httpApiName'");
             }
-            if ((!args || args.protocols === undefined) && !opts.urn) {
+            if (args?.protocols === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protocols'");
             }
-            resourceInputs["basePath"] = args ? args.basePath : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["httpApiName"] = args ? args.httpApiName : undefined;
-            resourceInputs["protocols"] = args ? args.protocols : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["basePath"] = args?.basePath;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["httpApiName"] = args?.httpApiName;
+            resourceInputs["protocols"] = args?.protocols;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(HttpApi.__pulumiType, name, resourceInputs, opts);

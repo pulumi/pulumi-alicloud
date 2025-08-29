@@ -46,55 +46,55 @@ export class VvpInstance extends pulumi.CustomResource {
     /**
      * The creation time of the resource.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The number of subscription periods. If the payment type is PRE, this parameter is required.
      */
-    public readonly duration!: pulumi.Output<number | undefined>;
+    declare public readonly duration: pulumi.Output<number | undefined>;
     /**
      * The payment type of the resource.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * The subscription period. If the payment type is PRE, this parameter is required.
      */
-    public readonly pricingCycle!: pulumi.Output<string | undefined>;
+    declare public readonly pricingCycle: pulumi.Output<string | undefined>;
     /**
      * The resource group to which the newly purchased instance belongs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Resource specifications. See `resourceSpec` below.
      */
-    public readonly resourceSpec!: pulumi.Output<outputs.realtimecompute.VvpInstanceResourceSpec>;
+    declare public readonly resourceSpec: pulumi.Output<outputs.realtimecompute.VvpInstanceResourceSpec>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Store information. See `storage` below.
      */
-    public readonly storage!: pulumi.Output<outputs.realtimecompute.VvpInstanceStorage>;
+    declare public readonly storage: pulumi.Output<outputs.realtimecompute.VvpInstanceStorage>;
     /**
      * The tags of the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The VPC ID of the user.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * Virtual Switch ID.
      */
-    public readonly vswitchIds!: pulumi.Output<string[]>;
+    declare public readonly vswitchIds: pulumi.Output<string[]>;
     /**
      * The name of the workspace.
      */
-    public readonly vvpInstanceName!: pulumi.Output<string>;
+    declare public readonly vvpInstanceName: pulumi.Output<string>;
     /**
      * The zone ID of the resource.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a VvpInstance resource with the given unique name, arguments, and options.
@@ -109,50 +109,50 @@ export class VvpInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VvpInstanceState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["duration"] = state ? state.duration : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["pricingCycle"] = state ? state.pricingCycle : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["resourceSpec"] = state ? state.resourceSpec : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["storage"] = state ? state.storage : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchIds"] = state ? state.vswitchIds : undefined;
-            resourceInputs["vvpInstanceName"] = state ? state.vvpInstanceName : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["duration"] = state?.duration;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["pricingCycle"] = state?.pricingCycle;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["resourceSpec"] = state?.resourceSpec;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["storage"] = state?.storage;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchIds"] = state?.vswitchIds;
+            resourceInputs["vvpInstanceName"] = state?.vvpInstanceName;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as VvpInstanceArgs | undefined;
-            if ((!args || args.paymentType === undefined) && !opts.urn) {
+            if (args?.paymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            if ((!args || args.storage === undefined) && !opts.urn) {
+            if (args?.storage === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storage'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            if ((!args || args.vswitchIds === undefined) && !opts.urn) {
+            if (args?.vswitchIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchIds'");
             }
-            if ((!args || args.vvpInstanceName === undefined) && !opts.urn) {
+            if (args?.vvpInstanceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vvpInstanceName'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["duration"] = args ? args.duration : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["pricingCycle"] = args ? args.pricingCycle : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["resourceSpec"] = args ? args.resourceSpec : undefined;
-            resourceInputs["storage"] = args ? args.storage : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vswitchIds"] = args ? args.vswitchIds : undefined;
-            resourceInputs["vvpInstanceName"] = args ? args.vvpInstanceName : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["duration"] = args?.duration;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["pricingCycle"] = args?.pricingCycle;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["resourceSpec"] = args?.resourceSpec;
+            resourceInputs["storage"] = args?.storage;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchIds"] = args?.vswitchIds;
+            resourceInputs["vvpInstanceName"] = args?.vvpInstanceName;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

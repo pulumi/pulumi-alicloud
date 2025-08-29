@@ -89,27 +89,27 @@ export class Connection extends pulumi.CustomResource {
      *
      * > **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
      */
-    public readonly babelfishPort!: pulumi.Output<string>;
+    declare public readonly babelfishPort: pulumi.Output<string>;
     /**
      * Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
      */
-    public readonly connectionPrefix!: pulumi.Output<string>;
+    declare public readonly connectionPrefix: pulumi.Output<string>;
     /**
      * Connection instance string.
      */
-    public /*out*/ readonly connectionString!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectionString: pulumi.Output<string>;
     /**
      * The Id of instance that can run database.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The ip address of connection string.
      */
-    public /*out*/ readonly ipAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly ipAddress: pulumi.Output<string>;
     /**
      * Internet connection port. Valid value: [1000-5999]. Default to 3306.
      */
-    public readonly port!: pulumi.Output<string | undefined>;
+    declare public readonly port: pulumi.Output<string | undefined>;
 
     /**
      * Create a Connection resource with the given unique name, arguments, and options.
@@ -124,21 +124,21 @@ export class Connection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
-            resourceInputs["babelfishPort"] = state ? state.babelfishPort : undefined;
-            resourceInputs["connectionPrefix"] = state ? state.connectionPrefix : undefined;
-            resourceInputs["connectionString"] = state ? state.connectionString : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["babelfishPort"] = state?.babelfishPort;
+            resourceInputs["connectionPrefix"] = state?.connectionPrefix;
+            resourceInputs["connectionString"] = state?.connectionString;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["ipAddress"] = state?.ipAddress;
+            resourceInputs["port"] = state?.port;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["babelfishPort"] = args ? args.babelfishPort : undefined;
-            resourceInputs["connectionPrefix"] = args ? args.connectionPrefix : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["babelfishPort"] = args?.babelfishPort;
+            resourceInputs["connectionPrefix"] = args?.connectionPrefix;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["port"] = args?.port;
             resourceInputs["connectionString"] = undefined /*out*/;
             resourceInputs["ipAddress"] = undefined /*out*/;
         }

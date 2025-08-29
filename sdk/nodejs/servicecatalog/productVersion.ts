@@ -78,35 +78,35 @@ export class ProductVersion extends pulumi.CustomResource {
     /**
      * Whether the version is activated
      */
-    public readonly active!: pulumi.Output<boolean | undefined>;
+    declare public readonly active: pulumi.Output<boolean | undefined>;
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Version description
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Administrator guidance
      */
-    public readonly guidance!: pulumi.Output<string | undefined>;
+    declare public readonly guidance: pulumi.Output<string | undefined>;
     /**
      * Product ID
      */
-    public readonly productId!: pulumi.Output<string>;
+    declare public readonly productId: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public readonly productVersionName!: pulumi.Output<string>;
+    declare public readonly productVersionName: pulumi.Output<string>;
     /**
      * Template Type
      */
-    public readonly templateType!: pulumi.Output<string>;
+    declare public readonly templateType: pulumi.Output<string>;
     /**
      * Template URL
      */
-    public readonly templateUrl!: pulumi.Output<string>;
+    declare public readonly templateUrl: pulumi.Output<string>;
 
     /**
      * Create a ProductVersion resource with the given unique name, arguments, and options.
@@ -121,35 +121,35 @@ export class ProductVersion extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProductVersionState | undefined;
-            resourceInputs["active"] = state ? state.active : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["guidance"] = state ? state.guidance : undefined;
-            resourceInputs["productId"] = state ? state.productId : undefined;
-            resourceInputs["productVersionName"] = state ? state.productVersionName : undefined;
-            resourceInputs["templateType"] = state ? state.templateType : undefined;
-            resourceInputs["templateUrl"] = state ? state.templateUrl : undefined;
+            resourceInputs["active"] = state?.active;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["guidance"] = state?.guidance;
+            resourceInputs["productId"] = state?.productId;
+            resourceInputs["productVersionName"] = state?.productVersionName;
+            resourceInputs["templateType"] = state?.templateType;
+            resourceInputs["templateUrl"] = state?.templateUrl;
         } else {
             const args = argsOrState as ProductVersionArgs | undefined;
-            if ((!args || args.productId === undefined) && !opts.urn) {
+            if (args?.productId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'productId'");
             }
-            if ((!args || args.productVersionName === undefined) && !opts.urn) {
+            if (args?.productVersionName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'productVersionName'");
             }
-            if ((!args || args.templateType === undefined) && !opts.urn) {
+            if (args?.templateType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'templateType'");
             }
-            if ((!args || args.templateUrl === undefined) && !opts.urn) {
+            if (args?.templateUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'templateUrl'");
             }
-            resourceInputs["active"] = args ? args.active : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["guidance"] = args ? args.guidance : undefined;
-            resourceInputs["productId"] = args ? args.productId : undefined;
-            resourceInputs["productVersionName"] = args ? args.productVersionName : undefined;
-            resourceInputs["templateType"] = args ? args.templateType : undefined;
-            resourceInputs["templateUrl"] = args ? args.templateUrl : undefined;
+            resourceInputs["active"] = args?.active;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["guidance"] = args?.guidance;
+            resourceInputs["productId"] = args?.productId;
+            resourceInputs["productVersionName"] = args?.productVersionName;
+            resourceInputs["templateType"] = args?.templateType;
+            resourceInputs["templateUrl"] = args?.templateUrl;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

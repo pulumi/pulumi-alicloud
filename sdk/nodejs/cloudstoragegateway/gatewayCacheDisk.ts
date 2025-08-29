@@ -50,31 +50,31 @@ export class GatewayCacheDisk extends pulumi.CustomResource {
     /**
      * The type of the cache disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`. **NOTE:** From version 1.227.0, `cacheDiskCategory` can be set to `cloudEssd`.
      */
-    public readonly cacheDiskCategory!: pulumi.Output<string>;
+    declare public readonly cacheDiskCategory: pulumi.Output<string>;
     /**
      * The capacity of the cache disk.
      */
-    public readonly cacheDiskSizeInGb!: pulumi.Output<number>;
+    declare public readonly cacheDiskSizeInGb: pulumi.Output<number>;
     /**
      * The ID of the cache disk.
      */
-    public /*out*/ readonly cacheId!: pulumi.Output<string>;
+    declare public /*out*/ readonly cacheId: pulumi.Output<string>;
     /**
      * The ID of the gateway.
      */
-    public readonly gatewayId!: pulumi.Output<string>;
+    declare public readonly gatewayId: pulumi.Output<string>;
     /**
      * The path of the cache disk.
      */
-    public /*out*/ readonly localFilePath!: pulumi.Output<string>;
+    declare public /*out*/ readonly localFilePath: pulumi.Output<string>;
     /**
      * The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cacheDiskCategory` is set to `cloudEssd`, `performanceLevel` is required.
      */
-    public readonly performanceLevel!: pulumi.Output<string | undefined>;
+    declare public readonly performanceLevel: pulumi.Output<string | undefined>;
     /**
      * The status of the Gateway Cache Disk.
      */
-    public /*out*/ readonly status!: pulumi.Output<number>;
+    declare public /*out*/ readonly status: pulumi.Output<number>;
 
     /**
      * Create a GatewayCacheDisk resource with the given unique name, arguments, and options.
@@ -89,25 +89,25 @@ export class GatewayCacheDisk extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GatewayCacheDiskState | undefined;
-            resourceInputs["cacheDiskCategory"] = state ? state.cacheDiskCategory : undefined;
-            resourceInputs["cacheDiskSizeInGb"] = state ? state.cacheDiskSizeInGb : undefined;
-            resourceInputs["cacheId"] = state ? state.cacheId : undefined;
-            resourceInputs["gatewayId"] = state ? state.gatewayId : undefined;
-            resourceInputs["localFilePath"] = state ? state.localFilePath : undefined;
-            resourceInputs["performanceLevel"] = state ? state.performanceLevel : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["cacheDiskCategory"] = state?.cacheDiskCategory;
+            resourceInputs["cacheDiskSizeInGb"] = state?.cacheDiskSizeInGb;
+            resourceInputs["cacheId"] = state?.cacheId;
+            resourceInputs["gatewayId"] = state?.gatewayId;
+            resourceInputs["localFilePath"] = state?.localFilePath;
+            resourceInputs["performanceLevel"] = state?.performanceLevel;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as GatewayCacheDiskArgs | undefined;
-            if ((!args || args.cacheDiskSizeInGb === undefined) && !opts.urn) {
+            if (args?.cacheDiskSizeInGb === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cacheDiskSizeInGb'");
             }
-            if ((!args || args.gatewayId === undefined) && !opts.urn) {
+            if (args?.gatewayId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'gatewayId'");
             }
-            resourceInputs["cacheDiskCategory"] = args ? args.cacheDiskCategory : undefined;
-            resourceInputs["cacheDiskSizeInGb"] = args ? args.cacheDiskSizeInGb : undefined;
-            resourceInputs["gatewayId"] = args ? args.gatewayId : undefined;
-            resourceInputs["performanceLevel"] = args ? args.performanceLevel : undefined;
+            resourceInputs["cacheDiskCategory"] = args?.cacheDiskCategory;
+            resourceInputs["cacheDiskSizeInGb"] = args?.cacheDiskSizeInGb;
+            resourceInputs["gatewayId"] = args?.gatewayId;
+            resourceInputs["performanceLevel"] = args?.performanceLevel;
             resourceInputs["cacheId"] = undefined /*out*/;
             resourceInputs["localFilePath"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

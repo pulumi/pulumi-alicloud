@@ -168,43 +168,43 @@ export class V3ProvisionConfig extends pulumi.CustomResource {
     /**
      * Whether the CPU is always allocated. The default value is true.
      */
-    public readonly alwaysAllocateCpu!: pulumi.Output<boolean | undefined>;
+    declare public readonly alwaysAllocateCpu: pulumi.Output<boolean | undefined>;
     /**
      * Whether to always assign GPU to function instance
      */
-    public readonly alwaysAllocateGpu!: pulumi.Output<boolean | undefined>;
+    declare public readonly alwaysAllocateGpu: pulumi.Output<boolean | undefined>;
     /**
      * (Available since v1.234.0) Number of actual resources
      */
-    public /*out*/ readonly current!: pulumi.Output<number>;
+    declare public /*out*/ readonly current: pulumi.Output<number>;
     /**
      * (Available since v1.234.0) Error message when a Reserved Instance creation fails
      */
-    public /*out*/ readonly currentError!: pulumi.Output<string>;
+    declare public /*out*/ readonly currentError: pulumi.Output<string>;
     /**
      * (Available since v1.234.0) Resource Description of the function
      */
-    public /*out*/ readonly functionArn!: pulumi.Output<string>;
+    declare public /*out*/ readonly functionArn: pulumi.Output<string>;
     /**
      * The name of the function. If this parameter is not specified, the provisioned configurations of all functions are listed.
      */
-    public readonly functionName!: pulumi.Output<string>;
+    declare public readonly functionName: pulumi.Output<string>;
     /**
      * The function alias or LATEST.
      */
-    public readonly qualifier!: pulumi.Output<string | undefined>;
+    declare public readonly qualifier: pulumi.Output<string | undefined>;
     /**
      * Timing policy configuration See `scheduledActions` below.
      */
-    public readonly scheduledActions!: pulumi.Output<outputs.fc.V3ProvisionConfigScheduledAction[] | undefined>;
+    declare public readonly scheduledActions: pulumi.Output<outputs.fc.V3ProvisionConfigScheduledAction[] | undefined>;
     /**
      * Number of reserved target resources. The value range is [0,10000].
      */
-    public readonly target!: pulumi.Output<number | undefined>;
+    declare public readonly target: pulumi.Output<number | undefined>;
     /**
      * Metric tracking scaling policy configuration See `targetTrackingPolicies` below.
      */
-    public readonly targetTrackingPolicies!: pulumi.Output<outputs.fc.V3ProvisionConfigTargetTrackingPolicy[] | undefined>;
+    declare public readonly targetTrackingPolicies: pulumi.Output<outputs.fc.V3ProvisionConfigTargetTrackingPolicy[] | undefined>;
 
     /**
      * Create a V3ProvisionConfig resource with the given unique name, arguments, and options.
@@ -219,28 +219,28 @@ export class V3ProvisionConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as V3ProvisionConfigState | undefined;
-            resourceInputs["alwaysAllocateCpu"] = state ? state.alwaysAllocateCpu : undefined;
-            resourceInputs["alwaysAllocateGpu"] = state ? state.alwaysAllocateGpu : undefined;
-            resourceInputs["current"] = state ? state.current : undefined;
-            resourceInputs["currentError"] = state ? state.currentError : undefined;
-            resourceInputs["functionArn"] = state ? state.functionArn : undefined;
-            resourceInputs["functionName"] = state ? state.functionName : undefined;
-            resourceInputs["qualifier"] = state ? state.qualifier : undefined;
-            resourceInputs["scheduledActions"] = state ? state.scheduledActions : undefined;
-            resourceInputs["target"] = state ? state.target : undefined;
-            resourceInputs["targetTrackingPolicies"] = state ? state.targetTrackingPolicies : undefined;
+            resourceInputs["alwaysAllocateCpu"] = state?.alwaysAllocateCpu;
+            resourceInputs["alwaysAllocateGpu"] = state?.alwaysAllocateGpu;
+            resourceInputs["current"] = state?.current;
+            resourceInputs["currentError"] = state?.currentError;
+            resourceInputs["functionArn"] = state?.functionArn;
+            resourceInputs["functionName"] = state?.functionName;
+            resourceInputs["qualifier"] = state?.qualifier;
+            resourceInputs["scheduledActions"] = state?.scheduledActions;
+            resourceInputs["target"] = state?.target;
+            resourceInputs["targetTrackingPolicies"] = state?.targetTrackingPolicies;
         } else {
             const args = argsOrState as V3ProvisionConfigArgs | undefined;
-            if ((!args || args.functionName === undefined) && !opts.urn) {
+            if (args?.functionName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'functionName'");
             }
-            resourceInputs["alwaysAllocateCpu"] = args ? args.alwaysAllocateCpu : undefined;
-            resourceInputs["alwaysAllocateGpu"] = args ? args.alwaysAllocateGpu : undefined;
-            resourceInputs["functionName"] = args ? args.functionName : undefined;
-            resourceInputs["qualifier"] = args ? args.qualifier : undefined;
-            resourceInputs["scheduledActions"] = args ? args.scheduledActions : undefined;
-            resourceInputs["target"] = args ? args.target : undefined;
-            resourceInputs["targetTrackingPolicies"] = args ? args.targetTrackingPolicies : undefined;
+            resourceInputs["alwaysAllocateCpu"] = args?.alwaysAllocateCpu;
+            resourceInputs["alwaysAllocateGpu"] = args?.alwaysAllocateGpu;
+            resourceInputs["functionName"] = args?.functionName;
+            resourceInputs["qualifier"] = args?.qualifier;
+            resourceInputs["scheduledActions"] = args?.scheduledActions;
+            resourceInputs["target"] = args?.target;
+            resourceInputs["targetTrackingPolicies"] = args?.targetTrackingPolicies;
             resourceInputs["current"] = undefined /*out*/;
             resourceInputs["currentError"] = undefined /*out*/;
             resourceInputs["functionArn"] = undefined /*out*/;

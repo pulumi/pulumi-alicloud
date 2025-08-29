@@ -65,47 +65,47 @@ export class Directory extends pulumi.CustomResource {
     /**
      * CreateTime
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Directory Global Acceleration activation status
      */
-    public readonly directoryGlobalAccessStatus!: pulumi.Output<string>;
+    declare public readonly directoryGlobalAccessStatus: pulumi.Output<string>;
     /**
      * DirectoryName
      */
-    public readonly directoryName!: pulumi.Output<string | undefined>;
+    declare public readonly directoryName: pulumi.Output<string | undefined>;
     /**
      * Login preferences See `loginPreference` below.
      */
-    public readonly loginPreference!: pulumi.Output<outputs.cloudsso.DirectoryLoginPreference>;
+    declare public readonly loginPreference: pulumi.Output<outputs.cloudsso.DirectoryLoginPreference>;
     /**
      * Global MFA verification configuration. See `mfaAuthenticationSettingInfo` below.
      */
-    public readonly mfaAuthenticationSettingInfo!: pulumi.Output<outputs.cloudsso.DirectoryMfaAuthenticationSettingInfo>;
+    declare public readonly mfaAuthenticationSettingInfo: pulumi.Output<outputs.cloudsso.DirectoryMfaAuthenticationSettingInfo>;
     /**
      * MFA Authentication Status
      */
-    public readonly mfaAuthenticationStatus!: pulumi.Output<string>;
+    declare public readonly mfaAuthenticationStatus: pulumi.Output<string>;
     /**
      * Password policy See `passwordPolicy` below.
      */
-    public readonly passwordPolicy!: pulumi.Output<outputs.cloudsso.DirectoryPasswordPolicy>;
+    declare public readonly passwordPolicy: pulumi.Output<outputs.cloudsso.DirectoryPasswordPolicy>;
     /**
      * Identity Provider (IDP) See `samlIdentityProviderConfiguration` below.
      */
-    public readonly samlIdentityProviderConfiguration!: pulumi.Output<outputs.cloudsso.DirectorySamlIdentityProviderConfiguration>;
+    declare public readonly samlIdentityProviderConfiguration: pulumi.Output<outputs.cloudsso.DirectorySamlIdentityProviderConfiguration>;
     /**
      * SP information. See `samlServiceProvider` below.
      */
-    public readonly samlServiceProvider!: pulumi.Output<outputs.cloudsso.DirectorySamlServiceProvider>;
+    declare public readonly samlServiceProvider: pulumi.Output<outputs.cloudsso.DirectorySamlServiceProvider>;
     /**
      * SCIM Synchronization Status
      */
-    public readonly scimSynchronizationStatus!: pulumi.Output<string>;
+    declare public readonly scimSynchronizationStatus: pulumi.Output<string>;
     /**
      * User Provisioning configuration See `userProvisioningConfiguration` below.
      */
-    public readonly userProvisioningConfiguration!: pulumi.Output<outputs.cloudsso.DirectoryUserProvisioningConfiguration>;
+    declare public readonly userProvisioningConfiguration: pulumi.Output<outputs.cloudsso.DirectoryUserProvisioningConfiguration>;
 
     /**
      * Create a Directory resource with the given unique name, arguments, and options.
@@ -120,29 +120,29 @@ export class Directory extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DirectoryState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["directoryGlobalAccessStatus"] = state ? state.directoryGlobalAccessStatus : undefined;
-            resourceInputs["directoryName"] = state ? state.directoryName : undefined;
-            resourceInputs["loginPreference"] = state ? state.loginPreference : undefined;
-            resourceInputs["mfaAuthenticationSettingInfo"] = state ? state.mfaAuthenticationSettingInfo : undefined;
-            resourceInputs["mfaAuthenticationStatus"] = state ? state.mfaAuthenticationStatus : undefined;
-            resourceInputs["passwordPolicy"] = state ? state.passwordPolicy : undefined;
-            resourceInputs["samlIdentityProviderConfiguration"] = state ? state.samlIdentityProviderConfiguration : undefined;
-            resourceInputs["samlServiceProvider"] = state ? state.samlServiceProvider : undefined;
-            resourceInputs["scimSynchronizationStatus"] = state ? state.scimSynchronizationStatus : undefined;
-            resourceInputs["userProvisioningConfiguration"] = state ? state.userProvisioningConfiguration : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["directoryGlobalAccessStatus"] = state?.directoryGlobalAccessStatus;
+            resourceInputs["directoryName"] = state?.directoryName;
+            resourceInputs["loginPreference"] = state?.loginPreference;
+            resourceInputs["mfaAuthenticationSettingInfo"] = state?.mfaAuthenticationSettingInfo;
+            resourceInputs["mfaAuthenticationStatus"] = state?.mfaAuthenticationStatus;
+            resourceInputs["passwordPolicy"] = state?.passwordPolicy;
+            resourceInputs["samlIdentityProviderConfiguration"] = state?.samlIdentityProviderConfiguration;
+            resourceInputs["samlServiceProvider"] = state?.samlServiceProvider;
+            resourceInputs["scimSynchronizationStatus"] = state?.scimSynchronizationStatus;
+            resourceInputs["userProvisioningConfiguration"] = state?.userProvisioningConfiguration;
         } else {
             const args = argsOrState as DirectoryArgs | undefined;
-            resourceInputs["directoryGlobalAccessStatus"] = args ? args.directoryGlobalAccessStatus : undefined;
-            resourceInputs["directoryName"] = args ? args.directoryName : undefined;
-            resourceInputs["loginPreference"] = args ? args.loginPreference : undefined;
-            resourceInputs["mfaAuthenticationSettingInfo"] = args ? args.mfaAuthenticationSettingInfo : undefined;
-            resourceInputs["mfaAuthenticationStatus"] = args ? args.mfaAuthenticationStatus : undefined;
-            resourceInputs["passwordPolicy"] = args ? args.passwordPolicy : undefined;
-            resourceInputs["samlIdentityProviderConfiguration"] = args ? args.samlIdentityProviderConfiguration : undefined;
-            resourceInputs["samlServiceProvider"] = args ? args.samlServiceProvider : undefined;
-            resourceInputs["scimSynchronizationStatus"] = args ? args.scimSynchronizationStatus : undefined;
-            resourceInputs["userProvisioningConfiguration"] = args ? args.userProvisioningConfiguration : undefined;
+            resourceInputs["directoryGlobalAccessStatus"] = args?.directoryGlobalAccessStatus;
+            resourceInputs["directoryName"] = args?.directoryName;
+            resourceInputs["loginPreference"] = args?.loginPreference;
+            resourceInputs["mfaAuthenticationSettingInfo"] = args?.mfaAuthenticationSettingInfo;
+            resourceInputs["mfaAuthenticationStatus"] = args?.mfaAuthenticationStatus;
+            resourceInputs["passwordPolicy"] = args?.passwordPolicy;
+            resourceInputs["samlIdentityProviderConfiguration"] = args?.samlIdentityProviderConfiguration;
+            resourceInputs["samlServiceProvider"] = args?.samlServiceProvider;
+            resourceInputs["scimSynchronizationStatus"] = args?.scimSynchronizationStatus;
+            resourceInputs["userProvisioningConfiguration"] = args?.userProvisioningConfiguration;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -110,27 +110,27 @@ export class DomainConfig extends pulumi.CustomResource {
     /**
      * The ID of the configuration.
      */
-    public /*out*/ readonly configId!: pulumi.Output<string>;
+    declare public /*out*/ readonly configId: pulumi.Output<string>;
     /**
      * Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      */
-    public readonly domainName!: pulumi.Output<string>;
+    declare public readonly domainName: pulumi.Output<string>;
     /**
      * The args of the domain config. See `functionArgs` below.
      */
-    public readonly functionArgs!: pulumi.Output<outputs.dcdn.DomainConfigFunctionArg[]>;
+    declare public readonly functionArgs: pulumi.Output<outputs.dcdn.DomainConfigFunctionArg[]>;
     /**
      * The name of the domain config.
      */
-    public readonly functionName!: pulumi.Output<string>;
+    declare public readonly functionName: pulumi.Output<string>;
     /**
      * By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
      */
-    public readonly parentId!: pulumi.Output<string>;
+    declare public readonly parentId: pulumi.Output<string>;
     /**
      * The status of the Config.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a DomainConfig resource with the given unique name, arguments, and options.
@@ -145,27 +145,27 @@ export class DomainConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainConfigState | undefined;
-            resourceInputs["configId"] = state ? state.configId : undefined;
-            resourceInputs["domainName"] = state ? state.domainName : undefined;
-            resourceInputs["functionArgs"] = state ? state.functionArgs : undefined;
-            resourceInputs["functionName"] = state ? state.functionName : undefined;
-            resourceInputs["parentId"] = state ? state.parentId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["configId"] = state?.configId;
+            resourceInputs["domainName"] = state?.domainName;
+            resourceInputs["functionArgs"] = state?.functionArgs;
+            resourceInputs["functionName"] = state?.functionName;
+            resourceInputs["parentId"] = state?.parentId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as DomainConfigArgs | undefined;
-            if ((!args || args.domainName === undefined) && !opts.urn) {
+            if (args?.domainName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
-            if ((!args || args.functionArgs === undefined) && !opts.urn) {
+            if (args?.functionArgs === undefined && !opts.urn) {
                 throw new Error("Missing required property 'functionArgs'");
             }
-            if ((!args || args.functionName === undefined) && !opts.urn) {
+            if (args?.functionName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'functionName'");
             }
-            resourceInputs["domainName"] = args ? args.domainName : undefined;
-            resourceInputs["functionArgs"] = args ? args.functionArgs : undefined;
-            resourceInputs["functionName"] = args ? args.functionName : undefined;
-            resourceInputs["parentId"] = args ? args.parentId : undefined;
+            resourceInputs["domainName"] = args?.domainName;
+            resourceInputs["functionArgs"] = args?.functionArgs;
+            resourceInputs["functionName"] = args?.functionName;
+            resourceInputs["parentId"] = args?.parentId;
             resourceInputs["configId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

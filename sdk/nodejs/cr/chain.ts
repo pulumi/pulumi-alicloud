@@ -206,31 +206,31 @@ export class Chain extends pulumi.CustomResource {
     /**
      * The configuration of delivery chain. See `chainConfig` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
      */
-    public readonly chainConfigs!: pulumi.Output<outputs.cr.ChainChainConfig[] | undefined>;
+    declare public readonly chainConfigs: pulumi.Output<outputs.cr.ChainChainConfig[] | undefined>;
     /**
      * Delivery chain ID.
      */
-    public /*out*/ readonly chainId!: pulumi.Output<string>;
+    declare public /*out*/ readonly chainId: pulumi.Output<string>;
     /**
      * The name of delivery chain. The length of the name is 1-64 characters, lowercase English letters and numbers, and the separators "_", "-", "." can be used, noted that the separator cannot be at the first or last position.
      */
-    public readonly chainName!: pulumi.Output<string>;
+    declare public readonly chainName: pulumi.Output<string>;
     /**
      * The description delivery chain.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The ID of CR Enterprise Edition instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The name of CR Enterprise Edition repository. **NOTE:** This parameter must specify a correct value, otherwise the created resource will be incorrect.
      */
-    public readonly repoName!: pulumi.Output<string | undefined>;
+    declare public readonly repoName: pulumi.Output<string | undefined>;
     /**
      * The name of CR Enterprise Edition namespace. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
      */
-    public readonly repoNamespaceName!: pulumi.Output<string | undefined>;
+    declare public readonly repoNamespaceName: pulumi.Output<string | undefined>;
 
     /**
      * Create a Chain resource with the given unique name, arguments, and options.
@@ -245,27 +245,27 @@ export class Chain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ChainState | undefined;
-            resourceInputs["chainConfigs"] = state ? state.chainConfigs : undefined;
-            resourceInputs["chainId"] = state ? state.chainId : undefined;
-            resourceInputs["chainName"] = state ? state.chainName : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["repoName"] = state ? state.repoName : undefined;
-            resourceInputs["repoNamespaceName"] = state ? state.repoNamespaceName : undefined;
+            resourceInputs["chainConfigs"] = state?.chainConfigs;
+            resourceInputs["chainId"] = state?.chainId;
+            resourceInputs["chainName"] = state?.chainName;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["repoName"] = state?.repoName;
+            resourceInputs["repoNamespaceName"] = state?.repoNamespaceName;
         } else {
             const args = argsOrState as ChainArgs | undefined;
-            if ((!args || args.chainName === undefined) && !opts.urn) {
+            if (args?.chainName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'chainName'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["chainConfigs"] = args ? args.chainConfigs : undefined;
-            resourceInputs["chainName"] = args ? args.chainName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["repoName"] = args ? args.repoName : undefined;
-            resourceInputs["repoNamespaceName"] = args ? args.repoNamespaceName : undefined;
+            resourceInputs["chainConfigs"] = args?.chainConfigs;
+            resourceInputs["chainName"] = args?.chainName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["repoName"] = args?.repoName;
+            resourceInputs["repoNamespaceName"] = args?.repoNamespaceName;
             resourceInputs["chainId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

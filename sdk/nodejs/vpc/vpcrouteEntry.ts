@@ -110,19 +110,19 @@ export class VPCRouteEntry extends pulumi.CustomResource {
     /**
      * Description of the route entry.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The destination network segment of the routing entry.
      */
-    public readonly destinationCidrBlock!: pulumi.Output<string>;
+    declare public readonly destinationCidrBlock: pulumi.Output<string>;
     /**
      * Next jump See `nextHops` below.
      */
-    public readonly nextHops!: pulumi.Output<outputs.vpc.VPCRouteEntryNextHop[]>;
+    declare public readonly nextHops: pulumi.Output<outputs.vpc.VPCRouteEntryNextHop[]>;
     /**
      * The ID of the next hop instance of the custom route entry.
      */
-    public readonly nexthopId!: pulumi.Output<string>;
+    declare public readonly nexthopId: pulumi.Output<string>;
     /**
      * The type of the next hop of the custom route entry. Valid values:
      * - `Instance` (default): The ECS Instance.
@@ -139,23 +139,23 @@ export class VPCRouteEntry extends pulumi.CustomResource {
      * - `Ecr`: Leased line gateway.
      * - `GatewayLoadBalancerEndpoint`: The Gateway-based load balancing endpoint.
      */
-    public readonly nexthopType!: pulumi.Output<string>;
+    declare public readonly nexthopType: pulumi.Output<string>;
     /**
      * The name of the route entry.
      */
-    public readonly routeEntryName!: pulumi.Output<string>;
+    declare public readonly routeEntryName: pulumi.Output<string>;
     /**
      * Route publish status and publish target type See `routePublishTargets` below.
      */
-    public readonly routePublishTargets!: pulumi.Output<outputs.vpc.VPCRouteEntryRoutePublishTarget[] | undefined>;
+    declare public readonly routePublishTargets: pulumi.Output<outputs.vpc.VPCRouteEntryRoutePublishTarget[] | undefined>;
     /**
      * Routing table ID
      */
-    public readonly routeTableId!: pulumi.Output<string>;
+    declare public readonly routeTableId: pulumi.Output<string>;
     /**
      * The status of the route entry.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a VPCRouteEntry resource with the given unique name, arguments, and options.
@@ -170,31 +170,31 @@ export class VPCRouteEntry extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VPCRouteEntryState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["destinationCidrBlock"] = state ? state.destinationCidrBlock : undefined;
-            resourceInputs["nextHops"] = state ? state.nextHops : undefined;
-            resourceInputs["nexthopId"] = state ? state.nexthopId : undefined;
-            resourceInputs["nexthopType"] = state ? state.nexthopType : undefined;
-            resourceInputs["routeEntryName"] = state ? state.routeEntryName : undefined;
-            resourceInputs["routePublishTargets"] = state ? state.routePublishTargets : undefined;
-            resourceInputs["routeTableId"] = state ? state.routeTableId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["destinationCidrBlock"] = state?.destinationCidrBlock;
+            resourceInputs["nextHops"] = state?.nextHops;
+            resourceInputs["nexthopId"] = state?.nexthopId;
+            resourceInputs["nexthopType"] = state?.nexthopType;
+            resourceInputs["routeEntryName"] = state?.routeEntryName;
+            resourceInputs["routePublishTargets"] = state?.routePublishTargets;
+            resourceInputs["routeTableId"] = state?.routeTableId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as VPCRouteEntryArgs | undefined;
-            if ((!args || args.destinationCidrBlock === undefined) && !opts.urn) {
+            if (args?.destinationCidrBlock === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationCidrBlock'");
             }
-            if ((!args || args.routeTableId === undefined) && !opts.urn) {
+            if (args?.routeTableId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'routeTableId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["destinationCidrBlock"] = args ? args.destinationCidrBlock : undefined;
-            resourceInputs["nextHops"] = args ? args.nextHops : undefined;
-            resourceInputs["nexthopId"] = args ? args.nexthopId : undefined;
-            resourceInputs["nexthopType"] = args ? args.nexthopType : undefined;
-            resourceInputs["routeEntryName"] = args ? args.routeEntryName : undefined;
-            resourceInputs["routePublishTargets"] = args ? args.routePublishTargets : undefined;
-            resourceInputs["routeTableId"] = args ? args.routeTableId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["destinationCidrBlock"] = args?.destinationCidrBlock;
+            resourceInputs["nextHops"] = args?.nextHops;
+            resourceInputs["nexthopId"] = args?.nexthopId;
+            resourceInputs["nexthopType"] = args?.nexthopType;
+            resourceInputs["routeEntryName"] = args?.routeEntryName;
+            resourceInputs["routePublishTargets"] = args?.routePublishTargets;
+            resourceInputs["routeTableId"] = args?.routeTableId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

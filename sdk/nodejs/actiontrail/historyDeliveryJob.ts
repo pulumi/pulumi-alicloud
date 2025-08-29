@@ -86,11 +86,11 @@ export class HistoryDeliveryJob extends pulumi.CustomResource {
     /**
      * The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
      */
-    public /*out*/ readonly status!: pulumi.Output<number>;
+    declare public /*out*/ readonly status: pulumi.Output<number>;
     /**
      * The name of the trail for which you want to create a historical event delivery task.
      */
-    public readonly trailName!: pulumi.Output<string>;
+    declare public readonly trailName: pulumi.Output<string>;
 
     /**
      * Create a HistoryDeliveryJob resource with the given unique name, arguments, and options.
@@ -105,14 +105,14 @@ export class HistoryDeliveryJob extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HistoryDeliveryJobState | undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["trailName"] = state ? state.trailName : undefined;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["trailName"] = state?.trailName;
         } else {
             const args = argsOrState as HistoryDeliveryJobArgs | undefined;
-            if ((!args || args.trailName === undefined) && !opts.urn) {
+            if (args?.trailName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'trailName'");
             }
-            resourceInputs["trailName"] = args ? args.trailName : undefined;
+            resourceInputs["trailName"] = args?.trailName;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

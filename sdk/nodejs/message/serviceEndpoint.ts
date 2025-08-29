@@ -44,12 +44,12 @@ export class ServiceEndpoint extends pulumi.CustomResource {
     /**
      * Specifies whether the endpoint is enabled. Valid values:
      */
-    public readonly endpointEnabled!: pulumi.Output<boolean>;
+    declare public readonly endpointEnabled: pulumi.Output<boolean>;
     /**
      * Access point type. Value:
      * - public: indicates a public access point. (Currently only public is supported)
      */
-    public readonly endpointType!: pulumi.Output<string>;
+    declare public readonly endpointType: pulumi.Output<string>;
 
     /**
      * Create a ServiceEndpoint resource with the given unique name, arguments, and options.
@@ -64,18 +64,18 @@ export class ServiceEndpoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceEndpointState | undefined;
-            resourceInputs["endpointEnabled"] = state ? state.endpointEnabled : undefined;
-            resourceInputs["endpointType"] = state ? state.endpointType : undefined;
+            resourceInputs["endpointEnabled"] = state?.endpointEnabled;
+            resourceInputs["endpointType"] = state?.endpointType;
         } else {
             const args = argsOrState as ServiceEndpointArgs | undefined;
-            if ((!args || args.endpointEnabled === undefined) && !opts.urn) {
+            if (args?.endpointEnabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpointEnabled'");
             }
-            if ((!args || args.endpointType === undefined) && !opts.urn) {
+            if (args?.endpointType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpointType'");
             }
-            resourceInputs["endpointEnabled"] = args ? args.endpointEnabled : undefined;
-            resourceInputs["endpointType"] = args ? args.endpointType : undefined;
+            resourceInputs["endpointEnabled"] = args?.endpointEnabled;
+            resourceInputs["endpointType"] = args?.endpointType;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServiceEndpoint.__pulumiType, name, resourceInputs, opts);

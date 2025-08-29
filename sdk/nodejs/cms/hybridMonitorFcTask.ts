@@ -91,19 +91,19 @@ export class HybridMonitorFcTask extends pulumi.CustomResource {
     /**
      * The ID of the monitoring task.
      */
-    public /*out*/ readonly hybridMonitorFcTaskId!: pulumi.Output<string>;
+    declare public /*out*/ readonly hybridMonitorFcTaskId: pulumi.Output<string>;
     /**
      * The index warehouse where the host belongs.
      */
-    public readonly namespace!: pulumi.Output<string>;
+    declare public readonly namespace: pulumi.Output<string>;
     /**
      * The ID of the member account. If you call API operations by using a management account, you can connect the Alibaba Cloud services that are activated for a member account in Resource Directory to Hybrid Cloud Monitoring. You can use Resource Directory to monitor Alibaba Cloud services across enterprise accounts.
      */
-    public readonly targetUserId!: pulumi.Output<string>;
+    declare public readonly targetUserId: pulumi.Output<string>;
     /**
      * The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
      */
-    public readonly yarmConfig!: pulumi.Output<string>;
+    declare public readonly yarmConfig: pulumi.Output<string>;
 
     /**
      * Create a HybridMonitorFcTask resource with the given unique name, arguments, and options.
@@ -118,21 +118,21 @@ export class HybridMonitorFcTask extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HybridMonitorFcTaskState | undefined;
-            resourceInputs["hybridMonitorFcTaskId"] = state ? state.hybridMonitorFcTaskId : undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["targetUserId"] = state ? state.targetUserId : undefined;
-            resourceInputs["yarmConfig"] = state ? state.yarmConfig : undefined;
+            resourceInputs["hybridMonitorFcTaskId"] = state?.hybridMonitorFcTaskId;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["targetUserId"] = state?.targetUserId;
+            resourceInputs["yarmConfig"] = state?.yarmConfig;
         } else {
             const args = argsOrState as HybridMonitorFcTaskArgs | undefined;
-            if ((!args || args.namespace === undefined) && !opts.urn) {
+            if (args?.namespace === undefined && !opts.urn) {
                 throw new Error("Missing required property 'namespace'");
             }
-            if ((!args || args.yarmConfig === undefined) && !opts.urn) {
+            if (args?.yarmConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'yarmConfig'");
             }
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["targetUserId"] = args ? args.targetUserId : undefined;
-            resourceInputs["yarmConfig"] = args ? args.yarmConfig : undefined;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["targetUserId"] = args?.targetUserId;
+            resourceInputs["yarmConfig"] = args?.yarmConfig;
             resourceInputs["hybridMonitorFcTaskId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

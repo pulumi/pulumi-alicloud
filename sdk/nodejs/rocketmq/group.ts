@@ -76,33 +76,33 @@ export class Group extends pulumi.CustomResource {
      *
      * @deprecated Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.
      */
-    public readonly groupId!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string>;
     /**
      * Name of the group. Two groups on a single instance cannot have the same name. A `groupName` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
      */
-    public readonly groupName!: pulumi.Output<string>;
+    declare public readonly groupName: pulumi.Output<string>;
     /**
      * Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
      */
-    public readonly groupType!: pulumi.Output<string | undefined>;
+    declare public readonly groupType: pulumi.Output<string | undefined>;
     /**
      * ID of the ONS Instance that owns the groups.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * This attribute is used to set the message reading enabled or disabled. It can only be set after the group is used by the client.
      */
-    public readonly readEnable!: pulumi.Output<boolean | undefined>;
+    declare public readonly readEnable: pulumi.Output<boolean | undefined>;
     /**
      * This attribute is a concise description of group. The length cannot exceed 256.
      */
-    public readonly remark!: pulumi.Output<string | undefined>;
+    declare public readonly remark: pulumi.Output<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -117,25 +117,25 @@ export class Group extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["groupName"] = state ? state.groupName : undefined;
-            resourceInputs["groupType"] = state ? state.groupType : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["readEnable"] = state ? state.readEnable : undefined;
-            resourceInputs["remark"] = state ? state.remark : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["groupName"] = state?.groupName;
+            resourceInputs["groupType"] = state?.groupType;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["readEnable"] = state?.readEnable;
+            resourceInputs["remark"] = state?.remark;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as GroupArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["groupName"] = args ? args.groupName : undefined;
-            resourceInputs["groupType"] = args ? args.groupType : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["readEnable"] = args ? args.readEnable : undefined;
-            resourceInputs["remark"] = args ? args.remark : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["groupName"] = args?.groupName;
+            resourceInputs["groupType"] = args?.groupType;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["readEnable"] = args?.readEnable;
+            resourceInputs["remark"] = args?.remark;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Group.__pulumiType, name, resourceInputs, opts);

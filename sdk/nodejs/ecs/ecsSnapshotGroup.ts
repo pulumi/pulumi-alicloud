@@ -119,43 +119,43 @@ export class EcsSnapshotGroup extends pulumi.CustomResource {
     /**
      * The description of the snapshot-consistent group. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The ID of disk for which to create snapshots. You can specify multiple disk IDs across instances with the same zone.
      */
-    public readonly diskIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly diskIds: pulumi.Output<string[] | undefined>;
     /**
      * The ID of disk N for which you do not need to create snapshots. After this parameter is specified, the created snapshot-consistent group does not contain snapshots of the disk.
      */
-    public readonly excludeDiskIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly excludeDiskIds: pulumi.Output<string[] | undefined>;
     /**
      * The ID of the instance.
      */
-    public readonly instanceId!: pulumi.Output<string | undefined>;
+    declare public readonly instanceId: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to enable the instant access feature.
      */
-    public readonly instantAccess!: pulumi.Output<boolean | undefined>;
+    declare public readonly instantAccess: pulumi.Output<boolean | undefined>;
     /**
      * Specify the number of days for which the instant access feature is available. Unit: days. Valid values: `1` to `65535`.
      */
-    public readonly instantAccessRetentionDays!: pulumi.Output<number | undefined>;
+    declare public readonly instantAccessRetentionDays: pulumi.Output<number | undefined>;
     /**
      * The ID of the resource group to which the snapshot consistency group belongs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The name of the snapshot-consistent group. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), hyphens (-), and colons (:). It must start with a letter or a digit and cannot start with `http://` or `https://`.
      */
-    public readonly snapshotGroupName!: pulumi.Output<string | undefined>;
+    declare public readonly snapshotGroupName: pulumi.Output<string | undefined>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the snapshot group.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a EcsSnapshotGroup resource with the given unique name, arguments, and options.
@@ -170,27 +170,27 @@ export class EcsSnapshotGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcsSnapshotGroupState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["diskIds"] = state ? state.diskIds : undefined;
-            resourceInputs["excludeDiskIds"] = state ? state.excludeDiskIds : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["instantAccess"] = state ? state.instantAccess : undefined;
-            resourceInputs["instantAccessRetentionDays"] = state ? state.instantAccessRetentionDays : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["snapshotGroupName"] = state ? state.snapshotGroupName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["diskIds"] = state?.diskIds;
+            resourceInputs["excludeDiskIds"] = state?.excludeDiskIds;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["instantAccess"] = state?.instantAccess;
+            resourceInputs["instantAccessRetentionDays"] = state?.instantAccessRetentionDays;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["snapshotGroupName"] = state?.snapshotGroupName;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as EcsSnapshotGroupArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["diskIds"] = args ? args.diskIds : undefined;
-            resourceInputs["excludeDiskIds"] = args ? args.excludeDiskIds : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["instantAccess"] = args ? args.instantAccess : undefined;
-            resourceInputs["instantAccessRetentionDays"] = args ? args.instantAccessRetentionDays : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["snapshotGroupName"] = args ? args.snapshotGroupName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["diskIds"] = args?.diskIds;
+            resourceInputs["excludeDiskIds"] = args?.excludeDiskIds;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["instantAccess"] = args?.instantAccess;
+            resourceInputs["instantAccessRetentionDays"] = args?.instantAccessRetentionDays;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["snapshotGroupName"] = args?.snapshotGroupName;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

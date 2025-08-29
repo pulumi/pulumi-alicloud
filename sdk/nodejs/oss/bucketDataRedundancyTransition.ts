@@ -72,19 +72,19 @@ export class BucketDataRedundancyTransition extends pulumi.CustomResource {
     /**
      * Storage space name.
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * Stores the creation time of the redundant transformation task.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Stores the state of the redundant translation task. The values are as follows:  Queueing: in the queue.  Processing: In progress.  Finished: Finished.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Unique identification of the storage redundancy conversion task.
      */
-    public /*out*/ readonly taskId!: pulumi.Output<string>;
+    declare public /*out*/ readonly taskId: pulumi.Output<string>;
 
     /**
      * Create a BucketDataRedundancyTransition resource with the given unique name, arguments, and options.
@@ -99,16 +99,16 @@ export class BucketDataRedundancyTransition extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketDataRedundancyTransitionState | undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["taskId"] = state ? state.taskId : undefined;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["taskId"] = state?.taskId;
         } else {
             const args = argsOrState as BucketDataRedundancyTransitionArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
+            resourceInputs["bucket"] = args?.bucket;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["taskId"] = undefined /*out*/;

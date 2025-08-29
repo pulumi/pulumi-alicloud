@@ -52,79 +52,79 @@ export class FlowLog extends pulumi.CustomResource {
     /**
      * Data aggregation interval
      */
-    public readonly aggregationInterval!: pulumi.Output<string>;
+    declare public readonly aggregationInterval: pulumi.Output<string>;
     /**
      * Business status
      */
-    public /*out*/ readonly businessStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly businessStatus: pulumi.Output<string>;
     /**
      * Creation time
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The Description of the VPC Flow Log.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The flow log ID.
      */
-    public /*out*/ readonly flowLogId!: pulumi.Output<string>;
+    declare public /*out*/ readonly flowLogId: pulumi.Output<string>;
     /**
      * The Name of the VPC Flow Log.
      */
-    public readonly flowLogName!: pulumi.Output<string | undefined>;
+    declare public readonly flowLogName: pulumi.Output<string | undefined>;
     /**
      * The IP address type of the collected traffic.
      */
-    public readonly ipVersion!: pulumi.Output<string>;
+    declare public readonly ipVersion: pulumi.Output<string>;
     /**
      * The name of the logstore.
      */
-    public readonly logStoreName!: pulumi.Output<string>;
+    declare public readonly logStoreName: pulumi.Output<string>;
     /**
      * The name of the project.
      */
-    public readonly projectName!: pulumi.Output<string>;
+    declare public readonly projectName: pulumi.Output<string>;
     /**
      * (Available since v1.243.0) The region ID.
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The ID of the resource.
      */
-    public readonly resourceId!: pulumi.Output<string>;
+    declare public readonly resourceId: pulumi.Output<string>;
     /**
      * The resource type of the traffic captured by the flow log:
      * - `NetworkInterface`: ENI.
      * - `VSwitch`: All ENIs in the VSwitch.
      * - `VPC`: All ENIs in the VPC.
      */
-    public readonly resourceType!: pulumi.Output<string>;
+    declare public readonly resourceType: pulumi.Output<string>;
     /**
      * The status of the VPC Flow Log. Valid values: `Active` and `Inactive`.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The tag of the current instance resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The collected flow path. Value:
      * - *all**: indicates full acquisition.
      * - *internetGateway**: indicates public network traffic collection.
      */
-    public readonly trafficPaths!: pulumi.Output<string[]>;
+    declare public readonly trafficPaths: pulumi.Output<string[]>;
     /**
      * The type of traffic collected. Valid values:
      * - *All**: All traffic.
      * - *Allow**: Access control allowedtraffic.
      * - *Drop**: Access control denied traffic.
      */
-    public readonly trafficType!: pulumi.Output<string>;
+    declare public readonly trafficType: pulumi.Output<string>;
 
     /**
      * Create a FlowLog resource with the given unique name, arguments, and options.
@@ -139,53 +139,53 @@ export class FlowLog extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FlowLogState | undefined;
-            resourceInputs["aggregationInterval"] = state ? state.aggregationInterval : undefined;
-            resourceInputs["businessStatus"] = state ? state.businessStatus : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["flowLogId"] = state ? state.flowLogId : undefined;
-            resourceInputs["flowLogName"] = state ? state.flowLogName : undefined;
-            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
-            resourceInputs["logStoreName"] = state ? state.logStoreName : undefined;
-            resourceInputs["projectName"] = state ? state.projectName : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["resourceId"] = state ? state.resourceId : undefined;
-            resourceInputs["resourceType"] = state ? state.resourceType : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["trafficPaths"] = state ? state.trafficPaths : undefined;
-            resourceInputs["trafficType"] = state ? state.trafficType : undefined;
+            resourceInputs["aggregationInterval"] = state?.aggregationInterval;
+            resourceInputs["businessStatus"] = state?.businessStatus;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["flowLogId"] = state?.flowLogId;
+            resourceInputs["flowLogName"] = state?.flowLogName;
+            resourceInputs["ipVersion"] = state?.ipVersion;
+            resourceInputs["logStoreName"] = state?.logStoreName;
+            resourceInputs["projectName"] = state?.projectName;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["resourceId"] = state?.resourceId;
+            resourceInputs["resourceType"] = state?.resourceType;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["trafficPaths"] = state?.trafficPaths;
+            resourceInputs["trafficType"] = state?.trafficType;
         } else {
             const args = argsOrState as FlowLogArgs | undefined;
-            if ((!args || args.logStoreName === undefined) && !opts.urn) {
+            if (args?.logStoreName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'logStoreName'");
             }
-            if ((!args || args.projectName === undefined) && !opts.urn) {
+            if (args?.projectName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectName'");
             }
-            if ((!args || args.resourceId === undefined) && !opts.urn) {
+            if (args?.resourceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceId'");
             }
-            if ((!args || args.resourceType === undefined) && !opts.urn) {
+            if (args?.resourceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceType'");
             }
-            if ((!args || args.trafficType === undefined) && !opts.urn) {
+            if (args?.trafficType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'trafficType'");
             }
-            resourceInputs["aggregationInterval"] = args ? args.aggregationInterval : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["flowLogName"] = args ? args.flowLogName : undefined;
-            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
-            resourceInputs["logStoreName"] = args ? args.logStoreName : undefined;
-            resourceInputs["projectName"] = args ? args.projectName : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["resourceId"] = args ? args.resourceId : undefined;
-            resourceInputs["resourceType"] = args ? args.resourceType : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["trafficPaths"] = args ? args.trafficPaths : undefined;
-            resourceInputs["trafficType"] = args ? args.trafficType : undefined;
+            resourceInputs["aggregationInterval"] = args?.aggregationInterval;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["flowLogName"] = args?.flowLogName;
+            resourceInputs["ipVersion"] = args?.ipVersion;
+            resourceInputs["logStoreName"] = args?.logStoreName;
+            resourceInputs["projectName"] = args?.projectName;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["resourceId"] = args?.resourceId;
+            resourceInputs["resourceType"] = args?.resourceType;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["trafficPaths"] = args?.trafficPaths;
+            resourceInputs["trafficType"] = args?.trafficType;
             resourceInputs["businessStatus"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["flowLogId"] = undefined /*out*/;

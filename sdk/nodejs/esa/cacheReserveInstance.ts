@@ -70,37 +70,37 @@ export class CacheReserveInstance extends pulumi.CustomResource {
     /**
      * Automatic payment.
      */
-    public readonly autoPay!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoPay: pulumi.Output<boolean | undefined>;
     /**
      * Whether to auto-renew:
      */
-    public readonly autoRenew!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoRenew: pulumi.Output<boolean | undefined>;
     /**
      * Cache holding area
      * - `HK`: Hong Kong, China
      * - `CN`: Mainland China
      */
-    public readonly crRegion!: pulumi.Output<string | undefined>;
+    declare public readonly crRegion: pulumi.Output<string | undefined>;
     /**
      * Instance purchase time.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Specifies whether to enable auto payment.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * Purchase period (unit: month).
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * Cache retention specification (unit: GB).
      */
-    public readonly quotaGb!: pulumi.Output<number | undefined>;
+    declare public readonly quotaGb: pulumi.Output<number | undefined>;
     /**
      * The status of the cache reserve instance. , it is unavailable.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a CacheReserveInstance resource with the given unique name, arguments, and options.
@@ -115,25 +115,25 @@ export class CacheReserveInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CacheReserveInstanceState | undefined;
-            resourceInputs["autoPay"] = state ? state.autoPay : undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["crRegion"] = state ? state.crRegion : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["quotaGb"] = state ? state.quotaGb : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["autoPay"] = state?.autoPay;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["crRegion"] = state?.crRegion;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["quotaGb"] = state?.quotaGb;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as CacheReserveInstanceArgs | undefined;
-            if ((!args || args.paymentType === undefined) && !opts.urn) {
+            if (args?.paymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            resourceInputs["autoPay"] = args ? args.autoPay : undefined;
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["crRegion"] = args ? args.crRegion : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["quotaGb"] = args ? args.quotaGb : undefined;
+            resourceInputs["autoPay"] = args?.autoPay;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["crRegion"] = args?.crRegion;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["quotaGb"] = args?.quotaGb;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

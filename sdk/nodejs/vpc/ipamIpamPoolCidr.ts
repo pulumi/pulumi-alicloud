@@ -76,15 +76,15 @@ export class IpamIpamPoolCidr extends pulumi.CustomResource {
      *
      * > **NOTE:**  currently, only IPv4 address segments are supported.
      */
-    public readonly cidr!: pulumi.Output<string>;
+    declare public readonly cidr: pulumi.Output<string>;
     /**
      * The ID of the IPAM pool instance.
      */
-    public readonly ipamPoolId!: pulumi.Output<string>;
+    declare public readonly ipamPoolId: pulumi.Output<string>;
     /**
      * The status of the resource
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a IpamIpamPoolCidr resource with the given unique name, arguments, and options.
@@ -99,19 +99,19 @@ export class IpamIpamPoolCidr extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IpamIpamPoolCidrState | undefined;
-            resourceInputs["cidr"] = state ? state.cidr : undefined;
-            resourceInputs["ipamPoolId"] = state ? state.ipamPoolId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["cidr"] = state?.cidr;
+            resourceInputs["ipamPoolId"] = state?.ipamPoolId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as IpamIpamPoolCidrArgs | undefined;
-            if ((!args || args.cidr === undefined) && !opts.urn) {
+            if (args?.cidr === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cidr'");
             }
-            if ((!args || args.ipamPoolId === undefined) && !opts.urn) {
+            if (args?.ipamPoolId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ipamPoolId'");
             }
-            resourceInputs["cidr"] = args ? args.cidr : undefined;
-            resourceInputs["ipamPoolId"] = args ? args.ipamPoolId : undefined;
+            resourceInputs["cidr"] = args?.cidr;
+            resourceInputs["ipamPoolId"] = args?.ipamPoolId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

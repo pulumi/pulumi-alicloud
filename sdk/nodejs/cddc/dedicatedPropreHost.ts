@@ -46,48 +46,48 @@ export class DedicatedPropreHost extends pulumi.CustomResource {
     /**
      * Whether to pay automatically when the host is created.
      */
-    public readonly autoPay!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoPay: pulumi.Output<boolean | undefined>;
     /**
      * Whether to enable automatic renewal. Valid values:
      * - **true**: On
      * - **false** (default): Off
      */
-    public readonly autoRenew!: pulumi.Output<string | undefined>;
+    declare public readonly autoRenew: pulumi.Output<string | undefined>;
     /**
      * You have a dedicated cluster ID.
      */
-    public readonly dedicatedHostGroupId!: pulumi.Output<string>;
+    declare public readonly dedicatedHostGroupId: pulumi.Output<string>;
     /**
      * ECS specifications. See `ecsClassList` below.
      */
-    public readonly ecsClassLists!: pulumi.Output<outputs.cddc.DedicatedPropreHostEcsClassList[]>;
+    declare public readonly ecsClassLists: pulumi.Output<outputs.cddc.DedicatedPropreHostEcsClassList[]>;
     /**
      * The ID of the cloud server deployment set.
      */
-    public readonly ecsDeploymentSetId!: pulumi.Output<string | undefined>;
+    declare public readonly ecsDeploymentSetId: pulumi.Output<string | undefined>;
     /**
      * Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers. Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
      */
-    public readonly ecsHostName!: pulumi.Output<string | undefined>;
+    declare public readonly ecsHostName: pulumi.Output<string | undefined>;
     /**
      * ECS instance ID.
      */
-    public /*out*/ readonly ecsInstanceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly ecsInstanceId: pulumi.Output<string>;
     /**
      * The instance name. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of the instance.
      */
-    public readonly ecsInstanceName!: pulumi.Output<string | undefined>;
+    declare public readonly ecsInstanceName: pulumi.Output<string | undefined>;
     /**
      * Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
      * - **true**: added.
      * - **false** (default): Do not add.
      * When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix nameSuffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
      */
-    public readonly ecsUniqueSuffix!: pulumi.Output<string | undefined>;
+    declare public readonly ecsUniqueSuffix: pulumi.Output<string | undefined>;
     /**
      * The ID of the zone.
      */
-    public readonly ecsZoneId!: pulumi.Output<string>;
+    declare public readonly ecsZoneId: pulumi.Output<string>;
     /**
      * Database type, value:
      * - **alisql**
@@ -95,24 +95,24 @@ export class DedicatedPropreHost extends pulumi.CustomResource {
      * - **mssql**
      * Must be consistent with the parent resource cluster engine attributes.
      */
-    public readonly engine!: pulumi.Output<string>;
+    declare public readonly engine: pulumi.Output<string>;
     /**
      * The ID of the custom image.
      * > **NOTE:**  If you need to use the default image, you do not need to fill it in.
      */
-    public readonly imageId!: pulumi.Output<string | undefined>;
+    declare public readonly imageId: pulumi.Output<string | undefined>;
     /**
      * Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
      */
-    public readonly internetChargeType!: pulumi.Output<string | undefined>;
+    declare public readonly internetChargeType: pulumi.Output<string | undefined>;
     /**
      * The maximum outbound bandwidth of the public network, in Mbit/s. Value range: 0~100.  Default value: 0. When set to greater than 0, a public IP is automatically created.
      */
-    public readonly internetMaxBandwidthOut!: pulumi.Output<number | undefined>;
+    declare public readonly internetMaxBandwidthOut: pulumi.Output<number | undefined>;
     /**
      * The key pair name.
      */
-    public readonly keyPairName!: pulumi.Output<string | undefined>;
+    declare public readonly keyPairName: pulumi.Output<string | undefined>;
     /**
      * Host login password, which can be set later. The password must meet the following requirements:
      * - Length is 8~30 characters.
@@ -120,54 +120,54 @@ export class DedicatedPropreHost extends pulumi.CustomResource {
      * - Special symbol '()\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
      * > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
      */
-    public readonly osPassword!: pulumi.Output<string | undefined>;
+    declare public readonly osPassword: pulumi.Output<string | undefined>;
     /**
      * Whether to use the default password of the image.
      * - **false**: (default)Do not use
      * - **true**: Use
      * > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
      */
-    public readonly passwordInherit!: pulumi.Output<string | undefined>;
+    declare public readonly passwordInherit: pulumi.Output<string | undefined>;
     /**
      * The Payment type. Currently, only **Subscription** is supported.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * Duration of purchase.
      */
-    public readonly period!: pulumi.Output<string | undefined>;
+    declare public readonly period: pulumi.Output<string | undefined>;
     /**
      * The subscription type. Currently, only **Monthly** (subscription) is supported.
      */
-    public readonly periodType!: pulumi.Output<string | undefined>;
+    declare public readonly periodType: pulumi.Output<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The ID of the security group.
      */
-    public readonly securityGroupId!: pulumi.Output<string>;
+    declare public readonly securityGroupId: pulumi.Output<string>;
     /**
      * Host tag information.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * User-defined script data. The maximum size of the original data is 16kB.
      */
-    public readonly userData!: pulumi.Output<string | undefined>;
+    declare public readonly userData: pulumi.Output<string | undefined>;
     /**
      * Whether custom data is encoded in Base64 format.
      */
-    public readonly userDataEncoded!: pulumi.Output<boolean | undefined>;
+    declare public readonly userDataEncoded: pulumi.Output<boolean | undefined>;
     /**
      * VPCID of the VPC.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * The ID of the virtual switch.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
 
     /**
      * Create a DedicatedPropreHost resource with the given unique name, arguments, and options.
@@ -182,82 +182,82 @@ export class DedicatedPropreHost extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DedicatedPropreHostState | undefined;
-            resourceInputs["autoPay"] = state ? state.autoPay : undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["dedicatedHostGroupId"] = state ? state.dedicatedHostGroupId : undefined;
-            resourceInputs["ecsClassLists"] = state ? state.ecsClassLists : undefined;
-            resourceInputs["ecsDeploymentSetId"] = state ? state.ecsDeploymentSetId : undefined;
-            resourceInputs["ecsHostName"] = state ? state.ecsHostName : undefined;
-            resourceInputs["ecsInstanceId"] = state ? state.ecsInstanceId : undefined;
-            resourceInputs["ecsInstanceName"] = state ? state.ecsInstanceName : undefined;
-            resourceInputs["ecsUniqueSuffix"] = state ? state.ecsUniqueSuffix : undefined;
-            resourceInputs["ecsZoneId"] = state ? state.ecsZoneId : undefined;
-            resourceInputs["engine"] = state ? state.engine : undefined;
-            resourceInputs["imageId"] = state ? state.imageId : undefined;
-            resourceInputs["internetChargeType"] = state ? state.internetChargeType : undefined;
-            resourceInputs["internetMaxBandwidthOut"] = state ? state.internetMaxBandwidthOut : undefined;
-            resourceInputs["keyPairName"] = state ? state.keyPairName : undefined;
-            resourceInputs["osPassword"] = state ? state.osPassword : undefined;
-            resourceInputs["passwordInherit"] = state ? state.passwordInherit : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["periodType"] = state ? state.periodType : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["userData"] = state ? state.userData : undefined;
-            resourceInputs["userDataEncoded"] = state ? state.userDataEncoded : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["autoPay"] = state?.autoPay;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["dedicatedHostGroupId"] = state?.dedicatedHostGroupId;
+            resourceInputs["ecsClassLists"] = state?.ecsClassLists;
+            resourceInputs["ecsDeploymentSetId"] = state?.ecsDeploymentSetId;
+            resourceInputs["ecsHostName"] = state?.ecsHostName;
+            resourceInputs["ecsInstanceId"] = state?.ecsInstanceId;
+            resourceInputs["ecsInstanceName"] = state?.ecsInstanceName;
+            resourceInputs["ecsUniqueSuffix"] = state?.ecsUniqueSuffix;
+            resourceInputs["ecsZoneId"] = state?.ecsZoneId;
+            resourceInputs["engine"] = state?.engine;
+            resourceInputs["imageId"] = state?.imageId;
+            resourceInputs["internetChargeType"] = state?.internetChargeType;
+            resourceInputs["internetMaxBandwidthOut"] = state?.internetMaxBandwidthOut;
+            resourceInputs["keyPairName"] = state?.keyPairName;
+            resourceInputs["osPassword"] = state?.osPassword;
+            resourceInputs["passwordInherit"] = state?.passwordInherit;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["periodType"] = state?.periodType;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["userData"] = state?.userData;
+            resourceInputs["userDataEncoded"] = state?.userDataEncoded;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
         } else {
             const args = argsOrState as DedicatedPropreHostArgs | undefined;
-            if ((!args || args.ecsClassLists === undefined) && !opts.urn) {
+            if (args?.ecsClassLists === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ecsClassLists'");
             }
-            if ((!args || args.ecsZoneId === undefined) && !opts.urn) {
+            if (args?.ecsZoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ecsZoneId'");
             }
-            if ((!args || args.engine === undefined) && !opts.urn) {
+            if (args?.engine === undefined && !opts.urn) {
                 throw new Error("Missing required property 'engine'");
             }
-            if ((!args || args.paymentType === undefined) && !opts.urn) {
+            if (args?.paymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            if ((!args || args.securityGroupId === undefined) && !opts.urn) {
+            if (args?.securityGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupId'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+            if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            resourceInputs["autoPay"] = args ? args.autoPay : undefined;
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["dedicatedHostGroupId"] = args ? args.dedicatedHostGroupId : undefined;
-            resourceInputs["ecsClassLists"] = args ? args.ecsClassLists : undefined;
-            resourceInputs["ecsDeploymentSetId"] = args ? args.ecsDeploymentSetId : undefined;
-            resourceInputs["ecsHostName"] = args ? args.ecsHostName : undefined;
-            resourceInputs["ecsInstanceName"] = args ? args.ecsInstanceName : undefined;
-            resourceInputs["ecsUniqueSuffix"] = args ? args.ecsUniqueSuffix : undefined;
-            resourceInputs["ecsZoneId"] = args ? args.ecsZoneId : undefined;
-            resourceInputs["engine"] = args ? args.engine : undefined;
-            resourceInputs["imageId"] = args ? args.imageId : undefined;
-            resourceInputs["internetChargeType"] = args ? args.internetChargeType : undefined;
-            resourceInputs["internetMaxBandwidthOut"] = args ? args.internetMaxBandwidthOut : undefined;
-            resourceInputs["keyPairName"] = args ? args.keyPairName : undefined;
-            resourceInputs["osPassword"] = args ? args.osPassword : undefined;
-            resourceInputs["passwordInherit"] = args ? args.passwordInherit : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["periodType"] = args ? args.periodType : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["userData"] = args ? args.userData : undefined;
-            resourceInputs["userDataEncoded"] = args ? args.userDataEncoded : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["autoPay"] = args?.autoPay;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["dedicatedHostGroupId"] = args?.dedicatedHostGroupId;
+            resourceInputs["ecsClassLists"] = args?.ecsClassLists;
+            resourceInputs["ecsDeploymentSetId"] = args?.ecsDeploymentSetId;
+            resourceInputs["ecsHostName"] = args?.ecsHostName;
+            resourceInputs["ecsInstanceName"] = args?.ecsInstanceName;
+            resourceInputs["ecsUniqueSuffix"] = args?.ecsUniqueSuffix;
+            resourceInputs["ecsZoneId"] = args?.ecsZoneId;
+            resourceInputs["engine"] = args?.engine;
+            resourceInputs["imageId"] = args?.imageId;
+            resourceInputs["internetChargeType"] = args?.internetChargeType;
+            resourceInputs["internetMaxBandwidthOut"] = args?.internetMaxBandwidthOut;
+            resourceInputs["keyPairName"] = args?.keyPairName;
+            resourceInputs["osPassword"] = args?.osPassword;
+            resourceInputs["passwordInherit"] = args?.passwordInherit;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["periodType"] = args?.periodType;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["userData"] = args?.userData;
+            resourceInputs["userDataEncoded"] = args?.userDataEncoded;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["ecsInstanceId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

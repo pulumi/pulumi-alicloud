@@ -154,23 +154,23 @@ export class DomainExtension extends pulumi.CustomResource {
     /**
      * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
      */
-    public readonly deleteProtectionValidation!: pulumi.Output<boolean | undefined>;
+    declare public readonly deleteProtectionValidation: pulumi.Output<boolean | undefined>;
     /**
      * The domain name.
      */
-    public readonly domain!: pulumi.Output<string>;
+    declare public readonly domain: pulumi.Output<string>;
     /**
      * The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
      */
-    public readonly frontendPort!: pulumi.Output<number>;
+    declare public readonly frontendPort: pulumi.Output<number>;
     /**
      * The ID of the SLB instance.
      */
-    public readonly loadBalancerId!: pulumi.Output<string>;
+    declare public readonly loadBalancerId: pulumi.Output<string>;
     /**
      * The ID of the certificate used by the domain name.
      */
-    public readonly serverCertificateId!: pulumi.Output<string>;
+    declare public readonly serverCertificateId: pulumi.Output<string>;
 
     /**
      * Create a DomainExtension resource with the given unique name, arguments, and options.
@@ -185,30 +185,30 @@ export class DomainExtension extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainExtensionState | undefined;
-            resourceInputs["deleteProtectionValidation"] = state ? state.deleteProtectionValidation : undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["frontendPort"] = state ? state.frontendPort : undefined;
-            resourceInputs["loadBalancerId"] = state ? state.loadBalancerId : undefined;
-            resourceInputs["serverCertificateId"] = state ? state.serverCertificateId : undefined;
+            resourceInputs["deleteProtectionValidation"] = state?.deleteProtectionValidation;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["frontendPort"] = state?.frontendPort;
+            resourceInputs["loadBalancerId"] = state?.loadBalancerId;
+            resourceInputs["serverCertificateId"] = state?.serverCertificateId;
         } else {
             const args = argsOrState as DomainExtensionArgs | undefined;
-            if ((!args || args.domain === undefined) && !opts.urn) {
+            if (args?.domain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domain'");
             }
-            if ((!args || args.frontendPort === undefined) && !opts.urn) {
+            if (args?.frontendPort === undefined && !opts.urn) {
                 throw new Error("Missing required property 'frontendPort'");
             }
-            if ((!args || args.loadBalancerId === undefined) && !opts.urn) {
+            if (args?.loadBalancerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'loadBalancerId'");
             }
-            if ((!args || args.serverCertificateId === undefined) && !opts.urn) {
+            if (args?.serverCertificateId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serverCertificateId'");
             }
-            resourceInputs["deleteProtectionValidation"] = args ? args.deleteProtectionValidation : undefined;
-            resourceInputs["domain"] = args ? args.domain : undefined;
-            resourceInputs["frontendPort"] = args ? args.frontendPort : undefined;
-            resourceInputs["loadBalancerId"] = args ? args.loadBalancerId : undefined;
-            resourceInputs["serverCertificateId"] = args ? args.serverCertificateId : undefined;
+            resourceInputs["deleteProtectionValidation"] = args?.deleteProtectionValidation;
+            resourceInputs["domain"] = args?.domain;
+            resourceInputs["frontendPort"] = args?.frontendPort;
+            resourceInputs["loadBalancerId"] = args?.loadBalancerId;
+            resourceInputs["serverCertificateId"] = args?.serverCertificateId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DomainExtension.__pulumiType, name, resourceInputs, opts);

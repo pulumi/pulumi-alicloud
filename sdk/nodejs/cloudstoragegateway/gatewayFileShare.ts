@@ -50,139 +50,139 @@ export class GatewayFileShare extends pulumi.CustomResource {
     /**
      * Whether to enable Windows ABE, the prime minister, need windowsAcl parameter is set to true in the entry into force of. Default value: `false`. **NOTE:** The attribute is valid when the attribute `protocol` is `SMB`. Gateway version >= 1.0.45 above support.
      */
-    public readonly accessBasedEnumeration!: pulumi.Output<boolean>;
+    declare public readonly accessBasedEnumeration: pulumi.Output<boolean>;
     /**
      * The Max upload speed of the gateway file share. Unit: `MB/s`, 0 means unlimited. Value range: `0` ~ `1280`. Default value: `0`. **NOTE:** at the same time if you have to limit the maximum write speed, maximum upload speed is no less than the maximum write speed.
      */
-    public readonly backendLimit!: pulumi.Output<number>;
+    declare public readonly backendLimit: pulumi.Output<number>;
     /**
      * The whether browsable of the gateway file share (that is, in the network neighborhood of whether you can find). The attribute is valid when the attribute `protocol` is `SMB`. Default value: `true`.
      */
-    public readonly browsable!: pulumi.Output<boolean>;
+    declare public readonly browsable: pulumi.Output<boolean>;
     /**
      * Direct reading OSS of the gateway file share.
      */
-    public readonly bypassCacheRead!: pulumi.Output<boolean>;
+    declare public readonly bypassCacheRead: pulumi.Output<boolean>;
     /**
      * The set up gateway file share cache mode. Valid values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
      */
-    public readonly cacheMode!: pulumi.Output<string>;
+    declare public readonly cacheMode: pulumi.Output<string>;
     /**
      * File sharing Whether to enable DirectIO (direct I/O mode for data transmission). Default value: `false`.
      */
-    public readonly directIo!: pulumi.Output<boolean>;
+    declare public readonly directIo: pulumi.Output<boolean>;
     /**
      * The maximum download speed of the gateway file share. Unit: `MB/s`. `0` means unlimited. Value range: `0` ~ `1280`. **NOTE:** only in copy mode and enable download file data can be set. only when the shared opens the reverse synchronization or acceded to by the speed synchronization Group when, this parameter will not take effect. Gateway version >= 1.3.0 above support.
      */
-    public readonly downloadLimit!: pulumi.Output<number>;
+    declare public readonly downloadLimit: pulumi.Output<number>;
     /**
      * The whether to enable Upload optimization of the gateway file share, which is suitable for data pure backup migration scenarios. Default value: `false`. **NOTE:** Gateway version >= 1.0.39 above support.
      */
-    public readonly fastReclaim!: pulumi.Output<boolean>;
+    declare public readonly fastReclaim: pulumi.Output<boolean>;
     /**
      * The maximum write speed of the gateway file share. Unit: `MB/s`, `0` means unlimited. Value range: `0` ~ `1280`. Default value: `0`.
      */
-    public readonly feLimit!: pulumi.Output<number>;
+    declare public readonly feLimit: pulumi.Output<number>;
     /**
      * The name of the file share. Length from `1` to `255` characters can contain lowercase letters, digits, (.), (_) Or (-), at the same time, must start with a lowercase letter.
      */
-    public readonly gatewayFileShareName!: pulumi.Output<string>;
+    declare public readonly gatewayFileShareName: pulumi.Output<string>;
     /**
      * The ID of the gateway.
      */
-    public readonly gatewayId!: pulumi.Output<string>;
+    declare public readonly gatewayId: pulumi.Output<string>;
     /**
      * The whether to ignore deleted of the gateway file share. After the opening of the Gateway side delete file or delete cloud (OSS) corresponding to the file. Default value: `false`. **NOTE:** `ignoreDelete` and `remoteSync` cannot be enabled simultaneously. Gateway version >= 1.0.40 above support.
      */
-    public readonly ignoreDelete!: pulumi.Output<boolean>;
+    declare public readonly ignoreDelete: pulumi.Output<boolean>;
     /**
      * The whether debris optimization of the gateway file share. Default value: `false`.
      */
-    public readonly inPlace!: pulumi.Output<boolean>;
+    declare public readonly inPlace: pulumi.Output<boolean>;
     /**
      * The ID of the file share.
      */
-    public /*out*/ readonly indexId!: pulumi.Output<string>;
+    declare public /*out*/ readonly indexId: pulumi.Output<string>;
     /**
      * The synchronization delay, I.e. gateway local cache sync to Alibaba Cloud Object Storage Service (oss) of the delay time. Unit: `Seconds`. Value range: `5` ~ `120`. Default value: `5`. **NOTE:** Gateway version >= 1.0.40 above support.
      */
-    public readonly lagPeriod!: pulumi.Output<number>;
+    declare public readonly lagPeriod: pulumi.Output<number>;
     /**
      * The cache disk inside the device name.
      */
-    public readonly localPath!: pulumi.Output<string>;
+    declare public readonly localPath: pulumi.Output<string>;
     /**
      * The set up gateway file share NFS protocol, whether to enable NFS v4 optimization improve Mount Upload efficiency. Default value: `false`. **NOTE:** If it is enabled, NFS V3 cannot be mounted. The attribute is valid when the attribute `protocol` is `NFS`. Gateway version >= 1.2.0 above support.
      */
-    public readonly nfsV4Optimization!: pulumi.Output<boolean>;
+    declare public readonly nfsV4Optimization: pulumi.Output<boolean>;
     /**
      * The name of the OSS Bucket.
      */
-    public readonly ossBucketName!: pulumi.Output<string>;
+    declare public readonly ossBucketName: pulumi.Output<string>;
     /**
      * Whether they are using SSL connect to OSS Bucket.
      */
-    public readonly ossBucketSsl!: pulumi.Output<boolean>;
+    declare public readonly ossBucketSsl: pulumi.Output<boolean>;
     /**
      * The gateway file share corresponds to the Object Storage SERVICE (OSS), Bucket Endpoint. **NOTE:** distinguish between intranet and internet Endpoint. We recommend that if the OSS Bucket and the gateway is in the same Region is use the RDS intranet IP Endpoint: `oss-cn-hangzhou-internal.aliyuncs.com`.
      */
-    public readonly ossEndpoint!: pulumi.Output<string>;
+    declare public readonly ossEndpoint: pulumi.Output<string>;
     /**
      * In part mode, the directory path group JSON format.
      */
-    public readonly partialSyncPaths!: pulumi.Output<string | undefined>;
+    declare public readonly partialSyncPaths: pulumi.Output<string | undefined>;
     /**
      * The subdirectory path under the object storage (OSS) bucket corresponding to the file share. If it is blank, it means the root directory of the bucket.
      */
-    public readonly pathPrefix!: pulumi.Output<string | undefined>;
+    declare public readonly pathPrefix: pulumi.Output<string | undefined>;
     /**
      * The reverse synchronization time intervals of the gateway file share. Value range: `15` ~ `36000`. **NOTE:** in copy mode + reverse synchronization is enabled Download file data, value range: `3600` ~ `36000`.
      */
-    public readonly pollingInterval!: pulumi.Output<number | undefined>;
+    declare public readonly pollingInterval: pulumi.Output<number | undefined>;
     /**
      * Share types. Valid values: `SMB`, `NFS`.
      */
-    public readonly protocol!: pulumi.Output<string>;
+    declare public readonly protocol: pulumi.Output<string>;
     /**
      * Whether to enable reverse synchronization of the gateway file share. Default value: `false`.
      */
-    public readonly remoteSync!: pulumi.Output<boolean>;
+    declare public readonly remoteSync: pulumi.Output<boolean>;
     /**
      * Copy mode, whether to download the file data. Default value: `false`. **NOTE:** only when the attribute `remoteSync` is `true` or acceded to by the speed synchronization group, this parameter will not take effect.
      */
-    public readonly remoteSyncDownload!: pulumi.Output<boolean>;
+    declare public readonly remoteSyncDownload: pulumi.Output<boolean>;
     /**
      * File sharing NFS read-only client list (IP address or IP address range). Use commas (,) to separate multiple clients.
      */
-    public readonly roClientList!: pulumi.Output<string | undefined>;
+    declare public readonly roClientList: pulumi.Output<string | undefined>;
     /**
      * The read-only client list. When Protocol for Server Message Block (SMB) to go back to.
      */
-    public readonly roUserList!: pulumi.Output<string | undefined>;
+    declare public readonly roUserList: pulumi.Output<string | undefined>;
     /**
      * Read and write the client list. When Protocol NFS is returned when the status is.
      */
-    public readonly rwClientList!: pulumi.Output<string | undefined>;
+    declare public readonly rwClientList: pulumi.Output<string | undefined>;
     /**
      * Read-write user list. When Protocol for Server Message Block (SMB) to go back to.
      */
-    public readonly rwUserList!: pulumi.Output<string | undefined>;
+    declare public readonly rwUserList: pulumi.Output<string | undefined>;
     /**
      * The NFS protocol user mapping of the gateway file share. Valid values: `none`, `rootSquash`, `allSquash`, `allAnonymous`. Default value: `none`. **NOTE:** The attribute is valid when the attribute `protocol` is `NFS`.
      */
-    public readonly squash!: pulumi.Output<string>;
+    declare public readonly squash: pulumi.Output<string>;
     /**
      * Whether to support the archive transparent read.
      */
-    public readonly supportArchive!: pulumi.Output<boolean>;
+    declare public readonly supportArchive: pulumi.Output<boolean>;
     /**
      * The set up gateway file share whether to enable transmission acceleration needs corresponding OSS Bucket enabled transport acceleration. **NOTE:** Gateway version >= 1.3.0 above support.
      */
-    public readonly transferAcceleration!: pulumi.Output<boolean>;
+    declare public readonly transferAcceleration: pulumi.Output<boolean>;
     /**
      * Whether to enable by Windows access list (requires AD domain) the permissions control. Default value: `false`. **NOTE:** The attribute is valid when the attribute `protocol` is `SMB`. Gateway version >= 1.0.45 above support.
      */
-    public readonly windowsAcl!: pulumi.Output<boolean>;
+    declare public readonly windowsAcl: pulumi.Output<boolean>;
 
     /**
      * Create a GatewayFileShare resource with the given unique name, arguments, and options.
@@ -197,93 +197,93 @@ export class GatewayFileShare extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GatewayFileShareState | undefined;
-            resourceInputs["accessBasedEnumeration"] = state ? state.accessBasedEnumeration : undefined;
-            resourceInputs["backendLimit"] = state ? state.backendLimit : undefined;
-            resourceInputs["browsable"] = state ? state.browsable : undefined;
-            resourceInputs["bypassCacheRead"] = state ? state.bypassCacheRead : undefined;
-            resourceInputs["cacheMode"] = state ? state.cacheMode : undefined;
-            resourceInputs["directIo"] = state ? state.directIo : undefined;
-            resourceInputs["downloadLimit"] = state ? state.downloadLimit : undefined;
-            resourceInputs["fastReclaim"] = state ? state.fastReclaim : undefined;
-            resourceInputs["feLimit"] = state ? state.feLimit : undefined;
-            resourceInputs["gatewayFileShareName"] = state ? state.gatewayFileShareName : undefined;
-            resourceInputs["gatewayId"] = state ? state.gatewayId : undefined;
-            resourceInputs["ignoreDelete"] = state ? state.ignoreDelete : undefined;
-            resourceInputs["inPlace"] = state ? state.inPlace : undefined;
-            resourceInputs["indexId"] = state ? state.indexId : undefined;
-            resourceInputs["lagPeriod"] = state ? state.lagPeriod : undefined;
-            resourceInputs["localPath"] = state ? state.localPath : undefined;
-            resourceInputs["nfsV4Optimization"] = state ? state.nfsV4Optimization : undefined;
-            resourceInputs["ossBucketName"] = state ? state.ossBucketName : undefined;
-            resourceInputs["ossBucketSsl"] = state ? state.ossBucketSsl : undefined;
-            resourceInputs["ossEndpoint"] = state ? state.ossEndpoint : undefined;
-            resourceInputs["partialSyncPaths"] = state ? state.partialSyncPaths : undefined;
-            resourceInputs["pathPrefix"] = state ? state.pathPrefix : undefined;
-            resourceInputs["pollingInterval"] = state ? state.pollingInterval : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["remoteSync"] = state ? state.remoteSync : undefined;
-            resourceInputs["remoteSyncDownload"] = state ? state.remoteSyncDownload : undefined;
-            resourceInputs["roClientList"] = state ? state.roClientList : undefined;
-            resourceInputs["roUserList"] = state ? state.roUserList : undefined;
-            resourceInputs["rwClientList"] = state ? state.rwClientList : undefined;
-            resourceInputs["rwUserList"] = state ? state.rwUserList : undefined;
-            resourceInputs["squash"] = state ? state.squash : undefined;
-            resourceInputs["supportArchive"] = state ? state.supportArchive : undefined;
-            resourceInputs["transferAcceleration"] = state ? state.transferAcceleration : undefined;
-            resourceInputs["windowsAcl"] = state ? state.windowsAcl : undefined;
+            resourceInputs["accessBasedEnumeration"] = state?.accessBasedEnumeration;
+            resourceInputs["backendLimit"] = state?.backendLimit;
+            resourceInputs["browsable"] = state?.browsable;
+            resourceInputs["bypassCacheRead"] = state?.bypassCacheRead;
+            resourceInputs["cacheMode"] = state?.cacheMode;
+            resourceInputs["directIo"] = state?.directIo;
+            resourceInputs["downloadLimit"] = state?.downloadLimit;
+            resourceInputs["fastReclaim"] = state?.fastReclaim;
+            resourceInputs["feLimit"] = state?.feLimit;
+            resourceInputs["gatewayFileShareName"] = state?.gatewayFileShareName;
+            resourceInputs["gatewayId"] = state?.gatewayId;
+            resourceInputs["ignoreDelete"] = state?.ignoreDelete;
+            resourceInputs["inPlace"] = state?.inPlace;
+            resourceInputs["indexId"] = state?.indexId;
+            resourceInputs["lagPeriod"] = state?.lagPeriod;
+            resourceInputs["localPath"] = state?.localPath;
+            resourceInputs["nfsV4Optimization"] = state?.nfsV4Optimization;
+            resourceInputs["ossBucketName"] = state?.ossBucketName;
+            resourceInputs["ossBucketSsl"] = state?.ossBucketSsl;
+            resourceInputs["ossEndpoint"] = state?.ossEndpoint;
+            resourceInputs["partialSyncPaths"] = state?.partialSyncPaths;
+            resourceInputs["pathPrefix"] = state?.pathPrefix;
+            resourceInputs["pollingInterval"] = state?.pollingInterval;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["remoteSync"] = state?.remoteSync;
+            resourceInputs["remoteSyncDownload"] = state?.remoteSyncDownload;
+            resourceInputs["roClientList"] = state?.roClientList;
+            resourceInputs["roUserList"] = state?.roUserList;
+            resourceInputs["rwClientList"] = state?.rwClientList;
+            resourceInputs["rwUserList"] = state?.rwUserList;
+            resourceInputs["squash"] = state?.squash;
+            resourceInputs["supportArchive"] = state?.supportArchive;
+            resourceInputs["transferAcceleration"] = state?.transferAcceleration;
+            resourceInputs["windowsAcl"] = state?.windowsAcl;
         } else {
             const args = argsOrState as GatewayFileShareArgs | undefined;
-            if ((!args || args.gatewayFileShareName === undefined) && !opts.urn) {
+            if (args?.gatewayFileShareName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'gatewayFileShareName'");
             }
-            if ((!args || args.gatewayId === undefined) && !opts.urn) {
+            if (args?.gatewayId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'gatewayId'");
             }
-            if ((!args || args.localPath === undefined) && !opts.urn) {
+            if (args?.localPath === undefined && !opts.urn) {
                 throw new Error("Missing required property 'localPath'");
             }
-            if ((!args || args.ossBucketName === undefined) && !opts.urn) {
+            if (args?.ossBucketName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ossBucketName'");
             }
-            if ((!args || args.ossEndpoint === undefined) && !opts.urn) {
+            if (args?.ossEndpoint === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ossEndpoint'");
             }
-            if ((!args || args.protocol === undefined) && !opts.urn) {
+            if (args?.protocol === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            resourceInputs["accessBasedEnumeration"] = args ? args.accessBasedEnumeration : undefined;
-            resourceInputs["backendLimit"] = args ? args.backendLimit : undefined;
-            resourceInputs["browsable"] = args ? args.browsable : undefined;
-            resourceInputs["bypassCacheRead"] = args ? args.bypassCacheRead : undefined;
-            resourceInputs["cacheMode"] = args ? args.cacheMode : undefined;
-            resourceInputs["directIo"] = args ? args.directIo : undefined;
-            resourceInputs["downloadLimit"] = args ? args.downloadLimit : undefined;
-            resourceInputs["fastReclaim"] = args ? args.fastReclaim : undefined;
-            resourceInputs["feLimit"] = args ? args.feLimit : undefined;
-            resourceInputs["gatewayFileShareName"] = args ? args.gatewayFileShareName : undefined;
-            resourceInputs["gatewayId"] = args ? args.gatewayId : undefined;
-            resourceInputs["ignoreDelete"] = args ? args.ignoreDelete : undefined;
-            resourceInputs["inPlace"] = args ? args.inPlace : undefined;
-            resourceInputs["lagPeriod"] = args ? args.lagPeriod : undefined;
-            resourceInputs["localPath"] = args ? args.localPath : undefined;
-            resourceInputs["nfsV4Optimization"] = args ? args.nfsV4Optimization : undefined;
-            resourceInputs["ossBucketName"] = args ? args.ossBucketName : undefined;
-            resourceInputs["ossBucketSsl"] = args ? args.ossBucketSsl : undefined;
-            resourceInputs["ossEndpoint"] = args ? args.ossEndpoint : undefined;
-            resourceInputs["partialSyncPaths"] = args ? args.partialSyncPaths : undefined;
-            resourceInputs["pathPrefix"] = args ? args.pathPrefix : undefined;
-            resourceInputs["pollingInterval"] = args ? args.pollingInterval : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["remoteSync"] = args ? args.remoteSync : undefined;
-            resourceInputs["remoteSyncDownload"] = args ? args.remoteSyncDownload : undefined;
-            resourceInputs["roClientList"] = args ? args.roClientList : undefined;
-            resourceInputs["roUserList"] = args ? args.roUserList : undefined;
-            resourceInputs["rwClientList"] = args ? args.rwClientList : undefined;
-            resourceInputs["rwUserList"] = args ? args.rwUserList : undefined;
-            resourceInputs["squash"] = args ? args.squash : undefined;
-            resourceInputs["supportArchive"] = args ? args.supportArchive : undefined;
-            resourceInputs["transferAcceleration"] = args ? args.transferAcceleration : undefined;
-            resourceInputs["windowsAcl"] = args ? args.windowsAcl : undefined;
+            resourceInputs["accessBasedEnumeration"] = args?.accessBasedEnumeration;
+            resourceInputs["backendLimit"] = args?.backendLimit;
+            resourceInputs["browsable"] = args?.browsable;
+            resourceInputs["bypassCacheRead"] = args?.bypassCacheRead;
+            resourceInputs["cacheMode"] = args?.cacheMode;
+            resourceInputs["directIo"] = args?.directIo;
+            resourceInputs["downloadLimit"] = args?.downloadLimit;
+            resourceInputs["fastReclaim"] = args?.fastReclaim;
+            resourceInputs["feLimit"] = args?.feLimit;
+            resourceInputs["gatewayFileShareName"] = args?.gatewayFileShareName;
+            resourceInputs["gatewayId"] = args?.gatewayId;
+            resourceInputs["ignoreDelete"] = args?.ignoreDelete;
+            resourceInputs["inPlace"] = args?.inPlace;
+            resourceInputs["lagPeriod"] = args?.lagPeriod;
+            resourceInputs["localPath"] = args?.localPath;
+            resourceInputs["nfsV4Optimization"] = args?.nfsV4Optimization;
+            resourceInputs["ossBucketName"] = args?.ossBucketName;
+            resourceInputs["ossBucketSsl"] = args?.ossBucketSsl;
+            resourceInputs["ossEndpoint"] = args?.ossEndpoint;
+            resourceInputs["partialSyncPaths"] = args?.partialSyncPaths;
+            resourceInputs["pathPrefix"] = args?.pathPrefix;
+            resourceInputs["pollingInterval"] = args?.pollingInterval;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["remoteSync"] = args?.remoteSync;
+            resourceInputs["remoteSyncDownload"] = args?.remoteSyncDownload;
+            resourceInputs["roClientList"] = args?.roClientList;
+            resourceInputs["roUserList"] = args?.roUserList;
+            resourceInputs["rwClientList"] = args?.rwClientList;
+            resourceInputs["rwUserList"] = args?.rwUserList;
+            resourceInputs["squash"] = args?.squash;
+            resourceInputs["supportArchive"] = args?.supportArchive;
+            resourceInputs["transferAcceleration"] = args?.transferAcceleration;
+            resourceInputs["windowsAcl"] = args?.windowsAcl;
             resourceInputs["indexId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

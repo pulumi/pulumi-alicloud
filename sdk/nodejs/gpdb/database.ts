@@ -94,31 +94,31 @@ export class Database extends pulumi.CustomResource {
     /**
      * Character set, default value is UTF8
      */
-    public readonly characterSetName!: pulumi.Output<string | undefined>;
+    declare public readonly characterSetName: pulumi.Output<string | undefined>;
     /**
      * Database locale parameters, specifying string comparison/collation
      */
-    public readonly collate!: pulumi.Output<string | undefined>;
+    declare public readonly collate: pulumi.Output<string | undefined>;
     /**
      * Database locale parameters, specifying character classification/case conversion rules
      */
-    public readonly ctype!: pulumi.Output<string | undefined>;
+    declare public readonly ctype: pulumi.Output<string | undefined>;
     /**
      * Database Name
      */
-    public readonly databaseName!: pulumi.Output<string>;
+    declare public readonly databaseName: pulumi.Output<string>;
     /**
      * Instance ID
      */
-    public readonly dbInstanceId!: pulumi.Output<string>;
+    declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
      * Database Description
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Data Sheet owner
      */
-    public readonly owner!: pulumi.Output<string>;
+    declare public readonly owner: pulumi.Output<string>;
 
     /**
      * Create a Database resource with the given unique name, arguments, and options.
@@ -133,31 +133,31 @@ export class Database extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseState | undefined;
-            resourceInputs["characterSetName"] = state ? state.characterSetName : undefined;
-            resourceInputs["collate"] = state ? state.collate : undefined;
-            resourceInputs["ctype"] = state ? state.ctype : undefined;
-            resourceInputs["databaseName"] = state ? state.databaseName : undefined;
-            resourceInputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["owner"] = state ? state.owner : undefined;
+            resourceInputs["characterSetName"] = state?.characterSetName;
+            resourceInputs["collate"] = state?.collate;
+            resourceInputs["ctype"] = state?.ctype;
+            resourceInputs["databaseName"] = state?.databaseName;
+            resourceInputs["dbInstanceId"] = state?.dbInstanceId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["owner"] = state?.owner;
         } else {
             const args = argsOrState as DatabaseArgs | undefined;
-            if ((!args || args.databaseName === undefined) && !opts.urn) {
+            if (args?.databaseName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'databaseName'");
             }
-            if ((!args || args.dbInstanceId === undefined) && !opts.urn) {
+            if (args?.dbInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceId'");
             }
-            if ((!args || args.owner === undefined) && !opts.urn) {
+            if (args?.owner === undefined && !opts.urn) {
                 throw new Error("Missing required property 'owner'");
             }
-            resourceInputs["characterSetName"] = args ? args.characterSetName : undefined;
-            resourceInputs["collate"] = args ? args.collate : undefined;
-            resourceInputs["ctype"] = args ? args.ctype : undefined;
-            resourceInputs["databaseName"] = args ? args.databaseName : undefined;
-            resourceInputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["owner"] = args ? args.owner : undefined;
+            resourceInputs["characterSetName"] = args?.characterSetName;
+            resourceInputs["collate"] = args?.collate;
+            resourceInputs["ctype"] = args?.ctype;
+            resourceInputs["databaseName"] = args?.databaseName;
+            resourceInputs["dbInstanceId"] = args?.dbInstanceId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["owner"] = args?.owner;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Database.__pulumiType, name, resourceInputs, opts);

@@ -100,33 +100,33 @@ export class ReplicaSetRole extends pulumi.CustomResource {
     /**
      * The connection address of the role.
      */
-    public /*out*/ readonly connectionDomain!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectionDomain: pulumi.Output<string>;
     /**
      * The port of the connection string, will be computed if not specified.`
      */
-    public readonly connectionPort!: pulumi.Output<number>;
+    declare public readonly connectionPort: pulumi.Output<number>;
     /**
      * The prefix of the connection string, will be computed if not specified.
      */
-    public readonly connectionPrefix!: pulumi.Output<string>;
+    declare public readonly connectionPrefix: pulumi.Output<string>;
     /**
      * The instance ID.
      */
-    public readonly dbInstanceId!: pulumi.Output<string>;
+    declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
      * The network type of the connection string. Valid values:
      * - `VPC`: private network address.
      * - `Public`: public network address.
      */
-    public readonly networkType!: pulumi.Output<string>;
+    declare public readonly networkType: pulumi.Output<string>;
     /**
      * The role of the related connection string.
      */
-    public /*out*/ readonly replicaSetRole!: pulumi.Output<string>;
+    declare public /*out*/ readonly replicaSetRole: pulumi.Output<string>;
     /**
      * The role ID in the replica set.
      */
-    public readonly roleId!: pulumi.Output<string>;
+    declare public readonly roleId: pulumi.Output<string>;
 
     /**
      * Create a ReplicaSetRole resource with the given unique name, arguments, and options.
@@ -141,29 +141,29 @@ export class ReplicaSetRole extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ReplicaSetRoleState | undefined;
-            resourceInputs["connectionDomain"] = state ? state.connectionDomain : undefined;
-            resourceInputs["connectionPort"] = state ? state.connectionPort : undefined;
-            resourceInputs["connectionPrefix"] = state ? state.connectionPrefix : undefined;
-            resourceInputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
-            resourceInputs["networkType"] = state ? state.networkType : undefined;
-            resourceInputs["replicaSetRole"] = state ? state.replicaSetRole : undefined;
-            resourceInputs["roleId"] = state ? state.roleId : undefined;
+            resourceInputs["connectionDomain"] = state?.connectionDomain;
+            resourceInputs["connectionPort"] = state?.connectionPort;
+            resourceInputs["connectionPrefix"] = state?.connectionPrefix;
+            resourceInputs["dbInstanceId"] = state?.dbInstanceId;
+            resourceInputs["networkType"] = state?.networkType;
+            resourceInputs["replicaSetRole"] = state?.replicaSetRole;
+            resourceInputs["roleId"] = state?.roleId;
         } else {
             const args = argsOrState as ReplicaSetRoleArgs | undefined;
-            if ((!args || args.dbInstanceId === undefined) && !opts.urn) {
+            if (args?.dbInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceId'");
             }
-            if ((!args || args.networkType === undefined) && !opts.urn) {
+            if (args?.networkType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkType'");
             }
-            if ((!args || args.roleId === undefined) && !opts.urn) {
+            if (args?.roleId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roleId'");
             }
-            resourceInputs["connectionPort"] = args ? args.connectionPort : undefined;
-            resourceInputs["connectionPrefix"] = args ? args.connectionPrefix : undefined;
-            resourceInputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
-            resourceInputs["networkType"] = args ? args.networkType : undefined;
-            resourceInputs["roleId"] = args ? args.roleId : undefined;
+            resourceInputs["connectionPort"] = args?.connectionPort;
+            resourceInputs["connectionPrefix"] = args?.connectionPrefix;
+            resourceInputs["dbInstanceId"] = args?.dbInstanceId;
+            resourceInputs["networkType"] = args?.networkType;
+            resourceInputs["roleId"] = args?.roleId;
             resourceInputs["connectionDomain"] = undefined /*out*/;
             resourceInputs["replicaSetRole"] = undefined /*out*/;
         }

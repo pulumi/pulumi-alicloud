@@ -108,31 +108,31 @@ export class BasicThreshold extends pulumi.CustomResource {
     /**
      * Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
      */
-    public readonly bps!: pulumi.Output<number>;
+    declare public readonly bps: pulumi.Output<number>;
     /**
      * The ID of the instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The type of the Instance. Valid values: `ecs`,`slb`,`eip`.
      */
-    public readonly instanceType!: pulumi.Output<string>;
+    declare public readonly instanceType: pulumi.Output<string>;
     /**
      * The IP address of the public IP address asset.
      */
-    public readonly internetIp!: pulumi.Output<string>;
+    declare public readonly internetIp: pulumi.Output<string>;
     /**
      * Maximum flow cleaning threshold. Unit: Mbps.
      */
-    public /*out*/ readonly maxBps!: pulumi.Output<number>;
+    declare public /*out*/ readonly maxBps: pulumi.Output<number>;
     /**
      * The maximum number of messages cleaning threshold. Unit: pps.
      */
-    public /*out*/ readonly maxPps!: pulumi.Output<number>;
+    declare public /*out*/ readonly maxPps: pulumi.Output<number>;
     /**
      * The current message number cleaning threshold. Unit: pps.
      */
-    public readonly pps!: pulumi.Output<number>;
+    declare public readonly pps: pulumi.Output<number>;
 
     /**
      * Create a BasicThreshold resource with the given unique name, arguments, and options.
@@ -147,35 +147,35 @@ export class BasicThreshold extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BasicThresholdState | undefined;
-            resourceInputs["bps"] = state ? state.bps : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["internetIp"] = state ? state.internetIp : undefined;
-            resourceInputs["maxBps"] = state ? state.maxBps : undefined;
-            resourceInputs["maxPps"] = state ? state.maxPps : undefined;
-            resourceInputs["pps"] = state ? state.pps : undefined;
+            resourceInputs["bps"] = state?.bps;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["internetIp"] = state?.internetIp;
+            resourceInputs["maxBps"] = state?.maxBps;
+            resourceInputs["maxPps"] = state?.maxPps;
+            resourceInputs["pps"] = state?.pps;
         } else {
             const args = argsOrState as BasicThresholdArgs | undefined;
-            if ((!args || args.bps === undefined) && !opts.urn) {
+            if (args?.bps === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bps'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.instanceType === undefined) && !opts.urn) {
+            if (args?.instanceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceType'");
             }
-            if ((!args || args.internetIp === undefined) && !opts.urn) {
+            if (args?.internetIp === undefined && !opts.urn) {
                 throw new Error("Missing required property 'internetIp'");
             }
-            if ((!args || args.pps === undefined) && !opts.urn) {
+            if (args?.pps === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pps'");
             }
-            resourceInputs["bps"] = args ? args.bps : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["internetIp"] = args ? args.internetIp : undefined;
-            resourceInputs["pps"] = args ? args.pps : undefined;
+            resourceInputs["bps"] = args?.bps;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["internetIp"] = args?.internetIp;
+            resourceInputs["pps"] = args?.pps;
             resourceInputs["maxBps"] = undefined /*out*/;
             resourceInputs["maxPps"] = undefined /*out*/;
         }

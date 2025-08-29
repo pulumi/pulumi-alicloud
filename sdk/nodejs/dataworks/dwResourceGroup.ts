@@ -50,55 +50,55 @@ export class DwResourceGroup extends pulumi.CustomResource {
     /**
      * Whether to automatically renew. The default value is false.
      */
-    public readonly autoRenew!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoRenew: pulumi.Output<boolean | undefined>;
     /**
      * Resource group creation time
      */
-    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly createTime: pulumi.Output<number>;
     /**
      * The VPC ID of the default network resource.
      */
-    public readonly defaultVpcId!: pulumi.Output<string>;
+    declare public readonly defaultVpcId: pulumi.Output<string>;
     /**
      * The ID of the vswitch bound to the network resource by default.
      */
-    public readonly defaultVswitchId!: pulumi.Output<string>;
+    declare public readonly defaultVswitchId: pulumi.Output<string>;
     /**
      * When the payment method is Prepaid, the unit is PaymentDurationUnit.
      */
-    public readonly paymentDuration!: pulumi.Output<number | undefined>;
+    declare public readonly paymentDuration: pulumi.Output<number | undefined>;
     /**
      * When the payment method is Prepaid, the payment duration unit, Month is Month, Year is Year, and there is no other optional value.
      */
-    public readonly paymentDurationUnit!: pulumi.Output<string | undefined>;
+    declare public readonly paymentDurationUnit: pulumi.Output<string | undefined>;
     /**
      * The billing type of the resource group. PrePaid is Subscription, and PostPaid is Pay-As-You-Go.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * Resource Group Comments
      */
-    public readonly remark!: pulumi.Output<string>;
+    declare public readonly remark: pulumi.Output<string>;
     /**
      * The ID of the resource group
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Resource group name
      */
-    public readonly resourceGroupName!: pulumi.Output<string | undefined>;
+    declare public readonly resourceGroupName: pulumi.Output<string | undefined>;
     /**
      * Package year and package month resource group specifications, unit CU
      */
-    public readonly specification!: pulumi.Output<number | undefined>;
+    declare public readonly specification: pulumi.Output<number | undefined>;
     /**
      * Resource group status:
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tag of the resource
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a DwResourceGroup resource with the given unique name, arguments, and options.
@@ -113,41 +113,41 @@ export class DwResourceGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DwResourceGroupState | undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["defaultVpcId"] = state ? state.defaultVpcId : undefined;
-            resourceInputs["defaultVswitchId"] = state ? state.defaultVswitchId : undefined;
-            resourceInputs["paymentDuration"] = state ? state.paymentDuration : undefined;
-            resourceInputs["paymentDurationUnit"] = state ? state.paymentDurationUnit : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["remark"] = state ? state.remark : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["resourceGroupName"] = state ? state.resourceGroupName : undefined;
-            resourceInputs["specification"] = state ? state.specification : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["defaultVpcId"] = state?.defaultVpcId;
+            resourceInputs["defaultVswitchId"] = state?.defaultVswitchId;
+            resourceInputs["paymentDuration"] = state?.paymentDuration;
+            resourceInputs["paymentDurationUnit"] = state?.paymentDurationUnit;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["remark"] = state?.remark;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["resourceGroupName"] = state?.resourceGroupName;
+            resourceInputs["specification"] = state?.specification;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as DwResourceGroupArgs | undefined;
-            if ((!args || args.defaultVpcId === undefined) && !opts.urn) {
+            if (args?.defaultVpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'defaultVpcId'");
             }
-            if ((!args || args.defaultVswitchId === undefined) && !opts.urn) {
+            if (args?.defaultVswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'defaultVswitchId'");
             }
-            if ((!args || args.remark === undefined) && !opts.urn) {
+            if (args?.remark === undefined && !opts.urn) {
                 throw new Error("Missing required property 'remark'");
             }
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["defaultVpcId"] = args ? args.defaultVpcId : undefined;
-            resourceInputs["defaultVswitchId"] = args ? args.defaultVswitchId : undefined;
-            resourceInputs["paymentDuration"] = args ? args.paymentDuration : undefined;
-            resourceInputs["paymentDurationUnit"] = args ? args.paymentDurationUnit : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["remark"] = args ? args.remark : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["specification"] = args ? args.specification : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["defaultVpcId"] = args?.defaultVpcId;
+            resourceInputs["defaultVswitchId"] = args?.defaultVswitchId;
+            resourceInputs["paymentDuration"] = args?.paymentDuration;
+            resourceInputs["paymentDurationUnit"] = args?.paymentDurationUnit;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["remark"] = args?.remark;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["resourceGroupName"] = args?.resourceGroupName;
+            resourceInputs["specification"] = args?.specification;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

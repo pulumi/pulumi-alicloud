@@ -52,19 +52,19 @@ export class AggregateDelivery extends pulumi.CustomResource {
     /**
      * Aggregator ID.
      */
-    public readonly aggregatorId!: pulumi.Output<string>;
+    declare public readonly aggregatorId: pulumi.Output<string>;
     /**
      * Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:  
      * - true: The specified destination receives resource change logs.
      * - false: The specified destination does not receive resource change logs.
      */
-    public readonly configurationItemChangeNotification!: pulumi.Output<boolean | undefined>;
+    declare public readonly configurationItemChangeNotification: pulumi.Output<boolean | undefined>;
     /**
      * Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:  
      * - true: The specified destination receives scheduled resource snapshots.
      * - false: The specified destination does not receive scheduled resource snapshots.
      */
-    public readonly configurationSnapshot!: pulumi.Output<boolean | undefined>;
+    declare public readonly configurationSnapshot: pulumi.Output<boolean | undefined>;
     /**
      * The rule that is attached to the delivery channel.   
      *
@@ -78,49 +78,49 @@ export class AggregateDelivery extends pulumi.CustomResource {
      *
      * Examples:[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}].
      */
-    public readonly deliveryChannelCondition!: pulumi.Output<string | undefined>;
+    declare public readonly deliveryChannelCondition: pulumi.Output<string | undefined>;
     /**
      * The ID of the delivery method. This parameter is required when you modify a delivery method.
      */
-    public /*out*/ readonly deliveryChannelId!: pulumi.Output<string>;
+    declare public /*out*/ readonly deliveryChannelId: pulumi.Output<string>;
     /**
      * The name of the delivery channel.
      */
-    public readonly deliveryChannelName!: pulumi.Output<string | undefined>;
+    declare public readonly deliveryChannelName: pulumi.Output<string | undefined>;
     /**
      * The ARN of the delivery destination.  
      * - If the value of the DeliveryChannelType parameter is OSS, the value of this parameter is the ARN of the destination OSS bucket.
      * - If the value of the DeliveryChannelType parameter is MNS, the value of this parameter is the ARN of the destination MNS topic.
      * - If the value of the DeliveryChannelType parameter is SLS, the value of this parameter is the ARN of the destination Log Service Logstore.
      */
-    public readonly deliveryChannelTargetArn!: pulumi.Output<string>;
+    declare public readonly deliveryChannelTargetArn: pulumi.Output<string>;
     /**
      * The type of the delivery channel. Valid values:
      * - OSS: Object Storage Service (OSS)
      * - MNS: Message Service (MNS)
      * - SLS: Log Service
      */
-    public readonly deliveryChannelType!: pulumi.Output<string>;
+    declare public readonly deliveryChannelType: pulumi.Output<string>;
     /**
      * The description of the delivery method.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:  
      * - true: The specified destination receives resource non-compliance events.
      * - false: The specified destination does not receive resource non-compliance events.
      */
-    public readonly nonCompliantNotification!: pulumi.Output<boolean | undefined>;
+    declare public readonly nonCompliantNotification: pulumi.Output<boolean | undefined>;
     /**
      * The ARN of the OSS bucket to which the delivered data is transferred when the size of the data exceeds the specified upper limit of the delivery channel.
      */
-    public readonly oversizedDataOssTargetArn!: pulumi.Output<string | undefined>;
+    declare public readonly oversizedDataOssTargetArn: pulumi.Output<string | undefined>;
     /**
      * The status of the delivery method. Valid values:   
      * - 0: The delivery method is disabled.
      * - 1: The delivery destination is enabled. This is the default value.
      */
-    public readonly status!: pulumi.Output<number>;
+    declare public readonly status: pulumi.Output<number>;
 
     /**
      * Create a AggregateDelivery resource with the given unique name, arguments, and options.
@@ -135,40 +135,40 @@ export class AggregateDelivery extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AggregateDeliveryState | undefined;
-            resourceInputs["aggregatorId"] = state ? state.aggregatorId : undefined;
-            resourceInputs["configurationItemChangeNotification"] = state ? state.configurationItemChangeNotification : undefined;
-            resourceInputs["configurationSnapshot"] = state ? state.configurationSnapshot : undefined;
-            resourceInputs["deliveryChannelCondition"] = state ? state.deliveryChannelCondition : undefined;
-            resourceInputs["deliveryChannelId"] = state ? state.deliveryChannelId : undefined;
-            resourceInputs["deliveryChannelName"] = state ? state.deliveryChannelName : undefined;
-            resourceInputs["deliveryChannelTargetArn"] = state ? state.deliveryChannelTargetArn : undefined;
-            resourceInputs["deliveryChannelType"] = state ? state.deliveryChannelType : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["nonCompliantNotification"] = state ? state.nonCompliantNotification : undefined;
-            resourceInputs["oversizedDataOssTargetArn"] = state ? state.oversizedDataOssTargetArn : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["aggregatorId"] = state?.aggregatorId;
+            resourceInputs["configurationItemChangeNotification"] = state?.configurationItemChangeNotification;
+            resourceInputs["configurationSnapshot"] = state?.configurationSnapshot;
+            resourceInputs["deliveryChannelCondition"] = state?.deliveryChannelCondition;
+            resourceInputs["deliveryChannelId"] = state?.deliveryChannelId;
+            resourceInputs["deliveryChannelName"] = state?.deliveryChannelName;
+            resourceInputs["deliveryChannelTargetArn"] = state?.deliveryChannelTargetArn;
+            resourceInputs["deliveryChannelType"] = state?.deliveryChannelType;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["nonCompliantNotification"] = state?.nonCompliantNotification;
+            resourceInputs["oversizedDataOssTargetArn"] = state?.oversizedDataOssTargetArn;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as AggregateDeliveryArgs | undefined;
-            if ((!args || args.aggregatorId === undefined) && !opts.urn) {
+            if (args?.aggregatorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aggregatorId'");
             }
-            if ((!args || args.deliveryChannelTargetArn === undefined) && !opts.urn) {
+            if (args?.deliveryChannelTargetArn === undefined && !opts.urn) {
                 throw new Error("Missing required property 'deliveryChannelTargetArn'");
             }
-            if ((!args || args.deliveryChannelType === undefined) && !opts.urn) {
+            if (args?.deliveryChannelType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'deliveryChannelType'");
             }
-            resourceInputs["aggregatorId"] = args ? args.aggregatorId : undefined;
-            resourceInputs["configurationItemChangeNotification"] = args ? args.configurationItemChangeNotification : undefined;
-            resourceInputs["configurationSnapshot"] = args ? args.configurationSnapshot : undefined;
-            resourceInputs["deliveryChannelCondition"] = args ? args.deliveryChannelCondition : undefined;
-            resourceInputs["deliveryChannelName"] = args ? args.deliveryChannelName : undefined;
-            resourceInputs["deliveryChannelTargetArn"] = args ? args.deliveryChannelTargetArn : undefined;
-            resourceInputs["deliveryChannelType"] = args ? args.deliveryChannelType : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["nonCompliantNotification"] = args ? args.nonCompliantNotification : undefined;
-            resourceInputs["oversizedDataOssTargetArn"] = args ? args.oversizedDataOssTargetArn : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["aggregatorId"] = args?.aggregatorId;
+            resourceInputs["configurationItemChangeNotification"] = args?.configurationItemChangeNotification;
+            resourceInputs["configurationSnapshot"] = args?.configurationSnapshot;
+            resourceInputs["deliveryChannelCondition"] = args?.deliveryChannelCondition;
+            resourceInputs["deliveryChannelName"] = args?.deliveryChannelName;
+            resourceInputs["deliveryChannelTargetArn"] = args?.deliveryChannelTargetArn;
+            resourceInputs["deliveryChannelType"] = args?.deliveryChannelType;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["nonCompliantNotification"] = args?.nonCompliantNotification;
+            resourceInputs["oversizedDataOssTargetArn"] = args?.oversizedDataOssTargetArn;
+            resourceInputs["status"] = args?.status;
             resourceInputs["deliveryChannelId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

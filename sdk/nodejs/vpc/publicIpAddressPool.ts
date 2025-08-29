@@ -71,54 +71,54 @@ export class PublicIpAddressPool extends pulumi.CustomResource {
     /**
      * The name of the VPC Public IP address pool.
      */
-    public readonly bizType!: pulumi.Output<string>;
+    declare public readonly bizType: pulumi.Output<string>;
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether there is a free IP address.
      */
-    public /*out*/ readonly ipAddressRemaining!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly ipAddressRemaining: pulumi.Output<boolean>;
     /**
      * The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
      */
-    public readonly isp!: pulumi.Output<string>;
-    public /*out*/ readonly publicIpAddressPoolId!: pulumi.Output<string>;
+    declare public readonly isp: pulumi.Output<string>;
+    declare public /*out*/ readonly publicIpAddressPoolId: pulumi.Output<string>;
     /**
      * The name of the VPC Public IP address pool.
      */
-    public readonly publicIpAddressPoolName!: pulumi.Output<string | undefined>;
+    declare public readonly publicIpAddressPoolName: pulumi.Output<string | undefined>;
     /**
      * The resource group ID of the VPC Public IP address pool.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Security protection level.
      * - If the configuration is empty, the default value is DDoS protection (Basic edition).
      * - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
      */
-    public readonly securityProtectionTypes!: pulumi.Output<string[] | undefined>;
+    declare public readonly securityProtectionTypes: pulumi.Output<string[] | undefined>;
     /**
      * The status of the VPC Public IP address pool.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tags of PrefixList.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The total number of public IP address pools.
      */
-    public /*out*/ readonly totalIpNum!: pulumi.Output<number>;
+    declare public /*out*/ readonly totalIpNum: pulumi.Output<number>;
     /**
      * The number of used IP addresses in the public IP address pool.
      */
-    public /*out*/ readonly usedIpNum!: pulumi.Output<number>;
+    declare public /*out*/ readonly usedIpNum: pulumi.Output<number>;
 
     /**
      * Create a PublicIpAddressPool resource with the given unique name, arguments, and options.
@@ -133,28 +133,28 @@ export class PublicIpAddressPool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PublicIpAddressPoolState | undefined;
-            resourceInputs["bizType"] = state ? state.bizType : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["ipAddressRemaining"] = state ? state.ipAddressRemaining : undefined;
-            resourceInputs["isp"] = state ? state.isp : undefined;
-            resourceInputs["publicIpAddressPoolId"] = state ? state.publicIpAddressPoolId : undefined;
-            resourceInputs["publicIpAddressPoolName"] = state ? state.publicIpAddressPoolName : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["securityProtectionTypes"] = state ? state.securityProtectionTypes : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["totalIpNum"] = state ? state.totalIpNum : undefined;
-            resourceInputs["usedIpNum"] = state ? state.usedIpNum : undefined;
+            resourceInputs["bizType"] = state?.bizType;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["ipAddressRemaining"] = state?.ipAddressRemaining;
+            resourceInputs["isp"] = state?.isp;
+            resourceInputs["publicIpAddressPoolId"] = state?.publicIpAddressPoolId;
+            resourceInputs["publicIpAddressPoolName"] = state?.publicIpAddressPoolName;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["securityProtectionTypes"] = state?.securityProtectionTypes;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["totalIpNum"] = state?.totalIpNum;
+            resourceInputs["usedIpNum"] = state?.usedIpNum;
         } else {
             const args = argsOrState as PublicIpAddressPoolArgs | undefined;
-            resourceInputs["bizType"] = args ? args.bizType : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["isp"] = args ? args.isp : undefined;
-            resourceInputs["publicIpAddressPoolName"] = args ? args.publicIpAddressPoolName : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["securityProtectionTypes"] = args ? args.securityProtectionTypes : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["bizType"] = args?.bizType;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["isp"] = args?.isp;
+            resourceInputs["publicIpAddressPoolName"] = args?.publicIpAddressPoolName;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["securityProtectionTypes"] = args?.securityProtectionTypes;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["ipAddressRemaining"] = undefined /*out*/;
             resourceInputs["publicIpAddressPoolId"] = undefined /*out*/;

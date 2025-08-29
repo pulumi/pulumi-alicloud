@@ -128,43 +128,43 @@ export class Ingress extends pulumi.CustomResource {
     /**
      * The certificate ID of the HTTPS listener. The `certId` takes effect only when `loadBalanceType` is set to `clb`.
      */
-    public readonly certId!: pulumi.Output<string | undefined>;
+    declare public readonly certId: pulumi.Output<string | undefined>;
     /**
      * The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `certIds` takes effect only when `loadBalanceType` is set to `alb`.
      */
-    public readonly certIds!: pulumi.Output<string | undefined>;
+    declare public readonly certIds: pulumi.Output<string | undefined>;
     /**
      * Default Rule. See `defaultRule` below.
      */
-    public readonly defaultRule!: pulumi.Output<outputs.sae.IngressDefaultRule | undefined>;
+    declare public readonly defaultRule: pulumi.Output<outputs.sae.IngressDefaultRule | undefined>;
     /**
      * Description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * SLB listening port.
      */
-    public readonly listenerPort!: pulumi.Output<number>;
+    declare public readonly listenerPort: pulumi.Output<number>;
     /**
      * The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
      */
-    public readonly listenerProtocol!: pulumi.Output<string>;
+    declare public readonly listenerProtocol: pulumi.Output<string>;
     /**
      * The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
      */
-    public readonly loadBalanceType!: pulumi.Output<string>;
+    declare public readonly loadBalanceType: pulumi.Output<string>;
     /**
      * The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
      */
-    public readonly namespaceId!: pulumi.Output<string>;
+    declare public readonly namespaceId: pulumi.Output<string>;
     /**
      * Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
      */
-    public readonly rules!: pulumi.Output<outputs.sae.IngressRule[]>;
+    declare public readonly rules: pulumi.Output<outputs.sae.IngressRule[]>;
     /**
      * SLB ID.
      */
-    public readonly slbId!: pulumi.Output<string>;
+    declare public readonly slbId: pulumi.Output<string>;
 
     /**
      * Create a Ingress resource with the given unique name, arguments, and options.
@@ -179,40 +179,40 @@ export class Ingress extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IngressState | undefined;
-            resourceInputs["certId"] = state ? state.certId : undefined;
-            resourceInputs["certIds"] = state ? state.certIds : undefined;
-            resourceInputs["defaultRule"] = state ? state.defaultRule : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["listenerPort"] = state ? state.listenerPort : undefined;
-            resourceInputs["listenerProtocol"] = state ? state.listenerProtocol : undefined;
-            resourceInputs["loadBalanceType"] = state ? state.loadBalanceType : undefined;
-            resourceInputs["namespaceId"] = state ? state.namespaceId : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
-            resourceInputs["slbId"] = state ? state.slbId : undefined;
+            resourceInputs["certId"] = state?.certId;
+            resourceInputs["certIds"] = state?.certIds;
+            resourceInputs["defaultRule"] = state?.defaultRule;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["listenerPort"] = state?.listenerPort;
+            resourceInputs["listenerProtocol"] = state?.listenerProtocol;
+            resourceInputs["loadBalanceType"] = state?.loadBalanceType;
+            resourceInputs["namespaceId"] = state?.namespaceId;
+            resourceInputs["rules"] = state?.rules;
+            resourceInputs["slbId"] = state?.slbId;
         } else {
             const args = argsOrState as IngressArgs | undefined;
-            if ((!args || args.listenerPort === undefined) && !opts.urn) {
+            if (args?.listenerPort === undefined && !opts.urn) {
                 throw new Error("Missing required property 'listenerPort'");
             }
-            if ((!args || args.namespaceId === undefined) && !opts.urn) {
+            if (args?.namespaceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'namespaceId'");
             }
-            if ((!args || args.rules === undefined) && !opts.urn) {
+            if (args?.rules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rules'");
             }
-            if ((!args || args.slbId === undefined) && !opts.urn) {
+            if (args?.slbId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'slbId'");
             }
-            resourceInputs["certId"] = args ? args.certId : undefined;
-            resourceInputs["certIds"] = args ? args.certIds : undefined;
-            resourceInputs["defaultRule"] = args ? args.defaultRule : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["listenerPort"] = args ? args.listenerPort : undefined;
-            resourceInputs["listenerProtocol"] = args ? args.listenerProtocol : undefined;
-            resourceInputs["loadBalanceType"] = args ? args.loadBalanceType : undefined;
-            resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
-            resourceInputs["rules"] = args ? args.rules : undefined;
-            resourceInputs["slbId"] = args ? args.slbId : undefined;
+            resourceInputs["certId"] = args?.certId;
+            resourceInputs["certIds"] = args?.certIds;
+            resourceInputs["defaultRule"] = args?.defaultRule;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["listenerPort"] = args?.listenerPort;
+            resourceInputs["listenerProtocol"] = args?.listenerProtocol;
+            resourceInputs["loadBalanceType"] = args?.loadBalanceType;
+            resourceInputs["namespaceId"] = args?.namespaceId;
+            resourceInputs["rules"] = args?.rules;
+            resourceInputs["slbId"] = args?.slbId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Ingress.__pulumiType, name, resourceInputs, opts);

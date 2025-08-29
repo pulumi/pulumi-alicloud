@@ -47,7 +47,7 @@ export class Quota extends pulumi.CustomResource {
      * Valid values: odps_intl/odpsplus_intl/odps/odpsplus
      * - *NOTE:** --odps_intl: International Station standard post-payment -- odpsplus_intl: International Station standard pre-payment -- odps: China Station standard post-payment -- odpsplus: China Station standard pre-payment
      */
-    public readonly commodityCode!: pulumi.Output<string>;
+    declare public readonly commodityCode: pulumi.Output<string>;
     /**
      * Define quota rules when creating quotas, for example:{"CU":50,"ordTime":"1:Month","autoRenew":false}.
      * CU (minimum quota resource size is 50)
@@ -55,26 +55,26 @@ export class Quota extends pulumi.CustomResource {
      * autoRenew (whether to enable automatic renewal)
      * If PaymentType is PayAsYouGo, you do not need to fill in
      */
-    public readonly commodityData!: pulumi.Output<string | undefined>;
+    declare public readonly commodityData: pulumi.Output<string | undefined>;
     /**
      * Quota partial nickname, supports English letters and numbers, up to 24 characters
      *
      * > **NOTE:** If PaymentType is PayAsYouGo, you do not need to fill it in
      */
-    public readonly partNickName!: pulumi.Output<string | undefined>;
+    declare public readonly partNickName: pulumi.Output<string | undefined>;
     /**
      * Payment type. Valid values: Subscription/PayAsYouGo
      *
      * > **NOTE:** -- PayAsYouGo only needs to be opened once per region
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * Secondary Quota list
      *
      * > **NOTE:** -- Add: If the configuration contains a second-level Quota that does not exist, a second-level Quota is added. -- Delete: If the configuration does not contain the existing secondary Quota, it will be deleted. -- Modify: If the configuration is inconsistent with the existing secondary Quota configuration parameters, the secondary Quota configuration will be updated. -- The default secondary Quota must be configured and cannot be deleted.
      * See `subQuotaInfoList` below.
      */
-    public readonly subQuotaInfoLists!: pulumi.Output<outputs.maxcompute.QuotaSubQuotaInfoList[]>;
+    declare public readonly subQuotaInfoLists: pulumi.Output<outputs.maxcompute.QuotaSubQuotaInfoList[]>;
 
     /**
      * Create a Quota resource with the given unique name, arguments, and options.
@@ -89,24 +89,24 @@ export class Quota extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QuotaState | undefined;
-            resourceInputs["commodityCode"] = state ? state.commodityCode : undefined;
-            resourceInputs["commodityData"] = state ? state.commodityData : undefined;
-            resourceInputs["partNickName"] = state ? state.partNickName : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["subQuotaInfoLists"] = state ? state.subQuotaInfoLists : undefined;
+            resourceInputs["commodityCode"] = state?.commodityCode;
+            resourceInputs["commodityData"] = state?.commodityData;
+            resourceInputs["partNickName"] = state?.partNickName;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["subQuotaInfoLists"] = state?.subQuotaInfoLists;
         } else {
             const args = argsOrState as QuotaArgs | undefined;
-            if ((!args || args.commodityCode === undefined) && !opts.urn) {
+            if (args?.commodityCode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'commodityCode'");
             }
-            if ((!args || args.paymentType === undefined) && !opts.urn) {
+            if (args?.paymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            resourceInputs["commodityCode"] = args ? args.commodityCode : undefined;
-            resourceInputs["commodityData"] = args ? args.commodityData : undefined;
-            resourceInputs["partNickName"] = args ? args.partNickName : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["subQuotaInfoLists"] = args ? args.subQuotaInfoLists : undefined;
+            resourceInputs["commodityCode"] = args?.commodityCode;
+            resourceInputs["commodityData"] = args?.commodityData;
+            resourceInputs["partNickName"] = args?.partNickName;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["subQuotaInfoLists"] = args?.subQuotaInfoLists;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Quota.__pulumiType, name, resourceInputs, opts);

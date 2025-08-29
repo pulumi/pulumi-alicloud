@@ -91,22 +91,22 @@ export class Exchange extends pulumi.CustomResource {
     /**
      * The alternate exchange. An alternate exchange is used to receive messages that fail to be routed to queues from the current exchange.
      */
-    public readonly alternateExchange!: pulumi.Output<string | undefined>;
+    declare public readonly alternateExchange: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to automatically delete the exchange. Valid values:
      */
-    public readonly autoDeleteState!: pulumi.Output<boolean>;
+    declare public readonly autoDeleteState: pulumi.Output<boolean>;
     /**
      * CreateTime
      */
-    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly createTime: pulumi.Output<number>;
     /**
      * The name of the exchange that you want to create. The exchange name must meet the following conventions:
      *
      * - The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
      * - After the exchange is created, you cannot change its name. If you want to change its name, delete the exchange and create another exchange.
      */
-    public readonly exchangeName!: pulumi.Output<string>;
+    declare public readonly exchangeName: pulumi.Output<string>;
     /**
      * The Exchange type. Value:
      * - `DIRECT`: This type of Routing rule routes messages to a Queue whose Binding Key matches the Routing Key.
@@ -116,23 +116,23 @@ export class Exchange extends pulumi.CustomResource {
      * - `X_delayed_message`: By declaring this type of Exchange, you can customize the Header attribute x-delay of the message to specify the delivery delay time period, in milliseconds. Messages will be delivered to the corresponding Queue after the time period defined in the x-delay according to the routing rules. The routing rule depends on the Exchange route type specified in the x-delayed-type.
      * - `X_CONSISTENT_HASH`: The x-consistent-hash Exchange allows you to Hash the Routing Key or Header value and use the consistent hashing algorithm to route messages to different queues.
      */
-    public readonly exchangeType!: pulumi.Output<string>;
+    declare public readonly exchangeType: pulumi.Output<string>;
     /**
      * The ID of the ApsaraMQ for RabbitMQ instance whose exchange you want to delete.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Specifies whether the exchange is an internal exchange. Valid values:
      */
-    public readonly internal!: pulumi.Output<boolean>;
+    declare public readonly internal: pulumi.Output<boolean>;
     /**
      * The name of the vhost to which the exchange that you want to create belongs.
      */
-    public readonly virtualHostName!: pulumi.Output<string>;
+    declare public readonly virtualHostName: pulumi.Output<string>;
     /**
      * RabbitMQ supports the x-delayed-message Exchange. By declaring this type of Exchange, you can customize the x-delay header attribute to specify the delay period for message delivery, measured in milliseconds. The message will be delivered to the corresponding Queue after the period defined in x-delay. The routing rules are determined by the type of Exchange specified in x-delayed-type.
      */
-    public readonly xDelayedType!: pulumi.Output<string | undefined>;
+    declare public readonly xDelayedType: pulumi.Output<string | undefined>;
 
     /**
      * Create a Exchange resource with the given unique name, arguments, and options.
@@ -147,43 +147,43 @@ export class Exchange extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ExchangeState | undefined;
-            resourceInputs["alternateExchange"] = state ? state.alternateExchange : undefined;
-            resourceInputs["autoDeleteState"] = state ? state.autoDeleteState : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["exchangeName"] = state ? state.exchangeName : undefined;
-            resourceInputs["exchangeType"] = state ? state.exchangeType : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["internal"] = state ? state.internal : undefined;
-            resourceInputs["virtualHostName"] = state ? state.virtualHostName : undefined;
-            resourceInputs["xDelayedType"] = state ? state.xDelayedType : undefined;
+            resourceInputs["alternateExchange"] = state?.alternateExchange;
+            resourceInputs["autoDeleteState"] = state?.autoDeleteState;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["exchangeName"] = state?.exchangeName;
+            resourceInputs["exchangeType"] = state?.exchangeType;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["internal"] = state?.internal;
+            resourceInputs["virtualHostName"] = state?.virtualHostName;
+            resourceInputs["xDelayedType"] = state?.xDelayedType;
         } else {
             const args = argsOrState as ExchangeArgs | undefined;
-            if ((!args || args.autoDeleteState === undefined) && !opts.urn) {
+            if (args?.autoDeleteState === undefined && !opts.urn) {
                 throw new Error("Missing required property 'autoDeleteState'");
             }
-            if ((!args || args.exchangeName === undefined) && !opts.urn) {
+            if (args?.exchangeName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'exchangeName'");
             }
-            if ((!args || args.exchangeType === undefined) && !opts.urn) {
+            if (args?.exchangeType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'exchangeType'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.internal === undefined) && !opts.urn) {
+            if (args?.internal === undefined && !opts.urn) {
                 throw new Error("Missing required property 'internal'");
             }
-            if ((!args || args.virtualHostName === undefined) && !opts.urn) {
+            if (args?.virtualHostName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'virtualHostName'");
             }
-            resourceInputs["alternateExchange"] = args ? args.alternateExchange : undefined;
-            resourceInputs["autoDeleteState"] = args ? args.autoDeleteState : undefined;
-            resourceInputs["exchangeName"] = args ? args.exchangeName : undefined;
-            resourceInputs["exchangeType"] = args ? args.exchangeType : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["internal"] = args ? args.internal : undefined;
-            resourceInputs["virtualHostName"] = args ? args.virtualHostName : undefined;
-            resourceInputs["xDelayedType"] = args ? args.xDelayedType : undefined;
+            resourceInputs["alternateExchange"] = args?.alternateExchange;
+            resourceInputs["autoDeleteState"] = args?.autoDeleteState;
+            resourceInputs["exchangeName"] = args?.exchangeName;
+            resourceInputs["exchangeType"] = args?.exchangeType;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["internal"] = args?.internal;
+            resourceInputs["virtualHostName"] = args?.virtualHostName;
+            resourceInputs["xDelayedType"] = args?.xDelayedType;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

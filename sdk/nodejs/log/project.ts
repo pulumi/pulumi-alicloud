@@ -115,21 +115,21 @@ export class Project extends pulumi.CustomResource {
     /**
      * CreateTime.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * . Field 'name' has been deprecated from provider version 1.223.0. New field 'project_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.223.0. New field 'project_name' instead.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Log project policy, used to set a policy for a project.
      */
-    public readonly policy!: pulumi.Output<string | undefined>;
+    declare public readonly policy: pulumi.Output<string | undefined>;
     /**
      * The name of the log project. It is the only in one Alicloud account. The project name is globally unique in Alibaba Cloud and cannot be modified after it is created. The naming rules are as follows:
      * - The project name must be globally unique.
@@ -137,21 +137,21 @@ export class Project extends pulumi.CustomResource {
      * - It must start and end with a lowercase letter or number.
      * - The value contains 3 to 63 characters.
      */
-    public readonly projectName!: pulumi.Output<string>;
+    declare public readonly projectName: pulumi.Output<string>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Tag.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -166,22 +166,22 @@ export class Project extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["policy"] = state ? state.policy : undefined;
-            resourceInputs["projectName"] = state ? state.projectName : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["policy"] = state?.policy;
+            resourceInputs["projectName"] = state?.projectName;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["policy"] = args ? args.policy : undefined;
-            resourceInputs["projectName"] = args ? args.projectName : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["policy"] = args?.policy;
+            resourceInputs["projectName"] = args?.projectName;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

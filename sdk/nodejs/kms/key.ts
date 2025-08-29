@@ -65,45 +65,45 @@ export class Key extends pulumi.CustomResource {
     /**
      * The ARN of the key.
      */
-    public /*out*/ readonly arn!: pulumi.Output<string>;
+    declare public /*out*/ readonly arn: pulumi.Output<string>;
     /**
      * Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
      */
-    public readonly automaticRotation!: pulumi.Output<string>;
+    declare public readonly automaticRotation: pulumi.Output<string>;
     /**
      * The time when the CMK was created.
      */
-    public /*out*/ readonly creationDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationDate: pulumi.Output<string>;
     /**
      * The creator of the CMK.
      */
-    public /*out*/ readonly creator!: pulumi.Output<string>;
+    declare public /*out*/ readonly creator: pulumi.Output<string>;
     /**
      * The time at which the CMK is scheduled for deletion.
      */
-    public /*out*/ readonly deleteDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly deleteDate: pulumi.Output<string>;
     /**
      * Specifies whether to enable deletion protection. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
      */
-    public readonly deletionProtection!: pulumi.Output<string>;
+    declare public readonly deletionProtection: pulumi.Output<string>;
     /**
      * The description of deletion protection. **NOTE:** `deletionProtectionDescription` takes effect only if `deletionProtection` is set to `Enabled`.
      */
-    public readonly deletionProtectionDescription!: pulumi.Output<string | undefined>;
+    declare public readonly deletionProtectionDescription: pulumi.Output<string | undefined>;
     /**
      * Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
      *
      * @deprecated Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
      */
-    public readonly deletionWindowInDays!: pulumi.Output<number | undefined>;
+    declare public readonly deletionWindowInDays: pulumi.Output<number | undefined>;
     /**
      * The description of the key.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The ID of the KMS instance.
      */
-    public readonly dkmsInstanceId!: pulumi.Output<string>;
+    declare public readonly dkmsInstanceId: pulumi.Output<string>;
     /**
      * Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
      *
@@ -115,67 +115,67 @@ export class Key extends pulumi.CustomResource {
      *
      * @deprecated Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
      */
-    public readonly isEnabled!: pulumi.Output<boolean>;
+    declare public readonly isEnabled: pulumi.Output<boolean>;
     /**
      * The specification of the key. Default value: `Aliyun_AES_256`. Valid values: `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
      */
-    public readonly keySpec!: pulumi.Output<string>;
+    declare public readonly keySpec: pulumi.Output<string>;
     /**
      * Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
      *
      * @deprecated Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
      */
-    public readonly keyState!: pulumi.Output<string>;
+    declare public readonly keyState: pulumi.Output<string>;
     /**
      * The usage of the key. Default value: `ENCRYPT/DECRYPT`. Valid values:
      * - `ENCRYPT/DECRYPT`: Encrypts or decrypts data.
      * - `SIGN/VERIFY`: Generates or verifies a digital signature.
      */
-    public readonly keyUsage!: pulumi.Output<string>;
+    declare public readonly keyUsage: pulumi.Output<string>;
     /**
      * The time when the last rotation was performed.
      */
-    public /*out*/ readonly lastRotationDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastRotationDate: pulumi.Output<string>;
     /**
      * The time when the key material expires.
      */
-    public /*out*/ readonly materialExpireTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly materialExpireTime: pulumi.Output<string>;
     /**
      * The time when the next rotation will be performed.
      */
-    public /*out*/ readonly nextRotationDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly nextRotationDate: pulumi.Output<string>;
     /**
      * The key material origin. Default value: `Aliyun_KMS`. Valid values: `Aliyun_KMS`, `EXTERNAL`.
      */
-    public readonly origin!: pulumi.Output<string>;
+    declare public readonly origin: pulumi.Output<string>;
     /**
      * The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
      */
-    public readonly pendingWindowInDays!: pulumi.Output<number | undefined>;
+    declare public readonly pendingWindowInDays: pulumi.Output<number | undefined>;
     /**
      * The content of the key policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setkeypolicy).
      */
-    public readonly policy!: pulumi.Output<string>;
+    declare public readonly policy: pulumi.Output<string>;
     /**
      * The ID of the current primary key version of the symmetric CMK.
      */
-    public /*out*/ readonly primaryKeyVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly primaryKeyVersion: pulumi.Output<string>;
     /**
      * The protection level of the key. Default value: `SOFTWARE`. Valid values: `SOFTWARE`, `HSM`.
      */
-    public readonly protectionLevel!: pulumi.Output<string | undefined>;
+    declare public readonly protectionLevel: pulumi.Output<string | undefined>;
     /**
      * The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
      */
-    public readonly rotationInterval!: pulumi.Output<string | undefined>;
+    declare public readonly rotationInterval: pulumi.Output<string | undefined>;
     /**
      * The status of key. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Key resource with the given unique name, arguments, and options.
@@ -190,50 +190,50 @@ export class Key extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KeyState | undefined;
-            resourceInputs["arn"] = state ? state.arn : undefined;
-            resourceInputs["automaticRotation"] = state ? state.automaticRotation : undefined;
-            resourceInputs["creationDate"] = state ? state.creationDate : undefined;
-            resourceInputs["creator"] = state ? state.creator : undefined;
-            resourceInputs["deleteDate"] = state ? state.deleteDate : undefined;
-            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            resourceInputs["deletionProtectionDescription"] = state ? state.deletionProtectionDescription : undefined;
-            resourceInputs["deletionWindowInDays"] = state ? state.deletionWindowInDays : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dkmsInstanceId"] = state ? state.dkmsInstanceId : undefined;
-            resourceInputs["isEnabled"] = state ? state.isEnabled : undefined;
-            resourceInputs["keySpec"] = state ? state.keySpec : undefined;
-            resourceInputs["keyState"] = state ? state.keyState : undefined;
-            resourceInputs["keyUsage"] = state ? state.keyUsage : undefined;
-            resourceInputs["lastRotationDate"] = state ? state.lastRotationDate : undefined;
-            resourceInputs["materialExpireTime"] = state ? state.materialExpireTime : undefined;
-            resourceInputs["nextRotationDate"] = state ? state.nextRotationDate : undefined;
-            resourceInputs["origin"] = state ? state.origin : undefined;
-            resourceInputs["pendingWindowInDays"] = state ? state.pendingWindowInDays : undefined;
-            resourceInputs["policy"] = state ? state.policy : undefined;
-            resourceInputs["primaryKeyVersion"] = state ? state.primaryKeyVersion : undefined;
-            resourceInputs["protectionLevel"] = state ? state.protectionLevel : undefined;
-            resourceInputs["rotationInterval"] = state ? state.rotationInterval : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["arn"] = state?.arn;
+            resourceInputs["automaticRotation"] = state?.automaticRotation;
+            resourceInputs["creationDate"] = state?.creationDate;
+            resourceInputs["creator"] = state?.creator;
+            resourceInputs["deleteDate"] = state?.deleteDate;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["deletionProtectionDescription"] = state?.deletionProtectionDescription;
+            resourceInputs["deletionWindowInDays"] = state?.deletionWindowInDays;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dkmsInstanceId"] = state?.dkmsInstanceId;
+            resourceInputs["isEnabled"] = state?.isEnabled;
+            resourceInputs["keySpec"] = state?.keySpec;
+            resourceInputs["keyState"] = state?.keyState;
+            resourceInputs["keyUsage"] = state?.keyUsage;
+            resourceInputs["lastRotationDate"] = state?.lastRotationDate;
+            resourceInputs["materialExpireTime"] = state?.materialExpireTime;
+            resourceInputs["nextRotationDate"] = state?.nextRotationDate;
+            resourceInputs["origin"] = state?.origin;
+            resourceInputs["pendingWindowInDays"] = state?.pendingWindowInDays;
+            resourceInputs["policy"] = state?.policy;
+            resourceInputs["primaryKeyVersion"] = state?.primaryKeyVersion;
+            resourceInputs["protectionLevel"] = state?.protectionLevel;
+            resourceInputs["rotationInterval"] = state?.rotationInterval;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as KeyArgs | undefined;
-            resourceInputs["automaticRotation"] = args ? args.automaticRotation : undefined;
-            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            resourceInputs["deletionProtectionDescription"] = args ? args.deletionProtectionDescription : undefined;
-            resourceInputs["deletionWindowInDays"] = args ? args.deletionWindowInDays : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dkmsInstanceId"] = args ? args.dkmsInstanceId : undefined;
-            resourceInputs["isEnabled"] = args ? args.isEnabled : undefined;
-            resourceInputs["keySpec"] = args ? args.keySpec : undefined;
-            resourceInputs["keyState"] = args ? args.keyState : undefined;
-            resourceInputs["keyUsage"] = args ? args.keyUsage : undefined;
-            resourceInputs["origin"] = args ? args.origin : undefined;
-            resourceInputs["pendingWindowInDays"] = args ? args.pendingWindowInDays : undefined;
-            resourceInputs["policy"] = args ? args.policy : undefined;
-            resourceInputs["protectionLevel"] = args ? args.protectionLevel : undefined;
-            resourceInputs["rotationInterval"] = args ? args.rotationInterval : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["automaticRotation"] = args?.automaticRotation;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["deletionProtectionDescription"] = args?.deletionProtectionDescription;
+            resourceInputs["deletionWindowInDays"] = args?.deletionWindowInDays;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dkmsInstanceId"] = args?.dkmsInstanceId;
+            resourceInputs["isEnabled"] = args?.isEnabled;
+            resourceInputs["keySpec"] = args?.keySpec;
+            resourceInputs["keyState"] = args?.keyState;
+            resourceInputs["keyUsage"] = args?.keyUsage;
+            resourceInputs["origin"] = args?.origin;
+            resourceInputs["pendingWindowInDays"] = args?.pendingWindowInDays;
+            resourceInputs["policy"] = args?.policy;
+            resourceInputs["protectionLevel"] = args?.protectionLevel;
+            resourceInputs["rotationInterval"] = args?.rotationInterval;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["arn"] = undefined /*out*/;
             resourceInputs["creationDate"] = undefined /*out*/;
             resourceInputs["creator"] = undefined /*out*/;

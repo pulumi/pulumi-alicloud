@@ -49,25 +49,20 @@ class ProviderArgs:
                  source_ip: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
-        :param pulumi.Input[_builtins.str] access_key: The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-               console.
-        :param pulumi.Input[_builtins.str] account_id: The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
-               Alibaba Cloud console.
+        :param pulumi.Input[_builtins.str] access_key: The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
+        :param pulumi.Input[_builtins.str] account_id: The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the Alibaba Cloud console.
         :param pulumi.Input[_builtins.int] client_connect_timeout: The maximum timeout of the client connection server.
         :param pulumi.Input[_builtins.int] client_read_timeout: The maximum timeout of the client read request.
         :param pulumi.Input[_builtins.str] credentials_uri: The URI of sidecar credentials service.
-        :param pulumi.Input[_builtins.str] ecs_role_name: The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
-               of the Alibaba Cloud console.
+        :param pulumi.Input[_builtins.str] ecs_role_name: The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section of the Alibaba Cloud console.
         :param pulumi.Input[_builtins.int] max_retry_timeout: The maximum retry timeout of the request.
         :param pulumi.Input[_builtins.str] profile: The profile for API operations. If not set, the default profile created with `aliyun configure` will be used.
         :param pulumi.Input[_builtins.str] region: The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
-        :param pulumi.Input[_builtins.str] secret_key: The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-               console.
+        :param pulumi.Input[_builtins.str] secret_key: The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
         :param pulumi.Input[_builtins.str] secure_transport: The security transport for the assume role invoking.
         :param pulumi.Input[_builtins.str] security_token: security token. A security token is only required if you are using Security Token Service.
         :param pulumi.Input[_builtins.str] shared_credentials_file: The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
-        :param pulumi.Input[_builtins.bool] skip_region_validation: Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
-               that are not public (yet).
+        :param pulumi.Input[_builtins.bool] skip_region_validation: Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
         :param pulumi.Input[_builtins.str] source_ip: The source ip for the assume role invoking.
         """
         if access_key is not None:
@@ -147,8 +142,7 @@ class ProviderArgs:
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-        console.
+        The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
         """
         return pulumi.get(self, "access_key")
 
@@ -160,8 +154,7 @@ class ProviderArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
-        Alibaba Cloud console.
+        The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the Alibaba Cloud console.
         """
         return pulumi.get(self, "account_id")
 
@@ -245,8 +238,7 @@ class ProviderArgs:
     @pulumi.getter(name="ecsRoleName")
     def ecs_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
-        of the Alibaba Cloud console.
+        The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section of the Alibaba Cloud console.
         """
         return pulumi.get(self, "ecs_role_name")
 
@@ -352,8 +344,7 @@ class ProviderArgs:
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-        console.
+        The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
         """
         return pulumi.get(self, "secret_key")
 
@@ -419,8 +410,7 @@ class ProviderArgs:
     @pulumi.getter(name="skipRegionValidation")
     def skip_region_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
-        that are not public (yet).
+        Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
         """
         return pulumi.get(self, "skip_region_validation")
 
@@ -483,25 +473,20 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_key: The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-               console.
-        :param pulumi.Input[_builtins.str] account_id: The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
-               Alibaba Cloud console.
+        :param pulumi.Input[_builtins.str] access_key: The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
+        :param pulumi.Input[_builtins.str] account_id: The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the Alibaba Cloud console.
         :param pulumi.Input[_builtins.int] client_connect_timeout: The maximum timeout of the client connection server.
         :param pulumi.Input[_builtins.int] client_read_timeout: The maximum timeout of the client read request.
         :param pulumi.Input[_builtins.str] credentials_uri: The URI of sidecar credentials service.
-        :param pulumi.Input[_builtins.str] ecs_role_name: The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
-               of the Alibaba Cloud console.
+        :param pulumi.Input[_builtins.str] ecs_role_name: The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section of the Alibaba Cloud console.
         :param pulumi.Input[_builtins.int] max_retry_timeout: The maximum retry timeout of the request.
         :param pulumi.Input[_builtins.str] profile: The profile for API operations. If not set, the default profile created with `aliyun configure` will be used.
         :param pulumi.Input[_builtins.str] region: The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
-        :param pulumi.Input[_builtins.str] secret_key: The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-               console.
+        :param pulumi.Input[_builtins.str] secret_key: The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
         :param pulumi.Input[_builtins.str] secure_transport: The security transport for the assume role invoking.
         :param pulumi.Input[_builtins.str] security_token: security token. A security token is only required if you are using Security Token Service.
         :param pulumi.Input[_builtins.str] shared_credentials_file: The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
-        :param pulumi.Input[_builtins.bool] skip_region_validation: Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
-               that are not public (yet).
+        :param pulumi.Input[_builtins.bool] skip_region_validation: Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
         :param pulumi.Input[_builtins.str] source_ip: The source ip for the assume role invoking.
         """
         ...
@@ -610,8 +595,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="accessKey")
     def access_key(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-        console.
+        The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
         """
         return pulumi.get(self, "access_key")
 
@@ -619,8 +603,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
-        Alibaba Cloud console.
+        The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the Alibaba Cloud console.
         """
         return pulumi.get(self, "account_id")
 
@@ -646,8 +629,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="ecsRoleName")
     def ecs_role_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
-        of the Alibaba Cloud console.
+        The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section of the Alibaba Cloud console.
         """
         return pulumi.get(self, "ecs_role_name")
 
@@ -700,8 +682,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-        console.
+        The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
         """
         return pulumi.get(self, "secret_key")
 

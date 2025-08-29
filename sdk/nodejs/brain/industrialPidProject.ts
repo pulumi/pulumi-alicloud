@@ -64,15 +64,15 @@ export class IndustrialPidProject extends pulumi.CustomResource {
     /**
      * The ID of Pid Organization.
      */
-    public readonly pidOrganizationId!: pulumi.Output<string>;
+    declare public readonly pidOrganizationId: pulumi.Output<string>;
     /**
      * The description of Pid Project.
      */
-    public readonly pidProjectDesc!: pulumi.Output<string | undefined>;
+    declare public readonly pidProjectDesc: pulumi.Output<string | undefined>;
     /**
      * The name of Pid Project.
      */
-    public readonly pidProjectName!: pulumi.Output<string>;
+    declare public readonly pidProjectName: pulumi.Output<string>;
 
     /**
      * Create a IndustrialPidProject resource with the given unique name, arguments, and options.
@@ -87,20 +87,20 @@ export class IndustrialPidProject extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IndustrialPidProjectState | undefined;
-            resourceInputs["pidOrganizationId"] = state ? state.pidOrganizationId : undefined;
-            resourceInputs["pidProjectDesc"] = state ? state.pidProjectDesc : undefined;
-            resourceInputs["pidProjectName"] = state ? state.pidProjectName : undefined;
+            resourceInputs["pidOrganizationId"] = state?.pidOrganizationId;
+            resourceInputs["pidProjectDesc"] = state?.pidProjectDesc;
+            resourceInputs["pidProjectName"] = state?.pidProjectName;
         } else {
             const args = argsOrState as IndustrialPidProjectArgs | undefined;
-            if ((!args || args.pidOrganizationId === undefined) && !opts.urn) {
+            if (args?.pidOrganizationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pidOrganizationId'");
             }
-            if ((!args || args.pidProjectName === undefined) && !opts.urn) {
+            if (args?.pidProjectName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pidProjectName'");
             }
-            resourceInputs["pidOrganizationId"] = args ? args.pidOrganizationId : undefined;
-            resourceInputs["pidProjectDesc"] = args ? args.pidProjectDesc : undefined;
-            resourceInputs["pidProjectName"] = args ? args.pidProjectName : undefined;
+            resourceInputs["pidOrganizationId"] = args?.pidOrganizationId;
+            resourceInputs["pidProjectDesc"] = args?.pidProjectDesc;
+            resourceInputs["pidProjectName"] = args?.pidProjectName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IndustrialPidProject.__pulumiType, name, resourceInputs, opts);

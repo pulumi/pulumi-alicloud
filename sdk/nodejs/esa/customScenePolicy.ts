@@ -80,28 +80,28 @@ export class CustomScenePolicy extends pulumi.CustomResource {
      * The time when the policy takes effect.
      * The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
-    public readonly createTime!: pulumi.Output<string>;
+    declare public readonly createTime: pulumi.Output<string>;
     /**
      * The policy name.
      */
-    public readonly customScenePolicyName!: pulumi.Output<string>;
+    declare public readonly customScenePolicyName: pulumi.Output<string>;
     /**
      * The time when the policy expires.
      * The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
-    public readonly endTime!: pulumi.Output<string>;
+    declare public readonly endTime: pulumi.Output<string>;
     /**
      * The IDs of websites associated.
      */
-    public readonly siteIds!: pulumi.Output<string>;
+    declare public readonly siteIds: pulumi.Output<string>;
     /**
      * Policy effective status. Valid values: `Disabled`, `Running`.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The name of the policy template. Valid value:
      */
-    public readonly template!: pulumi.Output<string>;
+    declare public readonly template: pulumi.Output<string>;
 
     /**
      * Create a CustomScenePolicy resource with the given unique name, arguments, and options.
@@ -116,35 +116,35 @@ export class CustomScenePolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomScenePolicyState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["customScenePolicyName"] = state ? state.customScenePolicyName : undefined;
-            resourceInputs["endTime"] = state ? state.endTime : undefined;
-            resourceInputs["siteIds"] = state ? state.siteIds : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["template"] = state ? state.template : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["customScenePolicyName"] = state?.customScenePolicyName;
+            resourceInputs["endTime"] = state?.endTime;
+            resourceInputs["siteIds"] = state?.siteIds;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["template"] = state?.template;
         } else {
             const args = argsOrState as CustomScenePolicyArgs | undefined;
-            if ((!args || args.createTime === undefined) && !opts.urn) {
+            if (args?.createTime === undefined && !opts.urn) {
                 throw new Error("Missing required property 'createTime'");
             }
-            if ((!args || args.customScenePolicyName === undefined) && !opts.urn) {
+            if (args?.customScenePolicyName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'customScenePolicyName'");
             }
-            if ((!args || args.endTime === undefined) && !opts.urn) {
+            if (args?.endTime === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endTime'");
             }
-            if ((!args || args.siteIds === undefined) && !opts.urn) {
+            if (args?.siteIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteIds'");
             }
-            if ((!args || args.template === undefined) && !opts.urn) {
+            if (args?.template === undefined && !opts.urn) {
                 throw new Error("Missing required property 'template'");
             }
-            resourceInputs["createTime"] = args ? args.createTime : undefined;
-            resourceInputs["customScenePolicyName"] = args ? args.customScenePolicyName : undefined;
-            resourceInputs["endTime"] = args ? args.endTime : undefined;
-            resourceInputs["siteIds"] = args ? args.siteIds : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["template"] = args ? args.template : undefined;
+            resourceInputs["createTime"] = args?.createTime;
+            resourceInputs["customScenePolicyName"] = args?.customScenePolicyName;
+            resourceInputs["endTime"] = args?.endTime;
+            resourceInputs["siteIds"] = args?.siteIds;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["template"] = args?.template;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CustomScenePolicy.__pulumiType, name, resourceInputs, opts);

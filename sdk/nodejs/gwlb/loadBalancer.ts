@@ -54,41 +54,41 @@ export class LoadBalancer extends pulumi.CustomResource {
      *
      * - `Ipv4`: IPv4 (default)
      */
-    public readonly addressIpVersion!: pulumi.Output<string>;
+    declare public readonly addressIpVersion: pulumi.Output<string>;
     /**
      * The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Specifies whether to perform a dry run, without performing the actual request. Valid values:
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * The GWLB instance name.
      *
      * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
      */
-    public readonly loadBalancerName!: pulumi.Output<string | undefined>;
+    declare public readonly loadBalancerName: pulumi.Output<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The GWLB instance status.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tag keys. You can specify at most 20 tags in each call.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The virtual private cloud (VPC) ID.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zoneMappings` below.
      */
-    public readonly zoneMappings!: pulumi.Output<outputs.gwlb.LoadBalancerZoneMapping[]>;
+    declare public readonly zoneMappings: pulumi.Output<outputs.gwlb.LoadBalancerZoneMapping[]>;
 
     /**
      * Create a LoadBalancer resource with the given unique name, arguments, and options.
@@ -103,30 +103,30 @@ export class LoadBalancer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadBalancerState | undefined;
-            resourceInputs["addressIpVersion"] = state ? state.addressIpVersion : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["loadBalancerName"] = state ? state.loadBalancerName : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["zoneMappings"] = state ? state.zoneMappings : undefined;
+            resourceInputs["addressIpVersion"] = state?.addressIpVersion;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["loadBalancerName"] = state?.loadBalancerName;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["zoneMappings"] = state?.zoneMappings;
         } else {
             const args = argsOrState as LoadBalancerArgs | undefined;
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            if ((!args || args.zoneMappings === undefined) && !opts.urn) {
+            if (args?.zoneMappings === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneMappings'");
             }
-            resourceInputs["addressIpVersion"] = args ? args.addressIpVersion : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["loadBalancerName"] = args ? args.loadBalancerName : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["zoneMappings"] = args ? args.zoneMappings : undefined;
+            resourceInputs["addressIpVersion"] = args?.addressIpVersion;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["loadBalancerName"] = args?.loadBalancerName;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["zoneMappings"] = args?.zoneMappings;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

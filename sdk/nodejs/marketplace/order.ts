@@ -63,35 +63,35 @@ export class Order extends pulumi.CustomResource {
     /**
      * Service providers customize additional components.
      */
-    public readonly components!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly components: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The coupon id of the market product.
      */
-    public readonly couponId!: pulumi.Output<string | undefined>;
+    declare public readonly couponId: pulumi.Output<string | undefined>;
     /**
      * The number of purchase cycles.
      */
-    public readonly duration!: pulumi.Output<number | undefined>;
+    declare public readonly duration: pulumi.Output<number | undefined>;
     /**
      * The package version of the market product.
      */
-    public readonly packageVersion!: pulumi.Output<string>;
+    declare public readonly packageVersion: pulumi.Output<string>;
     /**
      * Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
      */
-    public readonly payType!: pulumi.Output<string | undefined>;
+    declare public readonly payType: pulumi.Output<string | undefined>;
     /**
      * The purchase cycle of the product, valid values are `Day`, `Month` and `Year`.
      */
-    public readonly pricingCycle!: pulumi.Output<string>;
+    declare public readonly pricingCycle: pulumi.Output<string>;
     /**
      * The productCode of market place product.
      */
-    public readonly productCode!: pulumi.Output<string>;
+    declare public readonly productCode: pulumi.Output<string>;
     /**
      * The quantity of the market product will be purchased.
      */
-    public readonly quantity!: pulumi.Output<number | undefined>;
+    declare public readonly quantity: pulumi.Output<number | undefined>;
 
     /**
      * Create a Order resource with the given unique name, arguments, and options.
@@ -106,33 +106,33 @@ export class Order extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrderState | undefined;
-            resourceInputs["components"] = state ? state.components : undefined;
-            resourceInputs["couponId"] = state ? state.couponId : undefined;
-            resourceInputs["duration"] = state ? state.duration : undefined;
-            resourceInputs["packageVersion"] = state ? state.packageVersion : undefined;
-            resourceInputs["payType"] = state ? state.payType : undefined;
-            resourceInputs["pricingCycle"] = state ? state.pricingCycle : undefined;
-            resourceInputs["productCode"] = state ? state.productCode : undefined;
-            resourceInputs["quantity"] = state ? state.quantity : undefined;
+            resourceInputs["components"] = state?.components;
+            resourceInputs["couponId"] = state?.couponId;
+            resourceInputs["duration"] = state?.duration;
+            resourceInputs["packageVersion"] = state?.packageVersion;
+            resourceInputs["payType"] = state?.payType;
+            resourceInputs["pricingCycle"] = state?.pricingCycle;
+            resourceInputs["productCode"] = state?.productCode;
+            resourceInputs["quantity"] = state?.quantity;
         } else {
             const args = argsOrState as OrderArgs | undefined;
-            if ((!args || args.packageVersion === undefined) && !opts.urn) {
+            if (args?.packageVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'packageVersion'");
             }
-            if ((!args || args.pricingCycle === undefined) && !opts.urn) {
+            if (args?.pricingCycle === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pricingCycle'");
             }
-            if ((!args || args.productCode === undefined) && !opts.urn) {
+            if (args?.productCode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'productCode'");
             }
-            resourceInputs["components"] = args ? args.components : undefined;
-            resourceInputs["couponId"] = args ? args.couponId : undefined;
-            resourceInputs["duration"] = args ? args.duration : undefined;
-            resourceInputs["packageVersion"] = args ? args.packageVersion : undefined;
-            resourceInputs["payType"] = args ? args.payType : undefined;
-            resourceInputs["pricingCycle"] = args ? args.pricingCycle : undefined;
-            resourceInputs["productCode"] = args ? args.productCode : undefined;
-            resourceInputs["quantity"] = args ? args.quantity : undefined;
+            resourceInputs["components"] = args?.components;
+            resourceInputs["couponId"] = args?.couponId;
+            resourceInputs["duration"] = args?.duration;
+            resourceInputs["packageVersion"] = args?.packageVersion;
+            resourceInputs["payType"] = args?.payType;
+            resourceInputs["pricingCycle"] = args?.pricingCycle;
+            resourceInputs["productCode"] = args?.productCode;
+            resourceInputs["quantity"] = args?.quantity;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Order.__pulumiType, name, resourceInputs, opts);

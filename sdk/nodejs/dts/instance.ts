@@ -78,25 +78,25 @@ export class Instance extends pulumi.CustomResource {
      * - **false**: No, the default value.
      * - **true**: Yes.
      */
-    public readonly autoPay!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoPay: pulumi.Output<boolean | undefined>;
     /**
      * Whether to start the task automatically after the purchase is completed. Value:
      * - **false**: No, the default value.
      * - **true**: Yes.
      */
-    public readonly autoStart!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoStart: pulumi.Output<boolean | undefined>;
     /**
      * Specifications of ETL. The unit is compute unit (CU),1CU = 1vCPU +4GB of memory. The value range is an integer greater than or equal to 2. **NOTE:** Enter this parameter and enable ETL to clean and convert data.
      */
-    public readonly computeUnit!: pulumi.Output<number | undefined>;
+    declare public readonly computeUnit: pulumi.Output<number | undefined>;
     /**
      * Instance creation time
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The number of private custom RDS instances in the PolarDB-X. The default value is **1**. **NOTE:** This parameter is required only when **source_endpoint_engine_name** is **DRDS**.
      */
-    public readonly databaseCount!: pulumi.Output<number>;
+    declare public readonly databaseCount: pulumi.Output<number>;
     /**
      * The target database engine type.
      * - **MySQL**:MySQL databases (including RDS MySQL and self-built MySQL).
@@ -125,50 +125,50 @@ export class Instance extends pulumi.CustomResource {
      * - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
      * - This parameter or **job_id** must be passed in.
      */
-    public readonly destinationEndpointEngineName!: pulumi.Output<string>;
+    declare public readonly destinationEndpointEngineName: pulumi.Output<string>;
     /**
      * The target instance region. For more information, see [List of supported regions](https://www.alibabacloud.com/help/en/data-transmission-service/latest/list-of-supported-regions). **NOTE:** This parameter or **job_id** must be passed in.
      */
-    public readonly destinationRegion!: pulumi.Output<string | undefined>;
+    declare public readonly destinationRegion: pulumi.Output<string | undefined>;
     /**
      * The ID of the subscription instance.
      */
-    public /*out*/ readonly dtsInstanceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly dtsInstanceId: pulumi.Output<string>;
     /**
      * Assign a specified number of DU resources to DTS tasks in the DTS exclusive cluster. Valid values: **1** ~ **100**. **NOTE:** The value of this parameter must be within the range of the number of DUs available for the DTS dedicated cluster.
      */
-    public readonly du!: pulumi.Output<number | undefined>;
+    declare public readonly du: pulumi.Output<number | undefined>;
     /**
      * Subscription billing type, Valid values: `ONLY_CONFIGURATION_FEE`: charges only configuration fees; `CONFIGURATION_FEE_AND_DATA_FEE`: charges configuration fees and data traffic fees.
      */
-    public readonly feeType!: pulumi.Output<string | undefined>;
+    declare public readonly feeType: pulumi.Output<string | undefined>;
     /**
      * The type of the migration or synchronization instance.
      * - The specifications of the migration instance: **xxlarge**, **xlarge**, **large**, **medium**, **small**.
      * - The types of synchronization instances: **large**, **medium**, **small**, **micro**.
      * - **NOTE:** For performance descriptions of different specifications, see [Data Migration Link Specifications](https://www.alibabacloud.com/help/en/data-transmission-service/latest/cd773b) and [Data Synchronization Link Specifications](https://www.alibabacloud.com/help/en/data-transmission-service/latest/6bce7c).
      */
-    public readonly instanceClass!: pulumi.Output<string | undefined>;
+    declare public readonly instanceClass: pulumi.Output<string | undefined>;
     /**
      * The name of Dts instance.
      */
-    public /*out*/ readonly instanceName!: pulumi.Output<string>;
+    declare public /*out*/ readonly instanceName: pulumi.Output<string>;
     /**
      * The ID of the task obtained by calling the **ConfigureDtsJob** operation (**DtsJobId**).> After you pass in this parameter, you do not need to pass the **source_region**, **destination_region**, **type**, **source_endpoint_engine_name**, or **destination_endpoint_engine_name** parameters. Even if the input is passed in, the configuration in **job_id** shall prevail.
      */
-    public readonly jobId!: pulumi.Output<string | undefined>;
+    declare public readonly jobId: pulumi.Output<string | undefined>;
     /**
      * The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`.
      */
-    public readonly paymentType!: pulumi.Output<string | undefined>;
+    declare public readonly paymentType: pulumi.Output<string | undefined>;
     /**
      * The billing method of the subscription instance. Value: `Year`, `Month`. **NOTE:** This parameter is valid and must be passed in only when `paymentType` is `Subscription`.
      */
-    public readonly period!: pulumi.Output<string | undefined>;
+    declare public readonly period: pulumi.Output<string | undefined>;
     /**
      * Resource Group ID.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Source instance database engine type.
      * - **MySQL**:MySQL databases (including RDS MySQL and self-built MySQL).
@@ -197,32 +197,32 @@ export class Instance extends pulumi.CustomResource {
      * - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
      * - This parameter or **job_id** must be passed in.
      */
-    public readonly sourceEndpointEngineName!: pulumi.Output<string>;
+    declare public readonly sourceEndpointEngineName: pulumi.Output<string>;
     /**
      * The source instance region. For more information, see [List of supported regions](https://www.alibabacloud.com/help/en/data-transmission-service/latest/list-of-supported-regions). **NOTE:** This parameter or **job_id** must be passed in.
      */
-    public readonly sourceRegion!: pulumi.Output<string | undefined>;
+    declare public readonly sourceRegion: pulumi.Output<string | undefined>;
     /**
      * Instance status.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Synchronization topology, value:
      * - **oneway**: one-way synchronization, the default value.
      * - **bidirectional**: two-way synchronization.
      */
-    public readonly syncArchitecture!: pulumi.Output<string | undefined>;
+    declare public readonly syncArchitecture: pulumi.Output<string | undefined>;
     /**
      * The synchronization direction. Default value: `Forward`. Valid values:
      * - `Forward`: Data is synchronized from the source database to the destination database.
      * - `Reverse`: Data is synchronized from the destination database to the source database.
      * - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
      */
-    public readonly synchronizationDirection!: pulumi.Output<string | undefined>;
+    declare public readonly synchronizationDirection: pulumi.Output<string | undefined>;
     /**
      * The tag value corresponding to the tag key.See the following `Block Tags`.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The instance type. Valid values:
      * - **migration**: MIGRATION.
@@ -230,7 +230,7 @@ export class Instance extends pulumi.CustomResource {
      * - **subscribe**: SUBSCRIBE.
      * - **NOTE:** This parameter or **job_id** must be passed in.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
     /**
      * Prepaid instance purchase duration.
      * - When **period** is **Month**, the values are: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
@@ -239,7 +239,7 @@ export class Instance extends pulumi.CustomResource {
      * - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
      * - The billing method of the subscription instance. You can set the parameter `period`.
      */
-    public readonly usedTime!: pulumi.Output<number | undefined>;
+    declare public readonly usedTime: pulumi.Output<number | undefined>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -254,52 +254,52 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["autoPay"] = state ? state.autoPay : undefined;
-            resourceInputs["autoStart"] = state ? state.autoStart : undefined;
-            resourceInputs["computeUnit"] = state ? state.computeUnit : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["databaseCount"] = state ? state.databaseCount : undefined;
-            resourceInputs["destinationEndpointEngineName"] = state ? state.destinationEndpointEngineName : undefined;
-            resourceInputs["destinationRegion"] = state ? state.destinationRegion : undefined;
-            resourceInputs["dtsInstanceId"] = state ? state.dtsInstanceId : undefined;
-            resourceInputs["du"] = state ? state.du : undefined;
-            resourceInputs["feeType"] = state ? state.feeType : undefined;
-            resourceInputs["instanceClass"] = state ? state.instanceClass : undefined;
-            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
-            resourceInputs["jobId"] = state ? state.jobId : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["sourceEndpointEngineName"] = state ? state.sourceEndpointEngineName : undefined;
-            resourceInputs["sourceRegion"] = state ? state.sourceRegion : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["syncArchitecture"] = state ? state.syncArchitecture : undefined;
-            resourceInputs["synchronizationDirection"] = state ? state.synchronizationDirection : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["usedTime"] = state ? state.usedTime : undefined;
+            resourceInputs["autoPay"] = state?.autoPay;
+            resourceInputs["autoStart"] = state?.autoStart;
+            resourceInputs["computeUnit"] = state?.computeUnit;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["databaseCount"] = state?.databaseCount;
+            resourceInputs["destinationEndpointEngineName"] = state?.destinationEndpointEngineName;
+            resourceInputs["destinationRegion"] = state?.destinationRegion;
+            resourceInputs["dtsInstanceId"] = state?.dtsInstanceId;
+            resourceInputs["du"] = state?.du;
+            resourceInputs["feeType"] = state?.feeType;
+            resourceInputs["instanceClass"] = state?.instanceClass;
+            resourceInputs["instanceName"] = state?.instanceName;
+            resourceInputs["jobId"] = state?.jobId;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["sourceEndpointEngineName"] = state?.sourceEndpointEngineName;
+            resourceInputs["sourceRegion"] = state?.sourceRegion;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["syncArchitecture"] = state?.syncArchitecture;
+            resourceInputs["synchronizationDirection"] = state?.synchronizationDirection;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["usedTime"] = state?.usedTime;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            resourceInputs["autoPay"] = args ? args.autoPay : undefined;
-            resourceInputs["autoStart"] = args ? args.autoStart : undefined;
-            resourceInputs["computeUnit"] = args ? args.computeUnit : undefined;
-            resourceInputs["databaseCount"] = args ? args.databaseCount : undefined;
-            resourceInputs["destinationEndpointEngineName"] = args ? args.destinationEndpointEngineName : undefined;
-            resourceInputs["destinationRegion"] = args ? args.destinationRegion : undefined;
-            resourceInputs["du"] = args ? args.du : undefined;
-            resourceInputs["feeType"] = args ? args.feeType : undefined;
-            resourceInputs["instanceClass"] = args ? args.instanceClass : undefined;
-            resourceInputs["jobId"] = args ? args.jobId : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["sourceEndpointEngineName"] = args ? args.sourceEndpointEngineName : undefined;
-            resourceInputs["sourceRegion"] = args ? args.sourceRegion : undefined;
-            resourceInputs["syncArchitecture"] = args ? args.syncArchitecture : undefined;
-            resourceInputs["synchronizationDirection"] = args ? args.synchronizationDirection : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["usedTime"] = args ? args.usedTime : undefined;
+            resourceInputs["autoPay"] = args?.autoPay;
+            resourceInputs["autoStart"] = args?.autoStart;
+            resourceInputs["computeUnit"] = args?.computeUnit;
+            resourceInputs["databaseCount"] = args?.databaseCount;
+            resourceInputs["destinationEndpointEngineName"] = args?.destinationEndpointEngineName;
+            resourceInputs["destinationRegion"] = args?.destinationRegion;
+            resourceInputs["du"] = args?.du;
+            resourceInputs["feeType"] = args?.feeType;
+            resourceInputs["instanceClass"] = args?.instanceClass;
+            resourceInputs["jobId"] = args?.jobId;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["sourceEndpointEngineName"] = args?.sourceEndpointEngineName;
+            resourceInputs["sourceRegion"] = args?.sourceRegion;
+            resourceInputs["syncArchitecture"] = args?.syncArchitecture;
+            resourceInputs["synchronizationDirection"] = args?.synchronizationDirection;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["usedTime"] = args?.usedTime;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["dtsInstanceId"] = undefined /*out*/;
             resourceInputs["instanceName"] = undefined /*out*/;

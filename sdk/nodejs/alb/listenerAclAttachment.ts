@@ -54,21 +54,21 @@ export class ListenerAclAttachment extends pulumi.CustomResource {
     /**
      * The ID list of the access policy group bound by the listener.
      */
-    public readonly aclId!: pulumi.Output<string>;
+    declare public readonly aclId: pulumi.Output<string>;
     /**
      * Access control type:
      * - **White**: only requests from IP addresses or address segments in the selected access control list are forwarded. The whitelist applies to scenarios where only specific IP addresses are allowed to access. There are certain business risks in setting up a whitelist. Once the whitelist is set, only the IP addresses in the whitelist can access the load balancer listener. If whitelist access is enabled but no IP addresses are added to the access policy group, the server load balancer listener forwards all requests.
      * - **Black**: All requests from IP addresses or address segments in the selected access control list are not forwarded. Blacklists are applicable to scenarios where only certain IP addresses are restricted. If blacklist access is enabled and no IP is added to the access policy group, the server load balancer listener forwards all requests.
      */
-    public readonly aclType!: pulumi.Output<string>;
+    declare public readonly aclType: pulumi.Output<string>;
     /**
      * Listener instance ID.
      */
-    public readonly listenerId!: pulumi.Output<string>;
+    declare public readonly listenerId: pulumi.Output<string>;
     /**
      * Listener Status.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a ListenerAclAttachment resource with the given unique name, arguments, and options.
@@ -83,24 +83,24 @@ export class ListenerAclAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ListenerAclAttachmentState | undefined;
-            resourceInputs["aclId"] = state ? state.aclId : undefined;
-            resourceInputs["aclType"] = state ? state.aclType : undefined;
-            resourceInputs["listenerId"] = state ? state.listenerId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["aclId"] = state?.aclId;
+            resourceInputs["aclType"] = state?.aclType;
+            resourceInputs["listenerId"] = state?.listenerId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as ListenerAclAttachmentArgs | undefined;
-            if ((!args || args.aclId === undefined) && !opts.urn) {
+            if (args?.aclId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aclId'");
             }
-            if ((!args || args.aclType === undefined) && !opts.urn) {
+            if (args?.aclType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aclType'");
             }
-            if ((!args || args.listenerId === undefined) && !opts.urn) {
+            if (args?.listenerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'listenerId'");
             }
-            resourceInputs["aclId"] = args ? args.aclId : undefined;
-            resourceInputs["aclType"] = args ? args.aclType : undefined;
-            resourceInputs["listenerId"] = args ? args.listenerId : undefined;
+            resourceInputs["aclId"] = args?.aclId;
+            resourceInputs["aclType"] = args?.aclType;
+            resourceInputs["listenerId"] = args?.listenerId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

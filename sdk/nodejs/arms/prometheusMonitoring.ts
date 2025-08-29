@@ -50,23 +50,23 @@ export class PrometheusMonitoring extends pulumi.CustomResource {
     /**
      * The ID of the prometheus instance.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * Yaml configuration for monitoring.
      */
-    public readonly configYaml!: pulumi.Output<string>;
+    declare public readonly configYaml: pulumi.Output<string>;
     /**
      * The name of the resource.
      */
-    public /*out*/ readonly monitoringName!: pulumi.Output<string>;
+    declare public /*out*/ readonly monitoringName: pulumi.Output<string>;
     /**
      * Valid values: `stop`, `run`.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * Monitoring type: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a PrometheusMonitoring resource with the given unique name, arguments, and options.
@@ -81,26 +81,26 @@ export class PrometheusMonitoring extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PrometheusMonitoringState | undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["configYaml"] = state ? state.configYaml : undefined;
-            resourceInputs["monitoringName"] = state ? state.monitoringName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["configYaml"] = state?.configYaml;
+            resourceInputs["monitoringName"] = state?.monitoringName;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as PrometheusMonitoringArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.configYaml === undefined) && !opts.urn) {
+            if (args?.configYaml === undefined && !opts.urn) {
                 throw new Error("Missing required property 'configYaml'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["configYaml"] = args ? args.configYaml : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["configYaml"] = args?.configYaml;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["type"] = args?.type;
             resourceInputs["monitoringName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

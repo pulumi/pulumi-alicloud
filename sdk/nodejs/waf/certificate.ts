@@ -72,27 +72,27 @@ export class Certificate extends pulumi.CustomResource {
     /**
      * Certificate file content.
      */
-    public readonly certificate!: pulumi.Output<string | undefined>;
+    declare public readonly certificate: pulumi.Output<string | undefined>;
     /**
      * The certificate id is automatically generated when you upload your certificate content.**NOTE:** you can also use Certificate ID saved in SSL.
      */
-    public readonly certificateId!: pulumi.Output<string>;
+    declare public readonly certificateId: pulumi.Output<string>;
     /**
      * Certificate file name.
      */
-    public readonly certificateName!: pulumi.Output<string>;
+    declare public readonly certificateName: pulumi.Output<string>;
     /**
      * The domain that you want to add to WAF.
      */
-    public readonly domain!: pulumi.Output<string>;
+    declare public readonly domain: pulumi.Output<string>;
     /**
      * The ID of the WAF instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The private key.
      */
-    public readonly privateKey!: pulumi.Output<string | undefined>;
+    declare public readonly privateKey: pulumi.Output<string | undefined>;
 
     /**
      * Create a Certificate resource with the given unique name, arguments, and options.
@@ -107,26 +107,26 @@ export class Certificate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CertificateState | undefined;
-            resourceInputs["certificate"] = state ? state.certificate : undefined;
-            resourceInputs["certificateId"] = state ? state.certificateId : undefined;
-            resourceInputs["certificateName"] = state ? state.certificateName : undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
+            resourceInputs["certificate"] = state?.certificate;
+            resourceInputs["certificateId"] = state?.certificateId;
+            resourceInputs["certificateName"] = state?.certificateName;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["privateKey"] = state?.privateKey;
         } else {
             const args = argsOrState as CertificateArgs | undefined;
-            if ((!args || args.domain === undefined) && !opts.urn) {
+            if (args?.domain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domain'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["certificate"] = args ? args.certificate : undefined;
-            resourceInputs["certificateId"] = args ? args.certificateId : undefined;
-            resourceInputs["certificateName"] = args ? args.certificateName : undefined;
-            resourceInputs["domain"] = args ? args.domain : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["privateKey"] = args ? args.privateKey : undefined;
+            resourceInputs["certificate"] = args?.certificate;
+            resourceInputs["certificateId"] = args?.certificateId;
+            resourceInputs["certificateName"] = args?.certificateName;
+            resourceInputs["domain"] = args?.domain;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["privateKey"] = args?.privateKey;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Certificate.__pulumiType, name, resourceInputs, opts);

@@ -143,19 +143,19 @@ export class Attachment extends pulumi.CustomResource {
     /**
      * Specifies whether the scaling group manages the lifecycles of the instances that are manually added to the scaling group.
      */
-    public readonly entrusted!: pulumi.Output<boolean | undefined>;
+    declare public readonly entrusted: pulumi.Output<boolean | undefined>;
     /**
      * Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
      */
-    public readonly force!: pulumi.Output<boolean | undefined>;
+    declare public readonly force: pulumi.Output<boolean | undefined>;
     /**
      * ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
      */
-    public readonly instanceIds!: pulumi.Output<string[]>;
+    declare public readonly instanceIds: pulumi.Output<string[]>;
     /**
      * Specifies whether to trigger a lifecycle hook for the scaling group to which instances are being added.
      */
-    public readonly lifecycleHook!: pulumi.Output<boolean | undefined>;
+    declare public readonly lifecycleHook: pulumi.Output<boolean | undefined>;
     /**
      * The weight of ECS instance N or elastic container instance N as a backend server of the associated Server Load Balancer (SLB) instance. Valid values of N: 1 to 20. Valid values of this parameter: 1 to 100.
      *
@@ -169,11 +169,11 @@ export class Attachment extends pulumi.CustomResource {
      * - The attached ECS instances has not been attached to other scaling groups.
      * - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
      */
-    public readonly loadBalancerWeights!: pulumi.Output<number[]>;
+    declare public readonly loadBalancerWeights: pulumi.Output<number[]>;
     /**
      * ID of the scaling group of a scaling configuration.
      */
-    public readonly scalingGroupId!: pulumi.Output<string>;
+    declare public readonly scalingGroupId: pulumi.Output<string>;
 
     /**
      * Create a Attachment resource with the given unique name, arguments, and options.
@@ -188,26 +188,26 @@ export class Attachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AttachmentState | undefined;
-            resourceInputs["entrusted"] = state ? state.entrusted : undefined;
-            resourceInputs["force"] = state ? state.force : undefined;
-            resourceInputs["instanceIds"] = state ? state.instanceIds : undefined;
-            resourceInputs["lifecycleHook"] = state ? state.lifecycleHook : undefined;
-            resourceInputs["loadBalancerWeights"] = state ? state.loadBalancerWeights : undefined;
-            resourceInputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
+            resourceInputs["entrusted"] = state?.entrusted;
+            resourceInputs["force"] = state?.force;
+            resourceInputs["instanceIds"] = state?.instanceIds;
+            resourceInputs["lifecycleHook"] = state?.lifecycleHook;
+            resourceInputs["loadBalancerWeights"] = state?.loadBalancerWeights;
+            resourceInputs["scalingGroupId"] = state?.scalingGroupId;
         } else {
             const args = argsOrState as AttachmentArgs | undefined;
-            if ((!args || args.instanceIds === undefined) && !opts.urn) {
+            if (args?.instanceIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceIds'");
             }
-            if ((!args || args.scalingGroupId === undefined) && !opts.urn) {
+            if (args?.scalingGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scalingGroupId'");
             }
-            resourceInputs["entrusted"] = args ? args.entrusted : undefined;
-            resourceInputs["force"] = args ? args.force : undefined;
-            resourceInputs["instanceIds"] = args ? args.instanceIds : undefined;
-            resourceInputs["lifecycleHook"] = args ? args.lifecycleHook : undefined;
-            resourceInputs["loadBalancerWeights"] = args ? args.loadBalancerWeights : undefined;
-            resourceInputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
+            resourceInputs["entrusted"] = args?.entrusted;
+            resourceInputs["force"] = args?.force;
+            resourceInputs["instanceIds"] = args?.instanceIds;
+            resourceInputs["lifecycleHook"] = args?.lifecycleHook;
+            resourceInputs["loadBalancerWeights"] = args?.loadBalancerWeights;
+            resourceInputs["scalingGroupId"] = args?.scalingGroupId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Attachment.__pulumiType, name, resourceInputs, opts);

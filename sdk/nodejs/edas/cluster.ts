@@ -74,23 +74,23 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The name of the cluster that you want to create.
      */
-    public readonly clusterName!: pulumi.Output<string>;
+    declare public readonly clusterName: pulumi.Output<string>;
     /**
      * The type of the cluster that you want to create. Valid values only: 2: ECS cluster.
      */
-    public readonly clusterType!: pulumi.Output<number>;
+    declare public readonly clusterType: pulumi.Output<number>;
     /**
      * The ID of the namespace where you want to create the application. You can call the ListUserDefineRegion operation to query the namespace ID.
      */
-    public readonly logicalRegionId!: pulumi.Output<string | undefined>;
+    declare public readonly logicalRegionId: pulumi.Output<string | undefined>;
     /**
      * The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
      */
-    public readonly networkMode!: pulumi.Output<number>;
+    declare public readonly networkMode: pulumi.Output<number>;
     /**
      * The ID of the Virtual Private Cloud (VPC) for the cluster.
      */
-    public readonly vpcId!: pulumi.Output<string | undefined>;
+    declare public readonly vpcId: pulumi.Output<string | undefined>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -105,27 +105,27 @@ export class Cluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
-            resourceInputs["clusterName"] = state ? state.clusterName : undefined;
-            resourceInputs["clusterType"] = state ? state.clusterType : undefined;
-            resourceInputs["logicalRegionId"] = state ? state.logicalRegionId : undefined;
-            resourceInputs["networkMode"] = state ? state.networkMode : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["clusterName"] = state?.clusterName;
+            resourceInputs["clusterType"] = state?.clusterType;
+            resourceInputs["logicalRegionId"] = state?.logicalRegionId;
+            resourceInputs["networkMode"] = state?.networkMode;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            if ((!args || args.clusterName === undefined) && !opts.urn) {
+            if (args?.clusterName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterName'");
             }
-            if ((!args || args.clusterType === undefined) && !opts.urn) {
+            if (args?.clusterType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterType'");
             }
-            if ((!args || args.networkMode === undefined) && !opts.urn) {
+            if (args?.networkMode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkMode'");
             }
-            resourceInputs["clusterName"] = args ? args.clusterName : undefined;
-            resourceInputs["clusterType"] = args ? args.clusterType : undefined;
-            resourceInputs["logicalRegionId"] = args ? args.logicalRegionId : undefined;
-            resourceInputs["networkMode"] = args ? args.networkMode : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["clusterName"] = args?.clusterName;
+            resourceInputs["clusterType"] = args?.clusterType;
+            resourceInputs["logicalRegionId"] = args?.logicalRegionId;
+            resourceInputs["networkMode"] = args?.networkMode;
+            resourceInputs["vpcId"] = args?.vpcId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Cluster.__pulumiType, name, resourceInputs, opts);

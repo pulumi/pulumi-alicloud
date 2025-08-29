@@ -87,83 +87,83 @@ export class GtmInstance extends pulumi.CustomResource {
     /**
      * The alert notification methods. See `alertConfig` below for details.
      */
-    public readonly alertConfigs!: pulumi.Output<outputs.dns.GtmInstanceAlertConfig[] | undefined>;
+    declare public readonly alertConfigs: pulumi.Output<outputs.dns.GtmInstanceAlertConfig[] | undefined>;
     /**
      * The alert group.
      */
-    public readonly alertGroups!: pulumi.Output<string[] | undefined>;
+    declare public readonly alertGroups: pulumi.Output<string[] | undefined>;
     /**
      * The access type of the CNAME domain name. Valid value: `PUBLIC`.
      */
-    public readonly cnameType!: pulumi.Output<string>;
+    declare public readonly cnameType: pulumi.Output<string>;
     /**
      * The force update.
      */
-    public readonly forceUpdate!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceUpdate: pulumi.Output<boolean | undefined>;
     /**
      * The quota of detection tasks.
      */
-    public readonly healthCheckTaskCount!: pulumi.Output<number>;
+    declare public readonly healthCheckTaskCount: pulumi.Output<number>;
     /**
      * The name of the instance.
      */
-    public readonly instanceName!: pulumi.Output<string>;
+    declare public readonly instanceName: pulumi.Output<string>;
     /**
      * The lang.
      */
-    public readonly lang!: pulumi.Output<string | undefined>;
+    declare public readonly lang: pulumi.Output<string | undefined>;
     /**
      * Paid package version. Valid values: `ultimate`, `standard`.
      */
-    public readonly packageEdition!: pulumi.Output<string>;
+    declare public readonly packageEdition: pulumi.Output<string>;
     /**
      * The Payment Type of the resource. Valid value: `Subscription`.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * Creating a pre-paid instance, it must be set, the unit is month, please enter an integer multiple of 12 for annually paid products.
      */
-    public readonly period!: pulumi.Output<number>;
+    declare public readonly period: pulumi.Output<number>;
     /**
      * The Public Network domain name access method. Valid values: `CUSTOM`, `SYSTEM_ASSIGN`.
      */
-    public readonly publicCnameMode!: pulumi.Output<string>;
+    declare public readonly publicCnameMode: pulumi.Output<string>;
     /**
      * The CNAME access domain name.
      */
-    public readonly publicRr!: pulumi.Output<string>;
+    declare public readonly publicRr: pulumi.Output<string>;
     /**
      * The website domain name that the user uses on the Internet.
      */
-    public readonly publicUserDomainName!: pulumi.Output<string>;
+    declare public readonly publicUserDomainName: pulumi.Output<string>;
     /**
      * The domain name that is used to access GTM over the Internet.
      */
-    public readonly publicZoneName!: pulumi.Output<string>;
+    declare public readonly publicZoneName: pulumi.Output<string>;
     /**
      * Automatic renewal period, the unit is month. When setting `renewalStatus` to AutoRenewal, it must be set.
      */
-    public readonly renewPeriod!: pulumi.Output<number | undefined>;
+    declare public readonly renewPeriod: pulumi.Output<number | undefined>;
     /**
      * Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`.
      */
-    public readonly renewalStatus!: pulumi.Output<string>;
+    declare public readonly renewalStatus: pulumi.Output<string>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly resourceGroupId: pulumi.Output<string | undefined>;
     /**
      * The quota of SMS notifications.
      */
-    public readonly smsNotificationCount!: pulumi.Output<number>;
+    declare public readonly smsNotificationCount: pulumi.Output<number>;
     /**
      * The type of the access policy. Valid values: `GEO`, `LATENCY`.
      */
-    public readonly strategyMode!: pulumi.Output<string>;
+    declare public readonly strategyMode: pulumi.Output<string>;
     /**
      * The global time to live. Valid values: `60`, `120`, `300`, `600`. Unit: second.
      */
-    public readonly ttl!: pulumi.Output<number | undefined>;
+    declare public readonly ttl: pulumi.Output<number | undefined>;
 
     /**
      * Create a GtmInstance resource with the given unique name, arguments, and options.
@@ -178,66 +178,66 @@ export class GtmInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GtmInstanceState | undefined;
-            resourceInputs["alertConfigs"] = state ? state.alertConfigs : undefined;
-            resourceInputs["alertGroups"] = state ? state.alertGroups : undefined;
-            resourceInputs["cnameType"] = state ? state.cnameType : undefined;
-            resourceInputs["forceUpdate"] = state ? state.forceUpdate : undefined;
-            resourceInputs["healthCheckTaskCount"] = state ? state.healthCheckTaskCount : undefined;
-            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
-            resourceInputs["lang"] = state ? state.lang : undefined;
-            resourceInputs["packageEdition"] = state ? state.packageEdition : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["publicCnameMode"] = state ? state.publicCnameMode : undefined;
-            resourceInputs["publicRr"] = state ? state.publicRr : undefined;
-            resourceInputs["publicUserDomainName"] = state ? state.publicUserDomainName : undefined;
-            resourceInputs["publicZoneName"] = state ? state.publicZoneName : undefined;
-            resourceInputs["renewPeriod"] = state ? state.renewPeriod : undefined;
-            resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["smsNotificationCount"] = state ? state.smsNotificationCount : undefined;
-            resourceInputs["strategyMode"] = state ? state.strategyMode : undefined;
-            resourceInputs["ttl"] = state ? state.ttl : undefined;
+            resourceInputs["alertConfigs"] = state?.alertConfigs;
+            resourceInputs["alertGroups"] = state?.alertGroups;
+            resourceInputs["cnameType"] = state?.cnameType;
+            resourceInputs["forceUpdate"] = state?.forceUpdate;
+            resourceInputs["healthCheckTaskCount"] = state?.healthCheckTaskCount;
+            resourceInputs["instanceName"] = state?.instanceName;
+            resourceInputs["lang"] = state?.lang;
+            resourceInputs["packageEdition"] = state?.packageEdition;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["publicCnameMode"] = state?.publicCnameMode;
+            resourceInputs["publicRr"] = state?.publicRr;
+            resourceInputs["publicUserDomainName"] = state?.publicUserDomainName;
+            resourceInputs["publicZoneName"] = state?.publicZoneName;
+            resourceInputs["renewPeriod"] = state?.renewPeriod;
+            resourceInputs["renewalStatus"] = state?.renewalStatus;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["smsNotificationCount"] = state?.smsNotificationCount;
+            resourceInputs["strategyMode"] = state?.strategyMode;
+            resourceInputs["ttl"] = state?.ttl;
         } else {
             const args = argsOrState as GtmInstanceArgs | undefined;
-            if ((!args || args.healthCheckTaskCount === undefined) && !opts.urn) {
+            if (args?.healthCheckTaskCount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'healthCheckTaskCount'");
             }
-            if ((!args || args.instanceName === undefined) && !opts.urn) {
+            if (args?.instanceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceName'");
             }
-            if ((!args || args.packageEdition === undefined) && !opts.urn) {
+            if (args?.packageEdition === undefined && !opts.urn) {
                 throw new Error("Missing required property 'packageEdition'");
             }
-            if ((!args || args.paymentType === undefined) && !opts.urn) {
+            if (args?.paymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            if ((!args || args.period === undefined) && !opts.urn) {
+            if (args?.period === undefined && !opts.urn) {
                 throw new Error("Missing required property 'period'");
             }
-            if ((!args || args.smsNotificationCount === undefined) && !opts.urn) {
+            if (args?.smsNotificationCount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'smsNotificationCount'");
             }
-            resourceInputs["alertConfigs"] = args ? args.alertConfigs : undefined;
-            resourceInputs["alertGroups"] = args ? args.alertGroups : undefined;
-            resourceInputs["cnameType"] = args ? args.cnameType : undefined;
-            resourceInputs["forceUpdate"] = args ? args.forceUpdate : undefined;
-            resourceInputs["healthCheckTaskCount"] = args ? args.healthCheckTaskCount : undefined;
-            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
-            resourceInputs["lang"] = args ? args.lang : undefined;
-            resourceInputs["packageEdition"] = args ? args.packageEdition : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["publicCnameMode"] = args ? args.publicCnameMode : undefined;
-            resourceInputs["publicRr"] = args ? args.publicRr : undefined;
-            resourceInputs["publicUserDomainName"] = args ? args.publicUserDomainName : undefined;
-            resourceInputs["publicZoneName"] = args ? args.publicZoneName : undefined;
-            resourceInputs["renewPeriod"] = args ? args.renewPeriod : undefined;
-            resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["smsNotificationCount"] = args ? args.smsNotificationCount : undefined;
-            resourceInputs["strategyMode"] = args ? args.strategyMode : undefined;
-            resourceInputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["alertConfigs"] = args?.alertConfigs;
+            resourceInputs["alertGroups"] = args?.alertGroups;
+            resourceInputs["cnameType"] = args?.cnameType;
+            resourceInputs["forceUpdate"] = args?.forceUpdate;
+            resourceInputs["healthCheckTaskCount"] = args?.healthCheckTaskCount;
+            resourceInputs["instanceName"] = args?.instanceName;
+            resourceInputs["lang"] = args?.lang;
+            resourceInputs["packageEdition"] = args?.packageEdition;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["publicCnameMode"] = args?.publicCnameMode;
+            resourceInputs["publicRr"] = args?.publicRr;
+            resourceInputs["publicUserDomainName"] = args?.publicUserDomainName;
+            resourceInputs["publicZoneName"] = args?.publicZoneName;
+            resourceInputs["renewPeriod"] = args?.renewPeriod;
+            resourceInputs["renewalStatus"] = args?.renewalStatus;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["smsNotificationCount"] = args?.smsNotificationCount;
+            resourceInputs["strategyMode"] = args?.strategyMode;
+            resourceInputs["ttl"] = args?.ttl;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GtmInstance.__pulumiType, name, resourceInputs, opts);

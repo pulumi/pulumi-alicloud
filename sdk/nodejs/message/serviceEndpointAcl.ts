@@ -70,13 +70,13 @@ export class ServiceEndpointAcl extends pulumi.CustomResource {
      * The ACL policy. Valid value:
      * - allow: indicates that the current endpoint allows access from the corresponding CIDR block. (Only allow is supported)
      */
-    public readonly aclStrategy!: pulumi.Output<string>;
-    public readonly cidr!: pulumi.Output<string>;
+    declare public readonly aclStrategy: pulumi.Output<string>;
+    declare public readonly cidr: pulumi.Output<string>;
     /**
      * Access point type. Value:
      * - public: indicates a public access point. (Currently only public is supported)
      */
-    public readonly endpointType!: pulumi.Output<string>;
+    declare public readonly endpointType: pulumi.Output<string>;
 
     /**
      * Create a ServiceEndpointAcl resource with the given unique name, arguments, and options.
@@ -91,23 +91,23 @@ export class ServiceEndpointAcl extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceEndpointAclState | undefined;
-            resourceInputs["aclStrategy"] = state ? state.aclStrategy : undefined;
-            resourceInputs["cidr"] = state ? state.cidr : undefined;
-            resourceInputs["endpointType"] = state ? state.endpointType : undefined;
+            resourceInputs["aclStrategy"] = state?.aclStrategy;
+            resourceInputs["cidr"] = state?.cidr;
+            resourceInputs["endpointType"] = state?.endpointType;
         } else {
             const args = argsOrState as ServiceEndpointAclArgs | undefined;
-            if ((!args || args.aclStrategy === undefined) && !opts.urn) {
+            if (args?.aclStrategy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aclStrategy'");
             }
-            if ((!args || args.cidr === undefined) && !opts.urn) {
+            if (args?.cidr === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cidr'");
             }
-            if ((!args || args.endpointType === undefined) && !opts.urn) {
+            if (args?.endpointType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpointType'");
             }
-            resourceInputs["aclStrategy"] = args ? args.aclStrategy : undefined;
-            resourceInputs["cidr"] = args ? args.cidr : undefined;
-            resourceInputs["endpointType"] = args ? args.endpointType : undefined;
+            resourceInputs["aclStrategy"] = args?.aclStrategy;
+            resourceInputs["cidr"] = args?.cidr;
+            resourceInputs["endpointType"] = args?.endpointType;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServiceEndpointAcl.__pulumiType, name, resourceInputs, opts);

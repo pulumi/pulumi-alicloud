@@ -172,91 +172,91 @@ export class Connection extends pulumi.CustomResource {
      * - **true**: Automatically configure routes.
      * - **false**: does not automatically configure routes.
      */
-    public readonly autoConfigRoute!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoConfigRoute: pulumi.Output<boolean | undefined>;
     /**
      * vpnBgp configuration. See `bgpConfig` below.
      */
-    public readonly bgpConfig!: pulumi.Output<outputs.vpn.ConnectionBgpConfig>;
+    declare public readonly bgpConfig: pulumi.Output<outputs.vpn.ConnectionBgpConfig>;
     /**
      * The time when the IPsec-VPN connection was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly createTime: pulumi.Output<number>;
     /**
      * The ID of the customer gateway.
      */
-    public readonly customerGatewayId!: pulumi.Output<string | undefined>;
+    declare public readonly customerGatewayId: pulumi.Output<string | undefined>;
     /**
      * Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
      */
-    public readonly effectImmediately!: pulumi.Output<boolean | undefined>;
+    declare public readonly effectImmediately: pulumi.Output<boolean | undefined>;
     /**
      * Wether enable Dpd detection.
      */
-    public readonly enableDpd!: pulumi.Output<boolean>;
+    declare public readonly enableDpd: pulumi.Output<boolean>;
     /**
      * enable nat traversal.
      */
-    public readonly enableNatTraversal!: pulumi.Output<boolean>;
+    declare public readonly enableNatTraversal: pulumi.Output<boolean>;
     /**
      * Enable tunnel bgp.
      */
-    public readonly enableTunnelsBgp!: pulumi.Output<boolean>;
+    declare public readonly enableTunnelsBgp: pulumi.Output<boolean>;
     /**
      * Health Check information. See `healthCheckConfig` below.
      */
-    public readonly healthCheckConfig!: pulumi.Output<outputs.vpn.ConnectionHealthCheckConfig>;
+    declare public readonly healthCheckConfig: pulumi.Output<outputs.vpn.ConnectionHealthCheckConfig>;
     /**
      * The configuration of Phase 1 negotiations. See `ikeConfig` below.
      */
-    public readonly ikeConfig!: pulumi.Output<outputs.vpn.ConnectionIkeConfig>;
+    declare public readonly ikeConfig: pulumi.Output<outputs.vpn.ConnectionIkeConfig>;
     /**
      * IPsec configuration. See `ipsecConfig` below.
      */
-    public readonly ipsecConfig!: pulumi.Output<outputs.vpn.ConnectionIpsecConfig>;
+    declare public readonly ipsecConfig: pulumi.Output<outputs.vpn.ConnectionIpsecConfig>;
     /**
      * The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
      */
-    public readonly localSubnets!: pulumi.Output<string[]>;
+    declare public readonly localSubnets: pulumi.Output<string[]>;
     /**
      * . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_connection_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.216.0. New field 'vpn_connection_name' instead.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The network type of the IPsec connection. Value:
      * - **public**: public network, indicating that the IPsec connection establishes an encrypted communication channel through the public network.
      * - **private**: private network, indicating that the IPsec connection establishes an encrypted communication channel through the private network.
      */
-    public readonly networkType!: pulumi.Output<string | undefined>;
+    declare public readonly networkType: pulumi.Output<string | undefined>;
     /**
      * The CIDR block of the local data center. This parameter is used for phase-two negotiation.
      */
-    public readonly remoteSubnets!: pulumi.Output<string[]>;
+    declare public readonly remoteSubnets: pulumi.Output<string[]>;
     /**
      * The ID of the resource group.
      */
-    public /*out*/ readonly resourceGroupId!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The negotiation status of Tunnel.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The tunnel options of IPsec. See `tunnelOptionsSpecification` below.
      */
-    public readonly tunnelOptionsSpecifications!: pulumi.Output<outputs.vpn.ConnectionTunnelOptionsSpecification[] | undefined>;
+    declare public readonly tunnelOptionsSpecifications: pulumi.Output<outputs.vpn.ConnectionTunnelOptionsSpecification[] | undefined>;
     /**
      * The name of the IPsec-VPN connection.
      */
-    public readonly vpnConnectionName!: pulumi.Output<string>;
+    declare public readonly vpnConnectionName: pulumi.Output<string>;
     /**
      * The ID of the VPN gateway.
      */
-    public readonly vpnGatewayId!: pulumi.Output<string>;
+    declare public readonly vpnGatewayId: pulumi.Output<string>;
 
     /**
      * Create a Connection resource with the given unique name, arguments, and options.
@@ -271,56 +271,56 @@ export class Connection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
-            resourceInputs["autoConfigRoute"] = state ? state.autoConfigRoute : undefined;
-            resourceInputs["bgpConfig"] = state ? state.bgpConfig : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["customerGatewayId"] = state ? state.customerGatewayId : undefined;
-            resourceInputs["effectImmediately"] = state ? state.effectImmediately : undefined;
-            resourceInputs["enableDpd"] = state ? state.enableDpd : undefined;
-            resourceInputs["enableNatTraversal"] = state ? state.enableNatTraversal : undefined;
-            resourceInputs["enableTunnelsBgp"] = state ? state.enableTunnelsBgp : undefined;
-            resourceInputs["healthCheckConfig"] = state ? state.healthCheckConfig : undefined;
-            resourceInputs["ikeConfig"] = state ? state.ikeConfig : undefined;
-            resourceInputs["ipsecConfig"] = state ? state.ipsecConfig : undefined;
-            resourceInputs["localSubnets"] = state ? state.localSubnets : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkType"] = state ? state.networkType : undefined;
-            resourceInputs["remoteSubnets"] = state ? state.remoteSubnets : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["tunnelOptionsSpecifications"] = state ? state.tunnelOptionsSpecifications : undefined;
-            resourceInputs["vpnConnectionName"] = state ? state.vpnConnectionName : undefined;
-            resourceInputs["vpnGatewayId"] = state ? state.vpnGatewayId : undefined;
+            resourceInputs["autoConfigRoute"] = state?.autoConfigRoute;
+            resourceInputs["bgpConfig"] = state?.bgpConfig;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["customerGatewayId"] = state?.customerGatewayId;
+            resourceInputs["effectImmediately"] = state?.effectImmediately;
+            resourceInputs["enableDpd"] = state?.enableDpd;
+            resourceInputs["enableNatTraversal"] = state?.enableNatTraversal;
+            resourceInputs["enableTunnelsBgp"] = state?.enableTunnelsBgp;
+            resourceInputs["healthCheckConfig"] = state?.healthCheckConfig;
+            resourceInputs["ikeConfig"] = state?.ikeConfig;
+            resourceInputs["ipsecConfig"] = state?.ipsecConfig;
+            resourceInputs["localSubnets"] = state?.localSubnets;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkType"] = state?.networkType;
+            resourceInputs["remoteSubnets"] = state?.remoteSubnets;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["tunnelOptionsSpecifications"] = state?.tunnelOptionsSpecifications;
+            resourceInputs["vpnConnectionName"] = state?.vpnConnectionName;
+            resourceInputs["vpnGatewayId"] = state?.vpnGatewayId;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
-            if ((!args || args.localSubnets === undefined) && !opts.urn) {
+            if (args?.localSubnets === undefined && !opts.urn) {
                 throw new Error("Missing required property 'localSubnets'");
             }
-            if ((!args || args.remoteSubnets === undefined) && !opts.urn) {
+            if (args?.remoteSubnets === undefined && !opts.urn) {
                 throw new Error("Missing required property 'remoteSubnets'");
             }
-            if ((!args || args.vpnGatewayId === undefined) && !opts.urn) {
+            if (args?.vpnGatewayId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpnGatewayId'");
             }
-            resourceInputs["autoConfigRoute"] = args ? args.autoConfigRoute : undefined;
-            resourceInputs["bgpConfig"] = args ? args.bgpConfig : undefined;
-            resourceInputs["customerGatewayId"] = args ? args.customerGatewayId : undefined;
-            resourceInputs["effectImmediately"] = args ? args.effectImmediately : undefined;
-            resourceInputs["enableDpd"] = args ? args.enableDpd : undefined;
-            resourceInputs["enableNatTraversal"] = args ? args.enableNatTraversal : undefined;
-            resourceInputs["enableTunnelsBgp"] = args ? args.enableTunnelsBgp : undefined;
-            resourceInputs["healthCheckConfig"] = args ? args.healthCheckConfig : undefined;
-            resourceInputs["ikeConfig"] = args ? args.ikeConfig : undefined;
-            resourceInputs["ipsecConfig"] = args ? args.ipsecConfig : undefined;
-            resourceInputs["localSubnets"] = args ? args.localSubnets : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkType"] = args ? args.networkType : undefined;
-            resourceInputs["remoteSubnets"] = args ? args.remoteSubnets : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["tunnelOptionsSpecifications"] = args ? args.tunnelOptionsSpecifications : undefined;
-            resourceInputs["vpnConnectionName"] = args ? args.vpnConnectionName : undefined;
-            resourceInputs["vpnGatewayId"] = args ? args.vpnGatewayId : undefined;
+            resourceInputs["autoConfigRoute"] = args?.autoConfigRoute;
+            resourceInputs["bgpConfig"] = args?.bgpConfig;
+            resourceInputs["customerGatewayId"] = args?.customerGatewayId;
+            resourceInputs["effectImmediately"] = args?.effectImmediately;
+            resourceInputs["enableDpd"] = args?.enableDpd;
+            resourceInputs["enableNatTraversal"] = args?.enableNatTraversal;
+            resourceInputs["enableTunnelsBgp"] = args?.enableTunnelsBgp;
+            resourceInputs["healthCheckConfig"] = args?.healthCheckConfig;
+            resourceInputs["ikeConfig"] = args?.ikeConfig;
+            resourceInputs["ipsecConfig"] = args?.ipsecConfig;
+            resourceInputs["localSubnets"] = args?.localSubnets;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkType"] = args?.networkType;
+            resourceInputs["remoteSubnets"] = args?.remoteSubnets;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["tunnelOptionsSpecifications"] = args?.tunnelOptionsSpecifications;
+            resourceInputs["vpnConnectionName"] = args?.vpnConnectionName;
+            resourceInputs["vpnGatewayId"] = args?.vpnGatewayId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["resourceGroupId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

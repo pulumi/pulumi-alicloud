@@ -114,48 +114,48 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
     /**
      * User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
      */
-    public readonly customPageHtml!: pulumi.Output<string | undefined>;
+    declare public readonly customPageHtml: pulumi.Output<string | undefined>;
     /**
      * Waiting room description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Disable session renewal. Value:
      * -'on': open.
      * -'off': closed.
      */
-    public readonly disableSessionRenewalEnable!: pulumi.Output<string | undefined>;
+    declare public readonly disableSessionRenewalEnable: pulumi.Output<string | undefined>;
     /**
      * The timestamp of the end time of the event.
      */
-    public readonly endTime!: pulumi.Output<string>;
+    declare public readonly endTime: pulumi.Output<string>;
     /**
      * JSON response switch. Value:
      * -'on': open.
      * -'off': closed.
      */
-    public readonly jsonResponseEnable!: pulumi.Output<string | undefined>;
+    declare public readonly jsonResponseEnable: pulumi.Output<string | undefined>;
     /**
      * Default language setting. Values include:
      * -'enus': English.
      * -'zhcn': Simplified Chinese.
      * -'zhhk': Traditional Chinese.
      */
-    public readonly language!: pulumi.Output<string | undefined>;
+    declare public readonly language: pulumi.Output<string | undefined>;
     /**
      * Number of new users per minute.
      */
-    public readonly newUsersPerMinute!: pulumi.Output<string>;
+    declare public readonly newUsersPerMinute: pulumi.Output<string>;
     /**
      * Pre-queue switch.
      * -'on': open.
      * -'off': closed.
      */
-    public readonly preQueueEnable!: pulumi.Output<string | undefined>;
+    declare public readonly preQueueEnable: pulumi.Output<string | undefined>;
     /**
      * Pre-queue start time.
      */
-    public readonly preQueueStartTime!: pulumi.Output<string | undefined>;
+    declare public readonly preQueueStartTime: pulumi.Output<string | undefined>;
     /**
      * Way of queuing. Value:
      * -'random': random.
@@ -163,60 +163,60 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
      * -'passthrough ': through.
      * -'reject-all': reject all.
      */
-    public readonly queuingMethod!: pulumi.Output<string>;
+    declare public readonly queuingMethod: pulumi.Output<string>;
     /**
      * Waiting room status code. Value:
      * -'200'
      * -'202'
      * -'429'
      */
-    public readonly queuingStatusCode!: pulumi.Output<string>;
+    declare public readonly queuingStatusCode: pulumi.Output<string>;
     /**
      * Random queue switch.
      * -'on': open.
      * -'off': closed.
      */
-    public readonly randomPreQueueEnable!: pulumi.Output<string | undefined>;
+    declare public readonly randomPreQueueEnable: pulumi.Output<string | undefined>;
     /**
      * User session duration in minutes.
      */
-    public readonly sessionDuration!: pulumi.Output<string>;
+    declare public readonly sessionDuration: pulumi.Output<string>;
     /**
      * The site ID, which can be obtained by calling the ListSites API.
      */
-    public readonly siteId!: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<number>;
     /**
      * The timestamp of the event start time.
      */
-    public readonly startTime!: pulumi.Output<string>;
+    declare public readonly startTime: pulumi.Output<string>;
     /**
      * Enabled status. Value:
      * -'on': Enable waiting room events
      * -'off': Disable waiting room events
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * Total number of active users.
      */
-    public readonly totalActiveUsers!: pulumi.Output<string>;
+    declare public readonly totalActiveUsers: pulumi.Output<string>;
     /**
      * The waiting room event ID, which can be obtained by calling the [ListWaitingRoomEvents](https://help.aliyun.com/document_detail/2850279.html) operation.
      */
-    public /*out*/ readonly waitingRoomEventId!: pulumi.Output<number>;
+    declare public /*out*/ readonly waitingRoomEventId: pulumi.Output<number>;
     /**
      * Event name, custom event description.
      */
-    public readonly waitingRoomEventName!: pulumi.Output<string>;
+    declare public readonly waitingRoomEventName: pulumi.Output<string>;
     /**
      * Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
      */
-    public readonly waitingRoomId!: pulumi.Output<string>;
+    declare public readonly waitingRoomId: pulumi.Output<string>;
     /**
      * Waiting room type. The following types are supported:
      * -'default': the default type.
      * -'custom': custom type.
      */
-    public readonly waitingRoomType!: pulumi.Output<string>;
+    declare public readonly waitingRoomType: pulumi.Output<string>;
 
     /**
      * Create a WaitingRoomEvent resource with the given unique name, arguments, and options.
@@ -231,82 +231,82 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WaitingRoomEventState | undefined;
-            resourceInputs["customPageHtml"] = state ? state.customPageHtml : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disableSessionRenewalEnable"] = state ? state.disableSessionRenewalEnable : undefined;
-            resourceInputs["endTime"] = state ? state.endTime : undefined;
-            resourceInputs["jsonResponseEnable"] = state ? state.jsonResponseEnable : undefined;
-            resourceInputs["language"] = state ? state.language : undefined;
-            resourceInputs["newUsersPerMinute"] = state ? state.newUsersPerMinute : undefined;
-            resourceInputs["preQueueEnable"] = state ? state.preQueueEnable : undefined;
-            resourceInputs["preQueueStartTime"] = state ? state.preQueueStartTime : undefined;
-            resourceInputs["queuingMethod"] = state ? state.queuingMethod : undefined;
-            resourceInputs["queuingStatusCode"] = state ? state.queuingStatusCode : undefined;
-            resourceInputs["randomPreQueueEnable"] = state ? state.randomPreQueueEnable : undefined;
-            resourceInputs["sessionDuration"] = state ? state.sessionDuration : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["startTime"] = state ? state.startTime : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["totalActiveUsers"] = state ? state.totalActiveUsers : undefined;
-            resourceInputs["waitingRoomEventId"] = state ? state.waitingRoomEventId : undefined;
-            resourceInputs["waitingRoomEventName"] = state ? state.waitingRoomEventName : undefined;
-            resourceInputs["waitingRoomId"] = state ? state.waitingRoomId : undefined;
-            resourceInputs["waitingRoomType"] = state ? state.waitingRoomType : undefined;
+            resourceInputs["customPageHtml"] = state?.customPageHtml;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disableSessionRenewalEnable"] = state?.disableSessionRenewalEnable;
+            resourceInputs["endTime"] = state?.endTime;
+            resourceInputs["jsonResponseEnable"] = state?.jsonResponseEnable;
+            resourceInputs["language"] = state?.language;
+            resourceInputs["newUsersPerMinute"] = state?.newUsersPerMinute;
+            resourceInputs["preQueueEnable"] = state?.preQueueEnable;
+            resourceInputs["preQueueStartTime"] = state?.preQueueStartTime;
+            resourceInputs["queuingMethod"] = state?.queuingMethod;
+            resourceInputs["queuingStatusCode"] = state?.queuingStatusCode;
+            resourceInputs["randomPreQueueEnable"] = state?.randomPreQueueEnable;
+            resourceInputs["sessionDuration"] = state?.sessionDuration;
+            resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["startTime"] = state?.startTime;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["totalActiveUsers"] = state?.totalActiveUsers;
+            resourceInputs["waitingRoomEventId"] = state?.waitingRoomEventId;
+            resourceInputs["waitingRoomEventName"] = state?.waitingRoomEventName;
+            resourceInputs["waitingRoomId"] = state?.waitingRoomId;
+            resourceInputs["waitingRoomType"] = state?.waitingRoomType;
         } else {
             const args = argsOrState as WaitingRoomEventArgs | undefined;
-            if ((!args || args.endTime === undefined) && !opts.urn) {
+            if (args?.endTime === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endTime'");
             }
-            if ((!args || args.newUsersPerMinute === undefined) && !opts.urn) {
+            if (args?.newUsersPerMinute === undefined && !opts.urn) {
                 throw new Error("Missing required property 'newUsersPerMinute'");
             }
-            if ((!args || args.queuingMethod === undefined) && !opts.urn) {
+            if (args?.queuingMethod === undefined && !opts.urn) {
                 throw new Error("Missing required property 'queuingMethod'");
             }
-            if ((!args || args.queuingStatusCode === undefined) && !opts.urn) {
+            if (args?.queuingStatusCode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'queuingStatusCode'");
             }
-            if ((!args || args.sessionDuration === undefined) && !opts.urn) {
+            if (args?.sessionDuration === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sessionDuration'");
             }
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            if ((!args || args.startTime === undefined) && !opts.urn) {
+            if (args?.startTime === undefined && !opts.urn) {
                 throw new Error("Missing required property 'startTime'");
             }
-            if ((!args || args.status === undefined) && !opts.urn) {
+            if (args?.status === undefined && !opts.urn) {
                 throw new Error("Missing required property 'status'");
             }
-            if ((!args || args.totalActiveUsers === undefined) && !opts.urn) {
+            if (args?.totalActiveUsers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'totalActiveUsers'");
             }
-            if ((!args || args.waitingRoomEventName === undefined) && !opts.urn) {
+            if (args?.waitingRoomEventName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'waitingRoomEventName'");
             }
-            if ((!args || args.waitingRoomType === undefined) && !opts.urn) {
+            if (args?.waitingRoomType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'waitingRoomType'");
             }
-            resourceInputs["customPageHtml"] = args ? args.customPageHtml : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disableSessionRenewalEnable"] = args ? args.disableSessionRenewalEnable : undefined;
-            resourceInputs["endTime"] = args ? args.endTime : undefined;
-            resourceInputs["jsonResponseEnable"] = args ? args.jsonResponseEnable : undefined;
-            resourceInputs["language"] = args ? args.language : undefined;
-            resourceInputs["newUsersPerMinute"] = args ? args.newUsersPerMinute : undefined;
-            resourceInputs["preQueueEnable"] = args ? args.preQueueEnable : undefined;
-            resourceInputs["preQueueStartTime"] = args ? args.preQueueStartTime : undefined;
-            resourceInputs["queuingMethod"] = args ? args.queuingMethod : undefined;
-            resourceInputs["queuingStatusCode"] = args ? args.queuingStatusCode : undefined;
-            resourceInputs["randomPreQueueEnable"] = args ? args.randomPreQueueEnable : undefined;
-            resourceInputs["sessionDuration"] = args ? args.sessionDuration : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
-            resourceInputs["startTime"] = args ? args.startTime : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["totalActiveUsers"] = args ? args.totalActiveUsers : undefined;
-            resourceInputs["waitingRoomEventName"] = args ? args.waitingRoomEventName : undefined;
-            resourceInputs["waitingRoomId"] = args ? args.waitingRoomId : undefined;
-            resourceInputs["waitingRoomType"] = args ? args.waitingRoomType : undefined;
+            resourceInputs["customPageHtml"] = args?.customPageHtml;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disableSessionRenewalEnable"] = args?.disableSessionRenewalEnable;
+            resourceInputs["endTime"] = args?.endTime;
+            resourceInputs["jsonResponseEnable"] = args?.jsonResponseEnable;
+            resourceInputs["language"] = args?.language;
+            resourceInputs["newUsersPerMinute"] = args?.newUsersPerMinute;
+            resourceInputs["preQueueEnable"] = args?.preQueueEnable;
+            resourceInputs["preQueueStartTime"] = args?.preQueueStartTime;
+            resourceInputs["queuingMethod"] = args?.queuingMethod;
+            resourceInputs["queuingStatusCode"] = args?.queuingStatusCode;
+            resourceInputs["randomPreQueueEnable"] = args?.randomPreQueueEnable;
+            resourceInputs["sessionDuration"] = args?.sessionDuration;
+            resourceInputs["siteId"] = args?.siteId;
+            resourceInputs["startTime"] = args?.startTime;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["totalActiveUsers"] = args?.totalActiveUsers;
+            resourceInputs["waitingRoomEventName"] = args?.waitingRoomEventName;
+            resourceInputs["waitingRoomId"] = args?.waitingRoomId;
+            resourceInputs["waitingRoomType"] = args?.waitingRoomType;
             resourceInputs["waitingRoomEventId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

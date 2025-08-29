@@ -117,51 +117,51 @@ export class NatFirewall extends pulumi.CustomResource {
     /**
      * Safety protection switch. Value:-**open**: open-**close**: close.
      */
-    public readonly firewallSwitch!: pulumi.Output<string | undefined>;
+    declare public readonly firewallSwitch: pulumi.Output<string | undefined>;
     /**
      * Lang.
      */
-    public readonly lang!: pulumi.Output<string | undefined>;
+    declare public readonly lang: pulumi.Output<string | undefined>;
     /**
      * NAT gateway ID.
      */
-    public readonly natGatewayId!: pulumi.Output<string>;
+    declare public readonly natGatewayId: pulumi.Output<string>;
     /**
      * The list of routes to be switched by the NAT gateway. See `natRouteEntryList` below.
      */
-    public readonly natRouteEntryLists!: pulumi.Output<outputs.cloudfirewall.NatFirewallNatRouteEntryList[]>;
+    declare public readonly natRouteEntryLists: pulumi.Output<outputs.cloudfirewall.NatFirewallNatRouteEntryList[]>;
     /**
      * NAT firewall name.
      */
-    public readonly proxyName!: pulumi.Output<string>;
+    declare public readonly proxyName: pulumi.Output<string>;
     /**
      * Region.
      */
-    public readonly regionNo!: pulumi.Output<string>;
+    declare public readonly regionNo: pulumi.Output<string>;
     /**
      * The status of the resource.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * Whether strict mode is enabled 1-Enable strict mode 0-Disable strict mode.
      */
-    public readonly strictMode!: pulumi.Output<number | undefined>;
+    declare public readonly strictMode: pulumi.Output<number | undefined>;
     /**
      * The ID of the VPC instance.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * Whether to use switch automatic mode. Value: **true**: Use automatic mode: **false**: Use manual mode.
      */
-    public readonly vswitchAuto!: pulumi.Output<string | undefined>;
+    declare public readonly vswitchAuto: pulumi.Output<string | undefined>;
     /**
      * The network segment of the virtual switch. Required for Switch automatic mode.
      */
-    public readonly vswitchCidr!: pulumi.Output<string | undefined>;
+    declare public readonly vswitchCidr: pulumi.Output<string | undefined>;
     /**
      * The switch ID. Required for switch manual mode.
      */
-    public readonly vswitchId!: pulumi.Output<string | undefined>;
+    declare public readonly vswitchId: pulumi.Output<string | undefined>;
 
     /**
      * Create a NatFirewall resource with the given unique name, arguments, and options.
@@ -176,47 +176,47 @@ export class NatFirewall extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NatFirewallState | undefined;
-            resourceInputs["firewallSwitch"] = state ? state.firewallSwitch : undefined;
-            resourceInputs["lang"] = state ? state.lang : undefined;
-            resourceInputs["natGatewayId"] = state ? state.natGatewayId : undefined;
-            resourceInputs["natRouteEntryLists"] = state ? state.natRouteEntryLists : undefined;
-            resourceInputs["proxyName"] = state ? state.proxyName : undefined;
-            resourceInputs["regionNo"] = state ? state.regionNo : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["strictMode"] = state ? state.strictMode : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchAuto"] = state ? state.vswitchAuto : undefined;
-            resourceInputs["vswitchCidr"] = state ? state.vswitchCidr : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["firewallSwitch"] = state?.firewallSwitch;
+            resourceInputs["lang"] = state?.lang;
+            resourceInputs["natGatewayId"] = state?.natGatewayId;
+            resourceInputs["natRouteEntryLists"] = state?.natRouteEntryLists;
+            resourceInputs["proxyName"] = state?.proxyName;
+            resourceInputs["regionNo"] = state?.regionNo;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["strictMode"] = state?.strictMode;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchAuto"] = state?.vswitchAuto;
+            resourceInputs["vswitchCidr"] = state?.vswitchCidr;
+            resourceInputs["vswitchId"] = state?.vswitchId;
         } else {
             const args = argsOrState as NatFirewallArgs | undefined;
-            if ((!args || args.natGatewayId === undefined) && !opts.urn) {
+            if (args?.natGatewayId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'natGatewayId'");
             }
-            if ((!args || args.natRouteEntryLists === undefined) && !opts.urn) {
+            if (args?.natRouteEntryLists === undefined && !opts.urn) {
                 throw new Error("Missing required property 'natRouteEntryLists'");
             }
-            if ((!args || args.proxyName === undefined) && !opts.urn) {
+            if (args?.proxyName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'proxyName'");
             }
-            if ((!args || args.regionNo === undefined) && !opts.urn) {
+            if (args?.regionNo === undefined && !opts.urn) {
                 throw new Error("Missing required property 'regionNo'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["firewallSwitch"] = args ? args.firewallSwitch : undefined;
-            resourceInputs["lang"] = args ? args.lang : undefined;
-            resourceInputs["natGatewayId"] = args ? args.natGatewayId : undefined;
-            resourceInputs["natRouteEntryLists"] = args ? args.natRouteEntryLists : undefined;
-            resourceInputs["proxyName"] = args ? args.proxyName : undefined;
-            resourceInputs["regionNo"] = args ? args.regionNo : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["strictMode"] = args ? args.strictMode : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vswitchAuto"] = args ? args.vswitchAuto : undefined;
-            resourceInputs["vswitchCidr"] = args ? args.vswitchCidr : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["firewallSwitch"] = args?.firewallSwitch;
+            resourceInputs["lang"] = args?.lang;
+            resourceInputs["natGatewayId"] = args?.natGatewayId;
+            resourceInputs["natRouteEntryLists"] = args?.natRouteEntryLists;
+            resourceInputs["proxyName"] = args?.proxyName;
+            resourceInputs["regionNo"] = args?.regionNo;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["strictMode"] = args?.strictMode;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchAuto"] = args?.vswitchAuto;
+            resourceInputs["vswitchCidr"] = args?.vswitchCidr;
+            resourceInputs["vswitchId"] = args?.vswitchId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(NatFirewall.__pulumiType, name, resourceInputs, opts);

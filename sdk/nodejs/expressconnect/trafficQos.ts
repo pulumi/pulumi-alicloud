@@ -69,16 +69,16 @@ export class TrafficQos extends pulumi.CustomResource {
     /**
      * The description of the QoS policy.  The length is **0** to **256** characters and cannot start with 'http:// 'or 'https.
      */
-    public readonly qosDescription!: pulumi.Output<string | undefined>;
+    declare public readonly qosDescription: pulumi.Output<string | undefined>;
     /**
      * The name of the QoS policy.  The length is **0** to **128** characters and cannot start with 'http:// 'or 'https.
      */
-    public readonly qosName!: pulumi.Output<string | undefined>;
+    declare public readonly qosName: pulumi.Output<string | undefined>;
     /**
      * The status of the QoS policy. Value:
      * > **NOTE:**  QoS in the configuration state will restrict the creation, update, and deletion of most QoS policies, QoS queues, and QoS rules.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a TrafficQos resource with the given unique name, arguments, and options.
@@ -93,13 +93,13 @@ export class TrafficQos extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TrafficQosState | undefined;
-            resourceInputs["qosDescription"] = state ? state.qosDescription : undefined;
-            resourceInputs["qosName"] = state ? state.qosName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["qosDescription"] = state?.qosDescription;
+            resourceInputs["qosName"] = state?.qosName;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as TrafficQosArgs | undefined;
-            resourceInputs["qosDescription"] = args ? args.qosDescription : undefined;
-            resourceInputs["qosName"] = args ? args.qosName : undefined;
+            resourceInputs["qosDescription"] = args?.qosDescription;
+            resourceInputs["qosName"] = args?.qosName;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

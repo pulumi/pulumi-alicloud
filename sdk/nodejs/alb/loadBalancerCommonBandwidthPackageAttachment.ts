@@ -50,19 +50,19 @@ export class LoadBalancerCommonBandwidthPackageAttachment extends pulumi.CustomR
     /**
      * The ID of the bound shared bandwidth package.
      */
-    public readonly bandwidthPackageId!: pulumi.Output<string>;
+    declare public readonly bandwidthPackageId: pulumi.Output<string>;
     /**
      * Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind the shared bandwidth package to the load balancing instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the applied server load balancer instance.
      */
-    public readonly loadBalancerId!: pulumi.Output<string>;
+    declare public readonly loadBalancerId: pulumi.Output<string>;
     /**
      * The status of the Application Load balancing instance. Value:-**Inactive**: Stopped, indicating that the instance listener will no longer forward traffic.-**Active**: running.-**Provisioning**: The project is being created.-**Configuring**: The configuration is being changed.-**CreateFailed**: The instance cannot be deleted without any charge.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a LoadBalancerCommonBandwidthPackageAttachment resource with the given unique name, arguments, and options.
@@ -77,21 +77,21 @@ export class LoadBalancerCommonBandwidthPackageAttachment extends pulumi.CustomR
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadBalancerCommonBandwidthPackageAttachmentState | undefined;
-            resourceInputs["bandwidthPackageId"] = state ? state.bandwidthPackageId : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["loadBalancerId"] = state ? state.loadBalancerId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["bandwidthPackageId"] = state?.bandwidthPackageId;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["loadBalancerId"] = state?.loadBalancerId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as LoadBalancerCommonBandwidthPackageAttachmentArgs | undefined;
-            if ((!args || args.bandwidthPackageId === undefined) && !opts.urn) {
+            if (args?.bandwidthPackageId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bandwidthPackageId'");
             }
-            if ((!args || args.loadBalancerId === undefined) && !opts.urn) {
+            if (args?.loadBalancerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'loadBalancerId'");
             }
-            resourceInputs["bandwidthPackageId"] = args ? args.bandwidthPackageId : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["loadBalancerId"] = args ? args.loadBalancerId : undefined;
+            resourceInputs["bandwidthPackageId"] = args?.bandwidthPackageId;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["loadBalancerId"] = args?.loadBalancerId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

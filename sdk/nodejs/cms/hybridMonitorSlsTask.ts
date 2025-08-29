@@ -52,31 +52,31 @@ export class HybridMonitorSlsTask extends pulumi.CustomResource {
     /**
      * The label of the monitoring task. See `attachLabels` below.
      */
-    public readonly attachLabels!: pulumi.Output<outputs.cms.HybridMonitorSlsTaskAttachLabel[] | undefined>;
+    declare public readonly attachLabels: pulumi.Output<outputs.cms.HybridMonitorSlsTaskAttachLabel[] | undefined>;
     /**
      * The interval at which metrics are collected. Valid values: `15`, `60`(default value). Unit: seconds.
      */
-    public readonly collectInterval!: pulumi.Output<number>;
+    declare public readonly collectInterval: pulumi.Output<number>;
     /**
      * The type of the collection target, enter the name of the Logstore group.
      */
-    public readonly collectTargetType!: pulumi.Output<string>;
+    declare public readonly collectTargetType: pulumi.Output<string>;
     /**
      * The description of the metric import task.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of the namespace.
      */
-    public readonly namespace!: pulumi.Output<string>;
+    declare public readonly namespace: pulumi.Output<string>;
     /**
      * The configurations of the logs that are imported from Log Service. See `slsProcessConfig` below.
      */
-    public readonly slsProcessConfig!: pulumi.Output<outputs.cms.HybridMonitorSlsTaskSlsProcessConfig>;
+    declare public readonly slsProcessConfig: pulumi.Output<outputs.cms.HybridMonitorSlsTaskSlsProcessConfig>;
     /**
      * The name of the metric import task, enter the name of the metric for logs imported from Log Service.
      */
-    public readonly taskName!: pulumi.Output<string>;
+    declare public readonly taskName: pulumi.Output<string>;
 
     /**
      * Create a HybridMonitorSlsTask resource with the given unique name, arguments, and options.
@@ -91,34 +91,34 @@ export class HybridMonitorSlsTask extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HybridMonitorSlsTaskState | undefined;
-            resourceInputs["attachLabels"] = state ? state.attachLabels : undefined;
-            resourceInputs["collectInterval"] = state ? state.collectInterval : undefined;
-            resourceInputs["collectTargetType"] = state ? state.collectTargetType : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["slsProcessConfig"] = state ? state.slsProcessConfig : undefined;
-            resourceInputs["taskName"] = state ? state.taskName : undefined;
+            resourceInputs["attachLabels"] = state?.attachLabels;
+            resourceInputs["collectInterval"] = state?.collectInterval;
+            resourceInputs["collectTargetType"] = state?.collectTargetType;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["slsProcessConfig"] = state?.slsProcessConfig;
+            resourceInputs["taskName"] = state?.taskName;
         } else {
             const args = argsOrState as HybridMonitorSlsTaskArgs | undefined;
-            if ((!args || args.collectTargetType === undefined) && !opts.urn) {
+            if (args?.collectTargetType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'collectTargetType'");
             }
-            if ((!args || args.namespace === undefined) && !opts.urn) {
+            if (args?.namespace === undefined && !opts.urn) {
                 throw new Error("Missing required property 'namespace'");
             }
-            if ((!args || args.slsProcessConfig === undefined) && !opts.urn) {
+            if (args?.slsProcessConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'slsProcessConfig'");
             }
-            if ((!args || args.taskName === undefined) && !opts.urn) {
+            if (args?.taskName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'taskName'");
             }
-            resourceInputs["attachLabels"] = args ? args.attachLabels : undefined;
-            resourceInputs["collectInterval"] = args ? args.collectInterval : undefined;
-            resourceInputs["collectTargetType"] = args ? args.collectTargetType : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["slsProcessConfig"] = args ? args.slsProcessConfig : undefined;
-            resourceInputs["taskName"] = args ? args.taskName : undefined;
+            resourceInputs["attachLabels"] = args?.attachLabels;
+            resourceInputs["collectInterval"] = args?.collectInterval;
+            resourceInputs["collectTargetType"] = args?.collectTargetType;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["slsProcessConfig"] = args?.slsProcessConfig;
+            resourceInputs["taskName"] = args?.taskName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(HybridMonitorSlsTask.__pulumiType, name, resourceInputs, opts);

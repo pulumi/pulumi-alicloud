@@ -81,23 +81,23 @@ export class Connection extends pulumi.CustomResource {
     /**
      * Prefix of the cluster public endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter. Default to `<db_cluster_id> + tf`.
      */
-    public readonly connectionPrefix!: pulumi.Output<string>;
+    declare public readonly connectionPrefix: pulumi.Output<string>;
     /**
      * Connection cluster string.
      */
-    public /*out*/ readonly connectionString!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectionString: pulumi.Output<string>;
     /**
      * The Id of cluster that can run database.
      */
-    public readonly dbClusterId!: pulumi.Output<string>;
+    declare public readonly dbClusterId: pulumi.Output<string>;
     /**
      * The ip address of connection string.
      */
-    public /*out*/ readonly ipAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly ipAddress: pulumi.Output<string>;
     /**
      * Connection cluster port.
      */
-    public /*out*/ readonly port!: pulumi.Output<string>;
+    declare public /*out*/ readonly port: pulumi.Output<string>;
 
     /**
      * Create a Connection resource with the given unique name, arguments, and options.
@@ -112,18 +112,18 @@ export class Connection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
-            resourceInputs["connectionPrefix"] = state ? state.connectionPrefix : undefined;
-            resourceInputs["connectionString"] = state ? state.connectionString : undefined;
-            resourceInputs["dbClusterId"] = state ? state.dbClusterId : undefined;
-            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["connectionPrefix"] = state?.connectionPrefix;
+            resourceInputs["connectionString"] = state?.connectionString;
+            resourceInputs["dbClusterId"] = state?.dbClusterId;
+            resourceInputs["ipAddress"] = state?.ipAddress;
+            resourceInputs["port"] = state?.port;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
-            if ((!args || args.dbClusterId === undefined) && !opts.urn) {
+            if (args?.dbClusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbClusterId'");
             }
-            resourceInputs["connectionPrefix"] = args ? args.connectionPrefix : undefined;
-            resourceInputs["dbClusterId"] = args ? args.dbClusterId : undefined;
+            resourceInputs["connectionPrefix"] = args?.connectionPrefix;
+            resourceInputs["dbClusterId"] = args?.dbClusterId;
             resourceInputs["connectionString"] = undefined /*out*/;
             resourceInputs["ipAddress"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;

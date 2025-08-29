@@ -151,31 +151,31 @@ export class PbrRouteEntry extends pulumi.CustomResource {
     /**
      * The next hop of the policy-based route.
      */
-    public readonly nextHop!: pulumi.Output<string>;
+    declare public readonly nextHop: pulumi.Output<string>;
     /**
      * Whether to issue the destination route to the VPC.
      */
-    public readonly publishVpc!: pulumi.Output<boolean>;
+    declare public readonly publishVpc: pulumi.Output<boolean>;
     /**
      * The destination CIDR block of the policy-based route.
      */
-    public readonly routeDest!: pulumi.Output<string>;
+    declare public readonly routeDest: pulumi.Output<string>;
     /**
      * The source CIDR block of the policy-based route.
      */
-    public readonly routeSource!: pulumi.Output<string>;
+    declare public readonly routeSource: pulumi.Output<string>;
     /**
      * The status of the vpn pbr route entry.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The ID of the vpn gateway.
      */
-    public readonly vpnGatewayId!: pulumi.Output<string>;
+    declare public readonly vpnGatewayId: pulumi.Output<string>;
     /**
      * The weight of the policy-based route. Valid values: 0 and 100.
      */
-    public readonly weight!: pulumi.Output<number>;
+    declare public readonly weight: pulumi.Output<number>;
 
     /**
      * Create a PbrRouteEntry resource with the given unique name, arguments, and options.
@@ -190,39 +190,39 @@ export class PbrRouteEntry extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PbrRouteEntryState | undefined;
-            resourceInputs["nextHop"] = state ? state.nextHop : undefined;
-            resourceInputs["publishVpc"] = state ? state.publishVpc : undefined;
-            resourceInputs["routeDest"] = state ? state.routeDest : undefined;
-            resourceInputs["routeSource"] = state ? state.routeSource : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vpnGatewayId"] = state ? state.vpnGatewayId : undefined;
-            resourceInputs["weight"] = state ? state.weight : undefined;
+            resourceInputs["nextHop"] = state?.nextHop;
+            resourceInputs["publishVpc"] = state?.publishVpc;
+            resourceInputs["routeDest"] = state?.routeDest;
+            resourceInputs["routeSource"] = state?.routeSource;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vpnGatewayId"] = state?.vpnGatewayId;
+            resourceInputs["weight"] = state?.weight;
         } else {
             const args = argsOrState as PbrRouteEntryArgs | undefined;
-            if ((!args || args.nextHop === undefined) && !opts.urn) {
+            if (args?.nextHop === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nextHop'");
             }
-            if ((!args || args.publishVpc === undefined) && !opts.urn) {
+            if (args?.publishVpc === undefined && !opts.urn) {
                 throw new Error("Missing required property 'publishVpc'");
             }
-            if ((!args || args.routeDest === undefined) && !opts.urn) {
+            if (args?.routeDest === undefined && !opts.urn) {
                 throw new Error("Missing required property 'routeDest'");
             }
-            if ((!args || args.routeSource === undefined) && !opts.urn) {
+            if (args?.routeSource === undefined && !opts.urn) {
                 throw new Error("Missing required property 'routeSource'");
             }
-            if ((!args || args.vpnGatewayId === undefined) && !opts.urn) {
+            if (args?.vpnGatewayId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpnGatewayId'");
             }
-            if ((!args || args.weight === undefined) && !opts.urn) {
+            if (args?.weight === undefined && !opts.urn) {
                 throw new Error("Missing required property 'weight'");
             }
-            resourceInputs["nextHop"] = args ? args.nextHop : undefined;
-            resourceInputs["publishVpc"] = args ? args.publishVpc : undefined;
-            resourceInputs["routeDest"] = args ? args.routeDest : undefined;
-            resourceInputs["routeSource"] = args ? args.routeSource : undefined;
-            resourceInputs["vpnGatewayId"] = args ? args.vpnGatewayId : undefined;
-            resourceInputs["weight"] = args ? args.weight : undefined;
+            resourceInputs["nextHop"] = args?.nextHop;
+            resourceInputs["publishVpc"] = args?.publishVpc;
+            resourceInputs["routeDest"] = args?.routeDest;
+            resourceInputs["routeSource"] = args?.routeSource;
+            resourceInputs["vpnGatewayId"] = args?.vpnGatewayId;
+            resourceInputs["weight"] = args?.weight;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

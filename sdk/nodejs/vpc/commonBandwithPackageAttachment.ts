@@ -70,15 +70,15 @@ export class CommonBandwithPackageAttachment extends pulumi.CustomResource {
     /**
      * The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
      */
-    public readonly bandwidthPackageBandwidth!: pulumi.Output<string>;
+    declare public readonly bandwidthPackageBandwidth: pulumi.Output<string>;
     /**
      * The ID of the Internet Shared Bandwidth instance.
      */
-    public readonly bandwidthPackageId!: pulumi.Output<string>;
+    declare public readonly bandwidthPackageId: pulumi.Output<string>;
     /**
      * Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
      */
-    public readonly cancelCommonBandwidthPackageIpBandwidth!: pulumi.Output<boolean | undefined>;
+    declare public readonly cancelCommonBandwidthPackageIpBandwidth: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the EIP that you want to query.
      *
@@ -86,15 +86,15 @@ export class CommonBandwithPackageAttachment extends pulumi.CustomResource {
      *
      * > **NOTE:**   If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
      */
-    public readonly ipType!: pulumi.Output<string | undefined>;
+    declare public readonly ipType: pulumi.Output<string | undefined>;
     /**
      * The status of the Internet Shared Bandwidth instance.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a CommonBandwithPackageAttachment resource with the given unique name, arguments, and options.
@@ -109,25 +109,25 @@ export class CommonBandwithPackageAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CommonBandwithPackageAttachmentState | undefined;
-            resourceInputs["bandwidthPackageBandwidth"] = state ? state.bandwidthPackageBandwidth : undefined;
-            resourceInputs["bandwidthPackageId"] = state ? state.bandwidthPackageId : undefined;
-            resourceInputs["cancelCommonBandwidthPackageIpBandwidth"] = state ? state.cancelCommonBandwidthPackageIpBandwidth : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["ipType"] = state ? state.ipType : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["bandwidthPackageBandwidth"] = state?.bandwidthPackageBandwidth;
+            resourceInputs["bandwidthPackageId"] = state?.bandwidthPackageId;
+            resourceInputs["cancelCommonBandwidthPackageIpBandwidth"] = state?.cancelCommonBandwidthPackageIpBandwidth;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["ipType"] = state?.ipType;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as CommonBandwithPackageAttachmentArgs | undefined;
-            if ((!args || args.bandwidthPackageId === undefined) && !opts.urn) {
+            if (args?.bandwidthPackageId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bandwidthPackageId'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["bandwidthPackageBandwidth"] = args ? args.bandwidthPackageBandwidth : undefined;
-            resourceInputs["bandwidthPackageId"] = args ? args.bandwidthPackageId : undefined;
-            resourceInputs["cancelCommonBandwidthPackageIpBandwidth"] = args ? args.cancelCommonBandwidthPackageIpBandwidth : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["ipType"] = args ? args.ipType : undefined;
+            resourceInputs["bandwidthPackageBandwidth"] = args?.bandwidthPackageBandwidth;
+            resourceInputs["bandwidthPackageId"] = args?.bandwidthPackageId;
+            resourceInputs["cancelCommonBandwidthPackageIpBandwidth"] = args?.cancelCommonBandwidthPackageIpBandwidth;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["ipType"] = args?.ipType;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

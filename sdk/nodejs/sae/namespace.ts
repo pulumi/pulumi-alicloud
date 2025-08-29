@@ -76,23 +76,23 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enableMicroRegistration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
      */
-    public readonly enableMicroRegistration!: pulumi.Output<boolean>;
+    declare public readonly enableMicroRegistration: pulumi.Output<boolean>;
     /**
      * The Description of Namespace.
      */
-    public readonly namespaceDescription!: pulumi.Output<string | undefined>;
+    declare public readonly namespaceDescription: pulumi.Output<string | undefined>;
     /**
      * The ID of the Namespace. It can contain 2 to 32 lowercase characters. The value is in format `{RegionId}:{namespace}`.
      */
-    public readonly namespaceId!: pulumi.Output<string>;
+    declare public readonly namespaceId: pulumi.Output<string>;
     /**
      * The Name of Namespace.
      */
-    public readonly namespaceName!: pulumi.Output<string>;
+    declare public readonly namespaceName: pulumi.Output<string>;
     /**
      * The short ID of the Namespace. You do not need to specify a region ID. The value of `namespaceShortId` can be up to 20 characters in length and can contain only lowercase letters and digits.
      */
-    public readonly namespaceShortId!: pulumi.Output<string>;
+    declare public readonly namespaceShortId: pulumi.Output<string>;
 
     /**
      * Create a Namespace resource with the given unique name, arguments, and options.
@@ -107,21 +107,21 @@ export class Namespace extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NamespaceState | undefined;
-            resourceInputs["enableMicroRegistration"] = state ? state.enableMicroRegistration : undefined;
-            resourceInputs["namespaceDescription"] = state ? state.namespaceDescription : undefined;
-            resourceInputs["namespaceId"] = state ? state.namespaceId : undefined;
-            resourceInputs["namespaceName"] = state ? state.namespaceName : undefined;
-            resourceInputs["namespaceShortId"] = state ? state.namespaceShortId : undefined;
+            resourceInputs["enableMicroRegistration"] = state?.enableMicroRegistration;
+            resourceInputs["namespaceDescription"] = state?.namespaceDescription;
+            resourceInputs["namespaceId"] = state?.namespaceId;
+            resourceInputs["namespaceName"] = state?.namespaceName;
+            resourceInputs["namespaceShortId"] = state?.namespaceShortId;
         } else {
             const args = argsOrState as NamespaceArgs | undefined;
-            if ((!args || args.namespaceName === undefined) && !opts.urn) {
+            if (args?.namespaceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'namespaceName'");
             }
-            resourceInputs["enableMicroRegistration"] = args ? args.enableMicroRegistration : undefined;
-            resourceInputs["namespaceDescription"] = args ? args.namespaceDescription : undefined;
-            resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
-            resourceInputs["namespaceName"] = args ? args.namespaceName : undefined;
-            resourceInputs["namespaceShortId"] = args ? args.namespaceShortId : undefined;
+            resourceInputs["enableMicroRegistration"] = args?.enableMicroRegistration;
+            resourceInputs["namespaceDescription"] = args?.namespaceDescription;
+            resourceInputs["namespaceId"] = args?.namespaceId;
+            resourceInputs["namespaceName"] = args?.namespaceName;
+            resourceInputs["namespaceShortId"] = args?.namespaceShortId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Namespace.__pulumiType, name, resourceInputs, opts);

@@ -85,57 +85,57 @@ export class VideoProcessing extends pulumi.CustomResource {
     /**
      * Config Id
      */
-    public /*out*/ readonly configId!: pulumi.Output<number>;
+    declare public /*out*/ readonly configId: pulumi.Output<number>;
     /**
      * Custom FLV end parameters.
      */
-    public readonly flvSeekEnd!: pulumi.Output<string | undefined>;
+    declare public readonly flvSeekEnd: pulumi.Output<string | undefined>;
     /**
      * Custom FLV start parameters.
      */
-    public readonly flvSeekStart!: pulumi.Output<string | undefined>;
+    declare public readonly flvSeekStart: pulumi.Output<string | undefined>;
     /**
      * FLV drag mode. Value range:
      */
-    public readonly flvVideoSeekMode!: pulumi.Output<string | undefined>;
+    declare public readonly flvVideoSeekMode: pulumi.Output<string | undefined>;
     /**
      * Custom mp4 end parameters.
      */
-    public readonly mp4SeekEnd!: pulumi.Output<string | undefined>;
+    declare public readonly mp4SeekEnd: pulumi.Output<string | undefined>;
     /**
      * Custom mp4 start parameters.
      */
-    public readonly mp4SeekStart!: pulumi.Output<string | undefined>;
+    declare public readonly mp4SeekStart: pulumi.Output<string | undefined>;
     /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * - Match all incoming requests: value set to true
      * - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
-    public readonly rule!: pulumi.Output<string | undefined>;
+    declare public readonly rule: pulumi.Output<string | undefined>;
     /**
      * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      */
-    public readonly ruleEnable!: pulumi.Output<string | undefined>;
+    declare public readonly ruleEnable: pulumi.Output<string | undefined>;
     /**
      * Rule name. When adding global configuration, this parameter does not need to be set.
      */
-    public readonly ruleName!: pulumi.Output<string | undefined>;
+    declare public readonly ruleName: pulumi.Output<string | undefined>;
     /**
      * Order of rule execution. The smaller the value, the higher the priority for execution.
      */
-    public readonly sequence!: pulumi.Output<number | undefined>;
+    declare public readonly sequence: pulumi.Output<number | undefined>;
     /**
      * The site ID, which can be obtained by calling the ListSites API.
      */
-    public readonly siteId!: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<number>;
     /**
      * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
-    public readonly siteVersion!: pulumi.Output<number | undefined>;
+    declare public readonly siteVersion: pulumi.Output<number | undefined>;
     /**
      * Drag and drop the play function switch. Value range:
      */
-    public readonly videoSeekEnable!: pulumi.Output<string | undefined>;
+    declare public readonly videoSeekEnable: pulumi.Output<string | undefined>;
 
     /**
      * Create a VideoProcessing resource with the given unique name, arguments, and options.
@@ -150,36 +150,36 @@ export class VideoProcessing extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VideoProcessingState | undefined;
-            resourceInputs["configId"] = state ? state.configId : undefined;
-            resourceInputs["flvSeekEnd"] = state ? state.flvSeekEnd : undefined;
-            resourceInputs["flvSeekStart"] = state ? state.flvSeekStart : undefined;
-            resourceInputs["flvVideoSeekMode"] = state ? state.flvVideoSeekMode : undefined;
-            resourceInputs["mp4SeekEnd"] = state ? state.mp4SeekEnd : undefined;
-            resourceInputs["mp4SeekStart"] = state ? state.mp4SeekStart : undefined;
-            resourceInputs["rule"] = state ? state.rule : undefined;
-            resourceInputs["ruleEnable"] = state ? state.ruleEnable : undefined;
-            resourceInputs["ruleName"] = state ? state.ruleName : undefined;
-            resourceInputs["sequence"] = state ? state.sequence : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["siteVersion"] = state ? state.siteVersion : undefined;
-            resourceInputs["videoSeekEnable"] = state ? state.videoSeekEnable : undefined;
+            resourceInputs["configId"] = state?.configId;
+            resourceInputs["flvSeekEnd"] = state?.flvSeekEnd;
+            resourceInputs["flvSeekStart"] = state?.flvSeekStart;
+            resourceInputs["flvVideoSeekMode"] = state?.flvVideoSeekMode;
+            resourceInputs["mp4SeekEnd"] = state?.mp4SeekEnd;
+            resourceInputs["mp4SeekStart"] = state?.mp4SeekStart;
+            resourceInputs["rule"] = state?.rule;
+            resourceInputs["ruleEnable"] = state?.ruleEnable;
+            resourceInputs["ruleName"] = state?.ruleName;
+            resourceInputs["sequence"] = state?.sequence;
+            resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["siteVersion"] = state?.siteVersion;
+            resourceInputs["videoSeekEnable"] = state?.videoSeekEnable;
         } else {
             const args = argsOrState as VideoProcessingArgs | undefined;
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            resourceInputs["flvSeekEnd"] = args ? args.flvSeekEnd : undefined;
-            resourceInputs["flvSeekStart"] = args ? args.flvSeekStart : undefined;
-            resourceInputs["flvVideoSeekMode"] = args ? args.flvVideoSeekMode : undefined;
-            resourceInputs["mp4SeekEnd"] = args ? args.mp4SeekEnd : undefined;
-            resourceInputs["mp4SeekStart"] = args ? args.mp4SeekStart : undefined;
-            resourceInputs["rule"] = args ? args.rule : undefined;
-            resourceInputs["ruleEnable"] = args ? args.ruleEnable : undefined;
-            resourceInputs["ruleName"] = args ? args.ruleName : undefined;
-            resourceInputs["sequence"] = args ? args.sequence : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
-            resourceInputs["siteVersion"] = args ? args.siteVersion : undefined;
-            resourceInputs["videoSeekEnable"] = args ? args.videoSeekEnable : undefined;
+            resourceInputs["flvSeekEnd"] = args?.flvSeekEnd;
+            resourceInputs["flvSeekStart"] = args?.flvSeekStart;
+            resourceInputs["flvVideoSeekMode"] = args?.flvVideoSeekMode;
+            resourceInputs["mp4SeekEnd"] = args?.mp4SeekEnd;
+            resourceInputs["mp4SeekStart"] = args?.mp4SeekStart;
+            resourceInputs["rule"] = args?.rule;
+            resourceInputs["ruleEnable"] = args?.ruleEnable;
+            resourceInputs["ruleName"] = args?.ruleName;
+            resourceInputs["sequence"] = args?.sequence;
+            resourceInputs["siteId"] = args?.siteId;
+            resourceInputs["siteVersion"] = args?.siteVersion;
+            resourceInputs["videoSeekEnable"] = args?.videoSeekEnable;
             resourceInputs["configId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

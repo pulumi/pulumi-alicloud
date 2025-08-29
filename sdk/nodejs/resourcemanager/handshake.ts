@@ -63,39 +63,39 @@ export class Handshake extends pulumi.CustomResource {
     /**
      * The expiration time of the invitation.
      */
-    public /*out*/ readonly expireTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly expireTime: pulumi.Output<string>;
     /**
      * Resource account master account ID.
      */
-    public /*out*/ readonly masterAccountId!: pulumi.Output<string>;
+    declare public /*out*/ readonly masterAccountId: pulumi.Output<string>;
     /**
      * The name of the main account of the resource directory.
      */
-    public /*out*/ readonly masterAccountName!: pulumi.Output<string>;
+    declare public /*out*/ readonly masterAccountName: pulumi.Output<string>;
     /**
      * The modification time of the invitation.
      */
-    public /*out*/ readonly modifyTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly modifyTime: pulumi.Output<string>;
     /**
      * Remarks. The maximum length is 1024 characters.
      */
-    public readonly note!: pulumi.Output<string | undefined>;
+    declare public readonly note: pulumi.Output<string | undefined>;
     /**
      * Resource directory ID.
      */
-    public /*out*/ readonly resourceDirectoryId!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceDirectoryId: pulumi.Output<string>;
     /**
      * Invitation status. Valid values: `Pending` waiting for confirmation, `Accepted`, `Cancelled`, `Declined`, `Expired`.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Invited account ID or login email.
      */
-    public readonly targetEntity!: pulumi.Output<string>;
+    declare public readonly targetEntity: pulumi.Output<string>;
     /**
      * Type of account being invited. Valid values: `Account`, `Email`.
      */
-    public readonly targetType!: pulumi.Output<string>;
+    declare public readonly targetType: pulumi.Output<string>;
 
     /**
      * Create a Handshake resource with the given unique name, arguments, and options.
@@ -110,26 +110,26 @@ export class Handshake extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HandshakeState | undefined;
-            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
-            resourceInputs["masterAccountId"] = state ? state.masterAccountId : undefined;
-            resourceInputs["masterAccountName"] = state ? state.masterAccountName : undefined;
-            resourceInputs["modifyTime"] = state ? state.modifyTime : undefined;
-            resourceInputs["note"] = state ? state.note : undefined;
-            resourceInputs["resourceDirectoryId"] = state ? state.resourceDirectoryId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["targetEntity"] = state ? state.targetEntity : undefined;
-            resourceInputs["targetType"] = state ? state.targetType : undefined;
+            resourceInputs["expireTime"] = state?.expireTime;
+            resourceInputs["masterAccountId"] = state?.masterAccountId;
+            resourceInputs["masterAccountName"] = state?.masterAccountName;
+            resourceInputs["modifyTime"] = state?.modifyTime;
+            resourceInputs["note"] = state?.note;
+            resourceInputs["resourceDirectoryId"] = state?.resourceDirectoryId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["targetEntity"] = state?.targetEntity;
+            resourceInputs["targetType"] = state?.targetType;
         } else {
             const args = argsOrState as HandshakeArgs | undefined;
-            if ((!args || args.targetEntity === undefined) && !opts.urn) {
+            if (args?.targetEntity === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetEntity'");
             }
-            if ((!args || args.targetType === undefined) && !opts.urn) {
+            if (args?.targetType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetType'");
             }
-            resourceInputs["note"] = args ? args.note : undefined;
-            resourceInputs["targetEntity"] = args ? args.targetEntity : undefined;
-            resourceInputs["targetType"] = args ? args.targetType : undefined;
+            resourceInputs["note"] = args?.note;
+            resourceInputs["targetEntity"] = args?.targetEntity;
+            resourceInputs["targetType"] = args?.targetType;
             resourceInputs["expireTime"] = undefined /*out*/;
             resourceInputs["masterAccountId"] = undefined /*out*/;
             resourceInputs["masterAccountName"] = undefined /*out*/;

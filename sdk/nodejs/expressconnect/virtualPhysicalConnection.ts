@@ -80,113 +80,113 @@ export class VirtualPhysicalConnection extends pulumi.CustomResource {
     /**
      * The ID of the access point of the physical connection.
      */
-    public /*out*/ readonly accessPointId!: pulumi.Output<string>;
+    declare public /*out*/ readonly accessPointId: pulumi.Output<string>;
     /**
      * The physical location where the physical connection access device is located.
      */
-    public /*out*/ readonly adLocation!: pulumi.Output<string>;
+    declare public /*out*/ readonly adLocation: pulumi.Output<string>;
     /**
      * The bandwidth of the physical connection. Unit: Mbps.
      */
-    public /*out*/ readonly bandwidth!: pulumi.Output<string>;
+    declare public /*out*/ readonly bandwidth: pulumi.Output<string>;
     /**
      * The commercial status of the physical line. Value:-**Normal**: activated.-**Financialized**: Arrears locked.-**SecurityLocked**: locked for security reasons.
      */
-    public /*out*/ readonly businessStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly businessStatus: pulumi.Output<string>;
     /**
      * The circuit code provided by the operator for the physical connection.
      */
-    public /*out*/ readonly circuitCode!: pulumi.Output<string>;
+    declare public /*out*/ readonly circuitCode: pulumi.Output<string>;
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The description of the physical connection.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to precheck the API request. Valid values: `true` and `false`.
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * The opening time of the physical connection.
      */
-    public /*out*/ readonly enabledTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly enabledTime: pulumi.Output<string>;
     /**
      * The expiration time of the shared line.Time is expressed according to ISO8601 standard and UTC time is used. The format is: YYYY-MM-DDThh:mm:ssZ.
      */
-    public /*out*/ readonly endTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly endTime: pulumi.Output<string>;
     /**
      * The estimated bandwidth value of the shared line. Valid values: `50M`, `100M`, `200M`, `300M`, `400M`, `500M`, `1G`, `2G`, `5G`, `8G`, and `10G`. **Note**: By default, the values of 2G, 5G, 8G, and 10G are unavailable. If you want to specify these values, contact your customer manager. Unit: **M** indicates Mbps, **G** indicates Gbps.
      */
-    public readonly expectSpec!: pulumi.Output<string | undefined>;
+    declare public readonly expectSpec: pulumi.Output<string | undefined>;
     /**
      * Operators that provide access to physical lines. Value:-**CT**: China Telecom.-**CU**: China Unicom.-**CM**: China Mobile.-**CO**: China Other.-**Equinix**:Equinix.-**Other**: Other abroad.
      */
-    public /*out*/ readonly lineOperator!: pulumi.Output<string>;
+    declare public /*out*/ readonly lineOperator: pulumi.Output<string>;
     /**
      * The state of LOA. Value:-**Applying**:LOA application.-**Accept**:LOA application passed.-**Available**:LOA is Available.-**Rejected**:LOA application Rejected.-**Completing**: The dedicated line is under construction.-**Complete**: The construction of the dedicated line is completed.-**Deleted**:LOA has been Deleted.
      */
-    public /*out*/ readonly loaStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly loaStatus: pulumi.Output<string>;
     /**
      * The payment method of shared dedicated line. Value:
      * - **PayByPhysicalConnectionOwner**: indicates that the owner of the physical line associated with the shared line pays.
      * - **PayByVirtualPhysicalConnectionOwner**: indicates that the owner of the shared line pays.
      */
-    public readonly orderMode!: pulumi.Output<string>;
+    declare public readonly orderMode: pulumi.Output<string>;
     /**
      * The ID of the Alibaba Cloud account (primary account) to which the physical connection belongs.
      */
-    public /*out*/ readonly parentPhysicalConnectionAliUid!: pulumi.Output<string>;
+    declare public /*out*/ readonly parentPhysicalConnectionAliUid: pulumi.Output<string>;
     /**
      * The ID of the instance of the physical connection.
      */
-    public readonly parentPhysicalConnectionId!: pulumi.Output<string>;
+    declare public readonly parentPhysicalConnectionId: pulumi.Output<string>;
     /**
      * The geographic location of the local data center.
      */
-    public /*out*/ readonly peerLocation!: pulumi.Output<string>;
+    declare public /*out*/ readonly peerLocation: pulumi.Output<string>;
     /**
      * The port number of the physical connection device.
      */
-    public /*out*/ readonly portNumber!: pulumi.Output<string>;
+    declare public /*out*/ readonly portNumber: pulumi.Output<string>;
     /**
      * Physical connection port type. Value:-**100Base-T**: 100 megabytes port.-**1000Base-T**: Gigabit port.-**1000Base-LX**: Gigabit single mode optical port (10km).-**10GBase-T**: 10 Gigabit port.-**10GBase-LR**: 10 Gigabit single mode optical port (10km).-**40GBase-LR**: 40 megabytes single-mode optical port.-**100GBase-LR**: 100,000 megabytes single-mode optical port.
      */
-    public /*out*/ readonly portType!: pulumi.Output<string>;
+    declare public /*out*/ readonly portType: pulumi.Output<string>;
     /**
      * The ID of the redundant physical connection.
      */
-    public /*out*/ readonly redundantPhysicalConnectionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly redundantPhysicalConnectionId: pulumi.Output<string>;
     /**
      * The resource group id.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The bandwidth value of the shared line. Valid values: `50M`, `100M`, `200M`, `300M`, `400M`, `500M`, `1G`, `2G`, `5G`, `8G`, and `10G`. **Note**: By default, the values of 2G, 5G, 8G, and 10G are unavailable. If you want to specify these values, contact your customer manager. Unit: **M** indicates Mbps, **G** indicates Gbps.
      */
-    public readonly spec!: pulumi.Output<string>;
+    declare public readonly spec: pulumi.Output<string>;
     /**
      * The status of the resource
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The name of the physical connection.
      */
-    public readonly virtualPhysicalConnectionName!: pulumi.Output<string | undefined>;
+    declare public readonly virtualPhysicalConnectionName: pulumi.Output<string | undefined>;
     /**
      * The business status of the shared line. Value:-**Confirmed**: The shared line has been Confirmed to receive.-**UnConfirmed**: The shared line has not been confirmed to be received.-**Deleted**: The shared line has been Deleted.
      */
-    public /*out*/ readonly virtualPhysicalConnectionStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly virtualPhysicalConnectionStatus: pulumi.Output<string>;
     /**
      * The VLAN ID of the shared leased line. Valid values: `0` to `2999`.
      */
-    public readonly vlanId!: pulumi.Output<number>;
+    declare public readonly vlanId: pulumi.Output<number>;
     /**
      * The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
      */
-    public readonly vpconnAliUid!: pulumi.Output<string>;
+    declare public readonly vpconnAliUid: pulumi.Output<string>;
 
     /**
      * Create a VirtualPhysicalConnection resource with the given unique name, arguments, and options.
@@ -201,60 +201,60 @@ export class VirtualPhysicalConnection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VirtualPhysicalConnectionState | undefined;
-            resourceInputs["accessPointId"] = state ? state.accessPointId : undefined;
-            resourceInputs["adLocation"] = state ? state.adLocation : undefined;
-            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
-            resourceInputs["businessStatus"] = state ? state.businessStatus : undefined;
-            resourceInputs["circuitCode"] = state ? state.circuitCode : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["enabledTime"] = state ? state.enabledTime : undefined;
-            resourceInputs["endTime"] = state ? state.endTime : undefined;
-            resourceInputs["expectSpec"] = state ? state.expectSpec : undefined;
-            resourceInputs["lineOperator"] = state ? state.lineOperator : undefined;
-            resourceInputs["loaStatus"] = state ? state.loaStatus : undefined;
-            resourceInputs["orderMode"] = state ? state.orderMode : undefined;
-            resourceInputs["parentPhysicalConnectionAliUid"] = state ? state.parentPhysicalConnectionAliUid : undefined;
-            resourceInputs["parentPhysicalConnectionId"] = state ? state.parentPhysicalConnectionId : undefined;
-            resourceInputs["peerLocation"] = state ? state.peerLocation : undefined;
-            resourceInputs["portNumber"] = state ? state.portNumber : undefined;
-            resourceInputs["portType"] = state ? state.portType : undefined;
-            resourceInputs["redundantPhysicalConnectionId"] = state ? state.redundantPhysicalConnectionId : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["spec"] = state ? state.spec : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["virtualPhysicalConnectionName"] = state ? state.virtualPhysicalConnectionName : undefined;
-            resourceInputs["virtualPhysicalConnectionStatus"] = state ? state.virtualPhysicalConnectionStatus : undefined;
-            resourceInputs["vlanId"] = state ? state.vlanId : undefined;
-            resourceInputs["vpconnAliUid"] = state ? state.vpconnAliUid : undefined;
+            resourceInputs["accessPointId"] = state?.accessPointId;
+            resourceInputs["adLocation"] = state?.adLocation;
+            resourceInputs["bandwidth"] = state?.bandwidth;
+            resourceInputs["businessStatus"] = state?.businessStatus;
+            resourceInputs["circuitCode"] = state?.circuitCode;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["enabledTime"] = state?.enabledTime;
+            resourceInputs["endTime"] = state?.endTime;
+            resourceInputs["expectSpec"] = state?.expectSpec;
+            resourceInputs["lineOperator"] = state?.lineOperator;
+            resourceInputs["loaStatus"] = state?.loaStatus;
+            resourceInputs["orderMode"] = state?.orderMode;
+            resourceInputs["parentPhysicalConnectionAliUid"] = state?.parentPhysicalConnectionAliUid;
+            resourceInputs["parentPhysicalConnectionId"] = state?.parentPhysicalConnectionId;
+            resourceInputs["peerLocation"] = state?.peerLocation;
+            resourceInputs["portNumber"] = state?.portNumber;
+            resourceInputs["portType"] = state?.portType;
+            resourceInputs["redundantPhysicalConnectionId"] = state?.redundantPhysicalConnectionId;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["spec"] = state?.spec;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["virtualPhysicalConnectionName"] = state?.virtualPhysicalConnectionName;
+            resourceInputs["virtualPhysicalConnectionStatus"] = state?.virtualPhysicalConnectionStatus;
+            resourceInputs["vlanId"] = state?.vlanId;
+            resourceInputs["vpconnAliUid"] = state?.vpconnAliUid;
         } else {
             const args = argsOrState as VirtualPhysicalConnectionArgs | undefined;
-            if ((!args || args.orderMode === undefined) && !opts.urn) {
+            if (args?.orderMode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orderMode'");
             }
-            if ((!args || args.parentPhysicalConnectionId === undefined) && !opts.urn) {
+            if (args?.parentPhysicalConnectionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parentPhysicalConnectionId'");
             }
-            if ((!args || args.spec === undefined) && !opts.urn) {
+            if (args?.spec === undefined && !opts.urn) {
                 throw new Error("Missing required property 'spec'");
             }
-            if ((!args || args.vlanId === undefined) && !opts.urn) {
+            if (args?.vlanId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vlanId'");
             }
-            if ((!args || args.vpconnAliUid === undefined) && !opts.urn) {
+            if (args?.vpconnAliUid === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpconnAliUid'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["expectSpec"] = args ? args.expectSpec : undefined;
-            resourceInputs["orderMode"] = args ? args.orderMode : undefined;
-            resourceInputs["parentPhysicalConnectionId"] = args ? args.parentPhysicalConnectionId : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["spec"] = args ? args.spec : undefined;
-            resourceInputs["virtualPhysicalConnectionName"] = args ? args.virtualPhysicalConnectionName : undefined;
-            resourceInputs["vlanId"] = args ? args.vlanId : undefined;
-            resourceInputs["vpconnAliUid"] = args ? args.vpconnAliUid : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["expectSpec"] = args?.expectSpec;
+            resourceInputs["orderMode"] = args?.orderMode;
+            resourceInputs["parentPhysicalConnectionId"] = args?.parentPhysicalConnectionId;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["spec"] = args?.spec;
+            resourceInputs["virtualPhysicalConnectionName"] = args?.virtualPhysicalConnectionName;
+            resourceInputs["vlanId"] = args?.vlanId;
+            resourceInputs["vpconnAliUid"] = args?.vpconnAliUid;
             resourceInputs["accessPointId"] = undefined /*out*/;
             resourceInputs["adLocation"] = undefined /*out*/;
             resourceInputs["bandwidth"] = undefined /*out*/;

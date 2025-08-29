@@ -137,123 +137,123 @@ export class EnterpriseInstance extends pulumi.CustomResource {
     /**
      * Cross-database query datalink name.
      */
-    public readonly dataLinkName!: pulumi.Output<string>;
+    declare public readonly dataLinkName: pulumi.Output<string>;
     /**
      * Database access password.
      */
-    public readonly databasePassword!: pulumi.Output<string>;
+    declare public readonly databasePassword: pulumi.Output<string>;
     /**
      * Database access account.
      */
-    public readonly databaseUser!: pulumi.Output<string>;
+    declare public readonly databaseUser: pulumi.Output<string>;
     /**
      * The dba id of the database instance.
      */
-    public readonly dbaId!: pulumi.Output<string>;
+    declare public readonly dbaId: pulumi.Output<string>;
     /**
      * The instance dba nickname.
      */
-    public /*out*/ readonly dbaNickName!: pulumi.Output<string>;
+    declare public /*out*/ readonly dbaNickName: pulumi.Output<string>;
     /**
      * The DBA of the instance is passed into the Alibaba Cloud uid of the DBA.
      */
-    public readonly dbaUid!: pulumi.Output<number>;
+    declare public readonly dbaUid: pulumi.Output<number>;
     /**
      * Whether to use online services, currently only supports MySQL and PolarDB. Valid values: `0` Not used, `1` Native online DDL priority, `2` DMS lock-free table structure change priority.
      */
-    public readonly ddlOnline!: pulumi.Output<number | undefined>;
+    declare public readonly ddlOnline: pulumi.Output<number | undefined>;
     /**
      * ECS instance ID. The value of InstanceSource is the ECS self-built library. This value must be passed.
      */
-    public readonly ecsInstanceId!: pulumi.Output<string>;
+    declare public readonly ecsInstanceId: pulumi.Output<string>;
     /**
      * The region where the instance is located. This value must be passed when the value of InstanceSource is RDS, ECS self-built library, and VPC dedicated line IDC.
      */
-    public readonly ecsRegion!: pulumi.Output<string | undefined>;
+    declare public readonly ecsRegion: pulumi.Output<string | undefined>;
     /**
      * Environment type. Valid values: `product` production environment, `dev` development environment, `pre` pre-release environment, `test` test environment, `sit` SIT environment, `uat` UAT environment, `pet` pressure test environment, `stag` STAG environment.
      */
-    public readonly envType!: pulumi.Output<string>;
+    declare public readonly envType: pulumi.Output<string>;
     /**
      * Export timeout, unit: s (seconds).
      */
-    public readonly exportTimeout!: pulumi.Output<number>;
+    declare public readonly exportTimeout: pulumi.Output<number>;
     /**
      * Host address of the target database.
      */
-    public readonly host!: pulumi.Output<string>;
+    declare public readonly host: pulumi.Output<string>;
     /**
      * Field `instanceAlias` has been deprecated from version 1.100.0. Use `instanceName` instead.
      *
      * @deprecated Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.
      */
-    public readonly instanceAlias!: pulumi.Output<string>;
+    declare public readonly instanceAlias: pulumi.Output<string>;
     /**
      * The instance id of the database instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Instance name, to help users quickly distinguish positioning.
      */
-    public readonly instanceName!: pulumi.Output<string>;
+    declare public readonly instanceName: pulumi.Output<string>;
     /**
      * The source of the database instance. Valid values: `PUBLIC_OWN`, `RDS`, `ECS_OWN`, `VPC_IDC`.
      */
-    public readonly instanceSource!: pulumi.Output<string>;
+    declare public readonly instanceSource: pulumi.Output<string>;
     /**
      * Database type. Valid values: `MySQL`, `SQLServer`, `PostgreSQL`, `Oracle,` `DRDS`, `OceanBase`, `Mongo`, `Redis`.
      */
-    public readonly instanceType!: pulumi.Output<string>;
+    declare public readonly instanceType: pulumi.Output<string>;
     /**
      * Network type. Valid values: `CLASSIC`, `VPC`.
      */
-    public readonly networkType!: pulumi.Output<string>;
+    declare public readonly networkType: pulumi.Output<string>;
     /**
      * Access port of the target database.
      */
-    public readonly port!: pulumi.Output<number>;
+    declare public readonly port: pulumi.Output<number>;
     /**
      * Query timeout time, unit: s (seconds).
      */
-    public readonly queryTimeout!: pulumi.Output<number>;
+    declare public readonly queryTimeout: pulumi.Output<number>;
     /**
      * The security rule of the instance is passed into the name of the security rule in the enterprise.
      */
-    public readonly safeRule!: pulumi.Output<string>;
+    declare public readonly safeRule: pulumi.Output<string>;
     /**
      * The safe rule id of the database instance.
      */
-    public readonly safeRuleId!: pulumi.Output<string>;
+    declare public readonly safeRuleId: pulumi.Output<string>;
     /**
      * The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
      */
-    public readonly sid!: pulumi.Output<string | undefined>;
+    declare public readonly sid: pulumi.Output<string | undefined>;
     /**
      * Whether the instance ignores test connectivity. Valid values: `true`, `false`.
      */
-    public readonly skipTest!: pulumi.Output<boolean | undefined>;
+    declare public readonly skipTest: pulumi.Output<boolean | undefined>;
     /**
      * It has been deprecated from provider version 1.100.0 and 'status' instead.
      *
      * @deprecated Field 'state' has been deprecated from version 1.100.0. Use 'status' instead.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The instance status.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tenant ID.
      */
-    public readonly tid!: pulumi.Output<number | undefined>;
+    declare public readonly tid: pulumi.Output<number | undefined>;
     /**
      * Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
      */
-    public readonly useDsql!: pulumi.Output<number>;
+    declare public readonly useDsql: pulumi.Output<number>;
     /**
      * VPC ID. This value must be passed when the value of InstanceSource is VPC dedicated line IDC.
      */
-    public readonly vpcId!: pulumi.Output<string | undefined>;
+    declare public readonly vpcId: pulumi.Output<string | undefined>;
 
     /**
      * Create a EnterpriseInstance resource with the given unique name, arguments, and options.
@@ -268,99 +268,99 @@ export class EnterpriseInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnterpriseInstanceState | undefined;
-            resourceInputs["dataLinkName"] = state ? state.dataLinkName : undefined;
-            resourceInputs["databasePassword"] = state ? state.databasePassword : undefined;
-            resourceInputs["databaseUser"] = state ? state.databaseUser : undefined;
-            resourceInputs["dbaId"] = state ? state.dbaId : undefined;
-            resourceInputs["dbaNickName"] = state ? state.dbaNickName : undefined;
-            resourceInputs["dbaUid"] = state ? state.dbaUid : undefined;
-            resourceInputs["ddlOnline"] = state ? state.ddlOnline : undefined;
-            resourceInputs["ecsInstanceId"] = state ? state.ecsInstanceId : undefined;
-            resourceInputs["ecsRegion"] = state ? state.ecsRegion : undefined;
-            resourceInputs["envType"] = state ? state.envType : undefined;
-            resourceInputs["exportTimeout"] = state ? state.exportTimeout : undefined;
-            resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["instanceAlias"] = state ? state.instanceAlias : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
-            resourceInputs["instanceSource"] = state ? state.instanceSource : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["networkType"] = state ? state.networkType : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["queryTimeout"] = state ? state.queryTimeout : undefined;
-            resourceInputs["safeRule"] = state ? state.safeRule : undefined;
-            resourceInputs["safeRuleId"] = state ? state.safeRuleId : undefined;
-            resourceInputs["sid"] = state ? state.sid : undefined;
-            resourceInputs["skipTest"] = state ? state.skipTest : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tid"] = state ? state.tid : undefined;
-            resourceInputs["useDsql"] = state ? state.useDsql : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["dataLinkName"] = state?.dataLinkName;
+            resourceInputs["databasePassword"] = state?.databasePassword;
+            resourceInputs["databaseUser"] = state?.databaseUser;
+            resourceInputs["dbaId"] = state?.dbaId;
+            resourceInputs["dbaNickName"] = state?.dbaNickName;
+            resourceInputs["dbaUid"] = state?.dbaUid;
+            resourceInputs["ddlOnline"] = state?.ddlOnline;
+            resourceInputs["ecsInstanceId"] = state?.ecsInstanceId;
+            resourceInputs["ecsRegion"] = state?.ecsRegion;
+            resourceInputs["envType"] = state?.envType;
+            resourceInputs["exportTimeout"] = state?.exportTimeout;
+            resourceInputs["host"] = state?.host;
+            resourceInputs["instanceAlias"] = state?.instanceAlias;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["instanceName"] = state?.instanceName;
+            resourceInputs["instanceSource"] = state?.instanceSource;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["networkType"] = state?.networkType;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["queryTimeout"] = state?.queryTimeout;
+            resourceInputs["safeRule"] = state?.safeRule;
+            resourceInputs["safeRuleId"] = state?.safeRuleId;
+            resourceInputs["sid"] = state?.sid;
+            resourceInputs["skipTest"] = state?.skipTest;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tid"] = state?.tid;
+            resourceInputs["useDsql"] = state?.useDsql;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as EnterpriseInstanceArgs | undefined;
-            if ((!args || args.databasePassword === undefined) && !opts.urn) {
+            if (args?.databasePassword === undefined && !opts.urn) {
                 throw new Error("Missing required property 'databasePassword'");
             }
-            if ((!args || args.databaseUser === undefined) && !opts.urn) {
+            if (args?.databaseUser === undefined && !opts.urn) {
                 throw new Error("Missing required property 'databaseUser'");
             }
-            if ((!args || args.dbaUid === undefined) && !opts.urn) {
+            if (args?.dbaUid === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbaUid'");
             }
-            if ((!args || args.envType === undefined) && !opts.urn) {
+            if (args?.envType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'envType'");
             }
-            if ((!args || args.exportTimeout === undefined) && !opts.urn) {
+            if (args?.exportTimeout === undefined && !opts.urn) {
                 throw new Error("Missing required property 'exportTimeout'");
             }
-            if ((!args || args.host === undefined) && !opts.urn) {
+            if (args?.host === undefined && !opts.urn) {
                 throw new Error("Missing required property 'host'");
             }
-            if ((!args || args.instanceSource === undefined) && !opts.urn) {
+            if (args?.instanceSource === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceSource'");
             }
-            if ((!args || args.instanceType === undefined) && !opts.urn) {
+            if (args?.instanceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceType'");
             }
-            if ((!args || args.networkType === undefined) && !opts.urn) {
+            if (args?.networkType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkType'");
             }
-            if ((!args || args.port === undefined) && !opts.urn) {
+            if (args?.port === undefined && !opts.urn) {
                 throw new Error("Missing required property 'port'");
             }
-            if ((!args || args.queryTimeout === undefined) && !opts.urn) {
+            if (args?.queryTimeout === undefined && !opts.urn) {
                 throw new Error("Missing required property 'queryTimeout'");
             }
-            if ((!args || args.safeRule === undefined) && !opts.urn) {
+            if (args?.safeRule === undefined && !opts.urn) {
                 throw new Error("Missing required property 'safeRule'");
             }
-            resourceInputs["dataLinkName"] = args ? args.dataLinkName : undefined;
+            resourceInputs["dataLinkName"] = args?.dataLinkName;
             resourceInputs["databasePassword"] = args?.databasePassword ? pulumi.secret(args.databasePassword) : undefined;
-            resourceInputs["databaseUser"] = args ? args.databaseUser : undefined;
-            resourceInputs["dbaId"] = args ? args.dbaId : undefined;
-            resourceInputs["dbaUid"] = args ? args.dbaUid : undefined;
-            resourceInputs["ddlOnline"] = args ? args.ddlOnline : undefined;
-            resourceInputs["ecsInstanceId"] = args ? args.ecsInstanceId : undefined;
-            resourceInputs["ecsRegion"] = args ? args.ecsRegion : undefined;
-            resourceInputs["envType"] = args ? args.envType : undefined;
-            resourceInputs["exportTimeout"] = args ? args.exportTimeout : undefined;
-            resourceInputs["host"] = args ? args.host : undefined;
-            resourceInputs["instanceAlias"] = args ? args.instanceAlias : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
-            resourceInputs["instanceSource"] = args ? args.instanceSource : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["networkType"] = args ? args.networkType : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["queryTimeout"] = args ? args.queryTimeout : undefined;
-            resourceInputs["safeRule"] = args ? args.safeRule : undefined;
-            resourceInputs["safeRuleId"] = args ? args.safeRuleId : undefined;
-            resourceInputs["sid"] = args ? args.sid : undefined;
-            resourceInputs["skipTest"] = args ? args.skipTest : undefined;
-            resourceInputs["tid"] = args ? args.tid : undefined;
-            resourceInputs["useDsql"] = args ? args.useDsql : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["databaseUser"] = args?.databaseUser;
+            resourceInputs["dbaId"] = args?.dbaId;
+            resourceInputs["dbaUid"] = args?.dbaUid;
+            resourceInputs["ddlOnline"] = args?.ddlOnline;
+            resourceInputs["ecsInstanceId"] = args?.ecsInstanceId;
+            resourceInputs["ecsRegion"] = args?.ecsRegion;
+            resourceInputs["envType"] = args?.envType;
+            resourceInputs["exportTimeout"] = args?.exportTimeout;
+            resourceInputs["host"] = args?.host;
+            resourceInputs["instanceAlias"] = args?.instanceAlias;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["instanceName"] = args?.instanceName;
+            resourceInputs["instanceSource"] = args?.instanceSource;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["networkType"] = args?.networkType;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["queryTimeout"] = args?.queryTimeout;
+            resourceInputs["safeRule"] = args?.safeRule;
+            resourceInputs["safeRuleId"] = args?.safeRuleId;
+            resourceInputs["sid"] = args?.sid;
+            resourceInputs["skipTest"] = args?.skipTest;
+            resourceInputs["tid"] = args?.tid;
+            resourceInputs["useDsql"] = args?.useDsql;
+            resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["dbaNickName"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

@@ -83,21 +83,21 @@ export class RegistryEnterpriseNamespace extends pulumi.CustomResource {
     /**
      * Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
      */
-    public readonly autoCreate!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoCreate: pulumi.Output<boolean | undefined>;
     /**
      * The default type of the repository that is automatically created. Valid values:
      * - `PUBLIC`: A public repository.
      * - `PRIVATE`: A private repository.
      */
-    public readonly defaultVisibility!: pulumi.Output<string>;
+    declare public readonly defaultVisibility: pulumi.Output<string>;
     /**
      * The ID of the Container Registry Enterprise Edition instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a RegistryEnterpriseNamespace resource with the given unique name, arguments, and options.
@@ -112,19 +112,19 @@ export class RegistryEnterpriseNamespace extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegistryEnterpriseNamespaceState | undefined;
-            resourceInputs["autoCreate"] = state ? state.autoCreate : undefined;
-            resourceInputs["defaultVisibility"] = state ? state.defaultVisibility : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["autoCreate"] = state?.autoCreate;
+            resourceInputs["defaultVisibility"] = state?.defaultVisibility;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as RegistryEnterpriseNamespaceArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["autoCreate"] = args ? args.autoCreate : undefined;
-            resourceInputs["defaultVisibility"] = args ? args.defaultVisibility : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["autoCreate"] = args?.autoCreate;
+            resourceInputs["defaultVisibility"] = args?.defaultVisibility;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RegistryEnterpriseNamespace.__pulumiType, name, resourceInputs, opts);

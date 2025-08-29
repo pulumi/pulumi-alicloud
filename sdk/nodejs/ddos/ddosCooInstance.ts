@@ -76,83 +76,83 @@ export class DdosCooInstance extends pulumi.CustomResource {
     /**
      * The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `addressType` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      */
-    public readonly addressType!: pulumi.Output<string>;
+    declare public readonly addressType: pulumi.Output<string>;
     /**
      * Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      */
-    public readonly bandwidth!: pulumi.Output<string>;
+    declare public readonly bandwidth: pulumi.Output<string>;
     /**
      * The mitigation plan of the instance. Valid values:
      */
-    public readonly bandwidthMode!: pulumi.Output<string | undefined>;
+    declare public readonly bandwidthMode: pulumi.Output<string | undefined>;
     /**
      * Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `baseBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      */
-    public readonly baseBandwidth!: pulumi.Output<string>;
+    declare public readonly baseBandwidth: pulumi.Output<string>;
     /**
      * (Available since v1.248.0) The time when the instance was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly createTime: pulumi.Output<number>;
     /**
      * Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
      */
-    public readonly domainCount!: pulumi.Output<string>;
+    declare public readonly domainCount: pulumi.Output<string>;
     /**
      * The mitigation plan of the instance. Default value: `coop`. Valid values:
      */
-    public readonly editionSale!: pulumi.Output<string>;
+    declare public readonly editionSale: pulumi.Output<string>;
     /**
      * The function plan of the instance. Valid values:
      */
-    public readonly functionVersion!: pulumi.Output<string>;
+    declare public readonly functionVersion: pulumi.Output<string>;
     /**
      * (Available since v1.212.0) The IP address of the Instance.
      */
-    public /*out*/ readonly ip!: pulumi.Output<string>;
+    declare public /*out*/ readonly ip: pulumi.Output<string>;
     /**
      * The type of modification. Valid values: `UPGRADE`, `DOWNGRADE`.
      */
-    public readonly modifyType!: pulumi.Output<string | undefined>;
+    declare public readonly modifyType: pulumi.Output<string | undefined>;
     /**
      * Name of the instance. This name can have a string of `1` to `64` characters.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The clean bandwidth provided by the instance. **NOTE:** `normalBandwidth` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalBandwidth` can be modified.
      */
-    public readonly normalBandwidth!: pulumi.Output<string>;
+    declare public readonly normalBandwidth: pulumi.Output<string>;
     /**
      * The clean QPS provided by the instance. **NOTE:** `normalQps` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalQps` can be modified.
      */
-    public readonly normalQps!: pulumi.Output<string>;
+    declare public readonly normalQps: pulumi.Output<string>;
     /**
      * The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
      */
-    public readonly portCount!: pulumi.Output<string>;
+    declare public readonly portCount: pulumi.Output<string>;
     /**
      * The mitigation plan of the instance. Valid values:
      */
-    public readonly productPlan!: pulumi.Output<string>;
+    declare public readonly productPlan: pulumi.Output<string>;
     /**
      * The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
      */
-    public readonly productType!: pulumi.Output<string | undefined>;
+    declare public readonly productType: pulumi.Output<string | undefined>;
     /**
      * Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `serviceBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      */
-    public readonly serviceBandwidth!: pulumi.Output<string>;
+    declare public readonly serviceBandwidth: pulumi.Output<string>;
     /**
      * (Available since v1.248.0) The status of the instance.
      */
-    public /*out*/ readonly status!: pulumi.Output<number>;
+    declare public /*out*/ readonly status: pulumi.Output<number>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a DdosCooInstance resource with the given unique name, arguments, and options.
@@ -167,51 +167,51 @@ export class DdosCooInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DdosCooInstanceState | undefined;
-            resourceInputs["addressType"] = state ? state.addressType : undefined;
-            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
-            resourceInputs["bandwidthMode"] = state ? state.bandwidthMode : undefined;
-            resourceInputs["baseBandwidth"] = state ? state.baseBandwidth : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["domainCount"] = state ? state.domainCount : undefined;
-            resourceInputs["editionSale"] = state ? state.editionSale : undefined;
-            resourceInputs["functionVersion"] = state ? state.functionVersion : undefined;
-            resourceInputs["ip"] = state ? state.ip : undefined;
-            resourceInputs["modifyType"] = state ? state.modifyType : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["normalBandwidth"] = state ? state.normalBandwidth : undefined;
-            resourceInputs["normalQps"] = state ? state.normalQps : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["portCount"] = state ? state.portCount : undefined;
-            resourceInputs["productPlan"] = state ? state.productPlan : undefined;
-            resourceInputs["productType"] = state ? state.productType : undefined;
-            resourceInputs["serviceBandwidth"] = state ? state.serviceBandwidth : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["addressType"] = state?.addressType;
+            resourceInputs["bandwidth"] = state?.bandwidth;
+            resourceInputs["bandwidthMode"] = state?.bandwidthMode;
+            resourceInputs["baseBandwidth"] = state?.baseBandwidth;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["domainCount"] = state?.domainCount;
+            resourceInputs["editionSale"] = state?.editionSale;
+            resourceInputs["functionVersion"] = state?.functionVersion;
+            resourceInputs["ip"] = state?.ip;
+            resourceInputs["modifyType"] = state?.modifyType;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["normalBandwidth"] = state?.normalBandwidth;
+            resourceInputs["normalQps"] = state?.normalQps;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["portCount"] = state?.portCount;
+            resourceInputs["productPlan"] = state?.productPlan;
+            resourceInputs["productType"] = state?.productType;
+            resourceInputs["serviceBandwidth"] = state?.serviceBandwidth;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as DdosCooInstanceArgs | undefined;
-            if ((!args || args.domainCount === undefined) && !opts.urn) {
+            if (args?.domainCount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domainCount'");
             }
-            if ((!args || args.portCount === undefined) && !opts.urn) {
+            if (args?.portCount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'portCount'");
             }
-            resourceInputs["addressType"] = args ? args.addressType : undefined;
-            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
-            resourceInputs["bandwidthMode"] = args ? args.bandwidthMode : undefined;
-            resourceInputs["baseBandwidth"] = args ? args.baseBandwidth : undefined;
-            resourceInputs["domainCount"] = args ? args.domainCount : undefined;
-            resourceInputs["editionSale"] = args ? args.editionSale : undefined;
-            resourceInputs["functionVersion"] = args ? args.functionVersion : undefined;
-            resourceInputs["modifyType"] = args ? args.modifyType : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["normalBandwidth"] = args ? args.normalBandwidth : undefined;
-            resourceInputs["normalQps"] = args ? args.normalQps : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["portCount"] = args ? args.portCount : undefined;
-            resourceInputs["productPlan"] = args ? args.productPlan : undefined;
-            resourceInputs["productType"] = args ? args.productType : undefined;
-            resourceInputs["serviceBandwidth"] = args ? args.serviceBandwidth : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["addressType"] = args?.addressType;
+            resourceInputs["bandwidth"] = args?.bandwidth;
+            resourceInputs["bandwidthMode"] = args?.bandwidthMode;
+            resourceInputs["baseBandwidth"] = args?.baseBandwidth;
+            resourceInputs["domainCount"] = args?.domainCount;
+            resourceInputs["editionSale"] = args?.editionSale;
+            resourceInputs["functionVersion"] = args?.functionVersion;
+            resourceInputs["modifyType"] = args?.modifyType;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["normalBandwidth"] = args?.normalBandwidth;
+            resourceInputs["normalQps"] = args?.normalQps;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["portCount"] = args?.portCount;
+            resourceInputs["productPlan"] = args?.productPlan;
+            resourceInputs["productType"] = args?.productType;
+            resourceInputs["serviceBandwidth"] = args?.serviceBandwidth;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["ip"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

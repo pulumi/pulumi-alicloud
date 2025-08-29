@@ -76,11 +76,11 @@ export class UserGroupAttachment extends pulumi.CustomResource {
     /**
      * The name of group.
      */
-    public readonly groupName!: pulumi.Output<string>;
+    declare public readonly groupName: pulumi.Output<string>;
     /**
      * The name of user.
      */
-    public readonly userName!: pulumi.Output<string>;
+    declare public readonly userName: pulumi.Output<string>;
 
     /**
      * Create a UserGroupAttachment resource with the given unique name, arguments, and options.
@@ -95,18 +95,18 @@ export class UserGroupAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserGroupAttachmentState | undefined;
-            resourceInputs["groupName"] = state ? state.groupName : undefined;
-            resourceInputs["userName"] = state ? state.userName : undefined;
+            resourceInputs["groupName"] = state?.groupName;
+            resourceInputs["userName"] = state?.userName;
         } else {
             const args = argsOrState as UserGroupAttachmentArgs | undefined;
-            if ((!args || args.groupName === undefined) && !opts.urn) {
+            if (args?.groupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupName'");
             }
-            if ((!args || args.userName === undefined) && !opts.urn) {
+            if (args?.userName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userName'");
             }
-            resourceInputs["groupName"] = args ? args.groupName : undefined;
-            resourceInputs["userName"] = args ? args.userName : undefined;
+            resourceInputs["groupName"] = args?.groupName;
+            resourceInputs["userName"] = args?.userName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(UserGroupAttachment.__pulumiType, name, resourceInputs, opts);

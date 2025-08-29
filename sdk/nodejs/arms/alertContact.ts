@@ -66,23 +66,23 @@ export class AlertContact extends pulumi.CustomResource {
     /**
      * The name of the alert contact.
      */
-    public readonly alertContactName!: pulumi.Output<string | undefined>;
+    declare public readonly alertContactName: pulumi.Output<string | undefined>;
     /**
      * The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: https://www.alibabacloud.com/help/en/doc-detail/106247.htm. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
      */
-    public readonly dingRobotWebhookUrl!: pulumi.Output<string | undefined>;
+    declare public readonly dingRobotWebhookUrl: pulumi.Output<string | undefined>;
     /**
      * The email address of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
      */
-    public readonly email!: pulumi.Output<string | undefined>;
+    declare public readonly email: pulumi.Output<string | undefined>;
     /**
      * The mobile number of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
      */
-    public readonly phoneNum!: pulumi.Output<string | undefined>;
+    declare public readonly phoneNum: pulumi.Output<string | undefined>;
     /**
      * Specifies whether the alert contact receives system notifications. Valid values:  true: receives system notifications. false: does not receive system notifications.
      */
-    public readonly systemNoc!: pulumi.Output<boolean | undefined>;
+    declare public readonly systemNoc: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a AlertContact resource with the given unique name, arguments, and options.
@@ -97,18 +97,18 @@ export class AlertContact extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlertContactState | undefined;
-            resourceInputs["alertContactName"] = state ? state.alertContactName : undefined;
-            resourceInputs["dingRobotWebhookUrl"] = state ? state.dingRobotWebhookUrl : undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["phoneNum"] = state ? state.phoneNum : undefined;
-            resourceInputs["systemNoc"] = state ? state.systemNoc : undefined;
+            resourceInputs["alertContactName"] = state?.alertContactName;
+            resourceInputs["dingRobotWebhookUrl"] = state?.dingRobotWebhookUrl;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["phoneNum"] = state?.phoneNum;
+            resourceInputs["systemNoc"] = state?.systemNoc;
         } else {
             const args = argsOrState as AlertContactArgs | undefined;
-            resourceInputs["alertContactName"] = args ? args.alertContactName : undefined;
-            resourceInputs["dingRobotWebhookUrl"] = args ? args.dingRobotWebhookUrl : undefined;
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["phoneNum"] = args ? args.phoneNum : undefined;
-            resourceInputs["systemNoc"] = args ? args.systemNoc : undefined;
+            resourceInputs["alertContactName"] = args?.alertContactName;
+            resourceInputs["dingRobotWebhookUrl"] = args?.dingRobotWebhookUrl;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["phoneNum"] = args?.phoneNum;
+            resourceInputs["systemNoc"] = args?.systemNoc;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AlertContact.__pulumiType, name, resourceInputs, opts);

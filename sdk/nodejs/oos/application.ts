@@ -76,19 +76,19 @@ export class Application extends pulumi.CustomResource {
     /**
      * The name of the application.
      */
-    public readonly applicationName!: pulumi.Output<string>;
+    declare public readonly applicationName: pulumi.Output<string>;
     /**
      * Application group description information.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The tag of the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Application resource with the given unique name, arguments, and options.
@@ -103,19 +103,19 @@ export class Application extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationState | undefined;
-            resourceInputs["applicationName"] = state ? state.applicationName : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["applicationName"] = state?.applicationName;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as ApplicationArgs | undefined;
-            if ((!args || args.applicationName === undefined) && !opts.urn) {
+            if (args?.applicationName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applicationName'");
             }
-            resourceInputs["applicationName"] = args ? args.applicationName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["applicationName"] = args?.applicationName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Application.__pulumiType, name, resourceInputs, opts);

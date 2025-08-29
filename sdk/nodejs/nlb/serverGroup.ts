@@ -99,33 +99,33 @@ export class ServerGroup extends pulumi.CustomResource {
     /**
      * The protocol version. Valid values:
      */
-    public readonly addressIpVersion!: pulumi.Output<string>;
+    declare public readonly addressIpVersion: pulumi.Output<string>;
     /**
      * Specifies whether to enable all-port forwarding. Valid values:
      */
-    public readonly anyPortEnabled!: pulumi.Output<boolean>;
+    declare public readonly anyPortEnabled: pulumi.Output<boolean>;
     /**
      * . Field 'connection_drain' has been deprecated from provider version 1.231.0. New field 'connection_drain_enabled' instead.
      *
      * @deprecated Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead.
      */
-    public readonly connectionDrain!: pulumi.Output<boolean>;
+    declare public readonly connectionDrain: pulumi.Output<boolean>;
     /**
      * Specifies whether to enable connection draining. Valid values:
      */
-    public readonly connectionDrainEnabled!: pulumi.Output<boolean>;
+    declare public readonly connectionDrainEnabled: pulumi.Output<boolean>;
     /**
      * The timeout period of connection draining. Unit: seconds. Valid values: `10` to `900`.
      */
-    public readonly connectionDrainTimeout!: pulumi.Output<number>;
+    declare public readonly connectionDrainTimeout: pulumi.Output<number>;
     /**
      * Health check configuration information. See `healthCheck` below.
      */
-    public readonly healthCheck!: pulumi.Output<outputs.nlb.ServerGroupHealthCheck>;
+    declare public readonly healthCheck: pulumi.Output<outputs.nlb.ServerGroupHealthCheck>;
     /**
      * Specifies whether to enable client IP preservation. Valid values:
      */
-    public readonly preserveClientIpEnabled!: pulumi.Output<boolean>;
+    declare public readonly preserveClientIpEnabled: pulumi.Output<boolean>;
     /**
      * The protocol used to forward requests to the backend servers. Valid values:
      *
@@ -133,16 +133,16 @@ export class ServerGroup extends pulumi.CustomResource {
      * - `UDP`
      * - `TCPSSL`
      */
-    public readonly protocol!: pulumi.Output<string>;
+    declare public readonly protocol: pulumi.Output<string>;
     /**
      * The ID of the region where the NLB instance is deployed.
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The ID of the new resource group.
      * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The scheduling algorithm. Valid values:
      *
@@ -151,27 +151,27 @@ export class ServerGroup extends pulumi.CustomResource {
      * - **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
      * - **tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
      */
-    public readonly scheduler!: pulumi.Output<string>;
+    declare public readonly scheduler: pulumi.Output<string>;
     /**
      * The new name of the server group.
      * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
      */
-    public readonly serverGroupName!: pulumi.Output<string>;
+    declare public readonly serverGroupName: pulumi.Output<string>;
     /**
      * The type of server group. Valid values:
      *
      * - `Instance`: allows you to add servers of the `Ecs`, `Eni`, or `Eci` type. This is the default value.
      * - `Ip`: allows you to add servers by specifying IP addresses.
      */
-    public readonly serverGroupType!: pulumi.Output<string>;
+    declare public readonly serverGroupType: pulumi.Output<string>;
     /**
      * Server group status. Value:
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Label.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the virtual private cloud (VPC) to which the server group belongs.
      *
@@ -180,7 +180,7 @@ export class ServerGroup extends pulumi.CustomResource {
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
 
     /**
      * Create a ServerGroup resource with the given unique name, arguments, and options.
@@ -195,44 +195,44 @@ export class ServerGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServerGroupState | undefined;
-            resourceInputs["addressIpVersion"] = state ? state.addressIpVersion : undefined;
-            resourceInputs["anyPortEnabled"] = state ? state.anyPortEnabled : undefined;
-            resourceInputs["connectionDrain"] = state ? state.connectionDrain : undefined;
-            resourceInputs["connectionDrainEnabled"] = state ? state.connectionDrainEnabled : undefined;
-            resourceInputs["connectionDrainTimeout"] = state ? state.connectionDrainTimeout : undefined;
-            resourceInputs["healthCheck"] = state ? state.healthCheck : undefined;
-            resourceInputs["preserveClientIpEnabled"] = state ? state.preserveClientIpEnabled : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["scheduler"] = state ? state.scheduler : undefined;
-            resourceInputs["serverGroupName"] = state ? state.serverGroupName : undefined;
-            resourceInputs["serverGroupType"] = state ? state.serverGroupType : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["addressIpVersion"] = state?.addressIpVersion;
+            resourceInputs["anyPortEnabled"] = state?.anyPortEnabled;
+            resourceInputs["connectionDrain"] = state?.connectionDrain;
+            resourceInputs["connectionDrainEnabled"] = state?.connectionDrainEnabled;
+            resourceInputs["connectionDrainTimeout"] = state?.connectionDrainTimeout;
+            resourceInputs["healthCheck"] = state?.healthCheck;
+            resourceInputs["preserveClientIpEnabled"] = state?.preserveClientIpEnabled;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["scheduler"] = state?.scheduler;
+            resourceInputs["serverGroupName"] = state?.serverGroupName;
+            resourceInputs["serverGroupType"] = state?.serverGroupType;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as ServerGroupArgs | undefined;
-            if ((!args || args.serverGroupName === undefined) && !opts.urn) {
+            if (args?.serverGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serverGroupName'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["addressIpVersion"] = args ? args.addressIpVersion : undefined;
-            resourceInputs["anyPortEnabled"] = args ? args.anyPortEnabled : undefined;
-            resourceInputs["connectionDrain"] = args ? args.connectionDrain : undefined;
-            resourceInputs["connectionDrainEnabled"] = args ? args.connectionDrainEnabled : undefined;
-            resourceInputs["connectionDrainTimeout"] = args ? args.connectionDrainTimeout : undefined;
-            resourceInputs["healthCheck"] = args ? args.healthCheck : undefined;
-            resourceInputs["preserveClientIpEnabled"] = args ? args.preserveClientIpEnabled : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["scheduler"] = args ? args.scheduler : undefined;
-            resourceInputs["serverGroupName"] = args ? args.serverGroupName : undefined;
-            resourceInputs["serverGroupType"] = args ? args.serverGroupType : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["addressIpVersion"] = args?.addressIpVersion;
+            resourceInputs["anyPortEnabled"] = args?.anyPortEnabled;
+            resourceInputs["connectionDrain"] = args?.connectionDrain;
+            resourceInputs["connectionDrainEnabled"] = args?.connectionDrainEnabled;
+            resourceInputs["connectionDrainTimeout"] = args?.connectionDrainTimeout;
+            resourceInputs["healthCheck"] = args?.healthCheck;
+            resourceInputs["preserveClientIpEnabled"] = args?.preserveClientIpEnabled;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["scheduler"] = args?.scheduler;
+            resourceInputs["serverGroupName"] = args?.serverGroupName;
+            resourceInputs["serverGroupType"] = args?.serverGroupType;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

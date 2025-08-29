@@ -96,15 +96,15 @@ export class Account extends pulumi.CustomResource {
     /**
      * The description of the account.
      */
-    public readonly accountDescription!: pulumi.Output<string | undefined>;
+    declare public readonly accountDescription: pulumi.Output<string | undefined>;
     /**
      * The account name.
      */
-    public readonly accountName!: pulumi.Output<string>;
+    declare public readonly accountName: pulumi.Output<string>;
     /**
      * AccountPassword
      */
-    public readonly accountPassword!: pulumi.Output<string>;
+    declare public readonly accountPassword: pulumi.Output<string>;
     /**
      * Account type. The value range is as follows:
      *
@@ -112,22 +112,22 @@ export class Account extends pulumi.CustomResource {
      *
      * Super: a high-privilege account.
      */
-    public readonly accountType!: pulumi.Output<string>;
+    declare public readonly accountType: pulumi.Output<string>;
     /**
      * Database name, with the following restrictions:
      * - Can only contain letters, numbers and underscores.
      * - Must start with a letter.
      * - Length cannot exceed 63 characters.
      */
-    public readonly databaseName!: pulumi.Output<string | undefined>;
+    declare public readonly databaseName: pulumi.Output<string | undefined>;
     /**
      * The Adb pg instance ID.
      */
-    public readonly dbInstanceId!: pulumi.Output<string>;
+    declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
      * The status of the resource
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a Account resource with the given unique name, arguments, and options.
@@ -142,30 +142,30 @@ export class Account extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountState | undefined;
-            resourceInputs["accountDescription"] = state ? state.accountDescription : undefined;
-            resourceInputs["accountName"] = state ? state.accountName : undefined;
-            resourceInputs["accountPassword"] = state ? state.accountPassword : undefined;
-            resourceInputs["accountType"] = state ? state.accountType : undefined;
-            resourceInputs["databaseName"] = state ? state.databaseName : undefined;
-            resourceInputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["accountDescription"] = state?.accountDescription;
+            resourceInputs["accountName"] = state?.accountName;
+            resourceInputs["accountPassword"] = state?.accountPassword;
+            resourceInputs["accountType"] = state?.accountType;
+            resourceInputs["databaseName"] = state?.databaseName;
+            resourceInputs["dbInstanceId"] = state?.dbInstanceId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as AccountArgs | undefined;
-            if ((!args || args.accountName === undefined) && !opts.urn) {
+            if (args?.accountName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountName'");
             }
-            if ((!args || args.accountPassword === undefined) && !opts.urn) {
+            if (args?.accountPassword === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountPassword'");
             }
-            if ((!args || args.dbInstanceId === undefined) && !opts.urn) {
+            if (args?.dbInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceId'");
             }
-            resourceInputs["accountDescription"] = args ? args.accountDescription : undefined;
-            resourceInputs["accountName"] = args ? args.accountName : undefined;
+            resourceInputs["accountDescription"] = args?.accountDescription;
+            resourceInputs["accountName"] = args?.accountName;
             resourceInputs["accountPassword"] = args?.accountPassword ? pulumi.secret(args.accountPassword) : undefined;
-            resourceInputs["accountType"] = args ? args.accountType : undefined;
-            resourceInputs["databaseName"] = args ? args.databaseName : undefined;
-            resourceInputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
+            resourceInputs["accountType"] = args?.accountType;
+            resourceInputs["databaseName"] = args?.databaseName;
+            resourceInputs["dbInstanceId"] = args?.dbInstanceId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

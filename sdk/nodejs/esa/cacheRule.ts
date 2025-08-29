@@ -90,109 +90,109 @@ export class CacheRule extends pulumi.CustomResource {
     /**
      * Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
      */
-    public readonly additionalCacheablePorts!: pulumi.Output<string | undefined>;
+    declare public readonly additionalCacheablePorts: pulumi.Output<string | undefined>;
     /**
      * Browser cache mode. Possible values:
      */
-    public readonly browserCacheMode!: pulumi.Output<string | undefined>;
+    declare public readonly browserCacheMode: pulumi.Output<string | undefined>;
     /**
      * Browser cache expiration time in seconds.
      */
-    public readonly browserCacheTtl!: pulumi.Output<string | undefined>;
+    declare public readonly browserCacheTtl: pulumi.Output<string | undefined>;
     /**
      * Set the bypass cache mode. Possible values:
      */
-    public readonly bypassCache!: pulumi.Output<string | undefined>;
+    declare public readonly bypassCache: pulumi.Output<string | undefined>;
     /**
      * Cache deception protection. Used to defend against web cache deception attacks, only the cache content that passes the validation will be cached. Value range:
      */
-    public readonly cacheDeceptionArmor!: pulumi.Output<string | undefined>;
+    declare public readonly cacheDeceptionArmor: pulumi.Output<string | undefined>;
     /**
      * Cache retention eligibility. Used to control whether user requests bypass the cache retention node when returning to the origin. Possible values:
      */
-    public readonly cacheReserveEligibility!: pulumi.Output<string | undefined>;
+    declare public readonly cacheReserveEligibility: pulumi.Output<string | undefined>;
     /**
      * Cache Rule Id.
      */
-    public /*out*/ readonly cacheRuleId!: pulumi.Output<number>;
+    declare public /*out*/ readonly cacheRuleId: pulumi.Output<number>;
     /**
      * When generating the cache key, check if the cookie exists. If it does, add the cookie name (case-insensitive) to the cache key. Multiple cookie names are supported, separated by spaces.
      */
-    public readonly checkPresenceCookie!: pulumi.Output<string | undefined>;
+    declare public readonly checkPresenceCookie: pulumi.Output<string | undefined>;
     /**
      * When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
      */
-    public readonly checkPresenceHeader!: pulumi.Output<string | undefined>;
+    declare public readonly checkPresenceHeader: pulumi.Output<string | undefined>;
     /**
      * Edge cache mode. Possible values:
      */
-    public readonly edgeCacheMode!: pulumi.Output<string | undefined>;
+    declare public readonly edgeCacheMode: pulumi.Output<string | undefined>;
     /**
      * Edge cache expiration time in seconds.
      */
-    public readonly edgeCacheTtl!: pulumi.Output<string | undefined>;
+    declare public readonly edgeCacheTtl: pulumi.Output<string | undefined>;
     /**
      * Status code cache expiration time in seconds.
      */
-    public readonly edgeStatusCodeCacheTtl!: pulumi.Output<string | undefined>;
+    declare public readonly edgeStatusCodeCacheTtl: pulumi.Output<string | undefined>;
     /**
      * When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
      */
-    public readonly includeCookie!: pulumi.Output<string | undefined>;
+    declare public readonly includeCookie: pulumi.Output<string | undefined>;
     /**
      * When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
      */
-    public readonly includeHeader!: pulumi.Output<string | undefined>;
+    declare public readonly includeHeader: pulumi.Output<string | undefined>;
     /**
      * Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
      */
-    public readonly queryString!: pulumi.Output<string | undefined>;
+    declare public readonly queryString: pulumi.Output<string | undefined>;
     /**
      * The processing mode for query strings when generating the cache key. Possible values:
      */
-    public readonly queryStringMode!: pulumi.Output<string | undefined>;
+    declare public readonly queryStringMode: pulumi.Output<string | undefined>;
     /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * - Match all incoming requests: value set to true.
      * - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\").
      */
-    public readonly rule!: pulumi.Output<string | undefined>;
+    declare public readonly rule: pulumi.Output<string | undefined>;
     /**
      * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      */
-    public readonly ruleEnable!: pulumi.Output<string | undefined>;
+    declare public readonly ruleEnable: pulumi.Output<string | undefined>;
     /**
      * Rule name. When adding global configuration, this parameter does not need to be set.
      */
-    public readonly ruleName!: pulumi.Output<string | undefined>;
+    declare public readonly ruleName: pulumi.Output<string | undefined>;
     /**
      * Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
      */
-    public readonly serveStale!: pulumi.Output<string | undefined>;
+    declare public readonly serveStale: pulumi.Output<string | undefined>;
     /**
      * The site ID, which can be obtained by calling the [ListSites] API.
      */
-    public readonly siteId!: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<number>;
     /**
      * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
-    public readonly siteVersion!: pulumi.Output<number | undefined>;
+    declare public readonly siteVersion: pulumi.Output<number | undefined>;
     /**
      * Query string sorting, disabled by default. Possible values:
      */
-    public readonly sortQueryStringForCache!: pulumi.Output<string | undefined>;
+    declare public readonly sortQueryStringForCache: pulumi.Output<string | undefined>;
     /**
      * When generating the cache key, add the client device type. Possible values:
      */
-    public readonly userDeviceType!: pulumi.Output<string | undefined>;
+    declare public readonly userDeviceType: pulumi.Output<string | undefined>;
     /**
      * When generating the cache key, add the client's geographic location. Possible values:
      */
-    public readonly userGeo!: pulumi.Output<string | undefined>;
+    declare public readonly userGeo: pulumi.Output<string | undefined>;
     /**
      * When generating cache keys, include the client's language type. Possible values:
      */
-    public readonly userLanguage!: pulumi.Output<string | undefined>;
+    declare public readonly userLanguage: pulumi.Output<string | undefined>;
 
     /**
      * Create a CacheRule resource with the given unique name, arguments, and options.
@@ -207,62 +207,62 @@ export class CacheRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CacheRuleState | undefined;
-            resourceInputs["additionalCacheablePorts"] = state ? state.additionalCacheablePorts : undefined;
-            resourceInputs["browserCacheMode"] = state ? state.browserCacheMode : undefined;
-            resourceInputs["browserCacheTtl"] = state ? state.browserCacheTtl : undefined;
-            resourceInputs["bypassCache"] = state ? state.bypassCache : undefined;
-            resourceInputs["cacheDeceptionArmor"] = state ? state.cacheDeceptionArmor : undefined;
-            resourceInputs["cacheReserveEligibility"] = state ? state.cacheReserveEligibility : undefined;
-            resourceInputs["cacheRuleId"] = state ? state.cacheRuleId : undefined;
-            resourceInputs["checkPresenceCookie"] = state ? state.checkPresenceCookie : undefined;
-            resourceInputs["checkPresenceHeader"] = state ? state.checkPresenceHeader : undefined;
-            resourceInputs["edgeCacheMode"] = state ? state.edgeCacheMode : undefined;
-            resourceInputs["edgeCacheTtl"] = state ? state.edgeCacheTtl : undefined;
-            resourceInputs["edgeStatusCodeCacheTtl"] = state ? state.edgeStatusCodeCacheTtl : undefined;
-            resourceInputs["includeCookie"] = state ? state.includeCookie : undefined;
-            resourceInputs["includeHeader"] = state ? state.includeHeader : undefined;
-            resourceInputs["queryString"] = state ? state.queryString : undefined;
-            resourceInputs["queryStringMode"] = state ? state.queryStringMode : undefined;
-            resourceInputs["rule"] = state ? state.rule : undefined;
-            resourceInputs["ruleEnable"] = state ? state.ruleEnable : undefined;
-            resourceInputs["ruleName"] = state ? state.ruleName : undefined;
-            resourceInputs["serveStale"] = state ? state.serveStale : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["siteVersion"] = state ? state.siteVersion : undefined;
-            resourceInputs["sortQueryStringForCache"] = state ? state.sortQueryStringForCache : undefined;
-            resourceInputs["userDeviceType"] = state ? state.userDeviceType : undefined;
-            resourceInputs["userGeo"] = state ? state.userGeo : undefined;
-            resourceInputs["userLanguage"] = state ? state.userLanguage : undefined;
+            resourceInputs["additionalCacheablePorts"] = state?.additionalCacheablePorts;
+            resourceInputs["browserCacheMode"] = state?.browserCacheMode;
+            resourceInputs["browserCacheTtl"] = state?.browserCacheTtl;
+            resourceInputs["bypassCache"] = state?.bypassCache;
+            resourceInputs["cacheDeceptionArmor"] = state?.cacheDeceptionArmor;
+            resourceInputs["cacheReserveEligibility"] = state?.cacheReserveEligibility;
+            resourceInputs["cacheRuleId"] = state?.cacheRuleId;
+            resourceInputs["checkPresenceCookie"] = state?.checkPresenceCookie;
+            resourceInputs["checkPresenceHeader"] = state?.checkPresenceHeader;
+            resourceInputs["edgeCacheMode"] = state?.edgeCacheMode;
+            resourceInputs["edgeCacheTtl"] = state?.edgeCacheTtl;
+            resourceInputs["edgeStatusCodeCacheTtl"] = state?.edgeStatusCodeCacheTtl;
+            resourceInputs["includeCookie"] = state?.includeCookie;
+            resourceInputs["includeHeader"] = state?.includeHeader;
+            resourceInputs["queryString"] = state?.queryString;
+            resourceInputs["queryStringMode"] = state?.queryStringMode;
+            resourceInputs["rule"] = state?.rule;
+            resourceInputs["ruleEnable"] = state?.ruleEnable;
+            resourceInputs["ruleName"] = state?.ruleName;
+            resourceInputs["serveStale"] = state?.serveStale;
+            resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["siteVersion"] = state?.siteVersion;
+            resourceInputs["sortQueryStringForCache"] = state?.sortQueryStringForCache;
+            resourceInputs["userDeviceType"] = state?.userDeviceType;
+            resourceInputs["userGeo"] = state?.userGeo;
+            resourceInputs["userLanguage"] = state?.userLanguage;
         } else {
             const args = argsOrState as CacheRuleArgs | undefined;
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            resourceInputs["additionalCacheablePorts"] = args ? args.additionalCacheablePorts : undefined;
-            resourceInputs["browserCacheMode"] = args ? args.browserCacheMode : undefined;
-            resourceInputs["browserCacheTtl"] = args ? args.browserCacheTtl : undefined;
-            resourceInputs["bypassCache"] = args ? args.bypassCache : undefined;
-            resourceInputs["cacheDeceptionArmor"] = args ? args.cacheDeceptionArmor : undefined;
-            resourceInputs["cacheReserveEligibility"] = args ? args.cacheReserveEligibility : undefined;
-            resourceInputs["checkPresenceCookie"] = args ? args.checkPresenceCookie : undefined;
-            resourceInputs["checkPresenceHeader"] = args ? args.checkPresenceHeader : undefined;
-            resourceInputs["edgeCacheMode"] = args ? args.edgeCacheMode : undefined;
-            resourceInputs["edgeCacheTtl"] = args ? args.edgeCacheTtl : undefined;
-            resourceInputs["edgeStatusCodeCacheTtl"] = args ? args.edgeStatusCodeCacheTtl : undefined;
-            resourceInputs["includeCookie"] = args ? args.includeCookie : undefined;
-            resourceInputs["includeHeader"] = args ? args.includeHeader : undefined;
-            resourceInputs["queryString"] = args ? args.queryString : undefined;
-            resourceInputs["queryStringMode"] = args ? args.queryStringMode : undefined;
-            resourceInputs["rule"] = args ? args.rule : undefined;
-            resourceInputs["ruleEnable"] = args ? args.ruleEnable : undefined;
-            resourceInputs["ruleName"] = args ? args.ruleName : undefined;
-            resourceInputs["serveStale"] = args ? args.serveStale : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
-            resourceInputs["siteVersion"] = args ? args.siteVersion : undefined;
-            resourceInputs["sortQueryStringForCache"] = args ? args.sortQueryStringForCache : undefined;
-            resourceInputs["userDeviceType"] = args ? args.userDeviceType : undefined;
-            resourceInputs["userGeo"] = args ? args.userGeo : undefined;
-            resourceInputs["userLanguage"] = args ? args.userLanguage : undefined;
+            resourceInputs["additionalCacheablePorts"] = args?.additionalCacheablePorts;
+            resourceInputs["browserCacheMode"] = args?.browserCacheMode;
+            resourceInputs["browserCacheTtl"] = args?.browserCacheTtl;
+            resourceInputs["bypassCache"] = args?.bypassCache;
+            resourceInputs["cacheDeceptionArmor"] = args?.cacheDeceptionArmor;
+            resourceInputs["cacheReserveEligibility"] = args?.cacheReserveEligibility;
+            resourceInputs["checkPresenceCookie"] = args?.checkPresenceCookie;
+            resourceInputs["checkPresenceHeader"] = args?.checkPresenceHeader;
+            resourceInputs["edgeCacheMode"] = args?.edgeCacheMode;
+            resourceInputs["edgeCacheTtl"] = args?.edgeCacheTtl;
+            resourceInputs["edgeStatusCodeCacheTtl"] = args?.edgeStatusCodeCacheTtl;
+            resourceInputs["includeCookie"] = args?.includeCookie;
+            resourceInputs["includeHeader"] = args?.includeHeader;
+            resourceInputs["queryString"] = args?.queryString;
+            resourceInputs["queryStringMode"] = args?.queryStringMode;
+            resourceInputs["rule"] = args?.rule;
+            resourceInputs["ruleEnable"] = args?.ruleEnable;
+            resourceInputs["ruleName"] = args?.ruleName;
+            resourceInputs["serveStale"] = args?.serveStale;
+            resourceInputs["siteId"] = args?.siteId;
+            resourceInputs["siteVersion"] = args?.siteVersion;
+            resourceInputs["sortQueryStringForCache"] = args?.sortQueryStringForCache;
+            resourceInputs["userDeviceType"] = args?.userDeviceType;
+            resourceInputs["userGeo"] = args?.userGeo;
+            resourceInputs["userLanguage"] = args?.userLanguage;
             resourceInputs["cacheRuleId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

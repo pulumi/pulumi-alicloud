@@ -102,216 +102,216 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
      */
-    public readonly accountPassword!: pulumi.Output<string | undefined>;
+    declare public readonly accountPassword: pulumi.Output<string | undefined>;
     /**
      * Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
      * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
      */
-    public readonly autoRenew!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoRenew: pulumi.Output<boolean | undefined>;
     /**
      * The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
      */
-    public readonly backupInterval!: pulumi.Output<string>;
+    declare public readonly backupInterval: pulumi.Output<string>;
     /**
      * MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
      */
-    public readonly backupPeriods!: pulumi.Output<string[]>;
+    declare public readonly backupPeriods: pulumi.Output<string[]>;
     /**
      * The retention period of full backups.
      */
-    public readonly backupRetentionPeriod!: pulumi.Output<number>;
+    declare public readonly backupRetentionPeriod: pulumi.Output<number>;
     /**
      * The backup retention policy configured for the instance. Valid values:
      */
-    public readonly backupRetentionPolicyOnClusterDeletion!: pulumi.Output<number | undefined>;
+    declare public readonly backupRetentionPolicyOnClusterDeletion: pulumi.Output<number | undefined>;
     /**
      * MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
      */
-    public readonly backupTime!: pulumi.Output<string>;
+    declare public readonly backupTime: pulumi.Output<string>;
     /**
      * The ID of the encryption key.
      */
-    public readonly cloudDiskEncryptionKey!: pulumi.Output<string | undefined>;
+    declare public readonly cloudDiskEncryptionKey: pulumi.Output<string | undefined>;
     /**
      * Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
      */
-    public readonly dbInstanceClass!: pulumi.Output<string>;
+    declare public readonly dbInstanceClass: pulumi.Output<string>;
     /**
      * Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
      */
-    public readonly dbInstanceReleaseProtection!: pulumi.Output<boolean | undefined>;
+    declare public readonly dbInstanceReleaseProtection: pulumi.Output<boolean | undefined>;
     /**
      * User-defined DB instance storage space.Unit: GB. Value range:
      * - Custom storage space.
      * - 10-GB increments.
      */
-    public readonly dbInstanceStorage!: pulumi.Output<number>;
+    declare public readonly dbInstanceStorage: pulumi.Output<number>;
     /**
      * The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
      */
-    public readonly effectiveTime!: pulumi.Output<string | undefined>;
+    declare public readonly effectiveTime: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to enable the log backup feature. Valid values:
      */
-    public readonly enableBackupLog!: pulumi.Output<number>;
+    declare public readonly enableBackupLog: pulumi.Output<number>;
     /**
      * Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
      */
-    public readonly encrypted!: pulumi.Output<boolean | undefined>;
+    declare public readonly encrypted: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the custom key.
      */
-    public readonly encryptionKey!: pulumi.Output<string>;
+    declare public readonly encryptionKey: pulumi.Output<string>;
     /**
      * The encryption method. **NOTE:** `encryptorName` is valid only when `tdeStatus` is set to `enabled`.
      */
-    public readonly encryptorName!: pulumi.Output<string>;
+    declare public readonly encryptorName: pulumi.Output<string>;
     /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engineVersion` can be modified.
      */
-    public readonly engineVersion!: pulumi.Output<string>;
+    declare public readonly engineVersion: pulumi.Output<string>;
     /**
      * Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values. From version 1.253.0, `hiddenZoneId` can be modified.
      */
-    public readonly hiddenZoneId!: pulumi.Output<string | undefined>;
+    declare public readonly hiddenZoneId: pulumi.Output<string | undefined>;
     /**
      * The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
      */
-    public readonly instanceChargeType!: pulumi.Output<string>;
+    declare public readonly instanceChargeType: pulumi.Output<string>;
     /**
      * An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
      */
-    public readonly kmsEncryptedPassword!: pulumi.Output<string | undefined>;
+    declare public readonly kmsEncryptedPassword: pulumi.Output<string | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly kmsEncryptionContext: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `logBackupRetentionPeriod` is valid only when `enableBackupLog` is set to `1`.
      */
-    public readonly logBackupRetentionPeriod!: pulumi.Output<number>;
+    declare public readonly logBackupRetentionPeriod: pulumi.Output<number>;
     /**
      * The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
      */
-    public readonly maintainEndTime!: pulumi.Output<string>;
+    declare public readonly maintainEndTime: pulumi.Output<string>;
     /**
      * The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
      */
-    public readonly maintainStartTime!: pulumi.Output<string>;
+    declare public readonly maintainStartTime: pulumi.Output<string>;
     /**
      * The name of DB instance. It must be 2 to 256 characters in length.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The network type of the instance. Valid values:`Classic`, `VPC`.
      */
-    public readonly networkType!: pulumi.Output<string>;
+    declare public readonly networkType: pulumi.Output<string>;
     /**
      * The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
      * - `UPGRADE`: The specifications are upgraded.
      * - `DOWNGRADE`: The specifications are downgraded.
      * **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
      */
-    public readonly orderType!: pulumi.Output<string | undefined>;
+    declare public readonly orderType: pulumi.Output<string | undefined>;
     /**
      * Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
      */
-    public readonly parameters!: pulumi.Output<outputs.mongodb.InstanceParameter[]>;
+    declare public readonly parameters: pulumi.Output<outputs.mongodb.InstanceParameter[]>;
     /**
      * The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
      */
-    public readonly period!: pulumi.Output<number>;
+    declare public readonly period: pulumi.Output<number>;
     /**
      * The provisioned IOPS. Valid values: `0` to `50000`.
      */
-    public readonly provisionedIops!: pulumi.Output<number | undefined>;
+    declare public readonly provisionedIops: pulumi.Output<number | undefined>;
     /**
      * The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
      */
-    public readonly readonlyReplicas!: pulumi.Output<number>;
+    declare public readonly readonlyReplicas: pulumi.Output<number>;
     /**
      * The name of the mongo replica set.
      */
-    public /*out*/ readonly replicaSetName!: pulumi.Output<string>;
+    declare public /*out*/ readonly replicaSetName: pulumi.Output<string>;
     /**
      * Replica set instance information.
      */
-    public /*out*/ readonly replicaSets!: pulumi.Output<outputs.mongodb.InstanceReplicaSet[]>;
+    declare public /*out*/ readonly replicaSets: pulumi.Output<outputs.mongodb.InstanceReplicaSet[]>;
     /**
      * Number of replica set nodes. Valid values: `1`, `3`, `5`, `7`.
      */
-    public readonly replicationFactor!: pulumi.Output<number>;
+    declare public readonly replicationFactor: pulumi.Output<number>;
     /**
      * The ID of the Resource Group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Instance data backup retention days. Available since v1.42.0.
      */
-    public /*out*/ readonly retentionPeriod!: pulumi.Output<number>;
+    declare public /*out*/ readonly retentionPeriod: pulumi.Output<number>;
     /**
      * The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
      */
-    public readonly roleArn!: pulumi.Output<string>;
+    declare public readonly roleArn: pulumi.Output<string>;
     /**
      * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values. From version 1.253.0, `secondaryZoneId` can be modified.
      */
-    public readonly secondaryZoneId!: pulumi.Output<string | undefined>;
+    declare public readonly secondaryZoneId: pulumi.Output<string | undefined>;
     /**
      * The Security Group ID of ECS.
      */
-    public readonly securityGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly securityGroupId: pulumi.Output<string | undefined>;
     /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
-    public readonly securityIpLists!: pulumi.Output<string[]>;
+    declare public readonly securityIpLists: pulumi.Output<string[]>;
     /**
      * The snapshot backup type. Default value: `Standard`. Valid values:
      * - `Standard`: standard backup.
      * - `Flash `: single-digit second backup.
      */
-    public readonly snapshotBackupType!: pulumi.Output<string>;
+    declare public readonly snapshotBackupType: pulumi.Output<string>;
     /**
      * Actions performed on SSL functions. Valid values:
      * - `Open`: turn on SSL encryption.
      * - `Close`: turn off SSL encryption.
      * - `Update`: update SSL certificate.
      */
-    public readonly sslAction!: pulumi.Output<string | undefined>;
+    declare public readonly sslAction: pulumi.Output<string | undefined>;
     /**
      * Status of the SSL feature.
      */
-    public /*out*/ readonly sslStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly sslStatus: pulumi.Output<string>;
     /**
      * The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
      */
-    public readonly storageEngine!: pulumi.Output<string>;
+    declare public readonly storageEngine: pulumi.Output<string>;
     /**
      * The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
      */
-    public readonly storageType!: pulumi.Output<string>;
+    declare public readonly storageType: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The TDE(Transparent Data Encryption) status. Note: `tdeStatus` cannot be set to `disabled` after it is enabled, see [Transparent Data Encryption](https://www.alibabacloud.com/help/en/mongodb/user-guide/configure-tde-for-an-apsaradb-for-mongodb-instance) for more details.
      */
-    public readonly tdeStatus!: pulumi.Output<string>;
+    declare public readonly tdeStatus: pulumi.Output<string>;
     /**
      * The ID of the VPC. > **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
     /**
      * The Zone to launch the DB instance. it supports multiple zone.
      * If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
      * The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -326,113 +326,113 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["accountPassword"] = state ? state.accountPassword : undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["backupInterval"] = state ? state.backupInterval : undefined;
-            resourceInputs["backupPeriods"] = state ? state.backupPeriods : undefined;
-            resourceInputs["backupRetentionPeriod"] = state ? state.backupRetentionPeriod : undefined;
-            resourceInputs["backupRetentionPolicyOnClusterDeletion"] = state ? state.backupRetentionPolicyOnClusterDeletion : undefined;
-            resourceInputs["backupTime"] = state ? state.backupTime : undefined;
-            resourceInputs["cloudDiskEncryptionKey"] = state ? state.cloudDiskEncryptionKey : undefined;
-            resourceInputs["dbInstanceClass"] = state ? state.dbInstanceClass : undefined;
-            resourceInputs["dbInstanceReleaseProtection"] = state ? state.dbInstanceReleaseProtection : undefined;
-            resourceInputs["dbInstanceStorage"] = state ? state.dbInstanceStorage : undefined;
-            resourceInputs["effectiveTime"] = state ? state.effectiveTime : undefined;
-            resourceInputs["enableBackupLog"] = state ? state.enableBackupLog : undefined;
-            resourceInputs["encrypted"] = state ? state.encrypted : undefined;
-            resourceInputs["encryptionKey"] = state ? state.encryptionKey : undefined;
-            resourceInputs["encryptorName"] = state ? state.encryptorName : undefined;
-            resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
-            resourceInputs["hiddenZoneId"] = state ? state.hiddenZoneId : undefined;
-            resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
-            resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
-            resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
-            resourceInputs["logBackupRetentionPeriod"] = state ? state.logBackupRetentionPeriod : undefined;
-            resourceInputs["maintainEndTime"] = state ? state.maintainEndTime : undefined;
-            resourceInputs["maintainStartTime"] = state ? state.maintainStartTime : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkType"] = state ? state.networkType : undefined;
-            resourceInputs["orderType"] = state ? state.orderType : undefined;
-            resourceInputs["parameters"] = state ? state.parameters : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["provisionedIops"] = state ? state.provisionedIops : undefined;
-            resourceInputs["readonlyReplicas"] = state ? state.readonlyReplicas : undefined;
-            resourceInputs["replicaSetName"] = state ? state.replicaSetName : undefined;
-            resourceInputs["replicaSets"] = state ? state.replicaSets : undefined;
-            resourceInputs["replicationFactor"] = state ? state.replicationFactor : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["retentionPeriod"] = state ? state.retentionPeriod : undefined;
-            resourceInputs["roleArn"] = state ? state.roleArn : undefined;
-            resourceInputs["secondaryZoneId"] = state ? state.secondaryZoneId : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["securityIpLists"] = state ? state.securityIpLists : undefined;
-            resourceInputs["snapshotBackupType"] = state ? state.snapshotBackupType : undefined;
-            resourceInputs["sslAction"] = state ? state.sslAction : undefined;
-            resourceInputs["sslStatus"] = state ? state.sslStatus : undefined;
-            resourceInputs["storageEngine"] = state ? state.storageEngine : undefined;
-            resourceInputs["storageType"] = state ? state.storageType : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["tdeStatus"] = state ? state.tdeStatus : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["accountPassword"] = state?.accountPassword;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["backupInterval"] = state?.backupInterval;
+            resourceInputs["backupPeriods"] = state?.backupPeriods;
+            resourceInputs["backupRetentionPeriod"] = state?.backupRetentionPeriod;
+            resourceInputs["backupRetentionPolicyOnClusterDeletion"] = state?.backupRetentionPolicyOnClusterDeletion;
+            resourceInputs["backupTime"] = state?.backupTime;
+            resourceInputs["cloudDiskEncryptionKey"] = state?.cloudDiskEncryptionKey;
+            resourceInputs["dbInstanceClass"] = state?.dbInstanceClass;
+            resourceInputs["dbInstanceReleaseProtection"] = state?.dbInstanceReleaseProtection;
+            resourceInputs["dbInstanceStorage"] = state?.dbInstanceStorage;
+            resourceInputs["effectiveTime"] = state?.effectiveTime;
+            resourceInputs["enableBackupLog"] = state?.enableBackupLog;
+            resourceInputs["encrypted"] = state?.encrypted;
+            resourceInputs["encryptionKey"] = state?.encryptionKey;
+            resourceInputs["encryptorName"] = state?.encryptorName;
+            resourceInputs["engineVersion"] = state?.engineVersion;
+            resourceInputs["hiddenZoneId"] = state?.hiddenZoneId;
+            resourceInputs["instanceChargeType"] = state?.instanceChargeType;
+            resourceInputs["kmsEncryptedPassword"] = state?.kmsEncryptedPassword;
+            resourceInputs["kmsEncryptionContext"] = state?.kmsEncryptionContext;
+            resourceInputs["logBackupRetentionPeriod"] = state?.logBackupRetentionPeriod;
+            resourceInputs["maintainEndTime"] = state?.maintainEndTime;
+            resourceInputs["maintainStartTime"] = state?.maintainStartTime;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkType"] = state?.networkType;
+            resourceInputs["orderType"] = state?.orderType;
+            resourceInputs["parameters"] = state?.parameters;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["provisionedIops"] = state?.provisionedIops;
+            resourceInputs["readonlyReplicas"] = state?.readonlyReplicas;
+            resourceInputs["replicaSetName"] = state?.replicaSetName;
+            resourceInputs["replicaSets"] = state?.replicaSets;
+            resourceInputs["replicationFactor"] = state?.replicationFactor;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["retentionPeriod"] = state?.retentionPeriod;
+            resourceInputs["roleArn"] = state?.roleArn;
+            resourceInputs["secondaryZoneId"] = state?.secondaryZoneId;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["securityIpLists"] = state?.securityIpLists;
+            resourceInputs["snapshotBackupType"] = state?.snapshotBackupType;
+            resourceInputs["sslAction"] = state?.sslAction;
+            resourceInputs["sslStatus"] = state?.sslStatus;
+            resourceInputs["storageEngine"] = state?.storageEngine;
+            resourceInputs["storageType"] = state?.storageType;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["tdeStatus"] = state?.tdeStatus;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.dbInstanceClass === undefined) && !opts.urn) {
+            if (args?.dbInstanceClass === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceClass'");
             }
-            if ((!args || args.dbInstanceStorage === undefined) && !opts.urn) {
+            if (args?.dbInstanceStorage === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceStorage'");
             }
-            if ((!args || args.engineVersion === undefined) && !opts.urn) {
+            if (args?.engineVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'engineVersion'");
             }
             resourceInputs["accountPassword"] = args?.accountPassword ? pulumi.secret(args.accountPassword) : undefined;
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["backupInterval"] = args ? args.backupInterval : undefined;
-            resourceInputs["backupPeriods"] = args ? args.backupPeriods : undefined;
-            resourceInputs["backupRetentionPeriod"] = args ? args.backupRetentionPeriod : undefined;
-            resourceInputs["backupRetentionPolicyOnClusterDeletion"] = args ? args.backupRetentionPolicyOnClusterDeletion : undefined;
-            resourceInputs["backupTime"] = args ? args.backupTime : undefined;
-            resourceInputs["cloudDiskEncryptionKey"] = args ? args.cloudDiskEncryptionKey : undefined;
-            resourceInputs["dbInstanceClass"] = args ? args.dbInstanceClass : undefined;
-            resourceInputs["dbInstanceReleaseProtection"] = args ? args.dbInstanceReleaseProtection : undefined;
-            resourceInputs["dbInstanceStorage"] = args ? args.dbInstanceStorage : undefined;
-            resourceInputs["effectiveTime"] = args ? args.effectiveTime : undefined;
-            resourceInputs["enableBackupLog"] = args ? args.enableBackupLog : undefined;
-            resourceInputs["encrypted"] = args ? args.encrypted : undefined;
-            resourceInputs["encryptionKey"] = args ? args.encryptionKey : undefined;
-            resourceInputs["encryptorName"] = args ? args.encryptorName : undefined;
-            resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
-            resourceInputs["hiddenZoneId"] = args ? args.hiddenZoneId : undefined;
-            resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
-            resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
-            resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
-            resourceInputs["logBackupRetentionPeriod"] = args ? args.logBackupRetentionPeriod : undefined;
-            resourceInputs["maintainEndTime"] = args ? args.maintainEndTime : undefined;
-            resourceInputs["maintainStartTime"] = args ? args.maintainStartTime : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkType"] = args ? args.networkType : undefined;
-            resourceInputs["orderType"] = args ? args.orderType : undefined;
-            resourceInputs["parameters"] = args ? args.parameters : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["provisionedIops"] = args ? args.provisionedIops : undefined;
-            resourceInputs["readonlyReplicas"] = args ? args.readonlyReplicas : undefined;
-            resourceInputs["replicationFactor"] = args ? args.replicationFactor : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["roleArn"] = args ? args.roleArn : undefined;
-            resourceInputs["secondaryZoneId"] = args ? args.secondaryZoneId : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            resourceInputs["securityIpLists"] = args ? args.securityIpLists : undefined;
-            resourceInputs["snapshotBackupType"] = args ? args.snapshotBackupType : undefined;
-            resourceInputs["sslAction"] = args ? args.sslAction : undefined;
-            resourceInputs["storageEngine"] = args ? args.storageEngine : undefined;
-            resourceInputs["storageType"] = args ? args.storageType : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["tdeStatus"] = args ? args.tdeStatus : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["backupInterval"] = args?.backupInterval;
+            resourceInputs["backupPeriods"] = args?.backupPeriods;
+            resourceInputs["backupRetentionPeriod"] = args?.backupRetentionPeriod;
+            resourceInputs["backupRetentionPolicyOnClusterDeletion"] = args?.backupRetentionPolicyOnClusterDeletion;
+            resourceInputs["backupTime"] = args?.backupTime;
+            resourceInputs["cloudDiskEncryptionKey"] = args?.cloudDiskEncryptionKey;
+            resourceInputs["dbInstanceClass"] = args?.dbInstanceClass;
+            resourceInputs["dbInstanceReleaseProtection"] = args?.dbInstanceReleaseProtection;
+            resourceInputs["dbInstanceStorage"] = args?.dbInstanceStorage;
+            resourceInputs["effectiveTime"] = args?.effectiveTime;
+            resourceInputs["enableBackupLog"] = args?.enableBackupLog;
+            resourceInputs["encrypted"] = args?.encrypted;
+            resourceInputs["encryptionKey"] = args?.encryptionKey;
+            resourceInputs["encryptorName"] = args?.encryptorName;
+            resourceInputs["engineVersion"] = args?.engineVersion;
+            resourceInputs["hiddenZoneId"] = args?.hiddenZoneId;
+            resourceInputs["instanceChargeType"] = args?.instanceChargeType;
+            resourceInputs["kmsEncryptedPassword"] = args?.kmsEncryptedPassword;
+            resourceInputs["kmsEncryptionContext"] = args?.kmsEncryptionContext;
+            resourceInputs["logBackupRetentionPeriod"] = args?.logBackupRetentionPeriod;
+            resourceInputs["maintainEndTime"] = args?.maintainEndTime;
+            resourceInputs["maintainStartTime"] = args?.maintainStartTime;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkType"] = args?.networkType;
+            resourceInputs["orderType"] = args?.orderType;
+            resourceInputs["parameters"] = args?.parameters;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["provisionedIops"] = args?.provisionedIops;
+            resourceInputs["readonlyReplicas"] = args?.readonlyReplicas;
+            resourceInputs["replicationFactor"] = args?.replicationFactor;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["roleArn"] = args?.roleArn;
+            resourceInputs["secondaryZoneId"] = args?.secondaryZoneId;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["securityIpLists"] = args?.securityIpLists;
+            resourceInputs["snapshotBackupType"] = args?.snapshotBackupType;
+            resourceInputs["sslAction"] = args?.sslAction;
+            resourceInputs["storageEngine"] = args?.storageEngine;
+            resourceInputs["storageType"] = args?.storageType;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["tdeStatus"] = args?.tdeStatus;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["replicaSetName"] = undefined /*out*/;
             resourceInputs["replicaSets"] = undefined /*out*/;
             resourceInputs["retentionPeriod"] = undefined /*out*/;

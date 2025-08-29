@@ -153,94 +153,94 @@ export class Rule extends pulumi.CustomResource {
     /**
      * The cookie configured on the server. It is mandatory when `stickySession` is `on` and `stickySessionType` is `server`. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being `1` - `200`. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
      */
-    public readonly cookie!: pulumi.Output<string | undefined>;
+    declare public readonly cookie: pulumi.Output<string | undefined>;
     /**
      * Cookie timeout. It is mandatory when `stickySession` is `on` and `stickySessionType` is `insert`. Otherwise, it will be ignored. Valid values: [1-86400] in seconds.
      */
-    public readonly cookieTimeout!: pulumi.Output<number | undefined>;
+    declare public readonly cookieTimeout: pulumi.Output<number | undefined>;
     /**
      * Checking DeleteProtection of SLB instance before deleting. If `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
      */
-    public readonly deleteProtectionValidation!: pulumi.Output<boolean | undefined>;
+    declare public readonly deleteProtectionValidation: pulumi.Output<boolean | undefined>;
     /**
      * Domain name of the forwarding rule. It can contain letters a-z, numbers 0-9, hyphens (-), and periods (.),
      * and wildcard characters. The following two domain name formats are supported:
      * - Standard domain name: www.test.com
      * - Wildcard domain name: *.test.com. wildcard (*) must be the first character in the format of (*.)
      */
-    public readonly domain!: pulumi.Output<string | undefined>;
+    declare public readonly domain: pulumi.Output<string | undefined>;
     /**
      * The listener frontend port which is used to launch the new forwarding rule. Valid values: [1-65535].
      */
-    public readonly frontendPort!: pulumi.Output<number>;
+    declare public readonly frontendPort: pulumi.Output<number>;
     /**
      * Whether to enable health check. Valid values: `on` and `off`. `TCP` and `UDP` listener's `healthCheck` is always `on`, so it will be ignore when launching `TCP` or `UDP` listener. **NOTE:** `healthCheck` is required and takes effect only when `listenerSync` is set to `off`.
      */
-    public readonly healthCheck!: pulumi.Output<string | undefined>;
+    declare public readonly healthCheck: pulumi.Output<string | undefined>;
     /**
      * Port used for health check. Valid values: [1-65535]. Default value: `None` means the backend server port is used.
      */
-    public readonly healthCheckConnectPort!: pulumi.Output<number>;
+    declare public readonly healthCheckConnectPort: pulumi.Output<number>;
     /**
      * Domain name used for health check. When it used to launch TCP listener, `healthCheckType` must be `http`. Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty, Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
      */
-    public readonly healthCheckDomain!: pulumi.Output<string | undefined>;
+    declare public readonly healthCheckDomain: pulumi.Output<string | undefined>;
     /**
      * Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `healthCheck` is `on`. Default value: `http2xx`. Valid values: `http2xx`, `http3xx`, `http4xx` and `http5xx`.
      */
-    public readonly healthCheckHttpCode!: pulumi.Output<string | undefined>;
+    declare public readonly healthCheckHttpCode: pulumi.Output<string | undefined>;
     /**
      * Time interval of health checks. It is required when `healthCheck` is `on`. Valid values: [1-50] in seconds. Default value: `2`.
      */
-    public readonly healthCheckInterval!: pulumi.Output<number | undefined>;
+    declare public readonly healthCheckInterval: pulumi.Output<number | undefined>;
     /**
      * Maximum timeout of each health check response. It is required when `healthCheck` is `on`. Valid values: [1-300] in seconds. Default value: `5`. Note: If `healthCheckTimeout` < `healthCheckInterval`, its will be replaced by `healthCheckInterval`.
      */
-    public readonly healthCheckTimeout!: pulumi.Output<number | undefined>;
+    declare public readonly healthCheckTimeout: pulumi.Output<number | undefined>;
     /**
      * URI used for health check. When it used to launch TCP listener, `healthCheckType` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
      */
-    public readonly healthCheckUri!: pulumi.Output<string | undefined>;
+    declare public readonly healthCheckUri: pulumi.Output<string | undefined>;
     /**
      * Threshold determining the result of the health check is success. It is required when `healthCheck` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
      */
-    public readonly healthyThreshold!: pulumi.Output<number | undefined>;
+    declare public readonly healthyThreshold: pulumi.Output<number | undefined>;
     /**
      * Indicates whether a forwarding rule inherits the settings of a health check , session persistence, and scheduling algorithm from a listener. Default value: `on`. Valid values: `on` and `off`.
      */
-    public readonly listenerSync!: pulumi.Output<string | undefined>;
+    declare public readonly listenerSync: pulumi.Output<string | undefined>;
     /**
      * The Load Balancer ID which is used to launch the new forwarding rule.
      */
-    public readonly loadBalancerId!: pulumi.Output<string>;
+    declare public readonly loadBalancerId: pulumi.Output<string>;
     /**
      * Name of the forwarding rule. Our plugin provides a default name: "tf-slb-rule".
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Scheduling algorithm. Valid values: `wrr`, `rr` and `wlc`. Default value: `wrr`. **NOTE:** `scheduler` is required and takes effect only when `listenerSync` is set to `off`.
      */
-    public readonly scheduler!: pulumi.Output<string | undefined>;
+    declare public readonly scheduler: pulumi.Output<string | undefined>;
     /**
      * ID of a virtual server group that will be forwarded.
      */
-    public readonly serverGroupId!: pulumi.Output<string>;
+    declare public readonly serverGroupId: pulumi.Output<string>;
     /**
      * Whether to enable session persistence. Valid values: `on` and `off`. Default value: `off`. **NOTE:** `stickySession` is required and takes effect only when `listenerSync` is set to `off`.
      */
-    public readonly stickySession!: pulumi.Output<string | undefined>;
+    declare public readonly stickySession: pulumi.Output<string | undefined>;
     /**
      * Mode for handling the cookie. If `stickySession` is `on`, it is mandatory. Otherwise, it will be ignored. Valid values: `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
      */
-    public readonly stickySessionType!: pulumi.Output<string | undefined>;
+    declare public readonly stickySessionType: pulumi.Output<string | undefined>;
     /**
      * Threshold determining the result of the health check is fail. It is required when `healthCheck` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
      */
-    public readonly unhealthyThreshold!: pulumi.Output<number | undefined>;
+    declare public readonly unhealthyThreshold: pulumi.Output<number | undefined>;
     /**
      * Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9, and characters '-' '/' '?' '%' '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
      */
-    public readonly url!: pulumi.Output<string | undefined>;
+    declare public readonly url: pulumi.Output<string | undefined>;
 
     /**
      * Create a Rule resource with the given unique name, arguments, and options.
@@ -255,61 +255,61 @@ export class Rule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RuleState | undefined;
-            resourceInputs["cookie"] = state ? state.cookie : undefined;
-            resourceInputs["cookieTimeout"] = state ? state.cookieTimeout : undefined;
-            resourceInputs["deleteProtectionValidation"] = state ? state.deleteProtectionValidation : undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["frontendPort"] = state ? state.frontendPort : undefined;
-            resourceInputs["healthCheck"] = state ? state.healthCheck : undefined;
-            resourceInputs["healthCheckConnectPort"] = state ? state.healthCheckConnectPort : undefined;
-            resourceInputs["healthCheckDomain"] = state ? state.healthCheckDomain : undefined;
-            resourceInputs["healthCheckHttpCode"] = state ? state.healthCheckHttpCode : undefined;
-            resourceInputs["healthCheckInterval"] = state ? state.healthCheckInterval : undefined;
-            resourceInputs["healthCheckTimeout"] = state ? state.healthCheckTimeout : undefined;
-            resourceInputs["healthCheckUri"] = state ? state.healthCheckUri : undefined;
-            resourceInputs["healthyThreshold"] = state ? state.healthyThreshold : undefined;
-            resourceInputs["listenerSync"] = state ? state.listenerSync : undefined;
-            resourceInputs["loadBalancerId"] = state ? state.loadBalancerId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["scheduler"] = state ? state.scheduler : undefined;
-            resourceInputs["serverGroupId"] = state ? state.serverGroupId : undefined;
-            resourceInputs["stickySession"] = state ? state.stickySession : undefined;
-            resourceInputs["stickySessionType"] = state ? state.stickySessionType : undefined;
-            resourceInputs["unhealthyThreshold"] = state ? state.unhealthyThreshold : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["cookie"] = state?.cookie;
+            resourceInputs["cookieTimeout"] = state?.cookieTimeout;
+            resourceInputs["deleteProtectionValidation"] = state?.deleteProtectionValidation;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["frontendPort"] = state?.frontendPort;
+            resourceInputs["healthCheck"] = state?.healthCheck;
+            resourceInputs["healthCheckConnectPort"] = state?.healthCheckConnectPort;
+            resourceInputs["healthCheckDomain"] = state?.healthCheckDomain;
+            resourceInputs["healthCheckHttpCode"] = state?.healthCheckHttpCode;
+            resourceInputs["healthCheckInterval"] = state?.healthCheckInterval;
+            resourceInputs["healthCheckTimeout"] = state?.healthCheckTimeout;
+            resourceInputs["healthCheckUri"] = state?.healthCheckUri;
+            resourceInputs["healthyThreshold"] = state?.healthyThreshold;
+            resourceInputs["listenerSync"] = state?.listenerSync;
+            resourceInputs["loadBalancerId"] = state?.loadBalancerId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["scheduler"] = state?.scheduler;
+            resourceInputs["serverGroupId"] = state?.serverGroupId;
+            resourceInputs["stickySession"] = state?.stickySession;
+            resourceInputs["stickySessionType"] = state?.stickySessionType;
+            resourceInputs["unhealthyThreshold"] = state?.unhealthyThreshold;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as RuleArgs | undefined;
-            if ((!args || args.frontendPort === undefined) && !opts.urn) {
+            if (args?.frontendPort === undefined && !opts.urn) {
                 throw new Error("Missing required property 'frontendPort'");
             }
-            if ((!args || args.loadBalancerId === undefined) && !opts.urn) {
+            if (args?.loadBalancerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'loadBalancerId'");
             }
-            if ((!args || args.serverGroupId === undefined) && !opts.urn) {
+            if (args?.serverGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serverGroupId'");
             }
-            resourceInputs["cookie"] = args ? args.cookie : undefined;
-            resourceInputs["cookieTimeout"] = args ? args.cookieTimeout : undefined;
-            resourceInputs["deleteProtectionValidation"] = args ? args.deleteProtectionValidation : undefined;
-            resourceInputs["domain"] = args ? args.domain : undefined;
-            resourceInputs["frontendPort"] = args ? args.frontendPort : undefined;
-            resourceInputs["healthCheck"] = args ? args.healthCheck : undefined;
-            resourceInputs["healthCheckConnectPort"] = args ? args.healthCheckConnectPort : undefined;
-            resourceInputs["healthCheckDomain"] = args ? args.healthCheckDomain : undefined;
-            resourceInputs["healthCheckHttpCode"] = args ? args.healthCheckHttpCode : undefined;
-            resourceInputs["healthCheckInterval"] = args ? args.healthCheckInterval : undefined;
-            resourceInputs["healthCheckTimeout"] = args ? args.healthCheckTimeout : undefined;
-            resourceInputs["healthCheckUri"] = args ? args.healthCheckUri : undefined;
-            resourceInputs["healthyThreshold"] = args ? args.healthyThreshold : undefined;
-            resourceInputs["listenerSync"] = args ? args.listenerSync : undefined;
-            resourceInputs["loadBalancerId"] = args ? args.loadBalancerId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["scheduler"] = args ? args.scheduler : undefined;
-            resourceInputs["serverGroupId"] = args ? args.serverGroupId : undefined;
-            resourceInputs["stickySession"] = args ? args.stickySession : undefined;
-            resourceInputs["stickySessionType"] = args ? args.stickySessionType : undefined;
-            resourceInputs["unhealthyThreshold"] = args ? args.unhealthyThreshold : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["cookie"] = args?.cookie;
+            resourceInputs["cookieTimeout"] = args?.cookieTimeout;
+            resourceInputs["deleteProtectionValidation"] = args?.deleteProtectionValidation;
+            resourceInputs["domain"] = args?.domain;
+            resourceInputs["frontendPort"] = args?.frontendPort;
+            resourceInputs["healthCheck"] = args?.healthCheck;
+            resourceInputs["healthCheckConnectPort"] = args?.healthCheckConnectPort;
+            resourceInputs["healthCheckDomain"] = args?.healthCheckDomain;
+            resourceInputs["healthCheckHttpCode"] = args?.healthCheckHttpCode;
+            resourceInputs["healthCheckInterval"] = args?.healthCheckInterval;
+            resourceInputs["healthCheckTimeout"] = args?.healthCheckTimeout;
+            resourceInputs["healthCheckUri"] = args?.healthCheckUri;
+            resourceInputs["healthyThreshold"] = args?.healthyThreshold;
+            resourceInputs["listenerSync"] = args?.listenerSync;
+            resourceInputs["loadBalancerId"] = args?.loadBalancerId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["scheduler"] = args?.scheduler;
+            resourceInputs["serverGroupId"] = args?.serverGroupId;
+            resourceInputs["stickySession"] = args?.stickySession;
+            resourceInputs["stickySessionType"] = args?.stickySessionType;
+            resourceInputs["unhealthyThreshold"] = args?.unhealthyThreshold;
+            resourceInputs["url"] = args?.url;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Rule.__pulumiType, name, resourceInputs, opts);

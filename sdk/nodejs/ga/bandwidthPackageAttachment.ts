@@ -77,19 +77,19 @@ export class BandwidthPackageAttachment extends pulumi.CustomResource {
     /**
      * The ID of the Global Accelerator instance.
      */
-    public readonly acceleratorId!: pulumi.Output<string>;
+    declare public readonly acceleratorId: pulumi.Output<string>;
     /**
      * Accelerators bound with current Bandwidth Package.
      */
-    public /*out*/ readonly accelerators!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly accelerators: pulumi.Output<string[]>;
     /**
      * The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidthPackageId` can be modified.
      */
-    public readonly bandwidthPackageId!: pulumi.Output<string>;
+    declare public readonly bandwidthPackageId: pulumi.Output<string>;
     /**
      * State of Bandwidth Package.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a BandwidthPackageAttachment resource with the given unique name, arguments, and options.
@@ -104,20 +104,20 @@ export class BandwidthPackageAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BandwidthPackageAttachmentState | undefined;
-            resourceInputs["acceleratorId"] = state ? state.acceleratorId : undefined;
-            resourceInputs["accelerators"] = state ? state.accelerators : undefined;
-            resourceInputs["bandwidthPackageId"] = state ? state.bandwidthPackageId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["acceleratorId"] = state?.acceleratorId;
+            resourceInputs["accelerators"] = state?.accelerators;
+            resourceInputs["bandwidthPackageId"] = state?.bandwidthPackageId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as BandwidthPackageAttachmentArgs | undefined;
-            if ((!args || args.acceleratorId === undefined) && !opts.urn) {
+            if (args?.acceleratorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'acceleratorId'");
             }
-            if ((!args || args.bandwidthPackageId === undefined) && !opts.urn) {
+            if (args?.bandwidthPackageId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bandwidthPackageId'");
             }
-            resourceInputs["acceleratorId"] = args ? args.acceleratorId : undefined;
-            resourceInputs["bandwidthPackageId"] = args ? args.bandwidthPackageId : undefined;
+            resourceInputs["acceleratorId"] = args?.acceleratorId;
+            resourceInputs["bandwidthPackageId"] = args?.bandwidthPackageId;
             resourceInputs["accelerators"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

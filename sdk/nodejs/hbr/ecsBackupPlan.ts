@@ -138,74 +138,74 @@ export class EcsBackupPlan extends pulumi.CustomResource {
     /**
      * Backup type. Valid values: `COMPLETE`.
      */
-    public readonly backupType!: pulumi.Output<string>;
+    declare public readonly backupType: pulumi.Output<string>;
     /**
      * The role name created in the original account RAM backup by the cross account managed by the current account.
      */
-    public readonly crossAccountRoleName!: pulumi.Output<string | undefined>;
+    declare public readonly crossAccountRoleName: pulumi.Output<string | undefined>;
     /**
      * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
      */
-    public readonly crossAccountType!: pulumi.Output<string>;
+    declare public readonly crossAccountType: pulumi.Output<string>;
     /**
      * The original account ID of the cross account backup managed by the current account.
      */
-    public readonly crossAccountUserId!: pulumi.Output<number | undefined>;
+    declare public readonly crossAccountUserId: pulumi.Output<number | undefined>;
     /**
      * The detail of the backup plan.
      */
-    public readonly detail!: pulumi.Output<string | undefined>;
+    declare public readonly detail: pulumi.Output<string | undefined>;
     /**
      * Whether to disable the backup task. Valid values: `true`, `false`.
      */
-    public readonly disabled!: pulumi.Output<boolean>;
+    declare public readonly disabled: pulumi.Output<boolean>;
     /**
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
-    public readonly ecsBackupPlanName!: pulumi.Output<string>;
+    declare public readonly ecsBackupPlanName: pulumi.Output<string>;
     /**
      * Exclude path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
      */
-    public readonly exclude!: pulumi.Output<string | undefined>;
+    declare public readonly exclude: pulumi.Output<string | undefined>;
     /**
      * Include path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
      */
-    public readonly include!: pulumi.Output<string | undefined>;
+    declare public readonly include: pulumi.Output<string | undefined>;
     /**
      * The ID of ECS instance. The ecs backup client must have been installed on the host.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Windows operating system with application consistency using VSS, e.g: `{\"UseVSS\":false}`.
      */
-    public readonly options!: pulumi.Output<string | undefined>;
+    declare public readonly options: pulumi.Output<string | undefined>;
     /**
      * List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
      */
-    public readonly paths!: pulumi.Output<string[] | undefined>;
+    declare public readonly paths: pulumi.Output<string[] | undefined>;
     /**
      * Backup retention days, the minimum is 1.
      */
-    public readonly retention!: pulumi.Output<string>;
+    declare public readonly retention: pulumi.Output<string>;
     /**
      * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      * * `startTime` Backup start time, UNIX time seconds.
      */
-    public readonly schedule!: pulumi.Output<string>;
+    declare public readonly schedule: pulumi.Output<string>;
     /**
      * Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
      */
-    public readonly speedLimit!: pulumi.Output<string | undefined>;
+    declare public readonly speedLimit: pulumi.Output<string | undefined>;
     /**
      * Attribute updatePaths has been deprecated in v1.139.0+, and you do not need to set it anymore.
      *
      * @deprecated Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore.
      */
-    public readonly updatePaths!: pulumi.Output<boolean | undefined>;
+    declare public readonly updatePaths: pulumi.Output<boolean | undefined>;
     /**
      * The ID of Backup vault.
      */
-    public readonly vaultId!: pulumi.Output<string>;
+    declare public readonly vaultId: pulumi.Output<string>;
 
     /**
      * Create a EcsBackupPlan resource with the given unique name, arguments, and options.
@@ -220,60 +220,60 @@ export class EcsBackupPlan extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcsBackupPlanState | undefined;
-            resourceInputs["backupType"] = state ? state.backupType : undefined;
-            resourceInputs["crossAccountRoleName"] = state ? state.crossAccountRoleName : undefined;
-            resourceInputs["crossAccountType"] = state ? state.crossAccountType : undefined;
-            resourceInputs["crossAccountUserId"] = state ? state.crossAccountUserId : undefined;
-            resourceInputs["detail"] = state ? state.detail : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["ecsBackupPlanName"] = state ? state.ecsBackupPlanName : undefined;
-            resourceInputs["exclude"] = state ? state.exclude : undefined;
-            resourceInputs["include"] = state ? state.include : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["options"] = state ? state.options : undefined;
-            resourceInputs["paths"] = state ? state.paths : undefined;
-            resourceInputs["retention"] = state ? state.retention : undefined;
-            resourceInputs["schedule"] = state ? state.schedule : undefined;
-            resourceInputs["speedLimit"] = state ? state.speedLimit : undefined;
-            resourceInputs["updatePaths"] = state ? state.updatePaths : undefined;
-            resourceInputs["vaultId"] = state ? state.vaultId : undefined;
+            resourceInputs["backupType"] = state?.backupType;
+            resourceInputs["crossAccountRoleName"] = state?.crossAccountRoleName;
+            resourceInputs["crossAccountType"] = state?.crossAccountType;
+            resourceInputs["crossAccountUserId"] = state?.crossAccountUserId;
+            resourceInputs["detail"] = state?.detail;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["ecsBackupPlanName"] = state?.ecsBackupPlanName;
+            resourceInputs["exclude"] = state?.exclude;
+            resourceInputs["include"] = state?.include;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["options"] = state?.options;
+            resourceInputs["paths"] = state?.paths;
+            resourceInputs["retention"] = state?.retention;
+            resourceInputs["schedule"] = state?.schedule;
+            resourceInputs["speedLimit"] = state?.speedLimit;
+            resourceInputs["updatePaths"] = state?.updatePaths;
+            resourceInputs["vaultId"] = state?.vaultId;
         } else {
             const args = argsOrState as EcsBackupPlanArgs | undefined;
-            if ((!args || args.backupType === undefined) && !opts.urn) {
+            if (args?.backupType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'backupType'");
             }
-            if ((!args || args.ecsBackupPlanName === undefined) && !opts.urn) {
+            if (args?.ecsBackupPlanName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ecsBackupPlanName'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.retention === undefined) && !opts.urn) {
+            if (args?.retention === undefined && !opts.urn) {
                 throw new Error("Missing required property 'retention'");
             }
-            if ((!args || args.schedule === undefined) && !opts.urn) {
+            if (args?.schedule === undefined && !opts.urn) {
                 throw new Error("Missing required property 'schedule'");
             }
-            if ((!args || args.vaultId === undefined) && !opts.urn) {
+            if (args?.vaultId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vaultId'");
             }
-            resourceInputs["backupType"] = args ? args.backupType : undefined;
-            resourceInputs["crossAccountRoleName"] = args ? args.crossAccountRoleName : undefined;
-            resourceInputs["crossAccountType"] = args ? args.crossAccountType : undefined;
-            resourceInputs["crossAccountUserId"] = args ? args.crossAccountUserId : undefined;
-            resourceInputs["detail"] = args ? args.detail : undefined;
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["ecsBackupPlanName"] = args ? args.ecsBackupPlanName : undefined;
-            resourceInputs["exclude"] = args ? args.exclude : undefined;
-            resourceInputs["include"] = args ? args.include : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["options"] = args ? args.options : undefined;
-            resourceInputs["paths"] = args ? args.paths : undefined;
-            resourceInputs["retention"] = args ? args.retention : undefined;
-            resourceInputs["schedule"] = args ? args.schedule : undefined;
-            resourceInputs["speedLimit"] = args ? args.speedLimit : undefined;
-            resourceInputs["updatePaths"] = args ? args.updatePaths : undefined;
-            resourceInputs["vaultId"] = args ? args.vaultId : undefined;
+            resourceInputs["backupType"] = args?.backupType;
+            resourceInputs["crossAccountRoleName"] = args?.crossAccountRoleName;
+            resourceInputs["crossAccountType"] = args?.crossAccountType;
+            resourceInputs["crossAccountUserId"] = args?.crossAccountUserId;
+            resourceInputs["detail"] = args?.detail;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["ecsBackupPlanName"] = args?.ecsBackupPlanName;
+            resourceInputs["exclude"] = args?.exclude;
+            resourceInputs["include"] = args?.include;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["options"] = args?.options;
+            resourceInputs["paths"] = args?.paths;
+            resourceInputs["retention"] = args?.retention;
+            resourceInputs["schedule"] = args?.schedule;
+            resourceInputs["speedLimit"] = args?.speedLimit;
+            resourceInputs["updatePaths"] = args?.updatePaths;
+            resourceInputs["vaultId"] = args?.vaultId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EcsBackupPlan.__pulumiType, name, resourceInputs, opts);

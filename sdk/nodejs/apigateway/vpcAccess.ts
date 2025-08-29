@@ -95,19 +95,19 @@ export class VpcAccess extends pulumi.CustomResource {
     /**
      * ID of the instance in VPC (ECS/Server Load Balance).
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The name of the vpc authorization.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * ID of the port corresponding to the instance.
      */
-    public readonly port!: pulumi.Output<number>;
+    declare public readonly port: pulumi.Output<number>;
     /**
      * The vpc id of the vpc authorization.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
 
     /**
      * Create a VpcAccess resource with the given unique name, arguments, and options.
@@ -122,25 +122,25 @@ export class VpcAccess extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpcAccessState | undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as VpcAccessArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.port === undefined) && !opts.urn) {
+            if (args?.port === undefined && !opts.urn) {
                 throw new Error("Missing required property 'port'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["vpcId"] = args?.vpcId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VpcAccess.__pulumiType, name, resourceInputs, opts);

@@ -140,27 +140,27 @@ export class GatewayVcoRoute extends pulumi.CustomResource {
     /**
      * The next hop of the destination route.
      */
-    public readonly nextHop!: pulumi.Output<string>;
+    declare public readonly nextHop: pulumi.Output<string>;
     /**
      * The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
      */
-    public readonly overlayMode!: pulumi.Output<string | undefined>;
+    declare public readonly overlayMode: pulumi.Output<string | undefined>;
     /**
      * The destination network segment of the destination route.
      */
-    public readonly routeDest!: pulumi.Output<string>;
+    declare public readonly routeDest: pulumi.Output<string>;
     /**
      * The status of the vpn route entry.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The id of the vpn attachment.
      */
-    public readonly vpnConnectionId!: pulumi.Output<string>;
+    declare public readonly vpnConnectionId: pulumi.Output<string>;
     /**
      * The weight value of the destination route. Valid values: `0`, `100`.
      */
-    public readonly weight!: pulumi.Output<number>;
+    declare public readonly weight: pulumi.Output<number>;
 
     /**
      * Create a GatewayVcoRoute resource with the given unique name, arguments, and options.
@@ -175,31 +175,31 @@ export class GatewayVcoRoute extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GatewayVcoRouteState | undefined;
-            resourceInputs["nextHop"] = state ? state.nextHop : undefined;
-            resourceInputs["overlayMode"] = state ? state.overlayMode : undefined;
-            resourceInputs["routeDest"] = state ? state.routeDest : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vpnConnectionId"] = state ? state.vpnConnectionId : undefined;
-            resourceInputs["weight"] = state ? state.weight : undefined;
+            resourceInputs["nextHop"] = state?.nextHop;
+            resourceInputs["overlayMode"] = state?.overlayMode;
+            resourceInputs["routeDest"] = state?.routeDest;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vpnConnectionId"] = state?.vpnConnectionId;
+            resourceInputs["weight"] = state?.weight;
         } else {
             const args = argsOrState as GatewayVcoRouteArgs | undefined;
-            if ((!args || args.nextHop === undefined) && !opts.urn) {
+            if (args?.nextHop === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nextHop'");
             }
-            if ((!args || args.routeDest === undefined) && !opts.urn) {
+            if (args?.routeDest === undefined && !opts.urn) {
                 throw new Error("Missing required property 'routeDest'");
             }
-            if ((!args || args.vpnConnectionId === undefined) && !opts.urn) {
+            if (args?.vpnConnectionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpnConnectionId'");
             }
-            if ((!args || args.weight === undefined) && !opts.urn) {
+            if (args?.weight === undefined && !opts.urn) {
                 throw new Error("Missing required property 'weight'");
             }
-            resourceInputs["nextHop"] = args ? args.nextHop : undefined;
-            resourceInputs["overlayMode"] = args ? args.overlayMode : undefined;
-            resourceInputs["routeDest"] = args ? args.routeDest : undefined;
-            resourceInputs["vpnConnectionId"] = args ? args.vpnConnectionId : undefined;
-            resourceInputs["weight"] = args ? args.weight : undefined;
+            resourceInputs["nextHop"] = args?.nextHop;
+            resourceInputs["overlayMode"] = args?.overlayMode;
+            resourceInputs["routeDest"] = args?.routeDest;
+            resourceInputs["vpnConnectionId"] = args?.vpnConnectionId;
+            resourceInputs["weight"] = args?.weight;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

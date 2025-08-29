@@ -72,15 +72,15 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
      */
-    public readonly autoCreate!: pulumi.Output<boolean>;
+    declare public readonly autoCreate: pulumi.Output<boolean>;
     /**
      * `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
      */
-    public readonly defaultVisibility!: pulumi.Output<string>;
+    declare public readonly defaultVisibility: pulumi.Output<string>;
     /**
      * Name of Container Registry namespace.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a Namespace resource with the given unique name, arguments, and options.
@@ -95,20 +95,20 @@ export class Namespace extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NamespaceState | undefined;
-            resourceInputs["autoCreate"] = state ? state.autoCreate : undefined;
-            resourceInputs["defaultVisibility"] = state ? state.defaultVisibility : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["autoCreate"] = state?.autoCreate;
+            resourceInputs["defaultVisibility"] = state?.defaultVisibility;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as NamespaceArgs | undefined;
-            if ((!args || args.autoCreate === undefined) && !opts.urn) {
+            if (args?.autoCreate === undefined && !opts.urn) {
                 throw new Error("Missing required property 'autoCreate'");
             }
-            if ((!args || args.defaultVisibility === undefined) && !opts.urn) {
+            if (args?.defaultVisibility === undefined && !opts.urn) {
                 throw new Error("Missing required property 'defaultVisibility'");
             }
-            resourceInputs["autoCreate"] = args ? args.autoCreate : undefined;
-            resourceInputs["defaultVisibility"] = args ? args.defaultVisibility : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["autoCreate"] = args?.autoCreate;
+            resourceInputs["defaultVisibility"] = args?.defaultVisibility;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Namespace.__pulumiType, name, resourceInputs, opts);

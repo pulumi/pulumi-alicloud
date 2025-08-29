@@ -69,21 +69,21 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * Specifies whether to enable remote debugging.
      */
-    public readonly debugEnable!: pulumi.Output<boolean>;
+    declare public readonly debugEnable: pulumi.Output<boolean>;
     /**
      * The description of the namespace, The description can be up to `128` characters in length.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The ID of the namespace.
      * - The ID of a custom namespace is in the `region ID:namespace identifier` format. An example is `cn-beijing:tdy218`.
      * - The ID of the default namespace is in the `region ID` format. An example is cn-beijing.
      */
-    public readonly namespaceLogicalId!: pulumi.Output<string>;
+    declare public readonly namespaceLogicalId: pulumi.Output<string>;
     /**
      * The name of the namespace, The name can be up to `63` characters in length.
      */
-    public readonly namespaceName!: pulumi.Output<string>;
+    declare public readonly namespaceName: pulumi.Output<string>;
 
     /**
      * Create a Namespace resource with the given unique name, arguments, and options.
@@ -98,22 +98,22 @@ export class Namespace extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NamespaceState | undefined;
-            resourceInputs["debugEnable"] = state ? state.debugEnable : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["namespaceLogicalId"] = state ? state.namespaceLogicalId : undefined;
-            resourceInputs["namespaceName"] = state ? state.namespaceName : undefined;
+            resourceInputs["debugEnable"] = state?.debugEnable;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["namespaceLogicalId"] = state?.namespaceLogicalId;
+            resourceInputs["namespaceName"] = state?.namespaceName;
         } else {
             const args = argsOrState as NamespaceArgs | undefined;
-            if ((!args || args.namespaceLogicalId === undefined) && !opts.urn) {
+            if (args?.namespaceLogicalId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'namespaceLogicalId'");
             }
-            if ((!args || args.namespaceName === undefined) && !opts.urn) {
+            if (args?.namespaceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'namespaceName'");
             }
-            resourceInputs["debugEnable"] = args ? args.debugEnable : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["namespaceLogicalId"] = args ? args.namespaceLogicalId : undefined;
-            resourceInputs["namespaceName"] = args ? args.namespaceName : undefined;
+            resourceInputs["debugEnable"] = args?.debugEnable;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["namespaceLogicalId"] = args?.namespaceLogicalId;
+            resourceInputs["namespaceName"] = args?.namespaceName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Namespace.__pulumiType, name, resourceInputs, opts);

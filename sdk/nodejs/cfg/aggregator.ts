@@ -78,25 +78,25 @@ export class Aggregator extends pulumi.CustomResource {
     /**
      * The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. See `aggregatorAccounts` below.  **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
      */
-    public readonly aggregatorAccounts!: pulumi.Output<outputs.cfg.AggregatorAggregatorAccount[]>;
+    declare public readonly aggregatorAccounts: pulumi.Output<outputs.cfg.AggregatorAggregatorAccount[]>;
     /**
      * The name of aggregator.
      */
-    public readonly aggregatorName!: pulumi.Output<string>;
+    declare public readonly aggregatorName: pulumi.Output<string>;
     /**
      * The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
      * * `CUSTOM` - The custom account group.
      * * `RD` - The global account group.
      */
-    public readonly aggregatorType!: pulumi.Output<string>;
+    declare public readonly aggregatorType: pulumi.Output<string>;
     /**
      * The description of aggregator.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The status of the resource. Valid values: `0`: creating `1`: normal `2`: deleting.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a Aggregator resource with the given unique name, arguments, and options.
@@ -111,23 +111,23 @@ export class Aggregator extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AggregatorState | undefined;
-            resourceInputs["aggregatorAccounts"] = state ? state.aggregatorAccounts : undefined;
-            resourceInputs["aggregatorName"] = state ? state.aggregatorName : undefined;
-            resourceInputs["aggregatorType"] = state ? state.aggregatorType : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["aggregatorAccounts"] = state?.aggregatorAccounts;
+            resourceInputs["aggregatorName"] = state?.aggregatorName;
+            resourceInputs["aggregatorType"] = state?.aggregatorType;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as AggregatorArgs | undefined;
-            if ((!args || args.aggregatorName === undefined) && !opts.urn) {
+            if (args?.aggregatorName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aggregatorName'");
             }
-            if ((!args || args.description === undefined) && !opts.urn) {
+            if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            resourceInputs["aggregatorAccounts"] = args ? args.aggregatorAccounts : undefined;
-            resourceInputs["aggregatorName"] = args ? args.aggregatorName : undefined;
-            resourceInputs["aggregatorType"] = args ? args.aggregatorType : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["aggregatorAccounts"] = args?.aggregatorAccounts;
+            resourceInputs["aggregatorName"] = args?.aggregatorName;
+            resourceInputs["aggregatorType"] = args?.aggregatorType;
+            resourceInputs["description"] = args?.description;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

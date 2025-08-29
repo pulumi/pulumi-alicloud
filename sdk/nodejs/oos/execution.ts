@@ -97,87 +97,87 @@ export class Execution extends pulumi.CustomResource {
     /**
      * The counters of OOS Execution.
      */
-    public /*out*/ readonly counters!: pulumi.Output<string>;
+    declare public /*out*/ readonly counters: pulumi.Output<string>;
     /**
      * The time when the execution was created.
      */
-    public /*out*/ readonly createDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly createDate: pulumi.Output<string>;
     /**
      * The description of OOS Execution.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The time when the execution was ended.
      */
-    public /*out*/ readonly endDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly endDate: pulumi.Output<string>;
     /**
      * The user who execute the template.
      */
-    public /*out*/ readonly executedBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly executedBy: pulumi.Output<string>;
     /**
      * Whether to include subtasks.
      */
-    public /*out*/ readonly isParent!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly isParent: pulumi.Output<boolean>;
     /**
      * The loop mode of OOS Execution.
      */
-    public readonly loopMode!: pulumi.Output<string | undefined>;
+    declare public readonly loopMode: pulumi.Output<string | undefined>;
     /**
      * The mode of OOS Execution. Valid: `Automatic`, `Debug`. Default to `Automatic`.
      */
-    public readonly mode!: pulumi.Output<string | undefined>;
+    declare public readonly mode: pulumi.Output<string | undefined>;
     /**
      * The outputs of OOS Execution.
      */
-    public /*out*/ readonly outputs!: pulumi.Output<string>;
+    declare public /*out*/ readonly outputs: pulumi.Output<string>;
     /**
      * The parameters required by the template. Default to `{}`.
      */
-    public readonly parameters!: pulumi.Output<string | undefined>;
+    declare public readonly parameters: pulumi.Output<string | undefined>;
     /**
      * The id of parent execution.
      */
-    public readonly parentExecutionId!: pulumi.Output<string | undefined>;
+    declare public readonly parentExecutionId: pulumi.Output<string | undefined>;
     /**
      * The role that executes the current template.
      */
-    public /*out*/ readonly ramRole!: pulumi.Output<string>;
+    declare public /*out*/ readonly ramRole: pulumi.Output<string>;
     /**
      * The mode of safety check.
      */
-    public readonly safetyCheck!: pulumi.Output<string | undefined>;
+    declare public readonly safetyCheck: pulumi.Output<string | undefined>;
     /**
      * The time when the execution was started.
      */
-    public /*out*/ readonly startDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly startDate: pulumi.Output<string>;
     /**
      * The status of OOS Execution.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The message of status.
      */
-    public /*out*/ readonly statusMessage!: pulumi.Output<string>;
+    declare public /*out*/ readonly statusMessage: pulumi.Output<string>;
     /**
      * The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
      */
-    public readonly templateContent!: pulumi.Output<string | undefined>;
+    declare public readonly templateContent: pulumi.Output<string | undefined>;
     /**
      * The id of template.
      */
-    public /*out*/ readonly templateId!: pulumi.Output<string>;
+    declare public /*out*/ readonly templateId: pulumi.Output<string>;
     /**
      * The name of execution template.
      */
-    public readonly templateName!: pulumi.Output<string>;
+    declare public readonly templateName: pulumi.Output<string>;
     /**
      * The version of execution template.
      */
-    public readonly templateVersion!: pulumi.Output<string>;
+    declare public readonly templateVersion: pulumi.Output<string>;
     /**
      * The time when the execution was updated.
      */
-    public /*out*/ readonly updateDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateDate: pulumi.Output<string>;
 
     /**
      * Create a Execution resource with the given unique name, arguments, and options.
@@ -192,41 +192,41 @@ export class Execution extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ExecutionState | undefined;
-            resourceInputs["counters"] = state ? state.counters : undefined;
-            resourceInputs["createDate"] = state ? state.createDate : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["endDate"] = state ? state.endDate : undefined;
-            resourceInputs["executedBy"] = state ? state.executedBy : undefined;
-            resourceInputs["isParent"] = state ? state.isParent : undefined;
-            resourceInputs["loopMode"] = state ? state.loopMode : undefined;
-            resourceInputs["mode"] = state ? state.mode : undefined;
-            resourceInputs["outputs"] = state ? state.outputs : undefined;
-            resourceInputs["parameters"] = state ? state.parameters : undefined;
-            resourceInputs["parentExecutionId"] = state ? state.parentExecutionId : undefined;
-            resourceInputs["ramRole"] = state ? state.ramRole : undefined;
-            resourceInputs["safetyCheck"] = state ? state.safetyCheck : undefined;
-            resourceInputs["startDate"] = state ? state.startDate : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["statusMessage"] = state ? state.statusMessage : undefined;
-            resourceInputs["templateContent"] = state ? state.templateContent : undefined;
-            resourceInputs["templateId"] = state ? state.templateId : undefined;
-            resourceInputs["templateName"] = state ? state.templateName : undefined;
-            resourceInputs["templateVersion"] = state ? state.templateVersion : undefined;
-            resourceInputs["updateDate"] = state ? state.updateDate : undefined;
+            resourceInputs["counters"] = state?.counters;
+            resourceInputs["createDate"] = state?.createDate;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["endDate"] = state?.endDate;
+            resourceInputs["executedBy"] = state?.executedBy;
+            resourceInputs["isParent"] = state?.isParent;
+            resourceInputs["loopMode"] = state?.loopMode;
+            resourceInputs["mode"] = state?.mode;
+            resourceInputs["outputs"] = state?.outputs;
+            resourceInputs["parameters"] = state?.parameters;
+            resourceInputs["parentExecutionId"] = state?.parentExecutionId;
+            resourceInputs["ramRole"] = state?.ramRole;
+            resourceInputs["safetyCheck"] = state?.safetyCheck;
+            resourceInputs["startDate"] = state?.startDate;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["statusMessage"] = state?.statusMessage;
+            resourceInputs["templateContent"] = state?.templateContent;
+            resourceInputs["templateId"] = state?.templateId;
+            resourceInputs["templateName"] = state?.templateName;
+            resourceInputs["templateVersion"] = state?.templateVersion;
+            resourceInputs["updateDate"] = state?.updateDate;
         } else {
             const args = argsOrState as ExecutionArgs | undefined;
-            if ((!args || args.templateName === undefined) && !opts.urn) {
+            if (args?.templateName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'templateName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["loopMode"] = args ? args.loopMode : undefined;
-            resourceInputs["mode"] = args ? args.mode : undefined;
-            resourceInputs["parameters"] = args ? args.parameters : undefined;
-            resourceInputs["parentExecutionId"] = args ? args.parentExecutionId : undefined;
-            resourceInputs["safetyCheck"] = args ? args.safetyCheck : undefined;
-            resourceInputs["templateContent"] = args ? args.templateContent : undefined;
-            resourceInputs["templateName"] = args ? args.templateName : undefined;
-            resourceInputs["templateVersion"] = args ? args.templateVersion : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["loopMode"] = args?.loopMode;
+            resourceInputs["mode"] = args?.mode;
+            resourceInputs["parameters"] = args?.parameters;
+            resourceInputs["parentExecutionId"] = args?.parentExecutionId;
+            resourceInputs["safetyCheck"] = args?.safetyCheck;
+            resourceInputs["templateContent"] = args?.templateContent;
+            resourceInputs["templateName"] = args?.templateName;
+            resourceInputs["templateVersion"] = args?.templateVersion;
             resourceInputs["counters"] = undefined /*out*/;
             resourceInputs["createDate"] = undefined /*out*/;
             resourceInputs["endDate"] = undefined /*out*/;

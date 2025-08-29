@@ -89,71 +89,71 @@ export class AggregateConfigRule extends pulumi.CustomResource {
     /**
      * The name of the rule.
      */
-    public readonly aggregateConfigRuleName!: pulumi.Output<string>;
+    declare public readonly aggregateConfigRuleName: pulumi.Output<string>;
     /**
      * The Aggregator Id.
      */
-    public readonly aggregatorId!: pulumi.Output<string>;
+    declare public readonly aggregatorId: pulumi.Output<string>;
     /**
      * (Available since v1.141.0) The rule ID of Aggregate Config Rule.
      */
-    public /*out*/ readonly configRuleId!: pulumi.Output<string>;
+    declare public /*out*/ readonly configRuleId: pulumi.Output<string>;
     /**
      * The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
      */
-    public readonly configRuleTriggerTypes!: pulumi.Output<string>;
+    declare public readonly configRuleTriggerTypes: pulumi.Output<string>;
     /**
      * The description of the rule.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
      */
-    public readonly excludeResourceIdsScope!: pulumi.Output<string | undefined>;
+    declare public readonly excludeResourceIdsScope: pulumi.Output<string | undefined>;
     /**
      * The settings map of the input parameters for the rule.
      */
-    public readonly inputParameters!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly inputParameters: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `configRuleTriggerTypes` is `ScheduledNotification`.
      */
-    public readonly maximumExecutionFrequency!: pulumi.Output<string>;
+    declare public readonly maximumExecutionFrequency: pulumi.Output<string>;
     /**
      * The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
      */
-    public readonly regionIdsScope!: pulumi.Output<string | undefined>;
+    declare public readonly regionIdsScope: pulumi.Output<string | undefined>;
     /**
      * The rule monitors resource group IDs, separated by commas, only applies to rules created based on managed rules.
      */
-    public readonly resourceGroupIdsScope!: pulumi.Output<string | undefined>;
+    declare public readonly resourceGroupIdsScope: pulumi.Output<string | undefined>;
     /**
      * Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
      */
-    public readonly resourceTypesScopes!: pulumi.Output<string[]>;
+    declare public readonly resourceTypesScopes: pulumi.Output<string[]>;
     /**
      * The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info.
      */
-    public readonly riskLevel!: pulumi.Output<number>;
+    declare public readonly riskLevel: pulumi.Output<number>;
     /**
      * The identifier of the rule. For a managed rule, the value is the identifier of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
      */
-    public readonly sourceIdentifier!: pulumi.Output<string>;
+    declare public readonly sourceIdentifier: pulumi.Output<string>;
     /**
      * Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
      */
-    public readonly sourceOwner!: pulumi.Output<string>;
+    declare public readonly sourceOwner: pulumi.Output<string>;
     /**
      * The rule status. The valid values: `ACTIVE`, `INACTIVE`.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The rule monitors the tag key, only applies to rules created based on managed rules.
      */
-    public readonly tagKeyScope!: pulumi.Output<string | undefined>;
+    declare public readonly tagKeyScope: pulumi.Output<string | undefined>;
     /**
      * The rule monitors the tag value, use with the `tagKeyScope` options. only applies to rules created based on managed rules.
      */
-    public readonly tagValueScope!: pulumi.Output<string | undefined>;
+    declare public readonly tagValueScope: pulumi.Output<string | undefined>;
 
     /**
      * Create a AggregateConfigRule resource with the given unique name, arguments, and options.
@@ -168,62 +168,62 @@ export class AggregateConfigRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AggregateConfigRuleState | undefined;
-            resourceInputs["aggregateConfigRuleName"] = state ? state.aggregateConfigRuleName : undefined;
-            resourceInputs["aggregatorId"] = state ? state.aggregatorId : undefined;
-            resourceInputs["configRuleId"] = state ? state.configRuleId : undefined;
-            resourceInputs["configRuleTriggerTypes"] = state ? state.configRuleTriggerTypes : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["excludeResourceIdsScope"] = state ? state.excludeResourceIdsScope : undefined;
-            resourceInputs["inputParameters"] = state ? state.inputParameters : undefined;
-            resourceInputs["maximumExecutionFrequency"] = state ? state.maximumExecutionFrequency : undefined;
-            resourceInputs["regionIdsScope"] = state ? state.regionIdsScope : undefined;
-            resourceInputs["resourceGroupIdsScope"] = state ? state.resourceGroupIdsScope : undefined;
-            resourceInputs["resourceTypesScopes"] = state ? state.resourceTypesScopes : undefined;
-            resourceInputs["riskLevel"] = state ? state.riskLevel : undefined;
-            resourceInputs["sourceIdentifier"] = state ? state.sourceIdentifier : undefined;
-            resourceInputs["sourceOwner"] = state ? state.sourceOwner : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tagKeyScope"] = state ? state.tagKeyScope : undefined;
-            resourceInputs["tagValueScope"] = state ? state.tagValueScope : undefined;
+            resourceInputs["aggregateConfigRuleName"] = state?.aggregateConfigRuleName;
+            resourceInputs["aggregatorId"] = state?.aggregatorId;
+            resourceInputs["configRuleId"] = state?.configRuleId;
+            resourceInputs["configRuleTriggerTypes"] = state?.configRuleTriggerTypes;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["excludeResourceIdsScope"] = state?.excludeResourceIdsScope;
+            resourceInputs["inputParameters"] = state?.inputParameters;
+            resourceInputs["maximumExecutionFrequency"] = state?.maximumExecutionFrequency;
+            resourceInputs["regionIdsScope"] = state?.regionIdsScope;
+            resourceInputs["resourceGroupIdsScope"] = state?.resourceGroupIdsScope;
+            resourceInputs["resourceTypesScopes"] = state?.resourceTypesScopes;
+            resourceInputs["riskLevel"] = state?.riskLevel;
+            resourceInputs["sourceIdentifier"] = state?.sourceIdentifier;
+            resourceInputs["sourceOwner"] = state?.sourceOwner;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tagKeyScope"] = state?.tagKeyScope;
+            resourceInputs["tagValueScope"] = state?.tagValueScope;
         } else {
             const args = argsOrState as AggregateConfigRuleArgs | undefined;
-            if ((!args || args.aggregateConfigRuleName === undefined) && !opts.urn) {
+            if (args?.aggregateConfigRuleName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aggregateConfigRuleName'");
             }
-            if ((!args || args.aggregatorId === undefined) && !opts.urn) {
+            if (args?.aggregatorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aggregatorId'");
             }
-            if ((!args || args.configRuleTriggerTypes === undefined) && !opts.urn) {
+            if (args?.configRuleTriggerTypes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'configRuleTriggerTypes'");
             }
-            if ((!args || args.resourceTypesScopes === undefined) && !opts.urn) {
+            if (args?.resourceTypesScopes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceTypesScopes'");
             }
-            if ((!args || args.riskLevel === undefined) && !opts.urn) {
+            if (args?.riskLevel === undefined && !opts.urn) {
                 throw new Error("Missing required property 'riskLevel'");
             }
-            if ((!args || args.sourceIdentifier === undefined) && !opts.urn) {
+            if (args?.sourceIdentifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceIdentifier'");
             }
-            if ((!args || args.sourceOwner === undefined) && !opts.urn) {
+            if (args?.sourceOwner === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceOwner'");
             }
-            resourceInputs["aggregateConfigRuleName"] = args ? args.aggregateConfigRuleName : undefined;
-            resourceInputs["aggregatorId"] = args ? args.aggregatorId : undefined;
-            resourceInputs["configRuleTriggerTypes"] = args ? args.configRuleTriggerTypes : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["excludeResourceIdsScope"] = args ? args.excludeResourceIdsScope : undefined;
-            resourceInputs["inputParameters"] = args ? args.inputParameters : undefined;
-            resourceInputs["maximumExecutionFrequency"] = args ? args.maximumExecutionFrequency : undefined;
-            resourceInputs["regionIdsScope"] = args ? args.regionIdsScope : undefined;
-            resourceInputs["resourceGroupIdsScope"] = args ? args.resourceGroupIdsScope : undefined;
-            resourceInputs["resourceTypesScopes"] = args ? args.resourceTypesScopes : undefined;
-            resourceInputs["riskLevel"] = args ? args.riskLevel : undefined;
-            resourceInputs["sourceIdentifier"] = args ? args.sourceIdentifier : undefined;
-            resourceInputs["sourceOwner"] = args ? args.sourceOwner : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["tagKeyScope"] = args ? args.tagKeyScope : undefined;
-            resourceInputs["tagValueScope"] = args ? args.tagValueScope : undefined;
+            resourceInputs["aggregateConfigRuleName"] = args?.aggregateConfigRuleName;
+            resourceInputs["aggregatorId"] = args?.aggregatorId;
+            resourceInputs["configRuleTriggerTypes"] = args?.configRuleTriggerTypes;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["excludeResourceIdsScope"] = args?.excludeResourceIdsScope;
+            resourceInputs["inputParameters"] = args?.inputParameters;
+            resourceInputs["maximumExecutionFrequency"] = args?.maximumExecutionFrequency;
+            resourceInputs["regionIdsScope"] = args?.regionIdsScope;
+            resourceInputs["resourceGroupIdsScope"] = args?.resourceGroupIdsScope;
+            resourceInputs["resourceTypesScopes"] = args?.resourceTypesScopes;
+            resourceInputs["riskLevel"] = args?.riskLevel;
+            resourceInputs["sourceIdentifier"] = args?.sourceIdentifier;
+            resourceInputs["sourceOwner"] = args?.sourceOwner;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["tagKeyScope"] = args?.tagKeyScope;
+            resourceInputs["tagValueScope"] = args?.tagValueScope;
             resourceInputs["configRuleId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

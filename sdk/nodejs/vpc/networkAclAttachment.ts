@@ -81,11 +81,11 @@ export class NetworkAclAttachment extends pulumi.CustomResource {
     /**
      * The id of the network acl, the field can't be changed.
      */
-    public readonly networkAclId!: pulumi.Output<string>;
+    declare public readonly networkAclId: pulumi.Output<string>;
     /**
      * List of the resources associated with the network acl. The details see Block Resources.
      */
-    public readonly resources!: pulumi.Output<outputs.vpc.NetworkAclAttachmentResource[]>;
+    declare public readonly resources: pulumi.Output<outputs.vpc.NetworkAclAttachmentResource[]>;
 
     /**
      * Create a NetworkAclAttachment resource with the given unique name, arguments, and options.
@@ -100,18 +100,18 @@ export class NetworkAclAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkAclAttachmentState | undefined;
-            resourceInputs["networkAclId"] = state ? state.networkAclId : undefined;
-            resourceInputs["resources"] = state ? state.resources : undefined;
+            resourceInputs["networkAclId"] = state?.networkAclId;
+            resourceInputs["resources"] = state?.resources;
         } else {
             const args = argsOrState as NetworkAclAttachmentArgs | undefined;
-            if ((!args || args.networkAclId === undefined) && !opts.urn) {
+            if (args?.networkAclId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkAclId'");
             }
-            if ((!args || args.resources === undefined) && !opts.urn) {
+            if (args?.resources === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resources'");
             }
-            resourceInputs["networkAclId"] = args ? args.networkAclId : undefined;
-            resourceInputs["resources"] = args ? args.resources : undefined;
+            resourceInputs["networkAclId"] = args?.networkAclId;
+            resourceInputs["resources"] = args?.resources;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(NetworkAclAttachment.__pulumiType, name, resourceInputs, opts);

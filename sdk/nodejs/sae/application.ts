@@ -107,247 +107,247 @@ export class Application extends pulumi.CustomResource {
     /**
      * The ARN of the RAM role required when pulling images across accounts. Only necessary if the imageUrl is pointing to an ACR EE instance.
      */
-    public readonly acrAssumeRoleArn!: pulumi.Output<string | undefined>;
+    declare public readonly acrAssumeRoleArn: pulumi.Output<string | undefined>;
     /**
      * The ID of the ACR EE instance. Only necessary if the imageUrl is pointing to an ACR EE instance.
      */
-    public readonly acrInstanceId!: pulumi.Output<string | undefined>;
+    declare public readonly acrInstanceId: pulumi.Output<string | undefined>;
     /**
      * Application description information. No more than 1024 characters. **NOTE:** From version 1.211.0, `appDescription` can be modified.
      */
-    public readonly appDescription!: pulumi.Output<string | undefined>;
+    declare public readonly appDescription: pulumi.Output<string | undefined>;
     /**
      * Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
      */
-    public readonly appName!: pulumi.Output<string>;
+    declare public readonly appName: pulumi.Output<string>;
     /**
      * The auto config. Valid values: `true`, `false`.
      */
-    public readonly autoConfig!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoConfig: pulumi.Output<boolean | undefined>;
     /**
      * The auto enable application scaling rule. Valid values: `true`, `false`.
      */
-    public readonly autoEnableApplicationScalingRule!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoEnableApplicationScalingRule: pulumi.Output<boolean | undefined>;
     /**
      * The batch wait time.
      */
-    public readonly batchWaitTime!: pulumi.Output<number>;
+    declare public readonly batchWaitTime: pulumi.Output<number>;
     /**
      * The change order desc.
      */
-    public readonly changeOrderDesc!: pulumi.Output<string | undefined>;
+    declare public readonly changeOrderDesc: pulumi.Output<string | undefined>;
     /**
      * Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
      */
-    public readonly command!: pulumi.Output<string | undefined>;
+    declare public readonly command: pulumi.Output<string | undefined>;
     /**
      * Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead.
      *
      * @deprecated Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead.
      */
-    public readonly commandArgs!: pulumi.Output<string>;
+    declare public readonly commandArgs: pulumi.Output<string>;
     /**
      * The parameters of the image startup command.
      */
-    public readonly commandArgsV2s!: pulumi.Output<string[]>;
+    declare public readonly commandArgsV2s: pulumi.Output<string[]>;
     /**
      * ConfigMap mount description. **NOTE:** Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead.
      *
      * @deprecated Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead.
      */
-    public readonly configMapMountDesc!: pulumi.Output<string>;
+    declare public readonly configMapMountDesc: pulumi.Output<string>;
     /**
      * The description of the ConfigMap that is mounted to the application. A ConfigMap that is created on the ConfigMaps page of a namespace is used to inject configurations into containers. See `configMapMountDescV2` below.
      */
-    public readonly configMapMountDescV2s!: pulumi.Output<outputs.sae.ApplicationConfigMapMountDescV2[]>;
+    declare public readonly configMapMountDescV2s: pulumi.Output<outputs.sae.ApplicationConfigMapMountDescV2[]>;
     /**
      * The CPU required for each instance, in millicores, cannot be 0. Valid values: `500`, `1000`, `2000`, `4000`, `8000`, `16000`, `32000`.
      */
-    public readonly cpu!: pulumi.Output<number | undefined>;
+    declare public readonly cpu: pulumi.Output<number | undefined>;
     /**
      * Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead.
      *
      * @deprecated Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead.
      */
-    public readonly customHostAlias!: pulumi.Output<string>;
+    declare public readonly customHostAlias: pulumi.Output<string>;
     /**
      * The custom mapping between the hostname and IP address in the container. See `customHostAliasV2` below.
      */
-    public readonly customHostAliasV2s!: pulumi.Output<outputs.sae.ApplicationCustomHostAliasV2[]>;
+    declare public readonly customHostAliasV2s: pulumi.Output<outputs.sae.ApplicationCustomHostAliasV2[]>;
     /**
      * The deploy. Valid values: `true`, `false`.
      */
-    public readonly deploy!: pulumi.Output<boolean | undefined>;
+    declare public readonly deploy: pulumi.Output<boolean | undefined>;
     /**
      * The operating environment used by the Pandora application.
      */
-    public readonly edasContainerVersion!: pulumi.Output<string | undefined>;
+    declare public readonly edasContainerVersion: pulumi.Output<string | undefined>;
     /**
      * The enable ahas. Valid values: `true`, `false`.
      */
-    public readonly enableAhas!: pulumi.Output<string>;
+    declare public readonly enableAhas: pulumi.Output<string>;
     /**
      * The enable grey tag route. Default value: `false`. Valid values:
      */
-    public readonly enableGreyTagRoute!: pulumi.Output<boolean>;
+    declare public readonly enableGreyTagRoute: pulumi.Output<boolean>;
     /**
      * Container environment variable parameters. For example,`	[{"name":"envtmp","value":"0"}]`. The value description is as follows:
      */
-    public readonly envs!: pulumi.Output<string>;
+    declare public readonly envs: pulumi.Output<string>;
     /**
      * The ID of the corresponding Secret.
      */
-    public readonly imagePullSecrets!: pulumi.Output<string | undefined>;
+    declare public readonly imagePullSecrets: pulumi.Output<string | undefined>;
     /**
      * Mirror address. Only Image type applications can configure the mirror address.
      */
-    public readonly imageUrl!: pulumi.Output<string | undefined>;
+    declare public readonly imageUrl: pulumi.Output<string | undefined>;
     /**
      * The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
      */
-    public readonly jarStartArgs!: pulumi.Output<string | undefined>;
+    declare public readonly jarStartArgs: pulumi.Output<string | undefined>;
     /**
      * The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
      */
-    public readonly jarStartOptions!: pulumi.Output<string | undefined>;
+    declare public readonly jarStartOptions: pulumi.Output<string | undefined>;
     /**
      * The JDK version that the deployment package depends on. Image type applications are not supported.
      */
-    public readonly jdk!: pulumi.Output<string | undefined>;
+    declare public readonly jdk: pulumi.Output<string | undefined>;
     /**
      * The logging configurations of ApsaraMQ for Kafka. See `kafkaConfigs` below.
      */
-    public readonly kafkaConfigs!: pulumi.Output<outputs.sae.ApplicationKafkaConfigs | undefined>;
+    declare public readonly kafkaConfigs: pulumi.Output<outputs.sae.ApplicationKafkaConfigs | undefined>;
     /**
      * Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
      * **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead.
      *
      * @deprecated Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead.
      */
-    public readonly liveness!: pulumi.Output<string>;
+    declare public readonly liveness: pulumi.Output<string>;
     /**
      * The liveness check settings of the container. See `livenessV2` below.
      */
-    public readonly livenessV2!: pulumi.Output<outputs.sae.ApplicationLivenessV2>;
+    declare public readonly livenessV2: pulumi.Output<outputs.sae.ApplicationLivenessV2>;
     /**
      * The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `2048`, `4096`, `8192`, `12288`, `16384`, `24576`, `32768`, `65536`, `131072`.
      */
-    public readonly memory!: pulumi.Output<number | undefined>;
+    declare public readonly memory: pulumi.Output<number | undefined>;
     /**
      * Select the Nacos registry. Valid values: `0`, `1`, `2`.
      */
-    public readonly microRegistration!: pulumi.Output<string>;
+    declare public readonly microRegistration: pulumi.Output<string>;
     /**
      * Minimum Survival Instance Percentage. **NOTE:** When `minReadyInstances` and `minReadyInstanceRatio` are passed at the same time, and the value of `minReadyInstanceRatio` is not -1, the `minReadyInstanceRatio` parameter shall prevail. Assuming that `minReadyInstances` is 5 and `minReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
      * * `-1`: Initialization value, indicating that percentages are not used.
      * * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
      */
-    public readonly minReadyInstanceRatio!: pulumi.Output<number>;
+    declare public readonly minReadyInstanceRatio: pulumi.Output<number>;
     /**
      * The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
      */
-    public readonly minReadyInstances!: pulumi.Output<number>;
+    declare public readonly minReadyInstances: pulumi.Output<number>;
     /**
      * SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
      */
-    public readonly namespaceId!: pulumi.Output<string | undefined>;
+    declare public readonly namespaceId: pulumi.Output<string | undefined>;
     /**
      * The configurations for mounting the NAS file system. See `nasConfigs` below.
      */
-    public readonly nasConfigs!: pulumi.Output<outputs.sae.ApplicationNasConfig[] | undefined>;
+    declare public readonly nasConfigs: pulumi.Output<outputs.sae.ApplicationNasConfig[] | undefined>;
     /**
      * OSS AccessKey ID.
      */
-    public readonly ossAkId!: pulumi.Output<string | undefined>;
+    declare public readonly ossAkId: pulumi.Output<string | undefined>;
     /**
      * OSS  AccessKey Secret.
      */
-    public readonly ossAkSecret!: pulumi.Output<string | undefined>;
+    declare public readonly ossAkSecret: pulumi.Output<string | undefined>;
     /**
      * OSS mount description information. **NOTE:** Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead.
      *
      * @deprecated Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead.
      */
-    public readonly ossMountDescs!: pulumi.Output<string>;
+    declare public readonly ossMountDescs: pulumi.Output<string>;
     /**
      * The description of the mounted Object Storage Service (OSS) bucket. See `ossMountDescsV2` below.
      */
-    public readonly ossMountDescsV2s!: pulumi.Output<outputs.sae.ApplicationOssMountDescsV2[]>;
+    declare public readonly ossMountDescsV2s: pulumi.Output<outputs.sae.ApplicationOssMountDescsV2[]>;
     /**
      * Application package type. Valid values: `FatJar`, `War`, `Image`, `PhpZip`, `IMAGE_PHP_5_4`, `IMAGE_PHP_5_4_ALPINE`, `IMAGE_PHP_5_5`, `IMAGE_PHP_5_5_ALPINE`, `IMAGE_PHP_5_6`, `IMAGE_PHP_5_6_ALPINE`, `IMAGE_PHP_7_0`, `IMAGE_PHP_7_0_ALPINE`, `IMAGE_PHP_7_1`, `IMAGE_PHP_7_1_ALPINE`, `IMAGE_PHP_7_2`, `IMAGE_PHP_7_2_ALPINE`, `IMAGE_PHP_7_3`, `IMAGE_PHP_7_3_ALPINE`, `PythonZip`.
      */
-    public readonly packageType!: pulumi.Output<string>;
+    declare public readonly packageType: pulumi.Output<string>;
     /**
      * Deployment package address. Only FatJar or War type applications can configure the deployment package address.
      */
-    public readonly packageUrl!: pulumi.Output<string | undefined>;
+    declare public readonly packageUrl: pulumi.Output<string | undefined>;
     /**
      * The version number of the deployment package. Required when the Package Type is War and FatJar.
      */
-    public readonly packageVersion!: pulumi.Output<string>;
+    declare public readonly packageVersion: pulumi.Output<string>;
     /**
      * The Php environment.
      */
-    public readonly php!: pulumi.Output<string | undefined>;
+    declare public readonly php: pulumi.Output<string | undefined>;
     /**
      * The PHP application monitors the mount path, and you need to ensure that the PHP server will load the configuration file of this path. You don't need to pay attention to the configuration content, SAE will automatically render the correct configuration file.
      */
-    public readonly phpArmsConfigLocation!: pulumi.Output<string>;
+    declare public readonly phpArmsConfigLocation: pulumi.Output<string>;
     /**
      * PHP configuration file content.
      */
-    public readonly phpConfig!: pulumi.Output<string | undefined>;
+    declare public readonly phpConfig: pulumi.Output<string | undefined>;
     /**
      * PHP application startup configuration mount path, you need to ensure that the PHP server will start using this configuration file.
      */
-    public readonly phpConfigLocation!: pulumi.Output<string | undefined>;
+    declare public readonly phpConfigLocation: pulumi.Output<string | undefined>;
     /**
      * Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead.
      *
      * @deprecated Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead.
      */
-    public readonly postStart!: pulumi.Output<string>;
+    declare public readonly postStart: pulumi.Output<string>;
     /**
      * The script that is run immediately after the container is started. See `postStartV2` below.
      */
-    public readonly postStartV2!: pulumi.Output<outputs.sae.ApplicationPostStartV2>;
+    declare public readonly postStartV2: pulumi.Output<outputs.sae.ApplicationPostStartV2>;
     /**
      * Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead.
      *
      * @deprecated Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead.
      */
-    public readonly preStop!: pulumi.Output<string>;
+    declare public readonly preStop: pulumi.Output<string>;
     /**
      * The script that is run before the container is stopped. See `preStopV2` below.
      */
-    public readonly preStopV2!: pulumi.Output<outputs.sae.ApplicationPreStopV2>;
+    declare public readonly preStopV2: pulumi.Output<outputs.sae.ApplicationPreStopV2>;
     /**
      * The programming language that is used to create the application. Valid values: `java`, `php`, `other`.
      */
-    public readonly programmingLanguage!: pulumi.Output<string>;
+    declare public readonly programmingLanguage: pulumi.Output<string>;
     /**
      * The configurations of Kubernetes Service-based service registration and discovery. See `pvtzDiscoverySvc` below.
      */
-    public readonly pvtzDiscoverySvc!: pulumi.Output<outputs.sae.ApplicationPvtzDiscoverySvc | undefined>;
+    declare public readonly pvtzDiscoverySvc: pulumi.Output<outputs.sae.ApplicationPvtzDiscoverySvc | undefined>;
     /**
      * Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
      * **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead.
      *
      * @deprecated Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead.
      */
-    public readonly readiness!: pulumi.Output<string>;
+    declare public readonly readiness: pulumi.Output<string>;
     /**
      * The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `readinessV2` below.
      */
-    public readonly readinessV2!: pulumi.Output<outputs.sae.ApplicationReadinessV2>;
+    declare public readonly readinessV2: pulumi.Output<outputs.sae.ApplicationReadinessV2>;
     /**
      * Initial number of instances.
      */
-    public readonly replicas!: pulumi.Output<number>;
+    declare public readonly replicas: pulumi.Output<number>;
     /**
      * Security group ID.
      */
-    public readonly securityGroupId!: pulumi.Output<string>;
+    declare public readonly securityGroupId: pulumi.Output<string>;
     /**
      * Configuration for log collection to SLS. Valid parameter descriptions are as follows:
      * * `projectName`: Configures the project name on SLS.
@@ -362,60 +362,60 @@ export class Application extends pulumi.CustomResource {
      *
      * **NOTE:** Projects that are automatically created with applications will be deleted along with the application deletion. Therefore, when selecting existing projects, you cannot choose projects automatically created by SAE.
      */
-    public readonly slsConfigs!: pulumi.Output<string | undefined>;
+    declare public readonly slsConfigs: pulumi.Output<string | undefined>;
     /**
      * The status of the resource. Valid values: `RUNNING`, `STOPPED`, `UNKNOWN`.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60. Valid values: [1,60].
      */
-    public readonly terminationGracePeriodSeconds!: pulumi.Output<number>;
+    declare public readonly terminationGracePeriodSeconds: pulumi.Output<number>;
     /**
      * Time zone. Default value: `Asia/Shanghai`.
      */
-    public readonly timezone!: pulumi.Output<string>;
+    declare public readonly timezone: pulumi.Output<string>;
     /**
      * Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
      * **NOTE:** Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead.
      *
      * @deprecated Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead.
      */
-    public readonly tomcatConfig!: pulumi.Output<string>;
+    declare public readonly tomcatConfig: pulumi.Output<string>;
     /**
      * The Tomcat configuration. See `tomcatConfigV2` below.
      */
-    public readonly tomcatConfigV2!: pulumi.Output<outputs.sae.ApplicationTomcatConfigV2>;
+    declare public readonly tomcatConfigV2: pulumi.Output<outputs.sae.ApplicationTomcatConfigV2>;
     /**
      * The update strategy. **NOTE:** Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead.
      *
      * @deprecated Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead.
      */
-    public readonly updateStrategy!: pulumi.Output<string>;
+    declare public readonly updateStrategy: pulumi.Output<string>;
     /**
      * The release policy. See `updateStrategyV2` below.
      */
-    public readonly updateStrategyV2!: pulumi.Output<outputs.sae.ApplicationUpdateStrategyV2>;
+    declare public readonly updateStrategyV2: pulumi.Output<outputs.sae.ApplicationUpdateStrategyV2>;
     /**
      * The vpc id.
      */
-    public readonly vpcId!: pulumi.Output<string | undefined>;
+    declare public readonly vpcId: pulumi.Output<string | undefined>;
     /**
      * The vswitch id. **NOTE:** From version 1.211.0, `vswitchId` can be modified.
      */
-    public readonly vswitchId!: pulumi.Output<string | undefined>;
+    declare public readonly vswitchId: pulumi.Output<string | undefined>;
     /**
      * WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap "$@" start.
      */
-    public readonly warStartOptions!: pulumi.Output<string | undefined>;
+    declare public readonly warStartOptions: pulumi.Output<string | undefined>;
     /**
      * The version of tomcat that the deployment package depends on. Image type applications are not supported.
      */
-    public readonly webContainer!: pulumi.Output<string | undefined>;
+    declare public readonly webContainer: pulumi.Output<string | undefined>;
 
     /**
      * Create a Application resource with the given unique name, arguments, and options.
@@ -430,155 +430,155 @@ export class Application extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationState | undefined;
-            resourceInputs["acrAssumeRoleArn"] = state ? state.acrAssumeRoleArn : undefined;
-            resourceInputs["acrInstanceId"] = state ? state.acrInstanceId : undefined;
-            resourceInputs["appDescription"] = state ? state.appDescription : undefined;
-            resourceInputs["appName"] = state ? state.appName : undefined;
-            resourceInputs["autoConfig"] = state ? state.autoConfig : undefined;
-            resourceInputs["autoEnableApplicationScalingRule"] = state ? state.autoEnableApplicationScalingRule : undefined;
-            resourceInputs["batchWaitTime"] = state ? state.batchWaitTime : undefined;
-            resourceInputs["changeOrderDesc"] = state ? state.changeOrderDesc : undefined;
-            resourceInputs["command"] = state ? state.command : undefined;
-            resourceInputs["commandArgs"] = state ? state.commandArgs : undefined;
-            resourceInputs["commandArgsV2s"] = state ? state.commandArgsV2s : undefined;
-            resourceInputs["configMapMountDesc"] = state ? state.configMapMountDesc : undefined;
-            resourceInputs["configMapMountDescV2s"] = state ? state.configMapMountDescV2s : undefined;
-            resourceInputs["cpu"] = state ? state.cpu : undefined;
-            resourceInputs["customHostAlias"] = state ? state.customHostAlias : undefined;
-            resourceInputs["customHostAliasV2s"] = state ? state.customHostAliasV2s : undefined;
-            resourceInputs["deploy"] = state ? state.deploy : undefined;
-            resourceInputs["edasContainerVersion"] = state ? state.edasContainerVersion : undefined;
-            resourceInputs["enableAhas"] = state ? state.enableAhas : undefined;
-            resourceInputs["enableGreyTagRoute"] = state ? state.enableGreyTagRoute : undefined;
-            resourceInputs["envs"] = state ? state.envs : undefined;
-            resourceInputs["imagePullSecrets"] = state ? state.imagePullSecrets : undefined;
-            resourceInputs["imageUrl"] = state ? state.imageUrl : undefined;
-            resourceInputs["jarStartArgs"] = state ? state.jarStartArgs : undefined;
-            resourceInputs["jarStartOptions"] = state ? state.jarStartOptions : undefined;
-            resourceInputs["jdk"] = state ? state.jdk : undefined;
-            resourceInputs["kafkaConfigs"] = state ? state.kafkaConfigs : undefined;
-            resourceInputs["liveness"] = state ? state.liveness : undefined;
-            resourceInputs["livenessV2"] = state ? state.livenessV2 : undefined;
-            resourceInputs["memory"] = state ? state.memory : undefined;
-            resourceInputs["microRegistration"] = state ? state.microRegistration : undefined;
-            resourceInputs["minReadyInstanceRatio"] = state ? state.minReadyInstanceRatio : undefined;
-            resourceInputs["minReadyInstances"] = state ? state.minReadyInstances : undefined;
-            resourceInputs["namespaceId"] = state ? state.namespaceId : undefined;
-            resourceInputs["nasConfigs"] = state ? state.nasConfigs : undefined;
-            resourceInputs["ossAkId"] = state ? state.ossAkId : undefined;
-            resourceInputs["ossAkSecret"] = state ? state.ossAkSecret : undefined;
-            resourceInputs["ossMountDescs"] = state ? state.ossMountDescs : undefined;
-            resourceInputs["ossMountDescsV2s"] = state ? state.ossMountDescsV2s : undefined;
-            resourceInputs["packageType"] = state ? state.packageType : undefined;
-            resourceInputs["packageUrl"] = state ? state.packageUrl : undefined;
-            resourceInputs["packageVersion"] = state ? state.packageVersion : undefined;
-            resourceInputs["php"] = state ? state.php : undefined;
-            resourceInputs["phpArmsConfigLocation"] = state ? state.phpArmsConfigLocation : undefined;
-            resourceInputs["phpConfig"] = state ? state.phpConfig : undefined;
-            resourceInputs["phpConfigLocation"] = state ? state.phpConfigLocation : undefined;
-            resourceInputs["postStart"] = state ? state.postStart : undefined;
-            resourceInputs["postStartV2"] = state ? state.postStartV2 : undefined;
-            resourceInputs["preStop"] = state ? state.preStop : undefined;
-            resourceInputs["preStopV2"] = state ? state.preStopV2 : undefined;
-            resourceInputs["programmingLanguage"] = state ? state.programmingLanguage : undefined;
-            resourceInputs["pvtzDiscoverySvc"] = state ? state.pvtzDiscoverySvc : undefined;
-            resourceInputs["readiness"] = state ? state.readiness : undefined;
-            resourceInputs["readinessV2"] = state ? state.readinessV2 : undefined;
-            resourceInputs["replicas"] = state ? state.replicas : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["slsConfigs"] = state ? state.slsConfigs : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["terminationGracePeriodSeconds"] = state ? state.terminationGracePeriodSeconds : undefined;
-            resourceInputs["timezone"] = state ? state.timezone : undefined;
-            resourceInputs["tomcatConfig"] = state ? state.tomcatConfig : undefined;
-            resourceInputs["tomcatConfigV2"] = state ? state.tomcatConfigV2 : undefined;
-            resourceInputs["updateStrategy"] = state ? state.updateStrategy : undefined;
-            resourceInputs["updateStrategyV2"] = state ? state.updateStrategyV2 : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
-            resourceInputs["warStartOptions"] = state ? state.warStartOptions : undefined;
-            resourceInputs["webContainer"] = state ? state.webContainer : undefined;
+            resourceInputs["acrAssumeRoleArn"] = state?.acrAssumeRoleArn;
+            resourceInputs["acrInstanceId"] = state?.acrInstanceId;
+            resourceInputs["appDescription"] = state?.appDescription;
+            resourceInputs["appName"] = state?.appName;
+            resourceInputs["autoConfig"] = state?.autoConfig;
+            resourceInputs["autoEnableApplicationScalingRule"] = state?.autoEnableApplicationScalingRule;
+            resourceInputs["batchWaitTime"] = state?.batchWaitTime;
+            resourceInputs["changeOrderDesc"] = state?.changeOrderDesc;
+            resourceInputs["command"] = state?.command;
+            resourceInputs["commandArgs"] = state?.commandArgs;
+            resourceInputs["commandArgsV2s"] = state?.commandArgsV2s;
+            resourceInputs["configMapMountDesc"] = state?.configMapMountDesc;
+            resourceInputs["configMapMountDescV2s"] = state?.configMapMountDescV2s;
+            resourceInputs["cpu"] = state?.cpu;
+            resourceInputs["customHostAlias"] = state?.customHostAlias;
+            resourceInputs["customHostAliasV2s"] = state?.customHostAliasV2s;
+            resourceInputs["deploy"] = state?.deploy;
+            resourceInputs["edasContainerVersion"] = state?.edasContainerVersion;
+            resourceInputs["enableAhas"] = state?.enableAhas;
+            resourceInputs["enableGreyTagRoute"] = state?.enableGreyTagRoute;
+            resourceInputs["envs"] = state?.envs;
+            resourceInputs["imagePullSecrets"] = state?.imagePullSecrets;
+            resourceInputs["imageUrl"] = state?.imageUrl;
+            resourceInputs["jarStartArgs"] = state?.jarStartArgs;
+            resourceInputs["jarStartOptions"] = state?.jarStartOptions;
+            resourceInputs["jdk"] = state?.jdk;
+            resourceInputs["kafkaConfigs"] = state?.kafkaConfigs;
+            resourceInputs["liveness"] = state?.liveness;
+            resourceInputs["livenessV2"] = state?.livenessV2;
+            resourceInputs["memory"] = state?.memory;
+            resourceInputs["microRegistration"] = state?.microRegistration;
+            resourceInputs["minReadyInstanceRatio"] = state?.minReadyInstanceRatio;
+            resourceInputs["minReadyInstances"] = state?.minReadyInstances;
+            resourceInputs["namespaceId"] = state?.namespaceId;
+            resourceInputs["nasConfigs"] = state?.nasConfigs;
+            resourceInputs["ossAkId"] = state?.ossAkId;
+            resourceInputs["ossAkSecret"] = state?.ossAkSecret;
+            resourceInputs["ossMountDescs"] = state?.ossMountDescs;
+            resourceInputs["ossMountDescsV2s"] = state?.ossMountDescsV2s;
+            resourceInputs["packageType"] = state?.packageType;
+            resourceInputs["packageUrl"] = state?.packageUrl;
+            resourceInputs["packageVersion"] = state?.packageVersion;
+            resourceInputs["php"] = state?.php;
+            resourceInputs["phpArmsConfigLocation"] = state?.phpArmsConfigLocation;
+            resourceInputs["phpConfig"] = state?.phpConfig;
+            resourceInputs["phpConfigLocation"] = state?.phpConfigLocation;
+            resourceInputs["postStart"] = state?.postStart;
+            resourceInputs["postStartV2"] = state?.postStartV2;
+            resourceInputs["preStop"] = state?.preStop;
+            resourceInputs["preStopV2"] = state?.preStopV2;
+            resourceInputs["programmingLanguage"] = state?.programmingLanguage;
+            resourceInputs["pvtzDiscoverySvc"] = state?.pvtzDiscoverySvc;
+            resourceInputs["readiness"] = state?.readiness;
+            resourceInputs["readinessV2"] = state?.readinessV2;
+            resourceInputs["replicas"] = state?.replicas;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["slsConfigs"] = state?.slsConfigs;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["terminationGracePeriodSeconds"] = state?.terminationGracePeriodSeconds;
+            resourceInputs["timezone"] = state?.timezone;
+            resourceInputs["tomcatConfig"] = state?.tomcatConfig;
+            resourceInputs["tomcatConfigV2"] = state?.tomcatConfigV2;
+            resourceInputs["updateStrategy"] = state?.updateStrategy;
+            resourceInputs["updateStrategyV2"] = state?.updateStrategyV2;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
+            resourceInputs["warStartOptions"] = state?.warStartOptions;
+            resourceInputs["webContainer"] = state?.webContainer;
         } else {
             const args = argsOrState as ApplicationArgs | undefined;
-            if ((!args || args.appName === undefined) && !opts.urn) {
+            if (args?.appName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appName'");
             }
-            if ((!args || args.packageType === undefined) && !opts.urn) {
+            if (args?.packageType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'packageType'");
             }
-            if ((!args || args.replicas === undefined) && !opts.urn) {
+            if (args?.replicas === undefined && !opts.urn) {
                 throw new Error("Missing required property 'replicas'");
             }
-            resourceInputs["acrAssumeRoleArn"] = args ? args.acrAssumeRoleArn : undefined;
-            resourceInputs["acrInstanceId"] = args ? args.acrInstanceId : undefined;
-            resourceInputs["appDescription"] = args ? args.appDescription : undefined;
-            resourceInputs["appName"] = args ? args.appName : undefined;
-            resourceInputs["autoConfig"] = args ? args.autoConfig : undefined;
-            resourceInputs["autoEnableApplicationScalingRule"] = args ? args.autoEnableApplicationScalingRule : undefined;
-            resourceInputs["batchWaitTime"] = args ? args.batchWaitTime : undefined;
-            resourceInputs["changeOrderDesc"] = args ? args.changeOrderDesc : undefined;
-            resourceInputs["command"] = args ? args.command : undefined;
-            resourceInputs["commandArgs"] = args ? args.commandArgs : undefined;
-            resourceInputs["commandArgsV2s"] = args ? args.commandArgsV2s : undefined;
-            resourceInputs["configMapMountDesc"] = args ? args.configMapMountDesc : undefined;
-            resourceInputs["configMapMountDescV2s"] = args ? args.configMapMountDescV2s : undefined;
-            resourceInputs["cpu"] = args ? args.cpu : undefined;
-            resourceInputs["customHostAlias"] = args ? args.customHostAlias : undefined;
-            resourceInputs["customHostAliasV2s"] = args ? args.customHostAliasV2s : undefined;
-            resourceInputs["deploy"] = args ? args.deploy : undefined;
-            resourceInputs["edasContainerVersion"] = args ? args.edasContainerVersion : undefined;
-            resourceInputs["enableAhas"] = args ? args.enableAhas : undefined;
-            resourceInputs["enableGreyTagRoute"] = args ? args.enableGreyTagRoute : undefined;
-            resourceInputs["envs"] = args ? args.envs : undefined;
-            resourceInputs["imagePullSecrets"] = args ? args.imagePullSecrets : undefined;
-            resourceInputs["imageUrl"] = args ? args.imageUrl : undefined;
-            resourceInputs["jarStartArgs"] = args ? args.jarStartArgs : undefined;
-            resourceInputs["jarStartOptions"] = args ? args.jarStartOptions : undefined;
-            resourceInputs["jdk"] = args ? args.jdk : undefined;
-            resourceInputs["kafkaConfigs"] = args ? args.kafkaConfigs : undefined;
-            resourceInputs["liveness"] = args ? args.liveness : undefined;
-            resourceInputs["livenessV2"] = args ? args.livenessV2 : undefined;
-            resourceInputs["memory"] = args ? args.memory : undefined;
-            resourceInputs["microRegistration"] = args ? args.microRegistration : undefined;
-            resourceInputs["minReadyInstanceRatio"] = args ? args.minReadyInstanceRatio : undefined;
-            resourceInputs["minReadyInstances"] = args ? args.minReadyInstances : undefined;
-            resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
-            resourceInputs["nasConfigs"] = args ? args.nasConfigs : undefined;
+            resourceInputs["acrAssumeRoleArn"] = args?.acrAssumeRoleArn;
+            resourceInputs["acrInstanceId"] = args?.acrInstanceId;
+            resourceInputs["appDescription"] = args?.appDescription;
+            resourceInputs["appName"] = args?.appName;
+            resourceInputs["autoConfig"] = args?.autoConfig;
+            resourceInputs["autoEnableApplicationScalingRule"] = args?.autoEnableApplicationScalingRule;
+            resourceInputs["batchWaitTime"] = args?.batchWaitTime;
+            resourceInputs["changeOrderDesc"] = args?.changeOrderDesc;
+            resourceInputs["command"] = args?.command;
+            resourceInputs["commandArgs"] = args?.commandArgs;
+            resourceInputs["commandArgsV2s"] = args?.commandArgsV2s;
+            resourceInputs["configMapMountDesc"] = args?.configMapMountDesc;
+            resourceInputs["configMapMountDescV2s"] = args?.configMapMountDescV2s;
+            resourceInputs["cpu"] = args?.cpu;
+            resourceInputs["customHostAlias"] = args?.customHostAlias;
+            resourceInputs["customHostAliasV2s"] = args?.customHostAliasV2s;
+            resourceInputs["deploy"] = args?.deploy;
+            resourceInputs["edasContainerVersion"] = args?.edasContainerVersion;
+            resourceInputs["enableAhas"] = args?.enableAhas;
+            resourceInputs["enableGreyTagRoute"] = args?.enableGreyTagRoute;
+            resourceInputs["envs"] = args?.envs;
+            resourceInputs["imagePullSecrets"] = args?.imagePullSecrets;
+            resourceInputs["imageUrl"] = args?.imageUrl;
+            resourceInputs["jarStartArgs"] = args?.jarStartArgs;
+            resourceInputs["jarStartOptions"] = args?.jarStartOptions;
+            resourceInputs["jdk"] = args?.jdk;
+            resourceInputs["kafkaConfigs"] = args?.kafkaConfigs;
+            resourceInputs["liveness"] = args?.liveness;
+            resourceInputs["livenessV2"] = args?.livenessV2;
+            resourceInputs["memory"] = args?.memory;
+            resourceInputs["microRegistration"] = args?.microRegistration;
+            resourceInputs["minReadyInstanceRatio"] = args?.minReadyInstanceRatio;
+            resourceInputs["minReadyInstances"] = args?.minReadyInstances;
+            resourceInputs["namespaceId"] = args?.namespaceId;
+            resourceInputs["nasConfigs"] = args?.nasConfigs;
             resourceInputs["ossAkId"] = args?.ossAkId ? pulumi.secret(args.ossAkId) : undefined;
             resourceInputs["ossAkSecret"] = args?.ossAkSecret ? pulumi.secret(args.ossAkSecret) : undefined;
-            resourceInputs["ossMountDescs"] = args ? args.ossMountDescs : undefined;
-            resourceInputs["ossMountDescsV2s"] = args ? args.ossMountDescsV2s : undefined;
-            resourceInputs["packageType"] = args ? args.packageType : undefined;
-            resourceInputs["packageUrl"] = args ? args.packageUrl : undefined;
-            resourceInputs["packageVersion"] = args ? args.packageVersion : undefined;
-            resourceInputs["php"] = args ? args.php : undefined;
-            resourceInputs["phpArmsConfigLocation"] = args ? args.phpArmsConfigLocation : undefined;
-            resourceInputs["phpConfig"] = args ? args.phpConfig : undefined;
-            resourceInputs["phpConfigLocation"] = args ? args.phpConfigLocation : undefined;
-            resourceInputs["postStart"] = args ? args.postStart : undefined;
-            resourceInputs["postStartV2"] = args ? args.postStartV2 : undefined;
-            resourceInputs["preStop"] = args ? args.preStop : undefined;
-            resourceInputs["preStopV2"] = args ? args.preStopV2 : undefined;
-            resourceInputs["programmingLanguage"] = args ? args.programmingLanguage : undefined;
-            resourceInputs["pvtzDiscoverySvc"] = args ? args.pvtzDiscoverySvc : undefined;
-            resourceInputs["readiness"] = args ? args.readiness : undefined;
-            resourceInputs["readinessV2"] = args ? args.readinessV2 : undefined;
-            resourceInputs["replicas"] = args ? args.replicas : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            resourceInputs["slsConfigs"] = args ? args.slsConfigs : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["terminationGracePeriodSeconds"] = args ? args.terminationGracePeriodSeconds : undefined;
-            resourceInputs["timezone"] = args ? args.timezone : undefined;
-            resourceInputs["tomcatConfig"] = args ? args.tomcatConfig : undefined;
-            resourceInputs["tomcatConfigV2"] = args ? args.tomcatConfigV2 : undefined;
-            resourceInputs["updateStrategy"] = args ? args.updateStrategy : undefined;
-            resourceInputs["updateStrategyV2"] = args ? args.updateStrategyV2 : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
-            resourceInputs["warStartOptions"] = args ? args.warStartOptions : undefined;
-            resourceInputs["webContainer"] = args ? args.webContainer : undefined;
+            resourceInputs["ossMountDescs"] = args?.ossMountDescs;
+            resourceInputs["ossMountDescsV2s"] = args?.ossMountDescsV2s;
+            resourceInputs["packageType"] = args?.packageType;
+            resourceInputs["packageUrl"] = args?.packageUrl;
+            resourceInputs["packageVersion"] = args?.packageVersion;
+            resourceInputs["php"] = args?.php;
+            resourceInputs["phpArmsConfigLocation"] = args?.phpArmsConfigLocation;
+            resourceInputs["phpConfig"] = args?.phpConfig;
+            resourceInputs["phpConfigLocation"] = args?.phpConfigLocation;
+            resourceInputs["postStart"] = args?.postStart;
+            resourceInputs["postStartV2"] = args?.postStartV2;
+            resourceInputs["preStop"] = args?.preStop;
+            resourceInputs["preStopV2"] = args?.preStopV2;
+            resourceInputs["programmingLanguage"] = args?.programmingLanguage;
+            resourceInputs["pvtzDiscoverySvc"] = args?.pvtzDiscoverySvc;
+            resourceInputs["readiness"] = args?.readiness;
+            resourceInputs["readinessV2"] = args?.readinessV2;
+            resourceInputs["replicas"] = args?.replicas;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["slsConfigs"] = args?.slsConfigs;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["terminationGracePeriodSeconds"] = args?.terminationGracePeriodSeconds;
+            resourceInputs["timezone"] = args?.timezone;
+            resourceInputs["tomcatConfig"] = args?.tomcatConfig;
+            resourceInputs["tomcatConfigV2"] = args?.tomcatConfigV2;
+            resourceInputs["updateStrategy"] = args?.updateStrategy;
+            resourceInputs["updateStrategyV2"] = args?.updateStrategyV2;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
+            resourceInputs["warStartOptions"] = args?.warStartOptions;
+            resourceInputs["webContainer"] = args?.webContainer;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["ossAkId", "ossAkSecret"] };

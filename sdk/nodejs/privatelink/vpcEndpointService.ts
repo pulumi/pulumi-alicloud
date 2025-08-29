@@ -67,73 +67,73 @@ export class VpcEndpointService extends pulumi.CustomResource {
     /**
      * The IP address version.
      */
-    public readonly addressIpVersion!: pulumi.Output<string>;
+    declare public readonly addressIpVersion: pulumi.Output<string>;
     /**
      * Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
      */
-    public readonly autoAcceptConnection!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoAcceptConnection: pulumi.Output<boolean | undefined>;
     /**
      * The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
      */
-    public readonly connectBandwidth!: pulumi.Output<number>;
+    declare public readonly connectBandwidth: pulumi.Output<number>;
     /**
      * The time when the endpoint service was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Specifies whether to perform only a dry run, without performing the actual request.
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * The payer of the endpoint service. Valid values:
      * - `Endpoint`: the service consumer.
      * - `EndpointService`: the service provider.
      */
-    public readonly payer!: pulumi.Output<string>;
+    declare public readonly payer: pulumi.Output<string>;
     /**
      * (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The resource group ID.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The service state of the endpoint service.
      */
-    public /*out*/ readonly serviceBusinessStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly serviceBusinessStatus: pulumi.Output<string>;
     /**
      * The description of the endpoint service.
      */
-    public readonly serviceDescription!: pulumi.Output<string | undefined>;
+    declare public readonly serviceDescription: pulumi.Output<string | undefined>;
     /**
      * The domain name of the endpoint service.
      */
-    public /*out*/ readonly serviceDomain!: pulumi.Output<string>;
+    declare public /*out*/ readonly serviceDomain: pulumi.Output<string>;
     /**
      * Service resource type, value:
      */
-    public readonly serviceResourceType!: pulumi.Output<string>;
+    declare public readonly serviceResourceType: pulumi.Output<string>;
     /**
      * Specifies whether to enable IPv6 for the endpoint service. Valid values:
      */
-    public readonly serviceSupportIpv6!: pulumi.Output<boolean>;
+    declare public readonly serviceSupportIpv6: pulumi.Output<boolean>;
     /**
      * The state of the endpoint service.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The list of tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the endpoint service.
      */
-    public /*out*/ readonly vpcEndpointServiceName!: pulumi.Output<string>;
+    declare public /*out*/ readonly vpcEndpointServiceName: pulumi.Output<string>;
     /**
      * Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
      */
-    public readonly zoneAffinityEnabled!: pulumi.Output<boolean>;
+    declare public readonly zoneAffinityEnabled: pulumi.Output<boolean>;
 
     /**
      * Create a VpcEndpointService resource with the given unique name, arguments, and options.
@@ -148,36 +148,36 @@ export class VpcEndpointService extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpcEndpointServiceState | undefined;
-            resourceInputs["addressIpVersion"] = state ? state.addressIpVersion : undefined;
-            resourceInputs["autoAcceptConnection"] = state ? state.autoAcceptConnection : undefined;
-            resourceInputs["connectBandwidth"] = state ? state.connectBandwidth : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["payer"] = state ? state.payer : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["serviceBusinessStatus"] = state ? state.serviceBusinessStatus : undefined;
-            resourceInputs["serviceDescription"] = state ? state.serviceDescription : undefined;
-            resourceInputs["serviceDomain"] = state ? state.serviceDomain : undefined;
-            resourceInputs["serviceResourceType"] = state ? state.serviceResourceType : undefined;
-            resourceInputs["serviceSupportIpv6"] = state ? state.serviceSupportIpv6 : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vpcEndpointServiceName"] = state ? state.vpcEndpointServiceName : undefined;
-            resourceInputs["zoneAffinityEnabled"] = state ? state.zoneAffinityEnabled : undefined;
+            resourceInputs["addressIpVersion"] = state?.addressIpVersion;
+            resourceInputs["autoAcceptConnection"] = state?.autoAcceptConnection;
+            resourceInputs["connectBandwidth"] = state?.connectBandwidth;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["payer"] = state?.payer;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["serviceBusinessStatus"] = state?.serviceBusinessStatus;
+            resourceInputs["serviceDescription"] = state?.serviceDescription;
+            resourceInputs["serviceDomain"] = state?.serviceDomain;
+            resourceInputs["serviceResourceType"] = state?.serviceResourceType;
+            resourceInputs["serviceSupportIpv6"] = state?.serviceSupportIpv6;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vpcEndpointServiceName"] = state?.vpcEndpointServiceName;
+            resourceInputs["zoneAffinityEnabled"] = state?.zoneAffinityEnabled;
         } else {
             const args = argsOrState as VpcEndpointServiceArgs | undefined;
-            resourceInputs["addressIpVersion"] = args ? args.addressIpVersion : undefined;
-            resourceInputs["autoAcceptConnection"] = args ? args.autoAcceptConnection : undefined;
-            resourceInputs["connectBandwidth"] = args ? args.connectBandwidth : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["payer"] = args ? args.payer : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["serviceDescription"] = args ? args.serviceDescription : undefined;
-            resourceInputs["serviceResourceType"] = args ? args.serviceResourceType : undefined;
-            resourceInputs["serviceSupportIpv6"] = args ? args.serviceSupportIpv6 : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["zoneAffinityEnabled"] = args ? args.zoneAffinityEnabled : undefined;
+            resourceInputs["addressIpVersion"] = args?.addressIpVersion;
+            resourceInputs["autoAcceptConnection"] = args?.autoAcceptConnection;
+            resourceInputs["connectBandwidth"] = args?.connectBandwidth;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["payer"] = args?.payer;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["serviceDescription"] = args?.serviceDescription;
+            resourceInputs["serviceResourceType"] = args?.serviceResourceType;
+            resourceInputs["serviceSupportIpv6"] = args?.serviceSupportIpv6;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["zoneAffinityEnabled"] = args?.zoneAffinityEnabled;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["serviceBusinessStatus"] = undefined /*out*/;

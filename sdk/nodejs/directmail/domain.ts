@@ -66,11 +66,11 @@ export class Domain extends pulumi.CustomResource {
     /**
      * Domain, length `1` to `50`, including numbers or capitals or lowercase letters or `.` or `-`
      */
-    public readonly domainName!: pulumi.Output<string>;
+    declare public readonly domainName: pulumi.Output<string>;
     /**
      * The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a Domain resource with the given unique name, arguments, and options.
@@ -85,14 +85,14 @@ export class Domain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainState | undefined;
-            resourceInputs["domainName"] = state ? state.domainName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["domainName"] = state?.domainName;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as DomainArgs | undefined;
-            if ((!args || args.domainName === undefined) && !opts.urn) {
+            if (args?.domainName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
-            resourceInputs["domainName"] = args ? args.domainName : undefined;
+            resourceInputs["domainName"] = args?.domainName;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -100,35 +100,35 @@ export class HostAccount extends pulumi.CustomResource {
     /**
      * Hosting account ID.
      */
-    public /*out*/ readonly hostAccountId!: pulumi.Output<string>;
+    declare public /*out*/ readonly hostAccountId: pulumi.Output<string>;
     /**
      * The name of the host account. The name can be up to 128 characters in length.
      */
-    public readonly hostAccountName!: pulumi.Output<string>;
+    declare public readonly hostAccountName: pulumi.Output<string>;
     /**
      * The ID of the host for which you want to create an account.
      */
-    public readonly hostId!: pulumi.Output<string>;
+    declare public readonly hostId: pulumi.Output<string>;
     /**
      * The ID of the Bastionhost instance where you want to create an account for the host.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The passphrase of the private key for the host account. **NOTE:** It is valid when the attribute `protocolName` is `SSH`.
      */
-    public readonly passPhrase!: pulumi.Output<string | undefined>;
+    declare public readonly passPhrase: pulumi.Output<string | undefined>;
     /**
      * The password of the host account.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `protocolName` is `SSH`
      */
-    public readonly privateKey!: pulumi.Output<string | undefined>;
+    declare public readonly privateKey: pulumi.Output<string | undefined>;
     /**
      * The protocol used by the host account. Valid values: SSH,RDP
      */
-    public readonly protocolName!: pulumi.Output<string>;
+    declare public readonly protocolName: pulumi.Output<string>;
 
     /**
      * Create a HostAccount resource with the given unique name, arguments, and options.
@@ -143,35 +143,35 @@ export class HostAccount extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HostAccountState | undefined;
-            resourceInputs["hostAccountId"] = state ? state.hostAccountId : undefined;
-            resourceInputs["hostAccountName"] = state ? state.hostAccountName : undefined;
-            resourceInputs["hostId"] = state ? state.hostId : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["passPhrase"] = state ? state.passPhrase : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
-            resourceInputs["protocolName"] = state ? state.protocolName : undefined;
+            resourceInputs["hostAccountId"] = state?.hostAccountId;
+            resourceInputs["hostAccountName"] = state?.hostAccountName;
+            resourceInputs["hostId"] = state?.hostId;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["passPhrase"] = state?.passPhrase;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["privateKey"] = state?.privateKey;
+            resourceInputs["protocolName"] = state?.protocolName;
         } else {
             const args = argsOrState as HostAccountArgs | undefined;
-            if ((!args || args.hostAccountName === undefined) && !opts.urn) {
+            if (args?.hostAccountName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostAccountName'");
             }
-            if ((!args || args.hostId === undefined) && !opts.urn) {
+            if (args?.hostId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostId'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.protocolName === undefined) && !opts.urn) {
+            if (args?.protocolName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protocolName'");
             }
-            resourceInputs["hostAccountName"] = args ? args.hostAccountName : undefined;
-            resourceInputs["hostId"] = args ? args.hostId : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["hostAccountName"] = args?.hostAccountName;
+            resourceInputs["hostId"] = args?.hostId;
+            resourceInputs["instanceId"] = args?.instanceId;
             resourceInputs["passPhrase"] = args?.passPhrase ? pulumi.secret(args.passPhrase) : undefined;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["privateKey"] = args?.privateKey ? pulumi.secret(args.privateKey) : undefined;
-            resourceInputs["protocolName"] = args ? args.protocolName : undefined;
+            resourceInputs["protocolName"] = args?.protocolName;
             resourceInputs["hostAccountId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

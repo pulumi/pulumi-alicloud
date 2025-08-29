@@ -83,31 +83,31 @@ export class Policy extends pulumi.CustomResource {
     /**
      * Whether to turn on local camera redirection.
      */
-    public readonly cameraRedirect!: pulumi.Output<string>;
+    declare public readonly cameraRedirect: pulumi.Output<string>;
     /**
      * Clipboard permissions.
      */
-    public readonly clipboard!: pulumi.Output<string>;
+    declare public readonly clipboard: pulumi.Output<string>;
     /**
      * Whether to lock the resolution.
      */
-    public readonly lockResolution!: pulumi.Output<string>;
+    declare public readonly lockResolution: pulumi.Output<string>;
     /**
      * Network redirection. See `netRedirectPolicy` below.
      */
-    public readonly netRedirectPolicy!: pulumi.Output<outputs.cloudphone.PolicyNetRedirectPolicy>;
+    declare public readonly netRedirectPolicy: pulumi.Output<outputs.cloudphone.PolicyNetRedirectPolicy>;
     /**
      * The policy name.
      */
-    public readonly policyGroupName!: pulumi.Output<string>;
+    declare public readonly policyGroupName: pulumi.Output<string>;
     /**
      * The height of the resolution. Unit: Pixels.
      */
-    public readonly resolutionHeight!: pulumi.Output<number>;
+    declare public readonly resolutionHeight: pulumi.Output<number>;
     /**
      * The width of the resolution. Unit: Pixels.
      */
-    public readonly resolutionWidth!: pulumi.Output<number>;
+    declare public readonly resolutionWidth: pulumi.Output<number>;
 
     /**
      * Create a Policy resource with the given unique name, arguments, and options.
@@ -122,22 +122,22 @@ export class Policy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyState | undefined;
-            resourceInputs["cameraRedirect"] = state ? state.cameraRedirect : undefined;
-            resourceInputs["clipboard"] = state ? state.clipboard : undefined;
-            resourceInputs["lockResolution"] = state ? state.lockResolution : undefined;
-            resourceInputs["netRedirectPolicy"] = state ? state.netRedirectPolicy : undefined;
-            resourceInputs["policyGroupName"] = state ? state.policyGroupName : undefined;
-            resourceInputs["resolutionHeight"] = state ? state.resolutionHeight : undefined;
-            resourceInputs["resolutionWidth"] = state ? state.resolutionWidth : undefined;
+            resourceInputs["cameraRedirect"] = state?.cameraRedirect;
+            resourceInputs["clipboard"] = state?.clipboard;
+            resourceInputs["lockResolution"] = state?.lockResolution;
+            resourceInputs["netRedirectPolicy"] = state?.netRedirectPolicy;
+            resourceInputs["policyGroupName"] = state?.policyGroupName;
+            resourceInputs["resolutionHeight"] = state?.resolutionHeight;
+            resourceInputs["resolutionWidth"] = state?.resolutionWidth;
         } else {
             const args = argsOrState as PolicyArgs | undefined;
-            resourceInputs["cameraRedirect"] = args ? args.cameraRedirect : undefined;
-            resourceInputs["clipboard"] = args ? args.clipboard : undefined;
-            resourceInputs["lockResolution"] = args ? args.lockResolution : undefined;
-            resourceInputs["netRedirectPolicy"] = args ? args.netRedirectPolicy : undefined;
-            resourceInputs["policyGroupName"] = args ? args.policyGroupName : undefined;
-            resourceInputs["resolutionHeight"] = args ? args.resolutionHeight : undefined;
-            resourceInputs["resolutionWidth"] = args ? args.resolutionWidth : undefined;
+            resourceInputs["cameraRedirect"] = args?.cameraRedirect;
+            resourceInputs["clipboard"] = args?.clipboard;
+            resourceInputs["lockResolution"] = args?.lockResolution;
+            resourceInputs["netRedirectPolicy"] = args?.netRedirectPolicy;
+            resourceInputs["policyGroupName"] = args?.policyGroupName;
+            resourceInputs["resolutionHeight"] = args?.resolutionHeight;
+            resourceInputs["resolutionWidth"] = args?.resolutionWidth;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Policy.__pulumiType, name, resourceInputs, opts);

@@ -52,23 +52,23 @@ export class Rule extends pulumi.CustomResource {
     /**
      * The ID of the Endpoint.
      */
-    public readonly endpointId!: pulumi.Output<string>;
+    declare public readonly endpointId: pulumi.Output<string>;
     /**
      * Forwarding target. See `forwardIps` below.
      */
-    public readonly forwardIps!: pulumi.Output<outputs.pvtz.RuleForwardIp[]>;
+    declare public readonly forwardIps: pulumi.Output<outputs.pvtz.RuleForwardIp[]>;
     /**
      * The name of the resource.
      */
-    public readonly ruleName!: pulumi.Output<string>;
+    declare public readonly ruleName: pulumi.Output<string>;
     /**
      * The type of the rule. Valid values: `OUTBOUND`.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
     /**
      * The name of the forwarding zone.
      */
-    public readonly zoneName!: pulumi.Output<string>;
+    declare public readonly zoneName: pulumi.Output<string>;
 
     /**
      * Create a Rule resource with the given unique name, arguments, and options.
@@ -83,30 +83,30 @@ export class Rule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RuleState | undefined;
-            resourceInputs["endpointId"] = state ? state.endpointId : undefined;
-            resourceInputs["forwardIps"] = state ? state.forwardIps : undefined;
-            resourceInputs["ruleName"] = state ? state.ruleName : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["zoneName"] = state ? state.zoneName : undefined;
+            resourceInputs["endpointId"] = state?.endpointId;
+            resourceInputs["forwardIps"] = state?.forwardIps;
+            resourceInputs["ruleName"] = state?.ruleName;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["zoneName"] = state?.zoneName;
         } else {
             const args = argsOrState as RuleArgs | undefined;
-            if ((!args || args.endpointId === undefined) && !opts.urn) {
+            if (args?.endpointId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpointId'");
             }
-            if ((!args || args.forwardIps === undefined) && !opts.urn) {
+            if (args?.forwardIps === undefined && !opts.urn) {
                 throw new Error("Missing required property 'forwardIps'");
             }
-            if ((!args || args.ruleName === undefined) && !opts.urn) {
+            if (args?.ruleName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ruleName'");
             }
-            if ((!args || args.zoneName === undefined) && !opts.urn) {
+            if (args?.zoneName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneName'");
             }
-            resourceInputs["endpointId"] = args ? args.endpointId : undefined;
-            resourceInputs["forwardIps"] = args ? args.forwardIps : undefined;
-            resourceInputs["ruleName"] = args ? args.ruleName : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["zoneName"] = args ? args.zoneName : undefined;
+            resourceInputs["endpointId"] = args?.endpointId;
+            resourceInputs["forwardIps"] = args?.forwardIps;
+            resourceInputs["ruleName"] = args?.ruleName;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["zoneName"] = args?.zoneName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Rule.__pulumiType, name, resourceInputs, opts);

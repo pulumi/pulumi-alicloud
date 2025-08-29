@@ -23,32 +23,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="pulumi:providers:alicloud")
 public class Provider extends com.pulumi.resources.ProviderResource {
     /**
-     * The access key for API operations. You can retrieve this from the &#39;Security Management&#39; section of the Alibaba Cloud
-     * console.
+     * The access key for API operations. You can retrieve this from the &#39;Security Management&#39; section of the Alibaba Cloud console.
      * 
      */
     @Export(name="accessKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessKey;
 
     /**
-     * @return The access key for API operations. You can retrieve this from the &#39;Security Management&#39; section of the Alibaba Cloud
-     * console.
+     * @return The access key for API operations. You can retrieve this from the &#39;Security Management&#39; section of the Alibaba Cloud console.
      * 
      */
     public Output<Optional<String>> accessKey() {
         return Codegen.optional(this.accessKey);
     }
     /**
-     * The account ID for some service API operations. You can retrieve this from the &#39;Security Settings&#39; section of the
-     * Alibaba Cloud console.
+     * The account ID for some service API operations. You can retrieve this from the &#39;Security Settings&#39; section of the Alibaba Cloud console.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return The account ID for some service API operations. You can retrieve this from the &#39;Security Settings&#39; section of the
-     * Alibaba Cloud console.
+     * @return The account ID for some service API operations. You can retrieve this from the &#39;Security Settings&#39; section of the Alibaba Cloud console.
      * 
      */
     public Output<Optional<String>> accountId() {
@@ -81,16 +77,14 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.credentialsUri);
     }
     /**
-     * The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the &#39;Access Control&#39; section
-     * of the Alibaba Cloud console.
+     * The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the &#39;Access Control&#39; section of the Alibaba Cloud console.
      * 
      */
     @Export(name="ecsRoleName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ecsRoleName;
 
     /**
-     * @return The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the &#39;Access Control&#39; section
-     * of the Alibaba Cloud console.
+     * @return The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the &#39;Access Control&#39; section of the Alibaba Cloud console.
      * 
      */
     public Output<Optional<String>> ecsRoleName() {
@@ -179,16 +173,14 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.region);
     }
     /**
-     * The secret key for API operations. You can retrieve this from the &#39;Security Management&#39; section of the Alibaba Cloud
-     * console.
+     * The secret key for API operations. You can retrieve this from the &#39;Security Management&#39; section of the Alibaba Cloud console.
      * 
      */
     @Export(name="secretKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secretKey;
 
     /**
-     * @return The secret key for API operations. You can retrieve this from the &#39;Security Management&#39; section of the Alibaba Cloud
-     * console.
+     * @return The secret key for API operations. You can retrieve this from the &#39;Security Management&#39; section of the Alibaba Cloud console.
      * 
      */
     public Output<Optional<String>> secretKey() {

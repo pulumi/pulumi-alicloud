@@ -87,44 +87,44 @@ export class GatewayEndpoint extends pulumi.CustomResource {
     /**
      * The creation time of the VPC gateway endpoint.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The description of the VPC gateway endpoint.
      * The length of the description information is between 1 and 255 characters.
      */
-    public readonly gatewayEndpointDescrption!: pulumi.Output<string | undefined>;
+    declare public readonly gatewayEndpointDescrption: pulumi.Output<string | undefined>;
     /**
      * The name of the VPC gateway endpoint.
      */
-    public readonly gatewayEndpointName!: pulumi.Output<string | undefined>;
+    declare public readonly gatewayEndpointName: pulumi.Output<string | undefined>;
     /**
      * Access control policies for cloud services. This parameter is required when the cloud service is oss. For details about the syntax and structure of access policies, see [syntax and structure of permission Policies](https://help.aliyun.com/document_detail/93739.html).
      */
-    public readonly policyDocument!: pulumi.Output<string | undefined>;
+    declare public readonly policyDocument: pulumi.Output<string | undefined>;
     /**
      * The ID of the resource group to which the instance belongs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The ID list of the route table associated with the VPC gateway endpoint.
      */
-    public readonly routeTables!: pulumi.Output<string[] | undefined>;
+    declare public readonly routeTables: pulumi.Output<string[] | undefined>;
     /**
      * The endpoint service name.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
     /**
      * The status of VPC gateway endpoint.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tags of the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the VPC.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
 
     /**
      * Create a GatewayEndpoint resource with the given unique name, arguments, and options.
@@ -139,32 +139,32 @@ export class GatewayEndpoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GatewayEndpointState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["gatewayEndpointDescrption"] = state ? state.gatewayEndpointDescrption : undefined;
-            resourceInputs["gatewayEndpointName"] = state ? state.gatewayEndpointName : undefined;
-            resourceInputs["policyDocument"] = state ? state.policyDocument : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["routeTables"] = state ? state.routeTables : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["gatewayEndpointDescrption"] = state?.gatewayEndpointDescrption;
+            resourceInputs["gatewayEndpointName"] = state?.gatewayEndpointName;
+            resourceInputs["policyDocument"] = state?.policyDocument;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["routeTables"] = state?.routeTables;
+            resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as GatewayEndpointArgs | undefined;
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["gatewayEndpointDescrption"] = args ? args.gatewayEndpointDescrption : undefined;
-            resourceInputs["gatewayEndpointName"] = args ? args.gatewayEndpointName : undefined;
-            resourceInputs["policyDocument"] = args ? args.policyDocument : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["routeTables"] = args ? args.routeTables : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["gatewayEndpointDescrption"] = args?.gatewayEndpointDescrption;
+            resourceInputs["gatewayEndpointName"] = args?.gatewayEndpointName;
+            resourceInputs["policyDocument"] = args?.policyDocument;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["routeTables"] = args?.routeTables;
+            resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

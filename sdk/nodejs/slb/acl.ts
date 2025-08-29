@@ -91,23 +91,23 @@ export class Acl extends pulumi.CustomResource {
      *
      * @deprecated Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.
      */
-    public readonly entryLists!: pulumi.Output<outputs.slb.AclEntryList[]>;
+    declare public readonly entryLists: pulumi.Output<outputs.slb.AclEntryList[]>;
     /**
      * The IP Version of access control list is the type of its entry (IP addresses or CIDR blocks). It values ipv4/ipv6. Our plugin provides a default ip_version: "ipv4".
      */
-    public readonly ipVersion!: pulumi.Output<string | undefined>;
+    declare public readonly ipVersion: pulumi.Output<string | undefined>;
     /**
      * Name of the access control list.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Resource group ID.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Acl resource with the given unique name, arguments, and options.
@@ -122,18 +122,18 @@ export class Acl extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclState | undefined;
-            resourceInputs["entryLists"] = state ? state.entryLists : undefined;
-            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["entryLists"] = state?.entryLists;
+            resourceInputs["ipVersion"] = state?.ipVersion;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as AclArgs | undefined;
-            resourceInputs["entryLists"] = args ? args.entryLists : undefined;
-            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["entryLists"] = args?.entryLists;
+            resourceInputs["ipVersion"] = args?.ipVersion;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Acl.__pulumiType, name, resourceInputs, opts);

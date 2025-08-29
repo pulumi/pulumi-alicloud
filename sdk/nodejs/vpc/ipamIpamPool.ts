@@ -53,72 +53,72 @@ export class IpamIpamPool extends pulumi.CustomResource {
      * The default network mask assigned by the IPAM address pool.
      * IPv4 network mask value range: **0 to 32** bits.
      */
-    public readonly allocationDefaultCidrMask!: pulumi.Output<number | undefined>;
+    declare public readonly allocationDefaultCidrMask: pulumi.Output<number | undefined>;
     /**
      * The maximum network mask assigned by the IPAM address pool.
      * IPv4 network mask value range: **0 to 32** bits.
      */
-    public readonly allocationMaxCidrMask!: pulumi.Output<number>;
+    declare public readonly allocationMaxCidrMask: pulumi.Output<number>;
     /**
      * The minimum Network mask assigned by the IPAM address pool.
      * IPv4 network mask value range: **0 to 32** bits.
      */
-    public readonly allocationMinCidrMask!: pulumi.Output<number | undefined>;
+    declare public readonly allocationMinCidrMask: pulumi.Output<number | undefined>;
     /**
      * Whether the automatic import function is enabled for the address pool.
      */
-    public readonly autoImport!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoImport: pulumi.Output<boolean | undefined>;
     /**
      * Whether to clear the default network mask of the IPAM address pool. Value:
      */
-    public readonly clearAllocationDefaultCidrMask!: pulumi.Output<boolean | undefined>;
+    declare public readonly clearAllocationDefaultCidrMask: pulumi.Output<boolean | undefined>;
     /**
      * The creation time of the resource.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The IP protocol version. Currently, only `IPv4` is supported * *.
      */
-    public readonly ipVersion!: pulumi.Output<string>;
+    declare public readonly ipVersion: pulumi.Output<string>;
     /**
      * The description of the IPAM address pool.
      * It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
      */
-    public readonly ipamPoolDescription!: pulumi.Output<string | undefined>;
+    declare public readonly ipamPoolDescription: pulumi.Output<string | undefined>;
     /**
      * The name of the resource.
      */
-    public readonly ipamPoolName!: pulumi.Output<string>;
+    declare public readonly ipamPoolName: pulumi.Output<string>;
     /**
      * Ipam scope id.
      */
-    public readonly ipamScopeId!: pulumi.Output<string>;
+    declare public readonly ipamScopeId: pulumi.Output<string>;
     /**
      * The effective region of the IPAM address pool.
      */
-    public readonly poolRegionId!: pulumi.Output<string | undefined>;
+    declare public readonly poolRegionId: pulumi.Output<string | undefined>;
     /**
      * The ID of the IPAM hosting region.
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The instance ID of the source IPAM address pool.
      *
      * > **NOTE:**  If this parameter is not entered, the created address pool is the parent address pool.
      */
-    public readonly sourceIpamPoolId!: pulumi.Output<string>;
+    declare public readonly sourceIpamPoolId: pulumi.Output<string>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tag of the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a IpamIpamPool resource with the given unique name, arguments, and options.
@@ -133,40 +133,40 @@ export class IpamIpamPool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IpamIpamPoolState | undefined;
-            resourceInputs["allocationDefaultCidrMask"] = state ? state.allocationDefaultCidrMask : undefined;
-            resourceInputs["allocationMaxCidrMask"] = state ? state.allocationMaxCidrMask : undefined;
-            resourceInputs["allocationMinCidrMask"] = state ? state.allocationMinCidrMask : undefined;
-            resourceInputs["autoImport"] = state ? state.autoImport : undefined;
-            resourceInputs["clearAllocationDefaultCidrMask"] = state ? state.clearAllocationDefaultCidrMask : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
-            resourceInputs["ipamPoolDescription"] = state ? state.ipamPoolDescription : undefined;
-            resourceInputs["ipamPoolName"] = state ? state.ipamPoolName : undefined;
-            resourceInputs["ipamScopeId"] = state ? state.ipamScopeId : undefined;
-            resourceInputs["poolRegionId"] = state ? state.poolRegionId : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["sourceIpamPoolId"] = state ? state.sourceIpamPoolId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["allocationDefaultCidrMask"] = state?.allocationDefaultCidrMask;
+            resourceInputs["allocationMaxCidrMask"] = state?.allocationMaxCidrMask;
+            resourceInputs["allocationMinCidrMask"] = state?.allocationMinCidrMask;
+            resourceInputs["autoImport"] = state?.autoImport;
+            resourceInputs["clearAllocationDefaultCidrMask"] = state?.clearAllocationDefaultCidrMask;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["ipVersion"] = state?.ipVersion;
+            resourceInputs["ipamPoolDescription"] = state?.ipamPoolDescription;
+            resourceInputs["ipamPoolName"] = state?.ipamPoolName;
+            resourceInputs["ipamScopeId"] = state?.ipamScopeId;
+            resourceInputs["poolRegionId"] = state?.poolRegionId;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["sourceIpamPoolId"] = state?.sourceIpamPoolId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as IpamIpamPoolArgs | undefined;
-            if ((!args || args.ipamScopeId === undefined) && !opts.urn) {
+            if (args?.ipamScopeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ipamScopeId'");
             }
-            resourceInputs["allocationDefaultCidrMask"] = args ? args.allocationDefaultCidrMask : undefined;
-            resourceInputs["allocationMaxCidrMask"] = args ? args.allocationMaxCidrMask : undefined;
-            resourceInputs["allocationMinCidrMask"] = args ? args.allocationMinCidrMask : undefined;
-            resourceInputs["autoImport"] = args ? args.autoImport : undefined;
-            resourceInputs["clearAllocationDefaultCidrMask"] = args ? args.clearAllocationDefaultCidrMask : undefined;
-            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
-            resourceInputs["ipamPoolDescription"] = args ? args.ipamPoolDescription : undefined;
-            resourceInputs["ipamPoolName"] = args ? args.ipamPoolName : undefined;
-            resourceInputs["ipamScopeId"] = args ? args.ipamScopeId : undefined;
-            resourceInputs["poolRegionId"] = args ? args.poolRegionId : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["sourceIpamPoolId"] = args ? args.sourceIpamPoolId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["allocationDefaultCidrMask"] = args?.allocationDefaultCidrMask;
+            resourceInputs["allocationMaxCidrMask"] = args?.allocationMaxCidrMask;
+            resourceInputs["allocationMinCidrMask"] = args?.allocationMinCidrMask;
+            resourceInputs["autoImport"] = args?.autoImport;
+            resourceInputs["clearAllocationDefaultCidrMask"] = args?.clearAllocationDefaultCidrMask;
+            resourceInputs["ipVersion"] = args?.ipVersion;
+            resourceInputs["ipamPoolDescription"] = args?.ipamPoolDescription;
+            resourceInputs["ipamPoolName"] = args?.ipamPoolName;
+            resourceInputs["ipamScopeId"] = args?.ipamScopeId;
+            resourceInputs["poolRegionId"] = args?.poolRegionId;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["sourceIpamPoolId"] = args?.sourceIpamPoolId;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

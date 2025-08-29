@@ -44,31 +44,31 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Specify whether big screen is supported. Valid values: ["0", "1"]. "0" for false and "1" for true.
      */
-    public readonly bigScreen!: pulumi.Output<string>;
+    declare public readonly bigScreen: pulumi.Output<string>;
     /**
      * Specify the number of exclusive WAF IP addresses.
      */
-    public readonly exclusiveIpPackage!: pulumi.Output<string>;
+    declare public readonly exclusiveIpPackage: pulumi.Output<string>;
     /**
      * The extra bandwidth. Unit: Mbit/s.
      */
-    public readonly extBandwidth!: pulumi.Output<string>;
+    declare public readonly extBandwidth: pulumi.Output<string>;
     /**
      * The number of extra domains.
      */
-    public readonly extDomainPackage!: pulumi.Output<string>;
+    declare public readonly extDomainPackage: pulumi.Output<string>;
     /**
      * Log storage size. Unit: T. Valid values: [3, 5, 10, 20, 50].
      */
-    public readonly logStorage!: pulumi.Output<string>;
+    declare public readonly logStorage: pulumi.Output<string>;
     /**
      * Log storage period. Unit: day. Valid values: [180, 360].
      */
-    public readonly logTime!: pulumi.Output<string>;
+    declare public readonly logTime: pulumi.Output<string>;
     /**
      * Type of configuration change. Valid value: Upgrade.
      */
-    public readonly modifyType!: pulumi.Output<string | undefined>;
+    declare public readonly modifyType: pulumi.Output<string | undefined>;
     /**
      * Subscription plan:
      * * China site customers can purchase the following versions of China Mainland region, valid values: ["version3", "version4", "version5"].
@@ -76,45 +76,45 @@ export class Instance extends pulumi.CustomResource {
      * * International site customers can purchase the following versions of China Mainland region: ["versionProChina", "versionBusinessChina", "versionEnterpriseChina"]
      * * International site customers can purchase the following versions of International region: ["versionPro", "versionBusiness", "versionEnterprise"].
      */
-    public readonly packageCode!: pulumi.Output<string>;
+    declare public readonly packageCode: pulumi.Output<string>;
     /**
      * Service time of Web Application Firewall.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * Specify whether professional service is supported. Valid values: ["true", "false"]
      */
-    public readonly prefessionalService!: pulumi.Output<string>;
+    declare public readonly prefessionalService: pulumi.Output<string>;
     /**
      * The instance region ID.
      */
-    public readonly region!: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string | undefined>;
     /**
      * Renewal period of WAF service. Unit: month
      */
-    public readonly renewPeriod!: pulumi.Output<number | undefined>;
+    declare public readonly renewPeriod: pulumi.Output<number | undefined>;
     /**
      * Renewal status of WAF service. Valid values: 
      * * AutoRenewal: The service time of WAF is renewed automatically.
      * * ManualRenewal (default): The service time of WAF is renewed manually.Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
      */
-    public readonly renewalStatus!: pulumi.Output<string | undefined>;
+    declare public readonly renewalStatus: pulumi.Output<string | undefined>;
     /**
      * The resource group ID.
      */
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly resourceGroupId: pulumi.Output<string | undefined>;
     /**
      * The status of the instance.
      */
-    public /*out*/ readonly status!: pulumi.Output<number>;
+    declare public /*out*/ readonly status: pulumi.Output<number>;
     /**
      * Subscription of WAF service. Valid values: ["Subscription", "PayAsYouGo"].
      */
-    public readonly subscriptionType!: pulumi.Output<string>;
+    declare public readonly subscriptionType: pulumi.Output<string>;
     /**
      * Specify whether Log service is supported. Valid values: ["true", "false"]
      */
-    public readonly wafLog!: pulumi.Output<string>;
+    declare public readonly wafLog: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -129,71 +129,71 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["bigScreen"] = state ? state.bigScreen : undefined;
-            resourceInputs["exclusiveIpPackage"] = state ? state.exclusiveIpPackage : undefined;
-            resourceInputs["extBandwidth"] = state ? state.extBandwidth : undefined;
-            resourceInputs["extDomainPackage"] = state ? state.extDomainPackage : undefined;
-            resourceInputs["logStorage"] = state ? state.logStorage : undefined;
-            resourceInputs["logTime"] = state ? state.logTime : undefined;
-            resourceInputs["modifyType"] = state ? state.modifyType : undefined;
-            resourceInputs["packageCode"] = state ? state.packageCode : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["prefessionalService"] = state ? state.prefessionalService : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["renewPeriod"] = state ? state.renewPeriod : undefined;
-            resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["subscriptionType"] = state ? state.subscriptionType : undefined;
-            resourceInputs["wafLog"] = state ? state.wafLog : undefined;
+            resourceInputs["bigScreen"] = state?.bigScreen;
+            resourceInputs["exclusiveIpPackage"] = state?.exclusiveIpPackage;
+            resourceInputs["extBandwidth"] = state?.extBandwidth;
+            resourceInputs["extDomainPackage"] = state?.extDomainPackage;
+            resourceInputs["logStorage"] = state?.logStorage;
+            resourceInputs["logTime"] = state?.logTime;
+            resourceInputs["modifyType"] = state?.modifyType;
+            resourceInputs["packageCode"] = state?.packageCode;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["prefessionalService"] = state?.prefessionalService;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["renewPeriod"] = state?.renewPeriod;
+            resourceInputs["renewalStatus"] = state?.renewalStatus;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["subscriptionType"] = state?.subscriptionType;
+            resourceInputs["wafLog"] = state?.wafLog;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.bigScreen === undefined) && !opts.urn) {
+            if (args?.bigScreen === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bigScreen'");
             }
-            if ((!args || args.exclusiveIpPackage === undefined) && !opts.urn) {
+            if (args?.exclusiveIpPackage === undefined && !opts.urn) {
                 throw new Error("Missing required property 'exclusiveIpPackage'");
             }
-            if ((!args || args.extBandwidth === undefined) && !opts.urn) {
+            if (args?.extBandwidth === undefined && !opts.urn) {
                 throw new Error("Missing required property 'extBandwidth'");
             }
-            if ((!args || args.extDomainPackage === undefined) && !opts.urn) {
+            if (args?.extDomainPackage === undefined && !opts.urn) {
                 throw new Error("Missing required property 'extDomainPackage'");
             }
-            if ((!args || args.logStorage === undefined) && !opts.urn) {
+            if (args?.logStorage === undefined && !opts.urn) {
                 throw new Error("Missing required property 'logStorage'");
             }
-            if ((!args || args.logTime === undefined) && !opts.urn) {
+            if (args?.logTime === undefined && !opts.urn) {
                 throw new Error("Missing required property 'logTime'");
             }
-            if ((!args || args.packageCode === undefined) && !opts.urn) {
+            if (args?.packageCode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'packageCode'");
             }
-            if ((!args || args.prefessionalService === undefined) && !opts.urn) {
+            if (args?.prefessionalService === undefined && !opts.urn) {
                 throw new Error("Missing required property 'prefessionalService'");
             }
-            if ((!args || args.subscriptionType === undefined) && !opts.urn) {
+            if (args?.subscriptionType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subscriptionType'");
             }
-            if ((!args || args.wafLog === undefined) && !opts.urn) {
+            if (args?.wafLog === undefined && !opts.urn) {
                 throw new Error("Missing required property 'wafLog'");
             }
-            resourceInputs["bigScreen"] = args ? args.bigScreen : undefined;
-            resourceInputs["exclusiveIpPackage"] = args ? args.exclusiveIpPackage : undefined;
-            resourceInputs["extBandwidth"] = args ? args.extBandwidth : undefined;
-            resourceInputs["extDomainPackage"] = args ? args.extDomainPackage : undefined;
-            resourceInputs["logStorage"] = args ? args.logStorage : undefined;
-            resourceInputs["logTime"] = args ? args.logTime : undefined;
-            resourceInputs["modifyType"] = args ? args.modifyType : undefined;
-            resourceInputs["packageCode"] = args ? args.packageCode : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["prefessionalService"] = args ? args.prefessionalService : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["renewPeriod"] = args ? args.renewPeriod : undefined;
-            resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["subscriptionType"] = args ? args.subscriptionType : undefined;
-            resourceInputs["wafLog"] = args ? args.wafLog : undefined;
+            resourceInputs["bigScreen"] = args?.bigScreen;
+            resourceInputs["exclusiveIpPackage"] = args?.exclusiveIpPackage;
+            resourceInputs["extBandwidth"] = args?.extBandwidth;
+            resourceInputs["extDomainPackage"] = args?.extDomainPackage;
+            resourceInputs["logStorage"] = args?.logStorage;
+            resourceInputs["logTime"] = args?.logTime;
+            resourceInputs["modifyType"] = args?.modifyType;
+            resourceInputs["packageCode"] = args?.packageCode;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["prefessionalService"] = args?.prefessionalService;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["renewPeriod"] = args?.renewPeriod;
+            resourceInputs["renewalStatus"] = args?.renewalStatus;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["subscriptionType"] = args?.subscriptionType;
+            resourceInputs["wafLog"] = args?.wafLog;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

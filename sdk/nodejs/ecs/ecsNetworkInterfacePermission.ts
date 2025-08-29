@@ -50,23 +50,23 @@ export class EcsNetworkInterfacePermission extends pulumi.CustomResource {
     /**
      * Alibaba Cloud Partner (Certified ISV) account ID or individual user ID.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Whether to force deletion of Network Interface Permission. Default value: `true`.
      */
-    public readonly force!: pulumi.Output<boolean | undefined>;
+    declare public readonly force: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the network interface.
      */
-    public readonly networkInterfaceId!: pulumi.Output<string>;
+    declare public readonly networkInterfaceId: pulumi.Output<string>;
     /**
      * The permissions of the Network Interface. Valid values: `InstanceAttach`. `InstanceAttach`: Allows authorized users to mount your ENI to the other ECS instance. The ECS instance must be in the same zone as the ENI.
      */
-    public readonly permission!: pulumi.Output<string>;
+    declare public readonly permission: pulumi.Output<string>;
     /**
      * The Status of the Network Interface Permissions. Valid values: `Pending`, `Granted`, `Revoking`, `Revoked`.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a EcsNetworkInterfacePermission resource with the given unique name, arguments, and options.
@@ -81,26 +81,26 @@ export class EcsNetworkInterfacePermission extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcsNetworkInterfacePermissionState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["force"] = state ? state.force : undefined;
-            resourceInputs["networkInterfaceId"] = state ? state.networkInterfaceId : undefined;
-            resourceInputs["permission"] = state ? state.permission : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["force"] = state?.force;
+            resourceInputs["networkInterfaceId"] = state?.networkInterfaceId;
+            resourceInputs["permission"] = state?.permission;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as EcsNetworkInterfacePermissionArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.networkInterfaceId === undefined) && !opts.urn) {
+            if (args?.networkInterfaceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkInterfaceId'");
             }
-            if ((!args || args.permission === undefined) && !opts.urn) {
+            if (args?.permission === undefined && !opts.urn) {
                 throw new Error("Missing required property 'permission'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["force"] = args ? args.force : undefined;
-            resourceInputs["networkInterfaceId"] = args ? args.networkInterfaceId : undefined;
-            resourceInputs["permission"] = args ? args.permission : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["force"] = args?.force;
+            resourceInputs["networkInterfaceId"] = args?.networkInterfaceId;
+            resourceInputs["permission"] = args?.permission;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

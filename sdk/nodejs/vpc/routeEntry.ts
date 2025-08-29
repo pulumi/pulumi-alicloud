@@ -111,19 +111,19 @@ export class RouteEntry extends pulumi.CustomResource {
     /**
      * The description of the Route Entry. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The destination CIDR block of the custom route entry.
      */
-    public readonly destinationCidrblock!: pulumi.Output<string | undefined>;
+    declare public readonly destinationCidrblock: pulumi.Output<string | undefined>;
     /**
      * The name of the Route Entry. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of Next Hop.
      */
-    public readonly nexthopId!: pulumi.Output<string | undefined>;
+    declare public readonly nexthopId: pulumi.Output<string | undefined>;
     /**
      * The type of Next Hop. Valid values:
      * - `Instance`: An Elastic Compute Service (ECS) instance.
@@ -139,17 +139,17 @@ export class RouteEntry extends pulumi.CustomResource {
      * - `GatewayEndpoint`: A gateway endpoint.
      * - `Ecr`: A Express Connect Router (ECR).
      */
-    public readonly nexthopType!: pulumi.Output<string | undefined>;
+    declare public readonly nexthopType: pulumi.Output<string | undefined>;
     /**
      * The ID of the Route Table.
      */
-    public readonly routeTableId!: pulumi.Output<string>;
+    declare public readonly routeTableId: pulumi.Output<string>;
     /**
      * This argument has been deprecated. Please use other arguments to launch a custom route entry.
      *
      * @deprecated Attribute routerId has been deprecated and suggest removing it from your template.
      */
-    public /*out*/ readonly routerId!: pulumi.Output<string>;
+    declare public /*out*/ readonly routerId: pulumi.Output<string>;
 
     /**
      * Create a RouteEntry resource with the given unique name, arguments, and options.
@@ -164,24 +164,24 @@ export class RouteEntry extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouteEntryState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["destinationCidrblock"] = state ? state.destinationCidrblock : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nexthopId"] = state ? state.nexthopId : undefined;
-            resourceInputs["nexthopType"] = state ? state.nexthopType : undefined;
-            resourceInputs["routeTableId"] = state ? state.routeTableId : undefined;
-            resourceInputs["routerId"] = state ? state.routerId : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["destinationCidrblock"] = state?.destinationCidrblock;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nexthopId"] = state?.nexthopId;
+            resourceInputs["nexthopType"] = state?.nexthopType;
+            resourceInputs["routeTableId"] = state?.routeTableId;
+            resourceInputs["routerId"] = state?.routerId;
         } else {
             const args = argsOrState as RouteEntryArgs | undefined;
-            if ((!args || args.routeTableId === undefined) && !opts.urn) {
+            if (args?.routeTableId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'routeTableId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["destinationCidrblock"] = args ? args.destinationCidrblock : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nexthopId"] = args ? args.nexthopId : undefined;
-            resourceInputs["nexthopType"] = args ? args.nexthopType : undefined;
-            resourceInputs["routeTableId"] = args ? args.routeTableId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["destinationCidrblock"] = args?.destinationCidrblock;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nexthopId"] = args?.nexthopId;
+            resourceInputs["nexthopType"] = args?.nexthopType;
+            resourceInputs["routeTableId"] = args?.routeTableId;
             resourceInputs["routerId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

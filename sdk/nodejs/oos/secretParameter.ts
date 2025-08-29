@@ -82,43 +82,43 @@ export class SecretParameter extends pulumi.CustomResource {
      * * `MinLength`: The minimum length of the encryption parameter.
      * * `MaxLength`: The maximum length of the encryption parameter.
      */
-    public readonly constraints!: pulumi.Output<string | undefined>;
+    declare public readonly constraints: pulumi.Output<string | undefined>;
     /**
      * Parameter creation time
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The description of the encryption parameter. The description must be `1` to `200` characters in length.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The ID of the KMS instance.
      */
-    public readonly dkmsInstanceId!: pulumi.Output<string | undefined>;
+    declare public readonly dkmsInstanceId: pulumi.Output<string | undefined>;
     /**
      * The Customer Master Key (CMK) of Key Management Service (KMS) that is used to encrypt the parameter.
      */
-    public readonly keyId!: pulumi.Output<string | undefined>;
+    declare public readonly keyId: pulumi.Output<string | undefined>;
     /**
      * The ID of the Resource Group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The name of the encryption parameter.  The name must be `2` to `180` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/) and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, `ALICLOUD`, or `OOS`.
      */
-    public readonly secretParameterName!: pulumi.Output<string>;
+    declare public readonly secretParameterName: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     /**
      * The data type of the encryption parameter. Valid values: `Secret`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The value of the encryption parameter. The value must be `1` to `4096` characters in length.
      */
-    public readonly value!: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string>;
 
     /**
      * Create a SecretParameter resource with the given unique name, arguments, and options.
@@ -133,32 +133,32 @@ export class SecretParameter extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretParameterState | undefined;
-            resourceInputs["constraints"] = state ? state.constraints : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dkmsInstanceId"] = state ? state.dkmsInstanceId : undefined;
-            resourceInputs["keyId"] = state ? state.keyId : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["secretParameterName"] = state ? state.secretParameterName : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["constraints"] = state?.constraints;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dkmsInstanceId"] = state?.dkmsInstanceId;
+            resourceInputs["keyId"] = state?.keyId;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["secretParameterName"] = state?.secretParameterName;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as SecretParameterArgs | undefined;
-            if ((!args || args.secretParameterName === undefined) && !opts.urn) {
+            if (args?.secretParameterName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'secretParameterName'");
             }
-            if ((!args || args.value === undefined) && !opts.urn) {
+            if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            resourceInputs["constraints"] = args ? args.constraints : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dkmsInstanceId"] = args ? args.dkmsInstanceId : undefined;
-            resourceInputs["keyId"] = args ? args.keyId : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["secretParameterName"] = args ? args.secretParameterName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["constraints"] = args?.constraints;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dkmsInstanceId"] = args?.dkmsInstanceId;
+            resourceInputs["keyId"] = args?.keyId;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["secretParameterName"] = args?.secretParameterName;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["type"] = args?.type;
             resourceInputs["value"] = args?.value ? pulumi.secret(args.value) : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
         }

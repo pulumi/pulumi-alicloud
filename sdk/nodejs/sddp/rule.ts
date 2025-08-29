@@ -81,63 +81,63 @@ export class Rule extends pulumi.CustomResource {
     /**
      * The content type of the sensitive data detection rule. Valid values:
      */
-    public readonly category!: pulumi.Output<number>;
+    declare public readonly category: pulumi.Output<number>;
     /**
      * The content of the sensitive data detection rule. **NOTE:** From version 1.222.0, `content` can be modified.
      */
-    public readonly content!: pulumi.Output<string>;
+    declare public readonly content: pulumi.Output<string>;
     /**
      * The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `contentCategory` cannot be modified.
      */
-    public readonly contentCategory!: pulumi.Output<string>;
+    declare public readonly contentCategory: pulumi.Output<string>;
     /**
      * The type of the sensitive data detection rule. **NOTE:** From version 1.222.0, `customType` cannot be specified when create Rule.
      */
-    public /*out*/ readonly customType!: pulumi.Output<number>;
+    declare public /*out*/ readonly customType: pulumi.Output<number>;
     /**
      * The description of the rule. **NOTE:** From version 1.222.0, `description` cannot be modified.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The language of the content within the request and response. Default value: `zh`. Valid values:
      */
-    public readonly lang!: pulumi.Output<string | undefined>;
+    declare public readonly lang: pulumi.Output<string | undefined>;
     /**
      * The name of the service to which data in the column of the table belongs. Valid values: `OSS`, `RDS`, `ODPS`(MaxCompute).
      */
-    public readonly productCode!: pulumi.Output<string | undefined>;
+    declare public readonly productCode: pulumi.Output<string | undefined>;
     /**
      * The ID of the service to which the data asset belongs. Valid values:
      */
-    public readonly productId!: pulumi.Output<string | undefined>;
+    declare public readonly productId: pulumi.Output<string | undefined>;
     /**
      * The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
      */
-    public readonly riskLevelId!: pulumi.Output<string | undefined>;
+    declare public readonly riskLevelId: pulumi.Output<string | undefined>;
     /**
      * The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `ruleName` can be modified.
      */
-    public readonly ruleName!: pulumi.Output<string>;
+    declare public readonly ruleName: pulumi.Output<string>;
     /**
      * The type of the sensitive data detection rule. Valid values:
      */
-    public readonly ruleType!: pulumi.Output<number | undefined>;
+    declare public readonly ruleType: pulumi.Output<number | undefined>;
     /**
      * The statistical expression. **NOTE:** From version 1.222.0, `statExpress` cannot be modified.
      */
-    public readonly statExpress!: pulumi.Output<string | undefined>;
+    declare public readonly statExpress: pulumi.Output<string | undefined>;
     /**
      * Sensitive Specifies whether to enable the sensitive data detection rule. Valid values:
      */
-    public readonly status!: pulumi.Output<number>;
+    declare public readonly status: pulumi.Output<number>;
     /**
      * The code of the service to which the sensitive data detection rule is applied. **NOTE:** From version 1.222.0, `target` cannot be modified.
      */
-    public readonly target!: pulumi.Output<string | undefined>;
+    declare public readonly target: pulumi.Output<string | undefined>;
     /**
      * The risk level of the alert that is triggered. Valid values:
      */
-    public readonly warnLevel!: pulumi.Output<number | undefined>;
+    declare public readonly warnLevel: pulumi.Output<number | undefined>;
 
     /**
      * Create a Rule resource with the given unique name, arguments, and options.
@@ -152,46 +152,46 @@ export class Rule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RuleState | undefined;
-            resourceInputs["category"] = state ? state.category : undefined;
-            resourceInputs["content"] = state ? state.content : undefined;
-            resourceInputs["contentCategory"] = state ? state.contentCategory : undefined;
-            resourceInputs["customType"] = state ? state.customType : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["lang"] = state ? state.lang : undefined;
-            resourceInputs["productCode"] = state ? state.productCode : undefined;
-            resourceInputs["productId"] = state ? state.productId : undefined;
-            resourceInputs["riskLevelId"] = state ? state.riskLevelId : undefined;
-            resourceInputs["ruleName"] = state ? state.ruleName : undefined;
-            resourceInputs["ruleType"] = state ? state.ruleType : undefined;
-            resourceInputs["statExpress"] = state ? state.statExpress : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["target"] = state ? state.target : undefined;
-            resourceInputs["warnLevel"] = state ? state.warnLevel : undefined;
+            resourceInputs["category"] = state?.category;
+            resourceInputs["content"] = state?.content;
+            resourceInputs["contentCategory"] = state?.contentCategory;
+            resourceInputs["customType"] = state?.customType;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["lang"] = state?.lang;
+            resourceInputs["productCode"] = state?.productCode;
+            resourceInputs["productId"] = state?.productId;
+            resourceInputs["riskLevelId"] = state?.riskLevelId;
+            resourceInputs["ruleName"] = state?.ruleName;
+            resourceInputs["ruleType"] = state?.ruleType;
+            resourceInputs["statExpress"] = state?.statExpress;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["target"] = state?.target;
+            resourceInputs["warnLevel"] = state?.warnLevel;
         } else {
             const args = argsOrState as RuleArgs | undefined;
-            if ((!args || args.category === undefined) && !opts.urn) {
+            if (args?.category === undefined && !opts.urn) {
                 throw new Error("Missing required property 'category'");
             }
-            if ((!args || args.content === undefined) && !opts.urn) {
+            if (args?.content === undefined && !opts.urn) {
                 throw new Error("Missing required property 'content'");
             }
-            if ((!args || args.ruleName === undefined) && !opts.urn) {
+            if (args?.ruleName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ruleName'");
             }
-            resourceInputs["category"] = args ? args.category : undefined;
-            resourceInputs["content"] = args ? args.content : undefined;
-            resourceInputs["contentCategory"] = args ? args.contentCategory : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["lang"] = args ? args.lang : undefined;
-            resourceInputs["productCode"] = args ? args.productCode : undefined;
-            resourceInputs["productId"] = args ? args.productId : undefined;
-            resourceInputs["riskLevelId"] = args ? args.riskLevelId : undefined;
-            resourceInputs["ruleName"] = args ? args.ruleName : undefined;
-            resourceInputs["ruleType"] = args ? args.ruleType : undefined;
-            resourceInputs["statExpress"] = args ? args.statExpress : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["target"] = args ? args.target : undefined;
-            resourceInputs["warnLevel"] = args ? args.warnLevel : undefined;
+            resourceInputs["category"] = args?.category;
+            resourceInputs["content"] = args?.content;
+            resourceInputs["contentCategory"] = args?.contentCategory;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["lang"] = args?.lang;
+            resourceInputs["productCode"] = args?.productCode;
+            resourceInputs["productId"] = args?.productId;
+            resourceInputs["riskLevelId"] = args?.riskLevelId;
+            resourceInputs["ruleName"] = args?.ruleName;
+            resourceInputs["ruleType"] = args?.ruleType;
+            resourceInputs["statExpress"] = args?.statExpress;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["target"] = args?.target;
+            resourceInputs["warnLevel"] = args?.warnLevel;
             resourceInputs["customType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

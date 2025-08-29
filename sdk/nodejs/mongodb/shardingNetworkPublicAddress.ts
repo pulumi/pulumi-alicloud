@@ -108,15 +108,15 @@ export class ShardingNetworkPublicAddress extends pulumi.CustomResource {
     /**
      * The ID of the instance.
      */
-    public readonly dbInstanceId!: pulumi.Output<string>;
+    declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
      * The endpoint of the instance.
      */
-    public /*out*/ readonly networkAddresses!: pulumi.Output<outputs.mongodb.ShardingNetworkPublicAddressNetworkAddress[]>;
+    declare public /*out*/ readonly networkAddresses: pulumi.Output<outputs.mongodb.ShardingNetworkPublicAddressNetworkAddress[]>;
     /**
      * The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
      */
-    public readonly nodeId!: pulumi.Output<string>;
+    declare public readonly nodeId: pulumi.Output<string>;
 
     /**
      * Create a ShardingNetworkPublicAddress resource with the given unique name, arguments, and options.
@@ -131,19 +131,19 @@ export class ShardingNetworkPublicAddress extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ShardingNetworkPublicAddressState | undefined;
-            resourceInputs["dbInstanceId"] = state ? state.dbInstanceId : undefined;
-            resourceInputs["networkAddresses"] = state ? state.networkAddresses : undefined;
-            resourceInputs["nodeId"] = state ? state.nodeId : undefined;
+            resourceInputs["dbInstanceId"] = state?.dbInstanceId;
+            resourceInputs["networkAddresses"] = state?.networkAddresses;
+            resourceInputs["nodeId"] = state?.nodeId;
         } else {
             const args = argsOrState as ShardingNetworkPublicAddressArgs | undefined;
-            if ((!args || args.dbInstanceId === undefined) && !opts.urn) {
+            if (args?.dbInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbInstanceId'");
             }
-            if ((!args || args.nodeId === undefined) && !opts.urn) {
+            if (args?.nodeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodeId'");
             }
-            resourceInputs["dbInstanceId"] = args ? args.dbInstanceId : undefined;
-            resourceInputs["nodeId"] = args ? args.nodeId : undefined;
+            resourceInputs["dbInstanceId"] = args?.dbInstanceId;
+            resourceInputs["nodeId"] = args?.nodeId;
             resourceInputs["networkAddresses"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

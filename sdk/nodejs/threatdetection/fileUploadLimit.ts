@@ -44,7 +44,7 @@ export class FileUploadLimit extends pulumi.CustomResource {
     /**
      * File Upload Threshold.
      */
-    public readonly limit!: pulumi.Output<number>;
+    declare public readonly limit: pulumi.Output<number>;
 
     /**
      * Create a FileUploadLimit resource with the given unique name, arguments, and options.
@@ -59,13 +59,13 @@ export class FileUploadLimit extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FileUploadLimitState | undefined;
-            resourceInputs["limit"] = state ? state.limit : undefined;
+            resourceInputs["limit"] = state?.limit;
         } else {
             const args = argsOrState as FileUploadLimitArgs | undefined;
-            if ((!args || args.limit === undefined) && !opts.urn) {
+            if (args?.limit === undefined && !opts.urn) {
                 throw new Error("Missing required property 'limit'");
             }
-            resourceInputs["limit"] = args ? args.limit : undefined;
+            resourceInputs["limit"] = args?.limit;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FileUploadLimit.__pulumiType, name, resourceInputs, opts);

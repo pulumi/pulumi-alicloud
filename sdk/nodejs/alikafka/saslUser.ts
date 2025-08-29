@@ -105,27 +105,27 @@ export class SaslUser extends pulumi.CustomResource {
     /**
      * ID of the ALIKAFKA Instance that owns the groups.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * An KMS encrypts password used to a db account. You have to specify one of `password` and `kmsEncryptedPassword` fields.
      */
-    public readonly kmsEncryptedPassword!: pulumi.Output<string | undefined>;
+    declare public readonly kmsEncryptedPassword: pulumi.Output<string | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a user with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly kmsEncryptionContext: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
      */
-    public readonly username!: pulumi.Output<string>;
+    declare public readonly username: pulumi.Output<string>;
 
     /**
      * Create a SaslUser resource with the given unique name, arguments, and options.
@@ -140,26 +140,26 @@ export class SaslUser extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SaslUserState | undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
-            resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["kmsEncryptedPassword"] = state?.kmsEncryptedPassword;
+            resourceInputs["kmsEncryptionContext"] = state?.kmsEncryptionContext;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as SaslUserArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.username === undefined) && !opts.urn) {
+            if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
-            resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["kmsEncryptedPassword"] = args?.kmsEncryptedPassword;
+            resourceInputs["kmsEncryptionContext"] = args?.kmsEncryptionContext;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["username"] = args?.username;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password"] };

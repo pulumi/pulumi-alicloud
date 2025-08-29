@@ -66,23 +66,23 @@ export class Portfolio extends pulumi.CustomResource {
     /**
      * The creation time of the portfolio
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The description of the portfolio
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The ARN of the portfolio
      */
-    public /*out*/ readonly portfolioArn!: pulumi.Output<string>;
+    declare public /*out*/ readonly portfolioArn: pulumi.Output<string>;
     /**
      * The name of the portfolio
      */
-    public readonly portfolioName!: pulumi.Output<string>;
+    declare public readonly portfolioName: pulumi.Output<string>;
     /**
      * The provider name of the portfolio
      */
-    public readonly providerName!: pulumi.Output<string>;
+    declare public readonly providerName: pulumi.Output<string>;
 
     /**
      * Create a Portfolio resource with the given unique name, arguments, and options.
@@ -97,22 +97,22 @@ export class Portfolio extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PortfolioState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["portfolioArn"] = state ? state.portfolioArn : undefined;
-            resourceInputs["portfolioName"] = state ? state.portfolioName : undefined;
-            resourceInputs["providerName"] = state ? state.providerName : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["portfolioArn"] = state?.portfolioArn;
+            resourceInputs["portfolioName"] = state?.portfolioName;
+            resourceInputs["providerName"] = state?.providerName;
         } else {
             const args = argsOrState as PortfolioArgs | undefined;
-            if ((!args || args.portfolioName === undefined) && !opts.urn) {
+            if (args?.portfolioName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'portfolioName'");
             }
-            if ((!args || args.providerName === undefined) && !opts.urn) {
+            if (args?.providerName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'providerName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["portfolioName"] = args ? args.portfolioName : undefined;
-            resourceInputs["providerName"] = args ? args.providerName : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["portfolioName"] = args?.portfolioName;
+            resourceInputs["providerName"] = args?.providerName;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["portfolioArn"] = undefined /*out*/;
         }

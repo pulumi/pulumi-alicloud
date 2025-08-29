@@ -50,67 +50,67 @@ export class DedicatedBlockStorageCluster extends pulumi.CustomResource {
     /**
      * The available capacity of the dedicated block storage cluster. Unit: GiB.
      */
-    public /*out*/ readonly availableCapacity!: pulumi.Output<string>;
+    declare public /*out*/ readonly availableCapacity: pulumi.Output<string>;
     /**
      * The type of cloud disk that can be created by a dedicated block storage cluster.
      */
-    public /*out*/ readonly category!: pulumi.Output<string>;
+    declare public /*out*/ readonly category: pulumi.Output<string>;
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The first ID of the resource
      */
-    public /*out*/ readonly dedicatedBlockStorageClusterId!: pulumi.Output<string>;
+    declare public /*out*/ readonly dedicatedBlockStorageClusterId: pulumi.Output<string>;
     /**
      * The name of the resource
      */
-    public readonly dedicatedBlockStorageClusterName!: pulumi.Output<string>;
+    declare public readonly dedicatedBlockStorageClusterName: pulumi.Output<string>;
     /**
      * Capacity to be delivered in GB.
      */
-    public /*out*/ readonly deliveryCapacity!: pulumi.Output<string>;
+    declare public /*out*/ readonly deliveryCapacity: pulumi.Output<string>;
     /**
      * The description of the dedicated block storage cluster.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The expiration time of the dedicated block storage cluster, in the Unix timestamp format, in seconds.
      */
-    public /*out*/ readonly expiredTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly expiredTime: pulumi.Output<string>;
     /**
      * Cloud disk performance level, possible values:-PL0.-PL1.-PL2.-PL3.> Only valid in SupportedCategory = cloud_essd.
      */
-    public /*out*/ readonly performanceLevel!: pulumi.Output<string>;
+    declare public /*out*/ readonly performanceLevel: pulumi.Output<string>;
     /**
      * The ID of the resource group
      */
-    public /*out*/ readonly resourceGroupId!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The status of the resource
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * This parameter is not supported.
      */
-    public /*out*/ readonly supportedCategory!: pulumi.Output<string>;
+    declare public /*out*/ readonly supportedCategory: pulumi.Output<string>;
     /**
      * The total capacity of the dedicated block storage cluster. Unit: GiB.
      */
-    public readonly totalCapacity!: pulumi.Output<string>;
+    declare public readonly totalCapacity: pulumi.Output<string>;
     /**
      * The dedicated block storage cluster performance type. Possible values:-Standard: Basic type. This type of dedicated block storage cluster can create an ESSD PL0 cloud disk.-Premium: performance type. This type of dedicated block storage cluster can create an ESSD PL1 cloud disk.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The used (created disk) capacity of the current cluster, in GB
      */
-    public /*out*/ readonly usedCapacity!: pulumi.Output<string>;
+    declare public /*out*/ readonly usedCapacity: pulumi.Output<string>;
     /**
      * The zone ID  of the resource
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a DedicatedBlockStorageCluster resource with the given unique name, arguments, and options.
@@ -125,41 +125,41 @@ export class DedicatedBlockStorageCluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DedicatedBlockStorageClusterState | undefined;
-            resourceInputs["availableCapacity"] = state ? state.availableCapacity : undefined;
-            resourceInputs["category"] = state ? state.category : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dedicatedBlockStorageClusterId"] = state ? state.dedicatedBlockStorageClusterId : undefined;
-            resourceInputs["dedicatedBlockStorageClusterName"] = state ? state.dedicatedBlockStorageClusterName : undefined;
-            resourceInputs["deliveryCapacity"] = state ? state.deliveryCapacity : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["expiredTime"] = state ? state.expiredTime : undefined;
-            resourceInputs["performanceLevel"] = state ? state.performanceLevel : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["supportedCategory"] = state ? state.supportedCategory : undefined;
-            resourceInputs["totalCapacity"] = state ? state.totalCapacity : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["usedCapacity"] = state ? state.usedCapacity : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["availableCapacity"] = state?.availableCapacity;
+            resourceInputs["category"] = state?.category;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dedicatedBlockStorageClusterId"] = state?.dedicatedBlockStorageClusterId;
+            resourceInputs["dedicatedBlockStorageClusterName"] = state?.dedicatedBlockStorageClusterName;
+            resourceInputs["deliveryCapacity"] = state?.deliveryCapacity;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["expiredTime"] = state?.expiredTime;
+            resourceInputs["performanceLevel"] = state?.performanceLevel;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["supportedCategory"] = state?.supportedCategory;
+            resourceInputs["totalCapacity"] = state?.totalCapacity;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["usedCapacity"] = state?.usedCapacity;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as DedicatedBlockStorageClusterArgs | undefined;
-            if ((!args || args.dedicatedBlockStorageClusterName === undefined) && !opts.urn) {
+            if (args?.dedicatedBlockStorageClusterName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dedicatedBlockStorageClusterName'");
             }
-            if ((!args || args.totalCapacity === undefined) && !opts.urn) {
+            if (args?.totalCapacity === undefined && !opts.urn) {
                 throw new Error("Missing required property 'totalCapacity'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["dedicatedBlockStorageClusterName"] = args ? args.dedicatedBlockStorageClusterName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["totalCapacity"] = args ? args.totalCapacity : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["dedicatedBlockStorageClusterName"] = args?.dedicatedBlockStorageClusterName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["totalCapacity"] = args?.totalCapacity;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["availableCapacity"] = undefined /*out*/;
             resourceInputs["category"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;

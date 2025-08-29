@@ -97,31 +97,31 @@ export class Etl extends pulumi.CustomResource {
     /**
      * The ETL configuration. See `configuration` below.
      */
-    public readonly configuration!: pulumi.Output<outputs.sls.EtlConfiguration>;
+    declare public readonly configuration: pulumi.Output<outputs.sls.EtlConfiguration>;
     /**
      * The time when the data transformation job was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly createTime: pulumi.Output<number>;
     /**
      * Data Processing Task Description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Data processing task display name.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Unique identification of data processing task.
      */
-    public readonly jobName!: pulumi.Output<string>;
+    declare public readonly jobName: pulumi.Output<string>;
     /**
      * Project Name.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The status of the data transformation job.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a Etl resource with the given unique name, arguments, and options.
@@ -136,32 +136,32 @@ export class Etl extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EtlState | undefined;
-            resourceInputs["configuration"] = state ? state.configuration : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["jobName"] = state ? state.jobName : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["configuration"] = state?.configuration;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["jobName"] = state?.jobName;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as EtlArgs | undefined;
-            if ((!args || args.configuration === undefined) && !opts.urn) {
+            if (args?.configuration === undefined && !opts.urn) {
                 throw new Error("Missing required property 'configuration'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.jobName === undefined) && !opts.urn) {
+            if (args?.jobName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'jobName'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["configuration"] = args ? args.configuration : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["jobName"] = args ? args.jobName : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["configuration"] = args?.configuration;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["jobName"] = args?.jobName;
+            resourceInputs["project"] = args?.project;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

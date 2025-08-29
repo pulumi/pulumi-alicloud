@@ -34,8 +34,7 @@ namespace Pulumi.AliCloud
 
         private static readonly __Value<string?> _accessKey = new __Value<string?>(() => __config.Get("accessKey"));
         /// <summary>
-        /// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-        /// console.
+        /// The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
         /// </summary>
         public static string? AccessKey
         {
@@ -45,8 +44,7 @@ namespace Pulumi.AliCloud
 
         private static readonly __Value<string?> _accountId = new __Value<string?>(() => __config.Get("accountId"));
         /// <summary>
-        /// The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
-        /// Alibaba Cloud console.
+        /// The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the Alibaba Cloud console.
         /// </summary>
         public static string? AccountId
         {
@@ -114,8 +112,7 @@ namespace Pulumi.AliCloud
 
         private static readonly __Value<string?> _ecsRoleName = new __Value<string?>(() => __config.Get("ecsRoleName") ?? Utilities.GetEnv("ALICLOUD_ECS_ROLE_NAME"));
         /// <summary>
-        /// The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
-        /// of the Alibaba Cloud console.
+        /// The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section of the Alibaba Cloud console.
         /// </summary>
         public static string? EcsRoleName
         {
@@ -197,8 +194,7 @@ namespace Pulumi.AliCloud
 
         private static readonly __Value<string?> _secretKey = new __Value<string?>(() => __config.Get("secretKey"));
         /// <summary>
-        /// The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-        /// console.
+        /// The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
         /// </summary>
         public static string? SecretKey
         {
@@ -252,8 +248,7 @@ namespace Pulumi.AliCloud
 
         private static readonly __Value<bool?> _skipRegionValidation = new __Value<bool?>(() => __config.GetBoolean("skipRegionValidation"));
         /// <summary>
-        /// Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
-        /// that are not public (yet).
+        /// Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
         /// </summary>
         public static bool? SkipRegionValidation
         {

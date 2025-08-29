@@ -44,71 +44,71 @@ export class OssStockTask extends pulumi.CustomResource {
     /**
      * Voice auto freeze configuration. Example:{"type":"suggestion","value":"block,review"}. The results are frozen according to the suggestion in the speech detection results.
      */
-    public readonly audioAntispamFreezeConfig!: pulumi.Output<string | undefined>;
+    declare public readonly audioAntispamFreezeConfig: pulumi.Output<string | undefined>;
     /**
      * Audio detection auto freeze switch. Value: true: automatically freeze, false: not automatically freeze.
      */
-    public readonly audioAutoFreezeOpened!: pulumi.Output<boolean | undefined>;
+    declare public readonly audioAutoFreezeOpened: pulumi.Output<boolean | undefined>;
     /**
      * Resource property field representing the maximum size of a single audio. 1~2048MB, the default is 200MB, more than not detected.
      */
-    public readonly audioMaxSize!: pulumi.Output<number | undefined>;
+    declare public readonly audioMaxSize: pulumi.Output<number | undefined>;
     /**
      * oss stock scan task detect audio. true: scan audio, false: do not scan audio
      */
-    public readonly audioOpened!: pulumi.Output<boolean | undefined>;
+    declare public readonly audioOpened: pulumi.Output<boolean | undefined>;
     /**
      * The upper limit of voice scan in the oss stock scan task. The default value is 1000/Bucket.
      */
-    public readonly audioScanLimit!: pulumi.Output<number | undefined>;
+    declare public readonly audioScanLimit: pulumi.Output<number | undefined>;
     /**
      * The audio detection scenarios included in the oss stock scan task. Set the value to antispam.
      */
-    public readonly audioScenes!: pulumi.Output<string | undefined>;
+    declare public readonly audioScenes: pulumi.Output<string | undefined>;
     /**
      * Automatic freeze type. Value: acl: modify permissions, copy: Move files
      */
-    public readonly autoFreezeType!: pulumi.Output<string | undefined>;
+    declare public readonly autoFreezeType: pulumi.Output<string | undefined>;
     /**
      * Business scenarios used by the oss stock scan task
      */
-    public readonly bizType!: pulumi.Output<string | undefined>;
+    declare public readonly bizType: pulumi.Output<string | undefined>;
     /**
      * The bucket configuration list of the oss stock scan task. Example:[{"Bucket":"bucket01","Selected":true,"Prefixes":["img/test_"],"Type":"exclude"}]
      */
-    public readonly buckets!: pulumi.Output<string | undefined>;
+    declare public readonly buckets: pulumi.Output<string | undefined>;
     /**
      * The ID of the primary key of the notification message bound to the oss stock scan task.
      */
-    public readonly callbackId!: pulumi.Output<number | undefined>;
+    declare public readonly callbackId: pulumi.Output<number | undefined>;
     /**
      * The end time of the file upload time range indicates the scanning of files uploaded before this time point.
      */
-    public readonly endDate!: pulumi.Output<string | undefined>;
+    declare public readonly endDate: pulumi.Output<string | undefined>;
     /**
      * Picture automatically freezes the configuration of ad scenes. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the picture detection result.
      */
-    public readonly imageAdFreezeConfig!: pulumi.Output<string | undefined>;
+    declare public readonly imageAdFreezeConfig: pulumi.Output<string | undefined>;
     /**
      * Picture detection auto freeze switch. Value: true: auto freeze, false: not auto freeze.
      */
-    public readonly imageAutoFreezeOpened!: pulumi.Output<boolean | undefined>;
+    declare public readonly imageAutoFreezeOpened: pulumi.Output<boolean | undefined>;
     /**
      * Picture automatic freezing live scene configuration. Example:{"type":"suggestion","value":"block,review"}. The result will be frozen according to the suggestion in the picture detection result.
      */
-    public readonly imageLiveFreezeConfig!: pulumi.Output<string | undefined>;
+    declare public readonly imageLiveFreezeConfig: pulumi.Output<string | undefined>;
     /**
      * oss stock scan task detect images. true: scan images, false: do not scan images
      */
-    public readonly imageOpened!: pulumi.Output<boolean | undefined>;
+    declare public readonly imageOpened: pulumi.Output<boolean | undefined>;
     /**
      * Picture automatic freezing porn scene configuration. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the picture detection result.
      */
-    public readonly imagePornFreezeConfig!: pulumi.Output<string | undefined>;
+    declare public readonly imagePornFreezeConfig: pulumi.Output<string | undefined>;
     /**
      * The upper limit for scanning images in the oss stock scan task. The default value is 10000 images per Bucket.
      */
-    public readonly imageScanLimit!: pulumi.Output<number | undefined>;
+    declare public readonly imageScanLimit: pulumi.Output<number | undefined>;
     /**
      * The image moderation scenario included in the oss stock scan task.Valid values:
      * porn: pornography detection
@@ -116,55 +116,55 @@ export class OssStockTask extends pulumi.CustomResource {
      * ad: ad violation detection
      * live: undesirable scene detection
      */
-    public readonly imageScenes!: pulumi.Output<string[] | undefined>;
+    declare public readonly imageScenes: pulumi.Output<string[] | undefined>;
     /**
      * The picture automatically freezes the configuration of terrorism scenes. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the picture detection result.
      */
-    public readonly imageTerrorismFreezeConfig!: pulumi.Output<string | undefined>;
+    declare public readonly imageTerrorismFreezeConfig: pulumi.Output<string | undefined>;
     /**
      * Whether the oss stock scan task detects images with file names without suffixes. true: Detect pictures with file names without suffixes, false: Do not detect pictures with file names without suffixes
      */
-    public readonly scanImageNoFileType!: pulumi.Output<boolean | undefined>;
+    declare public readonly scanImageNoFileType: pulumi.Output<boolean | undefined>;
     /**
      * The start time of the file upload time range represents the files uploaded after scanning this time point.
      */
-    public readonly startDate!: pulumi.Output<string | undefined>;
+    declare public readonly startDate: pulumi.Output<string | undefined>;
     /**
      * The video automatically freezes the configuration of ad scenarios. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
      */
-    public readonly videoAdFreezeConfig!: pulumi.Output<string | undefined>;
+    declare public readonly videoAdFreezeConfig: pulumi.Output<string | undefined>;
     /**
      * Video detection auto freeze switch. Value: true: automatically freeze, false: not automatically freeze.
      */
-    public readonly videoAutoFreezeOpened!: pulumi.Output<boolean | undefined>;
+    declare public readonly videoAutoFreezeOpened: pulumi.Output<boolean | undefined>;
     /**
      * Resource attribute field representing the framing frequency. 1~60 seconds/frame, the default is 1 second/frame
      */
-    public readonly videoFrameInterval!: pulumi.Output<number | undefined>;
+    declare public readonly videoFrameInterval: pulumi.Output<number | undefined>;
     /**
      * Video automatic freeze live scene configuration. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
      */
-    public readonly videoLiveFreezeConfig!: pulumi.Output<string | undefined>;
+    declare public readonly videoLiveFreezeConfig: pulumi.Output<string | undefined>;
     /**
      * A resource attribute field that represents the upper limit of a single video frame cut. 5 to 20000 frames, the default is 200 frames
      */
-    public readonly videoMaxFrames!: pulumi.Output<number | undefined>;
+    declare public readonly videoMaxFrames: pulumi.Output<number | undefined>;
     /**
      * Resource property field representing the maximum size of a single video. 1~2048MB, the default is 500MB, more than not detected.
      */
-    public readonly videoMaxSize!: pulumi.Output<number | undefined>;
+    declare public readonly videoMaxSize: pulumi.Output<number | undefined>;
     /**
      * oss stock scan task detect video. true: scan video, false: do not scan video
      */
-    public readonly videoOpened!: pulumi.Output<boolean | undefined>;
+    declare public readonly videoOpened: pulumi.Output<boolean | undefined>;
     /**
      * Video automatic freezing porn scene configuration. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the video detection result.
      */
-    public readonly videoPornFreezeConfig!: pulumi.Output<string | undefined>;
+    declare public readonly videoPornFreezeConfig: pulumi.Output<string | undefined>;
     /**
      * The upper limit of video scanning in the oss stock scan task. The default value is 1000/Bucket.
      */
-    public readonly videoScanLimit!: pulumi.Output<number | undefined>;
+    declare public readonly videoScanLimit: pulumi.Output<number | undefined>;
     /**
      * The video detection scenarios included in the oss stock scan task.
      * porn: pornography detection
@@ -173,15 +173,15 @@ export class OssStockTask extends pulumi.CustomResource {
      * live: undesirable scene detection
      * antispam: Video voice antispam
      */
-    public readonly videoScenes!: pulumi.Output<string | undefined>;
+    declare public readonly videoScenes: pulumi.Output<string | undefined>;
     /**
      * The video automatically freezes the configuration of terrorism scenes. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
      */
-    public readonly videoTerrorismFreezeConfig!: pulumi.Output<string | undefined>;
+    declare public readonly videoTerrorismFreezeConfig: pulumi.Output<string | undefined>;
     /**
      * Voice auto freeze configuration in video. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
      */
-    public readonly videoVoiceAntispamFreezeConfig!: pulumi.Output<string | undefined>;
+    declare public readonly videoVoiceAntispamFreezeConfig: pulumi.Output<string | undefined>;
 
     /**
      * Create a OssStockTask resource with the given unique name, arguments, and options.
@@ -196,74 +196,74 @@ export class OssStockTask extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OssStockTaskState | undefined;
-            resourceInputs["audioAntispamFreezeConfig"] = state ? state.audioAntispamFreezeConfig : undefined;
-            resourceInputs["audioAutoFreezeOpened"] = state ? state.audioAutoFreezeOpened : undefined;
-            resourceInputs["audioMaxSize"] = state ? state.audioMaxSize : undefined;
-            resourceInputs["audioOpened"] = state ? state.audioOpened : undefined;
-            resourceInputs["audioScanLimit"] = state ? state.audioScanLimit : undefined;
-            resourceInputs["audioScenes"] = state ? state.audioScenes : undefined;
-            resourceInputs["autoFreezeType"] = state ? state.autoFreezeType : undefined;
-            resourceInputs["bizType"] = state ? state.bizType : undefined;
-            resourceInputs["buckets"] = state ? state.buckets : undefined;
-            resourceInputs["callbackId"] = state ? state.callbackId : undefined;
-            resourceInputs["endDate"] = state ? state.endDate : undefined;
-            resourceInputs["imageAdFreezeConfig"] = state ? state.imageAdFreezeConfig : undefined;
-            resourceInputs["imageAutoFreezeOpened"] = state ? state.imageAutoFreezeOpened : undefined;
-            resourceInputs["imageLiveFreezeConfig"] = state ? state.imageLiveFreezeConfig : undefined;
-            resourceInputs["imageOpened"] = state ? state.imageOpened : undefined;
-            resourceInputs["imagePornFreezeConfig"] = state ? state.imagePornFreezeConfig : undefined;
-            resourceInputs["imageScanLimit"] = state ? state.imageScanLimit : undefined;
-            resourceInputs["imageScenes"] = state ? state.imageScenes : undefined;
-            resourceInputs["imageTerrorismFreezeConfig"] = state ? state.imageTerrorismFreezeConfig : undefined;
-            resourceInputs["scanImageNoFileType"] = state ? state.scanImageNoFileType : undefined;
-            resourceInputs["startDate"] = state ? state.startDate : undefined;
-            resourceInputs["videoAdFreezeConfig"] = state ? state.videoAdFreezeConfig : undefined;
-            resourceInputs["videoAutoFreezeOpened"] = state ? state.videoAutoFreezeOpened : undefined;
-            resourceInputs["videoFrameInterval"] = state ? state.videoFrameInterval : undefined;
-            resourceInputs["videoLiveFreezeConfig"] = state ? state.videoLiveFreezeConfig : undefined;
-            resourceInputs["videoMaxFrames"] = state ? state.videoMaxFrames : undefined;
-            resourceInputs["videoMaxSize"] = state ? state.videoMaxSize : undefined;
-            resourceInputs["videoOpened"] = state ? state.videoOpened : undefined;
-            resourceInputs["videoPornFreezeConfig"] = state ? state.videoPornFreezeConfig : undefined;
-            resourceInputs["videoScanLimit"] = state ? state.videoScanLimit : undefined;
-            resourceInputs["videoScenes"] = state ? state.videoScenes : undefined;
-            resourceInputs["videoTerrorismFreezeConfig"] = state ? state.videoTerrorismFreezeConfig : undefined;
-            resourceInputs["videoVoiceAntispamFreezeConfig"] = state ? state.videoVoiceAntispamFreezeConfig : undefined;
+            resourceInputs["audioAntispamFreezeConfig"] = state?.audioAntispamFreezeConfig;
+            resourceInputs["audioAutoFreezeOpened"] = state?.audioAutoFreezeOpened;
+            resourceInputs["audioMaxSize"] = state?.audioMaxSize;
+            resourceInputs["audioOpened"] = state?.audioOpened;
+            resourceInputs["audioScanLimit"] = state?.audioScanLimit;
+            resourceInputs["audioScenes"] = state?.audioScenes;
+            resourceInputs["autoFreezeType"] = state?.autoFreezeType;
+            resourceInputs["bizType"] = state?.bizType;
+            resourceInputs["buckets"] = state?.buckets;
+            resourceInputs["callbackId"] = state?.callbackId;
+            resourceInputs["endDate"] = state?.endDate;
+            resourceInputs["imageAdFreezeConfig"] = state?.imageAdFreezeConfig;
+            resourceInputs["imageAutoFreezeOpened"] = state?.imageAutoFreezeOpened;
+            resourceInputs["imageLiveFreezeConfig"] = state?.imageLiveFreezeConfig;
+            resourceInputs["imageOpened"] = state?.imageOpened;
+            resourceInputs["imagePornFreezeConfig"] = state?.imagePornFreezeConfig;
+            resourceInputs["imageScanLimit"] = state?.imageScanLimit;
+            resourceInputs["imageScenes"] = state?.imageScenes;
+            resourceInputs["imageTerrorismFreezeConfig"] = state?.imageTerrorismFreezeConfig;
+            resourceInputs["scanImageNoFileType"] = state?.scanImageNoFileType;
+            resourceInputs["startDate"] = state?.startDate;
+            resourceInputs["videoAdFreezeConfig"] = state?.videoAdFreezeConfig;
+            resourceInputs["videoAutoFreezeOpened"] = state?.videoAutoFreezeOpened;
+            resourceInputs["videoFrameInterval"] = state?.videoFrameInterval;
+            resourceInputs["videoLiveFreezeConfig"] = state?.videoLiveFreezeConfig;
+            resourceInputs["videoMaxFrames"] = state?.videoMaxFrames;
+            resourceInputs["videoMaxSize"] = state?.videoMaxSize;
+            resourceInputs["videoOpened"] = state?.videoOpened;
+            resourceInputs["videoPornFreezeConfig"] = state?.videoPornFreezeConfig;
+            resourceInputs["videoScanLimit"] = state?.videoScanLimit;
+            resourceInputs["videoScenes"] = state?.videoScenes;
+            resourceInputs["videoTerrorismFreezeConfig"] = state?.videoTerrorismFreezeConfig;
+            resourceInputs["videoVoiceAntispamFreezeConfig"] = state?.videoVoiceAntispamFreezeConfig;
         } else {
             const args = argsOrState as OssStockTaskArgs | undefined;
-            resourceInputs["audioAntispamFreezeConfig"] = args ? args.audioAntispamFreezeConfig : undefined;
-            resourceInputs["audioAutoFreezeOpened"] = args ? args.audioAutoFreezeOpened : undefined;
-            resourceInputs["audioMaxSize"] = args ? args.audioMaxSize : undefined;
-            resourceInputs["audioOpened"] = args ? args.audioOpened : undefined;
-            resourceInputs["audioScanLimit"] = args ? args.audioScanLimit : undefined;
-            resourceInputs["audioScenes"] = args ? args.audioScenes : undefined;
-            resourceInputs["autoFreezeType"] = args ? args.autoFreezeType : undefined;
-            resourceInputs["bizType"] = args ? args.bizType : undefined;
-            resourceInputs["buckets"] = args ? args.buckets : undefined;
-            resourceInputs["callbackId"] = args ? args.callbackId : undefined;
-            resourceInputs["endDate"] = args ? args.endDate : undefined;
-            resourceInputs["imageAdFreezeConfig"] = args ? args.imageAdFreezeConfig : undefined;
-            resourceInputs["imageAutoFreezeOpened"] = args ? args.imageAutoFreezeOpened : undefined;
-            resourceInputs["imageLiveFreezeConfig"] = args ? args.imageLiveFreezeConfig : undefined;
-            resourceInputs["imageOpened"] = args ? args.imageOpened : undefined;
-            resourceInputs["imagePornFreezeConfig"] = args ? args.imagePornFreezeConfig : undefined;
-            resourceInputs["imageScanLimit"] = args ? args.imageScanLimit : undefined;
-            resourceInputs["imageScenes"] = args ? args.imageScenes : undefined;
-            resourceInputs["imageTerrorismFreezeConfig"] = args ? args.imageTerrorismFreezeConfig : undefined;
-            resourceInputs["scanImageNoFileType"] = args ? args.scanImageNoFileType : undefined;
-            resourceInputs["startDate"] = args ? args.startDate : undefined;
-            resourceInputs["videoAdFreezeConfig"] = args ? args.videoAdFreezeConfig : undefined;
-            resourceInputs["videoAutoFreezeOpened"] = args ? args.videoAutoFreezeOpened : undefined;
-            resourceInputs["videoFrameInterval"] = args ? args.videoFrameInterval : undefined;
-            resourceInputs["videoLiveFreezeConfig"] = args ? args.videoLiveFreezeConfig : undefined;
-            resourceInputs["videoMaxFrames"] = args ? args.videoMaxFrames : undefined;
-            resourceInputs["videoMaxSize"] = args ? args.videoMaxSize : undefined;
-            resourceInputs["videoOpened"] = args ? args.videoOpened : undefined;
-            resourceInputs["videoPornFreezeConfig"] = args ? args.videoPornFreezeConfig : undefined;
-            resourceInputs["videoScanLimit"] = args ? args.videoScanLimit : undefined;
-            resourceInputs["videoScenes"] = args ? args.videoScenes : undefined;
-            resourceInputs["videoTerrorismFreezeConfig"] = args ? args.videoTerrorismFreezeConfig : undefined;
-            resourceInputs["videoVoiceAntispamFreezeConfig"] = args ? args.videoVoiceAntispamFreezeConfig : undefined;
+            resourceInputs["audioAntispamFreezeConfig"] = args?.audioAntispamFreezeConfig;
+            resourceInputs["audioAutoFreezeOpened"] = args?.audioAutoFreezeOpened;
+            resourceInputs["audioMaxSize"] = args?.audioMaxSize;
+            resourceInputs["audioOpened"] = args?.audioOpened;
+            resourceInputs["audioScanLimit"] = args?.audioScanLimit;
+            resourceInputs["audioScenes"] = args?.audioScenes;
+            resourceInputs["autoFreezeType"] = args?.autoFreezeType;
+            resourceInputs["bizType"] = args?.bizType;
+            resourceInputs["buckets"] = args?.buckets;
+            resourceInputs["callbackId"] = args?.callbackId;
+            resourceInputs["endDate"] = args?.endDate;
+            resourceInputs["imageAdFreezeConfig"] = args?.imageAdFreezeConfig;
+            resourceInputs["imageAutoFreezeOpened"] = args?.imageAutoFreezeOpened;
+            resourceInputs["imageLiveFreezeConfig"] = args?.imageLiveFreezeConfig;
+            resourceInputs["imageOpened"] = args?.imageOpened;
+            resourceInputs["imagePornFreezeConfig"] = args?.imagePornFreezeConfig;
+            resourceInputs["imageScanLimit"] = args?.imageScanLimit;
+            resourceInputs["imageScenes"] = args?.imageScenes;
+            resourceInputs["imageTerrorismFreezeConfig"] = args?.imageTerrorismFreezeConfig;
+            resourceInputs["scanImageNoFileType"] = args?.scanImageNoFileType;
+            resourceInputs["startDate"] = args?.startDate;
+            resourceInputs["videoAdFreezeConfig"] = args?.videoAdFreezeConfig;
+            resourceInputs["videoAutoFreezeOpened"] = args?.videoAutoFreezeOpened;
+            resourceInputs["videoFrameInterval"] = args?.videoFrameInterval;
+            resourceInputs["videoLiveFreezeConfig"] = args?.videoLiveFreezeConfig;
+            resourceInputs["videoMaxFrames"] = args?.videoMaxFrames;
+            resourceInputs["videoMaxSize"] = args?.videoMaxSize;
+            resourceInputs["videoOpened"] = args?.videoOpened;
+            resourceInputs["videoPornFreezeConfig"] = args?.videoPornFreezeConfig;
+            resourceInputs["videoScanLimit"] = args?.videoScanLimit;
+            resourceInputs["videoScenes"] = args?.videoScenes;
+            resourceInputs["videoTerrorismFreezeConfig"] = args?.videoTerrorismFreezeConfig;
+            resourceInputs["videoVoiceAntispamFreezeConfig"] = args?.videoVoiceAntispamFreezeConfig;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OssStockTask.__pulumiType, name, resourceInputs, opts);

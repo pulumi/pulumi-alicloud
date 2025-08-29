@@ -94,29 +94,29 @@ export class Group extends pulumi.CustomResource {
     /**
      * The number of instance groups. The default value is 1 and the maximum value is 100.
      */
-    public readonly amount!: pulumi.Output<number | undefined>;
+    declare public readonly amount: pulumi.Output<number | undefined>;
     /**
      * Whether to pay automatically. The default is false.
      */
-    public readonly autoPay!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoPay: pulumi.Output<boolean | undefined>;
     /**
      * Whether to enable automatic renewal. The default is false.
      */
-    public readonly autoRenew!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoRenew: pulumi.Output<boolean | undefined>;
     /**
      * The billing type.
      */
-    public readonly chargeType!: pulumi.Output<string | undefined>;
+    declare public readonly chargeType: pulumi.Output<string | undefined>;
     /**
      * Whether to enable GPU acceleration. The default value is false.
      * - true: On.
      * - false: closed.
      */
-    public readonly gpuAcceleration!: pulumi.Output<boolean | undefined>;
+    declare public readonly gpuAcceleration: pulumi.Output<boolean | undefined>;
     /**
      * The image ID.
      */
-    public readonly imageId!: pulumi.Output<string>;
+    declare public readonly imageId: pulumi.Output<string>;
     /**
      * The instance group name
      *
@@ -124,41 +124,41 @@ export class Group extends pulumi.CustomResource {
      *
      * > **NOTE:** - The instance group name must be no more than 30 characters in length. Start with an uppercase/lowercase letter or Chinese. It cannot start with http:// or https://. Only Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-) are supported.
      */
-    public readonly instanceGroupName!: pulumi.Output<string | undefined>;
+    declare public readonly instanceGroupName: pulumi.Output<string | undefined>;
     /**
      * Instance group specifications.
      */
-    public readonly instanceGroupSpec!: pulumi.Output<string>;
+    declare public readonly instanceGroupSpec: pulumi.Output<string>;
     /**
      * The number of instances in the instance group. The maximum value is 100.
      */
-    public readonly numberOfInstances!: pulumi.Output<number | undefined>;
+    declare public readonly numberOfInstances: pulumi.Output<number | undefined>;
     /**
      * The network ID.
      * - Create a shared network instance: Network ID is optional. Enter the network ID whose type is **Shared Network** on the [cloud mobile phone console> Network](https://wya.wuying.aliyun.com/network) page. If the console does not have a shared network, you can fill it in. A shared network is automatically created when the instance group is created.
      * - Create a VPC instance: the network ID is required. Enter the network ID of `VPC` on the [cloud mobile phone console> Network](https://wya.wuying.aliyun.com/network) page. If the console does not have a VPC network, you need to create a network first.
      */
-    public readonly officeSiteId!: pulumi.Output<string | undefined>;
+    declare public readonly officeSiteId: pulumi.Output<string | undefined>;
     /**
      * The duration of the resource purchase. The unit is specified by PeriodUnit.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * The unit of time for purchasing resources.
      */
-    public readonly periodUnit!: pulumi.Output<string | undefined>;
+    declare public readonly periodUnit: pulumi.Output<string | undefined>;
     /**
      * The policy ID. You can query the list of policies by calling ListPolicyGroups.
      */
-    public readonly policyGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly policyGroupId: pulumi.Output<string | undefined>;
     /**
      * Instance group status
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The vSwitch ID.
      */
-    public readonly vswitchId!: pulumi.Output<string | undefined>;
+    declare public readonly vswitchId: pulumi.Output<string | undefined>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -173,43 +173,43 @@ export class Group extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
-            resourceInputs["amount"] = state ? state.amount : undefined;
-            resourceInputs["autoPay"] = state ? state.autoPay : undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["chargeType"] = state ? state.chargeType : undefined;
-            resourceInputs["gpuAcceleration"] = state ? state.gpuAcceleration : undefined;
-            resourceInputs["imageId"] = state ? state.imageId : undefined;
-            resourceInputs["instanceGroupName"] = state ? state.instanceGroupName : undefined;
-            resourceInputs["instanceGroupSpec"] = state ? state.instanceGroupSpec : undefined;
-            resourceInputs["numberOfInstances"] = state ? state.numberOfInstances : undefined;
-            resourceInputs["officeSiteId"] = state ? state.officeSiteId : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
-            resourceInputs["policyGroupId"] = state ? state.policyGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["amount"] = state?.amount;
+            resourceInputs["autoPay"] = state?.autoPay;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["chargeType"] = state?.chargeType;
+            resourceInputs["gpuAcceleration"] = state?.gpuAcceleration;
+            resourceInputs["imageId"] = state?.imageId;
+            resourceInputs["instanceGroupName"] = state?.instanceGroupName;
+            resourceInputs["instanceGroupSpec"] = state?.instanceGroupSpec;
+            resourceInputs["numberOfInstances"] = state?.numberOfInstances;
+            resourceInputs["officeSiteId"] = state?.officeSiteId;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["periodUnit"] = state?.periodUnit;
+            resourceInputs["policyGroupId"] = state?.policyGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vswitchId"] = state?.vswitchId;
         } else {
             const args = argsOrState as GroupArgs | undefined;
-            if ((!args || args.imageId === undefined) && !opts.urn) {
+            if (args?.imageId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'imageId'");
             }
-            if ((!args || args.instanceGroupSpec === undefined) && !opts.urn) {
+            if (args?.instanceGroupSpec === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceGroupSpec'");
             }
-            resourceInputs["amount"] = args ? args.amount : undefined;
-            resourceInputs["autoPay"] = args ? args.autoPay : undefined;
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["chargeType"] = args ? args.chargeType : undefined;
-            resourceInputs["gpuAcceleration"] = args ? args.gpuAcceleration : undefined;
-            resourceInputs["imageId"] = args ? args.imageId : undefined;
-            resourceInputs["instanceGroupName"] = args ? args.instanceGroupName : undefined;
-            resourceInputs["instanceGroupSpec"] = args ? args.instanceGroupSpec : undefined;
-            resourceInputs["numberOfInstances"] = args ? args.numberOfInstances : undefined;
-            resourceInputs["officeSiteId"] = args ? args.officeSiteId : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
-            resourceInputs["policyGroupId"] = args ? args.policyGroupId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["amount"] = args?.amount;
+            resourceInputs["autoPay"] = args?.autoPay;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["chargeType"] = args?.chargeType;
+            resourceInputs["gpuAcceleration"] = args?.gpuAcceleration;
+            resourceInputs["imageId"] = args?.imageId;
+            resourceInputs["instanceGroupName"] = args?.instanceGroupName;
+            resourceInputs["instanceGroupSpec"] = args?.instanceGroupSpec;
+            resourceInputs["numberOfInstances"] = args?.numberOfInstances;
+            resourceInputs["officeSiteId"] = args?.officeSiteId;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["periodUnit"] = args?.periodUnit;
+            resourceInputs["policyGroupId"] = args?.policyGroupId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

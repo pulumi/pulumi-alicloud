@@ -83,27 +83,27 @@ export class Image extends pulumi.CustomResource {
     /**
      * The image creation time.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: `false`. Valid values:
      */
-    public readonly deleteAfterImageUpload!: pulumi.Output<string | undefined>;
+    declare public readonly deleteAfterImageUpload: pulumi.Output<string | undefined>;
     /**
      * The name of the image. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      */
-    public readonly imageName!: pulumi.Output<string>;
+    declare public readonly imageName: pulumi.Output<string>;
     /**
      * The ID of the instance.
      */
-    public readonly instanceId!: pulumi.Output<string | undefined>;
+    declare public readonly instanceId: pulumi.Output<string | undefined>;
     /**
      * The state of the image.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The region of the target OSS where the image is to be stored.
      */
-    public readonly targetOssRegionId!: pulumi.Output<string>;
+    declare public readonly targetOssRegionId: pulumi.Output<string>;
 
     /**
      * Create a Image resource with the given unique name, arguments, and options.
@@ -118,21 +118,21 @@ export class Image extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImageState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deleteAfterImageUpload"] = state ? state.deleteAfterImageUpload : undefined;
-            resourceInputs["imageName"] = state ? state.imageName : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["targetOssRegionId"] = state ? state.targetOssRegionId : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deleteAfterImageUpload"] = state?.deleteAfterImageUpload;
+            resourceInputs["imageName"] = state?.imageName;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["targetOssRegionId"] = state?.targetOssRegionId;
         } else {
             const args = argsOrState as ImageArgs | undefined;
-            if ((!args || args.imageName === undefined) && !opts.urn) {
+            if (args?.imageName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'imageName'");
             }
-            resourceInputs["deleteAfterImageUpload"] = args ? args.deleteAfterImageUpload : undefined;
-            resourceInputs["imageName"] = args ? args.imageName : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["targetOssRegionId"] = args ? args.targetOssRegionId : undefined;
+            resourceInputs["deleteAfterImageUpload"] = args?.deleteAfterImageUpload;
+            resourceInputs["imageName"] = args?.imageName;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["targetOssRegionId"] = args?.targetOssRegionId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

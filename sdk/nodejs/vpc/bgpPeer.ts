@@ -96,31 +96,31 @@ export class BgpPeer extends pulumi.CustomResource {
     /**
      * The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enableBfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
      */
-    public readonly bfdMultiHop!: pulumi.Output<number | undefined>;
+    declare public readonly bfdMultiHop: pulumi.Output<number | undefined>;
     /**
      * The ID of the BGP group.
      */
-    public readonly bgpGroupId!: pulumi.Output<string>;
+    declare public readonly bgpGroupId: pulumi.Output<string>;
     /**
      * The name of the BGP neighbor.
      */
-    public /*out*/ readonly bgpPeerName!: pulumi.Output<string>;
+    declare public /*out*/ readonly bgpPeerName: pulumi.Output<string>;
     /**
      * Specifies whether to enable the Bidirectional Forwarding Detection (BFD) feature.
      */
-    public readonly enableBfd!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableBfd: pulumi.Output<boolean | undefined>;
     /**
      * The IP version.
      */
-    public readonly ipVersion!: pulumi.Output<string>;
+    declare public readonly ipVersion: pulumi.Output<string>;
     /**
      * The IP address of the BGP peer.
      */
-    public readonly peerIpAddress!: pulumi.Output<string>;
+    declare public readonly peerIpAddress: pulumi.Output<string>;
     /**
      * Status of BGP neighbors.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a BgpPeer resource with the given unique name, arguments, and options.
@@ -135,23 +135,23 @@ export class BgpPeer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BgpPeerState | undefined;
-            resourceInputs["bfdMultiHop"] = state ? state.bfdMultiHop : undefined;
-            resourceInputs["bgpGroupId"] = state ? state.bgpGroupId : undefined;
-            resourceInputs["bgpPeerName"] = state ? state.bgpPeerName : undefined;
-            resourceInputs["enableBfd"] = state ? state.enableBfd : undefined;
-            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
-            resourceInputs["peerIpAddress"] = state ? state.peerIpAddress : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["bfdMultiHop"] = state?.bfdMultiHop;
+            resourceInputs["bgpGroupId"] = state?.bgpGroupId;
+            resourceInputs["bgpPeerName"] = state?.bgpPeerName;
+            resourceInputs["enableBfd"] = state?.enableBfd;
+            resourceInputs["ipVersion"] = state?.ipVersion;
+            resourceInputs["peerIpAddress"] = state?.peerIpAddress;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as BgpPeerArgs | undefined;
-            if ((!args || args.bgpGroupId === undefined) && !opts.urn) {
+            if (args?.bgpGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bgpGroupId'");
             }
-            resourceInputs["bfdMultiHop"] = args ? args.bfdMultiHop : undefined;
-            resourceInputs["bgpGroupId"] = args ? args.bgpGroupId : undefined;
-            resourceInputs["enableBfd"] = args ? args.enableBfd : undefined;
-            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
-            resourceInputs["peerIpAddress"] = args ? args.peerIpAddress : undefined;
+            resourceInputs["bfdMultiHop"] = args?.bfdMultiHop;
+            resourceInputs["bgpGroupId"] = args?.bgpGroupId;
+            resourceInputs["enableBfd"] = args?.enableBfd;
+            resourceInputs["ipVersion"] = args?.ipVersion;
+            resourceInputs["peerIpAddress"] = args?.peerIpAddress;
             resourceInputs["bgpPeerName"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

@@ -87,39 +87,39 @@ export class Ipv6Address extends pulumi.CustomResource {
      * - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
      * - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
      */
-    public readonly addressType!: pulumi.Output<string>;
+    declare public readonly addressType: pulumi.Output<string>;
     /**
      * The creation time of the resource.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * IPv6 address
      */
-    public readonly ipv6Address!: pulumi.Output<string>;
+    declare public readonly ipv6Address: pulumi.Output<string>;
     /**
      * The description of the IPv6 Address. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
      */
-    public readonly ipv6AddressDescription!: pulumi.Output<string>;
+    declare public readonly ipv6AddressDescription: pulumi.Output<string>;
     /**
      * The name of the IPv6 Address. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
      */
-    public readonly ipv6AddressName!: pulumi.Output<string | undefined>;
+    declare public readonly ipv6AddressName: pulumi.Output<string | undefined>;
     /**
      * The ID of the resource group to which the instance belongs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The status of the resource.  Available, Pending and Deleting.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tags for the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The VSwitchId of the IPv6 address.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
 
     /**
      * Create a Ipv6Address resource with the given unique name, arguments, and options.
@@ -134,27 +134,27 @@ export class Ipv6Address extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as Ipv6AddressState | undefined;
-            resourceInputs["addressType"] = state ? state.addressType : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["ipv6Address"] = state ? state.ipv6Address : undefined;
-            resourceInputs["ipv6AddressDescription"] = state ? state.ipv6AddressDescription : undefined;
-            resourceInputs["ipv6AddressName"] = state ? state.ipv6AddressName : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["addressType"] = state?.addressType;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["ipv6Address"] = state?.ipv6Address;
+            resourceInputs["ipv6AddressDescription"] = state?.ipv6AddressDescription;
+            resourceInputs["ipv6AddressName"] = state?.ipv6AddressName;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vswitchId"] = state?.vswitchId;
         } else {
             const args = argsOrState as Ipv6AddressArgs | undefined;
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+            if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            resourceInputs["addressType"] = args ? args.addressType : undefined;
-            resourceInputs["ipv6Address"] = args ? args.ipv6Address : undefined;
-            resourceInputs["ipv6AddressDescription"] = args ? args.ipv6AddressDescription : undefined;
-            resourceInputs["ipv6AddressName"] = args ? args.ipv6AddressName : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["addressType"] = args?.addressType;
+            resourceInputs["ipv6Address"] = args?.ipv6Address;
+            resourceInputs["ipv6AddressDescription"] = args?.ipv6AddressDescription;
+            resourceInputs["ipv6AddressName"] = args?.ipv6AddressName;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

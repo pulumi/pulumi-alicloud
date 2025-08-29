@@ -52,27 +52,27 @@ export class Rule extends pulumi.CustomResource {
     /**
      * The description of the event rule.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of the event bus.
      */
-    public readonly eventBusName!: pulumi.Output<string>;
+    declare public readonly eventBusName: pulumi.Output<string>;
     /**
      * The pattern to match interested events. Event mode, JSON format. The value description is as follows: `stringEqual` mode. `stringExpression` mode. Each field has up to 5 expressions (map structure).
      */
-    public readonly filterPattern!: pulumi.Output<string>;
+    declare public readonly filterPattern: pulumi.Output<string>;
     /**
      * The name of the event rule.
      */
-    public readonly ruleName!: pulumi.Output<string>;
+    declare public readonly ruleName: pulumi.Output<string>;
     /**
      * The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The targets of rule. See `targets` below.
      */
-    public readonly targets!: pulumi.Output<outputs.eventbridge.RuleTarget[]>;
+    declare public readonly targets: pulumi.Output<outputs.eventbridge.RuleTarget[]>;
 
     /**
      * Create a Rule resource with the given unique name, arguments, and options.
@@ -87,32 +87,32 @@ export class Rule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RuleState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["eventBusName"] = state ? state.eventBusName : undefined;
-            resourceInputs["filterPattern"] = state ? state.filterPattern : undefined;
-            resourceInputs["ruleName"] = state ? state.ruleName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["targets"] = state ? state.targets : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["eventBusName"] = state?.eventBusName;
+            resourceInputs["filterPattern"] = state?.filterPattern;
+            resourceInputs["ruleName"] = state?.ruleName;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["targets"] = state?.targets;
         } else {
             const args = argsOrState as RuleArgs | undefined;
-            if ((!args || args.eventBusName === undefined) && !opts.urn) {
+            if (args?.eventBusName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'eventBusName'");
             }
-            if ((!args || args.filterPattern === undefined) && !opts.urn) {
+            if (args?.filterPattern === undefined && !opts.urn) {
                 throw new Error("Missing required property 'filterPattern'");
             }
-            if ((!args || args.ruleName === undefined) && !opts.urn) {
+            if (args?.ruleName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ruleName'");
             }
-            if ((!args || args.targets === undefined) && !opts.urn) {
+            if (args?.targets === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targets'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["eventBusName"] = args ? args.eventBusName : undefined;
-            resourceInputs["filterPattern"] = args ? args.filterPattern : undefined;
-            resourceInputs["ruleName"] = args ? args.ruleName : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["targets"] = args ? args.targets : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["eventBusName"] = args?.eventBusName;
+            resourceInputs["filterPattern"] = args?.filterPattern;
+            resourceInputs["ruleName"] = args?.ruleName;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["targets"] = args?.targets;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Rule.__pulumiType, name, resourceInputs, opts);

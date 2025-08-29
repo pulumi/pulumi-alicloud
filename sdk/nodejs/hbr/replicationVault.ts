@@ -78,39 +78,39 @@ export class ReplicationVault extends pulumi.CustomResource {
     /**
      * The description of the backup vault.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The encryption type of the backup vault.
      */
-    public readonly encryptType!: pulumi.Output<string>;
+    declare public readonly encryptType: pulumi.Output<string>;
     /**
      * Alibaba Cloud KMS custom Key or Alias. This parameter is required only when EncryptType = KMS.
      */
-    public readonly kmsKeyId!: pulumi.Output<string | undefined>;
+    declare public readonly kmsKeyId: pulumi.Output<string | undefined>;
     /**
      * RegionId
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The region ID of the source backup vault.
      */
-    public readonly replicationSourceRegionId!: pulumi.Output<string>;
+    declare public readonly replicationSourceRegionId: pulumi.Output<string>;
     /**
      * The vault ID of the source backup vault.
      */
-    public readonly replicationSourceVaultId!: pulumi.Output<string>;
+    declare public readonly replicationSourceVaultId: pulumi.Output<string>;
     /**
      * The status of the mirror backup vault.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The name of the backup vault.
      */
-    public readonly vaultName!: pulumi.Output<string>;
+    declare public readonly vaultName: pulumi.Output<string>;
     /**
      * Backup Vault Storage Class
      */
-    public readonly vaultStorageClass!: pulumi.Output<string>;
+    declare public readonly vaultStorageClass: pulumi.Output<string>;
 
     /**
      * Create a ReplicationVault resource with the given unique name, arguments, and options.
@@ -125,33 +125,33 @@ export class ReplicationVault extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ReplicationVaultState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["encryptType"] = state ? state.encryptType : undefined;
-            resourceInputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["replicationSourceRegionId"] = state ? state.replicationSourceRegionId : undefined;
-            resourceInputs["replicationSourceVaultId"] = state ? state.replicationSourceVaultId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vaultName"] = state ? state.vaultName : undefined;
-            resourceInputs["vaultStorageClass"] = state ? state.vaultStorageClass : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["encryptType"] = state?.encryptType;
+            resourceInputs["kmsKeyId"] = state?.kmsKeyId;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["replicationSourceRegionId"] = state?.replicationSourceRegionId;
+            resourceInputs["replicationSourceVaultId"] = state?.replicationSourceVaultId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vaultName"] = state?.vaultName;
+            resourceInputs["vaultStorageClass"] = state?.vaultStorageClass;
         } else {
             const args = argsOrState as ReplicationVaultArgs | undefined;
-            if ((!args || args.replicationSourceRegionId === undefined) && !opts.urn) {
+            if (args?.replicationSourceRegionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'replicationSourceRegionId'");
             }
-            if ((!args || args.replicationSourceVaultId === undefined) && !opts.urn) {
+            if (args?.replicationSourceVaultId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'replicationSourceVaultId'");
             }
-            if ((!args || args.vaultName === undefined) && !opts.urn) {
+            if (args?.vaultName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vaultName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["encryptType"] = args ? args.encryptType : undefined;
-            resourceInputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
-            resourceInputs["replicationSourceRegionId"] = args ? args.replicationSourceRegionId : undefined;
-            resourceInputs["replicationSourceVaultId"] = args ? args.replicationSourceVaultId : undefined;
-            resourceInputs["vaultName"] = args ? args.vaultName : undefined;
-            resourceInputs["vaultStorageClass"] = args ? args.vaultStorageClass : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["encryptType"] = args?.encryptType;
+            resourceInputs["kmsKeyId"] = args?.kmsKeyId;
+            resourceInputs["replicationSourceRegionId"] = args?.replicationSourceRegionId;
+            resourceInputs["replicationSourceVaultId"] = args?.replicationSourceVaultId;
+            resourceInputs["vaultName"] = args?.vaultName;
+            resourceInputs["vaultStorageClass"] = args?.vaultStorageClass;
             resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

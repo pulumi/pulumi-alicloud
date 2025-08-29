@@ -52,23 +52,23 @@ export class Network extends pulumi.CustomResource {
     /**
      * Time when the network resource was created
      */
-    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly createTime: pulumi.Output<number>;
     /**
      * The ID of the resource group.
      */
-    public readonly dwResourceGroupId!: pulumi.Output<string>;
+    declare public readonly dwResourceGroupId: pulumi.Output<string>;
     /**
      * Network Resource Status
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Virtual Private Cloud ID of network resources
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * The vSwitch ID of the network resource.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
 
     /**
      * Create a Network resource with the given unique name, arguments, and options.
@@ -83,25 +83,25 @@ export class Network extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dwResourceGroupId"] = state ? state.dwResourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dwResourceGroupId"] = state?.dwResourceGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
         } else {
             const args = argsOrState as NetworkArgs | undefined;
-            if ((!args || args.dwResourceGroupId === undefined) && !opts.urn) {
+            if (args?.dwResourceGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dwResourceGroupId'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+            if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            resourceInputs["dwResourceGroupId"] = args ? args.dwResourceGroupId : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["dwResourceGroupId"] = args?.dwResourceGroupId;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

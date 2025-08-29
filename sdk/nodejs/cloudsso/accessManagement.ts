@@ -54,35 +54,35 @@ export class AccessManagement extends pulumi.CustomResource {
     /**
      * The ID of the access configuration.
      */
-    public readonly accessConfigurationId!: pulumi.Output<string>;
+    declare public readonly accessConfigurationId: pulumi.Output<string>;
     /**
      * (Available since v1.254.0) The time when the access permissions were assigned.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Specifies whether to de-provision the access configuration when you remove the access permissions from the CloudSSO identity. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovisionStrategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation.
      */
-    public readonly deprovisionStrategy!: pulumi.Output<string | undefined>;
+    declare public readonly deprovisionStrategy: pulumi.Output<string | undefined>;
     /**
      * The ID of the Directory.
      */
-    public readonly directoryId!: pulumi.Output<string>;
+    declare public readonly directoryId: pulumi.Output<string>;
     /**
      * The ID of the CloudSSO identity.
      */
-    public readonly principalId!: pulumi.Output<string>;
+    declare public readonly principalId: pulumi.Output<string>;
     /**
      * The type of the CloudSSO identity. Valid values: `User`, `Group`.
      */
-    public readonly principalType!: pulumi.Output<string>;
+    declare public readonly principalType: pulumi.Output<string>;
     /**
      * The ID of the task object.
      */
-    public readonly targetId!: pulumi.Output<string>;
+    declare public readonly targetId: pulumi.Output<string>;
     /**
      * The type of the task object. Valid values: `RD-Account`.
      */
-    public readonly targetType!: pulumi.Output<string>;
+    declare public readonly targetType: pulumi.Output<string>;
 
     /**
      * Create a AccessManagement resource with the given unique name, arguments, and options.
@@ -97,41 +97,41 @@ export class AccessManagement extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessManagementState | undefined;
-            resourceInputs["accessConfigurationId"] = state ? state.accessConfigurationId : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deprovisionStrategy"] = state ? state.deprovisionStrategy : undefined;
-            resourceInputs["directoryId"] = state ? state.directoryId : undefined;
-            resourceInputs["principalId"] = state ? state.principalId : undefined;
-            resourceInputs["principalType"] = state ? state.principalType : undefined;
-            resourceInputs["targetId"] = state ? state.targetId : undefined;
-            resourceInputs["targetType"] = state ? state.targetType : undefined;
+            resourceInputs["accessConfigurationId"] = state?.accessConfigurationId;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deprovisionStrategy"] = state?.deprovisionStrategy;
+            resourceInputs["directoryId"] = state?.directoryId;
+            resourceInputs["principalId"] = state?.principalId;
+            resourceInputs["principalType"] = state?.principalType;
+            resourceInputs["targetId"] = state?.targetId;
+            resourceInputs["targetType"] = state?.targetType;
         } else {
             const args = argsOrState as AccessManagementArgs | undefined;
-            if ((!args || args.accessConfigurationId === undefined) && !opts.urn) {
+            if (args?.accessConfigurationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accessConfigurationId'");
             }
-            if ((!args || args.directoryId === undefined) && !opts.urn) {
+            if (args?.directoryId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'directoryId'");
             }
-            if ((!args || args.principalId === undefined) && !opts.urn) {
+            if (args?.principalId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'principalId'");
             }
-            if ((!args || args.principalType === undefined) && !opts.urn) {
+            if (args?.principalType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'principalType'");
             }
-            if ((!args || args.targetId === undefined) && !opts.urn) {
+            if (args?.targetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetId'");
             }
-            if ((!args || args.targetType === undefined) && !opts.urn) {
+            if (args?.targetType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetType'");
             }
-            resourceInputs["accessConfigurationId"] = args ? args.accessConfigurationId : undefined;
-            resourceInputs["deprovisionStrategy"] = args ? args.deprovisionStrategy : undefined;
-            resourceInputs["directoryId"] = args ? args.directoryId : undefined;
-            resourceInputs["principalId"] = args ? args.principalId : undefined;
-            resourceInputs["principalType"] = args ? args.principalType : undefined;
-            resourceInputs["targetId"] = args ? args.targetId : undefined;
-            resourceInputs["targetType"] = args ? args.targetType : undefined;
+            resourceInputs["accessConfigurationId"] = args?.accessConfigurationId;
+            resourceInputs["deprovisionStrategy"] = args?.deprovisionStrategy;
+            resourceInputs["directoryId"] = args?.directoryId;
+            resourceInputs["principalId"] = args?.principalId;
+            resourceInputs["principalType"] = args?.principalType;
+            resourceInputs["targetId"] = args?.targetId;
+            resourceInputs["targetType"] = args?.targetType;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

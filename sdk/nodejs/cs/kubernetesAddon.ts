@@ -48,35 +48,35 @@ export class KubernetesAddon extends pulumi.CustomResource {
     /**
      * Is the addon ready for upgrade.
      */
-    public /*out*/ readonly canUpgrade!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly canUpgrade: pulumi.Output<boolean>;
     /**
      * Whether to clean up cloud resources when deleting. Currently only works for addon `ack-virtual-node` and you must specify it when uninstall addon `ack-virtual-node`. Valid values: `true`: clean up, `false`: do not clean up.
      */
-    public readonly cleanupCloudResources!: pulumi.Output<boolean | undefined>;
+    declare public readonly cleanupCloudResources: pulumi.Output<boolean | undefined>;
     /**
      * The id of kubernetes cluster.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The customized configuration of addon. Your customized configuration will be merged to existed configuration stored in server. If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. You can checkout the customized configuration of the addon through datasource `alicloud.cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `alicloud.cs.getKubernetesAddons`.
      */
-    public readonly config!: pulumi.Output<string>;
+    declare public readonly config: pulumi.Output<string>;
     /**
      * The name of addon.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The version which addon can be upgraded to.
      */
-    public /*out*/ readonly nextVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly nextVersion: pulumi.Output<string>;
     /**
      * Is it a mandatory addon to be installed.
      */
-    public /*out*/ readonly required!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly required: pulumi.Output<boolean>;
     /**
      * The current version of addon.
      */
-    public readonly version!: pulumi.Output<string>;
+    declare public readonly version: pulumi.Output<string>;
 
     /**
      * Create a KubernetesAddon resource with the given unique name, arguments, and options.
@@ -91,24 +91,24 @@ export class KubernetesAddon extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KubernetesAddonState | undefined;
-            resourceInputs["canUpgrade"] = state ? state.canUpgrade : undefined;
-            resourceInputs["cleanupCloudResources"] = state ? state.cleanupCloudResources : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nextVersion"] = state ? state.nextVersion : undefined;
-            resourceInputs["required"] = state ? state.required : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["canUpgrade"] = state?.canUpgrade;
+            resourceInputs["cleanupCloudResources"] = state?.cleanupCloudResources;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nextVersion"] = state?.nextVersion;
+            resourceInputs["required"] = state?.required;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as KubernetesAddonArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            resourceInputs["cleanupCloudResources"] = args ? args.cleanupCloudResources : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["cleanupCloudResources"] = args?.cleanupCloudResources;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["version"] = args?.version;
             resourceInputs["canUpgrade"] = undefined /*out*/;
             resourceInputs["nextVersion"] = undefined /*out*/;
             resourceInputs["required"] = undefined /*out*/;

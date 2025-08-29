@@ -81,87 +81,87 @@ export class VirtualBorderRouter extends pulumi.CustomResource {
     /**
      * The associated physical connections.
      */
-    public readonly associatedPhysicalConnections!: pulumi.Output<string | undefined>;
+    declare public readonly associatedPhysicalConnections: pulumi.Output<string | undefined>;
     /**
      * The bandwidth.
      */
-    public readonly bandwidth!: pulumi.Output<number>;
+    declare public readonly bandwidth: pulumi.Output<number>;
     /**
      * Operators for physical connection circuit provided coding.
      */
-    public readonly circuitCode!: pulumi.Output<string | undefined>;
+    declare public readonly circuitCode: pulumi.Output<string | undefined>;
     /**
      * The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
      */
-    public readonly detectMultiplier!: pulumi.Output<number>;
+    declare public readonly detectMultiplier: pulumi.Output<number>;
     /**
      * Whether to Enable IPv6. Valid values: `false`, `true`.
      */
-    public readonly enableIpv6!: pulumi.Output<boolean>;
+    declare public readonly enableIpv6: pulumi.Output<boolean>;
     /**
      * Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
      */
-    public readonly includeCrossAccountVbr!: pulumi.Output<boolean>;
+    declare public readonly includeCrossAccountVbr: pulumi.Output<boolean>;
     /**
      * Alibaba Cloud-Connected IPv4 address.
      */
-    public readonly localGatewayIp!: pulumi.Output<string>;
+    declare public readonly localGatewayIp: pulumi.Output<string>;
     /**
      * Alibaba Cloud-Connected IPv6 Address.
      */
-    public readonly localIpv6GatewayIp!: pulumi.Output<string | undefined>;
+    declare public readonly localIpv6GatewayIp: pulumi.Output<string | undefined>;
     /**
      * Configure BFD packet reception interval of values include: 200~1000, unit: ms.
      */
-    public readonly minRxInterval!: pulumi.Output<number>;
+    declare public readonly minRxInterval: pulumi.Output<number>;
     /**
      * Configure BFD packet transmission interval maximum value: 200~1000, unit: ms.
      */
-    public readonly minTxInterval!: pulumi.Output<number>;
+    declare public readonly minTxInterval: pulumi.Output<number>;
     /**
      * The Client-Side Interconnection IPv4 Address.
      */
-    public readonly peerGatewayIp!: pulumi.Output<string>;
+    declare public readonly peerGatewayIp: pulumi.Output<string>;
     /**
      * The Client-Side Interconnection IPv6 Address.
      */
-    public readonly peerIpv6GatewayIp!: pulumi.Output<string | undefined>;
+    declare public readonly peerIpv6GatewayIp: pulumi.Output<string | undefined>;
     /**
      * Alibaba Cloud-Connected IPv6 with Client-Side Interconnection IPv6 of Subnet Mask.
      */
-    public readonly peeringIpv6SubnetMask!: pulumi.Output<string | undefined>;
+    declare public readonly peeringIpv6SubnetMask: pulumi.Output<string | undefined>;
     /**
      * Alibaba Cloud-Connected IPv4 and Client-Side Interconnection IPv4 of Subnet Mask.
      */
-    public readonly peeringSubnetMask!: pulumi.Output<string>;
+    declare public readonly peeringSubnetMask: pulumi.Output<string>;
     /**
      * The ID of the Physical Connection to Which the ID.
      */
-    public readonly physicalConnectionId!: pulumi.Output<string>;
+    declare public readonly physicalConnectionId: pulumi.Output<string>;
     /**
      * (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
      */
-    public /*out*/ readonly routeTableId!: pulumi.Output<string>;
+    declare public /*out*/ readonly routeTableId: pulumi.Output<string>;
     /**
      * The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The vbr owner id.
      */
-    public readonly vbrOwnerId!: pulumi.Output<string | undefined>;
+    declare public readonly vbrOwnerId: pulumi.Output<string | undefined>;
     /**
      * The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
      */
-    public readonly virtualBorderRouterName!: pulumi.Output<string | undefined>;
+    declare public readonly virtualBorderRouterName: pulumi.Output<string | undefined>;
     /**
      * The VLAN ID of the VBR. Value range: 0~2999.
      */
-    public readonly vlanId!: pulumi.Output<number>;
+    declare public readonly vlanId: pulumi.Output<number>;
 
     /**
      * Create a VirtualBorderRouter resource with the given unique name, arguments, and options.
@@ -176,64 +176,64 @@ export class VirtualBorderRouter extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VirtualBorderRouterState | undefined;
-            resourceInputs["associatedPhysicalConnections"] = state ? state.associatedPhysicalConnections : undefined;
-            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
-            resourceInputs["circuitCode"] = state ? state.circuitCode : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["detectMultiplier"] = state ? state.detectMultiplier : undefined;
-            resourceInputs["enableIpv6"] = state ? state.enableIpv6 : undefined;
-            resourceInputs["includeCrossAccountVbr"] = state ? state.includeCrossAccountVbr : undefined;
-            resourceInputs["localGatewayIp"] = state ? state.localGatewayIp : undefined;
-            resourceInputs["localIpv6GatewayIp"] = state ? state.localIpv6GatewayIp : undefined;
-            resourceInputs["minRxInterval"] = state ? state.minRxInterval : undefined;
-            resourceInputs["minTxInterval"] = state ? state.minTxInterval : undefined;
-            resourceInputs["peerGatewayIp"] = state ? state.peerGatewayIp : undefined;
-            resourceInputs["peerIpv6GatewayIp"] = state ? state.peerIpv6GatewayIp : undefined;
-            resourceInputs["peeringIpv6SubnetMask"] = state ? state.peeringIpv6SubnetMask : undefined;
-            resourceInputs["peeringSubnetMask"] = state ? state.peeringSubnetMask : undefined;
-            resourceInputs["physicalConnectionId"] = state ? state.physicalConnectionId : undefined;
-            resourceInputs["routeTableId"] = state ? state.routeTableId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vbrOwnerId"] = state ? state.vbrOwnerId : undefined;
-            resourceInputs["virtualBorderRouterName"] = state ? state.virtualBorderRouterName : undefined;
-            resourceInputs["vlanId"] = state ? state.vlanId : undefined;
+            resourceInputs["associatedPhysicalConnections"] = state?.associatedPhysicalConnections;
+            resourceInputs["bandwidth"] = state?.bandwidth;
+            resourceInputs["circuitCode"] = state?.circuitCode;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["detectMultiplier"] = state?.detectMultiplier;
+            resourceInputs["enableIpv6"] = state?.enableIpv6;
+            resourceInputs["includeCrossAccountVbr"] = state?.includeCrossAccountVbr;
+            resourceInputs["localGatewayIp"] = state?.localGatewayIp;
+            resourceInputs["localIpv6GatewayIp"] = state?.localIpv6GatewayIp;
+            resourceInputs["minRxInterval"] = state?.minRxInterval;
+            resourceInputs["minTxInterval"] = state?.minTxInterval;
+            resourceInputs["peerGatewayIp"] = state?.peerGatewayIp;
+            resourceInputs["peerIpv6GatewayIp"] = state?.peerIpv6GatewayIp;
+            resourceInputs["peeringIpv6SubnetMask"] = state?.peeringIpv6SubnetMask;
+            resourceInputs["peeringSubnetMask"] = state?.peeringSubnetMask;
+            resourceInputs["physicalConnectionId"] = state?.physicalConnectionId;
+            resourceInputs["routeTableId"] = state?.routeTableId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vbrOwnerId"] = state?.vbrOwnerId;
+            resourceInputs["virtualBorderRouterName"] = state?.virtualBorderRouterName;
+            resourceInputs["vlanId"] = state?.vlanId;
         } else {
             const args = argsOrState as VirtualBorderRouterArgs | undefined;
-            if ((!args || args.localGatewayIp === undefined) && !opts.urn) {
+            if (args?.localGatewayIp === undefined && !opts.urn) {
                 throw new Error("Missing required property 'localGatewayIp'");
             }
-            if ((!args || args.peerGatewayIp === undefined) && !opts.urn) {
+            if (args?.peerGatewayIp === undefined && !opts.urn) {
                 throw new Error("Missing required property 'peerGatewayIp'");
             }
-            if ((!args || args.peeringSubnetMask === undefined) && !opts.urn) {
+            if (args?.peeringSubnetMask === undefined && !opts.urn) {
                 throw new Error("Missing required property 'peeringSubnetMask'");
             }
-            if ((!args || args.physicalConnectionId === undefined) && !opts.urn) {
+            if (args?.physicalConnectionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'physicalConnectionId'");
             }
-            if ((!args || args.vlanId === undefined) && !opts.urn) {
+            if (args?.vlanId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vlanId'");
             }
-            resourceInputs["associatedPhysicalConnections"] = args ? args.associatedPhysicalConnections : undefined;
-            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
-            resourceInputs["circuitCode"] = args ? args.circuitCode : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["detectMultiplier"] = args ? args.detectMultiplier : undefined;
-            resourceInputs["enableIpv6"] = args ? args.enableIpv6 : undefined;
-            resourceInputs["includeCrossAccountVbr"] = args ? args.includeCrossAccountVbr : undefined;
-            resourceInputs["localGatewayIp"] = args ? args.localGatewayIp : undefined;
-            resourceInputs["localIpv6GatewayIp"] = args ? args.localIpv6GatewayIp : undefined;
-            resourceInputs["minRxInterval"] = args ? args.minRxInterval : undefined;
-            resourceInputs["minTxInterval"] = args ? args.minTxInterval : undefined;
-            resourceInputs["peerGatewayIp"] = args ? args.peerGatewayIp : undefined;
-            resourceInputs["peerIpv6GatewayIp"] = args ? args.peerIpv6GatewayIp : undefined;
-            resourceInputs["peeringIpv6SubnetMask"] = args ? args.peeringIpv6SubnetMask : undefined;
-            resourceInputs["peeringSubnetMask"] = args ? args.peeringSubnetMask : undefined;
-            resourceInputs["physicalConnectionId"] = args ? args.physicalConnectionId : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["vbrOwnerId"] = args ? args.vbrOwnerId : undefined;
-            resourceInputs["virtualBorderRouterName"] = args ? args.virtualBorderRouterName : undefined;
-            resourceInputs["vlanId"] = args ? args.vlanId : undefined;
+            resourceInputs["associatedPhysicalConnections"] = args?.associatedPhysicalConnections;
+            resourceInputs["bandwidth"] = args?.bandwidth;
+            resourceInputs["circuitCode"] = args?.circuitCode;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["detectMultiplier"] = args?.detectMultiplier;
+            resourceInputs["enableIpv6"] = args?.enableIpv6;
+            resourceInputs["includeCrossAccountVbr"] = args?.includeCrossAccountVbr;
+            resourceInputs["localGatewayIp"] = args?.localGatewayIp;
+            resourceInputs["localIpv6GatewayIp"] = args?.localIpv6GatewayIp;
+            resourceInputs["minRxInterval"] = args?.minRxInterval;
+            resourceInputs["minTxInterval"] = args?.minTxInterval;
+            resourceInputs["peerGatewayIp"] = args?.peerGatewayIp;
+            resourceInputs["peerIpv6GatewayIp"] = args?.peerIpv6GatewayIp;
+            resourceInputs["peeringIpv6SubnetMask"] = args?.peeringIpv6SubnetMask;
+            resourceInputs["peeringSubnetMask"] = args?.peeringSubnetMask;
+            resourceInputs["physicalConnectionId"] = args?.physicalConnectionId;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["vbrOwnerId"] = args?.vbrOwnerId;
+            resourceInputs["virtualBorderRouterName"] = args?.virtualBorderRouterName;
+            resourceInputs["vlanId"] = args?.vlanId;
             resourceInputs["routeTableId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

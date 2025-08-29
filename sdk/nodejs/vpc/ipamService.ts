@@ -44,7 +44,7 @@ export class IpamService extends pulumi.CustomResource {
     /**
      * Whether the IPAM service has been activated.
      */
-    public /*out*/ readonly enabled!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly enabled: pulumi.Output<boolean>;
 
     /**
      * Create a IpamService resource with the given unique name, arguments, and options.
@@ -59,7 +59,7 @@ export class IpamService extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IpamServiceState | undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["enabled"] = state?.enabled;
         } else {
             const args = argsOrState as IpamServiceArgs | undefined;
             resourceInputs["enabled"] = undefined /*out*/;

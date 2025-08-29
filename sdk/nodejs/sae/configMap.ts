@@ -84,19 +84,19 @@ export class ConfigMap extends pulumi.CustomResource {
     /**
      * ConfigMap instance data.
      */
-    public readonly data!: pulumi.Output<string>;
+    declare public readonly data: pulumi.Output<string>;
     /**
      * The Description of ConfigMap.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * ConfigMap instance name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The NamespaceId of ConfigMap.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
      */
-    public readonly namespaceId!: pulumi.Output<string>;
+    declare public readonly namespaceId: pulumi.Output<string>;
 
     /**
      * Create a ConfigMap resource with the given unique name, arguments, and options.
@@ -111,22 +111,22 @@ export class ConfigMap extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConfigMapState | undefined;
-            resourceInputs["data"] = state ? state.data : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namespaceId"] = state ? state.namespaceId : undefined;
+            resourceInputs["data"] = state?.data;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namespaceId"] = state?.namespaceId;
         } else {
             const args = argsOrState as ConfigMapArgs | undefined;
-            if ((!args || args.data === undefined) && !opts.urn) {
+            if (args?.data === undefined && !opts.urn) {
                 throw new Error("Missing required property 'data'");
             }
-            if ((!args || args.namespaceId === undefined) && !opts.urn) {
+            if (args?.namespaceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'namespaceId'");
             }
-            resourceInputs["data"] = args ? args.data : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
+            resourceInputs["data"] = args?.data;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namespaceId"] = args?.namespaceId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ConfigMap.__pulumiType, name, resourceInputs, opts);

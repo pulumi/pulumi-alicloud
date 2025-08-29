@@ -106,26 +106,26 @@ export class TransitRouterMulticastDomainPeerMember extends pulumi.CustomResourc
     /**
      * Specifies whether only to precheck the request.
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * The IP address of the multicast group to which the multicast member belongs. Value range: **224.0.0.1** to **239.255.255.254**.If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you in the current multicast domain.
      */
-    public readonly groupIpAddress!: pulumi.Output<string>;
+    declare public readonly groupIpAddress: pulumi.Output<string>;
     /**
      * The IDs of the inter-region multicast domains.
      */
-    public readonly peerTransitRouterMulticastDomainId!: pulumi.Output<string>;
+    declare public readonly peerTransitRouterMulticastDomainId: pulumi.Output<string>;
     /**
      * The status of the multicast resource. Valid values:
      * - Registering: being created
      * - Registered: available
      * - Deregistering: being deleted
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The ID of the multicast domain to which the multicast member belongs.
      */
-    public readonly transitRouterMulticastDomainId!: pulumi.Output<string>;
+    declare public readonly transitRouterMulticastDomainId: pulumi.Output<string>;
 
     /**
      * Create a TransitRouterMulticastDomainPeerMember resource with the given unique name, arguments, and options.
@@ -140,26 +140,26 @@ export class TransitRouterMulticastDomainPeerMember extends pulumi.CustomResourc
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TransitRouterMulticastDomainPeerMemberState | undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["groupIpAddress"] = state ? state.groupIpAddress : undefined;
-            resourceInputs["peerTransitRouterMulticastDomainId"] = state ? state.peerTransitRouterMulticastDomainId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["transitRouterMulticastDomainId"] = state ? state.transitRouterMulticastDomainId : undefined;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["groupIpAddress"] = state?.groupIpAddress;
+            resourceInputs["peerTransitRouterMulticastDomainId"] = state?.peerTransitRouterMulticastDomainId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["transitRouterMulticastDomainId"] = state?.transitRouterMulticastDomainId;
         } else {
             const args = argsOrState as TransitRouterMulticastDomainPeerMemberArgs | undefined;
-            if ((!args || args.groupIpAddress === undefined) && !opts.urn) {
+            if (args?.groupIpAddress === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupIpAddress'");
             }
-            if ((!args || args.peerTransitRouterMulticastDomainId === undefined) && !opts.urn) {
+            if (args?.peerTransitRouterMulticastDomainId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'peerTransitRouterMulticastDomainId'");
             }
-            if ((!args || args.transitRouterMulticastDomainId === undefined) && !opts.urn) {
+            if (args?.transitRouterMulticastDomainId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'transitRouterMulticastDomainId'");
             }
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["groupIpAddress"] = args ? args.groupIpAddress : undefined;
-            resourceInputs["peerTransitRouterMulticastDomainId"] = args ? args.peerTransitRouterMulticastDomainId : undefined;
-            resourceInputs["transitRouterMulticastDomainId"] = args ? args.transitRouterMulticastDomainId : undefined;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["groupIpAddress"] = args?.groupIpAddress;
+            resourceInputs["peerTransitRouterMulticastDomainId"] = args?.peerTransitRouterMulticastDomainId;
+            resourceInputs["transitRouterMulticastDomainId"] = args?.transitRouterMulticastDomainId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

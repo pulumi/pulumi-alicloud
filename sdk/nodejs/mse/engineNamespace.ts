@@ -92,29 +92,29 @@ export class EngineNamespace extends pulumi.CustomResource {
     /**
      * The language type of the returned information. Valid values: `zh`, `en`.
      */
-    public readonly acceptLanguage!: pulumi.Output<string | undefined>;
+    declare public readonly acceptLanguage: pulumi.Output<string | undefined>;
     /**
      * The id of the cluster.It is formatted to `mse-xxxxxxxx`.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The description of the namespace.
      *
      * **NOTE:** You must set `clusterId` or `instanceId` or both.
      */
-    public readonly namespaceDesc!: pulumi.Output<string>;
+    declare public readonly namespaceDesc: pulumi.Output<string>;
     /**
      * The id of Namespace.
      */
-    public readonly namespaceId!: pulumi.Output<string>;
+    declare public readonly namespaceId: pulumi.Output<string>;
     /**
      * The name of the Engine Namespace.
      */
-    public readonly namespaceShowName!: pulumi.Output<string>;
+    declare public readonly namespaceShowName: pulumi.Output<string>;
 
     /**
      * Create a EngineNamespace resource with the given unique name, arguments, and options.
@@ -129,23 +129,23 @@ export class EngineNamespace extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EngineNamespaceState | undefined;
-            resourceInputs["acceptLanguage"] = state ? state.acceptLanguage : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["namespaceDesc"] = state ? state.namespaceDesc : undefined;
-            resourceInputs["namespaceId"] = state ? state.namespaceId : undefined;
-            resourceInputs["namespaceShowName"] = state ? state.namespaceShowName : undefined;
+            resourceInputs["acceptLanguage"] = state?.acceptLanguage;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["namespaceDesc"] = state?.namespaceDesc;
+            resourceInputs["namespaceId"] = state?.namespaceId;
+            resourceInputs["namespaceShowName"] = state?.namespaceShowName;
         } else {
             const args = argsOrState as EngineNamespaceArgs | undefined;
-            if ((!args || args.namespaceShowName === undefined) && !opts.urn) {
+            if (args?.namespaceShowName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'namespaceShowName'");
             }
-            resourceInputs["acceptLanguage"] = args ? args.acceptLanguage : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["namespaceDesc"] = args ? args.namespaceDesc : undefined;
-            resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
-            resourceInputs["namespaceShowName"] = args ? args.namespaceShowName : undefined;
+            resourceInputs["acceptLanguage"] = args?.acceptLanguage;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["namespaceDesc"] = args?.namespaceDesc;
+            resourceInputs["namespaceId"] = args?.namespaceId;
+            resourceInputs["namespaceShowName"] = args?.namespaceShowName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EngineNamespace.__pulumiType, name, resourceInputs, opts);

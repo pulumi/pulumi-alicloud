@@ -87,11 +87,11 @@ export class EnterpriseSnapshotPolicyAttachment extends pulumi.CustomResource {
     /**
      * Cloud Disk ID.
      */
-    public readonly diskId!: pulumi.Output<string>;
+    declare public readonly diskId: pulumi.Output<string>;
     /**
      * the enterprise snapshot policy id.
      */
-    public readonly policyId!: pulumi.Output<string>;
+    declare public readonly policyId: pulumi.Output<string>;
 
     /**
      * Create a EnterpriseSnapshotPolicyAttachment resource with the given unique name, arguments, and options.
@@ -106,15 +106,15 @@ export class EnterpriseSnapshotPolicyAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnterpriseSnapshotPolicyAttachmentState | undefined;
-            resourceInputs["diskId"] = state ? state.diskId : undefined;
-            resourceInputs["policyId"] = state ? state.policyId : undefined;
+            resourceInputs["diskId"] = state?.diskId;
+            resourceInputs["policyId"] = state?.policyId;
         } else {
             const args = argsOrState as EnterpriseSnapshotPolicyAttachmentArgs | undefined;
-            if ((!args || args.policyId === undefined) && !opts.urn) {
+            if (args?.policyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyId'");
             }
-            resourceInputs["diskId"] = args ? args.diskId : undefined;
-            resourceInputs["policyId"] = args ? args.policyId : undefined;
+            resourceInputs["diskId"] = args?.diskId;
+            resourceInputs["policyId"] = args?.policyId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EnterpriseSnapshotPolicyAttachment.__pulumiType, name, resourceInputs, opts);

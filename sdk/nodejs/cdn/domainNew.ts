@@ -81,47 +81,47 @@ export class DomainNew extends pulumi.CustomResource {
     /**
      * Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
      */
-    public readonly cdnType!: pulumi.Output<string>;
+    declare public readonly cdnType: pulumi.Output<string>;
     /**
      * Certificate configuration See `certificateConfig` below.
      */
-    public readonly certificateConfig!: pulumi.Output<outputs.cdn.DomainNewCertificateConfig>;
+    declare public readonly certificateConfig: pulumi.Output<outputs.cdn.DomainNewCertificateConfig>;
     /**
      * Health test URL.
      */
-    public readonly checkUrl!: pulumi.Output<string | undefined>;
+    declare public readonly checkUrl: pulumi.Output<string | undefined>;
     /**
      * The CNAME domain name corresponding to the accelerated domain name.
      */
-    public /*out*/ readonly cname!: pulumi.Output<string>;
+    declare public /*out*/ readonly cname: pulumi.Output<string>;
     /**
      * Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      */
-    public readonly domainName!: pulumi.Output<string>;
+    declare public readonly domainName: pulumi.Output<string>;
     /**
      * Whether to issue a certificate in grayscale. Value: staging: issued certificate in grayscale. Not passing or passing any other value is a formal certificate.
      */
-    public readonly env!: pulumi.Output<string | undefined>;
+    declare public readonly env: pulumi.Output<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
      */
-    public readonly scope!: pulumi.Output<string>;
+    declare public readonly scope: pulumi.Output<string>;
     /**
      * The source address list of the accelerated domain. Defaults to null. See `sources` below.
      */
-    public readonly sources!: pulumi.Output<outputs.cdn.DomainNewSource[]>;
+    declare public readonly sources: pulumi.Output<outputs.cdn.DomainNewSource[]>;
     /**
      * The status of the resource, valid values: `online`, `offline`.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The tag of the resource
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a DomainNew resource with the given unique name, arguments, and options.
@@ -136,38 +136,38 @@ export class DomainNew extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainNewState | undefined;
-            resourceInputs["cdnType"] = state ? state.cdnType : undefined;
-            resourceInputs["certificateConfig"] = state ? state.certificateConfig : undefined;
-            resourceInputs["checkUrl"] = state ? state.checkUrl : undefined;
-            resourceInputs["cname"] = state ? state.cname : undefined;
-            resourceInputs["domainName"] = state ? state.domainName : undefined;
-            resourceInputs["env"] = state ? state.env : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["scope"] = state ? state.scope : undefined;
-            resourceInputs["sources"] = state ? state.sources : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["cdnType"] = state?.cdnType;
+            resourceInputs["certificateConfig"] = state?.certificateConfig;
+            resourceInputs["checkUrl"] = state?.checkUrl;
+            resourceInputs["cname"] = state?.cname;
+            resourceInputs["domainName"] = state?.domainName;
+            resourceInputs["env"] = state?.env;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["scope"] = state?.scope;
+            resourceInputs["sources"] = state?.sources;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as DomainNewArgs | undefined;
-            if ((!args || args.cdnType === undefined) && !opts.urn) {
+            if (args?.cdnType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cdnType'");
             }
-            if ((!args || args.domainName === undefined) && !opts.urn) {
+            if (args?.domainName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
-            if ((!args || args.sources === undefined) && !opts.urn) {
+            if (args?.sources === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sources'");
             }
-            resourceInputs["cdnType"] = args ? args.cdnType : undefined;
-            resourceInputs["certificateConfig"] = args ? args.certificateConfig : undefined;
-            resourceInputs["checkUrl"] = args ? args.checkUrl : undefined;
-            resourceInputs["domainName"] = args ? args.domainName : undefined;
-            resourceInputs["env"] = args ? args.env : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["scope"] = args ? args.scope : undefined;
-            resourceInputs["sources"] = args ? args.sources : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["cdnType"] = args?.cdnType;
+            resourceInputs["certificateConfig"] = args?.certificateConfig;
+            resourceInputs["checkUrl"] = args?.checkUrl;
+            resourceInputs["domainName"] = args?.domainName;
+            resourceInputs["env"] = args?.env;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["scope"] = args?.scope;
+            resourceInputs["sources"] = args?.sources;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["cname"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

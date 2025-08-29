@@ -125,84 +125,84 @@ export class RegistryEnterpriseSyncRule extends pulumi.CustomResource {
     /**
      * (Available since v1.240.0) The time when the synchronization rule was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The ID of the Container Registry source instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead.
      *
      * @deprecated Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The namespace name of the source instance.
      */
-    public readonly namespaceName!: pulumi.Output<string>;
+    declare public readonly namespaceName: pulumi.Output<string>;
     /**
      * (Available since v1.240.0) The region ID of the source instance.
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The image repository name of the source instance.
      */
-    public readonly repoName!: pulumi.Output<string | undefined>;
+    declare public readonly repoName: pulumi.Output<string | undefined>;
     /**
      * (Available since v1.240.0) The ID of the synchronization rule.
      */
-    public /*out*/ readonly repoSyncRuleId!: pulumi.Output<string>;
+    declare public /*out*/ readonly repoSyncRuleId: pulumi.Output<string>;
     /**
      * (Deprecated since v1.240.0) Field `ruleId` has been deprecated from provider version 1.240.0. New field `repoSyncRuleId` instead.
      *
      * @deprecated Field `ruleId` has been deprecated from provider version 1.240.0. New field `repoSyncRuleId` instead.
      */
-    public /*out*/ readonly ruleId!: pulumi.Output<string>;
+    declare public /*out*/ readonly ruleId: pulumi.Output<string>;
     /**
      * The synchronization direction.
      */
-    public /*out*/ readonly syncDirection!: pulumi.Output<string>;
+    declare public /*out*/ readonly syncDirection: pulumi.Output<string>;
     /**
      * The name of the sync rule.
      */
-    public readonly syncRuleName!: pulumi.Output<string>;
+    declare public readonly syncRuleName: pulumi.Output<string>;
     /**
      * The synchronization scope. Valid values:
      * - `REPO`: Encrypts or decrypts data.
      * - `NAMESPACE`: Generates or verifies a digital signature.
      * > **NOTE:** From version 1.240.0, `syncScope` can be set.
      */
-    public readonly syncScope!: pulumi.Output<string>;
+    declare public readonly syncScope: pulumi.Output<string>;
     /**
      * The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
      * - `INITIATIVE`: Manually triggers the synchronization rule.
      * - `PASSIVE`: Automatically triggers the synchronization rule.
      */
-    public readonly syncTrigger!: pulumi.Output<string>;
+    declare public readonly syncTrigger: pulumi.Output<string>;
     /**
      * The regular expression used to filter image tags.
      */
-    public readonly tagFilter!: pulumi.Output<string>;
+    declare public readonly tagFilter: pulumi.Output<string>;
     /**
      * The ID of the destination instance.
      */
-    public readonly targetInstanceId!: pulumi.Output<string>;
+    declare public readonly targetInstanceId: pulumi.Output<string>;
     /**
      * The namespace name of the destination instance.
      */
-    public readonly targetNamespaceName!: pulumi.Output<string>;
+    declare public readonly targetNamespaceName: pulumi.Output<string>;
     /**
      * The region ID of the destination instance.
      */
-    public readonly targetRegionId!: pulumi.Output<string>;
+    declare public readonly targetRegionId: pulumi.Output<string>;
     /**
      * The image repository name of the destination instance.
      */
-    public readonly targetRepoName!: pulumi.Output<string | undefined>;
+    declare public readonly targetRepoName: pulumi.Output<string | undefined>;
     /**
      * The UID of the account to which the target instance belongs.
      */
-    public readonly targetUserId!: pulumi.Output<string | undefined>;
+    declare public readonly targetUserId: pulumi.Output<string | undefined>;
 
     /**
      * Create a RegistryEnterpriseSyncRule resource with the given unique name, arguments, and options.
@@ -217,57 +217,57 @@ export class RegistryEnterpriseSyncRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegistryEnterpriseSyncRuleState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namespaceName"] = state ? state.namespaceName : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["repoName"] = state ? state.repoName : undefined;
-            resourceInputs["repoSyncRuleId"] = state ? state.repoSyncRuleId : undefined;
-            resourceInputs["ruleId"] = state ? state.ruleId : undefined;
-            resourceInputs["syncDirection"] = state ? state.syncDirection : undefined;
-            resourceInputs["syncRuleName"] = state ? state.syncRuleName : undefined;
-            resourceInputs["syncScope"] = state ? state.syncScope : undefined;
-            resourceInputs["syncTrigger"] = state ? state.syncTrigger : undefined;
-            resourceInputs["tagFilter"] = state ? state.tagFilter : undefined;
-            resourceInputs["targetInstanceId"] = state ? state.targetInstanceId : undefined;
-            resourceInputs["targetNamespaceName"] = state ? state.targetNamespaceName : undefined;
-            resourceInputs["targetRegionId"] = state ? state.targetRegionId : undefined;
-            resourceInputs["targetRepoName"] = state ? state.targetRepoName : undefined;
-            resourceInputs["targetUserId"] = state ? state.targetUserId : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namespaceName"] = state?.namespaceName;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["repoName"] = state?.repoName;
+            resourceInputs["repoSyncRuleId"] = state?.repoSyncRuleId;
+            resourceInputs["ruleId"] = state?.ruleId;
+            resourceInputs["syncDirection"] = state?.syncDirection;
+            resourceInputs["syncRuleName"] = state?.syncRuleName;
+            resourceInputs["syncScope"] = state?.syncScope;
+            resourceInputs["syncTrigger"] = state?.syncTrigger;
+            resourceInputs["tagFilter"] = state?.tagFilter;
+            resourceInputs["targetInstanceId"] = state?.targetInstanceId;
+            resourceInputs["targetNamespaceName"] = state?.targetNamespaceName;
+            resourceInputs["targetRegionId"] = state?.targetRegionId;
+            resourceInputs["targetRepoName"] = state?.targetRepoName;
+            resourceInputs["targetUserId"] = state?.targetUserId;
         } else {
             const args = argsOrState as RegistryEnterpriseSyncRuleArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.namespaceName === undefined) && !opts.urn) {
+            if (args?.namespaceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'namespaceName'");
             }
-            if ((!args || args.tagFilter === undefined) && !opts.urn) {
+            if (args?.tagFilter === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tagFilter'");
             }
-            if ((!args || args.targetInstanceId === undefined) && !opts.urn) {
+            if (args?.targetInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetInstanceId'");
             }
-            if ((!args || args.targetNamespaceName === undefined) && !opts.urn) {
+            if (args?.targetNamespaceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetNamespaceName'");
             }
-            if ((!args || args.targetRegionId === undefined) && !opts.urn) {
+            if (args?.targetRegionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetRegionId'");
             }
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namespaceName"] = args ? args.namespaceName : undefined;
-            resourceInputs["repoName"] = args ? args.repoName : undefined;
-            resourceInputs["syncRuleName"] = args ? args.syncRuleName : undefined;
-            resourceInputs["syncScope"] = args ? args.syncScope : undefined;
-            resourceInputs["syncTrigger"] = args ? args.syncTrigger : undefined;
-            resourceInputs["tagFilter"] = args ? args.tagFilter : undefined;
-            resourceInputs["targetInstanceId"] = args ? args.targetInstanceId : undefined;
-            resourceInputs["targetNamespaceName"] = args ? args.targetNamespaceName : undefined;
-            resourceInputs["targetRegionId"] = args ? args.targetRegionId : undefined;
-            resourceInputs["targetRepoName"] = args ? args.targetRepoName : undefined;
-            resourceInputs["targetUserId"] = args ? args.targetUserId : undefined;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namespaceName"] = args?.namespaceName;
+            resourceInputs["repoName"] = args?.repoName;
+            resourceInputs["syncRuleName"] = args?.syncRuleName;
+            resourceInputs["syncScope"] = args?.syncScope;
+            resourceInputs["syncTrigger"] = args?.syncTrigger;
+            resourceInputs["tagFilter"] = args?.tagFilter;
+            resourceInputs["targetInstanceId"] = args?.targetInstanceId;
+            resourceInputs["targetNamespaceName"] = args?.targetNamespaceName;
+            resourceInputs["targetRegionId"] = args?.targetRegionId;
+            resourceInputs["targetRepoName"] = args?.targetRepoName;
+            resourceInputs["targetUserId"] = args?.targetUserId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["repoSyncRuleId"] = undefined /*out*/;

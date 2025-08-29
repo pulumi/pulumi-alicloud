@@ -136,23 +136,23 @@ export class ZoneAttachment extends pulumi.CustomResource {
     /**
      * The language of code.
      */
-    public readonly lang!: pulumi.Output<string | undefined>;
+    declare public readonly lang: pulumi.Output<string | undefined>;
     /**
      * The user custom IP address.
      */
-    public readonly userClientIp!: pulumi.Output<string | undefined>;
+    declare public readonly userClientIp: pulumi.Output<string | undefined>;
     /**
      * The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
      */
-    public readonly vpcIds!: pulumi.Output<string[]>;
+    declare public readonly vpcIds: pulumi.Output<string[]>;
     /**
      * See `vpcs` below.Recommend to use `vpcs`.
      */
-    public readonly vpcs!: pulumi.Output<outputs.pvtz.ZoneAttachmentVpc[]>;
+    declare public readonly vpcs: pulumi.Output<outputs.pvtz.ZoneAttachmentVpc[]>;
     /**
      * The name of the Private Zone Record.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a ZoneAttachment resource with the given unique name, arguments, and options.
@@ -167,21 +167,21 @@ export class ZoneAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZoneAttachmentState | undefined;
-            resourceInputs["lang"] = state ? state.lang : undefined;
-            resourceInputs["userClientIp"] = state ? state.userClientIp : undefined;
-            resourceInputs["vpcIds"] = state ? state.vpcIds : undefined;
-            resourceInputs["vpcs"] = state ? state.vpcs : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["lang"] = state?.lang;
+            resourceInputs["userClientIp"] = state?.userClientIp;
+            resourceInputs["vpcIds"] = state?.vpcIds;
+            resourceInputs["vpcs"] = state?.vpcs;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ZoneAttachmentArgs | undefined;
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["lang"] = args ? args.lang : undefined;
-            resourceInputs["userClientIp"] = args ? args.userClientIp : undefined;
-            resourceInputs["vpcIds"] = args ? args.vpcIds : undefined;
-            resourceInputs["vpcs"] = args ? args.vpcs : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["lang"] = args?.lang;
+            resourceInputs["userClientIp"] = args?.userClientIp;
+            resourceInputs["vpcIds"] = args?.vpcIds;
+            resourceInputs["vpcs"] = args?.vpcs;
+            resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ZoneAttachment.__pulumiType, name, resourceInputs, opts);

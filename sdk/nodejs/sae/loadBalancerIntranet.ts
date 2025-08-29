@@ -123,19 +123,19 @@ export class LoadBalancerIntranet extends pulumi.CustomResource {
     /**
      * The target application ID that needs to be bound to the SLB.
      */
-    public readonly appId!: pulumi.Output<string>;
+    declare public readonly appId: pulumi.Output<string>;
     /**
      * Use designated private network SLBs that have been purchased to support non-shared instances.
      */
-    public /*out*/ readonly intranetIp!: pulumi.Output<string>;
+    declare public /*out*/ readonly intranetIp: pulumi.Output<string>;
     /**
      * The intranet SLB ID.
      */
-    public readonly intranetSlbId!: pulumi.Output<string | undefined>;
+    declare public readonly intranetSlbId: pulumi.Output<string | undefined>;
     /**
      * The bound private network SLB. See `intranet` below.
      */
-    public readonly intranets!: pulumi.Output<outputs.sae.LoadBalancerIntranetIntranet[]>;
+    declare public readonly intranets: pulumi.Output<outputs.sae.LoadBalancerIntranetIntranet[]>;
 
     /**
      * Create a LoadBalancerIntranet resource with the given unique name, arguments, and options.
@@ -150,21 +150,21 @@ export class LoadBalancerIntranet extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadBalancerIntranetState | undefined;
-            resourceInputs["appId"] = state ? state.appId : undefined;
-            resourceInputs["intranetIp"] = state ? state.intranetIp : undefined;
-            resourceInputs["intranetSlbId"] = state ? state.intranetSlbId : undefined;
-            resourceInputs["intranets"] = state ? state.intranets : undefined;
+            resourceInputs["appId"] = state?.appId;
+            resourceInputs["intranetIp"] = state?.intranetIp;
+            resourceInputs["intranetSlbId"] = state?.intranetSlbId;
+            resourceInputs["intranets"] = state?.intranets;
         } else {
             const args = argsOrState as LoadBalancerIntranetArgs | undefined;
-            if ((!args || args.appId === undefined) && !opts.urn) {
+            if (args?.appId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            if ((!args || args.intranets === undefined) && !opts.urn) {
+            if (args?.intranets === undefined && !opts.urn) {
                 throw new Error("Missing required property 'intranets'");
             }
-            resourceInputs["appId"] = args ? args.appId : undefined;
-            resourceInputs["intranetSlbId"] = args ? args.intranetSlbId : undefined;
-            resourceInputs["intranets"] = args ? args.intranets : undefined;
+            resourceInputs["appId"] = args?.appId;
+            resourceInputs["intranetSlbId"] = args?.intranetSlbId;
+            resourceInputs["intranets"] = args?.intranets;
             resourceInputs["intranetIp"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

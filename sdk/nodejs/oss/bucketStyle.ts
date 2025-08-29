@@ -79,23 +79,23 @@ export class BucketStyle extends pulumi.CustomResource {
     /**
      * Storage space to which the picture style belongs
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * Style category, valid values: image, document, video.
      */
-    public readonly category!: pulumi.Output<string>;
+    declare public readonly category: pulumi.Output<string>;
     /**
      * The Image style content can contain single or multiple image processing parameters.
      */
-    public readonly content!: pulumi.Output<string>;
+    declare public readonly content: pulumi.Output<string>;
     /**
      * Image Style Creation Time
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Image Style Name
      */
-    public readonly styleName!: pulumi.Output<string>;
+    declare public readonly styleName: pulumi.Output<string>;
 
     /**
      * Create a BucketStyle resource with the given unique name, arguments, and options.
@@ -110,26 +110,26 @@ export class BucketStyle extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketStyleState | undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["category"] = state ? state.category : undefined;
-            resourceInputs["content"] = state ? state.content : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["styleName"] = state ? state.styleName : undefined;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["category"] = state?.category;
+            resourceInputs["content"] = state?.content;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["styleName"] = state?.styleName;
         } else {
             const args = argsOrState as BucketStyleArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if ((!args || args.content === undefined) && !opts.urn) {
+            if (args?.content === undefined && !opts.urn) {
                 throw new Error("Missing required property 'content'");
             }
-            if ((!args || args.styleName === undefined) && !opts.urn) {
+            if (args?.styleName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'styleName'");
             }
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["category"] = args ? args.category : undefined;
-            resourceInputs["content"] = args ? args.content : undefined;
-            resourceInputs["styleName"] = args ? args.styleName : undefined;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["category"] = args?.category;
+            resourceInputs["content"] = args?.content;
+            resourceInputs["styleName"] = args?.styleName;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

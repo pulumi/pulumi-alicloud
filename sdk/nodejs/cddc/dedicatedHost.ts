@@ -44,66 +44,66 @@ export class DedicatedHost extends pulumi.CustomResource {
     /**
      * Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
      */
-    public readonly allocationStatus!: pulumi.Output<string>;
+    declare public readonly allocationStatus: pulumi.Output<string>;
     /**
      * Specifies whether to enable the auto-renewal feature.
      */
-    public readonly autoRenew!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoRenew: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the dedicated cluster.
      */
-    public readonly dedicatedHostGroupId!: pulumi.Output<string>;
+    declare public readonly dedicatedHostGroupId: pulumi.Output<string>;
     /**
      * The ID of the host.
      */
-    public /*out*/ readonly dedicatedHostId!: pulumi.Output<string>;
+    declare public /*out*/ readonly dedicatedHostId: pulumi.Output<string>;
     /**
      * The instance type of the host. For more information about the supported instance types of hosts, see [Host specification details](https://www.alibabacloud.com/help/doc-detail/206343.htm).
      */
-    public readonly hostClass!: pulumi.Output<string>;
+    declare public readonly hostClass: pulumi.Output<string>;
     /**
      * The name of the host. The name must be `1` to `64` characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
      */
-    public readonly hostName!: pulumi.Output<string>;
+    declare public readonly hostName: pulumi.Output<string>;
     /**
      * Host Image Category. Valid values: `WindowsWithMssqlEntAlwaysonLicense`, `WindowsWithMssqlStdLicense`, `WindowsWithMssqlEntLicense`, `WindowsWithMssqlWebLicense`, `AliLinux`.
      */
-    public readonly imageCategory!: pulumi.Output<string | undefined>;
+    declare public readonly imageCategory: pulumi.Output<string | undefined>;
     /**
      * Host password. **NOTE:** The creation of a host password is supported only when the database type is `Tair-PMem`.
      */
-    public readonly osPassword!: pulumi.Output<string | undefined>;
+    declare public readonly osPassword: pulumi.Output<string | undefined>;
     /**
      * The payment type of the resource. Valid values: `Subscription`.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * The unit of the subscription duration. Valid values: `Year`, `Month`, `Week`.
      */
-    public readonly period!: pulumi.Output<string | undefined>;
+    declare public readonly period: pulumi.Output<string | undefined>;
     /**
      * The state of the host. Valid values: `0:` The host is being created. `1`: The host is running. `2`: The host is faulty. `3`: The host is ready for deactivation. `4`: The host is being maintained. `5`: The host is deactivated. `6`: The host is restarting. `7`: The host is locked.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The subscription duration of the host. Valid values: 
      * * If the Period parameter is set to `Year`, the value of the UsedTime parameter ranges from `1` to `5`.
      * * If the Period parameter is set to `Month`, the value of the UsedTime parameter ranges from `1` to `9`.
      * * If the Period parameter is set to `Week`, the value of the UsedTime parameter ranges from `1`, `2` and `3`.
      */
-    public readonly usedTime!: pulumi.Output<number | undefined>;
+    declare public readonly usedTime: pulumi.Output<number | undefined>;
     /**
      * The ID of the vSwitch to which the host is connected.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
     /**
      * The ID of the zone.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a DedicatedHost resource with the given unique name, arguments, and options.
@@ -118,51 +118,51 @@ export class DedicatedHost extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DedicatedHostState | undefined;
-            resourceInputs["allocationStatus"] = state ? state.allocationStatus : undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["dedicatedHostGroupId"] = state ? state.dedicatedHostGroupId : undefined;
-            resourceInputs["dedicatedHostId"] = state ? state.dedicatedHostId : undefined;
-            resourceInputs["hostClass"] = state ? state.hostClass : undefined;
-            resourceInputs["hostName"] = state ? state.hostName : undefined;
-            resourceInputs["imageCategory"] = state ? state.imageCategory : undefined;
-            resourceInputs["osPassword"] = state ? state.osPassword : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["usedTime"] = state ? state.usedTime : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["allocationStatus"] = state?.allocationStatus;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["dedicatedHostGroupId"] = state?.dedicatedHostGroupId;
+            resourceInputs["dedicatedHostId"] = state?.dedicatedHostId;
+            resourceInputs["hostClass"] = state?.hostClass;
+            resourceInputs["hostName"] = state?.hostName;
+            resourceInputs["imageCategory"] = state?.imageCategory;
+            resourceInputs["osPassword"] = state?.osPassword;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["usedTime"] = state?.usedTime;
+            resourceInputs["vswitchId"] = state?.vswitchId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as DedicatedHostArgs | undefined;
-            if ((!args || args.dedicatedHostGroupId === undefined) && !opts.urn) {
+            if (args?.dedicatedHostGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dedicatedHostGroupId'");
             }
-            if ((!args || args.hostClass === undefined) && !opts.urn) {
+            if (args?.hostClass === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostClass'");
             }
-            if ((!args || args.paymentType === undefined) && !opts.urn) {
+            if (args?.paymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+            if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["allocationStatus"] = args ? args.allocationStatus : undefined;
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["dedicatedHostGroupId"] = args ? args.dedicatedHostGroupId : undefined;
-            resourceInputs["hostClass"] = args ? args.hostClass : undefined;
-            resourceInputs["hostName"] = args ? args.hostName : undefined;
-            resourceInputs["imageCategory"] = args ? args.imageCategory : undefined;
+            resourceInputs["allocationStatus"] = args?.allocationStatus;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["dedicatedHostGroupId"] = args?.dedicatedHostGroupId;
+            resourceInputs["hostClass"] = args?.hostClass;
+            resourceInputs["hostName"] = args?.hostName;
+            resourceInputs["imageCategory"] = args?.imageCategory;
             resourceInputs["osPassword"] = args?.osPassword ? pulumi.secret(args.osPassword) : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["usedTime"] = args ? args.usedTime : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["usedTime"] = args?.usedTime;
+            resourceInputs["vswitchId"] = args?.vswitchId;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["dedicatedHostId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

@@ -148,81 +148,81 @@ export class Store extends pulumi.CustomResource {
     /**
      * Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
      */
-    public readonly appendMeta!: pulumi.Output<boolean | undefined>;
+    declare public readonly appendMeta: pulumi.Output<boolean | undefined>;
     /**
      * Determines whether to automatically split a shard. Default to `false`.
      */
-    public readonly autoSplit!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoSplit: pulumi.Output<boolean | undefined>;
     /**
      * Log library creation time. Unix timestamp format that represents the number of seconds from 1970-1-1 00:00:00 UTC calculation.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly createTime: pulumi.Output<number>;
     /**
      * Whether open webtracking. webtracking network tracing, support the collection of HTML log, H5, Ios and android platforms.
      */
-    public readonly enableWebTracking!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableWebTracking: pulumi.Output<boolean | undefined>;
     /**
      * Encrypted storage of data, providing data static protection capability, encryptConf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encryptConf` below.
      */
-    public readonly encryptConf!: pulumi.Output<outputs.log.StoreEncryptConf>;
+    declare public readonly encryptConf: pulumi.Output<outputs.log.StoreEncryptConf>;
     /**
      * The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
      */
-    public readonly hotTtl!: pulumi.Output<number | undefined>;
+    declare public readonly hotTtl: pulumi.Output<number | undefined>;
     /**
      * Low frequency storage time
      */
-    public readonly infrequentAccessTtl!: pulumi.Output<number | undefined>;
+    declare public readonly infrequentAccessTtl: pulumi.Output<number | undefined>;
     /**
      * The log store, which is unique in the same project. You need to specify one of the attributes: `logstoreName`, `name`.
      */
-    public readonly logstoreName!: pulumi.Output<string>;
+    declare public readonly logstoreName: pulumi.Output<string>;
     /**
      * The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
      */
-    public readonly maxSplitShardCount!: pulumi.Output<number | undefined>;
+    declare public readonly maxSplitShardCount: pulumi.Output<number | undefined>;
     /**
      * Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
      */
-    public readonly meteringMode!: pulumi.Output<string>;
+    declare public readonly meteringMode: pulumi.Output<string>;
     /**
      * The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
      */
-    public readonly mode!: pulumi.Output<string>;
+    declare public readonly mode: pulumi.Output<string>;
     /**
      * . Field 'name' has been deprecated from provider version 1.215.0. New field 'logstore_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.215.0. New field 'logstore_name' instead.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * . Field 'project' has been deprecated from provider version 1.215.0. New field 'project_name' instead.
      *
      * @deprecated Field 'project' has been deprecated since provider version 1.215.0. New field 'project_name' instead.
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The project name to the log store belongs. You need to specify one of the attributes: `projectName`, `project`.
      */
-    public readonly projectName!: pulumi.Output<string>;
+    declare public readonly projectName: pulumi.Output<string>;
     /**
      * The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is 3650.
      */
-    public readonly retentionPeriod!: pulumi.Output<number | undefined>;
+    declare public readonly retentionPeriod: pulumi.Output<number | undefined>;
     /**
      * The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/zh/sls/product-overview/shard).
      */
-    public readonly shardCount!: pulumi.Output<number | undefined>;
+    declare public readonly shardCount: pulumi.Output<number | undefined>;
     /**
      * The shard attribute.
      */
-    public /*out*/ readonly shards!: pulumi.Output<outputs.log.StoreShard[]>;
+    declare public /*out*/ readonly shards: pulumi.Output<outputs.log.StoreShard[]>;
     /**
      * Determines whether store type is metric. `Metrics` means metric store, empty means log store.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    public readonly telemetryType!: pulumi.Output<string | undefined>;
+    declare public readonly telemetryType: pulumi.Output<string | undefined>;
 
     /**
      * Create a Store resource with the given unique name, arguments, and options.
@@ -237,42 +237,42 @@ export class Store extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StoreState | undefined;
-            resourceInputs["appendMeta"] = state ? state.appendMeta : undefined;
-            resourceInputs["autoSplit"] = state ? state.autoSplit : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["enableWebTracking"] = state ? state.enableWebTracking : undefined;
-            resourceInputs["encryptConf"] = state ? state.encryptConf : undefined;
-            resourceInputs["hotTtl"] = state ? state.hotTtl : undefined;
-            resourceInputs["infrequentAccessTtl"] = state ? state.infrequentAccessTtl : undefined;
-            resourceInputs["logstoreName"] = state ? state.logstoreName : undefined;
-            resourceInputs["maxSplitShardCount"] = state ? state.maxSplitShardCount : undefined;
-            resourceInputs["meteringMode"] = state ? state.meteringMode : undefined;
-            resourceInputs["mode"] = state ? state.mode : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["projectName"] = state ? state.projectName : undefined;
-            resourceInputs["retentionPeriod"] = state ? state.retentionPeriod : undefined;
-            resourceInputs["shardCount"] = state ? state.shardCount : undefined;
-            resourceInputs["shards"] = state ? state.shards : undefined;
-            resourceInputs["telemetryType"] = state ? state.telemetryType : undefined;
+            resourceInputs["appendMeta"] = state?.appendMeta;
+            resourceInputs["autoSplit"] = state?.autoSplit;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["enableWebTracking"] = state?.enableWebTracking;
+            resourceInputs["encryptConf"] = state?.encryptConf;
+            resourceInputs["hotTtl"] = state?.hotTtl;
+            resourceInputs["infrequentAccessTtl"] = state?.infrequentAccessTtl;
+            resourceInputs["logstoreName"] = state?.logstoreName;
+            resourceInputs["maxSplitShardCount"] = state?.maxSplitShardCount;
+            resourceInputs["meteringMode"] = state?.meteringMode;
+            resourceInputs["mode"] = state?.mode;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["projectName"] = state?.projectName;
+            resourceInputs["retentionPeriod"] = state?.retentionPeriod;
+            resourceInputs["shardCount"] = state?.shardCount;
+            resourceInputs["shards"] = state?.shards;
+            resourceInputs["telemetryType"] = state?.telemetryType;
         } else {
             const args = argsOrState as StoreArgs | undefined;
-            resourceInputs["appendMeta"] = args ? args.appendMeta : undefined;
-            resourceInputs["autoSplit"] = args ? args.autoSplit : undefined;
-            resourceInputs["enableWebTracking"] = args ? args.enableWebTracking : undefined;
-            resourceInputs["encryptConf"] = args ? args.encryptConf : undefined;
-            resourceInputs["hotTtl"] = args ? args.hotTtl : undefined;
-            resourceInputs["infrequentAccessTtl"] = args ? args.infrequentAccessTtl : undefined;
-            resourceInputs["logstoreName"] = args ? args.logstoreName : undefined;
-            resourceInputs["maxSplitShardCount"] = args ? args.maxSplitShardCount : undefined;
-            resourceInputs["meteringMode"] = args ? args.meteringMode : undefined;
-            resourceInputs["mode"] = args ? args.mode : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["projectName"] = args ? args.projectName : undefined;
-            resourceInputs["retentionPeriod"] = args ? args.retentionPeriod : undefined;
-            resourceInputs["shardCount"] = args ? args.shardCount : undefined;
-            resourceInputs["telemetryType"] = args ? args.telemetryType : undefined;
+            resourceInputs["appendMeta"] = args?.appendMeta;
+            resourceInputs["autoSplit"] = args?.autoSplit;
+            resourceInputs["enableWebTracking"] = args?.enableWebTracking;
+            resourceInputs["encryptConf"] = args?.encryptConf;
+            resourceInputs["hotTtl"] = args?.hotTtl;
+            resourceInputs["infrequentAccessTtl"] = args?.infrequentAccessTtl;
+            resourceInputs["logstoreName"] = args?.logstoreName;
+            resourceInputs["maxSplitShardCount"] = args?.maxSplitShardCount;
+            resourceInputs["meteringMode"] = args?.meteringMode;
+            resourceInputs["mode"] = args?.mode;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["projectName"] = args?.projectName;
+            resourceInputs["retentionPeriod"] = args?.retentionPeriod;
+            resourceInputs["shardCount"] = args?.shardCount;
+            resourceInputs["telemetryType"] = args?.telemetryType;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["shards"] = undefined /*out*/;
         }

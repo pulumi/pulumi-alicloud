@@ -117,47 +117,47 @@ export class EcsBackupClient extends pulumi.CustomResource {
     /**
      * The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`. **NOTE:** The value of `CLASSIC` has been deprecated in v1.161.0+.
      */
-    public readonly dataNetworkType!: pulumi.Output<string>;
+    declare public readonly dataNetworkType: pulumi.Output<string>;
     /**
      * The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
      */
-    public readonly dataProxySetting!: pulumi.Output<string>;
+    declare public readonly dataProxySetting: pulumi.Output<string>;
     /**
      * The ID of ECS instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The number of CPU cores used by a single backup task, 0 means no restrictions.
      */
-    public readonly maxCpuCore!: pulumi.Output<string>;
+    declare public readonly maxCpuCore: pulumi.Output<string>;
     /**
      * The number of concurrent jobs for a single backup task, 0 means no restrictions.
      */
-    public readonly maxWorker!: pulumi.Output<string>;
+    declare public readonly maxWorker: pulumi.Output<string>;
     /**
      * Custom data plane proxy server host address.
      */
-    public readonly proxyHost!: pulumi.Output<string>;
+    declare public readonly proxyHost: pulumi.Output<string>;
     /**
      * The password of custom data plane proxy server.
      */
-    public readonly proxyPassword!: pulumi.Output<string>;
+    declare public readonly proxyPassword: pulumi.Output<string>;
     /**
      * Custom data plane proxy server host port.
      */
-    public readonly proxyPort!: pulumi.Output<string>;
+    declare public readonly proxyPort: pulumi.Output<string>;
     /**
      * The username of custom data plane proxy server.
      */
-    public readonly proxyUser!: pulumi.Output<string>;
+    declare public readonly proxyUser: pulumi.Output<string>;
     /**
      * Status of client. Valid values: `ACTIVATED`, `STOPPED`. You can start or stop the client by specifying the status.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
      */
-    public readonly useHttps!: pulumi.Output<boolean>;
+    declare public readonly useHttps: pulumi.Output<boolean>;
 
     /**
      * Create a EcsBackupClient resource with the given unique name, arguments, and options.
@@ -172,33 +172,33 @@ export class EcsBackupClient extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcsBackupClientState | undefined;
-            resourceInputs["dataNetworkType"] = state ? state.dataNetworkType : undefined;
-            resourceInputs["dataProxySetting"] = state ? state.dataProxySetting : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["maxCpuCore"] = state ? state.maxCpuCore : undefined;
-            resourceInputs["maxWorker"] = state ? state.maxWorker : undefined;
-            resourceInputs["proxyHost"] = state ? state.proxyHost : undefined;
-            resourceInputs["proxyPassword"] = state ? state.proxyPassword : undefined;
-            resourceInputs["proxyPort"] = state ? state.proxyPort : undefined;
-            resourceInputs["proxyUser"] = state ? state.proxyUser : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["useHttps"] = state ? state.useHttps : undefined;
+            resourceInputs["dataNetworkType"] = state?.dataNetworkType;
+            resourceInputs["dataProxySetting"] = state?.dataProxySetting;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["maxCpuCore"] = state?.maxCpuCore;
+            resourceInputs["maxWorker"] = state?.maxWorker;
+            resourceInputs["proxyHost"] = state?.proxyHost;
+            resourceInputs["proxyPassword"] = state?.proxyPassword;
+            resourceInputs["proxyPort"] = state?.proxyPort;
+            resourceInputs["proxyUser"] = state?.proxyUser;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["useHttps"] = state?.useHttps;
         } else {
             const args = argsOrState as EcsBackupClientArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["dataNetworkType"] = args ? args.dataNetworkType : undefined;
-            resourceInputs["dataProxySetting"] = args ? args.dataProxySetting : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["maxCpuCore"] = args ? args.maxCpuCore : undefined;
-            resourceInputs["maxWorker"] = args ? args.maxWorker : undefined;
-            resourceInputs["proxyHost"] = args ? args.proxyHost : undefined;
-            resourceInputs["proxyPassword"] = args ? args.proxyPassword : undefined;
-            resourceInputs["proxyPort"] = args ? args.proxyPort : undefined;
-            resourceInputs["proxyUser"] = args ? args.proxyUser : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["useHttps"] = args ? args.useHttps : undefined;
+            resourceInputs["dataNetworkType"] = args?.dataNetworkType;
+            resourceInputs["dataProxySetting"] = args?.dataProxySetting;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["maxCpuCore"] = args?.maxCpuCore;
+            resourceInputs["maxWorker"] = args?.maxWorker;
+            resourceInputs["proxyHost"] = args?.proxyHost;
+            resourceInputs["proxyPassword"] = args?.proxyPassword;
+            resourceInputs["proxyPort"] = args?.proxyPort;
+            resourceInputs["proxyUser"] = args?.proxyUser;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["useHttps"] = args?.useHttps;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EcsBackupClient.__pulumiType, name, resourceInputs, opts);

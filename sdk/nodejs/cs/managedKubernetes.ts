@@ -78,33 +78,33 @@ export class ManagedKubernetes extends pulumi.CustomResource {
     /**
      * The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
      */
-    public readonly addons!: pulumi.Output<outputs.cs.ManagedKubernetesAddon[] | undefined>;
+    declare public readonly addons: pulumi.Output<outputs.cs.ManagedKubernetesAddon[] | undefined>;
     /**
      * A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `serviceAccountIssuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
      */
-    public readonly apiAudiences!: pulumi.Output<string[] | undefined>;
+    declare public readonly apiAudiences: pulumi.Output<string[] | undefined>;
     /**
      * Audit log configuration. See `auditLogConfig` below.
      */
-    public readonly auditLogConfig!: pulumi.Output<outputs.cs.ManagedKubernetesAuditLogConfig>;
+    declare public readonly auditLogConfig: pulumi.Output<outputs.cs.ManagedKubernetesAuditLogConfig>;
     /**
      * (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      *
      * @deprecated Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
      */
-    public /*out*/ readonly certificateAuthority!: pulumi.Output<outputs.cs.ManagedKubernetesCertificateAuthority>;
+    declare public /*out*/ readonly certificateAuthority: pulumi.Output<outputs.cs.ManagedKubernetesCertificateAuthority>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      *
      * @deprecated Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      */
-    public readonly clientCert!: pulumi.Output<string | undefined>;
+    declare public readonly clientCert: pulumi.Output<string | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      *
      * @deprecated Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      */
-    public readonly clientKey!: pulumi.Output<string | undefined>;
+    declare public readonly clientKey: pulumi.Output<string | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      *
@@ -112,101 +112,101 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      *
      * @deprecated Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      */
-    public readonly clusterCaCert!: pulumi.Output<string | undefined>;
+    declare public readonly clusterCaCert: pulumi.Output<string | undefined>;
     /**
      * Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
      */
-    public readonly clusterDomain!: pulumi.Output<string | undefined>;
+    declare public readonly clusterDomain: pulumi.Output<string | undefined>;
     /**
      * The cluster specifications of kubernetes cluster,which can be empty. Valid values:
      * * ack.standard : Basic managed clusters.
      * * ack.pro.small : Professional managed clusters.
      */
-    public readonly clusterSpec!: pulumi.Output<string>;
+    declare public readonly clusterSpec: pulumi.Output<string>;
     /**
      * Map of kubernetes cluster connection information.
      */
-    public /*out*/ readonly connections!: pulumi.Output<outputs.cs.ManagedKubernetesConnections>;
+    declare public /*out*/ readonly connections: pulumi.Output<outputs.cs.ManagedKubernetesConnections>;
     /**
      * List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
      */
-    public readonly controlPlaneLogComponents!: pulumi.Output<string[] | undefined>;
+    declare public readonly controlPlaneLogComponents: pulumi.Output<string[] | undefined>;
     /**
      * Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
      */
-    public readonly controlPlaneLogProject!: pulumi.Output<string>;
+    declare public readonly controlPlaneLogProject: pulumi.Output<string>;
     /**
      * Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
      */
-    public readonly controlPlaneLogTtl!: pulumi.Output<string>;
+    declare public readonly controlPlaneLogTtl: pulumi.Output<string>;
     /**
      * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
      * > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
      */
-    public readonly customSan!: pulumi.Output<string | undefined>;
+    declare public readonly customSan: pulumi.Output<string | undefined>;
     /**
      * Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
      */
-    public readonly deleteOptions!: pulumi.Output<outputs.cs.ManagedKubernetesDeleteOption[] | undefined>;
+    declare public readonly deleteOptions: pulumi.Output<outputs.cs.ManagedKubernetesDeleteOption[] | undefined>;
     /**
      * Whether to enable cluster deletion protection.
      */
-    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
+    declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
      */
-    public readonly enableRrsa!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableRrsa: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
      */
-    public readonly encryptionProviderKey!: pulumi.Output<string | undefined>;
+    declare public readonly encryptionProviderKey: pulumi.Output<string | undefined>;
     /**
      * The IP address family that the cluster network uses. Valid values:
      */
-    public readonly ipStack!: pulumi.Output<string>;
+    declare public readonly ipStack: pulumi.Output<string>;
     /**
      * Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
      */
-    public readonly isEnterpriseSecurityGroup!: pulumi.Output<boolean>;
+    declare public readonly isEnterpriseSecurityGroup: pulumi.Output<boolean>;
     /**
      * The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
      *
      * @deprecated Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
      */
-    public readonly loadBalancerSpec!: pulumi.Output<string>;
+    declare public readonly loadBalancerSpec: pulumi.Output<string>;
     /**
      * The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
      */
-    public readonly maintenanceWindow!: pulumi.Output<outputs.cs.ManagedKubernetesMaintenanceWindow>;
+    declare public readonly maintenanceWindow: pulumi.Output<outputs.cs.ManagedKubernetesMaintenanceWindow>;
     /**
      * The kubernetes cluster's name. It is unique in one Alicloud account.
      */
-    public readonly name!: pulumi.Output<string>;
-    public readonly namePrefix!: pulumi.Output<string | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly namePrefix: pulumi.Output<string | undefined>;
     /**
      * The ID of nat gateway used to launch kubernetes cluster.
      */
-    public /*out*/ readonly natGatewayId!: pulumi.Output<string>;
+    declare public /*out*/ readonly natGatewayId: pulumi.Output<string>;
     /**
      * Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Only works for **Create** Operation.
      */
-    public readonly newNatGateway!: pulumi.Output<boolean | undefined>;
+    declare public readonly newNatGateway: pulumi.Output<boolean | undefined>;
     /**
      * The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
      */
-    public readonly nodeCidrMask!: pulumi.Output<number | undefined>;
+    declare public readonly nodeCidrMask: pulumi.Output<number | undefined>;
     /**
      * The cluster automatic operation policy. See `operationPolicy` below.
      */
-    public readonly operationPolicy!: pulumi.Output<outputs.cs.ManagedKubernetesOperationPolicy>;
+    declare public readonly operationPolicy: pulumi.Output<outputs.cs.ManagedKubernetesOperationPolicy>;
     /**
      * [Flannel Specific] The CIDR block for the pod network when using Flannel.
      */
-    public readonly podCidr!: pulumi.Output<string | undefined>;
+    declare public readonly podCidr: pulumi.Output<string | undefined>;
     /**
      * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `vswitchIds` but must be in same availability zones. Only works for **Create** Operation.
      */
-    public readonly podVswitchIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly podVswitchIds: pulumi.Output<string[] | undefined>;
     /**
      * The profile of cluster. Valid values:
      * * `Default`: ACK managed cluster. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
@@ -214,20 +214,20 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      * * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
      * * `Acs`: ACS cluster.
      */
-    public readonly profile!: pulumi.Output<string>;
+    declare public readonly profile: pulumi.Output<string>;
     /**
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      */
-    public readonly proxyMode!: pulumi.Output<string | undefined>;
+    declare public readonly proxyMode: pulumi.Output<string | undefined>;
     /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
-    public readonly retainResources!: pulumi.Output<string[] | undefined>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
+    declare public readonly retainResources: pulumi.Output<string[] | undefined>;
     /**
      * (Optional, Available since v1.185.0) Nested attribute containing RRSA related data for your cluster.
      */
-    public /*out*/ readonly rrsaMetadata!: pulumi.Output<outputs.cs.ManagedKubernetesRrsaMetadata>;
+    declare public /*out*/ readonly rrsaMetadata: pulumi.Output<outputs.cs.ManagedKubernetesRrsaMetadata>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      * * > **NOTE:** Please take of note before updating the `securityGroupId`:
@@ -235,41 +235,41 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      * * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
      * * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
      */
-    public readonly securityGroupId!: pulumi.Output<string>;
+    declare public readonly securityGroupId: pulumi.Output<string>;
     /**
      * The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `apiAudiences` as well). From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
      */
-    public readonly serviceAccountIssuer!: pulumi.Output<string | undefined>;
+    declare public readonly serviceAccountIssuer: pulumi.Output<string | undefined>;
     /**
      * The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
      */
-    public readonly serviceCidr!: pulumi.Output<string | undefined>;
+    declare public readonly serviceCidr: pulumi.Output<string | undefined>;
     /**
      * Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
      *
      * *Network params*
      */
-    public readonly skipSetCertificateAuthority!: pulumi.Output<boolean | undefined>;
+    declare public readonly skipSetCertificateAuthority: pulumi.Output<boolean | undefined>;
     /**
      * The ID of APIServer load balancer.
      */
-    public /*out*/ readonly slbId!: pulumi.Output<string>;
+    declare public /*out*/ readonly slbId: pulumi.Output<string>;
     /**
      * The public ip of load balancer.
      */
-    public /*out*/ readonly slbInternet!: pulumi.Output<string>;
+    declare public /*out*/ readonly slbInternet: pulumi.Output<string>;
     /**
      * Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
      */
-    public readonly slbInternetEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly slbInternetEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The ID of private load balancer where the current cluster master node is located.
      */
-    public /*out*/ readonly slbIntranet!: pulumi.Output<string>;
+    declare public /*out*/ readonly slbIntranet: pulumi.Output<string>;
     /**
      * Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Cluster timezone, works for control plane and Worker nodes.
      * * > **NOTE:** Please take of note before updating the `timezone`:
@@ -277,19 +277,19 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      * * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
      * * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
      */
-    public readonly timezone!: pulumi.Output<string | undefined>;
+    declare public readonly timezone: pulumi.Output<string | undefined>;
     /**
      * The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
      */
-    public readonly userCa!: pulumi.Output<string | undefined>;
+    declare public readonly userCa: pulumi.Output<string | undefined>;
     /**
      * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
      */
-    public readonly version!: pulumi.Output<string>;
+    declare public readonly version: pulumi.Output<string>;
     /**
      * The ID of VPC where the current cluster is located.
      */
-    public /*out*/ readonly vpcId!: pulumi.Output<string>;
+    declare public /*out*/ readonly vpcId: pulumi.Output<string>;
     /**
      * The vSwitches of the control plane.
      * > **NOTE:** Please take of note before updating the `vswitchIds`:
@@ -298,21 +298,21 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      * * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
      * * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
      */
-    public readonly vswitchIds!: pulumi.Output<string[]>;
+    declare public readonly vswitchIds: pulumi.Output<string[]>;
     /**
      * The RamRole Name attached to worker node.
      */
-    public /*out*/ readonly workerRamRoleName!: pulumi.Output<string>;
+    declare public /*out*/ readonly workerRamRoleName: pulumi.Output<string>;
     /**
      * The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitchIds` to managed control plane vSwitches, which supports modifying control plane vSwitches.
      *
      * @deprecated Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches
      */
-    public readonly workerVswitchIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly workerVswitchIds: pulumi.Output<string[] | undefined>;
     /**
      * The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitchIds` together.
      */
-    public readonly zoneIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly zoneIds: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a ManagedKubernetes resource with the given unique name, arguments, and options.
@@ -327,103 +327,103 @@ export class ManagedKubernetes extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ManagedKubernetesState | undefined;
-            resourceInputs["addons"] = state ? state.addons : undefined;
-            resourceInputs["apiAudiences"] = state ? state.apiAudiences : undefined;
-            resourceInputs["auditLogConfig"] = state ? state.auditLogConfig : undefined;
-            resourceInputs["certificateAuthority"] = state ? state.certificateAuthority : undefined;
-            resourceInputs["clientCert"] = state ? state.clientCert : undefined;
-            resourceInputs["clientKey"] = state ? state.clientKey : undefined;
-            resourceInputs["clusterCaCert"] = state ? state.clusterCaCert : undefined;
-            resourceInputs["clusterDomain"] = state ? state.clusterDomain : undefined;
-            resourceInputs["clusterSpec"] = state ? state.clusterSpec : undefined;
-            resourceInputs["connections"] = state ? state.connections : undefined;
-            resourceInputs["controlPlaneLogComponents"] = state ? state.controlPlaneLogComponents : undefined;
-            resourceInputs["controlPlaneLogProject"] = state ? state.controlPlaneLogProject : undefined;
-            resourceInputs["controlPlaneLogTtl"] = state ? state.controlPlaneLogTtl : undefined;
-            resourceInputs["customSan"] = state ? state.customSan : undefined;
-            resourceInputs["deleteOptions"] = state ? state.deleteOptions : undefined;
-            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            resourceInputs["enableRrsa"] = state ? state.enableRrsa : undefined;
-            resourceInputs["encryptionProviderKey"] = state ? state.encryptionProviderKey : undefined;
-            resourceInputs["ipStack"] = state ? state.ipStack : undefined;
-            resourceInputs["isEnterpriseSecurityGroup"] = state ? state.isEnterpriseSecurityGroup : undefined;
-            resourceInputs["loadBalancerSpec"] = state ? state.loadBalancerSpec : undefined;
-            resourceInputs["maintenanceWindow"] = state ? state.maintenanceWindow : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namePrefix"] = state ? state.namePrefix : undefined;
-            resourceInputs["natGatewayId"] = state ? state.natGatewayId : undefined;
-            resourceInputs["newNatGateway"] = state ? state.newNatGateway : undefined;
-            resourceInputs["nodeCidrMask"] = state ? state.nodeCidrMask : undefined;
-            resourceInputs["operationPolicy"] = state ? state.operationPolicy : undefined;
-            resourceInputs["podCidr"] = state ? state.podCidr : undefined;
-            resourceInputs["podVswitchIds"] = state ? state.podVswitchIds : undefined;
-            resourceInputs["profile"] = state ? state.profile : undefined;
-            resourceInputs["proxyMode"] = state ? state.proxyMode : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["retainResources"] = state ? state.retainResources : undefined;
-            resourceInputs["rrsaMetadata"] = state ? state.rrsaMetadata : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["serviceAccountIssuer"] = state ? state.serviceAccountIssuer : undefined;
-            resourceInputs["serviceCidr"] = state ? state.serviceCidr : undefined;
-            resourceInputs["skipSetCertificateAuthority"] = state ? state.skipSetCertificateAuthority : undefined;
-            resourceInputs["slbId"] = state ? state.slbId : undefined;
-            resourceInputs["slbInternet"] = state ? state.slbInternet : undefined;
-            resourceInputs["slbInternetEnabled"] = state ? state.slbInternetEnabled : undefined;
-            resourceInputs["slbIntranet"] = state ? state.slbIntranet : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["timezone"] = state ? state.timezone : undefined;
-            resourceInputs["userCa"] = state ? state.userCa : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchIds"] = state ? state.vswitchIds : undefined;
-            resourceInputs["workerRamRoleName"] = state ? state.workerRamRoleName : undefined;
-            resourceInputs["workerVswitchIds"] = state ? state.workerVswitchIds : undefined;
-            resourceInputs["zoneIds"] = state ? state.zoneIds : undefined;
+            resourceInputs["addons"] = state?.addons;
+            resourceInputs["apiAudiences"] = state?.apiAudiences;
+            resourceInputs["auditLogConfig"] = state?.auditLogConfig;
+            resourceInputs["certificateAuthority"] = state?.certificateAuthority;
+            resourceInputs["clientCert"] = state?.clientCert;
+            resourceInputs["clientKey"] = state?.clientKey;
+            resourceInputs["clusterCaCert"] = state?.clusterCaCert;
+            resourceInputs["clusterDomain"] = state?.clusterDomain;
+            resourceInputs["clusterSpec"] = state?.clusterSpec;
+            resourceInputs["connections"] = state?.connections;
+            resourceInputs["controlPlaneLogComponents"] = state?.controlPlaneLogComponents;
+            resourceInputs["controlPlaneLogProject"] = state?.controlPlaneLogProject;
+            resourceInputs["controlPlaneLogTtl"] = state?.controlPlaneLogTtl;
+            resourceInputs["customSan"] = state?.customSan;
+            resourceInputs["deleteOptions"] = state?.deleteOptions;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["enableRrsa"] = state?.enableRrsa;
+            resourceInputs["encryptionProviderKey"] = state?.encryptionProviderKey;
+            resourceInputs["ipStack"] = state?.ipStack;
+            resourceInputs["isEnterpriseSecurityGroup"] = state?.isEnterpriseSecurityGroup;
+            resourceInputs["loadBalancerSpec"] = state?.loadBalancerSpec;
+            resourceInputs["maintenanceWindow"] = state?.maintenanceWindow;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namePrefix"] = state?.namePrefix;
+            resourceInputs["natGatewayId"] = state?.natGatewayId;
+            resourceInputs["newNatGateway"] = state?.newNatGateway;
+            resourceInputs["nodeCidrMask"] = state?.nodeCidrMask;
+            resourceInputs["operationPolicy"] = state?.operationPolicy;
+            resourceInputs["podCidr"] = state?.podCidr;
+            resourceInputs["podVswitchIds"] = state?.podVswitchIds;
+            resourceInputs["profile"] = state?.profile;
+            resourceInputs["proxyMode"] = state?.proxyMode;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["retainResources"] = state?.retainResources;
+            resourceInputs["rrsaMetadata"] = state?.rrsaMetadata;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["serviceAccountIssuer"] = state?.serviceAccountIssuer;
+            resourceInputs["serviceCidr"] = state?.serviceCidr;
+            resourceInputs["skipSetCertificateAuthority"] = state?.skipSetCertificateAuthority;
+            resourceInputs["slbId"] = state?.slbId;
+            resourceInputs["slbInternet"] = state?.slbInternet;
+            resourceInputs["slbInternetEnabled"] = state?.slbInternetEnabled;
+            resourceInputs["slbIntranet"] = state?.slbIntranet;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["timezone"] = state?.timezone;
+            resourceInputs["userCa"] = state?.userCa;
+            resourceInputs["version"] = state?.version;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchIds"] = state?.vswitchIds;
+            resourceInputs["workerRamRoleName"] = state?.workerRamRoleName;
+            resourceInputs["workerVswitchIds"] = state?.workerVswitchIds;
+            resourceInputs["zoneIds"] = state?.zoneIds;
         } else {
             const args = argsOrState as ManagedKubernetesArgs | undefined;
-            resourceInputs["addons"] = args ? args.addons : undefined;
-            resourceInputs["apiAudiences"] = args ? args.apiAudiences : undefined;
-            resourceInputs["auditLogConfig"] = args ? args.auditLogConfig : undefined;
-            resourceInputs["clientCert"] = args ? args.clientCert : undefined;
-            resourceInputs["clientKey"] = args ? args.clientKey : undefined;
-            resourceInputs["clusterCaCert"] = args ? args.clusterCaCert : undefined;
-            resourceInputs["clusterDomain"] = args ? args.clusterDomain : undefined;
-            resourceInputs["clusterSpec"] = args ? args.clusterSpec : undefined;
-            resourceInputs["controlPlaneLogComponents"] = args ? args.controlPlaneLogComponents : undefined;
-            resourceInputs["controlPlaneLogProject"] = args ? args.controlPlaneLogProject : undefined;
-            resourceInputs["controlPlaneLogTtl"] = args ? args.controlPlaneLogTtl : undefined;
-            resourceInputs["customSan"] = args ? args.customSan : undefined;
-            resourceInputs["deleteOptions"] = args ? args.deleteOptions : undefined;
-            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            resourceInputs["enableRrsa"] = args ? args.enableRrsa : undefined;
-            resourceInputs["encryptionProviderKey"] = args ? args.encryptionProviderKey : undefined;
-            resourceInputs["ipStack"] = args ? args.ipStack : undefined;
-            resourceInputs["isEnterpriseSecurityGroup"] = args ? args.isEnterpriseSecurityGroup : undefined;
-            resourceInputs["loadBalancerSpec"] = args ? args.loadBalancerSpec : undefined;
-            resourceInputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namePrefix"] = args ? args.namePrefix : undefined;
-            resourceInputs["newNatGateway"] = args ? args.newNatGateway : undefined;
-            resourceInputs["nodeCidrMask"] = args ? args.nodeCidrMask : undefined;
-            resourceInputs["operationPolicy"] = args ? args.operationPolicy : undefined;
-            resourceInputs["podCidr"] = args ? args.podCidr : undefined;
-            resourceInputs["podVswitchIds"] = args ? args.podVswitchIds : undefined;
-            resourceInputs["profile"] = args ? args.profile : undefined;
-            resourceInputs["proxyMode"] = args ? args.proxyMode : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["retainResources"] = args ? args.retainResources : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            resourceInputs["serviceAccountIssuer"] = args ? args.serviceAccountIssuer : undefined;
-            resourceInputs["serviceCidr"] = args ? args.serviceCidr : undefined;
-            resourceInputs["skipSetCertificateAuthority"] = args ? args.skipSetCertificateAuthority : undefined;
-            resourceInputs["slbInternetEnabled"] = args ? args.slbInternetEnabled : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["timezone"] = args ? args.timezone : undefined;
-            resourceInputs["userCa"] = args ? args.userCa : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
-            resourceInputs["vswitchIds"] = args ? args.vswitchIds : undefined;
-            resourceInputs["workerVswitchIds"] = args ? args.workerVswitchIds : undefined;
-            resourceInputs["zoneIds"] = args ? args.zoneIds : undefined;
+            resourceInputs["addons"] = args?.addons;
+            resourceInputs["apiAudiences"] = args?.apiAudiences;
+            resourceInputs["auditLogConfig"] = args?.auditLogConfig;
+            resourceInputs["clientCert"] = args?.clientCert;
+            resourceInputs["clientKey"] = args?.clientKey;
+            resourceInputs["clusterCaCert"] = args?.clusterCaCert;
+            resourceInputs["clusterDomain"] = args?.clusterDomain;
+            resourceInputs["clusterSpec"] = args?.clusterSpec;
+            resourceInputs["controlPlaneLogComponents"] = args?.controlPlaneLogComponents;
+            resourceInputs["controlPlaneLogProject"] = args?.controlPlaneLogProject;
+            resourceInputs["controlPlaneLogTtl"] = args?.controlPlaneLogTtl;
+            resourceInputs["customSan"] = args?.customSan;
+            resourceInputs["deleteOptions"] = args?.deleteOptions;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["enableRrsa"] = args?.enableRrsa;
+            resourceInputs["encryptionProviderKey"] = args?.encryptionProviderKey;
+            resourceInputs["ipStack"] = args?.ipStack;
+            resourceInputs["isEnterpriseSecurityGroup"] = args?.isEnterpriseSecurityGroup;
+            resourceInputs["loadBalancerSpec"] = args?.loadBalancerSpec;
+            resourceInputs["maintenanceWindow"] = args?.maintenanceWindow;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namePrefix"] = args?.namePrefix;
+            resourceInputs["newNatGateway"] = args?.newNatGateway;
+            resourceInputs["nodeCidrMask"] = args?.nodeCidrMask;
+            resourceInputs["operationPolicy"] = args?.operationPolicy;
+            resourceInputs["podCidr"] = args?.podCidr;
+            resourceInputs["podVswitchIds"] = args?.podVswitchIds;
+            resourceInputs["profile"] = args?.profile;
+            resourceInputs["proxyMode"] = args?.proxyMode;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["retainResources"] = args?.retainResources;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["serviceAccountIssuer"] = args?.serviceAccountIssuer;
+            resourceInputs["serviceCidr"] = args?.serviceCidr;
+            resourceInputs["skipSetCertificateAuthority"] = args?.skipSetCertificateAuthority;
+            resourceInputs["slbInternetEnabled"] = args?.slbInternetEnabled;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["timezone"] = args?.timezone;
+            resourceInputs["userCa"] = args?.userCa;
+            resourceInputs["version"] = args?.version;
+            resourceInputs["vswitchIds"] = args?.vswitchIds;
+            resourceInputs["workerVswitchIds"] = args?.workerVswitchIds;
+            resourceInputs["zoneIds"] = args?.zoneIds;
             resourceInputs["certificateAuthority"] = undefined /*out*/;
             resourceInputs["connections"] = undefined /*out*/;
             resourceInputs["natGatewayId"] = undefined /*out*/;

@@ -122,11 +122,11 @@ export class WorkspaceModelVersion extends pulumi.CustomResource {
      * - Approved: Allow to go online.
      * - Rejected: Online is not allowed.
      */
-    public readonly approvalStatus!: pulumi.Output<string>;
+    declare public readonly approvalStatus: pulumi.Output<string>;
     /**
      * Other information.
      */
-    public readonly extraInfo!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly extraInfo: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The format of the model. Valid values:
      * - OfflineModel
@@ -140,7 +140,7 @@ export class WorkspaceModelVersion extends pulumi.CustomResource {
      * - AlinkModel
      * - ONNX
      */
-    public readonly formatType!: pulumi.Output<string | undefined>;
+    declare public readonly formatType: pulumi.Output<string | undefined>;
     /**
      * The framework of the model. Valid values:
      * - Pytorch
@@ -151,54 +151,54 @@ export class WorkspaceModelVersion extends pulumi.CustomResource {
      * - Xflow
      * - TensorFlow
      */
-    public readonly frameworkType!: pulumi.Output<string | undefined>;
+    declare public readonly frameworkType: pulumi.Output<string | undefined>;
     /**
      * Describes how to apply to downstream inference services.
      */
-    public readonly inferenceSpec!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly inferenceSpec: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * List of model version labels. See `labels` below.
      */
-    public readonly labels!: pulumi.Output<outputs.pai.WorkspaceModelVersionLabel[] | undefined>;
+    declare public readonly labels: pulumi.Output<outputs.pai.WorkspaceModelVersionLabel[] | undefined>;
     /**
      * The metrics for the model. The serialized length is limited to 8192.
      */
-    public readonly metrics!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly metrics: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The model ID.
      */
-    public readonly modelId!: pulumi.Output<string>;
+    declare public readonly modelId: pulumi.Output<string>;
     /**
      * The extended field. This is a JSON string.
      */
-    public readonly options!: pulumi.Output<string | undefined>;
+    declare public readonly options: pulumi.Output<string | undefined>;
     /**
      * The source ID.
      */
-    public readonly sourceId!: pulumi.Output<string | undefined>;
+    declare public readonly sourceId: pulumi.Output<string | undefined>;
     /**
      * The type of the model source. Valid values:
      * - Custom: Custom.
      * - PAIFlow:PAI workflow.
      * - TrainingService:PAI training service.
      */
-    public readonly sourceType!: pulumi.Output<string>;
+    declare public readonly sourceType: pulumi.Output<string>;
     /**
      * The training configurations. Used for fine-tuning and incremental training.
      */
-    public readonly trainingSpec!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly trainingSpec: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The URI of the model version.
      */
-    public readonly uri!: pulumi.Output<string>;
+    declare public readonly uri: pulumi.Output<string>;
     /**
      * The version descriptions.
      */
-    public readonly versionDescription!: pulumi.Output<string | undefined>;
+    declare public readonly versionDescription: pulumi.Output<string | undefined>;
     /**
      * The Model version.
      */
-    public readonly versionName!: pulumi.Output<string>;
+    declare public readonly versionName: pulumi.Output<string>;
 
     /**
      * Create a WorkspaceModelVersion resource with the given unique name, arguments, and options.
@@ -213,44 +213,44 @@ export class WorkspaceModelVersion extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkspaceModelVersionState | undefined;
-            resourceInputs["approvalStatus"] = state ? state.approvalStatus : undefined;
-            resourceInputs["extraInfo"] = state ? state.extraInfo : undefined;
-            resourceInputs["formatType"] = state ? state.formatType : undefined;
-            resourceInputs["frameworkType"] = state ? state.frameworkType : undefined;
-            resourceInputs["inferenceSpec"] = state ? state.inferenceSpec : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["metrics"] = state ? state.metrics : undefined;
-            resourceInputs["modelId"] = state ? state.modelId : undefined;
-            resourceInputs["options"] = state ? state.options : undefined;
-            resourceInputs["sourceId"] = state ? state.sourceId : undefined;
-            resourceInputs["sourceType"] = state ? state.sourceType : undefined;
-            resourceInputs["trainingSpec"] = state ? state.trainingSpec : undefined;
-            resourceInputs["uri"] = state ? state.uri : undefined;
-            resourceInputs["versionDescription"] = state ? state.versionDescription : undefined;
-            resourceInputs["versionName"] = state ? state.versionName : undefined;
+            resourceInputs["approvalStatus"] = state?.approvalStatus;
+            resourceInputs["extraInfo"] = state?.extraInfo;
+            resourceInputs["formatType"] = state?.formatType;
+            resourceInputs["frameworkType"] = state?.frameworkType;
+            resourceInputs["inferenceSpec"] = state?.inferenceSpec;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["metrics"] = state?.metrics;
+            resourceInputs["modelId"] = state?.modelId;
+            resourceInputs["options"] = state?.options;
+            resourceInputs["sourceId"] = state?.sourceId;
+            resourceInputs["sourceType"] = state?.sourceType;
+            resourceInputs["trainingSpec"] = state?.trainingSpec;
+            resourceInputs["uri"] = state?.uri;
+            resourceInputs["versionDescription"] = state?.versionDescription;
+            resourceInputs["versionName"] = state?.versionName;
         } else {
             const args = argsOrState as WorkspaceModelVersionArgs | undefined;
-            if ((!args || args.modelId === undefined) && !opts.urn) {
+            if (args?.modelId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'modelId'");
             }
-            if ((!args || args.uri === undefined) && !opts.urn) {
+            if (args?.uri === undefined && !opts.urn) {
                 throw new Error("Missing required property 'uri'");
             }
-            resourceInputs["approvalStatus"] = args ? args.approvalStatus : undefined;
-            resourceInputs["extraInfo"] = args ? args.extraInfo : undefined;
-            resourceInputs["formatType"] = args ? args.formatType : undefined;
-            resourceInputs["frameworkType"] = args ? args.frameworkType : undefined;
-            resourceInputs["inferenceSpec"] = args ? args.inferenceSpec : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["metrics"] = args ? args.metrics : undefined;
-            resourceInputs["modelId"] = args ? args.modelId : undefined;
-            resourceInputs["options"] = args ? args.options : undefined;
-            resourceInputs["sourceId"] = args ? args.sourceId : undefined;
-            resourceInputs["sourceType"] = args ? args.sourceType : undefined;
-            resourceInputs["trainingSpec"] = args ? args.trainingSpec : undefined;
-            resourceInputs["uri"] = args ? args.uri : undefined;
-            resourceInputs["versionDescription"] = args ? args.versionDescription : undefined;
-            resourceInputs["versionName"] = args ? args.versionName : undefined;
+            resourceInputs["approvalStatus"] = args?.approvalStatus;
+            resourceInputs["extraInfo"] = args?.extraInfo;
+            resourceInputs["formatType"] = args?.formatType;
+            resourceInputs["frameworkType"] = args?.frameworkType;
+            resourceInputs["inferenceSpec"] = args?.inferenceSpec;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["metrics"] = args?.metrics;
+            resourceInputs["modelId"] = args?.modelId;
+            resourceInputs["options"] = args?.options;
+            resourceInputs["sourceId"] = args?.sourceId;
+            resourceInputs["sourceType"] = args?.sourceType;
+            resourceInputs["trainingSpec"] = args?.trainingSpec;
+            resourceInputs["uri"] = args?.uri;
+            resourceInputs["versionDescription"] = args?.versionDescription;
+            resourceInputs["versionName"] = args?.versionName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WorkspaceModelVersion.__pulumiType, name, resourceInputs, opts);

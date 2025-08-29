@@ -82,86 +82,86 @@ export class AdConnectorOfficeSite extends pulumi.CustomResource {
     /**
      * The name of the workspace. The name must be 2 to 255 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), and hyphens (-).
      */
-    public readonly adConnectorOfficeSiteName!: pulumi.Output<string>;
+    declare public readonly adConnectorOfficeSiteName: pulumi.Output<string>;
     /**
      * The ad hostname.
      */
-    public readonly adHostname!: pulumi.Output<string | undefined>;
+    declare public readonly adHostname: pulumi.Output<string | undefined>;
     /**
      * The maximum public bandwidth value. Valid values: 0 to 200. If you do not specify this parameter or you set this parameter to 0, Internet access is disabled.
      */
-    public readonly bandwidth!: pulumi.Output<number | undefined>;
+    declare public readonly bandwidth: pulumi.Output<number | undefined>;
     /**
      * The ID of the CEN instance.
      */
-    public readonly cenId!: pulumi.Output<string>;
+    declare public readonly cenId: pulumi.Output<string>;
     /**
      * The cen owner id.
      */
-    public readonly cenOwnerId!: pulumi.Output<string | undefined>;
+    declare public readonly cenOwnerId: pulumi.Output<string | undefined>;
     /**
      * Workspace Corresponds to the Security Office Network of IPv4 Segment.
      */
-    public readonly cidrBlock!: pulumi.Output<string>;
+    declare public readonly cidrBlock: pulumi.Output<string>;
     /**
      * The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
      * - `INTERNET`: connects clients to cloud desktops only over the Internet.
      * - `VPC`: connects clients to cloud desktops only over a VPC.
      * - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
      */
-    public readonly desktopAccessType!: pulumi.Output<string>;
+    declare public readonly desktopAccessType: pulumi.Output<string>;
     /**
      * The IP address N of the DNS server of the enterprise AD system. You can specify only one IP address.
      */
-    public readonly dnsAddresses!: pulumi.Output<string[]>;
+    declare public readonly dnsAddresses: pulumi.Output<string[]>;
     /**
      * The domain name of the enterprise AD system. You can register each domain name only once.
      */
-    public readonly domainName!: pulumi.Output<string>;
+    declare public readonly domainName: pulumi.Output<string>;
     /**
      * The password of the domain administrator. The password can be up to 64 characters in length.
      */
-    public readonly domainPassword!: pulumi.Output<string | undefined>;
+    declare public readonly domainPassword: pulumi.Output<string | undefined>;
     /**
      * The username of the domain administrator. The username can be up to 64 characters in length.
      */
-    public readonly domainUserName!: pulumi.Output<string | undefined>;
+    declare public readonly domainUserName: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to grant the permissions of the local administrator to the desktop users. Default value: true.
      */
-    public readonly enableAdminAccess!: pulumi.Output<boolean>;
+    declare public readonly enableAdminAccess: pulumi.Output<boolean>;
     /**
      * Specifies whether to enable Internet access.
      */
-    public readonly enableInternetAccess!: pulumi.Output<boolean>;
+    declare public readonly enableInternetAccess: pulumi.Output<boolean>;
     /**
      * Specifies whether to enable multi-factor authentication (MFA).
      */
-    public readonly mfaEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly mfaEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The protocol type. Valid values: `ASP`, `HDX`.
      */
-    public readonly protocolType!: pulumi.Output<string | undefined>;
+    declare public readonly protocolType: pulumi.Output<string | undefined>;
     /**
      * The AD Connector specifications. Valid values: `1`, `2`.
      */
-    public readonly specification!: pulumi.Output<number | undefined>;
+    declare public readonly specification: pulumi.Output<number | undefined>;
     /**
      * The resource State.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The DNS address N of the enterprise AD subdomain. If you specify a value for the `subDomainName` parameter but you do not specify a value for this parameter, the DNS address of the subdomain is the same as the DNS address of the parent domain.
      */
-    public readonly subDomainDnsAddresses!: pulumi.Output<string[] | undefined>;
+    declare public readonly subDomainDnsAddresses: pulumi.Output<string[] | undefined>;
     /**
      * The domain name of the enterprise AD subdomain.
      */
-    public readonly subDomainName!: pulumi.Output<string | undefined>;
+    declare public readonly subDomainName: pulumi.Output<string | undefined>;
     /**
      * The verification code. If the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, you must call the SendVerifyCode operation to obtain the verification code.
      */
-    public readonly verifyCode!: pulumi.Output<string | undefined>;
+    declare public readonly verifyCode: pulumi.Output<string | undefined>;
 
     /**
      * Create a AdConnectorOfficeSite resource with the given unique name, arguments, and options.
@@ -176,62 +176,62 @@ export class AdConnectorOfficeSite extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AdConnectorOfficeSiteState | undefined;
-            resourceInputs["adConnectorOfficeSiteName"] = state ? state.adConnectorOfficeSiteName : undefined;
-            resourceInputs["adHostname"] = state ? state.adHostname : undefined;
-            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
-            resourceInputs["cenId"] = state ? state.cenId : undefined;
-            resourceInputs["cenOwnerId"] = state ? state.cenOwnerId : undefined;
-            resourceInputs["cidrBlock"] = state ? state.cidrBlock : undefined;
-            resourceInputs["desktopAccessType"] = state ? state.desktopAccessType : undefined;
-            resourceInputs["dnsAddresses"] = state ? state.dnsAddresses : undefined;
-            resourceInputs["domainName"] = state ? state.domainName : undefined;
-            resourceInputs["domainPassword"] = state ? state.domainPassword : undefined;
-            resourceInputs["domainUserName"] = state ? state.domainUserName : undefined;
-            resourceInputs["enableAdminAccess"] = state ? state.enableAdminAccess : undefined;
-            resourceInputs["enableInternetAccess"] = state ? state.enableInternetAccess : undefined;
-            resourceInputs["mfaEnabled"] = state ? state.mfaEnabled : undefined;
-            resourceInputs["protocolType"] = state ? state.protocolType : undefined;
-            resourceInputs["specification"] = state ? state.specification : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["subDomainDnsAddresses"] = state ? state.subDomainDnsAddresses : undefined;
-            resourceInputs["subDomainName"] = state ? state.subDomainName : undefined;
-            resourceInputs["verifyCode"] = state ? state.verifyCode : undefined;
+            resourceInputs["adConnectorOfficeSiteName"] = state?.adConnectorOfficeSiteName;
+            resourceInputs["adHostname"] = state?.adHostname;
+            resourceInputs["bandwidth"] = state?.bandwidth;
+            resourceInputs["cenId"] = state?.cenId;
+            resourceInputs["cenOwnerId"] = state?.cenOwnerId;
+            resourceInputs["cidrBlock"] = state?.cidrBlock;
+            resourceInputs["desktopAccessType"] = state?.desktopAccessType;
+            resourceInputs["dnsAddresses"] = state?.dnsAddresses;
+            resourceInputs["domainName"] = state?.domainName;
+            resourceInputs["domainPassword"] = state?.domainPassword;
+            resourceInputs["domainUserName"] = state?.domainUserName;
+            resourceInputs["enableAdminAccess"] = state?.enableAdminAccess;
+            resourceInputs["enableInternetAccess"] = state?.enableInternetAccess;
+            resourceInputs["mfaEnabled"] = state?.mfaEnabled;
+            resourceInputs["protocolType"] = state?.protocolType;
+            resourceInputs["specification"] = state?.specification;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["subDomainDnsAddresses"] = state?.subDomainDnsAddresses;
+            resourceInputs["subDomainName"] = state?.subDomainName;
+            resourceInputs["verifyCode"] = state?.verifyCode;
         } else {
             const args = argsOrState as AdConnectorOfficeSiteArgs | undefined;
-            if ((!args || args.adConnectorOfficeSiteName === undefined) && !opts.urn) {
+            if (args?.adConnectorOfficeSiteName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'adConnectorOfficeSiteName'");
             }
-            if ((!args || args.cenId === undefined) && !opts.urn) {
+            if (args?.cenId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cenId'");
             }
-            if ((!args || args.cidrBlock === undefined) && !opts.urn) {
+            if (args?.cidrBlock === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cidrBlock'");
             }
-            if ((!args || args.dnsAddresses === undefined) && !opts.urn) {
+            if (args?.dnsAddresses === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dnsAddresses'");
             }
-            if ((!args || args.domainName === undefined) && !opts.urn) {
+            if (args?.domainName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
-            resourceInputs["adConnectorOfficeSiteName"] = args ? args.adConnectorOfficeSiteName : undefined;
-            resourceInputs["adHostname"] = args ? args.adHostname : undefined;
-            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
-            resourceInputs["cenId"] = args ? args.cenId : undefined;
-            resourceInputs["cenOwnerId"] = args ? args.cenOwnerId : undefined;
-            resourceInputs["cidrBlock"] = args ? args.cidrBlock : undefined;
-            resourceInputs["desktopAccessType"] = args ? args.desktopAccessType : undefined;
-            resourceInputs["dnsAddresses"] = args ? args.dnsAddresses : undefined;
-            resourceInputs["domainName"] = args ? args.domainName : undefined;
+            resourceInputs["adConnectorOfficeSiteName"] = args?.adConnectorOfficeSiteName;
+            resourceInputs["adHostname"] = args?.adHostname;
+            resourceInputs["bandwidth"] = args?.bandwidth;
+            resourceInputs["cenId"] = args?.cenId;
+            resourceInputs["cenOwnerId"] = args?.cenOwnerId;
+            resourceInputs["cidrBlock"] = args?.cidrBlock;
+            resourceInputs["desktopAccessType"] = args?.desktopAccessType;
+            resourceInputs["dnsAddresses"] = args?.dnsAddresses;
+            resourceInputs["domainName"] = args?.domainName;
             resourceInputs["domainPassword"] = args?.domainPassword ? pulumi.secret(args.domainPassword) : undefined;
-            resourceInputs["domainUserName"] = args ? args.domainUserName : undefined;
-            resourceInputs["enableAdminAccess"] = args ? args.enableAdminAccess : undefined;
-            resourceInputs["enableInternetAccess"] = args ? args.enableInternetAccess : undefined;
-            resourceInputs["mfaEnabled"] = args ? args.mfaEnabled : undefined;
-            resourceInputs["protocolType"] = args ? args.protocolType : undefined;
-            resourceInputs["specification"] = args ? args.specification : undefined;
-            resourceInputs["subDomainDnsAddresses"] = args ? args.subDomainDnsAddresses : undefined;
-            resourceInputs["subDomainName"] = args ? args.subDomainName : undefined;
-            resourceInputs["verifyCode"] = args ? args.verifyCode : undefined;
+            resourceInputs["domainUserName"] = args?.domainUserName;
+            resourceInputs["enableAdminAccess"] = args?.enableAdminAccess;
+            resourceInputs["enableInternetAccess"] = args?.enableInternetAccess;
+            resourceInputs["mfaEnabled"] = args?.mfaEnabled;
+            resourceInputs["protocolType"] = args?.protocolType;
+            resourceInputs["specification"] = args?.specification;
+            resourceInputs["subDomainDnsAddresses"] = args?.subDomainDnsAddresses;
+            resourceInputs["subDomainName"] = args?.subDomainName;
+            resourceInputs["verifyCode"] = args?.verifyCode;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

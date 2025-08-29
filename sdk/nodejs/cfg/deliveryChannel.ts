@@ -46,34 +46,34 @@ export class DeliveryChannel extends pulumi.CustomResource {
     /**
      * The Alibaba Cloud Resource Name (ARN) of the role to be assumed by the delivery method.
      */
-    public readonly deliveryChannelAssumeRoleArn!: pulumi.Output<string>;
+    declare public readonly deliveryChannelAssumeRoleArn: pulumi.Output<string>;
     /**
      * The rule attached to the delivery method. This parameter is applicable only to delivery methods of the MNS type. Please refer to api [PutDeliveryChannel](https://www.alibabacloud.com/help/en/doc-detail/174253.htm) for example format.
      */
-    public readonly deliveryChannelCondition!: pulumi.Output<string>;
+    declare public readonly deliveryChannelCondition: pulumi.Output<string>;
     /**
      * The name of the delivery channel.
      */
-    public readonly deliveryChannelName!: pulumi.Output<string>;
+    declare public readonly deliveryChannelName: pulumi.Output<string>;
     /**
      * The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
      * - `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
      * - `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
      * - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
      */
-    public readonly deliveryChannelTargetArn!: pulumi.Output<string>;
+    declare public readonly deliveryChannelTargetArn: pulumi.Output<string>;
     /**
      * The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
      */
-    public readonly deliveryChannelType!: pulumi.Output<string>;
+    declare public readonly deliveryChannelType: pulumi.Output<string>;
     /**
      * The description of the delivery method.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The status of the delivery method. Valid values: `0`: The delivery method is disabled., `1`: The delivery destination is enabled. This is the default value.
      */
-    public readonly status!: pulumi.Output<number>;
+    declare public readonly status: pulumi.Output<number>;
 
     /**
      * Create a DeliveryChannel resource with the given unique name, arguments, and options.
@@ -88,31 +88,31 @@ export class DeliveryChannel extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DeliveryChannelState | undefined;
-            resourceInputs["deliveryChannelAssumeRoleArn"] = state ? state.deliveryChannelAssumeRoleArn : undefined;
-            resourceInputs["deliveryChannelCondition"] = state ? state.deliveryChannelCondition : undefined;
-            resourceInputs["deliveryChannelName"] = state ? state.deliveryChannelName : undefined;
-            resourceInputs["deliveryChannelTargetArn"] = state ? state.deliveryChannelTargetArn : undefined;
-            resourceInputs["deliveryChannelType"] = state ? state.deliveryChannelType : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["deliveryChannelAssumeRoleArn"] = state?.deliveryChannelAssumeRoleArn;
+            resourceInputs["deliveryChannelCondition"] = state?.deliveryChannelCondition;
+            resourceInputs["deliveryChannelName"] = state?.deliveryChannelName;
+            resourceInputs["deliveryChannelTargetArn"] = state?.deliveryChannelTargetArn;
+            resourceInputs["deliveryChannelType"] = state?.deliveryChannelType;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as DeliveryChannelArgs | undefined;
-            if ((!args || args.deliveryChannelAssumeRoleArn === undefined) && !opts.urn) {
+            if (args?.deliveryChannelAssumeRoleArn === undefined && !opts.urn) {
                 throw new Error("Missing required property 'deliveryChannelAssumeRoleArn'");
             }
-            if ((!args || args.deliveryChannelTargetArn === undefined) && !opts.urn) {
+            if (args?.deliveryChannelTargetArn === undefined && !opts.urn) {
                 throw new Error("Missing required property 'deliveryChannelTargetArn'");
             }
-            if ((!args || args.deliveryChannelType === undefined) && !opts.urn) {
+            if (args?.deliveryChannelType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'deliveryChannelType'");
             }
-            resourceInputs["deliveryChannelAssumeRoleArn"] = args ? args.deliveryChannelAssumeRoleArn : undefined;
-            resourceInputs["deliveryChannelCondition"] = args ? args.deliveryChannelCondition : undefined;
-            resourceInputs["deliveryChannelName"] = args ? args.deliveryChannelName : undefined;
-            resourceInputs["deliveryChannelTargetArn"] = args ? args.deliveryChannelTargetArn : undefined;
-            resourceInputs["deliveryChannelType"] = args ? args.deliveryChannelType : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["deliveryChannelAssumeRoleArn"] = args?.deliveryChannelAssumeRoleArn;
+            resourceInputs["deliveryChannelCondition"] = args?.deliveryChannelCondition;
+            resourceInputs["deliveryChannelName"] = args?.deliveryChannelName;
+            resourceInputs["deliveryChannelTargetArn"] = args?.deliveryChannelTargetArn;
+            resourceInputs["deliveryChannelType"] = args?.deliveryChannelType;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["status"] = args?.status;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DeliveryChannel.__pulumiType, name, resourceInputs, opts);

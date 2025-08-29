@@ -74,23 +74,23 @@ export class WorkspaceExperiment extends pulumi.CustomResource {
     /**
      * Experimental Visibility
      */
-    public readonly accessibility!: pulumi.Output<string>;
+    declare public readonly accessibility: pulumi.Output<string>;
     /**
      * ArtifactUri is default OSS storage path of the output of trials in the experiment
      */
-    public readonly artifactUri!: pulumi.Output<string>;
+    declare public readonly artifactUri: pulumi.Output<string>;
     /**
      * GmtCreateTime is time when this entity is created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Name is the name of the experiment, unique in a namespace
      */
-    public readonly experimentName!: pulumi.Output<string>;
+    declare public readonly experimentName: pulumi.Output<string>;
     /**
      * WorkspaceId is the workspace id which contains the experiment
      */
-    public readonly workspaceId!: pulumi.Output<string>;
+    declare public readonly workspaceId: pulumi.Output<string>;
 
     /**
      * Create a WorkspaceExperiment resource with the given unique name, arguments, and options.
@@ -105,26 +105,26 @@ export class WorkspaceExperiment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkspaceExperimentState | undefined;
-            resourceInputs["accessibility"] = state ? state.accessibility : undefined;
-            resourceInputs["artifactUri"] = state ? state.artifactUri : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["experimentName"] = state ? state.experimentName : undefined;
-            resourceInputs["workspaceId"] = state ? state.workspaceId : undefined;
+            resourceInputs["accessibility"] = state?.accessibility;
+            resourceInputs["artifactUri"] = state?.artifactUri;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["experimentName"] = state?.experimentName;
+            resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as WorkspaceExperimentArgs | undefined;
-            if ((!args || args.artifactUri === undefined) && !opts.urn) {
+            if (args?.artifactUri === undefined && !opts.urn) {
                 throw new Error("Missing required property 'artifactUri'");
             }
-            if ((!args || args.experimentName === undefined) && !opts.urn) {
+            if (args?.experimentName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'experimentName'");
             }
-            if ((!args || args.workspaceId === undefined) && !opts.urn) {
+            if (args?.workspaceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workspaceId'");
             }
-            resourceInputs["accessibility"] = args ? args.accessibility : undefined;
-            resourceInputs["artifactUri"] = args ? args.artifactUri : undefined;
-            resourceInputs["experimentName"] = args ? args.experimentName : undefined;
-            resourceInputs["workspaceId"] = args ? args.workspaceId : undefined;
+            resourceInputs["accessibility"] = args?.accessibility;
+            resourceInputs["artifactUri"] = args?.artifactUri;
+            resourceInputs["experimentName"] = args?.experimentName;
+            resourceInputs["workspaceId"] = args?.workspaceId;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

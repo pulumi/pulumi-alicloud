@@ -50,19 +50,19 @@ export class ListenerAdditionalCertificateAttachment extends pulumi.CustomResour
     /**
      * The Certificate ID.
      */
-    public readonly certificateId!: pulumi.Output<string>;
+    declare public readonly certificateId: pulumi.Output<string>;
     /**
      * The type of the certificate.
      */
-    public /*out*/ readonly certificateType!: pulumi.Output<string>;
+    declare public /*out*/ readonly certificateType: pulumi.Output<string>;
     /**
      * The ID of the ALB listener.
      */
-    public readonly listenerId!: pulumi.Output<string>;
+    declare public readonly listenerId: pulumi.Output<string>;
     /**
      * The status of the certificate.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a ListenerAdditionalCertificateAttachment resource with the given unique name, arguments, and options.
@@ -77,20 +77,20 @@ export class ListenerAdditionalCertificateAttachment extends pulumi.CustomResour
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ListenerAdditionalCertificateAttachmentState | undefined;
-            resourceInputs["certificateId"] = state ? state.certificateId : undefined;
-            resourceInputs["certificateType"] = state ? state.certificateType : undefined;
-            resourceInputs["listenerId"] = state ? state.listenerId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["certificateId"] = state?.certificateId;
+            resourceInputs["certificateType"] = state?.certificateType;
+            resourceInputs["listenerId"] = state?.listenerId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as ListenerAdditionalCertificateAttachmentArgs | undefined;
-            if ((!args || args.certificateId === undefined) && !opts.urn) {
+            if (args?.certificateId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'certificateId'");
             }
-            if ((!args || args.listenerId === undefined) && !opts.urn) {
+            if (args?.listenerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'listenerId'");
             }
-            resourceInputs["certificateId"] = args ? args.certificateId : undefined;
-            resourceInputs["listenerId"] = args ? args.listenerId : undefined;
+            resourceInputs["certificateId"] = args?.certificateId;
+            resourceInputs["listenerId"] = args?.listenerId;
             resourceInputs["certificateType"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

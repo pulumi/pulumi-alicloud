@@ -106,25 +106,25 @@ export class RouterInterfaceConnection extends pulumi.CustomResource {
     /**
      * One side router interface ID.
      */
-    public readonly interfaceId!: pulumi.Output<string>;
+    declare public readonly interfaceId: pulumi.Output<string>;
     /**
      * Another side router interface ID. It must belong the specified "oppositeInterfaceOwnerId" account.
      */
-    public readonly oppositeInterfaceId!: pulumi.Output<string>;
+    declare public readonly oppositeInterfaceId: pulumi.Output<string>;
     /**
      * Another side router interface account ID. Log on to the Alibaba Cloud console, select User Info > Account Management to check the account ID. Default to Provider account_id.
      */
-    public readonly oppositeInterfaceOwnerId!: pulumi.Output<string>;
+    declare public readonly oppositeInterfaceOwnerId: pulumi.Output<string>;
     /**
      * Another side router ID. It must belong the specified "oppositeInterfaceOwnerId" account. It is valid when field "oppositeInterfaceOwnerId" is specified.
      */
-    public readonly oppositeRouterId!: pulumi.Output<string>;
+    declare public readonly oppositeRouterId: pulumi.Output<string>;
     /**
      * Another side router Type. Optional value: VRouter, VBR. It is valid when field "oppositeInterfaceOwnerId" is specified.
      *
      * > **NOTE:** The value of "oppositeInterfaceOwnerId" or "accountId" must be main account and not be sub account.
      */
-    public readonly oppositeRouterType!: pulumi.Output<string | undefined>;
+    declare public readonly oppositeRouterType: pulumi.Output<string | undefined>;
 
     /**
      * Create a RouterInterfaceConnection resource with the given unique name, arguments, and options.
@@ -139,24 +139,24 @@ export class RouterInterfaceConnection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouterInterfaceConnectionState | undefined;
-            resourceInputs["interfaceId"] = state ? state.interfaceId : undefined;
-            resourceInputs["oppositeInterfaceId"] = state ? state.oppositeInterfaceId : undefined;
-            resourceInputs["oppositeInterfaceOwnerId"] = state ? state.oppositeInterfaceOwnerId : undefined;
-            resourceInputs["oppositeRouterId"] = state ? state.oppositeRouterId : undefined;
-            resourceInputs["oppositeRouterType"] = state ? state.oppositeRouterType : undefined;
+            resourceInputs["interfaceId"] = state?.interfaceId;
+            resourceInputs["oppositeInterfaceId"] = state?.oppositeInterfaceId;
+            resourceInputs["oppositeInterfaceOwnerId"] = state?.oppositeInterfaceOwnerId;
+            resourceInputs["oppositeRouterId"] = state?.oppositeRouterId;
+            resourceInputs["oppositeRouterType"] = state?.oppositeRouterType;
         } else {
             const args = argsOrState as RouterInterfaceConnectionArgs | undefined;
-            if ((!args || args.interfaceId === undefined) && !opts.urn) {
+            if (args?.interfaceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'interfaceId'");
             }
-            if ((!args || args.oppositeInterfaceId === undefined) && !opts.urn) {
+            if (args?.oppositeInterfaceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'oppositeInterfaceId'");
             }
-            resourceInputs["interfaceId"] = args ? args.interfaceId : undefined;
-            resourceInputs["oppositeInterfaceId"] = args ? args.oppositeInterfaceId : undefined;
-            resourceInputs["oppositeInterfaceOwnerId"] = args ? args.oppositeInterfaceOwnerId : undefined;
-            resourceInputs["oppositeRouterId"] = args ? args.oppositeRouterId : undefined;
-            resourceInputs["oppositeRouterType"] = args ? args.oppositeRouterType : undefined;
+            resourceInputs["interfaceId"] = args?.interfaceId;
+            resourceInputs["oppositeInterfaceId"] = args?.oppositeInterfaceId;
+            resourceInputs["oppositeInterfaceOwnerId"] = args?.oppositeInterfaceOwnerId;
+            resourceInputs["oppositeRouterId"] = args?.oppositeRouterId;
+            resourceInputs["oppositeRouterType"] = args?.oppositeRouterType;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RouterInterfaceConnection.__pulumiType, name, resourceInputs, opts);

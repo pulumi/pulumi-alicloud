@@ -87,15 +87,15 @@ export class GatewayEndpointRouteTableAttachment extends pulumi.CustomResource {
     /**
      * The ID of the gateway endpoint instance to which you want to associate the route table.
      */
-    public readonly gatewayEndpointId!: pulumi.Output<string>;
+    declare public readonly gatewayEndpointId: pulumi.Output<string>;
     /**
      * Routing table ID.
      */
-    public readonly routeTableId!: pulumi.Output<string>;
+    declare public readonly routeTableId: pulumi.Output<string>;
     /**
      * Status of the gateway endpoint.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a GatewayEndpointRouteTableAttachment resource with the given unique name, arguments, and options.
@@ -110,19 +110,19 @@ export class GatewayEndpointRouteTableAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GatewayEndpointRouteTableAttachmentState | undefined;
-            resourceInputs["gatewayEndpointId"] = state ? state.gatewayEndpointId : undefined;
-            resourceInputs["routeTableId"] = state ? state.routeTableId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["gatewayEndpointId"] = state?.gatewayEndpointId;
+            resourceInputs["routeTableId"] = state?.routeTableId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as GatewayEndpointRouteTableAttachmentArgs | undefined;
-            if ((!args || args.gatewayEndpointId === undefined) && !opts.urn) {
+            if (args?.gatewayEndpointId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'gatewayEndpointId'");
             }
-            if ((!args || args.routeTableId === undefined) && !opts.urn) {
+            if (args?.routeTableId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'routeTableId'");
             }
-            resourceInputs["gatewayEndpointId"] = args ? args.gatewayEndpointId : undefined;
-            resourceInputs["routeTableId"] = args ? args.routeTableId : undefined;
+            resourceInputs["gatewayEndpointId"] = args?.gatewayEndpointId;
+            resourceInputs["routeTableId"] = args?.routeTableId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

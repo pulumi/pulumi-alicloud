@@ -89,15 +89,15 @@ export class PolicyVersion extends pulumi.CustomResource {
      *
      * @deprecated Field 'is_default_version' has been deprecated from provider version 1.90.0
      */
-    public readonly isDefaultVersion!: pulumi.Output<boolean | undefined>;
+    declare public readonly isDefaultVersion: pulumi.Output<boolean | undefined>;
     /**
      * The content of the policy. The content must be 1 to 2,048 characters in length.
      */
-    public readonly policyDocument!: pulumi.Output<string>;
+    declare public readonly policyDocument: pulumi.Output<string>;
     /**
      * The name of the policy. Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
      */
-    public readonly policyName!: pulumi.Output<string>;
+    declare public readonly policyName: pulumi.Output<string>;
 
     /**
      * Create a PolicyVersion resource with the given unique name, arguments, and options.
@@ -112,20 +112,20 @@ export class PolicyVersion extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyVersionState | undefined;
-            resourceInputs["isDefaultVersion"] = state ? state.isDefaultVersion : undefined;
-            resourceInputs["policyDocument"] = state ? state.policyDocument : undefined;
-            resourceInputs["policyName"] = state ? state.policyName : undefined;
+            resourceInputs["isDefaultVersion"] = state?.isDefaultVersion;
+            resourceInputs["policyDocument"] = state?.policyDocument;
+            resourceInputs["policyName"] = state?.policyName;
         } else {
             const args = argsOrState as PolicyVersionArgs | undefined;
-            if ((!args || args.policyDocument === undefined) && !opts.urn) {
+            if (args?.policyDocument === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyDocument'");
             }
-            if ((!args || args.policyName === undefined) && !opts.urn) {
+            if (args?.policyName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyName'");
             }
-            resourceInputs["isDefaultVersion"] = args ? args.isDefaultVersion : undefined;
-            resourceInputs["policyDocument"] = args ? args.policyDocument : undefined;
-            resourceInputs["policyName"] = args ? args.policyName : undefined;
+            resourceInputs["isDefaultVersion"] = args?.isDefaultVersion;
+            resourceInputs["policyDocument"] = args?.policyDocument;
+            resourceInputs["policyName"] = args?.policyName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PolicyVersion.__pulumiType, name, resourceInputs, opts);

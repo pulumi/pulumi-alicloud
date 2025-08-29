@@ -84,19 +84,19 @@ export class V3FunctionVersion extends pulumi.CustomResource {
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Description of the function version
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Function Name
      */
-    public readonly functionName!: pulumi.Output<string>;
+    declare public readonly functionName: pulumi.Output<string>;
     /**
      * (Available since v1.234.0) Update time
      */
-    public /*out*/ readonly lastModifiedTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastModifiedTime: pulumi.Output<string>;
 
     /**
      * Create a V3FunctionVersion resource with the given unique name, arguments, and options.
@@ -111,17 +111,17 @@ export class V3FunctionVersion extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as V3FunctionVersionState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["functionName"] = state ? state.functionName : undefined;
-            resourceInputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["functionName"] = state?.functionName;
+            resourceInputs["lastModifiedTime"] = state?.lastModifiedTime;
         } else {
             const args = argsOrState as V3FunctionVersionArgs | undefined;
-            if ((!args || args.functionName === undefined) && !opts.urn) {
+            if (args?.functionName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'functionName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["functionName"] = args ? args.functionName : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["functionName"] = args?.functionName;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
         }

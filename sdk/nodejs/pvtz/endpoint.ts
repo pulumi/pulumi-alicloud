@@ -52,27 +52,27 @@ export class Endpoint extends pulumi.CustomResource {
     /**
      * The name of the resource.
      */
-    public readonly endpointName!: pulumi.Output<string>;
+    declare public readonly endpointName: pulumi.Output<string>;
     /**
      * The Ip Configs. See `ipConfigs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
      */
-    public readonly ipConfigs!: pulumi.Output<outputs.pvtz.EndpointIpConfig[]>;
+    declare public readonly ipConfigs: pulumi.Output<outputs.pvtz.EndpointIpConfig[]>;
     /**
      * The ID of the Security Group.
      */
-    public readonly securityGroupId!: pulumi.Output<string>;
+    declare public readonly securityGroupId: pulumi.Output<string>;
     /**
      * The status of the resource. Valid values: `CHANGE_FAILED`, `CHANGE_INIT`, `EXCEPTION`, `FAILED`, `INIT`, `SUCCESS`.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The VPC ID.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * The Region of the VPC.
      */
-    public readonly vpcRegionId!: pulumi.Output<string>;
+    declare public readonly vpcRegionId: pulumi.Output<string>;
 
     /**
      * Create a Endpoint resource with the given unique name, arguments, and options.
@@ -87,34 +87,34 @@ export class Endpoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EndpointState | undefined;
-            resourceInputs["endpointName"] = state ? state.endpointName : undefined;
-            resourceInputs["ipConfigs"] = state ? state.ipConfigs : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vpcRegionId"] = state ? state.vpcRegionId : undefined;
+            resourceInputs["endpointName"] = state?.endpointName;
+            resourceInputs["ipConfigs"] = state?.ipConfigs;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vpcRegionId"] = state?.vpcRegionId;
         } else {
             const args = argsOrState as EndpointArgs | undefined;
-            if ((!args || args.endpointName === undefined) && !opts.urn) {
+            if (args?.endpointName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpointName'");
             }
-            if ((!args || args.ipConfigs === undefined) && !opts.urn) {
+            if (args?.ipConfigs === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ipConfigs'");
             }
-            if ((!args || args.securityGroupId === undefined) && !opts.urn) {
+            if (args?.securityGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupId'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            if ((!args || args.vpcRegionId === undefined) && !opts.urn) {
+            if (args?.vpcRegionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcRegionId'");
             }
-            resourceInputs["endpointName"] = args ? args.endpointName : undefined;
-            resourceInputs["ipConfigs"] = args ? args.ipConfigs : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vpcRegionId"] = args ? args.vpcRegionId : undefined;
+            resourceInputs["endpointName"] = args?.endpointName;
+            resourceInputs["ipConfigs"] = args?.ipConfigs;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vpcRegionId"] = args?.vpcRegionId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

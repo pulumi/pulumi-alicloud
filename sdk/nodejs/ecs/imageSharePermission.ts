@@ -117,11 +117,11 @@ export class ImageSharePermission extends pulumi.CustomResource {
     /**
      * Alibaba Cloud Account ID. It is used to share images.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The source image ID.
      */
-    public readonly imageId!: pulumi.Output<string>;
+    declare public readonly imageId: pulumi.Output<string>;
 
     /**
      * Create a ImageSharePermission resource with the given unique name, arguments, and options.
@@ -136,18 +136,18 @@ export class ImageSharePermission extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImageSharePermissionState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["imageId"] = state ? state.imageId : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["imageId"] = state?.imageId;
         } else {
             const args = argsOrState as ImageSharePermissionArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.imageId === undefined) && !opts.urn) {
+            if (args?.imageId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'imageId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["imageId"] = args ? args.imageId : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["imageId"] = args?.imageId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ImageSharePermission.__pulumiType, name, resourceInputs, opts);

@@ -67,31 +67,31 @@ export class Command extends pulumi.CustomResource {
     /**
      * The Base64-encoded content of the command.
      */
-    public readonly commandContent!: pulumi.Output<string>;
+    declare public readonly commandContent: pulumi.Output<string>;
     /**
      * The description of command.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to use custom parameters in the command to be created. Default to: false.
      */
-    public readonly enableParameter!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableParameter: pulumi.Output<boolean | undefined>;
     /**
      * The name of the command, which supports all character sets. It can be up to 128 characters in length.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The timeout period that is specified for the command to be run on ECS instances. Unit: seconds. Default to: `60`.
      */
-    public readonly timeout!: pulumi.Output<number | undefined>;
+    declare public readonly timeout: pulumi.Output<number | undefined>;
     /**
      * The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The execution path of the command in the ECS instance.
      */
-    public readonly workingDir!: pulumi.Output<string | undefined>;
+    declare public readonly workingDir: pulumi.Output<string | undefined>;
 
     /**
      * Create a Command resource with the given unique name, arguments, and options.
@@ -106,28 +106,28 @@ export class Command extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CommandState | undefined;
-            resourceInputs["commandContent"] = state ? state.commandContent : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enableParameter"] = state ? state.enableParameter : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["timeout"] = state ? state.timeout : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["workingDir"] = state ? state.workingDir : undefined;
+            resourceInputs["commandContent"] = state?.commandContent;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enableParameter"] = state?.enableParameter;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["timeout"] = state?.timeout;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["workingDir"] = state?.workingDir;
         } else {
             const args = argsOrState as CommandArgs | undefined;
-            if ((!args || args.commandContent === undefined) && !opts.urn) {
+            if (args?.commandContent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'commandContent'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["commandContent"] = args ? args.commandContent : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enableParameter"] = args ? args.enableParameter : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["timeout"] = args ? args.timeout : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["workingDir"] = args ? args.workingDir : undefined;
+            resourceInputs["commandContent"] = args?.commandContent;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enableParameter"] = args?.enableParameter;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["timeout"] = args?.timeout;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["workingDir"] = args?.workingDir;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Command.__pulumiType, name, resourceInputs, opts);

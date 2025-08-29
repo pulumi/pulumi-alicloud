@@ -69,65 +69,65 @@ export class BasicAccelerator extends pulumi.CustomResource {
     /**
      * Specifies whether to enable automatic payment. Default value: `false`. Valid values:
      */
-    public readonly autoPay!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoPay: pulumi.Output<boolean | undefined>;
     /**
      * Specifies whether to enable auto-renewal for the GA Basic Accelerator instance. Default value: `false`. Valid values:
      */
-    public readonly autoRenew!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoRenew: pulumi.Output<boolean | undefined>;
     /**
      * The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `autoRenew` is set to `true`.
      */
-    public readonly autoRenewDuration!: pulumi.Output<number | undefined>;
+    declare public readonly autoRenewDuration: pulumi.Output<number | undefined>;
     /**
      * Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `autoPay` is set to `true`.
      */
-    public readonly autoUseCoupon!: pulumi.Output<string | undefined>;
+    declare public readonly autoUseCoupon: pulumi.Output<string | undefined>;
     /**
      * The bandwidth billing method. Valid values: `BandwidthPackage`, `CDT`, `CDT95`.
      */
-    public readonly bandwidthBillingType!: pulumi.Output<string | undefined>;
+    declare public readonly bandwidthBillingType: pulumi.Output<string | undefined>;
     /**
      * The name of the Global Accelerator Basic Accelerator instance.
      */
-    public readonly basicAcceleratorName!: pulumi.Output<string | undefined>;
+    declare public readonly basicAcceleratorName: pulumi.Output<string | undefined>;
     /**
      * Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
      */
-    public readonly crossBorderStatus!: pulumi.Output<boolean | undefined>;
+    declare public readonly crossBorderStatus: pulumi.Output<boolean | undefined>;
     /**
      * The description of the Global Accelerator Basic Accelerator instance.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The subscription duration. Default value: `1`.
      * * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are `1` to `9`.
      * * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
      */
-    public readonly duration!: pulumi.Output<number | undefined>;
+    declare public readonly duration: pulumi.Output<number | undefined>;
     /**
      * The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
      */
-    public readonly pricingCycle!: pulumi.Output<string | undefined>;
+    declare public readonly pricingCycle: pulumi.Output<string | undefined>;
     /**
      * The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
      */
-    public readonly promotionOptionNo!: pulumi.Output<string | undefined>;
+    declare public readonly promotionOptionNo: pulumi.Output<string | undefined>;
     /**
      * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The status of the Basic Accelerator instance.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a BasicAccelerator resource with the given unique name, arguments, and options.
@@ -142,37 +142,37 @@ export class BasicAccelerator extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BasicAcceleratorState | undefined;
-            resourceInputs["autoPay"] = state ? state.autoPay : undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["autoRenewDuration"] = state ? state.autoRenewDuration : undefined;
-            resourceInputs["autoUseCoupon"] = state ? state.autoUseCoupon : undefined;
-            resourceInputs["bandwidthBillingType"] = state ? state.bandwidthBillingType : undefined;
-            resourceInputs["basicAcceleratorName"] = state ? state.basicAcceleratorName : undefined;
-            resourceInputs["crossBorderStatus"] = state ? state.crossBorderStatus : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["duration"] = state ? state.duration : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["pricingCycle"] = state ? state.pricingCycle : undefined;
-            resourceInputs["promotionOptionNo"] = state ? state.promotionOptionNo : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["autoPay"] = state?.autoPay;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["autoRenewDuration"] = state?.autoRenewDuration;
+            resourceInputs["autoUseCoupon"] = state?.autoUseCoupon;
+            resourceInputs["bandwidthBillingType"] = state?.bandwidthBillingType;
+            resourceInputs["basicAcceleratorName"] = state?.basicAcceleratorName;
+            resourceInputs["crossBorderStatus"] = state?.crossBorderStatus;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["duration"] = state?.duration;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["pricingCycle"] = state?.pricingCycle;
+            resourceInputs["promotionOptionNo"] = state?.promotionOptionNo;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as BasicAcceleratorArgs | undefined;
-            resourceInputs["autoPay"] = args ? args.autoPay : undefined;
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["autoRenewDuration"] = args ? args.autoRenewDuration : undefined;
-            resourceInputs["autoUseCoupon"] = args ? args.autoUseCoupon : undefined;
-            resourceInputs["bandwidthBillingType"] = args ? args.bandwidthBillingType : undefined;
-            resourceInputs["basicAcceleratorName"] = args ? args.basicAcceleratorName : undefined;
-            resourceInputs["crossBorderStatus"] = args ? args.crossBorderStatus : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["duration"] = args ? args.duration : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["pricingCycle"] = args ? args.pricingCycle : undefined;
-            resourceInputs["promotionOptionNo"] = args ? args.promotionOptionNo : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["autoPay"] = args?.autoPay;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["autoRenewDuration"] = args?.autoRenewDuration;
+            resourceInputs["autoUseCoupon"] = args?.autoUseCoupon;
+            resourceInputs["bandwidthBillingType"] = args?.bandwidthBillingType;
+            resourceInputs["basicAcceleratorName"] = args?.basicAcceleratorName;
+            resourceInputs["crossBorderStatus"] = args?.crossBorderStatus;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["duration"] = args?.duration;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["pricingCycle"] = args?.pricingCycle;
+            resourceInputs["promotionOptionNo"] = args?.promotionOptionNo;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -63,7 +63,7 @@ export class AccountPublicAccessBlock extends pulumi.CustomResource {
     /**
      * Whether or not AlibabaCloud OSS should block public bucket policies for buckets in this account is enabled.
      */
-    public readonly blockPublicAccess!: pulumi.Output<boolean>;
+    declare public readonly blockPublicAccess: pulumi.Output<boolean>;
 
     /**
      * Create a AccountPublicAccessBlock resource with the given unique name, arguments, and options.
@@ -78,13 +78,13 @@ export class AccountPublicAccessBlock extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountPublicAccessBlockState | undefined;
-            resourceInputs["blockPublicAccess"] = state ? state.blockPublicAccess : undefined;
+            resourceInputs["blockPublicAccess"] = state?.blockPublicAccess;
         } else {
             const args = argsOrState as AccountPublicAccessBlockArgs | undefined;
-            if ((!args || args.blockPublicAccess === undefined) && !opts.urn) {
+            if (args?.blockPublicAccess === undefined && !opts.urn) {
                 throw new Error("Missing required property 'blockPublicAccess'");
             }
-            resourceInputs["blockPublicAccess"] = args ? args.blockPublicAccess : undefined;
+            resourceInputs["blockPublicAccess"] = args?.blockPublicAccess;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccountPublicAccessBlock.__pulumiType, name, resourceInputs, opts);

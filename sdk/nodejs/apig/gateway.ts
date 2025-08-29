@@ -46,51 +46,51 @@ export class Gateway extends pulumi.CustomResource {
     /**
      * The creation timestamp. Unit: milliseconds.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly createTime: pulumi.Output<number>;
     /**
      * The name of the resource
      */
-    public readonly gatewayName!: pulumi.Output<string | undefined>;
+    declare public readonly gatewayName: pulumi.Output<string | undefined>;
     /**
      * Log Configuration See `logConfig` below.
      */
-    public readonly logConfig!: pulumi.Output<outputs.apig.GatewayLogConfig | undefined>;
+    declare public readonly logConfig: pulumi.Output<outputs.apig.GatewayLogConfig | undefined>;
     /**
      * Network Access Configuration See `networkAccessConfig` below.
      */
-    public readonly networkAccessConfig!: pulumi.Output<outputs.apig.GatewayNetworkAccessConfig | undefined>;
+    declare public readonly networkAccessConfig: pulumi.Output<outputs.apig.GatewayNetworkAccessConfig | undefined>;
     /**
      * The payment type of the resource
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * The ID of the resource group
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Gateway instance specifications
      */
-    public readonly spec!: pulumi.Output<string | undefined>;
+    declare public readonly spec: pulumi.Output<string | undefined>;
     /**
      * The status of the resource
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tag of the resource
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The VPC associated with the Gateway. See `vpc` below.
      */
-    public readonly vpc!: pulumi.Output<outputs.apig.GatewayVpc | undefined>;
+    declare public readonly vpc: pulumi.Output<outputs.apig.GatewayVpc | undefined>;
     /**
      * The virtual switch associated with the Gateway. See `vswitch` below.
      */
-    public readonly vswitch!: pulumi.Output<outputs.apig.GatewayVswitch | undefined>;
+    declare public readonly vswitch: pulumi.Output<outputs.apig.GatewayVswitch | undefined>;
     /**
      * Availability Zone Configuration See `zoneConfig` below.
      */
-    public readonly zoneConfig!: pulumi.Output<outputs.apig.GatewayZoneConfig>;
+    declare public readonly zoneConfig: pulumi.Output<outputs.apig.GatewayZoneConfig>;
 
     /**
      * Create a Gateway resource with the given unique name, arguments, and options.
@@ -105,36 +105,36 @@ export class Gateway extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GatewayState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["gatewayName"] = state ? state.gatewayName : undefined;
-            resourceInputs["logConfig"] = state ? state.logConfig : undefined;
-            resourceInputs["networkAccessConfig"] = state ? state.networkAccessConfig : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["spec"] = state ? state.spec : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vpc"] = state ? state.vpc : undefined;
-            resourceInputs["vswitch"] = state ? state.vswitch : undefined;
-            resourceInputs["zoneConfig"] = state ? state.zoneConfig : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["gatewayName"] = state?.gatewayName;
+            resourceInputs["logConfig"] = state?.logConfig;
+            resourceInputs["networkAccessConfig"] = state?.networkAccessConfig;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["spec"] = state?.spec;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vpc"] = state?.vpc;
+            resourceInputs["vswitch"] = state?.vswitch;
+            resourceInputs["zoneConfig"] = state?.zoneConfig;
         } else {
             const args = argsOrState as GatewayArgs | undefined;
-            if ((!args || args.paymentType === undefined) && !opts.urn) {
+            if (args?.paymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            if ((!args || args.zoneConfig === undefined) && !opts.urn) {
+            if (args?.zoneConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneConfig'");
             }
-            resourceInputs["gatewayName"] = args ? args.gatewayName : undefined;
-            resourceInputs["logConfig"] = args ? args.logConfig : undefined;
-            resourceInputs["networkAccessConfig"] = args ? args.networkAccessConfig : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["spec"] = args ? args.spec : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vpc"] = args ? args.vpc : undefined;
-            resourceInputs["vswitch"] = args ? args.vswitch : undefined;
-            resourceInputs["zoneConfig"] = args ? args.zoneConfig : undefined;
+            resourceInputs["gatewayName"] = args?.gatewayName;
+            resourceInputs["logConfig"] = args?.logConfig;
+            resourceInputs["networkAccessConfig"] = args?.networkAccessConfig;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["spec"] = args?.spec;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vpc"] = args?.vpc;
+            resourceInputs["vswitch"] = args?.vswitch;
+            resourceInputs["zoneConfig"] = args?.zoneConfig;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

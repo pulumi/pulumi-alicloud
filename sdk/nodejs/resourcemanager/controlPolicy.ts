@@ -83,19 +83,19 @@ export class ControlPolicy extends pulumi.CustomResource {
     /**
      * The name of control policy.
      */
-    public readonly controlPolicyName!: pulumi.Output<string>;
+    declare public readonly controlPolicyName: pulumi.Output<string>;
     /**
      * The description of control policy.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The effect scope. Valid values `RAM`.
      */
-    public readonly effectScope!: pulumi.Output<string>;
+    declare public readonly effectScope: pulumi.Output<string>;
     /**
      * The policy document of control policy.
      */
-    public readonly policyDocument!: pulumi.Output<string>;
+    declare public readonly policyDocument: pulumi.Output<string>;
 
     /**
      * Create a ControlPolicy resource with the given unique name, arguments, and options.
@@ -110,25 +110,25 @@ export class ControlPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ControlPolicyState | undefined;
-            resourceInputs["controlPolicyName"] = state ? state.controlPolicyName : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectScope"] = state ? state.effectScope : undefined;
-            resourceInputs["policyDocument"] = state ? state.policyDocument : undefined;
+            resourceInputs["controlPolicyName"] = state?.controlPolicyName;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectScope"] = state?.effectScope;
+            resourceInputs["policyDocument"] = state?.policyDocument;
         } else {
             const args = argsOrState as ControlPolicyArgs | undefined;
-            if ((!args || args.controlPolicyName === undefined) && !opts.urn) {
+            if (args?.controlPolicyName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'controlPolicyName'");
             }
-            if ((!args || args.effectScope === undefined) && !opts.urn) {
+            if (args?.effectScope === undefined && !opts.urn) {
                 throw new Error("Missing required property 'effectScope'");
             }
-            if ((!args || args.policyDocument === undefined) && !opts.urn) {
+            if (args?.policyDocument === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyDocument'");
             }
-            resourceInputs["controlPolicyName"] = args ? args.controlPolicyName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["effectScope"] = args ? args.effectScope : undefined;
-            resourceInputs["policyDocument"] = args ? args.policyDocument : undefined;
+            resourceInputs["controlPolicyName"] = args?.controlPolicyName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["effectScope"] = args?.effectScope;
+            resourceInputs["policyDocument"] = args?.policyDocument;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ControlPolicy.__pulumiType, name, resourceInputs, opts);

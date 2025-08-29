@@ -66,43 +66,43 @@ export class AutoSnapShotPolicy extends pulumi.CustomResource {
     /**
      * The number of database file systems set by the automatic snapshot policy.
      */
-    public /*out*/ readonly appliedDbfsNumber!: pulumi.Output<number>;
+    declare public /*out*/ readonly appliedDbfsNumber: pulumi.Output<number>;
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Last modification time of automatic snapshot policy
      */
-    public /*out*/ readonly lastModified!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastModified: pulumi.Output<string>;
     /**
      * Automatic snapshot policy ID
      */
-    public /*out*/ readonly policyId!: pulumi.Output<string>;
+    declare public /*out*/ readonly policyId: pulumi.Output<string>;
     /**
      * Automatic snapshot policy name
      */
-    public readonly policyName!: pulumi.Output<string>;
+    declare public readonly policyName: pulumi.Output<string>;
     /**
      * A collection of automatic snapshots performed on several days of the week. Value range: 1~7, for example, `1` means Monday.
      */
-    public readonly repeatWeekdays!: pulumi.Output<string[]>;
+    declare public readonly repeatWeekdays: pulumi.Output<string[]>;
     /**
      * Automatic snapshot retention days.
      */
-    public readonly retentionDays!: pulumi.Output<number>;
+    declare public readonly retentionDays: pulumi.Output<number>;
     /**
      * Automatic snapshot policy status
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Automatic snapshot policy status details
      */
-    public /*out*/ readonly statusDetail!: pulumi.Output<string>;
+    declare public /*out*/ readonly statusDetail: pulumi.Output<string>;
     /**
      * The set of times at which the snapshot is taken on the day the automatic snapshot is executed. Value range: `00` to `23`, representing 24 time points from 00:00 to 23:00, for example, `01` indicates 01:00.
      */
-    public readonly timePoints!: pulumi.Output<string[]>;
+    declare public readonly timePoints: pulumi.Output<string[]>;
 
     /**
      * Create a AutoSnapShotPolicy resource with the given unique name, arguments, and options.
@@ -117,34 +117,34 @@ export class AutoSnapShotPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AutoSnapShotPolicyState | undefined;
-            resourceInputs["appliedDbfsNumber"] = state ? state.appliedDbfsNumber : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["lastModified"] = state ? state.lastModified : undefined;
-            resourceInputs["policyId"] = state ? state.policyId : undefined;
-            resourceInputs["policyName"] = state ? state.policyName : undefined;
-            resourceInputs["repeatWeekdays"] = state ? state.repeatWeekdays : undefined;
-            resourceInputs["retentionDays"] = state ? state.retentionDays : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["statusDetail"] = state ? state.statusDetail : undefined;
-            resourceInputs["timePoints"] = state ? state.timePoints : undefined;
+            resourceInputs["appliedDbfsNumber"] = state?.appliedDbfsNumber;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["lastModified"] = state?.lastModified;
+            resourceInputs["policyId"] = state?.policyId;
+            resourceInputs["policyName"] = state?.policyName;
+            resourceInputs["repeatWeekdays"] = state?.repeatWeekdays;
+            resourceInputs["retentionDays"] = state?.retentionDays;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["statusDetail"] = state?.statusDetail;
+            resourceInputs["timePoints"] = state?.timePoints;
         } else {
             const args = argsOrState as AutoSnapShotPolicyArgs | undefined;
-            if ((!args || args.policyName === undefined) && !opts.urn) {
+            if (args?.policyName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyName'");
             }
-            if ((!args || args.repeatWeekdays === undefined) && !opts.urn) {
+            if (args?.repeatWeekdays === undefined && !opts.urn) {
                 throw new Error("Missing required property 'repeatWeekdays'");
             }
-            if ((!args || args.retentionDays === undefined) && !opts.urn) {
+            if (args?.retentionDays === undefined && !opts.urn) {
                 throw new Error("Missing required property 'retentionDays'");
             }
-            if ((!args || args.timePoints === undefined) && !opts.urn) {
+            if (args?.timePoints === undefined && !opts.urn) {
                 throw new Error("Missing required property 'timePoints'");
             }
-            resourceInputs["policyName"] = args ? args.policyName : undefined;
-            resourceInputs["repeatWeekdays"] = args ? args.repeatWeekdays : undefined;
-            resourceInputs["retentionDays"] = args ? args.retentionDays : undefined;
-            resourceInputs["timePoints"] = args ? args.timePoints : undefined;
+            resourceInputs["policyName"] = args?.policyName;
+            resourceInputs["repeatWeekdays"] = args?.repeatWeekdays;
+            resourceInputs["retentionDays"] = args?.retentionDays;
+            resourceInputs["timePoints"] = args?.timePoints;
             resourceInputs["appliedDbfsNumber"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["lastModified"] = undefined /*out*/;

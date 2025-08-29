@@ -143,23 +143,23 @@ export class ConsumerChannel extends pulumi.CustomResource {
     /**
      * The ID of the consumer group.
      */
-    public /*out*/ readonly consumerGroupId!: pulumi.Output<string>;
+    declare public /*out*/ readonly consumerGroupId: pulumi.Output<string>;
     /**
      * The name of the consumer group.
      */
-    public readonly consumerGroupName!: pulumi.Output<string>;
+    declare public readonly consumerGroupName: pulumi.Output<string>;
     /**
      * The password of the consumer group account. The length of the `consumerGroupPassword` is limited to `8` to `32` characters. It can contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
      */
-    public readonly consumerGroupPassword!: pulumi.Output<string>;
+    declare public readonly consumerGroupPassword: pulumi.Output<string>;
     /**
      * The username of the consumer group. The length of the `consumerGroupUserName` is limited to `1` to `16` characters. It can contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
      */
-    public readonly consumerGroupUserName!: pulumi.Output<string>;
+    declare public readonly consumerGroupUserName: pulumi.Output<string>;
     /**
      * The ID of the subscription instance.
      */
-    public readonly dtsInstanceId!: pulumi.Output<string>;
+    declare public readonly dtsInstanceId: pulumi.Output<string>;
 
     /**
      * Create a ConsumerChannel resource with the given unique name, arguments, and options.
@@ -174,29 +174,29 @@ export class ConsumerChannel extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConsumerChannelState | undefined;
-            resourceInputs["consumerGroupId"] = state ? state.consumerGroupId : undefined;
-            resourceInputs["consumerGroupName"] = state ? state.consumerGroupName : undefined;
-            resourceInputs["consumerGroupPassword"] = state ? state.consumerGroupPassword : undefined;
-            resourceInputs["consumerGroupUserName"] = state ? state.consumerGroupUserName : undefined;
-            resourceInputs["dtsInstanceId"] = state ? state.dtsInstanceId : undefined;
+            resourceInputs["consumerGroupId"] = state?.consumerGroupId;
+            resourceInputs["consumerGroupName"] = state?.consumerGroupName;
+            resourceInputs["consumerGroupPassword"] = state?.consumerGroupPassword;
+            resourceInputs["consumerGroupUserName"] = state?.consumerGroupUserName;
+            resourceInputs["dtsInstanceId"] = state?.dtsInstanceId;
         } else {
             const args = argsOrState as ConsumerChannelArgs | undefined;
-            if ((!args || args.consumerGroupName === undefined) && !opts.urn) {
+            if (args?.consumerGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'consumerGroupName'");
             }
-            if ((!args || args.consumerGroupPassword === undefined) && !opts.urn) {
+            if (args?.consumerGroupPassword === undefined && !opts.urn) {
                 throw new Error("Missing required property 'consumerGroupPassword'");
             }
-            if ((!args || args.consumerGroupUserName === undefined) && !opts.urn) {
+            if (args?.consumerGroupUserName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'consumerGroupUserName'");
             }
-            if ((!args || args.dtsInstanceId === undefined) && !opts.urn) {
+            if (args?.dtsInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dtsInstanceId'");
             }
-            resourceInputs["consumerGroupName"] = args ? args.consumerGroupName : undefined;
-            resourceInputs["consumerGroupPassword"] = args ? args.consumerGroupPassword : undefined;
-            resourceInputs["consumerGroupUserName"] = args ? args.consumerGroupUserName : undefined;
-            resourceInputs["dtsInstanceId"] = args ? args.dtsInstanceId : undefined;
+            resourceInputs["consumerGroupName"] = args?.consumerGroupName;
+            resourceInputs["consumerGroupPassword"] = args?.consumerGroupPassword;
+            resourceInputs["consumerGroupUserName"] = args?.consumerGroupUserName;
+            resourceInputs["dtsInstanceId"] = args?.dtsInstanceId;
             resourceInputs["consumerGroupId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

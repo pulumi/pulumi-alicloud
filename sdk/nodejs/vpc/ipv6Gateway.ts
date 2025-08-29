@@ -80,53 +80,53 @@ export class Ipv6Gateway extends pulumi.CustomResource {
     /**
      * The status of the IPv6 gateway.
      */
-    public /*out*/ readonly businessStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly businessStatus: pulumi.Output<string>;
     /**
      * The creation time of the resource.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The expiration time of IPv6 gateway.
      */
-    public /*out*/ readonly expiredTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly expiredTime: pulumi.Output<string>;
     /**
      * The charge type of IPv6 gateway.
      */
-    public /*out*/ readonly instanceChargeType!: pulumi.Output<string>;
+    declare public /*out*/ readonly instanceChargeType: pulumi.Output<string>;
     /**
      * Resource primary key attribute field.
      */
-    public /*out*/ readonly ipv6GatewayId!: pulumi.Output<string>;
+    declare public /*out*/ readonly ipv6GatewayId: pulumi.Output<string>;
     /**
      * The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
      */
-    public readonly ipv6GatewayName!: pulumi.Output<string | undefined>;
+    declare public readonly ipv6GatewayName: pulumi.Output<string | undefined>;
     /**
      * The ID of the resource group to which the instance belongs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
      *
      * @deprecated Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
      */
-    public readonly spec!: pulumi.Output<string>;
+    declare public readonly spec: pulumi.Output<string>;
     /**
      * The status of the resource. Valid values: Available, Pending and Deleting.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tags for the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
 
     /**
      * Create a Ipv6Gateway resource with the given unique name, arguments, and options.
@@ -141,29 +141,29 @@ export class Ipv6Gateway extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as Ipv6GatewayState | undefined;
-            resourceInputs["businessStatus"] = state ? state.businessStatus : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["expiredTime"] = state ? state.expiredTime : undefined;
-            resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
-            resourceInputs["ipv6GatewayId"] = state ? state.ipv6GatewayId : undefined;
-            resourceInputs["ipv6GatewayName"] = state ? state.ipv6GatewayName : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["spec"] = state ? state.spec : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["businessStatus"] = state?.businessStatus;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["expiredTime"] = state?.expiredTime;
+            resourceInputs["instanceChargeType"] = state?.instanceChargeType;
+            resourceInputs["ipv6GatewayId"] = state?.ipv6GatewayId;
+            resourceInputs["ipv6GatewayName"] = state?.ipv6GatewayName;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["spec"] = state?.spec;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as Ipv6GatewayArgs | undefined;
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["ipv6GatewayName"] = args ? args.ipv6GatewayName : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["spec"] = args ? args.spec : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["ipv6GatewayName"] = args?.ipv6GatewayName;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["spec"] = args?.spec;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["businessStatus"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["expiredTime"] = undefined /*out*/;

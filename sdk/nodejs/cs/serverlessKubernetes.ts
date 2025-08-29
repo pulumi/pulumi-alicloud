@@ -108,148 +108,148 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
     /**
      * You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
      */
-    public readonly addons!: pulumi.Output<outputs.cs.ServerlessKubernetesAddon[] | undefined>;
+    declare public readonly addons: pulumi.Output<outputs.cs.ServerlessKubernetesAddon[] | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      *
      * @deprecated Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      */
-    public readonly clientCert!: pulumi.Output<string | undefined>;
+    declare public readonly clientCert: pulumi.Output<string | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      *
      * @deprecated Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      */
-    public readonly clientKey!: pulumi.Output<string | undefined>;
+    declare public readonly clientKey: pulumi.Output<string | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      *
      * @deprecated Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      */
-    public readonly clusterCaCert!: pulumi.Output<string | undefined>;
+    declare public readonly clusterCaCert: pulumi.Output<string | undefined>;
     /**
      * The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
      * - ack.standard: Standard serverless clusters.
      * - ack.pro.small: Professional serverless clusters.
      */
-    public readonly clusterSpec!: pulumi.Output<string>;
+    declare public readonly clusterSpec: pulumi.Output<string>;
     /**
      * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
      * > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
      */
-    public readonly customSan!: pulumi.Output<string | undefined>;
+    declare public readonly customSan: pulumi.Output<string | undefined>;
     /**
      * Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
      */
-    public readonly deleteOptions!: pulumi.Output<outputs.cs.ServerlessKubernetesDeleteOption[] | undefined>;
+    declare public readonly deleteOptions: pulumi.Output<outputs.cs.ServerlessKubernetesDeleteOption[] | undefined>;
     /**
      * Whether enable the deletion protection or not.
      * - true: Enable deletion protection.
      * - false: Disable deletion protection.
      */
-    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
+    declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
      */
-    public readonly enableRrsa!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableRrsa: pulumi.Output<boolean | undefined>;
     /**
      * Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
      */
-    public readonly endpointPublicAccessEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly endpointPublicAccessEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The path of kube config, like ~/.kube/config. Please use the attribute outputFile of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      *
      * @deprecated Field 'kube_config' has been deprecated from provider version 1.187.0. Please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
      */
-    public readonly kubeConfig!: pulumi.Output<string | undefined>;
+    declare public readonly kubeConfig: pulumi.Output<string | undefined>;
     /**
      * The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
      *
      * @deprecated Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
      */
-    public readonly loadBalancerSpec!: pulumi.Output<string>;
+    declare public readonly loadBalancerSpec: pulumi.Output<string>;
     /**
      * Enable log service, Valid value `SLS`. Only works for **Create** Operation.
      *
      * @deprecated Field 'logging_type' has been deprecated from provider version 1.229.1. Please use addons `alibaba-log-controller` to enable logging.
      */
-    public readonly loggingType!: pulumi.Output<string | undefined>;
+    declare public readonly loggingType: pulumi.Output<string | undefined>;
     /**
      * The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
      */
-    public readonly maintenanceWindow!: pulumi.Output<outputs.cs.ServerlessKubernetesMaintenanceWindow>;
+    declare public readonly maintenanceWindow: pulumi.Output<outputs.cs.ServerlessKubernetesMaintenanceWindow>;
     /**
      * The kubernetes cluster's name. It is the only in one Alicloud account.
      */
-    public readonly name!: pulumi.Output<string>;
-    public readonly namePrefix!: pulumi.Output<string | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly namePrefix: pulumi.Output<string | undefined>;
     /**
      * Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
      */
-    public readonly newNatGateway!: pulumi.Output<boolean | undefined>;
+    declare public readonly newNatGateway: pulumi.Output<boolean | undefined>;
     /**
      * The cluster automatic operation policy. See `operationPolicy` below.
      *
      * *Removed params*
      */
-    public readonly operationPolicy!: pulumi.Output<outputs.cs.ServerlessKubernetesOperationPolicy>;
+    declare public readonly operationPolicy: pulumi.Output<outputs.cs.ServerlessKubernetesOperationPolicy>;
     /**
      * Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
      *
      * @deprecated Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
      */
-    public readonly privateZone!: pulumi.Output<boolean | undefined>;
+    declare public readonly privateZone: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
-    public readonly retainResources!: pulumi.Output<string[] | undefined>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
+    declare public readonly retainResources: pulumi.Output<string[] | undefined>;
     /**
      * Nested attribute containing RRSA related data for your cluster.
      */
-    public /*out*/ readonly rrsaMetadata!: pulumi.Output<outputs.cs.ServerlessKubernetesRrsaMetadata>;
+    declare public /*out*/ readonly rrsaMetadata: pulumi.Output<outputs.cs.ServerlessKubernetesRrsaMetadata>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
-    public readonly securityGroupId!: pulumi.Output<string>;
+    declare public readonly securityGroupId: pulumi.Output<string>;
     /**
      * CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
      */
-    public readonly serviceCidr!: pulumi.Output<string | undefined>;
+    declare public readonly serviceCidr: pulumi.Output<string | undefined>;
     /**
      * Service discovery type. Only works for **Create** Operation. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
      */
-    public readonly serviceDiscoveryTypes!: pulumi.Output<string[] | undefined>;
+    declare public readonly serviceDiscoveryTypes: pulumi.Output<string[] | undefined>;
     /**
      * If you use an existing SLS project, you must specify `slsProjectName`. Only works for **Create** Operation.
      *
      * @deprecated Field 'sls_project_name' has been deprecated from provider version 1.229.1. Please use the field `config` of addons `alibaba-log-controller` to specify log project name.
      */
-    public readonly slsProjectName!: pulumi.Output<string>;
+    declare public readonly slsProjectName: pulumi.Output<string>;
     /**
      * Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The time zone of the cluster.
      */
-    public readonly timeZone!: pulumi.Output<string>;
+    declare public readonly timeZone: pulumi.Output<string>;
     /**
      * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
      */
-    public readonly version!: pulumi.Output<string>;
+    declare public readonly version: pulumi.Output<string>;
     /**
      * The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC will be built.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * The vswitches where new kubernetes cluster will be located.
      */
-    public readonly vswitchIds!: pulumi.Output<string[]>;
+    declare public readonly vswitchIds: pulumi.Output<string[]>;
     /**
      * When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located. Only works for **Create** Operation.
      */
-    public readonly zoneId!: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a ServerlessKubernetes resource with the given unique name, arguments, and options.
@@ -264,71 +264,71 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServerlessKubernetesState | undefined;
-            resourceInputs["addons"] = state ? state.addons : undefined;
-            resourceInputs["clientCert"] = state ? state.clientCert : undefined;
-            resourceInputs["clientKey"] = state ? state.clientKey : undefined;
-            resourceInputs["clusterCaCert"] = state ? state.clusterCaCert : undefined;
-            resourceInputs["clusterSpec"] = state ? state.clusterSpec : undefined;
-            resourceInputs["customSan"] = state ? state.customSan : undefined;
-            resourceInputs["deleteOptions"] = state ? state.deleteOptions : undefined;
-            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            resourceInputs["enableRrsa"] = state ? state.enableRrsa : undefined;
-            resourceInputs["endpointPublicAccessEnabled"] = state ? state.endpointPublicAccessEnabled : undefined;
-            resourceInputs["kubeConfig"] = state ? state.kubeConfig : undefined;
-            resourceInputs["loadBalancerSpec"] = state ? state.loadBalancerSpec : undefined;
-            resourceInputs["loggingType"] = state ? state.loggingType : undefined;
-            resourceInputs["maintenanceWindow"] = state ? state.maintenanceWindow : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namePrefix"] = state ? state.namePrefix : undefined;
-            resourceInputs["newNatGateway"] = state ? state.newNatGateway : undefined;
-            resourceInputs["operationPolicy"] = state ? state.operationPolicy : undefined;
-            resourceInputs["privateZone"] = state ? state.privateZone : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["retainResources"] = state ? state.retainResources : undefined;
-            resourceInputs["rrsaMetadata"] = state ? state.rrsaMetadata : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["serviceCidr"] = state ? state.serviceCidr : undefined;
-            resourceInputs["serviceDiscoveryTypes"] = state ? state.serviceDiscoveryTypes : undefined;
-            resourceInputs["slsProjectName"] = state ? state.slsProjectName : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["timeZone"] = state ? state.timeZone : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchIds"] = state ? state.vswitchIds : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["addons"] = state?.addons;
+            resourceInputs["clientCert"] = state?.clientCert;
+            resourceInputs["clientKey"] = state?.clientKey;
+            resourceInputs["clusterCaCert"] = state?.clusterCaCert;
+            resourceInputs["clusterSpec"] = state?.clusterSpec;
+            resourceInputs["customSan"] = state?.customSan;
+            resourceInputs["deleteOptions"] = state?.deleteOptions;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["enableRrsa"] = state?.enableRrsa;
+            resourceInputs["endpointPublicAccessEnabled"] = state?.endpointPublicAccessEnabled;
+            resourceInputs["kubeConfig"] = state?.kubeConfig;
+            resourceInputs["loadBalancerSpec"] = state?.loadBalancerSpec;
+            resourceInputs["loggingType"] = state?.loggingType;
+            resourceInputs["maintenanceWindow"] = state?.maintenanceWindow;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namePrefix"] = state?.namePrefix;
+            resourceInputs["newNatGateway"] = state?.newNatGateway;
+            resourceInputs["operationPolicy"] = state?.operationPolicy;
+            resourceInputs["privateZone"] = state?.privateZone;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["retainResources"] = state?.retainResources;
+            resourceInputs["rrsaMetadata"] = state?.rrsaMetadata;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["serviceCidr"] = state?.serviceCidr;
+            resourceInputs["serviceDiscoveryTypes"] = state?.serviceDiscoveryTypes;
+            resourceInputs["slsProjectName"] = state?.slsProjectName;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["timeZone"] = state?.timeZone;
+            resourceInputs["version"] = state?.version;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchIds"] = state?.vswitchIds;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ServerlessKubernetesArgs | undefined;
-            resourceInputs["addons"] = args ? args.addons : undefined;
-            resourceInputs["clientCert"] = args ? args.clientCert : undefined;
-            resourceInputs["clientKey"] = args ? args.clientKey : undefined;
-            resourceInputs["clusterCaCert"] = args ? args.clusterCaCert : undefined;
-            resourceInputs["clusterSpec"] = args ? args.clusterSpec : undefined;
-            resourceInputs["customSan"] = args ? args.customSan : undefined;
-            resourceInputs["deleteOptions"] = args ? args.deleteOptions : undefined;
-            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            resourceInputs["enableRrsa"] = args ? args.enableRrsa : undefined;
-            resourceInputs["endpointPublicAccessEnabled"] = args ? args.endpointPublicAccessEnabled : undefined;
-            resourceInputs["kubeConfig"] = args ? args.kubeConfig : undefined;
-            resourceInputs["loadBalancerSpec"] = args ? args.loadBalancerSpec : undefined;
-            resourceInputs["loggingType"] = args ? args.loggingType : undefined;
-            resourceInputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namePrefix"] = args ? args.namePrefix : undefined;
-            resourceInputs["newNatGateway"] = args ? args.newNatGateway : undefined;
-            resourceInputs["operationPolicy"] = args ? args.operationPolicy : undefined;
-            resourceInputs["privateZone"] = args ? args.privateZone : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["retainResources"] = args ? args.retainResources : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            resourceInputs["serviceCidr"] = args ? args.serviceCidr : undefined;
-            resourceInputs["serviceDiscoveryTypes"] = args ? args.serviceDiscoveryTypes : undefined;
-            resourceInputs["slsProjectName"] = args ? args.slsProjectName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["timeZone"] = args ? args.timeZone : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vswitchIds"] = args ? args.vswitchIds : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["addons"] = args?.addons;
+            resourceInputs["clientCert"] = args?.clientCert;
+            resourceInputs["clientKey"] = args?.clientKey;
+            resourceInputs["clusterCaCert"] = args?.clusterCaCert;
+            resourceInputs["clusterSpec"] = args?.clusterSpec;
+            resourceInputs["customSan"] = args?.customSan;
+            resourceInputs["deleteOptions"] = args?.deleteOptions;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["enableRrsa"] = args?.enableRrsa;
+            resourceInputs["endpointPublicAccessEnabled"] = args?.endpointPublicAccessEnabled;
+            resourceInputs["kubeConfig"] = args?.kubeConfig;
+            resourceInputs["loadBalancerSpec"] = args?.loadBalancerSpec;
+            resourceInputs["loggingType"] = args?.loggingType;
+            resourceInputs["maintenanceWindow"] = args?.maintenanceWindow;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namePrefix"] = args?.namePrefix;
+            resourceInputs["newNatGateway"] = args?.newNatGateway;
+            resourceInputs["operationPolicy"] = args?.operationPolicy;
+            resourceInputs["privateZone"] = args?.privateZone;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["retainResources"] = args?.retainResources;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["serviceCidr"] = args?.serviceCidr;
+            resourceInputs["serviceDiscoveryTypes"] = args?.serviceDiscoveryTypes;
+            resourceInputs["slsProjectName"] = args?.slsProjectName;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["timeZone"] = args?.timeZone;
+            resourceInputs["version"] = args?.version;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchIds"] = args?.vswitchIds;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["rrsaMetadata"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

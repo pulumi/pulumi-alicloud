@@ -72,23 +72,23 @@ export class ImageLib extends pulumi.CustomResource {
     /**
      * List of business scenarios. For example: ["bizTypeA", "bizTypeB", "bizTypeC"]
      */
-    public readonly bizTypes!: pulumi.Output<string[] | undefined>;
+    declare public readonly bizTypes: pulumi.Output<string[] | undefined>;
     /**
      * The category of the image library. Valid values: BLACK: a blacklist, WHITE: a whitelist, REVIEW: a review list
      */
-    public readonly category!: pulumi.Output<string>;
+    declare public readonly category: pulumi.Output<string>;
     /**
      * Specifies whether to enable the image library. Valid values: true: Enable the image library. This is the default value. false: Disable the image library.
      */
-    public readonly enable!: pulumi.Output<boolean>;
+    declare public readonly enable: pulumi.Output<boolean>;
     /**
      * The name of the image library defined by the customer. It can contain no more than 20 characters in Chinese, English, and underscore (_).
      */
-    public readonly imageLibName!: pulumi.Output<string>;
+    declare public readonly imageLibName: pulumi.Output<string>;
     /**
      * The moderation scenario to which the custom image library applies. Valid values: PORN: pornography detection, AD: ad detection, ILLEGAL: terrorist content detection
      */
-    public readonly scene!: pulumi.Output<string>;
+    declare public readonly scene: pulumi.Output<string>;
 
     /**
      * Create a ImageLib resource with the given unique name, arguments, and options.
@@ -103,27 +103,27 @@ export class ImageLib extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImageLibState | undefined;
-            resourceInputs["bizTypes"] = state ? state.bizTypes : undefined;
-            resourceInputs["category"] = state ? state.category : undefined;
-            resourceInputs["enable"] = state ? state.enable : undefined;
-            resourceInputs["imageLibName"] = state ? state.imageLibName : undefined;
-            resourceInputs["scene"] = state ? state.scene : undefined;
+            resourceInputs["bizTypes"] = state?.bizTypes;
+            resourceInputs["category"] = state?.category;
+            resourceInputs["enable"] = state?.enable;
+            resourceInputs["imageLibName"] = state?.imageLibName;
+            resourceInputs["scene"] = state?.scene;
         } else {
             const args = argsOrState as ImageLibArgs | undefined;
-            if ((!args || args.category === undefined) && !opts.urn) {
+            if (args?.category === undefined && !opts.urn) {
                 throw new Error("Missing required property 'category'");
             }
-            if ((!args || args.imageLibName === undefined) && !opts.urn) {
+            if (args?.imageLibName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'imageLibName'");
             }
-            if ((!args || args.scene === undefined) && !opts.urn) {
+            if (args?.scene === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scene'");
             }
-            resourceInputs["bizTypes"] = args ? args.bizTypes : undefined;
-            resourceInputs["category"] = args ? args.category : undefined;
-            resourceInputs["enable"] = args ? args.enable : undefined;
-            resourceInputs["imageLibName"] = args ? args.imageLibName : undefined;
-            resourceInputs["scene"] = args ? args.scene : undefined;
+            resourceInputs["bizTypes"] = args?.bizTypes;
+            resourceInputs["category"] = args?.category;
+            resourceInputs["enable"] = args?.enable;
+            resourceInputs["imageLibName"] = args?.imageLibName;
+            resourceInputs["scene"] = args?.scene;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ImageLib.__pulumiType, name, resourceInputs, opts);

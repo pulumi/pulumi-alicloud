@@ -85,15 +85,15 @@ export class BgpNetwork extends pulumi.CustomResource {
     /**
      * The CIDR block of the virtual private cloud (VPC) or vSwitch that you want to connect to a data center.
      */
-    public readonly dstCidrBlock!: pulumi.Output<string>;
+    declare public readonly dstCidrBlock: pulumi.Output<string>;
     /**
      * The ID of the vRouter associated with the router interface.
      */
-    public readonly routerId!: pulumi.Output<string>;
+    declare public readonly routerId: pulumi.Output<string>;
     /**
      * The state of the advertised BGP network.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a BgpNetwork resource with the given unique name, arguments, and options.
@@ -108,19 +108,19 @@ export class BgpNetwork extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BgpNetworkState | undefined;
-            resourceInputs["dstCidrBlock"] = state ? state.dstCidrBlock : undefined;
-            resourceInputs["routerId"] = state ? state.routerId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["dstCidrBlock"] = state?.dstCidrBlock;
+            resourceInputs["routerId"] = state?.routerId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as BgpNetworkArgs | undefined;
-            if ((!args || args.dstCidrBlock === undefined) && !opts.urn) {
+            if (args?.dstCidrBlock === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dstCidrBlock'");
             }
-            if ((!args || args.routerId === undefined) && !opts.urn) {
+            if (args?.routerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'routerId'");
             }
-            resourceInputs["dstCidrBlock"] = args ? args.dstCidrBlock : undefined;
-            resourceInputs["routerId"] = args ? args.routerId : undefined;
+            resourceInputs["dstCidrBlock"] = args?.dstCidrBlock;
+            resourceInputs["routerId"] = args?.routerId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

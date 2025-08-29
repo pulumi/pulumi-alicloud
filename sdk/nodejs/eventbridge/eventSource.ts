@@ -79,15 +79,15 @@ export class EventSource extends pulumi.CustomResource {
     /**
      * The detail describe of event source.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of event bus.
      */
-    public readonly eventBusName!: pulumi.Output<string>;
+    declare public readonly eventBusName: pulumi.Output<string>;
     /**
      * The code name of event source.
      */
-    public readonly eventSourceName!: pulumi.Output<string>;
+    declare public readonly eventSourceName: pulumi.Output<string>;
     /**
      * The config of external source.
      * When `externalSourceType` is `RabbitMQ`, The following attributes are supported:
@@ -104,15 +104,15 @@ export class EventSource extends pulumi.CustomResource {
      * When `externalSourceType` is `MNS`, The following attributes are supported:
      * `QueueName` - The queue name of MNS.
      */
-    public readonly externalSourceConfig!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly externalSourceConfig: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linkedExternalSource` is `true`, This field is valid.
      */
-    public readonly externalSourceType!: pulumi.Output<string | undefined>;
+    declare public readonly externalSourceType: pulumi.Output<string | undefined>;
     /**
      * Whether to connect to an external data source. Default value: `false`
      */
-    public readonly linkedExternalSource!: pulumi.Output<boolean>;
+    declare public readonly linkedExternalSource: pulumi.Output<boolean>;
 
     /**
      * Create a EventSource resource with the given unique name, arguments, and options.
@@ -127,26 +127,26 @@ export class EventSource extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EventSourceState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["eventBusName"] = state ? state.eventBusName : undefined;
-            resourceInputs["eventSourceName"] = state ? state.eventSourceName : undefined;
-            resourceInputs["externalSourceConfig"] = state ? state.externalSourceConfig : undefined;
-            resourceInputs["externalSourceType"] = state ? state.externalSourceType : undefined;
-            resourceInputs["linkedExternalSource"] = state ? state.linkedExternalSource : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["eventBusName"] = state?.eventBusName;
+            resourceInputs["eventSourceName"] = state?.eventSourceName;
+            resourceInputs["externalSourceConfig"] = state?.externalSourceConfig;
+            resourceInputs["externalSourceType"] = state?.externalSourceType;
+            resourceInputs["linkedExternalSource"] = state?.linkedExternalSource;
         } else {
             const args = argsOrState as EventSourceArgs | undefined;
-            if ((!args || args.eventBusName === undefined) && !opts.urn) {
+            if (args?.eventBusName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'eventBusName'");
             }
-            if ((!args || args.eventSourceName === undefined) && !opts.urn) {
+            if (args?.eventSourceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'eventSourceName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["eventBusName"] = args ? args.eventBusName : undefined;
-            resourceInputs["eventSourceName"] = args ? args.eventSourceName : undefined;
-            resourceInputs["externalSourceConfig"] = args ? args.externalSourceConfig : undefined;
-            resourceInputs["externalSourceType"] = args ? args.externalSourceType : undefined;
-            resourceInputs["linkedExternalSource"] = args ? args.linkedExternalSource : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["eventBusName"] = args?.eventBusName;
+            resourceInputs["eventSourceName"] = args?.eventSourceName;
+            resourceInputs["externalSourceConfig"] = args?.externalSourceConfig;
+            resourceInputs["externalSourceType"] = args?.externalSourceType;
+            resourceInputs["linkedExternalSource"] = args?.linkedExternalSource;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EventSource.__pulumiType, name, resourceInputs, opts);

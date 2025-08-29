@@ -66,46 +66,46 @@ export class MscSubSubscription extends pulumi.CustomResource {
     /**
      * The channel the Subscription.
      */
-    public /*out*/ readonly channel!: pulumi.Output<string>;
+    declare public /*out*/ readonly channel: pulumi.Output<string>;
     /**
      * The ids of subscribed contacts.
      * **NOTE:** There is a potential diff error because of the order of `contactIds` values indefinite.
      * So, from version 1.161.0, `contactIds` type has been updated as `set` from `list`,
      * and you can use tolist to convert it to a list.
      */
-    public readonly contactIds!: pulumi.Output<string[]>;
+    declare public readonly contactIds: pulumi.Output<string[]>;
     /**
      * The description of the Subscription.
      */
-    public /*out*/ readonly description!: pulumi.Output<string>;
+    declare public /*out*/ readonly description: pulumi.Output<string>;
     /**
      * The status of email subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
      */
-    public readonly emailStatus!: pulumi.Output<number | undefined>;
+    declare public readonly emailStatus: pulumi.Output<number | undefined>;
     /**
      * The name of the Subscription. **NOTE:**  You should use the `alicloud.getMscSubSubscriptions` to query the available subscription item name.
      */
-    public readonly itemName!: pulumi.Output<string>;
+    declare public readonly itemName: pulumi.Output<string>;
     /**
      * The status of pmsg subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
      */
-    public readonly pmsgStatus!: pulumi.Output<number | undefined>;
+    declare public readonly pmsgStatus: pulumi.Output<number | undefined>;
     /**
      * The status of sms subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
      */
-    public readonly smsStatus!: pulumi.Output<number | undefined>;
+    declare public readonly smsStatus: pulumi.Output<number | undefined>;
     /**
      * The status of tts subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
      */
-    public readonly ttsStatus!: pulumi.Output<number | undefined>;
+    declare public readonly ttsStatus: pulumi.Output<number | undefined>;
     /**
      * The ids of subscribed webhooks.
      */
-    public readonly webhookIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly webhookIds: pulumi.Output<string[] | undefined>;
     /**
      * The status of webhook subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
      */
-    public readonly webhookStatus!: pulumi.Output<number | undefined>;
+    declare public readonly webhookStatus: pulumi.Output<number | undefined>;
 
     /**
      * Create a MscSubSubscription resource with the given unique name, arguments, and options.
@@ -120,29 +120,29 @@ export class MscSubSubscription extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MscSubSubscriptionState | undefined;
-            resourceInputs["channel"] = state ? state.channel : undefined;
-            resourceInputs["contactIds"] = state ? state.contactIds : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["emailStatus"] = state ? state.emailStatus : undefined;
-            resourceInputs["itemName"] = state ? state.itemName : undefined;
-            resourceInputs["pmsgStatus"] = state ? state.pmsgStatus : undefined;
-            resourceInputs["smsStatus"] = state ? state.smsStatus : undefined;
-            resourceInputs["ttsStatus"] = state ? state.ttsStatus : undefined;
-            resourceInputs["webhookIds"] = state ? state.webhookIds : undefined;
-            resourceInputs["webhookStatus"] = state ? state.webhookStatus : undefined;
+            resourceInputs["channel"] = state?.channel;
+            resourceInputs["contactIds"] = state?.contactIds;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["emailStatus"] = state?.emailStatus;
+            resourceInputs["itemName"] = state?.itemName;
+            resourceInputs["pmsgStatus"] = state?.pmsgStatus;
+            resourceInputs["smsStatus"] = state?.smsStatus;
+            resourceInputs["ttsStatus"] = state?.ttsStatus;
+            resourceInputs["webhookIds"] = state?.webhookIds;
+            resourceInputs["webhookStatus"] = state?.webhookStatus;
         } else {
             const args = argsOrState as MscSubSubscriptionArgs | undefined;
-            if ((!args || args.itemName === undefined) && !opts.urn) {
+            if (args?.itemName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'itemName'");
             }
-            resourceInputs["contactIds"] = args ? args.contactIds : undefined;
-            resourceInputs["emailStatus"] = args ? args.emailStatus : undefined;
-            resourceInputs["itemName"] = args ? args.itemName : undefined;
-            resourceInputs["pmsgStatus"] = args ? args.pmsgStatus : undefined;
-            resourceInputs["smsStatus"] = args ? args.smsStatus : undefined;
-            resourceInputs["ttsStatus"] = args ? args.ttsStatus : undefined;
-            resourceInputs["webhookIds"] = args ? args.webhookIds : undefined;
-            resourceInputs["webhookStatus"] = args ? args.webhookStatus : undefined;
+            resourceInputs["contactIds"] = args?.contactIds;
+            resourceInputs["emailStatus"] = args?.emailStatus;
+            resourceInputs["itemName"] = args?.itemName;
+            resourceInputs["pmsgStatus"] = args?.pmsgStatus;
+            resourceInputs["smsStatus"] = args?.smsStatus;
+            resourceInputs["ttsStatus"] = args?.ttsStatus;
+            resourceInputs["webhookIds"] = args?.webhookIds;
+            resourceInputs["webhookStatus"] = args?.webhookStatus;
             resourceInputs["channel"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
         }

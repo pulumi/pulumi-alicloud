@@ -75,39 +75,39 @@ export class BasicDefenseThreshold extends pulumi.CustomResource {
     /**
      * Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
      */
-    public readonly bps!: pulumi.Output<number>;
+    declare public readonly bps: pulumi.Output<number>;
     /**
      * The type of the threshold to query. Valid values: `defense`,`blackhole`.
      */
-    public readonly ddosType!: pulumi.Output<string>;
+    declare public readonly ddosType: pulumi.Output<string>;
     /**
      * The ID of the instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The instance type of the public IP address asset. Value: `ecs`,`slb`,`eip`.
      */
-    public readonly instanceType!: pulumi.Output<string>;
+    declare public readonly instanceType: pulumi.Output<string>;
     /**
      * The Internet IP address.
      */
-    public readonly internetIp!: pulumi.Output<string>;
+    declare public readonly internetIp: pulumi.Output<string>;
     /**
      * Whether it is the system default threshold. Value:
      */
-    public readonly isAuto!: pulumi.Output<boolean>;
+    declare public readonly isAuto: pulumi.Output<boolean>;
     /**
      * The maximum traffic scrubbing threshold. Unit: Mbit/s.
      */
-    public /*out*/ readonly maxBps!: pulumi.Output<number>;
+    declare public /*out*/ readonly maxBps: pulumi.Output<number>;
     /**
      * The maximum packet scrubbing threshold. Unit: pps.
      */
-    public /*out*/ readonly maxPps!: pulumi.Output<number>;
+    declare public /*out*/ readonly maxPps: pulumi.Output<number>;
     /**
      * The current message number cleaning threshold. Unit: pps.
      */
-    public readonly pps!: pulumi.Output<number>;
+    declare public readonly pps: pulumi.Output<number>;
 
     /**
      * Create a BasicDefenseThreshold resource with the given unique name, arguments, and options.
@@ -122,33 +122,33 @@ export class BasicDefenseThreshold extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BasicDefenseThresholdState | undefined;
-            resourceInputs["bps"] = state ? state.bps : undefined;
-            resourceInputs["ddosType"] = state ? state.ddosType : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["internetIp"] = state ? state.internetIp : undefined;
-            resourceInputs["isAuto"] = state ? state.isAuto : undefined;
-            resourceInputs["maxBps"] = state ? state.maxBps : undefined;
-            resourceInputs["maxPps"] = state ? state.maxPps : undefined;
-            resourceInputs["pps"] = state ? state.pps : undefined;
+            resourceInputs["bps"] = state?.bps;
+            resourceInputs["ddosType"] = state?.ddosType;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["internetIp"] = state?.internetIp;
+            resourceInputs["isAuto"] = state?.isAuto;
+            resourceInputs["maxBps"] = state?.maxBps;
+            resourceInputs["maxPps"] = state?.maxPps;
+            resourceInputs["pps"] = state?.pps;
         } else {
             const args = argsOrState as BasicDefenseThresholdArgs | undefined;
-            if ((!args || args.ddosType === undefined) && !opts.urn) {
+            if (args?.ddosType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ddosType'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.instanceType === undefined) && !opts.urn) {
+            if (args?.instanceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceType'");
             }
-            resourceInputs["bps"] = args ? args.bps : undefined;
-            resourceInputs["ddosType"] = args ? args.ddosType : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["internetIp"] = args ? args.internetIp : undefined;
-            resourceInputs["isAuto"] = args ? args.isAuto : undefined;
-            resourceInputs["pps"] = args ? args.pps : undefined;
+            resourceInputs["bps"] = args?.bps;
+            resourceInputs["ddosType"] = args?.ddosType;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["internetIp"] = args?.internetIp;
+            resourceInputs["isAuto"] = args?.isAuto;
+            resourceInputs["pps"] = args?.pps;
             resourceInputs["maxBps"] = undefined /*out*/;
             resourceInputs["maxPps"] = undefined /*out*/;
         }

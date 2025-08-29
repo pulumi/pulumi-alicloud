@@ -52,27 +52,27 @@ export class DataSourceSharedRule extends pulumi.CustomResource {
     /**
      * The creation time of the data source sharing rule.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly createTime: pulumi.Output<number>;
     /**
      * The ID of the data source, that is, the unique identifier of the data source.
      */
-    public readonly dataSourceId!: pulumi.Output<number>;
+    declare public readonly dataSourceId: pulumi.Output<number>;
     /**
      * The data source sharing rule ID, that is, the unique identifier of the data source sharing rule.
      */
-    public /*out*/ readonly dataSourceSharedRuleId!: pulumi.Output<string>;
+    declare public /*out*/ readonly dataSourceSharedRuleId: pulumi.Output<string>;
     /**
      * The environment type of the data source shared to the target project, such as Dev (Development Environment) and Prod (production environment).
      */
-    public readonly envType!: pulumi.Output<string>;
+    declare public readonly envType: pulumi.Output<string>;
     /**
      * The target user of the data source permission policy, which is null to share to the project.
      */
-    public readonly sharedUser!: pulumi.Output<string | undefined>;
+    declare public readonly sharedUser: pulumi.Output<string | undefined>;
     /**
      * The ID of the project to which the data source is shared.
      */
-    public readonly targetProjectId!: pulumi.Output<number>;
+    declare public readonly targetProjectId: pulumi.Output<number>;
 
     /**
      * Create a DataSourceSharedRule resource with the given unique name, arguments, and options.
@@ -87,27 +87,27 @@ export class DataSourceSharedRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DataSourceSharedRuleState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dataSourceId"] = state ? state.dataSourceId : undefined;
-            resourceInputs["dataSourceSharedRuleId"] = state ? state.dataSourceSharedRuleId : undefined;
-            resourceInputs["envType"] = state ? state.envType : undefined;
-            resourceInputs["sharedUser"] = state ? state.sharedUser : undefined;
-            resourceInputs["targetProjectId"] = state ? state.targetProjectId : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dataSourceId"] = state?.dataSourceId;
+            resourceInputs["dataSourceSharedRuleId"] = state?.dataSourceSharedRuleId;
+            resourceInputs["envType"] = state?.envType;
+            resourceInputs["sharedUser"] = state?.sharedUser;
+            resourceInputs["targetProjectId"] = state?.targetProjectId;
         } else {
             const args = argsOrState as DataSourceSharedRuleArgs | undefined;
-            if ((!args || args.dataSourceId === undefined) && !opts.urn) {
+            if (args?.dataSourceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataSourceId'");
             }
-            if ((!args || args.envType === undefined) && !opts.urn) {
+            if (args?.envType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'envType'");
             }
-            if ((!args || args.targetProjectId === undefined) && !opts.urn) {
+            if (args?.targetProjectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetProjectId'");
             }
-            resourceInputs["dataSourceId"] = args ? args.dataSourceId : undefined;
-            resourceInputs["envType"] = args ? args.envType : undefined;
-            resourceInputs["sharedUser"] = args ? args.sharedUser : undefined;
-            resourceInputs["targetProjectId"] = args ? args.targetProjectId : undefined;
+            resourceInputs["dataSourceId"] = args?.dataSourceId;
+            resourceInputs["envType"] = args?.envType;
+            resourceInputs["sharedUser"] = args?.sharedUser;
+            resourceInputs["targetProjectId"] = args?.targetProjectId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["dataSourceSharedRuleId"] = undefined /*out*/;
         }

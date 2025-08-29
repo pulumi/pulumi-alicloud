@@ -67,35 +67,35 @@ export class TransitRouterRouteTable extends pulumi.CustomResource {
     /**
      * The dry run.
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * The associating status of the Transit Router.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the transit router.
      */
-    public readonly transitRouterId!: pulumi.Output<string>;
+    declare public readonly transitRouterId: pulumi.Output<string>;
     /**
      * The description of the transit router route table.
      */
-    public readonly transitRouterRouteTableDescription!: pulumi.Output<string>;
+    declare public readonly transitRouterRouteTableDescription: pulumi.Output<string>;
     /**
      * The id of the transit router route table.
      */
-    public /*out*/ readonly transitRouterRouteTableId!: pulumi.Output<string>;
+    declare public /*out*/ readonly transitRouterRouteTableId: pulumi.Output<string>;
     /**
      * The name of the transit router route table.
      */
-    public readonly transitRouterRouteTableName!: pulumi.Output<string | undefined>;
+    declare public readonly transitRouterRouteTableName: pulumi.Output<string | undefined>;
     /**
      * The type of the transit router route table. Valid values: `Custom`, `System`.
      */
-    public /*out*/ readonly transitRouterRouteTableType!: pulumi.Output<string>;
+    declare public /*out*/ readonly transitRouterRouteTableType: pulumi.Output<string>;
 
     /**
      * Create a TransitRouterRouteTable resource with the given unique name, arguments, and options.
@@ -110,24 +110,24 @@ export class TransitRouterRouteTable extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TransitRouterRouteTableState | undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["transitRouterId"] = state ? state.transitRouterId : undefined;
-            resourceInputs["transitRouterRouteTableDescription"] = state ? state.transitRouterRouteTableDescription : undefined;
-            resourceInputs["transitRouterRouteTableId"] = state ? state.transitRouterRouteTableId : undefined;
-            resourceInputs["transitRouterRouteTableName"] = state ? state.transitRouterRouteTableName : undefined;
-            resourceInputs["transitRouterRouteTableType"] = state ? state.transitRouterRouteTableType : undefined;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["transitRouterId"] = state?.transitRouterId;
+            resourceInputs["transitRouterRouteTableDescription"] = state?.transitRouterRouteTableDescription;
+            resourceInputs["transitRouterRouteTableId"] = state?.transitRouterRouteTableId;
+            resourceInputs["transitRouterRouteTableName"] = state?.transitRouterRouteTableName;
+            resourceInputs["transitRouterRouteTableType"] = state?.transitRouterRouteTableType;
         } else {
             const args = argsOrState as TransitRouterRouteTableArgs | undefined;
-            if ((!args || args.transitRouterId === undefined) && !opts.urn) {
+            if (args?.transitRouterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'transitRouterId'");
             }
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["transitRouterId"] = args ? args.transitRouterId : undefined;
-            resourceInputs["transitRouterRouteTableDescription"] = args ? args.transitRouterRouteTableDescription : undefined;
-            resourceInputs["transitRouterRouteTableName"] = args ? args.transitRouterRouteTableName : undefined;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["transitRouterId"] = args?.transitRouterId;
+            resourceInputs["transitRouterRouteTableDescription"] = args?.transitRouterRouteTableDescription;
+            resourceInputs["transitRouterRouteTableName"] = args?.transitRouterRouteTableName;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["transitRouterRouteTableId"] = undefined /*out*/;
             resourceInputs["transitRouterRouteTableType"] = undefined /*out*/;

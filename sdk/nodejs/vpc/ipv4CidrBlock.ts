@@ -69,25 +69,25 @@ export class Ipv4CidrBlock extends pulumi.CustomResource {
     /**
      * The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
      */
-    public readonly ipv4IpamPoolId!: pulumi.Output<string | undefined>;
+    declare public readonly ipv4IpamPoolId: pulumi.Output<string | undefined>;
     /**
      * The ID of the region where the VPC resides.
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * Additional network segment information.
      */
-    public readonly secondaryCidrBlock!: pulumi.Output<string>;
+    declare public readonly secondaryCidrBlock: pulumi.Output<string>;
     /**
      * Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
      *
      * > **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
      */
-    public readonly secondaryCidrMask!: pulumi.Output<number | undefined>;
+    declare public readonly secondaryCidrMask: pulumi.Output<number | undefined>;
     /**
      * The ID of the VPC.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
 
     /**
      * Create a Ipv4CidrBlock resource with the given unique name, arguments, and options.
@@ -102,20 +102,20 @@ export class Ipv4CidrBlock extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as Ipv4CidrBlockState | undefined;
-            resourceInputs["ipv4IpamPoolId"] = state ? state.ipv4IpamPoolId : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["secondaryCidrBlock"] = state ? state.secondaryCidrBlock : undefined;
-            resourceInputs["secondaryCidrMask"] = state ? state.secondaryCidrMask : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["ipv4IpamPoolId"] = state?.ipv4IpamPoolId;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["secondaryCidrBlock"] = state?.secondaryCidrBlock;
+            resourceInputs["secondaryCidrMask"] = state?.secondaryCidrMask;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as Ipv4CidrBlockArgs | undefined;
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["ipv4IpamPoolId"] = args ? args.ipv4IpamPoolId : undefined;
-            resourceInputs["secondaryCidrBlock"] = args ? args.secondaryCidrBlock : undefined;
-            resourceInputs["secondaryCidrMask"] = args ? args.secondaryCidrMask : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["ipv4IpamPoolId"] = args?.ipv4IpamPoolId;
+            resourceInputs["secondaryCidrBlock"] = args?.secondaryCidrBlock;
+            resourceInputs["secondaryCidrMask"] = args?.secondaryCidrMask;
+            resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["regionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

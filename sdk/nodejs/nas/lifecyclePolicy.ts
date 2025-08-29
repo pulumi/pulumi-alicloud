@@ -71,23 +71,23 @@ export class LifecyclePolicy extends pulumi.CustomResource {
     /**
      * The ID of the file system.
      */
-    public readonly fileSystemId!: pulumi.Output<string>;
+    declare public readonly fileSystemId: pulumi.Output<string>;
     /**
      * The name of the lifecycle management policy.
      */
-    public readonly lifecyclePolicyName!: pulumi.Output<string>;
+    declare public readonly lifecyclePolicyName: pulumi.Output<string>;
     /**
      * The rules in the lifecycle management policy. Valid values: `DEFAULT_ATIME_14`, `DEFAULT_ATIME_30`, `DEFAULT_ATIME_60`, `DEFAULT_ATIME_90`.
      */
-    public readonly lifecycleRuleName!: pulumi.Output<string>;
+    declare public readonly lifecycleRuleName: pulumi.Output<string>;
     /**
      * The absolute path of the directory for which the lifecycle management policy is configured. Set a maximum of `10` path. The path value must be prefixed by a forward slash (/) and must be an existing path in the mount target.
      */
-    public readonly paths!: pulumi.Output<string[]>;
+    declare public readonly paths: pulumi.Output<string[]>;
     /**
      * The storage type of the data that is dumped to the IA storage medium. Valid values: `InfrequentAccess`.
      */
-    public readonly storageType!: pulumi.Output<string>;
+    declare public readonly storageType: pulumi.Output<string>;
 
     /**
      * Create a LifecyclePolicy resource with the given unique name, arguments, and options.
@@ -102,33 +102,33 @@ export class LifecyclePolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LifecyclePolicyState | undefined;
-            resourceInputs["fileSystemId"] = state ? state.fileSystemId : undefined;
-            resourceInputs["lifecyclePolicyName"] = state ? state.lifecyclePolicyName : undefined;
-            resourceInputs["lifecycleRuleName"] = state ? state.lifecycleRuleName : undefined;
-            resourceInputs["paths"] = state ? state.paths : undefined;
-            resourceInputs["storageType"] = state ? state.storageType : undefined;
+            resourceInputs["fileSystemId"] = state?.fileSystemId;
+            resourceInputs["lifecyclePolicyName"] = state?.lifecyclePolicyName;
+            resourceInputs["lifecycleRuleName"] = state?.lifecycleRuleName;
+            resourceInputs["paths"] = state?.paths;
+            resourceInputs["storageType"] = state?.storageType;
         } else {
             const args = argsOrState as LifecyclePolicyArgs | undefined;
-            if ((!args || args.fileSystemId === undefined) && !opts.urn) {
+            if (args?.fileSystemId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fileSystemId'");
             }
-            if ((!args || args.lifecyclePolicyName === undefined) && !opts.urn) {
+            if (args?.lifecyclePolicyName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'lifecyclePolicyName'");
             }
-            if ((!args || args.lifecycleRuleName === undefined) && !opts.urn) {
+            if (args?.lifecycleRuleName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'lifecycleRuleName'");
             }
-            if ((!args || args.paths === undefined) && !opts.urn) {
+            if (args?.paths === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paths'");
             }
-            if ((!args || args.storageType === undefined) && !opts.urn) {
+            if (args?.storageType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storageType'");
             }
-            resourceInputs["fileSystemId"] = args ? args.fileSystemId : undefined;
-            resourceInputs["lifecyclePolicyName"] = args ? args.lifecyclePolicyName : undefined;
-            resourceInputs["lifecycleRuleName"] = args ? args.lifecycleRuleName : undefined;
-            resourceInputs["paths"] = args ? args.paths : undefined;
-            resourceInputs["storageType"] = args ? args.storageType : undefined;
+            resourceInputs["fileSystemId"] = args?.fileSystemId;
+            resourceInputs["lifecyclePolicyName"] = args?.lifecyclePolicyName;
+            resourceInputs["lifecycleRuleName"] = args?.lifecycleRuleName;
+            resourceInputs["paths"] = args?.paths;
+            resourceInputs["storageType"] = args?.storageType;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(LifecyclePolicy.__pulumiType, name, resourceInputs, opts);

@@ -116,144 +116,144 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The type of the domain account service. Valid values: `nis`, `ldap`. Default value: `nis`
      */
-    public readonly accountType!: pulumi.Output<string>;
+    declare public readonly accountType: pulumi.Output<string>;
     /**
      * The additional volumes. See `additionalVolumes` below.
      */
-    public readonly additionalVolumes!: pulumi.Output<outputs.ehpc.ClusterAdditionalVolume[] | undefined>;
+    declare public readonly additionalVolumes: pulumi.Output<outputs.ehpc.ClusterAdditionalVolume[] | undefined>;
     /**
      * The application. See `application` below.
      */
-    public readonly applications!: pulumi.Output<outputs.ehpc.ClusterApplication[]>;
+    declare public readonly applications: pulumi.Output<outputs.ehpc.ClusterApplication[]>;
     /**
      * Specifies whether to enable auto-renewal for the subscription. Default value: `false`.
      */
-    public readonly autoRenew!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoRenew: pulumi.Output<boolean | undefined>;
     /**
      * The auto-renewal period of the subscription compute nodes. The parameter takes effect when AutoRenew is set to true.
      */
-    public readonly autoRenewPeriod!: pulumi.Output<number | undefined>;
+    declare public readonly autoRenewPeriod: pulumi.Output<number | undefined>;
     /**
      * The version of the E-HPC client. By default, the parameter is set to the latest version number.
      */
-    public readonly clientVersion!: pulumi.Output<string>;
+    declare public readonly clientVersion: pulumi.Output<string>;
     /**
      * The name of the cluster. The name must be `2` to `64` characters in length.
      */
-    public readonly clusterName!: pulumi.Output<string>;
+    declare public readonly clusterName: pulumi.Output<string>;
     /**
      * The version of the cluster. Default value: `1.0`.
      */
-    public readonly clusterVersion!: pulumi.Output<string>;
+    declare public readonly clusterVersion: pulumi.Output<string>;
     /**
      * The number of the compute nodes. Valid values: `1` to `99`.
      */
-    public readonly computeCount!: pulumi.Output<number>;
+    declare public readonly computeCount: pulumi.Output<number>;
     /**
      * Specifies whether the compute nodes support hyper-threading. Default value: `true`.
      */
-    public readonly computeEnableHt!: pulumi.Output<boolean | undefined>;
+    declare public readonly computeEnableHt: pulumi.Output<boolean | undefined>;
     /**
      * The instance type of the compute nodes.
      */
-    public readonly computeInstanceType!: pulumi.Output<string>;
+    declare public readonly computeInstanceType: pulumi.Output<string>;
     /**
      * The maximum hourly price of the compute nodes. A maximum of three decimal places can be used in the value of the parameter. The parameter is valid only when the ComputeSpotStrategy parameter is set to SpotWithPriceLimit.
      */
-    public readonly computeSpotPriceLimit!: pulumi.Output<string | undefined>;
+    declare public readonly computeSpotPriceLimit: pulumi.Output<string | undefined>;
     /**
      * The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
      * - `NoSpot`: The compute nodes are pay-as-you-go instances.
      * - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
      * - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
      */
-    public readonly computeSpotStrategy!: pulumi.Output<string | undefined>;
+    declare public readonly computeSpotStrategy: pulumi.Output<string | undefined>;
     /**
      * The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
      * - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
      * - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
      * - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
      */
-    public readonly deployMode!: pulumi.Output<string>;
+    declare public readonly deployMode: pulumi.Output<string>;
     /**
      * The description of the cluster. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The domain name of the on-premises cluster. This parameter takes effect only when the AccoutType parameter is set to Idap.
      */
-    public readonly domain!: pulumi.Output<string | undefined>;
+    declare public readonly domain: pulumi.Output<string | undefined>;
     /**
      * The billing method of the nodes.
      */
-    public readonly ecsChargeType!: pulumi.Output<string>;
+    declare public readonly ecsChargeType: pulumi.Output<string>;
     /**
      * The version of E-HPC. By default, the parameter is set to the latest version number.
      */
-    public readonly ehpcVersion!: pulumi.Output<string>;
+    declare public readonly ehpcVersion: pulumi.Output<string>;
     /**
      * Specifies whether to enable the high availability feature. Default value: `false`.  **Note:** If high availability is enabled, a primary management node and a secondary management node are used.
      */
-    public readonly haEnable!: pulumi.Output<boolean>;
+    declare public readonly haEnable: pulumi.Output<boolean>;
     /**
      * The ID of the image.
      */
-    public readonly imageId!: pulumi.Output<string>;
+    declare public readonly imageId: pulumi.Output<string>;
     /**
      * The type of the image. Valid values: `others`, `self`, `system`, `marketplace`. Default value: `system`.
      */
-    public readonly imageOwnerAlias!: pulumi.Output<string>;
+    declare public readonly imageOwnerAlias: pulumi.Output<string>;
     /**
      * The URL of the job files that are uploaded to an Object Storage Service (OSS) bucket.
      */
-    public readonly inputFileUrl!: pulumi.Output<string | undefined>;
+    declare public readonly inputFileUrl: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to enable auto scaling. Default value: `false`.
      */
-    public readonly isComputeEss!: pulumi.Output<boolean | undefined>;
+    declare public readonly isComputeEss: pulumi.Output<boolean | undefined>;
     /**
      * The queue to which the compute nodes are added.
      */
-    public readonly jobQueue!: pulumi.Output<string | undefined>;
+    declare public readonly jobQueue: pulumi.Output<string | undefined>;
     /**
      * The name of the AccessKey pair.
      */
-    public readonly keyPairName!: pulumi.Output<string | undefined>;
+    declare public readonly keyPairName: pulumi.Output<string | undefined>;
     /**
      * The number of the logon nodes. Valid values: `1`.
      */
-    public readonly loginCount!: pulumi.Output<number>;
+    declare public readonly loginCount: pulumi.Output<number>;
     /**
      * The instance type of the logon nodes.
      */
-    public readonly loginInstanceType!: pulumi.Output<string>;
+    declare public readonly loginInstanceType: pulumi.Output<string>;
     /**
      * The number of the management nodes. Valid values: 1 and 2.
      */
-    public readonly managerCount!: pulumi.Output<number>;
+    declare public readonly managerCount: pulumi.Output<number>;
     /**
      * The instance type of the management nodes.
      */
-    public readonly managerInstanceType!: pulumi.Output<string>;
+    declare public readonly managerInstanceType: pulumi.Output<string>;
     /**
      * The image tag of the operating system.
      */
-    public readonly osTag!: pulumi.Output<string>;
+    declare public readonly osTag: pulumi.Output<string>;
     /**
      * The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `keyPairName`. If both are specified, the Password parameter prevails.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * The duration of the subscription. The unit of the duration is specified by the `periodUnit` parameter. Default value: `1`.
      * * If you set PriceUnit to Year, the valid values of the Period parameter are 1, 2, and 3.
      * * If you set PriceUnit to Month, the valid values of the Period parameter are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
      * * If you set PriceUnit to Hour, the valid value of the Period parameter is 1.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * The unit of the subscription duration. Valid values: `Year`, `Month`, `Hour`. Default value: `Month`.
      */
-    public readonly periodUnit!: pulumi.Output<string | undefined>;
+    declare public readonly periodUnit: pulumi.Output<string | undefined>;
     /**
      * The mode configurations of the plug-in. This parameter takes effect only when the SchedulerType parameter is set to custom. The value must be a JSON string. The parameter contains the following parameters: pluginMod, pluginLocalPath, and pluginOssPath.
      * - pluginMod: the mode of the plug-in. The following modes are supported:
@@ -262,55 +262,55 @@ export class Cluster extends pulumi.CustomResource {
      * - pluginLocalPath: the local path where the plug-in is stored. We recommend that you select a shared directory in oss mode and a non-shared directory in image mode.
      * - pluginOssPath: the remote path where the plug-in is stored in OSS. This parameter takes effect only when the pluginMod parameter is set to oss.
      */
-    public readonly plugin!: pulumi.Output<string | undefined>;
+    declare public readonly plugin: pulumi.Output<string | undefined>;
     /**
      * The post install script. See `postInstallScript` below.
      */
-    public readonly postInstallScripts!: pulumi.Output<outputs.ehpc.ClusterPostInstallScript[] | undefined>;
+    declare public readonly postInstallScripts: pulumi.Output<outputs.ehpc.ClusterPostInstallScript[] | undefined>;
     /**
      * The node of the RAM role.
      */
-    public readonly ramNodeTypes!: pulumi.Output<string[] | undefined>;
+    declare public readonly ramNodeTypes: pulumi.Output<string[] | undefined>;
     /**
      * The name of the Resource Access Management (RAM) role.
      */
-    public readonly ramRoleName!: pulumi.Output<string | undefined>;
+    declare public readonly ramRoleName: pulumi.Output<string | undefined>;
     /**
      * The release instance. Valid values: `true`.
      */
-    public readonly releaseInstance!: pulumi.Output<boolean | undefined>;
+    declare public readonly releaseInstance: pulumi.Output<boolean | undefined>;
     /**
      * The remote directory to which the file system is mounted.
      */
-    public readonly remoteDirectory!: pulumi.Output<string>;
+    declare public readonly remoteDirectory: pulumi.Output<string>;
     /**
      * Specifies whether to enable Virtual Network Computing (VNC). Default value: `false`.
      */
-    public readonly remoteVisEnable!: pulumi.Output<boolean | undefined>;
+    declare public readonly remoteVisEnable: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly resourceGroupId: pulumi.Output<string | undefined>;
     /**
      * The ID of the Super Computing Cluster (SCC) instance. If you specify the parameter, the SCC instance is moved to a new SCC cluster.
      */
-    public readonly sccClusterId!: pulumi.Output<string>;
+    declare public readonly sccClusterId: pulumi.Output<string>;
     /**
      * The type of the scheduler. Valid values: `pbs`, `slurm`, `opengridscheduler` and `deadline`. Default value: `pbs`.
      */
-    public readonly schedulerType!: pulumi.Output<string>;
+    declare public readonly schedulerType: pulumi.Output<string>;
     /**
      * The ID of the security group to which the cluster belongs.
      */
-    public readonly securityGroupId!: pulumi.Output<string>;
+    declare public readonly securityGroupId: pulumi.Output<string>;
     /**
      * If you do not use an existing security group, set the parameter to the name of a new security group. A default policy is applied to the new security group.
      */
-    public readonly securityGroupName!: pulumi.Output<string | undefined>;
+    declare public readonly securityGroupName: pulumi.Output<string | undefined>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
      * * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
@@ -318,57 +318,57 @@ export class Cluster extends pulumi.CustomResource {
      * * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
      * * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
      */
-    public readonly systemDiskLevel!: pulumi.Output<string | undefined>;
+    declare public readonly systemDiskLevel: pulumi.Output<string | undefined>;
     /**
      * The size of the system disk. Unit: `GB`. Valid values: `40` to `500`. Default value: `40`.
      */
-    public readonly systemDiskSize!: pulumi.Output<number | undefined>;
+    declare public readonly systemDiskSize: pulumi.Output<number | undefined>;
     /**
      * The type of the system disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd` or `cloud`. Default value: `cloudSsd`.
      */
-    public readonly systemDiskType!: pulumi.Output<string | undefined>;
+    declare public readonly systemDiskType: pulumi.Output<string | undefined>;
     /**
      * The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
      */
-    public readonly volumeId!: pulumi.Output<string>;
+    declare public readonly volumeId: pulumi.Output<string>;
     /**
      * The mount options of the file system.
      */
-    public readonly volumeMountOption!: pulumi.Output<string | undefined>;
+    declare public readonly volumeMountOption: pulumi.Output<string | undefined>;
     /**
      * The mount target of the file system. Take note of the following information:
      * - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
      * - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
      */
-    public readonly volumeMountpoint!: pulumi.Output<string>;
+    declare public readonly volumeMountpoint: pulumi.Output<string>;
     /**
      * The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
      */
-    public readonly volumeProtocol!: pulumi.Output<string>;
+    declare public readonly volumeProtocol: pulumi.Output<string>;
     /**
      * The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
      */
-    public readonly volumeType!: pulumi.Output<string>;
+    declare public readonly volumeType: pulumi.Output<string>;
     /**
      * The ID of the virtual private cloud (VPC) to which the cluster belongs.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * The ID of the vSwitch. E-HPC supports only VPC networks.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
     /**
      * Specifies whether not to install the agent. Default value: `false`.
      */
-    public readonly withoutAgent!: pulumi.Output<boolean | undefined>;
+    declare public readonly withoutAgent: pulumi.Output<boolean | undefined>;
     /**
      * Specifies whether the logon node uses an elastic IP address (EIP). Default value: `false`.
      */
-    public readonly withoutElasticIp!: pulumi.Output<boolean | undefined>;
+    declare public readonly withoutElasticIp: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the zone.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -383,146 +383,146 @@ export class Cluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
-            resourceInputs["accountType"] = state ? state.accountType : undefined;
-            resourceInputs["additionalVolumes"] = state ? state.additionalVolumes : undefined;
-            resourceInputs["applications"] = state ? state.applications : undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
-            resourceInputs["clientVersion"] = state ? state.clientVersion : undefined;
-            resourceInputs["clusterName"] = state ? state.clusterName : undefined;
-            resourceInputs["clusterVersion"] = state ? state.clusterVersion : undefined;
-            resourceInputs["computeCount"] = state ? state.computeCount : undefined;
-            resourceInputs["computeEnableHt"] = state ? state.computeEnableHt : undefined;
-            resourceInputs["computeInstanceType"] = state ? state.computeInstanceType : undefined;
-            resourceInputs["computeSpotPriceLimit"] = state ? state.computeSpotPriceLimit : undefined;
-            resourceInputs["computeSpotStrategy"] = state ? state.computeSpotStrategy : undefined;
-            resourceInputs["deployMode"] = state ? state.deployMode : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["ecsChargeType"] = state ? state.ecsChargeType : undefined;
-            resourceInputs["ehpcVersion"] = state ? state.ehpcVersion : undefined;
-            resourceInputs["haEnable"] = state ? state.haEnable : undefined;
-            resourceInputs["imageId"] = state ? state.imageId : undefined;
-            resourceInputs["imageOwnerAlias"] = state ? state.imageOwnerAlias : undefined;
-            resourceInputs["inputFileUrl"] = state ? state.inputFileUrl : undefined;
-            resourceInputs["isComputeEss"] = state ? state.isComputeEss : undefined;
-            resourceInputs["jobQueue"] = state ? state.jobQueue : undefined;
-            resourceInputs["keyPairName"] = state ? state.keyPairName : undefined;
-            resourceInputs["loginCount"] = state ? state.loginCount : undefined;
-            resourceInputs["loginInstanceType"] = state ? state.loginInstanceType : undefined;
-            resourceInputs["managerCount"] = state ? state.managerCount : undefined;
-            resourceInputs["managerInstanceType"] = state ? state.managerInstanceType : undefined;
-            resourceInputs["osTag"] = state ? state.osTag : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
-            resourceInputs["plugin"] = state ? state.plugin : undefined;
-            resourceInputs["postInstallScripts"] = state ? state.postInstallScripts : undefined;
-            resourceInputs["ramNodeTypes"] = state ? state.ramNodeTypes : undefined;
-            resourceInputs["ramRoleName"] = state ? state.ramRoleName : undefined;
-            resourceInputs["releaseInstance"] = state ? state.releaseInstance : undefined;
-            resourceInputs["remoteDirectory"] = state ? state.remoteDirectory : undefined;
-            resourceInputs["remoteVisEnable"] = state ? state.remoteVisEnable : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["sccClusterId"] = state ? state.sccClusterId : undefined;
-            resourceInputs["schedulerType"] = state ? state.schedulerType : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["securityGroupName"] = state ? state.securityGroupName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["systemDiskLevel"] = state ? state.systemDiskLevel : undefined;
-            resourceInputs["systemDiskSize"] = state ? state.systemDiskSize : undefined;
-            resourceInputs["systemDiskType"] = state ? state.systemDiskType : undefined;
-            resourceInputs["volumeId"] = state ? state.volumeId : undefined;
-            resourceInputs["volumeMountOption"] = state ? state.volumeMountOption : undefined;
-            resourceInputs["volumeMountpoint"] = state ? state.volumeMountpoint : undefined;
-            resourceInputs["volumeProtocol"] = state ? state.volumeProtocol : undefined;
-            resourceInputs["volumeType"] = state ? state.volumeType : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
-            resourceInputs["withoutAgent"] = state ? state.withoutAgent : undefined;
-            resourceInputs["withoutElasticIp"] = state ? state.withoutElasticIp : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["accountType"] = state?.accountType;
+            resourceInputs["additionalVolumes"] = state?.additionalVolumes;
+            resourceInputs["applications"] = state?.applications;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["autoRenewPeriod"] = state?.autoRenewPeriod;
+            resourceInputs["clientVersion"] = state?.clientVersion;
+            resourceInputs["clusterName"] = state?.clusterName;
+            resourceInputs["clusterVersion"] = state?.clusterVersion;
+            resourceInputs["computeCount"] = state?.computeCount;
+            resourceInputs["computeEnableHt"] = state?.computeEnableHt;
+            resourceInputs["computeInstanceType"] = state?.computeInstanceType;
+            resourceInputs["computeSpotPriceLimit"] = state?.computeSpotPriceLimit;
+            resourceInputs["computeSpotStrategy"] = state?.computeSpotStrategy;
+            resourceInputs["deployMode"] = state?.deployMode;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["ecsChargeType"] = state?.ecsChargeType;
+            resourceInputs["ehpcVersion"] = state?.ehpcVersion;
+            resourceInputs["haEnable"] = state?.haEnable;
+            resourceInputs["imageId"] = state?.imageId;
+            resourceInputs["imageOwnerAlias"] = state?.imageOwnerAlias;
+            resourceInputs["inputFileUrl"] = state?.inputFileUrl;
+            resourceInputs["isComputeEss"] = state?.isComputeEss;
+            resourceInputs["jobQueue"] = state?.jobQueue;
+            resourceInputs["keyPairName"] = state?.keyPairName;
+            resourceInputs["loginCount"] = state?.loginCount;
+            resourceInputs["loginInstanceType"] = state?.loginInstanceType;
+            resourceInputs["managerCount"] = state?.managerCount;
+            resourceInputs["managerInstanceType"] = state?.managerInstanceType;
+            resourceInputs["osTag"] = state?.osTag;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["periodUnit"] = state?.periodUnit;
+            resourceInputs["plugin"] = state?.plugin;
+            resourceInputs["postInstallScripts"] = state?.postInstallScripts;
+            resourceInputs["ramNodeTypes"] = state?.ramNodeTypes;
+            resourceInputs["ramRoleName"] = state?.ramRoleName;
+            resourceInputs["releaseInstance"] = state?.releaseInstance;
+            resourceInputs["remoteDirectory"] = state?.remoteDirectory;
+            resourceInputs["remoteVisEnable"] = state?.remoteVisEnable;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["sccClusterId"] = state?.sccClusterId;
+            resourceInputs["schedulerType"] = state?.schedulerType;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["securityGroupName"] = state?.securityGroupName;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["systemDiskLevel"] = state?.systemDiskLevel;
+            resourceInputs["systemDiskSize"] = state?.systemDiskSize;
+            resourceInputs["systemDiskType"] = state?.systemDiskType;
+            resourceInputs["volumeId"] = state?.volumeId;
+            resourceInputs["volumeMountOption"] = state?.volumeMountOption;
+            resourceInputs["volumeMountpoint"] = state?.volumeMountpoint;
+            resourceInputs["volumeProtocol"] = state?.volumeProtocol;
+            resourceInputs["volumeType"] = state?.volumeType;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
+            resourceInputs["withoutAgent"] = state?.withoutAgent;
+            resourceInputs["withoutElasticIp"] = state?.withoutElasticIp;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            if ((!args || args.clusterName === undefined) && !opts.urn) {
+            if (args?.clusterName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterName'");
             }
-            if ((!args || args.computeCount === undefined) && !opts.urn) {
+            if (args?.computeCount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'computeCount'");
             }
-            if ((!args || args.computeInstanceType === undefined) && !opts.urn) {
+            if (args?.computeInstanceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'computeInstanceType'");
             }
-            if ((!args || args.loginCount === undefined) && !opts.urn) {
+            if (args?.loginCount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'loginCount'");
             }
-            if ((!args || args.loginInstanceType === undefined) && !opts.urn) {
+            if (args?.loginInstanceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'loginInstanceType'");
             }
-            if ((!args || args.managerInstanceType === undefined) && !opts.urn) {
+            if (args?.managerInstanceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'managerInstanceType'");
             }
-            if ((!args || args.osTag === undefined) && !opts.urn) {
+            if (args?.osTag === undefined && !opts.urn) {
                 throw new Error("Missing required property 'osTag'");
             }
-            resourceInputs["accountType"] = args ? args.accountType : undefined;
-            resourceInputs["additionalVolumes"] = args ? args.additionalVolumes : undefined;
-            resourceInputs["applications"] = args ? args.applications : undefined;
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
-            resourceInputs["clientVersion"] = args ? args.clientVersion : undefined;
-            resourceInputs["clusterName"] = args ? args.clusterName : undefined;
-            resourceInputs["clusterVersion"] = args ? args.clusterVersion : undefined;
-            resourceInputs["computeCount"] = args ? args.computeCount : undefined;
-            resourceInputs["computeEnableHt"] = args ? args.computeEnableHt : undefined;
-            resourceInputs["computeInstanceType"] = args ? args.computeInstanceType : undefined;
-            resourceInputs["computeSpotPriceLimit"] = args ? args.computeSpotPriceLimit : undefined;
-            resourceInputs["computeSpotStrategy"] = args ? args.computeSpotStrategy : undefined;
-            resourceInputs["deployMode"] = args ? args.deployMode : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["domain"] = args ? args.domain : undefined;
-            resourceInputs["ecsChargeType"] = args ? args.ecsChargeType : undefined;
-            resourceInputs["ehpcVersion"] = args ? args.ehpcVersion : undefined;
-            resourceInputs["haEnable"] = args ? args.haEnable : undefined;
-            resourceInputs["imageId"] = args ? args.imageId : undefined;
-            resourceInputs["imageOwnerAlias"] = args ? args.imageOwnerAlias : undefined;
-            resourceInputs["inputFileUrl"] = args ? args.inputFileUrl : undefined;
-            resourceInputs["isComputeEss"] = args ? args.isComputeEss : undefined;
-            resourceInputs["jobQueue"] = args ? args.jobQueue : undefined;
-            resourceInputs["keyPairName"] = args ? args.keyPairName : undefined;
-            resourceInputs["loginCount"] = args ? args.loginCount : undefined;
-            resourceInputs["loginInstanceType"] = args ? args.loginInstanceType : undefined;
-            resourceInputs["managerCount"] = args ? args.managerCount : undefined;
-            resourceInputs["managerInstanceType"] = args ? args.managerInstanceType : undefined;
-            resourceInputs["osTag"] = args ? args.osTag : undefined;
+            resourceInputs["accountType"] = args?.accountType;
+            resourceInputs["additionalVolumes"] = args?.additionalVolumes;
+            resourceInputs["applications"] = args?.applications;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["autoRenewPeriod"] = args?.autoRenewPeriod;
+            resourceInputs["clientVersion"] = args?.clientVersion;
+            resourceInputs["clusterName"] = args?.clusterName;
+            resourceInputs["clusterVersion"] = args?.clusterVersion;
+            resourceInputs["computeCount"] = args?.computeCount;
+            resourceInputs["computeEnableHt"] = args?.computeEnableHt;
+            resourceInputs["computeInstanceType"] = args?.computeInstanceType;
+            resourceInputs["computeSpotPriceLimit"] = args?.computeSpotPriceLimit;
+            resourceInputs["computeSpotStrategy"] = args?.computeSpotStrategy;
+            resourceInputs["deployMode"] = args?.deployMode;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["domain"] = args?.domain;
+            resourceInputs["ecsChargeType"] = args?.ecsChargeType;
+            resourceInputs["ehpcVersion"] = args?.ehpcVersion;
+            resourceInputs["haEnable"] = args?.haEnable;
+            resourceInputs["imageId"] = args?.imageId;
+            resourceInputs["imageOwnerAlias"] = args?.imageOwnerAlias;
+            resourceInputs["inputFileUrl"] = args?.inputFileUrl;
+            resourceInputs["isComputeEss"] = args?.isComputeEss;
+            resourceInputs["jobQueue"] = args?.jobQueue;
+            resourceInputs["keyPairName"] = args?.keyPairName;
+            resourceInputs["loginCount"] = args?.loginCount;
+            resourceInputs["loginInstanceType"] = args?.loginInstanceType;
+            resourceInputs["managerCount"] = args?.managerCount;
+            resourceInputs["managerInstanceType"] = args?.managerInstanceType;
+            resourceInputs["osTag"] = args?.osTag;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
-            resourceInputs["plugin"] = args ? args.plugin : undefined;
-            resourceInputs["postInstallScripts"] = args ? args.postInstallScripts : undefined;
-            resourceInputs["ramNodeTypes"] = args ? args.ramNodeTypes : undefined;
-            resourceInputs["ramRoleName"] = args ? args.ramRoleName : undefined;
-            resourceInputs["releaseInstance"] = args ? args.releaseInstance : undefined;
-            resourceInputs["remoteDirectory"] = args ? args.remoteDirectory : undefined;
-            resourceInputs["remoteVisEnable"] = args ? args.remoteVisEnable : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["sccClusterId"] = args ? args.sccClusterId : undefined;
-            resourceInputs["schedulerType"] = args ? args.schedulerType : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            resourceInputs["securityGroupName"] = args ? args.securityGroupName : undefined;
-            resourceInputs["systemDiskLevel"] = args ? args.systemDiskLevel : undefined;
-            resourceInputs["systemDiskSize"] = args ? args.systemDiskSize : undefined;
-            resourceInputs["systemDiskType"] = args ? args.systemDiskType : undefined;
-            resourceInputs["volumeId"] = args ? args.volumeId : undefined;
-            resourceInputs["volumeMountOption"] = args ? args.volumeMountOption : undefined;
-            resourceInputs["volumeMountpoint"] = args ? args.volumeMountpoint : undefined;
-            resourceInputs["volumeProtocol"] = args ? args.volumeProtocol : undefined;
-            resourceInputs["volumeType"] = args ? args.volumeType : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
-            resourceInputs["withoutAgent"] = args ? args.withoutAgent : undefined;
-            resourceInputs["withoutElasticIp"] = args ? args.withoutElasticIp : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["periodUnit"] = args?.periodUnit;
+            resourceInputs["plugin"] = args?.plugin;
+            resourceInputs["postInstallScripts"] = args?.postInstallScripts;
+            resourceInputs["ramNodeTypes"] = args?.ramNodeTypes;
+            resourceInputs["ramRoleName"] = args?.ramRoleName;
+            resourceInputs["releaseInstance"] = args?.releaseInstance;
+            resourceInputs["remoteDirectory"] = args?.remoteDirectory;
+            resourceInputs["remoteVisEnable"] = args?.remoteVisEnable;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["sccClusterId"] = args?.sccClusterId;
+            resourceInputs["schedulerType"] = args?.schedulerType;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["securityGroupName"] = args?.securityGroupName;
+            resourceInputs["systemDiskLevel"] = args?.systemDiskLevel;
+            resourceInputs["systemDiskSize"] = args?.systemDiskSize;
+            resourceInputs["systemDiskType"] = args?.systemDiskType;
+            resourceInputs["volumeId"] = args?.volumeId;
+            resourceInputs["volumeMountOption"] = args?.volumeMountOption;
+            resourceInputs["volumeMountpoint"] = args?.volumeMountpoint;
+            resourceInputs["volumeProtocol"] = args?.volumeProtocol;
+            resourceInputs["volumeType"] = args?.volumeType;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
+            resourceInputs["withoutAgent"] = args?.withoutAgent;
+            resourceInputs["withoutElasticIp"] = args?.withoutElasticIp;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

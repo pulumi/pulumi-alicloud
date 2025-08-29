@@ -69,28 +69,28 @@ export class Group extends pulumi.CustomResource {
     /**
      * The Group comment information. The maximum length is 128 characters.
      */
-    public readonly comments!: pulumi.Output<string | undefined>;
+    declare public readonly comments: pulumi.Output<string | undefined>;
     /**
      * (Available since v1.245.0) The create time of the group.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Specifies whether to force delete the Group. Default value: `false`. Valid values:
      */
-    public readonly force!: pulumi.Output<boolean | undefined>;
+    declare public readonly force: pulumi.Output<boolean | undefined>;
     /**
      * The group name. You must specify at least one of the `groupName` and `name`.
      * It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    public readonly groupName!: pulumi.Output<string>;
+    declare public readonly groupName: pulumi.Output<string>;
     /**
      * . Field 'name' has been deprecated from provider version 1.120.0. New field 'group_name' instead.
      *
      * @deprecated Field `name` has been deprecated from provider version 1.245.0. New field `groupName` instead.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -105,17 +105,17 @@ export class Group extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
-            resourceInputs["comments"] = state ? state.comments : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["force"] = state ? state.force : undefined;
-            resourceInputs["groupName"] = state ? state.groupName : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["comments"] = state?.comments;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["force"] = state?.force;
+            resourceInputs["groupName"] = state?.groupName;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as GroupArgs | undefined;
-            resourceInputs["comments"] = args ? args.comments : undefined;
-            resourceInputs["force"] = args ? args.force : undefined;
-            resourceInputs["groupName"] = args ? args.groupName : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["comments"] = args?.comments;
+            resourceInputs["force"] = args?.force;
+            resourceInputs["groupName"] = args?.groupName;
+            resourceInputs["name"] = args?.name;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -44,16 +44,16 @@ export class ImagePipelineExecution extends pulumi.CustomResource {
     /**
      * The time when the image build task was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The ID of the image template.
      */
-    public readonly imagePipelineId!: pulumi.Output<string>;
+    declare public readonly imagePipelineId: pulumi.Output<string>;
     /**
      * The status of the image build task. Valid values:
      * - CANCELLED: canceled. The build process has been canceled.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
 
     /**
      * Create a ImagePipelineExecution resource with the given unique name, arguments, and options.
@@ -68,16 +68,16 @@ export class ImagePipelineExecution extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImagePipelineExecutionState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["imagePipelineId"] = state ? state.imagePipelineId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["imagePipelineId"] = state?.imagePipelineId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as ImagePipelineExecutionArgs | undefined;
-            if ((!args || args.imagePipelineId === undefined) && !opts.urn) {
+            if (args?.imagePipelineId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'imagePipelineId'");
             }
-            resourceInputs["imagePipelineId"] = args ? args.imagePipelineId : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["imagePipelineId"] = args?.imagePipelineId;
+            resourceInputs["status"] = args?.status;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

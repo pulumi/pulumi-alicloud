@@ -75,11 +75,11 @@ export class BucketPublicAccessBlock extends pulumi.CustomResource {
     /**
      * Whether AlibabaCloud OSS should block public bucket policies and ACL for this bucket.
      */
-    public readonly blockPublicAccess!: pulumi.Output<boolean>;
+    declare public readonly blockPublicAccess: pulumi.Output<boolean>;
     /**
      * The name of the bucket.
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
 
     /**
      * Create a BucketPublicAccessBlock resource with the given unique name, arguments, and options.
@@ -94,18 +94,18 @@ export class BucketPublicAccessBlock extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketPublicAccessBlockState | undefined;
-            resourceInputs["blockPublicAccess"] = state ? state.blockPublicAccess : undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
+            resourceInputs["blockPublicAccess"] = state?.blockPublicAccess;
+            resourceInputs["bucket"] = state?.bucket;
         } else {
             const args = argsOrState as BucketPublicAccessBlockArgs | undefined;
-            if ((!args || args.blockPublicAccess === undefined) && !opts.urn) {
+            if (args?.blockPublicAccess === undefined && !opts.urn) {
                 throw new Error("Missing required property 'blockPublicAccess'");
             }
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            resourceInputs["blockPublicAccess"] = args ? args.blockPublicAccess : undefined;
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
+            resourceInputs["blockPublicAccess"] = args?.blockPublicAccess;
+            resourceInputs["bucket"] = args?.bucket;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BucketPublicAccessBlock.__pulumiType, name, resourceInputs, opts);

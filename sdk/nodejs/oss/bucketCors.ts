@@ -84,15 +84,15 @@ export class BucketCors extends pulumi.CustomResource {
     /**
      * The name of the Bucket.
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `corsRule` below.
      */
-    public readonly corsRules!: pulumi.Output<outputs.oss.BucketCorsCorsRule[]>;
+    declare public readonly corsRules: pulumi.Output<outputs.oss.BucketCorsCorsRule[]>;
     /**
      * Specifies whether to return the Vary: Origin header. Valid values: true: returns the Vary: Origin header, regardless of whether the request is a cross-origin request or whether the cross-origin request succeeds. false: does not return the Vary: Origin header. This element is valid only when at least one CORS rule is configured.
      */
-    public readonly responseVary!: pulumi.Output<boolean>;
+    declare public readonly responseVary: pulumi.Output<boolean>;
 
     /**
      * Create a BucketCors resource with the given unique name, arguments, and options.
@@ -107,20 +107,20 @@ export class BucketCors extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketCorsState | undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["corsRules"] = state ? state.corsRules : undefined;
-            resourceInputs["responseVary"] = state ? state.responseVary : undefined;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["corsRules"] = state?.corsRules;
+            resourceInputs["responseVary"] = state?.responseVary;
         } else {
             const args = argsOrState as BucketCorsArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if ((!args || args.corsRules === undefined) && !opts.urn) {
+            if (args?.corsRules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'corsRules'");
             }
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["corsRules"] = args ? args.corsRules : undefined;
-            resourceInputs["responseVary"] = args ? args.responseVary : undefined;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["corsRules"] = args?.corsRules;
+            resourceInputs["responseVary"] = args?.responseVary;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BucketCors.__pulumiType, name, resourceInputs, opts);

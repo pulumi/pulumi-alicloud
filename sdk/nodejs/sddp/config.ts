@@ -64,19 +64,19 @@ export class Config extends pulumi.CustomResource {
     /**
      * Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `accessFailedCnt`, `accessPermissionExprieMaxDays`, `logDatasizeAvgDays`.
      */
-    public readonly code!: pulumi.Output<string | undefined>;
+    declare public readonly code: pulumi.Output<string | undefined>;
     /**
      * Abnormal Alarm General Description of the Configuration Item.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The language of the request and response. Valid values: `zh`,`en`.
      */
-    public readonly lang!: pulumi.Output<string | undefined>;
+    declare public readonly lang: pulumi.Output<string | undefined>;
     /**
      * The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
      */
-    public readonly value!: pulumi.Output<string | undefined>;
+    declare public readonly value: pulumi.Output<string | undefined>;
 
     /**
      * Create a Config resource with the given unique name, arguments, and options.
@@ -91,16 +91,16 @@ export class Config extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConfigState | undefined;
-            resourceInputs["code"] = state ? state.code : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["lang"] = state ? state.lang : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["code"] = state?.code;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["lang"] = state?.lang;
+            resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as ConfigArgs | undefined;
-            resourceInputs["code"] = args ? args.code : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["lang"] = args ? args.lang : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["code"] = args?.code;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["lang"] = args?.lang;
+            resourceInputs["value"] = args?.value;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Config.__pulumiType, name, resourceInputs, opts);

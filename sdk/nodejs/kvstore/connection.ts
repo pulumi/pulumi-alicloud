@@ -97,19 +97,19 @@ export class Connection extends pulumi.CustomResource {
     /**
      * The public connection string of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
      */
-    public /*out*/ readonly connectionString!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectionString: pulumi.Output<string>;
     /**
      * The prefix of the public endpoint. The prefix can be 8 to 64 characters in length, and can contain lowercase letters and digits. It must start with a lowercase letter.
      */
-    public readonly connectionStringPrefix!: pulumi.Output<string>;
+    declare public readonly connectionStringPrefix: pulumi.Output<string>;
     /**
      * The ID of the instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The service port number of the instance.
      */
-    public readonly port!: pulumi.Output<string>;
+    declare public readonly port: pulumi.Output<string>;
 
     /**
      * Create a Connection resource with the given unique name, arguments, and options.
@@ -124,24 +124,24 @@ export class Connection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
-            resourceInputs["connectionString"] = state ? state.connectionString : undefined;
-            resourceInputs["connectionStringPrefix"] = state ? state.connectionStringPrefix : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["connectionString"] = state?.connectionString;
+            resourceInputs["connectionStringPrefix"] = state?.connectionStringPrefix;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["port"] = state?.port;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
-            if ((!args || args.connectionStringPrefix === undefined) && !opts.urn) {
+            if (args?.connectionStringPrefix === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectionStringPrefix'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.port === undefined) && !opts.urn) {
+            if (args?.port === undefined && !opts.urn) {
                 throw new Error("Missing required property 'port'");
             }
-            resourceInputs["connectionStringPrefix"] = args ? args.connectionStringPrefix : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["connectionStringPrefix"] = args?.connectionStringPrefix;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["port"] = args?.port;
             resourceInputs["connectionString"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -62,35 +62,35 @@ export class CustomerGateway extends pulumi.CustomResource {
     /**
      * Asn.
      */
-    public readonly asn!: pulumi.Output<string | undefined>;
+    declare public readonly asn: pulumi.Output<string | undefined>;
     /**
      * The time when the customer gateway was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly createTime: pulumi.Output<number>;
     /**
      * The name of the customer gateway.
      */
-    public readonly customerGatewayName!: pulumi.Output<string>;
+    declare public readonly customerGatewayName: pulumi.Output<string>;
     /**
      * The description of the customer gateway.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The IP address of the customer gateway.
      */
-    public readonly ipAddress!: pulumi.Output<string>;
+    declare public readonly ipAddress: pulumi.Output<string>;
     /**
      * . Field 'name' has been deprecated from provider version 1.216.0. New field 'customer_gateway_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.210.0. New field 'customer_gateway_name' instead.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * tag.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a CustomerGateway resource with the given unique name, arguments, and options.
@@ -105,24 +105,24 @@ export class CustomerGateway extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomerGatewayState | undefined;
-            resourceInputs["asn"] = state ? state.asn : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["customerGatewayName"] = state ? state.customerGatewayName : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["asn"] = state?.asn;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["customerGatewayName"] = state?.customerGatewayName;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["ipAddress"] = state?.ipAddress;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as CustomerGatewayArgs | undefined;
-            if ((!args || args.ipAddress === undefined) && !opts.urn) {
+            if (args?.ipAddress === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ipAddress'");
             }
-            resourceInputs["asn"] = args ? args.asn : undefined;
-            resourceInputs["customerGatewayName"] = args ? args.customerGatewayName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["asn"] = args?.asn;
+            resourceInputs["customerGatewayName"] = args?.customerGatewayName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["ipAddress"] = args?.ipAddress;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

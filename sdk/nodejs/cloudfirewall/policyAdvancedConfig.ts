@@ -44,7 +44,7 @@ export class PolicyAdvancedConfig extends pulumi.CustomResource {
     /**
      * Access control policy strict mode of on-state. Valid values:
      */
-    public readonly internetSwitch!: pulumi.Output<string>;
+    declare public readonly internetSwitch: pulumi.Output<string>;
 
     /**
      * Create a PolicyAdvancedConfig resource with the given unique name, arguments, and options.
@@ -59,13 +59,13 @@ export class PolicyAdvancedConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyAdvancedConfigState | undefined;
-            resourceInputs["internetSwitch"] = state ? state.internetSwitch : undefined;
+            resourceInputs["internetSwitch"] = state?.internetSwitch;
         } else {
             const args = argsOrState as PolicyAdvancedConfigArgs | undefined;
-            if ((!args || args.internetSwitch === undefined) && !opts.urn) {
+            if (args?.internetSwitch === undefined && !opts.urn) {
                 throw new Error("Missing required property 'internetSwitch'");
             }
-            resourceInputs["internetSwitch"] = args ? args.internetSwitch : undefined;
+            resourceInputs["internetSwitch"] = args?.internetSwitch;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PolicyAdvancedConfig.__pulumiType, name, resourceInputs, opts);

@@ -95,73 +95,73 @@ export class Policy extends pulumi.CustomResource {
     /**
      * Number of attachments of the policy.
      */
-    public /*out*/ readonly attachmentCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly attachmentCount: pulumi.Output<number>;
     /**
      * (Available since v1.246.0) The create time of the policy.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The default version ID of the policy.
      */
-    public /*out*/ readonly defaultVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly defaultVersion: pulumi.Output<string>;
     /**
      * The description of the policy. It can be 1 to 1024 characters in length.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Field `document` has been deprecated from provider version 1.114.0. New field `policyDocument` instead.
      *
      * @deprecated Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.
      */
-    public readonly document!: pulumi.Output<string>;
+    declare public readonly document: pulumi.Output<string>;
     /**
      * Specifies whether to force delete the Policy. Default value: `false`. Valid values:
      */
-    public readonly force!: pulumi.Output<boolean | undefined>;
+    declare public readonly force: pulumi.Output<boolean | undefined>;
     /**
      * Field `name` has been deprecated from provider version 1.114.0. New field `policyName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The content of the policy. The maximum length is 6144 bytes.
      */
-    public readonly policyDocument!: pulumi.Output<string>;
+    declare public readonly policyDocument: pulumi.Output<string>;
     /**
      * The policy name. It can be 1 to 128 characters in length and can contain English letters, digits, and dashes (-).
      */
-    public readonly policyName!: pulumi.Output<string>;
+    declare public readonly policyName: pulumi.Output<string>;
     /**
      * The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None. Valid values:
      * - `None`: Turn off the rotation mechanism.
      * - `DeleteOldestNonDefaultVersionWhenLimitExceeded`: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
      */
-    public readonly rotateStrategy!: pulumi.Output<string | undefined>;
+    declare public readonly rotateStrategy: pulumi.Output<string | undefined>;
     /**
      * Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
      *
      * @deprecated Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. 
      */
-    public readonly statements!: pulumi.Output<outputs.ram.PolicyStatement[]>;
+    declare public readonly statements: pulumi.Output<outputs.ram.PolicyStatement[]>;
     /**
      * The list of tags on the policy.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the policy.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
      *
      * @deprecated Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. 
      */
-    public readonly version!: pulumi.Output<string | undefined>;
+    declare public readonly version: pulumi.Output<string | undefined>;
     /**
      * The ID of the default policy version.
      */
-    public /*out*/ readonly versionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly versionId: pulumi.Output<string>;
 
     /**
      * Create a Policy resource with the given unique name, arguments, and options.
@@ -176,33 +176,33 @@ export class Policy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyState | undefined;
-            resourceInputs["attachmentCount"] = state ? state.attachmentCount : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["defaultVersion"] = state ? state.defaultVersion : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["document"] = state ? state.document : undefined;
-            resourceInputs["force"] = state ? state.force : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["policyDocument"] = state ? state.policyDocument : undefined;
-            resourceInputs["policyName"] = state ? state.policyName : undefined;
-            resourceInputs["rotateStrategy"] = state ? state.rotateStrategy : undefined;
-            resourceInputs["statements"] = state ? state.statements : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
-            resourceInputs["versionId"] = state ? state.versionId : undefined;
+            resourceInputs["attachmentCount"] = state?.attachmentCount;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["defaultVersion"] = state?.defaultVersion;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["document"] = state?.document;
+            resourceInputs["force"] = state?.force;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["policyDocument"] = state?.policyDocument;
+            resourceInputs["policyName"] = state?.policyName;
+            resourceInputs["rotateStrategy"] = state?.rotateStrategy;
+            resourceInputs["statements"] = state?.statements;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["version"] = state?.version;
+            resourceInputs["versionId"] = state?.versionId;
         } else {
             const args = argsOrState as PolicyArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["document"] = args ? args.document : undefined;
-            resourceInputs["force"] = args ? args.force : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["policyDocument"] = args ? args.policyDocument : undefined;
-            resourceInputs["policyName"] = args ? args.policyName : undefined;
-            resourceInputs["rotateStrategy"] = args ? args.rotateStrategy : undefined;
-            resourceInputs["statements"] = args ? args.statements : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["document"] = args?.document;
+            resourceInputs["force"] = args?.force;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["policyDocument"] = args?.policyDocument;
+            resourceInputs["policyName"] = args?.policyName;
+            resourceInputs["rotateStrategy"] = args?.rotateStrategy;
+            resourceInputs["statements"] = args?.statements;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["version"] = args?.version;
             resourceInputs["attachmentCount"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["defaultVersion"] = undefined /*out*/;

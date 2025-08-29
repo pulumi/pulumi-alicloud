@@ -100,104 +100,104 @@ export class OssExport extends pulumi.CustomResource {
     /**
      * The name of the oss bucket.
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * How often is it delivered every interval.
      */
-    public readonly bufferInterval!: pulumi.Output<number>;
+    declare public readonly bufferInterval: pulumi.Output<number>;
     /**
      * Automatically control the creation interval of delivery tasks and set the upper limit of an OSS object size (calculated in uncompressed), unit: `MB`.
      */
-    public readonly bufferSize!: pulumi.Output<number>;
+    declare public readonly bufferSize: pulumi.Output<number>;
     /**
      * OSS data storage compression method, support: `none`, `snappy`, `zstd`, `gzip`. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
      */
-    public readonly compressType!: pulumi.Output<string>;
+    declare public readonly compressType: pulumi.Output<string>;
     /**
      * Configure columns when `contentType` is `parquet` or `orc`.
      */
-    public readonly configColumns!: pulumi.Output<outputs.log.OssExportConfigColumn[] | undefined>;
+    declare public readonly configColumns: pulumi.Output<outputs.log.OssExportConfigColumn[] | undefined>;
     /**
      * Storage format, only supports three types: `json`, `parquet`, `orc`, `csv`.
      * **According to the different format, please select the following parameters**
      */
-    public readonly contentType!: pulumi.Output<string>;
+    declare public readonly contentType: pulumi.Output<string>;
     /**
      * Field configuration in csv content_type.
      */
-    public readonly csvConfigColumns!: pulumi.Output<string[] | undefined>;
+    declare public readonly csvConfigColumns: pulumi.Output<string[] | undefined>;
     /**
      * Separator configuration in csv content_type.
      */
-    public readonly csvConfigDelimiter!: pulumi.Output<string | undefined>;
+    declare public readonly csvConfigDelimiter: pulumi.Output<string | undefined>;
     /**
      * escape in csv content_type.
      */
-    public readonly csvConfigEscape!: pulumi.Output<string | undefined>;
+    declare public readonly csvConfigEscape: pulumi.Output<string | undefined>;
     /**
      * Indicates whether to write the field name to the CSV file, the default value is `false`.
      */
-    public readonly csvConfigHeader!: pulumi.Output<boolean | undefined>;
+    declare public readonly csvConfigHeader: pulumi.Output<boolean | undefined>;
     /**
      * lineFeed in csv content_type.
      */
-    public readonly csvConfigLinefeed!: pulumi.Output<string | undefined>;
+    declare public readonly csvConfigLinefeed: pulumi.Output<string | undefined>;
     /**
      * Invalid field content in csv content_type.
      */
-    public readonly csvConfigNull!: pulumi.Output<string | undefined>;
+    declare public readonly csvConfigNull: pulumi.Output<string | undefined>;
     /**
      * Escape character in csv content_type.
      */
-    public readonly csvConfigQuote!: pulumi.Output<string | undefined>;
+    declare public readonly csvConfigQuote: pulumi.Output<string | undefined>;
     /**
      * The display name for oss export.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * Delivery configuration name, it can only contain lowercase letters, numbers, dashes `-` and underscores `_`. It must start and end with lowercase letters or numbers, and the name must be 2 to 128 characters long.
      */
-    public readonly exportName!: pulumi.Output<string>;
+    declare public readonly exportName: pulumi.Output<string>;
     /**
      * The log from when to export to oss.
      */
-    public readonly fromTime!: pulumi.Output<number | undefined>;
+    declare public readonly fromTime: pulumi.Output<number | undefined>;
     /**
      * Whether to deliver the label when `contentType` = `json`.
      */
-    public readonly jsonEnableTag!: pulumi.Output<boolean | undefined>;
+    declare public readonly jsonEnableTag: pulumi.Output<boolean | undefined>;
     /**
      * Used for logstore reading, the role should have log read policy, such as `acs:ram::13234:role/logrole`, if `logReadRoleArn` is not set, `roleArn` is used to read logstore.
      */
-    public readonly logReadRoleArn!: pulumi.Output<string | undefined>;
+    declare public readonly logReadRoleArn: pulumi.Output<string | undefined>;
     /**
      * The name of the log logstore.
      */
-    public readonly logstoreName!: pulumi.Output<string>;
+    declare public readonly logstoreName: pulumi.Output<string>;
     /**
      * The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
      */
-    public readonly pathFormat!: pulumi.Output<string>;
+    declare public readonly pathFormat: pulumi.Output<string>;
     /**
      * The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
      */
-    public readonly prefix!: pulumi.Output<string | undefined>;
+    declare public readonly prefix: pulumi.Output<string | undefined>;
     /**
      * The name of the log project. It is the only in one Alicloud account.
      */
-    public readonly projectName!: pulumi.Output<string>;
+    declare public readonly projectName: pulumi.Output<string>;
     /**
      * Used to write to oss bucket, the OSS Bucket owner creates the role mark which has the oss bucket write policy, such as `acs:ram::13234:role/logrole`.
      */
-    public readonly roleArn!: pulumi.Output<string | undefined>;
+    declare public readonly roleArn: pulumi.Output<string | undefined>;
     /**
      * The suffix for the objects in which the shipped data is stored.
      */
-    public readonly suffix!: pulumi.Output<string | undefined>;
+    declare public readonly suffix: pulumi.Output<string | undefined>;
     /**
      * This time zone that is used to format the time, `+0800` e.g.
      */
-    public readonly timeZone!: pulumi.Output<string>;
+    declare public readonly timeZone: pulumi.Output<string>;
 
     /**
      * Create a OssExport resource with the given unique name, arguments, and options.
@@ -212,85 +212,85 @@ export class OssExport extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OssExportState | undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["bufferInterval"] = state ? state.bufferInterval : undefined;
-            resourceInputs["bufferSize"] = state ? state.bufferSize : undefined;
-            resourceInputs["compressType"] = state ? state.compressType : undefined;
-            resourceInputs["configColumns"] = state ? state.configColumns : undefined;
-            resourceInputs["contentType"] = state ? state.contentType : undefined;
-            resourceInputs["csvConfigColumns"] = state ? state.csvConfigColumns : undefined;
-            resourceInputs["csvConfigDelimiter"] = state ? state.csvConfigDelimiter : undefined;
-            resourceInputs["csvConfigEscape"] = state ? state.csvConfigEscape : undefined;
-            resourceInputs["csvConfigHeader"] = state ? state.csvConfigHeader : undefined;
-            resourceInputs["csvConfigLinefeed"] = state ? state.csvConfigLinefeed : undefined;
-            resourceInputs["csvConfigNull"] = state ? state.csvConfigNull : undefined;
-            resourceInputs["csvConfigQuote"] = state ? state.csvConfigQuote : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["exportName"] = state ? state.exportName : undefined;
-            resourceInputs["fromTime"] = state ? state.fromTime : undefined;
-            resourceInputs["jsonEnableTag"] = state ? state.jsonEnableTag : undefined;
-            resourceInputs["logReadRoleArn"] = state ? state.logReadRoleArn : undefined;
-            resourceInputs["logstoreName"] = state ? state.logstoreName : undefined;
-            resourceInputs["pathFormat"] = state ? state.pathFormat : undefined;
-            resourceInputs["prefix"] = state ? state.prefix : undefined;
-            resourceInputs["projectName"] = state ? state.projectName : undefined;
-            resourceInputs["roleArn"] = state ? state.roleArn : undefined;
-            resourceInputs["suffix"] = state ? state.suffix : undefined;
-            resourceInputs["timeZone"] = state ? state.timeZone : undefined;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["bufferInterval"] = state?.bufferInterval;
+            resourceInputs["bufferSize"] = state?.bufferSize;
+            resourceInputs["compressType"] = state?.compressType;
+            resourceInputs["configColumns"] = state?.configColumns;
+            resourceInputs["contentType"] = state?.contentType;
+            resourceInputs["csvConfigColumns"] = state?.csvConfigColumns;
+            resourceInputs["csvConfigDelimiter"] = state?.csvConfigDelimiter;
+            resourceInputs["csvConfigEscape"] = state?.csvConfigEscape;
+            resourceInputs["csvConfigHeader"] = state?.csvConfigHeader;
+            resourceInputs["csvConfigLinefeed"] = state?.csvConfigLinefeed;
+            resourceInputs["csvConfigNull"] = state?.csvConfigNull;
+            resourceInputs["csvConfigQuote"] = state?.csvConfigQuote;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["exportName"] = state?.exportName;
+            resourceInputs["fromTime"] = state?.fromTime;
+            resourceInputs["jsonEnableTag"] = state?.jsonEnableTag;
+            resourceInputs["logReadRoleArn"] = state?.logReadRoleArn;
+            resourceInputs["logstoreName"] = state?.logstoreName;
+            resourceInputs["pathFormat"] = state?.pathFormat;
+            resourceInputs["prefix"] = state?.prefix;
+            resourceInputs["projectName"] = state?.projectName;
+            resourceInputs["roleArn"] = state?.roleArn;
+            resourceInputs["suffix"] = state?.suffix;
+            resourceInputs["timeZone"] = state?.timeZone;
         } else {
             const args = argsOrState as OssExportArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if ((!args || args.bufferInterval === undefined) && !opts.urn) {
+            if (args?.bufferInterval === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bufferInterval'");
             }
-            if ((!args || args.bufferSize === undefined) && !opts.urn) {
+            if (args?.bufferSize === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bufferSize'");
             }
-            if ((!args || args.contentType === undefined) && !opts.urn) {
+            if (args?.contentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'contentType'");
             }
-            if ((!args || args.exportName === undefined) && !opts.urn) {
+            if (args?.exportName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'exportName'");
             }
-            if ((!args || args.logstoreName === undefined) && !opts.urn) {
+            if (args?.logstoreName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'logstoreName'");
             }
-            if ((!args || args.pathFormat === undefined) && !opts.urn) {
+            if (args?.pathFormat === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pathFormat'");
             }
-            if ((!args || args.projectName === undefined) && !opts.urn) {
+            if (args?.projectName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectName'");
             }
-            if ((!args || args.timeZone === undefined) && !opts.urn) {
+            if (args?.timeZone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'timeZone'");
             }
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["bufferInterval"] = args ? args.bufferInterval : undefined;
-            resourceInputs["bufferSize"] = args ? args.bufferSize : undefined;
-            resourceInputs["compressType"] = args ? args.compressType : undefined;
-            resourceInputs["configColumns"] = args ? args.configColumns : undefined;
-            resourceInputs["contentType"] = args ? args.contentType : undefined;
-            resourceInputs["csvConfigColumns"] = args ? args.csvConfigColumns : undefined;
-            resourceInputs["csvConfigDelimiter"] = args ? args.csvConfigDelimiter : undefined;
-            resourceInputs["csvConfigEscape"] = args ? args.csvConfigEscape : undefined;
-            resourceInputs["csvConfigHeader"] = args ? args.csvConfigHeader : undefined;
-            resourceInputs["csvConfigLinefeed"] = args ? args.csvConfigLinefeed : undefined;
-            resourceInputs["csvConfigNull"] = args ? args.csvConfigNull : undefined;
-            resourceInputs["csvConfigQuote"] = args ? args.csvConfigQuote : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["exportName"] = args ? args.exportName : undefined;
-            resourceInputs["fromTime"] = args ? args.fromTime : undefined;
-            resourceInputs["jsonEnableTag"] = args ? args.jsonEnableTag : undefined;
-            resourceInputs["logReadRoleArn"] = args ? args.logReadRoleArn : undefined;
-            resourceInputs["logstoreName"] = args ? args.logstoreName : undefined;
-            resourceInputs["pathFormat"] = args ? args.pathFormat : undefined;
-            resourceInputs["prefix"] = args ? args.prefix : undefined;
-            resourceInputs["projectName"] = args ? args.projectName : undefined;
-            resourceInputs["roleArn"] = args ? args.roleArn : undefined;
-            resourceInputs["suffix"] = args ? args.suffix : undefined;
-            resourceInputs["timeZone"] = args ? args.timeZone : undefined;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["bufferInterval"] = args?.bufferInterval;
+            resourceInputs["bufferSize"] = args?.bufferSize;
+            resourceInputs["compressType"] = args?.compressType;
+            resourceInputs["configColumns"] = args?.configColumns;
+            resourceInputs["contentType"] = args?.contentType;
+            resourceInputs["csvConfigColumns"] = args?.csvConfigColumns;
+            resourceInputs["csvConfigDelimiter"] = args?.csvConfigDelimiter;
+            resourceInputs["csvConfigEscape"] = args?.csvConfigEscape;
+            resourceInputs["csvConfigHeader"] = args?.csvConfigHeader;
+            resourceInputs["csvConfigLinefeed"] = args?.csvConfigLinefeed;
+            resourceInputs["csvConfigNull"] = args?.csvConfigNull;
+            resourceInputs["csvConfigQuote"] = args?.csvConfigQuote;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["exportName"] = args?.exportName;
+            resourceInputs["fromTime"] = args?.fromTime;
+            resourceInputs["jsonEnableTag"] = args?.jsonEnableTag;
+            resourceInputs["logReadRoleArn"] = args?.logReadRoleArn;
+            resourceInputs["logstoreName"] = args?.logstoreName;
+            resourceInputs["pathFormat"] = args?.pathFormat;
+            resourceInputs["prefix"] = args?.prefix;
+            resourceInputs["projectName"] = args?.projectName;
+            resourceInputs["roleArn"] = args?.roleArn;
+            resourceInputs["suffix"] = args?.suffix;
+            resourceInputs["timeZone"] = args?.timeZone;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OssExport.__pulumiType, name, resourceInputs, opts);

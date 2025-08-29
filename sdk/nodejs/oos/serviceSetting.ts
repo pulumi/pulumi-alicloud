@@ -75,23 +75,23 @@ export class ServiceSetting extends pulumi.CustomResource {
     /**
      * The name of the OSS bucket. **NOTE:** When the `deliveryOssEnabled` is `true`, The `deliveryOssBucketName` is valid.
      */
-    public readonly deliveryOssBucketName!: pulumi.Output<string | undefined>;
+    declare public readonly deliveryOssBucketName: pulumi.Output<string | undefined>;
     /**
      * Is the recording function for the OSS delivery template enabled.
      */
-    public readonly deliveryOssEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly deliveryOssEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The Directory of the OSS bucket. **NOTE:** When the `deliveryOssEnabled` is `true`, The `deliveryOssBucketName` is valid.
      */
-    public readonly deliveryOssKeyPrefix!: pulumi.Output<string | undefined>;
+    declare public readonly deliveryOssKeyPrefix: pulumi.Output<string | undefined>;
     /**
      * Is the execution record function to SLS delivery Template turned on.
      */
-    public readonly deliverySlsEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly deliverySlsEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The name of SLS  Project. **NOTE:** When the `deliverySlsEnabled` is `true`, The `deliverySlsProjectName` is valid.
      */
-    public readonly deliverySlsProjectName!: pulumi.Output<string | undefined>;
+    declare public readonly deliverySlsProjectName: pulumi.Output<string | undefined>;
 
     /**
      * Create a ServiceSetting resource with the given unique name, arguments, and options.
@@ -106,18 +106,18 @@ export class ServiceSetting extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceSettingState | undefined;
-            resourceInputs["deliveryOssBucketName"] = state ? state.deliveryOssBucketName : undefined;
-            resourceInputs["deliveryOssEnabled"] = state ? state.deliveryOssEnabled : undefined;
-            resourceInputs["deliveryOssKeyPrefix"] = state ? state.deliveryOssKeyPrefix : undefined;
-            resourceInputs["deliverySlsEnabled"] = state ? state.deliverySlsEnabled : undefined;
-            resourceInputs["deliverySlsProjectName"] = state ? state.deliverySlsProjectName : undefined;
+            resourceInputs["deliveryOssBucketName"] = state?.deliveryOssBucketName;
+            resourceInputs["deliveryOssEnabled"] = state?.deliveryOssEnabled;
+            resourceInputs["deliveryOssKeyPrefix"] = state?.deliveryOssKeyPrefix;
+            resourceInputs["deliverySlsEnabled"] = state?.deliverySlsEnabled;
+            resourceInputs["deliverySlsProjectName"] = state?.deliverySlsProjectName;
         } else {
             const args = argsOrState as ServiceSettingArgs | undefined;
-            resourceInputs["deliveryOssBucketName"] = args ? args.deliveryOssBucketName : undefined;
-            resourceInputs["deliveryOssEnabled"] = args ? args.deliveryOssEnabled : undefined;
-            resourceInputs["deliveryOssKeyPrefix"] = args ? args.deliveryOssKeyPrefix : undefined;
-            resourceInputs["deliverySlsEnabled"] = args ? args.deliverySlsEnabled : undefined;
-            resourceInputs["deliverySlsProjectName"] = args ? args.deliverySlsProjectName : undefined;
+            resourceInputs["deliveryOssBucketName"] = args?.deliveryOssBucketName;
+            resourceInputs["deliveryOssEnabled"] = args?.deliveryOssEnabled;
+            resourceInputs["deliveryOssKeyPrefix"] = args?.deliveryOssKeyPrefix;
+            resourceInputs["deliverySlsEnabled"] = args?.deliverySlsEnabled;
+            resourceInputs["deliverySlsProjectName"] = args?.deliverySlsProjectName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServiceSetting.__pulumiType, name, resourceInputs, opts);

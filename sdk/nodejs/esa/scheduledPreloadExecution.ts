@@ -82,31 +82,31 @@ export class ScheduledPreloadExecution extends pulumi.CustomResource {
     /**
      * The end time of the prefetch plan.
      */
-    public readonly endTime!: pulumi.Output<string | undefined>;
+    declare public readonly endTime: pulumi.Output<string | undefined>;
     /**
      * The time interval between each batch execution. Unit: seconds.
      */
-    public readonly interval!: pulumi.Output<number>;
+    declare public readonly interval: pulumi.Output<number>;
     /**
      * The ID of the prefetch plan.
      */
-    public /*out*/ readonly scheduledPreloadExecutionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly scheduledPreloadExecutionId: pulumi.Output<string>;
     /**
      * The ID of the prefetch task.
      */
-    public readonly scheduledPreloadJobId!: pulumi.Output<string>;
+    declare public readonly scheduledPreloadJobId: pulumi.Output<string>;
     /**
      * The number of URLs prefetched in each batch.
      */
-    public readonly sliceLen!: pulumi.Output<number>;
+    declare public readonly sliceLen: pulumi.Output<number>;
     /**
      * The start time of the prefetch plan.
      */
-    public readonly startTime!: pulumi.Output<string | undefined>;
+    declare public readonly startTime: pulumi.Output<string | undefined>;
     /**
      * The status of the prefetch plan, including the following statuses.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a ScheduledPreloadExecution resource with the given unique name, arguments, and options.
@@ -121,29 +121,29 @@ export class ScheduledPreloadExecution extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ScheduledPreloadExecutionState | undefined;
-            resourceInputs["endTime"] = state ? state.endTime : undefined;
-            resourceInputs["interval"] = state ? state.interval : undefined;
-            resourceInputs["scheduledPreloadExecutionId"] = state ? state.scheduledPreloadExecutionId : undefined;
-            resourceInputs["scheduledPreloadJobId"] = state ? state.scheduledPreloadJobId : undefined;
-            resourceInputs["sliceLen"] = state ? state.sliceLen : undefined;
-            resourceInputs["startTime"] = state ? state.startTime : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["endTime"] = state?.endTime;
+            resourceInputs["interval"] = state?.interval;
+            resourceInputs["scheduledPreloadExecutionId"] = state?.scheduledPreloadExecutionId;
+            resourceInputs["scheduledPreloadJobId"] = state?.scheduledPreloadJobId;
+            resourceInputs["sliceLen"] = state?.sliceLen;
+            resourceInputs["startTime"] = state?.startTime;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as ScheduledPreloadExecutionArgs | undefined;
-            if ((!args || args.interval === undefined) && !opts.urn) {
+            if (args?.interval === undefined && !opts.urn) {
                 throw new Error("Missing required property 'interval'");
             }
-            if ((!args || args.scheduledPreloadJobId === undefined) && !opts.urn) {
+            if (args?.scheduledPreloadJobId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scheduledPreloadJobId'");
             }
-            if ((!args || args.sliceLen === undefined) && !opts.urn) {
+            if (args?.sliceLen === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sliceLen'");
             }
-            resourceInputs["endTime"] = args ? args.endTime : undefined;
-            resourceInputs["interval"] = args ? args.interval : undefined;
-            resourceInputs["scheduledPreloadJobId"] = args ? args.scheduledPreloadJobId : undefined;
-            resourceInputs["sliceLen"] = args ? args.sliceLen : undefined;
-            resourceInputs["startTime"] = args ? args.startTime : undefined;
+            resourceInputs["endTime"] = args?.endTime;
+            resourceInputs["interval"] = args?.interval;
+            resourceInputs["scheduledPreloadJobId"] = args?.scheduledPreloadJobId;
+            resourceInputs["sliceLen"] = args?.sliceLen;
+            resourceInputs["startTime"] = args?.startTime;
             resourceInputs["scheduledPreloadExecutionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

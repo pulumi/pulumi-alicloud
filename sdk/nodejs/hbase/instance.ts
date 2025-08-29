@@ -96,120 +96,120 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The account of the cluster web ui. Size [0-128].
      */
-    public readonly account!: pulumi.Output<string | undefined>;
+    declare public readonly account: pulumi.Output<string | undefined>;
     /**
      * Valid values are `true`, `false`, system default to `false`, valid when payType = PrePaid.
      */
-    public readonly autoRenew!: pulumi.Output<boolean>;
+    declare public readonly autoRenew: pulumi.Output<boolean>;
     /**
      * 0 or [800, 100000000], step:10-GB increments. 0 means isColdStorage = false. [800, 100000000] means isColdStorage = true.
      */
-    public readonly coldStorageSize!: pulumi.Output<number | undefined>;
+    declare public readonly coldStorageSize: pulumi.Output<number | undefined>;
     /**
      * User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
      * - Custom storage space, value range: [20, 64000].
      * - Cluster [400, 64000], step:40-GB increments.
      * - Single [20-500GB], step:1-GB increments.
      */
-    public readonly coreDiskSize!: pulumi.Output<number | undefined>;
+    declare public readonly coreDiskSize: pulumi.Output<number | undefined>;
     /**
      * Valid values are `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，``, localDisk size is fixed. When engine=bds, no need to set disk type(or empty string).
      */
-    public readonly coreDiskType!: pulumi.Output<string | undefined>;
+    declare public readonly coreDiskType: pulumi.Output<string | undefined>;
     /**
      * Default=2, [1-200]. If coreInstanceQuantity > 1, this is cluster's instance. If coreInstanceQuantity = 1, this is a single instance.
      */
-    public readonly coreInstanceQuantity!: pulumi.Output<number | undefined>;
+    declare public readonly coreInstanceQuantity: pulumi.Output<number | undefined>;
     /**
      * Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
      */
-    public readonly coreInstanceType!: pulumi.Output<string>;
+    declare public readonly coreInstanceType: pulumi.Output<string>;
     /**
      * The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
      */
-    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
+    declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when payType = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
      */
-    public readonly duration!: pulumi.Output<number>;
+    declare public readonly duration: pulumi.Output<number>;
     /**
      * Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
      */
-    public readonly engine!: pulumi.Output<string | undefined>;
+    declare public readonly engine: pulumi.Output<string | undefined>;
     /**
      * HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://www.alibabacloud.com/help/en/data-lake-analytics/latest/createinstance).
      */
-    public readonly engineVersion!: pulumi.Output<string>;
+    declare public readonly engineVersion: pulumi.Output<string>;
     /**
      * The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
      */
-    public readonly immediateDeleteFlag!: pulumi.Output<boolean | undefined>;
+    declare public readonly immediateDeleteFlag: pulumi.Output<boolean | undefined>;
     /**
      * The white ip list of the cluster.
      */
-    public readonly ipWhite!: pulumi.Output<string>;
+    declare public readonly ipWhite: pulumi.Output<string>;
     /**
      * The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 04:00Z.
      */
-    public readonly maintainEndTime!: pulumi.Output<string>;
+    declare public readonly maintainEndTime: pulumi.Output<string>;
     /**
      * The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 02:00Z.
      */
-    public readonly maintainStartTime!: pulumi.Output<string>;
+    declare public readonly maintainStartTime: pulumi.Output<string>;
     /**
      * Count nodes of the master node.
      */
-    public /*out*/ readonly masterInstanceQuantity!: pulumi.Output<number>;
+    declare public /*out*/ readonly masterInstanceQuantity: pulumi.Output<number>;
     /**
      * Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
      */
-    public readonly masterInstanceType!: pulumi.Output<string>;
+    declare public readonly masterInstanceType: pulumi.Output<string>;
     /**
      * HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The password of the cluster web ui account. Size [0-128].
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. And support convert PrePaid to PostPaid from 1.115.0+.
      */
-    public readonly payType!: pulumi.Output<string | undefined>;
+    declare public readonly payType: pulumi.Output<string | undefined>;
     /**
      * The security group resource of the cluster.
      */
-    public readonly securityGroups!: pulumi.Output<string[]>;
+    declare public readonly securityGroups: pulumi.Output<string[]>;
     /**
      * The slb service addresses of the cluster. See `slbConnAddrs` below.
      *
      * > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
      */
-    public /*out*/ readonly slbConnAddrs!: pulumi.Output<outputs.hbase.InstanceSlbConnAddr[]>;
+    declare public /*out*/ readonly slbConnAddrs: pulumi.Output<outputs.hbase.InstanceSlbConnAddr[]>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The Web UI proxy addresses of the cluster. See `uiProxyConnAddrs` below.
      */
-    public /*out*/ readonly uiProxyConnAddrs!: pulumi.Output<outputs.hbase.InstanceUiProxyConnAddr[]>;
+    declare public /*out*/ readonly uiProxyConnAddrs: pulumi.Output<outputs.hbase.InstanceUiProxyConnAddr[]>;
     /**
      * The id of the VPC.
      */
-    public readonly vpcId!: pulumi.Output<string | undefined>;
+    declare public readonly vpcId: pulumi.Output<string | undefined>;
     /**
      * If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
      */
-    public readonly vswitchId!: pulumi.Output<string | undefined>;
+    declare public readonly vswitchId: pulumi.Output<string | undefined>;
     /**
      * The zookeeper addresses of the cluster. See `zkConnAddrs` below.
      */
-    public /*out*/ readonly zkConnAddrs!: pulumi.Output<outputs.hbase.InstanceZkConnAddr[]>;
+    declare public /*out*/ readonly zkConnAddrs: pulumi.Output<outputs.hbase.InstanceZkConnAddr[]>;
     /**
      * The Zone to launch the HBase instance. If vswitchId is not empty, this zoneId can be "" or consistent.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -224,69 +224,69 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["account"] = state ? state.account : undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["coldStorageSize"] = state ? state.coldStorageSize : undefined;
-            resourceInputs["coreDiskSize"] = state ? state.coreDiskSize : undefined;
-            resourceInputs["coreDiskType"] = state ? state.coreDiskType : undefined;
-            resourceInputs["coreInstanceQuantity"] = state ? state.coreInstanceQuantity : undefined;
-            resourceInputs["coreInstanceType"] = state ? state.coreInstanceType : undefined;
-            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            resourceInputs["duration"] = state ? state.duration : undefined;
-            resourceInputs["engine"] = state ? state.engine : undefined;
-            resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
-            resourceInputs["immediateDeleteFlag"] = state ? state.immediateDeleteFlag : undefined;
-            resourceInputs["ipWhite"] = state ? state.ipWhite : undefined;
-            resourceInputs["maintainEndTime"] = state ? state.maintainEndTime : undefined;
-            resourceInputs["maintainStartTime"] = state ? state.maintainStartTime : undefined;
-            resourceInputs["masterInstanceQuantity"] = state ? state.masterInstanceQuantity : undefined;
-            resourceInputs["masterInstanceType"] = state ? state.masterInstanceType : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["payType"] = state ? state.payType : undefined;
-            resourceInputs["securityGroups"] = state ? state.securityGroups : undefined;
-            resourceInputs["slbConnAddrs"] = state ? state.slbConnAddrs : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["uiProxyConnAddrs"] = state ? state.uiProxyConnAddrs : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
-            resourceInputs["zkConnAddrs"] = state ? state.zkConnAddrs : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["account"] = state?.account;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["coldStorageSize"] = state?.coldStorageSize;
+            resourceInputs["coreDiskSize"] = state?.coreDiskSize;
+            resourceInputs["coreDiskType"] = state?.coreDiskType;
+            resourceInputs["coreInstanceQuantity"] = state?.coreInstanceQuantity;
+            resourceInputs["coreInstanceType"] = state?.coreInstanceType;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["duration"] = state?.duration;
+            resourceInputs["engine"] = state?.engine;
+            resourceInputs["engineVersion"] = state?.engineVersion;
+            resourceInputs["immediateDeleteFlag"] = state?.immediateDeleteFlag;
+            resourceInputs["ipWhite"] = state?.ipWhite;
+            resourceInputs["maintainEndTime"] = state?.maintainEndTime;
+            resourceInputs["maintainStartTime"] = state?.maintainStartTime;
+            resourceInputs["masterInstanceQuantity"] = state?.masterInstanceQuantity;
+            resourceInputs["masterInstanceType"] = state?.masterInstanceType;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["payType"] = state?.payType;
+            resourceInputs["securityGroups"] = state?.securityGroups;
+            resourceInputs["slbConnAddrs"] = state?.slbConnAddrs;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["uiProxyConnAddrs"] = state?.uiProxyConnAddrs;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
+            resourceInputs["zkConnAddrs"] = state?.zkConnAddrs;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.coreInstanceType === undefined) && !opts.urn) {
+            if (args?.coreInstanceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'coreInstanceType'");
             }
-            if ((!args || args.engineVersion === undefined) && !opts.urn) {
+            if (args?.engineVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'engineVersion'");
             }
-            if ((!args || args.masterInstanceType === undefined) && !opts.urn) {
+            if (args?.masterInstanceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'masterInstanceType'");
             }
-            resourceInputs["account"] = args ? args.account : undefined;
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["coldStorageSize"] = args ? args.coldStorageSize : undefined;
-            resourceInputs["coreDiskSize"] = args ? args.coreDiskSize : undefined;
-            resourceInputs["coreDiskType"] = args ? args.coreDiskType : undefined;
-            resourceInputs["coreInstanceQuantity"] = args ? args.coreInstanceQuantity : undefined;
-            resourceInputs["coreInstanceType"] = args ? args.coreInstanceType : undefined;
-            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            resourceInputs["duration"] = args ? args.duration : undefined;
-            resourceInputs["engine"] = args ? args.engine : undefined;
-            resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
-            resourceInputs["immediateDeleteFlag"] = args ? args.immediateDeleteFlag : undefined;
-            resourceInputs["ipWhite"] = args ? args.ipWhite : undefined;
-            resourceInputs["maintainEndTime"] = args ? args.maintainEndTime : undefined;
-            resourceInputs["maintainStartTime"] = args ? args.maintainStartTime : undefined;
-            resourceInputs["masterInstanceType"] = args ? args.masterInstanceType : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["account"] = args?.account;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["coldStorageSize"] = args?.coldStorageSize;
+            resourceInputs["coreDiskSize"] = args?.coreDiskSize;
+            resourceInputs["coreDiskType"] = args?.coreDiskType;
+            resourceInputs["coreInstanceQuantity"] = args?.coreInstanceQuantity;
+            resourceInputs["coreInstanceType"] = args?.coreInstanceType;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["duration"] = args?.duration;
+            resourceInputs["engine"] = args?.engine;
+            resourceInputs["engineVersion"] = args?.engineVersion;
+            resourceInputs["immediateDeleteFlag"] = args?.immediateDeleteFlag;
+            resourceInputs["ipWhite"] = args?.ipWhite;
+            resourceInputs["maintainEndTime"] = args?.maintainEndTime;
+            resourceInputs["maintainStartTime"] = args?.maintainStartTime;
+            resourceInputs["masterInstanceType"] = args?.masterInstanceType;
+            resourceInputs["name"] = args?.name;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["payType"] = args ? args.payType : undefined;
-            resourceInputs["securityGroups"] = args ? args.securityGroups : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["payType"] = args?.payType;
+            resourceInputs["securityGroups"] = args?.securityGroups;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["masterInstanceQuantity"] = undefined /*out*/;
             resourceInputs["slbConnAddrs"] = undefined /*out*/;
             resourceInputs["uiProxyConnAddrs"] = undefined /*out*/;

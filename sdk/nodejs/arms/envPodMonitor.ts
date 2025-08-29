@@ -50,27 +50,27 @@ export class EnvPodMonitor extends pulumi.CustomResource {
     /**
      * Language environment, default is Chinese zh | en.
      */
-    public readonly aliyunLang!: pulumi.Output<string | undefined>;
+    declare public readonly aliyunLang: pulumi.Output<string | undefined>;
     /**
      * Yaml configuration string.
      */
-    public readonly configYaml!: pulumi.Output<string>;
+    declare public readonly configYaml: pulumi.Output<string>;
     /**
      * The name of the resource.
      */
-    public /*out*/ readonly envPodMonitorName!: pulumi.Output<string>;
+    declare public /*out*/ readonly envPodMonitorName: pulumi.Output<string>;
     /**
      * Environment id.
      */
-    public readonly environmentId!: pulumi.Output<string>;
+    declare public readonly environmentId: pulumi.Output<string>;
     /**
      * Resource namespace.
      */
-    public /*out*/ readonly namespace!: pulumi.Output<string>;
+    declare public /*out*/ readonly namespace: pulumi.Output<string>;
     /**
      * PodMonitor status.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a EnvPodMonitor resource with the given unique name, arguments, and options.
@@ -85,23 +85,23 @@ export class EnvPodMonitor extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnvPodMonitorState | undefined;
-            resourceInputs["aliyunLang"] = state ? state.aliyunLang : undefined;
-            resourceInputs["configYaml"] = state ? state.configYaml : undefined;
-            resourceInputs["envPodMonitorName"] = state ? state.envPodMonitorName : undefined;
-            resourceInputs["environmentId"] = state ? state.environmentId : undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["aliyunLang"] = state?.aliyunLang;
+            resourceInputs["configYaml"] = state?.configYaml;
+            resourceInputs["envPodMonitorName"] = state?.envPodMonitorName;
+            resourceInputs["environmentId"] = state?.environmentId;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as EnvPodMonitorArgs | undefined;
-            if ((!args || args.configYaml === undefined) && !opts.urn) {
+            if (args?.configYaml === undefined && !opts.urn) {
                 throw new Error("Missing required property 'configYaml'");
             }
-            if ((!args || args.environmentId === undefined) && !opts.urn) {
+            if (args?.environmentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environmentId'");
             }
-            resourceInputs["aliyunLang"] = args ? args.aliyunLang : undefined;
-            resourceInputs["configYaml"] = args ? args.configYaml : undefined;
-            resourceInputs["environmentId"] = args ? args.environmentId : undefined;
+            resourceInputs["aliyunLang"] = args?.aliyunLang;
+            resourceInputs["configYaml"] = args?.configYaml;
+            resourceInputs["environmentId"] = args?.environmentId;
             resourceInputs["envPodMonitorName"] = undefined /*out*/;
             resourceInputs["namespace"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

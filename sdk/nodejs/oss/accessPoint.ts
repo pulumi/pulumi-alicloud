@@ -78,29 +78,29 @@ export class AccessPoint extends pulumi.CustomResource {
     /**
      * The name of the access point
      */
-    public readonly accessPointName!: pulumi.Output<string>;
+    declare public readonly accessPointName: pulumi.Output<string>;
     /**
      * The Bucket to which the current access point belongs.
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * Access point network source. The valid values are as follows: 
      * - vpc: only the specified VPC ID can be used to access the access point.
      * - internet: the access point can be accessed through both external and internal Endpoint.
      */
-    public readonly networkOrigin!: pulumi.Output<string>;
+    declare public readonly networkOrigin: pulumi.Output<string>;
     /**
      * Configuration of Access Point Blocking Public Access See `publicAccessBlockConfiguration` below.
      */
-    public readonly publicAccessBlockConfiguration!: pulumi.Output<outputs.oss.AccessPointPublicAccessBlockConfiguration | undefined>;
+    declare public readonly publicAccessBlockConfiguration: pulumi.Output<outputs.oss.AccessPointPublicAccessBlockConfiguration | undefined>;
     /**
      * The status of the resource
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * If the Network Origin is vpc, the VPC source information is saved here. See `vpcConfiguration` below.
      */
-    public readonly vpcConfiguration!: pulumi.Output<outputs.oss.AccessPointVpcConfiguration | undefined>;
+    declare public readonly vpcConfiguration: pulumi.Output<outputs.oss.AccessPointVpcConfiguration | undefined>;
 
     /**
      * Create a AccessPoint resource with the given unique name, arguments, and options.
@@ -115,28 +115,28 @@ export class AccessPoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessPointState | undefined;
-            resourceInputs["accessPointName"] = state ? state.accessPointName : undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["networkOrigin"] = state ? state.networkOrigin : undefined;
-            resourceInputs["publicAccessBlockConfiguration"] = state ? state.publicAccessBlockConfiguration : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vpcConfiguration"] = state ? state.vpcConfiguration : undefined;
+            resourceInputs["accessPointName"] = state?.accessPointName;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["networkOrigin"] = state?.networkOrigin;
+            resourceInputs["publicAccessBlockConfiguration"] = state?.publicAccessBlockConfiguration;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vpcConfiguration"] = state?.vpcConfiguration;
         } else {
             const args = argsOrState as AccessPointArgs | undefined;
-            if ((!args || args.accessPointName === undefined) && !opts.urn) {
+            if (args?.accessPointName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accessPointName'");
             }
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if ((!args || args.networkOrigin === undefined) && !opts.urn) {
+            if (args?.networkOrigin === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkOrigin'");
             }
-            resourceInputs["accessPointName"] = args ? args.accessPointName : undefined;
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["networkOrigin"] = args ? args.networkOrigin : undefined;
-            resourceInputs["publicAccessBlockConfiguration"] = args ? args.publicAccessBlockConfiguration : undefined;
-            resourceInputs["vpcConfiguration"] = args ? args.vpcConfiguration : undefined;
+            resourceInputs["accessPointName"] = args?.accessPointName;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["networkOrigin"] = args?.networkOrigin;
+            resourceInputs["publicAccessBlockConfiguration"] = args?.publicAccessBlockConfiguration;
+            resourceInputs["vpcConfiguration"] = args?.vpcConfiguration;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

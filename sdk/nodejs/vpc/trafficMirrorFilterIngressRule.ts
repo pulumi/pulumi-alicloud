@@ -71,57 +71,57 @@ export class TrafficMirrorFilterIngressRule extends pulumi.CustomResource {
     /**
      * The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
      */
-    public readonly action!: pulumi.Output<string>;
+    declare public readonly action: pulumi.Output<string>;
     /**
      * The destination CIDR block of the inbound traffic.
      */
-    public readonly destinationCidrBlock!: pulumi.Output<string>;
+    declare public readonly destinationCidrBlock: pulumi.Output<string>;
     /**
      * The destination CIDR block of the inbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
      */
-    public readonly destinationPortRange!: pulumi.Output<string>;
+    declare public readonly destinationPortRange: pulumi.Output<string>;
     /**
      * Whether to PreCheck this request only. Value:
      * - **true**: sends a check request and does not create inbound or outbound rules. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
      * - **false** (default): Sends a normal request and directly creates an inbound or outbound direction rule after checking.
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * The priority of the inbound rule. A smaller value indicates a higher priority. The maximum value is `10`, which indicates that you can configure at most 10 inbound rules for a filter.
      */
-    public readonly priority!: pulumi.Output<number>;
+    declare public readonly priority: pulumi.Output<number>;
     /**
      * The transport protocol used by inbound traffic that needs to be mirrored. Valid values: `ALL`, `ICMP`, `TCP`, `UDP`.
      */
-    public readonly protocol!: pulumi.Output<string>;
+    declare public readonly protocol: pulumi.Output<string>;
     /**
      * . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
      *
      * @deprecated Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.
      */
-    public readonly ruleAction!: pulumi.Output<string>;
+    declare public readonly ruleAction: pulumi.Output<string>;
     /**
      * The source CIDR block of the inbound traffic.
      */
-    public readonly sourceCidrBlock!: pulumi.Output<string>;
+    declare public readonly sourceCidrBlock: pulumi.Output<string>;
     /**
      * The source port range of the inbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
      */
-    public readonly sourcePortRange!: pulumi.Output<string>;
+    declare public readonly sourcePortRange: pulumi.Output<string>;
     /**
      * The state of the inbound rule. `Creating`, `Created`, `Modifying` and `Deleting`.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The ID of the filter.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    public readonly trafficMirrorFilterId!: pulumi.Output<string>;
+    declare public readonly trafficMirrorFilterId: pulumi.Output<string>;
     /**
      * The ID of the outbound rule.
      */
-    public /*out*/ readonly trafficMirrorFilterIngressRuleId!: pulumi.Output<string>;
+    declare public /*out*/ readonly trafficMirrorFilterIngressRuleId: pulumi.Output<string>;
 
     /**
      * Create a TrafficMirrorFilterIngressRule resource with the given unique name, arguments, and options.
@@ -136,45 +136,45 @@ export class TrafficMirrorFilterIngressRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TrafficMirrorFilterIngressRuleState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["destinationCidrBlock"] = state ? state.destinationCidrBlock : undefined;
-            resourceInputs["destinationPortRange"] = state ? state.destinationPortRange : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["ruleAction"] = state ? state.ruleAction : undefined;
-            resourceInputs["sourceCidrBlock"] = state ? state.sourceCidrBlock : undefined;
-            resourceInputs["sourcePortRange"] = state ? state.sourcePortRange : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["trafficMirrorFilterId"] = state ? state.trafficMirrorFilterId : undefined;
-            resourceInputs["trafficMirrorFilterIngressRuleId"] = state ? state.trafficMirrorFilterIngressRuleId : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["destinationCidrBlock"] = state?.destinationCidrBlock;
+            resourceInputs["destinationPortRange"] = state?.destinationPortRange;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["ruleAction"] = state?.ruleAction;
+            resourceInputs["sourceCidrBlock"] = state?.sourceCidrBlock;
+            resourceInputs["sourcePortRange"] = state?.sourcePortRange;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["trafficMirrorFilterId"] = state?.trafficMirrorFilterId;
+            resourceInputs["trafficMirrorFilterIngressRuleId"] = state?.trafficMirrorFilterIngressRuleId;
         } else {
             const args = argsOrState as TrafficMirrorFilterIngressRuleArgs | undefined;
-            if ((!args || args.destinationCidrBlock === undefined) && !opts.urn) {
+            if (args?.destinationCidrBlock === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationCidrBlock'");
             }
-            if ((!args || args.priority === undefined) && !opts.urn) {
+            if (args?.priority === undefined && !opts.urn) {
                 throw new Error("Missing required property 'priority'");
             }
-            if ((!args || args.protocol === undefined) && !opts.urn) {
+            if (args?.protocol === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            if ((!args || args.sourceCidrBlock === undefined) && !opts.urn) {
+            if (args?.sourceCidrBlock === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceCidrBlock'");
             }
-            if ((!args || args.trafficMirrorFilterId === undefined) && !opts.urn) {
+            if (args?.trafficMirrorFilterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'trafficMirrorFilterId'");
             }
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["destinationCidrBlock"] = args ? args.destinationCidrBlock : undefined;
-            resourceInputs["destinationPortRange"] = args ? args.destinationPortRange : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["ruleAction"] = args ? args.ruleAction : undefined;
-            resourceInputs["sourceCidrBlock"] = args ? args.sourceCidrBlock : undefined;
-            resourceInputs["sourcePortRange"] = args ? args.sourcePortRange : undefined;
-            resourceInputs["trafficMirrorFilterId"] = args ? args.trafficMirrorFilterId : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["destinationCidrBlock"] = args?.destinationCidrBlock;
+            resourceInputs["destinationPortRange"] = args?.destinationPortRange;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["ruleAction"] = args?.ruleAction;
+            resourceInputs["sourceCidrBlock"] = args?.sourceCidrBlock;
+            resourceInputs["sourcePortRange"] = args?.sourcePortRange;
+            resourceInputs["trafficMirrorFilterId"] = args?.trafficMirrorFilterId;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["trafficMirrorFilterIngressRuleId"] = undefined /*out*/;
         }

@@ -113,38 +113,38 @@ export class CustomRoutingEndpoint extends pulumi.CustomResource {
     /**
      * The ID of the GA instance with which the endpoint is associated.
      */
-    public /*out*/ readonly acceleratorId!: pulumi.Output<string>;
+    declare public /*out*/ readonly acceleratorId: pulumi.Output<string>;
     /**
      * The ID of the Custom Routing Endpoint.
      */
-    public /*out*/ readonly customRoutingEndpointId!: pulumi.Output<string>;
+    declare public /*out*/ readonly customRoutingEndpointId: pulumi.Output<string>;
     /**
      * The ID of the endpoint (vSwitch).
      */
-    public readonly endpoint!: pulumi.Output<string>;
+    declare public readonly endpoint: pulumi.Output<string>;
     /**
      * The ID of the endpoint group in which to create endpoints.
      */
-    public readonly endpointGroupId!: pulumi.Output<string>;
+    declare public readonly endpointGroupId: pulumi.Output<string>;
     /**
      * The ID of the listener with which the endpoint is associated.
      */
-    public /*out*/ readonly listenerId!: pulumi.Output<string>;
+    declare public /*out*/ readonly listenerId: pulumi.Output<string>;
     /**
      * The status of the Custom Routing Endpoint.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
      * - `DenyAll`: denies all traffic to the endpoint.
      * - `AllowAll`: allows all traffic to the endpoint.
      * - `AllowCustom`: allows traffic only to specified destinations in the endpoint.
      */
-    public readonly trafficToEndpointPolicy!: pulumi.Output<string>;
+    declare public readonly trafficToEndpointPolicy: pulumi.Output<string>;
     /**
      * The backend service type of the endpoint. Valid values: `PrivateSubNet`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a CustomRoutingEndpoint resource with the given unique name, arguments, and options.
@@ -159,29 +159,29 @@ export class CustomRoutingEndpoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomRoutingEndpointState | undefined;
-            resourceInputs["acceleratorId"] = state ? state.acceleratorId : undefined;
-            resourceInputs["customRoutingEndpointId"] = state ? state.customRoutingEndpointId : undefined;
-            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
-            resourceInputs["endpointGroupId"] = state ? state.endpointGroupId : undefined;
-            resourceInputs["listenerId"] = state ? state.listenerId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["trafficToEndpointPolicy"] = state ? state.trafficToEndpointPolicy : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["acceleratorId"] = state?.acceleratorId;
+            resourceInputs["customRoutingEndpointId"] = state?.customRoutingEndpointId;
+            resourceInputs["endpoint"] = state?.endpoint;
+            resourceInputs["endpointGroupId"] = state?.endpointGroupId;
+            resourceInputs["listenerId"] = state?.listenerId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["trafficToEndpointPolicy"] = state?.trafficToEndpointPolicy;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as CustomRoutingEndpointArgs | undefined;
-            if ((!args || args.endpoint === undefined) && !opts.urn) {
+            if (args?.endpoint === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpoint'");
             }
-            if ((!args || args.endpointGroupId === undefined) && !opts.urn) {
+            if (args?.endpointGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpointGroupId'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["endpoint"] = args ? args.endpoint : undefined;
-            resourceInputs["endpointGroupId"] = args ? args.endpointGroupId : undefined;
-            resourceInputs["trafficToEndpointPolicy"] = args ? args.trafficToEndpointPolicy : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["endpoint"] = args?.endpoint;
+            resourceInputs["endpointGroupId"] = args?.endpointGroupId;
+            resourceInputs["trafficToEndpointPolicy"] = args?.trafficToEndpointPolicy;
+            resourceInputs["type"] = args?.type;
             resourceInputs["acceleratorId"] = undefined /*out*/;
             resourceInputs["customRoutingEndpointId"] = undefined /*out*/;
             resourceInputs["listenerId"] = undefined /*out*/;

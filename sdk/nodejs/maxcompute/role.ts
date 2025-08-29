@@ -85,23 +85,23 @@ export class Role extends pulumi.CustomResource {
      * Policy Authorization
      * Refer to [Policy-based access control](https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1) and [Authorization practices](https://www.alibabacloud.com/help/en/maxcompute/use-cases/authorization-practices)
      */
-    public readonly policy!: pulumi.Output<string | undefined>;
+    declare public readonly policy: pulumi.Output<string | undefined>;
     /**
      * Project name
      */
-    public readonly projectName!: pulumi.Output<string>;
+    declare public readonly projectName: pulumi.Output<string>;
     /**
      * Role Name
      *
      * > **NOTE:** At the beginning of a letter, it can contain letters and numbers and can be no more than 64 characters in length.
      */
-    public readonly roleName!: pulumi.Output<string>;
+    declare public readonly roleName: pulumi.Output<string>;
     /**
      * Role type Valid values: admin/resource
      *
      * > **NOTE:** -- management type (admin) role: You can grant management type permissions through Policy. You cannot grant resource permissions to management type roles. You cannot grant management type permissions to management type roles through ACL. -- resource role: you can authorize resource type permissions through Policy or ACL, but cannot authorize management type permissions. For details, see [role-planning](https://www.alibabacloud.com/help/en/maxcompute/user-guide/role-planning)
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a Role resource with the given unique name, arguments, and options.
@@ -116,25 +116,25 @@ export class Role extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RoleState | undefined;
-            resourceInputs["policy"] = state ? state.policy : undefined;
-            resourceInputs["projectName"] = state ? state.projectName : undefined;
-            resourceInputs["roleName"] = state ? state.roleName : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["policy"] = state?.policy;
+            resourceInputs["projectName"] = state?.projectName;
+            resourceInputs["roleName"] = state?.roleName;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as RoleArgs | undefined;
-            if ((!args || args.projectName === undefined) && !opts.urn) {
+            if (args?.projectName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectName'");
             }
-            if ((!args || args.roleName === undefined) && !opts.urn) {
+            if (args?.roleName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roleName'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["policy"] = args ? args.policy : undefined;
-            resourceInputs["projectName"] = args ? args.projectName : undefined;
-            resourceInputs["roleName"] = args ? args.roleName : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["policy"] = args?.policy;
+            resourceInputs["projectName"] = args?.projectName;
+            resourceInputs["roleName"] = args?.roleName;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Role.__pulumiType, name, resourceInputs, opts);

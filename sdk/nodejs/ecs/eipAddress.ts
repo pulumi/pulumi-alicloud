@@ -44,7 +44,7 @@ export class EipAddress extends pulumi.CustomResource {
     /**
      * The promotion code. This parameter is not required.
      */
-    public readonly activityId!: pulumi.Output<string | undefined>;
+    declare public readonly activityId: pulumi.Output<string | undefined>;
     /**
      * The EIP name.
      *
@@ -52,15 +52,15 @@ export class EipAddress extends pulumi.CustomResource {
      *
      * > **NOTE:**   You cannot specify this parameter if you create a subscription EIP.
      */
-    public readonly addressName!: pulumi.Output<string>;
+    declare public readonly addressName: pulumi.Output<string>;
     /**
      * The ID of the EIP instance.
      */
-    public readonly allocationId!: pulumi.Output<string>;
+    declare public readonly allocationId: pulumi.Output<string>;
     /**
      * Specifies whether to enable automatic payment. Valid values:
      */
-    public readonly autoPay!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoPay: pulumi.Output<boolean | undefined>;
     /**
      * The maximum bandwidth of the specified EIP. Unit: Mbit/s.
      * - When `paymentType` is set to `PayAsYouGo` and `internetChargeType` is set to `PayByBandwidth`, valid values for `bandwidth` are `1` to `500`.
@@ -69,15 +69,15 @@ export class EipAddress extends pulumi.CustomResource {
      *
      * Default value: `5` Mbit /s.
      */
-    public readonly bandwidth!: pulumi.Output<string>;
+    declare public readonly bandwidth: pulumi.Output<string>;
     /**
      * The time when the EIP was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Specifies whether to enable deletion protection. Valid values:
      */
-    public readonly deletionProtection!: pulumi.Output<boolean>;
+    declare public readonly deletionProtection: pulumi.Output<boolean>;
     /**
      * The description of the EIP.
      *
@@ -85,19 +85,19 @@ export class EipAddress extends pulumi.CustomResource {
      *
      * > **NOTE:**   You cannot specify this parameter if you create a subscription EIP.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The status of fine-grained monitoring. Valid values:
      * - `ON`
      * - `OFF`
      */
-    public readonly highDefinitionMonitorLogStatus!: pulumi.Output<string>;
+    declare public readonly highDefinitionMonitorLogStatus: pulumi.Output<string>;
     /**
      * . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
      *
      * @deprecated Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.
      */
-    public readonly instanceChargeType!: pulumi.Output<string>;
+    declare public readonly instanceChargeType: pulumi.Output<string>;
     /**
      * The metering method of the EIP. Valid values:
      * - `PayByBandwidth` (default): pay-by-bandwidth.
@@ -107,11 +107,11 @@ export class EipAddress extends pulumi.CustomResource {
      *
      * When `paymentType` is set to `PayAsYouGo`, set `internetChargeType` to `PayByBandwidth` or `PayByTraffic`.
      */
-    public readonly internetChargeType!: pulumi.Output<string>;
+    declare public readonly internetChargeType: pulumi.Output<string>;
     /**
      * The IP address of the EIP. Supports a maximum of 50 EIPs.
      */
-    public readonly ipAddress!: pulumi.Output<string>;
+    declare public readonly ipAddress: pulumi.Output<string>;
     /**
      * The line type. Valid values:
      * - `BGP` (default): BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
@@ -129,32 +129,32 @@ export class EipAddress extends pulumi.CustomResource {
      *
      * If your services are deployed in China East 1 Finance, this parameter is required and you must set the parameter to `BGP_FinanceCloud`.
      */
-    public readonly isp!: pulumi.Output<string>;
+    declare public readonly isp: pulumi.Output<string>;
     /**
      * The name of the Simple Log Service (SLS) project.
      */
-    public readonly logProject!: pulumi.Output<string | undefined>;
+    declare public readonly logProject: pulumi.Output<string | undefined>;
     /**
      * The name of the Logstore.
      */
-    public readonly logStore!: pulumi.Output<string | undefined>;
+    declare public readonly logStore: pulumi.Output<string | undefined>;
     /**
      * The association mode. Valid values:
      * - `NAT` (default): NAT mode
      * - `MULTI_BINDED`: multi-EIP-to-ENI mode
      * - `BINDED`: cut-network interface controller mode
      */
-    public readonly mode!: pulumi.Output<string>;
+    declare public readonly mode: pulumi.Output<string>;
     /**
      * . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The network type. By default, this value is set to `public`, which specifies the public network type.
      */
-    public readonly netmode!: pulumi.Output<string>;
+    declare public readonly netmode: pulumi.Output<string>;
     /**
      * The billing method of the EIP. Valid values:
      * - `Subscription`: subscription
@@ -162,11 +162,11 @@ export class EipAddress extends pulumi.CustomResource {
      *
      * If `paymentType` is set to `Subscription`, set `internetChargeType` to `PayByBandwidth`. If `paymentType` is set to `PayAsYouGo`, set `internetChargeType` to `PayByBandwidth` or `PayByTraffic`.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * Duration of purchase. When the value of `pricingCycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricingCycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `paymentType` parameter is `Subscription`, this parameter is required. If the value of the `paymentType` parameter is `PayAsYouGo`, this parameter is left blank.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * The billing cycle of the subscription EIP. Valid values:
      * - `Month` (default)
@@ -174,37 +174,37 @@ export class EipAddress extends pulumi.CustomResource {
      *
      * If `paymentType` is set to `Subscription`, this parameter is required. If `paymentType` is set to `PayAsYouGo`, this parameter is not required.
      */
-    public readonly pricingCycle!: pulumi.Output<string | undefined>;
+    declare public readonly pricingCycle: pulumi.Output<string | undefined>;
     /**
      * The ID of the IP address pool. The EIP is allocated from the IP address pool. By default, the IP address pool feature is unavailable. To use the IP address pool, apply for the privilege in the Quota Center console. For more information, see the "Request a quota increase in the Quota Center console" section in [Manage EIP quotas](https://www.alibabacloud.com/help/en/doc-detail/108213.html).
      */
-    public readonly publicIpAddressPoolId!: pulumi.Output<string | undefined>;
+    declare public readonly publicIpAddressPoolId: pulumi.Output<string | undefined>;
     /**
      * The ID of the resource group to which you want to move the resource.
      *
      * > **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Security protection level.
      * - When the return is empty, the basic DDoS protection is specified.
      * - When `antidosEnhanced` is returned, it indicates DDoS protection (enhanced version).
      */
-    public readonly securityProtectionTypes!: pulumi.Output<string[] | undefined>;
+    declare public readonly securityProtectionTypes: pulumi.Output<string[] | undefined>;
     /**
      * The state of the EIP.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tag of the resource
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html). 
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    public readonly zone!: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a EipAddress resource with the given unique name, arguments, and options.
@@ -219,60 +219,60 @@ export class EipAddress extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EipAddressState | undefined;
-            resourceInputs["activityId"] = state ? state.activityId : undefined;
-            resourceInputs["addressName"] = state ? state.addressName : undefined;
-            resourceInputs["allocationId"] = state ? state.allocationId : undefined;
-            resourceInputs["autoPay"] = state ? state.autoPay : undefined;
-            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["highDefinitionMonitorLogStatus"] = state ? state.highDefinitionMonitorLogStatus : undefined;
-            resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
-            resourceInputs["internetChargeType"] = state ? state.internetChargeType : undefined;
-            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
-            resourceInputs["isp"] = state ? state.isp : undefined;
-            resourceInputs["logProject"] = state ? state.logProject : undefined;
-            resourceInputs["logStore"] = state ? state.logStore : undefined;
-            resourceInputs["mode"] = state ? state.mode : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["netmode"] = state ? state.netmode : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["pricingCycle"] = state ? state.pricingCycle : undefined;
-            resourceInputs["publicIpAddressPoolId"] = state ? state.publicIpAddressPoolId : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["securityProtectionTypes"] = state ? state.securityProtectionTypes : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["activityId"] = state?.activityId;
+            resourceInputs["addressName"] = state?.addressName;
+            resourceInputs["allocationId"] = state?.allocationId;
+            resourceInputs["autoPay"] = state?.autoPay;
+            resourceInputs["bandwidth"] = state?.bandwidth;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["highDefinitionMonitorLogStatus"] = state?.highDefinitionMonitorLogStatus;
+            resourceInputs["instanceChargeType"] = state?.instanceChargeType;
+            resourceInputs["internetChargeType"] = state?.internetChargeType;
+            resourceInputs["ipAddress"] = state?.ipAddress;
+            resourceInputs["isp"] = state?.isp;
+            resourceInputs["logProject"] = state?.logProject;
+            resourceInputs["logStore"] = state?.logStore;
+            resourceInputs["mode"] = state?.mode;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["netmode"] = state?.netmode;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["pricingCycle"] = state?.pricingCycle;
+            resourceInputs["publicIpAddressPoolId"] = state?.publicIpAddressPoolId;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["securityProtectionTypes"] = state?.securityProtectionTypes;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as EipAddressArgs | undefined;
-            resourceInputs["activityId"] = args ? args.activityId : undefined;
-            resourceInputs["addressName"] = args ? args.addressName : undefined;
-            resourceInputs["allocationId"] = args ? args.allocationId : undefined;
-            resourceInputs["autoPay"] = args ? args.autoPay : undefined;
-            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
-            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["highDefinitionMonitorLogStatus"] = args ? args.highDefinitionMonitorLogStatus : undefined;
-            resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
-            resourceInputs["internetChargeType"] = args ? args.internetChargeType : undefined;
-            resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
-            resourceInputs["isp"] = args ? args.isp : undefined;
-            resourceInputs["logProject"] = args ? args.logProject : undefined;
-            resourceInputs["logStore"] = args ? args.logStore : undefined;
-            resourceInputs["mode"] = args ? args.mode : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["netmode"] = args ? args.netmode : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["pricingCycle"] = args ? args.pricingCycle : undefined;
-            resourceInputs["publicIpAddressPoolId"] = args ? args.publicIpAddressPoolId : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["securityProtectionTypes"] = args ? args.securityProtectionTypes : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["activityId"] = args?.activityId;
+            resourceInputs["addressName"] = args?.addressName;
+            resourceInputs["allocationId"] = args?.allocationId;
+            resourceInputs["autoPay"] = args?.autoPay;
+            resourceInputs["bandwidth"] = args?.bandwidth;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["highDefinitionMonitorLogStatus"] = args?.highDefinitionMonitorLogStatus;
+            resourceInputs["instanceChargeType"] = args?.instanceChargeType;
+            resourceInputs["internetChargeType"] = args?.internetChargeType;
+            resourceInputs["ipAddress"] = args?.ipAddress;
+            resourceInputs["isp"] = args?.isp;
+            resourceInputs["logProject"] = args?.logProject;
+            resourceInputs["logStore"] = args?.logStore;
+            resourceInputs["mode"] = args?.mode;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["netmode"] = args?.netmode;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["pricingCycle"] = args?.pricingCycle;
+            resourceInputs["publicIpAddressPoolId"] = args?.publicIpAddressPoolId;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["securityProtectionTypes"] = args?.securityProtectionTypes;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["zone"] = args?.zone;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

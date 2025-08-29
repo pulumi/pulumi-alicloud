@@ -88,39 +88,39 @@ export class TransitRouterEcrAttachment extends pulumi.CustomResource {
     /**
      * CenId
      */
-    public readonly cenId!: pulumi.Output<string | undefined>;
+    declare public readonly cenId: pulumi.Output<string | undefined>;
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * EcrId
      */
-    public readonly ecrId!: pulumi.Output<string>;
+    declare public readonly ecrId: pulumi.Output<string>;
     /**
      * EcrOwnerId
      */
-    public readonly ecrOwnerId!: pulumi.Output<number | undefined>;
+    declare public readonly ecrOwnerId: pulumi.Output<number | undefined>;
     /**
      * The status of the resource
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tag of the resource
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * TransitRouterAttachmentDescription
      */
-    public readonly transitRouterAttachmentDescription!: pulumi.Output<string | undefined>;
+    declare public readonly transitRouterAttachmentDescription: pulumi.Output<string | undefined>;
     /**
      * TransitRouterAttachmentName
      */
-    public readonly transitRouterEcrAttachmentName!: pulumi.Output<string | undefined>;
+    declare public readonly transitRouterEcrAttachmentName: pulumi.Output<string | undefined>;
     /**
      * TransitRouterId
      */
-    public readonly transitRouterId!: pulumi.Output<string | undefined>;
+    declare public readonly transitRouterId: pulumi.Output<string | undefined>;
 
     /**
      * Create a TransitRouterEcrAttachment resource with the given unique name, arguments, and options.
@@ -135,27 +135,27 @@ export class TransitRouterEcrAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TransitRouterEcrAttachmentState | undefined;
-            resourceInputs["cenId"] = state ? state.cenId : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["ecrId"] = state ? state.ecrId : undefined;
-            resourceInputs["ecrOwnerId"] = state ? state.ecrOwnerId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["transitRouterAttachmentDescription"] = state ? state.transitRouterAttachmentDescription : undefined;
-            resourceInputs["transitRouterEcrAttachmentName"] = state ? state.transitRouterEcrAttachmentName : undefined;
-            resourceInputs["transitRouterId"] = state ? state.transitRouterId : undefined;
+            resourceInputs["cenId"] = state?.cenId;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["ecrId"] = state?.ecrId;
+            resourceInputs["ecrOwnerId"] = state?.ecrOwnerId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["transitRouterAttachmentDescription"] = state?.transitRouterAttachmentDescription;
+            resourceInputs["transitRouterEcrAttachmentName"] = state?.transitRouterEcrAttachmentName;
+            resourceInputs["transitRouterId"] = state?.transitRouterId;
         } else {
             const args = argsOrState as TransitRouterEcrAttachmentArgs | undefined;
-            if ((!args || args.ecrId === undefined) && !opts.urn) {
+            if (args?.ecrId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ecrId'");
             }
-            resourceInputs["cenId"] = args ? args.cenId : undefined;
-            resourceInputs["ecrId"] = args ? args.ecrId : undefined;
-            resourceInputs["ecrOwnerId"] = args ? args.ecrOwnerId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["transitRouterAttachmentDescription"] = args ? args.transitRouterAttachmentDescription : undefined;
-            resourceInputs["transitRouterEcrAttachmentName"] = args ? args.transitRouterEcrAttachmentName : undefined;
-            resourceInputs["transitRouterId"] = args ? args.transitRouterId : undefined;
+            resourceInputs["cenId"] = args?.cenId;
+            resourceInputs["ecrId"] = args?.ecrId;
+            resourceInputs["ecrOwnerId"] = args?.ecrOwnerId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["transitRouterAttachmentDescription"] = args?.transitRouterAttachmentDescription;
+            resourceInputs["transitRouterEcrAttachmentName"] = args?.transitRouterEcrAttachmentName;
+            resourceInputs["transitRouterId"] = args?.transitRouterId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

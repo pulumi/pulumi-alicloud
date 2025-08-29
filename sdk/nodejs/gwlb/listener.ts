@@ -50,33 +50,33 @@ export class Listener extends pulumi.CustomResource {
     /**
      * Specifies whether to perform a dry run, without performing the actual request. Valid values:
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * The description of the listener.
      *
      * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
      */
-    public readonly listenerDescription!: pulumi.Output<string | undefined>;
+    declare public readonly listenerDescription: pulumi.Output<string | undefined>;
     /**
      * The GWLB instance ID.
      */
-    public readonly loadBalancerId!: pulumi.Output<string>;
+    declare public readonly loadBalancerId: pulumi.Output<string>;
     /**
      * The region ID.
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The server group ID.
      */
-    public readonly serverGroupId!: pulumi.Output<string>;
+    declare public readonly serverGroupId: pulumi.Output<string>;
     /**
      * The status of the listener.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tags. You can specify at most 20 tags in each call.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Listener resource with the given unique name, arguments, and options.
@@ -91,26 +91,26 @@ export class Listener extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ListenerState | undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["listenerDescription"] = state ? state.listenerDescription : undefined;
-            resourceInputs["loadBalancerId"] = state ? state.loadBalancerId : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["serverGroupId"] = state ? state.serverGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["listenerDescription"] = state?.listenerDescription;
+            resourceInputs["loadBalancerId"] = state?.loadBalancerId;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["serverGroupId"] = state?.serverGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as ListenerArgs | undefined;
-            if ((!args || args.loadBalancerId === undefined) && !opts.urn) {
+            if (args?.loadBalancerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'loadBalancerId'");
             }
-            if ((!args || args.serverGroupId === undefined) && !opts.urn) {
+            if (args?.serverGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serverGroupId'");
             }
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["listenerDescription"] = args ? args.listenerDescription : undefined;
-            resourceInputs["loadBalancerId"] = args ? args.loadBalancerId : undefined;
-            resourceInputs["serverGroupId"] = args ? args.serverGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["listenerDescription"] = args?.listenerDescription;
+            resourceInputs["loadBalancerId"] = args?.loadBalancerId;
+            resourceInputs["serverGroupId"] = args?.serverGroupId;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

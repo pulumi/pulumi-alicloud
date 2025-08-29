@@ -72,19 +72,19 @@ export class List extends pulumi.CustomResource {
     /**
      * The description of the custom list.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The items in the custom list, which are displayed as an array.
      */
-    public readonly items!: pulumi.Output<string[] | undefined>;
+    declare public readonly items: pulumi.Output<string[] | undefined>;
     /**
      * The type of the custom list.
      */
-    public readonly kind!: pulumi.Output<string | undefined>;
+    declare public readonly kind: pulumi.Output<string | undefined>;
     /**
      * The name of the custom list.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a List resource with the given unique name, arguments, and options.
@@ -99,16 +99,16 @@ export class List extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ListState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["items"] = state ? state.items : undefined;
-            resourceInputs["kind"] = state ? state.kind : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["items"] = state?.items;
+            resourceInputs["kind"] = state?.kind;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as ListArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["items"] = args ? args.items : undefined;
-            resourceInputs["kind"] = args ? args.kind : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["items"] = args?.items;
+            resourceInputs["kind"] = args?.kind;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(List.__pulumiType, name, resourceInputs, opts);

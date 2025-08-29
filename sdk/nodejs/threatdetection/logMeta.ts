@@ -64,11 +64,11 @@ export class LogMeta extends pulumi.CustomResource {
      * - sas-filedetect-log: file detection log
      * - sas-net-block: Network Defense Log
      */
-    public readonly logMetaName!: pulumi.Output<string>;
+    declare public readonly logMetaName: pulumi.Output<string>;
     /**
      * The status of the resource
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
 
     /**
      * Create a LogMeta resource with the given unique name, arguments, and options.
@@ -83,18 +83,18 @@ export class LogMeta extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LogMetaState | undefined;
-            resourceInputs["logMetaName"] = state ? state.logMetaName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["logMetaName"] = state?.logMetaName;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as LogMetaArgs | undefined;
-            if ((!args || args.logMetaName === undefined) && !opts.urn) {
+            if (args?.logMetaName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'logMetaName'");
             }
-            if ((!args || args.status === undefined) && !opts.urn) {
+            if (args?.status === undefined && !opts.urn) {
                 throw new Error("Missing required property 'status'");
             }
-            resourceInputs["logMetaName"] = args ? args.logMetaName : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["logMetaName"] = args?.logMetaName;
+            resourceInputs["status"] = args?.status;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(LogMeta.__pulumiType, name, resourceInputs, opts);

@@ -77,23 +77,23 @@ export class BasicIpSet extends pulumi.CustomResource {
     /**
      * The ID of the acceleration region.
      */
-    public readonly accelerateRegionId!: pulumi.Output<string>;
+    declare public readonly accelerateRegionId: pulumi.Output<string>;
     /**
      * The ID of the basic GA instance.
      */
-    public readonly acceleratorId!: pulumi.Output<string>;
+    declare public readonly acceleratorId: pulumi.Output<string>;
     /**
      * The bandwidth of the acceleration region. Unit: Mbit/s.
      */
-    public readonly bandwidth!: pulumi.Output<number>;
+    declare public readonly bandwidth: pulumi.Output<number>;
     /**
      * The line type of the elastic IP address (EIP) in the acceleration region. Default value: `BGP`. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`.
      */
-    public readonly ispType!: pulumi.Output<string>;
+    declare public readonly ispType: pulumi.Output<string>;
     /**
      * The status of the Basic Ip Set instance.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a BasicIpSet resource with the given unique name, arguments, and options.
@@ -108,23 +108,23 @@ export class BasicIpSet extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BasicIpSetState | undefined;
-            resourceInputs["accelerateRegionId"] = state ? state.accelerateRegionId : undefined;
-            resourceInputs["acceleratorId"] = state ? state.acceleratorId : undefined;
-            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
-            resourceInputs["ispType"] = state ? state.ispType : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["accelerateRegionId"] = state?.accelerateRegionId;
+            resourceInputs["acceleratorId"] = state?.acceleratorId;
+            resourceInputs["bandwidth"] = state?.bandwidth;
+            resourceInputs["ispType"] = state?.ispType;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as BasicIpSetArgs | undefined;
-            if ((!args || args.accelerateRegionId === undefined) && !opts.urn) {
+            if (args?.accelerateRegionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accelerateRegionId'");
             }
-            if ((!args || args.acceleratorId === undefined) && !opts.urn) {
+            if (args?.acceleratorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'acceleratorId'");
             }
-            resourceInputs["accelerateRegionId"] = args ? args.accelerateRegionId : undefined;
-            resourceInputs["acceleratorId"] = args ? args.acceleratorId : undefined;
-            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
-            resourceInputs["ispType"] = args ? args.ispType : undefined;
+            resourceInputs["accelerateRegionId"] = args?.accelerateRegionId;
+            resourceInputs["acceleratorId"] = args?.acceleratorId;
+            resourceInputs["bandwidth"] = args?.bandwidth;
+            resourceInputs["ispType"] = args?.ispType;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

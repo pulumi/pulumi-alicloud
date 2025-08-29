@@ -92,71 +92,71 @@ export class Template extends pulumi.CustomResource {
     /**
      * When deleting a template, whether to delete its related executions. Default to `false`.
      */
-    public readonly autoDeleteExecutions!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoDeleteExecutions: pulumi.Output<boolean | undefined>;
     /**
      * The content of the template. The template must be in the JSON or YAML format. Maximum size: 64 KB.
      */
-    public readonly content!: pulumi.Output<string>;
+    declare public readonly content: pulumi.Output<string>;
     /**
      * The creator of the template.
      */
-    public /*out*/ readonly createdBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdBy: pulumi.Output<string>;
     /**
      * The time when the template is created.
      */
-    public /*out*/ readonly createdDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdDate: pulumi.Output<string>;
     /**
      * The description of the template.
      */
-    public /*out*/ readonly description!: pulumi.Output<string>;
+    declare public /*out*/ readonly description: pulumi.Output<string>;
     /**
      * Is it triggered successfully.
      */
-    public /*out*/ readonly hasTrigger!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly hasTrigger: pulumi.Output<boolean>;
     /**
      * The ID of resource group which the template belongs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The sharing type of the template. The sharing type of templates created by users are set to Private. The sharing type of common templates provided by OOS are set to Public.
      */
-    public /*out*/ readonly shareType!: pulumi.Output<string>;
+    declare public /*out*/ readonly shareType: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The format of the template. The format can be JSON or YAML. The system automatically identifies the format.
      */
-    public /*out*/ readonly templateFormat!: pulumi.Output<string>;
+    declare public /*out*/ readonly templateFormat: pulumi.Output<string>;
     /**
      * The id of OOS Template.
      */
-    public /*out*/ readonly templateId!: pulumi.Output<string>;
+    declare public /*out*/ readonly templateId: pulumi.Output<string>;
     /**
      * The name of the template. The template name can be up to 200 characters in length. The name can contain letters, digits, hyphens (-), and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, or `ALICLOUD`.
      */
-    public readonly templateName!: pulumi.Output<string>;
+    declare public readonly templateName: pulumi.Output<string>;
     /**
      * The type of OOS Template. `Automation` means the implementation of Alibaba Cloud API template, `Package` means represents a template for installing software.
      */
-    public /*out*/ readonly templateType!: pulumi.Output<string>;
+    declare public /*out*/ readonly templateType: pulumi.Output<string>;
     /**
      * The version of OOS Template.
      */
-    public /*out*/ readonly templateVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly templateVersion: pulumi.Output<string>;
     /**
      * The user who updated the template.
      */
-    public /*out*/ readonly updatedBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedBy: pulumi.Output<string>;
     /**
      * The time when the template was updated.
      */
-    public /*out*/ readonly updatedDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedDate: pulumi.Output<string>;
     /**
      * The name of template version.
      */
-    public readonly versionName!: pulumi.Output<string | undefined>;
+    declare public readonly versionName: pulumi.Output<string | undefined>;
 
     /**
      * Create a Template resource with the given unique name, arguments, and options.
@@ -171,37 +171,37 @@ export class Template extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TemplateState | undefined;
-            resourceInputs["autoDeleteExecutions"] = state ? state.autoDeleteExecutions : undefined;
-            resourceInputs["content"] = state ? state.content : undefined;
-            resourceInputs["createdBy"] = state ? state.createdBy : undefined;
-            resourceInputs["createdDate"] = state ? state.createdDate : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["hasTrigger"] = state ? state.hasTrigger : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["shareType"] = state ? state.shareType : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["templateFormat"] = state ? state.templateFormat : undefined;
-            resourceInputs["templateId"] = state ? state.templateId : undefined;
-            resourceInputs["templateName"] = state ? state.templateName : undefined;
-            resourceInputs["templateType"] = state ? state.templateType : undefined;
-            resourceInputs["templateVersion"] = state ? state.templateVersion : undefined;
-            resourceInputs["updatedBy"] = state ? state.updatedBy : undefined;
-            resourceInputs["updatedDate"] = state ? state.updatedDate : undefined;
-            resourceInputs["versionName"] = state ? state.versionName : undefined;
+            resourceInputs["autoDeleteExecutions"] = state?.autoDeleteExecutions;
+            resourceInputs["content"] = state?.content;
+            resourceInputs["createdBy"] = state?.createdBy;
+            resourceInputs["createdDate"] = state?.createdDate;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["hasTrigger"] = state?.hasTrigger;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["shareType"] = state?.shareType;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["templateFormat"] = state?.templateFormat;
+            resourceInputs["templateId"] = state?.templateId;
+            resourceInputs["templateName"] = state?.templateName;
+            resourceInputs["templateType"] = state?.templateType;
+            resourceInputs["templateVersion"] = state?.templateVersion;
+            resourceInputs["updatedBy"] = state?.updatedBy;
+            resourceInputs["updatedDate"] = state?.updatedDate;
+            resourceInputs["versionName"] = state?.versionName;
         } else {
             const args = argsOrState as TemplateArgs | undefined;
-            if ((!args || args.content === undefined) && !opts.urn) {
+            if (args?.content === undefined && !opts.urn) {
                 throw new Error("Missing required property 'content'");
             }
-            if ((!args || args.templateName === undefined) && !opts.urn) {
+            if (args?.templateName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'templateName'");
             }
-            resourceInputs["autoDeleteExecutions"] = args ? args.autoDeleteExecutions : undefined;
-            resourceInputs["content"] = args ? args.content : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["templateName"] = args ? args.templateName : undefined;
-            resourceInputs["versionName"] = args ? args.versionName : undefined;
+            resourceInputs["autoDeleteExecutions"] = args?.autoDeleteExecutions;
+            resourceInputs["content"] = args?.content;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["templateName"] = args?.templateName;
+            resourceInputs["versionName"] = args?.versionName;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["createdDate"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;

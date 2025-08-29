@@ -98,19 +98,19 @@ export class IntegrationExporter extends pulumi.CustomResource {
     /**
      * The ID of the Prometheus instance.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The ID of the Integration Exporter instance.
      */
-    public /*out*/ readonly instanceId!: pulumi.Output<number>;
+    declare public /*out*/ readonly instanceId: pulumi.Output<number>;
     /**
      * The type of prometheus integration.
      */
-    public readonly integrationType!: pulumi.Output<string>;
+    declare public readonly integrationType: pulumi.Output<string>;
     /**
      * Exporter configuration parameter json string.
      */
-    public readonly param!: pulumi.Output<string>;
+    declare public readonly param: pulumi.Output<string>;
 
     /**
      * Create a IntegrationExporter resource with the given unique name, arguments, and options.
@@ -125,24 +125,24 @@ export class IntegrationExporter extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntegrationExporterState | undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["integrationType"] = state ? state.integrationType : undefined;
-            resourceInputs["param"] = state ? state.param : undefined;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["integrationType"] = state?.integrationType;
+            resourceInputs["param"] = state?.param;
         } else {
             const args = argsOrState as IntegrationExporterArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.integrationType === undefined) && !opts.urn) {
+            if (args?.integrationType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'integrationType'");
             }
-            if ((!args || args.param === undefined) && !opts.urn) {
+            if (args?.param === undefined && !opts.urn) {
                 throw new Error("Missing required property 'param'");
             }
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["integrationType"] = args ? args.integrationType : undefined;
-            resourceInputs["param"] = args ? args.param : undefined;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["integrationType"] = args?.integrationType;
+            resourceInputs["param"] = args?.param;
             resourceInputs["instanceId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

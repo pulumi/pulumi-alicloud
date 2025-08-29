@@ -17,14 +17,12 @@ from . import outputs
 
 accessKey: Optional[str]
 """
-The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-console.
+The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
 """
 
 accountId: Optional[str]
 """
-The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
-Alibaba Cloud console.
+The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the Alibaba Cloud console.
 """
 
 accountType: Optional[str]
@@ -52,8 +50,7 @@ The URI of sidecar credentials service.
 
 ecsRoleName: Optional[str]
 """
-The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
-of the Alibaba Cloud console.
+The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section of the Alibaba Cloud console.
 """
 
 endpoints: Optional[str]
@@ -85,8 +82,7 @@ The region where Alibaba Cloud operations will take place. Examples are cn-beiji
 
 secretKey: Optional[str]
 """
-The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
-console.
+The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
 """
 
 secureTransport: Optional[str]
@@ -110,8 +106,7 @@ signVersion: Optional[str]
 
 skipRegionValidation: Optional[bool]
 """
-Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
-that are not public (yet).
+Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
 """
 
 sourceIp: Optional[str]

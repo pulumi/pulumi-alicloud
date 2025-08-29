@@ -98,91 +98,91 @@ export class VpcEndpoint extends pulumi.CustomResource {
     /**
      * The IP address version.
      */
-    public readonly addressIpVersion!: pulumi.Output<string>;
+    declare public readonly addressIpVersion: pulumi.Output<string>;
     /**
      * The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.
      */
-    public /*out*/ readonly bandwidth!: pulumi.Output<number>;
+    declare public /*out*/ readonly bandwidth: pulumi.Output<number>;
     /**
      * The state of the endpoint connection.
      */
-    public /*out*/ readonly connectionStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectionStatus: pulumi.Output<string>;
     /**
      * The time when the endpoint was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * The service state of the endpoint.
      */
-    public /*out*/ readonly endpointBusinessStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly endpointBusinessStatus: pulumi.Output<string>;
     /**
      * The description of the endpoint.
      */
-    public readonly endpointDescription!: pulumi.Output<string | undefined>;
+    declare public readonly endpointDescription: pulumi.Output<string | undefined>;
     /**
      * The domain name of the endpoint.
      */
-    public /*out*/ readonly endpointDomain!: pulumi.Output<string>;
+    declare public /*out*/ readonly endpointDomain: pulumi.Output<string>;
     /**
      * The endpoint type.
      *
      * Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
      */
-    public readonly endpointType!: pulumi.Output<string>;
+    declare public readonly endpointType: pulumi.Output<string>;
     /**
      * RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
      */
-    public readonly policyDocument!: pulumi.Output<string>;
+    declare public readonly policyDocument: pulumi.Output<string>;
     /**
      * Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
      */
-    public readonly protectedEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly protectedEnabled: pulumi.Output<boolean | undefined>;
     /**
      * (Available since v1.239.0) The region ID of the endpoint.
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The resource group ID.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.
      *
      * The endpoint can be associated with up to 10 security groups.
      */
-    public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly securityGroupIds: pulumi.Output<string[] | undefined>;
     /**
      * The ID of the endpoint service with which the endpoint is associated.
      */
-    public readonly serviceId!: pulumi.Output<string>;
+    declare public readonly serviceId: pulumi.Output<string>;
     /**
      * The name of the endpoint service with which the endpoint is associated.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
     /**
      * The state of the endpoint.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The list of tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the endpoint.
      */
-    public readonly vpcEndpointName!: pulumi.Output<string | undefined>;
+    declare public readonly vpcEndpointName: pulumi.Output<string | undefined>;
     /**
      * The ID of the VPC to which the endpoint belongs.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
      */
-    public readonly zonePrivateIpAddressCount!: pulumi.Output<number>;
+    declare public readonly zonePrivateIpAddressCount: pulumi.Output<number>;
 
     /**
      * Create a VpcEndpoint resource with the given unique name, arguments, and options.
@@ -197,46 +197,46 @@ export class VpcEndpoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpcEndpointState | undefined;
-            resourceInputs["addressIpVersion"] = state ? state.addressIpVersion : undefined;
-            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
-            resourceInputs["connectionStatus"] = state ? state.connectionStatus : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["endpointBusinessStatus"] = state ? state.endpointBusinessStatus : undefined;
-            resourceInputs["endpointDescription"] = state ? state.endpointDescription : undefined;
-            resourceInputs["endpointDomain"] = state ? state.endpointDomain : undefined;
-            resourceInputs["endpointType"] = state ? state.endpointType : undefined;
-            resourceInputs["policyDocument"] = state ? state.policyDocument : undefined;
-            resourceInputs["protectedEnabled"] = state ? state.protectedEnabled : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            resourceInputs["serviceId"] = state ? state.serviceId : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vpcEndpointName"] = state ? state.vpcEndpointName : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["zonePrivateIpAddressCount"] = state ? state.zonePrivateIpAddressCount : undefined;
+            resourceInputs["addressIpVersion"] = state?.addressIpVersion;
+            resourceInputs["bandwidth"] = state?.bandwidth;
+            resourceInputs["connectionStatus"] = state?.connectionStatus;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["endpointBusinessStatus"] = state?.endpointBusinessStatus;
+            resourceInputs["endpointDescription"] = state?.endpointDescription;
+            resourceInputs["endpointDomain"] = state?.endpointDomain;
+            resourceInputs["endpointType"] = state?.endpointType;
+            resourceInputs["policyDocument"] = state?.policyDocument;
+            resourceInputs["protectedEnabled"] = state?.protectedEnabled;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["securityGroupIds"] = state?.securityGroupIds;
+            resourceInputs["serviceId"] = state?.serviceId;
+            resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vpcEndpointName"] = state?.vpcEndpointName;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["zonePrivateIpAddressCount"] = state?.zonePrivateIpAddressCount;
         } else {
             const args = argsOrState as VpcEndpointArgs | undefined;
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["addressIpVersion"] = args ? args.addressIpVersion : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["endpointDescription"] = args ? args.endpointDescription : undefined;
-            resourceInputs["endpointType"] = args ? args.endpointType : undefined;
-            resourceInputs["policyDocument"] = args ? args.policyDocument : undefined;
-            resourceInputs["protectedEnabled"] = args ? args.protectedEnabled : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            resourceInputs["serviceId"] = args ? args.serviceId : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vpcEndpointName"] = args ? args.vpcEndpointName : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["zonePrivateIpAddressCount"] = args ? args.zonePrivateIpAddressCount : undefined;
+            resourceInputs["addressIpVersion"] = args?.addressIpVersion;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["endpointDescription"] = args?.endpointDescription;
+            resourceInputs["endpointType"] = args?.endpointType;
+            resourceInputs["policyDocument"] = args?.policyDocument;
+            resourceInputs["protectedEnabled"] = args?.protectedEnabled;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["securityGroupIds"] = args?.securityGroupIds;
+            resourceInputs["serviceId"] = args?.serviceId;
+            resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vpcEndpointName"] = args?.vpcEndpointName;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["zonePrivateIpAddressCount"] = args?.zonePrivateIpAddressCount;
             resourceInputs["bandwidth"] = undefined /*out*/;
             resourceInputs["connectionStatus"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;

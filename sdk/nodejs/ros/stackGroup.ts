@@ -69,59 +69,59 @@ export class StackGroup extends pulumi.CustomResource {
     /**
      * The list of target account IDs, in JSON format. A maximum of 20 accounts can be specified.
      */
-    public readonly accountIds!: pulumi.Output<string | undefined>;
+    declare public readonly accountIds: pulumi.Output<string | undefined>;
     /**
      * The name of the RAM administrator role assumed by ROS. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
      */
-    public readonly administrationRoleName!: pulumi.Output<string>;
+    declare public readonly administrationRoleName: pulumi.Output<string>;
     /**
      * The description of the stack group.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of the RAM execution role assumed by the administrator role. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
      */
-    public readonly executionRoleName!: pulumi.Output<string>;
+    declare public readonly executionRoleName: pulumi.Output<string>;
     /**
      * The description of the operation.
      */
-    public readonly operationDescription!: pulumi.Output<string | undefined>;
+    declare public readonly operationDescription: pulumi.Output<string | undefined>;
     /**
      * The operation settings, in JSON format.
      */
-    public readonly operationPreferences!: pulumi.Output<string | undefined>;
+    declare public readonly operationPreferences: pulumi.Output<string | undefined>;
     /**
      * The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
      */
-    public readonly parameters!: pulumi.Output<outputs.ros.StackGroupParameter[] | undefined>;
+    declare public readonly parameters: pulumi.Output<outputs.ros.StackGroupParameter[] | undefined>;
     /**
      * The list of target regions, in JSON format. A maximum of 20 accounts can be specified.
      */
-    public readonly regionIds!: pulumi.Output<string | undefined>;
+    declare public readonly regionIds: pulumi.Output<string | undefined>;
     /**
      * The id of Stack Group.
      */
-    public /*out*/ readonly stackGroupId!: pulumi.Output<string>;
+    declare public /*out*/ readonly stackGroupId: pulumi.Output<string>;
     /**
      * The name of the stack group. The name must be unique in a region.
      */
-    public readonly stackGroupName!: pulumi.Output<string>;
+    declare public readonly stackGroupName: pulumi.Output<string>;
     /**
      * The status of Stack Group.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
      */
-    public readonly templateBody!: pulumi.Output<string | undefined>;
+    declare public readonly templateBody: pulumi.Output<string | undefined>;
     /**
      * The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
      */
-    public readonly templateUrl!: pulumi.Output<string | undefined>;
+    declare public readonly templateUrl: pulumi.Output<string | undefined>;
     /**
      * The version of the template.
      */
-    public readonly templateVersion!: pulumi.Output<string | undefined>;
+    declare public readonly templateVersion: pulumi.Output<string | undefined>;
 
     /**
      * Create a StackGroup resource with the given unique name, arguments, and options.
@@ -136,37 +136,37 @@ export class StackGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StackGroupState | undefined;
-            resourceInputs["accountIds"] = state ? state.accountIds : undefined;
-            resourceInputs["administrationRoleName"] = state ? state.administrationRoleName : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["executionRoleName"] = state ? state.executionRoleName : undefined;
-            resourceInputs["operationDescription"] = state ? state.operationDescription : undefined;
-            resourceInputs["operationPreferences"] = state ? state.operationPreferences : undefined;
-            resourceInputs["parameters"] = state ? state.parameters : undefined;
-            resourceInputs["regionIds"] = state ? state.regionIds : undefined;
-            resourceInputs["stackGroupId"] = state ? state.stackGroupId : undefined;
-            resourceInputs["stackGroupName"] = state ? state.stackGroupName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["templateBody"] = state ? state.templateBody : undefined;
-            resourceInputs["templateUrl"] = state ? state.templateUrl : undefined;
-            resourceInputs["templateVersion"] = state ? state.templateVersion : undefined;
+            resourceInputs["accountIds"] = state?.accountIds;
+            resourceInputs["administrationRoleName"] = state?.administrationRoleName;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["executionRoleName"] = state?.executionRoleName;
+            resourceInputs["operationDescription"] = state?.operationDescription;
+            resourceInputs["operationPreferences"] = state?.operationPreferences;
+            resourceInputs["parameters"] = state?.parameters;
+            resourceInputs["regionIds"] = state?.regionIds;
+            resourceInputs["stackGroupId"] = state?.stackGroupId;
+            resourceInputs["stackGroupName"] = state?.stackGroupName;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["templateBody"] = state?.templateBody;
+            resourceInputs["templateUrl"] = state?.templateUrl;
+            resourceInputs["templateVersion"] = state?.templateVersion;
         } else {
             const args = argsOrState as StackGroupArgs | undefined;
-            if ((!args || args.stackGroupName === undefined) && !opts.urn) {
+            if (args?.stackGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'stackGroupName'");
             }
-            resourceInputs["accountIds"] = args ? args.accountIds : undefined;
-            resourceInputs["administrationRoleName"] = args ? args.administrationRoleName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["executionRoleName"] = args ? args.executionRoleName : undefined;
-            resourceInputs["operationDescription"] = args ? args.operationDescription : undefined;
-            resourceInputs["operationPreferences"] = args ? args.operationPreferences : undefined;
-            resourceInputs["parameters"] = args ? args.parameters : undefined;
-            resourceInputs["regionIds"] = args ? args.regionIds : undefined;
-            resourceInputs["stackGroupName"] = args ? args.stackGroupName : undefined;
-            resourceInputs["templateBody"] = args ? args.templateBody : undefined;
-            resourceInputs["templateUrl"] = args ? args.templateUrl : undefined;
-            resourceInputs["templateVersion"] = args ? args.templateVersion : undefined;
+            resourceInputs["accountIds"] = args?.accountIds;
+            resourceInputs["administrationRoleName"] = args?.administrationRoleName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["executionRoleName"] = args?.executionRoleName;
+            resourceInputs["operationDescription"] = args?.operationDescription;
+            resourceInputs["operationPreferences"] = args?.operationPreferences;
+            resourceInputs["parameters"] = args?.parameters;
+            resourceInputs["regionIds"] = args?.regionIds;
+            resourceInputs["stackGroupName"] = args?.stackGroupName;
+            resourceInputs["templateBody"] = args?.templateBody;
+            resourceInputs["templateUrl"] = args?.templateUrl;
+            resourceInputs["templateVersion"] = args?.templateVersion;
             resourceInputs["stackGroupId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

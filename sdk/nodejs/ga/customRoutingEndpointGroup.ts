@@ -94,27 +94,27 @@ export class CustomRoutingEndpointGroup extends pulumi.CustomResource {
     /**
      * The ID of the GA instance.
      */
-    public readonly acceleratorId!: pulumi.Output<string>;
+    declare public readonly acceleratorId: pulumi.Output<string>;
     /**
      * The name of the endpoint group.
      */
-    public readonly customRoutingEndpointGroupName!: pulumi.Output<string | undefined>;
+    declare public readonly customRoutingEndpointGroupName: pulumi.Output<string | undefined>;
     /**
      * The description of the endpoint group.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The ID of the region in which to create the endpoint group.
      */
-    public readonly endpointGroupRegion!: pulumi.Output<string>;
+    declare public readonly endpointGroupRegion: pulumi.Output<string>;
     /**
      * The ID of the custom routing listener.
      */
-    public readonly listenerId!: pulumi.Output<string>;
+    declare public readonly listenerId: pulumi.Output<string>;
     /**
      * The status of the Custom Routing Endpoint Group.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a CustomRoutingEndpointGroup resource with the given unique name, arguments, and options.
@@ -129,28 +129,28 @@ export class CustomRoutingEndpointGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomRoutingEndpointGroupState | undefined;
-            resourceInputs["acceleratorId"] = state ? state.acceleratorId : undefined;
-            resourceInputs["customRoutingEndpointGroupName"] = state ? state.customRoutingEndpointGroupName : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["endpointGroupRegion"] = state ? state.endpointGroupRegion : undefined;
-            resourceInputs["listenerId"] = state ? state.listenerId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["acceleratorId"] = state?.acceleratorId;
+            resourceInputs["customRoutingEndpointGroupName"] = state?.customRoutingEndpointGroupName;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["endpointGroupRegion"] = state?.endpointGroupRegion;
+            resourceInputs["listenerId"] = state?.listenerId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as CustomRoutingEndpointGroupArgs | undefined;
-            if ((!args || args.acceleratorId === undefined) && !opts.urn) {
+            if (args?.acceleratorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'acceleratorId'");
             }
-            if ((!args || args.endpointGroupRegion === undefined) && !opts.urn) {
+            if (args?.endpointGroupRegion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpointGroupRegion'");
             }
-            if ((!args || args.listenerId === undefined) && !opts.urn) {
+            if (args?.listenerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'listenerId'");
             }
-            resourceInputs["acceleratorId"] = args ? args.acceleratorId : undefined;
-            resourceInputs["customRoutingEndpointGroupName"] = args ? args.customRoutingEndpointGroupName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["endpointGroupRegion"] = args ? args.endpointGroupRegion : undefined;
-            resourceInputs["listenerId"] = args ? args.listenerId : undefined;
+            resourceInputs["acceleratorId"] = args?.acceleratorId;
+            resourceInputs["customRoutingEndpointGroupName"] = args?.customRoutingEndpointGroupName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["endpointGroupRegion"] = args?.endpointGroupRegion;
+            resourceInputs["listenerId"] = args?.listenerId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

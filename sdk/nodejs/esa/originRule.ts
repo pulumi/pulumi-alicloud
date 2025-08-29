@@ -77,59 +77,59 @@ export class OriginRule extends pulumi.CustomResource {
     /**
      * Back-to-source rule configuration ID
      */
-    public /*out*/ readonly configId!: pulumi.Output<number>;
+    declare public /*out*/ readonly configId: pulumi.Output<number>;
     /**
      * Overwrite the DNS resolution record of the origin request.
      */
-    public readonly dnsRecord!: pulumi.Output<string | undefined>;
+    declare public readonly dnsRecord: pulumi.Output<string | undefined>;
     /**
      * The HOST carried in the back-to-origin request.
      */
-    public readonly originHost!: pulumi.Output<string | undefined>;
+    declare public readonly originHost: pulumi.Output<string | undefined>;
     /**
      * The port of the origin station accessed when the HTTP protocol is used to return to the origin.
      */
-    public readonly originHttpPort!: pulumi.Output<string | undefined>;
+    declare public readonly originHttpPort: pulumi.Output<string | undefined>;
     /**
      * The port of the origin station accessed when the HTTPS protocol is used to return to the origin.
      */
-    public readonly originHttpsPort!: pulumi.Output<string | undefined>;
+    declare public readonly originHttpsPort: pulumi.Output<string | undefined>;
     /**
      * The protocol used by the back-to-origin request. Value range:
      */
-    public readonly originScheme!: pulumi.Output<string | undefined>;
+    declare public readonly originScheme: pulumi.Output<string | undefined>;
     /**
      * SNI carried in the back-to-origin request.
      */
-    public readonly originSni!: pulumi.Output<string | undefined>;
+    declare public readonly originSni: pulumi.Output<string | undefined>;
     /**
      * Use the range sharding method to download the file from the source. Value range:
      */
-    public readonly range!: pulumi.Output<string | undefined>;
+    declare public readonly range: pulumi.Output<string | undefined>;
     /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * - Match all incoming requests: value set to true
      * - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
-    public readonly rule!: pulumi.Output<string | undefined>;
+    declare public readonly rule: pulumi.Output<string | undefined>;
     /**
      * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      * - on: open.
      * - off: close.
      */
-    public readonly ruleEnable!: pulumi.Output<string | undefined>;
+    declare public readonly ruleEnable: pulumi.Output<string | undefined>;
     /**
      * Rule name. When adding global configuration, this parameter does not need to be set.
      */
-    public readonly ruleName!: pulumi.Output<string | undefined>;
+    declare public readonly ruleName: pulumi.Output<string | undefined>;
     /**
      * The site ID.
      */
-    public readonly siteId!: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<number>;
     /**
      * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
-    public readonly siteVersion!: pulumi.Output<number | undefined>;
+    declare public readonly siteVersion: pulumi.Output<number | undefined>;
 
     /**
      * Create a OriginRule resource with the given unique name, arguments, and options.
@@ -144,36 +144,36 @@ export class OriginRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OriginRuleState | undefined;
-            resourceInputs["configId"] = state ? state.configId : undefined;
-            resourceInputs["dnsRecord"] = state ? state.dnsRecord : undefined;
-            resourceInputs["originHost"] = state ? state.originHost : undefined;
-            resourceInputs["originHttpPort"] = state ? state.originHttpPort : undefined;
-            resourceInputs["originHttpsPort"] = state ? state.originHttpsPort : undefined;
-            resourceInputs["originScheme"] = state ? state.originScheme : undefined;
-            resourceInputs["originSni"] = state ? state.originSni : undefined;
-            resourceInputs["range"] = state ? state.range : undefined;
-            resourceInputs["rule"] = state ? state.rule : undefined;
-            resourceInputs["ruleEnable"] = state ? state.ruleEnable : undefined;
-            resourceInputs["ruleName"] = state ? state.ruleName : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["siteVersion"] = state ? state.siteVersion : undefined;
+            resourceInputs["configId"] = state?.configId;
+            resourceInputs["dnsRecord"] = state?.dnsRecord;
+            resourceInputs["originHost"] = state?.originHost;
+            resourceInputs["originHttpPort"] = state?.originHttpPort;
+            resourceInputs["originHttpsPort"] = state?.originHttpsPort;
+            resourceInputs["originScheme"] = state?.originScheme;
+            resourceInputs["originSni"] = state?.originSni;
+            resourceInputs["range"] = state?.range;
+            resourceInputs["rule"] = state?.rule;
+            resourceInputs["ruleEnable"] = state?.ruleEnable;
+            resourceInputs["ruleName"] = state?.ruleName;
+            resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["siteVersion"] = state?.siteVersion;
         } else {
             const args = argsOrState as OriginRuleArgs | undefined;
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            resourceInputs["dnsRecord"] = args ? args.dnsRecord : undefined;
-            resourceInputs["originHost"] = args ? args.originHost : undefined;
-            resourceInputs["originHttpPort"] = args ? args.originHttpPort : undefined;
-            resourceInputs["originHttpsPort"] = args ? args.originHttpsPort : undefined;
-            resourceInputs["originScheme"] = args ? args.originScheme : undefined;
-            resourceInputs["originSni"] = args ? args.originSni : undefined;
-            resourceInputs["range"] = args ? args.range : undefined;
-            resourceInputs["rule"] = args ? args.rule : undefined;
-            resourceInputs["ruleEnable"] = args ? args.ruleEnable : undefined;
-            resourceInputs["ruleName"] = args ? args.ruleName : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
-            resourceInputs["siteVersion"] = args ? args.siteVersion : undefined;
+            resourceInputs["dnsRecord"] = args?.dnsRecord;
+            resourceInputs["originHost"] = args?.originHost;
+            resourceInputs["originHttpPort"] = args?.originHttpPort;
+            resourceInputs["originHttpsPort"] = args?.originHttpsPort;
+            resourceInputs["originScheme"] = args?.originScheme;
+            resourceInputs["originSni"] = args?.originSni;
+            resourceInputs["range"] = args?.range;
+            resourceInputs["rule"] = args?.rule;
+            resourceInputs["ruleEnable"] = args?.ruleEnable;
+            resourceInputs["ruleName"] = args?.ruleName;
+            resourceInputs["siteId"] = args?.siteId;
+            resourceInputs["siteVersion"] = args?.siteVersion;
             resourceInputs["configId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

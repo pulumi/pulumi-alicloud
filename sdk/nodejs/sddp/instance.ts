@@ -72,87 +72,87 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Whether the required RAM authorization is configured.
      */
-    public /*out*/ readonly authed!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly authed: pulumi.Output<boolean>;
     /**
      * The dataphin. Valid values: `yes`,`no`.
      */
-    public readonly dataphin!: pulumi.Output<string | undefined>;
+    declare public readonly dataphin: pulumi.Output<string | undefined>;
     /**
      * The dataphin count. Valid values: 1 to 20.
      */
-    public readonly dataphinCount!: pulumi.Output<string | undefined>;
+    declare public readonly dataphinCount: pulumi.Output<string | undefined>;
     /**
      * The number of instances.
      */
-    public /*out*/ readonly instanceNum!: pulumi.Output<string>;
+    declare public /*out*/ readonly instanceNum: pulumi.Output<string>;
     /**
      * The logistics.
      */
-    public readonly logistics!: pulumi.Output<string | undefined>;
+    declare public readonly logistics: pulumi.Output<string | undefined>;
     /**
      * The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute a update operation.
      */
-    public readonly modifyType!: pulumi.Output<string | undefined>;
+    declare public readonly modifyType: pulumi.Output<string | undefined>;
     /**
      * Whether the authorized MaxCompute (ODPS) assets.
      */
-    public /*out*/ readonly odpsSet!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly odpsSet: pulumi.Output<boolean>;
     /**
      * Whether the authorized oss assets.
      */
-    public /*out*/ readonly ossBucketSet!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly ossBucketSet: pulumi.Output<boolean>;
     /**
      * The OSS storage capacity.
      */
-    public readonly ossSize!: pulumi.Output<string>;
+    declare public readonly ossSize: pulumi.Output<string>;
     /**
      * The payment type of the resource. Valid values: `Subscription`.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * The Prepaid period. Valid values: `1`, `2`, `3`, `6`,`12`,`24`.
      */
-    public readonly period!: pulumi.Output<number>;
+    declare public readonly period: pulumi.Output<number>;
     /**
      * Whether the authorized rds assets.
      */
-    public /*out*/ readonly rdsSet!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly rdsSet: pulumi.Output<boolean>;
     /**
      * The remaining days of the protection period of the assets in the current login account.
      */
-    public /*out*/ readonly remainDays!: pulumi.Output<string>;
+    declare public /*out*/ readonly remainDays: pulumi.Output<string>;
     /**
      * Automatic renewal period. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`,
      */
-    public readonly renewPeriod!: pulumi.Output<number | undefined>;
+    declare public readonly renewPeriod: pulumi.Output<number | undefined>;
     /**
      * Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
      */
-    public readonly renewalStatus!: pulumi.Output<string>;
+    declare public readonly renewalStatus: pulumi.Output<string>;
     /**
      * Whether to use the database. Valid values:`yes`,`no`.
      */
-    public readonly sdCbool!: pulumi.Output<string>;
+    declare public readonly sdCbool: pulumi.Output<string>;
     /**
      * The number of instances.
      */
-    public readonly sdc!: pulumi.Output<string>;
+    declare public readonly sdc: pulumi.Output<string>;
     /**
      * The sddp version. Valid values: `versionAudit`,`versionCompany`,`versionDlp`.
      */
-    public readonly sddpVersion!: pulumi.Output<string>;
+    declare public readonly sddpVersion: pulumi.Output<string>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Whether to use OSS. Valid values: `yes`,`no`.
      */
-    public readonly udCbool!: pulumi.Output<string>;
+    declare public readonly udCbool: pulumi.Output<string>;
     /**
      * OSS Size.
      */
-    public readonly udc!: pulumi.Output<string>;
+    declare public readonly udc: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -167,64 +167,64 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["authed"] = state ? state.authed : undefined;
-            resourceInputs["dataphin"] = state ? state.dataphin : undefined;
-            resourceInputs["dataphinCount"] = state ? state.dataphinCount : undefined;
-            resourceInputs["instanceNum"] = state ? state.instanceNum : undefined;
-            resourceInputs["logistics"] = state ? state.logistics : undefined;
-            resourceInputs["modifyType"] = state ? state.modifyType : undefined;
-            resourceInputs["odpsSet"] = state ? state.odpsSet : undefined;
-            resourceInputs["ossBucketSet"] = state ? state.ossBucketSet : undefined;
-            resourceInputs["ossSize"] = state ? state.ossSize : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["rdsSet"] = state ? state.rdsSet : undefined;
-            resourceInputs["remainDays"] = state ? state.remainDays : undefined;
-            resourceInputs["renewPeriod"] = state ? state.renewPeriod : undefined;
-            resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
-            resourceInputs["sdCbool"] = state ? state.sdCbool : undefined;
-            resourceInputs["sdc"] = state ? state.sdc : undefined;
-            resourceInputs["sddpVersion"] = state ? state.sddpVersion : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["udCbool"] = state ? state.udCbool : undefined;
-            resourceInputs["udc"] = state ? state.udc : undefined;
+            resourceInputs["authed"] = state?.authed;
+            resourceInputs["dataphin"] = state?.dataphin;
+            resourceInputs["dataphinCount"] = state?.dataphinCount;
+            resourceInputs["instanceNum"] = state?.instanceNum;
+            resourceInputs["logistics"] = state?.logistics;
+            resourceInputs["modifyType"] = state?.modifyType;
+            resourceInputs["odpsSet"] = state?.odpsSet;
+            resourceInputs["ossBucketSet"] = state?.ossBucketSet;
+            resourceInputs["ossSize"] = state?.ossSize;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["rdsSet"] = state?.rdsSet;
+            resourceInputs["remainDays"] = state?.remainDays;
+            resourceInputs["renewPeriod"] = state?.renewPeriod;
+            resourceInputs["renewalStatus"] = state?.renewalStatus;
+            resourceInputs["sdCbool"] = state?.sdCbool;
+            resourceInputs["sdc"] = state?.sdc;
+            resourceInputs["sddpVersion"] = state?.sddpVersion;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["udCbool"] = state?.udCbool;
+            resourceInputs["udc"] = state?.udc;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.paymentType === undefined) && !opts.urn) {
+            if (args?.paymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            if ((!args || args.period === undefined) && !opts.urn) {
+            if (args?.period === undefined && !opts.urn) {
                 throw new Error("Missing required property 'period'");
             }
-            if ((!args || args.sdCbool === undefined) && !opts.urn) {
+            if (args?.sdCbool === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sdCbool'");
             }
-            if ((!args || args.sdc === undefined) && !opts.urn) {
+            if (args?.sdc === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sdc'");
             }
-            if ((!args || args.sddpVersion === undefined) && !opts.urn) {
+            if (args?.sddpVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sddpVersion'");
             }
-            if ((!args || args.udCbool === undefined) && !opts.urn) {
+            if (args?.udCbool === undefined && !opts.urn) {
                 throw new Error("Missing required property 'udCbool'");
             }
-            if ((!args || args.udc === undefined) && !opts.urn) {
+            if (args?.udc === undefined && !opts.urn) {
                 throw new Error("Missing required property 'udc'");
             }
-            resourceInputs["dataphin"] = args ? args.dataphin : undefined;
-            resourceInputs["dataphinCount"] = args ? args.dataphinCount : undefined;
-            resourceInputs["logistics"] = args ? args.logistics : undefined;
-            resourceInputs["modifyType"] = args ? args.modifyType : undefined;
-            resourceInputs["ossSize"] = args ? args.ossSize : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["renewPeriod"] = args ? args.renewPeriod : undefined;
-            resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
-            resourceInputs["sdCbool"] = args ? args.sdCbool : undefined;
-            resourceInputs["sdc"] = args ? args.sdc : undefined;
-            resourceInputs["sddpVersion"] = args ? args.sddpVersion : undefined;
-            resourceInputs["udCbool"] = args ? args.udCbool : undefined;
-            resourceInputs["udc"] = args ? args.udc : undefined;
+            resourceInputs["dataphin"] = args?.dataphin;
+            resourceInputs["dataphinCount"] = args?.dataphinCount;
+            resourceInputs["logistics"] = args?.logistics;
+            resourceInputs["modifyType"] = args?.modifyType;
+            resourceInputs["ossSize"] = args?.ossSize;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["renewPeriod"] = args?.renewPeriod;
+            resourceInputs["renewalStatus"] = args?.renewalStatus;
+            resourceInputs["sdCbool"] = args?.sdCbool;
+            resourceInputs["sdc"] = args?.sdc;
+            resourceInputs["sddpVersion"] = args?.sddpVersion;
+            resourceInputs["udCbool"] = args?.udCbool;
+            resourceInputs["udc"] = args?.udc;
             resourceInputs["authed"] = undefined /*out*/;
             resourceInputs["instanceNum"] = undefined /*out*/;
             resourceInputs["odpsSet"] = undefined /*out*/;

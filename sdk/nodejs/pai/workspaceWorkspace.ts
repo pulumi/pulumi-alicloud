@@ -68,32 +68,32 @@ export class WorkspaceWorkspace extends pulumi.CustomResource {
     /**
      * The UTC time when the workspace is created. The time format is ISO8601.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Workspace description, no more than 80 characters.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * It is recommended that you name the workspace based on the business attribute to identify the purpose of the workspace. If not configured, the default value is the workspace name.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * Environments contained in the workspace:
      * - Simple mode only production environment (prod).
      * - Standard mode includes development environment (dev) and production environment (prod).
      */
-    public readonly envTypes!: pulumi.Output<string[]>;
+    declare public readonly envTypes: pulumi.Output<string[]>;
     /**
      * Workspace state, possible values:
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The workspace name. The format is as follows:
      * - 3 to 23 characters in length and can contain letters, underscores, or numbers.
      * - Must start with a large or small letter.
      * - Unique in the current region.
      */
-    public readonly workspaceName!: pulumi.Output<string>;
+    declare public readonly workspaceName: pulumi.Output<string>;
 
     /**
      * Create a WorkspaceWorkspace resource with the given unique name, arguments, and options.
@@ -108,27 +108,27 @@ export class WorkspaceWorkspace extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkspaceWorkspaceState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["envTypes"] = state ? state.envTypes : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["workspaceName"] = state ? state.workspaceName : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["envTypes"] = state?.envTypes;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["workspaceName"] = state?.workspaceName;
         } else {
             const args = argsOrState as WorkspaceWorkspaceArgs | undefined;
-            if ((!args || args.description === undefined) && !opts.urn) {
+            if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.envTypes === undefined) && !opts.urn) {
+            if (args?.envTypes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'envTypes'");
             }
-            if ((!args || args.workspaceName === undefined) && !opts.urn) {
+            if (args?.workspaceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["envTypes"] = args ? args.envTypes : undefined;
-            resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["envTypes"] = args?.envTypes;
+            resourceInputs["workspaceName"] = args?.workspaceName;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

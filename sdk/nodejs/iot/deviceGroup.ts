@@ -63,19 +63,19 @@ export class DeviceGroup extends pulumi.CustomResource {
     /**
      * The GroupDesc of the device group.
      */
-    public readonly groupDesc!: pulumi.Output<string | undefined>;
+    declare public readonly groupDesc: pulumi.Output<string | undefined>;
     /**
      * The GroupName of the device group.
      */
-    public readonly groupName!: pulumi.Output<string>;
+    declare public readonly groupName: pulumi.Output<string>;
     /**
      * The id of the Iot Instance.
      */
-    public readonly iotInstanceId!: pulumi.Output<string | undefined>;
+    declare public readonly iotInstanceId: pulumi.Output<string | undefined>;
     /**
      * The id of the SuperGroup.
      */
-    public readonly superGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly superGroupId: pulumi.Output<string | undefined>;
 
     /**
      * Create a DeviceGroup resource with the given unique name, arguments, and options.
@@ -90,19 +90,19 @@ export class DeviceGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DeviceGroupState | undefined;
-            resourceInputs["groupDesc"] = state ? state.groupDesc : undefined;
-            resourceInputs["groupName"] = state ? state.groupName : undefined;
-            resourceInputs["iotInstanceId"] = state ? state.iotInstanceId : undefined;
-            resourceInputs["superGroupId"] = state ? state.superGroupId : undefined;
+            resourceInputs["groupDesc"] = state?.groupDesc;
+            resourceInputs["groupName"] = state?.groupName;
+            resourceInputs["iotInstanceId"] = state?.iotInstanceId;
+            resourceInputs["superGroupId"] = state?.superGroupId;
         } else {
             const args = argsOrState as DeviceGroupArgs | undefined;
-            if ((!args || args.groupName === undefined) && !opts.urn) {
+            if (args?.groupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupName'");
             }
-            resourceInputs["groupDesc"] = args ? args.groupDesc : undefined;
-            resourceInputs["groupName"] = args ? args.groupName : undefined;
-            resourceInputs["iotInstanceId"] = args ? args.iotInstanceId : undefined;
-            resourceInputs["superGroupId"] = args ? args.superGroupId : undefined;
+            resourceInputs["groupDesc"] = args?.groupDesc;
+            resourceInputs["groupName"] = args?.groupName;
+            resourceInputs["iotInstanceId"] = args?.iotInstanceId;
+            resourceInputs["superGroupId"] = args?.superGroupId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DeviceGroup.__pulumiType, name, resourceInputs, opts);

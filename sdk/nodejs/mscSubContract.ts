@@ -66,21 +66,21 @@ export class MscSubContract extends pulumi.CustomResource {
     /**
      * The User's Contact Name. **Note:** The name must be 2 to 12 characters in length.
      */
-    public readonly contactName!: pulumi.Output<string>;
+    declare public readonly contactName: pulumi.Output<string>;
     /**
      * The User's Contact Email Address.
      */
-    public readonly email!: pulumi.Output<string>;
+    declare public readonly email: pulumi.Output<string>;
     /**
      * The User's Telephone.
      */
-    public readonly mobile!: pulumi.Output<string>;
+    declare public readonly mobile: pulumi.Output<string>;
     /**
      * The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
      *
      * > **NOTE:** When the user creates a contact, the user should use `alicloud.getMscSubContactVerificationMessage` to receive the verification message and confirm it.
      */
-    public readonly position!: pulumi.Output<string>;
+    declare public readonly position: pulumi.Output<string>;
 
     /**
      * Create a MscSubContract resource with the given unique name, arguments, and options.
@@ -95,28 +95,28 @@ export class MscSubContract extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MscSubContractState | undefined;
-            resourceInputs["contactName"] = state ? state.contactName : undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["mobile"] = state ? state.mobile : undefined;
-            resourceInputs["position"] = state ? state.position : undefined;
+            resourceInputs["contactName"] = state?.contactName;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["mobile"] = state?.mobile;
+            resourceInputs["position"] = state?.position;
         } else {
             const args = argsOrState as MscSubContractArgs | undefined;
-            if ((!args || args.contactName === undefined) && !opts.urn) {
+            if (args?.contactName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'contactName'");
             }
-            if ((!args || args.email === undefined) && !opts.urn) {
+            if (args?.email === undefined && !opts.urn) {
                 throw new Error("Missing required property 'email'");
             }
-            if ((!args || args.mobile === undefined) && !opts.urn) {
+            if (args?.mobile === undefined && !opts.urn) {
                 throw new Error("Missing required property 'mobile'");
             }
-            if ((!args || args.position === undefined) && !opts.urn) {
+            if (args?.position === undefined && !opts.urn) {
                 throw new Error("Missing required property 'position'");
             }
-            resourceInputs["contactName"] = args ? args.contactName : undefined;
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["mobile"] = args ? args.mobile : undefined;
-            resourceInputs["position"] = args ? args.position : undefined;
+            resourceInputs["contactName"] = args?.contactName;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["mobile"] = args?.mobile;
+            resourceInputs["position"] = args?.position;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MscSubContract.__pulumiType, name, resourceInputs, opts);

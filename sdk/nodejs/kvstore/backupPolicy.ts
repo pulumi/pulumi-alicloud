@@ -100,15 +100,15 @@ export class BackupPolicy extends pulumi.CustomResource {
     /**
      * Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
      */
-    public readonly backupPeriods!: pulumi.Output<string[]>;
+    declare public readonly backupPeriods: pulumi.Output<string[]>;
     /**
      * Backup time, in the format of HH:mmZ- HH:mm Z.
      */
-    public readonly backupTime!: pulumi.Output<string | undefined>;
+    declare public readonly backupTime: pulumi.Output<string | undefined>;
     /**
      * The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
 
     /**
      * Create a BackupPolicy resource with the given unique name, arguments, and options.
@@ -123,17 +123,17 @@ export class BackupPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackupPolicyState | undefined;
-            resourceInputs["backupPeriods"] = state ? state.backupPeriods : undefined;
-            resourceInputs["backupTime"] = state ? state.backupTime : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["backupPeriods"] = state?.backupPeriods;
+            resourceInputs["backupTime"] = state?.backupTime;
+            resourceInputs["instanceId"] = state?.instanceId;
         } else {
             const args = argsOrState as BackupPolicyArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["backupPeriods"] = args ? args.backupPeriods : undefined;
-            resourceInputs["backupTime"] = args ? args.backupTime : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["backupPeriods"] = args?.backupPeriods;
+            resourceInputs["backupTime"] = args?.backupTime;
+            resourceInputs["instanceId"] = args?.instanceId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BackupPolicy.__pulumiType, name, resourceInputs, opts);

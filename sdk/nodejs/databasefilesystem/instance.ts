@@ -73,54 +73,54 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The number of CPU cores and the upper limit of memory used by the database file storage instance.
      */
-    public readonly advancedFeatures!: pulumi.Output<string>;
+    declare public readonly advancedFeatures: pulumi.Output<string>;
     /**
      * Category of database file system.
      */
-    public readonly category!: pulumi.Output<string>;
+    declare public readonly category: pulumi.Output<string>;
     /**
      * The creation time of the resource.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Whether to delete the original snapshot after creating DBFS using the snapshot.
      */
-    public readonly deleteSnapshot!: pulumi.Output<boolean | undefined>;
+    declare public readonly deleteSnapshot: pulumi.Output<boolean | undefined>;
     /**
      * The collection of ECS instances mounted to the Database file system. See `ecsList` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecsList` below.
      *
      * @deprecated Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
      */
-    public readonly ecsLists!: pulumi.Output<outputs.databasefilesystem.InstanceEcsList[] | undefined>;
+    declare public readonly ecsLists: pulumi.Output<outputs.databasefilesystem.InstanceEcsList[] | undefined>;
     /**
      * Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
      */
-    public readonly enableRaid!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableRaid: pulumi.Output<boolean | undefined>;
     /**
      * Whether to encrypt DBFS.Valid values: true or false. Default value: false.
      */
-    public readonly encryption!: pulumi.Output<boolean | undefined>;
+    declare public readonly encryption: pulumi.Output<boolean | undefined>;
     /**
      * Database file system name.
      */
-    public readonly fsName!: pulumi.Output<string>;
+    declare public readonly fsName: pulumi.Output<string>;
     /**
      * . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
      *
      * @deprecated Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.
      */
-    public readonly instanceName!: pulumi.Output<string>;
+    declare public readonly instanceName: pulumi.Output<string>;
     /**
      * Instance type. Value range:
      * - dbfs.small
      * - dbfs.medium
      * - dbfs.large (default)
      */
-    public readonly instanceType!: pulumi.Output<string | undefined>;
+    declare public readonly instanceType: pulumi.Output<string | undefined>;
     /**
      * The ID of the KMS key used by DBFS.
      */
-    public readonly kmsKeyId!: pulumi.Output<string | undefined>;
+    declare public readonly kmsKeyId: pulumi.Output<string | undefined>;
     /**
      * When you create a DBFS instance, set the performance level of the DBFS instance. Value range:
      * - PL0: single disk maximum random read-write IOPS 10000
@@ -128,40 +128,40 @@ export class Instance extends pulumi.CustomResource {
      * - PL2: single disk maximum random read-write IOPS 100000
      * - PL3: single disk maximum random read-write IOPS 1 million.
      */
-    public readonly performanceLevel!: pulumi.Output<string>;
+    declare public readonly performanceLevel: pulumi.Output<string>;
     /**
      * Number of strips. Required when the EnableRaid parameter is true.Value range: Currently, only 8 stripes are supported.
      */
-    public readonly raidStripeUnitNumber!: pulumi.Output<number | undefined>;
+    declare public readonly raidStripeUnitNumber: pulumi.Output<number | undefined>;
     /**
      * Size of database file system, unit GiB.
      */
-    public readonly size!: pulumi.Output<number>;
+    declare public readonly size: pulumi.Output<number>;
     /**
      * The ID of the snapshot used to create the DBFS instance.
      */
-    public readonly snapshotId!: pulumi.Output<string>;
+    declare public readonly snapshotId: pulumi.Output<string>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The usage scenario of DBFS. Value range:
      * - MySQL 5.7
      * - PostgreSQL
      * - MongoDB.
      */
-    public readonly usedScene!: pulumi.Output<string | undefined>;
+    declare public readonly usedScene: pulumi.Output<string | undefined>;
     /**
      * The ID of the zone to which the database file system belongs.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -176,53 +176,53 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["advancedFeatures"] = state ? state.advancedFeatures : undefined;
-            resourceInputs["category"] = state ? state.category : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["deleteSnapshot"] = state ? state.deleteSnapshot : undefined;
-            resourceInputs["ecsLists"] = state ? state.ecsLists : undefined;
-            resourceInputs["enableRaid"] = state ? state.enableRaid : undefined;
-            resourceInputs["encryption"] = state ? state.encryption : undefined;
-            resourceInputs["fsName"] = state ? state.fsName : undefined;
-            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
-            resourceInputs["performanceLevel"] = state ? state.performanceLevel : undefined;
-            resourceInputs["raidStripeUnitNumber"] = state ? state.raidStripeUnitNumber : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["snapshotId"] = state ? state.snapshotId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["usedScene"] = state ? state.usedScene : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["advancedFeatures"] = state?.advancedFeatures;
+            resourceInputs["category"] = state?.category;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deleteSnapshot"] = state?.deleteSnapshot;
+            resourceInputs["ecsLists"] = state?.ecsLists;
+            resourceInputs["enableRaid"] = state?.enableRaid;
+            resourceInputs["encryption"] = state?.encryption;
+            resourceInputs["fsName"] = state?.fsName;
+            resourceInputs["instanceName"] = state?.instanceName;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["kmsKeyId"] = state?.kmsKeyId;
+            resourceInputs["performanceLevel"] = state?.performanceLevel;
+            resourceInputs["raidStripeUnitNumber"] = state?.raidStripeUnitNumber;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["snapshotId"] = state?.snapshotId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["usedScene"] = state?.usedScene;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.category === undefined) && !opts.urn) {
+            if (args?.category === undefined && !opts.urn) {
                 throw new Error("Missing required property 'category'");
             }
-            if ((!args || args.size === undefined) && !opts.urn) {
+            if (args?.size === undefined && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["advancedFeatures"] = args ? args.advancedFeatures : undefined;
-            resourceInputs["category"] = args ? args.category : undefined;
-            resourceInputs["deleteSnapshot"] = args ? args.deleteSnapshot : undefined;
-            resourceInputs["ecsLists"] = args ? args.ecsLists : undefined;
-            resourceInputs["enableRaid"] = args ? args.enableRaid : undefined;
-            resourceInputs["encryption"] = args ? args.encryption : undefined;
-            resourceInputs["fsName"] = args ? args.fsName : undefined;
-            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
-            resourceInputs["performanceLevel"] = args ? args.performanceLevel : undefined;
-            resourceInputs["raidStripeUnitNumber"] = args ? args.raidStripeUnitNumber : undefined;
-            resourceInputs["size"] = args ? args.size : undefined;
-            resourceInputs["snapshotId"] = args ? args.snapshotId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["usedScene"] = args ? args.usedScene : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["advancedFeatures"] = args?.advancedFeatures;
+            resourceInputs["category"] = args?.category;
+            resourceInputs["deleteSnapshot"] = args?.deleteSnapshot;
+            resourceInputs["ecsLists"] = args?.ecsLists;
+            resourceInputs["enableRaid"] = args?.enableRaid;
+            resourceInputs["encryption"] = args?.encryption;
+            resourceInputs["fsName"] = args?.fsName;
+            resourceInputs["instanceName"] = args?.instanceName;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["kmsKeyId"] = args?.kmsKeyId;
+            resourceInputs["performanceLevel"] = args?.performanceLevel;
+            resourceInputs["raidStripeUnitNumber"] = args?.raidStripeUnitNumber;
+            resourceInputs["size"] = args?.size;
+            resourceInputs["snapshotId"] = args?.snapshotId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["usedScene"] = args?.usedScene;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

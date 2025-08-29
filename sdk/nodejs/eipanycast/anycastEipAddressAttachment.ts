@@ -194,43 +194,43 @@ export class AnycastEipAddressAttachment extends pulumi.CustomResource {
     /**
      * The ID of the Anycast EIP instance.
      */
-    public readonly anycastId!: pulumi.Output<string>;
+    declare public readonly anycastId: pulumi.Output<string>;
     /**
      * Binding mode, value:
      * - **Default**: The Default mode. The cloud resource instance to be bound is set as the Default origin.
      * - **Normal**: In Normal mode, the cloud resource instance to be bound is set to the common source station.
      */
-    public readonly associationMode!: pulumi.Output<string>;
+    declare public readonly associationMode: pulumi.Output<string>;
     /**
      * The ID of the cloud resource instance to be bound.
      */
-    public readonly bindInstanceId!: pulumi.Output<string>;
+    declare public readonly bindInstanceId: pulumi.Output<string>;
     /**
      * The region ID of the cloud resource instance to be bound.You can only bind cloud resource instances in some regions. You can call the describeanystserverregions operation to obtain the region ID of the cloud resource instances that can be bound.
      */
-    public readonly bindInstanceRegionId!: pulumi.Output<string>;
+    declare public readonly bindInstanceRegionId: pulumi.Output<string>;
     /**
      * The type of the cloud resource instance to be bound. Value:
      * - **SlbInstance**: a private network SLB instance.
      * - **NetworkInterface**: ENI.
      */
-    public readonly bindInstanceType!: pulumi.Output<string>;
+    declare public readonly bindInstanceType: pulumi.Output<string>;
     /**
      * Binding time.Time is expressed according to ISO8601 standard and UTC time is used. The format is: 'YYYY-MM-DDThh:mm:ssZ'.
      */
-    public /*out*/ readonly bindTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly bindTime: pulumi.Output<string>;
     /**
      * The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `popLocations` below.
      */
-    public readonly popLocations!: pulumi.Output<outputs.eipanycast.AnycastEipAddressAttachmentPopLocation[] | undefined>;
+    declare public readonly popLocations: pulumi.Output<outputs.eipanycast.AnycastEipAddressAttachmentPopLocation[] | undefined>;
     /**
      * The secondary private IP address of the elastic network card to be bound.This parameter takes effect only when **BindInstanceType** is set to **NetworkInterface. When you do not enter, this parameter is the primary private IP of the ENI by default.
      */
-    public readonly privateIpAddress!: pulumi.Output<string | undefined>;
+    declare public readonly privateIpAddress: pulumi.Output<string | undefined>;
     /**
      * The status of the bound cloud resource instance. Value:BINDING: BINDING.Bound: Bound.UNBINDING: UNBINDING.DELETED: DELETED.MODIFYING: being modified.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a AnycastEipAddressAttachment resource with the given unique name, arguments, and options.
@@ -245,36 +245,36 @@ export class AnycastEipAddressAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AnycastEipAddressAttachmentState | undefined;
-            resourceInputs["anycastId"] = state ? state.anycastId : undefined;
-            resourceInputs["associationMode"] = state ? state.associationMode : undefined;
-            resourceInputs["bindInstanceId"] = state ? state.bindInstanceId : undefined;
-            resourceInputs["bindInstanceRegionId"] = state ? state.bindInstanceRegionId : undefined;
-            resourceInputs["bindInstanceType"] = state ? state.bindInstanceType : undefined;
-            resourceInputs["bindTime"] = state ? state.bindTime : undefined;
-            resourceInputs["popLocations"] = state ? state.popLocations : undefined;
-            resourceInputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["anycastId"] = state?.anycastId;
+            resourceInputs["associationMode"] = state?.associationMode;
+            resourceInputs["bindInstanceId"] = state?.bindInstanceId;
+            resourceInputs["bindInstanceRegionId"] = state?.bindInstanceRegionId;
+            resourceInputs["bindInstanceType"] = state?.bindInstanceType;
+            resourceInputs["bindTime"] = state?.bindTime;
+            resourceInputs["popLocations"] = state?.popLocations;
+            resourceInputs["privateIpAddress"] = state?.privateIpAddress;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as AnycastEipAddressAttachmentArgs | undefined;
-            if ((!args || args.anycastId === undefined) && !opts.urn) {
+            if (args?.anycastId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'anycastId'");
             }
-            if ((!args || args.bindInstanceId === undefined) && !opts.urn) {
+            if (args?.bindInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bindInstanceId'");
             }
-            if ((!args || args.bindInstanceRegionId === undefined) && !opts.urn) {
+            if (args?.bindInstanceRegionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bindInstanceRegionId'");
             }
-            if ((!args || args.bindInstanceType === undefined) && !opts.urn) {
+            if (args?.bindInstanceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bindInstanceType'");
             }
-            resourceInputs["anycastId"] = args ? args.anycastId : undefined;
-            resourceInputs["associationMode"] = args ? args.associationMode : undefined;
-            resourceInputs["bindInstanceId"] = args ? args.bindInstanceId : undefined;
-            resourceInputs["bindInstanceRegionId"] = args ? args.bindInstanceRegionId : undefined;
-            resourceInputs["bindInstanceType"] = args ? args.bindInstanceType : undefined;
-            resourceInputs["popLocations"] = args ? args.popLocations : undefined;
-            resourceInputs["privateIpAddress"] = args ? args.privateIpAddress : undefined;
+            resourceInputs["anycastId"] = args?.anycastId;
+            resourceInputs["associationMode"] = args?.associationMode;
+            resourceInputs["bindInstanceId"] = args?.bindInstanceId;
+            resourceInputs["bindInstanceRegionId"] = args?.bindInstanceRegionId;
+            resourceInputs["bindInstanceType"] = args?.bindInstanceType;
+            resourceInputs["popLocations"] = args?.popLocations;
+            resourceInputs["privateIpAddress"] = args?.privateIpAddress;
             resourceInputs["bindTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

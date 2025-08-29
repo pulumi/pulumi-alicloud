@@ -72,27 +72,27 @@ export class LoginProfile extends pulumi.CustomResource {
     /**
      * Creation time.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Specifies whether to forcefully enable multi-factor authentication (MFA) for the RAM user. Valid values:
      * - true: forcefully enables MFA for the RAM user. The RAM user must bind an MFA device upon the next logon.
      * - false (default): does not forcefully enable MFA for the RAM user.
      */
-    public readonly mfaBindRequired!: pulumi.Output<boolean>;
+    declare public readonly mfaBindRequired: pulumi.Output<boolean>;
     /**
      * The password must meet the Password strength requirements. For more information about password strength setting requirements, see [GetPasswordPolicy](https://help.aliyun.com/document_detail/2337691.html).
      */
-    public readonly password!: pulumi.Output<string>;
+    declare public readonly password: pulumi.Output<string>;
     /**
      * Whether the user must reset the password at the next logon. Value:
      * - true
      * - false (default)
      */
-    public readonly passwordResetRequired!: pulumi.Output<boolean | undefined>;
+    declare public readonly passwordResetRequired: pulumi.Output<boolean | undefined>;
     /**
      * The user name.
      */
-    public readonly userName!: pulumi.Output<string>;
+    declare public readonly userName: pulumi.Output<string>;
 
     /**
      * Create a LoginProfile resource with the given unique name, arguments, and options.
@@ -107,23 +107,23 @@ export class LoginProfile extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoginProfileState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["mfaBindRequired"] = state ? state.mfaBindRequired : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["passwordResetRequired"] = state ? state.passwordResetRequired : undefined;
-            resourceInputs["userName"] = state ? state.userName : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["mfaBindRequired"] = state?.mfaBindRequired;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["passwordResetRequired"] = state?.passwordResetRequired;
+            resourceInputs["userName"] = state?.userName;
         } else {
             const args = argsOrState as LoginProfileArgs | undefined;
-            if ((!args || args.password === undefined) && !opts.urn) {
+            if (args?.password === undefined && !opts.urn) {
                 throw new Error("Missing required property 'password'");
             }
-            if ((!args || args.userName === undefined) && !opts.urn) {
+            if (args?.userName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userName'");
             }
-            resourceInputs["mfaBindRequired"] = args ? args.mfaBindRequired : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
-            resourceInputs["passwordResetRequired"] = args ? args.passwordResetRequired : undefined;
-            resourceInputs["userName"] = args ? args.userName : undefined;
+            resourceInputs["mfaBindRequired"] = args?.mfaBindRequired;
+            resourceInputs["password"] = args?.password;
+            resourceInputs["passwordResetRequired"] = args?.passwordResetRequired;
+            resourceInputs["userName"] = args?.userName;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

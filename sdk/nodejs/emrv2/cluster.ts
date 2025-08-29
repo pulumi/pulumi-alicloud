@@ -188,67 +188,67 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The application configurations of EMR cluster. See `applicationConfigs` below.
      */
-    public readonly applicationConfigs!: pulumi.Output<outputs.emrv2.ClusterApplicationConfig[] | undefined>;
+    declare public readonly applicationConfigs: pulumi.Output<outputs.emrv2.ClusterApplicationConfig[] | undefined>;
     /**
      * The applications of EMR cluster to be installed, e.g. HADOOP-COMMON, HDFS, YARN, HIVE, SPARK2, SPARK3, ZOOKEEPER etc. You can find all valid applications in emr web console.
      */
-    public readonly applications!: pulumi.Output<string[]>;
+    declare public readonly applications: pulumi.Output<string[]>;
     /**
      * The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrapScripts` below.
      */
-    public readonly bootstrapScripts!: pulumi.Output<outputs.emrv2.ClusterBootstrapScript[] | undefined>;
+    declare public readonly bootstrapScripts: pulumi.Output<outputs.emrv2.ClusterBootstrapScript[] | undefined>;
     /**
      * The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
      */
-    public readonly clusterName!: pulumi.Output<string>;
+    declare public readonly clusterName: pulumi.Output<string>;
     /**
      * EMR Cluster Type, e.g. DATALAKE, OLAP, DATAFLOW, DATASERVING, CUSTOM etc. You can find all valid EMR cluster type in emr web console.
      */
-    public readonly clusterType!: pulumi.Output<string>;
+    declare public readonly clusterType: pulumi.Output<string>;
     /**
      * The deletion protection of EMR cluster.
      */
-    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
+    declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
      * The deploy mode of EMR cluster. Supported value: NORMAL or HA.
      */
-    public readonly deployMode!: pulumi.Output<string>;
+    declare public readonly deployMode: pulumi.Output<string>;
     /**
      * The log collect strategy of EMR cluster.
      */
-    public readonly logCollectStrategy!: pulumi.Output<string>;
+    declare public readonly logCollectStrategy: pulumi.Output<string>;
     /**
      * The node attributes of ecs instances which the emr-cluster belongs. See `nodeAttributes` below.
      */
-    public readonly nodeAttributes!: pulumi.Output<outputs.emrv2.ClusterNodeAttribute[]>;
+    declare public readonly nodeAttributes: pulumi.Output<outputs.emrv2.ClusterNodeAttribute[]>;
     /**
      * Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below. **NOTE:** Since version 1.227.0, the type of `nodeGroups` changed from Set to List.
      */
-    public readonly nodeGroups!: pulumi.Output<outputs.emrv2.ClusterNodeGroup[]>;
+    declare public readonly nodeGroups: pulumi.Output<outputs.emrv2.ClusterNodeGroup[]>;
     /**
      * Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `paymentType` can be modified.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * EMR Version, e.g. EMR-5.10.0. You can find the all valid EMR Version in emr web console.
      */
-    public readonly releaseVersion!: pulumi.Output<string>;
+    declare public readonly releaseVersion: pulumi.Output<string>;
     /**
      * The Id of resource group which the emr-cluster belongs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The security mode of EMR cluster. Supported value: NORMAL or KERBEROS.
      */
-    public readonly securityMode!: pulumi.Output<string>;
+    declare public readonly securityMode: pulumi.Output<string>;
     /**
      * The detail configuration of subscription payment type. See `subscriptionConfig` below.
      */
-    public readonly subscriptionConfig!: pulumi.Output<outputs.emrv2.ClusterSubscriptionConfig | undefined>;
+    declare public readonly subscriptionConfig: pulumi.Output<outputs.emrv2.ClusterSubscriptionConfig | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -263,58 +263,58 @@ export class Cluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
-            resourceInputs["applicationConfigs"] = state ? state.applicationConfigs : undefined;
-            resourceInputs["applications"] = state ? state.applications : undefined;
-            resourceInputs["bootstrapScripts"] = state ? state.bootstrapScripts : undefined;
-            resourceInputs["clusterName"] = state ? state.clusterName : undefined;
-            resourceInputs["clusterType"] = state ? state.clusterType : undefined;
-            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            resourceInputs["deployMode"] = state ? state.deployMode : undefined;
-            resourceInputs["logCollectStrategy"] = state ? state.logCollectStrategy : undefined;
-            resourceInputs["nodeAttributes"] = state ? state.nodeAttributes : undefined;
-            resourceInputs["nodeGroups"] = state ? state.nodeGroups : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["releaseVersion"] = state ? state.releaseVersion : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["securityMode"] = state ? state.securityMode : undefined;
-            resourceInputs["subscriptionConfig"] = state ? state.subscriptionConfig : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["applicationConfigs"] = state?.applicationConfigs;
+            resourceInputs["applications"] = state?.applications;
+            resourceInputs["bootstrapScripts"] = state?.bootstrapScripts;
+            resourceInputs["clusterName"] = state?.clusterName;
+            resourceInputs["clusterType"] = state?.clusterType;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["deployMode"] = state?.deployMode;
+            resourceInputs["logCollectStrategy"] = state?.logCollectStrategy;
+            resourceInputs["nodeAttributes"] = state?.nodeAttributes;
+            resourceInputs["nodeGroups"] = state?.nodeGroups;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["releaseVersion"] = state?.releaseVersion;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["securityMode"] = state?.securityMode;
+            resourceInputs["subscriptionConfig"] = state?.subscriptionConfig;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            if ((!args || args.applications === undefined) && !opts.urn) {
+            if (args?.applications === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applications'");
             }
-            if ((!args || args.clusterName === undefined) && !opts.urn) {
+            if (args?.clusterName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterName'");
             }
-            if ((!args || args.clusterType === undefined) && !opts.urn) {
+            if (args?.clusterType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterType'");
             }
-            if ((!args || args.nodeAttributes === undefined) && !opts.urn) {
+            if (args?.nodeAttributes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodeAttributes'");
             }
-            if ((!args || args.nodeGroups === undefined) && !opts.urn) {
+            if (args?.nodeGroups === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodeGroups'");
             }
-            if ((!args || args.releaseVersion === undefined) && !opts.urn) {
+            if (args?.releaseVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'releaseVersion'");
             }
-            resourceInputs["applicationConfigs"] = args ? args.applicationConfigs : undefined;
-            resourceInputs["applications"] = args ? args.applications : undefined;
-            resourceInputs["bootstrapScripts"] = args ? args.bootstrapScripts : undefined;
-            resourceInputs["clusterName"] = args ? args.clusterName : undefined;
-            resourceInputs["clusterType"] = args ? args.clusterType : undefined;
-            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            resourceInputs["deployMode"] = args ? args.deployMode : undefined;
-            resourceInputs["logCollectStrategy"] = args ? args.logCollectStrategy : undefined;
-            resourceInputs["nodeAttributes"] = args ? args.nodeAttributes : undefined;
-            resourceInputs["nodeGroups"] = args ? args.nodeGroups : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["releaseVersion"] = args ? args.releaseVersion : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["securityMode"] = args ? args.securityMode : undefined;
-            resourceInputs["subscriptionConfig"] = args ? args.subscriptionConfig : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["applicationConfigs"] = args?.applicationConfigs;
+            resourceInputs["applications"] = args?.applications;
+            resourceInputs["bootstrapScripts"] = args?.bootstrapScripts;
+            resourceInputs["clusterName"] = args?.clusterName;
+            resourceInputs["clusterType"] = args?.clusterType;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["deployMode"] = args?.deployMode;
+            resourceInputs["logCollectStrategy"] = args?.logCollectStrategy;
+            resourceInputs["nodeAttributes"] = args?.nodeAttributes;
+            resourceInputs["nodeGroups"] = args?.nodeGroups;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["releaseVersion"] = args?.releaseVersion;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["securityMode"] = args?.securityMode;
+            resourceInputs["subscriptionConfig"] = args?.subscriptionConfig;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Cluster.__pulumiType, name, resourceInputs, opts);

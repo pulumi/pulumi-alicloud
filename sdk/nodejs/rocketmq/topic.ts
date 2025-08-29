@@ -78,21 +78,21 @@ export class Topic extends pulumi.CustomResource {
     /**
      * ID of the ONS Instance that owns the topics.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
      */
-    public readonly messageType!: pulumi.Output<number>;
+    declare public readonly messageType: pulumi.Output<number>;
     /**
      * This attribute has been deprecated.
      *
      * @deprecated Attribute perm has been deprecated and suggest removing it from your template.
      */
-    public readonly perm!: pulumi.Output<number>;
+    declare public readonly perm: pulumi.Output<number>;
     /**
      * This attribute is a concise description of topic. The length cannot exceed 128.
      */
-    public readonly remark!: pulumi.Output<string | undefined>;
+    declare public readonly remark: pulumi.Output<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -100,17 +100,17 @@ export class Topic extends pulumi.CustomResource {
      *
      * > **NOTE:** At least one of `topicName` and `topic` should be set.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Replaced by `topicName` after version 1.97.0.
      *
      * @deprecated Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.
      */
-    public readonly topic!: pulumi.Output<string>;
+    declare public readonly topic: pulumi.Output<string>;
     /**
      * Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
      */
-    public readonly topicName!: pulumi.Output<string>;
+    declare public readonly topicName: pulumi.Output<string>;
 
     /**
      * Create a Topic resource with the given unique name, arguments, and options.
@@ -125,28 +125,28 @@ export class Topic extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TopicState | undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["messageType"] = state ? state.messageType : undefined;
-            resourceInputs["perm"] = state ? state.perm : undefined;
-            resourceInputs["remark"] = state ? state.remark : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["topic"] = state ? state.topic : undefined;
-            resourceInputs["topicName"] = state ? state.topicName : undefined;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["messageType"] = state?.messageType;
+            resourceInputs["perm"] = state?.perm;
+            resourceInputs["remark"] = state?.remark;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["topic"] = state?.topic;
+            resourceInputs["topicName"] = state?.topicName;
         } else {
             const args = argsOrState as TopicArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.messageType === undefined) && !opts.urn) {
+            if (args?.messageType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'messageType'");
             }
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["messageType"] = args ? args.messageType : undefined;
-            resourceInputs["perm"] = args ? args.perm : undefined;
-            resourceInputs["remark"] = args ? args.remark : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["topic"] = args ? args.topic : undefined;
-            resourceInputs["topicName"] = args ? args.topicName : undefined;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["messageType"] = args?.messageType;
+            resourceInputs["perm"] = args?.perm;
+            resourceInputs["remark"] = args?.remark;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["topic"] = args?.topic;
+            resourceInputs["topicName"] = args?.topicName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Topic.__pulumiType, name, resourceInputs, opts);

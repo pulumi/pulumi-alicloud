@@ -93,11 +93,11 @@ export class WafPolicyDomainAttachment extends pulumi.CustomResource {
     /**
      * Access the accelerated domain name of the specified protection policy.
      */
-    public readonly domainName!: pulumi.Output<string>;
+    declare public readonly domainName: pulumi.Output<string>;
     /**
      * The protection policy ID. Only one input is supported.
      */
-    public readonly policyId!: pulumi.Output<string>;
+    declare public readonly policyId: pulumi.Output<string>;
 
     /**
      * Create a WafPolicyDomainAttachment resource with the given unique name, arguments, and options.
@@ -112,18 +112,18 @@ export class WafPolicyDomainAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WafPolicyDomainAttachmentState | undefined;
-            resourceInputs["domainName"] = state ? state.domainName : undefined;
-            resourceInputs["policyId"] = state ? state.policyId : undefined;
+            resourceInputs["domainName"] = state?.domainName;
+            resourceInputs["policyId"] = state?.policyId;
         } else {
             const args = argsOrState as WafPolicyDomainAttachmentArgs | undefined;
-            if ((!args || args.domainName === undefined) && !opts.urn) {
+            if (args?.domainName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
-            if ((!args || args.policyId === undefined) && !opts.urn) {
+            if (args?.policyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyId'");
             }
-            resourceInputs["domainName"] = args ? args.domainName : undefined;
-            resourceInputs["policyId"] = args ? args.policyId : undefined;
+            resourceInputs["domainName"] = args?.domainName;
+            resourceInputs["policyId"] = args?.policyId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WafPolicyDomainAttachment.__pulumiType, name, resourceInputs, opts);

@@ -118,31 +118,31 @@ export class EcsDiskAttachment extends pulumi.CustomResource {
     /**
      * Whether to mount as a system disk. Default to: `false`.
      */
-    public readonly bootable!: pulumi.Output<boolean | undefined>;
+    declare public readonly bootable: pulumi.Output<boolean | undefined>;
     /**
      * Indicates whether the disk is released together with the instance. Default to: `false`.
      */
-    public readonly deleteWithInstance!: pulumi.Output<boolean | undefined>;
+    declare public readonly deleteWithInstance: pulumi.Output<boolean | undefined>;
     /**
      * The name of the cloud disk device.
      */
-    public /*out*/ readonly device!: pulumi.Output<string>;
+    declare public /*out*/ readonly device: pulumi.Output<string>;
     /**
      * ID of the Disk to be attached.
      */
-    public readonly diskId!: pulumi.Output<string>;
+    declare public readonly diskId: pulumi.Output<string>;
     /**
      * ID of the Instance to attach to.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The name of key pair
      */
-    public readonly keyPairName!: pulumi.Output<string | undefined>;
+    declare public readonly keyPairName: pulumi.Output<string | undefined>;
     /**
      * When mounting the system disk, setting the user name and password of the instance is only effective for the administrator and root user names, and other user names are not effective.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
 
     /**
      * Create a EcsDiskAttachment resource with the given unique name, arguments, and options.
@@ -157,27 +157,27 @@ export class EcsDiskAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcsDiskAttachmentState | undefined;
-            resourceInputs["bootable"] = state ? state.bootable : undefined;
-            resourceInputs["deleteWithInstance"] = state ? state.deleteWithInstance : undefined;
-            resourceInputs["device"] = state ? state.device : undefined;
-            resourceInputs["diskId"] = state ? state.diskId : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["keyPairName"] = state ? state.keyPairName : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["bootable"] = state?.bootable;
+            resourceInputs["deleteWithInstance"] = state?.deleteWithInstance;
+            resourceInputs["device"] = state?.device;
+            resourceInputs["diskId"] = state?.diskId;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["keyPairName"] = state?.keyPairName;
+            resourceInputs["password"] = state?.password;
         } else {
             const args = argsOrState as EcsDiskAttachmentArgs | undefined;
-            if ((!args || args.diskId === undefined) && !opts.urn) {
+            if (args?.diskId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'diskId'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["bootable"] = args ? args.bootable : undefined;
-            resourceInputs["deleteWithInstance"] = args ? args.deleteWithInstance : undefined;
-            resourceInputs["diskId"] = args ? args.diskId : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["keyPairName"] = args ? args.keyPairName : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["bootable"] = args?.bootable;
+            resourceInputs["deleteWithInstance"] = args?.deleteWithInstance;
+            resourceInputs["diskId"] = args?.diskId;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["keyPairName"] = args?.keyPairName;
+            resourceInputs["password"] = args?.password;
             resourceInputs["device"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -93,43 +93,43 @@ export class Prometheus extends pulumi.CustomResource {
     /**
      * The ID of the Kubernetes cluster. This parameter is required, if you set `clusterType` to `aliyun-cs`.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The name of the created cluster. This parameter is required, if you set `clusterType` to `remote-write`, `ecs` or `global-view`.
      */
-    public readonly clusterName!: pulumi.Output<string>;
+    declare public readonly clusterName: pulumi.Output<string>;
     /**
      * The type of the Prometheus instance. Valid values: `remote-write`, `ecs`, `global-view`, `aliyun-cs`.
      */
-    public readonly clusterType!: pulumi.Output<string>;
+    declare public readonly clusterType: pulumi.Output<string>;
     /**
      * The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafanaInstanceId` to `free`.
      */
-    public readonly grafanaInstanceId!: pulumi.Output<string>;
+    declare public readonly grafanaInstanceId: pulumi.Output<string>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The ID of the security group. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
      */
-    public readonly securityGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly securityGroupId: pulumi.Output<string | undefined>;
     /**
      * The child instance json string of the globalView instance.
      */
-    public readonly subClustersJson!: pulumi.Output<string | undefined>;
+    declare public readonly subClustersJson: pulumi.Output<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the VPC. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
      */
-    public readonly vpcId!: pulumi.Output<string | undefined>;
+    declare public readonly vpcId: pulumi.Output<string | undefined>;
     /**
      * The ID of the VSwitch. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
      */
-    public readonly vswitchId!: pulumi.Output<string | undefined>;
+    declare public readonly vswitchId: pulumi.Output<string | undefined>;
 
     /**
      * Create a Prometheus resource with the given unique name, arguments, and options.
@@ -144,34 +144,34 @@ export class Prometheus extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PrometheusState | undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["clusterName"] = state ? state.clusterName : undefined;
-            resourceInputs["clusterType"] = state ? state.clusterType : undefined;
-            resourceInputs["grafanaInstanceId"] = state ? state.grafanaInstanceId : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["subClustersJson"] = state ? state.subClustersJson : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["clusterName"] = state?.clusterName;
+            resourceInputs["clusterType"] = state?.clusterType;
+            resourceInputs["grafanaInstanceId"] = state?.grafanaInstanceId;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["subClustersJson"] = state?.subClustersJson;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
         } else {
             const args = argsOrState as PrometheusArgs | undefined;
-            if ((!args || args.clusterType === undefined) && !opts.urn) {
+            if (args?.clusterType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterType'");
             }
-            if ((!args || args.grafanaInstanceId === undefined) && !opts.urn) {
+            if (args?.grafanaInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'grafanaInstanceId'");
             }
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["clusterName"] = args ? args.clusterName : undefined;
-            resourceInputs["clusterType"] = args ? args.clusterType : undefined;
-            resourceInputs["grafanaInstanceId"] = args ? args.grafanaInstanceId : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            resourceInputs["subClustersJson"] = args ? args.subClustersJson : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["clusterName"] = args?.clusterName;
+            resourceInputs["clusterType"] = args?.clusterType;
+            resourceInputs["grafanaInstanceId"] = args?.grafanaInstanceId;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["subClustersJson"] = args?.subClustersJson;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Prometheus.__pulumiType, name, resourceInputs, opts);

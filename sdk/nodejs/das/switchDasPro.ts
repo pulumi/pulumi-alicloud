@@ -100,19 +100,19 @@ export class SwitchDasPro extends pulumi.CustomResource {
     /**
      * The ID of the database instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The storage duration of SQL Explorer data. Valid values: `30`, `180`, `365`, `1095`, `1825`. Unit: days. Default value: `30`.
      */
-    public readonly sqlRetention!: pulumi.Output<number>;
+    declare public readonly sqlRetention: pulumi.Output<number>;
     /**
      * Whether the database instance has DAS professional.
      */
-    public /*out*/ readonly status!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly status: pulumi.Output<boolean>;
     /**
      * The ID of the Alibaba Cloud account that is used to create the database instance.
      */
-    public readonly userId!: pulumi.Output<string>;
+    declare public readonly userId: pulumi.Output<string>;
 
     /**
      * Create a SwitchDasPro resource with the given unique name, arguments, and options.
@@ -127,18 +127,18 @@ export class SwitchDasPro extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SwitchDasProState | undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["sqlRetention"] = state ? state.sqlRetention : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["sqlRetention"] = state?.sqlRetention;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as SwitchDasProArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["sqlRetention"] = args ? args.sqlRetention : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["sqlRetention"] = args?.sqlRetention;
+            resourceInputs["userId"] = args?.userId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -84,71 +84,71 @@ export class CapacityReservation extends pulumi.CustomResource {
     /**
      * Capacity reservation service name.
      */
-    public readonly capacityReservationName!: pulumi.Output<string>;
+    declare public readonly capacityReservationName: pulumi.Output<string>;
     /**
      * description of the capacity reservation instance.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to pre-check the API request. Valid values: `true` and `false`.
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
      */
-    public readonly endTime!: pulumi.Output<string>;
+    declare public readonly endTime: pulumi.Output<string>;
     /**
      * Release mode of capacity reservation service. Value range:Limited: release at specified time. The EndTime parameter must be specified at the same time.Unlimited: manual release. No time limit.
      */
-    public readonly endTimeType!: pulumi.Output<string>;
+    declare public readonly endTimeType: pulumi.Output<string>;
     /**
      * The total number of instances that need to be reserved within the capacity reservation.
      */
-    public readonly instanceAmount!: pulumi.Output<number>;
+    declare public readonly instanceAmount: pulumi.Output<number>;
     /**
      * Instance type. Currently, you can only set the capacity reservation service for one instance type.
      */
-    public readonly instanceType!: pulumi.Output<string>;
+    declare public readonly instanceType: pulumi.Output<string>;
     /**
      * The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
      */
-    public readonly matchCriteria!: pulumi.Output<string>;
+    declare public readonly matchCriteria: pulumi.Output<string>;
     /**
      * The payment type of the resource
      */
-    public /*out*/ readonly paymentType!: pulumi.Output<string>;
+    declare public /*out*/ readonly paymentType: pulumi.Output<string>;
     /**
      * platform of the capacity reservation, value range `windows`, `linux`.
      */
-    public readonly platform!: pulumi.Output<string>;
+    declare public readonly platform: pulumi.Output<string>;
     /**
      * The resource group id.
      */
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly resourceGroupId: pulumi.Output<string | undefined>;
     /**
      * time of the capacity reservation which become active.
      */
-    public /*out*/ readonly startTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly startTime: pulumi.Output<string>;
     /**
      * The capacity is scheduled to take effect. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
      */
-    public /*out*/ readonly startTimeType!: pulumi.Output<string>;
+    declare public /*out*/ readonly startTimeType: pulumi.Output<string>;
     /**
      * The status of the capacity reservation.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tag of the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * This parameter is under test and is not yet open for use.
      */
-    public /*out*/ readonly timeSlot!: pulumi.Output<string>;
+    declare public /*out*/ readonly timeSlot: pulumi.Output<string>;
     /**
      * The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
      */
-    public readonly zoneIds!: pulumi.Output<string[]>;
+    declare public readonly zoneIds: pulumi.Output<string[]>;
 
     /**
      * Create a CapacityReservation resource with the given unique name, arguments, and options.
@@ -163,46 +163,46 @@ export class CapacityReservation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CapacityReservationState | undefined;
-            resourceInputs["capacityReservationName"] = state ? state.capacityReservationName : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["endTime"] = state ? state.endTime : undefined;
-            resourceInputs["endTimeType"] = state ? state.endTimeType : undefined;
-            resourceInputs["instanceAmount"] = state ? state.instanceAmount : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["matchCriteria"] = state ? state.matchCriteria : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["platform"] = state ? state.platform : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["startTime"] = state ? state.startTime : undefined;
-            resourceInputs["startTimeType"] = state ? state.startTimeType : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["timeSlot"] = state ? state.timeSlot : undefined;
-            resourceInputs["zoneIds"] = state ? state.zoneIds : undefined;
+            resourceInputs["capacityReservationName"] = state?.capacityReservationName;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["endTime"] = state?.endTime;
+            resourceInputs["endTimeType"] = state?.endTimeType;
+            resourceInputs["instanceAmount"] = state?.instanceAmount;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["matchCriteria"] = state?.matchCriteria;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["platform"] = state?.platform;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["startTime"] = state?.startTime;
+            resourceInputs["startTimeType"] = state?.startTimeType;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["timeSlot"] = state?.timeSlot;
+            resourceInputs["zoneIds"] = state?.zoneIds;
         } else {
             const args = argsOrState as CapacityReservationArgs | undefined;
-            if ((!args || args.instanceAmount === undefined) && !opts.urn) {
+            if (args?.instanceAmount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceAmount'");
             }
-            if ((!args || args.instanceType === undefined) && !opts.urn) {
+            if (args?.instanceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceType'");
             }
-            if ((!args || args.zoneIds === undefined) && !opts.urn) {
+            if (args?.zoneIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneIds'");
             }
-            resourceInputs["capacityReservationName"] = args ? args.capacityReservationName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["endTime"] = args ? args.endTime : undefined;
-            resourceInputs["endTimeType"] = args ? args.endTimeType : undefined;
-            resourceInputs["instanceAmount"] = args ? args.instanceAmount : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["matchCriteria"] = args ? args.matchCriteria : undefined;
-            resourceInputs["platform"] = args ? args.platform : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["zoneIds"] = args ? args.zoneIds : undefined;
+            resourceInputs["capacityReservationName"] = args?.capacityReservationName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["endTime"] = args?.endTime;
+            resourceInputs["endTimeType"] = args?.endTimeType;
+            resourceInputs["instanceAmount"] = args?.instanceAmount;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["matchCriteria"] = args?.matchCriteria;
+            resourceInputs["platform"] = args?.platform;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["zoneIds"] = args?.zoneIds;
             resourceInputs["paymentType"] = undefined /*out*/;
             resourceInputs["startTime"] = undefined /*out*/;
             resourceInputs["startTimeType"] = undefined /*out*/;

@@ -87,15 +87,15 @@ export class Image extends pulumi.CustomResource {
     /**
      * The image name.
      */
-    public readonly imageName!: pulumi.Output<string>;
+    declare public readonly imageName: pulumi.Output<string>;
     /**
      * The instance ID.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The status of the mirror.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a Image resource with the given unique name, arguments, and options.
@@ -110,19 +110,19 @@ export class Image extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImageState | undefined;
-            resourceInputs["imageName"] = state ? state.imageName : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["imageName"] = state?.imageName;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as ImageArgs | undefined;
-            if ((!args || args.imageName === undefined) && !opts.urn) {
+            if (args?.imageName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'imageName'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["imageName"] = args ? args.imageName : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["imageName"] = args?.imageName;
+            resourceInputs["instanceId"] = args?.instanceId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -112,40 +112,40 @@ export class ServerBackupPlan extends pulumi.CustomResource {
     /**
      * The role name created in the original account RAM backup by the cross account managed by the current account.
      */
-    public readonly crossAccountRoleName!: pulumi.Output<string | undefined>;
+    declare public readonly crossAccountRoleName: pulumi.Output<string | undefined>;
     /**
      * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
      */
-    public readonly crossAccountType!: pulumi.Output<string>;
+    declare public readonly crossAccountType: pulumi.Output<string>;
     /**
      * The original account ID of the cross account backup managed by the current account.
      */
-    public readonly crossAccountUserId!: pulumi.Output<number | undefined>;
+    declare public readonly crossAccountUserId: pulumi.Output<number | undefined>;
     /**
      * ECS server backup plan details.
      */
-    public readonly details!: pulumi.Output<outputs.hbr.ServerBackupPlanDetail[]>;
+    declare public readonly details: pulumi.Output<outputs.hbr.ServerBackupPlanDetail[]>;
     /**
      * Whether to disable the backup task. Valid values: `true`, `false`.
      */
-    public readonly disabled!: pulumi.Output<boolean>;
+    declare public readonly disabled: pulumi.Output<boolean>;
     /**
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
-    public readonly ecsServerBackupPlanName!: pulumi.Output<string>;
+    declare public readonly ecsServerBackupPlanName: pulumi.Output<string>;
     /**
      * The ID of ECS instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Backup retention days, the minimum is 1.
      */
-    public readonly retention!: pulumi.Output<number>;
+    declare public readonly retention: pulumi.Output<number>;
     /**
      * Backup strategy. Optional format: `I|{startTime}|{interval}`
      * * `startTime` Backup start time, UNIX time, in seconds.
      */
-    public readonly schedule!: pulumi.Output<string>;
+    declare public readonly schedule: pulumi.Output<string>;
 
     /**
      * Create a ServerBackupPlan resource with the given unique name, arguments, and options.
@@ -160,41 +160,41 @@ export class ServerBackupPlan extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServerBackupPlanState | undefined;
-            resourceInputs["crossAccountRoleName"] = state ? state.crossAccountRoleName : undefined;
-            resourceInputs["crossAccountType"] = state ? state.crossAccountType : undefined;
-            resourceInputs["crossAccountUserId"] = state ? state.crossAccountUserId : undefined;
-            resourceInputs["details"] = state ? state.details : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["ecsServerBackupPlanName"] = state ? state.ecsServerBackupPlanName : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["retention"] = state ? state.retention : undefined;
-            resourceInputs["schedule"] = state ? state.schedule : undefined;
+            resourceInputs["crossAccountRoleName"] = state?.crossAccountRoleName;
+            resourceInputs["crossAccountType"] = state?.crossAccountType;
+            resourceInputs["crossAccountUserId"] = state?.crossAccountUserId;
+            resourceInputs["details"] = state?.details;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["ecsServerBackupPlanName"] = state?.ecsServerBackupPlanName;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["retention"] = state?.retention;
+            resourceInputs["schedule"] = state?.schedule;
         } else {
             const args = argsOrState as ServerBackupPlanArgs | undefined;
-            if ((!args || args.details === undefined) && !opts.urn) {
+            if (args?.details === undefined && !opts.urn) {
                 throw new Error("Missing required property 'details'");
             }
-            if ((!args || args.ecsServerBackupPlanName === undefined) && !opts.urn) {
+            if (args?.ecsServerBackupPlanName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ecsServerBackupPlanName'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.retention === undefined) && !opts.urn) {
+            if (args?.retention === undefined && !opts.urn) {
                 throw new Error("Missing required property 'retention'");
             }
-            if ((!args || args.schedule === undefined) && !opts.urn) {
+            if (args?.schedule === undefined && !opts.urn) {
                 throw new Error("Missing required property 'schedule'");
             }
-            resourceInputs["crossAccountRoleName"] = args ? args.crossAccountRoleName : undefined;
-            resourceInputs["crossAccountType"] = args ? args.crossAccountType : undefined;
-            resourceInputs["crossAccountUserId"] = args ? args.crossAccountUserId : undefined;
-            resourceInputs["details"] = args ? args.details : undefined;
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["ecsServerBackupPlanName"] = args ? args.ecsServerBackupPlanName : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["retention"] = args ? args.retention : undefined;
-            resourceInputs["schedule"] = args ? args.schedule : undefined;
+            resourceInputs["crossAccountRoleName"] = args?.crossAccountRoleName;
+            resourceInputs["crossAccountType"] = args?.crossAccountType;
+            resourceInputs["crossAccountUserId"] = args?.crossAccountUserId;
+            resourceInputs["details"] = args?.details;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["ecsServerBackupPlanName"] = args?.ecsServerBackupPlanName;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["retention"] = args?.retention;
+            resourceInputs["schedule"] = args?.schedule;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServerBackupPlan.__pulumiType, name, resourceInputs, opts);

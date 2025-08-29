@@ -79,23 +79,23 @@ export class Resource extends pulumi.CustomResource {
     /**
      * Resource attributes specified when a user creates or updates a resource.
      */
-    public readonly desireAttributes!: pulumi.Output<string | undefined>;
+    declare public readonly desireAttributes: pulumi.Output<string | undefined>;
     /**
      * The product Code represents the product to be operated. Currently supported products and resources can be queried at the following link: [supported-services-and-resource-types](https://help.aliyun.com/zh/cloud-control-api/product-overview/supported-services-and-resource-types).
      */
-    public readonly product!: pulumi.Output<string>;
+    declare public readonly product: pulumi.Output<string>;
     /**
      * The collection of properties for the resource.
      */
-    public /*out*/ readonly resourceAttributes!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceAttributes: pulumi.Output<string>;
     /**
      * Resource Code, if there is a parent resource, split with `::`, such as VPC::VSwitch. The supported resource Code can be obtained from the following link: [supported-services-and-resource-types](https://help.aliyun.com/zh/cloud-control-api/product-overview/supported-services-and-resource-types).
      */
-    public readonly resourceCode!: pulumi.Output<string>;
+    declare public readonly resourceCode: pulumi.Output<string>;
     /**
      * If there is a parent resource, you need to enter the id of the parent resource, for example, in the VPC::VSwtich resource, you need to enter the id of the VPC: vpc-dexadfe3r4ad. If there are more than one level of parent resources, you need to use `:` to split.
      */
-    public readonly resourceId!: pulumi.Output<string>;
+    declare public readonly resourceId: pulumi.Output<string>;
 
     /**
      * Create a Resource resource with the given unique name, arguments, and options.
@@ -110,23 +110,23 @@ export class Resource extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ResourceState | undefined;
-            resourceInputs["desireAttributes"] = state ? state.desireAttributes : undefined;
-            resourceInputs["product"] = state ? state.product : undefined;
-            resourceInputs["resourceAttributes"] = state ? state.resourceAttributes : undefined;
-            resourceInputs["resourceCode"] = state ? state.resourceCode : undefined;
-            resourceInputs["resourceId"] = state ? state.resourceId : undefined;
+            resourceInputs["desireAttributes"] = state?.desireAttributes;
+            resourceInputs["product"] = state?.product;
+            resourceInputs["resourceAttributes"] = state?.resourceAttributes;
+            resourceInputs["resourceCode"] = state?.resourceCode;
+            resourceInputs["resourceId"] = state?.resourceId;
         } else {
             const args = argsOrState as ResourceArgs | undefined;
-            if ((!args || args.product === undefined) && !opts.urn) {
+            if (args?.product === undefined && !opts.urn) {
                 throw new Error("Missing required property 'product'");
             }
-            if ((!args || args.resourceCode === undefined) && !opts.urn) {
+            if (args?.resourceCode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceCode'");
             }
             resourceInputs["desireAttributes"] = args?.desireAttributes ? pulumi.secret(args.desireAttributes) : undefined;
-            resourceInputs["product"] = args ? args.product : undefined;
-            resourceInputs["resourceCode"] = args ? args.resourceCode : undefined;
-            resourceInputs["resourceId"] = args ? args.resourceId : undefined;
+            resourceInputs["product"] = args?.product;
+            resourceInputs["resourceCode"] = args?.resourceCode;
+            resourceInputs["resourceId"] = args?.resourceId;
             resourceInputs["resourceAttributes"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

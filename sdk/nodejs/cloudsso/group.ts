@@ -50,19 +50,19 @@ export class Group extends pulumi.CustomResource {
     /**
      * The Description of the group. The description can be up to `1024` characters long.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The ID of the Directory.
      */
-    public readonly directoryId!: pulumi.Output<string>;
+    declare public readonly directoryId: pulumi.Output<string>;
     /**
      * The GroupId of the group.
      */
-    public /*out*/ readonly groupId!: pulumi.Output<string>;
+    declare public /*out*/ readonly groupId: pulumi.Output<string>;
     /**
      * The Name of the group. The name must be `1` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
      */
-    public readonly groupName!: pulumi.Output<string>;
+    declare public readonly groupName: pulumi.Output<string>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -77,21 +77,21 @@ export class Group extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["directoryId"] = state ? state.directoryId : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["groupName"] = state ? state.groupName : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["directoryId"] = state?.directoryId;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["groupName"] = state?.groupName;
         } else {
             const args = argsOrState as GroupArgs | undefined;
-            if ((!args || args.directoryId === undefined) && !opts.urn) {
+            if (args?.directoryId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'directoryId'");
             }
-            if ((!args || args.groupName === undefined) && !opts.urn) {
+            if (args?.groupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["directoryId"] = args ? args.directoryId : undefined;
-            resourceInputs["groupName"] = args ? args.groupName : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["directoryId"] = args?.directoryId;
+            resourceInputs["groupName"] = args?.groupName;
             resourceInputs["groupId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -118,35 +118,35 @@ export class HanaBackupClient extends pulumi.CustomResource {
     /**
      * The alert settings. Valid value: `INHERITED`.
      */
-    public readonly alertSetting!: pulumi.Output<string>;
+    declare public readonly alertSetting: pulumi.Output<string>;
     /**
      * The ID of the backup client.
      */
-    public /*out*/ readonly clientId!: pulumi.Output<string>;
+    declare public /*out*/ readonly clientId: pulumi.Output<string>;
     /**
      * The installation information of the HBR clients.
      */
-    public readonly clientInfo!: pulumi.Output<string | undefined>;
+    declare public readonly clientInfo: pulumi.Output<string | undefined>;
     /**
      * The ID of the SAP HANA instance.
      */
-    public /*out*/ readonly clusterId!: pulumi.Output<string>;
+    declare public /*out*/ readonly clusterId: pulumi.Output<string>;
     /**
      * The ID of the instance.
      */
-    public /*out*/ readonly instanceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly instanceId: pulumi.Output<string>;
     /**
      * The status of the Hana Backup Client.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Specifies whether to transmit data over HTTPS. Valid values: `true`, `false`.
      */
-    public readonly useHttps!: pulumi.Output<boolean | undefined>;
+    declare public readonly useHttps: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the backup vault.
      */
-    public readonly vaultId!: pulumi.Output<string>;
+    declare public readonly vaultId: pulumi.Output<string>;
 
     /**
      * Create a HanaBackupClient resource with the given unique name, arguments, and options.
@@ -161,23 +161,23 @@ export class HanaBackupClient extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HanaBackupClientState | undefined;
-            resourceInputs["alertSetting"] = state ? state.alertSetting : undefined;
-            resourceInputs["clientId"] = state ? state.clientId : undefined;
-            resourceInputs["clientInfo"] = state ? state.clientInfo : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["useHttps"] = state ? state.useHttps : undefined;
-            resourceInputs["vaultId"] = state ? state.vaultId : undefined;
+            resourceInputs["alertSetting"] = state?.alertSetting;
+            resourceInputs["clientId"] = state?.clientId;
+            resourceInputs["clientInfo"] = state?.clientInfo;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["useHttps"] = state?.useHttps;
+            resourceInputs["vaultId"] = state?.vaultId;
         } else {
             const args = argsOrState as HanaBackupClientArgs | undefined;
-            if ((!args || args.vaultId === undefined) && !opts.urn) {
+            if (args?.vaultId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vaultId'");
             }
-            resourceInputs["alertSetting"] = args ? args.alertSetting : undefined;
-            resourceInputs["clientInfo"] = args ? args.clientInfo : undefined;
-            resourceInputs["useHttps"] = args ? args.useHttps : undefined;
-            resourceInputs["vaultId"] = args ? args.vaultId : undefined;
+            resourceInputs["alertSetting"] = args?.alertSetting;
+            resourceInputs["clientInfo"] = args?.clientInfo;
+            resourceInputs["useHttps"] = args?.useHttps;
+            resourceInputs["vaultId"] = args?.vaultId;
             resourceInputs["clientId"] = undefined /*out*/;
             resourceInputs["clusterId"] = undefined /*out*/;
             resourceInputs["instanceId"] = undefined /*out*/;

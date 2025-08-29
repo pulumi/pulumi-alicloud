@@ -44,43 +44,43 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Specifies whether to enable auto-renewal. Unit: months. Valid values: `true` and `false`.
      */
-    public readonly autoRenew!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoRenew: pulumi.Output<boolean | undefined>;
     /**
      * The auto renew period. Valid values: `1`,`3`, `6`, `12`, `24`, `36`. **NOTE:** The attribute `autoRenew` is valid when the attribute is `true`.
      */
-    public readonly autoRenewPeriod!: pulumi.Output<number | undefined>;
+    declare public readonly autoRenewPeriod: pulumi.Output<number | undefined>;
     /**
      * The size of the data disk. Unit: GB. Valid values: `0` to `16380`.
      */
-    public readonly dataDiskSize!: pulumi.Output<number | undefined>;
+    declare public readonly dataDiskSize: pulumi.Output<number | undefined>;
     /**
      * The ID of the image.  You can use the `alicloud.simpleapplicationserver.getImages` to query the available images in the specified region. The value must be an integral multiple of 20.
      */
-    public readonly imageId!: pulumi.Output<string>;
+    declare public readonly imageId: pulumi.Output<string>;
     /**
      * The name of the simple application server.
      */
-    public readonly instanceName!: pulumi.Output<string | undefined>;
+    declare public readonly instanceName: pulumi.Output<string | undefined>;
     /**
      * The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ % ^ & * - + = | { } [ ] : ; < > , . ? /`.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * The paymen type of the resource. Valid values: `Subscription`.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * The period. Unit: months. Valid values: `1`,`3`, `6`, `12`, `24`, `36`.
      */
-    public readonly period!: pulumi.Output<number>;
+    declare public readonly period: pulumi.Output<number>;
     /**
      * The ID of the plan. You can use the `alicloud.simpleapplicationserver.getServerPlans`  to query all the plans provided by Simple Application Server in the specified region.
      */
-    public readonly planId!: pulumi.Output<string>;
+    declare public readonly planId: pulumi.Output<string>;
     /**
      * The status of the simple application server. Valid values: `Resetting`, `Running`, `Stopped`.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -95,37 +95,37 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
-            resourceInputs["dataDiskSize"] = state ? state.dataDiskSize : undefined;
-            resourceInputs["imageId"] = state ? state.imageId : undefined;
-            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["planId"] = state ? state.planId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["autoRenewPeriod"] = state?.autoRenewPeriod;
+            resourceInputs["dataDiskSize"] = state?.dataDiskSize;
+            resourceInputs["imageId"] = state?.imageId;
+            resourceInputs["instanceName"] = state?.instanceName;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["planId"] = state?.planId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.imageId === undefined) && !opts.urn) {
+            if (args?.imageId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'imageId'");
             }
-            if ((!args || args.period === undefined) && !opts.urn) {
+            if (args?.period === undefined && !opts.urn) {
                 throw new Error("Missing required property 'period'");
             }
-            if ((!args || args.planId === undefined) && !opts.urn) {
+            if (args?.planId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'planId'");
             }
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
-            resourceInputs["dataDiskSize"] = args ? args.dataDiskSize : undefined;
-            resourceInputs["imageId"] = args ? args.imageId : undefined;
-            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["planId"] = args ? args.planId : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["autoRenewPeriod"] = args?.autoRenewPeriod;
+            resourceInputs["dataDiskSize"] = args?.dataDiskSize;
+            resourceInputs["imageId"] = args?.imageId;
+            resourceInputs["instanceName"] = args?.instanceName;
+            resourceInputs["password"] = args?.password;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["planId"] = args?.planId;
+            resourceInputs["status"] = args?.status;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Instance.__pulumiType, name, resourceInputs, opts);

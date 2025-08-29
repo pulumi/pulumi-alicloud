@@ -50,19 +50,19 @@ export class Environment extends pulumi.CustomResource {
     /**
      * Description
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of the resource
      */
-    public readonly environmentName!: pulumi.Output<string>;
+    declare public readonly environmentName: pulumi.Output<string>;
     /**
      * Gateway id
      */
-    public readonly gatewayId!: pulumi.Output<string>;
+    declare public readonly gatewayId: pulumi.Output<string>;
     /**
      * The ID of the resource group
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
 
     /**
      * Create a Environment resource with the given unique name, arguments, and options.
@@ -77,22 +77,22 @@ export class Environment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnvironmentState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["environmentName"] = state ? state.environmentName : undefined;
-            resourceInputs["gatewayId"] = state ? state.gatewayId : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["environmentName"] = state?.environmentName;
+            resourceInputs["gatewayId"] = state?.gatewayId;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
         } else {
             const args = argsOrState as EnvironmentArgs | undefined;
-            if ((!args || args.environmentName === undefined) && !opts.urn) {
+            if (args?.environmentName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environmentName'");
             }
-            if ((!args || args.gatewayId === undefined) && !opts.urn) {
+            if (args?.gatewayId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'gatewayId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["environmentName"] = args ? args.environmentName : undefined;
-            resourceInputs["gatewayId"] = args ? args.gatewayId : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["environmentName"] = args?.environmentName;
+            resourceInputs["gatewayId"] = args?.gatewayId;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Environment.__pulumiType, name, resourceInputs, opts);

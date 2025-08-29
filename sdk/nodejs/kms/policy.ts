@@ -50,27 +50,27 @@ export class Policy extends pulumi.CustomResource {
     /**
      * Network Rules in JSON struct.
      */
-    public readonly accessControlRules!: pulumi.Output<string>;
+    declare public readonly accessControlRules: pulumi.Output<string>;
     /**
      * Description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * KMS instance .
      */
-    public readonly kmsInstanceId!: pulumi.Output<string>;
+    declare public readonly kmsInstanceId: pulumi.Output<string>;
     /**
      * Allowed permissions (RBAC)Optional values:"RbacPermission/Template/CryptoServiceKeyUser" and "RbacPermission/Template/CryptoServiceSecretUser".
      */
-    public readonly permissions!: pulumi.Output<string[]>;
+    declare public readonly permissions: pulumi.Output<string[]>;
     /**
      * Policy Name.
      */
-    public readonly policyName!: pulumi.Output<string>;
+    declare public readonly policyName: pulumi.Output<string>;
     /**
      * The resources that the permission policy allows to access.Use "key/${KeyId}" or "key/*"  to specify a key or all keys.Use "secret/${SecretName}" or "secret/*" to specify a secret or all secrets.
      */
-    public readonly resources!: pulumi.Output<string[]>;
+    declare public readonly resources: pulumi.Output<string[]>;
 
     /**
      * Create a Policy resource with the given unique name, arguments, and options.
@@ -85,35 +85,35 @@ export class Policy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyState | undefined;
-            resourceInputs["accessControlRules"] = state ? state.accessControlRules : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["kmsInstanceId"] = state ? state.kmsInstanceId : undefined;
-            resourceInputs["permissions"] = state ? state.permissions : undefined;
-            resourceInputs["policyName"] = state ? state.policyName : undefined;
-            resourceInputs["resources"] = state ? state.resources : undefined;
+            resourceInputs["accessControlRules"] = state?.accessControlRules;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["kmsInstanceId"] = state?.kmsInstanceId;
+            resourceInputs["permissions"] = state?.permissions;
+            resourceInputs["policyName"] = state?.policyName;
+            resourceInputs["resources"] = state?.resources;
         } else {
             const args = argsOrState as PolicyArgs | undefined;
-            if ((!args || args.accessControlRules === undefined) && !opts.urn) {
+            if (args?.accessControlRules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accessControlRules'");
             }
-            if ((!args || args.kmsInstanceId === undefined) && !opts.urn) {
+            if (args?.kmsInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'kmsInstanceId'");
             }
-            if ((!args || args.permissions === undefined) && !opts.urn) {
+            if (args?.permissions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'permissions'");
             }
-            if ((!args || args.policyName === undefined) && !opts.urn) {
+            if (args?.policyName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyName'");
             }
-            if ((!args || args.resources === undefined) && !opts.urn) {
+            if (args?.resources === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resources'");
             }
-            resourceInputs["accessControlRules"] = args ? args.accessControlRules : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["kmsInstanceId"] = args ? args.kmsInstanceId : undefined;
-            resourceInputs["permissions"] = args ? args.permissions : undefined;
-            resourceInputs["policyName"] = args ? args.policyName : undefined;
-            resourceInputs["resources"] = args ? args.resources : undefined;
+            resourceInputs["accessControlRules"] = args?.accessControlRules;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["kmsInstanceId"] = args?.kmsInstanceId;
+            resourceInputs["permissions"] = args?.permissions;
+            resourceInputs["policyName"] = args?.policyName;
+            resourceInputs["resources"] = args?.resources;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Policy.__pulumiType, name, resourceInputs, opts);

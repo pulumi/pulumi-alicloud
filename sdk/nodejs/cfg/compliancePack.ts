@@ -107,33 +107,33 @@ export class CompliancePack extends pulumi.CustomResource {
     /**
      * The Compliance Package Name. **NOTE:** From version 1.146.0, `compliancePackName` can be modified.
      */
-    public readonly compliancePackName!: pulumi.Output<string>;
+    declare public readonly compliancePackName: pulumi.Output<string>;
     /**
      * Compliance Package Template Id.
      */
-    public readonly compliancePackTemplateId!: pulumi.Output<string | undefined>;
+    declare public readonly compliancePackTemplateId: pulumi.Output<string | undefined>;
     /**
      * A list of Config Rule IDs. See `configRuleIds` below.
      */
-    public readonly configRuleIds!: pulumi.Output<outputs.cfg.CompliancePackConfigRuleId[] | undefined>;
+    declare public readonly configRuleIds: pulumi.Output<outputs.cfg.CompliancePackConfigRuleId[] | undefined>;
     /**
      * A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
      *
      * @deprecated Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
      */
-    public readonly configRules!: pulumi.Output<outputs.cfg.CompliancePackConfigRule[] | undefined>;
+    declare public readonly configRules: pulumi.Output<outputs.cfg.CompliancePackConfigRule[] | undefined>;
     /**
      * The Description of compliance pack.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The Risk Level. Valid values:
      */
-    public readonly riskLevel!: pulumi.Output<number>;
+    declare public readonly riskLevel: pulumi.Output<number>;
     /**
      * The status of the Compliance Pack.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a CompliancePack resource with the given unique name, arguments, and options.
@@ -148,30 +148,30 @@ export class CompliancePack extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CompliancePackState | undefined;
-            resourceInputs["compliancePackName"] = state ? state.compliancePackName : undefined;
-            resourceInputs["compliancePackTemplateId"] = state ? state.compliancePackTemplateId : undefined;
-            resourceInputs["configRuleIds"] = state ? state.configRuleIds : undefined;
-            resourceInputs["configRules"] = state ? state.configRules : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["riskLevel"] = state ? state.riskLevel : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["compliancePackName"] = state?.compliancePackName;
+            resourceInputs["compliancePackTemplateId"] = state?.compliancePackTemplateId;
+            resourceInputs["configRuleIds"] = state?.configRuleIds;
+            resourceInputs["configRules"] = state?.configRules;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["riskLevel"] = state?.riskLevel;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as CompliancePackArgs | undefined;
-            if ((!args || args.compliancePackName === undefined) && !opts.urn) {
+            if (args?.compliancePackName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'compliancePackName'");
             }
-            if ((!args || args.description === undefined) && !opts.urn) {
+            if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.riskLevel === undefined) && !opts.urn) {
+            if (args?.riskLevel === undefined && !opts.urn) {
                 throw new Error("Missing required property 'riskLevel'");
             }
-            resourceInputs["compliancePackName"] = args ? args.compliancePackName : undefined;
-            resourceInputs["compliancePackTemplateId"] = args ? args.compliancePackTemplateId : undefined;
-            resourceInputs["configRuleIds"] = args ? args.configRuleIds : undefined;
-            resourceInputs["configRules"] = args ? args.configRules : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["riskLevel"] = args ? args.riskLevel : undefined;
+            resourceInputs["compliancePackName"] = args?.compliancePackName;
+            resourceInputs["compliancePackTemplateId"] = args?.compliancePackTemplateId;
+            resourceInputs["configRuleIds"] = args?.configRuleIds;
+            resourceInputs["configRules"] = args?.configRules;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["riskLevel"] = args?.riskLevel;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

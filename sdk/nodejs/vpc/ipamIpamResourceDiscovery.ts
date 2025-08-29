@@ -70,35 +70,35 @@ export class IpamIpamResourceDiscovery extends pulumi.CustomResource {
     /**
      * The time when the resource discovery was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The description of resource discovery.
      */
-    public readonly ipamResourceDiscoveryDescription!: pulumi.Output<string | undefined>;
+    declare public readonly ipamResourceDiscoveryDescription: pulumi.Output<string | undefined>;
     /**
      * The name of the resource
      */
-    public readonly ipamResourceDiscoveryName!: pulumi.Output<string | undefined>;
+    declare public readonly ipamResourceDiscoveryName: pulumi.Output<string | undefined>;
     /**
      * The list of operating regions for resource discovery.
      */
-    public readonly operatingRegionLists!: pulumi.Output<string[]>;
+    declare public readonly operatingRegionLists: pulumi.Output<string[]>;
     /**
      * The region ID of the resource
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The ID of the resource group
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The status of the resource discovery instance. Value:
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Label list information.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a IpamIpamResourceDiscovery resource with the given unique name, arguments, and options.
@@ -113,24 +113,24 @@ export class IpamIpamResourceDiscovery extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IpamIpamResourceDiscoveryState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["ipamResourceDiscoveryDescription"] = state ? state.ipamResourceDiscoveryDescription : undefined;
-            resourceInputs["ipamResourceDiscoveryName"] = state ? state.ipamResourceDiscoveryName : undefined;
-            resourceInputs["operatingRegionLists"] = state ? state.operatingRegionLists : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["ipamResourceDiscoveryDescription"] = state?.ipamResourceDiscoveryDescription;
+            resourceInputs["ipamResourceDiscoveryName"] = state?.ipamResourceDiscoveryName;
+            resourceInputs["operatingRegionLists"] = state?.operatingRegionLists;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as IpamIpamResourceDiscoveryArgs | undefined;
-            if ((!args || args.operatingRegionLists === undefined) && !opts.urn) {
+            if (args?.operatingRegionLists === undefined && !opts.urn) {
                 throw new Error("Missing required property 'operatingRegionLists'");
             }
-            resourceInputs["ipamResourceDiscoveryDescription"] = args ? args.ipamResourceDiscoveryDescription : undefined;
-            resourceInputs["ipamResourceDiscoveryName"] = args ? args.ipamResourceDiscoveryName : undefined;
-            resourceInputs["operatingRegionLists"] = args ? args.operatingRegionLists : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["ipamResourceDiscoveryDescription"] = args?.ipamResourceDiscoveryDescription;
+            resourceInputs["ipamResourceDiscoveryName"] = args?.ipamResourceDiscoveryName;
+            resourceInputs["operatingRegionLists"] = args?.operatingRegionLists;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

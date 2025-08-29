@@ -75,31 +75,31 @@ export class Vswitch extends pulumi.CustomResource {
     /**
      * The CIDR block of the vSwitch.
      */
-    public readonly cidrBlock!: pulumi.Output<string>;
+    declare public readonly cidrBlock: pulumi.Output<string>;
     /**
      * The time when the VPC was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The description of the vSwitch.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * ENS Region ID.
      */
-    public readonly ensRegionId!: pulumi.Output<string>;
+    declare public readonly ensRegionId: pulumi.Output<string>;
     /**
      * The ID of the network to which the vSwitch that you want to create belongs.
      */
-    public readonly networkId!: pulumi.Output<string>;
+    declare public readonly networkId: pulumi.Output<string>;
     /**
      * The status of the vSwitch.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The name of the vSwitch.
      */
-    public readonly vswitchName!: pulumi.Output<string | undefined>;
+    declare public readonly vswitchName: pulumi.Output<string | undefined>;
 
     /**
      * Create a Vswitch resource with the given unique name, arguments, and options.
@@ -114,26 +114,26 @@ export class Vswitch extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VswitchState | undefined;
-            resourceInputs["cidrBlock"] = state ? state.cidrBlock : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["ensRegionId"] = state ? state.ensRegionId : undefined;
-            resourceInputs["networkId"] = state ? state.networkId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vswitchName"] = state ? state.vswitchName : undefined;
+            resourceInputs["cidrBlock"] = state?.cidrBlock;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["ensRegionId"] = state?.ensRegionId;
+            resourceInputs["networkId"] = state?.networkId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vswitchName"] = state?.vswitchName;
         } else {
             const args = argsOrState as VswitchArgs | undefined;
-            if ((!args || args.cidrBlock === undefined) && !opts.urn) {
+            if (args?.cidrBlock === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cidrBlock'");
             }
-            if ((!args || args.ensRegionId === undefined) && !opts.urn) {
+            if (args?.ensRegionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ensRegionId'");
             }
-            resourceInputs["cidrBlock"] = args ? args.cidrBlock : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["ensRegionId"] = args ? args.ensRegionId : undefined;
-            resourceInputs["networkId"] = args ? args.networkId : undefined;
-            resourceInputs["vswitchName"] = args ? args.vswitchName : undefined;
+            resourceInputs["cidrBlock"] = args?.cidrBlock;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["ensRegionId"] = args?.ensRegionId;
+            resourceInputs["networkId"] = args?.networkId;
+            resourceInputs["vswitchName"] = args?.vswitchName;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

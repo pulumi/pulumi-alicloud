@@ -130,35 +130,35 @@ export class CustomRoutingEndpointTrafficPolicy extends pulumi.CustomResource {
     /**
      * The ID of the GA instance.
      */
-    public /*out*/ readonly acceleratorId!: pulumi.Output<string>;
+    declare public /*out*/ readonly acceleratorId: pulumi.Output<string>;
     /**
      * The IP address of the destination to which traffic is allowed.
      */
-    public readonly address!: pulumi.Output<string>;
+    declare public readonly address: pulumi.Output<string>;
     /**
      * The ID of the Custom Routing Endpoint Traffic Policy.
      */
-    public /*out*/ readonly customRoutingEndpointTrafficPolicyId!: pulumi.Output<string>;
+    declare public /*out*/ readonly customRoutingEndpointTrafficPolicyId: pulumi.Output<string>;
     /**
      * The ID of the endpoint group.
      */
-    public /*out*/ readonly endpointGroupId!: pulumi.Output<string>;
+    declare public /*out*/ readonly endpointGroupId: pulumi.Output<string>;
     /**
      * The ID of the Custom Routing Endpoint.
      */
-    public readonly endpointId!: pulumi.Output<string>;
+    declare public readonly endpointId: pulumi.Output<string>;
     /**
      * The ID of the listener.
      */
-    public /*out*/ readonly listenerId!: pulumi.Output<string>;
+    declare public /*out*/ readonly listenerId: pulumi.Output<string>;
     /**
      * Port rangeSee the following. See `portRanges` below.
      */
-    public readonly portRanges!: pulumi.Output<outputs.ga.CustomRoutingEndpointTrafficPolicyPortRange[] | undefined>;
+    declare public readonly portRanges: pulumi.Output<outputs.ga.CustomRoutingEndpointTrafficPolicyPortRange[] | undefined>;
     /**
      * The status of the Custom Routing Endpoint Traffic Policy.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a CustomRoutingEndpointTrafficPolicy resource with the given unique name, arguments, and options.
@@ -173,25 +173,25 @@ export class CustomRoutingEndpointTrafficPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomRoutingEndpointTrafficPolicyState | undefined;
-            resourceInputs["acceleratorId"] = state ? state.acceleratorId : undefined;
-            resourceInputs["address"] = state ? state.address : undefined;
-            resourceInputs["customRoutingEndpointTrafficPolicyId"] = state ? state.customRoutingEndpointTrafficPolicyId : undefined;
-            resourceInputs["endpointGroupId"] = state ? state.endpointGroupId : undefined;
-            resourceInputs["endpointId"] = state ? state.endpointId : undefined;
-            resourceInputs["listenerId"] = state ? state.listenerId : undefined;
-            resourceInputs["portRanges"] = state ? state.portRanges : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["acceleratorId"] = state?.acceleratorId;
+            resourceInputs["address"] = state?.address;
+            resourceInputs["customRoutingEndpointTrafficPolicyId"] = state?.customRoutingEndpointTrafficPolicyId;
+            resourceInputs["endpointGroupId"] = state?.endpointGroupId;
+            resourceInputs["endpointId"] = state?.endpointId;
+            resourceInputs["listenerId"] = state?.listenerId;
+            resourceInputs["portRanges"] = state?.portRanges;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as CustomRoutingEndpointTrafficPolicyArgs | undefined;
-            if ((!args || args.address === undefined) && !opts.urn) {
+            if (args?.address === undefined && !opts.urn) {
                 throw new Error("Missing required property 'address'");
             }
-            if ((!args || args.endpointId === undefined) && !opts.urn) {
+            if (args?.endpointId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpointId'");
             }
-            resourceInputs["address"] = args ? args.address : undefined;
-            resourceInputs["endpointId"] = args ? args.endpointId : undefined;
-            resourceInputs["portRanges"] = args ? args.portRanges : undefined;
+            resourceInputs["address"] = args?.address;
+            resourceInputs["endpointId"] = args?.endpointId;
+            resourceInputs["portRanges"] = args?.portRanges;
             resourceInputs["acceleratorId"] = undefined /*out*/;
             resourceInputs["customRoutingEndpointTrafficPolicyId"] = undefined /*out*/;
             resourceInputs["endpointGroupId"] = undefined /*out*/;

@@ -83,31 +83,31 @@ export class SecurityPolicy extends pulumi.CustomResource {
      * - TLS 1.2 supports the following cipher suites: `ECDHE-ECDSA-AES128-SHA`, `ECDHE-ECDSA-AES256-SHA`, `ECDHE-RSA-AES128-SHA`, `ECDHE-RSA-AES256-SHA`, `AES128-SHA`, `AES256-SHA, DES-CBC3-SHA`, `ECDHE-ECDSA-AES128-GCM-SHA256`, `ECDHE-ECDSA-AES256-GCM-SHA384`, `ECDHE-ECDSA-AES128-SHA256`, `ECDHE-ECDSA-AES256-SHA384`, `ECDHE-RSA-AES128-GCM-SHA256`, `ECDHE-RSA-AES256-GCM-SHA384`, `ECDHE-RSA-AES128-SHA256`, `ECDHE-RSA-AES256-SHA384`, `AES128-GCM-SHA256`, `AES256-GCM-SHA384`, `AES128-SHA256`, `AES256-SHA256`
      * - TLS 1.3 supports the following cipher suites: `TLS_AES_128_GCM_SHA256`, `TLS_AES_256_GCM_SHA384`, `TLS_CHACHA20_POLY1305_SHA256`, `TLS_AES_128_CCM_SHA256`, `TLS_AES_128_CCM_8_SHA256`.
      */
-    public readonly ciphers!: pulumi.Output<string[]>;
+    declare public readonly ciphers: pulumi.Output<string[]>;
     /**
      * The ID of the new resource group.
      *
      * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The name of the security policy.
      *
      * The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
      */
-    public readonly securityPolicyName!: pulumi.Output<string>;
+    declare public readonly securityPolicyName: pulumi.Output<string>;
     /**
      * The status of the resource
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tag of the resource
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The supported versions of the Transport Layer Security (TLS) protocol. Valid values: `TLSv1.0`, `TLSv1.1`, `TLSv1.2`, and `TLSv1.3`. You can specify at most four TLS versions.
      */
-    public readonly tlsVersions!: pulumi.Output<string[]>;
+    declare public readonly tlsVersions: pulumi.Output<string[]>;
 
     /**
      * Create a SecurityPolicy resource with the given unique name, arguments, and options.
@@ -122,25 +122,25 @@ export class SecurityPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecurityPolicyState | undefined;
-            resourceInputs["ciphers"] = state ? state.ciphers : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["securityPolicyName"] = state ? state.securityPolicyName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["tlsVersions"] = state ? state.tlsVersions : undefined;
+            resourceInputs["ciphers"] = state?.ciphers;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["securityPolicyName"] = state?.securityPolicyName;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["tlsVersions"] = state?.tlsVersions;
         } else {
             const args = argsOrState as SecurityPolicyArgs | undefined;
-            if ((!args || args.ciphers === undefined) && !opts.urn) {
+            if (args?.ciphers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ciphers'");
             }
-            if ((!args || args.tlsVersions === undefined) && !opts.urn) {
+            if (args?.tlsVersions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tlsVersions'");
             }
-            resourceInputs["ciphers"] = args ? args.ciphers : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["securityPolicyName"] = args ? args.securityPolicyName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["tlsVersions"] = args ? args.tlsVersions : undefined;
+            resourceInputs["ciphers"] = args?.ciphers;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["securityPolicyName"] = args?.securityPolicyName;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["tlsVersions"] = args?.tlsVersions;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

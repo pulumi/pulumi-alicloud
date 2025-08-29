@@ -71,63 +71,63 @@ export class Project extends pulumi.CustomResource {
     /**
      * Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * Represents the creation time of the project
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Used to implement computing resource allocation. Valid values: subQuota Nickname
      * If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
      */
-    public readonly defaultQuota!: pulumi.Output<string | undefined>;
+    declare public readonly defaultQuota: pulumi.Output<string | undefined>;
     /**
      * IP whitelist See `ipWhiteList` below.
      */
-    public readonly ipWhiteList!: pulumi.Output<outputs.maxcompute.ProjectIpWhiteList | undefined>;
+    declare public readonly ipWhiteList: pulumi.Output<outputs.maxcompute.ProjectIpWhiteList | undefined>;
     /**
      * Whether to logically delete. Default value: true. Value: (ture/false),
      *
      * > **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
      */
-    public readonly isLogical!: pulumi.Output<string | undefined>;
+    declare public readonly isLogical: pulumi.Output<string | undefined>;
     /**
      * Project owner
      */
-    public /*out*/ readonly owner!: pulumi.Output<string>;
-    public readonly productType!: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly owner: pulumi.Output<string>;
+    declare public readonly productType: pulumi.Output<string | undefined>;
     /**
      * The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
      */
-    public readonly projectName!: pulumi.Output<string>;
+    declare public readonly projectName: pulumi.Output<string>;
     /**
      * Project base attributes See `properties` below.
      */
-    public readonly properties!: pulumi.Output<outputs.maxcompute.ProjectProperties>;
+    declare public readonly properties: pulumi.Output<outputs.maxcompute.ProjectProperties>;
     /**
      * The region ID of the resource
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * Security-related attributes See `securityProperties` below.
      */
-    public readonly securityProperties!: pulumi.Output<outputs.maxcompute.ProjectSecurityProperties>;
+    declare public readonly securityProperties: pulumi.Output<outputs.maxcompute.ProjectSecurityProperties>;
     /**
      * The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The tag of the resource
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Indicates whether data storage by schema is supported. Valid values:
      */
-    public readonly threeTierModel!: pulumi.Output<boolean>;
+    declare public readonly threeTierModel: pulumi.Output<boolean>;
     /**
      * Project type
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -142,34 +142,34 @@ export class Project extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["defaultQuota"] = state ? state.defaultQuota : undefined;
-            resourceInputs["ipWhiteList"] = state ? state.ipWhiteList : undefined;
-            resourceInputs["isLogical"] = state ? state.isLogical : undefined;
-            resourceInputs["owner"] = state ? state.owner : undefined;
-            resourceInputs["productType"] = state ? state.productType : undefined;
-            resourceInputs["projectName"] = state ? state.projectName : undefined;
-            resourceInputs["properties"] = state ? state.properties : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["securityProperties"] = state ? state.securityProperties : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["threeTierModel"] = state ? state.threeTierModel : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["defaultQuota"] = state?.defaultQuota;
+            resourceInputs["ipWhiteList"] = state?.ipWhiteList;
+            resourceInputs["isLogical"] = state?.isLogical;
+            resourceInputs["owner"] = state?.owner;
+            resourceInputs["productType"] = state?.productType;
+            resourceInputs["projectName"] = state?.projectName;
+            resourceInputs["properties"] = state?.properties;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["securityProperties"] = state?.securityProperties;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["threeTierModel"] = state?.threeTierModel;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["defaultQuota"] = args ? args.defaultQuota : undefined;
-            resourceInputs["ipWhiteList"] = args ? args.ipWhiteList : undefined;
-            resourceInputs["isLogical"] = args ? args.isLogical : undefined;
-            resourceInputs["productType"] = args ? args.productType : undefined;
-            resourceInputs["projectName"] = args ? args.projectName : undefined;
-            resourceInputs["properties"] = args ? args.properties : undefined;
-            resourceInputs["securityProperties"] = args ? args.securityProperties : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["threeTierModel"] = args ? args.threeTierModel : undefined;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["defaultQuota"] = args?.defaultQuota;
+            resourceInputs["ipWhiteList"] = args?.ipWhiteList;
+            resourceInputs["isLogical"] = args?.isLogical;
+            resourceInputs["productType"] = args?.productType;
+            resourceInputs["projectName"] = args?.projectName;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["securityProperties"] = args?.securityProperties;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["threeTierModel"] = args?.threeTierModel;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["owner"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;

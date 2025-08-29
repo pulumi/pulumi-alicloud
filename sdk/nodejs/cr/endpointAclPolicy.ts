@@ -87,23 +87,23 @@ export class EndpointAclPolicy extends pulumi.CustomResource {
     /**
      * The description of the entry.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The type of endpoint. Valid values: `internet`.
      */
-    public readonly endpointType!: pulumi.Output<string>;
+    declare public readonly endpointType: pulumi.Output<string>;
     /**
      * The IP segment that allowed to access.
      */
-    public readonly entry!: pulumi.Output<string>;
+    declare public readonly entry: pulumi.Output<string>;
     /**
      * The ID of the CR Instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The module that needs to set the access policy. Valid values: `Registry`.
      */
-    public readonly moduleName!: pulumi.Output<string | undefined>;
+    declare public readonly moduleName: pulumi.Output<string | undefined>;
 
     /**
      * Create a EndpointAclPolicy resource with the given unique name, arguments, and options.
@@ -118,27 +118,27 @@ export class EndpointAclPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EndpointAclPolicyState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["endpointType"] = state ? state.endpointType : undefined;
-            resourceInputs["entry"] = state ? state.entry : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["moduleName"] = state ? state.moduleName : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["endpointType"] = state?.endpointType;
+            resourceInputs["entry"] = state?.entry;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["moduleName"] = state?.moduleName;
         } else {
             const args = argsOrState as EndpointAclPolicyArgs | undefined;
-            if ((!args || args.endpointType === undefined) && !opts.urn) {
+            if (args?.endpointType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpointType'");
             }
-            if ((!args || args.entry === undefined) && !opts.urn) {
+            if (args?.entry === undefined && !opts.urn) {
                 throw new Error("Missing required property 'entry'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["endpointType"] = args ? args.endpointType : undefined;
-            resourceInputs["entry"] = args ? args.entry : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["moduleName"] = args ? args.moduleName : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["endpointType"] = args?.endpointType;
+            resourceInputs["entry"] = args?.entry;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["moduleName"] = args?.moduleName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EndpointAclPolicy.__pulumiType, name, resourceInputs, opts);

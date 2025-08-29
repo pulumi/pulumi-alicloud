@@ -89,19 +89,19 @@ export class HostGroup extends pulumi.CustomResource {
     /**
      * Specify the New Host Group of Notes, Supports up to 500 Characters.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * Host Group ID.
      */
-    public /*out*/ readonly hostGroupId!: pulumi.Output<string>;
+    declare public /*out*/ readonly hostGroupId: pulumi.Output<string>;
     /**
      * Specify the New Host Group Name, Supports up to 128 Characters.
      */
-    public readonly hostGroupName!: pulumi.Output<string>;
+    declare public readonly hostGroupName: pulumi.Output<string>;
     /**
      * Specify the New Host Group Where the Bastion Host ID of.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
 
     /**
      * Create a HostGroup resource with the given unique name, arguments, and options.
@@ -116,21 +116,21 @@ export class HostGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HostGroupState | undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["hostGroupId"] = state ? state.hostGroupId : undefined;
-            resourceInputs["hostGroupName"] = state ? state.hostGroupName : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["hostGroupId"] = state?.hostGroupId;
+            resourceInputs["hostGroupName"] = state?.hostGroupName;
+            resourceInputs["instanceId"] = state?.instanceId;
         } else {
             const args = argsOrState as HostGroupArgs | undefined;
-            if ((!args || args.hostGroupName === undefined) && !opts.urn) {
+            if (args?.hostGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostGroupName'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["hostGroupName"] = args ? args.hostGroupName : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["hostGroupName"] = args?.hostGroupName;
+            resourceInputs["instanceId"] = args?.instanceId;
             resourceInputs["hostGroupId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

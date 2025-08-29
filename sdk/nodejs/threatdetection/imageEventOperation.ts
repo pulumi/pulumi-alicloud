@@ -81,27 +81,27 @@ export class ImageEventOperation extends pulumi.CustomResource {
     /**
      * Event Conditions.
      */
-    public readonly conditions!: pulumi.Output<string | undefined>;
+    declare public readonly conditions: pulumi.Output<string | undefined>;
     /**
      * Image Event Key.
      */
-    public readonly eventKey!: pulumi.Output<string | undefined>;
+    declare public readonly eventKey: pulumi.Output<string | undefined>;
     /**
      * Image Event Name.
      */
-    public readonly eventName!: pulumi.Output<string | undefined>;
+    declare public readonly eventName: pulumi.Output<string | undefined>;
     /**
      * Image Event Type.
      */
-    public readonly eventType!: pulumi.Output<string>;
+    declare public readonly eventType: pulumi.Output<string>;
     /**
      * Event Operation Code.
      */
-    public readonly operationCode!: pulumi.Output<string | undefined>;
+    declare public readonly operationCode: pulumi.Output<string | undefined>;
     /**
      * Event Scenarios.
      */
-    public readonly scenarios!: pulumi.Output<string | undefined>;
+    declare public readonly scenarios: pulumi.Output<string | undefined>;
 
     /**
      * Create a ImageEventOperation resource with the given unique name, arguments, and options.
@@ -116,20 +116,20 @@ export class ImageEventOperation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImageEventOperationState | undefined;
-            resourceInputs["conditions"] = state ? state.conditions : undefined;
-            resourceInputs["eventKey"] = state ? state.eventKey : undefined;
-            resourceInputs["eventName"] = state ? state.eventName : undefined;
-            resourceInputs["eventType"] = state ? state.eventType : undefined;
-            resourceInputs["operationCode"] = state ? state.operationCode : undefined;
-            resourceInputs["scenarios"] = state ? state.scenarios : undefined;
+            resourceInputs["conditions"] = state?.conditions;
+            resourceInputs["eventKey"] = state?.eventKey;
+            resourceInputs["eventName"] = state?.eventName;
+            resourceInputs["eventType"] = state?.eventType;
+            resourceInputs["operationCode"] = state?.operationCode;
+            resourceInputs["scenarios"] = state?.scenarios;
         } else {
             const args = argsOrState as ImageEventOperationArgs | undefined;
-            resourceInputs["conditions"] = args ? args.conditions : undefined;
-            resourceInputs["eventKey"] = args ? args.eventKey : undefined;
-            resourceInputs["eventName"] = args ? args.eventName : undefined;
-            resourceInputs["eventType"] = args ? args.eventType : undefined;
-            resourceInputs["operationCode"] = args ? args.operationCode : undefined;
-            resourceInputs["scenarios"] = args ? args.scenarios : undefined;
+            resourceInputs["conditions"] = args?.conditions;
+            resourceInputs["eventKey"] = args?.eventKey;
+            resourceInputs["eventName"] = args?.eventName;
+            resourceInputs["eventType"] = args?.eventType;
+            resourceInputs["operationCode"] = args?.operationCode;
+            resourceInputs["scenarios"] = args?.scenarios;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ImageEventOperation.__pulumiType, name, resourceInputs, opts);

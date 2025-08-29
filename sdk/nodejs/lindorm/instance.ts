@@ -87,211 +87,211 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The multi-availability zone instance, coordinating the virtual switch ID of the availability zone, the switch must be located under the availability zone corresponding to the ArbiterZoneId. This parameter is required if you need to create multiple availability zone instances.
      */
-    public readonly arbiterVswitchId!: pulumi.Output<string | undefined>;
+    declare public readonly arbiterVswitchId: pulumi.Output<string | undefined>;
     /**
      * The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
      */
-    public readonly arbiterZoneId!: pulumi.Output<string | undefined>;
+    declare public readonly arbiterZoneId: pulumi.Output<string | undefined>;
     /**
      * The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
      */
-    public readonly archVersion!: pulumi.Output<string>;
+    declare public readonly archVersion: pulumi.Output<string>;
     /**
      * Specifies whether to enable auto-renewal for the instance. Valid when the `paymentType` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
      */
-    public readonly autoRenew!: pulumi.Output<string | undefined>;
+    declare public readonly autoRenew: pulumi.Output<string | undefined>;
     /**
      * The subscription duration that is supported by auto-renewal. Unit: months. Valid values: `1` to `12`. This parameter is required only if the AutoRenew parameter is set to true.
      */
-    public readonly autoRenewPeriod!: pulumi.Output<string | undefined>;
+    declare public readonly autoRenewPeriod: pulumi.Output<string | undefined>;
     /**
      * The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
      */
-    public readonly coldStorage!: pulumi.Output<number>;
+    declare public readonly coldStorage: pulumi.Output<number>;
     /**
      * The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
      */
-    public readonly coreSingleStorage!: pulumi.Output<number | undefined>;
+    declare public readonly coreSingleStorage: pulumi.Output<number | undefined>;
     /**
      * The core spec. When `diskCategory` is `localSsdPro` or `localHddPro`, this filed is valid.
      * - When `diskCategory` is `localSsdPro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
      * - When `diskCategory` is `localHddPro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
      */
-    public readonly coreSpec!: pulumi.Output<string>;
+    declare public readonly coreSpec: pulumi.Output<string>;
     /**
      * The deletion protection of instance.
      */
-    public readonly deletionProection!: pulumi.Output<boolean>;
+    declare public readonly deletionProection: pulumi.Output<boolean>;
     /**
      * The disk type of instance. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdPl0`, `capacityCloudStorage`, `localSsdPro`, `localHddPro`. **NOTE:** From version 1.207.0, `diskCategory` can be set to `cloudEssdPl0`.
      */
-    public readonly diskCategory!: pulumi.Output<string>;
+    declare public readonly diskCategory: pulumi.Output<string>;
     /**
      * The duration of paid. Valid when the `paymentType` is `Subscription`.  When `pricingCycle` set to `Month`, the valid value id `1` to `9`.  When `pricingCycle` set to `Year`, the valid value id `1` to `3`.
      */
-    public readonly duration!: pulumi.Output<string | undefined>;
+    declare public readonly duration: pulumi.Output<string | undefined>;
     /**
      * (Available since v1.163.0) Whether to enable file engine.
      */
-    public /*out*/ readonly enabledFileEngine!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly enabledFileEngine: pulumi.Output<boolean>;
     /**
      * (Available since v1.163.0) Whether to enable lts engine.
      */
-    public /*out*/ readonly enabledLtsEngine!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly enabledLtsEngine: pulumi.Output<boolean>;
     /**
      * (Available since v1.163.0) Whether to enable search engine.
      */
-    public /*out*/ readonly enabledSearchEngine!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly enabledSearchEngine: pulumi.Output<boolean>;
     /**
      * (Available since v1.211.0) Whether to enable streaming engine.
      */
-    public /*out*/ readonly enabledStreamEngine!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly enabledStreamEngine: pulumi.Output<boolean>;
     /**
      * (Available since v1.163.0) Whether to enable table engine.
      */
-    public /*out*/ readonly enabledTableEngine!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly enabledTableEngine: pulumi.Output<boolean>;
     /**
      * (Available since v1.163.0) Whether to enable time serires engine.
      */
-    public /*out*/ readonly enabledTimeSeriresEngine!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly enabledTimeSeriresEngine: pulumi.Output<boolean>;
     /**
      * The count of file engine.
      */
-    public readonly fileEngineNodeCount!: pulumi.Output<number>;
+    declare public readonly fileEngineNodeCount: pulumi.Output<number>;
     /**
      * The specification of file engine. Valid values: `lindorm.c.xlarge`.
      */
-    public readonly fileEngineSpecification!: pulumi.Output<string>;
+    declare public readonly fileEngineSpecification: pulumi.Output<string>;
     /**
      * The name of the instance.
      */
-    public readonly instanceName!: pulumi.Output<string | undefined>;
+    declare public readonly instanceName: pulumi.Output<string | undefined>;
     /**
      * The storage capacity of the instance. Unit: GB. Valid values: [80, 10485760], and the value must be divisible by 80.
      */
-    public readonly instanceStorage!: pulumi.Output<string>;
+    declare public readonly instanceStorage: pulumi.Output<string>;
     /**
      * The ip white list of instance.
      */
-    public readonly ipWhiteLists!: pulumi.Output<string[] | undefined>;
+    declare public readonly ipWhiteLists: pulumi.Output<string[] | undefined>;
     /**
      * The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloudEfficiency`, `cloudSsd`.
      */
-    public readonly logDiskCategory!: pulumi.Output<string | undefined>;
+    declare public readonly logDiskCategory: pulumi.Output<string | undefined>;
     /**
      * The multiple Availability Zone Instance, number of log nodes. this parameter is required if you want to create multiple availability zone instances. Valid values: `4` to `400`.
      */
-    public readonly logNum!: pulumi.Output<number | undefined>;
+    declare public readonly logNum: pulumi.Output<number | undefined>;
     /**
      * The multi-availability instance, log single-node disk capacity. This parameter is required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
      */
-    public readonly logSingleStorage!: pulumi.Output<number | undefined>;
+    declare public readonly logSingleStorage: pulumi.Output<number | undefined>;
     /**
      * The multiple availability zone instances, log node specification. required if you need to create multiple availability zone instances. Valid values: `lindorm.sn1.large`, `lindorm.sn1.2xlarge`.
      */
-    public readonly logSpec!: pulumi.Output<string | undefined>;
+    declare public readonly logSpec: pulumi.Output<string | undefined>;
     /**
      * The count of lindorm tunnel service.
      */
-    public readonly ltsNodeCount!: pulumi.Output<number>;
+    declare public readonly ltsNodeCount: pulumi.Output<number>;
     /**
      * The specification of lindorm tunnel service. Valid values: `lindorm.g.2xlarge`, `lindorm.g.xlarge`.
      */
-    public readonly ltsNodeSpecification!: pulumi.Output<string>;
+    declare public readonly ltsNodeSpecification: pulumi.Output<string>;
     /**
      * The multi-zone combinations. Availability zone combinations are supported on the sale page. required if you need to create multiple availability zone instances. Valid values: `ap-southeast-5abc-aliyun`, `cn-hangzhou-ehi-aliyun`, `cn-beijing-acd-aliyun`, `ap-southeast-1-abc-aliyun`, `cn-zhangjiakou-abc-aliyun`, `cn-shanghai-efg-aliyun`, `cn-shanghai-abd-aliyun`, `cn-hangzhou-bef-aliyun`, `cn-hangzhou-bce-aliyun`, `cn-beijing-fgh-aliyun`, `cn-shenzhen-abc-aliyun`.
      */
-    public readonly multiZoneCombination!: pulumi.Output<string | undefined>;
+    declare public readonly multiZoneCombination: pulumi.Output<string | undefined>;
     /**
      * The billing method. Valid values: `PayAsYouGo` and `Subscription`.
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * The pricing cycle. Valid when the `paymentType` is `Subscription`. Valid values: `Month` and `Year`.
      */
-    public readonly pricingCycle!: pulumi.Output<string | undefined>;
+    declare public readonly pricingCycle: pulumi.Output<string | undefined>;
     /**
      * Multi-available zone instances, the virtual switch ID of the primary available zone, must be under the available zone corresponding to the PrimaryZoneId. required if you need to create multiple availability zone instances.
      */
-    public readonly primaryVswitchId!: pulumi.Output<string | undefined>;
+    declare public readonly primaryVswitchId: pulumi.Output<string | undefined>;
     /**
      * Multi-availability zone instance with the availability zone ID of the main availability zone. required if you need to create multiple availability zone instances.
      */
-    public readonly primaryZoneId!: pulumi.Output<string | undefined>;
+    declare public readonly primaryZoneId: pulumi.Output<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The count of search engine.
      */
-    public readonly searchEngineNodeCount!: pulumi.Output<number>;
+    declare public readonly searchEngineNodeCount: pulumi.Output<number>;
     /**
      * The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
      */
-    public readonly searchEngineSpecification!: pulumi.Output<string>;
+    declare public readonly searchEngineSpecification: pulumi.Output<string>;
     /**
      * (Available since v1.196.0) The instance type.
      */
-    public /*out*/ readonly serviceType!: pulumi.Output<string>;
+    declare public /*out*/ readonly serviceType: pulumi.Output<string>;
     /**
      * The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
      */
-    public readonly standbyVswitchId!: pulumi.Output<string | undefined>;
+    declare public readonly standbyVswitchId: pulumi.Output<string | undefined>;
     /**
      * The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
      */
-    public readonly standbyZoneId!: pulumi.Output<string | undefined>;
+    declare public readonly standbyZoneId: pulumi.Output<string | undefined>;
     /**
      * The status of Instance.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The number of LindormStream nodes in the instance.
      */
-    public readonly streamEngineNodeCount!: pulumi.Output<number>;
+    declare public readonly streamEngineNodeCount: pulumi.Output<number>;
     /**
      * The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
      */
-    public readonly streamEngineSpecification!: pulumi.Output<string>;
+    declare public readonly streamEngineSpecification: pulumi.Output<string>;
     /**
      * The count of table engine.
      */
-    public readonly tableEngineNodeCount!: pulumi.Output<number>;
+    declare public readonly tableEngineNodeCount: pulumi.Output<number>;
     /**
      * The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
      */
-    public readonly tableEngineSpecification!: pulumi.Output<string>;
+    declare public readonly tableEngineSpecification: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The count of time series engine.
      */
-    public readonly timeSeriesEngineNodeCount!: pulumi.Output<number>;
+    declare public readonly timeSeriesEngineNodeCount: pulumi.Output<number>;
     /**
      * The specification of time series engine. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
      */
-    public readonly timeSeriesEngineSpecification!: pulumi.Output<string>;
+    declare public readonly timeSeriesEngineSpecification: pulumi.Output<string>;
     /**
      * Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
      *
      * @deprecated Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
      */
-    public readonly timeSeriresEngineSpecification!: pulumi.Output<string>;
+    declare public readonly timeSeriresEngineSpecification: pulumi.Output<string>;
     /**
      * The VPC ID of the instance.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * The vswitch id.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
     /**
      * The zone ID of the instance.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -306,111 +306,111 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["arbiterVswitchId"] = state ? state.arbiterVswitchId : undefined;
-            resourceInputs["arbiterZoneId"] = state ? state.arbiterZoneId : undefined;
-            resourceInputs["archVersion"] = state ? state.archVersion : undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
-            resourceInputs["coldStorage"] = state ? state.coldStorage : undefined;
-            resourceInputs["coreSingleStorage"] = state ? state.coreSingleStorage : undefined;
-            resourceInputs["coreSpec"] = state ? state.coreSpec : undefined;
-            resourceInputs["deletionProection"] = state ? state.deletionProection : undefined;
-            resourceInputs["diskCategory"] = state ? state.diskCategory : undefined;
-            resourceInputs["duration"] = state ? state.duration : undefined;
-            resourceInputs["enabledFileEngine"] = state ? state.enabledFileEngine : undefined;
-            resourceInputs["enabledLtsEngine"] = state ? state.enabledLtsEngine : undefined;
-            resourceInputs["enabledSearchEngine"] = state ? state.enabledSearchEngine : undefined;
-            resourceInputs["enabledStreamEngine"] = state ? state.enabledStreamEngine : undefined;
-            resourceInputs["enabledTableEngine"] = state ? state.enabledTableEngine : undefined;
-            resourceInputs["enabledTimeSeriresEngine"] = state ? state.enabledTimeSeriresEngine : undefined;
-            resourceInputs["fileEngineNodeCount"] = state ? state.fileEngineNodeCount : undefined;
-            resourceInputs["fileEngineSpecification"] = state ? state.fileEngineSpecification : undefined;
-            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
-            resourceInputs["instanceStorage"] = state ? state.instanceStorage : undefined;
-            resourceInputs["ipWhiteLists"] = state ? state.ipWhiteLists : undefined;
-            resourceInputs["logDiskCategory"] = state ? state.logDiskCategory : undefined;
-            resourceInputs["logNum"] = state ? state.logNum : undefined;
-            resourceInputs["logSingleStorage"] = state ? state.logSingleStorage : undefined;
-            resourceInputs["logSpec"] = state ? state.logSpec : undefined;
-            resourceInputs["ltsNodeCount"] = state ? state.ltsNodeCount : undefined;
-            resourceInputs["ltsNodeSpecification"] = state ? state.ltsNodeSpecification : undefined;
-            resourceInputs["multiZoneCombination"] = state ? state.multiZoneCombination : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["pricingCycle"] = state ? state.pricingCycle : undefined;
-            resourceInputs["primaryVswitchId"] = state ? state.primaryVswitchId : undefined;
-            resourceInputs["primaryZoneId"] = state ? state.primaryZoneId : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["searchEngineNodeCount"] = state ? state.searchEngineNodeCount : undefined;
-            resourceInputs["searchEngineSpecification"] = state ? state.searchEngineSpecification : undefined;
-            resourceInputs["serviceType"] = state ? state.serviceType : undefined;
-            resourceInputs["standbyVswitchId"] = state ? state.standbyVswitchId : undefined;
-            resourceInputs["standbyZoneId"] = state ? state.standbyZoneId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["streamEngineNodeCount"] = state ? state.streamEngineNodeCount : undefined;
-            resourceInputs["streamEngineSpecification"] = state ? state.streamEngineSpecification : undefined;
-            resourceInputs["tableEngineNodeCount"] = state ? state.tableEngineNodeCount : undefined;
-            resourceInputs["tableEngineSpecification"] = state ? state.tableEngineSpecification : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["timeSeriesEngineNodeCount"] = state ? state.timeSeriesEngineNodeCount : undefined;
-            resourceInputs["timeSeriesEngineSpecification"] = state ? state.timeSeriesEngineSpecification : undefined;
-            resourceInputs["timeSeriresEngineSpecification"] = state ? state.timeSeriresEngineSpecification : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["arbiterVswitchId"] = state?.arbiterVswitchId;
+            resourceInputs["arbiterZoneId"] = state?.arbiterZoneId;
+            resourceInputs["archVersion"] = state?.archVersion;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["autoRenewPeriod"] = state?.autoRenewPeriod;
+            resourceInputs["coldStorage"] = state?.coldStorage;
+            resourceInputs["coreSingleStorage"] = state?.coreSingleStorage;
+            resourceInputs["coreSpec"] = state?.coreSpec;
+            resourceInputs["deletionProection"] = state?.deletionProection;
+            resourceInputs["diskCategory"] = state?.diskCategory;
+            resourceInputs["duration"] = state?.duration;
+            resourceInputs["enabledFileEngine"] = state?.enabledFileEngine;
+            resourceInputs["enabledLtsEngine"] = state?.enabledLtsEngine;
+            resourceInputs["enabledSearchEngine"] = state?.enabledSearchEngine;
+            resourceInputs["enabledStreamEngine"] = state?.enabledStreamEngine;
+            resourceInputs["enabledTableEngine"] = state?.enabledTableEngine;
+            resourceInputs["enabledTimeSeriresEngine"] = state?.enabledTimeSeriresEngine;
+            resourceInputs["fileEngineNodeCount"] = state?.fileEngineNodeCount;
+            resourceInputs["fileEngineSpecification"] = state?.fileEngineSpecification;
+            resourceInputs["instanceName"] = state?.instanceName;
+            resourceInputs["instanceStorage"] = state?.instanceStorage;
+            resourceInputs["ipWhiteLists"] = state?.ipWhiteLists;
+            resourceInputs["logDiskCategory"] = state?.logDiskCategory;
+            resourceInputs["logNum"] = state?.logNum;
+            resourceInputs["logSingleStorage"] = state?.logSingleStorage;
+            resourceInputs["logSpec"] = state?.logSpec;
+            resourceInputs["ltsNodeCount"] = state?.ltsNodeCount;
+            resourceInputs["ltsNodeSpecification"] = state?.ltsNodeSpecification;
+            resourceInputs["multiZoneCombination"] = state?.multiZoneCombination;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["pricingCycle"] = state?.pricingCycle;
+            resourceInputs["primaryVswitchId"] = state?.primaryVswitchId;
+            resourceInputs["primaryZoneId"] = state?.primaryZoneId;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["searchEngineNodeCount"] = state?.searchEngineNodeCount;
+            resourceInputs["searchEngineSpecification"] = state?.searchEngineSpecification;
+            resourceInputs["serviceType"] = state?.serviceType;
+            resourceInputs["standbyVswitchId"] = state?.standbyVswitchId;
+            resourceInputs["standbyZoneId"] = state?.standbyZoneId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["streamEngineNodeCount"] = state?.streamEngineNodeCount;
+            resourceInputs["streamEngineSpecification"] = state?.streamEngineSpecification;
+            resourceInputs["tableEngineNodeCount"] = state?.tableEngineNodeCount;
+            resourceInputs["tableEngineSpecification"] = state?.tableEngineSpecification;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["timeSeriesEngineNodeCount"] = state?.timeSeriesEngineNodeCount;
+            resourceInputs["timeSeriesEngineSpecification"] = state?.timeSeriesEngineSpecification;
+            resourceInputs["timeSeriresEngineSpecification"] = state?.timeSeriresEngineSpecification;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.diskCategory === undefined) && !opts.urn) {
+            if (args?.diskCategory === undefined && !opts.urn) {
                 throw new Error("Missing required property 'diskCategory'");
             }
-            if ((!args || args.paymentType === undefined) && !opts.urn) {
+            if (args?.paymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+            if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            resourceInputs["arbiterVswitchId"] = args ? args.arbiterVswitchId : undefined;
-            resourceInputs["arbiterZoneId"] = args ? args.arbiterZoneId : undefined;
-            resourceInputs["archVersion"] = args ? args.archVersion : undefined;
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
-            resourceInputs["coldStorage"] = args ? args.coldStorage : undefined;
-            resourceInputs["coreSingleStorage"] = args ? args.coreSingleStorage : undefined;
-            resourceInputs["coreSpec"] = args ? args.coreSpec : undefined;
-            resourceInputs["deletionProection"] = args ? args.deletionProection : undefined;
-            resourceInputs["diskCategory"] = args ? args.diskCategory : undefined;
-            resourceInputs["duration"] = args ? args.duration : undefined;
-            resourceInputs["fileEngineNodeCount"] = args ? args.fileEngineNodeCount : undefined;
-            resourceInputs["fileEngineSpecification"] = args ? args.fileEngineSpecification : undefined;
-            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
-            resourceInputs["instanceStorage"] = args ? args.instanceStorage : undefined;
-            resourceInputs["ipWhiteLists"] = args ? args.ipWhiteLists : undefined;
-            resourceInputs["logDiskCategory"] = args ? args.logDiskCategory : undefined;
-            resourceInputs["logNum"] = args ? args.logNum : undefined;
-            resourceInputs["logSingleStorage"] = args ? args.logSingleStorage : undefined;
-            resourceInputs["logSpec"] = args ? args.logSpec : undefined;
-            resourceInputs["ltsNodeCount"] = args ? args.ltsNodeCount : undefined;
-            resourceInputs["ltsNodeSpecification"] = args ? args.ltsNodeSpecification : undefined;
-            resourceInputs["multiZoneCombination"] = args ? args.multiZoneCombination : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["pricingCycle"] = args ? args.pricingCycle : undefined;
-            resourceInputs["primaryVswitchId"] = args ? args.primaryVswitchId : undefined;
-            resourceInputs["primaryZoneId"] = args ? args.primaryZoneId : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["searchEngineNodeCount"] = args ? args.searchEngineNodeCount : undefined;
-            resourceInputs["searchEngineSpecification"] = args ? args.searchEngineSpecification : undefined;
-            resourceInputs["standbyVswitchId"] = args ? args.standbyVswitchId : undefined;
-            resourceInputs["standbyZoneId"] = args ? args.standbyZoneId : undefined;
-            resourceInputs["streamEngineNodeCount"] = args ? args.streamEngineNodeCount : undefined;
-            resourceInputs["streamEngineSpecification"] = args ? args.streamEngineSpecification : undefined;
-            resourceInputs["tableEngineNodeCount"] = args ? args.tableEngineNodeCount : undefined;
-            resourceInputs["tableEngineSpecification"] = args ? args.tableEngineSpecification : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["timeSeriesEngineNodeCount"] = args ? args.timeSeriesEngineNodeCount : undefined;
-            resourceInputs["timeSeriesEngineSpecification"] = args ? args.timeSeriesEngineSpecification : undefined;
-            resourceInputs["timeSeriresEngineSpecification"] = args ? args.timeSeriresEngineSpecification : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["arbiterVswitchId"] = args?.arbiterVswitchId;
+            resourceInputs["arbiterZoneId"] = args?.arbiterZoneId;
+            resourceInputs["archVersion"] = args?.archVersion;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["autoRenewPeriod"] = args?.autoRenewPeriod;
+            resourceInputs["coldStorage"] = args?.coldStorage;
+            resourceInputs["coreSingleStorage"] = args?.coreSingleStorage;
+            resourceInputs["coreSpec"] = args?.coreSpec;
+            resourceInputs["deletionProection"] = args?.deletionProection;
+            resourceInputs["diskCategory"] = args?.diskCategory;
+            resourceInputs["duration"] = args?.duration;
+            resourceInputs["fileEngineNodeCount"] = args?.fileEngineNodeCount;
+            resourceInputs["fileEngineSpecification"] = args?.fileEngineSpecification;
+            resourceInputs["instanceName"] = args?.instanceName;
+            resourceInputs["instanceStorage"] = args?.instanceStorage;
+            resourceInputs["ipWhiteLists"] = args?.ipWhiteLists;
+            resourceInputs["logDiskCategory"] = args?.logDiskCategory;
+            resourceInputs["logNum"] = args?.logNum;
+            resourceInputs["logSingleStorage"] = args?.logSingleStorage;
+            resourceInputs["logSpec"] = args?.logSpec;
+            resourceInputs["ltsNodeCount"] = args?.ltsNodeCount;
+            resourceInputs["ltsNodeSpecification"] = args?.ltsNodeSpecification;
+            resourceInputs["multiZoneCombination"] = args?.multiZoneCombination;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["pricingCycle"] = args?.pricingCycle;
+            resourceInputs["primaryVswitchId"] = args?.primaryVswitchId;
+            resourceInputs["primaryZoneId"] = args?.primaryZoneId;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["searchEngineNodeCount"] = args?.searchEngineNodeCount;
+            resourceInputs["searchEngineSpecification"] = args?.searchEngineSpecification;
+            resourceInputs["standbyVswitchId"] = args?.standbyVswitchId;
+            resourceInputs["standbyZoneId"] = args?.standbyZoneId;
+            resourceInputs["streamEngineNodeCount"] = args?.streamEngineNodeCount;
+            resourceInputs["streamEngineSpecification"] = args?.streamEngineSpecification;
+            resourceInputs["tableEngineNodeCount"] = args?.tableEngineNodeCount;
+            resourceInputs["tableEngineSpecification"] = args?.tableEngineSpecification;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["timeSeriesEngineNodeCount"] = args?.timeSeriesEngineNodeCount;
+            resourceInputs["timeSeriesEngineSpecification"] = args?.timeSeriesEngineSpecification;
+            resourceInputs["timeSeriresEngineSpecification"] = args?.timeSeriresEngineSpecification;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["enabledFileEngine"] = undefined /*out*/;
             resourceInputs["enabledLtsEngine"] = undefined /*out*/;
             resourceInputs["enabledSearchEngine"] = undefined /*out*/;

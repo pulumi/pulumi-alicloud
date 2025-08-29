@@ -67,29 +67,29 @@ export class SmbAclAttachment extends pulumi.CustomResource {
     /**
      * The method that is used to authenticate network identities.
      */
-    public /*out*/ readonly authMethod!: pulumi.Output<string>;
+    declare public /*out*/ readonly authMethod: pulumi.Output<string>;
     /**
      * Specifies whether to allow anonymous access. Valid values:
      * true: The file system allows anonymous access.
      * false: The file system denies anonymous access. Default value: false.
      */
-    public readonly enableAnonymousAccess!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableAnonymousAccess: pulumi.Output<boolean | undefined>;
     /**
      * Specifies whether to enable the ACL feature.
      * true: enables the ACL feature.
      * false: disables the ACL feature.
      */
-    public /*out*/ readonly enabled!: pulumi.Output<string>;
+    declare public /*out*/ readonly enabled: pulumi.Output<string>;
     /**
      * Specifies whether to enable encryption in transit. Valid values:
      * true: enables encryption in transit.
      * false: disables encryption in transit. Default value: false.
      */
-    public readonly encryptData!: pulumi.Output<boolean | undefined>;
+    declare public readonly encryptData: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the file system.
      */
-    public readonly fileSystemId!: pulumi.Output<string>;
+    declare public readonly fileSystemId: pulumi.Output<string>;
     /**
      * The home directory of each user. Each user-specific home directory must meet the following requirements:    
      * Each segment starts with a forward slash (/) or a backslash (\).
@@ -98,28 +98,28 @@ export class SmbAclAttachment extends pulumi.CustomResource {
      * The total length is 0 to 32,767 characters.
      * For example, if you create a user named A and the home directory is /home, the file system automatically creates a directory named /home/A when User A logs on to the file system. If the /home/A directory already exists, the file system does not create the directory.
      */
-    public readonly homeDirPath!: pulumi.Output<string | undefined>;
+    declare public readonly homeDirPath: pulumi.Output<string | undefined>;
     /**
      * The string that is generated after the system encodes the keytab file by using Base64.
      */
-    public readonly keytab!: pulumi.Output<string>;
+    declare public readonly keytab: pulumi.Output<string>;
     /**
      * RThe string that is generated after the system encodes the keytab file by using MD5.
      */
-    public readonly keytabMd5!: pulumi.Output<string>;
+    declare public readonly keytabMd5: pulumi.Output<string>;
     /**
      * Specifies whether to deny access from non-encrypted clients. Valid values:
      * true: The file system denies access from non-encrypted clients.
      * false: The file system allows access from non-encrypted clients. Default value: false.
      */
-    public readonly rejectUnencryptedAccess!: pulumi.Output<boolean | undefined>;
+    declare public readonly rejectUnencryptedAccess: pulumi.Output<boolean | undefined>;
     /**
      * The ID of a super admin. The ID must meet the following requirements:
      * The ID starts with S and does not contain letters except S.
      * The ID contains at least three hyphens (-) as delimiters.
      * Example: S-1-5-22 and S-1-5-22-23.
      */
-    public readonly superAdminSid!: pulumi.Output<string | undefined>;
+    declare public readonly superAdminSid: pulumi.Output<string | undefined>;
 
     /**
      * Create a SmbAclAttachment resource with the given unique name, arguments, and options.
@@ -134,35 +134,35 @@ export class SmbAclAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SmbAclAttachmentState | undefined;
-            resourceInputs["authMethod"] = state ? state.authMethod : undefined;
-            resourceInputs["enableAnonymousAccess"] = state ? state.enableAnonymousAccess : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["encryptData"] = state ? state.encryptData : undefined;
-            resourceInputs["fileSystemId"] = state ? state.fileSystemId : undefined;
-            resourceInputs["homeDirPath"] = state ? state.homeDirPath : undefined;
-            resourceInputs["keytab"] = state ? state.keytab : undefined;
-            resourceInputs["keytabMd5"] = state ? state.keytabMd5 : undefined;
-            resourceInputs["rejectUnencryptedAccess"] = state ? state.rejectUnencryptedAccess : undefined;
-            resourceInputs["superAdminSid"] = state ? state.superAdminSid : undefined;
+            resourceInputs["authMethod"] = state?.authMethod;
+            resourceInputs["enableAnonymousAccess"] = state?.enableAnonymousAccess;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["encryptData"] = state?.encryptData;
+            resourceInputs["fileSystemId"] = state?.fileSystemId;
+            resourceInputs["homeDirPath"] = state?.homeDirPath;
+            resourceInputs["keytab"] = state?.keytab;
+            resourceInputs["keytabMd5"] = state?.keytabMd5;
+            resourceInputs["rejectUnencryptedAccess"] = state?.rejectUnencryptedAccess;
+            resourceInputs["superAdminSid"] = state?.superAdminSid;
         } else {
             const args = argsOrState as SmbAclAttachmentArgs | undefined;
-            if ((!args || args.fileSystemId === undefined) && !opts.urn) {
+            if (args?.fileSystemId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fileSystemId'");
             }
-            if ((!args || args.keytab === undefined) && !opts.urn) {
+            if (args?.keytab === undefined && !opts.urn) {
                 throw new Error("Missing required property 'keytab'");
             }
-            if ((!args || args.keytabMd5 === undefined) && !opts.urn) {
+            if (args?.keytabMd5 === undefined && !opts.urn) {
                 throw new Error("Missing required property 'keytabMd5'");
             }
-            resourceInputs["enableAnonymousAccess"] = args ? args.enableAnonymousAccess : undefined;
-            resourceInputs["encryptData"] = args ? args.encryptData : undefined;
-            resourceInputs["fileSystemId"] = args ? args.fileSystemId : undefined;
-            resourceInputs["homeDirPath"] = args ? args.homeDirPath : undefined;
-            resourceInputs["keytab"] = args ? args.keytab : undefined;
-            resourceInputs["keytabMd5"] = args ? args.keytabMd5 : undefined;
-            resourceInputs["rejectUnencryptedAccess"] = args ? args.rejectUnencryptedAccess : undefined;
-            resourceInputs["superAdminSid"] = args ? args.superAdminSid : undefined;
+            resourceInputs["enableAnonymousAccess"] = args?.enableAnonymousAccess;
+            resourceInputs["encryptData"] = args?.encryptData;
+            resourceInputs["fileSystemId"] = args?.fileSystemId;
+            resourceInputs["homeDirPath"] = args?.homeDirPath;
+            resourceInputs["keytab"] = args?.keytab;
+            resourceInputs["keytabMd5"] = args?.keytabMd5;
+            resourceInputs["rejectUnencryptedAccess"] = args?.rejectUnencryptedAccess;
+            resourceInputs["superAdminSid"] = args?.superAdminSid;
             resourceInputs["authMethod"] = undefined /*out*/;
             resourceInputs["enabled"] = undefined /*out*/;
         }

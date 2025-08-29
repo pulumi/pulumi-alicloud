@@ -46,24 +46,24 @@ export class RocketMQInstance extends pulumi.CustomResource {
     /**
      * The access control list for the instance. See `aclInfo` below.
      */
-    public readonly aclInfo!: pulumi.Output<outputs.rocketmq.RocketMQInstanceAclInfo>;
+    declare public readonly aclInfo: pulumi.Output<outputs.rocketmq.RocketMQInstanceAclInfo>;
     /**
      * Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
      * - true: Enable auto-renewal
      * - false: Disable auto-renewal
      */
-    public readonly autoRenew!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoRenew: pulumi.Output<boolean | undefined>;
     /**
      * Auto-renewal period. This parameter is only valid when auto-renewal is enabled. Unit: months.
      *
      * The values can be as follows:
      * - Monthly renewal: 1, 2, 3, 6, 12
      */
-    public readonly autoRenewPeriod!: pulumi.Output<number | undefined>;
+    declare public readonly autoRenewPeriod: pulumi.Output<number | undefined>;
     /**
      * The minimum periodic unit for the duration of auto-renewal. This parameter is only valid when auto-renewal is enabled. Valid values: `Month`, `Year`.
      */
-    public readonly autoRenewPeriodUnit!: pulumi.Output<string>;
+    declare public readonly autoRenewPeriodUnit: pulumi.Output<string>;
     /**
      * Commodity code
      *
@@ -73,23 +73,23 @@ export class RocketMQInstance extends pulumi.CustomResource {
      *
      * Next: Serverless instances
      */
-    public readonly commodityCode!: pulumi.Output<string>;
+    declare public readonly commodityCode: pulumi.Output<string>;
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The name of instance
      */
-    public readonly instanceName!: pulumi.Output<string | undefined>;
+    declare public readonly instanceName: pulumi.Output<string | undefined>;
     /**
      * The ip whitelist.
      */
-    public readonly ipWhitelists!: pulumi.Output<string[]>;
+    declare public readonly ipWhitelists: pulumi.Output<string[]>;
     /**
      * Instance network configuration information See `networkInfo` below.
      */
-    public readonly networkInfo!: pulumi.Output<outputs.rocketmq.RocketMQInstanceNetworkInfo>;
+    declare public readonly networkInfo: pulumi.Output<outputs.rocketmq.RocketMQInstanceNetworkInfo>;
     /**
      * The payment type for the instance. Alibaba Cloud Message Queue RocketMQ version supports two types of payment:
      *
@@ -99,7 +99,7 @@ export class RocketMQInstance extends pulumi.CustomResource {
      *
      * For more information, please refer to [Billing Methods](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/overview-2).
      */
-    public readonly paymentType!: pulumi.Output<string>;
+    declare public readonly paymentType: pulumi.Output<string>;
     /**
      * Duration of purchase. This parameter is only valid when the payment type for the instance is Subscription (prepaid).
      *
@@ -107,7 +107,7 @@ export class RocketMQInstance extends pulumi.CustomResource {
      * - Monthly purchase: 1, 2, 3, 4, 5, 6
      * - Annual purchase: 1, 2, 3
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * The minimum periodic unit for the duration of purchase.
      *
@@ -115,23 +115,23 @@ export class RocketMQInstance extends pulumi.CustomResource {
      * - Month: Purchase on a monthly basis
      * - Year: Purchase on an annual basis
      */
-    public readonly periodUnit!: pulumi.Output<string>;
+    declare public readonly periodUnit: pulumi.Output<string>;
     /**
      * product info See `productInfo` below.
      */
-    public readonly productInfo!: pulumi.Output<outputs.rocketmq.RocketMQInstanceProductInfo | undefined>;
+    declare public readonly productInfo: pulumi.Output<outputs.rocketmq.RocketMQInstanceProductInfo | undefined>;
     /**
      * (Available since v1.245.0) The ID of the region in which the instance resides.
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * Custom description
      */
-    public readonly remark!: pulumi.Output<string | undefined>;
+    declare public readonly remark: pulumi.Output<string | undefined>;
     /**
      * The ID of the resource group
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The primary series encoding for the instance. For specific differences between the primary series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
      *
@@ -140,19 +140,19 @@ export class RocketMQInstance extends pulumi.CustomResource {
      * - ultimate: Platinum Edition
      * - professional: Professional Edition
      */
-    public readonly seriesCode!: pulumi.Output<string>;
+    declare public readonly seriesCode: pulumi.Output<string>;
     /**
      * The code of the service code instance. The code of the RocketMQ is rmq.
      */
-    public readonly serviceCode!: pulumi.Output<string>;
+    declare public readonly serviceCode: pulumi.Output<string>;
     /**
      * Instance software information. See `software` below.
      */
-    public readonly software!: pulumi.Output<outputs.rocketmq.RocketMQInstanceSoftware>;
+    declare public readonly software: pulumi.Output<outputs.rocketmq.RocketMQInstanceSoftware>;
     /**
      * The status of the instance
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The sub-series encoding for the instance. For specific differences between the sub-series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
      *
@@ -163,11 +163,11 @@ export class RocketMQInstance extends pulumi.CustomResource {
      * **NOTE:** From version 1.245.0, `subSeriesCode` can be set to `serverless`.
      * When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as clusterHa (Cluster High Availability Edition).
      */
-    public readonly subSeriesCode!: pulumi.Output<string>;
+    declare public readonly subSeriesCode: pulumi.Output<string>;
     /**
      * The resource label.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a RocketMQInstance resource with the given unique name, arguments, and options.
@@ -182,64 +182,64 @@ export class RocketMQInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RocketMQInstanceState | undefined;
-            resourceInputs["aclInfo"] = state ? state.aclInfo : undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
-            resourceInputs["autoRenewPeriodUnit"] = state ? state.autoRenewPeriodUnit : undefined;
-            resourceInputs["commodityCode"] = state ? state.commodityCode : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["instanceName"] = state ? state.instanceName : undefined;
-            resourceInputs["ipWhitelists"] = state ? state.ipWhitelists : undefined;
-            resourceInputs["networkInfo"] = state ? state.networkInfo : undefined;
-            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
-            resourceInputs["productInfo"] = state ? state.productInfo : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["remark"] = state ? state.remark : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["seriesCode"] = state ? state.seriesCode : undefined;
-            resourceInputs["serviceCode"] = state ? state.serviceCode : undefined;
-            resourceInputs["software"] = state ? state.software : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["subSeriesCode"] = state ? state.subSeriesCode : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["aclInfo"] = state?.aclInfo;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["autoRenewPeriod"] = state?.autoRenewPeriod;
+            resourceInputs["autoRenewPeriodUnit"] = state?.autoRenewPeriodUnit;
+            resourceInputs["commodityCode"] = state?.commodityCode;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["instanceName"] = state?.instanceName;
+            resourceInputs["ipWhitelists"] = state?.ipWhitelists;
+            resourceInputs["networkInfo"] = state?.networkInfo;
+            resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["periodUnit"] = state?.periodUnit;
+            resourceInputs["productInfo"] = state?.productInfo;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["remark"] = state?.remark;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["seriesCode"] = state?.seriesCode;
+            resourceInputs["serviceCode"] = state?.serviceCode;
+            resourceInputs["software"] = state?.software;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["subSeriesCode"] = state?.subSeriesCode;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as RocketMQInstanceArgs | undefined;
-            if ((!args || args.networkInfo === undefined) && !opts.urn) {
+            if (args?.networkInfo === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkInfo'");
             }
-            if ((!args || args.paymentType === undefined) && !opts.urn) {
+            if (args?.paymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            if ((!args || args.seriesCode === undefined) && !opts.urn) {
+            if (args?.seriesCode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'seriesCode'");
             }
-            if ((!args || args.serviceCode === undefined) && !opts.urn) {
+            if (args?.serviceCode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceCode'");
             }
-            if ((!args || args.subSeriesCode === undefined) && !opts.urn) {
+            if (args?.subSeriesCode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subSeriesCode'");
             }
-            resourceInputs["aclInfo"] = args ? args.aclInfo : undefined;
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
-            resourceInputs["autoRenewPeriodUnit"] = args ? args.autoRenewPeriodUnit : undefined;
-            resourceInputs["commodityCode"] = args ? args.commodityCode : undefined;
-            resourceInputs["instanceName"] = args ? args.instanceName : undefined;
-            resourceInputs["ipWhitelists"] = args ? args.ipWhitelists : undefined;
-            resourceInputs["networkInfo"] = args ? args.networkInfo : undefined;
-            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
-            resourceInputs["productInfo"] = args ? args.productInfo : undefined;
-            resourceInputs["remark"] = args ? args.remark : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["seriesCode"] = args ? args.seriesCode : undefined;
-            resourceInputs["serviceCode"] = args ? args.serviceCode : undefined;
-            resourceInputs["software"] = args ? args.software : undefined;
-            resourceInputs["subSeriesCode"] = args ? args.subSeriesCode : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["aclInfo"] = args?.aclInfo;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["autoRenewPeriod"] = args?.autoRenewPeriod;
+            resourceInputs["autoRenewPeriodUnit"] = args?.autoRenewPeriodUnit;
+            resourceInputs["commodityCode"] = args?.commodityCode;
+            resourceInputs["instanceName"] = args?.instanceName;
+            resourceInputs["ipWhitelists"] = args?.ipWhitelists;
+            resourceInputs["networkInfo"] = args?.networkInfo;
+            resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["periodUnit"] = args?.periodUnit;
+            resourceInputs["productInfo"] = args?.productInfo;
+            resourceInputs["remark"] = args?.remark;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["seriesCode"] = args?.seriesCode;
+            resourceInputs["serviceCode"] = args?.serviceCode;
+            resourceInputs["software"] = args?.software;
+            resourceInputs["subSeriesCode"] = args?.subSeriesCode;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

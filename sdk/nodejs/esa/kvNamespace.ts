@@ -64,15 +64,15 @@ export class KvNamespace extends pulumi.CustomResource {
     /**
      * The description of the namespace.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of the namespace.
      */
-    public readonly kvNamespace!: pulumi.Output<string>;
+    declare public readonly kvNamespace: pulumi.Output<string>;
     /**
      * The status of the namespace.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a KvNamespace resource with the given unique name, arguments, and options.
@@ -87,16 +87,16 @@ export class KvNamespace extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KvNamespaceState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["kvNamespace"] = state ? state.kvNamespace : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["kvNamespace"] = state?.kvNamespace;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as KvNamespaceArgs | undefined;
-            if ((!args || args.kvNamespace === undefined) && !opts.urn) {
+            if (args?.kvNamespace === undefined && !opts.urn) {
                 throw new Error("Missing required property 'kvNamespace'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["kvNamespace"] = args ? args.kvNamespace : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["kvNamespace"] = args?.kvNamespace;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

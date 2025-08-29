@@ -95,19 +95,19 @@ export class AppAttachment extends pulumi.CustomResource {
     /**
      * The apiId that app apply to access.
      */
-    public readonly apiId!: pulumi.Output<string>;
+    declare public readonly apiId: pulumi.Output<string>;
     /**
      * The app that apply to the authorization.
      */
-    public readonly appId!: pulumi.Output<string>;
+    declare public readonly appId: pulumi.Output<string>;
     /**
      * The group that the api belongs to.
      */
-    public readonly groupId!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string>;
     /**
      * Stage that the app apply to access.
      */
-    public readonly stageName!: pulumi.Output<string>;
+    declare public readonly stageName: pulumi.Output<string>;
 
     /**
      * Create a AppAttachment resource with the given unique name, arguments, and options.
@@ -122,28 +122,28 @@ export class AppAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppAttachmentState | undefined;
-            resourceInputs["apiId"] = state ? state.apiId : undefined;
-            resourceInputs["appId"] = state ? state.appId : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["stageName"] = state ? state.stageName : undefined;
+            resourceInputs["apiId"] = state?.apiId;
+            resourceInputs["appId"] = state?.appId;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["stageName"] = state?.stageName;
         } else {
             const args = argsOrState as AppAttachmentArgs | undefined;
-            if ((!args || args.apiId === undefined) && !opts.urn) {
+            if (args?.apiId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'apiId'");
             }
-            if ((!args || args.appId === undefined) && !opts.urn) {
+            if (args?.appId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            if ((!args || args.groupId === undefined) && !opts.urn) {
+            if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.stageName === undefined) && !opts.urn) {
+            if (args?.stageName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'stageName'");
             }
-            resourceInputs["apiId"] = args ? args.apiId : undefined;
-            resourceInputs["appId"] = args ? args.appId : undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["stageName"] = args ? args.stageName : undefined;
+            resourceInputs["apiId"] = args?.apiId;
+            resourceInputs["appId"] = args?.appId;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["stageName"] = args?.stageName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AppAttachment.__pulumiType, name, resourceInputs, opts);

@@ -64,11 +64,11 @@ export class WhitelistTemplate extends pulumi.CustomResource {
      * - IP address format, for example: 10.23.XX.XX.
      * - CIDR format, for example: 10.23.XX.XX/24 (no inter domain routing, 24 represents the length of the prefix in the address, ranging from 1 to 32).
      */
-    public readonly ipWhiteList!: pulumi.Output<string>;
+    declare public readonly ipWhiteList: pulumi.Output<string>;
     /**
      * Whitelist template name. Passed in when creating a template, and cannot have the same name under the same account, starting with a letter.
      */
-    public readonly templateName!: pulumi.Output<string>;
+    declare public readonly templateName: pulumi.Output<string>;
 
     /**
      * Create a WhitelistTemplate resource with the given unique name, arguments, and options.
@@ -83,18 +83,18 @@ export class WhitelistTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WhitelistTemplateState | undefined;
-            resourceInputs["ipWhiteList"] = state ? state.ipWhiteList : undefined;
-            resourceInputs["templateName"] = state ? state.templateName : undefined;
+            resourceInputs["ipWhiteList"] = state?.ipWhiteList;
+            resourceInputs["templateName"] = state?.templateName;
         } else {
             const args = argsOrState as WhitelistTemplateArgs | undefined;
-            if ((!args || args.ipWhiteList === undefined) && !opts.urn) {
+            if (args?.ipWhiteList === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ipWhiteList'");
             }
-            if ((!args || args.templateName === undefined) && !opts.urn) {
+            if (args?.templateName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'templateName'");
             }
-            resourceInputs["ipWhiteList"] = args ? args.ipWhiteList : undefined;
-            resourceInputs["templateName"] = args ? args.templateName : undefined;
+            resourceInputs["ipWhiteList"] = args?.ipWhiteList;
+            resourceInputs["templateName"] = args?.templateName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WhitelistTemplate.__pulumiType, name, resourceInputs, opts);

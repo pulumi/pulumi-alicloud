@@ -76,27 +76,27 @@ export class Repo extends pulumi.CustomResource {
     /**
      * The repository specific information. MarkDown format is supported, and the length limit is 2000.
      */
-    public readonly detail!: pulumi.Output<string | undefined>;
+    declare public readonly detail: pulumi.Output<string | undefined>;
     /**
      * (Optional) The repository domain list.
      */
-    public /*out*/ readonly domainList!: pulumi.Output<outputs.cr.RepoDomainList>;
+    declare public /*out*/ readonly domainList: pulumi.Output<outputs.cr.RepoDomainList>;
     /**
      * Name of container registry repository.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Name of container registry namespace where repository is located.
      */
-    public readonly namespace!: pulumi.Output<string>;
+    declare public readonly namespace: pulumi.Output<string>;
     /**
      * `PUBLIC` or `PRIVATE`, repo's visibility.
      */
-    public readonly repoType!: pulumi.Output<string>;
+    declare public readonly repoType: pulumi.Output<string>;
     /**
      * The repository general information. It can contain 1 to 80 characters.
      */
-    public readonly summary!: pulumi.Output<string>;
+    declare public readonly summary: pulumi.Output<string>;
 
     /**
      * Create a Repo resource with the given unique name, arguments, and options.
@@ -111,28 +111,28 @@ export class Repo extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RepoState | undefined;
-            resourceInputs["detail"] = state ? state.detail : undefined;
-            resourceInputs["domainList"] = state ? state.domainList : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["repoType"] = state ? state.repoType : undefined;
-            resourceInputs["summary"] = state ? state.summary : undefined;
+            resourceInputs["detail"] = state?.detail;
+            resourceInputs["domainList"] = state?.domainList;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["repoType"] = state?.repoType;
+            resourceInputs["summary"] = state?.summary;
         } else {
             const args = argsOrState as RepoArgs | undefined;
-            if ((!args || args.namespace === undefined) && !opts.urn) {
+            if (args?.namespace === undefined && !opts.urn) {
                 throw new Error("Missing required property 'namespace'");
             }
-            if ((!args || args.repoType === undefined) && !opts.urn) {
+            if (args?.repoType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'repoType'");
             }
-            if ((!args || args.summary === undefined) && !opts.urn) {
+            if (args?.summary === undefined && !opts.urn) {
                 throw new Error("Missing required property 'summary'");
             }
-            resourceInputs["detail"] = args ? args.detail : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["repoType"] = args ? args.repoType : undefined;
-            resourceInputs["summary"] = args ? args.summary : undefined;
+            resourceInputs["detail"] = args?.detail;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["repoType"] = args?.repoType;
+            resourceInputs["summary"] = args?.summary;
             resourceInputs["domainList"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

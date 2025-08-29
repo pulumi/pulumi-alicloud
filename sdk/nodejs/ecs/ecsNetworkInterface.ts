@@ -96,109 +96,109 @@ export class EcsNetworkInterface extends pulumi.CustomResource {
     /**
      * The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
      */
-    public readonly instanceType!: pulumi.Output<string>;
+    declare public readonly instanceType: pulumi.Output<string>;
     /**
      * The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4Prefixes` and `ipv4PrefixCount` parameters.
      */
-    public readonly ipv4PrefixCount!: pulumi.Output<number>;
+    declare public readonly ipv4PrefixCount: pulumi.Output<number>;
     /**
      * A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
      */
-    public readonly ipv4Prefixes!: pulumi.Output<string[]>;
+    declare public readonly ipv4Prefixes: pulumi.Output<string[]>;
     /**
      * The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
      */
-    public readonly ipv6AddressCount!: pulumi.Output<number>;
+    declare public readonly ipv6AddressCount: pulumi.Output<number>;
     /**
      * A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
      */
-    public readonly ipv6Addresses!: pulumi.Output<string[]>;
+    declare public readonly ipv6Addresses: pulumi.Output<string[]>;
     /**
      * The MAC address of the ENI.
      */
-    public /*out*/ readonly mac!: pulumi.Output<string>;
+    declare public /*out*/ readonly mac: pulumi.Output<string>;
     /**
      * Field `name` has been deprecated from provider version 1.123.1. New field `networkInterfaceName` instead
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The name of the ENI. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
      */
-    public readonly networkInterfaceName!: pulumi.Output<string>;
+    declare public readonly networkInterfaceName: pulumi.Output<string>;
     /**
      * The communication mode of the ENI. Default value: `Standard`. Valid values: `Standard`, `HighPerformance`.
      */
-    public readonly networkInterfaceTrafficMode!: pulumi.Output<string>;
+    declare public readonly networkInterfaceTrafficMode: pulumi.Output<string>;
     /**
      * The primary private IP address of the ENI. The specified IP address must be available within the CIDR block of the VSwitch. If this parameter is not specified, an available IP address is assigned from the VSwitch CIDR block at random.
      */
-    public readonly primaryIpAddress!: pulumi.Output<string>;
+    declare public readonly primaryIpAddress: pulumi.Output<string>;
     /**
      * Field `privateIp` has been deprecated from provider version 1.123.1. New field `primaryIpAddress` instead
      *
      * @deprecated Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
      */
-    public readonly privateIp!: pulumi.Output<string>;
+    declare public readonly privateIp: pulumi.Output<string>;
     /**
      * Specifies secondary private IP address N of the ENI. This IP address must be an available IP address within the CIDR block of the VSwitch to which the ENI belongs.
      */
-    public readonly privateIpAddresses!: pulumi.Output<string[]>;
+    declare public readonly privateIpAddresses: pulumi.Output<string[]>;
     /**
      * Field `privateIps` has been deprecated from provider version 1.123.1. New field `privateIpAddresses` instead
      *
      * @deprecated Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead
      */
-    public readonly privateIps!: pulumi.Output<string[]>;
+    declare public readonly privateIps: pulumi.Output<string[]>;
     /**
      * Field `privateIpsCount` has been deprecated from provider version 1.123.1. New field `secondaryPrivateIpAddressCount` instead
      *
      * @deprecated Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead
      */
-    public readonly privateIpsCount!: pulumi.Output<number>;
+    declare public readonly privateIpsCount: pulumi.Output<number>;
     /**
      * The queue number of the ENI.
      */
-    public readonly queueNumber!: pulumi.Output<number>;
+    declare public readonly queueNumber: pulumi.Output<number>;
     /**
      * The resource group id.
      */
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly resourceGroupId: pulumi.Output<string | undefined>;
     /**
      * The number of private IP addresses that can be automatically created by ECS.
      */
-    public readonly secondaryPrivateIpAddressCount!: pulumi.Output<number>;
+    declare public readonly secondaryPrivateIpAddressCount: pulumi.Output<number>;
     /**
      * The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `securityGroupIds` or `securityGroups` must be set with valid security group IDs.
      */
-    public readonly securityGroupIds!: pulumi.Output<string[]>;
+    declare public readonly securityGroupIds: pulumi.Output<string[]>;
     /**
      * Field `securityGroups` has been deprecated from provider version 1.123.1. New field `securityGroupIds` instead. **NOTE:** Either `securityGroupIds` or `securityGroups` must be set with valid security group IDs.
      *
      * @deprecated Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
      */
-    public readonly securityGroups!: pulumi.Output<string[]>;
+    declare public readonly securityGroups: pulumi.Output<string[]>;
     /**
      * Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `false`. Valid values: `true`, `false`.
      */
-    public readonly sourceDestCheck!: pulumi.Output<boolean | undefined>;
+    declare public readonly sourceDestCheck: pulumi.Output<boolean | undefined>;
     /**
      * The status of the ENI.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the VSwitch in the specified VPC. The private IP addresses assigned to the ENI must be available IP addresses within the CIDR block of the VSwitch.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
 
     /**
      * Create a EcsNetworkInterface resource with the given unique name, arguments, and options.
@@ -213,57 +213,57 @@ export class EcsNetworkInterface extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EcsNetworkInterfaceState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["ipv4PrefixCount"] = state ? state.ipv4PrefixCount : undefined;
-            resourceInputs["ipv4Prefixes"] = state ? state.ipv4Prefixes : undefined;
-            resourceInputs["ipv6AddressCount"] = state ? state.ipv6AddressCount : undefined;
-            resourceInputs["ipv6Addresses"] = state ? state.ipv6Addresses : undefined;
-            resourceInputs["mac"] = state ? state.mac : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkInterfaceName"] = state ? state.networkInterfaceName : undefined;
-            resourceInputs["networkInterfaceTrafficMode"] = state ? state.networkInterfaceTrafficMode : undefined;
-            resourceInputs["primaryIpAddress"] = state ? state.primaryIpAddress : undefined;
-            resourceInputs["privateIp"] = state ? state.privateIp : undefined;
-            resourceInputs["privateIpAddresses"] = state ? state.privateIpAddresses : undefined;
-            resourceInputs["privateIps"] = state ? state.privateIps : undefined;
-            resourceInputs["privateIpsCount"] = state ? state.privateIpsCount : undefined;
-            resourceInputs["queueNumber"] = state ? state.queueNumber : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["secondaryPrivateIpAddressCount"] = state ? state.secondaryPrivateIpAddressCount : undefined;
-            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            resourceInputs["securityGroups"] = state ? state.securityGroups : undefined;
-            resourceInputs["sourceDestCheck"] = state ? state.sourceDestCheck : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["ipv4PrefixCount"] = state?.ipv4PrefixCount;
+            resourceInputs["ipv4Prefixes"] = state?.ipv4Prefixes;
+            resourceInputs["ipv6AddressCount"] = state?.ipv6AddressCount;
+            resourceInputs["ipv6Addresses"] = state?.ipv6Addresses;
+            resourceInputs["mac"] = state?.mac;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkInterfaceName"] = state?.networkInterfaceName;
+            resourceInputs["networkInterfaceTrafficMode"] = state?.networkInterfaceTrafficMode;
+            resourceInputs["primaryIpAddress"] = state?.primaryIpAddress;
+            resourceInputs["privateIp"] = state?.privateIp;
+            resourceInputs["privateIpAddresses"] = state?.privateIpAddresses;
+            resourceInputs["privateIps"] = state?.privateIps;
+            resourceInputs["privateIpsCount"] = state?.privateIpsCount;
+            resourceInputs["queueNumber"] = state?.queueNumber;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["secondaryPrivateIpAddressCount"] = state?.secondaryPrivateIpAddressCount;
+            resourceInputs["securityGroupIds"] = state?.securityGroupIds;
+            resourceInputs["securityGroups"] = state?.securityGroups;
+            resourceInputs["sourceDestCheck"] = state?.sourceDestCheck;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vswitchId"] = state?.vswitchId;
         } else {
             const args = argsOrState as EcsNetworkInterfaceArgs | undefined;
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+            if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["ipv4PrefixCount"] = args ? args.ipv4PrefixCount : undefined;
-            resourceInputs["ipv4Prefixes"] = args ? args.ipv4Prefixes : undefined;
-            resourceInputs["ipv6AddressCount"] = args ? args.ipv6AddressCount : undefined;
-            resourceInputs["ipv6Addresses"] = args ? args.ipv6Addresses : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkInterfaceName"] = args ? args.networkInterfaceName : undefined;
-            resourceInputs["networkInterfaceTrafficMode"] = args ? args.networkInterfaceTrafficMode : undefined;
-            resourceInputs["primaryIpAddress"] = args ? args.primaryIpAddress : undefined;
-            resourceInputs["privateIp"] = args ? args.privateIp : undefined;
-            resourceInputs["privateIpAddresses"] = args ? args.privateIpAddresses : undefined;
-            resourceInputs["privateIps"] = args ? args.privateIps : undefined;
-            resourceInputs["privateIpsCount"] = args ? args.privateIpsCount : undefined;
-            resourceInputs["queueNumber"] = args ? args.queueNumber : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["secondaryPrivateIpAddressCount"] = args ? args.secondaryPrivateIpAddressCount : undefined;
-            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            resourceInputs["securityGroups"] = args ? args.securityGroups : undefined;
-            resourceInputs["sourceDestCheck"] = args ? args.sourceDestCheck : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["instanceType"] = args?.instanceType;
+            resourceInputs["ipv4PrefixCount"] = args?.ipv4PrefixCount;
+            resourceInputs["ipv4Prefixes"] = args?.ipv4Prefixes;
+            resourceInputs["ipv6AddressCount"] = args?.ipv6AddressCount;
+            resourceInputs["ipv6Addresses"] = args?.ipv6Addresses;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkInterfaceName"] = args?.networkInterfaceName;
+            resourceInputs["networkInterfaceTrafficMode"] = args?.networkInterfaceTrafficMode;
+            resourceInputs["primaryIpAddress"] = args?.primaryIpAddress;
+            resourceInputs["privateIp"] = args?.privateIp;
+            resourceInputs["privateIpAddresses"] = args?.privateIpAddresses;
+            resourceInputs["privateIps"] = args?.privateIps;
+            resourceInputs["privateIpsCount"] = args?.privateIpsCount;
+            resourceInputs["queueNumber"] = args?.queueNumber;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["secondaryPrivateIpAddressCount"] = args?.secondaryPrivateIpAddressCount;
+            resourceInputs["securityGroupIds"] = args?.securityGroupIds;
+            resourceInputs["securityGroups"] = args?.securityGroups;
+            resourceInputs["sourceDestCheck"] = args?.sourceDestCheck;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["mac"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

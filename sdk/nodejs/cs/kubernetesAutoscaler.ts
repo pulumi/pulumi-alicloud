@@ -37,27 +37,27 @@ export class KubernetesAutoscaler extends pulumi.CustomResource {
     /**
      * The id of kubernetes cluster.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The coolDownDuration option of cluster-autoscaler.
      */
-    public readonly coolDownDuration!: pulumi.Output<string>;
+    declare public readonly coolDownDuration: pulumi.Output<string>;
     /**
      * The deferScaleInDuration option of cluster-autoscaler.
      */
-    public readonly deferScaleInDuration!: pulumi.Output<string>;
+    declare public readonly deferScaleInDuration: pulumi.Output<string>;
     /**
      * The list of the node pools. See `nodepools` below.
      */
-    public readonly nodepools!: pulumi.Output<outputs.cs.KubernetesAutoscalerNodepool[] | undefined>;
+    declare public readonly nodepools: pulumi.Output<outputs.cs.KubernetesAutoscalerNodepool[] | undefined>;
     /**
      * Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
      */
-    public readonly useEcsRamRoleToken!: pulumi.Output<boolean | undefined>;
+    declare public readonly useEcsRamRoleToken: pulumi.Output<boolean | undefined>;
     /**
      * The utilization option of cluster-autoscaler.
      */
-    public readonly utilization!: pulumi.Output<string>;
+    declare public readonly utilization: pulumi.Output<string>;
 
     /**
      * Create a KubernetesAutoscaler resource with the given unique name, arguments, and options.
@@ -72,32 +72,32 @@ export class KubernetesAutoscaler extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KubernetesAutoscalerState | undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["coolDownDuration"] = state ? state.coolDownDuration : undefined;
-            resourceInputs["deferScaleInDuration"] = state ? state.deferScaleInDuration : undefined;
-            resourceInputs["nodepools"] = state ? state.nodepools : undefined;
-            resourceInputs["useEcsRamRoleToken"] = state ? state.useEcsRamRoleToken : undefined;
-            resourceInputs["utilization"] = state ? state.utilization : undefined;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["coolDownDuration"] = state?.coolDownDuration;
+            resourceInputs["deferScaleInDuration"] = state?.deferScaleInDuration;
+            resourceInputs["nodepools"] = state?.nodepools;
+            resourceInputs["useEcsRamRoleToken"] = state?.useEcsRamRoleToken;
+            resourceInputs["utilization"] = state?.utilization;
         } else {
             const args = argsOrState as KubernetesAutoscalerArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.coolDownDuration === undefined) && !opts.urn) {
+            if (args?.coolDownDuration === undefined && !opts.urn) {
                 throw new Error("Missing required property 'coolDownDuration'");
             }
-            if ((!args || args.deferScaleInDuration === undefined) && !opts.urn) {
+            if (args?.deferScaleInDuration === undefined && !opts.urn) {
                 throw new Error("Missing required property 'deferScaleInDuration'");
             }
-            if ((!args || args.utilization === undefined) && !opts.urn) {
+            if (args?.utilization === undefined && !opts.urn) {
                 throw new Error("Missing required property 'utilization'");
             }
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["coolDownDuration"] = args ? args.coolDownDuration : undefined;
-            resourceInputs["deferScaleInDuration"] = args ? args.deferScaleInDuration : undefined;
-            resourceInputs["nodepools"] = args ? args.nodepools : undefined;
-            resourceInputs["useEcsRamRoleToken"] = args ? args.useEcsRamRoleToken : undefined;
-            resourceInputs["utilization"] = args ? args.utilization : undefined;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["coolDownDuration"] = args?.coolDownDuration;
+            resourceInputs["deferScaleInDuration"] = args?.deferScaleInDuration;
+            resourceInputs["nodepools"] = args?.nodepools;
+            resourceInputs["useEcsRamRoleToken"] = args?.useEcsRamRoleToken;
+            resourceInputs["utilization"] = args?.utilization;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(KubernetesAutoscaler.__pulumiType, name, resourceInputs, opts);

@@ -162,35 +162,35 @@ export class DiAlarmRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === DiAlarmRule.__pulumiType;
     }
 
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Resource attribute field representing resource level ID
      */
-    public /*out*/ readonly diAlarmRuleId!: pulumi.Output<number>;
+    declare public /*out*/ readonly diAlarmRuleId: pulumi.Output<number>;
     /**
      * Data Integration alarm rule name
      */
-    public readonly diAlarmRuleName!: pulumi.Output<string>;
+    declare public readonly diAlarmRuleName: pulumi.Output<string>;
     /**
      * Task ID: the ID of the task associated with the alert rule.
      */
-    public readonly diJobId!: pulumi.Output<number>;
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly diJobId: pulumi.Output<number>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * Alarm indicator type. Optional enumerated values:
      * - Heartbeat (task status alarm)
      * - FailoverCount(failover times alarm)
      * - Delay (task Delay alarm)
      */
-    public readonly metricType!: pulumi.Output<string>;
+    declare public readonly metricType: pulumi.Output<string>;
     /**
      * Alarm notification settings See `notificationSettings` below.
      */
-    public readonly notificationSettings!: pulumi.Output<outputs.dataworks.DiAlarmRuleNotificationSettings>;
+    declare public readonly notificationSettings: pulumi.Output<outputs.dataworks.DiAlarmRuleNotificationSettings>;
     /**
      * Alarm trigger condition list, supporting multiple conditions See `triggerConditions` below.
      */
-    public readonly triggerConditions!: pulumi.Output<outputs.dataworks.DiAlarmRuleTriggerCondition[]>;
+    declare public readonly triggerConditions: pulumi.Output<outputs.dataworks.DiAlarmRuleTriggerCondition[]>;
 
     /**
      * Create a DiAlarmRule resource with the given unique name, arguments, and options.
@@ -205,38 +205,38 @@ export class DiAlarmRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DiAlarmRuleState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["diAlarmRuleId"] = state ? state.diAlarmRuleId : undefined;
-            resourceInputs["diAlarmRuleName"] = state ? state.diAlarmRuleName : undefined;
-            resourceInputs["diJobId"] = state ? state.diJobId : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["metricType"] = state ? state.metricType : undefined;
-            resourceInputs["notificationSettings"] = state ? state.notificationSettings : undefined;
-            resourceInputs["triggerConditions"] = state ? state.triggerConditions : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["diAlarmRuleId"] = state?.diAlarmRuleId;
+            resourceInputs["diAlarmRuleName"] = state?.diAlarmRuleName;
+            resourceInputs["diJobId"] = state?.diJobId;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["metricType"] = state?.metricType;
+            resourceInputs["notificationSettings"] = state?.notificationSettings;
+            resourceInputs["triggerConditions"] = state?.triggerConditions;
         } else {
             const args = argsOrState as DiAlarmRuleArgs | undefined;
-            if ((!args || args.diAlarmRuleName === undefined) && !opts.urn) {
+            if (args?.diAlarmRuleName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'diAlarmRuleName'");
             }
-            if ((!args || args.diJobId === undefined) && !opts.urn) {
+            if (args?.diJobId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'diJobId'");
             }
-            if ((!args || args.metricType === undefined) && !opts.urn) {
+            if (args?.metricType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'metricType'");
             }
-            if ((!args || args.notificationSettings === undefined) && !opts.urn) {
+            if (args?.notificationSettings === undefined && !opts.urn) {
                 throw new Error("Missing required property 'notificationSettings'");
             }
-            if ((!args || args.triggerConditions === undefined) && !opts.urn) {
+            if (args?.triggerConditions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'triggerConditions'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["diAlarmRuleName"] = args ? args.diAlarmRuleName : undefined;
-            resourceInputs["diJobId"] = args ? args.diJobId : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["metricType"] = args ? args.metricType : undefined;
-            resourceInputs["notificationSettings"] = args ? args.notificationSettings : undefined;
-            resourceInputs["triggerConditions"] = args ? args.triggerConditions : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["diAlarmRuleName"] = args?.diAlarmRuleName;
+            resourceInputs["diJobId"] = args?.diJobId;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["metricType"] = args?.metricType;
+            resourceInputs["notificationSettings"] = args?.notificationSettings;
+            resourceInputs["triggerConditions"] = args?.triggerConditions;
             resourceInputs["diAlarmRuleId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

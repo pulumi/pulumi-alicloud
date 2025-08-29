@@ -69,11 +69,11 @@ export class Folder extends pulumi.CustomResource {
     /**
      * The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
      */
-    public readonly folderName!: pulumi.Output<string>;
+    declare public readonly folderName: pulumi.Output<string>;
     /**
      * The ID of the parent folder. If not set, the system default value will be used.
      */
-    public readonly parentFolderId!: pulumi.Output<string>;
+    declare public readonly parentFolderId: pulumi.Output<string>;
 
     /**
      * Create a Folder resource with the given unique name, arguments, and options.
@@ -88,15 +88,15 @@ export class Folder extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FolderState | undefined;
-            resourceInputs["folderName"] = state ? state.folderName : undefined;
-            resourceInputs["parentFolderId"] = state ? state.parentFolderId : undefined;
+            resourceInputs["folderName"] = state?.folderName;
+            resourceInputs["parentFolderId"] = state?.parentFolderId;
         } else {
             const args = argsOrState as FolderArgs | undefined;
-            if ((!args || args.folderName === undefined) && !opts.urn) {
+            if (args?.folderName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'folderName'");
             }
-            resourceInputs["folderName"] = args ? args.folderName : undefined;
-            resourceInputs["parentFolderId"] = args ? args.parentFolderId : undefined;
+            resourceInputs["folderName"] = args?.folderName;
+            resourceInputs["parentFolderId"] = args?.parentFolderId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Folder.__pulumiType, name, resourceInputs, opts);

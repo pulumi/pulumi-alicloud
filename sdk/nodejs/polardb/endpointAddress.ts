@@ -90,31 +90,31 @@ export class EndpointAddress extends pulumi.CustomResource {
     /**
      * Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
      */
-    public readonly connectionPrefix!: pulumi.Output<string>;
+    declare public readonly connectionPrefix: pulumi.Output<string>;
     /**
      * Connection cluster or endpoint string.
      */
-    public /*out*/ readonly connectionString!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectionString: pulumi.Output<string>;
     /**
      * The Id of cluster that can run database.
      */
-    public readonly dbClusterId!: pulumi.Output<string>;
+    declare public readonly dbClusterId: pulumi.Output<string>;
     /**
      * The Id of endpoint that can run database.
      */
-    public readonly dbEndpointId!: pulumi.Output<string>;
+    declare public readonly dbEndpointId: pulumi.Output<string>;
     /**
      * The ip address of connection string.
      */
-    public /*out*/ readonly ipAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly ipAddress: pulumi.Output<string>;
     /**
      * Internet connection net type. Valid value: `Public`. Default to `Public`. Currently supported only `Public`.
      */
-    public readonly netType!: pulumi.Output<string | undefined>;
+    declare public readonly netType: pulumi.Output<string | undefined>;
     /**
      * Port of the specified endpoint. Valid values: 3000 to 5999.
      */
-    public readonly port!: pulumi.Output<string>;
+    declare public readonly port: pulumi.Output<string>;
 
     /**
      * Create a EndpointAddress resource with the given unique name, arguments, and options.
@@ -129,26 +129,26 @@ export class EndpointAddress extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EndpointAddressState | undefined;
-            resourceInputs["connectionPrefix"] = state ? state.connectionPrefix : undefined;
-            resourceInputs["connectionString"] = state ? state.connectionString : undefined;
-            resourceInputs["dbClusterId"] = state ? state.dbClusterId : undefined;
-            resourceInputs["dbEndpointId"] = state ? state.dbEndpointId : undefined;
-            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
-            resourceInputs["netType"] = state ? state.netType : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["connectionPrefix"] = state?.connectionPrefix;
+            resourceInputs["connectionString"] = state?.connectionString;
+            resourceInputs["dbClusterId"] = state?.dbClusterId;
+            resourceInputs["dbEndpointId"] = state?.dbEndpointId;
+            resourceInputs["ipAddress"] = state?.ipAddress;
+            resourceInputs["netType"] = state?.netType;
+            resourceInputs["port"] = state?.port;
         } else {
             const args = argsOrState as EndpointAddressArgs | undefined;
-            if ((!args || args.dbClusterId === undefined) && !opts.urn) {
+            if (args?.dbClusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbClusterId'");
             }
-            if ((!args || args.dbEndpointId === undefined) && !opts.urn) {
+            if (args?.dbEndpointId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbEndpointId'");
             }
-            resourceInputs["connectionPrefix"] = args ? args.connectionPrefix : undefined;
-            resourceInputs["dbClusterId"] = args ? args.dbClusterId : undefined;
-            resourceInputs["dbEndpointId"] = args ? args.dbEndpointId : undefined;
-            resourceInputs["netType"] = args ? args.netType : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["connectionPrefix"] = args?.connectionPrefix;
+            resourceInputs["dbClusterId"] = args?.dbClusterId;
+            resourceInputs["dbEndpointId"] = args?.dbEndpointId;
+            resourceInputs["netType"] = args?.netType;
+            resourceInputs["port"] = args?.port;
             resourceInputs["connectionString"] = undefined /*out*/;
             resourceInputs["ipAddress"] = undefined /*out*/;
         }

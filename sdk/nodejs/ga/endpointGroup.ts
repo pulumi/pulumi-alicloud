@@ -110,54 +110,54 @@ export class EndpointGroup extends pulumi.CustomResource {
     /**
      * The ID of the Global Accelerator instance to which the endpoint group will be added.
      */
-    public readonly acceleratorId!: pulumi.Output<string>;
+    declare public readonly acceleratorId: pulumi.Output<string>;
     /**
      * The description of the endpoint group.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The endpointConfigurations of the endpoint group. See `endpointConfigurations` below.
      */
-    public readonly endpointConfigurations!: pulumi.Output<outputs.ga.EndpointGroupEndpointConfiguration[]>;
+    declare public readonly endpointConfigurations: pulumi.Output<outputs.ga.EndpointGroupEndpointConfiguration[]>;
     /**
      * (Available since v1.213.0) The active endpoint IP addresses of the endpoint group. `endpointGroupIpList` will change with the growth of network traffic. You can run `pulumi up` to query the latest CIDR blocks and IP addresses.
      */
-    public /*out*/ readonly endpointGroupIpLists!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly endpointGroupIpLists: pulumi.Output<string[]>;
     /**
      * The ID of the region where the endpoint group is deployed.
      */
-    public readonly endpointGroupRegion!: pulumi.Output<string>;
+    declare public readonly endpointGroupRegion: pulumi.Output<string>;
     /**
      * The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
      * > **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
      */
-    public readonly endpointGroupType!: pulumi.Output<string>;
+    declare public readonly endpointGroupType: pulumi.Output<string>;
     /**
      * The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
      * > **NOTE:** `endpointProtocolVersion` is valid only when `endpointRequestProtocol` is set to `HTTPS`.
      */
-    public readonly endpointProtocolVersion!: pulumi.Output<string>;
+    declare public readonly endpointProtocolVersion: pulumi.Output<string>;
     /**
      * The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
      * > **NOTE:** `endpointRequestProtocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpointRequestProtocol` can only be set to `HTTP`.
      */
-    public readonly endpointRequestProtocol!: pulumi.Output<string>;
+    declare public readonly endpointRequestProtocol: pulumi.Output<string>;
     /**
      * Specifies whether to enable the health check feature. Valid values:
      */
-    public readonly healthCheckEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly healthCheckEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The interval between two consecutive health checks. Unit: seconds.
      */
-    public readonly healthCheckIntervalSeconds!: pulumi.Output<number | undefined>;
+    declare public readonly healthCheckIntervalSeconds: pulumi.Output<number | undefined>;
     /**
      * The path specified as the destination of the targets for health checks.
      */
-    public readonly healthCheckPath!: pulumi.Output<string | undefined>;
+    declare public readonly healthCheckPath: pulumi.Output<string | undefined>;
     /**
      * The port that is used for health checks.
      */
-    public readonly healthCheckPort!: pulumi.Output<number | undefined>;
+    declare public readonly healthCheckPort: pulumi.Output<number | undefined>;
     /**
      * The protocol that is used to connect to the targets for health checks. Valid values:
      * - `TCP` or `tcp`: TCP protocol.
@@ -165,36 +165,36 @@ export class EndpointGroup extends pulumi.CustomResource {
      * - `HTTPS` or `https`: HTTPS protocol.
      * > **NOTE:** From version 1.223.0, `healthCheckProtocol` can be set to `TCP`, `HTTP`, `HTTPS`.
      */
-    public readonly healthCheckProtocol!: pulumi.Output<string | undefined>;
+    declare public readonly healthCheckProtocol: pulumi.Output<string | undefined>;
     /**
      * The ID of the listener that is associated with the endpoint group.
      */
-    public readonly listenerId!: pulumi.Output<string>;
+    declare public readonly listenerId: pulumi.Output<string>;
     /**
      * The name of the endpoint group.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Mapping between listening port and forwarding port of boarding point. See `portOverrides` below.
      * > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
      */
-    public readonly portOverrides!: pulumi.Output<outputs.ga.EndpointGroupPortOverrides | undefined>;
+    declare public readonly portOverrides: pulumi.Output<outputs.ga.EndpointGroupPortOverrides | undefined>;
     /**
      * The status of the endpoint group.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value: `3`.
      */
-    public readonly thresholdCount!: pulumi.Output<number>;
+    declare public readonly thresholdCount: pulumi.Output<number>;
     /**
      * The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
      */
-    public readonly trafficPercentage!: pulumi.Output<number | undefined>;
+    declare public readonly trafficPercentage: pulumi.Output<number | undefined>;
 
     /**
      * Create a EndpointGroup resource with the given unique name, arguments, and options.
@@ -209,58 +209,58 @@ export class EndpointGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EndpointGroupState | undefined;
-            resourceInputs["acceleratorId"] = state ? state.acceleratorId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["endpointConfigurations"] = state ? state.endpointConfigurations : undefined;
-            resourceInputs["endpointGroupIpLists"] = state ? state.endpointGroupIpLists : undefined;
-            resourceInputs["endpointGroupRegion"] = state ? state.endpointGroupRegion : undefined;
-            resourceInputs["endpointGroupType"] = state ? state.endpointGroupType : undefined;
-            resourceInputs["endpointProtocolVersion"] = state ? state.endpointProtocolVersion : undefined;
-            resourceInputs["endpointRequestProtocol"] = state ? state.endpointRequestProtocol : undefined;
-            resourceInputs["healthCheckEnabled"] = state ? state.healthCheckEnabled : undefined;
-            resourceInputs["healthCheckIntervalSeconds"] = state ? state.healthCheckIntervalSeconds : undefined;
-            resourceInputs["healthCheckPath"] = state ? state.healthCheckPath : undefined;
-            resourceInputs["healthCheckPort"] = state ? state.healthCheckPort : undefined;
-            resourceInputs["healthCheckProtocol"] = state ? state.healthCheckProtocol : undefined;
-            resourceInputs["listenerId"] = state ? state.listenerId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["portOverrides"] = state ? state.portOverrides : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["thresholdCount"] = state ? state.thresholdCount : undefined;
-            resourceInputs["trafficPercentage"] = state ? state.trafficPercentage : undefined;
+            resourceInputs["acceleratorId"] = state?.acceleratorId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["endpointConfigurations"] = state?.endpointConfigurations;
+            resourceInputs["endpointGroupIpLists"] = state?.endpointGroupIpLists;
+            resourceInputs["endpointGroupRegion"] = state?.endpointGroupRegion;
+            resourceInputs["endpointGroupType"] = state?.endpointGroupType;
+            resourceInputs["endpointProtocolVersion"] = state?.endpointProtocolVersion;
+            resourceInputs["endpointRequestProtocol"] = state?.endpointRequestProtocol;
+            resourceInputs["healthCheckEnabled"] = state?.healthCheckEnabled;
+            resourceInputs["healthCheckIntervalSeconds"] = state?.healthCheckIntervalSeconds;
+            resourceInputs["healthCheckPath"] = state?.healthCheckPath;
+            resourceInputs["healthCheckPort"] = state?.healthCheckPort;
+            resourceInputs["healthCheckProtocol"] = state?.healthCheckProtocol;
+            resourceInputs["listenerId"] = state?.listenerId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["portOverrides"] = state?.portOverrides;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["thresholdCount"] = state?.thresholdCount;
+            resourceInputs["trafficPercentage"] = state?.trafficPercentage;
         } else {
             const args = argsOrState as EndpointGroupArgs | undefined;
-            if ((!args || args.acceleratorId === undefined) && !opts.urn) {
+            if (args?.acceleratorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'acceleratorId'");
             }
-            if ((!args || args.endpointConfigurations === undefined) && !opts.urn) {
+            if (args?.endpointConfigurations === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpointConfigurations'");
             }
-            if ((!args || args.endpointGroupRegion === undefined) && !opts.urn) {
+            if (args?.endpointGroupRegion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpointGroupRegion'");
             }
-            if ((!args || args.listenerId === undefined) && !opts.urn) {
+            if (args?.listenerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'listenerId'");
             }
-            resourceInputs["acceleratorId"] = args ? args.acceleratorId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["endpointConfigurations"] = args ? args.endpointConfigurations : undefined;
-            resourceInputs["endpointGroupRegion"] = args ? args.endpointGroupRegion : undefined;
-            resourceInputs["endpointGroupType"] = args ? args.endpointGroupType : undefined;
-            resourceInputs["endpointProtocolVersion"] = args ? args.endpointProtocolVersion : undefined;
-            resourceInputs["endpointRequestProtocol"] = args ? args.endpointRequestProtocol : undefined;
-            resourceInputs["healthCheckEnabled"] = args ? args.healthCheckEnabled : undefined;
-            resourceInputs["healthCheckIntervalSeconds"] = args ? args.healthCheckIntervalSeconds : undefined;
-            resourceInputs["healthCheckPath"] = args ? args.healthCheckPath : undefined;
-            resourceInputs["healthCheckPort"] = args ? args.healthCheckPort : undefined;
-            resourceInputs["healthCheckProtocol"] = args ? args.healthCheckProtocol : undefined;
-            resourceInputs["listenerId"] = args ? args.listenerId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["portOverrides"] = args ? args.portOverrides : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["thresholdCount"] = args ? args.thresholdCount : undefined;
-            resourceInputs["trafficPercentage"] = args ? args.trafficPercentage : undefined;
+            resourceInputs["acceleratorId"] = args?.acceleratorId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["endpointConfigurations"] = args?.endpointConfigurations;
+            resourceInputs["endpointGroupRegion"] = args?.endpointGroupRegion;
+            resourceInputs["endpointGroupType"] = args?.endpointGroupType;
+            resourceInputs["endpointProtocolVersion"] = args?.endpointProtocolVersion;
+            resourceInputs["endpointRequestProtocol"] = args?.endpointRequestProtocol;
+            resourceInputs["healthCheckEnabled"] = args?.healthCheckEnabled;
+            resourceInputs["healthCheckIntervalSeconds"] = args?.healthCheckIntervalSeconds;
+            resourceInputs["healthCheckPath"] = args?.healthCheckPath;
+            resourceInputs["healthCheckPort"] = args?.healthCheckPort;
+            resourceInputs["healthCheckProtocol"] = args?.healthCheckProtocol;
+            resourceInputs["listenerId"] = args?.listenerId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["portOverrides"] = args?.portOverrides;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["thresholdCount"] = args?.thresholdCount;
+            resourceInputs["trafficPercentage"] = args?.trafficPercentage;
             resourceInputs["endpointGroupIpLists"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

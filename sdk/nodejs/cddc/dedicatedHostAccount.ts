@@ -111,19 +111,19 @@ export class DedicatedHostAccount extends pulumi.CustomResource {
     /**
      * The name of the Dedicated host account. The account name must be 2 to 16 characters in length, contain lower case letters, digits, and underscore(_). At the same time, the name must start with a letter and end with a letter or number.
      */
-    public readonly accountName!: pulumi.Output<string>;
+    declare public readonly accountName: pulumi.Output<string>;
     /**
      * The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&*()_+-=`.
      */
-    public readonly accountPassword!: pulumi.Output<string>;
+    declare public readonly accountPassword: pulumi.Output<string>;
     /**
      * The type of the Dedicated host account. Valid values: `Admin`, `Normal`.
      */
-    public readonly accountType!: pulumi.Output<string | undefined>;
+    declare public readonly accountType: pulumi.Output<string | undefined>;
     /**
      * The ID of Dedicated the host.
      */
-    public readonly dedicatedHostId!: pulumi.Output<string>;
+    declare public readonly dedicatedHostId: pulumi.Output<string>;
 
     /**
      * Create a DedicatedHostAccount resource with the given unique name, arguments, and options.
@@ -138,25 +138,25 @@ export class DedicatedHostAccount extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DedicatedHostAccountState | undefined;
-            resourceInputs["accountName"] = state ? state.accountName : undefined;
-            resourceInputs["accountPassword"] = state ? state.accountPassword : undefined;
-            resourceInputs["accountType"] = state ? state.accountType : undefined;
-            resourceInputs["dedicatedHostId"] = state ? state.dedicatedHostId : undefined;
+            resourceInputs["accountName"] = state?.accountName;
+            resourceInputs["accountPassword"] = state?.accountPassword;
+            resourceInputs["accountType"] = state?.accountType;
+            resourceInputs["dedicatedHostId"] = state?.dedicatedHostId;
         } else {
             const args = argsOrState as DedicatedHostAccountArgs | undefined;
-            if ((!args || args.accountName === undefined) && !opts.urn) {
+            if (args?.accountName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountName'");
             }
-            if ((!args || args.accountPassword === undefined) && !opts.urn) {
+            if (args?.accountPassword === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountPassword'");
             }
-            if ((!args || args.dedicatedHostId === undefined) && !opts.urn) {
+            if (args?.dedicatedHostId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dedicatedHostId'");
             }
-            resourceInputs["accountName"] = args ? args.accountName : undefined;
+            resourceInputs["accountName"] = args?.accountName;
             resourceInputs["accountPassword"] = args?.accountPassword ? pulumi.secret(args.accountPassword) : undefined;
-            resourceInputs["accountType"] = args ? args.accountType : undefined;
-            resourceInputs["dedicatedHostId"] = args ? args.dedicatedHostId : undefined;
+            resourceInputs["accountType"] = args?.accountType;
+            resourceInputs["dedicatedHostId"] = args?.dedicatedHostId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["accountPassword"] };

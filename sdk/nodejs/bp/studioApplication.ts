@@ -85,35 +85,35 @@ export class StudioApplication extends pulumi.CustomResource {
     /**
      * The name of the application.
      */
-    public readonly applicationName!: pulumi.Output<string>;
+    declare public readonly applicationName: pulumi.Output<string>;
     /**
      * The id of the area.
      */
-    public readonly areaId!: pulumi.Output<string | undefined>;
+    declare public readonly areaId: pulumi.Output<string | undefined>;
     /**
      * The configuration of the application.
      */
-    public readonly configuration!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly configuration: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
      */
-    public readonly instances!: pulumi.Output<outputs.bp.StudioApplicationInstance[] | undefined>;
+    declare public readonly instances: pulumi.Output<outputs.bp.StudioApplicationInstance[] | undefined>;
     /**
      * The id of the resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The status of the Application.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The id of the template.
      */
-    public readonly templateId!: pulumi.Output<string>;
+    declare public readonly templateId: pulumi.Output<string>;
     /**
      * The variables of the application.
      */
-    public readonly variables!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly variables: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a StudioApplication resource with the given unique name, arguments, and options.
@@ -128,29 +128,29 @@ export class StudioApplication extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StudioApplicationState | undefined;
-            resourceInputs["applicationName"] = state ? state.applicationName : undefined;
-            resourceInputs["areaId"] = state ? state.areaId : undefined;
-            resourceInputs["configuration"] = state ? state.configuration : undefined;
-            resourceInputs["instances"] = state ? state.instances : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["templateId"] = state ? state.templateId : undefined;
-            resourceInputs["variables"] = state ? state.variables : undefined;
+            resourceInputs["applicationName"] = state?.applicationName;
+            resourceInputs["areaId"] = state?.areaId;
+            resourceInputs["configuration"] = state?.configuration;
+            resourceInputs["instances"] = state?.instances;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["templateId"] = state?.templateId;
+            resourceInputs["variables"] = state?.variables;
         } else {
             const args = argsOrState as StudioApplicationArgs | undefined;
-            if ((!args || args.applicationName === undefined) && !opts.urn) {
+            if (args?.applicationName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applicationName'");
             }
-            if ((!args || args.templateId === undefined) && !opts.urn) {
+            if (args?.templateId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'templateId'");
             }
-            resourceInputs["applicationName"] = args ? args.applicationName : undefined;
-            resourceInputs["areaId"] = args ? args.areaId : undefined;
-            resourceInputs["configuration"] = args ? args.configuration : undefined;
-            resourceInputs["instances"] = args ? args.instances : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["templateId"] = args ? args.templateId : undefined;
-            resourceInputs["variables"] = args ? args.variables : undefined;
+            resourceInputs["applicationName"] = args?.applicationName;
+            resourceInputs["areaId"] = args?.areaId;
+            resourceInputs["configuration"] = args?.configuration;
+            resourceInputs["instances"] = args?.instances;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["templateId"] = args?.templateId;
+            resourceInputs["variables"] = args?.variables;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

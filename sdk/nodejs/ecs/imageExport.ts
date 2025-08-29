@@ -103,15 +103,15 @@ export class ImageExport extends pulumi.CustomResource {
     /**
      * The source image ID.
      */
-    public readonly imageId!: pulumi.Output<string>;
+    declare public readonly imageId: pulumi.Output<string>;
     /**
      * Save the exported OSS bucket.
      */
-    public readonly ossBucket!: pulumi.Output<string>;
+    declare public readonly ossBucket: pulumi.Output<string>;
     /**
      * The prefix of your OSS Object. It can be composed of numbers or letters, and the character length is 1 ~ 30.
      */
-    public readonly ossPrefix!: pulumi.Output<string | undefined>;
+    declare public readonly ossPrefix: pulumi.Output<string | undefined>;
 
     /**
      * Create a ImageExport resource with the given unique name, arguments, and options.
@@ -126,20 +126,20 @@ export class ImageExport extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImageExportState | undefined;
-            resourceInputs["imageId"] = state ? state.imageId : undefined;
-            resourceInputs["ossBucket"] = state ? state.ossBucket : undefined;
-            resourceInputs["ossPrefix"] = state ? state.ossPrefix : undefined;
+            resourceInputs["imageId"] = state?.imageId;
+            resourceInputs["ossBucket"] = state?.ossBucket;
+            resourceInputs["ossPrefix"] = state?.ossPrefix;
         } else {
             const args = argsOrState as ImageExportArgs | undefined;
-            if ((!args || args.imageId === undefined) && !opts.urn) {
+            if (args?.imageId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'imageId'");
             }
-            if ((!args || args.ossBucket === undefined) && !opts.urn) {
+            if (args?.ossBucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ossBucket'");
             }
-            resourceInputs["imageId"] = args ? args.imageId : undefined;
-            resourceInputs["ossBucket"] = args ? args.ossBucket : undefined;
-            resourceInputs["ossPrefix"] = args ? args.ossPrefix : undefined;
+            resourceInputs["imageId"] = args?.imageId;
+            resourceInputs["ossBucket"] = args?.ossBucket;
+            resourceInputs["ossPrefix"] = args?.ossPrefix;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ImageExport.__pulumiType, name, resourceInputs, opts);

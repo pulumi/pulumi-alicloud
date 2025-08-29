@@ -69,23 +69,23 @@ export class BizType extends pulumi.CustomResource {
     /**
      * The name of the existing business scenario that was imported from when the business scenario was created.
      */
-    public readonly bizTypeImport!: pulumi.Output<string | undefined>;
+    declare public readonly bizTypeImport: pulumi.Output<string | undefined>;
     /**
      * The name of the business scenario defined by the customer. It can contain no more than 32 characters in English, numbers, and underscores.
      */
-    public readonly bizTypeName!: pulumi.Output<string>;
+    declare public readonly bizTypeName: pulumi.Output<string>;
     /**
      * Specifies whether to import the configuration of an industry template. Default value: false. Valid values: true: imports the configuration of an industry template. false: does not import the configuration of an industry template. If the value is true, you must specify the industryInfo parameter.
      */
-    public readonly citeTemplate!: pulumi.Output<boolean | undefined>;
+    declare public readonly citeTemplate: pulumi.Output<boolean | undefined>;
     /**
      * The description of the business scenario defined by the customer, which is a combination of Chinese and English, numbers, and underscores, and cannot exceed 32 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The industry classification. Valid values: Social-Registration information-Profile picture Social-Registration information-Nickname Social-Registration information-Bio Social-Instant messaging-Chat Social-Instant messaging-Group chat Social-Instant messaging-Chat room Social-Forums&Communities-Post Social-Forums&Communities-Comment Social-Forums&Communities-Tag Social-Forums&Communities-Recommendation Multimedia-Registration information-Profile picture Multimedia-Registration information-Nickname Multimedia-Registration information-Bio Multimedia-Instant messaging-Chat Multimedia-Live streaming-Heading Multimedia-Live streaming-Cover Multimedia-Live streaming-Content Multimedia-Live streaming-Comment Multimedia-Online storage-Storage content Multimedia-Online storage-Shared content Gaming-Registration information-Nickname Gaming-Registration information-Profile picture Gaming-Registration information-Signature Gaming-Instant messaging-Chat Gaming-Instant messaging-Group chat Gaming-Instant messaging-Chat room Gaming-Forums&Communities-Post Gaming-Forums&Communities-Comment Gaming-Forums&Communities-Tag Gaming-Forums&Communities-Recommendation New retail-Goods-Heading New retail-Goods-Description Reading-Books-Title Reading-Books-Heading Reading-Books-Cover Reading-Books-Content Media-News content-News content Education-Registration information-Nickname Education-Registration information-Profile picture Education-Registration information-Bio Gaming-Instant messaging-Chat Gaming-Forums&Communities-Post Education-Forums&Communities-Comment Education-Forums&Communities-Tag Education-Forums&Communities-Recommendation Education-Customer service-Voice call Others
      */
-    public readonly industryInfo!: pulumi.Output<string | undefined>;
+    declare public readonly industryInfo: pulumi.Output<string | undefined>;
 
     /**
      * Create a BizType resource with the given unique name, arguments, and options.
@@ -100,21 +100,21 @@ export class BizType extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BizTypeState | undefined;
-            resourceInputs["bizTypeImport"] = state ? state.bizTypeImport : undefined;
-            resourceInputs["bizTypeName"] = state ? state.bizTypeName : undefined;
-            resourceInputs["citeTemplate"] = state ? state.citeTemplate : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["industryInfo"] = state ? state.industryInfo : undefined;
+            resourceInputs["bizTypeImport"] = state?.bizTypeImport;
+            resourceInputs["bizTypeName"] = state?.bizTypeName;
+            resourceInputs["citeTemplate"] = state?.citeTemplate;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["industryInfo"] = state?.industryInfo;
         } else {
             const args = argsOrState as BizTypeArgs | undefined;
-            if ((!args || args.bizTypeName === undefined) && !opts.urn) {
+            if (args?.bizTypeName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bizTypeName'");
             }
-            resourceInputs["bizTypeImport"] = args ? args.bizTypeImport : undefined;
-            resourceInputs["bizTypeName"] = args ? args.bizTypeName : undefined;
-            resourceInputs["citeTemplate"] = args ? args.citeTemplate : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["industryInfo"] = args ? args.industryInfo : undefined;
+            resourceInputs["bizTypeImport"] = args?.bizTypeImport;
+            resourceInputs["bizTypeName"] = args?.bizTypeName;
+            resourceInputs["citeTemplate"] = args?.citeTemplate;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["industryInfo"] = args?.industryInfo;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BizType.__pulumiType, name, resourceInputs, opts);

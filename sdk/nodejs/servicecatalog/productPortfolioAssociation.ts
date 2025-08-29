@@ -52,11 +52,11 @@ export class ProductPortfolioAssociation extends pulumi.CustomResource {
     /**
      * Product Portfolio ID
      */
-    public readonly portfolioId!: pulumi.Output<string>;
+    declare public readonly portfolioId: pulumi.Output<string>;
     /**
      * Product ID
      */
-    public readonly productId!: pulumi.Output<string>;
+    declare public readonly productId: pulumi.Output<string>;
 
     /**
      * Create a ProductPortfolioAssociation resource with the given unique name, arguments, and options.
@@ -71,18 +71,18 @@ export class ProductPortfolioAssociation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProductPortfolioAssociationState | undefined;
-            resourceInputs["portfolioId"] = state ? state.portfolioId : undefined;
-            resourceInputs["productId"] = state ? state.productId : undefined;
+            resourceInputs["portfolioId"] = state?.portfolioId;
+            resourceInputs["productId"] = state?.productId;
         } else {
             const args = argsOrState as ProductPortfolioAssociationArgs | undefined;
-            if ((!args || args.portfolioId === undefined) && !opts.urn) {
+            if (args?.portfolioId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'portfolioId'");
             }
-            if ((!args || args.productId === undefined) && !opts.urn) {
+            if (args?.productId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'productId'");
             }
-            resourceInputs["portfolioId"] = args ? args.portfolioId : undefined;
-            resourceInputs["productId"] = args ? args.productId : undefined;
+            resourceInputs["portfolioId"] = args?.portfolioId;
+            resourceInputs["productId"] = args?.productId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProductPortfolioAssociation.__pulumiType, name, resourceInputs, opts);

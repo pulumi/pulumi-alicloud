@@ -79,19 +79,19 @@ export class ChartNamespace extends pulumi.CustomResource {
     /**
      * Specifies whether to automatically create repositories in the namespace. Valid values:
      */
-    public readonly autoCreateRepo!: pulumi.Output<boolean>;
+    declare public readonly autoCreateRepo: pulumi.Output<boolean>;
     /**
      * DefaultRepoType. Valid values: `PRIVATE`, `PUBLIC`.
      */
-    public readonly defaultRepoType!: pulumi.Output<string>;
+    declare public readonly defaultRepoType: pulumi.Output<string>;
     /**
      * The ID of the Container Registry instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The name of the namespace that you want to create.
      */
-    public readonly namespaceName!: pulumi.Output<string>;
+    declare public readonly namespaceName: pulumi.Output<string>;
 
     /**
      * Create a ChartNamespace resource with the given unique name, arguments, and options.
@@ -106,22 +106,22 @@ export class ChartNamespace extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ChartNamespaceState | undefined;
-            resourceInputs["autoCreateRepo"] = state ? state.autoCreateRepo : undefined;
-            resourceInputs["defaultRepoType"] = state ? state.defaultRepoType : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["namespaceName"] = state ? state.namespaceName : undefined;
+            resourceInputs["autoCreateRepo"] = state?.autoCreateRepo;
+            resourceInputs["defaultRepoType"] = state?.defaultRepoType;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["namespaceName"] = state?.namespaceName;
         } else {
             const args = argsOrState as ChartNamespaceArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.namespaceName === undefined) && !opts.urn) {
+            if (args?.namespaceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'namespaceName'");
             }
-            resourceInputs["autoCreateRepo"] = args ? args.autoCreateRepo : undefined;
-            resourceInputs["defaultRepoType"] = args ? args.defaultRepoType : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["namespaceName"] = args ? args.namespaceName : undefined;
+            resourceInputs["autoCreateRepo"] = args?.autoCreateRepo;
+            resourceInputs["defaultRepoType"] = args?.defaultRepoType;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["namespaceName"] = args?.namespaceName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ChartNamespace.__pulumiType, name, resourceInputs, opts);

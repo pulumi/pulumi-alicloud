@@ -119,26 +119,26 @@ export class ServiceCertificate extends pulumi.CustomResource {
     /**
      * Cert of the Certificate in which the Certificate will add.
      */
-    public readonly cert!: pulumi.Output<string>;
+    declare public readonly cert: pulumi.Output<string>;
     /**
      * Name of the Certificate. `certificateName` must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix .sh and .tel are not supported.
      * **NOTE:** One of `certificateName` and `name` must be specified.
      */
-    public readonly certificateName!: pulumi.Output<string>;
+    declare public readonly certificateName: pulumi.Output<string>;
     /**
      * Key of the Certificate in which the Certificate will add.
      */
-    public readonly key!: pulumi.Output<string>;
+    declare public readonly key: pulumi.Output<string>;
     /**
      * The lang.
      */
-    public readonly lang!: pulumi.Output<string | undefined>;
+    declare public readonly lang: pulumi.Output<string | undefined>;
     /**
      * It has been deprecated from version 1.129.0 and using `certificateName` instead.
      *
      * @deprecated attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a ServiceCertificate resource with the given unique name, arguments, and options.
@@ -153,24 +153,24 @@ export class ServiceCertificate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceCertificateState | undefined;
-            resourceInputs["cert"] = state ? state.cert : undefined;
-            resourceInputs["certificateName"] = state ? state.certificateName : undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["lang"] = state ? state.lang : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["cert"] = state?.cert;
+            resourceInputs["certificateName"] = state?.certificateName;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["lang"] = state?.lang;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as ServiceCertificateArgs | undefined;
-            if ((!args || args.cert === undefined) && !opts.urn) {
+            if (args?.cert === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cert'");
             }
-            if ((!args || args.key === undefined) && !opts.urn) {
+            if (args?.key === undefined && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            resourceInputs["cert"] = args ? args.cert : undefined;
-            resourceInputs["certificateName"] = args ? args.certificateName : undefined;
-            resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["lang"] = args ? args.lang : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["cert"] = args?.cert;
+            resourceInputs["certificateName"] = args?.certificateName;
+            resourceInputs["key"] = args?.key;
+            resourceInputs["lang"] = args?.lang;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServiceCertificate.__pulumiType, name, resourceInputs, opts);

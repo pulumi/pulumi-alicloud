@@ -151,78 +151,78 @@ export class Alarm extends pulumi.CustomResource {
     /**
      * The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
      */
-    public readonly alarmActions!: pulumi.Output<string[]>;
+    declare public readonly alarmActions: pulumi.Output<string[]>;
     /**
      * Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
      */
-    public readonly cloudMonitorGroupId!: pulumi.Output<number | undefined>;
+    declare public readonly cloudMonitorGroupId: pulumi.Output<number | undefined>;
     /**
      * The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
      */
-    public readonly comparisonOperator!: pulumi.Output<string>;
+    declare public readonly comparisonOperator: pulumi.Output<string>;
     /**
      * The description for the alarm.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
      */
-    public readonly dimensions!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly dimensions: pulumi.Output<{[key: string]: string}>;
     /**
      * The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
      */
-    public readonly effective!: pulumi.Output<string>;
+    declare public readonly effective: pulumi.Output<string>;
     /**
      * Whether to enable specific ess alarm. Default to true.
      */
-    public readonly enable!: pulumi.Output<boolean | undefined>;
+    declare public readonly enable: pulumi.Output<boolean | undefined>;
     /**
      * The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
      */
-    public readonly evaluationCount!: pulumi.Output<number | undefined>;
+    declare public readonly evaluationCount: pulumi.Output<number | undefined>;
     /**
      * Support multi alert rule. See `expressions` below for details.
      */
-    public readonly expressions!: pulumi.Output<outputs.ess.AlarmExpression[]>;
+    declare public readonly expressions: pulumi.Output<outputs.ess.AlarmExpression[]>;
     /**
      * The relationship between the trigger conditions in the multi-metric alert rule.
      */
-    public readonly expressionsLogicOperator!: pulumi.Output<string>;
+    declare public readonly expressionsLogicOperator: pulumi.Output<string>;
     /**
      * The name for the alarm's associated metric. See `dimensions` below for details.
      */
-    public readonly metricName!: pulumi.Output<string>;
+    declare public readonly metricName: pulumi.Output<string>;
     /**
      * The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
      */
-    public readonly metricType!: pulumi.Output<string | undefined>;
+    declare public readonly metricType: pulumi.Output<string | undefined>;
     /**
      * The name for ess alarm.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
      */
-    public readonly period!: pulumi.Output<number>;
+    declare public readonly period: pulumi.Output<number>;
     /**
      * The scaling group associated with this alarm, the 'ForceNew' attribute is available in 1.56.0+.
      */
-    public readonly scalingGroupId!: pulumi.Output<string>;
+    declare public readonly scalingGroupId: pulumi.Output<string>;
     /**
      * The status of the event-triggered task. Valid values:
      * - ALARM: The alert condition is met and an alert is triggered.
      * - OK: The alert condition is not met.
      * - INSUFFICIENT_DATA: Auto Scaling cannot determine whether the alert condition is met due to insufficient data.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
      */
-    public readonly statistics!: pulumi.Output<string>;
+    declare public readonly statistics: pulumi.Output<string>;
     /**
      * The value against which the specified statistics is compared.
      */
-    public readonly threshold!: pulumi.Output<string>;
+    declare public readonly threshold: pulumi.Output<string>;
 
     /**
      * Create a Alarm resource with the given unique name, arguments, and options.
@@ -237,49 +237,49 @@ export class Alarm extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlarmState | undefined;
-            resourceInputs["alarmActions"] = state ? state.alarmActions : undefined;
-            resourceInputs["cloudMonitorGroupId"] = state ? state.cloudMonitorGroupId : undefined;
-            resourceInputs["comparisonOperator"] = state ? state.comparisonOperator : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dimensions"] = state ? state.dimensions : undefined;
-            resourceInputs["effective"] = state ? state.effective : undefined;
-            resourceInputs["enable"] = state ? state.enable : undefined;
-            resourceInputs["evaluationCount"] = state ? state.evaluationCount : undefined;
-            resourceInputs["expressions"] = state ? state.expressions : undefined;
-            resourceInputs["expressionsLogicOperator"] = state ? state.expressionsLogicOperator : undefined;
-            resourceInputs["metricName"] = state ? state.metricName : undefined;
-            resourceInputs["metricType"] = state ? state.metricType : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["statistics"] = state ? state.statistics : undefined;
-            resourceInputs["threshold"] = state ? state.threshold : undefined;
+            resourceInputs["alarmActions"] = state?.alarmActions;
+            resourceInputs["cloudMonitorGroupId"] = state?.cloudMonitorGroupId;
+            resourceInputs["comparisonOperator"] = state?.comparisonOperator;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dimensions"] = state?.dimensions;
+            resourceInputs["effective"] = state?.effective;
+            resourceInputs["enable"] = state?.enable;
+            resourceInputs["evaluationCount"] = state?.evaluationCount;
+            resourceInputs["expressions"] = state?.expressions;
+            resourceInputs["expressionsLogicOperator"] = state?.expressionsLogicOperator;
+            resourceInputs["metricName"] = state?.metricName;
+            resourceInputs["metricType"] = state?.metricType;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["scalingGroupId"] = state?.scalingGroupId;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["statistics"] = state?.statistics;
+            resourceInputs["threshold"] = state?.threshold;
         } else {
             const args = argsOrState as AlarmArgs | undefined;
-            if ((!args || args.alarmActions === undefined) && !opts.urn) {
+            if (args?.alarmActions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'alarmActions'");
             }
-            if ((!args || args.scalingGroupId === undefined) && !opts.urn) {
+            if (args?.scalingGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scalingGroupId'");
             }
-            resourceInputs["alarmActions"] = args ? args.alarmActions : undefined;
-            resourceInputs["cloudMonitorGroupId"] = args ? args.cloudMonitorGroupId : undefined;
-            resourceInputs["comparisonOperator"] = args ? args.comparisonOperator : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dimensions"] = args ? args.dimensions : undefined;
-            resourceInputs["effective"] = args ? args.effective : undefined;
-            resourceInputs["enable"] = args ? args.enable : undefined;
-            resourceInputs["evaluationCount"] = args ? args.evaluationCount : undefined;
-            resourceInputs["expressions"] = args ? args.expressions : undefined;
-            resourceInputs["expressionsLogicOperator"] = args ? args.expressionsLogicOperator : undefined;
-            resourceInputs["metricName"] = args ? args.metricName : undefined;
-            resourceInputs["metricType"] = args ? args.metricType : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
-            resourceInputs["statistics"] = args ? args.statistics : undefined;
-            resourceInputs["threshold"] = args ? args.threshold : undefined;
+            resourceInputs["alarmActions"] = args?.alarmActions;
+            resourceInputs["cloudMonitorGroupId"] = args?.cloudMonitorGroupId;
+            resourceInputs["comparisonOperator"] = args?.comparisonOperator;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dimensions"] = args?.dimensions;
+            resourceInputs["effective"] = args?.effective;
+            resourceInputs["enable"] = args?.enable;
+            resourceInputs["evaluationCount"] = args?.evaluationCount;
+            resourceInputs["expressions"] = args?.expressions;
+            resourceInputs["expressionsLogicOperator"] = args?.expressionsLogicOperator;
+            resourceInputs["metricName"] = args?.metricName;
+            resourceInputs["metricType"] = args?.metricType;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["scalingGroupId"] = args?.scalingGroupId;
+            resourceInputs["statistics"] = args?.statistics;
+            resourceInputs["threshold"] = args?.threshold;
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

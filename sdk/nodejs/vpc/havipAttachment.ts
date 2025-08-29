@@ -106,31 +106,31 @@ export class HAVipAttachment extends pulumi.CustomResource {
      * - **False** (default): unbinding is not forced.
      * > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
      */
-    public readonly force!: pulumi.Output<boolean | undefined>;
+    declare public readonly force: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the HaVip instance.
      */
-    public readonly haVipId!: pulumi.Output<string>;
+    declare public readonly haVipId: pulumi.Output<string>;
     /**
      * . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
      *
      * @deprecated Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.
      */
-    public readonly havipId!: pulumi.Output<string>;
+    declare public readonly havipId: pulumi.Output<string>;
     /**
      * The ID of the ECS instance bound to the HaVip instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The type of the instance associated with the VIIP.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    public readonly instanceType!: pulumi.Output<string>;
+    declare public readonly instanceType: pulumi.Output<string>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a HAVipAttachment resource with the given unique name, arguments, and options.
@@ -145,22 +145,22 @@ export class HAVipAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HAVipAttachmentState | undefined;
-            resourceInputs["force"] = state ? state.force : undefined;
-            resourceInputs["haVipId"] = state ? state.haVipId : undefined;
-            resourceInputs["havipId"] = state ? state.havipId : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["force"] = state?.force;
+            resourceInputs["haVipId"] = state?.haVipId;
+            resourceInputs["havipId"] = state?.havipId;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["instanceType"] = state?.instanceType;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as HAVipAttachmentArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["force"] = args ? args.force : undefined;
-            resourceInputs["haVipId"] = args ? args.haVipId : undefined;
-            resourceInputs["havipId"] = args ? args.havipId : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
+            resourceInputs["force"] = args?.force;
+            resourceInputs["haVipId"] = args?.haVipId;
+            resourceInputs["havipId"] = args?.havipId;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["instanceType"] = args?.instanceType;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

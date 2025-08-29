@@ -92,43 +92,43 @@ export class Record extends pulumi.CustomResource {
     /**
      * The origin authentication information of the CNAME record. See `authConf` below.
      */
-    public readonly authConf!: pulumi.Output<outputs.esa.RecordAuthConf | undefined>;
+    declare public readonly authConf: pulumi.Output<outputs.esa.RecordAuthConf | undefined>;
     /**
      * The business scenario of the record for acceleration. Valid values:
      */
-    public readonly bizName!: pulumi.Output<string | undefined>;
+    declare public readonly bizName: pulumi.Output<string | undefined>;
     /**
      * The comments of the record.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * The creation time of the record. The date format follows ISO8601 notation and uses UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html). See `data` below.
      */
-    public readonly data!: pulumi.Output<outputs.esa.RecordData>;
+    declare public readonly data: pulumi.Output<outputs.esa.RecordData>;
     /**
      * The origin host policy. This policy takes effect when the record type is CNAME. You can set the policy in two modes:
      */
-    public readonly hostPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly hostPolicy: pulumi.Output<string | undefined>;
     /**
      * Filters by whether the record is proxied. Valid values:
      */
-    public readonly proxied!: pulumi.Output<boolean | undefined>;
+    declare public readonly proxied: pulumi.Output<boolean | undefined>;
     /**
      * The record name. This parameter specifies a filter condition for the query.
      */
-    public readonly recordName!: pulumi.Output<string>;
+    declare public readonly recordName: pulumi.Output<string>;
     /**
      * The DNS record type.
      */
-    public readonly recordType!: pulumi.Output<string>;
+    declare public readonly recordType: pulumi.Output<string>;
     /**
      * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      */
-    public readonly siteId!: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<number>;
     /**
      * The origin type of the record. Only CNAME records can be filtered by using this field. Valid values:
      *
@@ -138,11 +138,11 @@ export class Record extends pulumi.CustomResource {
      * - `OP`: origin pool.
      * - `Domain`: domain name.
      */
-    public readonly sourceType!: pulumi.Output<string | undefined>;
+    declare public readonly sourceType: pulumi.Output<string | undefined>;
     /**
      * The TTL of the record. Unit: seconds. The range is 30 to 86,400, or 1. If the value is 1, the TTL of the record is determined by the system.
      */
-    public readonly ttl!: pulumi.Output<number | undefined>;
+    declare public readonly ttl: pulumi.Output<number | undefined>;
 
     /**
      * Create a Record resource with the given unique name, arguments, and options.
@@ -157,43 +157,43 @@ export class Record extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RecordState | undefined;
-            resourceInputs["authConf"] = state ? state.authConf : undefined;
-            resourceInputs["bizName"] = state ? state.bizName : undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["data"] = state ? state.data : undefined;
-            resourceInputs["hostPolicy"] = state ? state.hostPolicy : undefined;
-            resourceInputs["proxied"] = state ? state.proxied : undefined;
-            resourceInputs["recordName"] = state ? state.recordName : undefined;
-            resourceInputs["recordType"] = state ? state.recordType : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["sourceType"] = state ? state.sourceType : undefined;
-            resourceInputs["ttl"] = state ? state.ttl : undefined;
+            resourceInputs["authConf"] = state?.authConf;
+            resourceInputs["bizName"] = state?.bizName;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["data"] = state?.data;
+            resourceInputs["hostPolicy"] = state?.hostPolicy;
+            resourceInputs["proxied"] = state?.proxied;
+            resourceInputs["recordName"] = state?.recordName;
+            resourceInputs["recordType"] = state?.recordType;
+            resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["sourceType"] = state?.sourceType;
+            resourceInputs["ttl"] = state?.ttl;
         } else {
             const args = argsOrState as RecordArgs | undefined;
-            if ((!args || args.data === undefined) && !opts.urn) {
+            if (args?.data === undefined && !opts.urn) {
                 throw new Error("Missing required property 'data'");
             }
-            if ((!args || args.recordName === undefined) && !opts.urn) {
+            if (args?.recordName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'recordName'");
             }
-            if ((!args || args.recordType === undefined) && !opts.urn) {
+            if (args?.recordType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'recordType'");
             }
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            resourceInputs["authConf"] = args ? args.authConf : undefined;
-            resourceInputs["bizName"] = args ? args.bizName : undefined;
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["data"] = args ? args.data : undefined;
-            resourceInputs["hostPolicy"] = args ? args.hostPolicy : undefined;
-            resourceInputs["proxied"] = args ? args.proxied : undefined;
-            resourceInputs["recordName"] = args ? args.recordName : undefined;
-            resourceInputs["recordType"] = args ? args.recordType : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
-            resourceInputs["sourceType"] = args ? args.sourceType : undefined;
-            resourceInputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["authConf"] = args?.authConf;
+            resourceInputs["bizName"] = args?.bizName;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["data"] = args?.data;
+            resourceInputs["hostPolicy"] = args?.hostPolicy;
+            resourceInputs["proxied"] = args?.proxied;
+            resourceInputs["recordName"] = args?.recordName;
+            resourceInputs["recordType"] = args?.recordType;
+            resourceInputs["siteId"] = args?.siteId;
+            resourceInputs["sourceType"] = args?.sourceType;
+            resourceInputs["ttl"] = args?.ttl;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

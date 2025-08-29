@@ -83,61 +83,61 @@ export class Trail extends pulumi.CustomResource {
     /**
      * Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
      */
-    public readonly eventRw!: pulumi.Output<string | undefined>;
+    declare public readonly eventRw: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to create a multi-account trail. Valid values:`true`: Create a multi-account trail.`false`: Create a single-account trail. It is the default value.
      */
-    public readonly isOrganizationTrail!: pulumi.Output<boolean | undefined>;
+    declare public readonly isOrganizationTrail: pulumi.Output<boolean | undefined>;
     /**
      * Field `mnsTopicArn` has been deprecated from version 1.118.0.
      *
      * @deprecated Field 'mns_topic_arn' has been deprecated from version 1.118.0
      */
-    public readonly mnsTopicArn!: pulumi.Output<string | undefined>;
+    declare public readonly mnsTopicArn: pulumi.Output<string | undefined>;
     /**
      * Field `name` has been deprecated from version 1.95.0. Use `trailName` instead.
      *
      * @deprecated Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
      */
-    public readonly ossBucketName!: pulumi.Output<string | undefined>;
+    declare public readonly ossBucketName: pulumi.Output<string | undefined>;
     /**
      * The prefix of the specified OSS bucket name. This parameter can be left empty.
      */
-    public readonly ossKeyPrefix!: pulumi.Output<string | undefined>;
+    declare public readonly ossKeyPrefix: pulumi.Output<string | undefined>;
     /**
      * The unique ARN of the Oss role.
      */
-    public readonly ossWriteRoleArn!: pulumi.Output<string | undefined>;
+    declare public readonly ossWriteRoleArn: pulumi.Output<string | undefined>;
     /**
      * Field `name` has been deprecated from version 1.118.0.
      *
      * @deprecated Field 'role_name' has been deprecated from version 1.118.0
      */
-    public readonly roleName!: pulumi.Output<string>;
+    declare public readonly roleName: pulumi.Output<string>;
     /**
      * The unique ARN of the Log Service project. Ensure that `slsProjectArn` is valid .
      */
-    public readonly slsProjectArn!: pulumi.Output<string | undefined>;
+    declare public readonly slsProjectArn: pulumi.Output<string | undefined>;
     /**
      * The unique ARN of the Log Service role.
      */
-    public readonly slsWriteRoleArn!: pulumi.Output<string>;
+    declare public readonly slsWriteRoleArn: pulumi.Output<string>;
     /**
      * The status of ActionTrail Trail. After creation, tracking is turned on by default, and you can set the status value to `Disable` to turn off tracking. Valid values: `Enable`, `Disable`. Default to `Enable`.
      */
-    public readonly status!: pulumi.Output<string | undefined>;
+    declare public readonly status: pulumi.Output<string | undefined>;
     /**
      * The name of the trail to be created, which must be unique for an account.
      */
-    public readonly trailName!: pulumi.Output<string>;
+    declare public readonly trailName: pulumi.Output<string>;
     /**
      * The regions to which the trail is applied. Default to `All`.
      */
-    public readonly trailRegion!: pulumi.Output<string>;
+    declare public readonly trailRegion: pulumi.Output<string>;
 
     /**
      * Create a Trail resource with the given unique name, arguments, and options.
@@ -152,34 +152,34 @@ export class Trail extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TrailState | undefined;
-            resourceInputs["eventRw"] = state ? state.eventRw : undefined;
-            resourceInputs["isOrganizationTrail"] = state ? state.isOrganizationTrail : undefined;
-            resourceInputs["mnsTopicArn"] = state ? state.mnsTopicArn : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["ossBucketName"] = state ? state.ossBucketName : undefined;
-            resourceInputs["ossKeyPrefix"] = state ? state.ossKeyPrefix : undefined;
-            resourceInputs["ossWriteRoleArn"] = state ? state.ossWriteRoleArn : undefined;
-            resourceInputs["roleName"] = state ? state.roleName : undefined;
-            resourceInputs["slsProjectArn"] = state ? state.slsProjectArn : undefined;
-            resourceInputs["slsWriteRoleArn"] = state ? state.slsWriteRoleArn : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["trailName"] = state ? state.trailName : undefined;
-            resourceInputs["trailRegion"] = state ? state.trailRegion : undefined;
+            resourceInputs["eventRw"] = state?.eventRw;
+            resourceInputs["isOrganizationTrail"] = state?.isOrganizationTrail;
+            resourceInputs["mnsTopicArn"] = state?.mnsTopicArn;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["ossBucketName"] = state?.ossBucketName;
+            resourceInputs["ossKeyPrefix"] = state?.ossKeyPrefix;
+            resourceInputs["ossWriteRoleArn"] = state?.ossWriteRoleArn;
+            resourceInputs["roleName"] = state?.roleName;
+            resourceInputs["slsProjectArn"] = state?.slsProjectArn;
+            resourceInputs["slsWriteRoleArn"] = state?.slsWriteRoleArn;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["trailName"] = state?.trailName;
+            resourceInputs["trailRegion"] = state?.trailRegion;
         } else {
             const args = argsOrState as TrailArgs | undefined;
-            resourceInputs["eventRw"] = args ? args.eventRw : undefined;
-            resourceInputs["isOrganizationTrail"] = args ? args.isOrganizationTrail : undefined;
-            resourceInputs["mnsTopicArn"] = args ? args.mnsTopicArn : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["ossBucketName"] = args ? args.ossBucketName : undefined;
-            resourceInputs["ossKeyPrefix"] = args ? args.ossKeyPrefix : undefined;
-            resourceInputs["ossWriteRoleArn"] = args ? args.ossWriteRoleArn : undefined;
-            resourceInputs["roleName"] = args ? args.roleName : undefined;
-            resourceInputs["slsProjectArn"] = args ? args.slsProjectArn : undefined;
-            resourceInputs["slsWriteRoleArn"] = args ? args.slsWriteRoleArn : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["trailName"] = args ? args.trailName : undefined;
-            resourceInputs["trailRegion"] = args ? args.trailRegion : undefined;
+            resourceInputs["eventRw"] = args?.eventRw;
+            resourceInputs["isOrganizationTrail"] = args?.isOrganizationTrail;
+            resourceInputs["mnsTopicArn"] = args?.mnsTopicArn;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["ossBucketName"] = args?.ossBucketName;
+            resourceInputs["ossKeyPrefix"] = args?.ossKeyPrefix;
+            resourceInputs["ossWriteRoleArn"] = args?.ossWriteRoleArn;
+            resourceInputs["roleName"] = args?.roleName;
+            resourceInputs["slsProjectArn"] = args?.slsProjectArn;
+            resourceInputs["slsWriteRoleArn"] = args?.slsWriteRoleArn;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["trailName"] = args?.trailName;
+            resourceInputs["trailRegion"] = args?.trailRegion;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Trail.__pulumiType, name, resourceInputs, opts);

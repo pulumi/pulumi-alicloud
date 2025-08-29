@@ -73,67 +73,67 @@ export class HAVip extends pulumi.CustomResource {
     /**
      * The elastic IP address (EIP) associated with the HAVIP.
      */
-    public /*out*/ readonly associatedEipAddresses!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly associatedEipAddresses: pulumi.Output<string[]>;
     /**
      * The type of the instance with which the HAVIP is associated. Valid values:
      * - `EcsInstance`: an ECS instance.
      * - `NetworkInterface`: an ENI.
      */
-    public /*out*/ readonly associatedInstanceType!: pulumi.Output<string>;
+    declare public /*out*/ readonly associatedInstanceType: pulumi.Output<string>;
     /**
      * The ID of the instance with which the HAVIP is associated.
      */
-    public /*out*/ readonly associatedInstances!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly associatedInstances: pulumi.Output<string[]>;
     /**
      * The time when the HAVIP was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The description of the HaVip instance.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The ID of the HAVIP.
      */
-    public /*out*/ readonly haVipId!: pulumi.Output<string>;
+    declare public /*out*/ readonly haVipId: pulumi.Output<string>;
     /**
      * The name of the HAVIP.
      */
-    public readonly haVipName!: pulumi.Output<string>;
+    declare public readonly haVipName: pulumi.Output<string>;
     /**
      * The name of the HaVip instance.
      *
      * @deprecated Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
      */
-    public readonly havipName!: pulumi.Output<string>;
+    declare public readonly havipName: pulumi.Output<string>;
     /**
      * The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
      */
-    public readonly ipAddress!: pulumi.Output<string>;
+    declare public readonly ipAddress: pulumi.Output<string>;
     /**
      * The ID of the active instance that is associated with the HAVIP.
      */
-    public /*out*/ readonly masterInstanceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly masterInstanceId: pulumi.Output<string>;
     /**
      * The ID of the resource group to which the HAVIP belongs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * (Available since v1.120.0) The status of the HaVip instance.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The list of tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the VPC to which the HAVIP belongs.
      */
-    public /*out*/ readonly vpcId!: pulumi.Output<string>;
+    declare public /*out*/ readonly vpcId: pulumi.Output<string>;
     /**
      * The vswitchId of the HaVip, the field can't be changed.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
 
     /**
      * Create a HAVip resource with the given unique name, arguments, and options.
@@ -148,33 +148,33 @@ export class HAVip extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HAVipState | undefined;
-            resourceInputs["associatedEipAddresses"] = state ? state.associatedEipAddresses : undefined;
-            resourceInputs["associatedInstanceType"] = state ? state.associatedInstanceType : undefined;
-            resourceInputs["associatedInstances"] = state ? state.associatedInstances : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["haVipId"] = state ? state.haVipId : undefined;
-            resourceInputs["haVipName"] = state ? state.haVipName : undefined;
-            resourceInputs["havipName"] = state ? state.havipName : undefined;
-            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
-            resourceInputs["masterInstanceId"] = state ? state.masterInstanceId : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["associatedEipAddresses"] = state?.associatedEipAddresses;
+            resourceInputs["associatedInstanceType"] = state?.associatedInstanceType;
+            resourceInputs["associatedInstances"] = state?.associatedInstances;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["haVipId"] = state?.haVipId;
+            resourceInputs["haVipName"] = state?.haVipName;
+            resourceInputs["havipName"] = state?.havipName;
+            resourceInputs["ipAddress"] = state?.ipAddress;
+            resourceInputs["masterInstanceId"] = state?.masterInstanceId;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
         } else {
             const args = argsOrState as HAVipArgs | undefined;
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+            if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["haVipName"] = args ? args.haVipName : undefined;
-            resourceInputs["havipName"] = args ? args.havipName : undefined;
-            resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["haVipName"] = args?.haVipName;
+            resourceInputs["havipName"] = args?.havipName;
+            resourceInputs["ipAddress"] = args?.ipAddress;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["associatedEipAddresses"] = undefined /*out*/;
             resourceInputs["associatedInstanceType"] = undefined /*out*/;
             resourceInputs["associatedInstances"] = undefined /*out*/;

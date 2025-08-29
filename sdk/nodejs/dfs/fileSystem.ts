@@ -72,61 +72,61 @@ export class FileSystem extends pulumi.CustomResource {
     /**
      * The creation time of the file system instance.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Redundancy mode of the file system. Value:
      * - LRS (default): Local redundancy.
      * - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
      */
-    public readonly dataRedundancyType!: pulumi.Output<string | undefined>;
+    declare public readonly dataRedundancyType: pulumi.Output<string | undefined>;
     /**
      * Dedicated cluster id, which is used to support scenarios such as group cloud migration.
      */
-    public readonly dedicatedClusterId!: pulumi.Output<string | undefined>;
+    declare public readonly dedicatedClusterId: pulumi.Output<string | undefined>;
     /**
      * The description of the file system resource. No more than 32 characters in length.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
      */
-    public readonly fileSystemName!: pulumi.Output<string>;
+    declare public readonly fileSystemName: pulumi.Output<string>;
     /**
      * Save set sequence number, the user selects the content of the specified sequence number in the Save set.
      */
-    public readonly partitionNumber!: pulumi.Output<number | undefined>;
+    declare public readonly partitionNumber: pulumi.Output<number | undefined>;
     /**
      * The protocol type. Value: `HDFS`, `PANGU`.
      */
-    public readonly protocolType!: pulumi.Output<string>;
+    declare public readonly protocolType: pulumi.Output<string>;
     /**
      * Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
      */
-    public readonly provisionedThroughputInMiBps!: pulumi.Output<number | undefined>;
+    declare public readonly provisionedThroughputInMiBps: pulumi.Output<number | undefined>;
     /**
      * (Available since v1.242.0) The region ID of the File System.
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
      */
-    public readonly spaceCapacity!: pulumi.Output<number>;
+    declare public readonly spaceCapacity: pulumi.Output<number>;
     /**
      * Save set identity, used to select a user-specified save set.
      */
-    public readonly storageSetName!: pulumi.Output<string | undefined>;
+    declare public readonly storageSetName: pulumi.Output<string | undefined>;
     /**
      * The storage media type. Value: STANDARD (default): STANDARD PERFORMANCE: PERFORMANCE type.
      */
-    public readonly storageType!: pulumi.Output<string>;
+    declare public readonly storageType: pulumi.Output<string>;
     /**
      * The throughput mode. Value: Standard (default): Standard throughput Provisioned: preset throughput.
      */
-    public readonly throughputMode!: pulumi.Output<string>;
+    declare public readonly throughputMode: pulumi.Output<string>;
     /**
      * Zone Id, which is used to create file system resources to the specified zone.
      */
-    public readonly zoneId!: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a FileSystem resource with the given unique name, arguments, and options.
@@ -141,46 +141,46 @@ export class FileSystem extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FileSystemState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dataRedundancyType"] = state ? state.dataRedundancyType : undefined;
-            resourceInputs["dedicatedClusterId"] = state ? state.dedicatedClusterId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["fileSystemName"] = state ? state.fileSystemName : undefined;
-            resourceInputs["partitionNumber"] = state ? state.partitionNumber : undefined;
-            resourceInputs["protocolType"] = state ? state.protocolType : undefined;
-            resourceInputs["provisionedThroughputInMiBps"] = state ? state.provisionedThroughputInMiBps : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["spaceCapacity"] = state ? state.spaceCapacity : undefined;
-            resourceInputs["storageSetName"] = state ? state.storageSetName : undefined;
-            resourceInputs["storageType"] = state ? state.storageType : undefined;
-            resourceInputs["throughputMode"] = state ? state.throughputMode : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dataRedundancyType"] = state?.dataRedundancyType;
+            resourceInputs["dedicatedClusterId"] = state?.dedicatedClusterId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["fileSystemName"] = state?.fileSystemName;
+            resourceInputs["partitionNumber"] = state?.partitionNumber;
+            resourceInputs["protocolType"] = state?.protocolType;
+            resourceInputs["provisionedThroughputInMiBps"] = state?.provisionedThroughputInMiBps;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["spaceCapacity"] = state?.spaceCapacity;
+            resourceInputs["storageSetName"] = state?.storageSetName;
+            resourceInputs["storageType"] = state?.storageType;
+            resourceInputs["throughputMode"] = state?.throughputMode;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as FileSystemArgs | undefined;
-            if ((!args || args.fileSystemName === undefined) && !opts.urn) {
+            if (args?.fileSystemName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fileSystemName'");
             }
-            if ((!args || args.protocolType === undefined) && !opts.urn) {
+            if (args?.protocolType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protocolType'");
             }
-            if ((!args || args.spaceCapacity === undefined) && !opts.urn) {
+            if (args?.spaceCapacity === undefined && !opts.urn) {
                 throw new Error("Missing required property 'spaceCapacity'");
             }
-            if ((!args || args.storageType === undefined) && !opts.urn) {
+            if (args?.storageType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storageType'");
             }
-            resourceInputs["dataRedundancyType"] = args ? args.dataRedundancyType : undefined;
-            resourceInputs["dedicatedClusterId"] = args ? args.dedicatedClusterId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["fileSystemName"] = args ? args.fileSystemName : undefined;
-            resourceInputs["partitionNumber"] = args ? args.partitionNumber : undefined;
-            resourceInputs["protocolType"] = args ? args.protocolType : undefined;
-            resourceInputs["provisionedThroughputInMiBps"] = args ? args.provisionedThroughputInMiBps : undefined;
-            resourceInputs["spaceCapacity"] = args ? args.spaceCapacity : undefined;
-            resourceInputs["storageSetName"] = args ? args.storageSetName : undefined;
-            resourceInputs["storageType"] = args ? args.storageType : undefined;
-            resourceInputs["throughputMode"] = args ? args.throughputMode : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["dataRedundancyType"] = args?.dataRedundancyType;
+            resourceInputs["dedicatedClusterId"] = args?.dedicatedClusterId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["fileSystemName"] = args?.fileSystemName;
+            resourceInputs["partitionNumber"] = args?.partitionNumber;
+            resourceInputs["protocolType"] = args?.protocolType;
+            resourceInputs["provisionedThroughputInMiBps"] = args?.provisionedThroughputInMiBps;
+            resourceInputs["spaceCapacity"] = args?.spaceCapacity;
+            resourceInputs["storageSetName"] = args?.storageSetName;
+            resourceInputs["storageType"] = args?.storageType;
+            resourceInputs["throughputMode"] = args?.throughputMode;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
         }

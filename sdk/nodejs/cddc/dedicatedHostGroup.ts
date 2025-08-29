@@ -78,40 +78,40 @@ export class DedicatedHostGroup extends pulumi.CustomResource {
     /**
      * AThe policy that is used to allocate resources in the dedicated cluster. Valid values:`Evenly`,`Intensively`
      */
-    public readonly allocationPolicy!: pulumi.Output<string>;
+    declare public readonly allocationPolicy: pulumi.Output<string>;
     /**
      * The CPU overcommitment ratio of the dedicated cluster.Valid values: 100 to 300. Default value: 200.
      */
-    public readonly cpuAllocationRatio!: pulumi.Output<number>;
+    declare public readonly cpuAllocationRatio: pulumi.Output<number>;
     /**
      * The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
      */
-    public readonly dedicatedHostGroupDesc!: pulumi.Output<string | undefined>;
+    declare public readonly dedicatedHostGroupDesc: pulumi.Output<string | undefined>;
     /**
      * The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
      */
-    public readonly diskAllocationRatio!: pulumi.Output<number>;
+    declare public readonly diskAllocationRatio: pulumi.Output<number>;
     /**
      * Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`, `alisql`, `tair`, `mssql`. **NOTE:** Since v1.210.0., the `engine = SQLServer` was deprecated.
      */
-    public readonly engine!: pulumi.Output<string>;
+    declare public readonly engine: pulumi.Output<string>;
     /**
      * The policy based on which the system handles host failures. Valid values:`Auto`,`Manual`
      */
-    public readonly hostReplacePolicy!: pulumi.Output<string>;
+    declare public readonly hostReplacePolicy: pulumi.Output<string>;
     /**
      * The Memory Allocation Ratio of the Dedicated Host Group.
      */
-    public readonly memAllocationRatio!: pulumi.Output<number>;
+    declare public readonly memAllocationRatio: pulumi.Output<number>;
     /**
      * Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
      * **NOTE:** The `openPermission` should be `true` when `engine = "SQLServer"`
      */
-    public readonly openPermission!: pulumi.Output<boolean>;
+    declare public readonly openPermission: pulumi.Output<boolean>;
     /**
      * The virtual private cloud (VPC) ID of the dedicated cluster.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
 
     /**
      * Create a DedicatedHostGroup resource with the given unique name, arguments, and options.
@@ -126,32 +126,32 @@ export class DedicatedHostGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DedicatedHostGroupState | undefined;
-            resourceInputs["allocationPolicy"] = state ? state.allocationPolicy : undefined;
-            resourceInputs["cpuAllocationRatio"] = state ? state.cpuAllocationRatio : undefined;
-            resourceInputs["dedicatedHostGroupDesc"] = state ? state.dedicatedHostGroupDesc : undefined;
-            resourceInputs["diskAllocationRatio"] = state ? state.diskAllocationRatio : undefined;
-            resourceInputs["engine"] = state ? state.engine : undefined;
-            resourceInputs["hostReplacePolicy"] = state ? state.hostReplacePolicy : undefined;
-            resourceInputs["memAllocationRatio"] = state ? state.memAllocationRatio : undefined;
-            resourceInputs["openPermission"] = state ? state.openPermission : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["allocationPolicy"] = state?.allocationPolicy;
+            resourceInputs["cpuAllocationRatio"] = state?.cpuAllocationRatio;
+            resourceInputs["dedicatedHostGroupDesc"] = state?.dedicatedHostGroupDesc;
+            resourceInputs["diskAllocationRatio"] = state?.diskAllocationRatio;
+            resourceInputs["engine"] = state?.engine;
+            resourceInputs["hostReplacePolicy"] = state?.hostReplacePolicy;
+            resourceInputs["memAllocationRatio"] = state?.memAllocationRatio;
+            resourceInputs["openPermission"] = state?.openPermission;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as DedicatedHostGroupArgs | undefined;
-            if ((!args || args.engine === undefined) && !opts.urn) {
+            if (args?.engine === undefined && !opts.urn) {
                 throw new Error("Missing required property 'engine'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["allocationPolicy"] = args ? args.allocationPolicy : undefined;
-            resourceInputs["cpuAllocationRatio"] = args ? args.cpuAllocationRatio : undefined;
-            resourceInputs["dedicatedHostGroupDesc"] = args ? args.dedicatedHostGroupDesc : undefined;
-            resourceInputs["diskAllocationRatio"] = args ? args.diskAllocationRatio : undefined;
-            resourceInputs["engine"] = args ? args.engine : undefined;
-            resourceInputs["hostReplacePolicy"] = args ? args.hostReplacePolicy : undefined;
-            resourceInputs["memAllocationRatio"] = args ? args.memAllocationRatio : undefined;
-            resourceInputs["openPermission"] = args ? args.openPermission : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["allocationPolicy"] = args?.allocationPolicy;
+            resourceInputs["cpuAllocationRatio"] = args?.cpuAllocationRatio;
+            resourceInputs["dedicatedHostGroupDesc"] = args?.dedicatedHostGroupDesc;
+            resourceInputs["diskAllocationRatio"] = args?.diskAllocationRatio;
+            resourceInputs["engine"] = args?.engine;
+            resourceInputs["hostReplacePolicy"] = args?.hostReplacePolicy;
+            resourceInputs["memAllocationRatio"] = args?.memAllocationRatio;
+            resourceInputs["openPermission"] = args?.openPermission;
+            resourceInputs["vpcId"] = args?.vpcId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DedicatedHostGroup.__pulumiType, name, resourceInputs, opts);

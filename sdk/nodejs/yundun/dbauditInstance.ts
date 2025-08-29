@@ -44,28 +44,28 @@ export class DBAuditInstance extends pulumi.CustomResource {
     /**
      * Description of the instance. This name can have a string of 1 to 63 characters.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      */
-    public readonly period!: pulumi.Output<number>;
+    declare public readonly period: pulumi.Output<number>;
     /**
      * Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
      */
-    public readonly planCode!: pulumi.Output<string>;
+    declare public readonly planCode: pulumi.Output<string>;
     /**
      * The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly resourceGroupId: pulumi.Output<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * vSwtich ID configured to audit
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    declare public readonly vswitchId: pulumi.Output<string>;
 
     /**
      * Create a DBAuditInstance resource with the given unique name, arguments, and options.
@@ -80,32 +80,32 @@ export class DBAuditInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DBAuditInstanceState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["planCode"] = state ? state.planCode : undefined;
-            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["planCode"] = state?.planCode;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vswitchId"] = state?.vswitchId;
         } else {
             const args = argsOrState as DBAuditInstanceArgs | undefined;
-            if ((!args || args.description === undefined) && !opts.urn) {
+            if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.period === undefined) && !opts.urn) {
+            if (args?.period === undefined && !opts.urn) {
                 throw new Error("Missing required property 'period'");
             }
-            if ((!args || args.planCode === undefined) && !opts.urn) {
+            if (args?.planCode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'planCode'");
             }
-            if ((!args || args.vswitchId === undefined) && !opts.urn) {
+            if (args?.vswitchId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["planCode"] = args ? args.planCode : undefined;
-            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["planCode"] = args?.planCode;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vswitchId"] = args?.vswitchId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DBAuditInstance.__pulumiType, name, resourceInputs, opts);

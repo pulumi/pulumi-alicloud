@@ -73,11 +73,11 @@ export class VirtualHost extends pulumi.CustomResource {
     /**
      * InstanceId.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * VirtualHostName.
      */
-    public readonly virtualHostName!: pulumi.Output<string>;
+    declare public readonly virtualHostName: pulumi.Output<string>;
 
     /**
      * Create a VirtualHost resource with the given unique name, arguments, and options.
@@ -92,18 +92,18 @@ export class VirtualHost extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VirtualHostState | undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["virtualHostName"] = state ? state.virtualHostName : undefined;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["virtualHostName"] = state?.virtualHostName;
         } else {
             const args = argsOrState as VirtualHostArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.virtualHostName === undefined) && !opts.urn) {
+            if (args?.virtualHostName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'virtualHostName'");
             }
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["virtualHostName"] = args ? args.virtualHostName : undefined;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["virtualHostName"] = args?.virtualHostName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VirtualHost.__pulumiType, name, resourceInputs, opts);

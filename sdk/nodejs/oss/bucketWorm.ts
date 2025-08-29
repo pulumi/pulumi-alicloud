@@ -44,25 +44,25 @@ export class BucketWorm extends pulumi.CustomResource {
     /**
      * The name of the bucket
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * The creation time of the resource
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The specified number of days to retain the Object.
      */
-    public readonly retentionPeriodInDays!: pulumi.Output<number | undefined>;
+    declare public readonly retentionPeriodInDays: pulumi.Output<number | undefined>;
     /**
      * The status of the compliance retention policy. Optional values:
      * - `InProgress`: After a compliance retention policy is created, the policy is in the InProgress status by default, and the validity period of this status is 24 hours.
      * - `Locked`: The compliance retention policy is Locked.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The ID of the retention policy.
      */
-    public /*out*/ readonly wormId!: pulumi.Output<string>;
+    declare public /*out*/ readonly wormId: pulumi.Output<string>;
 
     /**
      * Create a BucketWorm resource with the given unique name, arguments, and options.
@@ -77,19 +77,19 @@ export class BucketWorm extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketWormState | undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["retentionPeriodInDays"] = state ? state.retentionPeriodInDays : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["wormId"] = state ? state.wormId : undefined;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["retentionPeriodInDays"] = state?.retentionPeriodInDays;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["wormId"] = state?.wormId;
         } else {
             const args = argsOrState as BucketWormArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["retentionPeriodInDays"] = args ? args.retentionPeriodInDays : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["retentionPeriodInDays"] = args?.retentionPeriodInDays;
+            resourceInputs["status"] = args?.status;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["wormId"] = undefined /*out*/;
         }

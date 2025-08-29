@@ -63,7 +63,7 @@ export class ServiceBasicPublic extends pulumi.CustomResource {
     /**
      * The creation time of the resource.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
 
     /**
      * Create a ServiceBasicPublic resource with the given unique name, arguments, and options.
@@ -78,7 +78,7 @@ export class ServiceBasicPublic extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceBasicPublicState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
         } else {
             const args = argsOrState as ServiceBasicPublicArgs | undefined;
             resourceInputs["createTime"] = undefined /*out*/;

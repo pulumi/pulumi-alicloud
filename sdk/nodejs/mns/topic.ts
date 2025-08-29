@@ -59,15 +59,15 @@ export class Topic extends pulumi.CustomResource {
     /**
      * Is logging enabled? true or false. Default value to false.
      */
-    public readonly loggingEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly loggingEnabled: pulumi.Output<boolean | undefined>;
     /**
      * This indicates the maximum length, in bytes, of any message body sent to the topic. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
      */
-    public readonly maximumMessageSize!: pulumi.Output<number | undefined>;
+    declare public readonly maximumMessageSize: pulumi.Output<number | undefined>;
     /**
      * Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a Topic resource with the given unique name, arguments, and options.
@@ -82,14 +82,14 @@ export class Topic extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TopicState | undefined;
-            resourceInputs["loggingEnabled"] = state ? state.loggingEnabled : undefined;
-            resourceInputs["maximumMessageSize"] = state ? state.maximumMessageSize : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["loggingEnabled"] = state?.loggingEnabled;
+            resourceInputs["maximumMessageSize"] = state?.maximumMessageSize;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as TopicArgs | undefined;
-            resourceInputs["loggingEnabled"] = args ? args.loggingEnabled : undefined;
-            resourceInputs["maximumMessageSize"] = args ? args.maximumMessageSize : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["loggingEnabled"] = args?.loggingEnabled;
+            resourceInputs["maximumMessageSize"] = args?.maximumMessageSize;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Topic.__pulumiType, name, resourceInputs, opts);

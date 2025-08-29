@@ -100,21 +100,21 @@ export class RealTimeLogDelivery extends pulumi.CustomResource {
     /**
      * The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
      */
-    public readonly domain!: pulumi.Output<string>;
+    declare public readonly domain: pulumi.Output<string>;
     /**
      * The ID of the region where the Log Service project is deployed. You can specify multiple region IDs and separate them with commas (,).
      *
      * For more information about regions, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
      */
-    public readonly logstore!: pulumi.Output<string>;
+    declare public readonly logstore: pulumi.Output<string>;
     /**
      * The name of the Logstore that collects log data from Alibaba Cloud CDN in real time. You can specify multiple Logstore names and separate them with commas (,).
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
      */
-    public readonly slsRegion!: pulumi.Output<string>;
+    declare public readonly slsRegion: pulumi.Output<string>;
     /**
      * Resource attribute fields that represent the status of the resource.
      *
@@ -122,7 +122,7 @@ export class RealTimeLogDelivery extends pulumi.CustomResource {
      * - offline
      * - online
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
 
     /**
      * Create a RealTimeLogDelivery resource with the given unique name, arguments, and options.
@@ -137,30 +137,30 @@ export class RealTimeLogDelivery extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RealTimeLogDeliveryState | undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["logstore"] = state ? state.logstore : undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["slsRegion"] = state ? state.slsRegion : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["logstore"] = state?.logstore;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["slsRegion"] = state?.slsRegion;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as RealTimeLogDeliveryArgs | undefined;
-            if ((!args || args.domain === undefined) && !opts.urn) {
+            if (args?.domain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domain'");
             }
-            if ((!args || args.logstore === undefined) && !opts.urn) {
+            if (args?.logstore === undefined && !opts.urn) {
                 throw new Error("Missing required property 'logstore'");
             }
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.slsRegion === undefined) && !opts.urn) {
+            if (args?.slsRegion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'slsRegion'");
             }
-            resourceInputs["domain"] = args ? args.domain : undefined;
-            resourceInputs["logstore"] = args ? args.logstore : undefined;
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["slsRegion"] = args ? args.slsRegion : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["domain"] = args?.domain;
+            resourceInputs["logstore"] = args?.logstore;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["slsRegion"] = args?.slsRegion;
+            resourceInputs["status"] = args?.status;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RealTimeLogDelivery.__pulumiType, name, resourceInputs, opts);

@@ -117,31 +117,31 @@ export class ChildInstanceRouteEntryToAttachment extends pulumi.CustomResource {
     /**
      * The ID of the CEN instance.
      */
-    public readonly cenId!: pulumi.Output<string>;
+    declare public readonly cenId: pulumi.Output<string>;
     /**
      * The first ID of the resource
      */
-    public readonly childInstanceRouteTableId!: pulumi.Output<string>;
+    declare public readonly childInstanceRouteTableId: pulumi.Output<string>;
     /**
      * DestinationCidrBlock
      */
-    public readonly destinationCidrBlock!: pulumi.Output<string>;
+    declare public readonly destinationCidrBlock: pulumi.Output<string>;
     /**
      * Whether to perform pre-check on this request, including permission and instance status verification.
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * ServiceType
      */
-    public /*out*/ readonly serviceType!: pulumi.Output<string>;
+    declare public /*out*/ readonly serviceType: pulumi.Output<string>;
     /**
      * The status of the resource
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * TransitRouterAttachmentId
      */
-    public readonly transitRouterAttachmentId!: pulumi.Output<string>;
+    declare public readonly transitRouterAttachmentId: pulumi.Output<string>;
 
     /**
      * Create a ChildInstanceRouteEntryToAttachment resource with the given unique name, arguments, and options.
@@ -156,32 +156,32 @@ export class ChildInstanceRouteEntryToAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ChildInstanceRouteEntryToAttachmentState | undefined;
-            resourceInputs["cenId"] = state ? state.cenId : undefined;
-            resourceInputs["childInstanceRouteTableId"] = state ? state.childInstanceRouteTableId : undefined;
-            resourceInputs["destinationCidrBlock"] = state ? state.destinationCidrBlock : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["serviceType"] = state ? state.serviceType : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["transitRouterAttachmentId"] = state ? state.transitRouterAttachmentId : undefined;
+            resourceInputs["cenId"] = state?.cenId;
+            resourceInputs["childInstanceRouteTableId"] = state?.childInstanceRouteTableId;
+            resourceInputs["destinationCidrBlock"] = state?.destinationCidrBlock;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["serviceType"] = state?.serviceType;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["transitRouterAttachmentId"] = state?.transitRouterAttachmentId;
         } else {
             const args = argsOrState as ChildInstanceRouteEntryToAttachmentArgs | undefined;
-            if ((!args || args.cenId === undefined) && !opts.urn) {
+            if (args?.cenId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cenId'");
             }
-            if ((!args || args.childInstanceRouteTableId === undefined) && !opts.urn) {
+            if (args?.childInstanceRouteTableId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'childInstanceRouteTableId'");
             }
-            if ((!args || args.destinationCidrBlock === undefined) && !opts.urn) {
+            if (args?.destinationCidrBlock === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationCidrBlock'");
             }
-            if ((!args || args.transitRouterAttachmentId === undefined) && !opts.urn) {
+            if (args?.transitRouterAttachmentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'transitRouterAttachmentId'");
             }
-            resourceInputs["cenId"] = args ? args.cenId : undefined;
-            resourceInputs["childInstanceRouteTableId"] = args ? args.childInstanceRouteTableId : undefined;
-            resourceInputs["destinationCidrBlock"] = args ? args.destinationCidrBlock : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["transitRouterAttachmentId"] = args ? args.transitRouterAttachmentId : undefined;
+            resourceInputs["cenId"] = args?.cenId;
+            resourceInputs["childInstanceRouteTableId"] = args?.childInstanceRouteTableId;
+            resourceInputs["destinationCidrBlock"] = args?.destinationCidrBlock;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["transitRouterAttachmentId"] = args?.transitRouterAttachmentId;
             resourceInputs["serviceType"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

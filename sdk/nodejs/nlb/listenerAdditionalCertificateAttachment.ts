@@ -50,19 +50,19 @@ export class ListenerAdditionalCertificateAttachment extends pulumi.CustomResour
     /**
      * The ID of additional certificates.
      */
-    public readonly certificateId!: pulumi.Output<string>;
+    declare public readonly certificateId: pulumi.Output<string>;
     /**
      * Specifies whether to perform a dry run, without performing the actual request. Valid values:
      */
-    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
      * The listener ID. You must specify the ID of a listener that uses SSL over TCP.
      */
-    public readonly listenerId!: pulumi.Output<string>;
+    declare public readonly listenerId: pulumi.Output<string>;
     /**
      * The status of the resource
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a ListenerAdditionalCertificateAttachment resource with the given unique name, arguments, and options.
@@ -77,21 +77,21 @@ export class ListenerAdditionalCertificateAttachment extends pulumi.CustomResour
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ListenerAdditionalCertificateAttachmentState | undefined;
-            resourceInputs["certificateId"] = state ? state.certificateId : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["listenerId"] = state ? state.listenerId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["certificateId"] = state?.certificateId;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["listenerId"] = state?.listenerId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as ListenerAdditionalCertificateAttachmentArgs | undefined;
-            if ((!args || args.certificateId === undefined) && !opts.urn) {
+            if (args?.certificateId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'certificateId'");
             }
-            if ((!args || args.listenerId === undefined) && !opts.urn) {
+            if (args?.listenerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'listenerId'");
             }
-            resourceInputs["certificateId"] = args ? args.certificateId : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["listenerId"] = args ? args.listenerId : undefined;
+            resourceInputs["certificateId"] = args?.certificateId;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["listenerId"] = args?.listenerId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

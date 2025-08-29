@@ -121,35 +121,35 @@ export class RocketMQTopic extends pulumi.CustomResource {
     /**
      * The creation time of the resource.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Instance ID.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The maximum TPS for message sending.
      */
-    public readonly maxSendTps!: pulumi.Output<number | undefined>;
+    declare public readonly maxSendTps: pulumi.Output<number | undefined>;
     /**
      * Message type.
      */
-    public readonly messageType!: pulumi.Output<string | undefined>;
+    declare public readonly messageType: pulumi.Output<string | undefined>;
     /**
      * (Available since v1.247.0) The region ID to which the instance belongs.
      */
-    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * Custom remarks.
      */
-    public readonly remark!: pulumi.Output<string | undefined>;
+    declare public readonly remark: pulumi.Output<string | undefined>;
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Topic name and identification.
      */
-    public readonly topicName!: pulumi.Output<string>;
+    declare public readonly topicName: pulumi.Output<string>;
 
     /**
      * Create a RocketMQTopic resource with the given unique name, arguments, and options.
@@ -164,27 +164,27 @@ export class RocketMQTopic extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RocketMQTopicState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["maxSendTps"] = state ? state.maxSendTps : undefined;
-            resourceInputs["messageType"] = state ? state.messageType : undefined;
-            resourceInputs["regionId"] = state ? state.regionId : undefined;
-            resourceInputs["remark"] = state ? state.remark : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["topicName"] = state ? state.topicName : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["maxSendTps"] = state?.maxSendTps;
+            resourceInputs["messageType"] = state?.messageType;
+            resourceInputs["regionId"] = state?.regionId;
+            resourceInputs["remark"] = state?.remark;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["topicName"] = state?.topicName;
         } else {
             const args = argsOrState as RocketMQTopicArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.topicName === undefined) && !opts.urn) {
+            if (args?.topicName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'topicName'");
             }
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["maxSendTps"] = args ? args.maxSendTps : undefined;
-            resourceInputs["messageType"] = args ? args.messageType : undefined;
-            resourceInputs["remark"] = args ? args.remark : undefined;
-            resourceInputs["topicName"] = args ? args.topicName : undefined;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["maxSendTps"] = args?.maxSendTps;
+            resourceInputs["messageType"] = args?.messageType;
+            resourceInputs["remark"] = args?.remark;
+            resourceInputs["topicName"] = args?.topicName;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
