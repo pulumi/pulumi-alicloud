@@ -13,6 +13,87 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.234.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const regionId = config.get("regionId") || "cn-wulanchabu";
+ * const zoneId1 = config.get("zoneId1") || "cn-wulanchabu-b";
+ * const _default = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultEaxcvb = new alicloud.vpc.Network("defaultEaxcvb", {
+ *     cidrBlock: "10.0.0.0/8",
+ *     vpcName: "tf-gwlb-vpc",
+ * });
+ * const defaultc3uVID = new alicloud.vpc.Switch("defaultc3uVID", {
+ *     vpcId: defaultEaxcvb.id,
+ *     zoneId: zoneId1,
+ *     cidrBlock: "10.0.0.0/24",
+ *     vswitchName: "tf-example-vsw1",
+ * });
+ * const default7NNxRl = new alicloud.ecs.SecurityGroup("default7NNxRl", {
+ *     description: "sg",
+ *     securityGroupName: "sg_name",
+ *     vpcId: defaultEaxcvb.id,
+ *     securityGroupType: "normal",
+ * });
+ * const defaultH6McvC = new alicloud.ecs.Instance("defaultH6McvC", {
+ *     vswitchId: defaultc3uVID.id,
+ *     imageId: "aliyun_2_1903_x64_20G_alibase_20231221.vhd",
+ *     instanceType: "ecs.g6.large",
+ *     systemDiskCategory: "cloud_efficiency",
+ *     internetChargeType: "PayByTraffic",
+ *     internetMaxBandwidthOut: 5,
+ *     instanceName: std.format({
+ *         input: "%s4",
+ *         args: [name],
+ *     }).then(invoke => invoke.result),
+ *     description: "tf-example-ecs",
+ *     securityGroups: [default7NNxRl.id],
+ *     availabilityZone: defaultc3uVID.zoneId,
+ *     instanceChargeType: "PostPaid",
+ * });
+ * const defaultServerGroup = new alicloud.gwlb.ServerGroup("default", {
+ *     dryRun: false,
+ *     servers: [{
+ *         serverId: defaultH6McvC.id,
+ *         serverType: "Ecs",
+ *     }],
+ *     scheduler: "5TCH",
+ *     protocol: "GENEVE",
+ *     connectionDrainConfig: {
+ *         connectionDrainEnabled: true,
+ *         connectionDrainTimeout: 1,
+ *     },
+ *     vpcId: defaultEaxcvb.id,
+ *     serverGroupType: "Instance",
+ *     serverGroupName: name,
+ *     healthCheckConfig: {
+ *         healthCheckConnectPort: 80,
+ *         healthCheckEnabled: true,
+ *         healthCheckProtocol: "HTTP",
+ *         healthCheckConnectTimeout: 5,
+ *         healthCheckDomain: "www.domain.com",
+ *         healthCheckHttpCodes: [
+ *             "http_2xx",
+ *             "http_3xx",
+ *             "http_4xx",
+ *         ],
+ *         healthCheckInterval: 10,
+ *         healthCheckPath: "/health-check",
+ *         healthyThreshold: 2,
+ *         unhealthyThreshold: 2,
+ *     },
+ *     resourceGroupId: _default.then(_default => _default.ids?.[0]),
+ * });
+ * ```
+ *
  * ## Import
  *
  * GWLB Server Group can be imported using the id, e.g.

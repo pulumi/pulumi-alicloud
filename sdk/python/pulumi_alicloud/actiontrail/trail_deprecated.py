@@ -21,6 +21,8 @@ class TrailDeprecatedArgs:
     def __init__(__self__, *,
                  event_rw: Optional[pulumi.Input[_builtins.str]] = None,
                  is_organization_trail: Optional[pulumi.Input[_builtins.bool]] = None,
+                 max_compute_project_arn: Optional[pulumi.Input[_builtins.str]] = None,
+                 max_compute_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  mns_topic_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -48,14 +50,18 @@ class TrailDeprecatedArgs:
             pulumi.set(__self__, "event_rw", event_rw)
         if is_organization_trail is not None:
             pulumi.set(__self__, "is_organization_trail", is_organization_trail)
+        if max_compute_project_arn is not None:
+            pulumi.set(__self__, "max_compute_project_arn", max_compute_project_arn)
+        if max_compute_write_role_arn is not None:
+            pulumi.set(__self__, "max_compute_write_role_arn", max_compute_write_role_arn)
         if mns_topic_arn is not None:
-            warnings.warn("""Field 'mns_topic_arn' has been deprecated from version 1.118.0""", DeprecationWarning)
-            pulumi.log.warn("""mns_topic_arn is deprecated: Field 'mns_topic_arn' has been deprecated from version 1.118.0""")
+            warnings.warn("""Field `mns_topic_arn` has been deprecated from version 1.118.0""", DeprecationWarning)
+            pulumi.log.warn("""mns_topic_arn is deprecated: Field `mns_topic_arn` has been deprecated from version 1.118.0""")
         if mns_topic_arn is not None:
             pulumi.set(__self__, "mns_topic_arn", mns_topic_arn)
         if name is not None:
-            warnings.warn("""Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""")
+            warnings.warn("""Field `name` has been deprecated from provider version 1.95.0. New field `trail_name` instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field `name` has been deprecated from provider version 1.95.0. New field `trail_name` instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if oss_bucket_name is not None:
@@ -65,8 +71,8 @@ class TrailDeprecatedArgs:
         if oss_write_role_arn is not None:
             pulumi.set(__self__, "oss_write_role_arn", oss_write_role_arn)
         if role_name is not None:
-            warnings.warn("""Field 'role_name' has been deprecated from version 1.118.0""", DeprecationWarning)
-            pulumi.log.warn("""role_name is deprecated: Field 'role_name' has been deprecated from version 1.118.0""")
+            warnings.warn("""Field `role_name` has been deprecated from version 1.118.0""", DeprecationWarning)
+            pulumi.log.warn("""role_name is deprecated: Field `role_name` has been deprecated from version 1.118.0""")
         if role_name is not None:
             pulumi.set(__self__, "role_name", role_name)
         if sls_project_arn is not None:
@@ -102,8 +108,26 @@ class TrailDeprecatedArgs:
         pulumi.set(self, "is_organization_trail", value)
 
     @_builtins.property
+    @pulumi.getter(name="maxComputeProjectArn")
+    def max_compute_project_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "max_compute_project_arn")
+
+    @max_compute_project_arn.setter
+    def max_compute_project_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "max_compute_project_arn", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxComputeWriteRoleArn")
+    def max_compute_write_role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "max_compute_write_role_arn")
+
+    @max_compute_write_role_arn.setter
+    def max_compute_write_role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "max_compute_write_role_arn", value)
+
+    @_builtins.property
     @pulumi.getter(name="mnsTopicArn")
-    @_utilities.deprecated("""Field 'mns_topic_arn' has been deprecated from version 1.118.0""")
+    @_utilities.deprecated("""Field `mns_topic_arn` has been deprecated from version 1.118.0""")
     def mns_topic_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "mns_topic_arn")
 
@@ -113,7 +137,7 @@ class TrailDeprecatedArgs:
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""")
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.95.0. New field `trail_name` instead.""")
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The name of the trail to be created, which must be unique for an account.
@@ -159,7 +183,7 @@ class TrailDeprecatedArgs:
 
     @_builtins.property
     @pulumi.getter(name="roleName")
-    @_utilities.deprecated("""Field 'role_name' has been deprecated from version 1.118.0""")
+    @_utilities.deprecated("""Field `role_name` has been deprecated from version 1.118.0""")
     def role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The RAM role in ActionTrail permitted by the user.
@@ -227,13 +251,17 @@ class TrailDeprecatedArgs:
 @pulumi.input_type
 class _TrailDeprecatedState:
     def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  event_rw: Optional[pulumi.Input[_builtins.str]] = None,
                  is_organization_trail: Optional[pulumi.Input[_builtins.bool]] = None,
+                 max_compute_project_arn: Optional[pulumi.Input[_builtins.str]] = None,
+                 max_compute_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  mns_topic_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
                  oss_key_prefix: Optional[pulumi.Input[_builtins.str]] = None,
                  oss_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
+                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
                  role_name: Optional[pulumi.Input[_builtins.str]] = None,
                  sls_project_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  sls_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
@@ -252,18 +280,24 @@ class _TrailDeprecatedState:
                
                > **NOTE:** `sls_project_arn` and `sls_write_role_arn` should be set or not set at the same time when actiontrail delivers logs.
         """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if event_rw is not None:
             pulumi.set(__self__, "event_rw", event_rw)
         if is_organization_trail is not None:
             pulumi.set(__self__, "is_organization_trail", is_organization_trail)
+        if max_compute_project_arn is not None:
+            pulumi.set(__self__, "max_compute_project_arn", max_compute_project_arn)
+        if max_compute_write_role_arn is not None:
+            pulumi.set(__self__, "max_compute_write_role_arn", max_compute_write_role_arn)
         if mns_topic_arn is not None:
-            warnings.warn("""Field 'mns_topic_arn' has been deprecated from version 1.118.0""", DeprecationWarning)
-            pulumi.log.warn("""mns_topic_arn is deprecated: Field 'mns_topic_arn' has been deprecated from version 1.118.0""")
+            warnings.warn("""Field `mns_topic_arn` has been deprecated from version 1.118.0""", DeprecationWarning)
+            pulumi.log.warn("""mns_topic_arn is deprecated: Field `mns_topic_arn` has been deprecated from version 1.118.0""")
         if mns_topic_arn is not None:
             pulumi.set(__self__, "mns_topic_arn", mns_topic_arn)
         if name is not None:
-            warnings.warn("""Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""")
+            warnings.warn("""Field `name` has been deprecated from provider version 1.95.0. New field `trail_name` instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field `name` has been deprecated from provider version 1.95.0. New field `trail_name` instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if oss_bucket_name is not None:
@@ -272,9 +306,11 @@ class _TrailDeprecatedState:
             pulumi.set(__self__, "oss_key_prefix", oss_key_prefix)
         if oss_write_role_arn is not None:
             pulumi.set(__self__, "oss_write_role_arn", oss_write_role_arn)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if role_name is not None:
-            warnings.warn("""Field 'role_name' has been deprecated from version 1.118.0""", DeprecationWarning)
-            pulumi.log.warn("""role_name is deprecated: Field 'role_name' has been deprecated from version 1.118.0""")
+            warnings.warn("""Field `role_name` has been deprecated from version 1.118.0""", DeprecationWarning)
+            pulumi.log.warn("""role_name is deprecated: Field `role_name` has been deprecated from version 1.118.0""")
         if role_name is not None:
             pulumi.set(__self__, "role_name", role_name)
         if sls_project_arn is not None:
@@ -287,6 +323,15 @@ class _TrailDeprecatedState:
             pulumi.set(__self__, "trail_name", trail_name)
         if trail_region is not None:
             pulumi.set(__self__, "trail_region", trail_region)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="eventRw")
@@ -310,8 +355,26 @@ class _TrailDeprecatedState:
         pulumi.set(self, "is_organization_trail", value)
 
     @_builtins.property
+    @pulumi.getter(name="maxComputeProjectArn")
+    def max_compute_project_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "max_compute_project_arn")
+
+    @max_compute_project_arn.setter
+    def max_compute_project_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "max_compute_project_arn", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxComputeWriteRoleArn")
+    def max_compute_write_role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "max_compute_write_role_arn")
+
+    @max_compute_write_role_arn.setter
+    def max_compute_write_role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "max_compute_write_role_arn", value)
+
+    @_builtins.property
     @pulumi.getter(name="mnsTopicArn")
-    @_utilities.deprecated("""Field 'mns_topic_arn' has been deprecated from version 1.118.0""")
+    @_utilities.deprecated("""Field `mns_topic_arn` has been deprecated from version 1.118.0""")
     def mns_topic_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "mns_topic_arn")
 
@@ -321,7 +384,7 @@ class _TrailDeprecatedState:
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""")
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.95.0. New field `trail_name` instead.""")
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The name of the trail to be created, which must be unique for an account.
@@ -366,8 +429,17 @@ class _TrailDeprecatedState:
         pulumi.set(self, "oss_write_role_arn", value)
 
     @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="roleName")
-    @_utilities.deprecated("""Field 'role_name' has been deprecated from version 1.118.0""")
+    @_utilities.deprecated("""Field `role_name` has been deprecated from version 1.118.0""")
     def role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The RAM role in ActionTrail permitted by the user.
@@ -445,6 +517,8 @@ class TrailDeprecated(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  event_rw: Optional[pulumi.Input[_builtins.str]] = None,
                  is_organization_trail: Optional[pulumi.Input[_builtins.bool]] = None,
+                 max_compute_project_arn: Optional[pulumi.Input[_builtins.str]] = None,
+                 max_compute_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  mns_topic_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -552,6 +626,8 @@ class TrailDeprecated(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  event_rw: Optional[pulumi.Input[_builtins.str]] = None,
                  is_organization_trail: Optional[pulumi.Input[_builtins.bool]] = None,
+                 max_compute_project_arn: Optional[pulumi.Input[_builtins.str]] = None,
+                 max_compute_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  mns_topic_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -575,6 +651,8 @@ class TrailDeprecated(pulumi.CustomResource):
 
             __props__.__dict__["event_rw"] = event_rw
             __props__.__dict__["is_organization_trail"] = is_organization_trail
+            __props__.__dict__["max_compute_project_arn"] = max_compute_project_arn
+            __props__.__dict__["max_compute_write_role_arn"] = max_compute_write_role_arn
             __props__.__dict__["mns_topic_arn"] = mns_topic_arn
             __props__.__dict__["name"] = name
             __props__.__dict__["oss_bucket_name"] = oss_bucket_name
@@ -586,6 +664,8 @@ class TrailDeprecated(pulumi.CustomResource):
             __props__.__dict__["status"] = status
             __props__.__dict__["trail_name"] = trail_name
             __props__.__dict__["trail_region"] = trail_region
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["region_id"] = None
         super(TrailDeprecated, __self__).__init__(
             'alicloud:actiontrail/trailDeprecated:TrailDeprecated',
             resource_name,
@@ -596,13 +676,17 @@ class TrailDeprecated(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[_builtins.str]] = None,
             event_rw: Optional[pulumi.Input[_builtins.str]] = None,
             is_organization_trail: Optional[pulumi.Input[_builtins.bool]] = None,
+            max_compute_project_arn: Optional[pulumi.Input[_builtins.str]] = None,
+            max_compute_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
             mns_topic_arn: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
             oss_key_prefix: Optional[pulumi.Input[_builtins.str]] = None,
             oss_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
+            region_id: Optional[pulumi.Input[_builtins.str]] = None,
             role_name: Optional[pulumi.Input[_builtins.str]] = None,
             sls_project_arn: Optional[pulumi.Input[_builtins.str]] = None,
             sls_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
@@ -630,13 +714,17 @@ class TrailDeprecated(pulumi.CustomResource):
 
         __props__ = _TrailDeprecatedState.__new__(_TrailDeprecatedState)
 
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["event_rw"] = event_rw
         __props__.__dict__["is_organization_trail"] = is_organization_trail
+        __props__.__dict__["max_compute_project_arn"] = max_compute_project_arn
+        __props__.__dict__["max_compute_write_role_arn"] = max_compute_write_role_arn
         __props__.__dict__["mns_topic_arn"] = mns_topic_arn
         __props__.__dict__["name"] = name
         __props__.__dict__["oss_bucket_name"] = oss_bucket_name
         __props__.__dict__["oss_key_prefix"] = oss_key_prefix
         __props__.__dict__["oss_write_role_arn"] = oss_write_role_arn
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["role_name"] = role_name
         __props__.__dict__["sls_project_arn"] = sls_project_arn
         __props__.__dict__["sls_write_role_arn"] = sls_write_role_arn
@@ -646,8 +734,13 @@ class TrailDeprecated(pulumi.CustomResource):
         return TrailDeprecated(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
     @pulumi.getter(name="eventRw")
-    def event_rw(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def event_rw(self) -> pulumi.Output[_builtins.str]:
         """
         Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
         """
@@ -659,14 +752,24 @@ class TrailDeprecated(pulumi.CustomResource):
         return pulumi.get(self, "is_organization_trail")
 
     @_builtins.property
+    @pulumi.getter(name="maxComputeProjectArn")
+    def max_compute_project_arn(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "max_compute_project_arn")
+
+    @_builtins.property
+    @pulumi.getter(name="maxComputeWriteRoleArn")
+    def max_compute_write_role_arn(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "max_compute_write_role_arn")
+
+    @_builtins.property
     @pulumi.getter(name="mnsTopicArn")
-    @_utilities.deprecated("""Field 'mns_topic_arn' has been deprecated from version 1.118.0""")
+    @_utilities.deprecated("""Field `mns_topic_arn` has been deprecated from version 1.118.0""")
     def mns_topic_arn(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "mns_topic_arn")
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""")
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.95.0. New field `trail_name` instead.""")
     def name(self) -> pulumi.Output[_builtins.str]:
         """
         The name of the trail to be created, which must be unique for an account.
@@ -695,9 +798,14 @@ class TrailDeprecated(pulumi.CustomResource):
         return pulumi.get(self, "oss_write_role_arn")
 
     @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "region_id")
+
+    @_builtins.property
     @pulumi.getter(name="roleName")
-    @_utilities.deprecated("""Field 'role_name' has been deprecated from version 1.118.0""")
-    def role_name(self) -> pulumi.Output[_builtins.str]:
+    @_utilities.deprecated("""Field `role_name` has been deprecated from version 1.118.0""")
+    def role_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The RAM role in ActionTrail permitted by the user.
         """

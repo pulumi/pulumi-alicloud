@@ -19,51 +19,80 @@ __all__ = ['ImageEventOperationArgs', 'ImageEventOperation']
 @pulumi.input_type
 class ImageEventOperationArgs:
     def __init__(__self__, *,
-                 conditions: Optional[pulumi.Input[_builtins.str]] = None,
+                 conditions: pulumi.Input[_builtins.str],
+                 event_type: pulumi.Input[_builtins.str],
+                 operation_code: pulumi.Input[_builtins.str],
                  event_key: Optional[pulumi.Input[_builtins.str]] = None,
                  event_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 scenarios: Optional[pulumi.Input[_builtins.str]] = None):
+                 note: Optional[pulumi.Input[_builtins.str]] = None,
+                 scenarios: Optional[pulumi.Input[_builtins.str]] = None,
+                 source: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ImageEventOperation resource.
-        :param pulumi.Input[_builtins.str] conditions: Event Conditions.
-        :param pulumi.Input[_builtins.str] event_key: Image Event Key.
-        :param pulumi.Input[_builtins.str] event_name: Image Event Name.
-        :param pulumi.Input[_builtins.str] event_type: Image Event Type.
-        :param pulumi.Input[_builtins.str] operation_code: Event Operation Code.
-        :param pulumi.Input[_builtins.str] scenarios: Event Scenarios.
+        :param pulumi.Input[_builtins.str] conditions: The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
+        :param pulumi.Input[_builtins.str] event_type: The alert type.
+        :param pulumi.Input[_builtins.str] operation_code: The operation code.
+        :param pulumi.Input[_builtins.str] event_key: The keyword of the alert item.
+        :param pulumi.Input[_builtins.str] event_name: The name of the alert item.
+        :param pulumi.Input[_builtins.str] note: The remarks.
+        :param pulumi.Input[_builtins.str] scenarios: The application scope of the rule.
+        :param pulumi.Input[_builtins.str] source: The source of the whitelist. Valid values:
         """
-        if conditions is not None:
-            pulumi.set(__self__, "conditions", conditions)
+        pulumi.set(__self__, "conditions", conditions)
+        pulumi.set(__self__, "event_type", event_type)
+        pulumi.set(__self__, "operation_code", operation_code)
         if event_key is not None:
             pulumi.set(__self__, "event_key", event_key)
         if event_name is not None:
             pulumi.set(__self__, "event_name", event_name)
-        if event_type is not None:
-            pulumi.set(__self__, "event_type", event_type)
-        if operation_code is not None:
-            pulumi.set(__self__, "operation_code", operation_code)
+        if note is not None:
+            pulumi.set(__self__, "note", note)
         if scenarios is not None:
             pulumi.set(__self__, "scenarios", scenarios)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
 
     @_builtins.property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def conditions(self) -> pulumi.Input[_builtins.str]:
         """
-        Event Conditions.
+        The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
         """
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def conditions(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "conditions", value)
+
+    @_builtins.property
+    @pulumi.getter(name="eventType")
+    def event_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The alert type.
+        """
+        return pulumi.get(self, "event_type")
+
+    @event_type.setter
+    def event_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "event_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="operationCode")
+    def operation_code(self) -> pulumi.Input[_builtins.str]:
+        """
+        The operation code.
+        """
+        return pulumi.get(self, "operation_code")
+
+    @operation_code.setter
+    def operation_code(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "operation_code", value)
 
     @_builtins.property
     @pulumi.getter(name="eventKey")
     def event_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Image Event Key.
+        The keyword of the alert item.
         """
         return pulumi.get(self, "event_key")
 
@@ -75,7 +104,7 @@ class ImageEventOperationArgs:
     @pulumi.getter(name="eventName")
     def event_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Image Event Name.
+        The name of the alert item.
         """
         return pulumi.get(self, "event_name")
 
@@ -84,40 +113,40 @@ class ImageEventOperationArgs:
         pulumi.set(self, "event_name", value)
 
     @_builtins.property
-    @pulumi.getter(name="eventType")
-    def event_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    @pulumi.getter
+    def note(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Image Event Type.
+        The remarks.
         """
-        return pulumi.get(self, "event_type")
+        return pulumi.get(self, "note")
 
-    @event_type.setter
-    def event_type(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "event_type", value)
-
-    @_builtins.property
-    @pulumi.getter(name="operationCode")
-    def operation_code(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Event Operation Code.
-        """
-        return pulumi.get(self, "operation_code")
-
-    @operation_code.setter
-    def operation_code(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "operation_code", value)
+    @note.setter
+    def note(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "note", value)
 
     @_builtins.property
     @pulumi.getter
     def scenarios(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Event Scenarios.
+        The application scope of the rule.
         """
         return pulumi.get(self, "scenarios")
 
     @scenarios.setter
     def scenarios(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "scenarios", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The source of the whitelist. Valid values:
+        """
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "source", value)
 
 
 @pulumi.input_type
@@ -127,16 +156,20 @@ class _ImageEventOperationState:
                  event_key: Optional[pulumi.Input[_builtins.str]] = None,
                  event_name: Optional[pulumi.Input[_builtins.str]] = None,
                  event_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 note: Optional[pulumi.Input[_builtins.str]] = None,
                  operation_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 scenarios: Optional[pulumi.Input[_builtins.str]] = None):
+                 scenarios: Optional[pulumi.Input[_builtins.str]] = None,
+                 source: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ImageEventOperation resources.
-        :param pulumi.Input[_builtins.str] conditions: Event Conditions.
-        :param pulumi.Input[_builtins.str] event_key: Image Event Key.
-        :param pulumi.Input[_builtins.str] event_name: Image Event Name.
-        :param pulumi.Input[_builtins.str] event_type: Image Event Type.
-        :param pulumi.Input[_builtins.str] operation_code: Event Operation Code.
-        :param pulumi.Input[_builtins.str] scenarios: Event Scenarios.
+        :param pulumi.Input[_builtins.str] conditions: The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
+        :param pulumi.Input[_builtins.str] event_key: The keyword of the alert item.
+        :param pulumi.Input[_builtins.str] event_name: The name of the alert item.
+        :param pulumi.Input[_builtins.str] event_type: The alert type.
+        :param pulumi.Input[_builtins.str] note: The remarks.
+        :param pulumi.Input[_builtins.str] operation_code: The operation code.
+        :param pulumi.Input[_builtins.str] scenarios: The application scope of the rule.
+        :param pulumi.Input[_builtins.str] source: The source of the whitelist. Valid values:
         """
         if conditions is not None:
             pulumi.set(__self__, "conditions", conditions)
@@ -146,16 +179,20 @@ class _ImageEventOperationState:
             pulumi.set(__self__, "event_name", event_name)
         if event_type is not None:
             pulumi.set(__self__, "event_type", event_type)
+        if note is not None:
+            pulumi.set(__self__, "note", note)
         if operation_code is not None:
             pulumi.set(__self__, "operation_code", operation_code)
         if scenarios is not None:
             pulumi.set(__self__, "scenarios", scenarios)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
 
     @_builtins.property
     @pulumi.getter
     def conditions(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Event Conditions.
+        The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
         """
         return pulumi.get(self, "conditions")
 
@@ -167,7 +204,7 @@ class _ImageEventOperationState:
     @pulumi.getter(name="eventKey")
     def event_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Image Event Key.
+        The keyword of the alert item.
         """
         return pulumi.get(self, "event_key")
 
@@ -179,7 +216,7 @@ class _ImageEventOperationState:
     @pulumi.getter(name="eventName")
     def event_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Image Event Name.
+        The name of the alert item.
         """
         return pulumi.get(self, "event_name")
 
@@ -191,7 +228,7 @@ class _ImageEventOperationState:
     @pulumi.getter(name="eventType")
     def event_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Image Event Type.
+        The alert type.
         """
         return pulumi.get(self, "event_type")
 
@@ -200,10 +237,22 @@ class _ImageEventOperationState:
         pulumi.set(self, "event_type", value)
 
     @_builtins.property
+    @pulumi.getter
+    def note(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The remarks.
+        """
+        return pulumi.get(self, "note")
+
+    @note.setter
+    def note(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "note", value)
+
+    @_builtins.property
     @pulumi.getter(name="operationCode")
     def operation_code(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Event Operation Code.
+        The operation code.
         """
         return pulumi.get(self, "operation_code")
 
@@ -215,13 +264,25 @@ class _ImageEventOperationState:
     @pulumi.getter
     def scenarios(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Event Scenarios.
+        The application scope of the rule.
         """
         return pulumi.get(self, "scenarios")
 
     @scenarios.setter
     def scenarios(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "scenarios", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The source of the whitelist. Valid values:
+        """
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "source", value)
 
 
 @pulumi.type_token("alicloud:threatdetection/imageEventOperation:ImageEventOperation")
@@ -234,11 +295,15 @@ class ImageEventOperation(pulumi.CustomResource):
                  event_key: Optional[pulumi.Input[_builtins.str]] = None,
                  event_name: Optional[pulumi.Input[_builtins.str]] = None,
                  event_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 note: Optional[pulumi.Input[_builtins.str]] = None,
                  operation_code: Optional[pulumi.Input[_builtins.str]] = None,
                  scenarios: Optional[pulumi.Input[_builtins.str]] = None,
+                 source: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides a Threat Detection Image Event Operation resource. Image Event Operation.
+        Provides a Threat Detection Image Event Operation resource.
+
+        Image Event Operation.
 
         For information about Threat Detection Image Event Operation and how to use it, see [What is Image Event Operation](https://www.alibabacloud.com/help/zh/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation).
 
@@ -261,16 +326,16 @@ class ImageEventOperation(pulumi.CustomResource):
             operation_code="whitelist",
             event_key="alibabacloud_ak",
             scenarios=\"\"\"{
-          "type":"default",
-          "value":""
+          \\"type\\":\\"default\\",
+          \\"value\\":\\"\\"
         }
         \"\"\",
             event_name="阿里云AK",
             conditions=\"\"\"[
           {
-              "condition":"MD5",
-              "type":"equals",
-              "value":"0083a31cc0083a31ccf7c10367a6e783e"
+              \\"condition\\":\\"MD5\\",
+              \\"type\\":\\"equals\\",
+              \\"value\\":\\"0083a31cc0083a31ccf7c10367a6e783e\\"
           }
         ]
         \"\"\")
@@ -286,21 +351,25 @@ class ImageEventOperation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] conditions: Event Conditions.
-        :param pulumi.Input[_builtins.str] event_key: Image Event Key.
-        :param pulumi.Input[_builtins.str] event_name: Image Event Name.
-        :param pulumi.Input[_builtins.str] event_type: Image Event Type.
-        :param pulumi.Input[_builtins.str] operation_code: Event Operation Code.
-        :param pulumi.Input[_builtins.str] scenarios: Event Scenarios.
+        :param pulumi.Input[_builtins.str] conditions: The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
+        :param pulumi.Input[_builtins.str] event_key: The keyword of the alert item.
+        :param pulumi.Input[_builtins.str] event_name: The name of the alert item.
+        :param pulumi.Input[_builtins.str] event_type: The alert type.
+        :param pulumi.Input[_builtins.str] note: The remarks.
+        :param pulumi.Input[_builtins.str] operation_code: The operation code.
+        :param pulumi.Input[_builtins.str] scenarios: The application scope of the rule.
+        :param pulumi.Input[_builtins.str] source: The source of the whitelist. Valid values:
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[ImageEventOperationArgs] = None,
+                 args: ImageEventOperationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Threat Detection Image Event Operation resource. Image Event Operation.
+        Provides a Threat Detection Image Event Operation resource.
+
+        Image Event Operation.
 
         For information about Threat Detection Image Event Operation and how to use it, see [What is Image Event Operation](https://www.alibabacloud.com/help/zh/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation).
 
@@ -323,16 +392,16 @@ class ImageEventOperation(pulumi.CustomResource):
             operation_code="whitelist",
             event_key="alibabacloud_ak",
             scenarios=\"\"\"{
-          "type":"default",
-          "value":""
+          \\"type\\":\\"default\\",
+          \\"value\\":\\"\\"
         }
         \"\"\",
             event_name="阿里云AK",
             conditions=\"\"\"[
           {
-              "condition":"MD5",
-              "type":"equals",
-              "value":"0083a31cc0083a31ccf7c10367a6e783e"
+              \\"condition\\":\\"MD5\\",
+              \\"type\\":\\"equals\\",
+              \\"value\\":\\"0083a31cc0083a31ccf7c10367a6e783e\\"
           }
         ]
         \"\"\")
@@ -365,8 +434,10 @@ class ImageEventOperation(pulumi.CustomResource):
                  event_key: Optional[pulumi.Input[_builtins.str]] = None,
                  event_name: Optional[pulumi.Input[_builtins.str]] = None,
                  event_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 note: Optional[pulumi.Input[_builtins.str]] = None,
                  operation_code: Optional[pulumi.Input[_builtins.str]] = None,
                  scenarios: Optional[pulumi.Input[_builtins.str]] = None,
+                 source: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -376,12 +447,20 @@ class ImageEventOperation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ImageEventOperationArgs.__new__(ImageEventOperationArgs)
 
+            if conditions is None and not opts.urn:
+                raise TypeError("Missing required property 'conditions'")
             __props__.__dict__["conditions"] = conditions
             __props__.__dict__["event_key"] = event_key
             __props__.__dict__["event_name"] = event_name
+            if event_type is None and not opts.urn:
+                raise TypeError("Missing required property 'event_type'")
             __props__.__dict__["event_type"] = event_type
+            __props__.__dict__["note"] = note
+            if operation_code is None and not opts.urn:
+                raise TypeError("Missing required property 'operation_code'")
             __props__.__dict__["operation_code"] = operation_code
             __props__.__dict__["scenarios"] = scenarios
+            __props__.__dict__["source"] = source
         super(ImageEventOperation, __self__).__init__(
             'alicloud:threatdetection/imageEventOperation:ImageEventOperation',
             resource_name,
@@ -396,8 +475,10 @@ class ImageEventOperation(pulumi.CustomResource):
             event_key: Optional[pulumi.Input[_builtins.str]] = None,
             event_name: Optional[pulumi.Input[_builtins.str]] = None,
             event_type: Optional[pulumi.Input[_builtins.str]] = None,
+            note: Optional[pulumi.Input[_builtins.str]] = None,
             operation_code: Optional[pulumi.Input[_builtins.str]] = None,
-            scenarios: Optional[pulumi.Input[_builtins.str]] = None) -> 'ImageEventOperation':
+            scenarios: Optional[pulumi.Input[_builtins.str]] = None,
+            source: Optional[pulumi.Input[_builtins.str]] = None) -> 'ImageEventOperation':
         """
         Get an existing ImageEventOperation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -405,12 +486,14 @@ class ImageEventOperation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] conditions: Event Conditions.
-        :param pulumi.Input[_builtins.str] event_key: Image Event Key.
-        :param pulumi.Input[_builtins.str] event_name: Image Event Name.
-        :param pulumi.Input[_builtins.str] event_type: Image Event Type.
-        :param pulumi.Input[_builtins.str] operation_code: Event Operation Code.
-        :param pulumi.Input[_builtins.str] scenarios: Event Scenarios.
+        :param pulumi.Input[_builtins.str] conditions: The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
+        :param pulumi.Input[_builtins.str] event_key: The keyword of the alert item.
+        :param pulumi.Input[_builtins.str] event_name: The name of the alert item.
+        :param pulumi.Input[_builtins.str] event_type: The alert type.
+        :param pulumi.Input[_builtins.str] note: The remarks.
+        :param pulumi.Input[_builtins.str] operation_code: The operation code.
+        :param pulumi.Input[_builtins.str] scenarios: The application scope of the rule.
+        :param pulumi.Input[_builtins.str] source: The source of the whitelist. Valid values:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -420,15 +503,17 @@ class ImageEventOperation(pulumi.CustomResource):
         __props__.__dict__["event_key"] = event_key
         __props__.__dict__["event_name"] = event_name
         __props__.__dict__["event_type"] = event_type
+        __props__.__dict__["note"] = note
         __props__.__dict__["operation_code"] = operation_code
         __props__.__dict__["scenarios"] = scenarios
+        __props__.__dict__["source"] = source
         return ImageEventOperation(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter
-    def conditions(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def conditions(self) -> pulumi.Output[_builtins.str]:
         """
-        Event Conditions.
+        The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
         """
         return pulumi.get(self, "conditions")
 
@@ -436,7 +521,7 @@ class ImageEventOperation(pulumi.CustomResource):
     @pulumi.getter(name="eventKey")
     def event_key(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Image Event Key.
+        The keyword of the alert item.
         """
         return pulumi.get(self, "event_key")
 
@@ -444,7 +529,7 @@ class ImageEventOperation(pulumi.CustomResource):
     @pulumi.getter(name="eventName")
     def event_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Image Event Name.
+        The name of the alert item.
         """
         return pulumi.get(self, "event_name")
 
@@ -452,23 +537,39 @@ class ImageEventOperation(pulumi.CustomResource):
     @pulumi.getter(name="eventType")
     def event_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Image Event Type.
+        The alert type.
         """
         return pulumi.get(self, "event_type")
 
     @_builtins.property
-    @pulumi.getter(name="operationCode")
-    def operation_code(self) -> pulumi.Output[Optional[_builtins.str]]:
+    @pulumi.getter
+    def note(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Event Operation Code.
+        The remarks.
+        """
+        return pulumi.get(self, "note")
+
+    @_builtins.property
+    @pulumi.getter(name="operationCode")
+    def operation_code(self) -> pulumi.Output[_builtins.str]:
+        """
+        The operation code.
         """
         return pulumi.get(self, "operation_code")
 
     @_builtins.property
     @pulumi.getter
-    def scenarios(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def scenarios(self) -> pulumi.Output[_builtins.str]:
         """
-        Event Scenarios.
+        The application scope of the rule.
         """
         return pulumi.get(self, "scenarios")
+
+    @_builtins.property
+    @pulumi.getter
+    def source(self) -> pulumi.Output[_builtins.str]:
+        """
+        The source of the whitelist. Valid values:
+        """
+        return pulumi.get(self, "source")
 

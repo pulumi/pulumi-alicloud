@@ -49,6 +49,8 @@ __all__ = [
     'ExperimentPlanTemplateTemplatePipelineArgsDict',
     'ExperimentPlanTemplateTemplatePipelineEnvParamsArgs',
     'ExperimentPlanTemplateTemplatePipelineEnvParamsArgsDict',
+    'NodeGroupAttachmentDataDiskArgs',
+    'NodeGroupAttachmentDataDiskArgsDict',
     'NodeGroupIpAllocationPolicyArgs',
     'NodeGroupIpAllocationPolicyArgsDict',
     'NodeGroupIpAllocationPolicyBondPolicyArgs',
@@ -1549,6 +1551,98 @@ class ExperimentPlanTemplateTemplatePipelineEnvParamsArgs:
     @py_torch_version.setter
     def py_torch_version(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "py_torch_version", value)
+
+
+if not MYPY:
+    class NodeGroupAttachmentDataDiskArgsDict(TypedDict):
+        category: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Type
+        """
+        delete_with_node: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Indicate whether the data disk is released with the node. true indicates that the data disk will be released together when the node unsubscribes.
+        """
+        performance_level: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Performance level
+        """
+        size: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Data disk size
+        """
+elif False:
+    NodeGroupAttachmentDataDiskArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NodeGroupAttachmentDataDiskArgs:
+    def __init__(__self__, *,
+                 category: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete_with_node: Optional[pulumi.Input[_builtins.bool]] = None,
+                 performance_level: Optional[pulumi.Input[_builtins.str]] = None,
+                 size: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] category: Type
+        :param pulumi.Input[_builtins.bool] delete_with_node: Indicate whether the data disk is released with the node. true indicates that the data disk will be released together when the node unsubscribes.
+        :param pulumi.Input[_builtins.str] performance_level: Performance level
+        :param pulumi.Input[_builtins.int] size: Data disk size
+        """
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if delete_with_node is not None:
+            pulumi.set(__self__, "delete_with_node", delete_with_node)
+        if performance_level is not None:
+            pulumi.set(__self__, "performance_level", performance_level)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+
+    @_builtins.property
+    @pulumi.getter
+    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Type
+        """
+        return pulumi.get(self, "category")
+
+    @category.setter
+    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "category", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deleteWithNode")
+    def delete_with_node(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicate whether the data disk is released with the node. true indicates that the data disk will be released together when the node unsubscribes.
+        """
+        return pulumi.get(self, "delete_with_node")
+
+    @delete_with_node.setter
+    def delete_with_node(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "delete_with_node", value)
+
+    @_builtins.property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Performance level
+        """
+        return pulumi.get(self, "performance_level")
+
+    @performance_level.setter
+    def performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "performance_level", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Data disk size
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "size", value)
 
 
 if not MYPY:

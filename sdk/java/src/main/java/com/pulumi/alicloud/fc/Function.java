@@ -38,8 +38,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.integer;
- * import com.pulumi.random.integerArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
@@ -88,18 +88,18 @@ import javax.annotation.Nullable;
  *             .name(String.format("fcservicerole-%s", default_.result()))
  *             .document("""
  *   {
- *       "Statement": [
+ *       \"Statement\": [
  *         {
- *           "Action": "sts:AssumeRole",
- *           "Effect": "Allow",
- *           "Principal": {
- *             "Service": [
- *               "fc.aliyuncs.com"
+ *           \"Action\": \"sts:AssumeRole\",
+ *           \"Effect\": \"Allow\",
+ *           \"Principal\": {
+ *             \"Service\": [
+ *               \"fc.aliyuncs.com\"
  *             ]
  *           }
  *         }
  *       ],
- *       "Version": "1"
+ *       \"Version\": \"1\"
  *   }
  *             """)
  *             .description("this is a example")

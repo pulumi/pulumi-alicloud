@@ -12,6 +12,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -85,48 +86,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:wafv3/defenseTemplate:DefenseTemplate")
 public class DefenseTemplate extends com.pulumi.resources.CustomResource {
     /**
-     * The module to which the protection rule that you want to create belongs. Value:
-     * - **waf_group**: the basic protection rule module.
-     * - **antiscan**: the scan protection module.
-     * - **ip_blacklist**: the IP address blacklist module.
-     * - **custom_acl**: the custom rule module.
-     * - **whitelist**: the whitelist module.
-     * - **region_block**: the region blacklist module.
-     * - **custom_response**: the custom response module.
-     * - **cc**: the HTTP flood protection module.
-     * - **tamperproof**: the website tamper-proofing module.
-     * - **dlp**: the data leakage prevention module.
+     * The WAF protection scenario to be created. Valid values:
      * 
      */
     @Export(name="defenseScene", refs={String.class}, tree="[0]")
     private Output<String> defenseScene;
 
     /**
-     * @return The module to which the protection rule that you want to create belongs. Value:
-     * - **waf_group**: the basic protection rule module.
-     * - **antiscan**: the scan protection module.
-     * - **ip_blacklist**: the IP address blacklist module.
-     * - **custom_acl**: the custom rule module.
-     * - **whitelist**: the whitelist module.
-     * - **region_block**: the region blacklist module.
-     * - **custom_response**: the custom response module.
-     * - **cc**: the HTTP flood protection module.
-     * - **tamperproof**: the website tamper-proofing module.
-     * - **dlp**: the data leakage prevention module.
+     * @return The WAF protection scenario to be created. Valid values:
      * 
      */
     public Output<String> defenseScene() {
         return this.defenseScene;
     }
     /**
-     * Template ID.
+     * Template ID
      * 
      */
     @Export(name="defenseTemplateId", refs={Integer.class}, tree="[0]")
     private Output<Integer> defenseTemplateId;
 
     /**
-     * @return Template ID.
+     * @return Template ID
      * 
      */
     public Output<Integer> defenseTemplateId() {
@@ -147,51 +128,63 @@ public class DefenseTemplate extends com.pulumi.resources.CustomResource {
         return this.defenseTemplateName;
     }
     /**
-     * The description of the protection rule template. .
+     * The description of the protection rule template.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the protection rule template. .
+     * @return The description of the protection rule template.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The ID of the Web Application Firewall (WAF) instance. .
+     * The ID of the Web Application Firewall (WAF) instance.
      * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
-     * @return The ID of the Web Application Firewall (WAF) instance. .
+     * @return The ID of the Web Application Firewall (WAF) instance.
      * 
      */
     public Output<String> instanceId() {
         return this.instanceId;
     }
     /**
-     * The ID of the Alibaba Cloud resource group. .
+     * The ID of the Alibaba Cloud resource group.
      * 
      */
     @Export(name="resourceManagerResourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceManagerResourceGroupId;
 
     /**
-     * @return The ID of the Alibaba Cloud resource group. .
+     * @return The ID of the Alibaba Cloud resource group.
      * 
      */
     public Output<Optional<String>> resourceManagerResourceGroupId() {
         return Codegen.optional(this.resourceManagerResourceGroupId);
     }
     /**
+     * The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
+     * 
+     */
+    @Export(name="resources", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> resources;
+
+    /**
+     * @return The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
+     * 
+     */
+    public Output<Optional<List<String>>> resources() {
+        return Codegen.optional(this.resources);
+    }
+    /**
      * The status of the protection rule template. Valid values:
-     * - **0**: disabled.
-     * - **1**: enabled.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
@@ -199,22 +192,20 @@ public class DefenseTemplate extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The status of the protection rule template. Valid values:
-     * - **0**: disabled.
-     * - **1**: enabled.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The origin of the protection rule template that you want to create. Set the value to **custom**. The value specifies that the protection rule template is a custom template. .
+     * The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
      * 
      */
     @Export(name="templateOrigin", refs={String.class}, tree="[0]")
     private Output<String> templateOrigin;
 
     /**
-     * @return The origin of the protection rule template that you want to create. Set the value to **custom**. The value specifies that the protection rule template is a custom template. .
+     * @return The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
      * 
      */
     public Output<String> templateOrigin() {

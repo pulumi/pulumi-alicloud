@@ -55,18 +55,18 @@ import javax.annotation.Nullable;
  *             .roleName(name)
  *             .assumeRolePolicyDocument("""
  *      {
- *           "Statement": [
+ *           \"Statement\": [
  *                {
- *                     "Action": "sts:AssumeRole",
- *                     "Effect": "Allow",
- *                     "Principal": {
- *                         "RAM":[
- *                                 "acs:ram::%s:root"
+ *                     \"Action\": \"sts:AssumeRole\",
+ *                     \"Effect\": \"Allow\",
+ *                     \"Principal\": {
+ *                         \"RAM\":[
+ *                                 \"acs:ram::%s:root\"
  *                         ]
  *                     }
  *                 }
  *           ],
- *           "Version": "1"
+ *           \"Version\": \"1\"
  *      }
  * ", default_.id()))
  *             .build());

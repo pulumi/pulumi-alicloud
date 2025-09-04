@@ -7,15 +7,15 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Wafv3 Domain resource.
+ * Provides a WAFV3 Domain resource.
  *
- * For information about Wafv3 Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-waf-openapi-2021-10-01-createdomain).
+ * For information about WAFV3 Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-waf-openapi-2021-10-01-createdomain).
  *
  * > **NOTE:** Available since v1.200.0.
  *
  * ## Import
  *
- * Wafv3 Domain can be imported using the id, e.g.
+ * WAFV3 Domain can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:wafv3/domain:Domain example <instance_id>:<domain>
@@ -50,7 +50,8 @@ export class Domain extends pulumi.CustomResource {
     }
 
     /**
-     * The access type of the WAF instance. Value: **share** (default): CNAME access.
+     * The mode in which the domain name is added to WAF. Valid values:
+     * share: CNAME record mode. This is the default value.
      */
     public readonly accessType!: pulumi.Output<string | undefined>;
     /**
@@ -58,7 +59,11 @@ export class Domain extends pulumi.CustomResource {
      */
     public readonly domain!: pulumi.Output<string>;
     /**
-     * WAF instance ID
+     * The domain ID.
+     */
+    public /*out*/ readonly domainId!: pulumi.Output<string>;
+    /**
+     * The ID of the Web Application Firewall (WAF) instance.
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
@@ -70,13 +75,17 @@ export class Domain extends pulumi.CustomResource {
      */
     public readonly redirect!: pulumi.Output<outputs.wafv3.DomainRedirect>;
     /**
-     * The ID of the resource group.
+     * The ID of the Alibaba Cloud resource group.
      */
-    public /*out*/ readonly resourceManagerResourceGroupId!: pulumi.Output<string>;
+    public readonly resourceManagerResourceGroupId!: pulumi.Output<string>;
     /**
-     * The status of the resource.
+     * The status of the domain name.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<number>;
+    /**
+     * The tags. You can specify up to 20 tags.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Domain resource with the given unique name, arguments, and options.
@@ -93,11 +102,13 @@ export class Domain extends pulumi.CustomResource {
             const state = argsOrState as DomainState | undefined;
             resourceInputs["accessType"] = state ? state.accessType : undefined;
             resourceInputs["domain"] = state ? state.domain : undefined;
+            resourceInputs["domainId"] = state ? state.domainId : undefined;
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
             resourceInputs["listen"] = state ? state.listen : undefined;
             resourceInputs["redirect"] = state ? state.redirect : undefined;
             resourceInputs["resourceManagerResourceGroupId"] = state ? state.resourceManagerResourceGroupId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as DomainArgs | undefined;
             if ((!args || args.domain === undefined) && !opts.urn) {
@@ -117,7 +128,9 @@ export class Domain extends pulumi.CustomResource {
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["listen"] = args ? args.listen : undefined;
             resourceInputs["redirect"] = args ? args.redirect : undefined;
-            resourceInputs["resourceManagerResourceGroupId"] = undefined /*out*/;
+            resourceInputs["resourceManagerResourceGroupId"] = args ? args.resourceManagerResourceGroupId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["domainId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -130,7 +143,8 @@ export class Domain extends pulumi.CustomResource {
  */
 export interface DomainState {
     /**
-     * The access type of the WAF instance. Value: **share** (default): CNAME access.
+     * The mode in which the domain name is added to WAF. Valid values:
+     * share: CNAME record mode. This is the default value.
      */
     accessType?: pulumi.Input<string>;
     /**
@@ -138,7 +152,11 @@ export interface DomainState {
      */
     domain?: pulumi.Input<string>;
     /**
-     * WAF instance ID
+     * The domain ID.
+     */
+    domainId?: pulumi.Input<string>;
+    /**
+     * The ID of the Web Application Firewall (WAF) instance.
      */
     instanceId?: pulumi.Input<string>;
     /**
@@ -150,13 +168,17 @@ export interface DomainState {
      */
     redirect?: pulumi.Input<inputs.wafv3.DomainRedirect>;
     /**
-     * The ID of the resource group.
+     * The ID of the Alibaba Cloud resource group.
      */
     resourceManagerResourceGroupId?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the domain name.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<number>;
+    /**
+     * The tags. You can specify up to 20 tags.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -164,7 +186,8 @@ export interface DomainState {
  */
 export interface DomainArgs {
     /**
-     * The access type of the WAF instance. Value: **share** (default): CNAME access.
+     * The mode in which the domain name is added to WAF. Valid values:
+     * share: CNAME record mode. This is the default value.
      */
     accessType?: pulumi.Input<string>;
     /**
@@ -172,7 +195,7 @@ export interface DomainArgs {
      */
     domain: pulumi.Input<string>;
     /**
-     * WAF instance ID
+     * The ID of the Web Application Firewall (WAF) instance.
      */
     instanceId: pulumi.Input<string>;
     /**
@@ -183,4 +206,12 @@ export interface DomainArgs {
      * Configure forwarding information. See `redirect` below.
      */
     redirect: pulumi.Input<inputs.wafv3.DomainRedirect>;
+    /**
+     * The ID of the Alibaba Cloud resource group.
+     */
+    resourceManagerResourceGroupId?: pulumi.Input<string>;
+    /**
+     * The tags. You can specify up to 20 tags.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

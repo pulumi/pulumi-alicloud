@@ -25,6 +25,112 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.172.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
+ * import com.pulumi.alicloud.cfg.Aggregator;
+ * import com.pulumi.alicloud.cfg.AggregatorArgs;
+ * import com.pulumi.alicloud.cfg.inputs.AggregatorAggregatorAccountArgs;
+ * import com.pulumi.random.Uuid;
+ * import com.pulumi.alicloud.log.Project;
+ * import com.pulumi.alicloud.log.ProjectArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.ReplaceArgs;
+ * import com.pulumi.std.inputs.SubstrArgs;
+ * import com.pulumi.alicloud.log.Store;
+ * import com.pulumi.alicloud.log.StoreArgs;
+ * import com.pulumi.alicloud.cfg.AggregateDelivery;
+ * import com.pulumi.alicloud.cfg.AggregateDeliveryArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf_example");
+ *         final var this = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
+ *         final var thisGetAccount = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+ * 
+ *         final var default = ResourcemanagerFunctions.getAccounts(GetAccountsArgs.builder()
+ *             .status("CreateSuccess")
+ *             .build());
+ * 
+ *         final var last = default_.accounts().length().applyValue(_length -> _length - 1);
+ * 
+ *         var defaultAggregator = new Aggregator("defaultAggregator", AggregatorArgs.builder()
+ *             .aggregatorAccounts(AggregatorAggregatorAccountArgs.builder()
+ *                 .accountId(default_.accounts()[last].accountId())
+ *                 .accountName(default_.accounts()[last].displayName())
+ *                 .accountType("ResourceDirectory")
+ *                 .build())
+ *             .aggregatorName(name)
+ *             .description(name)
+ *             .aggregatorType("CUSTOM")
+ *             .build());
+ * 
+ *         var defaultUuid = new Uuid("defaultUuid");
+ * 
+ *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
+ *             .projectName(StdFunctions.substr(SubstrArgs.builder()
+ *                 .input(String.format("tf-example-%s", StdFunctions.replace(ReplaceArgs.builder()
+ *                     .text(defaultUuid.result())
+ *                     .search("-")
+ *                     .replace("")
+ *                     .build()).result()))
+ *                 .offset(0)
+ *                 .length(16)
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var defaultStore = new Store("defaultStore", StoreArgs.builder()
+ *             .logstoreName(name)
+ *             .projectName(defaultProject.projectName())
+ *             .build());
+ * 
+ *         var defaultAggregateDelivery = new AggregateDelivery("defaultAggregateDelivery", AggregateDeliveryArgs.builder()
+ *             .aggregatorId(defaultAggregator.id())
+ *             .configurationItemChangeNotification(true)
+ *             .nonCompliantNotification(true)
+ *             .deliveryChannelName(name)
+ *             .deliveryChannelTargetArn(Output.tuple(defaultProject.projectName(), defaultStore.logstoreName()).applyValue(values -> {
+ *                 var projectName = values.t1;
+ *                 var logstoreName = values.t2;
+ *                 return String.format("acs:log:%s:%s:project/%s/logstore/%s", this_.ids()[0],thisGetAccount.id(),projectName,logstoreName);
+ *             }))
+ *             .deliveryChannelType("SLS")
+ *             .description(name)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Config Aggregate Delivery can be imported using the id, e.g.

@@ -14,6 +14,78 @@ namespace Pulumi.AliCloud.Vpn
     /// 
     /// Basic Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "^default-NODELETING$",
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var default0 = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var default1 = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Ids[1]),
+    ///     });
+    /// 
+    ///     var defaultGateway = new AliCloud.Vpn.Gateway("default", new()
+    ///     {
+    ///         VpnGatewayName = name,
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         Bandwidth = 10,
+    ///         EnableSsl = true,
+    ///         Description = name,
+    ///         PaymentType = "Subscription",
+    ///         VswitchId = default0.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         DisasterRecoveryVswitchId = default1.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultSslVpnServer = new AliCloud.Vpn.SslVpnServer("default", new()
+    ///     {
+    ///         Name = name,
+    ///         VpnGatewayId = defaultGateway.Id,
+    ///         ClientIpPool = "192.168.0.0/16",
+    ///         LocalSubnet = Std.Cidrsubnet.Invoke(new()
+    ///         {
+    ///             Input = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Vpcs[0]?.CidrBlock),
+    ///             Newbits = 8,
+    ///             Netnum = 8,
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         Protocol = "UDP",
+    ///         Cipher = "AES-128-CBC",
+    ///         Port = 1194,
+    ///         Compress = false,
+    ///     });
+    /// 
+    ///     var defaultSslVpnClientCert = new AliCloud.Vpn.SslVpnClientCert("default", new()
+    ///     {
+    ///         SslVpnServerId = defaultSslVpnServer.Id,
+    ///         Name = name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// SSL-VPN client certificates can be imported using the id, e.g.

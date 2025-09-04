@@ -243,6 +243,21 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
     }
 
     /**
+     * The pagination token that is used in the next request to retrieve a new page of results.
+     * 
+     */
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    /**
+     * @return The pagination token that is used in the next request to retrieve a new page of results.
+     * 
+     */
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
+    }
+
+    /**
      * The ID of the resource group to which you want to move the resource.
      * 
      * &gt; **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
@@ -339,6 +354,7 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         this.name = $.name;
         this.paymentType = $.paymentType;
         this.ratio = $.ratio;
+        this.regionId = $.regionId;
         this.resourceGroupId = $.resourceGroupId;
         this.securityProtectionTypes = $.securityProtectionTypes;
         this.status = $.status;
@@ -651,6 +667,27 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
          */
         public Builder ratio(Integer ratio) {
             return ratio(Output.of(ratio));
+        }
+
+        /**
+         * @param regionId The pagination token that is used in the next request to retrieve a new page of results.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        /**
+         * @param regionId The pagination token that is used in the next request to retrieve a new page of results.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
         }
 
         /**

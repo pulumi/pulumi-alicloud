@@ -14,6 +14,38 @@ namespace Pulumi.AliCloud
     /// 
     /// &gt; **NOTE:** Available since v1.141.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tfexample";
+    ///     var token = config.Get("token") ?? "abcd****";
+    ///     var example = new AliCloud.MscSubWebhook("example", new()
+    ///     {
+    ///         ServerUrl = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "https://oapi.dingtalk.com/robot/send?access_token=%s",
+    ///             Args = new[]
+    ///             {
+    ///                 token,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         WebhookName = name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Msc Sub Webhook can be imported using the id, e.g.

@@ -18,6 +18,52 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.141.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.MscSubWebhook;
+ * import com.pulumi.alicloud.MscSubWebhookArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tfexample");
+ *         final var token = config.get("token").orElse("abcd****");
+ *         var example = new MscSubWebhook("example", MscSubWebhookArgs.builder()
+ *             .serverUrl(StdFunctions.format(FormatArgs.builder()
+ *                 .input("https://oapi.dingtalk.com/robot/send?access_token=%s")
+ *                 .args(token)
+ *                 .build()).result())
+ *             .webhookName(name)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Msc Sub Webhook can be imported using the id, e.g.

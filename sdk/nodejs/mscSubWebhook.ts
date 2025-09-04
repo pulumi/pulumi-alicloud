@@ -9,6 +9,27 @@ import * as utilities from "./utilities";
  *
  * > **NOTE:** Available since v1.141.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tfexample";
+ * const token = config.get("token") || "abcd****";
+ * const example = new alicloud.MscSubWebhook("example", {
+ *     serverUrl: std.format({
+ *         input: "https://oapi.dingtalk.com/robot/send?access_token=%s",
+ *         args: [token],
+ *     }).then(invoke => invoke.result),
+ *     webhookName: name,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Msc Sub Webhook can be imported using the id, e.g.

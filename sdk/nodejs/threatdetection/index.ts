@@ -20,6 +20,11 @@ export type AssetSelectionConfig = import("./assetSelectionConfig").AssetSelecti
 export const AssetSelectionConfig: typeof import("./assetSelectionConfig").AssetSelectionConfig = null as any;
 utilities.lazyLoad(exports, ["AssetSelectionConfig"], () => require("./assetSelectionConfig"));
 
+export { AttackPathSensitiveAssetConfigArgs, AttackPathSensitiveAssetConfigState } from "./attackPathSensitiveAssetConfig";
+export type AttackPathSensitiveAssetConfig = import("./attackPathSensitiveAssetConfig").AttackPathSensitiveAssetConfig;
+export const AttackPathSensitiveAssetConfig: typeof import("./attackPathSensitiveAssetConfig").AttackPathSensitiveAssetConfig = null as any;
+utilities.lazyLoad(exports, ["AttackPathSensitiveAssetConfig"], () => require("./attackPathSensitiveAssetConfig"));
+
 export { BackupPolicyArgs, BackupPolicyState } from "./backupPolicy";
 export type BackupPolicy = import("./backupPolicy").BackupPolicy;
 export const BackupPolicy: typeof import("./backupPolicy").BackupPolicy = null as any;
@@ -186,6 +191,8 @@ const _module = {
                 return new AssetBind(name, <any>undefined, { urn })
             case "alicloud:threatdetection/assetSelectionConfig:AssetSelectionConfig":
                 return new AssetSelectionConfig(name, <any>undefined, { urn })
+            case "alicloud:threatdetection/attackPathSensitiveAssetConfig:AttackPathSensitiveAssetConfig":
+                return new AttackPathSensitiveAssetConfig(name, <any>undefined, { urn })
             case "alicloud:threatdetection/backupPolicy:BackupPolicy":
                 return new BackupPolicy(name, <any>undefined, { urn })
             case "alicloud:threatdetection/baselineStrategy:BaselineStrategy":
@@ -230,6 +237,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/antiBruteForceRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/assetBind", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/assetSelectionConfig", _module)
+pulumi.runtime.registerResourceModule("alicloud", "threatdetection/attackPathSensitiveAssetConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/backupPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/baselineStrategy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/clientFileProtect", _module)

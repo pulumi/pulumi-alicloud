@@ -57,17 +57,17 @@ import javax.annotation.Nullable;
  *             .stackName("tf-testaccstack")
  *             .templateBody("""
  *     {
- *     	"ROSTemplateFormatVersion": "2015-09-01"
+ *     \t\"ROSTemplateFormatVersion\": \"2015-09-01\"
  *     }
  *             """)
  *             .stackPolicyBody("""
  *     {
- *     	"Statement": [{
- *     		"Action": "Update:Delete",
- *     		"Resource": "*",
- *     		"Effect": "Allow",
- *     		"Principal": "*"
- *     	}]
+ *     \t\"Statement\": [{
+ *     \t\t\"Action\": \"Update:Delete\",
+ *     \t\t\"Resource\": \"*\",
+ *     \t\t\"Effect\": \"Allow\",
+ *     \t\t\"Principal\": \"*\"
+ *     \t}]
  *     }
  *             """)
  *             .build());

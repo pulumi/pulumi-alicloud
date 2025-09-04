@@ -6,6 +6,7 @@ package com.pulumi.alicloud.threatdetection;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.threatdetection.AntiBruteForceRuleArgs;
 import com.pulumi.alicloud.threatdetection.inputs.AntiBruteForceRuleState;
+import com.pulumi.alicloud.threatdetection.outputs.AntiBruteForceRuleProtocolType;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -133,6 +134,20 @@ public class AntiBruteForceRule extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> forbiddenTime() {
         return this.forbiddenTime;
+    }
+    /**
+     * The types of protocols supported for interception by the brute force attack rule creation. See `protocol_type` below.
+     * 
+     */
+    @Export(name="protocolType", refs={AntiBruteForceRuleProtocolType.class}, tree="[0]")
+    private Output<AntiBruteForceRuleProtocolType> protocolType;
+
+    /**
+     * @return The types of protocols supported for interception by the brute force attack rule creation. See `protocol_type` below.
+     * 
+     */
+    public Output<AntiBruteForceRuleProtocolType> protocolType() {
+        return this.protocolType;
     }
     /**
      * The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:

@@ -26,6 +26,124 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.228.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.fc.V3Function;
+ * import com.pulumi.alicloud.fc.V3FunctionArgs;
+ * import com.pulumi.alicloud.fc.inputs.V3FunctionCodeArgs;
+ * import com.pulumi.alicloud.fc.inputs.V3FunctionLogConfigArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.alicloud.fc.V3AsyncInvokeConfig;
+ * import com.pulumi.alicloud.fc.V3AsyncInvokeConfigArgs;
+ * import com.pulumi.alicloud.fc.inputs.V3AsyncInvokeConfigDestinationConfigArgs;
+ * import com.pulumi.alicloud.fc.inputs.V3AsyncInvokeConfigDestinationConfigOnFailureArgs;
+ * import com.pulumi.alicloud.fc.inputs.V3AsyncInvokeConfigDestinationConfigOnSuccessArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var current = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+ * 
+ *         var function = new V3Function("function", V3FunctionArgs.builder()
+ *             .memorySize(512)
+ *             .cpu(0.5)
+ *             .handler("index.Handler")
+ *             .code(V3FunctionCodeArgs.builder()
+ *                 .zipFile("UEsDBBQACAAIAAAAAAAAAAAAAAAAAAAAAAAIAAAAaW5kZXgucHmEkEFKxEAQRfd9ig9ZTCJOooIwDMwNXLqXnnQlaalUhU5lRj2KZ/FOXkESGR114bJ/P/7jV4b1xRq1hijtFpM1682cuNgPmgysbRulPT0fRxXnMtwrSPyeCdYRokSLnuMLJTTkbUqEvDMbxm1VdcRD6Tk+T1LW2ldB66knsYdA5iNX17ebm6tN2VnPhcswMPmREPuBacb+CiapLarAj9gT6/H97dVlCNScY3mtYvRkxdZlwDKDEnanPWVLdrdkeXEGlFEazVdfPVHaVeHc3N15CUwppwOJXeK7HshAB8NuOU7J6sP4SRXuH/EvbUfMiqMmDqv5M5FNSfAj/wgAAP//UEsHCPl//NYAAQAArwEAAFBLAQIUABQACAAIAAAAAAD5f/zWAAEAAK8BAAAIAAAAAAAAAAAAAAAAAAAAAABpbmRleC5weVBLBQYAAAAAAQABADYAAAA2AQAAAAA=")
+ *                 .build())
+ *             .functionName(name)
+ *             .runtime("python3.9")
+ *             .diskSize(512)
+ *             .logConfig(V3FunctionLogConfigArgs.builder()
+ *                 .logBeginRule("None")
+ *                 .build())
+ *             .build());
+ * 
+ *         var function1 = new V3Function("function1", V3FunctionArgs.builder()
+ *             .memorySize(512)
+ *             .cpu(0.5)
+ *             .handler("index.Handler")
+ *             .code(V3FunctionCodeArgs.builder()
+ *                 .zipFile("UEsDBBQACAAIAAAAAAAAAAAAAAAAAAAAAAAIAAAAaW5kZXgucHmEkEFKxEAQRfd9ig9ZTCJOooIwDMwNXLqXnnQlaalUhU5lRj2KZ/FOXkESGR114bJ/P/7jV4b1xRq1hijtFpM1682cuNgPmgysbRulPT0fRxXnMtwrSPyeCdYRokSLnuMLJTTkbUqEvDMbxm1VdcRD6Tk+T1LW2ldB66knsYdA5iNX17ebm6tN2VnPhcswMPmREPuBacb+CiapLarAj9gT6/H97dVlCNScY3mtYvRkxdZlwDKDEnanPWVLdrdkeXEGlFEazVdfPVHaVeHc3N15CUwppwOJXeK7HshAB8NuOU7J6sP4SRXuH/EvbUfMiqMmDqv5M5FNSfAj/wgAAP//UEsHCPl//NYAAQAArwEAAFBLAQIUABQACAAIAAAAAAD5f/zWAAEAAK8BAAAIAAAAAAAAAAAAAAAAAAAAAABpbmRleC5weVBLBQYAAAAAAQABADYAAAA2AQAAAAA=")
+ *                 .build())
+ *             .functionName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s_%s")
+ *                 .args(                
+ *                     name,
+ *                     "update1")
+ *                 .build()).result())
+ *             .runtime("python3.9")
+ *             .diskSize(512)
+ *             .logConfig(V3FunctionLogConfigArgs.builder()
+ *                 .logBeginRule("None")
+ *                 .build())
+ *             .build());
+ * 
+ *         var function2 = new V3Function("function2", V3FunctionArgs.builder()
+ *             .memorySize(512)
+ *             .cpu(0.5)
+ *             .handler("index.Handler")
+ *             .code(V3FunctionCodeArgs.builder()
+ *                 .zipFile("UEsDBBQACAAIAAAAAAAAAAAAAAAAAAAAAAAIAAAAaW5kZXgucHmEkEFKxEAQRfd9ig9ZTCJOooIwDMwNXLqXnnQlaalUhU5lRj2KZ/FOXkESGR114bJ/P/7jV4b1xRq1hijtFpM1682cuNgPmgysbRulPT0fRxXnMtwrSPyeCdYRokSLnuMLJTTkbUqEvDMbxm1VdcRD6Tk+T1LW2ldB66knsYdA5iNX17ebm6tN2VnPhcswMPmREPuBacb+CiapLarAj9gT6/H97dVlCNScY3mtYvRkxdZlwDKDEnanPWVLdrdkeXEGlFEazVdfPVHaVeHc3N15CUwppwOJXeK7HshAB8NuOU7J6sP4SRXuH/EvbUfMiqMmDqv5M5FNSfAj/wgAAP//UEsHCPl//NYAAQAArwEAAFBLAQIUABQACAAIAAAAAAD5f/zWAAEAAK8BAAAIAAAAAAAAAAAAAAAAAAAAAABpbmRleC5weVBLBQYAAAAAAQABADYAAAA2AQAAAAA=")
+ *                 .build())
+ *             .functionName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s_%s")
+ *                 .args(                
+ *                     name,
+ *                     "update2")
+ *                 .build()).result())
+ *             .runtime("python3.9")
+ *             .diskSize(512)
+ *             .logConfig(V3FunctionLogConfigArgs.builder()
+ *                 .logBeginRule("None")
+ *                 .build())
+ *             .build());
+ * 
+ *         var default_ = new V3AsyncInvokeConfig("default", V3AsyncInvokeConfigArgs.builder()
+ *             .maxAsyncRetryAttempts(1)
+ *             .maxAsyncEventAgeInSeconds(1)
+ *             .asyncTask(true)
+ *             .functionName(function.functionName())
+ *             .destinationConfig(V3AsyncInvokeConfigDestinationConfigArgs.builder()
+ *                 .onFailure(V3AsyncInvokeConfigDestinationConfigOnFailureArgs.builder()
+ *                     .destination(function1.functionName().applyValue(_functionName -> String.format("acs:fc:eu-central-1:%s:functions/%s", current.id(),_functionName)))
+ *                     .build())
+ *                 .onSuccess(V3AsyncInvokeConfigDestinationConfigOnSuccessArgs.builder()
+ *                     .destination(function1.functionName().applyValue(_functionName -> String.format("acs:fc:eu-central-1:%s:functions/%s", current.id(),_functionName)))
+ *                     .build())
+ *                 .build())
+ *             .qualifier("LATEST")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * FCV3 Async Invoke Config can be imported using the id, e.g.

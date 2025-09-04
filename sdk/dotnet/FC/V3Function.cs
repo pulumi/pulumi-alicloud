@@ -228,6 +228,12 @@ namespace Pulumi.AliCloud.FC
         public Output<int> InstanceConcurrency { get; private set; } = null!;
 
         /// <summary>
+        /// Instance isolation mode
+        /// </summary>
+        [Output("instanceIsolationMode")]
+        public Output<string?> InstanceIsolationMode { get; private set; } = null!;
+
+        /// <summary>
         /// Instance lifecycle callback method configuration. See `instance_lifecycle_config` below.
         /// </summary>
         [Output("instanceLifecycleConfig")]
@@ -238,6 +244,12 @@ namespace Pulumi.AliCloud.FC
         /// </summary>
         [Output("internetAccess")]
         public Output<bool> InternetAccess { get; private set; } = null!;
+
+        /// <summary>
+        /// Invocation Restriction Detail See `invocation_restriction` below.
+        /// </summary>
+        [Output("invocationRestriction")]
+        public Output<Outputs.V3FunctionInvocationRestriction?> InvocationRestriction { get; private set; } = null!;
 
         /// <summary>
         /// Last time the function was Updated
@@ -306,6 +318,18 @@ namespace Pulumi.AliCloud.FC
         public Output<string> Runtime { get; private set; } = null!;
 
         /// <summary>
+        /// The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
+        /// </summary>
+        [Output("sessionAffinity")]
+        public Output<string?> SessionAffinity { get; private set; } = null!;
+
+        /// <summary>
+        /// When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
+        /// </summary>
+        [Output("sessionAffinityConfig")]
+        public Output<string?> SessionAffinityConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Function Status
         /// </summary>
         [Output("state")]
@@ -370,10 +394,6 @@ namespace Pulumi.AliCloud.FC
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                AdditionalSecretOutputs =
-                {
-                    "layers",
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -476,6 +496,12 @@ namespace Pulumi.AliCloud.FC
         public Input<int>? InstanceConcurrency { get; set; }
 
         /// <summary>
+        /// Instance isolation mode
+        /// </summary>
+        [Input("instanceIsolationMode")]
+        public Input<string>? InstanceIsolationMode { get; set; }
+
+        /// <summary>
         /// Instance lifecycle callback method configuration. See `instance_lifecycle_config` below.
         /// </summary>
         [Input("instanceLifecycleConfig")]
@@ -487,6 +513,12 @@ namespace Pulumi.AliCloud.FC
         [Input("internetAccess")]
         public Input<bool>? InternetAccess { get; set; }
 
+        /// <summary>
+        /// Invocation Restriction Detail See `invocation_restriction` below.
+        /// </summary>
+        [Input("invocationRestriction")]
+        public Input<Inputs.V3FunctionInvocationRestrictionArgs>? InvocationRestriction { get; set; }
+
         [Input("layers")]
         private InputList<string>? _layers;
 
@@ -496,11 +528,7 @@ namespace Pulumi.AliCloud.FC
         public InputList<string> Layers
         {
             get => _layers ?? (_layers = new InputList<string>());
-            set
-            {
-                var emptySecret = Output.CreateSecret(ImmutableArray.Create<string>());
-                _layers = Output.All(value, emptySecret).Apply(v => v[0]);
-            }
+            set => _layers = value;
         }
 
         /// <summary>
@@ -538,6 +566,18 @@ namespace Pulumi.AliCloud.FC
         /// </summary>
         [Input("runtime", required: true)]
         public Input<string> Runtime { get; set; } = null!;
+
+        /// <summary>
+        /// The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
+        /// </summary>
+        [Input("sessionAffinity")]
+        public Input<string>? SessionAffinity { get; set; }
+
+        /// <summary>
+        /// When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
+        /// </summary>
+        [Input("sessionAffinityConfig")]
+        public Input<string>? SessionAffinityConfig { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
@@ -674,6 +714,12 @@ namespace Pulumi.AliCloud.FC
         public Input<int>? InstanceConcurrency { get; set; }
 
         /// <summary>
+        /// Instance isolation mode
+        /// </summary>
+        [Input("instanceIsolationMode")]
+        public Input<string>? InstanceIsolationMode { get; set; }
+
+        /// <summary>
         /// Instance lifecycle callback method configuration. See `instance_lifecycle_config` below.
         /// </summary>
         [Input("instanceLifecycleConfig")]
@@ -684,6 +730,12 @@ namespace Pulumi.AliCloud.FC
         /// </summary>
         [Input("internetAccess")]
         public Input<bool>? InternetAccess { get; set; }
+
+        /// <summary>
+        /// Invocation Restriction Detail See `invocation_restriction` below.
+        /// </summary>
+        [Input("invocationRestriction")]
+        public Input<Inputs.V3FunctionInvocationRestrictionGetArgs>? InvocationRestriction { get; set; }
 
         /// <summary>
         /// Last time the function was Updated
@@ -718,11 +770,7 @@ namespace Pulumi.AliCloud.FC
         public InputList<string> Layers
         {
             get => _layers ?? (_layers = new InputList<string>());
-            set
-            {
-                var emptySecret = Output.CreateSecret(ImmutableArray.Create<string>());
-                _layers = Output.All(value, emptySecret).Apply(v => v[0]);
-            }
+            set => _layers = value;
         }
 
         /// <summary>
@@ -760,6 +808,18 @@ namespace Pulumi.AliCloud.FC
         /// </summary>
         [Input("runtime")]
         public Input<string>? Runtime { get; set; }
+
+        /// <summary>
+        /// The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
+        /// </summary>
+        [Input("sessionAffinity")]
+        public Input<string>? SessionAffinity { get; set; }
+
+        /// <summary>
+        /// When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
+        /// </summary>
+        [Input("sessionAffinityConfig")]
+        public Input<string>? SessionAffinityConfig { get; set; }
 
         /// <summary>
         /// Function Status

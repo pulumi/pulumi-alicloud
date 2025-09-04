@@ -16,6 +16,167 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// &gt; **NOTE:** Available since v1.150.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var region = config.Get("region") ?? "cn-hangzhou";
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var @default = AliCloud.Ga.GetAccelerators.Invoke(new()
+    ///     {
+    ///         Status = "active",
+    ///     });
+    /// 
+    ///     var defaultBandwidthPackage = new AliCloud.Ga.BandwidthPackage("default", new()
+    ///     {
+    ///         Bandwidth = 100,
+    ///         Type = "Basic",
+    ///         BandwidthType = "Basic",
+    ///         PaymentType = "PayAsYouGo",
+    ///         BillingType = "PayBy95",
+    ///         Ratio = 30,
+    ///         BandwidthPackageName = name,
+    ///         AutoPay = true,
+    ///         AutoUseCoupon = true,
+    ///     });
+    /// 
+    ///     var defaultBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("default", new()
+    ///     {
+    ///         AcceleratorId = @default.Apply(@default =&gt; @default.Apply(getAcceleratorsResult =&gt; getAcceleratorsResult.Ids[0])),
+    ///         BandwidthPackageId = defaultBandwidthPackage.Id,
+    ///     });
+    /// 
+    ///     var defaultServiceCertificate = new List&lt;AliCloud.Cas.ServiceCertificate&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         defaultServiceCertificate.Add(new AliCloud.Cas.ServiceCertificate($"default-{range.Value}", new()
+    ///         {
+    ///             CertificateName = Std.Join.Invoke(new()
+    ///             {
+    ///                 Separator = "-",
+    ///                 Input = new[]
+    ///                 {
+    ///                     name,
+    ///                     range.Value,
+    ///                 },
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///             Cert = @"-----BEGIN CERTIFICATE-----
+    /// MIID7zCCAtegAwIBAgIRAKi2/Fx1cUTyhV839x42ockwDQYJKoZIhvcNAQELBQAw
+    /// XjELMAkGA1UEBhMCQ04xDjAMBgNVBAoTBU15U1NMMSswKQYDVQQLEyJNeVNTTCBU
+    /// ZXN0IFJTQSAtIEZvciB0ZXN0IHVzZSBvbmx5MRIwEAYDVQQDEwlNeVNTTC5jb20w
+    /// HhcNMjMwODA5MDQ1NDU3WhcNMjYwODA4MDQ1NDU3WjAsMQswCQYDVQQGEwJDTjEd
+    /// MBsGA1UEAxMUYWxpY2xvdWQtcHJvdmlkZXIuY24wggEiMA0GCSqGSIb3DQEBAQUA
+    /// A4IBDwAwggEKAoIBAQDdkot9e0pMCTPAtA29Sz5sF+aPT/l9+3sOnQeJ1kKLNkqK
+    /// iQgwADexoAqlmTaZM03gh/GnkqPw9gxN/fJHWdVzxE03Fs8bKgMdS6cf0v/xArrQ
+    /// zm6N4vmsbuE8SX2eu303PAsyBMqPByTODZ5i+5LkZcrxMFQsbA3xnBouzS5e+T+a
+    /// 7YTyyVv5WDy871/sdRAYTfnUttdnqkKGeMKgQgRlJ2pDk5/k2iwmQmSh/wbk465+
+    /// 1U5w2npPYGPvGAkzl7RRc4/VckqlV8P0cmgguqIRyllJwFEnvcpqpOHTxBOBq9iZ
+    /// 4b/h7ynrfB/GbAw574eSEl0gzLBW60bT9YedbTeXAgMBAAGjgdkwgdYwDgYDVR0P
+    /// AQH/BAQDAgWgMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAfBgNVHSME
+    /// GDAWgBQogSYF0TQaP8FzD7uTzxUcPwO/fzBjBggrBgEFBQcBAQRXMFUwIQYIKwYB
+    /// BQUHMAGGFWh0dHA6Ly9vY3NwLm15c3NsLmNvbTAwBggrBgEFBQcwAoYkaHR0cDov
+    /// L2NhLm15c3NsLmNvbS9teXNzbHRlc3Ryc2EuY3J0MB8GA1UdEQQYMBaCFGFsaWNs
+    /// b3VkLXByb3ZpZGVyLmNuMA0GCSqGSIb3DQEBCwUAA4IBAQCwUBeznv6cAjcTLCDb
+    /// SSvgkM9HFcbWnuGS8Nf5P4YfmSs52VuHZyjzwphjAU6B/danI/nMdZe52PXyvjVV
+    /// 02Y8ld/tMpqPV5SpaOadLtdg6TGBNJieOAt9doM8WNEgq/JycAL9ivIOjChUetZf
+    /// ZEV7HDIgiHSpqAPWMZYL71MS/p5zYkyOnPqmGyLNdi1neotwVCQopQXRNC2iLlVV
+    /// yQONfXH5iijqr1iTWkB0ESK/xBt1PB655PlTjzFQUOovE1SyoQS8K3u7TP6+BqtD
+    /// G9TYNTNZvxl5I/iU/KdWVip+qJbxRA8Skc8gHkkzeIEStw3l5cjnrp9h7EhnhkOh
+    /// ltGN
+    /// -----END CERTIFICATE-----
+    /// ",
+    ///             Key = @"-----BEGIN RSA PRIVATE KEY-----
+    /// MIIEpQIBAAKCAQEA3ZKLfXtKTAkzwLQNvUs+bBfmj0/5fft7Dp0HidZCizZKiokI
+    /// MAA3saAKpZk2mTNN4Ifxp5Kj8PYMTf3yR1nVc8RNNxbPGyoDHUunH9L/8QK60M5u
+    /// jeL5rG7hPEl9nrt9NzwLMgTKjwckzg2eYvuS5GXK8TBULGwN8ZwaLs0uXvk/mu2E
+    /// 8slb+Vg8vO9f7HUQGE351LbXZ6pChnjCoEIEZSdqQ5Of5NosJkJkof8G5OOuftVO
+    /// cNp6T2Bj7xgJM5e0UXOP1XJKpVfD9HJoILqiEcpZScBRJ73KaqTh08QTgavYmeG/
+    /// 4e8p63wfxmwMOe+HkhJdIMywVutG0/WHnW03lwIDAQABAoIBAQCe5rHS09B8pzzO
+    /// PlJ8JrIlox5eOOScTPX7jPITD+25GL5si8mrYvyODlCUYkSdqgV3uQa9PpUEAfDh
+    /// HfXa5boGxAj8MQdmW8LQB6lbUV7r4SFJDkKKzvRvjTVKnwnQBHXQXudIf9ckq+Lh
+    /// QzMLmY/G7JmWTyqOkQ+O7nx4g/11bcU7uQrQdvWPfc0+IiT1TYQdyLQ/Chlj3RF/
+    /// iwF8ZL2sfKF+Z5O49+Q6cXvUcQOvqtkIXbQijayyVNBMJwDB7aOZRA7JBNj9/ib6
+    /// N0iTo81dJVz/nnpbWRaFTVinIsDF1heDfQ1qDx06T/Mpi6pjoWjRUcyIHEbZJTel
+    /// 0nXDJD1BAoGBAPZB/PN8MP+o9gkf2jnoU9LzctDJrQwD1J2XElq4RomimPIMqDQP
+    /// 5TRAJThf0O0X4Mv2n9EzV457OpJL+fz9htRWEYogWl9bkbzZ1AoX4K/acuGeawTT
+    /// YEhPjJ2ZETsBsCeDkDDuHHzYwRQv+EfoXH36z9PBDxG1ZDb7kWwAILXdAoGBAOZW
+    /// jXG7m4I7cxUtXGtjwydh4K7nwH/5QoH2m928HM2AT48eQCl3CMQ089+qeJGgfHQv
+    /// GyVOO/FGhcFsFi10FMQ7IlwWgZODg64qnrNhi4zbV1M2wKem1T2dlEpkd82EFdnS
+    /// GYRIEkFORMxEDyzx3Th2TajpWC8YKKG3Tnm0bQ4DAoGBAIZTEEswHvoVi78GZN7Z
+    /// X3/d028X0xCOtlcPpK9ffPpuesbtKILdeMS7iJHrkecB81jOOfa+7q+FgDl0v/PD
+    /// xtvj5sVVSHZjWGeO2h53T9QccDWpV+7V7dsDqUv9xmxNS20CUpCeEWP4R7lfQSrY
+    /// EDuXp+11jWa3buae6n/iwfTxAoGABEYW2cVhXUk9GWd+D4AKXvCx+ozSRY2abk7l
+    /// FXgoEKgQ0db92ccboohY/g1rr0gLBxzYpBiPhCqK0MvwnWdJ+1odiRfhz5rhFpoz
+    /// 16A3tqVbOXAKoxG1Yy9JURgMIQQSY7hCQPIVZKDPJfsdTPgv4pxPVJL/z9/i4R1F
+    /// l3yBiYECgYEA0+vpzL24nHZYdwgBF4qbmYhv8baRi07/BNgV1+d6vESuO/MwwoE/
+    /// 2UZ9Drf5yoX2Bvi5/vVMbyc7cSluO7icPBkl0D8F7E3x0v5mzwPxtpR8BTRoJKOL
+    /// /rMdLscMz2VQsL5DJd/9OZg60fHRaRtWtV0afXzL5zUxnfDLot24IG4=
+    /// -----END RSA PRIVATE KEY-----
+    /// ",
+    ///         }));
+    ///     }
+    ///     var defaultListener = new AliCloud.Ga.Listener("default", new()
+    ///     {
+    ///         AcceleratorId = defaultBandwidthPackageAttachment.AcceleratorId,
+    ///         Name = name,
+    ///         Protocol = "HTTPS",
+    ///         PortRanges = new[]
+    ///         {
+    ///             new AliCloud.Ga.Inputs.ListenerPortRangeArgs
+    ///             {
+    ///                 FromPort = 8080,
+    ///                 ToPort = 8080,
+    ///             },
+    ///         },
+    ///         Certificates = new[]
+    ///         {
+    ///             new AliCloud.Ga.Inputs.ListenerCertificateArgs
+    ///             {
+    ///                 Id = Std.Join.Invoke(new()
+    ///                 {
+    ///                     Separator = "-",
+    ///                     Input = new[]
+    ///                     {
+    ///                         defaultServiceCertificate[1].Id,
+    ///                         region,
+    ///                     },
+    ///                 }).Apply(invoke =&gt; invoke.Result),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var domain = "alicloud-provider.cn";
+    /// 
+    ///     var defaultAdditionalCertificate = new AliCloud.Ga.AdditionalCertificate("default", new()
+    ///     {
+    ///         CertificateId = Std.Join.Invoke(new()
+    ///         {
+    ///             Separator = "-",
+    ///             Input = new[]
+    ///             {
+    ///                 defaultServiceCertificate[1].Id,
+    ///                 region,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         Domain = domain,
+    ///         AcceleratorId = defaultListener.AcceleratorId,
+    ///         ListenerId = defaultListener.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Global Accelerator (GA) Additional Certificate can be imported using the id, e.g.

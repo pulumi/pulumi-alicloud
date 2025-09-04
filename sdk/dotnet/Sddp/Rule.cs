@@ -36,14 +36,14 @@ namespace Pulumi.AliCloud.Sddp
     ///         Category = 2,
     ///         Content = @"  [
     ///     {
-    ///       ""rule"": [
+    ///       \""rule\"": [
     ///         {
-    ///           ""operator"": ""contains"",
-    ///           ""target"": ""content"",
-    ///           ""value"": ""tf-testACCContent""
+    ///           \""operator\"": \""contains\"",
+    ///           \""target\"": \""content\"",
+    ///           \""value\"": \""tf-testACCContent\""
     ///         }
     ///       ],
-    ///       ""ruleRelation"": ""AND""
+    ///       \""ruleRelation\"": \""AND\""
     ///     }
     ///   ]
     /// ",

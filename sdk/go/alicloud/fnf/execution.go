@@ -44,18 +44,18 @@ import (
 //			_default, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
 //				Name: pulumi.String(name),
 //				Document: pulumi.String(`  {
-//	    "Statement": [
+//	    \"Statement\": [
 //	      {
-//	        "Action": "sts:AssumeRole",
-//	        "Effect": "Allow",
-//	        "Principal": {
-//	          "Service": [
-//	            "fnf.aliyuncs.com"
+//	        \"Action\": \"sts:AssumeRole\",
+//	        \"Effect\": \"Allow\",
+//	        \"Principal\": {
+//	          \"Service\": [
+//	            \"fnf.aliyuncs.com\"
 //	          ]
 //	        }
 //	      }
 //	    ],
-//	    "Version": "1"
+//	    \"Version\": \"1\"
 //	  }
 //
 // `),

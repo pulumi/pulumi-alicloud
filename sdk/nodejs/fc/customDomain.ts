@@ -33,18 +33,18 @@ import * as utilities from "../utilities";
  * const defaultRole = new alicloud.ram.Role("default", {
  *     name: `fcservicerole-${_default.result}`,
  *     document: `  {
- *       "Statement": [
+ *       \\"Statement\\": [
  *         {
- *           "Action": "sts:AssumeRole",
- *           "Effect": "Allow",
- *           "Principal": {
- *             "Service": [
- *               "fc.aliyuncs.com"
+ *           \\"Action\\": \\"sts:AssumeRole\\",
+ *           \\"Effect\\": \\"Allow\\",
+ *           \\"Principal\\": {
+ *             \\"Service\\": [
+ *               \\"fc.aliyuncs.com\\"
  *             ]
  *           }
  *         }
  *       ],
- *       "Version": "1"
+ *       \\"Version\\": \\"1\\"
  *   }
  * `,
  *     description: "this is a example",

@@ -119,11 +119,167 @@ func (o ChangeSetParameterArrayOutput) Index(i pulumi.IntInput) ChangeSetParamet
 	}).(ChangeSetParameterOutput)
 }
 
+type StackGroupAutoDeployment struct {
+	// Enable or disable automatic deployment. Valid Values:
+	Enabled *bool `pulumi:"enabled"`
+	// Whether to retain the stack in the member account when the member account is deleted from the target folder. Valid values:
+	RetainStacksOnAccountRemoval *bool `pulumi:"retainStacksOnAccountRemoval"`
+}
+
+// StackGroupAutoDeploymentInput is an input type that accepts StackGroupAutoDeploymentArgs and StackGroupAutoDeploymentOutput values.
+// You can construct a concrete instance of `StackGroupAutoDeploymentInput` via:
+//
+//	StackGroupAutoDeploymentArgs{...}
+type StackGroupAutoDeploymentInput interface {
+	pulumi.Input
+
+	ToStackGroupAutoDeploymentOutput() StackGroupAutoDeploymentOutput
+	ToStackGroupAutoDeploymentOutputWithContext(context.Context) StackGroupAutoDeploymentOutput
+}
+
+type StackGroupAutoDeploymentArgs struct {
+	// Enable or disable automatic deployment. Valid Values:
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Whether to retain the stack in the member account when the member account is deleted from the target folder. Valid values:
+	RetainStacksOnAccountRemoval pulumi.BoolPtrInput `pulumi:"retainStacksOnAccountRemoval"`
+}
+
+func (StackGroupAutoDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackGroupAutoDeployment)(nil)).Elem()
+}
+
+func (i StackGroupAutoDeploymentArgs) ToStackGroupAutoDeploymentOutput() StackGroupAutoDeploymentOutput {
+	return i.ToStackGroupAutoDeploymentOutputWithContext(context.Background())
+}
+
+func (i StackGroupAutoDeploymentArgs) ToStackGroupAutoDeploymentOutputWithContext(ctx context.Context) StackGroupAutoDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackGroupAutoDeploymentOutput)
+}
+
+func (i StackGroupAutoDeploymentArgs) ToStackGroupAutoDeploymentPtrOutput() StackGroupAutoDeploymentPtrOutput {
+	return i.ToStackGroupAutoDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i StackGroupAutoDeploymentArgs) ToStackGroupAutoDeploymentPtrOutputWithContext(ctx context.Context) StackGroupAutoDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackGroupAutoDeploymentOutput).ToStackGroupAutoDeploymentPtrOutputWithContext(ctx)
+}
+
+// StackGroupAutoDeploymentPtrInput is an input type that accepts StackGroupAutoDeploymentArgs, StackGroupAutoDeploymentPtr and StackGroupAutoDeploymentPtrOutput values.
+// You can construct a concrete instance of `StackGroupAutoDeploymentPtrInput` via:
+//
+//	        StackGroupAutoDeploymentArgs{...}
+//
+//	or:
+//
+//	        nil
+type StackGroupAutoDeploymentPtrInput interface {
+	pulumi.Input
+
+	ToStackGroupAutoDeploymentPtrOutput() StackGroupAutoDeploymentPtrOutput
+	ToStackGroupAutoDeploymentPtrOutputWithContext(context.Context) StackGroupAutoDeploymentPtrOutput
+}
+
+type stackGroupAutoDeploymentPtrType StackGroupAutoDeploymentArgs
+
+func StackGroupAutoDeploymentPtr(v *StackGroupAutoDeploymentArgs) StackGroupAutoDeploymentPtrInput {
+	return (*stackGroupAutoDeploymentPtrType)(v)
+}
+
+func (*stackGroupAutoDeploymentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StackGroupAutoDeployment)(nil)).Elem()
+}
+
+func (i *stackGroupAutoDeploymentPtrType) ToStackGroupAutoDeploymentPtrOutput() StackGroupAutoDeploymentPtrOutput {
+	return i.ToStackGroupAutoDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i *stackGroupAutoDeploymentPtrType) ToStackGroupAutoDeploymentPtrOutputWithContext(ctx context.Context) StackGroupAutoDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackGroupAutoDeploymentPtrOutput)
+}
+
+type StackGroupAutoDeploymentOutput struct{ *pulumi.OutputState }
+
+func (StackGroupAutoDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackGroupAutoDeployment)(nil)).Elem()
+}
+
+func (o StackGroupAutoDeploymentOutput) ToStackGroupAutoDeploymentOutput() StackGroupAutoDeploymentOutput {
+	return o
+}
+
+func (o StackGroupAutoDeploymentOutput) ToStackGroupAutoDeploymentOutputWithContext(ctx context.Context) StackGroupAutoDeploymentOutput {
+	return o
+}
+
+func (o StackGroupAutoDeploymentOutput) ToStackGroupAutoDeploymentPtrOutput() StackGroupAutoDeploymentPtrOutput {
+	return o.ToStackGroupAutoDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (o StackGroupAutoDeploymentOutput) ToStackGroupAutoDeploymentPtrOutputWithContext(ctx context.Context) StackGroupAutoDeploymentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StackGroupAutoDeployment) *StackGroupAutoDeployment {
+		return &v
+	}).(StackGroupAutoDeploymentPtrOutput)
+}
+
+// Enable or disable automatic deployment. Valid Values:
+func (o StackGroupAutoDeploymentOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StackGroupAutoDeployment) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to retain the stack in the member account when the member account is deleted from the target folder. Valid values:
+func (o StackGroupAutoDeploymentOutput) RetainStacksOnAccountRemoval() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StackGroupAutoDeployment) *bool { return v.RetainStacksOnAccountRemoval }).(pulumi.BoolPtrOutput)
+}
+
+type StackGroupAutoDeploymentPtrOutput struct{ *pulumi.OutputState }
+
+func (StackGroupAutoDeploymentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StackGroupAutoDeployment)(nil)).Elem()
+}
+
+func (o StackGroupAutoDeploymentPtrOutput) ToStackGroupAutoDeploymentPtrOutput() StackGroupAutoDeploymentPtrOutput {
+	return o
+}
+
+func (o StackGroupAutoDeploymentPtrOutput) ToStackGroupAutoDeploymentPtrOutputWithContext(ctx context.Context) StackGroupAutoDeploymentPtrOutput {
+	return o
+}
+
+func (o StackGroupAutoDeploymentPtrOutput) Elem() StackGroupAutoDeploymentOutput {
+	return o.ApplyT(func(v *StackGroupAutoDeployment) StackGroupAutoDeployment {
+		if v != nil {
+			return *v
+		}
+		var ret StackGroupAutoDeployment
+		return ret
+	}).(StackGroupAutoDeploymentOutput)
+}
+
+// Enable or disable automatic deployment. Valid Values:
+func (o StackGroupAutoDeploymentPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *StackGroupAutoDeployment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to retain the stack in the member account when the member account is deleted from the target folder. Valid values:
+func (o StackGroupAutoDeploymentPtrOutput) RetainStacksOnAccountRemoval() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *StackGroupAutoDeployment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RetainStacksOnAccountRemoval
+	}).(pulumi.BoolPtrOutput)
+}
+
 type StackGroupParameter struct {
-	// The parameter key.
-	ParameterKey *string `pulumi:"parameterKey"`
-	// The parameter value.
-	ParameterValue *string `pulumi:"parameterValue"`
+	// The key of parameter N. If you do not specify the key and value of the parameter, ROS uses the default key and value in the template.
+	ParameterKey string `pulumi:"parameterKey"`
+	// The value of parameter N.
+	ParameterValue string `pulumi:"parameterValue"`
 }
 
 // StackGroupParameterInput is an input type that accepts StackGroupParameterArgs and StackGroupParameterOutput values.
@@ -138,10 +294,10 @@ type StackGroupParameterInput interface {
 }
 
 type StackGroupParameterArgs struct {
-	// The parameter key.
-	ParameterKey pulumi.StringPtrInput `pulumi:"parameterKey"`
-	// The parameter value.
-	ParameterValue pulumi.StringPtrInput `pulumi:"parameterValue"`
+	// The key of parameter N. If you do not specify the key and value of the parameter, ROS uses the default key and value in the template.
+	ParameterKey pulumi.StringInput `pulumi:"parameterKey"`
+	// The value of parameter N.
+	ParameterValue pulumi.StringInput `pulumi:"parameterValue"`
 }
 
 func (StackGroupParameterArgs) ElementType() reflect.Type {
@@ -195,14 +351,14 @@ func (o StackGroupParameterOutput) ToStackGroupParameterOutputWithContext(ctx co
 	return o
 }
 
-// The parameter key.
-func (o StackGroupParameterOutput) ParameterKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StackGroupParameter) *string { return v.ParameterKey }).(pulumi.StringPtrOutput)
+// The key of parameter N. If you do not specify the key and value of the parameter, ROS uses the default key and value in the template.
+func (o StackGroupParameterOutput) ParameterKey() pulumi.StringOutput {
+	return o.ApplyT(func(v StackGroupParameter) string { return v.ParameterKey }).(pulumi.StringOutput)
 }
 
-// The parameter value.
-func (o StackGroupParameterOutput) ParameterValue() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StackGroupParameter) *string { return v.ParameterValue }).(pulumi.StringPtrOutput)
+// The value of parameter N.
+func (o StackGroupParameterOutput) ParameterValue() pulumi.StringOutput {
+	return o.ApplyT(func(v StackGroupParameter) string { return v.ParameterValue }).(pulumi.StringOutput)
 }
 
 type StackGroupParameterArrayOutput struct{ *pulumi.OutputState }
@@ -3215,6 +3371,8 @@ func (o GetTemplatesTemplateArrayOutput) Index(i pulumi.IntInput) GetTemplatesTe
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ChangeSetParameterInput)(nil)).Elem(), ChangeSetParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ChangeSetParameterArrayInput)(nil)).Elem(), ChangeSetParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StackGroupAutoDeploymentInput)(nil)).Elem(), StackGroupAutoDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StackGroupAutoDeploymentPtrInput)(nil)).Elem(), StackGroupAutoDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StackGroupParameterInput)(nil)).Elem(), StackGroupParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StackGroupParameterArrayInput)(nil)).Elem(), StackGroupParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StackInstanceParameterOverrideInput)(nil)).Elem(), StackInstanceParameterOverrideArgs{})
@@ -3263,6 +3421,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTemplatesTemplateArrayInput)(nil)).Elem(), GetTemplatesTemplateArray{})
 	pulumi.RegisterOutputType(ChangeSetParameterOutput{})
 	pulumi.RegisterOutputType(ChangeSetParameterArrayOutput{})
+	pulumi.RegisterOutputType(StackGroupAutoDeploymentOutput{})
+	pulumi.RegisterOutputType(StackGroupAutoDeploymentPtrOutput{})
 	pulumi.RegisterOutputType(StackGroupParameterOutput{})
 	pulumi.RegisterOutputType(StackGroupParameterArrayOutput{})
 	pulumi.RegisterOutputType(StackInstanceParameterOverrideOutput{})

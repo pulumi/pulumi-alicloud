@@ -16,6 +16,211 @@ namespace Pulumi.AliCloud.Dts
     /// 
     /// &gt; **NOTE:** Available since v1.138.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var example = AliCloud.GetRegions.Invoke(new()
+    ///     {
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var exampleGetZones = AliCloud.Rds.GetZones.Invoke(new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         InstanceChargeType = "PostPaid",
+    ///         Category = "Basic",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///     });
+    /// 
+    ///     var exampleGetInstanceClasses = AliCloud.Rds.GetInstanceClasses.Invoke(new()
+    ///     {
+    ///         ZoneId = exampleGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         InstanceChargeType = "PostPaid",
+    ///         Category = "Basic",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///     });
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("example", new()
+    ///     {
+    ///         VpcId = exampleNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = exampleGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("example", new()
+    ///     {
+    ///         SecurityGroupName = name,
+    ///         VpcId = exampleNetwork.Id,
+    ///     });
+    /// 
+    ///     var exampleInstance = new List&lt;AliCloud.Rds.Instance&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         exampleInstance.Add(new AliCloud.Rds.Instance($"example-{range.Value}", new()
+    ///         {
+    ///             Engine = "MySQL",
+    ///             EngineVersion = "8.0",
+    ///             InstanceType = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
+    ///             InstanceStorage = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///             InstanceChargeType = "Postpaid",
+    ///             InstanceName = Std.Format.Invoke(new()
+    ///             {
+    ///                 Input = "%s_%d",
+    ///                 Args = new[]
+    ///                 {
+    ///                     name,
+    ///                     range.Value + 1,
+    ///                 },
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///             VswitchId = exampleSwitch.Id,
+    ///             MonitoringPeriod = 60,
+    ///             DbInstanceStorageType = "cloud_essd",
+    ///             SecurityGroupIds = new[]
+    ///             {
+    ///                 exampleSecurityGroup.Id,
+    ///             },
+    ///         }));
+    ///     }
+    ///     var exampleRdsAccount = new List&lt;AliCloud.Rds.RdsAccount&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         exampleRdsAccount.Add(new AliCloud.Rds.RdsAccount($"example-{range.Value}", new()
+    ///         {
+    ///             DbInstanceId = exampleInstance[range.Value].Id,
+    ///             AccountName = Std.Format.Invoke(new()
+    ///             {
+    ///                 Input = "example_name_%d",
+    ///                 Args = new[]
+    ///                 {
+    ///                     range.Value + 1,
+    ///                 },
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///             AccountPassword = Std.Format.Invoke(new()
+    ///             {
+    ///                 Input = "example_password_%d",
+    ///                 Args = new[]
+    ///                 {
+    ///                     range.Value + 1,
+    ///                 },
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///         }));
+    ///     }
+    ///     var exampleDatabase = new List&lt;AliCloud.Rds.Database&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         exampleDatabase.Add(new AliCloud.Rds.Database($"example-{range.Value}", new()
+    ///         {
+    ///             InstanceId = exampleInstance[range.Value].Id,
+    ///             Name = Std.Format.Invoke(new()
+    ///             {
+    ///                 Input = "%s_%d",
+    ///                 Args = new[]
+    ///                 {
+    ///                     name,
+    ///                     range.Value + 1,
+    ///                 },
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///         }));
+    ///     }
+    ///     var exampleAccountPrivilege = new List&lt;AliCloud.Rds.AccountPrivilege&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         exampleAccountPrivilege.Add(new AliCloud.Rds.AccountPrivilege($"example-{range.Value}", new()
+    ///         {
+    ///             InstanceId = exampleInstance[range.Value].Id,
+    ///             AccountName = exampleRdsAccount[range.Value].AccountName,
+    ///             Privilege = "ReadWrite",
+    ///             DbNames = new[]
+    ///             {
+    ///                 exampleDatabase[range.Value].Name,
+    ///             },
+    ///         }));
+    ///     }
+    ///     var exampleSynchronizationInstance = new AliCloud.Dts.SynchronizationInstance("example", new()
+    ///     {
+    ///         PaymentType = "PayAsYouGo",
+    ///         SourceEndpointEngineName = "MySQL",
+    ///         SourceEndpointRegion = example.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         DestinationEndpointEngineName = "MySQL",
+    ///         DestinationEndpointRegion = example.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         InstanceClass = "small",
+    ///         SyncArchitecture = "oneway",
+    ///     });
+    /// 
+    ///     var exampleSynchronizationJob = new AliCloud.Dts.SynchronizationJob("example", new()
+    ///     {
+    ///         DtsInstanceId = exampleSynchronizationInstance.Id,
+    ///         DtsJobName = name,
+    ///         SourceEndpointInstanceType = "RDS",
+    ///         SourceEndpointInstanceId = exampleAccountPrivilege[0].InstanceId,
+    ///         SourceEndpointEngineName = "MySQL",
+    ///         SourceEndpointRegion = example.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         SourceEndpointUserName = exampleRdsAccount[0].AccountName,
+    ///         SourceEndpointPassword = exampleRdsAccount[0].AccountPassword,
+    ///         DestinationEndpointInstanceType = "RDS",
+    ///         DestinationEndpointInstanceId = exampleAccountPrivilege[1].InstanceId,
+    ///         DestinationEndpointEngineName = "MySQL",
+    ///         DestinationEndpointRegion = example.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         DestinationEndpointUserName = exampleRdsAccount[1].AccountName,
+    ///         DestinationEndpointPassword = exampleRdsAccount[1].AccountPassword,
+    ///         DbList = Output.JsonSerialize(Output.Create(Output.Tuple(exampleDatabase[0].Name, exampleDatabase[1].Name).Apply(values =&gt;
+    ///         {
+    ///             var exampleDatabaseName = values.Item1;
+    ///             var exampleDatabaseName1 = values.Item2;
+    ///             return 
+    ///             {
+    ///                 { exampleDatabaseName, 
+    ///                 {
+    ///                     { "name", exampleDatabaseName1 },
+    ///                     { "all", true },
+    ///                 } },
+    ///             };
+    ///         }))),
+    ///         StructureInitialization = true,
+    ///         DataInitialization = true,
+    ///         DataSynchronization = true,
+    ///         Status = "Synchronizing",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Notice
+    /// 
+    /// 1. The expiration time cannot be changed after the work of the annual and monthly subscription suspended;
+    /// 2. After the pay-as-you-go type job suspended, your job configuration fee will still be charged;
+    /// 3. If the task suspended for more than 6 hours, the task will not start successfully.
+    /// 4. Suspending the task will only stop writing to the target library, but will still continue to obtain the incremental log of the source, so that the task can be quickly resumed after the suspension is canceled. Therefore, some resources of the source library, such as bandwidth resources, will continue to be occupied during the period.
+    /// 5. Charges will continue during the task suspension period. If you need to stop charging, please release the instance
+    /// 6. When a DTS instance suspended for more than 7 days, the instance cannot be resumed, and the status will change from suspended to failed.
+    /// 
     /// ## Import
     /// 
     /// DTS Synchronization Job can be imported using the id, e.g.
@@ -88,7 +293,7 @@ namespace Pulumi.AliCloud.Dts
         public Output<string?> DestinationEndpointDatabaseName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+        /// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,` POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
         /// </summary>
         [Output("destinationEndpointEngineName")]
         public Output<string> DestinationEndpointEngineName { get; private set; } = null!;
@@ -209,7 +414,7 @@ namespace Pulumi.AliCloud.Dts
         public Output<string?> SourceEndpointDatabaseName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+        /// The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `TiDB`, `REDIS`.
         /// </summary>
         [Output("sourceEndpointEngineName")]
         public Output<string> SourceEndpointEngineName { get; private set; } = null!;
@@ -408,7 +613,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DestinationEndpointDatabaseName { get; set; }
 
         /// <summary>
-        /// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+        /// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,` POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
         /// </summary>
         [Input("destinationEndpointEngineName", required: true)]
         public Input<string> DestinationEndpointEngineName { get; set; } = null!;
@@ -529,7 +734,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? SourceEndpointDatabaseName { get; set; }
 
         /// <summary>
-        /// The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+        /// The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `TiDB`, `REDIS`.
         /// </summary>
         [Input("sourceEndpointEngineName", required: true)]
         public Input<string> SourceEndpointEngineName { get; set; } = null!;
@@ -690,7 +895,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DestinationEndpointDatabaseName { get; set; }
 
         /// <summary>
-        /// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+        /// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,` POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
         /// </summary>
         [Input("destinationEndpointEngineName")]
         public Input<string>? DestinationEndpointEngineName { get; set; }
@@ -811,7 +1016,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? SourceEndpointDatabaseName { get; set; }
 
         /// <summary>
-        /// The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+        /// The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `TiDB`, `REDIS`.
         /// </summary>
         [Input("sourceEndpointEngineName")]
         public Input<string>? SourceEndpointEngineName { get; set; }

@@ -67,9 +67,9 @@ import (
 //					pulumi.String("177.167.32.11"),
 //				},
 //				HttpsExt: pulumi.String(`    {
-//	    "Http2": 1,
-//	    "Http2https": 0,
-//	    "Https2http": 0
+//	    \"Http2\": 1,
+//	    \"Http2https\": 0,
+//	    \"Https2http\": 0
 //	  }
 //
 // `),

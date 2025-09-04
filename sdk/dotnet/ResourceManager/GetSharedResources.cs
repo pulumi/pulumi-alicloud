@@ -15,6 +15,78 @@ namespace Pulumi.AliCloud.ResourceManager
         /// This data source provides the Resource Manager Shared Resources of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available since v1.111.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf-example";
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+        ///     {
+        ///         NameRegex = "^default-NODELETING$",
+        ///     });
+        /// 
+        ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     {
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+        ///     });
+        /// 
+        ///     var defaultResourceShare = new AliCloud.ResourceManager.ResourceShare("default", new()
+        ///     {
+        ///         ResourceShareName = name,
+        ///     });
+        /// 
+        ///     var defaultSharedResource = new AliCloud.ResourceManager.SharedResource("default", new()
+        ///     {
+        ///         ResourceShareId = defaultResourceShare.Id,
+        ///         ResourceId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+        ///         ResourceType = "VSwitch",
+        ///     });
+        /// 
+        ///     var ids = AliCloud.ResourceManager.GetSharedResources.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             Std.Format.Invoke(new()
+        ///             {
+        ///                 Input = "%s:%s",
+        ///                 Args = new[]
+        ///                 {
+        ///                     defaultSharedResource.ResourceId,
+        ///                     defaultSharedResource.ResourceType,
+        ///                 },
+        ///             }).Result,
+        ///         },
+        ///     });
+        /// 
+        ///     var resourceShareId = AliCloud.ResourceManager.GetSharedResources.Invoke(new()
+        ///     {
+        ///         ResourceShareId = defaultSharedResource.ResourceShareId,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstResourceManagerSharedResourceId"] = ids.Apply(getSharedResourcesResult =&gt; getSharedResourcesResult.Resources[0]?.Id),
+        ///         ["secondResourceManagerSharedResourceId"] = resourceShareId.Apply(getSharedResourcesResult =&gt; getSharedResourcesResult.Resources[0]?.Id),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetSharedResourcesResult> InvokeAsync(GetSharedResourcesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSharedResourcesResult>("alicloud:resourcemanager/getSharedResources:getSharedResources", args ?? new GetSharedResourcesArgs(), options.WithDefaults());
@@ -23,6 +95,78 @@ namespace Pulumi.AliCloud.ResourceManager
         /// This data source provides the Resource Manager Shared Resources of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available since v1.111.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf-example";
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+        ///     {
+        ///         NameRegex = "^default-NODELETING$",
+        ///     });
+        /// 
+        ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     {
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+        ///     });
+        /// 
+        ///     var defaultResourceShare = new AliCloud.ResourceManager.ResourceShare("default", new()
+        ///     {
+        ///         ResourceShareName = name,
+        ///     });
+        /// 
+        ///     var defaultSharedResource = new AliCloud.ResourceManager.SharedResource("default", new()
+        ///     {
+        ///         ResourceShareId = defaultResourceShare.Id,
+        ///         ResourceId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+        ///         ResourceType = "VSwitch",
+        ///     });
+        /// 
+        ///     var ids = AliCloud.ResourceManager.GetSharedResources.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             Std.Format.Invoke(new()
+        ///             {
+        ///                 Input = "%s:%s",
+        ///                 Args = new[]
+        ///                 {
+        ///                     defaultSharedResource.ResourceId,
+        ///                     defaultSharedResource.ResourceType,
+        ///                 },
+        ///             }).Result,
+        ///         },
+        ///     });
+        /// 
+        ///     var resourceShareId = AliCloud.ResourceManager.GetSharedResources.Invoke(new()
+        ///     {
+        ///         ResourceShareId = defaultSharedResource.ResourceShareId,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstResourceManagerSharedResourceId"] = ids.Apply(getSharedResourcesResult =&gt; getSharedResourcesResult.Resources[0]?.Id),
+        ///         ["secondResourceManagerSharedResourceId"] = resourceShareId.Apply(getSharedResourcesResult =&gt; getSharedResourcesResult.Resources[0]?.Id),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetSharedResourcesResult> Invoke(GetSharedResourcesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSharedResourcesResult>("alicloud:resourcemanager/getSharedResources:getSharedResources", args ?? new GetSharedResourcesInvokeArgs(), options.WithDefaults());
@@ -31,6 +175,78 @@ namespace Pulumi.AliCloud.ResourceManager
         /// This data source provides the Resource Manager Shared Resources of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available since v1.111.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf-example";
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+        ///     {
+        ///         NameRegex = "^default-NODELETING$",
+        ///     });
+        /// 
+        ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     {
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+        ///     });
+        /// 
+        ///     var defaultResourceShare = new AliCloud.ResourceManager.ResourceShare("default", new()
+        ///     {
+        ///         ResourceShareName = name,
+        ///     });
+        /// 
+        ///     var defaultSharedResource = new AliCloud.ResourceManager.SharedResource("default", new()
+        ///     {
+        ///         ResourceShareId = defaultResourceShare.Id,
+        ///         ResourceId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+        ///         ResourceType = "VSwitch",
+        ///     });
+        /// 
+        ///     var ids = AliCloud.ResourceManager.GetSharedResources.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             Std.Format.Invoke(new()
+        ///             {
+        ///                 Input = "%s:%s",
+        ///                 Args = new[]
+        ///                 {
+        ///                     defaultSharedResource.ResourceId,
+        ///                     defaultSharedResource.ResourceType,
+        ///                 },
+        ///             }).Result,
+        ///         },
+        ///     });
+        /// 
+        ///     var resourceShareId = AliCloud.ResourceManager.GetSharedResources.Invoke(new()
+        ///     {
+        ///         ResourceShareId = defaultSharedResource.ResourceShareId,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstResourceManagerSharedResourceId"] = ids.Apply(getSharedResourcesResult =&gt; getSharedResourcesResult.Resources[0]?.Id),
+        ///         ["secondResourceManagerSharedResourceId"] = resourceShareId.Apply(getSharedResourcesResult =&gt; getSharedResourcesResult.Resources[0]?.Id),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetSharedResourcesResult> Invoke(GetSharedResourcesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetSharedResourcesResult>("alicloud:resourcemanager/getSharedResources:getSharedResources", args ?? new GetSharedResourcesInvokeArgs(), options.WithDefaults());

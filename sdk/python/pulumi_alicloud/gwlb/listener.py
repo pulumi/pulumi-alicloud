@@ -249,6 +249,92 @@ class Listener(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.234.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        zone_id1 = config.get("zoneId1")
+        if zone_id1 is None:
+            zone_id1 = "cn-wulanchabu-b"
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_network = alicloud.vpc.Network("default",
+            cidr_block="10.0.0.0/8",
+            vpc_name=name)
+        default_switch = alicloud.vpc.Switch("default",
+            vpc_id=default_network.id,
+            zone_id=zone_id1,
+            cidr_block="10.0.0.0/24",
+            vswitch_name=std.format(input="%s1",
+                args=[name]).result)
+        default_load_balancer = alicloud.gwlb.LoadBalancer("default",
+            vpc_id=default_network.id,
+            load_balancer_name=std.format(input="%s3",
+                args=[name]).result,
+            zone_mappings=[{
+                "vswitch_id": default_switch.id,
+                "zone_id": zone_id1,
+            }],
+            address_ip_version="Ipv4")
+        default_server_group = alicloud.gwlb.ServerGroup("default",
+            protocol="GENEVE",
+            server_group_name="tfaccgwlb62413",
+            server_group_type="Ip",
+            servers=[
+                {
+                    "server_id": "10.0.0.1",
+                    "server_ip": "10.0.0.1",
+                    "server_type": "Ip",
+                },
+                {
+                    "server_id": "10.0.0.2",
+                    "server_ip": "10.0.0.2",
+                    "server_type": "Ip",
+                },
+                {
+                    "server_id": "10.0.0.3",
+                    "server_ip": "10.0.0.3",
+                    "server_type": "Ip",
+                },
+            ],
+            connection_drain_config={
+                "connection_drain_enabled": True,
+                "connection_drain_timeout": 1,
+            },
+            resource_group_id=default.ids[0],
+            dry_run=False,
+            health_check_config={
+                "health_check_protocol": "HTTP",
+                "health_check_http_codes": [
+                    "http_2xx",
+                    "http_3xx",
+                    "http_4xx",
+                ],
+                "health_check_interval": 10,
+                "health_check_path": "/health-check",
+                "unhealthy_threshold": 2,
+                "health_check_connect_port": 80,
+                "health_check_connect_timeout": 5,
+                "health_check_domain": "www.domain.com",
+                "health_check_enabled": True,
+                "healthy_threshold": 2,
+            },
+            vpc_id=default_network.id,
+            scheduler="5TCH")
+        default_listener = alicloud.gwlb.Listener("default",
+            listener_description="example-tf-lsn",
+            server_group_id=default_server_group.id,
+            load_balancer_id=default_load_balancer.id)
+        ```
+
         ## Import
 
         GWLB Listener can be imported using the id, e.g.
@@ -279,6 +365,92 @@ class Listener(pulumi.CustomResource):
         For information about GWLB Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/slb/gateway-based-load-balancing-gwlb/developer-reference/api-gwlb-2024-04-15-createlistener).
 
         > **NOTE:** Available since v1.234.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        zone_id1 = config.get("zoneId1")
+        if zone_id1 is None:
+            zone_id1 = "cn-wulanchabu-b"
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_network = alicloud.vpc.Network("default",
+            cidr_block="10.0.0.0/8",
+            vpc_name=name)
+        default_switch = alicloud.vpc.Switch("default",
+            vpc_id=default_network.id,
+            zone_id=zone_id1,
+            cidr_block="10.0.0.0/24",
+            vswitch_name=std.format(input="%s1",
+                args=[name]).result)
+        default_load_balancer = alicloud.gwlb.LoadBalancer("default",
+            vpc_id=default_network.id,
+            load_balancer_name=std.format(input="%s3",
+                args=[name]).result,
+            zone_mappings=[{
+                "vswitch_id": default_switch.id,
+                "zone_id": zone_id1,
+            }],
+            address_ip_version="Ipv4")
+        default_server_group = alicloud.gwlb.ServerGroup("default",
+            protocol="GENEVE",
+            server_group_name="tfaccgwlb62413",
+            server_group_type="Ip",
+            servers=[
+                {
+                    "server_id": "10.0.0.1",
+                    "server_ip": "10.0.0.1",
+                    "server_type": "Ip",
+                },
+                {
+                    "server_id": "10.0.0.2",
+                    "server_ip": "10.0.0.2",
+                    "server_type": "Ip",
+                },
+                {
+                    "server_id": "10.0.0.3",
+                    "server_ip": "10.0.0.3",
+                    "server_type": "Ip",
+                },
+            ],
+            connection_drain_config={
+                "connection_drain_enabled": True,
+                "connection_drain_timeout": 1,
+            },
+            resource_group_id=default.ids[0],
+            dry_run=False,
+            health_check_config={
+                "health_check_protocol": "HTTP",
+                "health_check_http_codes": [
+                    "http_2xx",
+                    "http_3xx",
+                    "http_4xx",
+                ],
+                "health_check_interval": 10,
+                "health_check_path": "/health-check",
+                "unhealthy_threshold": 2,
+                "health_check_connect_port": 80,
+                "health_check_connect_timeout": 5,
+                "health_check_domain": "www.domain.com",
+                "health_check_enabled": True,
+                "healthy_threshold": 2,
+            },
+            vpc_id=default_network.id,
+            scheduler="5TCH")
+        default_listener = alicloud.gwlb.Listener("default",
+            listener_description="example-tf-lsn",
+            server_group_id=default_server_group.id,
+            load_balancer_id=default_load_balancer.id)
+        ```
 
         ## Import
 

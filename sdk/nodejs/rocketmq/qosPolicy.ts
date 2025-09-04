@@ -14,6 +14,46 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ * import * as time from "@pulumi/time";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const _default = new alicloud.sag.Qos("default", {name: name});
+ * const example = new time.index.Static("example", {});
+ * const defaultQosPolicy = new alicloud.sag.QosPolicy("default", {
+ *     qosId: _default.id,
+ *     name: name,
+ *     description: name,
+ *     priority: 1,
+ *     ipProtocol: "ALL",
+ *     sourceCidr: "192.168.0.0/24",
+ *     sourcePortRange: "-1/-1",
+ *     destCidr: "10.10.0.0/24",
+ *     destPortRange: "-1/-1",
+ *     startTime: std.replace({
+ *         text: example.rfc3339,
+ *         search: "Z",
+ *         replace: "+0800",
+ *     }).then(invoke => invoke.result),
+ *     endTime: std.timeadd({
+ *         duration: example.rfc3339,
+ *         timestamp: "24h",
+ *     }).then(invoke => std.replace({
+ *         text: invoke.result,
+ *         search: "Z",
+ *         replace: "+0800",
+ *     })).then(invoke => invoke.result),
+ * });
+ * ```
+ *
  * ## Import
  *
  * The Sag Qos Policy can be imported using the id, e.g.

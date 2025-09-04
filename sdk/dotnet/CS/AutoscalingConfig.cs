@@ -19,6 +19,148 @@ namespace Pulumi.AliCloud.CS
     /// &gt; **NOTE:** From version 1.164.0, support for selecting the policy for selecting which node pool to scale by parameter `expander`.
     /// 
     /// &gt; **NOTE:** From version 1.237.0, support for selecting the type of autoscaler by parameter `scaler_type`.
+    /// 
+    /// &gt; **NOTE:** From version 1.256.0, support for setting the priority of scaling groups by parameter `priorities`.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// If you do not have an existing cluster, you need to create an ACK cluster through alicloud.cs.ManagedKubernetes first, and then configure automatic scaling.
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         CpuCoreCount = 4,
+    ///         MemorySize = 8,
+    ///         KubernetesNodeRole = "Worker",
+    ///         SystemDiskCategory = "cloud_essd",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///     });
+    /// 
+    ///     var defaultManagedKubernetes = new AliCloud.CS.ManagedKubernetes("default", new()
+    ///     {
+    ///         NamePrefix = name,
+    ///         ClusterSpec = "ack.pro.small",
+    ///         WorkerVswitchIds = new[]
+    ///         {
+    ///             defaultSwitch.Id,
+    ///         },
+    ///         NewNatGateway = true,
+    ///         PodCidr = Std.Cidrsubnet.Invoke(new()
+    ///         {
+    ///             Input = "10.0.0.0/8",
+    ///             Newbits = 8,
+    ///             Netnum = 36,
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         ServiceCidr = Std.Cidrsubnet.Invoke(new()
+    ///         {
+    ///             Input = "172.16.0.0/16",
+    ///             Newbits = 4,
+    ///             Netnum = 7,
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         SlbInternetEnabled = true,
+    ///     });
+    /// 
+    ///     var defaultNodePool = new List&lt;AliCloud.CS.NodePool&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 3; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         defaultNodePool.Add(new AliCloud.CS.NodePool($"default-{range.Value}", new()
+    ///         {
+    ///             NodePoolName = Std.Format.Invoke(new()
+    ///             {
+    ///                 Input = "%s-%d",
+    ///                 Args = new[]
+    ///                 {
+    ///                     name,
+    ///                     range.Value,
+    ///                 },
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///             ClusterId = defaultManagedKubernetes.Id,
+    ///             VswitchIds = new[]
+    ///             {
+    ///                 defaultSwitch.Id,
+    ///             },
+    ///             InstanceTypes = new[]
+    ///             {
+    ///                 defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///             },
+    ///             SystemDiskCategory = "cloud_essd",
+    ///             SystemDiskSize = 40,
+    ///             ImageType = "AliyunLinux3",
+    ///             ScalingConfig = new AliCloud.CS.Inputs.NodePoolScalingConfigArgs
+    ///             {
+    ///                 Enable = true,
+    ///                 MinSize = 0,
+    ///                 MaxSize = 10,
+    ///             },
+    ///         }));
+    ///     }
+    ///     var defaultAutoscalingConfig = new AliCloud.CS.AutoscalingConfig("default", new()
+    ///     {
+    ///         ClusterId = defaultManagedKubernetes.Id,
+    ///         CoolDownDuration = "10m",
+    ///         UnneededDuration = "10m",
+    ///         UtilizationThreshold = "0.5",
+    ///         GpuUtilizationThreshold = "0.5",
+    ///         ScanInterval = "30s",
+    ///         ScaleDownEnabled = true,
+    ///         Expander = "priority",
+    ///         SkipNodesWithSystemPods = true,
+    ///         SkipNodesWithLocalStorage = false,
+    ///         DaemonsetEvictionForNodes = false,
+    ///         MaxGracefulTerminationSec = 14400,
+    ///         MinReplicaCount = 0,
+    ///         RecycleNodeDeletionEnabled = false,
+    ///         ScaleUpFromZero = true,
+    ///         ScalerType = "cluster-autoscaler",
+    ///         Priorities = 
+    ///         {
+    ///             { "10", Std.Join.Invoke(new()
+    ///             {
+    ///                 Separator = ",",
+    ///                 Input = new[]
+    ///                 {
+    ///                     defaultNodePool[0].ScalingGroupId,
+    ///                     defaultNodePool[1].ScalingGroupId,
+    ///                 },
+    ///             }).Apply(invoke =&gt; invoke.Result) },
+    ///             { "20", defaultNodePool[2].ScalingGroupId },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cs/autoscalingConfig:AutoscalingConfig")]
     public partial class AutoscalingConfig : global::Pulumi.CustomResource
@@ -30,7 +172,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// The cool down duration. Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
+        /// Specify the time interval between detecting a scale-in requirement (when the threshold is reached) and actually executing the scale-in operation (reducing the number of Pods). Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
         /// </summary>
         [Output("coolDownDuration")]
         public Output<string?> CoolDownDuration { get; private set; } = null!;
@@ -42,7 +184,7 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> DaemonsetEvictionForNodes { get; private set; } = null!;
 
         /// <summary>
-        /// The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
+        /// The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For scaler type `goatscaler`, only the `least-waste` expander is currently supported. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
         /// </summary>
         [Output("expander")]
         public Output<string?> Expander { get; private set; } = null!;
@@ -66,6 +208,12 @@ namespace Pulumi.AliCloud.CS
         public Output<int?> MinReplicaCount { get; private set; } = null!;
 
         /// <summary>
+        /// Priority settings for autoscaling node pool scaling groups. This parameter only takes effect when `expander` is set to `priority`. Only supports scaler type `cluster-autoscaler`. Uses key-value pairs where the key is the priority value, and the value is a comma-separated list of scaling group IDs. High numerical values indicate higher priority.
+        /// </summary>
+        [Output("priorities")]
+        public Output<ImmutableDictionary<string, string>?> Priorities { get; private set; } = null!;
+
+        /// <summary>
         /// Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
         /// </summary>
         [Output("recycleNodeDeletionEnabled")]
@@ -84,7 +232,7 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> ScaleUpFromZero { get; private set; } = null!;
 
         /// <summary>
-        /// The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
+        /// The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`. When switching from `cluster-autoscaler` to `goatscaler`, all configuration parameters will be automatically migrated.
         /// </summary>
         [Output("scalerType")]
         public Output<string?> ScalerType { get; private set; } = null!;
@@ -108,13 +256,13 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> SkipNodesWithSystemPods { get; private set; } = null!;
 
         /// <summary>
-        /// The unneeded duration. Default is `10m`.
+        /// Specify the time interval during which autoscaler does not perform scale-in operations after the most recent scale-out completion. Nodes added through scale-out can only be considered for scale-in after the period has elapsed. Default is `10m`.
         /// </summary>
         [Output("unneededDuration")]
         public Output<string?> UnneededDuration { get; private set; } = null!;
 
         /// <summary>
-        /// The scale-in threshold. Default is `0.5`.
+        /// The scale-in a threshold. Default is `0.5`.
         /// </summary>
         [Output("utilizationThreshold")]
         public Output<string?> UtilizationThreshold { get; private set; } = null!;
@@ -172,7 +320,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// The cool down duration. Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
+        /// Specify the time interval between detecting a scale-in requirement (when the threshold is reached) and actually executing the scale-in operation (reducing the number of Pods). Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
         /// </summary>
         [Input("coolDownDuration")]
         public Input<string>? CoolDownDuration { get; set; }
@@ -184,7 +332,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? DaemonsetEvictionForNodes { get; set; }
 
         /// <summary>
-        /// The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
+        /// The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For scaler type `goatscaler`, only the `least-waste` expander is currently supported. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
         /// </summary>
         [Input("expander")]
         public Input<string>? Expander { get; set; }
@@ -207,6 +355,18 @@ namespace Pulumi.AliCloud.CS
         [Input("minReplicaCount")]
         public Input<int>? MinReplicaCount { get; set; }
 
+        [Input("priorities")]
+        private InputMap<string>? _priorities;
+
+        /// <summary>
+        /// Priority settings for autoscaling node pool scaling groups. This parameter only takes effect when `expander` is set to `priority`. Only supports scaler type `cluster-autoscaler`. Uses key-value pairs where the key is the priority value, and the value is a comma-separated list of scaling group IDs. High numerical values indicate higher priority.
+        /// </summary>
+        public InputMap<string> Priorities
+        {
+            get => _priorities ?? (_priorities = new InputMap<string>());
+            set => _priorities = value;
+        }
+
         /// <summary>
         /// Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
         /// </summary>
@@ -226,7 +386,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? ScaleUpFromZero { get; set; }
 
         /// <summary>
-        /// The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
+        /// The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`. When switching from `cluster-autoscaler` to `goatscaler`, all configuration parameters will be automatically migrated.
         /// </summary>
         [Input("scalerType")]
         public Input<string>? ScalerType { get; set; }
@@ -250,13 +410,13 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? SkipNodesWithSystemPods { get; set; }
 
         /// <summary>
-        /// The unneeded duration. Default is `10m`.
+        /// Specify the time interval during which autoscaler does not perform scale-in operations after the most recent scale-out completion. Nodes added through scale-out can only be considered for scale-in after the period has elapsed. Default is `10m`.
         /// </summary>
         [Input("unneededDuration")]
         public Input<string>? UnneededDuration { get; set; }
 
         /// <summary>
-        /// The scale-in threshold. Default is `0.5`.
+        /// The scale-in a threshold. Default is `0.5`.
         /// </summary>
         [Input("utilizationThreshold")]
         public Input<string>? UtilizationThreshold { get; set; }
@@ -276,7 +436,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// The cool down duration. Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
+        /// Specify the time interval between detecting a scale-in requirement (when the threshold is reached) and actually executing the scale-in operation (reducing the number of Pods). Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
         /// </summary>
         [Input("coolDownDuration")]
         public Input<string>? CoolDownDuration { get; set; }
@@ -288,7 +448,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? DaemonsetEvictionForNodes { get; set; }
 
         /// <summary>
-        /// The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
+        /// The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For scaler type `goatscaler`, only the `least-waste` expander is currently supported. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
         /// </summary>
         [Input("expander")]
         public Input<string>? Expander { get; set; }
@@ -311,6 +471,18 @@ namespace Pulumi.AliCloud.CS
         [Input("minReplicaCount")]
         public Input<int>? MinReplicaCount { get; set; }
 
+        [Input("priorities")]
+        private InputMap<string>? _priorities;
+
+        /// <summary>
+        /// Priority settings for autoscaling node pool scaling groups. This parameter only takes effect when `expander` is set to `priority`. Only supports scaler type `cluster-autoscaler`. Uses key-value pairs where the key is the priority value, and the value is a comma-separated list of scaling group IDs. High numerical values indicate higher priority.
+        /// </summary>
+        public InputMap<string> Priorities
+        {
+            get => _priorities ?? (_priorities = new InputMap<string>());
+            set => _priorities = value;
+        }
+
         /// <summary>
         /// Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
         /// </summary>
@@ -330,7 +502,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? ScaleUpFromZero { get; set; }
 
         /// <summary>
-        /// The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
+        /// The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`. When switching from `cluster-autoscaler` to `goatscaler`, all configuration parameters will be automatically migrated.
         /// </summary>
         [Input("scalerType")]
         public Input<string>? ScalerType { get; set; }
@@ -354,13 +526,13 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? SkipNodesWithSystemPods { get; set; }
 
         /// <summary>
-        /// The unneeded duration. Default is `10m`.
+        /// Specify the time interval during which autoscaler does not perform scale-in operations after the most recent scale-out completion. Nodes added through scale-out can only be considered for scale-in after the period has elapsed. Default is `10m`.
         /// </summary>
         [Input("unneededDuration")]
         public Input<string>? UnneededDuration { get; set; }
 
         /// <summary>
-        /// The scale-in threshold. Default is `0.5`.
+        /// The scale-in a threshold. Default is `0.5`.
         /// </summary>
         [Input("utilizationThreshold")]
         public Input<string>? UtilizationThreshold { get; set; }

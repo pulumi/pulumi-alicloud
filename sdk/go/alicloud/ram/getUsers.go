@@ -58,23 +58,23 @@ import (
 //			}
 //			defaultPolicy, err := ram.NewPolicy(ctx, "default", &ram.PolicyArgs{
 //				PolicyName: pulumi.String("ram-policy-example"),
-//				PolicyDocument: pulumi.String(`			{
-//					"Statement": [
-//					 {
-//						"Action": [
-//						"oss:ListObjects",
-//						"oss:ListObjects"
-//				  		],
-//				  		"Effect": "Deny",
-//				  		"Resource": [
-//							"acs:oss:*:*:mybucket",
-//							"acs:oss:*:*:mybucket/*"
-//				  		]
-//					 }
-//			  		],
-//					"Version": "1"
-//				}
+//				PolicyDocument: pulumi.String(`\t\t\t{
 //
+// \t\t\t\t\"Statement\": [
+// \t\t\t\t {
+// \t\t\t\t\t\"Action\": [
+// \t\t\t\t\t\"oss:ListObjects\",
+// \t\t\t\t\t\"oss:ListObjects\"
+// \t\t\t  \t\t],
+// \t\t\t  \t\t\"Effect\": \"Deny\",
+// \t\t\t  \t\t\"Resource\": [
+// \t\t\t\t\t\t\"acs:oss:*:*:mybucket\",
+// \t\t\t\t\t\t\"acs:oss:*:*:mybucket/*\"
+// \t\t\t  \t\t]
+// \t\t\t\t }
+// \t\t  \t\t],
+// \t\t\t\t\"Version\": \"1\"
+// \t\t\t}
 // `),
 //
 //				Description: pulumi.String("this is a policy example"),

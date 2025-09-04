@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Threat Detection Image Event Operation resource. Image Event Operation.
+ * Provides a Threat Detection Image Event Operation resource.
+ *
+ * Image Event Operation.
  *
  * For information about Threat Detection Image Event Operation and how to use it, see [What is Image Event Operation](https://www.alibabacloud.com/help/zh/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation).
  *
@@ -26,16 +28,16 @@ import * as utilities from "../utilities";
  *     operationCode: "whitelist",
  *     eventKey: "alibabacloud_ak",
  *     scenarios: `{
- *   "type":"default",
- *   "value":""
+ *   \\"type\\":\\"default\\",
+ *   \\"value\\":\\"\\"
  * }
  * `,
  *     eventName: "阿里云AK",
  *     conditions: `[
  *   {
- *       "condition":"MD5",
- *       "type":"equals",
- *       "value":"0083a31cc0083a31ccf7c10367a6e783e"
+ *       \\"condition\\":\\"MD5\\",
+ *       \\"type\\":\\"equals\\",
+ *       \\"value\\":\\"0083a31cc0083a31ccf7c10367a6e783e\\"
  *   }
  * ]
  * `,
@@ -79,29 +81,37 @@ export class ImageEventOperation extends pulumi.CustomResource {
     }
 
     /**
-     * Event Conditions.
+     * The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
      */
-    public readonly conditions!: pulumi.Output<string | undefined>;
+    public readonly conditions!: pulumi.Output<string>;
     /**
-     * Image Event Key.
+     * The keyword of the alert item.
      */
     public readonly eventKey!: pulumi.Output<string | undefined>;
     /**
-     * Image Event Name.
+     * The name of the alert item.
      */
     public readonly eventName!: pulumi.Output<string | undefined>;
     /**
-     * Image Event Type.
+     * The alert type.
      */
     public readonly eventType!: pulumi.Output<string>;
     /**
-     * Event Operation Code.
+     * The remarks.
      */
-    public readonly operationCode!: pulumi.Output<string | undefined>;
+    public readonly note!: pulumi.Output<string | undefined>;
     /**
-     * Event Scenarios.
+     * The operation code.
      */
-    public readonly scenarios!: pulumi.Output<string | undefined>;
+    public readonly operationCode!: pulumi.Output<string>;
+    /**
+     * The application scope of the rule.
+     */
+    public readonly scenarios!: pulumi.Output<string>;
+    /**
+     * The source of the whitelist. Valid values:
+     */
+    public readonly source!: pulumi.Output<string>;
 
     /**
      * Create a ImageEventOperation resource with the given unique name, arguments, and options.
@@ -110,7 +120,7 @@ export class ImageEventOperation extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: ImageEventOperationArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: ImageEventOperationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ImageEventOperationArgs | ImageEventOperationState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -120,16 +130,29 @@ export class ImageEventOperation extends pulumi.CustomResource {
             resourceInputs["eventKey"] = state ? state.eventKey : undefined;
             resourceInputs["eventName"] = state ? state.eventName : undefined;
             resourceInputs["eventType"] = state ? state.eventType : undefined;
+            resourceInputs["note"] = state ? state.note : undefined;
             resourceInputs["operationCode"] = state ? state.operationCode : undefined;
             resourceInputs["scenarios"] = state ? state.scenarios : undefined;
+            resourceInputs["source"] = state ? state.source : undefined;
         } else {
             const args = argsOrState as ImageEventOperationArgs | undefined;
+            if ((!args || args.conditions === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'conditions'");
+            }
+            if ((!args || args.eventType === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'eventType'");
+            }
+            if ((!args || args.operationCode === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'operationCode'");
+            }
             resourceInputs["conditions"] = args ? args.conditions : undefined;
             resourceInputs["eventKey"] = args ? args.eventKey : undefined;
             resourceInputs["eventName"] = args ? args.eventName : undefined;
             resourceInputs["eventType"] = args ? args.eventType : undefined;
+            resourceInputs["note"] = args ? args.note : undefined;
             resourceInputs["operationCode"] = args ? args.operationCode : undefined;
             resourceInputs["scenarios"] = args ? args.scenarios : undefined;
+            resourceInputs["source"] = args ? args.source : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ImageEventOperation.__pulumiType, name, resourceInputs, opts);
@@ -141,29 +164,37 @@ export class ImageEventOperation extends pulumi.CustomResource {
  */
 export interface ImageEventOperationState {
     /**
-     * Event Conditions.
+     * The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
      */
     conditions?: pulumi.Input<string>;
     /**
-     * Image Event Key.
+     * The keyword of the alert item.
      */
     eventKey?: pulumi.Input<string>;
     /**
-     * Image Event Name.
+     * The name of the alert item.
      */
     eventName?: pulumi.Input<string>;
     /**
-     * Image Event Type.
+     * The alert type.
      */
     eventType?: pulumi.Input<string>;
     /**
-     * Event Operation Code.
+     * The remarks.
+     */
+    note?: pulumi.Input<string>;
+    /**
+     * The operation code.
      */
     operationCode?: pulumi.Input<string>;
     /**
-     * Event Scenarios.
+     * The application scope of the rule.
      */
     scenarios?: pulumi.Input<string>;
+    /**
+     * The source of the whitelist. Valid values:
+     */
+    source?: pulumi.Input<string>;
 }
 
 /**
@@ -171,27 +202,35 @@ export interface ImageEventOperationState {
  */
 export interface ImageEventOperationArgs {
     /**
-     * Event Conditions.
+     * The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
      */
-    conditions?: pulumi.Input<string>;
+    conditions: pulumi.Input<string>;
     /**
-     * Image Event Key.
+     * The keyword of the alert item.
      */
     eventKey?: pulumi.Input<string>;
     /**
-     * Image Event Name.
+     * The name of the alert item.
      */
     eventName?: pulumi.Input<string>;
     /**
-     * Image Event Type.
+     * The alert type.
      */
-    eventType?: pulumi.Input<string>;
+    eventType: pulumi.Input<string>;
     /**
-     * Event Operation Code.
+     * The remarks.
      */
-    operationCode?: pulumi.Input<string>;
+    note?: pulumi.Input<string>;
     /**
-     * Event Scenarios.
+     * The operation code.
+     */
+    operationCode: pulumi.Input<string>;
+    /**
+     * The application scope of the rule.
      */
     scenarios?: pulumi.Input<string>;
+    /**
+     * The source of the whitelist. Valid values:
+     */
+    source?: pulumi.Input<string>;
 }

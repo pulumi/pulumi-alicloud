@@ -13,6 +13,36 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.230.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const default0yAgJ8 = new alicloud.servicecatalog.Portfolio("default0yAgJ8", {
+ *     providerName: name,
+ *     description: "desc",
+ *     portfolioName: name,
+ * });
+ * const defaultRetBJw = new alicloud.servicecatalog.Product("defaultRetBJw", {
+ *     providerName: name,
+ *     productName: std.format({
+ *         input: "%s1",
+ *         args: [name],
+ *     }).then(invoke => invoke.result),
+ *     productType: "Ros",
+ * });
+ * const _default = new alicloud.servicecatalog.ProductPortfolioAssociation("default", {
+ *     portfolioId: default0yAgJ8.id,
+ *     productId: defaultRetBJw.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Service Catalog Product Portfolio Association can be imported using the id, e.g.

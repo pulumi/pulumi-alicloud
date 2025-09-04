@@ -243,6 +243,73 @@ class OssExportSink(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.237.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        defaultey_hjs_o = alicloud.log.Project("defaulteyHJsO",
+            description="terraform-oss-example-910",
+            project_name=std.format(input="%s1%s",
+                args=[
+                    name,
+                    default["result"],
+                ]).result)
+        defaultxe_hf_xc = alicloud.log.Store("defaultxeHfXC",
+            hot_ttl=8,
+            retention_period=30,
+            shard_count=2,
+            project_name=defaultey_hjs_o.project_name,
+            logstore_name=std.format(input="%s1%s",
+                args=[
+                    name,
+                    default["result"],
+                ]).result)
+        defaultiwj0x_o = alicloud.oss.Bucket("defaultiwj0xO",
+            bucket=std.format(input="%s1%s",
+                args=[
+                    name,
+                    default["result"],
+                ]).result,
+            storage_class="Standard")
+        default_oss_export_sink = alicloud.sls.OssExportSink("default",
+            project=defaultey_hjs_o.project_name,
+            configuration={
+                "logstore": defaultxe_hf_xc.logstore_name,
+                "role_arn": "acs:ram::12345678901234567:role/aliyunlogdefaultrole",
+                "sink": {
+                    "bucket": defaultiwj0x_o.bucket,
+                    "role_arn": "acs:ram::12345678901234567:role/aliyunlogdefaultrole",
+                    "time_zone": "+0700",
+                    "content_type": "json",
+                    "compression_type": "none",
+                    "content_detail": json.dumps({
+                        "enableTag": False,
+                    }),
+                    "buffer_interval": "300",
+                    "buffer_size": "256",
+                    "endpoint": "https://oss-cn-shanghai-internal.aliyuncs.com",
+                },
+                "from_time": 1732165733,
+                "to_time": 1732166733,
+            },
+            job_name="export-oss-1731404933-00001",
+            display_name="exampleterraform")
+        ```
+
         ## Import
 
         Log Service (SLS) Oss Export Sink can be imported using the id, e.g.
@@ -273,6 +340,73 @@ class OssExportSink(pulumi.CustomResource):
         For information about Log Service (SLS) Oss Export Sink and how to use it, see [What is Oss Export Sink](https://www.alibabacloud.com/help/en/sls/developer-reference/api-sls-2020-12-30-createossexport).
 
         > **NOTE:** Available since v1.237.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        defaultey_hjs_o = alicloud.log.Project("defaulteyHJsO",
+            description="terraform-oss-example-910",
+            project_name=std.format(input="%s1%s",
+                args=[
+                    name,
+                    default["result"],
+                ]).result)
+        defaultxe_hf_xc = alicloud.log.Store("defaultxeHfXC",
+            hot_ttl=8,
+            retention_period=30,
+            shard_count=2,
+            project_name=defaultey_hjs_o.project_name,
+            logstore_name=std.format(input="%s1%s",
+                args=[
+                    name,
+                    default["result"],
+                ]).result)
+        defaultiwj0x_o = alicloud.oss.Bucket("defaultiwj0xO",
+            bucket=std.format(input="%s1%s",
+                args=[
+                    name,
+                    default["result"],
+                ]).result,
+            storage_class="Standard")
+        default_oss_export_sink = alicloud.sls.OssExportSink("default",
+            project=defaultey_hjs_o.project_name,
+            configuration={
+                "logstore": defaultxe_hf_xc.logstore_name,
+                "role_arn": "acs:ram::12345678901234567:role/aliyunlogdefaultrole",
+                "sink": {
+                    "bucket": defaultiwj0x_o.bucket,
+                    "role_arn": "acs:ram::12345678901234567:role/aliyunlogdefaultrole",
+                    "time_zone": "+0700",
+                    "content_type": "json",
+                    "compression_type": "none",
+                    "content_detail": json.dumps({
+                        "enableTag": False,
+                    }),
+                    "buffer_interval": "300",
+                    "buffer_size": "256",
+                    "endpoint": "https://oss-cn-shanghai-internal.aliyuncs.com",
+                },
+                "from_time": 1732165733,
+                "to_time": 1732166733,
+            },
+            job_name="export-oss-1731404933-00001",
+            display_name="exampleterraform")
+        ```
 
         ## Import
 

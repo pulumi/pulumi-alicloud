@@ -18,6 +18,240 @@ namespace Pulumi.AliCloud.Sls
     /// 
     /// &gt; **NOTE:** Available since v1.232.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Enable real-time log query for all of OSS buckets.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var projectCreate01 = new AliCloud.Log.Project("project_create_01", new()
+    ///     {
+    ///         Description = name,
+    ///         ProjectName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s1%s",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///                 @default.Result,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var logstoreCreate01 = new AliCloud.Log.Store("logstore_create_01", new()
+    ///     {
+    ///         RetentionPeriod = 30,
+    ///         ShardCount = 2,
+    ///         ProjectName = projectCreate01.ProjectName,
+    ///         LogstoreName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s1%s",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///                 @default.Result,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var update01 = new AliCloud.Log.Project("update_01", new()
+    ///     {
+    ///         Description = name,
+    ///         ProjectName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s2%s",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///                 @default.Result,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var logstore002 = new AliCloud.Log.Store("logstore002", new()
+    ///     {
+    ///         RetentionPeriod = 30,
+    ///         ShardCount = 2,
+    ///         ProjectName = update01.ProjectName,
+    ///         LogstoreName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s2%s",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///                 @default.Result,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var defaultCollectionPolicy = new AliCloud.Sls.CollectionPolicy("default", new()
+    ///     {
+    ///         PolicyConfig = new AliCloud.Sls.Inputs.CollectionPolicyPolicyConfigArgs
+    ///         {
+    ///             ResourceMode = "all",
+    ///             Regions = new[]
+    ///             {
+    ///                 "cn-hangzhou",
+    ///             },
+    ///         },
+    ///         DataCode = "metering_log",
+    ///         CentralizeEnabled = true,
+    ///         ProductCode = "oss",
+    ///         PolicyName = "xc-example-oss-01",
+    ///         Enabled = true,
+    ///         DataConfig = new AliCloud.Sls.Inputs.CollectionPolicyDataConfigArgs
+    ///         {
+    ///             DataRegion = "cn-hangzhou",
+    ///         },
+    ///         CentralizeConfig = new AliCloud.Sls.Inputs.CollectionPolicyCentralizeConfigArgs
+    ///         {
+    ///             DestTtl = 3,
+    ///             DestRegion = "cn-shanghai",
+    ///             DestProject = projectCreate01.ProjectName,
+    ///             DestLogstore = logstoreCreate01.LogstoreName,
+    ///         },
+    ///         ResourceDirectory = new AliCloud.Sls.Inputs.CollectionPolicyResourceDirectoryArgs
+    ///         {
+    ///             AccountGroupType = "custom",
+    ///             Members = new[]
+    ///             {
+    ///                 "1936728897040477",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Enable real-time log query for one or more specific OSS buckets
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example-on-single-bucket";
+    ///     var @default = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var projectCreate01 = new AliCloud.Log.Project("project_create_01", new()
+    ///     {
+    ///         Description = name,
+    ///         ProjectName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s1%s",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///                 @default.Result,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var logstoreCreate01 = new AliCloud.Log.Store("logstore_create_01", new()
+    ///     {
+    ///         RetentionPeriod = 30,
+    ///         ShardCount = 2,
+    ///         ProjectName = projectCreate01.ProjectName,
+    ///         LogstoreName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s1%s",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///                 @default.Result,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var update01 = new AliCloud.Log.Project("update_01", new()
+    ///     {
+    ///         Description = name,
+    ///         ProjectName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s2%s",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///                 @default.Result,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var logstore002 = new AliCloud.Log.Store("logstore002", new()
+    ///     {
+    ///         RetentionPeriod = 30,
+    ///         ShardCount = 2,
+    ///         ProjectName = update01.ProjectName,
+    ///         LogstoreName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s2%s",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///                 @default.Result,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var bucket = new AliCloud.Oss.Bucket("bucket", new()
+    ///     {
+    ///         BucketName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s1%s",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///                 @default.Result,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var defaultCollectionPolicy = new AliCloud.Sls.CollectionPolicy("default", new()
+    ///     {
+    ///         PolicyConfig = new AliCloud.Sls.Inputs.CollectionPolicyPolicyConfigArgs
+    ///         {
+    ///             ResourceMode = "instanceMode",
+    ///             InstanceIds = new[]
+    ///             {
+    ///                 bucket.Id,
+    ///             },
+    ///         },
+    ///         DataCode = "access_log",
+    ///         CentralizeEnabled = false,
+    ///         ProductCode = "oss",
+    ///         PolicyName = "xc-example-oss-01",
+    ///         Enabled = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// SLS Collection Policy can be imported using the id, e.g.

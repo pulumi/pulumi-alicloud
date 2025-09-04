@@ -58,20 +58,20 @@ import (
 //			policy, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
 //				PolicyName: pulumi.Sprintf("tf-example-%v", _default.Result),
 //				PolicyDocument: pulumi.String(`  {
-//	    "Statement": [
+//	    \"Statement\": [
 //	      {
-//	        "Action": [
-//	          "oss:ListObjects",
-//	          "oss:GetObject"
+//	        \"Action\": [
+//	          \"oss:ListObjects\",
+//	          \"oss:GetObject\"
 //	        ],
-//	        "Effect": "Allow",
-//	        "Resource": [
-//	          "acs:oss:*:*:mybucket",
-//	          "acs:oss:*:*:mybucket/*"
+//	        \"Effect\": \"Allow\",
+//	        \"Resource\": [
+//	          \"acs:oss:*:*:mybucket\",
+//	          \"acs:oss:*:*:mybucket/*\"
 //	        ]
 //	      }
 //	    ],
-//	      "Version": "1"
+//	      \"Version\": \"1\"
 //	  }
 //
 // `),

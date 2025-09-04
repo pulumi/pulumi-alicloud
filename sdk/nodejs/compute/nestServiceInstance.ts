@@ -68,11 +68,11 @@ import * as utilities from "../utilities";
  *         operationStartTime: "1681281179000",
  *         operationEndTime: "1681367579000",
  *         resources: pulumi.interpolate`    {
- *       "Type": "ResourceIds",
- *       "RegionId": "cn-hangzhou",
- *       "ResourceIds": {
- *       "ALIYUN::ECS::INSTANCE": [
- *         "${defaultInstance.id}"
+ *       \"Type\": \"ResourceIds\",
+ *       \"RegionId\": \"cn-hangzhou\",
+ *       \"ResourceIds\": {
+ *       \"ALIYUN::ECS::INSTANCE\": [
+ *         \"${defaultInstance.id}\"
  *         ]
  *       } 
  *     }

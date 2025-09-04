@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *     policyName: name,
  *     policyDesc: name,
  *     userType: "USER",
- *     policyContent: "\x09\x09{\"tags\":{\"CostCenter\":{\"tag_value\":{\"@@assign\":[\"Beijing\",\"Shanghai\"]},\"tag_key\":{\"@@assign\":\"CostCenter\"}}}}\n",
+ *     policyContent: "\\t\\t{\\\"tags\\\":{\\\"CostCenter\\\":{\\\"tag_value\\\":{\\\"@@assign\\\":[\\\"Beijing\\\",\\\"Shanghai\\\"]},\\\"tag_key\\\":{\\\"@@assign\\\":\\\"CostCenter\\\"}}}}\n",
  * });
  * ```
  *

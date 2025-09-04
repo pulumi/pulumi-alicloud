@@ -23,6 +23,97 @@ import javax.annotation.Nullable;
  * For information about PAI Workspace Dataset Version and how to use it, see [What is Dataset Version](https://next.api.alibabacloud.com/document/AIWorkSpace/2021-02-04/CreateDatasetVersion).
  * &gt; **NOTE:** Available since v1.236.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.pai.WorkspaceWorkspace;
+ * import com.pulumi.alicloud.pai.WorkspaceWorkspaceArgs;
+ * import com.pulumi.alicloud.pai.WorkspaceDataset;
+ * import com.pulumi.alicloud.pai.WorkspaceDatasetArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.alicloud.pai.WorkspaceDatasetversion;
+ * import com.pulumi.alicloud.pai.WorkspaceDatasetversionArgs;
+ * import com.pulumi.alicloud.pai.inputs.WorkspaceDatasetversionLabelArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform_example");
+ *         var defaultAiWorkspace = new WorkspaceWorkspace("defaultAiWorkspace", WorkspaceWorkspaceArgs.builder()
+ *             .description(name)
+ *             .displayName(name)
+ *             .workspaceName(name)
+ *             .envTypes("prod")
+ *             .build());
+ * 
+ *         var defaultDataset = new WorkspaceDataset("defaultDataset", WorkspaceDatasetArgs.builder()
+ *             .accessibility("PRIVATE")
+ *             .sourceType("USER")
+ *             .dataType("PIC")
+ *             .workspaceId(defaultAiWorkspace.id())
+ *             .options(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("mountPath", "/mnt/data/")
+ *                 )))
+ *             .description(name)
+ *             .sourceId("d-xxxxx_v1")
+ *             .uri("oss://ai4d-q9lgxlpwxzqluij66y.oss-cn-hangzhou.aliyuncs.com/")
+ *             .datasetName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s1")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .userId("1511928242963727")
+ *             .dataSourceType("OSS")
+ *             .property("DIRECTORY")
+ *             .build());
+ * 
+ *         var default_ = new WorkspaceDatasetversion("default", WorkspaceDatasetversionArgs.builder()
+ *             .options(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("mountPath", "/mnt/data/verion/")
+ *                 )))
+ *             .description(name)
+ *             .dataSourceType("OSS")
+ *             .sourceType("USER")
+ *             .sourceId("d-xxxxx_v1")
+ *             .dataSize(2068)
+ *             .dataCount(1000)
+ *             .labels(WorkspaceDatasetversionLabelArgs.builder()
+ *                 .key("key1")
+ *                 .value("example1")
+ *                 .build())
+ *             .uri("oss://ai4d-q9lgxlpwxzqluij66y.oss-cn-hangzhou.aliyuncs.com/")
+ *             .property("DIRECTORY")
+ *             .datasetId(defaultDataset.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * PAI Workspace Datasetversion can be imported using the id, e.g.

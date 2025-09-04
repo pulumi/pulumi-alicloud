@@ -34,18 +34,18 @@ namespace Pulumi.AliCloud.Imm
     ///     {
     ///         Name = name,
     ///         Document = @"  {
-    ///     ""Statement"": [
+    ///     \""Statement\"": [
     ///       {
-    ///         ""Action"": ""sts:AssumeRole"",
-    ///         ""Effect"": ""Allow"",
-    ///         ""Principal"": {
-    ///           ""Service"": [
-    ///             ""imm.aliyuncs.com""
+    ///         \""Action\"": \""sts:AssumeRole\"",
+    ///         \""Effect\"": \""Allow\"",
+    ///         \""Principal\"": {
+    ///           \""Service\"": [
+    ///             \""imm.aliyuncs.com\""
     ///           ]
     ///         }
     ///       }
     ///     ],
-    ///     ""Version"": ""1""
+    ///     \""Version\"": \""1\""
     ///   }
     /// ",
     ///         Description = "this is a role test.",

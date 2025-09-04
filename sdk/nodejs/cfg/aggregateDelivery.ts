@@ -13,6 +13,61 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.172.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const _this = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const thisGetAccount = alicloud.getAccount({});
+ * const _default = alicloud.resourcemanager.getAccounts({
+ *     status: "CreateSuccess",
+ * });
+ * const last = _default.then(_default => _default.accounts).length.apply(length => length - 1);
+ * const defaultAggregator = new alicloud.cfg.Aggregator("default", {
+ *     aggregatorAccounts: [{
+ *         accountId: _default.then(_default => _default.accounts[last].accountId),
+ *         accountName: _default.then(_default => _default.accounts[last].displayName),
+ *         accountType: "ResourceDirectory",
+ *     }],
+ *     aggregatorName: name,
+ *     description: name,
+ *     aggregatorType: "CUSTOM",
+ * });
+ * const defaultUuid = new random.index.Uuid("default", {});
+ * const defaultProject = new alicloud.log.Project("default", {projectName: std.replace({
+ *     text: defaultUuid.result,
+ *     search: "-",
+ *     replace: "",
+ * }).then(invoke => std.substr({
+ *     input: `tf-example-${invoke.result}`,
+ *     offset: 0,
+ *     length: 16,
+ * })).then(invoke => invoke.result)});
+ * const defaultStore = new alicloud.log.Store("default", {
+ *     logstoreName: name,
+ *     projectName: defaultProject.projectName,
+ * });
+ * const defaultAggregateDelivery = new alicloud.cfg.AggregateDelivery("default", {
+ *     aggregatorId: defaultAggregator.id,
+ *     configurationItemChangeNotification: true,
+ *     nonCompliantNotification: true,
+ *     deliveryChannelName: name,
+ *     deliveryChannelTargetArn: pulumi.all([_this, thisGetAccount, defaultProject.projectName, defaultStore.logstoreName]).apply(([_this, thisGetAccount, projectName, logstoreName]) => `acs:log:${_this.ids?.[0]}:${thisGetAccount.id}:project/${projectName}/logstore/${logstoreName}`),
+ *     deliveryChannelType: "SLS",
+ *     description: name,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Config Aggregate Delivery can be imported using the id, e.g.

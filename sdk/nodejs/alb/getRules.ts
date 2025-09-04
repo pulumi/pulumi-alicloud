@@ -10,6 +10,120 @@ import * as utilities from "../utilities";
  * This data source provides the Alb Rules of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available since v1.133.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const _default = alicloud.alb.getZones({});
+ * const defaultGetResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch: alicloud.vpc.Switch[] = [];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     defaultSwitch.push(new alicloud.vpc.Switch(`default-${range.value}`, {
+ *         vpcId: defaultNetwork.id,
+ *         cidrBlock: std.format({
+ *             input: "10.4.%d.0/24",
+ *             args: [range.value + 1],
+ *         }).then(invoke => invoke.result),
+ *         zoneId: _default.then(_default => _default.zones[range.value].id),
+ *         vswitchName: std.format({
+ *             input: `${name}_%d`,
+ *             args: [range.value + 1],
+ *         }).then(invoke => invoke.result),
+ *     }));
+ * }
+ * const defaultLoadBalancer = new alicloud.alb.LoadBalancer("default", {
+ *     vpcId: defaultNetwork.id,
+ *     addressType: "Internet",
+ *     addressAllocatedMode: "Fixed",
+ *     loadBalancerName: name,
+ *     loadBalancerEdition: "Standard",
+ *     resourceGroupId: defaultGetResourceGroups.then(defaultGetResourceGroups => defaultGetResourceGroups.groups?.[0]?.id),
+ *     loadBalancerBillingConfig: {
+ *         payType: "PayAsYouGo",
+ *     },
+ *     tags: {
+ *         Created: "TF",
+ *     },
+ *     zoneMappings: [
+ *         {
+ *             vswitchId: defaultSwitch[0].id,
+ *             zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *         },
+ *         {
+ *             vswitchId: defaultSwitch[1].id,
+ *             zoneId: _default.then(_default => _default.zones?.[1]?.id),
+ *         },
+ *     ],
+ * });
+ * const defaultServerGroup = new alicloud.alb.ServerGroup("default", {
+ *     protocol: "HTTP",
+ *     vpcId: defaultNetwork.id,
+ *     serverGroupName: name,
+ *     resourceGroupId: defaultGetResourceGroups.then(defaultGetResourceGroups => defaultGetResourceGroups.groups?.[0]?.id),
+ *     healthCheckConfig: {
+ *         healthCheckEnabled: false,
+ *     },
+ *     stickySessionConfig: {
+ *         stickySessionEnabled: false,
+ *     },
+ *     tags: {
+ *         Created: "TF",
+ *     },
+ * });
+ * const defaultListener = new alicloud.alb.Listener("default", {
+ *     loadBalancerId: defaultLoadBalancer.id,
+ *     listenerProtocol: "HTTP",
+ *     listenerPort: 80,
+ *     listenerDescription: name,
+ *     defaultActions: [{
+ *         type: "ForwardGroup",
+ *         forwardGroupConfig: {
+ *             serverGroupTuples: [{
+ *                 serverGroupId: defaultServerGroup.id,
+ *             }],
+ *         },
+ *     }],
+ * });
+ * const defaultRule = new alicloud.alb.Rule("default", {
+ *     ruleName: name,
+ *     listenerId: defaultListener.id,
+ *     priority: 555,
+ *     ruleConditions: [{
+ *         cookieConfig: {
+ *             values: [{
+ *                 key: "created",
+ *                 value: "tf",
+ *             }],
+ *         },
+ *         type: "Cookie",
+ *     }],
+ *     ruleActions: [{
+ *         forwardGroupConfig: {
+ *             serverGroupTuples: [{
+ *                 serverGroupId: defaultServerGroup.id,
+ *             }],
+ *         },
+ *         order: 9,
+ *         type: "ForwardGroup",
+ *     }],
+ * });
+ * const ids = alicloud.alb.getRulesOutput({
+ *     ids: [defaultRule.id],
+ * });
+ * export const albRuleId = ids.apply(ids => ids.rules?.[0]?.id);
+ * ```
  */
 export function getRules(args?: GetRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRulesResult> {
     args = args || {};
@@ -90,6 +204,120 @@ export interface GetRulesResult {
  * This data source provides the Alb Rules of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available since v1.133.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const _default = alicloud.alb.getZones({});
+ * const defaultGetResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch: alicloud.vpc.Switch[] = [];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     defaultSwitch.push(new alicloud.vpc.Switch(`default-${range.value}`, {
+ *         vpcId: defaultNetwork.id,
+ *         cidrBlock: std.format({
+ *             input: "10.4.%d.0/24",
+ *             args: [range.value + 1],
+ *         }).then(invoke => invoke.result),
+ *         zoneId: _default.then(_default => _default.zones[range.value].id),
+ *         vswitchName: std.format({
+ *             input: `${name}_%d`,
+ *             args: [range.value + 1],
+ *         }).then(invoke => invoke.result),
+ *     }));
+ * }
+ * const defaultLoadBalancer = new alicloud.alb.LoadBalancer("default", {
+ *     vpcId: defaultNetwork.id,
+ *     addressType: "Internet",
+ *     addressAllocatedMode: "Fixed",
+ *     loadBalancerName: name,
+ *     loadBalancerEdition: "Standard",
+ *     resourceGroupId: defaultGetResourceGroups.then(defaultGetResourceGroups => defaultGetResourceGroups.groups?.[0]?.id),
+ *     loadBalancerBillingConfig: {
+ *         payType: "PayAsYouGo",
+ *     },
+ *     tags: {
+ *         Created: "TF",
+ *     },
+ *     zoneMappings: [
+ *         {
+ *             vswitchId: defaultSwitch[0].id,
+ *             zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *         },
+ *         {
+ *             vswitchId: defaultSwitch[1].id,
+ *             zoneId: _default.then(_default => _default.zones?.[1]?.id),
+ *         },
+ *     ],
+ * });
+ * const defaultServerGroup = new alicloud.alb.ServerGroup("default", {
+ *     protocol: "HTTP",
+ *     vpcId: defaultNetwork.id,
+ *     serverGroupName: name,
+ *     resourceGroupId: defaultGetResourceGroups.then(defaultGetResourceGroups => defaultGetResourceGroups.groups?.[0]?.id),
+ *     healthCheckConfig: {
+ *         healthCheckEnabled: false,
+ *     },
+ *     stickySessionConfig: {
+ *         stickySessionEnabled: false,
+ *     },
+ *     tags: {
+ *         Created: "TF",
+ *     },
+ * });
+ * const defaultListener = new alicloud.alb.Listener("default", {
+ *     loadBalancerId: defaultLoadBalancer.id,
+ *     listenerProtocol: "HTTP",
+ *     listenerPort: 80,
+ *     listenerDescription: name,
+ *     defaultActions: [{
+ *         type: "ForwardGroup",
+ *         forwardGroupConfig: {
+ *             serverGroupTuples: [{
+ *                 serverGroupId: defaultServerGroup.id,
+ *             }],
+ *         },
+ *     }],
+ * });
+ * const defaultRule = new alicloud.alb.Rule("default", {
+ *     ruleName: name,
+ *     listenerId: defaultListener.id,
+ *     priority: 555,
+ *     ruleConditions: [{
+ *         cookieConfig: {
+ *             values: [{
+ *                 key: "created",
+ *                 value: "tf",
+ *             }],
+ *         },
+ *         type: "Cookie",
+ *     }],
+ *     ruleActions: [{
+ *         forwardGroupConfig: {
+ *             serverGroupTuples: [{
+ *                 serverGroupId: defaultServerGroup.id,
+ *             }],
+ *         },
+ *         order: 9,
+ *         type: "ForwardGroup",
+ *     }],
+ * });
+ * const ids = alicloud.alb.getRulesOutput({
+ *     ids: [defaultRule.id],
+ * });
+ * export const albRuleId = ids.apply(ids => ids.rules?.[0]?.id);
+ * ```
  */
 export function getRulesOutput(args?: GetRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRulesResult> {
     args = args || {};

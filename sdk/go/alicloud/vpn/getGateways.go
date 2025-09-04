@@ -14,6 +14,126 @@ import (
 // The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
 //
 // > **NOTE:** Available since v1.18.0.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "terraform-example";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// spec := "20";
+// if param := cfg.Get("spec"); param != ""{
+// spec = param
+// }
+// _, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+// NameRegex: pulumi.StringRef("^default-NODELETING$"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+// VpcId: pulumi.StringRef(defaultGetNetworks.Ids[0]),
+// ZoneId: pulumi.StringRef("me-east-1a"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// invokeCidrsubnet, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
+// Input: defaultGetNetworks.Vpcs[0].CidrBlock,
+// Newbits: 8,
+// Netnum: 8,
+// }, nil)
+// if err != nil {
+// return err
+// }
+// var tmp0 float64
+// if length > 0 {
+// tmp0 = 0
+// } else {
+// tmp0 = 1
+// }
+// var vswitch []*vpc.Switch
+// for index := 0; index < float64(len(defaultGetSwitches.Ids).ApplyT(func(length int) (float64, error) {
+// return tmp0, nil
+//
+//	}).(pulumi.Float64Output)); index++ {
+//	    key0 := index
+//	    _ := index
+//
+// __res, err := vpc.NewSwitch(ctx, fmt.Sprintf("vswitch-%v", key0), &vpc.SwitchArgs{
+// VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
+// CidrBlock: pulumi.String(invokeCidrsubnet.Result),
+// ZoneId: pulumi.String("me-east-1a"),
+// VswitchName: pulumi.String(name),
+// })
+// if err != nil {
+// return err
+// }
+// vswitch = append(vswitch, __res)
+// }
+// var tmp1 *interface{}
+// if length > 0 {
+// tmp1 = defaultGetSwitches.Ids[0]
+// } else {
+// tmp1 = std.Concat(ctx, &std.ConcatArgs{
+// Input: pulumi.StringArrayArray{
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:35,12-25),
+// []string{
+// "",
+// },
+// },
+// }, nil).Result[0]
+// }
+// vswitchId := len(defaultGetSwitches.Ids).ApplyT(func(length int) (*interface{}, error) {
+// return &tmp1, nil
+// }).(pulumi.Interface{}PtrOutput)
+// defaultGateway, err := vpn.NewGateway(ctx, "default", &vpn.GatewayArgs{
+// VpnType: pulumi.String("Normal"),
+// VpnGatewayName: pulumi.String(name),
+// VswitchId: pulumi.Any(vswitchId),
+// AutoPay: pulumi.Bool(true),
+// VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
+// NetworkType: pulumi.String("public"),
+// PaymentType: pulumi.String("Subscription"),
+// EnableIpsec: pulumi.Bool(true),
+// Bandwidth: pulumi.String(spec),
+// })
+// if err != nil {
+// return err
+// }
+// _ = vpn.GetGatewaysOutput(ctx, vpn.GetGatewaysOutputArgs{
+// Ids: pulumi.StringArray{
+// defaultGateway.ID(),
+// },
+// IncludeReservationData: pulumi.Bool(true),
+// OutputFile: pulumi.String("/tmp/vpns"),
+// }, nil);
+// return nil
+// })
+// }
+// ```
 func GetGateways(ctx *pulumi.Context, args *GetGatewaysArgs, opts ...pulumi.InvokeOption) (*GetGatewaysResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGatewaysResult

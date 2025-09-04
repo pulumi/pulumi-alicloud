@@ -75,7 +75,7 @@ namespace Pulumi.AliCloud.Hbr
     ///         TargetFileSystemId = defaultGetNasBackupPlans.Apply(getNasBackupPlansResult =&gt; getNasBackupPlansResult.Plans[0]?.FileSystemId),
     ///         TargetCreateTime = defaultGetNasBackupPlans.Apply(getNasBackupPlansResult =&gt; getNasBackupPlansResult.Plans[0]?.CreateTime),
     ///         TargetPath = "/",
-    ///         Options = @"    {""includes"":[], ""excludes"":[]}
+    ///         Options = @"    {\""includes\"":[], \""excludes\"":[]}
     /// ",
     ///     });
     /// 
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Hbr
     ///         SnapshotId = ossSnapshots.Apply(getSnapshotsResult =&gt; getSnapshotsResult.Snapshots[0]?.SnapshotId),
     ///         TargetBucket = defaultGetOssBackupPlans.Apply(getOssBackupPlansResult =&gt; getOssBackupPlansResult.Plans[0]?.Bucket),
     ///         TargetPrefix = "",
-    ///         Options = @"    {""includes"":[], ""excludes"":[]}
+    ///         Options = @"    {\""includes\"":[], \""excludes\"":[]}
     /// ",
     ///     });
     /// 

@@ -18,6 +18,94 @@ import (
 //
 // > **NOTE:** Available since v1.241.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dataworks"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := dataworks.NewProject(ctx, "defaultZImuCO", &dataworks.ProjectArgs{
+//				Description:    pulumi.String("default_pj002"),
+//				ProjectName:    pulumi.String(name),
+//				DisplayName:    pulumi.String("default_pj002"),
+//				PaiTaskEnabled: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s1",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaulte4zhaL, err := vpc.NewNetwork(ctx, "defaulte4zhaL", &vpc.NetworkArgs{
+//				Description: pulumi.String("default_resgv2_vpc001"),
+//				VpcName:     pulumi.String(invokeFormat.Result),
+//				CidrBlock:   pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat1, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s2",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			default675v38, err := vpc.NewSwitch(ctx, "default675v38", &vpc.SwitchArgs{
+//				Description: pulumi.String("default_resg_vsw001"),
+//				VpcId:       defaulte4zhaL.ID(),
+//				ZoneId:      pulumi.String("cn-beijing-g"),
+//				VswitchName: pulumi.String(invokeFormat1.Result),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataworks.NewDwResourceGroup(ctx, "default", &dataworks.DwResourceGroupArgs{
+//				PaymentType:         pulumi.String("PostPaid"),
+//				DefaultVpcId:        defaulte4zhaL.ID(),
+//				Remark:              pulumi.String("openapi_example"),
+//				ResourceGroupName:   pulumi.String("openapi_pop2_example_resg00002"),
+//				DefaultVswitchId:    default675v38.ID(),
+//				PaymentDurationUnit: pulumi.String("Month"),
+//				Specification:       pulumi.Int(500),
+//				PaymentDuration:     pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Data Works Dw Resource Group can be imported using the id, e.g.

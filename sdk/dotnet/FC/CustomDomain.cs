@@ -49,18 +49,18 @@ namespace Pulumi.AliCloud.FC
     ///     {
     ///         Name = $"fcservicerole-{@default.Result}",
     ///         Document = @"  {
-    ///       ""Statement"": [
+    ///       \""Statement\"": [
     ///         {
-    ///           ""Action"": ""sts:AssumeRole"",
-    ///           ""Effect"": ""Allow"",
-    ///           ""Principal"": {
-    ///             ""Service"": [
-    ///               ""fc.aliyuncs.com""
+    ///           \""Action\"": \""sts:AssumeRole\"",
+    ///           \""Effect\"": \""Allow\"",
+    ///           \""Principal\"": {
+    ///             \""Service\"": [
+    ///               \""fc.aliyuncs.com\""
     ///             ]
     ///           }
     ///         }
     ///       ],
-    ///       ""Version"": ""1""
+    ///       \""Version\"": \""1\""
     ///   }
     /// ",
     ///         Description = "this is a example",

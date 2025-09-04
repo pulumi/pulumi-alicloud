@@ -18,6 +18,95 @@ namespace Pulumi.AliCloud.DataWorks
     /// 
     /// &gt; **NOTE:** Available since v1.241.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var default5Bia4h = new AliCloud.Vpc.Network("default5Bia4h", new()
+    ///     {
+    ///         Description = name,
+    ///         VpcName = name,
+    ///         CidrBlock = "10.0.0.0/8",
+    ///     });
+    /// 
+    ///     var defaultss7s7F = new AliCloud.Vpc.Switch("defaultss7s7F", new()
+    ///     {
+    ///         Description = name,
+    ///         VpcId = default5Bia4h.Id,
+    ///         ZoneId = "cn-beijing-g",
+    ///         VswitchName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s1",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         CidrBlock = "10.0.0.0/24",
+    ///     });
+    /// 
+    ///     var defaultVJvKvl = new AliCloud.DataWorks.DwResourceGroup("defaultVJvKvl", new()
+    ///     {
+    ///         PaymentDurationUnit = "Month",
+    ///         PaymentType = "PostPaid",
+    ///         Specification = 500,
+    ///         DefaultVswitchId = defaultss7s7F.Id,
+    ///         Remark = name,
+    ///         ResourceGroupName = "network_openapi_example01",
+    ///         DefaultVpcId = default5Bia4h.Id,
+    ///     });
+    /// 
+    ///     var defaulte4zhaL = new AliCloud.Vpc.Network("defaulte4zhaL", new()
+    ///     {
+    ///         Description = name,
+    ///         VpcName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s3",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var default675v38 = new AliCloud.Vpc.Switch("default675v38", new()
+    ///     {
+    ///         Description = name,
+    ///         VpcId = defaulte4zhaL.Id,
+    ///         ZoneId = "cn-beijing-g",
+    ///         VswitchName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s4",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         CidrBlock = "172.16.0.0/24",
+    ///     });
+    /// 
+    ///     var @default = new AliCloud.DataWorks.Network("default", new()
+    ///     {
+    ///         VpcId = defaulte4zhaL.Id,
+    ///         VswitchId = default675v38.Id,
+    ///         DwResourceGroupId = defaultVJvKvl.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Data Works Network can be imported using the id, e.g.

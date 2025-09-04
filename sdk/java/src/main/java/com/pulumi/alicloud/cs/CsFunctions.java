@@ -299,6 +299,11 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetClusterCredentialResult> getClusterCredential(GetClusterCredentialArgs args) {
         return getClusterCredential(args, InvokeOptions.Empty);
@@ -309,6 +314,11 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available since v1.187.0
      * 
      * &gt; **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterCredentialResult> getClusterCredentialPlain(GetClusterCredentialPlainArgs args) {
@@ -321,6 +331,11 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetClusterCredentialResult> getClusterCredential(GetClusterCredentialArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cs/getClusterCredential:getClusterCredential", TypeShape.of(GetClusterCredentialResult.class), args, Utilities.withVersion(options));
@@ -332,6 +347,11 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetClusterCredentialResult> getClusterCredential(GetClusterCredentialArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cs/getClusterCredential:getClusterCredential", TypeShape.of(GetClusterCredentialResult.class), args, Utilities.withVersion(options));
@@ -342,6 +362,11 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available since v1.187.0
      * 
      * &gt; **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterCredentialResult> getClusterCredentialPlain(GetClusterCredentialPlainArgs args, InvokeOptions options) {
@@ -681,6 +706,92 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** Available in 1.166.0+.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonMetadataArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .cidrBlock("10.4.0.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .namePrefix(name)
+     *             .clusterSpec("ack.pro.small")
+     *             .workerVswitchIds(defaultSwitch.id())
+     *             .newNatGateway(false)
+     *             .podCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("10.0.0.0/8")
+     *                 .newbits(8)
+     *                 .netnum(36)
+     *                 .build()).result())
+     *             .serviceCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("172.16.0.0/16")
+     *                 .newbits(4)
+     *                 .netnum(7)
+     *                 .build()).result())
+     *             .slbInternetEnabled(true)
+     *             .build());
+     * 
+     *         final var clusterId = defaultManagedKubernetes.id();
+     * 
+     *         final var defaultGetKubernetesAddonMetadata = CsFunctions.getKubernetesAddonMetadata(GetKubernetesAddonMetadataArgs.builder()
+     *             .clusterId(clusterId)
+     *             .name("nginx-ingress-controller")
+     *             .version("v1.1.2-aliyun.2")
+     *             .build());
+     * 
+     *         ctx.export("addonConfigSchema", defaultGetKubernetesAddonMetadata.applyValue(_defaultGetKubernetesAddonMetadata -> _defaultGetKubernetesAddonMetadata.configSchema()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetKubernetesAddonMetadataResult> getKubernetesAddonMetadata(GetKubernetesAddonMetadataArgs args) {
         return getKubernetesAddonMetadata(args, InvokeOptions.Empty);
@@ -689,6 +800,92 @@ public final class CsFunctions {
      * This data source provides metadata of kubernetes cluster addons.
      * 
      * &gt; **NOTE:** Available in 1.166.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonMetadataArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .cidrBlock("10.4.0.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .namePrefix(name)
+     *             .clusterSpec("ack.pro.small")
+     *             .workerVswitchIds(defaultSwitch.id())
+     *             .newNatGateway(false)
+     *             .podCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("10.0.0.0/8")
+     *                 .newbits(8)
+     *                 .netnum(36)
+     *                 .build()).result())
+     *             .serviceCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("172.16.0.0/16")
+     *                 .newbits(4)
+     *                 .netnum(7)
+     *                 .build()).result())
+     *             .slbInternetEnabled(true)
+     *             .build());
+     * 
+     *         final var clusterId = defaultManagedKubernetes.id();
+     * 
+     *         final var defaultGetKubernetesAddonMetadata = CsFunctions.getKubernetesAddonMetadata(GetKubernetesAddonMetadataArgs.builder()
+     *             .clusterId(clusterId)
+     *             .name("nginx-ingress-controller")
+     *             .version("v1.1.2-aliyun.2")
+     *             .build());
+     * 
+     *         ctx.export("addonConfigSchema", defaultGetKubernetesAddonMetadata.applyValue(_defaultGetKubernetesAddonMetadata -> _defaultGetKubernetesAddonMetadata.configSchema()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubernetesAddonMetadataResult> getKubernetesAddonMetadataPlain(GetKubernetesAddonMetadataPlainArgs args) {
@@ -699,6 +896,92 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** Available in 1.166.0+.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonMetadataArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .cidrBlock("10.4.0.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .namePrefix(name)
+     *             .clusterSpec("ack.pro.small")
+     *             .workerVswitchIds(defaultSwitch.id())
+     *             .newNatGateway(false)
+     *             .podCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("10.0.0.0/8")
+     *                 .newbits(8)
+     *                 .netnum(36)
+     *                 .build()).result())
+     *             .serviceCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("172.16.0.0/16")
+     *                 .newbits(4)
+     *                 .netnum(7)
+     *                 .build()).result())
+     *             .slbInternetEnabled(true)
+     *             .build());
+     * 
+     *         final var clusterId = defaultManagedKubernetes.id();
+     * 
+     *         final var defaultGetKubernetesAddonMetadata = CsFunctions.getKubernetesAddonMetadata(GetKubernetesAddonMetadataArgs.builder()
+     *             .clusterId(clusterId)
+     *             .name("nginx-ingress-controller")
+     *             .version("v1.1.2-aliyun.2")
+     *             .build());
+     * 
+     *         ctx.export("addonConfigSchema", defaultGetKubernetesAddonMetadata.applyValue(_defaultGetKubernetesAddonMetadata -> _defaultGetKubernetesAddonMetadata.configSchema()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetKubernetesAddonMetadataResult> getKubernetesAddonMetadata(GetKubernetesAddonMetadataArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cs/getKubernetesAddonMetadata:getKubernetesAddonMetadata", TypeShape.of(GetKubernetesAddonMetadataResult.class), args, Utilities.withVersion(options));
@@ -708,6 +991,92 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** Available in 1.166.0+.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonMetadataArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .cidrBlock("10.4.0.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .namePrefix(name)
+     *             .clusterSpec("ack.pro.small")
+     *             .workerVswitchIds(defaultSwitch.id())
+     *             .newNatGateway(false)
+     *             .podCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("10.0.0.0/8")
+     *                 .newbits(8)
+     *                 .netnum(36)
+     *                 .build()).result())
+     *             .serviceCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("172.16.0.0/16")
+     *                 .newbits(4)
+     *                 .netnum(7)
+     *                 .build()).result())
+     *             .slbInternetEnabled(true)
+     *             .build());
+     * 
+     *         final var clusterId = defaultManagedKubernetes.id();
+     * 
+     *         final var defaultGetKubernetesAddonMetadata = CsFunctions.getKubernetesAddonMetadata(GetKubernetesAddonMetadataArgs.builder()
+     *             .clusterId(clusterId)
+     *             .name("nginx-ingress-controller")
+     *             .version("v1.1.2-aliyun.2")
+     *             .build());
+     * 
+     *         ctx.export("addonConfigSchema", defaultGetKubernetesAddonMetadata.applyValue(_defaultGetKubernetesAddonMetadata -> _defaultGetKubernetesAddonMetadata.configSchema()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetKubernetesAddonMetadataResult> getKubernetesAddonMetadata(GetKubernetesAddonMetadataArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cs/getKubernetesAddonMetadata:getKubernetesAddonMetadata", TypeShape.of(GetKubernetesAddonMetadataResult.class), args, Utilities.withVersion(options));
@@ -716,6 +1085,92 @@ public final class CsFunctions {
      * This data source provides metadata of kubernetes cluster addons.
      * 
      * &gt; **NOTE:** Available in 1.166.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonMetadataArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .cidrBlock("10.4.0.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .namePrefix(name)
+     *             .clusterSpec("ack.pro.small")
+     *             .workerVswitchIds(defaultSwitch.id())
+     *             .newNatGateway(false)
+     *             .podCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("10.0.0.0/8")
+     *                 .newbits(8)
+     *                 .netnum(36)
+     *                 .build()).result())
+     *             .serviceCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("172.16.0.0/16")
+     *                 .newbits(4)
+     *                 .netnum(7)
+     *                 .build()).result())
+     *             .slbInternetEnabled(true)
+     *             .build());
+     * 
+     *         final var clusterId = defaultManagedKubernetes.id();
+     * 
+     *         final var defaultGetKubernetesAddonMetadata = CsFunctions.getKubernetesAddonMetadata(GetKubernetesAddonMetadataArgs.builder()
+     *             .clusterId(clusterId)
+     *             .name("nginx-ingress-controller")
+     *             .version("v1.1.2-aliyun.2")
+     *             .build());
+     * 
+     *         ctx.export("addonConfigSchema", defaultGetKubernetesAddonMetadata.applyValue(_defaultGetKubernetesAddonMetadata -> _defaultGetKubernetesAddonMetadata.configSchema()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubernetesAddonMetadataResult> getKubernetesAddonMetadataPlain(GetKubernetesAddonMetadataPlainArgs args, InvokeOptions options) {
@@ -727,6 +1182,88 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available since v1.150.0.
      * **NOTE:** From version v1.166.0, support for returning custom configuration of kubernetes cluster addon.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .cidrBlock("10.4.0.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .namePrefix(name)
+     *             .clusterSpec("ack.pro.small")
+     *             .workerVswitchIds(defaultSwitch.id())
+     *             .newNatGateway(false)
+     *             .podCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("10.0.0.0/8")
+     *                 .newbits(8)
+     *                 .netnum(36)
+     *                 .build()).result())
+     *             .serviceCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("172.16.0.0/16")
+     *                 .newbits(4)
+     *                 .netnum(7)
+     *                 .build()).result())
+     *             .slbInternetEnabled(true)
+     *             .build());
+     * 
+     *         final var defaultGetKubernetesAddons = CsFunctions.getKubernetesAddons(GetKubernetesAddonsArgs.builder()
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .build());
+     * 
+     *         ctx.export("addons", defaultGetKubernetesAddons.applyValue(_defaultGetKubernetesAddons -> _defaultGetKubernetesAddons.addons()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetKubernetesAddonsResult> getKubernetesAddons(GetKubernetesAddonsArgs args) {
         return getKubernetesAddons(args, InvokeOptions.Empty);
@@ -736,6 +1273,88 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.150.0.
      * **NOTE:** From version v1.166.0, support for returning custom configuration of kubernetes cluster addon.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .cidrBlock("10.4.0.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .namePrefix(name)
+     *             .clusterSpec("ack.pro.small")
+     *             .workerVswitchIds(defaultSwitch.id())
+     *             .newNatGateway(false)
+     *             .podCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("10.0.0.0/8")
+     *                 .newbits(8)
+     *                 .netnum(36)
+     *                 .build()).result())
+     *             .serviceCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("172.16.0.0/16")
+     *                 .newbits(4)
+     *                 .netnum(7)
+     *                 .build()).result())
+     *             .slbInternetEnabled(true)
+     *             .build());
+     * 
+     *         final var defaultGetKubernetesAddons = CsFunctions.getKubernetesAddons(GetKubernetesAddonsArgs.builder()
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .build());
+     * 
+     *         ctx.export("addons", defaultGetKubernetesAddons.applyValue(_defaultGetKubernetesAddons -> _defaultGetKubernetesAddons.addons()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubernetesAddonsResult> getKubernetesAddonsPlain(GetKubernetesAddonsPlainArgs args) {
@@ -747,6 +1366,88 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available since v1.150.0.
      * **NOTE:** From version v1.166.0, support for returning custom configuration of kubernetes cluster addon.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .cidrBlock("10.4.0.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .namePrefix(name)
+     *             .clusterSpec("ack.pro.small")
+     *             .workerVswitchIds(defaultSwitch.id())
+     *             .newNatGateway(false)
+     *             .podCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("10.0.0.0/8")
+     *                 .newbits(8)
+     *                 .netnum(36)
+     *                 .build()).result())
+     *             .serviceCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("172.16.0.0/16")
+     *                 .newbits(4)
+     *                 .netnum(7)
+     *                 .build()).result())
+     *             .slbInternetEnabled(true)
+     *             .build());
+     * 
+     *         final var defaultGetKubernetesAddons = CsFunctions.getKubernetesAddons(GetKubernetesAddonsArgs.builder()
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .build());
+     * 
+     *         ctx.export("addons", defaultGetKubernetesAddons.applyValue(_defaultGetKubernetesAddons -> _defaultGetKubernetesAddons.addons()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetKubernetesAddonsResult> getKubernetesAddons(GetKubernetesAddonsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cs/getKubernetesAddons:getKubernetesAddons", TypeShape.of(GetKubernetesAddonsResult.class), args, Utilities.withVersion(options));
@@ -757,6 +1458,88 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available since v1.150.0.
      * **NOTE:** From version v1.166.0, support for returning custom configuration of kubernetes cluster addon.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .cidrBlock("10.4.0.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .namePrefix(name)
+     *             .clusterSpec("ack.pro.small")
+     *             .workerVswitchIds(defaultSwitch.id())
+     *             .newNatGateway(false)
+     *             .podCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("10.0.0.0/8")
+     *                 .newbits(8)
+     *                 .netnum(36)
+     *                 .build()).result())
+     *             .serviceCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("172.16.0.0/16")
+     *                 .newbits(4)
+     *                 .netnum(7)
+     *                 .build()).result())
+     *             .slbInternetEnabled(true)
+     *             .build());
+     * 
+     *         final var defaultGetKubernetesAddons = CsFunctions.getKubernetesAddons(GetKubernetesAddonsArgs.builder()
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .build());
+     * 
+     *         ctx.export("addons", defaultGetKubernetesAddons.applyValue(_defaultGetKubernetesAddons -> _defaultGetKubernetesAddons.addons()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetKubernetesAddonsResult> getKubernetesAddons(GetKubernetesAddonsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cs/getKubernetesAddons:getKubernetesAddons", TypeShape.of(GetKubernetesAddonsResult.class), args, Utilities.withVersion(options));
@@ -766,6 +1549,88 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.150.0.
      * **NOTE:** From version v1.166.0, support for returning custom configuration of kubernetes cluster addon.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .cidrBlock("10.4.0.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .namePrefix(name)
+     *             .clusterSpec("ack.pro.small")
+     *             .workerVswitchIds(defaultSwitch.id())
+     *             .newNatGateway(false)
+     *             .podCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("10.0.0.0/8")
+     *                 .newbits(8)
+     *                 .netnum(36)
+     *                 .build()).result())
+     *             .serviceCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("172.16.0.0/16")
+     *                 .newbits(4)
+     *                 .netnum(7)
+     *                 .build()).result())
+     *             .slbInternetEnabled(true)
+     *             .build());
+     * 
+     *         final var defaultGetKubernetesAddons = CsFunctions.getKubernetesAddons(GetKubernetesAddonsArgs.builder()
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .build());
+     * 
+     *         ctx.export("addons", defaultGetKubernetesAddons.applyValue(_defaultGetKubernetesAddons -> _defaultGetKubernetesAddons.addons()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubernetesAddonsResult> getKubernetesAddonsPlain(GetKubernetesAddonsPlainArgs args, InvokeOptions options) {
@@ -1126,6 +1991,129 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.246.0.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.ecs.KeyPair;
+     * import com.pulumi.alicloud.ecs.KeyPairArgs;
+     * import com.pulumi.alicloud.cs.NodePool;
+     * import com.pulumi.alicloud.cs.NodePoolArgs;
+     * import com.pulumi.alicloud.cs.inputs.NodePoolScalingConfigArgs;
+     * import com.pulumi.alicloud.cs.inputs.NodePoolSpotPriceLimitArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesNodePoolsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+     *             .build());
+     * 
+     *         final var cloudEfficiency = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(enhanced.zones()[0].zoneId())
+     *             .cpuCoreCount(4)
+     *             .memorySize(8)
+     *             .kubernetesNodeRole("Worker")
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .cidrBlock("10.4.0.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(enhanced.zones()[0].zoneId())
+     *             .build());
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .namePrefix(name)
+     *             .clusterSpec("ack.pro.small")
+     *             .vswitchIds(defaultSwitch.id())
+     *             .newNatGateway(true)
+     *             .podCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("10.0.0.0/8")
+     *                 .newbits(8)
+     *                 .netnum(36)
+     *                 .build()).result())
+     *             .serviceCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("172.16.0.0/16")
+     *                 .newbits(4)
+     *                 .netnum(7)
+     *                 .build()).result())
+     *             .slbInternetEnabled(true)
+     *             .enableRrsa(true)
+     *             .build());
+     * 
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
+     *             .keyPairName(name)
+     *             .build());
+     * 
+     *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
+     *             .nodePoolName("spot_auto_scaling")
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .vswitchIds(defaultSwitch.id())
+     *             .instanceTypes(cloudEfficiency.instanceTypes()[0].id())
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .systemDiskSize(40)
+     *             .keyName(defaultKeyPair.keyPairName())
+     *             .scalingConfig(NodePoolScalingConfigArgs.builder()
+     *                 .minSize(1)
+     *                 .maxSize(10)
+     *                 .type("spot")
+     *                 .build())
+     *             .spotStrategy("SpotWithPriceLimit")
+     *             .spotPriceLimits(NodePoolSpotPriceLimitArgs.builder()
+     *                 .instanceType(cloudEfficiency.instanceTypes()[0].id())
+     *                 .priceLimit("0.70")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var default = CsFunctions.getKubernetesNodePools(GetKubernetesNodePoolsArgs.builder()
+     *             .ids(defaultNodePool.nodePoolId())
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCsKubernetesNodePoolExampleId", default_.applyValue(_default_ -> _default_.nodepools()[0].nodePoolId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetKubernetesNodePoolsResult> getKubernetesNodePools(GetKubernetesNodePoolsArgs args) {
         return getKubernetesNodePools(args, InvokeOptions.Empty);
@@ -1134,6 +2122,129 @@ public final class CsFunctions {
      * This data source provides Ack Nodepool available to the user.[What is Nodepool](https://next.api.alibabacloud.com/document/CS/2015-12-15/CreateClusterNodePool)
      * 
      * &gt; **NOTE:** Available since v1.246.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.ecs.KeyPair;
+     * import com.pulumi.alicloud.ecs.KeyPairArgs;
+     * import com.pulumi.alicloud.cs.NodePool;
+     * import com.pulumi.alicloud.cs.NodePoolArgs;
+     * import com.pulumi.alicloud.cs.inputs.NodePoolScalingConfigArgs;
+     * import com.pulumi.alicloud.cs.inputs.NodePoolSpotPriceLimitArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesNodePoolsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+     *             .build());
+     * 
+     *         final var cloudEfficiency = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(enhanced.zones()[0].zoneId())
+     *             .cpuCoreCount(4)
+     *             .memorySize(8)
+     *             .kubernetesNodeRole("Worker")
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .cidrBlock("10.4.0.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(enhanced.zones()[0].zoneId())
+     *             .build());
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .namePrefix(name)
+     *             .clusterSpec("ack.pro.small")
+     *             .vswitchIds(defaultSwitch.id())
+     *             .newNatGateway(true)
+     *             .podCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("10.0.0.0/8")
+     *                 .newbits(8)
+     *                 .netnum(36)
+     *                 .build()).result())
+     *             .serviceCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("172.16.0.0/16")
+     *                 .newbits(4)
+     *                 .netnum(7)
+     *                 .build()).result())
+     *             .slbInternetEnabled(true)
+     *             .enableRrsa(true)
+     *             .build());
+     * 
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
+     *             .keyPairName(name)
+     *             .build());
+     * 
+     *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
+     *             .nodePoolName("spot_auto_scaling")
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .vswitchIds(defaultSwitch.id())
+     *             .instanceTypes(cloudEfficiency.instanceTypes()[0].id())
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .systemDiskSize(40)
+     *             .keyName(defaultKeyPair.keyPairName())
+     *             .scalingConfig(NodePoolScalingConfigArgs.builder()
+     *                 .minSize(1)
+     *                 .maxSize(10)
+     *                 .type("spot")
+     *                 .build())
+     *             .spotStrategy("SpotWithPriceLimit")
+     *             .spotPriceLimits(NodePoolSpotPriceLimitArgs.builder()
+     *                 .instanceType(cloudEfficiency.instanceTypes()[0].id())
+     *                 .priceLimit("0.70")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var default = CsFunctions.getKubernetesNodePools(GetKubernetesNodePoolsArgs.builder()
+     *             .ids(defaultNodePool.nodePoolId())
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCsKubernetesNodePoolExampleId", default_.applyValue(_default_ -> _default_.nodepools()[0].nodePoolId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubernetesNodePoolsResult> getKubernetesNodePoolsPlain(GetKubernetesNodePoolsPlainArgs args) {
@@ -1144,6 +2255,129 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.246.0.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.ecs.KeyPair;
+     * import com.pulumi.alicloud.ecs.KeyPairArgs;
+     * import com.pulumi.alicloud.cs.NodePool;
+     * import com.pulumi.alicloud.cs.NodePoolArgs;
+     * import com.pulumi.alicloud.cs.inputs.NodePoolScalingConfigArgs;
+     * import com.pulumi.alicloud.cs.inputs.NodePoolSpotPriceLimitArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesNodePoolsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+     *             .build());
+     * 
+     *         final var cloudEfficiency = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(enhanced.zones()[0].zoneId())
+     *             .cpuCoreCount(4)
+     *             .memorySize(8)
+     *             .kubernetesNodeRole("Worker")
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .cidrBlock("10.4.0.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(enhanced.zones()[0].zoneId())
+     *             .build());
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .namePrefix(name)
+     *             .clusterSpec("ack.pro.small")
+     *             .vswitchIds(defaultSwitch.id())
+     *             .newNatGateway(true)
+     *             .podCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("10.0.0.0/8")
+     *                 .newbits(8)
+     *                 .netnum(36)
+     *                 .build()).result())
+     *             .serviceCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("172.16.0.0/16")
+     *                 .newbits(4)
+     *                 .netnum(7)
+     *                 .build()).result())
+     *             .slbInternetEnabled(true)
+     *             .enableRrsa(true)
+     *             .build());
+     * 
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
+     *             .keyPairName(name)
+     *             .build());
+     * 
+     *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
+     *             .nodePoolName("spot_auto_scaling")
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .vswitchIds(defaultSwitch.id())
+     *             .instanceTypes(cloudEfficiency.instanceTypes()[0].id())
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .systemDiskSize(40)
+     *             .keyName(defaultKeyPair.keyPairName())
+     *             .scalingConfig(NodePoolScalingConfigArgs.builder()
+     *                 .minSize(1)
+     *                 .maxSize(10)
+     *                 .type("spot")
+     *                 .build())
+     *             .spotStrategy("SpotWithPriceLimit")
+     *             .spotPriceLimits(NodePoolSpotPriceLimitArgs.builder()
+     *                 .instanceType(cloudEfficiency.instanceTypes()[0].id())
+     *                 .priceLimit("0.70")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var default = CsFunctions.getKubernetesNodePools(GetKubernetesNodePoolsArgs.builder()
+     *             .ids(defaultNodePool.nodePoolId())
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCsKubernetesNodePoolExampleId", default_.applyValue(_default_ -> _default_.nodepools()[0].nodePoolId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetKubernetesNodePoolsResult> getKubernetesNodePools(GetKubernetesNodePoolsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cs/getKubernetesNodePools:getKubernetesNodePools", TypeShape.of(GetKubernetesNodePoolsResult.class), args, Utilities.withVersion(options));
@@ -1153,6 +2387,129 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** Available since v1.246.0.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.ecs.KeyPair;
+     * import com.pulumi.alicloud.ecs.KeyPairArgs;
+     * import com.pulumi.alicloud.cs.NodePool;
+     * import com.pulumi.alicloud.cs.NodePoolArgs;
+     * import com.pulumi.alicloud.cs.inputs.NodePoolScalingConfigArgs;
+     * import com.pulumi.alicloud.cs.inputs.NodePoolSpotPriceLimitArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesNodePoolsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+     *             .build());
+     * 
+     *         final var cloudEfficiency = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(enhanced.zones()[0].zoneId())
+     *             .cpuCoreCount(4)
+     *             .memorySize(8)
+     *             .kubernetesNodeRole("Worker")
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .cidrBlock("10.4.0.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(enhanced.zones()[0].zoneId())
+     *             .build());
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .namePrefix(name)
+     *             .clusterSpec("ack.pro.small")
+     *             .vswitchIds(defaultSwitch.id())
+     *             .newNatGateway(true)
+     *             .podCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("10.0.0.0/8")
+     *                 .newbits(8)
+     *                 .netnum(36)
+     *                 .build()).result())
+     *             .serviceCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("172.16.0.0/16")
+     *                 .newbits(4)
+     *                 .netnum(7)
+     *                 .build()).result())
+     *             .slbInternetEnabled(true)
+     *             .enableRrsa(true)
+     *             .build());
+     * 
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
+     *             .keyPairName(name)
+     *             .build());
+     * 
+     *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
+     *             .nodePoolName("spot_auto_scaling")
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .vswitchIds(defaultSwitch.id())
+     *             .instanceTypes(cloudEfficiency.instanceTypes()[0].id())
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .systemDiskSize(40)
+     *             .keyName(defaultKeyPair.keyPairName())
+     *             .scalingConfig(NodePoolScalingConfigArgs.builder()
+     *                 .minSize(1)
+     *                 .maxSize(10)
+     *                 .type("spot")
+     *                 .build())
+     *             .spotStrategy("SpotWithPriceLimit")
+     *             .spotPriceLimits(NodePoolSpotPriceLimitArgs.builder()
+     *                 .instanceType(cloudEfficiency.instanceTypes()[0].id())
+     *                 .priceLimit("0.70")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var default = CsFunctions.getKubernetesNodePools(GetKubernetesNodePoolsArgs.builder()
+     *             .ids(defaultNodePool.nodePoolId())
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCsKubernetesNodePoolExampleId", default_.applyValue(_default_ -> _default_.nodepools()[0].nodePoolId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetKubernetesNodePoolsResult> getKubernetesNodePools(GetKubernetesNodePoolsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cs/getKubernetesNodePools:getKubernetesNodePools", TypeShape.of(GetKubernetesNodePoolsResult.class), args, Utilities.withVersion(options));
@@ -1161,6 +2518,129 @@ public final class CsFunctions {
      * This data source provides Ack Nodepool available to the user.[What is Nodepool](https://next.api.alibabacloud.com/document/CS/2015-12-15/CreateClusterNodePool)
      * 
      * &gt; **NOTE:** Available since v1.246.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.ecs.KeyPair;
+     * import com.pulumi.alicloud.ecs.KeyPairArgs;
+     * import com.pulumi.alicloud.cs.NodePool;
+     * import com.pulumi.alicloud.cs.NodePoolArgs;
+     * import com.pulumi.alicloud.cs.inputs.NodePoolScalingConfigArgs;
+     * import com.pulumi.alicloud.cs.inputs.NodePoolSpotPriceLimitArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesNodePoolsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+     *             .build());
+     * 
+     *         final var cloudEfficiency = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(enhanced.zones()[0].zoneId())
+     *             .cpuCoreCount(4)
+     *             .memorySize(8)
+     *             .kubernetesNodeRole("Worker")
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .cidrBlock("10.4.0.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(enhanced.zones()[0].zoneId())
+     *             .build());
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .namePrefix(name)
+     *             .clusterSpec("ack.pro.small")
+     *             .vswitchIds(defaultSwitch.id())
+     *             .newNatGateway(true)
+     *             .podCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("10.0.0.0/8")
+     *                 .newbits(8)
+     *                 .netnum(36)
+     *                 .build()).result())
+     *             .serviceCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("172.16.0.0/16")
+     *                 .newbits(4)
+     *                 .netnum(7)
+     *                 .build()).result())
+     *             .slbInternetEnabled(true)
+     *             .enableRrsa(true)
+     *             .build());
+     * 
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
+     *             .keyPairName(name)
+     *             .build());
+     * 
+     *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
+     *             .nodePoolName("spot_auto_scaling")
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .vswitchIds(defaultSwitch.id())
+     *             .instanceTypes(cloudEfficiency.instanceTypes()[0].id())
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .systemDiskSize(40)
+     *             .keyName(defaultKeyPair.keyPairName())
+     *             .scalingConfig(NodePoolScalingConfigArgs.builder()
+     *                 .minSize(1)
+     *                 .maxSize(10)
+     *                 .type("spot")
+     *                 .build())
+     *             .spotStrategy("SpotWithPriceLimit")
+     *             .spotPriceLimits(NodePoolSpotPriceLimitArgs.builder()
+     *                 .instanceType(cloudEfficiency.instanceTypes()[0].id())
+     *                 .priceLimit("0.70")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var default = CsFunctions.getKubernetesNodePools(GetKubernetesNodePoolsArgs.builder()
+     *             .ids(defaultNodePool.nodePoolId())
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCsKubernetesNodePoolExampleId", default_.applyValue(_default_ -> _default_.nodepools()[0].nodePoolId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubernetesNodePoolsResult> getKubernetesNodePoolsPlain(GetKubernetesNodePoolsPlainArgs args, InvokeOptions options) {

@@ -43,16 +43,16 @@ namespace Pulumi.AliCloud.CloudSso
     ///                 PermissionPolicyType = "Inline",
     ///                 PermissionPolicyName = name,
     ///                 PermissionPolicyDocument = @"    {
-    ///         ""Statement"":[
+    ///         \""Statement\"":[
     ///       {
-    ///         ""Action"":""ecs:Get*"",
-    ///         ""Effect"":""Allow"",
-    ///         ""Resource"":[
-    ///             ""*""
+    ///         \""Action\"":\""ecs:Get*\"",
+    ///         \""Effect\"":\""Allow\"",
+    ///         \""Resource\"":[
+    ///             \""*\""
     ///         ]
     ///       }
     ///       ],
-    ///         ""Version"": ""1""
+    ///         \""Version\"": \""1\""
     ///     }
     /// ",
     ///             },

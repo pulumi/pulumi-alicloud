@@ -342,6 +342,144 @@ class CollectionPolicy(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.232.0.
 
+        ## Example Usage
+
+        Enable real-time log query for all of OSS buckets.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        project_create01 = alicloud.log.Project("project_create_01",
+            description=name,
+            project_name=std.format(input="%s1%s",
+                args=[
+                    name,
+                    default["result"],
+                ]).result)
+        logstore_create01 = alicloud.log.Store("logstore_create_01",
+            retention_period=30,
+            shard_count=2,
+            project_name=project_create01.project_name,
+            logstore_name=std.format(input="%s1%s",
+                args=[
+                    name,
+                    default["result"],
+                ]).result)
+        update01 = alicloud.log.Project("update_01",
+            description=name,
+            project_name=std.format(input="%s2%s",
+                args=[
+                    name,
+                    default["result"],
+                ]).result)
+        logstore002 = alicloud.log.Store("logstore002",
+            retention_period=30,
+            shard_count=2,
+            project_name=update01.project_name,
+            logstore_name=std.format(input="%s2%s",
+                args=[
+                    name,
+                    default["result"],
+                ]).result)
+        default_collection_policy = alicloud.sls.CollectionPolicy("default",
+            policy_config={
+                "resource_mode": "all",
+                "regions": ["cn-hangzhou"],
+            },
+            data_code="metering_log",
+            centralize_enabled=True,
+            product_code="oss",
+            policy_name="xc-example-oss-01",
+            enabled=True,
+            data_config={
+                "data_region": "cn-hangzhou",
+            },
+            centralize_config={
+                "dest_ttl": 3,
+                "dest_region": "cn-shanghai",
+                "dest_project": project_create01.project_name,
+                "dest_logstore": logstore_create01.logstore_name,
+            },
+            resource_directory={
+                "account_group_type": "custom",
+                "members": ["1936728897040477"],
+            })
+        ```
+
+        Enable real-time log query for one or more specific OSS buckets
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example-on-single-bucket"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        project_create01 = alicloud.log.Project("project_create_01",
+            description=name,
+            project_name=std.format(input="%s1%s",
+                args=[
+                    name,
+                    default["result"],
+                ]).result)
+        logstore_create01 = alicloud.log.Store("logstore_create_01",
+            retention_period=30,
+            shard_count=2,
+            project_name=project_create01.project_name,
+            logstore_name=std.format(input="%s1%s",
+                args=[
+                    name,
+                    default["result"],
+                ]).result)
+        update01 = alicloud.log.Project("update_01",
+            description=name,
+            project_name=std.format(input="%s2%s",
+                args=[
+                    name,
+                    default["result"],
+                ]).result)
+        logstore002 = alicloud.log.Store("logstore002",
+            retention_period=30,
+            shard_count=2,
+            project_name=update01.project_name,
+            logstore_name=std.format(input="%s2%s",
+                args=[
+                    name,
+                    default["result"],
+                ]).result)
+        bucket = alicloud.oss.Bucket("bucket", bucket=std.format(input="%s1%s",
+            args=[
+                name,
+                default["result"],
+            ]).result)
+        default_collection_policy = alicloud.sls.CollectionPolicy("default",
+            policy_config={
+                "resource_mode": "instanceMode",
+                "instance_ids": [bucket.id],
+            },
+            data_code="access_log",
+            centralize_enabled=False,
+            product_code="oss",
+            policy_name="xc-example-oss-01",
+            enabled=True)
+        ```
+
         ## Import
 
         SLS Collection Policy can be imported using the id, e.g.
@@ -376,6 +514,144 @@ class CollectionPolicy(pulumi.CustomResource):
         For information about SLS Collection Policy and how to use it, see [What is Collection Policy](https://www.alibabacloud.com/help/zh/sls/developer-reference/api-sls-2020-12-30-upsertcollectionpolicy).
 
         > **NOTE:** Available since v1.232.0.
+
+        ## Example Usage
+
+        Enable real-time log query for all of OSS buckets.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        project_create01 = alicloud.log.Project("project_create_01",
+            description=name,
+            project_name=std.format(input="%s1%s",
+                args=[
+                    name,
+                    default["result"],
+                ]).result)
+        logstore_create01 = alicloud.log.Store("logstore_create_01",
+            retention_period=30,
+            shard_count=2,
+            project_name=project_create01.project_name,
+            logstore_name=std.format(input="%s1%s",
+                args=[
+                    name,
+                    default["result"],
+                ]).result)
+        update01 = alicloud.log.Project("update_01",
+            description=name,
+            project_name=std.format(input="%s2%s",
+                args=[
+                    name,
+                    default["result"],
+                ]).result)
+        logstore002 = alicloud.log.Store("logstore002",
+            retention_period=30,
+            shard_count=2,
+            project_name=update01.project_name,
+            logstore_name=std.format(input="%s2%s",
+                args=[
+                    name,
+                    default["result"],
+                ]).result)
+        default_collection_policy = alicloud.sls.CollectionPolicy("default",
+            policy_config={
+                "resource_mode": "all",
+                "regions": ["cn-hangzhou"],
+            },
+            data_code="metering_log",
+            centralize_enabled=True,
+            product_code="oss",
+            policy_name="xc-example-oss-01",
+            enabled=True,
+            data_config={
+                "data_region": "cn-hangzhou",
+            },
+            centralize_config={
+                "dest_ttl": 3,
+                "dest_region": "cn-shanghai",
+                "dest_project": project_create01.project_name,
+                "dest_logstore": logstore_create01.logstore_name,
+            },
+            resource_directory={
+                "account_group_type": "custom",
+                "members": ["1936728897040477"],
+            })
+        ```
+
+        Enable real-time log query for one or more specific OSS buckets
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example-on-single-bucket"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        project_create01 = alicloud.log.Project("project_create_01",
+            description=name,
+            project_name=std.format(input="%s1%s",
+                args=[
+                    name,
+                    default["result"],
+                ]).result)
+        logstore_create01 = alicloud.log.Store("logstore_create_01",
+            retention_period=30,
+            shard_count=2,
+            project_name=project_create01.project_name,
+            logstore_name=std.format(input="%s1%s",
+                args=[
+                    name,
+                    default["result"],
+                ]).result)
+        update01 = alicloud.log.Project("update_01",
+            description=name,
+            project_name=std.format(input="%s2%s",
+                args=[
+                    name,
+                    default["result"],
+                ]).result)
+        logstore002 = alicloud.log.Store("logstore002",
+            retention_period=30,
+            shard_count=2,
+            project_name=update01.project_name,
+            logstore_name=std.format(input="%s2%s",
+                args=[
+                    name,
+                    default["result"],
+                ]).result)
+        bucket = alicloud.oss.Bucket("bucket", bucket=std.format(input="%s1%s",
+            args=[
+                name,
+                default["result"],
+            ]).result)
+        default_collection_policy = alicloud.sls.CollectionPolicy("default",
+            policy_config={
+                "resource_mode": "instanceMode",
+                "instance_ids": [bucket.id],
+            },
+            data_code="access_log",
+            centralize_enabled=False,
+            product_code="oss",
+            policy_name="xc-example-oss-01",
+            enabled=True)
+        ```
 
         ## Import
 

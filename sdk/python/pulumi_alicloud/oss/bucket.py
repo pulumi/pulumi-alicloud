@@ -847,6 +847,295 @@ class Bucket(pulumi.CustomResource):
 
         Set lifecycle rule
 
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        default = random.index.Integer("default",
+            max=99999,
+            min=10000)
+        bucket_lifecycle1 = alicloud.oss.Bucket("bucket-lifecycle1",
+            bucket=f"example-lifecycle1-{default['result']}",
+            lifecycle_rules=[
+                {
+                    "id": "rule-days",
+                    "prefix": "path1/",
+                    "enabled": True,
+                    "expirations": [{
+                        "days": 365,
+                    }],
+                },
+                {
+                    "id": "rule-date",
+                    "prefix": "path2/",
+                    "enabled": True,
+                    "expirations": [{
+                        "date": "2018-01-12",
+                    }],
+                },
+            ])
+        bucket_lifecycle1_bucket_acl = alicloud.oss.BucketAcl("bucket-lifecycle1",
+            bucket=bucket_lifecycle1.bucket,
+            acl="public-read")
+        bucket_lifecycle2 = alicloud.oss.Bucket("bucket-lifecycle2",
+            bucket=f"example-lifecycle2-{default['result']}",
+            lifecycle_rules=[{
+                "id": "rule-days-transition",
+                "prefix": "path3/",
+                "enabled": True,
+                "transitions": [
+                    {
+                        "days": 3,
+                        "storage_class": "IA",
+                    },
+                    {
+                        "days": 30,
+                        "storage_class": "Archive",
+                    },
+                ],
+            }])
+        bucket_lifecycle2_bucket_acl = alicloud.oss.BucketAcl("bucket-lifecycle2",
+            bucket=bucket_lifecycle2.bucket,
+            acl="public-read")
+        bucket_lifecycle3 = alicloud.oss.Bucket("bucket-lifecycle3",
+            bucket=f"example-lifecycle3-{default['result']}",
+            lifecycle_rules=[{
+                "id": "rule-days-transition",
+                "prefix": "path3/",
+                "enabled": True,
+                "transitions": [
+                    {
+                        "created_before_date": "2022-11-11",
+                        "storage_class": "IA",
+                    },
+                    {
+                        "created_before_date": "2021-11-11",
+                        "storage_class": "Archive",
+                    },
+                ],
+            }])
+        bucket_lifecycle3_bucket_acl = alicloud.oss.BucketAcl("bucket-lifecycle3",
+            bucket=bucket_lifecycle3.bucket,
+            acl="public-read")
+        bucket_lifecycle4 = alicloud.oss.Bucket("bucket-lifecycle4",
+            bucket=f"example-lifecycle4-{default['result']}",
+            lifecycle_rules=[{
+                "id": "rule-abort-multipart-upload",
+                "prefix": "path3/",
+                "enabled": True,
+                "abort_multipart_uploads": [{
+                    "days": 128,
+                }],
+            }])
+        bucket_lifecycle4_bucket_acl = alicloud.oss.BucketAcl("bucket-lifecycle4",
+            bucket=bucket_lifecycle4.bucket,
+            acl="public-read")
+        bucket_versioning_lifecycle = alicloud.oss.Bucket("bucket-versioning-lifecycle",
+            bucket=f"example-lifecycle5-{default['result']}",
+            versioning={
+                "status": "Enabled",
+            },
+            lifecycle_rules=[{
+                "id": "rule-versioning",
+                "prefix": "path1/",
+                "enabled": True,
+                "expirations": [{
+                    "expired_object_delete_marker": True,
+                }],
+                "noncurrent_version_expirations": [{
+                    "days": 240,
+                }],
+                "noncurrent_version_transitions": [
+                    {
+                        "days": 180,
+                        "storage_class": "Archive",
+                    },
+                    {
+                        "days": 60,
+                        "storage_class": "IA",
+                    },
+                ],
+            }])
+        bucket_versioning_lifecycle_bucket_acl = alicloud.oss.BucketAcl("bucket-versioning-lifecycle",
+            bucket=bucket_versioning_lifecycle.bucket,
+            acl="private")
+        bucket_access_monitor_lifecycle = alicloud.oss.Bucket("bucket-access-monitor-lifecycle",
+            bucket=std.format(input="example-lifecycle6-%s",
+                args=[default["result"]]).result,
+            access_monitor={
+                "status": "Enabled",
+            },
+            lifecycle_rules=[{
+                "id": "rule-days-transition",
+                "prefix": "path/",
+                "enabled": True,
+                "transitions": [{
+                    "days": 30,
+                    "storage_class": "IA",
+                    "is_access_time": True,
+                    "return_to_std_when_visit": True,
+                }],
+            }])
+        bucket_access_monitor_lifecycle_bucket_acl = alicloud.oss.BucketAcl("bucket-access-monitor-lifecycle",
+            bucket=bucket_access_monitor_lifecycle.bucket,
+            acl="private")
+        bucket_tag_lifecycle = alicloud.oss.Bucket("bucket-tag-lifecycle",
+            bucket=std.format(input="example-lifecycle7-%s",
+                args=[default["result"]]).result,
+            lifecycle_rules=[{
+                "id": "rule-days-transition",
+                "prefix": "path/",
+                "enabled": True,
+                "transitions": [{
+                    "created_before_date": "2022-11-11",
+                    "storage_class": "IA",
+                }],
+            }],
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        bucket_tag_lifecycle_bucket_acl = alicloud.oss.BucketAcl("bucket-tag-lifecycle",
+            bucket=bucket_tag_lifecycle.bucket,
+            acl="private")
+        ```
+
+        Set bucket policy
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.index.Integer("default",
+            max=99999,
+            min=10000)
+        bucket_policy = alicloud.oss.Bucket("bucket-policy",
+            bucket=f"example-policy-{default['result']}",
+            policy=\"\"\"  {\\"Statement\\":
+              [{\\"Action\\":
+                  [\\"oss:PutObject\\", \\"oss:GetObject\\", \\"oss:DeleteBucket\\"],
+                \\"Effect\\":\\"Allow\\",
+                \\"Resource\\":
+                    [\\"acs:oss:*:*:*\\"]}],
+           \\"Version\\":\\"1\\"}
+        \"\"\")
+        default_bucket_acl = alicloud.oss.BucketAcl("default",
+            bucket=bucket_policy.bucket,
+            acl="private")
+        ```
+
+        IA Bucket
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.index.Integer("default",
+            max=99999,
+            min=10000)
+        default_bucket = alicloud.oss.Bucket("default",
+            bucket=f"example-{default['result']}",
+            storage_class="IA")
+        ```
+
+        Set bucket server-side encryption rule
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.index.Integer("default",
+            max=99999,
+            min=10000)
+        bucket_sserule = alicloud.oss.Bucket("bucket-sserule",
+            bucket=f"terraform-example-{default['result']}",
+            server_side_encryption_rule={
+                "sse_algorithm": "AES256",
+            })
+        bucket_sserule_bucket_acl = alicloud.oss.BucketAcl("bucket-sserule",
+            bucket=bucket_sserule.bucket,
+            acl="private")
+        kms = alicloud.kms.Key("kms",
+            description="terraform-example",
+            pending_window_in_days=7,
+            status="Enabled")
+        bucket_kms = alicloud.oss.Bucket("bucket-kms",
+            bucket=f"terraform-example-kms-{default['result']}",
+            server_side_encryption_rule={
+                "sse_algorithm": "KMS",
+                "kms_master_key_id": kms.id,
+            })
+        bucket_kms_bucket_acl = alicloud.oss.BucketAcl("bucket-kms",
+            bucket=bucket_kms.bucket,
+            acl="private")
+        ```
+
+        Set bucket tags
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.index.Integer("default",
+            max=99999,
+            min=10000)
+        bucket_tags = alicloud.oss.Bucket("bucket-tags",
+            bucket=f"terraform-example-{default['result']}",
+            tags={
+                "key1": "value1",
+                "key2": "value2",
+            })
+        bucket_tags_bucket_acl = alicloud.oss.BucketAcl("bucket-tags",
+            bucket=bucket_tags.bucket,
+            acl="private")
+        ```
+
+        Enable bucket versioning
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.index.Integer("default",
+            max=99999,
+            min=10000)
+        bucket_versioning = alicloud.oss.Bucket("bucket-versioning",
+            bucket=f"terraform-example-{default['result']}",
+            versioning={
+                "status": "Enabled",
+            })
+        default_bucket_acl = alicloud.oss.BucketAcl("default",
+            bucket=bucket_versioning.bucket,
+            acl="private")
+        ```
+
+        Set bucket redundancy type
+
+        Set bucket accelerate configuration
+
+        Set bucket resource group id
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default_integer = random.index.Integer("default",
+            max=99999,
+            min=10000)
+        default = alicloud.resourcemanager.get_resource_groups(name_regex="default")
+        bucket_accelerate = alicloud.oss.Bucket("bucket-accelerate",
+            bucket=f"terraform-example-{default_integer['result']}",
+            resource_group_id=default.groups[0].id)
+        ```
+
         ## Import
 
         OSS bucket can be imported using the bucket name, e.g.
@@ -972,6 +1261,295 @@ class Bucket(pulumi.CustomResource):
         ```
 
         Set lifecycle rule
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        default = random.index.Integer("default",
+            max=99999,
+            min=10000)
+        bucket_lifecycle1 = alicloud.oss.Bucket("bucket-lifecycle1",
+            bucket=f"example-lifecycle1-{default['result']}",
+            lifecycle_rules=[
+                {
+                    "id": "rule-days",
+                    "prefix": "path1/",
+                    "enabled": True,
+                    "expirations": [{
+                        "days": 365,
+                    }],
+                },
+                {
+                    "id": "rule-date",
+                    "prefix": "path2/",
+                    "enabled": True,
+                    "expirations": [{
+                        "date": "2018-01-12",
+                    }],
+                },
+            ])
+        bucket_lifecycle1_bucket_acl = alicloud.oss.BucketAcl("bucket-lifecycle1",
+            bucket=bucket_lifecycle1.bucket,
+            acl="public-read")
+        bucket_lifecycle2 = alicloud.oss.Bucket("bucket-lifecycle2",
+            bucket=f"example-lifecycle2-{default['result']}",
+            lifecycle_rules=[{
+                "id": "rule-days-transition",
+                "prefix": "path3/",
+                "enabled": True,
+                "transitions": [
+                    {
+                        "days": 3,
+                        "storage_class": "IA",
+                    },
+                    {
+                        "days": 30,
+                        "storage_class": "Archive",
+                    },
+                ],
+            }])
+        bucket_lifecycle2_bucket_acl = alicloud.oss.BucketAcl("bucket-lifecycle2",
+            bucket=bucket_lifecycle2.bucket,
+            acl="public-read")
+        bucket_lifecycle3 = alicloud.oss.Bucket("bucket-lifecycle3",
+            bucket=f"example-lifecycle3-{default['result']}",
+            lifecycle_rules=[{
+                "id": "rule-days-transition",
+                "prefix": "path3/",
+                "enabled": True,
+                "transitions": [
+                    {
+                        "created_before_date": "2022-11-11",
+                        "storage_class": "IA",
+                    },
+                    {
+                        "created_before_date": "2021-11-11",
+                        "storage_class": "Archive",
+                    },
+                ],
+            }])
+        bucket_lifecycle3_bucket_acl = alicloud.oss.BucketAcl("bucket-lifecycle3",
+            bucket=bucket_lifecycle3.bucket,
+            acl="public-read")
+        bucket_lifecycle4 = alicloud.oss.Bucket("bucket-lifecycle4",
+            bucket=f"example-lifecycle4-{default['result']}",
+            lifecycle_rules=[{
+                "id": "rule-abort-multipart-upload",
+                "prefix": "path3/",
+                "enabled": True,
+                "abort_multipart_uploads": [{
+                    "days": 128,
+                }],
+            }])
+        bucket_lifecycle4_bucket_acl = alicloud.oss.BucketAcl("bucket-lifecycle4",
+            bucket=bucket_lifecycle4.bucket,
+            acl="public-read")
+        bucket_versioning_lifecycle = alicloud.oss.Bucket("bucket-versioning-lifecycle",
+            bucket=f"example-lifecycle5-{default['result']}",
+            versioning={
+                "status": "Enabled",
+            },
+            lifecycle_rules=[{
+                "id": "rule-versioning",
+                "prefix": "path1/",
+                "enabled": True,
+                "expirations": [{
+                    "expired_object_delete_marker": True,
+                }],
+                "noncurrent_version_expirations": [{
+                    "days": 240,
+                }],
+                "noncurrent_version_transitions": [
+                    {
+                        "days": 180,
+                        "storage_class": "Archive",
+                    },
+                    {
+                        "days": 60,
+                        "storage_class": "IA",
+                    },
+                ],
+            }])
+        bucket_versioning_lifecycle_bucket_acl = alicloud.oss.BucketAcl("bucket-versioning-lifecycle",
+            bucket=bucket_versioning_lifecycle.bucket,
+            acl="private")
+        bucket_access_monitor_lifecycle = alicloud.oss.Bucket("bucket-access-monitor-lifecycle",
+            bucket=std.format(input="example-lifecycle6-%s",
+                args=[default["result"]]).result,
+            access_monitor={
+                "status": "Enabled",
+            },
+            lifecycle_rules=[{
+                "id": "rule-days-transition",
+                "prefix": "path/",
+                "enabled": True,
+                "transitions": [{
+                    "days": 30,
+                    "storage_class": "IA",
+                    "is_access_time": True,
+                    "return_to_std_when_visit": True,
+                }],
+            }])
+        bucket_access_monitor_lifecycle_bucket_acl = alicloud.oss.BucketAcl("bucket-access-monitor-lifecycle",
+            bucket=bucket_access_monitor_lifecycle.bucket,
+            acl="private")
+        bucket_tag_lifecycle = alicloud.oss.Bucket("bucket-tag-lifecycle",
+            bucket=std.format(input="example-lifecycle7-%s",
+                args=[default["result"]]).result,
+            lifecycle_rules=[{
+                "id": "rule-days-transition",
+                "prefix": "path/",
+                "enabled": True,
+                "transitions": [{
+                    "created_before_date": "2022-11-11",
+                    "storage_class": "IA",
+                }],
+            }],
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        bucket_tag_lifecycle_bucket_acl = alicloud.oss.BucketAcl("bucket-tag-lifecycle",
+            bucket=bucket_tag_lifecycle.bucket,
+            acl="private")
+        ```
+
+        Set bucket policy
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.index.Integer("default",
+            max=99999,
+            min=10000)
+        bucket_policy = alicloud.oss.Bucket("bucket-policy",
+            bucket=f"example-policy-{default['result']}",
+            policy=\"\"\"  {\\"Statement\\":
+              [{\\"Action\\":
+                  [\\"oss:PutObject\\", \\"oss:GetObject\\", \\"oss:DeleteBucket\\"],
+                \\"Effect\\":\\"Allow\\",
+                \\"Resource\\":
+                    [\\"acs:oss:*:*:*\\"]}],
+           \\"Version\\":\\"1\\"}
+        \"\"\")
+        default_bucket_acl = alicloud.oss.BucketAcl("default",
+            bucket=bucket_policy.bucket,
+            acl="private")
+        ```
+
+        IA Bucket
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.index.Integer("default",
+            max=99999,
+            min=10000)
+        default_bucket = alicloud.oss.Bucket("default",
+            bucket=f"example-{default['result']}",
+            storage_class="IA")
+        ```
+
+        Set bucket server-side encryption rule
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.index.Integer("default",
+            max=99999,
+            min=10000)
+        bucket_sserule = alicloud.oss.Bucket("bucket-sserule",
+            bucket=f"terraform-example-{default['result']}",
+            server_side_encryption_rule={
+                "sse_algorithm": "AES256",
+            })
+        bucket_sserule_bucket_acl = alicloud.oss.BucketAcl("bucket-sserule",
+            bucket=bucket_sserule.bucket,
+            acl="private")
+        kms = alicloud.kms.Key("kms",
+            description="terraform-example",
+            pending_window_in_days=7,
+            status="Enabled")
+        bucket_kms = alicloud.oss.Bucket("bucket-kms",
+            bucket=f"terraform-example-kms-{default['result']}",
+            server_side_encryption_rule={
+                "sse_algorithm": "KMS",
+                "kms_master_key_id": kms.id,
+            })
+        bucket_kms_bucket_acl = alicloud.oss.BucketAcl("bucket-kms",
+            bucket=bucket_kms.bucket,
+            acl="private")
+        ```
+
+        Set bucket tags
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.index.Integer("default",
+            max=99999,
+            min=10000)
+        bucket_tags = alicloud.oss.Bucket("bucket-tags",
+            bucket=f"terraform-example-{default['result']}",
+            tags={
+                "key1": "value1",
+                "key2": "value2",
+            })
+        bucket_tags_bucket_acl = alicloud.oss.BucketAcl("bucket-tags",
+            bucket=bucket_tags.bucket,
+            acl="private")
+        ```
+
+        Enable bucket versioning
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.index.Integer("default",
+            max=99999,
+            min=10000)
+        bucket_versioning = alicloud.oss.Bucket("bucket-versioning",
+            bucket=f"terraform-example-{default['result']}",
+            versioning={
+                "status": "Enabled",
+            })
+        default_bucket_acl = alicloud.oss.BucketAcl("default",
+            bucket=bucket_versioning.bucket,
+            acl="private")
+        ```
+
+        Set bucket redundancy type
+
+        Set bucket accelerate configuration
+
+        Set bucket resource group id
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default_integer = random.index.Integer("default",
+            max=99999,
+            min=10000)
+        default = alicloud.resourcemanager.get_resource_groups(name_regex="default")
+        bucket_accelerate = alicloud.oss.Bucket("bucket-accelerate",
+            bucket=f"terraform-example-{default_integer['result']}",
+            resource_group_id=default.groups[0].id)
+        ```
 
         ## Import
 

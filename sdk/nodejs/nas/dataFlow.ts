@@ -11,6 +11,75 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.153.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ * import * as std from "@pulumi/std";
+ *
+ * const example = alicloud.nas.getZones({
+ *     fileSystemType: "cpfs",
+ * });
+ * const exampleNetwork = new alicloud.vpc.Network("example", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("example", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: exampleNetwork.id,
+ *     zoneId: example.then(example => example.zones?.[1]?.zoneId),
+ * });
+ * const exampleFileSystem = new alicloud.nas.FileSystem("example", {
+ *     protocolType: "cpfs",
+ *     storageType: "advance_200",
+ *     fileSystemType: "cpfs",
+ *     capacity: 3600,
+ *     description: "terraform-example",
+ *     zoneId: example.then(example => example.zones?.[1]?.zoneId),
+ *     vpcId: exampleNetwork.id,
+ *     vswitchId: exampleSwitch.id,
+ * });
+ * const exampleMountTarget = new alicloud.nas.MountTarget("example", {
+ *     fileSystemId: exampleFileSystem.id,
+ *     vswitchId: exampleSwitch.id,
+ * });
+ * const exampleInteger = new random.index.Integer("example", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const exampleBucket = new alicloud.oss.Bucket("example", {
+ *     bucket: `example-value-${exampleInteger.result}`,
+ *     acl: "private",
+ *     tags: {
+ *         "cpfs-dataflow": "true",
+ *     },
+ * });
+ * const exampleFileset = new alicloud.nas.Fileset("example", {
+ *     fileSystemId: exampleMountTarget.fileSystemId,
+ *     description: "terraform-example",
+ *     fileSystemPath: "/example_path/",
+ * });
+ * const exampleDataFlow = new alicloud.nas.DataFlow("example", {
+ *     fsetId: exampleFileset.filesetId,
+ *     description: "terraform-example",
+ *     fileSystemId: exampleFileSystem.id,
+ *     sourceSecurityType: "SSL",
+ *     sourceStorage: std.joinOutput({
+ *         separator: "",
+ *         input: [
+ *             "oss://",
+ *             exampleBucket.bucket,
+ *         ],
+ *     }).apply(invoke => invoke.result),
+ *     throughput: 600,
+ * });
+ * ```
+ *
  * ## Import
  *
  * File Storage (NAS) Data Flow can be imported using the id, e.g.

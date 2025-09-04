@@ -1899,7 +1899,7 @@ public final class RdsFunctions {
     /**
      * This data source provides the RDS instance classes resource available info of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.46.0+
+     * &gt; **NOTE:** Available since v1.46.0
      * 
      * ## Example Usage
      * 
@@ -1947,7 +1947,7 @@ public final class RdsFunctions {
     /**
      * This data source provides the RDS instance classes resource available info of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.46.0+
+     * &gt; **NOTE:** Available since v1.46.0
      * 
      * ## Example Usage
      * 
@@ -1995,7 +1995,7 @@ public final class RdsFunctions {
     /**
      * This data source provides the RDS instance classes resource available info of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.46.0+
+     * &gt; **NOTE:** Available since v1.46.0
      * 
      * ## Example Usage
      * 
@@ -2043,7 +2043,7 @@ public final class RdsFunctions {
     /**
      * This data source provides the RDS instance classes resource available info of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.46.0+
+     * &gt; **NOTE:** Available since v1.46.0
      * 
      * ## Example Usage
      * 
@@ -2091,7 +2091,7 @@ public final class RdsFunctions {
     /**
      * This data source provides the RDS instance classes resource available info of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.46.0+
+     * &gt; **NOTE:** Available since v1.46.0
      * 
      * ## Example Usage
      * 
@@ -2139,7 +2139,7 @@ public final class RdsFunctions {
     /**
      * This data source provides the RDS instance classes resource available info of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.46.0+
+     * &gt; **NOTE:** Available since v1.46.0
      * 
      * ## Example Usage
      * 
@@ -2187,7 +2187,7 @@ public final class RdsFunctions {
     /**
      * This data source provides the RDS instance classes resource available info of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.46.0+
+     * &gt; **NOTE:** Available since v1.46.0
      * 
      * ## Example Usage
      * 

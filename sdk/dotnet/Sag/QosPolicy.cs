@@ -19,6 +19,61 @@ namespace Pulumi.AliCloud.Sag
     /// 
     /// &gt; **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// using Time = Pulumi.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var @default = new AliCloud.Sag.Qos("default", new()
+    ///     {
+    ///         Name = name,
+    ///     });
+    /// 
+    ///     var example = new Time.Index.Static("example");
+    /// 
+    ///     var defaultQosPolicy = new AliCloud.Sag.QosPolicy("default", new()
+    ///     {
+    ///         QosId = @default.Id,
+    ///         Name = name,
+    ///         Description = name,
+    ///         Priority = 1,
+    ///         IpProtocol = "ALL",
+    ///         SourceCidr = "192.168.0.0/24",
+    ///         SourcePortRange = "-1/-1",
+    ///         DestCidr = "10.10.0.0/24",
+    ///         DestPortRange = "-1/-1",
+    ///         StartTime = Std.Replace.Invoke(new()
+    ///         {
+    ///             Text = example.Rfc3339,
+    ///             Search = "Z",
+    ///             Replace = "+0800",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         EndTime = Std.Timeadd.Invoke(new()
+    ///         {
+    ///             Duration = example.Rfc3339,
+    ///             Timestamp = "24h",
+    ///         }).Apply(invoke =&gt; Std.Replace.Invoke(new()
+    ///         {
+    ///             Text = invoke.Result,
+    ///             Search = "Z",
+    ///             Replace = "+0800",
+    ///         })).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// The Sag Qos Policy can be imported using the id, e.g.

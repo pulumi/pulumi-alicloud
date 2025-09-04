@@ -16,6 +16,129 @@ namespace Pulumi.AliCloud.Sddp
     /// 
     /// &gt; **NOTE:** Available since v1.159.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
+    ///     {
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var defaultGetZones = AliCloud.Rds.GetZones.Invoke(new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         InstanceChargeType = "PostPaid",
+    ///         Category = "Basic",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///     });
+    /// 
+    ///     var defaultGetInstanceClasses = AliCloud.Rds.GetInstanceClasses.Invoke(new()
+    ///     {
+    ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         Category = "Basic",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///         InstanceChargeType = "PostPaid",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
+    ///     {
+    ///         Name = name,
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Rds.Instance("default", new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         InstanceType = defaultGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
+    ///         InstanceStorage = defaultGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         InstanceChargeType = "Postpaid",
+    ///         InstanceName = name,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         MonitoringPeriod = 60,
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             defaultSecurityGroup.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultRdsAccount = new AliCloud.Rds.RdsAccount("default", new()
+    ///     {
+    ///         DbInstanceId = defaultInstance.Id,
+    ///         AccountName = name,
+    ///         AccountPassword = "Example1234",
+    ///     });
+    /// 
+    ///     var defaultDatabase = new AliCloud.Rds.Database("default", new()
+    ///     {
+    ///         InstanceId = defaultInstance.Id,
+    ///         Name = name,
+    ///     });
+    /// 
+    ///     var defaultAccountPrivilege = new AliCloud.Rds.AccountPrivilege("default", new()
+    ///     {
+    ///         InstanceId = defaultInstance.Id,
+    ///         AccountName = defaultRdsAccount.AccountName,
+    ///         Privilege = "ReadWrite",
+    ///         DbNames = new[]
+    ///         {
+    ///             defaultDatabase.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultDataLimit = new AliCloud.Sddp.DataLimit("default", new()
+    ///     {
+    ///         AuditStatus = 0,
+    ///         EngineType = "MySQL",
+    ///         ParentId = Std.Join.Invoke(new()
+    ///         {
+    ///             Separator = ".",
+    ///             Input = new[]
+    ///             {
+    ///                 defaultAccountPrivilege.InstanceId,
+    ///                 defaultDatabase.Name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         ResourceType = "RDS",
+    ///         UserName = defaultDatabase.Name,
+    ///         Password = defaultRdsAccount.AccountPassword,
+    ///         Port = 3306,
+    ///         ServiceRegionId = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Data Security Center Data Limit can be imported using the id, e.g.

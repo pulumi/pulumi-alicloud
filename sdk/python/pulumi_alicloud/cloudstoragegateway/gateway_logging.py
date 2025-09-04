@@ -175,6 +175,66 @@ class GatewayLogging(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.144.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_uuid = random.index.Uuid("default")
+        default_storage_bundle = alicloud.cloudstoragegateway.StorageBundle("default", storage_bundle_name=std.substr(input=f"tf-example-{std.replace(text=default_uuid['result'],
+                search='-',
+                replace='').result}",
+            offset=0,
+            length=16).result)
+        default_project = alicloud.log.Project("default",
+            project_name=std.substr(input=f"tf-example-{std.replace(text=default_uuid['result'],
+                    search='-',
+                    replace='').result}",
+                offset=0,
+                length=16).result,
+            description="terraform-example")
+        default_store = alicloud.log.Store("default",
+            project_name=default_project.project_name,
+            logstore_name=name,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="172.16.0.0/12")
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_switch = alicloud.vpc.Switch("default",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/21",
+            zone_id=default.zones[0].id,
+            vswitch_name=name)
+        default_gateway = alicloud.cloudstoragegateway.Gateway("default",
+            gateway_name=name,
+            description=name,
+            gateway_class="Standard",
+            type="File",
+            payment_type="PayAsYouGo",
+            vswitch_id=default_switch.id,
+            release_after_expiration=False,
+            public_network_bandwidth=40,
+            storage_bundle_id=default_storage_bundle.id,
+            location="Cloud")
+        default_gateway_logging = alicloud.cloudstoragegateway.GatewayLogging("default",
+            gateway_id=default_gateway.id,
+            sls_logstore=default_store.logstore_name,
+            sls_project=default_project.project_name)
+        ```
+
         ## Import
 
         Cloud Storage Gateway Gateway Logging can be imported using the id, e.g.
@@ -202,6 +262,66 @@ class GatewayLogging(pulumi.CustomResource):
         For information about Cloud Storage Gateway Gateway Logging and how to use it, see [What is Gateway Logging](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/creategatewaylogging).
 
         > **NOTE:** Available since v1.144.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_uuid = random.index.Uuid("default")
+        default_storage_bundle = alicloud.cloudstoragegateway.StorageBundle("default", storage_bundle_name=std.substr(input=f"tf-example-{std.replace(text=default_uuid['result'],
+                search='-',
+                replace='').result}",
+            offset=0,
+            length=16).result)
+        default_project = alicloud.log.Project("default",
+            project_name=std.substr(input=f"tf-example-{std.replace(text=default_uuid['result'],
+                    search='-',
+                    replace='').result}",
+                offset=0,
+                length=16).result,
+            description="terraform-example")
+        default_store = alicloud.log.Store("default",
+            project_name=default_project.project_name,
+            logstore_name=name,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="172.16.0.0/12")
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_switch = alicloud.vpc.Switch("default",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/21",
+            zone_id=default.zones[0].id,
+            vswitch_name=name)
+        default_gateway = alicloud.cloudstoragegateway.Gateway("default",
+            gateway_name=name,
+            description=name,
+            gateway_class="Standard",
+            type="File",
+            payment_type="PayAsYouGo",
+            vswitch_id=default_switch.id,
+            release_after_expiration=False,
+            public_network_bandwidth=40,
+            storage_bundle_id=default_storage_bundle.id,
+            location="Cloud")
+        default_gateway_logging = alicloud.cloudstoragegateway.GatewayLogging("default",
+            gateway_id=default_gateway.id,
+            sls_logstore=default_store.logstore_name,
+            sls_project=default_project.project_name)
+        ```
 
         ## Import
 

@@ -18,6 +18,144 @@ import (
 //
 // > **NOTE:** Available since v1.243.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ackone"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			keyName := "%s"
+//			if param := cfg.Get("keyName"); param != "" {
+//				keyName = param
+//			}
+//			enhanced, err := vpc.GetEnhancedNatAvailableZones(ctx, &vpc.GetEnhancedNatAvailableZonesArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cloudEfficiency, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone:   pulumi.StringRef(enhanced.Zones[0].ZoneId),
+//				CpuCoreCount:       pulumi.IntRef(4),
+//				MemorySize:         pulumi.Float64Ref(8),
+//				KubernetesNodeRole: pulumi.StringRef("Worker"),
+//				SystemDiskCategory: pulumi.StringRef("cloud_efficiency"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+//				CidrBlock: pulumi.String("10.4.0.0/24"),
+//				VpcId:     _default.ID(),
+//				ZoneId:    pulumi.String(enhanced.Zones[0].ZoneId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeCidrsubnet, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
+//				Input:   "10.0.0.0/8",
+//				Newbits: 8,
+//				Netnum:  36,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeCidrsubnet1, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
+//				Input:   "172.16.0.0/16",
+//				Newbits: 4,
+//				Netnum:  7,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultManagedKubernetes, err := cs.NewManagedKubernetes(ctx, "default", &cs.ManagedKubernetesArgs{
+//				ClusterSpec: pulumi.String("ack.pro.small"),
+//				VswitchIds: pulumi.StringArray{
+//					defaultSwitch.ID(),
+//				},
+//				NewNatGateway:             pulumi.Bool(true),
+//				PodCidr:                   pulumi.String(invokeCidrsubnet.Result),
+//				ServiceCidr:               pulumi.String(invokeCidrsubnet1.Result),
+//				SlbInternetEnabled:        pulumi.Bool(true),
+//				IsEnterpriseSecurityGroup: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultKeyPair, err := ecs.NewKeyPair(ctx, "default", &ecs.KeyPairArgs{
+//				KeyPairName: pulumi.String(keyName),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
+//				NodePoolName: pulumi.String(name),
+//				ClusterId:    defaultManagedKubernetes.ID(),
+//				VswitchIds: pulumi.StringArray{
+//					defaultSwitch.ID(),
+//				},
+//				InstanceTypes: pulumi.StringArray{
+//					pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
+//				},
+//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
+//				SystemDiskSize:     pulumi.Int(40),
+//				KeyName:            defaultKeyPair.KeyPairName,
+//				DesiredSize:        pulumi.String("1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultCluster, err := ackone.NewCluster(ctx, "default", &ackone.ClusterArgs{
+//				Network: &ackone.ClusterNetworkArgs{
+//					VpcId: _default.ID(),
+//					Vswitches: pulumi.StringArray{
+//						defaultSwitch.ID(),
+//					},
+//				},
+//				ArgocdEnabled: pulumi.Bool(false),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				defaultManagedKubernetes,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ackone.NewMembershipAttachment(ctx, "default", &ackone.MembershipAttachmentArgs{
+//				ClusterId:    defaultCluster.ID(),
+//				SubClusterId: defaultManagedKubernetes.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Ack One Membership Attachment can be imported using the id, which consists of cluster_id and sub_cluster_id, e.g.

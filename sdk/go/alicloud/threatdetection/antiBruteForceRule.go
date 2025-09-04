@@ -72,6 +72,8 @@ type AntiBruteForceRule struct {
 	FailCount pulumi.IntOutput `pulumi:"failCount"`
 	// The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
 	ForbiddenTime pulumi.IntOutput `pulumi:"forbiddenTime"`
+	// The types of protocols supported for interception by the brute force attack rule creation. See `protocolType` below.
+	ProtocolType AntiBruteForceRuleProtocolTypeOutput `pulumi:"protocolType"`
 	// The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
 	Span pulumi.IntOutput `pulumi:"span"`
 	// The UUIDs of the servers to which you want to apply the defense rule.
@@ -131,6 +133,8 @@ type antiBruteForceRuleState struct {
 	FailCount *int `pulumi:"failCount"`
 	// The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
 	ForbiddenTime *int `pulumi:"forbiddenTime"`
+	// The types of protocols supported for interception by the brute force attack rule creation. See `protocolType` below.
+	ProtocolType *AntiBruteForceRuleProtocolType `pulumi:"protocolType"`
 	// The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
 	Span *int `pulumi:"span"`
 	// The UUIDs of the servers to which you want to apply the defense rule.
@@ -146,6 +150,8 @@ type AntiBruteForceRuleState struct {
 	FailCount pulumi.IntPtrInput
 	// The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
 	ForbiddenTime pulumi.IntPtrInput
+	// The types of protocols supported for interception by the brute force attack rule creation. See `protocolType` below.
+	ProtocolType AntiBruteForceRuleProtocolTypePtrInput
 	// The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
 	Span pulumi.IntPtrInput
 	// The UUIDs of the servers to which you want to apply the defense rule.
@@ -165,6 +171,8 @@ type antiBruteForceRuleArgs struct {
 	FailCount int `pulumi:"failCount"`
 	// The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
 	ForbiddenTime int `pulumi:"forbiddenTime"`
+	// The types of protocols supported for interception by the brute force attack rule creation. See `protocolType` below.
+	ProtocolType *AntiBruteForceRuleProtocolType `pulumi:"protocolType"`
 	// The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
 	Span int `pulumi:"span"`
 	// The UUIDs of the servers to which you want to apply the defense rule.
@@ -181,6 +189,8 @@ type AntiBruteForceRuleArgs struct {
 	FailCount pulumi.IntInput
 	// The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
 	ForbiddenTime pulumi.IntInput
+	// The types of protocols supported for interception by the brute force attack rule creation. See `protocolType` below.
+	ProtocolType AntiBruteForceRuleProtocolTypePtrInput
 	// The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
 	Span pulumi.IntInput
 	// The UUIDs of the servers to which you want to apply the defense rule.
@@ -292,6 +302,11 @@ func (o AntiBruteForceRuleOutput) FailCount() pulumi.IntOutput {
 // The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
 func (o AntiBruteForceRuleOutput) ForbiddenTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *AntiBruteForceRule) pulumi.IntOutput { return v.ForbiddenTime }).(pulumi.IntOutput)
+}
+
+// The types of protocols supported for interception by the brute force attack rule creation. See `protocolType` below.
+func (o AntiBruteForceRuleOutput) ProtocolType() AntiBruteForceRuleProtocolTypeOutput {
+	return o.ApplyT(func(v *AntiBruteForceRule) AntiBruteForceRuleProtocolTypeOutput { return v.ProtocolType }).(AntiBruteForceRuleProtocolTypeOutput)
 }
 
 // The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:

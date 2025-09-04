@@ -38,6 +38,7 @@ class InstanceArgs:
                  encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
                  encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
                  encryptor_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 global_security_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  hidden_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
@@ -89,6 +90,7 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.bool] encrypted: Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] encryption_key: The ID of the custom key.
         :param pulumi.Input[_builtins.str] encryptor_name: The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] global_security_group_lists: The list of Global Security Group Ids.
         :param pulumi.Input[_builtins.str] hidden_zone_id: Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values. From version 1.253.0, `hidden_zone_id` can be modified.
         :param pulumi.Input[_builtins.str] instance_charge_type: The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
@@ -160,6 +162,8 @@ class InstanceArgs:
             pulumi.set(__self__, "encryption_key", encryption_key)
         if encryptor_name is not None:
             pulumi.set(__self__, "encryptor_name", encryptor_name)
+        if global_security_group_lists is not None:
+            pulumi.set(__self__, "global_security_group_lists", global_security_group_lists)
         if hidden_zone_id is not None:
             pulumi.set(__self__, "hidden_zone_id", hidden_zone_id)
         if instance_charge_type is not None:
@@ -425,6 +429,18 @@ class InstanceArgs:
     @encryptor_name.setter
     def encryptor_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "encryptor_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="globalSecurityGroupLists")
+    def global_security_group_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of Global Security Group Ids.
+        """
+        return pulumi.get(self, "global_security_group_lists")
+
+    @global_security_group_lists.setter
+    def global_security_group_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "global_security_group_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="hiddenZoneId")
@@ -805,6 +821,7 @@ class _InstanceState:
                  encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
                  encryptor_name: Optional[pulumi.Input[_builtins.str]] = None,
                  engine_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 global_security_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  hidden_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
@@ -860,6 +877,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] encryption_key: The ID of the custom key.
         :param pulumi.Input[_builtins.str] encryptor_name: The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
         :param pulumi.Input[_builtins.str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engine_version` can be modified.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] global_security_group_lists: The list of Global Security Group Ids.
         :param pulumi.Input[_builtins.str] hidden_zone_id: Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values. From version 1.253.0, `hidden_zone_id` can be modified.
         :param pulumi.Input[_builtins.str] instance_charge_type: The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
@@ -938,6 +956,8 @@ class _InstanceState:
             pulumi.set(__self__, "encryptor_name", encryptor_name)
         if engine_version is not None:
             pulumi.set(__self__, "engine_version", engine_version)
+        if global_security_group_lists is not None:
+            pulumi.set(__self__, "global_security_group_lists", global_security_group_lists)
         if hidden_zone_id is not None:
             pulumi.set(__self__, "hidden_zone_id", hidden_zone_id)
         if instance_charge_type is not None:
@@ -1211,6 +1231,18 @@ class _InstanceState:
     @engine_version.setter
     def engine_version(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "engine_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="globalSecurityGroupLists")
+    def global_security_group_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of Global Security Group Ids.
+        """
+        return pulumi.get(self, "global_security_group_lists")
+
+    @global_security_group_lists.setter
+    def global_security_group_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "global_security_group_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="hiddenZoneId")
@@ -1642,6 +1674,7 @@ class Instance(pulumi.CustomResource):
                  encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
                  encryptor_name: Optional[pulumi.Input[_builtins.str]] = None,
                  engine_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 global_security_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  hidden_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1758,6 +1791,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] encryption_key: The ID of the custom key.
         :param pulumi.Input[_builtins.str] encryptor_name: The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
         :param pulumi.Input[_builtins.str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engine_version` can be modified.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] global_security_group_lists: The list of Global Security Group Ids.
         :param pulumi.Input[_builtins.str] hidden_zone_id: Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values. From version 1.253.0, `hidden_zone_id` can be modified.
         :param pulumi.Input[_builtins.str] instance_charge_type: The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
@@ -1900,6 +1934,7 @@ class Instance(pulumi.CustomResource):
                  encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
                  encryptor_name: Optional[pulumi.Input[_builtins.str]] = None,
                  engine_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 global_security_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  hidden_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1961,6 +1996,7 @@ class Instance(pulumi.CustomResource):
             if engine_version is None and not opts.urn:
                 raise TypeError("Missing required property 'engine_version'")
             __props__.__dict__["engine_version"] = engine_version
+            __props__.__dict__["global_security_group_lists"] = global_security_group_lists
             __props__.__dict__["hidden_zone_id"] = hidden_zone_id
             __props__.__dict__["instance_charge_type"] = instance_charge_type
             __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
@@ -2023,6 +2059,7 @@ class Instance(pulumi.CustomResource):
             encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
             encryptor_name: Optional[pulumi.Input[_builtins.str]] = None,
             engine_version: Optional[pulumi.Input[_builtins.str]] = None,
+            global_security_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             hidden_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
             instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
             kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2083,6 +2120,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] encryption_key: The ID of the custom key.
         :param pulumi.Input[_builtins.str] encryptor_name: The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
         :param pulumi.Input[_builtins.str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engine_version` can be modified.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] global_security_group_lists: The list of Global Security Group Ids.
         :param pulumi.Input[_builtins.str] hidden_zone_id: Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values. From version 1.253.0, `hidden_zone_id` can be modified.
         :param pulumi.Input[_builtins.str] instance_charge_type: The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
@@ -2148,6 +2186,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["encryption_key"] = encryption_key
         __props__.__dict__["encryptor_name"] = encryptor_name
         __props__.__dict__["engine_version"] = engine_version
+        __props__.__dict__["global_security_group_lists"] = global_security_group_lists
         __props__.__dict__["hidden_zone_id"] = hidden_zone_id
         __props__.__dict__["instance_charge_type"] = instance_charge_type
         __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
@@ -2321,6 +2360,14 @@ class Instance(pulumi.CustomResource):
         Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engine_version` can be modified.
         """
         return pulumi.get(self, "engine_version")
+
+    @_builtins.property
+    @pulumi.getter(name="globalSecurityGroupLists")
+    def global_security_group_lists(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        The list of Global Security Group Ids.
+        """
+        return pulumi.get(self, "global_security_group_lists")
 
     @_builtins.property
     @pulumi.getter(name="hiddenZoneId")

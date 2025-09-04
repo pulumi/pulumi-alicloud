@@ -77,7 +77,7 @@ type VpcEndpointService struct {
 	// - `Endpoint`: the service consumer.
 	// - `EndpointService`: the service provider.
 	Payer pulumi.StringOutput `pulumi:"payer"`
-	// (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+	// The ID of the region to which the endpoint service belongs.
 	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// The resource group ID.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
@@ -87,7 +87,7 @@ type VpcEndpointService struct {
 	ServiceDescription pulumi.StringPtrOutput `pulumi:"serviceDescription"`
 	// The domain name of the endpoint service.
 	ServiceDomain pulumi.StringOutput `pulumi:"serviceDomain"`
-	// Service resource type, value:
+	// The service resource type. Value:
 	ServiceResourceType pulumi.StringOutput `pulumi:"serviceResourceType"`
 	// Specifies whether to enable IPv6 for the endpoint service. Valid values:
 	ServiceSupportIpv6 pulumi.BoolOutput `pulumi:"serviceSupportIpv6"`
@@ -145,7 +145,7 @@ type vpcEndpointServiceState struct {
 	// - `Endpoint`: the service consumer.
 	// - `EndpointService`: the service provider.
 	Payer *string `pulumi:"payer"`
-	// (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+	// The ID of the region to which the endpoint service belongs.
 	RegionId *string `pulumi:"regionId"`
 	// The resource group ID.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -155,7 +155,7 @@ type vpcEndpointServiceState struct {
 	ServiceDescription *string `pulumi:"serviceDescription"`
 	// The domain name of the endpoint service.
 	ServiceDomain *string `pulumi:"serviceDomain"`
-	// Service resource type, value:
+	// The service resource type. Value:
 	ServiceResourceType *string `pulumi:"serviceResourceType"`
 	// Specifies whether to enable IPv6 for the endpoint service. Valid values:
 	ServiceSupportIpv6 *bool `pulumi:"serviceSupportIpv6"`
@@ -184,7 +184,7 @@ type VpcEndpointServiceState struct {
 	// - `Endpoint`: the service consumer.
 	// - `EndpointService`: the service provider.
 	Payer pulumi.StringPtrInput
-	// (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+	// The ID of the region to which the endpoint service belongs.
 	RegionId pulumi.StringPtrInput
 	// The resource group ID.
 	ResourceGroupId pulumi.StringPtrInput
@@ -194,7 +194,7 @@ type VpcEndpointServiceState struct {
 	ServiceDescription pulumi.StringPtrInput
 	// The domain name of the endpoint service.
 	ServiceDomain pulumi.StringPtrInput
-	// Service resource type, value:
+	// The service resource type. Value:
 	ServiceResourceType pulumi.StringPtrInput
 	// Specifies whether to enable IPv6 for the endpoint service. Valid values:
 	ServiceSupportIpv6 pulumi.BoolPtrInput
@@ -229,7 +229,7 @@ type vpcEndpointServiceArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The description of the endpoint service.
 	ServiceDescription *string `pulumi:"serviceDescription"`
-	// Service resource type, value:
+	// The service resource type. Value:
 	ServiceResourceType *string `pulumi:"serviceResourceType"`
 	// Specifies whether to enable IPv6 for the endpoint service. Valid values:
 	ServiceSupportIpv6 *bool `pulumi:"serviceSupportIpv6"`
@@ -257,7 +257,7 @@ type VpcEndpointServiceArgs struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// The description of the endpoint service.
 	ServiceDescription pulumi.StringPtrInput
-	// Service resource type, value:
+	// The service resource type. Value:
 	ServiceResourceType pulumi.StringPtrInput
 	// Specifies whether to enable IPv6 for the endpoint service. Valid values:
 	ServiceSupportIpv6 pulumi.BoolPtrInput
@@ -386,7 +386,7 @@ func (o VpcEndpointServiceOutput) Payer() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpointService) pulumi.StringOutput { return v.Payer }).(pulumi.StringOutput)
 }
 
-// (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+// The ID of the region to which the endpoint service belongs.
 func (o VpcEndpointServiceOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpointService) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
 }
@@ -411,7 +411,7 @@ func (o VpcEndpointServiceOutput) ServiceDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpointService) pulumi.StringOutput { return v.ServiceDomain }).(pulumi.StringOutput)
 }
 
-// Service resource type, value:
+// The service resource type. Value:
 func (o VpcEndpointServiceOutput) ServiceResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpointService) pulumi.StringOutput { return v.ServiceResourceType }).(pulumi.StringOutput)
 }

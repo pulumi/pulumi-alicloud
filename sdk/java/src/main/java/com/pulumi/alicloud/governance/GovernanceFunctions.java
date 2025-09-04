@@ -30,8 +30,8 @@ public final class GovernanceFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.random.integer;
-     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
      * import com.pulumi.alicloud.governance.Baseline;
      * import com.pulumi.alicloud.governance.BaselineArgs;
      * import com.pulumi.alicloud.governance.inputs.BaselineBaselineItemArgs;
@@ -117,8 +117,8 @@ public final class GovernanceFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.random.integer;
-     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
      * import com.pulumi.alicloud.governance.Baseline;
      * import com.pulumi.alicloud.governance.BaselineArgs;
      * import com.pulumi.alicloud.governance.inputs.BaselineBaselineItemArgs;
@@ -204,8 +204,8 @@ public final class GovernanceFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.random.integer;
-     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
      * import com.pulumi.alicloud.governance.Baseline;
      * import com.pulumi.alicloud.governance.BaselineArgs;
      * import com.pulumi.alicloud.governance.inputs.BaselineBaselineItemArgs;
@@ -291,8 +291,8 @@ public final class GovernanceFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.random.integer;
-     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
      * import com.pulumi.alicloud.governance.Baseline;
      * import com.pulumi.alicloud.governance.BaselineArgs;
      * import com.pulumi.alicloud.governance.inputs.BaselineBaselineItemArgs;
@@ -378,8 +378,8 @@ public final class GovernanceFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.random.integer;
-     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
      * import com.pulumi.alicloud.governance.Baseline;
      * import com.pulumi.alicloud.governance.BaselineArgs;
      * import com.pulumi.alicloud.governance.inputs.BaselineBaselineItemArgs;
@@ -465,8 +465,8 @@ public final class GovernanceFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.random.integer;
-     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
      * import com.pulumi.alicloud.governance.Baseline;
      * import com.pulumi.alicloud.governance.BaselineArgs;
      * import com.pulumi.alicloud.governance.inputs.BaselineBaselineItemArgs;
@@ -552,8 +552,8 @@ public final class GovernanceFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.random.integer;
-     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
      * import com.pulumi.alicloud.governance.Baseline;
      * import com.pulumi.alicloud.governance.BaselineArgs;
      * import com.pulumi.alicloud.governance.inputs.BaselineBaselineItemArgs;

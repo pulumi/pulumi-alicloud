@@ -22,6 +22,52 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.125.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.directmail.Receivers;
+ * import com.pulumi.alicloud.directmail.ReceiversArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tfexample");
+ *         var example = new Receivers("example", ReceiversArgs.builder()
+ *             .receiversAlias(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s}{@literal @}{@code onaliyun.com")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .receiversName(name)
+ *             .description(name)
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Direct Mail Receivers can be imported using the id, e.g.

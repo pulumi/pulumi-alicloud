@@ -237,18 +237,18 @@ class Role(pulumi.CustomResource):
         example = alicloud.resourcemanager.Role("example",
             role_name=name,
             assume_role_policy_document=f\"\"\"     {{
-                  "Statement": [
+                  \\"Statement\\": [
                        {{
-                            "Action": "sts:AssumeRole",
-                            "Effect": "Allow",
-                            "Principal": {{
-                                "RAM":[
-                                        "acs:ram::{default.id}:root"
+                            \\"Action\\": \\"sts:AssumeRole\\",
+                            \\"Effect\\": \\"Allow\\",
+                            \\"Principal\\": {{
+                                \\"RAM\\":[
+                                        \\"acs:ram::{default.id}:root\\"
                                 ]
                             }}
                         }}
                   ],
-                  "Version": "1"
+                  \\"Version\\": \\"1\\"
              }}
         \"\"\")
         ```
@@ -294,18 +294,18 @@ class Role(pulumi.CustomResource):
         example = alicloud.resourcemanager.Role("example",
             role_name=name,
             assume_role_policy_document=f\"\"\"     {{
-                  "Statement": [
+                  \\"Statement\\": [
                        {{
-                            "Action": "sts:AssumeRole",
-                            "Effect": "Allow",
-                            "Principal": {{
-                                "RAM":[
-                                        "acs:ram::{default.id}:root"
+                            \\"Action\\": \\"sts:AssumeRole\\",
+                            \\"Effect\\": \\"Allow\\",
+                            \\"Principal\\": {{
+                                \\"RAM\\":[
+                                        \\"acs:ram::{default.id}:root\\"
                                 ]
                             }}
                         }}
                   ],
-                  "Version": "1"
+                  \\"Version\\": \\"1\\"
              }}
         \"\"\")
         ```

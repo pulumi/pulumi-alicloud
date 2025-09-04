@@ -13,6 +13,35 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.234.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultIpam = new alicloud.vpc.IpamIpam("defaultIpam", {operatingRegionLists: ["cn-hangzhou"]});
+ * const parentIpamPool = new alicloud.vpc.IpamIpamPool("parentIpamPool", {
+ *     ipamScopeId: defaultIpam.privateDefaultScopeId,
+ *     ipamPoolName: std.format({
+ *         input: "%s1",
+ *         args: [name],
+ *     }).then(invoke => invoke.result),
+ *     poolRegionId: defaultIpam.regionId,
+ * });
+ * const _default = new alicloud.vpc.IpamIpamPool("default", {
+ *     ipamScopeId: defaultIpam.privateDefaultScopeId,
+ *     poolRegionId: parentIpamPool.poolRegionId,
+ *     ipamPoolName: name,
+ *     sourceIpamPoolId: parentIpamPool.id,
+ *     ipVersion: "IPv4",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Vpc Ipam Ipam Pool can be imported using the id, e.g.

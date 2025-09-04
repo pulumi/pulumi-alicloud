@@ -60,20 +60,20 @@ namespace Pulumi.AliCloud.Ecs
     ///     var defaultRole = new AliCloud.Ram.Role("default", new()
     ///     {
     ///         Name = $"{name}-{defaultInteger.Result}",
-    ///         Document = @"		{
-    /// 			""Statement"": [
-    /// 				{
-    /// 					""Action"": ""sts:AssumeRole"",
-    /// 					""Effect"": ""Allow"",
-    /// 					""Principal"": {
-    /// 						""Service"": [
-    /// 							""ecs.aliyuncs.com""
-    /// 						]
-    /// 					}
-    /// 				}
-    /// 		  	],
-    /// 			""Version"": ""1""
-    /// 		}
+    ///         Document = @"\t\t{
+    /// \t\t\t\""Statement\"": [
+    /// \t\t\t\t{
+    /// \t\t\t\t\t\""Action\"": \""sts:AssumeRole\"",
+    /// \t\t\t\t\t\""Effect\"": \""Allow\"",
+    /// \t\t\t\t\t\""Principal\"": {
+    /// \t\t\t\t\t\t\""Service\"": [
+    /// \t\t\t\t\t\t\t\""ecs.aliyuncs.com\""
+    /// \t\t\t\t\t\t]
+    /// \t\t\t\t\t}
+    /// \t\t\t\t}
+    /// \t\t  \t],
+    /// \t\t\t\""Version\"": \""1\""
+    /// \t\t}
     /// ",
     ///         Force = true,
     ///     });

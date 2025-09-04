@@ -548,6 +548,33 @@ class IpamIpamPool(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.234.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_ipam = alicloud.vpc.IpamIpam("defaultIpam", operating_region_lists=["cn-hangzhou"])
+        parent_ipam_pool = alicloud.vpc.IpamIpamPool("parentIpamPool",
+            ipam_scope_id=default_ipam.private_default_scope_id,
+            ipam_pool_name=std.format(input="%s1",
+                args=[name]).result,
+            pool_region_id=default_ipam.region_id)
+        default = alicloud.vpc.IpamIpamPool("default",
+            ipam_scope_id=default_ipam.private_default_scope_id,
+            pool_region_id=parent_ipam_pool.pool_region_id,
+            ipam_pool_name=name,
+            source_ipam_pool_id=parent_ipam_pool.id,
+            ip_version="IPv4")
+        ```
+
         ## Import
 
         Vpc Ipam Ipam Pool can be imported using the id, e.g.
@@ -592,6 +619,33 @@ class IpamIpamPool(pulumi.CustomResource):
         For information about Vpc Ipam Ipam Pool and how to use it, see [What is Ipam Pool](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPool).
 
         > **NOTE:** Available since v1.234.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_ipam = alicloud.vpc.IpamIpam("defaultIpam", operating_region_lists=["cn-hangzhou"])
+        parent_ipam_pool = alicloud.vpc.IpamIpamPool("parentIpamPool",
+            ipam_scope_id=default_ipam.private_default_scope_id,
+            ipam_pool_name=std.format(input="%s1",
+                args=[name]).result,
+            pool_region_id=default_ipam.region_id)
+        default = alicloud.vpc.IpamIpamPool("default",
+            ipam_scope_id=default_ipam.private_default_scope_id,
+            pool_region_id=parent_ipam_pool.pool_region_id,
+            ipam_pool_name=name,
+            source_ipam_pool_id=parent_ipam_pool.id,
+            ip_version="IPv4")
+        ```
 
         ## Import
 

@@ -146,6 +146,10 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public readonly engineVersion!: pulumi.Output<string>;
     /**
+     * The list of Global Security Group Ids.
+     */
+    public readonly globalSecurityGroupLists!: pulumi.Output<string[] | undefined>;
+    /**
      * Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
      */
     public readonly hiddenZoneId!: pulumi.Output<string | undefined>;
@@ -274,6 +278,7 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["configServerLists"] = state ? state.configServerLists : undefined;
             resourceInputs["dbInstanceReleaseProtection"] = state ? state.dbInstanceReleaseProtection : undefined;
             resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
+            resourceInputs["globalSecurityGroupLists"] = state ? state.globalSecurityGroupLists : undefined;
             resourceInputs["hiddenZoneId"] = state ? state.hiddenZoneId : undefined;
             resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
             resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
@@ -319,6 +324,7 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["configServerLists"] = args ? args.configServerLists : undefined;
             resourceInputs["dbInstanceReleaseProtection"] = args ? args.dbInstanceReleaseProtection : undefined;
             resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
+            resourceInputs["globalSecurityGroupLists"] = args ? args.globalSecurityGroupLists : undefined;
             resourceInputs["hiddenZoneId"] = args ? args.hiddenZoneId : undefined;
             resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
             resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
@@ -392,6 +398,10 @@ export interface ShardingInstanceState {
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
      */
     engineVersion?: pulumi.Input<string>;
+    /**
+     * The list of Global Security Group Ids.
+     */
+    globalSecurityGroupLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
      */
@@ -540,6 +550,10 @@ export interface ShardingInstanceArgs {
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
      */
     engineVersion: pulumi.Input<string>;
+    /**
+     * The list of Global Security Group Ids.
+     */
+    globalSecurityGroupLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
      */

@@ -26,19 +26,27 @@ class OssScanConfigArgs:
                  scan_day_lists: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]],
                  start_time: pulumi.Input[_builtins.str],
                  all_key_prefix: Optional[pulumi.Input[_builtins.bool]] = None,
+                 decompress_max_file_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 decompress_max_layer: Optional[pulumi.Input[_builtins.int]] = None,
+                 decryption_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  key_prefix_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 last_modified_start_time: Optional[pulumi.Input[_builtins.int]] = None,
                  oss_scan_config_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a OssScanConfig resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] bucket_name_lists: Bucket List.
-        :param pulumi.Input[_builtins.int] enable: Enable configuration.
-        :param pulumi.Input[_builtins.str] end_time: End time, hours, minutes and seconds.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] key_suffix_lists: File Suffix List.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] scan_day_lists: Scan cycle.
-        :param pulumi.Input[_builtins.str] start_time: Start time, hours, minutes and seconds.
-        :param pulumi.Input[_builtins.bool] all_key_prefix: Match all prefixes.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] key_prefix_lists: File prefix list.
-        :param pulumi.Input[_builtins.str] oss_scan_config_name: Configuration Name.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] bucket_name_lists: The names of the buckets.
+        :param pulumi.Input[_builtins.int] enable: Indicates whether the check policy is enabled. Valid values:
+        :param pulumi.Input[_builtins.str] end_time: The end time of the check. The time is in the HH:mm:ss format.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] key_suffix_lists: The suffixes of the objects that are checked.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] scan_day_lists: The days when the check is performed. The value indicates the days of the week.
+        :param pulumi.Input[_builtins.str] start_time: The start time of the check. The time is in the HH:mm:ss format.
+        :param pulumi.Input[_builtins.bool] all_key_prefix: Indicates whether the prefixes of all objects are matched.
+        :param pulumi.Input[_builtins.int] decompress_max_file_count: The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+        :param pulumi.Input[_builtins.int] decompress_max_layer: The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] decryption_lists: The decryption methods.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] key_prefix_lists: The prefixes of the objects.
+        :param pulumi.Input[_builtins.int] last_modified_start_time: The timestamp when the object was last modified. The time must be later than the timestamp that you specify. Unit: milliseconds.
+        :param pulumi.Input[_builtins.str] oss_scan_config_name: The policy name.
         """
         pulumi.set(__self__, "bucket_name_lists", bucket_name_lists)
         pulumi.set(__self__, "enable", enable)
@@ -48,8 +56,16 @@ class OssScanConfigArgs:
         pulumi.set(__self__, "start_time", start_time)
         if all_key_prefix is not None:
             pulumi.set(__self__, "all_key_prefix", all_key_prefix)
+        if decompress_max_file_count is not None:
+            pulumi.set(__self__, "decompress_max_file_count", decompress_max_file_count)
+        if decompress_max_layer is not None:
+            pulumi.set(__self__, "decompress_max_layer", decompress_max_layer)
+        if decryption_lists is not None:
+            pulumi.set(__self__, "decryption_lists", decryption_lists)
         if key_prefix_lists is not None:
             pulumi.set(__self__, "key_prefix_lists", key_prefix_lists)
+        if last_modified_start_time is not None:
+            pulumi.set(__self__, "last_modified_start_time", last_modified_start_time)
         if oss_scan_config_name is not None:
             pulumi.set(__self__, "oss_scan_config_name", oss_scan_config_name)
 
@@ -57,7 +73,7 @@ class OssScanConfigArgs:
     @pulumi.getter(name="bucketNameLists")
     def bucket_name_lists(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        Bucket List.
+        The names of the buckets.
         """
         return pulumi.get(self, "bucket_name_lists")
 
@@ -69,7 +85,7 @@ class OssScanConfigArgs:
     @pulumi.getter
     def enable(self) -> pulumi.Input[_builtins.int]:
         """
-        Enable configuration.
+        Indicates whether the check policy is enabled. Valid values:
         """
         return pulumi.get(self, "enable")
 
@@ -81,7 +97,7 @@ class OssScanConfigArgs:
     @pulumi.getter(name="endTime")
     def end_time(self) -> pulumi.Input[_builtins.str]:
         """
-        End time, hours, minutes and seconds.
+        The end time of the check. The time is in the HH:mm:ss format.
         """
         return pulumi.get(self, "end_time")
 
@@ -93,7 +109,7 @@ class OssScanConfigArgs:
     @pulumi.getter(name="keySuffixLists")
     def key_suffix_lists(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        File Suffix List.
+        The suffixes of the objects that are checked.
         """
         return pulumi.get(self, "key_suffix_lists")
 
@@ -105,7 +121,7 @@ class OssScanConfigArgs:
     @pulumi.getter(name="scanDayLists")
     def scan_day_lists(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]:
         """
-        Scan cycle.
+        The days when the check is performed. The value indicates the days of the week.
         """
         return pulumi.get(self, "scan_day_lists")
 
@@ -117,7 +133,7 @@ class OssScanConfigArgs:
     @pulumi.getter(name="startTime")
     def start_time(self) -> pulumi.Input[_builtins.str]:
         """
-        Start time, hours, minutes and seconds.
+        The start time of the check. The time is in the HH:mm:ss format.
         """
         return pulumi.get(self, "start_time")
 
@@ -129,7 +145,7 @@ class OssScanConfigArgs:
     @pulumi.getter(name="allKeyPrefix")
     def all_key_prefix(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Match all prefixes.
+        Indicates whether the prefixes of all objects are matched.
         """
         return pulumi.get(self, "all_key_prefix")
 
@@ -138,10 +154,46 @@ class OssScanConfigArgs:
         pulumi.set(self, "all_key_prefix", value)
 
     @_builtins.property
+    @pulumi.getter(name="decompressMaxFileCount")
+    def decompress_max_file_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+        """
+        return pulumi.get(self, "decompress_max_file_count")
+
+    @decompress_max_file_count.setter
+    def decompress_max_file_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "decompress_max_file_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="decompressMaxLayer")
+    def decompress_max_layer(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+        """
+        return pulumi.get(self, "decompress_max_layer")
+
+    @decompress_max_layer.setter
+    def decompress_max_layer(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "decompress_max_layer", value)
+
+    @_builtins.property
+    @pulumi.getter(name="decryptionLists")
+    def decryption_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The decryption methods.
+        """
+        return pulumi.get(self, "decryption_lists")
+
+    @decryption_lists.setter
+    def decryption_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "decryption_lists", value)
+
+    @_builtins.property
     @pulumi.getter(name="keyPrefixLists")
     def key_prefix_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        File prefix list.
+        The prefixes of the objects.
         """
         return pulumi.get(self, "key_prefix_lists")
 
@@ -150,10 +202,22 @@ class OssScanConfigArgs:
         pulumi.set(self, "key_prefix_lists", value)
 
     @_builtins.property
+    @pulumi.getter(name="lastModifiedStartTime")
+    def last_modified_start_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The timestamp when the object was last modified. The time must be later than the timestamp that you specify. Unit: milliseconds.
+        """
+        return pulumi.get(self, "last_modified_start_time")
+
+    @last_modified_start_time.setter
+    def last_modified_start_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "last_modified_start_time", value)
+
+    @_builtins.property
     @pulumi.getter(name="ossScanConfigName")
     def oss_scan_config_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Configuration Name.
+        The policy name.
         """
         return pulumi.get(self, "oss_scan_config_name")
 
@@ -167,29 +231,43 @@ class _OssScanConfigState:
     def __init__(__self__, *,
                  all_key_prefix: Optional[pulumi.Input[_builtins.bool]] = None,
                  bucket_name_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 decompress_max_file_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 decompress_max_layer: Optional[pulumi.Input[_builtins.int]] = None,
+                 decryption_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  enable: Optional[pulumi.Input[_builtins.int]] = None,
                  end_time: Optional[pulumi.Input[_builtins.str]] = None,
                  key_prefix_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  key_suffix_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 last_modified_start_time: Optional[pulumi.Input[_builtins.int]] = None,
                  oss_scan_config_name: Optional[pulumi.Input[_builtins.str]] = None,
                  scan_day_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  start_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OssScanConfig resources.
-        :param pulumi.Input[_builtins.bool] all_key_prefix: Match all prefixes.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] bucket_name_lists: Bucket List.
-        :param pulumi.Input[_builtins.int] enable: Enable configuration.
-        :param pulumi.Input[_builtins.str] end_time: End time, hours, minutes and seconds.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] key_prefix_lists: File prefix list.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] key_suffix_lists: File Suffix List.
-        :param pulumi.Input[_builtins.str] oss_scan_config_name: Configuration Name.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] scan_day_lists: Scan cycle.
-        :param pulumi.Input[_builtins.str] start_time: Start time, hours, minutes and seconds.
+        :param pulumi.Input[_builtins.bool] all_key_prefix: Indicates whether the prefixes of all objects are matched.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] bucket_name_lists: The names of the buckets.
+        :param pulumi.Input[_builtins.int] decompress_max_file_count: The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+        :param pulumi.Input[_builtins.int] decompress_max_layer: The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] decryption_lists: The decryption methods.
+        :param pulumi.Input[_builtins.int] enable: Indicates whether the check policy is enabled. Valid values:
+        :param pulumi.Input[_builtins.str] end_time: The end time of the check. The time is in the HH:mm:ss format.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] key_prefix_lists: The prefixes of the objects.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] key_suffix_lists: The suffixes of the objects that are checked.
+        :param pulumi.Input[_builtins.int] last_modified_start_time: The timestamp when the object was last modified. The time must be later than the timestamp that you specify. Unit: milliseconds.
+        :param pulumi.Input[_builtins.str] oss_scan_config_name: The policy name.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] scan_day_lists: The days when the check is performed. The value indicates the days of the week.
+        :param pulumi.Input[_builtins.str] start_time: The start time of the check. The time is in the HH:mm:ss format.
         """
         if all_key_prefix is not None:
             pulumi.set(__self__, "all_key_prefix", all_key_prefix)
         if bucket_name_lists is not None:
             pulumi.set(__self__, "bucket_name_lists", bucket_name_lists)
+        if decompress_max_file_count is not None:
+            pulumi.set(__self__, "decompress_max_file_count", decompress_max_file_count)
+        if decompress_max_layer is not None:
+            pulumi.set(__self__, "decompress_max_layer", decompress_max_layer)
+        if decryption_lists is not None:
+            pulumi.set(__self__, "decryption_lists", decryption_lists)
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
         if end_time is not None:
@@ -198,6 +276,8 @@ class _OssScanConfigState:
             pulumi.set(__self__, "key_prefix_lists", key_prefix_lists)
         if key_suffix_lists is not None:
             pulumi.set(__self__, "key_suffix_lists", key_suffix_lists)
+        if last_modified_start_time is not None:
+            pulumi.set(__self__, "last_modified_start_time", last_modified_start_time)
         if oss_scan_config_name is not None:
             pulumi.set(__self__, "oss_scan_config_name", oss_scan_config_name)
         if scan_day_lists is not None:
@@ -209,7 +289,7 @@ class _OssScanConfigState:
     @pulumi.getter(name="allKeyPrefix")
     def all_key_prefix(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Match all prefixes.
+        Indicates whether the prefixes of all objects are matched.
         """
         return pulumi.get(self, "all_key_prefix")
 
@@ -221,7 +301,7 @@ class _OssScanConfigState:
     @pulumi.getter(name="bucketNameLists")
     def bucket_name_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Bucket List.
+        The names of the buckets.
         """
         return pulumi.get(self, "bucket_name_lists")
 
@@ -230,10 +310,46 @@ class _OssScanConfigState:
         pulumi.set(self, "bucket_name_lists", value)
 
     @_builtins.property
+    @pulumi.getter(name="decompressMaxFileCount")
+    def decompress_max_file_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+        """
+        return pulumi.get(self, "decompress_max_file_count")
+
+    @decompress_max_file_count.setter
+    def decompress_max_file_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "decompress_max_file_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="decompressMaxLayer")
+    def decompress_max_layer(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+        """
+        return pulumi.get(self, "decompress_max_layer")
+
+    @decompress_max_layer.setter
+    def decompress_max_layer(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "decompress_max_layer", value)
+
+    @_builtins.property
+    @pulumi.getter(name="decryptionLists")
+    def decryption_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The decryption methods.
+        """
+        return pulumi.get(self, "decryption_lists")
+
+    @decryption_lists.setter
+    def decryption_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "decryption_lists", value)
+
+    @_builtins.property
     @pulumi.getter
     def enable(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Enable configuration.
+        Indicates whether the check policy is enabled. Valid values:
         """
         return pulumi.get(self, "enable")
 
@@ -245,7 +361,7 @@ class _OssScanConfigState:
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        End time, hours, minutes and seconds.
+        The end time of the check. The time is in the HH:mm:ss format.
         """
         return pulumi.get(self, "end_time")
 
@@ -257,7 +373,7 @@ class _OssScanConfigState:
     @pulumi.getter(name="keyPrefixLists")
     def key_prefix_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        File prefix list.
+        The prefixes of the objects.
         """
         return pulumi.get(self, "key_prefix_lists")
 
@@ -269,7 +385,7 @@ class _OssScanConfigState:
     @pulumi.getter(name="keySuffixLists")
     def key_suffix_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        File Suffix List.
+        The suffixes of the objects that are checked.
         """
         return pulumi.get(self, "key_suffix_lists")
 
@@ -278,10 +394,22 @@ class _OssScanConfigState:
         pulumi.set(self, "key_suffix_lists", value)
 
     @_builtins.property
+    @pulumi.getter(name="lastModifiedStartTime")
+    def last_modified_start_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The timestamp when the object was last modified. The time must be later than the timestamp that you specify. Unit: milliseconds.
+        """
+        return pulumi.get(self, "last_modified_start_time")
+
+    @last_modified_start_time.setter
+    def last_modified_start_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "last_modified_start_time", value)
+
+    @_builtins.property
     @pulumi.getter(name="ossScanConfigName")
     def oss_scan_config_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Configuration Name.
+        The policy name.
         """
         return pulumi.get(self, "oss_scan_config_name")
 
@@ -293,7 +421,7 @@ class _OssScanConfigState:
     @pulumi.getter(name="scanDayLists")
     def scan_day_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
         """
-        Scan cycle.
+        The days when the check is performed. The value indicates the days of the week.
         """
         return pulumi.get(self, "scan_day_lists")
 
@@ -305,7 +433,7 @@ class _OssScanConfigState:
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Start time, hours, minutes and seconds.
+        The start time of the check. The time is in the HH:mm:ss format.
         """
         return pulumi.get(self, "start_time")
 
@@ -322,16 +450,22 @@ class OssScanConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  all_key_prefix: Optional[pulumi.Input[_builtins.bool]] = None,
                  bucket_name_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 decompress_max_file_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 decompress_max_layer: Optional[pulumi.Input[_builtins.int]] = None,
+                 decryption_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  enable: Optional[pulumi.Input[_builtins.int]] = None,
                  end_time: Optional[pulumi.Input[_builtins.str]] = None,
                  key_prefix_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  key_suffix_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 last_modified_start_time: Optional[pulumi.Input[_builtins.int]] = None,
                  oss_scan_config_name: Optional[pulumi.Input[_builtins.str]] = None,
                  scan_day_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  start_time: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides a Threat Detection Oss Scan Config resource. Oss detection configuration.
+        Provides a Threat Detection Oss Scan Config resource.
+
+        Oss detection configuration.
 
         For information about Threat Detection Oss Scan Config and how to use it, see [What is Oss Scan Config](https://www.alibabacloud.com/help/zh/security-center/developer-reference/api-sas-2018-12-03-createossscanconfig/).
 
@@ -405,15 +539,19 @@ class OssScanConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] all_key_prefix: Match all prefixes.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] bucket_name_lists: Bucket List.
-        :param pulumi.Input[_builtins.int] enable: Enable configuration.
-        :param pulumi.Input[_builtins.str] end_time: End time, hours, minutes and seconds.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] key_prefix_lists: File prefix list.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] key_suffix_lists: File Suffix List.
-        :param pulumi.Input[_builtins.str] oss_scan_config_name: Configuration Name.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] scan_day_lists: Scan cycle.
-        :param pulumi.Input[_builtins.str] start_time: Start time, hours, minutes and seconds.
+        :param pulumi.Input[_builtins.bool] all_key_prefix: Indicates whether the prefixes of all objects are matched.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] bucket_name_lists: The names of the buckets.
+        :param pulumi.Input[_builtins.int] decompress_max_file_count: The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+        :param pulumi.Input[_builtins.int] decompress_max_layer: The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] decryption_lists: The decryption methods.
+        :param pulumi.Input[_builtins.int] enable: Indicates whether the check policy is enabled. Valid values:
+        :param pulumi.Input[_builtins.str] end_time: The end time of the check. The time is in the HH:mm:ss format.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] key_prefix_lists: The prefixes of the objects.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] key_suffix_lists: The suffixes of the objects that are checked.
+        :param pulumi.Input[_builtins.int] last_modified_start_time: The timestamp when the object was last modified. The time must be later than the timestamp that you specify. Unit: milliseconds.
+        :param pulumi.Input[_builtins.str] oss_scan_config_name: The policy name.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] scan_day_lists: The days when the check is performed. The value indicates the days of the week.
+        :param pulumi.Input[_builtins.str] start_time: The start time of the check. The time is in the HH:mm:ss format.
         """
         ...
     @overload
@@ -422,7 +560,9 @@ class OssScanConfig(pulumi.CustomResource):
                  args: OssScanConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Threat Detection Oss Scan Config resource. Oss detection configuration.
+        Provides a Threat Detection Oss Scan Config resource.
+
+        Oss detection configuration.
 
         For information about Threat Detection Oss Scan Config and how to use it, see [What is Oss Scan Config](https://www.alibabacloud.com/help/zh/security-center/developer-reference/api-sas-2018-12-03-createossscanconfig/).
 
@@ -511,10 +651,14 @@ class OssScanConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  all_key_prefix: Optional[pulumi.Input[_builtins.bool]] = None,
                  bucket_name_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 decompress_max_file_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 decompress_max_layer: Optional[pulumi.Input[_builtins.int]] = None,
+                 decryption_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  enable: Optional[pulumi.Input[_builtins.int]] = None,
                  end_time: Optional[pulumi.Input[_builtins.str]] = None,
                  key_prefix_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  key_suffix_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 last_modified_start_time: Optional[pulumi.Input[_builtins.int]] = None,
                  oss_scan_config_name: Optional[pulumi.Input[_builtins.str]] = None,
                  scan_day_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  start_time: Optional[pulumi.Input[_builtins.str]] = None,
@@ -531,6 +675,9 @@ class OssScanConfig(pulumi.CustomResource):
             if bucket_name_lists is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket_name_lists'")
             __props__.__dict__["bucket_name_lists"] = bucket_name_lists
+            __props__.__dict__["decompress_max_file_count"] = decompress_max_file_count
+            __props__.__dict__["decompress_max_layer"] = decompress_max_layer
+            __props__.__dict__["decryption_lists"] = decryption_lists
             if enable is None and not opts.urn:
                 raise TypeError("Missing required property 'enable'")
             __props__.__dict__["enable"] = enable
@@ -541,6 +688,7 @@ class OssScanConfig(pulumi.CustomResource):
             if key_suffix_lists is None and not opts.urn:
                 raise TypeError("Missing required property 'key_suffix_lists'")
             __props__.__dict__["key_suffix_lists"] = key_suffix_lists
+            __props__.__dict__["last_modified_start_time"] = last_modified_start_time
             __props__.__dict__["oss_scan_config_name"] = oss_scan_config_name
             if scan_day_lists is None and not opts.urn:
                 raise TypeError("Missing required property 'scan_day_lists'")
@@ -560,10 +708,14 @@ class OssScanConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             all_key_prefix: Optional[pulumi.Input[_builtins.bool]] = None,
             bucket_name_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            decompress_max_file_count: Optional[pulumi.Input[_builtins.int]] = None,
+            decompress_max_layer: Optional[pulumi.Input[_builtins.int]] = None,
+            decryption_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             enable: Optional[pulumi.Input[_builtins.int]] = None,
             end_time: Optional[pulumi.Input[_builtins.str]] = None,
             key_prefix_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             key_suffix_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            last_modified_start_time: Optional[pulumi.Input[_builtins.int]] = None,
             oss_scan_config_name: Optional[pulumi.Input[_builtins.str]] = None,
             scan_day_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
             start_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'OssScanConfig':
@@ -574,15 +726,19 @@ class OssScanConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] all_key_prefix: Match all prefixes.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] bucket_name_lists: Bucket List.
-        :param pulumi.Input[_builtins.int] enable: Enable configuration.
-        :param pulumi.Input[_builtins.str] end_time: End time, hours, minutes and seconds.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] key_prefix_lists: File prefix list.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] key_suffix_lists: File Suffix List.
-        :param pulumi.Input[_builtins.str] oss_scan_config_name: Configuration Name.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] scan_day_lists: Scan cycle.
-        :param pulumi.Input[_builtins.str] start_time: Start time, hours, minutes and seconds.
+        :param pulumi.Input[_builtins.bool] all_key_prefix: Indicates whether the prefixes of all objects are matched.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] bucket_name_lists: The names of the buckets.
+        :param pulumi.Input[_builtins.int] decompress_max_file_count: The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+        :param pulumi.Input[_builtins.int] decompress_max_layer: The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] decryption_lists: The decryption methods.
+        :param pulumi.Input[_builtins.int] enable: Indicates whether the check policy is enabled. Valid values:
+        :param pulumi.Input[_builtins.str] end_time: The end time of the check. The time is in the HH:mm:ss format.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] key_prefix_lists: The prefixes of the objects.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] key_suffix_lists: The suffixes of the objects that are checked.
+        :param pulumi.Input[_builtins.int] last_modified_start_time: The timestamp when the object was last modified. The time must be later than the timestamp that you specify. Unit: milliseconds.
+        :param pulumi.Input[_builtins.str] oss_scan_config_name: The policy name.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] scan_day_lists: The days when the check is performed. The value indicates the days of the week.
+        :param pulumi.Input[_builtins.str] start_time: The start time of the check. The time is in the HH:mm:ss format.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -590,10 +746,14 @@ class OssScanConfig(pulumi.CustomResource):
 
         __props__.__dict__["all_key_prefix"] = all_key_prefix
         __props__.__dict__["bucket_name_lists"] = bucket_name_lists
+        __props__.__dict__["decompress_max_file_count"] = decompress_max_file_count
+        __props__.__dict__["decompress_max_layer"] = decompress_max_layer
+        __props__.__dict__["decryption_lists"] = decryption_lists
         __props__.__dict__["enable"] = enable
         __props__.__dict__["end_time"] = end_time
         __props__.__dict__["key_prefix_lists"] = key_prefix_lists
         __props__.__dict__["key_suffix_lists"] = key_suffix_lists
+        __props__.__dict__["last_modified_start_time"] = last_modified_start_time
         __props__.__dict__["oss_scan_config_name"] = oss_scan_config_name
         __props__.__dict__["scan_day_lists"] = scan_day_lists
         __props__.__dict__["start_time"] = start_time
@@ -603,7 +763,7 @@ class OssScanConfig(pulumi.CustomResource):
     @pulumi.getter(name="allKeyPrefix")
     def all_key_prefix(self) -> pulumi.Output[_builtins.bool]:
         """
-        Match all prefixes.
+        Indicates whether the prefixes of all objects are matched.
         """
         return pulumi.get(self, "all_key_prefix")
 
@@ -611,15 +771,39 @@ class OssScanConfig(pulumi.CustomResource):
     @pulumi.getter(name="bucketNameLists")
     def bucket_name_lists(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        Bucket List.
+        The names of the buckets.
         """
         return pulumi.get(self, "bucket_name_lists")
+
+    @_builtins.property
+    @pulumi.getter(name="decompressMaxFileCount")
+    def decompress_max_file_count(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+        """
+        return pulumi.get(self, "decompress_max_file_count")
+
+    @_builtins.property
+    @pulumi.getter(name="decompressMaxLayer")
+    def decompress_max_layer(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+        """
+        return pulumi.get(self, "decompress_max_layer")
+
+    @_builtins.property
+    @pulumi.getter(name="decryptionLists")
+    def decryption_lists(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        The decryption methods.
+        """
+        return pulumi.get(self, "decryption_lists")
 
     @_builtins.property
     @pulumi.getter
     def enable(self) -> pulumi.Output[_builtins.int]:
         """
-        Enable configuration.
+        Indicates whether the check policy is enabled. Valid values:
         """
         return pulumi.get(self, "enable")
 
@@ -627,7 +811,7 @@ class OssScanConfig(pulumi.CustomResource):
     @pulumi.getter(name="endTime")
     def end_time(self) -> pulumi.Output[_builtins.str]:
         """
-        End time, hours, minutes and seconds.
+        The end time of the check. The time is in the HH:mm:ss format.
         """
         return pulumi.get(self, "end_time")
 
@@ -635,7 +819,7 @@ class OssScanConfig(pulumi.CustomResource):
     @pulumi.getter(name="keyPrefixLists")
     def key_prefix_lists(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        File prefix list.
+        The prefixes of the objects.
         """
         return pulumi.get(self, "key_prefix_lists")
 
@@ -643,15 +827,23 @@ class OssScanConfig(pulumi.CustomResource):
     @pulumi.getter(name="keySuffixLists")
     def key_suffix_lists(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        File Suffix List.
+        The suffixes of the objects that are checked.
         """
         return pulumi.get(self, "key_suffix_lists")
+
+    @_builtins.property
+    @pulumi.getter(name="lastModifiedStartTime")
+    def last_modified_start_time(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The timestamp when the object was last modified. The time must be later than the timestamp that you specify. Unit: milliseconds.
+        """
+        return pulumi.get(self, "last_modified_start_time")
 
     @_builtins.property
     @pulumi.getter(name="ossScanConfigName")
     def oss_scan_config_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Configuration Name.
+        The policy name.
         """
         return pulumi.get(self, "oss_scan_config_name")
 
@@ -659,7 +851,7 @@ class OssScanConfig(pulumi.CustomResource):
     @pulumi.getter(name="scanDayLists")
     def scan_day_lists(self) -> pulumi.Output[Sequence[_builtins.int]]:
         """
-        Scan cycle.
+        The days when the check is performed. The value indicates the days of the week.
         """
         return pulumi.get(self, "scan_day_lists")
 
@@ -667,7 +859,7 @@ class OssScanConfig(pulumi.CustomResource):
     @pulumi.getter(name="startTime")
     def start_time(self) -> pulumi.Output[_builtins.str]:
         """
-        Start time, hours, minutes and seconds.
+        The start time of the check. The time is in the HH:mm:ss format.
         """
         return pulumi.get(self, "start_time")
 

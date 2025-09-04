@@ -18,6 +18,10 @@ public final class GetInstanceClassesInstanceClass {
      * 
      */
     private String instanceClass;
+    /**
+     * @return Unit price of instance specifications.
+     * 
+     */
     private String price;
     /**
      * @return DB Instance available storage range.
@@ -38,6 +42,10 @@ public final class GetInstanceClassesInstanceClass {
     public String instanceClass() {
         return this.instanceClass;
     }
+    /**
+     * @return Unit price of instance specifications.
+     * 
+     */
     public String price() {
         return this.price;
     }

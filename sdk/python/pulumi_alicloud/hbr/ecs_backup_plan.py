@@ -667,8 +667,8 @@ class EcsBackupPlan(pulumi.CustomResource):
                 "/home",
                 "/var",
             ],
-            exclude="  [\\"/home/exclude\\"]\\n",
-            include="  [\\"/home/include\\"]\\n")
+            exclude="  [\\\\\\"/home/exclude\\\\\\"]\\n",
+            include="  [\\\\\\"/home/include\\\\\\"]\\n")
         ```
 
         ## Notice
@@ -785,8 +785,8 @@ class EcsBackupPlan(pulumi.CustomResource):
                 "/home",
                 "/var",
             ],
-            exclude="  [\\"/home/exclude\\"]\\n",
-            include="  [\\"/home/include\\"]\\n")
+            exclude="  [\\\\\\"/home/exclude\\\\\\"]\\n",
+            include="  [\\\\\\"/home/include\\\\\\"]\\n")
         ```
 
         ## Notice

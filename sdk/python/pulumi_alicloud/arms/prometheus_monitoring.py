@@ -191,6 +191,101 @@ class PrometheusMonitoring(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.209.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_network = alicloud.vpc.Network("default",
+            cidr_block="192.168.0.0/16",
+            vpc_name=name)
+        vswitch = alicloud.vpc.Switch("vswitch",
+            vpc_id=default_network.id,
+            cidr_block=default_network.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+                newbits=8,
+                netnum=8)).apply(lambda invoke: invoke.result),
+            zone_id=default.zones[0].id,
+            vswitch_name=name)
+        default_snapshot_policy = alicloud.ecs.SnapshotPolicy("default",
+            name=name,
+            repeat_weekdays=[
+                "1",
+                "2",
+                "3",
+            ],
+            retention_days=-1,
+            time_points=[
+                "1",
+                "22",
+                "23",
+            ])
+        default_get_instance_types = vswitch.zone_id.apply(lambda zone_id: alicloud.ecs.get_instance_types_output(availability_zone=zone_id,
+            cpu_core_count=2,
+            memory_size=4,
+            kubernetes_node_role="Worker",
+            instance_type_family="ecs.sn1ne"))
+        default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
+            name=name,
+            cluster_spec="ack.pro.small",
+            version="1.24.6-aliyun.1",
+            new_nat_gateway=True,
+            node_cidr_mask=26,
+            proxy_mode="ipvs",
+            service_cidr="172.23.0.0/16",
+            pod_cidr="10.95.0.0/16",
+            worker_vswitch_ids=[vswitch.id])
+        default_integer = random.index.Integer("default",
+            max=99999,
+            min=10000)
+        default_key_pair = alicloud.ecs.KeyPair("default", key_pair_name=f"{name}-{default_integer['result']}")
+        default_node_pool = alicloud.cs.NodePool("default",
+            node_pool_name="desired_size",
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[vswitch.id],
+            instance_types=[default_get_instance_types.instance_types[0].id],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=default_key_pair.key_pair_name,
+            desired_size="2")
+        default_prometheus = alicloud.arms.Prometheus("default",
+            cluster_type="aliyun-cs",
+            grafana_instance_id="free",
+            cluster_id=default_node_pool.cluster_id)
+        default_prometheus_monitoring = alicloud.arms.PrometheusMonitoring("default",
+            status="run",
+            type="serviceMonitor",
+            cluster_id=default_prometheus.cluster_id,
+            config_yaml=\"\"\"apiVersion: monitoring.coreos.com/v1
+        kind: ServiceMonitor
+        metadata:
+          name: tomcat-demo
+          namespace: default
+        spec:
+          endpoints:
+          - bearerTokenSecret:
+              key: ''
+            interval: 30s
+            path: /metrics
+            port: tomcat-monitor
+          namespaceSelector:
+            any: true
+          selector:
+            matchLabels:
+              app: tomcat
+        \"\"\")
+        ```
+
         ## Import
 
         ARMS Prometheus Monitoring can be imported using the id, e.g.
@@ -218,6 +313,101 @@ class PrometheusMonitoring(pulumi.CustomResource):
         For information about ARMS Prometheus Monitoring and how to use it, see [What is Prometheus Monitoring](https://www.alibabacloud.com/help/en/arms/prometheus-monitoring/api-arms-2019-08-08-createprometheusmonitoring).
 
         > **NOTE:** Available since v1.209.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_network = alicloud.vpc.Network("default",
+            cidr_block="192.168.0.0/16",
+            vpc_name=name)
+        vswitch = alicloud.vpc.Switch("vswitch",
+            vpc_id=default_network.id,
+            cidr_block=default_network.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+                newbits=8,
+                netnum=8)).apply(lambda invoke: invoke.result),
+            zone_id=default.zones[0].id,
+            vswitch_name=name)
+        default_snapshot_policy = alicloud.ecs.SnapshotPolicy("default",
+            name=name,
+            repeat_weekdays=[
+                "1",
+                "2",
+                "3",
+            ],
+            retention_days=-1,
+            time_points=[
+                "1",
+                "22",
+                "23",
+            ])
+        default_get_instance_types = vswitch.zone_id.apply(lambda zone_id: alicloud.ecs.get_instance_types_output(availability_zone=zone_id,
+            cpu_core_count=2,
+            memory_size=4,
+            kubernetes_node_role="Worker",
+            instance_type_family="ecs.sn1ne"))
+        default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
+            name=name,
+            cluster_spec="ack.pro.small",
+            version="1.24.6-aliyun.1",
+            new_nat_gateway=True,
+            node_cidr_mask=26,
+            proxy_mode="ipvs",
+            service_cidr="172.23.0.0/16",
+            pod_cidr="10.95.0.0/16",
+            worker_vswitch_ids=[vswitch.id])
+        default_integer = random.index.Integer("default",
+            max=99999,
+            min=10000)
+        default_key_pair = alicloud.ecs.KeyPair("default", key_pair_name=f"{name}-{default_integer['result']}")
+        default_node_pool = alicloud.cs.NodePool("default",
+            node_pool_name="desired_size",
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[vswitch.id],
+            instance_types=[default_get_instance_types.instance_types[0].id],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=default_key_pair.key_pair_name,
+            desired_size="2")
+        default_prometheus = alicloud.arms.Prometheus("default",
+            cluster_type="aliyun-cs",
+            grafana_instance_id="free",
+            cluster_id=default_node_pool.cluster_id)
+        default_prometheus_monitoring = alicloud.arms.PrometheusMonitoring("default",
+            status="run",
+            type="serviceMonitor",
+            cluster_id=default_prometheus.cluster_id,
+            config_yaml=\"\"\"apiVersion: monitoring.coreos.com/v1
+        kind: ServiceMonitor
+        metadata:
+          name: tomcat-demo
+          namespace: default
+        spec:
+          endpoints:
+          - bearerTokenSecret:
+              key: ''
+            interval: 30s
+            path: /metrics
+            port: tomcat-monitor
+          namespaceSelector:
+            any: true
+          selector:
+            matchLabels:
+              app: tomcat
+        \"\"\")
+        ```
 
         ## Import
 

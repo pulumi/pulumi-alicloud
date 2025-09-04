@@ -6,7 +6,10 @@ package com.pulumi.alicloud.sls;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.sls.inputs.GetAlertsArgs;
 import com.pulumi.alicloud.sls.inputs.GetAlertsPlainArgs;
+import com.pulumi.alicloud.sls.inputs.GetEtlsArgs;
+import com.pulumi.alicloud.sls.inputs.GetEtlsPlainArgs;
 import com.pulumi.alicloud.sls.outputs.GetAlertsResult;
+import com.pulumi.alicloud.sls.outputs.GetEtlsResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
@@ -934,5 +937,460 @@ public final class SlsFunctions {
      */
     public static CompletableFuture<GetAlertsResult> getAlertsPlain(GetAlertsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:sls/getAlerts:getAlerts", TypeShape.of(GetAlertsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Sls Etl available to the user.[What is Etl](https://next.api.alibabacloud.com/document/Sls/2020-12-30/CreateETL)
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.Project;
+     * import com.pulumi.alicloud.log.ProjectArgs;
+     * import com.pulumi.alicloud.log.Store;
+     * import com.pulumi.alicloud.log.StoreArgs;
+     * import com.pulumi.alicloud.sls.Etl;
+     * import com.pulumi.alicloud.sls.EtlArgs;
+     * import com.pulumi.alicloud.sls.inputs.EtlConfigurationArgs;
+     * import com.pulumi.alicloud.sls.SlsFunctions;
+     * import com.pulumi.alicloud.sls.inputs.GetEtlsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaulthhAPo6 = new Project("defaulthhAPo6", ProjectArgs.builder()
+     *             .description("terraform-etl-example-813")
+     *             .projectName("terraform-etl-example-330")
+     *             .build());
+     * 
+     *         var defaultzWKLkp = new Store("defaultzWKLkp", StoreArgs.builder()
+     *             .hotTtl(8)
+     *             .retentionPeriod(30)
+     *             .shardCount(2)
+     *             .projectName(defaulthhAPo6.id())
+     *             .logstoreName("example")
+     *             .build());
+     * 
+     *         var defaultEtl = new Etl("defaultEtl", EtlArgs.builder()
+     *             .project(defaulthhAPo6.id())
+     *             .description("etl-1740472705-185721")
+     *             .configuration(EtlConfigurationArgs.builder()
+     *                 .script("* | extend a=1")
+     *                 .lang("SPL")
+     *                 .roleArn(name)
+     *                 .sinks(EtlConfigurationSinkArgs.builder()
+     *                     .name("11111")
+     *                     .endpoint("cn-hangzhou-intranet.log.aliyuncs.com")
+     *                     .project("gy-hangzhou-huolang-1")
+     *                     .logstore("gy-rm2")
+     *                     .datasets("__UNNAMED__")
+     *                     .roleArn(name)
+     *                     .build())
+     *                 .logstore(defaultzWKLkp.logstoreName())
+     *                 .fromTime(1706771697)
+     *                 .toTime(1738394097)
+     *                 .build())
+     *             .jobName("etl-1740472705-185721")
+     *             .displayName("etl-1740472705-185721")
+     *             .build());
+     * 
+     *         final var default = SlsFunctions.getEtls(GetEtlsArgs.builder()
+     *             .logstore(defaultzWKLkp.name())
+     *             .project(defaulthhAPo6.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudSlsEtlExampleId", default_.applyValue(_default_ -> _default_.etls()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEtlsResult> getEtls(GetEtlsArgs args) {
+        return getEtls(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Sls Etl available to the user.[What is Etl](https://next.api.alibabacloud.com/document/Sls/2020-12-30/CreateETL)
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.Project;
+     * import com.pulumi.alicloud.log.ProjectArgs;
+     * import com.pulumi.alicloud.log.Store;
+     * import com.pulumi.alicloud.log.StoreArgs;
+     * import com.pulumi.alicloud.sls.Etl;
+     * import com.pulumi.alicloud.sls.EtlArgs;
+     * import com.pulumi.alicloud.sls.inputs.EtlConfigurationArgs;
+     * import com.pulumi.alicloud.sls.SlsFunctions;
+     * import com.pulumi.alicloud.sls.inputs.GetEtlsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaulthhAPo6 = new Project("defaulthhAPo6", ProjectArgs.builder()
+     *             .description("terraform-etl-example-813")
+     *             .projectName("terraform-etl-example-330")
+     *             .build());
+     * 
+     *         var defaultzWKLkp = new Store("defaultzWKLkp", StoreArgs.builder()
+     *             .hotTtl(8)
+     *             .retentionPeriod(30)
+     *             .shardCount(2)
+     *             .projectName(defaulthhAPo6.id())
+     *             .logstoreName("example")
+     *             .build());
+     * 
+     *         var defaultEtl = new Etl("defaultEtl", EtlArgs.builder()
+     *             .project(defaulthhAPo6.id())
+     *             .description("etl-1740472705-185721")
+     *             .configuration(EtlConfigurationArgs.builder()
+     *                 .script("* | extend a=1")
+     *                 .lang("SPL")
+     *                 .roleArn(name)
+     *                 .sinks(EtlConfigurationSinkArgs.builder()
+     *                     .name("11111")
+     *                     .endpoint("cn-hangzhou-intranet.log.aliyuncs.com")
+     *                     .project("gy-hangzhou-huolang-1")
+     *                     .logstore("gy-rm2")
+     *                     .datasets("__UNNAMED__")
+     *                     .roleArn(name)
+     *                     .build())
+     *                 .logstore(defaultzWKLkp.logstoreName())
+     *                 .fromTime(1706771697)
+     *                 .toTime(1738394097)
+     *                 .build())
+     *             .jobName("etl-1740472705-185721")
+     *             .displayName("etl-1740472705-185721")
+     *             .build());
+     * 
+     *         final var default = SlsFunctions.getEtls(GetEtlsArgs.builder()
+     *             .logstore(defaultzWKLkp.name())
+     *             .project(defaulthhAPo6.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudSlsEtlExampleId", default_.applyValue(_default_ -> _default_.etls()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetEtlsResult> getEtlsPlain(GetEtlsPlainArgs args) {
+        return getEtlsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Sls Etl available to the user.[What is Etl](https://next.api.alibabacloud.com/document/Sls/2020-12-30/CreateETL)
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.Project;
+     * import com.pulumi.alicloud.log.ProjectArgs;
+     * import com.pulumi.alicloud.log.Store;
+     * import com.pulumi.alicloud.log.StoreArgs;
+     * import com.pulumi.alicloud.sls.Etl;
+     * import com.pulumi.alicloud.sls.EtlArgs;
+     * import com.pulumi.alicloud.sls.inputs.EtlConfigurationArgs;
+     * import com.pulumi.alicloud.sls.SlsFunctions;
+     * import com.pulumi.alicloud.sls.inputs.GetEtlsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaulthhAPo6 = new Project("defaulthhAPo6", ProjectArgs.builder()
+     *             .description("terraform-etl-example-813")
+     *             .projectName("terraform-etl-example-330")
+     *             .build());
+     * 
+     *         var defaultzWKLkp = new Store("defaultzWKLkp", StoreArgs.builder()
+     *             .hotTtl(8)
+     *             .retentionPeriod(30)
+     *             .shardCount(2)
+     *             .projectName(defaulthhAPo6.id())
+     *             .logstoreName("example")
+     *             .build());
+     * 
+     *         var defaultEtl = new Etl("defaultEtl", EtlArgs.builder()
+     *             .project(defaulthhAPo6.id())
+     *             .description("etl-1740472705-185721")
+     *             .configuration(EtlConfigurationArgs.builder()
+     *                 .script("* | extend a=1")
+     *                 .lang("SPL")
+     *                 .roleArn(name)
+     *                 .sinks(EtlConfigurationSinkArgs.builder()
+     *                     .name("11111")
+     *                     .endpoint("cn-hangzhou-intranet.log.aliyuncs.com")
+     *                     .project("gy-hangzhou-huolang-1")
+     *                     .logstore("gy-rm2")
+     *                     .datasets("__UNNAMED__")
+     *                     .roleArn(name)
+     *                     .build())
+     *                 .logstore(defaultzWKLkp.logstoreName())
+     *                 .fromTime(1706771697)
+     *                 .toTime(1738394097)
+     *                 .build())
+     *             .jobName("etl-1740472705-185721")
+     *             .displayName("etl-1740472705-185721")
+     *             .build());
+     * 
+     *         final var default = SlsFunctions.getEtls(GetEtlsArgs.builder()
+     *             .logstore(defaultzWKLkp.name())
+     *             .project(defaulthhAPo6.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudSlsEtlExampleId", default_.applyValue(_default_ -> _default_.etls()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEtlsResult> getEtls(GetEtlsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:sls/getEtls:getEtls", TypeShape.of(GetEtlsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Sls Etl available to the user.[What is Etl](https://next.api.alibabacloud.com/document/Sls/2020-12-30/CreateETL)
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.Project;
+     * import com.pulumi.alicloud.log.ProjectArgs;
+     * import com.pulumi.alicloud.log.Store;
+     * import com.pulumi.alicloud.log.StoreArgs;
+     * import com.pulumi.alicloud.sls.Etl;
+     * import com.pulumi.alicloud.sls.EtlArgs;
+     * import com.pulumi.alicloud.sls.inputs.EtlConfigurationArgs;
+     * import com.pulumi.alicloud.sls.SlsFunctions;
+     * import com.pulumi.alicloud.sls.inputs.GetEtlsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaulthhAPo6 = new Project("defaulthhAPo6", ProjectArgs.builder()
+     *             .description("terraform-etl-example-813")
+     *             .projectName("terraform-etl-example-330")
+     *             .build());
+     * 
+     *         var defaultzWKLkp = new Store("defaultzWKLkp", StoreArgs.builder()
+     *             .hotTtl(8)
+     *             .retentionPeriod(30)
+     *             .shardCount(2)
+     *             .projectName(defaulthhAPo6.id())
+     *             .logstoreName("example")
+     *             .build());
+     * 
+     *         var defaultEtl = new Etl("defaultEtl", EtlArgs.builder()
+     *             .project(defaulthhAPo6.id())
+     *             .description("etl-1740472705-185721")
+     *             .configuration(EtlConfigurationArgs.builder()
+     *                 .script("* | extend a=1")
+     *                 .lang("SPL")
+     *                 .roleArn(name)
+     *                 .sinks(EtlConfigurationSinkArgs.builder()
+     *                     .name("11111")
+     *                     .endpoint("cn-hangzhou-intranet.log.aliyuncs.com")
+     *                     .project("gy-hangzhou-huolang-1")
+     *                     .logstore("gy-rm2")
+     *                     .datasets("__UNNAMED__")
+     *                     .roleArn(name)
+     *                     .build())
+     *                 .logstore(defaultzWKLkp.logstoreName())
+     *                 .fromTime(1706771697)
+     *                 .toTime(1738394097)
+     *                 .build())
+     *             .jobName("etl-1740472705-185721")
+     *             .displayName("etl-1740472705-185721")
+     *             .build());
+     * 
+     *         final var default = SlsFunctions.getEtls(GetEtlsArgs.builder()
+     *             .logstore(defaultzWKLkp.name())
+     *             .project(defaulthhAPo6.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudSlsEtlExampleId", default_.applyValue(_default_ -> _default_.etls()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEtlsResult> getEtls(GetEtlsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:sls/getEtls:getEtls", TypeShape.of(GetEtlsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Sls Etl available to the user.[What is Etl](https://next.api.alibabacloud.com/document/Sls/2020-12-30/CreateETL)
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.Project;
+     * import com.pulumi.alicloud.log.ProjectArgs;
+     * import com.pulumi.alicloud.log.Store;
+     * import com.pulumi.alicloud.log.StoreArgs;
+     * import com.pulumi.alicloud.sls.Etl;
+     * import com.pulumi.alicloud.sls.EtlArgs;
+     * import com.pulumi.alicloud.sls.inputs.EtlConfigurationArgs;
+     * import com.pulumi.alicloud.sls.SlsFunctions;
+     * import com.pulumi.alicloud.sls.inputs.GetEtlsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaulthhAPo6 = new Project("defaulthhAPo6", ProjectArgs.builder()
+     *             .description("terraform-etl-example-813")
+     *             .projectName("terraform-etl-example-330")
+     *             .build());
+     * 
+     *         var defaultzWKLkp = new Store("defaultzWKLkp", StoreArgs.builder()
+     *             .hotTtl(8)
+     *             .retentionPeriod(30)
+     *             .shardCount(2)
+     *             .projectName(defaulthhAPo6.id())
+     *             .logstoreName("example")
+     *             .build());
+     * 
+     *         var defaultEtl = new Etl("defaultEtl", EtlArgs.builder()
+     *             .project(defaulthhAPo6.id())
+     *             .description("etl-1740472705-185721")
+     *             .configuration(EtlConfigurationArgs.builder()
+     *                 .script("* | extend a=1")
+     *                 .lang("SPL")
+     *                 .roleArn(name)
+     *                 .sinks(EtlConfigurationSinkArgs.builder()
+     *                     .name("11111")
+     *                     .endpoint("cn-hangzhou-intranet.log.aliyuncs.com")
+     *                     .project("gy-hangzhou-huolang-1")
+     *                     .logstore("gy-rm2")
+     *                     .datasets("__UNNAMED__")
+     *                     .roleArn(name)
+     *                     .build())
+     *                 .logstore(defaultzWKLkp.logstoreName())
+     *                 .fromTime(1706771697)
+     *                 .toTime(1738394097)
+     *                 .build())
+     *             .jobName("etl-1740472705-185721")
+     *             .displayName("etl-1740472705-185721")
+     *             .build());
+     * 
+     *         final var default = SlsFunctions.getEtls(GetEtlsArgs.builder()
+     *             .logstore(defaultzWKLkp.name())
+     *             .project(defaulthhAPo6.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudSlsEtlExampleId", default_.applyValue(_default_ -> _default_.etls()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetEtlsResult> getEtlsPlain(GetEtlsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:sls/getEtls:getEtls", TypeShape.of(GetEtlsResult.class), args, Utilities.withVersion(options));
     }
 }

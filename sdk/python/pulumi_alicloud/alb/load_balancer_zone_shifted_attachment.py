@@ -160,6 +160,68 @@ class LoadBalancerZoneShiftedAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.242.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        alb_example_tf_vpc = alicloud.vpc.Network("alb_example_tf_vpc",
+            vpc_name=name,
+            cidr_block="192.168.0.0/16")
+        alb_example_tf_j = alicloud.vpc.Switch("alb_example_tf_j",
+            vpc_id=alb_example_tf_vpc.id,
+            zone_id="cn-beijing-j",
+            cidr_block="192.168.1.0/24",
+            vswitch_name=std.format(input="%s1",
+                args=[name]).result)
+        alb_example_tf_k = alicloud.vpc.Switch("alb_example_tf_k",
+            vpc_id=alb_example_tf_vpc.id,
+            zone_id="cn-beijing-k",
+            cidr_block="192.168.2.0/24",
+            vswitch_name=std.format(input="%s2",
+                args=[name]).result)
+        default_dsy0_jj = alicloud.vpc.Switch("defaultDSY0JJ",
+            vpc_id=alb_example_tf_vpc.id,
+            zone_id="cn-beijing-f",
+            cidr_block="192.168.3.0/24",
+            vswitch_name=std.format(input="%s3",
+                args=[name]).result)
+        default78_tiyg = alicloud.alb.LoadBalancer("default78TIYG",
+            load_balancer_edition="Standard",
+            vpc_id=alb_example_tf_vpc.id,
+            load_balancer_billing_config={
+                "pay_type": "PayAsYouGo",
+            },
+            address_type="Intranet",
+            address_allocated_mode="Fixed",
+            zone_mappings=[
+                {
+                    "vswitch_id": alb_example_tf_j.id,
+                    "zone_id": alb_example_tf_j.zone_id,
+                },
+                {
+                    "vswitch_id": alb_example_tf_k.id,
+                    "zone_id": alb_example_tf_k.zone_id,
+                },
+                {
+                    "vswitch_id": default_dsy0_jj.id,
+                    "zone_id": default_dsy0_jj.zone_id,
+                },
+            ])
+        default = alicloud.alb.LoadBalancerZoneShiftedAttachment("default",
+            zone_id=default_dsy0_jj.zone_id,
+            vswitch_id=default_dsy0_jj.id,
+            load_balancer_id=default78_tiyg.id)
+        ```
+
         ## Import
 
         Application Load Balancer (ALB) Load Balancer Zone Shifted Attachment can be imported using the id, e.g.
@@ -188,6 +250,68 @@ class LoadBalancerZoneShiftedAttachment(pulumi.CustomResource):
         For information about Application Load Balancer (ALB) Load Balancer Zone Shifted Attachment and how to use it, see [What is Load Balancer Zone Shifted Attachment](https://www.alibabacloud.com/help/en/).
 
         > **NOTE:** Available since v1.242.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        alb_example_tf_vpc = alicloud.vpc.Network("alb_example_tf_vpc",
+            vpc_name=name,
+            cidr_block="192.168.0.0/16")
+        alb_example_tf_j = alicloud.vpc.Switch("alb_example_tf_j",
+            vpc_id=alb_example_tf_vpc.id,
+            zone_id="cn-beijing-j",
+            cidr_block="192.168.1.0/24",
+            vswitch_name=std.format(input="%s1",
+                args=[name]).result)
+        alb_example_tf_k = alicloud.vpc.Switch("alb_example_tf_k",
+            vpc_id=alb_example_tf_vpc.id,
+            zone_id="cn-beijing-k",
+            cidr_block="192.168.2.0/24",
+            vswitch_name=std.format(input="%s2",
+                args=[name]).result)
+        default_dsy0_jj = alicloud.vpc.Switch("defaultDSY0JJ",
+            vpc_id=alb_example_tf_vpc.id,
+            zone_id="cn-beijing-f",
+            cidr_block="192.168.3.0/24",
+            vswitch_name=std.format(input="%s3",
+                args=[name]).result)
+        default78_tiyg = alicloud.alb.LoadBalancer("default78TIYG",
+            load_balancer_edition="Standard",
+            vpc_id=alb_example_tf_vpc.id,
+            load_balancer_billing_config={
+                "pay_type": "PayAsYouGo",
+            },
+            address_type="Intranet",
+            address_allocated_mode="Fixed",
+            zone_mappings=[
+                {
+                    "vswitch_id": alb_example_tf_j.id,
+                    "zone_id": alb_example_tf_j.zone_id,
+                },
+                {
+                    "vswitch_id": alb_example_tf_k.id,
+                    "zone_id": alb_example_tf_k.zone_id,
+                },
+                {
+                    "vswitch_id": default_dsy0_jj.id,
+                    "zone_id": default_dsy0_jj.zone_id,
+                },
+            ])
+        default = alicloud.alb.LoadBalancerZoneShiftedAttachment("default",
+            zone_id=default_dsy0_jj.zone_id,
+            vswitch_id=default_dsy0_jj.id,
+            load_balancer_id=default78_tiyg.id)
+        ```
 
         ## Import
 

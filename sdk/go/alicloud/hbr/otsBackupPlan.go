@@ -88,21 +88,23 @@ import (
 //			}
 //			defaultRole, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
 //				Name: pulumi.String("hbrexamplerole"),
-//				Document: pulumi.String(`		{
-//				"Statement": [
-//				{
-//					"Action": "sts:AssumeRole",
-//					"Effect": "Allow",
-//					"Principal": {
-//						"Service": [
-//							"crossbackup.hbr.aliyuncs.com"
-//						]
-//					}
-//				}
-//				],
-//	  			"Version": "1"
-//			}
+//				Document: pulumi.String(`\t\t{
 //
+// \t\t\t\"Statement\": [
+// \t\t\t{
+// \t\t\t\t\"Action\": \"sts:AssumeRole\",
+// \t\t\t\t\"Effect\": \"Allow\",
+// \t\t\t\t\"Principal\": {
+// \t\t\t\t\t\"Service\": [
+// \t\t\t\t\t\t\"crossbackup.hbr.aliyuncs.com\"
+// \t\t\t\t\t]
+// \t\t\t\t}
+// \t\t\t}
+// \t\t\t],
+//
+//	\t\t\t\"Version\": \"1\"
+//
+// \t\t}
 // `),
 //
 //				Force: pulumi.Bool(true),

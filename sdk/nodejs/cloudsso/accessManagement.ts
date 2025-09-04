@@ -15,6 +15,55 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.cloudsso.getDirectories({});
+ * const defaultGetResourceDirectories = alicloud.resourcemanager.getResourceDirectories({});
+ * const defaultInteger = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const defaultDirectory: alicloud.cloudsso.Directory[] = [];
+ * _default.then(_default => _default.ids).length.apply(length => {
+ *     for (const range = {value: 0}; range.value < (length > 0 ? 0 : 1); range.value++) {
+ *         defaultDirectory.push(new alicloud.cloudsso.Directory(`default-${range.value}`, {directoryName: name}));
+ *     }
+ * });
+ * const directoryId = pulumi.all([_default.then(_default => _default.ids).length, _default, std.concat({
+ *     input: [
+ *         defaultDirectory.map(__item => __item.id),
+ *         [""],
+ *     ],
+ * })]).apply(([length, _default, invoke]) => length > 0 ? _default.ids?.[0] : invoke.result?.[0]);
+ * const defaultUser = new alicloud.cloudsso.User("default", {
+ *     directoryId: directoryId,
+ *     userName: `${name}-${defaultInteger.result}`,
+ * });
+ * const defaultAccessConfiguration = new alicloud.cloudsso.AccessConfiguration("default", {
+ *     directoryId: directoryId,
+ *     accessConfigurationName: `${name}-${defaultInteger.result}`,
+ * });
+ * const defaultAccessManagement = new alicloud.cloudsso.AccessManagement("default", {
+ *     directoryId: directoryId,
+ *     accessConfigurationId: defaultAccessConfiguration.accessConfigurationId,
+ *     targetType: "RD-Account",
+ *     targetId: defaultGetResourceDirectories.then(defaultGetResourceDirectories => defaultGetResourceDirectories.directories?.[0]?.masterAccountId),
+ *     principalType: "User",
+ *     principalId: defaultUser.userId,
+ *     deprovisionStrategy: "DeprovisionForLastAccessAssignmentOnAccount",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Cloud SSO Access Assignment can be imported using the id, e.g.

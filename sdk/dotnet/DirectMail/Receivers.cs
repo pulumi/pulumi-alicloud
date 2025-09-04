@@ -16,6 +16,38 @@ namespace Pulumi.AliCloud.DirectMail
     /// 
     /// &gt; **NOTE:** Available since v1.125.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tfexample";
+    ///     var example = new AliCloud.DirectMail.Receivers("example", new()
+    ///     {
+    ///         ReceiversAlias = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s@onaliyun.com",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         ReceiversName = name,
+    ///         Description = name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Direct Mail Receivers can be imported using the id, e.g.

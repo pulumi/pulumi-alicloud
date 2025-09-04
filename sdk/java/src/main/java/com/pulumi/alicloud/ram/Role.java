@@ -39,8 +39,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.integer;
- * import com.pulumi.random.integerArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.ram.Role;
  * import com.pulumi.alicloud.ram.RoleArgs;
  * import java.util.List;
@@ -65,19 +65,19 @@ import javax.annotation.Nullable;
  *             .roleName(String.format("terraform-example-%s", default_.result()))
  *             .assumeRolePolicyDocument("""
  *   {
- *     "Statement": [
+ *     \"Statement\": [
  *       {
- *         "Action": "sts:AssumeRole",
- *         "Effect": "Allow",
- *         "Principal": {
- *           "Service": [
- *             "apigateway.aliyuncs.com",
- *             "ecs.aliyuncs.com"
+ *         \"Action\": \"sts:AssumeRole\",
+ *         \"Effect\": \"Allow\",
+ *         \"Principal\": {
+ *           \"Service\": [
+ *             \"apigateway.aliyuncs.com\",
+ *             \"ecs.aliyuncs.com\"
  *           ]
  *         }
  *       }
  *     ],
- *     "Version": "1"
+ *     \"Version\": \"1\"
  *   }
  *             """)
  *             .description("this is a role test.")

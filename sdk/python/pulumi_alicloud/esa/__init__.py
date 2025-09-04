@@ -25,7 +25,10 @@ from .kv import *
 from .kv_namespace import *
 from .list import *
 from .network_optimization import *
+from .origin_ca_certificate import *
+from .origin_client_certificate import *
 from .origin_pool import *
+from .origin_protection import *
 from .origin_rule import *
 from .page import *
 from .rate_plan_instance import *
@@ -38,6 +41,7 @@ from .scheduled_preload_execution import *
 from .scheduled_preload_job import *
 from .site import *
 from .site_delivery_task import *
+from .site_origin_client_certificate import *
 from .version import *
 from .video_processing import *
 from .waiting_room import *

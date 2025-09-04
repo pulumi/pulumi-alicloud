@@ -35,21 +35,21 @@ namespace Pulumi.AliCloud.Log
     ///         Description = "user tf resource desc",
     ///         ExtInfo = "{}",
     ///         Schema = @"    {
-    ///       ""schema"": [
+    ///       \""schema\"": [
     ///         {
-    ///           ""column"": ""col1"",
-    ///           ""desc"": ""col1   desc"",
-    ///           ""ext_info"": {
+    ///           \""column\"": \""col1\"",
+    ///           \""desc\"": \""col1   desc\"",
+    ///           \""ext_info\"": {
     ///           },
-    ///           ""required"": true,
-    ///           ""type"": ""string""
+    ///           \""required\"": true,
+    ///           \""type\"": \""string\""
     ///         },
     ///         {
-    ///           ""column"": ""col2"",
-    ///           ""desc"": ""col2   desc"",
-    ///           ""ext_info"": ""optional"",
-    ///           ""required"": true,
-    ///           ""type"": ""string""
+    ///           \""column\"": \""col2\"",
+    ///           \""desc\"": \""col2   desc\"",
+    ///           \""ext_info\"": \""optional\"",
+    ///           \""required\"": true,
+    ///           \""type\"": \""string\""
     ///         }
     ///       ]
     ///     }
@@ -62,16 +62,16 @@ namespace Pulumi.AliCloud.Log
     ///         RecordId = "tf_user_example",
     ///         Tag = "tf example",
     ///         Value = @"{
-    ///   ""user_name"": ""tf example"",
-    ///   ""sms_enabled"": true,
-    ///   ""phone"": ""18888888889"",
-    ///   ""voice_enabled"": false,
-    ///   ""email"": [
-    ///     ""test@qq.com""
+    ///   \""user_name\"": \""tf example\"",
+    ///   \""sms_enabled\"": true,
+    ///   \""phone\"": \""18888888889\"",
+    ///   \""voice_enabled\"": false,
+    ///   \""email\"": [
+    ///     \""test@qq.com\""
     ///   ],
-    ///   ""enabled"": true,
-    ///   ""user_id"": ""tf_user"",
-    ///   ""country_code"": ""86""
+    ///   \""enabled\"": true,
+    ///   \""user_id\"": \""tf_user\"",
+    ///   \""country_code\"": \""86\""
     /// }
     /// ",
     ///     });

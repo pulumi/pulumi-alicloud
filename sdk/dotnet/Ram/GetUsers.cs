@@ -54,22 +54,22 @@ namespace Pulumi.AliCloud.Ram
         ///     var defaultPolicy = new AliCloud.Ram.Policy("default", new()
         ///     {
         ///         PolicyName = "ram-policy-example",
-        ///         PolicyDocument = @"			{
-        /// 				""Statement"": [
-        /// 				 {
-        /// 					""Action"": [
-        /// 					""oss:ListObjects"",
-        /// 					""oss:ListObjects""
-        /// 			  		],
-        /// 			  		""Effect"": ""Deny"",
-        /// 			  		""Resource"": [
-        /// 						""acs:oss:*:*:mybucket"",
-        /// 						""acs:oss:*:*:mybucket/*""
-        /// 			  		]
-        /// 				 }
-        /// 		  		],
-        /// 				""Version"": ""1""
-        /// 			}
+        ///         PolicyDocument = @"\t\t\t{
+        /// \t\t\t\t\""Statement\"": [
+        /// \t\t\t\t {
+        /// \t\t\t\t\t\""Action\"": [
+        /// \t\t\t\t\t\""oss:ListObjects\"",
+        /// \t\t\t\t\t\""oss:ListObjects\""
+        /// \t\t\t  \t\t],
+        /// \t\t\t  \t\t\""Effect\"": \""Deny\"",
+        /// \t\t\t  \t\t\""Resource\"": [
+        /// \t\t\t\t\t\t\""acs:oss:*:*:mybucket\"",
+        /// \t\t\t\t\t\t\""acs:oss:*:*:mybucket/*\""
+        /// \t\t\t  \t\t]
+        /// \t\t\t\t }
+        /// \t\t  \t\t],
+        /// \t\t\t\t\""Version\"": \""1\""
+        /// \t\t\t}
         /// ",
         ///         Description = "this is a policy example",
         ///         Force = true,
@@ -144,22 +144,22 @@ namespace Pulumi.AliCloud.Ram
         ///     var defaultPolicy = new AliCloud.Ram.Policy("default", new()
         ///     {
         ///         PolicyName = "ram-policy-example",
-        ///         PolicyDocument = @"			{
-        /// 				""Statement"": [
-        /// 				 {
-        /// 					""Action"": [
-        /// 					""oss:ListObjects"",
-        /// 					""oss:ListObjects""
-        /// 			  		],
-        /// 			  		""Effect"": ""Deny"",
-        /// 			  		""Resource"": [
-        /// 						""acs:oss:*:*:mybucket"",
-        /// 						""acs:oss:*:*:mybucket/*""
-        /// 			  		]
-        /// 				 }
-        /// 		  		],
-        /// 				""Version"": ""1""
-        /// 			}
+        ///         PolicyDocument = @"\t\t\t{
+        /// \t\t\t\t\""Statement\"": [
+        /// \t\t\t\t {
+        /// \t\t\t\t\t\""Action\"": [
+        /// \t\t\t\t\t\""oss:ListObjects\"",
+        /// \t\t\t\t\t\""oss:ListObjects\""
+        /// \t\t\t  \t\t],
+        /// \t\t\t  \t\t\""Effect\"": \""Deny\"",
+        /// \t\t\t  \t\t\""Resource\"": [
+        /// \t\t\t\t\t\t\""acs:oss:*:*:mybucket\"",
+        /// \t\t\t\t\t\t\""acs:oss:*:*:mybucket/*\""
+        /// \t\t\t  \t\t]
+        /// \t\t\t\t }
+        /// \t\t  \t\t],
+        /// \t\t\t\t\""Version\"": \""1\""
+        /// \t\t\t}
         /// ",
         ///         Description = "this is a policy example",
         ///         Force = true,
@@ -234,22 +234,22 @@ namespace Pulumi.AliCloud.Ram
         ///     var defaultPolicy = new AliCloud.Ram.Policy("default", new()
         ///     {
         ///         PolicyName = "ram-policy-example",
-        ///         PolicyDocument = @"			{
-        /// 				""Statement"": [
-        /// 				 {
-        /// 					""Action"": [
-        /// 					""oss:ListObjects"",
-        /// 					""oss:ListObjects""
-        /// 			  		],
-        /// 			  		""Effect"": ""Deny"",
-        /// 			  		""Resource"": [
-        /// 						""acs:oss:*:*:mybucket"",
-        /// 						""acs:oss:*:*:mybucket/*""
-        /// 			  		]
-        /// 				 }
-        /// 		  		],
-        /// 				""Version"": ""1""
-        /// 			}
+        ///         PolicyDocument = @"\t\t\t{
+        /// \t\t\t\t\""Statement\"": [
+        /// \t\t\t\t {
+        /// \t\t\t\t\t\""Action\"": [
+        /// \t\t\t\t\t\""oss:ListObjects\"",
+        /// \t\t\t\t\t\""oss:ListObjects\""
+        /// \t\t\t  \t\t],
+        /// \t\t\t  \t\t\""Effect\"": \""Deny\"",
+        /// \t\t\t  \t\t\""Resource\"": [
+        /// \t\t\t\t\t\t\""acs:oss:*:*:mybucket\"",
+        /// \t\t\t\t\t\t\""acs:oss:*:*:mybucket/*\""
+        /// \t\t\t  \t\t]
+        /// \t\t\t\t }
+        /// \t\t  \t\t],
+        /// \t\t\t\t\""Version\"": \""1\""
+        /// \t\t\t}
         /// ",
         ///         Description = "this is a policy example",
         ///         Force = true,

@@ -118,6 +118,87 @@ class KubernetesPermission(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.122.0.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        default_integer = random.index.Integer("default",
+            max=99999,
+            min=10000)
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        # The cidr block used to launch a new vpc when 'vpc_id' is not specified.
+        vpc_cidr = config.get("vpcCidr")
+        if vpc_cidr is None:
+            vpc_cidr = "10.0.0.0/8"
+        # List of cidr blocks used to create several new vswitches when 'vswitch_ids' is not specified.
+        vswitch_cidrs = config.get_object("vswitchCidrs")
+        if vswitch_cidrs is None:
+            vswitch_cidrs = [
+                "10.1.0.0/16",
+                "10.2.0.0/16",
+            ]
+        # The kubernetes service cidr block. It cannot be equals to vpc's or vswitch's or service's and cannot be in them.
+        pod_cidr = config.get("podCidr")
+        if pod_cidr is None:
+            pod_cidr = "172.16.0.0/16"
+        # The kubernetes service cidr block. It cannot be equals to vpc's or vswitch's or pod's and cannot be in them.
+        service_cidr = config.get("serviceCidr")
+        if service_cidr is None:
+            service_cidr = "192.168.0.0/16"
+        enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
+        default = alicloud.cs.get_kubernetes_version(cluster_type="ManagedKubernetes")
+        vpc = alicloud.vpc.Network("vpc", cidr_block=vpc_cidr)
+        # According to the vswitch cidr blocks to launch several vswitches
+        default_switch = []
+        for range in [{"value": i} for i in range(0, len(vswitch_cidrs))]:
+            default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
+                vpc_id=vpc.id,
+                cidr_block=vswitch_cidrs[range["value"]],
+                zone_id=enhanced.zones[range["value"]].zone_id))
+        # Create a new RAM cluster.
+        default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
+            name=f"{name}-{default_integer['result']}",
+            cluster_spec="ack.pro.small",
+            version=default.metadatas[0].version,
+            worker_vswitch_ids=std.join_output(separator=",",
+                input=[__item.id for __item in default_switch]).apply(lambda invoke: std.split_output(separator=",",
+                text=invoke.result)).apply(lambda invoke: invoke.result),
+            new_nat_gateway=False,
+            pod_cidr=pod_cidr,
+            service_cidr=service_cidr,
+            slb_internet_enabled=False)
+        # Create a new RAM user.
+        user = alicloud.ram.User("user", name=f"{name}-{default_integer['result']}")
+        # Create a cluster permission for user.
+        default_kubernetes_permission = alicloud.cs.KubernetesPermission("default",
+            uid=user.id,
+            permissions=[{
+                "cluster": default_managed_kubernetes.id,
+                "role_type": "cluster",
+                "role_name": "admin",
+                "namespace": "",
+                "is_custom": False,
+                "is_ram_role": False,
+            }])
+        attach = alicloud.cs.KubernetesPermission("attach",
+            uid=user.id,
+            permissions=[{
+                "cluster": default_managed_kubernetes.id,
+                "role_type": "namespace",
+                "role_name": "cs:dev",
+                "namespace": "default",
+                "is_custom": True,
+                "is_ram_role": False,
+            }])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesPermissionPermissionArgs', 'KubernetesPermissionPermissionArgsDict']]]] permissions: A list of user permission. See `permissions` below.
@@ -140,6 +221,87 @@ class KubernetesPermission(pulumi.CustomResource):
         > **NOTE:** This operation overwrites the permissions that have been granted to the specified RAM user. When you call this operation, make sure that the required permissions are included.
 
         > **NOTE:** Available since v1.122.0.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        default_integer = random.index.Integer("default",
+            max=99999,
+            min=10000)
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        # The cidr block used to launch a new vpc when 'vpc_id' is not specified.
+        vpc_cidr = config.get("vpcCidr")
+        if vpc_cidr is None:
+            vpc_cidr = "10.0.0.0/8"
+        # List of cidr blocks used to create several new vswitches when 'vswitch_ids' is not specified.
+        vswitch_cidrs = config.get_object("vswitchCidrs")
+        if vswitch_cidrs is None:
+            vswitch_cidrs = [
+                "10.1.0.0/16",
+                "10.2.0.0/16",
+            ]
+        # The kubernetes service cidr block. It cannot be equals to vpc's or vswitch's or service's and cannot be in them.
+        pod_cidr = config.get("podCidr")
+        if pod_cidr is None:
+            pod_cidr = "172.16.0.0/16"
+        # The kubernetes service cidr block. It cannot be equals to vpc's or vswitch's or pod's and cannot be in them.
+        service_cidr = config.get("serviceCidr")
+        if service_cidr is None:
+            service_cidr = "192.168.0.0/16"
+        enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
+        default = alicloud.cs.get_kubernetes_version(cluster_type="ManagedKubernetes")
+        vpc = alicloud.vpc.Network("vpc", cidr_block=vpc_cidr)
+        # According to the vswitch cidr blocks to launch several vswitches
+        default_switch = []
+        for range in [{"value": i} for i in range(0, len(vswitch_cidrs))]:
+            default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
+                vpc_id=vpc.id,
+                cidr_block=vswitch_cidrs[range["value"]],
+                zone_id=enhanced.zones[range["value"]].zone_id))
+        # Create a new RAM cluster.
+        default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
+            name=f"{name}-{default_integer['result']}",
+            cluster_spec="ack.pro.small",
+            version=default.metadatas[0].version,
+            worker_vswitch_ids=std.join_output(separator=",",
+                input=[__item.id for __item in default_switch]).apply(lambda invoke: std.split_output(separator=",",
+                text=invoke.result)).apply(lambda invoke: invoke.result),
+            new_nat_gateway=False,
+            pod_cidr=pod_cidr,
+            service_cidr=service_cidr,
+            slb_internet_enabled=False)
+        # Create a new RAM user.
+        user = alicloud.ram.User("user", name=f"{name}-{default_integer['result']}")
+        # Create a cluster permission for user.
+        default_kubernetes_permission = alicloud.cs.KubernetesPermission("default",
+            uid=user.id,
+            permissions=[{
+                "cluster": default_managed_kubernetes.id,
+                "role_type": "cluster",
+                "role_name": "admin",
+                "namespace": "",
+                "is_custom": False,
+                "is_ram_role": False,
+            }])
+        attach = alicloud.cs.KubernetesPermission("attach",
+            uid=user.id,
+            permissions=[{
+                "cluster": default_managed_kubernetes.id,
+                "role_type": "namespace",
+                "role_name": "cs:dev",
+                "namespace": "default",
+                "is_custom": True,
+                "is_ram_role": False,
+            }])
+        ```
 
         :param str resource_name: The name of the resource.
         :param KubernetesPermissionArgs args: The arguments to use to populate this resource's properties.

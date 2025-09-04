@@ -13,6 +13,96 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.194.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const _default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultGetImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_18.*64",
+ *     mostRecent: true,
+ *     owners: "system",
+ * });
+ * const defaultGetInstanceTypes = _default.then(_default => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: _default.zones?.[0]?.id,
+ *     cpuCoreCount: 4,
+ *     memorySize: 8,
+ *     kubernetesNodeRole: "Worker",
+ * }));
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ * });
+ * const defaultManagedKubernetes = new alicloud.cs.ManagedKubernetes("default", {
+ *     namePrefix: name,
+ *     clusterSpec: "ack.pro.small",
+ *     workerVswitchIds: [defaultSwitch.id],
+ *     newNatGateway: true,
+ *     podCidr: std.cidrsubnet({
+ *         input: "10.0.0.0/8",
+ *         newbits: 8,
+ *         netnum: 36,
+ *     }).then(invoke => invoke.result),
+ *     serviceCidr: std.cidrsubnet({
+ *         input: "172.16.0.0/16",
+ *         newbits: 4,
+ *         netnum: 7,
+ *     }).then(invoke => invoke.result),
+ *     slbInternetEnabled: true,
+ * });
+ * const defaultNodePool = new alicloud.cs.NodePool("default", {
+ *     name: name,
+ *     clusterId: defaultManagedKubernetes.id,
+ *     vswitchIds: [defaultSwitch.id],
+ *     instanceTypes: [defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id)],
+ *     systemDiskCategory: "cloud_efficiency",
+ *     systemDiskSize: 40,
+ *     desiredSize: "2",
+ * });
+ * const defaultK8sCluster = new alicloud.edas.K8sCluster("default", {csClusterId: defaultNodePool.clusterId});
+ * const defaultK8sApplication = new alicloud.edas.K8sApplication("default", {
+ *     applicationName: name,
+ *     clusterId: defaultK8sCluster.id,
+ *     packageType: "FatJar",
+ *     packageUrl: "http://edas-bj.oss-cn-beijing.aliyuncs.com/prod/demo/SPRING_CLOUD_PROVIDER.jar",
+ *     jdk: "Open JDK 8",
+ *     replicas: 2,
+ *     readiness: "{\"failureThreshold\": 3,\"initialDelaySeconds\": 5,\"successThreshold\": 1,\"timeoutSeconds\": 1,\"tcpSocket\":{\"port\":18081}}",
+ *     liveness: "{\"failureThreshold\": 3,\"initialDelaySeconds\": 5,\"successThreshold\": 1,\"timeoutSeconds\": 1,\"tcpSocket\":{\"port\":18081}}",
+ *     applicationDescriotion: name,
+ * });
+ * const defaultK8sSlbAttachment = new alicloud.edas.K8sSlbAttachment("default", {
+ *     appId: defaultK8sApplication.id,
+ *     slbConfigs: [{
+ *         type: "internet",
+ *         scheduler: "rr",
+ *         portMappings: [{
+ *             loadbalancerProtocol: "TCP",
+ *             servicePort: {
+ *                 port: 80,
+ *                 protocol: "TCP",
+ *                 targetPort: 8080,
+ *             },
+ *         }],
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Slb information of EDAS k8s application can be imported using the ID of an EDAS k8s application. e.g.

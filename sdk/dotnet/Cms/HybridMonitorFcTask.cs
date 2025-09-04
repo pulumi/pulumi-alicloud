@@ -44,22 +44,22 @@ namespace Pulumi.AliCloud.Cms
     ///         Namespace = defaultNamespace.Id,
     ///         YarmConfig = @"---
     /// products:
-    /// - namespace: ""acs_ecs_dashboard""
+    /// - namespace: \""acs_ecs_dashboard\""
     ///   metric_info:
     ///   - metric_list:
-    ///     - ""CPUUtilization""
-    ///     - ""DiskReadBPS""
-    ///     - ""InternetOut""
-    ///     - ""IntranetOut""
-    ///     - ""cpu_idle""
-    ///     - ""cpu_system""
-    ///     - ""cpu_total""
-    ///     - ""diskusage_utilization""
-    /// - namespace: ""acs_rds_dashboard""
+    ///     - \""CPUUtilization\""
+    ///     - \""DiskReadBPS\""
+    ///     - \""InternetOut\""
+    ///     - \""IntranetOut\""
+    ///     - \""cpu_idle\""
+    ///     - \""cpu_system\""
+    ///     - \""cpu_total\""
+    ///     - \""diskusage_utilization\""
+    /// - namespace: \""acs_rds_dashboard\""
     ///   metric_info:
     ///   - metric_list:
-    ///     - ""MySQL_QPS""
-    ///     - ""MySQL_TPS""
+    ///     - \""MySQL_QPS\""
+    ///     - \""MySQL_TPS\""
     /// ",
     ///         TargetUserId = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
     ///     });

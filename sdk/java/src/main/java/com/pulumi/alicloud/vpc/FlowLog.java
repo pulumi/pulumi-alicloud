@@ -25,6 +25,99 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.117.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.random.Uuid;
+ * import com.pulumi.alicloud.log.Project;
+ * import com.pulumi.alicloud.log.ProjectArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.ReplaceArgs;
+ * import com.pulumi.std.inputs.SubstrArgs;
+ * import com.pulumi.alicloud.log.Store;
+ * import com.pulumi.alicloud.log.StoreArgs;
+ * import com.pulumi.alicloud.vpc.FlowLog;
+ * import com.pulumi.alicloud.vpc.FlowLogArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf-example");
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .status("OK")
+ *             .build());
+ * 
+ *         var example = new Network("example", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("10.4.0.0/16")
+ *             .build());
+ * 
+ *         var exampleUuid = new Uuid("exampleUuid");
+ * 
+ *         var exampleProject = new Project("exampleProject", ProjectArgs.builder()
+ *             .projectName(StdFunctions.substr(SubstrArgs.builder()
+ *                 .input(String.format("tf-example-%s", StdFunctions.replace(ReplaceArgs.builder()
+ *                     .text(exampleUuid.result())
+ *                     .search("-")
+ *                     .replace("")
+ *                     .build()).result()))
+ *                 .offset(0)
+ *                 .length(16)
+ *                 .build()).result())
+ *             .description(name)
+ *             .build());
+ * 
+ *         var exampleStore = new Store("exampleStore", StoreArgs.builder()
+ *             .projectName(exampleProject.projectName())
+ *             .logstoreName(name)
+ *             .shardCount(3)
+ *             .autoSplit(true)
+ *             .maxSplitShardCount(60)
+ *             .appendMeta(true)
+ *             .build());
+ * 
+ *         var exampleFlowLog = new FlowLog("exampleFlowLog", FlowLogArgs.builder()
+ *             .flowLogName(name)
+ *             .logStoreName(exampleStore.logstoreName())
+ *             .description(name)
+ *             .trafficPaths("all")
+ *             .projectName(exampleProject.projectName())
+ *             .resourceType("VPC")
+ *             .resourceGroupId(default_.ids()[0])
+ *             .resourceId(example.id())
+ *             .aggregationInterval("1")
+ *             .trafficType("All")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * VPC Flow Log can be imported using the id, e.g.

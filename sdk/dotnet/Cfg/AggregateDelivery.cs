@@ -18,6 +18,96 @@ namespace Pulumi.AliCloud.Cfg
     /// 
     /// &gt; **NOTE:** Available since v1.172.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var @this = AliCloud.GetRegions.Invoke(new()
+    ///     {
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var thisGetAccount = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var @default = AliCloud.ResourceManager.GetAccounts.Invoke(new()
+    ///     {
+    ///         Status = "CreateSuccess",
+    ///     });
+    /// 
+    ///     var last = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Accounts)).Length.Apply(length =&gt; length - 1);
+    /// 
+    ///     var defaultAggregator = new AliCloud.Cfg.Aggregator("default", new()
+    ///     {
+    ///         AggregatorAccounts = new[]
+    ///         {
+    ///             new AliCloud.Cfg.Inputs.AggregatorAggregatorAccountArgs
+    ///             {
+    ///                 AccountId = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Accounts)[last].AccountId),
+    ///                 AccountName = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Accounts)[last].DisplayName),
+    ///                 AccountType = "ResourceDirectory",
+    ///             },
+    ///         },
+    ///         AggregatorName = name,
+    ///         Description = name,
+    ///         AggregatorType = "CUSTOM",
+    ///     });
+    /// 
+    ///     var defaultUuid = new Random.Index.Uuid("default");
+    /// 
+    ///     var defaultProject = new AliCloud.Log.Project("default", new()
+    ///     {
+    ///         ProjectName = Std.Replace.Invoke(new()
+    ///         {
+    ///             Text = defaultUuid.Result,
+    ///             Search = "-",
+    ///             Replace = "",
+    ///         }).Apply(invoke =&gt; Std.Substr.Invoke(new()
+    ///         {
+    ///             Input = $"tf-example-{invoke.Result}",
+    ///             Offset = 0,
+    ///             Length = 16,
+    ///         })).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var defaultStore = new AliCloud.Log.Store("default", new()
+    ///     {
+    ///         LogstoreName = name,
+    ///         ProjectName = defaultProject.ProjectName,
+    ///     });
+    /// 
+    ///     var defaultAggregateDelivery = new AliCloud.Cfg.AggregateDelivery("default", new()
+    ///     {
+    ///         AggregatorId = defaultAggregator.Id,
+    ///         ConfigurationItemChangeNotification = true,
+    ///         NonCompliantNotification = true,
+    ///         DeliveryChannelName = name,
+    ///         DeliveryChannelTargetArn = Output.Tuple(@this, thisGetAccount, defaultProject.ProjectName, defaultStore.LogstoreName).Apply(values =&gt;
+    ///         {
+    ///             var @this = values.Item1;
+    ///             var thisGetAccount = values.Item2;
+    ///             var projectName = values.Item3;
+    ///             var logstoreName = values.Item4;
+    ///             return $"acs:log:{@this.Apply(getRegionsResult =&gt; getRegionsResult.Ids[0])}:{thisGetAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:project/{projectName}/logstore/{logstoreName}";
+    ///         }),
+    ///         DeliveryChannelType = "SLS",
+    ///         Description = name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Config Aggregate Delivery can be imported using the id, e.g.

@@ -20,6 +20,127 @@ namespace Pulumi.AliCloud.CS
     /// &gt; **NOTE:** This operation overwrites the permissions that have been granted to the specified RAM user. When you call this operation, make sure that the required permissions are included.
     /// 
     /// &gt; **NOTE:** Available since v1.122.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     // The cidr block used to launch a new vpc when 'vpc_id' is not specified.
+    ///     var vpcCidr = config.Get("vpcCidr") ?? "10.0.0.0/8";
+    ///     // List of cidr blocks used to create several new vswitches when 'vswitch_ids' is not specified.
+    ///     var vswitchCidrs = config.GetObject&lt;string[]&gt;("vswitchCidrs") ?? new[]
+    ///     {
+    ///         "10.1.0.0/16",
+    ///         "10.2.0.0/16",
+    ///     };
+    ///     // The kubernetes service cidr block. It cannot be equals to vpc's or vswitch's or service's and cannot be in them.
+    ///     var podCidr = config.Get("podCidr") ?? "172.16.0.0/16";
+    ///     // The kubernetes service cidr block. It cannot be equals to vpc's or vswitch's or pod's and cannot be in them.
+    ///     var serviceCidr = config.Get("serviceCidr") ?? "192.168.0.0/16";
+    ///     var enhanced = AliCloud.Vpc.GetEnhancedNatAvailableZones.Invoke();
+    /// 
+    ///     var @default = AliCloud.CS.GetKubernetesVersion.Invoke(new()
+    ///     {
+    ///         ClusterType = "ManagedKubernetes",
+    ///     });
+    /// 
+    ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
+    ///     {
+    ///         CidrBlock = vpcCidr,
+    ///     });
+    /// 
+    ///     // According to the vswitch cidr blocks to launch several vswitches
+    ///     var defaultSwitch = new List&lt;AliCloud.Vpc.Switch&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; vswitchCidrs.Length; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         defaultSwitch.Add(new AliCloud.Vpc.Switch($"default-{range.Value}", new()
+    ///         {
+    ///             VpcId = vpc.Id,
+    ///             CidrBlock = vswitchCidrs[range.Value],
+    ///             ZoneId = enhanced.Apply(getEnhancedNatAvailableZonesResult =&gt; getEnhancedNatAvailableZonesResult.Zones)[range.Value].ZoneId,
+    ///         }));
+    ///     }
+    ///     // Create a new RAM cluster.
+    ///     var defaultManagedKubernetes = new AliCloud.CS.ManagedKubernetes("default", new()
+    ///     {
+    ///         Name = $"{name}-{defaultInteger.Result}",
+    ///         ClusterSpec = "ack.pro.small",
+    ///         Version = @default.Apply(@default =&gt; @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult.Metadatas[0]?.Version)),
+    ///         WorkerVswitchIds = Std.Join.Invoke(new()
+    ///         {
+    ///             Separator = ",",
+    ///             Input = defaultSwitch.Select(__item =&gt; __item.Id).ToList(),
+    ///         }).Apply(invoke =&gt; Std.Split.Invoke(new()
+    ///         {
+    ///             Separator = ",",
+    ///             Text = invoke.Result,
+    ///         })).Apply(invoke =&gt; invoke.Result),
+    ///         NewNatGateway = false,
+    ///         PodCidr = podCidr,
+    ///         ServiceCidr = serviceCidr,
+    ///         SlbInternetEnabled = false,
+    ///     });
+    /// 
+    ///     // Create a new RAM user.
+    ///     var user = new AliCloud.Ram.User("user", new()
+    ///     {
+    ///         Name = $"{name}-{defaultInteger.Result}",
+    ///     });
+    /// 
+    ///     // Create a cluster permission for user.
+    ///     var defaultKubernetesPermission = new AliCloud.CS.KubernetesPermission("default", new()
+    ///     {
+    ///         Uid = user.Id,
+    ///         Permissions = new[]
+    ///         {
+    ///             new AliCloud.CS.Inputs.KubernetesPermissionPermissionArgs
+    ///             {
+    ///                 Cluster = defaultManagedKubernetes.Id,
+    ///                 RoleType = "cluster",
+    ///                 RoleName = "admin",
+    ///                 Namespace = "",
+    ///                 IsCustom = false,
+    ///                 IsRamRole = false,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var attach = new AliCloud.CS.KubernetesPermission("attach", new()
+    ///     {
+    ///         Uid = user.Id,
+    ///         Permissions = new[]
+    ///         {
+    ///             new AliCloud.CS.Inputs.KubernetesPermissionPermissionArgs
+    ///             {
+    ///                 Cluster = defaultManagedKubernetes.Id,
+    ///                 RoleType = "namespace",
+    ///                 RoleName = "cs:dev",
+    ///                 Namespace = "default",
+    ///                 IsCustom = true,
+    ///                 IsRamRole = false,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cs/kubernetesPermission:KubernetesPermission")]
     public partial class KubernetesPermission : global::Pulumi.CustomResource

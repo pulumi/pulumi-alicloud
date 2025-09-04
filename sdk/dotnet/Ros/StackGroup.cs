@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.Ros
     /// <summary>
     /// Provides a ROS Stack Group resource.
     /// 
+    /// Resource stack Group.
+    /// 
     /// For information about ROS Stack Group and how to use it, see [What is Stack Group](https://www.alibabacloud.com/help/en/doc-detail/151333.htm).
     /// 
     /// &gt; **NOTE:** Available since v1.107.0.
@@ -32,7 +34,7 @@ namespace Pulumi.AliCloud.Ros
     ///     {
     ///         StackGroupName = "example_value",
     ///         TemplateBody = @"    {
-    ///     	""ROSTemplateFormatVersion"": ""2015-09-01""
+    ///     \t\""ROSTemplateFormatVersion\"": \""2015-09-01\""
     ///     }
     /// ",
     ///     });
@@ -45,23 +47,30 @@ namespace Pulumi.AliCloud.Ros
     /// ROS Stack Group can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:ros/stackGroup:StackGroup example &lt;stack_group_name&gt;
+    /// $ pulumi import alicloud:ros/stackGroup:StackGroup example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ros/stackGroup:StackGroup")]
     public partial class StackGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The list of target account IDs, in JSON format. A maximum of 20 accounts can be specified.
-        /// </summary>
-        [Output("accountIds")]
-        public Output<string?> AccountIds { get; private set; } = null!;
-
-        /// <summary>
-        /// The name of the RAM administrator role assumed by ROS. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+        /// The name of the RAM role that you specify for the administrator account in ROS when you create the self-managed stack group. If you do not specify this parameter, the default value AliyunROSStackGroupAdministrationRole is used. You can use the administrator role in ROS to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks that correspond to stack instances in the stack group.
         /// </summary>
         [Output("administrationRoleName")]
         public Output<string> AdministrationRoleName { get; private set; } = null!;
+
+        /// <summary>
+        /// Automatic deployment setting information. Description
+        /// This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `auto_deployment` below.
+        /// </summary>
+        [Output("autoDeployment")]
+        public Output<Outputs.StackGroupAutoDeployment?> AutoDeployment { get; private set; } = null!;
+
+        /// <summary>
+        /// The list of resource stack group options. The maximum length is 1.
+        /// </summary>
+        [Output("capabilities")]
+        public Output<ImmutableArray<string>> Capabilities { get; private set; } = null!;
 
         /// <summary>
         /// The description of the stack group.
@@ -70,61 +79,69 @@ namespace Pulumi.AliCloud.Ros
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the RAM execution role assumed by the administrator role. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+        /// The name of the RAM role that you specify for the execution account when you create the self-managed stack group. You can use the administrator role AliyunROSStackGroupAdministrationRole to assume the execution role. If you do not specify this parameter, the default value AliyunROSStackGroupExecutionRole is used. You can use this role in ROS to perform operations on the stacks that correspond to stack instances in the stack group.
         /// </summary>
         [Output("executionRoleName")]
         public Output<string> ExecutionRoleName { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the operation.
-        /// </summary>
-        [Output("operationDescription")]
-        public Output<string?> OperationDescription { get; private set; } = null!;
-
-        /// <summary>
-        /// The operation settings, in JSON format.
-        /// </summary>
-        [Output("operationPreferences")]
-        public Output<string?> OperationPreferences { get; private set; } = null!;
-
-        /// <summary>
-        /// The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+        /// Parameters See `parameters` below.
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.StackGroupParameter>> Parameters { get; private set; } = null!;
 
         /// <summary>
-        /// The list of target regions, in JSON format. A maximum of 20 accounts can be specified.
+        /// The permission model.
         /// </summary>
-        [Output("regionIds")]
-        public Output<string?> RegionIds { get; private set; } = null!;
+        [Output("permissionModel")]
+        public Output<string> PermissionModel { get; private set; } = null!;
 
         /// <summary>
-        /// The id of Stack Group.
+        /// The ID of the resource group.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of stack group.
         /// </summary>
         [Output("stackGroupId")]
         public Output<string> StackGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the stack group. The name must be unique in a region.
+        /// StackGroupName
         /// </summary>
         [Output("stackGroupName")]
         public Output<string> StackGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// The status of Stack Group.
+        /// The status of the stack group.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
+        /// The label of the resource stack group.
         /// </summary>
-        [Output("templateBody")]
-        public Output<string?> TemplateBody { get; private set; } = null!;
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
+        /// The template body.
+        /// </summary>
+        [Output("templateBody")]
+        public Output<string> TemplateBody { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the template.
+        /// </summary>
+        [Output("templateId")]
+        public Output<string?> TemplateId { get; private set; } = null!;
+
+        /// <summary>
+        /// The location of the file that contains the template body. The URL must point to the template (1 to 524,288 bytes) located in the HTTP Web server (HTTP or HTTPS) or Alibaba Cloud OSS bucket. The URL of the OSS bucket, such as oss:// ros/template/demo or oss:// ros/template/demo? RegionId = cn-hangzhou. If the OSS region is not specified, the RegionId of the interface is the same by default.
+        /// 
+        /// &gt; **NOTE:** You must and can specify only one of the parameters of TemplateBody, TemplateURL, or TemplateId.
         /// </summary>
         [Output("templateUrl")]
         public Output<string?> TemplateUrl { get; private set; } = null!;
@@ -182,16 +199,29 @@ namespace Pulumi.AliCloud.Ros
     public sealed class StackGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The list of target account IDs, in JSON format. A maximum of 20 accounts can be specified.
-        /// </summary>
-        [Input("accountIds")]
-        public Input<string>? AccountIds { get; set; }
-
-        /// <summary>
-        /// The name of the RAM administrator role assumed by ROS. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+        /// The name of the RAM role that you specify for the administrator account in ROS when you create the self-managed stack group. If you do not specify this parameter, the default value AliyunROSStackGroupAdministrationRole is used. You can use the administrator role in ROS to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks that correspond to stack instances in the stack group.
         /// </summary>
         [Input("administrationRoleName")]
         public Input<string>? AdministrationRoleName { get; set; }
+
+        /// <summary>
+        /// Automatic deployment setting information. Description
+        /// This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `auto_deployment` below.
+        /// </summary>
+        [Input("autoDeployment")]
+        public Input<Inputs.StackGroupAutoDeploymentArgs>? AutoDeployment { get; set; }
+
+        [Input("capabilities")]
+        private InputList<string>? _capabilities;
+
+        /// <summary>
+        /// The list of resource stack group options. The maximum length is 1.
+        /// </summary>
+        public InputList<string> Capabilities
+        {
+            get => _capabilities ?? (_capabilities = new InputList<string>());
+            set => _capabilities = value;
+        }
 
         /// <summary>
         /// The description of the stack group.
@@ -200,28 +230,16 @@ namespace Pulumi.AliCloud.Ros
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the RAM execution role assumed by the administrator role. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+        /// The name of the RAM role that you specify for the execution account when you create the self-managed stack group. You can use the administrator role AliyunROSStackGroupAdministrationRole to assume the execution role. If you do not specify this parameter, the default value AliyunROSStackGroupExecutionRole is used. You can use this role in ROS to perform operations on the stacks that correspond to stack instances in the stack group.
         /// </summary>
         [Input("executionRoleName")]
         public Input<string>? ExecutionRoleName { get; set; }
-
-        /// <summary>
-        /// The description of the operation.
-        /// </summary>
-        [Input("operationDescription")]
-        public Input<string>? OperationDescription { get; set; }
-
-        /// <summary>
-        /// The operation settings, in JSON format.
-        /// </summary>
-        [Input("operationPreferences")]
-        public Input<string>? OperationPreferences { get; set; }
 
         [Input("parameters")]
         private InputList<Inputs.StackGroupParameterArgs>? _parameters;
 
         /// <summary>
-        /// The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+        /// Parameters See `parameters` below.
         /// </summary>
         public InputList<Inputs.StackGroupParameterArgs> Parameters
         {
@@ -230,25 +248,51 @@ namespace Pulumi.AliCloud.Ros
         }
 
         /// <summary>
-        /// The list of target regions, in JSON format. A maximum of 20 accounts can be specified.
+        /// The permission model.
         /// </summary>
-        [Input("regionIds")]
-        public Input<string>? RegionIds { get; set; }
+        [Input("permissionModel")]
+        public Input<string>? PermissionModel { get; set; }
 
         /// <summary>
-        /// The name of the stack group. The name must be unique in a region.
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// StackGroupName
         /// </summary>
         [Input("stackGroupName", required: true)]
         public Input<string> StackGroupName { get; set; } = null!;
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
         /// <summary>
-        /// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
+        /// The label of the resource stack group.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The template body.
         /// </summary>
         [Input("templateBody")]
         public Input<string>? TemplateBody { get; set; }
 
         /// <summary>
-        /// The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
+        /// The ID of the template.
+        /// </summary>
+        [Input("templateId")]
+        public Input<string>? TemplateId { get; set; }
+
+        /// <summary>
+        /// The location of the file that contains the template body. The URL must point to the template (1 to 524,288 bytes) located in the HTTP Web server (HTTP or HTTPS) or Alibaba Cloud OSS bucket. The URL of the OSS bucket, such as oss:// ros/template/demo or oss:// ros/template/demo? RegionId = cn-hangzhou. If the OSS region is not specified, the RegionId of the interface is the same by default.
+        /// 
+        /// &gt; **NOTE:** You must and can specify only one of the parameters of TemplateBody, TemplateURL, or TemplateId.
         /// </summary>
         [Input("templateUrl")]
         public Input<string>? TemplateUrl { get; set; }
@@ -268,16 +312,29 @@ namespace Pulumi.AliCloud.Ros
     public sealed class StackGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The list of target account IDs, in JSON format. A maximum of 20 accounts can be specified.
-        /// </summary>
-        [Input("accountIds")]
-        public Input<string>? AccountIds { get; set; }
-
-        /// <summary>
-        /// The name of the RAM administrator role assumed by ROS. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+        /// The name of the RAM role that you specify for the administrator account in ROS when you create the self-managed stack group. If you do not specify this parameter, the default value AliyunROSStackGroupAdministrationRole is used. You can use the administrator role in ROS to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks that correspond to stack instances in the stack group.
         /// </summary>
         [Input("administrationRoleName")]
         public Input<string>? AdministrationRoleName { get; set; }
+
+        /// <summary>
+        /// Automatic deployment setting information. Description
+        /// This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `auto_deployment` below.
+        /// </summary>
+        [Input("autoDeployment")]
+        public Input<Inputs.StackGroupAutoDeploymentGetArgs>? AutoDeployment { get; set; }
+
+        [Input("capabilities")]
+        private InputList<string>? _capabilities;
+
+        /// <summary>
+        /// The list of resource stack group options. The maximum length is 1.
+        /// </summary>
+        public InputList<string> Capabilities
+        {
+            get => _capabilities ?? (_capabilities = new InputList<string>());
+            set => _capabilities = value;
+        }
 
         /// <summary>
         /// The description of the stack group.
@@ -286,28 +343,16 @@ namespace Pulumi.AliCloud.Ros
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the RAM execution role assumed by the administrator role. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+        /// The name of the RAM role that you specify for the execution account when you create the self-managed stack group. You can use the administrator role AliyunROSStackGroupAdministrationRole to assume the execution role. If you do not specify this parameter, the default value AliyunROSStackGroupExecutionRole is used. You can use this role in ROS to perform operations on the stacks that correspond to stack instances in the stack group.
         /// </summary>
         [Input("executionRoleName")]
         public Input<string>? ExecutionRoleName { get; set; }
-
-        /// <summary>
-        /// The description of the operation.
-        /// </summary>
-        [Input("operationDescription")]
-        public Input<string>? OperationDescription { get; set; }
-
-        /// <summary>
-        /// The operation settings, in JSON format.
-        /// </summary>
-        [Input("operationPreferences")]
-        public Input<string>? OperationPreferences { get; set; }
 
         [Input("parameters")]
         private InputList<Inputs.StackGroupParameterGetArgs>? _parameters;
 
         /// <summary>
-        /// The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+        /// Parameters See `parameters` below.
         /// </summary>
         public InputList<Inputs.StackGroupParameterGetArgs> Parameters
         {
@@ -316,37 +361,63 @@ namespace Pulumi.AliCloud.Ros
         }
 
         /// <summary>
-        /// The list of target regions, in JSON format. A maximum of 20 accounts can be specified.
+        /// The permission model.
         /// </summary>
-        [Input("regionIds")]
-        public Input<string>? RegionIds { get; set; }
+        [Input("permissionModel")]
+        public Input<string>? PermissionModel { get; set; }
 
         /// <summary>
-        /// The id of Stack Group.
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The ID of stack group.
         /// </summary>
         [Input("stackGroupId")]
         public Input<string>? StackGroupId { get; set; }
 
         /// <summary>
-        /// The name of the stack group. The name must be unique in a region.
+        /// StackGroupName
         /// </summary>
         [Input("stackGroupName")]
         public Input<string>? StackGroupName { get; set; }
 
         /// <summary>
-        /// The status of Stack Group.
+        /// The status of the stack group.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
         /// <summary>
-        /// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
+        /// The label of the resource stack group.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The template body.
         /// </summary>
         [Input("templateBody")]
         public Input<string>? TemplateBody { get; set; }
 
         /// <summary>
-        /// The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
+        /// The ID of the template.
+        /// </summary>
+        [Input("templateId")]
+        public Input<string>? TemplateId { get; set; }
+
+        /// <summary>
+        /// The location of the file that contains the template body. The URL must point to the template (1 to 524,288 bytes) located in the HTTP Web server (HTTP or HTTPS) or Alibaba Cloud OSS bucket. The URL of the OSS bucket, such as oss:// ros/template/demo or oss:// ros/template/demo? RegionId = cn-hangzhou. If the OSS region is not specified, the RegionId of the interface is the same by default.
+        /// 
+        /// &gt; **NOTE:** You must and can specify only one of the parameters of TemplateBody, TemplateURL, or TemplateId.
         /// </summary>
         [Input("templateUrl")]
         public Input<string>? TemplateUrl { get; set; }

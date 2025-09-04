@@ -27,6 +27,130 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.234.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.Instance;
+ * import com.pulumi.alicloud.ecs.InstanceArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.alicloud.gwlb.ServerGroup;
+ * import com.pulumi.alicloud.gwlb.ServerGroupArgs;
+ * import com.pulumi.alicloud.gwlb.inputs.ServerGroupServerArgs;
+ * import com.pulumi.alicloud.gwlb.inputs.ServerGroupConnectionDrainConfigArgs;
+ * import com.pulumi.alicloud.gwlb.inputs.ServerGroupHealthCheckConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var regionId = config.get("regionId").orElse("cn-wulanchabu");
+ *         final var zoneId1 = config.get("zoneId1").orElse("cn-wulanchabu-b");
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
+ * 
+ *         var defaultEaxcvb = new Network("defaultEaxcvb", NetworkArgs.builder()
+ *             .cidrBlock("10.0.0.0/8")
+ *             .vpcName("tf-gwlb-vpc")
+ *             .build());
+ * 
+ *         var defaultc3uVID = new Switch("defaultc3uVID", SwitchArgs.builder()
+ *             .vpcId(defaultEaxcvb.id())
+ *             .zoneId(zoneId1)
+ *             .cidrBlock("10.0.0.0/24")
+ *             .vswitchName("tf-example-vsw1")
+ *             .build());
+ * 
+ *         var default7NNxRl = new SecurityGroup("default7NNxRl", SecurityGroupArgs.builder()
+ *             .description("sg")
+ *             .securityGroupName("sg_name")
+ *             .vpcId(defaultEaxcvb.id())
+ *             .securityGroupType("normal")
+ *             .build());
+ * 
+ *         var defaultH6McvC = new Instance("defaultH6McvC", InstanceArgs.builder()
+ *             .vswitchId(defaultc3uVID.id())
+ *             .imageId("aliyun_2_1903_x64_20G_alibase_20231221.vhd")
+ *             .instanceType("ecs.g6.large")
+ *             .systemDiskCategory("cloud_efficiency")
+ *             .internetChargeType("PayByTraffic")
+ *             .internetMaxBandwidthOut(5)
+ *             .instanceName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s4")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .description("tf-example-ecs")
+ *             .securityGroups(default7NNxRl.id())
+ *             .availabilityZone(defaultc3uVID.zoneId())
+ *             .instanceChargeType("PostPaid")
+ *             .build());
+ * 
+ *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()
+ *             .dryRun(false)
+ *             .servers(ServerGroupServerArgs.builder()
+ *                 .serverId(defaultH6McvC.id())
+ *                 .serverType("Ecs")
+ *                 .build())
+ *             .scheduler("5TCH")
+ *             .protocol("GENEVE")
+ *             .connectionDrainConfig(ServerGroupConnectionDrainConfigArgs.builder()
+ *                 .connectionDrainEnabled(true)
+ *                 .connectionDrainTimeout(1)
+ *                 .build())
+ *             .vpcId(defaultEaxcvb.id())
+ *             .serverGroupType("Instance")
+ *             .serverGroupName(name)
+ *             .healthCheckConfig(ServerGroupHealthCheckConfigArgs.builder()
+ *                 .healthCheckConnectPort(80)
+ *                 .healthCheckEnabled(true)
+ *                 .healthCheckProtocol("HTTP")
+ *                 .healthCheckConnectTimeout(5)
+ *                 .healthCheckDomain("www.domain.com")
+ *                 .healthCheckHttpCodes(                
+ *                     "http_2xx",
+ *                     "http_3xx",
+ *                     "http_4xx")
+ *                 .healthCheckInterval(10)
+ *                 .healthCheckPath("/health-check")
+ *                 .healthyThreshold(2)
+ *                 .unhealthyThreshold(2)
+ *                 .build())
+ *             .resourceGroupId(default_.ids()[0])
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * GWLB Server Group can be imported using the id, e.g.

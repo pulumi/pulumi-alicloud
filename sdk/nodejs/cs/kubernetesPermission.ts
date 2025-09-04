@@ -17,6 +17,89 @@ import * as utilities from "../utilities";
  * > **NOTE:** This operation overwrites the permissions that have been granted to the specified RAM user. When you call this operation, make sure that the required permissions are included.
  *
  * > **NOTE:** Available since v1.122.0.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ * import * as std from "@pulumi/std";
+ *
+ * const defaultInteger = new random.index.Integer("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * // The cidr block used to launch a new vpc when 'vpc_id' is not specified.
+ * const vpcCidr = config.get("vpcCidr") || "10.0.0.0/8";
+ * // List of cidr blocks used to create several new vswitches when 'vswitch_ids' is not specified.
+ * const vswitchCidrs = config.getObject<Array<string>>("vswitchCidrs") || [
+ *     "10.1.0.0/16",
+ *     "10.2.0.0/16",
+ * ];
+ * // The kubernetes service cidr block. It cannot be equals to vpc's or vswitch's or service's and cannot be in them.
+ * const podCidr = config.get("podCidr") || "172.16.0.0/16";
+ * // The kubernetes service cidr block. It cannot be equals to vpc's or vswitch's or pod's and cannot be in them.
+ * const serviceCidr = config.get("serviceCidr") || "192.168.0.0/16";
+ * const enhanced = alicloud.vpc.getEnhancedNatAvailableZones({});
+ * const _default = alicloud.cs.getKubernetesVersion({
+ *     clusterType: "ManagedKubernetes",
+ * });
+ * const vpc = new alicloud.vpc.Network("vpc", {cidrBlock: vpcCidr});
+ * // According to the vswitch cidr blocks to launch several vswitches
+ * const defaultSwitch: alicloud.vpc.Switch[] = [];
+ * for (const range = {value: 0}; range.value < vswitchCidrs.length; range.value++) {
+ *     defaultSwitch.push(new alicloud.vpc.Switch(`default-${range.value}`, {
+ *         vpcId: vpc.id,
+ *         cidrBlock: vswitchCidrs[range.value],
+ *         zoneId: enhanced.then(enhanced => enhanced.zones[range.value].zoneId),
+ *     }));
+ * }
+ * // Create a new RAM cluster.
+ * const defaultManagedKubernetes = new alicloud.cs.ManagedKubernetes("default", {
+ *     name: `${name}-${defaultInteger.result}`,
+ *     clusterSpec: "ack.pro.small",
+ *     version: _default.then(_default => _default.metadatas?.[0]?.version),
+ *     workerVswitchIds: std.joinOutput({
+ *         separator: ",",
+ *         input: defaultSwitch.map(__item => __item.id),
+ *     }).apply(invoke => std.splitOutput({
+ *         separator: ",",
+ *         text: invoke.result,
+ *     })).apply(invoke => invoke.result),
+ *     newNatGateway: false,
+ *     podCidr: podCidr,
+ *     serviceCidr: serviceCidr,
+ *     slbInternetEnabled: false,
+ * });
+ * // Create a new RAM user.
+ * const user = new alicloud.ram.User("user", {name: `${name}-${defaultInteger.result}`});
+ * // Create a cluster permission for user.
+ * const defaultKubernetesPermission = new alicloud.cs.KubernetesPermission("default", {
+ *     uid: user.id,
+ *     permissions: [{
+ *         cluster: defaultManagedKubernetes.id,
+ *         roleType: "cluster",
+ *         roleName: "admin",
+ *         namespace: "",
+ *         isCustom: false,
+ *         isRamRole: false,
+ *     }],
+ * });
+ * const attach = new alicloud.cs.KubernetesPermission("attach", {
+ *     uid: user.id,
+ *     permissions: [{
+ *         cluster: defaultManagedKubernetes.id,
+ *         roleType: "namespace",
+ *         roleName: "cs:dev",
+ *         namespace: "default",
+ *         isCustom: true,
+ *         isRamRole: false,
+ *     }],
+ * });
+ * ```
  */
 export class KubernetesPermission extends pulumi.CustomResource {
     /**

@@ -16,6 +16,80 @@ namespace Pulumi.AliCloud.Gwlb
     /// 
     /// &gt; **NOTE:** Available since v1.234.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var regionId = config.Get("regionId") ?? "cn-wulanchabu";
+    ///     var zoneId2 = config.Get("zoneId2") ?? "cn-wulanchabu-c";
+    ///     var zoneId1 = config.Get("zoneId1") ?? "cn-wulanchabu-b";
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var defaulti9Axhl = new AliCloud.Vpc.Network("defaulti9Axhl", new()
+    ///     {
+    ///         CidrBlock = "10.0.0.0/8",
+    ///         VpcName = name,
+    ///     });
+    /// 
+    ///     var default9NaKmL = new AliCloud.Vpc.Switch("default9NaKmL", new()
+    ///     {
+    ///         VpcId = defaulti9Axhl.Id,
+    ///         ZoneId = zoneId1,
+    ///         CidrBlock = "10.0.0.0/24",
+    ///         VswitchName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s1",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var defaultH4pKT4 = new AliCloud.Vpc.Switch("defaultH4pKT4", new()
+    ///     {
+    ///         VpcId = defaulti9Axhl.Id,
+    ///         ZoneId = zoneId2,
+    ///         CidrBlock = "10.0.1.0/24",
+    ///         VswitchName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s2",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var defaultLoadBalancer = new AliCloud.Gwlb.LoadBalancer("default", new()
+    ///     {
+    ///         VpcId = defaulti9Axhl.Id,
+    ///         LoadBalancerName = name,
+    ///         ZoneMappings = new[]
+    ///         {
+    ///             new AliCloud.Gwlb.Inputs.LoadBalancerZoneMappingArgs
+    ///             {
+    ///                 VswitchId = default9NaKmL.Id,
+    ///                 ZoneId = zoneId1,
+    ///             },
+    ///         },
+    ///         AddressIpVersion = "Ipv4",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// GWLB Load Balancer can be imported using the id, e.g.

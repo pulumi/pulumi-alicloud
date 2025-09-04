@@ -11,6 +11,75 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.243.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const keyName = config.get("keyName") || "%s";
+ * const enhanced = alicloud.vpc.getEnhancedNatAvailableZones({});
+ * const cloudEfficiency = enhanced.then(enhanced => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: enhanced.zones?.[0]?.zoneId,
+ *     cpuCoreCount: 4,
+ *     memorySize: 8,
+ *     kubernetesNodeRole: "Worker",
+ *     systemDiskCategory: "cloud_efficiency",
+ * }));
+ * const _default = new alicloud.vpc.Network("default", {cidrBlock: "10.4.0.0/16"});
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: _default.id,
+ *     zoneId: enhanced.then(enhanced => enhanced.zones?.[0]?.zoneId),
+ * });
+ * const defaultManagedKubernetes = new alicloud.cs.ManagedKubernetes("default", {
+ *     clusterSpec: "ack.pro.small",
+ *     vswitchIds: [defaultSwitch.id],
+ *     newNatGateway: true,
+ *     podCidr: std.cidrsubnet({
+ *         input: "10.0.0.0/8",
+ *         newbits: 8,
+ *         netnum: 36,
+ *     }).then(invoke => invoke.result),
+ *     serviceCidr: std.cidrsubnet({
+ *         input: "172.16.0.0/16",
+ *         newbits: 4,
+ *         netnum: 7,
+ *     }).then(invoke => invoke.result),
+ *     slbInternetEnabled: true,
+ *     isEnterpriseSecurityGroup: true,
+ * });
+ * const defaultKeyPair = new alicloud.ecs.KeyPair("default", {keyPairName: keyName});
+ * const defaultNodePool = new alicloud.cs.NodePool("default", {
+ *     nodePoolName: name,
+ *     clusterId: defaultManagedKubernetes.id,
+ *     vswitchIds: [defaultSwitch.id],
+ *     instanceTypes: [cloudEfficiency.then(cloudEfficiency => cloudEfficiency.instanceTypes?.[0]?.id)],
+ *     systemDiskCategory: "cloud_efficiency",
+ *     systemDiskSize: 40,
+ *     keyName: defaultKeyPair.keyPairName,
+ *     desiredSize: "1",
+ * });
+ * const defaultCluster = new alicloud.ackone.Cluster("default", {
+ *     network: {
+ *         vpcId: _default.id,
+ *         vswitches: [defaultSwitch.id],
+ *     },
+ *     argocdEnabled: false,
+ * }, {
+ *     dependsOn: [defaultManagedKubernetes],
+ * });
+ * const defaultMembershipAttachment = new alicloud.ackone.MembershipAttachment("default", {
+ *     clusterId: defaultCluster.id,
+ *     subClusterId: defaultManagedKubernetes.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Ack One Membership Attachment can be imported using the id, which consists of cluster_id and sub_cluster_id, e.g.

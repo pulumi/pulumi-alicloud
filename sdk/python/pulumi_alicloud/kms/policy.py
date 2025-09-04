@@ -239,6 +239,54 @@ class Policy(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.210.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        network_rule1 = alicloud.kms.NetworkRule("networkRule1",
+            description="dummy",
+            source_private_ips=["10.10.10.10"],
+            network_rule_name=std.format(input="%s1",
+                args=[name]).result)
+        network_rule2 = alicloud.kms.NetworkRule("networkRule2",
+            description="dummy",
+            source_private_ips=["10.10.10.10"],
+            network_rule_name=std.format(input="%s2",
+                args=[name]).result)
+        network_rule3 = alicloud.kms.NetworkRule("networkRule3",
+            description="dummy",
+            source_private_ips=["10.10.10.10"],
+            network_rule_name=std.format(input="%s3",
+                args=[name]).result)
+        default = alicloud.kms.Policy("default",
+            description="terraformpolicy",
+            permissions=[
+                "RbacPermission/Template/CryptoServiceKeyUser",
+                "RbacPermission/Template/CryptoServiceSecretUser",
+            ],
+            resources=[
+                "secret/*",
+                "key/*",
+            ],
+            policy_name=name,
+            kms_instance_id="shared",
+            access_control_rules=\"\"\"  {
+              \\"NetworkRules\\":[
+                  \\"alicloud_kms_network_rule.networkRule1.network_rule_name\\"
+              ]
+          }
+        \"\"\")
+        ```
+
         ## Import
 
         KMS Policy can be imported using the id, e.g.
@@ -268,6 +316,54 @@ class Policy(pulumi.CustomResource):
         For information about KMS Policy and how to use it, see [What is Policy](https://www.alibabacloud.com/help/zh/key-management-service/latest/api-createpolicy).
 
         > **NOTE:** Available since v1.210.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        network_rule1 = alicloud.kms.NetworkRule("networkRule1",
+            description="dummy",
+            source_private_ips=["10.10.10.10"],
+            network_rule_name=std.format(input="%s1",
+                args=[name]).result)
+        network_rule2 = alicloud.kms.NetworkRule("networkRule2",
+            description="dummy",
+            source_private_ips=["10.10.10.10"],
+            network_rule_name=std.format(input="%s2",
+                args=[name]).result)
+        network_rule3 = alicloud.kms.NetworkRule("networkRule3",
+            description="dummy",
+            source_private_ips=["10.10.10.10"],
+            network_rule_name=std.format(input="%s3",
+                args=[name]).result)
+        default = alicloud.kms.Policy("default",
+            description="terraformpolicy",
+            permissions=[
+                "RbacPermission/Template/CryptoServiceKeyUser",
+                "RbacPermission/Template/CryptoServiceSecretUser",
+            ],
+            resources=[
+                "secret/*",
+                "key/*",
+            ],
+            policy_name=name,
+            kms_instance_id="shared",
+            access_control_rules=\"\"\"  {
+              \\"NetworkRules\\":[
+                  \\"alicloud_kms_network_rule.networkRule1.network_rule_name\\"
+              ]
+          }
+        \"\"\")
+        ```
 
         ## Import
 

@@ -13,6 +13,54 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.234.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const regionId = config.get("regionId") || "cn-wulanchabu";
+ * const zoneId2 = config.get("zoneId2") || "cn-wulanchabu-c";
+ * const zoneId1 = config.get("zoneId1") || "cn-wulanchabu-b";
+ * const _default = alicloud.resourcemanager.getResourceGroups({});
+ * const defaulti9Axhl = new alicloud.vpc.Network("defaulti9Axhl", {
+ *     cidrBlock: "10.0.0.0/8",
+ *     vpcName: name,
+ * });
+ * const default9NaKmL = new alicloud.vpc.Switch("default9NaKmL", {
+ *     vpcId: defaulti9Axhl.id,
+ *     zoneId: zoneId1,
+ *     cidrBlock: "10.0.0.0/24",
+ *     vswitchName: std.format({
+ *         input: "%s1",
+ *         args: [name],
+ *     }).then(invoke => invoke.result),
+ * });
+ * const defaultH4pKT4 = new alicloud.vpc.Switch("defaultH4pKT4", {
+ *     vpcId: defaulti9Axhl.id,
+ *     zoneId: zoneId2,
+ *     cidrBlock: "10.0.1.0/24",
+ *     vswitchName: std.format({
+ *         input: "%s2",
+ *         args: [name],
+ *     }).then(invoke => invoke.result),
+ * });
+ * const defaultLoadBalancer = new alicloud.gwlb.LoadBalancer("default", {
+ *     vpcId: defaulti9Axhl.id,
+ *     loadBalancerName: name,
+ *     zoneMappings: [{
+ *         vswitchId: default9NaKmL.id,
+ *         zoneId: zoneId1,
+ *     }],
+ *     addressIpVersion: "Ipv4",
+ * });
+ * ```
+ *
  * ## Import
  *
  * GWLB Load Balancer can be imported using the id, e.g.

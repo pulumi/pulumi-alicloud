@@ -734,6 +734,62 @@ class DiskReplicaPair(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.196.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.get_regions(current=True)
+        default_get_regions = alicloud.ebs.get_regions(region_id=default.regions[0].id)
+        default_ecs_disk = alicloud.ecs.EcsDisk("default",
+            zone_id=default_get_regions.regions[0].zones[0].zone_id,
+            category="cloud_essd",
+            delete_auto_snapshot=True,
+            delete_with_instance=True,
+            description=name,
+            disk_name=name,
+            enable_auto_snapshot=True,
+            encrypted=True,
+            size=500,
+            tags={
+                "Created": "TF",
+                "For": "example",
+                "controlledBy": "ear",
+            })
+        destination = alicloud.ecs.EcsDisk("destination",
+            zone_id=default_get_regions.regions[0].zones[1].zone_id,
+            category="cloud_essd",
+            delete_auto_snapshot=True,
+            delete_with_instance=True,
+            description=std.format(input="%s-destination",
+                args=[name]).result,
+            disk_name=name,
+            enable_auto_snapshot=True,
+            encrypted=True,
+            size=500,
+            tags={
+                "Created": "TF",
+                "For": "example",
+                "controlledBy": "ear",
+            })
+        default_disk_replica_pair = alicloud.ebs.DiskReplicaPair("default",
+            destination_disk_id=destination.id,
+            destination_region_id=default.regions[0].id,
+            payment_type="POSTPAY",
+            destination_zone_id=destination.zone_id,
+            source_zone_id=default_ecs_disk.zone_id,
+            disk_id=default_ecs_disk.id,
+            description=name)
+        ```
+
         ## Import
 
         Elastic Block Storage(EBS) Disk Replica Pair can be imported using the id, e.g.
@@ -793,6 +849,62 @@ class DiskReplicaPair(pulumi.CustomResource):
         For information about Elastic Block Storage(EBS) Disk Replica Pair and how to use it, see [What is Disk Replica Pair](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ebs-2021-07-30-creatediskreplicapair).
 
         > **NOTE:** Available since v1.196.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.get_regions(current=True)
+        default_get_regions = alicloud.ebs.get_regions(region_id=default.regions[0].id)
+        default_ecs_disk = alicloud.ecs.EcsDisk("default",
+            zone_id=default_get_regions.regions[0].zones[0].zone_id,
+            category="cloud_essd",
+            delete_auto_snapshot=True,
+            delete_with_instance=True,
+            description=name,
+            disk_name=name,
+            enable_auto_snapshot=True,
+            encrypted=True,
+            size=500,
+            tags={
+                "Created": "TF",
+                "For": "example",
+                "controlledBy": "ear",
+            })
+        destination = alicloud.ecs.EcsDisk("destination",
+            zone_id=default_get_regions.regions[0].zones[1].zone_id,
+            category="cloud_essd",
+            delete_auto_snapshot=True,
+            delete_with_instance=True,
+            description=std.format(input="%s-destination",
+                args=[name]).result,
+            disk_name=name,
+            enable_auto_snapshot=True,
+            encrypted=True,
+            size=500,
+            tags={
+                "Created": "TF",
+                "For": "example",
+                "controlledBy": "ear",
+            })
+        default_disk_replica_pair = alicloud.ebs.DiskReplicaPair("default",
+            destination_disk_id=destination.id,
+            destination_region_id=default.regions[0].id,
+            payment_type="POSTPAY",
+            destination_zone_id=destination.zone_id,
+            source_zone_id=default_ecs_disk.zone_id,
+            disk_id=default_ecs_disk.id,
+            description=name)
+        ```
 
         ## Import
 

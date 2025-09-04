@@ -17,6 +17,92 @@ import (
 //
 // > **NOTE:** Available since v1.93.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tfexamplename"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			exampleUser, err := ram.NewUser(ctx, "example", &ram.UserArgs{
+//				Name: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			examplePolicy, err := resourcemanager.NewPolicy(ctx, "example", &resourcemanager.PolicyArgs{
+//				PolicyName: pulumi.String(name),
+//				PolicyDocument: pulumi.String(`\t\t{
+//
+// \t\t\t\"Statement\": [{
+// \t\t\t\t\"Action\": [\"oss:*\"],
+// \t\t\t\t\"Effect\": \"Allow\",
+// \t\t\t\t\"Resource\": [\"acs:oss:*:*:*\"]
+// \t\t\t}],
+// \t\t\t\"Version\": \"1\"
+// \t\t}
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			example, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//				Status: pulumi.StringRef("OK"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// Get Alicloud Account Id
+//			exampleGetAccount, err := alicloud.GetAccount(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s@%s.onaliyun.com",
+//				Args: []interface{}{
+//					exampleUser.Name,
+//					exampleGetAccount.Id,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// Attach the custom policy to resource group
+//			_, err = resourcemanager.NewPolicyAttachment(ctx, "example", &resourcemanager.PolicyAttachmentArgs{
+//				PolicyName:      examplePolicy.PolicyName,
+//				PolicyType:      pulumi.String("Custom"),
+//				PrincipalName:   pulumi.String(invokeFormat.Result),
+//				PrincipalType:   pulumi.String("IMSUser"),
+//				ResourceGroupId: pulumi.String(example.Ids[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Resource Manager Policy Attachment can be imported using the id, e.g.

@@ -2008,6 +2008,154 @@ class Kubernetes(pulumi.CustomResource):
         > **NOTE:** From version 1.212.0, `exclude_autoscaler_nodes`,`worker_number`,`worker_vswitch_ids`,`worker_instance_types`,`worker_instance_charge_type`,`worker_period`,`worker_period_unit`,`worker_auto_renew`,`worker_auto_renew_period`,`worker_disk_category`,`worker_disk_size`,`worker_data_disks`,`node_port_range`,`cpu_policy`,`user_data`,`taints`,`worker_disk_performance_level`,`worker_disk_snapshot_policy_id`,`kube_config`,`availability_zone` are removed.
         Please use resource **`cs.NodePool`** to manage your cluster worker nodes.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-kubernetes-example"
+        # Existing vpc id used to create several vswitches and other resources.
+        vpc_id = config.get("vpcId")
+        if vpc_id is None:
+            vpc_id = ""
+        # The cidr block used to launch a new vpc when 'vpc_id' is not specified.
+        vpc_cidr = config.get("vpcCidr")
+        if vpc_cidr is None:
+            vpc_cidr = "10.0.0.0/8"
+        # List of existing vswitch id.
+        vswitch_ids = config.get_object("vswitchIds")
+        if vswitch_ids is None:
+            vswitch_ids = []
+        # List of cidr blocks used to create several new vswitches when 'vswitch_ids' is not specified.
+        vswitch_cidrs = config.get_object("vswitchCidrs")
+        if vswitch_cidrs is None:
+            vswitch_cidrs = [
+                "10.1.0.0/16",
+                "10.2.0.0/16",
+                "10.3.0.0/16",
+            ]
+        # List of existing vswitch ids for terway.
+        terway_vswitch_ids = config.get_object("terwayVswitchIds")
+        if terway_vswitch_ids is None:
+            terway_vswitch_ids = []
+        # List of cidr blocks used to create several new vswitches when 'terway_vswitch_cidrs' is not specified.
+        terway_vswitch_cidrs = config.get_object("terwayVswitchCidrs")
+        if terway_vswitch_cidrs is None:
+            terway_vswitch_cidrs = [
+                "10.4.0.0/16",
+                "10.5.0.0/16",
+                "10.6.0.0/16",
+            ]
+        cluster_addons = config.get_object("clusterAddons")
+        if cluster_addons is None:
+            cluster_addons = [
+                {
+                    "config": {},
+                    "name": "terway-eniip",
+                },
+                {
+                    "config": {},
+                    "name": "csi-plugin",
+                },
+                {
+                    "config": {},
+                    "name": "csi-provisioner",
+                },
+                {
+                    "config": {
+                        "IngressDashboardEnabled": "true",
+                    },
+                    "name": "logtail-ds",
+                },
+                {
+                    "config": {
+                        "IngressSlbNetworkType": "internet",
+                    },
+                    "name": "nginx-ingress-controller",
+                },
+                {
+                    "config": {},
+                    "name": "arms-prometheus",
+                },
+                {
+                    "config": {
+                        "sls_project_name": "",
+                    },
+                    "name": "ack-node-problem-detector",
+                },
+            ]
+        enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
+        # If there is not specifying vpc_id, the module will launch a new vpc
+        vpc = []
+        for range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
+            vpc.append(alicloud.vpc.Network(f"vpc-{range['value']}", cidr_block=vpc_cidr))
+        # According to the vswitch cidr blocks to launch several vswitches
+        vswitches = []
+        for range in [{"value": i} for i in range(0, 0 if len(vswitch_ids) > 0 else len(vswitch_cidrs))]:
+            vswitches.append(alicloud.vpc.Switch(f"vswitches-{range['value']}",
+                vpc_id=std.join_output(separator="",
+                    input=[__item.id for __item in vpc]).apply(lambda invoke: invoke.result) if vpc_id == "" else vpc_id,
+                cidr_block=vswitch_cidrs[range["value"]],
+                zone_id=len(enhanced.zones).apply(lambda length: enhanced.zones[range["value"] if range["value"] < length else 0]).apply(lambda obj: obj.zone_id)))
+        # According to the vswitch cidr blocks to launch several vswitches
+        terway_vswitches = []
+        for range in [{"value": i} for i in range(0, 0 if len(terway_vswitch_ids) > 0 else len(terway_vswitch_cidrs))]:
+            terway_vswitches.append(alicloud.vpc.Switch(f"terway_vswitches-{range['value']}",
+                vpc_id=std.join_output(separator="",
+                    input=[__item.id for __item in vpc]).apply(lambda invoke: invoke.result) if vpc_id == "" else vpc_id,
+                cidr_block=terway_vswitch_cidrs[range["value"]],
+                zone_id=len(enhanced.zones).apply(lambda length: enhanced.zones[range["value"] if range["value"] < length else 0]).apply(lambda obj: obj.zone_id)))
+        default = alicloud.resourcemanager.get_resource_groups(status="OK")
+        cloud_essd = [alicloud.ecs.get_instance_types_output(availability_zone=_arg0_.zone_id,
+            cpu_core_count=4,
+            memory_size=8,
+            system_disk_category="cloud_essd") for __index in range(3)]
+        default_kubernetes = alicloud.cs.Kubernetes("default",
+            addons=[{
+                "name": std.lookup(map=entry["value"],
+                    key="name",
+                    default=cluster_addons).result,
+                "config": json.dumps(std.lookup(map=entry["value"],
+                    key="config",
+                    default=cluster_addons).result),
+            } for entry in [{"key": k, "value": v} for k, v in cluster_addons]],
+            master_vswitch_ids=std.split(separator=",",
+                text=std.join(separator=",",
+                    input=vswitch_ids).result).result if len(vswitch_ids) > 0 else [] if len(vswitch_cidrs) < 1 else std.join_output(separator=",",
+                input=[__item.id for __item in vswitches]).apply(lambda invoke: std.split_output(separator=",",
+                text=invoke.result)).apply(lambda invoke: invoke.result),
+            pod_vswitch_ids=std.split(separator=",",
+                text=std.join(separator=",",
+                    input=terway_vswitch_ids).result).result if len(terway_vswitch_ids) > 0 else [] if len(terway_vswitch_cidrs) < 1 else std.join_output(separator=",",
+                input=[__item.id for __item in terway_vswitches]).apply(lambda invoke: std.split_output(separator=",",
+                text=invoke.result)).apply(lambda invoke: invoke.result),
+            master_instance_types=[
+                cloud_essd[0].instance_types[0].id,
+                cloud_essd[1].instance_types[0].id,
+                cloud_essd[2].instance_types[0].id,
+            ],
+            master_disk_category="cloud_essd",
+            password="Yourpassword1234",
+            service_cidr="172.18.0.0/16",
+            install_cloud_monitor=True,
+            resource_group_id=default.groups[0].id,
+            deletion_protection=False,
+            timezone="Asia/Shanghai",
+            os_type="Linux",
+            platform="AliyunLinux3",
+            cluster_domain="cluster.local",
+            proxy_mode="ipvs",
+            custom_san="www.terraform.io",
+            new_nat_gateway=True,
+            skip_set_certificate_authority=True)
+        ```
+
         ## Import
 
         Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
@@ -2122,6 +2270,154 @@ class Kubernetes(pulumi.CustomResource):
 
         > **NOTE:** From version 1.212.0, `exclude_autoscaler_nodes`,`worker_number`,`worker_vswitch_ids`,`worker_instance_types`,`worker_instance_charge_type`,`worker_period`,`worker_period_unit`,`worker_auto_renew`,`worker_auto_renew_period`,`worker_disk_category`,`worker_disk_size`,`worker_data_disks`,`node_port_range`,`cpu_policy`,`user_data`,`taints`,`worker_disk_performance_level`,`worker_disk_snapshot_policy_id`,`kube_config`,`availability_zone` are removed.
         Please use resource **`cs.NodePool`** to manage your cluster worker nodes.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-kubernetes-example"
+        # Existing vpc id used to create several vswitches and other resources.
+        vpc_id = config.get("vpcId")
+        if vpc_id is None:
+            vpc_id = ""
+        # The cidr block used to launch a new vpc when 'vpc_id' is not specified.
+        vpc_cidr = config.get("vpcCidr")
+        if vpc_cidr is None:
+            vpc_cidr = "10.0.0.0/8"
+        # List of existing vswitch id.
+        vswitch_ids = config.get_object("vswitchIds")
+        if vswitch_ids is None:
+            vswitch_ids = []
+        # List of cidr blocks used to create several new vswitches when 'vswitch_ids' is not specified.
+        vswitch_cidrs = config.get_object("vswitchCidrs")
+        if vswitch_cidrs is None:
+            vswitch_cidrs = [
+                "10.1.0.0/16",
+                "10.2.0.0/16",
+                "10.3.0.0/16",
+            ]
+        # List of existing vswitch ids for terway.
+        terway_vswitch_ids = config.get_object("terwayVswitchIds")
+        if terway_vswitch_ids is None:
+            terway_vswitch_ids = []
+        # List of cidr blocks used to create several new vswitches when 'terway_vswitch_cidrs' is not specified.
+        terway_vswitch_cidrs = config.get_object("terwayVswitchCidrs")
+        if terway_vswitch_cidrs is None:
+            terway_vswitch_cidrs = [
+                "10.4.0.0/16",
+                "10.5.0.0/16",
+                "10.6.0.0/16",
+            ]
+        cluster_addons = config.get_object("clusterAddons")
+        if cluster_addons is None:
+            cluster_addons = [
+                {
+                    "config": {},
+                    "name": "terway-eniip",
+                },
+                {
+                    "config": {},
+                    "name": "csi-plugin",
+                },
+                {
+                    "config": {},
+                    "name": "csi-provisioner",
+                },
+                {
+                    "config": {
+                        "IngressDashboardEnabled": "true",
+                    },
+                    "name": "logtail-ds",
+                },
+                {
+                    "config": {
+                        "IngressSlbNetworkType": "internet",
+                    },
+                    "name": "nginx-ingress-controller",
+                },
+                {
+                    "config": {},
+                    "name": "arms-prometheus",
+                },
+                {
+                    "config": {
+                        "sls_project_name": "",
+                    },
+                    "name": "ack-node-problem-detector",
+                },
+            ]
+        enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
+        # If there is not specifying vpc_id, the module will launch a new vpc
+        vpc = []
+        for range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
+            vpc.append(alicloud.vpc.Network(f"vpc-{range['value']}", cidr_block=vpc_cidr))
+        # According to the vswitch cidr blocks to launch several vswitches
+        vswitches = []
+        for range in [{"value": i} for i in range(0, 0 if len(vswitch_ids) > 0 else len(vswitch_cidrs))]:
+            vswitches.append(alicloud.vpc.Switch(f"vswitches-{range['value']}",
+                vpc_id=std.join_output(separator="",
+                    input=[__item.id for __item in vpc]).apply(lambda invoke: invoke.result) if vpc_id == "" else vpc_id,
+                cidr_block=vswitch_cidrs[range["value"]],
+                zone_id=len(enhanced.zones).apply(lambda length: enhanced.zones[range["value"] if range["value"] < length else 0]).apply(lambda obj: obj.zone_id)))
+        # According to the vswitch cidr blocks to launch several vswitches
+        terway_vswitches = []
+        for range in [{"value": i} for i in range(0, 0 if len(terway_vswitch_ids) > 0 else len(terway_vswitch_cidrs))]:
+            terway_vswitches.append(alicloud.vpc.Switch(f"terway_vswitches-{range['value']}",
+                vpc_id=std.join_output(separator="",
+                    input=[__item.id for __item in vpc]).apply(lambda invoke: invoke.result) if vpc_id == "" else vpc_id,
+                cidr_block=terway_vswitch_cidrs[range["value"]],
+                zone_id=len(enhanced.zones).apply(lambda length: enhanced.zones[range["value"] if range["value"] < length else 0]).apply(lambda obj: obj.zone_id)))
+        default = alicloud.resourcemanager.get_resource_groups(status="OK")
+        cloud_essd = [alicloud.ecs.get_instance_types_output(availability_zone=_arg0_.zone_id,
+            cpu_core_count=4,
+            memory_size=8,
+            system_disk_category="cloud_essd") for __index in range(3)]
+        default_kubernetes = alicloud.cs.Kubernetes("default",
+            addons=[{
+                "name": std.lookup(map=entry["value"],
+                    key="name",
+                    default=cluster_addons).result,
+                "config": json.dumps(std.lookup(map=entry["value"],
+                    key="config",
+                    default=cluster_addons).result),
+            } for entry in [{"key": k, "value": v} for k, v in cluster_addons]],
+            master_vswitch_ids=std.split(separator=",",
+                text=std.join(separator=",",
+                    input=vswitch_ids).result).result if len(vswitch_ids) > 0 else [] if len(vswitch_cidrs) < 1 else std.join_output(separator=",",
+                input=[__item.id for __item in vswitches]).apply(lambda invoke: std.split_output(separator=",",
+                text=invoke.result)).apply(lambda invoke: invoke.result),
+            pod_vswitch_ids=std.split(separator=",",
+                text=std.join(separator=",",
+                    input=terway_vswitch_ids).result).result if len(terway_vswitch_ids) > 0 else [] if len(terway_vswitch_cidrs) < 1 else std.join_output(separator=",",
+                input=[__item.id for __item in terway_vswitches]).apply(lambda invoke: std.split_output(separator=",",
+                text=invoke.result)).apply(lambda invoke: invoke.result),
+            master_instance_types=[
+                cloud_essd[0].instance_types[0].id,
+                cloud_essd[1].instance_types[0].id,
+                cloud_essd[2].instance_types[0].id,
+            ],
+            master_disk_category="cloud_essd",
+            password="Yourpassword1234",
+            service_cidr="172.18.0.0/16",
+            install_cloud_monitor=True,
+            resource_group_id=default.groups[0].id,
+            deletion_protection=False,
+            timezone="Asia/Shanghai",
+            os_type="Linux",
+            platform="AliyunLinux3",
+            cluster_domain="cluster.local",
+            proxy_mode="ipvs",
+            custom_san="www.terraform.io",
+            new_nat_gateway=True,
+            skip_set_certificate_authority=True)
+        ```
 
         ## Import
 

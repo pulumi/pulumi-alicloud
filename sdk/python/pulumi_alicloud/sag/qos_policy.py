@@ -405,6 +405,41 @@ class QosPolicy(pulumi.CustomResource):
 
         > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+        import pulumi_time as time
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.sag.Qos("default", name=name)
+        example = time.index.Static("example")
+        default_qos_policy = alicloud.sag.QosPolicy("default",
+            qos_id=default.id,
+            name=name,
+            description=name,
+            priority=1,
+            ip_protocol="ALL",
+            source_cidr="192.168.0.0/24",
+            source_port_range="-1/-1",
+            dest_cidr="10.10.0.0/24",
+            dest_port_range="-1/-1",
+            start_time=std.replace(text=example["rfc3339"],
+                search="Z",
+                replace="+0800").result,
+            end_time=std.replace(text=std.timeadd(duration=example["rfc3339"],
+                    timestamp="24h").result,
+                search="Z",
+                replace="+0800").result)
+        ```
+
         ## Import
 
         The Sag Qos Policy can be imported using the id, e.g.
@@ -442,6 +477,41 @@ class QosPolicy(pulumi.CustomResource):
         > **NOTE:** Available since v1.60.0.
 
         > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+        import pulumi_time as time
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.sag.Qos("default", name=name)
+        example = time.index.Static("example")
+        default_qos_policy = alicloud.sag.QosPolicy("default",
+            qos_id=default.id,
+            name=name,
+            description=name,
+            priority=1,
+            ip_protocol="ALL",
+            source_cidr="192.168.0.0/24",
+            source_port_range="-1/-1",
+            dest_cidr="10.10.0.0/24",
+            dest_port_range="-1/-1",
+            start_time=std.replace(text=example["rfc3339"],
+                search="Z",
+                replace="+0800").result,
+            end_time=std.replace(text=std.timeadd(duration=example["rfc3339"],
+                    timestamp="24h").result,
+                search="Z",
+                replace="+0800").result)
+        ```
 
         ## Import
 

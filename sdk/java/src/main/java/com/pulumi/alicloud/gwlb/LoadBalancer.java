@@ -25,6 +25,91 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.234.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.alicloud.gwlb.LoadBalancer;
+ * import com.pulumi.alicloud.gwlb.LoadBalancerArgs;
+ * import com.pulumi.alicloud.gwlb.inputs.LoadBalancerZoneMappingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var regionId = config.get("regionId").orElse("cn-wulanchabu");
+ *         final var zoneId2 = config.get("zoneId2").orElse("cn-wulanchabu-c");
+ *         final var zoneId1 = config.get("zoneId1").orElse("cn-wulanchabu-b");
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
+ * 
+ *         var defaulti9Axhl = new Network("defaulti9Axhl", NetworkArgs.builder()
+ *             .cidrBlock("10.0.0.0/8")
+ *             .vpcName(name)
+ *             .build());
+ * 
+ *         var default9NaKmL = new Switch("default9NaKmL", SwitchArgs.builder()
+ *             .vpcId(defaulti9Axhl.id())
+ *             .zoneId(zoneId1)
+ *             .cidrBlock("10.0.0.0/24")
+ *             .vswitchName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s1")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var defaultH4pKT4 = new Switch("defaultH4pKT4", SwitchArgs.builder()
+ *             .vpcId(defaulti9Axhl.id())
+ *             .zoneId(zoneId2)
+ *             .cidrBlock("10.0.1.0/24")
+ *             .vswitchName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s2")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var defaultLoadBalancer = new LoadBalancer("defaultLoadBalancer", LoadBalancerArgs.builder()
+ *             .vpcId(defaulti9Axhl.id())
+ *             .loadBalancerName(name)
+ *             .zoneMappings(LoadBalancerZoneMappingArgs.builder()
+ *                 .vswitchId(default9NaKmL.id())
+ *                 .zoneId(zoneId1)
+ *                 .build())
+ *             .addressIpVersion("Ipv4")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * GWLB Load Balancer can be imported using the id, e.g.

@@ -22,14 +22,14 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "tfexample";
  * const example = new alicloud.resourcemanager.Policy("example", {
  *     policyName: name,
- *     policyDocument: `\x09\x09{
- * \x09\x09\x09"Statement": [{
- * \x09\x09\x09\x09"Action": ["oss:*"],
- * \x09\x09\x09\x09"Effect": "Allow",
- * \x09\x09\x09\x09"Resource": ["acs:oss:*:*:*"]
- * \x09\x09\x09}],
- * \x09\x09\x09"Version": "1"
- * \x09\x09}
+ *     policyDocument: `\\t\\t{
+ * \\t\\t\\t\\"Statement\\": [{
+ * \\t\\t\\t\\t\\"Action\\": [\\"oss:*\\"],
+ * \\t\\t\\t\\t\\"Effect\\": \\"Allow\\",
+ * \\t\\t\\t\\t\\"Resource\\": [\\"acs:oss:*:*:*\\"]
+ * \\t\\t\\t}],
+ * \\t\\t\\t\\"Version\\": \\"1\\"
+ * \\t\\t}
  * `,
  * });
  * ```

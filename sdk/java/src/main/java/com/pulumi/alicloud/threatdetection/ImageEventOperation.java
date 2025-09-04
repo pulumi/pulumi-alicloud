@@ -15,7 +15,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Threat Detection Image Event Operation resource. Image Event Operation.
+ * Provides a Threat Detection Image Event Operation resource.
+ * 
+ * Image Event Operation.
  * 
  * For information about Threat Detection Image Event Operation and how to use it, see [What is Image Event Operation](https://www.alibabacloud.com/help/zh/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation).
  * 
@@ -56,17 +58,17 @@ import javax.annotation.Nullable;
  *             .eventKey("alibabacloud_ak")
  *             .scenarios("""
  * {
- *   "type":"default",
- *   "value":""
+ *   \"type\":\"default\",
+ *   \"value\":\"\"
  * }
  *             """)
  *             .eventName("阿里云AK")
  *             .conditions("""
  * [
  *   {
- *       "condition":"MD5",
- *       "type":"equals",
- *       "value":"0083a31cc0083a31ccf7c10367a6e783e"
+ *       \"condition\":\"MD5\",
+ *       \"type\":\"equals\",
+ *       \"value\":\"0083a31cc0083a31ccf7c10367a6e783e\"
  *   }
  * ]
  *             """)
@@ -90,88 +92,116 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:threatdetection/imageEventOperation:ImageEventOperation")
 public class ImageEventOperation extends com.pulumi.resources.CustomResource {
     /**
-     * Event Conditions.
+     * The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
      * 
      */
     @Export(name="conditions", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> conditions;
+    private Output<String> conditions;
 
     /**
-     * @return Event Conditions.
+     * @return The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
      * 
      */
-    public Output<Optional<String>> conditions() {
-        return Codegen.optional(this.conditions);
+    public Output<String> conditions() {
+        return this.conditions;
     }
     /**
-     * Image Event Key.
+     * The keyword of the alert item.
      * 
      */
     @Export(name="eventKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> eventKey;
 
     /**
-     * @return Image Event Key.
+     * @return The keyword of the alert item.
      * 
      */
     public Output<Optional<String>> eventKey() {
         return Codegen.optional(this.eventKey);
     }
     /**
-     * Image Event Name.
+     * The name of the alert item.
      * 
      */
     @Export(name="eventName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> eventName;
 
     /**
-     * @return Image Event Name.
+     * @return The name of the alert item.
      * 
      */
     public Output<Optional<String>> eventName() {
         return Codegen.optional(this.eventName);
     }
     /**
-     * Image Event Type.
+     * The alert type.
      * 
      */
     @Export(name="eventType", refs={String.class}, tree="[0]")
     private Output<String> eventType;
 
     /**
-     * @return Image Event Type.
+     * @return The alert type.
      * 
      */
     public Output<String> eventType() {
         return this.eventType;
     }
     /**
-     * Event Operation Code.
+     * The remarks.
+     * 
+     */
+    @Export(name="note", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> note;
+
+    /**
+     * @return The remarks.
+     * 
+     */
+    public Output<Optional<String>> note() {
+        return Codegen.optional(this.note);
+    }
+    /**
+     * The operation code.
      * 
      */
     @Export(name="operationCode", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> operationCode;
+    private Output<String> operationCode;
 
     /**
-     * @return Event Operation Code.
+     * @return The operation code.
      * 
      */
-    public Output<Optional<String>> operationCode() {
-        return Codegen.optional(this.operationCode);
+    public Output<String> operationCode() {
+        return this.operationCode;
     }
     /**
-     * Event Scenarios.
+     * The application scope of the rule.
      * 
      */
     @Export(name="scenarios", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> scenarios;
+    private Output<String> scenarios;
 
     /**
-     * @return Event Scenarios.
+     * @return The application scope of the rule.
      * 
      */
-    public Output<Optional<String>> scenarios() {
-        return Codegen.optional(this.scenarios);
+    public Output<String> scenarios() {
+        return this.scenarios;
+    }
+    /**
+     * The source of the whitelist. Valid values:
+     * 
+     */
+    @Export(name="source", refs={String.class}, tree="[0]")
+    private Output<String> source;
+
+    /**
+     * @return The source of the whitelist. Valid values:
+     * 
+     */
+    public Output<String> source() {
+        return this.source;
     }
 
     /**
@@ -186,7 +216,7 @@ public class ImageEventOperation extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ImageEventOperation(java.lang.String name, @Nullable ImageEventOperationArgs args) {
+    public ImageEventOperation(java.lang.String name, ImageEventOperationArgs args) {
         this(name, args, null);
     }
     /**
@@ -195,7 +225,7 @@ public class ImageEventOperation extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ImageEventOperation(java.lang.String name, @Nullable ImageEventOperationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public ImageEventOperation(java.lang.String name, ImageEventOperationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("alicloud:threatdetection/imageEventOperation:ImageEventOperation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -203,7 +233,7 @@ public class ImageEventOperation extends com.pulumi.resources.CustomResource {
         super("alicloud:threatdetection/imageEventOperation:ImageEventOperation", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static ImageEventOperationArgs makeArgs(@Nullable ImageEventOperationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static ImageEventOperationArgs makeArgs(ImageEventOperationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

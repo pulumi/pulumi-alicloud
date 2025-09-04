@@ -18,6 +18,88 @@ import (
 //
 // > **NOTE:** Available since v1.157.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mse"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "172.16.%d.0/21",
+//				Args: []float64{
+//					(val0 + 1) * 16,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat1, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "terraform_example_%d",
+//				Args: []float64{
+//					val0 + 1,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var exampleSwitch []*vpc.Switch
+//			for index := 0; index < 2; index++ {
+//				key0 := index
+//				val0 := index
+//				__res, err := vpc.NewSwitch(ctx, fmt.Sprintf("example-%v", key0), &vpc.SwitchArgs{
+//					VpcId:       exampleNetwork.ID(),
+//					CidrBlock:   pulumi.String(invokeFormat.Result),
+//					ZoneId:      example.Zones[val0].Id,
+//					VswitchName: pulumi.String(invokeFormat1.Result),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				exampleSwitch = append(exampleSwitch, __res)
+//			}
+//			_, err = mse.NewGateway(ctx, "example", &mse.GatewayArgs{
+//				GatewayName:     pulumi.String("terraform-example"),
+//				Replica:         pulumi.Int(2),
+//				Spec:            pulumi.String("MSE_GTW_2_4_200_c"),
+//				VswitchId:       exampleSwitch[0].ID(),
+//				BackupVswitchId: exampleSwitch[1].ID(),
+//				VpcId:           exampleNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Microservice Engine (MSE) Gateway can be imported using the id, e.g.

@@ -11,6 +11,74 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.195.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const _default = alicloud.cen.getTransitRouterAvailableResources({});
+ * const zone = _default.then(_default => _default.resources?.[0]?.masterZones?.[1]);
+ * const example = new alicloud.vpc.Network("example", {
+ *     vpcName: name,
+ *     cidrBlock: "192.168.0.0/16",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("example", {
+ *     vswitchName: name,
+ *     cidrBlock: "192.168.1.0/24",
+ *     vpcId: example.id,
+ *     zoneId: zone,
+ * });
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("example", {
+ *     name: name,
+ *     vpcId: example.id,
+ * });
+ * const exampleEcsNetworkInterface = new alicloud.ecs.EcsNetworkInterface("example", {
+ *     networkInterfaceName: name,
+ *     vswitchId: exampleSwitch.id,
+ *     primaryIpAddress: exampleSwitch.cidrBlock.apply(cidrBlock => std.cidrhostOutput({
+ *         input: cidrBlock,
+ *         host: 100,
+ *     })).apply(invoke => invoke.result),
+ *     securityGroupIds: [exampleSecurityGroup.id],
+ * });
+ * const exampleInstance = new alicloud.cen.Instance("example", {cenInstanceName: name});
+ * const exampleTransitRouter = new alicloud.cen.TransitRouter("example", {
+ *     transitRouterName: name,
+ *     cenId: exampleInstance.id,
+ *     supportMulticast: true,
+ * });
+ * const exampleTransitRouterMulticastDomain = new alicloud.cen.TransitRouterMulticastDomain("example", {
+ *     transitRouterId: exampleTransitRouter.transitRouterId,
+ *     transitRouterMulticastDomainName: name,
+ * });
+ * const exampleTransitRouterVpcAttachment = new alicloud.cen.TransitRouterVpcAttachment("example", {
+ *     cenId: exampleTransitRouter.cenId,
+ *     transitRouterId: exampleTransitRouterMulticastDomain.transitRouterId,
+ *     vpcId: example.id,
+ *     zoneMappings: [{
+ *         zoneId: zone,
+ *         vswitchId: exampleSwitch.id,
+ *     }],
+ * });
+ * const exampleTransitRouterMulticastDomainAssociation = new alicloud.cen.TransitRouterMulticastDomainAssociation("example", {
+ *     transitRouterMulticastDomainId: exampleTransitRouterMulticastDomain.id,
+ *     transitRouterAttachmentId: exampleTransitRouterVpcAttachment.transitRouterAttachmentId,
+ *     vswitchId: exampleSwitch.id,
+ * });
+ * const exampleTransitRouterMulticastDomainMember = new alicloud.cen.TransitRouterMulticastDomainMember("example", {
+ *     vpcId: example.id,
+ *     transitRouterMulticastDomainId: exampleTransitRouterMulticastDomainAssociation.transitRouterMulticastDomainId,
+ *     networkInterfaceId: exampleEcsNetworkInterface.id,
+ *     groupIpAddress: "239.1.1.1",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Cen Transit Router Multicast Domain Member can be imported using the id, e.g.

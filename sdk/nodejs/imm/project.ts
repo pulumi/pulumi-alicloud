@@ -24,18 +24,18 @@ import * as utilities from "../utilities";
  * const role = new alicloud.ram.Role("role", {
  *     name: name,
  *     document: `  {
- *     "Statement": [
+ *     \\"Statement\\": [
  *       {
- *         "Action": "sts:AssumeRole",
- *         "Effect": "Allow",
- *         "Principal": {
- *           "Service": [
- *             "imm.aliyuncs.com"
+ *         \\"Action\\": \\"sts:AssumeRole\\",
+ *         \\"Effect\\": \\"Allow\\",
+ *         \\"Principal\\": {
+ *           \\"Service\\": [
+ *             \\"imm.aliyuncs.com\\"
  *           ]
  *         }
  *       }
  *     ],
- *     "Version": "1"
+ *     \\"Version\\": \\"1\\"
  *   }
  * `,
  *     description: "this is a role test.",

@@ -96,6 +96,8 @@ type AccessRule struct {
 	Ipv6SourceCidrIp pulumi.StringPtrOutput `pulumi:"ipv6SourceCidrIp"`
 	// Priority.
 	Priority pulumi.IntPtrOutput `pulumi:"priority"`
+	// (Available since v1.256.0) The region ID.
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// RWAccess.
 	RwAccessType pulumi.StringOutput `pulumi:"rwAccessType"`
 	// SourceCidrIp.
@@ -147,6 +149,8 @@ type accessRuleState struct {
 	Ipv6SourceCidrIp *string `pulumi:"ipv6SourceCidrIp"`
 	// Priority.
 	Priority *int `pulumi:"priority"`
+	// (Available since v1.256.0) The region ID.
+	RegionId *string `pulumi:"regionId"`
 	// RWAccess.
 	RwAccessType *string `pulumi:"rwAccessType"`
 	// SourceCidrIp.
@@ -166,6 +170,8 @@ type AccessRuleState struct {
 	Ipv6SourceCidrIp pulumi.StringPtrInput
 	// Priority.
 	Priority pulumi.IntPtrInput
+	// (Available since v1.256.0) The region ID.
+	RegionId pulumi.StringPtrInput
 	// RWAccess.
 	RwAccessType pulumi.StringPtrInput
 	// SourceCidrIp.
@@ -323,6 +329,11 @@ func (o AccessRuleOutput) Ipv6SourceCidrIp() pulumi.StringPtrOutput {
 // Priority.
 func (o AccessRuleOutput) Priority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AccessRule) pulumi.IntPtrOutput { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+// (Available since v1.256.0) The region ID.
+func (o AccessRuleOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // RWAccess.

@@ -32,8 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.integer;
- * import com.pulumi.random.integerArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.resourcemanager.ControlPolicy;
  * import com.pulumi.alicloud.resourcemanager.ControlPolicyArgs;
  * import com.pulumi.alicloud.resourcemanager.Folder;
@@ -66,17 +66,17 @@ import javax.annotation.Nullable;
  *             .effectScope("RAM")
  *             .policyDocument("""
  *   {
- *     "Version": "1",
- *     "Statement": [
+ *     \"Version\": \"1\",
+ *     \"Statement\": [
  *       {
- *         "Effect": "Deny",
- *         "Action": [
- *           "ram:UpdateRole",
- *           "ram:DeleteRole",
- *           "ram:AttachPolicyToRole",
- *           "ram:DetachPolicyFromRole"
+ *         \"Effect\": \"Deny\",
+ *         \"Action\": [
+ *           \"ram:UpdateRole\",
+ *           \"ram:DeleteRole\",
+ *           \"ram:AttachPolicyToRole\",
+ *           \"ram:DetachPolicyFromRole\"
  *         ],
- *         "Resource": "acs:ram:*:*:role/ResourceDirectoryAccountAccessRole"
+ *         \"Resource\": \"acs:ram:*:*:role/ResourceDirectoryAccountAccessRole\"
  *       }
  *     ]
  *   }

@@ -41,19 +41,19 @@ import (
 //			role, err := ram.NewRole(ctx, "role", &ram.RoleArgs{
 //				Name: pulumi.String("roleName"),
 //				Document: pulumi.String(`    {
-//	      "Statement": [
+//	      \"Statement\": [
 //	        {
-//	          "Action": "sts:AssumeRole",
-//	          "Effect": "Allow",
-//	          "Principal": {
-//	            "Service": [
-//	              "apigateway.aliyuncs.com",
-//	              "ecs.aliyuncs.com"
+//	          \"Action\": \"sts:AssumeRole\",
+//	          \"Effect\": \"Allow\",
+//	          \"Principal\": {
+//	            \"Service\": [
+//	              \"apigateway.aliyuncs.com\",
+//	              \"ecs.aliyuncs.com\"
 //	            ]
 //	          }
 //	        }
 //	      ],
-//	      "Version": "1"
+//	      \"Version\": \"1\"
 //	    }
 //
 // `),
@@ -73,20 +73,20 @@ import (
 //			policy, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
 //				PolicyName: pulumi.Sprintf("tf-example-%v", _default.Result),
 //				PolicyDocument: pulumi.String(`  {
-//	    "Statement": [
+//	    \"Statement\": [
 //	      {
-//	        "Action": [
-//	          "oss:ListObjects",
-//	          "oss:GetObject"
+//	        \"Action\": [
+//	          \"oss:ListObjects\",
+//	          \"oss:GetObject\"
 //	        ],
-//	        "Effect": "Allow",
-//	        "Resource": [
-//	          "acs:oss:*:*:mybucket",
-//	          "acs:oss:*:*:mybucket/*"
+//	        \"Effect\": \"Allow\",
+//	        \"Resource\": [
+//	          \"acs:oss:*:*:mybucket\",
+//	          \"acs:oss:*:*:mybucket/*\"
 //	        ]
 //	      }
 //	    ],
-//	      "Version": "1"
+//	      \"Version\": \"1\"
 //	  }
 //
 // `),

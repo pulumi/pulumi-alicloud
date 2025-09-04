@@ -86,7 +86,7 @@ import (
 //				TargetFileSystemId: pulumi.String(defaultGetNasBackupPlans.Plans[0].FileSystemId),
 //				TargetCreateTime:   pulumi.String(defaultGetNasBackupPlans.Plans[0].CreateTime),
 //				TargetPath:         pulumi.String("/"),
-//				Options:            pulumi.String("    {\"includes\":[], \"excludes\":[]}\n"),
+//				Options:            pulumi.String("    {\\\"includes\\\":[], \\\"excludes\\\":[]}\n"),
 //			})
 //			if err != nil {
 //				return err
@@ -99,7 +99,7 @@ import (
 //				SnapshotId:   pulumi.String(ossSnapshots.Snapshots[0].SnapshotId),
 //				TargetBucket: pulumi.String(defaultGetOssBackupPlans.Plans[0].Bucket),
 //				TargetPrefix: pulumi.String(""),
-//				Options:      pulumi.String("    {\"includes\":[], \"excludes\":[]}\n"),
+//				Options:      pulumi.String("    {\\\"includes\\\":[], \\\"excludes\\\":[]}\n"),
 //			})
 //			if err != nil {
 //				return err

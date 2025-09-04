@@ -54,8 +54,8 @@ import * as utilities from "../utilities";
  *     type: "IPV4",
  *     addresses: [{
  *         attributeInfo: `    {
- *       "lineCodeRectifyType": "RECTIFIED",
- *       "lineCodes": ["os_namerica_us"]
+ *       \\"lineCodeRectifyType\\": \\"RECTIFIED\\",
+ *       \\"lineCodes\\": [\\"os_namerica_us\\"]
  *     }
  * `,
  *         remark: "address_remark",

@@ -77,22 +77,20 @@ import (
 // }
 // defaultRole, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
 // Name: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
-//
-//	Document: pulumi.String(`		{
-//				"Statement": [
-//					{
-//						"Action": "sts:AssumeRole",
-//						"Effect": "Allow",
-//						"Principal": {
-//							"Service": [
-//								"ecs.aliyuncs.com"
-//							]
-//						}
-//					}
-//			  	],
-//				"Version": "1"
-//			}
-//
+// Document: pulumi.String(`\t\t{
+// \t\t\t\"Statement\": [
+// \t\t\t\t{
+// \t\t\t\t\t\"Action\": \"sts:AssumeRole\",
+// \t\t\t\t\t\"Effect\": \"Allow\",
+// \t\t\t\t\t\"Principal\": {
+// \t\t\t\t\t\t\"Service\": [
+// \t\t\t\t\t\t\t\"ecs.aliyuncs.com\"
+// \t\t\t\t\t\t]
+// \t\t\t\t\t}
+// \t\t\t\t}
+// \t\t  \t],
+// \t\t\t\"Version\": \"1\"
+// \t\t}
 // `),
 // Force: pulumi.Bool(true),
 // })

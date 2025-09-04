@@ -106,7 +106,7 @@ import (
 // if err != nil {
 // return err
 // }
-// _, err = vpc.NewRouteEntry(ctx, "foo", &vpc.RouteEntryArgs{
+// _, err = vpc.NewRouteEntry(ctx, "default", &vpc.RouteEntryArgs{
 // RouteTableId: defaultNetwork.RouteTableId,
 // DestinationCidrblock: pulumi.String("172.11.1.1/32"),
 // NexthopType: pulumi.String("Instance"),
@@ -126,6 +126,8 @@ import (
 // to create a VPC, several VSwitches and add several route entries one-click.
 //
 // ## Import
+//
+// Route Entry can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:vpc/routeEntry:RouteEntry example <route_table_id>:<router_id>:<destination_cidrblock>:<nexthop_type>:<nexthop_id>

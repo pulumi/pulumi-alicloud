@@ -13,6 +13,70 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.237.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const randint = new random.index.Integer("randint", {
+ *     max: 999,
+ *     min: 1,
+ * });
+ * const _default = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultQeRfvU = new alicloud.dataworks.Project("defaultQeRfvU", {
+ *     description: "源项目",
+ *     projectName: name,
+ *     displayName: "shared_source2",
+ *     paiTaskEnabled: true,
+ * });
+ * const defaultasjsH5 = new alicloud.dataworks.Project("defaultasjsH5", {
+ *     description: "目标空间",
+ *     projectName: std.format({
+ *         input: "%s1",
+ *         args: [name],
+ *     }).then(invoke => invoke.result),
+ *     displayName: "shared_target2",
+ *     paiTaskEnabled: true,
+ * });
+ * const defaultvzu0wG = new alicloud.dataworks.DataSource("defaultvzu0wG", {
+ *     type: "hive",
+ *     dataSourceName: std.format({
+ *         input: "%s2",
+ *         args: [name],
+ *     }).then(invoke => invoke.result),
+ *     connectionProperties: JSON.stringify({
+ *         address: [{
+ *             host: "127.0.0.1",
+ *             port: "1234",
+ *         }],
+ *         database: "hive_database",
+ *         metaType: "HiveMetastore",
+ *         metastoreUris: "thrift://123:123",
+ *         version: "2.3.9",
+ *         loginMode: "Anonymous",
+ *         securityProtocol: "authTypeNone",
+ *         envType: "Prod",
+ *         properties: {
+ *             key1: "value1",
+ *         },
+ *     }),
+ *     projectId: defaultQeRfvU.id,
+ *     connectionPropertiesMode: "UrlMode",
+ * });
+ * const defaultDataSourceSharedRule = new alicloud.dataworks.DataSourceSharedRule("default", {
+ *     targetProjectId: defaultasjsH5.id,
+ *     dataSourceId: defaultvzu0wG.dataSourceId,
+ *     envType: "Prod",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Data Works Data Source Shared Rule can be imported using the id, e.g.

@@ -20,6 +20,172 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.209.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.CidrsubnetArgs;
+ * import com.pulumi.alicloud.ecs.SnapshotPolicy;
+ * import com.pulumi.alicloud.ecs.SnapshotPolicyArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.cs.ManagedKubernetes;
+ * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.ecs.KeyPair;
+ * import com.pulumi.alicloud.ecs.KeyPairArgs;
+ * import com.pulumi.alicloud.cs.NodePool;
+ * import com.pulumi.alicloud.cs.NodePoolArgs;
+ * import com.pulumi.alicloud.arms.Prometheus;
+ * import com.pulumi.alicloud.arms.PrometheusArgs;
+ * import com.pulumi.alicloud.arms.PrometheusMonitoring;
+ * import com.pulumi.alicloud.arms.PrometheusMonitoringArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation("VSwitch")
+ *             .build());
+ * 
+ *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .cidrBlock("192.168.0.0/16")
+ *             .vpcName(name)
+ *             .build());
+ * 
+ *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(defaultNetwork.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+ *                 .input(_cidrBlock)
+ *                 .newbits(8)
+ *                 .netnum(8)
+ *                 .build())).applyValue(_invoke -> _invoke.result()))
+ *             .zoneId(default_.zones()[0].id())
+ *             .vswitchName(name)
+ *             .build());
+ * 
+ *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
+ *             .name(name)
+ *             .repeatWeekdays(            
+ *                 "1",
+ *                 "2",
+ *                 "3")
+ *             .retentionDays(-1)
+ *             .timePoints(            
+ *                 "1",
+ *                 "22",
+ *                 "23")
+ *             .build());
+ * 
+ *         final var defaultGetInstanceTypes = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(_zoneId)
+ *             .cpuCoreCount(2)
+ *             .memorySize(4)
+ *             .kubernetesNodeRole("Worker")
+ *             .instanceTypeFamily("ecs.sn1ne")
+ *             .build()));
+ * 
+ *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+ *             .name(name)
+ *             .clusterSpec("ack.pro.small")
+ *             .version("1.24.6-aliyun.1")
+ *             .newNatGateway(true)
+ *             .nodeCidrMask(26)
+ *             .proxyMode("ipvs")
+ *             .serviceCidr("172.23.0.0/16")
+ *             .podCidr("10.95.0.0/16")
+ *             .workerVswitchIds(vswitch.id())
+ *             .build());
+ * 
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
+ *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .build());
+ * 
+ *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
+ *             .nodePoolName("desired_size")
+ *             .clusterId(defaultManagedKubernetes.id())
+ *             .vswitchIds(vswitch.id())
+ *             .instanceTypes(defaultGetInstanceTypes.applyValue(_defaultGetInstanceTypes -> _defaultGetInstanceTypes.instanceTypes()[0].id()))
+ *             .systemDiskCategory("cloud_efficiency")
+ *             .systemDiskSize(40)
+ *             .keyName(defaultKeyPair.keyPairName())
+ *             .desiredSize("2")
+ *             .build());
+ * 
+ *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()
+ *             .clusterType("aliyun-cs")
+ *             .grafanaInstanceId("free")
+ *             .clusterId(defaultNodePool.clusterId())
+ *             .build());
+ * 
+ *         var defaultPrometheusMonitoring = new PrometheusMonitoring("defaultPrometheusMonitoring", PrometheusMonitoringArgs.builder()
+ *             .status("run")
+ *             .type("serviceMonitor")
+ *             .clusterId(defaultPrometheus.clusterId())
+ *             .configYaml("""
+ * apiVersion: monitoring.coreos.com/v1
+ * kind: ServiceMonitor
+ * metadata:
+ *   name: tomcat-demo
+ *   namespace: default
+ * spec:
+ *   endpoints:
+ *   - bearerTokenSecret:
+ *       key: ''
+ *     interval: 30s
+ *     path: /metrics
+ *     port: tomcat-monitor
+ *   namespaceSelector:
+ *     any: true
+ *   selector:
+ *     matchLabels:
+ *       app: tomcat
+ *             """)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * ARMS Prometheus Monitoring can be imported using the id, e.g.

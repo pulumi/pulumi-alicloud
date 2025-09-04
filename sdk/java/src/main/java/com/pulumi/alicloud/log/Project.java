@@ -34,8 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.integer;
- * import com.pulumi.random.integerArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import java.util.List;
@@ -81,8 +81,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.integer;
- * import com.pulumi.random.integerArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import java.util.List;
@@ -108,23 +108,23 @@ import javax.annotation.Nullable;
  *             .description("terraform-example")
  *             .policy("""
  * {
- *   "Statement": [
+ *   \"Statement\": [
  *     {
- *       "Action": [
- *         "log:PostLogStoreLogs"
+ *       \"Action\": [
+ *         \"log:PostLogStoreLogs\"
  *       ],
- *       "Condition": {
- *         "StringNotLike": {
- *           "acs:SourceVpc": [
- *             "vpc-*"
+ *       \"Condition\": {
+ *         \"StringNotLike\": {
+ *           \"acs:SourceVpc\": [
+ *             \"vpc-*\"
  *           ]
  *         }
  *       },
- *       "Effect": "Deny",
- *       "Resource": "acs:log:*:*:project/tf-log/*"
+ *       \"Effect\": \"Deny\",
+ *       \"Resource\": \"acs:log:*:*:project/tf-log/*\"
  *     }
  *   ],
- *   "Version": "1"
+ *   \"Version\": \"1\"
  * }
  *             """)
  *             .build());

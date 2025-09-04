@@ -18,6 +18,98 @@ import (
 //
 // > **NOTE:** Available since v1.129.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eventbridge"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mns"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := alicloud.GetAccount(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultEventBus, err := eventbridge.NewEventBus(ctx, "default", &eventbridge.EventBusArgs{
+//				EventBusName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			queue1, err := mns.NewQueue(ctx, "queue1", &mns.QueueArgs{
+//				Name: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			mnsEndpointA := std.Format(ctx, &std.FormatArgs{
+//				Input: "acs:mns:cn-hangzhou:%s:queues/%s",
+//				Args: []interface{}{
+//					_default.Id,
+//					queue1.Name,
+//				},
+//			}, nil).Result
+//			_ := std.Format(ctx, &std.FormatArgs{
+//				Input: "acs:fnf:cn-hangzhou:%s:flow/${flow}",
+//				Args: []*string{
+//					_default.Id,
+//				},
+//			}, nil).Result
+//			_, err = eventbridge.NewRule(ctx, "example", &eventbridge.RuleArgs{
+//				EventBusName:  defaultEventBus.EventBusName,
+//				RuleName:      pulumi.String(name),
+//				Description:   pulumi.String("example"),
+//				FilterPattern: pulumi.String("{\"source\":[\"crmabc.newsletter\"],\"type\":[\"UserSignUp\", \"UserLogin\"]}"),
+//				Targets: eventbridge.RuleTargetArray{
+//					&eventbridge.RuleTargetArgs{
+//						TargetId: pulumi.String("tf-example1"),
+//						Endpoint: pulumi.String(mnsEndpointA),
+//						Type:     pulumi.String("acs.mns.queue"),
+//						ParamLists: eventbridge.RuleTargetParamListArray{
+//							&eventbridge.RuleTargetParamListArgs{
+//								ResourceKey: pulumi.String("queue"),
+//								Form:        pulumi.String("CONSTANT"),
+//								Value:       pulumi.String("tf-testaccEbRule"),
+//							},
+//							&eventbridge.RuleTargetParamListArgs{
+//								ResourceKey: pulumi.String("Body"),
+//								Form:        pulumi.String("ORIGINAL"),
+//							},
+//							&eventbridge.RuleTargetParamListArgs{
+//								Form:        pulumi.String("CONSTANT"),
+//								ResourceKey: pulumi.String("IsBase64Encode"),
+//								Value:       pulumi.String("true"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Event Bridge Rule can be imported using the id, e.g.

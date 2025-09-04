@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:eflo/cluster:Cluster":
 		r = &Cluster{}
+	case "alicloud:eflo/er:Er":
+		r = &Er{}
 	case "alicloud:eflo/experimentPlan:ExperimentPlan":
 		r = &ExperimentPlan{}
 	case "alicloud:eflo/experimentPlanTemplate:ExperimentPlanTemplate":
@@ -33,6 +35,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Node{}
 	case "alicloud:eflo/nodeGroup:NodeGroup":
 		r = &NodeGroup{}
+	case "alicloud:eflo/nodeGroupAttachment:NodeGroupAttachment":
+		r = &NodeGroupAttachment{}
 	case "alicloud:eflo/resource:Resource":
 		r = &Resource{}
 	case "alicloud:eflo/subnet:Subnet":
@@ -61,6 +65,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"eflo/er",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"eflo/experimentPlan",
 		&module{version},
 	)
@@ -82,6 +91,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"eflo/nodeGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"eflo/nodeGroupAttachment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

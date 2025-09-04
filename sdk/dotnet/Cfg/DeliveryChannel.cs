@@ -12,6 +12,51 @@ namespace Pulumi.AliCloud.Cfg
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new AliCloud.Mns.Topic("example", new()
+    ///     {
+    ///         Name = "test-topic",
+    ///     });
+    /// 
+    ///     // Example for create a MNS delivery channel
+    ///     var exampleDeliveryChannel = new AliCloud.Cfg.DeliveryChannel("example", new()
+    ///     {
+    ///         Description = "channel_description",
+    ///         DeliveryChannelName = "channel_name",
+    ///         DeliveryChannelAssumeRoleArn = "acs:ram::11827252********:role/aliyunserviceroleforconfig",
+    ///         DeliveryChannelType = "MNS",
+    ///         DeliveryChannelTargetArn = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "acs:oss:cn-shanghai:11827252********:/topics/%s",
+    ///             Args = new[]
+    ///             {
+    ///                 example.Name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         DeliveryChannelCondition = @"  [
+    ///       {
+    ///           \""filterType\"":\""ResourceType\"",
+    ///           \""values\"":[
+    ///               \""ACS::CEN::CenInstance\"",
+    ///               \""ACS::CEN::Flowlog\"",
+    ///           ],
+    ///           \""multiple\"":true
+    ///       }
+    ///   ]
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Alicloud Config Delivery Channel can be imported using the id, e.g.

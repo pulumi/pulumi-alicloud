@@ -27,12 +27,12 @@ import * as utilities from "../utilities";
  *     type: "Secret",
  *     description: name,
  *     constraints: `  {
- *     "AllowedValues": [
- *         "tf-testacc-oos_secret_parameter"
+ *     \\"AllowedValues\\": [
+ *         \\"tf-testacc-oos_secret_parameter\\"
  *     ],
- *     "AllowedPattern": "tf-testacc-oos_secret_parameter",
- *     "MinLength": 1,
- *     "MaxLength": 100
+ *     \\"AllowedPattern\\": \\"tf-testacc-oos_secret_parameter\\",
+ *     \\"MinLength\\": 1,
+ *     \\"MaxLength\\": 100
  *   }
  * `,
  *     tags: {
@@ -166,12 +166,12 @@ export interface GetSecretParametersResult {
  *     type: "Secret",
  *     description: name,
  *     constraints: `  {
- *     "AllowedValues": [
- *         "tf-testacc-oos_secret_parameter"
+ *     \\"AllowedValues\\": [
+ *         \\"tf-testacc-oos_secret_parameter\\"
  *     ],
- *     "AllowedPattern": "tf-testacc-oos_secret_parameter",
- *     "MinLength": 1,
- *     "MaxLength": 100
+ *     \\"AllowedPattern\\": \\"tf-testacc-oos_secret_parameter\\",
+ *     \\"MinLength\\": 1,
+ *     \\"MaxLength\\": 100
  *   }
  * `,
  *     tags: {

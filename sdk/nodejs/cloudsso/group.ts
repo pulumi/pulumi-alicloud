@@ -11,6 +11,37 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.138.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const _default = alicloud.cloudsso.getDirectories({});
+ * const defaultDirectory: alicloud.cloudsso.Directory[] = [];
+ * _default.then(_default => _default.ids).length.apply(length => {
+ *     for (const range = {value: 0}; range.value < (length > 0 ? 0 : 1); range.value++) {
+ *         defaultDirectory.push(new alicloud.cloudsso.Directory(`default-${range.value}`, {directoryName: name}));
+ *     }
+ * });
+ * const directoryId = pulumi.all([_default.then(_default => _default.ids).length, _default, std.concat({
+ *     input: [
+ *         defaultDirectory.map(__item => __item.id),
+ *         [""],
+ *     ],
+ * })]).apply(([length, _default, invoke]) => length > 0 ? _default.ids?.[0] : invoke.result?.[0]);
+ * const defaultGroup = new alicloud.cloudsso.Group("default", {
+ *     directoryId: directoryId,
+ *     groupName: name,
+ *     description: name,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Cloud SSO Group can be imported using the id, e.g.

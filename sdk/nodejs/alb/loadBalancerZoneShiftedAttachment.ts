@@ -13,6 +13,78 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.242.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const albExampleTfVpc = new alicloud.vpc.Network("alb_example_tf_vpc", {
+ *     vpcName: name,
+ *     cidrBlock: "192.168.0.0/16",
+ * });
+ * const albExampleTfJ = new alicloud.vpc.Switch("alb_example_tf_j", {
+ *     vpcId: albExampleTfVpc.id,
+ *     zoneId: "cn-beijing-j",
+ *     cidrBlock: "192.168.1.0/24",
+ *     vswitchName: std.format({
+ *         input: "%s1",
+ *         args: [name],
+ *     }).then(invoke => invoke.result),
+ * });
+ * const albExampleTfK = new alicloud.vpc.Switch("alb_example_tf_k", {
+ *     vpcId: albExampleTfVpc.id,
+ *     zoneId: "cn-beijing-k",
+ *     cidrBlock: "192.168.2.0/24",
+ *     vswitchName: std.format({
+ *         input: "%s2",
+ *         args: [name],
+ *     }).then(invoke => invoke.result),
+ * });
+ * const defaultDSY0JJ = new alicloud.vpc.Switch("defaultDSY0JJ", {
+ *     vpcId: albExampleTfVpc.id,
+ *     zoneId: "cn-beijing-f",
+ *     cidrBlock: "192.168.3.0/24",
+ *     vswitchName: std.format({
+ *         input: "%s3",
+ *         args: [name],
+ *     }).then(invoke => invoke.result),
+ * });
+ * const default78TIYG = new alicloud.alb.LoadBalancer("default78TIYG", {
+ *     loadBalancerEdition: "Standard",
+ *     vpcId: albExampleTfVpc.id,
+ *     loadBalancerBillingConfig: {
+ *         payType: "PayAsYouGo",
+ *     },
+ *     addressType: "Intranet",
+ *     addressAllocatedMode: "Fixed",
+ *     zoneMappings: [
+ *         {
+ *             vswitchId: albExampleTfJ.id,
+ *             zoneId: albExampleTfJ.zoneId,
+ *         },
+ *         {
+ *             vswitchId: albExampleTfK.id,
+ *             zoneId: albExampleTfK.zoneId,
+ *         },
+ *         {
+ *             vswitchId: defaultDSY0JJ.id,
+ *             zoneId: defaultDSY0JJ.zoneId,
+ *         },
+ *     ],
+ * });
+ * const _default = new alicloud.alb.LoadBalancerZoneShiftedAttachment("default", {
+ *     zoneId: defaultDSY0JJ.zoneId,
+ *     vswitchId: defaultDSY0JJ.id,
+ *     loadBalancerId: default78TIYG.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Application Load Balancer (ALB) Load Balancer Zone Shifted Attachment can be imported using the id, e.g.

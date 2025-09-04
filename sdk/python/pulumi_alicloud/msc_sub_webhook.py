@@ -108,6 +108,28 @@ class MscSubWebhook(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.141.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        token = config.get("token")
+        if token is None:
+            token = "abcd****"
+        example = alicloud.MscSubWebhook("example",
+            server_url=std.format(input="https://oapi.dingtalk.com/robot/send?access_token=%s",
+                args=[token]).result,
+            webhook_name=name)
+        ```
+
         ## Import
 
         Msc Sub Webhook can be imported using the id, e.g.
@@ -131,6 +153,28 @@ class MscSubWebhook(pulumi.CustomResource):
         Provides a Msc Sub Webhook resource.
 
         > **NOTE:** Available since v1.141.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        token = config.get("token")
+        if token is None:
+            token = "abcd****"
+        example = alicloud.MscSubWebhook("example",
+            server_url=std.format(input="https://oapi.dingtalk.com/robot/send?access_token=%s",
+                args=[token]).result,
+            webhook_name=name)
+        ```
 
         ## Import
 

@@ -18,6 +18,179 @@ namespace Pulumi.AliCloud.Alb
     /// 
     /// &gt; **NOTE:** This version only supports forwarding rules in the request direction.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var @default = AliCloud.Alb.GetZones.Invoke();
+    /// 
+    ///     var defaultGetResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new List&lt;AliCloud.Vpc.Switch&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         defaultSwitch.Add(new AliCloud.Vpc.Switch($"default-{range.Value}", new()
+    ///         {
+    ///             VpcId = defaultNetwork.Id,
+    ///             CidrBlock = Std.Format.Invoke(new()
+    ///             {
+    ///                 Input = "10.4.%d.0/24",
+    ///                 Args = new[]
+    ///                 {
+    ///                     range.Value + 1,
+    ///                 },
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///             ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)[range.Value].Id),
+    ///             VswitchName = Std.Format.Invoke(new()
+    ///             {
+    ///                 Input = $"{name}_%d",
+    ///                 Args = new[]
+    ///                 {
+    ///                     range.Value + 1,
+    ///                 },
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///         }));
+    ///     }
+    ///     var defaultLoadBalancer = new AliCloud.Alb.LoadBalancer("default", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         AddressType = "Internet",
+    ///         AddressAllocatedMode = "Fixed",
+    ///         LoadBalancerName = name,
+    ///         LoadBalancerEdition = "Standard",
+    ///         ResourceGroupId = defaultGetResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         LoadBalancerBillingConfig = new AliCloud.Alb.Inputs.LoadBalancerLoadBalancerBillingConfigArgs
+    ///         {
+    ///             PayType = "PayAsYouGo",
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///         },
+    ///         ZoneMappings = new[]
+    ///         {
+    ///             new AliCloud.Alb.Inputs.LoadBalancerZoneMappingArgs
+    ///             {
+    ///                 VswitchId = defaultSwitch[0].Id,
+    ///                 ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///             },
+    ///             new AliCloud.Alb.Inputs.LoadBalancerZoneMappingArgs
+    ///             {
+    ///                 VswitchId = defaultSwitch[1].Id,
+    ///                 ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.Id)),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultServerGroup = new AliCloud.Alb.ServerGroup("default", new()
+    ///     {
+    ///         Protocol = "HTTP",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ServerGroupName = name,
+    ///         ResourceGroupId = defaultGetResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         HealthCheckConfig = new AliCloud.Alb.Inputs.ServerGroupHealthCheckConfigArgs
+    ///         {
+    ///             HealthCheckEnabled = false,
+    ///         },
+    ///         StickySessionConfig = new AliCloud.Alb.Inputs.ServerGroupStickySessionConfigArgs
+    ///         {
+    ///             StickySessionEnabled = false,
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultListener = new AliCloud.Alb.Listener("default", new()
+    ///     {
+    ///         LoadBalancerId = defaultLoadBalancer.Id,
+    ///         ListenerProtocol = "HTTP",
+    ///         ListenerPort = 80,
+    ///         ListenerDescription = name,
+    ///         DefaultActions = new[]
+    ///         {
+    ///             new AliCloud.Alb.Inputs.ListenerDefaultActionArgs
+    ///             {
+    ///                 Type = "ForwardGroup",
+    ///                 ForwardGroupConfig = new AliCloud.Alb.Inputs.ListenerDefaultActionForwardGroupConfigArgs
+    ///                 {
+    ///                     ServerGroupTuples = new[]
+    ///                     {
+    ///                         new AliCloud.Alb.Inputs.ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs
+    ///                         {
+    ///                             ServerGroupId = defaultServerGroup.Id,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultRule = new AliCloud.Alb.Rule("default", new()
+    ///     {
+    ///         RuleName = name,
+    ///         ListenerId = defaultListener.Id,
+    ///         Priority = 555,
+    ///         RuleConditions = new[]
+    ///         {
+    ///             new AliCloud.Alb.Inputs.RuleRuleConditionArgs
+    ///             {
+    ///                 CookieConfig = new AliCloud.Alb.Inputs.RuleRuleConditionCookieConfigArgs
+    ///                 {
+    ///                     Values = new[]
+    ///                     {
+    ///                         new AliCloud.Alb.Inputs.RuleRuleConditionCookieConfigValueArgs
+    ///                         {
+    ///                             Key = "created",
+    ///                             Value = "tf",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Type = "Cookie",
+    ///             },
+    ///         },
+    ///         RuleActions = new[]
+    ///         {
+    ///             new AliCloud.Alb.Inputs.RuleRuleActionArgs
+    ///             {
+    ///                 ForwardGroupConfig = new AliCloud.Alb.Inputs.RuleRuleActionForwardGroupConfigArgs
+    ///                 {
+    ///                     ServerGroupTuples = new[]
+    ///                     {
+    ///                         new AliCloud.Alb.Inputs.RuleRuleActionForwardGroupConfigServerGroupTupleArgs
+    ///                         {
+    ///                             ServerGroupId = defaultServerGroup.Id,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Order = 9,
+    ///                 Type = "ForwardGroup",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Application Load Balancer (ALB) Rule can be imported using the id, e.g.

@@ -33,36 +33,36 @@ import * as utilities from "../utilities";
  * });
  * const defaultRole = new alicloud.ram.Role("default", {
  *     name: `examplerole${defaultInteger.result}`,
- *     document: `\x09{
- * \x09\x09"Statement": [
- * \x09\x09  {
- * \x09\x09\x09"Action": "sts:AssumeRole",
- * \x09\x09\x09"Effect": "Allow",
- * \x09\x09\x09"Principal": {
- * \x09\x09\x09  "Service": [
- * \x09\x09\x09\x09"fc.aliyuncs.com"
- * \x09\x09\x09  ]
- * \x09\x09\x09}
- * \x09\x09  }
- * \x09\x09],
- * \x09\x09"Version": "1"
- * \x09}
+ *     document: `\\t{
+ * \\t\\t\\"Statement\\": [
+ * \\t\\t  {
+ * \\t\\t\\t\\"Action\\": \\"sts:AssumeRole\\",
+ * \\t\\t\\t\\"Effect\\": \\"Allow\\",
+ * \\t\\t\\t\\"Principal\\": {
+ * \\t\\t\\t  \\"Service\\": [
+ * \\t\\t\\t\\t\\"fc.aliyuncs.com\\"
+ * \\t\\t\\t  ]
+ * \\t\\t\\t}
+ * \\t\\t  }
+ * \\t\\t],
+ * \\t\\t\\"Version\\": \\"1\\"
+ * \\t}
  * `,
  *     description: "this is a example",
  *     force: true,
  * });
  * const defaultPolicy = new alicloud.ram.Policy("default", {
  *     policyName: `examplepolicy${defaultInteger.result}`,
- *     policyDocument: `\x09{
- * \x09\x09"Version": "1",
- * \x09\x09"Statement": [
- * \x09\x09  {
- * \x09\x09\x09"Action": "mns:*",
- * \x09\x09\x09"Resource": "*",
- * \x09\x09\x09"Effect": "Allow"
- * \x09\x09  }
- * \x09\x09]
- * \x09  }
+ *     policyDocument: `\\t{
+ * \\t\\t\\"Version\\": \\"1\\",
+ * \\t\\t\\"Statement\\": [
+ * \\t\\t  {
+ * \\t\\t\\t\\"Action\\": \\"mns:*\\",
+ * \\t\\t\\t\\"Resource\\": \\"*\\",
+ * \\t\\t\\t\\"Effect\\": \\"Allow\\"
+ * \\t\\t  }
+ * \\t\\t]
+ * \\t  }
  * `,
  * });
  * const defaultRolePolicyAttachment = new alicloud.ram.RolePolicyAttachment("default", {

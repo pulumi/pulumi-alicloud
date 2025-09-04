@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.threatdetection;
 
+import com.pulumi.alicloud.threatdetection.inputs.AntiBruteForceRuleProtocolTypeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -80,6 +81,21 @@ public final class AntiBruteForceRuleArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The types of protocols supported for interception by the brute force attack rule creation. See `protocol_type` below.
+     * 
+     */
+    @Import(name="protocolType")
+    private @Nullable Output<AntiBruteForceRuleProtocolTypeArgs> protocolType;
+
+    /**
+     * @return The types of protocols supported for interception by the brute force attack rule creation. See `protocol_type` below.
+     * 
+     */
+    public Optional<Output<AntiBruteForceRuleProtocolTypeArgs>> protocolType() {
+        return Optional.ofNullable(this.protocolType);
+    }
+
+    /**
      * The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
      * 
      */
@@ -116,6 +132,7 @@ public final class AntiBruteForceRuleArgs extends com.pulumi.resources.ResourceA
         this.defaultRule = $.defaultRule;
         this.failCount = $.failCount;
         this.forbiddenTime = $.forbiddenTime;
+        this.protocolType = $.protocolType;
         this.span = $.span;
         this.uuidLists = $.uuidLists;
     }
@@ -220,6 +237,27 @@ public final class AntiBruteForceRuleArgs extends com.pulumi.resources.ResourceA
          */
         public Builder forbiddenTime(Integer forbiddenTime) {
             return forbiddenTime(Output.of(forbiddenTime));
+        }
+
+        /**
+         * @param protocolType The types of protocols supported for interception by the brute force attack rule creation. See `protocol_type` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder protocolType(@Nullable Output<AntiBruteForceRuleProtocolTypeArgs> protocolType) {
+            $.protocolType = protocolType;
+            return this;
+        }
+
+        /**
+         * @param protocolType The types of protocols supported for interception by the brute force attack rule creation. See `protocol_type` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder protocolType(AntiBruteForceRuleProtocolTypeArgs protocolType) {
+            return protocolType(Output.of(protocolType));
         }
 
         /**

@@ -92,6 +92,21 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Available since v1.256.0) The region ID.
+     * 
+     */
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    /**
+     * @return (Available since v1.256.0) The region ID.
+     * 
+     */
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
+    }
+
+    /**
      * RWAccess.
      * 
      */
@@ -144,6 +159,7 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
         this.fileSystemType = $.fileSystemType;
         this.ipv6SourceCidrIp = $.ipv6SourceCidrIp;
         this.priority = $.priority;
+        this.regionId = $.regionId;
         this.rwAccessType = $.rwAccessType;
         this.sourceCidrIp = $.sourceCidrIp;
         this.userAccessType = $.userAccessType;
@@ -270,6 +286,27 @@ public final class AccessRuleState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder priority(Integer priority) {
             return priority(Output.of(priority));
+        }
+
+        /**
+         * @param regionId (Available since v1.256.0) The region ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        /**
+         * @param regionId (Available since v1.256.0) The region ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
         }
 
         /**

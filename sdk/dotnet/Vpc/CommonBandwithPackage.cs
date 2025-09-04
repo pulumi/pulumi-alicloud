@@ -113,6 +113,12 @@ namespace Pulumi.AliCloud.Vpc
         public Output<int> Ratio { get; private set; } = null!;
 
         /// <summary>
+        /// The pagination token that is used in the next request to retrieve a new page of results.
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the resource group to which you want to move the resource.
         /// 
         /// &gt; **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
@@ -409,6 +415,12 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("ratio")]
         public Input<int>? Ratio { get; set; }
+
+        /// <summary>
+        /// The pagination token that is used in the next request to retrieve a new page of results.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
 
         /// <summary>
         /// The ID of the resource group to which you want to move the resource.

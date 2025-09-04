@@ -15,6 +15,16 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'DefenseRuleConfigArgs',
+    'DefenseRuleConfigArgsDict',
+    'DefenseRuleConfigAccountIdentifierArgs',
+    'DefenseRuleConfigAccountIdentifierArgsDict',
+    'DefenseRuleConfigConditionArgs',
+    'DefenseRuleConfigConditionArgsDict',
+    'DefenseRuleConfigRateLimitArgs',
+    'DefenseRuleConfigRateLimitArgsDict',
+    'DefenseRuleConfigRateLimitStatusArgs',
+    'DefenseRuleConfigRateLimitStatusArgsDict',
     'DomainListenArgs',
     'DomainListenArgsDict',
     'DomainRedirectArgs',
@@ -26,17 +36,1085 @@ __all__ = [
 MYPY = False
 
 if not MYPY:
+    class DefenseRuleConfigArgsDict(TypedDict):
+        abroad_regions: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The regions outside China from which you want to block requests. Separate multiple region codes with commas (,). You can call the DescribeIpAbroadCountryInfos operation to query the countries and regions outside China that can be blocked.
+        """
+        account_identifiers: NotRequired[pulumi.Input[Sequence[pulumi.Input['DefenseRuleConfigAccountIdentifierArgsDict']]]]
+        """
+        The policies for account extraction. Up to five policies are supported. Each policy is a JSON string. For more information, see accountIdentifiers description. See `account_identifiers` below.
+        """
+        bypass_regular_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        The list of regular rule IDs that are not detected. The value is in the ["XX1", "XX2",...] format. This parameter is required only when the module to which the whitelist applies is set to specific regular rules in basic protection (BypassTags is set to regular_rule).
+        """
+        bypass_regular_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        The regular rule type is not detected. This parameter is configured only when the whitelist module is configured as the Web application regular type (the value of the BypassTags parameter is regular_type). Value:
+        - sqli: Indicates SQL injection.
+        - xss: Indicates cross-site scripting (XSS).
+        - cmdi: Indicates OS command injection.
+        - expression_injection: Indicates expression injection.
+        - java_deserialization: indicates Java deserialization.
+        - dot_net_deserialization: Represents. net deserialization.
+        - php_deserialization: indicates PHP deserialization.
+        - code_exec: Indicates code execution.
+        - ssrf: indicates SSRF (server-side request forgery).
+        - path_traversal: indicates a Path Traversal.
+        - arbitrary_file_uploading: Indicates to upload any file.
+        - webshell: Represents a webshell.
+        - rfilei: Indicates the remote file contains (RFI).
+        - lfilei: Indicates that the local file contains (LFI).
+        - protocol_violation: indicates a protocol violation.
+        - scanner_behavior: Indicates scanner behavior.
+        - logic_flaw: Indicates a business logic defect.
+        - arbitrary_file_reading: Indicates arbitrary file reading.
+        - arbitrary_file_download: Indicates an arbitrary file download.
+        - xxe: Indicates external entity injection.
+        - csrf: indicates cross-site request forgery.
+        - crlf: indicates CRLF.
+        - other: indicates other.
+        """
+        bypass_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        The modules to which the whitelist applies. The value is in the ["XX1", "XX2",...] format. Valid values:
+        - waf: indicates all modules.
+        - customrule: indicates custom rules.
+        - blacklist: indicates IP blacklist.
+        - antiscan: indicates scan protection.
+        - regular: indicates basic protection rules.
+        - regular_rule: indicates specific regular rules in basic protection.
+        - regular_type: indicates specific regular rule types in basic protection.
+        - major_protection: indicates major event support protection.
+        - cc: indicates CC protection.
+        - region_block: indicates Location Blacklist.
+        - antibot_scene: indicates BOT scenario protection.
+        - dlp: indicates information leakage prevention.
+        - tamperproof: indicates web tamper-proofing.
+        - spike_throttle: indicates peak traffic throttling.
+        """
+        cc_effect: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Set the effective range of the speed limit. This information is configured only when ccStatus is set to 1. Value:
+        - service: indicates that the effective object is a protected object.
+        - rule: indicates that the effective object is a single rule.
+        """
+        cc_status: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Whether to open the speed limit. Value:
+        - 0: indicates that the speed limit is off.
+        - 1: Indicates that the speed limit is on.
+        """
+        cn_regions: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The regions in China from which you want to block requests. If you specify "CN", requests from the Chinese mainland (excluding Hong Kong, Macao, and Taiwan) are blocked. Separate multiple regions with commas (,). For more information about region codes, see Description of region codes in China.
+        """
+        conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['DefenseRuleConfigConditionArgsDict']]]]
+        """
+        The traffic characteristics of ACL, which are described in JSON format. You can enter up to five matching conditions. For specific configuration information, see detailed configuration of conditions. See `conditions` below.
+        """
+        mode: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The HTTP flood protection mode. Valid values:
+        - 0 (default): indicates normal protection.
+        - 1: indicates emergency protection.
+        """
+        protocol: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The protocol type of the cached page address. Valid values: http, https.
+        """
+        rate_limit: NotRequired[pulumi.Input['DefenseRuleConfigRateLimitArgsDict']]
+        """
+        The detailed speed limit configuration, which is described in the JSON string format. This information is configured only when CcStatus is set to 1. For specific configuration information, see detailed configuration of Ratelimit. See `rate_limit` below.
+        """
+        remote_addrs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        The IP addresses that you want to add to the blacklist. Specify the value of this parameter in the ["ip1","ip2",...] format.
+        """
+        rule_action: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Protection rule action. Value:
+        - block: Indicates an intercept.
+        - monitor: indicates observation.
+        - js: indicates JS validation.
+        - captcha: Indicates a slider.
+        - captcha_strict: indicates a strict slider.
+        - filter: filters sensitive information. This action applies only to scenarios that the Information leakage prevention rule include sensitive information match conditions.
+
+        > **NOTE:**  For the supported protection rule actions, follow the rule actions displayed in the WAF console.
+        """
+        throttle_threhold: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The throttling threshold. Valid values:
+        - The QPS throttling threshold ranges from 1 to 5000000. If you select QPS throttling (such as 500 QPS), traffic that meets the throttling conditions and exceeds 500 QPS will be blocked.
+        - The percentage throttling threshold ranges from 1 to 99. If you select percentage throttling (such as 80%), only 80% of the traffic that meets the throttling conditions will be allowed.
+        """
+        throttle_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The throttling method. Valid values:
+        - qps: indicates throttling based on queries per second (QPS).
+        - ratio (default): indicates throttling based on percentage.
+        """
+        ua: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The User-Agent string that is allowed for access to the address.
+        """
+        url: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The address of the cached page.
+        """
+elif False:
+    DefenseRuleConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DefenseRuleConfigArgs:
+    def __init__(__self__, *,
+                 abroad_regions: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_identifiers: Optional[pulumi.Input[Sequence[pulumi.Input['DefenseRuleConfigAccountIdentifierArgs']]]] = None,
+                 bypass_regular_rules: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 bypass_regular_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 bypass_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cc_effect: Optional[pulumi.Input[_builtins.str]] = None,
+                 cc_status: Optional[pulumi.Input[_builtins.int]] = None,
+                 cn_regions: Optional[pulumi.Input[_builtins.str]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['DefenseRuleConfigConditionArgs']]]] = None,
+                 mode: Optional[pulumi.Input[_builtins.int]] = None,
+                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
+                 rate_limit: Optional[pulumi.Input['DefenseRuleConfigRateLimitArgs']] = None,
+                 remote_addrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rule_action: Optional[pulumi.Input[_builtins.str]] = None,
+                 throttle_threhold: Optional[pulumi.Input[_builtins.int]] = None,
+                 throttle_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 ua: Optional[pulumi.Input[_builtins.str]] = None,
+                 url: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] abroad_regions: The regions outside China from which you want to block requests. Separate multiple region codes with commas (,). You can call the DescribeIpAbroadCountryInfos operation to query the countries and regions outside China that can be blocked.
+        :param pulumi.Input[Sequence[pulumi.Input['DefenseRuleConfigAccountIdentifierArgs']]] account_identifiers: The policies for account extraction. Up to five policies are supported. Each policy is a JSON string. For more information, see accountIdentifiers description. See `account_identifiers` below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] bypass_regular_rules: The list of regular rule IDs that are not detected. The value is in the ["XX1", "XX2",...] format. This parameter is required only when the module to which the whitelist applies is set to specific regular rules in basic protection (BypassTags is set to regular_rule).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] bypass_regular_types: The regular rule type is not detected. This parameter is configured only when the whitelist module is configured as the Web application regular type (the value of the BypassTags parameter is regular_type). Value:
+               - sqli: Indicates SQL injection.
+               - xss: Indicates cross-site scripting (XSS).
+               - cmdi: Indicates OS command injection.
+               - expression_injection: Indicates expression injection.
+               - java_deserialization: indicates Java deserialization.
+               - dot_net_deserialization: Represents. net deserialization.
+               - php_deserialization: indicates PHP deserialization.
+               - code_exec: Indicates code execution.
+               - ssrf: indicates SSRF (server-side request forgery).
+               - path_traversal: indicates a Path Traversal.
+               - arbitrary_file_uploading: Indicates to upload any file.
+               - webshell: Represents a webshell.
+               - rfilei: Indicates the remote file contains (RFI).
+               - lfilei: Indicates that the local file contains (LFI).
+               - protocol_violation: indicates a protocol violation.
+               - scanner_behavior: Indicates scanner behavior.
+               - logic_flaw: Indicates a business logic defect.
+               - arbitrary_file_reading: Indicates arbitrary file reading.
+               - arbitrary_file_download: Indicates an arbitrary file download.
+               - xxe: Indicates external entity injection.
+               - csrf: indicates cross-site request forgery.
+               - crlf: indicates CRLF.
+               - other: indicates other.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] bypass_tags: The modules to which the whitelist applies. The value is in the ["XX1", "XX2",...] format. Valid values:
+               - waf: indicates all modules.
+               - customrule: indicates custom rules.
+               - blacklist: indicates IP blacklist.
+               - antiscan: indicates scan protection.
+               - regular: indicates basic protection rules.
+               - regular_rule: indicates specific regular rules in basic protection.
+               - regular_type: indicates specific regular rule types in basic protection.
+               - major_protection: indicates major event support protection.
+               - cc: indicates CC protection.
+               - region_block: indicates Location Blacklist.
+               - antibot_scene: indicates BOT scenario protection.
+               - dlp: indicates information leakage prevention.
+               - tamperproof: indicates web tamper-proofing.
+               - spike_throttle: indicates peak traffic throttling.
+        :param pulumi.Input[_builtins.str] cc_effect: Set the effective range of the speed limit. This information is configured only when ccStatus is set to 1. Value:
+               - service: indicates that the effective object is a protected object.
+               - rule: indicates that the effective object is a single rule.
+        :param pulumi.Input[_builtins.int] cc_status: Whether to open the speed limit. Value:
+               - 0: indicates that the speed limit is off.
+               - 1: Indicates that the speed limit is on.
+        :param pulumi.Input[_builtins.str] cn_regions: The regions in China from which you want to block requests. If you specify "CN", requests from the Chinese mainland (excluding Hong Kong, Macao, and Taiwan) are blocked. Separate multiple regions with commas (,). For more information about region codes, see Description of region codes in China.
+        :param pulumi.Input[Sequence[pulumi.Input['DefenseRuleConfigConditionArgs']]] conditions: The traffic characteristics of ACL, which are described in JSON format. You can enter up to five matching conditions. For specific configuration information, see detailed configuration of conditions. See `conditions` below.
+        :param pulumi.Input[_builtins.int] mode: The HTTP flood protection mode. Valid values:
+               - 0 (default): indicates normal protection.
+               - 1: indicates emergency protection.
+        :param pulumi.Input[_builtins.str] protocol: The protocol type of the cached page address. Valid values: http, https.
+        :param pulumi.Input['DefenseRuleConfigRateLimitArgs'] rate_limit: The detailed speed limit configuration, which is described in the JSON string format. This information is configured only when CcStatus is set to 1. For specific configuration information, see detailed configuration of Ratelimit. See `rate_limit` below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] remote_addrs: The IP addresses that you want to add to the blacklist. Specify the value of this parameter in the ["ip1","ip2",...] format.
+        :param pulumi.Input[_builtins.str] rule_action: Protection rule action. Value:
+               - block: Indicates an intercept.
+               - monitor: indicates observation.
+               - js: indicates JS validation.
+               - captcha: Indicates a slider.
+               - captcha_strict: indicates a strict slider.
+               - filter: filters sensitive information. This action applies only to scenarios that the Information leakage prevention rule include sensitive information match conditions.
+               
+               > **NOTE:**  For the supported protection rule actions, follow the rule actions displayed in the WAF console.
+        :param pulumi.Input[_builtins.int] throttle_threhold: The throttling threshold. Valid values:
+               - The QPS throttling threshold ranges from 1 to 5000000. If you select QPS throttling (such as 500 QPS), traffic that meets the throttling conditions and exceeds 500 QPS will be blocked.
+               - The percentage throttling threshold ranges from 1 to 99. If you select percentage throttling (such as 80%), only 80% of the traffic that meets the throttling conditions will be allowed.
+        :param pulumi.Input[_builtins.str] throttle_type: The throttling method. Valid values:
+               - qps: indicates throttling based on queries per second (QPS).
+               - ratio (default): indicates throttling based on percentage.
+        :param pulumi.Input[_builtins.str] ua: The User-Agent string that is allowed for access to the address.
+        :param pulumi.Input[_builtins.str] url: The address of the cached page.
+        """
+        if abroad_regions is not None:
+            pulumi.set(__self__, "abroad_regions", abroad_regions)
+        if account_identifiers is not None:
+            pulumi.set(__self__, "account_identifiers", account_identifiers)
+        if bypass_regular_rules is not None:
+            pulumi.set(__self__, "bypass_regular_rules", bypass_regular_rules)
+        if bypass_regular_types is not None:
+            pulumi.set(__self__, "bypass_regular_types", bypass_regular_types)
+        if bypass_tags is not None:
+            pulumi.set(__self__, "bypass_tags", bypass_tags)
+        if cc_effect is not None:
+            pulumi.set(__self__, "cc_effect", cc_effect)
+        if cc_status is not None:
+            pulumi.set(__self__, "cc_status", cc_status)
+        if cn_regions is not None:
+            pulumi.set(__self__, "cn_regions", cn_regions)
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if rate_limit is not None:
+            pulumi.set(__self__, "rate_limit", rate_limit)
+        if remote_addrs is not None:
+            pulumi.set(__self__, "remote_addrs", remote_addrs)
+        if rule_action is not None:
+            pulumi.set(__self__, "rule_action", rule_action)
+        if throttle_threhold is not None:
+            pulumi.set(__self__, "throttle_threhold", throttle_threhold)
+        if throttle_type is not None:
+            pulumi.set(__self__, "throttle_type", throttle_type)
+        if ua is not None:
+            pulumi.set(__self__, "ua", ua)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter(name="abroadRegions")
+    def abroad_regions(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The regions outside China from which you want to block requests. Separate multiple region codes with commas (,). You can call the DescribeIpAbroadCountryInfos operation to query the countries and regions outside China that can be blocked.
+        """
+        return pulumi.get(self, "abroad_regions")
+
+    @abroad_regions.setter
+    def abroad_regions(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "abroad_regions", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountIdentifiers")
+    def account_identifiers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DefenseRuleConfigAccountIdentifierArgs']]]]:
+        """
+        The policies for account extraction. Up to five policies are supported. Each policy is a JSON string. For more information, see accountIdentifiers description. See `account_identifiers` below.
+        """
+        return pulumi.get(self, "account_identifiers")
+
+    @account_identifiers.setter
+    def account_identifiers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DefenseRuleConfigAccountIdentifierArgs']]]]):
+        pulumi.set(self, "account_identifiers", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bypassRegularRules")
+    def bypass_regular_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of regular rule IDs that are not detected. The value is in the ["XX1", "XX2",...] format. This parameter is required only when the module to which the whitelist applies is set to specific regular rules in basic protection (BypassTags is set to regular_rule).
+        """
+        return pulumi.get(self, "bypass_regular_rules")
+
+    @bypass_regular_rules.setter
+    def bypass_regular_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "bypass_regular_rules", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bypassRegularTypes")
+    def bypass_regular_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The regular rule type is not detected. This parameter is configured only when the whitelist module is configured as the Web application regular type (the value of the BypassTags parameter is regular_type). Value:
+        - sqli: Indicates SQL injection.
+        - xss: Indicates cross-site scripting (XSS).
+        - cmdi: Indicates OS command injection.
+        - expression_injection: Indicates expression injection.
+        - java_deserialization: indicates Java deserialization.
+        - dot_net_deserialization: Represents. net deserialization.
+        - php_deserialization: indicates PHP deserialization.
+        - code_exec: Indicates code execution.
+        - ssrf: indicates SSRF (server-side request forgery).
+        - path_traversal: indicates a Path Traversal.
+        - arbitrary_file_uploading: Indicates to upload any file.
+        - webshell: Represents a webshell.
+        - rfilei: Indicates the remote file contains (RFI).
+        - lfilei: Indicates that the local file contains (LFI).
+        - protocol_violation: indicates a protocol violation.
+        - scanner_behavior: Indicates scanner behavior.
+        - logic_flaw: Indicates a business logic defect.
+        - arbitrary_file_reading: Indicates arbitrary file reading.
+        - arbitrary_file_download: Indicates an arbitrary file download.
+        - xxe: Indicates external entity injection.
+        - csrf: indicates cross-site request forgery.
+        - crlf: indicates CRLF.
+        - other: indicates other.
+        """
+        return pulumi.get(self, "bypass_regular_types")
+
+    @bypass_regular_types.setter
+    def bypass_regular_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "bypass_regular_types", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bypassTags")
+    def bypass_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The modules to which the whitelist applies. The value is in the ["XX1", "XX2",...] format. Valid values:
+        - waf: indicates all modules.
+        - customrule: indicates custom rules.
+        - blacklist: indicates IP blacklist.
+        - antiscan: indicates scan protection.
+        - regular: indicates basic protection rules.
+        - regular_rule: indicates specific regular rules in basic protection.
+        - regular_type: indicates specific regular rule types in basic protection.
+        - major_protection: indicates major event support protection.
+        - cc: indicates CC protection.
+        - region_block: indicates Location Blacklist.
+        - antibot_scene: indicates BOT scenario protection.
+        - dlp: indicates information leakage prevention.
+        - tamperproof: indicates web tamper-proofing.
+        - spike_throttle: indicates peak traffic throttling.
+        """
+        return pulumi.get(self, "bypass_tags")
+
+    @bypass_tags.setter
+    def bypass_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "bypass_tags", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ccEffect")
+    def cc_effect(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Set the effective range of the speed limit. This information is configured only when ccStatus is set to 1. Value:
+        - service: indicates that the effective object is a protected object.
+        - rule: indicates that the effective object is a single rule.
+        """
+        return pulumi.get(self, "cc_effect")
+
+    @cc_effect.setter
+    def cc_effect(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cc_effect", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ccStatus")
+    def cc_status(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Whether to open the speed limit. Value:
+        - 0: indicates that the speed limit is off.
+        - 1: Indicates that the speed limit is on.
+        """
+        return pulumi.get(self, "cc_status")
+
+    @cc_status.setter
+    def cc_status(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "cc_status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cnRegions")
+    def cn_regions(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The regions in China from which you want to block requests. If you specify "CN", requests from the Chinese mainland (excluding Hong Kong, Macao, and Taiwan) are blocked. Separate multiple regions with commas (,). For more information about region codes, see Description of region codes in China.
+        """
+        return pulumi.get(self, "cn_regions")
+
+    @cn_regions.setter
+    def cn_regions(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cn_regions", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DefenseRuleConfigConditionArgs']]]]:
+        """
+        The traffic characteristics of ACL, which are described in JSON format. You can enter up to five matching conditions. For specific configuration information, see detailed configuration of conditions. See `conditions` below.
+        """
+        return pulumi.get(self, "conditions")
+
+    @conditions.setter
+    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DefenseRuleConfigConditionArgs']]]]):
+        pulumi.set(self, "conditions", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The HTTP flood protection mode. Valid values:
+        - 0 (default): indicates normal protection.
+        - 1: indicates emergency protection.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "mode", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The protocol type of the cached page address. Valid values: http, https.
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "protocol", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rateLimit")
+    def rate_limit(self) -> Optional[pulumi.Input['DefenseRuleConfigRateLimitArgs']]:
+        """
+        The detailed speed limit configuration, which is described in the JSON string format. This information is configured only when CcStatus is set to 1. For specific configuration information, see detailed configuration of Ratelimit. See `rate_limit` below.
+        """
+        return pulumi.get(self, "rate_limit")
+
+    @rate_limit.setter
+    def rate_limit(self, value: Optional[pulumi.Input['DefenseRuleConfigRateLimitArgs']]):
+        pulumi.set(self, "rate_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="remoteAddrs")
+    def remote_addrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The IP addresses that you want to add to the blacklist. Specify the value of this parameter in the ["ip1","ip2",...] format.
+        """
+        return pulumi.get(self, "remote_addrs")
+
+    @remote_addrs.setter
+    def remote_addrs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "remote_addrs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ruleAction")
+    def rule_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Protection rule action. Value:
+        - block: Indicates an intercept.
+        - monitor: indicates observation.
+        - js: indicates JS validation.
+        - captcha: Indicates a slider.
+        - captcha_strict: indicates a strict slider.
+        - filter: filters sensitive information. This action applies only to scenarios that the Information leakage prevention rule include sensitive information match conditions.
+
+        > **NOTE:**  For the supported protection rule actions, follow the rule actions displayed in the WAF console.
+        """
+        return pulumi.get(self, "rule_action")
+
+    @rule_action.setter
+    def rule_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "rule_action", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleThrehold")
+    def throttle_threhold(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The throttling threshold. Valid values:
+        - The QPS throttling threshold ranges from 1 to 5000000. If you select QPS throttling (such as 500 QPS), traffic that meets the throttling conditions and exceeds 500 QPS will be blocked.
+        - The percentage throttling threshold ranges from 1 to 99. If you select percentage throttling (such as 80%), only 80% of the traffic that meets the throttling conditions will be allowed.
+        """
+        return pulumi.get(self, "throttle_threhold")
+
+    @throttle_threhold.setter
+    def throttle_threhold(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "throttle_threhold", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleType")
+    def throttle_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The throttling method. Valid values:
+        - qps: indicates throttling based on queries per second (QPS).
+        - ratio (default): indicates throttling based on percentage.
+        """
+        return pulumi.get(self, "throttle_type")
+
+    @throttle_type.setter
+    def throttle_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "throttle_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ua(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The User-Agent string that is allowed for access to the address.
+        """
+        return pulumi.get(self, "ua")
+
+    @ua.setter
+    def ua(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ua", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The address of the cached page.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "url", value)
+
+
+if not MYPY:
+    class DefenseRuleConfigAccountIdentifierArgsDict(TypedDict):
+        decode_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The authentication mode. Valid values:
+        - plain: indicates plaintext.
+        - basic: indicates Basic authentication.
+        - jwt: indicates JWT authentication. For JWT authentication, you must specify the field that stores the decoded account information (position).
+        """
+        key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Match field. Valid values: URL, URLPath, IP, Referer, User-Agent, Params, Cookie, Content-Type, Content-Length, X-Forwarded-For, Post-Body, Http-Method, Header, Host, HttpCode, and SensitiveInfo.
+
+        > **NOTE:**  Support for matching fields is based on the display in the WAF console. HttpCode and SensitiveInfo are the matching fields supported by the information leakage prevention rule (dlp).
+        """
+        position: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The field that stores the decoded account information.
+        """
+        priority: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The priority of the current extraction configuration. Each traffic can match at most one extraction policy. Valid values: [0,20]. A smaller value indicates a higher priority. The priority value must be unique.
+        """
+        sub_key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The characteristics of the statistical object. When the Target parameter is set to cookie, header, or queryarg, you must specify the corresponding information in the Subkey parameter.
+        """
+elif False:
+    DefenseRuleConfigAccountIdentifierArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DefenseRuleConfigAccountIdentifierArgs:
+    def __init__(__self__, *,
+                 decode_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 key: Optional[pulumi.Input[_builtins.str]] = None,
+                 position: Optional[pulumi.Input[_builtins.str]] = None,
+                 priority: Optional[pulumi.Input[_builtins.int]] = None,
+                 sub_key: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] decode_type: The authentication mode. Valid values:
+               - plain: indicates plaintext.
+               - basic: indicates Basic authentication.
+               - jwt: indicates JWT authentication. For JWT authentication, you must specify the field that stores the decoded account information (position).
+        :param pulumi.Input[_builtins.str] key: Match field. Valid values: URL, URLPath, IP, Referer, User-Agent, Params, Cookie, Content-Type, Content-Length, X-Forwarded-For, Post-Body, Http-Method, Header, Host, HttpCode, and SensitiveInfo.
+               
+               > **NOTE:**  Support for matching fields is based on the display in the WAF console. HttpCode and SensitiveInfo are the matching fields supported by the information leakage prevention rule (dlp).
+        :param pulumi.Input[_builtins.str] position: The field that stores the decoded account information.
+        :param pulumi.Input[_builtins.int] priority: The priority of the current extraction configuration. Each traffic can match at most one extraction policy. Valid values: [0,20]. A smaller value indicates a higher priority. The priority value must be unique.
+        :param pulumi.Input[_builtins.str] sub_key: The characteristics of the statistical object. When the Target parameter is set to cookie, header, or queryarg, you must specify the corresponding information in the Subkey parameter.
+        """
+        if decode_type is not None:
+            pulumi.set(__self__, "decode_type", decode_type)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if sub_key is not None:
+            pulumi.set(__self__, "sub_key", sub_key)
+
+    @_builtins.property
+    @pulumi.getter(name="decodeType")
+    def decode_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The authentication mode. Valid values:
+        - plain: indicates plaintext.
+        - basic: indicates Basic authentication.
+        - jwt: indicates JWT authentication. For JWT authentication, you must specify the field that stores the decoded account information (position).
+        """
+        return pulumi.get(self, "decode_type")
+
+    @decode_type.setter
+    def decode_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "decode_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Match field. Valid values: URL, URLPath, IP, Referer, User-Agent, Params, Cookie, Content-Type, Content-Length, X-Forwarded-For, Post-Body, Http-Method, Header, Host, HttpCode, and SensitiveInfo.
+
+        > **NOTE:**  Support for matching fields is based on the display in the WAF console. HttpCode and SensitiveInfo are the matching fields supported by the information leakage prevention rule (dlp).
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def position(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The field that stores the decoded account information.
+        """
+        return pulumi.get(self, "position")
+
+    @position.setter
+    def position(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "position", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The priority of the current extraction configuration. Each traffic can match at most one extraction policy. Valid values: [0,20]. A smaller value indicates a higher priority. The priority value must be unique.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "priority", value)
+
+    @_builtins.property
+    @pulumi.getter(name="subKey")
+    def sub_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The characteristics of the statistical object. When the Target parameter is set to cookie, header, or queryarg, you must specify the corresponding information in the Subkey parameter.
+        """
+        return pulumi.get(self, "sub_key")
+
+    @sub_key.setter
+    def sub_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "sub_key", value)
+
+
+if not MYPY:
+    class DefenseRuleConfigConditionArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Match field. Valid values: URL, URLPath, IP, Referer, User-Agent, Params, Cookie, Content-Type, Content-Length, X-Forwarded-For, Post-Body, Http-Method, Header, Host, HttpCode, and SensitiveInfo.
+
+        > **NOTE:**  Support for matching fields is based on the display in the WAF console. HttpCode and SensitiveInfo are the matching fields supported by the information leakage prevention rule (dlp).
+        """
+        op_value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Logical character. Value:
+        - not-contain: does not contain.
+        - contain: Indicates to contain.
+        - none: It does not exist.
+        - ne: means not equal.
+        - eq: means equal.
+        - lt: indicates that the value is less.
+        - gt: indicates that the value is greater.
+        - len-lt: indicates that the length is less.
+        - len-eq: indicates that the length is equal.
+        - len-gt: indicates that the length is greater.
+        - not-match: indicates a mismatch.
+        - match-one: means equal to one of the multiple values.
+        - all-not-match: means not equal to any value.
+        - all-not-contain: does not contain any value.
+        - contain-one: Indicates that one of the multiple values is contained.
+        - not-regex: Indicates a regular mismatch.
+        - regex: Indicates a regular match.
+        - all-not-regex: indicates that the regular expressions do not match.
+        - regex-one: Represents a regular match for one of them.
+        - prefix-match: Indicates a prefix match.
+        - suffix-match: indicates a suffix match.
+        - mpty: Indicates that the content is empty.
+        - exists: Indicates that the field exists.
+        - inl: indicates in the list.
+
+        > **NOTE:**  Not all logical characters (opvalues) can be configured for the match field (key) of each custom rule. For the logical characters supported by different matching fields, please refer to the association relationship between the matching fields and the logical characters in the custom rules of the WAF console.
+        """
+        sub_key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The characteristics of the statistical object. When the Target parameter is set to cookie, header, or queryarg, you must specify the corresponding information in the Subkey parameter.
+        """
+        values: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Match the content and fill in the corresponding content as needed.
+
+        > **NOTE:**  The value range of the logical (opValue) and matching content (values) parameters in the matching condition parameter is related to the specified matching field (key).
+        """
+elif False:
+    DefenseRuleConfigConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DefenseRuleConfigConditionArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[_builtins.str]] = None,
+                 op_value: Optional[pulumi.Input[_builtins.str]] = None,
+                 sub_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 values: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] key: Match field. Valid values: URL, URLPath, IP, Referer, User-Agent, Params, Cookie, Content-Type, Content-Length, X-Forwarded-For, Post-Body, Http-Method, Header, Host, HttpCode, and SensitiveInfo.
+               
+               > **NOTE:**  Support for matching fields is based on the display in the WAF console. HttpCode and SensitiveInfo are the matching fields supported by the information leakage prevention rule (dlp).
+        :param pulumi.Input[_builtins.str] op_value: Logical character. Value:
+               - not-contain: does not contain.
+               - contain: Indicates to contain.
+               - none: It does not exist.
+               - ne: means not equal.
+               - eq: means equal.
+               - lt: indicates that the value is less.
+               - gt: indicates that the value is greater.
+               - len-lt: indicates that the length is less.
+               - len-eq: indicates that the length is equal.
+               - len-gt: indicates that the length is greater.
+               - not-match: indicates a mismatch.
+               - match-one: means equal to one of the multiple values.
+               - all-not-match: means not equal to any value.
+               - all-not-contain: does not contain any value.
+               - contain-one: Indicates that one of the multiple values is contained.
+               - not-regex: Indicates a regular mismatch.
+               - regex: Indicates a regular match.
+               - all-not-regex: indicates that the regular expressions do not match.
+               - regex-one: Represents a regular match for one of them.
+               - prefix-match: Indicates a prefix match.
+               - suffix-match: indicates a suffix match.
+               - mpty: Indicates that the content is empty.
+               - exists: Indicates that the field exists.
+               - inl: indicates in the list.
+               
+               > **NOTE:**  Not all logical characters (opvalues) can be configured for the match field (key) of each custom rule. For the logical characters supported by different matching fields, please refer to the association relationship between the matching fields and the logical characters in the custom rules of the WAF console.
+        :param pulumi.Input[_builtins.str] sub_key: The characteristics of the statistical object. When the Target parameter is set to cookie, header, or queryarg, you must specify the corresponding information in the Subkey parameter.
+        :param pulumi.Input[_builtins.str] values: Match the content and fill in the corresponding content as needed.
+               
+               > **NOTE:**  The value range of the logical (opValue) and matching content (values) parameters in the matching condition parameter is related to the specified matching field (key).
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if op_value is not None:
+            pulumi.set(__self__, "op_value", op_value)
+        if sub_key is not None:
+            pulumi.set(__self__, "sub_key", sub_key)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Match field. Valid values: URL, URLPath, IP, Referer, User-Agent, Params, Cookie, Content-Type, Content-Length, X-Forwarded-For, Post-Body, Http-Method, Header, Host, HttpCode, and SensitiveInfo.
+
+        > **NOTE:**  Support for matching fields is based on the display in the WAF console. HttpCode and SensitiveInfo are the matching fields supported by the information leakage prevention rule (dlp).
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="opValue")
+    def op_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Logical character. Value:
+        - not-contain: does not contain.
+        - contain: Indicates to contain.
+        - none: It does not exist.
+        - ne: means not equal.
+        - eq: means equal.
+        - lt: indicates that the value is less.
+        - gt: indicates that the value is greater.
+        - len-lt: indicates that the length is less.
+        - len-eq: indicates that the length is equal.
+        - len-gt: indicates that the length is greater.
+        - not-match: indicates a mismatch.
+        - match-one: means equal to one of the multiple values.
+        - all-not-match: means not equal to any value.
+        - all-not-contain: does not contain any value.
+        - contain-one: Indicates that one of the multiple values is contained.
+        - not-regex: Indicates a regular mismatch.
+        - regex: Indicates a regular match.
+        - all-not-regex: indicates that the regular expressions do not match.
+        - regex-one: Represents a regular match for one of them.
+        - prefix-match: Indicates a prefix match.
+        - suffix-match: indicates a suffix match.
+        - mpty: Indicates that the content is empty.
+        - exists: Indicates that the field exists.
+        - inl: indicates in the list.
+
+        > **NOTE:**  Not all logical characters (opvalues) can be configured for the match field (key) of each custom rule. For the logical characters supported by different matching fields, please refer to the association relationship between the matching fields and the logical characters in the custom rules of the WAF console.
+        """
+        return pulumi.get(self, "op_value")
+
+    @op_value.setter
+    def op_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "op_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="subKey")
+    def sub_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The characteristics of the statistical object. When the Target parameter is set to cookie, header, or queryarg, you must specify the corresponding information in the Subkey parameter.
+        """
+        return pulumi.get(self, "sub_key")
+
+    @sub_key.setter
+    def sub_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "sub_key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Match the content and fill in the corresponding content as needed.
+
+        > **NOTE:**  The value range of the logical (opValue) and matching content (values) parameters in the matching condition parameter is related to the specified matching field (key).
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "values", value)
+
+
+if not MYPY:
+    class DefenseRuleConfigRateLimitArgsDict(TypedDict):
+        interval: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The statistical period, in seconds. This parameter specifies the period during which access counts are collected, and works with the Threshold parameter.
+        Valid values: 1 to 1800 seconds.
+        """
+        status: NotRequired[pulumi.Input['DefenseRuleConfigRateLimitStatusArgsDict']]
+        """
+        Response code frequency setting. The description is in the JSON string format. See `status` below.
+        """
+        sub_key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The characteristics of the statistical object. When the Target parameter is set to cookie, header, or queryarg, you must specify the corresponding information in the Subkey parameter.
+        """
+        target: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The type of the statistical object. Valid values:
+        - remote_addr (default): indicates IP.
+        - cookie.acw_tc: indicates session.
+        - header: indicates custom header. If you use custom headers, you must specify the headers in subkey.
+        - queryarg: indicates custom parameters. If you use custom parameters, you must specify the parameters in subkey.
+        - cookie: indicates custom cookies. If you use custom cookies, you must specify the cookies in subkey.
+        """
+        threshold: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The maximum number of requests that can be sent from a statistical object.
+        """
+        ttl: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The period of time during which you want the specified action to be valid. Unit: seconds.
+        Valid values: 60 to 86400.
+        """
+elif False:
+    DefenseRuleConfigRateLimitArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DefenseRuleConfigRateLimitArgs:
+    def __init__(__self__, *,
+                 interval: Optional[pulumi.Input[_builtins.int]] = None,
+                 status: Optional[pulumi.Input['DefenseRuleConfigRateLimitStatusArgs']] = None,
+                 sub_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 target: Optional[pulumi.Input[_builtins.str]] = None,
+                 threshold: Optional[pulumi.Input[_builtins.int]] = None,
+                 ttl: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] interval: The statistical period, in seconds. This parameter specifies the period during which access counts are collected, and works with the Threshold parameter.
+               Valid values: 1 to 1800 seconds.
+        :param pulumi.Input['DefenseRuleConfigRateLimitStatusArgs'] status: Response code frequency setting. The description is in the JSON string format. See `status` below.
+        :param pulumi.Input[_builtins.str] sub_key: The characteristics of the statistical object. When the Target parameter is set to cookie, header, or queryarg, you must specify the corresponding information in the Subkey parameter.
+        :param pulumi.Input[_builtins.str] target: The type of the statistical object. Valid values:
+               - remote_addr (default): indicates IP.
+               - cookie.acw_tc: indicates session.
+               - header: indicates custom header. If you use custom headers, you must specify the headers in subkey.
+               - queryarg: indicates custom parameters. If you use custom parameters, you must specify the parameters in subkey.
+               - cookie: indicates custom cookies. If you use custom cookies, you must specify the cookies in subkey.
+        :param pulumi.Input[_builtins.int] threshold: The maximum number of requests that can be sent from a statistical object.
+        :param pulumi.Input[_builtins.int] ttl: The period of time during which you want the specified action to be valid. Unit: seconds.
+               Valid values: 60 to 86400.
+        """
+        if interval is not None:
+            pulumi.set(__self__, "interval", interval)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if sub_key is not None:
+            pulumi.set(__self__, "sub_key", sub_key)
+        if target is not None:
+            pulumi.set(__self__, "target", target)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+
+    @_builtins.property
+    @pulumi.getter
+    def interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The statistical period, in seconds. This parameter specifies the period during which access counts are collected, and works with the Threshold parameter.
+        Valid values: 1 to 1800 seconds.
+        """
+        return pulumi.get(self, "interval")
+
+    @interval.setter
+    def interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "interval", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input['DefenseRuleConfigRateLimitStatusArgs']]:
+        """
+        Response code frequency setting. The description is in the JSON string format. See `status` below.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input['DefenseRuleConfigRateLimitStatusArgs']]):
+        pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="subKey")
+    def sub_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The characteristics of the statistical object. When the Target parameter is set to cookie, header, or queryarg, you must specify the corresponding information in the Subkey parameter.
+        """
+        return pulumi.get(self, "sub_key")
+
+    @sub_key.setter
+    def sub_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "sub_key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def target(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The type of the statistical object. Valid values:
+        - remote_addr (default): indicates IP.
+        - cookie.acw_tc: indicates session.
+        - header: indicates custom header. If you use custom headers, you must specify the headers in subkey.
+        - queryarg: indicates custom parameters. If you use custom parameters, you must specify the parameters in subkey.
+        - cookie: indicates custom cookies. If you use custom cookies, you must specify the cookies in subkey.
+        """
+        return pulumi.get(self, "target")
+
+    @target.setter
+    def target(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "target", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The maximum number of requests that can be sent from a statistical object.
+        """
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "threshold", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The period of time during which you want the specified action to be valid. Unit: seconds.
+        Valid values: 60 to 86400.
+        """
+        return pulumi.get(self, "ttl")
+
+    @ttl.setter
+    def ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "ttl", value)
+
+
+if not MYPY:
+    class DefenseRuleConfigRateLimitStatusArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Required. Specifies the response code.
+        """
+        count: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The threshold for the number of occurrences. When the number of occurrences of the specified HTTP status code exceeds this threshold, the protection rule is triggered. Valid values: 2 to 50000. You can specify Count or Ratio. You cannot specify the two parameters at the same time.
+        """
+        ratio: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The threshold for the proportion of occurrences (percentage). When the proportion of occurrences of the specified HTTP status code exceeds this threshold, the protection rule is triggered. Valid values: 1 to 100. You can specify Count or Ratio. You cannot specify the two parameters at the same time.
+        """
+elif False:
+    DefenseRuleConfigRateLimitStatusArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DefenseRuleConfigRateLimitStatusArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input[_builtins.int]] = None,
+                 count: Optional[pulumi.Input[_builtins.int]] = None,
+                 ratio: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] code: Required. Specifies the response code.
+        :param pulumi.Input[_builtins.int] count: The threshold for the number of occurrences. When the number of occurrences of the specified HTTP status code exceeds this threshold, the protection rule is triggered. Valid values: 2 to 50000. You can specify Count or Ratio. You cannot specify the two parameters at the same time.
+        :param pulumi.Input[_builtins.int] ratio: The threshold for the proportion of occurrences (percentage). When the proportion of occurrences of the specified HTTP status code exceeds this threshold, the protection rule is triggered. Valid values: 1 to 100. You can specify Count or Ratio. You cannot specify the two parameters at the same time.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if count is not None:
+            pulumi.set(__self__, "count", count)
+        if ratio is not None:
+            pulumi.set(__self__, "ratio", ratio)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Required. Specifies the response code.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "code", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The threshold for the number of occurrences. When the number of occurrences of the specified HTTP status code exceeds this threshold, the protection rule is triggered. Valid values: 2 to 50000. You can specify Count or Ratio. You cannot specify the two parameters at the same time.
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "count", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ratio(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The threshold for the proportion of occurrences (percentage). When the proportion of occurrences of the specified HTTP status code exceeds this threshold, the protection rule is triggered. Valid values: 1 to 100. You can specify Count or Ratio. You cannot specify the two parameters at the same time.
+        """
+        return pulumi.get(self, "ratio")
+
+    @ratio.setter
+    def ratio(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "ratio", value)
+
+
+if not MYPY:
     class DomainListenArgsDict(TypedDict):
         cert_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The ID of the certificate to be added. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
+        The ID of the certificate to be added. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol).
         """
         cipher_suite: NotRequired[pulumi.Input[_builtins.int]]
         """
-        The type of encryption suite to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-        - **1**: indicates that all encryption suites are added.
-        - **2**: indicates that a strong encryption package is added. You can select this value only if the value of **tls_version** is `tlsv1.2`.
-        - **99**: indicates that a custom encryption suite is added.
+        The type of the cipher suites that you want to add. This parameter is available only if you specify `HttpsPorts`. Valid values:
         """
         custom_ciphers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
@@ -44,62 +1122,64 @@ if not MYPY:
         """
         enable_tlsv3: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        Whether TSL1.3 version is supported. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-        - **true**: indicates that TSL1.3 is supported.
-        - **false**: indicates that TSL1.3 is not supported.
+        Whether TSL1.3 version is supported. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol). Value:
         """
         exclusive_ip: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        Whether to enable exclusive IP address. This parameter is used only when the value of **ipv6_enabled** is **false** (indicating that IPv6 is not enabled) and the value of **protection_resource** is **share** (indicating that a shared cluster is used). Value:
-        - **true**: indicates that the exclusive IP address is enabled.
-        - **false** (default): indicates that exclusive IP address is not enabled.
+        Specifies whether to enable the exclusive IP address feature. This parameter is available only if you set `IPv6Enabled` to false and `ProtectionResource` to `share`. Valid values:
         """
         focus_https: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        Whether to enable the forced jump of HTTPS. This parameter is used only when the value of `https_ports` is not empty (indicating that the domain name uses HTTPS protocol) and the value of httports is empty (indicating that the domain name does not use HTTP protocol). Value:
-        - **true**: indicates that HTTPS forced redirection is enabled.
-        - **false**: indicates that HTTPS forced redirection is not enabled.
+        Specifies whether to enable force redirect from HTTP to HTTPS for received requests. This parameter is available only if you specify `HttpsPorts` and leave `HttpPorts` empty. Valid values:
         """
         http2_enabled: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        Whether to turn on http2. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-        - **true:** indicates that HTTP2 is enabled.
-        - **false** (default): indicates that HTTP2 is not enabled.
+        Specifies whether to enable HTTP/2. This parameter is available only if you specify `HttpsPorts`. Valid values:
         """
         http_ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
         """
-        The listening port of the HTTP protocol.
+        The HTTP listener ports. Specify the value in the \\[**port1,port2,...**] format.
         """
         https_ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
         """
-        The listening port of the HTTPS protocol.
+        The HTTPS listener ports. Specify the value in the \\[**port1,port2,...**] format.
         """
         ipv6_enabled: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        Whether IPv6 is turned on. Value:
-        - **true**: indicates that IPv6 is enabled.
-        - **false** (default): indicates that IPv6 is not enabled.
+        Specifies whether to enable IPv6 protection. Valid values:
         """
         protection_resource: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The type of protection resource to use. Value:
-        - **share** (default): indicates that a shared cluster is used.
-        - **gslb**: indicates that the shared cluster intelligent load balancing is used.
+        The type of the protection resource. Valid values:
+        """
+        sm2_access_only: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Specifies whether to allow access only from SM certificate-based clients. This parameter is available only if you set SM2Enabled to true.
+
+        - true
+        - false
+        """
+        sm2_cert_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The ID of the SM certificate that you want to add. This parameter is available only if you set SM2Enabled to true.
+        """
+        sm2_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Specifies whether to add an SM certificate.
         """
         tls_version: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The version of TLS to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value: **tlsv1**, **tlsv1.1**, **tlsv1.2**.
+        The version of TLS to add. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol). Value:
         """
         xff_header_mode: NotRequired[pulumi.Input[_builtins.int]]
         """
-        WAF obtains the real IP address of the client. Value:
-        - **0** (default): indicates that the client has not forwarded the traffic to WAF through other layer -7 agents.
-        - **1**: indicates that the first value of the X-Forwarded-For(XFF) field in the WAF read request header is used as the client IP address.
-        - **2**: indicates that the custom field value set by you in the WAF read request header is used as the client IP address.
+        The method that is used to obtain the originating IP address of a client. Valid values:
         """
         xff_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
-        Set the list of custom fields used to obtain the client IP address.
+        The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the **\\["header1","header2",...]** format.
+
+        > **NOTE:**   This parameter is required only if you set `XffHeaderMode` to 2.
         """
 elif False:
     DomainListenArgsDict: TypeAlias = Mapping[str, Any]
@@ -118,42 +1198,35 @@ class DomainListenArgs:
                  https_ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  ipv6_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  protection_resource: Optional[pulumi.Input[_builtins.str]] = None,
+                 sm2_access_only: Optional[pulumi.Input[_builtins.bool]] = None,
+                 sm2_cert_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 sm2_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  tls_version: Optional[pulumi.Input[_builtins.str]] = None,
                  xff_header_mode: Optional[pulumi.Input[_builtins.int]] = None,
                  xff_headers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
-        :param pulumi.Input[_builtins.str] cert_id: The ID of the certificate to be added. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
-        :param pulumi.Input[_builtins.int] cipher_suite: The type of encryption suite to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-               - **1**: indicates that all encryption suites are added.
-               - **2**: indicates that a strong encryption package is added. You can select this value only if the value of **tls_version** is `tlsv1.2`.
-               - **99**: indicates that a custom encryption suite is added.
+        :param pulumi.Input[_builtins.str] cert_id: The ID of the certificate to be added. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol).
+        :param pulumi.Input[_builtins.int] cipher_suite: The type of the cipher suites that you want to add. This parameter is available only if you specify `HttpsPorts`. Valid values:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_ciphers: The specific custom encryption suite to add.
-        :param pulumi.Input[_builtins.bool] enable_tlsv3: Whether TSL1.3 version is supported. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-               - **true**: indicates that TSL1.3 is supported.
-               - **false**: indicates that TSL1.3 is not supported.
-        :param pulumi.Input[_builtins.bool] exclusive_ip: Whether to enable exclusive IP address. This parameter is used only when the value of **ipv6_enabled** is **false** (indicating that IPv6 is not enabled) and the value of **protection_resource** is **share** (indicating that a shared cluster is used). Value:
-               - **true**: indicates that the exclusive IP address is enabled.
-               - **false** (default): indicates that exclusive IP address is not enabled.
-        :param pulumi.Input[_builtins.bool] focus_https: Whether to enable the forced jump of HTTPS. This parameter is used only when the value of `https_ports` is not empty (indicating that the domain name uses HTTPS protocol) and the value of httports is empty (indicating that the domain name does not use HTTP protocol). Value:
-               - **true**: indicates that HTTPS forced redirection is enabled.
-               - **false**: indicates that HTTPS forced redirection is not enabled.
-        :param pulumi.Input[_builtins.bool] http2_enabled: Whether to turn on http2. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-               - **true:** indicates that HTTP2 is enabled.
-               - **false** (default): indicates that HTTP2 is not enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] http_ports: The listening port of the HTTP protocol.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] https_ports: The listening port of the HTTPS protocol.
-        :param pulumi.Input[_builtins.bool] ipv6_enabled: Whether IPv6 is turned on. Value:
-               - **true**: indicates that IPv6 is enabled.
-               - **false** (default): indicates that IPv6 is not enabled.
-        :param pulumi.Input[_builtins.str] protection_resource: The type of protection resource to use. Value:
-               - **share** (default): indicates that a shared cluster is used.
-               - **gslb**: indicates that the shared cluster intelligent load balancing is used.
-        :param pulumi.Input[_builtins.str] tls_version: The version of TLS to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value: **tlsv1**, **tlsv1.1**, **tlsv1.2**.
-        :param pulumi.Input[_builtins.int] xff_header_mode: WAF obtains the real IP address of the client. Value:
-               - **0** (default): indicates that the client has not forwarded the traffic to WAF through other layer -7 agents.
-               - **1**: indicates that the first value of the X-Forwarded-For(XFF) field in the WAF read request header is used as the client IP address.
-               - **2**: indicates that the custom field value set by you in the WAF read request header is used as the client IP address.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] xff_headers: Set the list of custom fields used to obtain the client IP address.
+        :param pulumi.Input[_builtins.bool] enable_tlsv3: Whether TSL1.3 version is supported. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol). Value:
+        :param pulumi.Input[_builtins.bool] exclusive_ip: Specifies whether to enable the exclusive IP address feature. This parameter is available only if you set `IPv6Enabled` to false and `ProtectionResource` to `share`. Valid values:
+        :param pulumi.Input[_builtins.bool] focus_https: Specifies whether to enable force redirect from HTTP to HTTPS for received requests. This parameter is available only if you specify `HttpsPorts` and leave `HttpPorts` empty. Valid values:
+        :param pulumi.Input[_builtins.bool] http2_enabled: Specifies whether to enable HTTP/2. This parameter is available only if you specify `HttpsPorts`. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] http_ports: The HTTP listener ports. Specify the value in the \\[**port1,port2,...**] format.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] https_ports: The HTTPS listener ports. Specify the value in the \\[**port1,port2,...**] format.
+        :param pulumi.Input[_builtins.bool] ipv6_enabled: Specifies whether to enable IPv6 protection. Valid values:
+        :param pulumi.Input[_builtins.str] protection_resource: The type of the protection resource. Valid values:
+        :param pulumi.Input[_builtins.bool] sm2_access_only: Specifies whether to allow access only from SM certificate-based clients. This parameter is available only if you set SM2Enabled to true.
+               
+               - true
+               - false
+        :param pulumi.Input[_builtins.str] sm2_cert_id: The ID of the SM certificate that you want to add. This parameter is available only if you set SM2Enabled to true.
+        :param pulumi.Input[_builtins.bool] sm2_enabled: Specifies whether to add an SM certificate.
+        :param pulumi.Input[_builtins.str] tls_version: The version of TLS to add. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol). Value:
+        :param pulumi.Input[_builtins.int] xff_header_mode: The method that is used to obtain the originating IP address of a client. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] xff_headers: The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the **\\["header1","header2",...]** format.
+               
+               > **NOTE:**   This parameter is required only if you set `XffHeaderMode` to 2.
         """
         if cert_id is not None:
             pulumi.set(__self__, "cert_id", cert_id)
@@ -177,6 +1250,12 @@ class DomainListenArgs:
             pulumi.set(__self__, "ipv6_enabled", ipv6_enabled)
         if protection_resource is not None:
             pulumi.set(__self__, "protection_resource", protection_resource)
+        if sm2_access_only is not None:
+            pulumi.set(__self__, "sm2_access_only", sm2_access_only)
+        if sm2_cert_id is not None:
+            pulumi.set(__self__, "sm2_cert_id", sm2_cert_id)
+        if sm2_enabled is not None:
+            pulumi.set(__self__, "sm2_enabled", sm2_enabled)
         if tls_version is not None:
             pulumi.set(__self__, "tls_version", tls_version)
         if xff_header_mode is not None:
@@ -188,7 +1267,7 @@ class DomainListenArgs:
     @pulumi.getter(name="certId")
     def cert_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the certificate to be added. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
+        The ID of the certificate to be added. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol).
         """
         return pulumi.get(self, "cert_id")
 
@@ -200,10 +1279,7 @@ class DomainListenArgs:
     @pulumi.getter(name="cipherSuite")
     def cipher_suite(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The type of encryption suite to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-        - **1**: indicates that all encryption suites are added.
-        - **2**: indicates that a strong encryption package is added. You can select this value only if the value of **tls_version** is `tlsv1.2`.
-        - **99**: indicates that a custom encryption suite is added.
+        The type of the cipher suites that you want to add. This parameter is available only if you specify `HttpsPorts`. Valid values:
         """
         return pulumi.get(self, "cipher_suite")
 
@@ -227,9 +1303,7 @@ class DomainListenArgs:
     @pulumi.getter(name="enableTlsv3")
     def enable_tlsv3(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether TSL1.3 version is supported. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-        - **true**: indicates that TSL1.3 is supported.
-        - **false**: indicates that TSL1.3 is not supported.
+        Whether TSL1.3 version is supported. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol). Value:
         """
         return pulumi.get(self, "enable_tlsv3")
 
@@ -241,9 +1315,7 @@ class DomainListenArgs:
     @pulumi.getter(name="exclusiveIp")
     def exclusive_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to enable exclusive IP address. This parameter is used only when the value of **ipv6_enabled** is **false** (indicating that IPv6 is not enabled) and the value of **protection_resource** is **share** (indicating that a shared cluster is used). Value:
-        - **true**: indicates that the exclusive IP address is enabled.
-        - **false** (default): indicates that exclusive IP address is not enabled.
+        Specifies whether to enable the exclusive IP address feature. This parameter is available only if you set `IPv6Enabled` to false and `ProtectionResource` to `share`. Valid values:
         """
         return pulumi.get(self, "exclusive_ip")
 
@@ -255,9 +1327,7 @@ class DomainListenArgs:
     @pulumi.getter(name="focusHttps")
     def focus_https(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to enable the forced jump of HTTPS. This parameter is used only when the value of `https_ports` is not empty (indicating that the domain name uses HTTPS protocol) and the value of httports is empty (indicating that the domain name does not use HTTP protocol). Value:
-        - **true**: indicates that HTTPS forced redirection is enabled.
-        - **false**: indicates that HTTPS forced redirection is not enabled.
+        Specifies whether to enable force redirect from HTTP to HTTPS for received requests. This parameter is available only if you specify `HttpsPorts` and leave `HttpPorts` empty. Valid values:
         """
         return pulumi.get(self, "focus_https")
 
@@ -269,9 +1339,7 @@ class DomainListenArgs:
     @pulumi.getter(name="http2Enabled")
     def http2_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to turn on http2. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-        - **true:** indicates that HTTP2 is enabled.
-        - **false** (default): indicates that HTTP2 is not enabled.
+        Specifies whether to enable HTTP/2. This parameter is available only if you specify `HttpsPorts`. Valid values:
         """
         return pulumi.get(self, "http2_enabled")
 
@@ -283,7 +1351,7 @@ class DomainListenArgs:
     @pulumi.getter(name="httpPorts")
     def http_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
         """
-        The listening port of the HTTP protocol.
+        The HTTP listener ports. Specify the value in the \\[**port1,port2,...**] format.
         """
         return pulumi.get(self, "http_ports")
 
@@ -295,7 +1363,7 @@ class DomainListenArgs:
     @pulumi.getter(name="httpsPorts")
     def https_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
         """
-        The listening port of the HTTPS protocol.
+        The HTTPS listener ports. Specify the value in the \\[**port1,port2,...**] format.
         """
         return pulumi.get(self, "https_ports")
 
@@ -307,9 +1375,7 @@ class DomainListenArgs:
     @pulumi.getter(name="ipv6Enabled")
     def ipv6_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether IPv6 is turned on. Value:
-        - **true**: indicates that IPv6 is enabled.
-        - **false** (default): indicates that IPv6 is not enabled.
+        Specifies whether to enable IPv6 protection. Valid values:
         """
         return pulumi.get(self, "ipv6_enabled")
 
@@ -321,9 +1387,7 @@ class DomainListenArgs:
     @pulumi.getter(name="protectionResource")
     def protection_resource(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The type of protection resource to use. Value:
-        - **share** (default): indicates that a shared cluster is used.
-        - **gslb**: indicates that the shared cluster intelligent load balancing is used.
+        The type of the protection resource. Valid values:
         """
         return pulumi.get(self, "protection_resource")
 
@@ -332,10 +1396,49 @@ class DomainListenArgs:
         pulumi.set(self, "protection_resource", value)
 
     @_builtins.property
+    @pulumi.getter(name="sm2AccessOnly")
+    def sm2_access_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies whether to allow access only from SM certificate-based clients. This parameter is available only if you set SM2Enabled to true.
+
+        - true
+        - false
+        """
+        return pulumi.get(self, "sm2_access_only")
+
+    @sm2_access_only.setter
+    def sm2_access_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "sm2_access_only", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sm2CertId")
+    def sm2_cert_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the SM certificate that you want to add. This parameter is available only if you set SM2Enabled to true.
+        """
+        return pulumi.get(self, "sm2_cert_id")
+
+    @sm2_cert_id.setter
+    def sm2_cert_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "sm2_cert_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sm2Enabled")
+    def sm2_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies whether to add an SM certificate.
+        """
+        return pulumi.get(self, "sm2_enabled")
+
+    @sm2_enabled.setter
+    def sm2_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "sm2_enabled", value)
+
+    @_builtins.property
     @pulumi.getter(name="tlsVersion")
     def tls_version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The version of TLS to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value: **tlsv1**, **tlsv1.1**, **tlsv1.2**.
+        The version of TLS to add. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol). Value:
         """
         return pulumi.get(self, "tls_version")
 
@@ -347,10 +1450,7 @@ class DomainListenArgs:
     @pulumi.getter(name="xffHeaderMode")
     def xff_header_mode(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        WAF obtains the real IP address of the client. Value:
-        - **0** (default): indicates that the client has not forwarded the traffic to WAF through other layer -7 agents.
-        - **1**: indicates that the first value of the X-Forwarded-For(XFF) field in the WAF read request header is used as the client IP address.
-        - **2**: indicates that the custom field value set by you in the WAF read request header is used as the client IP address.
+        The method that is used to obtain the originating IP address of a client. Valid values:
         """
         return pulumi.get(self, "xff_header_mode")
 
@@ -362,7 +1462,9 @@ class DomainListenArgs:
     @pulumi.getter(name="xffHeaders")
     def xff_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Set the list of custom fields used to obtain the client IP address.
+        The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the **\\["header1","header2",...]** format.
+
+        > **NOTE:**   This parameter is required only if you set `XffHeaderMode` to 2.
         """
         return pulumi.get(self, "xff_headers")
 
@@ -375,69 +1477,75 @@ if not MYPY:
     class DomainRedirectArgsDict(TypedDict):
         loadbalance: pulumi.Input[_builtins.str]
         """
-        The load balancing algorithm used when returning to the source. Value:
-        - **iphash**: indicates the IPHash algorithm.
-        - **roundRobin**: indicates the polling algorithm.
-        - **leastTime**: indicates the Least Time algorithm.
-        - This value can be selected only if the value of **protection_resource** is **gslb** (indicating that the protected resource type uses shared cluster intelligent load balancing).
+        The load balancing algorithm that you want to use to forward requests to the origin server. Valid values:
         """
         backends: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
-        The IP address of the origin server corresponding to the domain name or the back-to-origin domain name of the server.
+        The IP addresses or domain names of the origin server. You cannot specify both IP addresses and domain names. If you specify domain names, the domain names can be resolved only to IPv4 addresses.
+
+        - If you specify IP addresses, specify the value in the **\\["ip1","ip2",...]** format. You can enter up to 20 IP addresses.
+        - If you specify domain names, specify the value in the **\\["domain"]** format. You can enter up to 20 domain names.
+        """
+        backup_backends: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        The secondary IP address or domain name of the origin server.
         """
         connect_timeout: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Connection timeout. Unit: seconds, value range: 5~120.
+        Connection timeout duration. Unit: seconds.
+        Value range: 1~3600. Default value: 5.
         """
         focus_http_backend: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        Whether to enable forced HTTP back-to-origin. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-        - **true**: indicates that forced HTTP back-to-origin is enabled.
-        - **false**: indicates that forced HTTP back-to-origin is not enabled.
+        Specifies whether to enable force redirect from HTTPS to HTTP for back-to-origin requests. This parameter is available only if you specify `HttpsPorts`. Valid values:
         """
         keepalive: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        Open long connection, default true.
+        Specifies whether to enable the persistent connection feature. Valid values:
         """
         keepalive_requests: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Number of long connections,  default: `60`. range :60-1000.
+        The number of reused persistent connections. Valid values: 60 to 1000. Default value: 1000
+
+
+        > **NOTE:**   This parameter specifies the number of persistent connections that can be reused after you enable the persistent connection feature.
         """
         keepalive_timeout: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Long connection over time, default: `15`. Range: 1-60.
+        Idle long connection timeout, value range: 1~60, default 15, unit: seconds.
+
+        > **NOTE:**  How long the multiplexed long connection is idle and then released.
         """
         read_timeout: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Read timeout duration. **Unit**: seconds, **Value range**: 5~1800.
+        The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
         """
         request_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['DomainRedirectRequestHeaderArgsDict']]]]
         """
-        The traffic tag field and value of the domain name which used to mark the traffic processed by WAF. 
-        It formats as `[{" k ":"_key_"," v ":"_value_"}]`. Where the `k` represents the specified custom request header field,
-        and the `v` represents the value set for this field. By specifying the custom request header field and the corresponding value,
-        when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value
-        to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the
-        custom header field already exists in the request, the system will overwrite the value of the custom field in the
-        request with the set traffic tag value. See `request_headers` below.
+        The traffic marking field and value of the domain name, which is used to mark the traffic processed by WAF.
+        By specifying custom request header fields and corresponding values, when the access traffic of the domain name passes through WAF, WAF automatically adds the set custom field value to the request header as a traffic mark, which facilitates the statistics of back-end services. See `request_headers` below.
         """
         retry: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        Back to Source Retry. default: true, retry 3 times by default.
+        Specifies whether WAF retries if WAF fails to forward requests to the origin server. Valid values:
         """
         sni_enabled: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        Whether to enable back-to-source SNI. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-        - **true**: indicates that the back-to-source SNI is enabled.
-        - **false** (default) indicates that the back-to-source SNI is not enabled.
+        Specifies whether to enable the Server Name Indication (SNI) feature for back-to-origin requests. This parameter is available only if you specify `HttpsPorts`. Valid values:
         """
         sni_host: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Sets the value of the custom SNI extension field. If this parameter is not set, the value of the **Host** field in the request header is used as the value of the SNI extension field by default.In general, you do not need to customize SNI unless your business has special configuration requirements. You want WAF to use SNI that is inconsistent with the actual request Host in the back-to-origin request (that is, the custom SNI set here).> This parameter is required only when **sni_enalbed** is set to **true** (indicating that back-to-source SNI is enabled).
+        The custom value of the SNI field. If you do not specify this parameter, the value of the `Host` header field is automatically used. In most cases, you do not need to specify a custom value for the SNI field. However, if you want WAF to use an SNI field whose value is different from the value of the Host header field in back-to-origin requests, you can specify a custom value for the SNI field.
+
+        > **NOTE:**   This parameter is required only if you set `SniEnabled` to true.
         """
         write_timeout: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Write timeout duration> **Unit**: seconds, **Value range**: 5~1800.
+        The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
+        """
+        xff_proto: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Specifies whether to use the X-Forward-For-Proto header field to pass the protocol used by WAF to forward requests to the origin server. Valid values:
         """
 elif False:
     DomainRedirectArgsDict: TypeAlias = Mapping[str, Any]
@@ -447,6 +1555,7 @@ class DomainRedirectArgs:
     def __init__(__self__, *,
                  loadbalance: pulumi.Input[_builtins.str],
                  backends: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 backup_backends: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  connect_timeout: Optional[pulumi.Input[_builtins.int]] = None,
                  focus_http_backend: Optional[pulumi.Input[_builtins.bool]] = None,
                  keepalive: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -457,39 +1566,42 @@ class DomainRedirectArgs:
                  retry: Optional[pulumi.Input[_builtins.bool]] = None,
                  sni_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  sni_host: Optional[pulumi.Input[_builtins.str]] = None,
-                 write_timeout: Optional[pulumi.Input[_builtins.int]] = None):
+                 write_timeout: Optional[pulumi.Input[_builtins.int]] = None,
+                 xff_proto: Optional[pulumi.Input[_builtins.bool]] = None):
         """
-        :param pulumi.Input[_builtins.str] loadbalance: The load balancing algorithm used when returning to the source. Value:
-               - **iphash**: indicates the IPHash algorithm.
-               - **roundRobin**: indicates the polling algorithm.
-               - **leastTime**: indicates the Least Time algorithm.
-               - This value can be selected only if the value of **protection_resource** is **gslb** (indicating that the protected resource type uses shared cluster intelligent load balancing).
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backends: The IP address of the origin server corresponding to the domain name or the back-to-origin domain name of the server.
-        :param pulumi.Input[_builtins.int] connect_timeout: Connection timeout. Unit: seconds, value range: 5~120.
-        :param pulumi.Input[_builtins.bool] focus_http_backend: Whether to enable forced HTTP back-to-origin. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-               - **true**: indicates that forced HTTP back-to-origin is enabled.
-               - **false**: indicates that forced HTTP back-to-origin is not enabled.
-        :param pulumi.Input[_builtins.bool] keepalive: Open long connection, default true.
-        :param pulumi.Input[_builtins.int] keepalive_requests: Number of long connections,  default: `60`. range :60-1000.
-        :param pulumi.Input[_builtins.int] keepalive_timeout: Long connection over time, default: `15`. Range: 1-60.
-        :param pulumi.Input[_builtins.int] read_timeout: Read timeout duration. **Unit**: seconds, **Value range**: 5~1800.
-        :param pulumi.Input[Sequence[pulumi.Input['DomainRedirectRequestHeaderArgs']]] request_headers: The traffic tag field and value of the domain name which used to mark the traffic processed by WAF. 
-               It formats as `[{" k ":"_key_"," v ":"_value_"}]`. Where the `k` represents the specified custom request header field,
-               and the `v` represents the value set for this field. By specifying the custom request header field and the corresponding value,
-               when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value
-               to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the
-               custom header field already exists in the request, the system will overwrite the value of the custom field in the
-               request with the set traffic tag value. See `request_headers` below.
-        :param pulumi.Input[_builtins.bool] retry: Back to Source Retry. default: true, retry 3 times by default.
-        :param pulumi.Input[_builtins.bool] sni_enabled: Whether to enable back-to-source SNI. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-               - **true**: indicates that the back-to-source SNI is enabled.
-               - **false** (default) indicates that the back-to-source SNI is not enabled.
-        :param pulumi.Input[_builtins.str] sni_host: Sets the value of the custom SNI extension field. If this parameter is not set, the value of the **Host** field in the request header is used as the value of the SNI extension field by default.In general, you do not need to customize SNI unless your business has special configuration requirements. You want WAF to use SNI that is inconsistent with the actual request Host in the back-to-origin request (that is, the custom SNI set here).> This parameter is required only when **sni_enalbed** is set to **true** (indicating that back-to-source SNI is enabled).
-        :param pulumi.Input[_builtins.int] write_timeout: Write timeout duration> **Unit**: seconds, **Value range**: 5~1800.
+        :param pulumi.Input[_builtins.str] loadbalance: The load balancing algorithm that you want to use to forward requests to the origin server. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backends: The IP addresses or domain names of the origin server. You cannot specify both IP addresses and domain names. If you specify domain names, the domain names can be resolved only to IPv4 addresses.
+               
+               - If you specify IP addresses, specify the value in the **\\["ip1","ip2",...]** format. You can enter up to 20 IP addresses.
+               - If you specify domain names, specify the value in the **\\["domain"]** format. You can enter up to 20 domain names.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backup_backends: The secondary IP address or domain name of the origin server.
+        :param pulumi.Input[_builtins.int] connect_timeout: Connection timeout duration. Unit: seconds.
+               Value range: 1~3600. Default value: 5.
+        :param pulumi.Input[_builtins.bool] focus_http_backend: Specifies whether to enable force redirect from HTTPS to HTTP for back-to-origin requests. This parameter is available only if you specify `HttpsPorts`. Valid values:
+        :param pulumi.Input[_builtins.bool] keepalive: Specifies whether to enable the persistent connection feature. Valid values:
+        :param pulumi.Input[_builtins.int] keepalive_requests: The number of reused persistent connections. Valid values: 60 to 1000. Default value: 1000
+               
+               
+               > **NOTE:**   This parameter specifies the number of persistent connections that can be reused after you enable the persistent connection feature.
+        :param pulumi.Input[_builtins.int] keepalive_timeout: Idle long connection timeout, value range: 1~60, default 15, unit: seconds.
+               
+               > **NOTE:**  How long the multiplexed long connection is idle and then released.
+        :param pulumi.Input[_builtins.int] read_timeout: The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
+        :param pulumi.Input[Sequence[pulumi.Input['DomainRedirectRequestHeaderArgs']]] request_headers: The traffic marking field and value of the domain name, which is used to mark the traffic processed by WAF.
+               By specifying custom request header fields and corresponding values, when the access traffic of the domain name passes through WAF, WAF automatically adds the set custom field value to the request header as a traffic mark, which facilitates the statistics of back-end services. See `request_headers` below.
+        :param pulumi.Input[_builtins.bool] retry: Specifies whether WAF retries if WAF fails to forward requests to the origin server. Valid values:
+        :param pulumi.Input[_builtins.bool] sni_enabled: Specifies whether to enable the Server Name Indication (SNI) feature for back-to-origin requests. This parameter is available only if you specify `HttpsPorts`. Valid values:
+        :param pulumi.Input[_builtins.str] sni_host: The custom value of the SNI field. If you do not specify this parameter, the value of the `Host` header field is automatically used. In most cases, you do not need to specify a custom value for the SNI field. However, if you want WAF to use an SNI field whose value is different from the value of the Host header field in back-to-origin requests, you can specify a custom value for the SNI field.
+               
+               > **NOTE:**   This parameter is required only if you set `SniEnabled` to true.
+        :param pulumi.Input[_builtins.int] write_timeout: The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
+        :param pulumi.Input[_builtins.bool] xff_proto: Specifies whether to use the X-Forward-For-Proto header field to pass the protocol used by WAF to forward requests to the origin server. Valid values:
         """
         pulumi.set(__self__, "loadbalance", loadbalance)
         if backends is not None:
             pulumi.set(__self__, "backends", backends)
+        if backup_backends is not None:
+            pulumi.set(__self__, "backup_backends", backup_backends)
         if connect_timeout is not None:
             pulumi.set(__self__, "connect_timeout", connect_timeout)
         if focus_http_backend is not None:
@@ -512,16 +1624,14 @@ class DomainRedirectArgs:
             pulumi.set(__self__, "sni_host", sni_host)
         if write_timeout is not None:
             pulumi.set(__self__, "write_timeout", write_timeout)
+        if xff_proto is not None:
+            pulumi.set(__self__, "xff_proto", xff_proto)
 
     @_builtins.property
     @pulumi.getter
     def loadbalance(self) -> pulumi.Input[_builtins.str]:
         """
-        The load balancing algorithm used when returning to the source. Value:
-        - **iphash**: indicates the IPHash algorithm.
-        - **roundRobin**: indicates the polling algorithm.
-        - **leastTime**: indicates the Least Time algorithm.
-        - This value can be selected only if the value of **protection_resource** is **gslb** (indicating that the protected resource type uses shared cluster intelligent load balancing).
+        The load balancing algorithm that you want to use to forward requests to the origin server. Valid values:
         """
         return pulumi.get(self, "loadbalance")
 
@@ -533,7 +1643,10 @@ class DomainRedirectArgs:
     @pulumi.getter
     def backends(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The IP address of the origin server corresponding to the domain name or the back-to-origin domain name of the server.
+        The IP addresses or domain names of the origin server. You cannot specify both IP addresses and domain names. If you specify domain names, the domain names can be resolved only to IPv4 addresses.
+
+        - If you specify IP addresses, specify the value in the **\\["ip1","ip2",...]** format. You can enter up to 20 IP addresses.
+        - If you specify domain names, specify the value in the **\\["domain"]** format. You can enter up to 20 domain names.
         """
         return pulumi.get(self, "backends")
 
@@ -542,10 +1655,23 @@ class DomainRedirectArgs:
         pulumi.set(self, "backends", value)
 
     @_builtins.property
+    @pulumi.getter(name="backupBackends")
+    def backup_backends(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The secondary IP address or domain name of the origin server.
+        """
+        return pulumi.get(self, "backup_backends")
+
+    @backup_backends.setter
+    def backup_backends(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "backup_backends", value)
+
+    @_builtins.property
     @pulumi.getter(name="connectTimeout")
     def connect_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Connection timeout. Unit: seconds, value range: 5~120.
+        Connection timeout duration. Unit: seconds.
+        Value range: 1~3600. Default value: 5.
         """
         return pulumi.get(self, "connect_timeout")
 
@@ -557,9 +1683,7 @@ class DomainRedirectArgs:
     @pulumi.getter(name="focusHttpBackend")
     def focus_http_backend(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to enable forced HTTP back-to-origin. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-        - **true**: indicates that forced HTTP back-to-origin is enabled.
-        - **false**: indicates that forced HTTP back-to-origin is not enabled.
+        Specifies whether to enable force redirect from HTTPS to HTTP for back-to-origin requests. This parameter is available only if you specify `HttpsPorts`. Valid values:
         """
         return pulumi.get(self, "focus_http_backend")
 
@@ -571,7 +1695,7 @@ class DomainRedirectArgs:
     @pulumi.getter
     def keepalive(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Open long connection, default true.
+        Specifies whether to enable the persistent connection feature. Valid values:
         """
         return pulumi.get(self, "keepalive")
 
@@ -583,7 +1707,10 @@ class DomainRedirectArgs:
     @pulumi.getter(name="keepaliveRequests")
     def keepalive_requests(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Number of long connections,  default: `60`. range :60-1000.
+        The number of reused persistent connections. Valid values: 60 to 1000. Default value: 1000
+
+
+        > **NOTE:**   This parameter specifies the number of persistent connections that can be reused after you enable the persistent connection feature.
         """
         return pulumi.get(self, "keepalive_requests")
 
@@ -595,7 +1722,9 @@ class DomainRedirectArgs:
     @pulumi.getter(name="keepaliveTimeout")
     def keepalive_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Long connection over time, default: `15`. Range: 1-60.
+        Idle long connection timeout, value range: 1~60, default 15, unit: seconds.
+
+        > **NOTE:**  How long the multiplexed long connection is idle and then released.
         """
         return pulumi.get(self, "keepalive_timeout")
 
@@ -607,7 +1736,7 @@ class DomainRedirectArgs:
     @pulumi.getter(name="readTimeout")
     def read_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Read timeout duration. **Unit**: seconds, **Value range**: 5~1800.
+        The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
         """
         return pulumi.get(self, "read_timeout")
 
@@ -619,13 +1748,8 @@ class DomainRedirectArgs:
     @pulumi.getter(name="requestHeaders")
     def request_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainRedirectRequestHeaderArgs']]]]:
         """
-        The traffic tag field and value of the domain name which used to mark the traffic processed by WAF. 
-        It formats as `[{" k ":"_key_"," v ":"_value_"}]`. Where the `k` represents the specified custom request header field,
-        and the `v` represents the value set for this field. By specifying the custom request header field and the corresponding value,
-        when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value
-        to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the
-        custom header field already exists in the request, the system will overwrite the value of the custom field in the
-        request with the set traffic tag value. See `request_headers` below.
+        The traffic marking field and value of the domain name, which is used to mark the traffic processed by WAF.
+        By specifying custom request header fields and corresponding values, when the access traffic of the domain name passes through WAF, WAF automatically adds the set custom field value to the request header as a traffic mark, which facilitates the statistics of back-end services. See `request_headers` below.
         """
         return pulumi.get(self, "request_headers")
 
@@ -637,7 +1761,7 @@ class DomainRedirectArgs:
     @pulumi.getter
     def retry(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Back to Source Retry. default: true, retry 3 times by default.
+        Specifies whether WAF retries if WAF fails to forward requests to the origin server. Valid values:
         """
         return pulumi.get(self, "retry")
 
@@ -649,9 +1773,7 @@ class DomainRedirectArgs:
     @pulumi.getter(name="sniEnabled")
     def sni_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to enable back-to-source SNI. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-        - **true**: indicates that the back-to-source SNI is enabled.
-        - **false** (default) indicates that the back-to-source SNI is not enabled.
+        Specifies whether to enable the Server Name Indication (SNI) feature for back-to-origin requests. This parameter is available only if you specify `HttpsPorts`. Valid values:
         """
         return pulumi.get(self, "sni_enabled")
 
@@ -663,7 +1785,9 @@ class DomainRedirectArgs:
     @pulumi.getter(name="sniHost")
     def sni_host(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Sets the value of the custom SNI extension field. If this parameter is not set, the value of the **Host** field in the request header is used as the value of the SNI extension field by default.In general, you do not need to customize SNI unless your business has special configuration requirements. You want WAF to use SNI that is inconsistent with the actual request Host in the back-to-origin request (that is, the custom SNI set here).> This parameter is required only when **sni_enalbed** is set to **true** (indicating that back-to-source SNI is enabled).
+        The custom value of the SNI field. If you do not specify this parameter, the value of the `Host` header field is automatically used. In most cases, you do not need to specify a custom value for the SNI field. However, if you want WAF to use an SNI field whose value is different from the value of the Host header field in back-to-origin requests, you can specify a custom value for the SNI field.
+
+        > **NOTE:**   This parameter is required only if you set `SniEnabled` to true.
         """
         return pulumi.get(self, "sni_host")
 
@@ -675,7 +1799,7 @@ class DomainRedirectArgs:
     @pulumi.getter(name="writeTimeout")
     def write_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Write timeout duration> **Unit**: seconds, **Value range**: 5~1800.
+        The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
         """
         return pulumi.get(self, "write_timeout")
 
@@ -683,16 +1807,28 @@ class DomainRedirectArgs:
     def write_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "write_timeout", value)
 
+    @_builtins.property
+    @pulumi.getter(name="xffProto")
+    def xff_proto(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies whether to use the X-Forward-For-Proto header field to pass the protocol used by WAF to forward requests to the origin server. Valid values:
+        """
+        return pulumi.get(self, "xff_proto")
+
+    @xff_proto.setter
+    def xff_proto(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "xff_proto", value)
+
 
 if not MYPY:
     class DomainRedirectRequestHeaderArgsDict(TypedDict):
         key: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+        Specified custom request header fields
         """
         value: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+        Customize the value of the request header field.
         """
 elif False:
     DomainRedirectRequestHeaderArgsDict: TypeAlias = Mapping[str, Any]
@@ -703,8 +1839,8 @@ class DomainRedirectRequestHeaderArgs:
                  key: Optional[pulumi.Input[_builtins.str]] = None,
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] key: The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
-        :param pulumi.Input[_builtins.str] value: The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+        :param pulumi.Input[_builtins.str] key: Specified custom request header fields
+        :param pulumi.Input[_builtins.str] value: Customize the value of the request header field.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -715,7 +1851,7 @@ class DomainRedirectRequestHeaderArgs:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+        Specified custom request header fields
         """
         return pulumi.get(self, "key")
 
@@ -727,7 +1863,7 @@ class DomainRedirectRequestHeaderArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+        Customize the value of the request header field.
         """
         return pulumi.get(self, "value")
 

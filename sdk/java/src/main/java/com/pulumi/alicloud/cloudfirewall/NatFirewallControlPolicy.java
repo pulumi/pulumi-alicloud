@@ -23,6 +23,174 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.224.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.vpc.NatGateway;
+ * import com.pulumi.alicloud.vpc.NatGatewayArgs;
+ * import com.pulumi.alicloud.cloudfirewall.AddressBook;
+ * import com.pulumi.alicloud.cloudfirewall.AddressBookArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.alicloud.cloudfirewall.NatFirewallControlPolicy;
+ * import com.pulumi.alicloud.cloudfirewall.NatFirewallControlPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var direction = config.get("direction").orElse("out");
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation("VSwitch")
+ *             .build());
+ * 
+ *         var defaultDEiWfM = new Network("defaultDEiWfM", NetworkArgs.builder()
+ *             .cidrBlock("172.16.0.0/12")
+ *             .vpcName(name)
+ *             .build());
+ * 
+ *         var defaultFHDM3F = new Switch("defaultFHDM3F", SwitchArgs.builder()
+ *             .vpcId(defaultDEiWfM.id())
+ *             .zoneId(default_.zones()[0].id())
+ *             .cidrBlock("172.16.2.0/24")
+ *             .build());
+ * 
+ *         var defaultMbS2Ts = new NatGateway("defaultMbS2Ts", NatGatewayArgs.builder()
+ *             .vpcId(defaultDEiWfM.id())
+ *             .natGatewayName(name)
+ *             .paymentType("PayAsYouGo")
+ *             .vswitchId(defaultFHDM3F.id())
+ *             .natType("Enhanced")
+ *             .build());
+ * 
+ *         var port = new AddressBook("port", AddressBookArgs.builder()
+ *             .description(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s%s")
+ *                 .args(                
+ *                     name,
+ *                     "port")
+ *                 .build()).result())
+ *             .groupName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s%s")
+ *                 .args(                
+ *                     name,
+ *                     "port")
+ *                 .build()).result())
+ *             .groupType("port")
+ *             .addressLists(            
+ *                 "22/22",
+ *                 "23/23",
+ *                 "24/24")
+ *             .build());
+ * 
+ *         var port_update = new AddressBook("port-update", AddressBookArgs.builder()
+ *             .description(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s%s")
+ *                 .args(                
+ *                     name,
+ *                     "port-update")
+ *                 .build()).result())
+ *             .groupName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s%s")
+ *                 .args(                
+ *                     name,
+ *                     "port-update")
+ *                 .build()).result())
+ *             .groupType("port")
+ *             .addressLists(            
+ *                 "22/22",
+ *                 "23/23",
+ *                 "24/24")
+ *             .build());
+ * 
+ *         var domain = new AddressBook("domain", AddressBookArgs.builder()
+ *             .description(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s%s")
+ *                 .args(                
+ *                     name,
+ *                     "domain")
+ *                 .build()).result())
+ *             .groupName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s%s")
+ *                 .args(                
+ *                     name,
+ *                     "domain")
+ *                 .build()).result())
+ *             .groupType("domain")
+ *             .addressLists(            
+ *                 "alibaba.com",
+ *                 "aliyun.com",
+ *                 "alicloud.com")
+ *             .build());
+ * 
+ *         var ip = new AddressBook("ip", AddressBookArgs.builder()
+ *             .description(name)
+ *             .groupName(name)
+ *             .groupType("ip")
+ *             .addressLists(            
+ *                 "1.1.1.1/32",
+ *                 "2.2.2.2/32")
+ *             .build());
+ * 
+ *         var defaultNatFirewallControlPolicy = new NatFirewallControlPolicy("defaultNatFirewallControlPolicy", NatFirewallControlPolicyArgs.builder()
+ *             .applicationNameLists("ANY")
+ *             .description(name)
+ *             .release("false")
+ *             .ipVersion("4")
+ *             .repeatDays(            
+ *                 1,
+ *                 2,
+ *                 3)
+ *             .repeatStartTime("21:00")
+ *             .aclAction("log")
+ *             .destPortGroup(port.groupName())
+ *             .repeatType("Weekly")
+ *             .natGatewayId(defaultMbS2Ts.id())
+ *             .source("1.1.1.1/32")
+ *             .direction("out")
+ *             .repeatEndTime("21:30")
+ *             .startTime(1699156800)
+ *             .destination("1.1.1.1/32")
+ *             .endTime(1888545600)
+ *             .sourceType("net")
+ *             .proto("TCP")
+ *             .newOrder("1")
+ *             .destinationType("net")
+ *             .destPortType("group")
+ *             .domainResolveType(0)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Cloud Firewall Nat Firewall Control Policy can be imported using the id, e.g.

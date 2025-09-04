@@ -46,8 +46,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.ecs.SecurityGroup;
  * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
- * import com.pulumi.random.integer;
- * import com.pulumi.random.integerArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.alikafka.Instance;
  * import com.pulumi.alicloud.alikafka.InstanceArgs;
  * import com.pulumi.alicloud.alikafka.SaslUser;
@@ -105,7 +105,7 @@ import javax.annotation.Nullable;
  *             .securityGroup(defaultSecurityGroup.id())
  *             .config("""
  *   {
- *     "enable.acl": "true"
+ *     \"enable.acl\": \"true\"
  *   }
  *             """)
  *             .build());

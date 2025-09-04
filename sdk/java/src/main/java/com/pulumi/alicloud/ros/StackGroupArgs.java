@@ -3,12 +3,14 @@
 
 package com.pulumi.alicloud.ros;
 
+import com.pulumi.alicloud.ros.inputs.StackGroupAutoDeploymentArgs;
 import com.pulumi.alicloud.ros.inputs.StackGroupParameterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,33 +21,50 @@ public final class StackGroupArgs extends com.pulumi.resources.ResourceArgs {
     public static final StackGroupArgs Empty = new StackGroupArgs();
 
     /**
-     * The list of target account IDs, in JSON format. A maximum of 20 accounts can be specified.
-     * 
-     */
-    @Import(name="accountIds")
-    private @Nullable Output<String> accountIds;
-
-    /**
-     * @return The list of target account IDs, in JSON format. A maximum of 20 accounts can be specified.
-     * 
-     */
-    public Optional<Output<String>> accountIds() {
-        return Optional.ofNullable(this.accountIds);
-    }
-
-    /**
-     * The name of the RAM administrator role assumed by ROS. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+     * The name of the RAM role that you specify for the administrator account in ROS when you create the self-managed stack group. If you do not specify this parameter, the default value AliyunROSStackGroupAdministrationRole is used. You can use the administrator role in ROS to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks that correspond to stack instances in the stack group.
      * 
      */
     @Import(name="administrationRoleName")
     private @Nullable Output<String> administrationRoleName;
 
     /**
-     * @return The name of the RAM administrator role assumed by ROS. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+     * @return The name of the RAM role that you specify for the administrator account in ROS when you create the self-managed stack group. If you do not specify this parameter, the default value AliyunROSStackGroupAdministrationRole is used. You can use the administrator role in ROS to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks that correspond to stack instances in the stack group.
      * 
      */
     public Optional<Output<String>> administrationRoleName() {
         return Optional.ofNullable(this.administrationRoleName);
+    }
+
+    /**
+     * Automatic deployment setting information. Description
+     * This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `auto_deployment` below.
+     * 
+     */
+    @Import(name="autoDeployment")
+    private @Nullable Output<StackGroupAutoDeploymentArgs> autoDeployment;
+
+    /**
+     * @return Automatic deployment setting information. Description
+     * This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `auto_deployment` below.
+     * 
+     */
+    public Optional<Output<StackGroupAutoDeploymentArgs>> autoDeployment() {
+        return Optional.ofNullable(this.autoDeployment);
+    }
+
+    /**
+     * The list of resource stack group options. The maximum length is 1.
+     * 
+     */
+    @Import(name="capabilities")
+    private @Nullable Output<List<String>> capabilities;
+
+    /**
+     * @return The list of resource stack group options. The maximum length is 1.
+     * 
+     */
+    public Optional<Output<List<String>>> capabilities() {
+        return Optional.ofNullable(this.capabilities);
     }
 
     /**
@@ -64,14 +83,14 @@ public final class StackGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the RAM execution role assumed by the administrator role. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+     * The name of the RAM role that you specify for the execution account when you create the self-managed stack group. You can use the administrator role AliyunROSStackGroupAdministrationRole to assume the execution role. If you do not specify this parameter, the default value AliyunROSStackGroupExecutionRole is used. You can use this role in ROS to perform operations on the stacks that correspond to stack instances in the stack group.
      * 
      */
     @Import(name="executionRoleName")
     private @Nullable Output<String> executionRoleName;
 
     /**
-     * @return The name of the RAM execution role assumed by the administrator role. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+     * @return The name of the RAM role that you specify for the execution account when you create the self-managed stack group. You can use the administrator role AliyunROSStackGroupAdministrationRole to assume the execution role. If you do not specify this parameter, the default value AliyunROSStackGroupExecutionRole is used. You can use this role in ROS to perform operations on the stacks that correspond to stack instances in the stack group.
      * 
      */
     public Optional<Output<String>> executionRoleName() {
@@ -79,44 +98,14 @@ public final class StackGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description of the operation.
-     * 
-     */
-    @Import(name="operationDescription")
-    private @Nullable Output<String> operationDescription;
-
-    /**
-     * @return The description of the operation.
-     * 
-     */
-    public Optional<Output<String>> operationDescription() {
-        return Optional.ofNullable(this.operationDescription);
-    }
-
-    /**
-     * The operation settings, in JSON format.
-     * 
-     */
-    @Import(name="operationPreferences")
-    private @Nullable Output<String> operationPreferences;
-
-    /**
-     * @return The operation settings, in JSON format.
-     * 
-     */
-    public Optional<Output<String>> operationPreferences() {
-        return Optional.ofNullable(this.operationPreferences);
-    }
-
-    /**
-     * The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+     * Parameters See `parameters` below.
      * 
      */
     @Import(name="parameters")
     private @Nullable Output<List<StackGroupParameterArgs>> parameters;
 
     /**
-     * @return The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+     * @return Parameters See `parameters` below.
      * 
      */
     public Optional<Output<List<StackGroupParameterArgs>>> parameters() {
@@ -124,29 +113,44 @@ public final class StackGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The list of target regions, in JSON format. A maximum of 20 accounts can be specified.
+     * The permission model.
      * 
      */
-    @Import(name="regionIds")
-    private @Nullable Output<String> regionIds;
+    @Import(name="permissionModel")
+    private @Nullable Output<String> permissionModel;
 
     /**
-     * @return The list of target regions, in JSON format. A maximum of 20 accounts can be specified.
+     * @return The permission model.
      * 
      */
-    public Optional<Output<String>> regionIds() {
-        return Optional.ofNullable(this.regionIds);
+    public Optional<Output<String>> permissionModel() {
+        return Optional.ofNullable(this.permissionModel);
     }
 
     /**
-     * The name of the stack group. The name must be unique in a region.
+     * The ID of the resource group.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * StackGroupName
      * 
      */
     @Import(name="stackGroupName", required=true)
     private Output<String> stackGroupName;
 
     /**
-     * @return The name of the stack group. The name must be unique in a region.
+     * @return StackGroupName
      * 
      */
     public Output<String> stackGroupName() {
@@ -154,14 +158,29 @@ public final class StackGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
+     * The label of the resource stack group.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return The label of the resource stack group.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * The template body.
      * 
      */
     @Import(name="templateBody")
     private @Nullable Output<String> templateBody;
 
     /**
-     * @return The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
+     * @return The template body.
      * 
      */
     public Optional<Output<String>> templateBody() {
@@ -169,14 +188,33 @@ public final class StackGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
+     * The ID of the template.
+     * 
+     */
+    @Import(name="templateId")
+    private @Nullable Output<String> templateId;
+
+    /**
+     * @return The ID of the template.
+     * 
+     */
+    public Optional<Output<String>> templateId() {
+        return Optional.ofNullable(this.templateId);
+    }
+
+    /**
+     * The location of the file that contains the template body. The URL must point to the template (1 to 524,288 bytes) located in the HTTP Web server (HTTP or HTTPS) or Alibaba Cloud OSS bucket. The URL of the OSS bucket, such as oss:// ros/template/demo or oss:// ros/template/demo? RegionId = cn-hangzhou. If the OSS region is not specified, the RegionId of the interface is the same by default.
+     * 
+     * &gt; **NOTE:** You must and can specify only one of the parameters of TemplateBody, TemplateURL, or TemplateId.
      * 
      */
     @Import(name="templateUrl")
     private @Nullable Output<String> templateUrl;
 
     /**
-     * @return The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
+     * @return The location of the file that contains the template body. The URL must point to the template (1 to 524,288 bytes) located in the HTTP Web server (HTTP or HTTPS) or Alibaba Cloud OSS bucket. The URL of the OSS bucket, such as oss:// ros/template/demo or oss:// ros/template/demo? RegionId = cn-hangzhou. If the OSS region is not specified, the RegionId of the interface is the same by default.
+     * 
+     * &gt; **NOTE:** You must and can specify only one of the parameters of TemplateBody, TemplateURL, or TemplateId.
      * 
      */
     public Optional<Output<String>> templateUrl() {
@@ -201,16 +239,18 @@ public final class StackGroupArgs extends com.pulumi.resources.ResourceArgs {
     private StackGroupArgs() {}
 
     private StackGroupArgs(StackGroupArgs $) {
-        this.accountIds = $.accountIds;
         this.administrationRoleName = $.administrationRoleName;
+        this.autoDeployment = $.autoDeployment;
+        this.capabilities = $.capabilities;
         this.description = $.description;
         this.executionRoleName = $.executionRoleName;
-        this.operationDescription = $.operationDescription;
-        this.operationPreferences = $.operationPreferences;
         this.parameters = $.parameters;
-        this.regionIds = $.regionIds;
+        this.permissionModel = $.permissionModel;
+        this.resourceGroupId = $.resourceGroupId;
         this.stackGroupName = $.stackGroupName;
+        this.tags = $.tags;
         this.templateBody = $.templateBody;
+        this.templateId = $.templateId;
         this.templateUrl = $.templateUrl;
         this.templateVersion = $.templateVersion;
     }
@@ -234,28 +274,7 @@ public final class StackGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountIds The list of target account IDs, in JSON format. A maximum of 20 accounts can be specified.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder accountIds(@Nullable Output<String> accountIds) {
-            $.accountIds = accountIds;
-            return this;
-        }
-
-        /**
-         * @param accountIds The list of target account IDs, in JSON format. A maximum of 20 accounts can be specified.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder accountIds(String accountIds) {
-            return accountIds(Output.of(accountIds));
-        }
-
-        /**
-         * @param administrationRoleName The name of the RAM administrator role assumed by ROS. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+         * @param administrationRoleName The name of the RAM role that you specify for the administrator account in ROS when you create the self-managed stack group. If you do not specify this parameter, the default value AliyunROSStackGroupAdministrationRole is used. You can use the administrator role in ROS to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks that correspond to stack instances in the stack group.
          * 
          * @return builder
          * 
@@ -266,13 +285,67 @@ public final class StackGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param administrationRoleName The name of the RAM administrator role assumed by ROS. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+         * @param administrationRoleName The name of the RAM role that you specify for the administrator account in ROS when you create the self-managed stack group. If you do not specify this parameter, the default value AliyunROSStackGroupAdministrationRole is used. You can use the administrator role in ROS to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks that correspond to stack instances in the stack group.
          * 
          * @return builder
          * 
          */
         public Builder administrationRoleName(String administrationRoleName) {
             return administrationRoleName(Output.of(administrationRoleName));
+        }
+
+        /**
+         * @param autoDeployment Automatic deployment setting information. Description
+         * This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `auto_deployment` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoDeployment(@Nullable Output<StackGroupAutoDeploymentArgs> autoDeployment) {
+            $.autoDeployment = autoDeployment;
+            return this;
+        }
+
+        /**
+         * @param autoDeployment Automatic deployment setting information. Description
+         * This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `auto_deployment` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoDeployment(StackGroupAutoDeploymentArgs autoDeployment) {
+            return autoDeployment(Output.of(autoDeployment));
+        }
+
+        /**
+         * @param capabilities The list of resource stack group options. The maximum length is 1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder capabilities(@Nullable Output<List<String>> capabilities) {
+            $.capabilities = capabilities;
+            return this;
+        }
+
+        /**
+         * @param capabilities The list of resource stack group options. The maximum length is 1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder capabilities(List<String> capabilities) {
+            return capabilities(Output.of(capabilities));
+        }
+
+        /**
+         * @param capabilities The list of resource stack group options. The maximum length is 1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder capabilities(String... capabilities) {
+            return capabilities(List.of(capabilities));
         }
 
         /**
@@ -297,7 +370,7 @@ public final class StackGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param executionRoleName The name of the RAM execution role assumed by the administrator role. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+         * @param executionRoleName The name of the RAM role that you specify for the execution account when you create the self-managed stack group. You can use the administrator role AliyunROSStackGroupAdministrationRole to assume the execution role. If you do not specify this parameter, the default value AliyunROSStackGroupExecutionRole is used. You can use this role in ROS to perform operations on the stacks that correspond to stack instances in the stack group.
          * 
          * @return builder
          * 
@@ -308,7 +381,7 @@ public final class StackGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param executionRoleName The name of the RAM execution role assumed by the administrator role. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+         * @param executionRoleName The name of the RAM role that you specify for the execution account when you create the self-managed stack group. You can use the administrator role AliyunROSStackGroupAdministrationRole to assume the execution role. If you do not specify this parameter, the default value AliyunROSStackGroupExecutionRole is used. You can use this role in ROS to perform operations on the stacks that correspond to stack instances in the stack group.
          * 
          * @return builder
          * 
@@ -318,49 +391,7 @@ public final class StackGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param operationDescription The description of the operation.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder operationDescription(@Nullable Output<String> operationDescription) {
-            $.operationDescription = operationDescription;
-            return this;
-        }
-
-        /**
-         * @param operationDescription The description of the operation.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder operationDescription(String operationDescription) {
-            return operationDescription(Output.of(operationDescription));
-        }
-
-        /**
-         * @param operationPreferences The operation settings, in JSON format.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder operationPreferences(@Nullable Output<String> operationPreferences) {
-            $.operationPreferences = operationPreferences;
-            return this;
-        }
-
-        /**
-         * @param operationPreferences The operation settings, in JSON format.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder operationPreferences(String operationPreferences) {
-            return operationPreferences(Output.of(operationPreferences));
-        }
-
-        /**
-         * @param parameters The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+         * @param parameters Parameters See `parameters` below.
          * 
          * @return builder
          * 
@@ -371,7 +402,7 @@ public final class StackGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parameters The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+         * @param parameters Parameters See `parameters` below.
          * 
          * @return builder
          * 
@@ -381,7 +412,7 @@ public final class StackGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parameters The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+         * @param parameters Parameters See `parameters` below.
          * 
          * @return builder
          * 
@@ -391,28 +422,49 @@ public final class StackGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param regionIds The list of target regions, in JSON format. A maximum of 20 accounts can be specified.
+         * @param permissionModel The permission model.
          * 
          * @return builder
          * 
          */
-        public Builder regionIds(@Nullable Output<String> regionIds) {
-            $.regionIds = regionIds;
+        public Builder permissionModel(@Nullable Output<String> permissionModel) {
+            $.permissionModel = permissionModel;
             return this;
         }
 
         /**
-         * @param regionIds The list of target regions, in JSON format. A maximum of 20 accounts can be specified.
+         * @param permissionModel The permission model.
          * 
          * @return builder
          * 
          */
-        public Builder regionIds(String regionIds) {
-            return regionIds(Output.of(regionIds));
+        public Builder permissionModel(String permissionModel) {
+            return permissionModel(Output.of(permissionModel));
         }
 
         /**
-         * @param stackGroupName The name of the stack group. The name must be unique in a region.
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param stackGroupName StackGroupName
          * 
          * @return builder
          * 
@@ -423,7 +475,7 @@ public final class StackGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stackGroupName The name of the stack group. The name must be unique in a region.
+         * @param stackGroupName StackGroupName
          * 
          * @return builder
          * 
@@ -433,7 +485,28 @@ public final class StackGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param templateBody The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
+         * @param tags The label of the resource stack group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The label of the resource stack group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param templateBody The template body.
          * 
          * @return builder
          * 
@@ -444,7 +517,7 @@ public final class StackGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param templateBody The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
+         * @param templateBody The template body.
          * 
          * @return builder
          * 
@@ -454,7 +527,30 @@ public final class StackGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param templateUrl The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
+         * @param templateId The ID of the template.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder templateId(@Nullable Output<String> templateId) {
+            $.templateId = templateId;
+            return this;
+        }
+
+        /**
+         * @param templateId The ID of the template.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder templateId(String templateId) {
+            return templateId(Output.of(templateId));
+        }
+
+        /**
+         * @param templateUrl The location of the file that contains the template body. The URL must point to the template (1 to 524,288 bytes) located in the HTTP Web server (HTTP or HTTPS) or Alibaba Cloud OSS bucket. The URL of the OSS bucket, such as oss:// ros/template/demo or oss:// ros/template/demo? RegionId = cn-hangzhou. If the OSS region is not specified, the RegionId of the interface is the same by default.
+         * 
+         * &gt; **NOTE:** You must and can specify only one of the parameters of TemplateBody, TemplateURL, or TemplateId.
          * 
          * @return builder
          * 
@@ -465,7 +561,9 @@ public final class StackGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param templateUrl The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
+         * @param templateUrl The location of the file that contains the template body. The URL must point to the template (1 to 524,288 bytes) located in the HTTP Web server (HTTP or HTTPS) or Alibaba Cloud OSS bucket. The URL of the OSS bucket, such as oss:// ros/template/demo or oss:// ros/template/demo? RegionId = cn-hangzhou. If the OSS region is not specified, the RegionId of the interface is the same by default.
+         * 
+         * &gt; **NOTE:** You must and can specify only one of the parameters of TemplateBody, TemplateURL, or TemplateId.
          * 
          * @return builder
          * 

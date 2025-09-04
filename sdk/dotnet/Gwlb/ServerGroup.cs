@@ -16,6 +16,117 @@ namespace Pulumi.AliCloud.Gwlb
     /// 
     /// &gt; **NOTE:** Available since v1.234.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var regionId = config.Get("regionId") ?? "cn-wulanchabu";
+    ///     var zoneId1 = config.Get("zoneId1") ?? "cn-wulanchabu-b";
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var defaultEaxcvb = new AliCloud.Vpc.Network("defaultEaxcvb", new()
+    ///     {
+    ///         CidrBlock = "10.0.0.0/8",
+    ///         VpcName = "tf-gwlb-vpc",
+    ///     });
+    /// 
+    ///     var defaultc3uVID = new AliCloud.Vpc.Switch("defaultc3uVID", new()
+    ///     {
+    ///         VpcId = defaultEaxcvb.Id,
+    ///         ZoneId = zoneId1,
+    ///         CidrBlock = "10.0.0.0/24",
+    ///         VswitchName = "tf-example-vsw1",
+    ///     });
+    /// 
+    ///     var default7NNxRl = new AliCloud.Ecs.SecurityGroup("default7NNxRl", new()
+    ///     {
+    ///         Description = "sg",
+    ///         SecurityGroupName = "sg_name",
+    ///         VpcId = defaultEaxcvb.Id,
+    ///         SecurityGroupType = "normal",
+    ///     });
+    /// 
+    ///     var defaultH6McvC = new AliCloud.Ecs.Instance("defaultH6McvC", new()
+    ///     {
+    ///         VswitchId = defaultc3uVID.Id,
+    ///         ImageId = "aliyun_2_1903_x64_20G_alibase_20231221.vhd",
+    ///         InstanceType = "ecs.g6.large",
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         InternetChargeType = "PayByTraffic",
+    ///         InternetMaxBandwidthOut = 5,
+    ///         InstanceName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s4",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         Description = "tf-example-ecs",
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             default7NNxRl.Id,
+    ///         },
+    ///         AvailabilityZone = defaultc3uVID.ZoneId,
+    ///         InstanceChargeType = "PostPaid",
+    ///     });
+    /// 
+    ///     var defaultServerGroup = new AliCloud.Gwlb.ServerGroup("default", new()
+    ///     {
+    ///         DryRun = false,
+    ///         Servers = new[]
+    ///         {
+    ///             new AliCloud.Gwlb.Inputs.ServerGroupServerArgs
+    ///             {
+    ///                 ServerId = defaultH6McvC.Id,
+    ///                 ServerType = "Ecs",
+    ///             },
+    ///         },
+    ///         Scheduler = "5TCH",
+    ///         Protocol = "GENEVE",
+    ///         ConnectionDrainConfig = new AliCloud.Gwlb.Inputs.ServerGroupConnectionDrainConfigArgs
+    ///         {
+    ///             ConnectionDrainEnabled = true,
+    ///             ConnectionDrainTimeout = 1,
+    ///         },
+    ///         VpcId = defaultEaxcvb.Id,
+    ///         ServerGroupType = "Instance",
+    ///         ServerGroupName = name,
+    ///         HealthCheckConfig = new AliCloud.Gwlb.Inputs.ServerGroupHealthCheckConfigArgs
+    ///         {
+    ///             HealthCheckConnectPort = 80,
+    ///             HealthCheckEnabled = true,
+    ///             HealthCheckProtocol = "HTTP",
+    ///             HealthCheckConnectTimeout = 5,
+    ///             HealthCheckDomain = "www.domain.com",
+    ///             HealthCheckHttpCodes = new[]
+    ///             {
+    ///                 "http_2xx",
+    ///                 "http_3xx",
+    ///                 "http_4xx",
+    ///             },
+    ///             HealthCheckInterval = 10,
+    ///             HealthCheckPath = "/health-check",
+    ///             HealthyThreshold = 2,
+    ///             UnhealthyThreshold = 2,
+    ///         },
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0])),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// GWLB Server Group can be imported using the id, e.g.

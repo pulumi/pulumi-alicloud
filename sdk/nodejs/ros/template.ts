@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * const example = new alicloud.ros.Template("example", {
  *     templateName: "example_value",
  *     templateBody: `    {
- *     \x09"ROSTemplateFormatVersion": "2015-09-01"
+ *     \\t\\"ROSTemplateFormatVersion\\": \\"2015-09-01\\"
  *     }
  * `,
  * });

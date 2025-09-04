@@ -113,6 +113,10 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
      */
     public readonly ratio!: pulumi.Output<number>;
     /**
+     * The pagination token that is used in the next request to retrieve a new page of results.
+     */
+    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    /**
      * The ID of the resource group to which you want to move the resource.
      *
      * > **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
@@ -161,6 +165,7 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
             resourceInputs["ratio"] = state ? state.ratio : undefined;
+            resourceInputs["regionId"] = state ? state.regionId : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["securityProtectionTypes"] = state ? state.securityProtectionTypes : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
@@ -186,6 +191,7 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["paymentType"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -268,6 +274,10 @@ export interface CommonBandwithPackageState {
      * > **NOTE:** This parameter is available only on the Alibaba Cloud China site.
      */
     ratio?: pulumi.Input<number>;
+    /**
+     * The pagination token that is used in the next request to retrieve a new page of results.
+     */
+    regionId?: pulumi.Input<string>;
     /**
      * The ID of the resource group to which you want to move the resource.
      *

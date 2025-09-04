@@ -6946,6 +6946,432 @@ func (o GetAlertsAlertScheduleOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlertsAlertSchedule) string { return v.Type }).(pulumi.StringOutput)
 }
 
+type GetEtlsEtl struct {
+	// Detailed configuration of data processing tasks
+	Configuration GetEtlsEtlConfiguration `pulumi:"configuration"`
+	// Task creation time. Example value: 1718787534
+	CreateTime int `pulumi:"createTime"`
+	// Data Processing Task Description
+	Description string `pulumi:"description"`
+	// Data processing task display name
+	DisplayName string `pulumi:"displayName"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// Unique identification of data processing task
+	JobName string `pulumi:"jobName"`
+	// The time when the task was last modified. Example value: 1718787681
+	LastModifiedTime int `pulumi:"lastModifiedTime"`
+	// The task ID. Example values:
+	ScheduleId string `pulumi:"scheduleId"`
+	// Task Status
+	Status string `pulumi:"status"`
+}
+
+// GetEtlsEtlInput is an input type that accepts GetEtlsEtlArgs and GetEtlsEtlOutput values.
+// You can construct a concrete instance of `GetEtlsEtlInput` via:
+//
+//	GetEtlsEtlArgs{...}
+type GetEtlsEtlInput interface {
+	pulumi.Input
+
+	ToGetEtlsEtlOutput() GetEtlsEtlOutput
+	ToGetEtlsEtlOutputWithContext(context.Context) GetEtlsEtlOutput
+}
+
+type GetEtlsEtlArgs struct {
+	// Detailed configuration of data processing tasks
+	Configuration GetEtlsEtlConfigurationInput `pulumi:"configuration"`
+	// Task creation time. Example value: 1718787534
+	CreateTime pulumi.IntInput `pulumi:"createTime"`
+	// Data Processing Task Description
+	Description pulumi.StringInput `pulumi:"description"`
+	// Data processing task display name
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Unique identification of data processing task
+	JobName pulumi.StringInput `pulumi:"jobName"`
+	// The time when the task was last modified. Example value: 1718787681
+	LastModifiedTime pulumi.IntInput `pulumi:"lastModifiedTime"`
+	// The task ID. Example values:
+	ScheduleId pulumi.StringInput `pulumi:"scheduleId"`
+	// Task Status
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetEtlsEtlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEtlsEtl)(nil)).Elem()
+}
+
+func (i GetEtlsEtlArgs) ToGetEtlsEtlOutput() GetEtlsEtlOutput {
+	return i.ToGetEtlsEtlOutputWithContext(context.Background())
+}
+
+func (i GetEtlsEtlArgs) ToGetEtlsEtlOutputWithContext(ctx context.Context) GetEtlsEtlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEtlsEtlOutput)
+}
+
+// GetEtlsEtlArrayInput is an input type that accepts GetEtlsEtlArray and GetEtlsEtlArrayOutput values.
+// You can construct a concrete instance of `GetEtlsEtlArrayInput` via:
+//
+//	GetEtlsEtlArray{ GetEtlsEtlArgs{...} }
+type GetEtlsEtlArrayInput interface {
+	pulumi.Input
+
+	ToGetEtlsEtlArrayOutput() GetEtlsEtlArrayOutput
+	ToGetEtlsEtlArrayOutputWithContext(context.Context) GetEtlsEtlArrayOutput
+}
+
+type GetEtlsEtlArray []GetEtlsEtlInput
+
+func (GetEtlsEtlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEtlsEtl)(nil)).Elem()
+}
+
+func (i GetEtlsEtlArray) ToGetEtlsEtlArrayOutput() GetEtlsEtlArrayOutput {
+	return i.ToGetEtlsEtlArrayOutputWithContext(context.Background())
+}
+
+func (i GetEtlsEtlArray) ToGetEtlsEtlArrayOutputWithContext(ctx context.Context) GetEtlsEtlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEtlsEtlArrayOutput)
+}
+
+type GetEtlsEtlOutput struct{ *pulumi.OutputState }
+
+func (GetEtlsEtlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEtlsEtl)(nil)).Elem()
+}
+
+func (o GetEtlsEtlOutput) ToGetEtlsEtlOutput() GetEtlsEtlOutput {
+	return o
+}
+
+func (o GetEtlsEtlOutput) ToGetEtlsEtlOutputWithContext(ctx context.Context) GetEtlsEtlOutput {
+	return o
+}
+
+// Detailed configuration of data processing tasks
+func (o GetEtlsEtlOutput) Configuration() GetEtlsEtlConfigurationOutput {
+	return o.ApplyT(func(v GetEtlsEtl) GetEtlsEtlConfiguration { return v.Configuration }).(GetEtlsEtlConfigurationOutput)
+}
+
+// Task creation time. Example value: 1718787534
+func (o GetEtlsEtlOutput) CreateTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEtlsEtl) int { return v.CreateTime }).(pulumi.IntOutput)
+}
+
+// Data Processing Task Description
+func (o GetEtlsEtlOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEtlsEtl) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Data processing task display name
+func (o GetEtlsEtlOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEtlsEtl) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetEtlsEtlOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEtlsEtl) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Unique identification of data processing task
+func (o GetEtlsEtlOutput) JobName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEtlsEtl) string { return v.JobName }).(pulumi.StringOutput)
+}
+
+// The time when the task was last modified. Example value: 1718787681
+func (o GetEtlsEtlOutput) LastModifiedTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEtlsEtl) int { return v.LastModifiedTime }).(pulumi.IntOutput)
+}
+
+// The task ID. Example values:
+func (o GetEtlsEtlOutput) ScheduleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEtlsEtl) string { return v.ScheduleId }).(pulumi.StringOutput)
+}
+
+// Task Status
+func (o GetEtlsEtlOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEtlsEtl) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetEtlsEtlArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEtlsEtlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEtlsEtl)(nil)).Elem()
+}
+
+func (o GetEtlsEtlArrayOutput) ToGetEtlsEtlArrayOutput() GetEtlsEtlArrayOutput {
+	return o
+}
+
+func (o GetEtlsEtlArrayOutput) ToGetEtlsEtlArrayOutputWithContext(ctx context.Context) GetEtlsEtlArrayOutput {
+	return o
+}
+
+func (o GetEtlsEtlArrayOutput) Index(i pulumi.IntInput) GetEtlsEtlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEtlsEtl {
+		return vs[0].([]GetEtlsEtl)[vs[1].(int)]
+	}).(GetEtlsEtlOutput)
+}
+
+type GetEtlsEtlConfiguration struct {
+	// Processing time start timestamp (accurate to the second). Enter 0 when the first log received from the source Logstore is consumed.
+	FromTime int `pulumi:"fromTime"`
+	// Data processing syntax type.
+	Lang string `pulumi:"lang"`
+	// Source Logstore Name.
+	Logstore string `pulumi:"logstore"`
+	// Advanced parameter configuration.
+	Parameters map[string]string `pulumi:"parameters"`
+	// The ARN role that authorizes writing to the target Logstore.
+	RoleArn string `pulumi:"roleArn"`
+	// Processing script.
+	Script string `pulumi:"script"`
+	// Processing result output target list.
+	Sinks []GetEtlsEtlConfigurationSink `pulumi:"sinks"`
+	// Processing time end timestamp (accurate to seconds). When continuous consumption is stopped manually, fill in 0.
+	ToTime int `pulumi:"toTime"`
+}
+
+// GetEtlsEtlConfigurationInput is an input type that accepts GetEtlsEtlConfigurationArgs and GetEtlsEtlConfigurationOutput values.
+// You can construct a concrete instance of `GetEtlsEtlConfigurationInput` via:
+//
+//	GetEtlsEtlConfigurationArgs{...}
+type GetEtlsEtlConfigurationInput interface {
+	pulumi.Input
+
+	ToGetEtlsEtlConfigurationOutput() GetEtlsEtlConfigurationOutput
+	ToGetEtlsEtlConfigurationOutputWithContext(context.Context) GetEtlsEtlConfigurationOutput
+}
+
+type GetEtlsEtlConfigurationArgs struct {
+	// Processing time start timestamp (accurate to the second). Enter 0 when the first log received from the source Logstore is consumed.
+	FromTime pulumi.IntInput `pulumi:"fromTime"`
+	// Data processing syntax type.
+	Lang pulumi.StringInput `pulumi:"lang"`
+	// Source Logstore Name.
+	Logstore pulumi.StringInput `pulumi:"logstore"`
+	// Advanced parameter configuration.
+	Parameters pulumi.StringMapInput `pulumi:"parameters"`
+	// The ARN role that authorizes writing to the target Logstore.
+	RoleArn pulumi.StringInput `pulumi:"roleArn"`
+	// Processing script.
+	Script pulumi.StringInput `pulumi:"script"`
+	// Processing result output target list.
+	Sinks GetEtlsEtlConfigurationSinkArrayInput `pulumi:"sinks"`
+	// Processing time end timestamp (accurate to seconds). When continuous consumption is stopped manually, fill in 0.
+	ToTime pulumi.IntInput `pulumi:"toTime"`
+}
+
+func (GetEtlsEtlConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEtlsEtlConfiguration)(nil)).Elem()
+}
+
+func (i GetEtlsEtlConfigurationArgs) ToGetEtlsEtlConfigurationOutput() GetEtlsEtlConfigurationOutput {
+	return i.ToGetEtlsEtlConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetEtlsEtlConfigurationArgs) ToGetEtlsEtlConfigurationOutputWithContext(ctx context.Context) GetEtlsEtlConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEtlsEtlConfigurationOutput)
+}
+
+type GetEtlsEtlConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetEtlsEtlConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEtlsEtlConfiguration)(nil)).Elem()
+}
+
+func (o GetEtlsEtlConfigurationOutput) ToGetEtlsEtlConfigurationOutput() GetEtlsEtlConfigurationOutput {
+	return o
+}
+
+func (o GetEtlsEtlConfigurationOutput) ToGetEtlsEtlConfigurationOutputWithContext(ctx context.Context) GetEtlsEtlConfigurationOutput {
+	return o
+}
+
+// Processing time start timestamp (accurate to the second). Enter 0 when the first log received from the source Logstore is consumed.
+func (o GetEtlsEtlConfigurationOutput) FromTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEtlsEtlConfiguration) int { return v.FromTime }).(pulumi.IntOutput)
+}
+
+// Data processing syntax type.
+func (o GetEtlsEtlConfigurationOutput) Lang() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEtlsEtlConfiguration) string { return v.Lang }).(pulumi.StringOutput)
+}
+
+// Source Logstore Name.
+func (o GetEtlsEtlConfigurationOutput) Logstore() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEtlsEtlConfiguration) string { return v.Logstore }).(pulumi.StringOutput)
+}
+
+// Advanced parameter configuration.
+func (o GetEtlsEtlConfigurationOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEtlsEtlConfiguration) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+}
+
+// The ARN role that authorizes writing to the target Logstore.
+func (o GetEtlsEtlConfigurationOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEtlsEtlConfiguration) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+// Processing script.
+func (o GetEtlsEtlConfigurationOutput) Script() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEtlsEtlConfiguration) string { return v.Script }).(pulumi.StringOutput)
+}
+
+// Processing result output target list.
+func (o GetEtlsEtlConfigurationOutput) Sinks() GetEtlsEtlConfigurationSinkArrayOutput {
+	return o.ApplyT(func(v GetEtlsEtlConfiguration) []GetEtlsEtlConfigurationSink { return v.Sinks }).(GetEtlsEtlConfigurationSinkArrayOutput)
+}
+
+// Processing time end timestamp (accurate to seconds). When continuous consumption is stopped manually, fill in 0.
+func (o GetEtlsEtlConfigurationOutput) ToTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEtlsEtlConfiguration) int { return v.ToTime }).(pulumi.IntOutput)
+}
+
+type GetEtlsEtlConfigurationSink struct {
+	// Write Result Set.
+	Datasets []string `pulumi:"datasets"`
+	// The endpoint of the region where the target Project is located.
+	Endpoint string `pulumi:"endpoint"`
+	// Source Logstore Name.
+	Logstore string `pulumi:"logstore"`
+	// Output Destination Name.
+	Name string `pulumi:"name"`
+	// Project Name
+	Project string `pulumi:"project"`
+	// The ARN role that authorizes writing to the target Logstore.
+	RoleArn string `pulumi:"roleArn"`
+}
+
+// GetEtlsEtlConfigurationSinkInput is an input type that accepts GetEtlsEtlConfigurationSinkArgs and GetEtlsEtlConfigurationSinkOutput values.
+// You can construct a concrete instance of `GetEtlsEtlConfigurationSinkInput` via:
+//
+//	GetEtlsEtlConfigurationSinkArgs{...}
+type GetEtlsEtlConfigurationSinkInput interface {
+	pulumi.Input
+
+	ToGetEtlsEtlConfigurationSinkOutput() GetEtlsEtlConfigurationSinkOutput
+	ToGetEtlsEtlConfigurationSinkOutputWithContext(context.Context) GetEtlsEtlConfigurationSinkOutput
+}
+
+type GetEtlsEtlConfigurationSinkArgs struct {
+	// Write Result Set.
+	Datasets pulumi.StringArrayInput `pulumi:"datasets"`
+	// The endpoint of the region where the target Project is located.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// Source Logstore Name.
+	Logstore pulumi.StringInput `pulumi:"logstore"`
+	// Output Destination Name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Project Name
+	Project pulumi.StringInput `pulumi:"project"`
+	// The ARN role that authorizes writing to the target Logstore.
+	RoleArn pulumi.StringInput `pulumi:"roleArn"`
+}
+
+func (GetEtlsEtlConfigurationSinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEtlsEtlConfigurationSink)(nil)).Elem()
+}
+
+func (i GetEtlsEtlConfigurationSinkArgs) ToGetEtlsEtlConfigurationSinkOutput() GetEtlsEtlConfigurationSinkOutput {
+	return i.ToGetEtlsEtlConfigurationSinkOutputWithContext(context.Background())
+}
+
+func (i GetEtlsEtlConfigurationSinkArgs) ToGetEtlsEtlConfigurationSinkOutputWithContext(ctx context.Context) GetEtlsEtlConfigurationSinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEtlsEtlConfigurationSinkOutput)
+}
+
+// GetEtlsEtlConfigurationSinkArrayInput is an input type that accepts GetEtlsEtlConfigurationSinkArray and GetEtlsEtlConfigurationSinkArrayOutput values.
+// You can construct a concrete instance of `GetEtlsEtlConfigurationSinkArrayInput` via:
+//
+//	GetEtlsEtlConfigurationSinkArray{ GetEtlsEtlConfigurationSinkArgs{...} }
+type GetEtlsEtlConfigurationSinkArrayInput interface {
+	pulumi.Input
+
+	ToGetEtlsEtlConfigurationSinkArrayOutput() GetEtlsEtlConfigurationSinkArrayOutput
+	ToGetEtlsEtlConfigurationSinkArrayOutputWithContext(context.Context) GetEtlsEtlConfigurationSinkArrayOutput
+}
+
+type GetEtlsEtlConfigurationSinkArray []GetEtlsEtlConfigurationSinkInput
+
+func (GetEtlsEtlConfigurationSinkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEtlsEtlConfigurationSink)(nil)).Elem()
+}
+
+func (i GetEtlsEtlConfigurationSinkArray) ToGetEtlsEtlConfigurationSinkArrayOutput() GetEtlsEtlConfigurationSinkArrayOutput {
+	return i.ToGetEtlsEtlConfigurationSinkArrayOutputWithContext(context.Background())
+}
+
+func (i GetEtlsEtlConfigurationSinkArray) ToGetEtlsEtlConfigurationSinkArrayOutputWithContext(ctx context.Context) GetEtlsEtlConfigurationSinkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEtlsEtlConfigurationSinkArrayOutput)
+}
+
+type GetEtlsEtlConfigurationSinkOutput struct{ *pulumi.OutputState }
+
+func (GetEtlsEtlConfigurationSinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEtlsEtlConfigurationSink)(nil)).Elem()
+}
+
+func (o GetEtlsEtlConfigurationSinkOutput) ToGetEtlsEtlConfigurationSinkOutput() GetEtlsEtlConfigurationSinkOutput {
+	return o
+}
+
+func (o GetEtlsEtlConfigurationSinkOutput) ToGetEtlsEtlConfigurationSinkOutputWithContext(ctx context.Context) GetEtlsEtlConfigurationSinkOutput {
+	return o
+}
+
+// Write Result Set.
+func (o GetEtlsEtlConfigurationSinkOutput) Datasets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEtlsEtlConfigurationSink) []string { return v.Datasets }).(pulumi.StringArrayOutput)
+}
+
+// The endpoint of the region where the target Project is located.
+func (o GetEtlsEtlConfigurationSinkOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEtlsEtlConfigurationSink) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// Source Logstore Name.
+func (o GetEtlsEtlConfigurationSinkOutput) Logstore() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEtlsEtlConfigurationSink) string { return v.Logstore }).(pulumi.StringOutput)
+}
+
+// Output Destination Name.
+func (o GetEtlsEtlConfigurationSinkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEtlsEtlConfigurationSink) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Project Name
+func (o GetEtlsEtlConfigurationSinkOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEtlsEtlConfigurationSink) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// The ARN role that authorizes writing to the target Logstore.
+func (o GetEtlsEtlConfigurationSinkOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEtlsEtlConfigurationSink) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+type GetEtlsEtlConfigurationSinkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEtlsEtlConfigurationSinkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEtlsEtlConfigurationSink)(nil)).Elem()
+}
+
+func (o GetEtlsEtlConfigurationSinkArrayOutput) ToGetEtlsEtlConfigurationSinkArrayOutput() GetEtlsEtlConfigurationSinkArrayOutput {
+	return o
+}
+
+func (o GetEtlsEtlConfigurationSinkArrayOutput) ToGetEtlsEtlConfigurationSinkArrayOutputWithContext(ctx context.Context) GetEtlsEtlConfigurationSinkArrayOutput {
+	return o
+}
+
+func (o GetEtlsEtlConfigurationSinkArrayOutput) Index(i pulumi.IntInput) GetEtlsEtlConfigurationSinkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEtlsEtlConfigurationSink {
+		return vs[0].([]GetEtlsEtlConfigurationSink)[vs[1].(int)]
+	}).(GetEtlsEtlConfigurationSinkOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertConfigurationInput)(nil)).Elem(), AlertConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertConfigurationPtrInput)(nil)).Elem(), AlertConfigurationArgs{})
@@ -7019,6 +7445,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertsAlertConfigurationSinkEventStoreInput)(nil)).Elem(), GetAlertsAlertConfigurationSinkEventStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertsAlertConfigurationTemplateConfigurationInput)(nil)).Elem(), GetAlertsAlertConfigurationTemplateConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertsAlertScheduleInput)(nil)).Elem(), GetAlertsAlertScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEtlsEtlInput)(nil)).Elem(), GetEtlsEtlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEtlsEtlArrayInput)(nil)).Elem(), GetEtlsEtlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEtlsEtlConfigurationInput)(nil)).Elem(), GetEtlsEtlConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEtlsEtlConfigurationSinkInput)(nil)).Elem(), GetEtlsEtlConfigurationSinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEtlsEtlConfigurationSinkArrayInput)(nil)).Elem(), GetEtlsEtlConfigurationSinkArray{})
 	pulumi.RegisterOutputType(AlertConfigurationOutput{})
 	pulumi.RegisterOutputType(AlertConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(AlertConfigurationAnnotationOutput{})
@@ -7091,4 +7522,9 @@ func init() {
 	pulumi.RegisterOutputType(GetAlertsAlertConfigurationSinkEventStoreOutput{})
 	pulumi.RegisterOutputType(GetAlertsAlertConfigurationTemplateConfigurationOutput{})
 	pulumi.RegisterOutputType(GetAlertsAlertScheduleOutput{})
+	pulumi.RegisterOutputType(GetEtlsEtlOutput{})
+	pulumi.RegisterOutputType(GetEtlsEtlArrayOutput{})
+	pulumi.RegisterOutputType(GetEtlsEtlConfigurationOutput{})
+	pulumi.RegisterOutputType(GetEtlsEtlConfigurationSinkOutput{})
+	pulumi.RegisterOutputType(GetEtlsEtlConfigurationSinkArrayOutput{})
 }

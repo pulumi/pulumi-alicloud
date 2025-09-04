@@ -176,6 +176,49 @@ class Environment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.240.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0])
+        defaultgateway = alicloud.apig.Gateway("defaultgateway",
+            network_access_config={
+                "type": "Intranet",
+            },
+            vswitch={
+                "vswitch_id": default_get_switches.ids[0],
+            },
+            zone_config={
+                "select_option": "Auto",
+            },
+            vpc={
+                "vpc_id": default_get_networks.ids[0],
+            },
+            payment_type="PayAsYouGo",
+            gateway_name=std.format(input="%s2",
+                args=[name]).result,
+            spec="apigw.small.x1",
+            log_config={
+                "sls": {},
+            })
+        default_environment = alicloud.apig.Environment("default",
+            description=name,
+            environment_name=name,
+            gateway_id=defaultgateway.id,
+            resource_group_id=default.ids[1])
+        ```
+
         ## Import
 
         APIG Environment can be imported using the id, e.g.
@@ -203,6 +246,49 @@ class Environment(pulumi.CustomResource):
         For information about APIG Environment and how to use it, see [What is Environment](https://next.api.aliyun.com/api/APIG/2024-03-27/CreateEnvironment).
 
         > **NOTE:** Available since v1.240.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0])
+        defaultgateway = alicloud.apig.Gateway("defaultgateway",
+            network_access_config={
+                "type": "Intranet",
+            },
+            vswitch={
+                "vswitch_id": default_get_switches.ids[0],
+            },
+            zone_config={
+                "select_option": "Auto",
+            },
+            vpc={
+                "vpc_id": default_get_networks.ids[0],
+            },
+            payment_type="PayAsYouGo",
+            gateway_name=std.format(input="%s2",
+                args=[name]).result,
+            spec="apigw.small.x1",
+            log_config={
+                "sls": {},
+            })
+        default_environment = alicloud.apig.Environment("default",
+            description=name,
+            environment_name=name,
+            gateway_id=defaultgateway.id,
+            resource_group_id=default.ids[1])
+        ```
 
         ## Import
 

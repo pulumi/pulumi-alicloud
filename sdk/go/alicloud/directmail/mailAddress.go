@@ -18,6 +18,67 @@ import (
 //
 // > **NOTE:** Available since v1.134.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/directmail"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			accountName := "tfexample"
+//			if param := cfg.Get("accountName"); param != "" {
+//				accountName = param
+//			}
+//			domainName := "alicloud-provider.online"
+//			if param := cfg.Get("domainName"); param != "" {
+//				domainName = param
+//			}
+//			example, err := directmail.NewDomain(ctx, "example", &directmail.DomainArgs{
+//				DomainName: pulumi.String(domainName),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s@%s",
+//				Args: []interface{}{
+//					accountName,
+//					example.DomainName,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = directmail.NewMailAddress(ctx, "example", &directmail.MailAddressArgs{
+//				AccountName: pulumi.String(invokeFormat.Result),
+//				Sendtype:    pulumi.String("batch"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// > **Note:**
+// A maximum of 10 mailing addresses can be added.
+// Individual users: Up to 10 mailing addresses can be deleted within a month.
+// Enterprise users: Up to 10 mailing addresses can be deleted within a month.
+//
 // ## Import
 //
 // Direct Mail Mail Address can be imported using the id, e.g.

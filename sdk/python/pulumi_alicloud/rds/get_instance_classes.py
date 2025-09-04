@@ -208,7 +208,7 @@ def get_instance_classes(category: Optional[_builtins.str] = None,
     """
     This data source provides the RDS instance classes resource available info of Alibaba Cloud.
 
-    > **NOTE:** Available in v1.46.0+
+    > **NOTE:** Available since v1.46.0
 
     ## Example Usage
 
@@ -242,12 +242,13 @@ def get_instance_classes(category: Optional[_builtins.str] = None,
     :param _builtins.str db_instance_id: The ID of the instance.
            
            > **NOTE**: The field `db_instance_id` will be ignored when `commodity_code` is not a read-only type.
-    :param _builtins.str db_instance_storage_type: The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3".
+    :param _builtins.str db_instance_storage_type: The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3", "general_essd".
     :param _builtins.str engine: Database type. Valid values:"MySQL", "SQLServer", "PostgreSQL", "MariaDB". If not set, it will match all of engines.
     :param _builtins.str engine_version: Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
     :param _builtins.str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid` and `Serverless`. Default to `PostPaid`.
     :param _builtins.bool multi_zone: Whether to show multi available zone. Default false to not show multi availability zone.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi up`).
+    :param _builtins.str sorted_by: Sort the results by specified fields. The supported value is' Price '. Modifying this field will trigger resource reconstruction.
     :param _builtins.str storage_type: It has been deprecated from version 1.134.0+ and using `db_instance_storage_type` instead.
     :param _builtins.str zone_id: The Zone to launch the DB instance.
     """
@@ -302,7 +303,7 @@ def get_instance_classes_output(category: Optional[pulumi.Input[Optional[_builti
     """
     This data source provides the RDS instance classes resource available info of Alibaba Cloud.
 
-    > **NOTE:** Available in v1.46.0+
+    > **NOTE:** Available since v1.46.0
 
     ## Example Usage
 
@@ -336,12 +337,13 @@ def get_instance_classes_output(category: Optional[pulumi.Input[Optional[_builti
     :param _builtins.str db_instance_id: The ID of the instance.
            
            > **NOTE**: The field `db_instance_id` will be ignored when `commodity_code` is not a read-only type.
-    :param _builtins.str db_instance_storage_type: The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3".
+    :param _builtins.str db_instance_storage_type: The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3", "general_essd".
     :param _builtins.str engine: Database type. Valid values:"MySQL", "SQLServer", "PostgreSQL", "MariaDB". If not set, it will match all of engines.
     :param _builtins.str engine_version: Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
     :param _builtins.str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid` and `Serverless`. Default to `PostPaid`.
     :param _builtins.bool multi_zone: Whether to show multi available zone. Default false to not show multi availability zone.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi up`).
+    :param _builtins.str sorted_by: Sort the results by specified fields. The supported value is' Price '. Modifying this field will trigger resource reconstruction.
     :param _builtins.str storage_type: It has been deprecated from version 1.134.0+ and using `db_instance_storage_type` instead.
     :param _builtins.str zone_id: The Zone to launch the DB instance.
     """

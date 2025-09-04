@@ -20,7 +20,7 @@ namespace Pulumi.AliCloud.MaxCompute
         /// 
         /// &gt; **NOTE:** Available in v1.117.0+
         /// 
-        /// &gt; **NOTE:** This datasource has been deprecated since provider version v1.228.0.
+        /// &gt; **NOTE:** This datasource has been deprecated since provider version v1.228.0. Please use the resource `alicloud.maxcompute.Quota` instead.
         /// 
         /// ## Example Usage
         /// 
@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.MaxCompute
         /// 
         /// &gt; **NOTE:** Available in v1.117.0+
         /// 
-        /// &gt; **NOTE:** This datasource has been deprecated since provider version v1.228.0.
+        /// &gt; **NOTE:** This datasource has been deprecated since provider version v1.228.0. Please use the resource `alicloud.maxcompute.Quota` instead.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.MaxCompute
         /// 
         /// &gt; **NOTE:** Available in v1.117.0+
         /// 
-        /// &gt; **NOTE:** This datasource has been deprecated since provider version v1.228.0.
+        /// &gt; **NOTE:** This datasource has been deprecated since provider version v1.228.0. Please use the resource `alicloud.maxcompute.Quota` instead.
         /// 
         /// ## Example Usage
         /// 

@@ -458,27 +458,27 @@ class AutoGroupingRule(pulumi.CustomResource):
         default = alicloud.resourcemanager.AutoGroupingRule("default",
             rule_contents=[{
                 "target_resource_group_condition": \"\"\"    {
-                "children": [
+                \\"children\\": [
               {
-                "desired": "rg-aek*****sbvy",
-                "featurePath": "$.resourceGroupId",
-                "featureSource": "RESOURCE",
-                "operator": "StringEquals"
+                \\"desired\\": \\"rg-aek*****sbvy\\",
+                \\"featurePath\\": \\"$.resourceGroupId\\",
+                \\"featureSource\\": \\"RESOURCE\\",
+                \\"operator\\": \\"StringEquals\\"
               }
                 ],
-                "operator": "and"
+                \\"operator\\": \\"and\\"
             }
         \"\"\",
                 "auto_grouping_scope_condition": \"\"\"    {
-                "children": [
+                \\"children\\": [
               {
-                "desired": "name_a",
-                "featurePath": "$.resourceName",
-                "featureSource": "RESOURCE",
-                "operator": "StringEqualsAny"
+                \\"desired\\": \\"name_a\\",
+                \\"featurePath\\": \\"$.resourceName\\",
+                \\"featureSource\\": \\"RESOURCE\\",
+                \\"operator\\": \\"StringEqualsAny\\"
               }
                 ],
-                "operator": "and"
+                \\"operator\\": \\"and\\"
             }
         \"\"\",
             }],
@@ -544,27 +544,27 @@ class AutoGroupingRule(pulumi.CustomResource):
         default = alicloud.resourcemanager.AutoGroupingRule("default",
             rule_contents=[{
                 "target_resource_group_condition": \"\"\"    {
-                "children": [
+                \\"children\\": [
               {
-                "desired": "rg-aek*****sbvy",
-                "featurePath": "$.resourceGroupId",
-                "featureSource": "RESOURCE",
-                "operator": "StringEquals"
+                \\"desired\\": \\"rg-aek*****sbvy\\",
+                \\"featurePath\\": \\"$.resourceGroupId\\",
+                \\"featureSource\\": \\"RESOURCE\\",
+                \\"operator\\": \\"StringEquals\\"
               }
                 ],
-                "operator": "and"
+                \\"operator\\": \\"and\\"
             }
         \"\"\",
                 "auto_grouping_scope_condition": \"\"\"    {
-                "children": [
+                \\"children\\": [
               {
-                "desired": "name_a",
-                "featurePath": "$.resourceName",
-                "featureSource": "RESOURCE",
-                "operator": "StringEqualsAny"
+                \\"desired\\": \\"name_a\\",
+                \\"featurePath\\": \\"$.resourceName\\",
+                \\"featureSource\\": \\"RESOURCE\\",
+                \\"operator\\": \\"StringEqualsAny\\"
               }
                 ],
-                "operator": "and"
+                \\"operator\\": \\"and\\"
             }
         \"\"\",
             }],

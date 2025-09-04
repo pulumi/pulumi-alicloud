@@ -12,7 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Threat Detection Oss Scan Config resource. Oss detection configuration.
+// Provides a Threat Detection Oss Scan Config resource.
+//
+// Oss detection configuration.
 //
 // For information about Threat Detection Oss Scan Config and how to use it, see [What is Oss Scan Config](https://www.alibabacloud.com/help/zh/security-center/developer-reference/api-sas-2018-12-03-createossscanconfig/).
 //
@@ -127,23 +129,31 @@ import (
 type OssScanConfig struct {
 	pulumi.CustomResourceState
 
-	// Match all prefixes.
+	// Indicates whether the prefixes of all objects are matched.
 	AllKeyPrefix pulumi.BoolOutput `pulumi:"allKeyPrefix"`
-	// Bucket List.
+	// The names of the buckets.
 	BucketNameLists pulumi.StringArrayOutput `pulumi:"bucketNameLists"`
-	// Enable configuration.
+	// The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+	DecompressMaxFileCount pulumi.IntPtrOutput `pulumi:"decompressMaxFileCount"`
+	// The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+	DecompressMaxLayer pulumi.IntPtrOutput `pulumi:"decompressMaxLayer"`
+	// The decryption methods.
+	DecryptionLists pulumi.StringArrayOutput `pulumi:"decryptionLists"`
+	// Indicates whether the check policy is enabled. Valid values:
 	Enable pulumi.IntOutput `pulumi:"enable"`
-	// End time, hours, minutes and seconds.
+	// The end time of the check. The time is in the HH:mm:ss format.
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
-	// File prefix list.
+	// The prefixes of the objects.
 	KeyPrefixLists pulumi.StringArrayOutput `pulumi:"keyPrefixLists"`
-	// File Suffix List.
+	// The suffixes of the objects that are checked.
 	KeySuffixLists pulumi.StringArrayOutput `pulumi:"keySuffixLists"`
-	// Configuration Name.
+	// The timestamp when the object was last modified. The time must be later than the timestamp that you specify. Unit: milliseconds.
+	LastModifiedStartTime pulumi.IntPtrOutput `pulumi:"lastModifiedStartTime"`
+	// The policy name.
 	OssScanConfigName pulumi.StringPtrOutput `pulumi:"ossScanConfigName"`
-	// Scan cycle.
+	// The days when the check is performed. The value indicates the days of the week.
 	ScanDayLists pulumi.IntArrayOutput `pulumi:"scanDayLists"`
-	// Start time, hours, minutes and seconds.
+	// The start time of the check. The time is in the HH:mm:ss format.
 	StartTime pulumi.StringOutput `pulumi:"startTime"`
 }
 
@@ -195,44 +205,60 @@ func GetOssScanConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OssScanConfig resources.
 type ossScanConfigState struct {
-	// Match all prefixes.
+	// Indicates whether the prefixes of all objects are matched.
 	AllKeyPrefix *bool `pulumi:"allKeyPrefix"`
-	// Bucket List.
+	// The names of the buckets.
 	BucketNameLists []string `pulumi:"bucketNameLists"`
-	// Enable configuration.
+	// The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+	DecompressMaxFileCount *int `pulumi:"decompressMaxFileCount"`
+	// The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+	DecompressMaxLayer *int `pulumi:"decompressMaxLayer"`
+	// The decryption methods.
+	DecryptionLists []string `pulumi:"decryptionLists"`
+	// Indicates whether the check policy is enabled. Valid values:
 	Enable *int `pulumi:"enable"`
-	// End time, hours, minutes and seconds.
+	// The end time of the check. The time is in the HH:mm:ss format.
 	EndTime *string `pulumi:"endTime"`
-	// File prefix list.
+	// The prefixes of the objects.
 	KeyPrefixLists []string `pulumi:"keyPrefixLists"`
-	// File Suffix List.
+	// The suffixes of the objects that are checked.
 	KeySuffixLists []string `pulumi:"keySuffixLists"`
-	// Configuration Name.
+	// The timestamp when the object was last modified. The time must be later than the timestamp that you specify. Unit: milliseconds.
+	LastModifiedStartTime *int `pulumi:"lastModifiedStartTime"`
+	// The policy name.
 	OssScanConfigName *string `pulumi:"ossScanConfigName"`
-	// Scan cycle.
+	// The days when the check is performed. The value indicates the days of the week.
 	ScanDayLists []int `pulumi:"scanDayLists"`
-	// Start time, hours, minutes and seconds.
+	// The start time of the check. The time is in the HH:mm:ss format.
 	StartTime *string `pulumi:"startTime"`
 }
 
 type OssScanConfigState struct {
-	// Match all prefixes.
+	// Indicates whether the prefixes of all objects are matched.
 	AllKeyPrefix pulumi.BoolPtrInput
-	// Bucket List.
+	// The names of the buckets.
 	BucketNameLists pulumi.StringArrayInput
-	// Enable configuration.
+	// The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+	DecompressMaxFileCount pulumi.IntPtrInput
+	// The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+	DecompressMaxLayer pulumi.IntPtrInput
+	// The decryption methods.
+	DecryptionLists pulumi.StringArrayInput
+	// Indicates whether the check policy is enabled. Valid values:
 	Enable pulumi.IntPtrInput
-	// End time, hours, minutes and seconds.
+	// The end time of the check. The time is in the HH:mm:ss format.
 	EndTime pulumi.StringPtrInput
-	// File prefix list.
+	// The prefixes of the objects.
 	KeyPrefixLists pulumi.StringArrayInput
-	// File Suffix List.
+	// The suffixes of the objects that are checked.
 	KeySuffixLists pulumi.StringArrayInput
-	// Configuration Name.
+	// The timestamp when the object was last modified. The time must be later than the timestamp that you specify. Unit: milliseconds.
+	LastModifiedStartTime pulumi.IntPtrInput
+	// The policy name.
 	OssScanConfigName pulumi.StringPtrInput
-	// Scan cycle.
+	// The days when the check is performed. The value indicates the days of the week.
 	ScanDayLists pulumi.IntArrayInput
-	// Start time, hours, minutes and seconds.
+	// The start time of the check. The time is in the HH:mm:ss format.
 	StartTime pulumi.StringPtrInput
 }
 
@@ -241,45 +267,61 @@ func (OssScanConfigState) ElementType() reflect.Type {
 }
 
 type ossScanConfigArgs struct {
-	// Match all prefixes.
+	// Indicates whether the prefixes of all objects are matched.
 	AllKeyPrefix *bool `pulumi:"allKeyPrefix"`
-	// Bucket List.
+	// The names of the buckets.
 	BucketNameLists []string `pulumi:"bucketNameLists"`
-	// Enable configuration.
+	// The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+	DecompressMaxFileCount *int `pulumi:"decompressMaxFileCount"`
+	// The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+	DecompressMaxLayer *int `pulumi:"decompressMaxLayer"`
+	// The decryption methods.
+	DecryptionLists []string `pulumi:"decryptionLists"`
+	// Indicates whether the check policy is enabled. Valid values:
 	Enable int `pulumi:"enable"`
-	// End time, hours, minutes and seconds.
+	// The end time of the check. The time is in the HH:mm:ss format.
 	EndTime string `pulumi:"endTime"`
-	// File prefix list.
+	// The prefixes of the objects.
 	KeyPrefixLists []string `pulumi:"keyPrefixLists"`
-	// File Suffix List.
+	// The suffixes of the objects that are checked.
 	KeySuffixLists []string `pulumi:"keySuffixLists"`
-	// Configuration Name.
+	// The timestamp when the object was last modified. The time must be later than the timestamp that you specify. Unit: milliseconds.
+	LastModifiedStartTime *int `pulumi:"lastModifiedStartTime"`
+	// The policy name.
 	OssScanConfigName *string `pulumi:"ossScanConfigName"`
-	// Scan cycle.
+	// The days when the check is performed. The value indicates the days of the week.
 	ScanDayLists []int `pulumi:"scanDayLists"`
-	// Start time, hours, minutes and seconds.
+	// The start time of the check. The time is in the HH:mm:ss format.
 	StartTime string `pulumi:"startTime"`
 }
 
 // The set of arguments for constructing a OssScanConfig resource.
 type OssScanConfigArgs struct {
-	// Match all prefixes.
+	// Indicates whether the prefixes of all objects are matched.
 	AllKeyPrefix pulumi.BoolPtrInput
-	// Bucket List.
+	// The names of the buckets.
 	BucketNameLists pulumi.StringArrayInput
-	// Enable configuration.
+	// The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+	DecompressMaxFileCount pulumi.IntPtrInput
+	// The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+	DecompressMaxLayer pulumi.IntPtrInput
+	// The decryption methods.
+	DecryptionLists pulumi.StringArrayInput
+	// Indicates whether the check policy is enabled. Valid values:
 	Enable pulumi.IntInput
-	// End time, hours, minutes and seconds.
+	// The end time of the check. The time is in the HH:mm:ss format.
 	EndTime pulumi.StringInput
-	// File prefix list.
+	// The prefixes of the objects.
 	KeyPrefixLists pulumi.StringArrayInput
-	// File Suffix List.
+	// The suffixes of the objects that are checked.
 	KeySuffixLists pulumi.StringArrayInput
-	// Configuration Name.
+	// The timestamp when the object was last modified. The time must be later than the timestamp that you specify. Unit: milliseconds.
+	LastModifiedStartTime pulumi.IntPtrInput
+	// The policy name.
 	OssScanConfigName pulumi.StringPtrInput
-	// Scan cycle.
+	// The days when the check is performed. The value indicates the days of the week.
 	ScanDayLists pulumi.IntArrayInput
-	// Start time, hours, minutes and seconds.
+	// The start time of the check. The time is in the HH:mm:ss format.
 	StartTime pulumi.StringInput
 }
 
@@ -370,47 +412,67 @@ func (o OssScanConfigOutput) ToOssScanConfigOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Match all prefixes.
+// Indicates whether the prefixes of all objects are matched.
 func (o OssScanConfigOutput) AllKeyPrefix() pulumi.BoolOutput {
 	return o.ApplyT(func(v *OssScanConfig) pulumi.BoolOutput { return v.AllKeyPrefix }).(pulumi.BoolOutput)
 }
 
-// Bucket List.
+// The names of the buckets.
 func (o OssScanConfigOutput) BucketNameLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OssScanConfig) pulumi.StringArrayOutput { return v.BucketNameLists }).(pulumi.StringArrayOutput)
 }
 
-// Enable configuration.
+// The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+func (o OssScanConfigOutput) DecompressMaxFileCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OssScanConfig) pulumi.IntPtrOutput { return v.DecompressMaxFileCount }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+func (o OssScanConfigOutput) DecompressMaxLayer() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OssScanConfig) pulumi.IntPtrOutput { return v.DecompressMaxLayer }).(pulumi.IntPtrOutput)
+}
+
+// The decryption methods.
+func (o OssScanConfigOutput) DecryptionLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OssScanConfig) pulumi.StringArrayOutput { return v.DecryptionLists }).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether the check policy is enabled. Valid values:
 func (o OssScanConfigOutput) Enable() pulumi.IntOutput {
 	return o.ApplyT(func(v *OssScanConfig) pulumi.IntOutput { return v.Enable }).(pulumi.IntOutput)
 }
 
-// End time, hours, minutes and seconds.
+// The end time of the check. The time is in the HH:mm:ss format.
 func (o OssScanConfigOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *OssScanConfig) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
 }
 
-// File prefix list.
+// The prefixes of the objects.
 func (o OssScanConfigOutput) KeyPrefixLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OssScanConfig) pulumi.StringArrayOutput { return v.KeyPrefixLists }).(pulumi.StringArrayOutput)
 }
 
-// File Suffix List.
+// The suffixes of the objects that are checked.
 func (o OssScanConfigOutput) KeySuffixLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OssScanConfig) pulumi.StringArrayOutput { return v.KeySuffixLists }).(pulumi.StringArrayOutput)
 }
 
-// Configuration Name.
+// The timestamp when the object was last modified. The time must be later than the timestamp that you specify. Unit: milliseconds.
+func (o OssScanConfigOutput) LastModifiedStartTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OssScanConfig) pulumi.IntPtrOutput { return v.LastModifiedStartTime }).(pulumi.IntPtrOutput)
+}
+
+// The policy name.
 func (o OssScanConfigOutput) OssScanConfigName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OssScanConfig) pulumi.StringPtrOutput { return v.OssScanConfigName }).(pulumi.StringPtrOutput)
 }
 
-// Scan cycle.
+// The days when the check is performed. The value indicates the days of the week.
 func (o OssScanConfigOutput) ScanDayLists() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *OssScanConfig) pulumi.IntArrayOutput { return v.ScanDayLists }).(pulumi.IntArrayOutput)
 }
 
-// Start time, hours, minutes and seconds.
+// The start time of the check. The time is in the HH:mm:ss format.
 func (o OssScanConfigOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *OssScanConfig) pulumi.StringOutput { return v.StartTime }).(pulumi.StringOutput)
 }

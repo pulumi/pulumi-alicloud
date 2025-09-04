@@ -16,6 +16,143 @@ namespace Pulumi.AliCloud.Edas
     /// 
     /// &gt; **NOTE:** Available since v1.194.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         NameRegex = "^ubuntu_18.*64",
+    ///         MostRecent = true,
+    ///         Owners = "system",
+    ///     });
+    /// 
+    ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         CpuCoreCount = 4,
+    ///         MemorySize = 8,
+    ///         KubernetesNodeRole = "Worker",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///     });
+    /// 
+    ///     var defaultManagedKubernetes = new AliCloud.CS.ManagedKubernetes("default", new()
+    ///     {
+    ///         NamePrefix = name,
+    ///         ClusterSpec = "ack.pro.small",
+    ///         WorkerVswitchIds = new[]
+    ///         {
+    ///             defaultSwitch.Id,
+    ///         },
+    ///         NewNatGateway = true,
+    ///         PodCidr = Std.Cidrsubnet.Invoke(new()
+    ///         {
+    ///             Input = "10.0.0.0/8",
+    ///             Newbits = 8,
+    ///             Netnum = 36,
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         ServiceCidr = Std.Cidrsubnet.Invoke(new()
+    ///         {
+    ///             Input = "172.16.0.0/16",
+    ///             Newbits = 4,
+    ///             Netnum = 7,
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         SlbInternetEnabled = true,
+    ///     });
+    /// 
+    ///     var defaultNodePool = new AliCloud.CS.NodePool("default", new()
+    ///     {
+    ///         Name = name,
+    ///         ClusterId = defaultManagedKubernetes.Id,
+    ///         VswitchIds = new[]
+    ///         {
+    ///             defaultSwitch.Id,
+    ///         },
+    ///         InstanceTypes = new[]
+    ///         {
+    ///             defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         },
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         SystemDiskSize = 40,
+    ///         DesiredSize = "2",
+    ///     });
+    /// 
+    ///     var defaultK8sCluster = new AliCloud.Edas.K8sCluster("default", new()
+    ///     {
+    ///         CsClusterId = defaultNodePool.ClusterId,
+    ///     });
+    /// 
+    ///     var defaultK8sApplication = new AliCloud.Edas.K8sApplication("default", new()
+    ///     {
+    ///         ApplicationName = name,
+    ///         ClusterId = defaultK8sCluster.Id,
+    ///         PackageType = "FatJar",
+    ///         PackageUrl = "http://edas-bj.oss-cn-beijing.aliyuncs.com/prod/demo/SPRING_CLOUD_PROVIDER.jar",
+    ///         Jdk = "Open JDK 8",
+    ///         Replicas = 2,
+    ///         Readiness = "{\"failureThreshold\": 3,\"initialDelaySeconds\": 5,\"successThreshold\": 1,\"timeoutSeconds\": 1,\"tcpSocket\":{\"port\":18081}}",
+    ///         Liveness = "{\"failureThreshold\": 3,\"initialDelaySeconds\": 5,\"successThreshold\": 1,\"timeoutSeconds\": 1,\"tcpSocket\":{\"port\":18081}}",
+    ///         ApplicationDescriotion = name,
+    ///     });
+    /// 
+    ///     var defaultK8sSlbAttachment = new AliCloud.Edas.K8sSlbAttachment("default", new()
+    ///     {
+    ///         AppId = defaultK8sApplication.Id,
+    ///         SlbConfigs = new[]
+    ///         {
+    ///             new AliCloud.Edas.Inputs.K8sSlbAttachmentSlbConfigArgs
+    ///             {
+    ///                 Type = "internet",
+    ///                 Scheduler = "rr",
+    ///                 PortMappings = new[]
+    ///                 {
+    ///                     new AliCloud.Edas.Inputs.K8sSlbAttachmentSlbConfigPortMappingArgs
+    ///                     {
+    ///                         LoadbalancerProtocol = "TCP",
+    ///                         ServicePort = new AliCloud.Edas.Inputs.K8sSlbAttachmentSlbConfigPortMappingServicePortArgs
+    ///                         {
+    ///                             Port = 80,
+    ///                             Protocol = "TCP",
+    ///                             TargetPort = 8080,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Slb information of EDAS k8s application can be imported using the ID of an EDAS k8s application. e.g.

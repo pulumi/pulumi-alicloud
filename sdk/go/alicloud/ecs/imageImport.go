@@ -64,7 +64,7 @@ import (
 //			defaultBucketObject, err := oss.NewBucketObject(ctx, "default", &oss.BucketObjectArgs{
 //				Bucket:  defaultBucket.ID(),
 //				Key:     pulumi.String("fc/hello.zip"),
-//				Content: pulumi.String("    # -*- coding: utf-8 -*-\n    def handler(event, context):\n    print \"hello world\"\n    return 'hello world'\n"),
+//				Content: pulumi.String("    # -*- coding: utf-8 -*-\n    def handler(event, context):\n    print \\\"hello world\\\"\n    return 'hello world'\n"),
 //			})
 //			if err != nil {
 //				return err

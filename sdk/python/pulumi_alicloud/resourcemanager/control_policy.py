@@ -192,17 +192,17 @@ class ControlPolicy(pulumi.CustomResource):
             description=name,
             effect_scope="RAM",
             policy_document=\"\"\"  {
-            "Version": "1",
-            "Statement": [
+            \\"Version\\": \\"1\\",
+            \\"Statement\\": [
               {
-                "Effect": "Deny",
-                "Action": [
-                  "ram:UpdateRole",
-                  "ram:DeleteRole",
-                  "ram:AttachPolicyToRole",
-                  "ram:DetachPolicyFromRole"
+                \\"Effect\\": \\"Deny\\",
+                \\"Action\\": [
+                  \\"ram:UpdateRole\\",
+                  \\"ram:DeleteRole\\",
+                  \\"ram:AttachPolicyToRole\\",
+                  \\"ram:DetachPolicyFromRole\\"
                 ],
-                "Resource": "acs:ram:*:*:role/ResourceDirectoryAccountAccessRole"
+                \\"Resource\\": \\"acs:ram:*:*:role/ResourceDirectoryAccountAccessRole\\"
               }
             ]
           }
@@ -254,17 +254,17 @@ class ControlPolicy(pulumi.CustomResource):
             description=name,
             effect_scope="RAM",
             policy_document=\"\"\"  {
-            "Version": "1",
-            "Statement": [
+            \\"Version\\": \\"1\\",
+            \\"Statement\\": [
               {
-                "Effect": "Deny",
-                "Action": [
-                  "ram:UpdateRole",
-                  "ram:DeleteRole",
-                  "ram:AttachPolicyToRole",
-                  "ram:DetachPolicyFromRole"
+                \\"Effect\\": \\"Deny\\",
+                \\"Action\\": [
+                  \\"ram:UpdateRole\\",
+                  \\"ram:DeleteRole\\",
+                  \\"ram:AttachPolicyToRole\\",
+                  \\"ram:DetachPolicyFromRole\\"
                 ],
-                "Resource": "acs:ram:*:*:role/ResourceDirectoryAccountAccessRole"
+                \\"Resource\\": \\"acs:ram:*:*:role/ResourceDirectoryAccountAccessRole\\"
               }
             ]
           }

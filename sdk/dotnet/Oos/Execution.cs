@@ -34,25 +34,25 @@ namespace Pulumi.AliCloud.Oos
     ///     var defaultTemplate = new AliCloud.Oos.Template("default", new()
     ///     {
     ///         Content = @"  {
-    ///     ""FormatVersion"": ""OOS-2019-06-01"",
-    ///     ""Description"": ""Update Describe instances of given status"",
-    ///     ""Parameters"":{
-    ///       ""Status"":{
-    ///         ""Type"": ""String"",
-    ///         ""Description"": ""(Required) The status of the Ecs instance.""
+    ///     \""FormatVersion\"": \""OOS-2019-06-01\"",
+    ///     \""Description\"": \""Update Describe instances of given status\"",
+    ///     \""Parameters\"":{
+    ///       \""Status\"":{
+    ///         \""Type\"": \""String\"",
+    ///         \""Description\"": \""(Required) The status of the Ecs instance.\""
     ///       }
     ///     },
-    ///     ""Tasks"": [
+    ///     \""Tasks\"": [
     ///       {
-    ///         ""Properties"" :{
-    ///           ""Parameters"":{
-    ///             ""Status"": ""{{ Status }}""
+    ///         \""Properties\"" :{
+    ///           \""Parameters\"":{
+    ///             \""Status\"": \""{{ Status }}\""
     ///           },
-    ///           ""API"": ""DescribeInstances"",
-    ///           ""Service"": ""Ecs""
+    ///           \""API\"": \""DescribeInstances\"",
+    ///           \""Service\"": \""Ecs\""
     ///         },
-    ///         ""Name"": ""foo"",
-    ///         ""Action"": ""ACS::ExecuteApi""
+    ///         \""Name\"": \""foo\"",
+    ///         \""Action\"": \""ACS::ExecuteApi\""
     ///       }]
     ///   }
     /// ",
@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.Oos
     ///     {
     ///         TemplateName = defaultTemplate.TemplateName,
     ///         Description = "From TF Test",
-    ///         Parameters = @"				{""Status"":""Running""}
+    ///         Parameters = @"\t\t\t\t{\""Status\"":\""Running\""}
     /// ",
     ///     });
     /// 

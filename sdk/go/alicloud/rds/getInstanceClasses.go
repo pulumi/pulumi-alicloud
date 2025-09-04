@@ -13,7 +13,7 @@ import (
 
 // This data source provides the RDS instance classes resource available info of Alibaba Cloud.
 //
-// > **NOTE:** Available in v1.46.0+
+// > **NOTE:** Available since v1.46.0
 //
 // ## Example Usage
 //
@@ -78,7 +78,7 @@ type GetInstanceClassesArgs struct {
 	//
 	// > **NOTE**: The field `dbInstanceId` will be ignored when `commodityCode` is not a read-only type.
 	DbInstanceId *string `pulumi:"dbInstanceId"`
-	// The DB instance storage space required by the user. Valid values: "cloudSsd", "localSsd", "cloudEssd", "cloudEssd2", "cloudEssd3".
+	// The DB instance storage space required by the user. Valid values: "cloudSsd", "localSsd", "cloudEssd", "cloudEssd2", "cloudEssd3", "generalEssd".
 	DbInstanceStorageType *string `pulumi:"dbInstanceStorageType"`
 	// Database type. Valid values:"MySQL", "SQLServer", "PostgreSQL", "MariaDB". If not set, it will match all of engines.
 	Engine *string `pulumi:"engine"`
@@ -90,7 +90,8 @@ type GetInstanceClassesArgs struct {
 	MultiZone *bool `pulumi:"multiZone"`
 	// File name where to save data source results (after running `pulumi up`).
 	OutputFile *string `pulumi:"outputFile"`
-	SortedBy   *string `pulumi:"sortedBy"`
+	// Sort the results by specified fields. The supported value is' Price '. Modifying this field will trigger resource reconstruction.
+	SortedBy *string `pulumi:"sortedBy"`
 	// It has been deprecated from version 1.134.0+ and using `dbInstanceStorageType` instead.
 	StorageType *string `pulumi:"storageType"`
 	// The Zone to launch the DB instance.
@@ -153,7 +154,7 @@ type GetInstanceClassesOutputArgs struct {
 	//
 	// > **NOTE**: The field `dbInstanceId` will be ignored when `commodityCode` is not a read-only type.
 	DbInstanceId pulumi.StringPtrInput `pulumi:"dbInstanceId"`
-	// The DB instance storage space required by the user. Valid values: "cloudSsd", "localSsd", "cloudEssd", "cloudEssd2", "cloudEssd3".
+	// The DB instance storage space required by the user. Valid values: "cloudSsd", "localSsd", "cloudEssd", "cloudEssd2", "cloudEssd3", "generalEssd".
 	DbInstanceStorageType pulumi.StringPtrInput `pulumi:"dbInstanceStorageType"`
 	// Database type. Valid values:"MySQL", "SQLServer", "PostgreSQL", "MariaDB". If not set, it will match all of engines.
 	Engine pulumi.StringPtrInput `pulumi:"engine"`
@@ -165,7 +166,8 @@ type GetInstanceClassesOutputArgs struct {
 	MultiZone pulumi.BoolPtrInput `pulumi:"multiZone"`
 	// File name where to save data source results (after running `pulumi up`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	SortedBy   pulumi.StringPtrInput `pulumi:"sortedBy"`
+	// Sort the results by specified fields. The supported value is' Price '. Modifying this field will trigger resource reconstruction.
+	SortedBy pulumi.StringPtrInput `pulumi:"sortedBy"`
 	// It has been deprecated from version 1.134.0+ and using `dbInstanceStorageType` instead.
 	StorageType pulumi.StringPtrInput `pulumi:"storageType"`
 	// The Zone to launch the DB instance.

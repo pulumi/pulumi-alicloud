@@ -11,6 +11,86 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.144.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultUuid = new random.index.Uuid("default", {});
+ * const defaultStorageBundle = new alicloud.cloudstoragegateway.StorageBundle("default", {storageBundleName: std.replace({
+ *     text: defaultUuid.result,
+ *     search: "-",
+ *     replace: "",
+ * }).then(invoke => std.substr({
+ *     input: `tf-example-${invoke.result}`,
+ *     offset: 0,
+ *     length: 16,
+ * })).then(invoke => invoke.result)});
+ * const defaultBucket = new alicloud.oss.Bucket("default", {bucket: std.replace({
+ *     text: defaultUuid.result,
+ *     search: "-",
+ *     replace: "",
+ * }).then(invoke => std.substr({
+ *     input: `tf-example-${invoke.result}`,
+ *     offset: 0,
+ *     length: 16,
+ * })).then(invoke => invoke.result)});
+ * const defaultBucketAcl = new alicloud.oss.BucketAcl("default", {
+ *     bucket: defaultBucket.bucket,
+ *     acl: "public-read-write",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const _default = alicloud.cloudstoragegateway.getStocks({
+ *     gatewayClass: "Standard",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/21",
+ *     zoneId: _default.then(_default => _default.stocks?.[0]?.zoneId),
+ *     vswitchName: name,
+ * });
+ * const defaultGateway = new alicloud.cloudstoragegateway.Gateway("default", {
+ *     gatewayName: name,
+ *     description: name,
+ *     gatewayClass: "Standard",
+ *     type: "Iscsi",
+ *     paymentType: "PayAsYouGo",
+ *     vswitchId: defaultSwitch.id,
+ *     releaseAfterExpiration: true,
+ *     publicNetworkBandwidth: 40,
+ *     storageBundleId: defaultStorageBundle.id,
+ *     location: "Cloud",
+ * });
+ * const defaultGatewayCacheDisk = new alicloud.cloudstoragegateway.GatewayCacheDisk("default", {
+ *     cacheDiskCategory: "cloud_efficiency",
+ *     gatewayId: defaultGateway.id,
+ *     cacheDiskSizeInGb: 50,
+ * });
+ * const defaultGatewayBlockVolume = new alicloud.cloudstoragegateway.GatewayBlockVolume("default", {
+ *     cacheMode: "Cache",
+ *     chapEnabled: false,
+ *     chunkSize: 8192,
+ *     gatewayBlockVolumeName: "example",
+ *     gatewayId: defaultGateway.id,
+ *     localPath: defaultGatewayCacheDisk.localFilePath,
+ *     ossBucketName: defaultBucket.bucket,
+ *     ossBucketSsl: true,
+ *     ossEndpoint: defaultBucket.extranetEndpoint,
+ *     protocol: "iSCSI",
+ *     size: 100,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Cloud Storage Gateway Gateway Block Volume can be imported using the id, e.g.

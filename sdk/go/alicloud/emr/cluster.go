@@ -157,19 +157,19 @@ import (
 //			defaultRole, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
 //				Name: pulumi.Any(ramName),
 //				Document: pulumi.String(`    {
-//	        "Statement": [
+//	        \"Statement\": [
 //	        {
-//	            "Action": "sts:AssumeRole",
-//	            "Effect": "Allow",
-//	            "Principal": {
-//	            "Service": [
-//	                "emr.aliyuncs.com",
-//	                "ecs.aliyuncs.com"
+//	            \"Action\": \"sts:AssumeRole\",
+//	            \"Effect\": \"Allow\",
+//	            \"Principal\": {
+//	            \"Service\": [
+//	                \"emr.aliyuncs.com\",
+//	                \"ecs.aliyuncs.com\"
 //	            ]
 //	            }
 //	        }
 //	        ],
-//	        "Version": "1"
+//	        \"Version\": \"1\"
 //	    }
 //
 // `),
@@ -431,19 +431,19 @@ import (
 //			defaultRole, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
 //				Name: pulumi.Any(ramName),
 //				Document: pulumi.String(`    {
-//	        "Statement": [
+//	        \"Statement\": [
 //	        {
-//	            "Action": "sts:AssumeRole",
-//	            "Effect": "Allow",
-//	            "Principal": {
-//	            "Service": [
-//	                "emr.aliyuncs.com",
-//	                "ecs.aliyuncs.com"
+//	            \"Action\": \"sts:AssumeRole\",
+//	            \"Effect\": \"Allow\",
+//	            \"Principal\": {
+//	            \"Service\": [
+//	                \"emr.aliyuncs.com\",
+//	                \"ecs.aliyuncs.com\"
 //	            ]
 //	            }
 //	        }
 //	        ],
-//	        "Version": "1"
+//	        \"Version\": \"1\"
 //	    }
 //
 // `),
@@ -703,19 +703,19 @@ import (
 //			defaultRole, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
 //				Name: pulumi.Any(ramName),
 //				Document: pulumi.String(`    {
-//	        "Statement": [
+//	        \"Statement\": [
 //	        {
-//	            "Action": "sts:AssumeRole",
-//	            "Effect": "Allow",
-//	            "Principal": {
-//	            "Service": [
-//	                "emr.aliyuncs.com",
-//	                "ecs.aliyuncs.com"
+//	            \"Action\": \"sts:AssumeRole\",
+//	            \"Effect\": \"Allow\",
+//	            \"Principal\": {
+//	            \"Service\": [
+//	                \"emr.aliyuncs.com\",
+//	                \"ecs.aliyuncs.com\"
 //	            ]
 //	            }
 //	        }
 //	        ],
-//	        "Version": "1"
+//	        \"Version\": \"1\"
 //	    }
 //
 // `),
@@ -967,19 +967,19 @@ import (
 //			defaultRole, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
 //				Name: pulumi.Any(ramName),
 //				Document: pulumi.String(`    {
-//	        "Statement": [
+//	        \"Statement\": [
 //	        {
-//	            "Action": "sts:AssumeRole",
-//	            "Effect": "Allow",
-//	            "Principal": {
-//	            "Service": [
-//	                "emr.aliyuncs.com",
-//	                "ecs.aliyuncs.com"
+//	            \"Action\": \"sts:AssumeRole\",
+//	            \"Effect\": \"Allow\",
+//	            \"Principal\": {
+//	            \"Service\": [
+//	                \"emr.aliyuncs.com\",
+//	                \"ecs.aliyuncs.com\"
 //	            ]
 //	            }
 //	        }
 //	        ],
-//	        "Version": "1"
+//	        \"Version\": \"1\"
 //	    }
 //
 // `),

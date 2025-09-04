@@ -52,16 +52,16 @@ import (
 //						PermissionPolicyType: pulumi.String("Inline"),
 //						PermissionPolicyName: pulumi.String(name),
 //						PermissionPolicyDocument: pulumi.String(`    {
-//	        "Statement":[
+//	        \"Statement\":[
 //	      {
-//	        "Action":"ecs:Get*",
-//	        "Effect":"Allow",
-//	        "Resource":[
-//	            "*"
+//	        \"Action\":\"ecs:Get*\",
+//	        \"Effect\":\"Allow\",
+//	        \"Resource\":[
+//	            \"*\"
 //	        ]
 //	      }
 //	      ],
-//	        "Version": "1"
+//	        \"Version\": \"1\"
 //	    }
 //
 // `),

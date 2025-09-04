@@ -22,6 +22,147 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.159.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+ * import com.pulumi.alicloud.rds.RdsFunctions;
+ * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.rds.Instance;
+ * import com.pulumi.alicloud.rds.InstanceArgs;
+ * import com.pulumi.alicloud.rds.RdsAccount;
+ * import com.pulumi.alicloud.rds.RdsAccountArgs;
+ * import com.pulumi.alicloud.rds.Database;
+ * import com.pulumi.alicloud.rds.DatabaseArgs;
+ * import com.pulumi.alicloud.rds.AccountPrivilege;
+ * import com.pulumi.alicloud.rds.AccountPrivilegeArgs;
+ * import com.pulumi.alicloud.sddp.DataLimit;
+ * import com.pulumi.alicloud.sddp.DataLimitArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.JoinArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf_example");
+ *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
+ *         final var defaultGetZones = RdsFunctions.getZones(GetZonesArgs.builder()
+ *             .engine("MySQL")
+ *             .engineVersion("8.0")
+ *             .instanceChargeType("PostPaid")
+ *             .category("Basic")
+ *             .dbInstanceStorageType("cloud_essd")
+ *             .build());
+ * 
+ *         final var defaultGetInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+ *             .zoneId(defaultGetZones.zones()[0].id())
+ *             .engine("MySQL")
+ *             .engineVersion("8.0")
+ *             .category("Basic")
+ *             .dbInstanceStorageType("cloud_essd")
+ *             .instanceChargeType("PostPaid")
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("10.4.0.0/16")
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vswitchName(name)
+ *             .cidrBlock("10.4.0.0/24")
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultGetZones.zones()[0].id())
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+ *             .name(name)
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+ *             .engine("MySQL")
+ *             .engineVersion("8.0")
+ *             .instanceType(defaultGetInstanceClasses.instanceClasses()[0].instanceClass())
+ *             .instanceStorage(defaultGetInstanceClasses.instanceClasses()[0].storageRange().min())
+ *             .instanceChargeType("Postpaid")
+ *             .instanceName(name)
+ *             .vswitchId(defaultSwitch.id())
+ *             .monitoringPeriod(60)
+ *             .dbInstanceStorageType("cloud_essd")
+ *             .securityGroupIds(defaultSecurityGroup.id())
+ *             .build());
+ * 
+ *         var defaultRdsAccount = new RdsAccount("defaultRdsAccount", RdsAccountArgs.builder()
+ *             .dbInstanceId(defaultInstance.id())
+ *             .accountName(name)
+ *             .accountPassword("Example1234")
+ *             .build());
+ * 
+ *         var defaultDatabase = new Database("defaultDatabase", DatabaseArgs.builder()
+ *             .instanceId(defaultInstance.id())
+ *             .name(name)
+ *             .build());
+ * 
+ *         var defaultAccountPrivilege = new AccountPrivilege("defaultAccountPrivilege", AccountPrivilegeArgs.builder()
+ *             .instanceId(defaultInstance.id())
+ *             .accountName(defaultRdsAccount.accountName())
+ *             .privilege("ReadWrite")
+ *             .dbNames(defaultDatabase.name())
+ *             .build());
+ * 
+ *         var defaultDataLimit = new DataLimit("defaultDataLimit", DataLimitArgs.builder()
+ *             .auditStatus(0)
+ *             .engineType("MySQL")
+ *             .parentId(StdFunctions.join(JoinArgs.builder()
+ *                 .separator(".")
+ *                 .input(                
+ *                     defaultAccountPrivilege.instanceId(),
+ *                     defaultDatabase.name())
+ *                 .build()).applyValue(_invoke -> _invoke.result()))
+ *             .resourceType("RDS")
+ *             .userName(defaultDatabase.name())
+ *             .password(defaultRdsAccount.accountPassword())
+ *             .port(3306)
+ *             .serviceRegionId(default_.regions()[0].id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Data Security Center Data Limit can be imported using the id, e.g.

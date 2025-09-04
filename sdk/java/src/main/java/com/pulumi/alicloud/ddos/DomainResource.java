@@ -76,9 +76,9 @@ import javax.annotation.Nullable;
  *             .realServers("177.167.32.11")
  *             .httpsExt("""
  *     {
- *     "Http2": 1,
- *     "Http2https": 0,
- *     "Https2http": 0
+ *     \"Http2\": 1,
+ *     \"Http2https\": 0,
+ *     \"Https2http\": 0
  *   }
  *             """)
  *             .proxyTypes(DomainResourceProxyTypeArgs.builder()

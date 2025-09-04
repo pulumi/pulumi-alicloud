@@ -514,19 +514,19 @@ class Role(pulumi.CustomResource):
         default_role = alicloud.ram.Role("default",
             role_name=f"terraform-example-{default['result']}",
             assume_role_policy_document=\"\"\"  {
-            "Statement": [
+            \\"Statement\\": [
               {
-                "Action": "sts:AssumeRole",
-                "Effect": "Allow",
-                "Principal": {
-                  "Service": [
-                    "apigateway.aliyuncs.com",
-                    "ecs.aliyuncs.com"
+                \\"Action\\": \\"sts:AssumeRole\\",
+                \\"Effect\\": \\"Allow\\",
+                \\"Principal\\": {
+                  \\"Service\\": [
+                    \\"apigateway.aliyuncs.com\\",
+                    \\"ecs.aliyuncs.com\\"
                   ]
                 }
               }
             ],
-            "Version": "1"
+            \\"Version\\": \\"1\\"
           }
         \"\"\",
             description="this is a role test.")
@@ -584,19 +584,19 @@ class Role(pulumi.CustomResource):
         default_role = alicloud.ram.Role("default",
             role_name=f"terraform-example-{default['result']}",
             assume_role_policy_document=\"\"\"  {
-            "Statement": [
+            \\"Statement\\": [
               {
-                "Action": "sts:AssumeRole",
-                "Effect": "Allow",
-                "Principal": {
-                  "Service": [
-                    "apigateway.aliyuncs.com",
-                    "ecs.aliyuncs.com"
+                \\"Action\\": \\"sts:AssumeRole\\",
+                \\"Effect\\": \\"Allow\\",
+                \\"Principal\\": {
+                  \\"Service\\": [
+                    \\"apigateway.aliyuncs.com\\",
+                    \\"ecs.aliyuncs.com\\"
                   ]
                 }
               }
             ],
-            "Version": "1"
+            \\"Version\\": \\"1\\"
           }
         \"\"\",
             description="this is a role test.")

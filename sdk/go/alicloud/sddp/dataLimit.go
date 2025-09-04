@@ -18,6 +18,153 @@ import (
 //
 // > **NOTE:** Available since v1.159.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sddp"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetZones, err := rds.GetZones(ctx, &rds.GetZonesArgs{
+//				Engine:                pulumi.StringRef("MySQL"),
+//				EngineVersion:         pulumi.StringRef("8.0"),
+//				InstanceChargeType:    pulumi.StringRef("PostPaid"),
+//				Category:              pulumi.StringRef("Basic"),
+//				DbInstanceStorageType: pulumi.StringRef("cloud_essd"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetInstanceClasses, err := rds.GetInstanceClasses(ctx, &rds.GetInstanceClassesArgs{
+//				ZoneId:                pulumi.StringRef(defaultGetZones.Zones[0].Id),
+//				Engine:                pulumi.StringRef("MySQL"),
+//				EngineVersion:         pulumi.StringRef("8.0"),
+//				Category:              pulumi.StringRef("Basic"),
+//				DbInstanceStorageType: pulumi.StringRef("cloud_essd"),
+//				InstanceChargeType:    pulumi.StringRef("PostPaid"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+//				Name:  pulumi.String(name),
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := rds.NewInstance(ctx, "default", &rds.InstanceArgs{
+//				Engine:                pulumi.String("MySQL"),
+//				EngineVersion:         pulumi.String("8.0"),
+//				InstanceType:          pulumi.String(defaultGetInstanceClasses.InstanceClasses[0].InstanceClass),
+//				InstanceStorage:       pulumi.String(defaultGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
+//				InstanceChargeType:    pulumi.String("Postpaid"),
+//				InstanceName:          pulumi.String(name),
+//				VswitchId:             defaultSwitch.ID(),
+//				MonitoringPeriod:      pulumi.Int(60),
+//				DbInstanceStorageType: pulumi.String("cloud_essd"),
+//				SecurityGroupIds: pulumi.StringArray{
+//					defaultSecurityGroup.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRdsAccount, err := rds.NewRdsAccount(ctx, "default", &rds.RdsAccountArgs{
+//				DbInstanceId:    defaultInstance.ID(),
+//				AccountName:     pulumi.String(name),
+//				AccountPassword: pulumi.String("Example1234"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultDatabase, err := rds.NewDatabase(ctx, "default", &rds.DatabaseArgs{
+//				InstanceId: defaultInstance.ID(),
+//				Name:       pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultAccountPrivilege, err := rds.NewAccountPrivilege(ctx, "default", &rds.AccountPrivilegeArgs{
+//				InstanceId:  defaultInstance.ID(),
+//				AccountName: defaultRdsAccount.AccountName,
+//				Privilege:   pulumi.String("ReadWrite"),
+//				DbNames: pulumi.StringArray{
+//					defaultDatabase.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sddp.NewDataLimit(ctx, "default", &sddp.DataLimitArgs{
+//				AuditStatus: pulumi.Int(0),
+//				EngineType:  pulumi.String("MySQL"),
+//				ParentId: pulumi.String(std.JoinOutput(ctx, std.JoinOutputArgs{
+//					Separator: pulumi.String("."),
+//					Input: pulumi.StringArray{
+//						defaultAccountPrivilege.InstanceId,
+//						defaultDatabase.Name,
+//					},
+//				}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
+//					return invoke.Result, nil
+//				}).(pulumi.StringPtrOutput)),
+//				ResourceType:    pulumi.String("RDS"),
+//				UserName:        defaultDatabase.Name,
+//				Password:        defaultRdsAccount.AccountPassword,
+//				Port:            pulumi.Int(3306),
+//				ServiceRegionId: pulumi.String(_default.Regions[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Data Security Center Data Limit can be imported using the id, e.g.

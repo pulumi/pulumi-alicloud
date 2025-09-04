@@ -24,6 +24,110 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.237.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.dataworks.Project;
+ * import com.pulumi.alicloud.dataworks.ProjectArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.alicloud.dataworks.DataSource;
+ * import com.pulumi.alicloud.dataworks.DataSourceArgs;
+ * import com.pulumi.alicloud.dataworks.DataSourceSharedRule;
+ * import com.pulumi.alicloud.dataworks.DataSourceSharedRuleArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf_example");
+ *         var randint = new Integer("randint", IntegerArgs.builder()
+ *             .max(999)
+ *             .min(1)
+ *             .build());
+ * 
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
+ * 
+ *         var defaultQeRfvU = new Project("defaultQeRfvU", ProjectArgs.builder()
+ *             .description("源项目")
+ *             .projectName(name)
+ *             .displayName("shared_source2")
+ *             .paiTaskEnabled(true)
+ *             .build());
+ * 
+ *         var defaultasjsH5 = new Project("defaultasjsH5", ProjectArgs.builder()
+ *             .description("目标空间")
+ *             .projectName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s1")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .displayName("shared_target2")
+ *             .paiTaskEnabled(true)
+ *             .build());
+ * 
+ *         var defaultvzu0wG = new DataSource("defaultvzu0wG", DataSourceArgs.builder()
+ *             .type("hive")
+ *             .dataSourceName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s2")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .connectionProperties(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("address", jsonArray(jsonObject(
+ *                         jsonProperty("host", "127.0.0.1"),
+ *                         jsonProperty("port", "1234")
+ *                     ))),
+ *                     jsonProperty("database", "hive_database"),
+ *                     jsonProperty("metaType", "HiveMetastore"),
+ *                     jsonProperty("metastoreUris", "thrift://123:123"),
+ *                     jsonProperty("version", "2.3.9"),
+ *                     jsonProperty("loginMode", "Anonymous"),
+ *                     jsonProperty("securityProtocol", "authTypeNone"),
+ *                     jsonProperty("envType", "Prod"),
+ *                     jsonProperty("properties", jsonObject(
+ *                         jsonProperty("key1", "value1")
+ *                     ))
+ *                 )))
+ *             .projectId(defaultQeRfvU.id())
+ *             .connectionPropertiesMode("UrlMode")
+ *             .build());
+ * 
+ *         var defaultDataSourceSharedRule = new DataSourceSharedRule("defaultDataSourceSharedRule", DataSourceSharedRuleArgs.builder()
+ *             .targetProjectId(defaultasjsH5.id())
+ *             .dataSourceId(defaultvzu0wG.dataSourceId())
+ *             .envType("Prod")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Data Works Data Source Shared Rule can be imported using the id, e.g.

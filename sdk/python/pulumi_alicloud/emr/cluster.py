@@ -986,19 +986,19 @@ class Cluster(pulumi.CustomResource):
         default_role = alicloud.ram.Role("default",
             name=ram_name,
             document=\"\"\"    {
-                "Statement": [
+                \\"Statement\\": [
                 {
-                    "Action": "sts:AssumeRole",
-                    "Effect": "Allow",
-                    "Principal": {
-                    "Service": [
-                        "emr.aliyuncs.com",
-                        "ecs.aliyuncs.com"
+                    \\"Action\\": \\"sts:AssumeRole\\",
+                    \\"Effect\\": \\"Allow\\",
+                    \\"Principal\\": {
+                    \\"Service\\": [
+                        \\"emr.aliyuncs.com\\",
+                        \\"ecs.aliyuncs.com\\"
                     ]
                     }
                 }
                 ],
-                "Version": "1"
+                \\"Version\\": \\"1\\"
             }
         \"\"\",
             description="this is a role test.",
@@ -1109,19 +1109,19 @@ class Cluster(pulumi.CustomResource):
         default_role = alicloud.ram.Role("default",
             name=ram_name,
             document=\"\"\"    {
-                "Statement": [
+                \\"Statement\\": [
                 {
-                    "Action": "sts:AssumeRole",
-                    "Effect": "Allow",
-                    "Principal": {
-                    "Service": [
-                        "emr.aliyuncs.com",
-                        "ecs.aliyuncs.com"
+                    \\"Action\\": \\"sts:AssumeRole\\",
+                    \\"Effect\\": \\"Allow\\",
+                    \\"Principal\\": {
+                    \\"Service\\": [
+                        \\"emr.aliyuncs.com\\",
+                        \\"ecs.aliyuncs.com\\"
                     ]
                     }
                 }
                 ],
-                "Version": "1"
+                \\"Version\\": \\"1\\"
             }
         \"\"\",
             description="this is a role test.",
@@ -1230,19 +1230,19 @@ class Cluster(pulumi.CustomResource):
         default_role = alicloud.ram.Role("default",
             name=ram_name,
             document=\"\"\"    {
-                "Statement": [
+                \\"Statement\\": [
                 {
-                    "Action": "sts:AssumeRole",
-                    "Effect": "Allow",
-                    "Principal": {
-                    "Service": [
-                        "emr.aliyuncs.com",
-                        "ecs.aliyuncs.com"
+                    \\"Action\\": \\"sts:AssumeRole\\",
+                    \\"Effect\\": \\"Allow\\",
+                    \\"Principal\\": {
+                    \\"Service\\": [
+                        \\"emr.aliyuncs.com\\",
+                        \\"ecs.aliyuncs.com\\"
                     ]
                     }
                 }
                 ],
-                "Version": "1"
+                \\"Version\\": \\"1\\"
             }
         \"\"\",
             description="this is a role test.",
@@ -1341,19 +1341,19 @@ class Cluster(pulumi.CustomResource):
         default_role = alicloud.ram.Role("default",
             name=ram_name,
             document=\"\"\"    {
-                "Statement": [
+                \\"Statement\\": [
                 {
-                    "Action": "sts:AssumeRole",
-                    "Effect": "Allow",
-                    "Principal": {
-                    "Service": [
-                        "emr.aliyuncs.com",
-                        "ecs.aliyuncs.com"
+                    \\"Action\\": \\"sts:AssumeRole\\",
+                    \\"Effect\\": \\"Allow\\",
+                    \\"Principal\\": {
+                    \\"Service\\": [
+                        \\"emr.aliyuncs.com\\",
+                        \\"ecs.aliyuncs.com\\"
                     ]
                     }
                 }
                 ],
-                "Version": "1"
+                \\"Version\\": \\"1\\"
             }
         \"\"\",
             description="this is a role test.",
@@ -1486,19 +1486,19 @@ class Cluster(pulumi.CustomResource):
         default_role = alicloud.ram.Role("default",
             name=ram_name,
             document=\"\"\"    {
-                "Statement": [
+                \\"Statement\\": [
                 {
-                    "Action": "sts:AssumeRole",
-                    "Effect": "Allow",
-                    "Principal": {
-                    "Service": [
-                        "emr.aliyuncs.com",
-                        "ecs.aliyuncs.com"
+                    \\"Action\\": \\"sts:AssumeRole\\",
+                    \\"Effect\\": \\"Allow\\",
+                    \\"Principal\\": {
+                    \\"Service\\": [
+                        \\"emr.aliyuncs.com\\",
+                        \\"ecs.aliyuncs.com\\"
                     ]
                     }
                 }
                 ],
-                "Version": "1"
+                \\"Version\\": \\"1\\"
             }
         \"\"\",
             description="this is a role test.",
@@ -1609,19 +1609,19 @@ class Cluster(pulumi.CustomResource):
         default_role = alicloud.ram.Role("default",
             name=ram_name,
             document=\"\"\"    {
-                "Statement": [
+                \\"Statement\\": [
                 {
-                    "Action": "sts:AssumeRole",
-                    "Effect": "Allow",
-                    "Principal": {
-                    "Service": [
-                        "emr.aliyuncs.com",
-                        "ecs.aliyuncs.com"
+                    \\"Action\\": \\"sts:AssumeRole\\",
+                    \\"Effect\\": \\"Allow\\",
+                    \\"Principal\\": {
+                    \\"Service\\": [
+                        \\"emr.aliyuncs.com\\",
+                        \\"ecs.aliyuncs.com\\"
                     ]
                     }
                 }
                 ],
-                "Version": "1"
+                \\"Version\\": \\"1\\"
             }
         \"\"\",
             description="this is a role test.",
@@ -1730,19 +1730,19 @@ class Cluster(pulumi.CustomResource):
         default_role = alicloud.ram.Role("default",
             name=ram_name,
             document=\"\"\"    {
-                "Statement": [
+                \\"Statement\\": [
                 {
-                    "Action": "sts:AssumeRole",
-                    "Effect": "Allow",
-                    "Principal": {
-                    "Service": [
-                        "emr.aliyuncs.com",
-                        "ecs.aliyuncs.com"
+                    \\"Action\\": \\"sts:AssumeRole\\",
+                    \\"Effect\\": \\"Allow\\",
+                    \\"Principal\\": {
+                    \\"Service\\": [
+                        \\"emr.aliyuncs.com\\",
+                        \\"ecs.aliyuncs.com\\"
                     ]
                     }
                 }
                 ],
-                "Version": "1"
+                \\"Version\\": \\"1\\"
             }
         \"\"\",
             description="this is a role test.",
@@ -1841,19 +1841,19 @@ class Cluster(pulumi.CustomResource):
         default_role = alicloud.ram.Role("default",
             name=ram_name,
             document=\"\"\"    {
-                "Statement": [
+                \\"Statement\\": [
                 {
-                    "Action": "sts:AssumeRole",
-                    "Effect": "Allow",
-                    "Principal": {
-                    "Service": [
-                        "emr.aliyuncs.com",
-                        "ecs.aliyuncs.com"
+                    \\"Action\\": \\"sts:AssumeRole\\",
+                    \\"Effect\\": \\"Allow\\",
+                    \\"Principal\\": {
+                    \\"Service\\": [
+                        \\"emr.aliyuncs.com\\",
+                        \\"ecs.aliyuncs.com\\"
                     ]
                     }
                 }
                 ],
-                "Version": "1"
+                \\"Version\\": \\"1\\"
             }
         \"\"\",
             description="this is a role test.",

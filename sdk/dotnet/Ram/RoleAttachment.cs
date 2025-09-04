@@ -100,18 +100,18 @@ namespace Pulumi.AliCloud.Ram
     ///     {
     ///         Name = "terraform-example",
     ///         Document = @"  {
-    ///     ""Statement"": [
+    ///     \""Statement\"": [
     ///       {
-    ///         ""Action"": ""sts:AssumeRole"",
-    ///         ""Effect"": ""Allow"",
-    ///         ""Principal"": {
-    ///           ""Service"": [
-    ///             ""ecs.aliyuncs.com""
+    ///         \""Action\"": \""sts:AssumeRole\"",
+    ///         \""Effect\"": \""Allow\"",
+    ///         \""Principal\"": {
+    ///           \""Service\"": [
+    ///             \""ecs.aliyuncs.com\""
     ///           ]
     ///         }
     ///       }
     ///     ],
-    ///     ""Version"": ""1""
+    ///     \""Version\"": \""1\""
     ///   }
     /// 
     /// ",

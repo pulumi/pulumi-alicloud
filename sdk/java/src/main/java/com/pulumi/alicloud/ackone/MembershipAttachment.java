@@ -20,6 +20,131 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.243.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.cs.ManagedKubernetes;
+ * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.CidrsubnetArgs;
+ * import com.pulumi.alicloud.ecs.KeyPair;
+ * import com.pulumi.alicloud.ecs.KeyPairArgs;
+ * import com.pulumi.alicloud.cs.NodePool;
+ * import com.pulumi.alicloud.cs.NodePoolArgs;
+ * import com.pulumi.alicloud.ackone.Cluster;
+ * import com.pulumi.alicloud.ackone.ClusterArgs;
+ * import com.pulumi.alicloud.ackone.inputs.ClusterNetworkArgs;
+ * import com.pulumi.alicloud.ackone.MembershipAttachment;
+ * import com.pulumi.alicloud.ackone.MembershipAttachmentArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var keyName = config.get("keyName").orElse("%s");
+ *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+ *             .build());
+ * 
+ *         final var cloudEfficiency = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(enhanced.zones()[0].zoneId())
+ *             .cpuCoreCount(4)
+ *             .memorySize(8)
+ *             .kubernetesNodeRole("Worker")
+ *             .systemDiskCategory("cloud_efficiency")
+ *             .build());
+ * 
+ *         var default_ = new Network("default", NetworkArgs.builder()
+ *             .cidrBlock("10.4.0.0/16")
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .cidrBlock("10.4.0.0/24")
+ *             .vpcId(default_.id())
+ *             .zoneId(enhanced.zones()[0].zoneId())
+ *             .build());
+ * 
+ *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+ *             .clusterSpec("ack.pro.small")
+ *             .vswitchIds(defaultSwitch.id())
+ *             .newNatGateway(true)
+ *             .podCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+ *                 .input("10.0.0.0/8")
+ *                 .newbits(8)
+ *                 .netnum(36)
+ *                 .build()).result())
+ *             .serviceCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+ *                 .input("172.16.0.0/16")
+ *                 .newbits(4)
+ *                 .netnum(7)
+ *                 .build()).result())
+ *             .slbInternetEnabled(true)
+ *             .isEnterpriseSecurityGroup(true)
+ *             .build());
+ * 
+ *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
+ *             .keyPairName(keyName)
+ *             .build());
+ * 
+ *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
+ *             .nodePoolName(name)
+ *             .clusterId(defaultManagedKubernetes.id())
+ *             .vswitchIds(defaultSwitch.id())
+ *             .instanceTypes(cloudEfficiency.instanceTypes()[0].id())
+ *             .systemDiskCategory("cloud_efficiency")
+ *             .systemDiskSize(40)
+ *             .keyName(defaultKeyPair.keyPairName())
+ *             .desiredSize("1")
+ *             .build());
+ * 
+ *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
+ *             .network(ClusterNetworkArgs.builder()
+ *                 .vpcId(default_.id())
+ *                 .vswitches(defaultSwitch.id())
+ *                 .build())
+ *             .argocdEnabled(false)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(defaultManagedKubernetes)
+ *                 .build());
+ * 
+ *         var defaultMembershipAttachment = new MembershipAttachment("defaultMembershipAttachment", MembershipAttachmentArgs.builder()
+ *             .clusterId(defaultCluster.id())
+ *             .subClusterId(defaultManagedKubernetes.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Ack One Membership Attachment can be imported using the id, which consists of cluster_id and sub_cluster_id, e.g.

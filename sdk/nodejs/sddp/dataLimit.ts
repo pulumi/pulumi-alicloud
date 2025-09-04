@@ -11,6 +11,94 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.159.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const _default = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const defaultGetZones = alicloud.rds.getZones({
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     instanceChargeType: "PostPaid",
+ *     category: "Basic",
+ *     dbInstanceStorageType: "cloud_essd",
+ * });
+ * const defaultGetInstanceClasses = defaultGetZones.then(defaultGetZones => alicloud.rds.getInstanceClasses({
+ *     zoneId: defaultGetZones.zones?.[0]?.id,
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     category: "Basic",
+ *     dbInstanceStorageType: "cloud_essd",
+ *     instanceChargeType: "PostPaid",
+ * }));
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[0]?.id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: name,
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultInstance = new alicloud.rds.Instance("default", {
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     instanceType: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
+ *     instanceStorage: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceChargeType: "Postpaid",
+ *     instanceName: name,
+ *     vswitchId: defaultSwitch.id,
+ *     monitoringPeriod: 60,
+ *     dbInstanceStorageType: "cloud_essd",
+ *     securityGroupIds: [defaultSecurityGroup.id],
+ * });
+ * const defaultRdsAccount = new alicloud.rds.RdsAccount("default", {
+ *     dbInstanceId: defaultInstance.id,
+ *     accountName: name,
+ *     accountPassword: "Example1234",
+ * });
+ * const defaultDatabase = new alicloud.rds.Database("default", {
+ *     instanceId: defaultInstance.id,
+ *     name: name,
+ * });
+ * const defaultAccountPrivilege = new alicloud.rds.AccountPrivilege("default", {
+ *     instanceId: defaultInstance.id,
+ *     accountName: defaultRdsAccount.accountName,
+ *     privilege: "ReadWrite",
+ *     dbNames: [defaultDatabase.name],
+ * });
+ * const defaultDataLimit = new alicloud.sddp.DataLimit("default", {
+ *     auditStatus: 0,
+ *     engineType: "MySQL",
+ *     parentId: std.joinOutput({
+ *         separator: ".",
+ *         input: [
+ *             defaultAccountPrivilege.instanceId,
+ *             defaultDatabase.name,
+ *         ],
+ *     }).apply(invoke => invoke.result),
+ *     resourceType: "RDS",
+ *     userName: defaultDatabase.name,
+ *     password: defaultRdsAccount.accountPassword,
+ *     port: 3306,
+ *     serviceRegionId: _default.then(_default => _default.regions?.[0]?.id),
+ * });
+ * ```
+ *
  * ## Import
  *
  * Data Security Center Data Limit can be imported using the id, e.g.

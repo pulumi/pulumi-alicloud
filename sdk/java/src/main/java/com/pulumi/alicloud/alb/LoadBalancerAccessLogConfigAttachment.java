@@ -22,6 +22,126 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.241.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.alicloud.alb.LoadBalancer;
+ * import com.pulumi.alicloud.alb.LoadBalancerArgs;
+ * import com.pulumi.alicloud.alb.inputs.LoadBalancerLoadBalancerBillingConfigArgs;
+ * import com.pulumi.alicloud.alb.inputs.LoadBalancerZoneMappingArgs;
+ * import com.pulumi.alicloud.alb.LoadBalancerAccessLogConfigAttachment;
+ * import com.pulumi.alicloud.alb.LoadBalancerAccessLogConfigAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .min(100000)
+ *             .max(999999)
+ *             .build());
+ * 
+ *         var albExampleTfVpc = new Network("albExampleTfVpc", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("192.168.0.0/16")
+ *             .build());
+ * 
+ *         var albExampleTfJ = new Switch("albExampleTfJ", SwitchArgs.builder()
+ *             .vpcId(albExampleTfVpc.id())
+ *             .zoneId("cn-beijing-j")
+ *             .cidrBlock("192.168.1.0/24")
+ *             .vswitchName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s1")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var albExampleTfK = new Switch("albExampleTfK", SwitchArgs.builder()
+ *             .vpcId(albExampleTfVpc.id())
+ *             .zoneId("cn-beijing-k")
+ *             .cidrBlock("192.168.2.0/24")
+ *             .vswitchName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s2")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var defaultDSY0JJ = new Switch("defaultDSY0JJ", SwitchArgs.builder()
+ *             .vpcId(albExampleTfVpc.id())
+ *             .zoneId("cn-beijing-f")
+ *             .cidrBlock("192.168.3.0/24")
+ *             .vswitchName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s3")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var defaultDYswYo = new LoadBalancer("defaultDYswYo", LoadBalancerArgs.builder()
+ *             .loadBalancerName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s4")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .loadBalancerEdition("Standard")
+ *             .vpcId(albExampleTfVpc.id())
+ *             .loadBalancerBillingConfig(LoadBalancerLoadBalancerBillingConfigArgs.builder()
+ *                 .payType("PayAsYouGo")
+ *                 .build())
+ *             .addressType("Intranet")
+ *             .addressAllocatedMode("Fixed")
+ *             .zoneMappings(            
+ *                 LoadBalancerZoneMappingArgs.builder()
+ *                     .vswitchId(defaultDSY0JJ.id())
+ *                     .zoneId(defaultDSY0JJ.zoneId())
+ *                     .build(),
+ *                 LoadBalancerZoneMappingArgs.builder()
+ *                     .vswitchId(albExampleTfJ.id())
+ *                     .zoneId(albExampleTfJ.zoneId())
+ *                     .build(),
+ *                 LoadBalancerZoneMappingArgs.builder()
+ *                     .vswitchId(albExampleTfK.id())
+ *                     .zoneId(albExampleTfK.zoneId())
+ *                     .build())
+ *             .build());
+ * 
+ *         var defaultLoadBalancerAccessLogConfigAttachment = new LoadBalancerAccessLogConfigAttachment("defaultLoadBalancerAccessLogConfigAttachment", LoadBalancerAccessLogConfigAttachmentArgs.builder()
+ *             .logStore(String.format("%s-%s", name,default_.result()))
+ *             .loadBalancerId(defaultDYswYo.id())
+ *             .logProject(String.format("%s-%s", name,default_.result()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Application Load Balancer (ALB) Load Balancer Access Log Config Attachment can be imported using the id, e.g.

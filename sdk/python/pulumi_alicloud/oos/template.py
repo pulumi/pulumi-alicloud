@@ -428,25 +428,25 @@ class Template(pulumi.CustomResource):
             max=99999)
         example = alicloud.oos.Template("example",
             content=\"\"\"  {
-            "FormatVersion": "OOS-2019-06-01",
-            "Description": "Update Describe instances of given status",
-            "Parameters":{
-              "Status":{
-                "Type": "String",
-                "Description": "(Required) The status of the Ecs instance."
+            \\"FormatVersion\\": \\"OOS-2019-06-01\\",
+            \\"Description\\": \\"Update Describe instances of given status\\",
+            \\"Parameters\\":{
+              \\"Status\\":{
+                \\"Type\\": \\"String\\",
+                \\"Description\\": \\"(Required) The status of the Ecs instance.\\"
               }
             },
-            "Tasks": [
+            \\"Tasks\\": [
               {
-                "Properties" :{
-                  "Parameters":{
-                    "Status": "{{ Status }}"
+                \\"Properties\\" :{
+                  \\"Parameters\\":{
+                    \\"Status\\": \\"{{ Status }}\\"
                   },
-                  "API": "DescribeInstances",
-                  "Service": "Ecs"
+                  \\"API\\": \\"DescribeInstances\\",
+                  \\"Service\\": \\"Ecs\\"
                 },
-                "Name": "foo",
-                "Action": "ACS::ExecuteApi"
+                \\"Name\\": \\"foo\\",
+                \\"Action\\": \\"ACS::ExecuteApi\\"
               }]
           }
         \"\"\",
@@ -498,25 +498,25 @@ class Template(pulumi.CustomResource):
             max=99999)
         example = alicloud.oos.Template("example",
             content=\"\"\"  {
-            "FormatVersion": "OOS-2019-06-01",
-            "Description": "Update Describe instances of given status",
-            "Parameters":{
-              "Status":{
-                "Type": "String",
-                "Description": "(Required) The status of the Ecs instance."
+            \\"FormatVersion\\": \\"OOS-2019-06-01\\",
+            \\"Description\\": \\"Update Describe instances of given status\\",
+            \\"Parameters\\":{
+              \\"Status\\":{
+                \\"Type\\": \\"String\\",
+                \\"Description\\": \\"(Required) The status of the Ecs instance.\\"
               }
             },
-            "Tasks": [
+            \\"Tasks\\": [
               {
-                "Properties" :{
-                  "Parameters":{
-                    "Status": "{{ Status }}"
+                \\"Properties\\" :{
+                  \\"Parameters\\":{
+                    \\"Status\\": \\"{{ Status }}\\"
                   },
-                  "API": "DescribeInstances",
-                  "Service": "Ecs"
+                  \\"API\\": \\"DescribeInstances\\",
+                  \\"Service\\": \\"Ecs\\"
                 },
-                "Name": "foo",
-                "Action": "ACS::ExecuteApi"
+                \\"Name\\": \\"foo\\",
+                \\"Action\\": \\"ACS::ExecuteApi\\"
               }]
           }
         \"\"\",

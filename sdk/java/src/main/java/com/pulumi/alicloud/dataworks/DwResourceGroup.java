@@ -24,6 +24,87 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.241.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.dataworks.Project;
+ * import com.pulumi.alicloud.dataworks.ProjectArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.dataworks.DwResourceGroup;
+ * import com.pulumi.alicloud.dataworks.DwResourceGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform_example");
+ *         var defaultZImuCO = new Project("defaultZImuCO", ProjectArgs.builder()
+ *             .description("default_pj002")
+ *             .projectName(name)
+ *             .displayName("default_pj002")
+ *             .paiTaskEnabled(true)
+ *             .build());
+ * 
+ *         var defaulte4zhaL = new Network("defaulte4zhaL", NetworkArgs.builder()
+ *             .description("default_resgv2_vpc001")
+ *             .vpcName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s1")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .cidrBlock("172.16.0.0/12")
+ *             .build());
+ * 
+ *         var default675v38 = new Switch("default675v38", SwitchArgs.builder()
+ *             .description("default_resg_vsw001")
+ *             .vpcId(defaulte4zhaL.id())
+ *             .zoneId("cn-beijing-g")
+ *             .vswitchName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s2")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .cidrBlock("172.16.0.0/24")
+ *             .build());
+ * 
+ *         var default_ = new DwResourceGroup("default", DwResourceGroupArgs.builder()
+ *             .paymentType("PostPaid")
+ *             .defaultVpcId(defaulte4zhaL.id())
+ *             .remark("openapi_example")
+ *             .resourceGroupName("openapi_pop2_example_resg00002")
+ *             .defaultVswitchId(default675v38.id())
+ *             .paymentDurationUnit("Month")
+ *             .specification(500)
+ *             .paymentDuration(1)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Data Works Dw Resource Group can be imported using the id, e.g.

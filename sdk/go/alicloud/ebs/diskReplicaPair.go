@@ -18,6 +18,108 @@ import (
 //
 // > **NOTE:** Available since v1.196.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ebs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetRegions, err := ebs.GetRegions(ctx, &ebs.GetRegionsArgs{
+//				RegionId: pulumi.StringRef(_default.Regions[0].Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultEcsDisk, err := ecs.NewEcsDisk(ctx, "default", &ecs.EcsDiskArgs{
+//				ZoneId:             pulumi.String(defaultGetRegions.Regions[0].Zones[0].ZoneId),
+//				Category:           pulumi.String("cloud_essd"),
+//				DeleteAutoSnapshot: pulumi.Bool(true),
+//				DeleteWithInstance: pulumi.Bool(true),
+//				Description:        pulumi.String(name),
+//				DiskName:           pulumi.String(name),
+//				EnableAutoSnapshot: pulumi.Bool(true),
+//				Encrypted:          pulumi.Bool(true),
+//				Size:               pulumi.Int(500),
+//				Tags: pulumi.StringMap{
+//					"Created":      pulumi.String("TF"),
+//					"For":          pulumi.String("example"),
+//					"controlledBy": pulumi.String("ear"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s-destination",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			destination, err := ecs.NewEcsDisk(ctx, "destination", &ecs.EcsDiskArgs{
+//				ZoneId:             pulumi.String(defaultGetRegions.Regions[0].Zones[1].ZoneId),
+//				Category:           pulumi.String("cloud_essd"),
+//				DeleteAutoSnapshot: pulumi.Bool(true),
+//				DeleteWithInstance: pulumi.Bool(true),
+//				Description:        pulumi.String(invokeFormat.Result),
+//				DiskName:           pulumi.String(name),
+//				EnableAutoSnapshot: pulumi.Bool(true),
+//				Encrypted:          pulumi.Bool(true),
+//				Size:               pulumi.Int(500),
+//				Tags: pulumi.StringMap{
+//					"Created":      pulumi.String("TF"),
+//					"For":          pulumi.String("example"),
+//					"controlledBy": pulumi.String("ear"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ebs.NewDiskReplicaPair(ctx, "default", &ebs.DiskReplicaPairArgs{
+//				DestinationDiskId:   destination.ID(),
+//				DestinationRegionId: pulumi.String(_default.Regions[0].Id),
+//				PaymentType:         pulumi.String("POSTPAY"),
+//				DestinationZoneId:   destination.ZoneId,
+//				SourceZoneId:        defaultEcsDisk.ZoneId,
+//				DiskId:              defaultEcsDisk.ID(),
+//				Description:         pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Elastic Block Storage(EBS) Disk Replica Pair can be imported using the id, e.g.

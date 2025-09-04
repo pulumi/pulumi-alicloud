@@ -11,6 +11,145 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.157.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const example = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const exampleGetZones = alicloud.rds.getZones({
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     instanceChargeType: "PostPaid",
+ *     category: "Basic",
+ *     dbInstanceStorageType: "cloud_essd",
+ * });
+ * const exampleGetInstanceClasses = exampleGetZones.then(exampleGetZones => alicloud.rds.getInstanceClasses({
+ *     zoneId: exampleGetZones.zones?.[0]?.id,
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     instanceChargeType: "PostPaid",
+ *     category: "Basic",
+ *     dbInstanceStorageType: "cloud_essd",
+ * }));
+ * const exampleNetwork = new alicloud.vpc.Network("example", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("example", {
+ *     vpcId: exampleNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: exampleGetZones.then(exampleGetZones => exampleGetZones.zones?.[0]?.id),
+ *     vswitchName: name,
+ * });
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("example", {
+ *     name: name,
+ *     vpcId: exampleNetwork.id,
+ * });
+ * const exampleInstance: alicloud.rds.Instance[] = [];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     exampleInstance.push(new alicloud.rds.Instance(`example-${range.value}`, {
+ *         engine: "MySQL",
+ *         engineVersion: "8.0",
+ *         instanceType: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
+ *         instanceStorage: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *         instanceChargeType: "Postpaid",
+ *         instanceName: std.format({
+ *             input: `${name}_%d`,
+ *             args: [range.value + 1],
+ *         }).then(invoke => invoke.result),
+ *         vswitchId: exampleSwitch.id,
+ *         monitoringPeriod: 60,
+ *         dbInstanceStorageType: "cloud_essd",
+ *         securityGroupIds: [exampleSecurityGroup.id],
+ *     }));
+ * }
+ * const exampleRdsAccount: alicloud.rds.RdsAccount[] = [];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     exampleRdsAccount.push(new alicloud.rds.RdsAccount(`example-${range.value}`, {
+ *         dbInstanceId: exampleInstance[range.value].id,
+ *         accountName: std.format({
+ *             input: "example_name_%d",
+ *             args: [range.value + 1],
+ *         }).then(invoke => invoke.result),
+ *         accountPassword: std.format({
+ *             input: "example_password_%d",
+ *             args: [range.value + 1],
+ *         }).then(invoke => invoke.result),
+ *     }));
+ * }
+ * const exampleDatabase: alicloud.rds.Database[] = [];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     exampleDatabase.push(new alicloud.rds.Database(`example-${range.value}`, {
+ *         instanceId: exampleInstance[range.value].id,
+ *         name: std.format({
+ *             input: `${name}_%d`,
+ *             args: [range.value + 1],
+ *         }).then(invoke => invoke.result),
+ *     }));
+ * }
+ * const exampleAccountPrivilege: alicloud.rds.AccountPrivilege[] = [];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     exampleAccountPrivilege.push(new alicloud.rds.AccountPrivilege(`example-${range.value}`, {
+ *         instanceId: exampleInstance[range.value].id,
+ *         accountName: exampleRdsAccount[range.value].name,
+ *         privilege: "ReadWrite",
+ *         dbNames: [exampleDatabase[range.value].name],
+ *     }));
+ * }
+ * const exampleMigrationInstance = new alicloud.dts.MigrationInstance("example", {
+ *     paymentType: "PayAsYouGo",
+ *     sourceEndpointEngineName: "MySQL",
+ *     sourceEndpointRegion: example.then(example => example.regions?.[0]?.id),
+ *     destinationEndpointEngineName: "MySQL",
+ *     destinationEndpointRegion: example.then(example => example.regions?.[0]?.id),
+ *     instanceClass: "small",
+ *     syncArchitecture: "oneway",
+ * });
+ * const exampleMigrationJob = new alicloud.dts.MigrationJob("example", {
+ *     dtsInstanceId: exampleMigrationInstance.id,
+ *     dtsJobName: name,
+ *     sourceEndpointInstanceType: "RDS",
+ *     sourceEndpointInstanceId: exampleAccountPrivilege[0].instanceId,
+ *     sourceEndpointEngineName: "MySQL",
+ *     sourceEndpointRegion: example.then(example => example.regions?.[0]?.id),
+ *     sourceEndpointUserName: exampleRdsAccount[0].accountName,
+ *     sourceEndpointPassword: exampleRdsAccount[0].accountPassword,
+ *     destinationEndpointInstanceType: "RDS",
+ *     destinationEndpointInstanceId: exampleAccountPrivilege[1].instanceId,
+ *     destinationEndpointEngineName: "MySQL",
+ *     destinationEndpointRegion: example.then(example => example.regions?.[0]?.id),
+ *     destinationEndpointUserName: exampleRdsAccount[1].accountName,
+ *     destinationEndpointPassword: exampleRdsAccount[1].accountPassword,
+ *     dbList: pulumi.jsonStringify(pulumi.all([exampleDatabase[0].name, exampleDatabase[1].name]).apply(([exampleDatabaseName, exampleDatabaseName1]) => {
+ *         [exampleDatabaseName]: {
+ *             name: exampleDatabaseName1,
+ *             all: true,
+ *         },
+ *     })),
+ *     structureInitialization: true,
+ *     dataInitialization: true,
+ *     dataSynchronization: true,
+ * });
+ * ```
+ *
+ * ## Notice
+ *
+ * 1. The expiration time cannot be changed after the work of the annual and monthly subscription suspended;
+ * 2. After the pay-as-you-go type job suspended, your job configuration fee will still be charged;
+ * 3. If the task suspended for more than 6 hours, the task will not start successfully.
+ * 4. Suspending the task will only stop writing to the target library, but will still continue to obtain the incremental log of the source, so that the task can be quickly resumed after the suspension is canceled. Therefore, some resources of the source library, such as bandwidth resources, will continue to be occupied during the period.
+ * 5. Charges will continue during the task suspension period. If you need to stop charging, please release the instance
+ * 6. When a DTS instance suspended for more than 7 days, the instance cannot be resumed, and the status will change from suspended to failed.
+ *
  * ## Import
  *
  * DTS Migration Job can be imported using the id, e.g.

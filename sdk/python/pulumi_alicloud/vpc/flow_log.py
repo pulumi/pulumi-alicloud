@@ -568,6 +568,52 @@ class FlowLog(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.117.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.resourcemanager.get_resource_groups(status="OK")
+        example = alicloud.vpc.Network("example",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        example_uuid = random.index.Uuid("example")
+        example_project = alicloud.log.Project("example",
+            project_name=std.substr(input=f"tf-example-{std.replace(text=example_uuid['result'],
+                    search='-',
+                    replace='').result}",
+                offset=0,
+                length=16).result,
+            description=name)
+        example_store = alicloud.log.Store("example",
+            project_name=example_project.project_name,
+            logstore_name=name,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        example_flow_log = alicloud.vpc.FlowLog("example",
+            flow_log_name=name,
+            log_store_name=example_store.logstore_name,
+            description=name,
+            traffic_paths=["all"],
+            project_name=example_project.project_name,
+            resource_type="VPC",
+            resource_group_id=default.ids[0],
+            resource_id=example.id,
+            aggregation_interval="1",
+            traffic_type="All")
+        ```
+
         ## Import
 
         VPC Flow Log can be imported using the id, e.g.
@@ -614,6 +660,52 @@ class FlowLog(pulumi.CustomResource):
         For information about VPC Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/flow-logs-overview).
 
         > **NOTE:** Available since v1.117.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.resourcemanager.get_resource_groups(status="OK")
+        example = alicloud.vpc.Network("example",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        example_uuid = random.index.Uuid("example")
+        example_project = alicloud.log.Project("example",
+            project_name=std.substr(input=f"tf-example-{std.replace(text=example_uuid['result'],
+                    search='-',
+                    replace='').result}",
+                offset=0,
+                length=16).result,
+            description=name)
+        example_store = alicloud.log.Store("example",
+            project_name=example_project.project_name,
+            logstore_name=name,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        example_flow_log = alicloud.vpc.FlowLog("example",
+            flow_log_name=name,
+            log_store_name=example_store.logstore_name,
+            description=name,
+            traffic_paths=["all"],
+            project_name=example_project.project_name,
+            resource_type="VPC",
+            resource_group_id=default.ids[0],
+            resource_id=example.id,
+            aggregation_interval="1",
+            traffic_type="All")
+        ```
 
         ## Import
 

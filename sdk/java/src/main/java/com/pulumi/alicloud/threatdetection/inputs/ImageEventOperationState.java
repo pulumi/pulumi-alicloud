@@ -16,14 +16,14 @@ public final class ImageEventOperationState extends com.pulumi.resources.Resourc
     public static final ImageEventOperationState Empty = new ImageEventOperationState();
 
     /**
-     * Event Conditions.
+     * The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
      * 
      */
     @Import(name="conditions")
     private @Nullable Output<String> conditions;
 
     /**
-     * @return Event Conditions.
+     * @return The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
      * 
      */
     public Optional<Output<String>> conditions() {
@@ -31,14 +31,14 @@ public final class ImageEventOperationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Image Event Key.
+     * The keyword of the alert item.
      * 
      */
     @Import(name="eventKey")
     private @Nullable Output<String> eventKey;
 
     /**
-     * @return Image Event Key.
+     * @return The keyword of the alert item.
      * 
      */
     public Optional<Output<String>> eventKey() {
@@ -46,14 +46,14 @@ public final class ImageEventOperationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Image Event Name.
+     * The name of the alert item.
      * 
      */
     @Import(name="eventName")
     private @Nullable Output<String> eventName;
 
     /**
-     * @return Image Event Name.
+     * @return The name of the alert item.
      * 
      */
     public Optional<Output<String>> eventName() {
@@ -61,14 +61,14 @@ public final class ImageEventOperationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Image Event Type.
+     * The alert type.
      * 
      */
     @Import(name="eventType")
     private @Nullable Output<String> eventType;
 
     /**
-     * @return Image Event Type.
+     * @return The alert type.
      * 
      */
     public Optional<Output<String>> eventType() {
@@ -76,14 +76,29 @@ public final class ImageEventOperationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Event Operation Code.
+     * The remarks.
+     * 
+     */
+    @Import(name="note")
+    private @Nullable Output<String> note;
+
+    /**
+     * @return The remarks.
+     * 
+     */
+    public Optional<Output<String>> note() {
+        return Optional.ofNullable(this.note);
+    }
+
+    /**
+     * The operation code.
      * 
      */
     @Import(name="operationCode")
     private @Nullable Output<String> operationCode;
 
     /**
-     * @return Event Operation Code.
+     * @return The operation code.
      * 
      */
     public Optional<Output<String>> operationCode() {
@@ -91,18 +106,33 @@ public final class ImageEventOperationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Event Scenarios.
+     * The application scope of the rule.
      * 
      */
     @Import(name="scenarios")
     private @Nullable Output<String> scenarios;
 
     /**
-     * @return Event Scenarios.
+     * @return The application scope of the rule.
      * 
      */
     public Optional<Output<String>> scenarios() {
         return Optional.ofNullable(this.scenarios);
+    }
+
+    /**
+     * The source of the whitelist. Valid values:
+     * 
+     */
+    @Import(name="source")
+    private @Nullable Output<String> source;
+
+    /**
+     * @return The source of the whitelist. Valid values:
+     * 
+     */
+    public Optional<Output<String>> source() {
+        return Optional.ofNullable(this.source);
     }
 
     private ImageEventOperationState() {}
@@ -112,8 +142,10 @@ public final class ImageEventOperationState extends com.pulumi.resources.Resourc
         this.eventKey = $.eventKey;
         this.eventName = $.eventName;
         this.eventType = $.eventType;
+        this.note = $.note;
         this.operationCode = $.operationCode;
         this.scenarios = $.scenarios;
+        this.source = $.source;
     }
 
     public static Builder builder() {
@@ -135,7 +167,7 @@ public final class ImageEventOperationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param conditions Event Conditions.
+         * @param conditions The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
          * 
          * @return builder
          * 
@@ -146,7 +178,7 @@ public final class ImageEventOperationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param conditions Event Conditions.
+         * @param conditions The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
          * 
          * @return builder
          * 
@@ -156,7 +188,7 @@ public final class ImageEventOperationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param eventKey Image Event Key.
+         * @param eventKey The keyword of the alert item.
          * 
          * @return builder
          * 
@@ -167,7 +199,7 @@ public final class ImageEventOperationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param eventKey Image Event Key.
+         * @param eventKey The keyword of the alert item.
          * 
          * @return builder
          * 
@@ -177,7 +209,7 @@ public final class ImageEventOperationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param eventName Image Event Name.
+         * @param eventName The name of the alert item.
          * 
          * @return builder
          * 
@@ -188,7 +220,7 @@ public final class ImageEventOperationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param eventName Image Event Name.
+         * @param eventName The name of the alert item.
          * 
          * @return builder
          * 
@@ -198,7 +230,7 @@ public final class ImageEventOperationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param eventType Image Event Type.
+         * @param eventType The alert type.
          * 
          * @return builder
          * 
@@ -209,7 +241,7 @@ public final class ImageEventOperationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param eventType Image Event Type.
+         * @param eventType The alert type.
          * 
          * @return builder
          * 
@@ -219,7 +251,28 @@ public final class ImageEventOperationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param operationCode Event Operation Code.
+         * @param note The remarks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder note(@Nullable Output<String> note) {
+            $.note = note;
+            return this;
+        }
+
+        /**
+         * @param note The remarks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder note(String note) {
+            return note(Output.of(note));
+        }
+
+        /**
+         * @param operationCode The operation code.
          * 
          * @return builder
          * 
@@ -230,7 +283,7 @@ public final class ImageEventOperationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param operationCode Event Operation Code.
+         * @param operationCode The operation code.
          * 
          * @return builder
          * 
@@ -240,7 +293,7 @@ public final class ImageEventOperationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param scenarios Event Scenarios.
+         * @param scenarios The application scope of the rule.
          * 
          * @return builder
          * 
@@ -251,13 +304,34 @@ public final class ImageEventOperationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param scenarios Event Scenarios.
+         * @param scenarios The application scope of the rule.
          * 
          * @return builder
          * 
          */
         public Builder scenarios(String scenarios) {
             return scenarios(Output.of(scenarios));
+        }
+
+        /**
+         * @param source The source of the whitelist. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder source(@Nullable Output<String> source) {
+            $.source = source;
+            return this;
+        }
+
+        /**
+         * @param source The source of the whitelist. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder source(String source) {
+            return source(Output.of(source));
         }
 
         public ImageEventOperationState build() {

@@ -11,6 +11,27 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.125.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tfexample";
+ * const example = new alicloud.directmail.Receivers("example", {
+ *     receiversAlias: std.format({
+ *         input: "%s@onaliyun.com",
+ *         args: [name],
+ *     }).then(invoke => invoke.result),
+ *     receiversName: name,
+ *     description: name,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Direct Mail Receivers can be imported using the id, e.g.

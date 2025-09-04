@@ -110,6 +110,67 @@ class MembershipAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.243.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        key_name = config.get("keyName")
+        if key_name is None:
+            key_name = "%s"
+        enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
+        cloud_efficiency = alicloud.ecs.get_instance_types(availability_zone=enhanced.zones[0].zone_id,
+            cpu_core_count=4,
+            memory_size=8,
+            kubernetes_node_role="Worker",
+            system_disk_category="cloud_efficiency")
+        default = alicloud.vpc.Network("default", cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            cidr_block="10.4.0.0/24",
+            vpc_id=default.id,
+            zone_id=enhanced.zones[0].zone_id)
+        default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
+            cluster_spec="ack.pro.small",
+            vswitch_ids=[default_switch.id],
+            new_nat_gateway=True,
+            pod_cidr=std.cidrsubnet(input="10.0.0.0/8",
+                newbits=8,
+                netnum=36).result,
+            service_cidr=std.cidrsubnet(input="172.16.0.0/16",
+                newbits=4,
+                netnum=7).result,
+            slb_internet_enabled=True,
+            is_enterprise_security_group=True)
+        default_key_pair = alicloud.ecs.KeyPair("default", key_pair_name=key_name)
+        default_node_pool = alicloud.cs.NodePool("default",
+            node_pool_name=name,
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[default_switch.id],
+            instance_types=[cloud_efficiency.instance_types[0].id],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=default_key_pair.key_pair_name,
+            desired_size="1")
+        default_cluster = alicloud.ackone.Cluster("default",
+            network={
+                "vpc_id": default.id,
+                "vswitches": [default_switch.id],
+            },
+            argocd_enabled=False,
+            opts = pulumi.ResourceOptions(depends_on=[default_managed_kubernetes]))
+        default_membership_attachment = alicloud.ackone.MembershipAttachment("default",
+            cluster_id=default_cluster.id,
+            sub_cluster_id=default_managed_kubernetes.id)
+        ```
+
         ## Import
 
         Ack One Membership Attachment can be imported using the id, which consists of cluster_id and sub_cluster_id, e.g.
@@ -135,6 +196,67 @@ class MembershipAttachment(pulumi.CustomResource):
         For information about Ack One Membership Attachment and how to use it, see [How to attach cluster tp hub](https://www.alibabacloud.com/help/en/ack/distributed-cloud-container-platform-for-kubernetes/developer-reference/api-adcp-2022-01-01-attachclustertohub).
 
         > **NOTE:** Available since v1.243.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        key_name = config.get("keyName")
+        if key_name is None:
+            key_name = "%s"
+        enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
+        cloud_efficiency = alicloud.ecs.get_instance_types(availability_zone=enhanced.zones[0].zone_id,
+            cpu_core_count=4,
+            memory_size=8,
+            kubernetes_node_role="Worker",
+            system_disk_category="cloud_efficiency")
+        default = alicloud.vpc.Network("default", cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            cidr_block="10.4.0.0/24",
+            vpc_id=default.id,
+            zone_id=enhanced.zones[0].zone_id)
+        default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
+            cluster_spec="ack.pro.small",
+            vswitch_ids=[default_switch.id],
+            new_nat_gateway=True,
+            pod_cidr=std.cidrsubnet(input="10.0.0.0/8",
+                newbits=8,
+                netnum=36).result,
+            service_cidr=std.cidrsubnet(input="172.16.0.0/16",
+                newbits=4,
+                netnum=7).result,
+            slb_internet_enabled=True,
+            is_enterprise_security_group=True)
+        default_key_pair = alicloud.ecs.KeyPair("default", key_pair_name=key_name)
+        default_node_pool = alicloud.cs.NodePool("default",
+            node_pool_name=name,
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[default_switch.id],
+            instance_types=[cloud_efficiency.instance_types[0].id],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=default_key_pair.key_pair_name,
+            desired_size="1")
+        default_cluster = alicloud.ackone.Cluster("default",
+            network={
+                "vpc_id": default.id,
+                "vswitches": [default_switch.id],
+            },
+            argocd_enabled=False,
+            opts = pulumi.ResourceOptions(depends_on=[default_managed_kubernetes]))
+        default_membership_attachment = alicloud.ackone.MembershipAttachment("default",
+            cluster_id=default_cluster.id,
+            sub_cluster_id=default_managed_kubernetes.id)
+        ```
 
         ## Import
 

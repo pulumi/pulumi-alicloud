@@ -502,6 +502,60 @@ class WorkspaceDatasetversion(pulumi.CustomResource):
         For information about PAI Workspace Dataset Version and how to use it, see [What is Dataset Version](https://next.api.alibabacloud.com/document/AIWorkSpace/2021-02-04/CreateDatasetVersion).
         > **NOTE:** Available since v1.236.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform_example"
+        default_ai_workspace = alicloud.pai.WorkspaceWorkspace("defaultAiWorkspace",
+            description=name,
+            display_name=name,
+            workspace_name=name,
+            env_types=["prod"])
+        default_dataset = alicloud.pai.WorkspaceDataset("defaultDataset",
+            accessibility="PRIVATE",
+            source_type="USER",
+            data_type="PIC",
+            workspace_id=default_ai_workspace.id,
+            options=json.dumps({
+                "mountPath": "/mnt/data/",
+            }),
+            description=name,
+            source_id="d-xxxxx_v1",
+            uri="oss://ai4d-q9lgxlpwxzqluij66y.oss-cn-hangzhou.aliyuncs.com/",
+            dataset_name=std.format(input="%s1",
+                args=[name]).result,
+            user_id="1511928242963727",
+            data_source_type="OSS",
+            property="DIRECTORY")
+        default = alicloud.pai.WorkspaceDatasetversion("default",
+            options=json.dumps({
+                "mountPath": "/mnt/data/verion/",
+            }),
+            description=name,
+            data_source_type="OSS",
+            source_type="USER",
+            source_id="d-xxxxx_v1",
+            data_size=2068,
+            data_count=1000,
+            labels=[{
+                "key": "key1",
+                "value": "example1",
+            }],
+            uri="oss://ai4d-q9lgxlpwxzqluij66y.oss-cn-hangzhou.aliyuncs.com/",
+            property="DIRECTORY",
+            dataset_id=default_dataset.id)
+        ```
+
         ## Import
 
         PAI Workspace Datasetversion can be imported using the id, e.g.
@@ -551,6 +605,60 @@ class WorkspaceDatasetversion(pulumi.CustomResource):
 
         For information about PAI Workspace Dataset Version and how to use it, see [What is Dataset Version](https://next.api.alibabacloud.com/document/AIWorkSpace/2021-02-04/CreateDatasetVersion).
         > **NOTE:** Available since v1.236.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform_example"
+        default_ai_workspace = alicloud.pai.WorkspaceWorkspace("defaultAiWorkspace",
+            description=name,
+            display_name=name,
+            workspace_name=name,
+            env_types=["prod"])
+        default_dataset = alicloud.pai.WorkspaceDataset("defaultDataset",
+            accessibility="PRIVATE",
+            source_type="USER",
+            data_type="PIC",
+            workspace_id=default_ai_workspace.id,
+            options=json.dumps({
+                "mountPath": "/mnt/data/",
+            }),
+            description=name,
+            source_id="d-xxxxx_v1",
+            uri="oss://ai4d-q9lgxlpwxzqluij66y.oss-cn-hangzhou.aliyuncs.com/",
+            dataset_name=std.format(input="%s1",
+                args=[name]).result,
+            user_id="1511928242963727",
+            data_source_type="OSS",
+            property="DIRECTORY")
+        default = alicloud.pai.WorkspaceDatasetversion("default",
+            options=json.dumps({
+                "mountPath": "/mnt/data/verion/",
+            }),
+            description=name,
+            data_source_type="OSS",
+            source_type="USER",
+            source_id="d-xxxxx_v1",
+            data_size=2068,
+            data_count=1000,
+            labels=[{
+                "key": "key1",
+                "value": "example1",
+            }],
+            uri="oss://ai4d-q9lgxlpwxzqluij66y.oss-cn-hangzhou.aliyuncs.com/",
+            property="DIRECTORY",
+            dataset_id=default_dataset.id)
+        ```
 
         ## Import
 

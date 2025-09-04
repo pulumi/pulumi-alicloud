@@ -325,6 +325,54 @@ class LoadBalancer(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.234.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        region_id = config.get("regionId")
+        if region_id is None:
+            region_id = "cn-wulanchabu"
+        zone_id2 = config.get("zoneId2")
+        if zone_id2 is None:
+            zone_id2 = "cn-wulanchabu-c"
+        zone_id1 = config.get("zoneId1")
+        if zone_id1 is None:
+            zone_id1 = "cn-wulanchabu-b"
+        default = alicloud.resourcemanager.get_resource_groups()
+        defaulti9_axhl = alicloud.vpc.Network("defaulti9Axhl",
+            cidr_block="10.0.0.0/8",
+            vpc_name=name)
+        default9_na_km_l = alicloud.vpc.Switch("default9NaKmL",
+            vpc_id=defaulti9_axhl.id,
+            zone_id=zone_id1,
+            cidr_block="10.0.0.0/24",
+            vswitch_name=std.format(input="%s1",
+                args=[name]).result)
+        default_h4p_kt4 = alicloud.vpc.Switch("defaultH4pKT4",
+            vpc_id=defaulti9_axhl.id,
+            zone_id=zone_id2,
+            cidr_block="10.0.1.0/24",
+            vswitch_name=std.format(input="%s2",
+                args=[name]).result)
+        default_load_balancer = alicloud.gwlb.LoadBalancer("default",
+            vpc_id=defaulti9_axhl.id,
+            load_balancer_name=name,
+            zone_mappings=[{
+                "vswitch_id": default9_na_km_l.id,
+                "zone_id": zone_id1,
+            }],
+            address_ip_version="Ipv4")
+        ```
+
         ## Import
 
         GWLB Load Balancer can be imported using the id, e.g.
@@ -359,6 +407,54 @@ class LoadBalancer(pulumi.CustomResource):
         For information about GWLB Load Balancer and how to use it, see [What is Load Balancer](https://www.alibabacloud.com/help/en/slb/gateway-based-load-balancing-gwlb/developer-reference/api-gwlb-2024-04-15-createloadbalancer).
 
         > **NOTE:** Available since v1.234.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        region_id = config.get("regionId")
+        if region_id is None:
+            region_id = "cn-wulanchabu"
+        zone_id2 = config.get("zoneId2")
+        if zone_id2 is None:
+            zone_id2 = "cn-wulanchabu-c"
+        zone_id1 = config.get("zoneId1")
+        if zone_id1 is None:
+            zone_id1 = "cn-wulanchabu-b"
+        default = alicloud.resourcemanager.get_resource_groups()
+        defaulti9_axhl = alicloud.vpc.Network("defaulti9Axhl",
+            cidr_block="10.0.0.0/8",
+            vpc_name=name)
+        default9_na_km_l = alicloud.vpc.Switch("default9NaKmL",
+            vpc_id=defaulti9_axhl.id,
+            zone_id=zone_id1,
+            cidr_block="10.0.0.0/24",
+            vswitch_name=std.format(input="%s1",
+                args=[name]).result)
+        default_h4p_kt4 = alicloud.vpc.Switch("defaultH4pKT4",
+            vpc_id=defaulti9_axhl.id,
+            zone_id=zone_id2,
+            cidr_block="10.0.1.0/24",
+            vswitch_name=std.format(input="%s2",
+                args=[name]).result)
+        default_load_balancer = alicloud.gwlb.LoadBalancer("default",
+            vpc_id=defaulti9_axhl.id,
+            load_balancer_name=name,
+            zone_mappings=[{
+                "vswitch_id": default9_na_km_l.id,
+                "zone_id": zone_id1,
+            }],
+            address_ip_version="Ipv4")
+        ```
 
         ## Import
 

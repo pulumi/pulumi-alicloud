@@ -170,6 +170,96 @@ class ListenerAclAttachment(pulumi.CustomResource):
 
         > **NOTE:** You can only configure either a whitelist or a blacklist for listener, not at the same time.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.alb.get_zones()
+        default_get_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
+                vpc_id=default_network.id,
+                cidr_block=std.format(input="10.4.%d.0/24",
+                    args=[range["value"] + 1]).result,
+                zone_id=default.zones[range["value"] + 3].id,
+                vswitch_name=std.format(input=f"{name}_%d",
+                    args=[range["value"] + 1]).result))
+        default_load_balancer = alicloud.alb.LoadBalancer("default",
+            vpc_id=default_network.id,
+            address_type="Internet",
+            address_allocated_mode="Fixed",
+            load_balancer_name=name,
+            load_balancer_edition="Standard",
+            resource_group_id=default_get_resource_groups.groups[0].id,
+            load_balancer_billing_config={
+                "pay_type": "PayAsYouGo",
+            },
+            tags={
+                "Created": "TF",
+            },
+            zone_mappings=[
+                {
+                    "vswitch_id": default_switch[0].id,
+                    "zone_id": default_switch[0].zone_id,
+                },
+                {
+                    "vswitch_id": default_switch[1].id,
+                    "zone_id": default_switch[1].zone_id,
+                },
+            ])
+        default_server_group = alicloud.alb.ServerGroup("default",
+            protocol="HTTP",
+            vpc_id=default_network.id,
+            server_group_name=name,
+            resource_group_id=default_get_resource_groups.groups[0].id,
+            health_check_config={
+                "health_check_enabled": False,
+            },
+            sticky_session_config={
+                "sticky_session_enabled": False,
+            },
+            tags={
+                "Created": "TF",
+            })
+        default_listener = alicloud.alb.Listener("default",
+            load_balancer_id=default_load_balancer.id,
+            listener_protocol="HTTP",
+            listener_port=80,
+            listener_description=name,
+            default_actions=[{
+                "type": "ForwardGroup",
+                "forward_group_config": {
+                    "server_group_tuples": [{
+                        "server_group_id": default_server_group.id,
+                    }],
+                },
+            }])
+        default_acl = alicloud.alb.Acl("default",
+            acl_name=name,
+            resource_group_id=default_get_resource_groups.groups[0].id)
+        default_acl_entry_attachment = alicloud.alb.AclEntryAttachment("default",
+            acl_id=default_acl.id,
+            entry="10.0.0.0/24",
+            description=name)
+        default_listener_acl_attachment = alicloud.alb.ListenerAclAttachment("default",
+            acl_id=default_acl.id,
+            listener_id=default_listener.id,
+            acl_type="White")
+        ```
+
         ## Import
 
         ALB Listener Acl Attachment can be imported using the id, e.g.
@@ -202,6 +292,96 @@ class ListenerAclAttachment(pulumi.CustomResource):
         > **NOTE:** You can associate at most three ACLs with a listener.
 
         > **NOTE:** You can only configure either a whitelist or a blacklist for listener, not at the same time.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.alb.get_zones()
+        default_get_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
+                vpc_id=default_network.id,
+                cidr_block=std.format(input="10.4.%d.0/24",
+                    args=[range["value"] + 1]).result,
+                zone_id=default.zones[range["value"] + 3].id,
+                vswitch_name=std.format(input=f"{name}_%d",
+                    args=[range["value"] + 1]).result))
+        default_load_balancer = alicloud.alb.LoadBalancer("default",
+            vpc_id=default_network.id,
+            address_type="Internet",
+            address_allocated_mode="Fixed",
+            load_balancer_name=name,
+            load_balancer_edition="Standard",
+            resource_group_id=default_get_resource_groups.groups[0].id,
+            load_balancer_billing_config={
+                "pay_type": "PayAsYouGo",
+            },
+            tags={
+                "Created": "TF",
+            },
+            zone_mappings=[
+                {
+                    "vswitch_id": default_switch[0].id,
+                    "zone_id": default_switch[0].zone_id,
+                },
+                {
+                    "vswitch_id": default_switch[1].id,
+                    "zone_id": default_switch[1].zone_id,
+                },
+            ])
+        default_server_group = alicloud.alb.ServerGroup("default",
+            protocol="HTTP",
+            vpc_id=default_network.id,
+            server_group_name=name,
+            resource_group_id=default_get_resource_groups.groups[0].id,
+            health_check_config={
+                "health_check_enabled": False,
+            },
+            sticky_session_config={
+                "sticky_session_enabled": False,
+            },
+            tags={
+                "Created": "TF",
+            })
+        default_listener = alicloud.alb.Listener("default",
+            load_balancer_id=default_load_balancer.id,
+            listener_protocol="HTTP",
+            listener_port=80,
+            listener_description=name,
+            default_actions=[{
+                "type": "ForwardGroup",
+                "forward_group_config": {
+                    "server_group_tuples": [{
+                        "server_group_id": default_server_group.id,
+                    }],
+                },
+            }])
+        default_acl = alicloud.alb.Acl("default",
+            acl_name=name,
+            resource_group_id=default_get_resource_groups.groups[0].id)
+        default_acl_entry_attachment = alicloud.alb.AclEntryAttachment("default",
+            acl_id=default_acl.id,
+            entry="10.0.0.0/24",
+            description=name)
+        default_listener_acl_attachment = alicloud.alb.ListenerAclAttachment("default",
+            acl_id=default_acl.id,
+            listener_id=default_listener.id,
+            acl_type="White")
+        ```
 
         ## Import
 

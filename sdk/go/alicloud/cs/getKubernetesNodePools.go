@@ -14,6 +14,138 @@ import (
 // This data source provides Ack Nodepool available to the user.[What is Nodepool](https://next.api.alibabacloud.com/document/CS/2015-12-15/CreateClusterNodePool)
 //
 // > **NOTE:** Available since v1.246.0.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "terraform-example";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// enhanced, err := vpc.GetEnhancedNatAvailableZones(ctx, &vpc.GetEnhancedNatAvailableZonesArgs{
+// }, nil);
+// if err != nil {
+// return err
+// }
+// cloudEfficiency, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+// AvailabilityZone: pulumi.StringRef(enhanced.Zones[0].ZoneId),
+// CpuCoreCount: pulumi.IntRef(4),
+// MemorySize: pulumi.Float64Ref(8),
+// KubernetesNodeRole: pulumi.StringRef("Worker"),
+// SystemDiskCategory: pulumi.StringRef("cloud_efficiency"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+// VpcName: pulumi.String(name),
+// CidrBlock: pulumi.String("10.4.0.0/16"),
+// })
+// if err != nil {
+// return err
+// }
+// defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+// VswitchName: pulumi.String(name),
+// CidrBlock: pulumi.String("10.4.0.0/24"),
+// VpcId: defaultNetwork.ID(),
+// ZoneId: pulumi.String(enhanced.Zones[0].ZoneId),
+// })
+// if err != nil {
+// return err
+// }
+// invokeCidrsubnet, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
+// Input: "10.0.0.0/8",
+// Newbits: 8,
+// Netnum: 36,
+// }, nil)
+// if err != nil {
+// return err
+// }
+// invokeCidrsubnet1, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
+// Input: "172.16.0.0/16",
+// Newbits: 4,
+// Netnum: 7,
+// }, nil)
+// if err != nil {
+// return err
+// }
+// defaultManagedKubernetes, err := cs.NewManagedKubernetes(ctx, "default", &cs.ManagedKubernetesArgs{
+// NamePrefix: pulumi.String(name),
+// ClusterSpec: pulumi.String("ack.pro.small"),
+// VswitchIds: pulumi.StringArray{
+// defaultSwitch.ID(),
+// },
+// NewNatGateway: pulumi.Bool(true),
+// PodCidr: pulumi.String(invokeCidrsubnet.Result),
+// ServiceCidr: pulumi.String(invokeCidrsubnet1.Result),
+// SlbInternetEnabled: pulumi.Bool(true),
+// EnableRrsa: pulumi.Bool(true),
+// })
+// if err != nil {
+// return err
+// }
+// defaultKeyPair, err := ecs.NewKeyPair(ctx, "default", &ecs.KeyPairArgs{
+// KeyPairName: pulumi.String(name),
+// })
+// if err != nil {
+// return err
+// }
+// defaultNodePool, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
+// NodePoolName: pulumi.String("spot_auto_scaling"),
+// ClusterId: defaultManagedKubernetes.ID(),
+// VswitchIds: pulumi.StringArray{
+// defaultSwitch.ID(),
+// },
+// InstanceTypes: pulumi.StringArray{
+// pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
+// },
+// SystemDiskCategory: pulumi.String("cloud_efficiency"),
+// SystemDiskSize: pulumi.Int(40),
+// KeyName: defaultKeyPair.KeyPairName,
+// ScalingConfig: &cs.NodePoolScalingConfigArgs{
+// MinSize: pulumi.Int(1),
+// MaxSize: pulumi.Int(10),
+// Type: pulumi.String("spot"),
+// },
+// SpotStrategy: pulumi.String("SpotWithPriceLimit"),
+// SpotPriceLimits: cs.NodePoolSpotPriceLimitArray{
+// &cs.NodePoolSpotPriceLimitArgs{
+// InstanceType: pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
+// PriceLimit: pulumi.String("0.70"),
+// },
+// },
+// })
+// if err != nil {
+// return err
+// }
+// _default := cs.GetKubernetesNodePoolsOutput(ctx, cs.GetKubernetesNodePoolsOutputArgs{
+// Ids: pulumi.StringArray{
+// defaultNodePool.NodePoolId,
+// },
+// ClusterId: defaultManagedKubernetes.ID(),
+// }, nil);
+// ctx.Export("alicloudCsKubernetesNodePoolExampleId", _default.ApplyT(func(_default cs.GetKubernetesNodePoolsResult) (*string, error) {
+// return &default.Nodepools[0].NodePoolId, nil
+// }).(pulumi.StringPtrOutput))
+// return nil
+// })
+// }
+// ```
 func GetKubernetesNodePools(ctx *pulumi.Context, args *GetKubernetesNodePoolsArgs, opts ...pulumi.InvokeOption) (*GetKubernetesNodePoolsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKubernetesNodePoolsResult

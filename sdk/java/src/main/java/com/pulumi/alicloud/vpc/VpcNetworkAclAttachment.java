@@ -20,6 +20,77 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.193.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.CidrsubnetArgs;
+ * import com.pulumi.alicloud.vpc.NetworkAcl;
+ * import com.pulumi.alicloud.vpc.NetworkAclArgs;
+ * import com.pulumi.alicloud.vpc.VpcNetworkAclAttachment;
+ * import com.pulumi.alicloud.vpc.VpcNetworkAclAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation("VSwitch")
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .cidrBlock("192.168.0.0/16")
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(defaultNetwork.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+ *                 .input(_cidrBlock)
+ *                 .newbits(8)
+ *                 .netnum(2)
+ *                 .build())).applyValue(_invoke -> _invoke.result()))
+ *             .zoneId(default_.zones()[0].id())
+ *             .build());
+ * 
+ *         var defaultNetworkAcl = new NetworkAcl("defaultNetworkAcl", NetworkAclArgs.builder()
+ *             .vpcId(defaultSwitch.vpcId())
+ *             .build());
+ * 
+ *         var defaultVpcNetworkAclAttachment = new VpcNetworkAclAttachment("defaultVpcNetworkAclAttachment", VpcNetworkAclAttachmentArgs.builder()
+ *             .networkAclId(defaultNetworkAcl.id())
+ *             .resourceId(defaultSwitch.id())
+ *             .resourceType("VSwitch")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * VPC Network Acl Attachment can be imported using the id, e.g.

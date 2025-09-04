@@ -45,8 +45,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.integer;
- * import com.pulumi.random.integerArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.oss.BucketAcl;
@@ -94,8 +94,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.integer;
- * import com.pulumi.random.integerArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.oss.inputs.BucketWebsiteArgs;
@@ -141,8 +141,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.integer;
- * import com.pulumi.random.integerArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.oss.BucketAcl;
@@ -199,8 +199,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.integer;
- * import com.pulumi.random.integerArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.oss.inputs.BucketRefererConfigArgs;
@@ -246,6 +246,555 @@ import javax.annotation.Nullable;
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Set lifecycle rule
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.oss.inputs.BucketLifecycleRuleArgs;
+ * import com.pulumi.alicloud.oss.BucketAcl;
+ * import com.pulumi.alicloud.oss.BucketAclArgs;
+ * import com.pulumi.alicloud.oss.inputs.BucketVersioningArgs;
+ * import com.pulumi.alicloud.oss.inputs.BucketAccessMonitorArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         var bucket_lifecycle1 = new Bucket("bucket-lifecycle1", BucketArgs.builder()
+ *             .bucket(String.format("example-lifecycle1-%s", default_.result()))
+ *             .lifecycleRules(            
+ *                 BucketLifecycleRuleArgs.builder()
+ *                     .id("rule-days")
+ *                     .prefix("path1/")
+ *                     .enabled(true)
+ *                     .expirations(BucketLifecycleRuleExpirationArgs.builder()
+ *                         .days(365)
+ *                         .build())
+ *                     .build(),
+ *                 BucketLifecycleRuleArgs.builder()
+ *                     .id("rule-date")
+ *                     .prefix("path2/")
+ *                     .enabled(true)
+ *                     .expirations(BucketLifecycleRuleExpirationArgs.builder()
+ *                         .date("2018-01-12")
+ *                         .build())
+ *                     .build())
+ *             .build());
+ * 
+ *         var bucket_lifecycle1BucketAcl = new BucketAcl("bucket-lifecycle1BucketAcl", BucketAclArgs.builder()
+ *             .bucket(bucket_lifecycle1.bucket())
+ *             .acl("public-read")
+ *             .build());
+ * 
+ *         var bucket_lifecycle2 = new Bucket("bucket-lifecycle2", BucketArgs.builder()
+ *             .bucket(String.format("example-lifecycle2-%s", default_.result()))
+ *             .lifecycleRules(BucketLifecycleRuleArgs.builder()
+ *                 .id("rule-days-transition")
+ *                 .prefix("path3/")
+ *                 .enabled(true)
+ *                 .transitions(                
+ *                     BucketLifecycleRuleTransitionArgs.builder()
+ *                         .days(3)
+ *                         .storageClass("IA")
+ *                         .build(),
+ *                     BucketLifecycleRuleTransitionArgs.builder()
+ *                         .days(30)
+ *                         .storageClass("Archive")
+ *                         .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var bucket_lifecycle2BucketAcl = new BucketAcl("bucket-lifecycle2BucketAcl", BucketAclArgs.builder()
+ *             .bucket(bucket_lifecycle2.bucket())
+ *             .acl("public-read")
+ *             .build());
+ * 
+ *         var bucket_lifecycle3 = new Bucket("bucket-lifecycle3", BucketArgs.builder()
+ *             .bucket(String.format("example-lifecycle3-%s", default_.result()))
+ *             .lifecycleRules(BucketLifecycleRuleArgs.builder()
+ *                 .id("rule-days-transition")
+ *                 .prefix("path3/")
+ *                 .enabled(true)
+ *                 .transitions(                
+ *                     BucketLifecycleRuleTransitionArgs.builder()
+ *                         .createdBeforeDate("2022-11-11")
+ *                         .storageClass("IA")
+ *                         .build(),
+ *                     BucketLifecycleRuleTransitionArgs.builder()
+ *                         .createdBeforeDate("2021-11-11")
+ *                         .storageClass("Archive")
+ *                         .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var bucket_lifecycle3BucketAcl = new BucketAcl("bucket-lifecycle3BucketAcl", BucketAclArgs.builder()
+ *             .bucket(bucket_lifecycle3.bucket())
+ *             .acl("public-read")
+ *             .build());
+ * 
+ *         var bucket_lifecycle4 = new Bucket("bucket-lifecycle4", BucketArgs.builder()
+ *             .bucket(String.format("example-lifecycle4-%s", default_.result()))
+ *             .lifecycleRules(BucketLifecycleRuleArgs.builder()
+ *                 .id("rule-abort-multipart-upload")
+ *                 .prefix("path3/")
+ *                 .enabled(true)
+ *                 .abortMultipartUploads(BucketLifecycleRuleAbortMultipartUploadArgs.builder()
+ *                     .days(128)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var bucket_lifecycle4BucketAcl = new BucketAcl("bucket-lifecycle4BucketAcl", BucketAclArgs.builder()
+ *             .bucket(bucket_lifecycle4.bucket())
+ *             .acl("public-read")
+ *             .build());
+ * 
+ *         var bucket_versioning_lifecycle = new Bucket("bucket-versioning-lifecycle", BucketArgs.builder()
+ *             .bucket(String.format("example-lifecycle5-%s", default_.result()))
+ *             .versioning(BucketVersioningArgs.builder()
+ *                 .status("Enabled")
+ *                 .build())
+ *             .lifecycleRules(BucketLifecycleRuleArgs.builder()
+ *                 .id("rule-versioning")
+ *                 .prefix("path1/")
+ *                 .enabled(true)
+ *                 .expirations(BucketLifecycleRuleExpirationArgs.builder()
+ *                     .expiredObjectDeleteMarker(true)
+ *                     .build())
+ *                 .noncurrentVersionExpirations(BucketLifecycleRuleNoncurrentVersionExpirationArgs.builder()
+ *                     .days(240)
+ *                     .build())
+ *                 .noncurrentVersionTransitions(                
+ *                     BucketLifecycleRuleNoncurrentVersionTransitionArgs.builder()
+ *                         .days(180)
+ *                         .storageClass("Archive")
+ *                         .build(),
+ *                     BucketLifecycleRuleNoncurrentVersionTransitionArgs.builder()
+ *                         .days(60)
+ *                         .storageClass("IA")
+ *                         .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var bucket_versioning_lifecycleBucketAcl = new BucketAcl("bucket-versioning-lifecycleBucketAcl", BucketAclArgs.builder()
+ *             .bucket(bucket_versioning_lifecycle.bucket())
+ *             .acl("private")
+ *             .build());
+ * 
+ *         var bucket_access_monitor_lifecycle = new Bucket("bucket-access-monitor-lifecycle", BucketArgs.builder()
+ *             .bucket(StdFunctions.format(FormatArgs.builder()
+ *                 .input("example-lifecycle6-%s")
+ *                 .args(default_.result())
+ *                 .build()).result())
+ *             .accessMonitor(BucketAccessMonitorArgs.builder()
+ *                 .status("Enabled")
+ *                 .build())
+ *             .lifecycleRules(BucketLifecycleRuleArgs.builder()
+ *                 .id("rule-days-transition")
+ *                 .prefix("path/")
+ *                 .enabled(true)
+ *                 .transitions(BucketLifecycleRuleTransitionArgs.builder()
+ *                     .days(30)
+ *                     .storageClass("IA")
+ *                     .isAccessTime(true)
+ *                     .returnToStdWhenVisit(true)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var bucket_access_monitor_lifecycleBucketAcl = new BucketAcl("bucket-access-monitor-lifecycleBucketAcl", BucketAclArgs.builder()
+ *             .bucket(bucket_access_monitor_lifecycle.bucket())
+ *             .acl("private")
+ *             .build());
+ * 
+ *         var bucket_tag_lifecycle = new Bucket("bucket-tag-lifecycle", BucketArgs.builder()
+ *             .bucket(StdFunctions.format(FormatArgs.builder()
+ *                 .input("example-lifecycle7-%s")
+ *                 .args(default_.result())
+ *                 .build()).result())
+ *             .lifecycleRules(BucketLifecycleRuleArgs.builder()
+ *                 .id("rule-days-transition")
+ *                 .prefix("path/")
+ *                 .enabled(true)
+ *                 .transitions(BucketLifecycleRuleTransitionArgs.builder()
+ *                     .createdBeforeDate("2022-11-11")
+ *                     .storageClass("IA")
+ *                     .build())
+ *                 .build())
+ *             .tags(Map.ofEntries(
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
+ *             ))
+ *             .build());
+ * 
+ *         var bucket_tag_lifecycleBucketAcl = new BucketAcl("bucket-tag-lifecycleBucketAcl", BucketAclArgs.builder()
+ *             .bucket(bucket_tag_lifecycle.bucket())
+ *             .acl("private")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Set bucket policy
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.oss.BucketAcl;
+ * import com.pulumi.alicloud.oss.BucketAclArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         var bucket_policy = new Bucket("bucket-policy", BucketArgs.builder()
+ *             .bucket(String.format("example-policy-%s", default_.result()))
+ *             .policy("""
+ *   {\"Statement\":
+ *       [{\"Action\":
+ *           [\"oss:PutObject\", \"oss:GetObject\", \"oss:DeleteBucket\"],
+ *         \"Effect\":\"Allow\",
+ *         \"Resource\":
+ *             [\"acs:oss:*:*:*\"]}],
+ *    \"Version\":\"1\"}
+ *             """)
+ *             .build());
+ * 
+ *         var defaultBucketAcl = new BucketAcl("defaultBucketAcl", BucketAclArgs.builder()
+ *             .bucket(bucket_policy.bucket())
+ *             .acl("private")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * IA Bucket
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
+ *             .bucket(String.format("example-%s", default_.result()))
+ *             .storageClass("IA")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Set bucket server-side encryption rule
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.oss.inputs.BucketServerSideEncryptionRuleArgs;
+ * import com.pulumi.alicloud.oss.BucketAcl;
+ * import com.pulumi.alicloud.oss.BucketAclArgs;
+ * import com.pulumi.alicloud.kms.Key;
+ * import com.pulumi.alicloud.kms.KeyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         var bucket_sserule = new Bucket("bucket-sserule", BucketArgs.builder()
+ *             .bucket(String.format("terraform-example-%s", default_.result()))
+ *             .serverSideEncryptionRule(BucketServerSideEncryptionRuleArgs.builder()
+ *                 .sseAlgorithm("AES256")
+ *                 .build())
+ *             .build());
+ * 
+ *         var bucket_sseruleBucketAcl = new BucketAcl("bucket-sseruleBucketAcl", BucketAclArgs.builder()
+ *             .bucket(bucket_sserule.bucket())
+ *             .acl("private")
+ *             .build());
+ * 
+ *         var kms = new Key("kms", KeyArgs.builder()
+ *             .description("terraform-example")
+ *             .pendingWindowInDays(7)
+ *             .status("Enabled")
+ *             .build());
+ * 
+ *         var bucket_kms = new Bucket("bucket-kms", BucketArgs.builder()
+ *             .bucket(String.format("terraform-example-kms-%s", default_.result()))
+ *             .serverSideEncryptionRule(BucketServerSideEncryptionRuleArgs.builder()
+ *                 .sseAlgorithm("KMS")
+ *                 .kmsMasterKeyId(kms.id())
+ *                 .build())
+ *             .build());
+ * 
+ *         var bucket_kmsBucketAcl = new BucketAcl("bucket-kmsBucketAcl", BucketAclArgs.builder()
+ *             .bucket(bucket_kms.bucket())
+ *             .acl("private")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Set bucket tags
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.oss.BucketAcl;
+ * import com.pulumi.alicloud.oss.BucketAclArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         var bucket_tags = new Bucket("bucket-tags", BucketArgs.builder()
+ *             .bucket(String.format("terraform-example-%s", default_.result()))
+ *             .tags(Map.ofEntries(
+ *                 Map.entry("key1", "value1"),
+ *                 Map.entry("key2", "value2")
+ *             ))
+ *             .build());
+ * 
+ *         var bucket_tagsBucketAcl = new BucketAcl("bucket-tagsBucketAcl", BucketAclArgs.builder()
+ *             .bucket(bucket_tags.bucket())
+ *             .acl("private")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Enable bucket versioning
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.oss.inputs.BucketVersioningArgs;
+ * import com.pulumi.alicloud.oss.BucketAcl;
+ * import com.pulumi.alicloud.oss.BucketAclArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         var bucket_versioning = new Bucket("bucket-versioning", BucketArgs.builder()
+ *             .bucket(String.format("terraform-example-%s", default_.result()))
+ *             .versioning(BucketVersioningArgs.builder()
+ *                 .status("Enabled")
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultBucketAcl = new BucketAcl("defaultBucketAcl", BucketAclArgs.builder()
+ *             .bucket(bucket_versioning.bucket())
+ *             .acl("private")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Set bucket redundancy type
+ * 
+ * Set bucket accelerate configuration
+ * 
+ * Set bucket resource group id
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .nameRegex("default")
+ *             .build());
+ * 
+ *         var bucket_accelerate = new Bucket("bucket-accelerate", BucketArgs.builder()
+ *             .bucket(String.format("terraform-example-%s", defaultInteger.result()))
+ *             .resourceGroupId(default_.groups()[0].id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,34 +18,14 @@ public final class DefenseTemplateArgs extends com.pulumi.resources.ResourceArgs
     public static final DefenseTemplateArgs Empty = new DefenseTemplateArgs();
 
     /**
-     * The module to which the protection rule that you want to create belongs. Value:
-     * - **waf_group**: the basic protection rule module.
-     * - **antiscan**: the scan protection module.
-     * - **ip_blacklist**: the IP address blacklist module.
-     * - **custom_acl**: the custom rule module.
-     * - **whitelist**: the whitelist module.
-     * - **region_block**: the region blacklist module.
-     * - **custom_response**: the custom response module.
-     * - **cc**: the HTTP flood protection module.
-     * - **tamperproof**: the website tamper-proofing module.
-     * - **dlp**: the data leakage prevention module.
+     * The WAF protection scenario to be created. Valid values:
      * 
      */
     @Import(name="defenseScene", required=true)
     private Output<String> defenseScene;
 
     /**
-     * @return The module to which the protection rule that you want to create belongs. Value:
-     * - **waf_group**: the basic protection rule module.
-     * - **antiscan**: the scan protection module.
-     * - **ip_blacklist**: the IP address blacklist module.
-     * - **custom_acl**: the custom rule module.
-     * - **whitelist**: the whitelist module.
-     * - **region_block**: the region blacklist module.
-     * - **custom_response**: the custom response module.
-     * - **cc**: the HTTP flood protection module.
-     * - **tamperproof**: the website tamper-proofing module.
-     * - **dlp**: the data leakage prevention module.
+     * @return The WAF protection scenario to be created. Valid values:
      * 
      */
     public Output<String> defenseScene() {
@@ -67,14 +48,14 @@ public final class DefenseTemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The description of the protection rule template. .
+     * The description of the protection rule template.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the protection rule template. .
+     * @return The description of the protection rule template.
      * 
      */
     public Optional<Output<String>> description() {
@@ -82,14 +63,14 @@ public final class DefenseTemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The ID of the Web Application Firewall (WAF) instance. .
+     * The ID of the Web Application Firewall (WAF) instance.
      * 
      */
     @Import(name="instanceId", required=true)
     private Output<String> instanceId;
 
     /**
-     * @return The ID of the Web Application Firewall (WAF) instance. .
+     * @return The ID of the Web Application Firewall (WAF) instance.
      * 
      */
     public Output<String> instanceId() {
@@ -97,14 +78,14 @@ public final class DefenseTemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The ID of the Alibaba Cloud resource group. .
+     * The ID of the Alibaba Cloud resource group.
      * 
      */
     @Import(name="resourceManagerResourceGroupId")
     private @Nullable Output<String> resourceManagerResourceGroupId;
 
     /**
-     * @return The ID of the Alibaba Cloud resource group. .
+     * @return The ID of the Alibaba Cloud resource group.
      * 
      */
     public Optional<Output<String>> resourceManagerResourceGroupId() {
@@ -112,9 +93,22 @@ public final class DefenseTemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
+     * 
+     */
+    @Import(name="resources")
+    private @Nullable Output<List<String>> resources;
+
+    /**
+     * @return The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
+     * 
+     */
+    public Optional<Output<List<String>>> resources() {
+        return Optional.ofNullable(this.resources);
+    }
+
+    /**
      * The status of the protection rule template. Valid values:
-     * - **0**: disabled.
-     * - **1**: enabled.
      * 
      */
     @Import(name="status", required=true)
@@ -122,8 +116,6 @@ public final class DefenseTemplateArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return The status of the protection rule template. Valid values:
-     * - **0**: disabled.
-     * - **1**: enabled.
      * 
      */
     public Output<String> status() {
@@ -131,14 +123,14 @@ public final class DefenseTemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The origin of the protection rule template that you want to create. Set the value to **custom**. The value specifies that the protection rule template is a custom template. .
+     * The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
      * 
      */
     @Import(name="templateOrigin", required=true)
     private Output<String> templateOrigin;
 
     /**
-     * @return The origin of the protection rule template that you want to create. Set the value to **custom**. The value specifies that the protection rule template is a custom template. .
+     * @return The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
      * 
      */
     public Output<String> templateOrigin() {
@@ -172,6 +164,7 @@ public final class DefenseTemplateArgs extends com.pulumi.resources.ResourceArgs
         this.description = $.description;
         this.instanceId = $.instanceId;
         this.resourceManagerResourceGroupId = $.resourceManagerResourceGroupId;
+        this.resources = $.resources;
         this.status = $.status;
         this.templateOrigin = $.templateOrigin;
         this.templateType = $.templateType;
@@ -196,17 +189,7 @@ public final class DefenseTemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param defenseScene The module to which the protection rule that you want to create belongs. Value:
-         * - **waf_group**: the basic protection rule module.
-         * - **antiscan**: the scan protection module.
-         * - **ip_blacklist**: the IP address blacklist module.
-         * - **custom_acl**: the custom rule module.
-         * - **whitelist**: the whitelist module.
-         * - **region_block**: the region blacklist module.
-         * - **custom_response**: the custom response module.
-         * - **cc**: the HTTP flood protection module.
-         * - **tamperproof**: the website tamper-proofing module.
-         * - **dlp**: the data leakage prevention module.
+         * @param defenseScene The WAF protection scenario to be created. Valid values:
          * 
          * @return builder
          * 
@@ -217,17 +200,7 @@ public final class DefenseTemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param defenseScene The module to which the protection rule that you want to create belongs. Value:
-         * - **waf_group**: the basic protection rule module.
-         * - **antiscan**: the scan protection module.
-         * - **ip_blacklist**: the IP address blacklist module.
-         * - **custom_acl**: the custom rule module.
-         * - **whitelist**: the whitelist module.
-         * - **region_block**: the region blacklist module.
-         * - **custom_response**: the custom response module.
-         * - **cc**: the HTTP flood protection module.
-         * - **tamperproof**: the website tamper-proofing module.
-         * - **dlp**: the data leakage prevention module.
+         * @param defenseScene The WAF protection scenario to be created. Valid values:
          * 
          * @return builder
          * 
@@ -258,7 +231,7 @@ public final class DefenseTemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param description The description of the protection rule template. .
+         * @param description The description of the protection rule template.
          * 
          * @return builder
          * 
@@ -269,7 +242,7 @@ public final class DefenseTemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param description The description of the protection rule template. .
+         * @param description The description of the protection rule template.
          * 
          * @return builder
          * 
@@ -279,7 +252,7 @@ public final class DefenseTemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param instanceId The ID of the Web Application Firewall (WAF) instance. .
+         * @param instanceId The ID of the Web Application Firewall (WAF) instance.
          * 
          * @return builder
          * 
@@ -290,7 +263,7 @@ public final class DefenseTemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param instanceId The ID of the Web Application Firewall (WAF) instance. .
+         * @param instanceId The ID of the Web Application Firewall (WAF) instance.
          * 
          * @return builder
          * 
@@ -300,7 +273,7 @@ public final class DefenseTemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param resourceManagerResourceGroupId The ID of the Alibaba Cloud resource group. .
+         * @param resourceManagerResourceGroupId The ID of the Alibaba Cloud resource group.
          * 
          * @return builder
          * 
@@ -311,7 +284,7 @@ public final class DefenseTemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param resourceManagerResourceGroupId The ID of the Alibaba Cloud resource group. .
+         * @param resourceManagerResourceGroupId The ID of the Alibaba Cloud resource group.
          * 
          * @return builder
          * 
@@ -321,9 +294,38 @@ public final class DefenseTemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param resources The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resources(@Nullable Output<List<String>> resources) {
+            $.resources = resources;
+            return this;
+        }
+
+        /**
+         * @param resources The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resources(List<String> resources) {
+            return resources(Output.of(resources));
+        }
+
+        /**
+         * @param resources The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resources(String... resources) {
+            return resources(List.of(resources));
+        }
+
+        /**
          * @param status The status of the protection rule template. Valid values:
-         * - **0**: disabled.
-         * - **1**: enabled.
          * 
          * @return builder
          * 
@@ -335,8 +337,6 @@ public final class DefenseTemplateArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param status The status of the protection rule template. Valid values:
-         * - **0**: disabled.
-         * - **1**: enabled.
          * 
          * @return builder
          * 
@@ -346,7 +346,7 @@ public final class DefenseTemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param templateOrigin The origin of the protection rule template that you want to create. Set the value to **custom**. The value specifies that the protection rule template is a custom template. .
+         * @param templateOrigin The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class DefenseTemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param templateOrigin The origin of the protection rule template that you want to create. Set the value to **custom**. The value specifies that the protection rule template is a custom template. .
+         * @param templateOrigin The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
          * 
          * @return builder
          * 

@@ -11,6 +11,75 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.200.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const _default = alicloud.alb.getZones({});
+ * const defaultGetResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch: alicloud.vpc.Switch[] = [];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     defaultSwitch.push(new alicloud.vpc.Switch(`default-${range.value}`, {
+ *         vpcId: defaultNetwork.id,
+ *         cidrBlock: std.format({
+ *             input: "10.4.%d.0/24",
+ *             args: [range.value + 1],
+ *         }).then(invoke => invoke.result),
+ *         zoneId: _default.then(_default => _default.zones[range.value].id),
+ *         vswitchName: std.format({
+ *             input: `${name}_%d`,
+ *             args: [range.value + 1],
+ *         }).then(invoke => invoke.result),
+ *     }));
+ * }
+ * const defaultLoadBalancer = new alicloud.alb.LoadBalancer("default", {
+ *     vpcId: defaultNetwork.id,
+ *     addressType: "Internet",
+ *     addressAllocatedMode: "Fixed",
+ *     loadBalancerName: name,
+ *     loadBalancerEdition: "Basic",
+ *     resourceGroupId: defaultGetResourceGroups.then(defaultGetResourceGroups => defaultGetResourceGroups.groups?.[0]?.id),
+ *     loadBalancerBillingConfig: {
+ *         payType: "PayAsYouGo",
+ *     },
+ *     tags: {
+ *         Created: "TF",
+ *     },
+ *     zoneMappings: [
+ *         {
+ *             vswitchId: defaultSwitch[0].id,
+ *             zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *         },
+ *         {
+ *             vswitchId: defaultSwitch[1].id,
+ *             zoneId: _default.then(_default => _default.zones?.[1]?.id),
+ *         },
+ *     ],
+ *     modificationProtectionConfig: {
+ *         status: "NonProtection",
+ *     },
+ * });
+ * const defaultCommonBandwithPackage = new alicloud.vpc.CommonBandwithPackage("default", {
+ *     bandwidth: "3",
+ *     internetChargeType: "PayByBandwidth",
+ * });
+ * const defaultLoadBalancerCommonBandwidthPackageAttachment = new alicloud.alb.LoadBalancerCommonBandwidthPackageAttachment("default", {
+ *     bandwidthPackageId: defaultCommonBandwithPackage.id,
+ *     loadBalancerId: defaultLoadBalancer.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Alb Load Balancer Common Bandwidth Package Attachment can be imported using the id, e.g.

@@ -9,6 +9,69 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ * });
+ * const defaultManagedKubernetes = new alicloud.cs.ManagedKubernetes("default", {
+ *     namePrefix: name,
+ *     clusterSpec: "ack.pro.small",
+ *     workerVswitchIds: [defaultSwitch.id],
+ *     newNatGateway: false,
+ *     podCidr: std.cidrsubnet({
+ *         input: "10.0.0.0/8",
+ *         newbits: 8,
+ *         netnum: 36,
+ *     }).then(invoke => invoke.result),
+ *     serviceCidr: std.cidrsubnet({
+ *         input: "172.16.0.0/16",
+ *         newbits: 4,
+ *         netnum: 7,
+ *     }).then(invoke => invoke.result),
+ *     slbInternetEnabled: true,
+ *     addons: [{
+ *         name: "logtail-ds",
+ *         config: JSON.stringify({
+ *             IngressDashboardEnabled: "true",
+ *         }),
+ *         disabled: false,
+ *     }],
+ * });
+ * // data source provides the information of available addons
+ * const defaultGetKubernetesAddons = alicloud.cs.getKubernetesAddonsOutput({
+ *     clusterId: defaultManagedKubernetes.id,
+ *     nameRegex: "logtail-ds",
+ * });
+ * // Manage addon resource
+ * const logtail_ds = new alicloud.cs.KubernetesAddon("logtail-ds", {
+ *     clusterId: defaultManagedKubernetes.id,
+ *     name: "logtail-ds",
+ *     version: "v1.6.0.0-aliyun",
+ *     config: JSON.stringify({}),
+ * });
+ * ```
+ * **Installing of addon**
+ * When a cluster is created, some system addons and those specified at the time of cluster creation will be installed, so when an addon resource is applied:
+ * * If the addon already exists in the cluster and its version is the same as the specified version, it will be skipped and will not be reinstalled.
+ * * If the addon already exists in the cluster and its version is different from the specified version, the addon will be upgraded.
+ * * If the addon does not exist in the cluster, it will be installed.
+ *
  * ## Import
  *
  * Cluster addon can be imported by cluster id and addon name. Then write the addon.tf file according to the result of `pulumi preview`.

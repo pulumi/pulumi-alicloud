@@ -192,7 +192,7 @@ class Policy(pulumi.CustomResource):
             policy_name=name,
             policy_desc=name,
             user_type="USER",
-            policy_content="\\x09\\x09{\\"tags\\":{\\"CostCenter\\":{\\"tag_value\\":{\\"@@assign\\":[\\"Beijing\\",\\"Shanghai\\"]},\\"tag_key\\":{\\"@@assign\\":\\"CostCenter\\"}}}}\\n")
+            policy_content="\\\\t\\\\t{\\\\\\"tags\\\\\\":{\\\\\\"CostCenter\\\\\\":{\\\\\\"tag_value\\\\\\":{\\\\\\"@@assign\\\\\\":[\\\\\\"Beijing\\\\\\",\\\\\\"Shanghai\\\\\\"]},\\\\\\"tag_key\\\\\\":{\\\\\\"@@assign\\\\\\":\\\\\\"CostCenter\\\\\\"}}}}\\n")
         ```
 
         ## Import
@@ -239,7 +239,7 @@ class Policy(pulumi.CustomResource):
             policy_name=name,
             policy_desc=name,
             user_type="USER",
-            policy_content="\\x09\\x09{\\"tags\\":{\\"CostCenter\\":{\\"tag_value\\":{\\"@@assign\\":[\\"Beijing\\",\\"Shanghai\\"]},\\"tag_key\\":{\\"@@assign\\":\\"CostCenter\\"}}}}\\n")
+            policy_content="\\\\t\\\\t{\\\\\\"tags\\\\\\":{\\\\\\"CostCenter\\\\\\":{\\\\\\"tag_value\\\\\\":{\\\\\\"@@assign\\\\\\":[\\\\\\"Beijing\\\\\\",\\\\\\"Shanghai\\\\\\"]},\\\\\\"tag_key\\\\\\":{\\\\\\"@@assign\\\\\\":\\\\\\"CostCenter\\\\\\"}}}}\\n")
         ```
 
         ## Import

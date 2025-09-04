@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides a list of KMS aliases in an Alibaba Cloud account according to the specified filters.
  *
- * > **NOTE:** Available in v1.79.0+.
+ * > **NOTE:** Available since v1.79.0.
  *
  * ## Example Usage
  *
@@ -20,9 +20,9 @@ import * as utilities from "../utilities";
  * // Declare the data source
  * const kmsAliases = alicloud.kms.getAliases({
  *     ids: ["d89e8a53-b708-41aa-8c67-6873axxx"],
- *     nameRegex: "alias/tf-testKmsAlias_123",
+ *     nameRegex: "alias/tf-example",
  * });
- * export const firstKeyId = kmsKeysDs.keys[0].id;
+ * export const firstKeyId = kmsAliases.then(kmsAliases => kmsAliases.aliases?.[0]?.id);
  * ```
  */
 export function getAliases(args?: GetAliasesArgs, opts?: pulumi.InvokeOptions): Promise<GetAliasesResult> {
@@ -79,7 +79,7 @@ export interface GetAliasesResult {
 /**
  * This data source provides a list of KMS aliases in an Alibaba Cloud account according to the specified filters.
  *
- * > **NOTE:** Available in v1.79.0+.
+ * > **NOTE:** Available since v1.79.0.
  *
  * ## Example Usage
  *
@@ -90,9 +90,9 @@ export interface GetAliasesResult {
  * // Declare the data source
  * const kmsAliases = alicloud.kms.getAliases({
  *     ids: ["d89e8a53-b708-41aa-8c67-6873axxx"],
- *     nameRegex: "alias/tf-testKmsAlias_123",
+ *     nameRegex: "alias/tf-example",
  * });
- * export const firstKeyId = kmsKeysDs.keys[0].id;
+ * export const firstKeyId = kmsAliases.then(kmsAliases => kmsAliases.aliases?.[0]?.id);
  * ```
  */
 export function getAliasesOutput(args?: GetAliasesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAliasesResult> {

@@ -12,6 +12,62 @@ import * as utilities from "../utilities";
  * For information about PAI Workspace Dataset Version and how to use it, see [What is Dataset Version](https://next.api.alibabacloud.com/document/AIWorkSpace/2021-02-04/CreateDatasetVersion).
  * > **NOTE:** Available since v1.236.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform_example";
+ * const defaultAiWorkspace = new alicloud.pai.WorkspaceWorkspace("defaultAiWorkspace", {
+ *     description: name,
+ *     displayName: name,
+ *     workspaceName: name,
+ *     envTypes: ["prod"],
+ * });
+ * const defaultDataset = new alicloud.pai.WorkspaceDataset("defaultDataset", {
+ *     accessibility: "PRIVATE",
+ *     sourceType: "USER",
+ *     dataType: "PIC",
+ *     workspaceId: defaultAiWorkspace.id,
+ *     options: JSON.stringify({
+ *         mountPath: "/mnt/data/",
+ *     }),
+ *     description: name,
+ *     sourceId: "d-xxxxx_v1",
+ *     uri: "oss://ai4d-q9lgxlpwxzqluij66y.oss-cn-hangzhou.aliyuncs.com/",
+ *     datasetName: std.format({
+ *         input: "%s1",
+ *         args: [name],
+ *     }).then(invoke => invoke.result),
+ *     userId: "1511928242963727",
+ *     dataSourceType: "OSS",
+ *     property: "DIRECTORY",
+ * });
+ * const _default = new alicloud.pai.WorkspaceDatasetversion("default", {
+ *     options: JSON.stringify({
+ *         mountPath: "/mnt/data/verion/",
+ *     }),
+ *     description: name,
+ *     dataSourceType: "OSS",
+ *     sourceType: "USER",
+ *     sourceId: "d-xxxxx_v1",
+ *     dataSize: 2068,
+ *     dataCount: 1000,
+ *     labels: [{
+ *         key: "key1",
+ *         value: "example1",
+ *     }],
+ *     uri: "oss://ai4d-q9lgxlpwxzqluij66y.oss-cn-hangzhou.aliyuncs.com/",
+ *     property: "DIRECTORY",
+ *     datasetId: defaultDataset.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * PAI Workspace Datasetversion can be imported using the id, e.g.

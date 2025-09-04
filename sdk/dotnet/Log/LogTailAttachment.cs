@@ -61,16 +61,16 @@ namespace Pulumi.AliCloud.Log
     ///         InputType = "file",
     ///         Name = "terraform-example",
     ///         OutputType = "LogService",
-    ///         InputDetail = @"  	{
-    /// 		""logPath"": ""/logPath"",
-    /// 		""filePattern"": ""access.log"",
-    /// 		""logType"": ""json_log"",
-    /// 		""topicFormat"": ""default"",
-    /// 		""discardUnmatch"": false,
-    /// 		""enableRawLog"": true,
-    /// 		""fileEncoding"": ""gbk"",
-    /// 		""maxDepth"": 10
-    /// 	}
+    ///         InputDetail = @"  \t{
+    /// \t\t\""logPath\"": \""/logPath\"",
+    /// \t\t\""filePattern\"": \""access.log\"",
+    /// \t\t\""logType\"": \""json_log\"",
+    /// \t\t\""topicFormat\"": \""default\"",
+    /// \t\t\""discardUnmatch\"": false,
+    /// \t\t\""enableRawLog\"": true,
+    /// \t\t\""fileEncoding\"": \""gbk\"",
+    /// \t\t\""maxDepth\"": 10
+    /// \t}
     /// ",
     ///     });
     /// 

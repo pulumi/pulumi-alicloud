@@ -55,7 +55,7 @@ import * as utilities from "../utilities";
  *     vswitchId: defaultSwitch.id,
  *     securityGroup: defaultSecurityGroup.id,
  *     config: `  {
- *     "enable.acl": "true"
+ *     \\"enable.acl\\": \\"true\\"
  *   }
  * `,
  * });

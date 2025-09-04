@@ -20,6 +20,117 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.93.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.cs.ManagedKubernetes;
+ * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.CidrsubnetArgs;
+ * import com.pulumi.alicloud.cs.NodePool;
+ * import com.pulumi.alicloud.cs.NodePoolArgs;
+ * import com.pulumi.alicloud.edas.K8sCluster;
+ * import com.pulumi.alicloud.edas.K8sClusterArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf-example");
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation("VSwitch")
+ *             .build());
+ * 
+ *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex("^ubuntu_18.*64")
+ *             .mostRecent(true)
+ *             .owners("system")
+ *             .build());
+ * 
+ *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(default_.zones()[0].id())
+ *             .cpuCoreCount(4)
+ *             .memorySize(8)
+ *             .kubernetesNodeRole("Worker")
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("10.4.0.0/16")
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vswitchName(name)
+ *             .cidrBlock("10.4.0.0/24")
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(default_.zones()[0].id())
+ *             .build());
+ * 
+ *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+ *             .namePrefix(name)
+ *             .clusterSpec("ack.pro.small")
+ *             .workerVswitchIds(defaultSwitch.id())
+ *             .newNatGateway(true)
+ *             .podCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+ *                 .input("10.0.0.0/8")
+ *                 .newbits(8)
+ *                 .netnum(36)
+ *                 .build()).result())
+ *             .serviceCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+ *                 .input("172.16.0.0/16")
+ *                 .newbits(4)
+ *                 .netnum(7)
+ *                 .build()).result())
+ *             .slbInternetEnabled(true)
+ *             .build());
+ * 
+ *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
+ *             .name(name)
+ *             .clusterId(defaultManagedKubernetes.id())
+ *             .vswitchIds(defaultSwitch.id())
+ *             .instanceTypes(defaultGetInstanceTypes.instanceTypes()[0].id())
+ *             .systemDiskCategory("cloud_efficiency")
+ *             .systemDiskSize(40)
+ *             .desiredSize("2")
+ *             .build());
+ * 
+ *         var defaultK8sCluster = new K8sCluster("defaultK8sCluster", K8sClusterArgs.builder()
+ *             .csClusterId(defaultNodePool.clusterId())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * EDAS cluster can be imported using the id, e.g.

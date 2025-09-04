@@ -13,6 +13,140 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.133.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const _default = alicloud.alb.getZones({});
+ * const defaultGetResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultGetInstanceTypes = _default.then(_default => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: _default.zones?.[0]?.id,
+ *     cpuCoreCount: 1,
+ *     memorySize: 2,
+ * }));
+ * const defaultGetImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_18.*64",
+ *     owners: "system",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch: alicloud.vpc.Switch[] = [];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     defaultSwitch.push(new alicloud.vpc.Switch(`default-${range.value}`, {
+ *         vpcId: defaultNetwork.id,
+ *         cidrBlock: std.format({
+ *             input: "10.4.%d.0/24",
+ *             args: [range.value + 1],
+ *         }).then(invoke => invoke.result),
+ *         zoneId: _default.then(_default => _default.zones[range.value].id),
+ *         vswitchName: std.format({
+ *             input: `${name}_%d`,
+ *             args: [range.value + 1],
+ *         }).then(invoke => invoke.result),
+ *     }));
+ * }
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     securityGroupName: name,
+ *     description: name,
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultLoadBalancer = new alicloud.alb.LoadBalancer("default", {
+ *     vpcId: defaultNetwork.id,
+ *     addressType: "Internet",
+ *     addressAllocatedMode: "Fixed",
+ *     loadBalancerName: name,
+ *     loadBalancerEdition: "Basic",
+ *     resourceGroupId: defaultGetResourceGroups.then(defaultGetResourceGroups => defaultGetResourceGroups.groups?.[0]?.id),
+ *     loadBalancerBillingConfig: {
+ *         payType: "PayAsYouGo",
+ *     },
+ *     tags: {
+ *         Created: "TF",
+ *     },
+ *     zoneMappings: [
+ *         {
+ *             vswitchId: defaultSwitch[0].id,
+ *             zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *         },
+ *         {
+ *             vswitchId: defaultSwitch[1].id,
+ *             zoneId: _default.then(_default => _default.zones?.[1]?.id),
+ *         },
+ *     ],
+ *     modificationProtectionConfig: {
+ *         status: "NonProtection",
+ *     },
+ * });
+ * const defaultInstance = new alicloud.ecs.Instance("default", {
+ *     availabilityZone: _default.then(_default => _default.zones?.[0]?.id),
+ *     instanceName: name,
+ *     imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.images?.[0]?.id),
+ *     instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
+ *     securityGroups: [defaultSecurityGroup.id],
+ *     vswitchId: defaultSwitch[0].id,
+ * });
+ * const defaultServerGroup = new alicloud.alb.ServerGroup("default", {
+ *     protocol: "HTTP",
+ *     vpcId: defaultNetwork.id,
+ *     serverGroupName: name,
+ *     resourceGroupId: defaultGetResourceGroups.then(defaultGetResourceGroups => defaultGetResourceGroups.groups?.[0]?.id),
+ *     healthCheckConfig: {
+ *         healthCheckConnectPort: 46325,
+ *         healthCheckEnabled: true,
+ *         healthCheckHost: "tf-example.com",
+ *         healthCheckCodes: [
+ *             "http_2xx",
+ *             "http_3xx",
+ *             "http_4xx",
+ *         ],
+ *         healthCheckHttpVersion: "HTTP1.1",
+ *         healthCheckInterval: 2,
+ *         healthCheckMethod: "HEAD",
+ *         healthCheckPath: "/tf-example",
+ *         healthCheckProtocol: "HTTP",
+ *         healthCheckTimeout: 5,
+ *         healthyThreshold: 3,
+ *         unhealthyThreshold: 3,
+ *     },
+ *     stickySessionConfig: {
+ *         stickySessionEnabled: true,
+ *         cookie: "tf-example",
+ *         stickySessionType: "Server",
+ *     },
+ *     servers: [{
+ *         description: name,
+ *         port: 80,
+ *         serverId: defaultInstance.id,
+ *         serverIp: defaultInstance.privateIp,
+ *         serverType: "Ecs",
+ *         weight: 10,
+ *     }],
+ * });
+ * const defaultListener = new alicloud.alb.Listener("default", {
+ *     loadBalancerId: defaultLoadBalancer.id,
+ *     listenerProtocol: "HTTP",
+ *     listenerPort: 443,
+ *     listenerDescription: name,
+ *     defaultActions: [{
+ *         type: "ForwardGroup",
+ *         forwardGroupConfig: {
+ *             serverGroupTuples: [{
+ *                 serverGroupId: defaultServerGroup.id,
+ *             }],
+ *         },
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Application Load Balancer (ALB) Listener can be imported using the id, e.g.

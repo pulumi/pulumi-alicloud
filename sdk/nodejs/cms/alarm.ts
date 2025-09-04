@@ -67,8 +67,8 @@ import * as utilities from "../utilities";
  *     effectiveInterval: "06:00-20:00",
  *     metricDimensions: pulumi.interpolate`  [
  *     {
- *       "instanceId": "${defaultInstance.id}",
- *       "device": "/dev/vda1"
+ *       \"instanceId\": \"${defaultInstance.id}\",
+ *       \"device\": \"/dev/vda1\"
  *     }
  *   ]
  * `,

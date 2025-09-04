@@ -63,12 +63,12 @@ import javax.annotation.Nullable;
  *             .serviceName("com.aliyun.cn-hangzhou.oss")
  *             .policyDocument("""
  *         {
- *           "Version": "1",
- *           "Statement": [{
- *             "Effect": "Allow",
- *             "Resource": ["*"],
- *             "Action": ["*"],
- *             "Principal": ["*"]
+ *           \"Version\": \"1\",
+ *           \"Statement\": [{
+ *             \"Effect\": \"Allow\",
+ *             \"Resource\": [\"*\"],
+ *             \"Action\": [\"*\"],
+ *             \"Principal\": [\"*\"]
  *           }]
  *         }
  *             """)

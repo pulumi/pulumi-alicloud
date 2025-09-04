@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MscSubSubscription{}
 	case "alicloud:index/mscSubWebhook:MscSubWebhook":
 		r = &MscSubWebhook{}
+	case "alicloud:index/starRocksInstance:StarRocksInstance":
+		r = &StarRocksInstance{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -71,6 +73,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"index/mscSubWebhook",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"index/starRocksInstance",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

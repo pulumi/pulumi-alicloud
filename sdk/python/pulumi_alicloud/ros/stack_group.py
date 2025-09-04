@@ -22,51 +22,62 @@ __all__ = ['StackGroupArgs', 'StackGroup']
 class StackGroupArgs:
     def __init__(__self__, *,
                  stack_group_name: pulumi.Input[_builtins.str],
-                 account_ids: Optional[pulumi.Input[_builtins.str]] = None,
                  administration_role_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_deployment: Optional[pulumi.Input['StackGroupAutoDeploymentArgs']] = None,
+                 capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  execution_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation_preferences: Optional[pulumi.Input[_builtins.str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['StackGroupParameterArgs']]]] = None,
-                 region_ids: Optional[pulumi.Input[_builtins.str]] = None,
+                 permission_model: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  template_body: Optional[pulumi.Input[_builtins.str]] = None,
+                 template_id: Optional[pulumi.Input[_builtins.str]] = None,
                  template_url: Optional[pulumi.Input[_builtins.str]] = None,
                  template_version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a StackGroup resource.
-        :param pulumi.Input[_builtins.str] stack_group_name: The name of the stack group. The name must be unique in a region.
-        :param pulumi.Input[_builtins.str] account_ids: The list of target account IDs, in JSON format. A maximum of 20 accounts can be specified.
-        :param pulumi.Input[_builtins.str] administration_role_name: The name of the RAM administrator role assumed by ROS. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+        :param pulumi.Input[_builtins.str] stack_group_name: StackGroupName
+        :param pulumi.Input[_builtins.str] administration_role_name: The name of the RAM role that you specify for the administrator account in ROS when you create the self-managed stack group. If you do not specify this parameter, the default value AliyunROSStackGroupAdministrationRole is used. You can use the administrator role in ROS to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks that correspond to stack instances in the stack group.
+        :param pulumi.Input['StackGroupAutoDeploymentArgs'] auto_deployment: Automatic deployment setting information. Description
+               This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `auto_deployment` below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] capabilities: The list of resource stack group options. The maximum length is 1.
         :param pulumi.Input[_builtins.str] description: The description of the stack group.
-        :param pulumi.Input[_builtins.str] execution_role_name: The name of the RAM execution role assumed by the administrator role. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
-        :param pulumi.Input[_builtins.str] operation_description: The description of the operation.
-        :param pulumi.Input[_builtins.str] operation_preferences: The operation settings, in JSON format.
-        :param pulumi.Input[Sequence[pulumi.Input['StackGroupParameterArgs']]] parameters: The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
-        :param pulumi.Input[_builtins.str] region_ids: The list of target regions, in JSON format. A maximum of 20 accounts can be specified.
-        :param pulumi.Input[_builtins.str] template_body: The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
-        :param pulumi.Input[_builtins.str] template_url: The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
+        :param pulumi.Input[_builtins.str] execution_role_name: The name of the RAM role that you specify for the execution account when you create the self-managed stack group. You can use the administrator role AliyunROSStackGroupAdministrationRole to assume the execution role. If you do not specify this parameter, the default value AliyunROSStackGroupExecutionRole is used. You can use this role in ROS to perform operations on the stacks that correspond to stack instances in the stack group.
+        :param pulumi.Input[Sequence[pulumi.Input['StackGroupParameterArgs']]] parameters: Parameters See `parameters` below.
+        :param pulumi.Input[_builtins.str] permission_model: The permission model.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The label of the resource stack group.
+        :param pulumi.Input[_builtins.str] template_body: The template body.
+        :param pulumi.Input[_builtins.str] template_id: The ID of the template.
+        :param pulumi.Input[_builtins.str] template_url: The location of the file that contains the template body. The URL must point to the template (1 to 524,288 bytes) located in the HTTP Web server (HTTP or HTTPS) or Alibaba Cloud OSS bucket. The URL of the OSS bucket, such as oss:// ros/template/demo or oss:// ros/template/demo? RegionId = cn-hangzhou. If the OSS region is not specified, the RegionId of the interface is the same by default.
+               
+               > **NOTE:** You must and can specify only one of the parameters of TemplateBody, TemplateURL, or TemplateId.
         :param pulumi.Input[_builtins.str] template_version: The version of the template.
         """
         pulumi.set(__self__, "stack_group_name", stack_group_name)
-        if account_ids is not None:
-            pulumi.set(__self__, "account_ids", account_ids)
         if administration_role_name is not None:
             pulumi.set(__self__, "administration_role_name", administration_role_name)
+        if auto_deployment is not None:
+            pulumi.set(__self__, "auto_deployment", auto_deployment)
+        if capabilities is not None:
+            pulumi.set(__self__, "capabilities", capabilities)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if execution_role_name is not None:
             pulumi.set(__self__, "execution_role_name", execution_role_name)
-        if operation_description is not None:
-            pulumi.set(__self__, "operation_description", operation_description)
-        if operation_preferences is not None:
-            pulumi.set(__self__, "operation_preferences", operation_preferences)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
-        if region_ids is not None:
-            pulumi.set(__self__, "region_ids", region_ids)
+        if permission_model is not None:
+            pulumi.set(__self__, "permission_model", permission_model)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if template_body is not None:
             pulumi.set(__self__, "template_body", template_body)
+        if template_id is not None:
+            pulumi.set(__self__, "template_id", template_id)
         if template_url is not None:
             pulumi.set(__self__, "template_url", template_url)
         if template_version is not None:
@@ -76,7 +87,7 @@ class StackGroupArgs:
     @pulumi.getter(name="stackGroupName")
     def stack_group_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the stack group. The name must be unique in a region.
+        StackGroupName
         """
         return pulumi.get(self, "stack_group_name")
 
@@ -85,28 +96,41 @@ class StackGroupArgs:
         pulumi.set(self, "stack_group_name", value)
 
     @_builtins.property
-    @pulumi.getter(name="accountIds")
-    def account_ids(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The list of target account IDs, in JSON format. A maximum of 20 accounts can be specified.
-        """
-        return pulumi.get(self, "account_ids")
-
-    @account_ids.setter
-    def account_ids(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "account_ids", value)
-
-    @_builtins.property
     @pulumi.getter(name="administrationRoleName")
     def administration_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the RAM administrator role assumed by ROS. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+        The name of the RAM role that you specify for the administrator account in ROS when you create the self-managed stack group. If you do not specify this parameter, the default value AliyunROSStackGroupAdministrationRole is used. You can use the administrator role in ROS to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks that correspond to stack instances in the stack group.
         """
         return pulumi.get(self, "administration_role_name")
 
     @administration_role_name.setter
     def administration_role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "administration_role_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoDeployment")
+    def auto_deployment(self) -> Optional[pulumi.Input['StackGroupAutoDeploymentArgs']]:
+        """
+        Automatic deployment setting information. Description
+        This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `auto_deployment` below.
+        """
+        return pulumi.get(self, "auto_deployment")
+
+    @auto_deployment.setter
+    def auto_deployment(self, value: Optional[pulumi.Input['StackGroupAutoDeploymentArgs']]):
+        pulumi.set(self, "auto_deployment", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def capabilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of resource stack group options. The maximum length is 1.
+        """
+        return pulumi.get(self, "capabilities")
+
+    @capabilities.setter
+    def capabilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "capabilities", value)
 
     @_builtins.property
     @pulumi.getter
@@ -124,7 +148,7 @@ class StackGroupArgs:
     @pulumi.getter(name="executionRoleName")
     def execution_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the RAM execution role assumed by the administrator role. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+        The name of the RAM role that you specify for the execution account when you create the self-managed stack group. You can use the administrator role AliyunROSStackGroupAdministrationRole to assume the execution role. If you do not specify this parameter, the default value AliyunROSStackGroupExecutionRole is used. You can use this role in ROS to perform operations on the stacks that correspond to stack instances in the stack group.
         """
         return pulumi.get(self, "execution_role_name")
 
@@ -133,34 +157,10 @@ class StackGroupArgs:
         pulumi.set(self, "execution_role_name", value)
 
     @_builtins.property
-    @pulumi.getter(name="operationDescription")
-    def operation_description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The description of the operation.
-        """
-        return pulumi.get(self, "operation_description")
-
-    @operation_description.setter
-    def operation_description(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "operation_description", value)
-
-    @_builtins.property
-    @pulumi.getter(name="operationPreferences")
-    def operation_preferences(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The operation settings, in JSON format.
-        """
-        return pulumi.get(self, "operation_preferences")
-
-    @operation_preferences.setter
-    def operation_preferences(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "operation_preferences", value)
-
-    @_builtins.property
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StackGroupParameterArgs']]]]:
         """
-        The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+        Parameters See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
@@ -169,22 +169,46 @@ class StackGroupArgs:
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
-    @pulumi.getter(name="regionIds")
-    def region_ids(self) -> Optional[pulumi.Input[_builtins.str]]:
+    @pulumi.getter(name="permissionModel")
+    def permission_model(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The list of target regions, in JSON format. A maximum of 20 accounts can be specified.
+        The permission model.
         """
-        return pulumi.get(self, "region_ids")
+        return pulumi.get(self, "permission_model")
 
-    @region_ids.setter
-    def region_ids(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "region_ids", value)
+    @permission_model.setter
+    def permission_model(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "permission_model", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The label of the resource stack group.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="templateBody")
     def template_body(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
+        The template body.
         """
         return pulumi.get(self, "template_body")
 
@@ -193,10 +217,24 @@ class StackGroupArgs:
         pulumi.set(self, "template_body", value)
 
     @_builtins.property
+    @pulumi.getter(name="templateId")
+    def template_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the template.
+        """
+        return pulumi.get(self, "template_id")
+
+    @template_id.setter
+    def template_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "template_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="templateUrl")
     def template_url(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
+        The location of the file that contains the template body. The URL must point to the template (1 to 524,288 bytes) located in the HTTP Web server (HTTP or HTTPS) or Alibaba Cloud OSS bucket. The URL of the OSS bucket, such as oss:// ros/template/demo or oss:// ros/template/demo? RegionId = cn-hangzhou. If the OSS region is not specified, the RegionId of the interface is the same by default.
+
+        > **NOTE:** You must and can specify only one of the parameters of TemplateBody, TemplateURL, or TemplateId.
         """
         return pulumi.get(self, "template_url")
 
@@ -220,89 +258,113 @@ class StackGroupArgs:
 @pulumi.input_type
 class _StackGroupState:
     def __init__(__self__, *,
-                 account_ids: Optional[pulumi.Input[_builtins.str]] = None,
                  administration_role_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_deployment: Optional[pulumi.Input['StackGroupAutoDeploymentArgs']] = None,
+                 capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  execution_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation_preferences: Optional[pulumi.Input[_builtins.str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['StackGroupParameterArgs']]]] = None,
-                 region_ids: Optional[pulumi.Input[_builtins.str]] = None,
+                 permission_model: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  stack_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  stack_group_name: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  template_body: Optional[pulumi.Input[_builtins.str]] = None,
+                 template_id: Optional[pulumi.Input[_builtins.str]] = None,
                  template_url: Optional[pulumi.Input[_builtins.str]] = None,
                  template_version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StackGroup resources.
-        :param pulumi.Input[_builtins.str] account_ids: The list of target account IDs, in JSON format. A maximum of 20 accounts can be specified.
-        :param pulumi.Input[_builtins.str] administration_role_name: The name of the RAM administrator role assumed by ROS. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+        :param pulumi.Input[_builtins.str] administration_role_name: The name of the RAM role that you specify for the administrator account in ROS when you create the self-managed stack group. If you do not specify this parameter, the default value AliyunROSStackGroupAdministrationRole is used. You can use the administrator role in ROS to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks that correspond to stack instances in the stack group.
+        :param pulumi.Input['StackGroupAutoDeploymentArgs'] auto_deployment: Automatic deployment setting information. Description
+               This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `auto_deployment` below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] capabilities: The list of resource stack group options. The maximum length is 1.
         :param pulumi.Input[_builtins.str] description: The description of the stack group.
-        :param pulumi.Input[_builtins.str] execution_role_name: The name of the RAM execution role assumed by the administrator role. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
-        :param pulumi.Input[_builtins.str] operation_description: The description of the operation.
-        :param pulumi.Input[_builtins.str] operation_preferences: The operation settings, in JSON format.
-        :param pulumi.Input[Sequence[pulumi.Input['StackGroupParameterArgs']]] parameters: The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
-        :param pulumi.Input[_builtins.str] region_ids: The list of target regions, in JSON format. A maximum of 20 accounts can be specified.
-        :param pulumi.Input[_builtins.str] stack_group_id: The id of Stack Group.
-        :param pulumi.Input[_builtins.str] stack_group_name: The name of the stack group. The name must be unique in a region.
-        :param pulumi.Input[_builtins.str] status: The status of Stack Group.
-        :param pulumi.Input[_builtins.str] template_body: The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
-        :param pulumi.Input[_builtins.str] template_url: The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
+        :param pulumi.Input[_builtins.str] execution_role_name: The name of the RAM role that you specify for the execution account when you create the self-managed stack group. You can use the administrator role AliyunROSStackGroupAdministrationRole to assume the execution role. If you do not specify this parameter, the default value AliyunROSStackGroupExecutionRole is used. You can use this role in ROS to perform operations on the stacks that correspond to stack instances in the stack group.
+        :param pulumi.Input[Sequence[pulumi.Input['StackGroupParameterArgs']]] parameters: Parameters See `parameters` below.
+        :param pulumi.Input[_builtins.str] permission_model: The permission model.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[_builtins.str] stack_group_id: The ID of stack group.
+        :param pulumi.Input[_builtins.str] stack_group_name: StackGroupName
+        :param pulumi.Input[_builtins.str] status: The status of the stack group.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The label of the resource stack group.
+        :param pulumi.Input[_builtins.str] template_body: The template body.
+        :param pulumi.Input[_builtins.str] template_id: The ID of the template.
+        :param pulumi.Input[_builtins.str] template_url: The location of the file that contains the template body. The URL must point to the template (1 to 524,288 bytes) located in the HTTP Web server (HTTP or HTTPS) or Alibaba Cloud OSS bucket. The URL of the OSS bucket, such as oss:// ros/template/demo or oss:// ros/template/demo? RegionId = cn-hangzhou. If the OSS region is not specified, the RegionId of the interface is the same by default.
+               
+               > **NOTE:** You must and can specify only one of the parameters of TemplateBody, TemplateURL, or TemplateId.
         :param pulumi.Input[_builtins.str] template_version: The version of the template.
         """
-        if account_ids is not None:
-            pulumi.set(__self__, "account_ids", account_ids)
         if administration_role_name is not None:
             pulumi.set(__self__, "administration_role_name", administration_role_name)
+        if auto_deployment is not None:
+            pulumi.set(__self__, "auto_deployment", auto_deployment)
+        if capabilities is not None:
+            pulumi.set(__self__, "capabilities", capabilities)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if execution_role_name is not None:
             pulumi.set(__self__, "execution_role_name", execution_role_name)
-        if operation_description is not None:
-            pulumi.set(__self__, "operation_description", operation_description)
-        if operation_preferences is not None:
-            pulumi.set(__self__, "operation_preferences", operation_preferences)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
-        if region_ids is not None:
-            pulumi.set(__self__, "region_ids", region_ids)
+        if permission_model is not None:
+            pulumi.set(__self__, "permission_model", permission_model)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if stack_group_id is not None:
             pulumi.set(__self__, "stack_group_id", stack_group_id)
         if stack_group_name is not None:
             pulumi.set(__self__, "stack_group_name", stack_group_name)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if template_body is not None:
             pulumi.set(__self__, "template_body", template_body)
+        if template_id is not None:
+            pulumi.set(__self__, "template_id", template_id)
         if template_url is not None:
             pulumi.set(__self__, "template_url", template_url)
         if template_version is not None:
             pulumi.set(__self__, "template_version", template_version)
 
     @_builtins.property
-    @pulumi.getter(name="accountIds")
-    def account_ids(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The list of target account IDs, in JSON format. A maximum of 20 accounts can be specified.
-        """
-        return pulumi.get(self, "account_ids")
-
-    @account_ids.setter
-    def account_ids(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "account_ids", value)
-
-    @_builtins.property
     @pulumi.getter(name="administrationRoleName")
     def administration_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the RAM administrator role assumed by ROS. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+        The name of the RAM role that you specify for the administrator account in ROS when you create the self-managed stack group. If you do not specify this parameter, the default value AliyunROSStackGroupAdministrationRole is used. You can use the administrator role in ROS to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks that correspond to stack instances in the stack group.
         """
         return pulumi.get(self, "administration_role_name")
 
     @administration_role_name.setter
     def administration_role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "administration_role_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoDeployment")
+    def auto_deployment(self) -> Optional[pulumi.Input['StackGroupAutoDeploymentArgs']]:
+        """
+        Automatic deployment setting information. Description
+        This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `auto_deployment` below.
+        """
+        return pulumi.get(self, "auto_deployment")
+
+    @auto_deployment.setter
+    def auto_deployment(self, value: Optional[pulumi.Input['StackGroupAutoDeploymentArgs']]):
+        pulumi.set(self, "auto_deployment", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def capabilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of resource stack group options. The maximum length is 1.
+        """
+        return pulumi.get(self, "capabilities")
+
+    @capabilities.setter
+    def capabilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "capabilities", value)
 
     @_builtins.property
     @pulumi.getter
@@ -320,7 +382,7 @@ class _StackGroupState:
     @pulumi.getter(name="executionRoleName")
     def execution_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the RAM execution role assumed by the administrator role. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+        The name of the RAM role that you specify for the execution account when you create the self-managed stack group. You can use the administrator role AliyunROSStackGroupAdministrationRole to assume the execution role. If you do not specify this parameter, the default value AliyunROSStackGroupExecutionRole is used. You can use this role in ROS to perform operations on the stacks that correspond to stack instances in the stack group.
         """
         return pulumi.get(self, "execution_role_name")
 
@@ -329,34 +391,10 @@ class _StackGroupState:
         pulumi.set(self, "execution_role_name", value)
 
     @_builtins.property
-    @pulumi.getter(name="operationDescription")
-    def operation_description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The description of the operation.
-        """
-        return pulumi.get(self, "operation_description")
-
-    @operation_description.setter
-    def operation_description(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "operation_description", value)
-
-    @_builtins.property
-    @pulumi.getter(name="operationPreferences")
-    def operation_preferences(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The operation settings, in JSON format.
-        """
-        return pulumi.get(self, "operation_preferences")
-
-    @operation_preferences.setter
-    def operation_preferences(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "operation_preferences", value)
-
-    @_builtins.property
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StackGroupParameterArgs']]]]:
         """
-        The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+        Parameters See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
@@ -365,22 +403,34 @@ class _StackGroupState:
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
-    @pulumi.getter(name="regionIds")
-    def region_ids(self) -> Optional[pulumi.Input[_builtins.str]]:
+    @pulumi.getter(name="permissionModel")
+    def permission_model(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The list of target regions, in JSON format. A maximum of 20 accounts can be specified.
+        The permission model.
         """
-        return pulumi.get(self, "region_ids")
+        return pulumi.get(self, "permission_model")
 
-    @region_ids.setter
-    def region_ids(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "region_ids", value)
+    @permission_model.setter
+    def permission_model(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "permission_model", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="stackGroupId")
     def stack_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The id of Stack Group.
+        The ID of stack group.
         """
         return pulumi.get(self, "stack_group_id")
 
@@ -392,7 +442,7 @@ class _StackGroupState:
     @pulumi.getter(name="stackGroupName")
     def stack_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the stack group. The name must be unique in a region.
+        StackGroupName
         """
         return pulumi.get(self, "stack_group_name")
 
@@ -404,7 +454,7 @@ class _StackGroupState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The status of Stack Group.
+        The status of the stack group.
         """
         return pulumi.get(self, "status")
 
@@ -413,10 +463,22 @@ class _StackGroupState:
         pulumi.set(self, "status", value)
 
     @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The label of the resource stack group.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
     @pulumi.getter(name="templateBody")
     def template_body(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
+        The template body.
         """
         return pulumi.get(self, "template_body")
 
@@ -425,10 +487,24 @@ class _StackGroupState:
         pulumi.set(self, "template_body", value)
 
     @_builtins.property
+    @pulumi.getter(name="templateId")
+    def template_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the template.
+        """
+        return pulumi.get(self, "template_id")
+
+    @template_id.setter
+    def template_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "template_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="templateUrl")
     def template_url(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
+        The location of the file that contains the template body. The URL must point to the template (1 to 524,288 bytes) located in the HTTP Web server (HTTP or HTTPS) or Alibaba Cloud OSS bucket. The URL of the OSS bucket, such as oss:// ros/template/demo or oss:// ros/template/demo? RegionId = cn-hangzhou. If the OSS region is not specified, the RegionId of the interface is the same by default.
+
+        > **NOTE:** You must and can specify only one of the parameters of TemplateBody, TemplateURL, or TemplateId.
         """
         return pulumi.get(self, "template_url")
 
@@ -455,21 +531,25 @@ class StackGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_ids: Optional[pulumi.Input[_builtins.str]] = None,
                  administration_role_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_deployment: Optional[pulumi.Input[Union['StackGroupAutoDeploymentArgs', 'StackGroupAutoDeploymentArgsDict']]] = None,
+                 capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  execution_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation_preferences: Optional[pulumi.Input[_builtins.str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StackGroupParameterArgs', 'StackGroupParameterArgsDict']]]]] = None,
-                 region_ids: Optional[pulumi.Input[_builtins.str]] = None,
+                 permission_model: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  stack_group_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  template_body: Optional[pulumi.Input[_builtins.str]] = None,
+                 template_id: Optional[pulumi.Input[_builtins.str]] = None,
                  template_url: Optional[pulumi.Input[_builtins.str]] = None,
                  template_version: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ROS Stack Group resource.
+
+        Resource stack Group.
 
         For information about ROS Stack Group and how to use it, see [What is Stack Group](https://www.alibabacloud.com/help/en/doc-detail/151333.htm).
 
@@ -486,7 +566,7 @@ class StackGroup(pulumi.CustomResource):
         example = alicloud.ros.StackGroup("example",
             stack_group_name="example_value",
             template_body=\"\"\"    {
-            \\x09"ROSTemplateFormatVersion": "2015-09-01"
+            \\t\\"ROSTemplateFormatVersion\\": \\"2015-09-01\\"
             }
         \"\"\")
         ```
@@ -496,22 +576,27 @@ class StackGroup(pulumi.CustomResource):
         ROS Stack Group can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ros/stackGroup:StackGroup example <stack_group_name>
+        $ pulumi import alicloud:ros/stackGroup:StackGroup example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_ids: The list of target account IDs, in JSON format. A maximum of 20 accounts can be specified.
-        :param pulumi.Input[_builtins.str] administration_role_name: The name of the RAM administrator role assumed by ROS. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+        :param pulumi.Input[_builtins.str] administration_role_name: The name of the RAM role that you specify for the administrator account in ROS when you create the self-managed stack group. If you do not specify this parameter, the default value AliyunROSStackGroupAdministrationRole is used. You can use the administrator role in ROS to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks that correspond to stack instances in the stack group.
+        :param pulumi.Input[Union['StackGroupAutoDeploymentArgs', 'StackGroupAutoDeploymentArgsDict']] auto_deployment: Automatic deployment setting information. Description
+               This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `auto_deployment` below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] capabilities: The list of resource stack group options. The maximum length is 1.
         :param pulumi.Input[_builtins.str] description: The description of the stack group.
-        :param pulumi.Input[_builtins.str] execution_role_name: The name of the RAM execution role assumed by the administrator role. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
-        :param pulumi.Input[_builtins.str] operation_description: The description of the operation.
-        :param pulumi.Input[_builtins.str] operation_preferences: The operation settings, in JSON format.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StackGroupParameterArgs', 'StackGroupParameterArgsDict']]]] parameters: The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
-        :param pulumi.Input[_builtins.str] region_ids: The list of target regions, in JSON format. A maximum of 20 accounts can be specified.
-        :param pulumi.Input[_builtins.str] stack_group_name: The name of the stack group. The name must be unique in a region.
-        :param pulumi.Input[_builtins.str] template_body: The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
-        :param pulumi.Input[_builtins.str] template_url: The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
+        :param pulumi.Input[_builtins.str] execution_role_name: The name of the RAM role that you specify for the execution account when you create the self-managed stack group. You can use the administrator role AliyunROSStackGroupAdministrationRole to assume the execution role. If you do not specify this parameter, the default value AliyunROSStackGroupExecutionRole is used. You can use this role in ROS to perform operations on the stacks that correspond to stack instances in the stack group.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StackGroupParameterArgs', 'StackGroupParameterArgsDict']]]] parameters: Parameters See `parameters` below.
+        :param pulumi.Input[_builtins.str] permission_model: The permission model.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[_builtins.str] stack_group_name: StackGroupName
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The label of the resource stack group.
+        :param pulumi.Input[_builtins.str] template_body: The template body.
+        :param pulumi.Input[_builtins.str] template_id: The ID of the template.
+        :param pulumi.Input[_builtins.str] template_url: The location of the file that contains the template body. The URL must point to the template (1 to 524,288 bytes) located in the HTTP Web server (HTTP or HTTPS) or Alibaba Cloud OSS bucket. The URL of the OSS bucket, such as oss:// ros/template/demo or oss:// ros/template/demo? RegionId = cn-hangzhou. If the OSS region is not specified, the RegionId of the interface is the same by default.
+               
+               > **NOTE:** You must and can specify only one of the parameters of TemplateBody, TemplateURL, or TemplateId.
         :param pulumi.Input[_builtins.str] template_version: The version of the template.
         """
         ...
@@ -523,6 +608,8 @@ class StackGroup(pulumi.CustomResource):
         """
         Provides a ROS Stack Group resource.
 
+        Resource stack Group.
+
         For information about ROS Stack Group and how to use it, see [What is Stack Group](https://www.alibabacloud.com/help/en/doc-detail/151333.htm).
 
         > **NOTE:** Available since v1.107.0.
@@ -538,7 +625,7 @@ class StackGroup(pulumi.CustomResource):
         example = alicloud.ros.StackGroup("example",
             stack_group_name="example_value",
             template_body=\"\"\"    {
-            \\x09"ROSTemplateFormatVersion": "2015-09-01"
+            \\t\\"ROSTemplateFormatVersion\\": \\"2015-09-01\\"
             }
         \"\"\")
         ```
@@ -548,7 +635,7 @@ class StackGroup(pulumi.CustomResource):
         ROS Stack Group can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ros/stackGroup:StackGroup example <stack_group_name>
+        $ pulumi import alicloud:ros/stackGroup:StackGroup example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -566,16 +653,18 @@ class StackGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_ids: Optional[pulumi.Input[_builtins.str]] = None,
                  administration_role_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_deployment: Optional[pulumi.Input[Union['StackGroupAutoDeploymentArgs', 'StackGroupAutoDeploymentArgsDict']]] = None,
+                 capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  execution_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation_preferences: Optional[pulumi.Input[_builtins.str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StackGroupParameterArgs', 'StackGroupParameterArgsDict']]]]] = None,
-                 region_ids: Optional[pulumi.Input[_builtins.str]] = None,
+                 permission_model: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  stack_group_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  template_body: Optional[pulumi.Input[_builtins.str]] = None,
+                 template_id: Optional[pulumi.Input[_builtins.str]] = None,
                  template_url: Optional[pulumi.Input[_builtins.str]] = None,
                  template_version: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -587,18 +676,20 @@ class StackGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = StackGroupArgs.__new__(StackGroupArgs)
 
-            __props__.__dict__["account_ids"] = account_ids
             __props__.__dict__["administration_role_name"] = administration_role_name
+            __props__.__dict__["auto_deployment"] = auto_deployment
+            __props__.__dict__["capabilities"] = capabilities
             __props__.__dict__["description"] = description
             __props__.__dict__["execution_role_name"] = execution_role_name
-            __props__.__dict__["operation_description"] = operation_description
-            __props__.__dict__["operation_preferences"] = operation_preferences
             __props__.__dict__["parameters"] = parameters
-            __props__.__dict__["region_ids"] = region_ids
+            __props__.__dict__["permission_model"] = permission_model
+            __props__.__dict__["resource_group_id"] = resource_group_id
             if stack_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'stack_group_name'")
             __props__.__dict__["stack_group_name"] = stack_group_name
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["template_body"] = template_body
+            __props__.__dict__["template_id"] = template_id
             __props__.__dict__["template_url"] = template_url
             __props__.__dict__["template_version"] = template_version
             __props__.__dict__["stack_group_id"] = None
@@ -613,18 +704,20 @@ class StackGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_ids: Optional[pulumi.Input[_builtins.str]] = None,
             administration_role_name: Optional[pulumi.Input[_builtins.str]] = None,
+            auto_deployment: Optional[pulumi.Input[Union['StackGroupAutoDeploymentArgs', 'StackGroupAutoDeploymentArgsDict']]] = None,
+            capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             execution_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-            operation_description: Optional[pulumi.Input[_builtins.str]] = None,
-            operation_preferences: Optional[pulumi.Input[_builtins.str]] = None,
             parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StackGroupParameterArgs', 'StackGroupParameterArgsDict']]]]] = None,
-            region_ids: Optional[pulumi.Input[_builtins.str]] = None,
+            permission_model: Optional[pulumi.Input[_builtins.str]] = None,
+            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             stack_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             stack_group_name: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             template_body: Optional[pulumi.Input[_builtins.str]] = None,
+            template_id: Optional[pulumi.Input[_builtins.str]] = None,
             template_url: Optional[pulumi.Input[_builtins.str]] = None,
             template_version: Optional[pulumi.Input[_builtins.str]] = None) -> 'StackGroup':
         """
@@ -634,56 +727,72 @@ class StackGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_ids: The list of target account IDs, in JSON format. A maximum of 20 accounts can be specified.
-        :param pulumi.Input[_builtins.str] administration_role_name: The name of the RAM administrator role assumed by ROS. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+        :param pulumi.Input[_builtins.str] administration_role_name: The name of the RAM role that you specify for the administrator account in ROS when you create the self-managed stack group. If you do not specify this parameter, the default value AliyunROSStackGroupAdministrationRole is used. You can use the administrator role in ROS to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks that correspond to stack instances in the stack group.
+        :param pulumi.Input[Union['StackGroupAutoDeploymentArgs', 'StackGroupAutoDeploymentArgsDict']] auto_deployment: Automatic deployment setting information. Description
+               This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `auto_deployment` below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] capabilities: The list of resource stack group options. The maximum length is 1.
         :param pulumi.Input[_builtins.str] description: The description of the stack group.
-        :param pulumi.Input[_builtins.str] execution_role_name: The name of the RAM execution role assumed by the administrator role. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
-        :param pulumi.Input[_builtins.str] operation_description: The description of the operation.
-        :param pulumi.Input[_builtins.str] operation_preferences: The operation settings, in JSON format.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StackGroupParameterArgs', 'StackGroupParameterArgsDict']]]] parameters: The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
-        :param pulumi.Input[_builtins.str] region_ids: The list of target regions, in JSON format. A maximum of 20 accounts can be specified.
-        :param pulumi.Input[_builtins.str] stack_group_id: The id of Stack Group.
-        :param pulumi.Input[_builtins.str] stack_group_name: The name of the stack group. The name must be unique in a region.
-        :param pulumi.Input[_builtins.str] status: The status of Stack Group.
-        :param pulumi.Input[_builtins.str] template_body: The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
-        :param pulumi.Input[_builtins.str] template_url: The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
+        :param pulumi.Input[_builtins.str] execution_role_name: The name of the RAM role that you specify for the execution account when you create the self-managed stack group. You can use the administrator role AliyunROSStackGroupAdministrationRole to assume the execution role. If you do not specify this parameter, the default value AliyunROSStackGroupExecutionRole is used. You can use this role in ROS to perform operations on the stacks that correspond to stack instances in the stack group.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StackGroupParameterArgs', 'StackGroupParameterArgsDict']]]] parameters: Parameters See `parameters` below.
+        :param pulumi.Input[_builtins.str] permission_model: The permission model.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[_builtins.str] stack_group_id: The ID of stack group.
+        :param pulumi.Input[_builtins.str] stack_group_name: StackGroupName
+        :param pulumi.Input[_builtins.str] status: The status of the stack group.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The label of the resource stack group.
+        :param pulumi.Input[_builtins.str] template_body: The template body.
+        :param pulumi.Input[_builtins.str] template_id: The ID of the template.
+        :param pulumi.Input[_builtins.str] template_url: The location of the file that contains the template body. The URL must point to the template (1 to 524,288 bytes) located in the HTTP Web server (HTTP or HTTPS) or Alibaba Cloud OSS bucket. The URL of the OSS bucket, such as oss:// ros/template/demo or oss:// ros/template/demo? RegionId = cn-hangzhou. If the OSS region is not specified, the RegionId of the interface is the same by default.
+               
+               > **NOTE:** You must and can specify only one of the parameters of TemplateBody, TemplateURL, or TemplateId.
         :param pulumi.Input[_builtins.str] template_version: The version of the template.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _StackGroupState.__new__(_StackGroupState)
 
-        __props__.__dict__["account_ids"] = account_ids
         __props__.__dict__["administration_role_name"] = administration_role_name
+        __props__.__dict__["auto_deployment"] = auto_deployment
+        __props__.__dict__["capabilities"] = capabilities
         __props__.__dict__["description"] = description
         __props__.__dict__["execution_role_name"] = execution_role_name
-        __props__.__dict__["operation_description"] = operation_description
-        __props__.__dict__["operation_preferences"] = operation_preferences
         __props__.__dict__["parameters"] = parameters
-        __props__.__dict__["region_ids"] = region_ids
+        __props__.__dict__["permission_model"] = permission_model
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["stack_group_id"] = stack_group_id
         __props__.__dict__["stack_group_name"] = stack_group_name
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["template_body"] = template_body
+        __props__.__dict__["template_id"] = template_id
         __props__.__dict__["template_url"] = template_url
         __props__.__dict__["template_version"] = template_version
         return StackGroup(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
-    @pulumi.getter(name="accountIds")
-    def account_ids(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        The list of target account IDs, in JSON format. A maximum of 20 accounts can be specified.
-        """
-        return pulumi.get(self, "account_ids")
-
-    @_builtins.property
     @pulumi.getter(name="administrationRoleName")
     def administration_role_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the RAM administrator role assumed by ROS. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+        The name of the RAM role that you specify for the administrator account in ROS when you create the self-managed stack group. If you do not specify this parameter, the default value AliyunROSStackGroupAdministrationRole is used. You can use the administrator role in ROS to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks that correspond to stack instances in the stack group.
         """
         return pulumi.get(self, "administration_role_name")
+
+    @_builtins.property
+    @pulumi.getter(name="autoDeployment")
+    def auto_deployment(self) -> pulumi.Output[Optional['outputs.StackGroupAutoDeployment']]:
+        """
+        Automatic deployment setting information. Description
+        This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `auto_deployment` below.
+        """
+        return pulumi.get(self, "auto_deployment")
+
+    @_builtins.property
+    @pulumi.getter
+    def capabilities(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        The list of resource stack group options. The maximum length is 1.
+        """
+        return pulumi.get(self, "capabilities")
 
     @_builtins.property
     @pulumi.getter
@@ -697,47 +806,39 @@ class StackGroup(pulumi.CustomResource):
     @pulumi.getter(name="executionRoleName")
     def execution_role_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the RAM execution role assumed by the administrator role. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+        The name of the RAM role that you specify for the execution account when you create the self-managed stack group. You can use the administrator role AliyunROSStackGroupAdministrationRole to assume the execution role. If you do not specify this parameter, the default value AliyunROSStackGroupExecutionRole is used. You can use this role in ROS to perform operations on the stacks that correspond to stack instances in the stack group.
         """
         return pulumi.get(self, "execution_role_name")
-
-    @_builtins.property
-    @pulumi.getter(name="operationDescription")
-    def operation_description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        The description of the operation.
-        """
-        return pulumi.get(self, "operation_description")
-
-    @_builtins.property
-    @pulumi.getter(name="operationPreferences")
-    def operation_preferences(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        The operation settings, in JSON format.
-        """
-        return pulumi.get(self, "operation_preferences")
 
     @_builtins.property
     @pulumi.getter
     def parameters(self) -> pulumi.Output[Optional[Sequence['outputs.StackGroupParameter']]]:
         """
-        The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+        Parameters See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
     @_builtins.property
-    @pulumi.getter(name="regionIds")
-    def region_ids(self) -> pulumi.Output[Optional[_builtins.str]]:
+    @pulumi.getter(name="permissionModel")
+    def permission_model(self) -> pulumi.Output[_builtins.str]:
         """
-        The list of target regions, in JSON format. A maximum of 20 accounts can be specified.
+        The permission model.
         """
-        return pulumi.get(self, "region_ids")
+        return pulumi.get(self, "permission_model")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
     @pulumi.getter(name="stackGroupId")
     def stack_group_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The id of Stack Group.
+        The ID of stack group.
         """
         return pulumi.get(self, "stack_group_id")
 
@@ -745,7 +846,7 @@ class StackGroup(pulumi.CustomResource):
     @pulumi.getter(name="stackGroupName")
     def stack_group_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the stack group. The name must be unique in a region.
+        StackGroupName
         """
         return pulumi.get(self, "stack_group_name")
 
@@ -753,23 +854,41 @@ class StackGroup(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of Stack Group.
+        The status of the stack group.
         """
         return pulumi.get(self, "status")
 
     @_builtins.property
-    @pulumi.getter(name="templateBody")
-    def template_body(self) -> pulumi.Output[Optional[_builtins.str]]:
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
+        The label of the resource stack group.
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="templateBody")
+    def template_body(self) -> pulumi.Output[_builtins.str]:
+        """
+        The template body.
         """
         return pulumi.get(self, "template_body")
+
+    @_builtins.property
+    @pulumi.getter(name="templateId")
+    def template_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the template.
+        """
+        return pulumi.get(self, "template_id")
 
     @_builtins.property
     @pulumi.getter(name="templateUrl")
     def template_url(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
+        The location of the file that contains the template body. The URL must point to the template (1 to 524,288 bytes) located in the HTTP Web server (HTTP or HTTPS) or Alibaba Cloud OSS bucket. The URL of the OSS bucket, such as oss:// ros/template/demo or oss:// ros/template/demo? RegionId = cn-hangzhou. If the OSS region is not specified, the RegionId of the interface is the same by default.
+
+        > **NOTE:** You must and can specify only one of the parameters of TemplateBody, TemplateURL, or TemplateId.
         """
         return pulumi.get(self, "template_url")
 

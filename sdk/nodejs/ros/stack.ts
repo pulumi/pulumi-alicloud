@@ -24,16 +24,16 @@ import * as utilities from "../utilities";
  * const example = new alicloud.ros.Stack("example", {
  *     stackName: "tf-testaccstack",
  *     templateBody: `    {
- *     \x09"ROSTemplateFormatVersion": "2015-09-01"
+ *     \\t\\"ROSTemplateFormatVersion\\": \\"2015-09-01\\"
  *     }
  * `,
  *     stackPolicyBody: `    {
- *     \x09"Statement": [{
- *     \x09\x09"Action": "Update:Delete",
- *     \x09\x09"Resource": "*",
- *     \x09\x09"Effect": "Allow",
- *     \x09\x09"Principal": "*"
- *     \x09}]
+ *     \\t\\"Statement\\": [{
+ *     \\t\\t\\"Action\\": \\"Update:Delete\\",
+ *     \\t\\t\\"Resource\\": \\"*\\",
+ *     \\t\\t\\"Effect\\": \\"Allow\\",
+ *     \\t\\t\\"Principal\\": \\"*\\"
+ *     \\t}]
  *     }
  * `,
  * });

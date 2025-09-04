@@ -18,6 +18,188 @@ import (
 //
 // > **NOTE:** Available since v1.212.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/arms"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+// Max: 99999,
+// Min: 10000,
+// })
+// if err != nil {
+// return err
+// }
+// cfg := config.New(ctx, "")
+// name := "terraform-example";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// enhanced, err := vpc.GetEnhancedNatAvailableZones(ctx, &vpc.GetEnhancedNatAvailableZonesArgs{
+// }, nil);
+// if err != nil {
+// return err
+// }
+// vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+// Description: pulumi.String(name),
+// CidrBlock: pulumi.String("192.168.0.0/16"),
+// VpcName: pulumi.String(name),
+// })
+// if err != nil {
+// return err
+// }
+// vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
+// Description: pulumi.String(name),
+// VpcId: vpc.ID(),
+// VswitchName: pulumi.String(name),
+// ZoneId: pulumi.String(enhanced.Zones[0].ZoneId),
+// CidrBlock: pulumi.String(vpc.CidrBlock.ApplyT(func(cidrBlock string) (std.CidrsubnetResult, error) {
+// return std.CidrsubnetResult(interface{}(std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
+// Input: cidrBlock,
+// Newbits: 8,
+// Netnum: 8,
+// }, nil))), nil
+// }).(std.CidrsubnetResultOutput).ApplyT(func(invoke std.CidrsubnetResult) (*string, error) {
+// return invoke.Result, nil
+// }).(pulumi.StringPtrOutput)),
+// })
+// if err != nil {
+// return err
+// }
+// _, err = ecs.NewSnapshotPolicy(ctx, "default", &ecs.SnapshotPolicyArgs{
+// Name: pulumi.String(name),
+// RepeatWeekdays: pulumi.StringArray{
+// pulumi.String("1"),
+// pulumi.String("2"),
+// pulumi.String("3"),
+// },
+// RetentionDays: pulumi.Int(-1),
+// TimePoints: pulumi.StringArray{
+// pulumi.String("1"),
+// pulumi.String("22"),
+// pulumi.String("23"),
+// },
+// })
+// if err != nil {
+// return err
+// }
+// _default := vswitch.ZoneId.ApplyT(func(zoneId string) (ecs.GetInstanceTypesResult, error) {
+// return ecs.GetInstanceTypesResult(interface{}(ecs.GetInstanceTypesOutput(ctx, ecs.GetInstanceTypesOutputArgs{
+// AvailabilityZone: zoneId,
+// CpuCoreCount: 2,
+// MemorySize: 4,
+// KubernetesNodeRole: "Worker",
+// InstanceTypeFamily: "ecs.n1",
+// }, nil))), nil
+// }).(ecs.GetInstanceTypesResultOutput)
+// defaultManagedKubernetes, err := cs.NewManagedKubernetes(ctx, "default", &cs.ManagedKubernetesArgs{
+// Name: pulumi.Sprintf("terraform-example-%v", defaultInteger.Result),
+// ClusterSpec: pulumi.String("ack.pro.small"),
+// Version: pulumi.String("1.24.6-aliyun.1"),
+// NewNatGateway: pulumi.Bool(true),
+// NodeCidrMask: pulumi.Int(26),
+// ProxyMode: pulumi.String("ipvs"),
+// ServiceCidr: pulumi.String("172.23.0.0/16"),
+// PodCidr: pulumi.String("10.95.0.0/16"),
+// WorkerVswitchIds: pulumi.StringArray{
+// vswitch.ID(),
+// },
+// })
+// if err != nil {
+// return err
+// }
+// defaultKeyPair, err := ecs.NewKeyPair(ctx, "default", &ecs.KeyPairArgs{
+// KeyPairName: pulumi.Sprintf("terraform-example-%v", defaultInteger.Result),
+// })
+// if err != nil {
+// return err
+// }
+// defaultNodePool, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
+// NodePoolName: pulumi.String("desired_size"),
+// ClusterId: defaultManagedKubernetes.ID(),
+// VswitchIds: pulumi.StringArray{
+// vswitch.ID(),
+// },
+// InstanceTypes: pulumi.StringArray{
+// pulumi.String(_default.ApplyT(func(_default ecs.GetInstanceTypesResult) (*string, error) {
+// return &default.InstanceTypes[0].Id, nil
+// }).(pulumi.StringPtrOutput)),
+// },
+// SystemDiskCategory: pulumi.String("cloud_efficiency"),
+// SystemDiskSize: pulumi.Int(40),
+// KeyName: defaultKeyPair.KeyPairName,
+// DesiredSize: pulumi.String("2"),
+// })
+// if err != nil {
+// return err
+// }
+// defaultEnvironment, err := arms.NewEnvironment(ctx, "default", &arms.EnvironmentArgs{
+// BindResourceId: defaultNodePool.ClusterId,
+// EnvironmentSubType: pulumi.String("ManagedKubernetes"),
+// EnvironmentType: pulumi.String("CS"),
+// EnvironmentName: pulumi.Sprintf("terraform-example-%v", defaultInteger.Result),
+// })
+// if err != nil {
+// return err
+// }
+// _, err = arms.NewEnvServiceMonitor(ctx, "default", &arms.EnvServiceMonitorArgs{
+// EnvironmentId: defaultEnvironment.ID(),
+// ConfigYaml: pulumi.String(`apiVersion: monitoring.coreos.com/v1
+// kind: ServiceMonitor
+// metadata:
+//
+//	name: arms-admin1
+//	namespace: arms-prom
+//	annotations:
+//	  arms.prometheus.io/discovery: 'true'
+//	  o11y.aliyun.com/addon-name: mysql
+//	  o11y.aliyun.com/addon-version: 1.0.1
+//	  o11y.aliyun.com/release-name: mysql1
+//
+// spec:
+//
+//	endpoints:
+//	- interval: 30s
+//	  port: operator
+//	  path: /metrics
+//	- interval: 10s
+//	  port: operator1
+//	  path: /metrics
+//	namespaceSelector:
+//	  any: true
+//	selector:
+//	  matchLabels:
+//	   app: arms-prometheus-ack-arms-prometheus
+//
+// `),
+// AliyunLang: pulumi.String("zh"),
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
+//
 // ## Import
 //
 // ARMS Env Service Monitor can be imported using the id, e.g.

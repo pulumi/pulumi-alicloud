@@ -520,6 +520,56 @@ class AggregateDelivery(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.172.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        this = alicloud.get_regions(current=True)
+        this_get_account = alicloud.get_account()
+        default = alicloud.resourcemanager.get_accounts(status="CreateSuccess")
+        last = len(default.accounts).apply(lambda length: length - 1)
+        default_aggregator = alicloud.cfg.Aggregator("default",
+            aggregator_accounts=[{
+                "account_id": default.accounts[last].account_id,
+                "account_name": default.accounts[last].display_name,
+                "account_type": "ResourceDirectory",
+            }],
+            aggregator_name=name,
+            description=name,
+            aggregator_type="CUSTOM")
+        default_uuid = random.index.Uuid("default")
+        default_project = alicloud.log.Project("default", project_name=std.substr(input=f"tf-example-{std.replace(text=default_uuid['result'],
+                search='-',
+                replace='').result}",
+            offset=0,
+            length=16).result)
+        default_store = alicloud.log.Store("default",
+            logstore_name=name,
+            project_name=default_project.project_name)
+        default_aggregate_delivery = alicloud.cfg.AggregateDelivery("default",
+            aggregator_id=default_aggregator.id,
+            configuration_item_change_notification=True,
+            non_compliant_notification=True,
+            delivery_channel_name=name,
+            delivery_channel_target_arn=pulumi.Output.all(
+                project_name=default_project.project_name,
+                logstore_name=default_store.logstore_name
+        ).apply(lambda resolved_outputs: f"acs:log:{this.ids[0]}:{this_get_account.id}:project/{resolved_outputs['project_name']}/logstore/{resolved_outputs['logstore_name']}")
+        ,
+            delivery_channel_type="SLS",
+            description=name)
+        ```
+
         ## Import
 
         Config Aggregate Delivery can be imported using the id, e.g.
@@ -580,6 +630,56 @@ class AggregateDelivery(pulumi.CustomResource):
         For information about Config Aggregate Delivery and how to use it, see [What is Aggregate Delivery](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createaggregateconfigdeliverychannel).
 
         > **NOTE:** Available since v1.172.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        this = alicloud.get_regions(current=True)
+        this_get_account = alicloud.get_account()
+        default = alicloud.resourcemanager.get_accounts(status="CreateSuccess")
+        last = len(default.accounts).apply(lambda length: length - 1)
+        default_aggregator = alicloud.cfg.Aggregator("default",
+            aggregator_accounts=[{
+                "account_id": default.accounts[last].account_id,
+                "account_name": default.accounts[last].display_name,
+                "account_type": "ResourceDirectory",
+            }],
+            aggregator_name=name,
+            description=name,
+            aggregator_type="CUSTOM")
+        default_uuid = random.index.Uuid("default")
+        default_project = alicloud.log.Project("default", project_name=std.substr(input=f"tf-example-{std.replace(text=default_uuid['result'],
+                search='-',
+                replace='').result}",
+            offset=0,
+            length=16).result)
+        default_store = alicloud.log.Store("default",
+            logstore_name=name,
+            project_name=default_project.project_name)
+        default_aggregate_delivery = alicloud.cfg.AggregateDelivery("default",
+            aggregator_id=default_aggregator.id,
+            configuration_item_change_notification=True,
+            non_compliant_notification=True,
+            delivery_channel_name=name,
+            delivery_channel_target_arn=pulumi.Output.all(
+                project_name=default_project.project_name,
+                logstore_name=default_store.logstore_name
+        ).apply(lambda resolved_outputs: f"acs:log:{this.ids[0]}:{this_get_account.id}:project/{resolved_outputs['project_name']}/logstore/{resolved_outputs['logstore_name']}")
+        ,
+            delivery_channel_type="SLS",
+            description=name)
+        ```
 
         ## Import
 

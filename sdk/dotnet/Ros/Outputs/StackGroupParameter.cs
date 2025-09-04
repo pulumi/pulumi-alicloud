@@ -14,19 +14,19 @@ namespace Pulumi.AliCloud.Ros.Outputs
     public sealed class StackGroupParameter
     {
         /// <summary>
-        /// The parameter key.
+        /// The key of parameter N. If you do not specify the key and value of the parameter, ROS uses the default key and value in the template.
         /// </summary>
-        public readonly string? ParameterKey;
+        public readonly string ParameterKey;
         /// <summary>
-        /// The parameter value.
+        /// The value of parameter N.
         /// </summary>
-        public readonly string? ParameterValue;
+        public readonly string ParameterValue;
 
         [OutputConstructor]
         private StackGroupParameter(
-            string? parameterKey,
+            string parameterKey,
 
-            string? parameterValue)
+            string parameterValue)
         {
             ParameterKey = parameterKey;
             ParameterValue = parameterValue;

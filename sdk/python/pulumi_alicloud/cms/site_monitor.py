@@ -341,19 +341,19 @@ class SiteMonitor(pulumi.CustomResource):
                 "isp": "465",
             }],
             options_json=\"\"\"{
-            "http_method": "get",
-            "waitTime_after_completion": null,
-            "ipv6_task": false,
-            "diagnosis_ping": false,
-            "diagnosis_mtr": false,
-            "assertions": [
+            \\"http_method\\": \\"get\\",
+            \\"waitTime_after_completion\\": null,
+            \\"ipv6_task\\": false,
+            \\"diagnosis_ping\\": false,
+            \\"diagnosis_mtr\\": false,
+            \\"assertions\\": [
                 {
-                    "operator": "lessThan",
-                    "type": "response_time",
-                    "target": 1000
+                    \\"operator\\": \\"lessThan\\",
+                    \\"type\\": \\"response_time\\",
+                    \\"target\\": 1000
                 }
             ],
-            "time_out": 30000
+            \\"time_out\\": 30000
         }
         \"\"\")
         ```
@@ -406,19 +406,19 @@ class SiteMonitor(pulumi.CustomResource):
                 "isp": "465",
             }],
             options_json=\"\"\"{
-            "http_method": "get",
-            "waitTime_after_completion": null,
-            "ipv6_task": false,
-            "diagnosis_ping": false,
-            "diagnosis_mtr": false,
-            "assertions": [
+            \\"http_method\\": \\"get\\",
+            \\"waitTime_after_completion\\": null,
+            \\"ipv6_task\\": false,
+            \\"diagnosis_ping\\": false,
+            \\"diagnosis_mtr\\": false,
+            \\"assertions\\": [
                 {
-                    "operator": "lessThan",
-                    "type": "response_time",
-                    "target": 1000
+                    \\"operator\\": \\"lessThan\\",
+                    \\"type\\": \\"response_time\\",
+                    \\"target\\": 1000
                 }
             ],
-            "time_out": 30000
+            \\"time_out\\": 30000
         }
         \"\"\")
         ```

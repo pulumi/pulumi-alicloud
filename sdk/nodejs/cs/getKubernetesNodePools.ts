@@ -10,6 +10,78 @@ import * as utilities from "../utilities";
  * This data source provides Ack Nodepool available to the user.[What is Nodepool](https://next.api.alibabacloud.com/document/CS/2015-12-15/CreateClusterNodePool)
  *
  * > **NOTE:** Available since v1.246.0.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const enhanced = alicloud.vpc.getEnhancedNatAvailableZones({});
+ * const cloudEfficiency = enhanced.then(enhanced => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: enhanced.zones?.[0]?.zoneId,
+ *     cpuCoreCount: 4,
+ *     memorySize: 8,
+ *     kubernetesNodeRole: "Worker",
+ *     systemDiskCategory: "cloud_efficiency",
+ * }));
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: enhanced.then(enhanced => enhanced.zones?.[0]?.zoneId),
+ * });
+ * const defaultManagedKubernetes = new alicloud.cs.ManagedKubernetes("default", {
+ *     namePrefix: name,
+ *     clusterSpec: "ack.pro.small",
+ *     vswitchIds: [defaultSwitch.id],
+ *     newNatGateway: true,
+ *     podCidr: std.cidrsubnet({
+ *         input: "10.0.0.0/8",
+ *         newbits: 8,
+ *         netnum: 36,
+ *     }).then(invoke => invoke.result),
+ *     serviceCidr: std.cidrsubnet({
+ *         input: "172.16.0.0/16",
+ *         newbits: 4,
+ *         netnum: 7,
+ *     }).then(invoke => invoke.result),
+ *     slbInternetEnabled: true,
+ *     enableRrsa: true,
+ * });
+ * const defaultKeyPair = new alicloud.ecs.KeyPair("default", {keyPairName: name});
+ * const defaultNodePool = new alicloud.cs.NodePool("default", {
+ *     nodePoolName: "spot_auto_scaling",
+ *     clusterId: defaultManagedKubernetes.id,
+ *     vswitchIds: [defaultSwitch.id],
+ *     instanceTypes: [cloudEfficiency.then(cloudEfficiency => cloudEfficiency.instanceTypes?.[0]?.id)],
+ *     systemDiskCategory: "cloud_efficiency",
+ *     systemDiskSize: 40,
+ *     keyName: defaultKeyPair.keyPairName,
+ *     scalingConfig: {
+ *         minSize: 1,
+ *         maxSize: 10,
+ *         type: "spot",
+ *     },
+ *     spotStrategy: "SpotWithPriceLimit",
+ *     spotPriceLimits: [{
+ *         instanceType: cloudEfficiency.then(cloudEfficiency => cloudEfficiency.instanceTypes?.[0]?.id),
+ *         priceLimit: "0.70",
+ *     }],
+ * });
+ * const _default = alicloud.cs.getKubernetesNodePoolsOutput({
+ *     ids: [defaultNodePool.nodePoolId],
+ *     clusterId: defaultManagedKubernetes.id,
+ * });
+ * export const alicloudCsKubernetesNodePoolExampleId = _default.apply(_default => _default.nodepools?.[0]?.nodePoolId);
+ * ```
  */
 export function getKubernetesNodePools(args: GetKubernetesNodePoolsArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesNodePoolsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -70,6 +142,78 @@ export interface GetKubernetesNodePoolsResult {
  * This data source provides Ack Nodepool available to the user.[What is Nodepool](https://next.api.alibabacloud.com/document/CS/2015-12-15/CreateClusterNodePool)
  *
  * > **NOTE:** Available since v1.246.0.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const enhanced = alicloud.vpc.getEnhancedNatAvailableZones({});
+ * const cloudEfficiency = enhanced.then(enhanced => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: enhanced.zones?.[0]?.zoneId,
+ *     cpuCoreCount: 4,
+ *     memorySize: 8,
+ *     kubernetesNodeRole: "Worker",
+ *     systemDiskCategory: "cloud_efficiency",
+ * }));
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: enhanced.then(enhanced => enhanced.zones?.[0]?.zoneId),
+ * });
+ * const defaultManagedKubernetes = new alicloud.cs.ManagedKubernetes("default", {
+ *     namePrefix: name,
+ *     clusterSpec: "ack.pro.small",
+ *     vswitchIds: [defaultSwitch.id],
+ *     newNatGateway: true,
+ *     podCidr: std.cidrsubnet({
+ *         input: "10.0.0.0/8",
+ *         newbits: 8,
+ *         netnum: 36,
+ *     }).then(invoke => invoke.result),
+ *     serviceCidr: std.cidrsubnet({
+ *         input: "172.16.0.0/16",
+ *         newbits: 4,
+ *         netnum: 7,
+ *     }).then(invoke => invoke.result),
+ *     slbInternetEnabled: true,
+ *     enableRrsa: true,
+ * });
+ * const defaultKeyPair = new alicloud.ecs.KeyPair("default", {keyPairName: name});
+ * const defaultNodePool = new alicloud.cs.NodePool("default", {
+ *     nodePoolName: "spot_auto_scaling",
+ *     clusterId: defaultManagedKubernetes.id,
+ *     vswitchIds: [defaultSwitch.id],
+ *     instanceTypes: [cloudEfficiency.then(cloudEfficiency => cloudEfficiency.instanceTypes?.[0]?.id)],
+ *     systemDiskCategory: "cloud_efficiency",
+ *     systemDiskSize: 40,
+ *     keyName: defaultKeyPair.keyPairName,
+ *     scalingConfig: {
+ *         minSize: 1,
+ *         maxSize: 10,
+ *         type: "spot",
+ *     },
+ *     spotStrategy: "SpotWithPriceLimit",
+ *     spotPriceLimits: [{
+ *         instanceType: cloudEfficiency.then(cloudEfficiency => cloudEfficiency.instanceTypes?.[0]?.id),
+ *         priceLimit: "0.70",
+ *     }],
+ * });
+ * const _default = alicloud.cs.getKubernetesNodePoolsOutput({
+ *     ids: [defaultNodePool.nodePoolId],
+ *     clusterId: defaultManagedKubernetes.id,
+ * });
+ * export const alicloudCsKubernetesNodePoolExampleId = _default.apply(_default => _default.nodepools?.[0]?.nodePoolId);
+ * ```
  */
 export function getKubernetesNodePoolsOutput(args: GetKubernetesNodePoolsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKubernetesNodePoolsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

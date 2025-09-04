@@ -11,6 +11,229 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ * import * as std from "@pulumi/std";
+ *
+ * const _default = new random.index.Integer("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const enhanced = alicloud.vpc.getEnhancedNatAvailableZones({});
+ * const cloudEfficiency = enhanced.then(enhanced => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: enhanced.zones?.[0]?.zoneId,
+ *     cpuCoreCount: 4,
+ *     memorySize: 8,
+ *     kubernetesNodeRole: "Worker",
+ *     systemDiskCategory: "cloud_efficiency",
+ * }));
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: enhanced.then(enhanced => enhanced.zones?.[0]?.zoneId),
+ * });
+ * const defaultManagedKubernetes = new alicloud.cs.ManagedKubernetes("default", {
+ *     namePrefix: `terraform-example-${_default.result}`,
+ *     clusterSpec: "ack.pro.small",
+ *     workerVswitchIds: [defaultSwitch.id],
+ *     newNatGateway: true,
+ *     podCidr: std.cidrsubnet({
+ *         input: "10.0.0.0/8",
+ *         newbits: 8,
+ *         netnum: 36,
+ *     }).then(invoke => invoke.result),
+ *     serviceCidr: std.cidrsubnet({
+ *         input: "172.16.0.0/16",
+ *         newbits: 4,
+ *         netnum: 7,
+ *     }).then(invoke => invoke.result),
+ *     slbInternetEnabled: true,
+ *     enableRrsa: true,
+ * });
+ * const defaultKeyPair = new alicloud.ecs.KeyPair("default", {keyPairName: `terraform-example-${_default.result}`});
+ * const defaultNodePool = new alicloud.cs.NodePool("default", {
+ *     nodePoolName: name,
+ *     clusterId: defaultManagedKubernetes.id,
+ *     vswitchIds: [defaultSwitch.id],
+ *     instanceTypes: [cloudEfficiency.then(cloudEfficiency => cloudEfficiency.instanceTypes?.[0]?.id)],
+ *     systemDiskCategory: "cloud_efficiency",
+ *     systemDiskSize: 40,
+ *     keyName: defaultKeyPair.keyPairName,
+ *     labels: [
+ *         {
+ *             key: "test1",
+ *             value: "nodepool",
+ *         },
+ *         {
+ *             key: "test2",
+ *             value: "nodepool",
+ *         },
+ *     ],
+ *     taints: [
+ *         {
+ *             key: "tf",
+ *             effect: "NoSchedule",
+ *             value: "example",
+ *         },
+ *         {
+ *             key: "tf2",
+ *             effect: "NoSchedule",
+ *             value: "example2",
+ *         },
+ *     ],
+ * });
+ * //The parameter `node_count` is deprecated from version 1.158.0. Please use the new parameter `desired_size` instead, you can update it as follows.
+ * const desiredSize = new alicloud.cs.NodePool("desired_size", {
+ *     nodePoolName: "desired_size",
+ *     clusterId: defaultManagedKubernetes.id,
+ *     vswitchIds: [defaultSwitch.id],
+ *     instanceTypes: [cloudEfficiency.then(cloudEfficiency => cloudEfficiency.instanceTypes?.[0]?.id)],
+ *     systemDiskCategory: "cloud_efficiency",
+ *     systemDiskSize: 40,
+ *     keyName: defaultKeyPair.keyPairName,
+ *     desiredSize: "0",
+ * });
+ * // Create a managed node pool. If you need to enable maintenance window, you need to set the maintenance window in `alicloud_cs_managed_kubernetes`.
+ * const maintenance = new alicloud.cs.NodePool("maintenance", {
+ *     nodePoolName: "maintenance",
+ *     clusterId: defaultManagedKubernetes.id,
+ *     vswitchIds: [defaultSwitch.id],
+ *     instanceTypes: [cloudEfficiency.then(cloudEfficiency => cloudEfficiency.instanceTypes?.[0]?.id)],
+ *     systemDiskCategory: "cloud_efficiency",
+ *     systemDiskSize: 40,
+ *     keyName: defaultKeyPair.keyPairName,
+ *     desiredSize: "1",
+ *     management: {
+ *         enable: true,
+ *         autoRepair: true,
+ *         autoRepairPolicy: {
+ *             restartNode: true,
+ *         },
+ *         autoUpgrade: true,
+ *         autoUpgradePolicy: {
+ *             autoUpgradeKubelet: true,
+ *         },
+ *         autoVulFix: true,
+ *         autoVulFixPolicy: {
+ *             vulLevel: "asap",
+ *             restartNode: true,
+ *         },
+ *         maxUnavailable: 1,
+ *     },
+ * });
+ * //Create a node pool with spot instance.
+ * const spotInstance = new alicloud.cs.NodePool("spot_instance", {
+ *     nodePoolName: "spot_instance",
+ *     clusterId: defaultManagedKubernetes.id,
+ *     vswitchIds: [defaultSwitch.id],
+ *     instanceTypes: [
+ *         cloudEfficiency.then(cloudEfficiency => cloudEfficiency.instanceTypes?.[0]?.id),
+ *         cloudEfficiency.then(cloudEfficiency => cloudEfficiency.instanceTypes?.[1]?.id),
+ *     ],
+ *     systemDiskCategory: "cloud_efficiency",
+ *     systemDiskSize: 40,
+ *     keyName: defaultKeyPair.keyPairName,
+ *     desiredSize: "1",
+ *     spotStrategy: "SpotWithPriceLimit",
+ *     spotPriceLimits: [
+ *         {
+ *             instanceType: cloudEfficiency.then(cloudEfficiency => cloudEfficiency.instanceTypes?.[0]?.id),
+ *             priceLimit: "0.70",
+ *         },
+ *         {
+ *             instanceType: cloudEfficiency.then(cloudEfficiency => cloudEfficiency.instanceTypes?.[1]?.id),
+ *             priceLimit: "0.72",
+ *         },
+ *     ],
+ * });
+ * //Use Spot instances to create a node pool with auto-scaling enabled
+ * const spotAutoScaling = new alicloud.cs.NodePool("spot_auto_scaling", {
+ *     nodePoolName: "spot_auto_scaling",
+ *     clusterId: defaultManagedKubernetes.id,
+ *     vswitchIds: [defaultSwitch.id],
+ *     instanceTypes: [cloudEfficiency.then(cloudEfficiency => cloudEfficiency.instanceTypes?.[0]?.id)],
+ *     systemDiskCategory: "cloud_efficiency",
+ *     systemDiskSize: 40,
+ *     keyName: defaultKeyPair.keyPairName,
+ *     scalingConfig: {
+ *         minSize: 1,
+ *         maxSize: 10,
+ *         type: "spot",
+ *     },
+ *     spotStrategy: "SpotWithPriceLimit",
+ *     spotPriceLimits: [{
+ *         instanceType: cloudEfficiency.then(cloudEfficiency => cloudEfficiency.instanceTypes?.[0]?.id),
+ *         priceLimit: "0.70",
+ *     }],
+ * });
+ * //Create a `PrePaid` node pool.
+ * const prepaidNode = new alicloud.cs.NodePool("prepaid_node", {
+ *     nodePoolName: "prepaid_node",
+ *     clusterId: defaultManagedKubernetes.id,
+ *     vswitchIds: [defaultSwitch.id],
+ *     instanceTypes: [cloudEfficiency.then(cloudEfficiency => cloudEfficiency.instanceTypes?.[0]?.id)],
+ *     systemDiskCategory: "cloud_efficiency",
+ *     systemDiskSize: 40,
+ *     keyName: defaultKeyPair.keyPairName,
+ *     instanceChargeType: "PrePaid",
+ *     period: 1,
+ *     periodUnit: "Month",
+ *     autoRenew: true,
+ *     autoRenewPeriod: 1,
+ *     installCloudMonitor: true,
+ * });
+ * //#Create a node pool with customized kubelet parameters
+ * const customizedKubelet = new alicloud.cs.NodePool("customized_kubelet", {
+ *     nodePoolName: "customized_kubelet",
+ *     clusterId: defaultManagedKubernetes.id,
+ *     vswitchIds: [defaultSwitch.id],
+ *     instanceTypes: [cloudEfficiency.then(cloudEfficiency => cloudEfficiency.instanceTypes?.[0]?.id)],
+ *     systemDiskCategory: "cloud_efficiency",
+ *     systemDiskSize: 40,
+ *     instanceChargeType: "PostPaid",
+ *     desiredSize: "0",
+ *     kubeletConfiguration: {
+ *         registryPullQps: "10",
+ *         registryBurst: "5",
+ *         eventRecordQps: "10",
+ *         eventBurst: "5",
+ *         serializeImagePulls: "true",
+ *         evictionHard: {
+ *             "memory.available": "1024Mi",
+ *             "nodefs.available": "10%",
+ *             "nodefs.inodesFree": "5%",
+ *             "imagefs.available": "10%",
+ *         },
+ *         systemReserved: {
+ *             cpu: "1",
+ *             memory: "1Gi",
+ *             "ephemeral-storage": "10Gi",
+ *         },
+ *         kubeReserved: {
+ *             cpu: "500m",
+ *             memory: "1Gi",
+ *         },
+ *         containerLogMaxSize: "200Mi",
+ *         containerLogMaxFiles: "3",
+ *         maxPods: "100",
+ *         readOnlyPort: "0",
+ *         allowedUnsafeSysctls: ["net.ipv4.route.min_pmtu"],
+ *     },
+ *     rollingPolicy: {
+ *         maxParallelism: 1,
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Container Service for Kubernetes (ACK) Nodepool can be imported using the id, e.g.

@@ -13,6 +13,63 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.143.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "example_name";
+ * const _default = alicloud.pvtz.getResolverZones({
+ *     status: "NORMAL",
+ * });
+ * const defaultGetRegions = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const defaultSwitch: alicloud.vpc.Switch[] = [];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     defaultSwitch.push(new alicloud.vpc.Switch(`default-${range.value}`, {
+ *         vpcId: defaultNetwork.id,
+ *         cidrBlock: defaultNetwork.cidrBlock.apply(cidrBlock => std.cidrsubnetOutput({
+ *             input: cidrBlock,
+ *             newbits: 8,
+ *             netnum: range.value,
+ *         })).apply(invoke => invoke.result),
+ *         zoneId: _default.then(_default => _default.zones[range.value].zoneId),
+ *     }));
+ * }
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     vpcId: defaultNetwork.id,
+ *     name: name,
+ * });
+ * const defaultEndpoint = new alicloud.pvtz.Endpoint("default", {
+ *     endpointName: name,
+ *     securityGroupId: defaultSecurityGroup.id,
+ *     vpcId: defaultNetwork.id,
+ *     vpcRegionId: defaultGetRegions.then(defaultGetRegions => defaultGetRegions.regions?.[0]?.id),
+ *     ipConfigs: [
+ *         {
+ *             zoneId: defaultSwitch[0].zoneId,
+ *             cidrBlock: defaultSwitch[0].cidrBlock,
+ *             vswitchId: defaultSwitch[0].id,
+ *         },
+ *         {
+ *             zoneId: defaultSwitch[1].zoneId,
+ *             cidrBlock: defaultSwitch[1].cidrBlock,
+ *             vswitchId: defaultSwitch[1].id,
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Private Zone Endpoint can be imported using the id, e.g.

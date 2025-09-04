@@ -18,6 +18,81 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// &gt; **NOTE:** Available since v1.117.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     {
+    ///         Status = "OK",
+    ///     });
+    /// 
+    ///     var example = new AliCloud.Vpc.Network("example", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var exampleUuid = new Random.Index.Uuid("example");
+    /// 
+    ///     var exampleProject = new AliCloud.Log.Project("example", new()
+    ///     {
+    ///         ProjectName = Std.Replace.Invoke(new()
+    ///         {
+    ///             Text = exampleUuid.Result,
+    ///             Search = "-",
+    ///             Replace = "",
+    ///         }).Apply(invoke =&gt; Std.Substr.Invoke(new()
+    ///         {
+    ///             Input = $"tf-example-{invoke.Result}",
+    ///             Offset = 0,
+    ///             Length = 16,
+    ///         })).Apply(invoke =&gt; invoke.Result),
+    ///         Description = name,
+    ///     });
+    /// 
+    ///     var exampleStore = new AliCloud.Log.Store("example", new()
+    ///     {
+    ///         ProjectName = exampleProject.ProjectName,
+    ///         LogstoreName = name,
+    ///         ShardCount = 3,
+    ///         AutoSplit = true,
+    ///         MaxSplitShardCount = 60,
+    ///         AppendMeta = true,
+    ///     });
+    /// 
+    ///     var exampleFlowLog = new AliCloud.Vpc.FlowLog("example", new()
+    ///     {
+    ///         FlowLogName = name,
+    ///         LogStoreName = exampleStore.LogstoreName,
+    ///         Description = name,
+    ///         TrafficPaths = new[]
+    ///         {
+    ///             "all",
+    ///         },
+    ///         ProjectName = exampleProject.ProjectName,
+    ///         ResourceType = "VPC",
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0])),
+    ///         ResourceId = example.Id,
+    ///         AggregationInterval = "1",
+    ///         TrafficType = "All",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// VPC Flow Log can be imported using the id, e.g.

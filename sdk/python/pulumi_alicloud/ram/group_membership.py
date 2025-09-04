@@ -108,6 +108,43 @@ class GroupMembership(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.0.0+.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        group = alicloud.ram.Group("group",
+            name=std.format(input="%sgroup",
+                args=[name]).result,
+            comments="this is a group comments.")
+        user = alicloud.ram.User("user",
+            name=std.format(input="%suser",
+                args=[name]).result,
+            display_name="user_display_name",
+            mobile="86-18688888888",
+            email="hello.uuu@aaa.com",
+            comments="yoyoyo")
+        user1 = alicloud.ram.User("user1",
+            name=std.format(input="%suser1",
+                args=[name]).result,
+            display_name="user_display_name1",
+            mobile="86-18688888889",
+            email="hello.uuu@aaa.com",
+            comments="yoyoyo")
+        membership = alicloud.ram.GroupMembership("membership",
+            group_name=group.name,
+            user_names=[
+                user.name,
+                user1.name,
+            ])
+        ```
+
         ## Import
 
         RAM Group membership can be imported using the id, e.g.
@@ -131,6 +168,43 @@ class GroupMembership(pulumi.CustomResource):
         Provides a RAM Group membership resource.
 
         > **NOTE:** Available since v1.0.0+.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        group = alicloud.ram.Group("group",
+            name=std.format(input="%sgroup",
+                args=[name]).result,
+            comments="this is a group comments.")
+        user = alicloud.ram.User("user",
+            name=std.format(input="%suser",
+                args=[name]).result,
+            display_name="user_display_name",
+            mobile="86-18688888888",
+            email="hello.uuu@aaa.com",
+            comments="yoyoyo")
+        user1 = alicloud.ram.User("user1",
+            name=std.format(input="%suser1",
+                args=[name]).result,
+            display_name="user_display_name1",
+            mobile="86-18688888889",
+            email="hello.uuu@aaa.com",
+            comments="yoyoyo")
+        membership = alicloud.ram.GroupMembership("membership",
+            group_name=group.name,
+            user_names=[
+                user.name,
+                user1.name,
+            ])
+        ```
 
         ## Import
 

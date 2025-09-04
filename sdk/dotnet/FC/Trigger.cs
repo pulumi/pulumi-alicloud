@@ -64,18 +64,18 @@ namespace Pulumi.AliCloud.FC
     ///     {
     ///         Name = $"fcservicerole-{defaultInteger.Result}",
     ///         Document = @"  {
-    ///       ""Statement"": [
+    ///       \""Statement\"": [
     ///         {
-    ///           ""Action"": ""sts:AssumeRole"",
-    ///           ""Effect"": ""Allow"",
-    ///           ""Principal"": {
-    ///             ""Service"": [
-    ///               ""fc.aliyuncs.com""
+    ///           \""Action\"": \""sts:AssumeRole\"",
+    ///           \""Effect\"": \""Allow\"",
+    ///           \""Principal\"": {
+    ///             \""Service\"": [
+    ///               \""fc.aliyuncs.com\""
     ///             ]
     ///           }
     ///         }
     ///       ],
-    ///       ""Version"": ""1""
+    ///       \""Version\"": \""1\""
     ///   }
     /// ",
     ///         Description = "this is a example",
@@ -152,23 +152,23 @@ namespace Pulumi.AliCloud.FC
     ///             var projectName = values.Item2;
     ///             var defaultStoreLogstoreName = values.Item3;
     ///             return @$"    {{
-    ///         ""sourceConfig"": {{
-    ///             ""logstore"": ""{sourceStoreLogstoreName}"",
-    ///             ""startTime"": null
+    ///         \""sourceConfig\"": {{
+    ///             \""logstore\"": \""{sourceStoreLogstoreName}\"",
+    ///             \""startTime\"": null
     ///         }},
-    ///         ""jobConfig"": {{
-    ///             ""maxRetryTime"": 3,
-    ///             ""triggerInterval"": 60
+    ///         \""jobConfig\"": {{
+    ///             \""maxRetryTime\"": 3,
+    ///             \""triggerInterval\"": 60
     ///         }},
-    ///         ""functionParameter"": {{
-    ///             ""a"": ""b"",
-    ///             ""c"": ""d""
+    ///         \""functionParameter\"": {{
+    ///             \""a\"": \""b\"",
+    ///             \""c\"": \""d\""
     ///         }},
-    ///         ""logConfig"": {{
-    ///              ""project"": ""{projectName}"",
-    ///             ""logstore"": ""{defaultStoreLogstoreName}""
+    ///         \""logConfig\"": {{
+    ///              \""project\"": \""{projectName}\"",
+    ///             \""logstore\"": \""{defaultStoreLogstoreName}\""
     ///         }},
-    ///         ""enable"": true
+    ///         \""enable\"": true
     ///     }}
     ///   
     /// ";
@@ -211,18 +211,18 @@ namespace Pulumi.AliCloud.FC
     ///     {
     ///         Name = $"fcservicerole-{defaultInteger.Result}",
     ///         Document = @"  {
-    ///       ""Statement"": [
+    ///       \""Statement\"": [
     ///         {
-    ///           ""Action"": ""sts:AssumeRole"",
-    ///           ""Effect"": ""Allow"",
-    ///           ""Principal"": {
-    ///             ""Service"": [
-    ///               ""mns.aliyuncs.com""
+    ///           \""Action\"": \""sts:AssumeRole\"",
+    ///           \""Effect\"": \""Allow\"",
+    ///           \""Principal\"": {
+    ///             \""Service\"": [
+    ///               \""mns.aliyuncs.com\""
     ///             ]
     ///           }
     ///         }
     ///       ],
-    ///       ""Version"": ""1""
+    ///       \""Version\"": \""1\""
     ///   }
     /// ",
     ///         Description = "this is a example",
@@ -287,9 +287,9 @@ namespace Pulumi.AliCloud.FC
     ///         }),
     ///         Type = "mns_topic",
     ///         ConfigMns = @"  {
-    ///     ""filterTag"":""exampleTag"",
-    ///     ""notifyContentFormat"":""STREAM"",
-    ///     ""notifyStrategy"":""BACKOFF_RETRY""
+    ///     \""filterTag\"":\""exampleTag\"",
+    ///     \""notifyContentFormat\"":\""STREAM\"",
+    ///     \""notifyStrategy\"":\""BACKOFF_RETRY\""
     ///   }
     /// ",
     ///     });
@@ -345,18 +345,18 @@ namespace Pulumi.AliCloud.FC
     ///     {
     ///         Name = $"fcservicerole-{defaultInteger.Result}",
     ///         Document = @"    {
-    ///       ""Statement"": [
+    ///       \""Statement\"": [
     ///         {
-    ///           ""Action"": ""sts:AssumeRole"",
-    ///           ""Effect"": ""Allow"",
-    ///           ""Principal"": {
-    ///             ""Service"": [
-    ///               ""cdn.aliyuncs.com""
+    ///           \""Action\"": \""sts:AssumeRole\"",
+    ///           \""Effect\"": \""Allow\"",
+    ///           \""Principal\"": {
+    ///             \""Service\"": [
+    ///               \""cdn.aliyuncs.com\""
     ///             ]
     ///           }
     ///         }
     ///       ],
-    ///       ""Version"": ""1""
+    ///       \""Version\"": \""1\""
     ///   }
     /// ",
     ///         Description = "this is a example",
@@ -371,17 +371,17 @@ namespace Pulumi.AliCloud.FC
     ///             var defaultServiceName = values.Item1;
     ///             var defaultServiceName1 = values.Item2;
     ///             return @$"    {{
-    ///         ""Version"": ""1"",
-    ///         ""Statement"": [
+    ///         \""Version\"": \""1\"",
+    ///         \""Statement\"": [
     ///         {{
-    ///             ""Action"": [
-    ///             ""fc:InvokeFunction""
+    ///             \""Action\"": [
+    ///             \""fc:InvokeFunction\""
     ///             ],
-    ///         ""Resource"": [
-    ///             ""acs:fc:*:*:services/{defaultServiceName}/functions/*"",
-    ///             ""acs:fc:*:*:services/{defaultServiceName1}.*/functions/*""
+    ///         \""Resource\"": [
+    ///             \""acs:fc:*:*:services/{defaultServiceName}/functions/*\"",
+    ///             \""acs:fc:*:*:services/{defaultServiceName1}.*/functions/*\""
     ///         ],
-    ///         ""Effect"": ""Allow""
+    ///         \""Effect\"": \""Allow\""
     ///         }}
     ///         ]
     ///     }}
@@ -435,11 +435,11 @@ namespace Pulumi.AliCloud.FC
     ///         Role = defaultRole.Arn,
     ///         SourceArn = @default.Apply(@default =&gt; $"acs:cdn:*:{@default.Apply(getAccountResult =&gt; getAccountResult.Id)}"),
     ///         Type = "cdn_events",
-    ///         Config = defaultDomainNew.DomainName.Apply(domainName =&gt; @$"      {{""eventName"":""LogFileCreated"",
-    ///      ""eventVersion"":""1.0.0"",
-    ///      ""notes"":""cdn events trigger"",
-    ///      ""filter"":{{
-    ///         ""domain"": [""{domainName}""]
+    ///         Config = defaultDomainNew.DomainName.Apply(domainName =&gt; @$"      {{\""eventName\"":\""LogFileCreated\"",
+    ///      \""eventVersion\"":\""1.0.0\"",
+    ///      \""notes\"":\""cdn events trigger\"",
+    ///      \""filter\"":{{
+    ///         \""domain\"": [\""{domainName}\""]
     ///         }}
     ///     }}
     /// "),

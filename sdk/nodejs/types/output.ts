@@ -177,6 +177,142 @@ export interface GetZonesZone {
     slbSlaveZoneIds: string[];
 }
 
+export interface StarRocksInstanceBackendNodeGroup {
+    /**
+     * Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
+     */
+    cu?: number;
+    /**
+     * The number of disks.
+     */
+    diskNumber?: number;
+    /**
+     * Local SSD instance specifications.
+     */
+    localStorageInstanceType?: string;
+    /**
+     * Resident node number of node group.
+     */
+    residentNodeNumber?: number;
+    /**
+     * Compute group specification types include the following:
+     * - standard
+     * - localSSD
+     * - bigData
+     * - ramEnhanced
+     * - networkEnhanced
+     */
+    specType?: string;
+    /**
+     * Performance levels of cloud disks include the following values:
+     * - pl0: Maximum random read/write IOPS per disk is 10,000.
+     * - pl1: Maximum random read/write IOPS per disk is 50,000.
+     * - pl2: Maximum random read/write IOPS per disk is 100,000.
+     * - pl3: Maximum random read/write IOPS per disk is 1,000,000.
+     */
+    storagePerformanceLevel?: string;
+    /**
+     * Storage size, measured in GiB.
+     */
+    storageSize?: number;
+    /**
+     * Zone ID.
+     */
+    zoneId?: string;
+}
+
+export interface StarRocksInstanceFrontendNodeGroup {
+    /**
+     * Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
+     */
+    cu?: number;
+    /**
+     * DiskNumber
+     */
+    diskNumber?: number;
+    /**
+     * Local SSD instance specifications.
+     */
+    localStorageInstanceType?: string;
+    /**
+     * Resident node number of node group.
+     */
+    residentNodeNumber?: number;
+    /**
+     * Compute group specification types include the following:
+     * - standard
+     * - ramEnhanced
+     */
+    specType?: string;
+    /**
+     * Performance levels of cloud disks include the following values:
+     * - pl0: Maximum random read/write IOPS per disk is 10,000.
+     * - pl1: Maximum random read/write IOPS per disk is 50,000.
+     * - pl2: Maximum random read/write IOPS per disk is 100,000.
+     * - pl3: Maximum random read/write IOPS per disk is 1,000,000.
+     */
+    storagePerformanceLevel?: string;
+    /**
+     * Storage size, measured in GiB.
+     */
+    storageSize?: number;
+    /**
+     * Zone ID.
+     */
+    zoneId?: string;
+}
+
+export interface StarRocksInstanceObserverNodeGroup {
+    /**
+     * Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
+     */
+    cu?: number;
+    /**
+     * DiskNumber
+     */
+    diskNumber?: number;
+    /**
+     * Local SSD instance specifications.
+     */
+    localStorageInstanceType?: string;
+    /**
+     * Resident node number of node group.
+     */
+    residentNodeNumber?: number;
+    /**
+     * Compute group specification types include the following:
+     * - standard
+     */
+    specType?: string;
+    /**
+     * Performance levels of cloud disks include the following values:
+     * - pl0: Maximum random read/write IOPS per disk is 10,000.
+     * - pl1: Maximum random read/write IOPS per disk is 50,000.
+     * - pl2: Maximum random read/write IOPS per disk is 100,000.
+     * - pl3: Maximum random read/write IOPS per disk is 1,000,000.
+     */
+    storagePerformanceLevel?: string;
+    /**
+     * Storage size, measured in GiB.
+     */
+    storageSize?: number;
+    /**
+     * Zone ID.
+     */
+    zoneId?: string;
+}
+
+export interface StarRocksInstanceVswitch {
+    /**
+     * ID of VSwitch.
+     */
+    vswitchId: string;
+    /**
+     * Zone ID of VSwitch.
+     */
+    zoneId?: string;
+}
+
 export namespace ackone {
     export interface ClusterNetwork {
         /**
@@ -4162,6 +4298,53 @@ export namespace arms {
         ttsRecoverContent: string;
     }
 
+    export interface GetAddonReleasesRelease {
+        /**
+         * The name of the add-on.
+         */
+        addonName: string;
+        /**
+         * The name of the Addon Release.
+         */
+        addonReleaseName: string;
+        /**
+         * The version of the add-on.
+         */
+        addonVersion: string;
+        /**
+         * The number of alert rules.
+         */
+        alertRuleCount: number;
+        /**
+         * The language.
+         */
+        aliyunLang: string;
+        /**
+         * The time when the add-on was created.
+         */
+        createTime: string;
+        /**
+         * The number of dashboards.
+         */
+        dashboardCount: number;
+        /**
+         * The environment ID.
+         */
+        environmentId: string;
+        /**
+         * The number of exporters.
+         */
+        exporterCount: number;
+        /**
+         * The ID of the Addon Release. It formats as `<environment_id>:<addon_release_name>`.
+         */
+        id: string;
+        /**
+         * The region ID.
+         */
+        regionId: string;
+    }
+
     export interface GetAlertContactGroupsGroup {
         /**
          * The first ID of the resource.
@@ -4413,6 +4596,185 @@ export namespace arms {
          * The content of the TTS.
          */
         ttsRecoverContent: string;
+    }
+
+    export interface GetEnvCustomJobsJob {
+        /**
+         * The YAML configuration string.
+         */
+        configYaml: string;
+        /**
+         * The name of the custom job.
+         */
+        envCustomJobName: string;
+        /**
+         * The ID of the environment instance.
+         */
+        environmentId: string;
+        /**
+         * The ID of the custom job. It formats as `<environment_id>:<env_custom_job_name>`.
+         */
+        id: string;
+        /**
+         * The region ID.
+         */
+        regionId: string;
+        /**
+         * The status of the custom job.
+         */
+        status: string;
+    }
+
+    export interface GetEnvFeaturesFeature {
+        /**
+         * The language.
+         */
+        aliyunLang: string;
+        /**
+         * The name of the feature.
+         */
+        envFeatureName: string;
+        /**
+         * The ID of the environment instance.
+         */
+        environmentId: string;
+        /**
+         * The version of the feature.
+         */
+        featureVersion: string;
+        /**
+         * The ID of the Env Feature. It formats as `<environment_id>:<env_feature_name>`.
+         */
+        id: string;
+        /**
+         * The status of the feature.
+         */
+        status: string;
+    }
+
+    export interface GetEnvPodMonitorsMonitor {
+        /**
+         * The YAML configuration string.
+         */
+        configYaml: string;
+        /**
+         * The name of the PodMonitor.
+         */
+        envPodMonitorName: string;
+        /**
+         * The environment ID.
+         */
+        environmentId: string;
+        /**
+         * The ID of the PodMonitor. It formats as `<environment_id>:<namespace>:<env_pod_monitor_name>`.
+         */
+        id: string;
+        /**
+         * The namespace.
+         */
+        namespace: string;
+        /**
+         * The region ID.
+         */
+        regionId: string;
+        /**
+         * The status of the PodMonitor.
+         */
+        status: string;
+    }
+
+    export interface GetEnvServiceMonitorsMonitor {
+        /**
+         * The YAML configuration string.
+         */
+        configYaml: string;
+        /**
+         * The name of the ServiceMonitor.
+         */
+        envServiceMonitorName: string;
+        /**
+         * The environment ID.
+         */
+        environmentId: string;
+        /**
+         * The ID of the ServiceMonitor. It formats as `<environment_id>:<namespace>:<env_service_monitor_name>`.
+         */
+        id: string;
+        /**
+         * The namespace.
+         */
+        namespace: string;
+        /**
+         * The region ID.
+         */
+        regionId: string;
+        /**
+         * The status of the ServiceMonitor.
+         */
+        status: string;
+    }
+
+    export interface GetEnvironmentsEnvironment {
+        /**
+         * The ID of the resource bound to the environment instance.
+         */
+        bindResourceId: string;
+        /**
+         * The resource type.
+         */
+        bindResourceType: string;
+        /**
+         * The CIDR block that is bound to the VPC.
+         */
+        bindVpcCidr: string;
+        /**
+         * The ID of the environment instance.
+         */
+        environmentId: string;
+        /**
+         * The name of the environment instance.
+         */
+        environmentName: string;
+        /**
+         * The environment type. Valid values: `CS`, `ECS`, `Cloud`.
+         */
+        environmentType: string;
+        /**
+         * The unique ID of the Grafana data source.
+         */
+        grafanaDatasourceUid: string;
+        /**
+         * The unique ID of the Grafana directory.
+         */
+        grafanaFolderUid: string;
+        /**
+         * The ID of the environment instance.
+         */
+        id: string;
+        /**
+         * Indicates whether agents or exporters are managed.
+         */
+        managedType: string;
+        /**
+         * The ID of the Prometheus instance.
+         */
+        prometheusInstanceId: string;
+        /**
+         * The region ID.
+         */
+        regionId: string;
+        /**
+         * The ID of the resource group.
+         */
+        resourceGroupId: string;
+        /**
+         * A mapping of tags to assign to the resource.
+         */
+        tags: {[key: string]: string};
+        /**
+         * The user ID.
+         */
+        userId: string;
     }
 
     export interface GetIntegrationExportersIntegrationExporter {
@@ -10372,6 +10734,260 @@ export namespace cloudmonitor {
         userId: string;
     }
 
+    export interface GetServiceMetricAlarmRulesRule {
+        /**
+         * The trigger conditions for multiple metrics.
+         */
+        compositeExpression: outputs.cloudmonitor.GetServiceMetricAlarmRulesRuleCompositeExpression;
+        /**
+         * The alert contact group.
+         */
+        contactGroups: string;
+        /**
+         * The monitoring dimensions of the specified resource.
+         */
+        dimensions: string;
+        /**
+         * The time period during which the alert rule is effective.
+         */
+        effectiveInterval: string;
+        /**
+         * The subject of the alert notification email.
+         */
+        emailSubject: string;
+        /**
+         * The conditions for triggering different levels of alerts.
+         */
+        escalations: outputs.cloudmonitor.GetServiceMetricAlarmRulesRuleEscalations;
+        /**
+         * The ID of the alert rule.
+         */
+        id: string;
+        /**
+         * The tags of the alert rule.
+         */
+        labels: outputs.cloudmonitor.GetServiceMetricAlarmRulesRuleLabel[];
+        /**
+         * The name of the metric.
+         */
+        metricName: string;
+        /**
+         * The namespace of the cloud service.
+         */
+        namespace: string;
+        /**
+         * The method that is used to handle alerts when no monitoring data is found.
+         */
+        noDataPolicy: string;
+        /**
+         * The time period during which the alert rule is ineffective.
+         */
+        noEffectiveInterval: string;
+        /**
+         * The aggregation period of the metric.
+         */
+        period: string;
+        /**
+         * The Prometheus alerts.
+         */
+        prometheus: outputs.cloudmonitor.GetServiceMetricAlarmRulesRulePrometheus;
+        /**
+         * The resources that are associated with the alert rule.
+         */
+        resources: string;
+        /**
+         * The name of the alert rule.
+         */
+        ruleName: string;
+        /**
+         * The mute period during which new alert notifications are not sent even if the trigger conditions are met.
+         */
+        silenceTime: string;
+        /**
+         * The type of the alert rule.
+         */
+        sourceType: string;
+        /**
+         * Specifies whether to query enabled or disabled alert rules. Valid values: `true`, `false`.
+         */
+        status: boolean;
+        /**
+         * The callback URL.
+         */
+        webhook: string;
+    }
+
+    export interface GetServiceMetricAlarmRulesRuleCompositeExpression {
+        /**
+         * The relationship between the trigger conditions for multiple metrics.
+         */
+        expressionListJoin: string;
+        /**
+         * The trigger conditions that are created in standard mode.
+         */
+        expressionLists: outputs.cloudmonitor.GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList[];
+        /**
+         * The trigger conditions that are created by using expressions.
+         */
+        expressionRaw: string;
+        /**
+         * The alert level.
+         */
+        level: string;
+        /**
+         * The number of consecutive triggers.
+         */
+        times: number;
+    }
+
+    export interface GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList {
+        /**
+         * The comparison operator that is used to compare the metric value with the threshold.
+         */
+        comparisonOperator: string;
+        /**
+         * The name of the metric.
+         */
+        metricName: string;
+        /**
+         * The aggregation period of the metric.
+         */
+        period: number;
+        /**
+         * The statistical methods for Warn-level alerts.
+         */
+        statistics: string;
+        /**
+         * The threshold for Warn-level alerts.
+         */
+        threshold: string;
+    }
+
+    export interface GetServiceMetricAlarmRulesRuleEscalations {
+        /**
+         * The conditions for triggering Critical-level alerts.
+         */
+        critical: outputs.cloudmonitor.GetServiceMetricAlarmRulesRuleEscalationsCritical;
+        /**
+         * The conditions for triggering Info-level alerts.
+         */
+        info: outputs.cloudmonitor.GetServiceMetricAlarmRulesRuleEscalationsInfo;
+        /**
+         * The conditions for triggering Warn-level alerts.
+         */
+        warn: outputs.cloudmonitor.GetServiceMetricAlarmRulesRuleEscalationsWarn;
+    }
+
+    export interface GetServiceMetricAlarmRulesRuleEscalationsCritical {
+        /**
+         * The comparison operator that is used to compare the metric value with the threshold.
+         */
+        comparisonOperator: string;
+        /**
+         * The additional conditions for triggering Warn-level alerts.
+         */
+        preCondition: string;
+        /**
+         * The statistical methods for Warn-level alerts.
+         */
+        statistics: string;
+        /**
+         * The threshold for Warn-level alerts.
+         */
+        threshold: string;
+        /**
+         * The number of consecutive triggers.
+         */
+        times: number;
+    }
+
+    export interface GetServiceMetricAlarmRulesRuleEscalationsInfo {
+        /**
+         * The comparison operator that is used to compare the metric value with the threshold.
+         */
+        comparisonOperator: string;
+        /**
+         * The additional conditions for triggering Warn-level alerts.
+         */
+        preCondition: string;
+        /**
+         * The statistical methods for Warn-level alerts.
+         */
+        statistics: string;
+        /**
+         * The threshold for Warn-level alerts.
+         */
+        threshold: string;
+        /**
+         * The number of consecutive triggers.
+         */
+        times: number;
+    }
+
+    export interface GetServiceMetricAlarmRulesRuleEscalationsWarn {
+        /**
+         * The comparison operator that is used to compare the metric value with the threshold.
+         */
+        comparisonOperator: string;
+        /**
+         * The additional conditions for triggering Warn-level alerts.
+         */
+        preCondition: string;
+        /**
+         * The statistical methods for Warn-level alerts.
+         */
+        statistics: string;
+        /**
+         * The threshold for Warn-level alerts.
+         */
+        threshold: string;
+        /**
+         * The number of consecutive triggers.
+         */
+        times: number;
+    }
+
+    export interface GetServiceMetricAlarmRulesRuleLabel {
+        /**
+         * The subject of the alert notificaThe key of the annotation.
+         */
+        key: string;
+        /**
+         * The value of the annotation.
+         */
+        value: string;
+    }
+
+    export interface GetServiceMetricAlarmRulesRulePrometheus {
+        /**
+         * The annotations of the Prometheus alert rule.
+         */
+        annotations: outputs.cloudmonitor.GetServiceMetricAlarmRulesRulePrometheusAnnotation[];
+        /**
+         * The alert level.
+         */
+        level: string;
+        /**
+         * The PromQL query statement.
+         */
+        promQl: string;
+        /**
+         * The number of consecutive triggers.
+         */
+        times: number;
+    }
+
+    export interface GetServiceMetricAlarmRulesRulePrometheusAnnotation {
+        /**
+         * The subject of the alert notificaThe key of the annotation.
+         */
+        key: string;
+        /**
+         * The value of the annotation.
+         */
+        value: string;
+    }
+
     export interface ServiceGroupMonitoringAgentProcessAlertConfig {
         /**
          * The operator that is used to compare the metric value with the threshold. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
@@ -16217,6 +16833,191 @@ export namespace cs {
          * `nginx-ingress-controller` - You can specific `IngressSlbNetworkType` in config. Options: internet|intranet.
          *
          * The `main.tf`:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * import * as alicloud from "@pulumi/alicloud";
+         * import * as std from "@pulumi/std";
+         *
+         * const k8s = new alicloud.cs.ManagedKubernetes("k8s", {addons: Object.entries(clusterAddons).map(([k, v]) => ({key: k, value: v})).map(entry => ({
+         *     name: std.lookup({
+         *         map: entry.value,
+         *         key: "name",
+         *         "default": clusterAddons,
+         *     }).then(invoke => invoke.result),
+         *     config: std.lookup({
+         *         map: entry.value,
+         *         key: "config",
+         *         "default": clusterAddons,
+         *     }).then(invoke => invoke.result),
+         *     version: std.lookup({
+         *         map: entry.value,
+         *         key: "version",
+         *         "default": clusterAddons,
+         *     }).then(invoke => invoke.result),
+         *     disabled: std.lookup({
+         *         map: entry.value,
+         *         key: "disabled",
+         *         "default": clusterAddons,
+         *     }).then(invoke => invoke.result),
+         * }))});
+         * ```
+         *
+         * The `varibales.tf`:
+         *
+         * ```
+         * # Network-flannel is required, Conflicts With Network-terway
+         * variable "cluster_addons" {
+         * description = "Addon components in kubernetes cluster"
+         *
+         * type = list(object({
+         * name      = string
+         * config    = string
+         * }))
+         *
+         * default = [
+         * {
+         * "name"     = "flannel",
+         * "config"   = "",
+         * }
+         * ]
+         * }
+         *
+         * # Network-terway is required, Conflicts With Network-flannel
+         * variable "cluster_addons" {
+         * type = list(object({
+         * name      = string
+         * config    = string
+         * }))
+         *
+         * default = [
+         * {
+         * "name"     = "terway-eniip",
+         * "config"   = "",
+         * }
+         * ]
+         * }
+         *
+         * # Storage-csi is required, Conflicts With Storage-flexvolume
+         * variable "cluster_addons" {
+         * type = list(object({
+         * name      = string
+         * config    = string
+         * }))
+         *
+         * default = [
+         * {
+         * "name"     = "csi-plugin",
+         * "config"   = "",
+         * },
+         * {
+         * "name"     = "csi-provisioner",
+         * "config"   = "",
+         * }
+         * ]
+         * }
+         *
+         * # Storage-flexvolume is required, Conflicts With Storage-csi
+         * variable "cluster_addons" {
+         * type = list(object({
+         * name      = string
+         * config    = string
+         * }))
+         * default = [
+         * {
+         * "name"     = "flexvolume",
+         * "config"   = "",
+         * }
+         * ]
+         * }
+         *
+         * # Log, Optional
+         * variable "cluster_addons" {
+         * type = list(object({
+         * name      = string
+         * config    = string
+         * }))
+         * default = [
+         * {
+         * "name"     = "logtail-ds",
+         * "config"   = "{\"IngressDashboardEnabled\":\"true\",\"sls_project_name\":\"your-sls-project-name\"}",
+         * }
+         * ]
+         * }
+         *
+         * # Ingress,Optional
+         * variable "cluster_addons" {
+         * type = list(object({
+         * name      = string
+         * config    = string
+         * }))
+         *
+         * default = [
+         * {
+         * "name"     = "nginx-ingress-controller",
+         * "config"   = "{\"IngressSlbNetworkType\":\"internet\"}",
+         * }
+         * ]
+         * }
+         *
+         * # Ingress-Disable, Optional
+         * variable "cluster_addons" {
+         * type = list(object({
+         * name      = string
+         * config    = string
+         * disabled  = bool
+         * }))
+         *
+         * default = [
+         * {
+         * "name"     = "nginx-ingress-controller",
+         * "config"   = "",
+         * "disabled": true,
+         * }
+         * ]
+         *
+         * # Prometheus, Optional.
+         * variable "cluster_addons" {
+         * type = list(object({
+         * name      = string
+         * config    = string
+         * }))
+         *
+         * default = [
+         * {
+         * "name"     = "arms-prometheus",
+         * "config"   = "",
+         * }
+         * ]
+         * }
+         *
+         * # Event Center, Optional.
+         * variable "cluster_addons" {
+         * type = list(object({
+         * name      = string
+         * config    = string
+         * }))
+         * default = [
+         * {
+         * "name"     = "ack-node-problem-detector",
+         * "config"   = "{\"sls_project_name\":\"\"}",
+         * }
+         * ]
+         * }
+         * # ACK default alert, Optional.
+         * variable "cluster_addons" {
+         * type = list(object({
+         * name      = string
+         * config    = string
+         * }))
+         * default = [
+         * {
+         * "name"     = "alicloud-monitor-controller",
+         * "config"   = "{\"group_contact_ids\":\"[159]\"}",
+         * }
+         * ]
+         * }
+         * ```
          */
         disabled?: boolean;
         /**
@@ -16238,6 +17039,13 @@ export namespace cs {
          * The SLS project to which the Logstore storing the cluster audit logs belongs.
          */
         slsProjectName: string;
+    }
+
+    export interface ManagedKubernetesAutoMode {
+        /**
+         * Whether to enable auto mode. Valid values: `true`, `false`. Only ACK managed Pro clusters support Auto Mode.
+         */
+        enabled?: boolean;
     }
 
     export interface ManagedKubernetesCertificateAuthority {
@@ -28805,6 +29613,25 @@ export namespace eflo {
         vpdName: string;
     }
 
+    export interface NodeGroupAttachmentDataDisk {
+        /**
+         * Type
+         */
+        category?: string;
+        /**
+         * Indicate whether the data disk is released with the node. true indicates that the data disk will be released together when the node unsubscribes.
+         */
+        deleteWithNode?: boolean;
+        /**
+         * Performance level
+         */
+        performanceLevel?: string;
+        /**
+         * Data disk size
+         */
+        size?: number;
+    }
+
     export interface NodeGroupIpAllocationPolicy {
         /**
          * Specify the cluster subnet ID based on the bond name See `bondPolicy` below.
@@ -34629,6 +35456,21 @@ export namespace fc {
         timeout?: number;
     }
 
+    export interface V3FunctionInvocationRestriction {
+        /**
+         * Whether invocation is disabled
+         */
+        disable?: boolean;
+        /**
+         * Last time the function was Updated
+         */
+        lastModifiedTime: string;
+        /**
+         * Disable Reason
+         */
+        reason?: string;
+    }
+
     export interface V3FunctionLogConfig {
         /**
          * After this feature is enabled, you can view core metrics such as instance-level CPU usage, memory usage, instance network status, and the number of requests within an instance. false: The default value, which means that instance-level metrics are turned off. true: indicates that instance-level metrics are enabled.
@@ -34708,7 +35550,7 @@ export namespace fc {
 
     export interface V3FunctionTracingConfig {
         /**
-         * Tracing parameters.
+         * Tracing parameters
          */
         params: {[key: string]: string};
         /**
@@ -40741,6 +41583,33 @@ export namespace message {
          * The url of the topic.
          */
         topicUrl: string;
+    }
+
+    export interface ServiceEventRuleEndpoint {
+        /**
+         * Message receiving terminal endpoint type
+         */
+        endpointType?: string;
+        /**
+         * Message Receiving Terminal Endpoint
+         */
+        endpointValue?: string;
+    }
+
+    export interface ServiceEventRuleMatchRule {
+        /**
+         * Match state. valid values: `true`, `false`.
+         */
+        matchState?: string;
+        name?: string;
+        /**
+         * Prefix matching rule.
+         */
+        prefix?: string;
+        /**
+         * Suffix matching rule.
+         */
+        suffix?: string;
     }
 
     export interface ServiceQueueDlqPolicy {
@@ -47351,6 +48220,9 @@ export namespace rds {
          * DB Instance available class.
          */
         instanceClass: string;
+        /**
+         * Unit price of instance specifications.
+         */
         price: string;
         /**
          * DB Instance available storage range.
@@ -49474,15 +50346,26 @@ export namespace ros {
         templateVersion: string;
     }
 
+    export interface StackGroupAutoDeployment {
+        /**
+         * Enable or disable automatic deployment. Valid Values:
+         */
+        enabled?: boolean;
+        /**
+         * Whether to retain the stack in the member account when the member account is deleted from the target folder. Valid values:
+         */
+        retainStacksOnAccountRemoval?: boolean;
+    }
+
     export interface StackGroupParameter {
         /**
-         * The parameter key.
+         * The key of parameter N. If you do not specify the key and value of the parameter, ROS uses the default key and value in the template.
          */
-        parameterKey?: string;
+        parameterKey: string;
         /**
-         * The parameter value.
+         * The value of parameter N.
          */
-        parameterValue?: string;
+        parameterValue: string;
     }
 
     export interface StackInstanceParameterOverride {
@@ -55050,6 +55933,107 @@ export namespace sls {
         type: string;
     }
 
+    export interface GetEtlsEtl {
+        /**
+         * Detailed configuration of data processing tasks
+         */
+        configuration: outputs.sls.GetEtlsEtlConfiguration;
+        /**
+         * Task creation time. Example value: 1718787534
+         */
+        createTime: number;
+        /**
+         * Data Processing Task Description
+         */
+        description: string;
+        /**
+         * Data processing task display name
+         */
+        displayName: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * Unique identification of data processing task
+         */
+        jobName: string;
+        /**
+         * The time when the task was last modified. Example value: 1718787681
+         */
+        lastModifiedTime: number;
+        /**
+         * The task ID. Example values:
+         */
+        scheduleId: string;
+        /**
+         * Task Status
+         */
+        status: string;
+    }
+
+    export interface GetEtlsEtlConfiguration {
+        /**
+         * Processing time start timestamp (accurate to the second). Enter 0 when the first log received from the source Logstore is consumed.
+         */
+        fromTime: number;
+        /**
+         * Data processing syntax type.
+         */
+        lang: string;
+        /**
+         * Source Logstore Name.
+         */
+        logstore: string;
+        /**
+         * Advanced parameter configuration.
+         */
+        parameters: {[key: string]: string};
+        /**
+         * The ARN role that authorizes writing to the target Logstore.
+         */
+        roleArn: string;
+        /**
+         * Processing script.
+         */
+        script: string;
+        /**
+         * Processing result output target list.
+         */
+        sinks: outputs.sls.GetEtlsEtlConfigurationSink[];
+        /**
+         * Processing time end timestamp (accurate to seconds). When continuous consumption is stopped manually, fill in 0.
+         */
+        toTime: number;
+    }
+
+    export interface GetEtlsEtlConfigurationSink {
+        /**
+         * Write Result Set.
+         */
+        datasets: string[];
+        /**
+         * The endpoint of the region where the target Project is located.
+         */
+        endpoint: string;
+        /**
+         * Source Logstore Name.
+         */
+        logstore: string;
+        /**
+         * Output Destination Name.
+         */
+        name: string;
+        /**
+         * Project Name
+         */
+        project: string;
+        /**
+         * The ARN role that authorizes writing to the target Logstore.
+         */
+        roleArn: string;
+    }
+
     export interface OssExportSinkConfiguration {
         /**
          * The beginning of the time range to ship data. The value 1 specifies that the data shipping job ships data from the first log in the Logstore. Example value: 1718380800
@@ -55281,6 +56265,44 @@ export namespace tag {
 }
 
 export namespace threatdetection {
+    export interface AntiBruteForceRuleProtocolType {
+        /**
+         * Whether to enable RDP interception. Default value: `on`. Valid values: `on`, `off`.
+         */
+        rdp: string;
+        /**
+         * Whether to enable the SqlServer interception method. Default value: `off`. Valid values: `on`, `off`.
+         */
+        sqlServer: string;
+        /**
+         * Whether to enable SSH interception. Default value: `on`. Valid values: `on`, `off`.
+         */
+        ssh: string;
+    }
+
+    export interface AttackPathSensitiveAssetConfigAttackPathAssetList {
+        /**
+         * Cloud product asset subtype.
+         */
+        assetSubType: number;
+        /**
+         * The asset type of the cloud product asset.
+         */
+        assetType: number;
+        /**
+         * The ID of the cloud product instance.
+         */
+        instanceId: string;
+        /**
+         * The region ID of the cloud product.
+         */
+        regionId: string;
+        /**
+         * Cloud product asset vendor. Valid values: `0`.
+         */
+        vendor: number;
+    }
+
     export interface GetAntiBruteForceRulesRule {
         /**
          * The ID of the defense rule.
@@ -59967,16 +60989,269 @@ export namespace waf {
 }
 
 export namespace wafv3 {
+    export interface DefenseRuleConfig {
+        /**
+         * The regions outside China from which you want to block requests. Separate multiple region codes with commas (,). You can call the DescribeIpAbroadCountryInfos operation to query the countries and regions outside China that can be blocked.
+         */
+        abroadRegions?: string;
+        /**
+         * The policies for account extraction. Up to five policies are supported. Each policy is a JSON string. For more information, see accountIdentifiers description. See `accountIdentifiers` below.
+         */
+        accountIdentifiers?: outputs.wafv3.DefenseRuleConfigAccountIdentifier[];
+        /**
+         * The list of regular rule IDs that are not detected. The value is in the ["XX1", "XX2",...] format. This parameter is required only when the module to which the whitelist applies is set to specific regular rules in basic protection (BypassTags is set to regular_rule).
+         */
+        bypassRegularRules?: string[];
+        /**
+         * The regular rule type is not detected. This parameter is configured only when the whitelist module is configured as the Web application regular type (the value of the BypassTags parameter is regular_type). Value:
+         * - sqli: Indicates SQL injection.
+         * - xss: Indicates cross-site scripting (XSS).
+         * - cmdi: Indicates OS command injection.
+         * - expression_injection: Indicates expression injection.
+         * - java_deserialization: indicates Java deserialization.
+         * - dot_net_deserialization: Represents. net deserialization.
+         * - php_deserialization: indicates PHP deserialization.
+         * - code_exec: Indicates code execution.
+         * - ssrf: indicates SSRF (server-side request forgery).
+         * - path_traversal: indicates a Path Traversal.
+         * - arbitrary_file_uploading: Indicates to upload any file.
+         * - webshell: Represents a webshell.
+         * - rfilei: Indicates the remote file contains (RFI).
+         * - lfilei: Indicates that the local file contains (LFI).
+         * - protocol_violation: indicates a protocol violation.
+         * - scanner_behavior: Indicates scanner behavior.
+         * - logic_flaw: Indicates a business logic defect.
+         * - arbitrary_file_reading: Indicates arbitrary file reading.
+         * - arbitrary_file_download: Indicates an arbitrary file download.
+         * - xxe: Indicates external entity injection.
+         * - csrf: indicates cross-site request forgery.
+         * - crlf: indicates CRLF.
+         * - other: indicates other.
+         */
+        bypassRegularTypes?: string[];
+        /**
+         * The modules to which the whitelist applies. The value is in the ["XX1", "XX2",...] format. Valid values:
+         * - waf: indicates all modules.
+         * - customrule: indicates custom rules.
+         * - blacklist: indicates IP blacklist.
+         * - antiscan: indicates scan protection.
+         * - regular: indicates basic protection rules.
+         * - regular_rule: indicates specific regular rules in basic protection.
+         * - regular_type: indicates specific regular rule types in basic protection.
+         * - major_protection: indicates major event support protection.
+         * - cc: indicates CC protection.
+         * - region_block: indicates Location Blacklist.
+         * - antibot_scene: indicates BOT scenario protection.
+         * - dlp: indicates information leakage prevention.
+         * - tamperproof: indicates web tamper-proofing.
+         * - spike_throttle: indicates peak traffic throttling.
+         */
+        bypassTags?: string[];
+        /**
+         * Set the effective range of the speed limit. This information is configured only when ccStatus is set to 1. Value:
+         * - service: indicates that the effective object is a protected object.
+         * - rule: indicates that the effective object is a single rule.
+         */
+        ccEffect?: string;
+        /**
+         * Whether to open the speed limit. Value:
+         * - 0: indicates that the speed limit is off.
+         * - 1: Indicates that the speed limit is on.
+         */
+        ccStatus?: number;
+        /**
+         * The regions in China from which you want to block requests. If you specify "CN", requests from the Chinese mainland (excluding Hong Kong, Macao, and Taiwan) are blocked. Separate multiple regions with commas (,). For more information about region codes, see Description of region codes in China.
+         */
+        cnRegions?: string;
+        /**
+         * The traffic characteristics of ACL, which are described in JSON format. You can enter up to five matching conditions. For specific configuration information, see detailed configuration of conditions. See `conditions` below.
+         */
+        conditions?: outputs.wafv3.DefenseRuleConfigCondition[];
+        /**
+         * The HTTP flood protection mode. Valid values:
+         * - 0 (default): indicates normal protection.
+         * - 1: indicates emergency protection.
+         */
+        mode?: number;
+        /**
+         * The protocol type of the cached page address. Valid values: http, https.
+         */
+        protocol?: string;
+        /**
+         * The detailed speed limit configuration, which is described in the JSON string format. This information is configured only when CcStatus is set to 1. For specific configuration information, see detailed configuration of Ratelimit. See `rateLimit` below.
+         */
+        rateLimit?: outputs.wafv3.DefenseRuleConfigRateLimit;
+        /**
+         * The IP addresses that you want to add to the blacklist. Specify the value of this parameter in the ["ip1","ip2",...] format.
+         */
+        remoteAddrs?: string[];
+        /**
+         * Protection rule action. Value:
+         * - block: Indicates an intercept.
+         * - monitor: indicates observation.
+         * - js: indicates JS validation.
+         * - captcha: Indicates a slider.
+         * - captcha_strict: indicates a strict slider.
+         * - filter: filters sensitive information. This action applies only to scenarios that the Information leakage prevention rule include sensitive information match conditions.
+         *
+         * > **NOTE:**  For the supported protection rule actions, follow the rule actions displayed in the WAF console.
+         */
+        ruleAction?: string;
+        /**
+         * The throttling threshold. Valid values:
+         * - The QPS throttling threshold ranges from 1 to 5000000. If you select QPS throttling (such as 500 QPS), traffic that meets the throttling conditions and exceeds 500 QPS will be blocked.
+         * - The percentage throttling threshold ranges from 1 to 99. If you select percentage throttling (such as 80%), only 80% of the traffic that meets the throttling conditions will be allowed.
+         */
+        throttleThrehold?: number;
+        /**
+         * The throttling method. Valid values:
+         * - qps: indicates throttling based on queries per second (QPS).
+         * - ratio (default): indicates throttling based on percentage.
+         */
+        throttleType?: string;
+        /**
+         * The User-Agent string that is allowed for access to the address.
+         */
+        ua?: string;
+        /**
+         * The address of the cached page.
+         */
+        url?: string;
+    }
+
+    export interface DefenseRuleConfigAccountIdentifier {
+        /**
+         * The authentication mode. Valid values:
+         * - plain: indicates plaintext.
+         * - basic: indicates Basic authentication.
+         * - jwt: indicates JWT authentication. For JWT authentication, you must specify the field that stores the decoded account information (position).
+         */
+        decodeType?: string;
+        /**
+         * Match field. Valid values: URL, URLPath, IP, Referer, User-Agent, Params, Cookie, Content-Type, Content-Length, X-Forwarded-For, Post-Body, Http-Method, Header, Host, HttpCode, and SensitiveInfo.
+         *
+         * > **NOTE:**  Support for matching fields is based on the display in the WAF console. HttpCode and SensitiveInfo are the matching fields supported by the information leakage prevention rule (dlp).
+         */
+        key?: string;
+        /**
+         * The field that stores the decoded account information.
+         */
+        position?: string;
+        /**
+         * The priority of the current extraction configuration. Each traffic can match at most one extraction policy. Valid values: [0,20]. A smaller value indicates a higher priority. The priority value must be unique.
+         */
+        priority?: number;
+        /**
+         * The characteristics of the statistical object. When the Target parameter is set to cookie, header, or queryarg, you must specify the corresponding information in the Subkey parameter.
+         */
+        subKey?: string;
+    }
+
+    export interface DefenseRuleConfigCondition {
+        /**
+         * Match field. Valid values: URL, URLPath, IP, Referer, User-Agent, Params, Cookie, Content-Type, Content-Length, X-Forwarded-For, Post-Body, Http-Method, Header, Host, HttpCode, and SensitiveInfo.
+         *
+         * > **NOTE:**  Support for matching fields is based on the display in the WAF console. HttpCode and SensitiveInfo are the matching fields supported by the information leakage prevention rule (dlp).
+         */
+        key?: string;
+        /**
+         * Logical character. Value:
+         * - not-contain: does not contain.
+         * - contain: Indicates to contain.
+         * - none: It does not exist.
+         * - ne: means not equal.
+         * - eq: means equal.
+         * - lt: indicates that the value is less.
+         * - gt: indicates that the value is greater.
+         * - len-lt: indicates that the length is less.
+         * - len-eq: indicates that the length is equal.
+         * - len-gt: indicates that the length is greater.
+         * - not-match: indicates a mismatch.
+         * - match-one: means equal to one of the multiple values.
+         * - all-not-match: means not equal to any value.
+         * - all-not-contain: does not contain any value.
+         * - contain-one: Indicates that one of the multiple values is contained.
+         * - not-regex: Indicates a regular mismatch.
+         * - regex: Indicates a regular match.
+         * - all-not-regex: indicates that the regular expressions do not match.
+         * - regex-one: Represents a regular match for one of them.
+         * - prefix-match: Indicates a prefix match.
+         * - suffix-match: indicates a suffix match.
+         * - mpty: Indicates that the content is empty.
+         * - exists: Indicates that the field exists.
+         * - inl: indicates in the list.
+         *
+         * > **NOTE:**  Not all logical characters (opvalues) can be configured for the match field (key) of each custom rule. For the logical characters supported by different matching fields, please refer to the association relationship between the matching fields and the logical characters in the custom rules of the WAF console.
+         */
+        opValue?: string;
+        /**
+         * The characteristics of the statistical object. When the Target parameter is set to cookie, header, or queryarg, you must specify the corresponding information in the Subkey parameter.
+         */
+        subKey?: string;
+        /**
+         * Match the content and fill in the corresponding content as needed.
+         *
+         * > **NOTE:**  The value range of the logical (opValue) and matching content (values) parameters in the matching condition parameter is related to the specified matching field (key).
+         */
+        values?: string;
+    }
+
+    export interface DefenseRuleConfigRateLimit {
+        /**
+         * The statistical period, in seconds. This parameter specifies the period during which access counts are collected, and works with the Threshold parameter.
+         * Valid values: 1 to 1800 seconds.
+         */
+        interval?: number;
+        /**
+         * Response code frequency setting. The description is in the JSON string format. See `status` below.
+         */
+        status?: outputs.wafv3.DefenseRuleConfigRateLimitStatus;
+        /**
+         * The characteristics of the statistical object. When the Target parameter is set to cookie, header, or queryarg, you must specify the corresponding information in the Subkey parameter.
+         */
+        subKey?: string;
+        /**
+         * The type of the statistical object. Valid values:
+         * - remoteAddr (default): indicates IP.
+         * - cookie.acw_tc: indicates session.
+         * - header: indicates custom header. If you use custom headers, you must specify the headers in subkey.
+         * - queryarg: indicates custom parameters. If you use custom parameters, you must specify the parameters in subkey.
+         * - cookie: indicates custom cookies. If you use custom cookies, you must specify the cookies in subkey.
+         */
+        target?: string;
+        /**
+         * The maximum number of requests that can be sent from a statistical object.
+         */
+        threshold?: number;
+        /**
+         * The period of time during which you want the specified action to be valid. Unit: seconds.
+         * Valid values: 60 to 86400.
+         */
+        ttl?: number;
+    }
+
+    export interface DefenseRuleConfigRateLimitStatus {
+        /**
+         * Required. Specifies the response code.
+         */
+        code?: number;
+        /**
+         * The threshold for the number of occurrences. When the number of occurrences of the specified HTTP status code exceeds this threshold, the protection rule is triggered. Valid values: 2 to 50000. You can specify Count or Ratio. You cannot specify the two parameters at the same time.
+         */
+        count?: number;
+        /**
+         * The threshold for the proportion of occurrences (percentage). When the proportion of occurrences of the specified HTTP status code exceeds this threshold, the protection rule is triggered. Valid values: 1 to 100. You can specify Count or Ratio. You cannot specify the two parameters at the same time.
+         */
+        ratio?: number;
+    }
+
     export interface DomainListen {
         /**
-         * The ID of the certificate to be added. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
+         * The ID of the certificate to be added. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol).
          */
         certId?: string;
         /**
-         * The type of encryption suite to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-         * - **1**: indicates that all encryption suites are added.
-         * - **2**: indicates that a strong encryption package is added. You can select this value only if the value of **tls_version** is `tlsv1.2`.
-         * - **99**: indicates that a custom encryption suite is added.
+         * The type of the cipher suites that you want to add. This parameter is available only if you specify `HttpsPorts`. Valid values:
          */
         cipherSuite?: number;
         /**
@@ -59984,142 +61259,150 @@ export namespace wafv3 {
          */
         customCiphers?: string[];
         /**
-         * Whether TSL1.3 version is supported. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-         * - **true**: indicates that TSL1.3 is supported.
-         * - **false**: indicates that TSL1.3 is not supported.
+         * Whether TSL1.3 version is supported. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol). Value:
          */
         enableTlsv3?: boolean;
         /**
-         * Whether to enable exclusive IP address. This parameter is used only when the value of **ipv6_enabled** is **false** (indicating that IPv6 is not enabled) and the value of **protection_resource** is **share** (indicating that a shared cluster is used). Value:
-         * - **true**: indicates that the exclusive IP address is enabled.
-         * - **false** (default): indicates that exclusive IP address is not enabled.
+         * Specifies whether to enable the exclusive IP address feature. This parameter is available only if you set `IPv6Enabled` to false and `ProtectionResource` to `share`. Valid values:
          */
         exclusiveIp?: boolean;
         /**
-         * Whether to enable the forced jump of HTTPS. This parameter is used only when the value of `httpsPorts` is not empty (indicating that the domain name uses HTTPS protocol) and the value of httports is empty (indicating that the domain name does not use HTTP protocol). Value:
-         * - **true**: indicates that HTTPS forced redirection is enabled.
-         * - **false**: indicates that HTTPS forced redirection is not enabled.
+         * Specifies whether to enable force redirect from HTTP to HTTPS for received requests. This parameter is available only if you specify `HttpsPorts` and leave `HttpPorts` empty. Valid values:
          */
         focusHttps?: boolean;
         /**
-         * Whether to turn on http2. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-         * - **true:** indicates that HTTP2 is enabled.
-         * - **false** (default): indicates that HTTP2 is not enabled.
+         * Specifies whether to enable HTTP/2. This parameter is available only if you specify `HttpsPorts`. Valid values:
          */
         http2Enabled?: boolean;
         /**
-         * The listening port of the HTTP protocol.
+         * The HTTP listener ports. Specify the value in the \[**port1,port2,...**] format.
          */
         httpPorts?: number[];
         /**
-         * The listening port of the HTTPS protocol.
+         * The HTTPS listener ports. Specify the value in the \[**port1,port2,...**] format.
          */
         httpsPorts?: number[];
         /**
-         * Whether IPv6 is turned on. Value:
-         * - **true**: indicates that IPv6 is enabled.
-         * - **false** (default): indicates that IPv6 is not enabled.
+         * Specifies whether to enable IPv6 protection. Valid values:
          */
         ipv6Enabled?: boolean;
         /**
-         * The type of protection resource to use. Value:
-         * - **share** (default): indicates that a shared cluster is used.
-         * - **gslb**: indicates that the shared cluster intelligent load balancing is used.
+         * The type of the protection resource. Valid values:
          */
-        protectionResource?: string;
+        protectionResource: string;
         /**
-         * The version of TLS to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value: **tlsv1**, **tlsv1.1**, **tlsv1.2**.
+         * Specifies whether to allow access only from SM certificate-based clients. This parameter is available only if you set SM2Enabled to true.
+         *
+         * - true
+         * - false
+         */
+        sm2AccessOnly?: boolean;
+        /**
+         * The ID of the SM certificate that you want to add. This parameter is available only if you set SM2Enabled to true.
+         */
+        sm2CertId?: string;
+        /**
+         * Specifies whether to add an SM certificate.
+         */
+        sm2Enabled: boolean;
+        /**
+         * The version of TLS to add. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol). Value:
          */
         tlsVersion?: string;
         /**
-         * WAF obtains the real IP address of the client. Value:
-         * - **0** (default): indicates that the client has not forwarded the traffic to WAF through other layer -7 agents.
-         * - **1**: indicates that the first value of the X-Forwarded-For(XFF) field in the WAF read request header is used as the client IP address.
-         * - **2**: indicates that the custom field value set by you in the WAF read request header is used as the client IP address.
+         * The method that is used to obtain the originating IP address of a client. Valid values:
          */
         xffHeaderMode?: number;
         /**
-         * Set the list of custom fields used to obtain the client IP address.
+         * The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the **\["header1","header2",...]** format.
+         *
+         * > **NOTE:**   This parameter is required only if you set `XffHeaderMode` to 2.
          */
         xffHeaders?: string[];
     }
 
     export interface DomainRedirect {
         /**
-         * The IP address of the origin server corresponding to the domain name or the back-to-origin domain name of the server.
+         * The IP addresses or domain names of the origin server. You cannot specify both IP addresses and domain names. If you specify domain names, the domain names can be resolved only to IPv4 addresses.
+         *
+         * - If you specify IP addresses, specify the value in the **\["ip1","ip2",...]** format. You can enter up to 20 IP addresses.
+         * - If you specify domain names, specify the value in the **\["domain"]** format. You can enter up to 20 domain names.
          */
-        backends?: string[];
+        backends: string[];
         /**
-         * Connection timeout. Unit: seconds, value range: 5~120.
+         * The secondary IP address or domain name of the origin server.
+         */
+        backupBackends: string[];
+        /**
+         * Connection timeout duration. Unit: seconds.
+         * Value range: 1~3600. Default value: 5.
          */
         connectTimeout?: number;
         /**
-         * Whether to enable forced HTTP back-to-origin. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-         * - **true**: indicates that forced HTTP back-to-origin is enabled.
-         * - **false**: indicates that forced HTTP back-to-origin is not enabled.
+         * Specifies whether to enable force redirect from HTTPS to HTTP for back-to-origin requests. This parameter is available only if you specify `HttpsPorts`. Valid values:
          */
         focusHttpBackend?: boolean;
         /**
-         * Open long connection, default true.
+         * Specifies whether to enable the persistent connection feature. Valid values:
          */
         keepalive?: boolean;
         /**
-         * Number of long connections,  default: `60`. range :60-1000.
+         * The number of reused persistent connections. Valid values: 60 to 1000. Default value: 1000
+         *
+         *
+         * > **NOTE:**   This parameter specifies the number of persistent connections that can be reused after you enable the persistent connection feature.
          */
-        keepaliveRequests?: number;
+        keepaliveRequests: number;
         /**
-         * Long connection over time, default: `15`. Range: 1-60.
+         * Idle long connection timeout, value range: 1~60, default 15, unit: seconds.
+         *
+         * > **NOTE:**  How long the multiplexed long connection is idle and then released.
          */
-        keepaliveTimeout?: number;
+        keepaliveTimeout: number;
         /**
-         * The load balancing algorithm used when returning to the source. Value:
-         * - **iphash**: indicates the IPHash algorithm.
-         * - **roundRobin**: indicates the polling algorithm.
-         * - **leastTime**: indicates the Least Time algorithm.
-         * - This value can be selected only if the value of **protection_resource** is **gslb** (indicating that the protected resource type uses shared cluster intelligent load balancing).
+         * The load balancing algorithm that you want to use to forward requests to the origin server. Valid values:
          */
         loadbalance: string;
         /**
-         * Read timeout duration. **Unit**: seconds, **Value range**: 5~1800.
+         * The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
          */
         readTimeout?: number;
         /**
-         * The traffic tag field and value of the domain name which used to mark the traffic processed by WAF. 
-         * It formats as `[{" k ":"_key_"," v ":"_value_"}]`. Where the `k` represents the specified custom request header field,
-         * and the `v` represents the value set for this field. By specifying the custom request header field and the corresponding value,
-         * when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value
-         * to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the
-         * custom header field already exists in the request, the system will overwrite the value of the custom field in the
-         * request with the set traffic tag value. See `requestHeaders` below.
+         * The traffic marking field and value of the domain name, which is used to mark the traffic processed by WAF.
+         * By specifying custom request header fields and corresponding values, when the access traffic of the domain name passes through WAF, WAF automatically adds the set custom field value to the request header as a traffic mark, which facilitates the statistics of back-end services. See `requestHeaders` below.
          */
         requestHeaders?: outputs.wafv3.DomainRedirectRequestHeader[];
         /**
-         * Back to Source Retry. default: true, retry 3 times by default.
+         * Specifies whether WAF retries if WAF fails to forward requests to the origin server. Valid values:
          */
         retry?: boolean;
         /**
-         * Whether to enable back-to-source SNI. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-         * - **true**: indicates that the back-to-source SNI is enabled.
-         * - **false** (default) indicates that the back-to-source SNI is not enabled.
+         * Specifies whether to enable the Server Name Indication (SNI) feature for back-to-origin requests. This parameter is available only if you specify `HttpsPorts`. Valid values:
          */
         sniEnabled?: boolean;
         /**
-         * Sets the value of the custom SNI extension field. If this parameter is not set, the value of the **Host** field in the request header is used as the value of the SNI extension field by default.In general, you do not need to customize SNI unless your business has special configuration requirements. You want WAF to use SNI that is inconsistent with the actual request Host in the back-to-origin request (that is, the custom SNI set here).> This parameter is required only when **sni_enalbed** is set to **true** (indicating that back-to-source SNI is enabled).
+         * The custom value of the SNI field. If you do not specify this parameter, the value of the `Host` header field is automatically used. In most cases, you do not need to specify a custom value for the SNI field. However, if you want WAF to use an SNI field whose value is different from the value of the Host header field in back-to-origin requests, you can specify a custom value for the SNI field.
+         *
+         * > **NOTE:**   This parameter is required only if you set `SniEnabled` to true.
          */
         sniHost?: string;
         /**
-         * Write timeout duration> **Unit**: seconds, **Value range**: 5~1800.
+         * The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
          */
         writeTimeout?: number;
+        /**
+         * Specifies whether to use the X-Forward-For-Proto header field to pass the protocol used by WAF to forward requests to the origin server. Valid values:
+         */
+        xffProto?: boolean;
     }
 
     export interface DomainRedirectRequestHeader {
         /**
-         * The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+         * Specified custom request header fields
          */
         key?: string;
         /**
-         * The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+         * Customize the value of the request header field.
          */
         value?: string;
     }

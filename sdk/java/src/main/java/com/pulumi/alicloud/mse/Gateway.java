@@ -25,6 +25,82 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.157.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.alicloud.mse.Gateway;
+ * import com.pulumi.alicloud.mse.GatewayArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation("VSwitch")
+ *             .build());
+ * 
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
+ *             .vpcName("terraform-example")
+ *             .cidrBlock("172.16.0.0/16")
+ *             .build());
+ * 
+ *         for (var i = 0; i < 2; i++) {
+ *             new Switch("exampleSwitch-" + i, SwitchArgs.builder()
+ *                 .vpcId(exampleNetwork.id())
+ *                 .cidrBlock(StdFunctions.format(FormatArgs.builder()
+ *                     .input("172.16.%d.0/21")
+ *                     .args((range.value() + 1) * 16)
+ *                     .build()).result())
+ *                 .zoneId(example.zones()[range.value()].id())
+ *                 .vswitchName(StdFunctions.format(FormatArgs.builder()
+ *                     .input("terraform_example_%d")
+ *                     .args(range.value() + 1)
+ *                     .build()).result())
+ *                 .build());
+ * 
+ *         
+ * }
+ *         var exampleGateway = new Gateway("exampleGateway", GatewayArgs.builder()
+ *             .gatewayName("terraform-example")
+ *             .replica(2)
+ *             .spec("MSE_GTW_2_4_200_c")
+ *             .vswitchId(exampleSwitch[0].id())
+ *             .backupVswitchId(exampleSwitch[1].id())
+ *             .vpcId(exampleNetwork.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Microservice Engine (MSE) Gateway can be imported using the id, e.g.

@@ -16,6 +16,111 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// &gt; **NOTE:** Available since v1.195.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var @default = AliCloud.Cen.GetTransitRouterAvailableResources.Invoke();
+    /// 
+    ///     var zone = @default.Apply(@default =&gt; @default.Apply(getTransitRouterAvailableResourcesResult =&gt; getTransitRouterAvailableResourcesResult.Resources[0]?.MasterZones[1]));
+    /// 
+    ///     var example = new AliCloud.Vpc.Network("example", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "192.168.0.0/16",
+    ///     });
+    /// 
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("example", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "192.168.1.0/24",
+    ///         VpcId = example.Id,
+    ///         ZoneId = zone,
+    ///     });
+    /// 
+    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("example", new()
+    ///     {
+    ///         Name = name,
+    ///         VpcId = example.Id,
+    ///     });
+    /// 
+    ///     var exampleEcsNetworkInterface = new AliCloud.Ecs.EcsNetworkInterface("example", new()
+    ///     {
+    ///         NetworkInterfaceName = name,
+    ///         VswitchId = exampleSwitch.Id,
+    ///         PrimaryIpAddress = exampleSwitch.CidrBlock.Apply(cidrBlock =&gt; Std.Cidrhost.Invoke(new()
+    ///         {
+    ///             Input = cidrBlock,
+    ///             Host = 100,
+    ///         })).Apply(invoke =&gt; invoke.Result),
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             exampleSecurityGroup.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleInstance = new AliCloud.Cen.Instance("example", new()
+    ///     {
+    ///         CenInstanceName = name,
+    ///     });
+    /// 
+    ///     var exampleTransitRouter = new AliCloud.Cen.TransitRouter("example", new()
+    ///     {
+    ///         TransitRouterName = name,
+    ///         CenId = exampleInstance.Id,
+    ///         SupportMulticast = true,
+    ///     });
+    /// 
+    ///     var exampleTransitRouterMulticastDomain = new AliCloud.Cen.TransitRouterMulticastDomain("example", new()
+    ///     {
+    ///         TransitRouterId = exampleTransitRouter.TransitRouterId,
+    ///         TransitRouterMulticastDomainName = name,
+    ///     });
+    /// 
+    ///     var exampleTransitRouterVpcAttachment = new AliCloud.Cen.TransitRouterVpcAttachment("example", new()
+    ///     {
+    ///         CenId = exampleTransitRouter.CenId,
+    ///         TransitRouterId = exampleTransitRouterMulticastDomain.TransitRouterId,
+    ///         VpcId = example.Id,
+    ///         ZoneMappings = new[]
+    ///         {
+    ///             new AliCloud.Cen.Inputs.TransitRouterVpcAttachmentZoneMappingArgs
+    ///             {
+    ///                 ZoneId = zone,
+    ///                 VswitchId = exampleSwitch.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleTransitRouterMulticastDomainAssociation = new AliCloud.Cen.TransitRouterMulticastDomainAssociation("example", new()
+    ///     {
+    ///         TransitRouterMulticastDomainId = exampleTransitRouterMulticastDomain.Id,
+    ///         TransitRouterAttachmentId = exampleTransitRouterVpcAttachment.TransitRouterAttachmentId,
+    ///         VswitchId = exampleSwitch.Id,
+    ///     });
+    /// 
+    ///     var exampleTransitRouterMulticastDomainMember = new AliCloud.Cen.TransitRouterMulticastDomainMember("example", new()
+    ///     {
+    ///         VpcId = example.Id,
+    ///         TransitRouterMulticastDomainId = exampleTransitRouterMulticastDomainAssociation.TransitRouterMulticastDomainId,
+    ///         NetworkInterfaceId = exampleEcsNetworkInterface.Id,
+    ///         GroupIpAddress = "239.1.1.1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Cen Transit Router Multicast Domain Member can be imported using the id, e.g.

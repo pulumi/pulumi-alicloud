@@ -32,6 +32,7 @@ class ShardingInstanceArgs:
                  backup_time: Optional[pulumi.Input[_builtins.str]] = None,
                  config_server_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]]] = None,
                  db_instance_release_protection: Optional[pulumi.Input[_builtins.bool]] = None,
+                 global_security_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  hidden_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
@@ -67,6 +68,7 @@ class ShardingInstanceArgs:
         :param pulumi.Input[_builtins.str] backup_time: Sharding Instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         :param pulumi.Input[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]] config_server_lists: The ConfigServer nodes of the instance. See `config_server_list` below.
         :param pulumi.Input[_builtins.bool] db_instance_release_protection: Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] global_security_group_lists: The list of Global Security Group Ids.
         :param pulumi.Input[_builtins.str] hidden_zone_id: Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
         :param pulumi.Input[_builtins.str] instance_charge_type: The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
@@ -115,6 +117,8 @@ class ShardingInstanceArgs:
             pulumi.set(__self__, "config_server_lists", config_server_lists)
         if db_instance_release_protection is not None:
             pulumi.set(__self__, "db_instance_release_protection", db_instance_release_protection)
+        if global_security_group_lists is not None:
+            pulumi.set(__self__, "global_security_group_lists", global_security_group_lists)
         if hidden_zone_id is not None:
             pulumi.set(__self__, "hidden_zone_id", hidden_zone_id)
         if instance_charge_type is not None:
@@ -291,6 +295,18 @@ class ShardingInstanceArgs:
     @db_instance_release_protection.setter
     def db_instance_release_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "db_instance_release_protection", value)
+
+    @_builtins.property
+    @pulumi.getter(name="globalSecurityGroupLists")
+    def global_security_group_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of Global Security Group Ids.
+        """
+        return pulumi.get(self, "global_security_group_lists")
+
+    @global_security_group_lists.setter
+    def global_security_group_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "global_security_group_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="hiddenZoneId")
@@ -575,6 +591,7 @@ class _ShardingInstanceState:
                  config_server_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]]] = None,
                  db_instance_release_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  engine_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 global_security_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  hidden_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
@@ -611,6 +628,7 @@ class _ShardingInstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]] config_server_lists: The ConfigServer nodes of the instance. See `config_server_list` below.
         :param pulumi.Input[_builtins.bool] db_instance_release_protection: Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] global_security_group_lists: The list of Global Security Group Ids.
         :param pulumi.Input[_builtins.str] hidden_zone_id: Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
         :param pulumi.Input[_builtins.str] instance_charge_type: The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
@@ -661,6 +679,8 @@ class _ShardingInstanceState:
             pulumi.set(__self__, "db_instance_release_protection", db_instance_release_protection)
         if engine_version is not None:
             pulumi.set(__self__, "engine_version", engine_version)
+        if global_security_group_lists is not None:
+            pulumi.set(__self__, "global_security_group_lists", global_security_group_lists)
         if hidden_zone_id is not None:
             pulumi.set(__self__, "hidden_zone_id", hidden_zone_id)
         if instance_charge_type is not None:
@@ -819,6 +839,18 @@ class _ShardingInstanceState:
     @engine_version.setter
     def engine_version(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "engine_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="globalSecurityGroupLists")
+    def global_security_group_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of Global Security Group Ids.
+        """
+        return pulumi.get(self, "global_security_group_lists")
+
+    @global_security_group_lists.setter
+    def global_security_group_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "global_security_group_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="hiddenZoneId")
@@ -1142,6 +1174,7 @@ class ShardingInstance(pulumi.CustomResource):
                  config_server_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceConfigServerListArgs', 'ShardingInstanceConfigServerListArgsDict']]]]] = None,
                  db_instance_release_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  engine_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 global_security_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  hidden_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1252,6 +1285,7 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceConfigServerListArgs', 'ShardingInstanceConfigServerListArgsDict']]]] config_server_lists: The ConfigServer nodes of the instance. See `config_server_list` below.
         :param pulumi.Input[_builtins.bool] db_instance_release_protection: Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] global_security_group_lists: The list of Global Security Group Ids.
         :param pulumi.Input[_builtins.str] hidden_zone_id: Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
         :param pulumi.Input[_builtins.str] instance_charge_type: The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
@@ -1387,6 +1421,7 @@ class ShardingInstance(pulumi.CustomResource):
                  config_server_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceConfigServerListArgs', 'ShardingInstanceConfigServerListArgsDict']]]]] = None,
                  db_instance_release_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  engine_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 global_security_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  hidden_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1431,6 +1466,7 @@ class ShardingInstance(pulumi.CustomResource):
             if engine_version is None and not opts.urn:
                 raise TypeError("Missing required property 'engine_version'")
             __props__.__dict__["engine_version"] = engine_version
+            __props__.__dict__["global_security_group_lists"] = global_security_group_lists
             __props__.__dict__["hidden_zone_id"] = hidden_zone_id
             __props__.__dict__["instance_charge_type"] = instance_charge_type
             __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
@@ -1481,6 +1517,7 @@ class ShardingInstance(pulumi.CustomResource):
             config_server_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceConfigServerListArgs', 'ShardingInstanceConfigServerListArgsDict']]]]] = None,
             db_instance_release_protection: Optional[pulumi.Input[_builtins.bool]] = None,
             engine_version: Optional[pulumi.Input[_builtins.str]] = None,
+            global_security_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             hidden_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
             instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
             kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1522,6 +1559,7 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceConfigServerListArgs', 'ShardingInstanceConfigServerListArgsDict']]]] config_server_lists: The ConfigServer nodes of the instance. See `config_server_list` below.
         :param pulumi.Input[_builtins.bool] db_instance_release_protection: Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] global_security_group_lists: The list of Global Security Group Ids.
         :param pulumi.Input[_builtins.str] hidden_zone_id: Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
         :param pulumi.Input[_builtins.str] instance_charge_type: The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
@@ -1567,6 +1605,7 @@ class ShardingInstance(pulumi.CustomResource):
         __props__.__dict__["config_server_lists"] = config_server_lists
         __props__.__dict__["db_instance_release_protection"] = db_instance_release_protection
         __props__.__dict__["engine_version"] = engine_version
+        __props__.__dict__["global_security_group_lists"] = global_security_group_lists
         __props__.__dict__["hidden_zone_id"] = hidden_zone_id
         __props__.__dict__["instance_charge_type"] = instance_charge_type
         __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
@@ -1665,6 +1704,14 @@ class ShardingInstance(pulumi.CustomResource):
         Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
         """
         return pulumi.get(self, "engine_version")
+
+    @_builtins.property
+    @pulumi.getter(name="globalSecurityGroupLists")
+    def global_security_group_lists(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        The list of Global Security Group Ids.
+        """
+        return pulumi.get(self, "global_security_group_lists")
 
     @_builtins.property
     @pulumi.getter(name="hiddenZoneId")

@@ -150,25 +150,25 @@ class FlowPipeline(pulumi.CustomResource):
             env_types=["dev"])
         default_flow_pipeline = alicloud.pai.FlowPipeline("default",
             workspace_id=default_wj_qd1e.id,
-            manifest=f\"\"\"apiVersion: "core/v1"
+            manifest=f\"\"\"apiVersion: \\"core/v1\\"
         metadata:
-          provider: "{default.id}"
-          version: "v1"
-          identifier: "my_pipeline"
-          name: "source-transform"
-          uuid: "terraformuuid{default_integer["result"]}"
+          provider: \\"{default.id}\\"
+          version: \\"v1\\"
+          identifier: \\"my_pipeline\\"
+          name: \\"source-transform\\"
+          uuid: \\"terraformuuid{default_integer["result"]}\\"
           annotations: {{}}
           labels: {{}}
         spec:
           inputs:
             artifacts: []
             parameters:
-            - name: "execution_maxcompute"
-              type: "Map"
+            - name: \\"execution_maxcompute\\"
+              type: \\"Map\\"
               value:
                 spec:
-                  endpoint: "http://service.cn.maxcompute.aliyun-inc.com/api"
-                  odpsProject: "test_i****"
+                  endpoint: \\"http://service.cn.maxcompute.aliyun-inc.com/api\\"
+                  odpsProject: \\"test_i****\\"
           outputs:
             artifacts: []
             parameters: []
@@ -179,14 +179,14 @@ class FlowPipeline(pulumi.CustomResource):
           initContainers: []
           sideCarContainers: []
           pipelines:
-          - apiVersion: "core/v1"
+          - apiVersion: \\"core/v1\\"
             metadata:
-              provider: "pai"
-              version: "v1"
-              identifier: "data_source"
-              name: "data-source"
-              uuid: "2ftahdnzcod2rt6u9q"
-              displayName: "读数据表-1"
+              provider: \\"pai\\"
+              version: \\"v1\\"
+              identifier: \\"data_source\\"
+              name: \\"data-source\\"
+              uuid: \\"2ftahdnzcod2rt6u9q\\"
+              displayName: \\"读数据表-1\\"
               annotations: {{}}
               labels: {{}}
             spec:
@@ -199,23 +199,23 @@ class FlowPipeline(pulumi.CustomResource):
               arguments:
                 artifacts: []
                 parameters:
-                - name: "inputTableName"
-                  value: "pai_online_project.wumai_data"
-                - name: "execution"
-                  from: "{{{{inputs.parameters.execution_maxcompute}}}}"
+                - name: \\"inputTableName\\"
+                  value: \\"pai_online_project.wumai_data\\"
+                - name: \\"execution\\"
+                  from: \\"{{{{inputs.parameters.execution_maxcompute}}}}\\"
               dependencies: []
               initContainers: []
               sideCarContainers: []
               pipelines: []
               volumes: []
-          - apiVersion: "core/v1"
+          - apiVersion: \\"core/v1\\"
             metadata:
-              provider: "pai"
-              version: "v1"
-              identifier: "type_transform"
-              name: "type-transform"
-              uuid: "gacnnnl4ksvbabfh6l"
-              displayName: "类型转换-1"
+              provider: \\"pai\\"
+              version: \\"v1\\"
+              identifier: \\"type_transform\\"
+              name: \\"type-transform\\"
+              uuid: \\"gacnnnl4ksvbabfh6l\\"
+              displayName: \\"类型转换-1\\"
               annotations: {{}}
               labels: {{}}
             spec:
@@ -227,15 +227,15 @@ class FlowPipeline(pulumi.CustomResource):
                 parameters: []
               arguments:
                 artifacts:
-                - name: "inputTable"
-                  from: "{{{{pipelines.data_source.outputs.artifacts.outputTable}}}}"
+                - name: \\"inputTable\\"
+                  from: \\"{{{{pipelines.data_source.outputs.artifacts.outputTable}}}}\\"
                 parameters:
-                - name: "cols_to_double"
-                  value: "time,hour,pm2,pm10,so2,co,no2"
-                - name: "execution"
-                  from: "{{{{inputs.parameters.execution_maxcompute}}}}"
+                - name: \\"cols_to_double\\"
+                  value: \\"time,hour,pm2,pm10,so2,co,no2\\"
+                - name: \\"execution\\"
+                  from: \\"{{{{inputs.parameters.execution_maxcompute}}}}\\"
               dependencies:
-              - "data_source"
+              - \\"data_source\\"
               initContainers: []
               sideCarContainers: []
               pipelines: []
@@ -294,25 +294,25 @@ class FlowPipeline(pulumi.CustomResource):
             env_types=["dev"])
         default_flow_pipeline = alicloud.pai.FlowPipeline("default",
             workspace_id=default_wj_qd1e.id,
-            manifest=f\"\"\"apiVersion: "core/v1"
+            manifest=f\"\"\"apiVersion: \\"core/v1\\"
         metadata:
-          provider: "{default.id}"
-          version: "v1"
-          identifier: "my_pipeline"
-          name: "source-transform"
-          uuid: "terraformuuid{default_integer["result"]}"
+          provider: \\"{default.id}\\"
+          version: \\"v1\\"
+          identifier: \\"my_pipeline\\"
+          name: \\"source-transform\\"
+          uuid: \\"terraformuuid{default_integer["result"]}\\"
           annotations: {{}}
           labels: {{}}
         spec:
           inputs:
             artifacts: []
             parameters:
-            - name: "execution_maxcompute"
-              type: "Map"
+            - name: \\"execution_maxcompute\\"
+              type: \\"Map\\"
               value:
                 spec:
-                  endpoint: "http://service.cn.maxcompute.aliyun-inc.com/api"
-                  odpsProject: "test_i****"
+                  endpoint: \\"http://service.cn.maxcompute.aliyun-inc.com/api\\"
+                  odpsProject: \\"test_i****\\"
           outputs:
             artifacts: []
             parameters: []
@@ -323,14 +323,14 @@ class FlowPipeline(pulumi.CustomResource):
           initContainers: []
           sideCarContainers: []
           pipelines:
-          - apiVersion: "core/v1"
+          - apiVersion: \\"core/v1\\"
             metadata:
-              provider: "pai"
-              version: "v1"
-              identifier: "data_source"
-              name: "data-source"
-              uuid: "2ftahdnzcod2rt6u9q"
-              displayName: "读数据表-1"
+              provider: \\"pai\\"
+              version: \\"v1\\"
+              identifier: \\"data_source\\"
+              name: \\"data-source\\"
+              uuid: \\"2ftahdnzcod2rt6u9q\\"
+              displayName: \\"读数据表-1\\"
               annotations: {{}}
               labels: {{}}
             spec:
@@ -343,23 +343,23 @@ class FlowPipeline(pulumi.CustomResource):
               arguments:
                 artifacts: []
                 parameters:
-                - name: "inputTableName"
-                  value: "pai_online_project.wumai_data"
-                - name: "execution"
-                  from: "{{{{inputs.parameters.execution_maxcompute}}}}"
+                - name: \\"inputTableName\\"
+                  value: \\"pai_online_project.wumai_data\\"
+                - name: \\"execution\\"
+                  from: \\"{{{{inputs.parameters.execution_maxcompute}}}}\\"
               dependencies: []
               initContainers: []
               sideCarContainers: []
               pipelines: []
               volumes: []
-          - apiVersion: "core/v1"
+          - apiVersion: \\"core/v1\\"
             metadata:
-              provider: "pai"
-              version: "v1"
-              identifier: "type_transform"
-              name: "type-transform"
-              uuid: "gacnnnl4ksvbabfh6l"
-              displayName: "类型转换-1"
+              provider: \\"pai\\"
+              version: \\"v1\\"
+              identifier: \\"type_transform\\"
+              name: \\"type-transform\\"
+              uuid: \\"gacnnnl4ksvbabfh6l\\"
+              displayName: \\"类型转换-1\\"
               annotations: {{}}
               labels: {{}}
             spec:
@@ -371,15 +371,15 @@ class FlowPipeline(pulumi.CustomResource):
                 parameters: []
               arguments:
                 artifacts:
-                - name: "inputTable"
-                  from: "{{{{pipelines.data_source.outputs.artifacts.outputTable}}}}"
+                - name: \\"inputTable\\"
+                  from: \\"{{{{pipelines.data_source.outputs.artifacts.outputTable}}}}\\"
                 parameters:
-                - name: "cols_to_double"
-                  value: "time,hour,pm2,pm10,so2,co,no2"
-                - name: "execution"
-                  from: "{{{{inputs.parameters.execution_maxcompute}}}}"
+                - name: \\"cols_to_double\\"
+                  value: \\"time,hour,pm2,pm10,so2,co,no2\\"
+                - name: \\"execution\\"
+                  from: \\"{{{{inputs.parameters.execution_maxcompute}}}}\\"
               dependencies:
-              - "data_source"
+              - \\"data_source\\"
               initContainers: []
               sideCarContainers: []
               pipelines: []

@@ -68,16 +68,16 @@ import javax.annotation.Nullable;
  *                 .permissionPolicyName(name)
  *                 .permissionPolicyDocument("""
  *     {
- *         "Statement":[
+ *         \"Statement\":[
  *       {
- *         "Action":"ecs:Get*",
- *         "Effect":"Allow",
- *         "Resource":[
- *             "*"
+ *         \"Action\":\"ecs:Get*\",
+ *         \"Effect\":\"Allow\",
+ *         \"Resource\":[
+ *             \"*\"
  *         ]
  *       }
  *       ],
- *         "Version": "1"
+ *         \"Version\": \"1\"
  *     }
  *                 """)
  *                 .build())

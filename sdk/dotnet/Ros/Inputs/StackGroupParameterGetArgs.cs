@@ -13,16 +13,16 @@ namespace Pulumi.AliCloud.Ros.Inputs
     public sealed class StackGroupParameterGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The parameter key.
+        /// The key of parameter N. If you do not specify the key and value of the parameter, ROS uses the default key and value in the template.
         /// </summary>
-        [Input("parameterKey")]
-        public Input<string>? ParameterKey { get; set; }
+        [Input("parameterKey", required: true)]
+        public Input<string> ParameterKey { get; set; } = null!;
 
         /// <summary>
-        /// The parameter value.
+        /// The value of parameter N.
         /// </summary>
-        [Input("parameterValue")]
-        public Input<string>? ParameterValue { get; set; }
+        [Input("parameterValue", required: true)]
+        public Input<string> ParameterValue { get; set; } = null!;
 
         public StackGroupParameterGetArgs()
         {

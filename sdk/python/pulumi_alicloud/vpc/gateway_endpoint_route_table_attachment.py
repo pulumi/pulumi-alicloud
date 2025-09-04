@@ -142,12 +142,12 @@ class GatewayEndpointRouteTableAttachment(pulumi.CustomResource):
         default_ge = alicloud.vpc.GatewayEndpoint("defaultGE",
             service_name="com.aliyun.cn-hangzhou.oss",
             policy_document=\"\"\"        {
-                  "Version": "1",
-                  "Statement": [{
-                    "Effect": "Allow",
-                    "Resource": ["*"],
-                    "Action": ["*"],
-                    "Principal": ["*"]
+                  \\"Version\\": \\"1\\",
+                  \\"Statement\\": [{
+                    \\"Effect\\": \\"Allow\\",
+                    \\"Resource\\": [\\"*\\"],
+                    \\"Action\\": [\\"*\\"],
+                    \\"Principal\\": [\\"*\\"]
                   }]
                 }
         \"\"\",
@@ -204,12 +204,12 @@ class GatewayEndpointRouteTableAttachment(pulumi.CustomResource):
         default_ge = alicloud.vpc.GatewayEndpoint("defaultGE",
             service_name="com.aliyun.cn-hangzhou.oss",
             policy_document=\"\"\"        {
-                  "Version": "1",
-                  "Statement": [{
-                    "Effect": "Allow",
-                    "Resource": ["*"],
-                    "Action": ["*"],
-                    "Principal": ["*"]
+                  \\"Version\\": \\"1\\",
+                  \\"Statement\\": [{
+                    \\"Effect\\": \\"Allow\\",
+                    \\"Resource\\": [\\"*\\"],
+                    \\"Action\\": [\\"*\\"],
+                    \\"Principal\\": [\\"*\\"]
                   }]
                 }
         \"\"\",

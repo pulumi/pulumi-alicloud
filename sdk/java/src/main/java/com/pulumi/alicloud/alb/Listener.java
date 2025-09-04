@@ -32,6 +32,201 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.133.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.alb.AlbFunctions;
+ * import com.pulumi.alicloud.alb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.alb.LoadBalancer;
+ * import com.pulumi.alicloud.alb.LoadBalancerArgs;
+ * import com.pulumi.alicloud.alb.inputs.LoadBalancerLoadBalancerBillingConfigArgs;
+ * import com.pulumi.alicloud.alb.inputs.LoadBalancerZoneMappingArgs;
+ * import com.pulumi.alicloud.alb.inputs.LoadBalancerModificationProtectionConfigArgs;
+ * import com.pulumi.alicloud.ecs.Instance;
+ * import com.pulumi.alicloud.ecs.InstanceArgs;
+ * import com.pulumi.alicloud.alb.ServerGroup;
+ * import com.pulumi.alicloud.alb.ServerGroupArgs;
+ * import com.pulumi.alicloud.alb.inputs.ServerGroupHealthCheckConfigArgs;
+ * import com.pulumi.alicloud.alb.inputs.ServerGroupStickySessionConfigArgs;
+ * import com.pulumi.alicloud.alb.inputs.ServerGroupServerArgs;
+ * import com.pulumi.alicloud.alb.Listener;
+ * import com.pulumi.alicloud.alb.ListenerArgs;
+ * import com.pulumi.alicloud.alb.inputs.ListenerDefaultActionArgs;
+ * import com.pulumi.alicloud.alb.inputs.ListenerDefaultActionForwardGroupConfigArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf_example");
+ *         final var default = AlbFunctions.getZones(GetZonesArgs.builder()
+ *             .build());
+ * 
+ *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
+ * 
+ *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(default_.zones()[0].id())
+ *             .cpuCoreCount(1)
+ *             .memorySize(2)
+ *             .build());
+ * 
+ *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex("^ubuntu_18.*64")
+ *             .owners("system")
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("10.4.0.0/16")
+ *             .build());
+ * 
+ *         for (var i = 0; i < 2; i++) {
+ *             new Switch("defaultSwitch-" + i, SwitchArgs.builder()
+ *                 .vpcId(defaultNetwork.id())
+ *                 .cidrBlock(StdFunctions.format(FormatArgs.builder()
+ *                     .input("10.4.%d.0/24")
+ *                     .args(range.value() + 1)
+ *                     .build()).result())
+ *                 .zoneId(default_.zones()[range.value()].id())
+ *                 .vswitchName(StdFunctions.format(FormatArgs.builder()
+ *                     .input(String.format("%s_%d", name))
+ *                     .args(range.value() + 1)
+ *                     .build()).result())
+ *                 .build());
+ * 
+ *         
+ * }
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+ *             .securityGroupName(name)
+ *             .description(name)
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultLoadBalancer = new LoadBalancer("defaultLoadBalancer", LoadBalancerArgs.builder()
+ *             .vpcId(defaultNetwork.id())
+ *             .addressType("Internet")
+ *             .addressAllocatedMode("Fixed")
+ *             .loadBalancerName(name)
+ *             .loadBalancerEdition("Basic")
+ *             .resourceGroupId(defaultGetResourceGroups.groups()[0].id())
+ *             .loadBalancerBillingConfig(LoadBalancerLoadBalancerBillingConfigArgs.builder()
+ *                 .payType("PayAsYouGo")
+ *                 .build())
+ *             .tags(Map.of("Created", "TF"))
+ *             .zoneMappings(            
+ *                 LoadBalancerZoneMappingArgs.builder()
+ *                     .vswitchId(defaultSwitch[0].id())
+ *                     .zoneId(default_.zones()[0].id())
+ *                     .build(),
+ *                 LoadBalancerZoneMappingArgs.builder()
+ *                     .vswitchId(defaultSwitch[1].id())
+ *                     .zoneId(default_.zones()[1].id())
+ *                     .build())
+ *             .modificationProtectionConfig(LoadBalancerModificationProtectionConfigArgs.builder()
+ *                 .status("NonProtection")
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+ *             .availabilityZone(default_.zones()[0].id())
+ *             .instanceName(name)
+ *             .imageId(defaultGetImages.images()[0].id())
+ *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
+ *             .securityGroups(defaultSecurityGroup.id())
+ *             .vswitchId(defaultSwitch[0].id())
+ *             .build());
+ * 
+ *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()
+ *             .protocol("HTTP")
+ *             .vpcId(defaultNetwork.id())
+ *             .serverGroupName(name)
+ *             .resourceGroupId(defaultGetResourceGroups.groups()[0].id())
+ *             .healthCheckConfig(ServerGroupHealthCheckConfigArgs.builder()
+ *                 .healthCheckConnectPort(46325)
+ *                 .healthCheckEnabled(true)
+ *                 .healthCheckHost("tf-example.com")
+ *                 .healthCheckCodes(                
+ *                     "http_2xx",
+ *                     "http_3xx",
+ *                     "http_4xx")
+ *                 .healthCheckHttpVersion("HTTP1.1")
+ *                 .healthCheckInterval(2)
+ *                 .healthCheckMethod("HEAD")
+ *                 .healthCheckPath("/tf-example")
+ *                 .healthCheckProtocol("HTTP")
+ *                 .healthCheckTimeout(5)
+ *                 .healthyThreshold(3)
+ *                 .unhealthyThreshold(3)
+ *                 .build())
+ *             .stickySessionConfig(ServerGroupStickySessionConfigArgs.builder()
+ *                 .stickySessionEnabled(true)
+ *                 .cookie("tf-example")
+ *                 .stickySessionType("Server")
+ *                 .build())
+ *             .servers(ServerGroupServerArgs.builder()
+ *                 .description(name)
+ *                 .port(80)
+ *                 .serverId(defaultInstance.id())
+ *                 .serverIp(defaultInstance.privateIp())
+ *                 .serverType("Ecs")
+ *                 .weight(10)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()
+ *             .loadBalancerId(defaultLoadBalancer.id())
+ *             .listenerProtocol("HTTP")
+ *             .listenerPort(443)
+ *             .listenerDescription(name)
+ *             .defaultActions(ListenerDefaultActionArgs.builder()
+ *                 .type("ForwardGroup")
+ *                 .forwardGroupConfig(ListenerDefaultActionForwardGroupConfigArgs.builder()
+ *                     .serverGroupTuples(ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs.builder()
+ *                         .serverGroupId(defaultServerGroup.id())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Application Load Balancer (ALB) Listener can be imported using the id, e.g.

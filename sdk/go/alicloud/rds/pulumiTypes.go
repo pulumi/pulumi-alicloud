@@ -3248,7 +3248,8 @@ func (o GetInstanceClassInfosInfoArrayOutput) Index(i pulumi.IntInput) GetInstan
 type GetInstanceClassesInstanceClass struct {
 	// DB Instance available class.
 	InstanceClass string `pulumi:"instanceClass"`
-	Price         string `pulumi:"price"`
+	// Unit price of instance specifications.
+	Price string `pulumi:"price"`
 	// DB Instance available storage range.
 	StorageRange GetInstanceClassesInstanceClassStorageRange `pulumi:"storageRange"`
 	// A list of Zone to launch the DB instance.
@@ -3269,7 +3270,8 @@ type GetInstanceClassesInstanceClassInput interface {
 type GetInstanceClassesInstanceClassArgs struct {
 	// DB Instance available class.
 	InstanceClass pulumi.StringInput `pulumi:"instanceClass"`
-	Price         pulumi.StringInput `pulumi:"price"`
+	// Unit price of instance specifications.
+	Price pulumi.StringInput `pulumi:"price"`
 	// DB Instance available storage range.
 	StorageRange GetInstanceClassesInstanceClassStorageRangeInput `pulumi:"storageRange"`
 	// A list of Zone to launch the DB instance.
@@ -3332,6 +3334,7 @@ func (o GetInstanceClassesInstanceClassOutput) InstanceClass() pulumi.StringOutp
 	return o.ApplyT(func(v GetInstanceClassesInstanceClass) string { return v.InstanceClass }).(pulumi.StringOutput)
 }
 
+// Unit price of instance specifications.
 func (o GetInstanceClassesInstanceClassOutput) Price() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceClassesInstanceClass) string { return v.Price }).(pulumi.StringOutput)
 }

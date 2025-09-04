@@ -26,6 +26,130 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.152.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.cms.AlarmContactGroup;
+ * import com.pulumi.alicloud.cms.AlarmContactGroupArgs;
+ * import com.pulumi.alicloud.dns.GtmInstance;
+ * import com.pulumi.alicloud.dns.GtmInstanceArgs;
+ * import com.pulumi.alicloud.dns.inputs.GtmInstanceAlertConfigArgs;
+ * import com.pulumi.alicloud.dns.AddressPool;
+ * import com.pulumi.alicloud.dns.AddressPoolArgs;
+ * import com.pulumi.alicloud.dns.inputs.AddressPoolAddressArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.alicloud.dns.AccessStrategy;
+ * import com.pulumi.alicloud.dns.AccessStrategyArgs;
+ * import com.pulumi.alicloud.dns.inputs.AccessStrategyDefaultAddrPoolArgs;
+ * import com.pulumi.alicloud.dns.inputs.AccessStrategyFailoverAddrPoolArgs;
+ * import com.pulumi.alicloud.dns.inputs.AccessStrategyLineArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf_example");
+ *         final var domainName = config.get("domainName").orElse("alicloud-provider.com");
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
+ * 
+ *         var defaultAlarmContactGroup = new AlarmContactGroup("defaultAlarmContactGroup", AlarmContactGroupArgs.builder()
+ *             .alarmContactGroupName(name)
+ *             .build());
+ * 
+ *         var defaultGtmInstance = new GtmInstance("defaultGtmInstance", GtmInstanceArgs.builder()
+ *             .instanceName(name)
+ *             .paymentType("Subscription")
+ *             .period(1)
+ *             .renewalStatus("ManualRenewal")
+ *             .packageEdition("standard")
+ *             .healthCheckTaskCount(100)
+ *             .smsNotificationCount(1000)
+ *             .publicCnameMode("SYSTEM_ASSIGN")
+ *             .ttl(60)
+ *             .cnameType("PUBLIC")
+ *             .resourceGroupId(default_.groups()[0].id())
+ *             .alertGroups(defaultAlarmContactGroup.alarmContactGroupName())
+ *             .publicUserDomainName(domainName)
+ *             .alertConfigs(GtmInstanceAlertConfigArgs.builder()
+ *                 .smsNotice(true)
+ *                 .noticeType("ADDR_ALERT")
+ *                 .emailNotice(true)
+ *                 .dingtalkNotice(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         for (var i = 0; i < 2; i++) {
+ *             new AddressPool("defaultAddressPool-" + i, AddressPoolArgs.builder()
+ *                 .addressPoolName(StdFunctions.format(FormatArgs.builder()
+ *                     .input(String.format("%s_%d", name))
+ *                     .args(range.value() + 1)
+ *                     .build()).result())
+ *                 .instanceId(defaultGtmInstance.id())
+ *                 .lbaStrategy("RATIO")
+ *                 .type("IPV4")
+ *                 .addresses(AddressPoolAddressArgs.builder()
+ *                     .attributeInfo("{\"lineCodeRectifyType\":\"RECTIFIED\",\"lineCodes\":[\"os_namerica_us\"]}")
+ *                     .remark("address_remark")
+ *                     .address("1.1.1.1")
+ *                     .mode("SMART")
+ *                     .lbaWeight(1)
+ *                     .build())
+ *                 .build());
+ * 
+ *         
+ * }
+ *         var defaultAccessStrategy = new AccessStrategy("defaultAccessStrategy", AccessStrategyArgs.builder()
+ *             .strategyName(name)
+ *             .strategyMode("GEO")
+ *             .instanceId(defaultGtmInstance.id())
+ *             .defaultAddrPoolType("IPV4")
+ *             .defaultLbaStrategy("RATIO")
+ *             .defaultMinAvailableAddrNum(1)
+ *             .defaultAddrPools(AccessStrategyDefaultAddrPoolArgs.builder()
+ *                 .lbaWeight(1)
+ *                 .addrPoolId(defaultAddressPool[0].id())
+ *                 .build())
+ *             .failoverAddrPoolType("IPV4")
+ *             .failoverLbaStrategy("RATIO")
+ *             .failoverMinAvailableAddrNum(1)
+ *             .failoverAddrPools(AccessStrategyFailoverAddrPoolArgs.builder()
+ *                 .lbaWeight(1)
+ *                 .addrPoolId(defaultAddressPool[1].id())
+ *                 .build())
+ *             .lines(AccessStrategyLineArgs.builder()
+ *                 .lineCode("default")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * DNS Access Strategy can be imported using the id, e.g.

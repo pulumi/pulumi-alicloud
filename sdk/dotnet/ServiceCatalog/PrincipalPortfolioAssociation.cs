@@ -43,19 +43,19 @@ namespace Pulumi.AliCloud.ServiceCatalog
     ///     {
     ///         Name = name,
     ///         Document = @"    {
-    ///         ""Statement"": [
+    ///         \""Statement\"": [
     ///         {
-    ///             ""Action"": ""sts:AssumeRole"",
-    ///             ""Effect"": ""Allow"",
-    ///             ""Principal"": {
-    ///             ""Service"": [
-    ///                 ""emr.aliyuncs.com"",
-    ///                 ""ecs.aliyuncs.com""
+    ///             \""Action\"": \""sts:AssumeRole\"",
+    ///             \""Effect\"": \""Allow\"",
+    ///             \""Principal\"": {
+    ///             \""Service\"": [
+    ///                 \""emr.aliyuncs.com\"",
+    ///                 \""ecs.aliyuncs.com\""
     ///             ]
     ///             }
     ///         }
     ///         ],
-    ///         ""Version"": ""1""
+    ///         \""Version\"": \""1\""
     ///     }
     /// ",
     ///         Description = "this is a role test.",

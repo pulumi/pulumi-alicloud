@@ -16,6 +16,159 @@ namespace Pulumi.AliCloud.Arms
     /// 
     /// &gt; **NOTE:** Available since v1.212.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var enhanced = AliCloud.Vpc.GetEnhancedNatAvailableZones.Invoke();
+    /// 
+    ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
+    ///     {
+    ///         Description = name,
+    ///         CidrBlock = "192.168.0.0/16",
+    ///         VpcName = name,
+    ///     });
+    /// 
+    ///     var vswitch = new AliCloud.Vpc.Switch("vswitch", new()
+    ///     {
+    ///         Description = name,
+    ///         VpcId = vpc.Id,
+    ///         VswitchName = name,
+    ///         ZoneId = enhanced.Apply(getEnhancedNatAvailableZonesResult =&gt; getEnhancedNatAvailableZonesResult.Zones[0]?.ZoneId),
+    ///         CidrBlock = vpc.CidrBlock.Apply(cidrBlock =&gt; Std.Cidrsubnet.Invoke(new()
+    ///         {
+    ///             Input = cidrBlock,
+    ///             Newbits = 8,
+    ///             Netnum = 8,
+    ///         })).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var defaultSnapshotPolicy = new AliCloud.Ecs.SnapshotPolicy("default", new()
+    ///     {
+    ///         Name = name,
+    ///         RepeatWeekdays = new[]
+    ///         {
+    ///             "1",
+    ///             "2",
+    ///             "3",
+    ///         },
+    ///         RetentionDays = -1,
+    ///         TimePoints = new[]
+    ///         {
+    ///             "1",
+    ///             "22",
+    ///             "23",
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         AvailabilityZone = vswitch.ZoneId,
+    ///         CpuCoreCount = 2,
+    ///         MemorySize = 4,
+    ///         KubernetesNodeRole = "Worker",
+    ///         InstanceTypeFamily = "ecs.n1",
+    ///     });
+    /// 
+    ///     var defaultManagedKubernetes = new AliCloud.CS.ManagedKubernetes("default", new()
+    ///     {
+    ///         Name = $"terraform-example-{defaultInteger.Result}",
+    ///         ClusterSpec = "ack.pro.small",
+    ///         Version = "1.24.6-aliyun.1",
+    ///         NewNatGateway = true,
+    ///         NodeCidrMask = 26,
+    ///         ProxyMode = "ipvs",
+    ///         ServiceCidr = "172.23.0.0/16",
+    ///         PodCidr = "10.95.0.0/16",
+    ///         WorkerVswitchIds = new[]
+    ///         {
+    ///             vswitch.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultKeyPair = new AliCloud.Ecs.KeyPair("default", new()
+    ///     {
+    ///         KeyPairName = $"terraform-example-{defaultInteger.Result}",
+    ///     });
+    /// 
+    ///     var defaultNodePool = new AliCloud.CS.NodePool("default", new()
+    ///     {
+    ///         Name = "desired_size",
+    ///         ClusterId = defaultManagedKubernetes.Id,
+    ///         VswitchIds = new[]
+    ///         {
+    ///             vswitch.Id,
+    ///         },
+    ///         InstanceTypes = new[]
+    ///         {
+    ///             @default.Apply(@default =&gt; @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id)),
+    ///         },
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         SystemDiskSize = 40,
+    ///         KeyName = defaultKeyPair.KeyName,
+    ///         DesiredSize = "2",
+    ///     });
+    /// 
+    ///     var environment_cs = new AliCloud.Arms.Environment("environment-cs", new()
+    ///     {
+    ///         EnvironmentType = "CS",
+    ///         EnvironmentName = $"terraform-example-{defaultInteger.Result}",
+    ///         BindResourceId = defaultNodePool.ClusterId,
+    ///         EnvironmentSubType = "ACK",
+    ///     });
+    /// 
+    ///     var defaultEnvPodMonitor = new AliCloud.Arms.EnvPodMonitor("default", new()
+    ///     {
+    ///         AliyunLang = "en",
+    ///         EnvironmentId = environment_cs.Id,
+    ///         ConfigYaml = @"apiVersion: monitoring.coreos.com/v1
+    /// kind: PodMonitor
+    /// metadata:
+    ///   name: arms-admin-pm1
+    ///   namespace: arms-prom
+    ///   annotations:
+    ///     arms.prometheus.io/discovery: 'true'
+    ///     o11y.aliyun.com/addon-name: mysql
+    ///     o11y.aliyun.com/addon-version: 1.0.2
+    ///     o11y.aliyun.com/release-name: mysql2
+    /// spec:
+    ///   selector:
+    ///     matchLabels:
+    ///       app: arms-prometheus-ack-arms-prometheus
+    ///       release: arms-prometheus
+    ///   namespaceSelector:
+    ///     any: true    
+    ///   podMetricsEndpoints:
+    ///   - interval: 30s
+    ///     targetPort: 9335
+    ///     path: /metrics
+    ///   - interval: 11s
+    ///     targetPort: 9335
+    ///     path: /metric
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ARMS Env Pod Monitor can be imported using the id, e.g.

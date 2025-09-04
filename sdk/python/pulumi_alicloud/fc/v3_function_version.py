@@ -61,13 +61,15 @@ class _V3FunctionVersionState:
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  function_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_modified_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 last_modified_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 version_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering V3FunctionVersion resources.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.str] description: Description of the function version
         :param pulumi.Input[_builtins.str] function_name: Function Name
         :param pulumi.Input[_builtins.str] last_modified_time: (Available since v1.234.0) Update time
+        :param pulumi.Input[_builtins.str] version_id: Function Version
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -77,6 +79,8 @@ class _V3FunctionVersionState:
             pulumi.set(__self__, "function_name", function_name)
         if last_modified_time is not None:
             pulumi.set(__self__, "last_modified_time", last_modified_time)
+        if version_id is not None:
+            pulumi.set(__self__, "version_id", version_id)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -125,6 +129,18 @@ class _V3FunctionVersionState:
     @last_modified_time.setter
     def last_modified_time(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "last_modified_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Function Version
+        """
+        return pulumi.get(self, "version_id")
+
+    @version_id.setter
+    def version_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "version_id", value)
 
 
 @pulumi.type_token("alicloud:fc/v3FunctionVersion:V3FunctionVersion")
@@ -277,6 +293,7 @@ class V3FunctionVersion(pulumi.CustomResource):
             __props__.__dict__["function_name"] = function_name
             __props__.__dict__["create_time"] = None
             __props__.__dict__["last_modified_time"] = None
+            __props__.__dict__["version_id"] = None
         super(V3FunctionVersion, __self__).__init__(
             'alicloud:fc/v3FunctionVersion:V3FunctionVersion',
             resource_name,
@@ -290,7 +307,8 @@ class V3FunctionVersion(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             function_name: Optional[pulumi.Input[_builtins.str]] = None,
-            last_modified_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'V3FunctionVersion':
+            last_modified_time: Optional[pulumi.Input[_builtins.str]] = None,
+            version_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'V3FunctionVersion':
         """
         Get an existing V3FunctionVersion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -302,6 +320,7 @@ class V3FunctionVersion(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Description of the function version
         :param pulumi.Input[_builtins.str] function_name: Function Name
         :param pulumi.Input[_builtins.str] last_modified_time: (Available since v1.234.0) Update time
+        :param pulumi.Input[_builtins.str] version_id: Function Version
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -311,6 +330,7 @@ class V3FunctionVersion(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["function_name"] = function_name
         __props__.__dict__["last_modified_time"] = last_modified_time
+        __props__.__dict__["version_id"] = version_id
         return V3FunctionVersion(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -344,4 +364,12 @@ class V3FunctionVersion(pulumi.CustomResource):
         (Available since v1.234.0) Update time
         """
         return pulumi.get(self, "last_modified_time")
+
+    @_builtins.property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Function Version
+        """
+        return pulumi.get(self, "version_id")
 

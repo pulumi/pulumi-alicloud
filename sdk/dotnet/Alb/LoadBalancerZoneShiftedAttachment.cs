@@ -18,6 +18,112 @@ namespace Pulumi.AliCloud.Alb
     /// 
     /// &gt; **NOTE:** Available since v1.242.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var albExampleTfVpc = new AliCloud.Vpc.Network("alb_example_tf_vpc", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "192.168.0.0/16",
+    ///     });
+    /// 
+    ///     var albExampleTfJ = new AliCloud.Vpc.Switch("alb_example_tf_j", new()
+    ///     {
+    ///         VpcId = albExampleTfVpc.Id,
+    ///         ZoneId = "cn-beijing-j",
+    ///         CidrBlock = "192.168.1.0/24",
+    ///         VswitchName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s1",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var albExampleTfK = new AliCloud.Vpc.Switch("alb_example_tf_k", new()
+    ///     {
+    ///         VpcId = albExampleTfVpc.Id,
+    ///         ZoneId = "cn-beijing-k",
+    ///         CidrBlock = "192.168.2.0/24",
+    ///         VswitchName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s2",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var defaultDSY0JJ = new AliCloud.Vpc.Switch("defaultDSY0JJ", new()
+    ///     {
+    ///         VpcId = albExampleTfVpc.Id,
+    ///         ZoneId = "cn-beijing-f",
+    ///         CidrBlock = "192.168.3.0/24",
+    ///         VswitchName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s3",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var default78TIYG = new AliCloud.Alb.LoadBalancer("default78TIYG", new()
+    ///     {
+    ///         LoadBalancerEdition = "Standard",
+    ///         VpcId = albExampleTfVpc.Id,
+    ///         LoadBalancerBillingConfig = new AliCloud.Alb.Inputs.LoadBalancerLoadBalancerBillingConfigArgs
+    ///         {
+    ///             PayType = "PayAsYouGo",
+    ///         },
+    ///         AddressType = "Intranet",
+    ///         AddressAllocatedMode = "Fixed",
+    ///         ZoneMappings = new[]
+    ///         {
+    ///             new AliCloud.Alb.Inputs.LoadBalancerZoneMappingArgs
+    ///             {
+    ///                 VswitchId = albExampleTfJ.Id,
+    ///                 ZoneId = albExampleTfJ.ZoneId,
+    ///             },
+    ///             new AliCloud.Alb.Inputs.LoadBalancerZoneMappingArgs
+    ///             {
+    ///                 VswitchId = albExampleTfK.Id,
+    ///                 ZoneId = albExampleTfK.ZoneId,
+    ///             },
+    ///             new AliCloud.Alb.Inputs.LoadBalancerZoneMappingArgs
+    ///             {
+    ///                 VswitchId = defaultDSY0JJ.Id,
+    ///                 ZoneId = defaultDSY0JJ.ZoneId,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new AliCloud.Alb.LoadBalancerZoneShiftedAttachment("default", new()
+    ///     {
+    ///         ZoneId = defaultDSY0JJ.ZoneId,
+    ///         VswitchId = defaultDSY0JJ.Id,
+    ///         LoadBalancerId = default78TIYG.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Application Load Balancer (ALB) Load Balancer Zone Shifted Attachment can be imported using the id, e.g.

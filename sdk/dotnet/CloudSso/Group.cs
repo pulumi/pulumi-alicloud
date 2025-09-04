@@ -16,6 +16,60 @@ namespace Pulumi.AliCloud.CloudSso
     /// 
     /// &gt; **NOTE:** Available since v1.138.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var @default = AliCloud.CloudSso.GetDirectories.Invoke();
+    /// 
+    ///     var defaultDirectory = new List&lt;AliCloud.CloudSso.Directory&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Apply(@default =&gt; @default.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Ids)).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         defaultDirectory.Add(new AliCloud.CloudSso.Directory($"default-{range.Value}", new()
+    ///         {
+    ///             DirectoryName = name,
+    ///         }));
+    ///     }
+    ///     var directoryId = Output.Tuple(@default.Apply(@default =&gt; @default.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Ids)).Length, @default, Std.Concat.Invoke(new()
+    ///     {
+    ///         Input = new[]
+    ///         {
+    ///             defaultDirectory.Select(__item =&gt; __item.Id).ToList(),
+    ///             new[]
+    ///             {
+    ///                 "",
+    ///             },
+    ///         },
+    ///     })).Apply(values =&gt;
+    ///     {
+    ///         var length = values.Item1;
+    ///         var @default = values.Item2;
+    ///         var invoke = values.Item3;
+    ///         return length &gt; 0 ? @default.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Ids[0]) : invoke.Result[0];
+    ///     });
+    /// 
+    ///     var defaultGroup = new AliCloud.CloudSso.Group("default", new()
+    ///     {
+    ///         DirectoryId = directoryId,
+    ///         GroupName = name,
+    ///         Description = name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Cloud SSO Group can be imported using the id, e.g.

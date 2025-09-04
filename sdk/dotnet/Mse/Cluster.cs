@@ -160,6 +160,12 @@ namespace Pulumi.AliCloud.Mse
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
+        /// The version code of MSE Cluster. You can keep the instance version up to date by setting the value to `LATEST` (Available since v1.257.0).
+        /// </summary>
+        [Output("versionCode")]
+        public Output<string> VersionCode { get; private set; } = null!;
+
+        /// <summary>
         /// The id of the VPC.
         /// </summary>
         [Output("vpcId")]
@@ -350,6 +356,12 @@ namespace Pulumi.AliCloud.Mse
         }
 
         /// <summary>
+        /// The version code of MSE Cluster. You can keep the instance version up to date by setting the value to `LATEST` (Available since v1.257.0).
+        /// </summary>
+        [Input("versionCode")]
+        public Input<string>? VersionCode { get; set; }
+
+        /// <summary>
         /// The id of the VPC.
         /// </summary>
         [Input("vpcId")]
@@ -518,6 +530,12 @@ namespace Pulumi.AliCloud.Mse
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// The version code of MSE Cluster. You can keep the instance version up to date by setting the value to `LATEST` (Available since v1.257.0).
+        /// </summary>
+        [Input("versionCode")]
+        public Input<string>? VersionCode { get; set; }
 
         /// <summary>
         /// The id of the VPC.

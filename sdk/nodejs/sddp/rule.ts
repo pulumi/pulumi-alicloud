@@ -26,14 +26,14 @@ import * as utilities from "../utilities";
  *     category: 2,
  *     content: `  [
  *     {
- *       "rule": [
+ *       \\"rule\\": [
  *         {
- *           "operator": "contains",
- *           "target": "content",
- *           "value": "tf-testACCContent"
+ *           \\"operator\\": \\"contains\\",
+ *           \\"target\\": \\"content\\",
+ *           \\"value\\": \\"tf-testACCContent\\"
  *         }
  *       ],
- *       "ruleRelation": "AND"
+ *       \\"ruleRelation\\": \\"AND\\"
  *     }
  *   ]
  * `,

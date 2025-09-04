@@ -13,6 +13,94 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.143.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "example_value";
+ * const defaultInteger = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const _default = alicloud.pvtz.getResolverZones({
+ *     status: "NORMAL",
+ * });
+ * const defaultGetRegions = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const defaultNetwork: alicloud.vpc.Network[] = [];
+ * for (const range = {value: 0}; range.value < 3; range.value++) {
+ *     defaultNetwork.push(new alicloud.vpc.Network(`default-${range.value}`, {
+ *         vpcName: name,
+ *         cidrBlock: "172.16.0.0/12",
+ *     }));
+ * }
+ * const defaultSwitch: alicloud.vpc.Switch[] = [];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     defaultSwitch.push(new alicloud.vpc.Switch(`default-${range.value}`, {
+ *         vpcId: defaultNetwork[2].id,
+ *         cidrBlock: defaultNetwork[2].cidrBlock.apply(cidrBlock => std.cidrsubnetOutput({
+ *             input: cidrBlock,
+ *             newbits: 8,
+ *             netnum: range.value,
+ *         })).apply(invoke => invoke.result),
+ *         zoneId: _default.then(_default => _default.zones[range.value].zoneId),
+ *     }));
+ * }
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     vpcId: defaultNetwork[2].id,
+ *     name: name,
+ * });
+ * const defaultEndpoint = new alicloud.pvtz.Endpoint("default", {
+ *     endpointName: `${name}-${defaultInteger.result}`,
+ *     securityGroupId: defaultSecurityGroup.id,
+ *     vpcId: defaultNetwork[2].id,
+ *     vpcRegionId: defaultGetRegions.then(defaultGetRegions => defaultGetRegions.regions?.[0]?.id),
+ *     ipConfigs: [
+ *         {
+ *             zoneId: defaultSwitch[0].zoneId,
+ *             cidrBlock: defaultSwitch[0].cidrBlock,
+ *             vswitchId: defaultSwitch[0].id,
+ *         },
+ *         {
+ *             zoneId: defaultSwitch[1].zoneId,
+ *             cidrBlock: defaultSwitch[1].cidrBlock,
+ *             vswitchId: defaultSwitch[1].id,
+ *         },
+ *     ],
+ * });
+ * const defaultRule = new alicloud.pvtz.Rule("default", {
+ *     endpointId: defaultEndpoint.id,
+ *     ruleName: `${name}-${defaultInteger.result}`,
+ *     type: "OUTBOUND",
+ *     zoneName: name,
+ *     forwardIps: [{
+ *         ip: "114.114.114.114",
+ *         port: 8080,
+ *     }],
+ * });
+ * const defaultRuleAttachment = new alicloud.pvtz.RuleAttachment("default", {
+ *     ruleId: defaultRule.id,
+ *     vpcs: [
+ *         {
+ *             regionId: defaultGetRegions.then(defaultGetRegions => defaultGetRegions.regions?.[0]?.id),
+ *             vpcId: defaultNetwork[0].id,
+ *         },
+ *         {
+ *             regionId: defaultGetRegions.then(defaultGetRegions => defaultGetRegions.regions?.[0]?.id),
+ *             vpcId: defaultNetwork[1].id,
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Private Zone Rule Attachment can be imported using the id, e.g.

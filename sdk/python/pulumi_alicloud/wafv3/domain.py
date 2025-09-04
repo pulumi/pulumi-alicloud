@@ -25,14 +25,19 @@ class DomainArgs:
                  instance_id: pulumi.Input[_builtins.str],
                  listen: pulumi.Input['DomainListenArgs'],
                  redirect: pulumi.Input['DomainRedirectArgs'],
-                 access_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_manager_resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Domain resource.
         :param pulumi.Input[_builtins.str] domain: The name of the domain name to query.
-        :param pulumi.Input[_builtins.str] instance_id: WAF instance ID
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the Web Application Firewall (WAF) instance.
         :param pulumi.Input['DomainListenArgs'] listen: Configure listening information. See `listen` below.
         :param pulumi.Input['DomainRedirectArgs'] redirect: Configure forwarding information. See `redirect` below.
-        :param pulumi.Input[_builtins.str] access_type: The access type of the WAF instance. Value: **share** (default): CNAME access.
+        :param pulumi.Input[_builtins.str] access_type: The mode in which the domain name is added to WAF. Valid values:
+               share: CNAME record mode. This is the default value.
+        :param pulumi.Input[_builtins.str] resource_manager_resource_group_id: The ID of the Alibaba Cloud resource group.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags. You can specify up to 20 tags.
         """
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "instance_id", instance_id)
@@ -40,6 +45,10 @@ class DomainArgs:
         pulumi.set(__self__, "redirect", redirect)
         if access_type is not None:
             pulumi.set(__self__, "access_type", access_type)
+        if resource_manager_resource_group_id is not None:
+            pulumi.set(__self__, "resource_manager_resource_group_id", resource_manager_resource_group_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter
@@ -57,7 +66,7 @@ class DomainArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
         """
-        WAF instance ID
+        The ID of the Web Application Firewall (WAF) instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -93,7 +102,8 @@ class DomainArgs:
     @pulumi.getter(name="accessType")
     def access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The access type of the WAF instance. Value: **share** (default): CNAME access.
+        The mode in which the domain name is added to WAF. Valid values:
+        share: CNAME record mode. This is the default value.
         """
         return pulumi.get(self, "access_type")
 
@@ -101,31 +111,62 @@ class DomainArgs:
     def access_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "access_type", value)
 
+    @_builtins.property
+    @pulumi.getter(name="resourceManagerResourceGroupId")
+    def resource_manager_resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the Alibaba Cloud resource group.
+        """
+        return pulumi.get(self, "resource_manager_resource_group_id")
+
+    @resource_manager_resource_group_id.setter
+    def resource_manager_resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_manager_resource_group_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The tags. You can specify up to 20 tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _DomainState:
     def __init__(__self__, *,
                  access_type: Optional[pulumi.Input[_builtins.str]] = None,
                  domain: Optional[pulumi.Input[_builtins.str]] = None,
+                 domain_id: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  listen: Optional[pulumi.Input['DomainListenArgs']] = None,
                  redirect: Optional[pulumi.Input['DomainRedirectArgs']] = None,
                  resource_manager_resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 status: Optional[pulumi.Input[_builtins.int]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
-        :param pulumi.Input[_builtins.str] access_type: The access type of the WAF instance. Value: **share** (default): CNAME access.
+        :param pulumi.Input[_builtins.str] access_type: The mode in which the domain name is added to WAF. Valid values:
+               share: CNAME record mode. This is the default value.
         :param pulumi.Input[_builtins.str] domain: The name of the domain name to query.
-        :param pulumi.Input[_builtins.str] instance_id: WAF instance ID
+        :param pulumi.Input[_builtins.str] domain_id: The domain ID.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the Web Application Firewall (WAF) instance.
         :param pulumi.Input['DomainListenArgs'] listen: Configure listening information. See `listen` below.
         :param pulumi.Input['DomainRedirectArgs'] redirect: Configure forwarding information. See `redirect` below.
-        :param pulumi.Input[_builtins.str] resource_manager_resource_group_id: The ID of the resource group.
-        :param pulumi.Input[_builtins.str] status: The status of the resource.
+        :param pulumi.Input[_builtins.str] resource_manager_resource_group_id: The ID of the Alibaba Cloud resource group.
+        :param pulumi.Input[_builtins.int] status: The status of the domain name.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags. You can specify up to 20 tags.
         """
         if access_type is not None:
             pulumi.set(__self__, "access_type", access_type)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
+        if domain_id is not None:
+            pulumi.set(__self__, "domain_id", domain_id)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
         if listen is not None:
@@ -136,12 +177,15 @@ class _DomainState:
             pulumi.set(__self__, "resource_manager_resource_group_id", resource_manager_resource_group_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter(name="accessType")
     def access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The access type of the WAF instance. Value: **share** (default): CNAME access.
+        The mode in which the domain name is added to WAF. Valid values:
+        share: CNAME record mode. This is the default value.
         """
         return pulumi.get(self, "access_type")
 
@@ -162,10 +206,22 @@ class _DomainState:
         pulumi.set(self, "domain", value)
 
     @_builtins.property
+    @pulumi.getter(name="domainId")
+    def domain_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The domain ID.
+        """
+        return pulumi.get(self, "domain_id")
+
+    @domain_id.setter
+    def domain_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "domain_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        WAF instance ID
+        The ID of the Web Application Firewall (WAF) instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -201,7 +257,7 @@ class _DomainState:
     @pulumi.getter(name="resourceManagerResourceGroupId")
     def resource_manager_resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the resource group.
+        The ID of the Alibaba Cloud resource group.
         """
         return pulumi.get(self, "resource_manager_resource_group_id")
 
@@ -211,15 +267,27 @@ class _DomainState:
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The status of the resource.
+        The status of the domain name.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The tags. You can specify up to 20 tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 @pulumi.type_token("alicloud:wafv3/domain:Domain")
@@ -233,17 +301,19 @@ class Domain(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  listen: Optional[pulumi.Input[Union['DomainListenArgs', 'DomainListenArgsDict']]] = None,
                  redirect: Optional[pulumi.Input[Union['DomainRedirectArgs', 'DomainRedirectArgsDict']]] = None,
+                 resource_manager_resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Provides a Wafv3 Domain resource.
+        Provides a WAFV3 Domain resource.
 
-        For information about Wafv3 Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-waf-openapi-2021-10-01-createdomain).
+        For information about WAFV3 Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-waf-openapi-2021-10-01-createdomain).
 
         > **NOTE:** Available since v1.200.0.
 
         ## Import
 
-        Wafv3 Domain can be imported using the id, e.g.
+        WAFV3 Domain can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:wafv3/domain:Domain example <instance_id>:<domain>
@@ -251,11 +321,14 @@ class Domain(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_type: The access type of the WAF instance. Value: **share** (default): CNAME access.
+        :param pulumi.Input[_builtins.str] access_type: The mode in which the domain name is added to WAF. Valid values:
+               share: CNAME record mode. This is the default value.
         :param pulumi.Input[_builtins.str] domain: The name of the domain name to query.
-        :param pulumi.Input[_builtins.str] instance_id: WAF instance ID
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the Web Application Firewall (WAF) instance.
         :param pulumi.Input[Union['DomainListenArgs', 'DomainListenArgsDict']] listen: Configure listening information. See `listen` below.
         :param pulumi.Input[Union['DomainRedirectArgs', 'DomainRedirectArgsDict']] redirect: Configure forwarding information. See `redirect` below.
+        :param pulumi.Input[_builtins.str] resource_manager_resource_group_id: The ID of the Alibaba Cloud resource group.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags. You can specify up to 20 tags.
         """
         ...
     @overload
@@ -264,15 +337,15 @@ class Domain(pulumi.CustomResource):
                  args: DomainArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Wafv3 Domain resource.
+        Provides a WAFV3 Domain resource.
 
-        For information about Wafv3 Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-waf-openapi-2021-10-01-createdomain).
+        For information about WAFV3 Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-waf-openapi-2021-10-01-createdomain).
 
         > **NOTE:** Available since v1.200.0.
 
         ## Import
 
-        Wafv3 Domain can be imported using the id, e.g.
+        WAFV3 Domain can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:wafv3/domain:Domain example <instance_id>:<domain>
@@ -298,6 +371,8 @@ class Domain(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  listen: Optional[pulumi.Input[Union['DomainListenArgs', 'DomainListenArgsDict']]] = None,
                  redirect: Optional[pulumi.Input[Union['DomainRedirectArgs', 'DomainRedirectArgsDict']]] = None,
+                 resource_manager_resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -320,7 +395,9 @@ class Domain(pulumi.CustomResource):
             if redirect is None and not opts.urn:
                 raise TypeError("Missing required property 'redirect'")
             __props__.__dict__["redirect"] = redirect
-            __props__.__dict__["resource_manager_resource_group_id"] = None
+            __props__.__dict__["resource_manager_resource_group_id"] = resource_manager_resource_group_id
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["domain_id"] = None
             __props__.__dict__["status"] = None
         super(Domain, __self__).__init__(
             'alicloud:wafv3/domain:Domain',
@@ -334,11 +411,13 @@ class Domain(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             access_type: Optional[pulumi.Input[_builtins.str]] = None,
             domain: Optional[pulumi.Input[_builtins.str]] = None,
+            domain_id: Optional[pulumi.Input[_builtins.str]] = None,
             instance_id: Optional[pulumi.Input[_builtins.str]] = None,
             listen: Optional[pulumi.Input[Union['DomainListenArgs', 'DomainListenArgsDict']]] = None,
             redirect: Optional[pulumi.Input[Union['DomainRedirectArgs', 'DomainRedirectArgsDict']]] = None,
             resource_manager_resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'Domain':
+            status: Optional[pulumi.Input[_builtins.int]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Domain':
         """
         Get an existing Domain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -346,13 +425,16 @@ class Domain(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_type: The access type of the WAF instance. Value: **share** (default): CNAME access.
+        :param pulumi.Input[_builtins.str] access_type: The mode in which the domain name is added to WAF. Valid values:
+               share: CNAME record mode. This is the default value.
         :param pulumi.Input[_builtins.str] domain: The name of the domain name to query.
-        :param pulumi.Input[_builtins.str] instance_id: WAF instance ID
+        :param pulumi.Input[_builtins.str] domain_id: The domain ID.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the Web Application Firewall (WAF) instance.
         :param pulumi.Input[Union['DomainListenArgs', 'DomainListenArgsDict']] listen: Configure listening information. See `listen` below.
         :param pulumi.Input[Union['DomainRedirectArgs', 'DomainRedirectArgsDict']] redirect: Configure forwarding information. See `redirect` below.
-        :param pulumi.Input[_builtins.str] resource_manager_resource_group_id: The ID of the resource group.
-        :param pulumi.Input[_builtins.str] status: The status of the resource.
+        :param pulumi.Input[_builtins.str] resource_manager_resource_group_id: The ID of the Alibaba Cloud resource group.
+        :param pulumi.Input[_builtins.int] status: The status of the domain name.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags. You can specify up to 20 tags.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -360,18 +442,21 @@ class Domain(pulumi.CustomResource):
 
         __props__.__dict__["access_type"] = access_type
         __props__.__dict__["domain"] = domain
+        __props__.__dict__["domain_id"] = domain_id
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["listen"] = listen
         __props__.__dict__["redirect"] = redirect
         __props__.__dict__["resource_manager_resource_group_id"] = resource_manager_resource_group_id
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         return Domain(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="accessType")
     def access_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The access type of the WAF instance. Value: **share** (default): CNAME access.
+        The mode in which the domain name is added to WAF. Valid values:
+        share: CNAME record mode. This is the default value.
         """
         return pulumi.get(self, "access_type")
 
@@ -384,10 +469,18 @@ class Domain(pulumi.CustomResource):
         return pulumi.get(self, "domain")
 
     @_builtins.property
+    @pulumi.getter(name="domainId")
+    def domain_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The domain ID.
+        """
+        return pulumi.get(self, "domain_id")
+
+    @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
         """
-        WAF instance ID
+        The ID of the Web Application Firewall (WAF) instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -411,15 +504,23 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter(name="resourceManagerResourceGroupId")
     def resource_manager_resource_group_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the resource group.
+        The ID of the Alibaba Cloud resource group.
         """
         return pulumi.get(self, "resource_manager_resource_group_id")
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> pulumi.Output[_builtins.str]:
+    def status(self) -> pulumi.Output[_builtins.int]:
         """
-        The status of the resource.
+        The status of the domain name.
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        The tags. You can specify up to 20 tags.
+        """
+        return pulumi.get(self, "tags")
 
