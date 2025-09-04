@@ -914,7 +914,7 @@ class RestoreJob(pulumi.CustomResource):
             target_file_system_id=default_get_nas_backup_plans.plans[0].file_system_id,
             target_create_time=default_get_nas_backup_plans.plans[0].create_time,
             target_path="/",
-            options="    {\\"includes\\":[], \\"excludes\\":[]}\\n")
+            options="    {\\\\\\"includes\\\\\\":[], \\\\\\"excludes\\\\\\":[]}\\n")
         oss_job = alicloud.hbr.RestoreJob("ossJob",
             snapshot_hash=oss_snapshots.snapshots[0].snapshot_hash,
             vault_id=default_get_oss_backup_plans.plans[0].vault_id,
@@ -923,7 +923,7 @@ class RestoreJob(pulumi.CustomResource):
             snapshot_id=oss_snapshots.snapshots[0].snapshot_id,
             target_bucket=default_get_oss_backup_plans.plans[0].bucket,
             target_prefix="",
-            options="    {\\"includes\\":[], \\"excludes\\":[]}\\n")
+            options="    {\\\\\\"includes\\\\\\":[], \\\\\\"excludes\\\\\\":[]}\\n")
         ecs_job = alicloud.hbr.RestoreJob("ecsJob",
             snapshot_hash=ecs_snapshots.snapshots[0].snapshot_hash,
             vault_id=default.plans[0].vault_id,
@@ -1015,7 +1015,7 @@ class RestoreJob(pulumi.CustomResource):
             target_file_system_id=default_get_nas_backup_plans.plans[0].file_system_id,
             target_create_time=default_get_nas_backup_plans.plans[0].create_time,
             target_path="/",
-            options="    {\\"includes\\":[], \\"excludes\\":[]}\\n")
+            options="    {\\\\\\"includes\\\\\\":[], \\\\\\"excludes\\\\\\":[]}\\n")
         oss_job = alicloud.hbr.RestoreJob("ossJob",
             snapshot_hash=oss_snapshots.snapshots[0].snapshot_hash,
             vault_id=default_get_oss_backup_plans.plans[0].vault_id,
@@ -1024,7 +1024,7 @@ class RestoreJob(pulumi.CustomResource):
             snapshot_id=oss_snapshots.snapshots[0].snapshot_id,
             target_bucket=default_get_oss_backup_plans.plans[0].bucket,
             target_prefix="",
-            options="    {\\"includes\\":[], \\"excludes\\":[]}\\n")
+            options="    {\\\\\\"includes\\\\\\":[], \\\\\\"excludes\\\\\\":[]}\\n")
         ecs_job = alicloud.hbr.RestoreJob("ecsJob",
             snapshot_hash=ecs_snapshots.snapshots[0].snapshot_hash,
             vault_id=default.plans[0].vault_id,

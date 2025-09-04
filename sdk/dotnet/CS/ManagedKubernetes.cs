@@ -42,6 +42,355 @@ namespace Pulumi.AliCloud.CS
     /// &gt; **NOTE:** From version 1.212.0, `runtime`,`enable_ssh`,`rds_instances`,`exclude_autoscaler_nodes`,`worker_number`,`worker_instance_types`,`password`,`key_name`,`kms_encrypted_password`,`kms_encryption_context`,`worker_instance_charge_type`,`worker_period`,`worker_period_unit`,`worker_auto_renew`,`worker_auto_renew_period`,`worker_disk_category`,`worker_disk_size`,`worker_data_disks`,`node_name_mode`,`node_port_range`,`os_type`,`platform`,`image_id`,`cpu_policy`,`user_data`,`taints`,`worker_disk_performance_level`,`worker_disk_snapshot_policy_id`,`install_cloud_monitor`,`kube_config`,`availability_zone` are removed.
     /// Please use resource **`alicloud.cs.NodePool`** to manage your cluster worker nodes.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ACK cluster
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     // Existing vpc id used to create several vswitches and other resources.
+    ///     var vpcId = config.Get("vpcId") ?? "";
+    ///     // The cidr block used to launch a new vpc when 'vpc_id' is not specified.
+    ///     var vpcCidr = config.Get("vpcCidr") ?? "10.0.0.0/8";
+    ///     // List of existing vswitch id.
+    ///     var vswitchIds = config.GetObject&lt;string[]&gt;("vswitchIds") ?? new[] {};
+    ///     // List of cidr blocks used to create several new vswitches when 'vswitch_ids' is not specified.
+    ///     var vswitchCidrs = config.GetObject&lt;string[]&gt;("vswitchCidrs") ?? new[]
+    ///     {
+    ///         "10.1.0.0/16",
+    ///         "10.2.0.0/16",
+    ///     };
+    ///     // Proxy mode is option of kube-proxy.
+    ///     var proxyMode = config.Get("proxyMode") ?? "ipvs";
+    ///     // The kubernetes service cidr block. It cannot be equals to vpc's or vswitch's or pod's and cannot be in them.
+    ///     var serviceCidr = config.Get("serviceCidr") ?? "192.168.0.0/16";
+    ///     // List of existing vswitch ids for terway.
+    ///     var terwayVswitchIds = config.GetObject&lt;string[]&gt;("terwayVswitchIds") ?? new[] {};
+    ///     // List of cidr blocks used to create several new vswitches when 'terway_vswitch_cidrs' is not specified.
+    ///     var terwayVswitchCidrs = config.GetObject&lt;string[]&gt;("terwayVswitchCidrs") ?? new[]
+    ///     {
+    ///         "10.4.0.0/16",
+    ///         "10.5.0.0/16",
+    ///     };
+    ///     var enhanced = AliCloud.Vpc.GetEnhancedNatAvailableZones.Invoke();
+    /// 
+    ///     // If there is not specifying vpc_id, the module will launch a new vpc
+    ///     var vpc = new List&lt;AliCloud.Vpc.Network&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; (vpcId == "" ? 1 : 0); rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         vpc.Add(new AliCloud.Vpc.Network($"vpc-{range.Value}", new()
+    ///         {
+    ///             CidrBlock = vpcCidr,
+    ///         }));
+    ///     }
+    ///     // According to the vswitch cidr blocks to launch several vswitches
+    ///     var vswitches = new List&lt;AliCloud.Vpc.Switch&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; (vswitchIds.Length &gt; 0 ? 0 : vswitchCidrs.Length); rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         vswitches.Add(new AliCloud.Vpc.Switch($"vswitches-{range.Value}", new()
+    ///         {
+    ///             VpcId = vpcId == "" ? Std.Join.Invoke(new()
+    ///             {
+    ///                 Separator = "",
+    ///                 Input = vpc.Select(__item =&gt; __item.Id).ToList(),
+    ///             }).Apply(invoke =&gt; invoke.Result) : vpcId,
+    ///             CidrBlock = vswitchCidrs[range.Value],
+    ///             ZoneId = enhanced.Apply(getEnhancedNatAvailableZonesResult =&gt; getEnhancedNatAvailableZonesResult.Zones)[range.Value].ZoneId,
+    ///         }));
+    ///     }
+    ///     // According to the vswitch cidr blocks to launch several vswitches
+    ///     var terwayVswitches = new List&lt;AliCloud.Vpc.Switch&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; (terwayVswitchIds.Length &gt; 0 ? 0 : terwayVswitchCidrs.Length); rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         terwayVswitches.Add(new AliCloud.Vpc.Switch($"terway_vswitches-{range.Value}", new()
+    ///         {
+    ///             VpcId = vpcId == "" ? Std.Join.Invoke(new()
+    ///             {
+    ///                 Separator = "",
+    ///                 Input = vpc.Select(__item =&gt; __item.Id).ToList(),
+    ///             }).Apply(invoke =&gt; invoke.Result) : vpcId,
+    ///             CidrBlock = terwayVswitchCidrs[range.Value],
+    ///             ZoneId = enhanced.Apply(getEnhancedNatAvailableZonesResult =&gt; getEnhancedNatAvailableZonesResult.Zones)[range.Value].ZoneId,
+    ///         }));
+    ///     }
+    ///     var k8s = new AliCloud.CS.ManagedKubernetes("k8s", new()
+    ///     {
+    ///         Name = name,
+    ///         ClusterSpec = "ack.pro.small",
+    ///         VswitchIds = vswitchIds.Length &gt; 0 ? Std.Join.Invoke(new()
+    ///         {
+    ///             Separator = ",",
+    ///             Input = vswitchIds,
+    ///         }).Apply(invoke =&gt; Std.Split.Invoke(new()
+    ///         {
+    ///             Separator = ",",
+    ///             Text = invoke.Result,
+    ///         })).Apply(invoke =&gt; invoke.Result) : vswitchCidrs.Length &lt; 1 ? new[] {} : Std.Join.Invoke(new()
+    ///         {
+    ///             Separator = ",",
+    ///             Input = vswitches.Select(__item =&gt; __item.Id).ToList(),
+    ///         }).Apply(invoke =&gt; Std.Split.Invoke(new()
+    ///         {
+    ///             Separator = ",",
+    ///             Text = invoke.Result,
+    ///         })).Apply(invoke =&gt; invoke.Result),
+    ///         PodVswitchIds = terwayVswitchIds.Length &gt; 0 ? Std.Join.Invoke(new()
+    ///         {
+    ///             Separator = ",",
+    ///             Input = terwayVswitchIds,
+    ///         }).Apply(invoke =&gt; Std.Split.Invoke(new()
+    ///         {
+    ///             Separator = ",",
+    ///             Text = invoke.Result,
+    ///         })).Apply(invoke =&gt; invoke.Result) : terwayVswitchCidrs.Length &lt; 1 ? new[] {} : Std.Join.Invoke(new()
+    ///         {
+    ///             Separator = ",",
+    ///             Input = terwayVswitches.Select(__item =&gt; __item.Id).ToList(),
+    ///         }).Apply(invoke =&gt; Std.Split.Invoke(new()
+    ///         {
+    ///             Separator = ",",
+    ///             Text = invoke.Result,
+    ///         })).Apply(invoke =&gt; invoke.Result),
+    ///         NewNatGateway = true,
+    ///         ProxyMode = proxyMode,
+    ///         ServiceCidr = serviceCidr,
+    ///         SkipSetCertificateAuthority = true,
+    ///         Addons = new[]
+    ///         {
+    ///             new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
+    ///             {
+    ///                 Name = "terway-eniip",
+    ///             },
+    ///             new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
+    ///             {
+    ///                 Name = "csi-plugin",
+    ///             },
+    ///             new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
+    ///             {
+    ///                 Name = "csi-provisioner",
+    ///             },
+    ///             new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
+    ///             {
+    ///                 Name = "logtail-ds",
+    ///                 Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["IngressDashboardEnabled"] = "true",
+    ///                 }),
+    ///             },
+    ///             new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
+    ///             {
+    ///                 Name = "nginx-ingress-controller",
+    ///                 Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["IngressSlbNetworkType"] = "internet",
+    ///                 }),
+    ///             },
+    ///             new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
+    ///             {
+    ///                 Name = "arms-prometheus",
+    ///             },
+    ///             new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
+    ///             {
+    ///                 Name = "ack-node-problem-detector",
+    ///                 Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                 }),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ACK Cluster with Auto Mode
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "auto-mode";
+    ///     // Proxy mode is option of kube-proxy.
+    ///     var proxyMode = config.Get("proxyMode") ?? "ipvs";
+    ///     // The kubernetes service cidr block.
+    ///     var serviceCidr = config.Get("serviceCidr") ?? "192.168.0.0/16";
+    ///     var enhanced = AliCloud.Vpc.GetEnhancedNatAvailableZones.Invoke();
+    /// 
+    ///     var auto_mode = new AliCloud.CS.ManagedKubernetes("auto-mode", new()
+    ///     {
+    ///         Name = name,
+    ///         ClusterSpec = "ack.pro.small",
+    ///         ZoneIds = new[]
+    ///         {
+    ///             enhanced.Apply(getEnhancedNatAvailableZonesResult =&gt; getEnhancedNatAvailableZonesResult.Zones[0]?.ZoneId),
+    ///         },
+    ///         NewNatGateway = true,
+    ///         IsEnterpriseSecurityGroup = true,
+    ///         SlbInternetEnabled = false,
+    ///         SkipSetCertificateAuthority = true,
+    ///         ProxyMode = proxyMode,
+    ///         ServiceCidr = serviceCidr,
+    ///         IpStack = "ipv4",
+    ///         AutoMode = new AliCloud.CS.Inputs.ManagedKubernetesAutoModeArgs
+    ///         {
+    ///             Enabled = true,
+    ///         },
+    ///         MaintenanceWindow = new AliCloud.CS.Inputs.ManagedKubernetesMaintenanceWindowArgs
+    ///         {
+    ///             Duration = "3h",
+    ///             WeeklyPeriod = "Monday",
+    ///             Enable = true,
+    ///             MaintenanceTime = "2025-07-07T00:00:00.000+08:00",
+    ///         },
+    ///         OperationPolicy = new AliCloud.CS.Inputs.ManagedKubernetesOperationPolicyArgs
+    ///         {
+    ///             ClusterAutoUpgrade = new AliCloud.CS.Inputs.ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs
+    ///             {
+    ///                 Channel = "stable",
+    ///                 Enabled = true,
+    ///             },
+    ///         },
+    ///         ControlPlaneLogComponents = new[]
+    ///         {
+    ///             "apiserver",
+    ///             "kcm",
+    ///             "scheduler",
+    ///             "ccm",
+    ///             "controlplane-events",
+    ///             "alb",
+    ///             "ack-goatscaler",
+    ///             "coredns",
+    ///         },
+    ///         ControlPlaneLogTtl = "30",
+    ///         AuditLogConfig = new AliCloud.CS.Inputs.ManagedKubernetesAuditLogConfigArgs
+    ///         {
+    ///             Enabled = true,
+    ///         },
+    ///         Addons = new[]
+    ///         {
+    ///             new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
+    ///             {
+    ///                 Name = "managed-metrics-server",
+    ///             },
+    ///             new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
+    ///             {
+    ///                 Name = "managed-coredns",
+    ///             },
+    ///             new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
+    ///             {
+    ///                 Name = "managed-security-inspector",
+    ///             },
+    ///             new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
+    ///             {
+    ///                 Name = "ack-cost-exporter",
+    ///             },
+    ///             new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
+    ///             {
+    ///                 Name = "terway-controlplane",
+    ///                 Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["ENITrunking"] = "true",
+    ///                 }),
+    ///             },
+    ///             new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
+    ///             {
+    ///                 Name = "terway-eniip",
+    ///                 Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["NetworkPolicy"] = "false",
+    ///                     ["ENITrunking"] = "true",
+    ///                     ["IPVlan"] = "false",
+    ///                 }),
+    ///             },
+    ///             new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
+    ///             {
+    ///                 Name = "csi-plugin",
+    ///             },
+    ///             new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
+    ///             {
+    ///                 Name = "managed-csiprovisioner",
+    ///             },
+    ///             new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
+    ///             {
+    ///                 Name = "storage-operator",
+    ///                 Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["CnfsOssEnable"] = "false",
+    ///                     ["CnfsNasEnable"] = "false",
+    ///                 }),
+    ///             },
+    ///             new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
+    ///             {
+    ///                 Name = "loongcollector",
+    ///                 Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["IngressDashboardEnabled"] = "true",
+    ///                 }),
+    ///             },
+    ///             new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
+    ///             {
+    ///                 Name = "ack-node-problem-detector",
+    ///                 Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["sls_project_name"] = "",
+    ///                 }),
+    ///             },
+    ///             new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
+    ///             {
+    ///                 Name = "nginx-ingress-controller",
+    ///                 Disabled = true,
+    ///             },
+    ///             new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
+    ///             {
+    ///                 Name = "alb-ingress-controller",
+    ///                 Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["albIngress"] = new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["CreateDefaultALBConfig"] = false,
+    ///                     },
+    ///                 }),
+    ///             },
+    ///             new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
+    ///             {
+    ///                 Name = "arms-prometheus",
+    ///                 Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["prometheusMode"] = "default",
+    ///                 }),
+    ///             },
+    ///             new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
+    ///             {
+    ///                 Name = "alicloud-monitor-controller",
+    ///             },
+    ///             new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
+    ///             {
+    ///                 Name = "managed-aliyun-acr-credential-helper",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Kubernetes managed cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
@@ -70,6 +419,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Output("auditLogConfig")]
         public Output<Outputs.ManagedKubernetesAuditLogConfig> AuditLogConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Auto mode cluster configuration. See `auto_mode` below.
+        /// </summary>
+        [Output("autoMode")]
+        public Output<Outputs.ManagedKubernetesAutoMode?> AutoMode { get; private set; } = null!;
 
         /// <summary>
         /// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
@@ -185,7 +540,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> LoadBalancerSpec { get; private set; } = null!;
 
         /// <summary>
-        /// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+        /// The cluster maintenance window. Managed node pool will use it. See `maintenance_window` below.
         /// </summary>
         [Output("maintenanceWindow")]
         public Output<Outputs.ManagedKubernetesMaintenanceWindow> MaintenanceWindow { get; private set; } = null!;
@@ -218,7 +573,7 @@ namespace Pulumi.AliCloud.CS
         public Output<int?> NodeCidrMask { get; private set; } = null!;
 
         /// <summary>
-        /// The cluster automatic operation policy. See `operation_policy` below.
+        /// The cluster automatic operation policy, only works when `maintenance_window` is enabled. See `operation_policy` below.
         /// </summary>
         [Output("operationPolicy")]
         public Output<Outputs.ManagedKubernetesOperationPolicy> OperationPolicy { get; private set; } = null!;
@@ -460,6 +815,12 @@ namespace Pulumi.AliCloud.CS
         public Input<Inputs.ManagedKubernetesAuditLogConfigArgs>? AuditLogConfig { get; set; }
 
         /// <summary>
+        /// Auto mode cluster configuration. See `auto_mode` below.
+        /// </summary>
+        [Input("autoMode")]
+        public Input<Inputs.ManagedKubernetesAutoModeArgs>? AutoMode { get; set; }
+
+        /// <summary>
         /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         /// </summary>
         [Input("clientCert")]
@@ -573,7 +934,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? LoadBalancerSpec { get; set; }
 
         /// <summary>
-        /// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+        /// The cluster maintenance window. Managed node pool will use it. See `maintenance_window` below.
         /// </summary>
         [Input("maintenanceWindow")]
         public Input<Inputs.ManagedKubernetesMaintenanceWindowArgs>? MaintenanceWindow { get; set; }
@@ -600,7 +961,7 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? NodeCidrMask { get; set; }
 
         /// <summary>
-        /// The cluster automatic operation policy. See `operation_policy` below.
+        /// The cluster automatic operation policy, only works when `maintenance_window` is enabled. See `operation_policy` below.
         /// </summary>
         [Input("operationPolicy")]
         public Input<Inputs.ManagedKubernetesOperationPolicyArgs>? OperationPolicy { get; set; }
@@ -804,6 +1165,12 @@ namespace Pulumi.AliCloud.CS
         public Input<Inputs.ManagedKubernetesAuditLogConfigGetArgs>? AuditLogConfig { get; set; }
 
         /// <summary>
+        /// Auto mode cluster configuration. See `auto_mode` below.
+        /// </summary>
+        [Input("autoMode")]
+        public Input<Inputs.ManagedKubernetesAutoModeGetArgs>? AutoMode { get; set; }
+
+        /// <summary>
         /// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
         /// </summary>
         [Input("certificateAuthority")]
@@ -929,7 +1296,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? LoadBalancerSpec { get; set; }
 
         /// <summary>
-        /// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+        /// The cluster maintenance window. Managed node pool will use it. See `maintenance_window` below.
         /// </summary>
         [Input("maintenanceWindow")]
         public Input<Inputs.ManagedKubernetesMaintenanceWindowGetArgs>? MaintenanceWindow { get; set; }
@@ -962,7 +1329,7 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? NodeCidrMask { get; set; }
 
         /// <summary>
-        /// The cluster automatic operation policy. See `operation_policy` below.
+        /// The cluster automatic operation policy, only works when `maintenance_window` is enabled. See `operation_policy` below.
         /// </summary>
         [Input("operationPolicy")]
         public Input<Inputs.ManagedKubernetesOperationPolicyGetArgs>? OperationPolicy { get; set; }

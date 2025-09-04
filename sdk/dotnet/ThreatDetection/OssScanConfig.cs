@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ThreatDetection
 {
     /// <summary>
-    /// Provides a Threat Detection Oss Scan Config resource. Oss detection configuration.
+    /// Provides a Threat Detection Oss Scan Config resource.
+    /// 
+    /// Oss detection configuration.
     /// 
     /// For information about Threat Detection Oss Scan Config and how to use it, see [What is Oss Scan Config](https://www.alibabacloud.com/help/zh/security-center/developer-reference/api-sas-2018-12-03-createossscanconfig/).
     /// 
@@ -112,55 +114,79 @@ namespace Pulumi.AliCloud.ThreatDetection
     public partial class OssScanConfig : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Match all prefixes.
+        /// Indicates whether the prefixes of all objects are matched.
         /// </summary>
         [Output("allKeyPrefix")]
         public Output<bool> AllKeyPrefix { get; private set; } = null!;
 
         /// <summary>
-        /// Bucket List.
+        /// The names of the buckets.
         /// </summary>
         [Output("bucketNameLists")]
         public Output<ImmutableArray<string>> BucketNameLists { get; private set; } = null!;
 
         /// <summary>
-        /// Enable configuration.
+        /// The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+        /// </summary>
+        [Output("decompressMaxFileCount")]
+        public Output<int?> DecompressMaxFileCount { get; private set; } = null!;
+
+        /// <summary>
+        /// The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+        /// </summary>
+        [Output("decompressMaxLayer")]
+        public Output<int?> DecompressMaxLayer { get; private set; } = null!;
+
+        /// <summary>
+        /// The decryption methods.
+        /// </summary>
+        [Output("decryptionLists")]
+        public Output<ImmutableArray<string>> DecryptionLists { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether the check policy is enabled. Valid values:
         /// </summary>
         [Output("enable")]
         public Output<int> Enable { get; private set; } = null!;
 
         /// <summary>
-        /// End time, hours, minutes and seconds.
+        /// The end time of the check. The time is in the HH:mm:ss format.
         /// </summary>
         [Output("endTime")]
         public Output<string> EndTime { get; private set; } = null!;
 
         /// <summary>
-        /// File prefix list.
+        /// The prefixes of the objects.
         /// </summary>
         [Output("keyPrefixLists")]
         public Output<ImmutableArray<string>> KeyPrefixLists { get; private set; } = null!;
 
         /// <summary>
-        /// File Suffix List.
+        /// The suffixes of the objects that are checked.
         /// </summary>
         [Output("keySuffixLists")]
         public Output<ImmutableArray<string>> KeySuffixLists { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration Name.
+        /// The timestamp when the object was last modified. The time must be later than the timestamp that you specify. Unit: milliseconds.
+        /// </summary>
+        [Output("lastModifiedStartTime")]
+        public Output<int?> LastModifiedStartTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The policy name.
         /// </summary>
         [Output("ossScanConfigName")]
         public Output<string?> OssScanConfigName { get; private set; } = null!;
 
         /// <summary>
-        /// Scan cycle.
+        /// The days when the check is performed. The value indicates the days of the week.
         /// </summary>
         [Output("scanDayLists")]
         public Output<ImmutableArray<int>> ScanDayLists { get; private set; } = null!;
 
         /// <summary>
-        /// Start time, hours, minutes and seconds.
+        /// The start time of the check. The time is in the HH:mm:ss format.
         /// </summary>
         [Output("startTime")]
         public Output<string> StartTime { get; private set; } = null!;
@@ -212,7 +238,7 @@ namespace Pulumi.AliCloud.ThreatDetection
     public sealed class OssScanConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Match all prefixes.
+        /// Indicates whether the prefixes of all objects are matched.
         /// </summary>
         [Input("allKeyPrefix")]
         public Input<bool>? AllKeyPrefix { get; set; }
@@ -221,7 +247,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         private InputList<string>? _bucketNameLists;
 
         /// <summary>
-        /// Bucket List.
+        /// The names of the buckets.
         /// </summary>
         public InputList<string> BucketNameLists
         {
@@ -230,13 +256,37 @@ namespace Pulumi.AliCloud.ThreatDetection
         }
 
         /// <summary>
-        /// Enable configuration.
+        /// The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+        /// </summary>
+        [Input("decompressMaxFileCount")]
+        public Input<int>? DecompressMaxFileCount { get; set; }
+
+        /// <summary>
+        /// The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+        /// </summary>
+        [Input("decompressMaxLayer")]
+        public Input<int>? DecompressMaxLayer { get; set; }
+
+        [Input("decryptionLists")]
+        private InputList<string>? _decryptionLists;
+
+        /// <summary>
+        /// The decryption methods.
+        /// </summary>
+        public InputList<string> DecryptionLists
+        {
+            get => _decryptionLists ?? (_decryptionLists = new InputList<string>());
+            set => _decryptionLists = value;
+        }
+
+        /// <summary>
+        /// Indicates whether the check policy is enabled. Valid values:
         /// </summary>
         [Input("enable", required: true)]
         public Input<int> Enable { get; set; } = null!;
 
         /// <summary>
-        /// End time, hours, minutes and seconds.
+        /// The end time of the check. The time is in the HH:mm:ss format.
         /// </summary>
         [Input("endTime", required: true)]
         public Input<string> EndTime { get; set; } = null!;
@@ -245,7 +295,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         private InputList<string>? _keyPrefixLists;
 
         /// <summary>
-        /// File prefix list.
+        /// The prefixes of the objects.
         /// </summary>
         public InputList<string> KeyPrefixLists
         {
@@ -257,7 +307,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         private InputList<string>? _keySuffixLists;
 
         /// <summary>
-        /// File Suffix List.
+        /// The suffixes of the objects that are checked.
         /// </summary>
         public InputList<string> KeySuffixLists
         {
@@ -266,7 +316,13 @@ namespace Pulumi.AliCloud.ThreatDetection
         }
 
         /// <summary>
-        /// Configuration Name.
+        /// The timestamp when the object was last modified. The time must be later than the timestamp that you specify. Unit: milliseconds.
+        /// </summary>
+        [Input("lastModifiedStartTime")]
+        public Input<int>? LastModifiedStartTime { get; set; }
+
+        /// <summary>
+        /// The policy name.
         /// </summary>
         [Input("ossScanConfigName")]
         public Input<string>? OssScanConfigName { get; set; }
@@ -275,7 +331,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         private InputList<int>? _scanDayLists;
 
         /// <summary>
-        /// Scan cycle.
+        /// The days when the check is performed. The value indicates the days of the week.
         /// </summary>
         public InputList<int> ScanDayLists
         {
@@ -284,7 +340,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         }
 
         /// <summary>
-        /// Start time, hours, minutes and seconds.
+        /// The start time of the check. The time is in the HH:mm:ss format.
         /// </summary>
         [Input("startTime", required: true)]
         public Input<string> StartTime { get; set; } = null!;
@@ -298,7 +354,7 @@ namespace Pulumi.AliCloud.ThreatDetection
     public sealed class OssScanConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Match all prefixes.
+        /// Indicates whether the prefixes of all objects are matched.
         /// </summary>
         [Input("allKeyPrefix")]
         public Input<bool>? AllKeyPrefix { get; set; }
@@ -307,7 +363,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         private InputList<string>? _bucketNameLists;
 
         /// <summary>
-        /// Bucket List.
+        /// The names of the buckets.
         /// </summary>
         public InputList<string> BucketNameLists
         {
@@ -316,13 +372,37 @@ namespace Pulumi.AliCloud.ThreatDetection
         }
 
         /// <summary>
-        /// Enable configuration.
+        /// The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+        /// </summary>
+        [Input("decompressMaxFileCount")]
+        public Input<int>? DecompressMaxFileCount { get; set; }
+
+        /// <summary>
+        /// The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+        /// </summary>
+        [Input("decompressMaxLayer")]
+        public Input<int>? DecompressMaxLayer { get; set; }
+
+        [Input("decryptionLists")]
+        private InputList<string>? _decryptionLists;
+
+        /// <summary>
+        /// The decryption methods.
+        /// </summary>
+        public InputList<string> DecryptionLists
+        {
+            get => _decryptionLists ?? (_decryptionLists = new InputList<string>());
+            set => _decryptionLists = value;
+        }
+
+        /// <summary>
+        /// Indicates whether the check policy is enabled. Valid values:
         /// </summary>
         [Input("enable")]
         public Input<int>? Enable { get; set; }
 
         /// <summary>
-        /// End time, hours, minutes and seconds.
+        /// The end time of the check. The time is in the HH:mm:ss format.
         /// </summary>
         [Input("endTime")]
         public Input<string>? EndTime { get; set; }
@@ -331,7 +411,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         private InputList<string>? _keyPrefixLists;
 
         /// <summary>
-        /// File prefix list.
+        /// The prefixes of the objects.
         /// </summary>
         public InputList<string> KeyPrefixLists
         {
@@ -343,7 +423,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         private InputList<string>? _keySuffixLists;
 
         /// <summary>
-        /// File Suffix List.
+        /// The suffixes of the objects that are checked.
         /// </summary>
         public InputList<string> KeySuffixLists
         {
@@ -352,7 +432,13 @@ namespace Pulumi.AliCloud.ThreatDetection
         }
 
         /// <summary>
-        /// Configuration Name.
+        /// The timestamp when the object was last modified. The time must be later than the timestamp that you specify. Unit: milliseconds.
+        /// </summary>
+        [Input("lastModifiedStartTime")]
+        public Input<int>? LastModifiedStartTime { get; set; }
+
+        /// <summary>
+        /// The policy name.
         /// </summary>
         [Input("ossScanConfigName")]
         public Input<string>? OssScanConfigName { get; set; }
@@ -361,7 +447,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         private InputList<int>? _scanDayLists;
 
         /// <summary>
-        /// Scan cycle.
+        /// The days when the check is performed. The value indicates the days of the week.
         /// </summary>
         public InputList<int> ScanDayLists
         {
@@ -370,7 +456,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         }
 
         /// <summary>
-        /// Start time, hours, minutes and seconds.
+        /// The start time of the check. The time is in the HH:mm:ss format.
         /// </summary>
         [Input("startTime")]
         public Input<string>? StartTime { get; set; }

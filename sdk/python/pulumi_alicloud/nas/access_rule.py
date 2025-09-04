@@ -143,6 +143,7 @@ class _AccessRuleState:
                  file_system_type: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv6_source_cidr_ip: Optional[pulumi.Input[_builtins.str]] = None,
                  priority: Optional[pulumi.Input[_builtins.int]] = None,
+                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
                  rw_access_type: Optional[pulumi.Input[_builtins.str]] = None,
                  source_cidr_ip: Optional[pulumi.Input[_builtins.str]] = None,
                  user_access_type: Optional[pulumi.Input[_builtins.str]] = None):
@@ -153,6 +154,7 @@ class _AccessRuleState:
         :param pulumi.Input[_builtins.str] file_system_type: filesystem type. include standard, extreme.
         :param pulumi.Input[_builtins.str] ipv6_source_cidr_ip: Ipv6SourceCidrIp.
         :param pulumi.Input[_builtins.int] priority: Priority.
+        :param pulumi.Input[_builtins.str] region_id: (Available since v1.256.0) The region ID.
         :param pulumi.Input[_builtins.str] rw_access_type: RWAccess.
         :param pulumi.Input[_builtins.str] source_cidr_ip: SourceCidrIp.
         :param pulumi.Input[_builtins.str] user_access_type: UserAccess.
@@ -167,6 +169,8 @@ class _AccessRuleState:
             pulumi.set(__self__, "ipv6_source_cidr_ip", ipv6_source_cidr_ip)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if rw_access_type is not None:
             pulumi.set(__self__, "rw_access_type", rw_access_type)
         if source_cidr_ip is not None:
@@ -233,6 +237,18 @@ class _AccessRuleState:
     @priority.setter
     def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "priority", value)
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Available since v1.256.0) The region ID.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="rwAccessType")
@@ -432,6 +448,7 @@ class AccessRule(pulumi.CustomResource):
             __props__.__dict__["source_cidr_ip"] = source_cidr_ip
             __props__.__dict__["user_access_type"] = user_access_type
             __props__.__dict__["access_rule_id"] = None
+            __props__.__dict__["region_id"] = None
         super(AccessRule, __self__).__init__(
             'alicloud:nas/accessRule:AccessRule',
             resource_name,
@@ -447,6 +464,7 @@ class AccessRule(pulumi.CustomResource):
             file_system_type: Optional[pulumi.Input[_builtins.str]] = None,
             ipv6_source_cidr_ip: Optional[pulumi.Input[_builtins.str]] = None,
             priority: Optional[pulumi.Input[_builtins.int]] = None,
+            region_id: Optional[pulumi.Input[_builtins.str]] = None,
             rw_access_type: Optional[pulumi.Input[_builtins.str]] = None,
             source_cidr_ip: Optional[pulumi.Input[_builtins.str]] = None,
             user_access_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccessRule':
@@ -462,6 +480,7 @@ class AccessRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] file_system_type: filesystem type. include standard, extreme.
         :param pulumi.Input[_builtins.str] ipv6_source_cidr_ip: Ipv6SourceCidrIp.
         :param pulumi.Input[_builtins.int] priority: Priority.
+        :param pulumi.Input[_builtins.str] region_id: (Available since v1.256.0) The region ID.
         :param pulumi.Input[_builtins.str] rw_access_type: RWAccess.
         :param pulumi.Input[_builtins.str] source_cidr_ip: SourceCidrIp.
         :param pulumi.Input[_builtins.str] user_access_type: UserAccess.
@@ -475,6 +494,7 @@ class AccessRule(pulumi.CustomResource):
         __props__.__dict__["file_system_type"] = file_system_type
         __props__.__dict__["ipv6_source_cidr_ip"] = ipv6_source_cidr_ip
         __props__.__dict__["priority"] = priority
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["rw_access_type"] = rw_access_type
         __props__.__dict__["source_cidr_ip"] = source_cidr_ip
         __props__.__dict__["user_access_type"] = user_access_type
@@ -519,6 +539,14 @@ class AccessRule(pulumi.CustomResource):
         Priority.
         """
         return pulumi.get(self, "priority")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since v1.256.0) The region ID.
+        """
+        return pulumi.get(self, "region_id")
 
     @_builtins.property
     @pulumi.getter(name="rwAccessType")

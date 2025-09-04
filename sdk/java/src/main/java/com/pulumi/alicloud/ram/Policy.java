@@ -44,8 +44,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.integer;
- * import com.pulumi.random.integerArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.ram.Policy;
  * import com.pulumi.alicloud.ram.PolicyArgs;
  * import java.util.List;
@@ -71,20 +71,20 @@ import javax.annotation.Nullable;
  *             .policyName(String.format("tf-example-%s", default_.result()))
  *             .policyDocument("""
  *   {
- *     "Statement": [
+ *     \"Statement\": [
  *       {
- *         "Action": [
- *           "oss:ListObjects",
- *           "oss:GetObject"
+ *         \"Action\": [
+ *           \"oss:ListObjects\",
+ *           \"oss:GetObject\"
  *         ],
- *         "Effect": "Allow",
- *         "Resource": [
- *           "acs:oss:*:*:mybucket",
- *           "acs:oss:*:*:mybucket/*"
+ *         \"Effect\": \"Allow\",
+ *         \"Resource\": [
+ *           \"acs:oss:*:*:mybucket\",
+ *           \"acs:oss:*:*:mybucket/*\"
  *         ]
  *       }
  *     ],
- *       "Version": "1"
+ *       \"Version\": \"1\"
  *   }
  *             """)
  *             .description("this is a policy test")

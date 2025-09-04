@@ -27,12 +27,12 @@ import * as utilities from "../utilities";
  *     type: "String",
  *     description: name,
  *     constraints: `  {
- *     "AllowedValues": [
- *         "tf-testacc-oos_parameter"
+ *     \\"AllowedValues\\": [
+ *         \\"tf-testacc-oos_parameter\\"
  *     ],
- *     "AllowedPattern": "tf-testacc-oos_parameter",
- *     "MinLength": 1,
- *     "MaxLength": 100
+ *     \\"AllowedPattern\\": \\"tf-testacc-oos_parameter\\",
+ *     \\"MinLength\\": 1,
+ *     \\"MaxLength\\": 100
  *   }
  * `,
  *     tags: {
@@ -169,12 +169,12 @@ export interface GetParametersResult {
  *     type: "String",
  *     description: name,
  *     constraints: `  {
- *     "AllowedValues": [
- *         "tf-testacc-oos_parameter"
+ *     \\"AllowedValues\\": [
+ *         \\"tf-testacc-oos_parameter\\"
  *     ],
- *     "AllowedPattern": "tf-testacc-oos_parameter",
- *     "MinLength": 1,
- *     "MaxLength": 100
+ *     \\"AllowedPattern\\": \\"tf-testacc-oos_parameter\\",
+ *     \\"MinLength\\": 1,
+ *     \\"MaxLength\\": 100
  *   }
  * `,
  *     tags: {

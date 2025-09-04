@@ -8,6 +8,54 @@ import * as utilities from "../utilities";
  * This data source provides metadata of kubernetes cluster addons.
  *
  * > **NOTE:** Available in 1.166.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ * });
+ * const defaultManagedKubernetes = new alicloud.cs.ManagedKubernetes("default", {
+ *     namePrefix: name,
+ *     clusterSpec: "ack.pro.small",
+ *     workerVswitchIds: [defaultSwitch.id],
+ *     newNatGateway: false,
+ *     podCidr: std.cidrsubnet({
+ *         input: "10.0.0.0/8",
+ *         newbits: 8,
+ *         netnum: 36,
+ *     }).then(invoke => invoke.result),
+ *     serviceCidr: std.cidrsubnet({
+ *         input: "172.16.0.0/16",
+ *         newbits: 4,
+ *         netnum: 7,
+ *     }).then(invoke => invoke.result),
+ *     slbInternetEnabled: true,
+ * });
+ * const clusterId = defaultManagedKubernetes.id;
+ * const defaultGetKubernetesAddonMetadata = alicloud.cs.getKubernetesAddonMetadataOutput({
+ *     clusterId: clusterId,
+ *     name: "nginx-ingress-controller",
+ *     version: "v1.1.2-aliyun.2",
+ * });
+ * export const addonConfigSchema = defaultGetKubernetesAddonMetadata.apply(defaultGetKubernetesAddonMetadata => defaultGetKubernetesAddonMetadata.configSchema);
+ * ```
  */
 export function getKubernetesAddonMetadata(args: GetKubernetesAddonMetadataArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesAddonMetadataResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -56,6 +104,54 @@ export interface GetKubernetesAddonMetadataResult {
  * This data source provides metadata of kubernetes cluster addons.
  *
  * > **NOTE:** Available in 1.166.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ * });
+ * const defaultManagedKubernetes = new alicloud.cs.ManagedKubernetes("default", {
+ *     namePrefix: name,
+ *     clusterSpec: "ack.pro.small",
+ *     workerVswitchIds: [defaultSwitch.id],
+ *     newNatGateway: false,
+ *     podCidr: std.cidrsubnet({
+ *         input: "10.0.0.0/8",
+ *         newbits: 8,
+ *         netnum: 36,
+ *     }).then(invoke => invoke.result),
+ *     serviceCidr: std.cidrsubnet({
+ *         input: "172.16.0.0/16",
+ *         newbits: 4,
+ *         netnum: 7,
+ *     }).then(invoke => invoke.result),
+ *     slbInternetEnabled: true,
+ * });
+ * const clusterId = defaultManagedKubernetes.id;
+ * const defaultGetKubernetesAddonMetadata = alicloud.cs.getKubernetesAddonMetadataOutput({
+ *     clusterId: clusterId,
+ *     name: "nginx-ingress-controller",
+ *     version: "v1.1.2-aliyun.2",
+ * });
+ * export const addonConfigSchema = defaultGetKubernetesAddonMetadata.apply(defaultGetKubernetesAddonMetadata => defaultGetKubernetesAddonMetadata.configSchema);
+ * ```
  */
 export function getKubernetesAddonMetadataOutput(args: GetKubernetesAddonMetadataOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKubernetesAddonMetadataResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

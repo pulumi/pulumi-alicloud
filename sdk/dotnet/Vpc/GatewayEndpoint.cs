@@ -52,12 +52,12 @@ namespace Pulumi.AliCloud.Vpc
     ///         ResourceGroupId = defaultRg.Id,
     ///         ServiceName = domain,
     ///         PolicyDocument = @"      {
-    ///         ""Version"": ""1"",
-    ///         ""Statement"": [{
-    ///           ""Effect"": ""Allow"",
-    ///           ""Resource"": [""*""],
-    ///           ""Action"": [""*""],
-    ///           ""Principal"": [""*""]
+    ///         \""Version\"": \""1\"",
+    ///         \""Statement\"": [{
+    ///           \""Effect\"": \""Allow\"",
+    ///           \""Resource\"": [\""*\""],
+    ///           \""Action\"": [\""*\""],
+    ///           \""Principal\"": [\""*\""]
     ///         }]
     ///       }
     /// ",

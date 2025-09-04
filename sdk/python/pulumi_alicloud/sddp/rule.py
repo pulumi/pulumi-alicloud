@@ -538,14 +538,14 @@ class Rule(pulumi.CustomResource):
             category=2,
             content=\"\"\"  [
             {
-              "rule": [
+              \\"rule\\": [
                 {
-                  "operator": "contains",
-                  "target": "content",
-                  "value": "tf-testACCContent"
+                  \\"operator\\": \\"contains\\",
+                  \\"target\\": \\"content\\",
+                  \\"value\\": \\"tf-testACCContent\\"
                 }
               ],
-              "ruleRelation": "AND"
+              \\"ruleRelation\\": \\"AND\\"
             }
           ]
         \"\"\",
@@ -608,14 +608,14 @@ class Rule(pulumi.CustomResource):
             category=2,
             content=\"\"\"  [
             {
-              "rule": [
+              \\"rule\\": [
                 {
-                  "operator": "contains",
-                  "target": "content",
-                  "value": "tf-testACCContent"
+                  \\"operator\\": \\"contains\\",
+                  \\"target\\": \\"content\\",
+                  \\"value\\": \\"tf-testACCContent\\"
                 }
               ],
-              "ruleRelation": "AND"
+              \\"ruleRelation\\": \\"AND\\"
             }
           ]
         \"\"\",

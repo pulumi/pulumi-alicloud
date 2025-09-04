@@ -11,6 +11,95 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.212.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ * import * as std from "@pulumi/std";
+ *
+ * const defaultInteger = new random.index.Integer("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const enhanced = alicloud.vpc.getEnhancedNatAvailableZones({});
+ * const vpc = new alicloud.vpc.Network("vpc", {
+ *     description: name,
+ *     cidrBlock: "192.168.0.0/16",
+ *     vpcName: name,
+ * });
+ * const vswitch = new alicloud.vpc.Switch("vswitch", {
+ *     description: name,
+ *     vpcId: vpc.id,
+ *     vswitchName: name,
+ *     zoneId: enhanced.then(enhanced => enhanced.zones?.[0]?.zoneId),
+ *     cidrBlock: vpc.cidrBlock.apply(cidrBlock => std.cidrsubnetOutput({
+ *         input: cidrBlock,
+ *         newbits: 8,
+ *         netnum: 8,
+ *     })).apply(invoke => invoke.result),
+ * });
+ * const defaultSnapshotPolicy = new alicloud.ecs.SnapshotPolicy("default", {
+ *     name: name,
+ *     repeatWeekdays: [
+ *         "1",
+ *         "2",
+ *         "3",
+ *     ],
+ *     retentionDays: -1,
+ *     timePoints: [
+ *         "1",
+ *         "22",
+ *         "23",
+ *     ],
+ * });
+ * const _default = vswitch.zoneId.apply(zoneId => alicloud.ecs.getInstanceTypesOutput({
+ *     availabilityZone: zoneId,
+ *     cpuCoreCount: 2,
+ *     memorySize: 4,
+ *     kubernetesNodeRole: "Worker",
+ *     instanceTypeFamily: "ecs.sn1ne",
+ * }));
+ * const defaultManagedKubernetes = new alicloud.cs.ManagedKubernetes("default", {
+ *     name: `terraform-example-${defaultInteger.result}`,
+ *     clusterSpec: "ack.pro.small",
+ *     version: "1.24.6-aliyun.1",
+ *     newNatGateway: true,
+ *     nodeCidrMask: 26,
+ *     proxyMode: "ipvs",
+ *     serviceCidr: "172.23.0.0/16",
+ *     podCidr: "10.95.0.0/16",
+ *     workerVswitchIds: [vswitch.id],
+ * });
+ * const defaultKeyPair = new alicloud.ecs.KeyPair("default", {keyPairName: `${name}-${defaultInteger.result}`});
+ * const defaultNodePool = new alicloud.cs.NodePool("default", {
+ *     nodePoolName: "desired_size",
+ *     clusterId: defaultManagedKubernetes.id,
+ *     vswitchIds: [vswitch.id],
+ *     instanceTypes: [_default.apply(_default => _default.instanceTypes?.[0]?.id)],
+ *     systemDiskCategory: "cloud_efficiency",
+ *     systemDiskSize: 40,
+ *     keyName: defaultKeyPair.keyPairName,
+ *     desiredSize: "2",
+ * });
+ * const defaultEnvironment = new alicloud.arms.Environment("default", {
+ *     bindResourceId: defaultNodePool.clusterId,
+ *     environmentSubType: "ManagedKubernetes",
+ *     environmentType: "CS",
+ *     environmentName: `terraform-example-${defaultInteger.result}`,
+ * });
+ * const defaultEnvFeature = new alicloud.arms.EnvFeature("default", {
+ *     envFeatureName: "metric-agent",
+ *     environmentId: defaultEnvironment.id,
+ *     featureVersion: "1.1.17",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ARMS Env Feature can be imported using the id, e.g.

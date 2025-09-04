@@ -13,7 +13,7 @@ import (
 
 // This data source Generates a RAM policy document of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available since v1.184.0+.
+// > **NOTE:** Available since v1.184.0.
 //
 // ## Example Usage
 //

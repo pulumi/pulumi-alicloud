@@ -90,6 +90,7 @@ class RdsCloneDbInstanceArgs:
                * **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
                * **cloud_essd2**: ESSDs of PL2
                * **cloud_essd3**: ESSDs of PL3
+               * **general_essd**: general ESSDS Available since v1.258.0
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription` and `Serverless`.
         :param pulumi.Input[_builtins.str] source_db_instance_id: The source db instance id.
         :param pulumi.Input[_builtins.str] acl: This parameter is only supported by the RDS PostgreSQL cloud disk version. This parameter indicates the authentication method. It is allowed only when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
@@ -345,6 +346,7 @@ class RdsCloneDbInstanceArgs:
         * **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
         * **cloud_essd2**: ESSDs of PL2
         * **cloud_essd3**: ESSDs of PL3
+        * **general_essd**: general ESSDS Available since v1.258.0
         """
         return pulumi.get(self, "db_instance_storage_type")
 
@@ -1244,6 +1246,7 @@ class _RdsCloneDbInstanceState:
                * **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
                * **cloud_essd2**: ESSDs of PL2
                * **cloud_essd3**: ESSDs of PL3
+               * **general_essd**: general ESSDS Available since v1.258.0
         :param pulumi.Input[_builtins.str] db_name: The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
                
                > **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
@@ -1681,6 +1684,7 @@ class _RdsCloneDbInstanceState:
         * **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
         * **cloud_essd2**: ESSDs of PL2
         * **cloud_essd3**: ESSDs of PL3
+        * **general_essd**: general ESSDS Available since v1.258.0
         """
         return pulumi.get(self, "db_instance_storage_type")
 
@@ -2445,6 +2449,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                * **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
                * **cloud_essd2**: ESSDs of PL2
                * **cloud_essd3**: ESSDs of PL3
+               * **general_essd**: general ESSDS Available since v1.258.0
         :param pulumi.Input[_builtins.str] db_name: The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
                
                > **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
@@ -2876,6 +2881,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                * **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
                * **cloud_essd2**: ESSDs of PL2
                * **cloud_essd3**: ESSDs of PL3
+               * **general_essd**: general ESSDS Available since v1.258.0
         :param pulumi.Input[_builtins.str] db_name: The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
                
                > **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
@@ -3166,7 +3172,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceDescription")
-    def db_instance_description(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def db_instance_description(self) -> pulumi.Output[_builtins.str]:
         """
         The db instance description.
         """
@@ -3192,6 +3198,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         * **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
         * **cloud_essd2**: ESSDs of PL2
         * **cloud_essd3**: ESSDs of PL3
+        * **general_essd**: general ESSDS Available since v1.258.0
         """
         return pulumi.get(self, "db_instance_storage_type")
 

@@ -55,21 +55,21 @@ import javax.annotation.Nullable;
  *             .extInfo("{}")
  *             .schema("""
  *     {
- *       "schema": [
+ *       \"schema\": [
  *         {
- *           "column": "col1",
- *           "desc": "col1   desc",
- *           "ext_info": {
+ *           \"column\": \"col1\",
+ *           \"desc\": \"col1   desc\",
+ *           \"ext_info\": {
  *           },
- *           "required": true,
- *           "type": "string"
+ *           \"required\": true,
+ *           \"type\": \"string\"
  *         },
  *         {
- *           "column": "col2",
- *           "desc": "col2   desc",
- *           "ext_info": "optional",
- *           "required": true,
- *           "type": "string"
+ *           \"column\": \"col2\",
+ *           \"desc\": \"col2   desc\",
+ *           \"ext_info\": \"optional\",
+ *           \"required\": true,
+ *           \"type\": \"string\"
  *         }
  *       ]
  *     }

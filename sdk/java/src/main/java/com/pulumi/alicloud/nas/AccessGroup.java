@@ -34,8 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.integer;
- * import com.pulumi.random.integerArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.nas.AccessGroup;
  * import com.pulumi.alicloud.nas.AccessGroupArgs;
  * import java.util.List;
@@ -109,14 +109,14 @@ public class AccessGroup extends com.pulumi.resources.CustomResource {
         return this.accessGroupType;
     }
     /**
-     * Creation time.
+     * (Available since v1.218.0) Creation time.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return Creation time.
+     * @return (Available since v1.218.0) Creation time.
      * 
      */
     public Output<String> createTime() {
@@ -157,7 +157,7 @@ public class AccessGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.fileSystemType);
     }
     /**
-     * . Field &#39;name&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_name&#39; instead.
+     * Field &#39;name&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated since provider version 1.218.0. New field &#39;access_group_name&#39; instead.
@@ -168,14 +168,28 @@ public class AccessGroup extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return . Field &#39;name&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_name&#39; instead.
+     * @return Field &#39;name&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_name&#39; instead.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * . Field &#39;type&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_type&#39; instead.
+     * (Available since v1.256.0) The region ID.
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return (Available since v1.256.0) The region ID.
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
+    }
+    /**
+     * Field &#39;type&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_type&#39; instead.
      * 
      * @deprecated
      * Field &#39;type&#39; has been deprecated since provider version 1.218.0. New field &#39;access_group_type&#39; instead.
@@ -186,7 +200,7 @@ public class AccessGroup extends com.pulumi.resources.CustomResource {
     private Output<String> type;
 
     /**
-     * @return . Field &#39;type&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_type&#39; instead.
+     * @return Field &#39;type&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_type&#39; instead.
      * 
      */
     public Output<String> type() {

@@ -16,6 +16,74 @@ namespace Pulumi.AliCloud.DataWorks
     /// 
     /// &gt; **NOTE:** Available since v1.241.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform_example";
+    ///     var defaultZImuCO = new AliCloud.DataWorks.Project("defaultZImuCO", new()
+    ///     {
+    ///         Description = "default_pj002",
+    ///         ProjectName = name,
+    ///         DisplayName = "default_pj002",
+    ///         PaiTaskEnabled = true,
+    ///     });
+    /// 
+    ///     var defaulte4zhaL = new AliCloud.Vpc.Network("defaulte4zhaL", new()
+    ///     {
+    ///         Description = "default_resgv2_vpc001",
+    ///         VpcName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s1",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var default675v38 = new AliCloud.Vpc.Switch("default675v38", new()
+    ///     {
+    ///         Description = "default_resg_vsw001",
+    ///         VpcId = defaulte4zhaL.Id,
+    ///         ZoneId = "cn-beijing-g",
+    ///         VswitchName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s2",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         CidrBlock = "172.16.0.0/24",
+    ///     });
+    /// 
+    ///     var @default = new AliCloud.DataWorks.DwResourceGroup("default", new()
+    ///     {
+    ///         PaymentType = "PostPaid",
+    ///         DefaultVpcId = defaulte4zhaL.Id,
+    ///         Remark = "openapi_example",
+    ///         ResourceGroupName = "openapi_pop2_example_resg00002",
+    ///         DefaultVswitchId = default675v38.Id,
+    ///         PaymentDurationUnit = "Month",
+    ///         Specification = 500,
+    ///         PaymentDuration = 1,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Data Works Dw Resource Group can be imported using the id, e.g.

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ram
         /// <summary>
         /// This data source Generates a RAM policy document of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available since v1.184.0+.
+        /// &gt; **NOTE:** Available since v1.184.0.
         /// 
         /// ## Example Usage
         /// 
@@ -431,7 +431,7 @@ namespace Pulumi.AliCloud.Ram
         /// <summary>
         /// This data source Generates a RAM policy document of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available since v1.184.0+.
+        /// &gt; **NOTE:** Available since v1.184.0.
         /// 
         /// ## Example Usage
         /// 
@@ -848,7 +848,7 @@ namespace Pulumi.AliCloud.Ram
         /// <summary>
         /// This data source Generates a RAM policy document of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available since v1.184.0+.
+        /// &gt; **NOTE:** Available since v1.184.0.
         /// 
         /// ## Example Usage
         /// 

@@ -114,6 +114,38 @@ def get_shared_resources(ids: Optional[Sequence[_builtins.str]] = None,
 
     > **NOTE:** Available since v1.111.0.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+    import pulumi_std as std
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "tf-example"
+    default = alicloud.get_zones(available_resource_creation="VSwitch")
+    default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+    default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+        zone_id=default.ids[0])
+    default_resource_share = alicloud.resourcemanager.ResourceShare("default", resource_share_name=name)
+    default_shared_resource = alicloud.resourcemanager.SharedResource("default",
+        resource_share_id=default_resource_share.id,
+        resource_id=default_get_switches.ids[0],
+        resource_type="VSwitch")
+    ids = alicloud.resourcemanager.get_shared_resources(ids=[std.format(input="%s:%s",
+        args=[
+            default_shared_resource.resource_id,
+            default_shared_resource.resource_type,
+        ]).result])
+    pulumi.export("firstResourceManagerSharedResourceId", ids.resources[0].id)
+    resource_share_id = alicloud.resourcemanager.get_shared_resources_output(resource_share_id=default_shared_resource.resource_share_id)
+    pulumi.export("secondResourceManagerSharedResourceId", resource_share_id.resources[0].id)
+    ```
+
 
     :param Sequence[_builtins.str] ids: A list of shared resource IDs.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -144,6 +176,38 @@ def get_shared_resources_output(ids: Optional[pulumi.Input[Optional[Sequence[_bu
     This data source provides the Resource Manager Shared Resources of the current Alibaba Cloud user.
 
     > **NOTE:** Available since v1.111.0.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+    import pulumi_std as std
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "tf-example"
+    default = alicloud.get_zones(available_resource_creation="VSwitch")
+    default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+    default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+        zone_id=default.ids[0])
+    default_resource_share = alicloud.resourcemanager.ResourceShare("default", resource_share_name=name)
+    default_shared_resource = alicloud.resourcemanager.SharedResource("default",
+        resource_share_id=default_resource_share.id,
+        resource_id=default_get_switches.ids[0],
+        resource_type="VSwitch")
+    ids = alicloud.resourcemanager.get_shared_resources(ids=[std.format(input="%s:%s",
+        args=[
+            default_shared_resource.resource_id,
+            default_shared_resource.resource_type,
+        ]).result])
+    pulumi.export("firstResourceManagerSharedResourceId", ids.resources[0].id)
+    resource_share_id = alicloud.resourcemanager.get_shared_resources_output(resource_share_id=default_shared_resource.resource_share_id)
+    pulumi.export("secondResourceManagerSharedResourceId", resource_share_id.resources[0].id)
+    ```
 
 
     :param Sequence[_builtins.str] ids: A list of shared resource IDs.

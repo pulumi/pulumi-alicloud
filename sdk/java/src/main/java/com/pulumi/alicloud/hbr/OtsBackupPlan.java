@@ -42,8 +42,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.integer;
- * import com.pulumi.random.integerArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.hbr.Vault;
  * import com.pulumi.alicloud.hbr.VaultArgs;
  * import com.pulumi.alicloud.ots.Instance;
@@ -106,20 +106,20 @@ import javax.annotation.Nullable;
  *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
  *             .name("hbrexamplerole")
  *             .document("""
- * 		{
- * 			"Statement": [
- * 			{
- * 				"Action": "sts:AssumeRole",
- * 				"Effect": "Allow",
- * 				"Principal": {
- * 					"Service": [
- * 						"crossbackup.hbr.aliyuncs.com"
- * 					]
- * 				}
- * 			}
- * 			],
- *   			"Version": "1"
- * 		}
+ * \t\t{
+ * \t\t\t\"Statement\": [
+ * \t\t\t{
+ * \t\t\t\t\"Action\": \"sts:AssumeRole\",
+ * \t\t\t\t\"Effect\": \"Allow\",
+ * \t\t\t\t\"Principal\": {
+ * \t\t\t\t\t\"Service\": [
+ * \t\t\t\t\t\t\"crossbackup.hbr.aliyuncs.com\"
+ * \t\t\t\t\t]
+ * \t\t\t\t}
+ * \t\t\t}
+ * \t\t\t],
+ *   \t\t\t\"Version\": \"1\"
+ * \t\t}
  *             """)
  *             .force(true)
  *             .build());

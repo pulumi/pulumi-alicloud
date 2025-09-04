@@ -20,6 +20,120 @@ import (
 //
 // > **NOTE:** Available since v1.172.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			this, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			thisGetAccount, err := alicloud.GetAccount(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := resourcemanager.GetAccounts(ctx, &resourcemanager.GetAccountsArgs{
+//				Status: pulumi.StringRef("CreateSuccess"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			last := len(_default.Accounts).ApplyT(func(length int) (float64, error) {
+//				return length - 1, nil
+//			}).(pulumi.Float64Output)
+//			defaultAggregator, err := cfg.NewAggregator(ctx, "default", &cfg.AggregatorArgs{
+//				AggregatorAccounts: cfg.AggregatorAggregatorAccountArray{
+//					&cfg.AggregatorAggregatorAccountArgs{
+//						AccountId:   pulumi.String(_default.Accounts[last].AccountId),
+//						AccountName: pulumi.String(_default.Accounts[last].DisplayName),
+//						AccountType: pulumi.String("ResourceDirectory"),
+//					},
+//				},
+//				AggregatorName: pulumi.String(name),
+//				Description:    pulumi.String(name),
+//				AggregatorType: pulumi.String("CUSTOM"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultUuid, err := random.NewUuid(ctx, "default", nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeSubstr, err := std.Substr(ctx, &std.SubstrArgs{
+//				Input: fmt.Sprintf("tf-example-%v", std.Replace(ctx, &std.ReplaceArgs{
+//					Text:    defaultUuid.Result,
+//					Search:  "-",
+//					Replace: "",
+//				}, nil).Result),
+//				Offset: 0,
+//				Length: 16,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultProject, err := log.NewProject(ctx, "default", &log.ProjectArgs{
+//				ProjectName: pulumi.String(invokeSubstr.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultStore, err := log.NewStore(ctx, "default", &log.StoreArgs{
+//				LogstoreName: pulumi.String(name),
+//				ProjectName:  defaultProject.ProjectName,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cfg.NewAggregateDelivery(ctx, "default", &cfg.AggregateDeliveryArgs{
+//				AggregatorId:                        defaultAggregator.ID(),
+//				ConfigurationItemChangeNotification: pulumi.Bool(true),
+//				NonCompliantNotification:            pulumi.Bool(true),
+//				DeliveryChannelName:                 pulumi.String(name),
+//				DeliveryChannelTargetArn: pulumi.All(defaultProject.ProjectName, defaultStore.LogstoreName).ApplyT(func(_args []interface{}) (string, error) {
+//					projectName := _args[0].(string)
+//					logstoreName := _args[1].(string)
+//					return fmt.Sprintf("acs:log:%v:%v:project/%v/logstore/%v", this.Ids[0], thisGetAccount.Id, projectName, logstoreName), nil
+//				}).(pulumi.StringOutput),
+//				DeliveryChannelType: pulumi.String("SLS"),
+//				Description:         pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Config Aggregate Delivery can be imported using the id, e.g.

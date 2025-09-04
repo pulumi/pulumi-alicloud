@@ -11,6 +11,53 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.241.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform_example";
+ * const defaultZImuCO = new alicloud.dataworks.Project("defaultZImuCO", {
+ *     description: "default_pj002",
+ *     projectName: name,
+ *     displayName: "default_pj002",
+ *     paiTaskEnabled: true,
+ * });
+ * const defaulte4zhaL = new alicloud.vpc.Network("defaulte4zhaL", {
+ *     description: "default_resgv2_vpc001",
+ *     vpcName: std.format({
+ *         input: "%s1",
+ *         args: [name],
+ *     }).then(invoke => invoke.result),
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const default675v38 = new alicloud.vpc.Switch("default675v38", {
+ *     description: "default_resg_vsw001",
+ *     vpcId: defaulte4zhaL.id,
+ *     zoneId: "cn-beijing-g",
+ *     vswitchName: std.format({
+ *         input: "%s2",
+ *         args: [name],
+ *     }).then(invoke => invoke.result),
+ *     cidrBlock: "172.16.0.0/24",
+ * });
+ * const _default = new alicloud.dataworks.DwResourceGroup("default", {
+ *     paymentType: "PostPaid",
+ *     defaultVpcId: defaulte4zhaL.id,
+ *     remark: "openapi_example",
+ *     resourceGroupName: "openapi_pop2_example_resg00002",
+ *     defaultVswitchId: default675v38.id,
+ *     paymentDurationUnit: "Month",
+ *     specification: 500,
+ *     paymentDuration: 1,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Data Works Dw Resource Group can be imported using the id, e.g.

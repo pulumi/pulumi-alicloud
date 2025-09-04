@@ -224,6 +224,54 @@ class Endpoint(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.143.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "example_name"
+        default = alicloud.pvtz.get_resolver_zones(status="NORMAL")
+        default_get_regions = alicloud.get_regions(current=True)
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="172.16.0.0/12")
+        default_switch = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
+                vpc_id=default_network.id,
+                cidr_block=default_network.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+                    newbits=8,
+                    netnum=range["value"])).apply(lambda invoke: invoke.result),
+                zone_id=default.zones[range["value"]].zone_id))
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            vpc_id=default_network.id,
+            name=name)
+        default_endpoint = alicloud.pvtz.Endpoint("default",
+            endpoint_name=name,
+            security_group_id=default_security_group.id,
+            vpc_id=default_network.id,
+            vpc_region_id=default_get_regions.regions[0].id,
+            ip_configs=[
+                {
+                    "zone_id": default_switch[0].zone_id,
+                    "cidr_block": default_switch[0].cidr_block,
+                    "vswitch_id": default_switch[0].id,
+                },
+                {
+                    "zone_id": default_switch[1].zone_id,
+                    "cidr_block": default_switch[1].cidr_block,
+                    "vswitch_id": default_switch[1].id,
+                },
+            ])
+        ```
+
         ## Import
 
         Private Zone Endpoint can be imported using the id, e.g.
@@ -252,6 +300,54 @@ class Endpoint(pulumi.CustomResource):
         For information about Private Zone Endpoint and how to use it, see [What is Endpoint](https://www.alibabacloud.com/help/en/privatezone/latest/add-endpoint).
 
         > **NOTE:** Available since v1.143.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "example_name"
+        default = alicloud.pvtz.get_resolver_zones(status="NORMAL")
+        default_get_regions = alicloud.get_regions(current=True)
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="172.16.0.0/12")
+        default_switch = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
+                vpc_id=default_network.id,
+                cidr_block=default_network.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+                    newbits=8,
+                    netnum=range["value"])).apply(lambda invoke: invoke.result),
+                zone_id=default.zones[range["value"]].zone_id))
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            vpc_id=default_network.id,
+            name=name)
+        default_endpoint = alicloud.pvtz.Endpoint("default",
+            endpoint_name=name,
+            security_group_id=default_security_group.id,
+            vpc_id=default_network.id,
+            vpc_region_id=default_get_regions.regions[0].id,
+            ip_configs=[
+                {
+                    "zone_id": default_switch[0].zone_id,
+                    "cidr_block": default_switch[0].cidr_block,
+                    "vswitch_id": default_switch[0].id,
+                },
+                {
+                    "zone_id": default_switch[1].zone_id,
+                    "cidr_block": default_switch[1].cidr_block,
+                    "vswitch_id": default_switch[1].id,
+                },
+            ])
+        ```
 
         ## Import
 

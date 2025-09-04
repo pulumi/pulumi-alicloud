@@ -33,8 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.integer;
- * import com.pulumi.random.integerArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
@@ -81,16 +81,16 @@ import javax.annotation.Nullable;
  *             .name("terraform-example")
  *             .outputType("LogService")
  *             .inputDetail("""
- *   	{
- * 		"logPath": "/logPath",
- * 		"filePattern": "access.log",
- * 		"logType": "json_log",
- * 		"topicFormat": "default",
- * 		"discardUnmatch": false,
- * 		"enableRawLog": true,
- * 		"fileEncoding": "gbk",
- * 		"maxDepth": 10
- * 	}
+ *   \t{
+ * \t\t\"logPath\": \"/logPath\",
+ * \t\t\"filePattern\": \"access.log\",
+ * \t\t\"logType\": \"json_log\",
+ * \t\t\"topicFormat\": \"default\",
+ * \t\t\"discardUnmatch\": false,
+ * \t\t\"enableRawLog\": true,
+ * \t\t\"fileEncoding\": \"gbk\",
+ * \t\t\"maxDepth\": 10
+ * \t}
  *             """)
  *             .build());
  * 

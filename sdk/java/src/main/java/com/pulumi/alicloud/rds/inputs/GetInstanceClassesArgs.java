@@ -105,14 +105,14 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The DB instance storage space required by the user. Valid values: &#34;cloud_ssd&#34;, &#34;local_ssd&#34;, &#34;cloud_essd&#34;, &#34;cloud_essd2&#34;, &#34;cloud_essd3&#34;.
+     * The DB instance storage space required by the user. Valid values: &#34;cloud_ssd&#34;, &#34;local_ssd&#34;, &#34;cloud_essd&#34;, &#34;cloud_essd2&#34;, &#34;cloud_essd3&#34;, &#34;general_essd&#34;.
      * 
      */
     @Import(name="dbInstanceStorageType")
     private @Nullable Output<String> dbInstanceStorageType;
 
     /**
-     * @return The DB instance storage space required by the user. Valid values: &#34;cloud_ssd&#34;, &#34;local_ssd&#34;, &#34;cloud_essd&#34;, &#34;cloud_essd2&#34;, &#34;cloud_essd3&#34;.
+     * @return The DB instance storage space required by the user. Valid values: &#34;cloud_ssd&#34;, &#34;local_ssd&#34;, &#34;cloud_essd&#34;, &#34;cloud_essd2&#34;, &#34;cloud_essd3&#34;, &#34;general_essd&#34;.
      * 
      */
     public Optional<Output<String>> dbInstanceStorageType() {
@@ -194,9 +194,17 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
         return Optional.ofNullable(this.outputFile);
     }
 
+    /**
+     * Sort the results by specified fields. The supported value is&#39; Price &#39;. Modifying this field will trigger resource reconstruction.
+     * 
+     */
     @Import(name="sortedBy")
     private @Nullable Output<String> sortedBy;
 
+    /**
+     * @return Sort the results by specified fields. The supported value is&#39; Price &#39;. Modifying this field will trigger resource reconstruction.
+     * 
+     */
     public Optional<Output<String>> sortedBy() {
         return Optional.ofNullable(this.sortedBy);
     }
@@ -380,7 +388,7 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param dbInstanceStorageType The DB instance storage space required by the user. Valid values: &#34;cloud_ssd&#34;, &#34;local_ssd&#34;, &#34;cloud_essd&#34;, &#34;cloud_essd2&#34;, &#34;cloud_essd3&#34;.
+         * @param dbInstanceStorageType The DB instance storage space required by the user. Valid values: &#34;cloud_ssd&#34;, &#34;local_ssd&#34;, &#34;cloud_essd&#34;, &#34;cloud_essd2&#34;, &#34;cloud_essd3&#34;, &#34;general_essd&#34;.
          * 
          * @return builder
          * 
@@ -391,7 +399,7 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param dbInstanceStorageType The DB instance storage space required by the user. Valid values: &#34;cloud_ssd&#34;, &#34;local_ssd&#34;, &#34;cloud_essd&#34;, &#34;cloud_essd2&#34;, &#34;cloud_essd3&#34;.
+         * @param dbInstanceStorageType The DB instance storage space required by the user. Valid values: &#34;cloud_ssd&#34;, &#34;local_ssd&#34;, &#34;cloud_essd&#34;, &#34;cloud_essd2&#34;, &#34;cloud_essd3&#34;, &#34;general_essd&#34;.
          * 
          * @return builder
          * 
@@ -505,11 +513,23 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
             return outputFile(Output.of(outputFile));
         }
 
+        /**
+         * @param sortedBy Sort the results by specified fields. The supported value is&#39; Price &#39;. Modifying this field will trigger resource reconstruction.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sortedBy(@Nullable Output<String> sortedBy) {
             $.sortedBy = sortedBy;
             return this;
         }
 
+        /**
+         * @param sortedBy Sort the results by specified fields. The supported value is&#39; Price &#39;. Modifying this field will trigger resource reconstruction.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sortedBy(String sortedBy) {
             return sortedBy(Output.of(sortedBy));
         }

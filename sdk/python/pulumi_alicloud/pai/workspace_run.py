@@ -193,6 +193,37 @@ class WorkspaceRun(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.236.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform_example"
+        default_caf_ua9 = alicloud.pai.WorkspaceWorkspace("defaultCAFUa9",
+            description=name,
+            display_name=name,
+            workspace_name=name,
+            env_types=["prod"])
+        default_q_rw_wbv = alicloud.pai.WorkspaceExperiment("defaultQRwWbv",
+            accessibility="PRIVATE",
+            artifact_uri="oss://example.oss-cn-hangzhou.aliyuncs.com/example/",
+            experiment_name=std.format(input="%s1",
+                args=[name]).result,
+            workspace_id=default_caf_ua9.id)
+        default = alicloud.pai.WorkspaceRun("default",
+            source_type="TrainingService",
+            source_id="759",
+            run_name=name,
+            experiment_id=default_q_rw_wbv.id)
+        ```
+
         ## Import
 
         PAI Workspace Run can be imported using the id, e.g.
@@ -220,6 +251,37 @@ class WorkspaceRun(pulumi.CustomResource):
         For information about PAI Workspace Run and how to use it, see [What is Run](https://next.api.alibabacloud.com/document/AIWorkSpace/2021-02-04/CreateRun).
 
         > **NOTE:** Available since v1.236.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform_example"
+        default_caf_ua9 = alicloud.pai.WorkspaceWorkspace("defaultCAFUa9",
+            description=name,
+            display_name=name,
+            workspace_name=name,
+            env_types=["prod"])
+        default_q_rw_wbv = alicloud.pai.WorkspaceExperiment("defaultQRwWbv",
+            accessibility="PRIVATE",
+            artifact_uri="oss://example.oss-cn-hangzhou.aliyuncs.com/example/",
+            experiment_name=std.format(input="%s1",
+                args=[name]).result,
+            workspace_id=default_caf_ua9.id)
+        default = alicloud.pai.WorkspaceRun("default",
+            source_type="TrainingService",
+            source_id="759",
+            run_name=name,
+            experiment_id=default_q_rw_wbv.id)
+        ```
 
         ## Import
 

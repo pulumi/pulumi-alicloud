@@ -18,6 +18,150 @@ import (
 //
 // > **NOTE:** Available since v1.234.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/gwlb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			zoneId1 := "cn-wulanchabu-b"
+//			if param := cfg.Get("zoneId1"); param != "" {
+//				zoneId1 = param
+//			}
+//			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("10.0.0.0/8"),
+//				VpcName:   pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s1",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      pulumi.String(zoneId1),
+//				CidrBlock:   pulumi.String("10.0.0.0/24"),
+//				VswitchName: pulumi.String(invokeFormat.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat1, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s3",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultLoadBalancer, err := gwlb.NewLoadBalancer(ctx, "default", &gwlb.LoadBalancerArgs{
+//				VpcId:            defaultNetwork.ID(),
+//				LoadBalancerName: pulumi.String(invokeFormat1.Result),
+//				ZoneMappings: gwlb.LoadBalancerZoneMappingArray{
+//					&gwlb.LoadBalancerZoneMappingArgs{
+//						VswitchId: defaultSwitch.ID(),
+//						ZoneId:    pulumi.String(zoneId1),
+//					},
+//				},
+//				AddressIpVersion: pulumi.String("Ipv4"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultServerGroup, err := gwlb.NewServerGroup(ctx, "default", &gwlb.ServerGroupArgs{
+//				Protocol:        pulumi.String("GENEVE"),
+//				ServerGroupName: pulumi.String("tfaccgwlb62413"),
+//				ServerGroupType: pulumi.String("Ip"),
+//				Servers: gwlb.ServerGroupServerArray{
+//					&gwlb.ServerGroupServerArgs{
+//						ServerId:   pulumi.String("10.0.0.1"),
+//						ServerIp:   pulumi.String("10.0.0.1"),
+//						ServerType: pulumi.String("Ip"),
+//					},
+//					&gwlb.ServerGroupServerArgs{
+//						ServerId:   pulumi.String("10.0.0.2"),
+//						ServerIp:   pulumi.String("10.0.0.2"),
+//						ServerType: pulumi.String("Ip"),
+//					},
+//					&gwlb.ServerGroupServerArgs{
+//						ServerId:   pulumi.String("10.0.0.3"),
+//						ServerIp:   pulumi.String("10.0.0.3"),
+//						ServerType: pulumi.String("Ip"),
+//					},
+//				},
+//				ConnectionDrainConfig: &gwlb.ServerGroupConnectionDrainConfigArgs{
+//					ConnectionDrainEnabled: pulumi.Bool(true),
+//					ConnectionDrainTimeout: pulumi.Int(1),
+//				},
+//				ResourceGroupId: pulumi.String(_default.Ids[0]),
+//				DryRun:          pulumi.Bool(false),
+//				HealthCheckConfig: &gwlb.ServerGroupHealthCheckConfigArgs{
+//					HealthCheckProtocol: pulumi.String("HTTP"),
+//					HealthCheckHttpCodes: pulumi.StringArray{
+//						pulumi.String("http_2xx"),
+//						pulumi.String("http_3xx"),
+//						pulumi.String("http_4xx"),
+//					},
+//					HealthCheckInterval:       pulumi.Int(10),
+//					HealthCheckPath:           pulumi.String("/health-check"),
+//					UnhealthyThreshold:        pulumi.Int(2),
+//					HealthCheckConnectPort:    pulumi.Int(80),
+//					HealthCheckConnectTimeout: pulumi.Int(5),
+//					HealthCheckDomain:         pulumi.String("www.domain.com"),
+//					HealthCheckEnabled:        pulumi.Bool(true),
+//					HealthyThreshold:          pulumi.Int(2),
+//				},
+//				VpcId:     defaultNetwork.ID(),
+//				Scheduler: pulumi.String("5TCH"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gwlb.NewListener(ctx, "default", &gwlb.ListenerArgs{
+//				ListenerDescription: pulumi.String("example-tf-lsn"),
+//				ServerGroupId:       defaultServerGroup.ID(),
+//				LoadBalancerId:      defaultLoadBalancer.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // GWLB Listener can be imported using the id, e.g.

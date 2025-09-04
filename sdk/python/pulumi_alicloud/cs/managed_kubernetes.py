@@ -24,6 +24,7 @@ class ManagedKubernetesArgs:
                  addons: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesAddonArgs']]]] = None,
                  api_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  audit_log_config: Optional[pulumi.Input['ManagedKubernetesAuditLogConfigArgs']] = None,
+                 auto_mode: Optional[pulumi.Input['ManagedKubernetesAutoModeArgs']] = None,
                  client_cert: Optional[pulumi.Input[_builtins.str]] = None,
                  client_key: Optional[pulumi.Input[_builtins.str]] = None,
                  cluster_ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
@@ -69,6 +70,7 @@ class ManagedKubernetesArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesAddonArgs']]] addons: The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input['ManagedKubernetesAuditLogConfigArgs'] audit_log_config: Audit log configuration. See `audit_log_config` below.
+        :param pulumi.Input['ManagedKubernetesAutoModeArgs'] auto_mode: Auto mode cluster configuration. See `auto_mode` below.
         :param pulumi.Input[_builtins.str] client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         :param pulumi.Input[_builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
@@ -90,11 +92,11 @@ class ManagedKubernetesArgs:
         :param pulumi.Input[_builtins.str] ip_stack: The IP address family that the cluster network uses. Valid values:
         :param pulumi.Input[_builtins.bool] is_enterprise_security_group: Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
         :param pulumi.Input[_builtins.str] load_balancer_spec: The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
-        :param pulumi.Input['ManagedKubernetesMaintenanceWindowArgs'] maintenance_window: The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+        :param pulumi.Input['ManagedKubernetesMaintenanceWindowArgs'] maintenance_window: The cluster maintenance window. Managed node pool will use it. See `maintenance_window` below.
         :param pulumi.Input[_builtins.str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param pulumi.Input[_builtins.bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Only works for **Create** Operation.
         :param pulumi.Input[_builtins.int] node_cidr_mask: The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
-        :param pulumi.Input['ManagedKubernetesOperationPolicyArgs'] operation_policy: The cluster automatic operation policy. See `operation_policy` below.
+        :param pulumi.Input['ManagedKubernetesOperationPolicyArgs'] operation_policy: The cluster automatic operation policy, only works when `maintenance_window` is enabled. See `operation_policy` below.
         :param pulumi.Input[_builtins.str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
         :param pulumi.Input[_builtins.str] profile: The profile of cluster. Valid values:
@@ -138,6 +140,8 @@ class ManagedKubernetesArgs:
             pulumi.set(__self__, "api_audiences", api_audiences)
         if audit_log_config is not None:
             pulumi.set(__self__, "audit_log_config", audit_log_config)
+        if auto_mode is not None:
+            pulumi.set(__self__, "auto_mode", auto_mode)
         if client_cert is not None:
             warnings.warn("""Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.""", DeprecationWarning)
             pulumi.log.warn("""client_cert is deprecated: Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.""")
@@ -269,6 +273,18 @@ class ManagedKubernetesArgs:
     @audit_log_config.setter
     def audit_log_config(self, value: Optional[pulumi.Input['ManagedKubernetesAuditLogConfigArgs']]):
         pulumi.set(self, "audit_log_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoMode")
+    def auto_mode(self) -> Optional[pulumi.Input['ManagedKubernetesAutoModeArgs']]:
+        """
+        Auto mode cluster configuration. See `auto_mode` below.
+        """
+        return pulumi.get(self, "auto_mode")
+
+    @auto_mode.setter
+    def auto_mode(self, value: Optional[pulumi.Input['ManagedKubernetesAutoModeArgs']]):
+        pulumi.set(self, "auto_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCert")
@@ -475,7 +491,7 @@ class ManagedKubernetesArgs:
     @pulumi.getter(name="maintenanceWindow")
     def maintenance_window(self) -> Optional[pulumi.Input['ManagedKubernetesMaintenanceWindowArgs']]:
         """
-        The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+        The cluster maintenance window. Managed node pool will use it. See `maintenance_window` below.
         """
         return pulumi.get(self, "maintenance_window")
 
@@ -532,7 +548,7 @@ class ManagedKubernetesArgs:
     @pulumi.getter(name="operationPolicy")
     def operation_policy(self) -> Optional[pulumi.Input['ManagedKubernetesOperationPolicyArgs']]:
         """
-        The cluster automatic operation policy. See `operation_policy` below.
+        The cluster automatic operation policy, only works when `maintenance_window` is enabled. See `operation_policy` below.
         """
         return pulumi.get(self, "operation_policy")
 
@@ -780,6 +796,7 @@ class _ManagedKubernetesState:
                  addons: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesAddonArgs']]]] = None,
                  api_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  audit_log_config: Optional[pulumi.Input['ManagedKubernetesAuditLogConfigArgs']] = None,
+                 auto_mode: Optional[pulumi.Input['ManagedKubernetesAutoModeArgs']] = None,
                  certificate_authority: Optional[pulumi.Input['ManagedKubernetesCertificateAuthorityArgs']] = None,
                  client_cert: Optional[pulumi.Input[_builtins.str]] = None,
                  client_key: Optional[pulumi.Input[_builtins.str]] = None,
@@ -834,6 +851,7 @@ class _ManagedKubernetesState:
         :param pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesAddonArgs']]] addons: The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input['ManagedKubernetesAuditLogConfigArgs'] audit_log_config: Audit log configuration. See `audit_log_config` below.
+        :param pulumi.Input['ManagedKubernetesAutoModeArgs'] auto_mode: Auto mode cluster configuration. See `auto_mode` below.
         :param pulumi.Input['ManagedKubernetesCertificateAuthorityArgs'] certificate_authority: (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
         :param pulumi.Input[_builtins.str] client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         :param pulumi.Input[_builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
@@ -857,12 +875,12 @@ class _ManagedKubernetesState:
         :param pulumi.Input[_builtins.str] ip_stack: The IP address family that the cluster network uses. Valid values:
         :param pulumi.Input[_builtins.bool] is_enterprise_security_group: Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
         :param pulumi.Input[_builtins.str] load_balancer_spec: The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
-        :param pulumi.Input['ManagedKubernetesMaintenanceWindowArgs'] maintenance_window: The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+        :param pulumi.Input['ManagedKubernetesMaintenanceWindowArgs'] maintenance_window: The cluster maintenance window. Managed node pool will use it. See `maintenance_window` below.
         :param pulumi.Input[_builtins.str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param pulumi.Input[_builtins.str] nat_gateway_id: The ID of nat gateway used to launch kubernetes cluster.
         :param pulumi.Input[_builtins.bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Only works for **Create** Operation.
         :param pulumi.Input[_builtins.int] node_cidr_mask: The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
-        :param pulumi.Input['ManagedKubernetesOperationPolicyArgs'] operation_policy: The cluster automatic operation policy. See `operation_policy` below.
+        :param pulumi.Input['ManagedKubernetesOperationPolicyArgs'] operation_policy: The cluster automatic operation policy, only works when `maintenance_window` is enabled. See `operation_policy` below.
         :param pulumi.Input[_builtins.str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
         :param pulumi.Input[_builtins.str] profile: The profile of cluster. Valid values:
@@ -912,6 +930,8 @@ class _ManagedKubernetesState:
             pulumi.set(__self__, "api_audiences", api_audiences)
         if audit_log_config is not None:
             pulumi.set(__self__, "audit_log_config", audit_log_config)
+        if auto_mode is not None:
+            pulumi.set(__self__, "auto_mode", auto_mode)
         if certificate_authority is not None:
             warnings.warn("""Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""", DeprecationWarning)
             pulumi.log.warn("""certificate_authority is deprecated: Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""")
@@ -1064,6 +1084,18 @@ class _ManagedKubernetesState:
     @audit_log_config.setter
     def audit_log_config(self, value: Optional[pulumi.Input['ManagedKubernetesAuditLogConfigArgs']]):
         pulumi.set(self, "audit_log_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoMode")
+    def auto_mode(self) -> Optional[pulumi.Input['ManagedKubernetesAutoModeArgs']]:
+        """
+        Auto mode cluster configuration. See `auto_mode` below.
+        """
+        return pulumi.get(self, "auto_mode")
+
+    @auto_mode.setter
+    def auto_mode(self, value: Optional[pulumi.Input['ManagedKubernetesAutoModeArgs']]):
+        pulumi.set(self, "auto_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateAuthority")
@@ -1295,7 +1327,7 @@ class _ManagedKubernetesState:
     @pulumi.getter(name="maintenanceWindow")
     def maintenance_window(self) -> Optional[pulumi.Input['ManagedKubernetesMaintenanceWindowArgs']]:
         """
-        The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+        The cluster maintenance window. Managed node pool will use it. See `maintenance_window` below.
         """
         return pulumi.get(self, "maintenance_window")
 
@@ -1364,7 +1396,7 @@ class _ManagedKubernetesState:
     @pulumi.getter(name="operationPolicy")
     def operation_policy(self) -> Optional[pulumi.Input['ManagedKubernetesOperationPolicyArgs']]:
         """
-        The cluster automatic operation policy. See `operation_policy` below.
+        The cluster automatic operation policy, only works when `maintenance_window` is enabled. See `operation_policy` below.
         """
         return pulumi.get(self, "operation_policy")
 
@@ -1687,6 +1719,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                  addons: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedKubernetesAddonArgs', 'ManagedKubernetesAddonArgsDict']]]]] = None,
                  api_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  audit_log_config: Optional[pulumi.Input[Union['ManagedKubernetesAuditLogConfigArgs', 'ManagedKubernetesAuditLogConfigArgsDict']]] = None,
+                 auto_mode: Optional[pulumi.Input[Union['ManagedKubernetesAutoModeArgs', 'ManagedKubernetesAutoModeArgsDict']]] = None,
                  client_cert: Optional[pulumi.Input[_builtins.str]] = None,
                  client_key: Optional[pulumi.Input[_builtins.str]] = None,
                  cluster_ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1761,6 +1794,267 @@ class ManagedKubernetes(pulumi.CustomResource):
         > **NOTE:** From version 1.212.0, `runtime`,`enable_ssh`,`rds_instances`,`exclude_autoscaler_nodes`,`worker_number`,`worker_instance_types`,`password`,`key_name`,`kms_encrypted_password`,`kms_encryption_context`,`worker_instance_charge_type`,`worker_period`,`worker_period_unit`,`worker_auto_renew`,`worker_auto_renew_period`,`worker_disk_category`,`worker_disk_size`,`worker_data_disks`,`node_name_mode`,`node_port_range`,`os_type`,`platform`,`image_id`,`cpu_policy`,`user_data`,`taints`,`worker_disk_performance_level`,`worker_disk_snapshot_policy_id`,`install_cloud_monitor`,`kube_config`,`availability_zone` are removed.
         Please use resource **`cs.NodePool`** to manage your cluster worker nodes.
 
+        ## Example Usage
+
+        ACK cluster
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        # Existing vpc id used to create several vswitches and other resources.
+        vpc_id = config.get("vpcId")
+        if vpc_id is None:
+            vpc_id = ""
+        # The cidr block used to launch a new vpc when 'vpc_id' is not specified.
+        vpc_cidr = config.get("vpcCidr")
+        if vpc_cidr is None:
+            vpc_cidr = "10.0.0.0/8"
+        # List of existing vswitch id.
+        vswitch_ids = config.get_object("vswitchIds")
+        if vswitch_ids is None:
+            vswitch_ids = []
+        # List of cidr blocks used to create several new vswitches when 'vswitch_ids' is not specified.
+        vswitch_cidrs = config.get_object("vswitchCidrs")
+        if vswitch_cidrs is None:
+            vswitch_cidrs = [
+                "10.1.0.0/16",
+                "10.2.0.0/16",
+            ]
+        # Proxy mode is option of kube-proxy.
+        proxy_mode = config.get("proxyMode")
+        if proxy_mode is None:
+            proxy_mode = "ipvs"
+        # The kubernetes service cidr block. It cannot be equals to vpc's or vswitch's or pod's and cannot be in them.
+        service_cidr = config.get("serviceCidr")
+        if service_cidr is None:
+            service_cidr = "192.168.0.0/16"
+        # List of existing vswitch ids for terway.
+        terway_vswitch_ids = config.get_object("terwayVswitchIds")
+        if terway_vswitch_ids is None:
+            terway_vswitch_ids = []
+        # List of cidr blocks used to create several new vswitches when 'terway_vswitch_cidrs' is not specified.
+        terway_vswitch_cidrs = config.get_object("terwayVswitchCidrs")
+        if terway_vswitch_cidrs is None:
+            terway_vswitch_cidrs = [
+                "10.4.0.0/16",
+                "10.5.0.0/16",
+            ]
+        enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
+        # If there is not specifying vpc_id, the module will launch a new vpc
+        vpc = []
+        for range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
+            vpc.append(alicloud.vpc.Network(f"vpc-{range['value']}", cidr_block=vpc_cidr))
+        # According to the vswitch cidr blocks to launch several vswitches
+        vswitches = []
+        for range in [{"value": i} for i in range(0, 0 if len(vswitch_ids) > 0 else len(vswitch_cidrs))]:
+            vswitches.append(alicloud.vpc.Switch(f"vswitches-{range['value']}",
+                vpc_id=std.join_output(separator="",
+                    input=[__item.id for __item in vpc]).apply(lambda invoke: invoke.result) if vpc_id == "" else vpc_id,
+                cidr_block=vswitch_cidrs[range["value"]],
+                zone_id=enhanced.zones[range["value"]].zone_id))
+        # According to the vswitch cidr blocks to launch several vswitches
+        terway_vswitches = []
+        for range in [{"value": i} for i in range(0, 0 if len(terway_vswitch_ids) > 0 else len(terway_vswitch_cidrs))]:
+            terway_vswitches.append(alicloud.vpc.Switch(f"terway_vswitches-{range['value']}",
+                vpc_id=std.join_output(separator="",
+                    input=[__item.id for __item in vpc]).apply(lambda invoke: invoke.result) if vpc_id == "" else vpc_id,
+                cidr_block=terway_vswitch_cidrs[range["value"]],
+                zone_id=enhanced.zones[range["value"]].zone_id))
+        k8s = alicloud.cs.ManagedKubernetes("k8s",
+            name=name,
+            cluster_spec="ack.pro.small",
+            vswitch_ids=std.split(separator=",",
+                text=std.join(separator=",",
+                    input=vswitch_ids).result).result if len(vswitch_ids) > 0 else [] if len(vswitch_cidrs) < 1 else std.join_output(separator=",",
+                input=[__item.id for __item in vswitches]).apply(lambda invoke: std.split_output(separator=",",
+                text=invoke.result)).apply(lambda invoke: invoke.result),
+            pod_vswitch_ids=std.split(separator=",",
+                text=std.join(separator=",",
+                    input=terway_vswitch_ids).result).result if len(terway_vswitch_ids) > 0 else [] if len(terway_vswitch_cidrs) < 1 else std.join_output(separator=",",
+                input=[__item.id for __item in terway_vswitches]).apply(lambda invoke: std.split_output(separator=",",
+                text=invoke.result)).apply(lambda invoke: invoke.result),
+            new_nat_gateway=True,
+            proxy_mode=proxy_mode,
+            service_cidr=service_cidr,
+            skip_set_certificate_authority=True,
+            addons=[
+                {
+                    "name": "terway-eniip",
+                },
+                {
+                    "name": "csi-plugin",
+                },
+                {
+                    "name": "csi-provisioner",
+                },
+                {
+                    "name": "logtail-ds",
+                    "config": json.dumps({
+                        "IngressDashboardEnabled": "true",
+                    }),
+                },
+                {
+                    "name": "nginx-ingress-controller",
+                    "config": json.dumps({
+                        "IngressSlbNetworkType": "internet",
+                    }),
+                },
+                {
+                    "name": "arms-prometheus",
+                },
+                {
+                    "name": "ack-node-problem-detector",
+                    "config": json.dumps({}),
+                },
+            ])
+        ```
+
+        ACK Cluster with Auto Mode
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "auto-mode"
+        # Proxy mode is option of kube-proxy.
+        proxy_mode = config.get("proxyMode")
+        if proxy_mode is None:
+            proxy_mode = "ipvs"
+        # The kubernetes service cidr block.
+        service_cidr = config.get("serviceCidr")
+        if service_cidr is None:
+            service_cidr = "192.168.0.0/16"
+        enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
+        auto_mode = alicloud.cs.ManagedKubernetes("auto-mode",
+            name=name,
+            cluster_spec="ack.pro.small",
+            zone_ids=[enhanced.zones[0].zone_id],
+            new_nat_gateway=True,
+            is_enterprise_security_group=True,
+            slb_internet_enabled=False,
+            skip_set_certificate_authority=True,
+            proxy_mode=proxy_mode,
+            service_cidr=service_cidr,
+            ip_stack="ipv4",
+            auto_mode={
+                "enabled": True,
+            },
+            maintenance_window={
+                "duration": "3h",
+                "weekly_period": "Monday",
+                "enable": True,
+                "maintenance_time": "2025-07-07T00:00:00.000+08:00",
+            },
+            operation_policy={
+                "cluster_auto_upgrade": {
+                    "channel": "stable",
+                    "enabled": True,
+                },
+            },
+            control_plane_log_components=[
+                "apiserver",
+                "kcm",
+                "scheduler",
+                "ccm",
+                "controlplane-events",
+                "alb",
+                "ack-goatscaler",
+                "coredns",
+            ],
+            control_plane_log_ttl="30",
+            audit_log_config={
+                "enabled": True,
+            },
+            addons=[
+                {
+                    "name": "managed-metrics-server",
+                },
+                {
+                    "name": "managed-coredns",
+                },
+                {
+                    "name": "managed-security-inspector",
+                },
+                {
+                    "name": "ack-cost-exporter",
+                },
+                {
+                    "name": "terway-controlplane",
+                    "config": json.dumps({
+                        "ENITrunking": "true",
+                    }),
+                },
+                {
+                    "name": "terway-eniip",
+                    "config": json.dumps({
+                        "NetworkPolicy": "false",
+                        "ENITrunking": "true",
+                        "IPVlan": "false",
+                    }),
+                },
+                {
+                    "name": "csi-plugin",
+                },
+                {
+                    "name": "managed-csiprovisioner",
+                },
+                {
+                    "name": "storage-operator",
+                    "config": json.dumps({
+                        "CnfsOssEnable": "false",
+                        "CnfsNasEnable": "false",
+                    }),
+                },
+                {
+                    "name": "loongcollector",
+                    "config": json.dumps({
+                        "IngressDashboardEnabled": "true",
+                    }),
+                },
+                {
+                    "name": "ack-node-problem-detector",
+                    "config": json.dumps({
+                        "sls_project_name": "",
+                    }),
+                },
+                {
+                    "name": "nginx-ingress-controller",
+                    "disabled": True,
+                },
+                {
+                    "name": "alb-ingress-controller",
+                    "config": json.dumps({
+                        "albIngress": {
+                            "CreateDefaultALBConfig": False,
+                        },
+                    }),
+                },
+                {
+                    "name": "arms-prometheus",
+                    "config": json.dumps({
+                        "prometheusMode": "default",
+                    }),
+                },
+                {
+                    "name": "alicloud-monitor-controller",
+                },
+                {
+                    "name": "managed-aliyun-acr-credential-helper",
+                },
+            ])
+        ```
+
         ## Import
 
         Kubernetes managed cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
@@ -1774,6 +2068,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ManagedKubernetesAddonArgs', 'ManagedKubernetesAddonArgsDict']]]] addons: The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[Union['ManagedKubernetesAuditLogConfigArgs', 'ManagedKubernetesAuditLogConfigArgsDict']] audit_log_config: Audit log configuration. See `audit_log_config` below.
+        :param pulumi.Input[Union['ManagedKubernetesAutoModeArgs', 'ManagedKubernetesAutoModeArgsDict']] auto_mode: Auto mode cluster configuration. See `auto_mode` below.
         :param pulumi.Input[_builtins.str] client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         :param pulumi.Input[_builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
@@ -1795,11 +2090,11 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ip_stack: The IP address family that the cluster network uses. Valid values:
         :param pulumi.Input[_builtins.bool] is_enterprise_security_group: Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
         :param pulumi.Input[_builtins.str] load_balancer_spec: The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
-        :param pulumi.Input[Union['ManagedKubernetesMaintenanceWindowArgs', 'ManagedKubernetesMaintenanceWindowArgsDict']] maintenance_window: The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+        :param pulumi.Input[Union['ManagedKubernetesMaintenanceWindowArgs', 'ManagedKubernetesMaintenanceWindowArgsDict']] maintenance_window: The cluster maintenance window. Managed node pool will use it. See `maintenance_window` below.
         :param pulumi.Input[_builtins.str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param pulumi.Input[_builtins.bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Only works for **Create** Operation.
         :param pulumi.Input[_builtins.int] node_cidr_mask: The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
-        :param pulumi.Input[Union['ManagedKubernetesOperationPolicyArgs', 'ManagedKubernetesOperationPolicyArgsDict']] operation_policy: The cluster automatic operation policy. See `operation_policy` below.
+        :param pulumi.Input[Union['ManagedKubernetesOperationPolicyArgs', 'ManagedKubernetesOperationPolicyArgsDict']] operation_policy: The cluster automatic operation policy, only works when `maintenance_window` is enabled. See `operation_policy` below.
         :param pulumi.Input[_builtins.str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
         :param pulumi.Input[_builtins.str] profile: The profile of cluster. Valid values:
@@ -1876,6 +2171,267 @@ class ManagedKubernetes(pulumi.CustomResource):
         > **NOTE:** From version 1.212.0, `runtime`,`enable_ssh`,`rds_instances`,`exclude_autoscaler_nodes`,`worker_number`,`worker_instance_types`,`password`,`key_name`,`kms_encrypted_password`,`kms_encryption_context`,`worker_instance_charge_type`,`worker_period`,`worker_period_unit`,`worker_auto_renew`,`worker_auto_renew_period`,`worker_disk_category`,`worker_disk_size`,`worker_data_disks`,`node_name_mode`,`node_port_range`,`os_type`,`platform`,`image_id`,`cpu_policy`,`user_data`,`taints`,`worker_disk_performance_level`,`worker_disk_snapshot_policy_id`,`install_cloud_monitor`,`kube_config`,`availability_zone` are removed.
         Please use resource **`cs.NodePool`** to manage your cluster worker nodes.
 
+        ## Example Usage
+
+        ACK cluster
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        # Existing vpc id used to create several vswitches and other resources.
+        vpc_id = config.get("vpcId")
+        if vpc_id is None:
+            vpc_id = ""
+        # The cidr block used to launch a new vpc when 'vpc_id' is not specified.
+        vpc_cidr = config.get("vpcCidr")
+        if vpc_cidr is None:
+            vpc_cidr = "10.0.0.0/8"
+        # List of existing vswitch id.
+        vswitch_ids = config.get_object("vswitchIds")
+        if vswitch_ids is None:
+            vswitch_ids = []
+        # List of cidr blocks used to create several new vswitches when 'vswitch_ids' is not specified.
+        vswitch_cidrs = config.get_object("vswitchCidrs")
+        if vswitch_cidrs is None:
+            vswitch_cidrs = [
+                "10.1.0.0/16",
+                "10.2.0.0/16",
+            ]
+        # Proxy mode is option of kube-proxy.
+        proxy_mode = config.get("proxyMode")
+        if proxy_mode is None:
+            proxy_mode = "ipvs"
+        # The kubernetes service cidr block. It cannot be equals to vpc's or vswitch's or pod's and cannot be in them.
+        service_cidr = config.get("serviceCidr")
+        if service_cidr is None:
+            service_cidr = "192.168.0.0/16"
+        # List of existing vswitch ids for terway.
+        terway_vswitch_ids = config.get_object("terwayVswitchIds")
+        if terway_vswitch_ids is None:
+            terway_vswitch_ids = []
+        # List of cidr blocks used to create several new vswitches when 'terway_vswitch_cidrs' is not specified.
+        terway_vswitch_cidrs = config.get_object("terwayVswitchCidrs")
+        if terway_vswitch_cidrs is None:
+            terway_vswitch_cidrs = [
+                "10.4.0.0/16",
+                "10.5.0.0/16",
+            ]
+        enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
+        # If there is not specifying vpc_id, the module will launch a new vpc
+        vpc = []
+        for range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
+            vpc.append(alicloud.vpc.Network(f"vpc-{range['value']}", cidr_block=vpc_cidr))
+        # According to the vswitch cidr blocks to launch several vswitches
+        vswitches = []
+        for range in [{"value": i} for i in range(0, 0 if len(vswitch_ids) > 0 else len(vswitch_cidrs))]:
+            vswitches.append(alicloud.vpc.Switch(f"vswitches-{range['value']}",
+                vpc_id=std.join_output(separator="",
+                    input=[__item.id for __item in vpc]).apply(lambda invoke: invoke.result) if vpc_id == "" else vpc_id,
+                cidr_block=vswitch_cidrs[range["value"]],
+                zone_id=enhanced.zones[range["value"]].zone_id))
+        # According to the vswitch cidr blocks to launch several vswitches
+        terway_vswitches = []
+        for range in [{"value": i} for i in range(0, 0 if len(terway_vswitch_ids) > 0 else len(terway_vswitch_cidrs))]:
+            terway_vswitches.append(alicloud.vpc.Switch(f"terway_vswitches-{range['value']}",
+                vpc_id=std.join_output(separator="",
+                    input=[__item.id for __item in vpc]).apply(lambda invoke: invoke.result) if vpc_id == "" else vpc_id,
+                cidr_block=terway_vswitch_cidrs[range["value"]],
+                zone_id=enhanced.zones[range["value"]].zone_id))
+        k8s = alicloud.cs.ManagedKubernetes("k8s",
+            name=name,
+            cluster_spec="ack.pro.small",
+            vswitch_ids=std.split(separator=",",
+                text=std.join(separator=",",
+                    input=vswitch_ids).result).result if len(vswitch_ids) > 0 else [] if len(vswitch_cidrs) < 1 else std.join_output(separator=",",
+                input=[__item.id for __item in vswitches]).apply(lambda invoke: std.split_output(separator=",",
+                text=invoke.result)).apply(lambda invoke: invoke.result),
+            pod_vswitch_ids=std.split(separator=",",
+                text=std.join(separator=",",
+                    input=terway_vswitch_ids).result).result if len(terway_vswitch_ids) > 0 else [] if len(terway_vswitch_cidrs) < 1 else std.join_output(separator=",",
+                input=[__item.id for __item in terway_vswitches]).apply(lambda invoke: std.split_output(separator=",",
+                text=invoke.result)).apply(lambda invoke: invoke.result),
+            new_nat_gateway=True,
+            proxy_mode=proxy_mode,
+            service_cidr=service_cidr,
+            skip_set_certificate_authority=True,
+            addons=[
+                {
+                    "name": "terway-eniip",
+                },
+                {
+                    "name": "csi-plugin",
+                },
+                {
+                    "name": "csi-provisioner",
+                },
+                {
+                    "name": "logtail-ds",
+                    "config": json.dumps({
+                        "IngressDashboardEnabled": "true",
+                    }),
+                },
+                {
+                    "name": "nginx-ingress-controller",
+                    "config": json.dumps({
+                        "IngressSlbNetworkType": "internet",
+                    }),
+                },
+                {
+                    "name": "arms-prometheus",
+                },
+                {
+                    "name": "ack-node-problem-detector",
+                    "config": json.dumps({}),
+                },
+            ])
+        ```
+
+        ACK Cluster with Auto Mode
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "auto-mode"
+        # Proxy mode is option of kube-proxy.
+        proxy_mode = config.get("proxyMode")
+        if proxy_mode is None:
+            proxy_mode = "ipvs"
+        # The kubernetes service cidr block.
+        service_cidr = config.get("serviceCidr")
+        if service_cidr is None:
+            service_cidr = "192.168.0.0/16"
+        enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
+        auto_mode = alicloud.cs.ManagedKubernetes("auto-mode",
+            name=name,
+            cluster_spec="ack.pro.small",
+            zone_ids=[enhanced.zones[0].zone_id],
+            new_nat_gateway=True,
+            is_enterprise_security_group=True,
+            slb_internet_enabled=False,
+            skip_set_certificate_authority=True,
+            proxy_mode=proxy_mode,
+            service_cidr=service_cidr,
+            ip_stack="ipv4",
+            auto_mode={
+                "enabled": True,
+            },
+            maintenance_window={
+                "duration": "3h",
+                "weekly_period": "Monday",
+                "enable": True,
+                "maintenance_time": "2025-07-07T00:00:00.000+08:00",
+            },
+            operation_policy={
+                "cluster_auto_upgrade": {
+                    "channel": "stable",
+                    "enabled": True,
+                },
+            },
+            control_plane_log_components=[
+                "apiserver",
+                "kcm",
+                "scheduler",
+                "ccm",
+                "controlplane-events",
+                "alb",
+                "ack-goatscaler",
+                "coredns",
+            ],
+            control_plane_log_ttl="30",
+            audit_log_config={
+                "enabled": True,
+            },
+            addons=[
+                {
+                    "name": "managed-metrics-server",
+                },
+                {
+                    "name": "managed-coredns",
+                },
+                {
+                    "name": "managed-security-inspector",
+                },
+                {
+                    "name": "ack-cost-exporter",
+                },
+                {
+                    "name": "terway-controlplane",
+                    "config": json.dumps({
+                        "ENITrunking": "true",
+                    }),
+                },
+                {
+                    "name": "terway-eniip",
+                    "config": json.dumps({
+                        "NetworkPolicy": "false",
+                        "ENITrunking": "true",
+                        "IPVlan": "false",
+                    }),
+                },
+                {
+                    "name": "csi-plugin",
+                },
+                {
+                    "name": "managed-csiprovisioner",
+                },
+                {
+                    "name": "storage-operator",
+                    "config": json.dumps({
+                        "CnfsOssEnable": "false",
+                        "CnfsNasEnable": "false",
+                    }),
+                },
+                {
+                    "name": "loongcollector",
+                    "config": json.dumps({
+                        "IngressDashboardEnabled": "true",
+                    }),
+                },
+                {
+                    "name": "ack-node-problem-detector",
+                    "config": json.dumps({
+                        "sls_project_name": "",
+                    }),
+                },
+                {
+                    "name": "nginx-ingress-controller",
+                    "disabled": True,
+                },
+                {
+                    "name": "alb-ingress-controller",
+                    "config": json.dumps({
+                        "albIngress": {
+                            "CreateDefaultALBConfig": False,
+                        },
+                    }),
+                },
+                {
+                    "name": "arms-prometheus",
+                    "config": json.dumps({
+                        "prometheusMode": "default",
+                    }),
+                },
+                {
+                    "name": "alicloud-monitor-controller",
+                },
+                {
+                    "name": "managed-aliyun-acr-credential-helper",
+                },
+            ])
+        ```
+
         ## Import
 
         Kubernetes managed cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
@@ -1902,6 +2458,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                  addons: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedKubernetesAddonArgs', 'ManagedKubernetesAddonArgsDict']]]]] = None,
                  api_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  audit_log_config: Optional[pulumi.Input[Union['ManagedKubernetesAuditLogConfigArgs', 'ManagedKubernetesAuditLogConfigArgsDict']]] = None,
+                 auto_mode: Optional[pulumi.Input[Union['ManagedKubernetesAutoModeArgs', 'ManagedKubernetesAutoModeArgsDict']]] = None,
                  client_cert: Optional[pulumi.Input[_builtins.str]] = None,
                  client_key: Optional[pulumi.Input[_builtins.str]] = None,
                  cluster_ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1954,6 +2511,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             __props__.__dict__["addons"] = addons
             __props__.__dict__["api_audiences"] = api_audiences
             __props__.__dict__["audit_log_config"] = audit_log_config
+            __props__.__dict__["auto_mode"] = auto_mode
             __props__.__dict__["client_cert"] = client_cert
             __props__.__dict__["client_key"] = client_key
             __props__.__dict__["cluster_ca_cert"] = cluster_ca_cert
@@ -2016,6 +2574,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             addons: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedKubernetesAddonArgs', 'ManagedKubernetesAddonArgsDict']]]]] = None,
             api_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             audit_log_config: Optional[pulumi.Input[Union['ManagedKubernetesAuditLogConfigArgs', 'ManagedKubernetesAuditLogConfigArgsDict']]] = None,
+            auto_mode: Optional[pulumi.Input[Union['ManagedKubernetesAutoModeArgs', 'ManagedKubernetesAutoModeArgsDict']]] = None,
             certificate_authority: Optional[pulumi.Input[Union['ManagedKubernetesCertificateAuthorityArgs', 'ManagedKubernetesCertificateAuthorityArgsDict']]] = None,
             client_cert: Optional[pulumi.Input[_builtins.str]] = None,
             client_key: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2075,6 +2634,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ManagedKubernetesAddonArgs', 'ManagedKubernetesAddonArgsDict']]]] addons: The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_audiences: A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[Union['ManagedKubernetesAuditLogConfigArgs', 'ManagedKubernetesAuditLogConfigArgsDict']] audit_log_config: Audit log configuration. See `audit_log_config` below.
+        :param pulumi.Input[Union['ManagedKubernetesAutoModeArgs', 'ManagedKubernetesAutoModeArgsDict']] auto_mode: Auto mode cluster configuration. See `auto_mode` below.
         :param pulumi.Input[Union['ManagedKubernetesCertificateAuthorityArgs', 'ManagedKubernetesCertificateAuthorityArgsDict']] certificate_authority: (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
         :param pulumi.Input[_builtins.str] client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         :param pulumi.Input[_builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
@@ -2098,12 +2658,12 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ip_stack: The IP address family that the cluster network uses. Valid values:
         :param pulumi.Input[_builtins.bool] is_enterprise_security_group: Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
         :param pulumi.Input[_builtins.str] load_balancer_spec: The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
-        :param pulumi.Input[Union['ManagedKubernetesMaintenanceWindowArgs', 'ManagedKubernetesMaintenanceWindowArgsDict']] maintenance_window: The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+        :param pulumi.Input[Union['ManagedKubernetesMaintenanceWindowArgs', 'ManagedKubernetesMaintenanceWindowArgsDict']] maintenance_window: The cluster maintenance window. Managed node pool will use it. See `maintenance_window` below.
         :param pulumi.Input[_builtins.str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param pulumi.Input[_builtins.str] nat_gateway_id: The ID of nat gateway used to launch kubernetes cluster.
         :param pulumi.Input[_builtins.bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Only works for **Create** Operation.
         :param pulumi.Input[_builtins.int] node_cidr_mask: The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
-        :param pulumi.Input[Union['ManagedKubernetesOperationPolicyArgs', 'ManagedKubernetesOperationPolicyArgsDict']] operation_policy: The cluster automatic operation policy. See `operation_policy` below.
+        :param pulumi.Input[Union['ManagedKubernetesOperationPolicyArgs', 'ManagedKubernetesOperationPolicyArgsDict']] operation_policy: The cluster automatic operation policy, only works when `maintenance_window` is enabled. See `operation_policy` below.
         :param pulumi.Input[_builtins.str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
         :param pulumi.Input[_builtins.str] profile: The profile of cluster. Valid values:
@@ -2154,6 +2714,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         __props__.__dict__["addons"] = addons
         __props__.__dict__["api_audiences"] = api_audiences
         __props__.__dict__["audit_log_config"] = audit_log_config
+        __props__.__dict__["auto_mode"] = auto_mode
         __props__.__dict__["certificate_authority"] = certificate_authority
         __props__.__dict__["client_cert"] = client_cert
         __props__.__dict__["client_key"] = client_key
@@ -2228,6 +2789,14 @@ class ManagedKubernetes(pulumi.CustomResource):
         Audit log configuration. See `audit_log_config` below.
         """
         return pulumi.get(self, "audit_log_config")
+
+    @_builtins.property
+    @pulumi.getter(name="autoMode")
+    def auto_mode(self) -> pulumi.Output[Optional['outputs.ManagedKubernetesAutoMode']]:
+        """
+        Auto mode cluster configuration. See `auto_mode` below.
+        """
+        return pulumi.get(self, "auto_mode")
 
     @_builtins.property
     @pulumi.getter(name="certificateAuthority")
@@ -2387,7 +2956,7 @@ class ManagedKubernetes(pulumi.CustomResource):
     @pulumi.getter(name="maintenanceWindow")
     def maintenance_window(self) -> pulumi.Output['outputs.ManagedKubernetesMaintenanceWindow']:
         """
-        The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+        The cluster maintenance window. Managed node pool will use it. See `maintenance_window` below.
         """
         return pulumi.get(self, "maintenance_window")
 
@@ -2432,7 +3001,7 @@ class ManagedKubernetes(pulumi.CustomResource):
     @pulumi.getter(name="operationPolicy")
     def operation_policy(self) -> pulumi.Output['outputs.ManagedKubernetesOperationPolicy']:
         """
-        The cluster automatic operation policy. See `operation_policy` below.
+        The cluster automatic operation policy, only works when `maintenance_window` is enabled. See `operation_policy` below.
         """
         return pulumi.get(self, "operation_policy")
 

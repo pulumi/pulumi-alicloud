@@ -10,6 +10,11 @@ export type Cluster = import("./cluster").Cluster;
 export const Cluster: typeof import("./cluster").Cluster = null as any;
 utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
 
+export { ErArgs, ErState } from "./er";
+export type Er = import("./er").Er;
+export const Er: typeof import("./er").Er = null as any;
+utilities.lazyLoad(exports, ["Er"], () => require("./er"));
+
 export { ExperimentPlanArgs, ExperimentPlanState } from "./experimentPlan";
 export type ExperimentPlan = import("./experimentPlan").ExperimentPlan;
 export const ExperimentPlan: typeof import("./experimentPlan").ExperimentPlan = null as any;
@@ -45,6 +50,11 @@ export type NodeGroup = import("./nodeGroup").NodeGroup;
 export const NodeGroup: typeof import("./nodeGroup").NodeGroup = null as any;
 utilities.lazyLoad(exports, ["NodeGroup"], () => require("./nodeGroup"));
 
+export { NodeGroupAttachmentArgs, NodeGroupAttachmentState } from "./nodeGroupAttachment";
+export type NodeGroupAttachment = import("./nodeGroupAttachment").NodeGroupAttachment;
+export const NodeGroupAttachment: typeof import("./nodeGroupAttachment").NodeGroupAttachment = null as any;
+utilities.lazyLoad(exports, ["NodeGroupAttachment"], () => require("./nodeGroupAttachment"));
+
 export { ResourceArgs, ResourceState } from "./resource";
 export type Resource = import("./resource").Resource;
 export const Resource: typeof import("./resource").Resource = null as any;
@@ -72,6 +82,8 @@ const _module = {
         switch (type) {
             case "alicloud:eflo/cluster:Cluster":
                 return new Cluster(name, <any>undefined, { urn })
+            case "alicloud:eflo/er:Er":
+                return new Er(name, <any>undefined, { urn })
             case "alicloud:eflo/experimentPlan:ExperimentPlan":
                 return new ExperimentPlan(name, <any>undefined, { urn })
             case "alicloud:eflo/experimentPlanTemplate:ExperimentPlanTemplate":
@@ -82,6 +94,8 @@ const _module = {
                 return new Node(name, <any>undefined, { urn })
             case "alicloud:eflo/nodeGroup:NodeGroup":
                 return new NodeGroup(name, <any>undefined, { urn })
+            case "alicloud:eflo/nodeGroupAttachment:NodeGroupAttachment":
+                return new NodeGroupAttachment(name, <any>undefined, { urn })
             case "alicloud:eflo/resource:Resource":
                 return new Resource(name, <any>undefined, { urn })
             case "alicloud:eflo/subnet:Subnet":
@@ -96,11 +110,13 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "eflo/cluster", _module)
+pulumi.runtime.registerResourceModule("alicloud", "eflo/er", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eflo/experimentPlan", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eflo/experimentPlanTemplate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eflo/invocation", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eflo/node", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eflo/nodeGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "eflo/nodeGroupAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eflo/resource", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eflo/subnet", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eflo/vpd", _module)

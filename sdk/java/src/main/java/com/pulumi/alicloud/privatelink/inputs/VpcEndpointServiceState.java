@@ -113,14 +113,14 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
     }
 
     /**
-     * (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+     * The ID of the region to which the endpoint service belongs.
      * 
      */
     @Import(name="regionId")
     private @Nullable Output<String> regionId;
 
     /**
-     * @return (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+     * @return The ID of the region to which the endpoint service belongs.
      * 
      */
     public Optional<Output<String>> regionId() {
@@ -188,14 +188,14 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Service resource type, value:
+     * The service resource type. Value:
      * 
      */
     @Import(name="serviceResourceType")
     private @Nullable Output<String> serviceResourceType;
 
     /**
-     * @return Service resource type, value:
+     * @return The service resource type. Value:
      * 
      */
     public Optional<Output<String>> serviceResourceType() {
@@ -448,7 +448,7 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param regionId (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+         * @param regionId The ID of the region to which the endpoint service belongs.
          * 
          * @return builder
          * 
@@ -459,7 +459,7 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param regionId (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+         * @param regionId The ID of the region to which the endpoint service belongs.
          * 
          * @return builder
          * 
@@ -553,7 +553,7 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param serviceResourceType Service resource type, value:
+         * @param serviceResourceType The service resource type. Value:
          * 
          * @return builder
          * 
@@ -564,7 +564,7 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param serviceResourceType Service resource type, value:
+         * @param serviceResourceType The service resource type. Value:
          * 
          * @return builder
          * 

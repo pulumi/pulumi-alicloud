@@ -128,6 +128,30 @@ class FaceConfig(pulumi.CustomResource):
 
         > **NOTE:** In order to provide you with more perfect product capabilities, the real person certification service has stopped access, it is recommended that you use the upgraded version of the [real person certification financial real person certification service](https://help.aliyun.com/zh/id-verification/product-overview/what-is-id-verification-for-financial-services). Users that have access to real person authentication are not affected.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = random.index.Integer("default",
+            max=99999,
+            min=10000)
+        example = alicloud.cloudauth.FaceConfig("example",
+            biz_name=std.format(input="%s-biz",
+                args=[name]).result,
+            biz_type=std.format(input="type-%s",
+                args=[default["result"]]).result)
+        ```
+
         ## Import
 
         Cloudauth Face Config can be imported using the id, e.g.
@@ -155,6 +179,30 @@ class FaceConfig(pulumi.CustomResource):
         > **NOTE:** Available since v1.137.0.
 
         > **NOTE:** In order to provide you with more perfect product capabilities, the real person certification service has stopped access, it is recommended that you use the upgraded version of the [real person certification financial real person certification service](https://help.aliyun.com/zh/id-verification/product-overview/what-is-id-verification-for-financial-services). Users that have access to real person authentication are not affected.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = random.index.Integer("default",
+            max=99999,
+            min=10000)
+        example = alicloud.cloudauth.FaceConfig("example",
+            biz_name=std.format(input="%s-biz",
+                args=[name]).result,
+            biz_type=std.format(input="type-%s",
+                args=[default["result"]]).result)
+        ```
 
         ## Import
 

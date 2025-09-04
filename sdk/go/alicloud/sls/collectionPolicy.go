@@ -20,6 +20,288 @@ import (
 //
 // > **NOTE:** Available since v1.232.0.
 //
+// ## Example Usage
+//
+// Enable real-time log query for all of OSS buckets.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sls"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s1%s",
+//				Args: []interface{}{
+//					name,
+//					_default.Result,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			projectCreate01, err := log.NewProject(ctx, "project_create_01", &log.ProjectArgs{
+//				Description: pulumi.String(name),
+//				ProjectName: pulumi.String(invokeFormat.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat1, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s1%s",
+//				Args: []interface{}{
+//					name,
+//					_default.Result,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			logstoreCreate01, err := log.NewStore(ctx, "logstore_create_01", &log.StoreArgs{
+//				RetentionPeriod: pulumi.Int(30),
+//				ShardCount:      pulumi.Int(2),
+//				ProjectName:     projectCreate01.ProjectName,
+//				LogstoreName:    pulumi.String(invokeFormat1.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat2, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s2%s",
+//				Args: []interface{}{
+//					name,
+//					_default.Result,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			update01, err := log.NewProject(ctx, "update_01", &log.ProjectArgs{
+//				Description: pulumi.String(name),
+//				ProjectName: pulumi.String(invokeFormat2.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat3, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s2%s",
+//				Args: []interface{}{
+//					name,
+//					_default.Result,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = log.NewStore(ctx, "logstore002", &log.StoreArgs{
+//				RetentionPeriod: pulumi.Int(30),
+//				ShardCount:      pulumi.Int(2),
+//				ProjectName:     update01.ProjectName,
+//				LogstoreName:    pulumi.String(invokeFormat3.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sls.NewCollectionPolicy(ctx, "default", &sls.CollectionPolicyArgs{
+//				PolicyConfig: &sls.CollectionPolicyPolicyConfigArgs{
+//					ResourceMode: pulumi.String("all"),
+//					Regions: pulumi.StringArray{
+//						pulumi.String("cn-hangzhou"),
+//					},
+//				},
+//				DataCode:          pulumi.String("metering_log"),
+//				CentralizeEnabled: pulumi.Bool(true),
+//				ProductCode:       pulumi.String("oss"),
+//				PolicyName:        pulumi.String("xc-example-oss-01"),
+//				Enabled:           pulumi.Bool(true),
+//				DataConfig: &sls.CollectionPolicyDataConfigArgs{
+//					DataRegion: pulumi.String("cn-hangzhou"),
+//				},
+//				CentralizeConfig: &sls.CollectionPolicyCentralizeConfigArgs{
+//					DestTtl:      pulumi.Int(3),
+//					DestRegion:   pulumi.String("cn-shanghai"),
+//					DestProject:  projectCreate01.ProjectName,
+//					DestLogstore: logstoreCreate01.LogstoreName,
+//				},
+//				ResourceDirectory: &sls.CollectionPolicyResourceDirectoryArgs{
+//					AccountGroupType: pulumi.String("custom"),
+//					Members: pulumi.StringArray{
+//						pulumi.String("1936728897040477"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// # Enable real-time log query for one or more specific OSS buckets
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sls"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example-on-single-bucket"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s1%s",
+//				Args: []interface{}{
+//					name,
+//					_default.Result,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			projectCreate01, err := log.NewProject(ctx, "project_create_01", &log.ProjectArgs{
+//				Description: pulumi.String(name),
+//				ProjectName: pulumi.String(invokeFormat.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat1, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s1%s",
+//				Args: []interface{}{
+//					name,
+//					_default.Result,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = log.NewStore(ctx, "logstore_create_01", &log.StoreArgs{
+//				RetentionPeriod: pulumi.Int(30),
+//				ShardCount:      pulumi.Int(2),
+//				ProjectName:     projectCreate01.ProjectName,
+//				LogstoreName:    pulumi.String(invokeFormat1.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat2, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s2%s",
+//				Args: []interface{}{
+//					name,
+//					_default.Result,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			update01, err := log.NewProject(ctx, "update_01", &log.ProjectArgs{
+//				Description: pulumi.String(name),
+//				ProjectName: pulumi.String(invokeFormat2.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat3, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s2%s",
+//				Args: []interface{}{
+//					name,
+//					_default.Result,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = log.NewStore(ctx, "logstore002", &log.StoreArgs{
+//				RetentionPeriod: pulumi.Int(30),
+//				ShardCount:      pulumi.Int(2),
+//				ProjectName:     update01.ProjectName,
+//				LogstoreName:    pulumi.String(invokeFormat3.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat4, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s1%s",
+//				Args: []interface{}{
+//					name,
+//					_default.Result,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			bucket, err := oss.NewBucket(ctx, "bucket", &oss.BucketArgs{
+//				Bucket: pulumi.String(invokeFormat4.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sls.NewCollectionPolicy(ctx, "default", &sls.CollectionPolicyArgs{
+//				PolicyConfig: &sls.CollectionPolicyPolicyConfigArgs{
+//					ResourceMode: pulumi.String("instanceMode"),
+//					InstanceIds: pulumi.StringArray{
+//						bucket.ID(),
+//					},
+//				},
+//				DataCode:          pulumi.String("access_log"),
+//				CentralizeEnabled: pulumi.Bool(false),
+//				ProductCode:       pulumi.String("oss"),
+//				PolicyName:        pulumi.String("xc-example-oss-01"),
+//				Enabled:           pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // SLS Collection Policy can be imported using the id, e.g.

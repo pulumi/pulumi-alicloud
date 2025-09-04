@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Account{}
 	case "alicloud:mongodb/auditPolicy:AuditPolicy":
 		r = &AuditPolicy{}
+	case "alicloud:mongodb/globalSecurityIpGroup:GlobalSecurityIpGroup":
+		r = &GlobalSecurityIpGroup{}
 	case "alicloud:mongodb/instance:Instance":
 		r = &Instance{}
 	case "alicloud:mongodb/privateSrvNetworkAddress:PrivateSrvNetworkAddress":
@@ -62,6 +64,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"mongodb/auditPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"mongodb/globalSecurityIpGroup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

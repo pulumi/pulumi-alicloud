@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AssetBind{}
 	case "alicloud:threatdetection/assetSelectionConfig:AssetSelectionConfig":
 		r = &AssetSelectionConfig{}
+	case "alicloud:threatdetection/attackPathSensitiveAssetConfig:AttackPathSensitiveAssetConfig":
+		r = &AttackPathSensitiveAssetConfig{}
 	case "alicloud:threatdetection/backupPolicy:BackupPolicy":
 		r = &BackupPolicy{}
 	case "alicloud:threatdetection/baselineStrategy:BaselineStrategy":
@@ -89,6 +91,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"threatdetection/assetSelectionConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"threatdetection/attackPathSensitiveAssetConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

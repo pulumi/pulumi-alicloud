@@ -145,6 +145,46 @@ class SlsGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.171.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.get_account()
+        default_get_regions = alicloud.get_regions(current=True)
+        default_uuid = random.index.Uuid("default")
+        default_project = alicloud.log.Project("default", project_name=std.substr(input=f"tf-example-{std.replace(text=default_uuid['result'],
+                search='-',
+                replace='').result}",
+            offset=0,
+            length=16).result)
+        default_store = alicloud.log.Store("default",
+            project_name=default_project.project_name,
+            logstore_name=name,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        default_sls_group = alicloud.cms.SlsGroup("default",
+            sls_group_configs=[{
+                "sls_user_id": default.id,
+                "sls_logstore": default_store.logstore_name,
+                "sls_project": default_project.project_name,
+                "sls_region": default_get_regions.regions[0].id,
+            }],
+            sls_group_description=name,
+            sls_group_name=name)
+        ```
+
         ## Import
 
         Cloud Monitor Service Sls Group can be imported using the id, e.g.
@@ -171,6 +211,46 @@ class SlsGroup(pulumi.CustomResource):
         For information about Cloud Monitor Service Sls Group and how to use it, see [What is Sls Group](https://www.alibabacloud.com/help/doc-detail/28608.htm).
 
         > **NOTE:** Available since v1.171.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.get_account()
+        default_get_regions = alicloud.get_regions(current=True)
+        default_uuid = random.index.Uuid("default")
+        default_project = alicloud.log.Project("default", project_name=std.substr(input=f"tf-example-{std.replace(text=default_uuid['result'],
+                search='-',
+                replace='').result}",
+            offset=0,
+            length=16).result)
+        default_store = alicloud.log.Store("default",
+            project_name=default_project.project_name,
+            logstore_name=name,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        default_sls_group = alicloud.cms.SlsGroup("default",
+            sls_group_configs=[{
+                "sls_user_id": default.id,
+                "sls_logstore": default_store.logstore_name,
+                "sls_project": default_project.project_name,
+                "sls_region": default_get_regions.regions[0].id,
+            }],
+            sls_group_description=name,
+            sls_group_name=name)
+        ```
 
         ## Import
 

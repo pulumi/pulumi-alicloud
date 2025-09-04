@@ -568,6 +568,72 @@ class GatewayBlockVolume(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.144.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_uuid = random.index.Uuid("default")
+        default_storage_bundle = alicloud.cloudstoragegateway.StorageBundle("default", storage_bundle_name=std.substr(input=f"tf-example-{std.replace(text=default_uuid['result'],
+                search='-',
+                replace='').result}",
+            offset=0,
+            length=16).result)
+        default_bucket = alicloud.oss.Bucket("default", bucket=std.substr(input=f"tf-example-{std.replace(text=default_uuid['result'],
+                search='-',
+                replace='').result}",
+            offset=0,
+            length=16).result)
+        default_bucket_acl = alicloud.oss.BucketAcl("default",
+            bucket=default_bucket.bucket,
+            acl="public-read-write")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="172.16.0.0/12")
+        default = alicloud.cloudstoragegateway.get_stocks(gateway_class="Standard")
+        default_switch = alicloud.vpc.Switch("default",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/21",
+            zone_id=default.stocks[0].zone_id,
+            vswitch_name=name)
+        default_gateway = alicloud.cloudstoragegateway.Gateway("default",
+            gateway_name=name,
+            description=name,
+            gateway_class="Standard",
+            type="Iscsi",
+            payment_type="PayAsYouGo",
+            vswitch_id=default_switch.id,
+            release_after_expiration=True,
+            public_network_bandwidth=40,
+            storage_bundle_id=default_storage_bundle.id,
+            location="Cloud")
+        default_gateway_cache_disk = alicloud.cloudstoragegateway.GatewayCacheDisk("default",
+            cache_disk_category="cloud_efficiency",
+            gateway_id=default_gateway.id,
+            cache_disk_size_in_gb=50)
+        default_gateway_block_volume = alicloud.cloudstoragegateway.GatewayBlockVolume("default",
+            cache_mode="Cache",
+            chap_enabled=False,
+            chunk_size=8192,
+            gateway_block_volume_name="example",
+            gateway_id=default_gateway.id,
+            local_path=default_gateway_cache_disk.local_file_path,
+            oss_bucket_name=default_bucket.bucket,
+            oss_bucket_ssl=True,
+            oss_endpoint=default_bucket.extranet_endpoint,
+            protocol="iSCSI",
+            size=100)
+        ```
+
         ## Import
 
         Cloud Storage Gateway Gateway Block Volume can be imported using the id, e.g.
@@ -606,6 +672,72 @@ class GatewayBlockVolume(pulumi.CustomResource):
         For information about Cloud Storage Gateway Gateway Block Volume and how to use it, see [What is Gateway Block Volume](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/creategatewayblockvolume).
 
         > **NOTE:** Available since v1.144.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_uuid = random.index.Uuid("default")
+        default_storage_bundle = alicloud.cloudstoragegateway.StorageBundle("default", storage_bundle_name=std.substr(input=f"tf-example-{std.replace(text=default_uuid['result'],
+                search='-',
+                replace='').result}",
+            offset=0,
+            length=16).result)
+        default_bucket = alicloud.oss.Bucket("default", bucket=std.substr(input=f"tf-example-{std.replace(text=default_uuid['result'],
+                search='-',
+                replace='').result}",
+            offset=0,
+            length=16).result)
+        default_bucket_acl = alicloud.oss.BucketAcl("default",
+            bucket=default_bucket.bucket,
+            acl="public-read-write")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="172.16.0.0/12")
+        default = alicloud.cloudstoragegateway.get_stocks(gateway_class="Standard")
+        default_switch = alicloud.vpc.Switch("default",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/21",
+            zone_id=default.stocks[0].zone_id,
+            vswitch_name=name)
+        default_gateway = alicloud.cloudstoragegateway.Gateway("default",
+            gateway_name=name,
+            description=name,
+            gateway_class="Standard",
+            type="Iscsi",
+            payment_type="PayAsYouGo",
+            vswitch_id=default_switch.id,
+            release_after_expiration=True,
+            public_network_bandwidth=40,
+            storage_bundle_id=default_storage_bundle.id,
+            location="Cloud")
+        default_gateway_cache_disk = alicloud.cloudstoragegateway.GatewayCacheDisk("default",
+            cache_disk_category="cloud_efficiency",
+            gateway_id=default_gateway.id,
+            cache_disk_size_in_gb=50)
+        default_gateway_block_volume = alicloud.cloudstoragegateway.GatewayBlockVolume("default",
+            cache_mode="Cache",
+            chap_enabled=False,
+            chunk_size=8192,
+            gateway_block_volume_name="example",
+            gateway_id=default_gateway.id,
+            local_path=default_gateway_cache_disk.local_file_path,
+            oss_bucket_name=default_bucket.bucket,
+            oss_bucket_ssl=True,
+            oss_endpoint=default_bucket.extranet_endpoint,
+            protocol="iSCSI",
+            size=100)
+        ```
 
         ## Import
 

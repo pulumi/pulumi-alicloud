@@ -18,6 +18,116 @@ import (
 //
 // > **NOTE:** Available since v1.210.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s1",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = kms.NewNetworkRule(ctx, "networkRule1", &kms.NetworkRuleArgs{
+//				Description: pulumi.String("dummy"),
+//				SourcePrivateIps: pulumi.StringArray{
+//					pulumi.String("10.10.10.10"),
+//				},
+//				NetworkRuleName: pulumi.String(invokeFormat.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat1, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s2",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = kms.NewNetworkRule(ctx, "networkRule2", &kms.NetworkRuleArgs{
+//				Description: pulumi.String("dummy"),
+//				SourcePrivateIps: pulumi.StringArray{
+//					pulumi.String("10.10.10.10"),
+//				},
+//				NetworkRuleName: pulumi.String(invokeFormat1.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat2, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s3",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = kms.NewNetworkRule(ctx, "networkRule3", &kms.NetworkRuleArgs{
+//				Description: pulumi.String("dummy"),
+//				SourcePrivateIps: pulumi.StringArray{
+//					pulumi.String("10.10.10.10"),
+//				},
+//				NetworkRuleName: pulumi.String(invokeFormat2.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = kms.NewPolicy(ctx, "default", &kms.PolicyArgs{
+//				Description: pulumi.String("terraformpolicy"),
+//				Permissions: pulumi.StringArray{
+//					pulumi.String("RbacPermission/Template/CryptoServiceKeyUser"),
+//					pulumi.String("RbacPermission/Template/CryptoServiceSecretUser"),
+//				},
+//				Resources: pulumi.StringArray{
+//					pulumi.String("secret/*"),
+//					pulumi.String("key/*"),
+//				},
+//				PolicyName:    pulumi.String(name),
+//				KmsInstanceId: pulumi.String("shared"),
+//				AccessControlRules: pulumi.String(`  {
+//	      \"NetworkRules\":[
+//	          \"alicloud_kms_network_rule.networkRule1.network_rule_name\"
+//	      ]
+//	  }
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // KMS Policy can be imported using the id, e.g.

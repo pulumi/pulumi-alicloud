@@ -51,12 +51,12 @@ import (
 //			defaultGE, err := vpc.NewGatewayEndpoint(ctx, "defaultGE", &vpc.GatewayEndpointArgs{
 //				ServiceName: pulumi.String("com.aliyun.cn-hangzhou.oss"),
 //				PolicyDocument: pulumi.String(`        {
-//	          "Version": "1",
-//	          "Statement": [{
-//	            "Effect": "Allow",
-//	            "Resource": ["*"],
-//	            "Action": ["*"],
-//	            "Principal": ["*"]
+//	          \"Version\": \"1\",
+//	          \"Statement\": [{
+//	            \"Effect\": \"Allow\",
+//	            \"Resource\": [\"*\"],
+//	            \"Action\": [\"*\"],
+//	            \"Principal\": [\"*\"]
 //	          }]
 //	        }
 //

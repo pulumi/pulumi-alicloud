@@ -115,19 +115,19 @@ def get_role_policy_attachments(ids: Optional[Sequence[_builtins.str]] = None,
     role = alicloud.ram.Role("role",
         name="roleName",
         document=\"\"\"    {
-          "Statement": [
+          \\"Statement\\": [
             {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": {
-                "Service": [
-                  "apigateway.aliyuncs.com", 
-                  "ecs.aliyuncs.com"
+              \\"Action\\": \\"sts:AssumeRole\\",
+              \\"Effect\\": \\"Allow\\",
+              \\"Principal\\": {
+                \\"Service\\": [
+                  \\"apigateway.aliyuncs.com\\", 
+                  \\"ecs.aliyuncs.com\\"
                 ]
               }
             }
           ],
-          "Version": "1"
+          \\"Version\\": \\"1\\"
         }
     \"\"\",
         description="this is a role test.")
@@ -137,20 +137,20 @@ def get_role_policy_attachments(ids: Optional[Sequence[_builtins.str]] = None,
     policy = alicloud.ram.Policy("policy",
         policy_name=f"tf-example-{default_integer['result']}",
         policy_document=\"\"\"  {
-        "Statement": [
+        \\"Statement\\": [
           {
-            "Action": [
-              "oss:ListObjects",
-              "oss:GetObject"
+            \\"Action\\": [
+              \\"oss:ListObjects\\",
+              \\"oss:GetObject\\"
             ],
-            "Effect": "Allow",
-            "Resource": [
-              "acs:oss:*:*:mybucket",
-              "acs:oss:*:*:mybucket/*"
+            \\"Effect\\": \\"Allow\\",
+            \\"Resource\\": [
+              \\"acs:oss:*:*:mybucket\\",
+              \\"acs:oss:*:*:mybucket/*\\"
             ]
           }
         ],
-          "Version": "1"
+          \\"Version\\": \\"1\\"
       }
     \"\"\",
         description="this is a policy test")
@@ -204,19 +204,19 @@ def get_role_policy_attachments_output(ids: Optional[pulumi.Input[Optional[Seque
     role = alicloud.ram.Role("role",
         name="roleName",
         document=\"\"\"    {
-          "Statement": [
+          \\"Statement\\": [
             {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": {
-                "Service": [
-                  "apigateway.aliyuncs.com", 
-                  "ecs.aliyuncs.com"
+              \\"Action\\": \\"sts:AssumeRole\\",
+              \\"Effect\\": \\"Allow\\",
+              \\"Principal\\": {
+                \\"Service\\": [
+                  \\"apigateway.aliyuncs.com\\", 
+                  \\"ecs.aliyuncs.com\\"
                 ]
               }
             }
           ],
-          "Version": "1"
+          \\"Version\\": \\"1\\"
         }
     \"\"\",
         description="this is a role test.")
@@ -226,20 +226,20 @@ def get_role_policy_attachments_output(ids: Optional[pulumi.Input[Optional[Seque
     policy = alicloud.ram.Policy("policy",
         policy_name=f"tf-example-{default_integer['result']}",
         policy_document=\"\"\"  {
-        "Statement": [
+        \\"Statement\\": [
           {
-            "Action": [
-              "oss:ListObjects",
-              "oss:GetObject"
+            \\"Action\\": [
+              \\"oss:ListObjects\\",
+              \\"oss:GetObject\\"
             ],
-            "Effect": "Allow",
-            "Resource": [
-              "acs:oss:*:*:mybucket",
-              "acs:oss:*:*:mybucket/*"
+            \\"Effect\\": \\"Allow\\",
+            \\"Resource\\": [
+              \\"acs:oss:*:*:mybucket\\",
+              \\"acs:oss:*:*:mybucket/*\\"
             ]
           }
         ],
-          "Version": "1"
+          \\"Version\\": \\"1\\"
       }
     \"\"\",
         description="this is a policy test")

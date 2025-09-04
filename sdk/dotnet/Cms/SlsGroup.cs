@@ -16,6 +16,75 @@ namespace Pulumi.AliCloud.Cms
     /// 
     /// &gt; **NOTE:** Available since v1.171.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var @default = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var defaultGetRegions = AliCloud.GetRegions.Invoke(new()
+    ///     {
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var defaultUuid = new Random.Index.Uuid("default");
+    /// 
+    ///     var defaultProject = new AliCloud.Log.Project("default", new()
+    ///     {
+    ///         ProjectName = Std.Replace.Invoke(new()
+    ///         {
+    ///             Text = defaultUuid.Result,
+    ///             Search = "-",
+    ///             Replace = "",
+    ///         }).Apply(invoke =&gt; Std.Substr.Invoke(new()
+    ///         {
+    ///             Input = $"tf-example-{invoke.Result}",
+    ///             Offset = 0,
+    ///             Length = 16,
+    ///         })).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var defaultStore = new AliCloud.Log.Store("default", new()
+    ///     {
+    ///         ProjectName = defaultProject.ProjectName,
+    ///         LogstoreName = name,
+    ///         ShardCount = 3,
+    ///         AutoSplit = true,
+    ///         MaxSplitShardCount = 60,
+    ///         AppendMeta = true,
+    ///     });
+    /// 
+    ///     var defaultSlsGroup = new AliCloud.Cms.SlsGroup("default", new()
+    ///     {
+    ///         SlsGroupConfigs = new[]
+    ///         {
+    ///             new AliCloud.Cms.Inputs.SlsGroupSlsGroupConfigArgs
+    ///             {
+    ///                 SlsUserId = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
+    ///                 SlsLogstore = defaultStore.LogstoreName,
+    ///                 SlsProject = defaultProject.ProjectName,
+    ///                 SlsRegion = defaultGetRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///             },
+    ///         },
+    ///         SlsGroupDescription = name,
+    ///         SlsGroupName = name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Cloud Monitor Service Sls Group can be imported using the id, e.g.

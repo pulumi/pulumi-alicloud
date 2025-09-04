@@ -41,18 +41,18 @@ import * as utilities from "../utilities";
  * const defaultRole = new alicloud.ram.Role("default", {
  *     name: `fcservicerole-${defaultInteger.result}`,
  *     document: `  {
- *       "Statement": [
+ *       \\"Statement\\": [
  *         {
- *           "Action": "sts:AssumeRole",
- *           "Effect": "Allow",
- *           "Principal": {
- *             "Service": [
- *               "fc.aliyuncs.com"
+ *           \\"Action\\": \\"sts:AssumeRole\\",
+ *           \\"Effect\\": \\"Allow\\",
+ *           \\"Principal\\": {
+ *             \\"Service\\": [
+ *               \\"fc.aliyuncs.com\\"
  *             ]
  *           }
  *         }
  *       ],
- *       "Version": "1"
+ *       \\"Version\\": \\"1\\"
  *   }
  * `,
  *     description: "this is a example",
@@ -103,23 +103,23 @@ import * as utilities from "../utilities";
  *     sourceArn: pulumi.all([defaultGetRegions, _default, defaultProject.projectName]).apply(([defaultGetRegions, _default, projectName]) => `acs:log:${defaultGetRegions.regions?.[0]?.id}:${_default.id}:project/${projectName}`),
  *     type: "log",
  *     config: pulumi.interpolate`    {
- *         "sourceConfig": {
- *             "logstore": "${sourceStore.logstoreName}",
- *             "startTime": null
+ *         \"sourceConfig\": {
+ *             \"logstore\": \"${sourceStore.logstoreName}\",
+ *             \"startTime\": null
  *         },
- *         "jobConfig": {
- *             "maxRetryTime": 3,
- *             "triggerInterval": 60
+ *         \"jobConfig\": {
+ *             \"maxRetryTime\": 3,
+ *             \"triggerInterval\": 60
  *         },
- *         "functionParameter": {
- *             "a": "b",
- *             "c": "d"
+ *         \"functionParameter\": {
+ *             \"a\": \"b\",
+ *             \"c\": \"d\"
  *         },
- *         "logConfig": {
- *              "project": "${defaultProject.projectName}",
- *             "logstore": "${defaultStore.logstoreName}"
+ *         \"logConfig\": {
+ *              \"project\": \"${defaultProject.projectName}\",
+ *             \"logstore\": \"${defaultStore.logstoreName}\"
  *         },
- *         "enable": true
+ *         \"enable\": true
  *     }
  *   
  * `,
@@ -145,18 +145,18 @@ import * as utilities from "../utilities";
  * const defaultRole = new alicloud.ram.Role("default", {
  *     name: `fcservicerole-${defaultInteger.result}`,
  *     document: `  {
- *       "Statement": [
+ *       \\"Statement\\": [
  *         {
- *           "Action": "sts:AssumeRole",
- *           "Effect": "Allow",
- *           "Principal": {
- *             "Service": [
- *               "mns.aliyuncs.com"
+ *           \\"Action\\": \\"sts:AssumeRole\\",
+ *           \\"Effect\\": \\"Allow\\",
+ *           \\"Principal\\": {
+ *             \\"Service\\": [
+ *               \\"mns.aliyuncs.com\\"
  *             ]
  *           }
  *         }
  *       ],
- *       "Version": "1"
+ *       \\"Version\\": \\"1\\"
  *   }
  * `,
  *     description: "this is a example",
@@ -201,9 +201,9 @@ import * as utilities from "../utilities";
  *     sourceArn: pulumi.all([defaultGetRegions, _default, defaultTopic.name]).apply(([defaultGetRegions, _default, name]) => `acs:mns:${defaultGetRegions.regions?.[0]?.id}:${_default.id}:/topics/${name}`),
  *     type: "mns_topic",
  *     configMns: `  {
- *     "filterTag":"exampleTag",
- *     "notifyContentFormat":"STREAM",
- *     "notifyStrategy":"BACKOFF_RETRY"
+ *     \\"filterTag\\":\\"exampleTag\\",
+ *     \\"notifyContentFormat\\":\\"STREAM\\",
+ *     \\"notifyStrategy\\":\\"BACKOFF_RETRY\\"
  *   }
  * `,
  * });
@@ -241,18 +241,18 @@ import * as utilities from "../utilities";
  * const defaultRole = new alicloud.ram.Role("default", {
  *     name: `fcservicerole-${defaultInteger.result}`,
  *     document: `    {
- *       "Statement": [
+ *       \\"Statement\\": [
  *         {
- *           "Action": "sts:AssumeRole",
- *           "Effect": "Allow",
- *           "Principal": {
- *             "Service": [
- *               "cdn.aliyuncs.com"
+ *           \\"Action\\": \\"sts:AssumeRole\\",
+ *           \\"Effect\\": \\"Allow\\",
+ *           \\"Principal\\": {
+ *             \\"Service\\": [
+ *               \\"cdn.aliyuncs.com\\"
  *             ]
  *           }
  *         }
  *       ],
- *       "Version": "1"
+ *       \\"Version\\": \\"1\\"
  *   }
  * `,
  *     description: "this is a example",
@@ -261,17 +261,17 @@ import * as utilities from "../utilities";
  * const defaultPolicy = new alicloud.ram.Policy("default", {
  *     policyName: `fcservicepolicy-${defaultInteger.result}`,
  *     policyDocument: pulumi.interpolate`    {
- *         "Version": "1",
- *         "Statement": [
+ *         \"Version\": \"1\",
+ *         \"Statement\": [
  *         {
- *             "Action": [
- *             "fc:InvokeFunction"
+ *             \"Action\": [
+ *             \"fc:InvokeFunction\"
  *             ],
- *         "Resource": [
- *             "acs:fc:*:*:services/${defaultService.name}/functions/*",
- *             "acs:fc:*:*:services/${defaultService.name}.*&#47;functions/*"
+ *         \"Resource\": [
+ *             \"acs:fc:*:*:services/${defaultService.name}/functions/*\",
+ *             \"acs:fc:*:*:services/${defaultService.name}.*&#47;functions/*\"
  *         ],
- *         "Effect": "Allow"
+ *         \"Effect\": \"Allow\"
  *         }
  *         ]
  *     }
@@ -312,11 +312,11 @@ import * as utilities from "../utilities";
  *     role: defaultRole.arn,
  *     sourceArn: _default.then(_default => `acs:cdn:*:${_default.id}`),
  *     type: "cdn_events",
- *     config: pulumi.interpolate`      {"eventName":"LogFileCreated",
- *      "eventVersion":"1.0.0",
- *      "notes":"cdn events trigger",
- *      "filter":{
- *         "domain": ["${defaultDomainNew.domainName}"]
+ *     config: pulumi.interpolate`      {\"eventName\":\"LogFileCreated\",
+ *      \"eventVersion\":\"1.0.0\",
+ *      \"notes\":\"cdn events trigger\",
+ *      \"filter\":{
+ *         \"domain\": [\"${defaultDomainNew.domainName}\"]
  *         }
  *     }
  * `,

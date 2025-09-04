@@ -97,6 +97,10 @@ export class V3FunctionVersion extends pulumi.CustomResource {
      * (Available since v1.234.0) Update time
      */
     declare public /*out*/ readonly lastModifiedTime: pulumi.Output<string>;
+    /**
+     * Function Version
+     */
+    declare public /*out*/ readonly versionId: pulumi.Output<string>;
 
     /**
      * Create a V3FunctionVersion resource with the given unique name, arguments, and options.
@@ -115,6 +119,7 @@ export class V3FunctionVersion extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["functionName"] = state?.functionName;
             resourceInputs["lastModifiedTime"] = state?.lastModifiedTime;
+            resourceInputs["versionId"] = state?.versionId;
         } else {
             const args = argsOrState as V3FunctionVersionArgs | undefined;
             if (args?.functionName === undefined && !opts.urn) {
@@ -124,6 +129,7 @@ export class V3FunctionVersion extends pulumi.CustomResource {
             resourceInputs["functionName"] = args?.functionName;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
+            resourceInputs["versionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(V3FunctionVersion.__pulumiType, name, resourceInputs, opts);
@@ -150,6 +156,10 @@ export interface V3FunctionVersionState {
      * (Available since v1.234.0) Update time
      */
     lastModifiedTime?: pulumi.Input<string>;
+    /**
+     * Function Version
+     */
+    versionId?: pulumi.Input<string>;
 }
 
 /**

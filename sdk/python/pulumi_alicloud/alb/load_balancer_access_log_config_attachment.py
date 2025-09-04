@@ -160,6 +160,74 @@ class LoadBalancerAccessLogConfigAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.241.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = random.index.Integer("default",
+            min=100000,
+            max=999999)
+        alb_example_tf_vpc = alicloud.vpc.Network("alb_example_tf_vpc",
+            vpc_name=name,
+            cidr_block="192.168.0.0/16")
+        alb_example_tf_j = alicloud.vpc.Switch("alb_example_tf_j",
+            vpc_id=alb_example_tf_vpc.id,
+            zone_id="cn-beijing-j",
+            cidr_block="192.168.1.0/24",
+            vswitch_name=std.format(input="%s1",
+                args=[name]).result)
+        alb_example_tf_k = alicloud.vpc.Switch("alb_example_tf_k",
+            vpc_id=alb_example_tf_vpc.id,
+            zone_id="cn-beijing-k",
+            cidr_block="192.168.2.0/24",
+            vswitch_name=std.format(input="%s2",
+                args=[name]).result)
+        default_dsy0_jj = alicloud.vpc.Switch("defaultDSY0JJ",
+            vpc_id=alb_example_tf_vpc.id,
+            zone_id="cn-beijing-f",
+            cidr_block="192.168.3.0/24",
+            vswitch_name=std.format(input="%s3",
+                args=[name]).result)
+        default_dysw_yo = alicloud.alb.LoadBalancer("defaultDYswYo",
+            load_balancer_name=std.format(input="%s4",
+                args=[name]).result,
+            load_balancer_edition="Standard",
+            vpc_id=alb_example_tf_vpc.id,
+            load_balancer_billing_config={
+                "pay_type": "PayAsYouGo",
+            },
+            address_type="Intranet",
+            address_allocated_mode="Fixed",
+            zone_mappings=[
+                {
+                    "vswitch_id": default_dsy0_jj.id,
+                    "zone_id": default_dsy0_jj.zone_id,
+                },
+                {
+                    "vswitch_id": alb_example_tf_j.id,
+                    "zone_id": alb_example_tf_j.zone_id,
+                },
+                {
+                    "vswitch_id": alb_example_tf_k.id,
+                    "zone_id": alb_example_tf_k.zone_id,
+                },
+            ])
+        default_load_balancer_access_log_config_attachment = alicloud.alb.LoadBalancerAccessLogConfigAttachment("default",
+            log_store=f"{name}-{default['result']}",
+            load_balancer_id=default_dysw_yo.id,
+            log_project=f"{name}-{default['result']}")
+        ```
+
         ## Import
 
         Application Load Balancer (ALB) Load Balancer Access Log Config Attachment can be imported using the id, e.g.
@@ -188,6 +256,74 @@ class LoadBalancerAccessLogConfigAttachment(pulumi.CustomResource):
         For information about Application Load Balancer (ALB) Load Balancer Access Log Config Attachment and how to use it, see [What is Load Balancer Access Log Config Attachment](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-enableloadbalanceraccesslog).
 
         > **NOTE:** Available since v1.241.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = random.index.Integer("default",
+            min=100000,
+            max=999999)
+        alb_example_tf_vpc = alicloud.vpc.Network("alb_example_tf_vpc",
+            vpc_name=name,
+            cidr_block="192.168.0.0/16")
+        alb_example_tf_j = alicloud.vpc.Switch("alb_example_tf_j",
+            vpc_id=alb_example_tf_vpc.id,
+            zone_id="cn-beijing-j",
+            cidr_block="192.168.1.0/24",
+            vswitch_name=std.format(input="%s1",
+                args=[name]).result)
+        alb_example_tf_k = alicloud.vpc.Switch("alb_example_tf_k",
+            vpc_id=alb_example_tf_vpc.id,
+            zone_id="cn-beijing-k",
+            cidr_block="192.168.2.0/24",
+            vswitch_name=std.format(input="%s2",
+                args=[name]).result)
+        default_dsy0_jj = alicloud.vpc.Switch("defaultDSY0JJ",
+            vpc_id=alb_example_tf_vpc.id,
+            zone_id="cn-beijing-f",
+            cidr_block="192.168.3.0/24",
+            vswitch_name=std.format(input="%s3",
+                args=[name]).result)
+        default_dysw_yo = alicloud.alb.LoadBalancer("defaultDYswYo",
+            load_balancer_name=std.format(input="%s4",
+                args=[name]).result,
+            load_balancer_edition="Standard",
+            vpc_id=alb_example_tf_vpc.id,
+            load_balancer_billing_config={
+                "pay_type": "PayAsYouGo",
+            },
+            address_type="Intranet",
+            address_allocated_mode="Fixed",
+            zone_mappings=[
+                {
+                    "vswitch_id": default_dsy0_jj.id,
+                    "zone_id": default_dsy0_jj.zone_id,
+                },
+                {
+                    "vswitch_id": alb_example_tf_j.id,
+                    "zone_id": alb_example_tf_j.zone_id,
+                },
+                {
+                    "vswitch_id": alb_example_tf_k.id,
+                    "zone_id": alb_example_tf_k.zone_id,
+                },
+            ])
+        default_load_balancer_access_log_config_attachment = alicloud.alb.LoadBalancerAccessLogConfigAttachment("default",
+            log_store=f"{name}-{default['result']}",
+            load_balancer_id=default_dysw_yo.id,
+            log_project=f"{name}-{default['result']}")
+        ```
 
         ## Import
 

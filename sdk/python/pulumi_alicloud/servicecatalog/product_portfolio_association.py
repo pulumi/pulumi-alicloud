@@ -112,6 +112,33 @@ class ProductPortfolioAssociation(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.230.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default0y_ag_j8 = alicloud.servicecatalog.Portfolio("default0yAgJ8",
+            provider_name=name,
+            description="desc",
+            portfolio_name=name)
+        default_ret_b_jw = alicloud.servicecatalog.Product("defaultRetBJw",
+            provider_name=name,
+            product_name=std.format(input="%s1",
+                args=[name]).result,
+            product_type="Ros")
+        default = alicloud.servicecatalog.ProductPortfolioAssociation("default",
+            portfolio_id=default0y_ag_j8.id,
+            product_id=default_ret_b_jw.id)
+        ```
+
         ## Import
 
         Service Catalog Product Portfolio Association can be imported using the id, e.g.
@@ -139,6 +166,33 @@ class ProductPortfolioAssociation(pulumi.CustomResource):
         For information about Service Catalog Product Portfolio Association and how to use it, see [What is Product Portfolio Association](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-associateproductwithportfolio).
 
         > **NOTE:** Available since v1.230.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default0y_ag_j8 = alicloud.servicecatalog.Portfolio("default0yAgJ8",
+            provider_name=name,
+            description="desc",
+            portfolio_name=name)
+        default_ret_b_jw = alicloud.servicecatalog.Product("defaultRetBJw",
+            provider_name=name,
+            product_name=std.format(input="%s1",
+                args=[name]).result,
+            product_type="Ros")
+        default = alicloud.servicecatalog.ProductPortfolioAssociation("default",
+            portfolio_id=default0y_ag_j8.id,
+            product_id=default_ret_b_jw.id)
+        ```
 
         ## Import
 

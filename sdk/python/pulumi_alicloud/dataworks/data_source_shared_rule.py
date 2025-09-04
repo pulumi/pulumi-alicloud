@@ -209,6 +209,64 @@ class DataSourceSharedRule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.237.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        randint = random.index.Integer("randint",
+            max=999,
+            min=1)
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_qe_rfv_u = alicloud.dataworks.Project("defaultQeRfvU",
+            description="源项目",
+            project_name=name,
+            display_name="shared_source2",
+            pai_task_enabled=True)
+        defaultasjs_h5 = alicloud.dataworks.Project("defaultasjsH5",
+            description="目标空间",
+            project_name=std.format(input="%s1",
+                args=[name]).result,
+            display_name="shared_target2",
+            pai_task_enabled=True)
+        defaultvzu0w_g = alicloud.dataworks.DataSource("defaultvzu0wG",
+            type="hive",
+            data_source_name=std.format(input="%s2",
+                args=[name]).result,
+            connection_properties=json.dumps({
+                "address": [{
+                    "host": "127.0.0.1",
+                    "port": "1234",
+                }],
+                "database": "hive_database",
+                "metaType": "HiveMetastore",
+                "metastoreUris": "thrift://123:123",
+                "version": "2.3.9",
+                "loginMode": "Anonymous",
+                "securityProtocol": "authTypeNone",
+                "envType": "Prod",
+                "properties": {
+                    "key1": "value1",
+                },
+            }),
+            project_id=default_qe_rfv_u.id,
+            connection_properties_mode="UrlMode")
+        default_data_source_shared_rule = alicloud.dataworks.DataSourceSharedRule("default",
+            target_project_id=defaultasjs_h5.id,
+            data_source_id=defaultvzu0w_g.data_source_id,
+            env_type="Prod")
+        ```
+
         ## Import
 
         Data Works Data Source Shared Rule can be imported using the id, e.g.
@@ -238,6 +296,64 @@ class DataSourceSharedRule(pulumi.CustomResource):
         For information about Data Works Data Source Shared Rule and how to use it, see [What is Data Source Shared Rule](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2024-05-18-createdatasourcesharedrule).
 
         > **NOTE:** Available since v1.237.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        randint = random.index.Integer("randint",
+            max=999,
+            min=1)
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_qe_rfv_u = alicloud.dataworks.Project("defaultQeRfvU",
+            description="源项目",
+            project_name=name,
+            display_name="shared_source2",
+            pai_task_enabled=True)
+        defaultasjs_h5 = alicloud.dataworks.Project("defaultasjsH5",
+            description="目标空间",
+            project_name=std.format(input="%s1",
+                args=[name]).result,
+            display_name="shared_target2",
+            pai_task_enabled=True)
+        defaultvzu0w_g = alicloud.dataworks.DataSource("defaultvzu0wG",
+            type="hive",
+            data_source_name=std.format(input="%s2",
+                args=[name]).result,
+            connection_properties=json.dumps({
+                "address": [{
+                    "host": "127.0.0.1",
+                    "port": "1234",
+                }],
+                "database": "hive_database",
+                "metaType": "HiveMetastore",
+                "metastoreUris": "thrift://123:123",
+                "version": "2.3.9",
+                "loginMode": "Anonymous",
+                "securityProtocol": "authTypeNone",
+                "envType": "Prod",
+                "properties": {
+                    "key1": "value1",
+                },
+            }),
+            project_id=default_qe_rfv_u.id,
+            connection_properties_mode="UrlMode")
+        default_data_source_shared_rule = alicloud.dataworks.DataSourceSharedRule("default",
+            target_project_id=defaultasjs_h5.id,
+            data_source_id=defaultvzu0w_g.data_source_id,
+            env_type="Prod")
+        ```
 
         ## Import
 

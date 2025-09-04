@@ -10,6 +10,65 @@ import * as utilities from "../utilities";
  * The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
  *
  * > **NOTE:** Available since v1.18.0.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const spec = config.get("spec") || "20";
+ * const _default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING$",
+ * });
+ * const defaultGetSwitches = defaultGetNetworks.then(defaultGetNetworks => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: "me-east-1a",
+ * }));
+ * const vswitch: alicloud.vpc.Switch[] = [];
+ * defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids).length.apply(length => {
+ *     for (const range = {value: 0}; range.value < (length > 0 ? 0 : 1); range.value++) {
+ *         vswitch.push(new alicloud.vpc.Switch(`vswitch-${range.value}`, {
+ *             vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
+ *             cidrBlock: defaultGetNetworks.then(defaultGetNetworks => std.cidrsubnet({
+ *                 input: defaultGetNetworks.vpcs?.[0]?.cidrBlock,
+ *                 newbits: 8,
+ *                 netnum: 8,
+ *             })).then(invoke => invoke.result),
+ *             zoneId: "me-east-1a",
+ *             vswitchName: name,
+ *         }));
+ *     }
+ * });
+ * const vswitchId = pulumi.all([defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids).length, defaultGetSwitches, std.concat({
+ *     input: [
+ *         vswitch.map(__item => __item.id),
+ *         [""],
+ *     ],
+ * })]).apply(([length, defaultGetSwitches, invoke]) => length > 0 ? defaultGetSwitches.ids?.[0] : invoke.result?.[0]);
+ * const defaultGateway = new alicloud.vpn.Gateway("default", {
+ *     vpnType: "Normal",
+ *     vpnGatewayName: name,
+ *     vswitchId: vswitchId,
+ *     autoPay: true,
+ *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
+ *     networkType: "public",
+ *     paymentType: "Subscription",
+ *     enableIpsec: true,
+ *     bandwidth: spec,
+ * });
+ * const vpnGateways = alicloud.vpn.getGatewaysOutput({
+ *     ids: [defaultGateway.id],
+ *     includeReservationData: true,
+ *     outputFile: "/tmp/vpns",
+ * });
+ * ```
  */
 export function getGateways(args?: GetGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewaysResult> {
     args = args || {};
@@ -121,6 +180,65 @@ export interface GetGatewaysResult {
  * The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
  *
  * > **NOTE:** Available since v1.18.0.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const spec = config.get("spec") || "20";
+ * const _default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING$",
+ * });
+ * const defaultGetSwitches = defaultGetNetworks.then(defaultGetNetworks => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: "me-east-1a",
+ * }));
+ * const vswitch: alicloud.vpc.Switch[] = [];
+ * defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids).length.apply(length => {
+ *     for (const range = {value: 0}; range.value < (length > 0 ? 0 : 1); range.value++) {
+ *         vswitch.push(new alicloud.vpc.Switch(`vswitch-${range.value}`, {
+ *             vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
+ *             cidrBlock: defaultGetNetworks.then(defaultGetNetworks => std.cidrsubnet({
+ *                 input: defaultGetNetworks.vpcs?.[0]?.cidrBlock,
+ *                 newbits: 8,
+ *                 netnum: 8,
+ *             })).then(invoke => invoke.result),
+ *             zoneId: "me-east-1a",
+ *             vswitchName: name,
+ *         }));
+ *     }
+ * });
+ * const vswitchId = pulumi.all([defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids).length, defaultGetSwitches, std.concat({
+ *     input: [
+ *         vswitch.map(__item => __item.id),
+ *         [""],
+ *     ],
+ * })]).apply(([length, defaultGetSwitches, invoke]) => length > 0 ? defaultGetSwitches.ids?.[0] : invoke.result?.[0]);
+ * const defaultGateway = new alicloud.vpn.Gateway("default", {
+ *     vpnType: "Normal",
+ *     vpnGatewayName: name,
+ *     vswitchId: vswitchId,
+ *     autoPay: true,
+ *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
+ *     networkType: "public",
+ *     paymentType: "Subscription",
+ *     enableIpsec: true,
+ *     bandwidth: spec,
+ * });
+ * const vpnGateways = alicloud.vpn.getGatewaysOutput({
+ *     ids: [defaultGateway.id],
+ *     includeReservationData: true,
+ *     outputFile: "/tmp/vpns",
+ * });
+ * ```
  */
 export function getGatewaysOutput(args?: GetGatewaysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGatewaysResult> {
     args = args || {};

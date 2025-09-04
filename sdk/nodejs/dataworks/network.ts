@@ -13,6 +13,66 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.241.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const default5Bia4h = new alicloud.vpc.Network("default5Bia4h", {
+ *     description: name,
+ *     vpcName: name,
+ *     cidrBlock: "10.0.0.0/8",
+ * });
+ * const defaultss7s7F = new alicloud.vpc.Switch("defaultss7s7F", {
+ *     description: name,
+ *     vpcId: default5Bia4h.id,
+ *     zoneId: "cn-beijing-g",
+ *     vswitchName: std.format({
+ *         input: "%s1",
+ *         args: [name],
+ *     }).then(invoke => invoke.result),
+ *     cidrBlock: "10.0.0.0/24",
+ * });
+ * const defaultVJvKvl = new alicloud.dataworks.DwResourceGroup("defaultVJvKvl", {
+ *     paymentDurationUnit: "Month",
+ *     paymentType: "PostPaid",
+ *     specification: 500,
+ *     defaultVswitchId: defaultss7s7F.id,
+ *     remark: name,
+ *     resourceGroupName: "network_openapi_example01",
+ *     defaultVpcId: default5Bia4h.id,
+ * });
+ * const defaulte4zhaL = new alicloud.vpc.Network("defaulte4zhaL", {
+ *     description: name,
+ *     vpcName: std.format({
+ *         input: "%s3",
+ *         args: [name],
+ *     }).then(invoke => invoke.result),
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const default675v38 = new alicloud.vpc.Switch("default675v38", {
+ *     description: name,
+ *     vpcId: defaulte4zhaL.id,
+ *     zoneId: "cn-beijing-g",
+ *     vswitchName: std.format({
+ *         input: "%s4",
+ *         args: [name],
+ *     }).then(invoke => invoke.result),
+ *     cidrBlock: "172.16.0.0/24",
+ * });
+ * const _default = new alicloud.dataworks.Network("default", {
+ *     vpcId: defaulte4zhaL.id,
+ *     vswitchId: default675v38.id,
+ *     dwResourceGroupId: defaultVJvKvl.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Data Works Network can be imported using the id, e.g.

@@ -40,12 +40,12 @@ namespace Pulumi.AliCloud.Vod
     ///         EditingProjectName = name,
     ///         Title = name,
     ///         Timeline = @"  {
-    ///     ""VideoTracks"":[
+    ///     \""VideoTracks\"":[
     ///       {
-    ///         ""VideoTrackClips"":[
+    ///         \""VideoTrackClips\"":[
     ///           {
-    ///           ""MediaId"":""0c60e6f02dae71edbfaa472190a90102"",
-    ///           ""In"":2811
+    ///           \""MediaId\"":\""0c60e6f02dae71edbfaa472190a90102\"",
+    ///           \""In\"":2811
     ///           }
     ///         ]
     ///       }

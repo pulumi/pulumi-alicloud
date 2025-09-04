@@ -57,6 +57,9 @@ __all__ = [
     'GetAlertsAlertConfigurationSinkEventStoreResult',
     'GetAlertsAlertConfigurationTemplateConfigurationResult',
     'GetAlertsAlertScheduleResult',
+    'GetEtlsEtlResult',
+    'GetEtlsEtlConfigurationResult',
+    'GetEtlsEtlConfigurationSinkResult',
 ]
 
 @pulumi.output_type
@@ -3328,5 +3331,279 @@ class GetAlertsAlertScheduleResult(dict):
         Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetEtlsEtlResult(dict):
+    def __init__(__self__, *,
+                 configuration: 'outputs.GetEtlsEtlConfigurationResult',
+                 create_time: _builtins.int,
+                 description: _builtins.str,
+                 display_name: _builtins.str,
+                 id: _builtins.str,
+                 job_name: _builtins.str,
+                 last_modified_time: _builtins.int,
+                 schedule_id: _builtins.str,
+                 status: _builtins.str):
+        """
+        :param 'GetEtlsEtlConfigurationArgs' configuration: Detailed configuration of data processing tasks
+        :param _builtins.int create_time: Task creation time. Example value: 1718787534
+        :param _builtins.str description: Data Processing Task Description
+        :param _builtins.str display_name: Data processing task display name
+        :param _builtins.str id: The ID of the resource supplied above.
+        :param _builtins.str job_name: Unique identification of data processing task
+        :param _builtins.int last_modified_time: The time when the task was last modified. Example value: 1718787681
+        :param _builtins.str schedule_id: The task ID. Example values:
+        :param _builtins.str status: Task Status
+        """
+        pulumi.set(__self__, "configuration", configuration)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "job_name", job_name)
+        pulumi.set(__self__, "last_modified_time", last_modified_time)
+        pulumi.set(__self__, "schedule_id", schedule_id)
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def configuration(self) -> 'outputs.GetEtlsEtlConfigurationResult':
+        """
+        Detailed configuration of data processing tasks
+        """
+        return pulumi.get(self, "configuration")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.int:
+        """
+        Task creation time. Example value: 1718787534
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Data Processing Task Description
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        Data processing task display name
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="jobName")
+    def job_name(self) -> _builtins.str:
+        """
+        Unique identification of data processing task
+        """
+        return pulumi.get(self, "job_name")
+
+    @_builtins.property
+    @pulumi.getter(name="lastModifiedTime")
+    def last_modified_time(self) -> _builtins.int:
+        """
+        The time when the task was last modified. Example value: 1718787681
+        """
+        return pulumi.get(self, "last_modified_time")
+
+    @_builtins.property
+    @pulumi.getter(name="scheduleId")
+    def schedule_id(self) -> _builtins.str:
+        """
+        The task ID. Example values:
+        """
+        return pulumi.get(self, "schedule_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Task Status
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetEtlsEtlConfigurationResult(dict):
+    def __init__(__self__, *,
+                 from_time: _builtins.int,
+                 lang: _builtins.str,
+                 logstore: _builtins.str,
+                 parameters: Mapping[str, _builtins.str],
+                 role_arn: _builtins.str,
+                 script: _builtins.str,
+                 sinks: Sequence['outputs.GetEtlsEtlConfigurationSinkResult'],
+                 to_time: _builtins.int):
+        """
+        :param _builtins.int from_time: Processing time start timestamp (accurate to the second). Enter 0 when the first log received from the source Logstore is consumed.
+        :param _builtins.str lang: Data processing syntax type.
+        :param _builtins.str logstore: Source Logstore Name.
+        :param Mapping[str, _builtins.str] parameters: Advanced parameter configuration.
+        :param _builtins.str role_arn: The ARN role that authorizes writing to the target Logstore.
+        :param _builtins.str script: Processing script.
+        :param Sequence['GetEtlsEtlConfigurationSinkArgs'] sinks: Processing result output target list.
+        :param _builtins.int to_time: Processing time end timestamp (accurate to seconds). When continuous consumption is stopped manually, fill in 0.
+        """
+        pulumi.set(__self__, "from_time", from_time)
+        pulumi.set(__self__, "lang", lang)
+        pulumi.set(__self__, "logstore", logstore)
+        pulumi.set(__self__, "parameters", parameters)
+        pulumi.set(__self__, "role_arn", role_arn)
+        pulumi.set(__self__, "script", script)
+        pulumi.set(__self__, "sinks", sinks)
+        pulumi.set(__self__, "to_time", to_time)
+
+    @_builtins.property
+    @pulumi.getter(name="fromTime")
+    def from_time(self) -> _builtins.int:
+        """
+        Processing time start timestamp (accurate to the second). Enter 0 when the first log received from the source Logstore is consumed.
+        """
+        return pulumi.get(self, "from_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def lang(self) -> _builtins.str:
+        """
+        Data processing syntax type.
+        """
+        return pulumi.get(self, "lang")
+
+    @_builtins.property
+    @pulumi.getter
+    def logstore(self) -> _builtins.str:
+        """
+        Source Logstore Name.
+        """
+        return pulumi.get(self, "logstore")
+
+    @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> Mapping[str, _builtins.str]:
+        """
+        Advanced parameter configuration.
+        """
+        return pulumi.get(self, "parameters")
+
+    @_builtins.property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> _builtins.str:
+        """
+        The ARN role that authorizes writing to the target Logstore.
+        """
+        return pulumi.get(self, "role_arn")
+
+    @_builtins.property
+    @pulumi.getter
+    def script(self) -> _builtins.str:
+        """
+        Processing script.
+        """
+        return pulumi.get(self, "script")
+
+    @_builtins.property
+    @pulumi.getter
+    def sinks(self) -> Sequence['outputs.GetEtlsEtlConfigurationSinkResult']:
+        """
+        Processing result output target list.
+        """
+        return pulumi.get(self, "sinks")
+
+    @_builtins.property
+    @pulumi.getter(name="toTime")
+    def to_time(self) -> _builtins.int:
+        """
+        Processing time end timestamp (accurate to seconds). When continuous consumption is stopped manually, fill in 0.
+        """
+        return pulumi.get(self, "to_time")
+
+
+@pulumi.output_type
+class GetEtlsEtlConfigurationSinkResult(dict):
+    def __init__(__self__, *,
+                 datasets: Sequence[_builtins.str],
+                 endpoint: _builtins.str,
+                 logstore: _builtins.str,
+                 name: _builtins.str,
+                 project: _builtins.str,
+                 role_arn: _builtins.str):
+        """
+        :param Sequence[_builtins.str] datasets: Write Result Set.
+        :param _builtins.str endpoint: The endpoint of the region where the target Project is located.
+        :param _builtins.str logstore: Source Logstore Name.
+        :param _builtins.str name: Output Destination Name.
+        :param _builtins.str project: Project Name
+        :param _builtins.str role_arn: The ARN role that authorizes writing to the target Logstore.
+        """
+        pulumi.set(__self__, "datasets", datasets)
+        pulumi.set(__self__, "endpoint", endpoint)
+        pulumi.set(__self__, "logstore", logstore)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "role_arn", role_arn)
+
+    @_builtins.property
+    @pulumi.getter
+    def datasets(self) -> Sequence[_builtins.str]:
+        """
+        Write Result Set.
+        """
+        return pulumi.get(self, "datasets")
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoint(self) -> _builtins.str:
+        """
+        The endpoint of the region where the target Project is located.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @_builtins.property
+    @pulumi.getter
+    def logstore(self) -> _builtins.str:
+        """
+        Source Logstore Name.
+        """
+        return pulumi.get(self, "logstore")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Output Destination Name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def project(self) -> _builtins.str:
+        """
+        Project Name
+        """
+        return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> _builtins.str:
+        """
+        The ARN role that authorizes writing to the target Logstore.
+        """
+        return pulumi.get(self, "role_arn")
 
 

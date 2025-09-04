@@ -44,7 +44,7 @@ import (
 //				PolicyName:    pulumi.String(name),
 //				PolicyDesc:    pulumi.String(name),
 //				UserType:      pulumi.String("USER"),
-//				PolicyContent: pulumi.String("		{\"tags\":{\"CostCenter\":{\"tag_value\":{\"@@assign\":[\"Beijing\",\"Shanghai\"]},\"tag_key\":{\"@@assign\":\"CostCenter\"}}}}\n"),
+//				PolicyContent: pulumi.String("\\t\\t{\\\"tags\\\":{\\\"CostCenter\\\":{\\\"tag_value\\\":{\\\"@@assign\\\":[\\\"Beijing\\\",\\\"Shanghai\\\"]},\\\"tag_key\\\":{\\\"@@assign\\\":\\\"CostCenter\\\"}}}}\n"),
 //			})
 //			if err != nil {
 //				return err

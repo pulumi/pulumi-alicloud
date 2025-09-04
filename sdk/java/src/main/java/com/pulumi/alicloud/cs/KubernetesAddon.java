@@ -20,6 +20,115 @@ import javax.annotation.Nullable;
  * 
  * Basic Usage
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.cs.ManagedKubernetes;
+ * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+ * import com.pulumi.alicloud.cs.inputs.ManagedKubernetesAddonArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.CidrsubnetArgs;
+ * import com.pulumi.alicloud.cs.CsFunctions;
+ * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonsArgs;
+ * import com.pulumi.alicloud.cs.KubernetesAddon;
+ * import com.pulumi.alicloud.cs.KubernetesAddonArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation("VSwitch")
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("10.4.0.0/16")
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vswitchName(name)
+ *             .cidrBlock("10.4.0.0/24")
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(default_.zones()[0].id())
+ *             .build());
+ * 
+ *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+ *             .namePrefix(name)
+ *             .clusterSpec("ack.pro.small")
+ *             .workerVswitchIds(defaultSwitch.id())
+ *             .newNatGateway(false)
+ *             .podCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+ *                 .input("10.0.0.0/8")
+ *                 .newbits(8)
+ *                 .netnum(36)
+ *                 .build()).result())
+ *             .serviceCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+ *                 .input("172.16.0.0/16")
+ *                 .newbits(4)
+ *                 .netnum(7)
+ *                 .build()).result())
+ *             .slbInternetEnabled(true)
+ *             .addons(ManagedKubernetesAddonArgs.builder()
+ *                 .name("logtail-ds")
+ *                 .config(serializeJson(
+ *                     jsonObject(
+ *                         jsonProperty("IngressDashboardEnabled", "true")
+ *                     )))
+ *                 .disabled(false)
+ *                 .build())
+ *             .build());
+ * 
+ *         // data source provides the information of available addons
+ *         final var defaultGetKubernetesAddons = CsFunctions.getKubernetesAddons(GetKubernetesAddonsArgs.builder()
+ *             .clusterId(defaultManagedKubernetes.id())
+ *             .nameRegex("logtail-ds")
+ *             .build());
+ * 
+ *         // Manage addon resource
+ *         var logtail_ds = new KubernetesAddon("logtail-ds", KubernetesAddonArgs.builder()
+ *             .clusterId(defaultManagedKubernetes.id())
+ *             .name("logtail-ds")
+ *             .version("v1.6.0.0-aliyun")
+ *             .config(serializeJson(
+ *                 jsonObject(
+ * 
+ *                 )))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * **Installing of addon**
+ * When a cluster is created, some system addons and those specified at the time of cluster creation will be installed, so when an addon resource is applied:
+ * * If the addon already exists in the cluster and its version is the same as the specified version, it will be skipped and will not be reinstalled.
+ * * If the addon already exists in the cluster and its version is different from the specified version, the addon will be upgraded.
+ * * If the addon does not exist in the cluster, it will be installed.
+ * 
  * ## Import
  * 
  * Cluster addon can be imported by cluster id and addon name. Then write the addon.tf file according to the result of `pulumi preview`.

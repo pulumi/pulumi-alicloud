@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServiceEndpoint{}
 	case "alicloud:message/serviceEndpointAcl:ServiceEndpointAcl":
 		r = &ServiceEndpointAcl{}
+	case "alicloud:message/serviceEventRule:ServiceEventRule":
+		r = &ServiceEventRule{}
 	case "alicloud:message/serviceQueue:ServiceQueue":
 		r = &ServiceQueue{}
 	case "alicloud:message/serviceService:ServiceService":
@@ -54,6 +56,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"message/serviceEndpointAcl",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"message/serviceEventRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the RDS instance classes resource available info of Alibaba Cloud.
  *
- * > **NOTE:** Available in v1.46.0+
+ * > **NOTE:** Available since v1.46.0
  *
  * ## Example Usage
  *
@@ -81,7 +81,7 @@ export interface GetInstanceClassesArgs {
      */
     dbInstanceId?: string;
     /**
-     * The DB instance storage space required by the user. Valid values: "cloudSsd", "localSsd", "cloudEssd", "cloudEssd2", "cloudEssd3".
+     * The DB instance storage space required by the user. Valid values: "cloudSsd", "localSsd", "cloudEssd", "cloudEssd2", "cloudEssd3", "generalEssd".
      */
     dbInstanceStorageType?: string;
     /**
@@ -104,6 +104,9 @@ export interface GetInstanceClassesArgs {
      * File name where to save data source results (after running `pulumi up`).
      */
     outputFile?: string;
+    /**
+     * Sort the results by specified fields. The supported value is' Price '. Modifying this field will trigger resource reconstruction.
+     */
     sortedBy?: string;
     /**
      * It has been deprecated from version 1.134.0+ and using `dbInstanceStorageType` instead.
@@ -148,7 +151,7 @@ export interface GetInstanceClassesResult {
 /**
  * This data source provides the RDS instance classes resource available info of Alibaba Cloud.
  *
- * > **NOTE:** Available in v1.46.0+
+ * > **NOTE:** Available since v1.46.0
  *
  * ## Example Usage
  *
@@ -220,7 +223,7 @@ export interface GetInstanceClassesOutputArgs {
      */
     dbInstanceId?: pulumi.Input<string>;
     /**
-     * The DB instance storage space required by the user. Valid values: "cloudSsd", "localSsd", "cloudEssd", "cloudEssd2", "cloudEssd3".
+     * The DB instance storage space required by the user. Valid values: "cloudSsd", "localSsd", "cloudEssd", "cloudEssd2", "cloudEssd3", "generalEssd".
      */
     dbInstanceStorageType?: pulumi.Input<string>;
     /**
@@ -243,6 +246,9 @@ export interface GetInstanceClassesOutputArgs {
      * File name where to save data source results (after running `pulumi up`).
      */
     outputFile?: pulumi.Input<string>;
+    /**
+     * Sort the results by specified fields. The supported value is' Price '. Modifying this field will trigger resource reconstruction.
+     */
     sortedBy?: pulumi.Input<string>;
     /**
      * It has been deprecated from version 1.134.0+ and using `dbInstanceStorageType` instead.

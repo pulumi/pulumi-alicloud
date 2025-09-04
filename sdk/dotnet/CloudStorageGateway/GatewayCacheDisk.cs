@@ -16,6 +16,82 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     /// 
     /// &gt; **NOTE:** Available since v1.144.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultUuid = new Random.Index.Uuid("default");
+    /// 
+    ///     var defaultStorageBundle = new AliCloud.CloudStorageGateway.StorageBundle("default", new()
+    ///     {
+    ///         StorageBundleName = Std.Replace.Invoke(new()
+    ///         {
+    ///             Text = defaultUuid.Result,
+    ///             Search = "-",
+    ///             Replace = "",
+    ///         }).Apply(invoke =&gt; Std.Substr.Invoke(new()
+    ///         {
+    ///             Input = $"tf-example-{invoke.Result}",
+    ///             Offset = 0,
+    ///             Length = 16,
+    ///         })).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var @default = AliCloud.CloudStorageGateway.GetStocks.Invoke(new()
+    ///     {
+    ///         GatewayClass = "Standard",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/21",
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getStocksResult =&gt; getStocksResult.Stocks[0]?.ZoneId)),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var defaultGateway = new AliCloud.CloudStorageGateway.Gateway("default", new()
+    ///     {
+    ///         GatewayName = name,
+    ///         Description = name,
+    ///         GatewayClass = "Standard",
+    ///         Type = "File",
+    ///         PaymentType = "PayAsYouGo",
+    ///         VswitchId = defaultSwitch.Id,
+    ///         ReleaseAfterExpiration = true,
+    ///         PublicNetworkBandwidth = 40,
+    ///         StorageBundleId = defaultStorageBundle.Id,
+    ///         Location = "Cloud",
+    ///     });
+    /// 
+    ///     var defaultGatewayCacheDisk = new AliCloud.CloudStorageGateway.GatewayCacheDisk("default", new()
+    ///     {
+    ///         CacheDiskCategory = "cloud_efficiency",
+    ///         GatewayId = defaultGateway.Id,
+    ///         CacheDiskSizeInGb = 50,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Cloud Storage Gateway Gateway Cache Disk can be imported using the id, e.g.

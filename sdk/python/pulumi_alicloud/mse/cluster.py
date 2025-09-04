@@ -36,6 +36,7 @@ class ClusterArgs:
                  request_pars: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 version_code: Optional[pulumi.Input[_builtins.str]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -75,6 +76,7 @@ class ClusterArgs:
         :param pulumi.Input[_builtins.str] request_pars: The extended request parameters in the JSON format.
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
+        :param pulumi.Input[_builtins.str] version_code: The version code of MSE Cluster. You can keep the instance version up to date by setting the value to `LATEST` (Available since v1.257.0).
         :param pulumi.Input[_builtins.str] vpc_id: The id of the VPC.
         :param pulumi.Input[_builtins.str] vswitch_id: The id of VSwitch.
         """
@@ -106,6 +108,8 @@ class ClusterArgs:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if version_code is not None:
+            pulumi.set(__self__, "version_code", version_code)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
@@ -334,6 +338,18 @@ class ClusterArgs:
         pulumi.set(self, "tags", value)
 
     @_builtins.property
+    @pulumi.getter(name="versionCode")
+    def version_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The version code of MSE Cluster. You can keep the instance version up to date by setting the value to `LATEST` (Available since v1.257.0).
+        """
+        return pulumi.get(self, "version_code")
+
+    @version_code.setter
+    def version_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "version_code", value)
+
+    @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -381,6 +397,7 @@ class _ClusterState:
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 version_code: Optional[pulumi.Input[_builtins.str]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -423,6 +440,7 @@ class _ClusterState:
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group of the resource.
         :param pulumi.Input[_builtins.str] status: The status of MSE Cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
+        :param pulumi.Input[_builtins.str] version_code: The version code of MSE Cluster. You can keep the instance version up to date by setting the value to `LATEST` (Available since v1.257.0).
         :param pulumi.Input[_builtins.str] vpc_id: The id of the VPC.
         :param pulumi.Input[_builtins.str] vswitch_id: The id of VSwitch.
         """
@@ -466,6 +484,8 @@ class _ClusterState:
             pulumi.set(__self__, "status", status)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if version_code is not None:
+            pulumi.set(__self__, "version_code", version_code)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
@@ -730,6 +750,18 @@ class _ClusterState:
         pulumi.set(self, "tags", value)
 
     @_builtins.property
+    @pulumi.getter(name="versionCode")
+    def version_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The version code of MSE Cluster. You can keep the instance version up to date by setting the value to `LATEST` (Available since v1.257.0).
+        """
+        return pulumi.get(self, "version_code")
+
+    @version_code.setter
+    def version_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "version_code", value)
+
+    @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -777,6 +809,7 @@ class Cluster(pulumi.CustomResource):
                  request_pars: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 version_code: Optional[pulumi.Input[_builtins.str]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -826,6 +859,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] request_pars: The extended request parameters in the JSON format.
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
+        :param pulumi.Input[_builtins.str] version_code: The version code of MSE Cluster. You can keep the instance version up to date by setting the value to `LATEST` (Available since v1.257.0).
         :param pulumi.Input[_builtins.str] vpc_id: The id of the VPC.
         :param pulumi.Input[_builtins.str] vswitch_id: The id of VSwitch.
         """
@@ -876,6 +910,7 @@ class Cluster(pulumi.CustomResource):
                  request_pars: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 version_code: Optional[pulumi.Input[_builtins.str]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -916,6 +951,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["request_pars"] = request_pars
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["version_code"] = version_code
             __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["app_version"] = None
@@ -951,6 +987,7 @@ class Cluster(pulumi.CustomResource):
             resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            version_code: Optional[pulumi.Input[_builtins.str]] = None,
             vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
             vswitch_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Cluster':
         """
@@ -998,6 +1035,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group of the resource.
         :param pulumi.Input[_builtins.str] status: The status of MSE Cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
+        :param pulumi.Input[_builtins.str] version_code: The version code of MSE Cluster. You can keep the instance version up to date by setting the value to `LATEST` (Available since v1.257.0).
         :param pulumi.Input[_builtins.str] vpc_id: The id of the VPC.
         :param pulumi.Input[_builtins.str] vswitch_id: The id of VSwitch.
         """
@@ -1025,6 +1063,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["version_code"] = version_code
         __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
         return Cluster(resource_name, opts=opts, __props__=__props__)
@@ -1206,6 +1245,14 @@ class Cluster(pulumi.CustomResource):
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="versionCode")
+    def version_code(self) -> pulumi.Output[_builtins.str]:
+        """
+        The version code of MSE Cluster. You can keep the instance version up to date by setting the value to `LATEST` (Available since v1.257.0).
+        """
+        return pulumi.get(self, "version_code")
 
     @_builtins.property
     @pulumi.getter(name="vpcId")

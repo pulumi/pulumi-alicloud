@@ -2720,6 +2720,214 @@ class NodePool(pulumi.CustomResource):
 
         Basic Usage
 
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        default = random.index.Integer("default",
+            max=99999,
+            min=10000)
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
+        cloud_efficiency = alicloud.ecs.get_instance_types(availability_zone=enhanced.zones[0].zone_id,
+            cpu_core_count=4,
+            memory_size=8,
+            kubernetes_node_role="Worker",
+            system_disk_category="cloud_efficiency")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=enhanced.zones[0].zone_id)
+        default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
+            name_prefix=f"terraform-example-{default['result']}",
+            cluster_spec="ack.pro.small",
+            worker_vswitch_ids=[default_switch.id],
+            new_nat_gateway=True,
+            pod_cidr=std.cidrsubnet(input="10.0.0.0/8",
+                newbits=8,
+                netnum=36).result,
+            service_cidr=std.cidrsubnet(input="172.16.0.0/16",
+                newbits=4,
+                netnum=7).result,
+            slb_internet_enabled=True,
+            enable_rrsa=True)
+        default_key_pair = alicloud.ecs.KeyPair("default", key_pair_name=f"terraform-example-{default['result']}")
+        default_node_pool = alicloud.cs.NodePool("default",
+            node_pool_name=name,
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[default_switch.id],
+            instance_types=[cloud_efficiency.instance_types[0].id],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=default_key_pair.key_pair_name,
+            labels=[
+                {
+                    "key": "test1",
+                    "value": "nodepool",
+                },
+                {
+                    "key": "test2",
+                    "value": "nodepool",
+                },
+            ],
+            taints=[
+                {
+                    "key": "tf",
+                    "effect": "NoSchedule",
+                    "value": "example",
+                },
+                {
+                    "key": "tf2",
+                    "effect": "NoSchedule",
+                    "value": "example2",
+                },
+            ])
+        #The parameter `node_count` is deprecated from version 1.158.0. Please use the new parameter `desired_size` instead, you can update it as follows.
+        desired_size = alicloud.cs.NodePool("desired_size",
+            node_pool_name="desired_size",
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[default_switch.id],
+            instance_types=[cloud_efficiency.instance_types[0].id],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=default_key_pair.key_pair_name,
+            desired_size="0")
+        # Create a managed node pool. If you need to enable maintenance window, you need to set the maintenance window in `alicloud_cs_managed_kubernetes`.
+        maintenance = alicloud.cs.NodePool("maintenance",
+            node_pool_name="maintenance",
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[default_switch.id],
+            instance_types=[cloud_efficiency.instance_types[0].id],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=default_key_pair.key_pair_name,
+            desired_size="1",
+            management={
+                "enable": True,
+                "auto_repair": True,
+                "auto_repair_policy": {
+                    "restart_node": True,
+                },
+                "auto_upgrade": True,
+                "auto_upgrade_policy": {
+                    "auto_upgrade_kubelet": True,
+                },
+                "auto_vul_fix": True,
+                "auto_vul_fix_policy": {
+                    "vul_level": "asap",
+                    "restart_node": True,
+                },
+                "max_unavailable": 1,
+            })
+        #Create a node pool with spot instance.
+        spot_instance = alicloud.cs.NodePool("spot_instance",
+            node_pool_name="spot_instance",
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[default_switch.id],
+            instance_types=[
+                cloud_efficiency.instance_types[0].id,
+                cloud_efficiency.instance_types[1].id,
+            ],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=default_key_pair.key_pair_name,
+            desired_size="1",
+            spot_strategy="SpotWithPriceLimit",
+            spot_price_limits=[
+                {
+                    "instance_type": cloud_efficiency.instance_types[0].id,
+                    "price_limit": "0.70",
+                },
+                {
+                    "instance_type": cloud_efficiency.instance_types[1].id,
+                    "price_limit": "0.72",
+                },
+            ])
+        #Use Spot instances to create a node pool with auto-scaling enabled
+        spot_auto_scaling = alicloud.cs.NodePool("spot_auto_scaling",
+            node_pool_name="spot_auto_scaling",
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[default_switch.id],
+            instance_types=[cloud_efficiency.instance_types[0].id],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=default_key_pair.key_pair_name,
+            scaling_config={
+                "min_size": 1,
+                "max_size": 10,
+                "type": "spot",
+            },
+            spot_strategy="SpotWithPriceLimit",
+            spot_price_limits=[{
+                "instance_type": cloud_efficiency.instance_types[0].id,
+                "price_limit": "0.70",
+            }])
+        #Create a `PrePaid` node pool.
+        prepaid_node = alicloud.cs.NodePool("prepaid_node",
+            node_pool_name="prepaid_node",
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[default_switch.id],
+            instance_types=[cloud_efficiency.instance_types[0].id],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=default_key_pair.key_pair_name,
+            instance_charge_type="PrePaid",
+            period=1,
+            period_unit="Month",
+            auto_renew=True,
+            auto_renew_period=1,
+            install_cloud_monitor=True)
+        ##Create a node pool with customized kubelet parameters
+        customized_kubelet = alicloud.cs.NodePool("customized_kubelet",
+            node_pool_name="customized_kubelet",
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[default_switch.id],
+            instance_types=[cloud_efficiency.instance_types[0].id],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            instance_charge_type="PostPaid",
+            desired_size="0",
+            kubelet_configuration={
+                "registry_pull_qps": "10",
+                "registry_burst": "5",
+                "event_record_qps": "10",
+                "event_burst": "5",
+                "serialize_image_pulls": "true",
+                "eviction_hard": {
+                    "memory.available": "1024Mi",
+                    "nodefs.available": "10%",
+                    "nodefs.inodesFree": "5%",
+                    "imagefs.available": "10%",
+                },
+                "system_reserved": {
+                    "cpu": "1",
+                    "memory": "1Gi",
+                    "ephemeral-storage": "10Gi",
+                },
+                "kube_reserved": {
+                    "cpu": "500m",
+                    "memory": "1Gi",
+                },
+                "container_log_max_size": "200Mi",
+                "container_log_max_files": "3",
+                "max_pods": "100",
+                "read_only_port": "0",
+                "allowed_unsafe_sysctls": ["net.ipv4.route.min_pmtu"],
+            },
+            rolling_policy={
+                "max_parallelism": 1,
+            })
+        ```
+
         ## Import
 
         Container Service for Kubernetes (ACK) Nodepool can be imported using the id, e.g.
@@ -2848,6 +3056,214 @@ class NodePool(pulumi.CustomResource):
         ## Example Usage
 
         Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        default = random.index.Integer("default",
+            max=99999,
+            min=10000)
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
+        cloud_efficiency = alicloud.ecs.get_instance_types(availability_zone=enhanced.zones[0].zone_id,
+            cpu_core_count=4,
+            memory_size=8,
+            kubernetes_node_role="Worker",
+            system_disk_category="cloud_efficiency")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=enhanced.zones[0].zone_id)
+        default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
+            name_prefix=f"terraform-example-{default['result']}",
+            cluster_spec="ack.pro.small",
+            worker_vswitch_ids=[default_switch.id],
+            new_nat_gateway=True,
+            pod_cidr=std.cidrsubnet(input="10.0.0.0/8",
+                newbits=8,
+                netnum=36).result,
+            service_cidr=std.cidrsubnet(input="172.16.0.0/16",
+                newbits=4,
+                netnum=7).result,
+            slb_internet_enabled=True,
+            enable_rrsa=True)
+        default_key_pair = alicloud.ecs.KeyPair("default", key_pair_name=f"terraform-example-{default['result']}")
+        default_node_pool = alicloud.cs.NodePool("default",
+            node_pool_name=name,
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[default_switch.id],
+            instance_types=[cloud_efficiency.instance_types[0].id],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=default_key_pair.key_pair_name,
+            labels=[
+                {
+                    "key": "test1",
+                    "value": "nodepool",
+                },
+                {
+                    "key": "test2",
+                    "value": "nodepool",
+                },
+            ],
+            taints=[
+                {
+                    "key": "tf",
+                    "effect": "NoSchedule",
+                    "value": "example",
+                },
+                {
+                    "key": "tf2",
+                    "effect": "NoSchedule",
+                    "value": "example2",
+                },
+            ])
+        #The parameter `node_count` is deprecated from version 1.158.0. Please use the new parameter `desired_size` instead, you can update it as follows.
+        desired_size = alicloud.cs.NodePool("desired_size",
+            node_pool_name="desired_size",
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[default_switch.id],
+            instance_types=[cloud_efficiency.instance_types[0].id],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=default_key_pair.key_pair_name,
+            desired_size="0")
+        # Create a managed node pool. If you need to enable maintenance window, you need to set the maintenance window in `alicloud_cs_managed_kubernetes`.
+        maintenance = alicloud.cs.NodePool("maintenance",
+            node_pool_name="maintenance",
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[default_switch.id],
+            instance_types=[cloud_efficiency.instance_types[0].id],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=default_key_pair.key_pair_name,
+            desired_size="1",
+            management={
+                "enable": True,
+                "auto_repair": True,
+                "auto_repair_policy": {
+                    "restart_node": True,
+                },
+                "auto_upgrade": True,
+                "auto_upgrade_policy": {
+                    "auto_upgrade_kubelet": True,
+                },
+                "auto_vul_fix": True,
+                "auto_vul_fix_policy": {
+                    "vul_level": "asap",
+                    "restart_node": True,
+                },
+                "max_unavailable": 1,
+            })
+        #Create a node pool with spot instance.
+        spot_instance = alicloud.cs.NodePool("spot_instance",
+            node_pool_name="spot_instance",
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[default_switch.id],
+            instance_types=[
+                cloud_efficiency.instance_types[0].id,
+                cloud_efficiency.instance_types[1].id,
+            ],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=default_key_pair.key_pair_name,
+            desired_size="1",
+            spot_strategy="SpotWithPriceLimit",
+            spot_price_limits=[
+                {
+                    "instance_type": cloud_efficiency.instance_types[0].id,
+                    "price_limit": "0.70",
+                },
+                {
+                    "instance_type": cloud_efficiency.instance_types[1].id,
+                    "price_limit": "0.72",
+                },
+            ])
+        #Use Spot instances to create a node pool with auto-scaling enabled
+        spot_auto_scaling = alicloud.cs.NodePool("spot_auto_scaling",
+            node_pool_name="spot_auto_scaling",
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[default_switch.id],
+            instance_types=[cloud_efficiency.instance_types[0].id],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=default_key_pair.key_pair_name,
+            scaling_config={
+                "min_size": 1,
+                "max_size": 10,
+                "type": "spot",
+            },
+            spot_strategy="SpotWithPriceLimit",
+            spot_price_limits=[{
+                "instance_type": cloud_efficiency.instance_types[0].id,
+                "price_limit": "0.70",
+            }])
+        #Create a `PrePaid` node pool.
+        prepaid_node = alicloud.cs.NodePool("prepaid_node",
+            node_pool_name="prepaid_node",
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[default_switch.id],
+            instance_types=[cloud_efficiency.instance_types[0].id],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=default_key_pair.key_pair_name,
+            instance_charge_type="PrePaid",
+            period=1,
+            period_unit="Month",
+            auto_renew=True,
+            auto_renew_period=1,
+            install_cloud_monitor=True)
+        ##Create a node pool with customized kubelet parameters
+        customized_kubelet = alicloud.cs.NodePool("customized_kubelet",
+            node_pool_name="customized_kubelet",
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[default_switch.id],
+            instance_types=[cloud_efficiency.instance_types[0].id],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            instance_charge_type="PostPaid",
+            desired_size="0",
+            kubelet_configuration={
+                "registry_pull_qps": "10",
+                "registry_burst": "5",
+                "event_record_qps": "10",
+                "event_burst": "5",
+                "serialize_image_pulls": "true",
+                "eviction_hard": {
+                    "memory.available": "1024Mi",
+                    "nodefs.available": "10%",
+                    "nodefs.inodesFree": "5%",
+                    "imagefs.available": "10%",
+                },
+                "system_reserved": {
+                    "cpu": "1",
+                    "memory": "1Gi",
+                    "ephemeral-storage": "10Gi",
+                },
+                "kube_reserved": {
+                    "cpu": "500m",
+                    "memory": "1Gi",
+                },
+                "container_log_max_size": "200Mi",
+                "container_log_max_files": "3",
+                "max_pods": "100",
+                "read_only_port": "0",
+                "allowed_unsafe_sysctls": ["net.ipv4.route.min_pmtu"],
+            },
+            rolling_policy={
+                "max_parallelism": 1,
+            })
+        ```
 
         ## Import
 

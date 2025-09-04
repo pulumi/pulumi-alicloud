@@ -159,6 +159,36 @@ class Group(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.138.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.cloudsso.get_directories()
+        default_directory = []
+        def create_default(range_body):
+            for range in [{"value": i} for i in range(0, range_body)]:
+                default_directory.append(alicloud.cloudsso.Directory(f"default-{range['value']}", directory_name=name))
+
+        len(default.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        directory_id = len(default.ids).apply(lambda length: default.ids[0] if length > 0 else std.concat(input=[
+            [__item.id for __item in default_directory],
+            [""],
+        ]).result[0])
+        default_group = alicloud.cloudsso.Group("default",
+            directory_id=directory_id,
+            group_name=name,
+            description=name)
+        ```
+
         ## Import
 
         Cloud SSO Group can be imported using the id, e.g.
@@ -185,6 +215,36 @@ class Group(pulumi.CustomResource):
         For information about Cloud SSO Group and how to use it, see [What is Group](https://www.alibabacloud.com/help/en/cloudsso/latest/api-cloudsso-2021-05-15-creategroup).
 
         > **NOTE:** Available since v1.138.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.cloudsso.get_directories()
+        default_directory = []
+        def create_default(range_body):
+            for range in [{"value": i} for i in range(0, range_body)]:
+                default_directory.append(alicloud.cloudsso.Directory(f"default-{range['value']}", directory_name=name))
+
+        len(default.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        directory_id = len(default.ids).apply(lambda length: default.ids[0] if length > 0 else std.concat(input=[
+            [__item.id for __item in default_directory],
+            [""],
+        ]).result[0])
+        default_group = alicloud.cloudsso.Group("default",
+            directory_id=directory_id,
+            group_name=name,
+            description=name)
+        ```
 
         ## Import
 

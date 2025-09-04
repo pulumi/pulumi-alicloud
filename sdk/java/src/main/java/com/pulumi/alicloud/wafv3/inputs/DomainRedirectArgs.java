@@ -21,14 +21,20 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
     public static final DomainRedirectArgs Empty = new DomainRedirectArgs();
 
     /**
-     * The IP address of the origin server corresponding to the domain name or the back-to-origin domain name of the server.
+     * The IP addresses or domain names of the origin server. You cannot specify both IP addresses and domain names. If you specify domain names, the domain names can be resolved only to IPv4 addresses.
+     * 
+     * - If you specify IP addresses, specify the value in the **\[&#34;ip1&#34;,&#34;ip2&#34;,...]** format. You can enter up to 20 IP addresses.
+     * - If you specify domain names, specify the value in the **\[&#34;domain&#34;]** format. You can enter up to 20 domain names.
      * 
      */
     @Import(name="backends")
     private @Nullable Output<List<String>> backends;
 
     /**
-     * @return The IP address of the origin server corresponding to the domain name or the back-to-origin domain name of the server.
+     * @return The IP addresses or domain names of the origin server. You cannot specify both IP addresses and domain names. If you specify domain names, the domain names can be resolved only to IPv4 addresses.
+     * 
+     * - If you specify IP addresses, specify the value in the **\[&#34;ip1&#34;,&#34;ip2&#34;,...]** format. You can enter up to 20 IP addresses.
+     * - If you specify domain names, specify the value in the **\[&#34;domain&#34;]** format. You can enter up to 20 domain names.
      * 
      */
     public Optional<Output<List<String>>> backends() {
@@ -36,14 +42,31 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Connection timeout. Unit: seconds, value range: 5~120.
+     * The secondary IP address or domain name of the origin server.
+     * 
+     */
+    @Import(name="backupBackends")
+    private @Nullable Output<List<String>> backupBackends;
+
+    /**
+     * @return The secondary IP address or domain name of the origin server.
+     * 
+     */
+    public Optional<Output<List<String>>> backupBackends() {
+        return Optional.ofNullable(this.backupBackends);
+    }
+
+    /**
+     * Connection timeout duration. Unit: seconds.
+     * Value range: 1~3600. Default value: 5.
      * 
      */
     @Import(name="connectTimeout")
     private @Nullable Output<Integer> connectTimeout;
 
     /**
-     * @return Connection timeout. Unit: seconds, value range: 5~120.
+     * @return Connection timeout duration. Unit: seconds.
+     * Value range: 1~3600. Default value: 5.
      * 
      */
     public Optional<Output<Integer>> connectTimeout() {
@@ -51,18 +74,14 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Whether to enable forced HTTP back-to-origin. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-     * - **true**: indicates that forced HTTP back-to-origin is enabled.
-     * - **false**: indicates that forced HTTP back-to-origin is not enabled.
+     * Specifies whether to enable force redirect from HTTPS to HTTP for back-to-origin requests. This parameter is available only if you specify `HttpsPorts`. Valid values:
      * 
      */
     @Import(name="focusHttpBackend")
     private @Nullable Output<Boolean> focusHttpBackend;
 
     /**
-     * @return Whether to enable forced HTTP back-to-origin. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-     * - **true**: indicates that forced HTTP back-to-origin is enabled.
-     * - **false**: indicates that forced HTTP back-to-origin is not enabled.
+     * @return Specifies whether to enable force redirect from HTTPS to HTTP for back-to-origin requests. This parameter is available only if you specify `HttpsPorts`. Valid values:
      * 
      */
     public Optional<Output<Boolean>> focusHttpBackend() {
@@ -70,14 +89,14 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Open long connection, default true.
+     * Specifies whether to enable the persistent connection feature. Valid values:
      * 
      */
     @Import(name="keepalive")
     private @Nullable Output<Boolean> keepalive;
 
     /**
-     * @return Open long connection, default true.
+     * @return Specifies whether to enable the persistent connection feature. Valid values:
      * 
      */
     public Optional<Output<Boolean>> keepalive() {
@@ -85,14 +104,18 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Number of long connections,  default: `60`. range :60-1000.
+     * The number of reused persistent connections. Valid values: 60 to 1000. Default value: 1000
+     * 
+     * &gt; **NOTE:**   This parameter specifies the number of persistent connections that can be reused after you enable the persistent connection feature.
      * 
      */
     @Import(name="keepaliveRequests")
     private @Nullable Output<Integer> keepaliveRequests;
 
     /**
-     * @return Number of long connections,  default: `60`. range :60-1000.
+     * @return The number of reused persistent connections. Valid values: 60 to 1000. Default value: 1000
+     * 
+     * &gt; **NOTE:**   This parameter specifies the number of persistent connections that can be reused after you enable the persistent connection feature.
      * 
      */
     public Optional<Output<Integer>> keepaliveRequests() {
@@ -100,14 +123,18 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Long connection over time, default: `15`. Range: 1-60.
+     * Idle long connection timeout, value range: 1~60, default 15, unit: seconds.
+     * 
+     * &gt; **NOTE:**  How long the multiplexed long connection is idle and then released.
      * 
      */
     @Import(name="keepaliveTimeout")
     private @Nullable Output<Integer> keepaliveTimeout;
 
     /**
-     * @return Long connection over time, default: `15`. Range: 1-60.
+     * @return Idle long connection timeout, value range: 1~60, default 15, unit: seconds.
+     * 
+     * &gt; **NOTE:**  How long the multiplexed long connection is idle and then released.
      * 
      */
     public Optional<Output<Integer>> keepaliveTimeout() {
@@ -115,22 +142,14 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The load balancing algorithm used when returning to the source. Value:
-     * - **iphash**: indicates the IPHash algorithm.
-     * - **roundRobin**: indicates the polling algorithm.
-     * - **leastTime**: indicates the Least Time algorithm.
-     * - This value can be selected only if the value of **protection_resource** is **gslb** (indicating that the protected resource type uses shared cluster intelligent load balancing).
+     * The load balancing algorithm that you want to use to forward requests to the origin server. Valid values:
      * 
      */
     @Import(name="loadbalance", required=true)
     private Output<String> loadbalance;
 
     /**
-     * @return The load balancing algorithm used when returning to the source. Value:
-     * - **iphash**: indicates the IPHash algorithm.
-     * - **roundRobin**: indicates the polling algorithm.
-     * - **leastTime**: indicates the Least Time algorithm.
-     * - This value can be selected only if the value of **protection_resource** is **gslb** (indicating that the protected resource type uses shared cluster intelligent load balancing).
+     * @return The load balancing algorithm that you want to use to forward requests to the origin server. Valid values:
      * 
      */
     public Output<String> loadbalance() {
@@ -138,14 +157,14 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Read timeout duration. **Unit**: seconds, **Value range**: 5~1800.
+     * The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
      * 
      */
     @Import(name="readTimeout")
     private @Nullable Output<Integer> readTimeout;
 
     /**
-     * @return Read timeout duration. **Unit**: seconds, **Value range**: 5~1800.
+     * @return The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
      * 
      */
     public Optional<Output<Integer>> readTimeout() {
@@ -153,26 +172,16 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The traffic tag field and value of the domain name which used to mark the traffic processed by WAF.
-     * It formats as `[{&#34; k &#34;:&#34;_key_&#34;,&#34; v &#34;:&#34;_value_&#34;}]`. Where the `k` represents the specified custom request header field,
-     * and the `v` represents the value set for this field. By specifying the custom request header field and the corresponding value,
-     * when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value
-     * to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the
-     * custom header field already exists in the request, the system will overwrite the value of the custom field in the
-     * request with the set traffic tag value. See `request_headers` below.
+     * The traffic marking field and value of the domain name, which is used to mark the traffic processed by WAF.
+     * By specifying custom request header fields and corresponding values, when the access traffic of the domain name passes through WAF, WAF automatically adds the set custom field value to the request header as a traffic mark, which facilitates the statistics of back-end services. See `request_headers` below.
      * 
      */
     @Import(name="requestHeaders")
     private @Nullable Output<List<DomainRedirectRequestHeaderArgs>> requestHeaders;
 
     /**
-     * @return The traffic tag field and value of the domain name which used to mark the traffic processed by WAF.
-     * It formats as `[{&#34; k &#34;:&#34;_key_&#34;,&#34; v &#34;:&#34;_value_&#34;}]`. Where the `k` represents the specified custom request header field,
-     * and the `v` represents the value set for this field. By specifying the custom request header field and the corresponding value,
-     * when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value
-     * to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the
-     * custom header field already exists in the request, the system will overwrite the value of the custom field in the
-     * request with the set traffic tag value. See `request_headers` below.
+     * @return The traffic marking field and value of the domain name, which is used to mark the traffic processed by WAF.
+     * By specifying custom request header fields and corresponding values, when the access traffic of the domain name passes through WAF, WAF automatically adds the set custom field value to the request header as a traffic mark, which facilitates the statistics of back-end services. See `request_headers` below.
      * 
      */
     public Optional<Output<List<DomainRedirectRequestHeaderArgs>>> requestHeaders() {
@@ -180,14 +189,14 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Back to Source Retry. default: true, retry 3 times by default.
+     * Specifies whether WAF retries if WAF fails to forward requests to the origin server. Valid values:
      * 
      */
     @Import(name="retry")
     private @Nullable Output<Boolean> retry;
 
     /**
-     * @return Back to Source Retry. default: true, retry 3 times by default.
+     * @return Specifies whether WAF retries if WAF fails to forward requests to the origin server. Valid values:
      * 
      */
     public Optional<Output<Boolean>> retry() {
@@ -195,18 +204,14 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Whether to enable back-to-source SNI. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-     * - **true**: indicates that the back-to-source SNI is enabled.
-     * - **false** (default) indicates that the back-to-source SNI is not enabled.
+     * Specifies whether to enable the Server Name Indication (SNI) feature for back-to-origin requests. This parameter is available only if you specify `HttpsPorts`. Valid values:
      * 
      */
     @Import(name="sniEnabled")
     private @Nullable Output<Boolean> sniEnabled;
 
     /**
-     * @return Whether to enable back-to-source SNI. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-     * - **true**: indicates that the back-to-source SNI is enabled.
-     * - **false** (default) indicates that the back-to-source SNI is not enabled.
+     * @return Specifies whether to enable the Server Name Indication (SNI) feature for back-to-origin requests. This parameter is available only if you specify `HttpsPorts`. Valid values:
      * 
      */
     public Optional<Output<Boolean>> sniEnabled() {
@@ -214,14 +219,18 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Sets the value of the custom SNI extension field. If this parameter is not set, the value of the **Host** field in the request header is used as the value of the SNI extension field by default.In general, you do not need to customize SNI unless your business has special configuration requirements. You want WAF to use SNI that is inconsistent with the actual request Host in the back-to-origin request (that is, the custom SNI set here).&gt; This parameter is required only when **sni_enalbed** is set to **true** (indicating that back-to-source SNI is enabled).
+     * The custom value of the SNI field. If you do not specify this parameter, the value of the `Host` header field is automatically used. In most cases, you do not need to specify a custom value for the SNI field. However, if you want WAF to use an SNI field whose value is different from the value of the Host header field in back-to-origin requests, you can specify a custom value for the SNI field.
+     * 
+     * &gt; **NOTE:**   This parameter is required only if you set `SniEnabled` to true.
      * 
      */
     @Import(name="sniHost")
     private @Nullable Output<String> sniHost;
 
     /**
-     * @return Sets the value of the custom SNI extension field. If this parameter is not set, the value of the **Host** field in the request header is used as the value of the SNI extension field by default.In general, you do not need to customize SNI unless your business has special configuration requirements. You want WAF to use SNI that is inconsistent with the actual request Host in the back-to-origin request (that is, the custom SNI set here).&gt; This parameter is required only when **sni_enalbed** is set to **true** (indicating that back-to-source SNI is enabled).
+     * @return The custom value of the SNI field. If you do not specify this parameter, the value of the `Host` header field is automatically used. In most cases, you do not need to specify a custom value for the SNI field. However, if you want WAF to use an SNI field whose value is different from the value of the Host header field in back-to-origin requests, you can specify a custom value for the SNI field.
+     * 
+     * &gt; **NOTE:**   This parameter is required only if you set `SniEnabled` to true.
      * 
      */
     public Optional<Output<String>> sniHost() {
@@ -229,24 +238,40 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Write timeout duration&gt; **Unit**: seconds, **Value range**: 5~1800.
+     * The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
      * 
      */
     @Import(name="writeTimeout")
     private @Nullable Output<Integer> writeTimeout;
 
     /**
-     * @return Write timeout duration&gt; **Unit**: seconds, **Value range**: 5~1800.
+     * @return The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
      * 
      */
     public Optional<Output<Integer>> writeTimeout() {
         return Optional.ofNullable(this.writeTimeout);
     }
 
+    /**
+     * Specifies whether to use the X-Forward-For-Proto header field to pass the protocol used by WAF to forward requests to the origin server. Valid values:
+     * 
+     */
+    @Import(name="xffProto")
+    private @Nullable Output<Boolean> xffProto;
+
+    /**
+     * @return Specifies whether to use the X-Forward-For-Proto header field to pass the protocol used by WAF to forward requests to the origin server. Valid values:
+     * 
+     */
+    public Optional<Output<Boolean>> xffProto() {
+        return Optional.ofNullable(this.xffProto);
+    }
+
     private DomainRedirectArgs() {}
 
     private DomainRedirectArgs(DomainRedirectArgs $) {
         this.backends = $.backends;
+        this.backupBackends = $.backupBackends;
         this.connectTimeout = $.connectTimeout;
         this.focusHttpBackend = $.focusHttpBackend;
         this.keepalive = $.keepalive;
@@ -259,6 +284,7 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         this.sniEnabled = $.sniEnabled;
         this.sniHost = $.sniHost;
         this.writeTimeout = $.writeTimeout;
+        this.xffProto = $.xffProto;
     }
 
     public static Builder builder() {
@@ -280,7 +306,10 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param backends The IP address of the origin server corresponding to the domain name or the back-to-origin domain name of the server.
+         * @param backends The IP addresses or domain names of the origin server. You cannot specify both IP addresses and domain names. If you specify domain names, the domain names can be resolved only to IPv4 addresses.
+         * 
+         * - If you specify IP addresses, specify the value in the **\[&#34;ip1&#34;,&#34;ip2&#34;,...]** format. You can enter up to 20 IP addresses.
+         * - If you specify domain names, specify the value in the **\[&#34;domain&#34;]** format. You can enter up to 20 domain names.
          * 
          * @return builder
          * 
@@ -291,7 +320,10 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param backends The IP address of the origin server corresponding to the domain name or the back-to-origin domain name of the server.
+         * @param backends The IP addresses or domain names of the origin server. You cannot specify both IP addresses and domain names. If you specify domain names, the domain names can be resolved only to IPv4 addresses.
+         * 
+         * - If you specify IP addresses, specify the value in the **\[&#34;ip1&#34;,&#34;ip2&#34;,...]** format. You can enter up to 20 IP addresses.
+         * - If you specify domain names, specify the value in the **\[&#34;domain&#34;]** format. You can enter up to 20 domain names.
          * 
          * @return builder
          * 
@@ -301,7 +333,10 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param backends The IP address of the origin server corresponding to the domain name or the back-to-origin domain name of the server.
+         * @param backends The IP addresses or domain names of the origin server. You cannot specify both IP addresses and domain names. If you specify domain names, the domain names can be resolved only to IPv4 addresses.
+         * 
+         * - If you specify IP addresses, specify the value in the **\[&#34;ip1&#34;,&#34;ip2&#34;,...]** format. You can enter up to 20 IP addresses.
+         * - If you specify domain names, specify the value in the **\[&#34;domain&#34;]** format. You can enter up to 20 domain names.
          * 
          * @return builder
          * 
@@ -311,7 +346,39 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param connectTimeout Connection timeout. Unit: seconds, value range: 5~120.
+         * @param backupBackends The secondary IP address or domain name of the origin server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupBackends(@Nullable Output<List<String>> backupBackends) {
+            $.backupBackends = backupBackends;
+            return this;
+        }
+
+        /**
+         * @param backupBackends The secondary IP address or domain name of the origin server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupBackends(List<String> backupBackends) {
+            return backupBackends(Output.of(backupBackends));
+        }
+
+        /**
+         * @param backupBackends The secondary IP address or domain name of the origin server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupBackends(String... backupBackends) {
+            return backupBackends(List.of(backupBackends));
+        }
+
+        /**
+         * @param connectTimeout Connection timeout duration. Unit: seconds.
+         * Value range: 1~3600. Default value: 5.
          * 
          * @return builder
          * 
@@ -322,7 +389,8 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param connectTimeout Connection timeout. Unit: seconds, value range: 5~120.
+         * @param connectTimeout Connection timeout duration. Unit: seconds.
+         * Value range: 1~3600. Default value: 5.
          * 
          * @return builder
          * 
@@ -332,9 +400,7 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param focusHttpBackend Whether to enable forced HTTP back-to-origin. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-         * - **true**: indicates that forced HTTP back-to-origin is enabled.
-         * - **false**: indicates that forced HTTP back-to-origin is not enabled.
+         * @param focusHttpBackend Specifies whether to enable force redirect from HTTPS to HTTP for back-to-origin requests. This parameter is available only if you specify `HttpsPorts`. Valid values:
          * 
          * @return builder
          * 
@@ -345,9 +411,7 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param focusHttpBackend Whether to enable forced HTTP back-to-origin. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-         * - **true**: indicates that forced HTTP back-to-origin is enabled.
-         * - **false**: indicates that forced HTTP back-to-origin is not enabled.
+         * @param focusHttpBackend Specifies whether to enable force redirect from HTTPS to HTTP for back-to-origin requests. This parameter is available only if you specify `HttpsPorts`. Valid values:
          * 
          * @return builder
          * 
@@ -357,7 +421,7 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param keepalive Open long connection, default true.
+         * @param keepalive Specifies whether to enable the persistent connection feature. Valid values:
          * 
          * @return builder
          * 
@@ -368,7 +432,7 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param keepalive Open long connection, default true.
+         * @param keepalive Specifies whether to enable the persistent connection feature. Valid values:
          * 
          * @return builder
          * 
@@ -378,7 +442,9 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param keepaliveRequests Number of long connections,  default: `60`. range :60-1000.
+         * @param keepaliveRequests The number of reused persistent connections. Valid values: 60 to 1000. Default value: 1000
+         * 
+         * &gt; **NOTE:**   This parameter specifies the number of persistent connections that can be reused after you enable the persistent connection feature.
          * 
          * @return builder
          * 
@@ -389,7 +455,9 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param keepaliveRequests Number of long connections,  default: `60`. range :60-1000.
+         * @param keepaliveRequests The number of reused persistent connections. Valid values: 60 to 1000. Default value: 1000
+         * 
+         * &gt; **NOTE:**   This parameter specifies the number of persistent connections that can be reused after you enable the persistent connection feature.
          * 
          * @return builder
          * 
@@ -399,7 +467,9 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param keepaliveTimeout Long connection over time, default: `15`. Range: 1-60.
+         * @param keepaliveTimeout Idle long connection timeout, value range: 1~60, default 15, unit: seconds.
+         * 
+         * &gt; **NOTE:**  How long the multiplexed long connection is idle and then released.
          * 
          * @return builder
          * 
@@ -410,7 +480,9 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param keepaliveTimeout Long connection over time, default: `15`. Range: 1-60.
+         * @param keepaliveTimeout Idle long connection timeout, value range: 1~60, default 15, unit: seconds.
+         * 
+         * &gt; **NOTE:**  How long the multiplexed long connection is idle and then released.
          * 
          * @return builder
          * 
@@ -420,11 +492,7 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param loadbalance The load balancing algorithm used when returning to the source. Value:
-         * - **iphash**: indicates the IPHash algorithm.
-         * - **roundRobin**: indicates the polling algorithm.
-         * - **leastTime**: indicates the Least Time algorithm.
-         * - This value can be selected only if the value of **protection_resource** is **gslb** (indicating that the protected resource type uses shared cluster intelligent load balancing).
+         * @param loadbalance The load balancing algorithm that you want to use to forward requests to the origin server. Valid values:
          * 
          * @return builder
          * 
@@ -435,11 +503,7 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param loadbalance The load balancing algorithm used when returning to the source. Value:
-         * - **iphash**: indicates the IPHash algorithm.
-         * - **roundRobin**: indicates the polling algorithm.
-         * - **leastTime**: indicates the Least Time algorithm.
-         * - This value can be selected only if the value of **protection_resource** is **gslb** (indicating that the protected resource type uses shared cluster intelligent load balancing).
+         * @param loadbalance The load balancing algorithm that you want to use to forward requests to the origin server. Valid values:
          * 
          * @return builder
          * 
@@ -449,7 +513,7 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param readTimeout Read timeout duration. **Unit**: seconds, **Value range**: 5~1800.
+         * @param readTimeout The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
          * 
          * @return builder
          * 
@@ -460,7 +524,7 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param readTimeout Read timeout duration. **Unit**: seconds, **Value range**: 5~1800.
+         * @param readTimeout The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
          * 
          * @return builder
          * 
@@ -470,13 +534,8 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param requestHeaders The traffic tag field and value of the domain name which used to mark the traffic processed by WAF.
-         * It formats as `[{&#34; k &#34;:&#34;_key_&#34;,&#34; v &#34;:&#34;_value_&#34;}]`. Where the `k` represents the specified custom request header field,
-         * and the `v` represents the value set for this field. By specifying the custom request header field and the corresponding value,
-         * when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value
-         * to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the
-         * custom header field already exists in the request, the system will overwrite the value of the custom field in the
-         * request with the set traffic tag value. See `request_headers` below.
+         * @param requestHeaders The traffic marking field and value of the domain name, which is used to mark the traffic processed by WAF.
+         * By specifying custom request header fields and corresponding values, when the access traffic of the domain name passes through WAF, WAF automatically adds the set custom field value to the request header as a traffic mark, which facilitates the statistics of back-end services. See `request_headers` below.
          * 
          * @return builder
          * 
@@ -487,13 +546,8 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param requestHeaders The traffic tag field and value of the domain name which used to mark the traffic processed by WAF.
-         * It formats as `[{&#34; k &#34;:&#34;_key_&#34;,&#34; v &#34;:&#34;_value_&#34;}]`. Where the `k` represents the specified custom request header field,
-         * and the `v` represents the value set for this field. By specifying the custom request header field and the corresponding value,
-         * when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value
-         * to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the
-         * custom header field already exists in the request, the system will overwrite the value of the custom field in the
-         * request with the set traffic tag value. See `request_headers` below.
+         * @param requestHeaders The traffic marking field and value of the domain name, which is used to mark the traffic processed by WAF.
+         * By specifying custom request header fields and corresponding values, when the access traffic of the domain name passes through WAF, WAF automatically adds the set custom field value to the request header as a traffic mark, which facilitates the statistics of back-end services. See `request_headers` below.
          * 
          * @return builder
          * 
@@ -503,13 +557,8 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param requestHeaders The traffic tag field and value of the domain name which used to mark the traffic processed by WAF.
-         * It formats as `[{&#34; k &#34;:&#34;_key_&#34;,&#34; v &#34;:&#34;_value_&#34;}]`. Where the `k` represents the specified custom request header field,
-         * and the `v` represents the value set for this field. By specifying the custom request header field and the corresponding value,
-         * when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value
-         * to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the
-         * custom header field already exists in the request, the system will overwrite the value of the custom field in the
-         * request with the set traffic tag value. See `request_headers` below.
+         * @param requestHeaders The traffic marking field and value of the domain name, which is used to mark the traffic processed by WAF.
+         * By specifying custom request header fields and corresponding values, when the access traffic of the domain name passes through WAF, WAF automatically adds the set custom field value to the request header as a traffic mark, which facilitates the statistics of back-end services. See `request_headers` below.
          * 
          * @return builder
          * 
@@ -519,7 +568,7 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param retry Back to Source Retry. default: true, retry 3 times by default.
+         * @param retry Specifies whether WAF retries if WAF fails to forward requests to the origin server. Valid values:
          * 
          * @return builder
          * 
@@ -530,7 +579,7 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param retry Back to Source Retry. default: true, retry 3 times by default.
+         * @param retry Specifies whether WAF retries if WAF fails to forward requests to the origin server. Valid values:
          * 
          * @return builder
          * 
@@ -540,9 +589,7 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param sniEnabled Whether to enable back-to-source SNI. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-         * - **true**: indicates that the back-to-source SNI is enabled.
-         * - **false** (default) indicates that the back-to-source SNI is not enabled.
+         * @param sniEnabled Specifies whether to enable the Server Name Indication (SNI) feature for back-to-origin requests. This parameter is available only if you specify `HttpsPorts`. Valid values:
          * 
          * @return builder
          * 
@@ -553,9 +600,7 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param sniEnabled Whether to enable back-to-source SNI. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-         * - **true**: indicates that the back-to-source SNI is enabled.
-         * - **false** (default) indicates that the back-to-source SNI is not enabled.
+         * @param sniEnabled Specifies whether to enable the Server Name Indication (SNI) feature for back-to-origin requests. This parameter is available only if you specify `HttpsPorts`. Valid values:
          * 
          * @return builder
          * 
@@ -565,7 +610,9 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param sniHost Sets the value of the custom SNI extension field. If this parameter is not set, the value of the **Host** field in the request header is used as the value of the SNI extension field by default.In general, you do not need to customize SNI unless your business has special configuration requirements. You want WAF to use SNI that is inconsistent with the actual request Host in the back-to-origin request (that is, the custom SNI set here).&gt; This parameter is required only when **sni_enalbed** is set to **true** (indicating that back-to-source SNI is enabled).
+         * @param sniHost The custom value of the SNI field. If you do not specify this parameter, the value of the `Host` header field is automatically used. In most cases, you do not need to specify a custom value for the SNI field. However, if you want WAF to use an SNI field whose value is different from the value of the Host header field in back-to-origin requests, you can specify a custom value for the SNI field.
+         * 
+         * &gt; **NOTE:**   This parameter is required only if you set `SniEnabled` to true.
          * 
          * @return builder
          * 
@@ -576,7 +623,9 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param sniHost Sets the value of the custom SNI extension field. If this parameter is not set, the value of the **Host** field in the request header is used as the value of the SNI extension field by default.In general, you do not need to customize SNI unless your business has special configuration requirements. You want WAF to use SNI that is inconsistent with the actual request Host in the back-to-origin request (that is, the custom SNI set here).&gt; This parameter is required only when **sni_enalbed** is set to **true** (indicating that back-to-source SNI is enabled).
+         * @param sniHost The custom value of the SNI field. If you do not specify this parameter, the value of the `Host` header field is automatically used. In most cases, you do not need to specify a custom value for the SNI field. However, if you want WAF to use an SNI field whose value is different from the value of the Host header field in back-to-origin requests, you can specify a custom value for the SNI field.
+         * 
+         * &gt; **NOTE:**   This parameter is required only if you set `SniEnabled` to true.
          * 
          * @return builder
          * 
@@ -586,7 +635,7 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param writeTimeout Write timeout duration&gt; **Unit**: seconds, **Value range**: 5~1800.
+         * @param writeTimeout The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
          * 
          * @return builder
          * 
@@ -597,13 +646,34 @@ public final class DomainRedirectArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param writeTimeout Write timeout duration&gt; **Unit**: seconds, **Value range**: 5~1800.
+         * @param writeTimeout The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
          * 
          * @return builder
          * 
          */
         public Builder writeTimeout(Integer writeTimeout) {
             return writeTimeout(Output.of(writeTimeout));
+        }
+
+        /**
+         * @param xffProto Specifies whether to use the X-Forward-For-Proto header field to pass the protocol used by WAF to forward requests to the origin server. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder xffProto(@Nullable Output<Boolean> xffProto) {
+            $.xffProto = xffProto;
+            return this;
+        }
+
+        /**
+         * @param xffProto Specifies whether to use the X-Forward-For-Proto header field to pass the protocol used by WAF to forward requests to the origin server. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder xffProto(Boolean xffProto) {
+            return xffProto(Output.of(xffProto));
         }
 
         public DomainRedirectArgs build() {

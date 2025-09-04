@@ -11,6 +11,113 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.209.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultGetResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     cidrBlock: "192.168.0.0/16",
+ *     vpcName: name,
+ * });
+ * const vswitch = new alicloud.vpc.Switch("vswitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: defaultNetwork.cidrBlock.apply(cidrBlock => std.cidrsubnetOutput({
+ *         input: cidrBlock,
+ *         newbits: 8,
+ *         netnum: 8,
+ *     })).apply(invoke => invoke.result),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *     vswitchName: name,
+ * });
+ * const defaultSnapshotPolicy = new alicloud.ecs.SnapshotPolicy("default", {
+ *     name: name,
+ *     repeatWeekdays: [
+ *         "1",
+ *         "2",
+ *         "3",
+ *     ],
+ *     retentionDays: -1,
+ *     timePoints: [
+ *         "1",
+ *         "22",
+ *         "23",
+ *     ],
+ * });
+ * const defaultGetInstanceTypes = vswitch.zoneId.apply(zoneId => alicloud.ecs.getInstanceTypesOutput({
+ *     availabilityZone: zoneId,
+ *     cpuCoreCount: 2,
+ *     memorySize: 4,
+ *     kubernetesNodeRole: "Worker",
+ *     instanceTypeFamily: "ecs.sn1ne",
+ * }));
+ * const defaultManagedKubernetes = new alicloud.cs.ManagedKubernetes("default", {
+ *     name: name,
+ *     clusterSpec: "ack.pro.small",
+ *     version: "1.24.6-aliyun.1",
+ *     newNatGateway: true,
+ *     nodeCidrMask: 26,
+ *     proxyMode: "ipvs",
+ *     serviceCidr: "172.23.0.0/16",
+ *     podCidr: "10.95.0.0/16",
+ *     workerVswitchIds: [vswitch.id],
+ * });
+ * const defaultInteger = new random.index.Integer("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const defaultKeyPair = new alicloud.ecs.KeyPair("default", {keyPairName: `${name}-${defaultInteger.result}`});
+ * const defaultNodePool = new alicloud.cs.NodePool("default", {
+ *     nodePoolName: "desired_size",
+ *     clusterId: defaultManagedKubernetes.id,
+ *     vswitchIds: [vswitch.id],
+ *     instanceTypes: [defaultGetInstanceTypes.apply(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id)],
+ *     systemDiskCategory: "cloud_efficiency",
+ *     systemDiskSize: 40,
+ *     keyName: defaultKeyPair.keyPairName,
+ *     desiredSize: "2",
+ * });
+ * const defaultPrometheus = new alicloud.arms.Prometheus("default", {
+ *     clusterType: "aliyun-cs",
+ *     grafanaInstanceId: "free",
+ *     clusterId: defaultNodePool.clusterId,
+ * });
+ * const defaultPrometheusMonitoring = new alicloud.arms.PrometheusMonitoring("default", {
+ *     status: "run",
+ *     type: "serviceMonitor",
+ *     clusterId: defaultPrometheus.clusterId,
+ *     configYaml: `apiVersion: monitoring.coreos.com/v1
+ * kind: ServiceMonitor
+ * metadata:
+ *   name: tomcat-demo
+ *   namespace: default
+ * spec:
+ *   endpoints:
+ *   - bearerTokenSecret:
+ *       key: ''
+ *     interval: 30s
+ *     path: /metrics
+ *     port: tomcat-monitor
+ *   namespaceSelector:
+ *     any: true
+ *   selector:
+ *     matchLabels:
+ *       app: tomcat
+ * `,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ARMS Prometheus Monitoring can be imported using the id, e.g.

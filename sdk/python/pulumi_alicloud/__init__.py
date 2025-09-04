@@ -19,6 +19,7 @@ from .msc_sub_contract import *
 from .msc_sub_subscription import *
 from .msc_sub_webhook import *
 from .provider import *
+from .star_rocks_instance import *
 from ._inputs import *
 from . import outputs
 
@@ -284,6 +285,8 @@ if typing.TYPE_CHECKING:
     sls = __sls
     import pulumi_alicloud.sms as __sms
     sms = __sms
+    import pulumi_alicloud.sslcertificatesservice as __sslcertificatesservice
+    sslcertificatesservice = __sslcertificatesservice
     import pulumi_alicloud.tag as __tag
     tag = __tag
     import pulumi_alicloud.threatdetection as __threatdetection
@@ -435,6 +438,7 @@ else:
     slb = _utilities.lazy_import('pulumi_alicloud.slb')
     sls = _utilities.lazy_import('pulumi_alicloud.sls')
     sms = _utilities.lazy_import('pulumi_alicloud.sms')
+    sslcertificatesservice = _utilities.lazy_import('pulumi_alicloud.sslcertificatesservice')
     tag = _utilities.lazy_import('pulumi_alicloud.tag')
     threatdetection = _utilities.lazy_import('pulumi_alicloud.threatdetection')
     tsdb = _utilities.lazy_import('pulumi_alicloud.tsdb')
@@ -463,6 +467,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.ackone",
   "classes": {
    "alicloud:ackone/membershipAttachment:MembershipAttachment": "MembershipAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "actiontrail/advancedQueryTemplate",
+  "fqn": "pulumi_alicloud.actiontrail",
+  "classes": {
+   "alicloud:actiontrail/advancedQueryTemplate:AdvancedQueryTemplate": "AdvancedQueryTemplate"
   }
  },
  {
@@ -3859,6 +3871,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "eflo/er",
+  "fqn": "pulumi_alicloud.eflo",
+  "classes": {
+   "alicloud:eflo/er:Er": "Er"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "eflo/experimentPlan",
   "fqn": "pulumi_alicloud.eflo",
   "classes": {
@@ -3895,6 +3915,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.eflo",
   "classes": {
    "alicloud:eflo/nodeGroup:NodeGroup": "NodeGroup"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "eflo/nodeGroupAttachment",
+  "fqn": "pulumi_alicloud.eflo",
+  "classes": {
+   "alicloud:eflo/nodeGroupAttachment:NodeGroupAttachment": "NodeGroupAttachment"
   }
  },
  {
@@ -4243,10 +4271,34 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "esa/originCaCertificate",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/originCaCertificate:OriginCaCertificate": "OriginCaCertificate"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "esa/originClientCertificate",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/originClientCertificate:OriginClientCertificate": "OriginClientCertificate"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "esa/originPool",
   "fqn": "pulumi_alicloud.esa",
   "classes": {
    "alicloud:esa/originPool:OriginPool": "OriginPool"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "esa/originProtection",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/originProtection:OriginProtection": "OriginProtection"
   }
  },
  {
@@ -4343,6 +4395,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.esa",
   "classes": {
    "alicloud:esa/siteDeliveryTask:SiteDeliveryTask": "SiteDeliveryTask"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "esa/siteOriginClientCertificate",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/siteOriginClientCertificate:SiteOriginClientCertificate": "SiteOriginClientCertificate"
   }
  },
  {
@@ -5403,6 +5463,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "index/starRocksInstance",
+  "fqn": "pulumi_alicloud",
+  "classes": {
+   "alicloud:index/starRocksInstance:StarRocksInstance": "StarRocksInstance"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "iot/deviceGroup",
   "fqn": "pulumi_alicloud.iot",
   "classes": {
@@ -5763,6 +5831,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "message/serviceEventRule",
+  "fqn": "pulumi_alicloud.message",
+  "classes": {
+   "alicloud:message/serviceEventRule:ServiceEventRule": "ServiceEventRule"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "message/serviceQueue",
   "fqn": "pulumi_alicloud.message",
   "classes": {
@@ -5847,6 +5923,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.mongodb",
   "classes": {
    "alicloud:mongodb/auditPolicy:AuditPolicy": "AuditPolicy"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "mongodb/globalSecurityIpGroup",
+  "fqn": "pulumi_alicloud.mongodb",
+  "classes": {
+   "alicloud:mongodb/globalSecurityIpGroup:GlobalSecurityIpGroup": "GlobalSecurityIpGroup"
   }
  },
  {
@@ -7995,6 +8079,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "sslcertificatesservice/pcaCertificate",
+  "fqn": "pulumi_alicloud.sslcertificatesservice",
+  "classes": {
+   "alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate": "PcaCertificate"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "tag/associatedRule",
   "fqn": "pulumi_alicloud.tag",
   "classes": {
@@ -8047,6 +8139,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.threatdetection",
   "classes": {
    "alicloud:threatdetection/assetSelectionConfig:AssetSelectionConfig": "AssetSelectionConfig"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "threatdetection/attackPathSensitiveAssetConfig",
+  "fqn": "pulumi_alicloud.threatdetection",
+  "classes": {
+   "alicloud:threatdetection/attackPathSensitiveAssetConfig:AttackPathSensitiveAssetConfig": "AttackPathSensitiveAssetConfig"
   }
  },
  {
@@ -8799,6 +8899,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.waf",
   "classes": {
    "alicloud:waf/protectionModule:ProtectionModule": "ProtectionModule"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "wafv3/defenseRule",
+  "fqn": "pulumi_alicloud.wafv3",
+  "classes": {
+   "alicloud:wafv3/defenseRule:DefenseRule": "DefenseRule"
   }
  },
  {

@@ -15,6 +15,10 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'ServiceEventRuleEndpointArgs',
+    'ServiceEventRuleEndpointArgsDict',
+    'ServiceEventRuleMatchRuleArgs',
+    'ServiceEventRuleMatchRuleArgsDict',
     'ServiceQueueDlqPolicyArgs',
     'ServiceQueueDlqPolicyArgsDict',
     'ServiceSubscriptionDlqPolicyArgs',
@@ -22,6 +26,143 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class ServiceEventRuleEndpointArgsDict(TypedDict):
+        endpoint_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Message receiving terminal endpoint type
+        """
+        endpoint_value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Message Receiving Terminal Endpoint
+        """
+elif False:
+    ServiceEventRuleEndpointArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ServiceEventRuleEndpointArgs:
+    def __init__(__self__, *,
+                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 endpoint_value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] endpoint_type: Message receiving terminal endpoint type
+        :param pulumi.Input[_builtins.str] endpoint_value: Message Receiving Terminal Endpoint
+        """
+        if endpoint_type is not None:
+            pulumi.set(__self__, "endpoint_type", endpoint_type)
+        if endpoint_value is not None:
+            pulumi.set(__self__, "endpoint_value", endpoint_value)
+
+    @_builtins.property
+    @pulumi.getter(name="endpointType")
+    def endpoint_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Message receiving terminal endpoint type
+        """
+        return pulumi.get(self, "endpoint_type")
+
+    @endpoint_type.setter
+    def endpoint_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "endpoint_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="endpointValue")
+    def endpoint_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Message Receiving Terminal Endpoint
+        """
+        return pulumi.get(self, "endpoint_value")
+
+    @endpoint_value.setter
+    def endpoint_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "endpoint_value", value)
+
+
+if not MYPY:
+    class ServiceEventRuleMatchRuleArgsDict(TypedDict):
+        match_state: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Match state. valid values: `true`, `false`.
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        prefix: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Prefix matching rule.
+        """
+        suffix: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Suffix matching rule.
+        """
+elif False:
+    ServiceEventRuleMatchRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ServiceEventRuleMatchRuleArgs:
+    def __init__(__self__, *,
+                 match_state: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
+                 suffix: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] match_state: Match state. valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.str] prefix: Prefix matching rule.
+        :param pulumi.Input[_builtins.str] suffix: Suffix matching rule.
+        """
+        if match_state is not None:
+            pulumi.set(__self__, "match_state", match_state)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if suffix is not None:
+            pulumi.set(__self__, "suffix", suffix)
+
+    @_builtins.property
+    @pulumi.getter(name="matchState")
+    def match_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Match state. valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "match_state")
+
+    @match_state.setter
+    def match_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "match_state", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Prefix matching rule.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "prefix", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Suffix matching rule.
+        """
+        return pulumi.get(self, "suffix")
+
+    @suffix.setter
+    def suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "suffix", value)
+
 
 if not MYPY:
     class ServiceQueueDlqPolicyArgsDict(TypedDict):

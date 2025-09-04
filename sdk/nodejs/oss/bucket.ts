@@ -107,6 +107,335 @@ import * as utilities from "../utilities";
  *
  * Set lifecycle rule
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ * import * as std from "@pulumi/std";
+ *
+ * const _default = new random.index.Integer("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const bucket_lifecycle1 = new alicloud.oss.Bucket("bucket-lifecycle1", {
+ *     bucket: `example-lifecycle1-${_default.result}`,
+ *     lifecycleRules: [
+ *         {
+ *             id: "rule-days",
+ *             prefix: "path1/",
+ *             enabled: true,
+ *             expirations: [{
+ *                 days: 365,
+ *             }],
+ *         },
+ *         {
+ *             id: "rule-date",
+ *             prefix: "path2/",
+ *             enabled: true,
+ *             expirations: [{
+ *                 date: "2018-01-12",
+ *             }],
+ *         },
+ *     ],
+ * });
+ * const bucket_lifecycle1BucketAcl = new alicloud.oss.BucketAcl("bucket-lifecycle1", {
+ *     bucket: bucket_lifecycle1.bucket,
+ *     acl: "public-read",
+ * });
+ * const bucket_lifecycle2 = new alicloud.oss.Bucket("bucket-lifecycle2", {
+ *     bucket: `example-lifecycle2-${_default.result}`,
+ *     lifecycleRules: [{
+ *         id: "rule-days-transition",
+ *         prefix: "path3/",
+ *         enabled: true,
+ *         transitions: [
+ *             {
+ *                 days: 3,
+ *                 storageClass: "IA",
+ *             },
+ *             {
+ *                 days: 30,
+ *                 storageClass: "Archive",
+ *             },
+ *         ],
+ *     }],
+ * });
+ * const bucket_lifecycle2BucketAcl = new alicloud.oss.BucketAcl("bucket-lifecycle2", {
+ *     bucket: bucket_lifecycle2.bucket,
+ *     acl: "public-read",
+ * });
+ * const bucket_lifecycle3 = new alicloud.oss.Bucket("bucket-lifecycle3", {
+ *     bucket: `example-lifecycle3-${_default.result}`,
+ *     lifecycleRules: [{
+ *         id: "rule-days-transition",
+ *         prefix: "path3/",
+ *         enabled: true,
+ *         transitions: [
+ *             {
+ *                 createdBeforeDate: "2022-11-11",
+ *                 storageClass: "IA",
+ *             },
+ *             {
+ *                 createdBeforeDate: "2021-11-11",
+ *                 storageClass: "Archive",
+ *             },
+ *         ],
+ *     }],
+ * });
+ * const bucket_lifecycle3BucketAcl = new alicloud.oss.BucketAcl("bucket-lifecycle3", {
+ *     bucket: bucket_lifecycle3.bucket,
+ *     acl: "public-read",
+ * });
+ * const bucket_lifecycle4 = new alicloud.oss.Bucket("bucket-lifecycle4", {
+ *     bucket: `example-lifecycle4-${_default.result}`,
+ *     lifecycleRules: [{
+ *         id: "rule-abort-multipart-upload",
+ *         prefix: "path3/",
+ *         enabled: true,
+ *         abortMultipartUploads: [{
+ *             days: 128,
+ *         }],
+ *     }],
+ * });
+ * const bucket_lifecycle4BucketAcl = new alicloud.oss.BucketAcl("bucket-lifecycle4", {
+ *     bucket: bucket_lifecycle4.bucket,
+ *     acl: "public-read",
+ * });
+ * const bucket_versioning_lifecycle = new alicloud.oss.Bucket("bucket-versioning-lifecycle", {
+ *     bucket: `example-lifecycle5-${_default.result}`,
+ *     versioning: {
+ *         status: "Enabled",
+ *     },
+ *     lifecycleRules: [{
+ *         id: "rule-versioning",
+ *         prefix: "path1/",
+ *         enabled: true,
+ *         expirations: [{
+ *             expiredObjectDeleteMarker: true,
+ *         }],
+ *         noncurrentVersionExpirations: [{
+ *             days: 240,
+ *         }],
+ *         noncurrentVersionTransitions: [
+ *             {
+ *                 days: 180,
+ *                 storageClass: "Archive",
+ *             },
+ *             {
+ *                 days: 60,
+ *                 storageClass: "IA",
+ *             },
+ *         ],
+ *     }],
+ * });
+ * const bucket_versioning_lifecycleBucketAcl = new alicloud.oss.BucketAcl("bucket-versioning-lifecycle", {
+ *     bucket: bucket_versioning_lifecycle.bucket,
+ *     acl: "private",
+ * });
+ * const bucket_access_monitor_lifecycle = new alicloud.oss.Bucket("bucket-access-monitor-lifecycle", {
+ *     bucket: std.format({
+ *         input: "example-lifecycle6-%s",
+ *         args: [_default.result],
+ *     }).then(invoke => invoke.result),
+ *     accessMonitor: {
+ *         status: "Enabled",
+ *     },
+ *     lifecycleRules: [{
+ *         id: "rule-days-transition",
+ *         prefix: "path/",
+ *         enabled: true,
+ *         transitions: [{
+ *             days: 30,
+ *             storageClass: "IA",
+ *             isAccessTime: true,
+ *             returnToStdWhenVisit: true,
+ *         }],
+ *     }],
+ * });
+ * const bucket_access_monitor_lifecycleBucketAcl = new alicloud.oss.BucketAcl("bucket-access-monitor-lifecycle", {
+ *     bucket: bucket_access_monitor_lifecycle.bucket,
+ *     acl: "private",
+ * });
+ * const bucket_tag_lifecycle = new alicloud.oss.Bucket("bucket-tag-lifecycle", {
+ *     bucket: std.format({
+ *         input: "example-lifecycle7-%s",
+ *         args: [_default.result],
+ *     }).then(invoke => invoke.result),
+ *     lifecycleRules: [{
+ *         id: "rule-days-transition",
+ *         prefix: "path/",
+ *         enabled: true,
+ *         transitions: [{
+ *             createdBeforeDate: "2022-11-11",
+ *             storageClass: "IA",
+ *         }],
+ *     }],
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
+ * });
+ * const bucket_tag_lifecycleBucketAcl = new alicloud.oss.BucketAcl("bucket-tag-lifecycle", {
+ *     bucket: bucket_tag_lifecycle.bucket,
+ *     acl: "private",
+ * });
+ * ```
+ *
+ * Set bucket policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const _default = new random.index.Integer("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const bucket_policy = new alicloud.oss.Bucket("bucket-policy", {
+ *     bucket: `example-policy-${_default.result}`,
+ *     policy: `  {\\"Statement\\":
+ *       [{\\"Action\\":
+ *           [\\"oss:PutObject\\", \\"oss:GetObject\\", \\"oss:DeleteBucket\\"],
+ *         \\"Effect\\":\\"Allow\\",
+ *         \\"Resource\\":
+ *             [\\"acs:oss:*:*:*\\"]}],
+ *    \\"Version\\":\\"1\\"}
+ * `,
+ * });
+ * const defaultBucketAcl = new alicloud.oss.BucketAcl("default", {
+ *     bucket: bucket_policy.bucket,
+ *     acl: "private",
+ * });
+ * ```
+ *
+ * IA Bucket
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const _default = new random.index.Integer("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const defaultBucket = new alicloud.oss.Bucket("default", {
+ *     bucket: `example-${_default.result}`,
+ *     storageClass: "IA",
+ * });
+ * ```
+ *
+ * Set bucket server-side encryption rule
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const _default = new random.index.Integer("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const bucket_sserule = new alicloud.oss.Bucket("bucket-sserule", {
+ *     bucket: `terraform-example-${_default.result}`,
+ *     serverSideEncryptionRule: {
+ *         sseAlgorithm: "AES256",
+ *     },
+ * });
+ * const bucket_sseruleBucketAcl = new alicloud.oss.BucketAcl("bucket-sserule", {
+ *     bucket: bucket_sserule.bucket,
+ *     acl: "private",
+ * });
+ * const kms = new alicloud.kms.Key("kms", {
+ *     description: "terraform-example",
+ *     pendingWindowInDays: 7,
+ *     status: "Enabled",
+ * });
+ * const bucket_kms = new alicloud.oss.Bucket("bucket-kms", {
+ *     bucket: `terraform-example-kms-${_default.result}`,
+ *     serverSideEncryptionRule: {
+ *         sseAlgorithm: "KMS",
+ *         kmsMasterKeyId: kms.id,
+ *     },
+ * });
+ * const bucket_kmsBucketAcl = new alicloud.oss.BucketAcl("bucket-kms", {
+ *     bucket: bucket_kms.bucket,
+ *     acl: "private",
+ * });
+ * ```
+ *
+ * Set bucket tags
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const _default = new random.index.Integer("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const bucket_tags = new alicloud.oss.Bucket("bucket-tags", {
+ *     bucket: `terraform-example-${_default.result}`,
+ *     tags: {
+ *         key1: "value1",
+ *         key2: "value2",
+ *     },
+ * });
+ * const bucket_tagsBucketAcl = new alicloud.oss.BucketAcl("bucket-tags", {
+ *     bucket: bucket_tags.bucket,
+ *     acl: "private",
+ * });
+ * ```
+ *
+ * Enable bucket versioning
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const _default = new random.index.Integer("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const bucket_versioning = new alicloud.oss.Bucket("bucket-versioning", {
+ *     bucket: `terraform-example-${_default.result}`,
+ *     versioning: {
+ *         status: "Enabled",
+ *     },
+ * });
+ * const defaultBucketAcl = new alicloud.oss.BucketAcl("default", {
+ *     bucket: bucket_versioning.bucket,
+ *     acl: "private",
+ * });
+ * ```
+ *
+ * Set bucket redundancy type
+ *
+ * Set bucket accelerate configuration
+ *
+ * Set bucket resource group id
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const defaultInteger = new random.index.Integer("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const _default = alicloud.resourcemanager.getResourceGroups({
+ *     nameRegex: "default",
+ * });
+ * const bucket_accelerate = new alicloud.oss.Bucket("bucket-accelerate", {
+ *     bucket: `terraform-example-${defaultInteger.result}`,
+ *     resourceGroupId: _default.then(_default => _default.groups?.[0]?.id),
+ * });
+ * ```
+ *
  * ## Import
  *
  * OSS bucket can be imported using the bucket name, e.g.

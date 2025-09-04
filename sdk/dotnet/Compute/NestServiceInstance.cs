@@ -97,11 +97,11 @@ namespace Pulumi.AliCloud.Compute
     ///             OperationStartTime = "1681281179000",
     ///             OperationEndTime = "1681367579000",
     ///             Resources = defaultInstance.Id.Apply(id =&gt; @$"    {{
-    ///       ""Type"": ""ResourceIds"",
-    ///       ""RegionId"": ""cn-hangzhou"",
-    ///       ""ResourceIds"": {{
-    ///       ""ALIYUN::ECS::INSTANCE"": [
-    ///         ""{id}""
+    ///       \""Type\"": \""ResourceIds\"",
+    ///       \""RegionId\"": \""cn-hangzhou\"",
+    ///       \""ResourceIds\"": {{
+    ///       \""ALIYUN::ECS::INSTANCE\"": [
+    ///         \""{id}\""
     ///         ]
     ///       }} 
     ///     }}

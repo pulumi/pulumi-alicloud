@@ -18,6 +18,106 @@ namespace Pulumi.AliCloud.Sls
     /// 
     /// &gt; **NOTE:** Available since v1.237.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var defaulteyHJsO = new AliCloud.Log.Project("defaulteyHJsO", new()
+    ///     {
+    ///         Description = "terraform-oss-example-910",
+    ///         ProjectName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s1%s",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///                 @default.Result,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var defaultxeHfXC = new AliCloud.Log.Store("defaultxeHfXC", new()
+    ///     {
+    ///         HotTtl = 8,
+    ///         RetentionPeriod = 30,
+    ///         ShardCount = 2,
+    ///         ProjectName = defaulteyHJsO.ProjectName,
+    ///         LogstoreName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s1%s",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///                 @default.Result,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var defaultiwj0xO = new AliCloud.Oss.Bucket("defaultiwj0xO", new()
+    ///     {
+    ///         BucketName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s1%s",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///                 @default.Result,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         StorageClass = "Standard",
+    ///     });
+    /// 
+    ///     var defaultOssExportSink = new AliCloud.Sls.OssExportSink("default", new()
+    ///     {
+    ///         Project = defaulteyHJsO.ProjectName,
+    ///         Configuration = new AliCloud.Sls.Inputs.OssExportSinkConfigurationArgs
+    ///         {
+    ///             Logstore = defaultxeHfXC.LogstoreName,
+    ///             RoleArn = "acs:ram::12345678901234567:role/aliyunlogdefaultrole",
+    ///             Sink = new AliCloud.Sls.Inputs.OssExportSinkConfigurationSinkArgs
+    ///             {
+    ///                 Bucket = defaultiwj0xO.BucketName,
+    ///                 RoleArn = "acs:ram::12345678901234567:role/aliyunlogdefaultrole",
+    ///                 TimeZone = "+0700",
+    ///                 ContentType = "json",
+    ///                 CompressionType = "none",
+    ///                 ContentDetail = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["enableTag"] = false,
+    ///                 }),
+    ///                 BufferInterval = "300",
+    ///                 BufferSize = "256",
+    ///                 Endpoint = "https://oss-cn-shanghai-internal.aliyuncs.com",
+    ///             },
+    ///             FromTime = 1732165733,
+    ///             ToTime = 1732166733,
+    ///         },
+    ///         JobName = "export-oss-1731404933-00001",
+    ///         DisplayName = "exampleterraform",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Log Service (SLS) Oss Export Sink can be imported using the id, e.g.

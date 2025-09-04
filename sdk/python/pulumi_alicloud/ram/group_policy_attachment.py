@@ -169,20 +169,20 @@ class GroupPolicyAttachment(pulumi.CustomResource):
         policy = alicloud.ram.Policy("policy",
             policy_name=f"tf-example-{default['result']}",
             policy_document=\"\"\"    {
-              "Statement": [
+              \\"Statement\\": [
                 {
-                  "Action": [
-                    "oss:ListObjects",
-                    "oss:GetObject"
+                  \\"Action\\": [
+                    \\"oss:ListObjects\\",
+                    \\"oss:GetObject\\"
                   ],
-                  "Effect": "Allow",
-                  "Resource": [
-                    "acs:oss:*:*:mybucket",
-                    "acs:oss:*:*:mybucket/*"
+                  \\"Effect\\": \\"Allow\\",
+                  \\"Resource\\": [
+                    \\"acs:oss:*:*:mybucket\\",
+                    \\"acs:oss:*:*:mybucket/*\\"
                   ]
                 }
               ],
-                "Version": "1"
+                \\"Version\\": \\"1\\"
             }
         \"\"\",
             description="this is a policy test")
@@ -240,20 +240,20 @@ class GroupPolicyAttachment(pulumi.CustomResource):
         policy = alicloud.ram.Policy("policy",
             policy_name=f"tf-example-{default['result']}",
             policy_document=\"\"\"    {
-              "Statement": [
+              \\"Statement\\": [
                 {
-                  "Action": [
-                    "oss:ListObjects",
-                    "oss:GetObject"
+                  \\"Action\\": [
+                    \\"oss:ListObjects\\",
+                    \\"oss:GetObject\\"
                   ],
-                  "Effect": "Allow",
-                  "Resource": [
-                    "acs:oss:*:*:mybucket",
-                    "acs:oss:*:*:mybucket/*"
+                  \\"Effect\\": \\"Allow\\",
+                  \\"Resource\\": [
+                    \\"acs:oss:*:*:mybucket\\",
+                    \\"acs:oss:*:*:mybucket/*\\"
                   ]
                 }
               ],
-                "Version": "1"
+                \\"Version\\": \\"1\\"
             }
         \"\"\",
             description="this is a policy test")

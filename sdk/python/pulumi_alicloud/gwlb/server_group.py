@@ -514,6 +514,86 @@ class ServerGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.234.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        region_id = config.get("regionId")
+        if region_id is None:
+            region_id = "cn-wulanchabu"
+        zone_id1 = config.get("zoneId1")
+        if zone_id1 is None:
+            zone_id1 = "cn-wulanchabu-b"
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_eaxcvb = alicloud.vpc.Network("defaultEaxcvb",
+            cidr_block="10.0.0.0/8",
+            vpc_name="tf-gwlb-vpc")
+        defaultc3u_vid = alicloud.vpc.Switch("defaultc3uVID",
+            vpc_id=default_eaxcvb.id,
+            zone_id=zone_id1,
+            cidr_block="10.0.0.0/24",
+            vswitch_name="tf-example-vsw1")
+        default7_n_nx_rl = alicloud.ecs.SecurityGroup("default7NNxRl",
+            description="sg",
+            security_group_name="sg_name",
+            vpc_id=default_eaxcvb.id,
+            security_group_type="normal")
+        default_h6_mcv_c = alicloud.ecs.Instance("defaultH6McvC",
+            vswitch_id=defaultc3u_vid.id,
+            image_id="aliyun_2_1903_x64_20G_alibase_20231221.vhd",
+            instance_type="ecs.g6.large",
+            system_disk_category="cloud_efficiency",
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=5,
+            instance_name=std.format(input="%s4",
+                args=[name]).result,
+            description="tf-example-ecs",
+            security_groups=[default7_n_nx_rl.id],
+            availability_zone=defaultc3u_vid.zone_id,
+            instance_charge_type="PostPaid")
+        default_server_group = alicloud.gwlb.ServerGroup("default",
+            dry_run=False,
+            servers=[{
+                "server_id": default_h6_mcv_c.id,
+                "server_type": "Ecs",
+            }],
+            scheduler="5TCH",
+            protocol="GENEVE",
+            connection_drain_config={
+                "connection_drain_enabled": True,
+                "connection_drain_timeout": 1,
+            },
+            vpc_id=default_eaxcvb.id,
+            server_group_type="Instance",
+            server_group_name=name,
+            health_check_config={
+                "health_check_connect_port": 80,
+                "health_check_enabled": True,
+                "health_check_protocol": "HTTP",
+                "health_check_connect_timeout": 5,
+                "health_check_domain": "www.domain.com",
+                "health_check_http_codes": [
+                    "http_2xx",
+                    "http_3xx",
+                    "http_4xx",
+                ],
+                "health_check_interval": 10,
+                "health_check_path": "/health-check",
+                "healthy_threshold": 2,
+                "unhealthy_threshold": 2,
+            },
+            resource_group_id=default.ids[0])
+        ```
+
         ## Import
 
         GWLB Server Group can be imported using the id, e.g.
@@ -566,6 +646,86 @@ class ServerGroup(pulumi.CustomResource):
         For information about GWLB Server Group and how to use it, see [What is Server Group](https://www.alibabacloud.com/help/en/slb/gateway-based-load-balancing-gwlb/developer-reference/api-gwlb-2024-04-15-createservergroup).
 
         > **NOTE:** Available since v1.234.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        region_id = config.get("regionId")
+        if region_id is None:
+            region_id = "cn-wulanchabu"
+        zone_id1 = config.get("zoneId1")
+        if zone_id1 is None:
+            zone_id1 = "cn-wulanchabu-b"
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_eaxcvb = alicloud.vpc.Network("defaultEaxcvb",
+            cidr_block="10.0.0.0/8",
+            vpc_name="tf-gwlb-vpc")
+        defaultc3u_vid = alicloud.vpc.Switch("defaultc3uVID",
+            vpc_id=default_eaxcvb.id,
+            zone_id=zone_id1,
+            cidr_block="10.0.0.0/24",
+            vswitch_name="tf-example-vsw1")
+        default7_n_nx_rl = alicloud.ecs.SecurityGroup("default7NNxRl",
+            description="sg",
+            security_group_name="sg_name",
+            vpc_id=default_eaxcvb.id,
+            security_group_type="normal")
+        default_h6_mcv_c = alicloud.ecs.Instance("defaultH6McvC",
+            vswitch_id=defaultc3u_vid.id,
+            image_id="aliyun_2_1903_x64_20G_alibase_20231221.vhd",
+            instance_type="ecs.g6.large",
+            system_disk_category="cloud_efficiency",
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=5,
+            instance_name=std.format(input="%s4",
+                args=[name]).result,
+            description="tf-example-ecs",
+            security_groups=[default7_n_nx_rl.id],
+            availability_zone=defaultc3u_vid.zone_id,
+            instance_charge_type="PostPaid")
+        default_server_group = alicloud.gwlb.ServerGroup("default",
+            dry_run=False,
+            servers=[{
+                "server_id": default_h6_mcv_c.id,
+                "server_type": "Ecs",
+            }],
+            scheduler="5TCH",
+            protocol="GENEVE",
+            connection_drain_config={
+                "connection_drain_enabled": True,
+                "connection_drain_timeout": 1,
+            },
+            vpc_id=default_eaxcvb.id,
+            server_group_type="Instance",
+            server_group_name=name,
+            health_check_config={
+                "health_check_connect_port": 80,
+                "health_check_enabled": True,
+                "health_check_protocol": "HTTP",
+                "health_check_connect_timeout": 5,
+                "health_check_domain": "www.domain.com",
+                "health_check_http_codes": [
+                    "http_2xx",
+                    "http_3xx",
+                    "http_4xx",
+                ],
+                "health_check_interval": 10,
+                "health_check_path": "/health-check",
+                "healthy_threshold": 2,
+                "unhealthy_threshold": 2,
+            },
+            resource_group_id=default.ids[0])
+        ```
 
         ## Import
 

@@ -251,18 +251,18 @@ class Flow(pulumi.CustomResource):
         default = alicloud.ram.Role("default",
             name="tf-example-fnfflow",
             document=\"\"\"  {
-            "Statement": [
+            \\"Statement\\": [
               {
-                "Action": "sts:AssumeRole",
-                "Effect": "Allow",
-                "Principal": {
-                  "Service": [
-                    "fnf.aliyuncs.com"
+                \\"Action\\": \\"sts:AssumeRole\\",
+                \\"Effect\\": \\"Allow\\",
+                \\"Principal\\": {
+                  \\"Service\\": [
+                    \\"fnf.aliyuncs.com\\"
                   ]
                 }
               }
             ],
-            "Version": "1"
+            \\"Version\\": \\"1\\"
           }
         \"\"\")
         example = alicloud.fnf.Flow("example",
@@ -318,18 +318,18 @@ class Flow(pulumi.CustomResource):
         default = alicloud.ram.Role("default",
             name="tf-example-fnfflow",
             document=\"\"\"  {
-            "Statement": [
+            \\"Statement\\": [
               {
-                "Action": "sts:AssumeRole",
-                "Effect": "Allow",
-                "Principal": {
-                  "Service": [
-                    "fnf.aliyuncs.com"
+                \\"Action\\": \\"sts:AssumeRole\\",
+                \\"Effect\\": \\"Allow\\",
+                \\"Principal\\": {
+                  \\"Service\\": [
+                    \\"fnf.aliyuncs.com\\"
                   ]
                 }
               }
             ],
-            "Version": "1"
+            \\"Version\\": \\"1\\"
           }
         \"\"\")
         example = alicloud.fnf.Flow("example",

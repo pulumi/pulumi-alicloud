@@ -23,6 +23,140 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.234.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.alicloud.gwlb.LoadBalancer;
+ * import com.pulumi.alicloud.gwlb.LoadBalancerArgs;
+ * import com.pulumi.alicloud.gwlb.inputs.LoadBalancerZoneMappingArgs;
+ * import com.pulumi.alicloud.gwlb.ServerGroup;
+ * import com.pulumi.alicloud.gwlb.ServerGroupArgs;
+ * import com.pulumi.alicloud.gwlb.inputs.ServerGroupServerArgs;
+ * import com.pulumi.alicloud.gwlb.inputs.ServerGroupConnectionDrainConfigArgs;
+ * import com.pulumi.alicloud.gwlb.inputs.ServerGroupHealthCheckConfigArgs;
+ * import com.pulumi.alicloud.gwlb.Listener;
+ * import com.pulumi.alicloud.gwlb.ListenerArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var zoneId1 = config.get("zoneId1").orElse("cn-wulanchabu-b");
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .cidrBlock("10.0.0.0/8")
+ *             .vpcName(name)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(zoneId1)
+ *             .cidrBlock("10.0.0.0/24")
+ *             .vswitchName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s1")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var defaultLoadBalancer = new LoadBalancer("defaultLoadBalancer", LoadBalancerArgs.builder()
+ *             .vpcId(defaultNetwork.id())
+ *             .loadBalancerName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s3")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .zoneMappings(LoadBalancerZoneMappingArgs.builder()
+ *                 .vswitchId(defaultSwitch.id())
+ *                 .zoneId(zoneId1)
+ *                 .build())
+ *             .addressIpVersion("Ipv4")
+ *             .build());
+ * 
+ *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()
+ *             .protocol("GENEVE")
+ *             .serverGroupName("tfaccgwlb62413")
+ *             .serverGroupType("Ip")
+ *             .servers(            
+ *                 ServerGroupServerArgs.builder()
+ *                     .serverId("10.0.0.1")
+ *                     .serverIp("10.0.0.1")
+ *                     .serverType("Ip")
+ *                     .build(),
+ *                 ServerGroupServerArgs.builder()
+ *                     .serverId("10.0.0.2")
+ *                     .serverIp("10.0.0.2")
+ *                     .serverType("Ip")
+ *                     .build(),
+ *                 ServerGroupServerArgs.builder()
+ *                     .serverId("10.0.0.3")
+ *                     .serverIp("10.0.0.3")
+ *                     .serverType("Ip")
+ *                     .build())
+ *             .connectionDrainConfig(ServerGroupConnectionDrainConfigArgs.builder()
+ *                 .connectionDrainEnabled(true)
+ *                 .connectionDrainTimeout(1)
+ *                 .build())
+ *             .resourceGroupId(default_.ids()[0])
+ *             .dryRun(false)
+ *             .healthCheckConfig(ServerGroupHealthCheckConfigArgs.builder()
+ *                 .healthCheckProtocol("HTTP")
+ *                 .healthCheckHttpCodes(                
+ *                     "http_2xx",
+ *                     "http_3xx",
+ *                     "http_4xx")
+ *                 .healthCheckInterval(10)
+ *                 .healthCheckPath("/health-check")
+ *                 .unhealthyThreshold(2)
+ *                 .healthCheckConnectPort(80)
+ *                 .healthCheckConnectTimeout(5)
+ *                 .healthCheckDomain("www.domain.com")
+ *                 .healthCheckEnabled(true)
+ *                 .healthyThreshold(2)
+ *                 .build())
+ *             .vpcId(defaultNetwork.id())
+ *             .scheduler("5TCH")
+ *             .build());
+ * 
+ *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()
+ *             .listenerDescription("example-tf-lsn")
+ *             .serverGroupId(defaultServerGroup.id())
+ *             .loadBalancerId(defaultLoadBalancer.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * GWLB Listener can be imported using the id, e.g.

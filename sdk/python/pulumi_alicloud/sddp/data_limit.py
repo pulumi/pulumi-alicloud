@@ -375,6 +375,80 @@ class DataLimit(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.159.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.get_regions(current=True)
+        default_get_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="Basic",
+            db_instance_storage_type="cloud_essd")
+        default_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_get_zones.zones[0].id,
+            engine="MySQL",
+            engine_version="8.0",
+            category="Basic",
+            db_instance_storage_type="cloud_essd",
+            instance_charge_type="PostPaid")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_get_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_network.id)
+        default_instance = alicloud.rds.Instance("default",
+            engine="MySQL",
+            engine_version="8.0",
+            instance_type=default_get_instance_classes.instance_classes[0].instance_class,
+            instance_storage=default_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_charge_type="Postpaid",
+            instance_name=name,
+            vswitch_id=default_switch.id,
+            monitoring_period=60,
+            db_instance_storage_type="cloud_essd",
+            security_group_ids=[default_security_group.id])
+        default_rds_account = alicloud.rds.RdsAccount("default",
+            db_instance_id=default_instance.id,
+            account_name=name,
+            account_password="Example1234")
+        default_database = alicloud.rds.Database("default",
+            instance_id=default_instance.id,
+            name=name)
+        default_account_privilege = alicloud.rds.AccountPrivilege("default",
+            instance_id=default_instance.id,
+            account_name=default_rds_account.account_name,
+            privilege="ReadWrite",
+            db_names=[default_database.name])
+        default_data_limit = alicloud.sddp.DataLimit("default",
+            audit_status=0,
+            engine_type="MySQL",
+            parent_id=std.join_output(separator=".",
+                input=[
+                    default_account_privilege.instance_id,
+                    default_database.name,
+                ]).apply(lambda invoke: invoke.result),
+            resource_type="RDS",
+            user_name=default_database.name,
+            password=default_rds_account.account_password,
+            port=3306,
+            service_region_id=default.regions[0].id)
+        ```
+
         ## Import
 
         Data Security Center Data Limit can be imported using the id, e.g.
@@ -408,6 +482,80 @@ class DataLimit(pulumi.CustomResource):
         For information about Data Security Center Data Limit and how to use it, see [What is Data Limit](https://www.alibabacloud.com/help/en/doc-detail/158987.html).
 
         > **NOTE:** Available since v1.159.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.get_regions(current=True)
+        default_get_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="Basic",
+            db_instance_storage_type="cloud_essd")
+        default_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_get_zones.zones[0].id,
+            engine="MySQL",
+            engine_version="8.0",
+            category="Basic",
+            db_instance_storage_type="cloud_essd",
+            instance_charge_type="PostPaid")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_get_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_network.id)
+        default_instance = alicloud.rds.Instance("default",
+            engine="MySQL",
+            engine_version="8.0",
+            instance_type=default_get_instance_classes.instance_classes[0].instance_class,
+            instance_storage=default_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_charge_type="Postpaid",
+            instance_name=name,
+            vswitch_id=default_switch.id,
+            monitoring_period=60,
+            db_instance_storage_type="cloud_essd",
+            security_group_ids=[default_security_group.id])
+        default_rds_account = alicloud.rds.RdsAccount("default",
+            db_instance_id=default_instance.id,
+            account_name=name,
+            account_password="Example1234")
+        default_database = alicloud.rds.Database("default",
+            instance_id=default_instance.id,
+            name=name)
+        default_account_privilege = alicloud.rds.AccountPrivilege("default",
+            instance_id=default_instance.id,
+            account_name=default_rds_account.account_name,
+            privilege="ReadWrite",
+            db_names=[default_database.name])
+        default_data_limit = alicloud.sddp.DataLimit("default",
+            audit_status=0,
+            engine_type="MySQL",
+            parent_id=std.join_output(separator=".",
+                input=[
+                    default_account_privilege.instance_id,
+                    default_database.name,
+                ]).apply(lambda invoke: invoke.result),
+            resource_type="RDS",
+            user_name=default_database.name,
+            password=default_rds_account.account_password,
+            port=3306,
+            service_region_id=default.regions[0].id)
+        ```
 
         ## Import
 

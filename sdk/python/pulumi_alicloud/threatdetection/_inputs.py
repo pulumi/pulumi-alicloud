@@ -15,6 +15,10 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'AntiBruteForceRuleProtocolTypeArgs',
+    'AntiBruteForceRuleProtocolTypeArgsDict',
+    'AttackPathSensitiveAssetConfigAttackPathAssetListArgs',
+    'AttackPathSensitiveAssetConfigAttackPathAssetListArgsDict',
     'HoneypotPresetMetaArgs',
     'HoneypotPresetMetaArgsDict',
     'HoneypotProbeHoneypotBindListArgs',
@@ -26,6 +30,185 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class AntiBruteForceRuleProtocolTypeArgsDict(TypedDict):
+        rdp: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Whether to enable RDP interception. Default value: `on`. Valid values: `on`, `off`.
+        """
+        sql_server: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Whether to enable the SqlServer interception method. Default value: `off`. Valid values: `on`, `off`.
+        """
+        ssh: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Whether to enable SSH interception. Default value: `on`. Valid values: `on`, `off`.
+        """
+elif False:
+    AntiBruteForceRuleProtocolTypeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AntiBruteForceRuleProtocolTypeArgs:
+    def __init__(__self__, *,
+                 rdp: Optional[pulumi.Input[_builtins.str]] = None,
+                 sql_server: Optional[pulumi.Input[_builtins.str]] = None,
+                 ssh: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] rdp: Whether to enable RDP interception. Default value: `on`. Valid values: `on`, `off`.
+        :param pulumi.Input[_builtins.str] sql_server: Whether to enable the SqlServer interception method. Default value: `off`. Valid values: `on`, `off`.
+        :param pulumi.Input[_builtins.str] ssh: Whether to enable SSH interception. Default value: `on`. Valid values: `on`, `off`.
+        """
+        if rdp is not None:
+            pulumi.set(__self__, "rdp", rdp)
+        if sql_server is not None:
+            pulumi.set(__self__, "sql_server", sql_server)
+        if ssh is not None:
+            pulumi.set(__self__, "ssh", ssh)
+
+    @_builtins.property
+    @pulumi.getter
+    def rdp(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Whether to enable RDP interception. Default value: `on`. Valid values: `on`, `off`.
+        """
+        return pulumi.get(self, "rdp")
+
+    @rdp.setter
+    def rdp(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "rdp", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sqlServer")
+    def sql_server(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Whether to enable the SqlServer interception method. Default value: `off`. Valid values: `on`, `off`.
+        """
+        return pulumi.get(self, "sql_server")
+
+    @sql_server.setter
+    def sql_server(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "sql_server", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ssh(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Whether to enable SSH interception. Default value: `on`. Valid values: `on`, `off`.
+        """
+        return pulumi.get(self, "ssh")
+
+    @ssh.setter
+    def ssh(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ssh", value)
+
+
+if not MYPY:
+    class AttackPathSensitiveAssetConfigAttackPathAssetListArgsDict(TypedDict):
+        asset_sub_type: pulumi.Input[_builtins.int]
+        """
+        Cloud product asset subtype.
+        """
+        asset_type: pulumi.Input[_builtins.int]
+        """
+        The asset type of the cloud product asset.
+        """
+        instance_id: pulumi.Input[_builtins.str]
+        """
+        The ID of the cloud product instance.
+        """
+        region_id: pulumi.Input[_builtins.str]
+        """
+        The region ID of the cloud product.
+        """
+        vendor: pulumi.Input[_builtins.int]
+        """
+        Cloud product asset vendor. Valid values: `0`.
+        """
+elif False:
+    AttackPathSensitiveAssetConfigAttackPathAssetListArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AttackPathSensitiveAssetConfigAttackPathAssetListArgs:
+    def __init__(__self__, *,
+                 asset_sub_type: pulumi.Input[_builtins.int],
+                 asset_type: pulumi.Input[_builtins.int],
+                 instance_id: pulumi.Input[_builtins.str],
+                 region_id: pulumi.Input[_builtins.str],
+                 vendor: pulumi.Input[_builtins.int]):
+        """
+        :param pulumi.Input[_builtins.int] asset_sub_type: Cloud product asset subtype.
+        :param pulumi.Input[_builtins.int] asset_type: The asset type of the cloud product asset.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the cloud product instance.
+        :param pulumi.Input[_builtins.str] region_id: The region ID of the cloud product.
+        :param pulumi.Input[_builtins.int] vendor: Cloud product asset vendor. Valid values: `0`.
+        """
+        pulumi.set(__self__, "asset_sub_type", asset_sub_type)
+        pulumi.set(__self__, "asset_type", asset_type)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "vendor", vendor)
+
+    @_builtins.property
+    @pulumi.getter(name="assetSubType")
+    def asset_sub_type(self) -> pulumi.Input[_builtins.int]:
+        """
+        Cloud product asset subtype.
+        """
+        return pulumi.get(self, "asset_sub_type")
+
+    @asset_sub_type.setter
+    def asset_sub_type(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "asset_sub_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="assetType")
+    def asset_type(self) -> pulumi.Input[_builtins.int]:
+        """
+        The asset type of the cloud product asset.
+        """
+        return pulumi.get(self, "asset_type")
+
+    @asset_type.setter
+    def asset_type(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "asset_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of the cloud product instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "instance_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The region ID of the cloud product.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "region_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def vendor(self) -> pulumi.Input[_builtins.int]:
+        """
+        Cloud product asset vendor. Valid values: `0`.
+        """
+        return pulumi.get(self, "vendor")
+
+    @vendor.setter
+    def vendor(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "vendor", value)
+
 
 if not MYPY:
     class HoneypotPresetMetaArgsDict(TypedDict):

@@ -23,6 +23,120 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.153.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.nas.NasFunctions;
+ * import com.pulumi.alicloud.nas.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.nas.FileSystem;
+ * import com.pulumi.alicloud.nas.FileSystemArgs;
+ * import com.pulumi.alicloud.nas.MountTarget;
+ * import com.pulumi.alicloud.nas.MountTargetArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.nas.Fileset;
+ * import com.pulumi.alicloud.nas.FilesetArgs;
+ * import com.pulumi.alicloud.nas.DataFlow;
+ * import com.pulumi.alicloud.nas.DataFlowArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.JoinArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var example = NasFunctions.getZones(GetZonesArgs.builder()
+ *             .fileSystemType("cpfs")
+ *             .build());
+ * 
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
+ *             .vpcName("terraform-example")
+ *             .cidrBlock("172.17.3.0/24")
+ *             .build());
+ * 
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
+ *             .vswitchName("terraform-example")
+ *             .cidrBlock("172.17.3.0/24")
+ *             .vpcId(exampleNetwork.id())
+ *             .zoneId(example.zones()[1].zoneId())
+ *             .build());
+ * 
+ *         var exampleFileSystem = new FileSystem("exampleFileSystem", FileSystemArgs.builder()
+ *             .protocolType("cpfs")
+ *             .storageType("advance_200")
+ *             .fileSystemType("cpfs")
+ *             .capacity(3600)
+ *             .description("terraform-example")
+ *             .zoneId(example.zones()[1].zoneId())
+ *             .vpcId(exampleNetwork.id())
+ *             .vswitchId(exampleSwitch.id())
+ *             .build());
+ * 
+ *         var exampleMountTarget = new MountTarget("exampleMountTarget", MountTargetArgs.builder()
+ *             .fileSystemId(exampleFileSystem.id())
+ *             .vswitchId(exampleSwitch.id())
+ *             .build());
+ * 
+ *         var exampleInteger = new Integer("exampleInteger", IntegerArgs.builder()
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         var exampleBucket = new Bucket("exampleBucket", BucketArgs.builder()
+ *             .bucket(String.format("example-value-%s", exampleInteger.result()))
+ *             .acl("private")
+ *             .tags(Map.of("cpfs-dataflow", "true"))
+ *             .build());
+ * 
+ *         var exampleFileset = new Fileset("exampleFileset", FilesetArgs.builder()
+ *             .fileSystemId(exampleMountTarget.fileSystemId())
+ *             .description("terraform-example")
+ *             .fileSystemPath("/example_path/")
+ *             .build());
+ * 
+ *         var exampleDataFlow = new DataFlow("exampleDataFlow", DataFlowArgs.builder()
+ *             .fsetId(exampleFileset.filesetId())
+ *             .description("terraform-example")
+ *             .fileSystemId(exampleFileSystem.id())
+ *             .sourceSecurityType("SSL")
+ *             .sourceStorage(StdFunctions.join(JoinArgs.builder()
+ *                 .separator("")
+ *                 .input(                
+ *                     "oss://",
+ *                     exampleBucket.bucket())
+ *                 .build()).applyValue(_invoke -> _invoke.result()))
+ *             .throughput(600)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * File Storage (NAS) Data Flow can be imported using the id, e.g.

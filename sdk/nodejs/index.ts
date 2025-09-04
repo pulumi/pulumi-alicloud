@@ -68,6 +68,11 @@ utilities.lazyLoad(exports, ["MscSubWebhook"], () => require("./mscSubWebhook"))
 export * from "./provider";
 import { Provider } from "./provider";
 
+export { StarRocksInstanceArgs, StarRocksInstanceState } from "./starRocksInstance";
+export type StarRocksInstance = import("./starRocksInstance").StarRocksInstance;
+export const StarRocksInstance: typeof import("./starRocksInstance").StarRocksInstance = null as any;
+utilities.lazyLoad(exports, ["StarRocksInstance"], () => require("./starRocksInstance"));
+
 
 // Export sub-modules:
 import * as ackone from "./ackone";
@@ -200,6 +205,7 @@ import * as simpleapplicationserver from "./simpleapplicationserver";
 import * as slb from "./slb";
 import * as sls from "./sls";
 import * as sms from "./sms";
+import * as sslcertificatesservice from "./sslcertificatesservice";
 import * as tag from "./tag";
 import * as threatdetection from "./threatdetection";
 import * as tsdb from "./tsdb";
@@ -343,6 +349,7 @@ export {
     slb,
     sls,
     sms,
+    sslcertificatesservice,
     tag,
     threatdetection,
     tsdb,
@@ -366,6 +373,8 @@ const _module = {
                 return new MscSubSubscription(name, <any>undefined, { urn })
             case "alicloud:index/mscSubWebhook:MscSubWebhook":
                 return new MscSubWebhook(name, <any>undefined, { urn })
+            case "alicloud:index/starRocksInstance:StarRocksInstance":
+                return new StarRocksInstance(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -374,6 +383,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "index/mscSubContract", _module)
 pulumi.runtime.registerResourceModule("alicloud", "index/mscSubSubscription", _module)
 pulumi.runtime.registerResourceModule("alicloud", "index/mscSubWebhook", _module)
+pulumi.runtime.registerResourceModule("alicloud", "index/starRocksInstance", _module)
 pulumi.runtime.registerResourcePackage("alicloud", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

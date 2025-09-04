@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ThreatDetection
 {
     /// <summary>
-    /// Provides a Threat Detection Image Event Operation resource. Image Event Operation.
+    /// Provides a Threat Detection Image Event Operation resource.
+    /// 
+    /// Image Event Operation.
     /// 
     /// For information about Threat Detection Image Event Operation and how to use it, see [What is Image Event Operation](https://www.alibabacloud.com/help/zh/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation).
     /// 
@@ -36,16 +38,16 @@ namespace Pulumi.AliCloud.ThreatDetection
     ///         OperationCode = "whitelist",
     ///         EventKey = "alibabacloud_ak",
     ///         Scenarios = @"{
-    ///   ""type"":""default"",
-    ///   ""value"":""""
+    ///   \""type\"":\""default\"",
+    ///   \""value\"":\""\""
     /// }
     /// ",
     ///         EventName = "阿里云AK",
     ///         Conditions = @"[
     ///   {
-    ///       ""condition"":""MD5"",
-    ///       ""type"":""equals"",
-    ///       ""value"":""0083a31cc0083a31ccf7c10367a6e783e""
+    ///       \""condition\"":\""MD5\"",
+    ///       \""type\"":\""equals\"",
+    ///       \""value\"":\""0083a31cc0083a31ccf7c10367a6e783e\""
     ///   }
     /// ]
     /// ",
@@ -66,40 +68,52 @@ namespace Pulumi.AliCloud.ThreatDetection
     public partial class ImageEventOperation : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Event Conditions.
+        /// The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
         /// </summary>
         [Output("conditions")]
-        public Output<string?> Conditions { get; private set; } = null!;
+        public Output<string> Conditions { get; private set; } = null!;
 
         /// <summary>
-        /// Image Event Key.
+        /// The keyword of the alert item.
         /// </summary>
         [Output("eventKey")]
         public Output<string?> EventKey { get; private set; } = null!;
 
         /// <summary>
-        /// Image Event Name.
+        /// The name of the alert item.
         /// </summary>
         [Output("eventName")]
         public Output<string?> EventName { get; private set; } = null!;
 
         /// <summary>
-        /// Image Event Type.
+        /// The alert type.
         /// </summary>
         [Output("eventType")]
         public Output<string> EventType { get; private set; } = null!;
 
         /// <summary>
-        /// Event Operation Code.
+        /// The remarks.
         /// </summary>
-        [Output("operationCode")]
-        public Output<string?> OperationCode { get; private set; } = null!;
+        [Output("note")]
+        public Output<string?> Note { get; private set; } = null!;
 
         /// <summary>
-        /// Event Scenarios.
+        /// The operation code.
+        /// </summary>
+        [Output("operationCode")]
+        public Output<string> OperationCode { get; private set; } = null!;
+
+        /// <summary>
+        /// The application scope of the rule.
         /// </summary>
         [Output("scenarios")]
-        public Output<string?> Scenarios { get; private set; } = null!;
+        public Output<string> Scenarios { get; private set; } = null!;
+
+        /// <summary>
+        /// The source of the whitelist. Valid values:
+        /// </summary>
+        [Output("source")]
+        public Output<string> Source { get; private set; } = null!;
 
 
         /// <summary>
@@ -109,7 +123,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public ImageEventOperation(string name, ImageEventOperationArgs? args = null, CustomResourceOptions? options = null)
+        public ImageEventOperation(string name, ImageEventOperationArgs args, CustomResourceOptions? options = null)
             : base("alicloud:threatdetection/imageEventOperation:ImageEventOperation", name, args ?? new ImageEventOperationArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -148,40 +162,52 @@ namespace Pulumi.AliCloud.ThreatDetection
     public sealed class ImageEventOperationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Event Conditions.
+        /// The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
         /// </summary>
-        [Input("conditions")]
-        public Input<string>? Conditions { get; set; }
+        [Input("conditions", required: true)]
+        public Input<string> Conditions { get; set; } = null!;
 
         /// <summary>
-        /// Image Event Key.
+        /// The keyword of the alert item.
         /// </summary>
         [Input("eventKey")]
         public Input<string>? EventKey { get; set; }
 
         /// <summary>
-        /// Image Event Name.
+        /// The name of the alert item.
         /// </summary>
         [Input("eventName")]
         public Input<string>? EventName { get; set; }
 
         /// <summary>
-        /// Image Event Type.
+        /// The alert type.
         /// </summary>
-        [Input("eventType")]
-        public Input<string>? EventType { get; set; }
+        [Input("eventType", required: true)]
+        public Input<string> EventType { get; set; } = null!;
 
         /// <summary>
-        /// Event Operation Code.
+        /// The remarks.
         /// </summary>
-        [Input("operationCode")]
-        public Input<string>? OperationCode { get; set; }
+        [Input("note")]
+        public Input<string>? Note { get; set; }
 
         /// <summary>
-        /// Event Scenarios.
+        /// The operation code.
+        /// </summary>
+        [Input("operationCode", required: true)]
+        public Input<string> OperationCode { get; set; } = null!;
+
+        /// <summary>
+        /// The application scope of the rule.
         /// </summary>
         [Input("scenarios")]
         public Input<string>? Scenarios { get; set; }
+
+        /// <summary>
+        /// The source of the whitelist. Valid values:
+        /// </summary>
+        [Input("source")]
+        public Input<string>? Source { get; set; }
 
         public ImageEventOperationArgs()
         {
@@ -192,40 +218,52 @@ namespace Pulumi.AliCloud.ThreatDetection
     public sealed class ImageEventOperationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Event Conditions.
+        /// The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
         /// </summary>
         [Input("conditions")]
         public Input<string>? Conditions { get; set; }
 
         /// <summary>
-        /// Image Event Key.
+        /// The keyword of the alert item.
         /// </summary>
         [Input("eventKey")]
         public Input<string>? EventKey { get; set; }
 
         /// <summary>
-        /// Image Event Name.
+        /// The name of the alert item.
         /// </summary>
         [Input("eventName")]
         public Input<string>? EventName { get; set; }
 
         /// <summary>
-        /// Image Event Type.
+        /// The alert type.
         /// </summary>
         [Input("eventType")]
         public Input<string>? EventType { get; set; }
 
         /// <summary>
-        /// Event Operation Code.
+        /// The remarks.
+        /// </summary>
+        [Input("note")]
+        public Input<string>? Note { get; set; }
+
+        /// <summary>
+        /// The operation code.
         /// </summary>
         [Input("operationCode")]
         public Input<string>? OperationCode { get; set; }
 
         /// <summary>
-        /// Event Scenarios.
+        /// The application scope of the rule.
         /// </summary>
         [Input("scenarios")]
         public Input<string>? Scenarios { get; set; }
+
+        /// <summary>
+        /// The source of the whitelist. Valid values:
+        /// </summary>
+        [Input("source")]
+        public Input<string>? Source { get; set; }
 
         public ImageEventOperationState()
         {

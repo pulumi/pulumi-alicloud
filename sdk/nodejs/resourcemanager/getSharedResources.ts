@@ -10,6 +10,49 @@ import * as utilities from "../utilities";
  * This data source provides the Resource Manager Shared Resources of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available since v1.111.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const _default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING$",
+ * });
+ * const defaultGetSwitches = Promise.all([defaultGetNetworks, _default]).then(([defaultGetNetworks, _default]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: _default.ids?.[0],
+ * }));
+ * const defaultResourceShare = new alicloud.resourcemanager.ResourceShare("default", {resourceShareName: name});
+ * const defaultSharedResource = new alicloud.resourcemanager.SharedResource("default", {
+ *     resourceShareId: defaultResourceShare.id,
+ *     resourceId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
+ *     resourceType: "VSwitch",
+ * });
+ * const ids = std.format({
+ *     input: "%s:%s",
+ *     args: [
+ *         defaultSharedResource.resourceId,
+ *         defaultSharedResource.resourceType,
+ *     ],
+ * }).then(invoke => alicloud.resourcemanager.getSharedResources({
+ *     ids: [invoke.result],
+ * }));
+ * export const firstResourceManagerSharedResourceId = ids.then(ids => ids.resources?.[0]?.id);
+ * const resourceShareId = alicloud.resourcemanager.getSharedResourcesOutput({
+ *     resourceShareId: defaultSharedResource.resourceShareId,
+ * });
+ * export const secondResourceManagerSharedResourceId = resourceShareId.apply(resourceShareId => resourceShareId.resources?.[0]?.id);
+ * ```
  */
 export function getSharedResources(args?: GetSharedResourcesArgs, opts?: pulumi.InvokeOptions): Promise<GetSharedResourcesResult> {
     args = args || {};
@@ -71,6 +114,49 @@ export interface GetSharedResourcesResult {
  * This data source provides the Resource Manager Shared Resources of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available since v1.111.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const _default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING$",
+ * });
+ * const defaultGetSwitches = Promise.all([defaultGetNetworks, _default]).then(([defaultGetNetworks, _default]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: _default.ids?.[0],
+ * }));
+ * const defaultResourceShare = new alicloud.resourcemanager.ResourceShare("default", {resourceShareName: name});
+ * const defaultSharedResource = new alicloud.resourcemanager.SharedResource("default", {
+ *     resourceShareId: defaultResourceShare.id,
+ *     resourceId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
+ *     resourceType: "VSwitch",
+ * });
+ * const ids = std.format({
+ *     input: "%s:%s",
+ *     args: [
+ *         defaultSharedResource.resourceId,
+ *         defaultSharedResource.resourceType,
+ *     ],
+ * }).then(invoke => alicloud.resourcemanager.getSharedResources({
+ *     ids: [invoke.result],
+ * }));
+ * export const firstResourceManagerSharedResourceId = ids.then(ids => ids.resources?.[0]?.id);
+ * const resourceShareId = alicloud.resourcemanager.getSharedResourcesOutput({
+ *     resourceShareId: defaultSharedResource.resourceShareId,
+ * });
+ * export const secondResourceManagerSharedResourceId = resourceShareId.apply(resourceShareId => resourceShareId.resources?.[0]?.id);
+ * ```
  */
 export function getSharedResourcesOutput(args?: GetSharedResourcesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSharedResourcesResult> {
     args = args || {};

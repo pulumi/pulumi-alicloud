@@ -16,6 +16,128 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// &gt; **NOTE:** Available since v1.152.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var domainName = config.Get("domainName") ?? "alicloud-provider.com";
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var defaultAlarmContactGroup = new AliCloud.Cms.AlarmContactGroup("default", new()
+    ///     {
+    ///         AlarmContactGroupName = name,
+    ///     });
+    /// 
+    ///     var defaultGtmInstance = new AliCloud.Dns.GtmInstance("default", new()
+    ///     {
+    ///         InstanceName = name,
+    ///         PaymentType = "Subscription",
+    ///         Period = 1,
+    ///         RenewalStatus = "ManualRenewal",
+    ///         PackageEdition = "standard",
+    ///         HealthCheckTaskCount = 100,
+    ///         SmsNotificationCount = 1000,
+    ///         PublicCnameMode = "SYSTEM_ASSIGN",
+    ///         Ttl = 60,
+    ///         CnameType = "PUBLIC",
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id)),
+    ///         AlertGroups = new[]
+    ///         {
+    ///             defaultAlarmContactGroup.AlarmContactGroupName,
+    ///         },
+    ///         PublicUserDomainName = domainName,
+    ///         AlertConfigs = new[]
+    ///         {
+    ///             new AliCloud.Dns.Inputs.GtmInstanceAlertConfigArgs
+    ///             {
+    ///                 SmsNotice = true,
+    ///                 NoticeType = "ADDR_ALERT",
+    ///                 EmailNotice = true,
+    ///                 DingtalkNotice = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultAddressPool = new List&lt;AliCloud.Dns.AddressPool&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         defaultAddressPool.Add(new AliCloud.Dns.AddressPool($"default-{range.Value}", new()
+    ///         {
+    ///             AddressPoolName = Std.Format.Invoke(new()
+    ///             {
+    ///                 Input = $"{name}_%d",
+    ///                 Args = new[]
+    ///                 {
+    ///                     range.Value + 1,
+    ///                 },
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///             InstanceId = defaultGtmInstance.Id,
+    ///             LbaStrategy = "RATIO",
+    ///             Type = "IPV4",
+    ///             Addresses = new[]
+    ///             {
+    ///                 new AliCloud.Dns.Inputs.AddressPoolAddressArgs
+    ///                 {
+    ///                     AttributeInfo = "{\"lineCodeRectifyType\":\"RECTIFIED\",\"lineCodes\":[\"os_namerica_us\"]}",
+    ///                     Remark = "address_remark",
+    ///                     Address = "1.1.1.1",
+    ///                     Mode = "SMART",
+    ///                     LbaWeight = 1,
+    ///                 },
+    ///             },
+    ///         }));
+    ///     }
+    ///     var defaultAccessStrategy = new AliCloud.Dns.AccessStrategy("default", new()
+    ///     {
+    ///         StrategyName = name,
+    ///         StrategyMode = "GEO",
+    ///         InstanceId = defaultGtmInstance.Id,
+    ///         DefaultAddrPoolType = "IPV4",
+    ///         DefaultLbaStrategy = "RATIO",
+    ///         DefaultMinAvailableAddrNum = 1,
+    ///         DefaultAddrPools = new[]
+    ///         {
+    ///             new AliCloud.Dns.Inputs.AccessStrategyDefaultAddrPoolArgs
+    ///             {
+    ///                 LbaWeight = 1,
+    ///                 AddrPoolId = defaultAddressPool[0].Id,
+    ///             },
+    ///         },
+    ///         FailoverAddrPoolType = "IPV4",
+    ///         FailoverLbaStrategy = "RATIO",
+    ///         FailoverMinAvailableAddrNum = 1,
+    ///         FailoverAddrPools = new[]
+    ///         {
+    ///             new AliCloud.Dns.Inputs.AccessStrategyFailoverAddrPoolArgs
+    ///             {
+    ///                 LbaWeight = 1,
+    ///                 AddrPoolId = defaultAddressPool[1].Id,
+    ///             },
+    ///         },
+    ///         Lines = new[]
+    ///         {
+    ///             new AliCloud.Dns.Inputs.AccessStrategyLineArgs
+    ///             {
+    ///                 LineCode = "default",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// DNS Access Strategy can be imported using the id, e.g.

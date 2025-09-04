@@ -207,12 +207,12 @@ def get_secret_parameters(enable_details: Optional[_builtins.bool] = None,
         type="Secret",
         description=name,
         constraints=\"\"\"  {
-        "AllowedValues": [
-            "tf-testacc-oos_secret_parameter"
+        \\"AllowedValues\\": [
+            \\"tf-testacc-oos_secret_parameter\\"
         ],
-        "AllowedPattern": "tf-testacc-oos_secret_parameter",
-        "MinLength": 1,
-        "MaxLength": 100
+        \\"AllowedPattern\\": \\"tf-testacc-oos_secret_parameter\\",
+        \\"MinLength\\": 1,
+        \\"MaxLength\\": 100
       }
     \"\"\",
         tags={
@@ -297,12 +297,12 @@ def get_secret_parameters_output(enable_details: Optional[pulumi.Input[Optional[
         type="Secret",
         description=name,
         constraints=\"\"\"  {
-        "AllowedValues": [
-            "tf-testacc-oos_secret_parameter"
+        \\"AllowedValues\\": [
+            \\"tf-testacc-oos_secret_parameter\\"
         ],
-        "AllowedPattern": "tf-testacc-oos_secret_parameter",
-        "MinLength": 1,
-        "MaxLength": 100
+        \\"AllowedPattern\\": \\"tf-testacc-oos_secret_parameter\\",
+        \\"MinLength\\": 1,
+        \\"MaxLength\\": 100
       }
     \"\"\",
         tags={

@@ -22,6 +22,118 @@ import (
 //
 // > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudsso"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "terraform-example";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// _default, err := cloudsso.GetDirectories(ctx, &cloudsso.GetDirectoriesArgs{
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetResourceDirectories, err := resourcemanager.GetResourceDirectories(ctx, &resourcemanager.GetResourceDirectoriesArgs{
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+// Min: 10000,
+// Max: 99999,
+// })
+// if err != nil {
+// return err
+// }
+// var tmp0 float64
+// if length > 0 {
+// tmp0 = 0
+// } else {
+// tmp0 = 1
+// }
+// var defaultDirectory []*cloudsso.Directory
+// for index := 0; index < float64(len(_default.Ids).ApplyT(func(length int) (float64, error) {
+// return tmp0, nil
+//
+//	}).(pulumi.Float64Output)); index++ {
+//	    key0 := index
+//	    _ := index
+//
+// __res, err := cloudsso.NewDirectory(ctx, fmt.Sprintf("default-%v", key0), &cloudsso.DirectoryArgs{
+// DirectoryName: pulumi.String(name),
+// })
+// if err != nil {
+// return err
+// }
+// defaultDirectory = append(defaultDirectory, __res)
+// }
+// var tmp1 *interface{}
+// if length > 0 {
+// tmp1 = _default.Ids[0]
+// } else {
+// tmp1 = std.Concat(ctx, &std.ConcatArgs{
+// Input: pulumi.StringArrayArray{
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:45,12-34),
+// []string{
+// "",
+// },
+// },
+// }, nil).Result[0]
+// }
+// directoryId := len(_default.Ids).ApplyT(func(length int) (*interface{}, error) {
+// return &tmp1, nil
+// }).(pulumi.Interface{}PtrOutput)
+// defaultUser, err := cloudsso.NewUser(ctx, "default", &cloudsso.UserArgs{
+// DirectoryId: pulumi.Any(directoryId),
+// UserName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
+// })
+// if err != nil {
+// return err
+// }
+// defaultAccessConfiguration, err := cloudsso.NewAccessConfiguration(ctx, "default", &cloudsso.AccessConfigurationArgs{
+// DirectoryId: pulumi.Any(directoryId),
+// AccessConfigurationName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
+// })
+// if err != nil {
+// return err
+// }
+// _, err = cloudsso.NewAccessManagement(ctx, "default", &cloudsso.AccessManagementArgs{
+// DirectoryId: pulumi.Any(directoryId),
+// AccessConfigurationId: defaultAccessConfiguration.AccessConfigurationId,
+// TargetType: pulumi.String("RD-Account"),
+// TargetId: pulumi.String(defaultGetResourceDirectories.Directories[0].MasterAccountId),
+// PrincipalType: pulumi.String("User"),
+// PrincipalId: defaultUser.UserId,
+// DeprovisionStrategy: pulumi.String("DeprovisionForLastAccessAssignmentOnAccount"),
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
+//
 // ## Import
 //
 // Cloud SSO Access Assignment can be imported using the id, e.g.

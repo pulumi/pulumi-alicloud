@@ -4596,8 +4596,8 @@ public final class CmsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.random.integer;
-     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
      * import com.pulumi.alicloud.cms.SiteMonitor;
      * import com.pulumi.alicloud.cms.SiteMonitorArgs;
      * import com.pulumi.alicloud.cms.inputs.SiteMonitorIspCityArgs;
@@ -4634,19 +4634,19 @@ public final class CmsFunctions {
      *                 .build())
      *             .optionsJson("""
      * {
-     *     "http_method": "get",
-     *     "waitTime_after_completion": null,
-     *     "ipv6_task": false,
-     *     "diagnosis_ping": false,
-     *     "diagnosis_mtr": false,
-     *     "assertions": [
+     *     \"http_method\": \"get\",
+     *     \"waitTime_after_completion\": null,
+     *     \"ipv6_task\": false,
+     *     \"diagnosis_ping\": false,
+     *     \"diagnosis_mtr\": false,
+     *     \"assertions\": [
      *         {
-     *             "operator": "lessThan",
-     *             "type": "response_time",
-     *             "target": 1000
+     *             \"operator\": \"lessThan\",
+     *             \"type\": \"response_time\",
+     *             \"target\": 1000
      *         }
      *     ],
-     *     "time_out": 30000
+     *     \"time_out\": 30000
      * }
      *             """)
      *             .build());
@@ -4682,8 +4682,8 @@ public final class CmsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.random.integer;
-     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
      * import com.pulumi.alicloud.cms.SiteMonitor;
      * import com.pulumi.alicloud.cms.SiteMonitorArgs;
      * import com.pulumi.alicloud.cms.inputs.SiteMonitorIspCityArgs;
@@ -4720,19 +4720,19 @@ public final class CmsFunctions {
      *                 .build())
      *             .optionsJson("""
      * {
-     *     "http_method": "get",
-     *     "waitTime_after_completion": null,
-     *     "ipv6_task": false,
-     *     "diagnosis_ping": false,
-     *     "diagnosis_mtr": false,
-     *     "assertions": [
+     *     \"http_method\": \"get\",
+     *     \"waitTime_after_completion\": null,
+     *     \"ipv6_task\": false,
+     *     \"diagnosis_ping\": false,
+     *     \"diagnosis_mtr\": false,
+     *     \"assertions\": [
      *         {
-     *             "operator": "lessThan",
-     *             "type": "response_time",
-     *             "target": 1000
+     *             \"operator\": \"lessThan\",
+     *             \"type\": \"response_time\",
+     *             \"target\": 1000
      *         }
      *     ],
-     *     "time_out": 30000
+     *     \"time_out\": 30000
      * }
      *             """)
      *             .build());
@@ -4768,8 +4768,8 @@ public final class CmsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.random.integer;
-     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
      * import com.pulumi.alicloud.cms.SiteMonitor;
      * import com.pulumi.alicloud.cms.SiteMonitorArgs;
      * import com.pulumi.alicloud.cms.inputs.SiteMonitorIspCityArgs;
@@ -4806,19 +4806,19 @@ public final class CmsFunctions {
      *                 .build())
      *             .optionsJson("""
      * {
-     *     "http_method": "get",
-     *     "waitTime_after_completion": null,
-     *     "ipv6_task": false,
-     *     "diagnosis_ping": false,
-     *     "diagnosis_mtr": false,
-     *     "assertions": [
+     *     \"http_method\": \"get\",
+     *     \"waitTime_after_completion\": null,
+     *     \"ipv6_task\": false,
+     *     \"diagnosis_ping\": false,
+     *     \"diagnosis_mtr\": false,
+     *     \"assertions\": [
      *         {
-     *             "operator": "lessThan",
-     *             "type": "response_time",
-     *             "target": 1000
+     *             \"operator\": \"lessThan\",
+     *             \"type\": \"response_time\",
+     *             \"target\": 1000
      *         }
      *     ],
-     *     "time_out": 30000
+     *     \"time_out\": 30000
      * }
      *             """)
      *             .build());
@@ -4854,8 +4854,8 @@ public final class CmsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.random.integer;
-     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
      * import com.pulumi.alicloud.cms.SiteMonitor;
      * import com.pulumi.alicloud.cms.SiteMonitorArgs;
      * import com.pulumi.alicloud.cms.inputs.SiteMonitorIspCityArgs;
@@ -4892,19 +4892,19 @@ public final class CmsFunctions {
      *                 .build())
      *             .optionsJson("""
      * {
-     *     "http_method": "get",
-     *     "waitTime_after_completion": null,
-     *     "ipv6_task": false,
-     *     "diagnosis_ping": false,
-     *     "diagnosis_mtr": false,
-     *     "assertions": [
+     *     \"http_method\": \"get\",
+     *     \"waitTime_after_completion\": null,
+     *     \"ipv6_task\": false,
+     *     \"diagnosis_ping\": false,
+     *     \"diagnosis_mtr\": false,
+     *     \"assertions\": [
      *         {
-     *             "operator": "lessThan",
-     *             "type": "response_time",
-     *             "target": 1000
+     *             \"operator\": \"lessThan\",
+     *             \"type\": \"response_time\",
+     *             \"target\": 1000
      *         }
      *     ],
-     *     "time_out": 30000
+     *     \"time_out\": 30000
      * }
      *             """)
      *             .build());
@@ -4940,8 +4940,8 @@ public final class CmsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.random.integer;
-     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
      * import com.pulumi.alicloud.cms.SiteMonitor;
      * import com.pulumi.alicloud.cms.SiteMonitorArgs;
      * import com.pulumi.alicloud.cms.inputs.SiteMonitorIspCityArgs;
@@ -4978,19 +4978,19 @@ public final class CmsFunctions {
      *                 .build())
      *             .optionsJson("""
      * {
-     *     "http_method": "get",
-     *     "waitTime_after_completion": null,
-     *     "ipv6_task": false,
-     *     "diagnosis_ping": false,
-     *     "diagnosis_mtr": false,
-     *     "assertions": [
+     *     \"http_method\": \"get\",
+     *     \"waitTime_after_completion\": null,
+     *     \"ipv6_task\": false,
+     *     \"diagnosis_ping\": false,
+     *     \"diagnosis_mtr\": false,
+     *     \"assertions\": [
      *         {
-     *             "operator": "lessThan",
-     *             "type": "response_time",
-     *             "target": 1000
+     *             \"operator\": \"lessThan\",
+     *             \"type\": \"response_time\",
+     *             \"target\": 1000
      *         }
      *     ],
-     *     "time_out": 30000
+     *     \"time_out\": 30000
      * }
      *             """)
      *             .build());
@@ -5026,8 +5026,8 @@ public final class CmsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.random.integer;
-     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
      * import com.pulumi.alicloud.cms.SiteMonitor;
      * import com.pulumi.alicloud.cms.SiteMonitorArgs;
      * import com.pulumi.alicloud.cms.inputs.SiteMonitorIspCityArgs;
@@ -5064,19 +5064,19 @@ public final class CmsFunctions {
      *                 .build())
      *             .optionsJson("""
      * {
-     *     "http_method": "get",
-     *     "waitTime_after_completion": null,
-     *     "ipv6_task": false,
-     *     "diagnosis_ping": false,
-     *     "diagnosis_mtr": false,
-     *     "assertions": [
+     *     \"http_method\": \"get\",
+     *     \"waitTime_after_completion\": null,
+     *     \"ipv6_task\": false,
+     *     \"diagnosis_ping\": false,
+     *     \"diagnosis_mtr\": false,
+     *     \"assertions\": [
      *         {
-     *             "operator": "lessThan",
-     *             "type": "response_time",
-     *             "target": 1000
+     *             \"operator\": \"lessThan\",
+     *             \"type\": \"response_time\",
+     *             \"target\": 1000
      *         }
      *     ],
-     *     "time_out": 30000
+     *     \"time_out\": 30000
      * }
      *             """)
      *             .build());
@@ -5112,8 +5112,8 @@ public final class CmsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.random.integer;
-     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
      * import com.pulumi.alicloud.cms.SiteMonitor;
      * import com.pulumi.alicloud.cms.SiteMonitorArgs;
      * import com.pulumi.alicloud.cms.inputs.SiteMonitorIspCityArgs;
@@ -5150,19 +5150,19 @@ public final class CmsFunctions {
      *                 .build())
      *             .optionsJson("""
      * {
-     *     "http_method": "get",
-     *     "waitTime_after_completion": null,
-     *     "ipv6_task": false,
-     *     "diagnosis_ping": false,
-     *     "diagnosis_mtr": false,
-     *     "assertions": [
+     *     \"http_method\": \"get\",
+     *     \"waitTime_after_completion\": null,
+     *     \"ipv6_task\": false,
+     *     \"diagnosis_ping\": false,
+     *     \"diagnosis_mtr\": false,
+     *     \"assertions\": [
      *         {
-     *             "operator": "lessThan",
-     *             "type": "response_time",
-     *             "target": 1000
+     *             \"operator\": \"lessThan\",
+     *             \"type\": \"response_time\",
+     *             \"target\": 1000
      *         }
      *     ],
-     *     "time_out": 30000
+     *     \"time_out\": 30000
      * }
      *             """)
      *             .build());

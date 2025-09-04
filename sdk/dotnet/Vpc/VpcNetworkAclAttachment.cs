@@ -16,6 +16,56 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// &gt; **NOTE:** Available since v1.193.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         CidrBlock = "192.168.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = defaultNetwork.CidrBlock.Apply(cidrBlock =&gt; Std.Cidrsubnet.Invoke(new()
+    ///         {
+    ///             Input = cidrBlock,
+    ///             Newbits = 8,
+    ///             Netnum = 2,
+    ///         })).Apply(invoke =&gt; invoke.Result),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///     });
+    /// 
+    ///     var defaultNetworkAcl = new AliCloud.Vpc.NetworkAcl("default", new()
+    ///     {
+    ///         VpcId = defaultSwitch.VpcId,
+    ///     });
+    /// 
+    ///     var defaultVpcNetworkAclAttachment = new AliCloud.Vpc.VpcNetworkAclAttachment("default", new()
+    ///     {
+    ///         NetworkAclId = defaultNetworkAcl.Id,
+    ///         ResourceId = defaultSwitch.Id,
+    ///         ResourceType = "VSwitch",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// VPC Network Acl Attachment can be imported using the id, e.g.

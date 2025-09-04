@@ -9,6 +9,7 @@ import com.pulumi.alicloud.fc.inputs.V3FunctionCustomDnsArgs;
 import com.pulumi.alicloud.fc.inputs.V3FunctionCustomRuntimeConfigArgs;
 import com.pulumi.alicloud.fc.inputs.V3FunctionGpuConfigArgs;
 import com.pulumi.alicloud.fc.inputs.V3FunctionInstanceLifecycleConfigArgs;
+import com.pulumi.alicloud.fc.inputs.V3FunctionInvocationRestrictionArgs;
 import com.pulumi.alicloud.fc.inputs.V3FunctionLogConfigArgs;
 import com.pulumi.alicloud.fc.inputs.V3FunctionNasConfigArgs;
 import com.pulumi.alicloud.fc.inputs.V3FunctionOssMountConfigArgs;
@@ -272,6 +273,21 @@ public final class V3FunctionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Instance isolation mode
+     * 
+     */
+    @Import(name="instanceIsolationMode")
+    private @Nullable Output<String> instanceIsolationMode;
+
+    /**
+     * @return Instance isolation mode
+     * 
+     */
+    public Optional<Output<String>> instanceIsolationMode() {
+        return Optional.ofNullable(this.instanceIsolationMode);
+    }
+
+    /**
      * Instance lifecycle callback method configuration. See `instance_lifecycle_config` below.
      * 
      */
@@ -299,6 +315,21 @@ public final class V3FunctionState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> internetAccess() {
         return Optional.ofNullable(this.internetAccess);
+    }
+
+    /**
+     * Invocation Restriction Detail See `invocation_restriction` below.
+     * 
+     */
+    @Import(name="invocationRestriction")
+    private @Nullable Output<V3FunctionInvocationRestrictionArgs> invocationRestriction;
+
+    /**
+     * @return Invocation Restriction Detail See `invocation_restriction` below.
+     * 
+     */
+    public Optional<Output<V3FunctionInvocationRestrictionArgs>> invocationRestriction() {
+        return Optional.ofNullable(this.invocationRestriction);
     }
 
     /**
@@ -467,6 +498,36 @@ public final class V3FunctionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
+     * 
+     */
+    @Import(name="sessionAffinity")
+    private @Nullable Output<String> sessionAffinity;
+
+    /**
+     * @return The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
+     * 
+     */
+    public Optional<Output<String>> sessionAffinity() {
+        return Optional.ofNullable(this.sessionAffinity);
+    }
+
+    /**
+     * When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
+     * 
+     */
+    @Import(name="sessionAffinityConfig")
+    private @Nullable Output<String> sessionAffinityConfig;
+
+    /**
+     * @return When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
+     * 
+     */
+    public Optional<Output<String>> sessionAffinityConfig() {
+        return Optional.ofNullable(this.sessionAffinityConfig);
+    }
+
+    /**
      * Function Status
      * 
      */
@@ -590,8 +651,10 @@ public final class V3FunctionState extends com.pulumi.resources.ResourceArgs {
         this.gpuConfig = $.gpuConfig;
         this.handler = $.handler;
         this.instanceConcurrency = $.instanceConcurrency;
+        this.instanceIsolationMode = $.instanceIsolationMode;
         this.instanceLifecycleConfig = $.instanceLifecycleConfig;
         this.internetAccess = $.internetAccess;
+        this.invocationRestriction = $.invocationRestriction;
         this.lastModifiedTime = $.lastModifiedTime;
         this.lastUpdateStatus = $.lastUpdateStatus;
         this.lastUpdateStatusReason = $.lastUpdateStatusReason;
@@ -603,6 +666,8 @@ public final class V3FunctionState extends com.pulumi.resources.ResourceArgs {
         this.ossMountConfig = $.ossMountConfig;
         this.role = $.role;
         this.runtime = $.runtime;
+        this.sessionAffinity = $.sessionAffinity;
+        this.sessionAffinityConfig = $.sessionAffinityConfig;
         this.state = $.state;
         this.stateReason = $.stateReason;
         this.stateReasonCode = $.stateReasonCode;
@@ -967,6 +1032,27 @@ public final class V3FunctionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param instanceIsolationMode Instance isolation mode
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceIsolationMode(@Nullable Output<String> instanceIsolationMode) {
+            $.instanceIsolationMode = instanceIsolationMode;
+            return this;
+        }
+
+        /**
+         * @param instanceIsolationMode Instance isolation mode
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceIsolationMode(String instanceIsolationMode) {
+            return instanceIsolationMode(Output.of(instanceIsolationMode));
+        }
+
+        /**
          * @param instanceLifecycleConfig Instance lifecycle callback method configuration. See `instance_lifecycle_config` below.
          * 
          * @return builder
@@ -1006,6 +1092,27 @@ public final class V3FunctionState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder internetAccess(Boolean internetAccess) {
             return internetAccess(Output.of(internetAccess));
+        }
+
+        /**
+         * @param invocationRestriction Invocation Restriction Detail See `invocation_restriction` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder invocationRestriction(@Nullable Output<V3FunctionInvocationRestrictionArgs> invocationRestriction) {
+            $.invocationRestriction = invocationRestriction;
+            return this;
+        }
+
+        /**
+         * @param invocationRestriction Invocation Restriction Detail See `invocation_restriction` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder invocationRestriction(V3FunctionInvocationRestrictionArgs invocationRestriction) {
+            return invocationRestriction(Output.of(invocationRestriction));
         }
 
         /**
@@ -1247,6 +1354,48 @@ public final class V3FunctionState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder runtime(String runtime) {
             return runtime(Output.of(runtime));
+        }
+
+        /**
+         * @param sessionAffinity The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sessionAffinity(@Nullable Output<String> sessionAffinity) {
+            $.sessionAffinity = sessionAffinity;
+            return this;
+        }
+
+        /**
+         * @param sessionAffinity The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sessionAffinity(String sessionAffinity) {
+            return sessionAffinity(Output.of(sessionAffinity));
+        }
+
+        /**
+         * @param sessionAffinityConfig When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sessionAffinityConfig(@Nullable Output<String> sessionAffinityConfig) {
+            $.sessionAffinityConfig = sessionAffinityConfig;
+            return this;
+        }
+
+        /**
+         * @param sessionAffinityConfig When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sessionAffinityConfig(String sessionAffinityConfig) {
+            return sessionAffinityConfig(Output.of(sessionAffinityConfig));
         }
 
         /**

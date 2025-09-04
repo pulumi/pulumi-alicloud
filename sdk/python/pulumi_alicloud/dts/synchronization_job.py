@@ -68,11 +68,11 @@ class SynchronizationJobArgs:
         :param pulumi.Input[_builtins.bool] data_initialization: Whether to perform full data migration or full data initialization. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.bool] data_synchronization: Whether to perform incremental data migration or synchronization. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] db_list: Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html). **NOTE:** From version 1.173.0, `db_list` can be modified.
-        :param pulumi.Input[_builtins.str] destination_endpoint_engine_name: The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+        :param pulumi.Input[_builtins.str] destination_endpoint_engine_name: The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,` POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
         :param pulumi.Input[_builtins.str] destination_endpoint_instance_type: The type of destination instance. If the target instance is a PolarDB O engine cluster, the target instance type needs to be `OTHER` or `EXPRESS` as a self-built database, and access via public IP or dedicated line. If the target instance is the Kafka version of Message Queuing, the target instance type needs to be `ECS` or `EXPRESS` as a self-built database, and access via ECS or dedicated line. For the correspondence between supported targets and source instances, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the target instance is a self-built database, you also need to perform corresponding preparations, please refer to the [overview of preparations](https://help.aliyun.com/document_detail/146958.htm). Valid values: `ADS`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
         :param pulumi.Input[_builtins.str] dts_instance_id: The ID of synchronization instance, it must be an ID of `dts.SynchronizationInstance`.
         :param pulumi.Input[_builtins.str] dts_job_name: The name of synchronization job.
-        :param pulumi.Input[_builtins.str] source_endpoint_engine_name: The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+        :param pulumi.Input[_builtins.str] source_endpoint_engine_name: The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `TiDB`, `REDIS`.
         :param pulumi.Input[_builtins.str] source_endpoint_instance_type: The type of source instance. If the source instance is a `PolarDB O` engine cluster, the source instance type needs to be `OTHER` or `EXPRESS` as a self-built database, and access via public IP or dedicated line. For the correspondence between supported source and target instances, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the source instance is a self-built database, you also need to perform corresponding preparations, for details, see [Preparations Overview](https://help.aliyun.com/document_detail/146958.htm). Valid values: `CEN`, `DG`, `DISTRIBUTED_DMSLOGICDB`, `ECS`, `EXPRESS`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
         :param pulumi.Input[_builtins.bool] structure_initialization: Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] checkpoint: The start point or synchronization point of incremental data migration, the format is Unix timestamp, and the unit is seconds.
@@ -239,7 +239,7 @@ class SynchronizationJobArgs:
     @pulumi.getter(name="destinationEndpointEngineName")
     def destination_endpoint_engine_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+        The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,` POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
         """
         return pulumi.get(self, "destination_endpoint_engine_name")
 
@@ -287,7 +287,7 @@ class SynchronizationJobArgs:
     @pulumi.getter(name="sourceEndpointEngineName")
     def source_endpoint_engine_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+        The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `TiDB`, `REDIS`.
         """
         return pulumi.get(self, "source_endpoint_engine_name")
 
@@ -797,7 +797,7 @@ class _SynchronizationJobState:
         :param pulumi.Input[_builtins.str] delay_phone: The delay phone. The mobile phone number of the contact who delayed the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
         :param pulumi.Input[_builtins.str] delay_rule_time: The delay rule time. When `delay_notice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
         :param pulumi.Input[_builtins.str] destination_endpoint_database_name: The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
-        :param pulumi.Input[_builtins.str] destination_endpoint_engine_name: The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+        :param pulumi.Input[_builtins.str] destination_endpoint_engine_name: The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,` POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
         :param pulumi.Input[_builtins.str] destination_endpoint_instance_id: The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `destination_endpoint_instance_type`. For example, the value of `destination_endpoint_instance_type` is:
                ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
                ** `DG`, then this parameter needs to be passed into the ID of database gateway.
@@ -823,7 +823,7 @@ class _SynchronizationJobState:
         :param pulumi.Input[_builtins.str] instance_class: The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
         :param pulumi.Input[_builtins.str] reserve: DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
         :param pulumi.Input[_builtins.str] source_endpoint_database_name: The name of the database to which the migration object belongs in the source instance. Note: this parameter is only available and must be passed in when the source instance, or the database type of the source instance is PolarDB O engine, PostgreSQL, or MongoDB database.
-        :param pulumi.Input[_builtins.str] source_endpoint_engine_name: The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+        :param pulumi.Input[_builtins.str] source_endpoint_engine_name: The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `TiDB`, `REDIS`.
         :param pulumi.Input[_builtins.str] source_endpoint_instance_id: The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `source_endpoint_instance_type`. For example, the value of `source_endpoint_instance_type` is:
                ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
                ** `DG`, then this parameter needs to be passed into the ID of database gateway.
@@ -1055,7 +1055,7 @@ class _SynchronizationJobState:
     @pulumi.getter(name="destinationEndpointEngineName")
     def destination_endpoint_engine_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+        The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,` POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
         """
         return pulumi.get(self, "destination_endpoint_engine_name")
 
@@ -1290,7 +1290,7 @@ class _SynchronizationJobState:
     @pulumi.getter(name="sourceEndpointEngineName")
     def source_endpoint_engine_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+        The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `TiDB`, `REDIS`.
         """
         return pulumi.get(self, "source_endpoint_engine_name")
 
@@ -1528,6 +1528,132 @@ class SynchronizationJob(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.138.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        example = alicloud.get_regions(current=True)
+        example_get_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="Basic",
+            db_instance_storage_type="cloud_essd")
+        example_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=example_get_zones.zones[0].id,
+            engine="MySQL",
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="Basic",
+            db_instance_storage_type="cloud_essd")
+        example_network = alicloud.vpc.Network("example",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        example_switch = alicloud.vpc.Switch("example",
+            vpc_id=example_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=example_get_zones.zones[0].id,
+            vswitch_name=name)
+        example_security_group = alicloud.ecs.SecurityGroup("example",
+            security_group_name=name,
+            vpc_id=example_network.id)
+        example_instance = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            example_instance.append(alicloud.rds.Instance(f"example-{range['value']}",
+                engine="MySQL",
+                engine_version="8.0",
+                instance_type=example_get_instance_classes.instance_classes[0].instance_class,
+                instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+                instance_charge_type="Postpaid",
+                instance_name=std.format(input="%s_%d",
+                    args=[
+                        name,
+                        range["value"] + 1,
+                    ]).result,
+                vswitch_id=example_switch.id,
+                monitoring_period=60,
+                db_instance_storage_type="cloud_essd",
+                security_group_ids=[example_security_group.id]))
+        example_rds_account = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            example_rds_account.append(alicloud.rds.RdsAccount(f"example-{range['value']}",
+                db_instance_id=example_instance[range["value"]].id,
+                account_name=std.format(input="example_name_%d",
+                    args=[range["value"] + 1]).result,
+                account_password=std.format(input="example_password_%d",
+                    args=[range["value"] + 1]).result))
+        example_database = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            example_database.append(alicloud.rds.Database(f"example-{range['value']}",
+                instance_id=example_instance[range["value"]].id,
+                name=std.format(input="%s_%d",
+                    args=[
+                        name,
+                        range["value"] + 1,
+                    ]).result))
+        example_account_privilege = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            example_account_privilege.append(alicloud.rds.AccountPrivilege(f"example-{range['value']}",
+                instance_id=example_instance[range["value"]].id,
+                account_name=example_rds_account[range["value"]].account_name,
+                privilege="ReadWrite",
+                db_names=[example_database[range["value"]].name]))
+        example_synchronization_instance = alicloud.dts.SynchronizationInstance("example",
+            payment_type="PayAsYouGo",
+            source_endpoint_engine_name="MySQL",
+            source_endpoint_region=example.regions[0].id,
+            destination_endpoint_engine_name="MySQL",
+            destination_endpoint_region=example.regions[0].id,
+            instance_class="small",
+            sync_architecture="oneway")
+        example_synchronization_job = alicloud.dts.SynchronizationJob("example",
+            dts_instance_id=example_synchronization_instance.id,
+            dts_job_name=name,
+            source_endpoint_instance_type="RDS",
+            source_endpoint_instance_id=example_account_privilege[0].instance_id,
+            source_endpoint_engine_name="MySQL",
+            source_endpoint_region=example.regions[0].id,
+            source_endpoint_user_name=example_rds_account[0].account_name,
+            source_endpoint_password=example_rds_account[0].account_password,
+            destination_endpoint_instance_type="RDS",
+            destination_endpoint_instance_id=example_account_privilege[1].instance_id,
+            destination_endpoint_engine_name="MySQL",
+            destination_endpoint_region=example.regions[0].id,
+            destination_endpoint_user_name=example_rds_account[1].account_name,
+            destination_endpoint_password=example_rds_account[1].account_password,
+            db_list=pulumi.Output.json_dumps(pulumi.Output.all(
+                exampleDatabaseName=example_database[0].name,
+                exampleDatabaseName1=example_database[1].name
+        ).apply(lambda resolved_outputs: {
+                resolved_outputs['exampleDatabaseName']: {
+                    "name": resolved_outputs['exampleDatabaseName1'],
+                    "all": True,
+                },
+            })
+        ),
+            structure_initialization=True,
+            data_initialization=True,
+            data_synchronization=True,
+            status="Synchronizing")
+        ```
+
+        ## Notice
+
+        1. The expiration time cannot be changed after the work of the annual and monthly subscription suspended;
+        2. After the pay-as-you-go type job suspended, your job configuration fee will still be charged;
+        3. If the task suspended for more than 6 hours, the task will not start successfully.
+        4. Suspending the task will only stop writing to the target library, but will still continue to obtain the incremental log of the source, so that the task can be quickly resumed after the suspension is canceled. Therefore, some resources of the source library, such as bandwidth resources, will continue to be occupied during the period.
+        5. Charges will continue during the task suspension period. If you need to stop charging, please release the instance
+        6. When a DTS instance suspended for more than 7 days, the instance cannot be resumed, and the status will change from suspended to failed.
+
         ## Import
 
         DTS Synchronization Job can be imported using the id, e.g.
@@ -1548,7 +1674,7 @@ class SynchronizationJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] delay_phone: The delay phone. The mobile phone number of the contact who delayed the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
         :param pulumi.Input[_builtins.str] delay_rule_time: The delay rule time. When `delay_notice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
         :param pulumi.Input[_builtins.str] destination_endpoint_database_name: The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
-        :param pulumi.Input[_builtins.str] destination_endpoint_engine_name: The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+        :param pulumi.Input[_builtins.str] destination_endpoint_engine_name: The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,` POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
         :param pulumi.Input[_builtins.str] destination_endpoint_instance_id: The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `destination_endpoint_instance_type`. For example, the value of `destination_endpoint_instance_type` is:
                ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
                ** `DG`, then this parameter needs to be passed into the ID of database gateway.
@@ -1574,7 +1700,7 @@ class SynchronizationJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] instance_class: The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
         :param pulumi.Input[_builtins.str] reserve: DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
         :param pulumi.Input[_builtins.str] source_endpoint_database_name: The name of the database to which the migration object belongs in the source instance. Note: this parameter is only available and must be passed in when the source instance, or the database type of the source instance is PolarDB O engine, PostgreSQL, or MongoDB database.
-        :param pulumi.Input[_builtins.str] source_endpoint_engine_name: The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+        :param pulumi.Input[_builtins.str] source_endpoint_engine_name: The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `TiDB`, `REDIS`.
         :param pulumi.Input[_builtins.str] source_endpoint_instance_id: The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `source_endpoint_instance_type`. For example, the value of `source_endpoint_instance_type` is:
                ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
                ** `DG`, then this parameter needs to be passed into the ID of database gateway.
@@ -1605,6 +1731,132 @@ class SynchronizationJob(pulumi.CustomResource):
         For information about DTS Synchronization Job and how to use it, see [What is Synchronization Job](https://www.alibabacloud.com/help/en/dts/developer-reference/api-configuredtsjob).
 
         > **NOTE:** Available since v1.138.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        example = alicloud.get_regions(current=True)
+        example_get_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="Basic",
+            db_instance_storage_type="cloud_essd")
+        example_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=example_get_zones.zones[0].id,
+            engine="MySQL",
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="Basic",
+            db_instance_storage_type="cloud_essd")
+        example_network = alicloud.vpc.Network("example",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        example_switch = alicloud.vpc.Switch("example",
+            vpc_id=example_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=example_get_zones.zones[0].id,
+            vswitch_name=name)
+        example_security_group = alicloud.ecs.SecurityGroup("example",
+            security_group_name=name,
+            vpc_id=example_network.id)
+        example_instance = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            example_instance.append(alicloud.rds.Instance(f"example-{range['value']}",
+                engine="MySQL",
+                engine_version="8.0",
+                instance_type=example_get_instance_classes.instance_classes[0].instance_class,
+                instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+                instance_charge_type="Postpaid",
+                instance_name=std.format(input="%s_%d",
+                    args=[
+                        name,
+                        range["value"] + 1,
+                    ]).result,
+                vswitch_id=example_switch.id,
+                monitoring_period=60,
+                db_instance_storage_type="cloud_essd",
+                security_group_ids=[example_security_group.id]))
+        example_rds_account = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            example_rds_account.append(alicloud.rds.RdsAccount(f"example-{range['value']}",
+                db_instance_id=example_instance[range["value"]].id,
+                account_name=std.format(input="example_name_%d",
+                    args=[range["value"] + 1]).result,
+                account_password=std.format(input="example_password_%d",
+                    args=[range["value"] + 1]).result))
+        example_database = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            example_database.append(alicloud.rds.Database(f"example-{range['value']}",
+                instance_id=example_instance[range["value"]].id,
+                name=std.format(input="%s_%d",
+                    args=[
+                        name,
+                        range["value"] + 1,
+                    ]).result))
+        example_account_privilege = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            example_account_privilege.append(alicloud.rds.AccountPrivilege(f"example-{range['value']}",
+                instance_id=example_instance[range["value"]].id,
+                account_name=example_rds_account[range["value"]].account_name,
+                privilege="ReadWrite",
+                db_names=[example_database[range["value"]].name]))
+        example_synchronization_instance = alicloud.dts.SynchronizationInstance("example",
+            payment_type="PayAsYouGo",
+            source_endpoint_engine_name="MySQL",
+            source_endpoint_region=example.regions[0].id,
+            destination_endpoint_engine_name="MySQL",
+            destination_endpoint_region=example.regions[0].id,
+            instance_class="small",
+            sync_architecture="oneway")
+        example_synchronization_job = alicloud.dts.SynchronizationJob("example",
+            dts_instance_id=example_synchronization_instance.id,
+            dts_job_name=name,
+            source_endpoint_instance_type="RDS",
+            source_endpoint_instance_id=example_account_privilege[0].instance_id,
+            source_endpoint_engine_name="MySQL",
+            source_endpoint_region=example.regions[0].id,
+            source_endpoint_user_name=example_rds_account[0].account_name,
+            source_endpoint_password=example_rds_account[0].account_password,
+            destination_endpoint_instance_type="RDS",
+            destination_endpoint_instance_id=example_account_privilege[1].instance_id,
+            destination_endpoint_engine_name="MySQL",
+            destination_endpoint_region=example.regions[0].id,
+            destination_endpoint_user_name=example_rds_account[1].account_name,
+            destination_endpoint_password=example_rds_account[1].account_password,
+            db_list=pulumi.Output.json_dumps(pulumi.Output.all(
+                exampleDatabaseName=example_database[0].name,
+                exampleDatabaseName1=example_database[1].name
+        ).apply(lambda resolved_outputs: {
+                resolved_outputs['exampleDatabaseName']: {
+                    "name": resolved_outputs['exampleDatabaseName1'],
+                    "all": True,
+                },
+            })
+        ),
+            structure_initialization=True,
+            data_initialization=True,
+            data_synchronization=True,
+            status="Synchronizing")
+        ```
+
+        ## Notice
+
+        1. The expiration time cannot be changed after the work of the annual and monthly subscription suspended;
+        2. After the pay-as-you-go type job suspended, your job configuration fee will still be charged;
+        3. If the task suspended for more than 6 hours, the task will not start successfully.
+        4. Suspending the task will only stop writing to the target library, but will still continue to obtain the incremental log of the source, so that the task can be quickly resumed after the suspension is canceled. Therefore, some resources of the source library, such as bandwidth resources, will continue to be occupied during the period.
+        5. Charges will continue during the task suspension period. If you need to stop charging, please release the instance
+        6. When a DTS instance suspended for more than 7 days, the instance cannot be resumed, and the status will change from suspended to failed.
 
         ## Import
 
@@ -1817,7 +2069,7 @@ class SynchronizationJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] delay_phone: The delay phone. The mobile phone number of the contact who delayed the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
         :param pulumi.Input[_builtins.str] delay_rule_time: The delay rule time. When `delay_notice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
         :param pulumi.Input[_builtins.str] destination_endpoint_database_name: The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
-        :param pulumi.Input[_builtins.str] destination_endpoint_engine_name: The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+        :param pulumi.Input[_builtins.str] destination_endpoint_engine_name: The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,` POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
         :param pulumi.Input[_builtins.str] destination_endpoint_instance_id: The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `destination_endpoint_instance_type`. For example, the value of `destination_endpoint_instance_type` is:
                ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
                ** `DG`, then this parameter needs to be passed into the ID of database gateway.
@@ -1843,7 +2095,7 @@ class SynchronizationJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] instance_class: The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
         :param pulumi.Input[_builtins.str] reserve: DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
         :param pulumi.Input[_builtins.str] source_endpoint_database_name: The name of the database to which the migration object belongs in the source instance. Note: this parameter is only available and must be passed in when the source instance, or the database type of the source instance is PolarDB O engine, PostgreSQL, or MongoDB database.
-        :param pulumi.Input[_builtins.str] source_endpoint_engine_name: The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+        :param pulumi.Input[_builtins.str] source_endpoint_engine_name: The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `TiDB`, `REDIS`.
         :param pulumi.Input[_builtins.str] source_endpoint_instance_id: The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `source_endpoint_instance_type`. For example, the value of `source_endpoint_instance_type` is:
                ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
                ** `DG`, then this parameter needs to be passed into the ID of database gateway.
@@ -1996,7 +2248,7 @@ class SynchronizationJob(pulumi.CustomResource):
     @pulumi.getter(name="destinationEndpointEngineName")
     def destination_endpoint_engine_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+        The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,` POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
         """
         return pulumi.get(self, "destination_endpoint_engine_name")
 
@@ -2155,7 +2407,7 @@ class SynchronizationJob(pulumi.CustomResource):
     @pulumi.getter(name="sourceEndpointEngineName")
     def source_endpoint_engine_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+        The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `TiDB`, `REDIS`.
         """
         return pulumi.get(self, "source_endpoint_engine_name")
 

@@ -1704,6 +1704,104 @@ public final class VpnFunctions {
      * 
      * &gt; **NOTE:** Available since v1.18.0.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.std.inputs.ConcatArgs;
+     * import com.pulumi.alicloud.vpn.Gateway;
+     * import com.pulumi.alicloud.vpn.GatewayArgs;
+     * import com.pulumi.alicloud.vpn.VpnFunctions;
+     * import com.pulumi.alicloud.vpn.inputs.GetGatewaysArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var spec = config.get("spec").orElse("20");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .zoneId("me-east-1a")
+     *             .build());
+     * 
+     *         for (var i = 0; i < defaultGetSwitches.ids().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+     *             new Switch("vswitch-" + i, SwitchArgs.builder()
+     *                 .vpcId(defaultGetNetworks.ids()[0])
+     *                 .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                     .input(defaultGetNetworks.vpcs()[0].cidrBlock())
+     *                     .newbits(8)
+     *                     .netnum(8)
+     *                     .build()).result())
+     *                 .zoneId("me-east-1a")
+     *                 .vswitchName(name)
+     *                 .build());
+     * 
+     *         
+     * }
+     *         final var vswitchId = defaultGetSwitches.ids().length().applyValue(_length -> _length > 0 ? defaultGetSwitches.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
+     *             .input(            
+     *                 vswitch.stream().map(element -> element.id()).collect(toList()),
+     *                 "")
+     *             .build()).result()[0]);
+     * 
+     *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
+     *             .vpnType("Normal")
+     *             .vpnGatewayName(name)
+     *             .vswitchId(vswitchId)
+     *             .autoPay(true)
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .networkType("public")
+     *             .paymentType("Subscription")
+     *             .enableIpsec(true)
+     *             .bandwidth(spec)
+     *             .build());
+     * 
+     *         final var vpnGateways = VpnFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .ids(defaultGateway.id())
+     *             .includeReservationData(true)
+     *             .outputFile("/tmp/vpns")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetGatewaysResult> getGateways() {
         return getGateways(GetGatewaysArgs.Empty, InvokeOptions.Empty);
@@ -1712,6 +1810,104 @@ public final class VpnFunctions {
      * The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
      * 
      * &gt; **NOTE:** Available since v1.18.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.std.inputs.ConcatArgs;
+     * import com.pulumi.alicloud.vpn.Gateway;
+     * import com.pulumi.alicloud.vpn.GatewayArgs;
+     * import com.pulumi.alicloud.vpn.VpnFunctions;
+     * import com.pulumi.alicloud.vpn.inputs.GetGatewaysArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var spec = config.get("spec").orElse("20");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .zoneId("me-east-1a")
+     *             .build());
+     * 
+     *         for (var i = 0; i < defaultGetSwitches.ids().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+     *             new Switch("vswitch-" + i, SwitchArgs.builder()
+     *                 .vpcId(defaultGetNetworks.ids()[0])
+     *                 .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                     .input(defaultGetNetworks.vpcs()[0].cidrBlock())
+     *                     .newbits(8)
+     *                     .netnum(8)
+     *                     .build()).result())
+     *                 .zoneId("me-east-1a")
+     *                 .vswitchName(name)
+     *                 .build());
+     * 
+     *         
+     * }
+     *         final var vswitchId = defaultGetSwitches.ids().length().applyValue(_length -> _length > 0 ? defaultGetSwitches.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
+     *             .input(            
+     *                 vswitch.stream().map(element -> element.id()).collect(toList()),
+     *                 "")
+     *             .build()).result()[0]);
+     * 
+     *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
+     *             .vpnType("Normal")
+     *             .vpnGatewayName(name)
+     *             .vswitchId(vswitchId)
+     *             .autoPay(true)
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .networkType("public")
+     *             .paymentType("Subscription")
+     *             .enableIpsec(true)
+     *             .bandwidth(spec)
+     *             .build());
+     * 
+     *         final var vpnGateways = VpnFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .ids(defaultGateway.id())
+     *             .includeReservationData(true)
+     *             .outputFile("/tmp/vpns")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGatewaysResult> getGatewaysPlain() {
@@ -1722,6 +1918,104 @@ public final class VpnFunctions {
      * 
      * &gt; **NOTE:** Available since v1.18.0.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.std.inputs.ConcatArgs;
+     * import com.pulumi.alicloud.vpn.Gateway;
+     * import com.pulumi.alicloud.vpn.GatewayArgs;
+     * import com.pulumi.alicloud.vpn.VpnFunctions;
+     * import com.pulumi.alicloud.vpn.inputs.GetGatewaysArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var spec = config.get("spec").orElse("20");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .zoneId("me-east-1a")
+     *             .build());
+     * 
+     *         for (var i = 0; i < defaultGetSwitches.ids().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+     *             new Switch("vswitch-" + i, SwitchArgs.builder()
+     *                 .vpcId(defaultGetNetworks.ids()[0])
+     *                 .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                     .input(defaultGetNetworks.vpcs()[0].cidrBlock())
+     *                     .newbits(8)
+     *                     .netnum(8)
+     *                     .build()).result())
+     *                 .zoneId("me-east-1a")
+     *                 .vswitchName(name)
+     *                 .build());
+     * 
+     *         
+     * }
+     *         final var vswitchId = defaultGetSwitches.ids().length().applyValue(_length -> _length > 0 ? defaultGetSwitches.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
+     *             .input(            
+     *                 vswitch.stream().map(element -> element.id()).collect(toList()),
+     *                 "")
+     *             .build()).result()[0]);
+     * 
+     *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
+     *             .vpnType("Normal")
+     *             .vpnGatewayName(name)
+     *             .vswitchId(vswitchId)
+     *             .autoPay(true)
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .networkType("public")
+     *             .paymentType("Subscription")
+     *             .enableIpsec(true)
+     *             .bandwidth(spec)
+     *             .build());
+     * 
+     *         final var vpnGateways = VpnFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .ids(defaultGateway.id())
+     *             .includeReservationData(true)
+     *             .outputFile("/tmp/vpns")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetGatewaysResult> getGateways(GetGatewaysArgs args) {
         return getGateways(args, InvokeOptions.Empty);
@@ -1730,6 +2024,104 @@ public final class VpnFunctions {
      * The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
      * 
      * &gt; **NOTE:** Available since v1.18.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.std.inputs.ConcatArgs;
+     * import com.pulumi.alicloud.vpn.Gateway;
+     * import com.pulumi.alicloud.vpn.GatewayArgs;
+     * import com.pulumi.alicloud.vpn.VpnFunctions;
+     * import com.pulumi.alicloud.vpn.inputs.GetGatewaysArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var spec = config.get("spec").orElse("20");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .zoneId("me-east-1a")
+     *             .build());
+     * 
+     *         for (var i = 0; i < defaultGetSwitches.ids().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+     *             new Switch("vswitch-" + i, SwitchArgs.builder()
+     *                 .vpcId(defaultGetNetworks.ids()[0])
+     *                 .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                     .input(defaultGetNetworks.vpcs()[0].cidrBlock())
+     *                     .newbits(8)
+     *                     .netnum(8)
+     *                     .build()).result())
+     *                 .zoneId("me-east-1a")
+     *                 .vswitchName(name)
+     *                 .build());
+     * 
+     *         
+     * }
+     *         final var vswitchId = defaultGetSwitches.ids().length().applyValue(_length -> _length > 0 ? defaultGetSwitches.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
+     *             .input(            
+     *                 vswitch.stream().map(element -> element.id()).collect(toList()),
+     *                 "")
+     *             .build()).result()[0]);
+     * 
+     *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
+     *             .vpnType("Normal")
+     *             .vpnGatewayName(name)
+     *             .vswitchId(vswitchId)
+     *             .autoPay(true)
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .networkType("public")
+     *             .paymentType("Subscription")
+     *             .enableIpsec(true)
+     *             .bandwidth(spec)
+     *             .build());
+     * 
+     *         final var vpnGateways = VpnFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .ids(defaultGateway.id())
+     *             .includeReservationData(true)
+     *             .outputFile("/tmp/vpns")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGatewaysResult> getGatewaysPlain(GetGatewaysPlainArgs args) {
@@ -1740,6 +2132,104 @@ public final class VpnFunctions {
      * 
      * &gt; **NOTE:** Available since v1.18.0.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.std.inputs.ConcatArgs;
+     * import com.pulumi.alicloud.vpn.Gateway;
+     * import com.pulumi.alicloud.vpn.GatewayArgs;
+     * import com.pulumi.alicloud.vpn.VpnFunctions;
+     * import com.pulumi.alicloud.vpn.inputs.GetGatewaysArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var spec = config.get("spec").orElse("20");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .zoneId("me-east-1a")
+     *             .build());
+     * 
+     *         for (var i = 0; i < defaultGetSwitches.ids().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+     *             new Switch("vswitch-" + i, SwitchArgs.builder()
+     *                 .vpcId(defaultGetNetworks.ids()[0])
+     *                 .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                     .input(defaultGetNetworks.vpcs()[0].cidrBlock())
+     *                     .newbits(8)
+     *                     .netnum(8)
+     *                     .build()).result())
+     *                 .zoneId("me-east-1a")
+     *                 .vswitchName(name)
+     *                 .build());
+     * 
+     *         
+     * }
+     *         final var vswitchId = defaultGetSwitches.ids().length().applyValue(_length -> _length > 0 ? defaultGetSwitches.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
+     *             .input(            
+     *                 vswitch.stream().map(element -> element.id()).collect(toList()),
+     *                 "")
+     *             .build()).result()[0]);
+     * 
+     *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
+     *             .vpnType("Normal")
+     *             .vpnGatewayName(name)
+     *             .vswitchId(vswitchId)
+     *             .autoPay(true)
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .networkType("public")
+     *             .paymentType("Subscription")
+     *             .enableIpsec(true)
+     *             .bandwidth(spec)
+     *             .build());
+     * 
+     *         final var vpnGateways = VpnFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .ids(defaultGateway.id())
+     *             .includeReservationData(true)
+     *             .outputFile("/tmp/vpns")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetGatewaysResult> getGateways(GetGatewaysArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:vpn/getGateways:getGateways", TypeShape.of(GetGatewaysResult.class), args, Utilities.withVersion(options));
@@ -1749,6 +2239,104 @@ public final class VpnFunctions {
      * 
      * &gt; **NOTE:** Available since v1.18.0.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.std.inputs.ConcatArgs;
+     * import com.pulumi.alicloud.vpn.Gateway;
+     * import com.pulumi.alicloud.vpn.GatewayArgs;
+     * import com.pulumi.alicloud.vpn.VpnFunctions;
+     * import com.pulumi.alicloud.vpn.inputs.GetGatewaysArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var spec = config.get("spec").orElse("20");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .zoneId("me-east-1a")
+     *             .build());
+     * 
+     *         for (var i = 0; i < defaultGetSwitches.ids().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+     *             new Switch("vswitch-" + i, SwitchArgs.builder()
+     *                 .vpcId(defaultGetNetworks.ids()[0])
+     *                 .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                     .input(defaultGetNetworks.vpcs()[0].cidrBlock())
+     *                     .newbits(8)
+     *                     .netnum(8)
+     *                     .build()).result())
+     *                 .zoneId("me-east-1a")
+     *                 .vswitchName(name)
+     *                 .build());
+     * 
+     *         
+     * }
+     *         final var vswitchId = defaultGetSwitches.ids().length().applyValue(_length -> _length > 0 ? defaultGetSwitches.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
+     *             .input(            
+     *                 vswitch.stream().map(element -> element.id()).collect(toList()),
+     *                 "")
+     *             .build()).result()[0]);
+     * 
+     *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
+     *             .vpnType("Normal")
+     *             .vpnGatewayName(name)
+     *             .vswitchId(vswitchId)
+     *             .autoPay(true)
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .networkType("public")
+     *             .paymentType("Subscription")
+     *             .enableIpsec(true)
+     *             .bandwidth(spec)
+     *             .build());
+     * 
+     *         final var vpnGateways = VpnFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .ids(defaultGateway.id())
+     *             .includeReservationData(true)
+     *             .outputFile("/tmp/vpns")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetGatewaysResult> getGateways(GetGatewaysArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:vpn/getGateways:getGateways", TypeShape.of(GetGatewaysResult.class), args, Utilities.withVersion(options));
@@ -1757,6 +2345,104 @@ public final class VpnFunctions {
      * The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
      * 
      * &gt; **NOTE:** Available since v1.18.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.std.inputs.ConcatArgs;
+     * import com.pulumi.alicloud.vpn.Gateway;
+     * import com.pulumi.alicloud.vpn.GatewayArgs;
+     * import com.pulumi.alicloud.vpn.VpnFunctions;
+     * import com.pulumi.alicloud.vpn.inputs.GetGatewaysArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var spec = config.get("spec").orElse("20");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .zoneId("me-east-1a")
+     *             .build());
+     * 
+     *         for (var i = 0; i < defaultGetSwitches.ids().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+     *             new Switch("vswitch-" + i, SwitchArgs.builder()
+     *                 .vpcId(defaultGetNetworks.ids()[0])
+     *                 .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                     .input(defaultGetNetworks.vpcs()[0].cidrBlock())
+     *                     .newbits(8)
+     *                     .netnum(8)
+     *                     .build()).result())
+     *                 .zoneId("me-east-1a")
+     *                 .vswitchName(name)
+     *                 .build());
+     * 
+     *         
+     * }
+     *         final var vswitchId = defaultGetSwitches.ids().length().applyValue(_length -> _length > 0 ? defaultGetSwitches.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
+     *             .input(            
+     *                 vswitch.stream().map(element -> element.id()).collect(toList()),
+     *                 "")
+     *             .build()).result()[0]);
+     * 
+     *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
+     *             .vpnType("Normal")
+     *             .vpnGatewayName(name)
+     *             .vswitchId(vswitchId)
+     *             .autoPay(true)
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .networkType("public")
+     *             .paymentType("Subscription")
+     *             .enableIpsec(true)
+     *             .bandwidth(spec)
+     *             .build());
+     * 
+     *         final var vpnGateways = VpnFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .ids(defaultGateway.id())
+     *             .includeReservationData(true)
+     *             .outputFile("/tmp/vpns")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGatewaysResult> getGatewaysPlain(GetGatewaysPlainArgs args, InvokeOptions options) {

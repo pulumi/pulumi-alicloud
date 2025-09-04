@@ -75,6 +75,21 @@ public final class V3FunctionVersionState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.lastModifiedTime);
     }
 
+    /**
+     * Function Version
+     * 
+     */
+    @Import(name="versionId")
+    private @Nullable Output<String> versionId;
+
+    /**
+     * @return Function Version
+     * 
+     */
+    public Optional<Output<String>> versionId() {
+        return Optional.ofNullable(this.versionId);
+    }
+
     private V3FunctionVersionState() {}
 
     private V3FunctionVersionState(V3FunctionVersionState $) {
@@ -82,6 +97,7 @@ public final class V3FunctionVersionState extends com.pulumi.resources.ResourceA
         this.description = $.description;
         this.functionName = $.functionName;
         this.lastModifiedTime = $.lastModifiedTime;
+        this.versionId = $.versionId;
     }
 
     public static Builder builder() {
@@ -184,6 +200,27 @@ public final class V3FunctionVersionState extends com.pulumi.resources.ResourceA
          */
         public Builder lastModifiedTime(String lastModifiedTime) {
             return lastModifiedTime(Output.of(lastModifiedTime));
+        }
+
+        /**
+         * @param versionId Function Version
+         * 
+         * @return builder
+         * 
+         */
+        public Builder versionId(@Nullable Output<String> versionId) {
+            $.versionId = versionId;
+            return this;
+        }
+
+        /**
+         * @param versionId Function Version
+         * 
+         * @return builder
+         * 
+         */
+        public Builder versionId(String versionId) {
+            return versionId(Output.of(versionId));
         }
 
         public V3FunctionVersionState build() {

@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:wafv3/defenseRule:DefenseRule":
+		r = &DefenseRule{}
 	case "alicloud:wafv3/defenseTemplate:DefenseTemplate":
 		r = &DefenseTemplate{}
 	case "alicloud:wafv3/domain:Domain":
@@ -40,6 +42,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"wafv3/defenseRule",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"wafv3/defenseTemplate",

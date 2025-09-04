@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  *             .targetCreateTime(defaultGetNasBackupPlans.plans()[0].createTime())
  *             .targetPath("/")
  *             .options("""
- *     {"includes":[], "excludes":[]}
+ *     {\"includes\":[], \"excludes\":[]}
  *             """)
  *             .build());
  * 
@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  *             .targetBucket(defaultGetOssBackupPlans.plans()[0].bucket())
  *             .targetPrefix("")
  *             .options("""
- *     {"includes":[], "excludes":[]}
+ *     {\"includes\":[], \"excludes\":[]}
  *             """)
  *             .build());
  * 

@@ -15,6 +15,78 @@ namespace Pulumi.AliCloud.CS
         /// This data source provides metadata of kubernetes cluster addons.
         /// 
         /// &gt; **NOTE:** Available in 1.166.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+        ///     {
+        ///         VpcName = name,
+        ///         CidrBlock = "10.4.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VswitchName = name,
+        ///         CidrBlock = "10.4.0.0/24",
+        ///         VpcId = defaultNetwork.Id,
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///     });
+        /// 
+        ///     var defaultManagedKubernetes = new AliCloud.CS.ManagedKubernetes("default", new()
+        ///     {
+        ///         NamePrefix = name,
+        ///         ClusterSpec = "ack.pro.small",
+        ///         WorkerVswitchIds = new[]
+        ///         {
+        ///             defaultSwitch.Id,
+        ///         },
+        ///         NewNatGateway = false,
+        ///         PodCidr = Std.Cidrsubnet.Invoke(new()
+        ///         {
+        ///             Input = "10.0.0.0/8",
+        ///             Newbits = 8,
+        ///             Netnum = 36,
+        ///         }).Apply(invoke =&gt; invoke.Result),
+        ///         ServiceCidr = Std.Cidrsubnet.Invoke(new()
+        ///         {
+        ///             Input = "172.16.0.0/16",
+        ///             Newbits = 4,
+        ///             Netnum = 7,
+        ///         }).Apply(invoke =&gt; invoke.Result),
+        ///         SlbInternetEnabled = true,
+        ///     });
+        /// 
+        ///     var clusterId = defaultManagedKubernetes.Id;
+        /// 
+        ///     var defaultGetKubernetesAddonMetadata = AliCloud.CS.GetKubernetesAddonMetadata.Invoke(new()
+        ///     {
+        ///         ClusterId = clusterId,
+        ///         Name = "nginx-ingress-controller",
+        ///         Version = "v1.1.2-aliyun.2",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["addonConfigSchema"] = defaultGetKubernetesAddonMetadata.Apply(getKubernetesAddonMetadataResult =&gt; getKubernetesAddonMetadataResult.ConfigSchema),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetKubernetesAddonMetadataResult> InvokeAsync(GetKubernetesAddonMetadataArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesAddonMetadataResult>("alicloud:cs/getKubernetesAddonMetadata:getKubernetesAddonMetadata", args ?? new GetKubernetesAddonMetadataArgs(), options.WithDefaults());
@@ -23,6 +95,78 @@ namespace Pulumi.AliCloud.CS
         /// This data source provides metadata of kubernetes cluster addons.
         /// 
         /// &gt; **NOTE:** Available in 1.166.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+        ///     {
+        ///         VpcName = name,
+        ///         CidrBlock = "10.4.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VswitchName = name,
+        ///         CidrBlock = "10.4.0.0/24",
+        ///         VpcId = defaultNetwork.Id,
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///     });
+        /// 
+        ///     var defaultManagedKubernetes = new AliCloud.CS.ManagedKubernetes("default", new()
+        ///     {
+        ///         NamePrefix = name,
+        ///         ClusterSpec = "ack.pro.small",
+        ///         WorkerVswitchIds = new[]
+        ///         {
+        ///             defaultSwitch.Id,
+        ///         },
+        ///         NewNatGateway = false,
+        ///         PodCidr = Std.Cidrsubnet.Invoke(new()
+        ///         {
+        ///             Input = "10.0.0.0/8",
+        ///             Newbits = 8,
+        ///             Netnum = 36,
+        ///         }).Apply(invoke =&gt; invoke.Result),
+        ///         ServiceCidr = Std.Cidrsubnet.Invoke(new()
+        ///         {
+        ///             Input = "172.16.0.0/16",
+        ///             Newbits = 4,
+        ///             Netnum = 7,
+        ///         }).Apply(invoke =&gt; invoke.Result),
+        ///         SlbInternetEnabled = true,
+        ///     });
+        /// 
+        ///     var clusterId = defaultManagedKubernetes.Id;
+        /// 
+        ///     var defaultGetKubernetesAddonMetadata = AliCloud.CS.GetKubernetesAddonMetadata.Invoke(new()
+        ///     {
+        ///         ClusterId = clusterId,
+        ///         Name = "nginx-ingress-controller",
+        ///         Version = "v1.1.2-aliyun.2",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["addonConfigSchema"] = defaultGetKubernetesAddonMetadata.Apply(getKubernetesAddonMetadataResult =&gt; getKubernetesAddonMetadataResult.ConfigSchema),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetKubernetesAddonMetadataResult> Invoke(GetKubernetesAddonMetadataInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKubernetesAddonMetadataResult>("alicloud:cs/getKubernetesAddonMetadata:getKubernetesAddonMetadata", args ?? new GetKubernetesAddonMetadataInvokeArgs(), options.WithDefaults());
@@ -31,6 +175,78 @@ namespace Pulumi.AliCloud.CS
         /// This data source provides metadata of kubernetes cluster addons.
         /// 
         /// &gt; **NOTE:** Available in 1.166.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+        ///     {
+        ///         VpcName = name,
+        ///         CidrBlock = "10.4.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VswitchName = name,
+        ///         CidrBlock = "10.4.0.0/24",
+        ///         VpcId = defaultNetwork.Id,
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///     });
+        /// 
+        ///     var defaultManagedKubernetes = new AliCloud.CS.ManagedKubernetes("default", new()
+        ///     {
+        ///         NamePrefix = name,
+        ///         ClusterSpec = "ack.pro.small",
+        ///         WorkerVswitchIds = new[]
+        ///         {
+        ///             defaultSwitch.Id,
+        ///         },
+        ///         NewNatGateway = false,
+        ///         PodCidr = Std.Cidrsubnet.Invoke(new()
+        ///         {
+        ///             Input = "10.0.0.0/8",
+        ///             Newbits = 8,
+        ///             Netnum = 36,
+        ///         }).Apply(invoke =&gt; invoke.Result),
+        ///         ServiceCidr = Std.Cidrsubnet.Invoke(new()
+        ///         {
+        ///             Input = "172.16.0.0/16",
+        ///             Newbits = 4,
+        ///             Netnum = 7,
+        ///         }).Apply(invoke =&gt; invoke.Result),
+        ///         SlbInternetEnabled = true,
+        ///     });
+        /// 
+        ///     var clusterId = defaultManagedKubernetes.Id;
+        /// 
+        ///     var defaultGetKubernetesAddonMetadata = AliCloud.CS.GetKubernetesAddonMetadata.Invoke(new()
+        ///     {
+        ///         ClusterId = clusterId,
+        ///         Name = "nginx-ingress-controller",
+        ///         Version = "v1.1.2-aliyun.2",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["addonConfigSchema"] = defaultGetKubernetesAddonMetadata.Apply(getKubernetesAddonMetadataResult =&gt; getKubernetesAddonMetadataResult.ConfigSchema),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetKubernetesAddonMetadataResult> Invoke(GetKubernetesAddonMetadataInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetKubernetesAddonMetadataResult>("alicloud:cs/getKubernetesAddonMetadata:getKubernetesAddonMetadata", args ?? new GetKubernetesAddonMetadataInvokeArgs(), options.WithDefaults());

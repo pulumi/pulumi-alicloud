@@ -110,9 +110,9 @@ namespace Pulumi.AliCloud.Hbr
     ///             "/home",
     ///             "/var",
     ///         },
-    ///         Exclude = @"  [""/home/exclude""]
+    ///         Exclude = @"  [\""/home/exclude\""]
     /// ",
-    ///         Include = @"  [""/home/include""]
+    ///         Include = @"  [\""/home/include\""]
     /// ",
     ///     });
     /// 

@@ -438,6 +438,47 @@ class DwResourceGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.241.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform_example"
+        default_z_imu_co = alicloud.dataworks.Project("defaultZImuCO",
+            description="default_pj002",
+            project_name=name,
+            display_name="default_pj002",
+            pai_task_enabled=True)
+        defaulte4zha_l = alicloud.vpc.Network("defaulte4zhaL",
+            description="default_resgv2_vpc001",
+            vpc_name=std.format(input="%s1",
+                args=[name]).result,
+            cidr_block="172.16.0.0/12")
+        default675v38 = alicloud.vpc.Switch("default675v38",
+            description="default_resg_vsw001",
+            vpc_id=defaulte4zha_l.id,
+            zone_id="cn-beijing-g",
+            vswitch_name=std.format(input="%s2",
+                args=[name]).result,
+            cidr_block="172.16.0.0/24")
+        default = alicloud.dataworks.DwResourceGroup("default",
+            payment_type="PostPaid",
+            default_vpc_id=defaulte4zha_l.id,
+            remark="openapi_example",
+            resource_group_name="openapi_pop2_example_resg00002",
+            default_vswitch_id=default675v38.id,
+            payment_duration_unit="Month",
+            specification=500,
+            payment_duration=1)
+        ```
+
         ## Import
 
         Data Works Dw Resource Group can be imported using the id, e.g.
@@ -472,6 +513,47 @@ class DwResourceGroup(pulumi.CustomResource):
         For information about Data Works Dw Resource Group and how to use it, see [What is Dw Resource Group](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2024-05-18-createresourcegroup).
 
         > **NOTE:** Available since v1.241.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform_example"
+        default_z_imu_co = alicloud.dataworks.Project("defaultZImuCO",
+            description="default_pj002",
+            project_name=name,
+            display_name="default_pj002",
+            pai_task_enabled=True)
+        defaulte4zha_l = alicloud.vpc.Network("defaulte4zhaL",
+            description="default_resgv2_vpc001",
+            vpc_name=std.format(input="%s1",
+                args=[name]).result,
+            cidr_block="172.16.0.0/12")
+        default675v38 = alicloud.vpc.Switch("default675v38",
+            description="default_resg_vsw001",
+            vpc_id=defaulte4zha_l.id,
+            zone_id="cn-beijing-g",
+            vswitch_name=std.format(input="%s2",
+                args=[name]).result,
+            cidr_block="172.16.0.0/24")
+        default = alicloud.dataworks.DwResourceGroup("default",
+            payment_type="PostPaid",
+            default_vpc_id=defaulte4zha_l.id,
+            remark="openapi_example",
+            resource_group_name="openapi_pop2_example_resg00002",
+            default_vswitch_id=default675v38.id,
+            payment_duration_unit="Month",
+            specification=500,
+            payment_duration=1)
+        ```
 
         ## Import
 

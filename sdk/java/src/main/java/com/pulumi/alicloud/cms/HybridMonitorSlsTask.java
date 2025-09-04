@@ -25,6 +25,149 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.179.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+ * import com.pulumi.random.Uuid;
+ * import com.pulumi.alicloud.log.Project;
+ * import com.pulumi.alicloud.log.ProjectArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.ReplaceArgs;
+ * import com.pulumi.std.inputs.SubstrArgs;
+ * import com.pulumi.alicloud.log.Store;
+ * import com.pulumi.alicloud.log.StoreArgs;
+ * import com.pulumi.alicloud.cms.SlsGroup;
+ * import com.pulumi.alicloud.cms.SlsGroupArgs;
+ * import com.pulumi.alicloud.cms.inputs.SlsGroupSlsGroupConfigArgs;
+ * import com.pulumi.alicloud.cms.Namespace;
+ * import com.pulumi.alicloud.cms.NamespaceArgs;
+ * import com.pulumi.alicloud.cms.HybridMonitorSlsTask;
+ * import com.pulumi.alicloud.cms.HybridMonitorSlsTaskArgs;
+ * import com.pulumi.alicloud.cms.inputs.HybridMonitorSlsTaskSlsProcessConfigArgs;
+ * import com.pulumi.alicloud.cms.inputs.HybridMonitorSlsTaskSlsProcessConfigFilterArgs;
+ * import com.pulumi.alicloud.cms.inputs.HybridMonitorSlsTaskAttachLabelArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf_example");
+ *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+ * 
+ *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
+ *         var defaultUuid = new Uuid("defaultUuid");
+ * 
+ *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
+ *             .projectName(StdFunctions.substr(SubstrArgs.builder()
+ *                 .input(String.format("tf-example-%s", StdFunctions.replace(ReplaceArgs.builder()
+ *                     .text(defaultUuid.result())
+ *                     .search("-")
+ *                     .replace("")
+ *                     .build()).result()))
+ *                 .offset(0)
+ *                 .length(16)
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var defaultStore = new Store("defaultStore", StoreArgs.builder()
+ *             .projectName(defaultProject.projectName())
+ *             .logstoreName(name)
+ *             .shardCount(3)
+ *             .autoSplit(true)
+ *             .maxSplitShardCount(60)
+ *             .appendMeta(true)
+ *             .build());
+ * 
+ *         var defaultSlsGroup = new SlsGroup("defaultSlsGroup", SlsGroupArgs.builder()
+ *             .slsGroupConfigs(SlsGroupSlsGroupConfigArgs.builder()
+ *                 .slsUserId(default_.id())
+ *                 .slsLogstore(defaultStore.logstoreName())
+ *                 .slsProject(defaultProject.projectName())
+ *                 .slsRegion(defaultGetRegions.regions()[0].id())
+ *                 .build())
+ *             .slsGroupDescription(name)
+ *             .slsGroupName(name)
+ *             .build());
+ * 
+ *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()
+ *             .namespace(StdFunctions.substr(SubstrArgs.builder()
+ *                 .input(String.format("tf-example-%s", StdFunctions.replace(ReplaceArgs.builder()
+ *                     .text(defaultUuid.result())
+ *                     .search("-")
+ *                     .replace("")
+ *                     .build()).result()))
+ *                 .offset(0)
+ *                 .length(16)
+ *                 .build()).result())
+ *             .specification("cms.s1.large")
+ *             .build());
+ * 
+ *         var defaultHybridMonitorSlsTask = new HybridMonitorSlsTask("defaultHybridMonitorSlsTask", HybridMonitorSlsTaskArgs.builder()
+ *             .taskName(name)
+ *             .namespace(defaultNamespace.id())
+ *             .description(name)
+ *             .collectInterval(60)
+ *             .collectTargetType(defaultSlsGroup.id())
+ *             .slsProcessConfig(HybridMonitorSlsTaskSlsProcessConfigArgs.builder()
+ *                 .filter(HybridMonitorSlsTaskSlsProcessConfigFilterArgs.builder()
+ *                     .relation("and")
+ *                     .filters(HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs.builder()
+ *                         .operator("=")
+ *                         .value("200")
+ *                         .slsKeyName("code")
+ *                         .build())
+ *                     .build())
+ *                 .statistics(HybridMonitorSlsTaskSlsProcessConfigStatisticArgs.builder()
+ *                     .function("count")
+ *                     .alias("level_count")
+ *                     .slsKeyName("name")
+ *                     .parameterOne("200")
+ *                     .parameterTwo("299")
+ *                     .build())
+ *                 .groupBies(HybridMonitorSlsTaskSlsProcessConfigGroupByArgs.builder()
+ *                     .alias("code")
+ *                     .slsKeyName("ApiResult")
+ *                     .build())
+ *                 .expresses(HybridMonitorSlsTaskSlsProcessConfigExpressArgs.builder()
+ *                     .express("success_count")
+ *                     .alias("SuccRate")
+ *                     .build())
+ *                 .build())
+ *             .attachLabels(HybridMonitorSlsTaskAttachLabelArgs.builder()
+ *                 .name("app_service")
+ *                 .value("example_Value")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Cloud Monitor Service Hybrid Monitor Sls Task can be imported using the id, e.g.

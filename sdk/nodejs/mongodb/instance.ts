@@ -171,6 +171,10 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly engineVersion: pulumi.Output<string>;
     /**
+     * The list of Global Security Group Ids.
+     */
+    declare public readonly globalSecurityGroupLists: pulumi.Output<string[] | undefined>;
+    /**
      * Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values. From version 1.253.0, `hiddenZoneId` can be modified.
      */
     declare public readonly hiddenZoneId: pulumi.Output<string | undefined>;
@@ -343,6 +347,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["encryptionKey"] = state?.encryptionKey;
             resourceInputs["encryptorName"] = state?.encryptorName;
             resourceInputs["engineVersion"] = state?.engineVersion;
+            resourceInputs["globalSecurityGroupLists"] = state?.globalSecurityGroupLists;
             resourceInputs["hiddenZoneId"] = state?.hiddenZoneId;
             resourceInputs["instanceChargeType"] = state?.instanceChargeType;
             resourceInputs["kmsEncryptedPassword"] = state?.kmsEncryptedPassword;
@@ -404,6 +409,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["encryptionKey"] = args?.encryptionKey;
             resourceInputs["encryptorName"] = args?.encryptorName;
             resourceInputs["engineVersion"] = args?.engineVersion;
+            resourceInputs["globalSecurityGroupLists"] = args?.globalSecurityGroupLists;
             resourceInputs["hiddenZoneId"] = args?.hiddenZoneId;
             resourceInputs["instanceChargeType"] = args?.instanceChargeType;
             resourceInputs["kmsEncryptedPassword"] = args?.kmsEncryptedPassword;
@@ -520,6 +526,10 @@ export interface InstanceState {
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engineVersion` can be modified.
      */
     engineVersion?: pulumi.Input<string>;
+    /**
+     * The list of Global Security Group Ids.
+     */
+    globalSecurityGroupLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values. From version 1.253.0, `hiddenZoneId` can be modified.
      */
@@ -739,6 +749,10 @@ export interface InstanceArgs {
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engineVersion` can be modified.
      */
     engineVersion: pulumi.Input<string>;
+    /**
+     * The list of Global Security Group Ids.
+     */
+    globalSecurityGroupLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values. From version 1.253.0, `hiddenZoneId` can be modified.
      */

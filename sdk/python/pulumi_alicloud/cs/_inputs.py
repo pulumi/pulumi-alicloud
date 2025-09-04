@@ -53,6 +53,8 @@ __all__ = [
     'ManagedKubernetesAddonArgsDict',
     'ManagedKubernetesAuditLogConfigArgs',
     'ManagedKubernetesAuditLogConfigArgsDict',
+    'ManagedKubernetesAutoModeArgs',
+    'ManagedKubernetesAutoModeArgsDict',
     'ManagedKubernetesCertificateAuthorityArgs',
     'ManagedKubernetesCertificateAuthorityArgsDict',
     'ManagedKubernetesConnectionsArgs',
@@ -1748,6 +1750,183 @@ if not MYPY:
         `nginx-ingress-controller` - You can specific `IngressSlbNetworkType` in config. Options: internet|intranet.
 
         The `main.tf`:
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        k8s = alicloud.cs.ManagedKubernetes("k8s", addons=[{
+            "name": std.lookup(map=entry["value"],
+                key="name",
+                default=cluster_addons).result,
+            "config": std.lookup(map=entry["value"],
+                key="config",
+                default=cluster_addons).result,
+            "version": std.lookup(map=entry["value"],
+                key="version",
+                default=cluster_addons).result,
+            "disabled": std.lookup(map=entry["value"],
+                key="disabled",
+                default=cluster_addons).result,
+        } for entry in [{"key": k, "value": v} for k, v in cluster_addons]])
+        ```
+
+        The `varibales.tf`:
+
+        ```
+        # Network-flannel is required, Conflicts With Network-terway
+        variable "cluster_addons" {
+        description = "Addon components in kubernetes cluster"
+
+        type = list(object({
+        name      = string
+        config    = string
+        }))
+
+        default = [
+        {
+        "name"     = "flannel",
+        "config"   = "",
+        }
+        ]
+        }
+
+        # Network-terway is required, Conflicts With Network-flannel
+        variable "cluster_addons" {
+        type = list(object({
+        name      = string
+        config    = string
+        }))
+
+        default = [
+        {
+        "name"     = "terway-eniip",
+        "config"   = "",
+        }
+        ]
+        }
+
+        # Storage-csi is required, Conflicts With Storage-flexvolume
+        variable "cluster_addons" {
+        type = list(object({
+        name      = string
+        config    = string
+        }))
+
+        default = [
+        {
+        "name"     = "csi-plugin",
+        "config"   = "",
+        },
+        {
+        "name"     = "csi-provisioner",
+        "config"   = "",
+        }
+        ]
+        }
+
+        # Storage-flexvolume is required, Conflicts With Storage-csi
+        variable "cluster_addons" {
+        type = list(object({
+        name      = string
+        config    = string
+        }))
+        default = [
+        {
+        "name"     = "flexvolume",
+        "config"   = "",
+        }
+        ]
+        }
+
+        # Log, Optional
+        variable "cluster_addons" {
+        type = list(object({
+        name      = string
+        config    = string
+        }))
+        default = [
+        {
+        "name"     = "logtail-ds",
+        "config"   = "{\\"IngressDashboardEnabled\\":\\"true\\",\\"sls_project_name\\":\\"your-sls-project-name\\"}",
+        }
+        ]
+        }
+
+        # Ingress,Optional
+        variable "cluster_addons" {
+        type = list(object({
+        name      = string
+        config    = string
+        }))
+
+        default = [
+        {
+        "name"     = "nginx-ingress-controller",
+        "config"   = "{\\"IngressSlbNetworkType\\":\\"internet\\"}",
+        }
+        ]
+        }
+
+        # Ingress-Disable, Optional
+        variable "cluster_addons" {
+        type = list(object({
+        name      = string
+        config    = string
+        disabled  = bool
+        }))
+
+        default = [
+        {
+        "name"     = "nginx-ingress-controller",
+        "config"   = "",
+        "disabled": true,
+        }
+        ]
+
+        # Prometheus, Optional.
+        variable "cluster_addons" {
+        type = list(object({
+        name      = string
+        config    = string
+        }))
+
+        default = [
+        {
+        "name"     = "arms-prometheus",
+        "config"   = "",
+        }
+        ]
+        }
+
+        # Event Center, Optional.
+        variable "cluster_addons" {
+        type = list(object({
+        name      = string
+        config    = string
+        }))
+        default = [
+        {
+        "name"     = "ack-node-problem-detector",
+        "config"   = "{\\"sls_project_name\\":\\"\\"}",
+        }
+        ]
+        }
+        # ACK default alert, Optional.
+        variable "cluster_addons" {
+        type = list(object({
+        name      = string
+        config    = string
+        }))
+        default = [
+        {
+        "name"     = "alicloud-monitor-controller",
+        "config"   = "{\\"group_contact_ids\\":\\"[159]\\"}",
+        }
+        ]
+        }
+        ```
         """
         name: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -1780,6 +1959,183 @@ class ManagedKubernetesAddonArgs:
                `nginx-ingress-controller` - You can specific `IngressSlbNetworkType` in config. Options: internet|intranet.
                
                The `main.tf`:
+               
+               ```python
+               import pulumi
+               import pulumi_alicloud as alicloud
+               import pulumi_std as std
+               
+               k8s = alicloud.cs.ManagedKubernetes("k8s", addons=[{
+                   "name": std.lookup(map=entry["value"],
+                       key="name",
+                       default=cluster_addons).result,
+                   "config": std.lookup(map=entry["value"],
+                       key="config",
+                       default=cluster_addons).result,
+                   "version": std.lookup(map=entry["value"],
+                       key="version",
+                       default=cluster_addons).result,
+                   "disabled": std.lookup(map=entry["value"],
+                       key="disabled",
+                       default=cluster_addons).result,
+               } for entry in [{"key": k, "value": v} for k, v in cluster_addons]])
+               ```
+               
+               The `varibales.tf`:
+               
+               ```
+               # Network-flannel is required, Conflicts With Network-terway
+               variable "cluster_addons" {
+               description = "Addon components in kubernetes cluster"
+               
+               type = list(object({
+               name      = string
+               config    = string
+               }))
+               
+               default = [
+               {
+               "name"     = "flannel",
+               "config"   = "",
+               }
+               ]
+               }
+               
+               # Network-terway is required, Conflicts With Network-flannel
+               variable "cluster_addons" {
+               type = list(object({
+               name      = string
+               config    = string
+               }))
+               
+               default = [
+               {
+               "name"     = "terway-eniip",
+               "config"   = "",
+               }
+               ]
+               }
+               
+               # Storage-csi is required, Conflicts With Storage-flexvolume
+               variable "cluster_addons" {
+               type = list(object({
+               name      = string
+               config    = string
+               }))
+               
+               default = [
+               {
+               "name"     = "csi-plugin",
+               "config"   = "",
+               },
+               {
+               "name"     = "csi-provisioner",
+               "config"   = "",
+               }
+               ]
+               }
+               
+               # Storage-flexvolume is required, Conflicts With Storage-csi
+               variable "cluster_addons" {
+               type = list(object({
+               name      = string
+               config    = string
+               }))
+               default = [
+               {
+               "name"     = "flexvolume",
+               "config"   = "",
+               }
+               ]
+               }
+               
+               # Log, Optional
+               variable "cluster_addons" {
+               type = list(object({
+               name      = string
+               config    = string
+               }))
+               default = [
+               {
+               "name"     = "logtail-ds",
+               "config"   = "{\\"IngressDashboardEnabled\\":\\"true\\",\\"sls_project_name\\":\\"your-sls-project-name\\"}",
+               }
+               ]
+               }
+               
+               # Ingress,Optional
+               variable "cluster_addons" {
+               type = list(object({
+               name      = string
+               config    = string
+               }))
+               
+               default = [
+               {
+               "name"     = "nginx-ingress-controller",
+               "config"   = "{\\"IngressSlbNetworkType\\":\\"internet\\"}",
+               }
+               ]
+               }
+               
+               # Ingress-Disable, Optional
+               variable "cluster_addons" {
+               type = list(object({
+               name      = string
+               config    = string
+               disabled  = bool
+               }))
+               
+               default = [
+               {
+               "name"     = "nginx-ingress-controller",
+               "config"   = "",
+               "disabled": true,
+               }
+               ]
+               
+               # Prometheus, Optional.
+               variable "cluster_addons" {
+               type = list(object({
+               name      = string
+               config    = string
+               }))
+               
+               default = [
+               {
+               "name"     = "arms-prometheus",
+               "config"   = "",
+               }
+               ]
+               }
+               
+               # Event Center, Optional.
+               variable "cluster_addons" {
+               type = list(object({
+               name      = string
+               config    = string
+               }))
+               default = [
+               {
+               "name"     = "ack-node-problem-detector",
+               "config"   = "{\\"sls_project_name\\":\\"\\"}",
+               }
+               ]
+               }
+               # ACK default alert, Optional.
+               variable "cluster_addons" {
+               type = list(object({
+               name      = string
+               config    = string
+               }))
+               default = [
+               {
+               "name"     = "alicloud-monitor-controller",
+               "config"   = "{\\"group_contact_ids\\":\\"[159]\\"}",
+               }
+               ]
+               }
+               ```
         :param pulumi.Input[_builtins.str] name: This parameter specifies the name of the component.
         :param pulumi.Input[_builtins.str] version: It specifies the version of the component.
         """
@@ -1819,6 +2175,183 @@ class ManagedKubernetesAddonArgs:
         `nginx-ingress-controller` - You can specific `IngressSlbNetworkType` in config. Options: internet|intranet.
 
         The `main.tf`:
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        k8s = alicloud.cs.ManagedKubernetes("k8s", addons=[{
+            "name": std.lookup(map=entry["value"],
+                key="name",
+                default=cluster_addons).result,
+            "config": std.lookup(map=entry["value"],
+                key="config",
+                default=cluster_addons).result,
+            "version": std.lookup(map=entry["value"],
+                key="version",
+                default=cluster_addons).result,
+            "disabled": std.lookup(map=entry["value"],
+                key="disabled",
+                default=cluster_addons).result,
+        } for entry in [{"key": k, "value": v} for k, v in cluster_addons]])
+        ```
+
+        The `varibales.tf`:
+
+        ```
+        # Network-flannel is required, Conflicts With Network-terway
+        variable "cluster_addons" {
+        description = "Addon components in kubernetes cluster"
+
+        type = list(object({
+        name      = string
+        config    = string
+        }))
+
+        default = [
+        {
+        "name"     = "flannel",
+        "config"   = "",
+        }
+        ]
+        }
+
+        # Network-terway is required, Conflicts With Network-flannel
+        variable "cluster_addons" {
+        type = list(object({
+        name      = string
+        config    = string
+        }))
+
+        default = [
+        {
+        "name"     = "terway-eniip",
+        "config"   = "",
+        }
+        ]
+        }
+
+        # Storage-csi is required, Conflicts With Storage-flexvolume
+        variable "cluster_addons" {
+        type = list(object({
+        name      = string
+        config    = string
+        }))
+
+        default = [
+        {
+        "name"     = "csi-plugin",
+        "config"   = "",
+        },
+        {
+        "name"     = "csi-provisioner",
+        "config"   = "",
+        }
+        ]
+        }
+
+        # Storage-flexvolume is required, Conflicts With Storage-csi
+        variable "cluster_addons" {
+        type = list(object({
+        name      = string
+        config    = string
+        }))
+        default = [
+        {
+        "name"     = "flexvolume",
+        "config"   = "",
+        }
+        ]
+        }
+
+        # Log, Optional
+        variable "cluster_addons" {
+        type = list(object({
+        name      = string
+        config    = string
+        }))
+        default = [
+        {
+        "name"     = "logtail-ds",
+        "config"   = "{\\"IngressDashboardEnabled\\":\\"true\\",\\"sls_project_name\\":\\"your-sls-project-name\\"}",
+        }
+        ]
+        }
+
+        # Ingress,Optional
+        variable "cluster_addons" {
+        type = list(object({
+        name      = string
+        config    = string
+        }))
+
+        default = [
+        {
+        "name"     = "nginx-ingress-controller",
+        "config"   = "{\\"IngressSlbNetworkType\\":\\"internet\\"}",
+        }
+        ]
+        }
+
+        # Ingress-Disable, Optional
+        variable "cluster_addons" {
+        type = list(object({
+        name      = string
+        config    = string
+        disabled  = bool
+        }))
+
+        default = [
+        {
+        "name"     = "nginx-ingress-controller",
+        "config"   = "",
+        "disabled": true,
+        }
+        ]
+
+        # Prometheus, Optional.
+        variable "cluster_addons" {
+        type = list(object({
+        name      = string
+        config    = string
+        }))
+
+        default = [
+        {
+        "name"     = "arms-prometheus",
+        "config"   = "",
+        }
+        ]
+        }
+
+        # Event Center, Optional.
+        variable "cluster_addons" {
+        type = list(object({
+        name      = string
+        config    = string
+        }))
+        default = [
+        {
+        "name"     = "ack-node-problem-detector",
+        "config"   = "{\\"sls_project_name\\":\\"\\"}",
+        }
+        ]
+        }
+        # ACK default alert, Optional.
+        variable "cluster_addons" {
+        type = list(object({
+        name      = string
+        config    = string
+        }))
+        default = [
+        {
+        "name"     = "alicloud-monitor-controller",
+        "config"   = "{\\"group_contact_ids\\":\\"[159]\\"}",
+        }
+        ]
+        }
+        ```
         """
         return pulumi.get(self, "disabled")
 
@@ -1901,6 +2434,38 @@ class ManagedKubernetesAuditLogConfigArgs:
     @sls_project_name.setter
     def sls_project_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "sls_project_name", value)
+
+
+if not MYPY:
+    class ManagedKubernetesAutoModeArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether to enable auto mode. Valid values: `true`, `false`. Only ACK managed Pro clusters support Auto Mode.
+        """
+elif False:
+    ManagedKubernetesAutoModeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ManagedKubernetesAutoModeArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether to enable auto mode. Valid values: `true`, `false`. Only ACK managed Pro clusters support Auto Mode.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to enable auto mode. Valid values: `true`, `false`. Only ACK managed Pro clusters support Auto Mode.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
 
 
 if not MYPY:

@@ -12,6 +12,7 @@ import com.pulumi.alicloud.fc.outputs.V3FunctionCustomDns;
 import com.pulumi.alicloud.fc.outputs.V3FunctionCustomRuntimeConfig;
 import com.pulumi.alicloud.fc.outputs.V3FunctionGpuConfig;
 import com.pulumi.alicloud.fc.outputs.V3FunctionInstanceLifecycleConfig;
+import com.pulumi.alicloud.fc.outputs.V3FunctionInvocationRestriction;
 import com.pulumi.alicloud.fc.outputs.V3FunctionLogConfig;
 import com.pulumi.alicloud.fc.outputs.V3FunctionNasConfig;
 import com.pulumi.alicloud.fc.outputs.V3FunctionOssMountConfig;
@@ -51,7 +52,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.uuid;
+ * import com.pulumi.random.Uuid;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.oss.BucketObject;
@@ -386,6 +387,20 @@ public class V3Function extends com.pulumi.resources.CustomResource {
         return this.instanceConcurrency;
     }
     /**
+     * Instance isolation mode
+     * 
+     */
+    @Export(name="instanceIsolationMode", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> instanceIsolationMode;
+
+    /**
+     * @return Instance isolation mode
+     * 
+     */
+    public Output<Optional<String>> instanceIsolationMode() {
+        return Codegen.optional(this.instanceIsolationMode);
+    }
+    /**
      * Instance lifecycle callback method configuration. See `instance_lifecycle_config` below.
      * 
      */
@@ -412,6 +427,20 @@ public class V3Function extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> internetAccess() {
         return this.internetAccess;
+    }
+    /**
+     * Invocation Restriction Detail See `invocation_restriction` below.
+     * 
+     */
+    @Export(name="invocationRestriction", refs={V3FunctionInvocationRestriction.class}, tree="[0]")
+    private Output</* @Nullable */ V3FunctionInvocationRestriction> invocationRestriction;
+
+    /**
+     * @return Invocation Restriction Detail See `invocation_restriction` below.
+     * 
+     */
+    public Output<Optional<V3FunctionInvocationRestriction>> invocationRestriction() {
+        return Codegen.optional(this.invocationRestriction);
     }
     /**
      * Last time the function was Updated
@@ -568,6 +597,34 @@ public class V3Function extends com.pulumi.resources.CustomResource {
         return this.runtime;
     }
     /**
+     * The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
+     * 
+     */
+    @Export(name="sessionAffinity", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> sessionAffinity;
+
+    /**
+     * @return The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
+     * 
+     */
+    public Output<Optional<String>> sessionAffinity() {
+        return Codegen.optional(this.sessionAffinity);
+    }
+    /**
+     * When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
+     * 
+     */
+    @Export(name="sessionAffinityConfig", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> sessionAffinityConfig;
+
+    /**
+     * @return When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
+     * 
+     */
+    public Output<Optional<String>> sessionAffinityConfig() {
+        return Codegen.optional(this.sessionAffinityConfig);
+    }
+    /**
      * Function Status
      * 
      */
@@ -705,9 +762,6 @@ public class V3Function extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .additionalSecretOutputs(List.of(
-                "layers"
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

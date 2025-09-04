@@ -18,6 +18,120 @@ import (
 //
 // > **NOTE:** Available since v1.153.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := nas.GetZones(ctx, &nas.GetZonesArgs{
+//				FileSystemType: pulumi.StringRef("cpfs"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String("terraform-example"),
+//				CidrBlock:   pulumi.String("172.17.3.0/24"),
+//				VpcId:       exampleNetwork.ID(),
+//				ZoneId:      pulumi.String(example.Zones[1].ZoneId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleFileSystem, err := nas.NewFileSystem(ctx, "example", &nas.FileSystemArgs{
+//				ProtocolType:   pulumi.String("cpfs"),
+//				StorageType:    pulumi.String("advance_200"),
+//				FileSystemType: pulumi.String("cpfs"),
+//				Capacity:       pulumi.Int(3600),
+//				Description:    pulumi.String("terraform-example"),
+//				ZoneId:         pulumi.String(example.Zones[1].ZoneId),
+//				VpcId:          exampleNetwork.ID(),
+//				VswitchId:      exampleSwitch.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleMountTarget, err := nas.NewMountTarget(ctx, "example", &nas.MountTargetArgs{
+//				FileSystemId: exampleFileSystem.ID(),
+//				VswitchId:    exampleSwitch.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleInteger, err := random.NewInteger(ctx, "example", &random.IntegerArgs{
+//				Max: 99999,
+//				Min: 10000,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleBucket, err := oss.NewBucket(ctx, "example", &oss.BucketArgs{
+//				Bucket: pulumi.Sprintf("example-value-%v", exampleInteger.Result),
+//				Acl:    pulumi.String("private"),
+//				Tags: pulumi.StringMap{
+//					"cpfs-dataflow": pulumi.String("true"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleFileset, err := nas.NewFileset(ctx, "example", &nas.FilesetArgs{
+//				FileSystemId:   exampleMountTarget.FileSystemId,
+//				Description:    pulumi.String("terraform-example"),
+//				FileSystemPath: pulumi.String("/example_path/"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = nas.NewDataFlow(ctx, "example", &nas.DataFlowArgs{
+//				FsetId:             exampleFileset.FilesetId,
+//				Description:        pulumi.String("terraform-example"),
+//				FileSystemId:       exampleFileSystem.ID(),
+//				SourceSecurityType: pulumi.String("SSL"),
+//				SourceStorage: pulumi.String(std.JoinOutput(ctx, std.JoinOutputArgs{
+//					Separator: pulumi.String(""),
+//					Input: pulumi.StringArray{
+//						pulumi.String("oss://"),
+//						exampleBucket.Bucket,
+//					},
+//				}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
+//					return invoke.Result, nil
+//				}).(pulumi.StringPtrOutput)),
+//				Throughput: pulumi.Int(600),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // File Storage (NAS) Data Flow can be imported using the id, e.g.

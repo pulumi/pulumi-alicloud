@@ -16,6 +16,120 @@ namespace Pulumi.AliCloud.AckOne
     /// 
     /// &gt; **NOTE:** Available since v1.243.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var keyName = config.Get("keyName") ?? "%s";
+    ///     var enhanced = AliCloud.Vpc.GetEnhancedNatAvailableZones.Invoke();
+    /// 
+    ///     var cloudEfficiency = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         AvailabilityZone = enhanced.Apply(getEnhancedNatAvailableZonesResult =&gt; getEnhancedNatAvailableZonesResult.Zones[0]?.ZoneId),
+    ///         CpuCoreCount = 4,
+    ///         MemorySize = 8,
+    ///         KubernetesNodeRole = "Worker",
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///     });
+    /// 
+    ///     var @default = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+    ///     {
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = @default.Id,
+    ///         ZoneId = enhanced.Apply(getEnhancedNatAvailableZonesResult =&gt; getEnhancedNatAvailableZonesResult.Zones[0]?.ZoneId),
+    ///     });
+    /// 
+    ///     var defaultManagedKubernetes = new AliCloud.CS.ManagedKubernetes("default", new()
+    ///     {
+    ///         ClusterSpec = "ack.pro.small",
+    ///         VswitchIds = new[]
+    ///         {
+    ///             defaultSwitch.Id,
+    ///         },
+    ///         NewNatGateway = true,
+    ///         PodCidr = Std.Cidrsubnet.Invoke(new()
+    ///         {
+    ///             Input = "10.0.0.0/8",
+    ///             Newbits = 8,
+    ///             Netnum = 36,
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         ServiceCidr = Std.Cidrsubnet.Invoke(new()
+    ///         {
+    ///             Input = "172.16.0.0/16",
+    ///             Newbits = 4,
+    ///             Netnum = 7,
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         SlbInternetEnabled = true,
+    ///         IsEnterpriseSecurityGroup = true,
+    ///     });
+    /// 
+    ///     var defaultKeyPair = new AliCloud.Ecs.KeyPair("default", new()
+    ///     {
+    ///         KeyPairName = keyName,
+    ///     });
+    /// 
+    ///     var defaultNodePool = new AliCloud.CS.NodePool("default", new()
+    ///     {
+    ///         NodePoolName = name,
+    ///         ClusterId = defaultManagedKubernetes.Id,
+    ///         VswitchIds = new[]
+    ///         {
+    ///             defaultSwitch.Id,
+    ///         },
+    ///         InstanceTypes = new[]
+    ///         {
+    ///             cloudEfficiency.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         },
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         SystemDiskSize = 40,
+    ///         KeyName = defaultKeyPair.KeyPairName,
+    ///         DesiredSize = "1",
+    ///     });
+    /// 
+    ///     var defaultCluster = new AliCloud.AckOne.Cluster("default", new()
+    ///     {
+    ///         Network = new AliCloud.AckOne.Inputs.ClusterNetworkArgs
+    ///         {
+    ///             VpcId = @default.Id,
+    ///             Vswitches = new[]
+    ///             {
+    ///                 defaultSwitch.Id,
+    ///             },
+    ///         },
+    ///         ArgocdEnabled = false,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             defaultManagedKubernetes,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultMembershipAttachment = new AliCloud.AckOne.MembershipAttachment("default", new()
+    ///     {
+    ///         ClusterId = defaultCluster.Id,
+    ///         SubClusterId = defaultManagedKubernetes.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Ack One Membership Attachment can be imported using the id, which consists of cluster_id and sub_cluster_id, e.g.

@@ -22,6 +22,144 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.143.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+ * import com.pulumi.alicloud.pvtz.inputs.GetResolverZonesArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.CidrsubnetArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.pvtz.Endpoint;
+ * import com.pulumi.alicloud.pvtz.EndpointArgs;
+ * import com.pulumi.alicloud.pvtz.inputs.EndpointIpConfigArgs;
+ * import com.pulumi.alicloud.pvtz.Rule;
+ * import com.pulumi.alicloud.pvtz.RuleArgs;
+ * import com.pulumi.alicloud.pvtz.inputs.RuleForwardIpArgs;
+ * import com.pulumi.alicloud.pvtz.RuleAttachment;
+ * import com.pulumi.alicloud.pvtz.RuleAttachmentArgs;
+ * import com.pulumi.alicloud.pvtz.inputs.RuleAttachmentVpcArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("example_value");
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
+ *         final var default = PvtzFunctions.getResolverZones(GetResolverZonesArgs.builder()
+ *             .status("NORMAL")
+ *             .build());
+ * 
+ *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
+ *         for (var i = 0; i < 3; i++) {
+ *             new Network("defaultNetwork-" + i, NetworkArgs.builder()
+ *                 .vpcName(name)
+ *                 .cidrBlock("172.16.0.0/12")
+ *                 .build());
+ * 
+ *         
+ * }
+ *         for (var i = 0; i < 2; i++) {
+ *             new Switch("defaultSwitch-" + i, SwitchArgs.builder()
+ *                 .vpcId(defaultNetwork[2].id())
+ *                 .cidrBlock(defaultNetwork[2].cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+ *                     .input(_cidrBlock)
+ *                     .newbits(8)
+ *                     .netnum(range.value())
+ *                     .build())).applyValue(_invoke -> _invoke.result()))
+ *                 .zoneId(default_.zones()[range.value()].zoneId())
+ *                 .build());
+ * 
+ *         
+ * }
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+ *             .vpcId(defaultNetwork[2].id())
+ *             .name(name)
+ *             .build());
+ * 
+ *         var defaultEndpoint = new Endpoint("defaultEndpoint", EndpointArgs.builder()
+ *             .endpointName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .securityGroupId(defaultSecurityGroup.id())
+ *             .vpcId(defaultNetwork[2].id())
+ *             .vpcRegionId(defaultGetRegions.regions()[0].id())
+ *             .ipConfigs(            
+ *                 EndpointIpConfigArgs.builder()
+ *                     .zoneId(defaultSwitch[0].zoneId())
+ *                     .cidrBlock(defaultSwitch[0].cidrBlock())
+ *                     .vswitchId(defaultSwitch[0].id())
+ *                     .build(),
+ *                 EndpointIpConfigArgs.builder()
+ *                     .zoneId(defaultSwitch[1].zoneId())
+ *                     .cidrBlock(defaultSwitch[1].cidrBlock())
+ *                     .vswitchId(defaultSwitch[1].id())
+ *                     .build())
+ *             .build());
+ * 
+ *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()
+ *             .endpointId(defaultEndpoint.id())
+ *             .ruleName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .type("OUTBOUND")
+ *             .zoneName(name)
+ *             .forwardIps(RuleForwardIpArgs.builder()
+ *                 .ip("114.114.114.114")
+ *                 .port(8080)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultRuleAttachment = new RuleAttachment("defaultRuleAttachment", RuleAttachmentArgs.builder()
+ *             .ruleId(defaultRule.id())
+ *             .vpcs(            
+ *                 RuleAttachmentVpcArgs.builder()
+ *                     .regionId(defaultGetRegions.regions()[0].id())
+ *                     .vpcId(defaultNetwork[0].id())
+ *                     .build(),
+ *                 RuleAttachmentVpcArgs.builder()
+ *                     .regionId(defaultGetRegions.regions()[0].id())
+ *                     .vpcId(defaultNetwork[1].id())
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Private Zone Rule Attachment can be imported using the id, e.g.

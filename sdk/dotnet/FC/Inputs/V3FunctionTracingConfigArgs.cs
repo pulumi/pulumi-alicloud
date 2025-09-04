@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.FC.Inputs
         private InputMap<string>? _params;
 
         /// <summary>
-        /// Tracing parameters.
+        /// Tracing parameters
         /// </summary>
         public InputMap<string> Params
         {

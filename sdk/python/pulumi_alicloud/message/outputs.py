@@ -15,12 +15,132 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'ServiceEventRuleEndpoint',
+    'ServiceEventRuleMatchRule',
     'ServiceQueueDlqPolicy',
     'ServiceSubscriptionDlqPolicy',
     'GetServiceQueuesQueueResult',
     'GetServiceSubscriptionsSubscriptionResult',
     'GetServiceTopicsTopicResult',
 ]
+
+@pulumi.output_type
+class ServiceEventRuleEndpoint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endpointType":
+            suggest = "endpoint_type"
+        elif key == "endpointValue":
+            suggest = "endpoint_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceEventRuleEndpoint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceEventRuleEndpoint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceEventRuleEndpoint.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 endpoint_type: Optional[_builtins.str] = None,
+                 endpoint_value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str endpoint_type: Message receiving terminal endpoint type
+        :param _builtins.str endpoint_value: Message Receiving Terminal Endpoint
+        """
+        if endpoint_type is not None:
+            pulumi.set(__self__, "endpoint_type", endpoint_type)
+        if endpoint_value is not None:
+            pulumi.set(__self__, "endpoint_value", endpoint_value)
+
+    @_builtins.property
+    @pulumi.getter(name="endpointType")
+    def endpoint_type(self) -> Optional[_builtins.str]:
+        """
+        Message receiving terminal endpoint type
+        """
+        return pulumi.get(self, "endpoint_type")
+
+    @_builtins.property
+    @pulumi.getter(name="endpointValue")
+    def endpoint_value(self) -> Optional[_builtins.str]:
+        """
+        Message Receiving Terminal Endpoint
+        """
+        return pulumi.get(self, "endpoint_value")
+
+
+@pulumi.output_type
+class ServiceEventRuleMatchRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchState":
+            suggest = "match_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceEventRuleMatchRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceEventRuleMatchRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceEventRuleMatchRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 match_state: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 prefix: Optional[_builtins.str] = None,
+                 suffix: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str match_state: Match state. valid values: `true`, `false`.
+        :param _builtins.str prefix: Prefix matching rule.
+        :param _builtins.str suffix: Suffix matching rule.
+        """
+        if match_state is not None:
+            pulumi.set(__self__, "match_state", match_state)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if suffix is not None:
+            pulumi.set(__self__, "suffix", suffix)
+
+    @_builtins.property
+    @pulumi.getter(name="matchState")
+    def match_state(self) -> Optional[_builtins.str]:
+        """
+        Match state. valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "match_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> Optional[_builtins.str]:
+        """
+        Prefix matching rule.
+        """
+        return pulumi.get(self, "prefix")
+
+    @_builtins.property
+    @pulumi.getter
+    def suffix(self) -> Optional[_builtins.str]:
+        """
+        Suffix matching rule.
+        """
+        return pulumi.get(self, "suffix")
+
 
 @pulumi.output_type
 class ServiceQueueDlqPolicy(dict):

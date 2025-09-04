@@ -11,6 +11,142 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.224.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const direction = config.get("direction") || "out";
+ * const _default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultDEiWfM = new alicloud.vpc.Network("defaultDEiWfM", {
+ *     cidrBlock: "172.16.0.0/12",
+ *     vpcName: name,
+ * });
+ * const defaultFHDM3F = new alicloud.vpc.Switch("defaultFHDM3F", {
+ *     vpcId: defaultDEiWfM.id,
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *     cidrBlock: "172.16.2.0/24",
+ * });
+ * const defaultMbS2Ts = new alicloud.vpc.NatGateway("defaultMbS2Ts", {
+ *     vpcId: defaultDEiWfM.id,
+ *     natGatewayName: name,
+ *     paymentType: "PayAsYouGo",
+ *     vswitchId: defaultFHDM3F.id,
+ *     natType: "Enhanced",
+ * });
+ * const port = new alicloud.cloudfirewall.AddressBook("port", {
+ *     description: std.format({
+ *         input: "%s%s",
+ *         args: [
+ *             name,
+ *             "port",
+ *         ],
+ *     }).then(invoke => invoke.result),
+ *     groupName: std.format({
+ *         input: "%s%s",
+ *         args: [
+ *             name,
+ *             "port",
+ *         ],
+ *     }).then(invoke => invoke.result),
+ *     groupType: "port",
+ *     addressLists: [
+ *         "22/22",
+ *         "23/23",
+ *         "24/24",
+ *     ],
+ * });
+ * const port_update = new alicloud.cloudfirewall.AddressBook("port-update", {
+ *     description: std.format({
+ *         input: "%s%s",
+ *         args: [
+ *             name,
+ *             "port-update",
+ *         ],
+ *     }).then(invoke => invoke.result),
+ *     groupName: std.format({
+ *         input: "%s%s",
+ *         args: [
+ *             name,
+ *             "port-update",
+ *         ],
+ *     }).then(invoke => invoke.result),
+ *     groupType: "port",
+ *     addressLists: [
+ *         "22/22",
+ *         "23/23",
+ *         "24/24",
+ *     ],
+ * });
+ * const domain = new alicloud.cloudfirewall.AddressBook("domain", {
+ *     description: std.format({
+ *         input: "%s%s",
+ *         args: [
+ *             name,
+ *             "domain",
+ *         ],
+ *     }).then(invoke => invoke.result),
+ *     groupName: std.format({
+ *         input: "%s%s",
+ *         args: [
+ *             name,
+ *             "domain",
+ *         ],
+ *     }).then(invoke => invoke.result),
+ *     groupType: "domain",
+ *     addressLists: [
+ *         "alibaba.com",
+ *         "aliyun.com",
+ *         "alicloud.com",
+ *     ],
+ * });
+ * const ip = new alicloud.cloudfirewall.AddressBook("ip", {
+ *     description: name,
+ *     groupName: name,
+ *     groupType: "ip",
+ *     addressLists: [
+ *         "1.1.1.1/32",
+ *         "2.2.2.2/32",
+ *     ],
+ * });
+ * const defaultNatFirewallControlPolicy = new alicloud.cloudfirewall.NatFirewallControlPolicy("default", {
+ *     applicationNameLists: ["ANY"],
+ *     description: name,
+ *     release: "false",
+ *     ipVersion: "4",
+ *     repeatDays: [
+ *         1,
+ *         2,
+ *         3,
+ *     ],
+ *     repeatStartTime: "21:00",
+ *     aclAction: "log",
+ *     destPortGroup: port.groupName,
+ *     repeatType: "Weekly",
+ *     natGatewayId: defaultMbS2Ts.id,
+ *     source: "1.1.1.1/32",
+ *     direction: "out",
+ *     repeatEndTime: "21:30",
+ *     startTime: 1699156800,
+ *     destination: "1.1.1.1/32",
+ *     endTime: 1888545600,
+ *     sourceType: "net",
+ *     proto: "TCP",
+ *     newOrder: "1",
+ *     destinationType: "net",
+ *     destPortType: "group",
+ *     domainResolveType: 0,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Cloud Firewall Nat Firewall Control Policy can be imported using the id, e.g.

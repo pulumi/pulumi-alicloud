@@ -20,6 +20,187 @@ import (
 //
 // > **NOTE:** This version only supports forwarding rules in the request direction.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := alb.GetZones(ctx, &alb.GetZonesArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "10.4.%d.0/24",
+//				Args: []float64{
+//					val0 + 1,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat1, err := std.Format(ctx, &std.FormatArgs{
+//				Input: fmt.Sprintf("%v%v", name, "_%d"),
+//				Args: []float64{
+//					val0 + 1,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var defaultSwitch []*vpc.Switch
+//			for index := 0; index < 2; index++ {
+//				key0 := index
+//				val0 := index
+//				__res, err := vpc.NewSwitch(ctx, fmt.Sprintf("default-%v", key0), &vpc.SwitchArgs{
+//					VpcId:       defaultNetwork.ID(),
+//					CidrBlock:   pulumi.String(invokeFormat.Result),
+//					ZoneId:      _default.Zones[val0].Id,
+//					VswitchName: pulumi.String(invokeFormat1.Result),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				defaultSwitch = append(defaultSwitch, __res)
+//			}
+//			defaultLoadBalancer, err := alb.NewLoadBalancer(ctx, "default", &alb.LoadBalancerArgs{
+//				VpcId:                defaultNetwork.ID(),
+//				AddressType:          pulumi.String("Internet"),
+//				AddressAllocatedMode: pulumi.String("Fixed"),
+//				LoadBalancerName:     pulumi.String(name),
+//				LoadBalancerEdition:  pulumi.String("Standard"),
+//				ResourceGroupId:      pulumi.String(defaultGetResourceGroups.Groups[0].Id),
+//				LoadBalancerBillingConfig: &alb.LoadBalancerLoadBalancerBillingConfigArgs{
+//					PayType: pulumi.String("PayAsYouGo"),
+//				},
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//				},
+//				ZoneMappings: alb.LoadBalancerZoneMappingArray{
+//					&alb.LoadBalancerZoneMappingArgs{
+//						VswitchId: defaultSwitch[0].ID(),
+//						ZoneId:    pulumi.String(_default.Zones[0].Id),
+//					},
+//					&alb.LoadBalancerZoneMappingArgs{
+//						VswitchId: defaultSwitch[1].ID(),
+//						ZoneId:    pulumi.String(_default.Zones[1].Id),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultServerGroup, err := alb.NewServerGroup(ctx, "default", &alb.ServerGroupArgs{
+//				Protocol:        pulumi.String("HTTP"),
+//				VpcId:           defaultNetwork.ID(),
+//				ServerGroupName: pulumi.String(name),
+//				ResourceGroupId: pulumi.String(defaultGetResourceGroups.Groups[0].Id),
+//				HealthCheckConfig: &alb.ServerGroupHealthCheckConfigArgs{
+//					HealthCheckEnabled: pulumi.Bool(false),
+//				},
+//				StickySessionConfig: &alb.ServerGroupStickySessionConfigArgs{
+//					StickySessionEnabled: pulumi.Bool(false),
+//				},
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultListener, err := alb.NewListener(ctx, "default", &alb.ListenerArgs{
+//				LoadBalancerId:      defaultLoadBalancer.ID(),
+//				ListenerProtocol:    pulumi.String("HTTP"),
+//				ListenerPort:        pulumi.Int(80),
+//				ListenerDescription: pulumi.String(name),
+//				DefaultActions: alb.ListenerDefaultActionArray{
+//					&alb.ListenerDefaultActionArgs{
+//						Type: pulumi.String("ForwardGroup"),
+//						ForwardGroupConfig: &alb.ListenerDefaultActionForwardGroupConfigArgs{
+//							ServerGroupTuples: alb.ListenerDefaultActionForwardGroupConfigServerGroupTupleArray{
+//								&alb.ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs{
+//									ServerGroupId: defaultServerGroup.ID(),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = alb.NewRule(ctx, "default", &alb.RuleArgs{
+//				RuleName:   pulumi.String(name),
+//				ListenerId: defaultListener.ID(),
+//				Priority:   pulumi.Int(555),
+//				RuleConditions: alb.RuleRuleConditionArray{
+//					&alb.RuleRuleConditionArgs{
+//						CookieConfig: &alb.RuleRuleConditionCookieConfigArgs{
+//							Values: alb.RuleRuleConditionCookieConfigValueArray{
+//								&alb.RuleRuleConditionCookieConfigValueArgs{
+//									Key:   pulumi.String("created"),
+//									Value: pulumi.String("tf"),
+//								},
+//							},
+//						},
+//						Type: pulumi.String("Cookie"),
+//					},
+//				},
+//				RuleActions: alb.RuleRuleActionArray{
+//					&alb.RuleRuleActionArgs{
+//						ForwardGroupConfig: &alb.RuleRuleActionForwardGroupConfigArgs{
+//							ServerGroupTuples: alb.RuleRuleActionForwardGroupConfigServerGroupTupleArray{
+//								&alb.RuleRuleActionForwardGroupConfigServerGroupTupleArgs{
+//									ServerGroupId: defaultServerGroup.ID(),
+//								},
+//							},
+//						},
+//						Order: pulumi.Int(9),
+//						Type:  pulumi.String("ForwardGroup"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Application Load Balancer (ALB) Rule can be imported using the id, e.g.

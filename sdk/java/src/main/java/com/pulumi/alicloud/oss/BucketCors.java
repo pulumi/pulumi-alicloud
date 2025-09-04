@@ -35,7 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.uuid;
+ * import com.pulumi.random.Uuid;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.oss.BucketCors;

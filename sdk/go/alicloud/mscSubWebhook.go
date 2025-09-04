@@ -16,6 +16,55 @@ import (
 //
 // > **NOTE:** Available since v1.141.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tfexample"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			token := "abcd****"
+//			if param := cfg.Get("token"); param != "" {
+//				token = param
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "https://oapi.dingtalk.com/robot/send?access_token=%s",
+//				Args: []string{
+//					token,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = alicloud.NewMscSubWebhook(ctx, "example", &alicloud.MscSubWebhookArgs{
+//				ServerUrl:   pulumi.String(invokeFormat.Result),
+//				WebhookName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Msc Sub Webhook can be imported using the id, e.g.

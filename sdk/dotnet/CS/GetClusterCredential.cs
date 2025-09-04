@@ -17,6 +17,32 @@ namespace Pulumi.AliCloud.CS
         /// &gt; **NOTE:** Available since v1.187.0
         /// 
         /// &gt; **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Declare the data source
+        ///     var k8s = AliCloud.CS.GetManagedKubernetesClusters.Invoke(new()
+        ///     {
+        ///         NameRegex = "my-cluster",
+        ///         EnableDetails = false,
+        ///     });
+        /// 
+        ///     var auth = Std.Toset.Invoke(new()
+        ///     {
+        ///         Input = k8s.Apply(getManagedKubernetesClustersResult =&gt; getManagedKubernetesClustersResult.Ids),
+        ///     }).Apply(invoke =&gt; );
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetClusterCredentialResult> InvokeAsync(GetClusterCredentialArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClusterCredentialResult>("alicloud:cs/getClusterCredential:getClusterCredential", args ?? new GetClusterCredentialArgs(), options.WithDefaults());
@@ -27,6 +53,32 @@ namespace Pulumi.AliCloud.CS
         /// &gt; **NOTE:** Available since v1.187.0
         /// 
         /// &gt; **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Declare the data source
+        ///     var k8s = AliCloud.CS.GetManagedKubernetesClusters.Invoke(new()
+        ///     {
+        ///         NameRegex = "my-cluster",
+        ///         EnableDetails = false,
+        ///     });
+        /// 
+        ///     var auth = Std.Toset.Invoke(new()
+        ///     {
+        ///         Input = k8s.Apply(getManagedKubernetesClustersResult =&gt; getManagedKubernetesClustersResult.Ids),
+        ///     }).Apply(invoke =&gt; );
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetClusterCredentialResult> Invoke(GetClusterCredentialInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClusterCredentialResult>("alicloud:cs/getClusterCredential:getClusterCredential", args ?? new GetClusterCredentialInvokeArgs(), options.WithDefaults());
@@ -37,6 +89,32 @@ namespace Pulumi.AliCloud.CS
         /// &gt; **NOTE:** Available since v1.187.0
         /// 
         /// &gt; **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Declare the data source
+        ///     var k8s = AliCloud.CS.GetManagedKubernetesClusters.Invoke(new()
+        ///     {
+        ///         NameRegex = "my-cluster",
+        ///         EnableDetails = false,
+        ///     });
+        /// 
+        ///     var auth = Std.Toset.Invoke(new()
+        ///     {
+        ///         Input = k8s.Apply(getManagedKubernetesClustersResult =&gt; getManagedKubernetesClustersResult.Ids),
+        ///     }).Apply(invoke =&gt; );
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetClusterCredentialResult> Invoke(GetClusterCredentialInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetClusterCredentialResult>("alicloud:cs/getClusterCredential:getClusterCredential", args ?? new GetClusterCredentialInvokeArgs(), options.WithDefaults());

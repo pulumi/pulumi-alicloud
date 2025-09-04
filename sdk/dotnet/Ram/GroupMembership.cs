@@ -14,6 +14,77 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// &gt; **NOTE:** Available since v1.0.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tfexample";
+    ///     var @group = new AliCloud.Ram.Group("group", new()
+    ///     {
+    ///         Name = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%sgroup",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         Comments = "this is a group comments.",
+    ///     });
+    /// 
+    ///     var user = new AliCloud.Ram.User("user", new()
+    ///     {
+    ///         Name = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%suser",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         DisplayName = "user_display_name",
+    ///         Mobile = "86-18688888888",
+    ///         Email = "hello.uuu@aaa.com",
+    ///         Comments = "yoyoyo",
+    ///     });
+    /// 
+    ///     var user1 = new AliCloud.Ram.User("user1", new()
+    ///     {
+    ///         Name = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%suser1",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         DisplayName = "user_display_name1",
+    ///         Mobile = "86-18688888889",
+    ///         Email = "hello.uuu@aaa.com",
+    ///         Comments = "yoyoyo",
+    ///     });
+    /// 
+    ///     var membership = new AliCloud.Ram.GroupMembership("membership", new()
+    ///     {
+    ///         GroupName = @group.Name,
+    ///         UserNames = new[]
+    ///         {
+    ///             user.Name,
+    ///             user1.Name,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// RAM Group membership can be imported using the id, e.g.

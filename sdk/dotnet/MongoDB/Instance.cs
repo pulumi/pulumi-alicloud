@@ -199,6 +199,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> EngineVersion { get; private set; } = null!;
 
         /// <summary>
+        /// The list of Global Security Group Ids.
+        /// </summary>
+        [Output("globalSecurityGroupLists")]
+        public Output<ImmutableArray<string>> GlobalSecurityGroupLists { get; private set; } = null!;
+
+        /// <summary>
         /// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values. From version 1.253.0, `hidden_zone_id` can be modified.
         /// </summary>
         [Output("hiddenZoneId")]
@@ -577,6 +583,18 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("engineVersion", required: true)]
         public Input<string> EngineVersion { get; set; } = null!;
 
+        [Input("globalSecurityGroupLists")]
+        private InputList<string>? _globalSecurityGroupLists;
+
+        /// <summary>
+        /// The list of Global Security Group Ids.
+        /// </summary>
+        public InputList<string> GlobalSecurityGroupLists
+        {
+            get => _globalSecurityGroupLists ?? (_globalSecurityGroupLists = new InputList<string>());
+            set => _globalSecurityGroupLists = value;
+        }
+
         /// <summary>
         /// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values. From version 1.253.0, `hidden_zone_id` can be modified.
         /// </summary>
@@ -913,6 +931,18 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }
+
+        [Input("globalSecurityGroupLists")]
+        private InputList<string>? _globalSecurityGroupLists;
+
+        /// <summary>
+        /// The list of Global Security Group Ids.
+        /// </summary>
+        public InputList<string> GlobalSecurityGroupLists
+        {
+            get => _globalSecurityGroupLists ?? (_globalSecurityGroupLists = new InputList<string>());
+            set => _globalSecurityGroupLists = value;
+        }
 
         /// <summary>
         /// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values. From version 1.253.0, `hidden_zone_id` can be modified.

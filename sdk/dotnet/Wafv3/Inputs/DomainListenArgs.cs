@@ -13,16 +13,13 @@ namespace Pulumi.AliCloud.Wafv3.Inputs
     public sealed class DomainListenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the certificate to be added. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
+        /// The ID of the certificate to be added. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol).
         /// </summary>
         [Input("certId")]
         public Input<string>? CertId { get; set; }
 
         /// <summary>
-        /// The type of encryption suite to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-        /// - **1**: indicates that all encryption suites are added.
-        /// - **2**: indicates that a strong encryption package is added. You can select this value only if the value of **tls_version** is `tlsv1.2`.
-        /// - **99**: indicates that a custom encryption suite is added.
+        /// The type of the cipher suites that you want to add. This parameter is available only if you specify `HttpsPorts`. Valid values:
         /// </summary>
         [Input("cipherSuite")]
         public Input<int>? CipherSuite { get; set; }
@@ -40,33 +37,25 @@ namespace Pulumi.AliCloud.Wafv3.Inputs
         }
 
         /// <summary>
-        /// Whether TSL1.3 version is supported. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-        /// - **true**: indicates that TSL1.3 is supported.
-        /// - **false**: indicates that TSL1.3 is not supported.
+        /// Whether TSL1.3 version is supported. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol). Value:
         /// </summary>
         [Input("enableTlsv3")]
         public Input<bool>? EnableTlsv3 { get; set; }
 
         /// <summary>
-        /// Whether to enable exclusive IP address. This parameter is used only when the value of **ipv6_enabled** is **false** (indicating that IPv6 is not enabled) and the value of **protection_resource** is **share** (indicating that a shared cluster is used). Value:
-        /// - **true**: indicates that the exclusive IP address is enabled.
-        /// - **false** (default): indicates that exclusive IP address is not enabled.
+        /// Specifies whether to enable the exclusive IP address feature. This parameter is available only if you set `IPv6Enabled` to false and `ProtectionResource` to `share`. Valid values:
         /// </summary>
         [Input("exclusiveIp")]
         public Input<bool>? ExclusiveIp { get; set; }
 
         /// <summary>
-        /// Whether to enable the forced jump of HTTPS. This parameter is used only when the value of `https_ports` is not empty (indicating that the domain name uses HTTPS protocol) and the value of httports is empty (indicating that the domain name does not use HTTP protocol). Value:
-        /// - **true**: indicates that HTTPS forced redirection is enabled.
-        /// - **false**: indicates that HTTPS forced redirection is not enabled.
+        /// Specifies whether to enable force redirect from HTTP to HTTPS for received requests. This parameter is available only if you specify `HttpsPorts` and leave `HttpPorts` empty. Valid values:
         /// </summary>
         [Input("focusHttps")]
         public Input<bool>? FocusHttps { get; set; }
 
         /// <summary>
-        /// Whether to turn on http2. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-        /// - **true:** indicates that HTTP2 is enabled.
-        /// - **false** (default): indicates that HTTP2 is not enabled.
+        /// Specifies whether to enable HTTP/2. This parameter is available only if you specify `HttpsPorts`. Valid values:
         /// </summary>
         [Input("http2Enabled")]
         public Input<bool>? Http2Enabled { get; set; }
@@ -75,7 +64,7 @@ namespace Pulumi.AliCloud.Wafv3.Inputs
         private InputList<int>? _httpPorts;
 
         /// <summary>
-        /// The listening port of the HTTP protocol.
+        /// The HTTP listener ports. Specify the value in the \[**port1,port2,...**] format.
         /// </summary>
         public InputList<int> HttpPorts
         {
@@ -87,7 +76,7 @@ namespace Pulumi.AliCloud.Wafv3.Inputs
         private InputList<int>? _httpsPorts;
 
         /// <summary>
-        /// The listening port of the HTTPS protocol.
+        /// The HTTPS listener ports. Specify the value in the \[**port1,port2,...**] format.
         /// </summary>
         public InputList<int> HttpsPorts
         {
@@ -96,32 +85,46 @@ namespace Pulumi.AliCloud.Wafv3.Inputs
         }
 
         /// <summary>
-        /// Whether IPv6 is turned on. Value:
-        /// - **true**: indicates that IPv6 is enabled.
-        /// - **false** (default): indicates that IPv6 is not enabled.
+        /// Specifies whether to enable IPv6 protection. Valid values:
         /// </summary>
         [Input("ipv6Enabled")]
         public Input<bool>? Ipv6Enabled { get; set; }
 
         /// <summary>
-        /// The type of protection resource to use. Value:
-        /// - **share** (default): indicates that a shared cluster is used.
-        /// - **gslb**: indicates that the shared cluster intelligent load balancing is used.
+        /// The type of the protection resource. Valid values:
         /// </summary>
         [Input("protectionResource")]
         public Input<string>? ProtectionResource { get; set; }
 
         /// <summary>
-        /// The version of TLS to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value: **tlsv1**, **tlsv1.1**, **tlsv1.2**.
+        /// Specifies whether to allow access only from SM certificate-based clients. This parameter is available only if you set SM2Enabled to true.
+        /// 
+        /// - true
+        /// - false
+        /// </summary>
+        [Input("sm2AccessOnly")]
+        public Input<bool>? Sm2AccessOnly { get; set; }
+
+        /// <summary>
+        /// The ID of the SM certificate that you want to add. This parameter is available only if you set SM2Enabled to true.
+        /// </summary>
+        [Input("sm2CertId")]
+        public Input<string>? Sm2CertId { get; set; }
+
+        /// <summary>
+        /// Specifies whether to add an SM certificate.
+        /// </summary>
+        [Input("sm2Enabled")]
+        public Input<bool>? Sm2Enabled { get; set; }
+
+        /// <summary>
+        /// The version of TLS to add. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol). Value:
         /// </summary>
         [Input("tlsVersion")]
         public Input<string>? TlsVersion { get; set; }
 
         /// <summary>
-        /// WAF obtains the real IP address of the client. Value:
-        /// - **0** (default): indicates that the client has not forwarded the traffic to WAF through other layer -7 agents.
-        /// - **1**: indicates that the first value of the X-Forwarded-For(XFF) field in the WAF read request header is used as the client IP address.
-        /// - **2**: indicates that the custom field value set by you in the WAF read request header is used as the client IP address.
+        /// The method that is used to obtain the originating IP address of a client. Valid values:
         /// </summary>
         [Input("xffHeaderMode")]
         public Input<int>? XffHeaderMode { get; set; }
@@ -130,7 +133,9 @@ namespace Pulumi.AliCloud.Wafv3.Inputs
         private InputList<string>? _xffHeaders;
 
         /// <summary>
-        /// Set the list of custom fields used to obtain the client IP address.
+        /// The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the **\["header1","header2",...]** format.
+        /// 
+        /// &gt; **NOTE:**   This parameter is required only if you set `XffHeaderMode` to 2.
         /// </summary>
         public InputList<string> XffHeaders
         {

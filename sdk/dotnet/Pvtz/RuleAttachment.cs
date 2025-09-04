@@ -16,6 +16,130 @@ namespace Pulumi.AliCloud.Pvtz
     /// 
     /// &gt; **NOTE:** Available since v1.143.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "example_value";
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var @default = AliCloud.Pvtz.GetResolverZones.Invoke(new()
+    ///     {
+    ///         Status = "NORMAL",
+    ///     });
+    /// 
+    ///     var defaultGetRegions = AliCloud.GetRegions.Invoke(new()
+    ///     {
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var defaultNetwork = new List&lt;AliCloud.Vpc.Network&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 3; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         defaultNetwork.Add(new AliCloud.Vpc.Network($"default-{range.Value}", new()
+    ///         {
+    ///             VpcName = name,
+    ///             CidrBlock = "172.16.0.0/12",
+    ///         }));
+    ///     }
+    ///     var defaultSwitch = new List&lt;AliCloud.Vpc.Switch&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         defaultSwitch.Add(new AliCloud.Vpc.Switch($"default-{range.Value}", new()
+    ///         {
+    ///             VpcId = defaultNetwork[2].Id,
+    ///             CidrBlock = defaultNetwork[2].CidrBlock.Apply(cidrBlock =&gt; Std.Cidrsubnet.Invoke(new()
+    ///             {
+    ///                 Input = cidrBlock,
+    ///                 Newbits = 8,
+    ///                 Netnum = range.Value,
+    ///             })).Apply(invoke =&gt; invoke.Result),
+    ///             ZoneId = @default.Apply(@default =&gt; @default.Apply(getResolverZonesResult =&gt; getResolverZonesResult.Zones)[range.Value].ZoneId),
+    ///         }));
+    ///     }
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
+    ///     {
+    ///         VpcId = defaultNetwork[2].Id,
+    ///         Name = name,
+    ///     });
+    /// 
+    ///     var defaultEndpoint = new AliCloud.Pvtz.Endpoint("default", new()
+    ///     {
+    ///         EndpointName = $"{name}-{defaultInteger.Result}",
+    ///         SecurityGroupId = defaultSecurityGroup.Id,
+    ///         VpcId = defaultNetwork[2].Id,
+    ///         VpcRegionId = defaultGetRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         IpConfigs = new[]
+    ///         {
+    ///             new AliCloud.Pvtz.Inputs.EndpointIpConfigArgs
+    ///             {
+    ///                 ZoneId = defaultSwitch[0].ZoneId,
+    ///                 CidrBlock = defaultSwitch[0].CidrBlock,
+    ///                 VswitchId = defaultSwitch[0].Id,
+    ///             },
+    ///             new AliCloud.Pvtz.Inputs.EndpointIpConfigArgs
+    ///             {
+    ///                 ZoneId = defaultSwitch[1].ZoneId,
+    ///                 CidrBlock = defaultSwitch[1].CidrBlock,
+    ///                 VswitchId = defaultSwitch[1].Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultRule = new AliCloud.Pvtz.Rule("default", new()
+    ///     {
+    ///         EndpointId = defaultEndpoint.Id,
+    ///         RuleName = $"{name}-{defaultInteger.Result}",
+    ///         Type = "OUTBOUND",
+    ///         ZoneName = name,
+    ///         ForwardIps = new[]
+    ///         {
+    ///             new AliCloud.Pvtz.Inputs.RuleForwardIpArgs
+    ///             {
+    ///                 Ip = "114.114.114.114",
+    ///                 Port = 8080,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultRuleAttachment = new AliCloud.Pvtz.RuleAttachment("default", new()
+    ///     {
+    ///         RuleId = defaultRule.Id,
+    ///         Vpcs = new[]
+    ///         {
+    ///             new AliCloud.Pvtz.Inputs.RuleAttachmentVpcArgs
+    ///             {
+    ///                 RegionId = defaultGetRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///                 VpcId = defaultNetwork[0].Id,
+    ///             },
+    ///             new AliCloud.Pvtz.Inputs.RuleAttachmentVpcArgs
+    ///             {
+    ///                 RegionId = defaultGetRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///                 VpcId = defaultNetwork[1].Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Private Zone Rule Attachment can be imported using the id, e.g.

@@ -16,6 +16,185 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// 
     /// &gt; **NOTE:** Available since v1.224.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var direction = config.Get("direction") ?? "out";
+    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultDEiWfM = new AliCloud.Vpc.Network("defaultDEiWfM", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/12",
+    ///         VpcName = name,
+    ///     });
+    /// 
+    ///     var defaultFHDM3F = new AliCloud.Vpc.Switch("defaultFHDM3F", new()
+    ///     {
+    ///         VpcId = defaultDEiWfM.Id,
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///         CidrBlock = "172.16.2.0/24",
+    ///     });
+    /// 
+    ///     var defaultMbS2Ts = new AliCloud.Vpc.NatGateway("defaultMbS2Ts", new()
+    ///     {
+    ///         VpcId = defaultDEiWfM.Id,
+    ///         NatGatewayName = name,
+    ///         PaymentType = "PayAsYouGo",
+    ///         VswitchId = defaultFHDM3F.Id,
+    ///         NatType = "Enhanced",
+    ///     });
+    /// 
+    ///     var port = new AliCloud.CloudFirewall.AddressBook("port", new()
+    ///     {
+    ///         Description = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s%s",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///                 "port",
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         GroupName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s%s",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///                 "port",
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         GroupType = "port",
+    ///         AddressLists = new[]
+    ///         {
+    ///             "22/22",
+    ///             "23/23",
+    ///             "24/24",
+    ///         },
+    ///     });
+    /// 
+    ///     var port_update = new AliCloud.CloudFirewall.AddressBook("port-update", new()
+    ///     {
+    ///         Description = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s%s",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///                 "port-update",
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         GroupName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s%s",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///                 "port-update",
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         GroupType = "port",
+    ///         AddressLists = new[]
+    ///         {
+    ///             "22/22",
+    ///             "23/23",
+    ///             "24/24",
+    ///         },
+    ///     });
+    /// 
+    ///     var domain = new AliCloud.CloudFirewall.AddressBook("domain", new()
+    ///     {
+    ///         Description = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s%s",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///                 "domain",
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         GroupName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s%s",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///                 "domain",
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         GroupType = "domain",
+    ///         AddressLists = new[]
+    ///         {
+    ///             "alibaba.com",
+    ///             "aliyun.com",
+    ///             "alicloud.com",
+    ///         },
+    ///     });
+    /// 
+    ///     var ip = new AliCloud.CloudFirewall.AddressBook("ip", new()
+    ///     {
+    ///         Description = name,
+    ///         GroupName = name,
+    ///         GroupType = "ip",
+    ///         AddressLists = new[]
+    ///         {
+    ///             "1.1.1.1/32",
+    ///             "2.2.2.2/32",
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultNatFirewallControlPolicy = new AliCloud.CloudFirewall.NatFirewallControlPolicy("default", new()
+    ///     {
+    ///         ApplicationNameLists = new[]
+    ///         {
+    ///             "ANY",
+    ///         },
+    ///         Description = name,
+    ///         Release = "false",
+    ///         IpVersion = "4",
+    ///         RepeatDays = new[]
+    ///         {
+    ///             1,
+    ///             2,
+    ///             3,
+    ///         },
+    ///         RepeatStartTime = "21:00",
+    ///         AclAction = "log",
+    ///         DestPortGroup = port.GroupName,
+    ///         RepeatType = "Weekly",
+    ///         NatGatewayId = defaultMbS2Ts.Id,
+    ///         Source = "1.1.1.1/32",
+    ///         Direction = "out",
+    ///         RepeatEndTime = "21:30",
+    ///         StartTime = 1699156800,
+    ///         Destination = "1.1.1.1/32",
+    ///         EndTime = 1888545600,
+    ///         SourceType = "net",
+    ///         Proto = "TCP",
+    ///         NewOrder = "1",
+    ///         DestinationType = "net",
+    ///         DestPortType = "group",
+    ///         DomainResolveType = 0,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Cloud Firewall Nat Firewall Control Policy can be imported using the id, e.g.

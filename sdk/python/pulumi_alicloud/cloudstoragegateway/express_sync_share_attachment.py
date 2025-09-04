@@ -142,6 +142,86 @@ class ExpressSyncShareAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.144.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default = alicloud.get_regions(current=True)
+        default_uuid = random.index.Uuid("default")
+        default_storage_bundle = alicloud.cloudstoragegateway.StorageBundle("default", storage_bundle_name=std.substr(input=f"tf-example-{std.replace(text=default_uuid['result'],
+                search='-',
+                replace='').result}",
+            offset=0,
+            length=16).result)
+        default_bucket = alicloud.oss.Bucket("default", bucket=std.substr(input=f"tf-example-{std.replace(text=default_uuid['result'],
+                search='-',
+                replace='').result}",
+            offset=0,
+            length=16).result)
+        default_bucket_acl = alicloud.oss.BucketAcl("default",
+            bucket=default_bucket.bucket,
+            acl="public-read-write")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="172.16.0.0/12")
+        default_get_stocks = alicloud.cloudstoragegateway.get_stocks(gateway_class="Standard")
+        default_switch = alicloud.vpc.Switch("default",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/21",
+            zone_id=default_get_stocks.stocks[0].zone_id,
+            vswitch_name=name)
+        default_gateway = alicloud.cloudstoragegateway.Gateway("default",
+            gateway_name=name,
+            description=name,
+            gateway_class="Standard",
+            type="File",
+            payment_type="PayAsYouGo",
+            vswitch_id=default_switch.id,
+            release_after_expiration=True,
+            public_network_bandwidth=40,
+            storage_bundle_id=default_storage_bundle.id,
+            location="Cloud")
+        default_gateway_cache_disk = alicloud.cloudstoragegateway.GatewayCacheDisk("default",
+            cache_disk_category="cloud_efficiency",
+            gateway_id=default_gateway.id,
+            cache_disk_size_in_gb=50)
+        default_gateway_file_share = alicloud.cloudstoragegateway.GatewayFileShare("default",
+            gateway_file_share_name=name,
+            gateway_id=default_gateway.id,
+            local_path=default_gateway_cache_disk.local_file_path,
+            oss_bucket_name=default_bucket.bucket,
+            oss_endpoint=default_bucket.extranet_endpoint,
+            protocol="NFS",
+            remote_sync=False,
+            fe_limit=0,
+            backend_limit=0,
+            cache_mode="Cache",
+            squash="none",
+            lag_period=5)
+        default_express_sync = alicloud.cloudstoragegateway.ExpressSync("default",
+            bucket_name=default_gateway_file_share.oss_bucket_name,
+            bucket_region=default.regions[0].id,
+            description=name,
+            express_sync_name=f"{name}-{default_integer['result']}")
+        default_express_sync_share_attachment = alicloud.cloudstoragegateway.ExpressSyncShareAttachment("default",
+            express_sync_id=default_express_sync.id,
+            gateway_id=default_gateway.id,
+            share_name=default_gateway_file_share.gateway_file_share_name)
+        ```
+
         ## Import
 
         Cloud Storage Gateway Express Sync Share Attachment can be imported using the id, e.g.
@@ -168,6 +248,86 @@ class ExpressSyncShareAttachment(pulumi.CustomResource):
         For information about Cloud Storage Gateway Express Sync Share Attachment and how to use it, see [What is Express Sync Share Attachment](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/addsharestoexpresssync).
 
         > **NOTE:** Available since v1.144.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default = alicloud.get_regions(current=True)
+        default_uuid = random.index.Uuid("default")
+        default_storage_bundle = alicloud.cloudstoragegateway.StorageBundle("default", storage_bundle_name=std.substr(input=f"tf-example-{std.replace(text=default_uuid['result'],
+                search='-',
+                replace='').result}",
+            offset=0,
+            length=16).result)
+        default_bucket = alicloud.oss.Bucket("default", bucket=std.substr(input=f"tf-example-{std.replace(text=default_uuid['result'],
+                search='-',
+                replace='').result}",
+            offset=0,
+            length=16).result)
+        default_bucket_acl = alicloud.oss.BucketAcl("default",
+            bucket=default_bucket.bucket,
+            acl="public-read-write")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="172.16.0.0/12")
+        default_get_stocks = alicloud.cloudstoragegateway.get_stocks(gateway_class="Standard")
+        default_switch = alicloud.vpc.Switch("default",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/21",
+            zone_id=default_get_stocks.stocks[0].zone_id,
+            vswitch_name=name)
+        default_gateway = alicloud.cloudstoragegateway.Gateway("default",
+            gateway_name=name,
+            description=name,
+            gateway_class="Standard",
+            type="File",
+            payment_type="PayAsYouGo",
+            vswitch_id=default_switch.id,
+            release_after_expiration=True,
+            public_network_bandwidth=40,
+            storage_bundle_id=default_storage_bundle.id,
+            location="Cloud")
+        default_gateway_cache_disk = alicloud.cloudstoragegateway.GatewayCacheDisk("default",
+            cache_disk_category="cloud_efficiency",
+            gateway_id=default_gateway.id,
+            cache_disk_size_in_gb=50)
+        default_gateway_file_share = alicloud.cloudstoragegateway.GatewayFileShare("default",
+            gateway_file_share_name=name,
+            gateway_id=default_gateway.id,
+            local_path=default_gateway_cache_disk.local_file_path,
+            oss_bucket_name=default_bucket.bucket,
+            oss_endpoint=default_bucket.extranet_endpoint,
+            protocol="NFS",
+            remote_sync=False,
+            fe_limit=0,
+            backend_limit=0,
+            cache_mode="Cache",
+            squash="none",
+            lag_period=5)
+        default_express_sync = alicloud.cloudstoragegateway.ExpressSync("default",
+            bucket_name=default_gateway_file_share.oss_bucket_name,
+            bucket_region=default.regions[0].id,
+            description=name,
+            express_sync_name=f"{name}-{default_integer['result']}")
+        default_express_sync_share_attachment = alicloud.cloudstoragegateway.ExpressSyncShareAttachment("default",
+            express_sync_id=default_express_sync.id,
+            gateway_id=default_gateway.id,
+            share_name=default_gateway_file_share.gateway_file_share_name)
+        ```
 
         ## Import
 

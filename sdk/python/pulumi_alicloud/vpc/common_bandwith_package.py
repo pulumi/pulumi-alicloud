@@ -307,6 +307,7 @@ class _CommonBandwithPackageState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  payment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  ratio: Optional[pulumi.Input[_builtins.int]] = None,
+                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
@@ -350,6 +351,7 @@ class _CommonBandwithPackageState:
                This parameter is required when the value of `InternetChargeType` is `PayBy95`.
                
                > **NOTE:** This parameter is available only on the Alibaba Cloud China site.
+        :param pulumi.Input[_builtins.str] region_id: The pagination token that is used in the next request to retrieve a new page of results.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which you want to move the resource.
                
                > **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
@@ -385,6 +387,8 @@ class _CommonBandwithPackageState:
             pulumi.set(__self__, "payment_type", payment_type)
         if ratio is not None:
             pulumi.set(__self__, "ratio", ratio)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if security_protection_types is not None:
@@ -553,6 +557,18 @@ class _CommonBandwithPackageState:
     @ratio.setter
     def ratio(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "ratio", value)
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The pagination token that is used in the next request to retrieve a new page of results.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
@@ -762,6 +778,7 @@ class CommonBandwithPackage(pulumi.CustomResource):
             __props__.__dict__["zone"] = zone
             __props__.__dict__["create_time"] = None
             __props__.__dict__["payment_type"] = None
+            __props__.__dict__["region_id"] = None
             __props__.__dict__["status"] = None
         super(CommonBandwithPackage, __self__).__init__(
             'alicloud:vpc/commonBandwithPackage:CommonBandwithPackage',
@@ -784,6 +801,7 @@ class CommonBandwithPackage(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             payment_type: Optional[pulumi.Input[_builtins.str]] = None,
             ratio: Optional[pulumi.Input[_builtins.int]] = None,
+            region_id: Optional[pulumi.Input[_builtins.str]] = None,
             resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
@@ -832,6 +850,7 @@ class CommonBandwithPackage(pulumi.CustomResource):
                This parameter is required when the value of `InternetChargeType` is `PayBy95`.
                
                > **NOTE:** This parameter is available only on the Alibaba Cloud China site.
+        :param pulumi.Input[_builtins.str] region_id: The pagination token that is used in the next request to retrieve a new page of results.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which you want to move the resource.
                
                > **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
@@ -857,6 +876,7 @@ class CommonBandwithPackage(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["ratio"] = ratio
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["security_protection_types"] = security_protection_types
         __props__.__dict__["status"] = status
@@ -977,6 +997,14 @@ class CommonBandwithPackage(pulumi.CustomResource):
         > **NOTE:** This parameter is available only on the Alibaba Cloud China site.
         """
         return pulumi.get(self, "ratio")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The pagination token that is used in the next request to retrieve a new page of results.
+        """
+        return pulumi.get(self, "region_id")
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")

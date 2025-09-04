@@ -21,6 +21,81 @@ import (
 //
 // > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sag"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := sag.NewQos(ctx, "default", &sag.QosArgs{
+//				Name: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			example, err := time.NewStatic(ctx, "example", nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeReplace, err := std.Replace(ctx, &std.ReplaceArgs{
+//				Text:    example.Rfc3339,
+//				Search:  "Z",
+//				Replace: "+0800",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeReplace1, err := std.Replace(ctx, &std.ReplaceArgs{
+//				Text: std.Timeadd(ctx, &std.TimeaddArgs{
+//					Duration:  example.Rfc3339,
+//					Timestamp: "24h",
+//				}, nil).Result,
+//				Search:  "Z",
+//				Replace: "+0800",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sag.NewQosPolicy(ctx, "default", &sag.QosPolicyArgs{
+//				QosId:           _default.ID(),
+//				Name:            pulumi.String(name),
+//				Description:     pulumi.String(name),
+//				Priority:        pulumi.Int(1),
+//				IpProtocol:      pulumi.String("ALL"),
+//				SourceCidr:      pulumi.String("192.168.0.0/24"),
+//				SourcePortRange: pulumi.String("-1/-1"),
+//				DestCidr:        pulumi.String("10.10.0.0/24"),
+//				DestPortRange:   pulumi.String("-1/-1"),
+//				StartTime:       pulumi.String(invokeReplace.Result),
+//				EndTime:         pulumi.String(invokeReplace1.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // The Sag Qos Policy can be imported using the id, e.g.

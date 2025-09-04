@@ -191,6 +191,108 @@ class EnvServiceMonitor(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.212.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        default_integer = random.index.Integer("default",
+            max=99999,
+            min=10000)
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
+        vpc = alicloud.vpc.Network("vpc",
+            description=name,
+            cidr_block="192.168.0.0/16",
+            vpc_name=name)
+        vswitch = alicloud.vpc.Switch("vswitch",
+            description=name,
+            vpc_id=vpc.id,
+            vswitch_name=name,
+            zone_id=enhanced.zones[0].zone_id,
+            cidr_block=vpc.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+                newbits=8,
+                netnum=8)).apply(lambda invoke: invoke.result))
+        default_snapshot_policy = alicloud.ecs.SnapshotPolicy("default",
+            name=name,
+            repeat_weekdays=[
+                "1",
+                "2",
+                "3",
+            ],
+            retention_days=-1,
+            time_points=[
+                "1",
+                "22",
+                "23",
+            ])
+        default = vswitch.zone_id.apply(lambda zone_id: alicloud.ecs.get_instance_types_output(availability_zone=zone_id,
+            cpu_core_count=2,
+            memory_size=4,
+            kubernetes_node_role="Worker",
+            instance_type_family="ecs.n1"))
+        default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
+            name=f"terraform-example-{default_integer['result']}",
+            cluster_spec="ack.pro.small",
+            version="1.24.6-aliyun.1",
+            new_nat_gateway=True,
+            node_cidr_mask=26,
+            proxy_mode="ipvs",
+            service_cidr="172.23.0.0/16",
+            pod_cidr="10.95.0.0/16",
+            worker_vswitch_ids=[vswitch.id])
+        default_key_pair = alicloud.ecs.KeyPair("default", key_pair_name=f"terraform-example-{default_integer['result']}")
+        default_node_pool = alicloud.cs.NodePool("default",
+            node_pool_name="desired_size",
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[vswitch.id],
+            instance_types=[default.instance_types[0].id],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=default_key_pair.key_pair_name,
+            desired_size="2")
+        default_environment = alicloud.arms.Environment("default",
+            bind_resource_id=default_node_pool.cluster_id,
+            environment_sub_type="ManagedKubernetes",
+            environment_type="CS",
+            environment_name=f"terraform-example-{default_integer['result']}")
+        default_env_service_monitor = alicloud.arms.EnvServiceMonitor("default",
+            environment_id=default_environment.id,
+            config_yaml=\"\"\"apiVersion: monitoring.coreos.com/v1
+        kind: ServiceMonitor
+        metadata:
+          name: arms-admin1
+          namespace: arms-prom
+          annotations:
+            arms.prometheus.io/discovery: 'true'
+            o11y.aliyun.com/addon-name: mysql
+            o11y.aliyun.com/addon-version: 1.0.1
+            o11y.aliyun.com/release-name: mysql1
+        spec:
+          endpoints:
+          - interval: 30s
+            port: operator
+            path: /metrics
+          - interval: 10s
+            port: operator1
+            path: /metrics
+          namespaceSelector:
+            any: true
+          selector:
+            matchLabels:
+             app: arms-prometheus-ack-arms-prometheus
+        \"\"\",
+            aliyun_lang="zh")
+        ```
+
         ## Import
 
         ARMS Env Service Monitor can be imported using the id, e.g.
@@ -217,6 +319,108 @@ class EnvServiceMonitor(pulumi.CustomResource):
         For information about ARMS Env Service Monitor and how to use it, see [What is Env Service Monitor](https://www.alibabacloud.com/help/en/arms/developer-reference/api-arms-2019-08-08-createenvservicemonitor).
 
         > **NOTE:** Available since v1.212.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        default_integer = random.index.Integer("default",
+            max=99999,
+            min=10000)
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
+        vpc = alicloud.vpc.Network("vpc",
+            description=name,
+            cidr_block="192.168.0.0/16",
+            vpc_name=name)
+        vswitch = alicloud.vpc.Switch("vswitch",
+            description=name,
+            vpc_id=vpc.id,
+            vswitch_name=name,
+            zone_id=enhanced.zones[0].zone_id,
+            cidr_block=vpc.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+                newbits=8,
+                netnum=8)).apply(lambda invoke: invoke.result))
+        default_snapshot_policy = alicloud.ecs.SnapshotPolicy("default",
+            name=name,
+            repeat_weekdays=[
+                "1",
+                "2",
+                "3",
+            ],
+            retention_days=-1,
+            time_points=[
+                "1",
+                "22",
+                "23",
+            ])
+        default = vswitch.zone_id.apply(lambda zone_id: alicloud.ecs.get_instance_types_output(availability_zone=zone_id,
+            cpu_core_count=2,
+            memory_size=4,
+            kubernetes_node_role="Worker",
+            instance_type_family="ecs.n1"))
+        default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
+            name=f"terraform-example-{default_integer['result']}",
+            cluster_spec="ack.pro.small",
+            version="1.24.6-aliyun.1",
+            new_nat_gateway=True,
+            node_cidr_mask=26,
+            proxy_mode="ipvs",
+            service_cidr="172.23.0.0/16",
+            pod_cidr="10.95.0.0/16",
+            worker_vswitch_ids=[vswitch.id])
+        default_key_pair = alicloud.ecs.KeyPair("default", key_pair_name=f"terraform-example-{default_integer['result']}")
+        default_node_pool = alicloud.cs.NodePool("default",
+            node_pool_name="desired_size",
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[vswitch.id],
+            instance_types=[default.instance_types[0].id],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            key_name=default_key_pair.key_pair_name,
+            desired_size="2")
+        default_environment = alicloud.arms.Environment("default",
+            bind_resource_id=default_node_pool.cluster_id,
+            environment_sub_type="ManagedKubernetes",
+            environment_type="CS",
+            environment_name=f"terraform-example-{default_integer['result']}")
+        default_env_service_monitor = alicloud.arms.EnvServiceMonitor("default",
+            environment_id=default_environment.id,
+            config_yaml=\"\"\"apiVersion: monitoring.coreos.com/v1
+        kind: ServiceMonitor
+        metadata:
+          name: arms-admin1
+          namespace: arms-prom
+          annotations:
+            arms.prometheus.io/discovery: 'true'
+            o11y.aliyun.com/addon-name: mysql
+            o11y.aliyun.com/addon-version: 1.0.1
+            o11y.aliyun.com/release-name: mysql1
+        spec:
+          endpoints:
+          - interval: 30s
+            port: operator
+            path: /metrics
+          - interval: 10s
+            port: operator1
+            path: /metrics
+          namespaceSelector:
+            any: true
+          selector:
+            matchLabels:
+             app: arms-prometheus-ack-arms-prometheus
+        \"\"\",
+            aliyun_lang="zh")
+        ```
 
         ## Import
 

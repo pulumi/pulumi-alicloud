@@ -76,12 +76,12 @@ import javax.annotation.Nullable;
  *             .serviceName(domain)
  *             .policyDocument("""
  *       {
- *         "Version": "1",
- *         "Statement": [{
- *           "Effect": "Allow",
- *           "Resource": ["*"],
- *           "Action": ["*"],
- *           "Principal": ["*"]
+ *         \"Version\": \"1\",
+ *         \"Statement\": [{
+ *           \"Effect\": \"Allow\",
+ *           \"Resource\": [\"*\"],
+ *           \"Action\": [\"*\"],
+ *           \"Principal\": [\"*\"]
  *         }]
  *       }
  *             """)

@@ -16,6 +16,94 @@ import (
 //
 // # Basic Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
+//				CidrBlock: pulumi.StringRef("172.16.0.0/16"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			default0, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultGetNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(_default.Ids[0]),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			default1, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultGetNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(_default.Ids[1]),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGateway, err := vpn.NewGateway(ctx, "default", &vpn.GatewayArgs{
+//				VpnGatewayName:            pulumi.String(name),
+//				VpcId:                     pulumi.String(defaultGetNetworks.Ids[0]),
+//				Bandwidth:                 pulumi.Int(10),
+//				EnableSsl:                 pulumi.Bool(true),
+//				Description:               pulumi.String(name),
+//				PaymentType:               pulumi.String("Subscription"),
+//				VswitchId:                 pulumi.String(default0.Ids[0]),
+//				DisasterRecoveryVswitchId: pulumi.String(default1.Ids[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeCidrsubnet, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
+//				Input:   defaultGetNetworks.Vpcs[0].CidrBlock,
+//				Newbits: 8,
+//				Netnum:  8,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpn.NewSslVpnServer(ctx, "default", &vpn.SslVpnServerArgs{
+//				Name:         pulumi.String(name),
+//				VpnGatewayId: defaultGateway.ID(),
+//				ClientIpPool: pulumi.String("192.168.0.0/16"),
+//				LocalSubnet:  pulumi.String(invokeCidrsubnet.Result),
+//				Protocol:     pulumi.String("UDP"),
+//				Cipher:       pulumi.String("AES-128-CBC"),
+//				Port:         pulumi.Int(1194),
+//				Compress:     pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // SSL-VPN server can be imported using the id, e.g.

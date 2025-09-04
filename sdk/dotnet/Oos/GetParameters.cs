@@ -37,12 +37,12 @@ namespace Pulumi.AliCloud.Oos
         ///         Type = "String",
         ///         Description = name,
         ///         Constraints = @"  {
-        ///     ""AllowedValues"": [
-        ///         ""tf-testacc-oos_parameter""
+        ///     \""AllowedValues\"": [
+        ///         \""tf-testacc-oos_parameter\""
         ///     ],
-        ///     ""AllowedPattern"": ""tf-testacc-oos_parameter"",
-        ///     ""MinLength"": 1,
-        ///     ""MaxLength"": 100
+        ///     \""AllowedPattern\"": \""tf-testacc-oos_parameter\"",
+        ///     \""MinLength\"": 1,
+        ///     \""MaxLength\"": 100
         ///   }
         /// ",
         ///         Tags = 
@@ -96,12 +96,12 @@ namespace Pulumi.AliCloud.Oos
         ///         Type = "String",
         ///         Description = name,
         ///         Constraints = @"  {
-        ///     ""AllowedValues"": [
-        ///         ""tf-testacc-oos_parameter""
+        ///     \""AllowedValues\"": [
+        ///         \""tf-testacc-oos_parameter\""
         ///     ],
-        ///     ""AllowedPattern"": ""tf-testacc-oos_parameter"",
-        ///     ""MinLength"": 1,
-        ///     ""MaxLength"": 100
+        ///     \""AllowedPattern\"": \""tf-testacc-oos_parameter\"",
+        ///     \""MinLength\"": 1,
+        ///     \""MaxLength\"": 100
         ///   }
         /// ",
         ///         Tags = 
@@ -155,12 +155,12 @@ namespace Pulumi.AliCloud.Oos
         ///         Type = "String",
         ///         Description = name,
         ///         Constraints = @"  {
-        ///     ""AllowedValues"": [
-        ///         ""tf-testacc-oos_parameter""
+        ///     \""AllowedValues\"": [
+        ///         \""tf-testacc-oos_parameter\""
         ///     ],
-        ///     ""AllowedPattern"": ""tf-testacc-oos_parameter"",
-        ///     ""MinLength"": 1,
-        ///     ""MaxLength"": 100
+        ///     \""AllowedPattern\"": \""tf-testacc-oos_parameter\"",
+        ///     \""MinLength\"": 1,
+        ///     \""MaxLength\"": 100
         ///   }
         /// ",
         ///         Tags = 

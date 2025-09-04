@@ -13,52 +13,1522 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type DefenseRuleConfig struct {
+	// The regions outside China from which you want to block requests. Separate multiple region codes with commas (,). You can call the DescribeIpAbroadCountryInfos operation to query the countries and regions outside China that can be blocked.
+	AbroadRegions *string `pulumi:"abroadRegions"`
+	// The policies for account extraction. Up to five policies are supported. Each policy is a JSON string. For more information, see accountIdentifiers description. See `accountIdentifiers` below.
+	AccountIdentifiers []DefenseRuleConfigAccountIdentifier `pulumi:"accountIdentifiers"`
+	// The list of regular rule IDs that are not detected. The value is in the ["XX1", "XX2",...] format. This parameter is required only when the module to which the whitelist applies is set to specific regular rules in basic protection (BypassTags is set to regular_rule).
+	BypassRegularRules []string `pulumi:"bypassRegularRules"`
+	// The regular rule type is not detected. This parameter is configured only when the whitelist module is configured as the Web application regular type (the value of the BypassTags parameter is regular_type). Value:
+	// - sqli: Indicates SQL injection.
+	// - xss: Indicates cross-site scripting (XSS).
+	// - cmdi: Indicates OS command injection.
+	// - expression_injection: Indicates expression injection.
+	// - java_deserialization: indicates Java deserialization.
+	// - dot_net_deserialization: Represents. net deserialization.
+	// - php_deserialization: indicates PHP deserialization.
+	// - code_exec: Indicates code execution.
+	// - ssrf: indicates SSRF (server-side request forgery).
+	// - path_traversal: indicates a Path Traversal.
+	// - arbitrary_file_uploading: Indicates to upload any file.
+	// - webshell: Represents a webshell.
+	// - rfilei: Indicates the remote file contains (RFI).
+	// - lfilei: Indicates that the local file contains (LFI).
+	// - protocol_violation: indicates a protocol violation.
+	// - scanner_behavior: Indicates scanner behavior.
+	// - logic_flaw: Indicates a business logic defect.
+	// - arbitrary_file_reading: Indicates arbitrary file reading.
+	// - arbitrary_file_download: Indicates an arbitrary file download.
+	// - xxe: Indicates external entity injection.
+	// - csrf: indicates cross-site request forgery.
+	// - crlf: indicates CRLF.
+	// - other: indicates other.
+	BypassRegularTypes []string `pulumi:"bypassRegularTypes"`
+	// The modules to which the whitelist applies. The value is in the ["XX1", "XX2",...] format. Valid values:
+	// - waf: indicates all modules.
+	// - customrule: indicates custom rules.
+	// - blacklist: indicates IP blacklist.
+	// - antiscan: indicates scan protection.
+	// - regular: indicates basic protection rules.
+	// - regular_rule: indicates specific regular rules in basic protection.
+	// - regular_type: indicates specific regular rule types in basic protection.
+	// - major_protection: indicates major event support protection.
+	// - cc: indicates CC protection.
+	// - region_block: indicates Location Blacklist.
+	// - antibot_scene: indicates BOT scenario protection.
+	// - dlp: indicates information leakage prevention.
+	// - tamperproof: indicates web tamper-proofing.
+	// - spike_throttle: indicates peak traffic throttling.
+	BypassTags []string `pulumi:"bypassTags"`
+	// Set the effective range of the speed limit. This information is configured only when ccStatus is set to 1. Value:
+	// - service: indicates that the effective object is a protected object.
+	// - rule: indicates that the effective object is a single rule.
+	CcEffect *string `pulumi:"ccEffect"`
+	// Whether to open the speed limit. Value:
+	// - 0: indicates that the speed limit is off.
+	// - 1: Indicates that the speed limit is on.
+	CcStatus *int `pulumi:"ccStatus"`
+	// The regions in China from which you want to block requests. If you specify "CN", requests from the Chinese mainland (excluding Hong Kong, Macao, and Taiwan) are blocked. Separate multiple regions with commas (,). For more information about region codes, see Description of region codes in China.
+	CnRegions *string `pulumi:"cnRegions"`
+	// The traffic characteristics of ACL, which are described in JSON format. You can enter up to five matching conditions. For specific configuration information, see detailed configuration of conditions. See `conditions` below.
+	Conditions []DefenseRuleConfigCondition `pulumi:"conditions"`
+	// The HTTP flood protection mode. Valid values:
+	// - 0 (default): indicates normal protection.
+	// - 1: indicates emergency protection.
+	Mode *int `pulumi:"mode"`
+	// The protocol type of the cached page address. Valid values: http, https.
+	Protocol *string `pulumi:"protocol"`
+	// The detailed speed limit configuration, which is described in the JSON string format. This information is configured only when CcStatus is set to 1. For specific configuration information, see detailed configuration of Ratelimit. See `rateLimit` below.
+	RateLimit *DefenseRuleConfigRateLimit `pulumi:"rateLimit"`
+	// The IP addresses that you want to add to the blacklist. Specify the value of this parameter in the ["ip1","ip2",...] format.
+	RemoteAddrs []string `pulumi:"remoteAddrs"`
+	// Protection rule action. Value:
+	// - block: Indicates an intercept.
+	// - monitor: indicates observation.
+	// - js: indicates JS validation.
+	// - captcha: Indicates a slider.
+	// - captcha_strict: indicates a strict slider.
+	// - filter: filters sensitive information. This action applies only to scenarios that the Information leakage prevention rule include sensitive information match conditions.
+	//
+	// > **NOTE:**  For the supported protection rule actions, follow the rule actions displayed in the WAF console.
+	RuleAction *string `pulumi:"ruleAction"`
+	// The throttling threshold. Valid values:
+	// - The QPS throttling threshold ranges from 1 to 5000000. If you select QPS throttling (such as 500 QPS), traffic that meets the throttling conditions and exceeds 500 QPS will be blocked.
+	// - The percentage throttling threshold ranges from 1 to 99. If you select percentage throttling (such as 80%), only 80% of the traffic that meets the throttling conditions will be allowed.
+	ThrottleThrehold *int `pulumi:"throttleThrehold"`
+	// The throttling method. Valid values:
+	// - qps: indicates throttling based on queries per second (QPS).
+	// - ratio (default): indicates throttling based on percentage.
+	ThrottleType *string `pulumi:"throttleType"`
+	// The User-Agent string that is allowed for access to the address.
+	Ua *string `pulumi:"ua"`
+	// The address of the cached page.
+	Url *string `pulumi:"url"`
+}
+
+// DefenseRuleConfigInput is an input type that accepts DefenseRuleConfigArgs and DefenseRuleConfigOutput values.
+// You can construct a concrete instance of `DefenseRuleConfigInput` via:
+//
+//	DefenseRuleConfigArgs{...}
+type DefenseRuleConfigInput interface {
+	pulumi.Input
+
+	ToDefenseRuleConfigOutput() DefenseRuleConfigOutput
+	ToDefenseRuleConfigOutputWithContext(context.Context) DefenseRuleConfigOutput
+}
+
+type DefenseRuleConfigArgs struct {
+	// The regions outside China from which you want to block requests. Separate multiple region codes with commas (,). You can call the DescribeIpAbroadCountryInfos operation to query the countries and regions outside China that can be blocked.
+	AbroadRegions pulumi.StringPtrInput `pulumi:"abroadRegions"`
+	// The policies for account extraction. Up to five policies are supported. Each policy is a JSON string. For more information, see accountIdentifiers description. See `accountIdentifiers` below.
+	AccountIdentifiers DefenseRuleConfigAccountIdentifierArrayInput `pulumi:"accountIdentifiers"`
+	// The list of regular rule IDs that are not detected. The value is in the ["XX1", "XX2",...] format. This parameter is required only when the module to which the whitelist applies is set to specific regular rules in basic protection (BypassTags is set to regular_rule).
+	BypassRegularRules pulumi.StringArrayInput `pulumi:"bypassRegularRules"`
+	// The regular rule type is not detected. This parameter is configured only when the whitelist module is configured as the Web application regular type (the value of the BypassTags parameter is regular_type). Value:
+	// - sqli: Indicates SQL injection.
+	// - xss: Indicates cross-site scripting (XSS).
+	// - cmdi: Indicates OS command injection.
+	// - expression_injection: Indicates expression injection.
+	// - java_deserialization: indicates Java deserialization.
+	// - dot_net_deserialization: Represents. net deserialization.
+	// - php_deserialization: indicates PHP deserialization.
+	// - code_exec: Indicates code execution.
+	// - ssrf: indicates SSRF (server-side request forgery).
+	// - path_traversal: indicates a Path Traversal.
+	// - arbitrary_file_uploading: Indicates to upload any file.
+	// - webshell: Represents a webshell.
+	// - rfilei: Indicates the remote file contains (RFI).
+	// - lfilei: Indicates that the local file contains (LFI).
+	// - protocol_violation: indicates a protocol violation.
+	// - scanner_behavior: Indicates scanner behavior.
+	// - logic_flaw: Indicates a business logic defect.
+	// - arbitrary_file_reading: Indicates arbitrary file reading.
+	// - arbitrary_file_download: Indicates an arbitrary file download.
+	// - xxe: Indicates external entity injection.
+	// - csrf: indicates cross-site request forgery.
+	// - crlf: indicates CRLF.
+	// - other: indicates other.
+	BypassRegularTypes pulumi.StringArrayInput `pulumi:"bypassRegularTypes"`
+	// The modules to which the whitelist applies. The value is in the ["XX1", "XX2",...] format. Valid values:
+	// - waf: indicates all modules.
+	// - customrule: indicates custom rules.
+	// - blacklist: indicates IP blacklist.
+	// - antiscan: indicates scan protection.
+	// - regular: indicates basic protection rules.
+	// - regular_rule: indicates specific regular rules in basic protection.
+	// - regular_type: indicates specific regular rule types in basic protection.
+	// - major_protection: indicates major event support protection.
+	// - cc: indicates CC protection.
+	// - region_block: indicates Location Blacklist.
+	// - antibot_scene: indicates BOT scenario protection.
+	// - dlp: indicates information leakage prevention.
+	// - tamperproof: indicates web tamper-proofing.
+	// - spike_throttle: indicates peak traffic throttling.
+	BypassTags pulumi.StringArrayInput `pulumi:"bypassTags"`
+	// Set the effective range of the speed limit. This information is configured only when ccStatus is set to 1. Value:
+	// - service: indicates that the effective object is a protected object.
+	// - rule: indicates that the effective object is a single rule.
+	CcEffect pulumi.StringPtrInput `pulumi:"ccEffect"`
+	// Whether to open the speed limit. Value:
+	// - 0: indicates that the speed limit is off.
+	// - 1: Indicates that the speed limit is on.
+	CcStatus pulumi.IntPtrInput `pulumi:"ccStatus"`
+	// The regions in China from which you want to block requests. If you specify "CN", requests from the Chinese mainland (excluding Hong Kong, Macao, and Taiwan) are blocked. Separate multiple regions with commas (,). For more information about region codes, see Description of region codes in China.
+	CnRegions pulumi.StringPtrInput `pulumi:"cnRegions"`
+	// The traffic characteristics of ACL, which are described in JSON format. You can enter up to five matching conditions. For specific configuration information, see detailed configuration of conditions. See `conditions` below.
+	Conditions DefenseRuleConfigConditionArrayInput `pulumi:"conditions"`
+	// The HTTP flood protection mode. Valid values:
+	// - 0 (default): indicates normal protection.
+	// - 1: indicates emergency protection.
+	Mode pulumi.IntPtrInput `pulumi:"mode"`
+	// The protocol type of the cached page address. Valid values: http, https.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// The detailed speed limit configuration, which is described in the JSON string format. This information is configured only when CcStatus is set to 1. For specific configuration information, see detailed configuration of Ratelimit. See `rateLimit` below.
+	RateLimit DefenseRuleConfigRateLimitPtrInput `pulumi:"rateLimit"`
+	// The IP addresses that you want to add to the blacklist. Specify the value of this parameter in the ["ip1","ip2",...] format.
+	RemoteAddrs pulumi.StringArrayInput `pulumi:"remoteAddrs"`
+	// Protection rule action. Value:
+	// - block: Indicates an intercept.
+	// - monitor: indicates observation.
+	// - js: indicates JS validation.
+	// - captcha: Indicates a slider.
+	// - captcha_strict: indicates a strict slider.
+	// - filter: filters sensitive information. This action applies only to scenarios that the Information leakage prevention rule include sensitive information match conditions.
+	//
+	// > **NOTE:**  For the supported protection rule actions, follow the rule actions displayed in the WAF console.
+	RuleAction pulumi.StringPtrInput `pulumi:"ruleAction"`
+	// The throttling threshold. Valid values:
+	// - The QPS throttling threshold ranges from 1 to 5000000. If you select QPS throttling (such as 500 QPS), traffic that meets the throttling conditions and exceeds 500 QPS will be blocked.
+	// - The percentage throttling threshold ranges from 1 to 99. If you select percentage throttling (such as 80%), only 80% of the traffic that meets the throttling conditions will be allowed.
+	ThrottleThrehold pulumi.IntPtrInput `pulumi:"throttleThrehold"`
+	// The throttling method. Valid values:
+	// - qps: indicates throttling based on queries per second (QPS).
+	// - ratio (default): indicates throttling based on percentage.
+	ThrottleType pulumi.StringPtrInput `pulumi:"throttleType"`
+	// The User-Agent string that is allowed for access to the address.
+	Ua pulumi.StringPtrInput `pulumi:"ua"`
+	// The address of the cached page.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (DefenseRuleConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenseRuleConfig)(nil)).Elem()
+}
+
+func (i DefenseRuleConfigArgs) ToDefenseRuleConfigOutput() DefenseRuleConfigOutput {
+	return i.ToDefenseRuleConfigOutputWithContext(context.Background())
+}
+
+func (i DefenseRuleConfigArgs) ToDefenseRuleConfigOutputWithContext(ctx context.Context) DefenseRuleConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenseRuleConfigOutput)
+}
+
+func (i DefenseRuleConfigArgs) ToDefenseRuleConfigPtrOutput() DefenseRuleConfigPtrOutput {
+	return i.ToDefenseRuleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DefenseRuleConfigArgs) ToDefenseRuleConfigPtrOutputWithContext(ctx context.Context) DefenseRuleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenseRuleConfigOutput).ToDefenseRuleConfigPtrOutputWithContext(ctx)
+}
+
+// DefenseRuleConfigPtrInput is an input type that accepts DefenseRuleConfigArgs, DefenseRuleConfigPtr and DefenseRuleConfigPtrOutput values.
+// You can construct a concrete instance of `DefenseRuleConfigPtrInput` via:
+//
+//	        DefenseRuleConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefenseRuleConfigPtrInput interface {
+	pulumi.Input
+
+	ToDefenseRuleConfigPtrOutput() DefenseRuleConfigPtrOutput
+	ToDefenseRuleConfigPtrOutputWithContext(context.Context) DefenseRuleConfigPtrOutput
+}
+
+type defenseRuleConfigPtrType DefenseRuleConfigArgs
+
+func DefenseRuleConfigPtr(v *DefenseRuleConfigArgs) DefenseRuleConfigPtrInput {
+	return (*defenseRuleConfigPtrType)(v)
+}
+
+func (*defenseRuleConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenseRuleConfig)(nil)).Elem()
+}
+
+func (i *defenseRuleConfigPtrType) ToDefenseRuleConfigPtrOutput() DefenseRuleConfigPtrOutput {
+	return i.ToDefenseRuleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *defenseRuleConfigPtrType) ToDefenseRuleConfigPtrOutputWithContext(ctx context.Context) DefenseRuleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenseRuleConfigPtrOutput)
+}
+
+type DefenseRuleConfigOutput struct{ *pulumi.OutputState }
+
+func (DefenseRuleConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenseRuleConfig)(nil)).Elem()
+}
+
+func (o DefenseRuleConfigOutput) ToDefenseRuleConfigOutput() DefenseRuleConfigOutput {
+	return o
+}
+
+func (o DefenseRuleConfigOutput) ToDefenseRuleConfigOutputWithContext(ctx context.Context) DefenseRuleConfigOutput {
+	return o
+}
+
+func (o DefenseRuleConfigOutput) ToDefenseRuleConfigPtrOutput() DefenseRuleConfigPtrOutput {
+	return o.ToDefenseRuleConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DefenseRuleConfigOutput) ToDefenseRuleConfigPtrOutputWithContext(ctx context.Context) DefenseRuleConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenseRuleConfig) *DefenseRuleConfig {
+		return &v
+	}).(DefenseRuleConfigPtrOutput)
+}
+
+// The regions outside China from which you want to block requests. Separate multiple region codes with commas (,). You can call the DescribeIpAbroadCountryInfos operation to query the countries and regions outside China that can be blocked.
+func (o DefenseRuleConfigOutput) AbroadRegions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfig) *string { return v.AbroadRegions }).(pulumi.StringPtrOutput)
+}
+
+// The policies for account extraction. Up to five policies are supported. Each policy is a JSON string. For more information, see accountIdentifiers description. See `accountIdentifiers` below.
+func (o DefenseRuleConfigOutput) AccountIdentifiers() DefenseRuleConfigAccountIdentifierArrayOutput {
+	return o.ApplyT(func(v DefenseRuleConfig) []DefenseRuleConfigAccountIdentifier { return v.AccountIdentifiers }).(DefenseRuleConfigAccountIdentifierArrayOutput)
+}
+
+// The list of regular rule IDs that are not detected. The value is in the ["XX1", "XX2",...] format. This parameter is required only when the module to which the whitelist applies is set to specific regular rules in basic protection (BypassTags is set to regular_rule).
+func (o DefenseRuleConfigOutput) BypassRegularRules() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DefenseRuleConfig) []string { return v.BypassRegularRules }).(pulumi.StringArrayOutput)
+}
+
+// The regular rule type is not detected. This parameter is configured only when the whitelist module is configured as the Web application regular type (the value of the BypassTags parameter is regular_type). Value:
+// - sqli: Indicates SQL injection.
+// - xss: Indicates cross-site scripting (XSS).
+// - cmdi: Indicates OS command injection.
+// - expression_injection: Indicates expression injection.
+// - java_deserialization: indicates Java deserialization.
+// - dot_net_deserialization: Represents. net deserialization.
+// - php_deserialization: indicates PHP deserialization.
+// - code_exec: Indicates code execution.
+// - ssrf: indicates SSRF (server-side request forgery).
+// - path_traversal: indicates a Path Traversal.
+// - arbitrary_file_uploading: Indicates to upload any file.
+// - webshell: Represents a webshell.
+// - rfilei: Indicates the remote file contains (RFI).
+// - lfilei: Indicates that the local file contains (LFI).
+// - protocol_violation: indicates a protocol violation.
+// - scanner_behavior: Indicates scanner behavior.
+// - logic_flaw: Indicates a business logic defect.
+// - arbitrary_file_reading: Indicates arbitrary file reading.
+// - arbitrary_file_download: Indicates an arbitrary file download.
+// - xxe: Indicates external entity injection.
+// - csrf: indicates cross-site request forgery.
+// - crlf: indicates CRLF.
+// - other: indicates other.
+func (o DefenseRuleConfigOutput) BypassRegularTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DefenseRuleConfig) []string { return v.BypassRegularTypes }).(pulumi.StringArrayOutput)
+}
+
+// The modules to which the whitelist applies. The value is in the ["XX1", "XX2",...] format. Valid values:
+// - waf: indicates all modules.
+// - customrule: indicates custom rules.
+// - blacklist: indicates IP blacklist.
+// - antiscan: indicates scan protection.
+// - regular: indicates basic protection rules.
+// - regular_rule: indicates specific regular rules in basic protection.
+// - regular_type: indicates specific regular rule types in basic protection.
+// - major_protection: indicates major event support protection.
+// - cc: indicates CC protection.
+// - region_block: indicates Location Blacklist.
+// - antibot_scene: indicates BOT scenario protection.
+// - dlp: indicates information leakage prevention.
+// - tamperproof: indicates web tamper-proofing.
+// - spike_throttle: indicates peak traffic throttling.
+func (o DefenseRuleConfigOutput) BypassTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DefenseRuleConfig) []string { return v.BypassTags }).(pulumi.StringArrayOutput)
+}
+
+// Set the effective range of the speed limit. This information is configured only when ccStatus is set to 1. Value:
+// - service: indicates that the effective object is a protected object.
+// - rule: indicates that the effective object is a single rule.
+func (o DefenseRuleConfigOutput) CcEffect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfig) *string { return v.CcEffect }).(pulumi.StringPtrOutput)
+}
+
+// Whether to open the speed limit. Value:
+// - 0: indicates that the speed limit is off.
+// - 1: Indicates that the speed limit is on.
+func (o DefenseRuleConfigOutput) CcStatus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfig) *int { return v.CcStatus }).(pulumi.IntPtrOutput)
+}
+
+// The regions in China from which you want to block requests. If you specify "CN", requests from the Chinese mainland (excluding Hong Kong, Macao, and Taiwan) are blocked. Separate multiple regions with commas (,). For more information about region codes, see Description of region codes in China.
+func (o DefenseRuleConfigOutput) CnRegions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfig) *string { return v.CnRegions }).(pulumi.StringPtrOutput)
+}
+
+// The traffic characteristics of ACL, which are described in JSON format. You can enter up to five matching conditions. For specific configuration information, see detailed configuration of conditions. See `conditions` below.
+func (o DefenseRuleConfigOutput) Conditions() DefenseRuleConfigConditionArrayOutput {
+	return o.ApplyT(func(v DefenseRuleConfig) []DefenseRuleConfigCondition { return v.Conditions }).(DefenseRuleConfigConditionArrayOutput)
+}
+
+// The HTTP flood protection mode. Valid values:
+// - 0 (default): indicates normal protection.
+// - 1: indicates emergency protection.
+func (o DefenseRuleConfigOutput) Mode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfig) *int { return v.Mode }).(pulumi.IntPtrOutput)
+}
+
+// The protocol type of the cached page address. Valid values: http, https.
+func (o DefenseRuleConfigOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfig) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// The detailed speed limit configuration, which is described in the JSON string format. This information is configured only when CcStatus is set to 1. For specific configuration information, see detailed configuration of Ratelimit. See `rateLimit` below.
+func (o DefenseRuleConfigOutput) RateLimit() DefenseRuleConfigRateLimitPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfig) *DefenseRuleConfigRateLimit { return v.RateLimit }).(DefenseRuleConfigRateLimitPtrOutput)
+}
+
+// The IP addresses that you want to add to the blacklist. Specify the value of this parameter in the ["ip1","ip2",...] format.
+func (o DefenseRuleConfigOutput) RemoteAddrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DefenseRuleConfig) []string { return v.RemoteAddrs }).(pulumi.StringArrayOutput)
+}
+
+// Protection rule action. Value:
+// - block: Indicates an intercept.
+// - monitor: indicates observation.
+// - js: indicates JS validation.
+// - captcha: Indicates a slider.
+// - captcha_strict: indicates a strict slider.
+// - filter: filters sensitive information. This action applies only to scenarios that the Information leakage prevention rule include sensitive information match conditions.
+//
+// > **NOTE:**  For the supported protection rule actions, follow the rule actions displayed in the WAF console.
+func (o DefenseRuleConfigOutput) RuleAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfig) *string { return v.RuleAction }).(pulumi.StringPtrOutput)
+}
+
+// The throttling threshold. Valid values:
+// - The QPS throttling threshold ranges from 1 to 5000000. If you select QPS throttling (such as 500 QPS), traffic that meets the throttling conditions and exceeds 500 QPS will be blocked.
+// - The percentage throttling threshold ranges from 1 to 99. If you select percentage throttling (such as 80%), only 80% of the traffic that meets the throttling conditions will be allowed.
+func (o DefenseRuleConfigOutput) ThrottleThrehold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfig) *int { return v.ThrottleThrehold }).(pulumi.IntPtrOutput)
+}
+
+// The throttling method. Valid values:
+// - qps: indicates throttling based on queries per second (QPS).
+// - ratio (default): indicates throttling based on percentage.
+func (o DefenseRuleConfigOutput) ThrottleType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfig) *string { return v.ThrottleType }).(pulumi.StringPtrOutput)
+}
+
+// The User-Agent string that is allowed for access to the address.
+func (o DefenseRuleConfigOutput) Ua() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfig) *string { return v.Ua }).(pulumi.StringPtrOutput)
+}
+
+// The address of the cached page.
+func (o DefenseRuleConfigOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfig) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type DefenseRuleConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenseRuleConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenseRuleConfig)(nil)).Elem()
+}
+
+func (o DefenseRuleConfigPtrOutput) ToDefenseRuleConfigPtrOutput() DefenseRuleConfigPtrOutput {
+	return o
+}
+
+func (o DefenseRuleConfigPtrOutput) ToDefenseRuleConfigPtrOutputWithContext(ctx context.Context) DefenseRuleConfigPtrOutput {
+	return o
+}
+
+func (o DefenseRuleConfigPtrOutput) Elem() DefenseRuleConfigOutput {
+	return o.ApplyT(func(v *DefenseRuleConfig) DefenseRuleConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DefenseRuleConfig
+		return ret
+	}).(DefenseRuleConfigOutput)
+}
+
+// The regions outside China from which you want to block requests. Separate multiple region codes with commas (,). You can call the DescribeIpAbroadCountryInfos operation to query the countries and regions outside China that can be blocked.
+func (o DefenseRuleConfigPtrOutput) AbroadRegions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenseRuleConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AbroadRegions
+	}).(pulumi.StringPtrOutput)
+}
+
+// The policies for account extraction. Up to five policies are supported. Each policy is a JSON string. For more information, see accountIdentifiers description. See `accountIdentifiers` below.
+func (o DefenseRuleConfigPtrOutput) AccountIdentifiers() DefenseRuleConfigAccountIdentifierArrayOutput {
+	return o.ApplyT(func(v *DefenseRuleConfig) []DefenseRuleConfigAccountIdentifier {
+		if v == nil {
+			return nil
+		}
+		return v.AccountIdentifiers
+	}).(DefenseRuleConfigAccountIdentifierArrayOutput)
+}
+
+// The list of regular rule IDs that are not detected. The value is in the ["XX1", "XX2",...] format. This parameter is required only when the module to which the whitelist applies is set to specific regular rules in basic protection (BypassTags is set to regular_rule).
+func (o DefenseRuleConfigPtrOutput) BypassRegularRules() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DefenseRuleConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.BypassRegularRules
+	}).(pulumi.StringArrayOutput)
+}
+
+// The regular rule type is not detected. This parameter is configured only when the whitelist module is configured as the Web application regular type (the value of the BypassTags parameter is regular_type). Value:
+// - sqli: Indicates SQL injection.
+// - xss: Indicates cross-site scripting (XSS).
+// - cmdi: Indicates OS command injection.
+// - expression_injection: Indicates expression injection.
+// - java_deserialization: indicates Java deserialization.
+// - dot_net_deserialization: Represents. net deserialization.
+// - php_deserialization: indicates PHP deserialization.
+// - code_exec: Indicates code execution.
+// - ssrf: indicates SSRF (server-side request forgery).
+// - path_traversal: indicates a Path Traversal.
+// - arbitrary_file_uploading: Indicates to upload any file.
+// - webshell: Represents a webshell.
+// - rfilei: Indicates the remote file contains (RFI).
+// - lfilei: Indicates that the local file contains (LFI).
+// - protocol_violation: indicates a protocol violation.
+// - scanner_behavior: Indicates scanner behavior.
+// - logic_flaw: Indicates a business logic defect.
+// - arbitrary_file_reading: Indicates arbitrary file reading.
+// - arbitrary_file_download: Indicates an arbitrary file download.
+// - xxe: Indicates external entity injection.
+// - csrf: indicates cross-site request forgery.
+// - crlf: indicates CRLF.
+// - other: indicates other.
+func (o DefenseRuleConfigPtrOutput) BypassRegularTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DefenseRuleConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.BypassRegularTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// The modules to which the whitelist applies. The value is in the ["XX1", "XX2",...] format. Valid values:
+// - waf: indicates all modules.
+// - customrule: indicates custom rules.
+// - blacklist: indicates IP blacklist.
+// - antiscan: indicates scan protection.
+// - regular: indicates basic protection rules.
+// - regular_rule: indicates specific regular rules in basic protection.
+// - regular_type: indicates specific regular rule types in basic protection.
+// - major_protection: indicates major event support protection.
+// - cc: indicates CC protection.
+// - region_block: indicates Location Blacklist.
+// - antibot_scene: indicates BOT scenario protection.
+// - dlp: indicates information leakage prevention.
+// - tamperproof: indicates web tamper-proofing.
+// - spike_throttle: indicates peak traffic throttling.
+func (o DefenseRuleConfigPtrOutput) BypassTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DefenseRuleConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.BypassTags
+	}).(pulumi.StringArrayOutput)
+}
+
+// Set the effective range of the speed limit. This information is configured only when ccStatus is set to 1. Value:
+// - service: indicates that the effective object is a protected object.
+// - rule: indicates that the effective object is a single rule.
+func (o DefenseRuleConfigPtrOutput) CcEffect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenseRuleConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CcEffect
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to open the speed limit. Value:
+// - 0: indicates that the speed limit is off.
+// - 1: Indicates that the speed limit is on.
+func (o DefenseRuleConfigPtrOutput) CcStatus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DefenseRuleConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CcStatus
+	}).(pulumi.IntPtrOutput)
+}
+
+// The regions in China from which you want to block requests. If you specify "CN", requests from the Chinese mainland (excluding Hong Kong, Macao, and Taiwan) are blocked. Separate multiple regions with commas (,). For more information about region codes, see Description of region codes in China.
+func (o DefenseRuleConfigPtrOutput) CnRegions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenseRuleConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CnRegions
+	}).(pulumi.StringPtrOutput)
+}
+
+// The traffic characteristics of ACL, which are described in JSON format. You can enter up to five matching conditions. For specific configuration information, see detailed configuration of conditions. See `conditions` below.
+func (o DefenseRuleConfigPtrOutput) Conditions() DefenseRuleConfigConditionArrayOutput {
+	return o.ApplyT(func(v *DefenseRuleConfig) []DefenseRuleConfigCondition {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(DefenseRuleConfigConditionArrayOutput)
+}
+
+// The HTTP flood protection mode. Valid values:
+// - 0 (default): indicates normal protection.
+// - 1: indicates emergency protection.
+func (o DefenseRuleConfigPtrOutput) Mode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DefenseRuleConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.IntPtrOutput)
+}
+
+// The protocol type of the cached page address. Valid values: http, https.
+func (o DefenseRuleConfigPtrOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenseRuleConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Protocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// The detailed speed limit configuration, which is described in the JSON string format. This information is configured only when CcStatus is set to 1. For specific configuration information, see detailed configuration of Ratelimit. See `rateLimit` below.
+func (o DefenseRuleConfigPtrOutput) RateLimit() DefenseRuleConfigRateLimitPtrOutput {
+	return o.ApplyT(func(v *DefenseRuleConfig) *DefenseRuleConfigRateLimit {
+		if v == nil {
+			return nil
+		}
+		return v.RateLimit
+	}).(DefenseRuleConfigRateLimitPtrOutput)
+}
+
+// The IP addresses that you want to add to the blacklist. Specify the value of this parameter in the ["ip1","ip2",...] format.
+func (o DefenseRuleConfigPtrOutput) RemoteAddrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DefenseRuleConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RemoteAddrs
+	}).(pulumi.StringArrayOutput)
+}
+
+// Protection rule action. Value:
+// - block: Indicates an intercept.
+// - monitor: indicates observation.
+// - js: indicates JS validation.
+// - captcha: Indicates a slider.
+// - captcha_strict: indicates a strict slider.
+// - filter: filters sensitive information. This action applies only to scenarios that the Information leakage prevention rule include sensitive information match conditions.
+//
+// > **NOTE:**  For the supported protection rule actions, follow the rule actions displayed in the WAF console.
+func (o DefenseRuleConfigPtrOutput) RuleAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenseRuleConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RuleAction
+	}).(pulumi.StringPtrOutput)
+}
+
+// The throttling threshold. Valid values:
+// - The QPS throttling threshold ranges from 1 to 5000000. If you select QPS throttling (such as 500 QPS), traffic that meets the throttling conditions and exceeds 500 QPS will be blocked.
+// - The percentage throttling threshold ranges from 1 to 99. If you select percentage throttling (such as 80%), only 80% of the traffic that meets the throttling conditions will be allowed.
+func (o DefenseRuleConfigPtrOutput) ThrottleThrehold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DefenseRuleConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ThrottleThrehold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The throttling method. Valid values:
+// - qps: indicates throttling based on queries per second (QPS).
+// - ratio (default): indicates throttling based on percentage.
+func (o DefenseRuleConfigPtrOutput) ThrottleType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenseRuleConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ThrottleType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The User-Agent string that is allowed for access to the address.
+func (o DefenseRuleConfigPtrOutput) Ua() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenseRuleConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ua
+	}).(pulumi.StringPtrOutput)
+}
+
+// The address of the cached page.
+func (o DefenseRuleConfigPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenseRuleConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+type DefenseRuleConfigAccountIdentifier struct {
+	// The authentication mode. Valid values:
+	// - plain: indicates plaintext.
+	// - basic: indicates Basic authentication.
+	// - jwt: indicates JWT authentication. For JWT authentication, you must specify the field that stores the decoded account information (position).
+	DecodeType *string `pulumi:"decodeType"`
+	// Match field. Valid values: URL, URLPath, IP, Referer, User-Agent, Params, Cookie, Content-Type, Content-Length, X-Forwarded-For, Post-Body, Http-Method, Header, Host, HttpCode, and SensitiveInfo.
+	//
+	// > **NOTE:**  Support for matching fields is based on the display in the WAF console. HttpCode and SensitiveInfo are the matching fields supported by the information leakage prevention rule (dlp).
+	Key *string `pulumi:"key"`
+	// The field that stores the decoded account information.
+	Position *string `pulumi:"position"`
+	// The priority of the current extraction configuration. Each traffic can match at most one extraction policy. Valid values: [0,20]. A smaller value indicates a higher priority. The priority value must be unique.
+	Priority *int `pulumi:"priority"`
+	// The characteristics of the statistical object. When the Target parameter is set to cookie, header, or queryarg, you must specify the corresponding information in the Subkey parameter.
+	SubKey *string `pulumi:"subKey"`
+}
+
+// DefenseRuleConfigAccountIdentifierInput is an input type that accepts DefenseRuleConfigAccountIdentifierArgs and DefenseRuleConfigAccountIdentifierOutput values.
+// You can construct a concrete instance of `DefenseRuleConfigAccountIdentifierInput` via:
+//
+//	DefenseRuleConfigAccountIdentifierArgs{...}
+type DefenseRuleConfigAccountIdentifierInput interface {
+	pulumi.Input
+
+	ToDefenseRuleConfigAccountIdentifierOutput() DefenseRuleConfigAccountIdentifierOutput
+	ToDefenseRuleConfigAccountIdentifierOutputWithContext(context.Context) DefenseRuleConfigAccountIdentifierOutput
+}
+
+type DefenseRuleConfigAccountIdentifierArgs struct {
+	// The authentication mode. Valid values:
+	// - plain: indicates plaintext.
+	// - basic: indicates Basic authentication.
+	// - jwt: indicates JWT authentication. For JWT authentication, you must specify the field that stores the decoded account information (position).
+	DecodeType pulumi.StringPtrInput `pulumi:"decodeType"`
+	// Match field. Valid values: URL, URLPath, IP, Referer, User-Agent, Params, Cookie, Content-Type, Content-Length, X-Forwarded-For, Post-Body, Http-Method, Header, Host, HttpCode, and SensitiveInfo.
+	//
+	// > **NOTE:**  Support for matching fields is based on the display in the WAF console. HttpCode and SensitiveInfo are the matching fields supported by the information leakage prevention rule (dlp).
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The field that stores the decoded account information.
+	Position pulumi.StringPtrInput `pulumi:"position"`
+	// The priority of the current extraction configuration. Each traffic can match at most one extraction policy. Valid values: [0,20]. A smaller value indicates a higher priority. The priority value must be unique.
+	Priority pulumi.IntPtrInput `pulumi:"priority"`
+	// The characteristics of the statistical object. When the Target parameter is set to cookie, header, or queryarg, you must specify the corresponding information in the Subkey parameter.
+	SubKey pulumi.StringPtrInput `pulumi:"subKey"`
+}
+
+func (DefenseRuleConfigAccountIdentifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenseRuleConfigAccountIdentifier)(nil)).Elem()
+}
+
+func (i DefenseRuleConfigAccountIdentifierArgs) ToDefenseRuleConfigAccountIdentifierOutput() DefenseRuleConfigAccountIdentifierOutput {
+	return i.ToDefenseRuleConfigAccountIdentifierOutputWithContext(context.Background())
+}
+
+func (i DefenseRuleConfigAccountIdentifierArgs) ToDefenseRuleConfigAccountIdentifierOutputWithContext(ctx context.Context) DefenseRuleConfigAccountIdentifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenseRuleConfigAccountIdentifierOutput)
+}
+
+// DefenseRuleConfigAccountIdentifierArrayInput is an input type that accepts DefenseRuleConfigAccountIdentifierArray and DefenseRuleConfigAccountIdentifierArrayOutput values.
+// You can construct a concrete instance of `DefenseRuleConfigAccountIdentifierArrayInput` via:
+//
+//	DefenseRuleConfigAccountIdentifierArray{ DefenseRuleConfigAccountIdentifierArgs{...} }
+type DefenseRuleConfigAccountIdentifierArrayInput interface {
+	pulumi.Input
+
+	ToDefenseRuleConfigAccountIdentifierArrayOutput() DefenseRuleConfigAccountIdentifierArrayOutput
+	ToDefenseRuleConfigAccountIdentifierArrayOutputWithContext(context.Context) DefenseRuleConfigAccountIdentifierArrayOutput
+}
+
+type DefenseRuleConfigAccountIdentifierArray []DefenseRuleConfigAccountIdentifierInput
+
+func (DefenseRuleConfigAccountIdentifierArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DefenseRuleConfigAccountIdentifier)(nil)).Elem()
+}
+
+func (i DefenseRuleConfigAccountIdentifierArray) ToDefenseRuleConfigAccountIdentifierArrayOutput() DefenseRuleConfigAccountIdentifierArrayOutput {
+	return i.ToDefenseRuleConfigAccountIdentifierArrayOutputWithContext(context.Background())
+}
+
+func (i DefenseRuleConfigAccountIdentifierArray) ToDefenseRuleConfigAccountIdentifierArrayOutputWithContext(ctx context.Context) DefenseRuleConfigAccountIdentifierArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenseRuleConfigAccountIdentifierArrayOutput)
+}
+
+type DefenseRuleConfigAccountIdentifierOutput struct{ *pulumi.OutputState }
+
+func (DefenseRuleConfigAccountIdentifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenseRuleConfigAccountIdentifier)(nil)).Elem()
+}
+
+func (o DefenseRuleConfigAccountIdentifierOutput) ToDefenseRuleConfigAccountIdentifierOutput() DefenseRuleConfigAccountIdentifierOutput {
+	return o
+}
+
+func (o DefenseRuleConfigAccountIdentifierOutput) ToDefenseRuleConfigAccountIdentifierOutputWithContext(ctx context.Context) DefenseRuleConfigAccountIdentifierOutput {
+	return o
+}
+
+// The authentication mode. Valid values:
+// - plain: indicates plaintext.
+// - basic: indicates Basic authentication.
+// - jwt: indicates JWT authentication. For JWT authentication, you must specify the field that stores the decoded account information (position).
+func (o DefenseRuleConfigAccountIdentifierOutput) DecodeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfigAccountIdentifier) *string { return v.DecodeType }).(pulumi.StringPtrOutput)
+}
+
+// Match field. Valid values: URL, URLPath, IP, Referer, User-Agent, Params, Cookie, Content-Type, Content-Length, X-Forwarded-For, Post-Body, Http-Method, Header, Host, HttpCode, and SensitiveInfo.
+//
+// > **NOTE:**  Support for matching fields is based on the display in the WAF console. HttpCode and SensitiveInfo are the matching fields supported by the information leakage prevention rule (dlp).
+func (o DefenseRuleConfigAccountIdentifierOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfigAccountIdentifier) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The field that stores the decoded account information.
+func (o DefenseRuleConfigAccountIdentifierOutput) Position() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfigAccountIdentifier) *string { return v.Position }).(pulumi.StringPtrOutput)
+}
+
+// The priority of the current extraction configuration. Each traffic can match at most one extraction policy. Valid values: [0,20]. A smaller value indicates a higher priority. The priority value must be unique.
+func (o DefenseRuleConfigAccountIdentifierOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfigAccountIdentifier) *int { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+// The characteristics of the statistical object. When the Target parameter is set to cookie, header, or queryarg, you must specify the corresponding information in the Subkey parameter.
+func (o DefenseRuleConfigAccountIdentifierOutput) SubKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfigAccountIdentifier) *string { return v.SubKey }).(pulumi.StringPtrOutput)
+}
+
+type DefenseRuleConfigAccountIdentifierArrayOutput struct{ *pulumi.OutputState }
+
+func (DefenseRuleConfigAccountIdentifierArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DefenseRuleConfigAccountIdentifier)(nil)).Elem()
+}
+
+func (o DefenseRuleConfigAccountIdentifierArrayOutput) ToDefenseRuleConfigAccountIdentifierArrayOutput() DefenseRuleConfigAccountIdentifierArrayOutput {
+	return o
+}
+
+func (o DefenseRuleConfigAccountIdentifierArrayOutput) ToDefenseRuleConfigAccountIdentifierArrayOutputWithContext(ctx context.Context) DefenseRuleConfigAccountIdentifierArrayOutput {
+	return o
+}
+
+func (o DefenseRuleConfigAccountIdentifierArrayOutput) Index(i pulumi.IntInput) DefenseRuleConfigAccountIdentifierOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DefenseRuleConfigAccountIdentifier {
+		return vs[0].([]DefenseRuleConfigAccountIdentifier)[vs[1].(int)]
+	}).(DefenseRuleConfigAccountIdentifierOutput)
+}
+
+type DefenseRuleConfigCondition struct {
+	// Match field. Valid values: URL, URLPath, IP, Referer, User-Agent, Params, Cookie, Content-Type, Content-Length, X-Forwarded-For, Post-Body, Http-Method, Header, Host, HttpCode, and SensitiveInfo.
+	//
+	// > **NOTE:**  Support for matching fields is based on the display in the WAF console. HttpCode and SensitiveInfo are the matching fields supported by the information leakage prevention rule (dlp).
+	Key *string `pulumi:"key"`
+	// Logical character. Value:
+	// - not-contain: does not contain.
+	// - contain: Indicates to contain.
+	// - none: It does not exist.
+	// - ne: means not equal.
+	// - eq: means equal.
+	// - lt: indicates that the value is less.
+	// - gt: indicates that the value is greater.
+	// - len-lt: indicates that the length is less.
+	// - len-eq: indicates that the length is equal.
+	// - len-gt: indicates that the length is greater.
+	// - not-match: indicates a mismatch.
+	// - match-one: means equal to one of the multiple values.
+	// - all-not-match: means not equal to any value.
+	// - all-not-contain: does not contain any value.
+	// - contain-one: Indicates that one of the multiple values is contained.
+	// - not-regex: Indicates a regular mismatch.
+	// - regex: Indicates a regular match.
+	// - all-not-regex: indicates that the regular expressions do not match.
+	// - regex-one: Represents a regular match for one of them.
+	// - prefix-match: Indicates a prefix match.
+	// - suffix-match: indicates a suffix match.
+	// - mpty: Indicates that the content is empty.
+	// - exists: Indicates that the field exists.
+	// - inl: indicates in the list.
+	//
+	// > **NOTE:**  Not all logical characters (opvalues) can be configured for the match field (key) of each custom rule. For the logical characters supported by different matching fields, please refer to the association relationship between the matching fields and the logical characters in the custom rules of the WAF console.
+	OpValue *string `pulumi:"opValue"`
+	// The characteristics of the statistical object. When the Target parameter is set to cookie, header, or queryarg, you must specify the corresponding information in the Subkey parameter.
+	SubKey *string `pulumi:"subKey"`
+	// Match the content and fill in the corresponding content as needed.
+	//
+	// > **NOTE:**  The value range of the logical (opValue) and matching content (values) parameters in the matching condition parameter is related to the specified matching field (key).
+	Values *string `pulumi:"values"`
+}
+
+// DefenseRuleConfigConditionInput is an input type that accepts DefenseRuleConfigConditionArgs and DefenseRuleConfigConditionOutput values.
+// You can construct a concrete instance of `DefenseRuleConfigConditionInput` via:
+//
+//	DefenseRuleConfigConditionArgs{...}
+type DefenseRuleConfigConditionInput interface {
+	pulumi.Input
+
+	ToDefenseRuleConfigConditionOutput() DefenseRuleConfigConditionOutput
+	ToDefenseRuleConfigConditionOutputWithContext(context.Context) DefenseRuleConfigConditionOutput
+}
+
+type DefenseRuleConfigConditionArgs struct {
+	// Match field. Valid values: URL, URLPath, IP, Referer, User-Agent, Params, Cookie, Content-Type, Content-Length, X-Forwarded-For, Post-Body, Http-Method, Header, Host, HttpCode, and SensitiveInfo.
+	//
+	// > **NOTE:**  Support for matching fields is based on the display in the WAF console. HttpCode and SensitiveInfo are the matching fields supported by the information leakage prevention rule (dlp).
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Logical character. Value:
+	// - not-contain: does not contain.
+	// - contain: Indicates to contain.
+	// - none: It does not exist.
+	// - ne: means not equal.
+	// - eq: means equal.
+	// - lt: indicates that the value is less.
+	// - gt: indicates that the value is greater.
+	// - len-lt: indicates that the length is less.
+	// - len-eq: indicates that the length is equal.
+	// - len-gt: indicates that the length is greater.
+	// - not-match: indicates a mismatch.
+	// - match-one: means equal to one of the multiple values.
+	// - all-not-match: means not equal to any value.
+	// - all-not-contain: does not contain any value.
+	// - contain-one: Indicates that one of the multiple values is contained.
+	// - not-regex: Indicates a regular mismatch.
+	// - regex: Indicates a regular match.
+	// - all-not-regex: indicates that the regular expressions do not match.
+	// - regex-one: Represents a regular match for one of them.
+	// - prefix-match: Indicates a prefix match.
+	// - suffix-match: indicates a suffix match.
+	// - mpty: Indicates that the content is empty.
+	// - exists: Indicates that the field exists.
+	// - inl: indicates in the list.
+	//
+	// > **NOTE:**  Not all logical characters (opvalues) can be configured for the match field (key) of each custom rule. For the logical characters supported by different matching fields, please refer to the association relationship between the matching fields and the logical characters in the custom rules of the WAF console.
+	OpValue pulumi.StringPtrInput `pulumi:"opValue"`
+	// The characteristics of the statistical object. When the Target parameter is set to cookie, header, or queryarg, you must specify the corresponding information in the Subkey parameter.
+	SubKey pulumi.StringPtrInput `pulumi:"subKey"`
+	// Match the content and fill in the corresponding content as needed.
+	//
+	// > **NOTE:**  The value range of the logical (opValue) and matching content (values) parameters in the matching condition parameter is related to the specified matching field (key).
+	Values pulumi.StringPtrInput `pulumi:"values"`
+}
+
+func (DefenseRuleConfigConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenseRuleConfigCondition)(nil)).Elem()
+}
+
+func (i DefenseRuleConfigConditionArgs) ToDefenseRuleConfigConditionOutput() DefenseRuleConfigConditionOutput {
+	return i.ToDefenseRuleConfigConditionOutputWithContext(context.Background())
+}
+
+func (i DefenseRuleConfigConditionArgs) ToDefenseRuleConfigConditionOutputWithContext(ctx context.Context) DefenseRuleConfigConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenseRuleConfigConditionOutput)
+}
+
+// DefenseRuleConfigConditionArrayInput is an input type that accepts DefenseRuleConfigConditionArray and DefenseRuleConfigConditionArrayOutput values.
+// You can construct a concrete instance of `DefenseRuleConfigConditionArrayInput` via:
+//
+//	DefenseRuleConfigConditionArray{ DefenseRuleConfigConditionArgs{...} }
+type DefenseRuleConfigConditionArrayInput interface {
+	pulumi.Input
+
+	ToDefenseRuleConfigConditionArrayOutput() DefenseRuleConfigConditionArrayOutput
+	ToDefenseRuleConfigConditionArrayOutputWithContext(context.Context) DefenseRuleConfigConditionArrayOutput
+}
+
+type DefenseRuleConfigConditionArray []DefenseRuleConfigConditionInput
+
+func (DefenseRuleConfigConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DefenseRuleConfigCondition)(nil)).Elem()
+}
+
+func (i DefenseRuleConfigConditionArray) ToDefenseRuleConfigConditionArrayOutput() DefenseRuleConfigConditionArrayOutput {
+	return i.ToDefenseRuleConfigConditionArrayOutputWithContext(context.Background())
+}
+
+func (i DefenseRuleConfigConditionArray) ToDefenseRuleConfigConditionArrayOutputWithContext(ctx context.Context) DefenseRuleConfigConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenseRuleConfigConditionArrayOutput)
+}
+
+type DefenseRuleConfigConditionOutput struct{ *pulumi.OutputState }
+
+func (DefenseRuleConfigConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenseRuleConfigCondition)(nil)).Elem()
+}
+
+func (o DefenseRuleConfigConditionOutput) ToDefenseRuleConfigConditionOutput() DefenseRuleConfigConditionOutput {
+	return o
+}
+
+func (o DefenseRuleConfigConditionOutput) ToDefenseRuleConfigConditionOutputWithContext(ctx context.Context) DefenseRuleConfigConditionOutput {
+	return o
+}
+
+// Match field. Valid values: URL, URLPath, IP, Referer, User-Agent, Params, Cookie, Content-Type, Content-Length, X-Forwarded-For, Post-Body, Http-Method, Header, Host, HttpCode, and SensitiveInfo.
+//
+// > **NOTE:**  Support for matching fields is based on the display in the WAF console. HttpCode and SensitiveInfo are the matching fields supported by the information leakage prevention rule (dlp).
+func (o DefenseRuleConfigConditionOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfigCondition) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Logical character. Value:
+// - not-contain: does not contain.
+// - contain: Indicates to contain.
+// - none: It does not exist.
+// - ne: means not equal.
+// - eq: means equal.
+// - lt: indicates that the value is less.
+// - gt: indicates that the value is greater.
+// - len-lt: indicates that the length is less.
+// - len-eq: indicates that the length is equal.
+// - len-gt: indicates that the length is greater.
+// - not-match: indicates a mismatch.
+// - match-one: means equal to one of the multiple values.
+// - all-not-match: means not equal to any value.
+// - all-not-contain: does not contain any value.
+// - contain-one: Indicates that one of the multiple values is contained.
+// - not-regex: Indicates a regular mismatch.
+// - regex: Indicates a regular match.
+// - all-not-regex: indicates that the regular expressions do not match.
+// - regex-one: Represents a regular match for one of them.
+// - prefix-match: Indicates a prefix match.
+// - suffix-match: indicates a suffix match.
+// - mpty: Indicates that the content is empty.
+// - exists: Indicates that the field exists.
+// - inl: indicates in the list.
+//
+// > **NOTE:**  Not all logical characters (opvalues) can be configured for the match field (key) of each custom rule. For the logical characters supported by different matching fields, please refer to the association relationship between the matching fields and the logical characters in the custom rules of the WAF console.
+func (o DefenseRuleConfigConditionOutput) OpValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfigCondition) *string { return v.OpValue }).(pulumi.StringPtrOutput)
+}
+
+// The characteristics of the statistical object. When the Target parameter is set to cookie, header, or queryarg, you must specify the corresponding information in the Subkey parameter.
+func (o DefenseRuleConfigConditionOutput) SubKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfigCondition) *string { return v.SubKey }).(pulumi.StringPtrOutput)
+}
+
+// Match the content and fill in the corresponding content as needed.
+//
+// > **NOTE:**  The value range of the logical (opValue) and matching content (values) parameters in the matching condition parameter is related to the specified matching field (key).
+func (o DefenseRuleConfigConditionOutput) Values() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfigCondition) *string { return v.Values }).(pulumi.StringPtrOutput)
+}
+
+type DefenseRuleConfigConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (DefenseRuleConfigConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DefenseRuleConfigCondition)(nil)).Elem()
+}
+
+func (o DefenseRuleConfigConditionArrayOutput) ToDefenseRuleConfigConditionArrayOutput() DefenseRuleConfigConditionArrayOutput {
+	return o
+}
+
+func (o DefenseRuleConfigConditionArrayOutput) ToDefenseRuleConfigConditionArrayOutputWithContext(ctx context.Context) DefenseRuleConfigConditionArrayOutput {
+	return o
+}
+
+func (o DefenseRuleConfigConditionArrayOutput) Index(i pulumi.IntInput) DefenseRuleConfigConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DefenseRuleConfigCondition {
+		return vs[0].([]DefenseRuleConfigCondition)[vs[1].(int)]
+	}).(DefenseRuleConfigConditionOutput)
+}
+
+type DefenseRuleConfigRateLimit struct {
+	// The statistical period, in seconds. This parameter specifies the period during which access counts are collected, and works with the Threshold parameter.
+	// Valid values: 1 to 1800 seconds.
+	Interval *int `pulumi:"interval"`
+	// Response code frequency setting. The description is in the JSON string format. See `status` below.
+	Status *DefenseRuleConfigRateLimitStatus `pulumi:"status"`
+	// The characteristics of the statistical object. When the Target parameter is set to cookie, header, or queryarg, you must specify the corresponding information in the Subkey parameter.
+	SubKey *string `pulumi:"subKey"`
+	// The type of the statistical object. Valid values:
+	// - remoteAddr (default): indicates IP.
+	// - cookie.acw_tc: indicates session.
+	// - header: indicates custom header. If you use custom headers, you must specify the headers in subkey.
+	// - queryarg: indicates custom parameters. If you use custom parameters, you must specify the parameters in subkey.
+	// - cookie: indicates custom cookies. If you use custom cookies, you must specify the cookies in subkey.
+	Target *string `pulumi:"target"`
+	// The maximum number of requests that can be sent from a statistical object.
+	Threshold *int `pulumi:"threshold"`
+	// The period of time during which you want the specified action to be valid. Unit: seconds.
+	// Valid values: 60 to 86400.
+	Ttl *int `pulumi:"ttl"`
+}
+
+// DefenseRuleConfigRateLimitInput is an input type that accepts DefenseRuleConfigRateLimitArgs and DefenseRuleConfigRateLimitOutput values.
+// You can construct a concrete instance of `DefenseRuleConfigRateLimitInput` via:
+//
+//	DefenseRuleConfigRateLimitArgs{...}
+type DefenseRuleConfigRateLimitInput interface {
+	pulumi.Input
+
+	ToDefenseRuleConfigRateLimitOutput() DefenseRuleConfigRateLimitOutput
+	ToDefenseRuleConfigRateLimitOutputWithContext(context.Context) DefenseRuleConfigRateLimitOutput
+}
+
+type DefenseRuleConfigRateLimitArgs struct {
+	// The statistical period, in seconds. This parameter specifies the period during which access counts are collected, and works with the Threshold parameter.
+	// Valid values: 1 to 1800 seconds.
+	Interval pulumi.IntPtrInput `pulumi:"interval"`
+	// Response code frequency setting. The description is in the JSON string format. See `status` below.
+	Status DefenseRuleConfigRateLimitStatusPtrInput `pulumi:"status"`
+	// The characteristics of the statistical object. When the Target parameter is set to cookie, header, or queryarg, you must specify the corresponding information in the Subkey parameter.
+	SubKey pulumi.StringPtrInput `pulumi:"subKey"`
+	// The type of the statistical object. Valid values:
+	// - remoteAddr (default): indicates IP.
+	// - cookie.acw_tc: indicates session.
+	// - header: indicates custom header. If you use custom headers, you must specify the headers in subkey.
+	// - queryarg: indicates custom parameters. If you use custom parameters, you must specify the parameters in subkey.
+	// - cookie: indicates custom cookies. If you use custom cookies, you must specify the cookies in subkey.
+	Target pulumi.StringPtrInput `pulumi:"target"`
+	// The maximum number of requests that can be sent from a statistical object.
+	Threshold pulumi.IntPtrInput `pulumi:"threshold"`
+	// The period of time during which you want the specified action to be valid. Unit: seconds.
+	// Valid values: 60 to 86400.
+	Ttl pulumi.IntPtrInput `pulumi:"ttl"`
+}
+
+func (DefenseRuleConfigRateLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenseRuleConfigRateLimit)(nil)).Elem()
+}
+
+func (i DefenseRuleConfigRateLimitArgs) ToDefenseRuleConfigRateLimitOutput() DefenseRuleConfigRateLimitOutput {
+	return i.ToDefenseRuleConfigRateLimitOutputWithContext(context.Background())
+}
+
+func (i DefenseRuleConfigRateLimitArgs) ToDefenseRuleConfigRateLimitOutputWithContext(ctx context.Context) DefenseRuleConfigRateLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenseRuleConfigRateLimitOutput)
+}
+
+func (i DefenseRuleConfigRateLimitArgs) ToDefenseRuleConfigRateLimitPtrOutput() DefenseRuleConfigRateLimitPtrOutput {
+	return i.ToDefenseRuleConfigRateLimitPtrOutputWithContext(context.Background())
+}
+
+func (i DefenseRuleConfigRateLimitArgs) ToDefenseRuleConfigRateLimitPtrOutputWithContext(ctx context.Context) DefenseRuleConfigRateLimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenseRuleConfigRateLimitOutput).ToDefenseRuleConfigRateLimitPtrOutputWithContext(ctx)
+}
+
+// DefenseRuleConfigRateLimitPtrInput is an input type that accepts DefenseRuleConfigRateLimitArgs, DefenseRuleConfigRateLimitPtr and DefenseRuleConfigRateLimitPtrOutput values.
+// You can construct a concrete instance of `DefenseRuleConfigRateLimitPtrInput` via:
+//
+//	        DefenseRuleConfigRateLimitArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefenseRuleConfigRateLimitPtrInput interface {
+	pulumi.Input
+
+	ToDefenseRuleConfigRateLimitPtrOutput() DefenseRuleConfigRateLimitPtrOutput
+	ToDefenseRuleConfigRateLimitPtrOutputWithContext(context.Context) DefenseRuleConfigRateLimitPtrOutput
+}
+
+type defenseRuleConfigRateLimitPtrType DefenseRuleConfigRateLimitArgs
+
+func DefenseRuleConfigRateLimitPtr(v *DefenseRuleConfigRateLimitArgs) DefenseRuleConfigRateLimitPtrInput {
+	return (*defenseRuleConfigRateLimitPtrType)(v)
+}
+
+func (*defenseRuleConfigRateLimitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenseRuleConfigRateLimit)(nil)).Elem()
+}
+
+func (i *defenseRuleConfigRateLimitPtrType) ToDefenseRuleConfigRateLimitPtrOutput() DefenseRuleConfigRateLimitPtrOutput {
+	return i.ToDefenseRuleConfigRateLimitPtrOutputWithContext(context.Background())
+}
+
+func (i *defenseRuleConfigRateLimitPtrType) ToDefenseRuleConfigRateLimitPtrOutputWithContext(ctx context.Context) DefenseRuleConfigRateLimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenseRuleConfigRateLimitPtrOutput)
+}
+
+type DefenseRuleConfigRateLimitOutput struct{ *pulumi.OutputState }
+
+func (DefenseRuleConfigRateLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenseRuleConfigRateLimit)(nil)).Elem()
+}
+
+func (o DefenseRuleConfigRateLimitOutput) ToDefenseRuleConfigRateLimitOutput() DefenseRuleConfigRateLimitOutput {
+	return o
+}
+
+func (o DefenseRuleConfigRateLimitOutput) ToDefenseRuleConfigRateLimitOutputWithContext(ctx context.Context) DefenseRuleConfigRateLimitOutput {
+	return o
+}
+
+func (o DefenseRuleConfigRateLimitOutput) ToDefenseRuleConfigRateLimitPtrOutput() DefenseRuleConfigRateLimitPtrOutput {
+	return o.ToDefenseRuleConfigRateLimitPtrOutputWithContext(context.Background())
+}
+
+func (o DefenseRuleConfigRateLimitOutput) ToDefenseRuleConfigRateLimitPtrOutputWithContext(ctx context.Context) DefenseRuleConfigRateLimitPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenseRuleConfigRateLimit) *DefenseRuleConfigRateLimit {
+		return &v
+	}).(DefenseRuleConfigRateLimitPtrOutput)
+}
+
+// The statistical period, in seconds. This parameter specifies the period during which access counts are collected, and works with the Threshold parameter.
+// Valid values: 1 to 1800 seconds.
+func (o DefenseRuleConfigRateLimitOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfigRateLimit) *int { return v.Interval }).(pulumi.IntPtrOutput)
+}
+
+// Response code frequency setting. The description is in the JSON string format. See `status` below.
+func (o DefenseRuleConfigRateLimitOutput) Status() DefenseRuleConfigRateLimitStatusPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfigRateLimit) *DefenseRuleConfigRateLimitStatus { return v.Status }).(DefenseRuleConfigRateLimitStatusPtrOutput)
+}
+
+// The characteristics of the statistical object. When the Target parameter is set to cookie, header, or queryarg, you must specify the corresponding information in the Subkey parameter.
+func (o DefenseRuleConfigRateLimitOutput) SubKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfigRateLimit) *string { return v.SubKey }).(pulumi.StringPtrOutput)
+}
+
+// The type of the statistical object. Valid values:
+// - remoteAddr (default): indicates IP.
+// - cookie.acw_tc: indicates session.
+// - header: indicates custom header. If you use custom headers, you must specify the headers in subkey.
+// - queryarg: indicates custom parameters. If you use custom parameters, you must specify the parameters in subkey.
+// - cookie: indicates custom cookies. If you use custom cookies, you must specify the cookies in subkey.
+func (o DefenseRuleConfigRateLimitOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfigRateLimit) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of requests that can be sent from a statistical object.
+func (o DefenseRuleConfigRateLimitOutput) Threshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfigRateLimit) *int { return v.Threshold }).(pulumi.IntPtrOutput)
+}
+
+// The period of time during which you want the specified action to be valid. Unit: seconds.
+// Valid values: 60 to 86400.
+func (o DefenseRuleConfigRateLimitOutput) Ttl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfigRateLimit) *int { return v.Ttl }).(pulumi.IntPtrOutput)
+}
+
+type DefenseRuleConfigRateLimitPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenseRuleConfigRateLimitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenseRuleConfigRateLimit)(nil)).Elem()
+}
+
+func (o DefenseRuleConfigRateLimitPtrOutput) ToDefenseRuleConfigRateLimitPtrOutput() DefenseRuleConfigRateLimitPtrOutput {
+	return o
+}
+
+func (o DefenseRuleConfigRateLimitPtrOutput) ToDefenseRuleConfigRateLimitPtrOutputWithContext(ctx context.Context) DefenseRuleConfigRateLimitPtrOutput {
+	return o
+}
+
+func (o DefenseRuleConfigRateLimitPtrOutput) Elem() DefenseRuleConfigRateLimitOutput {
+	return o.ApplyT(func(v *DefenseRuleConfigRateLimit) DefenseRuleConfigRateLimit {
+		if v != nil {
+			return *v
+		}
+		var ret DefenseRuleConfigRateLimit
+		return ret
+	}).(DefenseRuleConfigRateLimitOutput)
+}
+
+// The statistical period, in seconds. This parameter specifies the period during which access counts are collected, and works with the Threshold parameter.
+// Valid values: 1 to 1800 seconds.
+func (o DefenseRuleConfigRateLimitPtrOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DefenseRuleConfigRateLimit) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Interval
+	}).(pulumi.IntPtrOutput)
+}
+
+// Response code frequency setting. The description is in the JSON string format. See `status` below.
+func (o DefenseRuleConfigRateLimitPtrOutput) Status() DefenseRuleConfigRateLimitStatusPtrOutput {
+	return o.ApplyT(func(v *DefenseRuleConfigRateLimit) *DefenseRuleConfigRateLimitStatus {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(DefenseRuleConfigRateLimitStatusPtrOutput)
+}
+
+// The characteristics of the statistical object. When the Target parameter is set to cookie, header, or queryarg, you must specify the corresponding information in the Subkey parameter.
+func (o DefenseRuleConfigRateLimitPtrOutput) SubKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenseRuleConfigRateLimit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the statistical object. Valid values:
+// - remoteAddr (default): indicates IP.
+// - cookie.acw_tc: indicates session.
+// - header: indicates custom header. If you use custom headers, you must specify the headers in subkey.
+// - queryarg: indicates custom parameters. If you use custom parameters, you must specify the parameters in subkey.
+// - cookie: indicates custom cookies. If you use custom cookies, you must specify the cookies in subkey.
+func (o DefenseRuleConfigRateLimitPtrOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenseRuleConfigRateLimit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Target
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of requests that can be sent from a statistical object.
+func (o DefenseRuleConfigRateLimitPtrOutput) Threshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DefenseRuleConfigRateLimit) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Threshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The period of time during which you want the specified action to be valid. Unit: seconds.
+// Valid values: 60 to 86400.
+func (o DefenseRuleConfigRateLimitPtrOutput) Ttl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DefenseRuleConfigRateLimit) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Ttl
+	}).(pulumi.IntPtrOutput)
+}
+
+type DefenseRuleConfigRateLimitStatus struct {
+	// Required. Specifies the response code.
+	Code *int `pulumi:"code"`
+	// The threshold for the number of occurrences. When the number of occurrences of the specified HTTP status code exceeds this threshold, the protection rule is triggered. Valid values: 2 to 50000. You can specify Count or Ratio. You cannot specify the two parameters at the same time.
+	Count *int `pulumi:"count"`
+	// The threshold for the proportion of occurrences (percentage). When the proportion of occurrences of the specified HTTP status code exceeds this threshold, the protection rule is triggered. Valid values: 1 to 100. You can specify Count or Ratio. You cannot specify the two parameters at the same time.
+	Ratio *int `pulumi:"ratio"`
+}
+
+// DefenseRuleConfigRateLimitStatusInput is an input type that accepts DefenseRuleConfigRateLimitStatusArgs and DefenseRuleConfigRateLimitStatusOutput values.
+// You can construct a concrete instance of `DefenseRuleConfigRateLimitStatusInput` via:
+//
+//	DefenseRuleConfigRateLimitStatusArgs{...}
+type DefenseRuleConfigRateLimitStatusInput interface {
+	pulumi.Input
+
+	ToDefenseRuleConfigRateLimitStatusOutput() DefenseRuleConfigRateLimitStatusOutput
+	ToDefenseRuleConfigRateLimitStatusOutputWithContext(context.Context) DefenseRuleConfigRateLimitStatusOutput
+}
+
+type DefenseRuleConfigRateLimitStatusArgs struct {
+	// Required. Specifies the response code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// The threshold for the number of occurrences. When the number of occurrences of the specified HTTP status code exceeds this threshold, the protection rule is triggered. Valid values: 2 to 50000. You can specify Count or Ratio. You cannot specify the two parameters at the same time.
+	Count pulumi.IntPtrInput `pulumi:"count"`
+	// The threshold for the proportion of occurrences (percentage). When the proportion of occurrences of the specified HTTP status code exceeds this threshold, the protection rule is triggered. Valid values: 1 to 100. You can specify Count or Ratio. You cannot specify the two parameters at the same time.
+	Ratio pulumi.IntPtrInput `pulumi:"ratio"`
+}
+
+func (DefenseRuleConfigRateLimitStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenseRuleConfigRateLimitStatus)(nil)).Elem()
+}
+
+func (i DefenseRuleConfigRateLimitStatusArgs) ToDefenseRuleConfigRateLimitStatusOutput() DefenseRuleConfigRateLimitStatusOutput {
+	return i.ToDefenseRuleConfigRateLimitStatusOutputWithContext(context.Background())
+}
+
+func (i DefenseRuleConfigRateLimitStatusArgs) ToDefenseRuleConfigRateLimitStatusOutputWithContext(ctx context.Context) DefenseRuleConfigRateLimitStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenseRuleConfigRateLimitStatusOutput)
+}
+
+func (i DefenseRuleConfigRateLimitStatusArgs) ToDefenseRuleConfigRateLimitStatusPtrOutput() DefenseRuleConfigRateLimitStatusPtrOutput {
+	return i.ToDefenseRuleConfigRateLimitStatusPtrOutputWithContext(context.Background())
+}
+
+func (i DefenseRuleConfigRateLimitStatusArgs) ToDefenseRuleConfigRateLimitStatusPtrOutputWithContext(ctx context.Context) DefenseRuleConfigRateLimitStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenseRuleConfigRateLimitStatusOutput).ToDefenseRuleConfigRateLimitStatusPtrOutputWithContext(ctx)
+}
+
+// DefenseRuleConfigRateLimitStatusPtrInput is an input type that accepts DefenseRuleConfigRateLimitStatusArgs, DefenseRuleConfigRateLimitStatusPtr and DefenseRuleConfigRateLimitStatusPtrOutput values.
+// You can construct a concrete instance of `DefenseRuleConfigRateLimitStatusPtrInput` via:
+//
+//	        DefenseRuleConfigRateLimitStatusArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefenseRuleConfigRateLimitStatusPtrInput interface {
+	pulumi.Input
+
+	ToDefenseRuleConfigRateLimitStatusPtrOutput() DefenseRuleConfigRateLimitStatusPtrOutput
+	ToDefenseRuleConfigRateLimitStatusPtrOutputWithContext(context.Context) DefenseRuleConfigRateLimitStatusPtrOutput
+}
+
+type defenseRuleConfigRateLimitStatusPtrType DefenseRuleConfigRateLimitStatusArgs
+
+func DefenseRuleConfigRateLimitStatusPtr(v *DefenseRuleConfigRateLimitStatusArgs) DefenseRuleConfigRateLimitStatusPtrInput {
+	return (*defenseRuleConfigRateLimitStatusPtrType)(v)
+}
+
+func (*defenseRuleConfigRateLimitStatusPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenseRuleConfigRateLimitStatus)(nil)).Elem()
+}
+
+func (i *defenseRuleConfigRateLimitStatusPtrType) ToDefenseRuleConfigRateLimitStatusPtrOutput() DefenseRuleConfigRateLimitStatusPtrOutput {
+	return i.ToDefenseRuleConfigRateLimitStatusPtrOutputWithContext(context.Background())
+}
+
+func (i *defenseRuleConfigRateLimitStatusPtrType) ToDefenseRuleConfigRateLimitStatusPtrOutputWithContext(ctx context.Context) DefenseRuleConfigRateLimitStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenseRuleConfigRateLimitStatusPtrOutput)
+}
+
+type DefenseRuleConfigRateLimitStatusOutput struct{ *pulumi.OutputState }
+
+func (DefenseRuleConfigRateLimitStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenseRuleConfigRateLimitStatus)(nil)).Elem()
+}
+
+func (o DefenseRuleConfigRateLimitStatusOutput) ToDefenseRuleConfigRateLimitStatusOutput() DefenseRuleConfigRateLimitStatusOutput {
+	return o
+}
+
+func (o DefenseRuleConfigRateLimitStatusOutput) ToDefenseRuleConfigRateLimitStatusOutputWithContext(ctx context.Context) DefenseRuleConfigRateLimitStatusOutput {
+	return o
+}
+
+func (o DefenseRuleConfigRateLimitStatusOutput) ToDefenseRuleConfigRateLimitStatusPtrOutput() DefenseRuleConfigRateLimitStatusPtrOutput {
+	return o.ToDefenseRuleConfigRateLimitStatusPtrOutputWithContext(context.Background())
+}
+
+func (o DefenseRuleConfigRateLimitStatusOutput) ToDefenseRuleConfigRateLimitStatusPtrOutputWithContext(ctx context.Context) DefenseRuleConfigRateLimitStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenseRuleConfigRateLimitStatus) *DefenseRuleConfigRateLimitStatus {
+		return &v
+	}).(DefenseRuleConfigRateLimitStatusPtrOutput)
+}
+
+// Required. Specifies the response code.
+func (o DefenseRuleConfigRateLimitStatusOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfigRateLimitStatus) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// The threshold for the number of occurrences. When the number of occurrences of the specified HTTP status code exceeds this threshold, the protection rule is triggered. Valid values: 2 to 50000. You can specify Count or Ratio. You cannot specify the two parameters at the same time.
+func (o DefenseRuleConfigRateLimitStatusOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfigRateLimitStatus) *int { return v.Count }).(pulumi.IntPtrOutput)
+}
+
+// The threshold for the proportion of occurrences (percentage). When the proportion of occurrences of the specified HTTP status code exceeds this threshold, the protection rule is triggered. Valid values: 1 to 100. You can specify Count or Ratio. You cannot specify the two parameters at the same time.
+func (o DefenseRuleConfigRateLimitStatusOutput) Ratio() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfigRateLimitStatus) *int { return v.Ratio }).(pulumi.IntPtrOutput)
+}
+
+type DefenseRuleConfigRateLimitStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenseRuleConfigRateLimitStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenseRuleConfigRateLimitStatus)(nil)).Elem()
+}
+
+func (o DefenseRuleConfigRateLimitStatusPtrOutput) ToDefenseRuleConfigRateLimitStatusPtrOutput() DefenseRuleConfigRateLimitStatusPtrOutput {
+	return o
+}
+
+func (o DefenseRuleConfigRateLimitStatusPtrOutput) ToDefenseRuleConfigRateLimitStatusPtrOutputWithContext(ctx context.Context) DefenseRuleConfigRateLimitStatusPtrOutput {
+	return o
+}
+
+func (o DefenseRuleConfigRateLimitStatusPtrOutput) Elem() DefenseRuleConfigRateLimitStatusOutput {
+	return o.ApplyT(func(v *DefenseRuleConfigRateLimitStatus) DefenseRuleConfigRateLimitStatus {
+		if v != nil {
+			return *v
+		}
+		var ret DefenseRuleConfigRateLimitStatus
+		return ret
+	}).(DefenseRuleConfigRateLimitStatusOutput)
+}
+
+// Required. Specifies the response code.
+func (o DefenseRuleConfigRateLimitStatusPtrOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DefenseRuleConfigRateLimitStatus) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Code
+	}).(pulumi.IntPtrOutput)
+}
+
+// The threshold for the number of occurrences. When the number of occurrences of the specified HTTP status code exceeds this threshold, the protection rule is triggered. Valid values: 2 to 50000. You can specify Count or Ratio. You cannot specify the two parameters at the same time.
+func (o DefenseRuleConfigRateLimitStatusPtrOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DefenseRuleConfigRateLimitStatus) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Count
+	}).(pulumi.IntPtrOutput)
+}
+
+// The threshold for the proportion of occurrences (percentage). When the proportion of occurrences of the specified HTTP status code exceeds this threshold, the protection rule is triggered. Valid values: 1 to 100. You can specify Count or Ratio. You cannot specify the two parameters at the same time.
+func (o DefenseRuleConfigRateLimitStatusPtrOutput) Ratio() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DefenseRuleConfigRateLimitStatus) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Ratio
+	}).(pulumi.IntPtrOutput)
+}
+
 type DomainListen struct {
-	// The ID of the certificate to be added. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
+	// The ID of the certificate to be added. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol).
 	CertId *string `pulumi:"certId"`
-	// The type of encryption suite to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-	// - **1**: indicates that all encryption suites are added.
-	// - **2**: indicates that a strong encryption package is added. You can select this value only if the value of **tls_version** is `tlsv1.2`.
-	// - **99**: indicates that a custom encryption suite is added.
+	// The type of the cipher suites that you want to add. This parameter is available only if you specify `HttpsPorts`. Valid values:
 	CipherSuite *int `pulumi:"cipherSuite"`
 	// The specific custom encryption suite to add.
 	CustomCiphers []string `pulumi:"customCiphers"`
-	// Whether TSL1.3 version is supported. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-	// - **true**: indicates that TSL1.3 is supported.
-	// - **false**: indicates that TSL1.3 is not supported.
+	// Whether TSL1.3 version is supported. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol). Value:
 	EnableTlsv3 *bool `pulumi:"enableTlsv3"`
-	// Whether to enable exclusive IP address. This parameter is used only when the value of **ipv6_enabled** is **false** (indicating that IPv6 is not enabled) and the value of **protection_resource** is **share** (indicating that a shared cluster is used). Value:
-	// - **true**: indicates that the exclusive IP address is enabled.
-	// - **false** (default): indicates that exclusive IP address is not enabled.
+	// Specifies whether to enable the exclusive IP address feature. This parameter is available only if you set `IPv6Enabled` to false and `ProtectionResource` to `share`. Valid values:
 	ExclusiveIp *bool `pulumi:"exclusiveIp"`
-	// Whether to enable the forced jump of HTTPS. This parameter is used only when the value of `httpsPorts` is not empty (indicating that the domain name uses HTTPS protocol) and the value of httports is empty (indicating that the domain name does not use HTTP protocol). Value:
-	// - **true**: indicates that HTTPS forced redirection is enabled.
-	// - **false**: indicates that HTTPS forced redirection is not enabled.
+	// Specifies whether to enable force redirect from HTTP to HTTPS for received requests. This parameter is available only if you specify `HttpsPorts` and leave `HttpPorts` empty. Valid values:
 	FocusHttps *bool `pulumi:"focusHttps"`
-	// Whether to turn on http2. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-	// - **true:** indicates that HTTP2 is enabled.
-	// - **false** (default): indicates that HTTP2 is not enabled.
+	// Specifies whether to enable HTTP/2. This parameter is available only if you specify `HttpsPorts`. Valid values:
 	Http2Enabled *bool `pulumi:"http2Enabled"`
-	// The listening port of the HTTP protocol.
+	// The HTTP listener ports. Specify the value in the \[**port1,port2,...**] format.
 	HttpPorts []int `pulumi:"httpPorts"`
-	// The listening port of the HTTPS protocol.
+	// The HTTPS listener ports. Specify the value in the \[**port1,port2,...**] format.
 	HttpsPorts []int `pulumi:"httpsPorts"`
-	// Whether IPv6 is turned on. Value:
-	// - **true**: indicates that IPv6 is enabled.
-	// - **false** (default): indicates that IPv6 is not enabled.
+	// Specifies whether to enable IPv6 protection. Valid values:
 	Ipv6Enabled *bool `pulumi:"ipv6Enabled"`
-	// The type of protection resource to use. Value:
-	// - **share** (default): indicates that a shared cluster is used.
-	// - **gslb**: indicates that the shared cluster intelligent load balancing is used.
+	// The type of the protection resource. Valid values:
 	ProtectionResource *string `pulumi:"protectionResource"`
-	// The version of TLS to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value: **tlsv1**, **tlsv1.1**, **tlsv1.2**.
+	// Specifies whether to allow access only from SM certificate-based clients. This parameter is available only if you set SM2Enabled to true.
+	//
+	// - true
+	// - false
+	Sm2AccessOnly *bool `pulumi:"sm2AccessOnly"`
+	// The ID of the SM certificate that you want to add. This parameter is available only if you set SM2Enabled to true.
+	Sm2CertId *string `pulumi:"sm2CertId"`
+	// Specifies whether to add an SM certificate.
+	Sm2Enabled *bool `pulumi:"sm2Enabled"`
+	// The version of TLS to add. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol). Value:
 	TlsVersion *string `pulumi:"tlsVersion"`
-	// WAF obtains the real IP address of the client. Value:
-	// - **0** (default): indicates that the client has not forwarded the traffic to WAF through other layer -7 agents.
-	// - **1**: indicates that the first value of the X-Forwarded-For(XFF) field in the WAF read request header is used as the client IP address.
-	// - **2**: indicates that the custom field value set by you in the WAF read request header is used as the client IP address.
+	// The method that is used to obtain the originating IP address of a client. Valid values:
 	XffHeaderMode *int `pulumi:"xffHeaderMode"`
-	// Set the list of custom fields used to obtain the client IP address.
+	// The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the **\["header1","header2",...]** format.
+	//
+	// > **NOTE:**   This parameter is required only if you set `XffHeaderMode` to 2.
 	XffHeaders []string `pulumi:"xffHeaders"`
 }
 
@@ -74,51 +1544,44 @@ type DomainListenInput interface {
 }
 
 type DomainListenArgs struct {
-	// The ID of the certificate to be added. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
+	// The ID of the certificate to be added. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol).
 	CertId pulumi.StringPtrInput `pulumi:"certId"`
-	// The type of encryption suite to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-	// - **1**: indicates that all encryption suites are added.
-	// - **2**: indicates that a strong encryption package is added. You can select this value only if the value of **tls_version** is `tlsv1.2`.
-	// - **99**: indicates that a custom encryption suite is added.
+	// The type of the cipher suites that you want to add. This parameter is available only if you specify `HttpsPorts`. Valid values:
 	CipherSuite pulumi.IntPtrInput `pulumi:"cipherSuite"`
 	// The specific custom encryption suite to add.
 	CustomCiphers pulumi.StringArrayInput `pulumi:"customCiphers"`
-	// Whether TSL1.3 version is supported. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-	// - **true**: indicates that TSL1.3 is supported.
-	// - **false**: indicates that TSL1.3 is not supported.
+	// Whether TSL1.3 version is supported. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol). Value:
 	EnableTlsv3 pulumi.BoolPtrInput `pulumi:"enableTlsv3"`
-	// Whether to enable exclusive IP address. This parameter is used only when the value of **ipv6_enabled** is **false** (indicating that IPv6 is not enabled) and the value of **protection_resource** is **share** (indicating that a shared cluster is used). Value:
-	// - **true**: indicates that the exclusive IP address is enabled.
-	// - **false** (default): indicates that exclusive IP address is not enabled.
+	// Specifies whether to enable the exclusive IP address feature. This parameter is available only if you set `IPv6Enabled` to false and `ProtectionResource` to `share`. Valid values:
 	ExclusiveIp pulumi.BoolPtrInput `pulumi:"exclusiveIp"`
-	// Whether to enable the forced jump of HTTPS. This parameter is used only when the value of `httpsPorts` is not empty (indicating that the domain name uses HTTPS protocol) and the value of httports is empty (indicating that the domain name does not use HTTP protocol). Value:
-	// - **true**: indicates that HTTPS forced redirection is enabled.
-	// - **false**: indicates that HTTPS forced redirection is not enabled.
+	// Specifies whether to enable force redirect from HTTP to HTTPS for received requests. This parameter is available only if you specify `HttpsPorts` and leave `HttpPorts` empty. Valid values:
 	FocusHttps pulumi.BoolPtrInput `pulumi:"focusHttps"`
-	// Whether to turn on http2. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-	// - **true:** indicates that HTTP2 is enabled.
-	// - **false** (default): indicates that HTTP2 is not enabled.
+	// Specifies whether to enable HTTP/2. This parameter is available only if you specify `HttpsPorts`. Valid values:
 	Http2Enabled pulumi.BoolPtrInput `pulumi:"http2Enabled"`
-	// The listening port of the HTTP protocol.
+	// The HTTP listener ports. Specify the value in the \[**port1,port2,...**] format.
 	HttpPorts pulumi.IntArrayInput `pulumi:"httpPorts"`
-	// The listening port of the HTTPS protocol.
+	// The HTTPS listener ports. Specify the value in the \[**port1,port2,...**] format.
 	HttpsPorts pulumi.IntArrayInput `pulumi:"httpsPorts"`
-	// Whether IPv6 is turned on. Value:
-	// - **true**: indicates that IPv6 is enabled.
-	// - **false** (default): indicates that IPv6 is not enabled.
+	// Specifies whether to enable IPv6 protection. Valid values:
 	Ipv6Enabled pulumi.BoolPtrInput `pulumi:"ipv6Enabled"`
-	// The type of protection resource to use. Value:
-	// - **share** (default): indicates that a shared cluster is used.
-	// - **gslb**: indicates that the shared cluster intelligent load balancing is used.
+	// The type of the protection resource. Valid values:
 	ProtectionResource pulumi.StringPtrInput `pulumi:"protectionResource"`
-	// The version of TLS to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value: **tlsv1**, **tlsv1.1**, **tlsv1.2**.
+	// Specifies whether to allow access only from SM certificate-based clients. This parameter is available only if you set SM2Enabled to true.
+	//
+	// - true
+	// - false
+	Sm2AccessOnly pulumi.BoolPtrInput `pulumi:"sm2AccessOnly"`
+	// The ID of the SM certificate that you want to add. This parameter is available only if you set SM2Enabled to true.
+	Sm2CertId pulumi.StringPtrInput `pulumi:"sm2CertId"`
+	// Specifies whether to add an SM certificate.
+	Sm2Enabled pulumi.BoolPtrInput `pulumi:"sm2Enabled"`
+	// The version of TLS to add. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol). Value:
 	TlsVersion pulumi.StringPtrInput `pulumi:"tlsVersion"`
-	// WAF obtains the real IP address of the client. Value:
-	// - **0** (default): indicates that the client has not forwarded the traffic to WAF through other layer -7 agents.
-	// - **1**: indicates that the first value of the X-Forwarded-For(XFF) field in the WAF read request header is used as the client IP address.
-	// - **2**: indicates that the custom field value set by you in the WAF read request header is used as the client IP address.
+	// The method that is used to obtain the originating IP address of a client. Valid values:
 	XffHeaderMode pulumi.IntPtrInput `pulumi:"xffHeaderMode"`
-	// Set the list of custom fields used to obtain the client IP address.
+	// The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the **\["header1","header2",...]** format.
+	//
+	// > **NOTE:**   This parameter is required only if you set `XffHeaderMode` to 2.
 	XffHeaders pulumi.StringArrayInput `pulumi:"xffHeaders"`
 }
 
@@ -199,15 +1662,12 @@ func (o DomainListenOutput) ToDomainListenPtrOutputWithContext(ctx context.Conte
 	}).(DomainListenPtrOutput)
 }
 
-// The ID of the certificate to be added. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
+// The ID of the certificate to be added. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol).
 func (o DomainListenOutput) CertId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainListen) *string { return v.CertId }).(pulumi.StringPtrOutput)
 }
 
-// The type of encryption suite to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-// - **1**: indicates that all encryption suites are added.
-// - **2**: indicates that a strong encryption package is added. You can select this value only if the value of **tls_version** is `tlsv1.2`.
-// - **99**: indicates that a custom encryption suite is added.
+// The type of the cipher suites that you want to add. This parameter is available only if you specify `HttpsPorts`. Valid values:
 func (o DomainListenOutput) CipherSuite() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DomainListen) *int { return v.CipherSuite }).(pulumi.IntPtrOutput)
 }
@@ -217,72 +1677,77 @@ func (o DomainListenOutput) CustomCiphers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DomainListen) []string { return v.CustomCiphers }).(pulumi.StringArrayOutput)
 }
 
-// Whether TSL1.3 version is supported. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-// - **true**: indicates that TSL1.3 is supported.
-// - **false**: indicates that TSL1.3 is not supported.
+// Whether TSL1.3 version is supported. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol). Value:
 func (o DomainListenOutput) EnableTlsv3() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DomainListen) *bool { return v.EnableTlsv3 }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to enable exclusive IP address. This parameter is used only when the value of **ipv6_enabled** is **false** (indicating that IPv6 is not enabled) and the value of **protection_resource** is **share** (indicating that a shared cluster is used). Value:
-// - **true**: indicates that the exclusive IP address is enabled.
-// - **false** (default): indicates that exclusive IP address is not enabled.
+// Specifies whether to enable the exclusive IP address feature. This parameter is available only if you set `IPv6Enabled` to false and `ProtectionResource` to `share`. Valid values:
 func (o DomainListenOutput) ExclusiveIp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DomainListen) *bool { return v.ExclusiveIp }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to enable the forced jump of HTTPS. This parameter is used only when the value of `httpsPorts` is not empty (indicating that the domain name uses HTTPS protocol) and the value of httports is empty (indicating that the domain name does not use HTTP protocol). Value:
-// - **true**: indicates that HTTPS forced redirection is enabled.
-// - **false**: indicates that HTTPS forced redirection is not enabled.
+// Specifies whether to enable force redirect from HTTP to HTTPS for received requests. This parameter is available only if you specify `HttpsPorts` and leave `HttpPorts` empty. Valid values:
 func (o DomainListenOutput) FocusHttps() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DomainListen) *bool { return v.FocusHttps }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to turn on http2. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-// - **true:** indicates that HTTP2 is enabled.
-// - **false** (default): indicates that HTTP2 is not enabled.
+// Specifies whether to enable HTTP/2. This parameter is available only if you specify `HttpsPorts`. Valid values:
 func (o DomainListenOutput) Http2Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DomainListen) *bool { return v.Http2Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The listening port of the HTTP protocol.
+// The HTTP listener ports. Specify the value in the \[**port1,port2,...**] format.
 func (o DomainListenOutput) HttpPorts() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v DomainListen) []int { return v.HttpPorts }).(pulumi.IntArrayOutput)
 }
 
-// The listening port of the HTTPS protocol.
+// The HTTPS listener ports. Specify the value in the \[**port1,port2,...**] format.
 func (o DomainListenOutput) HttpsPorts() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v DomainListen) []int { return v.HttpsPorts }).(pulumi.IntArrayOutput)
 }
 
-// Whether IPv6 is turned on. Value:
-// - **true**: indicates that IPv6 is enabled.
-// - **false** (default): indicates that IPv6 is not enabled.
+// Specifies whether to enable IPv6 protection. Valid values:
 func (o DomainListenOutput) Ipv6Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DomainListen) *bool { return v.Ipv6Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The type of protection resource to use. Value:
-// - **share** (default): indicates that a shared cluster is used.
-// - **gslb**: indicates that the shared cluster intelligent load balancing is used.
+// The type of the protection resource. Valid values:
 func (o DomainListenOutput) ProtectionResource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainListen) *string { return v.ProtectionResource }).(pulumi.StringPtrOutput)
 }
 
-// The version of TLS to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value: **tlsv1**, **tlsv1.1**, **tlsv1.2**.
+// Specifies whether to allow access only from SM certificate-based clients. This parameter is available only if you set SM2Enabled to true.
+//
+// - true
+// - false
+func (o DomainListenOutput) Sm2AccessOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DomainListen) *bool { return v.Sm2AccessOnly }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the SM certificate that you want to add. This parameter is available only if you set SM2Enabled to true.
+func (o DomainListenOutput) Sm2CertId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainListen) *string { return v.Sm2CertId }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to add an SM certificate.
+func (o DomainListenOutput) Sm2Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DomainListen) *bool { return v.Sm2Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The version of TLS to add. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol). Value:
 func (o DomainListenOutput) TlsVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainListen) *string { return v.TlsVersion }).(pulumi.StringPtrOutput)
 }
 
-// WAF obtains the real IP address of the client. Value:
-// - **0** (default): indicates that the client has not forwarded the traffic to WAF through other layer -7 agents.
-// - **1**: indicates that the first value of the X-Forwarded-For(XFF) field in the WAF read request header is used as the client IP address.
-// - **2**: indicates that the custom field value set by you in the WAF read request header is used as the client IP address.
+// The method that is used to obtain the originating IP address of a client. Valid values:
 func (o DomainListenOutput) XffHeaderMode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DomainListen) *int { return v.XffHeaderMode }).(pulumi.IntPtrOutput)
 }
 
-// Set the list of custom fields used to obtain the client IP address.
+// The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the **\["header1","header2",...]** format.
+//
+// > **NOTE:**   This parameter is required only if you set `XffHeaderMode` to 2.
 func (o DomainListenOutput) XffHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DomainListen) []string { return v.XffHeaders }).(pulumi.StringArrayOutput)
 }
@@ -311,7 +1776,7 @@ func (o DomainListenPtrOutput) Elem() DomainListenOutput {
 	}).(DomainListenOutput)
 }
 
-// The ID of the certificate to be added. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
+// The ID of the certificate to be added. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol).
 func (o DomainListenPtrOutput) CertId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainListen) *string {
 		if v == nil {
@@ -321,10 +1786,7 @@ func (o DomainListenPtrOutput) CertId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The type of encryption suite to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-// - **1**: indicates that all encryption suites are added.
-// - **2**: indicates that a strong encryption package is added. You can select this value only if the value of **tls_version** is `tlsv1.2`.
-// - **99**: indicates that a custom encryption suite is added.
+// The type of the cipher suites that you want to add. This parameter is available only if you specify `HttpsPorts`. Valid values:
 func (o DomainListenPtrOutput) CipherSuite() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DomainListen) *int {
 		if v == nil {
@@ -344,9 +1806,7 @@ func (o DomainListenPtrOutput) CustomCiphers() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Whether TSL1.3 version is supported. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-// - **true**: indicates that TSL1.3 is supported.
-// - **false**: indicates that TSL1.3 is not supported.
+// Whether TSL1.3 version is supported. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol). Value:
 func (o DomainListenPtrOutput) EnableTlsv3() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DomainListen) *bool {
 		if v == nil {
@@ -356,9 +1816,7 @@ func (o DomainListenPtrOutput) EnableTlsv3() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether to enable exclusive IP address. This parameter is used only when the value of **ipv6_enabled** is **false** (indicating that IPv6 is not enabled) and the value of **protection_resource** is **share** (indicating that a shared cluster is used). Value:
-// - **true**: indicates that the exclusive IP address is enabled.
-// - **false** (default): indicates that exclusive IP address is not enabled.
+// Specifies whether to enable the exclusive IP address feature. This parameter is available only if you set `IPv6Enabled` to false and `ProtectionResource` to `share`. Valid values:
 func (o DomainListenPtrOutput) ExclusiveIp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DomainListen) *bool {
 		if v == nil {
@@ -368,9 +1826,7 @@ func (o DomainListenPtrOutput) ExclusiveIp() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether to enable the forced jump of HTTPS. This parameter is used only when the value of `httpsPorts` is not empty (indicating that the domain name uses HTTPS protocol) and the value of httports is empty (indicating that the domain name does not use HTTP protocol). Value:
-// - **true**: indicates that HTTPS forced redirection is enabled.
-// - **false**: indicates that HTTPS forced redirection is not enabled.
+// Specifies whether to enable force redirect from HTTP to HTTPS for received requests. This parameter is available only if you specify `HttpsPorts` and leave `HttpPorts` empty. Valid values:
 func (o DomainListenPtrOutput) FocusHttps() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DomainListen) *bool {
 		if v == nil {
@@ -380,9 +1836,7 @@ func (o DomainListenPtrOutput) FocusHttps() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether to turn on http2. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-// - **true:** indicates that HTTP2 is enabled.
-// - **false** (default): indicates that HTTP2 is not enabled.
+// Specifies whether to enable HTTP/2. This parameter is available only if you specify `HttpsPorts`. Valid values:
 func (o DomainListenPtrOutput) Http2Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DomainListen) *bool {
 		if v == nil {
@@ -392,7 +1846,7 @@ func (o DomainListenPtrOutput) Http2Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The listening port of the HTTP protocol.
+// The HTTP listener ports. Specify the value in the \[**port1,port2,...**] format.
 func (o DomainListenPtrOutput) HttpPorts() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *DomainListen) []int {
 		if v == nil {
@@ -402,7 +1856,7 @@ func (o DomainListenPtrOutput) HttpPorts() pulumi.IntArrayOutput {
 	}).(pulumi.IntArrayOutput)
 }
 
-// The listening port of the HTTPS protocol.
+// The HTTPS listener ports. Specify the value in the \[**port1,port2,...**] format.
 func (o DomainListenPtrOutput) HttpsPorts() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *DomainListen) []int {
 		if v == nil {
@@ -412,9 +1866,7 @@ func (o DomainListenPtrOutput) HttpsPorts() pulumi.IntArrayOutput {
 	}).(pulumi.IntArrayOutput)
 }
 
-// Whether IPv6 is turned on. Value:
-// - **true**: indicates that IPv6 is enabled.
-// - **false** (default): indicates that IPv6 is not enabled.
+// Specifies whether to enable IPv6 protection. Valid values:
 func (o DomainListenPtrOutput) Ipv6Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DomainListen) *bool {
 		if v == nil {
@@ -424,9 +1876,7 @@ func (o DomainListenPtrOutput) Ipv6Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The type of protection resource to use. Value:
-// - **share** (default): indicates that a shared cluster is used.
-// - **gslb**: indicates that the shared cluster intelligent load balancing is used.
+// The type of the protection resource. Valid values:
 func (o DomainListenPtrOutput) ProtectionResource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainListen) *string {
 		if v == nil {
@@ -436,7 +1886,40 @@ func (o DomainListenPtrOutput) ProtectionResource() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The version of TLS to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value: **tlsv1**, **tlsv1.1**, **tlsv1.2**.
+// Specifies whether to allow access only from SM certificate-based clients. This parameter is available only if you set SM2Enabled to true.
+//
+// - true
+// - false
+func (o DomainListenPtrOutput) Sm2AccessOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DomainListen) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Sm2AccessOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the SM certificate that you want to add. This parameter is available only if you set SM2Enabled to true.
+func (o DomainListenPtrOutput) Sm2CertId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainListen) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sm2CertId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to add an SM certificate.
+func (o DomainListenPtrOutput) Sm2Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DomainListen) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Sm2Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The version of TLS to add. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol). Value:
 func (o DomainListenPtrOutput) TlsVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainListen) *string {
 		if v == nil {
@@ -446,10 +1929,7 @@ func (o DomainListenPtrOutput) TlsVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// WAF obtains the real IP address of the client. Value:
-// - **0** (default): indicates that the client has not forwarded the traffic to WAF through other layer -7 agents.
-// - **1**: indicates that the first value of the X-Forwarded-For(XFF) field in the WAF read request header is used as the client IP address.
-// - **2**: indicates that the custom field value set by you in the WAF read request header is used as the client IP address.
+// The method that is used to obtain the originating IP address of a client. Valid values:
 func (o DomainListenPtrOutput) XffHeaderMode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DomainListen) *int {
 		if v == nil {
@@ -459,7 +1939,9 @@ func (o DomainListenPtrOutput) XffHeaderMode() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Set the list of custom fields used to obtain the client IP address.
+// The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the **\["header1","header2",...]** format.
+//
+// > **NOTE:**   This parameter is required only if you set `XffHeaderMode` to 2.
 func (o DomainListenPtrOutput) XffHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DomainListen) []string {
 		if v == nil {
@@ -470,46 +1952,47 @@ func (o DomainListenPtrOutput) XffHeaders() pulumi.StringArrayOutput {
 }
 
 type DomainRedirect struct {
-	// The IP address of the origin server corresponding to the domain name or the back-to-origin domain name of the server.
+	// The IP addresses or domain names of the origin server. You cannot specify both IP addresses and domain names. If you specify domain names, the domain names can be resolved only to IPv4 addresses.
+	//
+	// - If you specify IP addresses, specify the value in the **\["ip1","ip2",...]** format. You can enter up to 20 IP addresses.
+	// - If you specify domain names, specify the value in the **\["domain"]** format. You can enter up to 20 domain names.
 	Backends []string `pulumi:"backends"`
-	// Connection timeout. Unit: seconds, value range: 5~120.
+	// The secondary IP address or domain name of the origin server.
+	BackupBackends []string `pulumi:"backupBackends"`
+	// Connection timeout duration. Unit: seconds.
+	// Value range: 1~3600. Default value: 5.
 	ConnectTimeout *int `pulumi:"connectTimeout"`
-	// Whether to enable forced HTTP back-to-origin. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-	// - **true**: indicates that forced HTTP back-to-origin is enabled.
-	// - **false**: indicates that forced HTTP back-to-origin is not enabled.
+	// Specifies whether to enable force redirect from HTTPS to HTTP for back-to-origin requests. This parameter is available only if you specify `HttpsPorts`. Valid values:
 	FocusHttpBackend *bool `pulumi:"focusHttpBackend"`
-	// Open long connection, default true.
+	// Specifies whether to enable the persistent connection feature. Valid values:
 	Keepalive *bool `pulumi:"keepalive"`
-	// Number of long connections,  default: `60`. range :60-1000.
+	// The number of reused persistent connections. Valid values: 60 to 1000. Default value: 1000
+	//
+	// > **NOTE:**   This parameter specifies the number of persistent connections that can be reused after you enable the persistent connection feature.
 	KeepaliveRequests *int `pulumi:"keepaliveRequests"`
-	// Long connection over time, default: `15`. Range: 1-60.
+	// Idle long connection timeout, value range: 1~60, default 15, unit: seconds.
+	//
+	// > **NOTE:**  How long the multiplexed long connection is idle and then released.
 	KeepaliveTimeout *int `pulumi:"keepaliveTimeout"`
-	// The load balancing algorithm used when returning to the source. Value:
-	// - **iphash**: indicates the IPHash algorithm.
-	// - **roundRobin**: indicates the polling algorithm.
-	// - **leastTime**: indicates the Least Time algorithm.
-	// - This value can be selected only if the value of **protection_resource** is **gslb** (indicating that the protected resource type uses shared cluster intelligent load balancing).
+	// The load balancing algorithm that you want to use to forward requests to the origin server. Valid values:
 	Loadbalance string `pulumi:"loadbalance"`
-	// Read timeout duration. **Unit**: seconds, **Value range**: 5~1800.
+	// The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
 	ReadTimeout *int `pulumi:"readTimeout"`
-	// The traffic tag field and value of the domain name which used to mark the traffic processed by WAF.
-	// It formats as `[{" k ":"_key_"," v ":"_value_"}]`. Where the `k` represents the specified custom request header field,
-	// and the `v` represents the value set for this field. By specifying the custom request header field and the corresponding value,
-	// when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value
-	// to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the
-	// custom header field already exists in the request, the system will overwrite the value of the custom field in the
-	// request with the set traffic tag value. See `requestHeaders` below.
+	// The traffic marking field and value of the domain name, which is used to mark the traffic processed by WAF.
+	// By specifying custom request header fields and corresponding values, when the access traffic of the domain name passes through WAF, WAF automatically adds the set custom field value to the request header as a traffic mark, which facilitates the statistics of back-end services. See `requestHeaders` below.
 	RequestHeaders []DomainRedirectRequestHeader `pulumi:"requestHeaders"`
-	// Back to Source Retry. default: true, retry 3 times by default.
+	// Specifies whether WAF retries if WAF fails to forward requests to the origin server. Valid values:
 	Retry *bool `pulumi:"retry"`
-	// Whether to enable back-to-source SNI. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-	// - **true**: indicates that the back-to-source SNI is enabled.
-	// - **false** (default) indicates that the back-to-source SNI is not enabled.
+	// Specifies whether to enable the Server Name Indication (SNI) feature for back-to-origin requests. This parameter is available only if you specify `HttpsPorts`. Valid values:
 	SniEnabled *bool `pulumi:"sniEnabled"`
-	// Sets the value of the custom SNI extension field. If this parameter is not set, the value of the **Host** field in the request header is used as the value of the SNI extension field by default.In general, you do not need to customize SNI unless your business has special configuration requirements. You want WAF to use SNI that is inconsistent with the actual request Host in the back-to-origin request (that is, the custom SNI set here).> This parameter is required only when **sni_enalbed** is set to **true** (indicating that back-to-source SNI is enabled).
+	// The custom value of the SNI field. If you do not specify this parameter, the value of the `Host` header field is automatically used. In most cases, you do not need to specify a custom value for the SNI field. However, if you want WAF to use an SNI field whose value is different from the value of the Host header field in back-to-origin requests, you can specify a custom value for the SNI field.
+	//
+	// > **NOTE:**   This parameter is required only if you set `SniEnabled` to true.
 	SniHost *string `pulumi:"sniHost"`
-	// Write timeout duration> **Unit**: seconds, **Value range**: 5~1800.
+	// The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
 	WriteTimeout *int `pulumi:"writeTimeout"`
+	// Specifies whether to use the X-Forward-For-Proto header field to pass the protocol used by WAF to forward requests to the origin server. Valid values:
+	XffProto *bool `pulumi:"xffProto"`
 }
 
 // DomainRedirectInput is an input type that accepts DomainRedirectArgs and DomainRedirectOutput values.
@@ -524,46 +2007,47 @@ type DomainRedirectInput interface {
 }
 
 type DomainRedirectArgs struct {
-	// The IP address of the origin server corresponding to the domain name or the back-to-origin domain name of the server.
+	// The IP addresses or domain names of the origin server. You cannot specify both IP addresses and domain names. If you specify domain names, the domain names can be resolved only to IPv4 addresses.
+	//
+	// - If you specify IP addresses, specify the value in the **\["ip1","ip2",...]** format. You can enter up to 20 IP addresses.
+	// - If you specify domain names, specify the value in the **\["domain"]** format. You can enter up to 20 domain names.
 	Backends pulumi.StringArrayInput `pulumi:"backends"`
-	// Connection timeout. Unit: seconds, value range: 5~120.
+	// The secondary IP address or domain name of the origin server.
+	BackupBackends pulumi.StringArrayInput `pulumi:"backupBackends"`
+	// Connection timeout duration. Unit: seconds.
+	// Value range: 1~3600. Default value: 5.
 	ConnectTimeout pulumi.IntPtrInput `pulumi:"connectTimeout"`
-	// Whether to enable forced HTTP back-to-origin. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-	// - **true**: indicates that forced HTTP back-to-origin is enabled.
-	// - **false**: indicates that forced HTTP back-to-origin is not enabled.
+	// Specifies whether to enable force redirect from HTTPS to HTTP for back-to-origin requests. This parameter is available only if you specify `HttpsPorts`. Valid values:
 	FocusHttpBackend pulumi.BoolPtrInput `pulumi:"focusHttpBackend"`
-	// Open long connection, default true.
+	// Specifies whether to enable the persistent connection feature. Valid values:
 	Keepalive pulumi.BoolPtrInput `pulumi:"keepalive"`
-	// Number of long connections,  default: `60`. range :60-1000.
+	// The number of reused persistent connections. Valid values: 60 to 1000. Default value: 1000
+	//
+	// > **NOTE:**   This parameter specifies the number of persistent connections that can be reused after you enable the persistent connection feature.
 	KeepaliveRequests pulumi.IntPtrInput `pulumi:"keepaliveRequests"`
-	// Long connection over time, default: `15`. Range: 1-60.
+	// Idle long connection timeout, value range: 1~60, default 15, unit: seconds.
+	//
+	// > **NOTE:**  How long the multiplexed long connection is idle and then released.
 	KeepaliveTimeout pulumi.IntPtrInput `pulumi:"keepaliveTimeout"`
-	// The load balancing algorithm used when returning to the source. Value:
-	// - **iphash**: indicates the IPHash algorithm.
-	// - **roundRobin**: indicates the polling algorithm.
-	// - **leastTime**: indicates the Least Time algorithm.
-	// - This value can be selected only if the value of **protection_resource** is **gslb** (indicating that the protected resource type uses shared cluster intelligent load balancing).
+	// The load balancing algorithm that you want to use to forward requests to the origin server. Valid values:
 	Loadbalance pulumi.StringInput `pulumi:"loadbalance"`
-	// Read timeout duration. **Unit**: seconds, **Value range**: 5~1800.
+	// The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
 	ReadTimeout pulumi.IntPtrInput `pulumi:"readTimeout"`
-	// The traffic tag field and value of the domain name which used to mark the traffic processed by WAF.
-	// It formats as `[{" k ":"_key_"," v ":"_value_"}]`. Where the `k` represents the specified custom request header field,
-	// and the `v` represents the value set for this field. By specifying the custom request header field and the corresponding value,
-	// when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value
-	// to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the
-	// custom header field already exists in the request, the system will overwrite the value of the custom field in the
-	// request with the set traffic tag value. See `requestHeaders` below.
+	// The traffic marking field and value of the domain name, which is used to mark the traffic processed by WAF.
+	// By specifying custom request header fields and corresponding values, when the access traffic of the domain name passes through WAF, WAF automatically adds the set custom field value to the request header as a traffic mark, which facilitates the statistics of back-end services. See `requestHeaders` below.
 	RequestHeaders DomainRedirectRequestHeaderArrayInput `pulumi:"requestHeaders"`
-	// Back to Source Retry. default: true, retry 3 times by default.
+	// Specifies whether WAF retries if WAF fails to forward requests to the origin server. Valid values:
 	Retry pulumi.BoolPtrInput `pulumi:"retry"`
-	// Whether to enable back-to-source SNI. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-	// - **true**: indicates that the back-to-source SNI is enabled.
-	// - **false** (default) indicates that the back-to-source SNI is not enabled.
+	// Specifies whether to enable the Server Name Indication (SNI) feature for back-to-origin requests. This parameter is available only if you specify `HttpsPorts`. Valid values:
 	SniEnabled pulumi.BoolPtrInput `pulumi:"sniEnabled"`
-	// Sets the value of the custom SNI extension field. If this parameter is not set, the value of the **Host** field in the request header is used as the value of the SNI extension field by default.In general, you do not need to customize SNI unless your business has special configuration requirements. You want WAF to use SNI that is inconsistent with the actual request Host in the back-to-origin request (that is, the custom SNI set here).> This parameter is required only when **sni_enalbed** is set to **true** (indicating that back-to-source SNI is enabled).
+	// The custom value of the SNI field. If you do not specify this parameter, the value of the `Host` header field is automatically used. In most cases, you do not need to specify a custom value for the SNI field. However, if you want WAF to use an SNI field whose value is different from the value of the Host header field in back-to-origin requests, you can specify a custom value for the SNI field.
+	//
+	// > **NOTE:**   This parameter is required only if you set `SniEnabled` to true.
 	SniHost pulumi.StringPtrInput `pulumi:"sniHost"`
-	// Write timeout duration> **Unit**: seconds, **Value range**: 5~1800.
+	// The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
 	WriteTimeout pulumi.IntPtrInput `pulumi:"writeTimeout"`
+	// Specifies whether to use the X-Forward-For-Proto header field to pass the protocol used by WAF to forward requests to the origin server. Valid values:
+	XffProto pulumi.BoolPtrInput `pulumi:"xffProto"`
 }
 
 func (DomainRedirectArgs) ElementType() reflect.Type {
@@ -643,83 +2127,90 @@ func (o DomainRedirectOutput) ToDomainRedirectPtrOutputWithContext(ctx context.C
 	}).(DomainRedirectPtrOutput)
 }
 
-// The IP address of the origin server corresponding to the domain name or the back-to-origin domain name of the server.
+// The IP addresses or domain names of the origin server. You cannot specify both IP addresses and domain names. If you specify domain names, the domain names can be resolved only to IPv4 addresses.
+//
+// - If you specify IP addresses, specify the value in the **\["ip1","ip2",...]** format. You can enter up to 20 IP addresses.
+// - If you specify domain names, specify the value in the **\["domain"]** format. You can enter up to 20 domain names.
 func (o DomainRedirectOutput) Backends() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DomainRedirect) []string { return v.Backends }).(pulumi.StringArrayOutput)
 }
 
-// Connection timeout. Unit: seconds, value range: 5~120.
+// The secondary IP address or domain name of the origin server.
+func (o DomainRedirectOutput) BackupBackends() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DomainRedirect) []string { return v.BackupBackends }).(pulumi.StringArrayOutput)
+}
+
+// Connection timeout duration. Unit: seconds.
+// Value range: 1~3600. Default value: 5.
 func (o DomainRedirectOutput) ConnectTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DomainRedirect) *int { return v.ConnectTimeout }).(pulumi.IntPtrOutput)
 }
 
-// Whether to enable forced HTTP back-to-origin. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-// - **true**: indicates that forced HTTP back-to-origin is enabled.
-// - **false**: indicates that forced HTTP back-to-origin is not enabled.
+// Specifies whether to enable force redirect from HTTPS to HTTP for back-to-origin requests. This parameter is available only if you specify `HttpsPorts`. Valid values:
 func (o DomainRedirectOutput) FocusHttpBackend() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DomainRedirect) *bool { return v.FocusHttpBackend }).(pulumi.BoolPtrOutput)
 }
 
-// Open long connection, default true.
+// Specifies whether to enable the persistent connection feature. Valid values:
 func (o DomainRedirectOutput) Keepalive() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DomainRedirect) *bool { return v.Keepalive }).(pulumi.BoolPtrOutput)
 }
 
-// Number of long connections,  default: `60`. range :60-1000.
+// The number of reused persistent connections. Valid values: 60 to 1000. Default value: 1000
+//
+// > **NOTE:**   This parameter specifies the number of persistent connections that can be reused after you enable the persistent connection feature.
 func (o DomainRedirectOutput) KeepaliveRequests() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DomainRedirect) *int { return v.KeepaliveRequests }).(pulumi.IntPtrOutput)
 }
 
-// Long connection over time, default: `15`. Range: 1-60.
+// Idle long connection timeout, value range: 1~60, default 15, unit: seconds.
+//
+// > **NOTE:**  How long the multiplexed long connection is idle and then released.
 func (o DomainRedirectOutput) KeepaliveTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DomainRedirect) *int { return v.KeepaliveTimeout }).(pulumi.IntPtrOutput)
 }
 
-// The load balancing algorithm used when returning to the source. Value:
-// - **iphash**: indicates the IPHash algorithm.
-// - **roundRobin**: indicates the polling algorithm.
-// - **leastTime**: indicates the Least Time algorithm.
-// - This value can be selected only if the value of **protection_resource** is **gslb** (indicating that the protected resource type uses shared cluster intelligent load balancing).
+// The load balancing algorithm that you want to use to forward requests to the origin server. Valid values:
 func (o DomainRedirectOutput) Loadbalance() pulumi.StringOutput {
 	return o.ApplyT(func(v DomainRedirect) string { return v.Loadbalance }).(pulumi.StringOutput)
 }
 
-// Read timeout duration. **Unit**: seconds, **Value range**: 5~1800.
+// The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
 func (o DomainRedirectOutput) ReadTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DomainRedirect) *int { return v.ReadTimeout }).(pulumi.IntPtrOutput)
 }
 
-// The traffic tag field and value of the domain name which used to mark the traffic processed by WAF.
-// It formats as `[{" k ":"_key_"," v ":"_value_"}]`. Where the `k` represents the specified custom request header field,
-// and the `v` represents the value set for this field. By specifying the custom request header field and the corresponding value,
-// when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value
-// to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the
-// custom header field already exists in the request, the system will overwrite the value of the custom field in the
-// request with the set traffic tag value. See `requestHeaders` below.
+// The traffic marking field and value of the domain name, which is used to mark the traffic processed by WAF.
+// By specifying custom request header fields and corresponding values, when the access traffic of the domain name passes through WAF, WAF automatically adds the set custom field value to the request header as a traffic mark, which facilitates the statistics of back-end services. See `requestHeaders` below.
 func (o DomainRedirectOutput) RequestHeaders() DomainRedirectRequestHeaderArrayOutput {
 	return o.ApplyT(func(v DomainRedirect) []DomainRedirectRequestHeader { return v.RequestHeaders }).(DomainRedirectRequestHeaderArrayOutput)
 }
 
-// Back to Source Retry. default: true, retry 3 times by default.
+// Specifies whether WAF retries if WAF fails to forward requests to the origin server. Valid values:
 func (o DomainRedirectOutput) Retry() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DomainRedirect) *bool { return v.Retry }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to enable back-to-source SNI. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-// - **true**: indicates that the back-to-source SNI is enabled.
-// - **false** (default) indicates that the back-to-source SNI is not enabled.
+// Specifies whether to enable the Server Name Indication (SNI) feature for back-to-origin requests. This parameter is available only if you specify `HttpsPorts`. Valid values:
 func (o DomainRedirectOutput) SniEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DomainRedirect) *bool { return v.SniEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Sets the value of the custom SNI extension field. If this parameter is not set, the value of the **Host** field in the request header is used as the value of the SNI extension field by default.In general, you do not need to customize SNI unless your business has special configuration requirements. You want WAF to use SNI that is inconsistent with the actual request Host in the back-to-origin request (that is, the custom SNI set here).> This parameter is required only when **sni_enalbed** is set to **true** (indicating that back-to-source SNI is enabled).
+// The custom value of the SNI field. If you do not specify this parameter, the value of the `Host` header field is automatically used. In most cases, you do not need to specify a custom value for the SNI field. However, if you want WAF to use an SNI field whose value is different from the value of the Host header field in back-to-origin requests, you can specify a custom value for the SNI field.
+//
+// > **NOTE:**   This parameter is required only if you set `SniEnabled` to true.
 func (o DomainRedirectOutput) SniHost() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainRedirect) *string { return v.SniHost }).(pulumi.StringPtrOutput)
 }
 
-// Write timeout duration> **Unit**: seconds, **Value range**: 5~1800.
+// The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
 func (o DomainRedirectOutput) WriteTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DomainRedirect) *int { return v.WriteTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Specifies whether to use the X-Forward-For-Proto header field to pass the protocol used by WAF to forward requests to the origin server. Valid values:
+func (o DomainRedirectOutput) XffProto() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DomainRedirect) *bool { return v.XffProto }).(pulumi.BoolPtrOutput)
 }
 
 type DomainRedirectPtrOutput struct{ *pulumi.OutputState }
@@ -746,7 +2237,10 @@ func (o DomainRedirectPtrOutput) Elem() DomainRedirectOutput {
 	}).(DomainRedirectOutput)
 }
 
-// The IP address of the origin server corresponding to the domain name or the back-to-origin domain name of the server.
+// The IP addresses or domain names of the origin server. You cannot specify both IP addresses and domain names. If you specify domain names, the domain names can be resolved only to IPv4 addresses.
+//
+// - If you specify IP addresses, specify the value in the **\["ip1","ip2",...]** format. You can enter up to 20 IP addresses.
+// - If you specify domain names, specify the value in the **\["domain"]** format. You can enter up to 20 domain names.
 func (o DomainRedirectPtrOutput) Backends() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DomainRedirect) []string {
 		if v == nil {
@@ -756,7 +2250,18 @@ func (o DomainRedirectPtrOutput) Backends() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Connection timeout. Unit: seconds, value range: 5~120.
+// The secondary IP address or domain name of the origin server.
+func (o DomainRedirectPtrOutput) BackupBackends() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DomainRedirect) []string {
+		if v == nil {
+			return nil
+		}
+		return v.BackupBackends
+	}).(pulumi.StringArrayOutput)
+}
+
+// Connection timeout duration. Unit: seconds.
+// Value range: 1~3600. Default value: 5.
 func (o DomainRedirectPtrOutput) ConnectTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DomainRedirect) *int {
 		if v == nil {
@@ -766,9 +2271,7 @@ func (o DomainRedirectPtrOutput) ConnectTimeout() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Whether to enable forced HTTP back-to-origin. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-// - **true**: indicates that forced HTTP back-to-origin is enabled.
-// - **false**: indicates that forced HTTP back-to-origin is not enabled.
+// Specifies whether to enable force redirect from HTTPS to HTTP for back-to-origin requests. This parameter is available only if you specify `HttpsPorts`. Valid values:
 func (o DomainRedirectPtrOutput) FocusHttpBackend() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DomainRedirect) *bool {
 		if v == nil {
@@ -778,7 +2281,7 @@ func (o DomainRedirectPtrOutput) FocusHttpBackend() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Open long connection, default true.
+// Specifies whether to enable the persistent connection feature. Valid values:
 func (o DomainRedirectPtrOutput) Keepalive() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DomainRedirect) *bool {
 		if v == nil {
@@ -788,7 +2291,9 @@ func (o DomainRedirectPtrOutput) Keepalive() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Number of long connections,  default: `60`. range :60-1000.
+// The number of reused persistent connections. Valid values: 60 to 1000. Default value: 1000
+//
+// > **NOTE:**   This parameter specifies the number of persistent connections that can be reused after you enable the persistent connection feature.
 func (o DomainRedirectPtrOutput) KeepaliveRequests() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DomainRedirect) *int {
 		if v == nil {
@@ -798,7 +2303,9 @@ func (o DomainRedirectPtrOutput) KeepaliveRequests() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Long connection over time, default: `15`. Range: 1-60.
+// Idle long connection timeout, value range: 1~60, default 15, unit: seconds.
+//
+// > **NOTE:**  How long the multiplexed long connection is idle and then released.
 func (o DomainRedirectPtrOutput) KeepaliveTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DomainRedirect) *int {
 		if v == nil {
@@ -808,11 +2315,7 @@ func (o DomainRedirectPtrOutput) KeepaliveTimeout() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The load balancing algorithm used when returning to the source. Value:
-// - **iphash**: indicates the IPHash algorithm.
-// - **roundRobin**: indicates the polling algorithm.
-// - **leastTime**: indicates the Least Time algorithm.
-// - This value can be selected only if the value of **protection_resource** is **gslb** (indicating that the protected resource type uses shared cluster intelligent load balancing).
+// The load balancing algorithm that you want to use to forward requests to the origin server. Valid values:
 func (o DomainRedirectPtrOutput) Loadbalance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainRedirect) *string {
 		if v == nil {
@@ -822,7 +2325,7 @@ func (o DomainRedirectPtrOutput) Loadbalance() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Read timeout duration. **Unit**: seconds, **Value range**: 5~1800.
+// The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
 func (o DomainRedirectPtrOutput) ReadTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DomainRedirect) *int {
 		if v == nil {
@@ -832,13 +2335,8 @@ func (o DomainRedirectPtrOutput) ReadTimeout() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The traffic tag field and value of the domain name which used to mark the traffic processed by WAF.
-// It formats as `[{" k ":"_key_"," v ":"_value_"}]`. Where the `k` represents the specified custom request header field,
-// and the `v` represents the value set for this field. By specifying the custom request header field and the corresponding value,
-// when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value
-// to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the
-// custom header field already exists in the request, the system will overwrite the value of the custom field in the
-// request with the set traffic tag value. See `requestHeaders` below.
+// The traffic marking field and value of the domain name, which is used to mark the traffic processed by WAF.
+// By specifying custom request header fields and corresponding values, when the access traffic of the domain name passes through WAF, WAF automatically adds the set custom field value to the request header as a traffic mark, which facilitates the statistics of back-end services. See `requestHeaders` below.
 func (o DomainRedirectPtrOutput) RequestHeaders() DomainRedirectRequestHeaderArrayOutput {
 	return o.ApplyT(func(v *DomainRedirect) []DomainRedirectRequestHeader {
 		if v == nil {
@@ -848,7 +2346,7 @@ func (o DomainRedirectPtrOutput) RequestHeaders() DomainRedirectRequestHeaderArr
 	}).(DomainRedirectRequestHeaderArrayOutput)
 }
 
-// Back to Source Retry. default: true, retry 3 times by default.
+// Specifies whether WAF retries if WAF fails to forward requests to the origin server. Valid values:
 func (o DomainRedirectPtrOutput) Retry() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DomainRedirect) *bool {
 		if v == nil {
@@ -858,9 +2356,7 @@ func (o DomainRedirectPtrOutput) Retry() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether to enable back-to-source SNI. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-// - **true**: indicates that the back-to-source SNI is enabled.
-// - **false** (default) indicates that the back-to-source SNI is not enabled.
+// Specifies whether to enable the Server Name Indication (SNI) feature for back-to-origin requests. This parameter is available only if you specify `HttpsPorts`. Valid values:
 func (o DomainRedirectPtrOutput) SniEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DomainRedirect) *bool {
 		if v == nil {
@@ -870,7 +2366,9 @@ func (o DomainRedirectPtrOutput) SniEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Sets the value of the custom SNI extension field. If this parameter is not set, the value of the **Host** field in the request header is used as the value of the SNI extension field by default.In general, you do not need to customize SNI unless your business has special configuration requirements. You want WAF to use SNI that is inconsistent with the actual request Host in the back-to-origin request (that is, the custom SNI set here).> This parameter is required only when **sni_enalbed** is set to **true** (indicating that back-to-source SNI is enabled).
+// The custom value of the SNI field. If you do not specify this parameter, the value of the `Host` header field is automatically used. In most cases, you do not need to specify a custom value for the SNI field. However, if you want WAF to use an SNI field whose value is different from the value of the Host header field in back-to-origin requests, you can specify a custom value for the SNI field.
+//
+// > **NOTE:**   This parameter is required only if you set `SniEnabled` to true.
 func (o DomainRedirectPtrOutput) SniHost() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainRedirect) *string {
 		if v == nil {
@@ -880,7 +2378,7 @@ func (o DomainRedirectPtrOutput) SniHost() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Write timeout duration> **Unit**: seconds, **Value range**: 5~1800.
+// The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
 func (o DomainRedirectPtrOutput) WriteTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DomainRedirect) *int {
 		if v == nil {
@@ -890,10 +2388,20 @@ func (o DomainRedirectPtrOutput) WriteTimeout() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Specifies whether to use the X-Forward-For-Proto header field to pass the protocol used by WAF to forward requests to the origin server. Valid values:
+func (o DomainRedirectPtrOutput) XffProto() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DomainRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.XffProto
+	}).(pulumi.BoolPtrOutput)
+}
+
 type DomainRedirectRequestHeader struct {
-	// The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+	// Specified custom request header fields
 	Key *string `pulumi:"key"`
-	// The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+	// Customize the value of the request header field.
 	Value *string `pulumi:"value"`
 }
 
@@ -909,9 +2417,9 @@ type DomainRedirectRequestHeaderInput interface {
 }
 
 type DomainRedirectRequestHeaderArgs struct {
-	// The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+	// Specified custom request header fields
 	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+	// Customize the value of the request header field.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -966,12 +2474,12 @@ func (o DomainRedirectRequestHeaderOutput) ToDomainRedirectRequestHeaderOutputWi
 	return o
 }
 
-// The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+// Specified custom request header fields
 func (o DomainRedirectRequestHeaderOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainRedirectRequestHeader) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+// Customize the value of the request header field.
 func (o DomainRedirectRequestHeaderOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainRedirectRequestHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -1797,6 +3305,16 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigInput)(nil)).Elem(), DefenseRuleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigPtrInput)(nil)).Elem(), DefenseRuleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigAccountIdentifierInput)(nil)).Elem(), DefenseRuleConfigAccountIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigAccountIdentifierArrayInput)(nil)).Elem(), DefenseRuleConfigAccountIdentifierArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigConditionInput)(nil)).Elem(), DefenseRuleConfigConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigConditionArrayInput)(nil)).Elem(), DefenseRuleConfigConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigRateLimitInput)(nil)).Elem(), DefenseRuleConfigRateLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigRateLimitPtrInput)(nil)).Elem(), DefenseRuleConfigRateLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigRateLimitStatusInput)(nil)).Elem(), DefenseRuleConfigRateLimitStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigRateLimitStatusPtrInput)(nil)).Elem(), DefenseRuleConfigRateLimitStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainListenInput)(nil)).Elem(), DomainListenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainListenPtrInput)(nil)).Elem(), DomainListenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainRedirectInput)(nil)).Elem(), DomainRedirectArgs{})
@@ -1813,6 +3331,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainRedirectRequestHeaderArrayInput)(nil)).Elem(), GetDomainsDomainRedirectRequestHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
+	pulumi.RegisterOutputType(DefenseRuleConfigOutput{})
+	pulumi.RegisterOutputType(DefenseRuleConfigPtrOutput{})
+	pulumi.RegisterOutputType(DefenseRuleConfigAccountIdentifierOutput{})
+	pulumi.RegisterOutputType(DefenseRuleConfigAccountIdentifierArrayOutput{})
+	pulumi.RegisterOutputType(DefenseRuleConfigConditionOutput{})
+	pulumi.RegisterOutputType(DefenseRuleConfigConditionArrayOutput{})
+	pulumi.RegisterOutputType(DefenseRuleConfigRateLimitOutput{})
+	pulumi.RegisterOutputType(DefenseRuleConfigRateLimitPtrOutput{})
+	pulumi.RegisterOutputType(DefenseRuleConfigRateLimitStatusOutput{})
+	pulumi.RegisterOutputType(DefenseRuleConfigRateLimitStatusPtrOutput{})
 	pulumi.RegisterOutputType(DomainListenOutput{})
 	pulumi.RegisterOutputType(DomainListenPtrOutput{})
 	pulumi.RegisterOutputType(DomainRedirectOutput{})

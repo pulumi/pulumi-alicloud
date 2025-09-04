@@ -56,33 +56,33 @@ namespace Pulumi.AliCloud.Log
     ///         DashboardName = "terraform-example",
     ///         DisplayName = "terraform-example",
     ///         Attribute = @"  {
-    ///     ""type"":""grid""
+    ///     \""type\"":\""grid\""
     ///   }
     /// ",
     ///         CharList = @"  [
     ///     {
-    ///       ""action"": {},
-    ///       ""title"":""new_title"",
-    ///       ""type"":""map"",
-    ///       ""search"":{
-    ///         ""logstore"":""example-store"",
-    ///         ""topic"":""new_topic"",
-    ///         ""query"":""* | SELECT COUNT(name) as ct_name, COUNT(product) as ct_product, name,product GROUP BY name,product"",
-    ///         ""start"":""-86400s"",
-    ///         ""end"":""now""
+    ///       \""action\"": {},
+    ///       \""title\"":\""new_title\"",
+    ///       \""type\"":\""map\"",
+    ///       \""search\"":{
+    ///         \""logstore\"":\""example-store\"",
+    ///         \""topic\"":\""new_topic\"",
+    ///         \""query\"":\""* | SELECT COUNT(name) as ct_name, COUNT(product) as ct_product, name,product GROUP BY name,product\"",
+    ///         \""start\"":\""-86400s\"",
+    ///         \""end\"":\""now\""
     ///       },
-    ///       ""display"":{
-    ///         ""xAxis"":[
-    ///           ""ct_name""
+    ///       \""display\"":{
+    ///         \""xAxis\"":[
+    ///           \""ct_name\""
     ///         ],
-    ///         ""yAxis"":[
-    ///           ""ct_product""
+    ///         \""yAxis\"":[
+    ///           \""ct_product\""
     ///         ],
-    ///         ""xPos"":0,
-    ///         ""yPos"":0,
-    ///         ""width"":10,
-    ///         ""height"":12,
-    ///         ""displayName"":""terraform-example""
+    ///         \""xPos\"":0,
+    ///         \""yPos\"":0,
+    ///         \""width\"":10,
+    ///         \""height\"":12,
+    ///         \""displayName\"":\""terraform-example\""
     ///       }
     ///     }
     ///   ]

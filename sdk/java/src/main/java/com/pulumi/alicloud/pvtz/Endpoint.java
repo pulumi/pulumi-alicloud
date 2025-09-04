@@ -22,6 +22,104 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.143.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.pvtz.PvtzFunctions;
+ * import com.pulumi.alicloud.pvtz.inputs.GetResolverZonesArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.CidrsubnetArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.pvtz.Endpoint;
+ * import com.pulumi.alicloud.pvtz.EndpointArgs;
+ * import com.pulumi.alicloud.pvtz.inputs.EndpointIpConfigArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("example_name");
+ *         final var default = PvtzFunctions.getResolverZones(GetResolverZonesArgs.builder()
+ *             .status("NORMAL")
+ *             .build());
+ * 
+ *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("172.16.0.0/12")
+ *             .build());
+ * 
+ *         for (var i = 0; i < 2; i++) {
+ *             new Switch("defaultSwitch-" + i, SwitchArgs.builder()
+ *                 .vpcId(defaultNetwork.id())
+ *                 .cidrBlock(defaultNetwork.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+ *                     .input(_cidrBlock)
+ *                     .newbits(8)
+ *                     .netnum(range.value())
+ *                     .build())).applyValue(_invoke -> _invoke.result()))
+ *                 .zoneId(default_.zones()[range.value()].zoneId())
+ *                 .build());
+ * 
+ *         
+ * }
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+ *             .vpcId(defaultNetwork.id())
+ *             .name(name)
+ *             .build());
+ * 
+ *         var defaultEndpoint = new Endpoint("defaultEndpoint", EndpointArgs.builder()
+ *             .endpointName(name)
+ *             .securityGroupId(defaultSecurityGroup.id())
+ *             .vpcId(defaultNetwork.id())
+ *             .vpcRegionId(defaultGetRegions.regions()[0].id())
+ *             .ipConfigs(            
+ *                 EndpointIpConfigArgs.builder()
+ *                     .zoneId(defaultSwitch[0].zoneId())
+ *                     .cidrBlock(defaultSwitch[0].cidrBlock())
+ *                     .vswitchId(defaultSwitch[0].id())
+ *                     .build(),
+ *                 EndpointIpConfigArgs.builder()
+ *                     .zoneId(defaultSwitch[1].zoneId())
+ *                     .cidrBlock(defaultSwitch[1].cidrBlock())
+ *                     .vswitchId(defaultSwitch[1].id())
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Private Zone Endpoint can be imported using the id, e.g.

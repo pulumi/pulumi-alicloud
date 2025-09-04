@@ -11,6 +11,97 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.234.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const zoneId1 = config.get("zoneId1") || "cn-wulanchabu-b";
+ * const _default = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     cidrBlock: "10.0.0.0/8",
+ *     vpcName: name,
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: zoneId1,
+ *     cidrBlock: "10.0.0.0/24",
+ *     vswitchName: std.format({
+ *         input: "%s1",
+ *         args: [name],
+ *     }).then(invoke => invoke.result),
+ * });
+ * const defaultLoadBalancer = new alicloud.gwlb.LoadBalancer("default", {
+ *     vpcId: defaultNetwork.id,
+ *     loadBalancerName: std.format({
+ *         input: "%s3",
+ *         args: [name],
+ *     }).then(invoke => invoke.result),
+ *     zoneMappings: [{
+ *         vswitchId: defaultSwitch.id,
+ *         zoneId: zoneId1,
+ *     }],
+ *     addressIpVersion: "Ipv4",
+ * });
+ * const defaultServerGroup = new alicloud.gwlb.ServerGroup("default", {
+ *     protocol: "GENEVE",
+ *     serverGroupName: "tfaccgwlb62413",
+ *     serverGroupType: "Ip",
+ *     servers: [
+ *         {
+ *             serverId: "10.0.0.1",
+ *             serverIp: "10.0.0.1",
+ *             serverType: "Ip",
+ *         },
+ *         {
+ *             serverId: "10.0.0.2",
+ *             serverIp: "10.0.0.2",
+ *             serverType: "Ip",
+ *         },
+ *         {
+ *             serverId: "10.0.0.3",
+ *             serverIp: "10.0.0.3",
+ *             serverType: "Ip",
+ *         },
+ *     ],
+ *     connectionDrainConfig: {
+ *         connectionDrainEnabled: true,
+ *         connectionDrainTimeout: 1,
+ *     },
+ *     resourceGroupId: _default.then(_default => _default.ids?.[0]),
+ *     dryRun: false,
+ *     healthCheckConfig: {
+ *         healthCheckProtocol: "HTTP",
+ *         healthCheckHttpCodes: [
+ *             "http_2xx",
+ *             "http_3xx",
+ *             "http_4xx",
+ *         ],
+ *         healthCheckInterval: 10,
+ *         healthCheckPath: "/health-check",
+ *         unhealthyThreshold: 2,
+ *         healthCheckConnectPort: 80,
+ *         healthCheckConnectTimeout: 5,
+ *         healthCheckDomain: "www.domain.com",
+ *         healthCheckEnabled: true,
+ *         healthyThreshold: 2,
+ *     },
+ *     vpcId: defaultNetwork.id,
+ *     scheduler: "5TCH",
+ * });
+ * const defaultListener = new alicloud.gwlb.Listener("default", {
+ *     listenerDescription: "example-tf-lsn",
+ *     serverGroupId: defaultServerGroup.id,
+ *     loadBalancerId: defaultLoadBalancer.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * GWLB Listener can be imported using the id, e.g.

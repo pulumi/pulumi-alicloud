@@ -110,7 +110,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Payment type,valid values:
+     * Payment type, valid values:
      * - `Subscription`: Prepaid.
      * - `PayAsYouGo`: Postpaid.
      * 
@@ -119,7 +119,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return Payment type,valid values:
+     * @return Payment type, valid values:
      * - `Subscription`: Prepaid.
      * - `PayAsYouGo`: Postpaid.
      * 
@@ -189,6 +189,25 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Automatic renewal period unit, valid value:
+     * - `M`: Month.
+     * - `Y`: Year.
+     * 
+     */
+    @Import(name="renewalPeriodUnit")
+    private @Nullable Output<String> renewalPeriodUnit;
+
+    /**
+     * @return Automatic renewal period unit, valid value:
+     * - `M`: Month.
+     * - `Y`: Year.
+     * 
+     */
+    public Optional<Output<String>> renewalPeriodUnit() {
+        return Optional.ofNullable(this.renewalPeriodUnit);
+    }
+
+    /**
      * Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
@@ -219,14 +238,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance VPC id
+     * The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
      * 
      */
     @Import(name="vpcId", required=true)
     private Output<String> vpcId;
 
     /**
-     * @return Instance VPC id
+     * @return The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
      * 
      */
     public Output<String> vpcId() {
@@ -292,6 +311,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.productVersion = $.productVersion;
         this.renewPeriod = $.renewPeriod;
         this.renewStatus = $.renewStatus;
+        this.renewalPeriodUnit = $.renewalPeriodUnit;
         this.secretNum = $.secretNum;
         this.spec = $.spec;
         this.vpcId = $.vpcId;
@@ -455,7 +475,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType Payment type,valid values:
+         * @param paymentType Payment type, valid values:
          * - `Subscription`: Prepaid.
          * - `PayAsYouGo`: Postpaid.
          * 
@@ -468,7 +488,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType Payment type,valid values:
+         * @param paymentType Payment type, valid values:
          * - `Subscription`: Prepaid.
          * - `PayAsYouGo`: Postpaid.
          * 
@@ -564,6 +584,31 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param renewalPeriodUnit Automatic renewal period unit, valid value:
+         * - `M`: Month.
+         * - `Y`: Year.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder renewalPeriodUnit(@Nullable Output<String> renewalPeriodUnit) {
+            $.renewalPeriodUnit = renewalPeriodUnit;
+            return this;
+        }
+
+        /**
+         * @param renewalPeriodUnit Automatic renewal period unit, valid value:
+         * - `M`: Month.
+         * - `Y`: Year.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder renewalPeriodUnit(String renewalPeriodUnit) {
+            return renewalPeriodUnit(Output.of(renewalPeriodUnit));
+        }
+
+        /**
          * @param secretNum Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
          * 
          * @return builder
@@ -606,7 +651,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId Instance VPC id
+         * @param vpcId The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
          * 
          * @return builder
          * 
@@ -617,7 +662,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId Instance VPC id
+         * @param vpcId The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
          * 
          * @return builder
          * 

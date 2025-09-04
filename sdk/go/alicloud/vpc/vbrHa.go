@@ -18,6 +18,121 @@ import (
 //
 // > **NOTE:** Available since v1.151.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			example, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
+//				NameRegex: pulumi.StringRef("^preserved-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vlanId, err := random.NewInteger(ctx, "vlan_id", &random.IntegerArgs{
+//				Max: 2999,
+//				Min: 1,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: fmt.Sprintf("%v%v", name, "-%d"),
+//				Args: []float64{
+//					val0 + 1,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var exampleVirtualBorderRouter []*expressconnect.VirtualBorderRouter
+//			for index := 0; index < 2; index++ {
+//				key0 := index
+//				val0 := index
+//				__res, err := expressconnect.NewVirtualBorderRouter(ctx, fmt.Sprintf("example-%v", key0), &expressconnect.VirtualBorderRouterArgs{
+//					LocalGatewayIp:          pulumi.String("10.0.0.1"),
+//					PeerGatewayIp:           pulumi.String("10.0.0.2"),
+//					PeeringSubnetMask:       pulumi.String("255.255.255.252"),
+//					PhysicalConnectionId:    example.Connections[val0].Id,
+//					VirtualBorderRouterName: pulumi.String(invokeFormat.Result),
+//					VlanId:                  int(vlanId.Id + val0),
+//					MinRxInterval:           pulumi.Int(1000),
+//					MinTxInterval:           pulumi.Int(1000),
+//					DetectMultiplier:        pulumi.Int(10),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				exampleVirtualBorderRouter = append(exampleVirtualBorderRouter, __res)
+//			}
+//			exampleInstance, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String(name),
+//				Description:     pulumi.String(name),
+//				ProtectionLevel: pulumi.String("REDUCED"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			var exampleInstanceAttachment []*cen.InstanceAttachment
+//			for index := 0; index < 2; index++ {
+//				key0 := index
+//				val0 := index
+//				__res, err := cen.NewInstanceAttachment(ctx, fmt.Sprintf("example-%v", key0), &cen.InstanceAttachmentArgs{
+//					InstanceId:            exampleInstance.ID(),
+//					ChildInstanceId:       exampleVirtualBorderRouter[val0].ID(),
+//					ChildInstanceType:     pulumi.String("VBR"),
+//					ChildInstanceRegionId: pulumi.String(_default.Regions[0].Id),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				exampleInstanceAttachment = append(exampleInstanceAttachment, __res)
+//			}
+//			_, err = vpc.NewVbrHa(ctx, "example", &vpc.VbrHaArgs{
+//				VbrId:       exampleInstanceAttachment[0].ChildInstanceId,
+//				PeerVbrId:   exampleInstanceAttachment[1].ChildInstanceId,
+//				VbrHaName:   pulumi.String(name),
+//				Description: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // VPC Vbr Ha can be imported using the id, e.g.

@@ -13,6 +13,60 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.117.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const _default = alicloud.resourcemanager.getResourceGroups({
+ *     status: "OK",
+ * });
+ * const example = new alicloud.vpc.Network("example", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const exampleUuid = new random.index.Uuid("example", {});
+ * const exampleProject = new alicloud.log.Project("example", {
+ *     projectName: std.replace({
+ *         text: exampleUuid.result,
+ *         search: "-",
+ *         replace: "",
+ *     }).then(invoke => std.substr({
+ *         input: `tf-example-${invoke.result}`,
+ *         offset: 0,
+ *         length: 16,
+ *     })).then(invoke => invoke.result),
+ *     description: name,
+ * });
+ * const exampleStore = new alicloud.log.Store("example", {
+ *     projectName: exampleProject.projectName,
+ *     logstoreName: name,
+ *     shardCount: 3,
+ *     autoSplit: true,
+ *     maxSplitShardCount: 60,
+ *     appendMeta: true,
+ * });
+ * const exampleFlowLog = new alicloud.vpc.FlowLog("example", {
+ *     flowLogName: name,
+ *     logStoreName: exampleStore.logstoreName,
+ *     description: name,
+ *     trafficPaths: ["all"],
+ *     projectName: exampleProject.projectName,
+ *     resourceType: "VPC",
+ *     resourceGroupId: _default.then(_default => _default.ids?.[0]),
+ *     resourceId: example.id,
+ *     aggregationInterval: "1",
+ *     trafficType: "All",
+ * });
+ * ```
+ *
  * ## Import
  *
  * VPC Flow Log can be imported using the id, e.g.

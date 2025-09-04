@@ -7,6 +7,36 @@ import * as utilities from "../utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const example = new alicloud.mns.Topic("example", {name: "test-topic"});
+ * // Example for create a MNS delivery channel
+ * const exampleDeliveryChannel = new alicloud.cfg.DeliveryChannel("example", {
+ *     description: "channel_description",
+ *     deliveryChannelName: "channel_name",
+ *     deliveryChannelAssumeRoleArn: "acs:ram::11827252********:role/aliyunserviceroleforconfig",
+ *     deliveryChannelType: "MNS",
+ *     deliveryChannelTargetArn: std.format({
+ *         input: "acs:oss:cn-shanghai:11827252********:/topics/%s",
+ *         args: [example.name],
+ *     }).then(invoke => invoke.result),
+ *     deliveryChannelCondition: `  [
+ *       {
+ *           \\"filterType\\":\\"ResourceType\\",
+ *           \\"values\\":[
+ *               \\"ACS::CEN::CenInstance\\",
+ *               \\"ACS::CEN::Flowlog\\",
+ *           ],
+ *           \\"multiple\\":true
+ *       }
+ *   ]
+ * `,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Alicloud Config Delivery Channel can be imported using the id, e.g.

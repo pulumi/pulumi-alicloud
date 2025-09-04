@@ -50,6 +50,11 @@ export const getZones: typeof import("./getZones").getZones = null as any;
 export const getZonesOutput: typeof import("./getZones").getZonesOutput = null as any;
 utilities.lazyLoad(exports, ["getZones","getZonesOutput"], () => require("./getZones"));
 
+export { GlobalSecurityIpGroupArgs, GlobalSecurityIpGroupState } from "./globalSecurityIpGroup";
+export type GlobalSecurityIpGroup = import("./globalSecurityIpGroup").GlobalSecurityIpGroup;
+export const GlobalSecurityIpGroup: typeof import("./globalSecurityIpGroup").GlobalSecurityIpGroup = null as any;
+utilities.lazyLoad(exports, ["GlobalSecurityIpGroup"], () => require("./globalSecurityIpGroup"));
+
 export { InstanceArgs, InstanceState } from "./instance";
 export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
@@ -99,6 +104,8 @@ const _module = {
                 return new Account(name, <any>undefined, { urn })
             case "alicloud:mongodb/auditPolicy:AuditPolicy":
                 return new AuditPolicy(name, <any>undefined, { urn })
+            case "alicloud:mongodb/globalSecurityIpGroup:GlobalSecurityIpGroup":
+                return new GlobalSecurityIpGroup(name, <any>undefined, { urn })
             case "alicloud:mongodb/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
             case "alicloud:mongodb/privateSrvNetworkAddress:PrivateSrvNetworkAddress":
@@ -122,6 +129,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/account", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/auditPolicy", _module)
+pulumi.runtime.registerResourceModule("alicloud", "mongodb/globalSecurityIpGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/privateSrvNetworkAddress", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/publicNetworkAddress", _module)

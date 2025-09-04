@@ -99,6 +99,10 @@ export class AccessRule extends pulumi.CustomResource {
      */
     declare public readonly priority: pulumi.Output<number | undefined>;
     /**
+     * (Available since v1.256.0) The region ID.
+     */
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
+    /**
      * RWAccess.
      */
     declare public readonly rwAccessType: pulumi.Output<string>;
@@ -129,6 +133,7 @@ export class AccessRule extends pulumi.CustomResource {
             resourceInputs["fileSystemType"] = state?.fileSystemType;
             resourceInputs["ipv6SourceCidrIp"] = state?.ipv6SourceCidrIp;
             resourceInputs["priority"] = state?.priority;
+            resourceInputs["regionId"] = state?.regionId;
             resourceInputs["rwAccessType"] = state?.rwAccessType;
             resourceInputs["sourceCidrIp"] = state?.sourceCidrIp;
             resourceInputs["userAccessType"] = state?.userAccessType;
@@ -145,6 +150,7 @@ export class AccessRule extends pulumi.CustomResource {
             resourceInputs["sourceCidrIp"] = args?.sourceCidrIp;
             resourceInputs["userAccessType"] = args?.userAccessType;
             resourceInputs["accessRuleId"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccessRule.__pulumiType, name, resourceInputs, opts);
@@ -175,6 +181,10 @@ export interface AccessRuleState {
      * Priority.
      */
     priority?: pulumi.Input<number>;
+    /**
+     * (Available since v1.256.0) The region ID.
+     */
+    regionId?: pulumi.Input<string>;
     /**
      * RWAccess.
      */

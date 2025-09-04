@@ -19,6 +19,82 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.0.0+.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ram.Group;
+ * import com.pulumi.alicloud.ram.GroupArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.alicloud.ram.User;
+ * import com.pulumi.alicloud.ram.UserArgs;
+ * import com.pulumi.alicloud.ram.GroupMembership;
+ * import com.pulumi.alicloud.ram.GroupMembershipArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tfexample");
+ *         var group = new Group("group", GroupArgs.builder()
+ *             .name(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%sgroup")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .comments("this is a group comments.")
+ *             .build());
+ * 
+ *         var user = new User("user", UserArgs.builder()
+ *             .name(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%suser")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .displayName("user_display_name")
+ *             .mobile("86-18688888888")
+ *             .email("hello.uuu}{@literal @}{@code aaa.com")
+ *             .comments("yoyoyo")
+ *             .build());
+ * 
+ *         var user1 = new User("user1", UserArgs.builder()
+ *             .name(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%suser1")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .displayName("user_display_name1")
+ *             .mobile("86-18688888889")
+ *             .email("hello.uuu}{@literal @}{@code aaa.com")
+ *             .comments("yoyoyo")
+ *             .build());
+ * 
+ *         var membership = new GroupMembership("membership", GroupMembershipArgs.builder()
+ *             .groupName(group.name())
+ *             .userNames(            
+ *                 user.name(),
+ *                 user1.name())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * RAM Group membership can be imported using the id, e.g.

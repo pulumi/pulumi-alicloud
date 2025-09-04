@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Ecs
     ///         Key = "fc/hello.zip",
     ///         Content = @"    # -*- coding: utf-8 -*-
     ///     def handler(event, context):
-    ///     print ""hello world""
+    ///     print \""hello world\""
     ///     return 'hello world'
     /// ",
     ///     });

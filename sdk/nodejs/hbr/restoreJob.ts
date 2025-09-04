@@ -55,7 +55,7 @@ import * as utilities from "../utilities";
  *     targetFileSystemId: defaultGetNasBackupPlans.then(defaultGetNasBackupPlans => defaultGetNasBackupPlans.plans?.[0]?.fileSystemId),
  *     targetCreateTime: defaultGetNasBackupPlans.then(defaultGetNasBackupPlans => defaultGetNasBackupPlans.plans?.[0]?.createTime),
  *     targetPath: "/",
- *     options: "    {\"includes\":[], \"excludes\":[]}\n",
+ *     options: "    {\\\"includes\\\":[], \\\"excludes\\\":[]}\n",
  * });
  * const ossJob = new alicloud.hbr.RestoreJob("ossJob", {
  *     snapshotHash: ossSnapshots.then(ossSnapshots => ossSnapshots.snapshots?.[0]?.snapshotHash),
@@ -65,7 +65,7 @@ import * as utilities from "../utilities";
  *     snapshotId: ossSnapshots.then(ossSnapshots => ossSnapshots.snapshots?.[0]?.snapshotId),
  *     targetBucket: defaultGetOssBackupPlans.then(defaultGetOssBackupPlans => defaultGetOssBackupPlans.plans?.[0]?.bucket),
  *     targetPrefix: "",
- *     options: "    {\"includes\":[], \"excludes\":[]}\n",
+ *     options: "    {\\\"includes\\\":[], \\\"excludes\\\":[]}\n",
  * });
  * const ecsJob = new alicloud.hbr.RestoreJob("ecsJob", {
  *     snapshotHash: ecsSnapshots.then(ecsSnapshots => ecsSnapshots.snapshots?.[0]?.snapshotHash),

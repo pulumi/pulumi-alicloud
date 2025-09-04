@@ -40,8 +40,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
  * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
  * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
- * import com.pulumi.random.integer;
- * import com.pulumi.random.integerArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.ram.Role;
  * import com.pulumi.alicloud.ram.RoleArgs;
  * import com.pulumi.alicloud.vpc.Network;
@@ -92,20 +92,20 @@ import javax.annotation.Nullable;
  *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
  *             .name(String.format("%s-%s", name,defaultInteger.result()))
  *             .document("""
- * 		{
- * 			"Statement": [
- * 				{
- * 					"Action": "sts:AssumeRole",
- * 					"Effect": "Allow",
- * 					"Principal": {
- * 						"Service": [
- * 							"ecs.aliyuncs.com"
- * 						]
- * 					}
- * 				}
- * 		  	],
- * 			"Version": "1"
- * 		}
+ * \t\t{
+ * \t\t\t\"Statement\": [
+ * \t\t\t\t{
+ * \t\t\t\t\t\"Action\": \"sts:AssumeRole\",
+ * \t\t\t\t\t\"Effect\": \"Allow\",
+ * \t\t\t\t\t\"Principal\": {
+ * \t\t\t\t\t\t\"Service\": [
+ * \t\t\t\t\t\t\t\"ecs.aliyuncs.com\"
+ * \t\t\t\t\t\t]
+ * \t\t\t\t\t}
+ * \t\t\t\t}
+ * \t\t  \t],
+ * \t\t\t\"Version\": \"1\"
+ * \t\t}
  *             """)
  *             .force(true)
  *             .build());

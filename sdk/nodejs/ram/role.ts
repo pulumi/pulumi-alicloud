@@ -29,19 +29,19 @@ import * as utilities from "../utilities";
  * const defaultRole = new alicloud.ram.Role("default", {
  *     roleName: `terraform-example-${_default.result}`,
  *     assumeRolePolicyDocument: `  {
- *     "Statement": [
+ *     \\"Statement\\": [
  *       {
- *         "Action": "sts:AssumeRole",
- *         "Effect": "Allow",
- *         "Principal": {
- *           "Service": [
- *             "apigateway.aliyuncs.com",
- *             "ecs.aliyuncs.com"
+ *         \\"Action\\": \\"sts:AssumeRole\\",
+ *         \\"Effect\\": \\"Allow\\",
+ *         \\"Principal\\": {
+ *           \\"Service\\": [
+ *             \\"apigateway.aliyuncs.com\\",
+ *             \\"ecs.aliyuncs.com\\"
  *           ]
  *         }
  *       }
  *     ],
- *     "Version": "1"
+ *     \\"Version\\": \\"1\\"
  *   }
  * `,
  *     description: "this is a role test.",

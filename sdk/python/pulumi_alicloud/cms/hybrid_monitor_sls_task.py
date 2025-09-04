@@ -275,6 +275,88 @@ class HybridMonitorSlsTask(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.179.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.get_account()
+        default_get_regions = alicloud.get_regions(current=True)
+        default_uuid = random.index.Uuid("default")
+        default_project = alicloud.log.Project("default", project_name=std.substr(input=f"tf-example-{std.replace(text=default_uuid['result'],
+                search='-',
+                replace='').result}",
+            offset=0,
+            length=16).result)
+        default_store = alicloud.log.Store("default",
+            project_name=default_project.project_name,
+            logstore_name=name,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        default_sls_group = alicloud.cms.SlsGroup("default",
+            sls_group_configs=[{
+                "sls_user_id": default.id,
+                "sls_logstore": default_store.logstore_name,
+                "sls_project": default_project.project_name,
+                "sls_region": default_get_regions.regions[0].id,
+            }],
+            sls_group_description=name,
+            sls_group_name=name)
+        default_namespace = alicloud.cms.Namespace("default",
+            namespace=std.substr(input=f"tf-example-{std.replace(text=default_uuid['result'],
+                    search='-',
+                    replace='').result}",
+                offset=0,
+                length=16).result,
+            specification="cms.s1.large")
+        default_hybrid_monitor_sls_task = alicloud.cms.HybridMonitorSlsTask("default",
+            task_name=name,
+            namespace=default_namespace.id,
+            description=name,
+            collect_interval=60,
+            collect_target_type=default_sls_group.id,
+            sls_process_config={
+                "filter": {
+                    "relation": "and",
+                    "filters": [{
+                        "operator": "=",
+                        "value": "200",
+                        "sls_key_name": "code",
+                    }],
+                },
+                "statistics": [{
+                    "function": "count",
+                    "alias": "level_count",
+                    "sls_key_name": "name",
+                    "parameter_one": "200",
+                    "parameter_two": "299",
+                }],
+                "group_bies": [{
+                    "alias": "code",
+                    "sls_key_name": "ApiResult",
+                }],
+                "expresses": [{
+                    "express": "success_count",
+                    "alias": "SuccRate",
+                }],
+            },
+            attach_labels=[{
+                "name": "app_service",
+                "value": "example_Value",
+            }])
+        ```
+
         ## Import
 
         Cloud Monitor Service Hybrid Monitor Sls Task can be imported using the id, e.g.
@@ -305,6 +387,88 @@ class HybridMonitorSlsTask(pulumi.CustomResource):
         For information about Cloud Monitor Service Hybrid Monitor Sls Task and how to use it, see [What is Hybrid Monitor Sls Task](https://www.alibabacloud.com/help/en/cloudmonitor/latest/createhybridmonitortask).
 
         > **NOTE:** Available since v1.179.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.get_account()
+        default_get_regions = alicloud.get_regions(current=True)
+        default_uuid = random.index.Uuid("default")
+        default_project = alicloud.log.Project("default", project_name=std.substr(input=f"tf-example-{std.replace(text=default_uuid['result'],
+                search='-',
+                replace='').result}",
+            offset=0,
+            length=16).result)
+        default_store = alicloud.log.Store("default",
+            project_name=default_project.project_name,
+            logstore_name=name,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        default_sls_group = alicloud.cms.SlsGroup("default",
+            sls_group_configs=[{
+                "sls_user_id": default.id,
+                "sls_logstore": default_store.logstore_name,
+                "sls_project": default_project.project_name,
+                "sls_region": default_get_regions.regions[0].id,
+            }],
+            sls_group_description=name,
+            sls_group_name=name)
+        default_namespace = alicloud.cms.Namespace("default",
+            namespace=std.substr(input=f"tf-example-{std.replace(text=default_uuid['result'],
+                    search='-',
+                    replace='').result}",
+                offset=0,
+                length=16).result,
+            specification="cms.s1.large")
+        default_hybrid_monitor_sls_task = alicloud.cms.HybridMonitorSlsTask("default",
+            task_name=name,
+            namespace=default_namespace.id,
+            description=name,
+            collect_interval=60,
+            collect_target_type=default_sls_group.id,
+            sls_process_config={
+                "filter": {
+                    "relation": "and",
+                    "filters": [{
+                        "operator": "=",
+                        "value": "200",
+                        "sls_key_name": "code",
+                    }],
+                },
+                "statistics": [{
+                    "function": "count",
+                    "alias": "level_count",
+                    "sls_key_name": "name",
+                    "parameter_one": "200",
+                    "parameter_two": "299",
+                }],
+                "group_bies": [{
+                    "alias": "code",
+                    "sls_key_name": "ApiResult",
+                }],
+                "expresses": [{
+                    "express": "success_count",
+                    "alias": "SuccRate",
+                }],
+            },
+            attach_labels=[{
+                "name": "app_service",
+                "value": "example_Value",
+            }])
+        ```
 
         ## Import
 

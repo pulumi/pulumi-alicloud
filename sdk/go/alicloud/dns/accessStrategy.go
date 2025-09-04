@@ -18,6 +18,145 @@ import (
 //
 // > **NOTE:** Available since v1.152.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			domainName := "alicloud-provider.com"
+//			if param := cfg.Get("domainName"); param != "" {
+//				domainName = param
+//			}
+//			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultAlarmContactGroup, err := cms.NewAlarmContactGroup(ctx, "default", &cms.AlarmContactGroupArgs{
+//				AlarmContactGroupName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultGtmInstance, err := dns.NewGtmInstance(ctx, "default", &dns.GtmInstanceArgs{
+//				InstanceName:         pulumi.String(name),
+//				PaymentType:          pulumi.String("Subscription"),
+//				Period:               pulumi.Int(1),
+//				RenewalStatus:        pulumi.String("ManualRenewal"),
+//				PackageEdition:       pulumi.String("standard"),
+//				HealthCheckTaskCount: pulumi.Int(100),
+//				SmsNotificationCount: pulumi.Int(1000),
+//				PublicCnameMode:      pulumi.String("SYSTEM_ASSIGN"),
+//				Ttl:                  pulumi.Int(60),
+//				CnameType:            pulumi.String("PUBLIC"),
+//				ResourceGroupId:      pulumi.String(_default.Groups[0].Id),
+//				AlertGroups: pulumi.StringArray{
+//					defaultAlarmContactGroup.AlarmContactGroupName,
+//				},
+//				PublicUserDomainName: pulumi.String(domainName),
+//				AlertConfigs: dns.GtmInstanceAlertConfigArray{
+//					&dns.GtmInstanceAlertConfigArgs{
+//						SmsNotice:      pulumi.Bool(true),
+//						NoticeType:     pulumi.String("ADDR_ALERT"),
+//						EmailNotice:    pulumi.Bool(true),
+//						DingtalkNotice: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: fmt.Sprintf("%v%v", name, "_%d"),
+//				Args: []float64{
+//					val0 + 1,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var defaultAddressPool []*dns.AddressPool
+//			for index := 0; index < 2; index++ {
+//				key0 := index
+//				_ := index
+//				__res, err := dns.NewAddressPool(ctx, fmt.Sprintf("default-%v", key0), &dns.AddressPoolArgs{
+//					AddressPoolName: pulumi.String(invokeFormat.Result),
+//					InstanceId:      defaultGtmInstance.ID(),
+//					LbaStrategy:     pulumi.String("RATIO"),
+//					Type:            pulumi.String("IPV4"),
+//					Addresses: dns.AddressPoolAddressArray{
+//						&dns.AddressPoolAddressArgs{
+//							AttributeInfo: pulumi.String("{\"lineCodeRectifyType\":\"RECTIFIED\",\"lineCodes\":[\"os_namerica_us\"]}"),
+//							Remark:        pulumi.String("address_remark"),
+//							Address:       pulumi.String("1.1.1.1"),
+//							Mode:          pulumi.String("SMART"),
+//							LbaWeight:     pulumi.Int(1),
+//						},
+//					},
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				defaultAddressPool = append(defaultAddressPool, __res)
+//			}
+//			_, err = dns.NewAccessStrategy(ctx, "default", &dns.AccessStrategyArgs{
+//				StrategyName:               pulumi.String(name),
+//				StrategyMode:               pulumi.String("GEO"),
+//				InstanceId:                 defaultGtmInstance.ID(),
+//				DefaultAddrPoolType:        pulumi.String("IPV4"),
+//				DefaultLbaStrategy:         pulumi.String("RATIO"),
+//				DefaultMinAvailableAddrNum: pulumi.Int(1),
+//				DefaultAddrPools: dns.AccessStrategyDefaultAddrPoolArray{
+//					&dns.AccessStrategyDefaultAddrPoolArgs{
+//						LbaWeight:  pulumi.Int(1),
+//						AddrPoolId: defaultAddressPool[0].ID(),
+//					},
+//				},
+//				FailoverAddrPoolType:        pulumi.String("IPV4"),
+//				FailoverLbaStrategy:         pulumi.String("RATIO"),
+//				FailoverMinAvailableAddrNum: pulumi.Int(1),
+//				FailoverAddrPools: dns.AccessStrategyFailoverAddrPoolArray{
+//					&dns.AccessStrategyFailoverAddrPoolArgs{
+//						LbaWeight:  pulumi.Int(1),
+//						AddrPoolId: defaultAddressPool[1].ID(),
+//					},
+//				},
+//				Lines: dns.AccessStrategyLineArray{
+//					&dns.AccessStrategyLineArgs{
+//						LineCode: pulumi.String("default"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // DNS Access Strategy can be imported using the id, e.g.

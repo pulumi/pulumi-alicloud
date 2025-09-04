@@ -33,18 +33,18 @@ namespace Pulumi.AliCloud.ResourceManager
     ///     {
     ///         RoleName = name,
     ///         AssumeRolePolicyDocument = @default.Apply(@default =&gt; @$"     {{
-    ///           ""Statement"": [
+    ///           \""Statement\"": [
     ///                {{
-    ///                     ""Action"": ""sts:AssumeRole"",
-    ///                     ""Effect"": ""Allow"",
-    ///                     ""Principal"": {{
-    ///                         ""RAM"":[
-    ///                                 ""acs:ram::{@default.Apply(getAccountResult =&gt; getAccountResult.Id)}:root""
+    ///                     \""Action\"": \""sts:AssumeRole\"",
+    ///                     \""Effect\"": \""Allow\"",
+    ///                     \""Principal\"": {{
+    ///                         \""RAM\"":[
+    ///                                 \""acs:ram::{@default.Apply(getAccountResult =&gt; getAccountResult.Id)}:root\""
     ///                         ]
     ///                     }}
     ///                 }}
     ///           ],
-    ///           ""Version"": ""1""
+    ///           \""Version\"": \""1\""
     ///      }}
     /// "),
     ///     });

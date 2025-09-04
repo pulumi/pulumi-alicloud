@@ -29,6 +29,208 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// `nginx-ingress-controller` - You can specific `IngressSlbNetworkType` in config. Options: internet|intranet.
         /// 
         /// The `main.tf`:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var k8s = new AliCloud.CS.ManagedKubernetes("k8s", new()
+        ///     {
+        ///         Addons = .Select(entry =&gt; 
+        ///         {
+        ///             return new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
+        ///             {
+        ///                 Name = Std.Lookup.Invoke(new()
+        ///                 {
+        ///                     Map = entry.Value,
+        ///                     Key = "name",
+        ///                     Default = clusterAddons,
+        ///                 }).Apply(invoke =&gt; invoke.Result),
+        ///                 Config = Std.Lookup.Invoke(new()
+        ///                 {
+        ///                     Map = entry.Value,
+        ///                     Key = "config",
+        ///                     Default = clusterAddons,
+        ///                 }).Apply(invoke =&gt; invoke.Result),
+        ///                 Version = Std.Lookup.Invoke(new()
+        ///                 {
+        ///                     Map = entry.Value,
+        ///                     Key = "version",
+        ///                     Default = clusterAddons,
+        ///                 }).Apply(invoke =&gt; invoke.Result),
+        ///                 Disabled = Std.Lookup.Invoke(new()
+        ///                 {
+        ///                     Map = entry.Value,
+        ///                     Key = "disabled",
+        ///                     Default = clusterAddons,
+        ///                 }).Apply(invoke =&gt; invoke.Result),
+        ///             };
+        ///         }).ToList(),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// The `varibales.tf`:
+        /// 
+        /// ```
+        /// # Network-flannel is required, Conflicts With Network-terway
+        /// variable "cluster_addons" {
+        /// description = "Addon components in kubernetes cluster"
+        /// 
+        /// type = list(object({
+        /// name      = string
+        /// config    = string
+        /// }))
+        /// 
+        /// default = [
+        /// {
+        /// "name"     = "flannel",
+        /// "config"   = "",
+        /// }
+        /// ]
+        /// }
+        /// 
+        /// # Network-terway is required, Conflicts With Network-flannel
+        /// variable "cluster_addons" {
+        /// type = list(object({
+        /// name      = string
+        /// config    = string
+        /// }))
+        /// 
+        /// default = [
+        /// {
+        /// "name"     = "terway-eniip",
+        /// "config"   = "",
+        /// }
+        /// ]
+        /// }
+        /// 
+        /// # Storage-csi is required, Conflicts With Storage-flexvolume
+        /// variable "cluster_addons" {
+        /// type = list(object({
+        /// name      = string
+        /// config    = string
+        /// }))
+        /// 
+        /// default = [
+        /// {
+        /// "name"     = "csi-plugin",
+        /// "config"   = "",
+        /// },
+        /// {
+        /// "name"     = "csi-provisioner",
+        /// "config"   = "",
+        /// }
+        /// ]
+        /// }
+        /// 
+        /// # Storage-flexvolume is required, Conflicts With Storage-csi
+        /// variable "cluster_addons" {
+        /// type = list(object({
+        /// name      = string
+        /// config    = string
+        /// }))
+        /// default = [
+        /// {
+        /// "name"     = "flexvolume",
+        /// "config"   = "",
+        /// }
+        /// ]
+        /// }
+        /// 
+        /// # Log, Optional
+        /// variable "cluster_addons" {
+        /// type = list(object({
+        /// name      = string
+        /// config    = string
+        /// }))
+        /// default = [
+        /// {
+        /// "name"     = "logtail-ds",
+        /// "config"   = "{\"IngressDashboardEnabled\":\"true\",\"sls_project_name\":\"your-sls-project-name\"}",
+        /// }
+        /// ]
+        /// }
+        /// 
+        /// # Ingress,Optional
+        /// variable "cluster_addons" {
+        /// type = list(object({
+        /// name      = string
+        /// config    = string
+        /// }))
+        /// 
+        /// default = [
+        /// {
+        /// "name"     = "nginx-ingress-controller",
+        /// "config"   = "{\"IngressSlbNetworkType\":\"internet\"}",
+        /// }
+        /// ]
+        /// }
+        /// 
+        /// # Ingress-Disable, Optional
+        /// variable "cluster_addons" {
+        /// type = list(object({
+        /// name      = string
+        /// config    = string
+        /// disabled  = bool
+        /// }))
+        /// 
+        /// default = [
+        /// {
+        /// "name"     = "nginx-ingress-controller",
+        /// "config"   = "",
+        /// "disabled": true,
+        /// }
+        /// ]
+        /// 
+        /// # Prometheus, Optional.
+        /// variable "cluster_addons" {
+        /// type = list(object({
+        /// name      = string
+        /// config    = string
+        /// }))
+        /// 
+        /// default = [
+        /// {
+        /// "name"     = "arms-prometheus",
+        /// "config"   = "",
+        /// }
+        /// ]
+        /// }
+        /// 
+        /// # Event Center, Optional.
+        /// variable "cluster_addons" {
+        /// type = list(object({
+        /// name      = string
+        /// config    = string
+        /// }))
+        /// default = [
+        /// {
+        /// "name"     = "ack-node-problem-detector",
+        /// "config"   = "{\"sls_project_name\":\"\"}",
+        /// }
+        /// ]
+        /// }
+        /// # ACK default alert, Optional.
+        /// variable "cluster_addons" {
+        /// type = list(object({
+        /// name      = string
+        /// config    = string
+        /// }))
+        /// default = [
+        /// {
+        /// "name"     = "alicloud-monitor-controller",
+        /// "config"   = "{\"group_contact_ids\":\"[159]\"}",
+        /// }
+        /// ]
+        /// }
+        /// ```
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>

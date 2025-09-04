@@ -34,8 +34,8 @@ class AccessGroupArgs:
                - standard (default): Universal NAS
                - extreme: extreme NAS
                The following arguments will be discarded. Please use new fields as soon as possible:
-        :param pulumi.Input[_builtins.str] name: . Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
-        :param pulumi.Input[_builtins.str] type: . Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
+        :param pulumi.Input[_builtins.str] name: Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
+        :param pulumi.Input[_builtins.str] type: Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
         """
         if access_group_name is not None:
             pulumi.set(__self__, "access_group_name", access_group_name)
@@ -112,7 +112,7 @@ class AccessGroupArgs:
     @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.""")
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        . Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
+        Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
         """
         return pulumi.get(self, "name")
 
@@ -125,7 +125,7 @@ class AccessGroupArgs:
     @_utilities.deprecated("""Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.""")
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        . Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
+        Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
         """
         return pulumi.get(self, "type")
 
@@ -143,19 +143,21 @@ class _AccessGroupState:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  file_system_type: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessGroup resources.
         :param pulumi.Input[_builtins.str] access_group_name: The name of the permission group.
         :param pulumi.Input[_builtins.str] access_group_type: Permission group types, including Vpc.
-        :param pulumi.Input[_builtins.str] create_time: Creation time.
+        :param pulumi.Input[_builtins.str] create_time: (Available since v1.218.0) Creation time.
         :param pulumi.Input[_builtins.str] description: Permission group description information.
         :param pulumi.Input[_builtins.str] file_system_type: File system type. Value:
                - standard (default): Universal NAS
                - extreme: extreme NAS
                The following arguments will be discarded. Please use new fields as soon as possible:
-        :param pulumi.Input[_builtins.str] name: . Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
-        :param pulumi.Input[_builtins.str] type: . Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
+        :param pulumi.Input[_builtins.str] name: Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
+        :param pulumi.Input[_builtins.str] region_id: (Available since v1.256.0) The region ID.
+        :param pulumi.Input[_builtins.str] type: Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
         """
         if access_group_name is not None:
             pulumi.set(__self__, "access_group_name", access_group_name)
@@ -172,6 +174,8 @@ class _AccessGroupState:
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if type is not None:
             warnings.warn("""Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.""", DeprecationWarning)
             pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.""")
@@ -206,7 +210,7 @@ class _AccessGroupState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Creation time.
+        (Available since v1.218.0) Creation time.
         """
         return pulumi.get(self, "create_time")
 
@@ -246,7 +250,7 @@ class _AccessGroupState:
     @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.""")
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        . Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
+        Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
         """
         return pulumi.get(self, "name")
 
@@ -255,11 +259,23 @@ class _AccessGroupState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Available since v1.256.0) The region ID.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region_id", value)
+
+    @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.""")
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        . Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
+        Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
         """
         return pulumi.get(self, "type")
 
@@ -325,8 +341,8 @@ class AccessGroup(pulumi.CustomResource):
                - standard (default): Universal NAS
                - extreme: extreme NAS
                The following arguments will be discarded. Please use new fields as soon as possible:
-        :param pulumi.Input[_builtins.str] name: . Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
-        :param pulumi.Input[_builtins.str] type: . Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
+        :param pulumi.Input[_builtins.str] name: Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
+        :param pulumi.Input[_builtins.str] type: Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
         """
         ...
     @overload
@@ -406,6 +422,7 @@ class AccessGroup(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["type"] = type
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["region_id"] = None
         super(AccessGroup, __self__).__init__(
             'alicloud:nas/accessGroup:AccessGroup',
             resource_name,
@@ -422,6 +439,7 @@ class AccessGroup(pulumi.CustomResource):
             description: Optional[pulumi.Input[_builtins.str]] = None,
             file_system_type: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            region_id: Optional[pulumi.Input[_builtins.str]] = None,
             type: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccessGroup':
         """
         Get an existing AccessGroup resource's state with the given name, id, and optional extra
@@ -432,14 +450,15 @@ class AccessGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_group_name: The name of the permission group.
         :param pulumi.Input[_builtins.str] access_group_type: Permission group types, including Vpc.
-        :param pulumi.Input[_builtins.str] create_time: Creation time.
+        :param pulumi.Input[_builtins.str] create_time: (Available since v1.218.0) Creation time.
         :param pulumi.Input[_builtins.str] description: Permission group description information.
         :param pulumi.Input[_builtins.str] file_system_type: File system type. Value:
                - standard (default): Universal NAS
                - extreme: extreme NAS
                The following arguments will be discarded. Please use new fields as soon as possible:
-        :param pulumi.Input[_builtins.str] name: . Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
-        :param pulumi.Input[_builtins.str] type: . Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
+        :param pulumi.Input[_builtins.str] name: Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
+        :param pulumi.Input[_builtins.str] region_id: (Available since v1.256.0) The region ID.
+        :param pulumi.Input[_builtins.str] type: Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -451,6 +470,7 @@ class AccessGroup(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["file_system_type"] = file_system_type
         __props__.__dict__["name"] = name
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["type"] = type
         return AccessGroup(resource_name, opts=opts, __props__=__props__)
 
@@ -474,7 +494,7 @@ class AccessGroup(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
         """
-        Creation time.
+        (Available since v1.218.0) Creation time.
         """
         return pulumi.get(self, "create_time")
 
@@ -502,16 +522,24 @@ class AccessGroup(pulumi.CustomResource):
     @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.""")
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        . Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
+        Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since v1.256.0) The region ID.
+        """
+        return pulumi.get(self, "region_id")
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.""")
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        . Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
+        Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
         """
         return pulumi.get(self, "type")
 

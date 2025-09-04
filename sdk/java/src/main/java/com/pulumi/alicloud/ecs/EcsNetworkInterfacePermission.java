@@ -22,6 +22,102 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.166.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.EcsNetworkInterface;
+ * import com.pulumi.alicloud.ecs.EcsNetworkInterfaceArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.CidrhostArgs;
+ * import com.pulumi.alicloud.ecs.EcsNetworkInterfacePermission;
+ * import com.pulumi.alicloud.ecs.EcsNetworkInterfacePermissionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation("VSwitch")
+ *             .build());
+ * 
+ *         final var defaultGetAccount = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+ * 
+ *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName("terraform-example")
+ *             .cidrBlock("172.17.3.0/24")
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vswitchName("terraform-example")
+ *             .cidrBlock("172.17.3.0/24")
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(default_.zones()[0].id())
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+ *             .name("terraform-example")
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultEcsNetworkInterface = new EcsNetworkInterface("defaultEcsNetworkInterface", EcsNetworkInterfaceArgs.builder()
+ *             .networkInterfaceName("terraform-example")
+ *             .vswitchId(defaultSwitch.id())
+ *             .securityGroupIds(defaultSecurityGroup.id())
+ *             .description("terraform-example")
+ *             .primaryIpAddress(defaultSwitch.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrhost(CidrhostArgs.builder()
+ *                 .input(_cidrBlock)
+ *                 .host(100)
+ *                 .build())).applyValue(_invoke -> _invoke.result()))
+ *             .tags(Map.ofEntries(
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
+ *             ))
+ *             .resourceGroupId(defaultGetResourceGroups.ids()[0])
+ *             .build());
+ * 
+ *         var example = new EcsNetworkInterfacePermission("example", EcsNetworkInterfacePermissionArgs.builder()
+ *             .accountId(defaultGetAccount.id())
+ *             .networkInterfaceId(defaultEcsNetworkInterface.id())
+ *             .permission("InstanceAttach")
+ *             .force(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * ECS Network Interface Permission can be imported using the id, e.g.

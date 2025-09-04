@@ -18,6 +18,55 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// &gt; **NOTE:** Available since v1.234.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultIpam = new AliCloud.Vpc.IpamIpam("defaultIpam", new()
+    ///     {
+    ///         OperatingRegionLists = new[]
+    ///         {
+    ///             "cn-hangzhou",
+    ///         },
+    ///     });
+    /// 
+    ///     var parentIpamPool = new AliCloud.Vpc.IpamIpamPool("parentIpamPool", new()
+    ///     {
+    ///         IpamScopeId = defaultIpam.PrivateDefaultScopeId,
+    ///         IpamPoolName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s1",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         PoolRegionId = defaultIpam.RegionId,
+    ///     });
+    /// 
+    ///     var @default = new AliCloud.Vpc.IpamIpamPool("default", new()
+    ///     {
+    ///         IpamScopeId = defaultIpam.PrivateDefaultScopeId,
+    ///         PoolRegionId = parentIpamPool.PoolRegionId,
+    ///         IpamPoolName = name,
+    ///         SourceIpamPoolId = parentIpamPool.Id,
+    ///         IpVersion = "IPv4",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Vpc Ipam Ipam Pool can be imported using the id, e.g.

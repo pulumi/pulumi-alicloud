@@ -12,15 +12,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Wafv3 Domain resource.
+// Provides a WAFV3 Domain resource.
 //
-// For information about Wafv3 Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-waf-openapi-2021-10-01-createdomain).
+// For information about WAFV3 Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-waf-openapi-2021-10-01-createdomain).
 //
 // > **NOTE:** Available since v1.200.0.
 //
 // ## Import
 //
-// Wafv3 Domain can be imported using the id, e.g.
+// WAFV3 Domain can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:wafv3/domain:Domain example <instance_id>:<domain>
@@ -28,20 +28,25 @@ import (
 type Domain struct {
 	pulumi.CustomResourceState
 
-	// The access type of the WAF instance. Value: **share** (default): CNAME access.
+	// The mode in which the domain name is added to WAF. Valid values:
+	// share: CNAME record mode. This is the default value.
 	AccessType pulumi.StringPtrOutput `pulumi:"accessType"`
 	// The name of the domain name to query.
 	Domain pulumi.StringOutput `pulumi:"domain"`
-	// WAF instance ID
+	// The domain ID.
+	DomainId pulumi.StringOutput `pulumi:"domainId"`
+	// The ID of the Web Application Firewall (WAF) instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// Configure listening information. See `listen` below.
 	Listen DomainListenOutput `pulumi:"listen"`
 	// Configure forwarding information. See `redirect` below.
 	Redirect DomainRedirectOutput `pulumi:"redirect"`
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	ResourceManagerResourceGroupId pulumi.StringOutput `pulumi:"resourceManagerResourceGroupId"`
-	// The status of the resource.
-	Status pulumi.StringOutput `pulumi:"status"`
+	// The status of the domain name.
+	Status pulumi.IntOutput `pulumi:"status"`
+	// The tags. You can specify up to 20 tags.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewDomain registers a new resource with the given unique name, arguments, and options.
@@ -86,37 +91,47 @@ func GetDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Domain resources.
 type domainState struct {
-	// The access type of the WAF instance. Value: **share** (default): CNAME access.
+	// The mode in which the domain name is added to WAF. Valid values:
+	// share: CNAME record mode. This is the default value.
 	AccessType *string `pulumi:"accessType"`
 	// The name of the domain name to query.
 	Domain *string `pulumi:"domain"`
-	// WAF instance ID
+	// The domain ID.
+	DomainId *string `pulumi:"domainId"`
+	// The ID of the Web Application Firewall (WAF) instance.
 	InstanceId *string `pulumi:"instanceId"`
 	// Configure listening information. See `listen` below.
 	Listen *DomainListen `pulumi:"listen"`
 	// Configure forwarding information. See `redirect` below.
 	Redirect *DomainRedirect `pulumi:"redirect"`
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	ResourceManagerResourceGroupId *string `pulumi:"resourceManagerResourceGroupId"`
-	// The status of the resource.
-	Status *string `pulumi:"status"`
+	// The status of the domain name.
+	Status *int `pulumi:"status"`
+	// The tags. You can specify up to 20 tags.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type DomainState struct {
-	// The access type of the WAF instance. Value: **share** (default): CNAME access.
+	// The mode in which the domain name is added to WAF. Valid values:
+	// share: CNAME record mode. This is the default value.
 	AccessType pulumi.StringPtrInput
 	// The name of the domain name to query.
 	Domain pulumi.StringPtrInput
-	// WAF instance ID
+	// The domain ID.
+	DomainId pulumi.StringPtrInput
+	// The ID of the Web Application Firewall (WAF) instance.
 	InstanceId pulumi.StringPtrInput
 	// Configure listening information. See `listen` below.
 	Listen DomainListenPtrInput
 	// Configure forwarding information. See `redirect` below.
 	Redirect DomainRedirectPtrInput
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	ResourceManagerResourceGroupId pulumi.StringPtrInput
-	// The status of the resource.
-	Status pulumi.StringPtrInput
+	// The status of the domain name.
+	Status pulumi.IntPtrInput
+	// The tags. You can specify up to 20 tags.
+	Tags pulumi.StringMapInput
 }
 
 func (DomainState) ElementType() reflect.Type {
@@ -124,30 +139,40 @@ func (DomainState) ElementType() reflect.Type {
 }
 
 type domainArgs struct {
-	// The access type of the WAF instance. Value: **share** (default): CNAME access.
+	// The mode in which the domain name is added to WAF. Valid values:
+	// share: CNAME record mode. This is the default value.
 	AccessType *string `pulumi:"accessType"`
 	// The name of the domain name to query.
 	Domain string `pulumi:"domain"`
-	// WAF instance ID
+	// The ID of the Web Application Firewall (WAF) instance.
 	InstanceId string `pulumi:"instanceId"`
 	// Configure listening information. See `listen` below.
 	Listen DomainListen `pulumi:"listen"`
 	// Configure forwarding information. See `redirect` below.
 	Redirect DomainRedirect `pulumi:"redirect"`
+	// The ID of the Alibaba Cloud resource group.
+	ResourceManagerResourceGroupId *string `pulumi:"resourceManagerResourceGroupId"`
+	// The tags. You can specify up to 20 tags.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Domain resource.
 type DomainArgs struct {
-	// The access type of the WAF instance. Value: **share** (default): CNAME access.
+	// The mode in which the domain name is added to WAF. Valid values:
+	// share: CNAME record mode. This is the default value.
 	AccessType pulumi.StringPtrInput
 	// The name of the domain name to query.
 	Domain pulumi.StringInput
-	// WAF instance ID
+	// The ID of the Web Application Firewall (WAF) instance.
 	InstanceId pulumi.StringInput
 	// Configure listening information. See `listen` below.
 	Listen DomainListenInput
 	// Configure forwarding information. See `redirect` below.
 	Redirect DomainRedirectInput
+	// The ID of the Alibaba Cloud resource group.
+	ResourceManagerResourceGroupId pulumi.StringPtrInput
+	// The tags. You can specify up to 20 tags.
+	Tags pulumi.StringMapInput
 }
 
 func (DomainArgs) ElementType() reflect.Type {
@@ -237,7 +262,8 @@ func (o DomainOutput) ToDomainOutputWithContext(ctx context.Context) DomainOutpu
 	return o
 }
 
-// The access type of the WAF instance. Value: **share** (default): CNAME access.
+// The mode in which the domain name is added to WAF. Valid values:
+// share: CNAME record mode. This is the default value.
 func (o DomainOutput) AccessType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.AccessType }).(pulumi.StringPtrOutput)
 }
@@ -247,7 +273,12 @@ func (o DomainOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
 }
 
-// WAF instance ID
+// The domain ID.
+func (o DomainOutput) DomainId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.DomainId }).(pulumi.StringOutput)
+}
+
+// The ID of the Web Application Firewall (WAF) instance.
 func (o DomainOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -262,14 +293,19 @@ func (o DomainOutput) Redirect() DomainRedirectOutput {
 	return o.ApplyT(func(v *Domain) DomainRedirectOutput { return v.Redirect }).(DomainRedirectOutput)
 }
 
-// The ID of the resource group.
+// The ID of the Alibaba Cloud resource group.
 func (o DomainOutput) ResourceManagerResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.ResourceManagerResourceGroupId }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
-func (o DomainOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+// The status of the domain name.
+func (o DomainOutput) Status() pulumi.IntOutput {
+	return o.ApplyT(func(v *Domain) pulumi.IntOutput { return v.Status }).(pulumi.IntOutput)
+}
+
+// The tags. You can specify up to 20 tags.
+func (o DomainOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type DomainArrayOutput struct{ *pulumi.OutputState }

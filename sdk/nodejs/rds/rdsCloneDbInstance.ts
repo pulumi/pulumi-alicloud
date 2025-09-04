@@ -179,7 +179,7 @@ export class RdsCloneDbInstance extends pulumi.CustomResource {
     /**
      * The db instance description.
      */
-    declare public readonly dbInstanceDescription: pulumi.Output<string | undefined>;
+    declare public readonly dbInstanceDescription: pulumi.Output<string>;
     /**
      * The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
      *
@@ -193,6 +193,7 @@ export class RdsCloneDbInstance extends pulumi.CustomResource {
      * * **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
      * * **cloud_essd2**: ESSDs of PL2
      * * **cloud_essd3**: ESSDs of PL3
+     * * **general_essd**: general ESSDS Available since v1.258.0
      */
     declare public readonly dbInstanceStorageType: pulumi.Output<string>;
     /**
@@ -669,6 +670,7 @@ export interface RdsCloneDbInstanceState {
      * * **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
      * * **cloud_essd2**: ESSDs of PL2
      * * **cloud_essd3**: ESSDs of PL3
+     * * **general_essd**: general ESSDS Available since v1.258.0
      */
     dbInstanceStorageType?: pulumi.Input<string>;
     /**
@@ -988,6 +990,7 @@ export interface RdsCloneDbInstanceArgs {
      * * **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
      * * **cloud_essd2**: ESSDs of PL2
      * * **cloud_essd3**: ESSDs of PL3
+     * * **general_essd**: general ESSDS Available since v1.258.0
      */
     dbInstanceStorageType: pulumi.Input<string>;
     /**

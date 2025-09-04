@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Threat Detection Image Event Operation resource. Image Event Operation.
+// Provides a Threat Detection Image Event Operation resource.
+//
+// Image Event Operation.
 //
 // For information about Threat Detection Image Event Operation and how to use it, see [What is Image Event Operation](https://www.alibabacloud.com/help/zh/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation).
 //
@@ -43,13 +46,13 @@ import (
 //				EventType:     pulumi.String("maliciousFile"),
 //				OperationCode: pulumi.String("whitelist"),
 //				EventKey:      pulumi.String("alibabacloud_ak"),
-//				Scenarios:     pulumi.String("{\n  \"type\":\"default\",\n  \"value\":\"\"\n}\n"),
+//				Scenarios:     pulumi.String("{\n  \\\"type\\\":\\\"default\\\",\n  \\\"value\\\":\\\"\\\"\n}\n"),
 //				EventName:     pulumi.String("阿里云AK"),
 //				Conditions: pulumi.String(`[
 //	  {
-//	      "condition":"MD5",
-//	      "type":"equals",
-//	      "value":"0083a31cc0083a31ccf7c10367a6e783e"
+//	      \"condition\":\"MD5\",
+//	      \"type\":\"equals\",
+//	      \"value\":\"0083a31cc0083a31ccf7c10367a6e783e\"
 //	  }
 //
 // ]
@@ -75,27 +78,40 @@ import (
 type ImageEventOperation struct {
 	pulumi.CustomResourceState
 
-	// Event Conditions.
-	Conditions pulumi.StringPtrOutput `pulumi:"conditions"`
-	// Image Event Key.
+	// The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
+	Conditions pulumi.StringOutput `pulumi:"conditions"`
+	// The keyword of the alert item.
 	EventKey pulumi.StringPtrOutput `pulumi:"eventKey"`
-	// Image Event Name.
+	// The name of the alert item.
 	EventName pulumi.StringPtrOutput `pulumi:"eventName"`
-	// Image Event Type.
+	// The alert type.
 	EventType pulumi.StringOutput `pulumi:"eventType"`
-	// Event Operation Code.
-	OperationCode pulumi.StringPtrOutput `pulumi:"operationCode"`
-	// Event Scenarios.
-	Scenarios pulumi.StringPtrOutput `pulumi:"scenarios"`
+	// The remarks.
+	Note pulumi.StringPtrOutput `pulumi:"note"`
+	// The operation code.
+	OperationCode pulumi.StringOutput `pulumi:"operationCode"`
+	// The application scope of the rule.
+	Scenarios pulumi.StringOutput `pulumi:"scenarios"`
+	// The source of the whitelist. Valid values:
+	Source pulumi.StringOutput `pulumi:"source"`
 }
 
 // NewImageEventOperation registers a new resource with the given unique name, arguments, and options.
 func NewImageEventOperation(ctx *pulumi.Context,
 	name string, args *ImageEventOperationArgs, opts ...pulumi.ResourceOption) (*ImageEventOperation, error) {
 	if args == nil {
-		args = &ImageEventOperationArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Conditions == nil {
+		return nil, errors.New("invalid value for required argument 'Conditions'")
+	}
+	if args.EventType == nil {
+		return nil, errors.New("invalid value for required argument 'EventType'")
+	}
+	if args.OperationCode == nil {
+		return nil, errors.New("invalid value for required argument 'OperationCode'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ImageEventOperation
 	err := ctx.RegisterResource("alicloud:threatdetection/imageEventOperation:ImageEventOperation", name, args, &resource, opts...)
@@ -119,33 +135,41 @@ func GetImageEventOperation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ImageEventOperation resources.
 type imageEventOperationState struct {
-	// Event Conditions.
+	// The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
 	Conditions *string `pulumi:"conditions"`
-	// Image Event Key.
+	// The keyword of the alert item.
 	EventKey *string `pulumi:"eventKey"`
-	// Image Event Name.
+	// The name of the alert item.
 	EventName *string `pulumi:"eventName"`
-	// Image Event Type.
+	// The alert type.
 	EventType *string `pulumi:"eventType"`
-	// Event Operation Code.
+	// The remarks.
+	Note *string `pulumi:"note"`
+	// The operation code.
 	OperationCode *string `pulumi:"operationCode"`
-	// Event Scenarios.
+	// The application scope of the rule.
 	Scenarios *string `pulumi:"scenarios"`
+	// The source of the whitelist. Valid values:
+	Source *string `pulumi:"source"`
 }
 
 type ImageEventOperationState struct {
-	// Event Conditions.
+	// The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
 	Conditions pulumi.StringPtrInput
-	// Image Event Key.
+	// The keyword of the alert item.
 	EventKey pulumi.StringPtrInput
-	// Image Event Name.
+	// The name of the alert item.
 	EventName pulumi.StringPtrInput
-	// Image Event Type.
+	// The alert type.
 	EventType pulumi.StringPtrInput
-	// Event Operation Code.
+	// The remarks.
+	Note pulumi.StringPtrInput
+	// The operation code.
 	OperationCode pulumi.StringPtrInput
-	// Event Scenarios.
+	// The application scope of the rule.
 	Scenarios pulumi.StringPtrInput
+	// The source of the whitelist. Valid values:
+	Source pulumi.StringPtrInput
 }
 
 func (ImageEventOperationState) ElementType() reflect.Type {
@@ -153,34 +177,42 @@ func (ImageEventOperationState) ElementType() reflect.Type {
 }
 
 type imageEventOperationArgs struct {
-	// Event Conditions.
-	Conditions *string `pulumi:"conditions"`
-	// Image Event Key.
+	// The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
+	Conditions string `pulumi:"conditions"`
+	// The keyword of the alert item.
 	EventKey *string `pulumi:"eventKey"`
-	// Image Event Name.
+	// The name of the alert item.
 	EventName *string `pulumi:"eventName"`
-	// Image Event Type.
-	EventType *string `pulumi:"eventType"`
-	// Event Operation Code.
-	OperationCode *string `pulumi:"operationCode"`
-	// Event Scenarios.
+	// The alert type.
+	EventType string `pulumi:"eventType"`
+	// The remarks.
+	Note *string `pulumi:"note"`
+	// The operation code.
+	OperationCode string `pulumi:"operationCode"`
+	// The application scope of the rule.
 	Scenarios *string `pulumi:"scenarios"`
+	// The source of the whitelist. Valid values:
+	Source *string `pulumi:"source"`
 }
 
 // The set of arguments for constructing a ImageEventOperation resource.
 type ImageEventOperationArgs struct {
-	// Event Conditions.
-	Conditions pulumi.StringPtrInput
-	// Image Event Key.
+	// The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
+	Conditions pulumi.StringInput
+	// The keyword of the alert item.
 	EventKey pulumi.StringPtrInput
-	// Image Event Name.
+	// The name of the alert item.
 	EventName pulumi.StringPtrInput
-	// Image Event Type.
-	EventType pulumi.StringPtrInput
-	// Event Operation Code.
-	OperationCode pulumi.StringPtrInput
-	// Event Scenarios.
+	// The alert type.
+	EventType pulumi.StringInput
+	// The remarks.
+	Note pulumi.StringPtrInput
+	// The operation code.
+	OperationCode pulumi.StringInput
+	// The application scope of the rule.
 	Scenarios pulumi.StringPtrInput
+	// The source of the whitelist. Valid values:
+	Source pulumi.StringPtrInput
 }
 
 func (ImageEventOperationArgs) ElementType() reflect.Type {
@@ -270,34 +302,44 @@ func (o ImageEventOperationOutput) ToImageEventOperationOutputWithContext(ctx co
 	return o
 }
 
-// Event Conditions.
-func (o ImageEventOperationOutput) Conditions() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ImageEventOperation) pulumi.StringPtrOutput { return v.Conditions }).(pulumi.StringPtrOutput)
+// The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
+func (o ImageEventOperationOutput) Conditions() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageEventOperation) pulumi.StringOutput { return v.Conditions }).(pulumi.StringOutput)
 }
 
-// Image Event Key.
+// The keyword of the alert item.
 func (o ImageEventOperationOutput) EventKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageEventOperation) pulumi.StringPtrOutput { return v.EventKey }).(pulumi.StringPtrOutput)
 }
 
-// Image Event Name.
+// The name of the alert item.
 func (o ImageEventOperationOutput) EventName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageEventOperation) pulumi.StringPtrOutput { return v.EventName }).(pulumi.StringPtrOutput)
 }
 
-// Image Event Type.
+// The alert type.
 func (o ImageEventOperationOutput) EventType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ImageEventOperation) pulumi.StringOutput { return v.EventType }).(pulumi.StringOutput)
 }
 
-// Event Operation Code.
-func (o ImageEventOperationOutput) OperationCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ImageEventOperation) pulumi.StringPtrOutput { return v.OperationCode }).(pulumi.StringPtrOutput)
+// The remarks.
+func (o ImageEventOperationOutput) Note() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageEventOperation) pulumi.StringPtrOutput { return v.Note }).(pulumi.StringPtrOutput)
 }
 
-// Event Scenarios.
-func (o ImageEventOperationOutput) Scenarios() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ImageEventOperation) pulumi.StringPtrOutput { return v.Scenarios }).(pulumi.StringPtrOutput)
+// The operation code.
+func (o ImageEventOperationOutput) OperationCode() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageEventOperation) pulumi.StringOutput { return v.OperationCode }).(pulumi.StringOutput)
+}
+
+// The application scope of the rule.
+func (o ImageEventOperationOutput) Scenarios() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageEventOperation) pulumi.StringOutput { return v.Scenarios }).(pulumi.StringOutput)
+}
+
+// The source of the whitelist. Valid values:
+func (o ImageEventOperationOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageEventOperation) pulumi.StringOutput { return v.Source }).(pulumi.StringOutput)
 }
 
 type ImageEventOperationArrayOutput struct{ *pulumi.OutputState }

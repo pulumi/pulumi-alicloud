@@ -139,6 +139,21 @@ def get_cluster_credential(cluster_id: Optional[_builtins.str] = None,
 
     > **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+    import pulumi_std as std
+
+    # Declare the data source
+    k8s = alicloud.cs.get_managed_kubernetes_clusters(name_regex="my-cluster",
+        enable_details=False)
+    auth = {__key: alicloud.cs.get_cluster_credential(cluster_id=__key,
+        temporary_duration_minutes=60,
+        output_file="my-auth-json") for __key, __value in std.toset(input=k8s.ids).result}
+    ```
+
 
     :param _builtins.str cluster_id: The id of target cluster.
     :param _builtins.str output_file: File name where to save the returned KubeConfig (after running `pulumi preview`).
@@ -170,6 +185,21 @@ def get_cluster_credential_output(cluster_id: Optional[pulumi.Input[_builtins.st
     > **NOTE:** Available since v1.187.0
 
     > **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+    import pulumi_std as std
+
+    # Declare the data source
+    k8s = alicloud.cs.get_managed_kubernetes_clusters(name_regex="my-cluster",
+        enable_details=False)
+    auth = {__key: alicloud.cs.get_cluster_credential(cluster_id=__key,
+        temporary_duration_minutes=60,
+        output_file="my-auth-json") for __key, __value in std.toset(input=k8s.ids).result}
+    ```
 
 
     :param _builtins.str cluster_id: The id of target cluster.

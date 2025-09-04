@@ -18,6 +18,216 @@ import (
 //
 // > **NOTE:** Available since v1.224.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			direction := "out"
+//			if param := cfg.Get("direction"); param != "" {
+//				direction = param
+//			}
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultDEiWfM, err := vpc.NewNetwork(ctx, "defaultDEiWfM", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//				VpcName:   pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultFHDM3F, err := vpc.NewSwitch(ctx, "defaultFHDM3F", &vpc.SwitchArgs{
+//				VpcId:     defaultDEiWfM.ID(),
+//				ZoneId:    pulumi.String(_default.Zones[0].Id),
+//				CidrBlock: pulumi.String("172.16.2.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultMbS2Ts, err := vpc.NewNatGateway(ctx, "defaultMbS2Ts", &vpc.NatGatewayArgs{
+//				VpcId:          defaultDEiWfM.ID(),
+//				NatGatewayName: pulumi.String(name),
+//				PaymentType:    pulumi.String("PayAsYouGo"),
+//				VswitchId:      defaultFHDM3F.ID(),
+//				NatType:        pulumi.String("Enhanced"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s%s",
+//				Args: []string{
+//					name,
+//					"port",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat1, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s%s",
+//				Args: []string{
+//					name,
+//					"port",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			port, err := cloudfirewall.NewAddressBook(ctx, "port", &cloudfirewall.AddressBookArgs{
+//				Description: pulumi.String(invokeFormat.Result),
+//				GroupName:   pulumi.String(invokeFormat1.Result),
+//				GroupType:   pulumi.String("port"),
+//				AddressLists: pulumi.StringArray{
+//					pulumi.String("22/22"),
+//					pulumi.String("23/23"),
+//					pulumi.String("24/24"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat2, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s%s",
+//				Args: []string{
+//					name,
+//					"port-update",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat3, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s%s",
+//				Args: []string{
+//					name,
+//					"port-update",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudfirewall.NewAddressBook(ctx, "port-update", &cloudfirewall.AddressBookArgs{
+//				Description: pulumi.String(invokeFormat2.Result),
+//				GroupName:   pulumi.String(invokeFormat3.Result),
+//				GroupType:   pulumi.String("port"),
+//				AddressLists: pulumi.StringArray{
+//					pulumi.String("22/22"),
+//					pulumi.String("23/23"),
+//					pulumi.String("24/24"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat4, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s%s",
+//				Args: []string{
+//					name,
+//					"domain",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat5, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s%s",
+//				Args: []string{
+//					name,
+//					"domain",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudfirewall.NewAddressBook(ctx, "domain", &cloudfirewall.AddressBookArgs{
+//				Description: pulumi.String(invokeFormat4.Result),
+//				GroupName:   pulumi.String(invokeFormat5.Result),
+//				GroupType:   pulumi.String("domain"),
+//				AddressLists: pulumi.StringArray{
+//					pulumi.String("alibaba.com"),
+//					pulumi.String("aliyun.com"),
+//					pulumi.String("alicloud.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudfirewall.NewAddressBook(ctx, "ip", &cloudfirewall.AddressBookArgs{
+//				Description: pulumi.String(name),
+//				GroupName:   pulumi.String(name),
+//				GroupType:   pulumi.String("ip"),
+//				AddressLists: pulumi.StringArray{
+//					pulumi.String("1.1.1.1/32"),
+//					pulumi.String("2.2.2.2/32"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudfirewall.NewNatFirewallControlPolicy(ctx, "default", &cloudfirewall.NatFirewallControlPolicyArgs{
+//				ApplicationNameLists: pulumi.StringArray{
+//					pulumi.String("ANY"),
+//				},
+//				Description: pulumi.String(name),
+//				Release:     pulumi.String("false"),
+//				IpVersion:   pulumi.String("4"),
+//				RepeatDays: pulumi.IntArray{
+//					pulumi.Int(1),
+//					pulumi.Int(2),
+//					pulumi.Int(3),
+//				},
+//				RepeatStartTime:   pulumi.String("21:00"),
+//				AclAction:         pulumi.String("log"),
+//				DestPortGroup:     port.GroupName,
+//				RepeatType:        pulumi.String("Weekly"),
+//				NatGatewayId:      defaultMbS2Ts.ID(),
+//				Source:            pulumi.String("1.1.1.1/32"),
+//				Direction:         pulumi.String("out"),
+//				RepeatEndTime:     pulumi.String("21:30"),
+//				StartTime:         pulumi.Int(1699156800),
+//				Destination:       pulumi.String("1.1.1.1/32"),
+//				EndTime:           pulumi.Int(1888545600),
+//				SourceType:        pulumi.String("net"),
+//				Proto:             pulumi.String("TCP"),
+//				NewOrder:          pulumi.String("1"),
+//				DestinationType:   pulumi.String("net"),
+//				DestPortType:      pulumi.String("group"),
+//				DomainResolveType: pulumi.Int(0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Cloud Firewall Nat Firewall Control Policy can be imported using the id, e.g.

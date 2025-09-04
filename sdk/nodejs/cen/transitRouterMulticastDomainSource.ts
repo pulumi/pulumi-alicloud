@@ -11,6 +11,99 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.195.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const _default = alicloud.cen.getTransitRouterAvailableResources({});
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "192.168.0.0/16",
+ * });
+ * const defaultMaster = new alicloud.vpc.Switch("default_master", {
+ *     vswitchName: name,
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "192.168.1.0/24",
+ *     zoneId: "cn-hangzhou-i",
+ * });
+ * const defaultSlave = new alicloud.vpc.Switch("default_slave", {
+ *     vswitchName: name,
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "192.168.2.0/24",
+ *     zoneId: "cn-hangzhou-j",
+ * });
+ * const defaultInstance = new alicloud.cen.Instance("default", {
+ *     cenInstanceName: name,
+ *     protectionLevel: "REDUCED",
+ * });
+ * const defaultTransitRouter = new alicloud.cen.TransitRouter("default", {
+ *     cenId: defaultInstance.id,
+ *     supportMulticast: true,
+ * });
+ * const defaultTransitRouterVpcAttachment = new alicloud.cen.TransitRouterVpcAttachment("default", {
+ *     cenId: defaultInstance.id,
+ *     transitRouterId: defaultTransitRouter.transitRouterId,
+ *     vpcId: defaultNetwork.id,
+ *     zoneMappings: [
+ *         {
+ *             zoneId: defaultMaster.zoneId,
+ *             vswitchId: defaultMaster.id,
+ *         },
+ *         {
+ *             zoneId: defaultSlave.zoneId,
+ *             vswitchId: defaultSlave.id,
+ *         },
+ *     ],
+ *     transitRouterAttachmentName: name,
+ *     transitRouterAttachmentDescription: name,
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: name,
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultGetResourceGroups = alicloud.resourcemanager.getResourceGroups({
+ *     status: "OK",
+ * });
+ * const defaultTransitRouterMulticastDomain = new alicloud.cen.TransitRouterMulticastDomain("default", {
+ *     transitRouterId: defaultTransitRouter.transitRouterId,
+ *     transitRouterMulticastDomainName: name,
+ *     transitRouterMulticastDomainDescription: name,
+ * });
+ * const defaultEcsNetworkInterface = new alicloud.ecs.EcsNetworkInterface("default", {
+ *     networkInterfaceName: name,
+ *     vswitchId: defaultMaster.id,
+ *     securityGroupIds: [defaultSecurityGroup.id],
+ *     description: "Basic test",
+ *     primaryIpAddress: defaultMaster.cidrBlock.apply(cidrBlock => std.cidrhostOutput({
+ *         input: cidrBlock,
+ *         host: 100,
+ *     })).apply(invoke => invoke.result),
+ *     tags: {
+ *         Created: "TF",
+ *         For: "Test",
+ *     },
+ *     resourceGroupId: defaultGetResourceGroups.then(defaultGetResourceGroups => defaultGetResourceGroups.ids?.[0]),
+ * });
+ * const defaultTransitRouterMulticastDomainAssociation = new alicloud.cen.TransitRouterMulticastDomainAssociation("default", {
+ *     transitRouterMulticastDomainId: defaultTransitRouterMulticastDomain.id,
+ *     transitRouterAttachmentId: defaultTransitRouterVpcAttachment.transitRouterAttachmentId,
+ *     vswitchId: defaultMaster.id,
+ * });
+ * const example = new alicloud.cen.TransitRouterMulticastDomainSource("example", {
+ *     vpcId: defaultNetwork.id,
+ *     transitRouterMulticastDomainId: defaultTransitRouterMulticastDomainAssociation.transitRouterMulticastDomainId,
+ *     networkInterfaceId: defaultEcsNetworkInterface.id,
+ *     groupIpAddress: "239.1.1.1",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Cen Transit Router Multicast Domain Source can be imported using the id, e.g.

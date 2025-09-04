@@ -111,6 +111,95 @@ def get_instances(ids: Optional[Sequence[_builtins.str]] = None,
 
     > **NOTE:** Available since v1.242.0.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+    import pulumi_std as std
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    current = alicloud.get_account()
+    vpc_amp_instance_example = alicloud.vpc.Network("vpc-amp-instance-example",
+        cidr_block="172.16.0.0/12",
+        vpc_name=name)
+    vswitch = alicloud.vpc.Switch("vswitch",
+        vpc_id=vpc_amp_instance_example.id,
+        zone_id="cn-hangzhou-k",
+        cidr_block="172.16.1.0/24")
+    vswitch_j = alicloud.vpc.Switch("vswitch-j",
+        vpc_id=vpc_amp_instance_example.id,
+        zone_id="cn-hangzhou-j",
+        cidr_block="172.16.2.0/24")
+    share_vpc = alicloud.vpc.Network("shareVPC",
+        cidr_block="172.16.0.0/12",
+        vpc_name=std.format(input="%s3",
+            args=[name]).result)
+    share_vswitch = alicloud.vpc.Switch("shareVswitch",
+        vpc_id=share_vpc.id,
+        zone_id="cn-hangzhou-k",
+        cidr_block="172.16.1.0/24")
+    share__vpc2 = alicloud.vpc.Network("share-VPC2",
+        cidr_block="172.16.0.0/12",
+        vpc_name=std.format(input="%s5",
+            args=[name]).result)
+    share_vswitch2 = alicloud.vpc.Switch("share-vswitch2",
+        vpc_id=share__vpc2.id,
+        zone_id="cn-hangzhou-k",
+        cidr_block="172.16.1.0/24")
+    share__vpc3 = alicloud.vpc.Network("share-VPC3",
+        cidr_block="172.16.0.0/12",
+        vpc_name=std.format(input="%s7",
+            args=[name]).result)
+    share_vsw3 = alicloud.vpc.Switch("share-vsw3",
+        vpc_id=share__vpc3.id,
+        zone_id="cn-hangzhou-k",
+        cidr_block="172.16.1.0/24")
+    default_instance = alicloud.kms.Instance("default",
+        vpc_num=7,
+        key_num=1000,
+        secret_num=0,
+        spec=1000,
+        renew_status="ManualRenewal",
+        product_version="3",
+        renew_period=3,
+        vpc_id=vswitch.vpc_id,
+        zone_ids=[
+            "cn-hangzhou-k",
+            "cn-hangzhou-j",
+        ],
+        vswitch_ids=[vswitch.id],
+        bind_vpcs=[
+            {
+                "vpc_id": share_vswitch.vpc_id,
+                "region_id": "cn-hangzhou",
+                "vswitch_id": share_vswitch.id,
+                "vpc_owner_id": current.id,
+            },
+            {
+                "vpc_id": share_vswitch2.vpc_id,
+                "region_id": "cn-hangzhou",
+                "vswitch_id": share_vswitch2.id,
+                "vpc_owner_id": current.id,
+            },
+            {
+                "vpc_id": share_vsw3.vpc_id,
+                "region_id": "cn-hangzhou",
+                "vswitch_id": share_vsw3.id,
+                "vpc_owner_id": current.id,
+            },
+        ],
+        log="0",
+        period=1,
+        log_storage=0,
+        payment_type="Subscription")
+    default = alicloud.kms.get_instances_output(ids=[default_instance.id])
+    pulumi.export("alicloudKmsInstanceExampleId", default.instances[0].instance_id)
+    ```
+
 
     :param Sequence[_builtins.str] ids: A list of Instance IDs.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -139,6 +228,95 @@ def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.
     This data source provides Kms Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/)
 
     > **NOTE:** Available since v1.242.0.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+    import pulumi_std as std
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    current = alicloud.get_account()
+    vpc_amp_instance_example = alicloud.vpc.Network("vpc-amp-instance-example",
+        cidr_block="172.16.0.0/12",
+        vpc_name=name)
+    vswitch = alicloud.vpc.Switch("vswitch",
+        vpc_id=vpc_amp_instance_example.id,
+        zone_id="cn-hangzhou-k",
+        cidr_block="172.16.1.0/24")
+    vswitch_j = alicloud.vpc.Switch("vswitch-j",
+        vpc_id=vpc_amp_instance_example.id,
+        zone_id="cn-hangzhou-j",
+        cidr_block="172.16.2.0/24")
+    share_vpc = alicloud.vpc.Network("shareVPC",
+        cidr_block="172.16.0.0/12",
+        vpc_name=std.format(input="%s3",
+            args=[name]).result)
+    share_vswitch = alicloud.vpc.Switch("shareVswitch",
+        vpc_id=share_vpc.id,
+        zone_id="cn-hangzhou-k",
+        cidr_block="172.16.1.0/24")
+    share__vpc2 = alicloud.vpc.Network("share-VPC2",
+        cidr_block="172.16.0.0/12",
+        vpc_name=std.format(input="%s5",
+            args=[name]).result)
+    share_vswitch2 = alicloud.vpc.Switch("share-vswitch2",
+        vpc_id=share__vpc2.id,
+        zone_id="cn-hangzhou-k",
+        cidr_block="172.16.1.0/24")
+    share__vpc3 = alicloud.vpc.Network("share-VPC3",
+        cidr_block="172.16.0.0/12",
+        vpc_name=std.format(input="%s7",
+            args=[name]).result)
+    share_vsw3 = alicloud.vpc.Switch("share-vsw3",
+        vpc_id=share__vpc3.id,
+        zone_id="cn-hangzhou-k",
+        cidr_block="172.16.1.0/24")
+    default_instance = alicloud.kms.Instance("default",
+        vpc_num=7,
+        key_num=1000,
+        secret_num=0,
+        spec=1000,
+        renew_status="ManualRenewal",
+        product_version="3",
+        renew_period=3,
+        vpc_id=vswitch.vpc_id,
+        zone_ids=[
+            "cn-hangzhou-k",
+            "cn-hangzhou-j",
+        ],
+        vswitch_ids=[vswitch.id],
+        bind_vpcs=[
+            {
+                "vpc_id": share_vswitch.vpc_id,
+                "region_id": "cn-hangzhou",
+                "vswitch_id": share_vswitch.id,
+                "vpc_owner_id": current.id,
+            },
+            {
+                "vpc_id": share_vswitch2.vpc_id,
+                "region_id": "cn-hangzhou",
+                "vswitch_id": share_vswitch2.id,
+                "vpc_owner_id": current.id,
+            },
+            {
+                "vpc_id": share_vsw3.vpc_id,
+                "region_id": "cn-hangzhou",
+                "vswitch_id": share_vsw3.id,
+                "vpc_owner_id": current.id,
+            },
+        ],
+        log="0",
+        period=1,
+        log_storage=0,
+        payment_type="Subscription")
+    default = alicloud.kms.get_instances_output(ids=[default_instance.id])
+    pulumi.export("alicloudKmsInstanceExampleId", default.instances[0].instance_id)
+    ```
 
 
     :param Sequence[_builtins.str] ids: A list of Instance IDs.

@@ -18,6 +18,173 @@ import (
 //
 // > **NOTE:** Available since v1.144.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudstoragegateway"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultUuid, err := random.NewUuid(ctx, "default", nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeSubstr, err := std.Substr(ctx, &std.SubstrArgs{
+//				Input: fmt.Sprintf("tf-example-%v", std.Replace(ctx, &std.ReplaceArgs{
+//					Text:    defaultUuid.Result,
+//					Search:  "-",
+//					Replace: "",
+//				}, nil).Result),
+//				Offset: 0,
+//				Length: 16,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultStorageBundle, err := cloudstoragegateway.NewStorageBundle(ctx, "default", &cloudstoragegateway.StorageBundleArgs{
+//				StorageBundleName: pulumi.String(invokeSubstr.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeSubstr1, err := std.Substr(ctx, &std.SubstrArgs{
+//				Input: fmt.Sprintf("tf-example-%v", std.Replace(ctx, &std.ReplaceArgs{
+//					Text:    defaultUuid.Result,
+//					Search:  "-",
+//					Replace: "",
+//				}, nil).Result),
+//				Offset: 0,
+//				Length: 16,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultBucket, err := oss.NewBucket(ctx, "default", &oss.BucketArgs{
+//				Bucket: pulumi.String(invokeSubstr1.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucketAcl(ctx, "default", &oss.BucketAclArgs{
+//				Bucket: defaultBucket.Bucket,
+//				Acl:    pulumi.String("public-read-write"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetStocks, err := cloudstoragegateway.GetStocks(ctx, &cloudstoragegateway.GetStocksArgs{
+//				GatewayClass: pulumi.StringRef("Standard"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/21"),
+//				ZoneId:      pulumi.String(defaultGetStocks.Stocks[0].ZoneId),
+//				VswitchName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultGateway, err := cloudstoragegateway.NewGateway(ctx, "default", &cloudstoragegateway.GatewayArgs{
+//				GatewayName:            pulumi.String(name),
+//				Description:            pulumi.String(name),
+//				GatewayClass:           pulumi.String("Standard"),
+//				Type:                   pulumi.String("File"),
+//				PaymentType:            pulumi.String("PayAsYouGo"),
+//				VswitchId:              defaultSwitch.ID(),
+//				ReleaseAfterExpiration: pulumi.Bool(true),
+//				PublicNetworkBandwidth: pulumi.Int(40),
+//				StorageBundleId:        defaultStorageBundle.ID(),
+//				Location:               pulumi.String("Cloud"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultGatewayCacheDisk, err := cloudstoragegateway.NewGatewayCacheDisk(ctx, "default", &cloudstoragegateway.GatewayCacheDiskArgs{
+//				CacheDiskCategory: pulumi.String("cloud_efficiency"),
+//				GatewayId:         defaultGateway.ID(),
+//				CacheDiskSizeInGb: pulumi.Int(50),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultGatewayFileShare, err := cloudstoragegateway.NewGatewayFileShare(ctx, "default", &cloudstoragegateway.GatewayFileShareArgs{
+//				GatewayFileShareName: pulumi.String(name),
+//				GatewayId:            defaultGateway.ID(),
+//				LocalPath:            defaultGatewayCacheDisk.LocalFilePath,
+//				OssBucketName:        defaultBucket.Bucket,
+//				OssEndpoint:          defaultBucket.ExtranetEndpoint,
+//				Protocol:             pulumi.String("NFS"),
+//				RemoteSync:           pulumi.Bool(true),
+//				PollingInterval:      pulumi.Int(4500),
+//				FeLimit:              pulumi.Int(0),
+//				BackendLimit:         pulumi.Int(0),
+//				CacheMode:            pulumi.String("Cache"),
+//				Squash:               pulumi.String("none"),
+//				LagPeriod:            pulumi.Int(5),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudstoragegateway.NewExpressSync(ctx, "default", &cloudstoragegateway.ExpressSyncArgs{
+//				BucketName:      defaultGatewayFileShare.OssBucketName,
+//				BucketRegion:    pulumi.String(_default.Regions[0].Id),
+//				Description:     pulumi.String(name),
+//				ExpressSyncName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Cloud Storage Gateway Express Sync can be imported using the id, e.g.

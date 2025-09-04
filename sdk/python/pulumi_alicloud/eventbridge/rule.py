@@ -242,6 +242,57 @@ class Rule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.129.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.get_account()
+        default_event_bus = alicloud.eventbridge.EventBus("default", event_bus_name=name)
+        queue1 = alicloud.mns.Queue("queue1", name=name)
+        mns_endpoint_a = std.format(input="acs:mns:cn-hangzhou:%s:queues/%s",
+            args=[
+                default.id,
+                queue1.name,
+            ]).result
+        fnf_endpoint = std.format(input="acs:fnf:cn-hangzhou:%s:flow/${flow}",
+            args=[default.id]).result
+        example = alicloud.eventbridge.Rule("example",
+            event_bus_name=default_event_bus.event_bus_name,
+            rule_name=name,
+            description="example",
+            filter_pattern="{\\"source\\":[\\"crmabc.newsletter\\"],\\"type\\":[\\"UserSignUp\\", \\"UserLogin\\"]}",
+            targets=[{
+                "target_id": "tf-example1",
+                "endpoint": mns_endpoint_a,
+                "type": "acs.mns.queue",
+                "param_lists": [
+                    {
+                        "resource_key": "queue",
+                        "form": "CONSTANT",
+                        "value": "tf-testaccEbRule",
+                    },
+                    {
+                        "resource_key": "Body",
+                        "form": "ORIGINAL",
+                    },
+                    {
+                        "form": "CONSTANT",
+                        "resource_key": "IsBase64Encode",
+                        "value": "true",
+                    },
+                ],
+            }])
+        ```
+
         ## Import
 
         Event Bridge Rule can be imported using the id, e.g.
@@ -271,6 +322,57 @@ class Rule(pulumi.CustomResource):
         For information about Event Bridge Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/eventbridge/latest/createrule-6).
 
         > **NOTE:** Available since v1.129.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.get_account()
+        default_event_bus = alicloud.eventbridge.EventBus("default", event_bus_name=name)
+        queue1 = alicloud.mns.Queue("queue1", name=name)
+        mns_endpoint_a = std.format(input="acs:mns:cn-hangzhou:%s:queues/%s",
+            args=[
+                default.id,
+                queue1.name,
+            ]).result
+        fnf_endpoint = std.format(input="acs:fnf:cn-hangzhou:%s:flow/${flow}",
+            args=[default.id]).result
+        example = alicloud.eventbridge.Rule("example",
+            event_bus_name=default_event_bus.event_bus_name,
+            rule_name=name,
+            description="example",
+            filter_pattern="{\\"source\\":[\\"crmabc.newsletter\\"],\\"type\\":[\\"UserSignUp\\", \\"UserLogin\\"]}",
+            targets=[{
+                "target_id": "tf-example1",
+                "endpoint": mns_endpoint_a,
+                "type": "acs.mns.queue",
+                "param_lists": [
+                    {
+                        "resource_key": "queue",
+                        "form": "CONSTANT",
+                        "value": "tf-testaccEbRule",
+                    },
+                    {
+                        "resource_key": "Body",
+                        "form": "ORIGINAL",
+                    },
+                    {
+                        "form": "CONSTANT",
+                        "resource_key": "IsBase64Encode",
+                        "value": "true",
+                    },
+                ],
+            }])
+        ```
 
         ## Import
 

@@ -141,19 +141,19 @@ def get_site_monitors(ids: Optional[Sequence[_builtins.str]] = None,
             "isp": "465",
         }],
         options_json=\"\"\"{
-        "http_method": "get",
-        "waitTime_after_completion": null,
-        "ipv6_task": false,
-        "diagnosis_ping": false,
-        "diagnosis_mtr": false,
-        "assertions": [
+        \\"http_method\\": \\"get\\",
+        \\"waitTime_after_completion\\": null,
+        \\"ipv6_task\\": false,
+        \\"diagnosis_ping\\": false,
+        \\"diagnosis_mtr\\": false,
+        \\"assertions\\": [
             {
-                "operator": "lessThan",
-                "type": "response_time",
-                "target": 1000
+                \\"operator\\": \\"lessThan\\",
+                \\"type\\": \\"response_time\\",
+                \\"target\\": 1000
             }
         ],
-        "time_out": 30000
+        \\"time_out\\": 30000
     }
     \"\"\")
     default = alicloud.cms.get_site_monitors_output(ids=[default_site_monitor.id],
@@ -216,19 +216,19 @@ def get_site_monitors_output(ids: Optional[pulumi.Input[Optional[Sequence[_built
             "isp": "465",
         }],
         options_json=\"\"\"{
-        "http_method": "get",
-        "waitTime_after_completion": null,
-        "ipv6_task": false,
-        "diagnosis_ping": false,
-        "diagnosis_mtr": false,
-        "assertions": [
+        \\"http_method\\": \\"get\\",
+        \\"waitTime_after_completion\\": null,
+        \\"ipv6_task\\": false,
+        \\"diagnosis_ping\\": false,
+        \\"diagnosis_mtr\\": false,
+        \\"assertions\\": [
             {
-                "operator": "lessThan",
-                "type": "response_time",
-                "target": 1000
+                \\"operator\\": \\"lessThan\\",
+                \\"type\\": \\"response_time\\",
+                \\"target\\": 1000
             }
         ],
-        "time_out": 30000
+        \\"time_out\\": 30000
     }
     \"\"\")
     default = alicloud.cms.get_site_monitors_output(ids=[default_site_monitor.id],

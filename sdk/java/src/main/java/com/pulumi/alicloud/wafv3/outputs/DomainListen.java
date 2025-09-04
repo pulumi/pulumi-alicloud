@@ -15,15 +15,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DomainListen {
     /**
-     * @return The ID of the certificate to be added. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
+     * @return The ID of the certificate to be added. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol).
      * 
      */
     private @Nullable String certId;
     /**
-     * @return The type of encryption suite to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-     * - **1**: indicates that all encryption suites are added.
-     * - **2**: indicates that a strong encryption package is added. You can select this value only if the value of **tls_version** is `tlsv1.2`.
-     * - **99**: indicates that a custom encryption suite is added.
+     * @return The type of the cipher suites that you want to add. This parameter is available only if you specify `HttpsPorts`. Valid values:
      * 
      */
     private @Nullable Integer cipherSuite;
@@ -33,89 +30,91 @@ public final class DomainListen {
      */
     private @Nullable List<String> customCiphers;
     /**
-     * @return Whether TSL1.3 version is supported. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-     * - **true**: indicates that TSL1.3 is supported.
-     * - **false**: indicates that TSL1.3 is not supported.
+     * @return Whether TSL1.3 version is supported. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol). Value:
      * 
      */
     private @Nullable Boolean enableTlsv3;
     /**
-     * @return Whether to enable exclusive IP address. This parameter is used only when the value of **ipv6_enabled** is **false** (indicating that IPv6 is not enabled) and the value of **protection_resource** is **share** (indicating that a shared cluster is used). Value:
-     * - **true**: indicates that the exclusive IP address is enabled.
-     * - **false** (default): indicates that exclusive IP address is not enabled.
+     * @return Specifies whether to enable the exclusive IP address feature. This parameter is available only if you set `IPv6Enabled` to false and `ProtectionResource` to `share`. Valid values:
      * 
      */
     private @Nullable Boolean exclusiveIp;
     /**
-     * @return Whether to enable the forced jump of HTTPS. This parameter is used only when the value of `https_ports` is not empty (indicating that the domain name uses HTTPS protocol) and the value of httports is empty (indicating that the domain name does not use HTTP protocol). Value:
-     * - **true**: indicates that HTTPS forced redirection is enabled.
-     * - **false**: indicates that HTTPS forced redirection is not enabled.
+     * @return Specifies whether to enable force redirect from HTTP to HTTPS for received requests. This parameter is available only if you specify `HttpsPorts` and leave `HttpPorts` empty. Valid values:
      * 
      */
     private @Nullable Boolean focusHttps;
     /**
-     * @return Whether to turn on http2. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-     * - **true:** indicates that HTTP2 is enabled.
-     * - **false** (default): indicates that HTTP2 is not enabled.
+     * @return Specifies whether to enable HTTP/2. This parameter is available only if you specify `HttpsPorts`. Valid values:
      * 
      */
     private @Nullable Boolean http2Enabled;
     /**
-     * @return The listening port of the HTTP protocol.
+     * @return The HTTP listener ports. Specify the value in the \[**port1,port2,...**] format.
      * 
      */
     private @Nullable List<Integer> httpPorts;
     /**
-     * @return The listening port of the HTTPS protocol.
+     * @return The HTTPS listener ports. Specify the value in the \[**port1,port2,...**] format.
      * 
      */
     private @Nullable List<Integer> httpsPorts;
     /**
-     * @return Whether IPv6 is turned on. Value:
-     * - **true**: indicates that IPv6 is enabled.
-     * - **false** (default): indicates that IPv6 is not enabled.
+     * @return Specifies whether to enable IPv6 protection. Valid values:
      * 
      */
     private @Nullable Boolean ipv6Enabled;
     /**
-     * @return The type of protection resource to use. Value:
-     * - **share** (default): indicates that a shared cluster is used.
-     * - **gslb**: indicates that the shared cluster intelligent load balancing is used.
+     * @return The type of the protection resource. Valid values:
      * 
      */
     private @Nullable String protectionResource;
     /**
-     * @return The version of TLS to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value: **tlsv1**, **tlsv1.1**, **tlsv1.2**.
+     * @return Specifies whether to allow access only from SM certificate-based clients. This parameter is available only if you set SM2Enabled to true.
+     * 
+     * - true
+     * - false
+     * 
+     */
+    private @Nullable Boolean sm2AccessOnly;
+    /**
+     * @return The ID of the SM certificate that you want to add. This parameter is available only if you set SM2Enabled to true.
+     * 
+     */
+    private @Nullable String sm2CertId;
+    /**
+     * @return Specifies whether to add an SM certificate.
+     * 
+     */
+    private @Nullable Boolean sm2Enabled;
+    /**
+     * @return The version of TLS to add. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol). Value:
      * 
      */
     private @Nullable String tlsVersion;
     /**
-     * @return WAF obtains the real IP address of the client. Value:
-     * - **0** (default): indicates that the client has not forwarded the traffic to WAF through other layer -7 agents.
-     * - **1**: indicates that the first value of the X-Forwarded-For(XFF) field in the WAF read request header is used as the client IP address.
-     * - **2**: indicates that the custom field value set by you in the WAF read request header is used as the client IP address.
+     * @return The method that is used to obtain the originating IP address of a client. Valid values:
      * 
      */
     private @Nullable Integer xffHeaderMode;
     /**
-     * @return Set the list of custom fields used to obtain the client IP address.
+     * @return The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the **\[&#34;header1&#34;,&#34;header2&#34;,...]** format.
+     * 
+     * &gt; **NOTE:**   This parameter is required only if you set `XffHeaderMode` to 2.
      * 
      */
     private @Nullable List<String> xffHeaders;
 
     private DomainListen() {}
     /**
-     * @return The ID of the certificate to be added. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
+     * @return The ID of the certificate to be added. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol).
      * 
      */
     public Optional<String> certId() {
         return Optional.ofNullable(this.certId);
     }
     /**
-     * @return The type of encryption suite to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-     * - **1**: indicates that all encryption suites are added.
-     * - **2**: indicates that a strong encryption package is added. You can select this value only if the value of **tls_version** is `tlsv1.2`.
-     * - **99**: indicates that a custom encryption suite is added.
+     * @return The type of the cipher suites that you want to add. This parameter is available only if you specify `HttpsPorts`. Valid values:
      * 
      */
     public Optional<Integer> cipherSuite() {
@@ -129,92 +128,103 @@ public final class DomainListen {
         return this.customCiphers == null ? List.of() : this.customCiphers;
     }
     /**
-     * @return Whether TSL1.3 version is supported. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-     * - **true**: indicates that TSL1.3 is supported.
-     * - **false**: indicates that TSL1.3 is not supported.
+     * @return Whether TSL1.3 version is supported. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol). Value:
      * 
      */
     public Optional<Boolean> enableTlsv3() {
         return Optional.ofNullable(this.enableTlsv3);
     }
     /**
-     * @return Whether to enable exclusive IP address. This parameter is used only when the value of **ipv6_enabled** is **false** (indicating that IPv6 is not enabled) and the value of **protection_resource** is **share** (indicating that a shared cluster is used). Value:
-     * - **true**: indicates that the exclusive IP address is enabled.
-     * - **false** (default): indicates that exclusive IP address is not enabled.
+     * @return Specifies whether to enable the exclusive IP address feature. This parameter is available only if you set `IPv6Enabled` to false and `ProtectionResource` to `share`. Valid values:
      * 
      */
     public Optional<Boolean> exclusiveIp() {
         return Optional.ofNullable(this.exclusiveIp);
     }
     /**
-     * @return Whether to enable the forced jump of HTTPS. This parameter is used only when the value of `https_ports` is not empty (indicating that the domain name uses HTTPS protocol) and the value of httports is empty (indicating that the domain name does not use HTTP protocol). Value:
-     * - **true**: indicates that HTTPS forced redirection is enabled.
-     * - **false**: indicates that HTTPS forced redirection is not enabled.
+     * @return Specifies whether to enable force redirect from HTTP to HTTPS for received requests. This parameter is available only if you specify `HttpsPorts` and leave `HttpPorts` empty. Valid values:
      * 
      */
     public Optional<Boolean> focusHttps() {
         return Optional.ofNullable(this.focusHttps);
     }
     /**
-     * @return Whether to turn on http2. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-     * - **true:** indicates that HTTP2 is enabled.
-     * - **false** (default): indicates that HTTP2 is not enabled.
+     * @return Specifies whether to enable HTTP/2. This parameter is available only if you specify `HttpsPorts`. Valid values:
      * 
      */
     public Optional<Boolean> http2Enabled() {
         return Optional.ofNullable(this.http2Enabled);
     }
     /**
-     * @return The listening port of the HTTP protocol.
+     * @return The HTTP listener ports. Specify the value in the \[**port1,port2,...**] format.
      * 
      */
     public List<Integer> httpPorts() {
         return this.httpPorts == null ? List.of() : this.httpPorts;
     }
     /**
-     * @return The listening port of the HTTPS protocol.
+     * @return The HTTPS listener ports. Specify the value in the \[**port1,port2,...**] format.
      * 
      */
     public List<Integer> httpsPorts() {
         return this.httpsPorts == null ? List.of() : this.httpsPorts;
     }
     /**
-     * @return Whether IPv6 is turned on. Value:
-     * - **true**: indicates that IPv6 is enabled.
-     * - **false** (default): indicates that IPv6 is not enabled.
+     * @return Specifies whether to enable IPv6 protection. Valid values:
      * 
      */
     public Optional<Boolean> ipv6Enabled() {
         return Optional.ofNullable(this.ipv6Enabled);
     }
     /**
-     * @return The type of protection resource to use. Value:
-     * - **share** (default): indicates that a shared cluster is used.
-     * - **gslb**: indicates that the shared cluster intelligent load balancing is used.
+     * @return The type of the protection resource. Valid values:
      * 
      */
     public Optional<String> protectionResource() {
         return Optional.ofNullable(this.protectionResource);
     }
     /**
-     * @return The version of TLS to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value: **tlsv1**, **tlsv1.1**, **tlsv1.2**.
+     * @return Specifies whether to allow access only from SM certificate-based clients. This parameter is available only if you set SM2Enabled to true.
+     * 
+     * - true
+     * - false
+     * 
+     */
+    public Optional<Boolean> sm2AccessOnly() {
+        return Optional.ofNullable(this.sm2AccessOnly);
+    }
+    /**
+     * @return The ID of the SM certificate that you want to add. This parameter is available only if you set SM2Enabled to true.
+     * 
+     */
+    public Optional<String> sm2CertId() {
+        return Optional.ofNullable(this.sm2CertId);
+    }
+    /**
+     * @return Specifies whether to add an SM certificate.
+     * 
+     */
+    public Optional<Boolean> sm2Enabled() {
+        return Optional.ofNullable(this.sm2Enabled);
+    }
+    /**
+     * @return The version of TLS to add. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol). Value:
      * 
      */
     public Optional<String> tlsVersion() {
         return Optional.ofNullable(this.tlsVersion);
     }
     /**
-     * @return WAF obtains the real IP address of the client. Value:
-     * - **0** (default): indicates that the client has not forwarded the traffic to WAF through other layer -7 agents.
-     * - **1**: indicates that the first value of the X-Forwarded-For(XFF) field in the WAF read request header is used as the client IP address.
-     * - **2**: indicates that the custom field value set by you in the WAF read request header is used as the client IP address.
+     * @return The method that is used to obtain the originating IP address of a client. Valid values:
      * 
      */
     public Optional<Integer> xffHeaderMode() {
         return Optional.ofNullable(this.xffHeaderMode);
     }
     /**
-     * @return Set the list of custom fields used to obtain the client IP address.
+     * @return The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the **\[&#34;header1&#34;,&#34;header2&#34;,...]** format.
+     * 
+     * &gt; **NOTE:**   This parameter is required only if you set `XffHeaderMode` to 2.
      * 
      */
     public List<String> xffHeaders() {
@@ -241,6 +251,9 @@ public final class DomainListen {
         private @Nullable List<Integer> httpsPorts;
         private @Nullable Boolean ipv6Enabled;
         private @Nullable String protectionResource;
+        private @Nullable Boolean sm2AccessOnly;
+        private @Nullable String sm2CertId;
+        private @Nullable Boolean sm2Enabled;
         private @Nullable String tlsVersion;
         private @Nullable Integer xffHeaderMode;
         private @Nullable List<String> xffHeaders;
@@ -258,6 +271,9 @@ public final class DomainListen {
     	      this.httpsPorts = defaults.httpsPorts;
     	      this.ipv6Enabled = defaults.ipv6Enabled;
     	      this.protectionResource = defaults.protectionResource;
+    	      this.sm2AccessOnly = defaults.sm2AccessOnly;
+    	      this.sm2CertId = defaults.sm2CertId;
+    	      this.sm2Enabled = defaults.sm2Enabled;
     	      this.tlsVersion = defaults.tlsVersion;
     	      this.xffHeaderMode = defaults.xffHeaderMode;
     	      this.xffHeaders = defaults.xffHeaders;
@@ -339,6 +355,24 @@ public final class DomainListen {
             return this;
         }
         @CustomType.Setter
+        public Builder sm2AccessOnly(@Nullable Boolean sm2AccessOnly) {
+
+            this.sm2AccessOnly = sm2AccessOnly;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sm2CertId(@Nullable String sm2CertId) {
+
+            this.sm2CertId = sm2CertId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sm2Enabled(@Nullable Boolean sm2Enabled) {
+
+            this.sm2Enabled = sm2Enabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tlsVersion(@Nullable String tlsVersion) {
 
             this.tlsVersion = tlsVersion;
@@ -372,6 +406,9 @@ public final class DomainListen {
             _resultValue.httpsPorts = httpsPorts;
             _resultValue.ipv6Enabled = ipv6Enabled;
             _resultValue.protectionResource = protectionResource;
+            _resultValue.sm2AccessOnly = sm2AccessOnly;
+            _resultValue.sm2CertId = sm2CertId;
+            _resultValue.sm2Enabled = sm2Enabled;
             _resultValue.tlsVersion = tlsVersion;
             _resultValue.xffHeaderMode = xffHeaderMode;
             _resultValue.xffHeaders = xffHeaders;

@@ -146,14 +146,14 @@ import javax.annotation.Nullable;
  *         TYPE: int
  *       FORMAT: delimited
  *       DELIMITED_OPTION:
- *         DELIMITER: \'|\'
+ *         DELIMITER: \\'|\\'
  *     VALUE:
  *       COLUMNS:
  *       - NAME: c_comment
  *         TYPE: varchar
  *       FORMAT: delimited
  *       DELIMITED_OPTION:
- *         DELIMITER: \'|\'
+ *         DELIMITER: \\'|\\'
  *     ERROR_LIMIT: 10
  *   OUTPUT:
  *     SCHEMA: public

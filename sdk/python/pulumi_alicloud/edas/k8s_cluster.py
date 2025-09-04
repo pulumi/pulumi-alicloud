@@ -197,6 +197,58 @@ class K8sCluster(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.93.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
+            cpu_core_count=4,
+            memory_size=8,
+            kubernetes_node_role="Worker")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default.zones[0].id)
+        default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
+            name_prefix=name,
+            cluster_spec="ack.pro.small",
+            worker_vswitch_ids=[default_switch.id],
+            new_nat_gateway=True,
+            pod_cidr=std.cidrsubnet(input="10.0.0.0/8",
+                newbits=8,
+                netnum=36).result,
+            service_cidr=std.cidrsubnet(input="172.16.0.0/16",
+                newbits=4,
+                netnum=7).result,
+            slb_internet_enabled=True)
+        default_node_pool = alicloud.cs.NodePool("default",
+            name=name,
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[default_switch.id],
+            instance_types=[default_get_instance_types.instance_types[0].id],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            desired_size="2")
+        default_k8s_cluster = alicloud.edas.K8sCluster("default", cs_cluster_id=default_node_pool.cluster_id)
+        ```
+
         ## Import
 
         EDAS cluster can be imported using the id, e.g.
@@ -220,6 +272,58 @@ class K8sCluster(pulumi.CustomResource):
         Provides an EDAS K8s cluster resource. For information about EDAS K8s Cluster and how to use it, see[What is EDAS K8s Cluster](https://www.alibabacloud.com/help/en/doc-detail/85108.htm).
 
         > **NOTE:** Available since v1.93.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
+            cpu_core_count=4,
+            memory_size=8,
+            kubernetes_node_role="Worker")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default.zones[0].id)
+        default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
+            name_prefix=name,
+            cluster_spec="ack.pro.small",
+            worker_vswitch_ids=[default_switch.id],
+            new_nat_gateway=True,
+            pod_cidr=std.cidrsubnet(input="10.0.0.0/8",
+                newbits=8,
+                netnum=36).result,
+            service_cidr=std.cidrsubnet(input="172.16.0.0/16",
+                newbits=4,
+                netnum=7).result,
+            slb_internet_enabled=True)
+        default_node_pool = alicloud.cs.NodePool("default",
+            name=name,
+            cluster_id=default_managed_kubernetes.id,
+            vswitch_ids=[default_switch.id],
+            instance_types=[default_get_instance_types.instance_types[0].id],
+            system_disk_category="cloud_efficiency",
+            system_disk_size=40,
+            desired_size="2")
+        default_k8s_cluster = alicloud.edas.K8sCluster("default", cs_cluster_id=default_node_pool.cluster_id)
+        ```
 
         ## Import
 

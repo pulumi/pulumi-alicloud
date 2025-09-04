@@ -111,7 +111,7 @@ def get_aliases(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides a list of KMS aliases in an Alibaba Cloud account according to the specified filters.
 
-    > **NOTE:** Available in v1.79.0+.
+    > **NOTE:** Available since v1.79.0.
 
     ## Example Usage
 
@@ -121,8 +121,8 @@ def get_aliases(ids: Optional[Sequence[_builtins.str]] = None,
 
     # Declare the data source
     kms_aliases = alicloud.kms.get_aliases(ids=["d89e8a53-b708-41aa-8c67-6873axxx"],
-        name_regex="alias/tf-testKmsAlias_123")
-    pulumi.export("firstKeyId", kms_keys_ds["keys"][0]["id"])
+        name_regex="alias/tf-example")
+    pulumi.export("firstKeyId", kms_aliases.aliases[0].id)
     ```
 
 
@@ -151,7 +151,7 @@ def get_aliases_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.st
     """
     This data source provides a list of KMS aliases in an Alibaba Cloud account according to the specified filters.
 
-    > **NOTE:** Available in v1.79.0+.
+    > **NOTE:** Available since v1.79.0.
 
     ## Example Usage
 
@@ -161,8 +161,8 @@ def get_aliases_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.st
 
     # Declare the data source
     kms_aliases = alicloud.kms.get_aliases(ids=["d89e8a53-b708-41aa-8c67-6873axxx"],
-        name_regex="alias/tf-testKmsAlias_123")
-    pulumi.export("firstKeyId", kms_keys_ds["keys"][0]["id"])
+        name_regex="alias/tf-example")
+    pulumi.export("firstKeyId", kms_aliases.aliases[0].id)
     ```
 
 

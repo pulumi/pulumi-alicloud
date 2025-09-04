@@ -172,10 +172,14 @@ type V3Function struct {
 	Handler pulumi.StringOutput `pulumi:"handler"`
 	// Maximum instance concurrency.
 	InstanceConcurrency pulumi.IntOutput `pulumi:"instanceConcurrency"`
+	// Instance isolation mode
+	InstanceIsolationMode pulumi.StringPtrOutput `pulumi:"instanceIsolationMode"`
 	// Instance lifecycle callback method configuration. See `instanceLifecycleConfig` below.
 	InstanceLifecycleConfig V3FunctionInstanceLifecycleConfigPtrOutput `pulumi:"instanceLifecycleConfig"`
 	// Allow function to access public network
 	InternetAccess pulumi.BoolOutput `pulumi:"internetAccess"`
+	// Invocation Restriction Detail See `invocationRestriction` below.
+	InvocationRestriction V3FunctionInvocationRestrictionPtrOutput `pulumi:"invocationRestriction"`
 	// Last time the function was Updated
 	LastModifiedTime pulumi.StringOutput `pulumi:"lastModifiedTime"`
 	// The status of the last function update operation. When the function is created successfully, the value is Successful. Optional values are Successful, Failed, and InProgress.
@@ -198,6 +202,10 @@ type V3Function struct {
 	Role pulumi.StringPtrOutput `pulumi:"role"`
 	// Function runtime type
 	Runtime pulumi.StringOutput `pulumi:"runtime"`
+	// The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
+	SessionAffinity pulumi.StringPtrOutput `pulumi:"sessionAffinity"`
+	// When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
+	SessionAffinityConfig pulumi.StringPtrOutput `pulumi:"sessionAffinityConfig"`
 	// Function Status
 	State pulumi.StringOutput `pulumi:"state"`
 	// The reason why the function is in the current state
@@ -227,13 +235,6 @@ func NewV3Function(ctx *pulumi.Context,
 	if args.Runtime == nil {
 		return nil, errors.New("invalid value for required argument 'Runtime'")
 	}
-	if args.Layers != nil {
-		args.Layers = pulumi.ToSecret(args.Layers).(pulumi.StringArrayInput)
-	}
-	secrets := pulumi.AdditionalSecretOutputs([]string{
-		"layers",
-	})
-	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource V3Function
 	err := ctx.RegisterResource("alicloud:fc/v3Function:V3Function", name, args, &resource, opts...)
@@ -289,10 +290,14 @@ type v3functionState struct {
 	Handler *string `pulumi:"handler"`
 	// Maximum instance concurrency.
 	InstanceConcurrency *int `pulumi:"instanceConcurrency"`
+	// Instance isolation mode
+	InstanceIsolationMode *string `pulumi:"instanceIsolationMode"`
 	// Instance lifecycle callback method configuration. See `instanceLifecycleConfig` below.
 	InstanceLifecycleConfig *V3FunctionInstanceLifecycleConfig `pulumi:"instanceLifecycleConfig"`
 	// Allow function to access public network
 	InternetAccess *bool `pulumi:"internetAccess"`
+	// Invocation Restriction Detail See `invocationRestriction` below.
+	InvocationRestriction *V3FunctionInvocationRestriction `pulumi:"invocationRestriction"`
 	// Last time the function was Updated
 	LastModifiedTime *string `pulumi:"lastModifiedTime"`
 	// The status of the last function update operation. When the function is created successfully, the value is Successful. Optional values are Successful, Failed, and InProgress.
@@ -315,6 +320,10 @@ type v3functionState struct {
 	Role *string `pulumi:"role"`
 	// Function runtime type
 	Runtime *string `pulumi:"runtime"`
+	// The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
+	SessionAffinity *string `pulumi:"sessionAffinity"`
+	// When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
+	SessionAffinityConfig *string `pulumi:"sessionAffinityConfig"`
 	// Function Status
 	State *string `pulumi:"state"`
 	// The reason why the function is in the current state
@@ -364,10 +373,14 @@ type V3FunctionState struct {
 	Handler pulumi.StringPtrInput
 	// Maximum instance concurrency.
 	InstanceConcurrency pulumi.IntPtrInput
+	// Instance isolation mode
+	InstanceIsolationMode pulumi.StringPtrInput
 	// Instance lifecycle callback method configuration. See `instanceLifecycleConfig` below.
 	InstanceLifecycleConfig V3FunctionInstanceLifecycleConfigPtrInput
 	// Allow function to access public network
 	InternetAccess pulumi.BoolPtrInput
+	// Invocation Restriction Detail See `invocationRestriction` below.
+	InvocationRestriction V3FunctionInvocationRestrictionPtrInput
 	// Last time the function was Updated
 	LastModifiedTime pulumi.StringPtrInput
 	// The status of the last function update operation. When the function is created successfully, the value is Successful. Optional values are Successful, Failed, and InProgress.
@@ -390,6 +403,10 @@ type V3FunctionState struct {
 	Role pulumi.StringPtrInput
 	// Function runtime type
 	Runtime pulumi.StringPtrInput
+	// The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
+	SessionAffinity pulumi.StringPtrInput
+	// When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
+	SessionAffinityConfig pulumi.StringPtrInput
 	// Function Status
 	State pulumi.StringPtrInput
 	// The reason why the function is in the current state
@@ -435,10 +452,14 @@ type v3functionArgs struct {
 	Handler string `pulumi:"handler"`
 	// Maximum instance concurrency.
 	InstanceConcurrency *int `pulumi:"instanceConcurrency"`
+	// Instance isolation mode
+	InstanceIsolationMode *string `pulumi:"instanceIsolationMode"`
 	// Instance lifecycle callback method configuration. See `instanceLifecycleConfig` below.
 	InstanceLifecycleConfig *V3FunctionInstanceLifecycleConfig `pulumi:"instanceLifecycleConfig"`
 	// Allow function to access public network
 	InternetAccess *bool `pulumi:"internetAccess"`
+	// Invocation Restriction Detail See `invocationRestriction` below.
+	InvocationRestriction *V3FunctionInvocationRestriction `pulumi:"invocationRestriction"`
 	// The list of layers.
 	Layers []string `pulumi:"layers"`
 	// The logs generated by the function are written to the configured Logstore. See `logConfig` below.
@@ -453,6 +474,10 @@ type v3functionArgs struct {
 	Role *string `pulumi:"role"`
 	// Function runtime type
 	Runtime string `pulumi:"runtime"`
+	// The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
+	SessionAffinity *string `pulumi:"sessionAffinity"`
+	// When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
+	SessionAffinityConfig *string `pulumi:"sessionAffinityConfig"`
 	// The tag of the resource
 	Tags map[string]string `pulumi:"tags"`
 	// The maximum running time of the function, in seconds.
@@ -487,10 +512,14 @@ type V3FunctionArgs struct {
 	Handler pulumi.StringInput
 	// Maximum instance concurrency.
 	InstanceConcurrency pulumi.IntPtrInput
+	// Instance isolation mode
+	InstanceIsolationMode pulumi.StringPtrInput
 	// Instance lifecycle callback method configuration. See `instanceLifecycleConfig` below.
 	InstanceLifecycleConfig V3FunctionInstanceLifecycleConfigPtrInput
 	// Allow function to access public network
 	InternetAccess pulumi.BoolPtrInput
+	// Invocation Restriction Detail See `invocationRestriction` below.
+	InvocationRestriction V3FunctionInvocationRestrictionPtrInput
 	// The list of layers.
 	Layers pulumi.StringArrayInput
 	// The logs generated by the function are written to the configured Logstore. See `logConfig` below.
@@ -505,6 +534,10 @@ type V3FunctionArgs struct {
 	Role pulumi.StringPtrInput
 	// Function runtime type
 	Runtime pulumi.StringInput
+	// The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
+	SessionAffinity pulumi.StringPtrInput
+	// When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
+	SessionAffinityConfig pulumi.StringPtrInput
 	// The tag of the resource
 	Tags pulumi.StringMapInput
 	// The maximum running time of the function, in seconds.
@@ -680,6 +713,11 @@ func (o V3FunctionOutput) InstanceConcurrency() pulumi.IntOutput {
 	return o.ApplyT(func(v *V3Function) pulumi.IntOutput { return v.InstanceConcurrency }).(pulumi.IntOutput)
 }
 
+// Instance isolation mode
+func (o V3FunctionOutput) InstanceIsolationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3Function) pulumi.StringPtrOutput { return v.InstanceIsolationMode }).(pulumi.StringPtrOutput)
+}
+
 // Instance lifecycle callback method configuration. See `instanceLifecycleConfig` below.
 func (o V3FunctionOutput) InstanceLifecycleConfig() V3FunctionInstanceLifecycleConfigPtrOutput {
 	return o.ApplyT(func(v *V3Function) V3FunctionInstanceLifecycleConfigPtrOutput { return v.InstanceLifecycleConfig }).(V3FunctionInstanceLifecycleConfigPtrOutput)
@@ -688,6 +726,11 @@ func (o V3FunctionOutput) InstanceLifecycleConfig() V3FunctionInstanceLifecycleC
 // Allow function to access public network
 func (o V3FunctionOutput) InternetAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v *V3Function) pulumi.BoolOutput { return v.InternetAccess }).(pulumi.BoolOutput)
+}
+
+// Invocation Restriction Detail See `invocationRestriction` below.
+func (o V3FunctionOutput) InvocationRestriction() V3FunctionInvocationRestrictionPtrOutput {
+	return o.ApplyT(func(v *V3Function) V3FunctionInvocationRestrictionPtrOutput { return v.InvocationRestriction }).(V3FunctionInvocationRestrictionPtrOutput)
 }
 
 // Last time the function was Updated
@@ -743,6 +786,16 @@ func (o V3FunctionOutput) Role() pulumi.StringPtrOutput {
 // Function runtime type
 func (o V3FunctionOutput) Runtime() pulumi.StringOutput {
 	return o.ApplyT(func(v *V3Function) pulumi.StringOutput { return v.Runtime }).(pulumi.StringOutput)
+}
+
+// The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
+func (o V3FunctionOutput) SessionAffinity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3Function) pulumi.StringPtrOutput { return v.SessionAffinity }).(pulumi.StringPtrOutput)
+}
+
+// When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
+func (o V3FunctionOutput) SessionAffinityConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3Function) pulumi.StringPtrOutput { return v.SessionAffinityConfig }).(pulumi.StringPtrOutput)
 }
 
 // Function Status

@@ -753,6 +753,126 @@ class Listener(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.133.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.alb.get_zones()
+        default_get_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            owners="system")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
+                vpc_id=default_network.id,
+                cidr_block=std.format(input="10.4.%d.0/24",
+                    args=[range["value"] + 1]).result,
+                zone_id=default.zones[range["value"]].id,
+                vswitch_name=std.format(input=f"{name}_%d",
+                    args=[range["value"] + 1]).result))
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            security_group_name=name,
+            description=name,
+            vpc_id=default_network.id)
+        default_load_balancer = alicloud.alb.LoadBalancer("default",
+            vpc_id=default_network.id,
+            address_type="Internet",
+            address_allocated_mode="Fixed",
+            load_balancer_name=name,
+            load_balancer_edition="Basic",
+            resource_group_id=default_get_resource_groups.groups[0].id,
+            load_balancer_billing_config={
+                "pay_type": "PayAsYouGo",
+            },
+            tags={
+                "Created": "TF",
+            },
+            zone_mappings=[
+                {
+                    "vswitch_id": default_switch[0].id,
+                    "zone_id": default.zones[0].id,
+                },
+                {
+                    "vswitch_id": default_switch[1].id,
+                    "zone_id": default.zones[1].id,
+                },
+            ],
+            modification_protection_config={
+                "status": "NonProtection",
+            })
+        default_instance = alicloud.ecs.Instance("default",
+            availability_zone=default.zones[0].id,
+            instance_name=name,
+            image_id=default_get_images.images[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
+            security_groups=[default_security_group.id],
+            vswitch_id=default_switch[0].id)
+        default_server_group = alicloud.alb.ServerGroup("default",
+            protocol="HTTP",
+            vpc_id=default_network.id,
+            server_group_name=name,
+            resource_group_id=default_get_resource_groups.groups[0].id,
+            health_check_config={
+                "health_check_connect_port": 46325,
+                "health_check_enabled": True,
+                "health_check_host": "tf-example.com",
+                "health_check_codes": [
+                    "http_2xx",
+                    "http_3xx",
+                    "http_4xx",
+                ],
+                "health_check_http_version": "HTTP1.1",
+                "health_check_interval": 2,
+                "health_check_method": "HEAD",
+                "health_check_path": "/tf-example",
+                "health_check_protocol": "HTTP",
+                "health_check_timeout": 5,
+                "healthy_threshold": 3,
+                "unhealthy_threshold": 3,
+            },
+            sticky_session_config={
+                "sticky_session_enabled": True,
+                "cookie": "tf-example",
+                "sticky_session_type": "Server",
+            },
+            servers=[{
+                "description": name,
+                "port": 80,
+                "server_id": default_instance.id,
+                "server_ip": default_instance.private_ip,
+                "server_type": "Ecs",
+                "weight": 10,
+            }])
+        default_listener = alicloud.alb.Listener("default",
+            load_balancer_id=default_load_balancer.id,
+            listener_protocol="HTTP",
+            listener_port=443,
+            listener_description=name,
+            default_actions=[{
+                "type": "ForwardGroup",
+                "forward_group_config": {
+                    "server_group_tuples": [{
+                        "server_group_id": default_server_group.id,
+                    }],
+                },
+            }])
+        ```
+
         ## Import
 
         Application Load Balancer (ALB) Listener can be imported using the id, e.g.
@@ -799,6 +919,126 @@ class Listener(pulumi.CustomResource):
         For information about Application Load Balancer (ALB) Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createlistener).
 
         > **NOTE:** Available since v1.133.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.alb.get_zones()
+        default_get_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            owners="system")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
+                vpc_id=default_network.id,
+                cidr_block=std.format(input="10.4.%d.0/24",
+                    args=[range["value"] + 1]).result,
+                zone_id=default.zones[range["value"]].id,
+                vswitch_name=std.format(input=f"{name}_%d",
+                    args=[range["value"] + 1]).result))
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            security_group_name=name,
+            description=name,
+            vpc_id=default_network.id)
+        default_load_balancer = alicloud.alb.LoadBalancer("default",
+            vpc_id=default_network.id,
+            address_type="Internet",
+            address_allocated_mode="Fixed",
+            load_balancer_name=name,
+            load_balancer_edition="Basic",
+            resource_group_id=default_get_resource_groups.groups[0].id,
+            load_balancer_billing_config={
+                "pay_type": "PayAsYouGo",
+            },
+            tags={
+                "Created": "TF",
+            },
+            zone_mappings=[
+                {
+                    "vswitch_id": default_switch[0].id,
+                    "zone_id": default.zones[0].id,
+                },
+                {
+                    "vswitch_id": default_switch[1].id,
+                    "zone_id": default.zones[1].id,
+                },
+            ],
+            modification_protection_config={
+                "status": "NonProtection",
+            })
+        default_instance = alicloud.ecs.Instance("default",
+            availability_zone=default.zones[0].id,
+            instance_name=name,
+            image_id=default_get_images.images[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
+            security_groups=[default_security_group.id],
+            vswitch_id=default_switch[0].id)
+        default_server_group = alicloud.alb.ServerGroup("default",
+            protocol="HTTP",
+            vpc_id=default_network.id,
+            server_group_name=name,
+            resource_group_id=default_get_resource_groups.groups[0].id,
+            health_check_config={
+                "health_check_connect_port": 46325,
+                "health_check_enabled": True,
+                "health_check_host": "tf-example.com",
+                "health_check_codes": [
+                    "http_2xx",
+                    "http_3xx",
+                    "http_4xx",
+                ],
+                "health_check_http_version": "HTTP1.1",
+                "health_check_interval": 2,
+                "health_check_method": "HEAD",
+                "health_check_path": "/tf-example",
+                "health_check_protocol": "HTTP",
+                "health_check_timeout": 5,
+                "healthy_threshold": 3,
+                "unhealthy_threshold": 3,
+            },
+            sticky_session_config={
+                "sticky_session_enabled": True,
+                "cookie": "tf-example",
+                "sticky_session_type": "Server",
+            },
+            servers=[{
+                "description": name,
+                "port": 80,
+                "server_id": default_instance.id,
+                "server_ip": default_instance.private_ip,
+                "server_type": "Ecs",
+                "weight": 10,
+            }])
+        default_listener = alicloud.alb.Listener("default",
+            load_balancer_id=default_load_balancer.id,
+            listener_protocol="HTTP",
+            listener_port=443,
+            listener_description=name,
+            default_actions=[{
+                "type": "ForwardGroup",
+                "forward_group_config": {
+                    "server_group_tuples": [{
+                        "server_group_id": default_server_group.id,
+                    }],
+                },
+            }])
+        ```
 
         ## Import
 

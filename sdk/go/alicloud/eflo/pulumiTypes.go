@@ -2421,6 +2421,130 @@ func (o ExperimentPlanTemplateTemplatePipelineEnvParamsOutput) WorkerNum() pulum
 	return o.ApplyT(func(v ExperimentPlanTemplateTemplatePipelineEnvParams) int { return v.WorkerNum }).(pulumi.IntOutput)
 }
 
+type NodeGroupAttachmentDataDisk struct {
+	// Type
+	Category *string `pulumi:"category"`
+	// Indicate whether the data disk is released with the node. true indicates that the data disk will be released together when the node unsubscribes.
+	DeleteWithNode *bool `pulumi:"deleteWithNode"`
+	// Performance level
+	PerformanceLevel *string `pulumi:"performanceLevel"`
+	// Data disk size
+	Size *int `pulumi:"size"`
+}
+
+// NodeGroupAttachmentDataDiskInput is an input type that accepts NodeGroupAttachmentDataDiskArgs and NodeGroupAttachmentDataDiskOutput values.
+// You can construct a concrete instance of `NodeGroupAttachmentDataDiskInput` via:
+//
+//	NodeGroupAttachmentDataDiskArgs{...}
+type NodeGroupAttachmentDataDiskInput interface {
+	pulumi.Input
+
+	ToNodeGroupAttachmentDataDiskOutput() NodeGroupAttachmentDataDiskOutput
+	ToNodeGroupAttachmentDataDiskOutputWithContext(context.Context) NodeGroupAttachmentDataDiskOutput
+}
+
+type NodeGroupAttachmentDataDiskArgs struct {
+	// Type
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	// Indicate whether the data disk is released with the node. true indicates that the data disk will be released together when the node unsubscribes.
+	DeleteWithNode pulumi.BoolPtrInput `pulumi:"deleteWithNode"`
+	// Performance level
+	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
+	// Data disk size
+	Size pulumi.IntPtrInput `pulumi:"size"`
+}
+
+func (NodeGroupAttachmentDataDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupAttachmentDataDisk)(nil)).Elem()
+}
+
+func (i NodeGroupAttachmentDataDiskArgs) ToNodeGroupAttachmentDataDiskOutput() NodeGroupAttachmentDataDiskOutput {
+	return i.ToNodeGroupAttachmentDataDiskOutputWithContext(context.Background())
+}
+
+func (i NodeGroupAttachmentDataDiskArgs) ToNodeGroupAttachmentDataDiskOutputWithContext(ctx context.Context) NodeGroupAttachmentDataDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupAttachmentDataDiskOutput)
+}
+
+// NodeGroupAttachmentDataDiskArrayInput is an input type that accepts NodeGroupAttachmentDataDiskArray and NodeGroupAttachmentDataDiskArrayOutput values.
+// You can construct a concrete instance of `NodeGroupAttachmentDataDiskArrayInput` via:
+//
+//	NodeGroupAttachmentDataDiskArray{ NodeGroupAttachmentDataDiskArgs{...} }
+type NodeGroupAttachmentDataDiskArrayInput interface {
+	pulumi.Input
+
+	ToNodeGroupAttachmentDataDiskArrayOutput() NodeGroupAttachmentDataDiskArrayOutput
+	ToNodeGroupAttachmentDataDiskArrayOutputWithContext(context.Context) NodeGroupAttachmentDataDiskArrayOutput
+}
+
+type NodeGroupAttachmentDataDiskArray []NodeGroupAttachmentDataDiskInput
+
+func (NodeGroupAttachmentDataDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeGroupAttachmentDataDisk)(nil)).Elem()
+}
+
+func (i NodeGroupAttachmentDataDiskArray) ToNodeGroupAttachmentDataDiskArrayOutput() NodeGroupAttachmentDataDiskArrayOutput {
+	return i.ToNodeGroupAttachmentDataDiskArrayOutputWithContext(context.Background())
+}
+
+func (i NodeGroupAttachmentDataDiskArray) ToNodeGroupAttachmentDataDiskArrayOutputWithContext(ctx context.Context) NodeGroupAttachmentDataDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupAttachmentDataDiskArrayOutput)
+}
+
+type NodeGroupAttachmentDataDiskOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupAttachmentDataDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupAttachmentDataDisk)(nil)).Elem()
+}
+
+func (o NodeGroupAttachmentDataDiskOutput) ToNodeGroupAttachmentDataDiskOutput() NodeGroupAttachmentDataDiskOutput {
+	return o
+}
+
+func (o NodeGroupAttachmentDataDiskOutput) ToNodeGroupAttachmentDataDiskOutputWithContext(ctx context.Context) NodeGroupAttachmentDataDiskOutput {
+	return o
+}
+
+// Type
+func (o NodeGroupAttachmentDataDiskOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeGroupAttachmentDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// Indicate whether the data disk is released with the node. true indicates that the data disk will be released together when the node unsubscribes.
+func (o NodeGroupAttachmentDataDiskOutput) DeleteWithNode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodeGroupAttachmentDataDisk) *bool { return v.DeleteWithNode }).(pulumi.BoolPtrOutput)
+}
+
+// Performance level
+func (o NodeGroupAttachmentDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeGroupAttachmentDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
+}
+
+// Data disk size
+func (o NodeGroupAttachmentDataDiskOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodeGroupAttachmentDataDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+type NodeGroupAttachmentDataDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupAttachmentDataDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeGroupAttachmentDataDisk)(nil)).Elem()
+}
+
+func (o NodeGroupAttachmentDataDiskArrayOutput) ToNodeGroupAttachmentDataDiskArrayOutput() NodeGroupAttachmentDataDiskArrayOutput {
+	return o
+}
+
+func (o NodeGroupAttachmentDataDiskArrayOutput) ToNodeGroupAttachmentDataDiskArrayOutputWithContext(ctx context.Context) NodeGroupAttachmentDataDiskArrayOutput {
+	return o
+}
+
+func (o NodeGroupAttachmentDataDiskArrayOutput) Index(i pulumi.IntInput) NodeGroupAttachmentDataDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeGroupAttachmentDataDisk {
+		return vs[0].([]NodeGroupAttachmentDataDisk)[vs[1].(int)]
+	}).(NodeGroupAttachmentDataDiskOutput)
+}
+
 type NodeGroupIpAllocationPolicy struct {
 	// Specify the cluster subnet ID based on the bond name See `bondPolicy` below.
 	BondPolicy *NodeGroupIpAllocationPolicyBondPolicy `pulumi:"bondPolicy"`
@@ -4261,6 +4385,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentPlanTemplateTemplatePipelineInput)(nil)).Elem(), ExperimentPlanTemplateTemplatePipelineArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentPlanTemplateTemplatePipelineArrayInput)(nil)).Elem(), ExperimentPlanTemplateTemplatePipelineArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentPlanTemplateTemplatePipelineEnvParamsInput)(nil)).Elem(), ExperimentPlanTemplateTemplatePipelineEnvParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupAttachmentDataDiskInput)(nil)).Elem(), NodeGroupAttachmentDataDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupAttachmentDataDiskArrayInput)(nil)).Elem(), NodeGroupAttachmentDataDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupIpAllocationPolicyInput)(nil)).Elem(), NodeGroupIpAllocationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupIpAllocationPolicyArrayInput)(nil)).Elem(), NodeGroupIpAllocationPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupIpAllocationPolicyBondPolicyInput)(nil)).Elem(), NodeGroupIpAllocationPolicyBondPolicyArgs{})
@@ -4318,6 +4444,8 @@ func init() {
 	pulumi.RegisterOutputType(ExperimentPlanTemplateTemplatePipelineOutput{})
 	pulumi.RegisterOutputType(ExperimentPlanTemplateTemplatePipelineArrayOutput{})
 	pulumi.RegisterOutputType(ExperimentPlanTemplateTemplatePipelineEnvParamsOutput{})
+	pulumi.RegisterOutputType(NodeGroupAttachmentDataDiskOutput{})
+	pulumi.RegisterOutputType(NodeGroupAttachmentDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(NodeGroupIpAllocationPolicyOutput{})
 	pulumi.RegisterOutputType(NodeGroupIpAllocationPolicyArrayOutput{})
 	pulumi.RegisterOutputType(NodeGroupIpAllocationPolicyBondPolicyOutput{})

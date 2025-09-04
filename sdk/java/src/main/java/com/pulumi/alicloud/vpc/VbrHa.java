@@ -22,6 +22,110 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.151.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+ * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+ * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.expressconnect.VirtualBorderRouter;
+ * import com.pulumi.alicloud.expressconnect.VirtualBorderRouterArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.alicloud.cen.Instance;
+ * import com.pulumi.alicloud.cen.InstanceArgs;
+ * import com.pulumi.alicloud.cen.InstanceAttachment;
+ * import com.pulumi.alicloud.cen.InstanceAttachmentArgs;
+ * import com.pulumi.alicloud.vpc.VbrHa;
+ * import com.pulumi.alicloud.vpc.VbrHaArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf-example");
+ *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
+ *         final var example = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
+ *             .nameRegex("^preserved-NODELETING")
+ *             .build());
+ * 
+ *         var vlanId = new Integer("vlanId", IntegerArgs.builder()
+ *             .max(2999)
+ *             .min(1)
+ *             .build());
+ * 
+ *         for (var i = 0; i < 2; i++) {
+ *             new VirtualBorderRouter("exampleVirtualBorderRouter-" + i, VirtualBorderRouterArgs.builder()
+ *                 .localGatewayIp("10.0.0.1")
+ *                 .peerGatewayIp("10.0.0.2")
+ *                 .peeringSubnetMask("255.255.255.252")
+ *                 .physicalConnectionId(example.connections()[range.value()].id())
+ *                 .virtualBorderRouterName(StdFunctions.format(FormatArgs.builder()
+ *                     .input(String.format("%s-%d", name))
+ *                     .args(range.value() + 1)
+ *                     .build()).result())
+ *                 .vlanId(vlanId.id() + range.value())
+ *                 .minRxInterval(1000)
+ *                 .minTxInterval(1000)
+ *                 .detectMultiplier(10)
+ *                 .build());
+ * 
+ *         
+ * }
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
+ *             .cenInstanceName(name)
+ *             .description(name)
+ *             .protectionLevel("REDUCED")
+ *             .build());
+ * 
+ *         for (var i = 0; i < 2; i++) {
+ *             new InstanceAttachment("exampleInstanceAttachment-" + i, InstanceAttachmentArgs.builder()
+ *                 .instanceId(exampleInstance.id())
+ *                 .childInstanceId(exampleVirtualBorderRouter[range.value()].id())
+ *                 .childInstanceType("VBR")
+ *                 .childInstanceRegionId(default_.regions()[0].id())
+ *                 .build());
+ * 
+ *         
+ * }
+ *         var exampleVbrHa = new VbrHa("exampleVbrHa", VbrHaArgs.builder()
+ *             .vbrId(exampleInstanceAttachment[0].childInstanceId())
+ *             .peerVbrId(exampleInstanceAttachment[1].childInstanceId())
+ *             .vbrHaName(name)
+ *             .description(name)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * VPC Vbr Ha can be imported using the id, e.g.

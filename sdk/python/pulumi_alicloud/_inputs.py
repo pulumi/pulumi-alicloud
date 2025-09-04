@@ -23,6 +23,14 @@ __all__ = [
     'ProviderEndpointArgsDict',
     'ProviderSignVersionArgs',
     'ProviderSignVersionArgsDict',
+    'StarRocksInstanceBackendNodeGroupArgs',
+    'StarRocksInstanceBackendNodeGroupArgsDict',
+    'StarRocksInstanceFrontendNodeGroupArgs',
+    'StarRocksInstanceFrontendNodeGroupArgsDict',
+    'StarRocksInstanceObserverNodeGroupArgs',
+    'StarRocksInstanceObserverNodeGroupArgsDict',
+    'StarRocksInstanceVswitchArgs',
+    'StarRocksInstanceVswitchArgsDict',
 ]
 
 MYPY = False
@@ -3443,5 +3451,632 @@ class ProviderSignVersionArgs:
     @sls.setter
     def sls(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "sls", value)
+
+
+if not MYPY:
+    class StarRocksInstanceBackendNodeGroupArgsDict(TypedDict):
+        cu: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
+        """
+        disk_number: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The number of disks.
+        """
+        local_storage_instance_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Local SSD instance specifications.
+        """
+        resident_node_number: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Resident node number of node group.
+        """
+        spec_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Compute group specification types include the following:
+        - standard
+        - localSSD
+        - bigData
+        - ramEnhanced
+        - networkEnhanced
+        """
+        storage_performance_level: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Performance levels of cloud disks include the following values:
+        - pl0: Maximum random read/write IOPS per disk is 10,000.
+        - pl1: Maximum random read/write IOPS per disk is 50,000.
+        - pl2: Maximum random read/write IOPS per disk is 100,000.
+        - pl3: Maximum random read/write IOPS per disk is 1,000,000.
+        """
+        storage_size: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Storage size, measured in GiB.
+        """
+        zone_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Zone ID.
+        """
+elif False:
+    StarRocksInstanceBackendNodeGroupArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StarRocksInstanceBackendNodeGroupArgs:
+    def __init__(__self__, *,
+                 cu: Optional[pulumi.Input[_builtins.int]] = None,
+                 disk_number: Optional[pulumi.Input[_builtins.int]] = None,
+                 local_storage_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 resident_node_number: Optional[pulumi.Input[_builtins.int]] = None,
+                 spec_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 storage_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
+                 storage_size: Optional[pulumi.Input[_builtins.int]] = None,
+                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] cu: Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
+        :param pulumi.Input[_builtins.int] disk_number: The number of disks.
+        :param pulumi.Input[_builtins.str] local_storage_instance_type: Local SSD instance specifications.
+        :param pulumi.Input[_builtins.int] resident_node_number: Resident node number of node group.
+        :param pulumi.Input[_builtins.str] spec_type: Compute group specification types include the following:
+               - standard
+               - localSSD
+               - bigData
+               - ramEnhanced
+               - networkEnhanced
+        :param pulumi.Input[_builtins.str] storage_performance_level: Performance levels of cloud disks include the following values:
+               - pl0: Maximum random read/write IOPS per disk is 10,000.
+               - pl1: Maximum random read/write IOPS per disk is 50,000.
+               - pl2: Maximum random read/write IOPS per disk is 100,000.
+               - pl3: Maximum random read/write IOPS per disk is 1,000,000.
+        :param pulumi.Input[_builtins.int] storage_size: Storage size, measured in GiB.
+        :param pulumi.Input[_builtins.str] zone_id: Zone ID.
+        """
+        if cu is not None:
+            pulumi.set(__self__, "cu", cu)
+        if disk_number is not None:
+            pulumi.set(__self__, "disk_number", disk_number)
+        if local_storage_instance_type is not None:
+            pulumi.set(__self__, "local_storage_instance_type", local_storage_instance_type)
+        if resident_node_number is not None:
+            pulumi.set(__self__, "resident_node_number", resident_node_number)
+        if spec_type is not None:
+            pulumi.set(__self__, "spec_type", spec_type)
+        if storage_performance_level is not None:
+            pulumi.set(__self__, "storage_performance_level", storage_performance_level)
+        if storage_size is not None:
+            pulumi.set(__self__, "storage_size", storage_size)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def cu(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
+        """
+        return pulumi.get(self, "cu")
+
+    @cu.setter
+    def cu(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "cu", value)
+
+    @_builtins.property
+    @pulumi.getter(name="diskNumber")
+    def disk_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The number of disks.
+        """
+        return pulumi.get(self, "disk_number")
+
+    @disk_number.setter
+    def disk_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "disk_number", value)
+
+    @_builtins.property
+    @pulumi.getter(name="localStorageInstanceType")
+    def local_storage_instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Local SSD instance specifications.
+        """
+        return pulumi.get(self, "local_storage_instance_type")
+
+    @local_storage_instance_type.setter
+    def local_storage_instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "local_storage_instance_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="residentNodeNumber")
+    def resident_node_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Resident node number of node group.
+        """
+        return pulumi.get(self, "resident_node_number")
+
+    @resident_node_number.setter
+    def resident_node_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "resident_node_number", value)
+
+    @_builtins.property
+    @pulumi.getter(name="specType")
+    def spec_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Compute group specification types include the following:
+        - standard
+        - localSSD
+        - bigData
+        - ramEnhanced
+        - networkEnhanced
+        """
+        return pulumi.get(self, "spec_type")
+
+    @spec_type.setter
+    def spec_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "spec_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storagePerformanceLevel")
+    def storage_performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Performance levels of cloud disks include the following values:
+        - pl0: Maximum random read/write IOPS per disk is 10,000.
+        - pl1: Maximum random read/write IOPS per disk is 50,000.
+        - pl2: Maximum random read/write IOPS per disk is 100,000.
+        - pl3: Maximum random read/write IOPS per disk is 1,000,000.
+        """
+        return pulumi.get(self, "storage_performance_level")
+
+    @storage_performance_level.setter
+    def storage_performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "storage_performance_level", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storageSize")
+    def storage_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Storage size, measured in GiB.
+        """
+        return pulumi.get(self, "storage_size")
+
+    @storage_size.setter
+    def storage_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "storage_size", value)
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Zone ID.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "zone_id", value)
+
+
+if not MYPY:
+    class StarRocksInstanceFrontendNodeGroupArgsDict(TypedDict):
+        cu: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
+        """
+        disk_number: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        DiskNumber
+        """
+        local_storage_instance_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Local SSD instance specifications.
+        """
+        resident_node_number: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Resident node number of node group.
+        """
+        spec_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Compute group specification types include the following:
+        - standard
+        - ramEnhanced
+        """
+        storage_performance_level: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Performance levels of cloud disks include the following values:
+        - pl0: Maximum random read/write IOPS per disk is 10,000.
+        - pl1: Maximum random read/write IOPS per disk is 50,000.
+        - pl2: Maximum random read/write IOPS per disk is 100,000.
+        - pl3: Maximum random read/write IOPS per disk is 1,000,000.
+        """
+        storage_size: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Storage size, measured in GiB.
+        """
+        zone_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Zone ID.
+        """
+elif False:
+    StarRocksInstanceFrontendNodeGroupArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StarRocksInstanceFrontendNodeGroupArgs:
+    def __init__(__self__, *,
+                 cu: Optional[pulumi.Input[_builtins.int]] = None,
+                 disk_number: Optional[pulumi.Input[_builtins.int]] = None,
+                 local_storage_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 resident_node_number: Optional[pulumi.Input[_builtins.int]] = None,
+                 spec_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 storage_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
+                 storage_size: Optional[pulumi.Input[_builtins.int]] = None,
+                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] cu: Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
+        :param pulumi.Input[_builtins.int] disk_number: DiskNumber
+        :param pulumi.Input[_builtins.str] local_storage_instance_type: Local SSD instance specifications.
+        :param pulumi.Input[_builtins.int] resident_node_number: Resident node number of node group.
+        :param pulumi.Input[_builtins.str] spec_type: Compute group specification types include the following:
+               - standard
+               - ramEnhanced
+        :param pulumi.Input[_builtins.str] storage_performance_level: Performance levels of cloud disks include the following values:
+               - pl0: Maximum random read/write IOPS per disk is 10,000.
+               - pl1: Maximum random read/write IOPS per disk is 50,000.
+               - pl2: Maximum random read/write IOPS per disk is 100,000.
+               - pl3: Maximum random read/write IOPS per disk is 1,000,000.
+        :param pulumi.Input[_builtins.int] storage_size: Storage size, measured in GiB.
+        :param pulumi.Input[_builtins.str] zone_id: Zone ID.
+        """
+        if cu is not None:
+            pulumi.set(__self__, "cu", cu)
+        if disk_number is not None:
+            pulumi.set(__self__, "disk_number", disk_number)
+        if local_storage_instance_type is not None:
+            pulumi.set(__self__, "local_storage_instance_type", local_storage_instance_type)
+        if resident_node_number is not None:
+            pulumi.set(__self__, "resident_node_number", resident_node_number)
+        if spec_type is not None:
+            pulumi.set(__self__, "spec_type", spec_type)
+        if storage_performance_level is not None:
+            pulumi.set(__self__, "storage_performance_level", storage_performance_level)
+        if storage_size is not None:
+            pulumi.set(__self__, "storage_size", storage_size)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def cu(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
+        """
+        return pulumi.get(self, "cu")
+
+    @cu.setter
+    def cu(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "cu", value)
+
+    @_builtins.property
+    @pulumi.getter(name="diskNumber")
+    def disk_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        DiskNumber
+        """
+        return pulumi.get(self, "disk_number")
+
+    @disk_number.setter
+    def disk_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "disk_number", value)
+
+    @_builtins.property
+    @pulumi.getter(name="localStorageInstanceType")
+    def local_storage_instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Local SSD instance specifications.
+        """
+        return pulumi.get(self, "local_storage_instance_type")
+
+    @local_storage_instance_type.setter
+    def local_storage_instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "local_storage_instance_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="residentNodeNumber")
+    def resident_node_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Resident node number of node group.
+        """
+        return pulumi.get(self, "resident_node_number")
+
+    @resident_node_number.setter
+    def resident_node_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "resident_node_number", value)
+
+    @_builtins.property
+    @pulumi.getter(name="specType")
+    def spec_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Compute group specification types include the following:
+        - standard
+        - ramEnhanced
+        """
+        return pulumi.get(self, "spec_type")
+
+    @spec_type.setter
+    def spec_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "spec_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storagePerformanceLevel")
+    def storage_performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Performance levels of cloud disks include the following values:
+        - pl0: Maximum random read/write IOPS per disk is 10,000.
+        - pl1: Maximum random read/write IOPS per disk is 50,000.
+        - pl2: Maximum random read/write IOPS per disk is 100,000.
+        - pl3: Maximum random read/write IOPS per disk is 1,000,000.
+        """
+        return pulumi.get(self, "storage_performance_level")
+
+    @storage_performance_level.setter
+    def storage_performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "storage_performance_level", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storageSize")
+    def storage_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Storage size, measured in GiB.
+        """
+        return pulumi.get(self, "storage_size")
+
+    @storage_size.setter
+    def storage_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "storage_size", value)
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Zone ID.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "zone_id", value)
+
+
+if not MYPY:
+    class StarRocksInstanceObserverNodeGroupArgsDict(TypedDict):
+        cu: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
+        """
+        disk_number: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        DiskNumber
+        """
+        local_storage_instance_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Local SSD instance specifications.
+        """
+        resident_node_number: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Resident node number of node group.
+        """
+        spec_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Compute group specification types include the following:
+        - standard
+        """
+        storage_performance_level: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Performance levels of cloud disks include the following values:
+        - pl0: Maximum random read/write IOPS per disk is 10,000.
+        - pl1: Maximum random read/write IOPS per disk is 50,000.
+        - pl2: Maximum random read/write IOPS per disk is 100,000.
+        - pl3: Maximum random read/write IOPS per disk is 1,000,000.
+        """
+        storage_size: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Storage size, measured in GiB.
+        """
+        zone_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Zone ID.
+        """
+elif False:
+    StarRocksInstanceObserverNodeGroupArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StarRocksInstanceObserverNodeGroupArgs:
+    def __init__(__self__, *,
+                 cu: Optional[pulumi.Input[_builtins.int]] = None,
+                 disk_number: Optional[pulumi.Input[_builtins.int]] = None,
+                 local_storage_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 resident_node_number: Optional[pulumi.Input[_builtins.int]] = None,
+                 spec_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 storage_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
+                 storage_size: Optional[pulumi.Input[_builtins.int]] = None,
+                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] cu: Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
+        :param pulumi.Input[_builtins.int] disk_number: DiskNumber
+        :param pulumi.Input[_builtins.str] local_storage_instance_type: Local SSD instance specifications.
+        :param pulumi.Input[_builtins.int] resident_node_number: Resident node number of node group.
+        :param pulumi.Input[_builtins.str] spec_type: Compute group specification types include the following:
+               - standard
+        :param pulumi.Input[_builtins.str] storage_performance_level: Performance levels of cloud disks include the following values:
+               - pl0: Maximum random read/write IOPS per disk is 10,000.
+               - pl1: Maximum random read/write IOPS per disk is 50,000.
+               - pl2: Maximum random read/write IOPS per disk is 100,000.
+               - pl3: Maximum random read/write IOPS per disk is 1,000,000.
+        :param pulumi.Input[_builtins.int] storage_size: Storage size, measured in GiB.
+        :param pulumi.Input[_builtins.str] zone_id: Zone ID.
+        """
+        if cu is not None:
+            pulumi.set(__self__, "cu", cu)
+        if disk_number is not None:
+            pulumi.set(__self__, "disk_number", disk_number)
+        if local_storage_instance_type is not None:
+            pulumi.set(__self__, "local_storage_instance_type", local_storage_instance_type)
+        if resident_node_number is not None:
+            pulumi.set(__self__, "resident_node_number", resident_node_number)
+        if spec_type is not None:
+            pulumi.set(__self__, "spec_type", spec_type)
+        if storage_performance_level is not None:
+            pulumi.set(__self__, "storage_performance_level", storage_performance_level)
+        if storage_size is not None:
+            pulumi.set(__self__, "storage_size", storage_size)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def cu(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
+        """
+        return pulumi.get(self, "cu")
+
+    @cu.setter
+    def cu(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "cu", value)
+
+    @_builtins.property
+    @pulumi.getter(name="diskNumber")
+    def disk_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        DiskNumber
+        """
+        return pulumi.get(self, "disk_number")
+
+    @disk_number.setter
+    def disk_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "disk_number", value)
+
+    @_builtins.property
+    @pulumi.getter(name="localStorageInstanceType")
+    def local_storage_instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Local SSD instance specifications.
+        """
+        return pulumi.get(self, "local_storage_instance_type")
+
+    @local_storage_instance_type.setter
+    def local_storage_instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "local_storage_instance_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="residentNodeNumber")
+    def resident_node_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Resident node number of node group.
+        """
+        return pulumi.get(self, "resident_node_number")
+
+    @resident_node_number.setter
+    def resident_node_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "resident_node_number", value)
+
+    @_builtins.property
+    @pulumi.getter(name="specType")
+    def spec_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Compute group specification types include the following:
+        - standard
+        """
+        return pulumi.get(self, "spec_type")
+
+    @spec_type.setter
+    def spec_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "spec_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storagePerformanceLevel")
+    def storage_performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Performance levels of cloud disks include the following values:
+        - pl0: Maximum random read/write IOPS per disk is 10,000.
+        - pl1: Maximum random read/write IOPS per disk is 50,000.
+        - pl2: Maximum random read/write IOPS per disk is 100,000.
+        - pl3: Maximum random read/write IOPS per disk is 1,000,000.
+        """
+        return pulumi.get(self, "storage_performance_level")
+
+    @storage_performance_level.setter
+    def storage_performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "storage_performance_level", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storageSize")
+    def storage_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Storage size, measured in GiB.
+        """
+        return pulumi.get(self, "storage_size")
+
+    @storage_size.setter
+    def storage_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "storage_size", value)
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Zone ID.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "zone_id", value)
+
+
+if not MYPY:
+    class StarRocksInstanceVswitchArgsDict(TypedDict):
+        vswitch_id: pulumi.Input[_builtins.str]
+        """
+        ID of VSwitch.
+        """
+        zone_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Zone ID of VSwitch.
+        """
+elif False:
+    StarRocksInstanceVswitchArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StarRocksInstanceVswitchArgs:
+    def __init__(__self__, *,
+                 vswitch_id: pulumi.Input[_builtins.str],
+                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] vswitch_id: ID of VSwitch.
+        :param pulumi.Input[_builtins.str] zone_id: Zone ID of VSwitch.
+        """
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @_builtins.property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        ID of VSwitch.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "vswitch_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Zone ID of VSwitch.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "zone_id", value)
 
 

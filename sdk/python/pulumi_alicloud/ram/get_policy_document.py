@@ -97,7 +97,7 @@ def get_policy_document(output_file: Optional[_builtins.str] = None,
     """
     This data source Generates a RAM policy document of the current Alibaba Cloud user.
 
-    > **NOTE:** Available since v1.184.0+.
+    > **NOTE:** Available since v1.184.0.
 
     ## Example Usage
 
@@ -277,7 +277,7 @@ def get_policy_document_output(output_file: Optional[pulumi.Input[Optional[_buil
     """
     This data source Generates a RAM policy document of the current Alibaba Cloud user.
 
-    > **NOTE:** Available since v1.184.0+.
+    > **NOTE:** Available since v1.184.0.
 
     ## Example Usage
 

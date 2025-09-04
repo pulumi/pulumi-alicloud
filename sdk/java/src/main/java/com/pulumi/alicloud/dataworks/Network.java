@@ -23,6 +23,98 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.241.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.alicloud.dataworks.DwResourceGroup;
+ * import com.pulumi.alicloud.dataworks.DwResourceGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default5Bia4h = new com.pulumi.alicloud.vpc.Network("default5Bia4h", com.pulumi.alicloud.vpc.NetworkArgs.builder()
+ *             .description(name)
+ *             .vpcName(name)
+ *             .cidrBlock("10.0.0.0/8")
+ *             .build());
+ * 
+ *         var defaultss7s7F = new Switch("defaultss7s7F", SwitchArgs.builder()
+ *             .description(name)
+ *             .vpcId(default5Bia4h.id())
+ *             .zoneId("cn-beijing-g")
+ *             .vswitchName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s1")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .cidrBlock("10.0.0.0/24")
+ *             .build());
+ * 
+ *         var defaultVJvKvl = new DwResourceGroup("defaultVJvKvl", DwResourceGroupArgs.builder()
+ *             .paymentDurationUnit("Month")
+ *             .paymentType("PostPaid")
+ *             .specification(500)
+ *             .defaultVswitchId(defaultss7s7F.id())
+ *             .remark(name)
+ *             .resourceGroupName("network_openapi_example01")
+ *             .defaultVpcId(default5Bia4h.id())
+ *             .build());
+ * 
+ *         var defaulte4zhaL = new com.pulumi.alicloud.vpc.Network("defaulte4zhaL", com.pulumi.alicloud.vpc.NetworkArgs.builder()
+ *             .description(name)
+ *             .vpcName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s3")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .cidrBlock("172.16.0.0/12")
+ *             .build());
+ * 
+ *         var default675v38 = new Switch("default675v38", SwitchArgs.builder()
+ *             .description(name)
+ *             .vpcId(defaulte4zhaL.id())
+ *             .zoneId("cn-beijing-g")
+ *             .vswitchName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s4")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .cidrBlock("172.16.0.0/24")
+ *             .build());
+ * 
+ *         var default_ = new com.pulumi.alicloud.dataworks.Network("default", com.pulumi.alicloud.dataworks.NetworkArgs.builder()
+ *             .vpcId(defaulte4zhaL.id())
+ *             .vswitchId(default675v38.id())
+ *             .dwResourceGroupId(defaultVJvKvl.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Data Works Network can be imported using the id, e.g.

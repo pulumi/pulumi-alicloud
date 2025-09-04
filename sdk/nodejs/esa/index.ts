@@ -100,10 +100,25 @@ export type NetworkOptimization = import("./networkOptimization").NetworkOptimiz
 export const NetworkOptimization: typeof import("./networkOptimization").NetworkOptimization = null as any;
 utilities.lazyLoad(exports, ["NetworkOptimization"], () => require("./networkOptimization"));
 
+export { OriginCaCertificateArgs, OriginCaCertificateState } from "./originCaCertificate";
+export type OriginCaCertificate = import("./originCaCertificate").OriginCaCertificate;
+export const OriginCaCertificate: typeof import("./originCaCertificate").OriginCaCertificate = null as any;
+utilities.lazyLoad(exports, ["OriginCaCertificate"], () => require("./originCaCertificate"));
+
+export { OriginClientCertificateArgs, OriginClientCertificateState } from "./originClientCertificate";
+export type OriginClientCertificate = import("./originClientCertificate").OriginClientCertificate;
+export const OriginClientCertificate: typeof import("./originClientCertificate").OriginClientCertificate = null as any;
+utilities.lazyLoad(exports, ["OriginClientCertificate"], () => require("./originClientCertificate"));
+
 export { OriginPoolArgs, OriginPoolState } from "./originPool";
 export type OriginPool = import("./originPool").OriginPool;
 export const OriginPool: typeof import("./originPool").OriginPool = null as any;
 utilities.lazyLoad(exports, ["OriginPool"], () => require("./originPool"));
+
+export { OriginProtectionArgs, OriginProtectionState } from "./originProtection";
+export type OriginProtection = import("./originProtection").OriginProtection;
+export const OriginProtection: typeof import("./originProtection").OriginProtection = null as any;
+utilities.lazyLoad(exports, ["OriginProtection"], () => require("./originProtection"));
 
 export { OriginRuleArgs, OriginRuleState } from "./originRule";
 export type OriginRule = import("./originRule").OriginRule;
@@ -164,6 +179,11 @@ export { SiteDeliveryTaskArgs, SiteDeliveryTaskState } from "./siteDeliveryTask"
 export type SiteDeliveryTask = import("./siteDeliveryTask").SiteDeliveryTask;
 export const SiteDeliveryTask: typeof import("./siteDeliveryTask").SiteDeliveryTask = null as any;
 utilities.lazyLoad(exports, ["SiteDeliveryTask"], () => require("./siteDeliveryTask"));
+
+export { SiteOriginClientCertificateArgs, SiteOriginClientCertificateState } from "./siteOriginClientCertificate";
+export type SiteOriginClientCertificate = import("./siteOriginClientCertificate").SiteOriginClientCertificate;
+export const SiteOriginClientCertificate: typeof import("./siteOriginClientCertificate").SiteOriginClientCertificate = null as any;
+utilities.lazyLoad(exports, ["SiteOriginClientCertificate"], () => require("./siteOriginClientCertificate"));
 
 export { VersionArgs, VersionState } from "./version";
 export type Version = import("./version").Version;
@@ -231,8 +251,14 @@ const _module = {
                 return new List(name, <any>undefined, { urn })
             case "alicloud:esa/networkOptimization:NetworkOptimization":
                 return new NetworkOptimization(name, <any>undefined, { urn })
+            case "alicloud:esa/originCaCertificate:OriginCaCertificate":
+                return new OriginCaCertificate(name, <any>undefined, { urn })
+            case "alicloud:esa/originClientCertificate:OriginClientCertificate":
+                return new OriginClientCertificate(name, <any>undefined, { urn })
             case "alicloud:esa/originPool:OriginPool":
                 return new OriginPool(name, <any>undefined, { urn })
+            case "alicloud:esa/originProtection:OriginProtection":
+                return new OriginProtection(name, <any>undefined, { urn })
             case "alicloud:esa/originRule:OriginRule":
                 return new OriginRule(name, <any>undefined, { urn })
             case "alicloud:esa/page:Page":
@@ -257,6 +283,8 @@ const _module = {
                 return new Site(name, <any>undefined, { urn })
             case "alicloud:esa/siteDeliveryTask:SiteDeliveryTask":
                 return new SiteDeliveryTask(name, <any>undefined, { urn })
+            case "alicloud:esa/siteOriginClientCertificate:SiteOriginClientCertificate":
+                return new SiteOriginClientCertificate(name, <any>undefined, { urn })
             case "alicloud:esa/version:Version":
                 return new Version(name, <any>undefined, { urn })
             case "alicloud:esa/videoProcessing:VideoProcessing":
@@ -290,7 +318,10 @@ pulumi.runtime.registerResourceModule("alicloud", "esa/kv", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/kvNamespace", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/list", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/networkOptimization", _module)
+pulumi.runtime.registerResourceModule("alicloud", "esa/originCaCertificate", _module)
+pulumi.runtime.registerResourceModule("alicloud", "esa/originClientCertificate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/originPool", _module)
+pulumi.runtime.registerResourceModule("alicloud", "esa/originProtection", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/originRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/page", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/ratePlanInstance", _module)
@@ -303,6 +334,7 @@ pulumi.runtime.registerResourceModule("alicloud", "esa/scheduledPreloadExecution
 pulumi.runtime.registerResourceModule("alicloud", "esa/scheduledPreloadJob", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/site", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/siteDeliveryTask", _module)
+pulumi.runtime.registerResourceModule("alicloud", "esa/siteOriginClientCertificate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/version", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/videoProcessing", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/waitingRoom", _module)

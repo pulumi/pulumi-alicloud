@@ -18,6 +18,107 @@ import (
 //
 // > **NOTE:** Available since v1.143.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/pvtz"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "example_name"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := pvtz.GetResolverZones(ctx, &pvtz.GetResolverZonesArgs{
+//				Status: pulumi.StringRef("NORMAL"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			var defaultSwitch []*vpc.Switch
+//			for index := 0; index < 2; index++ {
+//				key0 := index
+//				val0 := index
+//				__res, err := vpc.NewSwitch(ctx, fmt.Sprintf("default-%v", key0), &vpc.SwitchArgs{
+//					VpcId: defaultNetwork.ID(),
+//					CidrBlock: pulumi.String(defaultNetwork.CidrBlock.ApplyT(func(cidrBlock string) (std.CidrsubnetResult, error) {
+//						return std.CidrsubnetResult(interface{}(std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
+//							Input:   cidrBlock,
+//							Newbits: 8,
+//							Netnum:  val0,
+//						}, nil))), nil
+//					}).(std.CidrsubnetResultOutput).ApplyT(func(invoke std.CidrsubnetResult) (*string, error) {
+//						return invoke.Result, nil
+//					}).(pulumi.StringPtrOutput)),
+//					ZoneId: pulumi.String(_default.Zones[val0].ZoneId),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				defaultSwitch = append(defaultSwitch, __res)
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//				Name:  pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pvtz.NewEndpoint(ctx, "default", &pvtz.EndpointArgs{
+//				EndpointName:    pulumi.String(name),
+//				SecurityGroupId: defaultSecurityGroup.ID(),
+//				VpcId:           defaultNetwork.ID(),
+//				VpcRegionId:     pulumi.String(defaultGetRegions.Regions[0].Id),
+//				IpConfigs: pvtz.EndpointIpConfigArray{
+//					&pvtz.EndpointIpConfigArgs{
+//						ZoneId:    defaultSwitch[0].ZoneId,
+//						CidrBlock: defaultSwitch[0].CidrBlock,
+//						VswitchId: defaultSwitch[0].ID(),
+//					},
+//					&pvtz.EndpointIpConfigArgs{
+//						ZoneId:    defaultSwitch[1].ZoneId,
+//						CidrBlock: defaultSwitch[1].CidrBlock,
+//						VswitchId: defaultSwitch[1].ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Private Zone Endpoint can be imported using the id, e.g.

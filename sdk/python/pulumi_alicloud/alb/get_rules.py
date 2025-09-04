@@ -153,6 +153,109 @@ def get_rules(ids: Optional[Sequence[_builtins.str]] = None,
 
     > **NOTE:** Available since v1.133.0.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+    import pulumi_std as std
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "tf-example"
+    default = alicloud.alb.get_zones()
+    default_get_resource_groups = alicloud.resourcemanager.get_resource_groups()
+    default_network = alicloud.vpc.Network("default",
+        vpc_name=name,
+        cidr_block="10.4.0.0/16")
+    default_switch = []
+    for range in [{"value": i} for i in range(0, 2)]:
+        default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
+            vpc_id=default_network.id,
+            cidr_block=std.format(input="10.4.%d.0/24",
+                args=[range["value"] + 1]).result,
+            zone_id=default.zones[range["value"]].id,
+            vswitch_name=std.format(input=f"{name}_%d",
+                args=[range["value"] + 1]).result))
+    default_load_balancer = alicloud.alb.LoadBalancer("default",
+        vpc_id=default_network.id,
+        address_type="Internet",
+        address_allocated_mode="Fixed",
+        load_balancer_name=name,
+        load_balancer_edition="Standard",
+        resource_group_id=default_get_resource_groups.groups[0].id,
+        load_balancer_billing_config={
+            "pay_type": "PayAsYouGo",
+        },
+        tags={
+            "Created": "TF",
+        },
+        zone_mappings=[
+            {
+                "vswitch_id": default_switch[0].id,
+                "zone_id": default.zones[0].id,
+            },
+            {
+                "vswitch_id": default_switch[1].id,
+                "zone_id": default.zones[1].id,
+            },
+        ])
+    default_server_group = alicloud.alb.ServerGroup("default",
+        protocol="HTTP",
+        vpc_id=default_network.id,
+        server_group_name=name,
+        resource_group_id=default_get_resource_groups.groups[0].id,
+        health_check_config={
+            "health_check_enabled": False,
+        },
+        sticky_session_config={
+            "sticky_session_enabled": False,
+        },
+        tags={
+            "Created": "TF",
+        })
+    default_listener = alicloud.alb.Listener("default",
+        load_balancer_id=default_load_balancer.id,
+        listener_protocol="HTTP",
+        listener_port=80,
+        listener_description=name,
+        default_actions=[{
+            "type": "ForwardGroup",
+            "forward_group_config": {
+                "server_group_tuples": [{
+                    "server_group_id": default_server_group.id,
+                }],
+            },
+        }])
+    default_rule = alicloud.alb.Rule("default",
+        rule_name=name,
+        listener_id=default_listener.id,
+        priority=555,
+        rule_conditions=[{
+            "cookie_config": {
+                "values": [{
+                    "key": "created",
+                    "value": "tf",
+                }],
+            },
+            "type": "Cookie",
+        }],
+        rule_actions=[{
+            "forward_group_config": {
+                "server_group_tuples": [{
+                    "server_group_id": default_server_group.id,
+                }],
+            },
+            "order": 9,
+            "type": "ForwardGroup",
+        }])
+    ids = alicloud.alb.get_rules_output(ids=[default_rule.id])
+    pulumi.export("albRuleId", ids.rules[0].id)
+    ```
+
 
     :param Sequence[_builtins.str] ids: A list of Rule IDs.
     :param Sequence[_builtins.str] listener_ids: The listener ids.
@@ -196,6 +299,109 @@ def get_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]
     This data source provides the Alb Rules of the current Alibaba Cloud user.
 
     > **NOTE:** Available since v1.133.0.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+    import pulumi_std as std
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "tf-example"
+    default = alicloud.alb.get_zones()
+    default_get_resource_groups = alicloud.resourcemanager.get_resource_groups()
+    default_network = alicloud.vpc.Network("default",
+        vpc_name=name,
+        cidr_block="10.4.0.0/16")
+    default_switch = []
+    for range in [{"value": i} for i in range(0, 2)]:
+        default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
+            vpc_id=default_network.id,
+            cidr_block=std.format(input="10.4.%d.0/24",
+                args=[range["value"] + 1]).result,
+            zone_id=default.zones[range["value"]].id,
+            vswitch_name=std.format(input=f"{name}_%d",
+                args=[range["value"] + 1]).result))
+    default_load_balancer = alicloud.alb.LoadBalancer("default",
+        vpc_id=default_network.id,
+        address_type="Internet",
+        address_allocated_mode="Fixed",
+        load_balancer_name=name,
+        load_balancer_edition="Standard",
+        resource_group_id=default_get_resource_groups.groups[0].id,
+        load_balancer_billing_config={
+            "pay_type": "PayAsYouGo",
+        },
+        tags={
+            "Created": "TF",
+        },
+        zone_mappings=[
+            {
+                "vswitch_id": default_switch[0].id,
+                "zone_id": default.zones[0].id,
+            },
+            {
+                "vswitch_id": default_switch[1].id,
+                "zone_id": default.zones[1].id,
+            },
+        ])
+    default_server_group = alicloud.alb.ServerGroup("default",
+        protocol="HTTP",
+        vpc_id=default_network.id,
+        server_group_name=name,
+        resource_group_id=default_get_resource_groups.groups[0].id,
+        health_check_config={
+            "health_check_enabled": False,
+        },
+        sticky_session_config={
+            "sticky_session_enabled": False,
+        },
+        tags={
+            "Created": "TF",
+        })
+    default_listener = alicloud.alb.Listener("default",
+        load_balancer_id=default_load_balancer.id,
+        listener_protocol="HTTP",
+        listener_port=80,
+        listener_description=name,
+        default_actions=[{
+            "type": "ForwardGroup",
+            "forward_group_config": {
+                "server_group_tuples": [{
+                    "server_group_id": default_server_group.id,
+                }],
+            },
+        }])
+    default_rule = alicloud.alb.Rule("default",
+        rule_name=name,
+        listener_id=default_listener.id,
+        priority=555,
+        rule_conditions=[{
+            "cookie_config": {
+                "values": [{
+                    "key": "created",
+                    "value": "tf",
+                }],
+            },
+            "type": "Cookie",
+        }],
+        rule_actions=[{
+            "forward_group_config": {
+                "server_group_tuples": [{
+                    "server_group_id": default_server_group.id,
+                }],
+            },
+            "order": 9,
+            "type": "ForwardGroup",
+        }])
+    ids = alicloud.alb.get_rules_output(ids=[default_rule.id])
+    pulumi.export("albRuleId", ids.rules[0].id)
+    ```
 
 
     :param Sequence[_builtins.str] ids: A list of Rule IDs.

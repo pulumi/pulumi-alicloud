@@ -54,19 +54,19 @@ import (
 //			default48JHf4, err := ram.NewRole(ctx, "default48JHf4", &ram.RoleArgs{
 //				Name: pulumi.String(name),
 //				Document: pulumi.String(`    {
-//	        "Statement": [
+//	        \"Statement\": [
 //	        {
-//	            "Action": "sts:AssumeRole",
-//	            "Effect": "Allow",
-//	            "Principal": {
-//	            "Service": [
-//	                "emr.aliyuncs.com",
-//	                "ecs.aliyuncs.com"
+//	            \"Action\": \"sts:AssumeRole\",
+//	            \"Effect\": \"Allow\",
+//	            \"Principal\": {
+//	            \"Service\": [
+//	                \"emr.aliyuncs.com\",
+//	                \"ecs.aliyuncs.com\"
 //	            ]
 //	            }
 //	        }
 //	        ],
-//	        "Version": "1"
+//	        \"Version\": \"1\"
 //	    }
 //
 // `),

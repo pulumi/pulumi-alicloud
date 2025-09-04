@@ -15,6 +15,69 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// &gt; **NOTE:** Available since v1.93.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tfexamplename";
+    ///     var exampleUser = new AliCloud.Ram.User("example", new()
+    ///     {
+    ///         Name = name,
+    ///     });
+    /// 
+    ///     var examplePolicy = new AliCloud.ResourceManager.Policy("example", new()
+    ///     {
+    ///         PolicyName = name,
+    ///         PolicyDocument = @"\t\t{
+    /// \t\t\t\""Statement\"": [{
+    /// \t\t\t\t\""Action\"": [\""oss:*\""],
+    /// \t\t\t\t\""Effect\"": \""Allow\"",
+    /// \t\t\t\t\""Resource\"": [\""acs:oss:*:*:*\""]
+    /// \t\t\t}],
+    /// \t\t\t\""Version\"": \""1\""
+    /// \t\t}
+    /// ",
+    ///     });
+    /// 
+    ///     var example = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     {
+    ///         Status = "OK",
+    ///     });
+    /// 
+    ///     // Get Alicloud Account Id
+    ///     var exampleGetAccount = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     // Attach the custom policy to resource group
+    ///     var examplePolicyAttachment = new AliCloud.ResourceManager.PolicyAttachment("example", new()
+    ///     {
+    ///         PolicyName = examplePolicy.PolicyName,
+    ///         PolicyType = "Custom",
+    ///         PrincipalName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s@%s.onaliyun.com",
+    ///             Args = new[]
+    ///             {
+    ///                 exampleUser.Name,
+    ///                 exampleGetAccount.Apply(getAccountResult =&gt; getAccountResult.Id),
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         PrincipalType = "IMSUser",
+    ///         ResourceGroupId = example.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Resource Manager Policy Attachment can be imported using the id, e.g.

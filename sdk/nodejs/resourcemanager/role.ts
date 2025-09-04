@@ -22,18 +22,18 @@ import * as utilities from "../utilities";
  * const example = new alicloud.resourcemanager.Role("example", {
  *     roleName: name,
  *     assumeRolePolicyDocument: _default.then(_default => `     {
- *           "Statement": [
+ *           \"Statement\": [
  *                {
- *                     "Action": "sts:AssumeRole",
- *                     "Effect": "Allow",
- *                     "Principal": {
- *                         "RAM":[
- *                                 "acs:ram::${_default.id}:root"
+ *                     \"Action\": \"sts:AssumeRole\",
+ *                     \"Effect\": \"Allow\",
+ *                     \"Principal\": {
+ *                         \"RAM\":[
+ *                                 \"acs:ram::${_default.id}:root\"
  *                         ]
  *                     }
  *                 }
  *           ],
- *           "Version": "1"
+ *           \"Version\": \"1\"
  *      }
  * `),
  * });

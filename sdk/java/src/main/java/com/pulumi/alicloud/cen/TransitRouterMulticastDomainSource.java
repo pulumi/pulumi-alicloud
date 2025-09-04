@@ -20,6 +20,159 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.195.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cen.CenFunctions;
+ * import com.pulumi.alicloud.cen.inputs.GetTransitRouterAvailableResourcesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.cen.Instance;
+ * import com.pulumi.alicloud.cen.InstanceArgs;
+ * import com.pulumi.alicloud.cen.TransitRouter;
+ * import com.pulumi.alicloud.cen.TransitRouterArgs;
+ * import com.pulumi.alicloud.cen.TransitRouterVpcAttachment;
+ * import com.pulumi.alicloud.cen.TransitRouterVpcAttachmentArgs;
+ * import com.pulumi.alicloud.cen.inputs.TransitRouterVpcAttachmentZoneMappingArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.cen.TransitRouterMulticastDomain;
+ * import com.pulumi.alicloud.cen.TransitRouterMulticastDomainArgs;
+ * import com.pulumi.alicloud.ecs.EcsNetworkInterface;
+ * import com.pulumi.alicloud.ecs.EcsNetworkInterfaceArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.CidrhostArgs;
+ * import com.pulumi.alicloud.cen.TransitRouterMulticastDomainAssociation;
+ * import com.pulumi.alicloud.cen.TransitRouterMulticastDomainAssociationArgs;
+ * import com.pulumi.alicloud.cen.TransitRouterMulticastDomainSource;
+ * import com.pulumi.alicloud.cen.TransitRouterMulticastDomainSourceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf_example");
+ *         final var default = CenFunctions.getTransitRouterAvailableResources(GetTransitRouterAvailableResourcesArgs.builder()
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("192.168.0.0/16")
+ *             .build());
+ * 
+ *         var defaultMaster = new Switch("defaultMaster", SwitchArgs.builder()
+ *             .vswitchName(name)
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock("192.168.1.0/24")
+ *             .zoneId("cn-hangzhou-i")
+ *             .build());
+ * 
+ *         var defaultSlave = new Switch("defaultSlave", SwitchArgs.builder()
+ *             .vswitchName(name)
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock("192.168.2.0/24")
+ *             .zoneId("cn-hangzhou-j")
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+ *             .cenInstanceName(name)
+ *             .protectionLevel("REDUCED")
+ *             .build());
+ * 
+ *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()
+ *             .cenId(defaultInstance.id())
+ *             .supportMulticast(true)
+ *             .build());
+ * 
+ *         var defaultTransitRouterVpcAttachment = new TransitRouterVpcAttachment("defaultTransitRouterVpcAttachment", TransitRouterVpcAttachmentArgs.builder()
+ *             .cenId(defaultInstance.id())
+ *             .transitRouterId(defaultTransitRouter.transitRouterId())
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneMappings(            
+ *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+ *                     .zoneId(defaultMaster.zoneId())
+ *                     .vswitchId(defaultMaster.id())
+ *                     .build(),
+ *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+ *                     .zoneId(defaultSlave.zoneId())
+ *                     .vswitchId(defaultSlave.id())
+ *                     .build())
+ *             .transitRouterAttachmentName(name)
+ *             .transitRouterAttachmentDescription(name)
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+ *             .name(name)
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .status("OK")
+ *             .build());
+ * 
+ *         var defaultTransitRouterMulticastDomain = new TransitRouterMulticastDomain("defaultTransitRouterMulticastDomain", TransitRouterMulticastDomainArgs.builder()
+ *             .transitRouterId(defaultTransitRouter.transitRouterId())
+ *             .transitRouterMulticastDomainName(name)
+ *             .transitRouterMulticastDomainDescription(name)
+ *             .build());
+ * 
+ *         var defaultEcsNetworkInterface = new EcsNetworkInterface("defaultEcsNetworkInterface", EcsNetworkInterfaceArgs.builder()
+ *             .networkInterfaceName(name)
+ *             .vswitchId(defaultMaster.id())
+ *             .securityGroupIds(defaultSecurityGroup.id())
+ *             .description("Basic test")
+ *             .primaryIpAddress(defaultMaster.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrhost(CidrhostArgs.builder()
+ *                 .input(_cidrBlock)
+ *                 .host(100)
+ *                 .build())).applyValue(_invoke -> _invoke.result()))
+ *             .tags(Map.ofEntries(
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "Test")
+ *             ))
+ *             .resourceGroupId(defaultGetResourceGroups.ids()[0])
+ *             .build());
+ * 
+ *         var defaultTransitRouterMulticastDomainAssociation = new TransitRouterMulticastDomainAssociation("defaultTransitRouterMulticastDomainAssociation", TransitRouterMulticastDomainAssociationArgs.builder()
+ *             .transitRouterMulticastDomainId(defaultTransitRouterMulticastDomain.id())
+ *             .transitRouterAttachmentId(defaultTransitRouterVpcAttachment.transitRouterAttachmentId())
+ *             .vswitchId(defaultMaster.id())
+ *             .build());
+ * 
+ *         var example = new TransitRouterMulticastDomainSource("example", TransitRouterMulticastDomainSourceArgs.builder()
+ *             .vpcId(defaultNetwork.id())
+ *             .transitRouterMulticastDomainId(defaultTransitRouterMulticastDomainAssociation.transitRouterMulticastDomainId())
+ *             .networkInterfaceId(defaultEcsNetworkInterface.id())
+ *             .groupIpAddress("239.1.1.1")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Cen Transit Router Multicast Domain Source can be imported using the id, e.g.

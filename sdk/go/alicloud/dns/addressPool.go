@@ -91,7 +91,7 @@ import (
 //				Type:            pulumi.String("IPV4"),
 //				Addresses: dns.AddressPoolAddressArray{
 //					&dns.AddressPoolAddressArgs{
-//						AttributeInfo: pulumi.String("    {\n      \"lineCodeRectifyType\": \"RECTIFIED\",\n      \"lineCodes\": [\"os_namerica_us\"]\n    }\n"),
+//						AttributeInfo: pulumi.String("    {\n      \\\"lineCodeRectifyType\\\": \\\"RECTIFIED\\\",\n      \\\"lineCodes\\\": [\\\"os_namerica_us\\\"]\n    }\n"),
 //						Remark:        pulumi.String("address_remark"),
 //						Address:       pulumi.String("1.1.1.1"),
 //						Mode:          pulumi.String("SMART"),

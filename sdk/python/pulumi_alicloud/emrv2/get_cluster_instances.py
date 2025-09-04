@@ -210,19 +210,19 @@ def get_cluster_instances(cluster_id: Optional[_builtins.str] = None,
     default_role = alicloud.ram.Role("default",
         name="emrtf",
         document=\"\"\"    {
-            "Statement": [
+            \\"Statement\\": [
             {
-                "Action": "sts:AssumeRole",
-                "Effect": "Allow",
-                "Principal": {
-                "Service": [
-                    "emr.aliyuncs.com",
-                    "ecs.aliyuncs.com"
+                \\"Action\\": \\"sts:AssumeRole\\",
+                \\"Effect\\": \\"Allow\\",
+                \\"Principal\\": {
+                \\"Service\\": [
+                    \\"emr.aliyuncs.com\\",
+                    \\"ecs.aliyuncs.com\\"
                 ]
                 }
             }
             ],
-            "Version": "1"
+            \\"Version\\": \\"1\\"
         }
     \"\"\",
         description="this is a role test.",
@@ -393,19 +393,19 @@ def get_cluster_instances_output(cluster_id: Optional[pulumi.Input[Optional[_bui
     default_role = alicloud.ram.Role("default",
         name="emrtf",
         document=\"\"\"    {
-            "Statement": [
+            \\"Statement\\": [
             {
-                "Action": "sts:AssumeRole",
-                "Effect": "Allow",
-                "Principal": {
-                "Service": [
-                    "emr.aliyuncs.com",
-                    "ecs.aliyuncs.com"
+                \\"Action\\": \\"sts:AssumeRole\\",
+                \\"Effect\\": \\"Allow\\",
+                \\"Principal\\": {
+                \\"Service\\": [
+                    \\"emr.aliyuncs.com\\",
+                    \\"ecs.aliyuncs.com\\"
                 ]
                 }
             }
             ],
-            "Version": "1"
+            \\"Version\\": \\"1\\"
         }
     \"\"\",
         description="this is a role test.",

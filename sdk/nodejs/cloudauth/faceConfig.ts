@@ -13,6 +13,34 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** In order to provide you with more perfect product capabilities, the real person certification service has stopped access, it is recommended that you use the upgraded version of the [real person certification financial real person certification service](https://help.aliyun.com/zh/id-verification/product-overview/what-is-id-verification-for-financial-services). Users that have access to real person authentication are not affected.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const _default = new random.index.Integer("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const example = new alicloud.cloudauth.FaceConfig("example", {
+ *     bizName: std.format({
+ *         input: "%s-biz",
+ *         args: [name],
+ *     }).then(invoke => invoke.result),
+ *     bizType: std.format({
+ *         input: "type-%s",
+ *         args: [_default.result],
+ *     }).then(invoke => invoke.result),
+ * });
+ * ```
+ *
  * ## Import
  *
  * Cloudauth Face Config can be imported using the id, e.g.

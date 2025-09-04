@@ -16,6 +16,107 @@ namespace Pulumi.AliCloud.Alb
     /// 
     /// &gt; **NOTE:** Available since v1.200.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var @default = AliCloud.Alb.GetZones.Invoke();
+    /// 
+    ///     var defaultGetResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new List&lt;AliCloud.Vpc.Switch&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         defaultSwitch.Add(new AliCloud.Vpc.Switch($"default-{range.Value}", new()
+    ///         {
+    ///             VpcId = defaultNetwork.Id,
+    ///             CidrBlock = Std.Format.Invoke(new()
+    ///             {
+    ///                 Input = "10.4.%d.0/24",
+    ///                 Args = new[]
+    ///                 {
+    ///                     range.Value + 1,
+    ///                 },
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///             ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)[range.Value].Id),
+    ///             VswitchName = Std.Format.Invoke(new()
+    ///             {
+    ///                 Input = $"{name}_%d",
+    ///                 Args = new[]
+    ///                 {
+    ///                     range.Value + 1,
+    ///                 },
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///         }));
+    ///     }
+    ///     var defaultLoadBalancer = new AliCloud.Alb.LoadBalancer("default", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         AddressType = "Internet",
+    ///         AddressAllocatedMode = "Fixed",
+    ///         LoadBalancerName = name,
+    ///         LoadBalancerEdition = "Basic",
+    ///         ResourceGroupId = defaultGetResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         LoadBalancerBillingConfig = new AliCloud.Alb.Inputs.LoadBalancerLoadBalancerBillingConfigArgs
+    ///         {
+    ///             PayType = "PayAsYouGo",
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///         },
+    ///         ZoneMappings = new[]
+    ///         {
+    ///             new AliCloud.Alb.Inputs.LoadBalancerZoneMappingArgs
+    ///             {
+    ///                 VswitchId = defaultSwitch[0].Id,
+    ///                 ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///             },
+    ///             new AliCloud.Alb.Inputs.LoadBalancerZoneMappingArgs
+    ///             {
+    ///                 VswitchId = defaultSwitch[1].Id,
+    ///                 ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.Id)),
+    ///             },
+    ///         },
+    ///         ModificationProtectionConfig = new AliCloud.Alb.Inputs.LoadBalancerModificationProtectionConfigArgs
+    ///         {
+    ///             Status = "NonProtection",
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultCommonBandwithPackage = new AliCloud.Vpc.CommonBandwithPackage("default", new()
+    ///     {
+    ///         Bandwidth = "3",
+    ///         InternetChargeType = "PayByBandwidth",
+    ///     });
+    /// 
+    ///     var defaultLoadBalancerCommonBandwidthPackageAttachment = new AliCloud.Alb.LoadBalancerCommonBandwidthPackageAttachment("default", new()
+    ///     {
+    ///         BandwidthPackageId = defaultCommonBandwithPackage.Id,
+    ///         LoadBalancerId = defaultLoadBalancer.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Alb Load Balancer Common Bandwidth Package Attachment can be imported using the id, e.g.

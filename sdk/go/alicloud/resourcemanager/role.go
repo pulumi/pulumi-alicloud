@@ -47,18 +47,18 @@ import (
 //			_, err = resourcemanager.NewRole(ctx, "example", &resourcemanager.RoleArgs{
 //				RoleName: pulumi.String(name),
 //				AssumeRolePolicyDocument: pulumi.Sprintf(`     {
-//	          "Statement": [
+//	          \"Statement\": [
 //	               {
-//	                    "Action": "sts:AssumeRole",
-//	                    "Effect": "Allow",
-//	                    "Principal": {
-//	                        "RAM":[
-//	                                "acs:ram::%v:root"
+//	                    \"Action\": \"sts:AssumeRole\",
+//	                    \"Effect\": \"Allow\",
+//	                    \"Principal\": {
+//	                        \"RAM\":[
+//	                                \"acs:ram::%v:root\"
 //	                        ]
 //	                    }
 //	                }
 //	          ],
-//	          "Version": "1"
+//	          \"Version\": \"1\"
 //	     }
 //
 // `, _default.Id),

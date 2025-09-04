@@ -371,26 +371,26 @@ class Ingestion(pulumi.CustomResource):
             run_immediately=True,
             time_zone="+0800",
             source=\"\"\"        {
-                  "bucket": "bucket_name",
-                  "compressionCodec": "none",
-                  "encoding": "UTF-8",
-                  "endpoint": "oss-cn-hangzhou-internal.aliyuncs.com",
-                  "format": {
-                    "escapeChar": "\\\\",
-                    "fieldDelimiter": ",",
-                    "fieldNames": [],
-                    "firstRowAsHeader": true,
-                    "maxLines": 1,
-                    "quoteChar": "\\"",
-                    "skipLeadingRows": 0,
-                    "timeField": "",
-                    "type": "DelimitedText"
+                  \\"bucket\\": \\"bucket_name\\",
+                  \\"compressionCodec\\": \\"none\\",
+                  \\"encoding\\": \\"UTF-8\\",
+                  \\"endpoint\\": \\"oss-cn-hangzhou-internal.aliyuncs.com\\",
+                  \\"format\\": {
+                    \\"escapeChar\\": \\"\\\\\\\\\\",
+                    \\"fieldDelimiter\\": \\",\\",
+                    \\"fieldNames\\": [],
+                    \\"firstRowAsHeader\\": true,
+                    \\"maxLines\\": 1,
+                    \\"quoteChar\\": \\"\\\\\\"\\",
+                    \\"skipLeadingRows\\": 0,
+                    \\"timeField\\": \\"\\",
+                    \\"type\\": \\"DelimitedText\\"
                   },
-                  "pattern": "",
-                  "prefix": "test-prefix/",
-                  "restoreObjectEnabled": false,
-                  "roleARN": "acs:ram::1049446484210612:role/aliyunlogimportossrole",
-                  "type": "AliyunOSS"
+                  \\"pattern\\": \\"\\",
+                  \\"prefix\\": \\"test-prefix/\\",
+                  \\"restoreObjectEnabled\\": false,
+                  \\"roleARN\\": \\"acs:ram::1049446484210612:role/aliyunlogimportossrole\\",
+                  \\"type\\": \\"AliyunOSS\\"
                 }
         \"\"\")
         ```
@@ -463,26 +463,26 @@ class Ingestion(pulumi.CustomResource):
             run_immediately=True,
             time_zone="+0800",
             source=\"\"\"        {
-                  "bucket": "bucket_name",
-                  "compressionCodec": "none",
-                  "encoding": "UTF-8",
-                  "endpoint": "oss-cn-hangzhou-internal.aliyuncs.com",
-                  "format": {
-                    "escapeChar": "\\\\",
-                    "fieldDelimiter": ",",
-                    "fieldNames": [],
-                    "firstRowAsHeader": true,
-                    "maxLines": 1,
-                    "quoteChar": "\\"",
-                    "skipLeadingRows": 0,
-                    "timeField": "",
-                    "type": "DelimitedText"
+                  \\"bucket\\": \\"bucket_name\\",
+                  \\"compressionCodec\\": \\"none\\",
+                  \\"encoding\\": \\"UTF-8\\",
+                  \\"endpoint\\": \\"oss-cn-hangzhou-internal.aliyuncs.com\\",
+                  \\"format\\": {
+                    \\"escapeChar\\": \\"\\\\\\\\\\",
+                    \\"fieldDelimiter\\": \\",\\",
+                    \\"fieldNames\\": [],
+                    \\"firstRowAsHeader\\": true,
+                    \\"maxLines\\": 1,
+                    \\"quoteChar\\": \\"\\\\\\"\\",
+                    \\"skipLeadingRows\\": 0,
+                    \\"timeField\\": \\"\\",
+                    \\"type\\": \\"DelimitedText\\"
                   },
-                  "pattern": "",
-                  "prefix": "test-prefix/",
-                  "restoreObjectEnabled": false,
-                  "roleARN": "acs:ram::1049446484210612:role/aliyunlogimportossrole",
-                  "type": "AliyunOSS"
+                  \\"pattern\\": \\"\\",
+                  \\"prefix\\": \\"test-prefix/\\",
+                  \\"restoreObjectEnabled\\": false,
+                  \\"roleARN\\": \\"acs:ram::1049446484210612:role/aliyunlogimportossrole\\",
+                  \\"type\\": \\"AliyunOSS\\"
                 }
         \"\"\")
         ```

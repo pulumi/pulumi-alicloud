@@ -1008,6 +1008,124 @@ class NatFirewallControlPolicy(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.224.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        direction = config.get("direction")
+        if direction is None:
+            direction = "out"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_d_ei_wf_m = alicloud.vpc.Network("defaultDEiWfM",
+            cidr_block="172.16.0.0/12",
+            vpc_name=name)
+        default_fhdm3_f = alicloud.vpc.Switch("defaultFHDM3F",
+            vpc_id=default_d_ei_wf_m.id,
+            zone_id=default.zones[0].id,
+            cidr_block="172.16.2.0/24")
+        default_mb_s2_ts = alicloud.vpc.NatGateway("defaultMbS2Ts",
+            vpc_id=default_d_ei_wf_m.id,
+            nat_gateway_name=name,
+            payment_type="PayAsYouGo",
+            vswitch_id=default_fhdm3_f.id,
+            nat_type="Enhanced")
+        port = alicloud.cloudfirewall.AddressBook("port",
+            description=std.format(input="%s%s",
+                args=[
+                    name,
+                    "port",
+                ]).result,
+            group_name=std.format(input="%s%s",
+                args=[
+                    name,
+                    "port",
+                ]).result,
+            group_type="port",
+            address_lists=[
+                "22/22",
+                "23/23",
+                "24/24",
+            ])
+        port_update = alicloud.cloudfirewall.AddressBook("port-update",
+            description=std.format(input="%s%s",
+                args=[
+                    name,
+                    "port-update",
+                ]).result,
+            group_name=std.format(input="%s%s",
+                args=[
+                    name,
+                    "port-update",
+                ]).result,
+            group_type="port",
+            address_lists=[
+                "22/22",
+                "23/23",
+                "24/24",
+            ])
+        domain = alicloud.cloudfirewall.AddressBook("domain",
+            description=std.format(input="%s%s",
+                args=[
+                    name,
+                    "domain",
+                ]).result,
+            group_name=std.format(input="%s%s",
+                args=[
+                    name,
+                    "domain",
+                ]).result,
+            group_type="domain",
+            address_lists=[
+                "alibaba.com",
+                "aliyun.com",
+                "alicloud.com",
+            ])
+        ip = alicloud.cloudfirewall.AddressBook("ip",
+            description=name,
+            group_name=name,
+            group_type="ip",
+            address_lists=[
+                "1.1.1.1/32",
+                "2.2.2.2/32",
+            ])
+        default_nat_firewall_control_policy = alicloud.cloudfirewall.NatFirewallControlPolicy("default",
+            application_name_lists=["ANY"],
+            description=name,
+            release="false",
+            ip_version="4",
+            repeat_days=[
+                1,
+                2,
+                3,
+            ],
+            repeat_start_time="21:00",
+            acl_action="log",
+            dest_port_group=port.group_name,
+            repeat_type="Weekly",
+            nat_gateway_id=default_mb_s2_ts.id,
+            source="1.1.1.1/32",
+            direction="out",
+            repeat_end_time="21:30",
+            start_time=1699156800,
+            destination="1.1.1.1/32",
+            end_time=1888545600,
+            source_type="net",
+            proto="TCP",
+            new_order="1",
+            destination_type="net",
+            dest_port_type="group",
+            domain_resolve_type=0)
+        ```
+
         ## Import
 
         Cloud Firewall Nat Firewall Control Policy can be imported using the id, e.g.
@@ -1099,6 +1217,124 @@ class NatFirewallControlPolicy(pulumi.CustomResource):
         For information about Cloud Firewall Nat Firewall Control Policy and how to use it, see [What is Nat Firewall Control Policy](https://www.alibabacloud.com/help/en/cloud-firewall/developer-reference/api-cloudfw-2017-12-07-createnatfirewallcontrolpolicy).
 
         > **NOTE:** Available since v1.224.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        direction = config.get("direction")
+        if direction is None:
+            direction = "out"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_d_ei_wf_m = alicloud.vpc.Network("defaultDEiWfM",
+            cidr_block="172.16.0.0/12",
+            vpc_name=name)
+        default_fhdm3_f = alicloud.vpc.Switch("defaultFHDM3F",
+            vpc_id=default_d_ei_wf_m.id,
+            zone_id=default.zones[0].id,
+            cidr_block="172.16.2.0/24")
+        default_mb_s2_ts = alicloud.vpc.NatGateway("defaultMbS2Ts",
+            vpc_id=default_d_ei_wf_m.id,
+            nat_gateway_name=name,
+            payment_type="PayAsYouGo",
+            vswitch_id=default_fhdm3_f.id,
+            nat_type="Enhanced")
+        port = alicloud.cloudfirewall.AddressBook("port",
+            description=std.format(input="%s%s",
+                args=[
+                    name,
+                    "port",
+                ]).result,
+            group_name=std.format(input="%s%s",
+                args=[
+                    name,
+                    "port",
+                ]).result,
+            group_type="port",
+            address_lists=[
+                "22/22",
+                "23/23",
+                "24/24",
+            ])
+        port_update = alicloud.cloudfirewall.AddressBook("port-update",
+            description=std.format(input="%s%s",
+                args=[
+                    name,
+                    "port-update",
+                ]).result,
+            group_name=std.format(input="%s%s",
+                args=[
+                    name,
+                    "port-update",
+                ]).result,
+            group_type="port",
+            address_lists=[
+                "22/22",
+                "23/23",
+                "24/24",
+            ])
+        domain = alicloud.cloudfirewall.AddressBook("domain",
+            description=std.format(input="%s%s",
+                args=[
+                    name,
+                    "domain",
+                ]).result,
+            group_name=std.format(input="%s%s",
+                args=[
+                    name,
+                    "domain",
+                ]).result,
+            group_type="domain",
+            address_lists=[
+                "alibaba.com",
+                "aliyun.com",
+                "alicloud.com",
+            ])
+        ip = alicloud.cloudfirewall.AddressBook("ip",
+            description=name,
+            group_name=name,
+            group_type="ip",
+            address_lists=[
+                "1.1.1.1/32",
+                "2.2.2.2/32",
+            ])
+        default_nat_firewall_control_policy = alicloud.cloudfirewall.NatFirewallControlPolicy("default",
+            application_name_lists=["ANY"],
+            description=name,
+            release="false",
+            ip_version="4",
+            repeat_days=[
+                1,
+                2,
+                3,
+            ],
+            repeat_start_time="21:00",
+            acl_action="log",
+            dest_port_group=port.group_name,
+            repeat_type="Weekly",
+            nat_gateway_id=default_mb_s2_ts.id,
+            source="1.1.1.1/32",
+            direction="out",
+            repeat_end_time="21:30",
+            start_time=1699156800,
+            destination="1.1.1.1/32",
+            end_time=1888545600,
+            source_type="net",
+            proto="TCP",
+            new_order="1",
+            destination_type="net",
+            dest_port_type="group",
+            domain_resolve_type=0)
+        ```
 
         ## Import
 

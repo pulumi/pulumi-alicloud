@@ -11,6 +11,101 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.144.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultInteger = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const _default = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const defaultUuid = new random.index.Uuid("default", {});
+ * const defaultStorageBundle = new alicloud.cloudstoragegateway.StorageBundle("default", {storageBundleName: std.replace({
+ *     text: defaultUuid.result,
+ *     search: "-",
+ *     replace: "",
+ * }).then(invoke => std.substr({
+ *     input: `tf-example-${invoke.result}`,
+ *     offset: 0,
+ *     length: 16,
+ * })).then(invoke => invoke.result)});
+ * const defaultBucket = new alicloud.oss.Bucket("default", {bucket: std.replace({
+ *     text: defaultUuid.result,
+ *     search: "-",
+ *     replace: "",
+ * }).then(invoke => std.substr({
+ *     input: `tf-example-${invoke.result}`,
+ *     offset: 0,
+ *     length: 16,
+ * })).then(invoke => invoke.result)});
+ * const defaultBucketAcl = new alicloud.oss.BucketAcl("default", {
+ *     bucket: defaultBucket.bucket,
+ *     acl: "public-read-write",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const defaultGetStocks = alicloud.cloudstoragegateway.getStocks({
+ *     gatewayClass: "Standard",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/21",
+ *     zoneId: defaultGetStocks.then(defaultGetStocks => defaultGetStocks.stocks?.[0]?.zoneId),
+ *     vswitchName: name,
+ * });
+ * const defaultGateway = new alicloud.cloudstoragegateway.Gateway("default", {
+ *     gatewayName: name,
+ *     description: name,
+ *     gatewayClass: "Standard",
+ *     type: "File",
+ *     paymentType: "PayAsYouGo",
+ *     vswitchId: defaultSwitch.id,
+ *     releaseAfterExpiration: true,
+ *     publicNetworkBandwidth: 40,
+ *     storageBundleId: defaultStorageBundle.id,
+ *     location: "Cloud",
+ * });
+ * const defaultGatewayCacheDisk = new alicloud.cloudstoragegateway.GatewayCacheDisk("default", {
+ *     cacheDiskCategory: "cloud_efficiency",
+ *     gatewayId: defaultGateway.id,
+ *     cacheDiskSizeInGb: 50,
+ * });
+ * const defaultGatewayFileShare = new alicloud.cloudstoragegateway.GatewayFileShare("default", {
+ *     gatewayFileShareName: name,
+ *     gatewayId: defaultGateway.id,
+ *     localPath: defaultGatewayCacheDisk.localFilePath,
+ *     ossBucketName: defaultBucket.bucket,
+ *     ossEndpoint: defaultBucket.extranetEndpoint,
+ *     protocol: "NFS",
+ *     remoteSync: true,
+ *     pollingInterval: 4500,
+ *     feLimit: 0,
+ *     backendLimit: 0,
+ *     cacheMode: "Cache",
+ *     squash: "none",
+ *     lagPeriod: 5,
+ * });
+ * const defaultExpressSync = new alicloud.cloudstoragegateway.ExpressSync("default", {
+ *     bucketName: defaultGatewayFileShare.ossBucketName,
+ *     bucketRegion: _default.then(_default => _default.regions?.[0]?.id),
+ *     description: name,
+ *     expressSyncName: `${name}-${defaultInteger.result}`,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Cloud Storage Gateway Express Sync can be imported using the id, e.g.

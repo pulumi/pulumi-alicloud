@@ -18,6 +18,94 @@ import (
 //
 // > **NOTE:** Available since v1.240.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/apig"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId: pulumi.StringRef(defaultGetNetworks.Ids[0]),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s2",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultgateway, err := apig.NewGateway(ctx, "defaultgateway", &apig.GatewayArgs{
+//				NetworkAccessConfig: &apig.GatewayNetworkAccessConfigArgs{
+//					Type: pulumi.String("Intranet"),
+//				},
+//				Vswitch: &apig.GatewayVswitchArgs{
+//					VswitchId: pulumi.String(defaultGetSwitches.Ids[0]),
+//				},
+//				ZoneConfig: &apig.GatewayZoneConfigArgs{
+//					SelectOption: pulumi.String("Auto"),
+//				},
+//				Vpc: &apig.GatewayVpcArgs{
+//					VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
+//				},
+//				PaymentType: pulumi.String("PayAsYouGo"),
+//				GatewayName: pulumi.String(invokeFormat.Result),
+//				Spec:        pulumi.String("apigw.small.x1"),
+//				LogConfig: &apig.GatewayLogConfigArgs{
+//					Sls: &apig.GatewayLogConfigSlsArgs{},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = apig.NewEnvironment(ctx, "default", &apig.EnvironmentArgs{
+//				Description:     pulumi.String(name),
+//				EnvironmentName: pulumi.String(name),
+//				GatewayId:       defaultgateway.ID(),
+//				ResourceGroupId: pulumi.String(_default.Ids[1]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // APIG Environment can be imported using the id, e.g.

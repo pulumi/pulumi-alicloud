@@ -80,6 +80,8 @@ type Cluster struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tag of the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// The version code of MSE Cluster. You can keep the instance version up to date by setting the value to `LATEST` (Available since v1.257.0).
+	VersionCode pulumi.StringOutput `pulumi:"versionCode"`
 	// The id of the VPC.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The id of VSwitch.
@@ -192,6 +194,8 @@ type clusterState struct {
 	Status *string `pulumi:"status"`
 	// The tag of the resource.
 	Tags map[string]string `pulumi:"tags"`
+	// The version code of MSE Cluster. You can keep the instance version up to date by setting the value to `LATEST` (Available since v1.257.0).
+	VersionCode *string `pulumi:"versionCode"`
 	// The id of the VPC.
 	VpcId *string `pulumi:"vpcId"`
 	// The id of VSwitch.
@@ -257,6 +261,8 @@ type ClusterState struct {
 	Status pulumi.StringPtrInput
 	// The tag of the resource.
 	Tags pulumi.StringMapInput
+	// The version code of MSE Cluster. You can keep the instance version up to date by setting the value to `LATEST` (Available since v1.257.0).
+	VersionCode pulumi.StringPtrInput
 	// The id of the VPC.
 	VpcId pulumi.StringPtrInput
 	// The id of VSwitch.
@@ -320,6 +326,8 @@ type clusterArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The tag of the resource.
 	Tags map[string]string `pulumi:"tags"`
+	// The version code of MSE Cluster. You can keep the instance version up to date by setting the value to `LATEST` (Available since v1.257.0).
+	VersionCode *string `pulumi:"versionCode"`
 	// The id of the VPC.
 	VpcId *string `pulumi:"vpcId"`
 	// The id of VSwitch.
@@ -380,6 +388,8 @@ type ClusterArgs struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// The tag of the resource.
 	Tags pulumi.StringMapInput
+	// The version code of MSE Cluster. You can keep the instance version up to date by setting the value to `LATEST` (Available since v1.257.0).
+	VersionCode pulumi.StringPtrInput
 	// The id of the VPC.
 	VpcId pulumi.StringPtrInput
 	// The id of VSwitch.
@@ -589,6 +599,11 @@ func (o ClusterOutput) Status() pulumi.StringOutput {
 // The tag of the resource.
 func (o ClusterOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The version code of MSE Cluster. You can keep the instance version up to date by setting the value to `LATEST` (Available since v1.257.0).
+func (o ClusterOutput) VersionCode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.VersionCode }).(pulumi.StringOutput)
 }
 
 // The id of the VPC.

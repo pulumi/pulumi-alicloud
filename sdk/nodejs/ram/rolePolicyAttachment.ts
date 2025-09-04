@@ -24,19 +24,19 @@ import * as utilities from "../utilities";
  * const role = new alicloud.ram.Role("role", {
  *     name: "roleName",
  *     document: `    {
- *       "Statement": [
+ *       \\"Statement\\": [
  *         {
- *           "Action": "sts:AssumeRole",
- *           "Effect": "Allow",
- *           "Principal": {
- *             "Service": [
- *               "apigateway.aliyuncs.com", 
- *               "ecs.aliyuncs.com"
+ *           \\"Action\\": \\"sts:AssumeRole\\",
+ *           \\"Effect\\": \\"Allow\\",
+ *           \\"Principal\\": {
+ *             \\"Service\\": [
+ *               \\"apigateway.aliyuncs.com\\", 
+ *               \\"ecs.aliyuncs.com\\"
  *             ]
  *           }
  *         }
  *       ],
- *       "Version": "1"
+ *       \\"Version\\": \\"1\\"
  *     }
  * `,
  *     description: "this is a role test.",
@@ -48,20 +48,20 @@ import * as utilities from "../utilities";
  * const policy = new alicloud.ram.Policy("policy", {
  *     policyName: `tf-example-${_default.result}`,
  *     policyDocument: `  {
- *     "Statement": [
+ *     \\"Statement\\": [
  *       {
- *         "Action": [
- *           "oss:ListObjects",
- *           "oss:GetObject"
+ *         \\"Action\\": [
+ *           \\"oss:ListObjects\\",
+ *           \\"oss:GetObject\\"
  *         ],
- *         "Effect": "Allow",
- *         "Resource": [
- *           "acs:oss:*:*:mybucket",
- *           "acs:oss:*:*:mybucket/*"
+ *         \\"Effect\\": \\"Allow\\",
+ *         \\"Resource\\": [
+ *           \\"acs:oss:*:*:mybucket\\",
+ *           \\"acs:oss:*:*:mybucket/*\\"
  *         ]
  *       }
  *     ],
- *       "Version": "1"
+ *       \\"Version\\": \\"1\\"
  *   }
  * `,
  *     description: "this is a policy test",

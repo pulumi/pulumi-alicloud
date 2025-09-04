@@ -15,6 +15,81 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.237.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const defaulteyHJsO = new alicloud.log.Project("defaulteyHJsO", {
+ *     description: "terraform-oss-example-910",
+ *     projectName: std.format({
+ *         input: "%s1%s",
+ *         args: [
+ *             name,
+ *             _default.result,
+ *         ],
+ *     }).then(invoke => invoke.result),
+ * });
+ * const defaultxeHfXC = new alicloud.log.Store("defaultxeHfXC", {
+ *     hotTtl: 8,
+ *     retentionPeriod: 30,
+ *     shardCount: 2,
+ *     projectName: defaulteyHJsO.projectName,
+ *     logstoreName: std.format({
+ *         input: "%s1%s",
+ *         args: [
+ *             name,
+ *             _default.result,
+ *         ],
+ *     }).then(invoke => invoke.result),
+ * });
+ * const defaultiwj0xO = new alicloud.oss.Bucket("defaultiwj0xO", {
+ *     bucket: std.format({
+ *         input: "%s1%s",
+ *         args: [
+ *             name,
+ *             _default.result,
+ *         ],
+ *     }).then(invoke => invoke.result),
+ *     storageClass: "Standard",
+ * });
+ * const defaultOssExportSink = new alicloud.sls.OssExportSink("default", {
+ *     project: defaulteyHJsO.projectName,
+ *     configuration: {
+ *         logstore: defaultxeHfXC.logstoreName,
+ *         roleArn: "acs:ram::12345678901234567:role/aliyunlogdefaultrole",
+ *         sink: {
+ *             bucket: defaultiwj0xO.bucket,
+ *             roleArn: "acs:ram::12345678901234567:role/aliyunlogdefaultrole",
+ *             timeZone: "+0700",
+ *             contentType: "json",
+ *             compressionType: "none",
+ *             contentDetail: JSON.stringify({
+ *                 enableTag: false,
+ *             }),
+ *             bufferInterval: "300",
+ *             bufferSize: "256",
+ *             endpoint: "https://oss-cn-shanghai-internal.aliyuncs.com",
+ *         },
+ *         fromTime: 1732165733,
+ *         toTime: 1732166733,
+ *     },
+ *     jobName: "export-oss-1731404933-00001",
+ *     displayName: "exampleterraform",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Log Service (SLS) Oss Export Sink can be imported using the id, e.g.

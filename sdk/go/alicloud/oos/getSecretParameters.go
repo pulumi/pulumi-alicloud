@@ -43,12 +43,12 @@ import (
 //				Type:                pulumi.String("Secret"),
 //				Description:         pulumi.String(name),
 //				Constraints: pulumi.String(`  {
-//	    "AllowedValues": [
-//	        "tf-testacc-oos_secret_parameter"
+//	    \"AllowedValues\": [
+//	        \"tf-testacc-oos_secret_parameter\"
 //	    ],
-//	    "AllowedPattern": "tf-testacc-oos_secret_parameter",
-//	    "MinLength": 1,
-//	    "MaxLength": 100
+//	    \"AllowedPattern\": \"tf-testacc-oos_secret_parameter\",
+//	    \"MinLength\": 1,
+//	    \"MaxLength\": 100
 //	  }
 //
 // `),

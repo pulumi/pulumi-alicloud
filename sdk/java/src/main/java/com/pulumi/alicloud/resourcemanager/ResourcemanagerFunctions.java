@@ -4054,6 +4054,90 @@ public final class ResourcemanagerFunctions {
      * 
      * &gt; **NOTE:** Available since v1.111.0.
      * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourceShare;
+     * import com.pulumi.alicloud.resourcemanager.ResourceShareArgs;
+     * import com.pulumi.alicloud.resourcemanager.SharedResource;
+     * import com.pulumi.alicloud.resourcemanager.SharedResourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.FormatArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("tf-example");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .zoneId(default_.ids()[0])
+     *             .build());
+     * 
+     *         var defaultResourceShare = new ResourceShare("defaultResourceShare", ResourceShareArgs.builder()
+     *             .resourceShareName(name)
+     *             .build());
+     * 
+     *         var defaultSharedResource = new SharedResource("defaultSharedResource", SharedResourceArgs.builder()
+     *             .resourceShareId(defaultResourceShare.id())
+     *             .resourceId(defaultGetSwitches.ids()[0])
+     *             .resourceType("VSwitch")
+     *             .build());
+     * 
+     *         final var ids = ResourcemanagerFunctions.getSharedResources(GetSharedResourcesArgs.builder()
+     *             .ids(StdFunctions.format(FormatArgs.builder()
+     *                 .input("%s:%s")
+     *                 .args(                
+     *                     defaultSharedResource.resourceId(),
+     *                     defaultSharedResource.resourceType())
+     *                 .build()).result())
+     *             .build());
+     * 
+     *         ctx.export("firstResourceManagerSharedResourceId", ids.resources()[0].id());
+     *         final var resourceShareId = ResourcemanagerFunctions.getSharedResources(GetSharedResourcesArgs.builder()
+     *             .resourceShareId(defaultSharedResource.resourceShareId())
+     *             .build());
+     * 
+     *         ctx.export("secondResourceManagerSharedResourceId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.resources()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetSharedResourcesResult> getSharedResources() {
         return getSharedResources(GetSharedResourcesArgs.Empty, InvokeOptions.Empty);
@@ -4062,6 +4146,90 @@ public final class ResourcemanagerFunctions {
      * This data source provides the Resource Manager Shared Resources of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available since v1.111.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourceShare;
+     * import com.pulumi.alicloud.resourcemanager.ResourceShareArgs;
+     * import com.pulumi.alicloud.resourcemanager.SharedResource;
+     * import com.pulumi.alicloud.resourcemanager.SharedResourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.FormatArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("tf-example");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .zoneId(default_.ids()[0])
+     *             .build());
+     * 
+     *         var defaultResourceShare = new ResourceShare("defaultResourceShare", ResourceShareArgs.builder()
+     *             .resourceShareName(name)
+     *             .build());
+     * 
+     *         var defaultSharedResource = new SharedResource("defaultSharedResource", SharedResourceArgs.builder()
+     *             .resourceShareId(defaultResourceShare.id())
+     *             .resourceId(defaultGetSwitches.ids()[0])
+     *             .resourceType("VSwitch")
+     *             .build());
+     * 
+     *         final var ids = ResourcemanagerFunctions.getSharedResources(GetSharedResourcesArgs.builder()
+     *             .ids(StdFunctions.format(FormatArgs.builder()
+     *                 .input("%s:%s")
+     *                 .args(                
+     *                     defaultSharedResource.resourceId(),
+     *                     defaultSharedResource.resourceType())
+     *                 .build()).result())
+     *             .build());
+     * 
+     *         ctx.export("firstResourceManagerSharedResourceId", ids.resources()[0].id());
+     *         final var resourceShareId = ResourcemanagerFunctions.getSharedResources(GetSharedResourcesArgs.builder()
+     *             .resourceShareId(defaultSharedResource.resourceShareId())
+     *             .build());
+     * 
+     *         ctx.export("secondResourceManagerSharedResourceId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.resources()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSharedResourcesResult> getSharedResourcesPlain() {
@@ -4072,6 +4240,90 @@ public final class ResourcemanagerFunctions {
      * 
      * &gt; **NOTE:** Available since v1.111.0.
      * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourceShare;
+     * import com.pulumi.alicloud.resourcemanager.ResourceShareArgs;
+     * import com.pulumi.alicloud.resourcemanager.SharedResource;
+     * import com.pulumi.alicloud.resourcemanager.SharedResourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.FormatArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("tf-example");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .zoneId(default_.ids()[0])
+     *             .build());
+     * 
+     *         var defaultResourceShare = new ResourceShare("defaultResourceShare", ResourceShareArgs.builder()
+     *             .resourceShareName(name)
+     *             .build());
+     * 
+     *         var defaultSharedResource = new SharedResource("defaultSharedResource", SharedResourceArgs.builder()
+     *             .resourceShareId(defaultResourceShare.id())
+     *             .resourceId(defaultGetSwitches.ids()[0])
+     *             .resourceType("VSwitch")
+     *             .build());
+     * 
+     *         final var ids = ResourcemanagerFunctions.getSharedResources(GetSharedResourcesArgs.builder()
+     *             .ids(StdFunctions.format(FormatArgs.builder()
+     *                 .input("%s:%s")
+     *                 .args(                
+     *                     defaultSharedResource.resourceId(),
+     *                     defaultSharedResource.resourceType())
+     *                 .build()).result())
+     *             .build());
+     * 
+     *         ctx.export("firstResourceManagerSharedResourceId", ids.resources()[0].id());
+     *         final var resourceShareId = ResourcemanagerFunctions.getSharedResources(GetSharedResourcesArgs.builder()
+     *             .resourceShareId(defaultSharedResource.resourceShareId())
+     *             .build());
+     * 
+     *         ctx.export("secondResourceManagerSharedResourceId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.resources()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetSharedResourcesResult> getSharedResources(GetSharedResourcesArgs args) {
         return getSharedResources(args, InvokeOptions.Empty);
@@ -4080,6 +4332,90 @@ public final class ResourcemanagerFunctions {
      * This data source provides the Resource Manager Shared Resources of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available since v1.111.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourceShare;
+     * import com.pulumi.alicloud.resourcemanager.ResourceShareArgs;
+     * import com.pulumi.alicloud.resourcemanager.SharedResource;
+     * import com.pulumi.alicloud.resourcemanager.SharedResourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.FormatArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("tf-example");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .zoneId(default_.ids()[0])
+     *             .build());
+     * 
+     *         var defaultResourceShare = new ResourceShare("defaultResourceShare", ResourceShareArgs.builder()
+     *             .resourceShareName(name)
+     *             .build());
+     * 
+     *         var defaultSharedResource = new SharedResource("defaultSharedResource", SharedResourceArgs.builder()
+     *             .resourceShareId(defaultResourceShare.id())
+     *             .resourceId(defaultGetSwitches.ids()[0])
+     *             .resourceType("VSwitch")
+     *             .build());
+     * 
+     *         final var ids = ResourcemanagerFunctions.getSharedResources(GetSharedResourcesArgs.builder()
+     *             .ids(StdFunctions.format(FormatArgs.builder()
+     *                 .input("%s:%s")
+     *                 .args(                
+     *                     defaultSharedResource.resourceId(),
+     *                     defaultSharedResource.resourceType())
+     *                 .build()).result())
+     *             .build());
+     * 
+     *         ctx.export("firstResourceManagerSharedResourceId", ids.resources()[0].id());
+     *         final var resourceShareId = ResourcemanagerFunctions.getSharedResources(GetSharedResourcesArgs.builder()
+     *             .resourceShareId(defaultSharedResource.resourceShareId())
+     *             .build());
+     * 
+     *         ctx.export("secondResourceManagerSharedResourceId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.resources()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSharedResourcesResult> getSharedResourcesPlain(GetSharedResourcesPlainArgs args) {
@@ -4090,6 +4426,90 @@ public final class ResourcemanagerFunctions {
      * 
      * &gt; **NOTE:** Available since v1.111.0.
      * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourceShare;
+     * import com.pulumi.alicloud.resourcemanager.ResourceShareArgs;
+     * import com.pulumi.alicloud.resourcemanager.SharedResource;
+     * import com.pulumi.alicloud.resourcemanager.SharedResourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.FormatArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("tf-example");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .zoneId(default_.ids()[0])
+     *             .build());
+     * 
+     *         var defaultResourceShare = new ResourceShare("defaultResourceShare", ResourceShareArgs.builder()
+     *             .resourceShareName(name)
+     *             .build());
+     * 
+     *         var defaultSharedResource = new SharedResource("defaultSharedResource", SharedResourceArgs.builder()
+     *             .resourceShareId(defaultResourceShare.id())
+     *             .resourceId(defaultGetSwitches.ids()[0])
+     *             .resourceType("VSwitch")
+     *             .build());
+     * 
+     *         final var ids = ResourcemanagerFunctions.getSharedResources(GetSharedResourcesArgs.builder()
+     *             .ids(StdFunctions.format(FormatArgs.builder()
+     *                 .input("%s:%s")
+     *                 .args(                
+     *                     defaultSharedResource.resourceId(),
+     *                     defaultSharedResource.resourceType())
+     *                 .build()).result())
+     *             .build());
+     * 
+     *         ctx.export("firstResourceManagerSharedResourceId", ids.resources()[0].id());
+     *         final var resourceShareId = ResourcemanagerFunctions.getSharedResources(GetSharedResourcesArgs.builder()
+     *             .resourceShareId(defaultSharedResource.resourceShareId())
+     *             .build());
+     * 
+     *         ctx.export("secondResourceManagerSharedResourceId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.resources()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetSharedResourcesResult> getSharedResources(GetSharedResourcesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:resourcemanager/getSharedResources:getSharedResources", TypeShape.of(GetSharedResourcesResult.class), args, Utilities.withVersion(options));
@@ -4099,6 +4519,90 @@ public final class ResourcemanagerFunctions {
      * 
      * &gt; **NOTE:** Available since v1.111.0.
      * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourceShare;
+     * import com.pulumi.alicloud.resourcemanager.ResourceShareArgs;
+     * import com.pulumi.alicloud.resourcemanager.SharedResource;
+     * import com.pulumi.alicloud.resourcemanager.SharedResourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.FormatArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("tf-example");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .zoneId(default_.ids()[0])
+     *             .build());
+     * 
+     *         var defaultResourceShare = new ResourceShare("defaultResourceShare", ResourceShareArgs.builder()
+     *             .resourceShareName(name)
+     *             .build());
+     * 
+     *         var defaultSharedResource = new SharedResource("defaultSharedResource", SharedResourceArgs.builder()
+     *             .resourceShareId(defaultResourceShare.id())
+     *             .resourceId(defaultGetSwitches.ids()[0])
+     *             .resourceType("VSwitch")
+     *             .build());
+     * 
+     *         final var ids = ResourcemanagerFunctions.getSharedResources(GetSharedResourcesArgs.builder()
+     *             .ids(StdFunctions.format(FormatArgs.builder()
+     *                 .input("%s:%s")
+     *                 .args(                
+     *                     defaultSharedResource.resourceId(),
+     *                     defaultSharedResource.resourceType())
+     *                 .build()).result())
+     *             .build());
+     * 
+     *         ctx.export("firstResourceManagerSharedResourceId", ids.resources()[0].id());
+     *         final var resourceShareId = ResourcemanagerFunctions.getSharedResources(GetSharedResourcesArgs.builder()
+     *             .resourceShareId(defaultSharedResource.resourceShareId())
+     *             .build());
+     * 
+     *         ctx.export("secondResourceManagerSharedResourceId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.resources()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetSharedResourcesResult> getSharedResources(GetSharedResourcesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:resourcemanager/getSharedResources:getSharedResources", TypeShape.of(GetSharedResourcesResult.class), args, Utilities.withVersion(options));
@@ -4107,6 +4611,90 @@ public final class ResourcemanagerFunctions {
      * This data source provides the Resource Manager Shared Resources of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available since v1.111.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourceShare;
+     * import com.pulumi.alicloud.resourcemanager.ResourceShareArgs;
+     * import com.pulumi.alicloud.resourcemanager.SharedResource;
+     * import com.pulumi.alicloud.resourcemanager.SharedResourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.FormatArgs;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetSharedResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("tf-example");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .zoneId(default_.ids()[0])
+     *             .build());
+     * 
+     *         var defaultResourceShare = new ResourceShare("defaultResourceShare", ResourceShareArgs.builder()
+     *             .resourceShareName(name)
+     *             .build());
+     * 
+     *         var defaultSharedResource = new SharedResource("defaultSharedResource", SharedResourceArgs.builder()
+     *             .resourceShareId(defaultResourceShare.id())
+     *             .resourceId(defaultGetSwitches.ids()[0])
+     *             .resourceType("VSwitch")
+     *             .build());
+     * 
+     *         final var ids = ResourcemanagerFunctions.getSharedResources(GetSharedResourcesArgs.builder()
+     *             .ids(StdFunctions.format(FormatArgs.builder()
+     *                 .input("%s:%s")
+     *                 .args(                
+     *                     defaultSharedResource.resourceId(),
+     *                     defaultSharedResource.resourceType())
+     *                 .build()).result())
+     *             .build());
+     * 
+     *         ctx.export("firstResourceManagerSharedResourceId", ids.resources()[0].id());
+     *         final var resourceShareId = ResourcemanagerFunctions.getSharedResources(GetSharedResourcesArgs.builder()
+     *             .resourceShareId(defaultSharedResource.resourceShareId())
+     *             .build());
+     * 
+     *         ctx.export("secondResourceManagerSharedResourceId", resourceShareId.applyValue(_resourceShareId -> _resourceShareId.resources()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSharedResourcesResult> getSharedResourcesPlain(GetSharedResourcesPlainArgs args, InvokeOptions options) {

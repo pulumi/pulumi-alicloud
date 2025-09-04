@@ -35,12 +35,13 @@ class InstanceArgs:
                  product_version: Optional[pulumi.Input[_builtins.str]] = None,
                  renew_period: Optional[pulumi.Input[_builtins.int]] = None,
                  renew_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 renewal_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_num: Optional[pulumi.Input[_builtins.int]] = None,
                  spec: Optional[pulumi.Input[_builtins.int]] = None,
                  vpc_num: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[_builtins.str] vpc_id: Instance VPC id
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: Instance bind vswitches
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] zone_ids: zone id
         :param pulumi.Input[Sequence[pulumi.Input['InstanceBindVpcArgs']]] bind_vpcs: Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
@@ -49,13 +50,16 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.int] key_num: Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.str] log: Instance Audit Log Switch. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.int] log_storage: Instance log capacity. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[_builtins.str] payment_type: Payment type,valid values:
+        :param pulumi.Input[_builtins.str] payment_type: Payment type, valid values:
                - `Subscription`: Prepaid.
                - `PayAsYouGo`: Postpaid.
         :param pulumi.Input[_builtins.int] period: Purchase cycle, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.str] product_version: KMS Instance commodity type (software/hardware)
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal period, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.str] renew_status: Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `payment_type` is `Subscription`.
+        :param pulumi.Input[_builtins.str] renewal_period_unit: Automatic renewal period unit, valid value:
+               - `M`: Month.
+               - `Y`: Year.
         :param pulumi.Input[_builtins.int] secret_num: Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.int] spec: The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.int] vpc_num: The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
@@ -85,6 +89,8 @@ class InstanceArgs:
             pulumi.set(__self__, "renew_period", renew_period)
         if renew_status is not None:
             pulumi.set(__self__, "renew_status", renew_status)
+        if renewal_period_unit is not None:
+            pulumi.set(__self__, "renewal_period_unit", renewal_period_unit)
         if secret_num is not None:
             pulumi.set(__self__, "secret_num", secret_num)
         if spec is not None:
@@ -96,7 +102,7 @@ class InstanceArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Instance VPC id
+        The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -204,7 +210,7 @@ class InstanceArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Payment type,valid values:
+        Payment type, valid values:
         - `Subscription`: Prepaid.
         - `PayAsYouGo`: Postpaid.
         """
@@ -263,6 +269,20 @@ class InstanceArgs:
         pulumi.set(self, "renew_status", value)
 
     @_builtins.property
+    @pulumi.getter(name="renewalPeriodUnit")
+    def renewal_period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Automatic renewal period unit, valid value:
+        - `M`: Month.
+        - `Y`: Year.
+        """
+        return pulumi.get(self, "renewal_period_unit")
+
+    @renewal_period_unit.setter
+    def renewal_period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "renewal_period_unit", value)
+
+    @_builtins.property
     @pulumi.getter(name="secretNum")
     def secret_num(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -316,6 +336,7 @@ class _InstanceState:
                  product_version: Optional[pulumi.Input[_builtins.str]] = None,
                  renew_period: Optional[pulumi.Input[_builtins.int]] = None,
                  renew_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 renewal_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_num: Optional[pulumi.Input[_builtins.int]] = None,
                  spec: Optional[pulumi.Input[_builtins.int]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
@@ -334,17 +355,20 @@ class _InstanceState:
         :param pulumi.Input[_builtins.int] key_num: Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.str] log: Instance Audit Log Switch. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.int] log_storage: Instance log capacity. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[_builtins.str] payment_type: Payment type,valid values:
+        :param pulumi.Input[_builtins.str] payment_type: Payment type, valid values:
                - `Subscription`: Prepaid.
                - `PayAsYouGo`: Postpaid.
         :param pulumi.Input[_builtins.int] period: Purchase cycle, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.str] product_version: KMS Instance commodity type (software/hardware)
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal period, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.str] renew_status: Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `payment_type` is `Subscription`.
+        :param pulumi.Input[_builtins.str] renewal_period_unit: Automatic renewal period unit, valid value:
+               - `M`: Month.
+               - `Y`: Year.
         :param pulumi.Input[_builtins.int] secret_num: Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.int] spec: The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.str] status: Instance status.
-        :param pulumi.Input[_builtins.str] vpc_id: Instance VPC id
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
         :param pulumi.Input[_builtins.int] vpc_num: The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: Instance bind vswitches
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] zone_ids: zone id
@@ -377,6 +401,8 @@ class _InstanceState:
             pulumi.set(__self__, "renew_period", renew_period)
         if renew_status is not None:
             pulumi.set(__self__, "renew_status", renew_status)
+        if renewal_period_unit is not None:
+            pulumi.set(__self__, "renewal_period_unit", renewal_period_unit)
         if secret_num is not None:
             pulumi.set(__self__, "secret_num", secret_num)
         if spec is not None:
@@ -504,7 +530,7 @@ class _InstanceState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Payment type,valid values:
+        Payment type, valid values:
         - `Subscription`: Prepaid.
         - `PayAsYouGo`: Postpaid.
         """
@@ -563,6 +589,20 @@ class _InstanceState:
         pulumi.set(self, "renew_status", value)
 
     @_builtins.property
+    @pulumi.getter(name="renewalPeriodUnit")
+    def renewal_period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Automatic renewal period unit, valid value:
+        - `M`: Month.
+        - `Y`: Year.
+        """
+        return pulumi.get(self, "renewal_period_unit")
+
+    @renewal_period_unit.setter
+    def renewal_period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "renewal_period_unit", value)
+
+    @_builtins.property
     @pulumi.getter(name="secretNum")
     def secret_num(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -602,7 +642,7 @@ class _InstanceState:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Instance VPC id
+        The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -664,6 +704,7 @@ class Instance(pulumi.CustomResource):
                  product_version: Optional[pulumi.Input[_builtins.str]] = None,
                  renew_period: Optional[pulumi.Input[_builtins.int]] = None,
                  renew_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 renewal_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_num: Optional[pulumi.Input[_builtins.int]] = None,
                  spec: Optional[pulumi.Input[_builtins.int]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -677,6 +718,179 @@ class Instance(pulumi.CustomResource):
         For information about KMS Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/zh/key-management-service/latest/kms-instance-management).
 
         > **NOTE:** Available since v1.210.0.
+
+        ## Example Usage
+
+        Create a subscription kms instance
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        current = alicloud.get_account()
+        vpc_amp_instance_example = alicloud.vpc.Network("vpc-amp-instance-example",
+            cidr_block="172.16.0.0/12",
+            vpc_name=name)
+        vswitch = alicloud.vpc.Switch("vswitch",
+            vpc_id=vpc_amp_instance_example.id,
+            zone_id="cn-hangzhou-k",
+            cidr_block="172.16.1.0/24")
+        vswitch_j = alicloud.vpc.Switch("vswitch-j",
+            vpc_id=vpc_amp_instance_example.id,
+            zone_id="cn-hangzhou-j",
+            cidr_block="172.16.2.0/24")
+        share_vpc = alicloud.vpc.Network("shareVPC",
+            cidr_block="172.16.0.0/12",
+            vpc_name=std.format(input="%s3",
+                args=[name]).result)
+        share_vswitch = alicloud.vpc.Switch("shareVswitch",
+            vpc_id=share_vpc.id,
+            zone_id="cn-hangzhou-k",
+            cidr_block="172.16.1.0/24")
+        share__vpc2 = alicloud.vpc.Network("share-VPC2",
+            cidr_block="172.16.0.0/12",
+            vpc_name=std.format(input="%s5",
+                args=[name]).result)
+        share_vswitch2 = alicloud.vpc.Switch("share-vswitch2",
+            vpc_id=share__vpc2.id,
+            zone_id="cn-hangzhou-k",
+            cidr_block="172.16.1.0/24")
+        share__vpc3 = alicloud.vpc.Network("share-VPC3",
+            cidr_block="172.16.0.0/12",
+            vpc_name=std.format(input="%s7",
+                args=[name]).result)
+        share_vsw3 = alicloud.vpc.Switch("share-vsw3",
+            vpc_id=share__vpc3.id,
+            zone_id="cn-hangzhou-k",
+            cidr_block="172.16.1.0/24")
+        default = alicloud.kms.Instance("default",
+            vpc_num=7,
+            key_num=1000,
+            secret_num=0,
+            spec=1000,
+            renew_status="ManualRenewal",
+            product_version="3",
+            renew_period=3,
+            vpc_id=vswitch.vpc_id,
+            zone_ids=[
+                "cn-hangzhou-k",
+                "cn-hangzhou-j",
+            ],
+            vswitch_ids=[vswitch_j.id],
+            bind_vpcs=[
+                {
+                    "vpc_id": share_vswitch.vpc_id,
+                    "region_id": region,
+                    "vswitch_id": share_vswitch.id,
+                    "vpc_owner_id": current.id,
+                },
+                {
+                    "vpc_id": share_vswitch2.vpc_id,
+                    "region_id": region,
+                    "vswitch_id": share_vswitch2.id,
+                    "vpc_owner_id": current.id,
+                },
+                {
+                    "vpc_id": share_vsw3.vpc_id,
+                    "region_id": region,
+                    "vswitch_id": share_vsw3.id,
+                    "vpc_owner_id": current.id,
+                },
+            ],
+            log="0",
+            period=1,
+            log_storage=0,
+            payment_type="Subscription")
+        ```
+        Create a pay-as-you-go kms instance
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        current = alicloud.get_account()
+        vpc_amp_instance_example = alicloud.vpc.Network("vpc-amp-instance-example",
+            cidr_block="172.16.0.0/12",
+            vpc_name=name)
+        vswitch = alicloud.vpc.Switch("vswitch",
+            vpc_id=vpc_amp_instance_example.id,
+            zone_id="cn-hangzhou-k",
+            cidr_block="172.16.1.0/24")
+        vswitch_j = alicloud.vpc.Switch("vswitch-j",
+            vpc_id=vpc_amp_instance_example.id,
+            zone_id="cn-hangzhou-j",
+            cidr_block="172.16.2.0/24")
+        share_vpc = alicloud.vpc.Network("shareVPC",
+            cidr_block="172.16.0.0/12",
+            vpc_name=std.format(input="%s3",
+                args=[name]).result)
+        share_vswitch = alicloud.vpc.Switch("shareVswitch",
+            vpc_id=share_vpc.id,
+            zone_id="cn-hangzhou-k",
+            cidr_block="172.16.1.0/24")
+        share__vpc2 = alicloud.vpc.Network("share-VPC2",
+            cidr_block="172.16.0.0/12",
+            vpc_name=std.format(input="%s5",
+                args=[name]).result)
+        share_vswitch2 = alicloud.vpc.Switch("share-vswitch2",
+            vpc_id=share__vpc2.id,
+            zone_id="cn-hangzhou-k",
+            cidr_block="172.16.1.0/24")
+        share__vpc3 = alicloud.vpc.Network("share-VPC3",
+            cidr_block="172.16.0.0/12",
+            vpc_name=std.format(input="%s7",
+                args=[name]).result)
+        share_vsw3 = alicloud.vpc.Switch("share-vsw3",
+            vpc_id=share__vpc3.id,
+            zone_id="cn-hangzhou-k",
+            cidr_block="172.16.1.0/24")
+        default = alicloud.kms.Instance("default",
+            payment_type="PayAsYouGo",
+            product_version="3",
+            vpc_id=vswitch.vpc_id,
+            zone_ids=[
+                vswitch.zone_id,
+                vswitch_j.zone_id,
+            ],
+            vswitch_ids=[vswitch.id],
+            force_delete_without_backup="true",
+            bind_vpcs=[
+                {
+                    "vpc_id": share_vswitch.vpc_id,
+                    "region_id": region,
+                    "vswitch_id": share_vswitch.id,
+                    "vpc_owner_id": current.id,
+                },
+                {
+                    "vpc_id": share_vswitch2.vpc_id,
+                    "region_id": region,
+                    "vswitch_id": share_vswitch2.id,
+                    "vpc_owner_id": current.id,
+                },
+                {
+                    "vpc_id": share_vsw3.vpc_id,
+                    "region_id": region,
+                    "vswitch_id": share_vsw3.id,
+                    "vpc_owner_id": current.id,
+                },
+            ])
+        ```
 
         ## Import
 
@@ -694,16 +908,19 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] key_num: Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.str] log: Instance Audit Log Switch. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.int] log_storage: Instance log capacity. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[_builtins.str] payment_type: Payment type,valid values:
+        :param pulumi.Input[_builtins.str] payment_type: Payment type, valid values:
                - `Subscription`: Prepaid.
                - `PayAsYouGo`: Postpaid.
         :param pulumi.Input[_builtins.int] period: Purchase cycle, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.str] product_version: KMS Instance commodity type (software/hardware)
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal period, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.str] renew_status: Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `payment_type` is `Subscription`.
+        :param pulumi.Input[_builtins.str] renewal_period_unit: Automatic renewal period unit, valid value:
+               - `M`: Month.
+               - `Y`: Year.
         :param pulumi.Input[_builtins.int] secret_num: Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.int] spec: The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[_builtins.str] vpc_id: Instance VPC id
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
         :param pulumi.Input[_builtins.int] vpc_num: The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: Instance bind vswitches
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] zone_ids: zone id
@@ -720,6 +937,179 @@ class Instance(pulumi.CustomResource):
         For information about KMS Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/zh/key-management-service/latest/kms-instance-management).
 
         > **NOTE:** Available since v1.210.0.
+
+        ## Example Usage
+
+        Create a subscription kms instance
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        current = alicloud.get_account()
+        vpc_amp_instance_example = alicloud.vpc.Network("vpc-amp-instance-example",
+            cidr_block="172.16.0.0/12",
+            vpc_name=name)
+        vswitch = alicloud.vpc.Switch("vswitch",
+            vpc_id=vpc_amp_instance_example.id,
+            zone_id="cn-hangzhou-k",
+            cidr_block="172.16.1.0/24")
+        vswitch_j = alicloud.vpc.Switch("vswitch-j",
+            vpc_id=vpc_amp_instance_example.id,
+            zone_id="cn-hangzhou-j",
+            cidr_block="172.16.2.0/24")
+        share_vpc = alicloud.vpc.Network("shareVPC",
+            cidr_block="172.16.0.0/12",
+            vpc_name=std.format(input="%s3",
+                args=[name]).result)
+        share_vswitch = alicloud.vpc.Switch("shareVswitch",
+            vpc_id=share_vpc.id,
+            zone_id="cn-hangzhou-k",
+            cidr_block="172.16.1.0/24")
+        share__vpc2 = alicloud.vpc.Network("share-VPC2",
+            cidr_block="172.16.0.0/12",
+            vpc_name=std.format(input="%s5",
+                args=[name]).result)
+        share_vswitch2 = alicloud.vpc.Switch("share-vswitch2",
+            vpc_id=share__vpc2.id,
+            zone_id="cn-hangzhou-k",
+            cidr_block="172.16.1.0/24")
+        share__vpc3 = alicloud.vpc.Network("share-VPC3",
+            cidr_block="172.16.0.0/12",
+            vpc_name=std.format(input="%s7",
+                args=[name]).result)
+        share_vsw3 = alicloud.vpc.Switch("share-vsw3",
+            vpc_id=share__vpc3.id,
+            zone_id="cn-hangzhou-k",
+            cidr_block="172.16.1.0/24")
+        default = alicloud.kms.Instance("default",
+            vpc_num=7,
+            key_num=1000,
+            secret_num=0,
+            spec=1000,
+            renew_status="ManualRenewal",
+            product_version="3",
+            renew_period=3,
+            vpc_id=vswitch.vpc_id,
+            zone_ids=[
+                "cn-hangzhou-k",
+                "cn-hangzhou-j",
+            ],
+            vswitch_ids=[vswitch_j.id],
+            bind_vpcs=[
+                {
+                    "vpc_id": share_vswitch.vpc_id,
+                    "region_id": region,
+                    "vswitch_id": share_vswitch.id,
+                    "vpc_owner_id": current.id,
+                },
+                {
+                    "vpc_id": share_vswitch2.vpc_id,
+                    "region_id": region,
+                    "vswitch_id": share_vswitch2.id,
+                    "vpc_owner_id": current.id,
+                },
+                {
+                    "vpc_id": share_vsw3.vpc_id,
+                    "region_id": region,
+                    "vswitch_id": share_vsw3.id,
+                    "vpc_owner_id": current.id,
+                },
+            ],
+            log="0",
+            period=1,
+            log_storage=0,
+            payment_type="Subscription")
+        ```
+        Create a pay-as-you-go kms instance
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        current = alicloud.get_account()
+        vpc_amp_instance_example = alicloud.vpc.Network("vpc-amp-instance-example",
+            cidr_block="172.16.0.0/12",
+            vpc_name=name)
+        vswitch = alicloud.vpc.Switch("vswitch",
+            vpc_id=vpc_amp_instance_example.id,
+            zone_id="cn-hangzhou-k",
+            cidr_block="172.16.1.0/24")
+        vswitch_j = alicloud.vpc.Switch("vswitch-j",
+            vpc_id=vpc_amp_instance_example.id,
+            zone_id="cn-hangzhou-j",
+            cidr_block="172.16.2.0/24")
+        share_vpc = alicloud.vpc.Network("shareVPC",
+            cidr_block="172.16.0.0/12",
+            vpc_name=std.format(input="%s3",
+                args=[name]).result)
+        share_vswitch = alicloud.vpc.Switch("shareVswitch",
+            vpc_id=share_vpc.id,
+            zone_id="cn-hangzhou-k",
+            cidr_block="172.16.1.0/24")
+        share__vpc2 = alicloud.vpc.Network("share-VPC2",
+            cidr_block="172.16.0.0/12",
+            vpc_name=std.format(input="%s5",
+                args=[name]).result)
+        share_vswitch2 = alicloud.vpc.Switch("share-vswitch2",
+            vpc_id=share__vpc2.id,
+            zone_id="cn-hangzhou-k",
+            cidr_block="172.16.1.0/24")
+        share__vpc3 = alicloud.vpc.Network("share-VPC3",
+            cidr_block="172.16.0.0/12",
+            vpc_name=std.format(input="%s7",
+                args=[name]).result)
+        share_vsw3 = alicloud.vpc.Switch("share-vsw3",
+            vpc_id=share__vpc3.id,
+            zone_id="cn-hangzhou-k",
+            cidr_block="172.16.1.0/24")
+        default = alicloud.kms.Instance("default",
+            payment_type="PayAsYouGo",
+            product_version="3",
+            vpc_id=vswitch.vpc_id,
+            zone_ids=[
+                vswitch.zone_id,
+                vswitch_j.zone_id,
+            ],
+            vswitch_ids=[vswitch.id],
+            force_delete_without_backup="true",
+            bind_vpcs=[
+                {
+                    "vpc_id": share_vswitch.vpc_id,
+                    "region_id": region,
+                    "vswitch_id": share_vswitch.id,
+                    "vpc_owner_id": current.id,
+                },
+                {
+                    "vpc_id": share_vswitch2.vpc_id,
+                    "region_id": region,
+                    "vswitch_id": share_vswitch2.id,
+                    "vpc_owner_id": current.id,
+                },
+                {
+                    "vpc_id": share_vsw3.vpc_id,
+                    "region_id": region,
+                    "vswitch_id": share_vsw3.id,
+                    "vpc_owner_id": current.id,
+                },
+            ])
+        ```
 
         ## Import
 
@@ -755,6 +1145,7 @@ class Instance(pulumi.CustomResource):
                  product_version: Optional[pulumi.Input[_builtins.str]] = None,
                  renew_period: Optional[pulumi.Input[_builtins.int]] = None,
                  renew_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 renewal_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_num: Optional[pulumi.Input[_builtins.int]] = None,
                  spec: Optional[pulumi.Input[_builtins.int]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -781,6 +1172,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["product_version"] = product_version
             __props__.__dict__["renew_period"] = renew_period
             __props__.__dict__["renew_status"] = renew_status
+            __props__.__dict__["renewal_period_unit"] = renewal_period_unit
             __props__.__dict__["secret_num"] = secret_num
             __props__.__dict__["spec"] = spec
             if vpc_id is None and not opts.urn:
@@ -821,6 +1213,7 @@ class Instance(pulumi.CustomResource):
             product_version: Optional[pulumi.Input[_builtins.str]] = None,
             renew_period: Optional[pulumi.Input[_builtins.int]] = None,
             renew_status: Optional[pulumi.Input[_builtins.str]] = None,
+            renewal_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
             secret_num: Optional[pulumi.Input[_builtins.int]] = None,
             spec: Optional[pulumi.Input[_builtins.int]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
@@ -844,17 +1237,20 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] key_num: Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.str] log: Instance Audit Log Switch. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.int] log_storage: Instance log capacity. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[_builtins.str] payment_type: Payment type,valid values:
+        :param pulumi.Input[_builtins.str] payment_type: Payment type, valid values:
                - `Subscription`: Prepaid.
                - `PayAsYouGo`: Postpaid.
         :param pulumi.Input[_builtins.int] period: Purchase cycle, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.str] product_version: KMS Instance commodity type (software/hardware)
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal period, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.str] renew_status: Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `payment_type` is `Subscription`.
+        :param pulumi.Input[_builtins.str] renewal_period_unit: Automatic renewal period unit, valid value:
+               - `M`: Month.
+               - `Y`: Year.
         :param pulumi.Input[_builtins.int] secret_num: Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.int] spec: The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.str] status: Instance status.
-        :param pulumi.Input[_builtins.str] vpc_id: Instance VPC id
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
         :param pulumi.Input[_builtins.int] vpc_num: The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: Instance bind vswitches
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] zone_ids: zone id
@@ -877,6 +1273,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["product_version"] = product_version
         __props__.__dict__["renew_period"] = renew_period
         __props__.__dict__["renew_status"] = renew_status
+        __props__.__dict__["renewal_period_unit"] = renewal_period_unit
         __props__.__dict__["secret_num"] = secret_num
         __props__.__dict__["spec"] = spec
         __props__.__dict__["status"] = status
@@ -962,7 +1359,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Payment type,valid values:
+        Payment type, valid values:
         - `Subscription`: Prepaid.
         - `PayAsYouGo`: Postpaid.
         """
@@ -978,7 +1375,7 @@ class Instance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="productVersion")
-    def product_version(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def product_version(self) -> pulumi.Output[_builtins.str]:
         """
         KMS Instance commodity type (software/hardware)
         """
@@ -994,11 +1391,21 @@ class Instance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="renewStatus")
-    def renew_status(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def renew_status(self) -> pulumi.Output[_builtins.str]:
         """
         Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `payment_type` is `Subscription`.
         """
         return pulumi.get(self, "renew_status")
+
+    @_builtins.property
+    @pulumi.getter(name="renewalPeriodUnit")
+    def renewal_period_unit(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Automatic renewal period unit, valid value:
+        - `M`: Month.
+        - `Y`: Year.
+        """
+        return pulumi.get(self, "renewal_period_unit")
 
     @_builtins.property
     @pulumi.getter(name="secretNum")
@@ -1028,7 +1435,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Instance VPC id
+        The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
         """
         return pulumi.get(self, "vpc_id")
 

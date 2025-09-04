@@ -35,22 +35,22 @@ import * as utilities from "../utilities";
  * });
  * const defaultPolicy = new alicloud.ram.Policy("default", {
  *     policyName: "ram-policy-example",
- *     policyDocument: `\x09\x09\x09{
- * \x09\x09\x09\x09"Statement": [
- * \x09\x09\x09\x09 {
- * \x09\x09\x09\x09\x09"Action": [
- * \x09\x09\x09\x09\x09"oss:ListObjects",
- * \x09\x09\x09\x09\x09"oss:ListObjects"
- * \x09\x09\x09  \x09\x09],
- * \x09\x09\x09  \x09\x09"Effect": "Deny",
- * \x09\x09\x09  \x09\x09"Resource": [
- * \x09\x09\x09\x09\x09\x09"acs:oss:*:*:mybucket",
- * \x09\x09\x09\x09\x09\x09"acs:oss:*:*:mybucket/*"
- * \x09\x09\x09  \x09\x09]
- * \x09\x09\x09\x09 }
- * \x09\x09  \x09\x09],
- * \x09\x09\x09\x09"Version": "1"
- * \x09\x09\x09}
+ *     policyDocument: `\\t\\t\\t{
+ * \\t\\t\\t\\t\\"Statement\\": [
+ * \\t\\t\\t\\t {
+ * \\t\\t\\t\\t\\t\\"Action\\": [
+ * \\t\\t\\t\\t\\t\\"oss:ListObjects\\",
+ * \\t\\t\\t\\t\\t\\"oss:ListObjects\\"
+ * \\t\\t\\t  \\t\\t],
+ * \\t\\t\\t  \\t\\t\\"Effect\\": \\"Deny\\",
+ * \\t\\t\\t  \\t\\t\\"Resource\\": [
+ * \\t\\t\\t\\t\\t\\t\\"acs:oss:*:*:mybucket\\",
+ * \\t\\t\\t\\t\\t\\t\\"acs:oss:*:*:mybucket/*\\"
+ * \\t\\t\\t  \\t\\t]
+ * \\t\\t\\t\\t }
+ * \\t\\t  \\t\\t],
+ * \\t\\t\\t\\t\\"Version\\": \\"1\\"
+ * \\t\\t\\t}
  * `,
  *     description: "this is a policy example",
  *     force: true,
@@ -168,22 +168,22 @@ export interface GetUsersResult {
  * });
  * const defaultPolicy = new alicloud.ram.Policy("default", {
  *     policyName: "ram-policy-example",
- *     policyDocument: `\x09\x09\x09{
- * \x09\x09\x09\x09"Statement": [
- * \x09\x09\x09\x09 {
- * \x09\x09\x09\x09\x09"Action": [
- * \x09\x09\x09\x09\x09"oss:ListObjects",
- * \x09\x09\x09\x09\x09"oss:ListObjects"
- * \x09\x09\x09  \x09\x09],
- * \x09\x09\x09  \x09\x09"Effect": "Deny",
- * \x09\x09\x09  \x09\x09"Resource": [
- * \x09\x09\x09\x09\x09\x09"acs:oss:*:*:mybucket",
- * \x09\x09\x09\x09\x09\x09"acs:oss:*:*:mybucket/*"
- * \x09\x09\x09  \x09\x09]
- * \x09\x09\x09\x09 }
- * \x09\x09  \x09\x09],
- * \x09\x09\x09\x09"Version": "1"
- * \x09\x09\x09}
+ *     policyDocument: `\\t\\t\\t{
+ * \\t\\t\\t\\t\\"Statement\\": [
+ * \\t\\t\\t\\t {
+ * \\t\\t\\t\\t\\t\\"Action\\": [
+ * \\t\\t\\t\\t\\t\\"oss:ListObjects\\",
+ * \\t\\t\\t\\t\\t\\"oss:ListObjects\\"
+ * \\t\\t\\t  \\t\\t],
+ * \\t\\t\\t  \\t\\t\\"Effect\\": \\"Deny\\",
+ * \\t\\t\\t  \\t\\t\\"Resource\\": [
+ * \\t\\t\\t\\t\\t\\t\\"acs:oss:*:*:mybucket\\",
+ * \\t\\t\\t\\t\\t\\t\\"acs:oss:*:*:mybucket/*\\"
+ * \\t\\t\\t  \\t\\t]
+ * \\t\\t\\t\\t }
+ * \\t\\t  \\t\\t],
+ * \\t\\t\\t\\t\\"Version\\": \\"1\\"
+ * \\t\\t\\t}
  * `,
  *     description: "this is a policy example",
  *     force: true,

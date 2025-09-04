@@ -22,6 +22,61 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** In order to provide you with more perfect product capabilities, the real person certification service has stopped access, it is recommended that you use the upgraded version of the [real person certification financial real person certification service](https://help.aliyun.com/zh/id-verification/product-overview/what-is-id-verification-for-financial-services). Users that have access to real person authentication are not affected.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.cloudauth.FaceConfig;
+ * import com.pulumi.alicloud.cloudauth.FaceConfigArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf_example");
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         var example = new FaceConfig("example", FaceConfigArgs.builder()
+ *             .bizName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s-biz")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .bizType(StdFunctions.format(FormatArgs.builder()
+ *                 .input("type-%s")
+ *                 .args(default_.result())
+ *                 .build()).result())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Cloudauth Face Config can be imported using the id, e.g.

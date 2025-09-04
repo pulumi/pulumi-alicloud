@@ -25,6 +25,118 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.237.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.log.Project;
+ * import com.pulumi.alicloud.log.ProjectArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.alicloud.log.Store;
+ * import com.pulumi.alicloud.log.StoreArgs;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.sls.OssExportSink;
+ * import com.pulumi.alicloud.sls.OssExportSinkArgs;
+ * import com.pulumi.alicloud.sls.inputs.OssExportSinkConfigurationArgs;
+ * import com.pulumi.alicloud.sls.inputs.OssExportSinkConfigurationSinkArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
+ *         var defaulteyHJsO = new Project("defaulteyHJsO", ProjectArgs.builder()
+ *             .description("terraform-oss-example-910")
+ *             .projectName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s1%s")
+ *                 .args(                
+ *                     name,
+ *                     default_.result())
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var defaultxeHfXC = new Store("defaultxeHfXC", StoreArgs.builder()
+ *             .hotTtl(8)
+ *             .retentionPeriod(30)
+ *             .shardCount(2)
+ *             .projectName(defaulteyHJsO.projectName())
+ *             .logstoreName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s1%s")
+ *                 .args(                
+ *                     name,
+ *                     default_.result())
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var defaultiwj0xO = new Bucket("defaultiwj0xO", BucketArgs.builder()
+ *             .bucket(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s1%s")
+ *                 .args(                
+ *                     name,
+ *                     default_.result())
+ *                 .build()).result())
+ *             .storageClass("Standard")
+ *             .build());
+ * 
+ *         var defaultOssExportSink = new OssExportSink("defaultOssExportSink", OssExportSinkArgs.builder()
+ *             .project(defaulteyHJsO.projectName())
+ *             .configuration(OssExportSinkConfigurationArgs.builder()
+ *                 .logstore(defaultxeHfXC.logstoreName())
+ *                 .roleArn("acs:ram::12345678901234567:role/aliyunlogdefaultrole")
+ *                 .sink(OssExportSinkConfigurationSinkArgs.builder()
+ *                     .bucket(defaultiwj0xO.bucket())
+ *                     .roleArn("acs:ram::12345678901234567:role/aliyunlogdefaultrole")
+ *                     .timeZone("+0700")
+ *                     .contentType("json")
+ *                     .compressionType("none")
+ *                     .contentDetail(serializeJson(
+ *                         jsonObject(
+ *                             jsonProperty("enableTag", false)
+ *                         )))
+ *                     .bufferInterval("300")
+ *                     .bufferSize("256")
+ *                     .endpoint("https://oss-cn-shanghai-internal.aliyuncs.com")
+ *                     .build())
+ *                 .fromTime(1732165733)
+ *                 .toTime(1732166733)
+ *                 .build())
+ *             .jobName("export-oss-1731404933-00001")
+ *             .displayName("exampleterraform")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Log Service (SLS) Oss Export Sink can be imported using the id, e.g.

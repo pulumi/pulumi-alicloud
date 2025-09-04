@@ -59,23 +59,13 @@ namespace Pulumi.AliCloud.Wafv3
     public partial class DefenseTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The module to which the protection rule that you want to create belongs. Value:
-        /// - **waf_group**: the basic protection rule module.
-        /// - **antiscan**: the scan protection module.
-        /// - **ip_blacklist**: the IP address blacklist module.
-        /// - **custom_acl**: the custom rule module.
-        /// - **whitelist**: the whitelist module.
-        /// - **region_block**: the region blacklist module.
-        /// - **custom_response**: the custom response module.
-        /// - **cc**: the HTTP flood protection module.
-        /// - **tamperproof**: the website tamper-proofing module.
-        /// - **dlp**: the data leakage prevention module.
+        /// The WAF protection scenario to be created. Valid values:
         /// </summary>
         [Output("defenseScene")]
         public Output<string> DefenseScene { get; private set; } = null!;
 
         /// <summary>
-        /// Template ID.
+        /// Template ID
         /// </summary>
         [Output("defenseTemplateId")]
         public Output<int> DefenseTemplateId { get; private set; } = null!;
@@ -87,33 +77,37 @@ namespace Pulumi.AliCloud.Wafv3
         public Output<string> DefenseTemplateName { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the protection rule template. .
+        /// The description of the protection rule template.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Web Application Firewall (WAF) instance. .
+        /// The ID of the Web Application Firewall (WAF) instance.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Alibaba Cloud resource group. .
+        /// The ID of the Alibaba Cloud resource group.
         /// </summary>
         [Output("resourceManagerResourceGroupId")]
         public Output<string?> ResourceManagerResourceGroupId { get; private set; } = null!;
 
         /// <summary>
+        /// The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
+        /// </summary>
+        [Output("resources")]
+        public Output<ImmutableArray<string>> Resources { get; private set; } = null!;
+
+        /// <summary>
         /// The status of the protection rule template. Valid values:
-        /// - **0**: disabled.
-        /// - **1**: enabled.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The origin of the protection rule template that you want to create. Set the value to **custom**. The value specifies that the protection rule template is a custom template. .
+        /// The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
         /// </summary>
         [Output("templateOrigin")]
         public Output<string> TemplateOrigin { get; private set; } = null!;
@@ -173,17 +167,7 @@ namespace Pulumi.AliCloud.Wafv3
     public sealed class DefenseTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The module to which the protection rule that you want to create belongs. Value:
-        /// - **waf_group**: the basic protection rule module.
-        /// - **antiscan**: the scan protection module.
-        /// - **ip_blacklist**: the IP address blacklist module.
-        /// - **custom_acl**: the custom rule module.
-        /// - **whitelist**: the whitelist module.
-        /// - **region_block**: the region blacklist module.
-        /// - **custom_response**: the custom response module.
-        /// - **cc**: the HTTP flood protection module.
-        /// - **tamperproof**: the website tamper-proofing module.
-        /// - **dlp**: the data leakage prevention module.
+        /// The WAF protection scenario to be created. Valid values:
         /// </summary>
         [Input("defenseScene", required: true)]
         public Input<string> DefenseScene { get; set; } = null!;
@@ -195,33 +179,43 @@ namespace Pulumi.AliCloud.Wafv3
         public Input<string> DefenseTemplateName { get; set; } = null!;
 
         /// <summary>
-        /// The description of the protection rule template. .
+        /// The description of the protection rule template.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The ID of the Web Application Firewall (WAF) instance. .
+        /// The ID of the Web Application Firewall (WAF) instance.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the Alibaba Cloud resource group. .
+        /// The ID of the Alibaba Cloud resource group.
         /// </summary>
         [Input("resourceManagerResourceGroupId")]
         public Input<string>? ResourceManagerResourceGroupId { get; set; }
 
+        [Input("resources")]
+        private InputList<string>? _resources;
+
+        /// <summary>
+        /// The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
+        /// </summary>
+        public InputList<string> Resources
+        {
+            get => _resources ?? (_resources = new InputList<string>());
+            set => _resources = value;
+        }
+
         /// <summary>
         /// The status of the protection rule template. Valid values:
-        /// - **0**: disabled.
-        /// - **1**: enabled.
         /// </summary>
         [Input("status", required: true)]
         public Input<string> Status { get; set; } = null!;
 
         /// <summary>
-        /// The origin of the protection rule template that you want to create. Set the value to **custom**. The value specifies that the protection rule template is a custom template. .
+        /// The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
         /// </summary>
         [Input("templateOrigin", required: true)]
         public Input<string> TemplateOrigin { get; set; } = null!;
@@ -243,23 +237,13 @@ namespace Pulumi.AliCloud.Wafv3
     public sealed class DefenseTemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The module to which the protection rule that you want to create belongs. Value:
-        /// - **waf_group**: the basic protection rule module.
-        /// - **antiscan**: the scan protection module.
-        /// - **ip_blacklist**: the IP address blacklist module.
-        /// - **custom_acl**: the custom rule module.
-        /// - **whitelist**: the whitelist module.
-        /// - **region_block**: the region blacklist module.
-        /// - **custom_response**: the custom response module.
-        /// - **cc**: the HTTP flood protection module.
-        /// - **tamperproof**: the website tamper-proofing module.
-        /// - **dlp**: the data leakage prevention module.
+        /// The WAF protection scenario to be created. Valid values:
         /// </summary>
         [Input("defenseScene")]
         public Input<string>? DefenseScene { get; set; }
 
         /// <summary>
-        /// Template ID.
+        /// Template ID
         /// </summary>
         [Input("defenseTemplateId")]
         public Input<int>? DefenseTemplateId { get; set; }
@@ -271,33 +255,43 @@ namespace Pulumi.AliCloud.Wafv3
         public Input<string>? DefenseTemplateName { get; set; }
 
         /// <summary>
-        /// The description of the protection rule template. .
+        /// The description of the protection rule template.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The ID of the Web Application Firewall (WAF) instance. .
+        /// The ID of the Web Application Firewall (WAF) instance.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The ID of the Alibaba Cloud resource group. .
+        /// The ID of the Alibaba Cloud resource group.
         /// </summary>
         [Input("resourceManagerResourceGroupId")]
         public Input<string>? ResourceManagerResourceGroupId { get; set; }
 
+        [Input("resources")]
+        private InputList<string>? _resources;
+
+        /// <summary>
+        /// The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
+        /// </summary>
+        public InputList<string> Resources
+        {
+            get => _resources ?? (_resources = new InputList<string>());
+            set => _resources = value;
+        }
+
         /// <summary>
         /// The status of the protection rule template. Valid values:
-        /// - **0**: disabled.
-        /// - **1**: enabled.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The origin of the protection rule template that you want to create. Set the value to **custom**. The value specifies that the protection rule template is a custom template. .
+        /// The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
         /// </summary>
         [Input("templateOrigin")]
         public Input<string>? TemplateOrigin { get; set; }

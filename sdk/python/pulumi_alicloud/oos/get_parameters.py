@@ -210,12 +210,12 @@ def get_parameters(enable_details: Optional[_builtins.bool] = None,
         type="String",
         description=name,
         constraints=\"\"\"  {
-        "AllowedValues": [
-            "tf-testacc-oos_parameter"
+        \\"AllowedValues\\": [
+            \\"tf-testacc-oos_parameter\\"
         ],
-        "AllowedPattern": "tf-testacc-oos_parameter",
-        "MinLength": 1,
-        "MaxLength": 100
+        \\"AllowedPattern\\": \\"tf-testacc-oos_parameter\\",
+        \\"MinLength\\": 1,
+        \\"MaxLength\\": 100
       }
     \"\"\",
         tags={
@@ -300,12 +300,12 @@ def get_parameters_output(enable_details: Optional[pulumi.Input[Optional[_builti
         type="String",
         description=name,
         constraints=\"\"\"  {
-        "AllowedValues": [
-            "tf-testacc-oos_parameter"
+        \\"AllowedValues\\": [
+            \\"tf-testacc-oos_parameter\\"
         ],
-        "AllowedPattern": "tf-testacc-oos_parameter",
-        "MinLength": 1,
-        "MaxLength": 100
+        \\"AllowedPattern\\": \\"tf-testacc-oos_parameter\\",
+        \\"MinLength\\": 1,
+        \\"MaxLength\\": 100
       }
     \"\"\",
         tags={

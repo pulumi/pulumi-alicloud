@@ -77,20 +77,20 @@ namespace Pulumi.AliCloud.Hbr
     ///     var defaultRole = new AliCloud.Ram.Role("default", new()
     ///     {
     ///         Name = "hbrexamplerole",
-    ///         Document = @"		{
-    /// 			""Statement"": [
-    /// 			{
-    /// 				""Action"": ""sts:AssumeRole"",
-    /// 				""Effect"": ""Allow"",
-    /// 				""Principal"": {
-    /// 					""Service"": [
-    /// 						""crossbackup.hbr.aliyuncs.com""
-    /// 					]
-    /// 				}
-    /// 			}
-    /// 			],
-    ///   			""Version"": ""1""
-    /// 		}
+    ///         Document = @"\t\t{
+    /// \t\t\t\""Statement\"": [
+    /// \t\t\t{
+    /// \t\t\t\t\""Action\"": \""sts:AssumeRole\"",
+    /// \t\t\t\t\""Effect\"": \""Allow\"",
+    /// \t\t\t\t\""Principal\"": {
+    /// \t\t\t\t\t\""Service\"": [
+    /// \t\t\t\t\t\t\""crossbackup.hbr.aliyuncs.com\""
+    /// \t\t\t\t\t]
+    /// \t\t\t\t}
+    /// \t\t\t}
+    /// \t\t\t],
+    ///   \t\t\t\""Version\"": \""1\""
+    /// \t\t}
     /// ",
     ///         Force = true,
     ///     });

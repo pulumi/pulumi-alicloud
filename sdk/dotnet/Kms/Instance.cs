@@ -16,6 +16,295 @@ namespace Pulumi.AliCloud.Kms
     /// 
     /// &gt; **NOTE:** Available since v1.210.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Create a subscription kms instance
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var region = config.Get("region") ?? "cn-hangzhou";
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var current = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var vpc_amp_instance_example = new AliCloud.Vpc.Network("vpc-amp-instance-example", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/12",
+    ///         VpcName = name,
+    ///     });
+    /// 
+    ///     var vswitch = new AliCloud.Vpc.Switch("vswitch", new()
+    ///     {
+    ///         VpcId = vpc_amp_instance_example.Id,
+    ///         ZoneId = "cn-hangzhou-k",
+    ///         CidrBlock = "172.16.1.0/24",
+    ///     });
+    /// 
+    ///     var vswitch_j = new AliCloud.Vpc.Switch("vswitch-j", new()
+    ///     {
+    ///         VpcId = vpc_amp_instance_example.Id,
+    ///         ZoneId = "cn-hangzhou-j",
+    ///         CidrBlock = "172.16.2.0/24",
+    ///     });
+    /// 
+    ///     var shareVPC = new AliCloud.Vpc.Network("shareVPC", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/12",
+    ///         VpcName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s3",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var shareVswitch = new AliCloud.Vpc.Switch("shareVswitch", new()
+    ///     {
+    ///         VpcId = shareVPC.Id,
+    ///         ZoneId = "cn-hangzhou-k",
+    ///         CidrBlock = "172.16.1.0/24",
+    ///     });
+    /// 
+    ///     var share_VPC2 = new AliCloud.Vpc.Network("share-VPC2", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/12",
+    ///         VpcName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s5",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var share_vswitch2 = new AliCloud.Vpc.Switch("share-vswitch2", new()
+    ///     {
+    ///         VpcId = share_VPC2.Id,
+    ///         ZoneId = "cn-hangzhou-k",
+    ///         CidrBlock = "172.16.1.0/24",
+    ///     });
+    /// 
+    ///     var share_VPC3 = new AliCloud.Vpc.Network("share-VPC3", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/12",
+    ///         VpcName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s7",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var share_vsw3 = new AliCloud.Vpc.Switch("share-vsw3", new()
+    ///     {
+    ///         VpcId = share_VPC3.Id,
+    ///         ZoneId = "cn-hangzhou-k",
+    ///         CidrBlock = "172.16.1.0/24",
+    ///     });
+    /// 
+    ///     var @default = new AliCloud.Kms.Instance("default", new()
+    ///     {
+    ///         VpcNum = 7,
+    ///         KeyNum = 1000,
+    ///         SecretNum = 0,
+    ///         Spec = 1000,
+    ///         RenewStatus = "ManualRenewal",
+    ///         ProductVersion = "3",
+    ///         RenewPeriod = 3,
+    ///         VpcId = vswitch.VpcId,
+    ///         ZoneIds = new[]
+    ///         {
+    ///             "cn-hangzhou-k",
+    ///             "cn-hangzhou-j",
+    ///         },
+    ///         VswitchIds = new[]
+    ///         {
+    ///             vswitch_j.Id,
+    ///         },
+    ///         BindVpcs = new[]
+    ///         {
+    ///             new AliCloud.Kms.Inputs.InstanceBindVpcArgs
+    ///             {
+    ///                 VpcId = shareVswitch.VpcId,
+    ///                 RegionId = region,
+    ///                 VswitchId = shareVswitch.Id,
+    ///                 VpcOwnerId = current.Apply(getAccountResult =&gt; getAccountResult.Id),
+    ///             },
+    ///             new AliCloud.Kms.Inputs.InstanceBindVpcArgs
+    ///             {
+    ///                 VpcId = share_vswitch2.VpcId,
+    ///                 RegionId = region,
+    ///                 VswitchId = share_vswitch2.Id,
+    ///                 VpcOwnerId = current.Apply(getAccountResult =&gt; getAccountResult.Id),
+    ///             },
+    ///             new AliCloud.Kms.Inputs.InstanceBindVpcArgs
+    ///             {
+    ///                 VpcId = share_vsw3.VpcId,
+    ///                 RegionId = region,
+    ///                 VswitchId = share_vsw3.Id,
+    ///                 VpcOwnerId = current.Apply(getAccountResult =&gt; getAccountResult.Id),
+    ///             },
+    ///         },
+    ///         Log = "0",
+    ///         Period = 1,
+    ///         LogStorage = 0,
+    ///         PaymentType = "Subscription",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// Create a pay-as-you-go kms instance
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var region = config.Get("region") ?? "cn-hangzhou";
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var current = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var vpc_amp_instance_example = new AliCloud.Vpc.Network("vpc-amp-instance-example", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/12",
+    ///         VpcName = name,
+    ///     });
+    /// 
+    ///     var vswitch = new AliCloud.Vpc.Switch("vswitch", new()
+    ///     {
+    ///         VpcId = vpc_amp_instance_example.Id,
+    ///         ZoneId = "cn-hangzhou-k",
+    ///         CidrBlock = "172.16.1.0/24",
+    ///     });
+    /// 
+    ///     var vswitch_j = new AliCloud.Vpc.Switch("vswitch-j", new()
+    ///     {
+    ///         VpcId = vpc_amp_instance_example.Id,
+    ///         ZoneId = "cn-hangzhou-j",
+    ///         CidrBlock = "172.16.2.0/24",
+    ///     });
+    /// 
+    ///     var shareVPC = new AliCloud.Vpc.Network("shareVPC", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/12",
+    ///         VpcName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s3",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var shareVswitch = new AliCloud.Vpc.Switch("shareVswitch", new()
+    ///     {
+    ///         VpcId = shareVPC.Id,
+    ///         ZoneId = "cn-hangzhou-k",
+    ///         CidrBlock = "172.16.1.0/24",
+    ///     });
+    /// 
+    ///     var share_VPC2 = new AliCloud.Vpc.Network("share-VPC2", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/12",
+    ///         VpcName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s5",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var share_vswitch2 = new AliCloud.Vpc.Switch("share-vswitch2", new()
+    ///     {
+    ///         VpcId = share_VPC2.Id,
+    ///         ZoneId = "cn-hangzhou-k",
+    ///         CidrBlock = "172.16.1.0/24",
+    ///     });
+    /// 
+    ///     var share_VPC3 = new AliCloud.Vpc.Network("share-VPC3", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/12",
+    ///         VpcName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s7",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var share_vsw3 = new AliCloud.Vpc.Switch("share-vsw3", new()
+    ///     {
+    ///         VpcId = share_VPC3.Id,
+    ///         ZoneId = "cn-hangzhou-k",
+    ///         CidrBlock = "172.16.1.0/24",
+    ///     });
+    /// 
+    ///     var @default = new AliCloud.Kms.Instance("default", new()
+    ///     {
+    ///         PaymentType = "PayAsYouGo",
+    ///         ProductVersion = "3",
+    ///         VpcId = vswitch.VpcId,
+    ///         ZoneIds = new[]
+    ///         {
+    ///             vswitch.ZoneId,
+    ///             vswitch_j.ZoneId,
+    ///         },
+    ///         VswitchIds = new[]
+    ///         {
+    ///             vswitch.Id,
+    ///         },
+    ///         ForceDeleteWithoutBackup = "true",
+    ///         BindVpcs = new[]
+    ///         {
+    ///             new AliCloud.Kms.Inputs.InstanceBindVpcArgs
+    ///             {
+    ///                 VpcId = shareVswitch.VpcId,
+    ///                 RegionId = region,
+    ///                 VswitchId = shareVswitch.Id,
+    ///                 VpcOwnerId = current.Apply(getAccountResult =&gt; getAccountResult.Id),
+    ///             },
+    ///             new AliCloud.Kms.Inputs.InstanceBindVpcArgs
+    ///             {
+    ///                 VpcId = share_vswitch2.VpcId,
+    ///                 RegionId = region,
+    ///                 VswitchId = share_vswitch2.Id,
+    ///                 VpcOwnerId = current.Apply(getAccountResult =&gt; getAccountResult.Id),
+    ///             },
+    ///             new AliCloud.Kms.Inputs.InstanceBindVpcArgs
+    ///             {
+    ///                 VpcId = share_vsw3.VpcId,
+    ///                 RegionId = region,
+    ///                 VswitchId = share_vsw3.Id,
+    ///                 VpcOwnerId = current.Apply(getAccountResult =&gt; getAccountResult.Id),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// KMS Instance can be imported using the id, e.g.
@@ -82,7 +371,7 @@ namespace Pulumi.AliCloud.Kms
         public Output<int> LogStorage { get; private set; } = null!;
 
         /// <summary>
-        /// Payment type,valid values:
+        /// Payment type, valid values:
         /// - `Subscription`: Prepaid.
         /// - `PayAsYouGo`: Postpaid.
         /// </summary>
@@ -99,7 +388,7 @@ namespace Pulumi.AliCloud.Kms
         /// KMS Instance commodity type (software/hardware)
         /// </summary>
         [Output("productVersion")]
-        public Output<string?> ProductVersion { get; private set; } = null!;
+        public Output<string> ProductVersion { get; private set; } = null!;
 
         /// <summary>
         /// Automatic renewal period, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
@@ -111,7 +400,15 @@ namespace Pulumi.AliCloud.Kms
         /// Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `payment_type` is `Subscription`.
         /// </summary>
         [Output("renewStatus")]
-        public Output<string?> RenewStatus { get; private set; } = null!;
+        public Output<string> RenewStatus { get; private set; } = null!;
+
+        /// <summary>
+        /// Automatic renewal period unit, valid value:
+        /// - `M`: Month.
+        /// - `Y`: Year.
+        /// </summary>
+        [Output("renewalPeriodUnit")]
+        public Output<string?> RenewalPeriodUnit { get; private set; } = null!;
 
         /// <summary>
         /// Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
@@ -132,7 +429,7 @@ namespace Pulumi.AliCloud.Kms
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Instance VPC id
+        /// The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
@@ -244,7 +541,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<int>? LogStorage { get; set; }
 
         /// <summary>
-        /// Payment type,valid values:
+        /// Payment type, valid values:
         /// - `Subscription`: Prepaid.
         /// - `PayAsYouGo`: Postpaid.
         /// </summary>
@@ -276,6 +573,14 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? RenewStatus { get; set; }
 
         /// <summary>
+        /// Automatic renewal period unit, valid value:
+        /// - `M`: Month.
+        /// - `Y`: Year.
+        /// </summary>
+        [Input("renewalPeriodUnit")]
+        public Input<string>? RenewalPeriodUnit { get; set; }
+
+        /// <summary>
         /// Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
         /// </summary>
         [Input("secretNum")]
@@ -288,7 +593,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<int>? Spec { get; set; }
 
         /// <summary>
-        /// Instance VPC id
+        /// The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
@@ -392,7 +697,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<int>? LogStorage { get; set; }
 
         /// <summary>
-        /// Payment type,valid values:
+        /// Payment type, valid values:
         /// - `Subscription`: Prepaid.
         /// - `PayAsYouGo`: Postpaid.
         /// </summary>
@@ -424,6 +729,14 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? RenewStatus { get; set; }
 
         /// <summary>
+        /// Automatic renewal period unit, valid value:
+        /// - `M`: Month.
+        /// - `Y`: Year.
+        /// </summary>
+        [Input("renewalPeriodUnit")]
+        public Input<string>? RenewalPeriodUnit { get; set; }
+
+        /// <summary>
         /// Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
         /// </summary>
         [Input("secretNum")]
@@ -442,7 +755,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Instance VPC id
+        /// The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

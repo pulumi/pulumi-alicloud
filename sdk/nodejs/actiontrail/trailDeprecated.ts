@@ -66,19 +66,22 @@ export class TrailDeprecated extends pulumi.CustomResource {
         return obj['__pulumiType'] === TrailDeprecated.__pulumiType;
     }
 
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
      */
-    declare public readonly eventRw: pulumi.Output<string | undefined>;
+    declare public readonly eventRw: pulumi.Output<string>;
     declare public readonly isOrganizationTrail: pulumi.Output<boolean | undefined>;
+    declare public readonly maxComputeProjectArn: pulumi.Output<string | undefined>;
+    declare public readonly maxComputeWriteRoleArn: pulumi.Output<string>;
     /**
-     * @deprecated Field 'mns_topic_arn' has been deprecated from version 1.118.0
+     * @deprecated Field `mnsTopicArn` has been deprecated from version 1.118.0
      */
     declare public readonly mnsTopicArn: pulumi.Output<string | undefined>;
     /**
      * The name of the trail to be created, which must be unique for an account.
      *
-     * @deprecated Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.
+     * @deprecated Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -90,12 +93,13 @@ export class TrailDeprecated extends pulumi.CustomResource {
      */
     declare public readonly ossKeyPrefix: pulumi.Output<string | undefined>;
     declare public readonly ossWriteRoleArn: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
      * The RAM role in ActionTrail permitted by the user.
      *
-     * @deprecated Field 'role_name' has been deprecated from version 1.118.0
+     * @deprecated Field `roleName` has been deprecated from version 1.118.0
      */
-    declare public readonly roleName: pulumi.Output<string>;
+    declare public readonly roleName: pulumi.Output<string | undefined>;
     /**
      * The unique ARN of the Log Service project.
      */
@@ -126,13 +130,17 @@ export class TrailDeprecated extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TrailDeprecatedState | undefined;
+            resourceInputs["createTime"] = state?.createTime;
             resourceInputs["eventRw"] = state?.eventRw;
             resourceInputs["isOrganizationTrail"] = state?.isOrganizationTrail;
+            resourceInputs["maxComputeProjectArn"] = state?.maxComputeProjectArn;
+            resourceInputs["maxComputeWriteRoleArn"] = state?.maxComputeWriteRoleArn;
             resourceInputs["mnsTopicArn"] = state?.mnsTopicArn;
             resourceInputs["name"] = state?.name;
             resourceInputs["ossBucketName"] = state?.ossBucketName;
             resourceInputs["ossKeyPrefix"] = state?.ossKeyPrefix;
             resourceInputs["ossWriteRoleArn"] = state?.ossWriteRoleArn;
+            resourceInputs["regionId"] = state?.regionId;
             resourceInputs["roleName"] = state?.roleName;
             resourceInputs["slsProjectArn"] = state?.slsProjectArn;
             resourceInputs["slsWriteRoleArn"] = state?.slsWriteRoleArn;
@@ -143,6 +151,8 @@ export class TrailDeprecated extends pulumi.CustomResource {
             const args = argsOrState as TrailDeprecatedArgs | undefined;
             resourceInputs["eventRw"] = args?.eventRw;
             resourceInputs["isOrganizationTrail"] = args?.isOrganizationTrail;
+            resourceInputs["maxComputeProjectArn"] = args?.maxComputeProjectArn;
+            resourceInputs["maxComputeWriteRoleArn"] = args?.maxComputeWriteRoleArn;
             resourceInputs["mnsTopicArn"] = args?.mnsTopicArn;
             resourceInputs["name"] = args?.name;
             resourceInputs["ossBucketName"] = args?.ossBucketName;
@@ -154,6 +164,8 @@ export class TrailDeprecated extends pulumi.CustomResource {
             resourceInputs["status"] = args?.status;
             resourceInputs["trailName"] = args?.trailName;
             resourceInputs["trailRegion"] = args?.trailRegion;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TrailDeprecated.__pulumiType, name, resourceInputs, opts);
@@ -164,19 +176,22 @@ export class TrailDeprecated extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TrailDeprecated resources.
  */
 export interface TrailDeprecatedState {
+    createTime?: pulumi.Input<string>;
     /**
      * Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
      */
     eventRw?: pulumi.Input<string>;
     isOrganizationTrail?: pulumi.Input<boolean>;
+    maxComputeProjectArn?: pulumi.Input<string>;
+    maxComputeWriteRoleArn?: pulumi.Input<string>;
     /**
-     * @deprecated Field 'mns_topic_arn' has been deprecated from version 1.118.0
+     * @deprecated Field `mnsTopicArn` has been deprecated from version 1.118.0
      */
     mnsTopicArn?: pulumi.Input<string>;
     /**
      * The name of the trail to be created, which must be unique for an account.
      *
-     * @deprecated Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.
+     * @deprecated Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
      */
     name?: pulumi.Input<string>;
     /**
@@ -188,10 +203,11 @@ export interface TrailDeprecatedState {
      */
     ossKeyPrefix?: pulumi.Input<string>;
     ossWriteRoleArn?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string>;
     /**
      * The RAM role in ActionTrail permitted by the user.
      *
-     * @deprecated Field 'role_name' has been deprecated from version 1.118.0
+     * @deprecated Field `roleName` has been deprecated from version 1.118.0
      */
     roleName?: pulumi.Input<string>;
     /**
@@ -218,14 +234,16 @@ export interface TrailDeprecatedArgs {
      */
     eventRw?: pulumi.Input<string>;
     isOrganizationTrail?: pulumi.Input<boolean>;
+    maxComputeProjectArn?: pulumi.Input<string>;
+    maxComputeWriteRoleArn?: pulumi.Input<string>;
     /**
-     * @deprecated Field 'mns_topic_arn' has been deprecated from version 1.118.0
+     * @deprecated Field `mnsTopicArn` has been deprecated from version 1.118.0
      */
     mnsTopicArn?: pulumi.Input<string>;
     /**
      * The name of the trail to be created, which must be unique for an account.
      *
-     * @deprecated Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.
+     * @deprecated Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
      */
     name?: pulumi.Input<string>;
     /**
@@ -240,7 +258,7 @@ export interface TrailDeprecatedArgs {
     /**
      * The RAM role in ActionTrail permitted by the user.
      *
-     * @deprecated Field 'role_name' has been deprecated from version 1.118.0
+     * @deprecated Field `roleName` has been deprecated from version 1.118.0
      */
     roleName?: pulumi.Input<string>;
     /**

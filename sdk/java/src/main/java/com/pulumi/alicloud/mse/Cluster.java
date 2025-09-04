@@ -346,6 +346,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
+     * The version code of MSE Cluster. You can keep the instance version up to date by setting the value to `LATEST` (Available since v1.257.0).
+     * 
+     */
+    @Export(name="versionCode", refs={String.class}, tree="[0]")
+    private Output<String> versionCode;
+
+    /**
+     * @return The version code of MSE Cluster. You can keep the instance version up to date by setting the value to `LATEST` (Available since v1.257.0).
+     * 
+     */
+    public Output<String> versionCode() {
+        return this.versionCode;
+    }
+    /**
      * The id of the VPC.
      * 
      */

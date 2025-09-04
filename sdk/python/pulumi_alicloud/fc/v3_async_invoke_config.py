@@ -295,6 +295,83 @@ class V3AsyncInvokeConfig(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.228.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        current = alicloud.get_account()
+        function = alicloud.fc.V3Function("function",
+            memory_size=512,
+            cpu=0.5,
+            handler="index.Handler",
+            code={
+                "zip_file": "UEsDBBQACAAIAAAAAAAAAAAAAAAAAAAAAAAIAAAAaW5kZXgucHmEkEFKxEAQRfd9ig9ZTCJOooIwDMwNXLqXnnQlaalUhU5lRj2KZ/FOXkESGR114bJ/P/7jV4b1xRq1hijtFpM1682cuNgPmgysbRulPT0fRxXnMtwrSPyeCdYRokSLnuMLJTTkbUqEvDMbxm1VdcRD6Tk+T1LW2ldB66knsYdA5iNX17ebm6tN2VnPhcswMPmREPuBacb+CiapLarAj9gT6/H97dVlCNScY3mtYvRkxdZlwDKDEnanPWVLdrdkeXEGlFEazVdfPVHaVeHc3N15CUwppwOJXeK7HshAB8NuOU7J6sP4SRXuH/EvbUfMiqMmDqv5M5FNSfAj/wgAAP//UEsHCPl//NYAAQAArwEAAFBLAQIUABQACAAIAAAAAAD5f/zWAAEAAK8BAAAIAAAAAAAAAAAAAAAAAAAAAABpbmRleC5weVBLBQYAAAAAAQABADYAAAA2AQAAAAA=",
+            },
+            function_name=name,
+            runtime="python3.9",
+            disk_size=512,
+            log_config={
+                "log_begin_rule": "None",
+            })
+        function1 = alicloud.fc.V3Function("function1",
+            memory_size=512,
+            cpu=0.5,
+            handler="index.Handler",
+            code={
+                "zip_file": "UEsDBBQACAAIAAAAAAAAAAAAAAAAAAAAAAAIAAAAaW5kZXgucHmEkEFKxEAQRfd9ig9ZTCJOooIwDMwNXLqXnnQlaalUhU5lRj2KZ/FOXkESGR114bJ/P/7jV4b1xRq1hijtFpM1682cuNgPmgysbRulPT0fRxXnMtwrSPyeCdYRokSLnuMLJTTkbUqEvDMbxm1VdcRD6Tk+T1LW2ldB66knsYdA5iNX17ebm6tN2VnPhcswMPmREPuBacb+CiapLarAj9gT6/H97dVlCNScY3mtYvRkxdZlwDKDEnanPWVLdrdkeXEGlFEazVdfPVHaVeHc3N15CUwppwOJXeK7HshAB8NuOU7J6sP4SRXuH/EvbUfMiqMmDqv5M5FNSfAj/wgAAP//UEsHCPl//NYAAQAArwEAAFBLAQIUABQACAAIAAAAAAD5f/zWAAEAAK8BAAAIAAAAAAAAAAAAAAAAAAAAAABpbmRleC5weVBLBQYAAAAAAQABADYAAAA2AQAAAAA=",
+            },
+            function_name=std.format(input="%s_%s",
+                args=[
+                    name,
+                    "update1",
+                ]).result,
+            runtime="python3.9",
+            disk_size=512,
+            log_config={
+                "log_begin_rule": "None",
+            })
+        function2 = alicloud.fc.V3Function("function2",
+            memory_size=512,
+            cpu=0.5,
+            handler="index.Handler",
+            code={
+                "zip_file": "UEsDBBQACAAIAAAAAAAAAAAAAAAAAAAAAAAIAAAAaW5kZXgucHmEkEFKxEAQRfd9ig9ZTCJOooIwDMwNXLqXnnQlaalUhU5lRj2KZ/FOXkESGR114bJ/P/7jV4b1xRq1hijtFpM1682cuNgPmgysbRulPT0fRxXnMtwrSPyeCdYRokSLnuMLJTTkbUqEvDMbxm1VdcRD6Tk+T1LW2ldB66knsYdA5iNX17ebm6tN2VnPhcswMPmREPuBacb+CiapLarAj9gT6/H97dVlCNScY3mtYvRkxdZlwDKDEnanPWVLdrdkeXEGlFEazVdfPVHaVeHc3N15CUwppwOJXeK7HshAB8NuOU7J6sP4SRXuH/EvbUfMiqMmDqv5M5FNSfAj/wgAAP//UEsHCPl//NYAAQAArwEAAFBLAQIUABQACAAIAAAAAAD5f/zWAAEAAK8BAAAIAAAAAAAAAAAAAAAAAAAAAABpbmRleC5weVBLBQYAAAAAAQABADYAAAA2AQAAAAA=",
+            },
+            function_name=std.format(input="%s_%s",
+                args=[
+                    name,
+                    "update2",
+                ]).result,
+            runtime="python3.9",
+            disk_size=512,
+            log_config={
+                "log_begin_rule": "None",
+            })
+        default = alicloud.fc.V3AsyncInvokeConfig("default",
+            max_async_retry_attempts=1,
+            max_async_event_age_in_seconds=1,
+            async_task=True,
+            function_name=function.function_name,
+            destination_config={
+                "on_failure": {
+                    "destination": function1.function_name.apply(lambda function_name: f"acs:fc:eu-central-1:{current.id}:functions/{function_name}"),
+                },
+                "on_success": {
+                    "destination": function1.function_name.apply(lambda function_name: f"acs:fc:eu-central-1:{current.id}:functions/{function_name}"),
+                },
+            },
+            qualifier="LATEST")
+        ```
+
         ## Import
 
         FCV3 Async Invoke Config can be imported using the id, e.g.
@@ -326,6 +403,83 @@ class V3AsyncInvokeConfig(pulumi.CustomResource):
         For information about FCV3 Async Invoke Config and how to use it, see [What is Async Invoke Config](https://www.alibabacloud.com/help/en/functioncompute/developer-reference/api-fc-2023-03-30-getasyncinvokeconfig).
 
         > **NOTE:** Available since v1.228.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        current = alicloud.get_account()
+        function = alicloud.fc.V3Function("function",
+            memory_size=512,
+            cpu=0.5,
+            handler="index.Handler",
+            code={
+                "zip_file": "UEsDBBQACAAIAAAAAAAAAAAAAAAAAAAAAAAIAAAAaW5kZXgucHmEkEFKxEAQRfd9ig9ZTCJOooIwDMwNXLqXnnQlaalUhU5lRj2KZ/FOXkESGR114bJ/P/7jV4b1xRq1hijtFpM1682cuNgPmgysbRulPT0fRxXnMtwrSPyeCdYRokSLnuMLJTTkbUqEvDMbxm1VdcRD6Tk+T1LW2ldB66knsYdA5iNX17ebm6tN2VnPhcswMPmREPuBacb+CiapLarAj9gT6/H97dVlCNScY3mtYvRkxdZlwDKDEnanPWVLdrdkeXEGlFEazVdfPVHaVeHc3N15CUwppwOJXeK7HshAB8NuOU7J6sP4SRXuH/EvbUfMiqMmDqv5M5FNSfAj/wgAAP//UEsHCPl//NYAAQAArwEAAFBLAQIUABQACAAIAAAAAAD5f/zWAAEAAK8BAAAIAAAAAAAAAAAAAAAAAAAAAABpbmRleC5weVBLBQYAAAAAAQABADYAAAA2AQAAAAA=",
+            },
+            function_name=name,
+            runtime="python3.9",
+            disk_size=512,
+            log_config={
+                "log_begin_rule": "None",
+            })
+        function1 = alicloud.fc.V3Function("function1",
+            memory_size=512,
+            cpu=0.5,
+            handler="index.Handler",
+            code={
+                "zip_file": "UEsDBBQACAAIAAAAAAAAAAAAAAAAAAAAAAAIAAAAaW5kZXgucHmEkEFKxEAQRfd9ig9ZTCJOooIwDMwNXLqXnnQlaalUhU5lRj2KZ/FOXkESGR114bJ/P/7jV4b1xRq1hijtFpM1682cuNgPmgysbRulPT0fRxXnMtwrSPyeCdYRokSLnuMLJTTkbUqEvDMbxm1VdcRD6Tk+T1LW2ldB66knsYdA5iNX17ebm6tN2VnPhcswMPmREPuBacb+CiapLarAj9gT6/H97dVlCNScY3mtYvRkxdZlwDKDEnanPWVLdrdkeXEGlFEazVdfPVHaVeHc3N15CUwppwOJXeK7HshAB8NuOU7J6sP4SRXuH/EvbUfMiqMmDqv5M5FNSfAj/wgAAP//UEsHCPl//NYAAQAArwEAAFBLAQIUABQACAAIAAAAAAD5f/zWAAEAAK8BAAAIAAAAAAAAAAAAAAAAAAAAAABpbmRleC5weVBLBQYAAAAAAQABADYAAAA2AQAAAAA=",
+            },
+            function_name=std.format(input="%s_%s",
+                args=[
+                    name,
+                    "update1",
+                ]).result,
+            runtime="python3.9",
+            disk_size=512,
+            log_config={
+                "log_begin_rule": "None",
+            })
+        function2 = alicloud.fc.V3Function("function2",
+            memory_size=512,
+            cpu=0.5,
+            handler="index.Handler",
+            code={
+                "zip_file": "UEsDBBQACAAIAAAAAAAAAAAAAAAAAAAAAAAIAAAAaW5kZXgucHmEkEFKxEAQRfd9ig9ZTCJOooIwDMwNXLqXnnQlaalUhU5lRj2KZ/FOXkESGR114bJ/P/7jV4b1xRq1hijtFpM1682cuNgPmgysbRulPT0fRxXnMtwrSPyeCdYRokSLnuMLJTTkbUqEvDMbxm1VdcRD6Tk+T1LW2ldB66knsYdA5iNX17ebm6tN2VnPhcswMPmREPuBacb+CiapLarAj9gT6/H97dVlCNScY3mtYvRkxdZlwDKDEnanPWVLdrdkeXEGlFEazVdfPVHaVeHc3N15CUwppwOJXeK7HshAB8NuOU7J6sP4SRXuH/EvbUfMiqMmDqv5M5FNSfAj/wgAAP//UEsHCPl//NYAAQAArwEAAFBLAQIUABQACAAIAAAAAAD5f/zWAAEAAK8BAAAIAAAAAAAAAAAAAAAAAAAAAABpbmRleC5weVBLBQYAAAAAAQABADYAAAA2AQAAAAA=",
+            },
+            function_name=std.format(input="%s_%s",
+                args=[
+                    name,
+                    "update2",
+                ]).result,
+            runtime="python3.9",
+            disk_size=512,
+            log_config={
+                "log_begin_rule": "None",
+            })
+        default = alicloud.fc.V3AsyncInvokeConfig("default",
+            max_async_retry_attempts=1,
+            max_async_event_age_in_seconds=1,
+            async_task=True,
+            function_name=function.function_name,
+            destination_config={
+                "on_failure": {
+                    "destination": function1.function_name.apply(lambda function_name: f"acs:fc:eu-central-1:{current.id}:functions/{function_name}"),
+                },
+                "on_success": {
+                    "destination": function1.function_name.apply(lambda function_name: f"acs:fc:eu-central-1:{current.id}:functions/{function_name}"),
+                },
+            },
+            qualifier="LATEST")
+        ```
 
         ## Import
 

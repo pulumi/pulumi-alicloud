@@ -10,6 +10,11 @@ export const getServiceHybridDoubleWrites: typeof import("./getServiceHybridDoub
 export const getServiceHybridDoubleWritesOutput: typeof import("./getServiceHybridDoubleWrites").getServiceHybridDoubleWritesOutput = null as any;
 utilities.lazyLoad(exports, ["getServiceHybridDoubleWrites","getServiceHybridDoubleWritesOutput"], () => require("./getServiceHybridDoubleWrites"));
 
+export { GetServiceMetricAlarmRulesArgs, GetServiceMetricAlarmRulesResult, GetServiceMetricAlarmRulesOutputArgs } from "./getServiceMetricAlarmRules";
+export const getServiceMetricAlarmRules: typeof import("./getServiceMetricAlarmRules").getServiceMetricAlarmRules = null as any;
+export const getServiceMetricAlarmRulesOutput: typeof import("./getServiceMetricAlarmRules").getServiceMetricAlarmRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceMetricAlarmRules","getServiceMetricAlarmRulesOutput"], () => require("./getServiceMetricAlarmRules"));
+
 export { ServiceBasicPublicArgs, ServiceBasicPublicState } from "./serviceBasicPublic";
 export type ServiceBasicPublic = import("./serviceBasicPublic").ServiceBasicPublic;
 export const ServiceBasicPublic: typeof import("./serviceBasicPublic").ServiceBasicPublic = null as any;

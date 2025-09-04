@@ -27,6 +27,78 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.sag.Qos;
+ * import com.pulumi.alicloud.sag.QosArgs;
+ * import com.pulumi.time.Static;
+ * import com.pulumi.alicloud.sag.QosPolicy;
+ * import com.pulumi.alicloud.sag.QosPolicyArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.ReplaceArgs;
+ * import com.pulumi.std.inputs.TimeaddArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf-example");
+ *         var default_ = new Qos("default", QosArgs.builder()
+ *             .name(name)
+ *             .build());
+ * 
+ *         var example = new Static("example");
+ * 
+ *         var defaultQosPolicy = new QosPolicy("defaultQosPolicy", QosPolicyArgs.builder()
+ *             .qosId(default_.id())
+ *             .name(name)
+ *             .description(name)
+ *             .priority(1)
+ *             .ipProtocol("ALL")
+ *             .sourceCidr("192.168.0.0/24")
+ *             .sourcePortRange("-1/-1")
+ *             .destCidr("10.10.0.0/24")
+ *             .destPortRange("-1/-1")
+ *             .startTime(StdFunctions.replace(ReplaceArgs.builder()
+ *                 .text(example.rfc3339())
+ *                 .search("Z")
+ *                 .replace("+0800")
+ *                 .build()).result())
+ *             .endTime(StdFunctions.replace(ReplaceArgs.builder()
+ *                 .text(StdFunctions.timeadd(TimeaddArgs.builder()
+ *                     .duration(example.rfc3339())
+ *                     .timestamp("24h")
+ *                     .build()).result())
+ *                 .search("Z")
+ *                 .replace("+0800")
+ *                 .build()).result())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * The Sag Qos Policy can be imported using the id, e.g.

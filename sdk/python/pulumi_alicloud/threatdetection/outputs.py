@@ -16,6 +16,8 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AntiBruteForceRuleProtocolType',
+    'AttackPathSensitiveAssetConfigAttackPathAssetList',
     'HoneypotPresetMeta',
     'HoneypotProbeHoneypotBindList',
     'HoneypotProbeHoneypotBindListBindPortList',
@@ -36,6 +38,151 @@ __all__ = [
     'GetVulWhitelistsWhitelistResult',
     'GetWebLockConfigsConfigResult',
 ]
+
+@pulumi.output_type
+class AntiBruteForceRuleProtocolType(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sqlServer":
+            suggest = "sql_server"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AntiBruteForceRuleProtocolType. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AntiBruteForceRuleProtocolType.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AntiBruteForceRuleProtocolType.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 rdp: Optional[_builtins.str] = None,
+                 sql_server: Optional[_builtins.str] = None,
+                 ssh: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str rdp: Whether to enable RDP interception. Default value: `on`. Valid values: `on`, `off`.
+        :param _builtins.str sql_server: Whether to enable the SqlServer interception method. Default value: `off`. Valid values: `on`, `off`.
+        :param _builtins.str ssh: Whether to enable SSH interception. Default value: `on`. Valid values: `on`, `off`.
+        """
+        if rdp is not None:
+            pulumi.set(__self__, "rdp", rdp)
+        if sql_server is not None:
+            pulumi.set(__self__, "sql_server", sql_server)
+        if ssh is not None:
+            pulumi.set(__self__, "ssh", ssh)
+
+    @_builtins.property
+    @pulumi.getter
+    def rdp(self) -> Optional[_builtins.str]:
+        """
+        Whether to enable RDP interception. Default value: `on`. Valid values: `on`, `off`.
+        """
+        return pulumi.get(self, "rdp")
+
+    @_builtins.property
+    @pulumi.getter(name="sqlServer")
+    def sql_server(self) -> Optional[_builtins.str]:
+        """
+        Whether to enable the SqlServer interception method. Default value: `off`. Valid values: `on`, `off`.
+        """
+        return pulumi.get(self, "sql_server")
+
+    @_builtins.property
+    @pulumi.getter
+    def ssh(self) -> Optional[_builtins.str]:
+        """
+        Whether to enable SSH interception. Default value: `on`. Valid values: `on`, `off`.
+        """
+        return pulumi.get(self, "ssh")
+
+
+@pulumi.output_type
+class AttackPathSensitiveAssetConfigAttackPathAssetList(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "assetSubType":
+            suggest = "asset_sub_type"
+        elif key == "assetType":
+            suggest = "asset_type"
+        elif key == "instanceId":
+            suggest = "instance_id"
+        elif key == "regionId":
+            suggest = "region_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AttackPathSensitiveAssetConfigAttackPathAssetList. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AttackPathSensitiveAssetConfigAttackPathAssetList.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AttackPathSensitiveAssetConfigAttackPathAssetList.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 asset_sub_type: _builtins.int,
+                 asset_type: _builtins.int,
+                 instance_id: _builtins.str,
+                 region_id: _builtins.str,
+                 vendor: _builtins.int):
+        """
+        :param _builtins.int asset_sub_type: Cloud product asset subtype.
+        :param _builtins.int asset_type: The asset type of the cloud product asset.
+        :param _builtins.str instance_id: The ID of the cloud product instance.
+        :param _builtins.str region_id: The region ID of the cloud product.
+        :param _builtins.int vendor: Cloud product asset vendor. Valid values: `0`.
+        """
+        pulumi.set(__self__, "asset_sub_type", asset_sub_type)
+        pulumi.set(__self__, "asset_type", asset_type)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "vendor", vendor)
+
+    @_builtins.property
+    @pulumi.getter(name="assetSubType")
+    def asset_sub_type(self) -> _builtins.int:
+        """
+        Cloud product asset subtype.
+        """
+        return pulumi.get(self, "asset_sub_type")
+
+    @_builtins.property
+    @pulumi.getter(name="assetType")
+    def asset_type(self) -> _builtins.int:
+        """
+        The asset type of the cloud product asset.
+        """
+        return pulumi.get(self, "asset_type")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> _builtins.str:
+        """
+        The ID of the cloud product instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> _builtins.str:
+        """
+        The region ID of the cloud product.
+        """
+        return pulumi.get(self, "region_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def vendor(self) -> _builtins.int:
+        """
+        Cloud product asset vendor. Valid values: `0`.
+        """
+        return pulumi.get(self, "vendor")
+
 
 @pulumi.output_type
 class HoneypotPresetMeta(dict):

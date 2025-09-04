@@ -19,14 +19,14 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
     public static final DomainListenArgs Empty = new DomainListenArgs();
 
     /**
-     * The ID of the certificate to be added. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
+     * The ID of the certificate to be added. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol).
      * 
      */
     @Import(name="certId")
     private @Nullable Output<String> certId;
 
     /**
-     * @return The ID of the certificate to be added. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
+     * @return The ID of the certificate to be added. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol).
      * 
      */
     public Optional<Output<String>> certId() {
@@ -34,20 +34,14 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of encryption suite to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-     * - **1**: indicates that all encryption suites are added.
-     * - **2**: indicates that a strong encryption package is added. You can select this value only if the value of **tls_version** is `tlsv1.2`.
-     * - **99**: indicates that a custom encryption suite is added.
+     * The type of the cipher suites that you want to add. This parameter is available only if you specify `HttpsPorts`. Valid values:
      * 
      */
     @Import(name="cipherSuite")
     private @Nullable Output<Integer> cipherSuite;
 
     /**
-     * @return The type of encryption suite to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-     * - **1**: indicates that all encryption suites are added.
-     * - **2**: indicates that a strong encryption package is added. You can select this value only if the value of **tls_version** is `tlsv1.2`.
-     * - **99**: indicates that a custom encryption suite is added.
+     * @return The type of the cipher suites that you want to add. This parameter is available only if you specify `HttpsPorts`. Valid values:
      * 
      */
     public Optional<Output<Integer>> cipherSuite() {
@@ -70,18 +64,14 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether TSL1.3 version is supported. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-     * - **true**: indicates that TSL1.3 is supported.
-     * - **false**: indicates that TSL1.3 is not supported.
+     * Whether TSL1.3 version is supported. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol). Value:
      * 
      */
     @Import(name="enableTlsv3")
     private @Nullable Output<Boolean> enableTlsv3;
 
     /**
-     * @return Whether TSL1.3 version is supported. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-     * - **true**: indicates that TSL1.3 is supported.
-     * - **false**: indicates that TSL1.3 is not supported.
+     * @return Whether TSL1.3 version is supported. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol). Value:
      * 
      */
     public Optional<Output<Boolean>> enableTlsv3() {
@@ -89,18 +79,14 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to enable exclusive IP address. This parameter is used only when the value of **ipv6_enabled** is **false** (indicating that IPv6 is not enabled) and the value of **protection_resource** is **share** (indicating that a shared cluster is used). Value:
-     * - **true**: indicates that the exclusive IP address is enabled.
-     * - **false** (default): indicates that exclusive IP address is not enabled.
+     * Specifies whether to enable the exclusive IP address feature. This parameter is available only if you set `IPv6Enabled` to false and `ProtectionResource` to `share`. Valid values:
      * 
      */
     @Import(name="exclusiveIp")
     private @Nullable Output<Boolean> exclusiveIp;
 
     /**
-     * @return Whether to enable exclusive IP address. This parameter is used only when the value of **ipv6_enabled** is **false** (indicating that IPv6 is not enabled) and the value of **protection_resource** is **share** (indicating that a shared cluster is used). Value:
-     * - **true**: indicates that the exclusive IP address is enabled.
-     * - **false** (default): indicates that exclusive IP address is not enabled.
+     * @return Specifies whether to enable the exclusive IP address feature. This parameter is available only if you set `IPv6Enabled` to false and `ProtectionResource` to `share`. Valid values:
      * 
      */
     public Optional<Output<Boolean>> exclusiveIp() {
@@ -108,18 +94,14 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to enable the forced jump of HTTPS. This parameter is used only when the value of `https_ports` is not empty (indicating that the domain name uses HTTPS protocol) and the value of httports is empty (indicating that the domain name does not use HTTP protocol). Value:
-     * - **true**: indicates that HTTPS forced redirection is enabled.
-     * - **false**: indicates that HTTPS forced redirection is not enabled.
+     * Specifies whether to enable force redirect from HTTP to HTTPS for received requests. This parameter is available only if you specify `HttpsPorts` and leave `HttpPorts` empty. Valid values:
      * 
      */
     @Import(name="focusHttps")
     private @Nullable Output<Boolean> focusHttps;
 
     /**
-     * @return Whether to enable the forced jump of HTTPS. This parameter is used only when the value of `https_ports` is not empty (indicating that the domain name uses HTTPS protocol) and the value of httports is empty (indicating that the domain name does not use HTTP protocol). Value:
-     * - **true**: indicates that HTTPS forced redirection is enabled.
-     * - **false**: indicates that HTTPS forced redirection is not enabled.
+     * @return Specifies whether to enable force redirect from HTTP to HTTPS for received requests. This parameter is available only if you specify `HttpsPorts` and leave `HttpPorts` empty. Valid values:
      * 
      */
     public Optional<Output<Boolean>> focusHttps() {
@@ -127,18 +109,14 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to turn on http2. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-     * - **true:** indicates that HTTP2 is enabled.
-     * - **false** (default): indicates that HTTP2 is not enabled.
+     * Specifies whether to enable HTTP/2. This parameter is available only if you specify `HttpsPorts`. Valid values:
      * 
      */
     @Import(name="http2Enabled")
     private @Nullable Output<Boolean> http2Enabled;
 
     /**
-     * @return Whether to turn on http2. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-     * - **true:** indicates that HTTP2 is enabled.
-     * - **false** (default): indicates that HTTP2 is not enabled.
+     * @return Specifies whether to enable HTTP/2. This parameter is available only if you specify `HttpsPorts`. Valid values:
      * 
      */
     public Optional<Output<Boolean>> http2Enabled() {
@@ -146,14 +124,14 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The listening port of the HTTP protocol.
+     * The HTTP listener ports. Specify the value in the \[**port1,port2,...**] format.
      * 
      */
     @Import(name="httpPorts")
     private @Nullable Output<List<Integer>> httpPorts;
 
     /**
-     * @return The listening port of the HTTP protocol.
+     * @return The HTTP listener ports. Specify the value in the \[**port1,port2,...**] format.
      * 
      */
     public Optional<Output<List<Integer>>> httpPorts() {
@@ -161,14 +139,14 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The listening port of the HTTPS protocol.
+     * The HTTPS listener ports. Specify the value in the \[**port1,port2,...**] format.
      * 
      */
     @Import(name="httpsPorts")
     private @Nullable Output<List<Integer>> httpsPorts;
 
     /**
-     * @return The listening port of the HTTPS protocol.
+     * @return The HTTPS listener ports. Specify the value in the \[**port1,port2,...**] format.
      * 
      */
     public Optional<Output<List<Integer>>> httpsPorts() {
@@ -176,18 +154,14 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether IPv6 is turned on. Value:
-     * - **true**: indicates that IPv6 is enabled.
-     * - **false** (default): indicates that IPv6 is not enabled.
+     * Specifies whether to enable IPv6 protection. Valid values:
      * 
      */
     @Import(name="ipv6Enabled")
     private @Nullable Output<Boolean> ipv6Enabled;
 
     /**
-     * @return Whether IPv6 is turned on. Value:
-     * - **true**: indicates that IPv6 is enabled.
-     * - **false** (default): indicates that IPv6 is not enabled.
+     * @return Specifies whether to enable IPv6 protection. Valid values:
      * 
      */
     public Optional<Output<Boolean>> ipv6Enabled() {
@@ -195,18 +169,14 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of protection resource to use. Value:
-     * - **share** (default): indicates that a shared cluster is used.
-     * - **gslb**: indicates that the shared cluster intelligent load balancing is used.
+     * The type of the protection resource. Valid values:
      * 
      */
     @Import(name="protectionResource")
     private @Nullable Output<String> protectionResource;
 
     /**
-     * @return The type of protection resource to use. Value:
-     * - **share** (default): indicates that a shared cluster is used.
-     * - **gslb**: indicates that the shared cluster intelligent load balancing is used.
+     * @return The type of the protection resource. Valid values:
      * 
      */
     public Optional<Output<String>> protectionResource() {
@@ -214,14 +184,65 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The version of TLS to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value: **tlsv1**, **tlsv1.1**, **tlsv1.2**.
+     * Specifies whether to allow access only from SM certificate-based clients. This parameter is available only if you set SM2Enabled to true.
+     * 
+     * - true
+     * - false
+     * 
+     */
+    @Import(name="sm2AccessOnly")
+    private @Nullable Output<Boolean> sm2AccessOnly;
+
+    /**
+     * @return Specifies whether to allow access only from SM certificate-based clients. This parameter is available only if you set SM2Enabled to true.
+     * 
+     * - true
+     * - false
+     * 
+     */
+    public Optional<Output<Boolean>> sm2AccessOnly() {
+        return Optional.ofNullable(this.sm2AccessOnly);
+    }
+
+    /**
+     * The ID of the SM certificate that you want to add. This parameter is available only if you set SM2Enabled to true.
+     * 
+     */
+    @Import(name="sm2CertId")
+    private @Nullable Output<String> sm2CertId;
+
+    /**
+     * @return The ID of the SM certificate that you want to add. This parameter is available only if you set SM2Enabled to true.
+     * 
+     */
+    public Optional<Output<String>> sm2CertId() {
+        return Optional.ofNullable(this.sm2CertId);
+    }
+
+    /**
+     * Specifies whether to add an SM certificate.
+     * 
+     */
+    @Import(name="sm2Enabled")
+    private @Nullable Output<Boolean> sm2Enabled;
+
+    /**
+     * @return Specifies whether to add an SM certificate.
+     * 
+     */
+    public Optional<Output<Boolean>> sm2Enabled() {
+        return Optional.ofNullable(this.sm2Enabled);
+    }
+
+    /**
+     * The version of TLS to add. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol). Value:
      * 
      */
     @Import(name="tlsVersion")
     private @Nullable Output<String> tlsVersion;
 
     /**
-     * @return The version of TLS to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value: **tlsv1**, **tlsv1.1**, **tlsv1.2**.
+     * @return The version of TLS to add. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol). Value:
      * 
      */
     public Optional<Output<String>> tlsVersion() {
@@ -229,20 +250,14 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * WAF obtains the real IP address of the client. Value:
-     * - **0** (default): indicates that the client has not forwarded the traffic to WAF through other layer -7 agents.
-     * - **1**: indicates that the first value of the X-Forwarded-For(XFF) field in the WAF read request header is used as the client IP address.
-     * - **2**: indicates that the custom field value set by you in the WAF read request header is used as the client IP address.
+     * The method that is used to obtain the originating IP address of a client. Valid values:
      * 
      */
     @Import(name="xffHeaderMode")
     private @Nullable Output<Integer> xffHeaderMode;
 
     /**
-     * @return WAF obtains the real IP address of the client. Value:
-     * - **0** (default): indicates that the client has not forwarded the traffic to WAF through other layer -7 agents.
-     * - **1**: indicates that the first value of the X-Forwarded-For(XFF) field in the WAF read request header is used as the client IP address.
-     * - **2**: indicates that the custom field value set by you in the WAF read request header is used as the client IP address.
+     * @return The method that is used to obtain the originating IP address of a client. Valid values:
      * 
      */
     public Optional<Output<Integer>> xffHeaderMode() {
@@ -250,14 +265,18 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set the list of custom fields used to obtain the client IP address.
+     * The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the **\[&#34;header1&#34;,&#34;header2&#34;,...]** format.
+     * 
+     * &gt; **NOTE:**   This parameter is required only if you set `XffHeaderMode` to 2.
      * 
      */
     @Import(name="xffHeaders")
     private @Nullable Output<List<String>> xffHeaders;
 
     /**
-     * @return Set the list of custom fields used to obtain the client IP address.
+     * @return The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the **\[&#34;header1&#34;,&#34;header2&#34;,...]** format.
+     * 
+     * &gt; **NOTE:**   This parameter is required only if you set `XffHeaderMode` to 2.
      * 
      */
     public Optional<Output<List<String>>> xffHeaders() {
@@ -278,6 +297,9 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         this.httpsPorts = $.httpsPorts;
         this.ipv6Enabled = $.ipv6Enabled;
         this.protectionResource = $.protectionResource;
+        this.sm2AccessOnly = $.sm2AccessOnly;
+        this.sm2CertId = $.sm2CertId;
+        this.sm2Enabled = $.sm2Enabled;
         this.tlsVersion = $.tlsVersion;
         this.xffHeaderMode = $.xffHeaderMode;
         this.xffHeaders = $.xffHeaders;
@@ -302,7 +324,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certId The ID of the certificate to be added. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
+         * @param certId The ID of the certificate to be added. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol).
          * 
          * @return builder
          * 
@@ -313,7 +335,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certId The ID of the certificate to be added. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
+         * @param certId The ID of the certificate to be added. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol).
          * 
          * @return builder
          * 
@@ -323,10 +345,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cipherSuite The type of encryption suite to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-         * - **1**: indicates that all encryption suites are added.
-         * - **2**: indicates that a strong encryption package is added. You can select this value only if the value of **tls_version** is `tlsv1.2`.
-         * - **99**: indicates that a custom encryption suite is added.
+         * @param cipherSuite The type of the cipher suites that you want to add. This parameter is available only if you specify `HttpsPorts`. Valid values:
          * 
          * @return builder
          * 
@@ -337,10 +356,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cipherSuite The type of encryption suite to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-         * - **1**: indicates that all encryption suites are added.
-         * - **2**: indicates that a strong encryption package is added. You can select this value only if the value of **tls_version** is `tlsv1.2`.
-         * - **99**: indicates that a custom encryption suite is added.
+         * @param cipherSuite The type of the cipher suites that you want to add. This parameter is available only if you specify `HttpsPorts`. Valid values:
          * 
          * @return builder
          * 
@@ -381,9 +397,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableTlsv3 Whether TSL1.3 version is supported. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-         * - **true**: indicates that TSL1.3 is supported.
-         * - **false**: indicates that TSL1.3 is not supported.
+         * @param enableTlsv3 Whether TSL1.3 version is supported. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol). Value:
          * 
          * @return builder
          * 
@@ -394,9 +408,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableTlsv3 Whether TSL1.3 version is supported. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-         * - **true**: indicates that TSL1.3 is supported.
-         * - **false**: indicates that TSL1.3 is not supported.
+         * @param enableTlsv3 Whether TSL1.3 version is supported. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol). Value:
          * 
          * @return builder
          * 
@@ -406,9 +418,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param exclusiveIp Whether to enable exclusive IP address. This parameter is used only when the value of **ipv6_enabled** is **false** (indicating that IPv6 is not enabled) and the value of **protection_resource** is **share** (indicating that a shared cluster is used). Value:
-         * - **true**: indicates that the exclusive IP address is enabled.
-         * - **false** (default): indicates that exclusive IP address is not enabled.
+         * @param exclusiveIp Specifies whether to enable the exclusive IP address feature. This parameter is available only if you set `IPv6Enabled` to false and `ProtectionResource` to `share`. Valid values:
          * 
          * @return builder
          * 
@@ -419,9 +429,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param exclusiveIp Whether to enable exclusive IP address. This parameter is used only when the value of **ipv6_enabled** is **false** (indicating that IPv6 is not enabled) and the value of **protection_resource** is **share** (indicating that a shared cluster is used). Value:
-         * - **true**: indicates that the exclusive IP address is enabled.
-         * - **false** (default): indicates that exclusive IP address is not enabled.
+         * @param exclusiveIp Specifies whether to enable the exclusive IP address feature. This parameter is available only if you set `IPv6Enabled` to false and `ProtectionResource` to `share`. Valid values:
          * 
          * @return builder
          * 
@@ -431,9 +439,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param focusHttps Whether to enable the forced jump of HTTPS. This parameter is used only when the value of `https_ports` is not empty (indicating that the domain name uses HTTPS protocol) and the value of httports is empty (indicating that the domain name does not use HTTP protocol). Value:
-         * - **true**: indicates that HTTPS forced redirection is enabled.
-         * - **false**: indicates that HTTPS forced redirection is not enabled.
+         * @param focusHttps Specifies whether to enable force redirect from HTTP to HTTPS for received requests. This parameter is available only if you specify `HttpsPorts` and leave `HttpPorts` empty. Valid values:
          * 
          * @return builder
          * 
@@ -444,9 +450,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param focusHttps Whether to enable the forced jump of HTTPS. This parameter is used only when the value of `https_ports` is not empty (indicating that the domain name uses HTTPS protocol) and the value of httports is empty (indicating that the domain name does not use HTTP protocol). Value:
-         * - **true**: indicates that HTTPS forced redirection is enabled.
-         * - **false**: indicates that HTTPS forced redirection is not enabled.
+         * @param focusHttps Specifies whether to enable force redirect from HTTP to HTTPS for received requests. This parameter is available only if you specify `HttpsPorts` and leave `HttpPorts` empty. Valid values:
          * 
          * @return builder
          * 
@@ -456,9 +460,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param http2Enabled Whether to turn on http2. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-         * - **true:** indicates that HTTP2 is enabled.
-         * - **false** (default): indicates that HTTP2 is not enabled.
+         * @param http2Enabled Specifies whether to enable HTTP/2. This parameter is available only if you specify `HttpsPorts`. Valid values:
          * 
          * @return builder
          * 
@@ -469,9 +471,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param http2Enabled Whether to turn on http2. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
-         * - **true:** indicates that HTTP2 is enabled.
-         * - **false** (default): indicates that HTTP2 is not enabled.
+         * @param http2Enabled Specifies whether to enable HTTP/2. This parameter is available only if you specify `HttpsPorts`. Valid values:
          * 
          * @return builder
          * 
@@ -481,7 +481,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param httpPorts The listening port of the HTTP protocol.
+         * @param httpPorts The HTTP listener ports. Specify the value in the \[**port1,port2,...**] format.
          * 
          * @return builder
          * 
@@ -492,7 +492,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param httpPorts The listening port of the HTTP protocol.
+         * @param httpPorts The HTTP listener ports. Specify the value in the \[**port1,port2,...**] format.
          * 
          * @return builder
          * 
@@ -502,7 +502,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param httpPorts The listening port of the HTTP protocol.
+         * @param httpPorts The HTTP listener ports. Specify the value in the \[**port1,port2,...**] format.
          * 
          * @return builder
          * 
@@ -512,7 +512,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param httpsPorts The listening port of the HTTPS protocol.
+         * @param httpsPorts The HTTPS listener ports. Specify the value in the \[**port1,port2,...**] format.
          * 
          * @return builder
          * 
@@ -523,7 +523,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param httpsPorts The listening port of the HTTPS protocol.
+         * @param httpsPorts The HTTPS listener ports. Specify the value in the \[**port1,port2,...**] format.
          * 
          * @return builder
          * 
@@ -533,7 +533,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param httpsPorts The listening port of the HTTPS protocol.
+         * @param httpsPorts The HTTPS listener ports. Specify the value in the \[**port1,port2,...**] format.
          * 
          * @return builder
          * 
@@ -543,9 +543,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6Enabled Whether IPv6 is turned on. Value:
-         * - **true**: indicates that IPv6 is enabled.
-         * - **false** (default): indicates that IPv6 is not enabled.
+         * @param ipv6Enabled Specifies whether to enable IPv6 protection. Valid values:
          * 
          * @return builder
          * 
@@ -556,9 +554,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6Enabled Whether IPv6 is turned on. Value:
-         * - **true**: indicates that IPv6 is enabled.
-         * - **false** (default): indicates that IPv6 is not enabled.
+         * @param ipv6Enabled Specifies whether to enable IPv6 protection. Valid values:
          * 
          * @return builder
          * 
@@ -568,9 +564,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protectionResource The type of protection resource to use. Value:
-         * - **share** (default): indicates that a shared cluster is used.
-         * - **gslb**: indicates that the shared cluster intelligent load balancing is used.
+         * @param protectionResource The type of the protection resource. Valid values:
          * 
          * @return builder
          * 
@@ -581,9 +575,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protectionResource The type of protection resource to use. Value:
-         * - **share** (default): indicates that a shared cluster is used.
-         * - **gslb**: indicates that the shared cluster intelligent load balancing is used.
+         * @param protectionResource The type of the protection resource. Valid values:
          * 
          * @return builder
          * 
@@ -593,7 +585,76 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tlsVersion The version of TLS to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value: **tlsv1**, **tlsv1.1**, **tlsv1.2**.
+         * @param sm2AccessOnly Specifies whether to allow access only from SM certificate-based clients. This parameter is available only if you set SM2Enabled to true.
+         * 
+         * - true
+         * - false
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sm2AccessOnly(@Nullable Output<Boolean> sm2AccessOnly) {
+            $.sm2AccessOnly = sm2AccessOnly;
+            return this;
+        }
+
+        /**
+         * @param sm2AccessOnly Specifies whether to allow access only from SM certificate-based clients. This parameter is available only if you set SM2Enabled to true.
+         * 
+         * - true
+         * - false
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sm2AccessOnly(Boolean sm2AccessOnly) {
+            return sm2AccessOnly(Output.of(sm2AccessOnly));
+        }
+
+        /**
+         * @param sm2CertId The ID of the SM certificate that you want to add. This parameter is available only if you set SM2Enabled to true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sm2CertId(@Nullable Output<String> sm2CertId) {
+            $.sm2CertId = sm2CertId;
+            return this;
+        }
+
+        /**
+         * @param sm2CertId The ID of the SM certificate that you want to add. This parameter is available only if you set SM2Enabled to true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sm2CertId(String sm2CertId) {
+            return sm2CertId(Output.of(sm2CertId));
+        }
+
+        /**
+         * @param sm2Enabled Specifies whether to add an SM certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sm2Enabled(@Nullable Output<Boolean> sm2Enabled) {
+            $.sm2Enabled = sm2Enabled;
+            return this;
+        }
+
+        /**
+         * @param sm2Enabled Specifies whether to add an SM certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sm2Enabled(Boolean sm2Enabled) {
+            return sm2Enabled(Output.of(sm2Enabled));
+        }
+
+        /**
+         * @param tlsVersion The version of TLS to add. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol). Value:
          * 
          * @return builder
          * 
@@ -604,7 +665,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tlsVersion The version of TLS to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value: **tlsv1**, **tlsv1.1**, **tlsv1.2**.
+         * @param tlsVersion The version of TLS to add. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol). Value:
          * 
          * @return builder
          * 
@@ -614,10 +675,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param xffHeaderMode WAF obtains the real IP address of the client. Value:
-         * - **0** (default): indicates that the client has not forwarded the traffic to WAF through other layer -7 agents.
-         * - **1**: indicates that the first value of the X-Forwarded-For(XFF) field in the WAF read request header is used as the client IP address.
-         * - **2**: indicates that the custom field value set by you in the WAF read request header is used as the client IP address.
+         * @param xffHeaderMode The method that is used to obtain the originating IP address of a client. Valid values:
          * 
          * @return builder
          * 
@@ -628,10 +686,7 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param xffHeaderMode WAF obtains the real IP address of the client. Value:
-         * - **0** (default): indicates that the client has not forwarded the traffic to WAF through other layer -7 agents.
-         * - **1**: indicates that the first value of the X-Forwarded-For(XFF) field in the WAF read request header is used as the client IP address.
-         * - **2**: indicates that the custom field value set by you in the WAF read request header is used as the client IP address.
+         * @param xffHeaderMode The method that is used to obtain the originating IP address of a client. Valid values:
          * 
          * @return builder
          * 
@@ -641,7 +696,9 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param xffHeaders Set the list of custom fields used to obtain the client IP address.
+         * @param xffHeaders The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the **\[&#34;header1&#34;,&#34;header2&#34;,...]** format.
+         * 
+         * &gt; **NOTE:**   This parameter is required only if you set `XffHeaderMode` to 2.
          * 
          * @return builder
          * 
@@ -652,7 +709,9 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param xffHeaders Set the list of custom fields used to obtain the client IP address.
+         * @param xffHeaders The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the **\[&#34;header1&#34;,&#34;header2&#34;,...]** format.
+         * 
+         * &gt; **NOTE:**   This parameter is required only if you set `XffHeaderMode` to 2.
          * 
          * @return builder
          * 
@@ -662,7 +721,9 @@ public final class DomainListenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param xffHeaders Set the list of custom fields used to obtain the client IP address.
+         * @param xffHeaders The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the **\[&#34;header1&#34;,&#34;header2&#34;,...]** format.
+         * 
+         * &gt; **NOTE:**   This parameter is required only if you set `XffHeaderMode` to 2.
          * 
          * @return builder
          * 

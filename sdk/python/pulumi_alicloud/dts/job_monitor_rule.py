@@ -209,6 +209,120 @@ class JobMonitorRule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.134.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        example = alicloud.get_regions(current=True)
+        example_get_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="Basic",
+            db_instance_storage_type="cloud_essd")
+        example_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=example_get_zones.zones[0].id,
+            engine="MySQL",
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="Basic",
+            db_instance_storage_type="cloud_essd")
+        example_network = alicloud.vpc.Network("example",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        example_switch = alicloud.vpc.Switch("example",
+            vpc_id=example_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=example_get_zones.zones[0].id,
+            vswitch_name=name)
+        example_security_group = alicloud.ecs.SecurityGroup("example",
+            name=name,
+            vpc_id=example_network.id)
+        example_instance = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            example_instance.append(alicloud.rds.Instance(f"example-{range['value']}",
+                engine="MySQL",
+                engine_version="8.0",
+                instance_type=example_get_instance_classes.instance_classes[0].instance_class,
+                instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+                instance_charge_type="Postpaid",
+                instance_name=std.format(input=f"{name}_%d",
+                    args=[range["value"] + 1]).result,
+                vswitch_id=example_switch.id,
+                monitoring_period=60,
+                db_instance_storage_type="cloud_essd",
+                security_group_ids=[example_security_group.id]))
+        example_rds_account = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            example_rds_account.append(alicloud.rds.RdsAccount(f"example-{range['value']}",
+                db_instance_id=example_instance[range["value"]].id,
+                account_name=std.format(input="example_name_%d",
+                    args=[range["value"] + 1]).result,
+                account_password=std.format(input="example_password_%d",
+                    args=[range["value"] + 1]).result))
+        example_database = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            example_database.append(alicloud.rds.Database(f"example-{range['value']}",
+                instance_id=example_instance[range["value"]].id,
+                name=std.format(input=f"{name}_%d",
+                    args=[range["value"] + 1]).result))
+        example_account_privilege = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            example_account_privilege.append(alicloud.rds.AccountPrivilege(f"example-{range['value']}",
+                instance_id=example_instance[range["value"]].id,
+                account_name=example_rds_account[range["value"]].name,
+                privilege="ReadWrite",
+                db_names=[example_database[range["value"]].name]))
+        example_migration_instance = alicloud.dts.MigrationInstance("example",
+            payment_type="PayAsYouGo",
+            source_endpoint_engine_name="MySQL",
+            source_endpoint_region=example.regions[0].id,
+            destination_endpoint_engine_name="MySQL",
+            destination_endpoint_region=example.regions[0].id,
+            instance_class="small",
+            sync_architecture="oneway")
+        example_migration_job = alicloud.dts.MigrationJob("example",
+            dts_instance_id=example_migration_instance.id,
+            dts_job_name=name,
+            source_endpoint_instance_type="RDS",
+            source_endpoint_instance_id=example_account_privilege[0].instance_id,
+            source_endpoint_engine_name="MySQL",
+            source_endpoint_region=example.regions[0].id,
+            source_endpoint_user_name=example_rds_account[0].account_name,
+            source_endpoint_password=example_rds_account[0].account_password,
+            destination_endpoint_instance_type="RDS",
+            destination_endpoint_instance_id=example_account_privilege[1].instance_id,
+            destination_endpoint_engine_name="MySQL",
+            destination_endpoint_region=example.regions[0].id,
+            destination_endpoint_user_name=example_rds_account[1].account_name,
+            destination_endpoint_password=example_rds_account[1].account_password,
+            db_list=pulumi.Output.json_dumps(pulumi.Output.all(
+                exampleDatabaseName=example_database[0].name,
+                exampleDatabaseName1=example_database[1].name
+        ).apply(lambda resolved_outputs: {
+                resolved_outputs['exampleDatabaseName']: {
+                    "name": resolved_outputs['exampleDatabaseName1'],
+                    "all": True,
+                },
+            })
+        ),
+            structure_initialization=True,
+            data_initialization=True,
+            data_synchronization=True,
+            status="Migrating")
+        example_job_monitor_rule = alicloud.dts.JobMonitorRule("example",
+            dts_job_id=example_migration_job.id,
+            type="delay")
+        ```
+
         ## Import
 
         DTS Job Monitor Rule can be imported using the id, e.g.
@@ -237,6 +351,120 @@ class JobMonitorRule(pulumi.CustomResource):
         For information about DTS Job Monitor Rule and how to use it, see [What is Job Monitor Rule](https://www.alibabacloud.com/help/en/dts/developer-reference/api-createjobmonitorrule).
 
         > **NOTE:** Available since v1.134.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        example = alicloud.get_regions(current=True)
+        example_get_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="Basic",
+            db_instance_storage_type="cloud_essd")
+        example_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=example_get_zones.zones[0].id,
+            engine="MySQL",
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="Basic",
+            db_instance_storage_type="cloud_essd")
+        example_network = alicloud.vpc.Network("example",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        example_switch = alicloud.vpc.Switch("example",
+            vpc_id=example_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=example_get_zones.zones[0].id,
+            vswitch_name=name)
+        example_security_group = alicloud.ecs.SecurityGroup("example",
+            name=name,
+            vpc_id=example_network.id)
+        example_instance = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            example_instance.append(alicloud.rds.Instance(f"example-{range['value']}",
+                engine="MySQL",
+                engine_version="8.0",
+                instance_type=example_get_instance_classes.instance_classes[0].instance_class,
+                instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+                instance_charge_type="Postpaid",
+                instance_name=std.format(input=f"{name}_%d",
+                    args=[range["value"] + 1]).result,
+                vswitch_id=example_switch.id,
+                monitoring_period=60,
+                db_instance_storage_type="cloud_essd",
+                security_group_ids=[example_security_group.id]))
+        example_rds_account = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            example_rds_account.append(alicloud.rds.RdsAccount(f"example-{range['value']}",
+                db_instance_id=example_instance[range["value"]].id,
+                account_name=std.format(input="example_name_%d",
+                    args=[range["value"] + 1]).result,
+                account_password=std.format(input="example_password_%d",
+                    args=[range["value"] + 1]).result))
+        example_database = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            example_database.append(alicloud.rds.Database(f"example-{range['value']}",
+                instance_id=example_instance[range["value"]].id,
+                name=std.format(input=f"{name}_%d",
+                    args=[range["value"] + 1]).result))
+        example_account_privilege = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            example_account_privilege.append(alicloud.rds.AccountPrivilege(f"example-{range['value']}",
+                instance_id=example_instance[range["value"]].id,
+                account_name=example_rds_account[range["value"]].name,
+                privilege="ReadWrite",
+                db_names=[example_database[range["value"]].name]))
+        example_migration_instance = alicloud.dts.MigrationInstance("example",
+            payment_type="PayAsYouGo",
+            source_endpoint_engine_name="MySQL",
+            source_endpoint_region=example.regions[0].id,
+            destination_endpoint_engine_name="MySQL",
+            destination_endpoint_region=example.regions[0].id,
+            instance_class="small",
+            sync_architecture="oneway")
+        example_migration_job = alicloud.dts.MigrationJob("example",
+            dts_instance_id=example_migration_instance.id,
+            dts_job_name=name,
+            source_endpoint_instance_type="RDS",
+            source_endpoint_instance_id=example_account_privilege[0].instance_id,
+            source_endpoint_engine_name="MySQL",
+            source_endpoint_region=example.regions[0].id,
+            source_endpoint_user_name=example_rds_account[0].account_name,
+            source_endpoint_password=example_rds_account[0].account_password,
+            destination_endpoint_instance_type="RDS",
+            destination_endpoint_instance_id=example_account_privilege[1].instance_id,
+            destination_endpoint_engine_name="MySQL",
+            destination_endpoint_region=example.regions[0].id,
+            destination_endpoint_user_name=example_rds_account[1].account_name,
+            destination_endpoint_password=example_rds_account[1].account_password,
+            db_list=pulumi.Output.json_dumps(pulumi.Output.all(
+                exampleDatabaseName=example_database[0].name,
+                exampleDatabaseName1=example_database[1].name
+        ).apply(lambda resolved_outputs: {
+                resolved_outputs['exampleDatabaseName']: {
+                    "name": resolved_outputs['exampleDatabaseName1'],
+                    "all": True,
+                },
+            })
+        ),
+            structure_initialization=True,
+            data_initialization=True,
+            data_synchronization=True,
+            status="Migrating")
+        example_job_monitor_rule = alicloud.dts.JobMonitorRule("example",
+            dts_job_id=example_migration_job.id,
+            type="delay")
+        ```
 
         ## Import
 

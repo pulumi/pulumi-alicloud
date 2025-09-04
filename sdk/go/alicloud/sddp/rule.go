@@ -45,14 +45,14 @@ import (
 //				Category: pulumi.Int(2),
 //				Content: pulumi.String(`  [
 //	    {
-//	      "rule": [
+//	      \"rule\": [
 //	        {
-//	          "operator": "contains",
-//	          "target": "content",
-//	          "value": "tf-testACCContent"
+//	          \"operator\": \"contains\",
+//	          \"target\": \"content\",
+//	          \"value\": \"tf-testACCContent\"
 //	        }
 //	      ],
-//	      "ruleRelation": "AND"
+//	      \"ruleRelation\": \"AND\"
 //	    }
 //	  ]
 //

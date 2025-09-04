@@ -15,6 +15,97 @@ namespace Pulumi.AliCloud.Vpn
         /// The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
         /// 
         /// &gt; **NOTE:** Available since v1.18.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var spec = config.Get("spec") ?? "20";
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+        ///     {
+        ///         NameRegex = "^default-NODELETING$",
+        ///     });
+        /// 
+        ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     {
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         ZoneId = "me-east-1a",
+        ///     });
+        /// 
+        ///     var vswitch = new List&lt;AliCloud.Vpc.Switch&gt;();
+        ///     for (var rangeIndex = 0; rangeIndex &lt; defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+        ///     {
+        ///         var range = new { Value = rangeIndex };
+        ///         vswitch.Add(new AliCloud.Vpc.Switch($"vswitch-{range.Value}", new()
+        ///         {
+        ///             VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///             CidrBlock = Std.Cidrsubnet.Invoke(new()
+        ///             {
+        ///                 Input = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Vpcs[0]?.CidrBlock),
+        ///                 Newbits = 8,
+        ///                 Netnum = 8,
+        ///             }).Apply(invoke =&gt; invoke.Result),
+        ///             ZoneId = "me-east-1a",
+        ///             VswitchName = name,
+        ///         }));
+        ///     }
+        ///     var vswitchId = Output.Tuple(defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length, defaultGetSwitches, Std.Concat.Invoke(new()
+        ///     {
+        ///         Input = new[]
+        ///         {
+        ///             vswitch.Select(__item =&gt; __item.Id).ToList(),
+        ///             new[]
+        ///             {
+        ///                 "",
+        ///             },
+        ///         },
+        ///     })).Apply(values =&gt;
+        ///     {
+        ///         var length = values.Item1;
+        ///         var defaultGetSwitches = values.Item2;
+        ///         var invoke = values.Item3;
+        ///         return length &gt; 0 ? defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]) : invoke.Result[0];
+        ///     });
+        /// 
+        ///     var defaultGateway = new AliCloud.Vpn.Gateway("default", new()
+        ///     {
+        ///         VpnType = "Normal",
+        ///         VpnGatewayName = name,
+        ///         VswitchId = vswitchId,
+        ///         AutoPay = true,
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         NetworkType = "public",
+        ///         PaymentType = "Subscription",
+        ///         EnableIpsec = true,
+        ///         Bandwidth = spec,
+        ///     });
+        /// 
+        ///     var vpnGateways = AliCloud.Vpn.GetGateways.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultGateway.Id,
+        ///         },
+        ///         IncludeReservationData = true,
+        ///         OutputFile = "/tmp/vpns",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetGatewaysResult> InvokeAsync(GetGatewaysArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGatewaysResult>("alicloud:vpn/getGateways:getGateways", args ?? new GetGatewaysArgs(), options.WithDefaults());
@@ -23,6 +114,97 @@ namespace Pulumi.AliCloud.Vpn
         /// The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
         /// 
         /// &gt; **NOTE:** Available since v1.18.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var spec = config.Get("spec") ?? "20";
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+        ///     {
+        ///         NameRegex = "^default-NODELETING$",
+        ///     });
+        /// 
+        ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     {
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         ZoneId = "me-east-1a",
+        ///     });
+        /// 
+        ///     var vswitch = new List&lt;AliCloud.Vpc.Switch&gt;();
+        ///     for (var rangeIndex = 0; rangeIndex &lt; defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+        ///     {
+        ///         var range = new { Value = rangeIndex };
+        ///         vswitch.Add(new AliCloud.Vpc.Switch($"vswitch-{range.Value}", new()
+        ///         {
+        ///             VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///             CidrBlock = Std.Cidrsubnet.Invoke(new()
+        ///             {
+        ///                 Input = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Vpcs[0]?.CidrBlock),
+        ///                 Newbits = 8,
+        ///                 Netnum = 8,
+        ///             }).Apply(invoke =&gt; invoke.Result),
+        ///             ZoneId = "me-east-1a",
+        ///             VswitchName = name,
+        ///         }));
+        ///     }
+        ///     var vswitchId = Output.Tuple(defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length, defaultGetSwitches, Std.Concat.Invoke(new()
+        ///     {
+        ///         Input = new[]
+        ///         {
+        ///             vswitch.Select(__item =&gt; __item.Id).ToList(),
+        ///             new[]
+        ///             {
+        ///                 "",
+        ///             },
+        ///         },
+        ///     })).Apply(values =&gt;
+        ///     {
+        ///         var length = values.Item1;
+        ///         var defaultGetSwitches = values.Item2;
+        ///         var invoke = values.Item3;
+        ///         return length &gt; 0 ? defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]) : invoke.Result[0];
+        ///     });
+        /// 
+        ///     var defaultGateway = new AliCloud.Vpn.Gateway("default", new()
+        ///     {
+        ///         VpnType = "Normal",
+        ///         VpnGatewayName = name,
+        ///         VswitchId = vswitchId,
+        ///         AutoPay = true,
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         NetworkType = "public",
+        ///         PaymentType = "Subscription",
+        ///         EnableIpsec = true,
+        ///         Bandwidth = spec,
+        ///     });
+        /// 
+        ///     var vpnGateways = AliCloud.Vpn.GetGateways.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultGateway.Id,
+        ///         },
+        ///         IncludeReservationData = true,
+        ///         OutputFile = "/tmp/vpns",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetGatewaysResult> Invoke(GetGatewaysInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGatewaysResult>("alicloud:vpn/getGateways:getGateways", args ?? new GetGatewaysInvokeArgs(), options.WithDefaults());
@@ -31,6 +213,97 @@ namespace Pulumi.AliCloud.Vpn
         /// The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
         /// 
         /// &gt; **NOTE:** Available since v1.18.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var spec = config.Get("spec") ?? "20";
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+        ///     {
+        ///         NameRegex = "^default-NODELETING$",
+        ///     });
+        /// 
+        ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     {
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         ZoneId = "me-east-1a",
+        ///     });
+        /// 
+        ///     var vswitch = new List&lt;AliCloud.Vpc.Switch&gt;();
+        ///     for (var rangeIndex = 0; rangeIndex &lt; defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+        ///     {
+        ///         var range = new { Value = rangeIndex };
+        ///         vswitch.Add(new AliCloud.Vpc.Switch($"vswitch-{range.Value}", new()
+        ///         {
+        ///             VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///             CidrBlock = Std.Cidrsubnet.Invoke(new()
+        ///             {
+        ///                 Input = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Vpcs[0]?.CidrBlock),
+        ///                 Newbits = 8,
+        ///                 Netnum = 8,
+        ///             }).Apply(invoke =&gt; invoke.Result),
+        ///             ZoneId = "me-east-1a",
+        ///             VswitchName = name,
+        ///         }));
+        ///     }
+        ///     var vswitchId = Output.Tuple(defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length, defaultGetSwitches, Std.Concat.Invoke(new()
+        ///     {
+        ///         Input = new[]
+        ///         {
+        ///             vswitch.Select(__item =&gt; __item.Id).ToList(),
+        ///             new[]
+        ///             {
+        ///                 "",
+        ///             },
+        ///         },
+        ///     })).Apply(values =&gt;
+        ///     {
+        ///         var length = values.Item1;
+        ///         var defaultGetSwitches = values.Item2;
+        ///         var invoke = values.Item3;
+        ///         return length &gt; 0 ? defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]) : invoke.Result[0];
+        ///     });
+        /// 
+        ///     var defaultGateway = new AliCloud.Vpn.Gateway("default", new()
+        ///     {
+        ///         VpnType = "Normal",
+        ///         VpnGatewayName = name,
+        ///         VswitchId = vswitchId,
+        ///         AutoPay = true,
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         NetworkType = "public",
+        ///         PaymentType = "Subscription",
+        ///         EnableIpsec = true,
+        ///         Bandwidth = spec,
+        ///     });
+        /// 
+        ///     var vpnGateways = AliCloud.Vpn.GetGateways.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultGateway.Id,
+        ///         },
+        ///         IncludeReservationData = true,
+        ///         OutputFile = "/tmp/vpns",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetGatewaysResult> Invoke(GetGatewaysInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetGatewaysResult>("alicloud:vpn/getGateways:getGateways", args ?? new GetGatewaysInvokeArgs(), options.WithDefaults());

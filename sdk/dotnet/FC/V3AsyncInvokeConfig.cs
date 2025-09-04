@@ -18,6 +18,126 @@ namespace Pulumi.AliCloud.FC
     /// 
     /// &gt; **NOTE:** Available since v1.228.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var current = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var function = new AliCloud.FC.V3Function("function", new()
+    ///     {
+    ///         MemorySize = 512,
+    ///         Cpu = 0.5,
+    ///         Handler = "index.Handler",
+    ///         Code = new AliCloud.FC.Inputs.V3FunctionCodeArgs
+    ///         {
+    ///             ZipFile = "UEsDBBQACAAIAAAAAAAAAAAAAAAAAAAAAAAIAAAAaW5kZXgucHmEkEFKxEAQRfd9ig9ZTCJOooIwDMwNXLqXnnQlaalUhU5lRj2KZ/FOXkESGR114bJ/P/7jV4b1xRq1hijtFpM1682cuNgPmgysbRulPT0fRxXnMtwrSPyeCdYRokSLnuMLJTTkbUqEvDMbxm1VdcRD6Tk+T1LW2ldB66knsYdA5iNX17ebm6tN2VnPhcswMPmREPuBacb+CiapLarAj9gT6/H97dVlCNScY3mtYvRkxdZlwDKDEnanPWVLdrdkeXEGlFEazVdfPVHaVeHc3N15CUwppwOJXeK7HshAB8NuOU7J6sP4SRXuH/EvbUfMiqMmDqv5M5FNSfAj/wgAAP//UEsHCPl//NYAAQAArwEAAFBLAQIUABQACAAIAAAAAAD5f/zWAAEAAK8BAAAIAAAAAAAAAAAAAAAAAAAAAABpbmRleC5weVBLBQYAAAAAAQABADYAAAA2AQAAAAA=",
+    ///         },
+    ///         FunctionName = name,
+    ///         Runtime = "python3.9",
+    ///         DiskSize = 512,
+    ///         LogConfig = new AliCloud.FC.Inputs.V3FunctionLogConfigArgs
+    ///         {
+    ///             LogBeginRule = "None",
+    ///         },
+    ///     });
+    /// 
+    ///     var function1 = new AliCloud.FC.V3Function("function1", new()
+    ///     {
+    ///         MemorySize = 512,
+    ///         Cpu = 0.5,
+    ///         Handler = "index.Handler",
+    ///         Code = new AliCloud.FC.Inputs.V3FunctionCodeArgs
+    ///         {
+    ///             ZipFile = "UEsDBBQACAAIAAAAAAAAAAAAAAAAAAAAAAAIAAAAaW5kZXgucHmEkEFKxEAQRfd9ig9ZTCJOooIwDMwNXLqXnnQlaalUhU5lRj2KZ/FOXkESGR114bJ/P/7jV4b1xRq1hijtFpM1682cuNgPmgysbRulPT0fRxXnMtwrSPyeCdYRokSLnuMLJTTkbUqEvDMbxm1VdcRD6Tk+T1LW2ldB66knsYdA5iNX17ebm6tN2VnPhcswMPmREPuBacb+CiapLarAj9gT6/H97dVlCNScY3mtYvRkxdZlwDKDEnanPWVLdrdkeXEGlFEazVdfPVHaVeHc3N15CUwppwOJXeK7HshAB8NuOU7J6sP4SRXuH/EvbUfMiqMmDqv5M5FNSfAj/wgAAP//UEsHCPl//NYAAQAArwEAAFBLAQIUABQACAAIAAAAAAD5f/zWAAEAAK8BAAAIAAAAAAAAAAAAAAAAAAAAAABpbmRleC5weVBLBQYAAAAAAQABADYAAAA2AQAAAAA=",
+    ///         },
+    ///         FunctionName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s_%s",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///                 "update1",
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         Runtime = "python3.9",
+    ///         DiskSize = 512,
+    ///         LogConfig = new AliCloud.FC.Inputs.V3FunctionLogConfigArgs
+    ///         {
+    ///             LogBeginRule = "None",
+    ///         },
+    ///     });
+    /// 
+    ///     var function2 = new AliCloud.FC.V3Function("function2", new()
+    ///     {
+    ///         MemorySize = 512,
+    ///         Cpu = 0.5,
+    ///         Handler = "index.Handler",
+    ///         Code = new AliCloud.FC.Inputs.V3FunctionCodeArgs
+    ///         {
+    ///             ZipFile = "UEsDBBQACAAIAAAAAAAAAAAAAAAAAAAAAAAIAAAAaW5kZXgucHmEkEFKxEAQRfd9ig9ZTCJOooIwDMwNXLqXnnQlaalUhU5lRj2KZ/FOXkESGR114bJ/P/7jV4b1xRq1hijtFpM1682cuNgPmgysbRulPT0fRxXnMtwrSPyeCdYRokSLnuMLJTTkbUqEvDMbxm1VdcRD6Tk+T1LW2ldB66knsYdA5iNX17ebm6tN2VnPhcswMPmREPuBacb+CiapLarAj9gT6/H97dVlCNScY3mtYvRkxdZlwDKDEnanPWVLdrdkeXEGlFEazVdfPVHaVeHc3N15CUwppwOJXeK7HshAB8NuOU7J6sP4SRXuH/EvbUfMiqMmDqv5M5FNSfAj/wgAAP//UEsHCPl//NYAAQAArwEAAFBLAQIUABQACAAIAAAAAAD5f/zWAAEAAK8BAAAIAAAAAAAAAAAAAAAAAAAAAABpbmRleC5weVBLBQYAAAAAAQABADYAAAA2AQAAAAA=",
+    ///         },
+    ///         FunctionName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s_%s",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///                 "update2",
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         Runtime = "python3.9",
+    ///         DiskSize = 512,
+    ///         LogConfig = new AliCloud.FC.Inputs.V3FunctionLogConfigArgs
+    ///         {
+    ///             LogBeginRule = "None",
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new AliCloud.FC.V3AsyncInvokeConfig("default", new()
+    ///     {
+    ///         MaxAsyncRetryAttempts = 1,
+    ///         MaxAsyncEventAgeInSeconds = 1,
+    ///         AsyncTask = true,
+    ///         FunctionName = function.FunctionName,
+    ///         DestinationConfig = new AliCloud.FC.Inputs.V3AsyncInvokeConfigDestinationConfigArgs
+    ///         {
+    ///             OnFailure = new AliCloud.FC.Inputs.V3AsyncInvokeConfigDestinationConfigOnFailureArgs
+    ///             {
+    ///                 Destination = Output.Tuple(current, function1.FunctionName).Apply(values =&gt;
+    ///                 {
+    ///                     var current = values.Item1;
+    ///                     var functionName = values.Item2;
+    ///                     return $"acs:fc:eu-central-1:{current.Apply(getAccountResult =&gt; getAccountResult.Id)}:functions/{functionName}";
+    ///                 }),
+    ///             },
+    ///             OnSuccess = new AliCloud.FC.Inputs.V3AsyncInvokeConfigDestinationConfigOnSuccessArgs
+    ///             {
+    ///                 Destination = Output.Tuple(current, function1.FunctionName).Apply(values =&gt;
+    ///                 {
+    ///                     var current = values.Item1;
+    ///                     var functionName = values.Item2;
+    ///                     return $"acs:fc:eu-central-1:{current.Apply(getAccountResult =&gt; getAccountResult.Id)}:functions/{functionName}";
+    ///                 }),
+    ///             },
+    ///         },
+    ///         Qualifier = "LATEST",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// FCV3 Async Invoke Config can be imported using the id, e.g.

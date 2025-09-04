@@ -16,6 +16,49 @@ namespace Pulumi.AliCloud.DirectMail
     /// 
     /// &gt; **NOTE:** Available since v1.134.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var accountName = config.Get("accountName") ?? "tfexample";
+    ///     var domainName = config.Get("domainName") ?? "alicloud-provider.online";
+    ///     var example = new AliCloud.DirectMail.Domain("example", new()
+    ///     {
+    ///         DomainName = domainName,
+    ///     });
+    /// 
+    ///     var exampleMailAddress = new AliCloud.DirectMail.MailAddress("example", new()
+    ///     {
+    ///         AccountName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s@%s",
+    ///             Args = new[]
+    ///             {
+    ///                 accountName,
+    ///                 example.DomainName,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         Sendtype = "batch",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// &gt; **Note:**
+    /// A maximum of 10 mailing addresses can be added.
+    /// Individual users: Up to 10 mailing addresses can be deleted within a month.
+    /// Enterprise users: Up to 10 mailing addresses can be deleted within a month.
+    /// 
     /// ## Import
     /// 
     /// Direct Mail Mail Address can be imported using the id, e.g.

@@ -283,7 +283,7 @@ class SaslUser(pulumi.CustomResource):
             vswitch_id=default_switch.id,
             security_group=default_security_group.id,
             config=\"\"\"  {
-            "enable.acl": "true"
+            \\"enable.acl\\": \\"true\\"
           }
         \"\"\")
         default_sasl_user = alicloud.alikafka.SaslUser("default",
@@ -363,7 +363,7 @@ class SaslUser(pulumi.CustomResource):
             vswitch_id=default_switch.id,
             security_group=default_security_group.id,
             config=\"\"\"  {
-            "enable.acl": "true"
+            \\"enable.acl\\": \\"true\\"
           }
         \"\"\")
         default_sasl_user = alicloud.alikafka.SaslUser("default",

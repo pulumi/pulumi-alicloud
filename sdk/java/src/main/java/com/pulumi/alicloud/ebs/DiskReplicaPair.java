@@ -24,6 +24,102 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.196.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.ebs.EbsFunctions;
+ * import com.pulumi.alicloud.ecs.EcsDisk;
+ * import com.pulumi.alicloud.ecs.EcsDiskArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.alicloud.ebs.DiskReplicaPair;
+ * import com.pulumi.alicloud.ebs.DiskReplicaPairArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf-example");
+ *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
+ *         final var defaultGetRegions = EbsFunctions.getRegions(GetRegionsArgs.builder()
+ *             .regionId(default_.regions()[0].id())
+ *             .build());
+ * 
+ *         var defaultEcsDisk = new EcsDisk("defaultEcsDisk", EcsDiskArgs.builder()
+ *             .zoneId(defaultGetRegions.regions()[0].zones()[0].zoneId())
+ *             .category("cloud_essd")
+ *             .deleteAutoSnapshot(true)
+ *             .deleteWithInstance(true)
+ *             .description(name)
+ *             .diskName(name)
+ *             .enableAutoSnapshot(true)
+ *             .encrypted(true)
+ *             .size(500)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example"),
+ *                 Map.entry("controlledBy", "ear")
+ *             ))
+ *             .build());
+ * 
+ *         var destination = new EcsDisk("destination", EcsDiskArgs.builder()
+ *             .zoneId(defaultGetRegions.regions()[0].zones()[1].zoneId())
+ *             .category("cloud_essd")
+ *             .deleteAutoSnapshot(true)
+ *             .deleteWithInstance(true)
+ *             .description(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s-destination")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .diskName(name)
+ *             .enableAutoSnapshot(true)
+ *             .encrypted(true)
+ *             .size(500)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example"),
+ *                 Map.entry("controlledBy", "ear")
+ *             ))
+ *             .build());
+ * 
+ *         var defaultDiskReplicaPair = new DiskReplicaPair("defaultDiskReplicaPair", DiskReplicaPairArgs.builder()
+ *             .destinationDiskId(destination.id())
+ *             .destinationRegionId(default_.regions()[0].id())
+ *             .paymentType("POSTPAY")
+ *             .destinationZoneId(destination.zoneId())
+ *             .sourceZoneId(defaultEcsDisk.zoneId())
+ *             .diskId(defaultEcsDisk.id())
+ *             .description(name)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Elastic Block Storage(EBS) Disk Replica Pair can be imported using the id, e.g.

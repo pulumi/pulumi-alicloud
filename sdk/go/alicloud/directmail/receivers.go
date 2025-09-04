@@ -18,6 +18,52 @@ import (
 //
 // > **NOTE:** Available since v1.125.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/directmail"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tfexample"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s@onaliyun.com",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = directmail.NewReceivers(ctx, "example", &directmail.ReceiversArgs{
+//				ReceiversAlias: pulumi.String(invokeFormat.Result),
+//				ReceiversName:  pulumi.String(name),
+//				Description:    pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Direct Mail Receivers can be imported using the id, e.g.

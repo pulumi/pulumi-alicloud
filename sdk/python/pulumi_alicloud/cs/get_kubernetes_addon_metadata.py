@@ -97,6 +97,45 @@ def get_kubernetes_addon_metadata(cluster_id: Optional[_builtins.str] = None,
 
     > **NOTE:** Available in 1.166.0+.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+    import pulumi_std as std
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.get_zones(available_resource_creation="VSwitch")
+    default_network = alicloud.vpc.Network("default",
+        vpc_name=name,
+        cidr_block="10.4.0.0/16")
+    default_switch = alicloud.vpc.Switch("default",
+        vswitch_name=name,
+        cidr_block="10.4.0.0/24",
+        vpc_id=default_network.id,
+        zone_id=default.zones[0].id)
+    default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
+        name_prefix=name,
+        cluster_spec="ack.pro.small",
+        worker_vswitch_ids=[default_switch.id],
+        new_nat_gateway=False,
+        pod_cidr=std.cidrsubnet(input="10.0.0.0/8",
+            newbits=8,
+            netnum=36).result,
+        service_cidr=std.cidrsubnet(input="172.16.0.0/16",
+            newbits=4,
+            netnum=7).result,
+        slb_internet_enabled=True)
+    cluster_id = default_managed_kubernetes.id
+    default_get_kubernetes_addon_metadata = alicloud.cs.get_kubernetes_addon_metadata_output(cluster_id=cluster_id,
+        name="nginx-ingress-controller",
+        version="v1.1.2-aliyun.2")
+    pulumi.export("addonConfigSchema", default_get_kubernetes_addon_metadata.config_schema)
+    ```
+
 
     :param _builtins.str cluster_id: The id of kubernetes cluster.
     :param _builtins.str name: The name of the cluster addon. You can get a list of available addons that the cluster can install by using data source `cs_get_kubernetes_addons`.
@@ -123,6 +162,45 @@ def get_kubernetes_addon_metadata_output(cluster_id: Optional[pulumi.Input[_buil
     This data source provides metadata of kubernetes cluster addons.
 
     > **NOTE:** Available in 1.166.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+    import pulumi_std as std
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.get_zones(available_resource_creation="VSwitch")
+    default_network = alicloud.vpc.Network("default",
+        vpc_name=name,
+        cidr_block="10.4.0.0/16")
+    default_switch = alicloud.vpc.Switch("default",
+        vswitch_name=name,
+        cidr_block="10.4.0.0/24",
+        vpc_id=default_network.id,
+        zone_id=default.zones[0].id)
+    default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
+        name_prefix=name,
+        cluster_spec="ack.pro.small",
+        worker_vswitch_ids=[default_switch.id],
+        new_nat_gateway=False,
+        pod_cidr=std.cidrsubnet(input="10.0.0.0/8",
+            newbits=8,
+            netnum=36).result,
+        service_cidr=std.cidrsubnet(input="172.16.0.0/16",
+            newbits=4,
+            netnum=7).result,
+        slb_internet_enabled=True)
+    cluster_id = default_managed_kubernetes.id
+    default_get_kubernetes_addon_metadata = alicloud.cs.get_kubernetes_addon_metadata_output(cluster_id=cluster_id,
+        name="nginx-ingress-controller",
+        version="v1.1.2-aliyun.2")
+    pulumi.export("addonConfigSchema", default_get_kubernetes_addon_metadata.config_schema)
+    ```
 
 
     :param _builtins.str cluster_id: The id of kubernetes cluster.

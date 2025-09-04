@@ -120,8 +120,8 @@ import (
 //				MetricDimensions: defaultInstance.ID().ApplyT(func(id string) (string, error) {
 //					return fmt.Sprintf(`  [
 //	    {
-//	      "instanceId": "%v",
-//	      "device": "/dev/vda1"
+//	      \"instanceId\": \"%v\",
+//	      \"device\": \"/dev/vda1\"
 //	    }
 //	  ]
 //

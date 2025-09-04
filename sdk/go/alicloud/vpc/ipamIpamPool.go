@@ -20,6 +20,70 @@ import (
 //
 // > **NOTE:** Available since v1.234.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultIpam, err := vpc.NewIpamIpam(ctx, "defaultIpam", &vpc.IpamIpamArgs{
+//				OperatingRegionLists: pulumi.StringArray{
+//					pulumi.String("cn-hangzhou"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s1",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			parentIpamPool, err := vpc.NewIpamIpamPool(ctx, "parentIpamPool", &vpc.IpamIpamPoolArgs{
+//				IpamScopeId:  defaultIpam.PrivateDefaultScopeId,
+//				IpamPoolName: pulumi.String(invokeFormat.Result),
+//				PoolRegionId: defaultIpam.RegionId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewIpamIpamPool(ctx, "default", &vpc.IpamIpamPoolArgs{
+//				IpamScopeId:      defaultIpam.PrivateDefaultScopeId,
+//				PoolRegionId:     parentIpamPool.PoolRegionId,
+//				IpamPoolName:     pulumi.String(name),
+//				SourceIpamPoolId: parentIpamPool.ID(),
+//				IpVersion:        pulumi.String("IPv4"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Vpc Ipam Ipam Pool can be imported using the id, e.g.

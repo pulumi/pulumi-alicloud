@@ -6,6 +6,7 @@ import builtins as _builtins
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .advanced_query_template import *
 from .get_consumer_groups import *
 from .get_global_events_storage_region import *
 from .get_history_delivery_jobs import *

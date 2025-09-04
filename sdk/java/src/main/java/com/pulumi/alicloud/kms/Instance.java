@@ -24,6 +24,281 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.210.0.
  * 
+ * ## Example Usage
+ * 
+ * Create a subscription kms instance
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.alicloud.kms.Instance;
+ * import com.pulumi.alicloud.kms.InstanceArgs;
+ * import com.pulumi.alicloud.kms.inputs.InstanceBindVpcArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var region = config.get("region").orElse("cn-hangzhou");
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var current = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+ * 
+ *         var vpc_amp_instance_example = new Network("vpc-amp-instance-example", NetworkArgs.builder()
+ *             .cidrBlock("172.16.0.0/12")
+ *             .vpcName(name)
+ *             .build());
+ * 
+ *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
+ *             .vpcId(vpc_amp_instance_example.id())
+ *             .zoneId("cn-hangzhou-k")
+ *             .cidrBlock("172.16.1.0/24")
+ *             .build());
+ * 
+ *         var vswitch_j = new Switch("vswitch-j", SwitchArgs.builder()
+ *             .vpcId(vpc_amp_instance_example.id())
+ *             .zoneId("cn-hangzhou-j")
+ *             .cidrBlock("172.16.2.0/24")
+ *             .build());
+ * 
+ *         var shareVPC = new Network("shareVPC", NetworkArgs.builder()
+ *             .cidrBlock("172.16.0.0/12")
+ *             .vpcName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s3")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var shareVswitch = new Switch("shareVswitch", SwitchArgs.builder()
+ *             .vpcId(shareVPC.id())
+ *             .zoneId("cn-hangzhou-k")
+ *             .cidrBlock("172.16.1.0/24")
+ *             .build());
+ * 
+ *         var share_VPC2 = new Network("share-VPC2", NetworkArgs.builder()
+ *             .cidrBlock("172.16.0.0/12")
+ *             .vpcName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s5")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var share_vswitch2 = new Switch("share-vswitch2", SwitchArgs.builder()
+ *             .vpcId(share_VPC2.id())
+ *             .zoneId("cn-hangzhou-k")
+ *             .cidrBlock("172.16.1.0/24")
+ *             .build());
+ * 
+ *         var share_VPC3 = new Network("share-VPC3", NetworkArgs.builder()
+ *             .cidrBlock("172.16.0.0/12")
+ *             .vpcName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s7")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var share_vsw3 = new Switch("share-vsw3", SwitchArgs.builder()
+ *             .vpcId(share_VPC3.id())
+ *             .zoneId("cn-hangzhou-k")
+ *             .cidrBlock("172.16.1.0/24")
+ *             .build());
+ * 
+ *         var default_ = new Instance("default", InstanceArgs.builder()
+ *             .vpcNum(7)
+ *             .keyNum(1000)
+ *             .secretNum(0)
+ *             .spec(1000)
+ *             .renewStatus("ManualRenewal")
+ *             .productVersion("3")
+ *             .renewPeriod(3)
+ *             .vpcId(vswitch.vpcId())
+ *             .zoneIds(            
+ *                 "cn-hangzhou-k",
+ *                 "cn-hangzhou-j")
+ *             .vswitchIds(vswitch_j.id())
+ *             .bindVpcs(            
+ *                 InstanceBindVpcArgs.builder()
+ *                     .vpcId(shareVswitch.vpcId())
+ *                     .regionId(region)
+ *                     .vswitchId(shareVswitch.id())
+ *                     .vpcOwnerId(current.id())
+ *                     .build(),
+ *                 InstanceBindVpcArgs.builder()
+ *                     .vpcId(share_vswitch2.vpcId())
+ *                     .regionId(region)
+ *                     .vswitchId(share_vswitch2.id())
+ *                     .vpcOwnerId(current.id())
+ *                     .build(),
+ *                 InstanceBindVpcArgs.builder()
+ *                     .vpcId(share_vsw3.vpcId())
+ *                     .regionId(region)
+ *                     .vswitchId(share_vsw3.id())
+ *                     .vpcOwnerId(current.id())
+ *                     .build())
+ *             .log("0")
+ *             .period(1)
+ *             .logStorage(0)
+ *             .paymentType("Subscription")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * Create a pay-as-you-go kms instance
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.alicloud.kms.Instance;
+ * import com.pulumi.alicloud.kms.InstanceArgs;
+ * import com.pulumi.alicloud.kms.inputs.InstanceBindVpcArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var region = config.get("region").orElse("cn-hangzhou");
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var current = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+ * 
+ *         var vpc_amp_instance_example = new Network("vpc-amp-instance-example", NetworkArgs.builder()
+ *             .cidrBlock("172.16.0.0/12")
+ *             .vpcName(name)
+ *             .build());
+ * 
+ *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
+ *             .vpcId(vpc_amp_instance_example.id())
+ *             .zoneId("cn-hangzhou-k")
+ *             .cidrBlock("172.16.1.0/24")
+ *             .build());
+ * 
+ *         var vswitch_j = new Switch("vswitch-j", SwitchArgs.builder()
+ *             .vpcId(vpc_amp_instance_example.id())
+ *             .zoneId("cn-hangzhou-j")
+ *             .cidrBlock("172.16.2.0/24")
+ *             .build());
+ * 
+ *         var shareVPC = new Network("shareVPC", NetworkArgs.builder()
+ *             .cidrBlock("172.16.0.0/12")
+ *             .vpcName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s3")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var shareVswitch = new Switch("shareVswitch", SwitchArgs.builder()
+ *             .vpcId(shareVPC.id())
+ *             .zoneId("cn-hangzhou-k")
+ *             .cidrBlock("172.16.1.0/24")
+ *             .build());
+ * 
+ *         var share_VPC2 = new Network("share-VPC2", NetworkArgs.builder()
+ *             .cidrBlock("172.16.0.0/12")
+ *             .vpcName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s5")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var share_vswitch2 = new Switch("share-vswitch2", SwitchArgs.builder()
+ *             .vpcId(share_VPC2.id())
+ *             .zoneId("cn-hangzhou-k")
+ *             .cidrBlock("172.16.1.0/24")
+ *             .build());
+ * 
+ *         var share_VPC3 = new Network("share-VPC3", NetworkArgs.builder()
+ *             .cidrBlock("172.16.0.0/12")
+ *             .vpcName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s7")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var share_vsw3 = new Switch("share-vsw3", SwitchArgs.builder()
+ *             .vpcId(share_VPC3.id())
+ *             .zoneId("cn-hangzhou-k")
+ *             .cidrBlock("172.16.1.0/24")
+ *             .build());
+ * 
+ *         var default_ = new Instance("default", InstanceArgs.builder()
+ *             .paymentType("PayAsYouGo")
+ *             .productVersion("3")
+ *             .vpcId(vswitch.vpcId())
+ *             .zoneIds(            
+ *                 vswitch.zoneId(),
+ *                 vswitch_j.zoneId())
+ *             .vswitchIds(vswitch.id())
+ *             .forceDeleteWithoutBackup("true")
+ *             .bindVpcs(            
+ *                 InstanceBindVpcArgs.builder()
+ *                     .vpcId(shareVswitch.vpcId())
+ *                     .regionId(region)
+ *                     .vswitchId(shareVswitch.id())
+ *                     .vpcOwnerId(current.id())
+ *                     .build(),
+ *                 InstanceBindVpcArgs.builder()
+ *                     .vpcId(share_vswitch2.vpcId())
+ *                     .regionId(region)
+ *                     .vswitchId(share_vswitch2.id())
+ *                     .vpcOwnerId(current.id())
+ *                     .build(),
+ *                 InstanceBindVpcArgs.builder()
+ *                     .vpcId(share_vsw3.vpcId())
+ *                     .regionId(region)
+ *                     .vswitchId(share_vsw3.id())
+ *                     .vpcOwnerId(current.id())
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * KMS Instance can be imported using the id, e.g.
@@ -162,7 +437,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.logStorage;
     }
     /**
-     * Payment type,valid values:
+     * Payment type, valid values:
      * - `Subscription`: Prepaid.
      * - `PayAsYouGo`: Postpaid.
      * 
@@ -171,7 +446,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<String> paymentType;
 
     /**
-     * @return Payment type,valid values:
+     * @return Payment type, valid values:
      * - `Subscription`: Prepaid.
      * - `PayAsYouGo`: Postpaid.
      * 
@@ -198,14 +473,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="productVersion", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> productVersion;
+    private Output<String> productVersion;
 
     /**
      * @return KMS Instance commodity type (software/hardware)
      * 
      */
-    public Output<Optional<String>> productVersion() {
-        return Codegen.optional(this.productVersion);
+    public Output<String> productVersion() {
+        return this.productVersion;
     }
     /**
      * Automatic renewal period, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
@@ -226,14 +501,32 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="renewStatus", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> renewStatus;
+    private Output<String> renewStatus;
 
     /**
      * @return Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
-    public Output<Optional<String>> renewStatus() {
-        return Codegen.optional(this.renewStatus);
+    public Output<String> renewStatus() {
+        return this.renewStatus;
+    }
+    /**
+     * Automatic renewal period unit, valid value:
+     * - `M`: Month.
+     * - `Y`: Year.
+     * 
+     */
+    @Export(name="renewalPeriodUnit", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> renewalPeriodUnit;
+
+    /**
+     * @return Automatic renewal period unit, valid value:
+     * - `M`: Month.
+     * - `Y`: Year.
+     * 
+     */
+    public Output<Optional<String>> renewalPeriodUnit() {
+        return Codegen.optional(this.renewalPeriodUnit);
     }
     /**
      * Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
@@ -278,14 +571,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * Instance VPC id
+     * The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
-     * @return Instance VPC id
+     * @return The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
      * 
      */
     public Output<String> vpcId() {

@@ -57,14 +57,14 @@ import javax.annotation.Nullable;
  *             .content("""
  *   [
  *     {
- *       "rule": [
+ *       \"rule\": [
  *         {
- *           "operator": "contains",
- *           "target": "content",
- *           "value": "tf-testACCContent"
+ *           \"operator\": \"contains\",
+ *           \"target\": \"content\",
+ *           \"value\": \"tf-testACCContent\"
  *         }
  *       ],
- *       "ruleRelation": "AND"
+ *       \"ruleRelation\": \"AND\"
  *     }
  *   ]
  *             """)

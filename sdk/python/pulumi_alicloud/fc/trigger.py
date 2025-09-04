@@ -413,18 +413,18 @@ class Trigger(pulumi.CustomResource):
         default_role = alicloud.ram.Role("default",
             name=f"fcservicerole-{default_integer['result']}",
             document=\"\"\"  {
-              "Statement": [
+              \\"Statement\\": [
                 {
-                  "Action": "sts:AssumeRole",
-                  "Effect": "Allow",
-                  "Principal": {
-                    "Service": [
-                      "fc.aliyuncs.com"
+                  \\"Action\\": \\"sts:AssumeRole\\",
+                  \\"Effect\\": \\"Allow\\",
+                  \\"Principal\\": {
+                    \\"Service\\": [
+                      \\"fc.aliyuncs.com\\"
                     ]
                   }
                 }
               ],
-              "Version": "1"
+              \\"Version\\": \\"1\\"
           }
         \"\"\",
             description="this is a example",
@@ -474,23 +474,23 @@ class Trigger(pulumi.CustomResource):
                 project_name=default_project.project_name,
                 defaultStoreLogstore_name=default_store.logstore_name
         ).apply(lambda resolved_outputs: f\"\"\"    {{
-                "sourceConfig": {{
-                    "logstore": "{resolved_outputs['sourceStoreLogstore_name']}",
-                    "startTime": null
+                \\"sourceConfig\\": {{
+                    \\"logstore\\": \\"{resolved_outputs['sourceStoreLogstore_name']}\\",
+                    \\"startTime\\": null
                 }},
-                "jobConfig": {{
-                    "maxRetryTime": 3,
-                    "triggerInterval": 60
+                \\"jobConfig\\": {{
+                    \\"maxRetryTime\\": 3,
+                    \\"triggerInterval\\": 60
                 }},
-                "functionParameter": {{
-                    "a": "b",
-                    "c": "d"
+                \\"functionParameter\\": {{
+                    \\"a\\": \\"b\\",
+                    \\"c\\": \\"d\\"
                 }},
-                "logConfig": {{
-                     "project": "{resolved_outputs['project_name']}",
-                    "logstore": "{resolved_outputs['defaultStoreLogstore_name']}"
+                \\"logConfig\\": {{
+                     \\"project\\": \\"{resolved_outputs['project_name']}\\",
+                    \\"logstore\\": \\"{resolved_outputs['defaultStoreLogstore_name']}\\"
                 }},
-                "enable": true
+                \\"enable\\": true
             }}
           
         \"\"\")
@@ -513,18 +513,18 @@ class Trigger(pulumi.CustomResource):
         default_role = alicloud.ram.Role("default",
             name=f"fcservicerole-{default_integer['result']}",
             document=\"\"\"  {
-              "Statement": [
+              \\"Statement\\": [
                 {
-                  "Action": "sts:AssumeRole",
-                  "Effect": "Allow",
-                  "Principal": {
-                    "Service": [
-                      "mns.aliyuncs.com"
+                  \\"Action\\": \\"sts:AssumeRole\\",
+                  \\"Effect\\": \\"Allow\\",
+                  \\"Principal\\": {
+                    \\"Service\\": [
+                      \\"mns.aliyuncs.com\\"
                     ]
                   }
                 }
               ],
-              "Version": "1"
+              \\"Version\\": \\"1\\"
           }
         \"\"\",
             description="this is a example",
@@ -564,9 +564,9 @@ class Trigger(pulumi.CustomResource):
             source_arn=default_topic.name.apply(lambda name: f"acs:mns:{default_get_regions.regions[0].id}:{default.id}:/topics/{name}"),
             type="mns_topic",
             config_mns=\"\"\"  {
-            "filterTag":"exampleTag",
-            "notifyContentFormat":"STREAM",
-            "notifyStrategy":"BACKOFF_RETRY"
+            \\"filterTag\\":\\"exampleTag\\",
+            \\"notifyContentFormat\\":\\"STREAM\\",
+            \\"notifyStrategy\\":\\"BACKOFF_RETRY\\"
           }
         \"\"\")
         ```
@@ -600,18 +600,18 @@ class Trigger(pulumi.CustomResource):
         default_role = alicloud.ram.Role("default",
             name=f"fcservicerole-{default_integer['result']}",
             document=\"\"\"    {
-              "Statement": [
+              \\"Statement\\": [
                 {
-                  "Action": "sts:AssumeRole",
-                  "Effect": "Allow",
-                  "Principal": {
-                    "Service": [
-                      "cdn.aliyuncs.com"
+                  \\"Action\\": \\"sts:AssumeRole\\",
+                  \\"Effect\\": \\"Allow\\",
+                  \\"Principal\\": {
+                    \\"Service\\": [
+                      \\"cdn.aliyuncs.com\\"
                     ]
                   }
                 }
               ],
-              "Version": "1"
+              \\"Version\\": \\"1\\"
           }
         \"\"\",
             description="this is a example",
@@ -622,17 +622,17 @@ class Trigger(pulumi.CustomResource):
                 defaultServiceName=default_service.name,
                 defaultServiceName1=default_service.name
         ).apply(lambda resolved_outputs: f\"\"\"    {{
-                "Version": "1",
-                "Statement": [
+                \\"Version\\": \\"1\\",
+                \\"Statement\\": [
                 {{
-                    "Action": [
-                    "fc:InvokeFunction"
+                    \\"Action\\": [
+                    \\"fc:InvokeFunction\\"
                     ],
-                "Resource": [
-                    "acs:fc:*:*:services/{resolved_outputs['defaultServiceName']}/functions/*",
-                    "acs:fc:*:*:services/{resolved_outputs['defaultServiceName1']}.*/functions/*"
+                \\"Resource\\": [
+                    \\"acs:fc:*:*:services/{resolved_outputs['defaultServiceName']}/functions/*\\",
+                    \\"acs:fc:*:*:services/{resolved_outputs['defaultServiceName1']}.*/functions/*\\"
                 ],
-                "Effect": "Allow"
+                \\"Effect\\": \\"Allow\\"
                 }}
                 ]
             }}
@@ -670,11 +670,11 @@ class Trigger(pulumi.CustomResource):
             role=default_role.arn,
             source_arn=f"acs:cdn:*:{default.id}",
             type="cdn_events",
-            config=default_domain_new.domain_name.apply(lambda domain_name: f\"\"\"      {{"eventName":"LogFileCreated",
-             "eventVersion":"1.0.0",
-             "notes":"cdn events trigger",
-             "filter":{{
-                "domain": ["{domain_name}"]
+            config=default_domain_new.domain_name.apply(lambda domain_name: f\"\"\"      {{\\"eventName\\":\\"LogFileCreated\\",
+             \\"eventVersion\\":\\"1.0.0\\",
+             \\"notes\\":\\"cdn events trigger\\",
+             \\"filter\\":{{
+                \\"domain\\": [\\"{domain_name}\\"]
                 }}
             }}
         \"\"\"))
@@ -944,18 +944,18 @@ class Trigger(pulumi.CustomResource):
         default_role = alicloud.ram.Role("default",
             name=f"fcservicerole-{default_integer['result']}",
             document=\"\"\"  {
-              "Statement": [
+              \\"Statement\\": [
                 {
-                  "Action": "sts:AssumeRole",
-                  "Effect": "Allow",
-                  "Principal": {
-                    "Service": [
-                      "fc.aliyuncs.com"
+                  \\"Action\\": \\"sts:AssumeRole\\",
+                  \\"Effect\\": \\"Allow\\",
+                  \\"Principal\\": {
+                    \\"Service\\": [
+                      \\"fc.aliyuncs.com\\"
                     ]
                   }
                 }
               ],
-              "Version": "1"
+              \\"Version\\": \\"1\\"
           }
         \"\"\",
             description="this is a example",
@@ -1005,23 +1005,23 @@ class Trigger(pulumi.CustomResource):
                 project_name=default_project.project_name,
                 defaultStoreLogstore_name=default_store.logstore_name
         ).apply(lambda resolved_outputs: f\"\"\"    {{
-                "sourceConfig": {{
-                    "logstore": "{resolved_outputs['sourceStoreLogstore_name']}",
-                    "startTime": null
+                \\"sourceConfig\\": {{
+                    \\"logstore\\": \\"{resolved_outputs['sourceStoreLogstore_name']}\\",
+                    \\"startTime\\": null
                 }},
-                "jobConfig": {{
-                    "maxRetryTime": 3,
-                    "triggerInterval": 60
+                \\"jobConfig\\": {{
+                    \\"maxRetryTime\\": 3,
+                    \\"triggerInterval\\": 60
                 }},
-                "functionParameter": {{
-                    "a": "b",
-                    "c": "d"
+                \\"functionParameter\\": {{
+                    \\"a\\": \\"b\\",
+                    \\"c\\": \\"d\\"
                 }},
-                "logConfig": {{
-                     "project": "{resolved_outputs['project_name']}",
-                    "logstore": "{resolved_outputs['defaultStoreLogstore_name']}"
+                \\"logConfig\\": {{
+                     \\"project\\": \\"{resolved_outputs['project_name']}\\",
+                    \\"logstore\\": \\"{resolved_outputs['defaultStoreLogstore_name']}\\"
                 }},
-                "enable": true
+                \\"enable\\": true
             }}
           
         \"\"\")
@@ -1044,18 +1044,18 @@ class Trigger(pulumi.CustomResource):
         default_role = alicloud.ram.Role("default",
             name=f"fcservicerole-{default_integer['result']}",
             document=\"\"\"  {
-              "Statement": [
+              \\"Statement\\": [
                 {
-                  "Action": "sts:AssumeRole",
-                  "Effect": "Allow",
-                  "Principal": {
-                    "Service": [
-                      "mns.aliyuncs.com"
+                  \\"Action\\": \\"sts:AssumeRole\\",
+                  \\"Effect\\": \\"Allow\\",
+                  \\"Principal\\": {
+                    \\"Service\\": [
+                      \\"mns.aliyuncs.com\\"
                     ]
                   }
                 }
               ],
-              "Version": "1"
+              \\"Version\\": \\"1\\"
           }
         \"\"\",
             description="this is a example",
@@ -1095,9 +1095,9 @@ class Trigger(pulumi.CustomResource):
             source_arn=default_topic.name.apply(lambda name: f"acs:mns:{default_get_regions.regions[0].id}:{default.id}:/topics/{name}"),
             type="mns_topic",
             config_mns=\"\"\"  {
-            "filterTag":"exampleTag",
-            "notifyContentFormat":"STREAM",
-            "notifyStrategy":"BACKOFF_RETRY"
+            \\"filterTag\\":\\"exampleTag\\",
+            \\"notifyContentFormat\\":\\"STREAM\\",
+            \\"notifyStrategy\\":\\"BACKOFF_RETRY\\"
           }
         \"\"\")
         ```
@@ -1131,18 +1131,18 @@ class Trigger(pulumi.CustomResource):
         default_role = alicloud.ram.Role("default",
             name=f"fcservicerole-{default_integer['result']}",
             document=\"\"\"    {
-              "Statement": [
+              \\"Statement\\": [
                 {
-                  "Action": "sts:AssumeRole",
-                  "Effect": "Allow",
-                  "Principal": {
-                    "Service": [
-                      "cdn.aliyuncs.com"
+                  \\"Action\\": \\"sts:AssumeRole\\",
+                  \\"Effect\\": \\"Allow\\",
+                  \\"Principal\\": {
+                    \\"Service\\": [
+                      \\"cdn.aliyuncs.com\\"
                     ]
                   }
                 }
               ],
-              "Version": "1"
+              \\"Version\\": \\"1\\"
           }
         \"\"\",
             description="this is a example",
@@ -1153,17 +1153,17 @@ class Trigger(pulumi.CustomResource):
                 defaultServiceName=default_service.name,
                 defaultServiceName1=default_service.name
         ).apply(lambda resolved_outputs: f\"\"\"    {{
-                "Version": "1",
-                "Statement": [
+                \\"Version\\": \\"1\\",
+                \\"Statement\\": [
                 {{
-                    "Action": [
-                    "fc:InvokeFunction"
+                    \\"Action\\": [
+                    \\"fc:InvokeFunction\\"
                     ],
-                "Resource": [
-                    "acs:fc:*:*:services/{resolved_outputs['defaultServiceName']}/functions/*",
-                    "acs:fc:*:*:services/{resolved_outputs['defaultServiceName1']}.*/functions/*"
+                \\"Resource\\": [
+                    \\"acs:fc:*:*:services/{resolved_outputs['defaultServiceName']}/functions/*\\",
+                    \\"acs:fc:*:*:services/{resolved_outputs['defaultServiceName1']}.*/functions/*\\"
                 ],
-                "Effect": "Allow"
+                \\"Effect\\": \\"Allow\\"
                 }}
                 ]
             }}
@@ -1201,11 +1201,11 @@ class Trigger(pulumi.CustomResource):
             role=default_role.arn,
             source_arn=f"acs:cdn:*:{default.id}",
             type="cdn_events",
-            config=default_domain_new.domain_name.apply(lambda domain_name: f\"\"\"      {{"eventName":"LogFileCreated",
-             "eventVersion":"1.0.0",
-             "notes":"cdn events trigger",
-             "filter":{{
-                "domain": ["{domain_name}"]
+            config=default_domain_new.domain_name.apply(lambda domain_name: f\"\"\"      {{\\"eventName\\":\\"LogFileCreated\\",
+             \\"eventVersion\\":\\"1.0.0\\",
+             \\"notes\\":\\"cdn events trigger\\",
+             \\"filter\\":{{
+                \\"domain\\": [\\"{domain_name}\\"]
                 }}
             }}
         \"\"\"))

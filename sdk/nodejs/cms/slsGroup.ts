@@ -13,6 +13,52 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.171.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const _default = alicloud.getAccount({});
+ * const defaultGetRegions = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const defaultUuid = new random.index.Uuid("default", {});
+ * const defaultProject = new alicloud.log.Project("default", {projectName: std.replace({
+ *     text: defaultUuid.result,
+ *     search: "-",
+ *     replace: "",
+ * }).then(invoke => std.substr({
+ *     input: `tf-example-${invoke.result}`,
+ *     offset: 0,
+ *     length: 16,
+ * })).then(invoke => invoke.result)});
+ * const defaultStore = new alicloud.log.Store("default", {
+ *     projectName: defaultProject.projectName,
+ *     logstoreName: name,
+ *     shardCount: 3,
+ *     autoSplit: true,
+ *     maxSplitShardCount: 60,
+ *     appendMeta: true,
+ * });
+ * const defaultSlsGroup = new alicloud.cms.SlsGroup("default", {
+ *     slsGroupConfigs: [{
+ *         slsUserId: _default.then(_default => _default.id),
+ *         slsLogstore: defaultStore.logstoreName,
+ *         slsProject: defaultProject.projectName,
+ *         slsRegion: defaultGetRegions.then(defaultGetRegions => defaultGetRegions.regions?.[0]?.id),
+ *     }],
+ *     slsGroupDescription: name,
+ *     slsGroupName: name,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Cloud Monitor Service Sls Group can be imported using the id, e.g.

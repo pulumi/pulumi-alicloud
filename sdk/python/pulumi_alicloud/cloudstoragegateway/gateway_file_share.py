@@ -1145,6 +1145,71 @@ class GatewayFileShare(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.144.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_uuid = random.index.Uuid("default")
+        default_storage_bundle = alicloud.cloudstoragegateway.StorageBundle("default", storage_bundle_name=std.substr(input=f"tf-example-{std.replace(text=default_uuid['result'],
+                search='-',
+                replace='').result}",
+            offset=0,
+            length=16).result)
+        default_bucket = alicloud.oss.Bucket("default", bucket=std.substr(input=f"tf-example-{std.replace(text=default_uuid['result'],
+                search='-',
+                replace='').result}",
+            offset=0,
+            length=16).result)
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="172.16.0.0/12")
+        default = alicloud.cloudstoragegateway.get_stocks(gateway_class="Standard")
+        default_switch = alicloud.vpc.Switch("default",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/21",
+            zone_id=default.stocks[0].zone_id,
+            vswitch_name=name)
+        default_gateway = alicloud.cloudstoragegateway.Gateway("default",
+            gateway_name=name,
+            description=name,
+            gateway_class="Standard",
+            type="File",
+            payment_type="PayAsYouGo",
+            vswitch_id=default_switch.id,
+            release_after_expiration=True,
+            public_network_bandwidth=40,
+            storage_bundle_id=default_storage_bundle.id,
+            location="Cloud")
+        default_gateway_cache_disk = alicloud.cloudstoragegateway.GatewayCacheDisk("default",
+            cache_disk_category="cloud_efficiency",
+            gateway_id=default_gateway.id,
+            cache_disk_size_in_gb=50)
+        default_gateway_file_share = alicloud.cloudstoragegateway.GatewayFileShare("default",
+            gateway_file_share_name=name,
+            gateway_id=default_gateway.id,
+            local_path=default_gateway_cache_disk.local_file_path,
+            oss_bucket_name=default_bucket.bucket,
+            oss_endpoint=default_bucket.extranet_endpoint,
+            protocol="NFS",
+            remote_sync=True,
+            polling_interval=4500,
+            fe_limit=0,
+            backend_limit=0,
+            cache_mode="Cache",
+            squash="none",
+            lag_period=5)
+        ```
+
         ## Import
 
         Cloud Storage Gateway Gateway File Share can be imported using the id, e.g.
@@ -1201,6 +1266,71 @@ class GatewayFileShare(pulumi.CustomResource):
         For information about Cloud Storage Gateway Gateway File Share and how to use it, see [What is Gateway File Share](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/creategatewayfileshare).
 
         > **NOTE:** Available since v1.144.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_uuid = random.index.Uuid("default")
+        default_storage_bundle = alicloud.cloudstoragegateway.StorageBundle("default", storage_bundle_name=std.substr(input=f"tf-example-{std.replace(text=default_uuid['result'],
+                search='-',
+                replace='').result}",
+            offset=0,
+            length=16).result)
+        default_bucket = alicloud.oss.Bucket("default", bucket=std.substr(input=f"tf-example-{std.replace(text=default_uuid['result'],
+                search='-',
+                replace='').result}",
+            offset=0,
+            length=16).result)
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="172.16.0.0/12")
+        default = alicloud.cloudstoragegateway.get_stocks(gateway_class="Standard")
+        default_switch = alicloud.vpc.Switch("default",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/21",
+            zone_id=default.stocks[0].zone_id,
+            vswitch_name=name)
+        default_gateway = alicloud.cloudstoragegateway.Gateway("default",
+            gateway_name=name,
+            description=name,
+            gateway_class="Standard",
+            type="File",
+            payment_type="PayAsYouGo",
+            vswitch_id=default_switch.id,
+            release_after_expiration=True,
+            public_network_bandwidth=40,
+            storage_bundle_id=default_storage_bundle.id,
+            location="Cloud")
+        default_gateway_cache_disk = alicloud.cloudstoragegateway.GatewayCacheDisk("default",
+            cache_disk_category="cloud_efficiency",
+            gateway_id=default_gateway.id,
+            cache_disk_size_in_gb=50)
+        default_gateway_file_share = alicloud.cloudstoragegateway.GatewayFileShare("default",
+            gateway_file_share_name=name,
+            gateway_id=default_gateway.id,
+            local_path=default_gateway_cache_disk.local_file_path,
+            oss_bucket_name=default_bucket.bucket,
+            oss_endpoint=default_bucket.extranet_endpoint,
+            protocol="NFS",
+            remote_sync=True,
+            polling_interval=4500,
+            fe_limit=0,
+            backend_limit=0,
+            cache_mode="Cache",
+            squash="none",
+            lag_period=5)
+        ```
 
         ## Import
 

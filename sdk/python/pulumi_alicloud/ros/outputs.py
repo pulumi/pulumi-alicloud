@@ -17,6 +17,7 @@ from . import outputs
 
 __all__ = [
     'ChangeSetParameter',
+    'StackGroupAutoDeployment',
     'StackGroupParameter',
     'StackInstanceParameterOverride',
     'StackParameter',
@@ -91,6 +92,54 @@ class ChangeSetParameter(dict):
 
 
 @pulumi.output_type
+class StackGroupAutoDeployment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "retainStacksOnAccountRemoval":
+            suggest = "retain_stacks_on_account_removal"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StackGroupAutoDeployment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StackGroupAutoDeployment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StackGroupAutoDeployment.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 retain_stacks_on_account_removal: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool enabled: Enable or disable automatic deployment. Valid Values:
+        :param _builtins.bool retain_stacks_on_account_removal: Whether to retain the stack in the member account when the member account is deleted from the target folder. Valid values:
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if retain_stacks_on_account_removal is not None:
+            pulumi.set(__self__, "retain_stacks_on_account_removal", retain_stacks_on_account_removal)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Enable or disable automatic deployment. Valid Values:
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="retainStacksOnAccountRemoval")
+    def retain_stacks_on_account_removal(self) -> Optional[_builtins.bool]:
+        """
+        Whether to retain the stack in the member account when the member account is deleted from the target folder. Valid values:
+        """
+        return pulumi.get(self, "retain_stacks_on_account_removal")
+
+
+@pulumi.output_type
 class StackGroupParameter(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -112,30 +161,28 @@ class StackGroupParameter(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 parameter_key: Optional[_builtins.str] = None,
-                 parameter_value: Optional[_builtins.str] = None):
+                 parameter_key: _builtins.str,
+                 parameter_value: _builtins.str):
         """
-        :param _builtins.str parameter_key: The parameter key.
-        :param _builtins.str parameter_value: The parameter value.
+        :param _builtins.str parameter_key: The key of parameter N. If you do not specify the key and value of the parameter, ROS uses the default key and value in the template.
+        :param _builtins.str parameter_value: The value of parameter N.
         """
-        if parameter_key is not None:
-            pulumi.set(__self__, "parameter_key", parameter_key)
-        if parameter_value is not None:
-            pulumi.set(__self__, "parameter_value", parameter_value)
+        pulumi.set(__self__, "parameter_key", parameter_key)
+        pulumi.set(__self__, "parameter_value", parameter_value)
 
     @_builtins.property
     @pulumi.getter(name="parameterKey")
-    def parameter_key(self) -> Optional[_builtins.str]:
+    def parameter_key(self) -> _builtins.str:
         """
-        The parameter key.
+        The key of parameter N. If you do not specify the key and value of the parameter, ROS uses the default key and value in the template.
         """
         return pulumi.get(self, "parameter_key")
 
     @_builtins.property
     @pulumi.getter(name="parameterValue")
-    def parameter_value(self) -> Optional[_builtins.str]:
+    def parameter_value(self) -> _builtins.str:
         """
-        The parameter value.
+        The value of parameter N.
         """
         return pulumi.get(self, "parameter_value")
 

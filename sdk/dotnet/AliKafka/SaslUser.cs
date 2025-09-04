@@ -77,7 +77,7 @@ namespace Pulumi.AliCloud.AliKafka
     ///         VswitchId = defaultSwitch.Id,
     ///         SecurityGroup = defaultSecurityGroup.Id,
     ///         Config = @"  {
-    ///     ""enable.acl"": ""true""
+    ///     \""enable.acl\"": \""true\""
     ///   }
     /// ",
     ///     });

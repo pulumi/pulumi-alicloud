@@ -15,6 +15,165 @@ namespace Pulumi.AliCloud.Kms
         /// This data source provides Kms Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/)
         /// 
         /// &gt; **NOTE:** Available since v1.242.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var current = AliCloud.GetAccount.Invoke();
+        /// 
+        ///     var vpc_amp_instance_example = new AliCloud.Vpc.Network("vpc-amp-instance-example", new()
+        ///     {
+        ///         CidrBlock = "172.16.0.0/12",
+        ///         VpcName = name,
+        ///     });
+        /// 
+        ///     var vswitch = new AliCloud.Vpc.Switch("vswitch", new()
+        ///     {
+        ///         VpcId = vpc_amp_instance_example.Id,
+        ///         ZoneId = "cn-hangzhou-k",
+        ///         CidrBlock = "172.16.1.0/24",
+        ///     });
+        /// 
+        ///     var vswitch_j = new AliCloud.Vpc.Switch("vswitch-j", new()
+        ///     {
+        ///         VpcId = vpc_amp_instance_example.Id,
+        ///         ZoneId = "cn-hangzhou-j",
+        ///         CidrBlock = "172.16.2.0/24",
+        ///     });
+        /// 
+        ///     var shareVPC = new AliCloud.Vpc.Network("shareVPC", new()
+        ///     {
+        ///         CidrBlock = "172.16.0.0/12",
+        ///         VpcName = Std.Format.Invoke(new()
+        ///         {
+        ///             Input = "%s3",
+        ///             Args = new[]
+        ///             {
+        ///                 name,
+        ///             },
+        ///         }).Apply(invoke =&gt; invoke.Result),
+        ///     });
+        /// 
+        ///     var shareVswitch = new AliCloud.Vpc.Switch("shareVswitch", new()
+        ///     {
+        ///         VpcId = shareVPC.Id,
+        ///         ZoneId = "cn-hangzhou-k",
+        ///         CidrBlock = "172.16.1.0/24",
+        ///     });
+        /// 
+        ///     var share_VPC2 = new AliCloud.Vpc.Network("share-VPC2", new()
+        ///     {
+        ///         CidrBlock = "172.16.0.0/12",
+        ///         VpcName = Std.Format.Invoke(new()
+        ///         {
+        ///             Input = "%s5",
+        ///             Args = new[]
+        ///             {
+        ///                 name,
+        ///             },
+        ///         }).Apply(invoke =&gt; invoke.Result),
+        ///     });
+        /// 
+        ///     var share_vswitch2 = new AliCloud.Vpc.Switch("share-vswitch2", new()
+        ///     {
+        ///         VpcId = share_VPC2.Id,
+        ///         ZoneId = "cn-hangzhou-k",
+        ///         CidrBlock = "172.16.1.0/24",
+        ///     });
+        /// 
+        ///     var share_VPC3 = new AliCloud.Vpc.Network("share-VPC3", new()
+        ///     {
+        ///         CidrBlock = "172.16.0.0/12",
+        ///         VpcName = Std.Format.Invoke(new()
+        ///         {
+        ///             Input = "%s7",
+        ///             Args = new[]
+        ///             {
+        ///                 name,
+        ///             },
+        ///         }).Apply(invoke =&gt; invoke.Result),
+        ///     });
+        /// 
+        ///     var share_vsw3 = new AliCloud.Vpc.Switch("share-vsw3", new()
+        ///     {
+        ///         VpcId = share_VPC3.Id,
+        ///         ZoneId = "cn-hangzhou-k",
+        ///         CidrBlock = "172.16.1.0/24",
+        ///     });
+        /// 
+        ///     var defaultInstance = new AliCloud.Kms.Instance("default", new()
+        ///     {
+        ///         VpcNum = 7,
+        ///         KeyNum = 1000,
+        ///         SecretNum = 0,
+        ///         Spec = 1000,
+        ///         RenewStatus = "ManualRenewal",
+        ///         ProductVersion = "3",
+        ///         RenewPeriod = 3,
+        ///         VpcId = vswitch.VpcId,
+        ///         ZoneIds = new[]
+        ///         {
+        ///             "cn-hangzhou-k",
+        ///             "cn-hangzhou-j",
+        ///         },
+        ///         VswitchIds = new[]
+        ///         {
+        ///             vswitch.Id,
+        ///         },
+        ///         BindVpcs = new[]
+        ///         {
+        ///             new AliCloud.Kms.Inputs.InstanceBindVpcArgs
+        ///             {
+        ///                 VpcId = shareVswitch.VpcId,
+        ///                 RegionId = "cn-hangzhou",
+        ///                 VswitchId = shareVswitch.Id,
+        ///                 VpcOwnerId = current.Apply(getAccountResult =&gt; getAccountResult.Id),
+        ///             },
+        ///             new AliCloud.Kms.Inputs.InstanceBindVpcArgs
+        ///             {
+        ///                 VpcId = share_vswitch2.VpcId,
+        ///                 RegionId = "cn-hangzhou",
+        ///                 VswitchId = share_vswitch2.Id,
+        ///                 VpcOwnerId = current.Apply(getAccountResult =&gt; getAccountResult.Id),
+        ///             },
+        ///             new AliCloud.Kms.Inputs.InstanceBindVpcArgs
+        ///             {
+        ///                 VpcId = share_vsw3.VpcId,
+        ///                 RegionId = "cn-hangzhou",
+        ///                 VswitchId = share_vsw3.Id,
+        ///                 VpcOwnerId = current.Apply(getAccountResult =&gt; getAccountResult.Id),
+        ///             },
+        ///         },
+        ///         Log = "0",
+        ///         Period = 1,
+        ///         LogStorage = 0,
+        ///         PaymentType = "Subscription",
+        ///     });
+        /// 
+        ///     var @default = AliCloud.Kms.GetInstances.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultInstance.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudKmsInstanceExampleId"] = @default.Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.InstanceId)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:kms/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
@@ -23,6 +182,165 @@ namespace Pulumi.AliCloud.Kms
         /// This data source provides Kms Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/)
         /// 
         /// &gt; **NOTE:** Available since v1.242.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var current = AliCloud.GetAccount.Invoke();
+        /// 
+        ///     var vpc_amp_instance_example = new AliCloud.Vpc.Network("vpc-amp-instance-example", new()
+        ///     {
+        ///         CidrBlock = "172.16.0.0/12",
+        ///         VpcName = name,
+        ///     });
+        /// 
+        ///     var vswitch = new AliCloud.Vpc.Switch("vswitch", new()
+        ///     {
+        ///         VpcId = vpc_amp_instance_example.Id,
+        ///         ZoneId = "cn-hangzhou-k",
+        ///         CidrBlock = "172.16.1.0/24",
+        ///     });
+        /// 
+        ///     var vswitch_j = new AliCloud.Vpc.Switch("vswitch-j", new()
+        ///     {
+        ///         VpcId = vpc_amp_instance_example.Id,
+        ///         ZoneId = "cn-hangzhou-j",
+        ///         CidrBlock = "172.16.2.0/24",
+        ///     });
+        /// 
+        ///     var shareVPC = new AliCloud.Vpc.Network("shareVPC", new()
+        ///     {
+        ///         CidrBlock = "172.16.0.0/12",
+        ///         VpcName = Std.Format.Invoke(new()
+        ///         {
+        ///             Input = "%s3",
+        ///             Args = new[]
+        ///             {
+        ///                 name,
+        ///             },
+        ///         }).Apply(invoke =&gt; invoke.Result),
+        ///     });
+        /// 
+        ///     var shareVswitch = new AliCloud.Vpc.Switch("shareVswitch", new()
+        ///     {
+        ///         VpcId = shareVPC.Id,
+        ///         ZoneId = "cn-hangzhou-k",
+        ///         CidrBlock = "172.16.1.0/24",
+        ///     });
+        /// 
+        ///     var share_VPC2 = new AliCloud.Vpc.Network("share-VPC2", new()
+        ///     {
+        ///         CidrBlock = "172.16.0.0/12",
+        ///         VpcName = Std.Format.Invoke(new()
+        ///         {
+        ///             Input = "%s5",
+        ///             Args = new[]
+        ///             {
+        ///                 name,
+        ///             },
+        ///         }).Apply(invoke =&gt; invoke.Result),
+        ///     });
+        /// 
+        ///     var share_vswitch2 = new AliCloud.Vpc.Switch("share-vswitch2", new()
+        ///     {
+        ///         VpcId = share_VPC2.Id,
+        ///         ZoneId = "cn-hangzhou-k",
+        ///         CidrBlock = "172.16.1.0/24",
+        ///     });
+        /// 
+        ///     var share_VPC3 = new AliCloud.Vpc.Network("share-VPC3", new()
+        ///     {
+        ///         CidrBlock = "172.16.0.0/12",
+        ///         VpcName = Std.Format.Invoke(new()
+        ///         {
+        ///             Input = "%s7",
+        ///             Args = new[]
+        ///             {
+        ///                 name,
+        ///             },
+        ///         }).Apply(invoke =&gt; invoke.Result),
+        ///     });
+        /// 
+        ///     var share_vsw3 = new AliCloud.Vpc.Switch("share-vsw3", new()
+        ///     {
+        ///         VpcId = share_VPC3.Id,
+        ///         ZoneId = "cn-hangzhou-k",
+        ///         CidrBlock = "172.16.1.0/24",
+        ///     });
+        /// 
+        ///     var defaultInstance = new AliCloud.Kms.Instance("default", new()
+        ///     {
+        ///         VpcNum = 7,
+        ///         KeyNum = 1000,
+        ///         SecretNum = 0,
+        ///         Spec = 1000,
+        ///         RenewStatus = "ManualRenewal",
+        ///         ProductVersion = "3",
+        ///         RenewPeriod = 3,
+        ///         VpcId = vswitch.VpcId,
+        ///         ZoneIds = new[]
+        ///         {
+        ///             "cn-hangzhou-k",
+        ///             "cn-hangzhou-j",
+        ///         },
+        ///         VswitchIds = new[]
+        ///         {
+        ///             vswitch.Id,
+        ///         },
+        ///         BindVpcs = new[]
+        ///         {
+        ///             new AliCloud.Kms.Inputs.InstanceBindVpcArgs
+        ///             {
+        ///                 VpcId = shareVswitch.VpcId,
+        ///                 RegionId = "cn-hangzhou",
+        ///                 VswitchId = shareVswitch.Id,
+        ///                 VpcOwnerId = current.Apply(getAccountResult =&gt; getAccountResult.Id),
+        ///             },
+        ///             new AliCloud.Kms.Inputs.InstanceBindVpcArgs
+        ///             {
+        ///                 VpcId = share_vswitch2.VpcId,
+        ///                 RegionId = "cn-hangzhou",
+        ///                 VswitchId = share_vswitch2.Id,
+        ///                 VpcOwnerId = current.Apply(getAccountResult =&gt; getAccountResult.Id),
+        ///             },
+        ///             new AliCloud.Kms.Inputs.InstanceBindVpcArgs
+        ///             {
+        ///                 VpcId = share_vsw3.VpcId,
+        ///                 RegionId = "cn-hangzhou",
+        ///                 VswitchId = share_vsw3.Id,
+        ///                 VpcOwnerId = current.Apply(getAccountResult =&gt; getAccountResult.Id),
+        ///             },
+        ///         },
+        ///         Log = "0",
+        ///         Period = 1,
+        ///         LogStorage = 0,
+        ///         PaymentType = "Subscription",
+        ///     });
+        /// 
+        ///     var @default = AliCloud.Kms.GetInstances.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultInstance.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudKmsInstanceExampleId"] = @default.Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.InstanceId)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:kms/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
@@ -31,6 +349,165 @@ namespace Pulumi.AliCloud.Kms
         /// This data source provides Kms Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/)
         /// 
         /// &gt; **NOTE:** Available since v1.242.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var current = AliCloud.GetAccount.Invoke();
+        /// 
+        ///     var vpc_amp_instance_example = new AliCloud.Vpc.Network("vpc-amp-instance-example", new()
+        ///     {
+        ///         CidrBlock = "172.16.0.0/12",
+        ///         VpcName = name,
+        ///     });
+        /// 
+        ///     var vswitch = new AliCloud.Vpc.Switch("vswitch", new()
+        ///     {
+        ///         VpcId = vpc_amp_instance_example.Id,
+        ///         ZoneId = "cn-hangzhou-k",
+        ///         CidrBlock = "172.16.1.0/24",
+        ///     });
+        /// 
+        ///     var vswitch_j = new AliCloud.Vpc.Switch("vswitch-j", new()
+        ///     {
+        ///         VpcId = vpc_amp_instance_example.Id,
+        ///         ZoneId = "cn-hangzhou-j",
+        ///         CidrBlock = "172.16.2.0/24",
+        ///     });
+        /// 
+        ///     var shareVPC = new AliCloud.Vpc.Network("shareVPC", new()
+        ///     {
+        ///         CidrBlock = "172.16.0.0/12",
+        ///         VpcName = Std.Format.Invoke(new()
+        ///         {
+        ///             Input = "%s3",
+        ///             Args = new[]
+        ///             {
+        ///                 name,
+        ///             },
+        ///         }).Apply(invoke =&gt; invoke.Result),
+        ///     });
+        /// 
+        ///     var shareVswitch = new AliCloud.Vpc.Switch("shareVswitch", new()
+        ///     {
+        ///         VpcId = shareVPC.Id,
+        ///         ZoneId = "cn-hangzhou-k",
+        ///         CidrBlock = "172.16.1.0/24",
+        ///     });
+        /// 
+        ///     var share_VPC2 = new AliCloud.Vpc.Network("share-VPC2", new()
+        ///     {
+        ///         CidrBlock = "172.16.0.0/12",
+        ///         VpcName = Std.Format.Invoke(new()
+        ///         {
+        ///             Input = "%s5",
+        ///             Args = new[]
+        ///             {
+        ///                 name,
+        ///             },
+        ///         }).Apply(invoke =&gt; invoke.Result),
+        ///     });
+        /// 
+        ///     var share_vswitch2 = new AliCloud.Vpc.Switch("share-vswitch2", new()
+        ///     {
+        ///         VpcId = share_VPC2.Id,
+        ///         ZoneId = "cn-hangzhou-k",
+        ///         CidrBlock = "172.16.1.0/24",
+        ///     });
+        /// 
+        ///     var share_VPC3 = new AliCloud.Vpc.Network("share-VPC3", new()
+        ///     {
+        ///         CidrBlock = "172.16.0.0/12",
+        ///         VpcName = Std.Format.Invoke(new()
+        ///         {
+        ///             Input = "%s7",
+        ///             Args = new[]
+        ///             {
+        ///                 name,
+        ///             },
+        ///         }).Apply(invoke =&gt; invoke.Result),
+        ///     });
+        /// 
+        ///     var share_vsw3 = new AliCloud.Vpc.Switch("share-vsw3", new()
+        ///     {
+        ///         VpcId = share_VPC3.Id,
+        ///         ZoneId = "cn-hangzhou-k",
+        ///         CidrBlock = "172.16.1.0/24",
+        ///     });
+        /// 
+        ///     var defaultInstance = new AliCloud.Kms.Instance("default", new()
+        ///     {
+        ///         VpcNum = 7,
+        ///         KeyNum = 1000,
+        ///         SecretNum = 0,
+        ///         Spec = 1000,
+        ///         RenewStatus = "ManualRenewal",
+        ///         ProductVersion = "3",
+        ///         RenewPeriod = 3,
+        ///         VpcId = vswitch.VpcId,
+        ///         ZoneIds = new[]
+        ///         {
+        ///             "cn-hangzhou-k",
+        ///             "cn-hangzhou-j",
+        ///         },
+        ///         VswitchIds = new[]
+        ///         {
+        ///             vswitch.Id,
+        ///         },
+        ///         BindVpcs = new[]
+        ///         {
+        ///             new AliCloud.Kms.Inputs.InstanceBindVpcArgs
+        ///             {
+        ///                 VpcId = shareVswitch.VpcId,
+        ///                 RegionId = "cn-hangzhou",
+        ///                 VswitchId = shareVswitch.Id,
+        ///                 VpcOwnerId = current.Apply(getAccountResult =&gt; getAccountResult.Id),
+        ///             },
+        ///             new AliCloud.Kms.Inputs.InstanceBindVpcArgs
+        ///             {
+        ///                 VpcId = share_vswitch2.VpcId,
+        ///                 RegionId = "cn-hangzhou",
+        ///                 VswitchId = share_vswitch2.Id,
+        ///                 VpcOwnerId = current.Apply(getAccountResult =&gt; getAccountResult.Id),
+        ///             },
+        ///             new AliCloud.Kms.Inputs.InstanceBindVpcArgs
+        ///             {
+        ///                 VpcId = share_vsw3.VpcId,
+        ///                 RegionId = "cn-hangzhou",
+        ///                 VswitchId = share_vsw3.Id,
+        ///                 VpcOwnerId = current.Apply(getAccountResult =&gt; getAccountResult.Id),
+        ///             },
+        ///         },
+        ///         Log = "0",
+        ///         Period = 1,
+        ///         LogStorage = 0,
+        ///         PaymentType = "Subscription",
+        ///     });
+        /// 
+        ///     var @default = AliCloud.Kms.GetInstances.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultInstance.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudKmsInstanceExampleId"] = @default.Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.InstanceId)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:kms/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
