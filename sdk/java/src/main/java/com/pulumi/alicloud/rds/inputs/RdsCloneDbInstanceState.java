@@ -304,6 +304,7 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
      * * **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
      * * **cloud_essd2**: ESSDs of PL2
      * * **cloud_essd3**: ESSDs of PL3
+     * * **general_essd**: general ESSDS Available since v1.258.0
      * 
      */
     @Import(name="dbInstanceStorageType")
@@ -316,6 +317,7 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
      * * **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
      * * **cloud_essd2**: ESSDs of PL2
      * * **cloud_essd3**: ESSDs of PL3
+     * * **general_essd**: general ESSDS Available since v1.258.0
      * 
      */
     public Optional<Output<String>> dbInstanceStorageType() {
@@ -1553,6 +1555,7 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
          * * **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
          * * **cloud_essd2**: ESSDs of PL2
          * * **cloud_essd3**: ESSDs of PL3
+         * * **general_essd**: general ESSDS Available since v1.258.0
          * 
          * @return builder
          * 
@@ -1569,6 +1572,7 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
          * * **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
          * * **cloud_essd2**: ESSDs of PL2
          * * **cloud_essd3**: ESSDs of PL3
+         * * **general_essd**: general ESSDS Available since v1.258.0
          * 
          * @return builder
          * 

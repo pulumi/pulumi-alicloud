@@ -11,6 +11,55 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.240.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING$",
+ * });
+ * const defaultGetSwitches = defaultGetNetworks.then(defaultGetNetworks => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ * }));
+ * const defaultgateway = new alicloud.apig.Gateway("defaultgateway", {
+ *     networkAccessConfig: {
+ *         type: "Intranet",
+ *     },
+ *     vswitch: {
+ *         vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
+ *     },
+ *     zoneConfig: {
+ *         selectOption: "Auto",
+ *     },
+ *     vpc: {
+ *         vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
+ *     },
+ *     paymentType: "PayAsYouGo",
+ *     gatewayName: std.format({
+ *         input: "%s2",
+ *         args: [name],
+ *     }).then(invoke => invoke.result),
+ *     spec: "apigw.small.x1",
+ *     logConfig: {
+ *         sls: {},
+ *     },
+ * });
+ * const defaultEnvironment = new alicloud.apig.Environment("default", {
+ *     description: name,
+ *     environmentName: name,
+ *     gatewayId: defaultgateway.id,
+ *     resourceGroupId: _default.then(_default => _default.ids?.[1]),
+ * });
+ * ```
+ *
  * ## Import
  *
  * APIG Environment can be imported using the id, e.g.

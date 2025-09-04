@@ -17,6 +17,9 @@ namespace Pulumi.AliCloud.Rds.Outputs
         /// DB Instance available class.
         /// </summary>
         public readonly string InstanceClass;
+        /// <summary>
+        /// Unit price of instance specifications.
+        /// </summary>
         public readonly string Price;
         /// <summary>
         /// DB Instance available storage range.

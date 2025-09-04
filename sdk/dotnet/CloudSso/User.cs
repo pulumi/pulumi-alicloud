@@ -18,6 +18,66 @@ namespace Pulumi.AliCloud.CloudSso
     /// 
     /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var @default = AliCloud.CloudSso.GetDirectories.Invoke();
+    /// 
+    ///     var defaultDirectory = new List&lt;AliCloud.CloudSso.Directory&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Apply(@default =&gt; @default.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Ids)).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         defaultDirectory.Add(new AliCloud.CloudSso.Directory($"default-{range.Value}", new()
+    ///         {
+    ///             DirectoryName = name,
+    ///         }));
+    ///     }
+    ///     var directoryId = Output.Tuple(@default.Apply(@default =&gt; @default.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Ids)).Length, @default, Std.Concat.Invoke(new()
+    ///     {
+    ///         Input = new[]
+    ///         {
+    ///             defaultDirectory.Select(__item =&gt; __item.Id).ToList(),
+    ///             new[]
+    ///             {
+    ///                 "",
+    ///             },
+    ///         },
+    ///     })).Apply(values =&gt;
+    ///     {
+    ///         var length = values.Item1;
+    ///         var @default = values.Item2;
+    ///         var invoke = values.Item3;
+    ///         return length &gt; 0 ? @default.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Ids[0]) : invoke.Result[0];
+    ///     });
+    /// 
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var defaultUser = new AliCloud.CloudSso.User("default", new()
+    ///     {
+    ///         DirectoryId = directoryId,
+    ///         UserName = $"{name}-{defaultInteger.Result}",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Cloud SSO User can be imported using the id, e.g.

@@ -10,6 +10,51 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.93.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tfexamplename";
+ * const exampleUser = new alicloud.ram.User("example", {name: name});
+ * const examplePolicy = new alicloud.resourcemanager.Policy("example", {
+ *     policyName: name,
+ *     policyDocument: `\\t\\t{
+ * \\t\\t\\t\\"Statement\\": [{
+ * \\t\\t\\t\\t\\"Action\\": [\\"oss:*\\"],
+ * \\t\\t\\t\\t\\"Effect\\": \\"Allow\\",
+ * \\t\\t\\t\\t\\"Resource\\": [\\"acs:oss:*:*:*\\"]
+ * \\t\\t\\t}],
+ * \\t\\t\\t\\"Version\\": \\"1\\"
+ * \\t\\t}
+ * `,
+ * });
+ * const example = alicloud.resourcemanager.getResourceGroups({
+ *     status: "OK",
+ * });
+ * // Get Alicloud Account Id
+ * const exampleGetAccount = alicloud.getAccount({});
+ * // Attach the custom policy to resource group
+ * const examplePolicyAttachment = new alicloud.resourcemanager.PolicyAttachment("example", {
+ *     policyName: examplePolicy.policyName,
+ *     policyType: "Custom",
+ *     principalName: std.format({
+ *         input: "%s@%s.onaliyun.com",
+ *         args: [
+ *             exampleUser.name,
+ *             exampleGetAccount.then(exampleGetAccount => exampleGetAccount.id),
+ *         ],
+ *     }).then(invoke => invoke.result),
+ *     principalType: "IMSUser",
+ *     resourceGroupId: example.then(example => example.ids?.[0]),
+ * });
+ * ```
+ *
  * ## Import
  *
  * Resource Manager Policy Attachment can be imported using the id, e.g.

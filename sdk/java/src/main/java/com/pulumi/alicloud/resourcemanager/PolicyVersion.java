@@ -57,28 +57,28 @@ import javax.annotation.Nullable;
  *         var example = new Policy("example", PolicyArgs.builder()
  *             .policyName(name)
  *             .policyDocument("""
- * 		{
- * 			"Statement": [{
- * 				"Action": ["oss:*"],
- * 				"Effect": "Allow",
- * 				"Resource": ["acs:oss:*:*:*"]
- * 			}],
- * 			"Version": "1"
- * 		}
+ * \t\t{
+ * \t\t\t\"Statement\": [{
+ * \t\t\t\t\"Action\": [\"oss:*\"],
+ * \t\t\t\t\"Effect\": \"Allow\",
+ * \t\t\t\t\"Resource\": [\"acs:oss:*:*:*\"]
+ * \t\t\t}],
+ * \t\t\t\"Version\": \"1\"
+ * \t\t}
  *             """)
  *             .build());
  * 
  *         var examplePolicyVersion = new PolicyVersion("examplePolicyVersion", PolicyVersionArgs.builder()
  *             .policyName(example.policyName())
  *             .policyDocument("""
- * 		{
- * 			"Statement": [{
- * 				"Action": ["oss:*"],
- * 				"Effect": "Allow",
- * 				"Resource": ["acs:oss:*:*:myphotos"]
- * 			}],
- * 			"Version": "1"
- * 		}
+ * \t\t{
+ * \t\t\t\"Statement\": [{
+ * \t\t\t\t\"Action\": [\"oss:*\"],
+ * \t\t\t\t\"Effect\": \"Allow\",
+ * \t\t\t\t\"Resource\": [\"acs:oss:*:*:myphotos\"]
+ * \t\t\t}],
+ * \t\t\t\"Version\": \"1\"
+ * \t\t}
  *             """)
  *             .build());
  * 

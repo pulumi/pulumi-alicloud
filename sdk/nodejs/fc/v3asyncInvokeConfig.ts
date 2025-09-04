@@ -15,6 +15,89 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.228.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const current = alicloud.getAccount({});
+ * const _function = new alicloud.fc.V3Function("function", {
+ *     memorySize: 512,
+ *     cpu: 0.5,
+ *     handler: "index.Handler",
+ *     code: {
+ *         zipFile: "UEsDBBQACAAIAAAAAAAAAAAAAAAAAAAAAAAIAAAAaW5kZXgucHmEkEFKxEAQRfd9ig9ZTCJOooIwDMwNXLqXnnQlaalUhU5lRj2KZ/FOXkESGR114bJ/P/7jV4b1xRq1hijtFpM1682cuNgPmgysbRulPT0fRxXnMtwrSPyeCdYRokSLnuMLJTTkbUqEvDMbxm1VdcRD6Tk+T1LW2ldB66knsYdA5iNX17ebm6tN2VnPhcswMPmREPuBacb+CiapLarAj9gT6/H97dVlCNScY3mtYvRkxdZlwDKDEnanPWVLdrdkeXEGlFEazVdfPVHaVeHc3N15CUwppwOJXeK7HshAB8NuOU7J6sP4SRXuH/EvbUfMiqMmDqv5M5FNSfAj/wgAAP//UEsHCPl//NYAAQAArwEAAFBLAQIUABQACAAIAAAAAAD5f/zWAAEAAK8BAAAIAAAAAAAAAAAAAAAAAAAAAABpbmRleC5weVBLBQYAAAAAAQABADYAAAA2AQAAAAA=",
+ *     },
+ *     functionName: name,
+ *     runtime: "python3.9",
+ *     diskSize: 512,
+ *     logConfig: {
+ *         logBeginRule: "None",
+ *     },
+ * });
+ * const function1 = new alicloud.fc.V3Function("function1", {
+ *     memorySize: 512,
+ *     cpu: 0.5,
+ *     handler: "index.Handler",
+ *     code: {
+ *         zipFile: "UEsDBBQACAAIAAAAAAAAAAAAAAAAAAAAAAAIAAAAaW5kZXgucHmEkEFKxEAQRfd9ig9ZTCJOooIwDMwNXLqXnnQlaalUhU5lRj2KZ/FOXkESGR114bJ/P/7jV4b1xRq1hijtFpM1682cuNgPmgysbRulPT0fRxXnMtwrSPyeCdYRokSLnuMLJTTkbUqEvDMbxm1VdcRD6Tk+T1LW2ldB66knsYdA5iNX17ebm6tN2VnPhcswMPmREPuBacb+CiapLarAj9gT6/H97dVlCNScY3mtYvRkxdZlwDKDEnanPWVLdrdkeXEGlFEazVdfPVHaVeHc3N15CUwppwOJXeK7HshAB8NuOU7J6sP4SRXuH/EvbUfMiqMmDqv5M5FNSfAj/wgAAP//UEsHCPl//NYAAQAArwEAAFBLAQIUABQACAAIAAAAAAD5f/zWAAEAAK8BAAAIAAAAAAAAAAAAAAAAAAAAAABpbmRleC5weVBLBQYAAAAAAQABADYAAAA2AQAAAAA=",
+ *     },
+ *     functionName: std.format({
+ *         input: "%s_%s",
+ *         args: [
+ *             name,
+ *             "update1",
+ *         ],
+ *     }).then(invoke => invoke.result),
+ *     runtime: "python3.9",
+ *     diskSize: 512,
+ *     logConfig: {
+ *         logBeginRule: "None",
+ *     },
+ * });
+ * const function2 = new alicloud.fc.V3Function("function2", {
+ *     memorySize: 512,
+ *     cpu: 0.5,
+ *     handler: "index.Handler",
+ *     code: {
+ *         zipFile: "UEsDBBQACAAIAAAAAAAAAAAAAAAAAAAAAAAIAAAAaW5kZXgucHmEkEFKxEAQRfd9ig9ZTCJOooIwDMwNXLqXnnQlaalUhU5lRj2KZ/FOXkESGR114bJ/P/7jV4b1xRq1hijtFpM1682cuNgPmgysbRulPT0fRxXnMtwrSPyeCdYRokSLnuMLJTTkbUqEvDMbxm1VdcRD6Tk+T1LW2ldB66knsYdA5iNX17ebm6tN2VnPhcswMPmREPuBacb+CiapLarAj9gT6/H97dVlCNScY3mtYvRkxdZlwDKDEnanPWVLdrdkeXEGlFEazVdfPVHaVeHc3N15CUwppwOJXeK7HshAB8NuOU7J6sP4SRXuH/EvbUfMiqMmDqv5M5FNSfAj/wgAAP//UEsHCPl//NYAAQAArwEAAFBLAQIUABQACAAIAAAAAAD5f/zWAAEAAK8BAAAIAAAAAAAAAAAAAAAAAAAAAABpbmRleC5weVBLBQYAAAAAAQABADYAAAA2AQAAAAA=",
+ *     },
+ *     functionName: std.format({
+ *         input: "%s_%s",
+ *         args: [
+ *             name,
+ *             "update2",
+ *         ],
+ *     }).then(invoke => invoke.result),
+ *     runtime: "python3.9",
+ *     diskSize: 512,
+ *     logConfig: {
+ *         logBeginRule: "None",
+ *     },
+ * });
+ * const _default = new alicloud.fc.V3AsyncInvokeConfig("default", {
+ *     maxAsyncRetryAttempts: 1,
+ *     maxAsyncEventAgeInSeconds: 1,
+ *     asyncTask: true,
+ *     functionName: _function.functionName,
+ *     destinationConfig: {
+ *         onFailure: {
+ *             destination: pulumi.all([current, function1.functionName]).apply(([current, functionName]) => `acs:fc:eu-central-1:${current.id}:functions/${functionName}`),
+ *         },
+ *         onSuccess: {
+ *             destination: pulumi.all([current, function1.functionName]).apply(([current, functionName]) => `acs:fc:eu-central-1:${current.id}:functions/${functionName}`),
+ *         },
+ *     },
+ *     qualifier: "LATEST",
+ * });
+ * ```
+ *
  * ## Import
  *
  * FCV3 Async Invoke Config can be imported using the id, e.g.

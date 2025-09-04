@@ -26,6 +26,7 @@ class AutoscalingConfigArgs:
                  gpu_utilization_threshold: Optional[pulumi.Input[_builtins.str]] = None,
                  max_graceful_termination_sec: Optional[pulumi.Input[_builtins.int]] = None,
                  min_replica_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 priorities: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  recycle_node_deletion_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  scale_down_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  scale_up_from_zero: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -38,21 +39,22 @@ class AutoscalingConfigArgs:
         """
         The set of arguments for constructing a AutoscalingConfig resource.
         :param pulumi.Input[_builtins.str] cluster_id: The id of kubernetes cluster.
-        :param pulumi.Input[_builtins.str] cool_down_duration: The cool down duration. Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
+        :param pulumi.Input[_builtins.str] cool_down_duration: Specify the time interval between detecting a scale-in requirement (when the threshold is reached) and actually executing the scale-in operation (reducing the number of Pods). Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
         :param pulumi.Input[_builtins.bool] daemonset_eviction_for_nodes: If true DaemonSet pods will be  terminated from nodes. Default is `false`.
-        :param pulumi.Input[_builtins.str] expander: The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
+        :param pulumi.Input[_builtins.str] expander: The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For scaler type `goatscaler`, only the `least-waste` expander is currently supported. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
         :param pulumi.Input[_builtins.str] gpu_utilization_threshold: The scale-in threshold for GPU instance. Default is `0.5`.
         :param pulumi.Input[_builtins.int] max_graceful_termination_sec: Maximum number of seconds CA waits for pod termination when trying to scale down a node. Default is `14400`.
         :param pulumi.Input[_builtins.int] min_replica_count: Minimum number of replicas that a replica set or replication controller should have to allow their pods deletion in scale down. Default is `0`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] priorities: Priority settings for autoscaling node pool scaling groups. This parameter only takes effect when `expander` is set to `priority`. Only supports scaler type `cluster-autoscaler`. Uses key-value pairs where the key is the priority value, and the value is a comma-separated list of scaling group IDs. High numerical values indicate higher priority.
         :param pulumi.Input[_builtins.bool] recycle_node_deletion_enabled: Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
         :param pulumi.Input[_builtins.bool] scale_down_enabled: Specify whether to allow the scale-in of nodes. Default is `true`.
         :param pulumi.Input[_builtins.bool] scale_up_from_zero: Should CA scale up when there 0 ready nodes. Default is `true`.
-        :param pulumi.Input[_builtins.str] scaler_type: The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
+        :param pulumi.Input[_builtins.str] scaler_type: The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`. When switching from `cluster-autoscaler` to `goatscaler`, all configuration parameters will be automatically migrated.
         :param pulumi.Input[_builtins.str] scan_interval: The interval at which the cluster is reevaluated for scaling. Default is `30s`.
         :param pulumi.Input[_builtins.bool] skip_nodes_with_local_storage: If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
         :param pulumi.Input[_builtins.bool] skip_nodes_with_system_pods: If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `true`.
-        :param pulumi.Input[_builtins.str] unneeded_duration: The unneeded duration. Default is `10m`.
-        :param pulumi.Input[_builtins.str] utilization_threshold: The scale-in threshold. Default is `0.5`.
+        :param pulumi.Input[_builtins.str] unneeded_duration: Specify the time interval during which autoscaler does not perform scale-in operations after the most recent scale-out completion. Nodes added through scale-out can only be considered for scale-in after the period has elapsed. Default is `10m`.
+        :param pulumi.Input[_builtins.str] utilization_threshold: The scale-in a threshold. Default is `0.5`.
         """
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
@@ -68,6 +70,8 @@ class AutoscalingConfigArgs:
             pulumi.set(__self__, "max_graceful_termination_sec", max_graceful_termination_sec)
         if min_replica_count is not None:
             pulumi.set(__self__, "min_replica_count", min_replica_count)
+        if priorities is not None:
+            pulumi.set(__self__, "priorities", priorities)
         if recycle_node_deletion_enabled is not None:
             pulumi.set(__self__, "recycle_node_deletion_enabled", recycle_node_deletion_enabled)
         if scale_down_enabled is not None:
@@ -103,7 +107,7 @@ class AutoscalingConfigArgs:
     @pulumi.getter(name="coolDownDuration")
     def cool_down_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The cool down duration. Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
+        Specify the time interval between detecting a scale-in requirement (when the threshold is reached) and actually executing the scale-in operation (reducing the number of Pods). Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
         """
         return pulumi.get(self, "cool_down_duration")
 
@@ -127,7 +131,7 @@ class AutoscalingConfigArgs:
     @pulumi.getter
     def expander(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
+        The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For scaler type `goatscaler`, only the `least-waste` expander is currently supported. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
         """
         return pulumi.get(self, "expander")
 
@@ -172,6 +176,18 @@ class AutoscalingConfigArgs:
         pulumi.set(self, "min_replica_count", value)
 
     @_builtins.property
+    @pulumi.getter
+    def priorities(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Priority settings for autoscaling node pool scaling groups. This parameter only takes effect when `expander` is set to `priority`. Only supports scaler type `cluster-autoscaler`. Uses key-value pairs where the key is the priority value, and the value is a comma-separated list of scaling group IDs. High numerical values indicate higher priority.
+        """
+        return pulumi.get(self, "priorities")
+
+    @priorities.setter
+    def priorities(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "priorities", value)
+
+    @_builtins.property
     @pulumi.getter(name="recycleNodeDeletionEnabled")
     def recycle_node_deletion_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -211,7 +227,7 @@ class AutoscalingConfigArgs:
     @pulumi.getter(name="scalerType")
     def scaler_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
+        The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`. When switching from `cluster-autoscaler` to `goatscaler`, all configuration parameters will be automatically migrated.
         """
         return pulumi.get(self, "scaler_type")
 
@@ -259,7 +275,7 @@ class AutoscalingConfigArgs:
     @pulumi.getter(name="unneededDuration")
     def unneeded_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The unneeded duration. Default is `10m`.
+        Specify the time interval during which autoscaler does not perform scale-in operations after the most recent scale-out completion. Nodes added through scale-out can only be considered for scale-in after the period has elapsed. Default is `10m`.
         """
         return pulumi.get(self, "unneeded_duration")
 
@@ -271,7 +287,7 @@ class AutoscalingConfigArgs:
     @pulumi.getter(name="utilizationThreshold")
     def utilization_threshold(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The scale-in threshold. Default is `0.5`.
+        The scale-in a threshold. Default is `0.5`.
         """
         return pulumi.get(self, "utilization_threshold")
 
@@ -290,6 +306,7 @@ class _AutoscalingConfigState:
                  gpu_utilization_threshold: Optional[pulumi.Input[_builtins.str]] = None,
                  max_graceful_termination_sec: Optional[pulumi.Input[_builtins.int]] = None,
                  min_replica_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 priorities: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  recycle_node_deletion_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  scale_down_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  scale_up_from_zero: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -302,21 +319,22 @@ class _AutoscalingConfigState:
         """
         Input properties used for looking up and filtering AutoscalingConfig resources.
         :param pulumi.Input[_builtins.str] cluster_id: The id of kubernetes cluster.
-        :param pulumi.Input[_builtins.str] cool_down_duration: The cool down duration. Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
+        :param pulumi.Input[_builtins.str] cool_down_duration: Specify the time interval between detecting a scale-in requirement (when the threshold is reached) and actually executing the scale-in operation (reducing the number of Pods). Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
         :param pulumi.Input[_builtins.bool] daemonset_eviction_for_nodes: If true DaemonSet pods will be  terminated from nodes. Default is `false`.
-        :param pulumi.Input[_builtins.str] expander: The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
+        :param pulumi.Input[_builtins.str] expander: The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For scaler type `goatscaler`, only the `least-waste` expander is currently supported. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
         :param pulumi.Input[_builtins.str] gpu_utilization_threshold: The scale-in threshold for GPU instance. Default is `0.5`.
         :param pulumi.Input[_builtins.int] max_graceful_termination_sec: Maximum number of seconds CA waits for pod termination when trying to scale down a node. Default is `14400`.
         :param pulumi.Input[_builtins.int] min_replica_count: Minimum number of replicas that a replica set or replication controller should have to allow their pods deletion in scale down. Default is `0`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] priorities: Priority settings for autoscaling node pool scaling groups. This parameter only takes effect when `expander` is set to `priority`. Only supports scaler type `cluster-autoscaler`. Uses key-value pairs where the key is the priority value, and the value is a comma-separated list of scaling group IDs. High numerical values indicate higher priority.
         :param pulumi.Input[_builtins.bool] recycle_node_deletion_enabled: Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
         :param pulumi.Input[_builtins.bool] scale_down_enabled: Specify whether to allow the scale-in of nodes. Default is `true`.
         :param pulumi.Input[_builtins.bool] scale_up_from_zero: Should CA scale up when there 0 ready nodes. Default is `true`.
-        :param pulumi.Input[_builtins.str] scaler_type: The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
+        :param pulumi.Input[_builtins.str] scaler_type: The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`. When switching from `cluster-autoscaler` to `goatscaler`, all configuration parameters will be automatically migrated.
         :param pulumi.Input[_builtins.str] scan_interval: The interval at which the cluster is reevaluated for scaling. Default is `30s`.
         :param pulumi.Input[_builtins.bool] skip_nodes_with_local_storage: If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
         :param pulumi.Input[_builtins.bool] skip_nodes_with_system_pods: If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `true`.
-        :param pulumi.Input[_builtins.str] unneeded_duration: The unneeded duration. Default is `10m`.
-        :param pulumi.Input[_builtins.str] utilization_threshold: The scale-in threshold. Default is `0.5`.
+        :param pulumi.Input[_builtins.str] unneeded_duration: Specify the time interval during which autoscaler does not perform scale-in operations after the most recent scale-out completion. Nodes added through scale-out can only be considered for scale-in after the period has elapsed. Default is `10m`.
+        :param pulumi.Input[_builtins.str] utilization_threshold: The scale-in a threshold. Default is `0.5`.
         """
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
@@ -332,6 +350,8 @@ class _AutoscalingConfigState:
             pulumi.set(__self__, "max_graceful_termination_sec", max_graceful_termination_sec)
         if min_replica_count is not None:
             pulumi.set(__self__, "min_replica_count", min_replica_count)
+        if priorities is not None:
+            pulumi.set(__self__, "priorities", priorities)
         if recycle_node_deletion_enabled is not None:
             pulumi.set(__self__, "recycle_node_deletion_enabled", recycle_node_deletion_enabled)
         if scale_down_enabled is not None:
@@ -367,7 +387,7 @@ class _AutoscalingConfigState:
     @pulumi.getter(name="coolDownDuration")
     def cool_down_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The cool down duration. Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
+        Specify the time interval between detecting a scale-in requirement (when the threshold is reached) and actually executing the scale-in operation (reducing the number of Pods). Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
         """
         return pulumi.get(self, "cool_down_duration")
 
@@ -391,7 +411,7 @@ class _AutoscalingConfigState:
     @pulumi.getter
     def expander(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
+        The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For scaler type `goatscaler`, only the `least-waste` expander is currently supported. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
         """
         return pulumi.get(self, "expander")
 
@@ -436,6 +456,18 @@ class _AutoscalingConfigState:
         pulumi.set(self, "min_replica_count", value)
 
     @_builtins.property
+    @pulumi.getter
+    def priorities(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Priority settings for autoscaling node pool scaling groups. This parameter only takes effect when `expander` is set to `priority`. Only supports scaler type `cluster-autoscaler`. Uses key-value pairs where the key is the priority value, and the value is a comma-separated list of scaling group IDs. High numerical values indicate higher priority.
+        """
+        return pulumi.get(self, "priorities")
+
+    @priorities.setter
+    def priorities(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "priorities", value)
+
+    @_builtins.property
     @pulumi.getter(name="recycleNodeDeletionEnabled")
     def recycle_node_deletion_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -475,7 +507,7 @@ class _AutoscalingConfigState:
     @pulumi.getter(name="scalerType")
     def scaler_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
+        The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`. When switching from `cluster-autoscaler` to `goatscaler`, all configuration parameters will be automatically migrated.
         """
         return pulumi.get(self, "scaler_type")
 
@@ -523,7 +555,7 @@ class _AutoscalingConfigState:
     @pulumi.getter(name="unneededDuration")
     def unneeded_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The unneeded duration. Default is `10m`.
+        Specify the time interval during which autoscaler does not perform scale-in operations after the most recent scale-out completion. Nodes added through scale-out can only be considered for scale-in after the period has elapsed. Default is `10m`.
         """
         return pulumi.get(self, "unneeded_duration")
 
@@ -535,7 +567,7 @@ class _AutoscalingConfigState:
     @pulumi.getter(name="utilizationThreshold")
     def utilization_threshold(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The scale-in threshold. Default is `0.5`.
+        The scale-in a threshold. Default is `0.5`.
         """
         return pulumi.get(self, "utilization_threshold")
 
@@ -557,6 +589,7 @@ class AutoscalingConfig(pulumi.CustomResource):
                  gpu_utilization_threshold: Optional[pulumi.Input[_builtins.str]] = None,
                  max_graceful_termination_sec: Optional[pulumi.Input[_builtins.int]] = None,
                  min_replica_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 priorities: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  recycle_node_deletion_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  scale_down_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  scale_up_from_zero: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -578,24 +611,114 @@ class AutoscalingConfig(pulumi.CustomResource):
 
         > **NOTE:** From version 1.237.0, support for selecting the type of autoscaler by parameter `scaler_type`.
 
+        > **NOTE:** From version 1.256.0, support for setting the priority of scaling groups by parameter `priorities`.
+
+        ## Example Usage
+
+        If you do not have an existing cluster, you need to create an ACK cluster through cs.ManagedKubernetes first, and then configure automatic scaling.
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
+            cpu_core_count=4,
+            memory_size=8,
+            kubernetes_node_role="Worker",
+            system_disk_category="cloud_essd")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default.zones[0].id)
+        default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
+            name_prefix=name,
+            cluster_spec="ack.pro.small",
+            worker_vswitch_ids=[default_switch.id],
+            new_nat_gateway=True,
+            pod_cidr=std.cidrsubnet(input="10.0.0.0/8",
+                newbits=8,
+                netnum=36).result,
+            service_cidr=std.cidrsubnet(input="172.16.0.0/16",
+                newbits=4,
+                netnum=7).result,
+            slb_internet_enabled=True)
+        default_node_pool = []
+        for range in [{"value": i} for i in range(0, 3)]:
+            default_node_pool.append(alicloud.cs.NodePool(f"default-{range['value']}",
+                node_pool_name=std.format(input="%s-%d",
+                    args=[
+                        name,
+                        range["value"],
+                    ]).result,
+                cluster_id=default_managed_kubernetes.id,
+                vswitch_ids=[default_switch.id],
+                instance_types=[default_get_instance_types.instance_types[0].id],
+                system_disk_category="cloud_essd",
+                system_disk_size=40,
+                image_type="AliyunLinux3",
+                scaling_config={
+                    "enable": True,
+                    "min_size": 0,
+                    "max_size": 10,
+                }))
+        default_autoscaling_config = alicloud.cs.AutoscalingConfig("default",
+            cluster_id=default_managed_kubernetes.id,
+            cool_down_duration="10m",
+            unneeded_duration="10m",
+            utilization_threshold="0.5",
+            gpu_utilization_threshold="0.5",
+            scan_interval="30s",
+            scale_down_enabled=True,
+            expander="priority",
+            skip_nodes_with_system_pods=True,
+            skip_nodes_with_local_storage=False,
+            daemonset_eviction_for_nodes=False,
+            max_graceful_termination_sec=14400,
+            min_replica_count=0,
+            recycle_node_deletion_enabled=False,
+            scale_up_from_zero=True,
+            scaler_type="cluster-autoscaler",
+            priorities={
+                "10": std.join_output(separator=",",
+                    input=[
+                        default_node_pool[0].scaling_group_id,
+                        default_node_pool[1].scaling_group_id,
+                    ]).apply(lambda invoke: invoke.result),
+                "20": default_node_pool[2].scaling_group_id,
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The id of kubernetes cluster.
-        :param pulumi.Input[_builtins.str] cool_down_duration: The cool down duration. Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
+        :param pulumi.Input[_builtins.str] cool_down_duration: Specify the time interval between detecting a scale-in requirement (when the threshold is reached) and actually executing the scale-in operation (reducing the number of Pods). Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
         :param pulumi.Input[_builtins.bool] daemonset_eviction_for_nodes: If true DaemonSet pods will be  terminated from nodes. Default is `false`.
-        :param pulumi.Input[_builtins.str] expander: The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
+        :param pulumi.Input[_builtins.str] expander: The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For scaler type `goatscaler`, only the `least-waste` expander is currently supported. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
         :param pulumi.Input[_builtins.str] gpu_utilization_threshold: The scale-in threshold for GPU instance. Default is `0.5`.
         :param pulumi.Input[_builtins.int] max_graceful_termination_sec: Maximum number of seconds CA waits for pod termination when trying to scale down a node. Default is `14400`.
         :param pulumi.Input[_builtins.int] min_replica_count: Minimum number of replicas that a replica set or replication controller should have to allow their pods deletion in scale down. Default is `0`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] priorities: Priority settings for autoscaling node pool scaling groups. This parameter only takes effect when `expander` is set to `priority`. Only supports scaler type `cluster-autoscaler`. Uses key-value pairs where the key is the priority value, and the value is a comma-separated list of scaling group IDs. High numerical values indicate higher priority.
         :param pulumi.Input[_builtins.bool] recycle_node_deletion_enabled: Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
         :param pulumi.Input[_builtins.bool] scale_down_enabled: Specify whether to allow the scale-in of nodes. Default is `true`.
         :param pulumi.Input[_builtins.bool] scale_up_from_zero: Should CA scale up when there 0 ready nodes. Default is `true`.
-        :param pulumi.Input[_builtins.str] scaler_type: The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
+        :param pulumi.Input[_builtins.str] scaler_type: The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`. When switching from `cluster-autoscaler` to `goatscaler`, all configuration parameters will be automatically migrated.
         :param pulumi.Input[_builtins.str] scan_interval: The interval at which the cluster is reevaluated for scaling. Default is `30s`.
         :param pulumi.Input[_builtins.bool] skip_nodes_with_local_storage: If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
         :param pulumi.Input[_builtins.bool] skip_nodes_with_system_pods: If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `true`.
-        :param pulumi.Input[_builtins.str] unneeded_duration: The unneeded duration. Default is `10m`.
-        :param pulumi.Input[_builtins.str] utilization_threshold: The scale-in threshold. Default is `0.5`.
+        :param pulumi.Input[_builtins.str] unneeded_duration: Specify the time interval during which autoscaler does not perform scale-in operations after the most recent scale-out completion. Nodes added through scale-out can only be considered for scale-in after the period has elapsed. Default is `10m`.
+        :param pulumi.Input[_builtins.str] utilization_threshold: The scale-in a threshold. Default is `0.5`.
         """
         ...
     @overload
@@ -613,6 +736,95 @@ class AutoscalingConfig(pulumi.CustomResource):
         > **NOTE:** From version 1.164.0, support for selecting the policy for selecting which node pool to scale by parameter `expander`.
 
         > **NOTE:** From version 1.237.0, support for selecting the type of autoscaler by parameter `scaler_type`.
+
+        > **NOTE:** From version 1.256.0, support for setting the priority of scaling groups by parameter `priorities`.
+
+        ## Example Usage
+
+        If you do not have an existing cluster, you need to create an ACK cluster through cs.ManagedKubernetes first, and then configure automatic scaling.
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
+            cpu_core_count=4,
+            memory_size=8,
+            kubernetes_node_role="Worker",
+            system_disk_category="cloud_essd")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default.zones[0].id)
+        default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
+            name_prefix=name,
+            cluster_spec="ack.pro.small",
+            worker_vswitch_ids=[default_switch.id],
+            new_nat_gateway=True,
+            pod_cidr=std.cidrsubnet(input="10.0.0.0/8",
+                newbits=8,
+                netnum=36).result,
+            service_cidr=std.cidrsubnet(input="172.16.0.0/16",
+                newbits=4,
+                netnum=7).result,
+            slb_internet_enabled=True)
+        default_node_pool = []
+        for range in [{"value": i} for i in range(0, 3)]:
+            default_node_pool.append(alicloud.cs.NodePool(f"default-{range['value']}",
+                node_pool_name=std.format(input="%s-%d",
+                    args=[
+                        name,
+                        range["value"],
+                    ]).result,
+                cluster_id=default_managed_kubernetes.id,
+                vswitch_ids=[default_switch.id],
+                instance_types=[default_get_instance_types.instance_types[0].id],
+                system_disk_category="cloud_essd",
+                system_disk_size=40,
+                image_type="AliyunLinux3",
+                scaling_config={
+                    "enable": True,
+                    "min_size": 0,
+                    "max_size": 10,
+                }))
+        default_autoscaling_config = alicloud.cs.AutoscalingConfig("default",
+            cluster_id=default_managed_kubernetes.id,
+            cool_down_duration="10m",
+            unneeded_duration="10m",
+            utilization_threshold="0.5",
+            gpu_utilization_threshold="0.5",
+            scan_interval="30s",
+            scale_down_enabled=True,
+            expander="priority",
+            skip_nodes_with_system_pods=True,
+            skip_nodes_with_local_storage=False,
+            daemonset_eviction_for_nodes=False,
+            max_graceful_termination_sec=14400,
+            min_replica_count=0,
+            recycle_node_deletion_enabled=False,
+            scale_up_from_zero=True,
+            scaler_type="cluster-autoscaler",
+            priorities={
+                "10": std.join_output(separator=",",
+                    input=[
+                        default_node_pool[0].scaling_group_id,
+                        default_node_pool[1].scaling_group_id,
+                    ]).apply(lambda invoke: invoke.result),
+                "20": default_node_pool[2].scaling_group_id,
+            })
+        ```
 
         :param str resource_name: The name of the resource.
         :param AutoscalingConfigArgs args: The arguments to use to populate this resource's properties.
@@ -636,6 +848,7 @@ class AutoscalingConfig(pulumi.CustomResource):
                  gpu_utilization_threshold: Optional[pulumi.Input[_builtins.str]] = None,
                  max_graceful_termination_sec: Optional[pulumi.Input[_builtins.int]] = None,
                  min_replica_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 priorities: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  recycle_node_deletion_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  scale_down_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  scale_up_from_zero: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -661,6 +874,7 @@ class AutoscalingConfig(pulumi.CustomResource):
             __props__.__dict__["gpu_utilization_threshold"] = gpu_utilization_threshold
             __props__.__dict__["max_graceful_termination_sec"] = max_graceful_termination_sec
             __props__.__dict__["min_replica_count"] = min_replica_count
+            __props__.__dict__["priorities"] = priorities
             __props__.__dict__["recycle_node_deletion_enabled"] = recycle_node_deletion_enabled
             __props__.__dict__["scale_down_enabled"] = scale_down_enabled
             __props__.__dict__["scale_up_from_zero"] = scale_up_from_zero
@@ -687,6 +901,7 @@ class AutoscalingConfig(pulumi.CustomResource):
             gpu_utilization_threshold: Optional[pulumi.Input[_builtins.str]] = None,
             max_graceful_termination_sec: Optional[pulumi.Input[_builtins.int]] = None,
             min_replica_count: Optional[pulumi.Input[_builtins.int]] = None,
+            priorities: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             recycle_node_deletion_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             scale_down_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             scale_up_from_zero: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -704,21 +919,22 @@ class AutoscalingConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The id of kubernetes cluster.
-        :param pulumi.Input[_builtins.str] cool_down_duration: The cool down duration. Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
+        :param pulumi.Input[_builtins.str] cool_down_duration: Specify the time interval between detecting a scale-in requirement (when the threshold is reached) and actually executing the scale-in operation (reducing the number of Pods). Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
         :param pulumi.Input[_builtins.bool] daemonset_eviction_for_nodes: If true DaemonSet pods will be  terminated from nodes. Default is `false`.
-        :param pulumi.Input[_builtins.str] expander: The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
+        :param pulumi.Input[_builtins.str] expander: The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For scaler type `goatscaler`, only the `least-waste` expander is currently supported. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
         :param pulumi.Input[_builtins.str] gpu_utilization_threshold: The scale-in threshold for GPU instance. Default is `0.5`.
         :param pulumi.Input[_builtins.int] max_graceful_termination_sec: Maximum number of seconds CA waits for pod termination when trying to scale down a node. Default is `14400`.
         :param pulumi.Input[_builtins.int] min_replica_count: Minimum number of replicas that a replica set or replication controller should have to allow their pods deletion in scale down. Default is `0`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] priorities: Priority settings for autoscaling node pool scaling groups. This parameter only takes effect when `expander` is set to `priority`. Only supports scaler type `cluster-autoscaler`. Uses key-value pairs where the key is the priority value, and the value is a comma-separated list of scaling group IDs. High numerical values indicate higher priority.
         :param pulumi.Input[_builtins.bool] recycle_node_deletion_enabled: Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
         :param pulumi.Input[_builtins.bool] scale_down_enabled: Specify whether to allow the scale-in of nodes. Default is `true`.
         :param pulumi.Input[_builtins.bool] scale_up_from_zero: Should CA scale up when there 0 ready nodes. Default is `true`.
-        :param pulumi.Input[_builtins.str] scaler_type: The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
+        :param pulumi.Input[_builtins.str] scaler_type: The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`. When switching from `cluster-autoscaler` to `goatscaler`, all configuration parameters will be automatically migrated.
         :param pulumi.Input[_builtins.str] scan_interval: The interval at which the cluster is reevaluated for scaling. Default is `30s`.
         :param pulumi.Input[_builtins.bool] skip_nodes_with_local_storage: If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
         :param pulumi.Input[_builtins.bool] skip_nodes_with_system_pods: If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `true`.
-        :param pulumi.Input[_builtins.str] unneeded_duration: The unneeded duration. Default is `10m`.
-        :param pulumi.Input[_builtins.str] utilization_threshold: The scale-in threshold. Default is `0.5`.
+        :param pulumi.Input[_builtins.str] unneeded_duration: Specify the time interval during which autoscaler does not perform scale-in operations after the most recent scale-out completion. Nodes added through scale-out can only be considered for scale-in after the period has elapsed. Default is `10m`.
+        :param pulumi.Input[_builtins.str] utilization_threshold: The scale-in a threshold. Default is `0.5`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -731,6 +947,7 @@ class AutoscalingConfig(pulumi.CustomResource):
         __props__.__dict__["gpu_utilization_threshold"] = gpu_utilization_threshold
         __props__.__dict__["max_graceful_termination_sec"] = max_graceful_termination_sec
         __props__.__dict__["min_replica_count"] = min_replica_count
+        __props__.__dict__["priorities"] = priorities
         __props__.__dict__["recycle_node_deletion_enabled"] = recycle_node_deletion_enabled
         __props__.__dict__["scale_down_enabled"] = scale_down_enabled
         __props__.__dict__["scale_up_from_zero"] = scale_up_from_zero
@@ -754,7 +971,7 @@ class AutoscalingConfig(pulumi.CustomResource):
     @pulumi.getter(name="coolDownDuration")
     def cool_down_duration(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The cool down duration. Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
+        Specify the time interval between detecting a scale-in requirement (when the threshold is reached) and actually executing the scale-in operation (reducing the number of Pods). Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
         """
         return pulumi.get(self, "cool_down_duration")
 
@@ -770,7 +987,7 @@ class AutoscalingConfig(pulumi.CustomResource):
     @pulumi.getter
     def expander(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
+        The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For scaler type `goatscaler`, only the `least-waste` expander is currently supported. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
         """
         return pulumi.get(self, "expander")
 
@@ -797,6 +1014,14 @@ class AutoscalingConfig(pulumi.CustomResource):
         Minimum number of replicas that a replica set or replication controller should have to allow their pods deletion in scale down. Default is `0`.
         """
         return pulumi.get(self, "min_replica_count")
+
+    @_builtins.property
+    @pulumi.getter
+    def priorities(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        Priority settings for autoscaling node pool scaling groups. This parameter only takes effect when `expander` is set to `priority`. Only supports scaler type `cluster-autoscaler`. Uses key-value pairs where the key is the priority value, and the value is a comma-separated list of scaling group IDs. High numerical values indicate higher priority.
+        """
+        return pulumi.get(self, "priorities")
 
     @_builtins.property
     @pulumi.getter(name="recycleNodeDeletionEnabled")
@@ -826,7 +1051,7 @@ class AutoscalingConfig(pulumi.CustomResource):
     @pulumi.getter(name="scalerType")
     def scaler_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
+        The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`. When switching from `cluster-autoscaler` to `goatscaler`, all configuration parameters will be automatically migrated.
         """
         return pulumi.get(self, "scaler_type")
 
@@ -858,7 +1083,7 @@ class AutoscalingConfig(pulumi.CustomResource):
     @pulumi.getter(name="unneededDuration")
     def unneeded_duration(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The unneeded duration. Default is `10m`.
+        Specify the time interval during which autoscaler does not perform scale-in operations after the most recent scale-out completion. Nodes added through scale-out can only be considered for scale-in after the period has elapsed. Default is `10m`.
         """
         return pulumi.get(self, "unneeded_duration")
 
@@ -866,7 +1091,7 @@ class AutoscalingConfig(pulumi.CustomResource):
     @pulumi.getter(name="utilizationThreshold")
     def utilization_threshold(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The scale-in threshold. Default is `0.5`.
+        The scale-in a threshold. Default is `0.5`.
         """
         return pulumi.get(self, "utilization_threshold")
 

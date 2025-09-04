@@ -21,6 +21,174 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.212.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.CidrsubnetArgs;
+ * import com.pulumi.alicloud.ecs.SnapshotPolicy;
+ * import com.pulumi.alicloud.ecs.SnapshotPolicyArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.cs.ManagedKubernetes;
+ * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+ * import com.pulumi.alicloud.ecs.KeyPair;
+ * import com.pulumi.alicloud.ecs.KeyPairArgs;
+ * import com.pulumi.alicloud.cs.NodePool;
+ * import com.pulumi.alicloud.cs.NodePoolArgs;
+ * import com.pulumi.alicloud.arms.Environment;
+ * import com.pulumi.alicloud.arms.EnvironmentArgs;
+ * import com.pulumi.alicloud.arms.EnvServiceMonitor;
+ * import com.pulumi.alicloud.arms.EnvServiceMonitorArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+ *             .build());
+ * 
+ *         var vpc = new Network("vpc", NetworkArgs.builder()
+ *             .description(name)
+ *             .cidrBlock("192.168.0.0/16")
+ *             .vpcName(name)
+ *             .build());
+ * 
+ *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
+ *             .description(name)
+ *             .vpcId(vpc.id())
+ *             .vswitchName(name)
+ *             .zoneId(enhanced.zones()[0].zoneId())
+ *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+ *                 .input(_cidrBlock)
+ *                 .newbits(8)
+ *                 .netnum(8)
+ *                 .build())).applyValue(_invoke -> _invoke.result()))
+ *             .build());
+ * 
+ *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
+ *             .name(name)
+ *             .repeatWeekdays(            
+ *                 "1",
+ *                 "2",
+ *                 "3")
+ *             .retentionDays(-1)
+ *             .timePoints(            
+ *                 "1",
+ *                 "22",
+ *                 "23")
+ *             .build());
+ * 
+ *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(_zoneId)
+ *             .cpuCoreCount(2)
+ *             .memorySize(4)
+ *             .kubernetesNodeRole("Worker")
+ *             .instanceTypeFamily("ecs.n1")
+ *             .build()));
+ * 
+ *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+ *             .name(String.format("terraform-example-%s", defaultInteger.result()))
+ *             .clusterSpec("ack.pro.small")
+ *             .version("1.24.6-aliyun.1")
+ *             .newNatGateway(true)
+ *             .nodeCidrMask(26)
+ *             .proxyMode("ipvs")
+ *             .serviceCidr("172.23.0.0/16")
+ *             .podCidr("10.95.0.0/16")
+ *             .workerVswitchIds(vswitch.id())
+ *             .build());
+ * 
+ *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
+ *             .keyPairName(String.format("terraform-example-%s", defaultInteger.result()))
+ *             .build());
+ * 
+ *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
+ *             .nodePoolName("desired_size")
+ *             .clusterId(defaultManagedKubernetes.id())
+ *             .vswitchIds(vswitch.id())
+ *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+ *             .systemDiskCategory("cloud_efficiency")
+ *             .systemDiskSize(40)
+ *             .keyName(defaultKeyPair.keyPairName())
+ *             .desiredSize("2")
+ *             .build());
+ * 
+ *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
+ *             .bindResourceId(defaultNodePool.clusterId())
+ *             .environmentSubType("ManagedKubernetes")
+ *             .environmentType("CS")
+ *             .environmentName(String.format("terraform-example-%s", defaultInteger.result()))
+ *             .build());
+ * 
+ *         var defaultEnvServiceMonitor = new EnvServiceMonitor("defaultEnvServiceMonitor", EnvServiceMonitorArgs.builder()
+ *             .environmentId(defaultEnvironment.id())
+ *             .configYaml("""
+ * apiVersion: monitoring.coreos.com/v1
+ * kind: ServiceMonitor
+ * metadata:
+ *   name: arms-admin1
+ *   namespace: arms-prom
+ *   annotations:
+ *     arms.prometheus.io/discovery: 'true'
+ *     o11y.aliyun.com/addon-name: mysql
+ *     o11y.aliyun.com/addon-version: 1.0.1
+ *     o11y.aliyun.com/release-name: mysql1
+ * spec:
+ *   endpoints:
+ *   - interval: 30s
+ *     port: operator
+ *     path: /metrics
+ *   - interval: 10s
+ *     port: operator1
+ *     path: /metrics
+ *   namespaceSelector:
+ *     any: true
+ *   selector:
+ *     matchLabels:
+ *      app: arms-prometheus-ack-arms-prometheus
+ *             """)
+ *             .aliyunLang("zh")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * ARMS Env Service Monitor can be imported using the id, e.g.

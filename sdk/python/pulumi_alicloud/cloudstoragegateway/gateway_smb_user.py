@@ -142,6 +142,52 @@ class GatewaySmbUser(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.142.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_uuid = random.index.Uuid("default")
+        default_storage_bundle = alicloud.cloudstoragegateway.StorageBundle("default", storage_bundle_name=std.substr(input=f"tf-example-{std.replace(text=default_uuid['result'],
+                search='-',
+                replace='').result}",
+            offset=0,
+            length=16).result)
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="172.16.0.0/12")
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_switch = alicloud.vpc.Switch("default",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/21",
+            zone_id=default.zones[0].id,
+            vswitch_name=name)
+        default_gateway = alicloud.cloudstoragegateway.Gateway("default",
+            gateway_name=name,
+            description=name,
+            gateway_class="Standard",
+            type="File",
+            payment_type="PayAsYouGo",
+            vswitch_id=default_switch.id,
+            release_after_expiration=False,
+            public_network_bandwidth=40,
+            storage_bundle_id=default_storage_bundle.id,
+            location="Cloud")
+        default_gateway_smb_user = alicloud.cloudstoragegateway.GatewaySmbUser("default",
+            username="example_username",
+            password="password",
+            gateway_id=default_gateway.id)
+        ```
+
         ## Import
 
         Cloud Storage Gateway Gateway SMB User can be imported using the id, e.g.
@@ -168,6 +214,52 @@ class GatewaySmbUser(pulumi.CustomResource):
         For information about Cloud Storage Gateway Gateway SMB User and how to use it, see [What is Gateway SMB User](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/creategatewaysmbuser).
 
         > **NOTE:** Available since v1.142.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_uuid = random.index.Uuid("default")
+        default_storage_bundle = alicloud.cloudstoragegateway.StorageBundle("default", storage_bundle_name=std.substr(input=f"tf-example-{std.replace(text=default_uuid['result'],
+                search='-',
+                replace='').result}",
+            offset=0,
+            length=16).result)
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="172.16.0.0/12")
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_switch = alicloud.vpc.Switch("default",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/21",
+            zone_id=default.zones[0].id,
+            vswitch_name=name)
+        default_gateway = alicloud.cloudstoragegateway.Gateway("default",
+            gateway_name=name,
+            description=name,
+            gateway_class="Standard",
+            type="File",
+            payment_type="PayAsYouGo",
+            vswitch_id=default_switch.id,
+            release_after_expiration=False,
+            public_network_bandwidth=40,
+            storage_bundle_id=default_storage_bundle.id,
+            location="Cloud")
+        default_gateway_smb_user = alicloud.cloudstoragegateway.GatewaySmbUser("default",
+            username="example_username",
+            password="password",
+            gateway_id=default_gateway.id)
+        ```
 
         ## Import
 

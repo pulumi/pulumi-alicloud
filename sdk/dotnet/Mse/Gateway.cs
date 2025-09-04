@@ -16,6 +16,69 @@ namespace Pulumi.AliCloud.Mse
     /// 
     /// &gt; **NOTE:** Available since v1.157.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
+    ///     {
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var exampleSwitch = new List&lt;AliCloud.Vpc.Switch&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         exampleSwitch.Add(new AliCloud.Vpc.Switch($"example-{range.Value}", new()
+    ///         {
+    ///             VpcId = exampleNetwork.Id,
+    ///             CidrBlock = Std.Format.Invoke(new()
+    ///             {
+    ///                 Input = "172.16.%d.0/21",
+    ///                 Args = new[]
+    ///                 {
+    ///                     (range.Value + 1) * 16,
+    ///                 },
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///             ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones)[range.Value].Id,
+    ///             VswitchName = Std.Format.Invoke(new()
+    ///             {
+    ///                 Input = "terraform_example_%d",
+    ///                 Args = new[]
+    ///                 {
+    ///                     range.Value + 1,
+    ///                 },
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///         }));
+    ///     }
+    ///     var exampleGateway = new AliCloud.Mse.Gateway("example", new()
+    ///     {
+    ///         GatewayName = "terraform-example",
+    ///         Replica = 2,
+    ///         Spec = "MSE_GTW_2_4_200_c",
+    ///         VswitchId = exampleSwitch[0].Id,
+    ///         BackupVswitchId = exampleSwitch[1].Id,
+    ///         VpcId = exampleNetwork.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Microservice Engine (MSE) Gateway can be imported using the id, e.g.

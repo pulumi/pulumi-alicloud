@@ -14,6 +14,99 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// Basic Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///     });
+    /// 
+    ///     var defaultManagedKubernetes = new AliCloud.CS.ManagedKubernetes("default", new()
+    ///     {
+    ///         NamePrefix = name,
+    ///         ClusterSpec = "ack.pro.small",
+    ///         WorkerVswitchIds = new[]
+    ///         {
+    ///             defaultSwitch.Id,
+    ///         },
+    ///         NewNatGateway = false,
+    ///         PodCidr = Std.Cidrsubnet.Invoke(new()
+    ///         {
+    ///             Input = "10.0.0.0/8",
+    ///             Newbits = 8,
+    ///             Netnum = 36,
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         ServiceCidr = Std.Cidrsubnet.Invoke(new()
+    ///         {
+    ///             Input = "172.16.0.0/16",
+    ///             Newbits = 4,
+    ///             Netnum = 7,
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         SlbInternetEnabled = true,
+    ///         Addons = new[]
+    ///         {
+    ///             new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
+    ///             {
+    ///                 Name = "logtail-ds",
+    ///                 Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["IngressDashboardEnabled"] = "true",
+    ///                 }),
+    ///                 Disabled = false,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // data source provides the information of available addons
+    ///     var defaultGetKubernetesAddons = AliCloud.CS.GetKubernetesAddons.Invoke(new()
+    ///     {
+    ///         ClusterId = defaultManagedKubernetes.Id,
+    ///         NameRegex = "logtail-ds",
+    ///     });
+    /// 
+    ///     // Manage addon resource
+    ///     var logtail_ds = new AliCloud.CS.KubernetesAddon("logtail-ds", new()
+    ///     {
+    ///         ClusterId = defaultManagedKubernetes.Id,
+    ///         Name = "logtail-ds",
+    ///         Version = "v1.6.0.0-aliyun",
+    ///         Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///         }),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// **Installing of addon**
+    /// When a cluster is created, some system addons and those specified at the time of cluster creation will be installed, so when an addon resource is applied:
+    /// * If the addon already exists in the cluster and its version is the same as the specified version, it will be skipped and will not be reinstalled.
+    /// * If the addon already exists in the cluster and its version is different from the specified version, the addon will be upgraded.
+    /// * If the addon does not exist in the cluster, it will be installed.
+    /// 
     /// ## Import
     /// 
     /// Cluster addon can be imported by cluster id and addon name. Then write the addon.tf file according to the result of `pulumi preview`.

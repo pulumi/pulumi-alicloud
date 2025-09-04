@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Kms
         /// <summary>
         /// This data source provides a list of KMS aliases in an Alibaba Cloud account according to the specified filters.
         ///  
-        /// &gt; **NOTE:** Available in v1.79.0+.
+        /// &gt; **NOTE:** Available since v1.79.0.
         /// 
         /// ## Example Usage
         /// 
@@ -33,12 +33,12 @@ namespace Pulumi.AliCloud.Kms
         ///         {
         ///             "d89e8a53-b708-41aa-8c67-6873axxx",
         ///         },
-        ///         NameRegex = "alias/tf-testKmsAlias_123",
+        ///         NameRegex = "alias/tf-example",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstKeyId"] = kmsKeysDs.Keys[0].Id,
+        ///         ["firstKeyId"] = kmsAliases.Apply(getAliasesResult =&gt; getAliasesResult.Aliases[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Kms
         /// <summary>
         /// This data source provides a list of KMS aliases in an Alibaba Cloud account according to the specified filters.
         ///  
-        /// &gt; **NOTE:** Available in v1.79.0+.
+        /// &gt; **NOTE:** Available since v1.79.0.
         /// 
         /// ## Example Usage
         /// 
@@ -68,12 +68,12 @@ namespace Pulumi.AliCloud.Kms
         ///         {
         ///             "d89e8a53-b708-41aa-8c67-6873axxx",
         ///         },
-        ///         NameRegex = "alias/tf-testKmsAlias_123",
+        ///         NameRegex = "alias/tf-example",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstKeyId"] = kmsKeysDs.Keys[0].Id,
+        ///         ["firstKeyId"] = kmsAliases.Apply(getAliasesResult =&gt; getAliasesResult.Aliases[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Kms
         /// <summary>
         /// This data source provides a list of KMS aliases in an Alibaba Cloud account according to the specified filters.
         ///  
-        /// &gt; **NOTE:** Available in v1.79.0+.
+        /// &gt; **NOTE:** Available since v1.79.0.
         /// 
         /// ## Example Usage
         /// 
@@ -103,12 +103,12 @@ namespace Pulumi.AliCloud.Kms
         ///         {
         ///             "d89e8a53-b708-41aa-8c67-6873axxx",
         ///         },
-        ///         NameRegex = "alias/tf-testKmsAlias_123",
+        ///         NameRegex = "alias/tf-example",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstKeyId"] = kmsKeysDs.Keys[0].Id,
+        ///         ["firstKeyId"] = kmsAliases.Apply(getAliasesResult =&gt; getAliasesResult.Aliases[0]?.Id),
         ///     };
         /// });
         /// ```

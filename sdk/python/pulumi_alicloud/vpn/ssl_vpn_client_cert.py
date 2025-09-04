@@ -189,6 +189,47 @@ class SslVpnClientCert(pulumi.CustomResource):
 
         Basic Usage
 
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$",
+            cidr_block="172.16.0.0/16")
+        default0 = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=default.ids[0])
+        default1 = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=default.ids[1])
+        default_gateway = alicloud.vpn.Gateway("default",
+            vpn_gateway_name=name,
+            vpc_id=default_get_networks.ids[0],
+            bandwidth=10,
+            enable_ssl=True,
+            description=name,
+            payment_type="Subscription",
+            vswitch_id=default0.ids[0],
+            disaster_recovery_vswitch_id=default1.ids[0])
+        default_ssl_vpn_server = alicloud.vpn.SslVpnServer("default",
+            name=name,
+            vpn_gateway_id=default_gateway.id,
+            client_ip_pool="192.168.0.0/16",
+            local_subnet=std.cidrsubnet(input=default_get_networks.vpcs[0].cidr_block,
+                newbits=8,
+                netnum=8).result,
+            protocol="UDP",
+            cipher="AES-128-CBC",
+            port=1194,
+            compress=False)
+        default_ssl_vpn_client_cert = alicloud.vpn.SslVpnClientCert("default",
+            ssl_vpn_server_id=default_ssl_vpn_server.id,
+            name=name)
+        ```
+
         ## Import
 
         SSL-VPN client certificates can be imported using the id, e.g.
@@ -212,6 +253,47 @@ class SslVpnClientCert(pulumi.CustomResource):
         ## Example Usage
 
         Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$",
+            cidr_block="172.16.0.0/16")
+        default0 = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=default.ids[0])
+        default1 = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=default.ids[1])
+        default_gateway = alicloud.vpn.Gateway("default",
+            vpn_gateway_name=name,
+            vpc_id=default_get_networks.ids[0],
+            bandwidth=10,
+            enable_ssl=True,
+            description=name,
+            payment_type="Subscription",
+            vswitch_id=default0.ids[0],
+            disaster_recovery_vswitch_id=default1.ids[0])
+        default_ssl_vpn_server = alicloud.vpn.SslVpnServer("default",
+            name=name,
+            vpn_gateway_id=default_gateway.id,
+            client_ip_pool="192.168.0.0/16",
+            local_subnet=std.cidrsubnet(input=default_get_networks.vpcs[0].cidr_block,
+                newbits=8,
+                netnum=8).result,
+            protocol="UDP",
+            cipher="AES-128-CBC",
+            port=1194,
+            compress=False)
+        default_ssl_vpn_client_cert = alicloud.vpn.SslVpnClientCert("default",
+            ssl_vpn_server_id=default_ssl_vpn_server.id,
+            name=name)
+        ```
 
         ## Import
 

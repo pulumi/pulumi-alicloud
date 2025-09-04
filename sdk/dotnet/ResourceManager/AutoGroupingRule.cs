@@ -39,27 +39,27 @@ namespace Pulumi.AliCloud.ResourceManager
     ///             new AliCloud.ResourceManager.Inputs.AutoGroupingRuleRuleContentArgs
     ///             {
     ///                 TargetResourceGroupCondition = @"    {
-    ///         ""children"": [
+    ///         \""children\"": [
     ///       {
-    ///         ""desired"": ""rg-aek*****sbvy"",
-    ///         ""featurePath"": ""$.resourceGroupId"",
-    ///         ""featureSource"": ""RESOURCE"",
-    ///         ""operator"": ""StringEquals""
+    ///         \""desired\"": \""rg-aek*****sbvy\"",
+    ///         \""featurePath\"": \""$.resourceGroupId\"",
+    ///         \""featureSource\"": \""RESOURCE\"",
+    ///         \""operator\"": \""StringEquals\""
     ///       }
     ///         ],
-    ///         ""operator"": ""and""
+    ///         \""operator\"": \""and\""
     ///     }
     /// ",
     ///                 AutoGroupingScopeCondition = @"    {
-    ///         ""children"": [
+    ///         \""children\"": [
     ///       {
-    ///         ""desired"": ""name_a"",
-    ///         ""featurePath"": ""$.resourceName"",
-    ///         ""featureSource"": ""RESOURCE"",
-    ///         ""operator"": ""StringEqualsAny""
+    ///         \""desired\"": \""name_a\"",
+    ///         \""featurePath\"": \""$.resourceName\"",
+    ///         \""featureSource\"": \""RESOURCE\"",
+    ///         \""operator\"": \""StringEqualsAny\""
     ///       }
     ///         ],
-    ///         ""operator"": ""and""
+    ///         \""operator\"": \""and\""
     ///     }
     /// ",
     ///             },

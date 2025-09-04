@@ -165,14 +165,14 @@ public class VpcEndpointService extends com.pulumi.resources.CustomResource {
         return this.payer;
     }
     /**
-     * (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+     * The ID of the region to which the endpoint service belongs.
      * 
      */
     @Export(name="regionId", refs={String.class}, tree="[0]")
     private Output<String> regionId;
 
     /**
-     * @return (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+     * @return The ID of the region to which the endpoint service belongs.
      * 
      */
     public Output<String> regionId() {
@@ -235,14 +235,14 @@ public class VpcEndpointService extends com.pulumi.resources.CustomResource {
         return this.serviceDomain;
     }
     /**
-     * Service resource type, value:
+     * The service resource type. Value:
      * 
      */
     @Export(name="serviceResourceType", refs={String.class}, tree="[0]")
     private Output<String> serviceResourceType;
 
     /**
-     * @return Service resource type, value:
+     * @return The service resource type. Value:
      * 
      */
     public Output<String> serviceResourceType() {

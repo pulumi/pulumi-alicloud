@@ -16,10 +16,16 @@ from .env_feature import *
 from .env_pod_monitor import *
 from .env_service_monitor import *
 from .environment import *
+from .get_addon_releases import *
 from .get_alert_contact_groups import *
 from .get_alert_contacts import *
 from .get_alert_robots import *
 from .get_dispatch_rules import *
+from .get_env_custom_jobs import *
+from .get_env_features import *
+from .get_env_pod_monitors import *
+from .get_env_service_monitors import *
+from .get_environments import *
 from .get_integration_exporters import *
 from .get_prometheis import *
 from .get_prometheus import *

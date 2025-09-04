@@ -342,6 +342,63 @@ class DataFlow(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.153.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        example = alicloud.nas.get_zones(file_system_type="cpfs")
+        example_network = alicloud.vpc.Network("example",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        example_switch = alicloud.vpc.Switch("example",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=example_network.id,
+            zone_id=example.zones[1].zone_id)
+        example_file_system = alicloud.nas.FileSystem("example",
+            protocol_type="cpfs",
+            storage_type="advance_200",
+            file_system_type="cpfs",
+            capacity=3600,
+            description="terraform-example",
+            zone_id=example.zones[1].zone_id,
+            vpc_id=example_network.id,
+            vswitch_id=example_switch.id)
+        example_mount_target = alicloud.nas.MountTarget("example",
+            file_system_id=example_file_system.id,
+            vswitch_id=example_switch.id)
+        example_integer = random.index.Integer("example",
+            max=99999,
+            min=10000)
+        example_bucket = alicloud.oss.Bucket("example",
+            bucket=f"example-value-{example_integer['result']}",
+            acl="private",
+            tags={
+                "cpfs-dataflow": "true",
+            })
+        example_fileset = alicloud.nas.Fileset("example",
+            file_system_id=example_mount_target.file_system_id,
+            description="terraform-example",
+            file_system_path="/example_path/")
+        example_data_flow = alicloud.nas.DataFlow("example",
+            fset_id=example_fileset.fileset_id,
+            description="terraform-example",
+            file_system_id=example_file_system.id,
+            source_security_type="SSL",
+            source_storage=std.join_output(separator="",
+                input=[
+                    "oss://",
+                    example_bucket.bucket,
+                ]).apply(lambda invoke: invoke.result),
+            throughput=600)
+        ```
+
         ## Import
 
         File Storage (NAS) Data Flow can be imported using the id, e.g.
@@ -378,6 +435,63 @@ class DataFlow(pulumi.CustomResource):
         For information about File Storage (NAS) Data Flow and how to use it, see [What is Data Flow](https://www.alibabacloud.com/help/en/doc-detail/27530.html).
 
         > **NOTE:** Available since v1.153.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        example = alicloud.nas.get_zones(file_system_type="cpfs")
+        example_network = alicloud.vpc.Network("example",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        example_switch = alicloud.vpc.Switch("example",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=example_network.id,
+            zone_id=example.zones[1].zone_id)
+        example_file_system = alicloud.nas.FileSystem("example",
+            protocol_type="cpfs",
+            storage_type="advance_200",
+            file_system_type="cpfs",
+            capacity=3600,
+            description="terraform-example",
+            zone_id=example.zones[1].zone_id,
+            vpc_id=example_network.id,
+            vswitch_id=example_switch.id)
+        example_mount_target = alicloud.nas.MountTarget("example",
+            file_system_id=example_file_system.id,
+            vswitch_id=example_switch.id)
+        example_integer = random.index.Integer("example",
+            max=99999,
+            min=10000)
+        example_bucket = alicloud.oss.Bucket("example",
+            bucket=f"example-value-{example_integer['result']}",
+            acl="private",
+            tags={
+                "cpfs-dataflow": "true",
+            })
+        example_fileset = alicloud.nas.Fileset("example",
+            file_system_id=example_mount_target.file_system_id,
+            description="terraform-example",
+            file_system_path="/example_path/")
+        example_data_flow = alicloud.nas.DataFlow("example",
+            fset_id=example_fileset.fileset_id,
+            description="terraform-example",
+            file_system_id=example_file_system.id,
+            source_security_type="SSL",
+            source_storage=std.join_output(separator="",
+                input=[
+                    "oss://",
+                    example_bucket.bucket,
+                ]).apply(lambda invoke: invoke.result),
+            throughput=600)
+        ```
 
         ## Import
 

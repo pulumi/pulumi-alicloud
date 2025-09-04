@@ -10,15 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Wafv3
 {
     /// <summary>
-    /// Provides a Wafv3 Domain resource.
+    /// Provides a WAFV3 Domain resource.
     /// 
-    /// For information about Wafv3 Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-waf-openapi-2021-10-01-createdomain).
+    /// For information about WAFV3 Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-waf-openapi-2021-10-01-createdomain).
     /// 
     /// &gt; **NOTE:** Available since v1.200.0.
     /// 
     /// ## Import
     /// 
-    /// Wafv3 Domain can be imported using the id, e.g.
+    /// WAFV3 Domain can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:wafv3/domain:Domain example &lt;instance_id&gt;:&lt;domain&gt;
@@ -28,7 +28,8 @@ namespace Pulumi.AliCloud.Wafv3
     public partial class Domain : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The access type of the WAF instance. Value: **share** (default): CNAME access.
+        /// The mode in which the domain name is added to WAF. Valid values:
+        /// share: CNAME record mode. This is the default value.
         /// </summary>
         [Output("accessType")]
         public Output<string?> AccessType { get; private set; } = null!;
@@ -40,7 +41,13 @@ namespace Pulumi.AliCloud.Wafv3
         public Output<string> DomainName { get; private set; } = null!;
 
         /// <summary>
-        /// WAF instance ID
+        /// The domain ID.
+        /// </summary>
+        [Output("domainId")]
+        public Output<string> DomainId { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the Web Application Firewall (WAF) instance.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
@@ -58,16 +65,22 @@ namespace Pulumi.AliCloud.Wafv3
         public Output<Outputs.DomainRedirect> Redirect { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the resource group.
+        /// The ID of the Alibaba Cloud resource group.
         /// </summary>
         [Output("resourceManagerResourceGroupId")]
         public Output<string> ResourceManagerResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the domain name.
         /// </summary>
         [Output("status")]
-        public Output<string> Status { get; private set; } = null!;
+        public Output<int> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The tags. You can specify up to 20 tags.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -116,7 +129,8 @@ namespace Pulumi.AliCloud.Wafv3
     public sealed class DomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access type of the WAF instance. Value: **share** (default): CNAME access.
+        /// The mode in which the domain name is added to WAF. Valid values:
+        /// share: CNAME record mode. This is the default value.
         /// </summary>
         [Input("accessType")]
         public Input<string>? AccessType { get; set; }
@@ -128,7 +142,7 @@ namespace Pulumi.AliCloud.Wafv3
         public Input<string> DomainName { get; set; } = null!;
 
         /// <summary>
-        /// WAF instance ID
+        /// The ID of the Web Application Firewall (WAF) instance.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
@@ -145,6 +159,24 @@ namespace Pulumi.AliCloud.Wafv3
         [Input("redirect", required: true)]
         public Input<Inputs.DomainRedirectArgs> Redirect { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the Alibaba Cloud resource group.
+        /// </summary>
+        [Input("resourceManagerResourceGroupId")]
+        public Input<string>? ResourceManagerResourceGroupId { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tags. You can specify up to 20 tags.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
         public DomainArgs()
         {
         }
@@ -154,7 +186,8 @@ namespace Pulumi.AliCloud.Wafv3
     public sealed class DomainState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access type of the WAF instance. Value: **share** (default): CNAME access.
+        /// The mode in which the domain name is added to WAF. Valid values:
+        /// share: CNAME record mode. This is the default value.
         /// </summary>
         [Input("accessType")]
         public Input<string>? AccessType { get; set; }
@@ -166,7 +199,13 @@ namespace Pulumi.AliCloud.Wafv3
         public Input<string>? DomainName { get; set; }
 
         /// <summary>
-        /// WAF instance ID
+        /// The domain ID.
+        /// </summary>
+        [Input("domainId")]
+        public Input<string>? DomainId { get; set; }
+
+        /// <summary>
+        /// The ID of the Web Application Firewall (WAF) instance.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
@@ -184,16 +223,28 @@ namespace Pulumi.AliCloud.Wafv3
         public Input<Inputs.DomainRedirectGetArgs>? Redirect { get; set; }
 
         /// <summary>
-        /// The ID of the resource group.
+        /// The ID of the Alibaba Cloud resource group.
         /// </summary>
         [Input("resourceManagerResourceGroupId")]
         public Input<string>? ResourceManagerResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the domain name.
         /// </summary>
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public Input<int>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tags. You can specify up to 20 tags.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         public DomainState()
         {

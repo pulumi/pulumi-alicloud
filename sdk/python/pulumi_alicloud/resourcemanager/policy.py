@@ -213,14 +213,14 @@ class Policy(pulumi.CustomResource):
             name = "tfexample"
         example = alicloud.resourcemanager.Policy("example",
             policy_name=name,
-            policy_document=\"\"\"\\x09\\x09{
-        \\x09\\x09\\x09"Statement": [{
-        \\x09\\x09\\x09\\x09"Action": ["oss:*"],
-        \\x09\\x09\\x09\\x09"Effect": "Allow",
-        \\x09\\x09\\x09\\x09"Resource": ["acs:oss:*:*:*"]
-        \\x09\\x09\\x09}],
-        \\x09\\x09\\x09"Version": "1"
-        \\x09\\x09}
+            policy_document=\"\"\"\\t\\t{
+        \\t\\t\\t\\"Statement\\": [{
+        \\t\\t\\t\\t\\"Action\\": [\\"oss:*\\"],
+        \\t\\t\\t\\t\\"Effect\\": \\"Allow\\",
+        \\t\\t\\t\\t\\"Resource\\": [\\"acs:oss:*:*:*\\"]
+        \\t\\t\\t}],
+        \\t\\t\\t\\"Version\\": \\"1\\"
+        \\t\\t}
         \"\"\")
         ```
 
@@ -265,14 +265,14 @@ class Policy(pulumi.CustomResource):
             name = "tfexample"
         example = alicloud.resourcemanager.Policy("example",
             policy_name=name,
-            policy_document=\"\"\"\\x09\\x09{
-        \\x09\\x09\\x09"Statement": [{
-        \\x09\\x09\\x09\\x09"Action": ["oss:*"],
-        \\x09\\x09\\x09\\x09"Effect": "Allow",
-        \\x09\\x09\\x09\\x09"Resource": ["acs:oss:*:*:*"]
-        \\x09\\x09\\x09}],
-        \\x09\\x09\\x09"Version": "1"
-        \\x09\\x09}
+            policy_document=\"\"\"\\t\\t{
+        \\t\\t\\t\\"Statement\\": [{
+        \\t\\t\\t\\t\\"Action\\": [\\"oss:*\\"],
+        \\t\\t\\t\\t\\"Effect\\": \\"Allow\\",
+        \\t\\t\\t\\t\\"Resource\\": [\\"acs:oss:*:*:*\\"]
+        \\t\\t\\t}],
+        \\t\\t\\t\\"Version\\": \\"1\\"
+        \\t\\t}
         \"\"\")
         ```
 

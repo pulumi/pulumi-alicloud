@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *             .policyDesc(name)
  *             .userType("USER")
  *             .policyContent("""
- * 		}{{@code "tags":}{{@code "CostCenter":}{{@code "tag_value":}{{@code "}{@literal @@}{@code assign":["Beijing","Shanghai"]}}{@code ,"tag_key":}{{@code "}{@literal @@}{@code assign":"CostCenter"}}}}}{@code
+ * \t\t}{{@code \"tags\":}{{@code \"CostCenter\":}{{@code \"tag_value\":}{{@code \"}{@literal @@}{@code assign\":[\"Beijing\",\"Shanghai\"]}}{@code ,\"tag_key\":}{{@code \"}{@literal @@}{@code assign\":\"CostCenter\"}}}}}{@code
  *             """)
  *             .build());
  * 

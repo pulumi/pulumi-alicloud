@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -83,6 +85,10 @@ export class AntiBruteForceRule extends pulumi.CustomResource {
      */
     declare public readonly forbiddenTime: pulumi.Output<number>;
     /**
+     * The types of protocols supported for interception by the brute force attack rule creation. See `protocolType` below.
+     */
+    declare public readonly protocolType: pulumi.Output<outputs.threatdetection.AntiBruteForceRuleProtocolType>;
+    /**
      * The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
      */
     declare public readonly span: pulumi.Output<number>;
@@ -108,6 +114,7 @@ export class AntiBruteForceRule extends pulumi.CustomResource {
             resourceInputs["defaultRule"] = state?.defaultRule;
             resourceInputs["failCount"] = state?.failCount;
             resourceInputs["forbiddenTime"] = state?.forbiddenTime;
+            resourceInputs["protocolType"] = state?.protocolType;
             resourceInputs["span"] = state?.span;
             resourceInputs["uuidLists"] = state?.uuidLists;
         } else {
@@ -131,6 +138,7 @@ export class AntiBruteForceRule extends pulumi.CustomResource {
             resourceInputs["defaultRule"] = args?.defaultRule;
             resourceInputs["failCount"] = args?.failCount;
             resourceInputs["forbiddenTime"] = args?.forbiddenTime;
+            resourceInputs["protocolType"] = args?.protocolType;
             resourceInputs["span"] = args?.span;
             resourceInputs["uuidLists"] = args?.uuidLists;
         }
@@ -159,6 +167,10 @@ export interface AntiBruteForceRuleState {
      * The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
      */
     forbiddenTime?: pulumi.Input<number>;
+    /**
+     * The types of protocols supported for interception by the brute force attack rule creation. See `protocolType` below.
+     */
+    protocolType?: pulumi.Input<inputs.threatdetection.AntiBruteForceRuleProtocolType>;
     /**
      * The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
      */
@@ -189,6 +201,10 @@ export interface AntiBruteForceRuleArgs {
      * The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
      */
     forbiddenTime: pulumi.Input<number>;
+    /**
+     * The types of protocols supported for interception by the brute force attack rule creation. See `protocolType` below.
+     */
+    protocolType?: pulumi.Input<inputs.threatdetection.AntiBruteForceRuleProtocolType>;
     /**
      * The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
      */

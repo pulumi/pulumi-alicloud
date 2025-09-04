@@ -16,6 +16,145 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     /// 
     /// &gt; **NOTE:** Available since v1.144.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
+    ///     {
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var defaultUuid = new Random.Index.Uuid("default");
+    /// 
+    ///     var defaultStorageBundle = new AliCloud.CloudStorageGateway.StorageBundle("default", new()
+    ///     {
+    ///         StorageBundleName = Std.Replace.Invoke(new()
+    ///         {
+    ///             Text = defaultUuid.Result,
+    ///             Search = "-",
+    ///             Replace = "",
+    ///         }).Apply(invoke =&gt; Std.Substr.Invoke(new()
+    ///         {
+    ///             Input = $"tf-example-{invoke.Result}",
+    ///             Offset = 0,
+    ///             Length = 16,
+    ///         })).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var defaultBucket = new AliCloud.Oss.Bucket("default", new()
+    ///     {
+    ///         BucketName = Std.Replace.Invoke(new()
+    ///         {
+    ///             Text = defaultUuid.Result,
+    ///             Search = "-",
+    ///             Replace = "",
+    ///         }).Apply(invoke =&gt; Std.Substr.Invoke(new()
+    ///         {
+    ///             Input = $"tf-example-{invoke.Result}",
+    ///             Offset = 0,
+    ///             Length = 16,
+    ///         })).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var defaultBucketAcl = new AliCloud.Oss.BucketAcl("default", new()
+    ///     {
+    ///         Bucket = defaultBucket.BucketName,
+    ///         Acl = "public-read-write",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var defaultGetStocks = AliCloud.CloudStorageGateway.GetStocks.Invoke(new()
+    ///     {
+    ///         GatewayClass = "Standard",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/21",
+    ///         ZoneId = defaultGetStocks.Apply(getStocksResult =&gt; getStocksResult.Stocks[0]?.ZoneId),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var defaultGateway = new AliCloud.CloudStorageGateway.Gateway("default", new()
+    ///     {
+    ///         GatewayName = name,
+    ///         Description = name,
+    ///         GatewayClass = "Standard",
+    ///         Type = "File",
+    ///         PaymentType = "PayAsYouGo",
+    ///         VswitchId = defaultSwitch.Id,
+    ///         ReleaseAfterExpiration = true,
+    ///         PublicNetworkBandwidth = 40,
+    ///         StorageBundleId = defaultStorageBundle.Id,
+    ///         Location = "Cloud",
+    ///     });
+    /// 
+    ///     var defaultGatewayCacheDisk = new AliCloud.CloudStorageGateway.GatewayCacheDisk("default", new()
+    ///     {
+    ///         CacheDiskCategory = "cloud_efficiency",
+    ///         GatewayId = defaultGateway.Id,
+    ///         CacheDiskSizeInGb = 50,
+    ///     });
+    /// 
+    ///     var defaultGatewayFileShare = new AliCloud.CloudStorageGateway.GatewayFileShare("default", new()
+    ///     {
+    ///         GatewayFileShareName = name,
+    ///         GatewayId = defaultGateway.Id,
+    ///         LocalPath = defaultGatewayCacheDisk.LocalFilePath,
+    ///         OssBucketName = defaultBucket.BucketName,
+    ///         OssEndpoint = defaultBucket.ExtranetEndpoint,
+    ///         Protocol = "NFS",
+    ///         RemoteSync = false,
+    ///         FeLimit = 0,
+    ///         BackendLimit = 0,
+    ///         CacheMode = "Cache",
+    ///         Squash = "none",
+    ///         LagPeriod = 5,
+    ///     });
+    /// 
+    ///     var defaultExpressSync = new AliCloud.CloudStorageGateway.ExpressSync("default", new()
+    ///     {
+    ///         BucketName = defaultGatewayFileShare.OssBucketName,
+    ///         BucketRegion = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)),
+    ///         Description = name,
+    ///         ExpressSyncName = $"{name}-{defaultInteger.Result}",
+    ///     });
+    /// 
+    ///     var defaultExpressSyncShareAttachment = new AliCloud.CloudStorageGateway.ExpressSyncShareAttachment("default", new()
+    ///     {
+    ///         ExpressSyncId = defaultExpressSync.Id,
+    ///         GatewayId = defaultGateway.Id,
+    ///         ShareName = defaultGatewayFileShare.GatewayFileShareName,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Cloud Storage Gateway Express Sync Share Attachment can be imported using the id, e.g.

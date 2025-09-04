@@ -159,6 +159,67 @@ class LoadBalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.200.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.alb.get_zones()
+        default_get_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
+                vpc_id=default_network.id,
+                cidr_block=std.format(input="10.4.%d.0/24",
+                    args=[range["value"] + 1]).result,
+                zone_id=default.zones[range["value"]].id,
+                vswitch_name=std.format(input=f"{name}_%d",
+                    args=[range["value"] + 1]).result))
+        default_load_balancer = alicloud.alb.LoadBalancer("default",
+            vpc_id=default_network.id,
+            address_type="Internet",
+            address_allocated_mode="Fixed",
+            load_balancer_name=name,
+            load_balancer_edition="Basic",
+            resource_group_id=default_get_resource_groups.groups[0].id,
+            load_balancer_billing_config={
+                "pay_type": "PayAsYouGo",
+            },
+            tags={
+                "Created": "TF",
+            },
+            zone_mappings=[
+                {
+                    "vswitch_id": default_switch[0].id,
+                    "zone_id": default.zones[0].id,
+                },
+                {
+                    "vswitch_id": default_switch[1].id,
+                    "zone_id": default.zones[1].id,
+                },
+            ],
+            modification_protection_config={
+                "status": "NonProtection",
+            })
+        default_common_bandwith_package = alicloud.vpc.CommonBandwithPackage("default",
+            bandwidth="3",
+            internet_charge_type="PayByBandwidth")
+        default_load_balancer_common_bandwidth_package_attachment = alicloud.alb.LoadBalancerCommonBandwidthPackageAttachment("default",
+            bandwidth_package_id=default_common_bandwith_package.id,
+            load_balancer_id=default_load_balancer.id)
+        ```
+
         ## Import
 
         Alb Load Balancer Common Bandwidth Package Attachment can be imported using the id, e.g.
@@ -185,6 +246,67 @@ class LoadBalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
         For information about Alb Load Balancer Common Bandwidth Package Attachment and how to use it, see [What is Load Balancer Common Bandwidth Package Attachment](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-attachcommonbandwidthpackagetoloadbalancer).
 
         > **NOTE:** Available since v1.200.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.alb.get_zones()
+        default_get_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
+                vpc_id=default_network.id,
+                cidr_block=std.format(input="10.4.%d.0/24",
+                    args=[range["value"] + 1]).result,
+                zone_id=default.zones[range["value"]].id,
+                vswitch_name=std.format(input=f"{name}_%d",
+                    args=[range["value"] + 1]).result))
+        default_load_balancer = alicloud.alb.LoadBalancer("default",
+            vpc_id=default_network.id,
+            address_type="Internet",
+            address_allocated_mode="Fixed",
+            load_balancer_name=name,
+            load_balancer_edition="Basic",
+            resource_group_id=default_get_resource_groups.groups[0].id,
+            load_balancer_billing_config={
+                "pay_type": "PayAsYouGo",
+            },
+            tags={
+                "Created": "TF",
+            },
+            zone_mappings=[
+                {
+                    "vswitch_id": default_switch[0].id,
+                    "zone_id": default.zones[0].id,
+                },
+                {
+                    "vswitch_id": default_switch[1].id,
+                    "zone_id": default.zones[1].id,
+                },
+            ],
+            modification_protection_config={
+                "status": "NonProtection",
+            })
+        default_common_bandwith_package = alicloud.vpc.CommonBandwithPackage("default",
+            bandwidth="3",
+            internet_charge_type="PayByBandwidth")
+        default_load_balancer_common_bandwidth_package_attachment = alicloud.alb.LoadBalancerCommonBandwidthPackageAttachment("default",
+            bandwidth_package_id=default_common_bandwith_package.id,
+            load_balancer_id=default_load_balancer.id)
+        ```
 
         ## Import
 

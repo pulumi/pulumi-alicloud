@@ -16,6 +16,97 @@ import (
 //
 // > **NOTE:** Available since v1.0.0+.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tfexample"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%sgroup",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			group, err := ram.NewGroup(ctx, "group", &ram.GroupArgs{
+//				Name:     pulumi.String(invokeFormat.Result),
+//				Comments: pulumi.String("this is a group comments."),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat1, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%suser",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			user, err := ram.NewUser(ctx, "user", &ram.UserArgs{
+//				Name:        pulumi.String(invokeFormat1.Result),
+//				DisplayName: pulumi.String("user_display_name"),
+//				Mobile:      pulumi.String("86-18688888888"),
+//				Email:       pulumi.String("hello.uuu@aaa.com"),
+//				Comments:    pulumi.String("yoyoyo"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat2, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%suser1",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			user1, err := ram.NewUser(ctx, "user1", &ram.UserArgs{
+//				Name:        pulumi.String(invokeFormat2.Result),
+//				DisplayName: pulumi.String("user_display_name1"),
+//				Mobile:      pulumi.String("86-18688888889"),
+//				Email:       pulumi.String("hello.uuu@aaa.com"),
+//				Comments:    pulumi.String("yoyoyo"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ram.NewGroupMembership(ctx, "membership", &ram.GroupMembershipArgs{
+//				GroupName: group.Name,
+//				UserNames: pulumi.StringArray{
+//					user.Name,
+//					user1.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // RAM Group membership can be imported using the id, e.g.

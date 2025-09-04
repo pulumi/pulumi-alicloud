@@ -16,6 +16,92 @@ namespace Pulumi.AliCloud.EventBridge
     /// 
     /// &gt; **NOTE:** Available since v1.129.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var @default = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var defaultEventBus = new AliCloud.EventBridge.EventBus("default", new()
+    ///     {
+    ///         EventBusName = name,
+    ///     });
+    /// 
+    ///     var queue1 = new AliCloud.Mns.Queue("queue1", new()
+    ///     {
+    ///         Name = name,
+    ///     });
+    /// 
+    ///     var mnsEndpointA = Std.Format.Invoke(new()
+    ///     {
+    ///         Input = "acs:mns:cn-hangzhou:%s:queues/%s",
+    ///         Args = new[]
+    ///         {
+    ///             @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
+    ///             queue1.Name,
+    ///         },
+    ///     }).Apply(invoke =&gt; invoke.Result);
+    /// 
+    ///     var fnfEndpoint = Std.Format.Invoke(new()
+    ///     {
+    ///         Input = "acs:fnf:cn-hangzhou:%s:flow/${flow}",
+    ///         Args = new[]
+    ///         {
+    ///             @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
+    ///         },
+    ///     }).Apply(invoke =&gt; invoke.Result);
+    /// 
+    ///     var example = new AliCloud.EventBridge.Rule("example", new()
+    ///     {
+    ///         EventBusName = defaultEventBus.EventBusName,
+    ///         RuleName = name,
+    ///         Description = "example",
+    ///         FilterPattern = "{\"source\":[\"crmabc.newsletter\"],\"type\":[\"UserSignUp\", \"UserLogin\"]}",
+    ///         Targets = new[]
+    ///         {
+    ///             new AliCloud.EventBridge.Inputs.RuleTargetArgs
+    ///             {
+    ///                 TargetId = "tf-example1",
+    ///                 Endpoint = mnsEndpointA,
+    ///                 Type = "acs.mns.queue",
+    ///                 ParamLists = new[]
+    ///                 {
+    ///                     new AliCloud.EventBridge.Inputs.RuleTargetParamListArgs
+    ///                     {
+    ///                         ResourceKey = "queue",
+    ///                         Form = "CONSTANT",
+    ///                         Value = "tf-testaccEbRule",
+    ///                     },
+    ///                     new AliCloud.EventBridge.Inputs.RuleTargetParamListArgs
+    ///                     {
+    ///                         ResourceKey = "Body",
+    ///                         Form = "ORIGINAL",
+    ///                     },
+    ///                     new AliCloud.EventBridge.Inputs.RuleTargetParamListArgs
+    ///                     {
+    ///                         Form = "CONSTANT",
+    ///                         ResourceKey = "IsBase64Encode",
+    ///                         Value = "true",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Event Bridge Rule can be imported using the id, e.g.

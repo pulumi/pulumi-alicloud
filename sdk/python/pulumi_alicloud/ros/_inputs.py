@@ -17,6 +17,8 @@ from .. import _utilities
 __all__ = [
     'ChangeSetParameterArgs',
     'ChangeSetParameterArgsDict',
+    'StackGroupAutoDeploymentArgs',
+    'StackGroupAutoDeploymentArgsDict',
     'StackGroupParameterArgs',
     'StackGroupParameterArgsDict',
     'StackInstanceParameterOverrideArgs',
@@ -86,14 +88,66 @@ class ChangeSetParameterArgs:
 
 
 if not MYPY:
+    class StackGroupAutoDeploymentArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Enable or disable automatic deployment. Valid Values:
+        """
+        retain_stacks_on_account_removal: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether to retain the stack in the member account when the member account is deleted from the target folder. Valid values:
+        """
+elif False:
+    StackGroupAutoDeploymentArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StackGroupAutoDeploymentArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 retain_stacks_on_account_removal: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Enable or disable automatic deployment. Valid Values:
+        :param pulumi.Input[_builtins.bool] retain_stacks_on_account_removal: Whether to retain the stack in the member account when the member account is deleted from the target folder. Valid values:
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if retain_stacks_on_account_removal is not None:
+            pulumi.set(__self__, "retain_stacks_on_account_removal", retain_stacks_on_account_removal)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable or disable automatic deployment. Valid Values:
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="retainStacksOnAccountRemoval")
+    def retain_stacks_on_account_removal(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to retain the stack in the member account when the member account is deleted from the target folder. Valid values:
+        """
+        return pulumi.get(self, "retain_stacks_on_account_removal")
+
+    @retain_stacks_on_account_removal.setter
+    def retain_stacks_on_account_removal(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "retain_stacks_on_account_removal", value)
+
+
+if not MYPY:
     class StackGroupParameterArgsDict(TypedDict):
-        parameter_key: NotRequired[pulumi.Input[_builtins.str]]
+        parameter_key: pulumi.Input[_builtins.str]
         """
-        The parameter key.
+        The key of parameter N. If you do not specify the key and value of the parameter, ROS uses the default key and value in the template.
         """
-        parameter_value: NotRequired[pulumi.Input[_builtins.str]]
+        parameter_value: pulumi.Input[_builtins.str]
         """
-        The parameter value.
+        The value of parameter N.
         """
 elif False:
     StackGroupParameterArgsDict: TypeAlias = Mapping[str, Any]
@@ -101,39 +155,37 @@ elif False:
 @pulumi.input_type
 class StackGroupParameterArgs:
     def __init__(__self__, *,
-                 parameter_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 parameter_key: pulumi.Input[_builtins.str],
+                 parameter_value: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] parameter_key: The parameter key.
-        :param pulumi.Input[_builtins.str] parameter_value: The parameter value.
+        :param pulumi.Input[_builtins.str] parameter_key: The key of parameter N. If you do not specify the key and value of the parameter, ROS uses the default key and value in the template.
+        :param pulumi.Input[_builtins.str] parameter_value: The value of parameter N.
         """
-        if parameter_key is not None:
-            pulumi.set(__self__, "parameter_key", parameter_key)
-        if parameter_value is not None:
-            pulumi.set(__self__, "parameter_value", parameter_value)
+        pulumi.set(__self__, "parameter_key", parameter_key)
+        pulumi.set(__self__, "parameter_value", parameter_value)
 
     @_builtins.property
     @pulumi.getter(name="parameterKey")
-    def parameter_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parameter_key(self) -> pulumi.Input[_builtins.str]:
         """
-        The parameter key.
+        The key of parameter N. If you do not specify the key and value of the parameter, ROS uses the default key and value in the template.
         """
         return pulumi.get(self, "parameter_key")
 
     @parameter_key.setter
-    def parameter_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parameter_key(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "parameter_key", value)
 
     @_builtins.property
     @pulumi.getter(name="parameterValue")
-    def parameter_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parameter_value(self) -> pulumi.Input[_builtins.str]:
         """
-        The parameter value.
+        The value of parameter N.
         """
         return pulumi.get(self, "parameter_value")
 
     @parameter_value.setter
-    def parameter_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parameter_value(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "parameter_value", value)
 
 

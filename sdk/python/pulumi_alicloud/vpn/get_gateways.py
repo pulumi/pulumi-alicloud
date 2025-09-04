@@ -189,6 +189,55 @@ def get_gateways(business_status: Optional[_builtins.str] = None,
 
     > **NOTE:** Available since v1.18.0.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+    import pulumi_std as std
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    spec = config.get("spec")
+    if spec is None:
+        spec = "20"
+    default = alicloud.get_zones(available_resource_creation="VSwitch")
+    default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+    default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+        zone_id="me-east-1a")
+    vswitch = []
+    def create_vswitch(range_body):
+        for range in [{"value": i} for i in range(0, range_body)]:
+            vswitch.append(alicloud.vpc.Switch(f"vswitch-{range['value']}",
+                vpc_id=default_get_networks.ids[0],
+                cidr_block=std.cidrsubnet(input=default_get_networks.vpcs[0].cidr_block,
+                    newbits=8,
+                    netnum=8).result,
+                zone_id="me-east-1a",
+                vswitch_name=name))
+
+    len(default_get_switches.ids).apply(lambda resolved_outputs: create_vswitch(0 if resolved_outputs['length'] > 0 else 1))
+    vswitch_id = len(default_get_switches.ids).apply(lambda length: default_get_switches.ids[0] if length > 0 else std.concat(input=[
+        [__item.id for __item in vswitch],
+        [""],
+    ]).result[0])
+    default_gateway = alicloud.vpn.Gateway("default",
+        vpn_type="Normal",
+        vpn_gateway_name=name,
+        vswitch_id=vswitch_id,
+        auto_pay=True,
+        vpc_id=default_get_networks.ids[0],
+        network_type="public",
+        payment_type="Subscription",
+        enable_ipsec=True,
+        bandwidth=spec)
+    vpn_gateways = alicloud.vpn.get_gateways_output(ids=[default_gateway.id],
+        include_reservation_data=True,
+        output_file="/tmp/vpns")
+    ```
+
 
     :param _builtins.str business_status: Limit search to specific business status - valid value is "Normal", "FinancialLocked".
     :param _builtins.bool enable_ipsec: Indicates whether the IPsec-VPN feature is enabled.
@@ -240,6 +289,55 @@ def get_gateways_output(business_status: Optional[pulumi.Input[Optional[_builtin
     The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
 
     > **NOTE:** Available since v1.18.0.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+    import pulumi_std as std
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    spec = config.get("spec")
+    if spec is None:
+        spec = "20"
+    default = alicloud.get_zones(available_resource_creation="VSwitch")
+    default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+    default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+        zone_id="me-east-1a")
+    vswitch = []
+    def create_vswitch(range_body):
+        for range in [{"value": i} for i in range(0, range_body)]:
+            vswitch.append(alicloud.vpc.Switch(f"vswitch-{range['value']}",
+                vpc_id=default_get_networks.ids[0],
+                cidr_block=std.cidrsubnet(input=default_get_networks.vpcs[0].cidr_block,
+                    newbits=8,
+                    netnum=8).result,
+                zone_id="me-east-1a",
+                vswitch_name=name))
+
+    len(default_get_switches.ids).apply(lambda resolved_outputs: create_vswitch(0 if resolved_outputs['length'] > 0 else 1))
+    vswitch_id = len(default_get_switches.ids).apply(lambda length: default_get_switches.ids[0] if length > 0 else std.concat(input=[
+        [__item.id for __item in vswitch],
+        [""],
+    ]).result[0])
+    default_gateway = alicloud.vpn.Gateway("default",
+        vpn_type="Normal",
+        vpn_gateway_name=name,
+        vswitch_id=vswitch_id,
+        auto_pay=True,
+        vpc_id=default_get_networks.ids[0],
+        network_type="public",
+        payment_type="Subscription",
+        enable_ipsec=True,
+        bandwidth=spec)
+    vpn_gateways = alicloud.vpn.get_gateways_output(ids=[default_gateway.id],
+        include_reservation_data=True,
+        output_file="/tmp/vpns")
+    ```
 
 
     :param _builtins.str business_status: Limit search to specific business status - valid value is "Normal", "FinancialLocked".

@@ -78,7 +78,7 @@ export class AccessGroup extends pulumi.CustomResource {
      */
     declare public readonly accessGroupType: pulumi.Output<string>;
     /**
-     * Creation time.
+     * (Available since v1.218.0) Creation time.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
@@ -93,13 +93,17 @@ export class AccessGroup extends pulumi.CustomResource {
      */
     declare public readonly fileSystemType: pulumi.Output<string | undefined>;
     /**
-     * . Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
+     * Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * . Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
+     * (Available since v1.256.0) The region ID.
+     */
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
+    /**
+     * Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
      *
      * @deprecated Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.
      */
@@ -124,6 +128,7 @@ export class AccessGroup extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["fileSystemType"] = state?.fileSystemType;
             resourceInputs["name"] = state?.name;
+            resourceInputs["regionId"] = state?.regionId;
             resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as AccessGroupArgs | undefined;
@@ -134,6 +139,7 @@ export class AccessGroup extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["type"] = args?.type;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccessGroup.__pulumiType, name, resourceInputs, opts);
@@ -153,7 +159,7 @@ export interface AccessGroupState {
      */
     accessGroupType?: pulumi.Input<string>;
     /**
-     * Creation time.
+     * (Available since v1.218.0) Creation time.
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -168,13 +174,17 @@ export interface AccessGroupState {
      */
     fileSystemType?: pulumi.Input<string>;
     /**
-     * . Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
+     * Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.
      */
     name?: pulumi.Input<string>;
     /**
-     * . Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
+     * (Available since v1.256.0) The region ID.
+     */
+    regionId?: pulumi.Input<string>;
+    /**
+     * Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
      *
      * @deprecated Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.
      */
@@ -205,13 +215,13 @@ export interface AccessGroupArgs {
      */
     fileSystemType?: pulumi.Input<string>;
     /**
-     * . Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
+     * Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.
      */
     name?: pulumi.Input<string>;
     /**
-     * . Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
+     * Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
      *
      * @deprecated Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.
      */

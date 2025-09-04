@@ -46,14 +46,14 @@ public final class AccessGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Creation time.
+     * (Available since v1.218.0) Creation time.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Creation time.
+     * @return (Available since v1.218.0) Creation time.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -97,7 +97,7 @@ public final class AccessGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * . Field &#39;name&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_name&#39; instead.
+     * Field &#39;name&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated since provider version 1.218.0. New field &#39;access_group_name&#39; instead.
@@ -108,7 +108,7 @@ public final class AccessGroupState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return . Field &#39;name&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_name&#39; instead.
+     * @return Field &#39;name&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated since provider version 1.218.0. New field &#39;access_group_name&#39; instead.
@@ -120,7 +120,22 @@ public final class AccessGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * . Field &#39;type&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_type&#39; instead.
+     * (Available since v1.256.0) The region ID.
+     * 
+     */
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    /**
+     * @return (Available since v1.256.0) The region ID.
+     * 
+     */
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
+    }
+
+    /**
+     * Field &#39;type&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_type&#39; instead.
      * 
      * @deprecated
      * Field &#39;type&#39; has been deprecated since provider version 1.218.0. New field &#39;access_group_type&#39; instead.
@@ -131,7 +146,7 @@ public final class AccessGroupState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> type;
 
     /**
-     * @return . Field &#39;type&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_type&#39; instead.
+     * @return Field &#39;type&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_type&#39; instead.
      * 
      * @deprecated
      * Field &#39;type&#39; has been deprecated since provider version 1.218.0. New field &#39;access_group_type&#39; instead.
@@ -151,6 +166,7 @@ public final class AccessGroupState extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.fileSystemType = $.fileSystemType;
         this.name = $.name;
+        this.regionId = $.regionId;
         this.type = $.type;
     }
 
@@ -215,7 +231,7 @@ public final class AccessGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime Creation time.
+         * @param createTime (Available since v1.218.0) Creation time.
          * 
          * @return builder
          * 
@@ -226,7 +242,7 @@ public final class AccessGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime Creation time.
+         * @param createTime (Available since v1.218.0) Creation time.
          * 
          * @return builder
          * 
@@ -284,7 +300,7 @@ public final class AccessGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_name&#39; instead.
+         * @param name Field &#39;name&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_name&#39; instead.
          * 
          * @return builder
          * 
@@ -299,7 +315,7 @@ public final class AccessGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_name&#39; instead.
+         * @param name Field &#39;name&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_name&#39; instead.
          * 
          * @return builder
          * 
@@ -313,7 +329,28 @@ public final class AccessGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type . Field &#39;type&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_type&#39; instead.
+         * @param regionId (Available since v1.256.0) The region ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        /**
+         * @param regionId (Available since v1.256.0) The region ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
+        }
+
+        /**
+         * @param type Field &#39;type&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_type&#39; instead.
          * 
          * @return builder
          * 
@@ -328,7 +365,7 @@ public final class AccessGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type . Field &#39;type&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_type&#39; instead.
+         * @param type Field &#39;type&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_type&#39; instead.
          * 
          * @return builder
          * 

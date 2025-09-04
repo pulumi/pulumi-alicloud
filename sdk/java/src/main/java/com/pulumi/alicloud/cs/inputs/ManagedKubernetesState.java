@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cs.inputs;
 
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesAddonArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesAuditLogConfigArgs;
+import com.pulumi.alicloud.cs.inputs.ManagedKubernetesAutoModeArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesCertificateAuthorityArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesConnectionsArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesDeleteOptionArgs;
@@ -70,6 +71,21 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<ManagedKubernetesAuditLogConfigArgs>> auditLogConfig() {
         return Optional.ofNullable(this.auditLogConfig);
+    }
+
+    /**
+     * Auto mode cluster configuration. See `auto_mode` below.
+     * 
+     */
+    @Import(name="autoMode")
+    private @Nullable Output<ManagedKubernetesAutoModeArgs> autoMode;
+
+    /**
+     * @return Auto mode cluster configuration. See `auto_mode` below.
+     * 
+     */
+    public Optional<Output<ManagedKubernetesAutoModeArgs>> autoMode() {
+        return Optional.ofNullable(this.autoMode);
     }
 
     /**
@@ -393,14 +409,14 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+     * The cluster maintenance window. Managed node pool will use it. See `maintenance_window` below.
      * 
      */
     @Import(name="maintenanceWindow")
     private @Nullable Output<ManagedKubernetesMaintenanceWindowArgs> maintenanceWindow;
 
     /**
-     * @return The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+     * @return The cluster maintenance window. Managed node pool will use it. See `maintenance_window` below.
      * 
      */
     public Optional<Output<ManagedKubernetesMaintenanceWindowArgs>> maintenanceWindow() {
@@ -475,14 +491,14 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The cluster automatic operation policy. See `operation_policy` below.
+     * The cluster automatic operation policy, only works when `maintenance_window` is enabled. See `operation_policy` below.
      * 
      */
     @Import(name="operationPolicy")
     private @Nullable Output<ManagedKubernetesOperationPolicyArgs> operationPolicy;
 
     /**
-     * @return The cluster automatic operation policy. See `operation_policy` below.
+     * @return The cluster automatic operation policy, only works when `maintenance_window` is enabled. See `operation_policy` below.
      * 
      */
     public Optional<Output<ManagedKubernetesOperationPolicyArgs>> operationPolicy() {
@@ -893,6 +909,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         this.addons = $.addons;
         this.apiAudiences = $.apiAudiences;
         this.auditLogConfig = $.auditLogConfig;
+        this.autoMode = $.autoMode;
         this.certificateAuthority = $.certificateAuthority;
         this.clientCert = $.clientCert;
         this.clientKey = $.clientKey;
@@ -1043,6 +1060,27 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
          */
         public Builder auditLogConfig(ManagedKubernetesAuditLogConfigArgs auditLogConfig) {
             return auditLogConfig(Output.of(auditLogConfig));
+        }
+
+        /**
+         * @param autoMode Auto mode cluster configuration. See `auto_mode` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoMode(@Nullable Output<ManagedKubernetesAutoModeArgs> autoMode) {
+            $.autoMode = autoMode;
+            return this;
+        }
+
+        /**
+         * @param autoMode Auto mode cluster configuration. See `auto_mode` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoMode(ManagedKubernetesAutoModeArgs autoMode) {
+            return autoMode(Output.of(autoMode));
         }
 
         /**
@@ -1494,7 +1532,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param maintenanceWindow The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+         * @param maintenanceWindow The cluster maintenance window. Managed node pool will use it. See `maintenance_window` below.
          * 
          * @return builder
          * 
@@ -1505,7 +1543,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param maintenanceWindow The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+         * @param maintenanceWindow The cluster maintenance window. Managed node pool will use it. See `maintenance_window` below.
          * 
          * @return builder
          * 
@@ -1608,7 +1646,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param operationPolicy The cluster automatic operation policy. See `operation_policy` below.
+         * @param operationPolicy The cluster automatic operation policy, only works when `maintenance_window` is enabled. See `operation_policy` below.
          * 
          * @return builder
          * 
@@ -1619,7 +1657,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param operationPolicy The cluster automatic operation policy. See `operation_policy` below.
+         * @param operationPolicy The cluster automatic operation policy, only works when `maintenance_window` is enabled. See `operation_policy` below.
          * 
          * @return builder
          * 

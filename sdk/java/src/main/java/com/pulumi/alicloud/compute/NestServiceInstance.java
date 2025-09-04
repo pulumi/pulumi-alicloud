@@ -127,11 +127,11 @@ import javax.annotation.Nullable;
  *                 .operationEndTime("1681367579000")
  *                 .resources(defaultInstance.id().applyValue(_id -> """
  *     {
- *       "Type": "ResourceIds",
- *       "RegionId": "cn-hangzhou",
- *       "ResourceIds": {
- *       "ALIYUN::ECS::INSTANCE": [
- *         "%s"
+ *       \"Type\": \"ResourceIds\",
+ *       \"RegionId\": \"cn-hangzhou\",
+ *       \"ResourceIds\": {
+ *       \"ALIYUN::ECS::INSTANCE\": [
+ *         \"%s\"
  *         ]
  *       } 
  *     }

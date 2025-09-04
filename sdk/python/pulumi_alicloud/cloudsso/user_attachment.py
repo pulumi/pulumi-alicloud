@@ -144,6 +144,47 @@ class UserAttachment(pulumi.CustomResource):
 
         > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.cloudsso.get_directories()
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_directory = []
+        def create_default(range_body):
+            for range in [{"value": i} for i in range(0, range_body)]:
+                default_directory.append(alicloud.cloudsso.Directory(f"default-{range['value']}", directory_name=name))
+
+        len(default.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        directory_id = len(default.ids).apply(lambda length: default.ids[0] if length > 0 else std.concat(input=[
+            [__item.id for __item in default_directory],
+            [""],
+        ]).result[0])
+        default_user = alicloud.cloudsso.User("default",
+            directory_id=directory_id,
+            user_name=f"{name}-{default_integer['result']}")
+        default_group = alicloud.cloudsso.Group("default",
+            directory_id=directory_id,
+            group_name=name,
+            description=name)
+        default_user_attachment = alicloud.cloudsso.UserAttachment("default",
+            directory_id=directory_id,
+            user_id=default_user.user_id,
+            group_id=default_group.group_id)
+        ```
+
         ## Import
 
         Cloud SSO User Attachment can be imported using the id, e.g.
@@ -172,6 +213,47 @@ class UserAttachment(pulumi.CustomResource):
         > **NOTE:** Available since v1.141.0.
 
         > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.cloudsso.get_directories()
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_directory = []
+        def create_default(range_body):
+            for range in [{"value": i} for i in range(0, range_body)]:
+                default_directory.append(alicloud.cloudsso.Directory(f"default-{range['value']}", directory_name=name))
+
+        len(default.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        directory_id = len(default.ids).apply(lambda length: default.ids[0] if length > 0 else std.concat(input=[
+            [__item.id for __item in default_directory],
+            [""],
+        ]).result[0])
+        default_user = alicloud.cloudsso.User("default",
+            directory_id=directory_id,
+            user_name=f"{name}-{default_integer['result']}")
+        default_group = alicloud.cloudsso.Group("default",
+            directory_id=directory_id,
+            group_name=name,
+            description=name)
+        default_user_attachment = alicloud.cloudsso.UserAttachment("default",
+            directory_id=directory_id,
+            user_id=default_user.user_id,
+            group_id=default_group.group_id)
+        ```
 
         ## Import
 

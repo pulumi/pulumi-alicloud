@@ -159,6 +159,21 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The list of Global Security Group Ids.
+     * 
+     */
+    @Import(name="globalSecurityGroupLists")
+    private @Nullable Output<List<String>> globalSecurityGroupLists;
+
+    /**
+     * @return The list of Global Security Group Ids.
+     * 
+     */
+    public Optional<Output<List<String>>> globalSecurityGroupLists() {
+        return Optional.ofNullable(this.globalSecurityGroupLists);
+    }
+
+    /**
      * Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
      * 
      */
@@ -542,6 +557,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         this.configServerLists = $.configServerLists;
         this.dbInstanceReleaseProtection = $.dbInstanceReleaseProtection;
         this.engineVersion = $.engineVersion;
+        this.globalSecurityGroupLists = $.globalSecurityGroupLists;
         this.hiddenZoneId = $.hiddenZoneId;
         this.instanceChargeType = $.instanceChargeType;
         this.kmsEncryptedPassword = $.kmsEncryptedPassword;
@@ -793,6 +809,37 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder engineVersion(String engineVersion) {
             return engineVersion(Output.of(engineVersion));
+        }
+
+        /**
+         * @param globalSecurityGroupLists The list of Global Security Group Ids.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder globalSecurityGroupLists(@Nullable Output<List<String>> globalSecurityGroupLists) {
+            $.globalSecurityGroupLists = globalSecurityGroupLists;
+            return this;
+        }
+
+        /**
+         * @param globalSecurityGroupLists The list of Global Security Group Ids.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder globalSecurityGroupLists(List<String> globalSecurityGroupLists) {
+            return globalSecurityGroupLists(Output.of(globalSecurityGroupLists));
+        }
+
+        /**
+         * @param globalSecurityGroupLists The list of Global Security Group Ids.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder globalSecurityGroupLists(String... globalSecurityGroupLists) {
+            return globalSecurityGroupLists(List.of(globalSecurityGroupLists));
         }
 
         /**

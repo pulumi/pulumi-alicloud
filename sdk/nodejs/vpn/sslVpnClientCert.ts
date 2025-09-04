@@ -9,6 +9,58 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING$",
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const default0 = Promise.all([defaultGetNetworks, _default]).then(([defaultGetNetworks, _default]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: _default.ids?.[0],
+ * }));
+ * const default1 = Promise.all([defaultGetNetworks, _default]).then(([defaultGetNetworks, _default]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: _default.ids?.[1],
+ * }));
+ * const defaultGateway = new alicloud.vpn.Gateway("default", {
+ *     vpnGatewayName: name,
+ *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
+ *     bandwidth: 10,
+ *     enableSsl: true,
+ *     description: name,
+ *     paymentType: "Subscription",
+ *     vswitchId: default0.then(default0 => default0.ids?.[0]),
+ *     disasterRecoveryVswitchId: default1.then(default1 => default1.ids?.[0]),
+ * });
+ * const defaultSslVpnServer = new alicloud.vpn.SslVpnServer("default", {
+ *     name: name,
+ *     vpnGatewayId: defaultGateway.id,
+ *     clientIpPool: "192.168.0.0/16",
+ *     localSubnet: defaultGetNetworks.then(defaultGetNetworks => std.cidrsubnet({
+ *         input: defaultGetNetworks.vpcs?.[0]?.cidrBlock,
+ *         newbits: 8,
+ *         netnum: 8,
+ *     })).then(invoke => invoke.result),
+ *     protocol: "UDP",
+ *     cipher: "AES-128-CBC",
+ *     port: 1194,
+ *     compress: false,
+ * });
+ * const defaultSslVpnClientCert = new alicloud.vpn.SslVpnClientCert("default", {
+ *     sslVpnServerId: defaultSslVpnServer.id,
+ *     name: name,
+ * });
+ * ```
+ *
  * ## Import
  *
  * SSL-VPN client certificates can be imported using the id, e.g.

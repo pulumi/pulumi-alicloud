@@ -40,6 +40,7 @@ __all__ = [
     'SyntheticTaskMonitorConfNetTcp',
     'SyntheticTaskMonitorConfStream',
     'SyntheticTaskMonitorConfWebsite',
+    'GetAddonReleasesReleaseResult',
     'GetAlertContactGroupsGroupResult',
     'GetAlertContactsContactResult',
     'GetAlertRobotsRobotResult',
@@ -51,6 +52,11 @@ __all__ = [
     'GetDispatchRulesRuleNotifyRuleResult',
     'GetDispatchRulesRuleNotifyRuleNotifyObjectResult',
     'GetDispatchRulesRuleNotifyTemplateResult',
+    'GetEnvCustomJobsJobResult',
+    'GetEnvFeaturesFeatureResult',
+    'GetEnvPodMonitorsMonitorResult',
+    'GetEnvServiceMonitorsMonitorResult',
+    'GetEnvironmentsEnvironmentResult',
     'GetIntegrationExportersIntegrationExporterResult',
     'GetPrometheisPrometheiResult',
     'GetPrometheusAlertRulesRuleResult',
@@ -2320,6 +2326,134 @@ class SyntheticTaskMonitorConfWebsite(dict):
 
 
 @pulumi.output_type
+class GetAddonReleasesReleaseResult(dict):
+    def __init__(__self__, *,
+                 addon_name: _builtins.str,
+                 addon_release_name: _builtins.str,
+                 addon_version: _builtins.str,
+                 alert_rule_count: _builtins.int,
+                 aliyun_lang: _builtins.str,
+                 create_time: _builtins.str,
+                 dashboard_count: _builtins.int,
+                 environment_id: _builtins.str,
+                 exporter_count: _builtins.int,
+                 id: _builtins.str,
+                 region_id: _builtins.str):
+        """
+        :param _builtins.str addon_name: The name of the add-on.
+        :param _builtins.str addon_release_name: The name of the Addon Release.
+        :param _builtins.str addon_version: The version of the add-on.
+        :param _builtins.int alert_rule_count: The number of alert rules.
+        :param _builtins.str aliyun_lang: The language.
+        :param _builtins.str create_time: The time when the add-on was created.
+        :param _builtins.int dashboard_count: The number of dashboards.
+        :param _builtins.str environment_id: The environment ID.
+        :param _builtins.int exporter_count: The number of exporters.
+        :param _builtins.str id: The ID of the Addon Release. It formats as `<environment_id>:<addon_release_name>`.
+        :param _builtins.str region_id: The region ID.
+        """
+        pulumi.set(__self__, "addon_name", addon_name)
+        pulumi.set(__self__, "addon_release_name", addon_release_name)
+        pulumi.set(__self__, "addon_version", addon_version)
+        pulumi.set(__self__, "alert_rule_count", alert_rule_count)
+        pulumi.set(__self__, "aliyun_lang", aliyun_lang)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "dashboard_count", dashboard_count)
+        pulumi.set(__self__, "environment_id", environment_id)
+        pulumi.set(__self__, "exporter_count", exporter_count)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "region_id", region_id)
+
+    @_builtins.property
+    @pulumi.getter(name="addonName")
+    def addon_name(self) -> _builtins.str:
+        """
+        The name of the add-on.
+        """
+        return pulumi.get(self, "addon_name")
+
+    @_builtins.property
+    @pulumi.getter(name="addonReleaseName")
+    def addon_release_name(self) -> _builtins.str:
+        """
+        The name of the Addon Release.
+        """
+        return pulumi.get(self, "addon_release_name")
+
+    @_builtins.property
+    @pulumi.getter(name="addonVersion")
+    def addon_version(self) -> _builtins.str:
+        """
+        The version of the add-on.
+        """
+        return pulumi.get(self, "addon_version")
+
+    @_builtins.property
+    @pulumi.getter(name="alertRuleCount")
+    def alert_rule_count(self) -> _builtins.int:
+        """
+        The number of alert rules.
+        """
+        return pulumi.get(self, "alert_rule_count")
+
+    @_builtins.property
+    @pulumi.getter(name="aliyunLang")
+    def aliyun_lang(self) -> _builtins.str:
+        """
+        The language.
+        """
+        return pulumi.get(self, "aliyun_lang")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The time when the add-on was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="dashboardCount")
+    def dashboard_count(self) -> _builtins.int:
+        """
+        The number of dashboards.
+        """
+        return pulumi.get(self, "dashboard_count")
+
+    @_builtins.property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> _builtins.str:
+        """
+        The environment ID.
+        """
+        return pulumi.get(self, "environment_id")
+
+    @_builtins.property
+    @pulumi.getter(name="exporterCount")
+    def exporter_count(self) -> _builtins.int:
+        """
+        The number of exporters.
+        """
+        return pulumi.get(self, "exporter_count")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the Addon Release. It formats as `<environment_id>:<addon_release_name>`.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> _builtins.str:
+        """
+        The region ID.
+        """
+        return pulumi.get(self, "region_id")
+
+
+@pulumi.output_type
 class GetAlertContactGroupsGroupResult(dict):
     def __init__(__self__, *,
                  alert_contact_group_id: _builtins.str,
@@ -2999,6 +3133,492 @@ class GetDispatchRulesRuleNotifyTemplateResult(dict):
         The content of the TTS.
         """
         return pulumi.get(self, "tts_recover_content")
+
+
+@pulumi.output_type
+class GetEnvCustomJobsJobResult(dict):
+    def __init__(__self__, *,
+                 config_yaml: _builtins.str,
+                 env_custom_job_name: _builtins.str,
+                 environment_id: _builtins.str,
+                 id: _builtins.str,
+                 region_id: _builtins.str,
+                 status: _builtins.str):
+        """
+        :param _builtins.str config_yaml: The YAML configuration string.
+        :param _builtins.str env_custom_job_name: The name of the custom job.
+        :param _builtins.str environment_id: The ID of the environment instance.
+        :param _builtins.str id: The ID of the custom job. It formats as `<environment_id>:<env_custom_job_name>`.
+        :param _builtins.str region_id: The region ID.
+        :param _builtins.str status: The status of the custom job.
+        """
+        pulumi.set(__self__, "config_yaml", config_yaml)
+        pulumi.set(__self__, "env_custom_job_name", env_custom_job_name)
+        pulumi.set(__self__, "environment_id", environment_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="configYaml")
+    def config_yaml(self) -> _builtins.str:
+        """
+        The YAML configuration string.
+        """
+        return pulumi.get(self, "config_yaml")
+
+    @_builtins.property
+    @pulumi.getter(name="envCustomJobName")
+    def env_custom_job_name(self) -> _builtins.str:
+        """
+        The name of the custom job.
+        """
+        return pulumi.get(self, "env_custom_job_name")
+
+    @_builtins.property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> _builtins.str:
+        """
+        The ID of the environment instance.
+        """
+        return pulumi.get(self, "environment_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the custom job. It formats as `<environment_id>:<env_custom_job_name>`.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> _builtins.str:
+        """
+        The region ID.
+        """
+        return pulumi.get(self, "region_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The status of the custom job.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetEnvFeaturesFeatureResult(dict):
+    def __init__(__self__, *,
+                 aliyun_lang: _builtins.str,
+                 env_feature_name: _builtins.str,
+                 environment_id: _builtins.str,
+                 feature_version: _builtins.str,
+                 id: _builtins.str,
+                 status: _builtins.str):
+        """
+        :param _builtins.str aliyun_lang: The language.
+        :param _builtins.str env_feature_name: The name of the feature.
+        :param _builtins.str environment_id: The ID of the environment instance.
+        :param _builtins.str feature_version: The version of the feature.
+        :param _builtins.str id: The ID of the Env Feature. It formats as `<environment_id>:<env_feature_name>`.
+        :param _builtins.str status: The status of the feature.
+        """
+        pulumi.set(__self__, "aliyun_lang", aliyun_lang)
+        pulumi.set(__self__, "env_feature_name", env_feature_name)
+        pulumi.set(__self__, "environment_id", environment_id)
+        pulumi.set(__self__, "feature_version", feature_version)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="aliyunLang")
+    def aliyun_lang(self) -> _builtins.str:
+        """
+        The language.
+        """
+        return pulumi.get(self, "aliyun_lang")
+
+    @_builtins.property
+    @pulumi.getter(name="envFeatureName")
+    def env_feature_name(self) -> _builtins.str:
+        """
+        The name of the feature.
+        """
+        return pulumi.get(self, "env_feature_name")
+
+    @_builtins.property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> _builtins.str:
+        """
+        The ID of the environment instance.
+        """
+        return pulumi.get(self, "environment_id")
+
+    @_builtins.property
+    @pulumi.getter(name="featureVersion")
+    def feature_version(self) -> _builtins.str:
+        """
+        The version of the feature.
+        """
+        return pulumi.get(self, "feature_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the Env Feature. It formats as `<environment_id>:<env_feature_name>`.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The status of the feature.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetEnvPodMonitorsMonitorResult(dict):
+    def __init__(__self__, *,
+                 config_yaml: _builtins.str,
+                 env_pod_monitor_name: _builtins.str,
+                 environment_id: _builtins.str,
+                 id: _builtins.str,
+                 namespace: _builtins.str,
+                 region_id: _builtins.str,
+                 status: _builtins.str):
+        """
+        :param _builtins.str config_yaml: The YAML configuration string.
+        :param _builtins.str env_pod_monitor_name: The name of the PodMonitor.
+        :param _builtins.str environment_id: The environment ID.
+        :param _builtins.str id: The ID of the PodMonitor. It formats as `<environment_id>:<namespace>:<env_pod_monitor_name>`.
+        :param _builtins.str namespace: The namespace.
+        :param _builtins.str region_id: The region ID.
+        :param _builtins.str status: The status of the PodMonitor.
+        """
+        pulumi.set(__self__, "config_yaml", config_yaml)
+        pulumi.set(__self__, "env_pod_monitor_name", env_pod_monitor_name)
+        pulumi.set(__self__, "environment_id", environment_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="configYaml")
+    def config_yaml(self) -> _builtins.str:
+        """
+        The YAML configuration string.
+        """
+        return pulumi.get(self, "config_yaml")
+
+    @_builtins.property
+    @pulumi.getter(name="envPodMonitorName")
+    def env_pod_monitor_name(self) -> _builtins.str:
+        """
+        The name of the PodMonitor.
+        """
+        return pulumi.get(self, "env_pod_monitor_name")
+
+    @_builtins.property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> _builtins.str:
+        """
+        The environment ID.
+        """
+        return pulumi.get(self, "environment_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the PodMonitor. It formats as `<environment_id>:<namespace>:<env_pod_monitor_name>`.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> _builtins.str:
+        """
+        The namespace.
+        """
+        return pulumi.get(self, "namespace")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> _builtins.str:
+        """
+        The region ID.
+        """
+        return pulumi.get(self, "region_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The status of the PodMonitor.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetEnvServiceMonitorsMonitorResult(dict):
+    def __init__(__self__, *,
+                 config_yaml: _builtins.str,
+                 env_service_monitor_name: _builtins.str,
+                 environment_id: _builtins.str,
+                 id: _builtins.str,
+                 namespace: _builtins.str,
+                 region_id: _builtins.str,
+                 status: _builtins.str):
+        """
+        :param _builtins.str config_yaml: The YAML configuration string.
+        :param _builtins.str env_service_monitor_name: The name of the ServiceMonitor.
+        :param _builtins.str environment_id: The environment ID.
+        :param _builtins.str id: The ID of the ServiceMonitor. It formats as `<environment_id>:<namespace>:<env_service_monitor_name>`.
+        :param _builtins.str namespace: The namespace.
+        :param _builtins.str region_id: The region ID.
+        :param _builtins.str status: The status of the ServiceMonitor.
+        """
+        pulumi.set(__self__, "config_yaml", config_yaml)
+        pulumi.set(__self__, "env_service_monitor_name", env_service_monitor_name)
+        pulumi.set(__self__, "environment_id", environment_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="configYaml")
+    def config_yaml(self) -> _builtins.str:
+        """
+        The YAML configuration string.
+        """
+        return pulumi.get(self, "config_yaml")
+
+    @_builtins.property
+    @pulumi.getter(name="envServiceMonitorName")
+    def env_service_monitor_name(self) -> _builtins.str:
+        """
+        The name of the ServiceMonitor.
+        """
+        return pulumi.get(self, "env_service_monitor_name")
+
+    @_builtins.property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> _builtins.str:
+        """
+        The environment ID.
+        """
+        return pulumi.get(self, "environment_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the ServiceMonitor. It formats as `<environment_id>:<namespace>:<env_service_monitor_name>`.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> _builtins.str:
+        """
+        The namespace.
+        """
+        return pulumi.get(self, "namespace")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> _builtins.str:
+        """
+        The region ID.
+        """
+        return pulumi.get(self, "region_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The status of the ServiceMonitor.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetEnvironmentsEnvironmentResult(dict):
+    def __init__(__self__, *,
+                 bind_resource_id: _builtins.str,
+                 bind_resource_type: _builtins.str,
+                 bind_vpc_cidr: _builtins.str,
+                 environment_id: _builtins.str,
+                 environment_name: _builtins.str,
+                 environment_type: _builtins.str,
+                 grafana_datasource_uid: _builtins.str,
+                 grafana_folder_uid: _builtins.str,
+                 id: _builtins.str,
+                 managed_type: _builtins.str,
+                 prometheus_instance_id: _builtins.str,
+                 region_id: _builtins.str,
+                 resource_group_id: _builtins.str,
+                 tags: Mapping[str, _builtins.str],
+                 user_id: _builtins.str):
+        """
+        :param _builtins.str bind_resource_id: The ID of the resource bound to the environment instance.
+        :param _builtins.str bind_resource_type: The resource type.
+        :param _builtins.str bind_vpc_cidr: The CIDR block that is bound to the VPC.
+        :param _builtins.str environment_id: The ID of the environment instance.
+        :param _builtins.str environment_name: The name of the environment instance.
+        :param _builtins.str environment_type: The environment type. Valid values: `CS`, `ECS`, `Cloud`.
+        :param _builtins.str grafana_datasource_uid: The unique ID of the Grafana data source.
+        :param _builtins.str grafana_folder_uid: The unique ID of the Grafana directory.
+        :param _builtins.str id: The ID of the environment instance.
+        :param _builtins.str managed_type: Indicates whether agents or exporters are managed.
+        :param _builtins.str prometheus_instance_id: The ID of the Prometheus instance.
+        :param _builtins.str region_id: The region ID.
+        :param _builtins.str resource_group_id: The ID of the resource group.
+        :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
+        :param _builtins.str user_id: The user ID.
+        """
+        pulumi.set(__self__, "bind_resource_id", bind_resource_id)
+        pulumi.set(__self__, "bind_resource_type", bind_resource_type)
+        pulumi.set(__self__, "bind_vpc_cidr", bind_vpc_cidr)
+        pulumi.set(__self__, "environment_id", environment_id)
+        pulumi.set(__self__, "environment_name", environment_name)
+        pulumi.set(__self__, "environment_type", environment_type)
+        pulumi.set(__self__, "grafana_datasource_uid", grafana_datasource_uid)
+        pulumi.set(__self__, "grafana_folder_uid", grafana_folder_uid)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "managed_type", managed_type)
+        pulumi.set(__self__, "prometheus_instance_id", prometheus_instance_id)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "user_id", user_id)
+
+    @_builtins.property
+    @pulumi.getter(name="bindResourceId")
+    def bind_resource_id(self) -> _builtins.str:
+        """
+        The ID of the resource bound to the environment instance.
+        """
+        return pulumi.get(self, "bind_resource_id")
+
+    @_builtins.property
+    @pulumi.getter(name="bindResourceType")
+    def bind_resource_type(self) -> _builtins.str:
+        """
+        The resource type.
+        """
+        return pulumi.get(self, "bind_resource_type")
+
+    @_builtins.property
+    @pulumi.getter(name="bindVpcCidr")
+    def bind_vpc_cidr(self) -> _builtins.str:
+        """
+        The CIDR block that is bound to the VPC.
+        """
+        return pulumi.get(self, "bind_vpc_cidr")
+
+    @_builtins.property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> _builtins.str:
+        """
+        The ID of the environment instance.
+        """
+        return pulumi.get(self, "environment_id")
+
+    @_builtins.property
+    @pulumi.getter(name="environmentName")
+    def environment_name(self) -> _builtins.str:
+        """
+        The name of the environment instance.
+        """
+        return pulumi.get(self, "environment_name")
+
+    @_builtins.property
+    @pulumi.getter(name="environmentType")
+    def environment_type(self) -> _builtins.str:
+        """
+        The environment type. Valid values: `CS`, `ECS`, `Cloud`.
+        """
+        return pulumi.get(self, "environment_type")
+
+    @_builtins.property
+    @pulumi.getter(name="grafanaDatasourceUid")
+    def grafana_datasource_uid(self) -> _builtins.str:
+        """
+        The unique ID of the Grafana data source.
+        """
+        return pulumi.get(self, "grafana_datasource_uid")
+
+    @_builtins.property
+    @pulumi.getter(name="grafanaFolderUid")
+    def grafana_folder_uid(self) -> _builtins.str:
+        """
+        The unique ID of the Grafana directory.
+        """
+        return pulumi.get(self, "grafana_folder_uid")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the environment instance.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="managedType")
+    def managed_type(self) -> _builtins.str:
+        """
+        Indicates whether agents or exporters are managed.
+        """
+        return pulumi.get(self, "managed_type")
+
+    @_builtins.property
+    @pulumi.getter(name="prometheusInstanceId")
+    def prometheus_instance_id(self) -> _builtins.str:
+        """
+        The ID of the Prometheus instance.
+        """
+        return pulumi.get(self, "prometheus_instance_id")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> _builtins.str:
+        """
+        The region ID.
+        """
+        return pulumi.get(self, "region_id")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> _builtins.str:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> _builtins.str:
+        """
+        The user ID.
+        """
+        return pulumi.get(self, "user_id")
 
 
 @pulumi.output_type

@@ -13,6 +13,47 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.157.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const example = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const exampleNetwork = new alicloud.vpc.Network("example", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const exampleSwitch: alicloud.vpc.Switch[] = [];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     exampleSwitch.push(new alicloud.vpc.Switch(`example-${range.value}`, {
+ *         vpcId: exampleNetwork.id,
+ *         cidrBlock: std.format({
+ *             input: "172.16.%d.0/21",
+ *             args: [(range.value + 1) * 16],
+ *         }).then(invoke => invoke.result),
+ *         zoneId: example.then(example => example.zones[range.value].id),
+ *         vswitchName: std.format({
+ *             input: "terraform_example_%d",
+ *             args: [range.value + 1],
+ *         }).then(invoke => invoke.result),
+ *     }));
+ * }
+ * const exampleGateway = new alicloud.mse.Gateway("example", {
+ *     gatewayName: "terraform-example",
+ *     replica: 2,
+ *     spec: "MSE_GTW_2_4_200_c",
+ *     vswitchId: exampleSwitch[0].id,
+ *     backupVswitchId: exampleSwitch[1].id,
+ *     vpcId: exampleNetwork.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Microservice Engine (MSE) Gateway can be imported using the id, e.g.

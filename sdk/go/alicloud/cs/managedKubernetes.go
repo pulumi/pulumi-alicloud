@@ -59,6 +59,8 @@ type ManagedKubernetes struct {
 	ApiAudiences pulumi.StringArrayOutput `pulumi:"apiAudiences"`
 	// Audit log configuration. See `auditLogConfig` below.
 	AuditLogConfig ManagedKubernetesAuditLogConfigOutput `pulumi:"auditLogConfig"`
+	// Auto mode cluster configuration. See `autoMode` below.
+	AutoMode ManagedKubernetesAutoModePtrOutput `pulumi:"autoMode"`
 	// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `cs.getClusterCredential` to replace it.
 	//
 	// Deprecated: Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
@@ -110,7 +112,7 @@ type ManagedKubernetes struct {
 	//
 	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
 	LoadBalancerSpec pulumi.StringOutput `pulumi:"loadBalancerSpec"`
-	// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
+	// The cluster maintenance window. Managed node pool will use it. See `maintenanceWindow` below.
 	MaintenanceWindow ManagedKubernetesMaintenanceWindowOutput `pulumi:"maintenanceWindow"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name       pulumi.StringOutput    `pulumi:"name"`
@@ -121,7 +123,7 @@ type ManagedKubernetes struct {
 	NewNatGateway pulumi.BoolPtrOutput `pulumi:"newNatGateway"`
 	// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
 	NodeCidrMask pulumi.IntPtrOutput `pulumi:"nodeCidrMask"`
-	// The cluster automatic operation policy. See `operationPolicy` below.
+	// The cluster automatic operation policy, only works when `maintenanceWindow` is enabled. See `operationPolicy` below.
 	OperationPolicy ManagedKubernetesOperationPolicyOutput `pulumi:"operationPolicy"`
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr pulumi.StringPtrOutput `pulumi:"podCidr"`
@@ -229,6 +231,8 @@ type managedKubernetesState struct {
 	ApiAudiences []string `pulumi:"apiAudiences"`
 	// Audit log configuration. See `auditLogConfig` below.
 	AuditLogConfig *ManagedKubernetesAuditLogConfig `pulumi:"auditLogConfig"`
+	// Auto mode cluster configuration. See `autoMode` below.
+	AutoMode *ManagedKubernetesAutoMode `pulumi:"autoMode"`
 	// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `cs.getClusterCredential` to replace it.
 	//
 	// Deprecated: Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
@@ -280,7 +284,7 @@ type managedKubernetesState struct {
 	//
 	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
 	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
-	// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
+	// The cluster maintenance window. Managed node pool will use it. See `maintenanceWindow` below.
 	MaintenanceWindow *ManagedKubernetesMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name       *string `pulumi:"name"`
@@ -291,7 +295,7 @@ type managedKubernetesState struct {
 	NewNatGateway *bool `pulumi:"newNatGateway"`
 	// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
 	NodeCidrMask *int `pulumi:"nodeCidrMask"`
-	// The cluster automatic operation policy. See `operationPolicy` below.
+	// The cluster automatic operation policy, only works when `maintenanceWindow` is enabled. See `operationPolicy` below.
 	OperationPolicy *ManagedKubernetesOperationPolicy `pulumi:"operationPolicy"`
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr *string `pulumi:"podCidr"`
@@ -370,6 +374,8 @@ type ManagedKubernetesState struct {
 	ApiAudiences pulumi.StringArrayInput
 	// Audit log configuration. See `auditLogConfig` below.
 	AuditLogConfig ManagedKubernetesAuditLogConfigPtrInput
+	// Auto mode cluster configuration. See `autoMode` below.
+	AutoMode ManagedKubernetesAutoModePtrInput
 	// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `cs.getClusterCredential` to replace it.
 	//
 	// Deprecated: Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
@@ -421,7 +427,7 @@ type ManagedKubernetesState struct {
 	//
 	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
 	LoadBalancerSpec pulumi.StringPtrInput
-	// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
+	// The cluster maintenance window. Managed node pool will use it. See `maintenanceWindow` below.
 	MaintenanceWindow ManagedKubernetesMaintenanceWindowPtrInput
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name       pulumi.StringPtrInput
@@ -432,7 +438,7 @@ type ManagedKubernetesState struct {
 	NewNatGateway pulumi.BoolPtrInput
 	// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
 	NodeCidrMask pulumi.IntPtrInput
-	// The cluster automatic operation policy. See `operationPolicy` below.
+	// The cluster automatic operation policy, only works when `maintenanceWindow` is enabled. See `operationPolicy` below.
 	OperationPolicy ManagedKubernetesOperationPolicyPtrInput
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr pulumi.StringPtrInput
@@ -515,6 +521,8 @@ type managedKubernetesArgs struct {
 	ApiAudiences []string `pulumi:"apiAudiences"`
 	// Audit log configuration. See `auditLogConfig` below.
 	AuditLogConfig *ManagedKubernetesAuditLogConfig `pulumi:"auditLogConfig"`
+	// Auto mode cluster configuration. See `autoMode` below.
+	AutoMode *ManagedKubernetesAutoMode `pulumi:"autoMode"`
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 	//
 	// Deprecated: Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
@@ -560,7 +568,7 @@ type managedKubernetesArgs struct {
 	//
 	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
 	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
-	// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
+	// The cluster maintenance window. Managed node pool will use it. See `maintenanceWindow` below.
 	MaintenanceWindow *ManagedKubernetesMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name       *string `pulumi:"name"`
@@ -569,7 +577,7 @@ type managedKubernetesArgs struct {
 	NewNatGateway *bool `pulumi:"newNatGateway"`
 	// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
 	NodeCidrMask *int `pulumi:"nodeCidrMask"`
-	// The cluster automatic operation policy. See `operationPolicy` below.
+	// The cluster automatic operation policy, only works when `maintenanceWindow` is enabled. See `operationPolicy` below.
 	OperationPolicy *ManagedKubernetesOperationPolicy `pulumi:"operationPolicy"`
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr *string `pulumi:"podCidr"`
@@ -637,6 +645,8 @@ type ManagedKubernetesArgs struct {
 	ApiAudiences pulumi.StringArrayInput
 	// Audit log configuration. See `auditLogConfig` below.
 	AuditLogConfig ManagedKubernetesAuditLogConfigPtrInput
+	// Auto mode cluster configuration. See `autoMode` below.
+	AutoMode ManagedKubernetesAutoModePtrInput
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 	//
 	// Deprecated: Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
@@ -682,7 +692,7 @@ type ManagedKubernetesArgs struct {
 	//
 	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
 	LoadBalancerSpec pulumi.StringPtrInput
-	// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
+	// The cluster maintenance window. Managed node pool will use it. See `maintenanceWindow` below.
 	MaintenanceWindow ManagedKubernetesMaintenanceWindowPtrInput
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name       pulumi.StringPtrInput
@@ -691,7 +701,7 @@ type ManagedKubernetesArgs struct {
 	NewNatGateway pulumi.BoolPtrInput
 	// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
 	NodeCidrMask pulumi.IntPtrInput
-	// The cluster automatic operation policy. See `operationPolicy` below.
+	// The cluster automatic operation policy, only works when `maintenanceWindow` is enabled. See `operationPolicy` below.
 	OperationPolicy ManagedKubernetesOperationPolicyPtrInput
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr pulumi.StringPtrInput
@@ -853,6 +863,11 @@ func (o ManagedKubernetesOutput) AuditLogConfig() ManagedKubernetesAuditLogConfi
 	return o.ApplyT(func(v *ManagedKubernetes) ManagedKubernetesAuditLogConfigOutput { return v.AuditLogConfig }).(ManagedKubernetesAuditLogConfigOutput)
 }
 
+// Auto mode cluster configuration. See `autoMode` below.
+func (o ManagedKubernetesOutput) AutoMode() ManagedKubernetesAutoModePtrOutput {
+	return o.ApplyT(func(v *ManagedKubernetes) ManagedKubernetesAutoModePtrOutput { return v.AutoMode }).(ManagedKubernetesAutoModePtrOutput)
+}
+
 // (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `cs.getClusterCredential` to replace it.
 //
 // Deprecated: Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
@@ -958,7 +973,7 @@ func (o ManagedKubernetesOutput) LoadBalancerSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringOutput { return v.LoadBalancerSpec }).(pulumi.StringOutput)
 }
 
-// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
+// The cluster maintenance window. Managed node pool will use it. See `maintenanceWindow` below.
 func (o ManagedKubernetesOutput) MaintenanceWindow() ManagedKubernetesMaintenanceWindowOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) ManagedKubernetesMaintenanceWindowOutput { return v.MaintenanceWindow }).(ManagedKubernetesMaintenanceWindowOutput)
 }
@@ -987,7 +1002,7 @@ func (o ManagedKubernetesOutput) NodeCidrMask() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.IntPtrOutput { return v.NodeCidrMask }).(pulumi.IntPtrOutput)
 }
 
-// The cluster automatic operation policy. See `operationPolicy` below.
+// The cluster automatic operation policy, only works when `maintenanceWindow` is enabled. See `operationPolicy` below.
 func (o ManagedKubernetesOutput) OperationPolicy() ManagedKubernetesOperationPolicyOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) ManagedKubernetesOperationPolicyOutput { return v.OperationPolicy }).(ManagedKubernetesOperationPolicyOutput)
 }

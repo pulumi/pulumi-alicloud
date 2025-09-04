@@ -18,6 +18,110 @@ import (
 //
 // > **NOTE:** Available since v1.234.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/gwlb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			regionId := "cn-wulanchabu"
+//			if param := cfg.Get("regionId"); param != "" {
+//				regionId = param
+//			}
+//			zoneId2 := "cn-wulanchabu-c"
+//			if param := cfg.Get("zoneId2"); param != "" {
+//				zoneId2 = param
+//			}
+//			zoneId1 := "cn-wulanchabu-b"
+//			if param := cfg.Get("zoneId1"); param != "" {
+//				zoneId1 = param
+//			}
+//			_, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaulti9Axhl, err := vpc.NewNetwork(ctx, "defaulti9Axhl", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("10.0.0.0/8"),
+//				VpcName:   pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s1",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			default9NaKmL, err := vpc.NewSwitch(ctx, "default9NaKmL", &vpc.SwitchArgs{
+//				VpcId:       defaulti9Axhl.ID(),
+//				ZoneId:      pulumi.String(zoneId1),
+//				CidrBlock:   pulumi.String("10.0.0.0/24"),
+//				VswitchName: pulumi.String(invokeFormat.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat1, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s2",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewSwitch(ctx, "defaultH4pKT4", &vpc.SwitchArgs{
+//				VpcId:       defaulti9Axhl.ID(),
+//				ZoneId:      pulumi.String(zoneId2),
+//				CidrBlock:   pulumi.String("10.0.1.0/24"),
+//				VswitchName: pulumi.String(invokeFormat1.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gwlb.NewLoadBalancer(ctx, "default", &gwlb.LoadBalancerArgs{
+//				VpcId:            defaulti9Axhl.ID(),
+//				LoadBalancerName: pulumi.String(name),
+//				ZoneMappings: gwlb.LoadBalancerZoneMappingArray{
+//					&gwlb.LoadBalancerZoneMappingArgs{
+//						VswitchId: default9NaKmL.ID(),
+//						ZoneId:    pulumi.String(zoneId1),
+//					},
+//				},
+//				AddressIpVersion: pulumi.String("Ipv4"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // GWLB Load Balancer can be imported using the id, e.g.

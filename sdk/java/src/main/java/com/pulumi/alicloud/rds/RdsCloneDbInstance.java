@@ -367,14 +367,14 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="dbInstanceDescription", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> dbInstanceDescription;
+    private Output<String> dbInstanceDescription;
 
     /**
      * @return The db instance description.
      * 
      */
-    public Output<Optional<String>> dbInstanceDescription() {
-        return Codegen.optional(this.dbInstanceDescription);
+    public Output<String> dbInstanceDescription() {
+        return this.dbInstanceDescription;
     }
     /**
      * The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
@@ -401,6 +401,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * * **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
      * * **cloud_essd2**: ESSDs of PL2
      * * **cloud_essd3**: ESSDs of PL3
+     * * **general_essd**: general ESSDS Available since v1.258.0
      * 
      */
     @Export(name="dbInstanceStorageType", refs={String.class}, tree="[0]")
@@ -413,6 +414,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * * **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
      * * **cloud_essd2**: ESSDs of PL2
      * * **cloud_essd3**: ESSDs of PL3
+     * * **general_essd**: general ESSDS Available since v1.258.0
      * 
      */
     public Output<String> dbInstanceStorageType() {

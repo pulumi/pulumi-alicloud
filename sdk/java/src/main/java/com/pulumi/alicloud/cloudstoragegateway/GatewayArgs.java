@@ -78,17 +78,9 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         return this.location;
     }
 
-    /**
-     * The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.233.0, `payment_type` can be set to `Subscription`.
-     * 
-     */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
-    /**
-     * @return The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.233.0, `payment_type` can be set to `Subscription`.
-     * 
-     */
     public Optional<Output<String>> paymentType() {
         return Optional.ofNullable(this.paymentType);
     }
@@ -317,23 +309,11 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
             return location(Output.of(location));
         }
 
-        /**
-         * @param paymentType The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.233.0, `payment_type` can be set to `Subscription`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder paymentType(@Nullable Output<String> paymentType) {
             $.paymentType = paymentType;
             return this;
         }
 
-        /**
-         * @param paymentType The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.233.0, `payment_type` can be set to `Subscription`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder paymentType(String paymentType) {
             return paymentType(Output.of(paymentType));
         }

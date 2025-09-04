@@ -353,7 +353,7 @@ class RouteEntry(pulumi.CustomResource):
             system_disk_category="cloud_efficiency",
             vswitch_id=default_switch.id,
             instance_name=name)
-        foo = alicloud.vpc.RouteEntry("foo",
+        default_route_entry = alicloud.vpc.RouteEntry("default",
             route_table_id=default_network.route_table_id,
             destination_cidrblock="172.11.1.1/32",
             nexthop_type="Instance",
@@ -366,6 +366,8 @@ class RouteEntry(pulumi.CustomResource):
         to create a VPC, several VSwitches and add several route entries one-click.
 
         ## Import
+
+        Route Entry can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/routeEntry:RouteEntry example <route_table_id>:<router_id>:<destination_cidrblock>:<nexthop_type>:<nexthop_id>
@@ -447,7 +449,7 @@ class RouteEntry(pulumi.CustomResource):
             system_disk_category="cloud_efficiency",
             vswitch_id=default_switch.id,
             instance_name=name)
-        foo = alicloud.vpc.RouteEntry("foo",
+        default_route_entry = alicloud.vpc.RouteEntry("default",
             route_table_id=default_network.route_table_id,
             destination_cidrblock="172.11.1.1/32",
             nexthop_type="Instance",
@@ -460,6 +462,8 @@ class RouteEntry(pulumi.CustomResource):
         to create a VPC, several VSwitches and add several route entries one-click.
 
         ## Import
+
+        Route Entry can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/routeEntry:RouteEntry example <route_table_id>:<router_id>:<destination_cidrblock>:<nexthop_type>:<nexthop_id>

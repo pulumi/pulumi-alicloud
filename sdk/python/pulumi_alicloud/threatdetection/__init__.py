@@ -9,6 +9,7 @@ import typing
 from .anti_brute_force_rule import *
 from .asset_bind import *
 from .asset_selection_config import *
+from .attack_path_sensitive_asset_config import *
 from .backup_policy import *
 from .baseline_strategy import *
 from .client_file_protect import *

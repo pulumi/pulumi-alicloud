@@ -99,8 +99,8 @@ namespace Pulumi.AliCloud.Cms
     ///         EffectiveInterval = "06:00-20:00",
     ///         MetricDimensions = defaultInstance.Id.Apply(id =&gt; @$"  [
     ///     {{
-    ///       ""instanceId"": ""{id}"",
-    ///       ""device"": ""/dev/vda1""
+    ///       \""instanceId\"": \""{id}\"",
+    ///       \""device\"": \""/dev/vda1\""
     ///     }}
     ///   ]
     /// "),

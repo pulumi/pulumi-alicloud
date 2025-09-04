@@ -38,8 +38,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.integer;
- * import com.pulumi.random.integerArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.ram.Role;
@@ -86,20 +86,20 @@ import javax.annotation.Nullable;
  *         var role = new Role("role", RoleArgs.builder()
  *             .name(String.format("example-role-%s", default_.result()))
  *             .document("""
- * 		{
- * 		  "Statement": [
- * 			{
- * 			  "Action": "sts:AssumeRole",
- * 			  "Effect": "Allow",
- * 			  "Principal": {
- * 				"Service": [
- * 				  "oss.aliyuncs.com"
- * 				]
- * 			  }
- * 			}
- * 		  ],
- * 		  "Version": "1"
- * 		}
+ * \t\t{
+ * \t\t  \"Statement\": [
+ * \t\t\t{
+ * \t\t\t  \"Action\": \"sts:AssumeRole\",
+ * \t\t\t  \"Effect\": \"Allow\",
+ * \t\t\t  \"Principal\": {
+ * \t\t\t\t\"Service\": [
+ * \t\t\t\t  \"oss.aliyuncs.com\"
+ * \t\t\t\t]
+ * \t\t\t  }
+ * \t\t\t}
+ * \t\t  ],
+ * \t\t  \"Version\": \"1\"
+ * \t\t}
  *             """)
  *             .description("this is a test")
  *             .force(true)
@@ -108,20 +108,20 @@ import javax.annotation.Nullable;
  *         var policy = new Policy("policy", PolicyArgs.builder()
  *             .policyName(String.format("example-policy-%s", default_.result()))
  *             .policyDocument("""
- * 		{
- * 		  "Statement": [
- * 			{
- * 			  "Action": [
- * 				"*"
- * 			  ],
- * 			  "Effect": "Allow",
- * 			  "Resource": [
- * 				"*"
- * 			  ]
- * 			}
- * 		  ],
- * 			"Version": "1"
- * 		}
+ * \t\t{
+ * \t\t  \"Statement\": [
+ * \t\t\t{
+ * \t\t\t  \"Action\": [
+ * \t\t\t\t\"*\"
+ * \t\t\t  ],
+ * \t\t\t  \"Effect\": \"Allow\",
+ * \t\t\t  \"Resource\": [
+ * \t\t\t\t\"*\"
+ * \t\t\t  ]
+ * \t\t\t}
+ * \t\t  ],
+ * \t\t\t\"Version\": \"1\"
+ * \t\t}
  *             """)
  *             .description("this is a policy test")
  *             .force(true)

@@ -137,6 +137,8 @@ type ShardingInstance struct {
 	DbInstanceReleaseProtection pulumi.BoolPtrOutput `pulumi:"dbInstanceReleaseProtection"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
+	// The list of Global Security Group Ids.
+	GlobalSecurityGroupLists pulumi.StringArrayOutput `pulumi:"globalSecurityGroupLists"`
 	// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
 	HiddenZoneId pulumi.StringPtrOutput `pulumi:"hiddenZoneId"`
 	// The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
@@ -259,6 +261,8 @@ type shardingInstanceState struct {
 	DbInstanceReleaseProtection *bool `pulumi:"dbInstanceReleaseProtection"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
 	EngineVersion *string `pulumi:"engineVersion"`
+	// The list of Global Security Group Ids.
+	GlobalSecurityGroupLists []string `pulumi:"globalSecurityGroupLists"`
 	// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
 	HiddenZoneId *string `pulumi:"hiddenZoneId"`
 	// The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
@@ -336,6 +340,8 @@ type ShardingInstanceState struct {
 	DbInstanceReleaseProtection pulumi.BoolPtrInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
 	EngineVersion pulumi.StringPtrInput
+	// The list of Global Security Group Ids.
+	GlobalSecurityGroupLists pulumi.StringArrayInput
 	// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
 	HiddenZoneId pulumi.StringPtrInput
 	// The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
@@ -417,6 +423,8 @@ type shardingInstanceArgs struct {
 	DbInstanceReleaseProtection *bool `pulumi:"dbInstanceReleaseProtection"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
 	EngineVersion string `pulumi:"engineVersion"`
+	// The list of Global Security Group Ids.
+	GlobalSecurityGroupLists []string `pulumi:"globalSecurityGroupLists"`
 	// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
 	HiddenZoneId *string `pulumi:"hiddenZoneId"`
 	// The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
@@ -493,6 +501,8 @@ type ShardingInstanceArgs struct {
 	DbInstanceReleaseProtection pulumi.BoolPtrInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
 	EngineVersion pulumi.StringInput
+	// The list of Global Security Group Ids.
+	GlobalSecurityGroupLists pulumi.StringArrayInput
 	// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
 	HiddenZoneId pulumi.StringPtrInput
 	// The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
@@ -679,6 +689,11 @@ func (o ShardingInstanceOutput) DbInstanceReleaseProtection() pulumi.BoolPtrOutp
 // Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
 func (o ShardingInstanceOutput) EngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.EngineVersion }).(pulumi.StringOutput)
+}
+
+// The list of Global Security Group Ids.
+func (o ShardingInstanceOutput) GlobalSecurityGroupLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringArrayOutput { return v.GlobalSecurityGroupLists }).(pulumi.StringArrayOutput)
 }
 
 // Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.

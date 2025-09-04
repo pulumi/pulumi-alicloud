@@ -15,6 +15,107 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** You can only configure either a whitelist or a blacklist for listener, not at the same time.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const _default = alicloud.alb.getZones({});
+ * const defaultGetResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch: alicloud.vpc.Switch[] = [];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     defaultSwitch.push(new alicloud.vpc.Switch(`default-${range.value}`, {
+ *         vpcId: defaultNetwork.id,
+ *         cidrBlock: std.format({
+ *             input: "10.4.%d.0/24",
+ *             args: [range.value + 1],
+ *         }).then(invoke => invoke.result),
+ *         zoneId: _default.then(_default => _default.zones[range.value + 3].id),
+ *         vswitchName: std.format({
+ *             input: `${name}_%d`,
+ *             args: [range.value + 1],
+ *         }).then(invoke => invoke.result),
+ *     }));
+ * }
+ * const defaultLoadBalancer = new alicloud.alb.LoadBalancer("default", {
+ *     vpcId: defaultNetwork.id,
+ *     addressType: "Internet",
+ *     addressAllocatedMode: "Fixed",
+ *     loadBalancerName: name,
+ *     loadBalancerEdition: "Standard",
+ *     resourceGroupId: defaultGetResourceGroups.then(defaultGetResourceGroups => defaultGetResourceGroups.groups?.[0]?.id),
+ *     loadBalancerBillingConfig: {
+ *         payType: "PayAsYouGo",
+ *     },
+ *     tags: {
+ *         Created: "TF",
+ *     },
+ *     zoneMappings: [
+ *         {
+ *             vswitchId: defaultSwitch[0].id,
+ *             zoneId: defaultSwitch[0].zoneId,
+ *         },
+ *         {
+ *             vswitchId: defaultSwitch[1].id,
+ *             zoneId: defaultSwitch[1].zoneId,
+ *         },
+ *     ],
+ * });
+ * const defaultServerGroup = new alicloud.alb.ServerGroup("default", {
+ *     protocol: "HTTP",
+ *     vpcId: defaultNetwork.id,
+ *     serverGroupName: name,
+ *     resourceGroupId: defaultGetResourceGroups.then(defaultGetResourceGroups => defaultGetResourceGroups.groups?.[0]?.id),
+ *     healthCheckConfig: {
+ *         healthCheckEnabled: false,
+ *     },
+ *     stickySessionConfig: {
+ *         stickySessionEnabled: false,
+ *     },
+ *     tags: {
+ *         Created: "TF",
+ *     },
+ * });
+ * const defaultListener = new alicloud.alb.Listener("default", {
+ *     loadBalancerId: defaultLoadBalancer.id,
+ *     listenerProtocol: "HTTP",
+ *     listenerPort: 80,
+ *     listenerDescription: name,
+ *     defaultActions: [{
+ *         type: "ForwardGroup",
+ *         forwardGroupConfig: {
+ *             serverGroupTuples: [{
+ *                 serverGroupId: defaultServerGroup.id,
+ *             }],
+ *         },
+ *     }],
+ * });
+ * const defaultAcl = new alicloud.alb.Acl("default", {
+ *     aclName: name,
+ *     resourceGroupId: defaultGetResourceGroups.then(defaultGetResourceGroups => defaultGetResourceGroups.groups?.[0]?.id),
+ * });
+ * const defaultAclEntryAttachment = new alicloud.alb.AclEntryAttachment("default", {
+ *     aclId: defaultAcl.id,
+ *     entry: "10.0.0.0/24",
+ *     description: name,
+ * });
+ * const defaultListenerAclAttachment = new alicloud.alb.ListenerAclAttachment("default", {
+ *     aclId: defaultAcl.id,
+ *     listenerId: defaultListener.id,
+ *     aclType: "White",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ALB Listener Acl Attachment can be imported using the id, e.g.

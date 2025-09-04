@@ -62,6 +62,7 @@ __all__ = [
     'V3FunctionInstanceLifecycleConfig',
     'V3FunctionInstanceLifecycleConfigInitializer',
     'V3FunctionInstanceLifecycleConfigPreStop',
+    'V3FunctionInvocationRestriction',
     'V3FunctionLogConfig',
     'V3FunctionNasConfig',
     'V3FunctionNasConfigMountPoint',
@@ -2452,6 +2453,66 @@ class V3FunctionInstanceLifecycleConfigPreStop(dict):
 
 
 @pulumi.output_type
+class V3FunctionInvocationRestriction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lastModifiedTime":
+            suggest = "last_modified_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in V3FunctionInvocationRestriction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        V3FunctionInvocationRestriction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        V3FunctionInvocationRestriction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disable: Optional[_builtins.bool] = None,
+                 last_modified_time: Optional[_builtins.str] = None,
+                 reason: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool disable: Whether invocation is disabled
+        :param _builtins.str last_modified_time: Last time the function was Updated
+        :param _builtins.str reason: Disable Reason
+        """
+        if disable is not None:
+            pulumi.set(__self__, "disable", disable)
+        if last_modified_time is not None:
+            pulumi.set(__self__, "last_modified_time", last_modified_time)
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+
+    @_builtins.property
+    @pulumi.getter
+    def disable(self) -> Optional[_builtins.bool]:
+        """
+        Whether invocation is disabled
+        """
+        return pulumi.get(self, "disable")
+
+    @_builtins.property
+    @pulumi.getter(name="lastModifiedTime")
+    def last_modified_time(self) -> Optional[_builtins.str]:
+        """
+        Last time the function was Updated
+        """
+        return pulumi.get(self, "last_modified_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def reason(self) -> Optional[_builtins.str]:
+        """
+        Disable Reason
+        """
+        return pulumi.get(self, "reason")
+
+
+@pulumi.output_type
 class V3FunctionLogConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -2791,7 +2852,7 @@ class V3FunctionTracingConfig(dict):
                  params: Optional[Mapping[str, _builtins.str]] = None,
                  type: Optional[_builtins.str] = None):
         """
-        :param Mapping[str, _builtins.str] params: Tracing parameters.
+        :param Mapping[str, _builtins.str] params: Tracing parameters
         :param _builtins.str type: The tracing protocol type. Currently, only Jaeger is supported.
         """
         if params is not None:
@@ -2803,7 +2864,7 @@ class V3FunctionTracingConfig(dict):
     @pulumi.getter
     def params(self) -> Optional[Mapping[str, _builtins.str]]:
         """
-        Tracing parameters.
+        Tracing parameters
         """
         return pulumi.get(self, "params")
 

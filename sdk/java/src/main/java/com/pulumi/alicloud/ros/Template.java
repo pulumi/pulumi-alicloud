@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *             .templateName("example_value")
  *             .templateBody("""
  *     {
- *     	"ROSTemplateFormatVersion": "2015-09-01"
+ *     \t\"ROSTemplateFormatVersion\": \"2015-09-01\"
  *     }
  *             """)
  *             .build());

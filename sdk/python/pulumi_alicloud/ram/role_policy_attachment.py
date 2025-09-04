@@ -163,19 +163,19 @@ class RolePolicyAttachment(pulumi.CustomResource):
         role = alicloud.ram.Role("role",
             name="roleName",
             document=\"\"\"    {
-              "Statement": [
+              \\"Statement\\": [
                 {
-                  "Action": "sts:AssumeRole",
-                  "Effect": "Allow",
-                  "Principal": {
-                    "Service": [
-                      "apigateway.aliyuncs.com", 
-                      "ecs.aliyuncs.com"
+                  \\"Action\\": \\"sts:AssumeRole\\",
+                  \\"Effect\\": \\"Allow\\",
+                  \\"Principal\\": {
+                    \\"Service\\": [
+                      \\"apigateway.aliyuncs.com\\", 
+                      \\"ecs.aliyuncs.com\\"
                     ]
                   }
                 }
               ],
-              "Version": "1"
+              \\"Version\\": \\"1\\"
             }
         \"\"\",
             description="this is a role test.")
@@ -185,20 +185,20 @@ class RolePolicyAttachment(pulumi.CustomResource):
         policy = alicloud.ram.Policy("policy",
             policy_name=f"tf-example-{default['result']}",
             policy_document=\"\"\"  {
-            "Statement": [
+            \\"Statement\\": [
               {
-                "Action": [
-                  "oss:ListObjects",
-                  "oss:GetObject"
+                \\"Action\\": [
+                  \\"oss:ListObjects\\",
+                  \\"oss:GetObject\\"
                 ],
-                "Effect": "Allow",
-                "Resource": [
-                  "acs:oss:*:*:mybucket",
-                  "acs:oss:*:*:mybucket/*"
+                \\"Effect\\": \\"Allow\\",
+                \\"Resource\\": [
+                  \\"acs:oss:*:*:mybucket\\",
+                  \\"acs:oss:*:*:mybucket/*\\"
                 ]
               }
             ],
-              "Version": "1"
+              \\"Version\\": \\"1\\"
           }
         \"\"\",
             description="this is a policy test")
@@ -250,19 +250,19 @@ class RolePolicyAttachment(pulumi.CustomResource):
         role = alicloud.ram.Role("role",
             name="roleName",
             document=\"\"\"    {
-              "Statement": [
+              \\"Statement\\": [
                 {
-                  "Action": "sts:AssumeRole",
-                  "Effect": "Allow",
-                  "Principal": {
-                    "Service": [
-                      "apigateway.aliyuncs.com", 
-                      "ecs.aliyuncs.com"
+                  \\"Action\\": \\"sts:AssumeRole\\",
+                  \\"Effect\\": \\"Allow\\",
+                  \\"Principal\\": {
+                    \\"Service\\": [
+                      \\"apigateway.aliyuncs.com\\", 
+                      \\"ecs.aliyuncs.com\\"
                     ]
                   }
                 }
               ],
-              "Version": "1"
+              \\"Version\\": \\"1\\"
             }
         \"\"\",
             description="this is a role test.")
@@ -272,20 +272,20 @@ class RolePolicyAttachment(pulumi.CustomResource):
         policy = alicloud.ram.Policy("policy",
             policy_name=f"tf-example-{default['result']}",
             policy_document=\"\"\"  {
-            "Statement": [
+            \\"Statement\\": [
               {
-                "Action": [
-                  "oss:ListObjects",
-                  "oss:GetObject"
+                \\"Action\\": [
+                  \\"oss:ListObjects\\",
+                  \\"oss:GetObject\\"
                 ],
-                "Effect": "Allow",
-                "Resource": [
-                  "acs:oss:*:*:mybucket",
-                  "acs:oss:*:*:mybucket/*"
+                \\"Effect\\": \\"Allow\\",
+                \\"Resource\\": [
+                  \\"acs:oss:*:*:mybucket\\",
+                  \\"acs:oss:*:*:mybucket/*\\"
                 ]
               }
             ],
-              "Version": "1"
+              \\"Version\\": \\"1\\"
           }
         \"\"\",
             description="this is a policy test")

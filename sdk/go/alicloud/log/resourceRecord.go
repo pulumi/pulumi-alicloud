@@ -40,21 +40,21 @@ import (
 //				Description: pulumi.String("user tf resource desc"),
 //				ExtInfo:     pulumi.String("{}"),
 //				Schema: pulumi.String(`    {
-//	      "schema": [
+//	      \"schema\": [
 //	        {
-//	          "column": "col1",
-//	          "desc": "col1   desc",
-//	          "ext_info": {
+//	          \"column\": \"col1\",
+//	          \"desc\": \"col1   desc\",
+//	          \"ext_info\": {
 //	          },
-//	          "required": true,
-//	          "type": "string"
+//	          \"required\": true,
+//	          \"type\": \"string\"
 //	        },
 //	        {
-//	          "column": "col2",
-//	          "desc": "col2   desc",
-//	          "ext_info": "optional",
-//	          "required": true,
-//	          "type": "string"
+//	          \"column\": \"col2\",
+//	          \"desc\": \"col2   desc\",
+//	          \"ext_info\": \"optional\",
+//	          \"required\": true,
+//	          \"type\": \"string\"
 //	        }
 //	      ]
 //	    }
@@ -70,16 +70,16 @@ import (
 //				RecordId:     pulumi.String("tf_user_example"),
 //				Tag:          pulumi.String("tf example"),
 //				Value: pulumi.String(`{
-//	  "user_name": "tf example",
-//	  "sms_enabled": true,
-//	  "phone": "18888888889",
-//	  "voice_enabled": false,
-//	  "email": [
-//	    "test@qq.com"
+//	  \"user_name\": \"tf example\",
+//	  \"sms_enabled\": true,
+//	  \"phone\": \"18888888889\",
+//	  \"voice_enabled\": false,
+//	  \"email\": [
+//	    \"test@qq.com\"
 //	  ],
-//	  "enabled": true,
-//	  "user_id": "tf_user",
-//	  "country_code": "86"
+//	  \"enabled\": true,
+//	  \"user_id\": \"tf_user\",
+//	  \"country_code\": \"86\"
 //	}
 //
 // `),

@@ -30,6 +30,11 @@ export type ServiceEndpointAcl = import("./serviceEndpointAcl").ServiceEndpointA
 export const ServiceEndpointAcl: typeof import("./serviceEndpointAcl").ServiceEndpointAcl = null as any;
 utilities.lazyLoad(exports, ["ServiceEndpointAcl"], () => require("./serviceEndpointAcl"));
 
+export { ServiceEventRuleArgs, ServiceEventRuleState } from "./serviceEventRule";
+export type ServiceEventRule = import("./serviceEventRule").ServiceEventRule;
+export const ServiceEventRule: typeof import("./serviceEventRule").ServiceEventRule = null as any;
+utilities.lazyLoad(exports, ["ServiceEventRule"], () => require("./serviceEventRule"));
+
 export { ServiceQueueArgs, ServiceQueueState } from "./serviceQueue";
 export type ServiceQueue = import("./serviceQueue").ServiceQueue;
 export const ServiceQueue: typeof import("./serviceQueue").ServiceQueue = null as any;
@@ -59,6 +64,8 @@ const _module = {
                 return new ServiceEndpoint(name, <any>undefined, { urn })
             case "alicloud:message/serviceEndpointAcl:ServiceEndpointAcl":
                 return new ServiceEndpointAcl(name, <any>undefined, { urn })
+            case "alicloud:message/serviceEventRule:ServiceEventRule":
+                return new ServiceEventRule(name, <any>undefined, { urn })
             case "alicloud:message/serviceQueue:ServiceQueue":
                 return new ServiceQueue(name, <any>undefined, { urn })
             case "alicloud:message/serviceService:ServiceService":
@@ -74,6 +81,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("alicloud", "message/serviceEndpoint", _module)
 pulumi.runtime.registerResourceModule("alicloud", "message/serviceEndpointAcl", _module)
+pulumi.runtime.registerResourceModule("alicloud", "message/serviceEventRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "message/serviceQueue", _module)
 pulumi.runtime.registerResourceModule("alicloud", "message/serviceService", _module)
 pulumi.runtime.registerResourceModule("alicloud", "message/serviceSubscription", _module)

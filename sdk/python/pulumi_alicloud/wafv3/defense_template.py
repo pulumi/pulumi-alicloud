@@ -26,31 +26,21 @@ class DefenseTemplateArgs:
                  template_origin: pulumi.Input[_builtins.str],
                  template_type: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_manager_resource_group_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 resource_manager_resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DefenseTemplate resource.
-        :param pulumi.Input[_builtins.str] defense_scene: The module to which the protection rule that you want to create belongs. Value:
-               - **waf_group**: the basic protection rule module.
-               - **antiscan**: the scan protection module.
-               - **ip_blacklist**: the IP address blacklist module.
-               - **custom_acl**: the custom rule module.
-               - **whitelist**: the whitelist module.
-               - **region_block**: the region blacklist module.
-               - **custom_response**: the custom response module.
-               - **cc**: the HTTP flood protection module.
-               - **tamperproof**: the website tamper-proofing module.
-               - **dlp**: the data leakage prevention module.
+        :param pulumi.Input[_builtins.str] defense_scene: The WAF protection scenario to be created. Valid values:
         :param pulumi.Input[_builtins.str] defense_template_name: The name of the protection rule template.
-        :param pulumi.Input[_builtins.str] instance_id: The ID of the Web Application Firewall (WAF) instance. .
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the Web Application Firewall (WAF) instance.
         :param pulumi.Input[_builtins.str] status: The status of the protection rule template. Valid values:
-               - **0**: disabled.
-               - **1**: enabled.
-        :param pulumi.Input[_builtins.str] template_origin: The origin of the protection rule template that you want to create. Set the value to **custom**. The value specifies that the protection rule template is a custom template. .
+        :param pulumi.Input[_builtins.str] template_origin: The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
         :param pulumi.Input[_builtins.str] template_type: The type of the protection rule template. Valid values:
                - **user_default:** default template.
                - **user_custom:** custom template.
-        :param pulumi.Input[_builtins.str] description: The description of the protection rule template. .
-        :param pulumi.Input[_builtins.str] resource_manager_resource_group_id: The ID of the Alibaba Cloud resource group. .
+        :param pulumi.Input[_builtins.str] description: The description of the protection rule template.
+        :param pulumi.Input[_builtins.str] resource_manager_resource_group_id: The ID of the Alibaba Cloud resource group.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
         """
         pulumi.set(__self__, "defense_scene", defense_scene)
         pulumi.set(__self__, "defense_template_name", defense_template_name)
@@ -62,22 +52,14 @@ class DefenseTemplateArgs:
             pulumi.set(__self__, "description", description)
         if resource_manager_resource_group_id is not None:
             pulumi.set(__self__, "resource_manager_resource_group_id", resource_manager_resource_group_id)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
 
     @_builtins.property
     @pulumi.getter(name="defenseScene")
     def defense_scene(self) -> pulumi.Input[_builtins.str]:
         """
-        The module to which the protection rule that you want to create belongs. Value:
-        - **waf_group**: the basic protection rule module.
-        - **antiscan**: the scan protection module.
-        - **ip_blacklist**: the IP address blacklist module.
-        - **custom_acl**: the custom rule module.
-        - **whitelist**: the whitelist module.
-        - **region_block**: the region blacklist module.
-        - **custom_response**: the custom response module.
-        - **cc**: the HTTP flood protection module.
-        - **tamperproof**: the website tamper-proofing module.
-        - **dlp**: the data leakage prevention module.
+        The WAF protection scenario to be created. Valid values:
         """
         return pulumi.get(self, "defense_scene")
 
@@ -101,7 +83,7 @@ class DefenseTemplateArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID of the Web Application Firewall (WAF) instance. .
+        The ID of the Web Application Firewall (WAF) instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -114,8 +96,6 @@ class DefenseTemplateArgs:
     def status(self) -> pulumi.Input[_builtins.str]:
         """
         The status of the protection rule template. Valid values:
-        - **0**: disabled.
-        - **1**: enabled.
         """
         return pulumi.get(self, "status")
 
@@ -127,7 +107,7 @@ class DefenseTemplateArgs:
     @pulumi.getter(name="templateOrigin")
     def template_origin(self) -> pulumi.Input[_builtins.str]:
         """
-        The origin of the protection rule template that you want to create. Set the value to **custom**. The value specifies that the protection rule template is a custom template. .
+        The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
         """
         return pulumi.get(self, "template_origin")
 
@@ -153,7 +133,7 @@ class DefenseTemplateArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of the protection rule template. .
+        The description of the protection rule template.
         """
         return pulumi.get(self, "description")
 
@@ -165,13 +145,25 @@ class DefenseTemplateArgs:
     @pulumi.getter(name="resourceManagerResourceGroupId")
     def resource_manager_resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the Alibaba Cloud resource group. .
+        The ID of the Alibaba Cloud resource group.
         """
         return pulumi.get(self, "resource_manager_resource_group_id")
 
     @resource_manager_resource_group_id.setter
     def resource_manager_resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "resource_manager_resource_group_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
+        """
+        return pulumi.get(self, "resources")
+
+    @resources.setter
+    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "resources", value)
 
 
 @pulumi.input_type
@@ -183,31 +175,21 @@ class _DefenseTemplateState:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_manager_resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  template_origin: Optional[pulumi.Input[_builtins.str]] = None,
                  template_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DefenseTemplate resources.
-        :param pulumi.Input[_builtins.str] defense_scene: The module to which the protection rule that you want to create belongs. Value:
-               - **waf_group**: the basic protection rule module.
-               - **antiscan**: the scan protection module.
-               - **ip_blacklist**: the IP address blacklist module.
-               - **custom_acl**: the custom rule module.
-               - **whitelist**: the whitelist module.
-               - **region_block**: the region blacklist module.
-               - **custom_response**: the custom response module.
-               - **cc**: the HTTP flood protection module.
-               - **tamperproof**: the website tamper-proofing module.
-               - **dlp**: the data leakage prevention module.
-        :param pulumi.Input[_builtins.int] defense_template_id: Template ID.
+        :param pulumi.Input[_builtins.str] defense_scene: The WAF protection scenario to be created. Valid values:
+        :param pulumi.Input[_builtins.int] defense_template_id: Template ID
         :param pulumi.Input[_builtins.str] defense_template_name: The name of the protection rule template.
-        :param pulumi.Input[_builtins.str] description: The description of the protection rule template. .
-        :param pulumi.Input[_builtins.str] instance_id: The ID of the Web Application Firewall (WAF) instance. .
-        :param pulumi.Input[_builtins.str] resource_manager_resource_group_id: The ID of the Alibaba Cloud resource group. .
+        :param pulumi.Input[_builtins.str] description: The description of the protection rule template.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the Web Application Firewall (WAF) instance.
+        :param pulumi.Input[_builtins.str] resource_manager_resource_group_id: The ID of the Alibaba Cloud resource group.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
         :param pulumi.Input[_builtins.str] status: The status of the protection rule template. Valid values:
-               - **0**: disabled.
-               - **1**: enabled.
-        :param pulumi.Input[_builtins.str] template_origin: The origin of the protection rule template that you want to create. Set the value to **custom**. The value specifies that the protection rule template is a custom template. .
+        :param pulumi.Input[_builtins.str] template_origin: The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
         :param pulumi.Input[_builtins.str] template_type: The type of the protection rule template. Valid values:
                - **user_default:** default template.
                - **user_custom:** custom template.
@@ -224,6 +206,8 @@ class _DefenseTemplateState:
             pulumi.set(__self__, "instance_id", instance_id)
         if resource_manager_resource_group_id is not None:
             pulumi.set(__self__, "resource_manager_resource_group_id", resource_manager_resource_group_id)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if template_origin is not None:
@@ -235,17 +219,7 @@ class _DefenseTemplateState:
     @pulumi.getter(name="defenseScene")
     def defense_scene(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The module to which the protection rule that you want to create belongs. Value:
-        - **waf_group**: the basic protection rule module.
-        - **antiscan**: the scan protection module.
-        - **ip_blacklist**: the IP address blacklist module.
-        - **custom_acl**: the custom rule module.
-        - **whitelist**: the whitelist module.
-        - **region_block**: the region blacklist module.
-        - **custom_response**: the custom response module.
-        - **cc**: the HTTP flood protection module.
-        - **tamperproof**: the website tamper-proofing module.
-        - **dlp**: the data leakage prevention module.
+        The WAF protection scenario to be created. Valid values:
         """
         return pulumi.get(self, "defense_scene")
 
@@ -257,7 +231,7 @@ class _DefenseTemplateState:
     @pulumi.getter(name="defenseTemplateId")
     def defense_template_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Template ID.
+        Template ID
         """
         return pulumi.get(self, "defense_template_id")
 
@@ -281,7 +255,7 @@ class _DefenseTemplateState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of the protection rule template. .
+        The description of the protection rule template.
         """
         return pulumi.get(self, "description")
 
@@ -293,7 +267,7 @@ class _DefenseTemplateState:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the Web Application Firewall (WAF) instance. .
+        The ID of the Web Application Firewall (WAF) instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -305,7 +279,7 @@ class _DefenseTemplateState:
     @pulumi.getter(name="resourceManagerResourceGroupId")
     def resource_manager_resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the Alibaba Cloud resource group. .
+        The ID of the Alibaba Cloud resource group.
         """
         return pulumi.get(self, "resource_manager_resource_group_id")
 
@@ -315,11 +289,21 @@ class _DefenseTemplateState:
 
     @_builtins.property
     @pulumi.getter
+    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
+        """
+        return pulumi.get(self, "resources")
+
+    @resources.setter
+    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "resources", value)
+
+    @_builtins.property
+    @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The status of the protection rule template. Valid values:
-        - **0**: disabled.
-        - **1**: enabled.
         """
         return pulumi.get(self, "status")
 
@@ -331,7 +315,7 @@ class _DefenseTemplateState:
     @pulumi.getter(name="templateOrigin")
     def template_origin(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The origin of the protection rule template that you want to create. Set the value to **custom**. The value specifies that the protection rule template is a custom template. .
+        The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
         """
         return pulumi.get(self, "template_origin")
 
@@ -365,6 +349,7 @@ class DefenseTemplate(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_manager_resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  template_origin: Optional[pulumi.Input[_builtins.str]] = None,
                  template_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -410,25 +395,14 @@ class DefenseTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] defense_scene: The module to which the protection rule that you want to create belongs. Value:
-               - **waf_group**: the basic protection rule module.
-               - **antiscan**: the scan protection module.
-               - **ip_blacklist**: the IP address blacklist module.
-               - **custom_acl**: the custom rule module.
-               - **whitelist**: the whitelist module.
-               - **region_block**: the region blacklist module.
-               - **custom_response**: the custom response module.
-               - **cc**: the HTTP flood protection module.
-               - **tamperproof**: the website tamper-proofing module.
-               - **dlp**: the data leakage prevention module.
+        :param pulumi.Input[_builtins.str] defense_scene: The WAF protection scenario to be created. Valid values:
         :param pulumi.Input[_builtins.str] defense_template_name: The name of the protection rule template.
-        :param pulumi.Input[_builtins.str] description: The description of the protection rule template. .
-        :param pulumi.Input[_builtins.str] instance_id: The ID of the Web Application Firewall (WAF) instance. .
-        :param pulumi.Input[_builtins.str] resource_manager_resource_group_id: The ID of the Alibaba Cloud resource group. .
+        :param pulumi.Input[_builtins.str] description: The description of the protection rule template.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the Web Application Firewall (WAF) instance.
+        :param pulumi.Input[_builtins.str] resource_manager_resource_group_id: The ID of the Alibaba Cloud resource group.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
         :param pulumi.Input[_builtins.str] status: The status of the protection rule template. Valid values:
-               - **0**: disabled.
-               - **1**: enabled.
-        :param pulumi.Input[_builtins.str] template_origin: The origin of the protection rule template that you want to create. Set the value to **custom**. The value specifies that the protection rule template is a custom template. .
+        :param pulumi.Input[_builtins.str] template_origin: The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
         :param pulumi.Input[_builtins.str] template_type: The type of the protection rule template. Valid values:
                - **user_default:** default template.
                - **user_custom:** custom template.
@@ -498,6 +472,7 @@ class DefenseTemplate(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_manager_resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  template_origin: Optional[pulumi.Input[_builtins.str]] = None,
                  template_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -521,6 +496,7 @@ class DefenseTemplate(pulumi.CustomResource):
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["resource_manager_resource_group_id"] = resource_manager_resource_group_id
+            __props__.__dict__["resources"] = resources
             if status is None and not opts.urn:
                 raise TypeError("Missing required property 'status'")
             __props__.__dict__["status"] = status
@@ -547,6 +523,7 @@ class DefenseTemplate(pulumi.CustomResource):
             description: Optional[pulumi.Input[_builtins.str]] = None,
             instance_id: Optional[pulumi.Input[_builtins.str]] = None,
             resource_manager_resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+            resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
             template_origin: Optional[pulumi.Input[_builtins.str]] = None,
             template_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'DefenseTemplate':
@@ -557,26 +534,15 @@ class DefenseTemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] defense_scene: The module to which the protection rule that you want to create belongs. Value:
-               - **waf_group**: the basic protection rule module.
-               - **antiscan**: the scan protection module.
-               - **ip_blacklist**: the IP address blacklist module.
-               - **custom_acl**: the custom rule module.
-               - **whitelist**: the whitelist module.
-               - **region_block**: the region blacklist module.
-               - **custom_response**: the custom response module.
-               - **cc**: the HTTP flood protection module.
-               - **tamperproof**: the website tamper-proofing module.
-               - **dlp**: the data leakage prevention module.
-        :param pulumi.Input[_builtins.int] defense_template_id: Template ID.
+        :param pulumi.Input[_builtins.str] defense_scene: The WAF protection scenario to be created. Valid values:
+        :param pulumi.Input[_builtins.int] defense_template_id: Template ID
         :param pulumi.Input[_builtins.str] defense_template_name: The name of the protection rule template.
-        :param pulumi.Input[_builtins.str] description: The description of the protection rule template. .
-        :param pulumi.Input[_builtins.str] instance_id: The ID of the Web Application Firewall (WAF) instance. .
-        :param pulumi.Input[_builtins.str] resource_manager_resource_group_id: The ID of the Alibaba Cloud resource group. .
+        :param pulumi.Input[_builtins.str] description: The description of the protection rule template.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the Web Application Firewall (WAF) instance.
+        :param pulumi.Input[_builtins.str] resource_manager_resource_group_id: The ID of the Alibaba Cloud resource group.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
         :param pulumi.Input[_builtins.str] status: The status of the protection rule template. Valid values:
-               - **0**: disabled.
-               - **1**: enabled.
-        :param pulumi.Input[_builtins.str] template_origin: The origin of the protection rule template that you want to create. Set the value to **custom**. The value specifies that the protection rule template is a custom template. .
+        :param pulumi.Input[_builtins.str] template_origin: The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
         :param pulumi.Input[_builtins.str] template_type: The type of the protection rule template. Valid values:
                - **user_default:** default template.
                - **user_custom:** custom template.
@@ -591,6 +557,7 @@ class DefenseTemplate(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["resource_manager_resource_group_id"] = resource_manager_resource_group_id
+        __props__.__dict__["resources"] = resources
         __props__.__dict__["status"] = status
         __props__.__dict__["template_origin"] = template_origin
         __props__.__dict__["template_type"] = template_type
@@ -600,17 +567,7 @@ class DefenseTemplate(pulumi.CustomResource):
     @pulumi.getter(name="defenseScene")
     def defense_scene(self) -> pulumi.Output[_builtins.str]:
         """
-        The module to which the protection rule that you want to create belongs. Value:
-        - **waf_group**: the basic protection rule module.
-        - **antiscan**: the scan protection module.
-        - **ip_blacklist**: the IP address blacklist module.
-        - **custom_acl**: the custom rule module.
-        - **whitelist**: the whitelist module.
-        - **region_block**: the region blacklist module.
-        - **custom_response**: the custom response module.
-        - **cc**: the HTTP flood protection module.
-        - **tamperproof**: the website tamper-proofing module.
-        - **dlp**: the data leakage prevention module.
+        The WAF protection scenario to be created. Valid values:
         """
         return pulumi.get(self, "defense_scene")
 
@@ -618,7 +575,7 @@ class DefenseTemplate(pulumi.CustomResource):
     @pulumi.getter(name="defenseTemplateId")
     def defense_template_id(self) -> pulumi.Output[_builtins.int]:
         """
-        Template ID.
+        Template ID
         """
         return pulumi.get(self, "defense_template_id")
 
@@ -634,7 +591,7 @@ class DefenseTemplate(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The description of the protection rule template. .
+        The description of the protection rule template.
         """
         return pulumi.get(self, "description")
 
@@ -642,7 +599,7 @@ class DefenseTemplate(pulumi.CustomResource):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the Web Application Firewall (WAF) instance. .
+        The ID of the Web Application Firewall (WAF) instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -650,17 +607,23 @@ class DefenseTemplate(pulumi.CustomResource):
     @pulumi.getter(name="resourceManagerResourceGroupId")
     def resource_manager_resource_group_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The ID of the Alibaba Cloud resource group. .
+        The ID of the Alibaba Cloud resource group.
         """
         return pulumi.get(self, "resource_manager_resource_group_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def resources(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
+        """
+        return pulumi.get(self, "resources")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
         The status of the protection rule template. Valid values:
-        - **0**: disabled.
-        - **1**: enabled.
         """
         return pulumi.get(self, "status")
 
@@ -668,7 +631,7 @@ class DefenseTemplate(pulumi.CustomResource):
     @pulumi.getter(name="templateOrigin")
     def template_origin(self) -> pulumi.Output[_builtins.str]:
         """
-        The origin of the protection rule template that you want to create. Set the value to **custom**. The value specifies that the protection rule template is a custom template. .
+        The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
         """
         return pulumi.get(self, "template_origin")
 

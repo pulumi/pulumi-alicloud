@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.integer;
- * import com.pulumi.random.integerArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.oos.Template;
  * import com.pulumi.alicloud.oos.TemplateArgs;
  * import java.util.List;
@@ -56,25 +56,25 @@ import javax.annotation.Nullable;
  *         var example = new Template("example", TemplateArgs.builder()
  *             .content("""
  *   {
- *     "FormatVersion": "OOS-2019-06-01",
- *     "Description": "Update Describe instances of given status",
- *     "Parameters":{
- *       "Status":{
- *         "Type": "String",
- *         "Description": "(Required) The status of the Ecs instance."
+ *     \"FormatVersion\": \"OOS-2019-06-01\",
+ *     \"Description\": \"Update Describe instances of given status\",
+ *     \"Parameters\":{
+ *       \"Status\":{
+ *         \"Type\": \"String\",
+ *         \"Description\": \"(Required) The status of the Ecs instance.\"
  *       }
  *     },
- *     "Tasks": [
+ *     \"Tasks\": [
  *       {
- *         "Properties" :{
- *           "Parameters":{
- *             "Status": "{{ Status }}"
+ *         \"Properties\" :{
+ *           \"Parameters\":{
+ *             \"Status\": \"{{ Status }}\"
  *           },
- *           "API": "DescribeInstances",
- *           "Service": "Ecs"
+ *           \"API\": \"DescribeInstances\",
+ *           \"Service\": \"Ecs\"
  *         },
- *         "Name": "foo",
- *         "Action": "ACS::ExecuteApi"
+ *         \"Name\": \"foo\",
+ *         \"Action\": \"ACS::ExecuteApi\"
  *       }]
  *   }
  *             """)

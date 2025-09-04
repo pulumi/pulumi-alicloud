@@ -2111,6 +2111,652 @@ func (o ProviderSignVersionPtrOutput) Sls() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type StarRocksInstanceBackendNodeGroup struct {
+	// Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
+	Cu *int `pulumi:"cu"`
+	// The number of disks.
+	DiskNumber *int `pulumi:"diskNumber"`
+	// Local SSD instance specifications.
+	LocalStorageInstanceType *string `pulumi:"localStorageInstanceType"`
+	// Resident node number of node group.
+	ResidentNodeNumber *int `pulumi:"residentNodeNumber"`
+	// Compute group specification types include the following:
+	// - standard
+	// - localSSD
+	// - bigData
+	// - ramEnhanced
+	// - networkEnhanced
+	SpecType *string `pulumi:"specType"`
+	// Performance levels of cloud disks include the following values:
+	// - pl0: Maximum random read/write IOPS per disk is 10,000.
+	// - pl1: Maximum random read/write IOPS per disk is 50,000.
+	// - pl2: Maximum random read/write IOPS per disk is 100,000.
+	// - pl3: Maximum random read/write IOPS per disk is 1,000,000.
+	StoragePerformanceLevel *string `pulumi:"storagePerformanceLevel"`
+	// Storage size, measured in GiB.
+	StorageSize *int `pulumi:"storageSize"`
+	// Zone ID.
+	ZoneId *string `pulumi:"zoneId"`
+}
+
+// StarRocksInstanceBackendNodeGroupInput is an input type that accepts StarRocksInstanceBackendNodeGroupArgs and StarRocksInstanceBackendNodeGroupOutput values.
+// You can construct a concrete instance of `StarRocksInstanceBackendNodeGroupInput` via:
+//
+//	StarRocksInstanceBackendNodeGroupArgs{...}
+type StarRocksInstanceBackendNodeGroupInput interface {
+	pulumi.Input
+
+	ToStarRocksInstanceBackendNodeGroupOutput() StarRocksInstanceBackendNodeGroupOutput
+	ToStarRocksInstanceBackendNodeGroupOutputWithContext(context.Context) StarRocksInstanceBackendNodeGroupOutput
+}
+
+type StarRocksInstanceBackendNodeGroupArgs struct {
+	// Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
+	Cu pulumi.IntPtrInput `pulumi:"cu"`
+	// The number of disks.
+	DiskNumber pulumi.IntPtrInput `pulumi:"diskNumber"`
+	// Local SSD instance specifications.
+	LocalStorageInstanceType pulumi.StringPtrInput `pulumi:"localStorageInstanceType"`
+	// Resident node number of node group.
+	ResidentNodeNumber pulumi.IntPtrInput `pulumi:"residentNodeNumber"`
+	// Compute group specification types include the following:
+	// - standard
+	// - localSSD
+	// - bigData
+	// - ramEnhanced
+	// - networkEnhanced
+	SpecType pulumi.StringPtrInput `pulumi:"specType"`
+	// Performance levels of cloud disks include the following values:
+	// - pl0: Maximum random read/write IOPS per disk is 10,000.
+	// - pl1: Maximum random read/write IOPS per disk is 50,000.
+	// - pl2: Maximum random read/write IOPS per disk is 100,000.
+	// - pl3: Maximum random read/write IOPS per disk is 1,000,000.
+	StoragePerformanceLevel pulumi.StringPtrInput `pulumi:"storagePerformanceLevel"`
+	// Storage size, measured in GiB.
+	StorageSize pulumi.IntPtrInput `pulumi:"storageSize"`
+	// Zone ID.
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
+}
+
+func (StarRocksInstanceBackendNodeGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StarRocksInstanceBackendNodeGroup)(nil)).Elem()
+}
+
+func (i StarRocksInstanceBackendNodeGroupArgs) ToStarRocksInstanceBackendNodeGroupOutput() StarRocksInstanceBackendNodeGroupOutput {
+	return i.ToStarRocksInstanceBackendNodeGroupOutputWithContext(context.Background())
+}
+
+func (i StarRocksInstanceBackendNodeGroupArgs) ToStarRocksInstanceBackendNodeGroupOutputWithContext(ctx context.Context) StarRocksInstanceBackendNodeGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StarRocksInstanceBackendNodeGroupOutput)
+}
+
+// StarRocksInstanceBackendNodeGroupArrayInput is an input type that accepts StarRocksInstanceBackendNodeGroupArray and StarRocksInstanceBackendNodeGroupArrayOutput values.
+// You can construct a concrete instance of `StarRocksInstanceBackendNodeGroupArrayInput` via:
+//
+//	StarRocksInstanceBackendNodeGroupArray{ StarRocksInstanceBackendNodeGroupArgs{...} }
+type StarRocksInstanceBackendNodeGroupArrayInput interface {
+	pulumi.Input
+
+	ToStarRocksInstanceBackendNodeGroupArrayOutput() StarRocksInstanceBackendNodeGroupArrayOutput
+	ToStarRocksInstanceBackendNodeGroupArrayOutputWithContext(context.Context) StarRocksInstanceBackendNodeGroupArrayOutput
+}
+
+type StarRocksInstanceBackendNodeGroupArray []StarRocksInstanceBackendNodeGroupInput
+
+func (StarRocksInstanceBackendNodeGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StarRocksInstanceBackendNodeGroup)(nil)).Elem()
+}
+
+func (i StarRocksInstanceBackendNodeGroupArray) ToStarRocksInstanceBackendNodeGroupArrayOutput() StarRocksInstanceBackendNodeGroupArrayOutput {
+	return i.ToStarRocksInstanceBackendNodeGroupArrayOutputWithContext(context.Background())
+}
+
+func (i StarRocksInstanceBackendNodeGroupArray) ToStarRocksInstanceBackendNodeGroupArrayOutputWithContext(ctx context.Context) StarRocksInstanceBackendNodeGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StarRocksInstanceBackendNodeGroupArrayOutput)
+}
+
+type StarRocksInstanceBackendNodeGroupOutput struct{ *pulumi.OutputState }
+
+func (StarRocksInstanceBackendNodeGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StarRocksInstanceBackendNodeGroup)(nil)).Elem()
+}
+
+func (o StarRocksInstanceBackendNodeGroupOutput) ToStarRocksInstanceBackendNodeGroupOutput() StarRocksInstanceBackendNodeGroupOutput {
+	return o
+}
+
+func (o StarRocksInstanceBackendNodeGroupOutput) ToStarRocksInstanceBackendNodeGroupOutputWithContext(ctx context.Context) StarRocksInstanceBackendNodeGroupOutput {
+	return o
+}
+
+// Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
+func (o StarRocksInstanceBackendNodeGroupOutput) Cu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StarRocksInstanceBackendNodeGroup) *int { return v.Cu }).(pulumi.IntPtrOutput)
+}
+
+// The number of disks.
+func (o StarRocksInstanceBackendNodeGroupOutput) DiskNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StarRocksInstanceBackendNodeGroup) *int { return v.DiskNumber }).(pulumi.IntPtrOutput)
+}
+
+// Local SSD instance specifications.
+func (o StarRocksInstanceBackendNodeGroupOutput) LocalStorageInstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StarRocksInstanceBackendNodeGroup) *string { return v.LocalStorageInstanceType }).(pulumi.StringPtrOutput)
+}
+
+// Resident node number of node group.
+func (o StarRocksInstanceBackendNodeGroupOutput) ResidentNodeNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StarRocksInstanceBackendNodeGroup) *int { return v.ResidentNodeNumber }).(pulumi.IntPtrOutput)
+}
+
+// Compute group specification types include the following:
+// - standard
+// - localSSD
+// - bigData
+// - ramEnhanced
+// - networkEnhanced
+func (o StarRocksInstanceBackendNodeGroupOutput) SpecType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StarRocksInstanceBackendNodeGroup) *string { return v.SpecType }).(pulumi.StringPtrOutput)
+}
+
+// Performance levels of cloud disks include the following values:
+// - pl0: Maximum random read/write IOPS per disk is 10,000.
+// - pl1: Maximum random read/write IOPS per disk is 50,000.
+// - pl2: Maximum random read/write IOPS per disk is 100,000.
+// - pl3: Maximum random read/write IOPS per disk is 1,000,000.
+func (o StarRocksInstanceBackendNodeGroupOutput) StoragePerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StarRocksInstanceBackendNodeGroup) *string { return v.StoragePerformanceLevel }).(pulumi.StringPtrOutput)
+}
+
+// Storage size, measured in GiB.
+func (o StarRocksInstanceBackendNodeGroupOutput) StorageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StarRocksInstanceBackendNodeGroup) *int { return v.StorageSize }).(pulumi.IntPtrOutput)
+}
+
+// Zone ID.
+func (o StarRocksInstanceBackendNodeGroupOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StarRocksInstanceBackendNodeGroup) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
+type StarRocksInstanceBackendNodeGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (StarRocksInstanceBackendNodeGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StarRocksInstanceBackendNodeGroup)(nil)).Elem()
+}
+
+func (o StarRocksInstanceBackendNodeGroupArrayOutput) ToStarRocksInstanceBackendNodeGroupArrayOutput() StarRocksInstanceBackendNodeGroupArrayOutput {
+	return o
+}
+
+func (o StarRocksInstanceBackendNodeGroupArrayOutput) ToStarRocksInstanceBackendNodeGroupArrayOutputWithContext(ctx context.Context) StarRocksInstanceBackendNodeGroupArrayOutput {
+	return o
+}
+
+func (o StarRocksInstanceBackendNodeGroupArrayOutput) Index(i pulumi.IntInput) StarRocksInstanceBackendNodeGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StarRocksInstanceBackendNodeGroup {
+		return vs[0].([]StarRocksInstanceBackendNodeGroup)[vs[1].(int)]
+	}).(StarRocksInstanceBackendNodeGroupOutput)
+}
+
+type StarRocksInstanceFrontendNodeGroup struct {
+	// Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
+	Cu *int `pulumi:"cu"`
+	// DiskNumber
+	DiskNumber *int `pulumi:"diskNumber"`
+	// Local SSD instance specifications.
+	LocalStorageInstanceType *string `pulumi:"localStorageInstanceType"`
+	// Resident node number of node group.
+	ResidentNodeNumber *int `pulumi:"residentNodeNumber"`
+	// Compute group specification types include the following:
+	// - standard
+	// - ramEnhanced
+	SpecType *string `pulumi:"specType"`
+	// Performance levels of cloud disks include the following values:
+	// - pl0: Maximum random read/write IOPS per disk is 10,000.
+	// - pl1: Maximum random read/write IOPS per disk is 50,000.
+	// - pl2: Maximum random read/write IOPS per disk is 100,000.
+	// - pl3: Maximum random read/write IOPS per disk is 1,000,000.
+	StoragePerformanceLevel *string `pulumi:"storagePerformanceLevel"`
+	// Storage size, measured in GiB.
+	StorageSize *int `pulumi:"storageSize"`
+	// Zone ID.
+	ZoneId *string `pulumi:"zoneId"`
+}
+
+// StarRocksInstanceFrontendNodeGroupInput is an input type that accepts StarRocksInstanceFrontendNodeGroupArgs and StarRocksInstanceFrontendNodeGroupOutput values.
+// You can construct a concrete instance of `StarRocksInstanceFrontendNodeGroupInput` via:
+//
+//	StarRocksInstanceFrontendNodeGroupArgs{...}
+type StarRocksInstanceFrontendNodeGroupInput interface {
+	pulumi.Input
+
+	ToStarRocksInstanceFrontendNodeGroupOutput() StarRocksInstanceFrontendNodeGroupOutput
+	ToStarRocksInstanceFrontendNodeGroupOutputWithContext(context.Context) StarRocksInstanceFrontendNodeGroupOutput
+}
+
+type StarRocksInstanceFrontendNodeGroupArgs struct {
+	// Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
+	Cu pulumi.IntPtrInput `pulumi:"cu"`
+	// DiskNumber
+	DiskNumber pulumi.IntPtrInput `pulumi:"diskNumber"`
+	// Local SSD instance specifications.
+	LocalStorageInstanceType pulumi.StringPtrInput `pulumi:"localStorageInstanceType"`
+	// Resident node number of node group.
+	ResidentNodeNumber pulumi.IntPtrInput `pulumi:"residentNodeNumber"`
+	// Compute group specification types include the following:
+	// - standard
+	// - ramEnhanced
+	SpecType pulumi.StringPtrInput `pulumi:"specType"`
+	// Performance levels of cloud disks include the following values:
+	// - pl0: Maximum random read/write IOPS per disk is 10,000.
+	// - pl1: Maximum random read/write IOPS per disk is 50,000.
+	// - pl2: Maximum random read/write IOPS per disk is 100,000.
+	// - pl3: Maximum random read/write IOPS per disk is 1,000,000.
+	StoragePerformanceLevel pulumi.StringPtrInput `pulumi:"storagePerformanceLevel"`
+	// Storage size, measured in GiB.
+	StorageSize pulumi.IntPtrInput `pulumi:"storageSize"`
+	// Zone ID.
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
+}
+
+func (StarRocksInstanceFrontendNodeGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StarRocksInstanceFrontendNodeGroup)(nil)).Elem()
+}
+
+func (i StarRocksInstanceFrontendNodeGroupArgs) ToStarRocksInstanceFrontendNodeGroupOutput() StarRocksInstanceFrontendNodeGroupOutput {
+	return i.ToStarRocksInstanceFrontendNodeGroupOutputWithContext(context.Background())
+}
+
+func (i StarRocksInstanceFrontendNodeGroupArgs) ToStarRocksInstanceFrontendNodeGroupOutputWithContext(ctx context.Context) StarRocksInstanceFrontendNodeGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StarRocksInstanceFrontendNodeGroupOutput)
+}
+
+// StarRocksInstanceFrontendNodeGroupArrayInput is an input type that accepts StarRocksInstanceFrontendNodeGroupArray and StarRocksInstanceFrontendNodeGroupArrayOutput values.
+// You can construct a concrete instance of `StarRocksInstanceFrontendNodeGroupArrayInput` via:
+//
+//	StarRocksInstanceFrontendNodeGroupArray{ StarRocksInstanceFrontendNodeGroupArgs{...} }
+type StarRocksInstanceFrontendNodeGroupArrayInput interface {
+	pulumi.Input
+
+	ToStarRocksInstanceFrontendNodeGroupArrayOutput() StarRocksInstanceFrontendNodeGroupArrayOutput
+	ToStarRocksInstanceFrontendNodeGroupArrayOutputWithContext(context.Context) StarRocksInstanceFrontendNodeGroupArrayOutput
+}
+
+type StarRocksInstanceFrontendNodeGroupArray []StarRocksInstanceFrontendNodeGroupInput
+
+func (StarRocksInstanceFrontendNodeGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StarRocksInstanceFrontendNodeGroup)(nil)).Elem()
+}
+
+func (i StarRocksInstanceFrontendNodeGroupArray) ToStarRocksInstanceFrontendNodeGroupArrayOutput() StarRocksInstanceFrontendNodeGroupArrayOutput {
+	return i.ToStarRocksInstanceFrontendNodeGroupArrayOutputWithContext(context.Background())
+}
+
+func (i StarRocksInstanceFrontendNodeGroupArray) ToStarRocksInstanceFrontendNodeGroupArrayOutputWithContext(ctx context.Context) StarRocksInstanceFrontendNodeGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StarRocksInstanceFrontendNodeGroupArrayOutput)
+}
+
+type StarRocksInstanceFrontendNodeGroupOutput struct{ *pulumi.OutputState }
+
+func (StarRocksInstanceFrontendNodeGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StarRocksInstanceFrontendNodeGroup)(nil)).Elem()
+}
+
+func (o StarRocksInstanceFrontendNodeGroupOutput) ToStarRocksInstanceFrontendNodeGroupOutput() StarRocksInstanceFrontendNodeGroupOutput {
+	return o
+}
+
+func (o StarRocksInstanceFrontendNodeGroupOutput) ToStarRocksInstanceFrontendNodeGroupOutputWithContext(ctx context.Context) StarRocksInstanceFrontendNodeGroupOutput {
+	return o
+}
+
+// Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
+func (o StarRocksInstanceFrontendNodeGroupOutput) Cu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StarRocksInstanceFrontendNodeGroup) *int { return v.Cu }).(pulumi.IntPtrOutput)
+}
+
+// DiskNumber
+func (o StarRocksInstanceFrontendNodeGroupOutput) DiskNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StarRocksInstanceFrontendNodeGroup) *int { return v.DiskNumber }).(pulumi.IntPtrOutput)
+}
+
+// Local SSD instance specifications.
+func (o StarRocksInstanceFrontendNodeGroupOutput) LocalStorageInstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StarRocksInstanceFrontendNodeGroup) *string { return v.LocalStorageInstanceType }).(pulumi.StringPtrOutput)
+}
+
+// Resident node number of node group.
+func (o StarRocksInstanceFrontendNodeGroupOutput) ResidentNodeNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StarRocksInstanceFrontendNodeGroup) *int { return v.ResidentNodeNumber }).(pulumi.IntPtrOutput)
+}
+
+// Compute group specification types include the following:
+// - standard
+// - ramEnhanced
+func (o StarRocksInstanceFrontendNodeGroupOutput) SpecType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StarRocksInstanceFrontendNodeGroup) *string { return v.SpecType }).(pulumi.StringPtrOutput)
+}
+
+// Performance levels of cloud disks include the following values:
+// - pl0: Maximum random read/write IOPS per disk is 10,000.
+// - pl1: Maximum random read/write IOPS per disk is 50,000.
+// - pl2: Maximum random read/write IOPS per disk is 100,000.
+// - pl3: Maximum random read/write IOPS per disk is 1,000,000.
+func (o StarRocksInstanceFrontendNodeGroupOutput) StoragePerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StarRocksInstanceFrontendNodeGroup) *string { return v.StoragePerformanceLevel }).(pulumi.StringPtrOutput)
+}
+
+// Storage size, measured in GiB.
+func (o StarRocksInstanceFrontendNodeGroupOutput) StorageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StarRocksInstanceFrontendNodeGroup) *int { return v.StorageSize }).(pulumi.IntPtrOutput)
+}
+
+// Zone ID.
+func (o StarRocksInstanceFrontendNodeGroupOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StarRocksInstanceFrontendNodeGroup) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
+type StarRocksInstanceFrontendNodeGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (StarRocksInstanceFrontendNodeGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StarRocksInstanceFrontendNodeGroup)(nil)).Elem()
+}
+
+func (o StarRocksInstanceFrontendNodeGroupArrayOutput) ToStarRocksInstanceFrontendNodeGroupArrayOutput() StarRocksInstanceFrontendNodeGroupArrayOutput {
+	return o
+}
+
+func (o StarRocksInstanceFrontendNodeGroupArrayOutput) ToStarRocksInstanceFrontendNodeGroupArrayOutputWithContext(ctx context.Context) StarRocksInstanceFrontendNodeGroupArrayOutput {
+	return o
+}
+
+func (o StarRocksInstanceFrontendNodeGroupArrayOutput) Index(i pulumi.IntInput) StarRocksInstanceFrontendNodeGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StarRocksInstanceFrontendNodeGroup {
+		return vs[0].([]StarRocksInstanceFrontendNodeGroup)[vs[1].(int)]
+	}).(StarRocksInstanceFrontendNodeGroupOutput)
+}
+
+type StarRocksInstanceObserverNodeGroup struct {
+	// Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
+	Cu *int `pulumi:"cu"`
+	// DiskNumber
+	DiskNumber *int `pulumi:"diskNumber"`
+	// Local SSD instance specifications.
+	LocalStorageInstanceType *string `pulumi:"localStorageInstanceType"`
+	// Resident node number of node group.
+	ResidentNodeNumber *int `pulumi:"residentNodeNumber"`
+	// Compute group specification types include the following:
+	// - standard
+	SpecType *string `pulumi:"specType"`
+	// Performance levels of cloud disks include the following values:
+	// - pl0: Maximum random read/write IOPS per disk is 10,000.
+	// - pl1: Maximum random read/write IOPS per disk is 50,000.
+	// - pl2: Maximum random read/write IOPS per disk is 100,000.
+	// - pl3: Maximum random read/write IOPS per disk is 1,000,000.
+	StoragePerformanceLevel *string `pulumi:"storagePerformanceLevel"`
+	// Storage size, measured in GiB.
+	StorageSize *int `pulumi:"storageSize"`
+	// Zone ID.
+	ZoneId *string `pulumi:"zoneId"`
+}
+
+// StarRocksInstanceObserverNodeGroupInput is an input type that accepts StarRocksInstanceObserverNodeGroupArgs and StarRocksInstanceObserverNodeGroupOutput values.
+// You can construct a concrete instance of `StarRocksInstanceObserverNodeGroupInput` via:
+//
+//	StarRocksInstanceObserverNodeGroupArgs{...}
+type StarRocksInstanceObserverNodeGroupInput interface {
+	pulumi.Input
+
+	ToStarRocksInstanceObserverNodeGroupOutput() StarRocksInstanceObserverNodeGroupOutput
+	ToStarRocksInstanceObserverNodeGroupOutputWithContext(context.Context) StarRocksInstanceObserverNodeGroupOutput
+}
+
+type StarRocksInstanceObserverNodeGroupArgs struct {
+	// Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
+	Cu pulumi.IntPtrInput `pulumi:"cu"`
+	// DiskNumber
+	DiskNumber pulumi.IntPtrInput `pulumi:"diskNumber"`
+	// Local SSD instance specifications.
+	LocalStorageInstanceType pulumi.StringPtrInput `pulumi:"localStorageInstanceType"`
+	// Resident node number of node group.
+	ResidentNodeNumber pulumi.IntPtrInput `pulumi:"residentNodeNumber"`
+	// Compute group specification types include the following:
+	// - standard
+	SpecType pulumi.StringPtrInput `pulumi:"specType"`
+	// Performance levels of cloud disks include the following values:
+	// - pl0: Maximum random read/write IOPS per disk is 10,000.
+	// - pl1: Maximum random read/write IOPS per disk is 50,000.
+	// - pl2: Maximum random read/write IOPS per disk is 100,000.
+	// - pl3: Maximum random read/write IOPS per disk is 1,000,000.
+	StoragePerformanceLevel pulumi.StringPtrInput `pulumi:"storagePerformanceLevel"`
+	// Storage size, measured in GiB.
+	StorageSize pulumi.IntPtrInput `pulumi:"storageSize"`
+	// Zone ID.
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
+}
+
+func (StarRocksInstanceObserverNodeGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StarRocksInstanceObserverNodeGroup)(nil)).Elem()
+}
+
+func (i StarRocksInstanceObserverNodeGroupArgs) ToStarRocksInstanceObserverNodeGroupOutput() StarRocksInstanceObserverNodeGroupOutput {
+	return i.ToStarRocksInstanceObserverNodeGroupOutputWithContext(context.Background())
+}
+
+func (i StarRocksInstanceObserverNodeGroupArgs) ToStarRocksInstanceObserverNodeGroupOutputWithContext(ctx context.Context) StarRocksInstanceObserverNodeGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StarRocksInstanceObserverNodeGroupOutput)
+}
+
+// StarRocksInstanceObserverNodeGroupArrayInput is an input type that accepts StarRocksInstanceObserverNodeGroupArray and StarRocksInstanceObserverNodeGroupArrayOutput values.
+// You can construct a concrete instance of `StarRocksInstanceObserverNodeGroupArrayInput` via:
+//
+//	StarRocksInstanceObserverNodeGroupArray{ StarRocksInstanceObserverNodeGroupArgs{...} }
+type StarRocksInstanceObserverNodeGroupArrayInput interface {
+	pulumi.Input
+
+	ToStarRocksInstanceObserverNodeGroupArrayOutput() StarRocksInstanceObserverNodeGroupArrayOutput
+	ToStarRocksInstanceObserverNodeGroupArrayOutputWithContext(context.Context) StarRocksInstanceObserverNodeGroupArrayOutput
+}
+
+type StarRocksInstanceObserverNodeGroupArray []StarRocksInstanceObserverNodeGroupInput
+
+func (StarRocksInstanceObserverNodeGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StarRocksInstanceObserverNodeGroup)(nil)).Elem()
+}
+
+func (i StarRocksInstanceObserverNodeGroupArray) ToStarRocksInstanceObserverNodeGroupArrayOutput() StarRocksInstanceObserverNodeGroupArrayOutput {
+	return i.ToStarRocksInstanceObserverNodeGroupArrayOutputWithContext(context.Background())
+}
+
+func (i StarRocksInstanceObserverNodeGroupArray) ToStarRocksInstanceObserverNodeGroupArrayOutputWithContext(ctx context.Context) StarRocksInstanceObserverNodeGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StarRocksInstanceObserverNodeGroupArrayOutput)
+}
+
+type StarRocksInstanceObserverNodeGroupOutput struct{ *pulumi.OutputState }
+
+func (StarRocksInstanceObserverNodeGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StarRocksInstanceObserverNodeGroup)(nil)).Elem()
+}
+
+func (o StarRocksInstanceObserverNodeGroupOutput) ToStarRocksInstanceObserverNodeGroupOutput() StarRocksInstanceObserverNodeGroupOutput {
+	return o
+}
+
+func (o StarRocksInstanceObserverNodeGroupOutput) ToStarRocksInstanceObserverNodeGroupOutputWithContext(ctx context.Context) StarRocksInstanceObserverNodeGroupOutput {
+	return o
+}
+
+// Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
+func (o StarRocksInstanceObserverNodeGroupOutput) Cu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StarRocksInstanceObserverNodeGroup) *int { return v.Cu }).(pulumi.IntPtrOutput)
+}
+
+// DiskNumber
+func (o StarRocksInstanceObserverNodeGroupOutput) DiskNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StarRocksInstanceObserverNodeGroup) *int { return v.DiskNumber }).(pulumi.IntPtrOutput)
+}
+
+// Local SSD instance specifications.
+func (o StarRocksInstanceObserverNodeGroupOutput) LocalStorageInstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StarRocksInstanceObserverNodeGroup) *string { return v.LocalStorageInstanceType }).(pulumi.StringPtrOutput)
+}
+
+// Resident node number of node group.
+func (o StarRocksInstanceObserverNodeGroupOutput) ResidentNodeNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StarRocksInstanceObserverNodeGroup) *int { return v.ResidentNodeNumber }).(pulumi.IntPtrOutput)
+}
+
+// Compute group specification types include the following:
+// - standard
+func (o StarRocksInstanceObserverNodeGroupOutput) SpecType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StarRocksInstanceObserverNodeGroup) *string { return v.SpecType }).(pulumi.StringPtrOutput)
+}
+
+// Performance levels of cloud disks include the following values:
+// - pl0: Maximum random read/write IOPS per disk is 10,000.
+// - pl1: Maximum random read/write IOPS per disk is 50,000.
+// - pl2: Maximum random read/write IOPS per disk is 100,000.
+// - pl3: Maximum random read/write IOPS per disk is 1,000,000.
+func (o StarRocksInstanceObserverNodeGroupOutput) StoragePerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StarRocksInstanceObserverNodeGroup) *string { return v.StoragePerformanceLevel }).(pulumi.StringPtrOutput)
+}
+
+// Storage size, measured in GiB.
+func (o StarRocksInstanceObserverNodeGroupOutput) StorageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StarRocksInstanceObserverNodeGroup) *int { return v.StorageSize }).(pulumi.IntPtrOutput)
+}
+
+// Zone ID.
+func (o StarRocksInstanceObserverNodeGroupOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StarRocksInstanceObserverNodeGroup) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
+type StarRocksInstanceObserverNodeGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (StarRocksInstanceObserverNodeGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StarRocksInstanceObserverNodeGroup)(nil)).Elem()
+}
+
+func (o StarRocksInstanceObserverNodeGroupArrayOutput) ToStarRocksInstanceObserverNodeGroupArrayOutput() StarRocksInstanceObserverNodeGroupArrayOutput {
+	return o
+}
+
+func (o StarRocksInstanceObserverNodeGroupArrayOutput) ToStarRocksInstanceObserverNodeGroupArrayOutputWithContext(ctx context.Context) StarRocksInstanceObserverNodeGroupArrayOutput {
+	return o
+}
+
+func (o StarRocksInstanceObserverNodeGroupArrayOutput) Index(i pulumi.IntInput) StarRocksInstanceObserverNodeGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StarRocksInstanceObserverNodeGroup {
+		return vs[0].([]StarRocksInstanceObserverNodeGroup)[vs[1].(int)]
+	}).(StarRocksInstanceObserverNodeGroupOutput)
+}
+
+type StarRocksInstanceVswitch struct {
+	// ID of VSwitch.
+	VswitchId string `pulumi:"vswitchId"`
+	// Zone ID of VSwitch.
+	ZoneId *string `pulumi:"zoneId"`
+}
+
+// StarRocksInstanceVswitchInput is an input type that accepts StarRocksInstanceVswitchArgs and StarRocksInstanceVswitchOutput values.
+// You can construct a concrete instance of `StarRocksInstanceVswitchInput` via:
+//
+//	StarRocksInstanceVswitchArgs{...}
+type StarRocksInstanceVswitchInput interface {
+	pulumi.Input
+
+	ToStarRocksInstanceVswitchOutput() StarRocksInstanceVswitchOutput
+	ToStarRocksInstanceVswitchOutputWithContext(context.Context) StarRocksInstanceVswitchOutput
+}
+
+type StarRocksInstanceVswitchArgs struct {
+	// ID of VSwitch.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+	// Zone ID of VSwitch.
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
+}
+
+func (StarRocksInstanceVswitchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StarRocksInstanceVswitch)(nil)).Elem()
+}
+
+func (i StarRocksInstanceVswitchArgs) ToStarRocksInstanceVswitchOutput() StarRocksInstanceVswitchOutput {
+	return i.ToStarRocksInstanceVswitchOutputWithContext(context.Background())
+}
+
+func (i StarRocksInstanceVswitchArgs) ToStarRocksInstanceVswitchOutputWithContext(ctx context.Context) StarRocksInstanceVswitchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StarRocksInstanceVswitchOutput)
+}
+
+// StarRocksInstanceVswitchArrayInput is an input type that accepts StarRocksInstanceVswitchArray and StarRocksInstanceVswitchArrayOutput values.
+// You can construct a concrete instance of `StarRocksInstanceVswitchArrayInput` via:
+//
+//	StarRocksInstanceVswitchArray{ StarRocksInstanceVswitchArgs{...} }
+type StarRocksInstanceVswitchArrayInput interface {
+	pulumi.Input
+
+	ToStarRocksInstanceVswitchArrayOutput() StarRocksInstanceVswitchArrayOutput
+	ToStarRocksInstanceVswitchArrayOutputWithContext(context.Context) StarRocksInstanceVswitchArrayOutput
+}
+
+type StarRocksInstanceVswitchArray []StarRocksInstanceVswitchInput
+
+func (StarRocksInstanceVswitchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StarRocksInstanceVswitch)(nil)).Elem()
+}
+
+func (i StarRocksInstanceVswitchArray) ToStarRocksInstanceVswitchArrayOutput() StarRocksInstanceVswitchArrayOutput {
+	return i.ToStarRocksInstanceVswitchArrayOutputWithContext(context.Background())
+}
+
+func (i StarRocksInstanceVswitchArray) ToStarRocksInstanceVswitchArrayOutputWithContext(ctx context.Context) StarRocksInstanceVswitchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StarRocksInstanceVswitchArrayOutput)
+}
+
+type StarRocksInstanceVswitchOutput struct{ *pulumi.OutputState }
+
+func (StarRocksInstanceVswitchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StarRocksInstanceVswitch)(nil)).Elem()
+}
+
+func (o StarRocksInstanceVswitchOutput) ToStarRocksInstanceVswitchOutput() StarRocksInstanceVswitchOutput {
+	return o
+}
+
+func (o StarRocksInstanceVswitchOutput) ToStarRocksInstanceVswitchOutputWithContext(ctx context.Context) StarRocksInstanceVswitchOutput {
+	return o
+}
+
+// ID of VSwitch.
+func (o StarRocksInstanceVswitchOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v StarRocksInstanceVswitch) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// Zone ID of VSwitch.
+func (o StarRocksInstanceVswitchOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StarRocksInstanceVswitch) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
+type StarRocksInstanceVswitchArrayOutput struct{ *pulumi.OutputState }
+
+func (StarRocksInstanceVswitchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StarRocksInstanceVswitch)(nil)).Elem()
+}
+
+func (o StarRocksInstanceVswitchArrayOutput) ToStarRocksInstanceVswitchArrayOutput() StarRocksInstanceVswitchArrayOutput {
+	return o
+}
+
+func (o StarRocksInstanceVswitchArrayOutput) ToStarRocksInstanceVswitchArrayOutputWithContext(ctx context.Context) StarRocksInstanceVswitchArrayOutput {
+	return o
+}
+
+func (o StarRocksInstanceVswitchArrayOutput) Index(i pulumi.IntInput) StarRocksInstanceVswitchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StarRocksInstanceVswitch {
+		return vs[0].([]StarRocksInstanceVswitch)[vs[1].(int)]
+	}).(StarRocksInstanceVswitchOutput)
+}
+
 type GetMscSubContactsContact struct {
 	// UID.
 	AccountUid string `pulumi:"accountUid"`
@@ -2920,6 +3566,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderEndpointArrayInput)(nil)).Elem(), ProviderEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSignVersionInput)(nil)).Elem(), ProviderSignVersionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSignVersionPtrInput)(nil)).Elem(), ProviderSignVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StarRocksInstanceBackendNodeGroupInput)(nil)).Elem(), StarRocksInstanceBackendNodeGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StarRocksInstanceBackendNodeGroupArrayInput)(nil)).Elem(), StarRocksInstanceBackendNodeGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StarRocksInstanceFrontendNodeGroupInput)(nil)).Elem(), StarRocksInstanceFrontendNodeGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StarRocksInstanceFrontendNodeGroupArrayInput)(nil)).Elem(), StarRocksInstanceFrontendNodeGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StarRocksInstanceObserverNodeGroupInput)(nil)).Elem(), StarRocksInstanceObserverNodeGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StarRocksInstanceObserverNodeGroupArrayInput)(nil)).Elem(), StarRocksInstanceObserverNodeGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StarRocksInstanceVswitchInput)(nil)).Elem(), StarRocksInstanceVswitchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StarRocksInstanceVswitchArrayInput)(nil)).Elem(), StarRocksInstanceVswitchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMscSubContactsContactInput)(nil)).Elem(), GetMscSubContactsContactArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMscSubContactsContactArrayInput)(nil)).Elem(), GetMscSubContactsContactArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMscSubSubscriptionsSubscriptionInput)(nil)).Elem(), GetMscSubSubscriptionsSubscriptionArgs{})
@@ -2938,6 +3592,14 @@ func init() {
 	pulumi.RegisterOutputType(ProviderEndpointArrayOutput{})
 	pulumi.RegisterOutputType(ProviderSignVersionOutput{})
 	pulumi.RegisterOutputType(ProviderSignVersionPtrOutput{})
+	pulumi.RegisterOutputType(StarRocksInstanceBackendNodeGroupOutput{})
+	pulumi.RegisterOutputType(StarRocksInstanceBackendNodeGroupArrayOutput{})
+	pulumi.RegisterOutputType(StarRocksInstanceFrontendNodeGroupOutput{})
+	pulumi.RegisterOutputType(StarRocksInstanceFrontendNodeGroupArrayOutput{})
+	pulumi.RegisterOutputType(StarRocksInstanceObserverNodeGroupOutput{})
+	pulumi.RegisterOutputType(StarRocksInstanceObserverNodeGroupArrayOutput{})
+	pulumi.RegisterOutputType(StarRocksInstanceVswitchOutput{})
+	pulumi.RegisterOutputType(StarRocksInstanceVswitchArrayOutput{})
 	pulumi.RegisterOutputType(GetMscSubContactsContactOutput{})
 	pulumi.RegisterOutputType(GetMscSubContactsContactArrayOutput{})
 	pulumi.RegisterOutputType(GetMscSubSubscriptionsSubscriptionOutput{})

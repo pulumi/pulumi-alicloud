@@ -71,23 +71,23 @@ namespace Pulumi.AliCloud.Log
     ///         ProjectName = $"terraform-example-{@default.Result}",
     ///         Description = "terraform-example",
     ///         Policy = @"{
-    ///   ""Statement"": [
+    ///   \""Statement\"": [
     ///     {
-    ///       ""Action"": [
-    ///         ""log:PostLogStoreLogs""
+    ///       \""Action\"": [
+    ///         \""log:PostLogStoreLogs\""
     ///       ],
-    ///       ""Condition"": {
-    ///         ""StringNotLike"": {
-    ///           ""acs:SourceVpc"": [
-    ///             ""vpc-*""
+    ///       \""Condition\"": {
+    ///         \""StringNotLike\"": {
+    ///           \""acs:SourceVpc\"": [
+    ///             \""vpc-*\""
     ///           ]
     ///         }
     ///       },
-    ///       ""Effect"": ""Deny"",
-    ///       ""Resource"": ""acs:log:*:*:project/tf-log/*""
+    ///       \""Effect\"": \""Deny\"",
+    ///       \""Resource\"": \""acs:log:*:*:project/tf-log/*\""
     ///     }
     ///   ],
-    ///   ""Version"": ""1""
+    ///   \""Version\"": \""1\""
     /// }
     /// ",
     ///     });

@@ -13,6 +13,203 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.210.0.
  *
+ * ## Example Usage
+ *
+ * Create a subscription kms instance
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const region = config.get("region") || "cn-hangzhou";
+ * const name = config.get("name") || "terraform-example";
+ * const current = alicloud.getAccount({});
+ * const vpc_amp_instance_example = new alicloud.vpc.Network("vpc-amp-instance-example", {
+ *     cidrBlock: "172.16.0.0/12",
+ *     vpcName: name,
+ * });
+ * const vswitch = new alicloud.vpc.Switch("vswitch", {
+ *     vpcId: vpc_amp_instance_example.id,
+ *     zoneId: "cn-hangzhou-k",
+ *     cidrBlock: "172.16.1.0/24",
+ * });
+ * const vswitch_j = new alicloud.vpc.Switch("vswitch-j", {
+ *     vpcId: vpc_amp_instance_example.id,
+ *     zoneId: "cn-hangzhou-j",
+ *     cidrBlock: "172.16.2.0/24",
+ * });
+ * const shareVPC = new alicloud.vpc.Network("shareVPC", {
+ *     cidrBlock: "172.16.0.0/12",
+ *     vpcName: std.format({
+ *         input: "%s3",
+ *         args: [name],
+ *     }).then(invoke => invoke.result),
+ * });
+ * const shareVswitch = new alicloud.vpc.Switch("shareVswitch", {
+ *     vpcId: shareVPC.id,
+ *     zoneId: "cn-hangzhou-k",
+ *     cidrBlock: "172.16.1.0/24",
+ * });
+ * const share_VPC2 = new alicloud.vpc.Network("share-VPC2", {
+ *     cidrBlock: "172.16.0.0/12",
+ *     vpcName: std.format({
+ *         input: "%s5",
+ *         args: [name],
+ *     }).then(invoke => invoke.result),
+ * });
+ * const share_vswitch2 = new alicloud.vpc.Switch("share-vswitch2", {
+ *     vpcId: share_VPC2.id,
+ *     zoneId: "cn-hangzhou-k",
+ *     cidrBlock: "172.16.1.0/24",
+ * });
+ * const share_VPC3 = new alicloud.vpc.Network("share-VPC3", {
+ *     cidrBlock: "172.16.0.0/12",
+ *     vpcName: std.format({
+ *         input: "%s7",
+ *         args: [name],
+ *     }).then(invoke => invoke.result),
+ * });
+ * const share_vsw3 = new alicloud.vpc.Switch("share-vsw3", {
+ *     vpcId: share_VPC3.id,
+ *     zoneId: "cn-hangzhou-k",
+ *     cidrBlock: "172.16.1.0/24",
+ * });
+ * const _default = new alicloud.kms.Instance("default", {
+ *     vpcNum: 7,
+ *     keyNum: 1000,
+ *     secretNum: 0,
+ *     spec: 1000,
+ *     renewStatus: "ManualRenewal",
+ *     productVersion: "3",
+ *     renewPeriod: 3,
+ *     vpcId: vswitch.vpcId,
+ *     zoneIds: [
+ *         "cn-hangzhou-k",
+ *         "cn-hangzhou-j",
+ *     ],
+ *     vswitchIds: [vswitch_j.id],
+ *     bindVpcs: [
+ *         {
+ *             vpcId: shareVswitch.vpcId,
+ *             regionId: region,
+ *             vswitchId: shareVswitch.id,
+ *             vpcOwnerId: current.then(current => current.id),
+ *         },
+ *         {
+ *             vpcId: share_vswitch2.vpcId,
+ *             regionId: region,
+ *             vswitchId: share_vswitch2.id,
+ *             vpcOwnerId: current.then(current => current.id),
+ *         },
+ *         {
+ *             vpcId: share_vsw3.vpcId,
+ *             regionId: region,
+ *             vswitchId: share_vsw3.id,
+ *             vpcOwnerId: current.then(current => current.id),
+ *         },
+ *     ],
+ *     log: "0",
+ *     period: 1,
+ *     logStorage: 0,
+ *     paymentType: "Subscription",
+ * });
+ * ```
+ * Create a pay-as-you-go kms instance
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const region = config.get("region") || "cn-hangzhou";
+ * const name = config.get("name") || "terraform-example";
+ * const current = alicloud.getAccount({});
+ * const vpc_amp_instance_example = new alicloud.vpc.Network("vpc-amp-instance-example", {
+ *     cidrBlock: "172.16.0.0/12",
+ *     vpcName: name,
+ * });
+ * const vswitch = new alicloud.vpc.Switch("vswitch", {
+ *     vpcId: vpc_amp_instance_example.id,
+ *     zoneId: "cn-hangzhou-k",
+ *     cidrBlock: "172.16.1.0/24",
+ * });
+ * const vswitch_j = new alicloud.vpc.Switch("vswitch-j", {
+ *     vpcId: vpc_amp_instance_example.id,
+ *     zoneId: "cn-hangzhou-j",
+ *     cidrBlock: "172.16.2.0/24",
+ * });
+ * const shareVPC = new alicloud.vpc.Network("shareVPC", {
+ *     cidrBlock: "172.16.0.0/12",
+ *     vpcName: std.format({
+ *         input: "%s3",
+ *         args: [name],
+ *     }).then(invoke => invoke.result),
+ * });
+ * const shareVswitch = new alicloud.vpc.Switch("shareVswitch", {
+ *     vpcId: shareVPC.id,
+ *     zoneId: "cn-hangzhou-k",
+ *     cidrBlock: "172.16.1.0/24",
+ * });
+ * const share_VPC2 = new alicloud.vpc.Network("share-VPC2", {
+ *     cidrBlock: "172.16.0.0/12",
+ *     vpcName: std.format({
+ *         input: "%s5",
+ *         args: [name],
+ *     }).then(invoke => invoke.result),
+ * });
+ * const share_vswitch2 = new alicloud.vpc.Switch("share-vswitch2", {
+ *     vpcId: share_VPC2.id,
+ *     zoneId: "cn-hangzhou-k",
+ *     cidrBlock: "172.16.1.0/24",
+ * });
+ * const share_VPC3 = new alicloud.vpc.Network("share-VPC3", {
+ *     cidrBlock: "172.16.0.0/12",
+ *     vpcName: std.format({
+ *         input: "%s7",
+ *         args: [name],
+ *     }).then(invoke => invoke.result),
+ * });
+ * const share_vsw3 = new alicloud.vpc.Switch("share-vsw3", {
+ *     vpcId: share_VPC3.id,
+ *     zoneId: "cn-hangzhou-k",
+ *     cidrBlock: "172.16.1.0/24",
+ * });
+ * const _default = new alicloud.kms.Instance("default", {
+ *     paymentType: "PayAsYouGo",
+ *     productVersion: "3",
+ *     vpcId: vswitch.vpcId,
+ *     zoneIds: [
+ *         vswitch.zoneId,
+ *         vswitch_j.zoneId,
+ *     ],
+ *     vswitchIds: [vswitch.id],
+ *     forceDeleteWithoutBackup: "true",
+ *     bindVpcs: [
+ *         {
+ *             vpcId: shareVswitch.vpcId,
+ *             regionId: region,
+ *             vswitchId: shareVswitch.id,
+ *             vpcOwnerId: current.then(current => current.id),
+ *         },
+ *         {
+ *             vpcId: share_vswitch2.vpcId,
+ *             regionId: region,
+ *             vswitchId: share_vswitch2.id,
+ *             vpcOwnerId: current.then(current => current.id),
+ *         },
+ *         {
+ *             vpcId: share_vsw3.vpcId,
+ *             regionId: region,
+ *             vswitchId: share_vsw3.id,
+ *             vpcOwnerId: current.then(current => current.id),
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * KMS Instance can be imported using the id, e.g.
@@ -86,7 +283,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly logStorage: pulumi.Output<number>;
     /**
-     * Payment type,valid values:
+     * Payment type, valid values:
      * - `Subscription`: Prepaid.
      * - `PayAsYouGo`: Postpaid.
      */
@@ -98,7 +295,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * KMS Instance commodity type (software/hardware)
      */
-    declare public readonly productVersion: pulumi.Output<string | undefined>;
+    declare public readonly productVersion: pulumi.Output<string>;
     /**
      * Automatic renewal period, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
@@ -106,7 +303,13 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
-    declare public readonly renewStatus: pulumi.Output<string | undefined>;
+    declare public readonly renewStatus: pulumi.Output<string>;
+    /**
+     * Automatic renewal period unit, valid value:
+     * - `M`: Month.
+     * - `Y`: Year.
+     */
+    declare public readonly renewalPeriodUnit: pulumi.Output<string | undefined>;
     /**
      * Maximum number of Secrets. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
@@ -120,7 +323,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * Instance VPC id
+     * The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
      */
     declare public readonly vpcId: pulumi.Output<string>;
     /**
@@ -163,6 +366,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["productVersion"] = state?.productVersion;
             resourceInputs["renewPeriod"] = state?.renewPeriod;
             resourceInputs["renewStatus"] = state?.renewStatus;
+            resourceInputs["renewalPeriodUnit"] = state?.renewalPeriodUnit;
             resourceInputs["secretNum"] = state?.secretNum;
             resourceInputs["spec"] = state?.spec;
             resourceInputs["status"] = state?.status;
@@ -192,6 +396,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["productVersion"] = args?.productVersion;
             resourceInputs["renewPeriod"] = args?.renewPeriod;
             resourceInputs["renewStatus"] = args?.renewStatus;
+            resourceInputs["renewalPeriodUnit"] = args?.renewalPeriodUnit;
             resourceInputs["secretNum"] = args?.secretNum;
             resourceInputs["spec"] = args?.spec;
             resourceInputs["vpcId"] = args?.vpcId;
@@ -249,7 +454,7 @@ export interface InstanceState {
      */
     logStorage?: pulumi.Input<number>;
     /**
-     * Payment type,valid values:
+     * Payment type, valid values:
      * - `Subscription`: Prepaid.
      * - `PayAsYouGo`: Postpaid.
      */
@@ -271,6 +476,12 @@ export interface InstanceState {
      */
     renewStatus?: pulumi.Input<string>;
     /**
+     * Automatic renewal period unit, valid value:
+     * - `M`: Month.
+     * - `Y`: Year.
+     */
+    renewalPeriodUnit?: pulumi.Input<string>;
+    /**
      * Maximum number of Secrets. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
     secretNum?: pulumi.Input<number>;
@@ -283,7 +494,7 @@ export interface InstanceState {
      */
     status?: pulumi.Input<string>;
     /**
-     * Instance VPC id
+     * The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
      */
     vpcId?: pulumi.Input<string>;
     /**
@@ -329,7 +540,7 @@ export interface InstanceArgs {
      */
     logStorage?: pulumi.Input<number>;
     /**
-     * Payment type,valid values:
+     * Payment type, valid values:
      * - `Subscription`: Prepaid.
      * - `PayAsYouGo`: Postpaid.
      */
@@ -351,6 +562,12 @@ export interface InstanceArgs {
      */
     renewStatus?: pulumi.Input<string>;
     /**
+     * Automatic renewal period unit, valid value:
+     * - `M`: Month.
+     * - `Y`: Year.
+     */
+    renewalPeriodUnit?: pulumi.Input<string>;
+    /**
      * Maximum number of Secrets. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
     secretNum?: pulumi.Input<number>;
@@ -359,7 +576,7 @@ export interface InstanceArgs {
      */
     spec?: pulumi.Input<number>;
     /**
-     * Instance VPC id
+     * The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
      */
     vpcId: pulumi.Input<string>;
     /**

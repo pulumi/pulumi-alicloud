@@ -182,20 +182,20 @@ def get_policies(enable_details: Optional[_builtins.bool] = None,
     policy = alicloud.ram.Policy("policy",
         policy_name=f"tf-example-{default['result']}",
         policy_document=\"\"\"    {
-          "Statement": [
+          \\"Statement\\": [
             {
-              "Action": [
-                "oss:ListObjects",
-                "oss:GetObject"
+              \\"Action\\": [
+                \\"oss:ListObjects\\",
+                \\"oss:GetObject\\"
               ],
-              "Effect": "Allow",
-              "Resource": [
-                "acs:oss:*:*:mybucket",
-                "acs:oss:*:*:mybucket/*"
+              \\"Effect\\": \\"Allow\\",
+              \\"Resource\\": [
+                \\"acs:oss:*:*:mybucket\\",
+                \\"acs:oss:*:*:mybucket/*\\"
               ]
             }
           ],
-            "Version": "1"
+            \\"Version\\": \\"1\\"
         }
     \"\"\",
         description="this is a policy test")
@@ -272,20 +272,20 @@ def get_policies_output(enable_details: Optional[pulumi.Input[Optional[_builtins
     policy = alicloud.ram.Policy("policy",
         policy_name=f"tf-example-{default['result']}",
         policy_document=\"\"\"    {
-          "Statement": [
+          \\"Statement\\": [
             {
-              "Action": [
-                "oss:ListObjects",
-                "oss:GetObject"
+              \\"Action\\": [
+                \\"oss:ListObjects\\",
+                \\"oss:GetObject\\"
               ],
-              "Effect": "Allow",
-              "Resource": [
-                "acs:oss:*:*:mybucket",
-                "acs:oss:*:*:mybucket/*"
+              \\"Effect\\": \\"Allow\\",
+              \\"Resource\\": [
+                \\"acs:oss:*:*:mybucket\\",
+                \\"acs:oss:*:*:mybucket/*\\"
               ]
             }
           ],
-            "Version": "1"
+            \\"Version\\": \\"1\\"
         }
     \"\"\",
         description="this is a policy test")

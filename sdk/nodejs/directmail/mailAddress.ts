@@ -11,6 +11,36 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.134.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const accountName = config.get("accountName") || "tfexample";
+ * const domainName = config.get("domainName") || "alicloud-provider.online";
+ * const example = new alicloud.directmail.Domain("example", {domainName: domainName});
+ * const exampleMailAddress = new alicloud.directmail.MailAddress("example", {
+ *     accountName: std.format({
+ *         input: "%s@%s",
+ *         args: [
+ *             accountName,
+ *             example.domainName,
+ *         ],
+ *     }).then(invoke => invoke.result),
+ *     sendtype: "batch",
+ * });
+ * ```
+ *
+ * > **Note:**
+ * A maximum of 10 mailing addresses can be added.
+ * Individual users: Up to 10 mailing addresses can be deleted within a month.
+ * Enterprise users: Up to 10 mailing addresses can be deleted within a month.
+ *
  * ## Import
  *
  * Direct Mail Mail Address can be imported using the id, e.g.

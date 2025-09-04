@@ -21,6 +21,99 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.240.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.apig.Gateway;
+ * import com.pulumi.alicloud.apig.GatewayArgs;
+ * import com.pulumi.alicloud.apig.inputs.GatewayNetworkAccessConfigArgs;
+ * import com.pulumi.alicloud.apig.inputs.GatewayVswitchArgs;
+ * import com.pulumi.alicloud.apig.inputs.GatewayZoneConfigArgs;
+ * import com.pulumi.alicloud.apig.inputs.GatewayVpcArgs;
+ * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigArgs;
+ * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigSlsArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.alicloud.apig.Environment;
+ * import com.pulumi.alicloud.apig.EnvironmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
+ * 
+ *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex("^default-NODELETING$")
+ *             .build());
+ * 
+ *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultGetNetworks.ids()[0])
+ *             .build());
+ * 
+ *         var defaultgateway = new Gateway("defaultgateway", GatewayArgs.builder()
+ *             .networkAccessConfig(GatewayNetworkAccessConfigArgs.builder()
+ *                 .type("Intranet")
+ *                 .build())
+ *             .vswitch(GatewayVswitchArgs.builder()
+ *                 .vswitchId(defaultGetSwitches.ids()[0])
+ *                 .build())
+ *             .zoneConfig(GatewayZoneConfigArgs.builder()
+ *                 .selectOption("Auto")
+ *                 .build())
+ *             .vpc(GatewayVpcArgs.builder()
+ *                 .vpcId(defaultGetNetworks.ids()[0])
+ *                 .build())
+ *             .paymentType("PayAsYouGo")
+ *             .gatewayName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s2")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .spec("apigw.small.x1")
+ *             .logConfig(GatewayLogConfigArgs.builder()
+ *                 .sls(GatewayLogConfigSlsArgs.builder()
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
+ *             .description(name)
+ *             .environmentName(name)
+ *             .gatewayId(defaultgateway.id())
+ *             .resourceGroupId(default_.ids()[1])
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * APIG Environment can be imported using the id, e.g.

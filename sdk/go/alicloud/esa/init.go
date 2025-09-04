@@ -57,8 +57,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &List{}
 	case "alicloud:esa/networkOptimization:NetworkOptimization":
 		r = &NetworkOptimization{}
+	case "alicloud:esa/originCaCertificate:OriginCaCertificate":
+		r = &OriginCaCertificate{}
+	case "alicloud:esa/originClientCertificate:OriginClientCertificate":
+		r = &OriginClientCertificate{}
 	case "alicloud:esa/originPool:OriginPool":
 		r = &OriginPool{}
+	case "alicloud:esa/originProtection:OriginProtection":
+		r = &OriginProtection{}
 	case "alicloud:esa/originRule:OriginRule":
 		r = &OriginRule{}
 	case "alicloud:esa/page:Page":
@@ -83,6 +89,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Site{}
 	case "alicloud:esa/siteDeliveryTask:SiteDeliveryTask":
 		r = &SiteDeliveryTask{}
+	case "alicloud:esa/siteOriginClientCertificate:SiteOriginClientCertificate":
+		r = &SiteOriginClientCertificate{}
 	case "alicloud:esa/version:Version":
 		r = &Version{}
 	case "alicloud:esa/videoProcessing:VideoProcessing":
@@ -198,7 +206,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"esa/originCaCertificate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/originClientCertificate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"esa/originPool",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/originProtection",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -259,6 +282,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"esa/siteDeliveryTask",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/siteOriginClientCertificate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

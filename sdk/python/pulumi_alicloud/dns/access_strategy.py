@@ -636,6 +636,82 @@ class AccessStrategy(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.152.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "alicloud-provider.com"
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("default", alarm_contact_group_name=name)
+        default_gtm_instance = alicloud.dns.GtmInstance("default",
+            instance_name=name,
+            payment_type="Subscription",
+            period=1,
+            renewal_status="ManualRenewal",
+            package_edition="standard",
+            health_check_task_count=100,
+            sms_notification_count=1000,
+            public_cname_mode="SYSTEM_ASSIGN",
+            ttl=60,
+            cname_type="PUBLIC",
+            resource_group_id=default.groups[0].id,
+            alert_groups=[default_alarm_contact_group.alarm_contact_group_name],
+            public_user_domain_name=domain_name,
+            alert_configs=[{
+                "sms_notice": True,
+                "notice_type": "ADDR_ALERT",
+                "email_notice": True,
+                "dingtalk_notice": True,
+            }])
+        default_address_pool = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            default_address_pool.append(alicloud.dns.AddressPool(f"default-{range['value']}",
+                address_pool_name=std.format(input=f"{name}_%d",
+                    args=[range["value"] + 1]).result,
+                instance_id=default_gtm_instance.id,
+                lba_strategy="RATIO",
+                type="IPV4",
+                addresses=[{
+                    "attribute_info": "{\\"lineCodeRectifyType\\":\\"RECTIFIED\\",\\"lineCodes\\":[\\"os_namerica_us\\"]}",
+                    "remark": "address_remark",
+                    "address": "1.1.1.1",
+                    "mode": "SMART",
+                    "lba_weight": 1,
+                }]))
+        default_access_strategy = alicloud.dns.AccessStrategy("default",
+            strategy_name=name,
+            strategy_mode="GEO",
+            instance_id=default_gtm_instance.id,
+            default_addr_pool_type="IPV4",
+            default_lba_strategy="RATIO",
+            default_min_available_addr_num=1,
+            default_addr_pools=[{
+                "lba_weight": 1,
+                "addr_pool_id": default_address_pool[0].id,
+            }],
+            failover_addr_pool_type="IPV4",
+            failover_lba_strategy="RATIO",
+            failover_min_available_addr_num=1,
+            failover_addr_pools=[{
+                "lba_weight": 1,
+                "addr_pool_id": default_address_pool[1].id,
+            }],
+            lines=[{
+                "line_code": "default",
+            }])
+        ```
+
         ## Import
 
         DNS Access Strategy can be imported using the id, e.g.
@@ -677,6 +753,82 @@ class AccessStrategy(pulumi.CustomResource):
         For information about DNS Access Strategy and how to use it, see [What is Access Strategy](https://www.alibabacloud.com/help/doc-detail/189620.html).
 
         > **NOTE:** Available since v1.152.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "alicloud-provider.com"
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("default", alarm_contact_group_name=name)
+        default_gtm_instance = alicloud.dns.GtmInstance("default",
+            instance_name=name,
+            payment_type="Subscription",
+            period=1,
+            renewal_status="ManualRenewal",
+            package_edition="standard",
+            health_check_task_count=100,
+            sms_notification_count=1000,
+            public_cname_mode="SYSTEM_ASSIGN",
+            ttl=60,
+            cname_type="PUBLIC",
+            resource_group_id=default.groups[0].id,
+            alert_groups=[default_alarm_contact_group.alarm_contact_group_name],
+            public_user_domain_name=domain_name,
+            alert_configs=[{
+                "sms_notice": True,
+                "notice_type": "ADDR_ALERT",
+                "email_notice": True,
+                "dingtalk_notice": True,
+            }])
+        default_address_pool = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            default_address_pool.append(alicloud.dns.AddressPool(f"default-{range['value']}",
+                address_pool_name=std.format(input=f"{name}_%d",
+                    args=[range["value"] + 1]).result,
+                instance_id=default_gtm_instance.id,
+                lba_strategy="RATIO",
+                type="IPV4",
+                addresses=[{
+                    "attribute_info": "{\\"lineCodeRectifyType\\":\\"RECTIFIED\\",\\"lineCodes\\":[\\"os_namerica_us\\"]}",
+                    "remark": "address_remark",
+                    "address": "1.1.1.1",
+                    "mode": "SMART",
+                    "lba_weight": 1,
+                }]))
+        default_access_strategy = alicloud.dns.AccessStrategy("default",
+            strategy_name=name,
+            strategy_mode="GEO",
+            instance_id=default_gtm_instance.id,
+            default_addr_pool_type="IPV4",
+            default_lba_strategy="RATIO",
+            default_min_available_addr_num=1,
+            default_addr_pools=[{
+                "lba_weight": 1,
+                "addr_pool_id": default_address_pool[0].id,
+            }],
+            failover_addr_pool_type="IPV4",
+            failover_lba_strategy="RATIO",
+            failover_min_available_addr_num=1,
+            failover_addr_pools=[{
+                "lba_weight": 1,
+                "addr_pool_id": default_address_pool[1].id,
+            }],
+            lines=[{
+                "line_code": "default",
+            }])
+        ```
 
         ## Import
 

@@ -55,6 +55,11 @@ export type Environment = import("./environment").Environment;
 export const Environment: typeof import("./environment").Environment = null as any;
 utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
 
+export { GetAddonReleasesArgs, GetAddonReleasesResult, GetAddonReleasesOutputArgs } from "./getAddonReleases";
+export const getAddonReleases: typeof import("./getAddonReleases").getAddonReleases = null as any;
+export const getAddonReleasesOutput: typeof import("./getAddonReleases").getAddonReleasesOutput = null as any;
+utilities.lazyLoad(exports, ["getAddonReleases","getAddonReleasesOutput"], () => require("./getAddonReleases"));
+
 export { GetAlertContactGroupsArgs, GetAlertContactGroupsResult, GetAlertContactGroupsOutputArgs } from "./getAlertContactGroups";
 export const getAlertContactGroups: typeof import("./getAlertContactGroups").getAlertContactGroups = null as any;
 export const getAlertContactGroupsOutput: typeof import("./getAlertContactGroups").getAlertContactGroupsOutput = null as any;
@@ -74,6 +79,31 @@ export { GetDispatchRulesArgs, GetDispatchRulesResult, GetDispatchRulesOutputArg
 export const getDispatchRules: typeof import("./getDispatchRules").getDispatchRules = null as any;
 export const getDispatchRulesOutput: typeof import("./getDispatchRules").getDispatchRulesOutput = null as any;
 utilities.lazyLoad(exports, ["getDispatchRules","getDispatchRulesOutput"], () => require("./getDispatchRules"));
+
+export { GetEnvCustomJobsArgs, GetEnvCustomJobsResult, GetEnvCustomJobsOutputArgs } from "./getEnvCustomJobs";
+export const getEnvCustomJobs: typeof import("./getEnvCustomJobs").getEnvCustomJobs = null as any;
+export const getEnvCustomJobsOutput: typeof import("./getEnvCustomJobs").getEnvCustomJobsOutput = null as any;
+utilities.lazyLoad(exports, ["getEnvCustomJobs","getEnvCustomJobsOutput"], () => require("./getEnvCustomJobs"));
+
+export { GetEnvFeaturesArgs, GetEnvFeaturesResult, GetEnvFeaturesOutputArgs } from "./getEnvFeatures";
+export const getEnvFeatures: typeof import("./getEnvFeatures").getEnvFeatures = null as any;
+export const getEnvFeaturesOutput: typeof import("./getEnvFeatures").getEnvFeaturesOutput = null as any;
+utilities.lazyLoad(exports, ["getEnvFeatures","getEnvFeaturesOutput"], () => require("./getEnvFeatures"));
+
+export { GetEnvPodMonitorsArgs, GetEnvPodMonitorsResult, GetEnvPodMonitorsOutputArgs } from "./getEnvPodMonitors";
+export const getEnvPodMonitors: typeof import("./getEnvPodMonitors").getEnvPodMonitors = null as any;
+export const getEnvPodMonitorsOutput: typeof import("./getEnvPodMonitors").getEnvPodMonitorsOutput = null as any;
+utilities.lazyLoad(exports, ["getEnvPodMonitors","getEnvPodMonitorsOutput"], () => require("./getEnvPodMonitors"));
+
+export { GetEnvServiceMonitorsArgs, GetEnvServiceMonitorsResult, GetEnvServiceMonitorsOutputArgs } from "./getEnvServiceMonitors";
+export const getEnvServiceMonitors: typeof import("./getEnvServiceMonitors").getEnvServiceMonitors = null as any;
+export const getEnvServiceMonitorsOutput: typeof import("./getEnvServiceMonitors").getEnvServiceMonitorsOutput = null as any;
+utilities.lazyLoad(exports, ["getEnvServiceMonitors","getEnvServiceMonitorsOutput"], () => require("./getEnvServiceMonitors"));
+
+export { GetEnvironmentsArgs, GetEnvironmentsResult, GetEnvironmentsOutputArgs } from "./getEnvironments";
+export const getEnvironments: typeof import("./getEnvironments").getEnvironments = null as any;
+export const getEnvironmentsOutput: typeof import("./getEnvironments").getEnvironmentsOutput = null as any;
+utilities.lazyLoad(exports, ["getEnvironments","getEnvironmentsOutput"], () => require("./getEnvironments"));
 
 export { GetIntegrationExportersArgs, GetIntegrationExportersResult, GetIntegrationExportersOutputArgs } from "./getIntegrationExporters";
 export const getIntegrationExporters: typeof import("./getIntegrationExporters").getIntegrationExporters = null as any;

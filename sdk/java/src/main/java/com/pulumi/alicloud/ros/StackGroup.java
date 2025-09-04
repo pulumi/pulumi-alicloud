@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ros;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.ros.StackGroupArgs;
 import com.pulumi.alicloud.ros.inputs.StackGroupState;
+import com.pulumi.alicloud.ros.outputs.StackGroupAutoDeployment;
 import com.pulumi.alicloud.ros.outputs.StackGroupParameter;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -13,11 +14,14 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * Provides a ROS Stack Group resource.
+ * 
+ * Resource stack Group.
  * 
  * For information about ROS Stack Group and how to use it, see [What is Stack Group](https://www.alibabacloud.com/help/en/doc-detail/151333.htm).
  * 
@@ -54,7 +58,7 @@ import javax.annotation.Nullable;
  *             .stackGroupName("example_value")
  *             .templateBody("""
  *     {
- *     	"ROSTemplateFormatVersion": "2015-09-01"
+ *     \t\"ROSTemplateFormatVersion\": \"2015-09-01\"
  *     }
  *             """)
  *             .build());
@@ -70,39 +74,55 @@ import javax.annotation.Nullable;
  * ROS Stack Group can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:ros/stackGroup:StackGroup example &lt;stack_group_name&gt;
+ * $ pulumi import alicloud:ros/stackGroup:StackGroup example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:ros/stackGroup:StackGroup")
 public class StackGroup extends com.pulumi.resources.CustomResource {
     /**
-     * The list of target account IDs, in JSON format. A maximum of 20 accounts can be specified.
-     * 
-     */
-    @Export(name="accountIds", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountIds;
-
-    /**
-     * @return The list of target account IDs, in JSON format. A maximum of 20 accounts can be specified.
-     * 
-     */
-    public Output<Optional<String>> accountIds() {
-        return Codegen.optional(this.accountIds);
-    }
-    /**
-     * The name of the RAM administrator role assumed by ROS. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+     * The name of the RAM role that you specify for the administrator account in ROS when you create the self-managed stack group. If you do not specify this parameter, the default value AliyunROSStackGroupAdministrationRole is used. You can use the administrator role in ROS to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks that correspond to stack instances in the stack group.
      * 
      */
     @Export(name="administrationRoleName", refs={String.class}, tree="[0]")
     private Output<String> administrationRoleName;
 
     /**
-     * @return The name of the RAM administrator role assumed by ROS. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+     * @return The name of the RAM role that you specify for the administrator account in ROS when you create the self-managed stack group. If you do not specify this parameter, the default value AliyunROSStackGroupAdministrationRole is used. You can use the administrator role in ROS to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks that correspond to stack instances in the stack group.
      * 
      */
     public Output<String> administrationRoleName() {
         return this.administrationRoleName;
+    }
+    /**
+     * Automatic deployment setting information. Description
+     * This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `auto_deployment` below.
+     * 
+     */
+    @Export(name="autoDeployment", refs={StackGroupAutoDeployment.class}, tree="[0]")
+    private Output</* @Nullable */ StackGroupAutoDeployment> autoDeployment;
+
+    /**
+     * @return Automatic deployment setting information. Description
+     * This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `auto_deployment` below.
+     * 
+     */
+    public Output<Optional<StackGroupAutoDeployment>> autoDeployment() {
+        return Codegen.optional(this.autoDeployment);
+    }
+    /**
+     * The list of resource stack group options. The maximum length is 1.
+     * 
+     */
+    @Export(name="capabilities", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> capabilities;
+
+    /**
+     * @return The list of resource stack group options. The maximum length is 1.
+     * 
+     */
+    public Output<Optional<List<String>>> capabilities() {
+        return Codegen.optional(this.capabilities);
     }
     /**
      * The description of the stack group.
@@ -119,140 +139,158 @@ public class StackGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The name of the RAM execution role assumed by the administrator role. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+     * The name of the RAM role that you specify for the execution account when you create the self-managed stack group. You can use the administrator role AliyunROSStackGroupAdministrationRole to assume the execution role. If you do not specify this parameter, the default value AliyunROSStackGroupExecutionRole is used. You can use this role in ROS to perform operations on the stacks that correspond to stack instances in the stack group.
      * 
      */
     @Export(name="executionRoleName", refs={String.class}, tree="[0]")
     private Output<String> executionRoleName;
 
     /**
-     * @return The name of the RAM execution role assumed by the administrator role. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
+     * @return The name of the RAM role that you specify for the execution account when you create the self-managed stack group. You can use the administrator role AliyunROSStackGroupAdministrationRole to assume the execution role. If you do not specify this parameter, the default value AliyunROSStackGroupExecutionRole is used. You can use this role in ROS to perform operations on the stacks that correspond to stack instances in the stack group.
      * 
      */
     public Output<String> executionRoleName() {
         return this.executionRoleName;
     }
     /**
-     * The description of the operation.
-     * 
-     */
-    @Export(name="operationDescription", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> operationDescription;
-
-    /**
-     * @return The description of the operation.
-     * 
-     */
-    public Output<Optional<String>> operationDescription() {
-        return Codegen.optional(this.operationDescription);
-    }
-    /**
-     * The operation settings, in JSON format.
-     * 
-     */
-    @Export(name="operationPreferences", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> operationPreferences;
-
-    /**
-     * @return The operation settings, in JSON format.
-     * 
-     */
-    public Output<Optional<String>> operationPreferences() {
-        return Codegen.optional(this.operationPreferences);
-    }
-    /**
-     * The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+     * Parameters See `parameters` below.
      * 
      */
     @Export(name="parameters", refs={List.class,StackGroupParameter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<StackGroupParameter>> parameters;
 
     /**
-     * @return The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+     * @return Parameters See `parameters` below.
      * 
      */
     public Output<Optional<List<StackGroupParameter>>> parameters() {
         return Codegen.optional(this.parameters);
     }
     /**
-     * The list of target regions, in JSON format. A maximum of 20 accounts can be specified.
+     * The permission model.
      * 
      */
-    @Export(name="regionIds", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> regionIds;
+    @Export(name="permissionModel", refs={String.class}, tree="[0]")
+    private Output<String> permissionModel;
 
     /**
-     * @return The list of target regions, in JSON format. A maximum of 20 accounts can be specified.
+     * @return The permission model.
      * 
      */
-    public Output<Optional<String>> regionIds() {
-        return Codegen.optional(this.regionIds);
+    public Output<String> permissionModel() {
+        return this.permissionModel;
     }
     /**
-     * The id of Stack Group.
+     * The ID of the resource group.
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
+     * The ID of stack group.
      * 
      */
     @Export(name="stackGroupId", refs={String.class}, tree="[0]")
     private Output<String> stackGroupId;
 
     /**
-     * @return The id of Stack Group.
+     * @return The ID of stack group.
      * 
      */
     public Output<String> stackGroupId() {
         return this.stackGroupId;
     }
     /**
-     * The name of the stack group. The name must be unique in a region.
+     * StackGroupName
      * 
      */
     @Export(name="stackGroupName", refs={String.class}, tree="[0]")
     private Output<String> stackGroupName;
 
     /**
-     * @return The name of the stack group. The name must be unique in a region.
+     * @return StackGroupName
      * 
      */
     public Output<String> stackGroupName() {
         return this.stackGroupName;
     }
     /**
-     * The status of Stack Group.
+     * The status of the stack group.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of Stack Group.
+     * @return The status of the stack group.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
+     * The label of the resource stack group.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return The label of the resource stack group.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
+     * The template body.
      * 
      */
     @Export(name="templateBody", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> templateBody;
+    private Output<String> templateBody;
 
     /**
-     * @return The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
+     * @return The template body.
      * 
      */
-    public Output<Optional<String>> templateBody() {
-        return Codegen.optional(this.templateBody);
+    public Output<String> templateBody() {
+        return this.templateBody;
     }
     /**
-     * The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
+     * The ID of the template.
+     * 
+     */
+    @Export(name="templateId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> templateId;
+
+    /**
+     * @return The ID of the template.
+     * 
+     */
+    public Output<Optional<String>> templateId() {
+        return Codegen.optional(this.templateId);
+    }
+    /**
+     * The location of the file that contains the template body. The URL must point to the template (1 to 524,288 bytes) located in the HTTP Web server (HTTP or HTTPS) or Alibaba Cloud OSS bucket. The URL of the OSS bucket, such as oss:// ros/template/demo or oss:// ros/template/demo? RegionId = cn-hangzhou. If the OSS region is not specified, the RegionId of the interface is the same by default.
+     * 
+     * &gt; **NOTE:** You must and can specify only one of the parameters of TemplateBody, TemplateURL, or TemplateId.
      * 
      */
     @Export(name="templateUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> templateUrl;
 
     /**
-     * @return The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
+     * @return The location of the file that contains the template body. The URL must point to the template (1 to 524,288 bytes) located in the HTTP Web server (HTTP or HTTPS) or Alibaba Cloud OSS bucket. The URL of the OSS bucket, such as oss:// ros/template/demo or oss:// ros/template/demo? RegionId = cn-hangzhou. If the OSS region is not specified, the RegionId of the interface is the same by default.
+     * 
+     * &gt; **NOTE:** You must and can specify only one of the parameters of TemplateBody, TemplateURL, or TemplateId.
      * 
      */
     public Output<Optional<String>> templateUrl() {

@@ -41,15 +41,15 @@ import (
 //			}
 //			_, err := resourcemanager.NewPolicy(ctx, "example", &resourcemanager.PolicyArgs{
 //				PolicyName: pulumi.String(name),
-//				PolicyDocument: pulumi.String(`		{
-//				"Statement": [{
-//					"Action": ["oss:*"],
-//					"Effect": "Allow",
-//					"Resource": ["acs:oss:*:*:*"]
-//				}],
-//				"Version": "1"
-//			}
+//				PolicyDocument: pulumi.String(`\t\t{
 //
+// \t\t\t\"Statement\": [{
+// \t\t\t\t\"Action\": [\"oss:*\"],
+// \t\t\t\t\"Effect\": \"Allow\",
+// \t\t\t\t\"Resource\": [\"acs:oss:*:*:*\"]
+// \t\t\t}],
+// \t\t\t\"Version\": \"1\"
+// \t\t}
 // `),
 //
 //			})

@@ -26,6 +26,66 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.234.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.IpamIpam;
+ * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+ * import com.pulumi.alicloud.vpc.IpamIpamPool;
+ * import com.pulumi.alicloud.vpc.IpamIpamPoolArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
+ *             .operatingRegionLists("cn-hangzhou")
+ *             .build());
+ * 
+ *         var parentIpamPool = new IpamIpamPool("parentIpamPool", IpamIpamPoolArgs.builder()
+ *             .ipamScopeId(defaultIpam.privateDefaultScopeId())
+ *             .ipamPoolName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s1")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .poolRegionId(defaultIpam.regionId())
+ *             .build());
+ * 
+ *         var default_ = new IpamIpamPool("default", IpamIpamPoolArgs.builder()
+ *             .ipamScopeId(defaultIpam.privateDefaultScopeId())
+ *             .poolRegionId(parentIpamPool.poolRegionId())
+ *             .ipamPoolName(name)
+ *             .sourceIpamPoolId(parentIpamPool.id())
+ *             .ipVersion("IPv4")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Vpc Ipam Ipam Pool can be imported using the id, e.g.

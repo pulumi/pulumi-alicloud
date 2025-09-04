@@ -18,6 +18,51 @@ namespace Pulumi.AliCloud.CloudAuth
     /// 
     /// &gt; **NOTE:** In order to provide you with more perfect product capabilities, the real person certification service has stopped access, it is recommended that you use the upgraded version of the [real person certification financial real person certification service](https://help.aliyun.com/zh/id-verification/product-overview/what-is-id-verification-for-financial-services). Users that have access to real person authentication are not affected.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var @default = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var example = new AliCloud.CloudAuth.FaceConfig("example", new()
+    ///     {
+    ///         BizName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s-biz",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         BizType = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "type-%s",
+    ///             Args = new[]
+    ///             {
+    ///                 @default.Result,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Cloudauth Face Config can be imported using the id, e.g.

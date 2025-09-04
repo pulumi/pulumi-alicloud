@@ -79,8 +79,8 @@ namespace Pulumi.AliCloud.Dns
     ///             new AliCloud.Dns.Inputs.AddressPoolAddressArgs
     ///             {
     ///                 AttributeInfo = @"    {
-    ///       ""lineCodeRectifyType"": ""RECTIFIED"",
-    ///       ""lineCodes"": [""os_namerica_us""]
+    ///       \""lineCodeRectifyType\"": \""RECTIFIED\"",
+    ///       \""lineCodes\"": [\""os_namerica_us\""]
     ///     }
     /// ",
     ///                 Remark = "address_remark",

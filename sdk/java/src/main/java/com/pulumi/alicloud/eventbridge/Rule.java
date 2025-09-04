@@ -23,6 +23,98 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.129.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.eventbridge.EventBus;
+ * import com.pulumi.alicloud.eventbridge.EventBusArgs;
+ * import com.pulumi.alicloud.mns.Queue;
+ * import com.pulumi.alicloud.mns.QueueArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.alicloud.eventbridge.Rule;
+ * import com.pulumi.alicloud.eventbridge.RuleArgs;
+ * import com.pulumi.alicloud.eventbridge.inputs.RuleTargetArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf-example");
+ *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+ * 
+ *         var defaultEventBus = new EventBus("defaultEventBus", EventBusArgs.builder()
+ *             .eventBusName(name)
+ *             .build());
+ * 
+ *         var queue1 = new Queue("queue1", QueueArgs.builder()
+ *             .name(name)
+ *             .build());
+ * 
+ *         final var mnsEndpointA = StdFunctions.format(FormatArgs.builder()
+ *             .input("acs:mns:cn-hangzhou:%s:queues/%s")
+ *             .args(            
+ *                 default_.id(),
+ *                 queue1.name())
+ *             .build()).result();
+ * 
+ *         final var fnfEndpoint = StdFunctions.format(FormatArgs.builder()
+ *             .input("acs:fnf:cn-hangzhou:%s:flow/${flow}")
+ *             .args(default_.id())
+ *             .build()).result();
+ * 
+ *         var example = new Rule("example", RuleArgs.builder()
+ *             .eventBusName(defaultEventBus.eventBusName())
+ *             .ruleName(name)
+ *             .description("example")
+ *             .filterPattern("{\"source\":[\"crmabc.newsletter\"],\"type\":[\"UserSignUp\", \"UserLogin\"]}")
+ *             .targets(RuleTargetArgs.builder()
+ *                 .targetId("tf-example1")
+ *                 .endpoint(mnsEndpointA)
+ *                 .type("acs.mns.queue")
+ *                 .paramLists(                
+ *                     RuleTargetParamListArgs.builder()
+ *                         .resourceKey("queue")
+ *                         .form("CONSTANT")
+ *                         .value("tf-testaccEbRule")
+ *                         .build(),
+ *                     RuleTargetParamListArgs.builder()
+ *                         .resourceKey("Body")
+ *                         .form("ORIGINAL")
+ *                         .build(),
+ *                     RuleTargetParamListArgs.builder()
+ *                         .form("CONSTANT")
+ *                         .resourceKey("IsBase64Encode")
+ *                         .value("true")
+ *                         .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Event Bridge Rule can be imported using the id, e.g.

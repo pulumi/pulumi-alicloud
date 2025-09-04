@@ -17,6 +17,67 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.mns.Topic;
+ * import com.pulumi.alicloud.mns.TopicArgs;
+ * import com.pulumi.alicloud.cfg.DeliveryChannel;
+ * import com.pulumi.alicloud.cfg.DeliveryChannelArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Topic("example", TopicArgs.builder()
+ *             .name("test-topic")
+ *             .build());
+ * 
+ *         // Example for create a MNS delivery channel
+ *         var exampleDeliveryChannel = new DeliveryChannel("exampleDeliveryChannel", DeliveryChannelArgs.builder()
+ *             .description("channel_description")
+ *             .deliveryChannelName("channel_name")
+ *             .deliveryChannelAssumeRoleArn("acs:ram::11827252********:role/aliyunserviceroleforconfig")
+ *             .deliveryChannelType("MNS")
+ *             .deliveryChannelTargetArn(StdFunctions.format(FormatArgs.builder()
+ *                 .input("acs:oss:cn-shanghai:11827252********:/topics/%s")
+ *                 .args(example.name())
+ *                 .build()).result())
+ *             .deliveryChannelCondition("""
+ *   [
+ *       {
+ *           \"filterType\":\"ResourceType\",
+ *           \"values\":[
+ *               \"ACS::CEN::CenInstance\",
+ *               \"ACS::CEN::Flowlog\",
+ *           ],
+ *           \"multiple\":true
+ *       }
+ *   ]
+ *             """)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Alicloud Config Delivery Channel can be imported using the id, e.g.

@@ -19,14 +19,14 @@ public final class OssScanConfigState extends com.pulumi.resources.ResourceArgs 
     public static final OssScanConfigState Empty = new OssScanConfigState();
 
     /**
-     * Match all prefixes.
+     * Indicates whether the prefixes of all objects are matched.
      * 
      */
     @Import(name="allKeyPrefix")
     private @Nullable Output<Boolean> allKeyPrefix;
 
     /**
-     * @return Match all prefixes.
+     * @return Indicates whether the prefixes of all objects are matched.
      * 
      */
     public Optional<Output<Boolean>> allKeyPrefix() {
@@ -34,14 +34,14 @@ public final class OssScanConfigState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Bucket List.
+     * The names of the buckets.
      * 
      */
     @Import(name="bucketNameLists")
     private @Nullable Output<List<String>> bucketNameLists;
 
     /**
-     * @return Bucket List.
+     * @return The names of the buckets.
      * 
      */
     public Optional<Output<List<String>>> bucketNameLists() {
@@ -49,14 +49,59 @@ public final class OssScanConfigState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Enable configuration.
+     * The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+     * 
+     */
+    @Import(name="decompressMaxFileCount")
+    private @Nullable Output<Integer> decompressMaxFileCount;
+
+    /**
+     * @return The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+     * 
+     */
+    public Optional<Output<Integer>> decompressMaxFileCount() {
+        return Optional.ofNullable(this.decompressMaxFileCount);
+    }
+
+    /**
+     * The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+     * 
+     */
+    @Import(name="decompressMaxLayer")
+    private @Nullable Output<Integer> decompressMaxLayer;
+
+    /**
+     * @return The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+     * 
+     */
+    public Optional<Output<Integer>> decompressMaxLayer() {
+        return Optional.ofNullable(this.decompressMaxLayer);
+    }
+
+    /**
+     * The decryption methods.
+     * 
+     */
+    @Import(name="decryptionLists")
+    private @Nullable Output<List<String>> decryptionLists;
+
+    /**
+     * @return The decryption methods.
+     * 
+     */
+    public Optional<Output<List<String>>> decryptionLists() {
+        return Optional.ofNullable(this.decryptionLists);
+    }
+
+    /**
+     * Indicates whether the check policy is enabled. Valid values:
      * 
      */
     @Import(name="enable")
     private @Nullable Output<Integer> enable;
 
     /**
-     * @return Enable configuration.
+     * @return Indicates whether the check policy is enabled. Valid values:
      * 
      */
     public Optional<Output<Integer>> enable() {
@@ -64,14 +109,14 @@ public final class OssScanConfigState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * End time, hours, minutes and seconds.
+     * The end time of the check. The time is in the HH:mm:ss format.
      * 
      */
     @Import(name="endTime")
     private @Nullable Output<String> endTime;
 
     /**
-     * @return End time, hours, minutes and seconds.
+     * @return The end time of the check. The time is in the HH:mm:ss format.
      * 
      */
     public Optional<Output<String>> endTime() {
@@ -79,14 +124,14 @@ public final class OssScanConfigState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * File prefix list.
+     * The prefixes of the objects.
      * 
      */
     @Import(name="keyPrefixLists")
     private @Nullable Output<List<String>> keyPrefixLists;
 
     /**
-     * @return File prefix list.
+     * @return The prefixes of the objects.
      * 
      */
     public Optional<Output<List<String>>> keyPrefixLists() {
@@ -94,14 +139,14 @@ public final class OssScanConfigState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * File Suffix List.
+     * The suffixes of the objects that are checked.
      * 
      */
     @Import(name="keySuffixLists")
     private @Nullable Output<List<String>> keySuffixLists;
 
     /**
-     * @return File Suffix List.
+     * @return The suffixes of the objects that are checked.
      * 
      */
     public Optional<Output<List<String>>> keySuffixLists() {
@@ -109,14 +154,29 @@ public final class OssScanConfigState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Configuration Name.
+     * The timestamp when the object was last modified. The time must be later than the timestamp that you specify. Unit: milliseconds.
+     * 
+     */
+    @Import(name="lastModifiedStartTime")
+    private @Nullable Output<Integer> lastModifiedStartTime;
+
+    /**
+     * @return The timestamp when the object was last modified. The time must be later than the timestamp that you specify. Unit: milliseconds.
+     * 
+     */
+    public Optional<Output<Integer>> lastModifiedStartTime() {
+        return Optional.ofNullable(this.lastModifiedStartTime);
+    }
+
+    /**
+     * The policy name.
      * 
      */
     @Import(name="ossScanConfigName")
     private @Nullable Output<String> ossScanConfigName;
 
     /**
-     * @return Configuration Name.
+     * @return The policy name.
      * 
      */
     public Optional<Output<String>> ossScanConfigName() {
@@ -124,14 +184,14 @@ public final class OssScanConfigState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Scan cycle.
+     * The days when the check is performed. The value indicates the days of the week.
      * 
      */
     @Import(name="scanDayLists")
     private @Nullable Output<List<Integer>> scanDayLists;
 
     /**
-     * @return Scan cycle.
+     * @return The days when the check is performed. The value indicates the days of the week.
      * 
      */
     public Optional<Output<List<Integer>>> scanDayLists() {
@@ -139,14 +199,14 @@ public final class OssScanConfigState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Start time, hours, minutes and seconds.
+     * The start time of the check. The time is in the HH:mm:ss format.
      * 
      */
     @Import(name="startTime")
     private @Nullable Output<String> startTime;
 
     /**
-     * @return Start time, hours, minutes and seconds.
+     * @return The start time of the check. The time is in the HH:mm:ss format.
      * 
      */
     public Optional<Output<String>> startTime() {
@@ -158,10 +218,14 @@ public final class OssScanConfigState extends com.pulumi.resources.ResourceArgs 
     private OssScanConfigState(OssScanConfigState $) {
         this.allKeyPrefix = $.allKeyPrefix;
         this.bucketNameLists = $.bucketNameLists;
+        this.decompressMaxFileCount = $.decompressMaxFileCount;
+        this.decompressMaxLayer = $.decompressMaxLayer;
+        this.decryptionLists = $.decryptionLists;
         this.enable = $.enable;
         this.endTime = $.endTime;
         this.keyPrefixLists = $.keyPrefixLists;
         this.keySuffixLists = $.keySuffixLists;
+        this.lastModifiedStartTime = $.lastModifiedStartTime;
         this.ossScanConfigName = $.ossScanConfigName;
         this.scanDayLists = $.scanDayLists;
         this.startTime = $.startTime;
@@ -186,7 +250,7 @@ public final class OssScanConfigState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param allKeyPrefix Match all prefixes.
+         * @param allKeyPrefix Indicates whether the prefixes of all objects are matched.
          * 
          * @return builder
          * 
@@ -197,7 +261,7 @@ public final class OssScanConfigState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param allKeyPrefix Match all prefixes.
+         * @param allKeyPrefix Indicates whether the prefixes of all objects are matched.
          * 
          * @return builder
          * 
@@ -207,7 +271,7 @@ public final class OssScanConfigState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param bucketNameLists Bucket List.
+         * @param bucketNameLists The names of the buckets.
          * 
          * @return builder
          * 
@@ -218,7 +282,7 @@ public final class OssScanConfigState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param bucketNameLists Bucket List.
+         * @param bucketNameLists The names of the buckets.
          * 
          * @return builder
          * 
@@ -228,7 +292,7 @@ public final class OssScanConfigState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param bucketNameLists Bucket List.
+         * @param bucketNameLists The names of the buckets.
          * 
          * @return builder
          * 
@@ -238,7 +302,80 @@ public final class OssScanConfigState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param enable Enable configuration.
+         * @param decompressMaxFileCount The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder decompressMaxFileCount(@Nullable Output<Integer> decompressMaxFileCount) {
+            $.decompressMaxFileCount = decompressMaxFileCount;
+            return this;
+        }
+
+        /**
+         * @param decompressMaxFileCount The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder decompressMaxFileCount(Integer decompressMaxFileCount) {
+            return decompressMaxFileCount(Output.of(decompressMaxFileCount));
+        }
+
+        /**
+         * @param decompressMaxLayer The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder decompressMaxLayer(@Nullable Output<Integer> decompressMaxLayer) {
+            $.decompressMaxLayer = decompressMaxLayer;
+            return this;
+        }
+
+        /**
+         * @param decompressMaxLayer The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder decompressMaxLayer(Integer decompressMaxLayer) {
+            return decompressMaxLayer(Output.of(decompressMaxLayer));
+        }
+
+        /**
+         * @param decryptionLists The decryption methods.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder decryptionLists(@Nullable Output<List<String>> decryptionLists) {
+            $.decryptionLists = decryptionLists;
+            return this;
+        }
+
+        /**
+         * @param decryptionLists The decryption methods.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder decryptionLists(List<String> decryptionLists) {
+            return decryptionLists(Output.of(decryptionLists));
+        }
+
+        /**
+         * @param decryptionLists The decryption methods.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder decryptionLists(String... decryptionLists) {
+            return decryptionLists(List.of(decryptionLists));
+        }
+
+        /**
+         * @param enable Indicates whether the check policy is enabled. Valid values:
          * 
          * @return builder
          * 
@@ -249,7 +386,7 @@ public final class OssScanConfigState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param enable Enable configuration.
+         * @param enable Indicates whether the check policy is enabled. Valid values:
          * 
          * @return builder
          * 
@@ -259,7 +396,7 @@ public final class OssScanConfigState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param endTime End time, hours, minutes and seconds.
+         * @param endTime The end time of the check. The time is in the HH:mm:ss format.
          * 
          * @return builder
          * 
@@ -270,7 +407,7 @@ public final class OssScanConfigState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param endTime End time, hours, minutes and seconds.
+         * @param endTime The end time of the check. The time is in the HH:mm:ss format.
          * 
          * @return builder
          * 
@@ -280,7 +417,7 @@ public final class OssScanConfigState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param keyPrefixLists File prefix list.
+         * @param keyPrefixLists The prefixes of the objects.
          * 
          * @return builder
          * 
@@ -291,7 +428,7 @@ public final class OssScanConfigState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param keyPrefixLists File prefix list.
+         * @param keyPrefixLists The prefixes of the objects.
          * 
          * @return builder
          * 
@@ -301,7 +438,7 @@ public final class OssScanConfigState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param keyPrefixLists File prefix list.
+         * @param keyPrefixLists The prefixes of the objects.
          * 
          * @return builder
          * 
@@ -311,7 +448,7 @@ public final class OssScanConfigState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param keySuffixLists File Suffix List.
+         * @param keySuffixLists The suffixes of the objects that are checked.
          * 
          * @return builder
          * 
@@ -322,7 +459,7 @@ public final class OssScanConfigState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param keySuffixLists File Suffix List.
+         * @param keySuffixLists The suffixes of the objects that are checked.
          * 
          * @return builder
          * 
@@ -332,7 +469,7 @@ public final class OssScanConfigState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param keySuffixLists File Suffix List.
+         * @param keySuffixLists The suffixes of the objects that are checked.
          * 
          * @return builder
          * 
@@ -342,7 +479,28 @@ public final class OssScanConfigState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ossScanConfigName Configuration Name.
+         * @param lastModifiedStartTime The timestamp when the object was last modified. The time must be later than the timestamp that you specify. Unit: milliseconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastModifiedStartTime(@Nullable Output<Integer> lastModifiedStartTime) {
+            $.lastModifiedStartTime = lastModifiedStartTime;
+            return this;
+        }
+
+        /**
+         * @param lastModifiedStartTime The timestamp when the object was last modified. The time must be later than the timestamp that you specify. Unit: milliseconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastModifiedStartTime(Integer lastModifiedStartTime) {
+            return lastModifiedStartTime(Output.of(lastModifiedStartTime));
+        }
+
+        /**
+         * @param ossScanConfigName The policy name.
          * 
          * @return builder
          * 
@@ -353,7 +511,7 @@ public final class OssScanConfigState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ossScanConfigName Configuration Name.
+         * @param ossScanConfigName The policy name.
          * 
          * @return builder
          * 
@@ -363,7 +521,7 @@ public final class OssScanConfigState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param scanDayLists Scan cycle.
+         * @param scanDayLists The days when the check is performed. The value indicates the days of the week.
          * 
          * @return builder
          * 
@@ -374,7 +532,7 @@ public final class OssScanConfigState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param scanDayLists Scan cycle.
+         * @param scanDayLists The days when the check is performed. The value indicates the days of the week.
          * 
          * @return builder
          * 
@@ -384,7 +542,7 @@ public final class OssScanConfigState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param scanDayLists Scan cycle.
+         * @param scanDayLists The days when the check is performed. The value indicates the days of the week.
          * 
          * @return builder
          * 
@@ -394,7 +552,7 @@ public final class OssScanConfigState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param startTime Start time, hours, minutes and seconds.
+         * @param startTime The start time of the check. The time is in the HH:mm:ss format.
          * 
          * @return builder
          * 
@@ -405,7 +563,7 @@ public final class OssScanConfigState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param startTime Start time, hours, minutes and seconds.
+         * @param startTime The start time of the check. The time is in the HH:mm:ss format.
          * 
          * @return builder
          * 

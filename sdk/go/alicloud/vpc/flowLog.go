@@ -20,6 +20,104 @@ import (
 //
 // > **NOTE:** Available since v1.117.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//				Status: pulumi.StringRef("OK"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			example, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleUuid, err := random.NewUuid(ctx, "example", nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeSubstr, err := std.Substr(ctx, &std.SubstrArgs{
+//				Input: fmt.Sprintf("tf-example-%v", std.Replace(ctx, &std.ReplaceArgs{
+//					Text:    exampleUuid.Result,
+//					Search:  "-",
+//					Replace: "",
+//				}, nil).Result),
+//				Offset: 0,
+//				Length: 16,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleProject, err := log.NewProject(ctx, "example", &log.ProjectArgs{
+//				ProjectName: pulumi.String(invokeSubstr.Result),
+//				Description: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleStore, err := log.NewStore(ctx, "example", &log.StoreArgs{
+//				ProjectName:        exampleProject.ProjectName,
+//				LogstoreName:       pulumi.String(name),
+//				ShardCount:         pulumi.Int(3),
+//				AutoSplit:          pulumi.Bool(true),
+//				MaxSplitShardCount: pulumi.Int(60),
+//				AppendMeta:         pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewFlowLog(ctx, "example", &vpc.FlowLogArgs{
+//				FlowLogName:  pulumi.String(name),
+//				LogStoreName: exampleStore.LogstoreName,
+//				Description:  pulumi.String(name),
+//				TrafficPaths: pulumi.StringArray{
+//					pulumi.String("all"),
+//				},
+//				ProjectName:         exampleProject.ProjectName,
+//				ResourceType:        pulumi.String("VPC"),
+//				ResourceGroupId:     pulumi.String(_default.Ids[0]),
+//				ResourceId:          example.ID(),
+//				AggregationInterval: pulumi.String("1"),
+//				TrafficType:         pulumi.String("All"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // VPC Flow Log can be imported using the id, e.g.

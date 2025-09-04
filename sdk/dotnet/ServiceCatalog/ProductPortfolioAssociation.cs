@@ -18,6 +18,51 @@ namespace Pulumi.AliCloud.ServiceCatalog
     /// 
     /// &gt; **NOTE:** Available since v1.230.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var default0yAgJ8 = new AliCloud.ServiceCatalog.Portfolio("default0yAgJ8", new()
+    ///     {
+    ///         ProviderName = name,
+    ///         Description = "desc",
+    ///         PortfolioName = name,
+    ///     });
+    /// 
+    ///     var defaultRetBJw = new AliCloud.ServiceCatalog.Product("defaultRetBJw", new()
+    ///     {
+    ///         ProviderName = name,
+    ///         ProductName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s1",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         ProductType = "Ros",
+    ///     });
+    /// 
+    ///     var @default = new AliCloud.ServiceCatalog.ProductPortfolioAssociation("default", new()
+    ///     {
+    ///         PortfolioId = default0yAgJ8.Id,
+    ///         ProductId = defaultRetBJw.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Service Catalog Product Portfolio Association can be imported using the id, e.g.

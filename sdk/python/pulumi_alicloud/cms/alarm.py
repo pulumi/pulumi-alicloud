@@ -795,8 +795,8 @@ class Alarm(pulumi.CustomResource):
             effective_interval="06:00-20:00",
             metric_dimensions=default_instance.id.apply(lambda id: f\"\"\"  [
             {{
-              "instanceId": "{id}",
-              "device": "/dev/vda1"
+              \\"instanceId\\": \\"{id}\\",
+              \\"device\\": \\"/dev/vda1\\"
             }}
           ]
         \"\"\"),
@@ -899,8 +899,8 @@ class Alarm(pulumi.CustomResource):
             effective_interval="06:00-20:00",
             metric_dimensions=default_instance.id.apply(lambda id: f\"\"\"  [
             {{
-              "instanceId": "{id}",
-              "device": "/dev/vda1"
+              \\"instanceId\\": \\"{id}\\",
+              \\"device\\": \\"/dev/vda1\\"
             }}
           ]
         \"\"\"),

@@ -16,6 +16,333 @@ import (
 //
 // # Basic Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Max: 99999,
+//				Min: 10000,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			enhanced, err := vpc.GetEnhancedNatAvailableZones(ctx, &vpc.GetEnhancedNatAvailableZonesArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cloudEfficiency, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone:   pulumi.StringRef(enhanced.Zones[0].ZoneId),
+//				CpuCoreCount:       pulumi.IntRef(4),
+//				MemorySize:         pulumi.Float64Ref(8),
+//				KubernetesNodeRole: pulumi.StringRef("Worker"),
+//				SystemDiskCategory: pulumi.StringRef("cloud_efficiency"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      pulumi.String(enhanced.Zones[0].ZoneId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeCidrsubnet, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
+//				Input:   "10.0.0.0/8",
+//				Newbits: 8,
+//				Netnum:  36,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeCidrsubnet1, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
+//				Input:   "172.16.0.0/16",
+//				Newbits: 4,
+//				Netnum:  7,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultManagedKubernetes, err := cs.NewManagedKubernetes(ctx, "default", &cs.ManagedKubernetesArgs{
+//				NamePrefix:  pulumi.Sprintf("terraform-example-%v", _default.Result),
+//				ClusterSpec: pulumi.String("ack.pro.small"),
+//				WorkerVswitchIds: pulumi.StringArray{
+//					defaultSwitch.ID(),
+//				},
+//				NewNatGateway:      pulumi.Bool(true),
+//				PodCidr:            pulumi.String(invokeCidrsubnet.Result),
+//				ServiceCidr:        pulumi.String(invokeCidrsubnet1.Result),
+//				SlbInternetEnabled: pulumi.Bool(true),
+//				EnableRrsa:         pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultKeyPair, err := ecs.NewKeyPair(ctx, "default", &ecs.KeyPairArgs{
+//				KeyPairName: pulumi.Sprintf("terraform-example-%v", _default.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
+//				NodePoolName: pulumi.String(name),
+//				ClusterId:    defaultManagedKubernetes.ID(),
+//				VswitchIds: pulumi.StringArray{
+//					defaultSwitch.ID(),
+//				},
+//				InstanceTypes: pulumi.StringArray{
+//					pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
+//				},
+//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
+//				SystemDiskSize:     pulumi.Int(40),
+//				KeyName:            defaultKeyPair.KeyPairName,
+//				Labels: cs.NodePoolLabelArray{
+//					&cs.NodePoolLabelArgs{
+//						Key:   pulumi.String("test1"),
+//						Value: pulumi.String("nodepool"),
+//					},
+//					&cs.NodePoolLabelArgs{
+//						Key:   pulumi.String("test2"),
+//						Value: pulumi.String("nodepool"),
+//					},
+//				},
+//				Taints: cs.NodePoolTaintArray{
+//					&cs.NodePoolTaintArgs{
+//						Key:    pulumi.String("tf"),
+//						Effect: pulumi.String("NoSchedule"),
+//						Value:  pulumi.String("example"),
+//					},
+//					&cs.NodePoolTaintArgs{
+//						Key:    pulumi.String("tf2"),
+//						Effect: pulumi.String("NoSchedule"),
+//						Value:  pulumi.String("example2"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// The parameter `node_count` is deprecated from version 1.158.0. Please use the new parameter `desired_size` instead, you can update it as follows.
+//			_, err = cs.NewNodePool(ctx, "desired_size", &cs.NodePoolArgs{
+//				NodePoolName: pulumi.String("desired_size"),
+//				ClusterId:    defaultManagedKubernetes.ID(),
+//				VswitchIds: pulumi.StringArray{
+//					defaultSwitch.ID(),
+//				},
+//				InstanceTypes: pulumi.StringArray{
+//					pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
+//				},
+//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
+//				SystemDiskSize:     pulumi.Int(40),
+//				KeyName:            defaultKeyPair.KeyPairName,
+//				DesiredSize:        pulumi.String("0"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create a managed node pool. If you need to enable maintenance window, you need to set the maintenance window in `alicloud_cs_managed_kubernetes`.
+//			_, err = cs.NewNodePool(ctx, "maintenance", &cs.NodePoolArgs{
+//				NodePoolName: pulumi.String("maintenance"),
+//				ClusterId:    defaultManagedKubernetes.ID(),
+//				VswitchIds: pulumi.StringArray{
+//					defaultSwitch.ID(),
+//				},
+//				InstanceTypes: pulumi.StringArray{
+//					pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
+//				},
+//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
+//				SystemDiskSize:     pulumi.Int(40),
+//				KeyName:            defaultKeyPair.KeyPairName,
+//				DesiredSize:        pulumi.String("1"),
+//				Management: &cs.NodePoolManagementArgs{
+//					Enable:     pulumi.Bool(true),
+//					AutoRepair: pulumi.Bool(true),
+//					AutoRepairPolicy: &cs.NodePoolManagementAutoRepairPolicyArgs{
+//						RestartNode: pulumi.Bool(true),
+//					},
+//					AutoUpgrade: pulumi.Bool(true),
+//					AutoUpgradePolicy: &cs.NodePoolManagementAutoUpgradePolicyArgs{
+//						AutoUpgradeKubelet: pulumi.Bool(true),
+//					},
+//					AutoVulFix: pulumi.Bool(true),
+//					AutoVulFixPolicy: &cs.NodePoolManagementAutoVulFixPolicyArgs{
+//						VulLevel:    pulumi.String("asap"),
+//						RestartNode: pulumi.Bool(true),
+//					},
+//					MaxUnavailable: pulumi.Int(1),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create a node pool with spot instance.
+//			_, err = cs.NewNodePool(ctx, "spot_instance", &cs.NodePoolArgs{
+//				NodePoolName: pulumi.String("spot_instance"),
+//				ClusterId:    defaultManagedKubernetes.ID(),
+//				VswitchIds: pulumi.StringArray{
+//					defaultSwitch.ID(),
+//				},
+//				InstanceTypes: pulumi.StringArray{
+//					pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
+//					pulumi.String(cloudEfficiency.InstanceTypes[1].Id),
+//				},
+//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
+//				SystemDiskSize:     pulumi.Int(40),
+//				KeyName:            defaultKeyPair.KeyPairName,
+//				DesiredSize:        pulumi.String("1"),
+//				SpotStrategy:       pulumi.String("SpotWithPriceLimit"),
+//				SpotPriceLimits: cs.NodePoolSpotPriceLimitArray{
+//					&cs.NodePoolSpotPriceLimitArgs{
+//						InstanceType: pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
+//						PriceLimit:   pulumi.String("0.70"),
+//					},
+//					&cs.NodePoolSpotPriceLimitArgs{
+//						InstanceType: pulumi.String(cloudEfficiency.InstanceTypes[1].Id),
+//						PriceLimit:   pulumi.String("0.72"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Use Spot instances to create a node pool with auto-scaling enabled
+//			_, err = cs.NewNodePool(ctx, "spot_auto_scaling", &cs.NodePoolArgs{
+//				NodePoolName: pulumi.String("spot_auto_scaling"),
+//				ClusterId:    defaultManagedKubernetes.ID(),
+//				VswitchIds: pulumi.StringArray{
+//					defaultSwitch.ID(),
+//				},
+//				InstanceTypes: pulumi.StringArray{
+//					pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
+//				},
+//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
+//				SystemDiskSize:     pulumi.Int(40),
+//				KeyName:            defaultKeyPair.KeyPairName,
+//				ScalingConfig: &cs.NodePoolScalingConfigArgs{
+//					MinSize: pulumi.Int(1),
+//					MaxSize: pulumi.Int(10),
+//					Type:    pulumi.String("spot"),
+//				},
+//				SpotStrategy: pulumi.String("SpotWithPriceLimit"),
+//				SpotPriceLimits: cs.NodePoolSpotPriceLimitArray{
+//					&cs.NodePoolSpotPriceLimitArgs{
+//						InstanceType: pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
+//						PriceLimit:   pulumi.String("0.70"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create a `PrePaid` node pool.
+//			_, err = cs.NewNodePool(ctx, "prepaid_node", &cs.NodePoolArgs{
+//				NodePoolName: pulumi.String("prepaid_node"),
+//				ClusterId:    defaultManagedKubernetes.ID(),
+//				VswitchIds: pulumi.StringArray{
+//					defaultSwitch.ID(),
+//				},
+//				InstanceTypes: pulumi.StringArray{
+//					pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
+//				},
+//				SystemDiskCategory:  pulumi.String("cloud_efficiency"),
+//				SystemDiskSize:      pulumi.Int(40),
+//				KeyName:             defaultKeyPair.KeyPairName,
+//				InstanceChargeType:  pulumi.String("PrePaid"),
+//				Period:              pulumi.Int(1),
+//				PeriodUnit:          pulumi.String("Month"),
+//				AutoRenew:           pulumi.Bool(true),
+//				AutoRenewPeriod:     pulumi.Int(1),
+//				InstallCloudMonitor: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// #Create a node pool with customized kubelet parameters
+//			_, err = cs.NewNodePool(ctx, "customized_kubelet", &cs.NodePoolArgs{
+//				NodePoolName: pulumi.String("customized_kubelet"),
+//				ClusterId:    defaultManagedKubernetes.ID(),
+//				VswitchIds: pulumi.StringArray{
+//					defaultSwitch.ID(),
+//				},
+//				InstanceTypes: pulumi.StringArray{
+//					pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
+//				},
+//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
+//				SystemDiskSize:     pulumi.Int(40),
+//				InstanceChargeType: pulumi.String("PostPaid"),
+//				DesiredSize:        pulumi.String("0"),
+//				KubeletConfiguration: &cs.NodePoolKubeletConfigurationArgs{
+//					RegistryPullQps:     pulumi.String("10"),
+//					RegistryBurst:       pulumi.String("5"),
+//					EventRecordQps:      pulumi.String("10"),
+//					EventBurst:          pulumi.String("5"),
+//					SerializeImagePulls: pulumi.String("true"),
+//					EvictionHard: pulumi.StringMap{
+//						"memory.available":  pulumi.String("1024Mi"),
+//						"nodefs.available":  pulumi.String("10%"),
+//						"nodefs.inodesFree": pulumi.String("5%"),
+//						"imagefs.available": pulumi.String("10%"),
+//					},
+//					SystemReserved: pulumi.StringMap{
+//						"cpu":               pulumi.String("1"),
+//						"memory":            pulumi.String("1Gi"),
+//						"ephemeral-storage": pulumi.String("10Gi"),
+//					},
+//					KubeReserved: pulumi.StringMap{
+//						"cpu":    pulumi.String("500m"),
+//						"memory": pulumi.String("1Gi"),
+//					},
+//					ContainerLogMaxSize:  pulumi.String("200Mi"),
+//					ContainerLogMaxFiles: pulumi.String("3"),
+//					MaxPods:              pulumi.String("100"),
+//					ReadOnlyPort:         pulumi.String("0"),
+//					AllowedUnsafeSysctls: pulumi.StringArray{
+//						pulumi.String("net.ipv4.route.min_pmtu"),
+//					},
+//				},
+//				RollingPolicy: &cs.NodePoolRollingPolicyArgs{
+//					MaxParallelism: pulumi.Int(1),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Container Service for Kubernetes (ACK) Nodepool can be imported using the id, e.g.

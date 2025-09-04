@@ -36,8 +36,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetRegionsArgs;
- * import com.pulumi.random.integer;
- * import com.pulumi.random.integerArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
@@ -99,18 +99,18 @@ import javax.annotation.Nullable;
  *             .name(String.format("fcservicerole-%s", defaultInteger.result()))
  *             .document("""
  *   {
- *       "Statement": [
+ *       \"Statement\": [
  *         {
- *           "Action": "sts:AssumeRole",
- *           "Effect": "Allow",
- *           "Principal": {
- *             "Service": [
- *               "fc.aliyuncs.com"
+ *           \"Action\": \"sts:AssumeRole\",
+ *           \"Effect\": \"Allow\",
+ *           \"Principal\": {
+ *             \"Service\": [
+ *               \"fc.aliyuncs.com\"
  *             ]
  *           }
  *         }
  *       ],
- *       "Version": "1"
+ *       \"Version\": \"1\"
  *   }
  *             """)
  *             .description("this is a example")
@@ -175,23 +175,23 @@ import javax.annotation.Nullable;
  *                 var defaultStoreLogstoreName = values.t3;
  *                 return """
  *     {
- *         "sourceConfig": {
- *             "logstore": "%s",
- *             "startTime": null
+ *         \"sourceConfig\": {
+ *             \"logstore\": \"%s\",
+ *             \"startTime\": null
  *         },
- *         "jobConfig": {
- *             "maxRetryTime": 3,
- *             "triggerInterval": 60
+ *         \"jobConfig\": {
+ *             \"maxRetryTime\": 3,
+ *             \"triggerInterval\": 60
  *         },
- *         "functionParameter": {
- *             "a": "b",
- *             "c": "d"
+ *         \"functionParameter\": {
+ *             \"a\": \"b\",
+ *             \"c\": \"d\"
  *         },
- *         "logConfig": {
- *              "project": "%s",
- *             "logstore": "%s"
+ *         \"logConfig\": {
+ *              \"project\": \"%s\",
+ *             \"logstore\": \"%s\"
  *         },
- *         "enable": true
+ *         \"enable\": true
  *     }
  *   
  * ", sourceStoreLogstoreName,projectName,defaultStoreLogstoreName);
@@ -216,8 +216,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetRegionsArgs;
- * import com.pulumi.random.integer;
- * import com.pulumi.random.integerArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.mns.Topic;
  * import com.pulumi.alicloud.mns.TopicArgs;
  * import com.pulumi.alicloud.ram.Role;
@@ -266,18 +266,18 @@ import javax.annotation.Nullable;
  *             .name(String.format("fcservicerole-%s", defaultInteger.result()))
  *             .document("""
  *   {
- *       "Statement": [
+ *       \"Statement\": [
  *         {
- *           "Action": "sts:AssumeRole",
- *           "Effect": "Allow",
- *           "Principal": {
- *             "Service": [
- *               "mns.aliyuncs.com"
+ *           \"Action\": \"sts:AssumeRole\",
+ *           \"Effect\": \"Allow\",
+ *           \"Principal\": {
+ *             \"Service\": [
+ *               \"mns.aliyuncs.com\"
  *             ]
  *           }
  *         }
  *       ],
- *       "Version": "1"
+ *       \"Version\": \"1\"
  *   }
  *             """)
  *             .description("this is a example")
@@ -332,9 +332,9 @@ import javax.annotation.Nullable;
  *             .type("mns_topic")
  *             .configMns("""
  *   {
- *     "filterTag":"exampleTag",
- *     "notifyContentFormat":"STREAM",
- *     "notifyStrategy":"BACKOFF_RETRY"
+ *     \"filterTag\":\"exampleTag\",
+ *     \"notifyContentFormat\":\"STREAM\",
+ *     \"notifyStrategy\":\"BACKOFF_RETRY\"
  *   }
  *             """)
  *             .build());
@@ -356,8 +356,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.random.integer;
- * import com.pulumi.random.integerArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.cdn.DomainNew;
  * import com.pulumi.alicloud.cdn.DomainNewArgs;
  * import com.pulumi.alicloud.cdn.inputs.DomainNewSourceArgs;
@@ -420,18 +420,18 @@ import javax.annotation.Nullable;
  *             .name(String.format("fcservicerole-%s", defaultInteger.result()))
  *             .document("""
  *     }{{@code
- *       "Statement": [
+ *       \"Statement\": [
  *         }{{@code
- *           "Action": "sts:AssumeRole",
- *           "Effect": "Allow",
- *           "Principal": }{{@code
- *             "Service": [
- *               "cdn.aliyuncs.com"
+ *           \"Action\": \"sts:AssumeRole\",
+ *           \"Effect\": \"Allow\",
+ *           \"Principal\": }{{@code
+ *             \"Service\": [
+ *               \"cdn.aliyuncs.com\"
  *             ]
  *           }}{@code
  *         }}{@code
  *       ],
- *       "Version": "1"
+ *       \"Version\": \"1\"
  *   }}{@code
  *             """)
  *             .description("this is a example")
@@ -445,17 +445,17 @@ import javax.annotation.Nullable;
  *                 var defaultServiceName1 = values.t2;
  *                 return """
  *     }{{@code
- *         "Version": "1",
- *         "Statement": [
+ *         \"Version\": \"1\",
+ *         \"Statement\": [
  *         }{{@code
- *             "Action": [
- *             "fc:InvokeFunction"
+ *             \"Action\": [
+ *             \"fc:InvokeFunction\"
  *             ],
- *         "Resource": [
- *             "acs:fc:*:*:services/%s/functions/*",
- *             "acs:fc:*:*:services/%s.*}&#47;{@code functions/*"
+ *         \"Resource\": [
+ *             \"acs:fc:*:*:services/%s/functions/*\",
+ *             \"acs:fc:*:*:services/%s.*}&#47;{@code functions/*\"
  *         ],
- *         "Effect": "Allow"
+ *         \"Effect\": \"Allow\"
  *         }}{@code
  *         ]
  *     }}{@code
@@ -506,11 +506,11 @@ import javax.annotation.Nullable;
  *             .sourceArn(String.format("acs:cdn:*:%s", default_.id()))
  *             .type("cdn_events")
  *             .config(defaultDomainNew.domainName().applyValue(_domainName -> """
- *       }{{@code "eventName":"LogFileCreated",
- *      "eventVersion":"1.0.0",
- *      "notes":"cdn events trigger",
- *      "filter":}{{@code
- *         "domain": ["%s"]
+ *       }{{@code \"eventName\":\"LogFileCreated\",
+ *      \"eventVersion\":\"1.0.0\",
+ *      \"notes\":\"cdn events trigger\",
+ *      \"filter\":}{{@code
+ *         \"domain\": [\"%s\"]
  *         }}{@code
  *     }}{@code
  * ", _domainName)))
@@ -534,8 +534,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetRegionsArgs;
- * import com.pulumi.random.integer;
- * import com.pulumi.random.integerArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.eventbridge.ServiceLinkedRole;
  * import com.pulumi.alicloud.eventbridge.ServiceLinkedRoleArgs;
  * import com.pulumi.alicloud.fc.Service;

@@ -11,6 +11,119 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.212.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ * import * as std from "@pulumi/std";
+ *
+ * const defaultInteger = new random.index.Integer("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const enhanced = alicloud.vpc.getEnhancedNatAvailableZones({});
+ * const vpc = new alicloud.vpc.Network("vpc", {
+ *     description: name,
+ *     cidrBlock: "192.168.0.0/16",
+ *     vpcName: name,
+ * });
+ * const vswitch = new alicloud.vpc.Switch("vswitch", {
+ *     description: name,
+ *     vpcId: vpc.id,
+ *     vswitchName: name,
+ *     zoneId: enhanced.then(enhanced => enhanced.zones?.[0]?.zoneId),
+ *     cidrBlock: vpc.cidrBlock.apply(cidrBlock => std.cidrsubnetOutput({
+ *         input: cidrBlock,
+ *         newbits: 8,
+ *         netnum: 8,
+ *     })).apply(invoke => invoke.result),
+ * });
+ * const defaultSnapshotPolicy = new alicloud.ecs.SnapshotPolicy("default", {
+ *     name: name,
+ *     repeatWeekdays: [
+ *         "1",
+ *         "2",
+ *         "3",
+ *     ],
+ *     retentionDays: -1,
+ *     timePoints: [
+ *         "1",
+ *         "22",
+ *         "23",
+ *     ],
+ * });
+ * const _default = vswitch.zoneId.apply(zoneId => alicloud.ecs.getInstanceTypesOutput({
+ *     availabilityZone: zoneId,
+ *     cpuCoreCount: 2,
+ *     memorySize: 4,
+ *     kubernetesNodeRole: "Worker",
+ *     instanceTypeFamily: "ecs.n1",
+ * }));
+ * const defaultManagedKubernetes = new alicloud.cs.ManagedKubernetes("default", {
+ *     name: `terraform-example-${defaultInteger.result}`,
+ *     clusterSpec: "ack.pro.small",
+ *     version: "1.24.6-aliyun.1",
+ *     newNatGateway: true,
+ *     nodeCidrMask: 26,
+ *     proxyMode: "ipvs",
+ *     serviceCidr: "172.23.0.0/16",
+ *     podCidr: "10.95.0.0/16",
+ *     workerVswitchIds: [vswitch.id],
+ * });
+ * const defaultKeyPair = new alicloud.ecs.KeyPair("default", {keyPairName: `terraform-example-${defaultInteger.result}`});
+ * const defaultNodePool = new alicloud.cs.NodePool("default", {
+ *     name: "desired_size",
+ *     clusterId: defaultManagedKubernetes.id,
+ *     vswitchIds: [vswitch.id],
+ *     instanceTypes: [_default.apply(_default => _default.instanceTypes?.[0]?.id)],
+ *     systemDiskCategory: "cloud_efficiency",
+ *     systemDiskSize: 40,
+ *     keyName: defaultKeyPair.keyName,
+ *     desiredSize: "2",
+ * });
+ * const environment_cs = new alicloud.arms.Environment("environment-cs", {
+ *     environmentType: "CS",
+ *     environmentName: `terraform-example-${defaultInteger.result}`,
+ *     bindResourceId: defaultNodePool.clusterId,
+ *     environmentSubType: "ACK",
+ * });
+ * const defaultEnvPodMonitor = new alicloud.arms.EnvPodMonitor("default", {
+ *     aliyunLang: "en",
+ *     environmentId: environment_cs.id,
+ *     configYaml: `apiVersion: monitoring.coreos.com/v1
+ * kind: PodMonitor
+ * metadata:
+ *   name: arms-admin-pm1
+ *   namespace: arms-prom
+ *   annotations:
+ *     arms.prometheus.io/discovery: 'true'
+ *     o11y.aliyun.com/addon-name: mysql
+ *     o11y.aliyun.com/addon-version: 1.0.2
+ *     o11y.aliyun.com/release-name: mysql2
+ * spec:
+ *   selector:
+ *     matchLabels:
+ *       app: arms-prometheus-ack-arms-prometheus
+ *       release: arms-prometheus
+ *   namespaceSelector:
+ *     any: true    
+ *   podMetricsEndpoints:
+ *   - interval: 30s
+ *     targetPort: 9335
+ *     path: /metrics
+ *   - interval: 11s
+ *     targetPort: 9335
+ *     path: /metric
+ * `,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ARMS Env Pod Monitor can be imported using the id, e.g.

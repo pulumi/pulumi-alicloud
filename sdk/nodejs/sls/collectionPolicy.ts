@@ -15,6 +15,170 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.232.0.
  *
+ * ## Example Usage
+ *
+ * Enable real-time log query for all of OSS buckets.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const projectCreate01 = new alicloud.log.Project("project_create_01", {
+ *     description: name,
+ *     projectName: std.format({
+ *         input: "%s1%s",
+ *         args: [
+ *             name,
+ *             _default.result,
+ *         ],
+ *     }).then(invoke => invoke.result),
+ * });
+ * const logstoreCreate01 = new alicloud.log.Store("logstore_create_01", {
+ *     retentionPeriod: 30,
+ *     shardCount: 2,
+ *     projectName: projectCreate01.projectName,
+ *     logstoreName: std.format({
+ *         input: "%s1%s",
+ *         args: [
+ *             name,
+ *             _default.result,
+ *         ],
+ *     }).then(invoke => invoke.result),
+ * });
+ * const update01 = new alicloud.log.Project("update_01", {
+ *     description: name,
+ *     projectName: std.format({
+ *         input: "%s2%s",
+ *         args: [
+ *             name,
+ *             _default.result,
+ *         ],
+ *     }).then(invoke => invoke.result),
+ * });
+ * const logstore002 = new alicloud.log.Store("logstore002", {
+ *     retentionPeriod: 30,
+ *     shardCount: 2,
+ *     projectName: update01.projectName,
+ *     logstoreName: std.format({
+ *         input: "%s2%s",
+ *         args: [
+ *             name,
+ *             _default.result,
+ *         ],
+ *     }).then(invoke => invoke.result),
+ * });
+ * const defaultCollectionPolicy = new alicloud.sls.CollectionPolicy("default", {
+ *     policyConfig: {
+ *         resourceMode: "all",
+ *         regions: ["cn-hangzhou"],
+ *     },
+ *     dataCode: "metering_log",
+ *     centralizeEnabled: true,
+ *     productCode: "oss",
+ *     policyName: "xc-example-oss-01",
+ *     enabled: true,
+ *     dataConfig: {
+ *         dataRegion: "cn-hangzhou",
+ *     },
+ *     centralizeConfig: {
+ *         destTtl: 3,
+ *         destRegion: "cn-shanghai",
+ *         destProject: projectCreate01.projectName,
+ *         destLogstore: logstoreCreate01.logstoreName,
+ *     },
+ *     resourceDirectory: {
+ *         accountGroupType: "custom",
+ *         members: ["1936728897040477"],
+ *     },
+ * });
+ * ```
+ *
+ * Enable real-time log query for one or more specific OSS buckets
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example-on-single-bucket";
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const projectCreate01 = new alicloud.log.Project("project_create_01", {
+ *     description: name,
+ *     projectName: std.format({
+ *         input: "%s1%s",
+ *         args: [
+ *             name,
+ *             _default.result,
+ *         ],
+ *     }).then(invoke => invoke.result),
+ * });
+ * const logstoreCreate01 = new alicloud.log.Store("logstore_create_01", {
+ *     retentionPeriod: 30,
+ *     shardCount: 2,
+ *     projectName: projectCreate01.projectName,
+ *     logstoreName: std.format({
+ *         input: "%s1%s",
+ *         args: [
+ *             name,
+ *             _default.result,
+ *         ],
+ *     }).then(invoke => invoke.result),
+ * });
+ * const update01 = new alicloud.log.Project("update_01", {
+ *     description: name,
+ *     projectName: std.format({
+ *         input: "%s2%s",
+ *         args: [
+ *             name,
+ *             _default.result,
+ *         ],
+ *     }).then(invoke => invoke.result),
+ * });
+ * const logstore002 = new alicloud.log.Store("logstore002", {
+ *     retentionPeriod: 30,
+ *     shardCount: 2,
+ *     projectName: update01.projectName,
+ *     logstoreName: std.format({
+ *         input: "%s2%s",
+ *         args: [
+ *             name,
+ *             _default.result,
+ *         ],
+ *     }).then(invoke => invoke.result),
+ * });
+ * const bucket = new alicloud.oss.Bucket("bucket", {bucket: std.format({
+ *     input: "%s1%s",
+ *     args: [
+ *         name,
+ *         _default.result,
+ *     ],
+ * }).then(invoke => invoke.result)});
+ * const defaultCollectionPolicy = new alicloud.sls.CollectionPolicy("default", {
+ *     policyConfig: {
+ *         resourceMode: "instanceMode",
+ *         instanceIds: [bucket.id],
+ *     },
+ *     dataCode: "access_log",
+ *     centralizeEnabled: false,
+ *     productCode: "oss",
+ *     policyName: "xc-example-oss-01",
+ *     enabled: true,
+ * });
+ * ```
+ *
  * ## Import
  *
  * SLS Collection Policy can be imported using the id, e.g.

@@ -20,6 +20,67 @@ import (
 //
 // > **NOTE:** Available since v1.230.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/servicecatalog"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			default0yAgJ8, err := servicecatalog.NewPortfolio(ctx, "default0yAgJ8", &servicecatalog.PortfolioArgs{
+//				ProviderName:  pulumi.String(name),
+//				Description:   pulumi.String("desc"),
+//				PortfolioName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s1",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultRetBJw, err := servicecatalog.NewProduct(ctx, "defaultRetBJw", &servicecatalog.ProductArgs{
+//				ProviderName: pulumi.String(name),
+//				ProductName:  pulumi.String(invokeFormat.Result),
+//				ProductType:  pulumi.String("Ros"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = servicecatalog.NewProductPortfolioAssociation(ctx, "default", &servicecatalog.ProductPortfolioAssociationArgs{
+//				PortfolioId: default0yAgJ8.ID(),
+//				ProductId:   defaultRetBJw.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Service Catalog Product Portfolio Association can be imported using the id, e.g.

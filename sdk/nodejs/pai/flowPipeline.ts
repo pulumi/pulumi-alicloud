@@ -35,25 +35,25 @@ import * as utilities from "../utilities";
  * });
  * const defaultFlowPipeline = new alicloud.pai.FlowPipeline("default", {
  *     workspaceId: defaultWjQD1e.id,
- *     manifest: _default.then(_default => `apiVersion: "core/v1"
+ *     manifest: _default.then(_default => `apiVersion: \"core/v1\"
  * metadata:
- *   provider: "${_default.id}"
- *   version: "v1"
- *   identifier: "my_pipeline"
- *   name: "source-transform"
- *   uuid: "terraformuuid${defaultInteger.result}"
+ *   provider: \"${_default.id}\"
+ *   version: \"v1\"
+ *   identifier: \"my_pipeline\"
+ *   name: \"source-transform\"
+ *   uuid: \"terraformuuid${defaultInteger.result}\"
  *   annotations: {}
  *   labels: {}
  * spec:
  *   inputs:
  *     artifacts: []
  *     parameters:
- *     - name: "execution_maxcompute"
- *       type: "Map"
+ *     - name: \"execution_maxcompute\"
+ *       type: \"Map\"
  *       value:
  *         spec:
- *           endpoint: "http://service.cn.maxcompute.aliyun-inc.com/api"
- *           odpsProject: "test_i****"
+ *           endpoint: \"http://service.cn.maxcompute.aliyun-inc.com/api\"
+ *           odpsProject: \"test_i****\"
  *   outputs:
  *     artifacts: []
  *     parameters: []
@@ -64,14 +64,14 @@ import * as utilities from "../utilities";
  *   initContainers: []
  *   sideCarContainers: []
  *   pipelines:
- *   - apiVersion: "core/v1"
+ *   - apiVersion: \"core/v1\"
  *     metadata:
- *       provider: "pai"
- *       version: "v1"
- *       identifier: "data_source"
- *       name: "data-source"
- *       uuid: "2ftahdnzcod2rt6u9q"
- *       displayName: "读数据表-1"
+ *       provider: \"pai\"
+ *       version: \"v1\"
+ *       identifier: \"data_source\"
+ *       name: \"data-source\"
+ *       uuid: \"2ftahdnzcod2rt6u9q\"
+ *       displayName: \"读数据表-1\"
  *       annotations: {}
  *       labels: {}
  *     spec:
@@ -84,23 +84,23 @@ import * as utilities from "../utilities";
  *       arguments:
  *         artifacts: []
  *         parameters:
- *         - name: "inputTableName"
- *           value: "pai_online_project.wumai_data"
- *         - name: "execution"
- *           from: "{{inputs.parameters.execution_maxcompute}}"
+ *         - name: \"inputTableName\"
+ *           value: \"pai_online_project.wumai_data\"
+ *         - name: \"execution\"
+ *           from: \"{{inputs.parameters.execution_maxcompute}}\"
  *       dependencies: []
  *       initContainers: []
  *       sideCarContainers: []
  *       pipelines: []
  *       volumes: []
- *   - apiVersion: "core/v1"
+ *   - apiVersion: \"core/v1\"
  *     metadata:
- *       provider: "pai"
- *       version: "v1"
- *       identifier: "type_transform"
- *       name: "type-transform"
- *       uuid: "gacnnnl4ksvbabfh6l"
- *       displayName: "类型转换-1"
+ *       provider: \"pai\"
+ *       version: \"v1\"
+ *       identifier: \"type_transform\"
+ *       name: \"type-transform\"
+ *       uuid: \"gacnnnl4ksvbabfh6l\"
+ *       displayName: \"类型转换-1\"
  *       annotations: {}
  *       labels: {}
  *     spec:
@@ -112,15 +112,15 @@ import * as utilities from "../utilities";
  *         parameters: []
  *       arguments:
  *         artifacts:
- *         - name: "inputTable"
- *           from: "{{pipelines.data_source.outputs.artifacts.outputTable}}"
+ *         - name: \"inputTable\"
+ *           from: \"{{pipelines.data_source.outputs.artifacts.outputTable}}\"
  *         parameters:
- *         - name: "cols_to_double"
- *           value: "time,hour,pm2,pm10,so2,co,no2"
- *         - name: "execution"
- *           from: "{{inputs.parameters.execution_maxcompute}}"
+ *         - name: \"cols_to_double\"
+ *           value: \"time,hour,pm2,pm10,so2,co,no2\"
+ *         - name: \"execution\"
+ *           from: \"{{inputs.parameters.execution_maxcompute}}\"
  *       dependencies:
- *       - "data_source"
+ *       - \"data_source\"
  *       initContainers: []
  *       sideCarContainers: []
  *       pipelines: []

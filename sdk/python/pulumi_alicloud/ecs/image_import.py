@@ -341,7 +341,7 @@ class ImageImport(pulumi.CustomResource):
             key="fc/hello.zip",
             content=\"\"\"    # -*- coding: utf-8 -*-
             def handler(event, context):
-            print "hello world"
+            print \\"hello world\\"
             return 'hello world'
         \"\"\")
         default_image_import = alicloud.ecs.ImageImport("default",
@@ -417,7 +417,7 @@ class ImageImport(pulumi.CustomResource):
             key="fc/hello.zip",
             content=\"\"\"    # -*- coding: utf-8 -*-
             def handler(event, context):
-            print "hello world"
+            print \\"hello world\\"
             return 'hello world'
         \"\"\")
         default_image_import = alicloud.ecs.ImageImport("default",

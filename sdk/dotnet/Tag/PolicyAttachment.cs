@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Tag
     ///         PolicyName = name,
     ///         PolicyDesc = name,
     ///         UserType = "USER",
-    ///         PolicyContent = @"		{""tags"":{""CostCenter"":{""tag_value"":{""@@assign"":[""Beijing"",""Shanghai""]},""tag_key"":{""@@assign"":""CostCenter""}}}}
+    ///         PolicyContent = @"\t\t{\""tags\"":{\""CostCenter\"":{\""tag_value\"":{\""@@assign\"":[\""Beijing\"",\""Shanghai\""]},\""tag_key\"":{\""@@assign\"":\""CostCenter\""}}}}
     /// ",
     ///     });
     /// 

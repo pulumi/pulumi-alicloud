@@ -34,19 +34,19 @@ namespace Pulumi.AliCloud.Ram
     ///     {
     ///         Name = "roleName",
     ///         Document = @"    {
-    ///       ""Statement"": [
+    ///       \""Statement\"": [
     ///         {
-    ///           ""Action"": ""sts:AssumeRole"",
-    ///           ""Effect"": ""Allow"",
-    ///           ""Principal"": {
-    ///             ""Service"": [
-    ///               ""apigateway.aliyuncs.com"", 
-    ///               ""ecs.aliyuncs.com""
+    ///           \""Action\"": \""sts:AssumeRole\"",
+    ///           \""Effect\"": \""Allow\"",
+    ///           \""Principal\"": {
+    ///             \""Service\"": [
+    ///               \""apigateway.aliyuncs.com\"", 
+    ///               \""ecs.aliyuncs.com\""
     ///             ]
     ///           }
     ///         }
     ///       ],
-    ///       ""Version"": ""1""
+    ///       \""Version\"": \""1\""
     ///     }
     /// ",
     ///         Description = "this is a role test.",
@@ -62,20 +62,20 @@ namespace Pulumi.AliCloud.Ram
     ///     {
     ///         PolicyName = $"tf-example-{@default.Result}",
     ///         PolicyDocument = @"  {
-    ///     ""Statement"": [
+    ///     \""Statement\"": [
     ///       {
-    ///         ""Action"": [
-    ///           ""oss:ListObjects"",
-    ///           ""oss:GetObject""
+    ///         \""Action\"": [
+    ///           \""oss:ListObjects\"",
+    ///           \""oss:GetObject\""
     ///         ],
-    ///         ""Effect"": ""Allow"",
-    ///         ""Resource"": [
-    ///           ""acs:oss:*:*:mybucket"",
-    ///           ""acs:oss:*:*:mybucket/*""
+    ///         \""Effect\"": \""Allow\"",
+    ///         \""Resource\"": [
+    ///           \""acs:oss:*:*:mybucket\"",
+    ///           \""acs:oss:*:*:mybucket/*\""
     ///         ]
     ///       }
     ///     ],
-    ///       ""Version"": ""1""
+    ///       \""Version\"": \""1\""
     ///   }
     /// ",
     ///         Description = "this is a policy test",

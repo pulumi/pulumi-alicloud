@@ -14,6 +14,65 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mns"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := mns.NewTopic(ctx, "example", &mns.TopicArgs{
+//				Name: pulumi.String("test-topic"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "acs:oss:cn-shanghai:11827252********:/topics/%s",
+//				Args: pulumi.StringArray{
+//					example.Name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// Example for create a MNS delivery channel
+//			_, err = cfg.NewDeliveryChannel(ctx, "example", &cfg.DeliveryChannelArgs{
+//				Description:                  pulumi.String("channel_description"),
+//				DeliveryChannelName:          pulumi.String("channel_name"),
+//				DeliveryChannelAssumeRoleArn: pulumi.String("acs:ram::11827252********:role/aliyunserviceroleforconfig"),
+//				DeliveryChannelType:          pulumi.String("MNS"),
+//				DeliveryChannelTargetArn:     pulumi.String(invokeFormat.Result),
+//				DeliveryChannelCondition: pulumi.String(`  [
+//	      {
+//	          \"filterType\":\"ResourceType\",
+//	          \"values\":[
+//	              \"ACS::CEN::CenInstance\",
+//	              \"ACS::CEN::Flowlog\",
+//	          ],
+//	          \"multiple\":true
+//	      }
+//	  ]
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Alicloud Config Delivery Channel can be imported using the id, e.g.

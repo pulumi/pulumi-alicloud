@@ -5,10 +5,9 @@ package com.pulumi.alicloud.ros.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class StackGroupParameterArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,33 +15,33 @@ public final class StackGroupParameterArgs extends com.pulumi.resources.Resource
     public static final StackGroupParameterArgs Empty = new StackGroupParameterArgs();
 
     /**
-     * The parameter key.
+     * The key of parameter N. If you do not specify the key and value of the parameter, ROS uses the default key and value in the template.
      * 
      */
-    @Import(name="parameterKey")
-    private @Nullable Output<String> parameterKey;
+    @Import(name="parameterKey", required=true)
+    private Output<String> parameterKey;
 
     /**
-     * @return The parameter key.
+     * @return The key of parameter N. If you do not specify the key and value of the parameter, ROS uses the default key and value in the template.
      * 
      */
-    public Optional<Output<String>> parameterKey() {
-        return Optional.ofNullable(this.parameterKey);
+    public Output<String> parameterKey() {
+        return this.parameterKey;
     }
 
     /**
-     * The parameter value.
+     * The value of parameter N.
      * 
      */
-    @Import(name="parameterValue")
-    private @Nullable Output<String> parameterValue;
+    @Import(name="parameterValue", required=true)
+    private Output<String> parameterValue;
 
     /**
-     * @return The parameter value.
+     * @return The value of parameter N.
      * 
      */
-    public Optional<Output<String>> parameterValue() {
-        return Optional.ofNullable(this.parameterValue);
+    public Output<String> parameterValue() {
+        return this.parameterValue;
     }
 
     private StackGroupParameterArgs() {}
@@ -71,18 +70,18 @@ public final class StackGroupParameterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param parameterKey The parameter key.
+         * @param parameterKey The key of parameter N. If you do not specify the key and value of the parameter, ROS uses the default key and value in the template.
          * 
          * @return builder
          * 
          */
-        public Builder parameterKey(@Nullable Output<String> parameterKey) {
+        public Builder parameterKey(Output<String> parameterKey) {
             $.parameterKey = parameterKey;
             return this;
         }
 
         /**
-         * @param parameterKey The parameter key.
+         * @param parameterKey The key of parameter N. If you do not specify the key and value of the parameter, ROS uses the default key and value in the template.
          * 
          * @return builder
          * 
@@ -92,18 +91,18 @@ public final class StackGroupParameterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param parameterValue The parameter value.
+         * @param parameterValue The value of parameter N.
          * 
          * @return builder
          * 
          */
-        public Builder parameterValue(@Nullable Output<String> parameterValue) {
+        public Builder parameterValue(Output<String> parameterValue) {
             $.parameterValue = parameterValue;
             return this;
         }
 
         /**
-         * @param parameterValue The parameter value.
+         * @param parameterValue The value of parameter N.
          * 
          * @return builder
          * 
@@ -113,6 +112,12 @@ public final class StackGroupParameterArgs extends com.pulumi.resources.Resource
         }
 
         public StackGroupParameterArgs build() {
+            if ($.parameterKey == null) {
+                throw new MissingRequiredPropertyException("StackGroupParameterArgs", "parameterKey");
+            }
+            if ($.parameterValue == null) {
+                throw new MissingRequiredPropertyException("StackGroupParameterArgs", "parameterValue");
+            }
             return $;
         }
     }

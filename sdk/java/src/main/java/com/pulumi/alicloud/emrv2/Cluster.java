@@ -51,8 +51,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
- * import com.pulumi.random.integer;
- * import com.pulumi.random.integerArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.ecs.EcsKeyPair;
  * import com.pulumi.alicloud.ecs.EcsKeyPairArgs;
  * import com.pulumi.alicloud.ecs.SecurityGroup;
@@ -121,19 +121,19 @@ import javax.annotation.Nullable;
  *             .name(name)
  *             .document("""
  *     {
- *         "Statement": [
+ *         \"Statement\": [
  *         {
- *             "Action": "sts:AssumeRole",
- *             "Effect": "Allow",
- *             "Principal": {
- *             "Service": [
- *                 "emr.aliyuncs.com",
- *                 "ecs.aliyuncs.com"
+ *             \"Action\": \"sts:AssumeRole\",
+ *             \"Effect\": \"Allow\",
+ *             \"Principal\": {
+ *             \"Service\": [
+ *                 \"emr.aliyuncs.com\",
+ *                 \"ecs.aliyuncs.com\"
  *             ]
  *             }
  *         }
  *         ],
- *         "Version": "1"
+ *         \"Version\": \"1\"
  *     }
  *             """)
  *             .description("this is a role example.")

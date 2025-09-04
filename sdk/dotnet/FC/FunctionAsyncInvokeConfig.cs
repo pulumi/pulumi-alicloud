@@ -46,20 +46,20 @@ namespace Pulumi.AliCloud.FC
     ///     var defaultRole = new AliCloud.Ram.Role("default", new()
     ///     {
     ///         Name = $"examplerole{defaultInteger.Result}",
-    ///         Document = @"	{
-    /// 		""Statement"": [
-    /// 		  {
-    /// 			""Action"": ""sts:AssumeRole"",
-    /// 			""Effect"": ""Allow"",
-    /// 			""Principal"": {
-    /// 			  ""Service"": [
-    /// 				""fc.aliyuncs.com""
-    /// 			  ]
-    /// 			}
-    /// 		  }
-    /// 		],
-    /// 		""Version"": ""1""
-    /// 	}
+    ///         Document = @"\t{
+    /// \t\t\""Statement\"": [
+    /// \t\t  {
+    /// \t\t\t\""Action\"": \""sts:AssumeRole\"",
+    /// \t\t\t\""Effect\"": \""Allow\"",
+    /// \t\t\t\""Principal\"": {
+    /// \t\t\t  \""Service\"": [
+    /// \t\t\t\t\""fc.aliyuncs.com\""
+    /// \t\t\t  ]
+    /// \t\t\t}
+    /// \t\t  }
+    /// \t\t],
+    /// \t\t\""Version\"": \""1\""
+    /// \t}
     /// ",
     ///         Description = "this is a example",
     ///         Force = true,
@@ -68,16 +68,16 @@ namespace Pulumi.AliCloud.FC
     ///     var defaultPolicy = new AliCloud.Ram.Policy("default", new()
     ///     {
     ///         PolicyName = $"examplepolicy{defaultInteger.Result}",
-    ///         PolicyDocument = @"	{
-    /// 		""Version"": ""1"",
-    /// 		""Statement"": [
-    /// 		  {
-    /// 			""Action"": ""mns:*"",
-    /// 			""Resource"": ""*"",
-    /// 			""Effect"": ""Allow""
-    /// 		  }
-    /// 		]
-    /// 	  }
+    ///         PolicyDocument = @"\t{
+    /// \t\t\""Version\"": \""1\"",
+    /// \t\t\""Statement\"": [
+    /// \t\t  {
+    /// \t\t\t\""Action\"": \""mns:*\"",
+    /// \t\t\t\""Resource\"": \""*\"",
+    /// \t\t\t\""Effect\"": \""Allow\""
+    /// \t\t  }
+    /// \t\t]
+    /// \t  }
     /// ",
     ///     });
     /// 

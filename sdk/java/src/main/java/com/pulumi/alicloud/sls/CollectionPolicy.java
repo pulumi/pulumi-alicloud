@@ -28,6 +28,241 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.232.0.
  * 
+ * ## Example Usage
+ * 
+ * Enable real-time log query for all of OSS buckets.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.log.Project;
+ * import com.pulumi.alicloud.log.ProjectArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.alicloud.log.Store;
+ * import com.pulumi.alicloud.log.StoreArgs;
+ * import com.pulumi.alicloud.sls.CollectionPolicy;
+ * import com.pulumi.alicloud.sls.CollectionPolicyArgs;
+ * import com.pulumi.alicloud.sls.inputs.CollectionPolicyPolicyConfigArgs;
+ * import com.pulumi.alicloud.sls.inputs.CollectionPolicyDataConfigArgs;
+ * import com.pulumi.alicloud.sls.inputs.CollectionPolicyCentralizeConfigArgs;
+ * import com.pulumi.alicloud.sls.inputs.CollectionPolicyResourceDirectoryArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
+ *         var projectCreate01 = new Project("projectCreate01", ProjectArgs.builder()
+ *             .description(name)
+ *             .projectName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s1%s")
+ *                 .args(                
+ *                     name,
+ *                     default_.result())
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var logstoreCreate01 = new Store("logstoreCreate01", StoreArgs.builder()
+ *             .retentionPeriod(30)
+ *             .shardCount(2)
+ *             .projectName(projectCreate01.projectName())
+ *             .logstoreName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s1%s")
+ *                 .args(                
+ *                     name,
+ *                     default_.result())
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var update01 = new Project("update01", ProjectArgs.builder()
+ *             .description(name)
+ *             .projectName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s2%s")
+ *                 .args(                
+ *                     name,
+ *                     default_.result())
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var logstore002 = new Store("logstore002", StoreArgs.builder()
+ *             .retentionPeriod(30)
+ *             .shardCount(2)
+ *             .projectName(update01.projectName())
+ *             .logstoreName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s2%s")
+ *                 .args(                
+ *                     name,
+ *                     default_.result())
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var defaultCollectionPolicy = new CollectionPolicy("defaultCollectionPolicy", CollectionPolicyArgs.builder()
+ *             .policyConfig(CollectionPolicyPolicyConfigArgs.builder()
+ *                 .resourceMode("all")
+ *                 .regions("cn-hangzhou")
+ *                 .build())
+ *             .dataCode("metering_log")
+ *             .centralizeEnabled(true)
+ *             .productCode("oss")
+ *             .policyName("xc-example-oss-01")
+ *             .enabled(true)
+ *             .dataConfig(CollectionPolicyDataConfigArgs.builder()
+ *                 .dataRegion("cn-hangzhou")
+ *                 .build())
+ *             .centralizeConfig(CollectionPolicyCentralizeConfigArgs.builder()
+ *                 .destTtl(3)
+ *                 .destRegion("cn-shanghai")
+ *                 .destProject(projectCreate01.projectName())
+ *                 .destLogstore(logstoreCreate01.logstoreName())
+ *                 .build())
+ *             .resourceDirectory(CollectionPolicyResourceDirectoryArgs.builder()
+ *                 .accountGroupType("custom")
+ *                 .members("1936728897040477")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Enable real-time log query for one or more specific OSS buckets
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.log.Project;
+ * import com.pulumi.alicloud.log.ProjectArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.alicloud.log.Store;
+ * import com.pulumi.alicloud.log.StoreArgs;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.sls.CollectionPolicy;
+ * import com.pulumi.alicloud.sls.CollectionPolicyArgs;
+ * import com.pulumi.alicloud.sls.inputs.CollectionPolicyPolicyConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example-on-single-bucket");
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
+ *         var projectCreate01 = new Project("projectCreate01", ProjectArgs.builder()
+ *             .description(name)
+ *             .projectName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s1%s")
+ *                 .args(                
+ *                     name,
+ *                     default_.result())
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var logstoreCreate01 = new Store("logstoreCreate01", StoreArgs.builder()
+ *             .retentionPeriod(30)
+ *             .shardCount(2)
+ *             .projectName(projectCreate01.projectName())
+ *             .logstoreName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s1%s")
+ *                 .args(                
+ *                     name,
+ *                     default_.result())
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var update01 = new Project("update01", ProjectArgs.builder()
+ *             .description(name)
+ *             .projectName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s2%s")
+ *                 .args(                
+ *                     name,
+ *                     default_.result())
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var logstore002 = new Store("logstore002", StoreArgs.builder()
+ *             .retentionPeriod(30)
+ *             .shardCount(2)
+ *             .projectName(update01.projectName())
+ *             .logstoreName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s2%s")
+ *                 .args(                
+ *                     name,
+ *                     default_.result())
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
+ *             .bucket(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s1%s")
+ *                 .args(                
+ *                     name,
+ *                     default_.result())
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var defaultCollectionPolicy = new CollectionPolicy("defaultCollectionPolicy", CollectionPolicyArgs.builder()
+ *             .policyConfig(CollectionPolicyPolicyConfigArgs.builder()
+ *                 .resourceMode("instanceMode")
+ *                 .instanceIds(bucket.id())
+ *                 .build())
+ *             .dataCode("access_log")
+ *             .centralizeEnabled(false)
+ *             .productCode("oss")
+ *             .policyName("xc-example-oss-01")
+ *             .enabled(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * SLS Collection Policy can be imported using the id, e.g.

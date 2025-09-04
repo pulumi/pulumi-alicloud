@@ -173,16 +173,16 @@ class LogTailAttachment(pulumi.CustomResource):
             input_type="file",
             name="terraform-example",
             output_type="LogService",
-            input_detail=\"\"\"  \\x09{
-        \\x09\\x09"logPath": "/logPath",
-        \\x09\\x09"filePattern": "access.log",
-        \\x09\\x09"logType": "json_log",
-        \\x09\\x09"topicFormat": "default",
-        \\x09\\x09"discardUnmatch": false,
-        \\x09\\x09"enableRawLog": true,
-        \\x09\\x09"fileEncoding": "gbk",
-        \\x09\\x09"maxDepth": 10
-        \\x09}
+            input_detail=\"\"\"  \\t{
+        \\t\\t\\"logPath\\": \\"/logPath\\",
+        \\t\\t\\"filePattern\\": \\"access.log\\",
+        \\t\\t\\"logType\\": \\"json_log\\",
+        \\t\\t\\"topicFormat\\": \\"default\\",
+        \\t\\t\\"discardUnmatch\\": false,
+        \\t\\t\\"enableRawLog\\": true,
+        \\t\\t\\"fileEncoding\\": \\"gbk\\",
+        \\t\\t\\"maxDepth\\": 10
+        \\t}
         \"\"\")
         example_machine_group = alicloud.log.MachineGroup("example",
             project=example.project_name,
@@ -257,16 +257,16 @@ class LogTailAttachment(pulumi.CustomResource):
             input_type="file",
             name="terraform-example",
             output_type="LogService",
-            input_detail=\"\"\"  \\x09{
-        \\x09\\x09"logPath": "/logPath",
-        \\x09\\x09"filePattern": "access.log",
-        \\x09\\x09"logType": "json_log",
-        \\x09\\x09"topicFormat": "default",
-        \\x09\\x09"discardUnmatch": false,
-        \\x09\\x09"enableRawLog": true,
-        \\x09\\x09"fileEncoding": "gbk",
-        \\x09\\x09"maxDepth": 10
-        \\x09}
+            input_detail=\"\"\"  \\t{
+        \\t\\t\\"logPath\\": \\"/logPath\\",
+        \\t\\t\\"filePattern\\": \\"access.log\\",
+        \\t\\t\\"logType\\": \\"json_log\\",
+        \\t\\t\\"topicFormat\\": \\"default\\",
+        \\t\\t\\"discardUnmatch\\": false,
+        \\t\\t\\"enableRawLog\\": true,
+        \\t\\t\\"fileEncoding\\": \\"gbk\\",
+        \\t\\t\\"maxDepth\\": 10
+        \\t}
         \"\"\")
         example_machine_group = alicloud.log.MachineGroup("example",
             project=example.project_name,

@@ -252,8 +252,8 @@ class AddressPool(pulumi.CustomResource):
             type="IPV4",
             addresses=[{
                 "attribute_info": \"\"\"    {
-              "lineCodeRectifyType": "RECTIFIED",
-              "lineCodes": ["os_namerica_us"]
+              \\"lineCodeRectifyType\\": \\"RECTIFIED\\",
+              \\"lineCodes\\": [\\"os_namerica_us\\"]
             }
         \"\"\",
                 "remark": "address_remark",
@@ -336,8 +336,8 @@ class AddressPool(pulumi.CustomResource):
             type="IPV4",
             addresses=[{
                 "attribute_info": \"\"\"    {
-              "lineCodeRectifyType": "RECTIFIED",
-              "lineCodes": ["os_namerica_us"]
+              \\"lineCodeRectifyType\\": \\"RECTIFIED\\",
+              \\"lineCodes\\": [\\"os_namerica_us\\"]
             }
         \"\"\",
                 "remark": "address_remark",

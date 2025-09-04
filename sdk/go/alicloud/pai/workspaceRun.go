@@ -18,6 +18,73 @@ import (
 //
 // > **NOTE:** Available since v1.236.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/pai"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultCAFUa9, err := pai.NewWorkspaceWorkspace(ctx, "defaultCAFUa9", &pai.WorkspaceWorkspaceArgs{
+//				Description:   pulumi.String(name),
+//				DisplayName:   pulumi.String(name),
+//				WorkspaceName: pulumi.String(name),
+//				EnvTypes: pulumi.StringArray{
+//					pulumi.String("prod"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s1",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultQRwWbv, err := pai.NewWorkspaceExperiment(ctx, "defaultQRwWbv", &pai.WorkspaceExperimentArgs{
+//				Accessibility:  pulumi.String("PRIVATE"),
+//				ArtifactUri:    pulumi.String("oss://example.oss-cn-hangzhou.aliyuncs.com/example/"),
+//				ExperimentName: pulumi.String(invokeFormat.Result),
+//				WorkspaceId:    defaultCAFUa9.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pai.NewWorkspaceRun(ctx, "default", &pai.WorkspaceRunArgs{
+//				SourceType:   pulumi.String("TrainingService"),
+//				SourceId:     pulumi.String("759"),
+//				RunName:      pulumi.String(name),
+//				ExperimentId: defaultQRwWbv.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // PAI Workspace Run can be imported using the id, e.g.

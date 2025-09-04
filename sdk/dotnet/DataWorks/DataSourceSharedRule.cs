@@ -18,6 +18,101 @@ namespace Pulumi.AliCloud.DataWorks
     /// 
     /// &gt; **NOTE:** Available since v1.237.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var randint = new Random.Index.Integer("randint", new()
+    ///     {
+    ///         Max = 999,
+    ///         Min = 1,
+    ///     });
+    /// 
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var defaultQeRfvU = new AliCloud.DataWorks.Project("defaultQeRfvU", new()
+    ///     {
+    ///         Description = "源项目",
+    ///         ProjectName = name,
+    ///         DisplayName = "shared_source2",
+    ///         PaiTaskEnabled = true,
+    ///     });
+    /// 
+    ///     var defaultasjsH5 = new AliCloud.DataWorks.Project("defaultasjsH5", new()
+    ///     {
+    ///         Description = "目标空间",
+    ///         ProjectName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s1",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         DisplayName = "shared_target2",
+    ///         PaiTaskEnabled = true,
+    ///     });
+    /// 
+    ///     var defaultvzu0wG = new AliCloud.DataWorks.DataSource("defaultvzu0wG", new()
+    ///     {
+    ///         Type = "hive",
+    ///         DataSourceName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s2",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         ConnectionProperties = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["address"] = new[]
+    ///             {
+    ///                 new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["host"] = "127.0.0.1",
+    ///                     ["port"] = "1234",
+    ///                 },
+    ///             },
+    ///             ["database"] = "hive_database",
+    ///             ["metaType"] = "HiveMetastore",
+    ///             ["metastoreUris"] = "thrift://123:123",
+    ///             ["version"] = "2.3.9",
+    ///             ["loginMode"] = "Anonymous",
+    ///             ["securityProtocol"] = "authTypeNone",
+    ///             ["envType"] = "Prod",
+    ///             ["properties"] = new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["key1"] = "value1",
+    ///             },
+    ///         }),
+    ///         ProjectId = defaultQeRfvU.Id,
+    ///         ConnectionPropertiesMode = "UrlMode",
+    ///     });
+    /// 
+    ///     var defaultDataSourceSharedRule = new AliCloud.DataWorks.DataSourceSharedRule("default", new()
+    ///     {
+    ///         TargetProjectId = defaultasjsH5.Id,
+    ///         DataSourceId = defaultvzu0wG.DataSourceId,
+    ///         EnvType = "Prod",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Data Works Data Source Shared Rule can be imported using the id, e.g.

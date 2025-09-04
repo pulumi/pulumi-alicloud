@@ -73,33 +73,23 @@ import (
 type DefenseTemplate struct {
 	pulumi.CustomResourceState
 
-	// The module to which the protection rule that you want to create belongs. Value:
-	// - **waf_group**: the basic protection rule module.
-	// - **antiscan**: the scan protection module.
-	// - **ip_blacklist**: the IP address blacklist module.
-	// - **custom_acl**: the custom rule module.
-	// - **whitelist**: the whitelist module.
-	// - **region_block**: the region blacklist module.
-	// - **custom_response**: the custom response module.
-	// - **cc**: the HTTP flood protection module.
-	// - **tamperproof**: the website tamper-proofing module.
-	// - **dlp**: the data leakage prevention module.
+	// The WAF protection scenario to be created. Valid values:
 	DefenseScene pulumi.StringOutput `pulumi:"defenseScene"`
-	// Template ID.
+	// Template ID
 	DefenseTemplateId pulumi.IntOutput `pulumi:"defenseTemplateId"`
 	// The name of the protection rule template.
 	DefenseTemplateName pulumi.StringOutput `pulumi:"defenseTemplateName"`
-	// The description of the protection rule template. .
+	// The description of the protection rule template.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The ID of the Web Application Firewall (WAF) instance. .
+	// The ID of the Web Application Firewall (WAF) instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// The ID of the Alibaba Cloud resource group. .
+	// The ID of the Alibaba Cloud resource group.
 	ResourceManagerResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceManagerResourceGroupId"`
+	// The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
+	Resources pulumi.StringArrayOutput `pulumi:"resources"`
 	// The status of the protection rule template. Valid values:
-	// - **0**: disabled.
-	// - **1**: enabled.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The origin of the protection rule template that you want to create. Set the value to **custom**. The value specifies that the protection rule template is a custom template. .
+	// The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
 	TemplateOrigin pulumi.StringOutput `pulumi:"templateOrigin"`
 	// The type of the protection rule template. Valid values:
 	// - **user_default:** default template.
@@ -155,33 +145,23 @@ func GetDefenseTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DefenseTemplate resources.
 type defenseTemplateState struct {
-	// The module to which the protection rule that you want to create belongs. Value:
-	// - **waf_group**: the basic protection rule module.
-	// - **antiscan**: the scan protection module.
-	// - **ip_blacklist**: the IP address blacklist module.
-	// - **custom_acl**: the custom rule module.
-	// - **whitelist**: the whitelist module.
-	// - **region_block**: the region blacklist module.
-	// - **custom_response**: the custom response module.
-	// - **cc**: the HTTP flood protection module.
-	// - **tamperproof**: the website tamper-proofing module.
-	// - **dlp**: the data leakage prevention module.
+	// The WAF protection scenario to be created. Valid values:
 	DefenseScene *string `pulumi:"defenseScene"`
-	// Template ID.
+	// Template ID
 	DefenseTemplateId *int `pulumi:"defenseTemplateId"`
 	// The name of the protection rule template.
 	DefenseTemplateName *string `pulumi:"defenseTemplateName"`
-	// The description of the protection rule template. .
+	// The description of the protection rule template.
 	Description *string `pulumi:"description"`
-	// The ID of the Web Application Firewall (WAF) instance. .
+	// The ID of the Web Application Firewall (WAF) instance.
 	InstanceId *string `pulumi:"instanceId"`
-	// The ID of the Alibaba Cloud resource group. .
+	// The ID of the Alibaba Cloud resource group.
 	ResourceManagerResourceGroupId *string `pulumi:"resourceManagerResourceGroupId"`
+	// The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
+	Resources []string `pulumi:"resources"`
 	// The status of the protection rule template. Valid values:
-	// - **0**: disabled.
-	// - **1**: enabled.
 	Status *string `pulumi:"status"`
-	// The origin of the protection rule template that you want to create. Set the value to **custom**. The value specifies that the protection rule template is a custom template. .
+	// The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
 	TemplateOrigin *string `pulumi:"templateOrigin"`
 	// The type of the protection rule template. Valid values:
 	// - **user_default:** default template.
@@ -190,33 +170,23 @@ type defenseTemplateState struct {
 }
 
 type DefenseTemplateState struct {
-	// The module to which the protection rule that you want to create belongs. Value:
-	// - **waf_group**: the basic protection rule module.
-	// - **antiscan**: the scan protection module.
-	// - **ip_blacklist**: the IP address blacklist module.
-	// - **custom_acl**: the custom rule module.
-	// - **whitelist**: the whitelist module.
-	// - **region_block**: the region blacklist module.
-	// - **custom_response**: the custom response module.
-	// - **cc**: the HTTP flood protection module.
-	// - **tamperproof**: the website tamper-proofing module.
-	// - **dlp**: the data leakage prevention module.
+	// The WAF protection scenario to be created. Valid values:
 	DefenseScene pulumi.StringPtrInput
-	// Template ID.
+	// Template ID
 	DefenseTemplateId pulumi.IntPtrInput
 	// The name of the protection rule template.
 	DefenseTemplateName pulumi.StringPtrInput
-	// The description of the protection rule template. .
+	// The description of the protection rule template.
 	Description pulumi.StringPtrInput
-	// The ID of the Web Application Firewall (WAF) instance. .
+	// The ID of the Web Application Firewall (WAF) instance.
 	InstanceId pulumi.StringPtrInput
-	// The ID of the Alibaba Cloud resource group. .
+	// The ID of the Alibaba Cloud resource group.
 	ResourceManagerResourceGroupId pulumi.StringPtrInput
+	// The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
+	Resources pulumi.StringArrayInput
 	// The status of the protection rule template. Valid values:
-	// - **0**: disabled.
-	// - **1**: enabled.
 	Status pulumi.StringPtrInput
-	// The origin of the protection rule template that you want to create. Set the value to **custom**. The value specifies that the protection rule template is a custom template. .
+	// The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
 	TemplateOrigin pulumi.StringPtrInput
 	// The type of the protection rule template. Valid values:
 	// - **user_default:** default template.
@@ -229,31 +199,21 @@ func (DefenseTemplateState) ElementType() reflect.Type {
 }
 
 type defenseTemplateArgs struct {
-	// The module to which the protection rule that you want to create belongs. Value:
-	// - **waf_group**: the basic protection rule module.
-	// - **antiscan**: the scan protection module.
-	// - **ip_blacklist**: the IP address blacklist module.
-	// - **custom_acl**: the custom rule module.
-	// - **whitelist**: the whitelist module.
-	// - **region_block**: the region blacklist module.
-	// - **custom_response**: the custom response module.
-	// - **cc**: the HTTP flood protection module.
-	// - **tamperproof**: the website tamper-proofing module.
-	// - **dlp**: the data leakage prevention module.
+	// The WAF protection scenario to be created. Valid values:
 	DefenseScene string `pulumi:"defenseScene"`
 	// The name of the protection rule template.
 	DefenseTemplateName string `pulumi:"defenseTemplateName"`
-	// The description of the protection rule template. .
+	// The description of the protection rule template.
 	Description *string `pulumi:"description"`
-	// The ID of the Web Application Firewall (WAF) instance. .
+	// The ID of the Web Application Firewall (WAF) instance.
 	InstanceId string `pulumi:"instanceId"`
-	// The ID of the Alibaba Cloud resource group. .
+	// The ID of the Alibaba Cloud resource group.
 	ResourceManagerResourceGroupId *string `pulumi:"resourceManagerResourceGroupId"`
+	// The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
+	Resources []string `pulumi:"resources"`
 	// The status of the protection rule template. Valid values:
-	// - **0**: disabled.
-	// - **1**: enabled.
 	Status string `pulumi:"status"`
-	// The origin of the protection rule template that you want to create. Set the value to **custom**. The value specifies that the protection rule template is a custom template. .
+	// The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
 	TemplateOrigin string `pulumi:"templateOrigin"`
 	// The type of the protection rule template. Valid values:
 	// - **user_default:** default template.
@@ -263,31 +223,21 @@ type defenseTemplateArgs struct {
 
 // The set of arguments for constructing a DefenseTemplate resource.
 type DefenseTemplateArgs struct {
-	// The module to which the protection rule that you want to create belongs. Value:
-	// - **waf_group**: the basic protection rule module.
-	// - **antiscan**: the scan protection module.
-	// - **ip_blacklist**: the IP address blacklist module.
-	// - **custom_acl**: the custom rule module.
-	// - **whitelist**: the whitelist module.
-	// - **region_block**: the region blacklist module.
-	// - **custom_response**: the custom response module.
-	// - **cc**: the HTTP flood protection module.
-	// - **tamperproof**: the website tamper-proofing module.
-	// - **dlp**: the data leakage prevention module.
+	// The WAF protection scenario to be created. Valid values:
 	DefenseScene pulumi.StringInput
 	// The name of the protection rule template.
 	DefenseTemplateName pulumi.StringInput
-	// The description of the protection rule template. .
+	// The description of the protection rule template.
 	Description pulumi.StringPtrInput
-	// The ID of the Web Application Firewall (WAF) instance. .
+	// The ID of the Web Application Firewall (WAF) instance.
 	InstanceId pulumi.StringInput
-	// The ID of the Alibaba Cloud resource group. .
+	// The ID of the Alibaba Cloud resource group.
 	ResourceManagerResourceGroupId pulumi.StringPtrInput
+	// The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
+	Resources pulumi.StringArrayInput
 	// The status of the protection rule template. Valid values:
-	// - **0**: disabled.
-	// - **1**: enabled.
 	Status pulumi.StringInput
-	// The origin of the protection rule template that you want to create. Set the value to **custom**. The value specifies that the protection rule template is a custom template. .
+	// The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
 	TemplateOrigin pulumi.StringInput
 	// The type of the protection rule template. Valid values:
 	// - **user_default:** default template.
@@ -382,22 +332,12 @@ func (o DefenseTemplateOutput) ToDefenseTemplateOutputWithContext(ctx context.Co
 	return o
 }
 
-// The module to which the protection rule that you want to create belongs. Value:
-// - **waf_group**: the basic protection rule module.
-// - **antiscan**: the scan protection module.
-// - **ip_blacklist**: the IP address blacklist module.
-// - **custom_acl**: the custom rule module.
-// - **whitelist**: the whitelist module.
-// - **region_block**: the region blacklist module.
-// - **custom_response**: the custom response module.
-// - **cc**: the HTTP flood protection module.
-// - **tamperproof**: the website tamper-proofing module.
-// - **dlp**: the data leakage prevention module.
+// The WAF protection scenario to be created. Valid values:
 func (o DefenseTemplateOutput) DefenseScene() pulumi.StringOutput {
 	return o.ApplyT(func(v *DefenseTemplate) pulumi.StringOutput { return v.DefenseScene }).(pulumi.StringOutput)
 }
 
-// Template ID.
+// Template ID
 func (o DefenseTemplateOutput) DefenseTemplateId() pulumi.IntOutput {
 	return o.ApplyT(func(v *DefenseTemplate) pulumi.IntOutput { return v.DefenseTemplateId }).(pulumi.IntOutput)
 }
@@ -407,29 +347,32 @@ func (o DefenseTemplateOutput) DefenseTemplateName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DefenseTemplate) pulumi.StringOutput { return v.DefenseTemplateName }).(pulumi.StringOutput)
 }
 
-// The description of the protection rule template. .
+// The description of the protection rule template.
 func (o DefenseTemplateOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DefenseTemplate) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the Web Application Firewall (WAF) instance. .
+// The ID of the Web Application Firewall (WAF) instance.
 func (o DefenseTemplateOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DefenseTemplate) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// The ID of the Alibaba Cloud resource group. .
+// The ID of the Alibaba Cloud resource group.
 func (o DefenseTemplateOutput) ResourceManagerResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DefenseTemplate) pulumi.StringPtrOutput { return v.ResourceManagerResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
+// The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
+func (o DefenseTemplateOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DefenseTemplate) pulumi.StringArrayOutput { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
 // The status of the protection rule template. Valid values:
-// - **0**: disabled.
-// - **1**: enabled.
 func (o DefenseTemplateOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *DefenseTemplate) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The origin of the protection rule template that you want to create. Set the value to **custom**. The value specifies that the protection rule template is a custom template. .
+// The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
 func (o DefenseTemplateOutput) TemplateOrigin() pulumi.StringOutput {
 	return o.ApplyT(func(v *DefenseTemplate) pulumi.StringOutput { return v.TemplateOrigin }).(pulumi.StringOutput)
 }

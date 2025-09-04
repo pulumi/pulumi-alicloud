@@ -24,6 +24,163 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** You can only configure either a whitelist or a blacklist for listener, not at the same time.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.alb.AlbFunctions;
+ * import com.pulumi.alicloud.alb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.alicloud.alb.LoadBalancer;
+ * import com.pulumi.alicloud.alb.LoadBalancerArgs;
+ * import com.pulumi.alicloud.alb.inputs.LoadBalancerLoadBalancerBillingConfigArgs;
+ * import com.pulumi.alicloud.alb.inputs.LoadBalancerZoneMappingArgs;
+ * import com.pulumi.alicloud.alb.ServerGroup;
+ * import com.pulumi.alicloud.alb.ServerGroupArgs;
+ * import com.pulumi.alicloud.alb.inputs.ServerGroupHealthCheckConfigArgs;
+ * import com.pulumi.alicloud.alb.inputs.ServerGroupStickySessionConfigArgs;
+ * import com.pulumi.alicloud.alb.Listener;
+ * import com.pulumi.alicloud.alb.ListenerArgs;
+ * import com.pulumi.alicloud.alb.inputs.ListenerDefaultActionArgs;
+ * import com.pulumi.alicloud.alb.inputs.ListenerDefaultActionForwardGroupConfigArgs;
+ * import com.pulumi.alicloud.alb.Acl;
+ * import com.pulumi.alicloud.alb.AclArgs;
+ * import com.pulumi.alicloud.alb.AclEntryAttachment;
+ * import com.pulumi.alicloud.alb.AclEntryAttachmentArgs;
+ * import com.pulumi.alicloud.alb.ListenerAclAttachment;
+ * import com.pulumi.alicloud.alb.ListenerAclAttachmentArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf_example");
+ *         final var default = AlbFunctions.getZones(GetZonesArgs.builder()
+ *             .build());
+ * 
+ *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("10.4.0.0/16")
+ *             .build());
+ * 
+ *         for (var i = 0; i < 2; i++) {
+ *             new Switch("defaultSwitch-" + i, SwitchArgs.builder()
+ *                 .vpcId(defaultNetwork.id())
+ *                 .cidrBlock(StdFunctions.format(FormatArgs.builder()
+ *                     .input("10.4.%d.0/24")
+ *                     .args(range.value() + 1)
+ *                     .build()).result())
+ *                 .zoneId(default_.zones()[range.value() + 3].id())
+ *                 .vswitchName(StdFunctions.format(FormatArgs.builder()
+ *                     .input(String.format("%s_%d", name))
+ *                     .args(range.value() + 1)
+ *                     .build()).result())
+ *                 .build());
+ * 
+ *         
+ * }
+ *         var defaultLoadBalancer = new LoadBalancer("defaultLoadBalancer", LoadBalancerArgs.builder()
+ *             .vpcId(defaultNetwork.id())
+ *             .addressType("Internet")
+ *             .addressAllocatedMode("Fixed")
+ *             .loadBalancerName(name)
+ *             .loadBalancerEdition("Standard")
+ *             .resourceGroupId(defaultGetResourceGroups.groups()[0].id())
+ *             .loadBalancerBillingConfig(LoadBalancerLoadBalancerBillingConfigArgs.builder()
+ *                 .payType("PayAsYouGo")
+ *                 .build())
+ *             .tags(Map.of("Created", "TF"))
+ *             .zoneMappings(            
+ *                 LoadBalancerZoneMappingArgs.builder()
+ *                     .vswitchId(defaultSwitch[0].id())
+ *                     .zoneId(defaultSwitch[0].zoneId())
+ *                     .build(),
+ *                 LoadBalancerZoneMappingArgs.builder()
+ *                     .vswitchId(defaultSwitch[1].id())
+ *                     .zoneId(defaultSwitch[1].zoneId())
+ *                     .build())
+ *             .build());
+ * 
+ *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()
+ *             .protocol("HTTP")
+ *             .vpcId(defaultNetwork.id())
+ *             .serverGroupName(name)
+ *             .resourceGroupId(defaultGetResourceGroups.groups()[0].id())
+ *             .healthCheckConfig(ServerGroupHealthCheckConfigArgs.builder()
+ *                 .healthCheckEnabled(false)
+ *                 .build())
+ *             .stickySessionConfig(ServerGroupStickySessionConfigArgs.builder()
+ *                 .stickySessionEnabled(false)
+ *                 .build())
+ *             .tags(Map.of("Created", "TF"))
+ *             .build());
+ * 
+ *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()
+ *             .loadBalancerId(defaultLoadBalancer.id())
+ *             .listenerProtocol("HTTP")
+ *             .listenerPort(80)
+ *             .listenerDescription(name)
+ *             .defaultActions(ListenerDefaultActionArgs.builder()
+ *                 .type("ForwardGroup")
+ *                 .forwardGroupConfig(ListenerDefaultActionForwardGroupConfigArgs.builder()
+ *                     .serverGroupTuples(ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs.builder()
+ *                         .serverGroupId(defaultServerGroup.id())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()
+ *             .aclName(name)
+ *             .resourceGroupId(defaultGetResourceGroups.groups()[0].id())
+ *             .build());
+ * 
+ *         var defaultAclEntryAttachment = new AclEntryAttachment("defaultAclEntryAttachment", AclEntryAttachmentArgs.builder()
+ *             .aclId(defaultAcl.id())
+ *             .entry("10.0.0.0/24")
+ *             .description(name)
+ *             .build());
+ * 
+ *         var defaultListenerAclAttachment = new ListenerAclAttachment("defaultListenerAclAttachment", ListenerAclAttachmentArgs.builder()
+ *             .aclId(defaultAcl.id())
+ *             .listenerId(defaultListener.id())
+ *             .aclType("White")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * ALB Listener Acl Attachment can be imported using the id, e.g.

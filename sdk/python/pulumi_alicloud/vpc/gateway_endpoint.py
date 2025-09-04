@@ -372,12 +372,12 @@ class GatewayEndpoint(pulumi.CustomResource):
             resource_group_id=default_rg.id,
             service_name=domain,
             policy_document=\"\"\"      {
-                "Version": "1",
-                "Statement": [{
-                  "Effect": "Allow",
-                  "Resource": ["*"],
-                  "Action": ["*"],
-                  "Principal": ["*"]
+                \\"Version\\": \\"1\\",
+                \\"Statement\\": [{
+                  \\"Effect\\": \\"Allow\\",
+                  \\"Resource\\": [\\"*\\"],
+                  \\"Action\\": [\\"*\\"],
+                  \\"Principal\\": [\\"*\\"]
                 }]
               }
         \"\"\")
@@ -444,12 +444,12 @@ class GatewayEndpoint(pulumi.CustomResource):
             resource_group_id=default_rg.id,
             service_name=domain,
             policy_document=\"\"\"      {
-                "Version": "1",
-                "Statement": [{
-                  "Effect": "Allow",
-                  "Resource": ["*"],
-                  "Action": ["*"],
-                  "Principal": ["*"]
+                \\"Version\\": \\"1\\",
+                \\"Statement\\": [{
+                  \\"Effect\\": \\"Allow\\",
+                  \\"Resource\\": [\\"*\\"],
+                  \\"Action\\": [\\"*\\"],
+                  \\"Principal\\": [\\"*\\"]
                 }]
               }
         \"\"\")

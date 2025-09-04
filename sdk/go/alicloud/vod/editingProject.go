@@ -51,12 +51,12 @@ import (
 //				EditingProjectName: pulumi.String(name),
 //				Title:              pulumi.String(name),
 //				Timeline: pulumi.String(`  {
-//	    "VideoTracks":[
+//	    \"VideoTracks\":[
 //	      {
-//	        "VideoTrackClips":[
+//	        \"VideoTrackClips\":[
 //	          {
-//	          "MediaId":"0c60e6f02dae71edbfaa472190a90102",
-//	          "In":2811
+//	          \"MediaId\":\"0c60e6f02dae71edbfaa472190a90102\",
+//	          \"In\":2811
 //	          }
 //	        ]
 //	      }

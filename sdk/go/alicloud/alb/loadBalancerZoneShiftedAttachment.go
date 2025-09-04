@@ -20,6 +20,131 @@ import (
 //
 // > **NOTE:** Available since v1.242.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			albExampleTfVpc, err := vpc.NewNetwork(ctx, "alb_example_tf_vpc", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("192.168.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s1",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			albExampleTfJ, err := vpc.NewSwitch(ctx, "alb_example_tf_j", &vpc.SwitchArgs{
+//				VpcId:       albExampleTfVpc.ID(),
+//				ZoneId:      pulumi.String("cn-beijing-j"),
+//				CidrBlock:   pulumi.String("192.168.1.0/24"),
+//				VswitchName: pulumi.String(invokeFormat.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat1, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s2",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			albExampleTfK, err := vpc.NewSwitch(ctx, "alb_example_tf_k", &vpc.SwitchArgs{
+//				VpcId:       albExampleTfVpc.ID(),
+//				ZoneId:      pulumi.String("cn-beijing-k"),
+//				CidrBlock:   pulumi.String("192.168.2.0/24"),
+//				VswitchName: pulumi.String(invokeFormat1.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat2, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s3",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultDSY0JJ, err := vpc.NewSwitch(ctx, "defaultDSY0JJ", &vpc.SwitchArgs{
+//				VpcId:       albExampleTfVpc.ID(),
+//				ZoneId:      pulumi.String("cn-beijing-f"),
+//				CidrBlock:   pulumi.String("192.168.3.0/24"),
+//				VswitchName: pulumi.String(invokeFormat2.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			default78TIYG, err := alb.NewLoadBalancer(ctx, "default78TIYG", &alb.LoadBalancerArgs{
+//				LoadBalancerEdition: pulumi.String("Standard"),
+//				VpcId:               albExampleTfVpc.ID(),
+//				LoadBalancerBillingConfig: &alb.LoadBalancerLoadBalancerBillingConfigArgs{
+//					PayType: pulumi.String("PayAsYouGo"),
+//				},
+//				AddressType:          pulumi.String("Intranet"),
+//				AddressAllocatedMode: pulumi.String("Fixed"),
+//				ZoneMappings: alb.LoadBalancerZoneMappingArray{
+//					&alb.LoadBalancerZoneMappingArgs{
+//						VswitchId: albExampleTfJ.ID(),
+//						ZoneId:    albExampleTfJ.ZoneId,
+//					},
+//					&alb.LoadBalancerZoneMappingArgs{
+//						VswitchId: albExampleTfK.ID(),
+//						ZoneId:    albExampleTfK.ZoneId,
+//					},
+//					&alb.LoadBalancerZoneMappingArgs{
+//						VswitchId: defaultDSY0JJ.ID(),
+//						ZoneId:    defaultDSY0JJ.ZoneId,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = alb.NewLoadBalancerZoneShiftedAttachment(ctx, "default", &alb.LoadBalancerZoneShiftedAttachmentArgs{
+//				ZoneId:         defaultDSY0JJ.ZoneId,
+//				VswitchId:      defaultDSY0JJ.ID(),
+//				LoadBalancerId: default78TIYG.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Application Load Balancer (ALB) Load Balancer Zone Shifted Attachment can be imported using the id, e.g.

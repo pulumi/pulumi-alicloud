@@ -260,18 +260,18 @@ class CustomDomain(pulumi.CustomResource):
         default_role = alicloud.ram.Role("default",
             name=f"fcservicerole-{default['result']}",
             document=\"\"\"  {
-              "Statement": [
+              \\"Statement\\": [
                 {
-                  "Action": "sts:AssumeRole",
-                  "Effect": "Allow",
-                  "Principal": {
-                    "Service": [
-                      "fc.aliyuncs.com"
+                  \\"Action\\": \\"sts:AssumeRole\\",
+                  \\"Effect\\": \\"Allow\\",
+                  \\"Principal\\": {
+                    \\"Service\\": [
+                      \\"fc.aliyuncs.com\\"
                     ]
                   }
                 }
               ],
-              "Version": "1"
+              \\"Version\\": \\"1\\"
           }
         \"\"\",
             description="this is a example",
@@ -377,18 +377,18 @@ class CustomDomain(pulumi.CustomResource):
         default_role = alicloud.ram.Role("default",
             name=f"fcservicerole-{default['result']}",
             document=\"\"\"  {
-              "Statement": [
+              \\"Statement\\": [
                 {
-                  "Action": "sts:AssumeRole",
-                  "Effect": "Allow",
-                  "Principal": {
-                    "Service": [
-                      "fc.aliyuncs.com"
+                  \\"Action\\": \\"sts:AssumeRole\\",
+                  \\"Effect\\": \\"Allow\\",
+                  \\"Principal\\": {
+                    \\"Service\\": [
+                      \\"fc.aliyuncs.com\\"
                     ]
                   }
                 }
               ],
-              "Version": "1"
+              \\"Version\\": \\"1\\"
           }
         \"\"\",
             description="this is a example",

@@ -16,6 +16,101 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// &gt; **NOTE:** Available since v1.153.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = AliCloud.Nas.GetZones.Invoke(new()
+    ///     {
+    ///         FileSystemType = "cpfs",
+    ///     });
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
+    ///     {
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///     });
+    /// 
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("example", new()
+    ///     {
+    ///         VswitchName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///         VpcId = exampleNetwork.Id,
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.ZoneId),
+    ///     });
+    /// 
+    ///     var exampleFileSystem = new AliCloud.Nas.FileSystem("example", new()
+    ///     {
+    ///         ProtocolType = "cpfs",
+    ///         StorageType = "advance_200",
+    ///         FileSystemType = "cpfs",
+    ///         Capacity = 3600,
+    ///         Description = "terraform-example",
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.ZoneId),
+    ///         VpcId = exampleNetwork.Id,
+    ///         VswitchId = exampleSwitch.Id,
+    ///     });
+    /// 
+    ///     var exampleMountTarget = new AliCloud.Nas.MountTarget("example", new()
+    ///     {
+    ///         FileSystemId = exampleFileSystem.Id,
+    ///         VswitchId = exampleSwitch.Id,
+    ///     });
+    /// 
+    ///     var exampleInteger = new Random.Index.Integer("example", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var exampleBucket = new AliCloud.Oss.Bucket("example", new()
+    ///     {
+    ///         BucketName = $"example-value-{exampleInteger.Result}",
+    ///         Acl = "private",
+    ///         Tags = 
+    ///         {
+    ///             { "cpfs-dataflow", "true" },
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleFileset = new AliCloud.Nas.Fileset("example", new()
+    ///     {
+    ///         FileSystemId = exampleMountTarget.FileSystemId,
+    ///         Description = "terraform-example",
+    ///         FileSystemPath = "/example_path/",
+    ///     });
+    /// 
+    ///     var exampleDataFlow = new AliCloud.Nas.DataFlow("example", new()
+    ///     {
+    ///         FsetId = exampleFileset.FilesetId,
+    ///         Description = "terraform-example",
+    ///         FileSystemId = exampleFileSystem.Id,
+    ///         SourceSecurityType = "SSL",
+    ///         SourceStorage = Std.Join.Invoke(new()
+    ///         {
+    ///             Separator = "",
+    ///             Input = new[]
+    ///             {
+    ///                 "oss://",
+    ///                 exampleBucket.BucketName,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         Throughput = 600,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// File Storage (NAS) Data Flow can be imported using the id, e.g.

@@ -18,6 +18,163 @@ import (
 //
 // > **NOTE:** Available since v1.195.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := cen.GetTransitRouterAvailableResources(ctx, &cen.GetTransitRouterAvailableResourcesArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("192.168.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultMaster, err := vpc.NewSwitch(ctx, "default_master", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("192.168.1.0/24"),
+//				ZoneId:      pulumi.String("cn-hangzhou-i"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSlave, err := vpc.NewSwitch(ctx, "default_slave", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("192.168.2.0/24"),
+//				ZoneId:      pulumi.String("cn-hangzhou-j"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := cen.NewInstance(ctx, "default", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String(name),
+//				ProtectionLevel: pulumi.String("REDUCED"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultTransitRouter, err := cen.NewTransitRouter(ctx, "default", &cen.TransitRouterArgs{
+//				CenId:            defaultInstance.ID(),
+//				SupportMulticast: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultTransitRouterVpcAttachment, err := cen.NewTransitRouterVpcAttachment(ctx, "default", &cen.TransitRouterVpcAttachmentArgs{
+//				CenId:           defaultInstance.ID(),
+//				TransitRouterId: defaultTransitRouter.TransitRouterId,
+//				VpcId:           defaultNetwork.ID(),
+//				ZoneMappings: cen.TransitRouterVpcAttachmentZoneMappingArray{
+//					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
+//						ZoneId:    defaultMaster.ZoneId,
+//						VswitchId: defaultMaster.ID(),
+//					},
+//					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
+//						ZoneId:    defaultSlave.ZoneId,
+//						VswitchId: defaultSlave.ID(),
+//					},
+//				},
+//				TransitRouterAttachmentName:        pulumi.String(name),
+//				TransitRouterAttachmentDescription: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+//				Name:  pulumi.String(name),
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//				Status: pulumi.StringRef("OK"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultTransitRouterMulticastDomain, err := cen.NewTransitRouterMulticastDomain(ctx, "default", &cen.TransitRouterMulticastDomainArgs{
+//				TransitRouterId:                         defaultTransitRouter.TransitRouterId,
+//				TransitRouterMulticastDomainName:        pulumi.String(name),
+//				TransitRouterMulticastDomainDescription: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultEcsNetworkInterface, err := ecs.NewEcsNetworkInterface(ctx, "default", &ecs.EcsNetworkInterfaceArgs{
+//				NetworkInterfaceName: pulumi.String(name),
+//				VswitchId:            defaultMaster.ID(),
+//				SecurityGroupIds: pulumi.StringArray{
+//					defaultSecurityGroup.ID(),
+//				},
+//				Description: pulumi.String("Basic test"),
+//				PrimaryIpAddress: pulumi.String(defaultMaster.CidrBlock.ApplyT(func(cidrBlock string) (std.CidrhostResult, error) {
+//					return std.CidrhostResult(interface{}(std.CidrhostOutput(ctx, std.CidrhostOutputArgs{
+//						Input: cidrBlock,
+//						Host:  100,
+//					}, nil))), nil
+//				}).(std.CidrhostResultOutput).ApplyT(func(invoke std.CidrhostResult) (*string, error) {
+//					return invoke.Result, nil
+//				}).(pulumi.StringPtrOutput)),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("Test"),
+//				},
+//				ResourceGroupId: pulumi.String(defaultGetResourceGroups.Ids[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultTransitRouterMulticastDomainAssociation, err := cen.NewTransitRouterMulticastDomainAssociation(ctx, "default", &cen.TransitRouterMulticastDomainAssociationArgs{
+//				TransitRouterMulticastDomainId: defaultTransitRouterMulticastDomain.ID(),
+//				TransitRouterAttachmentId:      defaultTransitRouterVpcAttachment.TransitRouterAttachmentId,
+//				VswitchId:                      defaultMaster.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cen.NewTransitRouterMulticastDomainSource(ctx, "example", &cen.TransitRouterMulticastDomainSourceArgs{
+//				VpcId:                          defaultNetwork.ID(),
+//				TransitRouterMulticastDomainId: defaultTransitRouterMulticastDomainAssociation.TransitRouterMulticastDomainId,
+//				NetworkInterfaceId:             defaultEcsNetworkInterface.ID(),
+//				GroupIpAddress:                 pulumi.String("239.1.1.1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Cen Transit Router Multicast Domain Source can be imported using the id, e.g.

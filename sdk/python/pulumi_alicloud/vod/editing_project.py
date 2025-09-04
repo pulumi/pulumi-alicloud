@@ -243,12 +243,12 @@ class EditingProject(pulumi.CustomResource):
             editing_project_name=name,
             title=name,
             timeline=\"\"\"  {
-            "VideoTracks":[
+            \\"VideoTracks\\":[
               {
-                "VideoTrackClips":[
+                \\"VideoTrackClips\\":[
                   {
-                  "MediaId":"0c60e6f02dae71edbfaa472190a90102",
-                  "In":2811
+                  \\"MediaId\\":\\"0c60e6f02dae71edbfaa472190a90102\\",
+                  \\"In\\":2811
                   }
                 ]
               }
@@ -305,12 +305,12 @@ class EditingProject(pulumi.CustomResource):
             editing_project_name=name,
             title=name,
             timeline=\"\"\"  {
-            "VideoTracks":[
+            \\"VideoTracks\\":[
               {
-                "VideoTrackClips":[
+                \\"VideoTrackClips\\":[
                   {
-                  "MediaId":"0c60e6f02dae71edbfaa472190a90102",
-                  "In":2811
+                  \\"MediaId\\":\\"0c60e6f02dae71edbfaa472190a90102\\",
+                  \\"In\\":2811
                   }
                 ]
               }

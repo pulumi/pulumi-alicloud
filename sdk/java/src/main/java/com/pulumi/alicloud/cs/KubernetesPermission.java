@@ -28,6 +28,138 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.122.0.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+ * import com.pulumi.alicloud.cs.CsFunctions;
+ * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.cs.ManagedKubernetes;
+ * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.JoinArgs;
+ * import com.pulumi.std.inputs.SplitArgs;
+ * import com.pulumi.alicloud.ram.User;
+ * import com.pulumi.alicloud.ram.UserArgs;
+ * import com.pulumi.alicloud.cs.KubernetesPermission;
+ * import com.pulumi.alicloud.cs.KubernetesPermissionArgs;
+ * import com.pulumi.alicloud.cs.inputs.KubernetesPermissionPermissionArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var vpcCidr = config.get("vpcCidr").orElse("10.0.0.0/8");
+ *         final var vswitchCidrs = config.get("vswitchCidrs").orElse(List.of(        
+ *             "10.1.0.0/16",
+ *             "10.2.0.0/16"));
+ *         final var podCidr = config.get("podCidr").orElse("172.16.0.0/16");
+ *         final var serviceCidr = config.get("serviceCidr").orElse("192.168.0.0/16");
+ *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+ *             .build());
+ * 
+ *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
+ *             .clusterType("ManagedKubernetes")
+ *             .build());
+ * 
+ *         var vpc = new Network("vpc", NetworkArgs.builder()
+ *             .cidrBlock(vpcCidr)
+ *             .build());
+ * 
+ *         // According to the vswitch cidr blocks to launch several vswitches
+ *         for (var i = 0; i < vswitchCidrs.length(); i++) {
+ *             new Switch("defaultSwitch-" + i, SwitchArgs.builder()
+ *                 .vpcId(vpc.id())
+ *                 .cidrBlock(vswitchCidrs[range.value()])
+ *                 .zoneId(enhanced.zones()[range.value()].zoneId())
+ *                 .build());
+ * 
+ *         
+ * }
+ *         // Create a new RAM cluster.
+ *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+ *             .name(String.format("%s-%s", name,defaultInteger.result()))
+ *             .clusterSpec("ack.pro.small")
+ *             .version(default_.metadatas()[0].version())
+ *             .workerVswitchIds(StdFunctions.join(JoinArgs.builder()
+ *                 .separator(",")
+ *                 .input(defaultSwitch.stream().map(element -> element.id()).collect(toList()))
+ *                 .build()).applyValue(_invoke -> StdFunctions.split(SplitArgs.builder()
+ *                 .separator(",")
+ *                 .text(_invoke.result())
+ *                 .build())).applyValue(_invoke -> _invoke.result()))
+ *             .newNatGateway(false)
+ *             .podCidr(podCidr)
+ *             .serviceCidr(serviceCidr)
+ *             .slbInternetEnabled(false)
+ *             .build());
+ * 
+ *         // Create a new RAM user.
+ *         var user = new User("user", UserArgs.builder()
+ *             .name(String.format("%s-%s", name,defaultInteger.result()))
+ *             .build());
+ * 
+ *         // Create a cluster permission for user.
+ *         var defaultKubernetesPermission = new KubernetesPermission("defaultKubernetesPermission", KubernetesPermissionArgs.builder()
+ *             .uid(user.id())
+ *             .permissions(KubernetesPermissionPermissionArgs.builder()
+ *                 .cluster(defaultManagedKubernetes.id())
+ *                 .roleType("cluster")
+ *                 .roleName("admin")
+ *                 .namespace("")
+ *                 .isCustom(false)
+ *                 .isRamRole(false)
+ *                 .build())
+ *             .build());
+ * 
+ *         var attach = new KubernetesPermission("attach", KubernetesPermissionArgs.builder()
+ *             .uid(user.id())
+ *             .permissions(KubernetesPermissionPermissionArgs.builder()
+ *                 .cluster(defaultManagedKubernetes.id())
+ *                 .roleType("namespace")
+ *                 .roleName("cs:dev")
+ *                 .namespace("default")
+ *                 .isCustom(true)
+ *                 .isRamRole(false)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="alicloud:cs/kubernetesPermission:KubernetesPermission")
 public class KubernetesPermission extends com.pulumi.resources.CustomResource {

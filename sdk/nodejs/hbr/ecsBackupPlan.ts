@@ -76,8 +76,8 @@ import * as utilities from "../utilities";
  *         "/home",
  *         "/var",
  *     ],
- *     exclude: "  [\"/home/exclude\"]\n",
- *     include: "  [\"/home/include\"]\n",
+ *     exclude: "  [\\\"/home/exclude\\\"]\n",
+ *     include: "  [\\\"/home/include\\\"]\n",
  * });
  * ```
  *

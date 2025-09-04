@@ -16,6 +16,98 @@ namespace Pulumi.AliCloud.Kms
     /// 
     /// &gt; **NOTE:** Available since v1.210.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var networkRule1 = new AliCloud.Kms.NetworkRule("networkRule1", new()
+    ///     {
+    ///         Description = "dummy",
+    ///         SourcePrivateIps = new[]
+    ///         {
+    ///             "10.10.10.10",
+    ///         },
+    ///         NetworkRuleName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s1",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var networkRule2 = new AliCloud.Kms.NetworkRule("networkRule2", new()
+    ///     {
+    ///         Description = "dummy",
+    ///         SourcePrivateIps = new[]
+    ///         {
+    ///             "10.10.10.10",
+    ///         },
+    ///         NetworkRuleName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s2",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var networkRule3 = new AliCloud.Kms.NetworkRule("networkRule3", new()
+    ///     {
+    ///         Description = "dummy",
+    ///         SourcePrivateIps = new[]
+    ///         {
+    ///             "10.10.10.10",
+    ///         },
+    ///         NetworkRuleName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s3",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var @default = new AliCloud.Kms.Policy("default", new()
+    ///     {
+    ///         Description = "terraformpolicy",
+    ///         Permissions = new[]
+    ///         {
+    ///             "RbacPermission/Template/CryptoServiceKeyUser",
+    ///             "RbacPermission/Template/CryptoServiceSecretUser",
+    ///         },
+    ///         Resources = new[]
+    ///         {
+    ///             "secret/*",
+    ///             "key/*",
+    ///         },
+    ///         PolicyName = name,
+    ///         KmsInstanceId = "shared",
+    ///         AccessControlRules = @"  {
+    ///       \""NetworkRules\"":[
+    ///           \""alicloud_kms_network_rule.networkRule1.network_rule_name\""
+    ///       ]
+    ///   }
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// KMS Policy can be imported using the id, e.g.

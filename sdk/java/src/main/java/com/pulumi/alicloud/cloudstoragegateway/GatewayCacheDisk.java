@@ -22,6 +22,104 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.144.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.Uuid;
+ * import com.pulumi.alicloud.cloudstoragegateway.StorageBundle;
+ * import com.pulumi.alicloud.cloudstoragegateway.StorageBundleArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.ReplaceArgs;
+ * import com.pulumi.std.inputs.SubstrArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+ * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetStocksArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.cloudstoragegateway.Gateway;
+ * import com.pulumi.alicloud.cloudstoragegateway.GatewayArgs;
+ * import com.pulumi.alicloud.cloudstoragegateway.GatewayCacheDisk;
+ * import com.pulumi.alicloud.cloudstoragegateway.GatewayCacheDiskArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf-example");
+ *         var defaultUuid = new Uuid("defaultUuid");
+ * 
+ *         var defaultStorageBundle = new StorageBundle("defaultStorageBundle", StorageBundleArgs.builder()
+ *             .storageBundleName(StdFunctions.substr(SubstrArgs.builder()
+ *                 .input(String.format("tf-example-%s", StdFunctions.replace(ReplaceArgs.builder()
+ *                     .text(defaultUuid.result())
+ *                     .search("-")
+ *                     .replace("")
+ *                     .build()).result()))
+ *                 .offset(0)
+ *                 .length(16)
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("172.16.0.0/12")
+ *             .build());
+ * 
+ *         final var default = CloudstoragegatewayFunctions.getStocks(GetStocksArgs.builder()
+ *             .gatewayClass("Standard")
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock("172.16.0.0/21")
+ *             .zoneId(default_.stocks()[0].zoneId())
+ *             .vswitchName(name)
+ *             .build());
+ * 
+ *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
+ *             .gatewayName(name)
+ *             .description(name)
+ *             .gatewayClass("Standard")
+ *             .type("File")
+ *             .paymentType("PayAsYouGo")
+ *             .vswitchId(defaultSwitch.id())
+ *             .releaseAfterExpiration(true)
+ *             .publicNetworkBandwidth(40)
+ *             .storageBundleId(defaultStorageBundle.id())
+ *             .location("Cloud")
+ *             .build());
+ * 
+ *         var defaultGatewayCacheDisk = new GatewayCacheDisk("defaultGatewayCacheDisk", GatewayCacheDiskArgs.builder()
+ *             .cacheDiskCategory("cloud_efficiency")
+ *             .gatewayId(defaultGateway.id())
+ *             .cacheDiskSizeInGb(50)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Cloud Storage Gateway Gateway Cache Disk can be imported using the id, e.g.

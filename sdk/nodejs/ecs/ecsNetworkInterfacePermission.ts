@@ -11,6 +11,57 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.166.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const _default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultGetAccount = alicloud.getAccount({});
+ * const defaultGetResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: "terraform-example",
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultEcsNetworkInterface = new alicloud.ecs.EcsNetworkInterface("default", {
+ *     networkInterfaceName: "terraform-example",
+ *     vswitchId: defaultSwitch.id,
+ *     securityGroupIds: [defaultSecurityGroup.id],
+ *     description: "terraform-example",
+ *     primaryIpAddress: defaultSwitch.cidrBlock.apply(cidrBlock => std.cidrhostOutput({
+ *         input: cidrBlock,
+ *         host: 100,
+ *     })).apply(invoke => invoke.result),
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
+ *     resourceGroupId: defaultGetResourceGroups.then(defaultGetResourceGroups => defaultGetResourceGroups.ids?.[0]),
+ * });
+ * const example = new alicloud.ecs.EcsNetworkInterfacePermission("example", {
+ *     accountId: defaultGetAccount.then(defaultGetAccount => defaultGetAccount.id),
+ *     networkInterfaceId: defaultEcsNetworkInterface.id,
+ *     permission: "InstanceAttach",
+ *     force: true,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ECS Network Interface Permission can be imported using the id, e.g.

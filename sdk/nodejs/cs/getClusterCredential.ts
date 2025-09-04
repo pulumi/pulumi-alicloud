@@ -12,6 +12,27 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available since v1.187.0
  *
  * > **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * // Declare the data source
+ * const k8s = alicloud.cs.getManagedKubernetesClusters({
+ *     nameRegex: "my-cluster",
+ *     enableDetails: false,
+ * });
+ * const auth = k8s.then(k8s => std.toset({
+ *     input: k8s.ids,
+ * })).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: alicloud.cs.getClusterCredential({
+ *     clusterId: __key,
+ *     temporaryDurationMinutes: 60,
+ *     outputFile: "my-auth-json",
+ * }) })));
+ * ```
  */
 export function getClusterCredential(args: GetClusterCredentialArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterCredentialResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -77,6 +98,27 @@ export interface GetClusterCredentialResult {
  * > **NOTE:** Available since v1.187.0
  *
  * > **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * // Declare the data source
+ * const k8s = alicloud.cs.getManagedKubernetesClusters({
+ *     nameRegex: "my-cluster",
+ *     enableDetails: false,
+ * });
+ * const auth = k8s.then(k8s => std.toset({
+ *     input: k8s.ids,
+ * })).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: alicloud.cs.getClusterCredential({
+ *     clusterId: __key,
+ *     temporaryDurationMinutes: 60,
+ *     outputFile: "my-auth-json",
+ * }) })));
+ * ```
  */
 export function getClusterCredentialOutput(args: GetClusterCredentialOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClusterCredentialResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -77,19 +77,25 @@ import javax.annotation.Nullable;
 @Deprecated /* Resource renamed to `Trail` */
 @ResourceType(type="alicloud:actiontrail/trailDeprecated:TrailDeprecated")
 public class TrailDeprecated extends com.pulumi.resources.CustomResource {
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    public Output<String> createTime() {
+        return this.createTime;
+    }
     /**
      * Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
      * 
      */
     @Export(name="eventRw", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> eventRw;
+    private Output<String> eventRw;
 
     /**
      * @return Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
      * 
      */
-    public Output<Optional<String>> eventRw() {
-        return Codegen.optional(this.eventRw);
+    public Output<String> eventRw() {
+        return this.eventRw;
     }
     @Export(name="isOrganizationTrail", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isOrganizationTrail;
@@ -97,12 +103,24 @@ public class TrailDeprecated extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> isOrganizationTrail() {
         return Codegen.optional(this.isOrganizationTrail);
     }
+    @Export(name="maxComputeProjectArn", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> maxComputeProjectArn;
+
+    public Output<Optional<String>> maxComputeProjectArn() {
+        return Codegen.optional(this.maxComputeProjectArn);
+    }
+    @Export(name="maxComputeWriteRoleArn", refs={String.class}, tree="[0]")
+    private Output<String> maxComputeWriteRoleArn;
+
+    public Output<String> maxComputeWriteRoleArn() {
+        return this.maxComputeWriteRoleArn;
+    }
     /**
      * @deprecated
-     * Field &#39;mns_topic_arn&#39; has been deprecated from version 1.118.0
+     * Field `mns_topic_arn` has been deprecated from version 1.118.0
      * 
      */
-    @Deprecated /* Field 'mns_topic_arn' has been deprecated from version 1.118.0 */
+    @Deprecated /* Field `mns_topic_arn` has been deprecated from version 1.118.0 */
     @Export(name="mnsTopicArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mnsTopicArn;
 
@@ -113,10 +131,10 @@ public class TrailDeprecated extends com.pulumi.resources.CustomResource {
      * The name of the trail to be created, which must be unique for an account.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from version 1.95.0. Use &#39;trail_name&#39; instead.
+     * Field `name` has been deprecated from provider version 1.95.0. New field `trail_name` instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.95.0. New field `trail_name` instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
@@ -161,23 +179,29 @@ public class TrailDeprecated extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> ossWriteRoleArn() {
         return Codegen.optional(this.ossWriteRoleArn);
     }
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    public Output<String> regionId() {
+        return this.regionId;
+    }
     /**
      * The RAM role in ActionTrail permitted by the user.
      * 
      * @deprecated
-     * Field &#39;role_name&#39; has been deprecated from version 1.118.0
+     * Field `role_name` has been deprecated from version 1.118.0
      * 
      */
-    @Deprecated /* Field 'role_name' has been deprecated from version 1.118.0 */
+    @Deprecated /* Field `role_name` has been deprecated from version 1.118.0 */
     @Export(name="roleName", refs={String.class}, tree="[0]")
-    private Output<String> roleName;
+    private Output</* @Nullable */ String> roleName;
 
     /**
      * @return The RAM role in ActionTrail permitted by the user.
      * 
      */
-    public Output<String> roleName() {
-        return this.roleName;
+    public Output<Optional<String>> roleName() {
+        return Codegen.optional(this.roleName);
     }
     /**
      * The unique ARN of the Log Service project.

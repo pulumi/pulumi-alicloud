@@ -13,6 +13,60 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.129.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const _default = alicloud.getAccount({});
+ * const defaultEventBus = new alicloud.eventbridge.EventBus("default", {eventBusName: name});
+ * const queue1 = new alicloud.mns.Queue("queue1", {name: name});
+ * const mnsEndpointA = std.format({
+ *     input: "acs:mns:cn-hangzhou:%s:queues/%s",
+ *     args: [
+ *         _default.then(_default => _default.id),
+ *         queue1.name,
+ *     ],
+ * }).then(invoke => invoke.result);
+ * const fnfEndpoint = std.format({
+ *     input: "acs:fnf:cn-hangzhou:%s:flow/${flow}",
+ *     args: [_default.then(_default => _default.id)],
+ * }).then(invoke => invoke.result);
+ * const example = new alicloud.eventbridge.Rule("example", {
+ *     eventBusName: defaultEventBus.eventBusName,
+ *     ruleName: name,
+ *     description: "example",
+ *     filterPattern: "{\"source\":[\"crmabc.newsletter\"],\"type\":[\"UserSignUp\", \"UserLogin\"]}",
+ *     targets: [{
+ *         targetId: "tf-example1",
+ *         endpoint: mnsEndpointA,
+ *         type: "acs.mns.queue",
+ *         paramLists: [
+ *             {
+ *                 resourceKey: "queue",
+ *                 form: "CONSTANT",
+ *                 value: "tf-testaccEbRule",
+ *             },
+ *             {
+ *                 resourceKey: "Body",
+ *                 form: "ORIGINAL",
+ *             },
+ *             {
+ *                 form: "CONSTANT",
+ *                 resourceKey: "IsBase64Encode",
+ *                 value: "true",
+ *             },
+ *         ],
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Event Bridge Rule can be imported using the id, e.g.

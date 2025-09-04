@@ -22,6 +22,67 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.230.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.servicecatalog.Portfolio;
+ * import com.pulumi.alicloud.servicecatalog.PortfolioArgs;
+ * import com.pulumi.alicloud.servicecatalog.Product;
+ * import com.pulumi.alicloud.servicecatalog.ProductArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.alicloud.servicecatalog.ProductPortfolioAssociation;
+ * import com.pulumi.alicloud.servicecatalog.ProductPortfolioAssociationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default0yAgJ8 = new Portfolio("default0yAgJ8", PortfolioArgs.builder()
+ *             .providerName(name)
+ *             .description("desc")
+ *             .portfolioName(name)
+ *             .build());
+ * 
+ *         var defaultRetBJw = new Product("defaultRetBJw", ProductArgs.builder()
+ *             .providerName(name)
+ *             .productName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s1")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .productType("Ros")
+ *             .build());
+ * 
+ *         var default_ = new ProductPortfolioAssociation("default", ProductPortfolioAssociationArgs.builder()
+ *             .portfolioId(default0yAgJ8.id())
+ *             .productId(defaultRetBJw.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Service Catalog Product Portfolio Association can be imported using the id, e.g.

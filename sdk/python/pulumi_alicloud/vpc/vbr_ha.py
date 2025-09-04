@@ -225,6 +225,56 @@ class VbrHa(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.151.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.get_regions(current=True)
+        example = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
+        vlan_id = random.index.Integer("vlan_id",
+            max=2999,
+            min=1)
+        example_virtual_border_router = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            example_virtual_border_router.append(alicloud.expressconnect.VirtualBorderRouter(f"example-{range['value']}",
+                local_gateway_ip="10.0.0.1",
+                peer_gateway_ip="10.0.0.2",
+                peering_subnet_mask="255.255.255.252",
+                physical_connection_id=example.connections[range["value"]].id,
+                virtual_border_router_name=std.format(input=f"{name}-%d",
+                    args=[range["value"] + 1]).result,
+                vlan_id=vlan_id["id"] + range["value"],
+                min_rx_interval=1000,
+                min_tx_interval=1000,
+                detect_multiplier=10))
+        example_instance = alicloud.cen.Instance("example",
+            cen_instance_name=name,
+            description=name,
+            protection_level="REDUCED")
+        example_instance_attachment = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            example_instance_attachment.append(alicloud.cen.InstanceAttachment(f"example-{range['value']}",
+                instance_id=example_instance.id,
+                child_instance_id=example_virtual_border_router[range["value"]].id,
+                child_instance_type="VBR",
+                child_instance_region_id=default.regions[0].id))
+        example_vbr_ha = alicloud.vpc.VbrHa("example",
+            vbr_id=example_instance_attachment[0].child_instance_id,
+            peer_vbr_id=example_instance_attachment[1].child_instance_id,
+            vbr_ha_name=name,
+            description=name)
+        ```
+
         ## Import
 
         VPC Vbr Ha can be imported using the id, e.g.
@@ -253,6 +303,56 @@ class VbrHa(pulumi.CustomResource):
         For information about VPC Vbr Ha and how to use it, see [What is Vbr Ha](https://www.alibabacloud.com/help/doc-detail/212629.html).
 
         > **NOTE:** Available since v1.151.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.get_regions(current=True)
+        example = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
+        vlan_id = random.index.Integer("vlan_id",
+            max=2999,
+            min=1)
+        example_virtual_border_router = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            example_virtual_border_router.append(alicloud.expressconnect.VirtualBorderRouter(f"example-{range['value']}",
+                local_gateway_ip="10.0.0.1",
+                peer_gateway_ip="10.0.0.2",
+                peering_subnet_mask="255.255.255.252",
+                physical_connection_id=example.connections[range["value"]].id,
+                virtual_border_router_name=std.format(input=f"{name}-%d",
+                    args=[range["value"] + 1]).result,
+                vlan_id=vlan_id["id"] + range["value"],
+                min_rx_interval=1000,
+                min_tx_interval=1000,
+                detect_multiplier=10))
+        example_instance = alicloud.cen.Instance("example",
+            cen_instance_name=name,
+            description=name,
+            protection_level="REDUCED")
+        example_instance_attachment = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            example_instance_attachment.append(alicloud.cen.InstanceAttachment(f"example-{range['value']}",
+                instance_id=example_instance.id,
+                child_instance_id=example_virtual_border_router[range["value"]].id,
+                child_instance_type="VBR",
+                child_instance_region_id=default.regions[0].id))
+        example_vbr_ha = alicloud.vpc.VbrHa("example",
+            vbr_id=example_instance_attachment[0].child_instance_id,
+            peer_vbr_id=example_instance_attachment[1].child_instance_id,
+            vbr_ha_name=name,
+            description=name)
+        ```
 
         ## Import
 

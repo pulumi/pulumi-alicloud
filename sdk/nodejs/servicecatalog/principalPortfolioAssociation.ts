@@ -31,19 +31,19 @@ import * as utilities from "../utilities";
  * const default48JHf4 = new alicloud.ram.Role("default48JHf4", {
  *     name: name,
  *     document: `    {
- *         "Statement": [
+ *         \\"Statement\\": [
  *         {
- *             "Action": "sts:AssumeRole",
- *             "Effect": "Allow",
- *             "Principal": {
- *             "Service": [
- *                 "emr.aliyuncs.com",
- *                 "ecs.aliyuncs.com"
+ *             \\"Action\\": \\"sts:AssumeRole\\",
+ *             \\"Effect\\": \\"Allow\\",
+ *             \\"Principal\\": {
+ *             \\"Service\\": [
+ *                 \\"emr.aliyuncs.com\\",
+ *                 \\"ecs.aliyuncs.com\\"
  *             ]
  *             }
  *         }
  *         ],
- *         "Version": "1"
+ *         \\"Version\\": \\"1\\"
  *     }
  * `,
  *     description: "this is a role test.",

@@ -91,7 +91,7 @@ export class VpcEndpointService extends pulumi.CustomResource {
      */
     declare public readonly payer: pulumi.Output<string>;
     /**
-     * (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+     * The ID of the region to which the endpoint service belongs.
      */
     declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
@@ -111,7 +111,7 @@ export class VpcEndpointService extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly serviceDomain: pulumi.Output<string>;
     /**
-     * Service resource type, value:
+     * The service resource type. Value:
      */
     declare public readonly serviceResourceType: pulumi.Output<string>;
     /**
@@ -221,7 +221,7 @@ export interface VpcEndpointServiceState {
      */
     payer?: pulumi.Input<string>;
     /**
-     * (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+     * The ID of the region to which the endpoint service belongs.
      */
     regionId?: pulumi.Input<string>;
     /**
@@ -241,7 +241,7 @@ export interface VpcEndpointServiceState {
      */
     serviceDomain?: pulumi.Input<string>;
     /**
-     * Service resource type, value:
+     * The service resource type. Value:
      */
     serviceResourceType?: pulumi.Input<string>;
     /**
@@ -301,7 +301,7 @@ export interface VpcEndpointServiceArgs {
      */
     serviceDescription?: pulumi.Input<string>;
     /**
-     * Service resource type, value:
+     * The service resource type. Value:
      */
     serviceResourceType?: pulumi.Input<string>;
     /**

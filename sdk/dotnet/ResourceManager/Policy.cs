@@ -32,14 +32,14 @@ namespace Pulumi.AliCloud.ResourceManager
     ///     var example = new AliCloud.ResourceManager.Policy("example", new()
     ///     {
     ///         PolicyName = name,
-    ///         PolicyDocument = @"		{
-    /// 			""Statement"": [{
-    /// 				""Action"": [""oss:*""],
-    /// 				""Effect"": ""Allow"",
-    /// 				""Resource"": [""acs:oss:*:*:*""]
-    /// 			}],
-    /// 			""Version"": ""1""
-    /// 		}
+    ///         PolicyDocument = @"\t\t{
+    /// \t\t\t\""Statement\"": [{
+    /// \t\t\t\t\""Action\"": [\""oss:*\""],
+    /// \t\t\t\t\""Effect\"": \""Allow\"",
+    /// \t\t\t\t\""Resource\"": [\""acs:oss:*:*:*\""]
+    /// \t\t\t}],
+    /// \t\t\t\""Version\"": \""1\""
+    /// \t\t}
     /// ",
     ///     });
     /// 

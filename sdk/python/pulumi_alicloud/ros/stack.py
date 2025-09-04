@@ -734,16 +734,16 @@ class Stack(pulumi.CustomResource):
         example = alicloud.ros.Stack("example",
             stack_name="tf-testaccstack",
             template_body=\"\"\"    {
-            \\x09"ROSTemplateFormatVersion": "2015-09-01"
+            \\t\\"ROSTemplateFormatVersion\\": \\"2015-09-01\\"
             }
         \"\"\",
             stack_policy_body=\"\"\"    {
-            \\x09"Statement": [{
-            \\x09\\x09"Action": "Update:Delete",
-            \\x09\\x09"Resource": "*",
-            \\x09\\x09"Effect": "Allow",
-            \\x09\\x09"Principal": "*"
-            \\x09}]
+            \\t\\"Statement\\": [{
+            \\t\\t\\"Action\\": \\"Update:Delete\\",
+            \\t\\t\\"Resource\\": \\"*\\",
+            \\t\\t\\"Effect\\": \\"Allow\\",
+            \\t\\t\\"Principal\\": \\"*\\"
+            \\t}]
             }
         \"\"\")
         ```
@@ -803,16 +803,16 @@ class Stack(pulumi.CustomResource):
         example = alicloud.ros.Stack("example",
             stack_name="tf-testaccstack",
             template_body=\"\"\"    {
-            \\x09"ROSTemplateFormatVersion": "2015-09-01"
+            \\t\\"ROSTemplateFormatVersion\\": \\"2015-09-01\\"
             }
         \"\"\",
             stack_policy_body=\"\"\"    {
-            \\x09"Statement": [{
-            \\x09\\x09"Action": "Update:Delete",
-            \\x09\\x09"Resource": "*",
-            \\x09\\x09"Effect": "Allow",
-            \\x09\\x09"Principal": "*"
-            \\x09}]
+            \\t\\"Statement\\": [{
+            \\t\\t\\"Action\\": \\"Update:Delete\\",
+            \\t\\t\\"Resource\\": \\"*\\",
+            \\t\\t\\"Effect\\": \\"Allow\\",
+            \\t\\t\\"Principal\\": \\"*\\"
+            \\t}]
             }
         \"\"\")
         ```

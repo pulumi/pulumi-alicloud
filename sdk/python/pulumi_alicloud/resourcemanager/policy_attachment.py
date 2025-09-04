@@ -205,6 +205,47 @@ class PolicyAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.93.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexamplename"
+        example_user = alicloud.ram.User("example", name=name)
+        example_policy = alicloud.resourcemanager.Policy("example",
+            policy_name=name,
+            policy_document=\"\"\"\\t\\t{
+        \\t\\t\\t\\"Statement\\": [{
+        \\t\\t\\t\\t\\"Action\\": [\\"oss:*\\"],
+        \\t\\t\\t\\t\\"Effect\\": \\"Allow\\",
+        \\t\\t\\t\\t\\"Resource\\": [\\"acs:oss:*:*:*\\"]
+        \\t\\t\\t}],
+        \\t\\t\\t\\"Version\\": \\"1\\"
+        \\t\\t}
+        \"\"\")
+        example = alicloud.resourcemanager.get_resource_groups(status="OK")
+        # Get Alicloud Account Id
+        example_get_account = alicloud.get_account()
+        # Attach the custom policy to resource group
+        example_policy_attachment = alicloud.resourcemanager.PolicyAttachment("example",
+            policy_name=example_policy.policy_name,
+            policy_type="Custom",
+            principal_name=std.format(input="%s@%s.onaliyun.com",
+                args=[
+                    example_user.name,
+                    example_get_account.id,
+                ]).result,
+            principal_type="IMSUser",
+            resource_group_id=example.ids[0])
+        ```
+
         ## Import
 
         Resource Manager Policy Attachment can be imported using the id, e.g.
@@ -232,6 +273,47 @@ class PolicyAttachment(pulumi.CustomResource):
         For information about Resource Manager Policy Attachment and how to use it, see [How to authorize and manage resource groups](https://www.alibabacloud.com/help/en/doc-detail/94490.htm).
 
         > **NOTE:** Available since v1.93.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexamplename"
+        example_user = alicloud.ram.User("example", name=name)
+        example_policy = alicloud.resourcemanager.Policy("example",
+            policy_name=name,
+            policy_document=\"\"\"\\t\\t{
+        \\t\\t\\t\\"Statement\\": [{
+        \\t\\t\\t\\t\\"Action\\": [\\"oss:*\\"],
+        \\t\\t\\t\\t\\"Effect\\": \\"Allow\\",
+        \\t\\t\\t\\t\\"Resource\\": [\\"acs:oss:*:*:*\\"]
+        \\t\\t\\t}],
+        \\t\\t\\t\\"Version\\": \\"1\\"
+        \\t\\t}
+        \"\"\")
+        example = alicloud.resourcemanager.get_resource_groups(status="OK")
+        # Get Alicloud Account Id
+        example_get_account = alicloud.get_account()
+        # Attach the custom policy to resource group
+        example_policy_attachment = alicloud.resourcemanager.PolicyAttachment("example",
+            policy_name=example_policy.policy_name,
+            policy_type="Custom",
+            principal_name=std.format(input="%s@%s.onaliyun.com",
+                args=[
+                    example_user.name,
+                    example_get_account.id,
+                ]).result,
+            principal_type="IMSUser",
+            resource_group_id=example.ids[0])
+        ```
 
         ## Import
 

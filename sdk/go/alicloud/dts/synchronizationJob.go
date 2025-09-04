@@ -18,6 +18,256 @@ import (
 //
 // > **NOTE:** Available since v1.138.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dts"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			example, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleGetZones, err := rds.GetZones(ctx, &rds.GetZonesArgs{
+//				Engine:                pulumi.StringRef("MySQL"),
+//				EngineVersion:         pulumi.StringRef("8.0"),
+//				InstanceChargeType:    pulumi.StringRef("PostPaid"),
+//				Category:              pulumi.StringRef("Basic"),
+//				DbInstanceStorageType: pulumi.StringRef("cloud_essd"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleGetInstanceClasses, err := rds.GetInstanceClasses(ctx, &rds.GetInstanceClassesArgs{
+//				ZoneId:                pulumi.StringRef(exampleGetZones.Zones[0].Id),
+//				Engine:                pulumi.StringRef("MySQL"),
+//				EngineVersion:         pulumi.StringRef("8.0"),
+//				InstanceChargeType:    pulumi.StringRef("PostPaid"),
+//				Category:              pulumi.StringRef("Basic"),
+//				DbInstanceStorageType: pulumi.StringRef("cloud_essd"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
+//				VpcId:       exampleNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//				ZoneId:      pulumi.String(exampleGetZones.Zones[0].Id),
+//				VswitchName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
+//				SecurityGroupName: pulumi.String(name),
+//				VpcId:             exampleNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s_%d",
+//				Args: []interface{}{
+//					name,
+//					val0 + 1,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var exampleInstance []*rds.Instance
+//			for index := 0; index < 2; index++ {
+//				key0 := index
+//				_ := index
+//				__res, err := rds.NewInstance(ctx, fmt.Sprintf("example-%v", key0), &rds.InstanceArgs{
+//					Engine:                pulumi.String("MySQL"),
+//					EngineVersion:         pulumi.String("8.0"),
+//					InstanceType:          pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].InstanceClass),
+//					InstanceStorage:       pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
+//					InstanceChargeType:    pulumi.String("Postpaid"),
+//					InstanceName:          pulumi.String(invokeFormat.Result),
+//					VswitchId:             exampleSwitch.ID(),
+//					MonitoringPeriod:      pulumi.Int(60),
+//					DbInstanceStorageType: pulumi.String("cloud_essd"),
+//					SecurityGroupIds: pulumi.StringArray{
+//						exampleSecurityGroup.ID(),
+//					},
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				exampleInstance = append(exampleInstance, __res)
+//			}
+//			invokeFormat1, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "example_name_%d",
+//				Args: []float64{
+//					val0 + 1,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat2, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "example_password_%d",
+//				Args: []float64{
+//					val0 + 1,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var exampleRdsAccount []*rds.RdsAccount
+//			for index := 0; index < 2; index++ {
+//				key0 := index
+//				val0 := index
+//				__res, err := rds.NewRdsAccount(ctx, fmt.Sprintf("example-%v", key0), &rds.RdsAccountArgs{
+//					DbInstanceId:    exampleInstance[val0].ID(),
+//					AccountName:     pulumi.String(invokeFormat1.Result),
+//					AccountPassword: pulumi.String(invokeFormat2.Result),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				exampleRdsAccount = append(exampleRdsAccount, __res)
+//			}
+//			invokeFormat3, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s_%d",
+//				Args: []interface{}{
+//					name,
+//					val0 + 1,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var exampleDatabase []*rds.Database
+//			for index := 0; index < 2; index++ {
+//				key0 := index
+//				val0 := index
+//				__res, err := rds.NewDatabase(ctx, fmt.Sprintf("example-%v", key0), &rds.DatabaseArgs{
+//					InstanceId: exampleInstance[val0].ID(),
+//					Name:       pulumi.String(invokeFormat3.Result),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				exampleDatabase = append(exampleDatabase, __res)
+//			}
+//			var exampleAccountPrivilege []*rds.AccountPrivilege
+//			for index := 0; index < 2; index++ {
+//				key0 := index
+//				val0 := index
+//				__res, err := rds.NewAccountPrivilege(ctx, fmt.Sprintf("example-%v", key0), &rds.AccountPrivilegeArgs{
+//					InstanceId:  exampleInstance[val0].ID(),
+//					AccountName: exampleRdsAccount[val0].AccountName,
+//					Privilege:   pulumi.String("ReadWrite"),
+//					DbNames: pulumi.StringArray{
+//						exampleDatabase[val0].Name,
+//					},
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				exampleAccountPrivilege = append(exampleAccountPrivilege, __res)
+//			}
+//			exampleSynchronizationInstance, err := dts.NewSynchronizationInstance(ctx, "example", &dts.SynchronizationInstanceArgs{
+//				PaymentType:                   pulumi.String("PayAsYouGo"),
+//				SourceEndpointEngineName:      pulumi.String("MySQL"),
+//				SourceEndpointRegion:          pulumi.String(example.Regions[0].Id),
+//				DestinationEndpointEngineName: pulumi.String("MySQL"),
+//				DestinationEndpointRegion:     pulumi.String(example.Regions[0].Id),
+//				InstanceClass:                 pulumi.String("small"),
+//				SyncArchitecture:              pulumi.String("oneway"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dts.NewSynchronizationJob(ctx, "example", &dts.SynchronizationJobArgs{
+//				DtsInstanceId:                   exampleSynchronizationInstance.ID(),
+//				DtsJobName:                      pulumi.String(name),
+//				SourceEndpointInstanceType:      pulumi.String("RDS"),
+//				SourceEndpointInstanceId:        exampleAccountPrivilege[0].InstanceId,
+//				SourceEndpointEngineName:        pulumi.String("MySQL"),
+//				SourceEndpointRegion:            pulumi.String(example.Regions[0].Id),
+//				SourceEndpointUserName:          exampleRdsAccount[0].AccountName,
+//				SourceEndpointPassword:          exampleRdsAccount[0].AccountPassword,
+//				DestinationEndpointInstanceType: pulumi.String("RDS"),
+//				DestinationEndpointInstanceId:   exampleAccountPrivilege[1].InstanceId,
+//				DestinationEndpointEngineName:   pulumi.String("MySQL"),
+//				DestinationEndpointRegion:       pulumi.String(example.Regions[0].Id),
+//				DestinationEndpointUserName:     exampleRdsAccount[1].AccountName,
+//				DestinationEndpointPassword:     exampleRdsAccount[1].AccountPassword,
+//				DbList: pulumi.All(exampleDatabase[0].Name, exampleDatabase[1].Name).ApplyT(func(_args []interface{}) (string, error) {
+//					exampleDatabaseName := _args[0].(string)
+//					exampleDatabaseName1 := _args[1].(string)
+//					var _zero string
+//					tmpJSON0, err := json.Marshal(map[string]map[string]interface{}{
+//						exampleDatabaseName: map[string]interface{}{
+//							"name": exampleDatabaseName1,
+//							"all":  true,
+//						},
+//					})
+//					if err != nil {
+//						return _zero, err
+//					}
+//					json0 := string(tmpJSON0)
+//					return json0, nil
+//				}).(pulumi.StringOutput),
+//				StructureInitialization: pulumi.Bool(true),
+//				DataInitialization:      pulumi.Bool(true),
+//				DataSynchronization:     pulumi.Bool(true),
+//				Status:                  pulumi.String("Synchronizing"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Notice
+//
+// 1. The expiration time cannot be changed after the work of the annual and monthly subscription suspended;
+// 2. After the pay-as-you-go type job suspended, your job configuration fee will still be charged;
+// 3. If the task suspended for more than 6 hours, the task will not start successfully.
+// 4. Suspending the task will only stop writing to the target library, but will still continue to obtain the incremental log of the source, so that the task can be quickly resumed after the suspension is canceled. Therefore, some resources of the source library, such as bandwidth resources, will continue to be occupied during the period.
+// 5. Charges will continue during the task suspension period. If you need to stop charging, please release the instance
+// 6. When a DTS instance suspended for more than 7 days, the instance cannot be resumed, and the status will change from suspended to failed.
+//
 // ## Import
 //
 // DTS Synchronization Job can be imported using the id, e.g.
@@ -48,7 +298,7 @@ type SynchronizationJob struct {
 	DelayRuleTime pulumi.StringPtrOutput `pulumi:"delayRuleTime"`
 	// The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
 	DestinationEndpointDatabaseName pulumi.StringPtrOutput `pulumi:"destinationEndpointDatabaseName"`
-	// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+	// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,`  POLARDB_PG `, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
 	DestinationEndpointEngineName pulumi.StringOutput `pulumi:"destinationEndpointEngineName"`
 	// The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `destinationEndpointInstanceType`. For example, the value of `destinationEndpointInstanceType` is:
 	// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
@@ -93,7 +343,7 @@ type SynchronizationJob struct {
 	Reserve pulumi.StringOutput `pulumi:"reserve"`
 	// The name of the database to which the migration object belongs in the source instance. Note: this parameter is only available and must be passed in when the source instance, or the database type of the source instance is PolarDB O engine, PostgreSQL, or MongoDB database.
 	SourceEndpointDatabaseName pulumi.StringPtrOutput `pulumi:"sourceEndpointDatabaseName"`
-	// The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+	// The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `TiDB`, `REDIS`.
 	SourceEndpointEngineName pulumi.StringOutput `pulumi:"sourceEndpointEngineName"`
 	// The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `sourceEndpointInstanceType`. For example, the value of `sourceEndpointInstanceType` is:
 	// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
@@ -208,7 +458,7 @@ type synchronizationJobState struct {
 	DelayRuleTime *string `pulumi:"delayRuleTime"`
 	// The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
 	DestinationEndpointDatabaseName *string `pulumi:"destinationEndpointDatabaseName"`
-	// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+	// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,`  POLARDB_PG `, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
 	DestinationEndpointEngineName *string `pulumi:"destinationEndpointEngineName"`
 	// The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `destinationEndpointInstanceType`. For example, the value of `destinationEndpointInstanceType` is:
 	// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
@@ -253,7 +503,7 @@ type synchronizationJobState struct {
 	Reserve *string `pulumi:"reserve"`
 	// The name of the database to which the migration object belongs in the source instance. Note: this parameter is only available and must be passed in when the source instance, or the database type of the source instance is PolarDB O engine, PostgreSQL, or MongoDB database.
 	SourceEndpointDatabaseName *string `pulumi:"sourceEndpointDatabaseName"`
-	// The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+	// The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `TiDB`, `REDIS`.
 	SourceEndpointEngineName *string `pulumi:"sourceEndpointEngineName"`
 	// The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `sourceEndpointInstanceType`. For example, the value of `sourceEndpointInstanceType` is:
 	// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
@@ -309,7 +559,7 @@ type SynchronizationJobState struct {
 	DelayRuleTime pulumi.StringPtrInput
 	// The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
 	DestinationEndpointDatabaseName pulumi.StringPtrInput
-	// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+	// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,`  POLARDB_PG `, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
 	DestinationEndpointEngineName pulumi.StringPtrInput
 	// The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `destinationEndpointInstanceType`. For example, the value of `destinationEndpointInstanceType` is:
 	// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
@@ -354,7 +604,7 @@ type SynchronizationJobState struct {
 	Reserve pulumi.StringPtrInput
 	// The name of the database to which the migration object belongs in the source instance. Note: this parameter is only available and must be passed in when the source instance, or the database type of the source instance is PolarDB O engine, PostgreSQL, or MongoDB database.
 	SourceEndpointDatabaseName pulumi.StringPtrInput
-	// The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+	// The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `TiDB`, `REDIS`.
 	SourceEndpointEngineName pulumi.StringPtrInput
 	// The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `sourceEndpointInstanceType`. For example, the value of `sourceEndpointInstanceType` is:
 	// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
@@ -414,7 +664,7 @@ type synchronizationJobArgs struct {
 	DelayRuleTime *string `pulumi:"delayRuleTime"`
 	// The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
 	DestinationEndpointDatabaseName *string `pulumi:"destinationEndpointDatabaseName"`
-	// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+	// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,`  POLARDB_PG `, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
 	DestinationEndpointEngineName string `pulumi:"destinationEndpointEngineName"`
 	// The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `destinationEndpointInstanceType`. For example, the value of `destinationEndpointInstanceType` is:
 	// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
@@ -459,7 +709,7 @@ type synchronizationJobArgs struct {
 	Reserve *string `pulumi:"reserve"`
 	// The name of the database to which the migration object belongs in the source instance. Note: this parameter is only available and must be passed in when the source instance, or the database type of the source instance is PolarDB O engine, PostgreSQL, or MongoDB database.
 	SourceEndpointDatabaseName *string `pulumi:"sourceEndpointDatabaseName"`
-	// The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+	// The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `TiDB`, `REDIS`.
 	SourceEndpointEngineName string `pulumi:"sourceEndpointEngineName"`
 	// The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `sourceEndpointInstanceType`. For example, the value of `sourceEndpointInstanceType` is:
 	// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
@@ -516,7 +766,7 @@ type SynchronizationJobArgs struct {
 	DelayRuleTime pulumi.StringPtrInput
 	// The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
 	DestinationEndpointDatabaseName pulumi.StringPtrInput
-	// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+	// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,`  POLARDB_PG `, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
 	DestinationEndpointEngineName pulumi.StringInput
 	// The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `destinationEndpointInstanceType`. For example, the value of `destinationEndpointInstanceType` is:
 	// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
@@ -561,7 +811,7 @@ type SynchronizationJobArgs struct {
 	Reserve pulumi.StringPtrInput
 	// The name of the database to which the migration object belongs in the source instance. Note: this parameter is only available and must be passed in when the source instance, or the database type of the source instance is PolarDB O engine, PostgreSQL, or MongoDB database.
 	SourceEndpointDatabaseName pulumi.StringPtrInput
-	// The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+	// The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `TiDB`, `REDIS`.
 	SourceEndpointEngineName pulumi.StringInput
 	// The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `sourceEndpointInstanceType`. For example, the value of `sourceEndpointInstanceType` is:
 	// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
@@ -733,7 +983,7 @@ func (o SynchronizationJobOutput) DestinationEndpointDatabaseName() pulumi.Strin
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.DestinationEndpointDatabaseName }).(pulumi.StringPtrOutput)
 }
 
-// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
+// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,`  POLARDB_PG `, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
 func (o SynchronizationJobOutput) DestinationEndpointEngineName() pulumi.StringOutput {
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringOutput { return v.DestinationEndpointEngineName }).(pulumi.StringOutput)
 }
@@ -835,7 +1085,7 @@ func (o SynchronizationJobOutput) SourceEndpointDatabaseName() pulumi.StringPtrO
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.SourceEndpointDatabaseName }).(pulumi.StringPtrOutput)
 }
 
-// The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
+// The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `TiDB`, `REDIS`.
 func (o SynchronizationJobOutput) SourceEndpointEngineName() pulumi.StringOutput {
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringOutput { return v.SourceEndpointEngineName }).(pulumi.StringOutput)
 }

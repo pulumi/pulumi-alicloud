@@ -17,6 +17,109 @@ import (
 // For information about PAI Workspace Dataset Version and how to use it, see [What is Dataset Version](https://next.api.alibabacloud.com/document/AIWorkSpace/2021-02-04/CreateDatasetVersion).
 // > **NOTE:** Available since v1.236.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/pai"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultAiWorkspace, err := pai.NewWorkspaceWorkspace(ctx, "defaultAiWorkspace", &pai.WorkspaceWorkspaceArgs{
+//				Description:   pulumi.String(name),
+//				DisplayName:   pulumi.String(name),
+//				WorkspaceName: pulumi.String(name),
+//				EnvTypes: pulumi.StringArray{
+//					pulumi.String("prod"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"mountPath": "/mnt/data/",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s1",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultDataset, err := pai.NewWorkspaceDataset(ctx, "defaultDataset", &pai.WorkspaceDatasetArgs{
+//				Accessibility:  pulumi.String("PRIVATE"),
+//				SourceType:     pulumi.String("USER"),
+//				DataType:       pulumi.String("PIC"),
+//				WorkspaceId:    defaultAiWorkspace.ID(),
+//				Options:        pulumi.String(json0),
+//				Description:    pulumi.String(name),
+//				SourceId:       pulumi.String("d-xxxxx_v1"),
+//				Uri:            pulumi.String("oss://ai4d-q9lgxlpwxzqluij66y.oss-cn-hangzhou.aliyuncs.com/"),
+//				DatasetName:    pulumi.String(invokeFormat.Result),
+//				UserId:         pulumi.String("1511928242963727"),
+//				DataSourceType: pulumi.String("OSS"),
+//				Property:       pulumi.String("DIRECTORY"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//				"mountPath": "/mnt/data/verion/",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json1 := string(tmpJSON1)
+//			_, err = pai.NewWorkspaceDatasetversion(ctx, "default", &pai.WorkspaceDatasetversionArgs{
+//				Options:        pulumi.String(json1),
+//				Description:    pulumi.String(name),
+//				DataSourceType: pulumi.String("OSS"),
+//				SourceType:     pulumi.String("USER"),
+//				SourceId:       pulumi.String("d-xxxxx_v1"),
+//				DataSize:       pulumi.Int(2068),
+//				DataCount:      pulumi.Int(1000),
+//				Labels: pai.WorkspaceDatasetversionLabelArray{
+//					&pai.WorkspaceDatasetversionLabelArgs{
+//						Key:   pulumi.String("key1"),
+//						Value: pulumi.String("example1"),
+//					},
+//				},
+//				Uri:       pulumi.String("oss://ai4d-q9lgxlpwxzqluij66y.oss-cn-hangzhou.aliyuncs.com/"),
+//				Property:  pulumi.String("DIRECTORY"),
+//				DatasetId: defaultDataset.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // PAI Workspace Datasetversion can be imported using the id, e.g.

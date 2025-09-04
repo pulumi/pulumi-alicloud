@@ -11,6 +11,62 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.210.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const networkRule1 = new alicloud.kms.NetworkRule("networkRule1", {
+ *     description: "dummy",
+ *     sourcePrivateIps: ["10.10.10.10"],
+ *     networkRuleName: std.format({
+ *         input: "%s1",
+ *         args: [name],
+ *     }).then(invoke => invoke.result),
+ * });
+ * const networkRule2 = new alicloud.kms.NetworkRule("networkRule2", {
+ *     description: "dummy",
+ *     sourcePrivateIps: ["10.10.10.10"],
+ *     networkRuleName: std.format({
+ *         input: "%s2",
+ *         args: [name],
+ *     }).then(invoke => invoke.result),
+ * });
+ * const networkRule3 = new alicloud.kms.NetworkRule("networkRule3", {
+ *     description: "dummy",
+ *     sourcePrivateIps: ["10.10.10.10"],
+ *     networkRuleName: std.format({
+ *         input: "%s3",
+ *         args: [name],
+ *     }).then(invoke => invoke.result),
+ * });
+ * const _default = new alicloud.kms.Policy("default", {
+ *     description: "terraformpolicy",
+ *     permissions: [
+ *         "RbacPermission/Template/CryptoServiceKeyUser",
+ *         "RbacPermission/Template/CryptoServiceSecretUser",
+ *     ],
+ *     resources: [
+ *         "secret/*",
+ *         "key/*",
+ *     ],
+ *     policyName: name,
+ *     kmsInstanceId: "shared",
+ *     accessControlRules: `  {
+ *       \\"NetworkRules\\":[
+ *           \\"alicloud_kms_network_rule.networkRule1.network_rule_name\\"
+ *       ]
+ *   }
+ * `,
+ * });
+ * ```
+ *
  * ## Import
  *
  * KMS Policy can be imported using the id, e.g.

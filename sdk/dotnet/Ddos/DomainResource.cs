@@ -56,9 +56,9 @@ namespace Pulumi.AliCloud.Ddos
     ///             "177.167.32.11",
     ///         },
     ///         HttpsExt = @"    {
-    ///     ""Http2"": 1,
-    ///     ""Http2https"": 0,
-    ///     ""Https2http"": 0
+    ///     \""Http2\"": 1,
+    ///     \""Http2https\"": 0,
+    ///     \""Https2http\"": 0
     ///   }
     /// ",
     ///         ProxyTypes = new[]

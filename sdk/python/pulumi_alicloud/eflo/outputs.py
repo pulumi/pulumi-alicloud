@@ -33,6 +33,7 @@ __all__ = [
     'ClusterNodeGroupNode',
     'ExperimentPlanTemplateTemplatePipeline',
     'ExperimentPlanTemplateTemplatePipelineEnvParams',
+    'NodeGroupAttachmentDataDisk',
     'NodeGroupIpAllocationPolicy',
     'NodeGroupIpAllocationPolicyBondPolicy',
     'NodeGroupIpAllocationPolicyBondPolicyBond',
@@ -1244,6 +1245,80 @@ class ExperimentPlanTemplateTemplatePipelineEnvParams(dict):
         The version of the PyTorch framework used. PyTorch is a widely used deep learning library, and differences between versions may affect the performance and functional support of model training and inference.
         """
         return pulumi.get(self, "py_torch_version")
+
+
+@pulumi.output_type
+class NodeGroupAttachmentDataDisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deleteWithNode":
+            suggest = "delete_with_node"
+        elif key == "performanceLevel":
+            suggest = "performance_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodeGroupAttachmentDataDisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodeGroupAttachmentDataDisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodeGroupAttachmentDataDisk.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 category: Optional[_builtins.str] = None,
+                 delete_with_node: Optional[_builtins.bool] = None,
+                 performance_level: Optional[_builtins.str] = None,
+                 size: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str category: Type
+        :param _builtins.bool delete_with_node: Indicate whether the data disk is released with the node. true indicates that the data disk will be released together when the node unsubscribes.
+        :param _builtins.str performance_level: Performance level
+        :param _builtins.int size: Data disk size
+        """
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if delete_with_node is not None:
+            pulumi.set(__self__, "delete_with_node", delete_with_node)
+        if performance_level is not None:
+            pulumi.set(__self__, "performance_level", performance_level)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+
+    @_builtins.property
+    @pulumi.getter
+    def category(self) -> Optional[_builtins.str]:
+        """
+        Type
+        """
+        return pulumi.get(self, "category")
+
+    @_builtins.property
+    @pulumi.getter(name="deleteWithNode")
+    def delete_with_node(self) -> Optional[_builtins.bool]:
+        """
+        Indicate whether the data disk is released with the node. true indicates that the data disk will be released together when the node unsubscribes.
+        """
+        return pulumi.get(self, "delete_with_node")
+
+    @_builtins.property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> Optional[_builtins.str]:
+        """
+        Performance level
+        """
+        return pulumi.get(self, "performance_level")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> Optional[_builtins.int]:
+        """
+        Data disk size
+        """
+        return pulumi.get(self, "size")
 
 
 @pulumi.output_type

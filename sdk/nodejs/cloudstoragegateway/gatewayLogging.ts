@@ -11,6 +11,80 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.144.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultUuid = new random.index.Uuid("default", {});
+ * const defaultStorageBundle = new alicloud.cloudstoragegateway.StorageBundle("default", {storageBundleName: std.replace({
+ *     text: defaultUuid.result,
+ *     search: "-",
+ *     replace: "",
+ * }).then(invoke => std.substr({
+ *     input: `tf-example-${invoke.result}`,
+ *     offset: 0,
+ *     length: 16,
+ * })).then(invoke => invoke.result)});
+ * const defaultProject = new alicloud.log.Project("default", {
+ *     projectName: std.replace({
+ *         text: defaultUuid.result,
+ *         search: "-",
+ *         replace: "",
+ *     }).then(invoke => std.substr({
+ *         input: `tf-example-${invoke.result}`,
+ *         offset: 0,
+ *         length: 16,
+ *     })).then(invoke => invoke.result),
+ *     description: "terraform-example",
+ * });
+ * const defaultStore = new alicloud.log.Store("default", {
+ *     projectName: defaultProject.projectName,
+ *     logstoreName: name,
+ *     shardCount: 3,
+ *     autoSplit: true,
+ *     maxSplitShardCount: 60,
+ *     appendMeta: true,
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const _default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/21",
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *     vswitchName: name,
+ * });
+ * const defaultGateway = new alicloud.cloudstoragegateway.Gateway("default", {
+ *     gatewayName: name,
+ *     description: name,
+ *     gatewayClass: "Standard",
+ *     type: "File",
+ *     paymentType: "PayAsYouGo",
+ *     vswitchId: defaultSwitch.id,
+ *     releaseAfterExpiration: false,
+ *     publicNetworkBandwidth: 40,
+ *     storageBundleId: defaultStorageBundle.id,
+ *     location: "Cloud",
+ * });
+ * const defaultGatewayLogging = new alicloud.cloudstoragegateway.GatewayLogging("default", {
+ *     gatewayId: defaultGateway.id,
+ *     slsLogstore: defaultStore.logstoreName,
+ *     slsProject: defaultProject.projectName,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Cloud Storage Gateway Gateway Logging can be imported using the id, e.g.

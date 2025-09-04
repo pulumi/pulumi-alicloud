@@ -192,6 +192,37 @@ class MailAddress(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.134.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        account_name = config.get("accountName")
+        if account_name is None:
+            account_name = "tfexample"
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "alicloud-provider.online"
+        example = alicloud.directmail.Domain("example", domain_name=domain_name)
+        example_mail_address = alicloud.directmail.MailAddress("example",
+            account_name=std.format(input="%s@%s",
+                args=[
+                    account_name,
+                    example.domain_name,
+                ]).result,
+            sendtype="batch")
+        ```
+
+        > **Note:**
+        A maximum of 10 mailing addresses can be added.
+        Individual users: Up to 10 mailing addresses can be deleted within a month.
+        Enterprise users: Up to 10 mailing addresses can be deleted within a month.
+
         ## Import
 
         Direct Mail Mail Address can be imported using the id, e.g.
@@ -219,6 +250,37 @@ class MailAddress(pulumi.CustomResource):
         For information about Direct Mail Mail Address and how to use it, see [What is Mail Address](https://www.alibabacloud.com/help/en/directmail/latest/set-up-sender-addresses).
 
         > **NOTE:** Available since v1.134.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        account_name = config.get("accountName")
+        if account_name is None:
+            account_name = "tfexample"
+        domain_name = config.get("domainName")
+        if domain_name is None:
+            domain_name = "alicloud-provider.online"
+        example = alicloud.directmail.Domain("example", domain_name=domain_name)
+        example_mail_address = alicloud.directmail.MailAddress("example",
+            account_name=std.format(input="%s@%s",
+                args=[
+                    account_name,
+                    example.domain_name,
+                ]).result,
+            sendtype="batch")
+        ```
+
+        > **Note:**
+        A maximum of 10 mailing addresses can be added.
+        Individual users: Up to 10 mailing addresses can be deleted within a month.
+        Enterprise users: Up to 10 mailing addresses can be deleted within a month.
 
         ## Import
 

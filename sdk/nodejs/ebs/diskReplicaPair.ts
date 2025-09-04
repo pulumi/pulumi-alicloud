@@ -11,6 +11,69 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.196.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const _default = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const defaultGetRegions = _default.then(_default => alicloud.ebs.getRegions({
+ *     regionId: _default.regions?.[0]?.id,
+ * }));
+ * const defaultEcsDisk = new alicloud.ecs.EcsDisk("default", {
+ *     zoneId: defaultGetRegions.then(defaultGetRegions => defaultGetRegions.regions?.[0]?.zones?.[0]?.zoneId),
+ *     category: "cloud_essd",
+ *     deleteAutoSnapshot: true,
+ *     deleteWithInstance: true,
+ *     description: name,
+ *     diskName: name,
+ *     enableAutoSnapshot: true,
+ *     encrypted: true,
+ *     size: 500,
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *         controlledBy: "ear",
+ *     },
+ * });
+ * const destination = new alicloud.ecs.EcsDisk("destination", {
+ *     zoneId: defaultGetRegions.then(defaultGetRegions => defaultGetRegions.regions?.[0]?.zones?.[1]?.zoneId),
+ *     category: "cloud_essd",
+ *     deleteAutoSnapshot: true,
+ *     deleteWithInstance: true,
+ *     description: std.format({
+ *         input: "%s-destination",
+ *         args: [name],
+ *     }).then(invoke => invoke.result),
+ *     diskName: name,
+ *     enableAutoSnapshot: true,
+ *     encrypted: true,
+ *     size: 500,
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *         controlledBy: "ear",
+ *     },
+ * });
+ * const defaultDiskReplicaPair = new alicloud.ebs.DiskReplicaPair("default", {
+ *     destinationDiskId: destination.id,
+ *     destinationRegionId: _default.then(_default => _default.regions?.[0]?.id),
+ *     paymentType: "POSTPAY",
+ *     destinationZoneId: destination.zoneId,
+ *     sourceZoneId: defaultEcsDisk.zoneId,
+ *     diskId: defaultEcsDisk.id,
+ *     description: name,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Elastic Block Storage(EBS) Disk Replica Pair can be imported using the id, e.g.

@@ -12,20 +12,22 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Wafv3 Domain resource.
+ * Provides a WAFV3 Domain resource.
  * 
- * For information about Wafv3 Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-waf-openapi-2021-10-01-createdomain).
+ * For information about WAFV3 Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-waf-openapi-2021-10-01-createdomain).
  * 
  * &gt; **NOTE:** Available since v1.200.0.
  * 
  * ## Import
  * 
- * Wafv3 Domain can be imported using the id, e.g.
+ * WAFV3 Domain can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:wafv3/domain:Domain example &lt;instance_id&gt;:&lt;domain&gt;
@@ -35,14 +37,16 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:wafv3/domain:Domain")
 public class Domain extends com.pulumi.resources.CustomResource {
     /**
-     * The access type of the WAF instance. Value: **share** (default): CNAME access.
+     * The mode in which the domain name is added to WAF. Valid values:
+     * share: CNAME record mode. This is the default value.
      * 
      */
     @Export(name="accessType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessType;
 
     /**
-     * @return The access type of the WAF instance. Value: **share** (default): CNAME access.
+     * @return The mode in which the domain name is added to WAF. Valid values:
+     * share: CNAME record mode. This is the default value.
      * 
      */
     public Output<Optional<String>> accessType() {
@@ -63,14 +67,28 @@ public class Domain extends com.pulumi.resources.CustomResource {
         return this.domain;
     }
     /**
-     * WAF instance ID
+     * The domain ID.
+     * 
+     */
+    @Export(name="domainId", refs={String.class}, tree="[0]")
+    private Output<String> domainId;
+
+    /**
+     * @return The domain ID.
+     * 
+     */
+    public Output<String> domainId() {
+        return this.domainId;
+    }
+    /**
+     * The ID of the Web Application Firewall (WAF) instance.
      * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
-     * @return WAF instance ID
+     * @return The ID of the Web Application Firewall (WAF) instance.
      * 
      */
     public Output<String> instanceId() {
@@ -105,32 +123,46 @@ public class Domain extends com.pulumi.resources.CustomResource {
         return this.redirect;
     }
     /**
-     * The ID of the resource group.
+     * The ID of the Alibaba Cloud resource group.
      * 
      */
     @Export(name="resourceManagerResourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceManagerResourceGroupId;
 
     /**
-     * @return The ID of the resource group.
+     * @return The ID of the Alibaba Cloud resource group.
      * 
      */
     public Output<String> resourceManagerResourceGroupId() {
         return this.resourceManagerResourceGroupId;
     }
     /**
-     * The status of the resource.
+     * The status of the domain name.
      * 
      */
-    @Export(name="status", refs={String.class}, tree="[0]")
-    private Output<String> status;
+    @Export(name="status", refs={Integer.class}, tree="[0]")
+    private Output<Integer> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the domain name.
      * 
      */
-    public Output<String> status() {
+    public Output<Integer> status() {
         return this.status;
+    }
+    /**
+     * The tags. You can specify up to 20 tags.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return The tags. You can specify up to 20 tags.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
 
     /**

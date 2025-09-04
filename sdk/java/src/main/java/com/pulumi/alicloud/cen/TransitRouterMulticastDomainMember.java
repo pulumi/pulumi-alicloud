@@ -22,6 +22,134 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.195.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cen.CenFunctions;
+ * import com.pulumi.alicloud.cen.inputs.GetTransitRouterAvailableResourcesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.EcsNetworkInterface;
+ * import com.pulumi.alicloud.ecs.EcsNetworkInterfaceArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.CidrhostArgs;
+ * import com.pulumi.alicloud.cen.Instance;
+ * import com.pulumi.alicloud.cen.InstanceArgs;
+ * import com.pulumi.alicloud.cen.TransitRouter;
+ * import com.pulumi.alicloud.cen.TransitRouterArgs;
+ * import com.pulumi.alicloud.cen.TransitRouterMulticastDomain;
+ * import com.pulumi.alicloud.cen.TransitRouterMulticastDomainArgs;
+ * import com.pulumi.alicloud.cen.TransitRouterVpcAttachment;
+ * import com.pulumi.alicloud.cen.TransitRouterVpcAttachmentArgs;
+ * import com.pulumi.alicloud.cen.inputs.TransitRouterVpcAttachmentZoneMappingArgs;
+ * import com.pulumi.alicloud.cen.TransitRouterMulticastDomainAssociation;
+ * import com.pulumi.alicloud.cen.TransitRouterMulticastDomainAssociationArgs;
+ * import com.pulumi.alicloud.cen.TransitRouterMulticastDomainMember;
+ * import com.pulumi.alicloud.cen.TransitRouterMulticastDomainMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf_example");
+ *         final var default = CenFunctions.getTransitRouterAvailableResources(GetTransitRouterAvailableResourcesArgs.builder()
+ *             .build());
+ * 
+ *         final var zone = default_.resources()[0].masterZones()[1];
+ * 
+ *         var example = new Network("example", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("192.168.0.0/16")
+ *             .build());
+ * 
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
+ *             .vswitchName(name)
+ *             .cidrBlock("192.168.1.0/24")
+ *             .vpcId(example.id())
+ *             .zoneId(zone)
+ *             .build());
+ * 
+ *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()
+ *             .name(name)
+ *             .vpcId(example.id())
+ *             .build());
+ * 
+ *         var exampleEcsNetworkInterface = new EcsNetworkInterface("exampleEcsNetworkInterface", EcsNetworkInterfaceArgs.builder()
+ *             .networkInterfaceName(name)
+ *             .vswitchId(exampleSwitch.id())
+ *             .primaryIpAddress(exampleSwitch.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrhost(CidrhostArgs.builder()
+ *                 .input(_cidrBlock)
+ *                 .host(100)
+ *                 .build())).applyValue(_invoke -> _invoke.result()))
+ *             .securityGroupIds(exampleSecurityGroup.id())
+ *             .build());
+ * 
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
+ *             .cenInstanceName(name)
+ *             .build());
+ * 
+ *         var exampleTransitRouter = new TransitRouter("exampleTransitRouter", TransitRouterArgs.builder()
+ *             .transitRouterName(name)
+ *             .cenId(exampleInstance.id())
+ *             .supportMulticast(true)
+ *             .build());
+ * 
+ *         var exampleTransitRouterMulticastDomain = new TransitRouterMulticastDomain("exampleTransitRouterMulticastDomain", TransitRouterMulticastDomainArgs.builder()
+ *             .transitRouterId(exampleTransitRouter.transitRouterId())
+ *             .transitRouterMulticastDomainName(name)
+ *             .build());
+ * 
+ *         var exampleTransitRouterVpcAttachment = new TransitRouterVpcAttachment("exampleTransitRouterVpcAttachment", TransitRouterVpcAttachmentArgs.builder()
+ *             .cenId(exampleTransitRouter.cenId())
+ *             .transitRouterId(exampleTransitRouterMulticastDomain.transitRouterId())
+ *             .vpcId(example.id())
+ *             .zoneMappings(TransitRouterVpcAttachmentZoneMappingArgs.builder()
+ *                 .zoneId(zone)
+ *                 .vswitchId(exampleSwitch.id())
+ *                 .build())
+ *             .build());
+ * 
+ *         var exampleTransitRouterMulticastDomainAssociation = new TransitRouterMulticastDomainAssociation("exampleTransitRouterMulticastDomainAssociation", TransitRouterMulticastDomainAssociationArgs.builder()
+ *             .transitRouterMulticastDomainId(exampleTransitRouterMulticastDomain.id())
+ *             .transitRouterAttachmentId(exampleTransitRouterVpcAttachment.transitRouterAttachmentId())
+ *             .vswitchId(exampleSwitch.id())
+ *             .build());
+ * 
+ *         var exampleTransitRouterMulticastDomainMember = new TransitRouterMulticastDomainMember("exampleTransitRouterMulticastDomainMember", TransitRouterMulticastDomainMemberArgs.builder()
+ *             .vpcId(example.id())
+ *             .transitRouterMulticastDomainId(exampleTransitRouterMulticastDomainAssociation.transitRouterMulticastDomainId())
+ *             .networkInterfaceId(exampleEcsNetworkInterface.id())
+ *             .groupIpAddress("239.1.1.1")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Cen Transit Router Multicast Domain Member can be imported using the id, e.g.

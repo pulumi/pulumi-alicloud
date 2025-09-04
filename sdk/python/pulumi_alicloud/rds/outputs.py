@@ -1781,6 +1781,7 @@ class GetInstanceClassesInstanceClassResult(dict):
                  zone_ids: Sequence['outputs.GetInstanceClassesInstanceClassZoneIdResult']):
         """
         :param _builtins.str instance_class: DB Instance available class.
+        :param _builtins.str price: Unit price of instance specifications.
         :param 'GetInstanceClassesInstanceClassStorageRangeArgs' storage_range: DB Instance available storage range.
         :param Sequence['GetInstanceClassesInstanceClassZoneIdArgs'] zone_ids: A list of Zone to launch the DB instance.
         """
@@ -1800,6 +1801,9 @@ class GetInstanceClassesInstanceClassResult(dict):
     @_builtins.property
     @pulumi.getter
     def price(self) -> _builtins.str:
+        """
+        Unit price of instance specifications.
+        """
         return pulumi.get(self, "price")
 
     @_builtins.property

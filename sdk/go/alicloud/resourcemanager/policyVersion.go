@@ -43,15 +43,15 @@ import (
 //			}
 //			example, err := resourcemanager.NewPolicy(ctx, "example", &resourcemanager.PolicyArgs{
 //				PolicyName: pulumi.String(name),
-//				PolicyDocument: pulumi.String(`		{
-//				"Statement": [{
-//					"Action": ["oss:*"],
-//					"Effect": "Allow",
-//					"Resource": ["acs:oss:*:*:*"]
-//				}],
-//				"Version": "1"
-//			}
+//				PolicyDocument: pulumi.String(`\t\t{
 //
+// \t\t\t\"Statement\": [{
+// \t\t\t\t\"Action\": [\"oss:*\"],
+// \t\t\t\t\"Effect\": \"Allow\",
+// \t\t\t\t\"Resource\": [\"acs:oss:*:*:*\"]
+// \t\t\t}],
+// \t\t\t\"Version\": \"1\"
+// \t\t}
 // `),
 //
 //	})
@@ -60,15 +60,15 @@ import (
 //	}
 //	_, err = resourcemanager.NewPolicyVersion(ctx, "example", &resourcemanager.PolicyVersionArgs{
 //		PolicyName: example.PolicyName,
-//		PolicyDocument: pulumi.String(`		{
-//		"Statement": [{
-//			"Action": ["oss:*"],
-//			"Effect": "Allow",
-//			"Resource": ["acs:oss:*:*:myphotos"]
-//		}],
-//		"Version": "1"
-//	}
+//		PolicyDocument: pulumi.String(`\t\t{
 //
+// \t\t\t\"Statement\": [{
+// \t\t\t\t\"Action\": [\"oss:*\"],
+// \t\t\t\t\"Effect\": \"Allow\",
+// \t\t\t\t\"Resource\": [\"acs:oss:*:*:myphotos\"]
+// \t\t\t}],
+// \t\t\t\"Version\": \"1\"
+// \t\t}
 // `),
 //
 //			})

@@ -406,6 +406,37 @@ class Gateway(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.157.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        example = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_network = alicloud.vpc.Network("example",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/16")
+        example_switch = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            example_switch.append(alicloud.vpc.Switch(f"example-{range['value']}",
+                vpc_id=example_network.id,
+                cidr_block=std.format(input="172.16.%d.0/21",
+                    args=[(range["value"] + 1) * 16]).result,
+                zone_id=example.zones[range["value"]].id,
+                vswitch_name=std.format(input="terraform_example_%d",
+                    args=[range["value"] + 1]).result))
+        example_gateway = alicloud.mse.Gateway("example",
+            gateway_name="terraform-example",
+            replica=2,
+            spec="MSE_GTW_2_4_200_c",
+            vswitch_id=example_switch[0].id,
+            backup_vswitch_id=example_switch[1].id,
+            vpc_id=example_network.id)
+        ```
+
         ## Import
 
         Microservice Engine (MSE) Gateway can be imported using the id, e.g.
@@ -439,6 +470,37 @@ class Gateway(pulumi.CustomResource):
         For information about Microservice Engine (MSE) Gateway and how to use it, see [What is Gateway](https://help.aliyun.com/document_detail/347638.html).
 
         > **NOTE:** Available since v1.157.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        example = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_network = alicloud.vpc.Network("example",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/16")
+        example_switch = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            example_switch.append(alicloud.vpc.Switch(f"example-{range['value']}",
+                vpc_id=example_network.id,
+                cidr_block=std.format(input="172.16.%d.0/21",
+                    args=[(range["value"] + 1) * 16]).result,
+                zone_id=example.zones[range["value"]].id,
+                vswitch_name=std.format(input="terraform_example_%d",
+                    args=[range["value"] + 1]).result))
+        example_gateway = alicloud.mse.Gateway("example",
+            gateway_name="terraform-example",
+            replica=2,
+            spec="MSE_GTW_2_4_200_c",
+            vswitch_id=example_switch[0].id,
+            backup_vswitch_id=example_switch[1].id,
+            vpc_id=example_network.id)
+        ```
 
         ## Import
 

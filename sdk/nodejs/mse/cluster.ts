@@ -140,6 +140,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * The version code of MSE Cluster. You can keep the instance version up to date by setting the value to `LATEST` (Available since v1.257.0).
+     */
+    declare public readonly versionCode: pulumi.Output<string>;
+    /**
      * The id of the VPC.
      */
     declare public readonly vpcId: pulumi.Output<string>;
@@ -181,6 +185,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
             resourceInputs["status"] = state?.status;
             resourceInputs["tags"] = state?.tags;
+            resourceInputs["versionCode"] = state?.versionCode;
             resourceInputs["vpcId"] = state?.vpcId;
             resourceInputs["vswitchId"] = state?.vswitchId;
         } else {
@@ -220,6 +225,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["requestPars"] = args?.requestPars;
             resourceInputs["resourceGroupId"] = args?.resourceGroupId;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["versionCode"] = args?.versionCode;
             resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["appVersion"] = undefined /*out*/;
@@ -334,6 +340,10 @@ export interface ClusterState {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * The version code of MSE Cluster. You can keep the instance version up to date by setting the value to `LATEST` (Available since v1.257.0).
+     */
+    versionCode?: pulumi.Input<string>;
+    /**
      * The id of the VPC.
      */
     vpcId?: pulumi.Input<string>;
@@ -433,6 +443,10 @@ export interface ClusterArgs {
      * The tag of the resource.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The version code of MSE Cluster. You can keep the instance version up to date by setting the value to `LATEST` (Available since v1.257.0).
+     */
+    versionCode?: pulumi.Input<string>;
     /**
      * The id of the VPC.
      */

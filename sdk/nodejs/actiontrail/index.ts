@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AdvancedQueryTemplateArgs, AdvancedQueryTemplateState } from "./advancedQueryTemplate";
+export type AdvancedQueryTemplate = import("./advancedQueryTemplate").AdvancedQueryTemplate;
+export const AdvancedQueryTemplate: typeof import("./advancedQueryTemplate").AdvancedQueryTemplate = null as any;
+utilities.lazyLoad(exports, ["AdvancedQueryTemplate"], () => require("./advancedQueryTemplate"));
+
 export { GetConsumerGroupsArgs, GetConsumerGroupsResult, GetConsumerGroupsOutputArgs } from "./getConsumerGroups";
 export const getConsumerGroups: typeof import("./getConsumerGroups").getConsumerGroups = null as any;
 export const getConsumerGroupsOutput: typeof import("./getConsumerGroups").getConsumerGroupsOutput = null as any;
@@ -75,6 +80,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:actiontrail/advancedQueryTemplate:AdvancedQueryTemplate":
+                return new AdvancedQueryTemplate(name, <any>undefined, { urn })
             case "alicloud:actiontrail/globalEventsStorageRegion:GlobalEventsStorageRegion":
                 return new GlobalEventsStorageRegion(name, <any>undefined, { urn })
             case "alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob":
@@ -88,6 +95,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "actiontrail/advancedQueryTemplate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "actiontrail/globalEventsStorageRegion", _module)
 pulumi.runtime.registerResourceModule("alicloud", "actiontrail/historyDeliveryJob", _module)
 pulumi.runtime.registerResourceModule("alicloud", "actiontrail/trail", _module)

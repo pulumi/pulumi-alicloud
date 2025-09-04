@@ -14,6 +14,89 @@ import (
 // This data source provides the Resource Manager Shared Resources of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available since v1.111.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "tf-example";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// _default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+// NameRegex: pulumi.StringRef("^default-NODELETING$"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+// VpcId: pulumi.StringRef(defaultGetNetworks.Ids[0]),
+// ZoneId: pulumi.StringRef(_default.Ids[0]),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultResourceShare, err := resourcemanager.NewResourceShare(ctx, "default", &resourcemanager.ResourceShareArgs{
+// ResourceShareName: pulumi.String(name),
+// })
+// if err != nil {
+// return err
+// }
+// defaultSharedResource, err := resourcemanager.NewSharedResource(ctx, "default", &resourcemanager.SharedResourceArgs{
+// ResourceShareId: defaultResourceShare.ID(),
+// ResourceId: pulumi.String(defaultGetSwitches.Ids[0]),
+// ResourceType: pulumi.String("VSwitch"),
+// })
+// if err != nil {
+// return err
+// }
+// ids, err := resourcemanager.GetSharedResources(ctx, &resourcemanager.GetSharedResourcesArgs{
+// Ids: interface{}{
+// std.Format(ctx, &std.FormatArgs{
+// Input: "%s:%s",
+// Args: pulumi.StringArray{
+// defaultSharedResource.ResourceId,
+// defaultSharedResource.ResourceType,
+// },
+// }, nil).Result,
+// },
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("firstResourceManagerSharedResourceId", ids.Resources[0].Id)
+// resourceShareId := resourcemanager.GetSharedResourcesOutput(ctx, resourcemanager.GetSharedResourcesOutputArgs{
+// ResourceShareId: defaultSharedResource.ResourceShareId,
+// }, nil);
+// ctx.Export("secondResourceManagerSharedResourceId", resourceShareId.ApplyT(func(resourceShareId resourcemanager.GetSharedResourcesResult) (*string, error) {
+// return &resourceShareId.Resources[0].Id, nil
+// }).(pulumi.StringPtrOutput))
+// return nil
+// })
+// }
+// ```
 func GetSharedResources(ctx *pulumi.Context, args *GetSharedResourcesArgs, opts ...pulumi.InvokeOption) (*GetSharedResourcesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSharedResourcesResult

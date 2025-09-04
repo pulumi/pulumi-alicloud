@@ -9,6 +9,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,14 +20,16 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     public static final DomainArgs Empty = new DomainArgs();
 
     /**
-     * The access type of the WAF instance. Value: **share** (default): CNAME access.
+     * The mode in which the domain name is added to WAF. Valid values:
+     * share: CNAME record mode. This is the default value.
      * 
      */
     @Import(name="accessType")
     private @Nullable Output<String> accessType;
 
     /**
-     * @return The access type of the WAF instance. Value: **share** (default): CNAME access.
+     * @return The mode in which the domain name is added to WAF. Valid values:
+     * share: CNAME record mode. This is the default value.
      * 
      */
     public Optional<Output<String>> accessType() {
@@ -49,14 +52,14 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * WAF instance ID
+     * The ID of the Web Application Firewall (WAF) instance.
      * 
      */
     @Import(name="instanceId", required=true)
     private Output<String> instanceId;
 
     /**
-     * @return WAF instance ID
+     * @return The ID of the Web Application Firewall (WAF) instance.
      * 
      */
     public Output<String> instanceId() {
@@ -93,6 +96,36 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         return this.redirect;
     }
 
+    /**
+     * The ID of the Alibaba Cloud resource group.
+     * 
+     */
+    @Import(name="resourceManagerResourceGroupId")
+    private @Nullable Output<String> resourceManagerResourceGroupId;
+
+    /**
+     * @return The ID of the Alibaba Cloud resource group.
+     * 
+     */
+    public Optional<Output<String>> resourceManagerResourceGroupId() {
+        return Optional.ofNullable(this.resourceManagerResourceGroupId);
+    }
+
+    /**
+     * The tags. You can specify up to 20 tags.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return The tags. You can specify up to 20 tags.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
     private DomainArgs() {}
 
     private DomainArgs(DomainArgs $) {
@@ -101,6 +134,8 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         this.instanceId = $.instanceId;
         this.listen = $.listen;
         this.redirect = $.redirect;
+        this.resourceManagerResourceGroupId = $.resourceManagerResourceGroupId;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -122,7 +157,8 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessType The access type of the WAF instance. Value: **share** (default): CNAME access.
+         * @param accessType The mode in which the domain name is added to WAF. Valid values:
+         * share: CNAME record mode. This is the default value.
          * 
          * @return builder
          * 
@@ -133,7 +169,8 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessType The access type of the WAF instance. Value: **share** (default): CNAME access.
+         * @param accessType The mode in which the domain name is added to WAF. Valid values:
+         * share: CNAME record mode. This is the default value.
          * 
          * @return builder
          * 
@@ -164,7 +201,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId WAF instance ID
+         * @param instanceId The ID of the Web Application Firewall (WAF) instance.
          * 
          * @return builder
          * 
@@ -175,7 +212,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId WAF instance ID
+         * @param instanceId The ID of the Web Application Firewall (WAF) instance.
          * 
          * @return builder
          * 
@@ -224,6 +261,48 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder redirect(DomainRedirectArgs redirect) {
             return redirect(Output.of(redirect));
+        }
+
+        /**
+         * @param resourceManagerResourceGroupId The ID of the Alibaba Cloud resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceManagerResourceGroupId(@Nullable Output<String> resourceManagerResourceGroupId) {
+            $.resourceManagerResourceGroupId = resourceManagerResourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceManagerResourceGroupId The ID of the Alibaba Cloud resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceManagerResourceGroupId(String resourceManagerResourceGroupId) {
+            return resourceManagerResourceGroupId(Output.of(resourceManagerResourceGroupId));
+        }
+
+        /**
+         * @param tags The tags. You can specify up to 20 tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tags. You can specify up to 20 tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         public DomainArgs build() {

@@ -191,6 +191,48 @@ class EcsNetworkInterfacePermission(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.166.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_account = alicloud.get_account()
+        default_get_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_network = alicloud.vpc.Network("default",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=default_network.id,
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name="terraform-example",
+            vpc_id=default_network.id)
+        default_ecs_network_interface = alicloud.ecs.EcsNetworkInterface("default",
+            network_interface_name="terraform-example",
+            vswitch_id=default_switch.id,
+            security_group_ids=[default_security_group.id],
+            description="terraform-example",
+            primary_ip_address=default_switch.cidr_block.apply(lambda cidr_block: std.cidrhost_output(input=cidr_block,
+                host=100)).apply(lambda invoke: invoke.result),
+            tags={
+                "Created": "TF",
+                "For": "example",
+            },
+            resource_group_id=default_get_resource_groups.ids[0])
+        example = alicloud.ecs.EcsNetworkInterfacePermission("example",
+            account_id=default_get_account.id,
+            network_interface_id=default_ecs_network_interface.id,
+            permission="InstanceAttach",
+            force=True)
+        ```
+
         ## Import
 
         ECS Network Interface Permission can be imported using the id, e.g.
@@ -218,6 +260,48 @@ class EcsNetworkInterfacePermission(pulumi.CustomResource):
         For information about ECS Network Interface Permission and how to use it, see [What is Network Interface Permission](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/elastic-network-interfaces-overview).
 
         > **NOTE:** Available since v1.166.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_account = alicloud.get_account()
+        default_get_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_network = alicloud.vpc.Network("default",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=default_network.id,
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name="terraform-example",
+            vpc_id=default_network.id)
+        default_ecs_network_interface = alicloud.ecs.EcsNetworkInterface("default",
+            network_interface_name="terraform-example",
+            vswitch_id=default_switch.id,
+            security_group_ids=[default_security_group.id],
+            description="terraform-example",
+            primary_ip_address=default_switch.cidr_block.apply(lambda cidr_block: std.cidrhost_output(input=cidr_block,
+                host=100)).apply(lambda invoke: invoke.result),
+            tags={
+                "Created": "TF",
+                "For": "example",
+            },
+            resource_group_id=default_get_resource_groups.ids[0])
+        example = alicloud.ecs.EcsNetworkInterfacePermission("example",
+            account_id=default_get_account.id,
+            network_interface_id=default_ecs_network_interface.id,
+            permission="InstanceAttach",
+            force=True)
+        ```
 
         ## Import
 

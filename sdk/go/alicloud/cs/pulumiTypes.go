@@ -2809,6 +2809,143 @@ func (o ManagedKubernetesAuditLogConfigPtrOutput) SlsProjectName() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+type ManagedKubernetesAutoMode struct {
+	// Whether to enable auto mode. Valid values: `true`, `false`. Only ACK managed Pro clusters support Auto Mode.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ManagedKubernetesAutoModeInput is an input type that accepts ManagedKubernetesAutoModeArgs and ManagedKubernetesAutoModeOutput values.
+// You can construct a concrete instance of `ManagedKubernetesAutoModeInput` via:
+//
+//	ManagedKubernetesAutoModeArgs{...}
+type ManagedKubernetesAutoModeInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesAutoModeOutput() ManagedKubernetesAutoModeOutput
+	ToManagedKubernetesAutoModeOutputWithContext(context.Context) ManagedKubernetesAutoModeOutput
+}
+
+type ManagedKubernetesAutoModeArgs struct {
+	// Whether to enable auto mode. Valid values: `true`, `false`. Only ACK managed Pro clusters support Auto Mode.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ManagedKubernetesAutoModeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesAutoMode)(nil)).Elem()
+}
+
+func (i ManagedKubernetesAutoModeArgs) ToManagedKubernetesAutoModeOutput() ManagedKubernetesAutoModeOutput {
+	return i.ToManagedKubernetesAutoModeOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesAutoModeArgs) ToManagedKubernetesAutoModeOutputWithContext(ctx context.Context) ManagedKubernetesAutoModeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesAutoModeOutput)
+}
+
+func (i ManagedKubernetesAutoModeArgs) ToManagedKubernetesAutoModePtrOutput() ManagedKubernetesAutoModePtrOutput {
+	return i.ToManagedKubernetesAutoModePtrOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesAutoModeArgs) ToManagedKubernetesAutoModePtrOutputWithContext(ctx context.Context) ManagedKubernetesAutoModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesAutoModeOutput).ToManagedKubernetesAutoModePtrOutputWithContext(ctx)
+}
+
+// ManagedKubernetesAutoModePtrInput is an input type that accepts ManagedKubernetesAutoModeArgs, ManagedKubernetesAutoModePtr and ManagedKubernetesAutoModePtrOutput values.
+// You can construct a concrete instance of `ManagedKubernetesAutoModePtrInput` via:
+//
+//	        ManagedKubernetesAutoModeArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedKubernetesAutoModePtrInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesAutoModePtrOutput() ManagedKubernetesAutoModePtrOutput
+	ToManagedKubernetesAutoModePtrOutputWithContext(context.Context) ManagedKubernetesAutoModePtrOutput
+}
+
+type managedKubernetesAutoModePtrType ManagedKubernetesAutoModeArgs
+
+func ManagedKubernetesAutoModePtr(v *ManagedKubernetesAutoModeArgs) ManagedKubernetesAutoModePtrInput {
+	return (*managedKubernetesAutoModePtrType)(v)
+}
+
+func (*managedKubernetesAutoModePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedKubernetesAutoMode)(nil)).Elem()
+}
+
+func (i *managedKubernetesAutoModePtrType) ToManagedKubernetesAutoModePtrOutput() ManagedKubernetesAutoModePtrOutput {
+	return i.ToManagedKubernetesAutoModePtrOutputWithContext(context.Background())
+}
+
+func (i *managedKubernetesAutoModePtrType) ToManagedKubernetesAutoModePtrOutputWithContext(ctx context.Context) ManagedKubernetesAutoModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesAutoModePtrOutput)
+}
+
+type ManagedKubernetesAutoModeOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesAutoModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesAutoMode)(nil)).Elem()
+}
+
+func (o ManagedKubernetesAutoModeOutput) ToManagedKubernetesAutoModeOutput() ManagedKubernetesAutoModeOutput {
+	return o
+}
+
+func (o ManagedKubernetesAutoModeOutput) ToManagedKubernetesAutoModeOutputWithContext(ctx context.Context) ManagedKubernetesAutoModeOutput {
+	return o
+}
+
+func (o ManagedKubernetesAutoModeOutput) ToManagedKubernetesAutoModePtrOutput() ManagedKubernetesAutoModePtrOutput {
+	return o.ToManagedKubernetesAutoModePtrOutputWithContext(context.Background())
+}
+
+func (o ManagedKubernetesAutoModeOutput) ToManagedKubernetesAutoModePtrOutputWithContext(ctx context.Context) ManagedKubernetesAutoModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedKubernetesAutoMode) *ManagedKubernetesAutoMode {
+		return &v
+	}).(ManagedKubernetesAutoModePtrOutput)
+}
+
+// Whether to enable auto mode. Valid values: `true`, `false`. Only ACK managed Pro clusters support Auto Mode.
+func (o ManagedKubernetesAutoModeOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesAutoMode) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ManagedKubernetesAutoModePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesAutoModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedKubernetesAutoMode)(nil)).Elem()
+}
+
+func (o ManagedKubernetesAutoModePtrOutput) ToManagedKubernetesAutoModePtrOutput() ManagedKubernetesAutoModePtrOutput {
+	return o
+}
+
+func (o ManagedKubernetesAutoModePtrOutput) ToManagedKubernetesAutoModePtrOutputWithContext(ctx context.Context) ManagedKubernetesAutoModePtrOutput {
+	return o
+}
+
+func (o ManagedKubernetesAutoModePtrOutput) Elem() ManagedKubernetesAutoModeOutput {
+	return o.ApplyT(func(v *ManagedKubernetesAutoMode) ManagedKubernetesAutoMode {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedKubernetesAutoMode
+		return ret
+	}).(ManagedKubernetesAutoModeOutput)
+}
+
+// Whether to enable auto mode. Valid values: `true`, `false`. Only ACK managed Pro clusters support Auto Mode.
+func (o ManagedKubernetesAutoModePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedKubernetesAutoMode) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ManagedKubernetesCertificateAuthority struct {
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 	ClientCert *string `pulumi:"clientCert"`
@@ -13938,6 +14075,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesAddonArrayInput)(nil)).Elem(), ManagedKubernetesAddonArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesAuditLogConfigInput)(nil)).Elem(), ManagedKubernetesAuditLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesAuditLogConfigPtrInput)(nil)).Elem(), ManagedKubernetesAuditLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesAutoModeInput)(nil)).Elem(), ManagedKubernetesAutoModeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesAutoModePtrInput)(nil)).Elem(), ManagedKubernetesAutoModeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesCertificateAuthorityInput)(nil)).Elem(), ManagedKubernetesCertificateAuthorityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesCertificateAuthorityPtrInput)(nil)).Elem(), ManagedKubernetesCertificateAuthorityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesConnectionsInput)(nil)).Elem(), ManagedKubernetesConnectionsArgs{})
@@ -14101,6 +14240,8 @@ func init() {
 	pulumi.RegisterOutputType(ManagedKubernetesAddonArrayOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesAuditLogConfigOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesAuditLogConfigPtrOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesAutoModeOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesAutoModePtrOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesCertificateAuthorityOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesCertificateAuthorityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesConnectionsOutput{})

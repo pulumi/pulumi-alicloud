@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// This data source provides the RDS instance classes resource available info of Alibaba Cloud.
         /// 
-        /// &gt; **NOTE:** Available in v1.46.0+
+        /// &gt; **NOTE:** Available since v1.46.0
         /// 
         /// ## Example Usage
         /// 
@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// This data source provides the RDS instance classes resource available info of Alibaba Cloud.
         /// 
-        /// &gt; **NOTE:** Available in v1.46.0+
+        /// &gt; **NOTE:** Available since v1.46.0
         /// 
         /// ## Example Usage
         /// 
@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// This data source provides the RDS instance classes resource available info of Alibaba Cloud.
         /// 
-        /// &gt; **NOTE:** Available in v1.46.0+
+        /// &gt; **NOTE:** Available since v1.46.0
         /// 
         /// ## Example Usage
         /// 
@@ -153,7 +153,7 @@ namespace Pulumi.AliCloud.Rds
         public string? DbInstanceId { get; set; }
 
         /// <summary>
-        /// The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3".
+        /// The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3", "general_essd".
         /// </summary>
         [Input("dbInstanceStorageType")]
         public string? DbInstanceStorageType { get; set; }
@@ -188,6 +188,9 @@ namespace Pulumi.AliCloud.Rds
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        /// <summary>
+        /// Sort the results by specified fields. The supported value is' Price '. Modifying this field will trigger resource reconstruction.
+        /// </summary>
         [Input("sortedBy")]
         public string? SortedBy { get; set; }
 
@@ -250,7 +253,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? DbInstanceId { get; set; }
 
         /// <summary>
-        /// The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3".
+        /// The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3", "general_essd".
         /// </summary>
         [Input("dbInstanceStorageType")]
         public Input<string>? DbInstanceStorageType { get; set; }
@@ -285,6 +288,9 @@ namespace Pulumi.AliCloud.Rds
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        /// <summary>
+        /// Sort the results by specified fields. The supported value is' Price '. Modifying this field will trigger resource reconstruction.
+        /// </summary>
         [Input("sortedBy")]
         public Input<string>? SortedBy { get; set; }
 

@@ -207,6 +207,48 @@ class AccessConfigurationProvisioning(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.148.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.cloudsso.get_directories()
+        default_get_resource_directories = alicloud.resourcemanager.get_resource_directories()
+        default_directory = []
+        def create_default(range_body):
+            for range in [{"value": i} for i in range(0, range_body)]:
+                default_directory.append(alicloud.cloudsso.Directory(f"default-{range['value']}", directory_name=name))
+
+        len(default.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        directory_id = len(default.ids).apply(lambda length: default.ids[0] if length > 0 else std.concat(input=[
+            [__item.id for __item in default_directory],
+            [""],
+        ]).result[0])
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_user = alicloud.cloudsso.User("default",
+            directory_id=directory_id,
+            user_name=f"{name}-{default_integer['result']}")
+        default_access_configuration = alicloud.cloudsso.AccessConfiguration("default",
+            access_configuration_name=f"{name}-{default_integer['result']}",
+            directory_id=directory_id)
+        default_access_configuration_provisioning = alicloud.cloudsso.AccessConfigurationProvisioning("default",
+            directory_id=directory_id,
+            access_configuration_id=default_access_configuration.access_configuration_id,
+            target_type="RD-Account",
+            target_id=default_get_resource_directories.directories[0].master_account_id)
+        ```
+
         ## Import
 
         Cloud SSO Access Configuration Provisioning can be imported using the id, e.g.
@@ -235,6 +277,48 @@ class AccessConfigurationProvisioning(pulumi.CustomResource):
         For information about Cloud SSO Access Configuration Provisioning and how to use it, see [What is Access Configuration Provisioning](https://www.alibabacloud.com/help/en/cloudsso/latest/api-cloudsso-2021-05-15-addpermissionpolicytoaccessconfiguration).
 
         > **NOTE:** Available since v1.148.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.cloudsso.get_directories()
+        default_get_resource_directories = alicloud.resourcemanager.get_resource_directories()
+        default_directory = []
+        def create_default(range_body):
+            for range in [{"value": i} for i in range(0, range_body)]:
+                default_directory.append(alicloud.cloudsso.Directory(f"default-{range['value']}", directory_name=name))
+
+        len(default.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        directory_id = len(default.ids).apply(lambda length: default.ids[0] if length > 0 else std.concat(input=[
+            [__item.id for __item in default_directory],
+            [""],
+        ]).result[0])
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_user = alicloud.cloudsso.User("default",
+            directory_id=directory_id,
+            user_name=f"{name}-{default_integer['result']}")
+        default_access_configuration = alicloud.cloudsso.AccessConfiguration("default",
+            access_configuration_name=f"{name}-{default_integer['result']}",
+            directory_id=directory_id)
+        default_access_configuration_provisioning = alicloud.cloudsso.AccessConfigurationProvisioning("default",
+            directory_id=directory_id,
+            access_configuration_id=default_access_configuration.access_configuration_id,
+            target_type="RD-Account",
+            target_id=default_get_resource_directories.directories[0].master_account_id)
+        ```
 
         ## Import
 

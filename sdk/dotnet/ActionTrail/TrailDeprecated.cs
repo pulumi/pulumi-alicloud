@@ -51,14 +51,23 @@ namespace Pulumi.AliCloud.ActionTrail
     [AliCloudResourceType("alicloud:actiontrail/trailDeprecated:TrailDeprecated")]
     public partial class TrailDeprecated : global::Pulumi.CustomResource
     {
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
         /// <summary>
         /// Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
         /// </summary>
         [Output("eventRw")]
-        public Output<string?> EventRw { get; private set; } = null!;
+        public Output<string> EventRw { get; private set; } = null!;
 
         [Output("isOrganizationTrail")]
         public Output<bool?> IsOrganizationTrail { get; private set; } = null!;
+
+        [Output("maxComputeProjectArn")]
+        public Output<string?> MaxComputeProjectArn { get; private set; } = null!;
+
+        [Output("maxComputeWriteRoleArn")]
+        public Output<string> MaxComputeWriteRoleArn { get; private set; } = null!;
 
         [Output("mnsTopicArn")]
         public Output<string?> MnsTopicArn { get; private set; } = null!;
@@ -84,11 +93,14 @@ namespace Pulumi.AliCloud.ActionTrail
         [Output("ossWriteRoleArn")]
         public Output<string?> OssWriteRoleArn { get; private set; } = null!;
 
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
+
         /// <summary>
         /// The RAM role in ActionTrail permitted by the user.
         /// </summary>
         [Output("roleName")]
-        public Output<string> RoleName { get; private set; } = null!;
+        public Output<string?> RoleName { get; private set; } = null!;
 
         /// <summary>
         /// The unique ARN of the Log Service project.
@@ -168,6 +180,12 @@ namespace Pulumi.AliCloud.ActionTrail
         [Input("isOrganizationTrail")]
         public Input<bool>? IsOrganizationTrail { get; set; }
 
+        [Input("maxComputeProjectArn")]
+        public Input<string>? MaxComputeProjectArn { get; set; }
+
+        [Input("maxComputeWriteRoleArn")]
+        public Input<string>? MaxComputeWriteRoleArn { get; set; }
+
         [Input("mnsTopicArn")]
         public Input<string>? MnsTopicArn { get; set; }
 
@@ -229,6 +247,9 @@ namespace Pulumi.AliCloud.ActionTrail
 
     public sealed class TrailDeprecatedState : global::Pulumi.ResourceArgs
     {
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
         /// <summary>
         /// Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
         /// </summary>
@@ -237,6 +258,12 @@ namespace Pulumi.AliCloud.ActionTrail
 
         [Input("isOrganizationTrail")]
         public Input<bool>? IsOrganizationTrail { get; set; }
+
+        [Input("maxComputeProjectArn")]
+        public Input<string>? MaxComputeProjectArn { get; set; }
+
+        [Input("maxComputeWriteRoleArn")]
+        public Input<string>? MaxComputeWriteRoleArn { get; set; }
 
         [Input("mnsTopicArn")]
         public Input<string>? MnsTopicArn { get; set; }
@@ -261,6 +288,9 @@ namespace Pulumi.AliCloud.ActionTrail
 
         [Input("ossWriteRoleArn")]
         public Input<string>? OssWriteRoleArn { get; set; }
+
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
 
         /// <summary>
         /// The RAM role in ActionTrail permitted by the user.

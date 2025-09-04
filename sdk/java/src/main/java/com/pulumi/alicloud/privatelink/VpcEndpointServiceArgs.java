@@ -128,14 +128,14 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Service resource type, value:
+     * The service resource type. Value:
      * 
      */
     @Import(name="serviceResourceType")
     private @Nullable Output<String> serviceResourceType;
 
     /**
-     * @return Service resource type, value:
+     * @return The service resource type. Value:
      * 
      */
     public Optional<Output<String>> serviceResourceType() {
@@ -373,7 +373,7 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param serviceResourceType Service resource type, value:
+         * @param serviceResourceType The service resource type. Value:
          * 
          * @return builder
          * 
@@ -384,7 +384,7 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param serviceResourceType Service resource type, value:
+         * @param serviceResourceType The service resource type. Value:
          * 
          * @return builder
          * 

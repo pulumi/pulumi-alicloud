@@ -256,6 +256,60 @@ class KubernetesAddon(pulumi.CustomResource):
 
         Basic Usage
 
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default.zones[0].id)
+        default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
+            name_prefix=name,
+            cluster_spec="ack.pro.small",
+            worker_vswitch_ids=[default_switch.id],
+            new_nat_gateway=False,
+            pod_cidr=std.cidrsubnet(input="10.0.0.0/8",
+                newbits=8,
+                netnum=36).result,
+            service_cidr=std.cidrsubnet(input="172.16.0.0/16",
+                newbits=4,
+                netnum=7).result,
+            slb_internet_enabled=True,
+            addons=[{
+                "name": "logtail-ds",
+                "config": json.dumps({
+                    "IngressDashboardEnabled": "true",
+                }),
+                "disabled": False,
+            }])
+        # data source provides the information of available addons
+        default_get_kubernetes_addons = alicloud.cs.get_kubernetes_addons_output(cluster_id=default_managed_kubernetes.id,
+            name_regex="logtail-ds")
+        # Manage addon resource
+        logtail_ds = alicloud.cs.KubernetesAddon("logtail-ds",
+            cluster_id=default_managed_kubernetes.id,
+            name="logtail-ds",
+            version="v1.6.0.0-aliyun",
+            config=json.dumps({}))
+        ```
+        **Installing of addon**
+        When a cluster is created, some system addons and those specified at the time of cluster creation will be installed, so when an addon resource is applied:
+        * If the addon already exists in the cluster and its version is the same as the specified version, it will be skipped and will not be reinstalled.
+        * If the addon already exists in the cluster and its version is different from the specified version, the addon will be upgraded.
+        * If the addon does not exist in the cluster, it will be installed.
+
         ## Import
 
         Cluster addon can be imported by cluster id and addon name. Then write the addon.tf file according to the result of `pulumi preview`.
@@ -282,6 +336,60 @@ class KubernetesAddon(pulumi.CustomResource):
         ## Example Usage
 
         Basic Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
+            zone_id=default.zones[0].id)
+        default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
+            name_prefix=name,
+            cluster_spec="ack.pro.small",
+            worker_vswitch_ids=[default_switch.id],
+            new_nat_gateway=False,
+            pod_cidr=std.cidrsubnet(input="10.0.0.0/8",
+                newbits=8,
+                netnum=36).result,
+            service_cidr=std.cidrsubnet(input="172.16.0.0/16",
+                newbits=4,
+                netnum=7).result,
+            slb_internet_enabled=True,
+            addons=[{
+                "name": "logtail-ds",
+                "config": json.dumps({
+                    "IngressDashboardEnabled": "true",
+                }),
+                "disabled": False,
+            }])
+        # data source provides the information of available addons
+        default_get_kubernetes_addons = alicloud.cs.get_kubernetes_addons_output(cluster_id=default_managed_kubernetes.id,
+            name_regex="logtail-ds")
+        # Manage addon resource
+        logtail_ds = alicloud.cs.KubernetesAddon("logtail-ds",
+            cluster_id=default_managed_kubernetes.id,
+            name="logtail-ds",
+            version="v1.6.0.0-aliyun",
+            config=json.dumps({}))
+        ```
+        **Installing of addon**
+        When a cluster is created, some system addons and those specified at the time of cluster creation will be installed, so when an addon resource is applied:
+        * If the addon already exists in the cluster and its version is the same as the specified version, it will be skipped and will not be reinstalled.
+        * If the addon already exists in the cluster and its version is different from the specified version, the addon will be upgraded.
+        * If the addon does not exist in the cluster, it will be installed.
 
         ## Import
 

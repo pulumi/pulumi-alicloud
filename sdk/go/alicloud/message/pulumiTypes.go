@@ -13,6 +13,283 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ServiceEventRuleEndpoint struct {
+	// Message receiving terminal endpoint type
+	EndpointType *string `pulumi:"endpointType"`
+	// Message Receiving Terminal Endpoint
+	EndpointValue *string `pulumi:"endpointValue"`
+}
+
+// ServiceEventRuleEndpointInput is an input type that accepts ServiceEventRuleEndpointArgs and ServiceEventRuleEndpointOutput values.
+// You can construct a concrete instance of `ServiceEventRuleEndpointInput` via:
+//
+//	ServiceEventRuleEndpointArgs{...}
+type ServiceEventRuleEndpointInput interface {
+	pulumi.Input
+
+	ToServiceEventRuleEndpointOutput() ServiceEventRuleEndpointOutput
+	ToServiceEventRuleEndpointOutputWithContext(context.Context) ServiceEventRuleEndpointOutput
+}
+
+type ServiceEventRuleEndpointArgs struct {
+	// Message receiving terminal endpoint type
+	EndpointType pulumi.StringPtrInput `pulumi:"endpointType"`
+	// Message Receiving Terminal Endpoint
+	EndpointValue pulumi.StringPtrInput `pulumi:"endpointValue"`
+}
+
+func (ServiceEventRuleEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceEventRuleEndpoint)(nil)).Elem()
+}
+
+func (i ServiceEventRuleEndpointArgs) ToServiceEventRuleEndpointOutput() ServiceEventRuleEndpointOutput {
+	return i.ToServiceEventRuleEndpointOutputWithContext(context.Background())
+}
+
+func (i ServiceEventRuleEndpointArgs) ToServiceEventRuleEndpointOutputWithContext(ctx context.Context) ServiceEventRuleEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceEventRuleEndpointOutput)
+}
+
+func (i ServiceEventRuleEndpointArgs) ToServiceEventRuleEndpointPtrOutput() ServiceEventRuleEndpointPtrOutput {
+	return i.ToServiceEventRuleEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceEventRuleEndpointArgs) ToServiceEventRuleEndpointPtrOutputWithContext(ctx context.Context) ServiceEventRuleEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceEventRuleEndpointOutput).ToServiceEventRuleEndpointPtrOutputWithContext(ctx)
+}
+
+// ServiceEventRuleEndpointPtrInput is an input type that accepts ServiceEventRuleEndpointArgs, ServiceEventRuleEndpointPtr and ServiceEventRuleEndpointPtrOutput values.
+// You can construct a concrete instance of `ServiceEventRuleEndpointPtrInput` via:
+//
+//	        ServiceEventRuleEndpointArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceEventRuleEndpointPtrInput interface {
+	pulumi.Input
+
+	ToServiceEventRuleEndpointPtrOutput() ServiceEventRuleEndpointPtrOutput
+	ToServiceEventRuleEndpointPtrOutputWithContext(context.Context) ServiceEventRuleEndpointPtrOutput
+}
+
+type serviceEventRuleEndpointPtrType ServiceEventRuleEndpointArgs
+
+func ServiceEventRuleEndpointPtr(v *ServiceEventRuleEndpointArgs) ServiceEventRuleEndpointPtrInput {
+	return (*serviceEventRuleEndpointPtrType)(v)
+}
+
+func (*serviceEventRuleEndpointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceEventRuleEndpoint)(nil)).Elem()
+}
+
+func (i *serviceEventRuleEndpointPtrType) ToServiceEventRuleEndpointPtrOutput() ServiceEventRuleEndpointPtrOutput {
+	return i.ToServiceEventRuleEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceEventRuleEndpointPtrType) ToServiceEventRuleEndpointPtrOutputWithContext(ctx context.Context) ServiceEventRuleEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceEventRuleEndpointPtrOutput)
+}
+
+type ServiceEventRuleEndpointOutput struct{ *pulumi.OutputState }
+
+func (ServiceEventRuleEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceEventRuleEndpoint)(nil)).Elem()
+}
+
+func (o ServiceEventRuleEndpointOutput) ToServiceEventRuleEndpointOutput() ServiceEventRuleEndpointOutput {
+	return o
+}
+
+func (o ServiceEventRuleEndpointOutput) ToServiceEventRuleEndpointOutputWithContext(ctx context.Context) ServiceEventRuleEndpointOutput {
+	return o
+}
+
+func (o ServiceEventRuleEndpointOutput) ToServiceEventRuleEndpointPtrOutput() ServiceEventRuleEndpointPtrOutput {
+	return o.ToServiceEventRuleEndpointPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceEventRuleEndpointOutput) ToServiceEventRuleEndpointPtrOutputWithContext(ctx context.Context) ServiceEventRuleEndpointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceEventRuleEndpoint) *ServiceEventRuleEndpoint {
+		return &v
+	}).(ServiceEventRuleEndpointPtrOutput)
+}
+
+// Message receiving terminal endpoint type
+func (o ServiceEventRuleEndpointOutput) EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceEventRuleEndpoint) *string { return v.EndpointType }).(pulumi.StringPtrOutput)
+}
+
+// Message Receiving Terminal Endpoint
+func (o ServiceEventRuleEndpointOutput) EndpointValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceEventRuleEndpoint) *string { return v.EndpointValue }).(pulumi.StringPtrOutput)
+}
+
+type ServiceEventRuleEndpointPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceEventRuleEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceEventRuleEndpoint)(nil)).Elem()
+}
+
+func (o ServiceEventRuleEndpointPtrOutput) ToServiceEventRuleEndpointPtrOutput() ServiceEventRuleEndpointPtrOutput {
+	return o
+}
+
+func (o ServiceEventRuleEndpointPtrOutput) ToServiceEventRuleEndpointPtrOutputWithContext(ctx context.Context) ServiceEventRuleEndpointPtrOutput {
+	return o
+}
+
+func (o ServiceEventRuleEndpointPtrOutput) Elem() ServiceEventRuleEndpointOutput {
+	return o.ApplyT(func(v *ServiceEventRuleEndpoint) ServiceEventRuleEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceEventRuleEndpoint
+		return ret
+	}).(ServiceEventRuleEndpointOutput)
+}
+
+// Message receiving terminal endpoint type
+func (o ServiceEventRuleEndpointPtrOutput) EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceEventRuleEndpoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Message Receiving Terminal Endpoint
+func (o ServiceEventRuleEndpointPtrOutput) EndpointValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceEventRuleEndpoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointValue
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceEventRuleMatchRule struct {
+	// Match state. valid values: `true`, `false`.
+	MatchState *string `pulumi:"matchState"`
+	Name       *string `pulumi:"name"`
+	// Prefix matching rule.
+	Prefix *string `pulumi:"prefix"`
+	// Suffix matching rule.
+	Suffix *string `pulumi:"suffix"`
+}
+
+// ServiceEventRuleMatchRuleInput is an input type that accepts ServiceEventRuleMatchRuleArgs and ServiceEventRuleMatchRuleOutput values.
+// You can construct a concrete instance of `ServiceEventRuleMatchRuleInput` via:
+//
+//	ServiceEventRuleMatchRuleArgs{...}
+type ServiceEventRuleMatchRuleInput interface {
+	pulumi.Input
+
+	ToServiceEventRuleMatchRuleOutput() ServiceEventRuleMatchRuleOutput
+	ToServiceEventRuleMatchRuleOutputWithContext(context.Context) ServiceEventRuleMatchRuleOutput
+}
+
+type ServiceEventRuleMatchRuleArgs struct {
+	// Match state. valid values: `true`, `false`.
+	MatchState pulumi.StringPtrInput `pulumi:"matchState"`
+	Name       pulumi.StringPtrInput `pulumi:"name"`
+	// Prefix matching rule.
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+	// Suffix matching rule.
+	Suffix pulumi.StringPtrInput `pulumi:"suffix"`
+}
+
+func (ServiceEventRuleMatchRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceEventRuleMatchRule)(nil)).Elem()
+}
+
+func (i ServiceEventRuleMatchRuleArgs) ToServiceEventRuleMatchRuleOutput() ServiceEventRuleMatchRuleOutput {
+	return i.ToServiceEventRuleMatchRuleOutputWithContext(context.Background())
+}
+
+func (i ServiceEventRuleMatchRuleArgs) ToServiceEventRuleMatchRuleOutputWithContext(ctx context.Context) ServiceEventRuleMatchRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceEventRuleMatchRuleOutput)
+}
+
+// ServiceEventRuleMatchRuleArrayInput is an input type that accepts ServiceEventRuleMatchRuleArray and ServiceEventRuleMatchRuleArrayOutput values.
+// You can construct a concrete instance of `ServiceEventRuleMatchRuleArrayInput` via:
+//
+//	ServiceEventRuleMatchRuleArray{ ServiceEventRuleMatchRuleArgs{...} }
+type ServiceEventRuleMatchRuleArrayInput interface {
+	pulumi.Input
+
+	ToServiceEventRuleMatchRuleArrayOutput() ServiceEventRuleMatchRuleArrayOutput
+	ToServiceEventRuleMatchRuleArrayOutputWithContext(context.Context) ServiceEventRuleMatchRuleArrayOutput
+}
+
+type ServiceEventRuleMatchRuleArray []ServiceEventRuleMatchRuleInput
+
+func (ServiceEventRuleMatchRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceEventRuleMatchRule)(nil)).Elem()
+}
+
+func (i ServiceEventRuleMatchRuleArray) ToServiceEventRuleMatchRuleArrayOutput() ServiceEventRuleMatchRuleArrayOutput {
+	return i.ToServiceEventRuleMatchRuleArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceEventRuleMatchRuleArray) ToServiceEventRuleMatchRuleArrayOutputWithContext(ctx context.Context) ServiceEventRuleMatchRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceEventRuleMatchRuleArrayOutput)
+}
+
+type ServiceEventRuleMatchRuleOutput struct{ *pulumi.OutputState }
+
+func (ServiceEventRuleMatchRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceEventRuleMatchRule)(nil)).Elem()
+}
+
+func (o ServiceEventRuleMatchRuleOutput) ToServiceEventRuleMatchRuleOutput() ServiceEventRuleMatchRuleOutput {
+	return o
+}
+
+func (o ServiceEventRuleMatchRuleOutput) ToServiceEventRuleMatchRuleOutputWithContext(ctx context.Context) ServiceEventRuleMatchRuleOutput {
+	return o
+}
+
+// Match state. valid values: `true`, `false`.
+func (o ServiceEventRuleMatchRuleOutput) MatchState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceEventRuleMatchRule) *string { return v.MatchState }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceEventRuleMatchRuleOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceEventRuleMatchRule) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Prefix matching rule.
+func (o ServiceEventRuleMatchRuleOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceEventRuleMatchRule) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+// Suffix matching rule.
+func (o ServiceEventRuleMatchRuleOutput) Suffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceEventRuleMatchRule) *string { return v.Suffix }).(pulumi.StringPtrOutput)
+}
+
+type ServiceEventRuleMatchRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceEventRuleMatchRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceEventRuleMatchRule)(nil)).Elem()
+}
+
+func (o ServiceEventRuleMatchRuleArrayOutput) ToServiceEventRuleMatchRuleArrayOutput() ServiceEventRuleMatchRuleArrayOutput {
+	return o
+}
+
+func (o ServiceEventRuleMatchRuleArrayOutput) ToServiceEventRuleMatchRuleArrayOutputWithContext(ctx context.Context) ServiceEventRuleMatchRuleArrayOutput {
+	return o
+}
+
+func (o ServiceEventRuleMatchRuleArrayOutput) Index(i pulumi.IntInput) ServiceEventRuleMatchRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceEventRuleMatchRule {
+		return vs[0].([]ServiceEventRuleMatchRule)[vs[1].(int)]
+	}).(ServiceEventRuleMatchRuleOutput)
+}
+
 type ServiceQueueDlqPolicy struct {
 	// The queue to which dead-letter messages are delivered.
 	DeadLetterTargetQueue *string `pulumi:"deadLetterTargetQueue"`
@@ -932,7 +1209,56 @@ func (o GetServiceTopicsTopicArrayOutput) Index(i pulumi.IntInput) GetServiceTop
 	}).(GetServiceTopicsTopicOutput)
 }
 
+type ServiceEventRuleMatchRuleArrayArray []ServiceEventRuleMatchRuleArrayInput
+
+func (ServiceEventRuleMatchRuleArrayArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[][]ServiceEventRuleMatchRule)(nil)).Elem()
+}
+
+func (i ServiceEventRuleMatchRuleArrayArray) ToServiceEventRuleMatchRuleArrayArrayOutput() ServiceEventRuleMatchRuleArrayArrayOutput {
+	return i.ToServiceEventRuleMatchRuleArrayArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceEventRuleMatchRuleArrayArray) ToServiceEventRuleMatchRuleArrayArrayOutputWithContext(ctx context.Context) ServiceEventRuleMatchRuleArrayArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceEventRuleMatchRuleArrayArrayOutput)
+}
+
+// ServiceEventRuleMatchRuleArrayArrayInput is an input type that accepts ServiceEventRuleMatchRuleArrayArray and ServiceEventRuleMatchRuleArrayArrayOutput values.
+// You can construct a concrete instance of `ServiceEventRuleMatchRuleArrayArrayInput` via:
+//
+//	ServiceEventRuleMatchRuleArrayArray{ ServiceEventRuleMatchRuleArray{ ServiceEventRuleMatchRuleArgs{...} } }
+type ServiceEventRuleMatchRuleArrayArrayInput interface {
+	pulumi.Input
+
+	ToServiceEventRuleMatchRuleArrayArrayOutput() ServiceEventRuleMatchRuleArrayArrayOutput
+	ToServiceEventRuleMatchRuleArrayArrayOutputWithContext(context.Context) ServiceEventRuleMatchRuleArrayArrayOutput
+}
+
+type ServiceEventRuleMatchRuleArrayArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceEventRuleMatchRuleArrayArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[][]ServiceEventRuleMatchRule)(nil)).Elem()
+}
+
+func (o ServiceEventRuleMatchRuleArrayArrayOutput) ToServiceEventRuleMatchRuleArrayArrayOutput() ServiceEventRuleMatchRuleArrayArrayOutput {
+	return o
+}
+
+func (o ServiceEventRuleMatchRuleArrayArrayOutput) ToServiceEventRuleMatchRuleArrayArrayOutputWithContext(ctx context.Context) ServiceEventRuleMatchRuleArrayArrayOutput {
+	return o
+}
+
+func (o ServiceEventRuleMatchRuleArrayArrayOutput) Index(i pulumi.IntInput) ServiceEventRuleMatchRuleArrayOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) []ServiceEventRuleMatchRule {
+		return vs[0].([][]ServiceEventRuleMatchRule)[vs[1].(int)]
+	}).(ServiceEventRuleMatchRuleArrayOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceEventRuleEndpointInput)(nil)).Elem(), ServiceEventRuleEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceEventRuleEndpointPtrInput)(nil)).Elem(), ServiceEventRuleEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceEventRuleMatchRuleInput)(nil)).Elem(), ServiceEventRuleMatchRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceEventRuleMatchRuleArrayInput)(nil)).Elem(), ServiceEventRuleMatchRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceQueueDlqPolicyInput)(nil)).Elem(), ServiceQueueDlqPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceQueueDlqPolicyPtrInput)(nil)).Elem(), ServiceQueueDlqPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceSubscriptionDlqPolicyInput)(nil)).Elem(), ServiceSubscriptionDlqPolicyArgs{})
@@ -943,6 +1269,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceSubscriptionsSubscriptionArrayInput)(nil)).Elem(), GetServiceSubscriptionsSubscriptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTopicsTopicInput)(nil)).Elem(), GetServiceTopicsTopicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTopicsTopicArrayInput)(nil)).Elem(), GetServiceTopicsTopicArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceEventRuleMatchRuleArrayArrayInput)(nil)).Elem(), ServiceEventRuleMatchRuleArrayArray{})
+	pulumi.RegisterOutputType(ServiceEventRuleEndpointOutput{})
+	pulumi.RegisterOutputType(ServiceEventRuleEndpointPtrOutput{})
+	pulumi.RegisterOutputType(ServiceEventRuleMatchRuleOutput{})
+	pulumi.RegisterOutputType(ServiceEventRuleMatchRuleArrayOutput{})
 	pulumi.RegisterOutputType(ServiceQueueDlqPolicyOutput{})
 	pulumi.RegisterOutputType(ServiceQueueDlqPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ServiceSubscriptionDlqPolicyOutput{})
@@ -953,4 +1284,5 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceSubscriptionsSubscriptionArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTopicsTopicOutput{})
 	pulumi.RegisterOutputType(GetServiceTopicsTopicArrayOutput{})
+	pulumi.RegisterOutputType(ServiceEventRuleMatchRuleArrayArrayOutput{})
 }

@@ -722,8 +722,8 @@ public final class RamFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.random.integer;
-     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
      * import com.pulumi.alicloud.ram.Group;
      * import com.pulumi.alicloud.ram.GroupArgs;
      * import com.pulumi.alicloud.ram.Policy;
@@ -759,20 +759,20 @@ public final class RamFunctions {
      *             .policyName(String.format("tf-example-%s", default_.result()))
      *             .policyDocument("""
      *     {
-     *       "Statement": [
+     *       \"Statement\": [
      *         {
-     *           "Action": [
-     *             "oss:ListObjects",
-     *             "oss:GetObject"
+     *           \"Action\": [
+     *             \"oss:ListObjects\",
+     *             \"oss:GetObject\"
      *           ],
-     *           "Effect": "Allow",
-     *           "Resource": [
-     *             "acs:oss:*:*:mybucket",
-     *             "acs:oss:*:*:mybucket/*"
+     *           \"Effect\": \"Allow\",
+     *           \"Resource\": [
+     *             \"acs:oss:*:*:mybucket\",
+     *             \"acs:oss:*:*:mybucket/*\"
      *           ]
      *         }
      *       ],
-     *         "Version": "1"
+     *         \"Version\": \"1\"
      *     }
      *             """)
      *             .description("this is a policy test")
@@ -815,8 +815,8 @@ public final class RamFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.random.integer;
-     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
      * import com.pulumi.alicloud.ram.Group;
      * import com.pulumi.alicloud.ram.GroupArgs;
      * import com.pulumi.alicloud.ram.Policy;
@@ -852,20 +852,20 @@ public final class RamFunctions {
      *             .policyName(String.format("tf-example-%s", default_.result()))
      *             .policyDocument("""
      *     {
-     *       "Statement": [
+     *       \"Statement\": [
      *         {
-     *           "Action": [
-     *             "oss:ListObjects",
-     *             "oss:GetObject"
+     *           \"Action\": [
+     *             \"oss:ListObjects\",
+     *             \"oss:GetObject\"
      *           ],
-     *           "Effect": "Allow",
-     *           "Resource": [
-     *             "acs:oss:*:*:mybucket",
-     *             "acs:oss:*:*:mybucket/*"
+     *           \"Effect\": \"Allow\",
+     *           \"Resource\": [
+     *             \"acs:oss:*:*:mybucket\",
+     *             \"acs:oss:*:*:mybucket/*\"
      *           ]
      *         }
      *       ],
-     *         "Version": "1"
+     *         \"Version\": \"1\"
      *     }
      *             """)
      *             .description("this is a policy test")
@@ -908,8 +908,8 @@ public final class RamFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.random.integer;
-     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
      * import com.pulumi.alicloud.ram.Group;
      * import com.pulumi.alicloud.ram.GroupArgs;
      * import com.pulumi.alicloud.ram.Policy;
@@ -945,20 +945,20 @@ public final class RamFunctions {
      *             .policyName(String.format("tf-example-%s", default_.result()))
      *             .policyDocument("""
      *     {
-     *       "Statement": [
+     *       \"Statement\": [
      *         {
-     *           "Action": [
-     *             "oss:ListObjects",
-     *             "oss:GetObject"
+     *           \"Action\": [
+     *             \"oss:ListObjects\",
+     *             \"oss:GetObject\"
      *           ],
-     *           "Effect": "Allow",
-     *           "Resource": [
-     *             "acs:oss:*:*:mybucket",
-     *             "acs:oss:*:*:mybucket/*"
+     *           \"Effect\": \"Allow\",
+     *           \"Resource\": [
+     *             \"acs:oss:*:*:mybucket\",
+     *             \"acs:oss:*:*:mybucket/*\"
      *           ]
      *         }
      *       ],
-     *         "Version": "1"
+     *         \"Version\": \"1\"
      *     }
      *             """)
      *             .description("this is a policy test")
@@ -1001,8 +1001,8 @@ public final class RamFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.random.integer;
-     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
      * import com.pulumi.alicloud.ram.Group;
      * import com.pulumi.alicloud.ram.GroupArgs;
      * import com.pulumi.alicloud.ram.Policy;
@@ -1038,20 +1038,20 @@ public final class RamFunctions {
      *             .policyName(String.format("tf-example-%s", default_.result()))
      *             .policyDocument("""
      *     {
-     *       "Statement": [
+     *       \"Statement\": [
      *         {
-     *           "Action": [
-     *             "oss:ListObjects",
-     *             "oss:GetObject"
+     *           \"Action\": [
+     *             \"oss:ListObjects\",
+     *             \"oss:GetObject\"
      *           ],
-     *           "Effect": "Allow",
-     *           "Resource": [
-     *             "acs:oss:*:*:mybucket",
-     *             "acs:oss:*:*:mybucket/*"
+     *           \"Effect\": \"Allow\",
+     *           \"Resource\": [
+     *             \"acs:oss:*:*:mybucket\",
+     *             \"acs:oss:*:*:mybucket/*\"
      *           ]
      *         }
      *       ],
-     *         "Version": "1"
+     *         \"Version\": \"1\"
      *     }
      *             """)
      *             .description("this is a policy test")
@@ -1094,8 +1094,8 @@ public final class RamFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.random.integer;
-     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
      * import com.pulumi.alicloud.ram.Group;
      * import com.pulumi.alicloud.ram.GroupArgs;
      * import com.pulumi.alicloud.ram.Policy;
@@ -1131,20 +1131,20 @@ public final class RamFunctions {
      *             .policyName(String.format("tf-example-%s", default_.result()))
      *             .policyDocument("""
      *     {
-     *       "Statement": [
+     *       \"Statement\": [
      *         {
-     *           "Action": [
-     *             "oss:ListObjects",
-     *             "oss:GetObject"
+     *           \"Action\": [
+     *             \"oss:ListObjects\",
+     *             \"oss:GetObject\"
      *           ],
-     *           "Effect": "Allow",
-     *           "Resource": [
-     *             "acs:oss:*:*:mybucket",
-     *             "acs:oss:*:*:mybucket/*"
+     *           \"Effect\": \"Allow\",
+     *           \"Resource\": [
+     *             \"acs:oss:*:*:mybucket\",
+     *             \"acs:oss:*:*:mybucket/*\"
      *           ]
      *         }
      *       ],
-     *         "Version": "1"
+     *         \"Version\": \"1\"
      *     }
      *             """)
      *             .description("this is a policy test")
@@ -1187,8 +1187,8 @@ public final class RamFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.random.integer;
-     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
      * import com.pulumi.alicloud.ram.Group;
      * import com.pulumi.alicloud.ram.GroupArgs;
      * import com.pulumi.alicloud.ram.Policy;
@@ -1224,20 +1224,20 @@ public final class RamFunctions {
      *             .policyName(String.format("tf-example-%s", default_.result()))
      *             .policyDocument("""
      *     {
-     *       "Statement": [
+     *       \"Statement\": [
      *         {
-     *           "Action": [
-     *             "oss:ListObjects",
-     *             "oss:GetObject"
+     *           \"Action\": [
+     *             \"oss:ListObjects\",
+     *             \"oss:GetObject\"
      *           ],
-     *           "Effect": "Allow",
-     *           "Resource": [
-     *             "acs:oss:*:*:mybucket",
-     *             "acs:oss:*:*:mybucket/*"
+     *           \"Effect\": \"Allow\",
+     *           \"Resource\": [
+     *             \"acs:oss:*:*:mybucket\",
+     *             \"acs:oss:*:*:mybucket/*\"
      *           ]
      *         }
      *       ],
-     *         "Version": "1"
+     *         \"Version\": \"1\"
      *     }
      *             """)
      *             .description("this is a policy test")
@@ -1280,8 +1280,8 @@ public final class RamFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.random.integer;
-     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
      * import com.pulumi.alicloud.ram.Group;
      * import com.pulumi.alicloud.ram.GroupArgs;
      * import com.pulumi.alicloud.ram.Policy;
@@ -1317,20 +1317,20 @@ public final class RamFunctions {
      *             .policyName(String.format("tf-example-%s", default_.result()))
      *             .policyDocument("""
      *     {
-     *       "Statement": [
+     *       \"Statement\": [
      *         {
-     *           "Action": [
-     *             "oss:ListObjects",
-     *             "oss:GetObject"
+     *           \"Action\": [
+     *             \"oss:ListObjects\",
+     *             \"oss:GetObject\"
      *           ],
-     *           "Effect": "Allow",
-     *           "Resource": [
-     *             "acs:oss:*:*:mybucket",
-     *             "acs:oss:*:*:mybucket/*"
+     *           \"Effect\": \"Allow\",
+     *           \"Resource\": [
+     *             \"acs:oss:*:*:mybucket\",
+     *             \"acs:oss:*:*:mybucket/*\"
      *           ]
      *         }
      *       ],
-     *         "Version": "1"
+     *         \"Version\": \"1\"
      *     }
      *             """)
      *             .description("this is a policy test")
@@ -1361,7 +1361,7 @@ public final class RamFunctions {
     /**
      * This data source Generates a RAM policy document of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available since v1.184.0+.
+     * &gt; **NOTE:** Available since v1.184.0.
      * 
      * ## Example Usage
      * 
@@ -1667,7 +1667,7 @@ public final class RamFunctions {
     /**
      * This data source Generates a RAM policy document of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available since v1.184.0+.
+     * &gt; **NOTE:** Available since v1.184.0.
      * 
      * ## Example Usage
      * 
@@ -1973,7 +1973,7 @@ public final class RamFunctions {
     /**
      * This data source Generates a RAM policy document of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available since v1.184.0+.
+     * &gt; **NOTE:** Available since v1.184.0.
      * 
      * ## Example Usage
      * 
@@ -2279,7 +2279,7 @@ public final class RamFunctions {
     /**
      * This data source Generates a RAM policy document of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available since v1.184.0+.
+     * &gt; **NOTE:** Available since v1.184.0.
      * 
      * ## Example Usage
      * 
@@ -2585,7 +2585,7 @@ public final class RamFunctions {
     /**
      * This data source Generates a RAM policy document of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available since v1.184.0+.
+     * &gt; **NOTE:** Available since v1.184.0.
      * 
      * ## Example Usage
      * 
@@ -2891,7 +2891,7 @@ public final class RamFunctions {
     /**
      * This data source Generates a RAM policy document of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available since v1.184.0+.
+     * &gt; **NOTE:** Available since v1.184.0.
      * 
      * ## Example Usage
      * 
@@ -3197,7 +3197,7 @@ public final class RamFunctions {
     /**
      * This data source Generates a RAM policy document of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available since v1.184.0+.
+     * &gt; **NOTE:** Available since v1.184.0.
      * 
      * ## Example Usage
      * 
@@ -3517,8 +3517,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
-     * import com.pulumi.random.integer;
-     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
      * import com.pulumi.alicloud.ram.RolePolicyAttachment;
@@ -3544,19 +3544,19 @@ public final class RamFunctions {
      *             .name("roleName")
      *             .document("""
      *     {
-     *       "Statement": [
+     *       \"Statement\": [
      *         {
-     *           "Action": "sts:AssumeRole",
-     *           "Effect": "Allow",
-     *           "Principal": {
-     *             "Service": [
-     *               "apigateway.aliyuncs.com", 
-     *               "ecs.aliyuncs.com"
+     *           \"Action\": \"sts:AssumeRole\",
+     *           \"Effect\": \"Allow\",
+     *           \"Principal\": {
+     *             \"Service\": [
+     *               \"apigateway.aliyuncs.com\", 
+     *               \"ecs.aliyuncs.com\"
      *             ]
      *           }
      *         }
      *       ],
-     *       "Version": "1"
+     *       \"Version\": \"1\"
      *     }
      *             """)
      *             .description("this is a role test.")
@@ -3571,20 +3571,20 @@ public final class RamFunctions {
      *             .policyName(String.format("tf-example-%s", defaultInteger.result()))
      *             .policyDocument("""
      *   {
-     *     "Statement": [
+     *     \"Statement\": [
      *       {
-     *         "Action": [
-     *           "oss:ListObjects",
-     *           "oss:GetObject"
+     *         \"Action\": [
+     *           \"oss:ListObjects\",
+     *           \"oss:GetObject\"
      *         ],
-     *         "Effect": "Allow",
-     *         "Resource": [
-     *           "acs:oss:*:*:mybucket",
-     *           "acs:oss:*:*:mybucket/*"
+     *         \"Effect\": \"Allow\",
+     *         \"Resource\": [
+     *           \"acs:oss:*:*:mybucket\",
+     *           \"acs:oss:*:*:mybucket/*\"
      *         ]
      *       }
      *     ],
-     *       "Version": "1"
+     *       \"Version\": \"1\"
      *   }
      *             """)
      *             .description("this is a policy test")
@@ -3629,8 +3629,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
-     * import com.pulumi.random.integer;
-     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
      * import com.pulumi.alicloud.ram.RolePolicyAttachment;
@@ -3656,19 +3656,19 @@ public final class RamFunctions {
      *             .name("roleName")
      *             .document("""
      *     {
-     *       "Statement": [
+     *       \"Statement\": [
      *         {
-     *           "Action": "sts:AssumeRole",
-     *           "Effect": "Allow",
-     *           "Principal": {
-     *             "Service": [
-     *               "apigateway.aliyuncs.com", 
-     *               "ecs.aliyuncs.com"
+     *           \"Action\": \"sts:AssumeRole\",
+     *           \"Effect\": \"Allow\",
+     *           \"Principal\": {
+     *             \"Service\": [
+     *               \"apigateway.aliyuncs.com\", 
+     *               \"ecs.aliyuncs.com\"
      *             ]
      *           }
      *         }
      *       ],
-     *       "Version": "1"
+     *       \"Version\": \"1\"
      *     }
      *             """)
      *             .description("this is a role test.")
@@ -3683,20 +3683,20 @@ public final class RamFunctions {
      *             .policyName(String.format("tf-example-%s", defaultInteger.result()))
      *             .policyDocument("""
      *   {
-     *     "Statement": [
+     *     \"Statement\": [
      *       {
-     *         "Action": [
-     *           "oss:ListObjects",
-     *           "oss:GetObject"
+     *         \"Action\": [
+     *           \"oss:ListObjects\",
+     *           \"oss:GetObject\"
      *         ],
-     *         "Effect": "Allow",
-     *         "Resource": [
-     *           "acs:oss:*:*:mybucket",
-     *           "acs:oss:*:*:mybucket/*"
+     *         \"Effect\": \"Allow\",
+     *         \"Resource\": [
+     *           \"acs:oss:*:*:mybucket\",
+     *           \"acs:oss:*:*:mybucket/*\"
      *         ]
      *       }
      *     ],
-     *       "Version": "1"
+     *       \"Version\": \"1\"
      *   }
      *             """)
      *             .description("this is a policy test")
@@ -3741,8 +3741,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
-     * import com.pulumi.random.integer;
-     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
      * import com.pulumi.alicloud.ram.RolePolicyAttachment;
@@ -3768,19 +3768,19 @@ public final class RamFunctions {
      *             .name("roleName")
      *             .document("""
      *     {
-     *       "Statement": [
+     *       \"Statement\": [
      *         {
-     *           "Action": "sts:AssumeRole",
-     *           "Effect": "Allow",
-     *           "Principal": {
-     *             "Service": [
-     *               "apigateway.aliyuncs.com", 
-     *               "ecs.aliyuncs.com"
+     *           \"Action\": \"sts:AssumeRole\",
+     *           \"Effect\": \"Allow\",
+     *           \"Principal\": {
+     *             \"Service\": [
+     *               \"apigateway.aliyuncs.com\", 
+     *               \"ecs.aliyuncs.com\"
      *             ]
      *           }
      *         }
      *       ],
-     *       "Version": "1"
+     *       \"Version\": \"1\"
      *     }
      *             """)
      *             .description("this is a role test.")
@@ -3795,20 +3795,20 @@ public final class RamFunctions {
      *             .policyName(String.format("tf-example-%s", defaultInteger.result()))
      *             .policyDocument("""
      *   {
-     *     "Statement": [
+     *     \"Statement\": [
      *       {
-     *         "Action": [
-     *           "oss:ListObjects",
-     *           "oss:GetObject"
+     *         \"Action\": [
+     *           \"oss:ListObjects\",
+     *           \"oss:GetObject\"
      *         ],
-     *         "Effect": "Allow",
-     *         "Resource": [
-     *           "acs:oss:*:*:mybucket",
-     *           "acs:oss:*:*:mybucket/*"
+     *         \"Effect\": \"Allow\",
+     *         \"Resource\": [
+     *           \"acs:oss:*:*:mybucket\",
+     *           \"acs:oss:*:*:mybucket/*\"
      *         ]
      *       }
      *     ],
-     *       "Version": "1"
+     *       \"Version\": \"1\"
      *   }
      *             """)
      *             .description("this is a policy test")
@@ -3853,8 +3853,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
-     * import com.pulumi.random.integer;
-     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
      * import com.pulumi.alicloud.ram.RolePolicyAttachment;
@@ -3880,19 +3880,19 @@ public final class RamFunctions {
      *             .name("roleName")
      *             .document("""
      *     {
-     *       "Statement": [
+     *       \"Statement\": [
      *         {
-     *           "Action": "sts:AssumeRole",
-     *           "Effect": "Allow",
-     *           "Principal": {
-     *             "Service": [
-     *               "apigateway.aliyuncs.com", 
-     *               "ecs.aliyuncs.com"
+     *           \"Action\": \"sts:AssumeRole\",
+     *           \"Effect\": \"Allow\",
+     *           \"Principal\": {
+     *             \"Service\": [
+     *               \"apigateway.aliyuncs.com\", 
+     *               \"ecs.aliyuncs.com\"
      *             ]
      *           }
      *         }
      *       ],
-     *       "Version": "1"
+     *       \"Version\": \"1\"
      *     }
      *             """)
      *             .description("this is a role test.")
@@ -3907,20 +3907,20 @@ public final class RamFunctions {
      *             .policyName(String.format("tf-example-%s", defaultInteger.result()))
      *             .policyDocument("""
      *   {
-     *     "Statement": [
+     *     \"Statement\": [
      *       {
-     *         "Action": [
-     *           "oss:ListObjects",
-     *           "oss:GetObject"
+     *         \"Action\": [
+     *           \"oss:ListObjects\",
+     *           \"oss:GetObject\"
      *         ],
-     *         "Effect": "Allow",
-     *         "Resource": [
-     *           "acs:oss:*:*:mybucket",
-     *           "acs:oss:*:*:mybucket/*"
+     *         \"Effect\": \"Allow\",
+     *         \"Resource\": [
+     *           \"acs:oss:*:*:mybucket\",
+     *           \"acs:oss:*:*:mybucket/*\"
      *         ]
      *       }
      *     ],
-     *       "Version": "1"
+     *       \"Version\": \"1\"
      *   }
      *             """)
      *             .description("this is a policy test")
@@ -3965,8 +3965,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
-     * import com.pulumi.random.integer;
-     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
      * import com.pulumi.alicloud.ram.RolePolicyAttachment;
@@ -3992,19 +3992,19 @@ public final class RamFunctions {
      *             .name("roleName")
      *             .document("""
      *     {
-     *       "Statement": [
+     *       \"Statement\": [
      *         {
-     *           "Action": "sts:AssumeRole",
-     *           "Effect": "Allow",
-     *           "Principal": {
-     *             "Service": [
-     *               "apigateway.aliyuncs.com", 
-     *               "ecs.aliyuncs.com"
+     *           \"Action\": \"sts:AssumeRole\",
+     *           \"Effect\": \"Allow\",
+     *           \"Principal\": {
+     *             \"Service\": [
+     *               \"apigateway.aliyuncs.com\", 
+     *               \"ecs.aliyuncs.com\"
      *             ]
      *           }
      *         }
      *       ],
-     *       "Version": "1"
+     *       \"Version\": \"1\"
      *     }
      *             """)
      *             .description("this is a role test.")
@@ -4019,20 +4019,20 @@ public final class RamFunctions {
      *             .policyName(String.format("tf-example-%s", defaultInteger.result()))
      *             .policyDocument("""
      *   {
-     *     "Statement": [
+     *     \"Statement\": [
      *       {
-     *         "Action": [
-     *           "oss:ListObjects",
-     *           "oss:GetObject"
+     *         \"Action\": [
+     *           \"oss:ListObjects\",
+     *           \"oss:GetObject\"
      *         ],
-     *         "Effect": "Allow",
-     *         "Resource": [
-     *           "acs:oss:*:*:mybucket",
-     *           "acs:oss:*:*:mybucket/*"
+     *         \"Effect\": \"Allow\",
+     *         \"Resource\": [
+     *           \"acs:oss:*:*:mybucket\",
+     *           \"acs:oss:*:*:mybucket/*\"
      *         ]
      *       }
      *     ],
-     *       "Version": "1"
+     *       \"Version\": \"1\"
      *   }
      *             """)
      *             .description("this is a policy test")
@@ -5123,22 +5123,22 @@ public final class RamFunctions {
      *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
      *             .policyName("ram-policy-example")
      *             .policyDocument("""
-     * 			}{{@code
-     * 				"Statement": [
-     * 				 }{{@code
-     * 					"Action": [
-     * 					"oss:ListObjects",
-     * 					"oss:ListObjects"
-     * 			  		],
-     * 			  		"Effect": "Deny",
-     * 			  		"Resource": [
-     * 						"acs:oss:*:*:mybucket",
-     * 						"acs:oss:*:*:mybucket/*"
-     * 			  		]
-     * 				 }}{@code
-     * 		  		],
-     * 				"Version": "1"
-     * 			}}{@code
+     * \t\t\t}{{@code
+     * \t\t\t\t\"Statement\": [
+     * \t\t\t\t }{{@code
+     * \t\t\t\t\t\"Action\": [
+     * \t\t\t\t\t\"oss:ListObjects\",
+     * \t\t\t\t\t\"oss:ListObjects\"
+     * \t\t\t  \t\t],
+     * \t\t\t  \t\t\"Effect\": \"Deny\",
+     * \t\t\t  \t\t\"Resource\": [
+     * \t\t\t\t\t\t\"acs:oss:*:*:mybucket\",
+     * \t\t\t\t\t\t\"acs:oss:*:*:mybucket/*\"
+     * \t\t\t  \t\t]
+     * \t\t\t\t }}{@code
+     * \t\t  \t\t],
+     * \t\t\t\t\"Version\": \"1\"
+     * \t\t\t}}{@code
      *             """)
      *             .description("this is a policy example")
      *             .force(true)
@@ -5231,22 +5231,22 @@ public final class RamFunctions {
      *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
      *             .policyName("ram-policy-example")
      *             .policyDocument("""
-     * 			}{{@code
-     * 				"Statement": [
-     * 				 }{{@code
-     * 					"Action": [
-     * 					"oss:ListObjects",
-     * 					"oss:ListObjects"
-     * 			  		],
-     * 			  		"Effect": "Deny",
-     * 			  		"Resource": [
-     * 						"acs:oss:*:*:mybucket",
-     * 						"acs:oss:*:*:mybucket/*"
-     * 			  		]
-     * 				 }}{@code
-     * 		  		],
-     * 				"Version": "1"
-     * 			}}{@code
+     * \t\t\t}{{@code
+     * \t\t\t\t\"Statement\": [
+     * \t\t\t\t }{{@code
+     * \t\t\t\t\t\"Action\": [
+     * \t\t\t\t\t\"oss:ListObjects\",
+     * \t\t\t\t\t\"oss:ListObjects\"
+     * \t\t\t  \t\t],
+     * \t\t\t  \t\t\"Effect\": \"Deny\",
+     * \t\t\t  \t\t\"Resource\": [
+     * \t\t\t\t\t\t\"acs:oss:*:*:mybucket\",
+     * \t\t\t\t\t\t\"acs:oss:*:*:mybucket/*\"
+     * \t\t\t  \t\t]
+     * \t\t\t\t }}{@code
+     * \t\t  \t\t],
+     * \t\t\t\t\"Version\": \"1\"
+     * \t\t\t}}{@code
      *             """)
      *             .description("this is a policy example")
      *             .force(true)
@@ -5339,22 +5339,22 @@ public final class RamFunctions {
      *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
      *             .policyName("ram-policy-example")
      *             .policyDocument("""
-     * 			}{{@code
-     * 				"Statement": [
-     * 				 }{{@code
-     * 					"Action": [
-     * 					"oss:ListObjects",
-     * 					"oss:ListObjects"
-     * 			  		],
-     * 			  		"Effect": "Deny",
-     * 			  		"Resource": [
-     * 						"acs:oss:*:*:mybucket",
-     * 						"acs:oss:*:*:mybucket/*"
-     * 			  		]
-     * 				 }}{@code
-     * 		  		],
-     * 				"Version": "1"
-     * 			}}{@code
+     * \t\t\t}{{@code
+     * \t\t\t\t\"Statement\": [
+     * \t\t\t\t }{{@code
+     * \t\t\t\t\t\"Action\": [
+     * \t\t\t\t\t\"oss:ListObjects\",
+     * \t\t\t\t\t\"oss:ListObjects\"
+     * \t\t\t  \t\t],
+     * \t\t\t  \t\t\"Effect\": \"Deny\",
+     * \t\t\t  \t\t\"Resource\": [
+     * \t\t\t\t\t\t\"acs:oss:*:*:mybucket\",
+     * \t\t\t\t\t\t\"acs:oss:*:*:mybucket/*\"
+     * \t\t\t  \t\t]
+     * \t\t\t\t }}{@code
+     * \t\t  \t\t],
+     * \t\t\t\t\"Version\": \"1\"
+     * \t\t\t}}{@code
      *             """)
      *             .description("this is a policy example")
      *             .force(true)
@@ -5447,22 +5447,22 @@ public final class RamFunctions {
      *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
      *             .policyName("ram-policy-example")
      *             .policyDocument("""
-     * 			}{{@code
-     * 				"Statement": [
-     * 				 }{{@code
-     * 					"Action": [
-     * 					"oss:ListObjects",
-     * 					"oss:ListObjects"
-     * 			  		],
-     * 			  		"Effect": "Deny",
-     * 			  		"Resource": [
-     * 						"acs:oss:*:*:mybucket",
-     * 						"acs:oss:*:*:mybucket/*"
-     * 			  		]
-     * 				 }}{@code
-     * 		  		],
-     * 				"Version": "1"
-     * 			}}{@code
+     * \t\t\t}{{@code
+     * \t\t\t\t\"Statement\": [
+     * \t\t\t\t }{{@code
+     * \t\t\t\t\t\"Action\": [
+     * \t\t\t\t\t\"oss:ListObjects\",
+     * \t\t\t\t\t\"oss:ListObjects\"
+     * \t\t\t  \t\t],
+     * \t\t\t  \t\t\"Effect\": \"Deny\",
+     * \t\t\t  \t\t\"Resource\": [
+     * \t\t\t\t\t\t\"acs:oss:*:*:mybucket\",
+     * \t\t\t\t\t\t\"acs:oss:*:*:mybucket/*\"
+     * \t\t\t  \t\t]
+     * \t\t\t\t }}{@code
+     * \t\t  \t\t],
+     * \t\t\t\t\"Version\": \"1\"
+     * \t\t\t}}{@code
      *             """)
      *             .description("this is a policy example")
      *             .force(true)
@@ -5555,22 +5555,22 @@ public final class RamFunctions {
      *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
      *             .policyName("ram-policy-example")
      *             .policyDocument("""
-     * 			}{{@code
-     * 				"Statement": [
-     * 				 }{{@code
-     * 					"Action": [
-     * 					"oss:ListObjects",
-     * 					"oss:ListObjects"
-     * 			  		],
-     * 			  		"Effect": "Deny",
-     * 			  		"Resource": [
-     * 						"acs:oss:*:*:mybucket",
-     * 						"acs:oss:*:*:mybucket/*"
-     * 			  		]
-     * 				 }}{@code
-     * 		  		],
-     * 				"Version": "1"
-     * 			}}{@code
+     * \t\t\t}{{@code
+     * \t\t\t\t\"Statement\": [
+     * \t\t\t\t }{{@code
+     * \t\t\t\t\t\"Action\": [
+     * \t\t\t\t\t\"oss:ListObjects\",
+     * \t\t\t\t\t\"oss:ListObjects\"
+     * \t\t\t  \t\t],
+     * \t\t\t  \t\t\"Effect\": \"Deny\",
+     * \t\t\t  \t\t\"Resource\": [
+     * \t\t\t\t\t\t\"acs:oss:*:*:mybucket\",
+     * \t\t\t\t\t\t\"acs:oss:*:*:mybucket/*\"
+     * \t\t\t  \t\t]
+     * \t\t\t\t }}{@code
+     * \t\t  \t\t],
+     * \t\t\t\t\"Version\": \"1\"
+     * \t\t\t}}{@code
      *             """)
      *             .description("this is a policy example")
      *             .force(true)
@@ -5663,22 +5663,22 @@ public final class RamFunctions {
      *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
      *             .policyName("ram-policy-example")
      *             .policyDocument("""
-     * 			}{{@code
-     * 				"Statement": [
-     * 				 }{{@code
-     * 					"Action": [
-     * 					"oss:ListObjects",
-     * 					"oss:ListObjects"
-     * 			  		],
-     * 			  		"Effect": "Deny",
-     * 			  		"Resource": [
-     * 						"acs:oss:*:*:mybucket",
-     * 						"acs:oss:*:*:mybucket/*"
-     * 			  		]
-     * 				 }}{@code
-     * 		  		],
-     * 				"Version": "1"
-     * 			}}{@code
+     * \t\t\t}{{@code
+     * \t\t\t\t\"Statement\": [
+     * \t\t\t\t }{{@code
+     * \t\t\t\t\t\"Action\": [
+     * \t\t\t\t\t\"oss:ListObjects\",
+     * \t\t\t\t\t\"oss:ListObjects\"
+     * \t\t\t  \t\t],
+     * \t\t\t  \t\t\"Effect\": \"Deny\",
+     * \t\t\t  \t\t\"Resource\": [
+     * \t\t\t\t\t\t\"acs:oss:*:*:mybucket\",
+     * \t\t\t\t\t\t\"acs:oss:*:*:mybucket/*\"
+     * \t\t\t  \t\t]
+     * \t\t\t\t }}{@code
+     * \t\t  \t\t],
+     * \t\t\t\t\"Version\": \"1\"
+     * \t\t\t}}{@code
      *             """)
      *             .description("this is a policy example")
      *             .force(true)
@@ -5771,22 +5771,22 @@ public final class RamFunctions {
      *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
      *             .policyName("ram-policy-example")
      *             .policyDocument("""
-     * 			}{{@code
-     * 				"Statement": [
-     * 				 }{{@code
-     * 					"Action": [
-     * 					"oss:ListObjects",
-     * 					"oss:ListObjects"
-     * 			  		],
-     * 			  		"Effect": "Deny",
-     * 			  		"Resource": [
-     * 						"acs:oss:*:*:mybucket",
-     * 						"acs:oss:*:*:mybucket/*"
-     * 			  		]
-     * 				 }}{@code
-     * 		  		],
-     * 				"Version": "1"
-     * 			}}{@code
+     * \t\t\t}{{@code
+     * \t\t\t\t\"Statement\": [
+     * \t\t\t\t }{{@code
+     * \t\t\t\t\t\"Action\": [
+     * \t\t\t\t\t\"oss:ListObjects\",
+     * \t\t\t\t\t\"oss:ListObjects\"
+     * \t\t\t  \t\t],
+     * \t\t\t  \t\t\"Effect\": \"Deny\",
+     * \t\t\t  \t\t\"Resource\": [
+     * \t\t\t\t\t\t\"acs:oss:*:*:mybucket\",
+     * \t\t\t\t\t\t\"acs:oss:*:*:mybucket/*\"
+     * \t\t\t  \t\t]
+     * \t\t\t\t }}{@code
+     * \t\t  \t\t],
+     * \t\t\t\t\"Version\": \"1\"
+     * \t\t\t}}{@code
      *             """)
      *             .description("this is a policy example")
      *             .force(true)

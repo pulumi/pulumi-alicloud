@@ -14,6 +14,96 @@ import (
 // This data source provides metadata of kubernetes cluster addons.
 //
 // > **NOTE:** Available in 1.166.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeCidrsubnet, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
+//				Input:   "10.0.0.0/8",
+//				Newbits: 8,
+//				Netnum:  36,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeCidrsubnet1, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
+//				Input:   "172.16.0.0/16",
+//				Newbits: 4,
+//				Netnum:  7,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultManagedKubernetes, err := cs.NewManagedKubernetes(ctx, "default", &cs.ManagedKubernetesArgs{
+//				NamePrefix:  pulumi.String(name),
+//				ClusterSpec: pulumi.String("ack.pro.small"),
+//				WorkerVswitchIds: pulumi.StringArray{
+//					defaultSwitch.ID(),
+//				},
+//				NewNatGateway:      pulumi.Bool(false),
+//				PodCidr:            pulumi.String(invokeCidrsubnet.Result),
+//				ServiceCidr:        pulumi.String(invokeCidrsubnet1.Result),
+//				SlbInternetEnabled: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			clusterId := defaultManagedKubernetes.ID()
+//			defaultGetKubernetesAddonMetadata := cs.GetKubernetesAddonMetadataOutput(ctx, cs.GetKubernetesAddonMetadataOutputArgs{
+//				ClusterId: pulumi.String(clusterId),
+//				Name:      pulumi.String("nginx-ingress-controller"),
+//				Version:   pulumi.String("v1.1.2-aliyun.2"),
+//			}, nil)
+//			ctx.Export("addonConfigSchema", defaultGetKubernetesAddonMetadata.ApplyT(func(defaultGetKubernetesAddonMetadata cs.GetKubernetesAddonMetadataResult) (*string, error) {
+//				return &defaultGetKubernetesAddonMetadata.ConfigSchema, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetKubernetesAddonMetadata(ctx *pulumi.Context, args *GetKubernetesAddonMetadataArgs, opts ...pulumi.InvokeOption) (*GetKubernetesAddonMetadataResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKubernetesAddonMetadataResult

@@ -131,8 +131,8 @@ import javax.annotation.Nullable;
  *             .metricDimensions(defaultInstance.id().applyValue(_id -> """
  *   [
  *     {
- *       "instanceId": "%s",
- *       "device": "/dev/vda1"
+ *       \"instanceId\": \"%s\",
+ *       \"device\": \"/dev/vda1\"
  *     }
  *   ]
  * ", _id)))

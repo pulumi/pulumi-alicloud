@@ -123,11 +123,11 @@ import (
 // Resources: defaultInstance.ID().ApplyT(func(id string) (string, error) {
 //
 //	return fmt.Sprintf(`    {
-//	      "Type": "ResourceIds",
-//	      "RegionId": "cn-hangzhou",
-//	      "ResourceIds": {
-//	      "ALIYUN::ECS::INSTANCE": [
-//	        "%v"
+//	      \"Type\": \"ResourceIds\",
+//	      \"RegionId\": \"cn-hangzhou\",
+//	      \"ResourceIds\": {
+//	      \"ALIYUN::ECS::INSTANCE\": [
+//	        \"%v\"
 //	        ]
 //	      }
 //	    }

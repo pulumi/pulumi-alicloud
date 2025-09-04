@@ -158,6 +158,30 @@ class VpcNetworkAclAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.193.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("default", cidr_block="192.168.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vpc_id=default_network.id,
+            cidr_block=default_network.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+                newbits=8,
+                netnum=2)).apply(lambda invoke: invoke.result),
+            zone_id=default.zones[0].id)
+        default_network_acl = alicloud.vpc.NetworkAcl("default", vpc_id=default_switch.vpc_id)
+        default_vpc_network_acl_attachment = alicloud.vpc.VpcNetworkAclAttachment("default",
+            network_acl_id=default_network_acl.id,
+            resource_id=default_switch.id,
+            resource_type="VSwitch")
+        ```
+
         ## Import
 
         VPC Network Acl Attachment can be imported using the id, e.g.
@@ -184,6 +208,30 @@ class VpcNetworkAclAttachment(pulumi.CustomResource):
         For information about VPC Network Acl Attachment and how to use it, see [What is Network Acl Attachment](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/associatenetworkacl).
 
         > **NOTE:** Available since v1.193.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("default", cidr_block="192.168.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vpc_id=default_network.id,
+            cidr_block=default_network.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+                newbits=8,
+                netnum=2)).apply(lambda invoke: invoke.result),
+            zone_id=default.zones[0].id)
+        default_network_acl = alicloud.vpc.NetworkAcl("default", vpc_id=default_switch.vpc_id)
+        default_vpc_network_acl_attachment = alicloud.vpc.VpcNetworkAclAttachment("default",
+            network_acl_id=default_network_acl.id,
+            resource_id=default_switch.id,
+            resource_type="VSwitch")
+        ```
 
         ## Import
 

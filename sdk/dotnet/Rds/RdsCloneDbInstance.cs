@@ -205,7 +205,7 @@ namespace Pulumi.AliCloud.Rds
         /// The db instance description.
         /// </summary>
         [Output("dbInstanceDescription")]
-        public Output<string?> DbInstanceDescription { get; private set; } = null!;
+        public Output<string> DbInstanceDescription { get; private set; } = null!;
 
         /// <summary>
         /// The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
@@ -222,6 +222,7 @@ namespace Pulumi.AliCloud.Rds
         /// * **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
         /// * **cloud_essd2**: ESSDs of PL2
         /// * **cloud_essd3**: ESSDs of PL3
+        /// * **general_essd**: general ESSDS Available since v1.258.0
         /// </summary>
         [Output("dbInstanceStorageType")]
         public Output<string> DbInstanceStorageType { get; private set; } = null!;
@@ -703,6 +704,7 @@ namespace Pulumi.AliCloud.Rds
         /// * **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
         /// * **cloud_essd2**: ESSDs of PL2
         /// * **cloud_essd3**: ESSDs of PL3
+        /// * **general_essd**: general ESSDS Available since v1.258.0
         /// </summary>
         [Input("dbInstanceStorageType", required: true)]
         public Input<string> DbInstanceStorageType { get; set; } = null!;
@@ -1176,6 +1178,7 @@ namespace Pulumi.AliCloud.Rds
         /// * **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
         /// * **cloud_essd2**: ESSDs of PL2
         /// * **cloud_essd3**: ESSDs of PL3
+        /// * **general_essd**: general ESSDS Available since v1.258.0
         /// </summary>
         [Input("dbInstanceStorageType")]
         public Input<string>? DbInstanceStorageType { get; set; }

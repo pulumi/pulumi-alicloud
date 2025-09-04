@@ -20,6 +20,119 @@ import (
 //
 // > **NOTE:** Available since v1.241.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dataworks"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			default5Bia4h, err := vpc.NewNetwork(ctx, "default5Bia4h", &vpc.NetworkArgs{
+//				Description: pulumi.String(name),
+//				VpcName:     pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.0.0.0/8"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s1",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultss7s7F, err := vpc.NewSwitch(ctx, "defaultss7s7F", &vpc.SwitchArgs{
+//				Description: pulumi.String(name),
+//				VpcId:       default5Bia4h.ID(),
+//				ZoneId:      pulumi.String("cn-beijing-g"),
+//				VswitchName: pulumi.String(invokeFormat.Result),
+//				CidrBlock:   pulumi.String("10.0.0.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultVJvKvl, err := dataworks.NewDwResourceGroup(ctx, "defaultVJvKvl", &dataworks.DwResourceGroupArgs{
+//				PaymentDurationUnit: pulumi.String("Month"),
+//				PaymentType:         pulumi.String("PostPaid"),
+//				Specification:       pulumi.Int(500),
+//				DefaultVswitchId:    defaultss7s7F.ID(),
+//				Remark:              pulumi.String(name),
+//				ResourceGroupName:   pulumi.String("network_openapi_example01"),
+//				DefaultVpcId:        default5Bia4h.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat1, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s3",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaulte4zhaL, err := vpc.NewNetwork(ctx, "defaulte4zhaL", &vpc.NetworkArgs{
+//				Description: pulumi.String(name),
+//				VpcName:     pulumi.String(invokeFormat1.Result),
+//				CidrBlock:   pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat2, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s4",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			default675v38, err := vpc.NewSwitch(ctx, "default675v38", &vpc.SwitchArgs{
+//				Description: pulumi.String(name),
+//				VpcId:       defaulte4zhaL.ID(),
+//				ZoneId:      pulumi.String("cn-beijing-g"),
+//				VswitchName: pulumi.String(invokeFormat2.Result),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataworks.NewNetwork(ctx, "default", &dataworks.NetworkArgs{
+//				VpcId:             defaulte4zhaL.ID(),
+//				VswitchId:         default675v38.ID(),
+//				DwResourceGroupId: defaultVJvKvl.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Data Works Network can be imported using the id, e.g.

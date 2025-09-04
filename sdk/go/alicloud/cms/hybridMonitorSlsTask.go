@@ -18,6 +18,166 @@ import (
 //
 // > **NOTE:** Available since v1.179.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := alicloud.GetAccount(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultUuid, err := random.NewUuid(ctx, "default", nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeSubstr, err := std.Substr(ctx, &std.SubstrArgs{
+//				Input: fmt.Sprintf("tf-example-%v", std.Replace(ctx, &std.ReplaceArgs{
+//					Text:    defaultUuid.Result,
+//					Search:  "-",
+//					Replace: "",
+//				}, nil).Result),
+//				Offset: 0,
+//				Length: 16,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultProject, err := log.NewProject(ctx, "default", &log.ProjectArgs{
+//				ProjectName: pulumi.String(invokeSubstr.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultStore, err := log.NewStore(ctx, "default", &log.StoreArgs{
+//				ProjectName:        defaultProject.ProjectName,
+//				LogstoreName:       pulumi.String(name),
+//				ShardCount:         pulumi.Int(3),
+//				AutoSplit:          pulumi.Bool(true),
+//				MaxSplitShardCount: pulumi.Int(60),
+//				AppendMeta:         pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSlsGroup, err := cms.NewSlsGroup(ctx, "default", &cms.SlsGroupArgs{
+//				SlsGroupConfigs: cms.SlsGroupSlsGroupConfigArray{
+//					&cms.SlsGroupSlsGroupConfigArgs{
+//						SlsUserId:   pulumi.String(_default.Id),
+//						SlsLogstore: defaultStore.LogstoreName,
+//						SlsProject:  defaultProject.ProjectName,
+//						SlsRegion:   pulumi.String(defaultGetRegions.Regions[0].Id),
+//					},
+//				},
+//				SlsGroupDescription: pulumi.String(name),
+//				SlsGroupName:        pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeSubstr1, err := std.Substr(ctx, &std.SubstrArgs{
+//				Input: fmt.Sprintf("tf-example-%v", std.Replace(ctx, &std.ReplaceArgs{
+//					Text:    defaultUuid.Result,
+//					Search:  "-",
+//					Replace: "",
+//				}, nil).Result),
+//				Offset: 0,
+//				Length: 16,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNamespace, err := cms.NewNamespace(ctx, "default", &cms.NamespaceArgs{
+//				Namespace:     pulumi.String(invokeSubstr1.Result),
+//				Specification: pulumi.String("cms.s1.large"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cms.NewHybridMonitorSlsTask(ctx, "default", &cms.HybridMonitorSlsTaskArgs{
+//				TaskName:          pulumi.String(name),
+//				Namespace:         defaultNamespace.ID(),
+//				Description:       pulumi.String(name),
+//				CollectInterval:   pulumi.Int(60),
+//				CollectTargetType: defaultSlsGroup.ID(),
+//				SlsProcessConfig: &cms.HybridMonitorSlsTaskSlsProcessConfigArgs{
+//					Filter: &cms.HybridMonitorSlsTaskSlsProcessConfigFilterArgs{
+//						Relation: pulumi.String("and"),
+//						Filters: cms.HybridMonitorSlsTaskSlsProcessConfigFilterFilterArray{
+//							&cms.HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs{
+//								Operator:   pulumi.String("="),
+//								Value:      pulumi.String("200"),
+//								SlsKeyName: pulumi.String("code"),
+//							},
+//						},
+//					},
+//					Statistics: cms.HybridMonitorSlsTaskSlsProcessConfigStatisticArray{
+//						&cms.HybridMonitorSlsTaskSlsProcessConfigStatisticArgs{
+//							Function:     pulumi.String("count"),
+//							Alias:        pulumi.String("level_count"),
+//							SlsKeyName:   pulumi.String("name"),
+//							ParameterOne: pulumi.String("200"),
+//							ParameterTwo: pulumi.String("299"),
+//						},
+//					},
+//					GroupBies: cms.HybridMonitorSlsTaskSlsProcessConfigGroupByArray{
+//						&cms.HybridMonitorSlsTaskSlsProcessConfigGroupByArgs{
+//							Alias:      pulumi.String("code"),
+//							SlsKeyName: pulumi.String("ApiResult"),
+//						},
+//					},
+//					Expresses: cms.HybridMonitorSlsTaskSlsProcessConfigExpressArray{
+//						&cms.HybridMonitorSlsTaskSlsProcessConfigExpressArgs{
+//							Express: pulumi.String("success_count"),
+//							Alias:   pulumi.String("SuccRate"),
+//						},
+//					},
+//				},
+//				AttachLabels: cms.HybridMonitorSlsTaskAttachLabelArray{
+//					&cms.HybridMonitorSlsTaskAttachLabelArgs{
+//						Name:  pulumi.String("app_service"),
+//						Value: pulumi.String("example_Value"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Cloud Monitor Service Hybrid Monitor Sls Task can be imported using the id, e.g.

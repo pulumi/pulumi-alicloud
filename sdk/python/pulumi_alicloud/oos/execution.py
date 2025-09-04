@@ -544,25 +544,25 @@ class Execution(pulumi.CustomResource):
             max=99999)
         default_template = alicloud.oos.Template("default",
             content=\"\"\"  {
-            "FormatVersion": "OOS-2019-06-01",
-            "Description": "Update Describe instances of given status",
-            "Parameters":{
-              "Status":{
-                "Type": "String",
-                "Description": "(Required) The status of the Ecs instance."
+            \\"FormatVersion\\": \\"OOS-2019-06-01\\",
+            \\"Description\\": \\"Update Describe instances of given status\\",
+            \\"Parameters\\":{
+              \\"Status\\":{
+                \\"Type\\": \\"String\\",
+                \\"Description\\": \\"(Required) The status of the Ecs instance.\\"
               }
             },
-            "Tasks": [
+            \\"Tasks\\": [
               {
-                "Properties" :{
-                  "Parameters":{
-                    "Status": "{{ Status }}"
+                \\"Properties\\" :{
+                  \\"Parameters\\":{
+                    \\"Status\\": \\"{{ Status }}\\"
                   },
-                  "API": "DescribeInstances",
-                  "Service": "Ecs"
+                  \\"API\\": \\"DescribeInstances\\",
+                  \\"Service\\": \\"Ecs\\"
                 },
-                "Name": "foo",
-                "Action": "ACS::ExecuteApi"
+                \\"Name\\": \\"foo\\",
+                \\"Action\\": \\"ACS::ExecuteApi\\"
               }]
           }
         \"\"\",
@@ -575,7 +575,7 @@ class Execution(pulumi.CustomResource):
         example = alicloud.oos.Execution("example",
             template_name=default_template.template_name,
             description="From TF Test",
-            parameters="\\x09\\x09\\x09\\x09{\\"Status\\":\\"Running\\"}\\n")
+            parameters="\\\\t\\\\t\\\\t\\\\t{\\\\\\"Status\\\\\\":\\\\\\"Running\\\\\\"}\\n")
         ```
 
         ## Import
@@ -621,25 +621,25 @@ class Execution(pulumi.CustomResource):
             max=99999)
         default_template = alicloud.oos.Template("default",
             content=\"\"\"  {
-            "FormatVersion": "OOS-2019-06-01",
-            "Description": "Update Describe instances of given status",
-            "Parameters":{
-              "Status":{
-                "Type": "String",
-                "Description": "(Required) The status of the Ecs instance."
+            \\"FormatVersion\\": \\"OOS-2019-06-01\\",
+            \\"Description\\": \\"Update Describe instances of given status\\",
+            \\"Parameters\\":{
+              \\"Status\\":{
+                \\"Type\\": \\"String\\",
+                \\"Description\\": \\"(Required) The status of the Ecs instance.\\"
               }
             },
-            "Tasks": [
+            \\"Tasks\\": [
               {
-                "Properties" :{
-                  "Parameters":{
-                    "Status": "{{ Status }}"
+                \\"Properties\\" :{
+                  \\"Parameters\\":{
+                    \\"Status\\": \\"{{ Status }}\\"
                   },
-                  "API": "DescribeInstances",
-                  "Service": "Ecs"
+                  \\"API\\": \\"DescribeInstances\\",
+                  \\"Service\\": \\"Ecs\\"
                 },
-                "Name": "foo",
-                "Action": "ACS::ExecuteApi"
+                \\"Name\\": \\"foo\\",
+                \\"Action\\": \\"ACS::ExecuteApi\\"
               }]
           }
         \"\"\",
@@ -652,7 +652,7 @@ class Execution(pulumi.CustomResource):
         example = alicloud.oos.Execution("example",
             template_name=default_template.template_name,
             description="From TF Test",
-            parameters="\\x09\\x09\\x09\\x09{\\"Status\\":\\"Running\\"}\\n")
+            parameters="\\\\t\\\\t\\\\t\\\\t{\\\\\\"Status\\\\\\":\\\\\\"Running\\\\\\"}\\n")
         ```
 
         ## Import

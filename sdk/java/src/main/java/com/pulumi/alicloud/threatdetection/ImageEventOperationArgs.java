@@ -5,6 +5,7 @@ package com.pulumi.alicloud.threatdetection;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,29 +17,29 @@ public final class ImageEventOperationArgs extends com.pulumi.resources.Resource
     public static final ImageEventOperationArgs Empty = new ImageEventOperationArgs();
 
     /**
-     * Event Conditions.
+     * The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
      * 
      */
-    @Import(name="conditions")
-    private @Nullable Output<String> conditions;
+    @Import(name="conditions", required=true)
+    private Output<String> conditions;
 
     /**
-     * @return Event Conditions.
+     * @return The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
      * 
      */
-    public Optional<Output<String>> conditions() {
-        return Optional.ofNullable(this.conditions);
+    public Output<String> conditions() {
+        return this.conditions;
     }
 
     /**
-     * Image Event Key.
+     * The keyword of the alert item.
      * 
      */
     @Import(name="eventKey")
     private @Nullable Output<String> eventKey;
 
     /**
-     * @return Image Event Key.
+     * @return The keyword of the alert item.
      * 
      */
     public Optional<Output<String>> eventKey() {
@@ -46,14 +47,14 @@ public final class ImageEventOperationArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Image Event Name.
+     * The name of the alert item.
      * 
      */
     @Import(name="eventName")
     private @Nullable Output<String> eventName;
 
     /**
-     * @return Image Event Name.
+     * @return The name of the alert item.
      * 
      */
     public Optional<Output<String>> eventName() {
@@ -61,48 +62,78 @@ public final class ImageEventOperationArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Image Event Type.
+     * The alert type.
      * 
      */
-    @Import(name="eventType")
-    private @Nullable Output<String> eventType;
+    @Import(name="eventType", required=true)
+    private Output<String> eventType;
 
     /**
-     * @return Image Event Type.
+     * @return The alert type.
      * 
      */
-    public Optional<Output<String>> eventType() {
-        return Optional.ofNullable(this.eventType);
+    public Output<String> eventType() {
+        return this.eventType;
     }
 
     /**
-     * Event Operation Code.
+     * The remarks.
      * 
      */
-    @Import(name="operationCode")
-    private @Nullable Output<String> operationCode;
+    @Import(name="note")
+    private @Nullable Output<String> note;
 
     /**
-     * @return Event Operation Code.
+     * @return The remarks.
      * 
      */
-    public Optional<Output<String>> operationCode() {
-        return Optional.ofNullable(this.operationCode);
+    public Optional<Output<String>> note() {
+        return Optional.ofNullable(this.note);
     }
 
     /**
-     * Event Scenarios.
+     * The operation code.
+     * 
+     */
+    @Import(name="operationCode", required=true)
+    private Output<String> operationCode;
+
+    /**
+     * @return The operation code.
+     * 
+     */
+    public Output<String> operationCode() {
+        return this.operationCode;
+    }
+
+    /**
+     * The application scope of the rule.
      * 
      */
     @Import(name="scenarios")
     private @Nullable Output<String> scenarios;
 
     /**
-     * @return Event Scenarios.
+     * @return The application scope of the rule.
      * 
      */
     public Optional<Output<String>> scenarios() {
         return Optional.ofNullable(this.scenarios);
+    }
+
+    /**
+     * The source of the whitelist. Valid values:
+     * 
+     */
+    @Import(name="source")
+    private @Nullable Output<String> source;
+
+    /**
+     * @return The source of the whitelist. Valid values:
+     * 
+     */
+    public Optional<Output<String>> source() {
+        return Optional.ofNullable(this.source);
     }
 
     private ImageEventOperationArgs() {}
@@ -112,8 +143,10 @@ public final class ImageEventOperationArgs extends com.pulumi.resources.Resource
         this.eventKey = $.eventKey;
         this.eventName = $.eventName;
         this.eventType = $.eventType;
+        this.note = $.note;
         this.operationCode = $.operationCode;
         this.scenarios = $.scenarios;
+        this.source = $.source;
     }
 
     public static Builder builder() {
@@ -135,18 +168,18 @@ public final class ImageEventOperationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param conditions Event Conditions.
+         * @param conditions The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
          * 
          * @return builder
          * 
          */
-        public Builder conditions(@Nullable Output<String> conditions) {
+        public Builder conditions(Output<String> conditions) {
             $.conditions = conditions;
             return this;
         }
 
         /**
-         * @param conditions Event Conditions.
+         * @param conditions The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
          * 
          * @return builder
          * 
@@ -156,7 +189,7 @@ public final class ImageEventOperationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param eventKey Image Event Key.
+         * @param eventKey The keyword of the alert item.
          * 
          * @return builder
          * 
@@ -167,7 +200,7 @@ public final class ImageEventOperationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param eventKey Image Event Key.
+         * @param eventKey The keyword of the alert item.
          * 
          * @return builder
          * 
@@ -177,7 +210,7 @@ public final class ImageEventOperationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param eventName Image Event Name.
+         * @param eventName The name of the alert item.
          * 
          * @return builder
          * 
@@ -188,7 +221,7 @@ public final class ImageEventOperationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param eventName Image Event Name.
+         * @param eventName The name of the alert item.
          * 
          * @return builder
          * 
@@ -198,18 +231,18 @@ public final class ImageEventOperationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param eventType Image Event Type.
+         * @param eventType The alert type.
          * 
          * @return builder
          * 
          */
-        public Builder eventType(@Nullable Output<String> eventType) {
+        public Builder eventType(Output<String> eventType) {
             $.eventType = eventType;
             return this;
         }
 
         /**
-         * @param eventType Image Event Type.
+         * @param eventType The alert type.
          * 
          * @return builder
          * 
@@ -219,18 +252,39 @@ public final class ImageEventOperationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param operationCode Event Operation Code.
+         * @param note The remarks.
          * 
          * @return builder
          * 
          */
-        public Builder operationCode(@Nullable Output<String> operationCode) {
+        public Builder note(@Nullable Output<String> note) {
+            $.note = note;
+            return this;
+        }
+
+        /**
+         * @param note The remarks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder note(String note) {
+            return note(Output.of(note));
+        }
+
+        /**
+         * @param operationCode The operation code.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder operationCode(Output<String> operationCode) {
             $.operationCode = operationCode;
             return this;
         }
 
         /**
-         * @param operationCode Event Operation Code.
+         * @param operationCode The operation code.
          * 
          * @return builder
          * 
@@ -240,7 +294,7 @@ public final class ImageEventOperationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param scenarios Event Scenarios.
+         * @param scenarios The application scope of the rule.
          * 
          * @return builder
          * 
@@ -251,7 +305,7 @@ public final class ImageEventOperationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param scenarios Event Scenarios.
+         * @param scenarios The application scope of the rule.
          * 
          * @return builder
          * 
@@ -260,7 +314,37 @@ public final class ImageEventOperationArgs extends com.pulumi.resources.Resource
             return scenarios(Output.of(scenarios));
         }
 
+        /**
+         * @param source The source of the whitelist. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder source(@Nullable Output<String> source) {
+            $.source = source;
+            return this;
+        }
+
+        /**
+         * @param source The source of the whitelist. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder source(String source) {
+            return source(Output.of(source));
+        }
+
         public ImageEventOperationArgs build() {
+            if ($.conditions == null) {
+                throw new MissingRequiredPropertyException("ImageEventOperationArgs", "conditions");
+            }
+            if ($.eventType == null) {
+                throw new MissingRequiredPropertyException("ImageEventOperationArgs", "eventType");
+            }
+            if ($.operationCode == null) {
+                throw new MissingRequiredPropertyException("ImageEventOperationArgs", "operationCode");
+            }
             return $;
         }
     }

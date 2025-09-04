@@ -61,42 +61,42 @@ import (
 //			}
 //			defaultRole, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
 //				Name: pulumi.Sprintf("examplerole%v", defaultInteger.Result),
-//				Document: pulumi.String(`	{
-//			"Statement": [
-//			  {
-//				"Action": "sts:AssumeRole",
-//				"Effect": "Allow",
-//				"Principal": {
-//				  "Service": [
-//					"fc.aliyuncs.com"
-//				  ]
-//				}
-//			  }
-//			],
-//			"Version": "1"
-//		}
+//				Document: pulumi.String(`\t{
 //
+// \t\t\"Statement\": [
+// \t\t  {
+// \t\t\t\"Action\": \"sts:AssumeRole\",
+// \t\t\t\"Effect\": \"Allow\",
+// \t\t\t\"Principal\": {
+// \t\t\t  \"Service\": [
+// \t\t\t\t\"fc.aliyuncs.com\"
+// \t\t\t  ]
+// \t\t\t}
+// \t\t  }
+// \t\t],
+// \t\t\"Version\": \"1\"
+// \t}
 // `),
 //
-//			Description: pulumi.String("this is a example"),
-//			Force:       pulumi.Bool(true),
-//		})
-//		if err != nil {
-//			return err
-//		}
-//		defaultPolicy, err := ram.NewPolicy(ctx, "default", &ram.PolicyArgs{
-//			PolicyName: pulumi.Sprintf("examplepolicy%v", defaultInteger.Result),
-//			PolicyDocument: pulumi.String(`	{
-//		"Version": "1",
-//		"Statement": [
-//		  {
-//			"Action": "mns:*",
-//			"Resource": "*",
-//			"Effect": "Allow"
-//		  }
-//		]
-//	  }
+//		Description: pulumi.String("this is a example"),
+//		Force:       pulumi.Bool(true),
+//	})
+//	if err != nil {
+//		return err
+//	}
+//	defaultPolicy, err := ram.NewPolicy(ctx, "default", &ram.PolicyArgs{
+//		PolicyName: pulumi.Sprintf("examplepolicy%v", defaultInteger.Result),
+//		PolicyDocument: pulumi.String(`\t{
 //
+// \t\t\"Version\": \"1\",
+// \t\t\"Statement\": [
+// \t\t  {
+// \t\t\t\"Action\": \"mns:*\",
+// \t\t\t\"Resource\": \"*\",
+// \t\t\t\"Effect\": \"Allow\"
+// \t\t  }
+// \t\t]
+// \t  }
 // `),
 //
 //			})

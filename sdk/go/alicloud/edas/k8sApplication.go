@@ -16,6 +16,144 @@ import (
 //
 // > **NOTE:** Available since v1.105.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/edas"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex:  pulumi.StringRef("^ubuntu_18.*64"),
+//				MostRecent: pulumi.BoolRef(true),
+//				Owners:     pulumi.StringRef("system"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone:   pulumi.StringRef(_default.Zones[0].Id),
+//				CpuCoreCount:       pulumi.IntRef(4),
+//				MemorySize:         pulumi.Float64Ref(8),
+//				KubernetesNodeRole: pulumi.StringRef("Worker"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeCidrsubnet, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
+//				Input:   "10.0.0.0/8",
+//				Newbits: 8,
+//				Netnum:  36,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeCidrsubnet1, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
+//				Input:   "172.16.0.0/16",
+//				Newbits: 4,
+//				Netnum:  7,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultManagedKubernetes, err := cs.NewManagedKubernetes(ctx, "default", &cs.ManagedKubernetesArgs{
+//				NamePrefix:  pulumi.String(name),
+//				ClusterSpec: pulumi.String("ack.pro.small"),
+//				WorkerVswitchIds: pulumi.StringArray{
+//					defaultSwitch.ID(),
+//				},
+//				NewNatGateway:      pulumi.Bool(true),
+//				PodCidr:            pulumi.String(invokeCidrsubnet.Result),
+//				ServiceCidr:        pulumi.String(invokeCidrsubnet1.Result),
+//				SlbInternetEnabled: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultNodePool, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
+//				Name:      pulumi.String(name),
+//				ClusterId: defaultManagedKubernetes.ID(),
+//				VswitchIds: pulumi.StringArray{
+//					defaultSwitch.ID(),
+//				},
+//				InstanceTypes: pulumi.StringArray{
+//					pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+//				},
+//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
+//				SystemDiskSize:     pulumi.Int(40),
+//				DesiredSize:        pulumi.String("2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultK8sCluster, err := edas.NewK8sCluster(ctx, "default", &edas.K8sClusterArgs{
+//				CsClusterId: defaultNodePool.ClusterId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = edas.NewK8sApplication(ctx, "default", &edas.K8sApplicationArgs{
+//				ApplicationName:        pulumi.String(name),
+//				ClusterId:              defaultK8sCluster.ID(),
+//				PackageType:            pulumi.String("FatJar"),
+//				PackageUrl:             pulumi.String("http://edas-bj.oss-cn-beijing.aliyuncs.com/prod/demo/SPRING_CLOUD_PROVIDER.jar"),
+//				Jdk:                    pulumi.String("Open JDK 8"),
+//				Replicas:               pulumi.Int(2),
+//				Readiness:              pulumi.String("{\"failureThreshold\": 3,\"initialDelaySeconds\": 5,\"successThreshold\": 1,\"timeoutSeconds\": 1,\"tcpSocket\":{\"port\":18081}}"),
+//				Liveness:               pulumi.String("{\"failureThreshold\": 3,\"initialDelaySeconds\": 5,\"successThreshold\": 1,\"timeoutSeconds\": 1,\"tcpSocket\":{\"port\":18081}}"),
+//				ApplicationDescriotion: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // EDAS k8s application can be imported as below, e.g.

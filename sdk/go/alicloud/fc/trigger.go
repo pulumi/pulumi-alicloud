@@ -83,18 +83,18 @@ import (
 //			defaultRole, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
 //				Name: pulumi.Sprintf("fcservicerole-%v", defaultInteger.Result),
 //				Document: pulumi.String(`  {
-//	      "Statement": [
+//	      \"Statement\": [
 //	        {
-//	          "Action": "sts:AssumeRole",
-//	          "Effect": "Allow",
-//	          "Principal": {
-//	            "Service": [
-//	              "fc.aliyuncs.com"
+//	          \"Action\": \"sts:AssumeRole\",
+//	          \"Effect\": \"Allow\",
+//	          \"Principal\": {
+//	            \"Service\": [
+//	              \"fc.aliyuncs.com\"
 //	            ]
 //	          }
 //	        }
 //	      ],
-//	      "Version": "1"
+//	      \"Version\": \"1\"
 //	  }
 //
 // `),
@@ -169,23 +169,23 @@ import (
 //					projectName := _args[1].(string)
 //					defaultStoreLogstoreName := _args[2].(string)
 //					return fmt.Sprintf(`    {
-//	        "sourceConfig": {
-//	            "logstore": "%v",
-//	            "startTime": null
+//	        \"sourceConfig\": {
+//	            \"logstore\": \"%v\",
+//	            \"startTime\": null
 //	        },
-//	        "jobConfig": {
-//	            "maxRetryTime": 3,
-//	            "triggerInterval": 60
+//	        \"jobConfig\": {
+//	            \"maxRetryTime\": 3,
+//	            \"triggerInterval\": 60
 //	        },
-//	        "functionParameter": {
-//	            "a": "b",
-//	            "c": "d"
+//	        \"functionParameter\": {
+//	            \"a\": \"b\",
+//	            \"c\": \"d\"
 //	        },
-//	        "logConfig": {
-//	             "project": "%v",
-//	            "logstore": "%v"
+//	        \"logConfig\": {
+//	             \"project\": \"%v\",
+//	            \"logstore\": \"%v\"
 //	        },
-//	        "enable": true
+//	        \"enable\": true
 //	    }
 //
 // `, sourceStoreLogstoreName, projectName, defaultStoreLogstoreName), nil
@@ -248,18 +248,18 @@ import (
 //			defaultRole, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
 //				Name: pulumi.Sprintf("fcservicerole-%v", defaultInteger.Result),
 //				Document: pulumi.String(`  {
-//	      "Statement": [
+//	      \"Statement\": [
 //	        {
-//	          "Action": "sts:AssumeRole",
-//	          "Effect": "Allow",
-//	          "Principal": {
-//	            "Service": [
-//	              "mns.aliyuncs.com"
+//	          \"Action\": \"sts:AssumeRole\",
+//	          \"Effect\": \"Allow\",
+//	          \"Principal\": {
+//	            \"Service\": [
+//	              \"mns.aliyuncs.com\"
 //	            ]
 //	          }
 //	        }
 //	      ],
-//	      "Version": "1"
+//	      \"Version\": \"1\"
 //	  }
 //
 // `),
@@ -324,9 +324,9 @@ import (
 //				}).(pulumi.StringOutput),
 //				Type: pulumi.String("mns_topic"),
 //				ConfigMns: pulumi.String(`  {
-//	    "filterTag":"exampleTag",
-//	    "notifyContentFormat":"STREAM",
-//	    "notifyStrategy":"BACKOFF_RETRY"
+//	    \"filterTag\":\"exampleTag\",
+//	    \"notifyContentFormat\":\"STREAM\",
+//	    \"notifyStrategy\":\"BACKOFF_RETRY\"
 //	  }
 //
 // `),
@@ -401,18 +401,18 @@ import (
 //			defaultRole, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
 //				Name: pulumi.Sprintf("fcservicerole-%v", defaultInteger.Result),
 //				Document: pulumi.String(`    {
-//	      "Statement": [
+//	      \"Statement\": [
 //	        {
-//	          "Action": "sts:AssumeRole",
-//	          "Effect": "Allow",
-//	          "Principal": {
-//	            "Service": [
-//	              "cdn.aliyuncs.com"
+//	          \"Action\": \"sts:AssumeRole\",
+//	          \"Effect\": \"Allow\",
+//	          \"Principal\": {
+//	            \"Service\": [
+//	              \"cdn.aliyuncs.com\"
 //	            ]
 //	          }
 //	        }
 //	      ],
-//	      "Version": "1"
+//	      \"Version\": \"1\"
 //	  }
 //
 // `),
@@ -429,17 +429,17 @@ import (
 //					defaultServiceName := _args[0].(string)
 //					defaultServiceName1 := _args[1].(string)
 //					return fmt.Sprintf(`    {
-//	        "Version": "1",
-//	        "Statement": [
+//	        \"Version\": \"1\",
+//	        \"Statement\": [
 //	        {
-//	            "Action": [
-//	            "fc:InvokeFunction"
+//	            \"Action\": [
+//	            \"fc:InvokeFunction\"
 //	            ],
-//	        "Resource": [
-//	            "acs:fc:*:*:services/%v/functions/*",
-//	            "acs:fc:*:*:services/%v.*/functions/*"
+//	        \"Resource\": [
+//	            \"acs:fc:*:*:services/%v/functions/*\",
+//	            \"acs:fc:*:*:services/%v.*/functions/*\"
 //	        ],
-//	        "Effect": "Allow"
+//	        \"Effect\": \"Allow\"
 //	        }
 //	        ]
 //	    }
@@ -497,11 +497,11 @@ import (
 //				SourceArn: pulumi.Sprintf("acs:cdn:*:%v", _default.Id),
 //				Type:      pulumi.String("cdn_events"),
 //				Config: defaultDomainNew.DomainName.ApplyT(func(domainName string) (string, error) {
-//					return fmt.Sprintf(`      {"eventName":"LogFileCreated",
-//	     "eventVersion":"1.0.0",
-//	     "notes":"cdn events trigger",
-//	     "filter":{
-//	        "domain": ["%v"]
+//					return fmt.Sprintf(`      {\"eventName\":\"LogFileCreated\",
+//	     \"eventVersion\":\"1.0.0\",
+//	     \"notes\":\"cdn events trigger\",
+//	     \"filter\":{
+//	        \"domain\": [\"%v\"]
 //	        }
 //	    }
 //

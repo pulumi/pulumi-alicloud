@@ -573,9 +573,9 @@ class DomainResource(pulumi.CustomResource):
             instance_ids=[default.id],
             real_servers=["177.167.32.11"],
             https_ext=\"\"\"    {
-            "Http2": 1,
-            "Http2https": 0,
-            "Https2http": 0
+            \\"Http2\\": 1,
+            \\"Http2https\\": 0,
+            \\"Https2http\\": 0
           }
         \"\"\",
             proxy_types=[{
@@ -672,9 +672,9 @@ class DomainResource(pulumi.CustomResource):
             instance_ids=[default.id],
             real_servers=["177.167.32.11"],
             https_ext=\"\"\"    {
-            "Http2": 1,
-            "Http2https": 0,
-            "Https2http": 0
+            \\"Http2\\": 1,
+            \\"Http2https\\": 0,
+            \\"Https2http\\": 0
           }
         \"\"\",
             proxy_types=[{

@@ -56,21 +56,21 @@ import javax.annotation.Nullable;
  *             .extInfo("}{}{@code ")
  *             .schema("""
  *     }{{@code
- *       "schema": [
+ *       \"schema\": [
  *         }{{@code
- *           "column": "col1",
- *           "desc": "col1   desc",
- *           "ext_info": }{{@code
+ *           \"column\": \"col1\",
+ *           \"desc\": \"col1   desc\",
+ *           \"ext_info\": }{{@code
  *           }}{@code ,
- *           "required": true,
- *           "type": "string"
+ *           \"required\": true,
+ *           \"type\": \"string\"
  *         }}{@code ,
  *         }{{@code
- *           "column": "col2",
- *           "desc": "col2   desc",
- *           "ext_info": "optional",
- *           "required": true,
- *           "type": "string"
+ *           \"column\": \"col2\",
+ *           \"desc\": \"col2   desc\",
+ *           \"ext_info\": \"optional\",
+ *           \"required\": true,
+ *           \"type\": \"string\"
  *         }}{@code
  *       ]
  *     }}{@code
@@ -83,16 +83,16 @@ import javax.annotation.Nullable;
  *             .tag("tf example")
  *             .value("""
  * }{{@code
- *   "user_name": "tf example",
- *   "sms_enabled": true,
- *   "phone": "18888888889",
- *   "voice_enabled": false,
- *   "email": [
- *     "test}{@literal @}{@code qq.com"
+ *   \"user_name\": \"tf example\",
+ *   \"sms_enabled\": true,
+ *   \"phone\": \"18888888889\",
+ *   \"voice_enabled\": false,
+ *   \"email\": [
+ *     \"test}{@literal @}{@code qq.com\"
  *   ],
- *   "enabled": true,
- *   "user_id": "tf_user",
- *   "country_code": "86"
+ *   \"enabled\": true,
+ *   \"user_id\": \"tf_user\",
+ *   \"country_code\": \"86\"
  * }}{@code
  *             """)
  *             .build());

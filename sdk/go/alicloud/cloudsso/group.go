@@ -18,6 +18,84 @@ import (
 //
 // > **NOTE:** Available since v1.138.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudsso"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "tf-example";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// _default, err := cloudsso.GetDirectories(ctx, &cloudsso.GetDirectoriesArgs{
+// }, nil);
+// if err != nil {
+// return err
+// }
+// var tmp0 float64
+// if length > 0 {
+// tmp0 = 0
+// } else {
+// tmp0 = 1
+// }
+// var defaultDirectory []*cloudsso.Directory
+// for index := 0; index < float64(len(_default.Ids).ApplyT(func(length int) (float64, error) {
+// return tmp0, nil
+//
+//	}).(pulumi.Float64Output)); index++ {
+//	    key0 := index
+//	    _ := index
+//
+// __res, err := cloudsso.NewDirectory(ctx, fmt.Sprintf("default-%v", key0), &cloudsso.DirectoryArgs{
+// DirectoryName: pulumi.String(name),
+// })
+// if err != nil {
+// return err
+// }
+// defaultDirectory = append(defaultDirectory, __res)
+// }
+// var tmp1 *interface{}
+// if length > 0 {
+// tmp1 = _default.Ids[0]
+// } else {
+// tmp1 = std.Concat(ctx, &std.ConcatArgs{
+// Input: pulumi.StringArrayArray{
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:13,12-34),
+// []string{
+// "",
+// },
+// },
+// }, nil).Result[0]
+// }
+// directoryId := len(_default.Ids).ApplyT(func(length int) (*interface{}, error) {
+// return &tmp1, nil
+// }).(pulumi.Interface{}PtrOutput)
+// _, err = cloudsso.NewGroup(ctx, "default", &cloudsso.GroupArgs{
+// DirectoryId: pulumi.Any(directoryId),
+// GroupName: pulumi.String(name),
+// Description: pulumi.String(name),
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
+//
 // ## Import
 //
 // Cloud SSO Group can be imported using the id, e.g.

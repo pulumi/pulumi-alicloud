@@ -67,12 +67,12 @@ import (
 //				ResourceGroupId:           defaultRg.ID(),
 //				ServiceName:               pulumi.String(domain),
 //				PolicyDocument: pulumi.String(`      {
-//	        "Version": "1",
-//	        "Statement": [{
-//	          "Effect": "Allow",
-//	          "Resource": ["*"],
-//	          "Action": ["*"],
-//	          "Principal": ["*"]
+//	        \"Version\": \"1\",
+//	        \"Statement\": [{
+//	          \"Effect\": \"Allow\",
+//	          \"Resource\": [\"*\"],
+//	          \"Action\": [\"*\"],
+//	          \"Principal\": [\"*\"]
 //	        }]
 //	      }
 //

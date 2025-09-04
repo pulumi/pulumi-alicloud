@@ -82,7 +82,7 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * . Field &#39;name&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_name&#39; instead.
+     * Field &#39;name&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated since provider version 1.218.0. New field &#39;access_group_name&#39; instead.
@@ -93,7 +93,7 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return . Field &#39;name&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_name&#39; instead.
+     * @return Field &#39;name&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated since provider version 1.218.0. New field &#39;access_group_name&#39; instead.
@@ -105,7 +105,7 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * . Field &#39;type&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_type&#39; instead.
+     * Field &#39;type&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_type&#39; instead.
      * 
      * @deprecated
      * Field &#39;type&#39; has been deprecated since provider version 1.218.0. New field &#39;access_group_type&#39; instead.
@@ -116,7 +116,7 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> type;
 
     /**
-     * @return . Field &#39;type&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_type&#39; instead.
+     * @return Field &#39;type&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_type&#39; instead.
      * 
      * @deprecated
      * Field &#39;type&#39; has been deprecated since provider version 1.218.0. New field &#39;access_group_type&#39; instead.
@@ -247,7 +247,7 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_name&#39; instead.
+         * @param name Field &#39;name&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_name&#39; instead.
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_name&#39; instead.
+         * @param name Field &#39;name&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_name&#39; instead.
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type . Field &#39;type&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_type&#39; instead.
+         * @param type Field &#39;type&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_type&#39; instead.
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type . Field &#39;type&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_type&#39; instead.
+         * @param type Field &#39;type&#39; has been deprecated from provider version 1.218.0. New field &#39;access_group_type&#39; instead.
          * 
          * @return builder
          * 

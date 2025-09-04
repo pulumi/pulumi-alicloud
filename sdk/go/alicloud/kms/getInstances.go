@@ -14,6 +14,185 @@ import (
 // This data source provides Kms Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/)
 //
 // > **NOTE:** Available since v1.242.0.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "terraform-example";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// current, err := alicloud.GetAccount(ctx, map[string]interface{}{
+// }, nil);
+// if err != nil {
+// return err
+// }
+// vpc_amp_instance_example, err := vpc.NewNetwork(ctx, "vpc-amp-instance-example", &vpc.NetworkArgs{
+// CidrBlock: pulumi.String("172.16.0.0/12"),
+// VpcName: pulumi.String(name),
+// })
+// if err != nil {
+// return err
+// }
+// vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
+// VpcId: vpc_amp_instance_example.ID(),
+// ZoneId: pulumi.String("cn-hangzhou-k"),
+// CidrBlock: pulumi.String("172.16.1.0/24"),
+// })
+// if err != nil {
+// return err
+// }
+// _, err = vpc.NewSwitch(ctx, "vswitch-j", &vpc.SwitchArgs{
+// VpcId: vpc_amp_instance_example.ID(),
+// ZoneId: pulumi.String("cn-hangzhou-j"),
+// CidrBlock: pulumi.String("172.16.2.0/24"),
+// })
+// if err != nil {
+// return err
+// }
+// invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+// Input: "%s3",
+// Args: []string{
+// name,
+// },
+// }, nil)
+// if err != nil {
+// return err
+// }
+// shareVPC, err := vpc.NewNetwork(ctx, "shareVPC", &vpc.NetworkArgs{
+// CidrBlock: pulumi.String("172.16.0.0/12"),
+// VpcName: pulumi.String(invokeFormat.Result),
+// })
+// if err != nil {
+// return err
+// }
+// shareVswitch, err := vpc.NewSwitch(ctx, "shareVswitch", &vpc.SwitchArgs{
+// VpcId: shareVPC.ID(),
+// ZoneId: pulumi.String("cn-hangzhou-k"),
+// CidrBlock: pulumi.String("172.16.1.0/24"),
+// })
+// if err != nil {
+// return err
+// }
+// invokeFormat1, err := std.Format(ctx, &std.FormatArgs{
+// Input: "%s5",
+// Args: []string{
+// name,
+// },
+// }, nil)
+// if err != nil {
+// return err
+// }
+// share_VPC2, err := vpc.NewNetwork(ctx, "share-VPC2", &vpc.NetworkArgs{
+// CidrBlock: pulumi.String("172.16.0.0/12"),
+// VpcName: pulumi.String(invokeFormat1.Result),
+// })
+// if err != nil {
+// return err
+// }
+// share_vswitch2, err := vpc.NewSwitch(ctx, "share-vswitch2", &vpc.SwitchArgs{
+// VpcId: share_VPC2.ID(),
+// ZoneId: pulumi.String("cn-hangzhou-k"),
+// CidrBlock: pulumi.String("172.16.1.0/24"),
+// })
+// if err != nil {
+// return err
+// }
+// invokeFormat2, err := std.Format(ctx, &std.FormatArgs{
+// Input: "%s7",
+// Args: []string{
+// name,
+// },
+// }, nil)
+// if err != nil {
+// return err
+// }
+// share_VPC3, err := vpc.NewNetwork(ctx, "share-VPC3", &vpc.NetworkArgs{
+// CidrBlock: pulumi.String("172.16.0.0/12"),
+// VpcName: pulumi.String(invokeFormat2.Result),
+// })
+// if err != nil {
+// return err
+// }
+// share_vsw3, err := vpc.NewSwitch(ctx, "share-vsw3", &vpc.SwitchArgs{
+// VpcId: share_VPC3.ID(),
+// ZoneId: pulumi.String("cn-hangzhou-k"),
+// CidrBlock: pulumi.String("172.16.1.0/24"),
+// })
+// if err != nil {
+// return err
+// }
+// defaultInstance, err := kms.NewInstance(ctx, "default", &kms.InstanceArgs{
+// VpcNum: pulumi.Int(7),
+// KeyNum: pulumi.Int(1000),
+// SecretNum: pulumi.Int(0),
+// Spec: pulumi.Int(1000),
+// RenewStatus: pulumi.String("ManualRenewal"),
+// ProductVersion: pulumi.String("3"),
+// RenewPeriod: pulumi.Int(3),
+// VpcId: vswitch.VpcId,
+// ZoneIds: pulumi.StringArray{
+// pulumi.String("cn-hangzhou-k"),
+// pulumi.String("cn-hangzhou-j"),
+// },
+// VswitchIds: pulumi.StringArray{
+// vswitch.ID(),
+// },
+// BindVpcs: kms.InstanceBindVpcArray{
+// &kms.InstanceBindVpcArgs{
+// VpcId: shareVswitch.VpcId,
+// RegionId: pulumi.String("cn-hangzhou"),
+// VswitchId: shareVswitch.ID(),
+// VpcOwnerId: pulumi.String(current.Id),
+// },
+// &kms.InstanceBindVpcArgs{
+// VpcId: share_vswitch2.VpcId,
+// RegionId: pulumi.String("cn-hangzhou"),
+// VswitchId: share_vswitch2.ID(),
+// VpcOwnerId: pulumi.String(current.Id),
+// },
+// &kms.InstanceBindVpcArgs{
+// VpcId: share_vsw3.VpcId,
+// RegionId: pulumi.String("cn-hangzhou"),
+// VswitchId: share_vsw3.ID(),
+// VpcOwnerId: pulumi.String(current.Id),
+// },
+// },
+// Log: pulumi.String("0"),
+// Period: pulumi.Int(1),
+// LogStorage: pulumi.Int(0),
+// PaymentType: pulumi.String("Subscription"),
+// })
+// if err != nil {
+// return err
+// }
+// _default := kms.GetInstancesOutput(ctx, kms.GetInstancesOutputArgs{
+// Ids: pulumi.StringArray{
+// defaultInstance.ID(),
+// },
+// }, nil);
+// ctx.Export("alicloudKmsInstanceExampleId", _default.ApplyT(func(_default kms.GetInstancesResult) (*string, error) {
+// return &default.Instances[0].InstanceId, nil
+// }).(pulumi.StringPtrOutput))
+// return nil
+// })
+// }
+// ```
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstancesResult

@@ -13,6 +13,314 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AntiBruteForceRuleProtocolType struct {
+	// Whether to enable RDP interception. Default value: `on`. Valid values: `on`, `off`.
+	Rdp *string `pulumi:"rdp"`
+	// Whether to enable the SqlServer interception method. Default value: `off`. Valid values: `on`, `off`.
+	SqlServer *string `pulumi:"sqlServer"`
+	// Whether to enable SSH interception. Default value: `on`. Valid values: `on`, `off`.
+	Ssh *string `pulumi:"ssh"`
+}
+
+// AntiBruteForceRuleProtocolTypeInput is an input type that accepts AntiBruteForceRuleProtocolTypeArgs and AntiBruteForceRuleProtocolTypeOutput values.
+// You can construct a concrete instance of `AntiBruteForceRuleProtocolTypeInput` via:
+//
+//	AntiBruteForceRuleProtocolTypeArgs{...}
+type AntiBruteForceRuleProtocolTypeInput interface {
+	pulumi.Input
+
+	ToAntiBruteForceRuleProtocolTypeOutput() AntiBruteForceRuleProtocolTypeOutput
+	ToAntiBruteForceRuleProtocolTypeOutputWithContext(context.Context) AntiBruteForceRuleProtocolTypeOutput
+}
+
+type AntiBruteForceRuleProtocolTypeArgs struct {
+	// Whether to enable RDP interception. Default value: `on`. Valid values: `on`, `off`.
+	Rdp pulumi.StringPtrInput `pulumi:"rdp"`
+	// Whether to enable the SqlServer interception method. Default value: `off`. Valid values: `on`, `off`.
+	SqlServer pulumi.StringPtrInput `pulumi:"sqlServer"`
+	// Whether to enable SSH interception. Default value: `on`. Valid values: `on`, `off`.
+	Ssh pulumi.StringPtrInput `pulumi:"ssh"`
+}
+
+func (AntiBruteForceRuleProtocolTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AntiBruteForceRuleProtocolType)(nil)).Elem()
+}
+
+func (i AntiBruteForceRuleProtocolTypeArgs) ToAntiBruteForceRuleProtocolTypeOutput() AntiBruteForceRuleProtocolTypeOutput {
+	return i.ToAntiBruteForceRuleProtocolTypeOutputWithContext(context.Background())
+}
+
+func (i AntiBruteForceRuleProtocolTypeArgs) ToAntiBruteForceRuleProtocolTypeOutputWithContext(ctx context.Context) AntiBruteForceRuleProtocolTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AntiBruteForceRuleProtocolTypeOutput)
+}
+
+func (i AntiBruteForceRuleProtocolTypeArgs) ToAntiBruteForceRuleProtocolTypePtrOutput() AntiBruteForceRuleProtocolTypePtrOutput {
+	return i.ToAntiBruteForceRuleProtocolTypePtrOutputWithContext(context.Background())
+}
+
+func (i AntiBruteForceRuleProtocolTypeArgs) ToAntiBruteForceRuleProtocolTypePtrOutputWithContext(ctx context.Context) AntiBruteForceRuleProtocolTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AntiBruteForceRuleProtocolTypeOutput).ToAntiBruteForceRuleProtocolTypePtrOutputWithContext(ctx)
+}
+
+// AntiBruteForceRuleProtocolTypePtrInput is an input type that accepts AntiBruteForceRuleProtocolTypeArgs, AntiBruteForceRuleProtocolTypePtr and AntiBruteForceRuleProtocolTypePtrOutput values.
+// You can construct a concrete instance of `AntiBruteForceRuleProtocolTypePtrInput` via:
+//
+//	        AntiBruteForceRuleProtocolTypeArgs{...}
+//
+//	or:
+//
+//	        nil
+type AntiBruteForceRuleProtocolTypePtrInput interface {
+	pulumi.Input
+
+	ToAntiBruteForceRuleProtocolTypePtrOutput() AntiBruteForceRuleProtocolTypePtrOutput
+	ToAntiBruteForceRuleProtocolTypePtrOutputWithContext(context.Context) AntiBruteForceRuleProtocolTypePtrOutput
+}
+
+type antiBruteForceRuleProtocolTypePtrType AntiBruteForceRuleProtocolTypeArgs
+
+func AntiBruteForceRuleProtocolTypePtr(v *AntiBruteForceRuleProtocolTypeArgs) AntiBruteForceRuleProtocolTypePtrInput {
+	return (*antiBruteForceRuleProtocolTypePtrType)(v)
+}
+
+func (*antiBruteForceRuleProtocolTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AntiBruteForceRuleProtocolType)(nil)).Elem()
+}
+
+func (i *antiBruteForceRuleProtocolTypePtrType) ToAntiBruteForceRuleProtocolTypePtrOutput() AntiBruteForceRuleProtocolTypePtrOutput {
+	return i.ToAntiBruteForceRuleProtocolTypePtrOutputWithContext(context.Background())
+}
+
+func (i *antiBruteForceRuleProtocolTypePtrType) ToAntiBruteForceRuleProtocolTypePtrOutputWithContext(ctx context.Context) AntiBruteForceRuleProtocolTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AntiBruteForceRuleProtocolTypePtrOutput)
+}
+
+type AntiBruteForceRuleProtocolTypeOutput struct{ *pulumi.OutputState }
+
+func (AntiBruteForceRuleProtocolTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AntiBruteForceRuleProtocolType)(nil)).Elem()
+}
+
+func (o AntiBruteForceRuleProtocolTypeOutput) ToAntiBruteForceRuleProtocolTypeOutput() AntiBruteForceRuleProtocolTypeOutput {
+	return o
+}
+
+func (o AntiBruteForceRuleProtocolTypeOutput) ToAntiBruteForceRuleProtocolTypeOutputWithContext(ctx context.Context) AntiBruteForceRuleProtocolTypeOutput {
+	return o
+}
+
+func (o AntiBruteForceRuleProtocolTypeOutput) ToAntiBruteForceRuleProtocolTypePtrOutput() AntiBruteForceRuleProtocolTypePtrOutput {
+	return o.ToAntiBruteForceRuleProtocolTypePtrOutputWithContext(context.Background())
+}
+
+func (o AntiBruteForceRuleProtocolTypeOutput) ToAntiBruteForceRuleProtocolTypePtrOutputWithContext(ctx context.Context) AntiBruteForceRuleProtocolTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AntiBruteForceRuleProtocolType) *AntiBruteForceRuleProtocolType {
+		return &v
+	}).(AntiBruteForceRuleProtocolTypePtrOutput)
+}
+
+// Whether to enable RDP interception. Default value: `on`. Valid values: `on`, `off`.
+func (o AntiBruteForceRuleProtocolTypeOutput) Rdp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AntiBruteForceRuleProtocolType) *string { return v.Rdp }).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable the SqlServer interception method. Default value: `off`. Valid values: `on`, `off`.
+func (o AntiBruteForceRuleProtocolTypeOutput) SqlServer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AntiBruteForceRuleProtocolType) *string { return v.SqlServer }).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable SSH interception. Default value: `on`. Valid values: `on`, `off`.
+func (o AntiBruteForceRuleProtocolTypeOutput) Ssh() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AntiBruteForceRuleProtocolType) *string { return v.Ssh }).(pulumi.StringPtrOutput)
+}
+
+type AntiBruteForceRuleProtocolTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AntiBruteForceRuleProtocolTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AntiBruteForceRuleProtocolType)(nil)).Elem()
+}
+
+func (o AntiBruteForceRuleProtocolTypePtrOutput) ToAntiBruteForceRuleProtocolTypePtrOutput() AntiBruteForceRuleProtocolTypePtrOutput {
+	return o
+}
+
+func (o AntiBruteForceRuleProtocolTypePtrOutput) ToAntiBruteForceRuleProtocolTypePtrOutputWithContext(ctx context.Context) AntiBruteForceRuleProtocolTypePtrOutput {
+	return o
+}
+
+func (o AntiBruteForceRuleProtocolTypePtrOutput) Elem() AntiBruteForceRuleProtocolTypeOutput {
+	return o.ApplyT(func(v *AntiBruteForceRuleProtocolType) AntiBruteForceRuleProtocolType {
+		if v != nil {
+			return *v
+		}
+		var ret AntiBruteForceRuleProtocolType
+		return ret
+	}).(AntiBruteForceRuleProtocolTypeOutput)
+}
+
+// Whether to enable RDP interception. Default value: `on`. Valid values: `on`, `off`.
+func (o AntiBruteForceRuleProtocolTypePtrOutput) Rdp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AntiBruteForceRuleProtocolType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Rdp
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable the SqlServer interception method. Default value: `off`. Valid values: `on`, `off`.
+func (o AntiBruteForceRuleProtocolTypePtrOutput) SqlServer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AntiBruteForceRuleProtocolType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SqlServer
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable SSH interception. Default value: `on`. Valid values: `on`, `off`.
+func (o AntiBruteForceRuleProtocolTypePtrOutput) Ssh() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AntiBruteForceRuleProtocolType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ssh
+	}).(pulumi.StringPtrOutput)
+}
+
+type AttackPathSensitiveAssetConfigAttackPathAssetList struct {
+	// Cloud product asset subtype.
+	AssetSubType int `pulumi:"assetSubType"`
+	// The asset type of the cloud product asset.
+	AssetType int `pulumi:"assetType"`
+	// The ID of the cloud product instance.
+	InstanceId string `pulumi:"instanceId"`
+	// The region ID of the cloud product.
+	RegionId string `pulumi:"regionId"`
+	// Cloud product asset vendor. Valid values: `0`.
+	Vendor int `pulumi:"vendor"`
+}
+
+// AttackPathSensitiveAssetConfigAttackPathAssetListInput is an input type that accepts AttackPathSensitiveAssetConfigAttackPathAssetListArgs and AttackPathSensitiveAssetConfigAttackPathAssetListOutput values.
+// You can construct a concrete instance of `AttackPathSensitiveAssetConfigAttackPathAssetListInput` via:
+//
+//	AttackPathSensitiveAssetConfigAttackPathAssetListArgs{...}
+type AttackPathSensitiveAssetConfigAttackPathAssetListInput interface {
+	pulumi.Input
+
+	ToAttackPathSensitiveAssetConfigAttackPathAssetListOutput() AttackPathSensitiveAssetConfigAttackPathAssetListOutput
+	ToAttackPathSensitiveAssetConfigAttackPathAssetListOutputWithContext(context.Context) AttackPathSensitiveAssetConfigAttackPathAssetListOutput
+}
+
+type AttackPathSensitiveAssetConfigAttackPathAssetListArgs struct {
+	// Cloud product asset subtype.
+	AssetSubType pulumi.IntInput `pulumi:"assetSubType"`
+	// The asset type of the cloud product asset.
+	AssetType pulumi.IntInput `pulumi:"assetType"`
+	// The ID of the cloud product instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The region ID of the cloud product.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// Cloud product asset vendor. Valid values: `0`.
+	Vendor pulumi.IntInput `pulumi:"vendor"`
+}
+
+func (AttackPathSensitiveAssetConfigAttackPathAssetListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackPathSensitiveAssetConfigAttackPathAssetList)(nil)).Elem()
+}
+
+func (i AttackPathSensitiveAssetConfigAttackPathAssetListArgs) ToAttackPathSensitiveAssetConfigAttackPathAssetListOutput() AttackPathSensitiveAssetConfigAttackPathAssetListOutput {
+	return i.ToAttackPathSensitiveAssetConfigAttackPathAssetListOutputWithContext(context.Background())
+}
+
+func (i AttackPathSensitiveAssetConfigAttackPathAssetListArgs) ToAttackPathSensitiveAssetConfigAttackPathAssetListOutputWithContext(ctx context.Context) AttackPathSensitiveAssetConfigAttackPathAssetListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackPathSensitiveAssetConfigAttackPathAssetListOutput)
+}
+
+// AttackPathSensitiveAssetConfigAttackPathAssetListArrayInput is an input type that accepts AttackPathSensitiveAssetConfigAttackPathAssetListArray and AttackPathSensitiveAssetConfigAttackPathAssetListArrayOutput values.
+// You can construct a concrete instance of `AttackPathSensitiveAssetConfigAttackPathAssetListArrayInput` via:
+//
+//	AttackPathSensitiveAssetConfigAttackPathAssetListArray{ AttackPathSensitiveAssetConfigAttackPathAssetListArgs{...} }
+type AttackPathSensitiveAssetConfigAttackPathAssetListArrayInput interface {
+	pulumi.Input
+
+	ToAttackPathSensitiveAssetConfigAttackPathAssetListArrayOutput() AttackPathSensitiveAssetConfigAttackPathAssetListArrayOutput
+	ToAttackPathSensitiveAssetConfigAttackPathAssetListArrayOutputWithContext(context.Context) AttackPathSensitiveAssetConfigAttackPathAssetListArrayOutput
+}
+
+type AttackPathSensitiveAssetConfigAttackPathAssetListArray []AttackPathSensitiveAssetConfigAttackPathAssetListInput
+
+func (AttackPathSensitiveAssetConfigAttackPathAssetListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AttackPathSensitiveAssetConfigAttackPathAssetList)(nil)).Elem()
+}
+
+func (i AttackPathSensitiveAssetConfigAttackPathAssetListArray) ToAttackPathSensitiveAssetConfigAttackPathAssetListArrayOutput() AttackPathSensitiveAssetConfigAttackPathAssetListArrayOutput {
+	return i.ToAttackPathSensitiveAssetConfigAttackPathAssetListArrayOutputWithContext(context.Background())
+}
+
+func (i AttackPathSensitiveAssetConfigAttackPathAssetListArray) ToAttackPathSensitiveAssetConfigAttackPathAssetListArrayOutputWithContext(ctx context.Context) AttackPathSensitiveAssetConfigAttackPathAssetListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackPathSensitiveAssetConfigAttackPathAssetListArrayOutput)
+}
+
+type AttackPathSensitiveAssetConfigAttackPathAssetListOutput struct{ *pulumi.OutputState }
+
+func (AttackPathSensitiveAssetConfigAttackPathAssetListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackPathSensitiveAssetConfigAttackPathAssetList)(nil)).Elem()
+}
+
+func (o AttackPathSensitiveAssetConfigAttackPathAssetListOutput) ToAttackPathSensitiveAssetConfigAttackPathAssetListOutput() AttackPathSensitiveAssetConfigAttackPathAssetListOutput {
+	return o
+}
+
+func (o AttackPathSensitiveAssetConfigAttackPathAssetListOutput) ToAttackPathSensitiveAssetConfigAttackPathAssetListOutputWithContext(ctx context.Context) AttackPathSensitiveAssetConfigAttackPathAssetListOutput {
+	return o
+}
+
+// Cloud product asset subtype.
+func (o AttackPathSensitiveAssetConfigAttackPathAssetListOutput) AssetSubType() pulumi.IntOutput {
+	return o.ApplyT(func(v AttackPathSensitiveAssetConfigAttackPathAssetList) int { return v.AssetSubType }).(pulumi.IntOutput)
+}
+
+// The asset type of the cloud product asset.
+func (o AttackPathSensitiveAssetConfigAttackPathAssetListOutput) AssetType() pulumi.IntOutput {
+	return o.ApplyT(func(v AttackPathSensitiveAssetConfigAttackPathAssetList) int { return v.AssetType }).(pulumi.IntOutput)
+}
+
+// The ID of the cloud product instance.
+func (o AttackPathSensitiveAssetConfigAttackPathAssetListOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v AttackPathSensitiveAssetConfigAttackPathAssetList) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The region ID of the cloud product.
+func (o AttackPathSensitiveAssetConfigAttackPathAssetListOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v AttackPathSensitiveAssetConfigAttackPathAssetList) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// Cloud product asset vendor. Valid values: `0`.
+func (o AttackPathSensitiveAssetConfigAttackPathAssetListOutput) Vendor() pulumi.IntOutput {
+	return o.ApplyT(func(v AttackPathSensitiveAssetConfigAttackPathAssetList) int { return v.Vendor }).(pulumi.IntOutput)
+}
+
+type AttackPathSensitiveAssetConfigAttackPathAssetListArrayOutput struct{ *pulumi.OutputState }
+
+func (AttackPathSensitiveAssetConfigAttackPathAssetListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AttackPathSensitiveAssetConfigAttackPathAssetList)(nil)).Elem()
+}
+
+func (o AttackPathSensitiveAssetConfigAttackPathAssetListArrayOutput) ToAttackPathSensitiveAssetConfigAttackPathAssetListArrayOutput() AttackPathSensitiveAssetConfigAttackPathAssetListArrayOutput {
+	return o
+}
+
+func (o AttackPathSensitiveAssetConfigAttackPathAssetListArrayOutput) ToAttackPathSensitiveAssetConfigAttackPathAssetListArrayOutputWithContext(ctx context.Context) AttackPathSensitiveAssetConfigAttackPathAssetListArrayOutput {
+	return o
+}
+
+func (o AttackPathSensitiveAssetConfigAttackPathAssetListArrayOutput) Index(i pulumi.IntInput) AttackPathSensitiveAssetConfigAttackPathAssetListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AttackPathSensitiveAssetConfigAttackPathAssetList {
+		return vs[0].([]AttackPathSensitiveAssetConfigAttackPathAssetList)[vs[1].(int)]
+	}).(AttackPathSensitiveAssetConfigAttackPathAssetListOutput)
+}
+
 type HoneypotPresetMeta struct {
 	// Burp counter.
 	Burp string `pulumi:"burp"`
@@ -2924,6 +3232,10 @@ func (o GetWebLockConfigsConfigArrayOutput) Index(i pulumi.IntInput) GetWebLockC
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AntiBruteForceRuleProtocolTypeInput)(nil)).Elem(), AntiBruteForceRuleProtocolTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AntiBruteForceRuleProtocolTypePtrInput)(nil)).Elem(), AntiBruteForceRuleProtocolTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackPathSensitiveAssetConfigAttackPathAssetListInput)(nil)).Elem(), AttackPathSensitiveAssetConfigAttackPathAssetListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackPathSensitiveAssetConfigAttackPathAssetListArrayInput)(nil)).Elem(), AttackPathSensitiveAssetConfigAttackPathAssetListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HoneypotPresetMetaInput)(nil)).Elem(), HoneypotPresetMetaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HoneypotPresetMetaPtrInput)(nil)).Elem(), HoneypotPresetMetaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HoneypotProbeHoneypotBindListInput)(nil)).Elem(), HoneypotProbeHoneypotBindListArgs{})
@@ -2962,6 +3274,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVulWhitelistsWhitelistArrayInput)(nil)).Elem(), GetVulWhitelistsWhitelistArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWebLockConfigsConfigInput)(nil)).Elem(), GetWebLockConfigsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWebLockConfigsConfigArrayInput)(nil)).Elem(), GetWebLockConfigsConfigArray{})
+	pulumi.RegisterOutputType(AntiBruteForceRuleProtocolTypeOutput{})
+	pulumi.RegisterOutputType(AntiBruteForceRuleProtocolTypePtrOutput{})
+	pulumi.RegisterOutputType(AttackPathSensitiveAssetConfigAttackPathAssetListOutput{})
+	pulumi.RegisterOutputType(AttackPathSensitiveAssetConfigAttackPathAssetListArrayOutput{})
 	pulumi.RegisterOutputType(HoneypotPresetMetaOutput{})
 	pulumi.RegisterOutputType(HoneypotPresetMetaPtrOutput{})
 	pulumi.RegisterOutputType(HoneypotProbeHoneypotBindListOutput{})

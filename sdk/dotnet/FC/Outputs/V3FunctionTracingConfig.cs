@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.FC.Outputs
     public sealed class V3FunctionTracingConfig
     {
         /// <summary>
-        /// Tracing parameters.
+        /// Tracing parameters
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Params;
         /// <summary>

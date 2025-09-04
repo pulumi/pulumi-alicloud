@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class V3FunctionTracingConfig {
     /**
-     * @return Tracing parameters.
+     * @return Tracing parameters
      * 
      */
     private @Nullable Map<String,String> params;
@@ -25,7 +25,7 @@ public final class V3FunctionTracingConfig {
 
     private V3FunctionTracingConfig() {}
     /**
-     * @return Tracing parameters.
+     * @return Tracing parameters
      * 
      */
     public Map<String,String> params() {

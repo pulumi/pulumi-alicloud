@@ -42,25 +42,25 @@ import (
 //			}
 //			defaultTemplate, err := oos.NewTemplate(ctx, "default", &oos.TemplateArgs{
 //				Content: pulumi.String(`  {
-//	    "FormatVersion": "OOS-2019-06-01",
-//	    "Description": "Update Describe instances of given status",
-//	    "Parameters":{
-//	      "Status":{
-//	        "Type": "String",
-//	        "Description": "(Required) The status of the Ecs instance."
+//	    \"FormatVersion\": \"OOS-2019-06-01\",
+//	    \"Description\": \"Update Describe instances of given status\",
+//	    \"Parameters\":{
+//	      \"Status\":{
+//	        \"Type\": \"String\",
+//	        \"Description\": \"(Required) The status of the Ecs instance.\"
 //	      }
 //	    },
-//	    "Tasks": [
+//	    \"Tasks\": [
 //	      {
-//	        "Properties" :{
-//	          "Parameters":{
-//	            "Status": "{{ Status }}"
+//	        \"Properties\" :{
+//	          \"Parameters\":{
+//	            \"Status\": \"{{ Status }}\"
 //	          },
-//	          "API": "DescribeInstances",
-//	          "Service": "Ecs"
+//	          \"API\": \"DescribeInstances\",
+//	          \"Service\": \"Ecs\"
 //	        },
-//	        "Name": "foo",
-//	        "Action": "ACS::ExecuteApi"
+//	        \"Name\": \"foo\",
+//	        \"Action\": \"ACS::ExecuteApi\"
 //	      }]
 //	  }
 //
@@ -79,7 +79,7 @@ import (
 //			_, err = oos.NewExecution(ctx, "example", &oos.ExecutionArgs{
 //				TemplateName: defaultTemplate.TemplateName,
 //				Description:  pulumi.String("From TF Test"),
-//				Parameters:   pulumi.String("				{\"Status\":\"Running\"}\n"),
+//				Parameters:   pulumi.String("\\t\\t\\t\\t{\\\"Status\\\":\\\"Running\\\"}\n"),
 //			})
 //			if err != nil {
 //				return err

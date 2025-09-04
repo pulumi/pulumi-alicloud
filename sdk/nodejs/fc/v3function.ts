@@ -191,6 +191,10 @@ export class V3Function extends pulumi.CustomResource {
      */
     declare public readonly instanceConcurrency: pulumi.Output<number>;
     /**
+     * Instance isolation mode
+     */
+    declare public readonly instanceIsolationMode: pulumi.Output<string | undefined>;
+    /**
      * Instance lifecycle callback method configuration. See `instanceLifecycleConfig` below.
      */
     declare public readonly instanceLifecycleConfig: pulumi.Output<outputs.fc.V3FunctionInstanceLifecycleConfig | undefined>;
@@ -198,6 +202,10 @@ export class V3Function extends pulumi.CustomResource {
      * Allow function to access public network
      */
     declare public readonly internetAccess: pulumi.Output<boolean>;
+    /**
+     * Invocation Restriction Detail See `invocationRestriction` below.
+     */
+    declare public readonly invocationRestriction: pulumi.Output<outputs.fc.V3FunctionInvocationRestriction | undefined>;
     /**
      * Last time the function was Updated
      */
@@ -242,6 +250,14 @@ export class V3Function extends pulumi.CustomResource {
      * Function runtime type
      */
     declare public readonly runtime: pulumi.Output<string>;
+    /**
+     * The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
+     */
+    declare public readonly sessionAffinity: pulumi.Output<string | undefined>;
+    /**
+     * When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
+     */
+    declare public readonly sessionAffinityConfig: pulumi.Output<string | undefined>;
     /**
      * Function Status
      */
@@ -300,8 +316,10 @@ export class V3Function extends pulumi.CustomResource {
             resourceInputs["gpuConfig"] = state?.gpuConfig;
             resourceInputs["handler"] = state?.handler;
             resourceInputs["instanceConcurrency"] = state?.instanceConcurrency;
+            resourceInputs["instanceIsolationMode"] = state?.instanceIsolationMode;
             resourceInputs["instanceLifecycleConfig"] = state?.instanceLifecycleConfig;
             resourceInputs["internetAccess"] = state?.internetAccess;
+            resourceInputs["invocationRestriction"] = state?.invocationRestriction;
             resourceInputs["lastModifiedTime"] = state?.lastModifiedTime;
             resourceInputs["lastUpdateStatus"] = state?.lastUpdateStatus;
             resourceInputs["lastUpdateStatusReason"] = state?.lastUpdateStatusReason;
@@ -313,6 +331,8 @@ export class V3Function extends pulumi.CustomResource {
             resourceInputs["ossMountConfig"] = state?.ossMountConfig;
             resourceInputs["role"] = state?.role;
             resourceInputs["runtime"] = state?.runtime;
+            resourceInputs["sessionAffinity"] = state?.sessionAffinity;
+            resourceInputs["sessionAffinityConfig"] = state?.sessionAffinityConfig;
             resourceInputs["state"] = state?.state;
             resourceInputs["stateReason"] = state?.stateReason;
             resourceInputs["stateReasonCode"] = state?.stateReasonCode;
@@ -340,15 +360,19 @@ export class V3Function extends pulumi.CustomResource {
             resourceInputs["gpuConfig"] = args?.gpuConfig;
             resourceInputs["handler"] = args?.handler;
             resourceInputs["instanceConcurrency"] = args?.instanceConcurrency;
+            resourceInputs["instanceIsolationMode"] = args?.instanceIsolationMode;
             resourceInputs["instanceLifecycleConfig"] = args?.instanceLifecycleConfig;
             resourceInputs["internetAccess"] = args?.internetAccess;
-            resourceInputs["layers"] = args?.layers ? pulumi.secret(args.layers) : undefined;
+            resourceInputs["invocationRestriction"] = args?.invocationRestriction;
+            resourceInputs["layers"] = args?.layers;
             resourceInputs["logConfig"] = args?.logConfig;
             resourceInputs["memorySize"] = args?.memorySize;
             resourceInputs["nasConfig"] = args?.nasConfig;
             resourceInputs["ossMountConfig"] = args?.ossMountConfig;
             resourceInputs["role"] = args?.role;
             resourceInputs["runtime"] = args?.runtime;
+            resourceInputs["sessionAffinity"] = args?.sessionAffinity;
+            resourceInputs["sessionAffinityConfig"] = args?.sessionAffinityConfig;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["timeout"] = args?.timeout;
             resourceInputs["vpcConfig"] = args?.vpcConfig;
@@ -366,8 +390,6 @@ export class V3Function extends pulumi.CustomResource {
             resourceInputs["tracingConfig"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["layers"] };
-        opts = pulumi.mergeOptions(opts, secretOpts);
         super(V3Function.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -441,6 +463,10 @@ export interface V3FunctionState {
      */
     instanceConcurrency?: pulumi.Input<number>;
     /**
+     * Instance isolation mode
+     */
+    instanceIsolationMode?: pulumi.Input<string>;
+    /**
      * Instance lifecycle callback method configuration. See `instanceLifecycleConfig` below.
      */
     instanceLifecycleConfig?: pulumi.Input<inputs.fc.V3FunctionInstanceLifecycleConfig>;
@@ -448,6 +474,10 @@ export interface V3FunctionState {
      * Allow function to access public network
      */
     internetAccess?: pulumi.Input<boolean>;
+    /**
+     * Invocation Restriction Detail See `invocationRestriction` below.
+     */
+    invocationRestriction?: pulumi.Input<inputs.fc.V3FunctionInvocationRestriction>;
     /**
      * Last time the function was Updated
      */
@@ -492,6 +522,14 @@ export interface V3FunctionState {
      * Function runtime type
      */
     runtime?: pulumi.Input<string>;
+    /**
+     * The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
+     */
+    sessionAffinity?: pulumi.Input<string>;
+    /**
+     * When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
+     */
+    sessionAffinityConfig?: pulumi.Input<string>;
     /**
      * Function Status
      */
@@ -575,6 +613,10 @@ export interface V3FunctionArgs {
      */
     instanceConcurrency?: pulumi.Input<number>;
     /**
+     * Instance isolation mode
+     */
+    instanceIsolationMode?: pulumi.Input<string>;
+    /**
      * Instance lifecycle callback method configuration. See `instanceLifecycleConfig` below.
      */
     instanceLifecycleConfig?: pulumi.Input<inputs.fc.V3FunctionInstanceLifecycleConfig>;
@@ -582,6 +624,10 @@ export interface V3FunctionArgs {
      * Allow function to access public network
      */
     internetAccess?: pulumi.Input<boolean>;
+    /**
+     * Invocation Restriction Detail See `invocationRestriction` below.
+     */
+    invocationRestriction?: pulumi.Input<inputs.fc.V3FunctionInvocationRestriction>;
     /**
      * The list of layers.
      */
@@ -610,6 +656,14 @@ export interface V3FunctionArgs {
      * Function runtime type
      */
     runtime: pulumi.Input<string>;
+    /**
+     * The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
+     */
+    sessionAffinity?: pulumi.Input<string>;
+    /**
+     * When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
+     */
+    sessionAffinityConfig?: pulumi.Input<string>;
     /**
      * The tag of the resource
      */

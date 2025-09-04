@@ -34,8 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.integer;
- * import com.pulumi.random.integerArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.nas.AccessGroup;
  * import com.pulumi.alicloud.nas.AccessGroupArgs;
  * import com.pulumi.alicloud.nas.AccessRule;
@@ -162,6 +162,20 @@ public class AccessRule extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> priority() {
         return Codegen.optional(this.priority);
+    }
+    /**
+     * (Available since v1.256.0) The region ID.
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return (Available since v1.256.0) The region ID.
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
     }
     /**
      * RWAccess.

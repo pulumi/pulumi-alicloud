@@ -46,29 +46,29 @@ import (
 //				RuleContents: resourcemanager.AutoGroupingRuleRuleContentArray{
 //					&resourcemanager.AutoGroupingRuleRuleContentArgs{
 //						TargetResourceGroupCondition: pulumi.String(`    {
-//	        "children": [
+//	        \"children\": [
 //	      {
-//	        "desired": "rg-aek*****sbvy",
-//	        "featurePath": "$.resourceGroupId",
-//	        "featureSource": "RESOURCE",
-//	        "operator": "StringEquals"
+//	        \"desired\": \"rg-aek*****sbvy\",
+//	        \"featurePath\": \"$.resourceGroupId\",
+//	        \"featureSource\": \"RESOURCE\",
+//	        \"operator\": \"StringEquals\"
 //	      }
 //	        ],
-//	        "operator": "and"
+//	        \"operator\": \"and\"
 //	    }
 //
 // `),
 //
 //						AutoGroupingScopeCondition: pulumi.String(`    {
-//	        "children": [
+//	        \"children\": [
 //	      {
-//	        "desired": "name_a",
-//	        "featurePath": "$.resourceName",
-//	        "featureSource": "RESOURCE",
-//	        "operator": "StringEqualsAny"
+//	        \"desired\": \"name_a\",
+//	        \"featurePath\": \"$.resourceName\",
+//	        \"featureSource\": \"RESOURCE\",
+//	        \"operator\": \"StringEqualsAny\"
 //	      }
 //	        ],
-//	        "operator": "and"
+//	        \"operator\": \"and\"
 //	    }
 //
 // `),

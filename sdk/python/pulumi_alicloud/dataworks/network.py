@@ -176,6 +176,56 @@ class Network(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.241.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default5_bia4h = alicloud.vpc.Network("default5Bia4h",
+            description=name,
+            vpc_name=name,
+            cidr_block="10.0.0.0/8")
+        defaultss7s7_f = alicloud.vpc.Switch("defaultss7s7F",
+            description=name,
+            vpc_id=default5_bia4h.id,
+            zone_id="cn-beijing-g",
+            vswitch_name=std.format(input="%s1",
+                args=[name]).result,
+            cidr_block="10.0.0.0/24")
+        default_v_jv_kvl = alicloud.dataworks.DwResourceGroup("defaultVJvKvl",
+            payment_duration_unit="Month",
+            payment_type="PostPaid",
+            specification=500,
+            default_vswitch_id=defaultss7s7_f.id,
+            remark=name,
+            resource_group_name="network_openapi_example01",
+            default_vpc_id=default5_bia4h.id)
+        defaulte4zha_l = alicloud.vpc.Network("defaulte4zhaL",
+            description=name,
+            vpc_name=std.format(input="%s3",
+                args=[name]).result,
+            cidr_block="172.16.0.0/12")
+        default675v38 = alicloud.vpc.Switch("default675v38",
+            description=name,
+            vpc_id=defaulte4zha_l.id,
+            zone_id="cn-beijing-g",
+            vswitch_name=std.format(input="%s4",
+                args=[name]).result,
+            cidr_block="172.16.0.0/24")
+        default = alicloud.dataworks.Network("default",
+            vpc_id=defaulte4zha_l.id,
+            vswitch_id=default675v38.id,
+            dw_resource_group_id=default_v_jv_kvl.id)
+        ```
+
         ## Import
 
         Data Works Network can be imported using the id, e.g.
@@ -204,6 +254,56 @@ class Network(pulumi.CustomResource):
         For information about Data Works Network and how to use it, see [What is Network](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2024-05-18-createnetwork).
 
         > **NOTE:** Available since v1.241.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default5_bia4h = alicloud.vpc.Network("default5Bia4h",
+            description=name,
+            vpc_name=name,
+            cidr_block="10.0.0.0/8")
+        defaultss7s7_f = alicloud.vpc.Switch("defaultss7s7F",
+            description=name,
+            vpc_id=default5_bia4h.id,
+            zone_id="cn-beijing-g",
+            vswitch_name=std.format(input="%s1",
+                args=[name]).result,
+            cidr_block="10.0.0.0/24")
+        default_v_jv_kvl = alicloud.dataworks.DwResourceGroup("defaultVJvKvl",
+            payment_duration_unit="Month",
+            payment_type="PostPaid",
+            specification=500,
+            default_vswitch_id=defaultss7s7_f.id,
+            remark=name,
+            resource_group_name="network_openapi_example01",
+            default_vpc_id=default5_bia4h.id)
+        defaulte4zha_l = alicloud.vpc.Network("defaulte4zhaL",
+            description=name,
+            vpc_name=std.format(input="%s3",
+                args=[name]).result,
+            cidr_block="172.16.0.0/12")
+        default675v38 = alicloud.vpc.Switch("default675v38",
+            description=name,
+            vpc_id=defaulte4zha_l.id,
+            zone_id="cn-beijing-g",
+            vswitch_name=std.format(input="%s4",
+                args=[name]).result,
+            cidr_block="172.16.0.0/24")
+        default = alicloud.dataworks.Network("default",
+            vpc_id=defaulte4zha_l.id,
+            vswitch_id=default675v38.id,
+            dw_resource_group_id=default_v_jv_kvl.id)
+        ```
 
         ## Import
 

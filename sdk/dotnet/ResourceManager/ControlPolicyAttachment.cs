@@ -43,17 +43,17 @@ namespace Pulumi.AliCloud.ResourceManager
     ///         Description = name,
     ///         EffectScope = "RAM",
     ///         PolicyDocument = @"  {
-    ///     ""Version"": ""1"",
-    ///     ""Statement"": [
+    ///     \""Version\"": \""1\"",
+    ///     \""Statement\"": [
     ///       {
-    ///         ""Effect"": ""Deny"",
-    ///         ""Action"": [
-    ///           ""ram:UpdateRole"",
-    ///           ""ram:DeleteRole"",
-    ///           ""ram:AttachPolicyToRole"",
-    ///           ""ram:DetachPolicyFromRole""
+    ///         \""Effect\"": \""Deny\"",
+    ///         \""Action\"": [
+    ///           \""ram:UpdateRole\"",
+    ///           \""ram:DeleteRole\"",
+    ///           \""ram:AttachPolicyToRole\"",
+    ///           \""ram:DetachPolicyFromRole\""
     ///         ],
-    ///         ""Resource"": ""acs:ram:*:*:role/ResourceDirectoryAccountAccessRole""
+    ///         \""Resource\"": \""acs:ram:*:*:role/ResourceDirectoryAccountAccessRole\""
     ///       }
     ///     ]
     ///   }

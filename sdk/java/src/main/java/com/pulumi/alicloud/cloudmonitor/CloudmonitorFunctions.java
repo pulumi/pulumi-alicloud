@@ -6,7 +6,10 @@ package com.pulumi.alicloud.cloudmonitor;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.cloudmonitor.inputs.GetServiceHybridDoubleWritesArgs;
 import com.pulumi.alicloud.cloudmonitor.inputs.GetServiceHybridDoubleWritesPlainArgs;
+import com.pulumi.alicloud.cloudmonitor.inputs.GetServiceMetricAlarmRulesArgs;
+import com.pulumi.alicloud.cloudmonitor.inputs.GetServiceMetricAlarmRulesPlainArgs;
 import com.pulumi.alicloud.cloudmonitor.outputs.GetServiceHybridDoubleWritesResult;
+import com.pulumi.alicloud.cloudmonitor.outputs.GetServiceMetricAlarmRulesResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
@@ -497,5 +500,733 @@ public final class CloudmonitorFunctions {
      */
     public static CompletableFuture<GetServiceHybridDoubleWritesResult> getServiceHybridDoubleWritesPlain(GetServiceHybridDoubleWritesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cloudmonitor/getServiceHybridDoubleWrites:getServiceHybridDoubleWrites", TypeShape.of(GetServiceHybridDoubleWritesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cloud Monitor Service Metric Alarm Rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.256.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.cms.AlarmContactGroup;
+     * import com.pulumi.alicloud.cms.AlarmContactGroupArgs;
+     * import com.pulumi.alicloud.cms.Alarm;
+     * import com.pulumi.alicloud.cms.AlarmArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlarmEscalationsCriticalArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlarmEscalationsInfoArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlarmEscalationsWarnArgs;
+     * import com.pulumi.alicloud.cloudmonitor.CloudmonitorFunctions;
+     * import com.pulumi.alicloud.cloudmonitor.inputs.GetServiceMetricAlarmRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .status("Running")
+     *             .build());
+     * 
+     *         var defaultAlarmContactGroup = new AlarmContactGroup("defaultAlarmContactGroup", AlarmContactGroupArgs.builder()
+     *             .alarmContactGroupName(name)
+     *             .build());
+     * 
+     *         var defaultAlarm = new Alarm("defaultAlarm", AlarmArgs.builder()
+     *             .name(name)
+     *             .project("acs_ecs_dashboard")
+     *             .metric("disk_writebytes")
+     *             .period(900)
+     *             .silenceTime(300)
+     *             .webhook("https://www.aliyun.com")
+     *             .enabled(true)
+     *             .contactGroups(defaultAlarmContactGroup.alarmContactGroupName())
+     *             .effectiveInterval("06:00-20:00")
+     *             .metricDimensions("""
+     *   [
+     *     {
+     *       \"instanceId\": \"%s\",
+     *       \"device\": \"/dev/vda1\"
+     *     }
+     *   ]
+     * ", default_.ids()[0]))
+     *             .escalationsCritical(AlarmEscalationsCriticalArgs.builder()
+     *                 .statistics("Average")
+     *                 .comparisonOperator("<=")
+     *                 .threshold("90")
+     *                 .times(1)
+     *                 .build())
+     *             .escalationsInfo(AlarmEscalationsInfoArgs.builder()
+     *                 .statistics("Minimum")
+     *                 .comparisonOperator("!=")
+     *                 .threshold("20")
+     *                 .times(3)
+     *                 .build())
+     *             .escalationsWarn(AlarmEscalationsWarnArgs.builder()
+     *                 .statistics("Average")
+     *                 .comparisonOperator("==")
+     *                 .threshold("30")
+     *                 .times(5)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = CloudmonitorFunctions.getServiceMetricAlarmRules(GetServiceMetricAlarmRulesArgs.builder()
+     *             .ids(defaultAlarm.id())
+     *             .build());
+     * 
+     *         ctx.export("cloudMonitorServiceMetricAlarmRulesId0", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServiceMetricAlarmRulesResult> getServiceMetricAlarmRules() {
+        return getServiceMetricAlarmRules(GetServiceMetricAlarmRulesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Cloud Monitor Service Metric Alarm Rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.256.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.cms.AlarmContactGroup;
+     * import com.pulumi.alicloud.cms.AlarmContactGroupArgs;
+     * import com.pulumi.alicloud.cms.Alarm;
+     * import com.pulumi.alicloud.cms.AlarmArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlarmEscalationsCriticalArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlarmEscalationsInfoArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlarmEscalationsWarnArgs;
+     * import com.pulumi.alicloud.cloudmonitor.CloudmonitorFunctions;
+     * import com.pulumi.alicloud.cloudmonitor.inputs.GetServiceMetricAlarmRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .status("Running")
+     *             .build());
+     * 
+     *         var defaultAlarmContactGroup = new AlarmContactGroup("defaultAlarmContactGroup", AlarmContactGroupArgs.builder()
+     *             .alarmContactGroupName(name)
+     *             .build());
+     * 
+     *         var defaultAlarm = new Alarm("defaultAlarm", AlarmArgs.builder()
+     *             .name(name)
+     *             .project("acs_ecs_dashboard")
+     *             .metric("disk_writebytes")
+     *             .period(900)
+     *             .silenceTime(300)
+     *             .webhook("https://www.aliyun.com")
+     *             .enabled(true)
+     *             .contactGroups(defaultAlarmContactGroup.alarmContactGroupName())
+     *             .effectiveInterval("06:00-20:00")
+     *             .metricDimensions("""
+     *   [
+     *     {
+     *       \"instanceId\": \"%s\",
+     *       \"device\": \"/dev/vda1\"
+     *     }
+     *   ]
+     * ", default_.ids()[0]))
+     *             .escalationsCritical(AlarmEscalationsCriticalArgs.builder()
+     *                 .statistics("Average")
+     *                 .comparisonOperator("<=")
+     *                 .threshold("90")
+     *                 .times(1)
+     *                 .build())
+     *             .escalationsInfo(AlarmEscalationsInfoArgs.builder()
+     *                 .statistics("Minimum")
+     *                 .comparisonOperator("!=")
+     *                 .threshold("20")
+     *                 .times(3)
+     *                 .build())
+     *             .escalationsWarn(AlarmEscalationsWarnArgs.builder()
+     *                 .statistics("Average")
+     *                 .comparisonOperator("==")
+     *                 .threshold("30")
+     *                 .times(5)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = CloudmonitorFunctions.getServiceMetricAlarmRules(GetServiceMetricAlarmRulesArgs.builder()
+     *             .ids(defaultAlarm.id())
+     *             .build());
+     * 
+     *         ctx.export("cloudMonitorServiceMetricAlarmRulesId0", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetServiceMetricAlarmRulesResult> getServiceMetricAlarmRulesPlain() {
+        return getServiceMetricAlarmRulesPlain(GetServiceMetricAlarmRulesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Cloud Monitor Service Metric Alarm Rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.256.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.cms.AlarmContactGroup;
+     * import com.pulumi.alicloud.cms.AlarmContactGroupArgs;
+     * import com.pulumi.alicloud.cms.Alarm;
+     * import com.pulumi.alicloud.cms.AlarmArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlarmEscalationsCriticalArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlarmEscalationsInfoArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlarmEscalationsWarnArgs;
+     * import com.pulumi.alicloud.cloudmonitor.CloudmonitorFunctions;
+     * import com.pulumi.alicloud.cloudmonitor.inputs.GetServiceMetricAlarmRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .status("Running")
+     *             .build());
+     * 
+     *         var defaultAlarmContactGroup = new AlarmContactGroup("defaultAlarmContactGroup", AlarmContactGroupArgs.builder()
+     *             .alarmContactGroupName(name)
+     *             .build());
+     * 
+     *         var defaultAlarm = new Alarm("defaultAlarm", AlarmArgs.builder()
+     *             .name(name)
+     *             .project("acs_ecs_dashboard")
+     *             .metric("disk_writebytes")
+     *             .period(900)
+     *             .silenceTime(300)
+     *             .webhook("https://www.aliyun.com")
+     *             .enabled(true)
+     *             .contactGroups(defaultAlarmContactGroup.alarmContactGroupName())
+     *             .effectiveInterval("06:00-20:00")
+     *             .metricDimensions("""
+     *   [
+     *     {
+     *       \"instanceId\": \"%s\",
+     *       \"device\": \"/dev/vda1\"
+     *     }
+     *   ]
+     * ", default_.ids()[0]))
+     *             .escalationsCritical(AlarmEscalationsCriticalArgs.builder()
+     *                 .statistics("Average")
+     *                 .comparisonOperator("<=")
+     *                 .threshold("90")
+     *                 .times(1)
+     *                 .build())
+     *             .escalationsInfo(AlarmEscalationsInfoArgs.builder()
+     *                 .statistics("Minimum")
+     *                 .comparisonOperator("!=")
+     *                 .threshold("20")
+     *                 .times(3)
+     *                 .build())
+     *             .escalationsWarn(AlarmEscalationsWarnArgs.builder()
+     *                 .statistics("Average")
+     *                 .comparisonOperator("==")
+     *                 .threshold("30")
+     *                 .times(5)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = CloudmonitorFunctions.getServiceMetricAlarmRules(GetServiceMetricAlarmRulesArgs.builder()
+     *             .ids(defaultAlarm.id())
+     *             .build());
+     * 
+     *         ctx.export("cloudMonitorServiceMetricAlarmRulesId0", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServiceMetricAlarmRulesResult> getServiceMetricAlarmRules(GetServiceMetricAlarmRulesArgs args) {
+        return getServiceMetricAlarmRules(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Cloud Monitor Service Metric Alarm Rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.256.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.cms.AlarmContactGroup;
+     * import com.pulumi.alicloud.cms.AlarmContactGroupArgs;
+     * import com.pulumi.alicloud.cms.Alarm;
+     * import com.pulumi.alicloud.cms.AlarmArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlarmEscalationsCriticalArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlarmEscalationsInfoArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlarmEscalationsWarnArgs;
+     * import com.pulumi.alicloud.cloudmonitor.CloudmonitorFunctions;
+     * import com.pulumi.alicloud.cloudmonitor.inputs.GetServiceMetricAlarmRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .status("Running")
+     *             .build());
+     * 
+     *         var defaultAlarmContactGroup = new AlarmContactGroup("defaultAlarmContactGroup", AlarmContactGroupArgs.builder()
+     *             .alarmContactGroupName(name)
+     *             .build());
+     * 
+     *         var defaultAlarm = new Alarm("defaultAlarm", AlarmArgs.builder()
+     *             .name(name)
+     *             .project("acs_ecs_dashboard")
+     *             .metric("disk_writebytes")
+     *             .period(900)
+     *             .silenceTime(300)
+     *             .webhook("https://www.aliyun.com")
+     *             .enabled(true)
+     *             .contactGroups(defaultAlarmContactGroup.alarmContactGroupName())
+     *             .effectiveInterval("06:00-20:00")
+     *             .metricDimensions("""
+     *   [
+     *     {
+     *       \"instanceId\": \"%s\",
+     *       \"device\": \"/dev/vda1\"
+     *     }
+     *   ]
+     * ", default_.ids()[0]))
+     *             .escalationsCritical(AlarmEscalationsCriticalArgs.builder()
+     *                 .statistics("Average")
+     *                 .comparisonOperator("<=")
+     *                 .threshold("90")
+     *                 .times(1)
+     *                 .build())
+     *             .escalationsInfo(AlarmEscalationsInfoArgs.builder()
+     *                 .statistics("Minimum")
+     *                 .comparisonOperator("!=")
+     *                 .threshold("20")
+     *                 .times(3)
+     *                 .build())
+     *             .escalationsWarn(AlarmEscalationsWarnArgs.builder()
+     *                 .statistics("Average")
+     *                 .comparisonOperator("==")
+     *                 .threshold("30")
+     *                 .times(5)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = CloudmonitorFunctions.getServiceMetricAlarmRules(GetServiceMetricAlarmRulesArgs.builder()
+     *             .ids(defaultAlarm.id())
+     *             .build());
+     * 
+     *         ctx.export("cloudMonitorServiceMetricAlarmRulesId0", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetServiceMetricAlarmRulesResult> getServiceMetricAlarmRulesPlain(GetServiceMetricAlarmRulesPlainArgs args) {
+        return getServiceMetricAlarmRulesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Cloud Monitor Service Metric Alarm Rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.256.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.cms.AlarmContactGroup;
+     * import com.pulumi.alicloud.cms.AlarmContactGroupArgs;
+     * import com.pulumi.alicloud.cms.Alarm;
+     * import com.pulumi.alicloud.cms.AlarmArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlarmEscalationsCriticalArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlarmEscalationsInfoArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlarmEscalationsWarnArgs;
+     * import com.pulumi.alicloud.cloudmonitor.CloudmonitorFunctions;
+     * import com.pulumi.alicloud.cloudmonitor.inputs.GetServiceMetricAlarmRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .status("Running")
+     *             .build());
+     * 
+     *         var defaultAlarmContactGroup = new AlarmContactGroup("defaultAlarmContactGroup", AlarmContactGroupArgs.builder()
+     *             .alarmContactGroupName(name)
+     *             .build());
+     * 
+     *         var defaultAlarm = new Alarm("defaultAlarm", AlarmArgs.builder()
+     *             .name(name)
+     *             .project("acs_ecs_dashboard")
+     *             .metric("disk_writebytes")
+     *             .period(900)
+     *             .silenceTime(300)
+     *             .webhook("https://www.aliyun.com")
+     *             .enabled(true)
+     *             .contactGroups(defaultAlarmContactGroup.alarmContactGroupName())
+     *             .effectiveInterval("06:00-20:00")
+     *             .metricDimensions("""
+     *   [
+     *     {
+     *       \"instanceId\": \"%s\",
+     *       \"device\": \"/dev/vda1\"
+     *     }
+     *   ]
+     * ", default_.ids()[0]))
+     *             .escalationsCritical(AlarmEscalationsCriticalArgs.builder()
+     *                 .statistics("Average")
+     *                 .comparisonOperator("<=")
+     *                 .threshold("90")
+     *                 .times(1)
+     *                 .build())
+     *             .escalationsInfo(AlarmEscalationsInfoArgs.builder()
+     *                 .statistics("Minimum")
+     *                 .comparisonOperator("!=")
+     *                 .threshold("20")
+     *                 .times(3)
+     *                 .build())
+     *             .escalationsWarn(AlarmEscalationsWarnArgs.builder()
+     *                 .statistics("Average")
+     *                 .comparisonOperator("==")
+     *                 .threshold("30")
+     *                 .times(5)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = CloudmonitorFunctions.getServiceMetricAlarmRules(GetServiceMetricAlarmRulesArgs.builder()
+     *             .ids(defaultAlarm.id())
+     *             .build());
+     * 
+     *         ctx.export("cloudMonitorServiceMetricAlarmRulesId0", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServiceMetricAlarmRulesResult> getServiceMetricAlarmRules(GetServiceMetricAlarmRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cloudmonitor/getServiceMetricAlarmRules:getServiceMetricAlarmRules", TypeShape.of(GetServiceMetricAlarmRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cloud Monitor Service Metric Alarm Rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.256.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.cms.AlarmContactGroup;
+     * import com.pulumi.alicloud.cms.AlarmContactGroupArgs;
+     * import com.pulumi.alicloud.cms.Alarm;
+     * import com.pulumi.alicloud.cms.AlarmArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlarmEscalationsCriticalArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlarmEscalationsInfoArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlarmEscalationsWarnArgs;
+     * import com.pulumi.alicloud.cloudmonitor.CloudmonitorFunctions;
+     * import com.pulumi.alicloud.cloudmonitor.inputs.GetServiceMetricAlarmRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .status("Running")
+     *             .build());
+     * 
+     *         var defaultAlarmContactGroup = new AlarmContactGroup("defaultAlarmContactGroup", AlarmContactGroupArgs.builder()
+     *             .alarmContactGroupName(name)
+     *             .build());
+     * 
+     *         var defaultAlarm = new Alarm("defaultAlarm", AlarmArgs.builder()
+     *             .name(name)
+     *             .project("acs_ecs_dashboard")
+     *             .metric("disk_writebytes")
+     *             .period(900)
+     *             .silenceTime(300)
+     *             .webhook("https://www.aliyun.com")
+     *             .enabled(true)
+     *             .contactGroups(defaultAlarmContactGroup.alarmContactGroupName())
+     *             .effectiveInterval("06:00-20:00")
+     *             .metricDimensions("""
+     *   [
+     *     {
+     *       \"instanceId\": \"%s\",
+     *       \"device\": \"/dev/vda1\"
+     *     }
+     *   ]
+     * ", default_.ids()[0]))
+     *             .escalationsCritical(AlarmEscalationsCriticalArgs.builder()
+     *                 .statistics("Average")
+     *                 .comparisonOperator("<=")
+     *                 .threshold("90")
+     *                 .times(1)
+     *                 .build())
+     *             .escalationsInfo(AlarmEscalationsInfoArgs.builder()
+     *                 .statistics("Minimum")
+     *                 .comparisonOperator("!=")
+     *                 .threshold("20")
+     *                 .times(3)
+     *                 .build())
+     *             .escalationsWarn(AlarmEscalationsWarnArgs.builder()
+     *                 .statistics("Average")
+     *                 .comparisonOperator("==")
+     *                 .threshold("30")
+     *                 .times(5)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = CloudmonitorFunctions.getServiceMetricAlarmRules(GetServiceMetricAlarmRulesArgs.builder()
+     *             .ids(defaultAlarm.id())
+     *             .build());
+     * 
+     *         ctx.export("cloudMonitorServiceMetricAlarmRulesId0", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServiceMetricAlarmRulesResult> getServiceMetricAlarmRules(GetServiceMetricAlarmRulesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cloudmonitor/getServiceMetricAlarmRules:getServiceMetricAlarmRules", TypeShape.of(GetServiceMetricAlarmRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cloud Monitor Service Metric Alarm Rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.256.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.cms.AlarmContactGroup;
+     * import com.pulumi.alicloud.cms.AlarmContactGroupArgs;
+     * import com.pulumi.alicloud.cms.Alarm;
+     * import com.pulumi.alicloud.cms.AlarmArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlarmEscalationsCriticalArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlarmEscalationsInfoArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlarmEscalationsWarnArgs;
+     * import com.pulumi.alicloud.cloudmonitor.CloudmonitorFunctions;
+     * import com.pulumi.alicloud.cloudmonitor.inputs.GetServiceMetricAlarmRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
+     *             .status("Running")
+     *             .build());
+     * 
+     *         var defaultAlarmContactGroup = new AlarmContactGroup("defaultAlarmContactGroup", AlarmContactGroupArgs.builder()
+     *             .alarmContactGroupName(name)
+     *             .build());
+     * 
+     *         var defaultAlarm = new Alarm("defaultAlarm", AlarmArgs.builder()
+     *             .name(name)
+     *             .project("acs_ecs_dashboard")
+     *             .metric("disk_writebytes")
+     *             .period(900)
+     *             .silenceTime(300)
+     *             .webhook("https://www.aliyun.com")
+     *             .enabled(true)
+     *             .contactGroups(defaultAlarmContactGroup.alarmContactGroupName())
+     *             .effectiveInterval("06:00-20:00")
+     *             .metricDimensions("""
+     *   [
+     *     {
+     *       \"instanceId\": \"%s\",
+     *       \"device\": \"/dev/vda1\"
+     *     }
+     *   ]
+     * ", default_.ids()[0]))
+     *             .escalationsCritical(AlarmEscalationsCriticalArgs.builder()
+     *                 .statistics("Average")
+     *                 .comparisonOperator("<=")
+     *                 .threshold("90")
+     *                 .times(1)
+     *                 .build())
+     *             .escalationsInfo(AlarmEscalationsInfoArgs.builder()
+     *                 .statistics("Minimum")
+     *                 .comparisonOperator("!=")
+     *                 .threshold("20")
+     *                 .times(3)
+     *                 .build())
+     *             .escalationsWarn(AlarmEscalationsWarnArgs.builder()
+     *                 .statistics("Average")
+     *                 .comparisonOperator("==")
+     *                 .threshold("30")
+     *                 .times(5)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = CloudmonitorFunctions.getServiceMetricAlarmRules(GetServiceMetricAlarmRulesArgs.builder()
+     *             .ids(defaultAlarm.id())
+     *             .build());
+     * 
+     *         ctx.export("cloudMonitorServiceMetricAlarmRulesId0", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetServiceMetricAlarmRulesResult> getServiceMetricAlarmRulesPlain(GetServiceMetricAlarmRulesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:cloudmonitor/getServiceMetricAlarmRules:getServiceMetricAlarmRules", TypeShape.of(GetServiceMetricAlarmRulesResult.class), args, Utilities.withVersion(options));
     }
 }

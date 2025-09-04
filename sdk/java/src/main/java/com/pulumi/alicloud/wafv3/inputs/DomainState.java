@@ -7,7 +7,9 @@ import com.pulumi.alicloud.wafv3.inputs.DomainListenArgs;
 import com.pulumi.alicloud.wafv3.inputs.DomainRedirectArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,14 +20,16 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     public static final DomainState Empty = new DomainState();
 
     /**
-     * The access type of the WAF instance. Value: **share** (default): CNAME access.
+     * The mode in which the domain name is added to WAF. Valid values:
+     * share: CNAME record mode. This is the default value.
      * 
      */
     @Import(name="accessType")
     private @Nullable Output<String> accessType;
 
     /**
-     * @return The access type of the WAF instance. Value: **share** (default): CNAME access.
+     * @return The mode in which the domain name is added to WAF. Valid values:
+     * share: CNAME record mode. This is the default value.
      * 
      */
     public Optional<Output<String>> accessType() {
@@ -48,14 +52,29 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * WAF instance ID
+     * The domain ID.
+     * 
+     */
+    @Import(name="domainId")
+    private @Nullable Output<String> domainId;
+
+    /**
+     * @return The domain ID.
+     * 
+     */
+    public Optional<Output<String>> domainId() {
+        return Optional.ofNullable(this.domainId);
+    }
+
+    /**
+     * The ID of the Web Application Firewall (WAF) instance.
      * 
      */
     @Import(name="instanceId")
     private @Nullable Output<String> instanceId;
 
     /**
-     * @return WAF instance ID
+     * @return The ID of the Web Application Firewall (WAF) instance.
      * 
      */
     public Optional<Output<String>> instanceId() {
@@ -93,14 +112,14 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the resource group.
+     * The ID of the Alibaba Cloud resource group.
      * 
      */
     @Import(name="resourceManagerResourceGroupId")
     private @Nullable Output<String> resourceManagerResourceGroupId;
 
     /**
-     * @return The ID of the resource group.
+     * @return The ID of the Alibaba Cloud resource group.
      * 
      */
     public Optional<Output<String>> resourceManagerResourceGroupId() {
@@ -108,18 +127,33 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the resource.
+     * The status of the domain name.
      * 
      */
     @Import(name="status")
-    private @Nullable Output<String> status;
+    private @Nullable Output<Integer> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the domain name.
      * 
      */
-    public Optional<Output<String>> status() {
+    public Optional<Output<Integer>> status() {
         return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * The tags. You can specify up to 20 tags.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return The tags. You can specify up to 20 tags.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     private DomainState() {}
@@ -127,11 +161,13 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     private DomainState(DomainState $) {
         this.accessType = $.accessType;
         this.domain = $.domain;
+        this.domainId = $.domainId;
         this.instanceId = $.instanceId;
         this.listen = $.listen;
         this.redirect = $.redirect;
         this.resourceManagerResourceGroupId = $.resourceManagerResourceGroupId;
         this.status = $.status;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -153,7 +189,8 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessType The access type of the WAF instance. Value: **share** (default): CNAME access.
+         * @param accessType The mode in which the domain name is added to WAF. Valid values:
+         * share: CNAME record mode. This is the default value.
          * 
          * @return builder
          * 
@@ -164,7 +201,8 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessType The access type of the WAF instance. Value: **share** (default): CNAME access.
+         * @param accessType The mode in which the domain name is added to WAF. Valid values:
+         * share: CNAME record mode. This is the default value.
          * 
          * @return builder
          * 
@@ -195,7 +233,28 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId WAF instance ID
+         * @param domainId The domain ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder domainId(@Nullable Output<String> domainId) {
+            $.domainId = domainId;
+            return this;
+        }
+
+        /**
+         * @param domainId The domain ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder domainId(String domainId) {
+            return domainId(Output.of(domainId));
+        }
+
+        /**
+         * @param instanceId The ID of the Web Application Firewall (WAF) instance.
          * 
          * @return builder
          * 
@@ -206,7 +265,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId WAF instance ID
+         * @param instanceId The ID of the Web Application Firewall (WAF) instance.
          * 
          * @return builder
          * 
@@ -258,7 +317,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceManagerResourceGroupId The ID of the resource group.
+         * @param resourceManagerResourceGroupId The ID of the Alibaba Cloud resource group.
          * 
          * @return builder
          * 
@@ -269,7 +328,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceManagerResourceGroupId The ID of the resource group.
+         * @param resourceManagerResourceGroupId The ID of the Alibaba Cloud resource group.
          * 
          * @return builder
          * 
@@ -279,24 +338,45 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the domain name.
          * 
          * @return builder
          * 
          */
-        public Builder status(@Nullable Output<String> status) {
+        public Builder status(@Nullable Output<Integer> status) {
             $.status = status;
             return this;
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the domain name.
          * 
          * @return builder
          * 
          */
-        public Builder status(String status) {
+        public Builder status(Integer status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param tags The tags. You can specify up to 20 tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tags. You can specify up to 20 tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         public DomainState build() {

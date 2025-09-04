@@ -16,6 +16,90 @@ namespace Pulumi.AliCloud.Ebs
     /// 
     /// &gt; **NOTE:** Available since v1.196.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
+    ///     {
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var defaultGetRegions = AliCloud.Ebs.GetRegions.Invoke(new()
+    ///     {
+    ///         RegionId = @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultEcsDisk = new AliCloud.Ecs.EcsDisk("default", new()
+    ///     {
+    ///         ZoneId = defaultGetRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Zones[0]?.ZoneId),
+    ///         Category = "cloud_essd",
+    ///         DeleteAutoSnapshot = true,
+    ///         DeleteWithInstance = true,
+    ///         Description = name,
+    ///         DiskName = name,
+    ///         EnableAutoSnapshot = true,
+    ///         Encrypted = true,
+    ///         Size = 500,
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
+    ///             { "controlledBy", "ear" },
+    ///         },
+    ///     });
+    /// 
+    ///     var destination = new AliCloud.Ecs.EcsDisk("destination", new()
+    ///     {
+    ///         ZoneId = defaultGetRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Zones[1]?.ZoneId),
+    ///         Category = "cloud_essd",
+    ///         DeleteAutoSnapshot = true,
+    ///         DeleteWithInstance = true,
+    ///         Description = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s-destination",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         DiskName = name,
+    ///         EnableAutoSnapshot = true,
+    ///         Encrypted = true,
+    ///         Size = 500,
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
+    ///             { "controlledBy", "ear" },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultDiskReplicaPair = new AliCloud.Ebs.DiskReplicaPair("default", new()
+    ///     {
+    ///         DestinationDiskId = destination.Id,
+    ///         DestinationRegionId = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)),
+    ///         PaymentType = "POSTPAY",
+    ///         DestinationZoneId = destination.ZoneId,
+    ///         SourceZoneId = defaultEcsDisk.ZoneId,
+    ///         DiskId = defaultEcsDisk.Id,
+    ///         Description = name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Elastic Block Storage(EBS) Disk Replica Pair can be imported using the id, e.g.

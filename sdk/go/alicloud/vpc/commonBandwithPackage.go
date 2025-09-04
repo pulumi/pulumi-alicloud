@@ -71,6 +71,8 @@ type CommonBandwithPackage struct {
 	//
 	// > **NOTE:** This parameter is available only on the Alibaba Cloud China site.
 	Ratio pulumi.IntOutput `pulumi:"ratio"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// The ID of the resource group to which you want to move the resource.
 	//
 	// > **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
@@ -169,6 +171,8 @@ type commonBandwithPackageState struct {
 	//
 	// > **NOTE:** This parameter is available only on the Alibaba Cloud China site.
 	Ratio *int `pulumi:"ratio"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	RegionId *string `pulumi:"regionId"`
 	// The ID of the resource group to which you want to move the resource.
 	//
 	// > **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
@@ -235,6 +239,8 @@ type CommonBandwithPackageState struct {
 	//
 	// > **NOTE:** This parameter is available only on the Alibaba Cloud China site.
 	Ratio pulumi.IntPtrInput
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	RegionId pulumi.StringPtrInput
 	// The ID of the resource group to which you want to move the resource.
 	//
 	// > **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
@@ -543,6 +549,11 @@ func (o CommonBandwithPackageOutput) PaymentType() pulumi.StringOutput {
 // > **NOTE:** This parameter is available only on the Alibaba Cloud China site.
 func (o CommonBandwithPackageOutput) Ratio() pulumi.IntOutput {
 	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.IntOutput { return v.Ratio }).(pulumi.IntOutput)
+}
+
+// The pagination token that is used in the next request to retrieve a new page of results.
+func (o CommonBandwithPackageOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // The ID of the resource group to which you want to move the resource.

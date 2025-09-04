@@ -11,6 +11,40 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.236.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform_example";
+ * const defaultCAFUa9 = new alicloud.pai.WorkspaceWorkspace("defaultCAFUa9", {
+ *     description: name,
+ *     displayName: name,
+ *     workspaceName: name,
+ *     envTypes: ["prod"],
+ * });
+ * const defaultQRwWbv = new alicloud.pai.WorkspaceExperiment("defaultQRwWbv", {
+ *     accessibility: "PRIVATE",
+ *     artifactUri: "oss://example.oss-cn-hangzhou.aliyuncs.com/example/",
+ *     experimentName: std.format({
+ *         input: "%s1",
+ *         args: [name],
+ *     }).then(invoke => invoke.result),
+ *     workspaceId: defaultCAFUa9.id,
+ * });
+ * const _default = new alicloud.pai.WorkspaceRun("default", {
+ *     sourceType: "TrainingService",
+ *     sourceId: "759",
+ *     runName: name,
+ *     experimentId: defaultQRwWbv.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * PAI Workspace Run can be imported using the id, e.g.

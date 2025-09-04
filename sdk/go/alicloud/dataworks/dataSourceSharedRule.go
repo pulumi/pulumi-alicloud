@@ -20,6 +20,126 @@ import (
 //
 // > **NOTE:** Available since v1.237.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dataworks"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := random.NewInteger(ctx, "randint", &random.IntegerArgs{
+//				Max: 999,
+//				Min: 1,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultQeRfvU, err := dataworks.NewProject(ctx, "defaultQeRfvU", &dataworks.ProjectArgs{
+//				Description:    pulumi.String("源项目"),
+//				ProjectName:    pulumi.String(name),
+//				DisplayName:    pulumi.String("shared_source2"),
+//				PaiTaskEnabled: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s1",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultasjsH5, err := dataworks.NewProject(ctx, "defaultasjsH5", &dataworks.ProjectArgs{
+//				Description:    pulumi.String("目标空间"),
+//				ProjectName:    pulumi.String(invokeFormat.Result),
+//				DisplayName:    pulumi.String("shared_target2"),
+//				PaiTaskEnabled: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat1, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s2",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"address": []map[string]interface{}{
+//					map[string]interface{}{
+//						"host": "127.0.0.1",
+//						"port": "1234",
+//					},
+//				},
+//				"database":         "hive_database",
+//				"metaType":         "HiveMetastore",
+//				"metastoreUris":    "thrift://123:123",
+//				"version":          "2.3.9",
+//				"loginMode":        "Anonymous",
+//				"securityProtocol": "authTypeNone",
+//				"envType":          "Prod",
+//				"properties": map[string]interface{}{
+//					"key1": "value1",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			defaultvzu0wG, err := dataworks.NewDataSource(ctx, "defaultvzu0wG", &dataworks.DataSourceArgs{
+//				Type:                     pulumi.String("hive"),
+//				DataSourceName:           pulumi.String(invokeFormat1.Result),
+//				ConnectionProperties:     pulumi.String(json0),
+//				ProjectId:                defaultQeRfvU.ID(),
+//				ConnectionPropertiesMode: pulumi.String("UrlMode"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataworks.NewDataSourceSharedRule(ctx, "default", &dataworks.DataSourceSharedRuleArgs{
+//				TargetProjectId: defaultasjsH5.ID(),
+//				DataSourceId:    defaultvzu0wG.DataSourceId,
+//				EnvType:         pulumi.String("Prod"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Data Works Data Source Shared Rule can be imported using the id, e.g.

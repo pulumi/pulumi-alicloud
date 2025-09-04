@@ -32,16 +32,16 @@ namespace Pulumi.AliCloud.Ros
     ///     {
     ///         StackName = "tf-testaccstack",
     ///         TemplateBody = @"    {
-    ///     	""ROSTemplateFormatVersion"": ""2015-09-01""
+    ///     \t\""ROSTemplateFormatVersion\"": \""2015-09-01\""
     ///     }
     /// ",
     ///         StackPolicyBody = @"    {
-    ///     	""Statement"": [{
-    ///     		""Action"": ""Update:Delete"",
-    ///     		""Resource"": ""*"",
-    ///     		""Effect"": ""Allow"",
-    ///     		""Principal"": ""*""
-    ///     	}]
+    ///     \t\""Statement\"": [{
+    ///     \t\t\""Action\"": \""Update:Delete\"",
+    ///     \t\t\""Resource\"": \""*\"",
+    ///     \t\t\""Effect\"": \""Allow\"",
+    ///     \t\t\""Principal\"": \""*\""
+    ///     \t}]
     ///     }
     /// ",
     ///     });

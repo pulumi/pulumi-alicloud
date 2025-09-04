@@ -53,8 +53,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.ecs.Instance;
  * import com.pulumi.alicloud.ecs.InstanceArgs;
- * import com.pulumi.random.integer;
- * import com.pulumi.random.integerArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.hbr.Vault;
  * import com.pulumi.alicloud.hbr.VaultArgs;
  * import com.pulumi.alicloud.hbr.EcsBackupPlan;
@@ -135,10 +135,10 @@ import javax.annotation.Nullable;
  *                 "/home",
  *                 "/var")
  *             .exclude("""
- *   ["/home/exclude"]
+ *   [\"/home/exclude\"]
  *             """)
  *             .include("""
- *   ["/home/include"]
+ *   [\"/home/include\"]
  *             """)
  *             .build());
  * 

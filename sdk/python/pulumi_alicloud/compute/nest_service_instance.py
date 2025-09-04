@@ -539,11 +539,11 @@ class NestServiceInstance(pulumi.CustomResource):
                 "operation_start_time": "1681281179000",
                 "operation_end_time": "1681367579000",
                 "resources": default_instance.id.apply(lambda id: f\"\"\"    {{
-              "Type": "ResourceIds",
-              "RegionId": "cn-hangzhou",
-              "ResourceIds": {{
-              "ALIYUN::ECS::INSTANCE": [
-                "{id}"
+              \\"Type\\": \\"ResourceIds\\",
+              \\"RegionId\\": \\"cn-hangzhou\\",
+              \\"ResourceIds\\": {{
+              \\"ALIYUN::ECS::INSTANCE\\": [
+                \\"{id}\\"
                 ]
               }} 
             }}
@@ -640,11 +640,11 @@ class NestServiceInstance(pulumi.CustomResource):
                 "operation_start_time": "1681281179000",
                 "operation_end_time": "1681367579000",
                 "resources": default_instance.id.apply(lambda id: f\"\"\"    {{
-              "Type": "ResourceIds",
-              "RegionId": "cn-hangzhou",
-              "ResourceIds": {{
-              "ALIYUN::ECS::INSTANCE": [
-                "{id}"
+              \\"Type\\": \\"ResourceIds\\",
+              \\"RegionId\\": \\"cn-hangzhou\\",
+              \\"ResourceIds\\": {{
+              \\"ALIYUN::ECS::INSTANCE\\": [
+                \\"{id}\\"
                 ]
               }} 
             }}

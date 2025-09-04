@@ -7435,6 +7435,181 @@ func (o V3FunctionInstanceLifecycleConfigPreStopPtrOutput) Timeout() pulumi.IntP
 	}).(pulumi.IntPtrOutput)
 }
 
+type V3FunctionInvocationRestriction struct {
+	// Whether invocation is disabled
+	Disable *bool `pulumi:"disable"`
+	// Last time the function was Updated
+	LastModifiedTime *string `pulumi:"lastModifiedTime"`
+	// Disable Reason
+	Reason *string `pulumi:"reason"`
+}
+
+// V3FunctionInvocationRestrictionInput is an input type that accepts V3FunctionInvocationRestrictionArgs and V3FunctionInvocationRestrictionOutput values.
+// You can construct a concrete instance of `V3FunctionInvocationRestrictionInput` via:
+//
+//	V3FunctionInvocationRestrictionArgs{...}
+type V3FunctionInvocationRestrictionInput interface {
+	pulumi.Input
+
+	ToV3FunctionInvocationRestrictionOutput() V3FunctionInvocationRestrictionOutput
+	ToV3FunctionInvocationRestrictionOutputWithContext(context.Context) V3FunctionInvocationRestrictionOutput
+}
+
+type V3FunctionInvocationRestrictionArgs struct {
+	// Whether invocation is disabled
+	Disable pulumi.BoolPtrInput `pulumi:"disable"`
+	// Last time the function was Updated
+	LastModifiedTime pulumi.StringPtrInput `pulumi:"lastModifiedTime"`
+	// Disable Reason
+	Reason pulumi.StringPtrInput `pulumi:"reason"`
+}
+
+func (V3FunctionInvocationRestrictionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionInvocationRestriction)(nil)).Elem()
+}
+
+func (i V3FunctionInvocationRestrictionArgs) ToV3FunctionInvocationRestrictionOutput() V3FunctionInvocationRestrictionOutput {
+	return i.ToV3FunctionInvocationRestrictionOutputWithContext(context.Background())
+}
+
+func (i V3FunctionInvocationRestrictionArgs) ToV3FunctionInvocationRestrictionOutputWithContext(ctx context.Context) V3FunctionInvocationRestrictionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionInvocationRestrictionOutput)
+}
+
+func (i V3FunctionInvocationRestrictionArgs) ToV3FunctionInvocationRestrictionPtrOutput() V3FunctionInvocationRestrictionPtrOutput {
+	return i.ToV3FunctionInvocationRestrictionPtrOutputWithContext(context.Background())
+}
+
+func (i V3FunctionInvocationRestrictionArgs) ToV3FunctionInvocationRestrictionPtrOutputWithContext(ctx context.Context) V3FunctionInvocationRestrictionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionInvocationRestrictionOutput).ToV3FunctionInvocationRestrictionPtrOutputWithContext(ctx)
+}
+
+// V3FunctionInvocationRestrictionPtrInput is an input type that accepts V3FunctionInvocationRestrictionArgs, V3FunctionInvocationRestrictionPtr and V3FunctionInvocationRestrictionPtrOutput values.
+// You can construct a concrete instance of `V3FunctionInvocationRestrictionPtrInput` via:
+//
+//	        V3FunctionInvocationRestrictionArgs{...}
+//
+//	or:
+//
+//	        nil
+type V3FunctionInvocationRestrictionPtrInput interface {
+	pulumi.Input
+
+	ToV3FunctionInvocationRestrictionPtrOutput() V3FunctionInvocationRestrictionPtrOutput
+	ToV3FunctionInvocationRestrictionPtrOutputWithContext(context.Context) V3FunctionInvocationRestrictionPtrOutput
+}
+
+type v3functionInvocationRestrictionPtrType V3FunctionInvocationRestrictionArgs
+
+func V3FunctionInvocationRestrictionPtr(v *V3FunctionInvocationRestrictionArgs) V3FunctionInvocationRestrictionPtrInput {
+	return (*v3functionInvocationRestrictionPtrType)(v)
+}
+
+func (*v3functionInvocationRestrictionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionInvocationRestriction)(nil)).Elem()
+}
+
+func (i *v3functionInvocationRestrictionPtrType) ToV3FunctionInvocationRestrictionPtrOutput() V3FunctionInvocationRestrictionPtrOutput {
+	return i.ToV3FunctionInvocationRestrictionPtrOutputWithContext(context.Background())
+}
+
+func (i *v3functionInvocationRestrictionPtrType) ToV3FunctionInvocationRestrictionPtrOutputWithContext(ctx context.Context) V3FunctionInvocationRestrictionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionInvocationRestrictionPtrOutput)
+}
+
+type V3FunctionInvocationRestrictionOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionInvocationRestrictionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionInvocationRestriction)(nil)).Elem()
+}
+
+func (o V3FunctionInvocationRestrictionOutput) ToV3FunctionInvocationRestrictionOutput() V3FunctionInvocationRestrictionOutput {
+	return o
+}
+
+func (o V3FunctionInvocationRestrictionOutput) ToV3FunctionInvocationRestrictionOutputWithContext(ctx context.Context) V3FunctionInvocationRestrictionOutput {
+	return o
+}
+
+func (o V3FunctionInvocationRestrictionOutput) ToV3FunctionInvocationRestrictionPtrOutput() V3FunctionInvocationRestrictionPtrOutput {
+	return o.ToV3FunctionInvocationRestrictionPtrOutputWithContext(context.Background())
+}
+
+func (o V3FunctionInvocationRestrictionOutput) ToV3FunctionInvocationRestrictionPtrOutputWithContext(ctx context.Context) V3FunctionInvocationRestrictionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V3FunctionInvocationRestriction) *V3FunctionInvocationRestriction {
+		return &v
+	}).(V3FunctionInvocationRestrictionPtrOutput)
+}
+
+// Whether invocation is disabled
+func (o V3FunctionInvocationRestrictionOutput) Disable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v V3FunctionInvocationRestriction) *bool { return v.Disable }).(pulumi.BoolPtrOutput)
+}
+
+// Last time the function was Updated
+func (o V3FunctionInvocationRestrictionOutput) LastModifiedTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionInvocationRestriction) *string { return v.LastModifiedTime }).(pulumi.StringPtrOutput)
+}
+
+// Disable Reason
+func (o V3FunctionInvocationRestrictionOutput) Reason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionInvocationRestriction) *string { return v.Reason }).(pulumi.StringPtrOutput)
+}
+
+type V3FunctionInvocationRestrictionPtrOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionInvocationRestrictionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionInvocationRestriction)(nil)).Elem()
+}
+
+func (o V3FunctionInvocationRestrictionPtrOutput) ToV3FunctionInvocationRestrictionPtrOutput() V3FunctionInvocationRestrictionPtrOutput {
+	return o
+}
+
+func (o V3FunctionInvocationRestrictionPtrOutput) ToV3FunctionInvocationRestrictionPtrOutputWithContext(ctx context.Context) V3FunctionInvocationRestrictionPtrOutput {
+	return o
+}
+
+func (o V3FunctionInvocationRestrictionPtrOutput) Elem() V3FunctionInvocationRestrictionOutput {
+	return o.ApplyT(func(v *V3FunctionInvocationRestriction) V3FunctionInvocationRestriction {
+		if v != nil {
+			return *v
+		}
+		var ret V3FunctionInvocationRestriction
+		return ret
+	}).(V3FunctionInvocationRestrictionOutput)
+}
+
+// Whether invocation is disabled
+func (o V3FunctionInvocationRestrictionPtrOutput) Disable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *V3FunctionInvocationRestriction) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Last time the function was Updated
+func (o V3FunctionInvocationRestrictionPtrOutput) LastModifiedTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3FunctionInvocationRestriction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastModifiedTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Disable Reason
+func (o V3FunctionInvocationRestrictionPtrOutput) Reason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3FunctionInvocationRestriction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Reason
+	}).(pulumi.StringPtrOutput)
+}
+
 type V3FunctionLogConfig struct {
 	// After this feature is enabled, you can view core metrics such as instance-level CPU usage, memory usage, instance network status, and the number of requests within an instance. false: The default value, which means that instance-level metrics are turned off. true: indicates that instance-level metrics are enabled.
 	EnableInstanceMetrics *bool `pulumi:"enableInstanceMetrics"`
@@ -8203,7 +8378,7 @@ func (o V3FunctionOssMountConfigMountPointArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type V3FunctionTracingConfig struct {
-	// Tracing parameters.
+	// Tracing parameters
 	Params map[string]string `pulumi:"params"`
 	// The tracing protocol type. Currently, only Jaeger is supported.
 	Type *string `pulumi:"type"`
@@ -8221,7 +8396,7 @@ type V3FunctionTracingConfigInput interface {
 }
 
 type V3FunctionTracingConfigArgs struct {
-	// Tracing parameters.
+	// Tracing parameters
 	Params pulumi.StringMapInput `pulumi:"params"`
 	// The tracing protocol type. Currently, only Jaeger is supported.
 	Type pulumi.StringPtrInput `pulumi:"type"`
@@ -8304,7 +8479,7 @@ func (o V3FunctionTracingConfigOutput) ToV3FunctionTracingConfigPtrOutputWithCon
 	}).(V3FunctionTracingConfigPtrOutput)
 }
 
-// Tracing parameters.
+// Tracing parameters
 func (o V3FunctionTracingConfigOutput) Params() pulumi.StringMapOutput {
 	return o.ApplyT(func(v V3FunctionTracingConfig) map[string]string { return v.Params }).(pulumi.StringMapOutput)
 }
@@ -8338,7 +8513,7 @@ func (o V3FunctionTracingConfigPtrOutput) Elem() V3FunctionTracingConfigOutput {
 	}).(V3FunctionTracingConfigOutput)
 }
 
-// Tracing parameters.
+// Tracing parameters
 func (o V3FunctionTracingConfigPtrOutput) Params() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *V3FunctionTracingConfig) map[string]string {
 		if v == nil {
@@ -11085,6 +11260,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionInstanceLifecycleConfigInitializerPtrInput)(nil)).Elem(), V3FunctionInstanceLifecycleConfigInitializerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionInstanceLifecycleConfigPreStopInput)(nil)).Elem(), V3FunctionInstanceLifecycleConfigPreStopArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionInstanceLifecycleConfigPreStopPtrInput)(nil)).Elem(), V3FunctionInstanceLifecycleConfigPreStopArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionInvocationRestrictionInput)(nil)).Elem(), V3FunctionInvocationRestrictionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionInvocationRestrictionPtrInput)(nil)).Elem(), V3FunctionInvocationRestrictionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionLogConfigInput)(nil)).Elem(), V3FunctionLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionLogConfigPtrInput)(nil)).Elem(), V3FunctionLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionNasConfigInput)(nil)).Elem(), V3FunctionNasConfigArgs{})
@@ -11222,6 +11399,8 @@ func init() {
 	pulumi.RegisterOutputType(V3FunctionInstanceLifecycleConfigInitializerPtrOutput{})
 	pulumi.RegisterOutputType(V3FunctionInstanceLifecycleConfigPreStopOutput{})
 	pulumi.RegisterOutputType(V3FunctionInstanceLifecycleConfigPreStopPtrOutput{})
+	pulumi.RegisterOutputType(V3FunctionInvocationRestrictionOutput{})
+	pulumi.RegisterOutputType(V3FunctionInvocationRestrictionPtrOutput{})
 	pulumi.RegisterOutputType(V3FunctionLogConfigOutput{})
 	pulumi.RegisterOutputType(V3FunctionLogConfigPtrOutput{})
 	pulumi.RegisterOutputType(V3FunctionNasConfigOutput{})

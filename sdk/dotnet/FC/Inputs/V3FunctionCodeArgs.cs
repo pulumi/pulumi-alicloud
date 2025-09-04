@@ -12,69 +12,29 @@ namespace Pulumi.AliCloud.FC.Inputs
 
     public sealed class V3FunctionCodeArgs : global::Pulumi.ResourceArgs
     {
-        [Input("checksum")]
-        private Input<string>? _checksum;
-
         /// <summary>
         /// The CRC-64 value of the function code package.
         /// </summary>
-        public Input<string>? Checksum
-        {
-            get => _checksum;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _checksum = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
-
-        [Input("ossBucketName")]
-        private Input<string>? _ossBucketName;
+        [Input("checksum")]
+        public Input<string>? Checksum { get; set; }
 
         /// <summary>
         /// The name of the OSS Bucket that stores the function code ZIP package.
         /// </summary>
-        public Input<string>? OssBucketName
-        {
-            get => _ossBucketName;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _ossBucketName = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
-
-        [Input("ossObjectName")]
-        private Input<string>? _ossObjectName;
+        [Input("ossBucketName")]
+        public Input<string>? OssBucketName { get; set; }
 
         /// <summary>
         /// The name of the OSS Object that stores the function code ZIP package.
         /// </summary>
-        public Input<string>? OssObjectName
-        {
-            get => _ossObjectName;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _ossObjectName = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
-
-        [Input("zipFile")]
-        private Input<string>? _zipFile;
+        [Input("ossObjectName")]
+        public Input<string>? OssObjectName { get; set; }
 
         /// <summary>
         /// The Base 64 encoding of the function code ZIP package.
         /// </summary>
-        public Input<string>? ZipFile
-        {
-            get => _zipFile;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _zipFile = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("zipFile")]
+        public Input<string>? ZipFile { get; set; }
 
         public V3FunctionCodeArgs()
         {

@@ -39,8 +39,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetRegionsArgs;
- * import com.pulumi.random.integer;
- * import com.pulumi.random.integerArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.ram.Role;
  * import com.pulumi.alicloud.ram.RoleArgs;
  * import com.pulumi.alicloud.ram.Policy;
@@ -91,20 +91,20 @@ import javax.annotation.Nullable;
  *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
  *             .name(String.format("examplerole%s", defaultInteger.result()))
  *             .document("""
- * 	{
- * 		"Statement": [
- * 		  {
- * 			"Action": "sts:AssumeRole",
- * 			"Effect": "Allow",
- * 			"Principal": {
- * 			  "Service": [
- * 				"fc.aliyuncs.com"
- * 			  ]
- * 			}
- * 		  }
- * 		],
- * 		"Version": "1"
- * 	}
+ * \t{
+ * \t\t\"Statement\": [
+ * \t\t  {
+ * \t\t\t\"Action\": \"sts:AssumeRole\",
+ * \t\t\t\"Effect\": \"Allow\",
+ * \t\t\t\"Principal\": {
+ * \t\t\t  \"Service\": [
+ * \t\t\t\t\"fc.aliyuncs.com\"
+ * \t\t\t  ]
+ * \t\t\t}
+ * \t\t  }
+ * \t\t],
+ * \t\t\"Version\": \"1\"
+ * \t}
  *             """)
  *             .description("this is a example")
  *             .force(true)
@@ -113,16 +113,16 @@ import javax.annotation.Nullable;
  *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
  *             .policyName(String.format("examplepolicy%s", defaultInteger.result()))
  *             .policyDocument("""
- * 	{
- * 		"Version": "1",
- * 		"Statement": [
- * 		  {
- * 			"Action": "mns:*",
- * 			"Resource": "*",
- * 			"Effect": "Allow"
- * 		  }
- * 		]
- * 	  }
+ * \t{
+ * \t\t\"Version\": \"1\",
+ * \t\t\"Statement\": [
+ * \t\t  {
+ * \t\t\t\"Action\": \"mns:*\",
+ * \t\t\t\"Resource\": \"*\",
+ * \t\t\t\"Effect\": \"Allow\"
+ * \t\t  }
+ * \t\t]
+ * \t  }
  *             """)
  *             .build());
  * 

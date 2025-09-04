@@ -4,6 +4,8 @@
 package com.pulumi.alicloud.arms;
 
 import com.pulumi.alicloud.Utilities;
+import com.pulumi.alicloud.arms.inputs.GetAddonReleasesArgs;
+import com.pulumi.alicloud.arms.inputs.GetAddonReleasesPlainArgs;
 import com.pulumi.alicloud.arms.inputs.GetAlertContactGroupsArgs;
 import com.pulumi.alicloud.arms.inputs.GetAlertContactGroupsPlainArgs;
 import com.pulumi.alicloud.arms.inputs.GetAlertContactsArgs;
@@ -12,6 +14,16 @@ import com.pulumi.alicloud.arms.inputs.GetAlertRobotsArgs;
 import com.pulumi.alicloud.arms.inputs.GetAlertRobotsPlainArgs;
 import com.pulumi.alicloud.arms.inputs.GetDispatchRulesArgs;
 import com.pulumi.alicloud.arms.inputs.GetDispatchRulesPlainArgs;
+import com.pulumi.alicloud.arms.inputs.GetEnvCustomJobsArgs;
+import com.pulumi.alicloud.arms.inputs.GetEnvCustomJobsPlainArgs;
+import com.pulumi.alicloud.arms.inputs.GetEnvFeaturesArgs;
+import com.pulumi.alicloud.arms.inputs.GetEnvFeaturesPlainArgs;
+import com.pulumi.alicloud.arms.inputs.GetEnvPodMonitorsArgs;
+import com.pulumi.alicloud.arms.inputs.GetEnvPodMonitorsPlainArgs;
+import com.pulumi.alicloud.arms.inputs.GetEnvServiceMonitorsArgs;
+import com.pulumi.alicloud.arms.inputs.GetEnvServiceMonitorsPlainArgs;
+import com.pulumi.alicloud.arms.inputs.GetEnvironmentsArgs;
+import com.pulumi.alicloud.arms.inputs.GetEnvironmentsPlainArgs;
 import com.pulumi.alicloud.arms.inputs.GetIntegrationExportersArgs;
 import com.pulumi.alicloud.arms.inputs.GetIntegrationExportersPlainArgs;
 import com.pulumi.alicloud.arms.inputs.GetPrometheisArgs;
@@ -24,10 +36,16 @@ import com.pulumi.alicloud.arms.inputs.GetPrometheusMonitoringsPlainArgs;
 import com.pulumi.alicloud.arms.inputs.GetPrometheusPlainArgs;
 import com.pulumi.alicloud.arms.inputs.GetRemoteWritesArgs;
 import com.pulumi.alicloud.arms.inputs.GetRemoteWritesPlainArgs;
+import com.pulumi.alicloud.arms.outputs.GetAddonReleasesResult;
 import com.pulumi.alicloud.arms.outputs.GetAlertContactGroupsResult;
 import com.pulumi.alicloud.arms.outputs.GetAlertContactsResult;
 import com.pulumi.alicloud.arms.outputs.GetAlertRobotsResult;
 import com.pulumi.alicloud.arms.outputs.GetDispatchRulesResult;
+import com.pulumi.alicloud.arms.outputs.GetEnvCustomJobsResult;
+import com.pulumi.alicloud.arms.outputs.GetEnvFeaturesResult;
+import com.pulumi.alicloud.arms.outputs.GetEnvPodMonitorsResult;
+import com.pulumi.alicloud.arms.outputs.GetEnvServiceMonitorsResult;
+import com.pulumi.alicloud.arms.outputs.GetEnvironmentsResult;
 import com.pulumi.alicloud.arms.outputs.GetIntegrationExportersResult;
 import com.pulumi.alicloud.arms.outputs.GetPrometheisResult;
 import com.pulumi.alicloud.arms.outputs.GetPrometheusAlertRulesResult;
@@ -42,6 +60,846 @@ import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class ArmsFunctions {
+    /**
+     * This data source provides the ARMS Addon Releases of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicy;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicyArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.ecs.KeyPair;
+     * import com.pulumi.alicloud.ecs.KeyPairArgs;
+     * import com.pulumi.alicloud.cs.NodePool;
+     * import com.pulumi.alicloud.cs.NodePoolArgs;
+     * import com.pulumi.alicloud.arms.Environment;
+     * import com.pulumi.alicloud.arms.EnvironmentArgs;
+     * import com.pulumi.alicloud.arms.AddonRelease;
+     * import com.pulumi.alicloud.arms.AddonReleaseArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetAddonReleasesArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+     *             .build());
+     * 
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
+     *             .description("api-resource-test1-hz")
+     *             .cidrBlock("192.168.0.0/16")
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
+     *             .description("api-resource-test1-hz")
+     *             .vpcId(vpc.id())
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .zoneId(enhanced.zones()[0].zoneId())
+     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(_cidrBlock)
+     *                 .newbits(8)
+     *                 .netnum(8)
+     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *             .build());
+     * 
+     *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .repeatWeekdays(            
+     *                 "1",
+     *                 "2",
+     *                 "3")
+     *             .retentionDays(-1)
+     *             .timePoints(            
+     *                 "1",
+     *                 "22",
+     *                 "23")
+     *             .build());
+     * 
+     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(_zoneId)
+     *             .cpuCoreCount(2)
+     *             .memorySize(4)
+     *             .kubernetesNodeRole("Worker")
+     *             .instanceTypeFamily("ecs.sn1ne")
+     *             .build()));
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .clusterSpec("ack.pro.small")
+     *             .version("1.24.6-aliyun.1")
+     *             .newNatGateway(true)
+     *             .nodeCidrMask(26)
+     *             .proxyMode("ipvs")
+     *             .serviceCidr("172.23.0.0/16")
+     *             .podCidr("10.95.0.0/16")
+     *             .workerVswitchIds(vswitch.id())
+     *             .build());
+     * 
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
+     *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
+     *             .name("desired_size")
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .vswitchIds(vswitch.id())
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .systemDiskSize(40)
+     *             .keyName(defaultKeyPair.keyPairName())
+     *             .desiredSize("2")
+     *             .build());
+     * 
+     *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
+     *             .environmentType("CS")
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .bindResourceId(defaultNodePool.clusterId())
+     *             .environmentSubType("ManagedKubernetes")
+     *             .build());
+     * 
+     *         var defaultAddonRelease = new AddonRelease("defaultAddonRelease", AddonReleaseArgs.builder()
+     *             .aliyunLang("zh")
+     *             .addonName("mysql")
+     *             .environmentId(defaultEnvironment.id())
+     *             .addonVersion("0.0.2")
+     *             .values(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("host", "mysql-service.default"),
+     *                     jsonProperty("password", "roots"),
+     *                     jsonProperty("port", 3306),
+     *                     jsonProperty("username", "root")
+     *                 )))
+     *             .build());
+     * 
+     *         final var ids = ArmsFunctions.getAddonReleases(GetAddonReleasesArgs.builder()
+     *             .environmentId(defaultAddonRelease.environmentId())
+     *             .ids(defaultAddonRelease.id())
+     *             .build());
+     * 
+     *         ctx.export("armsEnvServiceMonitorsId0", ids.applyValue(_ids -> _ids.releases()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAddonReleasesResult> getAddonReleases(GetAddonReleasesArgs args) {
+        return getAddonReleases(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ARMS Addon Releases of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicy;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicyArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.ecs.KeyPair;
+     * import com.pulumi.alicloud.ecs.KeyPairArgs;
+     * import com.pulumi.alicloud.cs.NodePool;
+     * import com.pulumi.alicloud.cs.NodePoolArgs;
+     * import com.pulumi.alicloud.arms.Environment;
+     * import com.pulumi.alicloud.arms.EnvironmentArgs;
+     * import com.pulumi.alicloud.arms.AddonRelease;
+     * import com.pulumi.alicloud.arms.AddonReleaseArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetAddonReleasesArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+     *             .build());
+     * 
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
+     *             .description("api-resource-test1-hz")
+     *             .cidrBlock("192.168.0.0/16")
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
+     *             .description("api-resource-test1-hz")
+     *             .vpcId(vpc.id())
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .zoneId(enhanced.zones()[0].zoneId())
+     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(_cidrBlock)
+     *                 .newbits(8)
+     *                 .netnum(8)
+     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *             .build());
+     * 
+     *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .repeatWeekdays(            
+     *                 "1",
+     *                 "2",
+     *                 "3")
+     *             .retentionDays(-1)
+     *             .timePoints(            
+     *                 "1",
+     *                 "22",
+     *                 "23")
+     *             .build());
+     * 
+     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(_zoneId)
+     *             .cpuCoreCount(2)
+     *             .memorySize(4)
+     *             .kubernetesNodeRole("Worker")
+     *             .instanceTypeFamily("ecs.sn1ne")
+     *             .build()));
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .clusterSpec("ack.pro.small")
+     *             .version("1.24.6-aliyun.1")
+     *             .newNatGateway(true)
+     *             .nodeCidrMask(26)
+     *             .proxyMode("ipvs")
+     *             .serviceCidr("172.23.0.0/16")
+     *             .podCidr("10.95.0.0/16")
+     *             .workerVswitchIds(vswitch.id())
+     *             .build());
+     * 
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
+     *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
+     *             .name("desired_size")
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .vswitchIds(vswitch.id())
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .systemDiskSize(40)
+     *             .keyName(defaultKeyPair.keyPairName())
+     *             .desiredSize("2")
+     *             .build());
+     * 
+     *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
+     *             .environmentType("CS")
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .bindResourceId(defaultNodePool.clusterId())
+     *             .environmentSubType("ManagedKubernetes")
+     *             .build());
+     * 
+     *         var defaultAddonRelease = new AddonRelease("defaultAddonRelease", AddonReleaseArgs.builder()
+     *             .aliyunLang("zh")
+     *             .addonName("mysql")
+     *             .environmentId(defaultEnvironment.id())
+     *             .addonVersion("0.0.2")
+     *             .values(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("host", "mysql-service.default"),
+     *                     jsonProperty("password", "roots"),
+     *                     jsonProperty("port", 3306),
+     *                     jsonProperty("username", "root")
+     *                 )))
+     *             .build());
+     * 
+     *         final var ids = ArmsFunctions.getAddonReleases(GetAddonReleasesArgs.builder()
+     *             .environmentId(defaultAddonRelease.environmentId())
+     *             .ids(defaultAddonRelease.id())
+     *             .build());
+     * 
+     *         ctx.export("armsEnvServiceMonitorsId0", ids.applyValue(_ids -> _ids.releases()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAddonReleasesResult> getAddonReleasesPlain(GetAddonReleasesPlainArgs args) {
+        return getAddonReleasesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ARMS Addon Releases of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicy;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicyArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.ecs.KeyPair;
+     * import com.pulumi.alicloud.ecs.KeyPairArgs;
+     * import com.pulumi.alicloud.cs.NodePool;
+     * import com.pulumi.alicloud.cs.NodePoolArgs;
+     * import com.pulumi.alicloud.arms.Environment;
+     * import com.pulumi.alicloud.arms.EnvironmentArgs;
+     * import com.pulumi.alicloud.arms.AddonRelease;
+     * import com.pulumi.alicloud.arms.AddonReleaseArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetAddonReleasesArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+     *             .build());
+     * 
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
+     *             .description("api-resource-test1-hz")
+     *             .cidrBlock("192.168.0.0/16")
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
+     *             .description("api-resource-test1-hz")
+     *             .vpcId(vpc.id())
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .zoneId(enhanced.zones()[0].zoneId())
+     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(_cidrBlock)
+     *                 .newbits(8)
+     *                 .netnum(8)
+     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *             .build());
+     * 
+     *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .repeatWeekdays(            
+     *                 "1",
+     *                 "2",
+     *                 "3")
+     *             .retentionDays(-1)
+     *             .timePoints(            
+     *                 "1",
+     *                 "22",
+     *                 "23")
+     *             .build());
+     * 
+     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(_zoneId)
+     *             .cpuCoreCount(2)
+     *             .memorySize(4)
+     *             .kubernetesNodeRole("Worker")
+     *             .instanceTypeFamily("ecs.sn1ne")
+     *             .build()));
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .clusterSpec("ack.pro.small")
+     *             .version("1.24.6-aliyun.1")
+     *             .newNatGateway(true)
+     *             .nodeCidrMask(26)
+     *             .proxyMode("ipvs")
+     *             .serviceCidr("172.23.0.0/16")
+     *             .podCidr("10.95.0.0/16")
+     *             .workerVswitchIds(vswitch.id())
+     *             .build());
+     * 
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
+     *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
+     *             .name("desired_size")
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .vswitchIds(vswitch.id())
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .systemDiskSize(40)
+     *             .keyName(defaultKeyPair.keyPairName())
+     *             .desiredSize("2")
+     *             .build());
+     * 
+     *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
+     *             .environmentType("CS")
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .bindResourceId(defaultNodePool.clusterId())
+     *             .environmentSubType("ManagedKubernetes")
+     *             .build());
+     * 
+     *         var defaultAddonRelease = new AddonRelease("defaultAddonRelease", AddonReleaseArgs.builder()
+     *             .aliyunLang("zh")
+     *             .addonName("mysql")
+     *             .environmentId(defaultEnvironment.id())
+     *             .addonVersion("0.0.2")
+     *             .values(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("host", "mysql-service.default"),
+     *                     jsonProperty("password", "roots"),
+     *                     jsonProperty("port", 3306),
+     *                     jsonProperty("username", "root")
+     *                 )))
+     *             .build());
+     * 
+     *         final var ids = ArmsFunctions.getAddonReleases(GetAddonReleasesArgs.builder()
+     *             .environmentId(defaultAddonRelease.environmentId())
+     *             .ids(defaultAddonRelease.id())
+     *             .build());
+     * 
+     *         ctx.export("armsEnvServiceMonitorsId0", ids.applyValue(_ids -> _ids.releases()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAddonReleasesResult> getAddonReleases(GetAddonReleasesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:arms/getAddonReleases:getAddonReleases", TypeShape.of(GetAddonReleasesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ARMS Addon Releases of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicy;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicyArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.ecs.KeyPair;
+     * import com.pulumi.alicloud.ecs.KeyPairArgs;
+     * import com.pulumi.alicloud.cs.NodePool;
+     * import com.pulumi.alicloud.cs.NodePoolArgs;
+     * import com.pulumi.alicloud.arms.Environment;
+     * import com.pulumi.alicloud.arms.EnvironmentArgs;
+     * import com.pulumi.alicloud.arms.AddonRelease;
+     * import com.pulumi.alicloud.arms.AddonReleaseArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetAddonReleasesArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+     *             .build());
+     * 
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
+     *             .description("api-resource-test1-hz")
+     *             .cidrBlock("192.168.0.0/16")
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
+     *             .description("api-resource-test1-hz")
+     *             .vpcId(vpc.id())
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .zoneId(enhanced.zones()[0].zoneId())
+     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(_cidrBlock)
+     *                 .newbits(8)
+     *                 .netnum(8)
+     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *             .build());
+     * 
+     *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .repeatWeekdays(            
+     *                 "1",
+     *                 "2",
+     *                 "3")
+     *             .retentionDays(-1)
+     *             .timePoints(            
+     *                 "1",
+     *                 "22",
+     *                 "23")
+     *             .build());
+     * 
+     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(_zoneId)
+     *             .cpuCoreCount(2)
+     *             .memorySize(4)
+     *             .kubernetesNodeRole("Worker")
+     *             .instanceTypeFamily("ecs.sn1ne")
+     *             .build()));
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .clusterSpec("ack.pro.small")
+     *             .version("1.24.6-aliyun.1")
+     *             .newNatGateway(true)
+     *             .nodeCidrMask(26)
+     *             .proxyMode("ipvs")
+     *             .serviceCidr("172.23.0.0/16")
+     *             .podCidr("10.95.0.0/16")
+     *             .workerVswitchIds(vswitch.id())
+     *             .build());
+     * 
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
+     *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
+     *             .name("desired_size")
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .vswitchIds(vswitch.id())
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .systemDiskSize(40)
+     *             .keyName(defaultKeyPair.keyPairName())
+     *             .desiredSize("2")
+     *             .build());
+     * 
+     *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
+     *             .environmentType("CS")
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .bindResourceId(defaultNodePool.clusterId())
+     *             .environmentSubType("ManagedKubernetes")
+     *             .build());
+     * 
+     *         var defaultAddonRelease = new AddonRelease("defaultAddonRelease", AddonReleaseArgs.builder()
+     *             .aliyunLang("zh")
+     *             .addonName("mysql")
+     *             .environmentId(defaultEnvironment.id())
+     *             .addonVersion("0.0.2")
+     *             .values(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("host", "mysql-service.default"),
+     *                     jsonProperty("password", "roots"),
+     *                     jsonProperty("port", 3306),
+     *                     jsonProperty("username", "root")
+     *                 )))
+     *             .build());
+     * 
+     *         final var ids = ArmsFunctions.getAddonReleases(GetAddonReleasesArgs.builder()
+     *             .environmentId(defaultAddonRelease.environmentId())
+     *             .ids(defaultAddonRelease.id())
+     *             .build());
+     * 
+     *         ctx.export("armsEnvServiceMonitorsId0", ids.applyValue(_ids -> _ids.releases()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAddonReleasesResult> getAddonReleases(GetAddonReleasesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:arms/getAddonReleases:getAddonReleases", TypeShape.of(GetAddonReleasesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ARMS Addon Releases of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicy;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicyArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.ecs.KeyPair;
+     * import com.pulumi.alicloud.ecs.KeyPairArgs;
+     * import com.pulumi.alicloud.cs.NodePool;
+     * import com.pulumi.alicloud.cs.NodePoolArgs;
+     * import com.pulumi.alicloud.arms.Environment;
+     * import com.pulumi.alicloud.arms.EnvironmentArgs;
+     * import com.pulumi.alicloud.arms.AddonRelease;
+     * import com.pulumi.alicloud.arms.AddonReleaseArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetAddonReleasesArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+     *             .build());
+     * 
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
+     *             .description("api-resource-test1-hz")
+     *             .cidrBlock("192.168.0.0/16")
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
+     *             .description("api-resource-test1-hz")
+     *             .vpcId(vpc.id())
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .zoneId(enhanced.zones()[0].zoneId())
+     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(_cidrBlock)
+     *                 .newbits(8)
+     *                 .netnum(8)
+     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *             .build());
+     * 
+     *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .repeatWeekdays(            
+     *                 "1",
+     *                 "2",
+     *                 "3")
+     *             .retentionDays(-1)
+     *             .timePoints(            
+     *                 "1",
+     *                 "22",
+     *                 "23")
+     *             .build());
+     * 
+     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(_zoneId)
+     *             .cpuCoreCount(2)
+     *             .memorySize(4)
+     *             .kubernetesNodeRole("Worker")
+     *             .instanceTypeFamily("ecs.sn1ne")
+     *             .build()));
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .clusterSpec("ack.pro.small")
+     *             .version("1.24.6-aliyun.1")
+     *             .newNatGateway(true)
+     *             .nodeCidrMask(26)
+     *             .proxyMode("ipvs")
+     *             .serviceCidr("172.23.0.0/16")
+     *             .podCidr("10.95.0.0/16")
+     *             .workerVswitchIds(vswitch.id())
+     *             .build());
+     * 
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
+     *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
+     *             .name("desired_size")
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .vswitchIds(vswitch.id())
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .systemDiskSize(40)
+     *             .keyName(defaultKeyPair.keyPairName())
+     *             .desiredSize("2")
+     *             .build());
+     * 
+     *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
+     *             .environmentType("CS")
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .bindResourceId(defaultNodePool.clusterId())
+     *             .environmentSubType("ManagedKubernetes")
+     *             .build());
+     * 
+     *         var defaultAddonRelease = new AddonRelease("defaultAddonRelease", AddonReleaseArgs.builder()
+     *             .aliyunLang("zh")
+     *             .addonName("mysql")
+     *             .environmentId(defaultEnvironment.id())
+     *             .addonVersion("0.0.2")
+     *             .values(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("host", "mysql-service.default"),
+     *                     jsonProperty("password", "roots"),
+     *                     jsonProperty("port", 3306),
+     *                     jsonProperty("username", "root")
+     *                 )))
+     *             .build());
+     * 
+     *         final var ids = ArmsFunctions.getAddonReleases(GetAddonReleasesArgs.builder()
+     *             .environmentId(defaultAddonRelease.environmentId())
+     *             .ids(defaultAddonRelease.id())
+     *             .build());
+     * 
+     *         ctx.export("armsEnvServiceMonitorsId0", ids.applyValue(_ids -> _ids.releases()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAddonReleasesResult> getAddonReleasesPlain(GetAddonReleasesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:arms/getAddonReleases:getAddonReleases", TypeShape.of(GetAddonReleasesResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * This data source provides the Arms Alert Contact Groups of the current Alibaba Cloud user.
      * 
@@ -1840,6 +2698,3715 @@ public final class ArmsFunctions {
      */
     public static CompletableFuture<GetDispatchRulesResult> getDispatchRulesPlain(GetDispatchRulesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:arms/getDispatchRules:getDispatchRules", TypeShape.of(GetDispatchRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ARMS Env Custom Jobs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.arms.Environment;
+     * import com.pulumi.alicloud.arms.EnvironmentArgs;
+     * import com.pulumi.alicloud.arms.EnvCustomJob;
+     * import com.pulumi.alicloud.arms.EnvCustomJobArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetEnvCustomJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
+     *             .bindResourceId(default_.ids()[0])
+     *             .environmentSubType("ECS")
+     *             .environmentType("ECS")
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Environment")
+     *             ))
+     *             .build());
+     * 
+     *         var defaultEnvCustomJob = new EnvCustomJob("defaultEnvCustomJob", EnvCustomJobArgs.builder()
+     *             .status("run")
+     *             .environmentId(defaultEnvironment.id())
+     *             .envCustomJobName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .configYaml("""
+     * scrape_configs:
+     * - job_name: job-demo1
+     *   honor_timestamps: false
+     *   honor_labels: false
+     *   scrape_interval: 30s
+     *   scheme: http
+     *   metrics_path: /metric
+     *   static_configs:
+     *   - targets:
+     *     - 127.0.0.1:9090
+     *             """)
+     *             .aliyunLang("en")
+     *             .build());
+     * 
+     *         final var ids = ArmsFunctions.getEnvCustomJobs(GetEnvCustomJobsArgs.builder()
+     *             .environmentId(defaultEnvCustomJob.environmentId())
+     *             .ids(defaultEnvCustomJob.id())
+     *             .build());
+     * 
+     *         ctx.export("armsEnvCustomJobsId0", ids.applyValue(_ids -> _ids.jobs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEnvCustomJobsResult> getEnvCustomJobs(GetEnvCustomJobsArgs args) {
+        return getEnvCustomJobs(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ARMS Env Custom Jobs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.arms.Environment;
+     * import com.pulumi.alicloud.arms.EnvironmentArgs;
+     * import com.pulumi.alicloud.arms.EnvCustomJob;
+     * import com.pulumi.alicloud.arms.EnvCustomJobArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetEnvCustomJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
+     *             .bindResourceId(default_.ids()[0])
+     *             .environmentSubType("ECS")
+     *             .environmentType("ECS")
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Environment")
+     *             ))
+     *             .build());
+     * 
+     *         var defaultEnvCustomJob = new EnvCustomJob("defaultEnvCustomJob", EnvCustomJobArgs.builder()
+     *             .status("run")
+     *             .environmentId(defaultEnvironment.id())
+     *             .envCustomJobName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .configYaml("""
+     * scrape_configs:
+     * - job_name: job-demo1
+     *   honor_timestamps: false
+     *   honor_labels: false
+     *   scrape_interval: 30s
+     *   scheme: http
+     *   metrics_path: /metric
+     *   static_configs:
+     *   - targets:
+     *     - 127.0.0.1:9090
+     *             """)
+     *             .aliyunLang("en")
+     *             .build());
+     * 
+     *         final var ids = ArmsFunctions.getEnvCustomJobs(GetEnvCustomJobsArgs.builder()
+     *             .environmentId(defaultEnvCustomJob.environmentId())
+     *             .ids(defaultEnvCustomJob.id())
+     *             .build());
+     * 
+     *         ctx.export("armsEnvCustomJobsId0", ids.applyValue(_ids -> _ids.jobs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetEnvCustomJobsResult> getEnvCustomJobsPlain(GetEnvCustomJobsPlainArgs args) {
+        return getEnvCustomJobsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ARMS Env Custom Jobs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.arms.Environment;
+     * import com.pulumi.alicloud.arms.EnvironmentArgs;
+     * import com.pulumi.alicloud.arms.EnvCustomJob;
+     * import com.pulumi.alicloud.arms.EnvCustomJobArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetEnvCustomJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
+     *             .bindResourceId(default_.ids()[0])
+     *             .environmentSubType("ECS")
+     *             .environmentType("ECS")
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Environment")
+     *             ))
+     *             .build());
+     * 
+     *         var defaultEnvCustomJob = new EnvCustomJob("defaultEnvCustomJob", EnvCustomJobArgs.builder()
+     *             .status("run")
+     *             .environmentId(defaultEnvironment.id())
+     *             .envCustomJobName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .configYaml("""
+     * scrape_configs:
+     * - job_name: job-demo1
+     *   honor_timestamps: false
+     *   honor_labels: false
+     *   scrape_interval: 30s
+     *   scheme: http
+     *   metrics_path: /metric
+     *   static_configs:
+     *   - targets:
+     *     - 127.0.0.1:9090
+     *             """)
+     *             .aliyunLang("en")
+     *             .build());
+     * 
+     *         final var ids = ArmsFunctions.getEnvCustomJobs(GetEnvCustomJobsArgs.builder()
+     *             .environmentId(defaultEnvCustomJob.environmentId())
+     *             .ids(defaultEnvCustomJob.id())
+     *             .build());
+     * 
+     *         ctx.export("armsEnvCustomJobsId0", ids.applyValue(_ids -> _ids.jobs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEnvCustomJobsResult> getEnvCustomJobs(GetEnvCustomJobsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:arms/getEnvCustomJobs:getEnvCustomJobs", TypeShape.of(GetEnvCustomJobsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ARMS Env Custom Jobs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.arms.Environment;
+     * import com.pulumi.alicloud.arms.EnvironmentArgs;
+     * import com.pulumi.alicloud.arms.EnvCustomJob;
+     * import com.pulumi.alicloud.arms.EnvCustomJobArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetEnvCustomJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
+     *             .bindResourceId(default_.ids()[0])
+     *             .environmentSubType("ECS")
+     *             .environmentType("ECS")
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Environment")
+     *             ))
+     *             .build());
+     * 
+     *         var defaultEnvCustomJob = new EnvCustomJob("defaultEnvCustomJob", EnvCustomJobArgs.builder()
+     *             .status("run")
+     *             .environmentId(defaultEnvironment.id())
+     *             .envCustomJobName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .configYaml("""
+     * scrape_configs:
+     * - job_name: job-demo1
+     *   honor_timestamps: false
+     *   honor_labels: false
+     *   scrape_interval: 30s
+     *   scheme: http
+     *   metrics_path: /metric
+     *   static_configs:
+     *   - targets:
+     *     - 127.0.0.1:9090
+     *             """)
+     *             .aliyunLang("en")
+     *             .build());
+     * 
+     *         final var ids = ArmsFunctions.getEnvCustomJobs(GetEnvCustomJobsArgs.builder()
+     *             .environmentId(defaultEnvCustomJob.environmentId())
+     *             .ids(defaultEnvCustomJob.id())
+     *             .build());
+     * 
+     *         ctx.export("armsEnvCustomJobsId0", ids.applyValue(_ids -> _ids.jobs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEnvCustomJobsResult> getEnvCustomJobs(GetEnvCustomJobsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:arms/getEnvCustomJobs:getEnvCustomJobs", TypeShape.of(GetEnvCustomJobsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ARMS Env Custom Jobs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.arms.Environment;
+     * import com.pulumi.alicloud.arms.EnvironmentArgs;
+     * import com.pulumi.alicloud.arms.EnvCustomJob;
+     * import com.pulumi.alicloud.arms.EnvCustomJobArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetEnvCustomJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
+     *             .bindResourceId(default_.ids()[0])
+     *             .environmentSubType("ECS")
+     *             .environmentType("ECS")
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Environment")
+     *             ))
+     *             .build());
+     * 
+     *         var defaultEnvCustomJob = new EnvCustomJob("defaultEnvCustomJob", EnvCustomJobArgs.builder()
+     *             .status("run")
+     *             .environmentId(defaultEnvironment.id())
+     *             .envCustomJobName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .configYaml("""
+     * scrape_configs:
+     * - job_name: job-demo1
+     *   honor_timestamps: false
+     *   honor_labels: false
+     *   scrape_interval: 30s
+     *   scheme: http
+     *   metrics_path: /metric
+     *   static_configs:
+     *   - targets:
+     *     - 127.0.0.1:9090
+     *             """)
+     *             .aliyunLang("en")
+     *             .build());
+     * 
+     *         final var ids = ArmsFunctions.getEnvCustomJobs(GetEnvCustomJobsArgs.builder()
+     *             .environmentId(defaultEnvCustomJob.environmentId())
+     *             .ids(defaultEnvCustomJob.id())
+     *             .build());
+     * 
+     *         ctx.export("armsEnvCustomJobsId0", ids.applyValue(_ids -> _ids.jobs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetEnvCustomJobsResult> getEnvCustomJobsPlain(GetEnvCustomJobsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:arms/getEnvCustomJobs:getEnvCustomJobs", TypeShape.of(GetEnvCustomJobsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ARMS Env Features of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicy;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicyArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.ecs.KeyPair;
+     * import com.pulumi.alicloud.ecs.KeyPairArgs;
+     * import com.pulumi.alicloud.cs.NodePool;
+     * import com.pulumi.alicloud.cs.NodePoolArgs;
+     * import com.pulumi.alicloud.arms.Environment;
+     * import com.pulumi.alicloud.arms.EnvironmentArgs;
+     * import com.pulumi.alicloud.arms.EnvFeature;
+     * import com.pulumi.alicloud.arms.EnvFeatureArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetEnvFeaturesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+     *             .build());
+     * 
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
+     *             .description("api-resource-test1-hz")
+     *             .cidrBlock("192.168.0.0/16")
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
+     *             .description("api-resource-test1-hz")
+     *             .vpcId(vpc.id())
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .zoneId(enhanced.zones()[0].zoneId())
+     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(_cidrBlock)
+     *                 .newbits(8)
+     *                 .netnum(8)
+     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *             .build());
+     * 
+     *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .repeatWeekdays(            
+     *                 "1",
+     *                 "2",
+     *                 "3")
+     *             .retentionDays(-1)
+     *             .timePoints(            
+     *                 "1",
+     *                 "22",
+     *                 "23")
+     *             .build());
+     * 
+     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(_zoneId)
+     *             .cpuCoreCount(2)
+     *             .memorySize(4)
+     *             .kubernetesNodeRole("Worker")
+     *             .instanceTypeFamily("ecs.sn1ne")
+     *             .build()));
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .clusterSpec("ack.pro.small")
+     *             .version("1.24.6-aliyun.1")
+     *             .newNatGateway(true)
+     *             .nodeCidrMask(26)
+     *             .proxyMode("ipvs")
+     *             .serviceCidr("172.23.0.0/16")
+     *             .podCidr("10.95.0.0/16")
+     *             .workerVswitchIds(vswitch.id())
+     *             .build());
+     * 
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
+     *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
+     *             .name("desired_size")
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .vswitchIds(vswitch.id())
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .systemDiskSize(40)
+     *             .keyName(defaultKeyPair.keyPairName())
+     *             .desiredSize("2")
+     *             .build());
+     * 
+     *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
+     *             .environmentType("CS")
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .bindResourceId(defaultNodePool.clusterId())
+     *             .environmentSubType("ManagedKubernetes")
+     *             .build());
+     * 
+     *         var defaultEnvFeature = new EnvFeature("defaultEnvFeature", EnvFeatureArgs.builder()
+     *             .envFeatureName("metric-agent")
+     *             .environmentId(defaultEnvironment.id())
+     *             .featureVersion("1.1.17")
+     *             .build());
+     * 
+     *         final var ids = ArmsFunctions.getEnvFeatures(GetEnvFeaturesArgs.builder()
+     *             .environmentId(defaultEnvFeature.environmentId())
+     *             .ids(defaultEnvFeature.id())
+     *             .build());
+     * 
+     *         ctx.export("armsEnvFeaturesId0", ids.applyValue(_ids -> _ids.features()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEnvFeaturesResult> getEnvFeatures(GetEnvFeaturesArgs args) {
+        return getEnvFeatures(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ARMS Env Features of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicy;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicyArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.ecs.KeyPair;
+     * import com.pulumi.alicloud.ecs.KeyPairArgs;
+     * import com.pulumi.alicloud.cs.NodePool;
+     * import com.pulumi.alicloud.cs.NodePoolArgs;
+     * import com.pulumi.alicloud.arms.Environment;
+     * import com.pulumi.alicloud.arms.EnvironmentArgs;
+     * import com.pulumi.alicloud.arms.EnvFeature;
+     * import com.pulumi.alicloud.arms.EnvFeatureArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetEnvFeaturesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+     *             .build());
+     * 
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
+     *             .description("api-resource-test1-hz")
+     *             .cidrBlock("192.168.0.0/16")
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
+     *             .description("api-resource-test1-hz")
+     *             .vpcId(vpc.id())
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .zoneId(enhanced.zones()[0].zoneId())
+     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(_cidrBlock)
+     *                 .newbits(8)
+     *                 .netnum(8)
+     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *             .build());
+     * 
+     *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .repeatWeekdays(            
+     *                 "1",
+     *                 "2",
+     *                 "3")
+     *             .retentionDays(-1)
+     *             .timePoints(            
+     *                 "1",
+     *                 "22",
+     *                 "23")
+     *             .build());
+     * 
+     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(_zoneId)
+     *             .cpuCoreCount(2)
+     *             .memorySize(4)
+     *             .kubernetesNodeRole("Worker")
+     *             .instanceTypeFamily("ecs.sn1ne")
+     *             .build()));
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .clusterSpec("ack.pro.small")
+     *             .version("1.24.6-aliyun.1")
+     *             .newNatGateway(true)
+     *             .nodeCidrMask(26)
+     *             .proxyMode("ipvs")
+     *             .serviceCidr("172.23.0.0/16")
+     *             .podCidr("10.95.0.0/16")
+     *             .workerVswitchIds(vswitch.id())
+     *             .build());
+     * 
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
+     *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
+     *             .name("desired_size")
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .vswitchIds(vswitch.id())
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .systemDiskSize(40)
+     *             .keyName(defaultKeyPair.keyPairName())
+     *             .desiredSize("2")
+     *             .build());
+     * 
+     *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
+     *             .environmentType("CS")
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .bindResourceId(defaultNodePool.clusterId())
+     *             .environmentSubType("ManagedKubernetes")
+     *             .build());
+     * 
+     *         var defaultEnvFeature = new EnvFeature("defaultEnvFeature", EnvFeatureArgs.builder()
+     *             .envFeatureName("metric-agent")
+     *             .environmentId(defaultEnvironment.id())
+     *             .featureVersion("1.1.17")
+     *             .build());
+     * 
+     *         final var ids = ArmsFunctions.getEnvFeatures(GetEnvFeaturesArgs.builder()
+     *             .environmentId(defaultEnvFeature.environmentId())
+     *             .ids(defaultEnvFeature.id())
+     *             .build());
+     * 
+     *         ctx.export("armsEnvFeaturesId0", ids.applyValue(_ids -> _ids.features()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetEnvFeaturesResult> getEnvFeaturesPlain(GetEnvFeaturesPlainArgs args) {
+        return getEnvFeaturesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ARMS Env Features of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicy;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicyArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.ecs.KeyPair;
+     * import com.pulumi.alicloud.ecs.KeyPairArgs;
+     * import com.pulumi.alicloud.cs.NodePool;
+     * import com.pulumi.alicloud.cs.NodePoolArgs;
+     * import com.pulumi.alicloud.arms.Environment;
+     * import com.pulumi.alicloud.arms.EnvironmentArgs;
+     * import com.pulumi.alicloud.arms.EnvFeature;
+     * import com.pulumi.alicloud.arms.EnvFeatureArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetEnvFeaturesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+     *             .build());
+     * 
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
+     *             .description("api-resource-test1-hz")
+     *             .cidrBlock("192.168.0.0/16")
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
+     *             .description("api-resource-test1-hz")
+     *             .vpcId(vpc.id())
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .zoneId(enhanced.zones()[0].zoneId())
+     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(_cidrBlock)
+     *                 .newbits(8)
+     *                 .netnum(8)
+     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *             .build());
+     * 
+     *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .repeatWeekdays(            
+     *                 "1",
+     *                 "2",
+     *                 "3")
+     *             .retentionDays(-1)
+     *             .timePoints(            
+     *                 "1",
+     *                 "22",
+     *                 "23")
+     *             .build());
+     * 
+     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(_zoneId)
+     *             .cpuCoreCount(2)
+     *             .memorySize(4)
+     *             .kubernetesNodeRole("Worker")
+     *             .instanceTypeFamily("ecs.sn1ne")
+     *             .build()));
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .clusterSpec("ack.pro.small")
+     *             .version("1.24.6-aliyun.1")
+     *             .newNatGateway(true)
+     *             .nodeCidrMask(26)
+     *             .proxyMode("ipvs")
+     *             .serviceCidr("172.23.0.0/16")
+     *             .podCidr("10.95.0.0/16")
+     *             .workerVswitchIds(vswitch.id())
+     *             .build());
+     * 
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
+     *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
+     *             .name("desired_size")
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .vswitchIds(vswitch.id())
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .systemDiskSize(40)
+     *             .keyName(defaultKeyPair.keyPairName())
+     *             .desiredSize("2")
+     *             .build());
+     * 
+     *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
+     *             .environmentType("CS")
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .bindResourceId(defaultNodePool.clusterId())
+     *             .environmentSubType("ManagedKubernetes")
+     *             .build());
+     * 
+     *         var defaultEnvFeature = new EnvFeature("defaultEnvFeature", EnvFeatureArgs.builder()
+     *             .envFeatureName("metric-agent")
+     *             .environmentId(defaultEnvironment.id())
+     *             .featureVersion("1.1.17")
+     *             .build());
+     * 
+     *         final var ids = ArmsFunctions.getEnvFeatures(GetEnvFeaturesArgs.builder()
+     *             .environmentId(defaultEnvFeature.environmentId())
+     *             .ids(defaultEnvFeature.id())
+     *             .build());
+     * 
+     *         ctx.export("armsEnvFeaturesId0", ids.applyValue(_ids -> _ids.features()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEnvFeaturesResult> getEnvFeatures(GetEnvFeaturesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:arms/getEnvFeatures:getEnvFeatures", TypeShape.of(GetEnvFeaturesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ARMS Env Features of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicy;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicyArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.ecs.KeyPair;
+     * import com.pulumi.alicloud.ecs.KeyPairArgs;
+     * import com.pulumi.alicloud.cs.NodePool;
+     * import com.pulumi.alicloud.cs.NodePoolArgs;
+     * import com.pulumi.alicloud.arms.Environment;
+     * import com.pulumi.alicloud.arms.EnvironmentArgs;
+     * import com.pulumi.alicloud.arms.EnvFeature;
+     * import com.pulumi.alicloud.arms.EnvFeatureArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetEnvFeaturesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+     *             .build());
+     * 
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
+     *             .description("api-resource-test1-hz")
+     *             .cidrBlock("192.168.0.0/16")
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
+     *             .description("api-resource-test1-hz")
+     *             .vpcId(vpc.id())
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .zoneId(enhanced.zones()[0].zoneId())
+     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(_cidrBlock)
+     *                 .newbits(8)
+     *                 .netnum(8)
+     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *             .build());
+     * 
+     *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .repeatWeekdays(            
+     *                 "1",
+     *                 "2",
+     *                 "3")
+     *             .retentionDays(-1)
+     *             .timePoints(            
+     *                 "1",
+     *                 "22",
+     *                 "23")
+     *             .build());
+     * 
+     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(_zoneId)
+     *             .cpuCoreCount(2)
+     *             .memorySize(4)
+     *             .kubernetesNodeRole("Worker")
+     *             .instanceTypeFamily("ecs.sn1ne")
+     *             .build()));
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .clusterSpec("ack.pro.small")
+     *             .version("1.24.6-aliyun.1")
+     *             .newNatGateway(true)
+     *             .nodeCidrMask(26)
+     *             .proxyMode("ipvs")
+     *             .serviceCidr("172.23.0.0/16")
+     *             .podCidr("10.95.0.0/16")
+     *             .workerVswitchIds(vswitch.id())
+     *             .build());
+     * 
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
+     *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
+     *             .name("desired_size")
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .vswitchIds(vswitch.id())
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .systemDiskSize(40)
+     *             .keyName(defaultKeyPair.keyPairName())
+     *             .desiredSize("2")
+     *             .build());
+     * 
+     *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
+     *             .environmentType("CS")
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .bindResourceId(defaultNodePool.clusterId())
+     *             .environmentSubType("ManagedKubernetes")
+     *             .build());
+     * 
+     *         var defaultEnvFeature = new EnvFeature("defaultEnvFeature", EnvFeatureArgs.builder()
+     *             .envFeatureName("metric-agent")
+     *             .environmentId(defaultEnvironment.id())
+     *             .featureVersion("1.1.17")
+     *             .build());
+     * 
+     *         final var ids = ArmsFunctions.getEnvFeatures(GetEnvFeaturesArgs.builder()
+     *             .environmentId(defaultEnvFeature.environmentId())
+     *             .ids(defaultEnvFeature.id())
+     *             .build());
+     * 
+     *         ctx.export("armsEnvFeaturesId0", ids.applyValue(_ids -> _ids.features()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEnvFeaturesResult> getEnvFeatures(GetEnvFeaturesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:arms/getEnvFeatures:getEnvFeatures", TypeShape.of(GetEnvFeaturesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ARMS Env Features of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicy;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicyArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.ecs.KeyPair;
+     * import com.pulumi.alicloud.ecs.KeyPairArgs;
+     * import com.pulumi.alicloud.cs.NodePool;
+     * import com.pulumi.alicloud.cs.NodePoolArgs;
+     * import com.pulumi.alicloud.arms.Environment;
+     * import com.pulumi.alicloud.arms.EnvironmentArgs;
+     * import com.pulumi.alicloud.arms.EnvFeature;
+     * import com.pulumi.alicloud.arms.EnvFeatureArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetEnvFeaturesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+     *             .build());
+     * 
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
+     *             .description("api-resource-test1-hz")
+     *             .cidrBlock("192.168.0.0/16")
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
+     *             .description("api-resource-test1-hz")
+     *             .vpcId(vpc.id())
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .zoneId(enhanced.zones()[0].zoneId())
+     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(_cidrBlock)
+     *                 .newbits(8)
+     *                 .netnum(8)
+     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *             .build());
+     * 
+     *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .repeatWeekdays(            
+     *                 "1",
+     *                 "2",
+     *                 "3")
+     *             .retentionDays(-1)
+     *             .timePoints(            
+     *                 "1",
+     *                 "22",
+     *                 "23")
+     *             .build());
+     * 
+     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(_zoneId)
+     *             .cpuCoreCount(2)
+     *             .memorySize(4)
+     *             .kubernetesNodeRole("Worker")
+     *             .instanceTypeFamily("ecs.sn1ne")
+     *             .build()));
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .clusterSpec("ack.pro.small")
+     *             .version("1.24.6-aliyun.1")
+     *             .newNatGateway(true)
+     *             .nodeCidrMask(26)
+     *             .proxyMode("ipvs")
+     *             .serviceCidr("172.23.0.0/16")
+     *             .podCidr("10.95.0.0/16")
+     *             .workerVswitchIds(vswitch.id())
+     *             .build());
+     * 
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
+     *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
+     *             .name("desired_size")
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .vswitchIds(vswitch.id())
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .systemDiskSize(40)
+     *             .keyName(defaultKeyPair.keyPairName())
+     *             .desiredSize("2")
+     *             .build());
+     * 
+     *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
+     *             .environmentType("CS")
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .bindResourceId(defaultNodePool.clusterId())
+     *             .environmentSubType("ManagedKubernetes")
+     *             .build());
+     * 
+     *         var defaultEnvFeature = new EnvFeature("defaultEnvFeature", EnvFeatureArgs.builder()
+     *             .envFeatureName("metric-agent")
+     *             .environmentId(defaultEnvironment.id())
+     *             .featureVersion("1.1.17")
+     *             .build());
+     * 
+     *         final var ids = ArmsFunctions.getEnvFeatures(GetEnvFeaturesArgs.builder()
+     *             .environmentId(defaultEnvFeature.environmentId())
+     *             .ids(defaultEnvFeature.id())
+     *             .build());
+     * 
+     *         ctx.export("armsEnvFeaturesId0", ids.applyValue(_ids -> _ids.features()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetEnvFeaturesResult> getEnvFeaturesPlain(GetEnvFeaturesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:arms/getEnvFeatures:getEnvFeatures", TypeShape.of(GetEnvFeaturesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ARMS Env Pod Monitors of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicy;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicyArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.ecs.KeyPair;
+     * import com.pulumi.alicloud.ecs.KeyPairArgs;
+     * import com.pulumi.alicloud.cs.NodePool;
+     * import com.pulumi.alicloud.cs.NodePoolArgs;
+     * import com.pulumi.alicloud.arms.Environment;
+     * import com.pulumi.alicloud.arms.EnvironmentArgs;
+     * import com.pulumi.alicloud.arms.EnvPodMonitor;
+     * import com.pulumi.alicloud.arms.EnvPodMonitorArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetEnvPodMonitorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+     *             .build());
+     * 
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .max(99999)
+     *             .min(10000)
+     *             .build());
+     * 
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
+     *             .description(String.format("%s-%s", name,defaultInteger.result()))
+     *             .cidrBlock("192.168.0.0/16")
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
+     *             .description(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vpcId(vpc.id())
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .zoneId(enhanced.zones()[0].zoneId())
+     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(_cidrBlock)
+     *                 .newbits(8)
+     *                 .netnum(8)
+     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *             .build());
+     * 
+     *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .repeatWeekdays(            
+     *                 "1",
+     *                 "2",
+     *                 "3")
+     *             .retentionDays(-1)
+     *             .timePoints(            
+     *                 "1",
+     *                 "22",
+     *                 "23")
+     *             .build());
+     * 
+     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(_zoneId)
+     *             .cpuCoreCount(2)
+     *             .memorySize(4)
+     *             .kubernetesNodeRole("Worker")
+     *             .instanceTypeFamily("ecs.sn1ne")
+     *             .build()));
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .name(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .clusterSpec("ack.pro.small")
+     *             .version("1.24.6-aliyun.1")
+     *             .newNatGateway(true)
+     *             .nodeCidrMask(26)
+     *             .proxyMode("ipvs")
+     *             .serviceCidr("172.23.0.0/16")
+     *             .podCidr("10.95.0.0/16")
+     *             .workerVswitchIds(vswitch.id())
+     *             .build());
+     * 
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
+     *             .keyPairName(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .build());
+     * 
+     *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
+     *             .name("desired_size")
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .vswitchIds(vswitch.id())
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .systemDiskSize(40)
+     *             .keyName(defaultKeyPair.keyName())
+     *             .desiredSize("2")
+     *             .build());
+     * 
+     *         var environment_cs = new Environment("environment-cs", EnvironmentArgs.builder()
+     *             .environmentType("CS")
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .bindResourceId(defaultNodePool.clusterId())
+     *             .environmentSubType("ManagedKubernetes")
+     *             .build());
+     * 
+     *         var defaultEnvPodMonitor = new EnvPodMonitor("defaultEnvPodMonitor", EnvPodMonitorArgs.builder()
+     *             .aliyunLang("en")
+     *             .environmentId(environment_cs.id())
+     *             .configYaml("""
+     * apiVersion: monitoring.coreos.com/v1
+     * kind: PodMonitor
+     * metadata:
+     *   name: arms-admin-pm1
+     *   namespace: arms-prom
+     *   annotations:
+     *     arms.prometheus.io/discovery: 'true'
+     *     o11y.aliyun.com/addon-name: mysql
+     *     o11y.aliyun.com/addon-version: 1.0.2
+     *     o11y.aliyun.com/release-name: mysql2
+     * spec:
+     *   selector:
+     *     matchLabels:
+     *       app: arms-prometheus-ack-arms-prometheus
+     *       release: arms-prometheus
+     *   namespaceSelector:
+     *     any: true
+     *   podMetricsEndpoints:
+     *   - interval: 30s
+     *     targetPort: 9335
+     *     path: /metrics
+     *   - interval: 11s
+     *     targetPort: 9335
+     *     path: /metric
+     *             """)
+     *             .build());
+     * 
+     *         final var ids = ArmsFunctions.getEnvPodMonitors(GetEnvPodMonitorsArgs.builder()
+     *             .environmentId(defaultEnvPodMonitor.environmentId())
+     *             .ids(defaultEnvPodMonitor.id())
+     *             .build());
+     * 
+     *         ctx.export("armsEnvPodMonitorsId0", ids.applyValue(_ids -> _ids.monitors()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEnvPodMonitorsResult> getEnvPodMonitors(GetEnvPodMonitorsArgs args) {
+        return getEnvPodMonitors(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ARMS Env Pod Monitors of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicy;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicyArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.ecs.KeyPair;
+     * import com.pulumi.alicloud.ecs.KeyPairArgs;
+     * import com.pulumi.alicloud.cs.NodePool;
+     * import com.pulumi.alicloud.cs.NodePoolArgs;
+     * import com.pulumi.alicloud.arms.Environment;
+     * import com.pulumi.alicloud.arms.EnvironmentArgs;
+     * import com.pulumi.alicloud.arms.EnvPodMonitor;
+     * import com.pulumi.alicloud.arms.EnvPodMonitorArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetEnvPodMonitorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+     *             .build());
+     * 
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .max(99999)
+     *             .min(10000)
+     *             .build());
+     * 
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
+     *             .description(String.format("%s-%s", name,defaultInteger.result()))
+     *             .cidrBlock("192.168.0.0/16")
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
+     *             .description(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vpcId(vpc.id())
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .zoneId(enhanced.zones()[0].zoneId())
+     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(_cidrBlock)
+     *                 .newbits(8)
+     *                 .netnum(8)
+     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *             .build());
+     * 
+     *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .repeatWeekdays(            
+     *                 "1",
+     *                 "2",
+     *                 "3")
+     *             .retentionDays(-1)
+     *             .timePoints(            
+     *                 "1",
+     *                 "22",
+     *                 "23")
+     *             .build());
+     * 
+     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(_zoneId)
+     *             .cpuCoreCount(2)
+     *             .memorySize(4)
+     *             .kubernetesNodeRole("Worker")
+     *             .instanceTypeFamily("ecs.sn1ne")
+     *             .build()));
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .name(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .clusterSpec("ack.pro.small")
+     *             .version("1.24.6-aliyun.1")
+     *             .newNatGateway(true)
+     *             .nodeCidrMask(26)
+     *             .proxyMode("ipvs")
+     *             .serviceCidr("172.23.0.0/16")
+     *             .podCidr("10.95.0.0/16")
+     *             .workerVswitchIds(vswitch.id())
+     *             .build());
+     * 
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
+     *             .keyPairName(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .build());
+     * 
+     *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
+     *             .name("desired_size")
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .vswitchIds(vswitch.id())
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .systemDiskSize(40)
+     *             .keyName(defaultKeyPair.keyName())
+     *             .desiredSize("2")
+     *             .build());
+     * 
+     *         var environment_cs = new Environment("environment-cs", EnvironmentArgs.builder()
+     *             .environmentType("CS")
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .bindResourceId(defaultNodePool.clusterId())
+     *             .environmentSubType("ManagedKubernetes")
+     *             .build());
+     * 
+     *         var defaultEnvPodMonitor = new EnvPodMonitor("defaultEnvPodMonitor", EnvPodMonitorArgs.builder()
+     *             .aliyunLang("en")
+     *             .environmentId(environment_cs.id())
+     *             .configYaml("""
+     * apiVersion: monitoring.coreos.com/v1
+     * kind: PodMonitor
+     * metadata:
+     *   name: arms-admin-pm1
+     *   namespace: arms-prom
+     *   annotations:
+     *     arms.prometheus.io/discovery: 'true'
+     *     o11y.aliyun.com/addon-name: mysql
+     *     o11y.aliyun.com/addon-version: 1.0.2
+     *     o11y.aliyun.com/release-name: mysql2
+     * spec:
+     *   selector:
+     *     matchLabels:
+     *       app: arms-prometheus-ack-arms-prometheus
+     *       release: arms-prometheus
+     *   namespaceSelector:
+     *     any: true
+     *   podMetricsEndpoints:
+     *   - interval: 30s
+     *     targetPort: 9335
+     *     path: /metrics
+     *   - interval: 11s
+     *     targetPort: 9335
+     *     path: /metric
+     *             """)
+     *             .build());
+     * 
+     *         final var ids = ArmsFunctions.getEnvPodMonitors(GetEnvPodMonitorsArgs.builder()
+     *             .environmentId(defaultEnvPodMonitor.environmentId())
+     *             .ids(defaultEnvPodMonitor.id())
+     *             .build());
+     * 
+     *         ctx.export("armsEnvPodMonitorsId0", ids.applyValue(_ids -> _ids.monitors()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetEnvPodMonitorsResult> getEnvPodMonitorsPlain(GetEnvPodMonitorsPlainArgs args) {
+        return getEnvPodMonitorsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ARMS Env Pod Monitors of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicy;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicyArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.ecs.KeyPair;
+     * import com.pulumi.alicloud.ecs.KeyPairArgs;
+     * import com.pulumi.alicloud.cs.NodePool;
+     * import com.pulumi.alicloud.cs.NodePoolArgs;
+     * import com.pulumi.alicloud.arms.Environment;
+     * import com.pulumi.alicloud.arms.EnvironmentArgs;
+     * import com.pulumi.alicloud.arms.EnvPodMonitor;
+     * import com.pulumi.alicloud.arms.EnvPodMonitorArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetEnvPodMonitorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+     *             .build());
+     * 
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .max(99999)
+     *             .min(10000)
+     *             .build());
+     * 
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
+     *             .description(String.format("%s-%s", name,defaultInteger.result()))
+     *             .cidrBlock("192.168.0.0/16")
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
+     *             .description(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vpcId(vpc.id())
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .zoneId(enhanced.zones()[0].zoneId())
+     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(_cidrBlock)
+     *                 .newbits(8)
+     *                 .netnum(8)
+     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *             .build());
+     * 
+     *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .repeatWeekdays(            
+     *                 "1",
+     *                 "2",
+     *                 "3")
+     *             .retentionDays(-1)
+     *             .timePoints(            
+     *                 "1",
+     *                 "22",
+     *                 "23")
+     *             .build());
+     * 
+     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(_zoneId)
+     *             .cpuCoreCount(2)
+     *             .memorySize(4)
+     *             .kubernetesNodeRole("Worker")
+     *             .instanceTypeFamily("ecs.sn1ne")
+     *             .build()));
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .name(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .clusterSpec("ack.pro.small")
+     *             .version("1.24.6-aliyun.1")
+     *             .newNatGateway(true)
+     *             .nodeCidrMask(26)
+     *             .proxyMode("ipvs")
+     *             .serviceCidr("172.23.0.0/16")
+     *             .podCidr("10.95.0.0/16")
+     *             .workerVswitchIds(vswitch.id())
+     *             .build());
+     * 
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
+     *             .keyPairName(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .build());
+     * 
+     *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
+     *             .name("desired_size")
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .vswitchIds(vswitch.id())
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .systemDiskSize(40)
+     *             .keyName(defaultKeyPair.keyName())
+     *             .desiredSize("2")
+     *             .build());
+     * 
+     *         var environment_cs = new Environment("environment-cs", EnvironmentArgs.builder()
+     *             .environmentType("CS")
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .bindResourceId(defaultNodePool.clusterId())
+     *             .environmentSubType("ManagedKubernetes")
+     *             .build());
+     * 
+     *         var defaultEnvPodMonitor = new EnvPodMonitor("defaultEnvPodMonitor", EnvPodMonitorArgs.builder()
+     *             .aliyunLang("en")
+     *             .environmentId(environment_cs.id())
+     *             .configYaml("""
+     * apiVersion: monitoring.coreos.com/v1
+     * kind: PodMonitor
+     * metadata:
+     *   name: arms-admin-pm1
+     *   namespace: arms-prom
+     *   annotations:
+     *     arms.prometheus.io/discovery: 'true'
+     *     o11y.aliyun.com/addon-name: mysql
+     *     o11y.aliyun.com/addon-version: 1.0.2
+     *     o11y.aliyun.com/release-name: mysql2
+     * spec:
+     *   selector:
+     *     matchLabels:
+     *       app: arms-prometheus-ack-arms-prometheus
+     *       release: arms-prometheus
+     *   namespaceSelector:
+     *     any: true
+     *   podMetricsEndpoints:
+     *   - interval: 30s
+     *     targetPort: 9335
+     *     path: /metrics
+     *   - interval: 11s
+     *     targetPort: 9335
+     *     path: /metric
+     *             """)
+     *             .build());
+     * 
+     *         final var ids = ArmsFunctions.getEnvPodMonitors(GetEnvPodMonitorsArgs.builder()
+     *             .environmentId(defaultEnvPodMonitor.environmentId())
+     *             .ids(defaultEnvPodMonitor.id())
+     *             .build());
+     * 
+     *         ctx.export("armsEnvPodMonitorsId0", ids.applyValue(_ids -> _ids.monitors()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEnvPodMonitorsResult> getEnvPodMonitors(GetEnvPodMonitorsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:arms/getEnvPodMonitors:getEnvPodMonitors", TypeShape.of(GetEnvPodMonitorsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ARMS Env Pod Monitors of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicy;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicyArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.ecs.KeyPair;
+     * import com.pulumi.alicloud.ecs.KeyPairArgs;
+     * import com.pulumi.alicloud.cs.NodePool;
+     * import com.pulumi.alicloud.cs.NodePoolArgs;
+     * import com.pulumi.alicloud.arms.Environment;
+     * import com.pulumi.alicloud.arms.EnvironmentArgs;
+     * import com.pulumi.alicloud.arms.EnvPodMonitor;
+     * import com.pulumi.alicloud.arms.EnvPodMonitorArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetEnvPodMonitorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+     *             .build());
+     * 
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .max(99999)
+     *             .min(10000)
+     *             .build());
+     * 
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
+     *             .description(String.format("%s-%s", name,defaultInteger.result()))
+     *             .cidrBlock("192.168.0.0/16")
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
+     *             .description(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vpcId(vpc.id())
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .zoneId(enhanced.zones()[0].zoneId())
+     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(_cidrBlock)
+     *                 .newbits(8)
+     *                 .netnum(8)
+     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *             .build());
+     * 
+     *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .repeatWeekdays(            
+     *                 "1",
+     *                 "2",
+     *                 "3")
+     *             .retentionDays(-1)
+     *             .timePoints(            
+     *                 "1",
+     *                 "22",
+     *                 "23")
+     *             .build());
+     * 
+     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(_zoneId)
+     *             .cpuCoreCount(2)
+     *             .memorySize(4)
+     *             .kubernetesNodeRole("Worker")
+     *             .instanceTypeFamily("ecs.sn1ne")
+     *             .build()));
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .name(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .clusterSpec("ack.pro.small")
+     *             .version("1.24.6-aliyun.1")
+     *             .newNatGateway(true)
+     *             .nodeCidrMask(26)
+     *             .proxyMode("ipvs")
+     *             .serviceCidr("172.23.0.0/16")
+     *             .podCidr("10.95.0.0/16")
+     *             .workerVswitchIds(vswitch.id())
+     *             .build());
+     * 
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
+     *             .keyPairName(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .build());
+     * 
+     *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
+     *             .name("desired_size")
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .vswitchIds(vswitch.id())
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .systemDiskSize(40)
+     *             .keyName(defaultKeyPair.keyName())
+     *             .desiredSize("2")
+     *             .build());
+     * 
+     *         var environment_cs = new Environment("environment-cs", EnvironmentArgs.builder()
+     *             .environmentType("CS")
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .bindResourceId(defaultNodePool.clusterId())
+     *             .environmentSubType("ManagedKubernetes")
+     *             .build());
+     * 
+     *         var defaultEnvPodMonitor = new EnvPodMonitor("defaultEnvPodMonitor", EnvPodMonitorArgs.builder()
+     *             .aliyunLang("en")
+     *             .environmentId(environment_cs.id())
+     *             .configYaml("""
+     * apiVersion: monitoring.coreos.com/v1
+     * kind: PodMonitor
+     * metadata:
+     *   name: arms-admin-pm1
+     *   namespace: arms-prom
+     *   annotations:
+     *     arms.prometheus.io/discovery: 'true'
+     *     o11y.aliyun.com/addon-name: mysql
+     *     o11y.aliyun.com/addon-version: 1.0.2
+     *     o11y.aliyun.com/release-name: mysql2
+     * spec:
+     *   selector:
+     *     matchLabels:
+     *       app: arms-prometheus-ack-arms-prometheus
+     *       release: arms-prometheus
+     *   namespaceSelector:
+     *     any: true
+     *   podMetricsEndpoints:
+     *   - interval: 30s
+     *     targetPort: 9335
+     *     path: /metrics
+     *   - interval: 11s
+     *     targetPort: 9335
+     *     path: /metric
+     *             """)
+     *             .build());
+     * 
+     *         final var ids = ArmsFunctions.getEnvPodMonitors(GetEnvPodMonitorsArgs.builder()
+     *             .environmentId(defaultEnvPodMonitor.environmentId())
+     *             .ids(defaultEnvPodMonitor.id())
+     *             .build());
+     * 
+     *         ctx.export("armsEnvPodMonitorsId0", ids.applyValue(_ids -> _ids.monitors()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEnvPodMonitorsResult> getEnvPodMonitors(GetEnvPodMonitorsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:arms/getEnvPodMonitors:getEnvPodMonitors", TypeShape.of(GetEnvPodMonitorsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ARMS Env Pod Monitors of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicy;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicyArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.ecs.KeyPair;
+     * import com.pulumi.alicloud.ecs.KeyPairArgs;
+     * import com.pulumi.alicloud.cs.NodePool;
+     * import com.pulumi.alicloud.cs.NodePoolArgs;
+     * import com.pulumi.alicloud.arms.Environment;
+     * import com.pulumi.alicloud.arms.EnvironmentArgs;
+     * import com.pulumi.alicloud.arms.EnvPodMonitor;
+     * import com.pulumi.alicloud.arms.EnvPodMonitorArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetEnvPodMonitorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+     *             .build());
+     * 
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .max(99999)
+     *             .min(10000)
+     *             .build());
+     * 
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
+     *             .description(String.format("%s-%s", name,defaultInteger.result()))
+     *             .cidrBlock("192.168.0.0/16")
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
+     *             .description(String.format("%s-%s", name,defaultInteger.result()))
+     *             .vpcId(vpc.id())
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .zoneId(enhanced.zones()[0].zoneId())
+     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(_cidrBlock)
+     *                 .newbits(8)
+     *                 .netnum(8)
+     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *             .build());
+     * 
+     *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .repeatWeekdays(            
+     *                 "1",
+     *                 "2",
+     *                 "3")
+     *             .retentionDays(-1)
+     *             .timePoints(            
+     *                 "1",
+     *                 "22",
+     *                 "23")
+     *             .build());
+     * 
+     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(_zoneId)
+     *             .cpuCoreCount(2)
+     *             .memorySize(4)
+     *             .kubernetesNodeRole("Worker")
+     *             .instanceTypeFamily("ecs.sn1ne")
+     *             .build()));
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .name(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .clusterSpec("ack.pro.small")
+     *             .version("1.24.6-aliyun.1")
+     *             .newNatGateway(true)
+     *             .nodeCidrMask(26)
+     *             .proxyMode("ipvs")
+     *             .serviceCidr("172.23.0.0/16")
+     *             .podCidr("10.95.0.0/16")
+     *             .workerVswitchIds(vswitch.id())
+     *             .build());
+     * 
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
+     *             .keyPairName(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .build());
+     * 
+     *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
+     *             .name("desired_size")
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .vswitchIds(vswitch.id())
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .systemDiskSize(40)
+     *             .keyName(defaultKeyPair.keyName())
+     *             .desiredSize("2")
+     *             .build());
+     * 
+     *         var environment_cs = new Environment("environment-cs", EnvironmentArgs.builder()
+     *             .environmentType("CS")
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .bindResourceId(defaultNodePool.clusterId())
+     *             .environmentSubType("ManagedKubernetes")
+     *             .build());
+     * 
+     *         var defaultEnvPodMonitor = new EnvPodMonitor("defaultEnvPodMonitor", EnvPodMonitorArgs.builder()
+     *             .aliyunLang("en")
+     *             .environmentId(environment_cs.id())
+     *             .configYaml("""
+     * apiVersion: monitoring.coreos.com/v1
+     * kind: PodMonitor
+     * metadata:
+     *   name: arms-admin-pm1
+     *   namespace: arms-prom
+     *   annotations:
+     *     arms.prometheus.io/discovery: 'true'
+     *     o11y.aliyun.com/addon-name: mysql
+     *     o11y.aliyun.com/addon-version: 1.0.2
+     *     o11y.aliyun.com/release-name: mysql2
+     * spec:
+     *   selector:
+     *     matchLabels:
+     *       app: arms-prometheus-ack-arms-prometheus
+     *       release: arms-prometheus
+     *   namespaceSelector:
+     *     any: true
+     *   podMetricsEndpoints:
+     *   - interval: 30s
+     *     targetPort: 9335
+     *     path: /metrics
+     *   - interval: 11s
+     *     targetPort: 9335
+     *     path: /metric
+     *             """)
+     *             .build());
+     * 
+     *         final var ids = ArmsFunctions.getEnvPodMonitors(GetEnvPodMonitorsArgs.builder()
+     *             .environmentId(defaultEnvPodMonitor.environmentId())
+     *             .ids(defaultEnvPodMonitor.id())
+     *             .build());
+     * 
+     *         ctx.export("armsEnvPodMonitorsId0", ids.applyValue(_ids -> _ids.monitors()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetEnvPodMonitorsResult> getEnvPodMonitorsPlain(GetEnvPodMonitorsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:arms/getEnvPodMonitors:getEnvPodMonitors", TypeShape.of(GetEnvPodMonitorsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ARMS Env Service Monitors of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicy;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicyArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.ecs.KeyPair;
+     * import com.pulumi.alicloud.ecs.KeyPairArgs;
+     * import com.pulumi.alicloud.cs.NodePool;
+     * import com.pulumi.alicloud.cs.NodePoolArgs;
+     * import com.pulumi.alicloud.arms.Environment;
+     * import com.pulumi.alicloud.arms.EnvironmentArgs;
+     * import com.pulumi.alicloud.arms.EnvServiceMonitor;
+     * import com.pulumi.alicloud.arms.EnvServiceMonitorArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetEnvServiceMonitorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+     *             .build());
+     * 
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
+     *             .description("api-resource-test1-hz")
+     *             .cidrBlock("192.168.0.0/16")
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
+     *             .description("api-resource-test1-hz")
+     *             .vpcId(vpc.id())
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .zoneId(enhanced.zones()[0].zoneId())
+     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(_cidrBlock)
+     *                 .newbits(8)
+     *                 .netnum(8)
+     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *             .build());
+     * 
+     *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .repeatWeekdays(            
+     *                 "1",
+     *                 "2",
+     *                 "3")
+     *             .retentionDays(-1)
+     *             .timePoints(            
+     *                 "1",
+     *                 "22",
+     *                 "23")
+     *             .build());
+     * 
+     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(_zoneId)
+     *             .cpuCoreCount(2)
+     *             .memorySize(4)
+     *             .kubernetesNodeRole("Worker")
+     *             .instanceTypeFamily("ecs.sn1ne")
+     *             .build()));
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .clusterSpec("ack.pro.small")
+     *             .version("1.24.6-aliyun.1")
+     *             .newNatGateway(true)
+     *             .nodeCidrMask(26)
+     *             .proxyMode("ipvs")
+     *             .serviceCidr("172.23.0.0/16")
+     *             .podCidr("10.95.0.0/16")
+     *             .workerVswitchIds(vswitch.id())
+     *             .build());
+     * 
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
+     *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
+     *             .name("desired_size")
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .vswitchIds(vswitch.id())
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .systemDiskSize(40)
+     *             .keyName(defaultKeyPair.keyPairName())
+     *             .desiredSize("2")
+     *             .build());
+     * 
+     *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
+     *             .environmentType("CS")
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .bindResourceId(defaultNodePool.clusterId())
+     *             .environmentSubType("ManagedKubernetes")
+     *             .build());
+     * 
+     *         var defaultEnvServiceMonitor = new EnvServiceMonitor("defaultEnvServiceMonitor", EnvServiceMonitorArgs.builder()
+     *             .aliyunLang("en")
+     *             .environmentId(defaultEnvironment.id())
+     *             .configYaml("""
+     * apiVersion: monitoring.coreos.com/v1
+     * kind: ServiceMonitor
+     * metadata:
+     *   name: arms-admin1
+     *   namespace: arms-prom
+     *   annotations:
+     *     arms.prometheus.io/discovery: 'true'
+     *     o11y.aliyun.com/addon-name: mysql
+     *     o11y.aliyun.com/addon-version: 1.0.1
+     *     o11y.aliyun.com/release-name: mysql1
+     * spec:
+     *   endpoints:
+     *   - interval: 30s
+     *     port: operator
+     *     path: /metrics
+     *   - interval: 10s
+     *     port: operator1
+     *     path: /metrics
+     *   namespaceSelector:
+     *     any: true
+     *   selector:
+     *     matchLabels:
+     *      app: arms-prometheus-ack-arms-prometheus
+     *             """)
+     *             .build());
+     * 
+     *         final var ids = ArmsFunctions.getEnvServiceMonitors(GetEnvServiceMonitorsArgs.builder()
+     *             .environmentId(defaultEnvServiceMonitor.environmentId())
+     *             .ids(defaultEnvServiceMonitor.id())
+     *             .build());
+     * 
+     *         ctx.export("armsEnvServiceMonitorsId0", ids.applyValue(_ids -> _ids.monitors()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEnvServiceMonitorsResult> getEnvServiceMonitors(GetEnvServiceMonitorsArgs args) {
+        return getEnvServiceMonitors(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ARMS Env Service Monitors of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicy;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicyArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.ecs.KeyPair;
+     * import com.pulumi.alicloud.ecs.KeyPairArgs;
+     * import com.pulumi.alicloud.cs.NodePool;
+     * import com.pulumi.alicloud.cs.NodePoolArgs;
+     * import com.pulumi.alicloud.arms.Environment;
+     * import com.pulumi.alicloud.arms.EnvironmentArgs;
+     * import com.pulumi.alicloud.arms.EnvServiceMonitor;
+     * import com.pulumi.alicloud.arms.EnvServiceMonitorArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetEnvServiceMonitorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+     *             .build());
+     * 
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
+     *             .description("api-resource-test1-hz")
+     *             .cidrBlock("192.168.0.0/16")
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
+     *             .description("api-resource-test1-hz")
+     *             .vpcId(vpc.id())
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .zoneId(enhanced.zones()[0].zoneId())
+     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(_cidrBlock)
+     *                 .newbits(8)
+     *                 .netnum(8)
+     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *             .build());
+     * 
+     *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .repeatWeekdays(            
+     *                 "1",
+     *                 "2",
+     *                 "3")
+     *             .retentionDays(-1)
+     *             .timePoints(            
+     *                 "1",
+     *                 "22",
+     *                 "23")
+     *             .build());
+     * 
+     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(_zoneId)
+     *             .cpuCoreCount(2)
+     *             .memorySize(4)
+     *             .kubernetesNodeRole("Worker")
+     *             .instanceTypeFamily("ecs.sn1ne")
+     *             .build()));
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .clusterSpec("ack.pro.small")
+     *             .version("1.24.6-aliyun.1")
+     *             .newNatGateway(true)
+     *             .nodeCidrMask(26)
+     *             .proxyMode("ipvs")
+     *             .serviceCidr("172.23.0.0/16")
+     *             .podCidr("10.95.0.0/16")
+     *             .workerVswitchIds(vswitch.id())
+     *             .build());
+     * 
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
+     *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
+     *             .name("desired_size")
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .vswitchIds(vswitch.id())
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .systemDiskSize(40)
+     *             .keyName(defaultKeyPair.keyPairName())
+     *             .desiredSize("2")
+     *             .build());
+     * 
+     *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
+     *             .environmentType("CS")
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .bindResourceId(defaultNodePool.clusterId())
+     *             .environmentSubType("ManagedKubernetes")
+     *             .build());
+     * 
+     *         var defaultEnvServiceMonitor = new EnvServiceMonitor("defaultEnvServiceMonitor", EnvServiceMonitorArgs.builder()
+     *             .aliyunLang("en")
+     *             .environmentId(defaultEnvironment.id())
+     *             .configYaml("""
+     * apiVersion: monitoring.coreos.com/v1
+     * kind: ServiceMonitor
+     * metadata:
+     *   name: arms-admin1
+     *   namespace: arms-prom
+     *   annotations:
+     *     arms.prometheus.io/discovery: 'true'
+     *     o11y.aliyun.com/addon-name: mysql
+     *     o11y.aliyun.com/addon-version: 1.0.1
+     *     o11y.aliyun.com/release-name: mysql1
+     * spec:
+     *   endpoints:
+     *   - interval: 30s
+     *     port: operator
+     *     path: /metrics
+     *   - interval: 10s
+     *     port: operator1
+     *     path: /metrics
+     *   namespaceSelector:
+     *     any: true
+     *   selector:
+     *     matchLabels:
+     *      app: arms-prometheus-ack-arms-prometheus
+     *             """)
+     *             .build());
+     * 
+     *         final var ids = ArmsFunctions.getEnvServiceMonitors(GetEnvServiceMonitorsArgs.builder()
+     *             .environmentId(defaultEnvServiceMonitor.environmentId())
+     *             .ids(defaultEnvServiceMonitor.id())
+     *             .build());
+     * 
+     *         ctx.export("armsEnvServiceMonitorsId0", ids.applyValue(_ids -> _ids.monitors()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetEnvServiceMonitorsResult> getEnvServiceMonitorsPlain(GetEnvServiceMonitorsPlainArgs args) {
+        return getEnvServiceMonitorsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ARMS Env Service Monitors of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicy;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicyArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.ecs.KeyPair;
+     * import com.pulumi.alicloud.ecs.KeyPairArgs;
+     * import com.pulumi.alicloud.cs.NodePool;
+     * import com.pulumi.alicloud.cs.NodePoolArgs;
+     * import com.pulumi.alicloud.arms.Environment;
+     * import com.pulumi.alicloud.arms.EnvironmentArgs;
+     * import com.pulumi.alicloud.arms.EnvServiceMonitor;
+     * import com.pulumi.alicloud.arms.EnvServiceMonitorArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetEnvServiceMonitorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+     *             .build());
+     * 
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
+     *             .description("api-resource-test1-hz")
+     *             .cidrBlock("192.168.0.0/16")
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
+     *             .description("api-resource-test1-hz")
+     *             .vpcId(vpc.id())
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .zoneId(enhanced.zones()[0].zoneId())
+     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(_cidrBlock)
+     *                 .newbits(8)
+     *                 .netnum(8)
+     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *             .build());
+     * 
+     *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .repeatWeekdays(            
+     *                 "1",
+     *                 "2",
+     *                 "3")
+     *             .retentionDays(-1)
+     *             .timePoints(            
+     *                 "1",
+     *                 "22",
+     *                 "23")
+     *             .build());
+     * 
+     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(_zoneId)
+     *             .cpuCoreCount(2)
+     *             .memorySize(4)
+     *             .kubernetesNodeRole("Worker")
+     *             .instanceTypeFamily("ecs.sn1ne")
+     *             .build()));
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .clusterSpec("ack.pro.small")
+     *             .version("1.24.6-aliyun.1")
+     *             .newNatGateway(true)
+     *             .nodeCidrMask(26)
+     *             .proxyMode("ipvs")
+     *             .serviceCidr("172.23.0.0/16")
+     *             .podCidr("10.95.0.0/16")
+     *             .workerVswitchIds(vswitch.id())
+     *             .build());
+     * 
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
+     *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
+     *             .name("desired_size")
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .vswitchIds(vswitch.id())
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .systemDiskSize(40)
+     *             .keyName(defaultKeyPair.keyPairName())
+     *             .desiredSize("2")
+     *             .build());
+     * 
+     *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
+     *             .environmentType("CS")
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .bindResourceId(defaultNodePool.clusterId())
+     *             .environmentSubType("ManagedKubernetes")
+     *             .build());
+     * 
+     *         var defaultEnvServiceMonitor = new EnvServiceMonitor("defaultEnvServiceMonitor", EnvServiceMonitorArgs.builder()
+     *             .aliyunLang("en")
+     *             .environmentId(defaultEnvironment.id())
+     *             .configYaml("""
+     * apiVersion: monitoring.coreos.com/v1
+     * kind: ServiceMonitor
+     * metadata:
+     *   name: arms-admin1
+     *   namespace: arms-prom
+     *   annotations:
+     *     arms.prometheus.io/discovery: 'true'
+     *     o11y.aliyun.com/addon-name: mysql
+     *     o11y.aliyun.com/addon-version: 1.0.1
+     *     o11y.aliyun.com/release-name: mysql1
+     * spec:
+     *   endpoints:
+     *   - interval: 30s
+     *     port: operator
+     *     path: /metrics
+     *   - interval: 10s
+     *     port: operator1
+     *     path: /metrics
+     *   namespaceSelector:
+     *     any: true
+     *   selector:
+     *     matchLabels:
+     *      app: arms-prometheus-ack-arms-prometheus
+     *             """)
+     *             .build());
+     * 
+     *         final var ids = ArmsFunctions.getEnvServiceMonitors(GetEnvServiceMonitorsArgs.builder()
+     *             .environmentId(defaultEnvServiceMonitor.environmentId())
+     *             .ids(defaultEnvServiceMonitor.id())
+     *             .build());
+     * 
+     *         ctx.export("armsEnvServiceMonitorsId0", ids.applyValue(_ids -> _ids.monitors()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEnvServiceMonitorsResult> getEnvServiceMonitors(GetEnvServiceMonitorsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:arms/getEnvServiceMonitors:getEnvServiceMonitors", TypeShape.of(GetEnvServiceMonitorsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ARMS Env Service Monitors of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicy;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicyArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.ecs.KeyPair;
+     * import com.pulumi.alicloud.ecs.KeyPairArgs;
+     * import com.pulumi.alicloud.cs.NodePool;
+     * import com.pulumi.alicloud.cs.NodePoolArgs;
+     * import com.pulumi.alicloud.arms.Environment;
+     * import com.pulumi.alicloud.arms.EnvironmentArgs;
+     * import com.pulumi.alicloud.arms.EnvServiceMonitor;
+     * import com.pulumi.alicloud.arms.EnvServiceMonitorArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetEnvServiceMonitorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+     *             .build());
+     * 
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
+     *             .description("api-resource-test1-hz")
+     *             .cidrBlock("192.168.0.0/16")
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
+     *             .description("api-resource-test1-hz")
+     *             .vpcId(vpc.id())
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .zoneId(enhanced.zones()[0].zoneId())
+     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(_cidrBlock)
+     *                 .newbits(8)
+     *                 .netnum(8)
+     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *             .build());
+     * 
+     *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .repeatWeekdays(            
+     *                 "1",
+     *                 "2",
+     *                 "3")
+     *             .retentionDays(-1)
+     *             .timePoints(            
+     *                 "1",
+     *                 "22",
+     *                 "23")
+     *             .build());
+     * 
+     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(_zoneId)
+     *             .cpuCoreCount(2)
+     *             .memorySize(4)
+     *             .kubernetesNodeRole("Worker")
+     *             .instanceTypeFamily("ecs.sn1ne")
+     *             .build()));
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .clusterSpec("ack.pro.small")
+     *             .version("1.24.6-aliyun.1")
+     *             .newNatGateway(true)
+     *             .nodeCidrMask(26)
+     *             .proxyMode("ipvs")
+     *             .serviceCidr("172.23.0.0/16")
+     *             .podCidr("10.95.0.0/16")
+     *             .workerVswitchIds(vswitch.id())
+     *             .build());
+     * 
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
+     *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
+     *             .name("desired_size")
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .vswitchIds(vswitch.id())
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .systemDiskSize(40)
+     *             .keyName(defaultKeyPair.keyPairName())
+     *             .desiredSize("2")
+     *             .build());
+     * 
+     *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
+     *             .environmentType("CS")
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .bindResourceId(defaultNodePool.clusterId())
+     *             .environmentSubType("ManagedKubernetes")
+     *             .build());
+     * 
+     *         var defaultEnvServiceMonitor = new EnvServiceMonitor("defaultEnvServiceMonitor", EnvServiceMonitorArgs.builder()
+     *             .aliyunLang("en")
+     *             .environmentId(defaultEnvironment.id())
+     *             .configYaml("""
+     * apiVersion: monitoring.coreos.com/v1
+     * kind: ServiceMonitor
+     * metadata:
+     *   name: arms-admin1
+     *   namespace: arms-prom
+     *   annotations:
+     *     arms.prometheus.io/discovery: 'true'
+     *     o11y.aliyun.com/addon-name: mysql
+     *     o11y.aliyun.com/addon-version: 1.0.1
+     *     o11y.aliyun.com/release-name: mysql1
+     * spec:
+     *   endpoints:
+     *   - interval: 30s
+     *     port: operator
+     *     path: /metrics
+     *   - interval: 10s
+     *     port: operator1
+     *     path: /metrics
+     *   namespaceSelector:
+     *     any: true
+     *   selector:
+     *     matchLabels:
+     *      app: arms-prometheus-ack-arms-prometheus
+     *             """)
+     *             .build());
+     * 
+     *         final var ids = ArmsFunctions.getEnvServiceMonitors(GetEnvServiceMonitorsArgs.builder()
+     *             .environmentId(defaultEnvServiceMonitor.environmentId())
+     *             .ids(defaultEnvServiceMonitor.id())
+     *             .build());
+     * 
+     *         ctx.export("armsEnvServiceMonitorsId0", ids.applyValue(_ids -> _ids.monitors()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEnvServiceMonitorsResult> getEnvServiceMonitors(GetEnvServiceMonitorsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:arms/getEnvServiceMonitors:getEnvServiceMonitors", TypeShape.of(GetEnvServiceMonitorsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ARMS Env Service Monitors of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicy;
+     * import com.pulumi.alicloud.ecs.SnapshotPolicyArgs;
+     * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.ecs.KeyPair;
+     * import com.pulumi.alicloud.ecs.KeyPairArgs;
+     * import com.pulumi.alicloud.cs.NodePool;
+     * import com.pulumi.alicloud.cs.NodePoolArgs;
+     * import com.pulumi.alicloud.arms.Environment;
+     * import com.pulumi.alicloud.arms.EnvironmentArgs;
+     * import com.pulumi.alicloud.arms.EnvServiceMonitor;
+     * import com.pulumi.alicloud.arms.EnvServiceMonitorArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetEnvServiceMonitorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+     *             .build());
+     * 
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
+     *             .description("api-resource-test1-hz")
+     *             .cidrBlock("192.168.0.0/16")
+     *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
+     *             .description("api-resource-test1-hz")
+     *             .vpcId(vpc.id())
+     *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .zoneId(enhanced.zones()[0].zoneId())
+     *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(_cidrBlock)
+     *                 .newbits(8)
+     *                 .netnum(8)
+     *                 .build())).applyValue(_invoke -> _invoke.result()))
+     *             .build());
+     * 
+     *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .repeatWeekdays(            
+     *                 "1",
+     *                 "2",
+     *                 "3")
+     *             .retentionDays(-1)
+     *             .timePoints(            
+     *                 "1",
+     *                 "22",
+     *                 "23")
+     *             .build());
+     * 
+     *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(_zoneId)
+     *             .cpuCoreCount(2)
+     *             .memorySize(4)
+     *             .kubernetesNodeRole("Worker")
+     *             .instanceTypeFamily("ecs.sn1ne")
+     *             .build()));
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .name(String.format("%s-%s", name,defaultInteger.result()))
+     *             .clusterSpec("ack.pro.small")
+     *             .version("1.24.6-aliyun.1")
+     *             .newNatGateway(true)
+     *             .nodeCidrMask(26)
+     *             .proxyMode("ipvs")
+     *             .serviceCidr("172.23.0.0/16")
+     *             .podCidr("10.95.0.0/16")
+     *             .workerVswitchIds(vswitch.id())
+     *             .build());
+     * 
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
+     *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .build());
+     * 
+     *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
+     *             .name("desired_size")
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .vswitchIds(vswitch.id())
+     *             .instanceTypes(default_.applyValue(_default_ -> _default_.instanceTypes()[0].id()))
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .systemDiskSize(40)
+     *             .keyName(defaultKeyPair.keyPairName())
+     *             .desiredSize("2")
+     *             .build());
+     * 
+     *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
+     *             .environmentType("CS")
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .bindResourceId(defaultNodePool.clusterId())
+     *             .environmentSubType("ManagedKubernetes")
+     *             .build());
+     * 
+     *         var defaultEnvServiceMonitor = new EnvServiceMonitor("defaultEnvServiceMonitor", EnvServiceMonitorArgs.builder()
+     *             .aliyunLang("en")
+     *             .environmentId(defaultEnvironment.id())
+     *             .configYaml("""
+     * apiVersion: monitoring.coreos.com/v1
+     * kind: ServiceMonitor
+     * metadata:
+     *   name: arms-admin1
+     *   namespace: arms-prom
+     *   annotations:
+     *     arms.prometheus.io/discovery: 'true'
+     *     o11y.aliyun.com/addon-name: mysql
+     *     o11y.aliyun.com/addon-version: 1.0.1
+     *     o11y.aliyun.com/release-name: mysql1
+     * spec:
+     *   endpoints:
+     *   - interval: 30s
+     *     port: operator
+     *     path: /metrics
+     *   - interval: 10s
+     *     port: operator1
+     *     path: /metrics
+     *   namespaceSelector:
+     *     any: true
+     *   selector:
+     *     matchLabels:
+     *      app: arms-prometheus-ack-arms-prometheus
+     *             """)
+     *             .build());
+     * 
+     *         final var ids = ArmsFunctions.getEnvServiceMonitors(GetEnvServiceMonitorsArgs.builder()
+     *             .environmentId(defaultEnvServiceMonitor.environmentId())
+     *             .ids(defaultEnvServiceMonitor.id())
+     *             .build());
+     * 
+     *         ctx.export("armsEnvServiceMonitorsId0", ids.applyValue(_ids -> _ids.monitors()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetEnvServiceMonitorsResult> getEnvServiceMonitorsPlain(GetEnvServiceMonitorsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:arms/getEnvServiceMonitors:getEnvServiceMonitors", TypeShape.of(GetEnvServiceMonitorsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ARMS Environments of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.arms.Environment;
+     * import com.pulumi.alicloud.arms.EnvironmentArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetEnvironmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .status("OK")
+     *             .build());
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
+     *             .bindResourceId(defaultGetNetworks.ids()[0])
+     *             .environmentSubType("ECS")
+     *             .environmentType("ECS")
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .resourceGroupId(default_.ids()[1])
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Environment")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = ArmsFunctions.getEnvironments(GetEnvironmentsArgs.builder()
+     *             .ids(defaultEnvironment.id())
+     *             .build());
+     * 
+     *         ctx.export("armsEnvironmentsId0", ids.applyValue(_ids -> _ids.environments()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEnvironmentsResult> getEnvironments() {
+        return getEnvironments(GetEnvironmentsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ARMS Environments of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.arms.Environment;
+     * import com.pulumi.alicloud.arms.EnvironmentArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetEnvironmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .status("OK")
+     *             .build());
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
+     *             .bindResourceId(defaultGetNetworks.ids()[0])
+     *             .environmentSubType("ECS")
+     *             .environmentType("ECS")
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .resourceGroupId(default_.ids()[1])
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Environment")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = ArmsFunctions.getEnvironments(GetEnvironmentsArgs.builder()
+     *             .ids(defaultEnvironment.id())
+     *             .build());
+     * 
+     *         ctx.export("armsEnvironmentsId0", ids.applyValue(_ids -> _ids.environments()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetEnvironmentsResult> getEnvironmentsPlain() {
+        return getEnvironmentsPlain(GetEnvironmentsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ARMS Environments of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.arms.Environment;
+     * import com.pulumi.alicloud.arms.EnvironmentArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetEnvironmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .status("OK")
+     *             .build());
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
+     *             .bindResourceId(defaultGetNetworks.ids()[0])
+     *             .environmentSubType("ECS")
+     *             .environmentType("ECS")
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .resourceGroupId(default_.ids()[1])
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Environment")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = ArmsFunctions.getEnvironments(GetEnvironmentsArgs.builder()
+     *             .ids(defaultEnvironment.id())
+     *             .build());
+     * 
+     *         ctx.export("armsEnvironmentsId0", ids.applyValue(_ids -> _ids.environments()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEnvironmentsResult> getEnvironments(GetEnvironmentsArgs args) {
+        return getEnvironments(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ARMS Environments of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.arms.Environment;
+     * import com.pulumi.alicloud.arms.EnvironmentArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetEnvironmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .status("OK")
+     *             .build());
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
+     *             .bindResourceId(defaultGetNetworks.ids()[0])
+     *             .environmentSubType("ECS")
+     *             .environmentType("ECS")
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .resourceGroupId(default_.ids()[1])
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Environment")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = ArmsFunctions.getEnvironments(GetEnvironmentsArgs.builder()
+     *             .ids(defaultEnvironment.id())
+     *             .build());
+     * 
+     *         ctx.export("armsEnvironmentsId0", ids.applyValue(_ids -> _ids.environments()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetEnvironmentsResult> getEnvironmentsPlain(GetEnvironmentsPlainArgs args) {
+        return getEnvironmentsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the ARMS Environments of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.arms.Environment;
+     * import com.pulumi.alicloud.arms.EnvironmentArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetEnvironmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .status("OK")
+     *             .build());
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
+     *             .bindResourceId(defaultGetNetworks.ids()[0])
+     *             .environmentSubType("ECS")
+     *             .environmentType("ECS")
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .resourceGroupId(default_.ids()[1])
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Environment")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = ArmsFunctions.getEnvironments(GetEnvironmentsArgs.builder()
+     *             .ids(defaultEnvironment.id())
+     *             .build());
+     * 
+     *         ctx.export("armsEnvironmentsId0", ids.applyValue(_ids -> _ids.environments()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEnvironmentsResult> getEnvironments(GetEnvironmentsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:arms/getEnvironments:getEnvironments", TypeShape.of(GetEnvironmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ARMS Environments of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.arms.Environment;
+     * import com.pulumi.alicloud.arms.EnvironmentArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetEnvironmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .status("OK")
+     *             .build());
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
+     *             .bindResourceId(defaultGetNetworks.ids()[0])
+     *             .environmentSubType("ECS")
+     *             .environmentType("ECS")
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .resourceGroupId(default_.ids()[1])
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Environment")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = ArmsFunctions.getEnvironments(GetEnvironmentsArgs.builder()
+     *             .ids(defaultEnvironment.id())
+     *             .build());
+     * 
+     *         ctx.export("armsEnvironmentsId0", ids.applyValue(_ids -> _ids.environments()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEnvironmentsResult> getEnvironments(GetEnvironmentsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:arms/getEnvironments:getEnvironments", TypeShape.of(GetEnvironmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the ARMS Environments of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.258.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.arms.Environment;
+     * import com.pulumi.alicloud.arms.EnvironmentArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetEnvironmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .status("OK")
+     *             .build());
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         var defaultEnvironment = new Environment("defaultEnvironment", EnvironmentArgs.builder()
+     *             .bindResourceId(defaultGetNetworks.ids()[0])
+     *             .environmentSubType("ECS")
+     *             .environmentType("ECS")
+     *             .environmentName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .resourceGroupId(default_.ids()[1])
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Environment")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = ArmsFunctions.getEnvironments(GetEnvironmentsArgs.builder()
+     *             .ids(defaultEnvironment.id())
+     *             .build());
+     * 
+     *         ctx.export("armsEnvironmentsId0", ids.applyValue(_ids -> _ids.environments()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetEnvironmentsResult> getEnvironmentsPlain(GetEnvironmentsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:arms/getEnvironments:getEnvironments", TypeShape.of(GetEnvironmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Arms Integration Exporters of the current Alibaba Cloud user.

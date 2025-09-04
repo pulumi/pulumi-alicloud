@@ -16,6 +16,78 @@ namespace Pulumi.AliCloud.Apig
     /// 
     /// &gt; **NOTE:** Available since v1.240.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "^default-NODELETING$",
+    ///     });
+    /// 
+    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultgateway = new AliCloud.Apig.Gateway("defaultgateway", new()
+    ///     {
+    ///         NetworkAccessConfig = new AliCloud.Apig.Inputs.GatewayNetworkAccessConfigArgs
+    ///         {
+    ///             Type = "Intranet",
+    ///         },
+    ///         Vswitch = new AliCloud.Apig.Inputs.GatewayVswitchArgs
+    ///         {
+    ///             VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         },
+    ///         ZoneConfig = new AliCloud.Apig.Inputs.GatewayZoneConfigArgs
+    ///         {
+    ///             SelectOption = "Auto",
+    ///         },
+    ///         Vpc = new AliCloud.Apig.Inputs.GatewayVpcArgs
+    ///         {
+    ///             VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         },
+    ///         PaymentType = "PayAsYouGo",
+    ///         GatewayName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s2",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         Spec = "apigw.small.x1",
+    ///         LogConfig = new AliCloud.Apig.Inputs.GatewayLogConfigArgs
+    ///         {
+    ///             Sls = null,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultEnvironment = new AliCloud.Apig.Environment("default", new()
+    ///     {
+    ///         Description = name,
+    ///         EnvironmentName = name,
+    ///         GatewayId = defaultgateway.Id,
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[1])),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// APIG Environment can be imported using the id, e.g.

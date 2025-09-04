@@ -11,6 +11,67 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.151.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const _default = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const example = alicloud.expressconnect.getPhysicalConnections({
+ *     nameRegex: "^preserved-NODELETING",
+ * });
+ * const vlanId = new random.index.Integer("vlan_id", {
+ *     max: 2999,
+ *     min: 1,
+ * });
+ * const exampleVirtualBorderRouter: alicloud.expressconnect.VirtualBorderRouter[] = [];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     exampleVirtualBorderRouter.push(new alicloud.expressconnect.VirtualBorderRouter(`example-${range.value}`, {
+ *         localGatewayIp: "10.0.0.1",
+ *         peerGatewayIp: "10.0.0.2",
+ *         peeringSubnetMask: "255.255.255.252",
+ *         physicalConnectionId: example.then(example => example.connections[range.value].id),
+ *         virtualBorderRouterName: std.format({
+ *             input: `${name}-%d`,
+ *             args: [range.value + 1],
+ *         }).then(invoke => invoke.result),
+ *         vlanId: vlanId.id + range.value,
+ *         minRxInterval: 1000,
+ *         minTxInterval: 1000,
+ *         detectMultiplier: 10,
+ *     }));
+ * }
+ * const exampleInstance = new alicloud.cen.Instance("example", {
+ *     cenInstanceName: name,
+ *     description: name,
+ *     protectionLevel: "REDUCED",
+ * });
+ * const exampleInstanceAttachment: alicloud.cen.InstanceAttachment[] = [];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     exampleInstanceAttachment.push(new alicloud.cen.InstanceAttachment(`example-${range.value}`, {
+ *         instanceId: exampleInstance.id,
+ *         childInstanceId: exampleVirtualBorderRouter[range.value].id,
+ *         childInstanceType: "VBR",
+ *         childInstanceRegionId: _default.then(_default => _default.regions?.[0]?.id),
+ *     }));
+ * }
+ * const exampleVbrHa = new alicloud.vpc.VbrHa("example", {
+ *     vbrId: exampleInstanceAttachment[0].childInstanceId,
+ *     peerVbrId: exampleInstanceAttachment[1].childInstanceId,
+ *     vbrHaName: name,
+ *     description: name,
+ * });
+ * ```
+ *
  * ## Import
  *
  * VPC Vbr Ha can be imported using the id, e.g.

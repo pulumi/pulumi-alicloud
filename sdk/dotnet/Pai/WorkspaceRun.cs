@@ -16,6 +16,58 @@ namespace Pulumi.AliCloud.Pai
     /// 
     /// &gt; **NOTE:** Available since v1.236.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform_example";
+    ///     var defaultCAFUa9 = new AliCloud.Pai.WorkspaceWorkspace("defaultCAFUa9", new()
+    ///     {
+    ///         Description = name,
+    ///         DisplayName = name,
+    ///         WorkspaceName = name,
+    ///         EnvTypes = new[]
+    ///         {
+    ///             "prod",
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultQRwWbv = new AliCloud.Pai.WorkspaceExperiment("defaultQRwWbv", new()
+    ///     {
+    ///         Accessibility = "PRIVATE",
+    ///         ArtifactUri = "oss://example.oss-cn-hangzhou.aliyuncs.com/example/",
+    ///         ExperimentName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s1",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         WorkspaceId = defaultCAFUa9.Id,
+    ///     });
+    /// 
+    ///     var @default = new AliCloud.Pai.WorkspaceRun("default", new()
+    ///     {
+    ///         SourceType = "TrainingService",
+    ///         SourceId = "759",
+    ///         RunName = name,
+    ///         ExperimentId = defaultQRwWbv.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// PAI Workspace Run can be imported using the id, e.g.

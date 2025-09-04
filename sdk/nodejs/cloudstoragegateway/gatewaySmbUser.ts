@@ -11,6 +11,60 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.142.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultUuid = new random.index.Uuid("default", {});
+ * const defaultStorageBundle = new alicloud.cloudstoragegateway.StorageBundle("default", {storageBundleName: std.replace({
+ *     text: defaultUuid.result,
+ *     search: "-",
+ *     replace: "",
+ * }).then(invoke => std.substr({
+ *     input: `tf-example-${invoke.result}`,
+ *     offset: 0,
+ *     length: 16,
+ * })).then(invoke => invoke.result)});
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const _default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/21",
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *     vswitchName: name,
+ * });
+ * const defaultGateway = new alicloud.cloudstoragegateway.Gateway("default", {
+ *     gatewayName: name,
+ *     description: name,
+ *     gatewayClass: "Standard",
+ *     type: "File",
+ *     paymentType: "PayAsYouGo",
+ *     vswitchId: defaultSwitch.id,
+ *     releaseAfterExpiration: false,
+ *     publicNetworkBandwidth: 40,
+ *     storageBundleId: defaultStorageBundle.id,
+ *     location: "Cloud",
+ * });
+ * const defaultGatewaySmbUser = new alicloud.cloudstoragegateway.GatewaySmbUser("default", {
+ *     username: "example_username",
+ *     password: "password",
+ *     gatewayId: defaultGateway.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Cloud Storage Gateway Gateway SMB User can be imported using the id, e.g.

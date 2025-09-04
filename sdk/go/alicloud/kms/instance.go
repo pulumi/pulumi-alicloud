@@ -18,6 +18,351 @@ import (
 //
 // > **NOTE:** Available since v1.210.0.
 //
+// ## Example Usage
+//
+// # Create a subscription kms instance
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			region := "cn-hangzhou"
+//			if param := cfg.Get("region"); param != "" {
+//				region = param
+//			}
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			current, err := alicloud.GetAccount(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vpc_amp_instance_example, err := vpc.NewNetwork(ctx, "vpc-amp-instance-example", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//				VpcName:   pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
+//				VpcId:     vpc_amp_instance_example.ID(),
+//				ZoneId:    pulumi.String("cn-hangzhou-k"),
+//				CidrBlock: pulumi.String("172.16.1.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vswitch_j, err := vpc.NewSwitch(ctx, "vswitch-j", &vpc.SwitchArgs{
+//				VpcId:     vpc_amp_instance_example.ID(),
+//				ZoneId:    pulumi.String("cn-hangzhou-j"),
+//				CidrBlock: pulumi.String("172.16.2.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s3",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			shareVPC, err := vpc.NewNetwork(ctx, "shareVPC", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//				VpcName:   pulumi.String(invokeFormat.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			shareVswitch, err := vpc.NewSwitch(ctx, "shareVswitch", &vpc.SwitchArgs{
+//				VpcId:     shareVPC.ID(),
+//				ZoneId:    pulumi.String("cn-hangzhou-k"),
+//				CidrBlock: pulumi.String("172.16.1.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat1, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s5",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			share_VPC2, err := vpc.NewNetwork(ctx, "share-VPC2", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//				VpcName:   pulumi.String(invokeFormat1.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			share_vswitch2, err := vpc.NewSwitch(ctx, "share-vswitch2", &vpc.SwitchArgs{
+//				VpcId:     share_VPC2.ID(),
+//				ZoneId:    pulumi.String("cn-hangzhou-k"),
+//				CidrBlock: pulumi.String("172.16.1.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat2, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s7",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			share_VPC3, err := vpc.NewNetwork(ctx, "share-VPC3", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//				VpcName:   pulumi.String(invokeFormat2.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			share_vsw3, err := vpc.NewSwitch(ctx, "share-vsw3", &vpc.SwitchArgs{
+//				VpcId:     share_VPC3.ID(),
+//				ZoneId:    pulumi.String("cn-hangzhou-k"),
+//				CidrBlock: pulumi.String("172.16.1.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = kms.NewInstance(ctx, "default", &kms.InstanceArgs{
+//				VpcNum:         pulumi.Int(7),
+//				KeyNum:         pulumi.Int(1000),
+//				SecretNum:      pulumi.Int(0),
+//				Spec:           pulumi.Int(1000),
+//				RenewStatus:    pulumi.String("ManualRenewal"),
+//				ProductVersion: pulumi.String("3"),
+//				RenewPeriod:    pulumi.Int(3),
+//				VpcId:          vswitch.VpcId,
+//				ZoneIds: pulumi.StringArray{
+//					pulumi.String("cn-hangzhou-k"),
+//					pulumi.String("cn-hangzhou-j"),
+//				},
+//				VswitchIds: pulumi.StringArray{
+//					vswitch_j.ID(),
+//				},
+//				BindVpcs: kms.InstanceBindVpcArray{
+//					&kms.InstanceBindVpcArgs{
+//						VpcId:      shareVswitch.VpcId,
+//						RegionId:   pulumi.String(region),
+//						VswitchId:  shareVswitch.ID(),
+//						VpcOwnerId: pulumi.String(current.Id),
+//					},
+//					&kms.InstanceBindVpcArgs{
+//						VpcId:      share_vswitch2.VpcId,
+//						RegionId:   pulumi.String(region),
+//						VswitchId:  share_vswitch2.ID(),
+//						VpcOwnerId: pulumi.String(current.Id),
+//					},
+//					&kms.InstanceBindVpcArgs{
+//						VpcId:      share_vsw3.VpcId,
+//						RegionId:   pulumi.String(region),
+//						VswitchId:  share_vsw3.ID(),
+//						VpcOwnerId: pulumi.String(current.Id),
+//					},
+//				},
+//				Log:         pulumi.String("0"),
+//				Period:      pulumi.Int(1),
+//				LogStorage:  pulumi.Int(0),
+//				PaymentType: pulumi.String("Subscription"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// Create a pay-as-you-go kms instance
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			region := "cn-hangzhou"
+//			if param := cfg.Get("region"); param != "" {
+//				region = param
+//			}
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			current, err := alicloud.GetAccount(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vpc_amp_instance_example, err := vpc.NewNetwork(ctx, "vpc-amp-instance-example", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//				VpcName:   pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
+//				VpcId:     vpc_amp_instance_example.ID(),
+//				ZoneId:    pulumi.String("cn-hangzhou-k"),
+//				CidrBlock: pulumi.String("172.16.1.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vswitch_j, err := vpc.NewSwitch(ctx, "vswitch-j", &vpc.SwitchArgs{
+//				VpcId:     vpc_amp_instance_example.ID(),
+//				ZoneId:    pulumi.String("cn-hangzhou-j"),
+//				CidrBlock: pulumi.String("172.16.2.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s3",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			shareVPC, err := vpc.NewNetwork(ctx, "shareVPC", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//				VpcName:   pulumi.String(invokeFormat.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			shareVswitch, err := vpc.NewSwitch(ctx, "shareVswitch", &vpc.SwitchArgs{
+//				VpcId:     shareVPC.ID(),
+//				ZoneId:    pulumi.String("cn-hangzhou-k"),
+//				CidrBlock: pulumi.String("172.16.1.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat1, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s5",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			share_VPC2, err := vpc.NewNetwork(ctx, "share-VPC2", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//				VpcName:   pulumi.String(invokeFormat1.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			share_vswitch2, err := vpc.NewSwitch(ctx, "share-vswitch2", &vpc.SwitchArgs{
+//				VpcId:     share_VPC2.ID(),
+//				ZoneId:    pulumi.String("cn-hangzhou-k"),
+//				CidrBlock: pulumi.String("172.16.1.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat2, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s7",
+//				Args: []string{
+//					name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			share_VPC3, err := vpc.NewNetwork(ctx, "share-VPC3", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//				VpcName:   pulumi.String(invokeFormat2.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			share_vsw3, err := vpc.NewSwitch(ctx, "share-vsw3", &vpc.SwitchArgs{
+//				VpcId:     share_VPC3.ID(),
+//				ZoneId:    pulumi.String("cn-hangzhou-k"),
+//				CidrBlock: pulumi.String("172.16.1.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = kms.NewInstance(ctx, "default", &kms.InstanceArgs{
+//				PaymentType:    pulumi.String("PayAsYouGo"),
+//				ProductVersion: pulumi.String("3"),
+//				VpcId:          vswitch.VpcId,
+//				ZoneIds: pulumi.StringArray{
+//					vswitch.ZoneId,
+//					vswitch_j.ZoneId,
+//				},
+//				VswitchIds: pulumi.StringArray{
+//					vswitch.ID(),
+//				},
+//				ForceDeleteWithoutBackup: pulumi.String("true"),
+//				BindVpcs: kms.InstanceBindVpcArray{
+//					&kms.InstanceBindVpcArgs{
+//						VpcId:      shareVswitch.VpcId,
+//						RegionId:   pulumi.String(region),
+//						VswitchId:  shareVswitch.ID(),
+//						VpcOwnerId: pulumi.String(current.Id),
+//					},
+//					&kms.InstanceBindVpcArgs{
+//						VpcId:      share_vswitch2.VpcId,
+//						RegionId:   pulumi.String(region),
+//						VswitchId:  share_vswitch2.ID(),
+//						VpcOwnerId: pulumi.String(current.Id),
+//					},
+//					&kms.InstanceBindVpcArgs{
+//						VpcId:      share_vsw3.VpcId,
+//						RegionId:   pulumi.String(region),
+//						VswitchId:  share_vsw3.ID(),
+//						VpcOwnerId: pulumi.String(current.Id),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // KMS Instance can be imported using the id, e.g.
@@ -46,25 +391,29 @@ type Instance struct {
 	Log pulumi.StringOutput `pulumi:"log"`
 	// Instance log capacity. The attribute is valid when the attribute `paymentType` is `Subscription`.
 	LogStorage pulumi.IntOutput `pulumi:"logStorage"`
-	// Payment type,valid values:
+	// Payment type, valid values:
 	// - `Subscription`: Prepaid.
 	// - `PayAsYouGo`: Postpaid.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// Purchase cycle, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// KMS Instance commodity type (software/hardware)
-	ProductVersion pulumi.StringPtrOutput `pulumi:"productVersion"`
+	ProductVersion pulumi.StringOutput `pulumi:"productVersion"`
 	// Automatic renewal period, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
 	RenewPeriod pulumi.IntPtrOutput `pulumi:"renewPeriod"`
 	// Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `paymentType` is `Subscription`.
-	RenewStatus pulumi.StringPtrOutput `pulumi:"renewStatus"`
+	RenewStatus pulumi.StringOutput `pulumi:"renewStatus"`
+	// Automatic renewal period unit, valid value:
+	// - `M`: Month.
+	// - `Y`: Year.
+	RenewalPeriodUnit pulumi.StringPtrOutput `pulumi:"renewalPeriodUnit"`
 	// Maximum number of Secrets. The attribute is valid when the attribute `paymentType` is `Subscription`.
 	SecretNum pulumi.IntPtrOutput `pulumi:"secretNum"`
 	// The computation performance level of the KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
 	Spec pulumi.IntPtrOutput `pulumi:"spec"`
 	// Instance status.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Instance VPC id
+	// The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
 	VpcNum pulumi.IntPtrOutput `pulumi:"vpcNum"`
@@ -131,7 +480,7 @@ type instanceState struct {
 	Log *string `pulumi:"log"`
 	// Instance log capacity. The attribute is valid when the attribute `paymentType` is `Subscription`.
 	LogStorage *int `pulumi:"logStorage"`
-	// Payment type,valid values:
+	// Payment type, valid values:
 	// - `Subscription`: Prepaid.
 	// - `PayAsYouGo`: Postpaid.
 	PaymentType *string `pulumi:"paymentType"`
@@ -143,13 +492,17 @@ type instanceState struct {
 	RenewPeriod *int `pulumi:"renewPeriod"`
 	// Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `paymentType` is `Subscription`.
 	RenewStatus *string `pulumi:"renewStatus"`
+	// Automatic renewal period unit, valid value:
+	// - `M`: Month.
+	// - `Y`: Year.
+	RenewalPeriodUnit *string `pulumi:"renewalPeriodUnit"`
 	// Maximum number of Secrets. The attribute is valid when the attribute `paymentType` is `Subscription`.
 	SecretNum *int `pulumi:"secretNum"`
 	// The computation performance level of the KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
 	Spec *int `pulumi:"spec"`
 	// Instance status.
 	Status *string `pulumi:"status"`
-	// Instance VPC id
+	// The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
 	VpcId *string `pulumi:"vpcId"`
 	// The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
 	VpcNum *int `pulumi:"vpcNum"`
@@ -178,7 +531,7 @@ type InstanceState struct {
 	Log pulumi.StringPtrInput
 	// Instance log capacity. The attribute is valid when the attribute `paymentType` is `Subscription`.
 	LogStorage pulumi.IntPtrInput
-	// Payment type,valid values:
+	// Payment type, valid values:
 	// - `Subscription`: Prepaid.
 	// - `PayAsYouGo`: Postpaid.
 	PaymentType pulumi.StringPtrInput
@@ -190,13 +543,17 @@ type InstanceState struct {
 	RenewPeriod pulumi.IntPtrInput
 	// Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `paymentType` is `Subscription`.
 	RenewStatus pulumi.StringPtrInput
+	// Automatic renewal period unit, valid value:
+	// - `M`: Month.
+	// - `Y`: Year.
+	RenewalPeriodUnit pulumi.StringPtrInput
 	// Maximum number of Secrets. The attribute is valid when the attribute `paymentType` is `Subscription`.
 	SecretNum pulumi.IntPtrInput
 	// The computation performance level of the KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
 	Spec pulumi.IntPtrInput
 	// Instance status.
 	Status pulumi.StringPtrInput
-	// Instance VPC id
+	// The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
 	VpcId pulumi.StringPtrInput
 	// The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
 	VpcNum pulumi.IntPtrInput
@@ -223,7 +580,7 @@ type instanceArgs struct {
 	Log *string `pulumi:"log"`
 	// Instance log capacity. The attribute is valid when the attribute `paymentType` is `Subscription`.
 	LogStorage *int `pulumi:"logStorage"`
-	// Payment type,valid values:
+	// Payment type, valid values:
 	// - `Subscription`: Prepaid.
 	// - `PayAsYouGo`: Postpaid.
 	PaymentType *string `pulumi:"paymentType"`
@@ -235,11 +592,15 @@ type instanceArgs struct {
 	RenewPeriod *int `pulumi:"renewPeriod"`
 	// Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `paymentType` is `Subscription`.
 	RenewStatus *string `pulumi:"renewStatus"`
+	// Automatic renewal period unit, valid value:
+	// - `M`: Month.
+	// - `Y`: Year.
+	RenewalPeriodUnit *string `pulumi:"renewalPeriodUnit"`
 	// Maximum number of Secrets. The attribute is valid when the attribute `paymentType` is `Subscription`.
 	SecretNum *int `pulumi:"secretNum"`
 	// The computation performance level of the KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
 	Spec *int `pulumi:"spec"`
-	// Instance VPC id
+	// The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
 	VpcId string `pulumi:"vpcId"`
 	// The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
 	VpcNum *int `pulumi:"vpcNum"`
@@ -263,7 +624,7 @@ type InstanceArgs struct {
 	Log pulumi.StringPtrInput
 	// Instance log capacity. The attribute is valid when the attribute `paymentType` is `Subscription`.
 	LogStorage pulumi.IntPtrInput
-	// Payment type,valid values:
+	// Payment type, valid values:
 	// - `Subscription`: Prepaid.
 	// - `PayAsYouGo`: Postpaid.
 	PaymentType pulumi.StringPtrInput
@@ -275,11 +636,15 @@ type InstanceArgs struct {
 	RenewPeriod pulumi.IntPtrInput
 	// Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `paymentType` is `Subscription`.
 	RenewStatus pulumi.StringPtrInput
+	// Automatic renewal period unit, valid value:
+	// - `M`: Month.
+	// - `Y`: Year.
+	RenewalPeriodUnit pulumi.StringPtrInput
 	// Maximum number of Secrets. The attribute is valid when the attribute `paymentType` is `Subscription`.
 	SecretNum pulumi.IntPtrInput
 	// The computation performance level of the KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
 	Spec pulumi.IntPtrInput
-	// Instance VPC id
+	// The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
 	VpcId pulumi.StringInput
 	// The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
 	VpcNum pulumi.IntPtrInput
@@ -421,7 +786,7 @@ func (o InstanceOutput) LogStorage() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.LogStorage }).(pulumi.IntOutput)
 }
 
-// Payment type,valid values:
+// Payment type, valid values:
 // - `Subscription`: Prepaid.
 // - `PayAsYouGo`: Postpaid.
 func (o InstanceOutput) PaymentType() pulumi.StringOutput {
@@ -434,8 +799,8 @@ func (o InstanceOutput) Period() pulumi.IntPtrOutput {
 }
 
 // KMS Instance commodity type (software/hardware)
-func (o InstanceOutput) ProductVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ProductVersion }).(pulumi.StringPtrOutput)
+func (o InstanceOutput) ProductVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ProductVersion }).(pulumi.StringOutput)
 }
 
 // Automatic renewal period, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
@@ -444,8 +809,15 @@ func (o InstanceOutput) RenewPeriod() pulumi.IntPtrOutput {
 }
 
 // Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `paymentType` is `Subscription`.
-func (o InstanceOutput) RenewStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.RenewStatus }).(pulumi.StringPtrOutput)
+func (o InstanceOutput) RenewStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.RenewStatus }).(pulumi.StringOutput)
+}
+
+// Automatic renewal period unit, valid value:
+// - `M`: Month.
+// - `Y`: Year.
+func (o InstanceOutput) RenewalPeriodUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.RenewalPeriodUnit }).(pulumi.StringPtrOutput)
 }
 
 // Maximum number of Secrets. The attribute is valid when the attribute `paymentType` is `Subscription`.
@@ -463,7 +835,7 @@ func (o InstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Instance VPC id
+// The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
 func (o InstanceOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }

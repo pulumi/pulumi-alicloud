@@ -56,20 +56,20 @@ import * as utilities from "../utilities";
  * });
  * const defaultRole = new alicloud.ram.Role("default", {
  *     name: "hbrexamplerole",
- *     document: `\x09\x09{
- * \x09\x09\x09"Statement": [
- * \x09\x09\x09{
- * \x09\x09\x09\x09"Action": "sts:AssumeRole",
- * \x09\x09\x09\x09"Effect": "Allow",
- * \x09\x09\x09\x09"Principal": {
- * \x09\x09\x09\x09\x09"Service": [
- * \x09\x09\x09\x09\x09\x09"crossbackup.hbr.aliyuncs.com"
- * \x09\x09\x09\x09\x09]
- * \x09\x09\x09\x09}
- * \x09\x09\x09}
- * \x09\x09\x09],
- *   \x09\x09\x09"Version": "1"
- * \x09\x09}
+ *     document: `\\t\\t{
+ * \\t\\t\\t\\"Statement\\": [
+ * \\t\\t\\t{
+ * \\t\\t\\t\\t\\"Action\\": \\"sts:AssumeRole\\",
+ * \\t\\t\\t\\t\\"Effect\\": \\"Allow\\",
+ * \\t\\t\\t\\t\\"Principal\\": {
+ * \\t\\t\\t\\t\\t\\"Service\\": [
+ * \\t\\t\\t\\t\\t\\t\\"crossbackup.hbr.aliyuncs.com\\"
+ * \\t\\t\\t\\t\\t]
+ * \\t\\t\\t\\t}
+ * \\t\\t\\t}
+ * \\t\\t\\t],
+ *   \\t\\t\\t\\"Version\\": \\"1\\"
+ * \\t\\t}
  * `,
  *     force: true,
  * });

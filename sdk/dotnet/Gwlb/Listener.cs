@@ -16,6 +16,132 @@ namespace Pulumi.AliCloud.Gwlb
     /// 
     /// &gt; **NOTE:** Available since v1.234.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var zoneId1 = config.Get("zoneId1") ?? "cn-wulanchabu-b";
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         CidrBlock = "10.0.0.0/8",
+    ///         VpcName = name,
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = zoneId1,
+    ///         CidrBlock = "10.0.0.0/24",
+    ///         VswitchName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s1",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var defaultLoadBalancer = new AliCloud.Gwlb.LoadBalancer("default", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         LoadBalancerName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s3",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         ZoneMappings = new[]
+    ///         {
+    ///             new AliCloud.Gwlb.Inputs.LoadBalancerZoneMappingArgs
+    ///             {
+    ///                 VswitchId = defaultSwitch.Id,
+    ///                 ZoneId = zoneId1,
+    ///             },
+    ///         },
+    ///         AddressIpVersion = "Ipv4",
+    ///     });
+    /// 
+    ///     var defaultServerGroup = new AliCloud.Gwlb.ServerGroup("default", new()
+    ///     {
+    ///         Protocol = "GENEVE",
+    ///         ServerGroupName = "tfaccgwlb62413",
+    ///         ServerGroupType = "Ip",
+    ///         Servers = new[]
+    ///         {
+    ///             new AliCloud.Gwlb.Inputs.ServerGroupServerArgs
+    ///             {
+    ///                 ServerId = "10.0.0.1",
+    ///                 ServerIp = "10.0.0.1",
+    ///                 ServerType = "Ip",
+    ///             },
+    ///             new AliCloud.Gwlb.Inputs.ServerGroupServerArgs
+    ///             {
+    ///                 ServerId = "10.0.0.2",
+    ///                 ServerIp = "10.0.0.2",
+    ///                 ServerType = "Ip",
+    ///             },
+    ///             new AliCloud.Gwlb.Inputs.ServerGroupServerArgs
+    ///             {
+    ///                 ServerId = "10.0.0.3",
+    ///                 ServerIp = "10.0.0.3",
+    ///                 ServerType = "Ip",
+    ///             },
+    ///         },
+    ///         ConnectionDrainConfig = new AliCloud.Gwlb.Inputs.ServerGroupConnectionDrainConfigArgs
+    ///         {
+    ///             ConnectionDrainEnabled = true,
+    ///             ConnectionDrainTimeout = 1,
+    ///         },
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0])),
+    ///         DryRun = false,
+    ///         HealthCheckConfig = new AliCloud.Gwlb.Inputs.ServerGroupHealthCheckConfigArgs
+    ///         {
+    ///             HealthCheckProtocol = "HTTP",
+    ///             HealthCheckHttpCodes = new[]
+    ///             {
+    ///                 "http_2xx",
+    ///                 "http_3xx",
+    ///                 "http_4xx",
+    ///             },
+    ///             HealthCheckInterval = 10,
+    ///             HealthCheckPath = "/health-check",
+    ///             UnhealthyThreshold = 2,
+    ///             HealthCheckConnectPort = 80,
+    ///             HealthCheckConnectTimeout = 5,
+    ///             HealthCheckDomain = "www.domain.com",
+    ///             HealthCheckEnabled = true,
+    ///             HealthyThreshold = 2,
+    ///         },
+    ///         VpcId = defaultNetwork.Id,
+    ///         Scheduler = "5TCH",
+    ///     });
+    /// 
+    ///     var defaultListener = new AliCloud.Gwlb.Listener("default", new()
+    ///     {
+    ///         ListenerDescription = "example-tf-lsn",
+    ///         ServerGroupId = defaultServerGroup.Id,
+    ///         LoadBalancerId = defaultLoadBalancer.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// GWLB Listener can be imported using the id, e.g.

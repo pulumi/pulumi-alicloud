@@ -4727,6 +4727,193 @@ func (o SyntheticTaskMonitorConfWebsitePtrOutput) WaitCompletionTime() pulumi.In
 	}).(pulumi.IntPtrOutput)
 }
 
+type GetAddonReleasesRelease struct {
+	// The name of the add-on.
+	AddonName string `pulumi:"addonName"`
+	// The name of the Addon Release.
+	AddonReleaseName string `pulumi:"addonReleaseName"`
+	// The version of the add-on.
+	AddonVersion string `pulumi:"addonVersion"`
+	// The number of alert rules.
+	AlertRuleCount int `pulumi:"alertRuleCount"`
+	// The language.
+	AliyunLang string `pulumi:"aliyunLang"`
+	// The time when the add-on was created.
+	CreateTime string `pulumi:"createTime"`
+	// The number of dashboards.
+	DashboardCount int `pulumi:"dashboardCount"`
+	// The environment ID.
+	EnvironmentId string `pulumi:"environmentId"`
+	// The number of exporters.
+	ExporterCount int `pulumi:"exporterCount"`
+	// The ID of the Addon Release. It formats as `<environment_id>:<addon_release_name>`.
+	Id string `pulumi:"id"`
+	// The region ID.
+	RegionId string `pulumi:"regionId"`
+}
+
+// GetAddonReleasesReleaseInput is an input type that accepts GetAddonReleasesReleaseArgs and GetAddonReleasesReleaseOutput values.
+// You can construct a concrete instance of `GetAddonReleasesReleaseInput` via:
+//
+//	GetAddonReleasesReleaseArgs{...}
+type GetAddonReleasesReleaseInput interface {
+	pulumi.Input
+
+	ToGetAddonReleasesReleaseOutput() GetAddonReleasesReleaseOutput
+	ToGetAddonReleasesReleaseOutputWithContext(context.Context) GetAddonReleasesReleaseOutput
+}
+
+type GetAddonReleasesReleaseArgs struct {
+	// The name of the add-on.
+	AddonName pulumi.StringInput `pulumi:"addonName"`
+	// The name of the Addon Release.
+	AddonReleaseName pulumi.StringInput `pulumi:"addonReleaseName"`
+	// The version of the add-on.
+	AddonVersion pulumi.StringInput `pulumi:"addonVersion"`
+	// The number of alert rules.
+	AlertRuleCount pulumi.IntInput `pulumi:"alertRuleCount"`
+	// The language.
+	AliyunLang pulumi.StringInput `pulumi:"aliyunLang"`
+	// The time when the add-on was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The number of dashboards.
+	DashboardCount pulumi.IntInput `pulumi:"dashboardCount"`
+	// The environment ID.
+	EnvironmentId pulumi.StringInput `pulumi:"environmentId"`
+	// The number of exporters.
+	ExporterCount pulumi.IntInput `pulumi:"exporterCount"`
+	// The ID of the Addon Release. It formats as `<environment_id>:<addon_release_name>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The region ID.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+}
+
+func (GetAddonReleasesReleaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAddonReleasesRelease)(nil)).Elem()
+}
+
+func (i GetAddonReleasesReleaseArgs) ToGetAddonReleasesReleaseOutput() GetAddonReleasesReleaseOutput {
+	return i.ToGetAddonReleasesReleaseOutputWithContext(context.Background())
+}
+
+func (i GetAddonReleasesReleaseArgs) ToGetAddonReleasesReleaseOutputWithContext(ctx context.Context) GetAddonReleasesReleaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAddonReleasesReleaseOutput)
+}
+
+// GetAddonReleasesReleaseArrayInput is an input type that accepts GetAddonReleasesReleaseArray and GetAddonReleasesReleaseArrayOutput values.
+// You can construct a concrete instance of `GetAddonReleasesReleaseArrayInput` via:
+//
+//	GetAddonReleasesReleaseArray{ GetAddonReleasesReleaseArgs{...} }
+type GetAddonReleasesReleaseArrayInput interface {
+	pulumi.Input
+
+	ToGetAddonReleasesReleaseArrayOutput() GetAddonReleasesReleaseArrayOutput
+	ToGetAddonReleasesReleaseArrayOutputWithContext(context.Context) GetAddonReleasesReleaseArrayOutput
+}
+
+type GetAddonReleasesReleaseArray []GetAddonReleasesReleaseInput
+
+func (GetAddonReleasesReleaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAddonReleasesRelease)(nil)).Elem()
+}
+
+func (i GetAddonReleasesReleaseArray) ToGetAddonReleasesReleaseArrayOutput() GetAddonReleasesReleaseArrayOutput {
+	return i.ToGetAddonReleasesReleaseArrayOutputWithContext(context.Background())
+}
+
+func (i GetAddonReleasesReleaseArray) ToGetAddonReleasesReleaseArrayOutputWithContext(ctx context.Context) GetAddonReleasesReleaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAddonReleasesReleaseArrayOutput)
+}
+
+type GetAddonReleasesReleaseOutput struct{ *pulumi.OutputState }
+
+func (GetAddonReleasesReleaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAddonReleasesRelease)(nil)).Elem()
+}
+
+func (o GetAddonReleasesReleaseOutput) ToGetAddonReleasesReleaseOutput() GetAddonReleasesReleaseOutput {
+	return o
+}
+
+func (o GetAddonReleasesReleaseOutput) ToGetAddonReleasesReleaseOutputWithContext(ctx context.Context) GetAddonReleasesReleaseOutput {
+	return o
+}
+
+// The name of the add-on.
+func (o GetAddonReleasesReleaseOutput) AddonName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddonReleasesRelease) string { return v.AddonName }).(pulumi.StringOutput)
+}
+
+// The name of the Addon Release.
+func (o GetAddonReleasesReleaseOutput) AddonReleaseName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddonReleasesRelease) string { return v.AddonReleaseName }).(pulumi.StringOutput)
+}
+
+// The version of the add-on.
+func (o GetAddonReleasesReleaseOutput) AddonVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddonReleasesRelease) string { return v.AddonVersion }).(pulumi.StringOutput)
+}
+
+// The number of alert rules.
+func (o GetAddonReleasesReleaseOutput) AlertRuleCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAddonReleasesRelease) int { return v.AlertRuleCount }).(pulumi.IntOutput)
+}
+
+// The language.
+func (o GetAddonReleasesReleaseOutput) AliyunLang() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddonReleasesRelease) string { return v.AliyunLang }).(pulumi.StringOutput)
+}
+
+// The time when the add-on was created.
+func (o GetAddonReleasesReleaseOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddonReleasesRelease) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The number of dashboards.
+func (o GetAddonReleasesReleaseOutput) DashboardCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAddonReleasesRelease) int { return v.DashboardCount }).(pulumi.IntOutput)
+}
+
+// The environment ID.
+func (o GetAddonReleasesReleaseOutput) EnvironmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddonReleasesRelease) string { return v.EnvironmentId }).(pulumi.StringOutput)
+}
+
+// The number of exporters.
+func (o GetAddonReleasesReleaseOutput) ExporterCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAddonReleasesRelease) int { return v.ExporterCount }).(pulumi.IntOutput)
+}
+
+// The ID of the Addon Release. It formats as `<environment_id>:<addon_release_name>`.
+func (o GetAddonReleasesReleaseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddonReleasesRelease) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The region ID.
+func (o GetAddonReleasesReleaseOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddonReleasesRelease) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+type GetAddonReleasesReleaseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAddonReleasesReleaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAddonReleasesRelease)(nil)).Elem()
+}
+
+func (o GetAddonReleasesReleaseArrayOutput) ToGetAddonReleasesReleaseArrayOutput() GetAddonReleasesReleaseArrayOutput {
+	return o
+}
+
+func (o GetAddonReleasesReleaseArrayOutput) ToGetAddonReleasesReleaseArrayOutputWithContext(ctx context.Context) GetAddonReleasesReleaseArrayOutput {
+	return o
+}
+
+func (o GetAddonReleasesReleaseArrayOutput) Index(i pulumi.IntInput) GetAddonReleasesReleaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAddonReleasesRelease {
+		return vs[0].([]GetAddonReleasesRelease)[vs[1].(int)]
+	}).(GetAddonReleasesReleaseOutput)
+}
+
 type GetAlertContactGroupsGroup struct {
 	// The first ID of the resource.
 	AlertContactGroupId string `pulumi:"alertContactGroupId"`
@@ -6204,6 +6391,815 @@ func (o GetDispatchRulesRuleNotifyTemplateArrayOutput) Index(i pulumi.IntInput) 
 	}).(GetDispatchRulesRuleNotifyTemplateOutput)
 }
 
+type GetEnvCustomJobsJob struct {
+	// The YAML configuration string.
+	ConfigYaml string `pulumi:"configYaml"`
+	// The name of the custom job.
+	EnvCustomJobName string `pulumi:"envCustomJobName"`
+	// The ID of the environment instance.
+	EnvironmentId string `pulumi:"environmentId"`
+	// The ID of the custom job. It formats as `<environment_id>:<env_custom_job_name>`.
+	Id string `pulumi:"id"`
+	// The region ID.
+	RegionId string `pulumi:"regionId"`
+	// The status of the custom job.
+	Status string `pulumi:"status"`
+}
+
+// GetEnvCustomJobsJobInput is an input type that accepts GetEnvCustomJobsJobArgs and GetEnvCustomJobsJobOutput values.
+// You can construct a concrete instance of `GetEnvCustomJobsJobInput` via:
+//
+//	GetEnvCustomJobsJobArgs{...}
+type GetEnvCustomJobsJobInput interface {
+	pulumi.Input
+
+	ToGetEnvCustomJobsJobOutput() GetEnvCustomJobsJobOutput
+	ToGetEnvCustomJobsJobOutputWithContext(context.Context) GetEnvCustomJobsJobOutput
+}
+
+type GetEnvCustomJobsJobArgs struct {
+	// The YAML configuration string.
+	ConfigYaml pulumi.StringInput `pulumi:"configYaml"`
+	// The name of the custom job.
+	EnvCustomJobName pulumi.StringInput `pulumi:"envCustomJobName"`
+	// The ID of the environment instance.
+	EnvironmentId pulumi.StringInput `pulumi:"environmentId"`
+	// The ID of the custom job. It formats as `<environment_id>:<env_custom_job_name>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The region ID.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// The status of the custom job.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetEnvCustomJobsJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvCustomJobsJob)(nil)).Elem()
+}
+
+func (i GetEnvCustomJobsJobArgs) ToGetEnvCustomJobsJobOutput() GetEnvCustomJobsJobOutput {
+	return i.ToGetEnvCustomJobsJobOutputWithContext(context.Background())
+}
+
+func (i GetEnvCustomJobsJobArgs) ToGetEnvCustomJobsJobOutputWithContext(ctx context.Context) GetEnvCustomJobsJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvCustomJobsJobOutput)
+}
+
+// GetEnvCustomJobsJobArrayInput is an input type that accepts GetEnvCustomJobsJobArray and GetEnvCustomJobsJobArrayOutput values.
+// You can construct a concrete instance of `GetEnvCustomJobsJobArrayInput` via:
+//
+//	GetEnvCustomJobsJobArray{ GetEnvCustomJobsJobArgs{...} }
+type GetEnvCustomJobsJobArrayInput interface {
+	pulumi.Input
+
+	ToGetEnvCustomJobsJobArrayOutput() GetEnvCustomJobsJobArrayOutput
+	ToGetEnvCustomJobsJobArrayOutputWithContext(context.Context) GetEnvCustomJobsJobArrayOutput
+}
+
+type GetEnvCustomJobsJobArray []GetEnvCustomJobsJobInput
+
+func (GetEnvCustomJobsJobArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvCustomJobsJob)(nil)).Elem()
+}
+
+func (i GetEnvCustomJobsJobArray) ToGetEnvCustomJobsJobArrayOutput() GetEnvCustomJobsJobArrayOutput {
+	return i.ToGetEnvCustomJobsJobArrayOutputWithContext(context.Background())
+}
+
+func (i GetEnvCustomJobsJobArray) ToGetEnvCustomJobsJobArrayOutputWithContext(ctx context.Context) GetEnvCustomJobsJobArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvCustomJobsJobArrayOutput)
+}
+
+type GetEnvCustomJobsJobOutput struct{ *pulumi.OutputState }
+
+func (GetEnvCustomJobsJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvCustomJobsJob)(nil)).Elem()
+}
+
+func (o GetEnvCustomJobsJobOutput) ToGetEnvCustomJobsJobOutput() GetEnvCustomJobsJobOutput {
+	return o
+}
+
+func (o GetEnvCustomJobsJobOutput) ToGetEnvCustomJobsJobOutputWithContext(ctx context.Context) GetEnvCustomJobsJobOutput {
+	return o
+}
+
+// The YAML configuration string.
+func (o GetEnvCustomJobsJobOutput) ConfigYaml() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvCustomJobsJob) string { return v.ConfigYaml }).(pulumi.StringOutput)
+}
+
+// The name of the custom job.
+func (o GetEnvCustomJobsJobOutput) EnvCustomJobName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvCustomJobsJob) string { return v.EnvCustomJobName }).(pulumi.StringOutput)
+}
+
+// The ID of the environment instance.
+func (o GetEnvCustomJobsJobOutput) EnvironmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvCustomJobsJob) string { return v.EnvironmentId }).(pulumi.StringOutput)
+}
+
+// The ID of the custom job. It formats as `<environment_id>:<env_custom_job_name>`.
+func (o GetEnvCustomJobsJobOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvCustomJobsJob) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The region ID.
+func (o GetEnvCustomJobsJobOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvCustomJobsJob) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The status of the custom job.
+func (o GetEnvCustomJobsJobOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvCustomJobsJob) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetEnvCustomJobsJobArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEnvCustomJobsJobArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvCustomJobsJob)(nil)).Elem()
+}
+
+func (o GetEnvCustomJobsJobArrayOutput) ToGetEnvCustomJobsJobArrayOutput() GetEnvCustomJobsJobArrayOutput {
+	return o
+}
+
+func (o GetEnvCustomJobsJobArrayOutput) ToGetEnvCustomJobsJobArrayOutputWithContext(ctx context.Context) GetEnvCustomJobsJobArrayOutput {
+	return o
+}
+
+func (o GetEnvCustomJobsJobArrayOutput) Index(i pulumi.IntInput) GetEnvCustomJobsJobOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnvCustomJobsJob {
+		return vs[0].([]GetEnvCustomJobsJob)[vs[1].(int)]
+	}).(GetEnvCustomJobsJobOutput)
+}
+
+type GetEnvFeaturesFeature struct {
+	// The language.
+	AliyunLang string `pulumi:"aliyunLang"`
+	// The name of the feature.
+	EnvFeatureName string `pulumi:"envFeatureName"`
+	// The ID of the environment instance.
+	EnvironmentId string `pulumi:"environmentId"`
+	// The version of the feature.
+	FeatureVersion string `pulumi:"featureVersion"`
+	// The ID of the Env Feature. It formats as `<environment_id>:<env_feature_name>`.
+	Id string `pulumi:"id"`
+	// The status of the feature.
+	Status string `pulumi:"status"`
+}
+
+// GetEnvFeaturesFeatureInput is an input type that accepts GetEnvFeaturesFeatureArgs and GetEnvFeaturesFeatureOutput values.
+// You can construct a concrete instance of `GetEnvFeaturesFeatureInput` via:
+//
+//	GetEnvFeaturesFeatureArgs{...}
+type GetEnvFeaturesFeatureInput interface {
+	pulumi.Input
+
+	ToGetEnvFeaturesFeatureOutput() GetEnvFeaturesFeatureOutput
+	ToGetEnvFeaturesFeatureOutputWithContext(context.Context) GetEnvFeaturesFeatureOutput
+}
+
+type GetEnvFeaturesFeatureArgs struct {
+	// The language.
+	AliyunLang pulumi.StringInput `pulumi:"aliyunLang"`
+	// The name of the feature.
+	EnvFeatureName pulumi.StringInput `pulumi:"envFeatureName"`
+	// The ID of the environment instance.
+	EnvironmentId pulumi.StringInput `pulumi:"environmentId"`
+	// The version of the feature.
+	FeatureVersion pulumi.StringInput `pulumi:"featureVersion"`
+	// The ID of the Env Feature. It formats as `<environment_id>:<env_feature_name>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The status of the feature.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetEnvFeaturesFeatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvFeaturesFeature)(nil)).Elem()
+}
+
+func (i GetEnvFeaturesFeatureArgs) ToGetEnvFeaturesFeatureOutput() GetEnvFeaturesFeatureOutput {
+	return i.ToGetEnvFeaturesFeatureOutputWithContext(context.Background())
+}
+
+func (i GetEnvFeaturesFeatureArgs) ToGetEnvFeaturesFeatureOutputWithContext(ctx context.Context) GetEnvFeaturesFeatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvFeaturesFeatureOutput)
+}
+
+// GetEnvFeaturesFeatureArrayInput is an input type that accepts GetEnvFeaturesFeatureArray and GetEnvFeaturesFeatureArrayOutput values.
+// You can construct a concrete instance of `GetEnvFeaturesFeatureArrayInput` via:
+//
+//	GetEnvFeaturesFeatureArray{ GetEnvFeaturesFeatureArgs{...} }
+type GetEnvFeaturesFeatureArrayInput interface {
+	pulumi.Input
+
+	ToGetEnvFeaturesFeatureArrayOutput() GetEnvFeaturesFeatureArrayOutput
+	ToGetEnvFeaturesFeatureArrayOutputWithContext(context.Context) GetEnvFeaturesFeatureArrayOutput
+}
+
+type GetEnvFeaturesFeatureArray []GetEnvFeaturesFeatureInput
+
+func (GetEnvFeaturesFeatureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvFeaturesFeature)(nil)).Elem()
+}
+
+func (i GetEnvFeaturesFeatureArray) ToGetEnvFeaturesFeatureArrayOutput() GetEnvFeaturesFeatureArrayOutput {
+	return i.ToGetEnvFeaturesFeatureArrayOutputWithContext(context.Background())
+}
+
+func (i GetEnvFeaturesFeatureArray) ToGetEnvFeaturesFeatureArrayOutputWithContext(ctx context.Context) GetEnvFeaturesFeatureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvFeaturesFeatureArrayOutput)
+}
+
+type GetEnvFeaturesFeatureOutput struct{ *pulumi.OutputState }
+
+func (GetEnvFeaturesFeatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvFeaturesFeature)(nil)).Elem()
+}
+
+func (o GetEnvFeaturesFeatureOutput) ToGetEnvFeaturesFeatureOutput() GetEnvFeaturesFeatureOutput {
+	return o
+}
+
+func (o GetEnvFeaturesFeatureOutput) ToGetEnvFeaturesFeatureOutputWithContext(ctx context.Context) GetEnvFeaturesFeatureOutput {
+	return o
+}
+
+// The language.
+func (o GetEnvFeaturesFeatureOutput) AliyunLang() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvFeaturesFeature) string { return v.AliyunLang }).(pulumi.StringOutput)
+}
+
+// The name of the feature.
+func (o GetEnvFeaturesFeatureOutput) EnvFeatureName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvFeaturesFeature) string { return v.EnvFeatureName }).(pulumi.StringOutput)
+}
+
+// The ID of the environment instance.
+func (o GetEnvFeaturesFeatureOutput) EnvironmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvFeaturesFeature) string { return v.EnvironmentId }).(pulumi.StringOutput)
+}
+
+// The version of the feature.
+func (o GetEnvFeaturesFeatureOutput) FeatureVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvFeaturesFeature) string { return v.FeatureVersion }).(pulumi.StringOutput)
+}
+
+// The ID of the Env Feature. It formats as `<environment_id>:<env_feature_name>`.
+func (o GetEnvFeaturesFeatureOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvFeaturesFeature) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The status of the feature.
+func (o GetEnvFeaturesFeatureOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvFeaturesFeature) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetEnvFeaturesFeatureArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEnvFeaturesFeatureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvFeaturesFeature)(nil)).Elem()
+}
+
+func (o GetEnvFeaturesFeatureArrayOutput) ToGetEnvFeaturesFeatureArrayOutput() GetEnvFeaturesFeatureArrayOutput {
+	return o
+}
+
+func (o GetEnvFeaturesFeatureArrayOutput) ToGetEnvFeaturesFeatureArrayOutputWithContext(ctx context.Context) GetEnvFeaturesFeatureArrayOutput {
+	return o
+}
+
+func (o GetEnvFeaturesFeatureArrayOutput) Index(i pulumi.IntInput) GetEnvFeaturesFeatureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnvFeaturesFeature {
+		return vs[0].([]GetEnvFeaturesFeature)[vs[1].(int)]
+	}).(GetEnvFeaturesFeatureOutput)
+}
+
+type GetEnvPodMonitorsMonitor struct {
+	// The YAML configuration string.
+	ConfigYaml string `pulumi:"configYaml"`
+	// The name of the PodMonitor.
+	EnvPodMonitorName string `pulumi:"envPodMonitorName"`
+	// The environment ID.
+	EnvironmentId string `pulumi:"environmentId"`
+	// The ID of the PodMonitor. It formats as `<environment_id>:<namespace>:<env_pod_monitor_name>`.
+	Id string `pulumi:"id"`
+	// The namespace.
+	Namespace string `pulumi:"namespace"`
+	// The region ID.
+	RegionId string `pulumi:"regionId"`
+	// The status of the PodMonitor.
+	Status string `pulumi:"status"`
+}
+
+// GetEnvPodMonitorsMonitorInput is an input type that accepts GetEnvPodMonitorsMonitorArgs and GetEnvPodMonitorsMonitorOutput values.
+// You can construct a concrete instance of `GetEnvPodMonitorsMonitorInput` via:
+//
+//	GetEnvPodMonitorsMonitorArgs{...}
+type GetEnvPodMonitorsMonitorInput interface {
+	pulumi.Input
+
+	ToGetEnvPodMonitorsMonitorOutput() GetEnvPodMonitorsMonitorOutput
+	ToGetEnvPodMonitorsMonitorOutputWithContext(context.Context) GetEnvPodMonitorsMonitorOutput
+}
+
+type GetEnvPodMonitorsMonitorArgs struct {
+	// The YAML configuration string.
+	ConfigYaml pulumi.StringInput `pulumi:"configYaml"`
+	// The name of the PodMonitor.
+	EnvPodMonitorName pulumi.StringInput `pulumi:"envPodMonitorName"`
+	// The environment ID.
+	EnvironmentId pulumi.StringInput `pulumi:"environmentId"`
+	// The ID of the PodMonitor. It formats as `<environment_id>:<namespace>:<env_pod_monitor_name>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The namespace.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// The region ID.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// The status of the PodMonitor.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetEnvPodMonitorsMonitorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvPodMonitorsMonitor)(nil)).Elem()
+}
+
+func (i GetEnvPodMonitorsMonitorArgs) ToGetEnvPodMonitorsMonitorOutput() GetEnvPodMonitorsMonitorOutput {
+	return i.ToGetEnvPodMonitorsMonitorOutputWithContext(context.Background())
+}
+
+func (i GetEnvPodMonitorsMonitorArgs) ToGetEnvPodMonitorsMonitorOutputWithContext(ctx context.Context) GetEnvPodMonitorsMonitorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvPodMonitorsMonitorOutput)
+}
+
+// GetEnvPodMonitorsMonitorArrayInput is an input type that accepts GetEnvPodMonitorsMonitorArray and GetEnvPodMonitorsMonitorArrayOutput values.
+// You can construct a concrete instance of `GetEnvPodMonitorsMonitorArrayInput` via:
+//
+//	GetEnvPodMonitorsMonitorArray{ GetEnvPodMonitorsMonitorArgs{...} }
+type GetEnvPodMonitorsMonitorArrayInput interface {
+	pulumi.Input
+
+	ToGetEnvPodMonitorsMonitorArrayOutput() GetEnvPodMonitorsMonitorArrayOutput
+	ToGetEnvPodMonitorsMonitorArrayOutputWithContext(context.Context) GetEnvPodMonitorsMonitorArrayOutput
+}
+
+type GetEnvPodMonitorsMonitorArray []GetEnvPodMonitorsMonitorInput
+
+func (GetEnvPodMonitorsMonitorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvPodMonitorsMonitor)(nil)).Elem()
+}
+
+func (i GetEnvPodMonitorsMonitorArray) ToGetEnvPodMonitorsMonitorArrayOutput() GetEnvPodMonitorsMonitorArrayOutput {
+	return i.ToGetEnvPodMonitorsMonitorArrayOutputWithContext(context.Background())
+}
+
+func (i GetEnvPodMonitorsMonitorArray) ToGetEnvPodMonitorsMonitorArrayOutputWithContext(ctx context.Context) GetEnvPodMonitorsMonitorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvPodMonitorsMonitorArrayOutput)
+}
+
+type GetEnvPodMonitorsMonitorOutput struct{ *pulumi.OutputState }
+
+func (GetEnvPodMonitorsMonitorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvPodMonitorsMonitor)(nil)).Elem()
+}
+
+func (o GetEnvPodMonitorsMonitorOutput) ToGetEnvPodMonitorsMonitorOutput() GetEnvPodMonitorsMonitorOutput {
+	return o
+}
+
+func (o GetEnvPodMonitorsMonitorOutput) ToGetEnvPodMonitorsMonitorOutputWithContext(ctx context.Context) GetEnvPodMonitorsMonitorOutput {
+	return o
+}
+
+// The YAML configuration string.
+func (o GetEnvPodMonitorsMonitorOutput) ConfigYaml() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvPodMonitorsMonitor) string { return v.ConfigYaml }).(pulumi.StringOutput)
+}
+
+// The name of the PodMonitor.
+func (o GetEnvPodMonitorsMonitorOutput) EnvPodMonitorName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvPodMonitorsMonitor) string { return v.EnvPodMonitorName }).(pulumi.StringOutput)
+}
+
+// The environment ID.
+func (o GetEnvPodMonitorsMonitorOutput) EnvironmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvPodMonitorsMonitor) string { return v.EnvironmentId }).(pulumi.StringOutput)
+}
+
+// The ID of the PodMonitor. It formats as `<environment_id>:<namespace>:<env_pod_monitor_name>`.
+func (o GetEnvPodMonitorsMonitorOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvPodMonitorsMonitor) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The namespace.
+func (o GetEnvPodMonitorsMonitorOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvPodMonitorsMonitor) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// The region ID.
+func (o GetEnvPodMonitorsMonitorOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvPodMonitorsMonitor) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The status of the PodMonitor.
+func (o GetEnvPodMonitorsMonitorOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvPodMonitorsMonitor) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetEnvPodMonitorsMonitorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEnvPodMonitorsMonitorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvPodMonitorsMonitor)(nil)).Elem()
+}
+
+func (o GetEnvPodMonitorsMonitorArrayOutput) ToGetEnvPodMonitorsMonitorArrayOutput() GetEnvPodMonitorsMonitorArrayOutput {
+	return o
+}
+
+func (o GetEnvPodMonitorsMonitorArrayOutput) ToGetEnvPodMonitorsMonitorArrayOutputWithContext(ctx context.Context) GetEnvPodMonitorsMonitorArrayOutput {
+	return o
+}
+
+func (o GetEnvPodMonitorsMonitorArrayOutput) Index(i pulumi.IntInput) GetEnvPodMonitorsMonitorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnvPodMonitorsMonitor {
+		return vs[0].([]GetEnvPodMonitorsMonitor)[vs[1].(int)]
+	}).(GetEnvPodMonitorsMonitorOutput)
+}
+
+type GetEnvServiceMonitorsMonitor struct {
+	// The YAML configuration string.
+	ConfigYaml string `pulumi:"configYaml"`
+	// The name of the ServiceMonitor.
+	EnvServiceMonitorName string `pulumi:"envServiceMonitorName"`
+	// The environment ID.
+	EnvironmentId string `pulumi:"environmentId"`
+	// The ID of the ServiceMonitor. It formats as `<environment_id>:<namespace>:<env_service_monitor_name>`.
+	Id string `pulumi:"id"`
+	// The namespace.
+	Namespace string `pulumi:"namespace"`
+	// The region ID.
+	RegionId string `pulumi:"regionId"`
+	// The status of the ServiceMonitor.
+	Status string `pulumi:"status"`
+}
+
+// GetEnvServiceMonitorsMonitorInput is an input type that accepts GetEnvServiceMonitorsMonitorArgs and GetEnvServiceMonitorsMonitorOutput values.
+// You can construct a concrete instance of `GetEnvServiceMonitorsMonitorInput` via:
+//
+//	GetEnvServiceMonitorsMonitorArgs{...}
+type GetEnvServiceMonitorsMonitorInput interface {
+	pulumi.Input
+
+	ToGetEnvServiceMonitorsMonitorOutput() GetEnvServiceMonitorsMonitorOutput
+	ToGetEnvServiceMonitorsMonitorOutputWithContext(context.Context) GetEnvServiceMonitorsMonitorOutput
+}
+
+type GetEnvServiceMonitorsMonitorArgs struct {
+	// The YAML configuration string.
+	ConfigYaml pulumi.StringInput `pulumi:"configYaml"`
+	// The name of the ServiceMonitor.
+	EnvServiceMonitorName pulumi.StringInput `pulumi:"envServiceMonitorName"`
+	// The environment ID.
+	EnvironmentId pulumi.StringInput `pulumi:"environmentId"`
+	// The ID of the ServiceMonitor. It formats as `<environment_id>:<namespace>:<env_service_monitor_name>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The namespace.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// The region ID.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// The status of the ServiceMonitor.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetEnvServiceMonitorsMonitorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvServiceMonitorsMonitor)(nil)).Elem()
+}
+
+func (i GetEnvServiceMonitorsMonitorArgs) ToGetEnvServiceMonitorsMonitorOutput() GetEnvServiceMonitorsMonitorOutput {
+	return i.ToGetEnvServiceMonitorsMonitorOutputWithContext(context.Background())
+}
+
+func (i GetEnvServiceMonitorsMonitorArgs) ToGetEnvServiceMonitorsMonitorOutputWithContext(ctx context.Context) GetEnvServiceMonitorsMonitorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvServiceMonitorsMonitorOutput)
+}
+
+// GetEnvServiceMonitorsMonitorArrayInput is an input type that accepts GetEnvServiceMonitorsMonitorArray and GetEnvServiceMonitorsMonitorArrayOutput values.
+// You can construct a concrete instance of `GetEnvServiceMonitorsMonitorArrayInput` via:
+//
+//	GetEnvServiceMonitorsMonitorArray{ GetEnvServiceMonitorsMonitorArgs{...} }
+type GetEnvServiceMonitorsMonitorArrayInput interface {
+	pulumi.Input
+
+	ToGetEnvServiceMonitorsMonitorArrayOutput() GetEnvServiceMonitorsMonitorArrayOutput
+	ToGetEnvServiceMonitorsMonitorArrayOutputWithContext(context.Context) GetEnvServiceMonitorsMonitorArrayOutput
+}
+
+type GetEnvServiceMonitorsMonitorArray []GetEnvServiceMonitorsMonitorInput
+
+func (GetEnvServiceMonitorsMonitorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvServiceMonitorsMonitor)(nil)).Elem()
+}
+
+func (i GetEnvServiceMonitorsMonitorArray) ToGetEnvServiceMonitorsMonitorArrayOutput() GetEnvServiceMonitorsMonitorArrayOutput {
+	return i.ToGetEnvServiceMonitorsMonitorArrayOutputWithContext(context.Background())
+}
+
+func (i GetEnvServiceMonitorsMonitorArray) ToGetEnvServiceMonitorsMonitorArrayOutputWithContext(ctx context.Context) GetEnvServiceMonitorsMonitorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvServiceMonitorsMonitorArrayOutput)
+}
+
+type GetEnvServiceMonitorsMonitorOutput struct{ *pulumi.OutputState }
+
+func (GetEnvServiceMonitorsMonitorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvServiceMonitorsMonitor)(nil)).Elem()
+}
+
+func (o GetEnvServiceMonitorsMonitorOutput) ToGetEnvServiceMonitorsMonitorOutput() GetEnvServiceMonitorsMonitorOutput {
+	return o
+}
+
+func (o GetEnvServiceMonitorsMonitorOutput) ToGetEnvServiceMonitorsMonitorOutputWithContext(ctx context.Context) GetEnvServiceMonitorsMonitorOutput {
+	return o
+}
+
+// The YAML configuration string.
+func (o GetEnvServiceMonitorsMonitorOutput) ConfigYaml() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvServiceMonitorsMonitor) string { return v.ConfigYaml }).(pulumi.StringOutput)
+}
+
+// The name of the ServiceMonitor.
+func (o GetEnvServiceMonitorsMonitorOutput) EnvServiceMonitorName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvServiceMonitorsMonitor) string { return v.EnvServiceMonitorName }).(pulumi.StringOutput)
+}
+
+// The environment ID.
+func (o GetEnvServiceMonitorsMonitorOutput) EnvironmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvServiceMonitorsMonitor) string { return v.EnvironmentId }).(pulumi.StringOutput)
+}
+
+// The ID of the ServiceMonitor. It formats as `<environment_id>:<namespace>:<env_service_monitor_name>`.
+func (o GetEnvServiceMonitorsMonitorOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvServiceMonitorsMonitor) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The namespace.
+func (o GetEnvServiceMonitorsMonitorOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvServiceMonitorsMonitor) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// The region ID.
+func (o GetEnvServiceMonitorsMonitorOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvServiceMonitorsMonitor) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The status of the ServiceMonitor.
+func (o GetEnvServiceMonitorsMonitorOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvServiceMonitorsMonitor) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetEnvServiceMonitorsMonitorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEnvServiceMonitorsMonitorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvServiceMonitorsMonitor)(nil)).Elem()
+}
+
+func (o GetEnvServiceMonitorsMonitorArrayOutput) ToGetEnvServiceMonitorsMonitorArrayOutput() GetEnvServiceMonitorsMonitorArrayOutput {
+	return o
+}
+
+func (o GetEnvServiceMonitorsMonitorArrayOutput) ToGetEnvServiceMonitorsMonitorArrayOutputWithContext(ctx context.Context) GetEnvServiceMonitorsMonitorArrayOutput {
+	return o
+}
+
+func (o GetEnvServiceMonitorsMonitorArrayOutput) Index(i pulumi.IntInput) GetEnvServiceMonitorsMonitorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnvServiceMonitorsMonitor {
+		return vs[0].([]GetEnvServiceMonitorsMonitor)[vs[1].(int)]
+	}).(GetEnvServiceMonitorsMonitorOutput)
+}
+
+type GetEnvironmentsEnvironment struct {
+	// The ID of the resource bound to the environment instance.
+	BindResourceId string `pulumi:"bindResourceId"`
+	// The resource type.
+	BindResourceType string `pulumi:"bindResourceType"`
+	// The CIDR block that is bound to the VPC.
+	BindVpcCidr string `pulumi:"bindVpcCidr"`
+	// The ID of the environment instance.
+	EnvironmentId string `pulumi:"environmentId"`
+	// The name of the environment instance.
+	EnvironmentName string `pulumi:"environmentName"`
+	// The environment type. Valid values: `CS`, `ECS`, `Cloud`.
+	EnvironmentType string `pulumi:"environmentType"`
+	// The unique ID of the Grafana data source.
+	GrafanaDatasourceUid string `pulumi:"grafanaDatasourceUid"`
+	// The unique ID of the Grafana directory.
+	GrafanaFolderUid string `pulumi:"grafanaFolderUid"`
+	// The ID of the environment instance.
+	Id string `pulumi:"id"`
+	// Indicates whether agents or exporters are managed.
+	ManagedType string `pulumi:"managedType"`
+	// The ID of the Prometheus instance.
+	PrometheusInstanceId string `pulumi:"prometheusInstanceId"`
+	// The region ID.
+	RegionId string `pulumi:"regionId"`
+	// The ID of the resource group.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The user ID.
+	UserId string `pulumi:"userId"`
+}
+
+// GetEnvironmentsEnvironmentInput is an input type that accepts GetEnvironmentsEnvironmentArgs and GetEnvironmentsEnvironmentOutput values.
+// You can construct a concrete instance of `GetEnvironmentsEnvironmentInput` via:
+//
+//	GetEnvironmentsEnvironmentArgs{...}
+type GetEnvironmentsEnvironmentInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentsEnvironmentOutput() GetEnvironmentsEnvironmentOutput
+	ToGetEnvironmentsEnvironmentOutputWithContext(context.Context) GetEnvironmentsEnvironmentOutput
+}
+
+type GetEnvironmentsEnvironmentArgs struct {
+	// The ID of the resource bound to the environment instance.
+	BindResourceId pulumi.StringInput `pulumi:"bindResourceId"`
+	// The resource type.
+	BindResourceType pulumi.StringInput `pulumi:"bindResourceType"`
+	// The CIDR block that is bound to the VPC.
+	BindVpcCidr pulumi.StringInput `pulumi:"bindVpcCidr"`
+	// The ID of the environment instance.
+	EnvironmentId pulumi.StringInput `pulumi:"environmentId"`
+	// The name of the environment instance.
+	EnvironmentName pulumi.StringInput `pulumi:"environmentName"`
+	// The environment type. Valid values: `CS`, `ECS`, `Cloud`.
+	EnvironmentType pulumi.StringInput `pulumi:"environmentType"`
+	// The unique ID of the Grafana data source.
+	GrafanaDatasourceUid pulumi.StringInput `pulumi:"grafanaDatasourceUid"`
+	// The unique ID of the Grafana directory.
+	GrafanaFolderUid pulumi.StringInput `pulumi:"grafanaFolderUid"`
+	// The ID of the environment instance.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Indicates whether agents or exporters are managed.
+	ManagedType pulumi.StringInput `pulumi:"managedType"`
+	// The ID of the Prometheus instance.
+	PrometheusInstanceId pulumi.StringInput `pulumi:"prometheusInstanceId"`
+	// The region ID.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The user ID.
+	UserId pulumi.StringInput `pulumi:"userId"`
+}
+
+func (GetEnvironmentsEnvironmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentsEnvironment)(nil)).Elem()
+}
+
+func (i GetEnvironmentsEnvironmentArgs) ToGetEnvironmentsEnvironmentOutput() GetEnvironmentsEnvironmentOutput {
+	return i.ToGetEnvironmentsEnvironmentOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentsEnvironmentArgs) ToGetEnvironmentsEnvironmentOutputWithContext(ctx context.Context) GetEnvironmentsEnvironmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentsEnvironmentOutput)
+}
+
+// GetEnvironmentsEnvironmentArrayInput is an input type that accepts GetEnvironmentsEnvironmentArray and GetEnvironmentsEnvironmentArrayOutput values.
+// You can construct a concrete instance of `GetEnvironmentsEnvironmentArrayInput` via:
+//
+//	GetEnvironmentsEnvironmentArray{ GetEnvironmentsEnvironmentArgs{...} }
+type GetEnvironmentsEnvironmentArrayInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentsEnvironmentArrayOutput() GetEnvironmentsEnvironmentArrayOutput
+	ToGetEnvironmentsEnvironmentArrayOutputWithContext(context.Context) GetEnvironmentsEnvironmentArrayOutput
+}
+
+type GetEnvironmentsEnvironmentArray []GetEnvironmentsEnvironmentInput
+
+func (GetEnvironmentsEnvironmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvironmentsEnvironment)(nil)).Elem()
+}
+
+func (i GetEnvironmentsEnvironmentArray) ToGetEnvironmentsEnvironmentArrayOutput() GetEnvironmentsEnvironmentArrayOutput {
+	return i.ToGetEnvironmentsEnvironmentArrayOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentsEnvironmentArray) ToGetEnvironmentsEnvironmentArrayOutputWithContext(ctx context.Context) GetEnvironmentsEnvironmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentsEnvironmentArrayOutput)
+}
+
+type GetEnvironmentsEnvironmentOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentsEnvironmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentsEnvironment)(nil)).Elem()
+}
+
+func (o GetEnvironmentsEnvironmentOutput) ToGetEnvironmentsEnvironmentOutput() GetEnvironmentsEnvironmentOutput {
+	return o
+}
+
+func (o GetEnvironmentsEnvironmentOutput) ToGetEnvironmentsEnvironmentOutputWithContext(ctx context.Context) GetEnvironmentsEnvironmentOutput {
+	return o
+}
+
+// The ID of the resource bound to the environment instance.
+func (o GetEnvironmentsEnvironmentOutput) BindResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentsEnvironment) string { return v.BindResourceId }).(pulumi.StringOutput)
+}
+
+// The resource type.
+func (o GetEnvironmentsEnvironmentOutput) BindResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentsEnvironment) string { return v.BindResourceType }).(pulumi.StringOutput)
+}
+
+// The CIDR block that is bound to the VPC.
+func (o GetEnvironmentsEnvironmentOutput) BindVpcCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentsEnvironment) string { return v.BindVpcCidr }).(pulumi.StringOutput)
+}
+
+// The ID of the environment instance.
+func (o GetEnvironmentsEnvironmentOutput) EnvironmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentsEnvironment) string { return v.EnvironmentId }).(pulumi.StringOutput)
+}
+
+// The name of the environment instance.
+func (o GetEnvironmentsEnvironmentOutput) EnvironmentName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentsEnvironment) string { return v.EnvironmentName }).(pulumi.StringOutput)
+}
+
+// The environment type. Valid values: `CS`, `ECS`, `Cloud`.
+func (o GetEnvironmentsEnvironmentOutput) EnvironmentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentsEnvironment) string { return v.EnvironmentType }).(pulumi.StringOutput)
+}
+
+// The unique ID of the Grafana data source.
+func (o GetEnvironmentsEnvironmentOutput) GrafanaDatasourceUid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentsEnvironment) string { return v.GrafanaDatasourceUid }).(pulumi.StringOutput)
+}
+
+// The unique ID of the Grafana directory.
+func (o GetEnvironmentsEnvironmentOutput) GrafanaFolderUid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentsEnvironment) string { return v.GrafanaFolderUid }).(pulumi.StringOutput)
+}
+
+// The ID of the environment instance.
+func (o GetEnvironmentsEnvironmentOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentsEnvironment) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Indicates whether agents or exporters are managed.
+func (o GetEnvironmentsEnvironmentOutput) ManagedType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentsEnvironment) string { return v.ManagedType }).(pulumi.StringOutput)
+}
+
+// The ID of the Prometheus instance.
+func (o GetEnvironmentsEnvironmentOutput) PrometheusInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentsEnvironment) string { return v.PrometheusInstanceId }).(pulumi.StringOutput)
+}
+
+// The region ID.
+func (o GetEnvironmentsEnvironmentOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentsEnvironment) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group.
+func (o GetEnvironmentsEnvironmentOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentsEnvironment) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o GetEnvironmentsEnvironmentOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEnvironmentsEnvironment) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The user ID.
+func (o GetEnvironmentsEnvironmentOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentsEnvironment) string { return v.UserId }).(pulumi.StringOutput)
+}
+
+type GetEnvironmentsEnvironmentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentsEnvironmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvironmentsEnvironment)(nil)).Elem()
+}
+
+func (o GetEnvironmentsEnvironmentArrayOutput) ToGetEnvironmentsEnvironmentArrayOutput() GetEnvironmentsEnvironmentArrayOutput {
+	return o
+}
+
+func (o GetEnvironmentsEnvironmentArrayOutput) ToGetEnvironmentsEnvironmentArrayOutputWithContext(ctx context.Context) GetEnvironmentsEnvironmentArrayOutput {
+	return o
+}
+
+func (o GetEnvironmentsEnvironmentArrayOutput) Index(i pulumi.IntInput) GetEnvironmentsEnvironmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnvironmentsEnvironment {
+		return vs[0].([]GetEnvironmentsEnvironment)[vs[1].(int)]
+	}).(GetEnvironmentsEnvironmentOutput)
+}
+
 type GetIntegrationExportersIntegrationExporter struct {
 	// The ID of the Prometheus instance.
 	ClusterId string `pulumi:"clusterId"`
@@ -7641,6 +8637,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SyntheticTaskMonitorConfStreamPtrInput)(nil)).Elem(), SyntheticTaskMonitorConfStreamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SyntheticTaskMonitorConfWebsiteInput)(nil)).Elem(), SyntheticTaskMonitorConfWebsiteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SyntheticTaskMonitorConfWebsitePtrInput)(nil)).Elem(), SyntheticTaskMonitorConfWebsiteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAddonReleasesReleaseInput)(nil)).Elem(), GetAddonReleasesReleaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAddonReleasesReleaseArrayInput)(nil)).Elem(), GetAddonReleasesReleaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertContactGroupsGroupInput)(nil)).Elem(), GetAlertContactGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertContactGroupsGroupArrayInput)(nil)).Elem(), GetAlertContactGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertContactsContactInput)(nil)).Elem(), GetAlertContactsContactArgs{})
@@ -7663,6 +8661,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDispatchRulesRuleNotifyRuleNotifyObjectArrayInput)(nil)).Elem(), GetDispatchRulesRuleNotifyRuleNotifyObjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDispatchRulesRuleNotifyTemplateInput)(nil)).Elem(), GetDispatchRulesRuleNotifyTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDispatchRulesRuleNotifyTemplateArrayInput)(nil)).Elem(), GetDispatchRulesRuleNotifyTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvCustomJobsJobInput)(nil)).Elem(), GetEnvCustomJobsJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvCustomJobsJobArrayInput)(nil)).Elem(), GetEnvCustomJobsJobArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvFeaturesFeatureInput)(nil)).Elem(), GetEnvFeaturesFeatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvFeaturesFeatureArrayInput)(nil)).Elem(), GetEnvFeaturesFeatureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvPodMonitorsMonitorInput)(nil)).Elem(), GetEnvPodMonitorsMonitorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvPodMonitorsMonitorArrayInput)(nil)).Elem(), GetEnvPodMonitorsMonitorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvServiceMonitorsMonitorInput)(nil)).Elem(), GetEnvServiceMonitorsMonitorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvServiceMonitorsMonitorArrayInput)(nil)).Elem(), GetEnvServiceMonitorsMonitorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentsEnvironmentInput)(nil)).Elem(), GetEnvironmentsEnvironmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentsEnvironmentArrayInput)(nil)).Elem(), GetEnvironmentsEnvironmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIntegrationExportersIntegrationExporterInput)(nil)).Elem(), GetIntegrationExportersIntegrationExporterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIntegrationExportersIntegrationExporterArrayInput)(nil)).Elem(), GetIntegrationExportersIntegrationExporterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrometheisPrometheiInput)(nil)).Elem(), GetPrometheisPrometheiArgs{})
@@ -7727,6 +8735,8 @@ func init() {
 	pulumi.RegisterOutputType(SyntheticTaskMonitorConfStreamPtrOutput{})
 	pulumi.RegisterOutputType(SyntheticTaskMonitorConfWebsiteOutput{})
 	pulumi.RegisterOutputType(SyntheticTaskMonitorConfWebsitePtrOutput{})
+	pulumi.RegisterOutputType(GetAddonReleasesReleaseOutput{})
+	pulumi.RegisterOutputType(GetAddonReleasesReleaseArrayOutput{})
 	pulumi.RegisterOutputType(GetAlertContactGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetAlertContactGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetAlertContactsContactOutput{})
@@ -7749,6 +8759,16 @@ func init() {
 	pulumi.RegisterOutputType(GetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutput{})
 	pulumi.RegisterOutputType(GetDispatchRulesRuleNotifyTemplateOutput{})
 	pulumi.RegisterOutputType(GetDispatchRulesRuleNotifyTemplateArrayOutput{})
+	pulumi.RegisterOutputType(GetEnvCustomJobsJobOutput{})
+	pulumi.RegisterOutputType(GetEnvCustomJobsJobArrayOutput{})
+	pulumi.RegisterOutputType(GetEnvFeaturesFeatureOutput{})
+	pulumi.RegisterOutputType(GetEnvFeaturesFeatureArrayOutput{})
+	pulumi.RegisterOutputType(GetEnvPodMonitorsMonitorOutput{})
+	pulumi.RegisterOutputType(GetEnvPodMonitorsMonitorArrayOutput{})
+	pulumi.RegisterOutputType(GetEnvServiceMonitorsMonitorOutput{})
+	pulumi.RegisterOutputType(GetEnvServiceMonitorsMonitorArrayOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentsEnvironmentOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentsEnvironmentArrayOutput{})
 	pulumi.RegisterOutputType(GetIntegrationExportersIntegrationExporterOutput{})
 	pulumi.RegisterOutputType(GetIntegrationExportersIntegrationExporterArrayOutput{})
 	pulumi.RegisterOutputType(GetPrometheisPrometheiOutput{})

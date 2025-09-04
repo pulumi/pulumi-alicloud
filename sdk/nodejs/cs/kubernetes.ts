@@ -43,6 +43,171 @@ import * as utilities from "../utilities";
  * > **NOTE:** From version 1.212.0, `excludeAutoscalerNodes`,`workerNumber`,`workerVswitchIds`,`workerInstanceTypes`,`workerInstanceChargeType`,`workerPeriod`,`workerPeriodUnit`,`workerAutoRenew`,`workerAutoRenewPeriod`,`workerDiskCategory`,`workerDiskSize`,`workerDataDisks`,`nodePortRange`,`cpuPolicy`,`userData`,`taints`,`workerDiskPerformanceLevel`,`workerDiskSnapshotPolicyId`,`kubeConfig`,`availabilityZone` are removed.
  * Please use resource **`alicloud.cs.NodePool`** to manage your cluster worker nodes.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-kubernetes-example";
+ * // Existing vpc id used to create several vswitches and other resources.
+ * const vpcId = config.get("vpcId") || "";
+ * // The cidr block used to launch a new vpc when 'vpc_id' is not specified.
+ * const vpcCidr = config.get("vpcCidr") || "10.0.0.0/8";
+ * // List of existing vswitch id.
+ * const vswitchIds = config.getObject<Array<string>>("vswitchIds") || [];
+ * // List of cidr blocks used to create several new vswitches when 'vswitch_ids' is not specified.
+ * const vswitchCidrs = config.getObject<Array<string>>("vswitchCidrs") || [
+ *     "10.1.0.0/16",
+ *     "10.2.0.0/16",
+ *     "10.3.0.0/16",
+ * ];
+ * // List of existing vswitch ids for terway.
+ * const terwayVswitchIds = config.getObject<Array<string>>("terwayVswitchIds") || [];
+ * // List of cidr blocks used to create several new vswitches when 'terway_vswitch_cidrs' is not specified.
+ * const terwayVswitchCidrs = config.getObject<Array<string>>("terwayVswitchCidrs") || [
+ *     "10.4.0.0/16",
+ *     "10.5.0.0/16",
+ *     "10.6.0.0/16",
+ * ];
+ * const clusterAddons = config.getObject<Array<{config?: Record<string, string>, name?: string}>>("clusterAddons") || [
+ *     {
+ *         config: {},
+ *         name: "terway-eniip",
+ *     },
+ *     {
+ *         config: {},
+ *         name: "csi-plugin",
+ *     },
+ *     {
+ *         config: {},
+ *         name: "csi-provisioner",
+ *     },
+ *     {
+ *         config: {
+ *             IngressDashboardEnabled: "true",
+ *         },
+ *         name: "logtail-ds",
+ *     },
+ *     {
+ *         config: {
+ *             IngressSlbNetworkType: "internet",
+ *         },
+ *         name: "nginx-ingress-controller",
+ *     },
+ *     {
+ *         config: {},
+ *         name: "arms-prometheus",
+ *     },
+ *     {
+ *         config: {
+ *             sls_project_name: "",
+ *         },
+ *         name: "ack-node-problem-detector",
+ *     },
+ * ];
+ * const enhanced = alicloud.vpc.getEnhancedNatAvailableZones({});
+ * // If there is not specifying vpc_id, the module will launch a new vpc
+ * const vpc: alicloud.vpc.Network[] = [];
+ * for (const range = {value: 0}; range.value < (vpcId == "" ? 1 : 0); range.value++) {
+ *     vpc.push(new alicloud.vpc.Network(`vpc-${range.value}`, {cidrBlock: vpcCidr}));
+ * }
+ * // According to the vswitch cidr blocks to launch several vswitches
+ * const vswitches: alicloud.vpc.Switch[] = [];
+ * for (const range = {value: 0}; range.value < (vswitchIds.length > 0 ? 0 : vswitchCidrs.length); range.value++) {
+ *     vswitches.push(new alicloud.vpc.Switch(`vswitches-${range.value}`, {
+ *         vpcId: vpcId == "" ? std.joinOutput({
+ *             separator: "",
+ *             input: vpc.map(__item => __item.id),
+ *         }).apply(invoke => invoke.result) : vpcId,
+ *         cidrBlock: vswitchCidrs[range.value],
+ *         zoneId: pulumi.all([enhanced, enhanced.then(enhanced => enhanced.zones).length]).apply(([enhanced, length]) => enhanced.zones[range.value < length ? range.value : 0].zoneId),
+ *     }));
+ * }
+ * // According to the vswitch cidr blocks to launch several vswitches
+ * const terwayVswitches: alicloud.vpc.Switch[] = [];
+ * for (const range = {value: 0}; range.value < (terwayVswitchIds.length > 0 ? 0 : terwayVswitchCidrs.length); range.value++) {
+ *     terwayVswitches.push(new alicloud.vpc.Switch(`terway_vswitches-${range.value}`, {
+ *         vpcId: vpcId == "" ? std.joinOutput({
+ *             separator: "",
+ *             input: vpc.map(__item => __item.id),
+ *         }).apply(invoke => invoke.result) : vpcId,
+ *         cidrBlock: terwayVswitchCidrs[range.value],
+ *         zoneId: pulumi.all([enhanced, enhanced.then(enhanced => enhanced.zones).length]).apply(([enhanced, length]) => enhanced.zones[range.value < length ? range.value : 0].zoneId),
+ *     }));
+ * }
+ * const _default = alicloud.resourcemanager.getResourceGroups({
+ *     status: "OK",
+ * });
+ * const cloudEssd = (new Array(3)).map((_, i) => i).map(__index => (alicloud.ecs.getInstanceTypesOutput({
+ *     availabilityZone: _arg0_.zones[__index < _arg1_ ? __index : 0].zoneId,
+ *     cpuCoreCount: 4,
+ *     memorySize: 8,
+ *     systemDiskCategory: "cloud_essd",
+ * })));
+ * const defaultKubernetes = new alicloud.cs.Kubernetes("default", {
+ *     addons: clusterAddons.map((v, k) => ({key: k, value: v})).map(entry => ({
+ *         name: std.lookup({
+ *             map: entry.value,
+ *             key: "name",
+ *             "default": clusterAddons,
+ *         }).then(invoke => invoke.result),
+ *         config: JSON.stringify(std.lookup({
+ *             map: entry.value,
+ *             key: "config",
+ *             "default": clusterAddons,
+ *         }).then(invoke => invoke.result)),
+ *     })),
+ *     masterVswitchIds: vswitchIds.length > 0 ? std.join({
+ *         separator: ",",
+ *         input: vswitchIds,
+ *     }).then(invoke => std.split({
+ *         separator: ",",
+ *         text: invoke.result,
+ *     })).then(invoke => invoke.result) : vswitchCidrs.length < 1 ? [] : std.joinOutput({
+ *         separator: ",",
+ *         input: vswitches.map(__item => __item.id),
+ *     }).apply(invoke => std.splitOutput({
+ *         separator: ",",
+ *         text: invoke.result,
+ *     })).apply(invoke => invoke.result),
+ *     podVswitchIds: terwayVswitchIds.length > 0 ? std.join({
+ *         separator: ",",
+ *         input: terwayVswitchIds,
+ *     }).then(invoke => std.split({
+ *         separator: ",",
+ *         text: invoke.result,
+ *     })).then(invoke => invoke.result) : terwayVswitchCidrs.length < 1 ? [] : std.joinOutput({
+ *         separator: ",",
+ *         input: terwayVswitches.map(__item => __item.id),
+ *     }).apply(invoke => std.splitOutput({
+ *         separator: ",",
+ *         text: invoke.result,
+ *     })).apply(invoke => invoke.result),
+ *     masterInstanceTypes: [
+ *         cloudEssd[0].apply(cloudEssd => cloudEssd.instanceTypes?.[0]?.id),
+ *         cloudEssd[1].apply(cloudEssd => cloudEssd.instanceTypes?.[0]?.id),
+ *         cloudEssd[2].apply(cloudEssd => cloudEssd.instanceTypes?.[0]?.id),
+ *     ],
+ *     masterDiskCategory: "cloud_essd",
+ *     password: "Yourpassword1234",
+ *     serviceCidr: "172.18.0.0/16",
+ *     installCloudMonitor: true,
+ *     resourceGroupId: _default.then(_default => _default.groups?.[0]?.id),
+ *     deletionProtection: false,
+ *     timezone: "Asia/Shanghai",
+ *     osType: "Linux",
+ *     platform: "AliyunLinux3",
+ *     clusterDomain: "cluster.local",
+ *     proxyMode: "ipvs",
+ *     customSan: "www.terraform.io",
+ *     newNatGateway: true,
+ *     skipSetCertificateAuthority: true,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.

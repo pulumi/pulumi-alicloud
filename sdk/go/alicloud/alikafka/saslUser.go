@@ -95,7 +95,7 @@ import (
 //				ServiceVersion: pulumi.String("2.2.0"),
 //				VswitchId:      defaultSwitch.ID(),
 //				SecurityGroup:  defaultSecurityGroup.ID(),
-//				Config:         pulumi.String("  {\n    \"enable.acl\": \"true\"\n  }\n"),
+//				Config:         pulumi.String("  {\n    \\\"enable.acl\\\": \\\"true\\\"\n  }\n"),
 //			})
 //			if err != nil {
 //				return err

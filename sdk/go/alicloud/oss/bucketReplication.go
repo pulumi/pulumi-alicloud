@@ -60,21 +60,21 @@ import (
 //			}
 //			role, err := ram.NewRole(ctx, "role", &ram.RoleArgs{
 //				Name: pulumi.Sprintf("example-role-%v", _default.Result),
-//				Document: pulumi.String(`		{
-//			  "Statement": [
-//				{
-//				  "Action": "sts:AssumeRole",
-//				  "Effect": "Allow",
-//				  "Principal": {
-//					"Service": [
-//					  "oss.aliyuncs.com"
-//					]
-//				  }
-//				}
-//			  ],
-//			  "Version": "1"
-//			}
+//				Document: pulumi.String(`\t\t{
 //
+// \t\t  \"Statement\": [
+// \t\t\t{
+// \t\t\t  \"Action\": \"sts:AssumeRole\",
+// \t\t\t  \"Effect\": \"Allow\",
+// \t\t\t  \"Principal\": {
+// \t\t\t\t\"Service\": [
+// \t\t\t\t  \"oss.aliyuncs.com\"
+// \t\t\t\t]
+// \t\t\t  }
+// \t\t\t}
+// \t\t  ],
+// \t\t  \"Version\": \"1\"
+// \t\t}
 // `),
 //
 //		Description: pulumi.String("this is a test"),
@@ -85,21 +85,21 @@ import (
 //	}
 //	policy, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
 //		PolicyName: pulumi.Sprintf("example-policy-%v", _default.Result),
-//		PolicyDocument: pulumi.String(`		{
-//	  "Statement": [
-//		{
-//		  "Action": [
-//			"*"
-//		  ],
-//		  "Effect": "Allow",
-//		  "Resource": [
-//			"*"
-//		  ]
-//		}
-//	  ],
-//		"Version": "1"
-//	}
+//		PolicyDocument: pulumi.String(`\t\t{
 //
+// \t\t  \"Statement\": [
+// \t\t\t{
+// \t\t\t  \"Action\": [
+// \t\t\t\t\"*\"
+// \t\t\t  ],
+// \t\t\t  \"Effect\": \"Allow\",
+// \t\t\t  \"Resource\": [
+// \t\t\t\t\"*\"
+// \t\t\t  ]
+// \t\t\t}
+// \t\t  ],
+// \t\t\t\"Version\": \"1\"
+// \t\t}
 // `),
 //
 //				Description: pulumi.String("this is a policy test"),

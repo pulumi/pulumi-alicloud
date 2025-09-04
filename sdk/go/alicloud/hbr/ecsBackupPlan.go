@@ -127,8 +127,8 @@ import (
 //					pulumi.String("/home"),
 //					pulumi.String("/var"),
 //				},
-//				Exclude: pulumi.String("  [\"/home/exclude\"]\n"),
-//				Include: pulumi.String("  [\"/home/include\"]\n"),
+//				Exclude: pulumi.String("  [\\\"/home/exclude\\\"]\n"),
+//				Include: pulumi.String("  [\\\"/home/include\\\"]\n"),
 //			})
 //			if err != nil {
 //				return err

@@ -71,21 +71,11 @@ export class DefenseTemplate extends pulumi.CustomResource {
     }
 
     /**
-     * The module to which the protection rule that you want to create belongs. Value:
-     * - **waf_group**: the basic protection rule module.
-     * - **antiscan**: the scan protection module.
-     * - **ip_blacklist**: the IP address blacklist module.
-     * - **custom_acl**: the custom rule module.
-     * - **whitelist**: the whitelist module.
-     * - **region_block**: the region blacklist module.
-     * - **custom_response**: the custom response module.
-     * - **cc**: the HTTP flood protection module.
-     * - **tamperproof**: the website tamper-proofing module.
-     * - **dlp**: the data leakage prevention module.
+     * The WAF protection scenario to be created. Valid values:
      */
     declare public readonly defenseScene: pulumi.Output<string>;
     /**
-     * Template ID.
+     * Template ID
      */
     declare public /*out*/ readonly defenseTemplateId: pulumi.Output<number>;
     /**
@@ -93,25 +83,27 @@ export class DefenseTemplate extends pulumi.CustomResource {
      */
     declare public readonly defenseTemplateName: pulumi.Output<string>;
     /**
-     * The description of the protection rule template. .
+     * The description of the protection rule template.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * The ID of the Web Application Firewall (WAF) instance. .
+     * The ID of the Web Application Firewall (WAF) instance.
      */
     declare public readonly instanceId: pulumi.Output<string>;
     /**
-     * The ID of the Alibaba Cloud resource group. .
+     * The ID of the Alibaba Cloud resource group.
      */
     declare public readonly resourceManagerResourceGroupId: pulumi.Output<string | undefined>;
     /**
+     * The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
+     */
+    declare public readonly resources: pulumi.Output<string[] | undefined>;
+    /**
      * The status of the protection rule template. Valid values:
-     * - **0**: disabled.
-     * - **1**: enabled.
      */
     declare public readonly status: pulumi.Output<string>;
     /**
-     * The origin of the protection rule template that you want to create. Set the value to **custom**. The value specifies that the protection rule template is a custom template. .
+     * The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
      */
     declare public readonly templateOrigin: pulumi.Output<string>;
     /**
@@ -140,6 +132,7 @@ export class DefenseTemplate extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["instanceId"] = state?.instanceId;
             resourceInputs["resourceManagerResourceGroupId"] = state?.resourceManagerResourceGroupId;
+            resourceInputs["resources"] = state?.resources;
             resourceInputs["status"] = state?.status;
             resourceInputs["templateOrigin"] = state?.templateOrigin;
             resourceInputs["templateType"] = state?.templateType;
@@ -168,6 +161,7 @@ export class DefenseTemplate extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["instanceId"] = args?.instanceId;
             resourceInputs["resourceManagerResourceGroupId"] = args?.resourceManagerResourceGroupId;
+            resourceInputs["resources"] = args?.resources;
             resourceInputs["status"] = args?.status;
             resourceInputs["templateOrigin"] = args?.templateOrigin;
             resourceInputs["templateType"] = args?.templateType;
@@ -183,21 +177,11 @@ export class DefenseTemplate extends pulumi.CustomResource {
  */
 export interface DefenseTemplateState {
     /**
-     * The module to which the protection rule that you want to create belongs. Value:
-     * - **waf_group**: the basic protection rule module.
-     * - **antiscan**: the scan protection module.
-     * - **ip_blacklist**: the IP address blacklist module.
-     * - **custom_acl**: the custom rule module.
-     * - **whitelist**: the whitelist module.
-     * - **region_block**: the region blacklist module.
-     * - **custom_response**: the custom response module.
-     * - **cc**: the HTTP flood protection module.
-     * - **tamperproof**: the website tamper-proofing module.
-     * - **dlp**: the data leakage prevention module.
+     * The WAF protection scenario to be created. Valid values:
      */
     defenseScene?: pulumi.Input<string>;
     /**
-     * Template ID.
+     * Template ID
      */
     defenseTemplateId?: pulumi.Input<number>;
     /**
@@ -205,25 +189,27 @@ export interface DefenseTemplateState {
      */
     defenseTemplateName?: pulumi.Input<string>;
     /**
-     * The description of the protection rule template. .
+     * The description of the protection rule template.
      */
     description?: pulumi.Input<string>;
     /**
-     * The ID of the Web Application Firewall (WAF) instance. .
+     * The ID of the Web Application Firewall (WAF) instance.
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * The ID of the Alibaba Cloud resource group. .
+     * The ID of the Alibaba Cloud resource group.
      */
     resourceManagerResourceGroupId?: pulumi.Input<string>;
     /**
+     * The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
+     */
+    resources?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The status of the protection rule template. Valid values:
-     * - **0**: disabled.
-     * - **1**: enabled.
      */
     status?: pulumi.Input<string>;
     /**
-     * The origin of the protection rule template that you want to create. Set the value to **custom**. The value specifies that the protection rule template is a custom template. .
+     * The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
      */
     templateOrigin?: pulumi.Input<string>;
     /**
@@ -239,17 +225,7 @@ export interface DefenseTemplateState {
  */
 export interface DefenseTemplateArgs {
     /**
-     * The module to which the protection rule that you want to create belongs. Value:
-     * - **waf_group**: the basic protection rule module.
-     * - **antiscan**: the scan protection module.
-     * - **ip_blacklist**: the IP address blacklist module.
-     * - **custom_acl**: the custom rule module.
-     * - **whitelist**: the whitelist module.
-     * - **region_block**: the region blacklist module.
-     * - **custom_response**: the custom response module.
-     * - **cc**: the HTTP flood protection module.
-     * - **tamperproof**: the website tamper-proofing module.
-     * - **dlp**: the data leakage prevention module.
+     * The WAF protection scenario to be created. Valid values:
      */
     defenseScene: pulumi.Input<string>;
     /**
@@ -257,25 +233,27 @@ export interface DefenseTemplateArgs {
      */
     defenseTemplateName: pulumi.Input<string>;
     /**
-     * The description of the protection rule template. .
+     * The description of the protection rule template.
      */
     description?: pulumi.Input<string>;
     /**
-     * The ID of the Web Application Firewall (WAF) instance. .
+     * The ID of the Web Application Firewall (WAF) instance.
      */
     instanceId: pulumi.Input<string>;
     /**
-     * The ID of the Alibaba Cloud resource group. .
+     * The ID of the Alibaba Cloud resource group.
      */
     resourceManagerResourceGroupId?: pulumi.Input<string>;
     /**
+     * The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
+     */
+    resources?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The status of the protection rule template. Valid values:
-     * - **0**: disabled.
-     * - **1**: enabled.
      */
     status: pulumi.Input<string>;
     /**
-     * The origin of the protection rule template that you want to create. Set the value to **custom**. The value specifies that the protection rule template is a custom template. .
+     * The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
      */
     templateOrigin: pulumi.Input<string>;
     /**

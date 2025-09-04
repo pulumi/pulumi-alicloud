@@ -114,6 +114,42 @@ def get_kubernetes_addons(cluster_id: Optional[_builtins.str] = None,
     > **NOTE:** Available since v1.150.0.
     **NOTE:** From version v1.166.0, support for returning custom configuration of kubernetes cluster addon.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+    import pulumi_std as std
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.get_zones(available_resource_creation="VSwitch")
+    default_network = alicloud.vpc.Network("default",
+        vpc_name=name,
+        cidr_block="10.4.0.0/16")
+    default_switch = alicloud.vpc.Switch("default",
+        vswitch_name=name,
+        cidr_block="10.4.0.0/24",
+        vpc_id=default_network.id,
+        zone_id=default.zones[0].id)
+    default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
+        name_prefix=name,
+        cluster_spec="ack.pro.small",
+        worker_vswitch_ids=[default_switch.id],
+        new_nat_gateway=False,
+        pod_cidr=std.cidrsubnet(input="10.0.0.0/8",
+            newbits=8,
+            netnum=36).result,
+        service_cidr=std.cidrsubnet(input="172.16.0.0/16",
+            newbits=4,
+            netnum=7).result,
+        slb_internet_enabled=True)
+    default_get_kubernetes_addons = alicloud.cs.get_kubernetes_addons_output(cluster_id=default_managed_kubernetes.id)
+    pulumi.export("addons", default_get_kubernetes_addons.addons)
+    ```
+
 
     :param _builtins.str cluster_id: The id of kubernetes cluster.
     :param Sequence[_builtins.str] ids: A list of addon IDs. The id of addon consists of the cluster id and the addon name, with the structure <cluster_ud>:<addon_name>.
@@ -142,6 +178,42 @@ def get_kubernetes_addons_output(cluster_id: Optional[pulumi.Input[_builtins.str
 
     > **NOTE:** Available since v1.150.0.
     **NOTE:** From version v1.166.0, support for returning custom configuration of kubernetes cluster addon.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+    import pulumi_std as std
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.get_zones(available_resource_creation="VSwitch")
+    default_network = alicloud.vpc.Network("default",
+        vpc_name=name,
+        cidr_block="10.4.0.0/16")
+    default_switch = alicloud.vpc.Switch("default",
+        vswitch_name=name,
+        cidr_block="10.4.0.0/24",
+        vpc_id=default_network.id,
+        zone_id=default.zones[0].id)
+    default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
+        name_prefix=name,
+        cluster_spec="ack.pro.small",
+        worker_vswitch_ids=[default_switch.id],
+        new_nat_gateway=False,
+        pod_cidr=std.cidrsubnet(input="10.0.0.0/8",
+            newbits=8,
+            netnum=36).result,
+        service_cidr=std.cidrsubnet(input="172.16.0.0/16",
+            newbits=4,
+            netnum=7).result,
+        slb_internet_enabled=True)
+    default_get_kubernetes_addons = alicloud.cs.get_kubernetes_addons_output(cluster_id=default_managed_kubernetes.id)
+    pulumi.export("addons", default_get_kubernetes_addons.addons)
+    ```
 
 
     :param _builtins.str cluster_id: The id of kubernetes cluster.

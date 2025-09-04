@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.117.0+
  *
- * > **NOTE:** This datasource has been deprecated since provider version v1.228.0.
+ * > **NOTE:** This datasource has been deprecated since provider version v1.228.0. Please use the resource `alicloud.maxcompute.Quota` instead.
  *
  * ## Example Usage
  *
@@ -69,7 +69,7 @@ export interface GetServiceResult {
  *
  * > **NOTE:** Available in v1.117.0+
  *
- * > **NOTE:** This datasource has been deprecated since provider version v1.228.0.
+ * > **NOTE:** This datasource has been deprecated since provider version v1.228.0. Please use the resource `alicloud.maxcompute.Quota` instead.
  *
  * ## Example Usage
  *

@@ -22,6 +22,91 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.210.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.kms.NetworkRule;
+ * import com.pulumi.alicloud.kms.NetworkRuleArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.alicloud.kms.Policy;
+ * import com.pulumi.alicloud.kms.PolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var networkRule1 = new NetworkRule("networkRule1", NetworkRuleArgs.builder()
+ *             .description("dummy")
+ *             .sourcePrivateIps("10.10.10.10")
+ *             .networkRuleName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s1")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var networkRule2 = new NetworkRule("networkRule2", NetworkRuleArgs.builder()
+ *             .description("dummy")
+ *             .sourcePrivateIps("10.10.10.10")
+ *             .networkRuleName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s2")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var networkRule3 = new NetworkRule("networkRule3", NetworkRuleArgs.builder()
+ *             .description("dummy")
+ *             .sourcePrivateIps("10.10.10.10")
+ *             .networkRuleName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("%s3")
+ *                 .args(name)
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var default_ = new Policy("default", PolicyArgs.builder()
+ *             .description("terraformpolicy")
+ *             .permissions(            
+ *                 "RbacPermission/Template/CryptoServiceKeyUser",
+ *                 "RbacPermission/Template/CryptoServiceSecretUser")
+ *             .resources(            
+ *                 "secret/*",
+ *                 "key/*")
+ *             .policyName(name)
+ *             .kmsInstanceId("shared")
+ *             .accessControlRules("""
+ *   {
+ *       \"NetworkRules\":[
+ *           \"alicloud_kms_network_rule.networkRule1.network_rule_name\"
+ *       ]
+ *   }
+ *             """)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * KMS Policy can be imported using the id, e.g.

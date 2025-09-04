@@ -17,14 +17,14 @@ public final class V3FunctionTracingConfigArgs extends com.pulumi.resources.Reso
     public static final V3FunctionTracingConfigArgs Empty = new V3FunctionTracingConfigArgs();
 
     /**
-     * Tracing parameters.
+     * Tracing parameters
      * 
      */
     @Import(name="params")
     private @Nullable Output<Map<String,String>> params;
 
     /**
-     * @return Tracing parameters.
+     * @return Tracing parameters
      * 
      */
     public Optional<Output<Map<String,String>>> params() {
@@ -72,7 +72,7 @@ public final class V3FunctionTracingConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param params Tracing parameters.
+         * @param params Tracing parameters
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class V3FunctionTracingConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param params Tracing parameters.
+         * @param params Tracing parameters
          * 
          * @return builder
          * 

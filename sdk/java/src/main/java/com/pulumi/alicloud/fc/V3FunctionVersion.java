@@ -35,7 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.uuid;
+ * import com.pulumi.random.Uuid;
  * import com.pulumi.alicloud.fc.V3Function;
  * import com.pulumi.alicloud.fc.V3FunctionArgs;
  * import com.pulumi.alicloud.fc.inputs.V3FunctionCodeArgs;
@@ -151,6 +151,20 @@ public class V3FunctionVersion extends com.pulumi.resources.CustomResource {
      */
     public Output<String> lastModifiedTime() {
         return this.lastModifiedTime;
+    }
+    /**
+     * Function Version
+     * 
+     */
+    @Export(name="versionId", refs={String.class}, tree="[0]")
+    private Output<String> versionId;
+
+    /**
+     * @return Function Version
+     * 
+     */
+    public Output<String> versionId() {
+        return this.versionId;
     }
 
     /**

@@ -11,6 +11,36 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.193.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const _default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {cidrBlock: "192.168.0.0/16"});
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: defaultNetwork.cidrBlock.apply(cidrBlock => std.cidrsubnetOutput({
+ *         input: cidrBlock,
+ *         newbits: 8,
+ *         netnum: 2,
+ *     })).apply(invoke => invoke.result),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ * });
+ * const defaultNetworkAcl = new alicloud.vpc.NetworkAcl("default", {vpcId: defaultSwitch.vpcId});
+ * const defaultVpcNetworkAclAttachment = new alicloud.vpc.VpcNetworkAclAttachment("default", {
+ *     networkAclId: defaultNetworkAcl.id,
+ *     resourceId: defaultSwitch.id,
+ *     resourceType: "VSwitch",
+ * });
+ * ```
+ *
  * ## Import
  *
  * VPC Network Acl Attachment can be imported using the id, e.g.

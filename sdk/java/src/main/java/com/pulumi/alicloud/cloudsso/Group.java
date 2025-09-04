@@ -21,6 +21,70 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.138.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+ * import com.pulumi.alicloud.cloudsso.inputs.GetDirectoriesArgs;
+ * import com.pulumi.alicloud.cloudsso.Directory;
+ * import com.pulumi.alicloud.cloudsso.DirectoryArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.ConcatArgs;
+ * import com.pulumi.alicloud.cloudsso.Group;
+ * import com.pulumi.alicloud.cloudsso.GroupArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf-example");
+ *         final var default = CloudssoFunctions.getDirectories(GetDirectoriesArgs.builder()
+ *             .build());
+ * 
+ *         for (var i = 0; i < default_.ids().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+ *             new Directory("defaultDirectory-" + i, DirectoryArgs.builder()
+ *                 .directoryName(name)
+ *                 .build());
+ * 
+ *         
+ * }
+ *         final var directoryId = default_.ids().length().applyValue(_length -> _length > 0 ? default_.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
+ *             .input(            
+ *                 defaultDirectory.stream().map(element -> element.id()).collect(toList()),
+ *                 "")
+ *             .build()).result()[0]);
+ * 
+ *         var defaultGroup = new Group("defaultGroup", GroupArgs.builder()
+ *             .directoryId(directoryId)
+ *             .groupName(name)
+ *             .description(name)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Cloud SSO Group can be imported using the id, e.g.

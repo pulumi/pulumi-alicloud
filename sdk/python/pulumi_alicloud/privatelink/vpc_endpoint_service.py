@@ -41,7 +41,7 @@ class VpcEndpointServiceArgs:
                - `EndpointService`: the service provider.
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID.
         :param pulumi.Input[_builtins.str] service_description: The description of the endpoint service.
-        :param pulumi.Input[_builtins.str] service_resource_type: Service resource type, value:
+        :param pulumi.Input[_builtins.str] service_resource_type: The service resource type. Value:
         :param pulumi.Input[_builtins.bool] service_support_ipv6: Specifies whether to enable IPv6 for the endpoint service. Valid values:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The list of tags.
         :param pulumi.Input[_builtins.bool] zone_affinity_enabled: Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
@@ -159,7 +159,7 @@ class VpcEndpointServiceArgs:
     @pulumi.getter(name="serviceResourceType")
     def service_resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Service resource type, value:
+        The service resource type. Value:
         """
         return pulumi.get(self, "service_resource_type")
 
@@ -234,12 +234,12 @@ class _VpcEndpointServiceState:
         :param pulumi.Input[_builtins.str] payer: The payer of the endpoint service. Valid values:
                - `Endpoint`: the service consumer.
                - `EndpointService`: the service provider.
-        :param pulumi.Input[_builtins.str] region_id: (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+        :param pulumi.Input[_builtins.str] region_id: The ID of the region to which the endpoint service belongs.
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID.
         :param pulumi.Input[_builtins.str] service_business_status: The service state of the endpoint service.
         :param pulumi.Input[_builtins.str] service_description: The description of the endpoint service.
         :param pulumi.Input[_builtins.str] service_domain: The domain name of the endpoint service.
-        :param pulumi.Input[_builtins.str] service_resource_type: Service resource type, value:
+        :param pulumi.Input[_builtins.str] service_resource_type: The service resource type. Value:
         :param pulumi.Input[_builtins.bool] service_support_ipv6: Specifies whether to enable IPv6 for the endpoint service. Valid values:
         :param pulumi.Input[_builtins.str] status: The state of the endpoint service.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The list of tags.
@@ -359,7 +359,7 @@ class _VpcEndpointServiceState:
     @pulumi.getter(name="regionId")
     def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+        The ID of the region to which the endpoint service belongs.
         """
         return pulumi.get(self, "region_id")
 
@@ -419,7 +419,7 @@ class _VpcEndpointServiceState:
     @pulumi.getter(name="serviceResourceType")
     def service_resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Service resource type, value:
+        The service resource type. Value:
         """
         return pulumi.get(self, "service_resource_type")
 
@@ -550,7 +550,7 @@ class VpcEndpointService(pulumi.CustomResource):
                - `EndpointService`: the service provider.
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID.
         :param pulumi.Input[_builtins.str] service_description: The description of the endpoint service.
-        :param pulumi.Input[_builtins.str] service_resource_type: Service resource type, value:
+        :param pulumi.Input[_builtins.str] service_resource_type: The service resource type. Value:
         :param pulumi.Input[_builtins.bool] service_support_ipv6: Specifies whether to enable IPv6 for the endpoint service. Valid values:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The list of tags.
         :param pulumi.Input[_builtins.bool] zone_affinity_enabled: Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
@@ -688,12 +688,12 @@ class VpcEndpointService(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] payer: The payer of the endpoint service. Valid values:
                - `Endpoint`: the service consumer.
                - `EndpointService`: the service provider.
-        :param pulumi.Input[_builtins.str] region_id: (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+        :param pulumi.Input[_builtins.str] region_id: The ID of the region to which the endpoint service belongs.
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID.
         :param pulumi.Input[_builtins.str] service_business_status: The service state of the endpoint service.
         :param pulumi.Input[_builtins.str] service_description: The description of the endpoint service.
         :param pulumi.Input[_builtins.str] service_domain: The domain name of the endpoint service.
-        :param pulumi.Input[_builtins.str] service_resource_type: Service resource type, value:
+        :param pulumi.Input[_builtins.str] service_resource_type: The service resource type. Value:
         :param pulumi.Input[_builtins.bool] service_support_ipv6: Specifies whether to enable IPv6 for the endpoint service. Valid values:
         :param pulumi.Input[_builtins.str] status: The state of the endpoint service.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The list of tags.
@@ -777,7 +777,7 @@ class VpcEndpointService(pulumi.CustomResource):
     @pulumi.getter(name="regionId")
     def region_id(self) -> pulumi.Output[_builtins.str]:
         """
-        (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+        The ID of the region to which the endpoint service belongs.
         """
         return pulumi.get(self, "region_id")
 
@@ -817,7 +817,7 @@ class VpcEndpointService(pulumi.CustomResource):
     @pulumi.getter(name="serviceResourceType")
     def service_resource_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Service resource type, value:
+        The service resource type. Value:
         """
         return pulumi.get(self, "service_resource_type")
 

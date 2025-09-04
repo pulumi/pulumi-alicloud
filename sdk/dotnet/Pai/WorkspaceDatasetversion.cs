@@ -15,6 +15,87 @@ namespace Pulumi.AliCloud.Pai
     /// For information about PAI Workspace Dataset Version and how to use it, see [What is Dataset Version](https://next.api.alibabacloud.com/document/AIWorkSpace/2021-02-04/CreateDatasetVersion).
     /// &gt; **NOTE:** Available since v1.236.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform_example";
+    ///     var defaultAiWorkspace = new AliCloud.Pai.WorkspaceWorkspace("defaultAiWorkspace", new()
+    ///     {
+    ///         Description = name,
+    ///         DisplayName = name,
+    ///         WorkspaceName = name,
+    ///         EnvTypes = new[]
+    ///         {
+    ///             "prod",
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultDataset = new AliCloud.Pai.WorkspaceDataset("defaultDataset", new()
+    ///     {
+    ///         Accessibility = "PRIVATE",
+    ///         SourceType = "USER",
+    ///         DataType = "PIC",
+    ///         WorkspaceId = defaultAiWorkspace.Id,
+    ///         Options = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["mountPath"] = "/mnt/data/",
+    ///         }),
+    ///         Description = name,
+    ///         SourceId = "d-xxxxx_v1",
+    ///         Uri = "oss://ai4d-q9lgxlpwxzqluij66y.oss-cn-hangzhou.aliyuncs.com/",
+    ///         DatasetName = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%s1",
+    ///             Args = new[]
+    ///             {
+    ///                 name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         UserId = "1511928242963727",
+    ///         DataSourceType = "OSS",
+    ///         Property = "DIRECTORY",
+    ///     });
+    /// 
+    ///     var @default = new AliCloud.Pai.WorkspaceDatasetversion("default", new()
+    ///     {
+    ///         Options = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["mountPath"] = "/mnt/data/verion/",
+    ///         }),
+    ///         Description = name,
+    ///         DataSourceType = "OSS",
+    ///         SourceType = "USER",
+    ///         SourceId = "d-xxxxx_v1",
+    ///         DataSize = 2068,
+    ///         DataCount = 1000,
+    ///         Labels = new[]
+    ///         {
+    ///             new AliCloud.Pai.Inputs.WorkspaceDatasetversionLabelArgs
+    ///             {
+    ///                 Key = "key1",
+    ///                 Value = "example1",
+    ///             },
+    ///         },
+    ///         Uri = "oss://ai4d-q9lgxlpwxzqluij66y.oss-cn-hangzhou.aliyuncs.com/",
+    ///         Property = "DIRECTORY",
+    ///         DatasetId = defaultDataset.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// PAI Workspace Datasetversion can be imported using the id, e.g.

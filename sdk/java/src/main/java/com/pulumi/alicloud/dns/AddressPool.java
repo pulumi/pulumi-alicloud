@@ -97,8 +97,8 @@ import javax.annotation.Nullable;
  *             .addresses(AddressPoolAddressArgs.builder()
  *                 .attributeInfo("""
  *     {
- *       "lineCodeRectifyType": "RECTIFIED",
- *       "lineCodes": ["os_namerica_us"]
+ *       \"lineCodeRectifyType\": \"RECTIFIED\",
+ *       \"lineCodes\": [\"os_namerica_us\"]
  *     }
  *                 """)
  *                 .remark("address_remark")

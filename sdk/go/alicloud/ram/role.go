@@ -48,19 +48,19 @@ import (
 //			_, err = ram.NewRole(ctx, "default", &ram.RoleArgs{
 //				RoleName: pulumi.Sprintf("terraform-example-%v", _default.Result),
 //				AssumeRolePolicyDocument: pulumi.String(`  {
-//	    "Statement": [
+//	    \"Statement\": [
 //	      {
-//	        "Action": "sts:AssumeRole",
-//	        "Effect": "Allow",
-//	        "Principal": {
-//	          "Service": [
-//	            "apigateway.aliyuncs.com",
-//	            "ecs.aliyuncs.com"
+//	        \"Action\": \"sts:AssumeRole\",
+//	        \"Effect\": \"Allow\",
+//	        \"Principal\": {
+//	          \"Service\": [
+//	            \"apigateway.aliyuncs.com\",
+//	            \"ecs.aliyuncs.com\"
 //	          ]
 //	        }
 //	      }
 //	    ],
-//	    "Version": "1"
+//	    \"Version\": \"1\"
 //	  }
 //
 // `),

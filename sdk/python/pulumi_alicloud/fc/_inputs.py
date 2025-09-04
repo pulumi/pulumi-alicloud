@@ -107,6 +107,8 @@ __all__ = [
     'V3FunctionInstanceLifecycleConfigInitializerArgsDict',
     'V3FunctionInstanceLifecycleConfigPreStopArgs',
     'V3FunctionInstanceLifecycleConfigPreStopArgsDict',
+    'V3FunctionInvocationRestrictionArgs',
+    'V3FunctionInvocationRestrictionArgsDict',
     'V3FunctionLogConfigArgs',
     'V3FunctionLogConfigArgsDict',
     'V3FunctionNasConfigArgs',
@@ -3163,6 +3165,78 @@ class V3FunctionInstanceLifecycleConfigPreStopArgs:
 
 
 if not MYPY:
+    class V3FunctionInvocationRestrictionArgsDict(TypedDict):
+        disable: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether invocation is disabled
+        """
+        last_modified_time: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Last time the function was Updated
+        """
+        reason: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Disable Reason
+        """
+elif False:
+    V3FunctionInvocationRestrictionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class V3FunctionInvocationRestrictionArgs:
+    def __init__(__self__, *,
+                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
+                 last_modified_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 reason: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] disable: Whether invocation is disabled
+        :param pulumi.Input[_builtins.str] last_modified_time: Last time the function was Updated
+        :param pulumi.Input[_builtins.str] reason: Disable Reason
+        """
+        if disable is not None:
+            pulumi.set(__self__, "disable", disable)
+        if last_modified_time is not None:
+            pulumi.set(__self__, "last_modified_time", last_modified_time)
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+
+    @_builtins.property
+    @pulumi.getter
+    def disable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether invocation is disabled
+        """
+        return pulumi.get(self, "disable")
+
+    @disable.setter
+    def disable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disable", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lastModifiedTime")
+    def last_modified_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Last time the function was Updated
+        """
+        return pulumi.get(self, "last_modified_time")
+
+    @last_modified_time.setter
+    def last_modified_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "last_modified_time", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Disable Reason
+        """
+        return pulumi.get(self, "reason")
+
+    @reason.setter
+    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "reason", value)
+
+
+if not MYPY:
     class V3FunctionLogConfigArgsDict(TypedDict):
         enable_instance_metrics: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -3552,7 +3626,7 @@ if not MYPY:
     class V3FunctionTracingConfigArgsDict(TypedDict):
         params: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
-        Tracing parameters.
+        Tracing parameters
         """
         type: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -3567,7 +3641,7 @@ class V3FunctionTracingConfigArgs:
                  params: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] params: Tracing parameters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] params: Tracing parameters
         :param pulumi.Input[_builtins.str] type: The tracing protocol type. Currently, only Jaeger is supported.
         """
         if params is not None:
@@ -3579,7 +3653,7 @@ class V3FunctionTracingConfigArgs:
     @pulumi.getter
     def params(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Tracing parameters.
+        Tracing parameters
         """
         return pulumi.get(self, "params")
 

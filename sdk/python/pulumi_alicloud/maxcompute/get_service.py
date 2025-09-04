@@ -81,7 +81,7 @@ def get_service(enable: Optional[_builtins.str] = None,
 
     > **NOTE:** Available in v1.117.0+
 
-    > **NOTE:** This datasource has been deprecated since provider version v1.228.0.
+    > **NOTE:** This datasource has been deprecated since provider version v1.228.0. Please use the resource `maxcompute.Quota` instead.
 
     ## Example Usage
 
@@ -117,7 +117,7 @@ def get_service_output(enable: Optional[pulumi.Input[Optional[_builtins.str]]] =
 
     > **NOTE:** Available in v1.117.0+
 
-    > **NOTE:** This datasource has been deprecated since provider version v1.228.0.
+    > **NOTE:** This datasource has been deprecated since provider version v1.228.0. Please use the resource `maxcompute.Quota` instead.
 
     ## Example Usage
 

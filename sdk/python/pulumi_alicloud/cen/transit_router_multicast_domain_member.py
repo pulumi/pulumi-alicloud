@@ -224,6 +224,65 @@ class TransitRouterMulticastDomainMember(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.195.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.cen.get_transit_router_available_resources()
+        zone = default.resources[0].master_zones[1]
+        example = alicloud.vpc.Network("example",
+            vpc_name=name,
+            cidr_block="192.168.0.0/16")
+        example_switch = alicloud.vpc.Switch("example",
+            vswitch_name=name,
+            cidr_block="192.168.1.0/24",
+            vpc_id=example.id,
+            zone_id=zone)
+        example_security_group = alicloud.ecs.SecurityGroup("example",
+            name=name,
+            vpc_id=example.id)
+        example_ecs_network_interface = alicloud.ecs.EcsNetworkInterface("example",
+            network_interface_name=name,
+            vswitch_id=example_switch.id,
+            primary_ip_address=example_switch.cidr_block.apply(lambda cidr_block: std.cidrhost_output(input=cidr_block,
+                host=100)).apply(lambda invoke: invoke.result),
+            security_group_ids=[example_security_group.id])
+        example_instance = alicloud.cen.Instance("example", cen_instance_name=name)
+        example_transit_router = alicloud.cen.TransitRouter("example",
+            transit_router_name=name,
+            cen_id=example_instance.id,
+            support_multicast=True)
+        example_transit_router_multicast_domain = alicloud.cen.TransitRouterMulticastDomain("example",
+            transit_router_id=example_transit_router.transit_router_id,
+            transit_router_multicast_domain_name=name)
+        example_transit_router_vpc_attachment = alicloud.cen.TransitRouterVpcAttachment("example",
+            cen_id=example_transit_router.cen_id,
+            transit_router_id=example_transit_router_multicast_domain.transit_router_id,
+            vpc_id=example.id,
+            zone_mappings=[{
+                "zone_id": zone,
+                "vswitch_id": example_switch.id,
+            }])
+        example_transit_router_multicast_domain_association = alicloud.cen.TransitRouterMulticastDomainAssociation("example",
+            transit_router_multicast_domain_id=example_transit_router_multicast_domain.id,
+            transit_router_attachment_id=example_transit_router_vpc_attachment.transit_router_attachment_id,
+            vswitch_id=example_switch.id)
+        example_transit_router_multicast_domain_member = alicloud.cen.TransitRouterMulticastDomainMember("example",
+            vpc_id=example.id,
+            transit_router_multicast_domain_id=example_transit_router_multicast_domain_association.transit_router_multicast_domain_id,
+            network_interface_id=example_ecs_network_interface.id,
+            group_ip_address="239.1.1.1")
+        ```
+
         ## Import
 
         Cen Transit Router Multicast Domain Member can be imported using the id, e.g.
@@ -252,6 +311,65 @@ class TransitRouterMulticastDomainMember(pulumi.CustomResource):
         For information about Cen Transit Router Multicast Domain Member and how to use it, see [What is Transit Router Multicast Domain Member](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupmembers).
 
         > **NOTE:** Available since v1.195.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.cen.get_transit_router_available_resources()
+        zone = default.resources[0].master_zones[1]
+        example = alicloud.vpc.Network("example",
+            vpc_name=name,
+            cidr_block="192.168.0.0/16")
+        example_switch = alicloud.vpc.Switch("example",
+            vswitch_name=name,
+            cidr_block="192.168.1.0/24",
+            vpc_id=example.id,
+            zone_id=zone)
+        example_security_group = alicloud.ecs.SecurityGroup("example",
+            name=name,
+            vpc_id=example.id)
+        example_ecs_network_interface = alicloud.ecs.EcsNetworkInterface("example",
+            network_interface_name=name,
+            vswitch_id=example_switch.id,
+            primary_ip_address=example_switch.cidr_block.apply(lambda cidr_block: std.cidrhost_output(input=cidr_block,
+                host=100)).apply(lambda invoke: invoke.result),
+            security_group_ids=[example_security_group.id])
+        example_instance = alicloud.cen.Instance("example", cen_instance_name=name)
+        example_transit_router = alicloud.cen.TransitRouter("example",
+            transit_router_name=name,
+            cen_id=example_instance.id,
+            support_multicast=True)
+        example_transit_router_multicast_domain = alicloud.cen.TransitRouterMulticastDomain("example",
+            transit_router_id=example_transit_router.transit_router_id,
+            transit_router_multicast_domain_name=name)
+        example_transit_router_vpc_attachment = alicloud.cen.TransitRouterVpcAttachment("example",
+            cen_id=example_transit_router.cen_id,
+            transit_router_id=example_transit_router_multicast_domain.transit_router_id,
+            vpc_id=example.id,
+            zone_mappings=[{
+                "zone_id": zone,
+                "vswitch_id": example_switch.id,
+            }])
+        example_transit_router_multicast_domain_association = alicloud.cen.TransitRouterMulticastDomainAssociation("example",
+            transit_router_multicast_domain_id=example_transit_router_multicast_domain.id,
+            transit_router_attachment_id=example_transit_router_vpc_attachment.transit_router_attachment_id,
+            vswitch_id=example_switch.id)
+        example_transit_router_multicast_domain_member = alicloud.cen.TransitRouterMulticastDomainMember("example",
+            vpc_id=example.id,
+            transit_router_multicast_domain_id=example_transit_router_multicast_domain_association.transit_router_multicast_domain_id,
+            network_interface_id=example_ecs_network_interface.id,
+            group_ip_address="239.1.1.1")
+        ```
 
         ## Import
 

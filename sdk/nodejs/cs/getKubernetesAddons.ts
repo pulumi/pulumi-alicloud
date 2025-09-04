@@ -11,6 +11,51 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.150.0.
  * **NOTE:** From version v1.166.0, support for returning custom configuration of kubernetes cluster addon.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ * });
+ * const defaultManagedKubernetes = new alicloud.cs.ManagedKubernetes("default", {
+ *     namePrefix: name,
+ *     clusterSpec: "ack.pro.small",
+ *     workerVswitchIds: [defaultSwitch.id],
+ *     newNatGateway: false,
+ *     podCidr: std.cidrsubnet({
+ *         input: "10.0.0.0/8",
+ *         newbits: 8,
+ *         netnum: 36,
+ *     }).then(invoke => invoke.result),
+ *     serviceCidr: std.cidrsubnet({
+ *         input: "172.16.0.0/16",
+ *         newbits: 4,
+ *         netnum: 7,
+ *     }).then(invoke => invoke.result),
+ *     slbInternetEnabled: true,
+ * });
+ * const defaultGetKubernetesAddons = alicloud.cs.getKubernetesAddonsOutput({
+ *     clusterId: defaultManagedKubernetes.id,
+ * });
+ * export const addons = defaultGetKubernetesAddons.apply(defaultGetKubernetesAddons => defaultGetKubernetesAddons.addons);
+ * ```
  */
 export function getKubernetesAddons(args: GetKubernetesAddonsArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesAddonsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -67,6 +112,51 @@ export interface GetKubernetesAddonsResult {
  *
  * > **NOTE:** Available since v1.150.0.
  * **NOTE:** From version v1.166.0, support for returning custom configuration of kubernetes cluster addon.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ * });
+ * const defaultManagedKubernetes = new alicloud.cs.ManagedKubernetes("default", {
+ *     namePrefix: name,
+ *     clusterSpec: "ack.pro.small",
+ *     workerVswitchIds: [defaultSwitch.id],
+ *     newNatGateway: false,
+ *     podCidr: std.cidrsubnet({
+ *         input: "10.0.0.0/8",
+ *         newbits: 8,
+ *         netnum: 36,
+ *     }).then(invoke => invoke.result),
+ *     serviceCidr: std.cidrsubnet({
+ *         input: "172.16.0.0/16",
+ *         newbits: 4,
+ *         netnum: 7,
+ *     }).then(invoke => invoke.result),
+ *     slbInternetEnabled: true,
+ * });
+ * const defaultGetKubernetesAddons = alicloud.cs.getKubernetesAddonsOutput({
+ *     clusterId: defaultManagedKubernetes.id,
+ * });
+ * export const addons = defaultGetKubernetesAddons.apply(defaultGetKubernetesAddons => defaultGetKubernetesAddons.addons);
+ * ```
  */
 export function getKubernetesAddonsOutput(args: GetKubernetesAddonsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKubernetesAddonsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

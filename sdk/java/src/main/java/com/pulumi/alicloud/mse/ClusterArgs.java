@@ -311,6 +311,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The version code of MSE Cluster. You can keep the instance version up to date by setting the value to `LATEST` (Available since v1.257.0).
+     * 
+     */
+    @Import(name="versionCode")
+    private @Nullable Output<String> versionCode;
+
+    /**
+     * @return The version code of MSE Cluster. You can keep the instance version up to date by setting the value to `LATEST` (Available since v1.257.0).
+     * 
+     */
+    public Optional<Output<String>> versionCode() {
+        return Optional.ofNullable(this.versionCode);
+    }
+
+    /**
      * The id of the VPC.
      * 
      */
@@ -360,6 +375,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.requestPars = $.requestPars;
         this.resourceGroupId = $.resourceGroupId;
         this.tags = $.tags;
+        this.versionCode = $.versionCode;
         this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
     }
@@ -783,6 +799,27 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(Map<String,String> tags) {
             return tags(Output.of(tags));
+        }
+
+        /**
+         * @param versionCode The version code of MSE Cluster. You can keep the instance version up to date by setting the value to `LATEST` (Available since v1.257.0).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder versionCode(@Nullable Output<String> versionCode) {
+            $.versionCode = versionCode;
+            return this;
+        }
+
+        /**
+         * @param versionCode The version code of MSE Cluster. You can keep the instance version up to date by setting the value to `LATEST` (Available since v1.257.0).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder versionCode(String versionCode) {
+            return versionCode(Output.of(versionCode));
         }
 
         /**

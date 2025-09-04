@@ -11,6 +11,7 @@ from .get_service_subscriptions import *
 from .get_service_topics import *
 from .service_endpoint import *
 from .service_endpoint_acl import *
+from .service_event_rule import *
 from .service_queue import *
 from .service_service import *
 from .service_subscription import *

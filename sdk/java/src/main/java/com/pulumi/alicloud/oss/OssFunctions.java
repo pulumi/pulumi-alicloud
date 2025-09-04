@@ -265,8 +265,8 @@ public final class OssFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.random.integer;
-     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
      * import com.pulumi.alicloud.oss.Bucket;
      * import com.pulumi.alicloud.oss.BucketArgs;
      * import com.pulumi.alicloud.oss.OssFunctions;
@@ -323,8 +323,8 @@ public final class OssFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.random.integer;
-     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
      * import com.pulumi.alicloud.oss.Bucket;
      * import com.pulumi.alicloud.oss.BucketArgs;
      * import com.pulumi.alicloud.oss.OssFunctions;
@@ -381,8 +381,8 @@ public final class OssFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.random.integer;
-     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
      * import com.pulumi.alicloud.oss.Bucket;
      * import com.pulumi.alicloud.oss.BucketArgs;
      * import com.pulumi.alicloud.oss.OssFunctions;
@@ -439,8 +439,8 @@ public final class OssFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.random.integer;
-     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
      * import com.pulumi.alicloud.oss.Bucket;
      * import com.pulumi.alicloud.oss.BucketArgs;
      * import com.pulumi.alicloud.oss.OssFunctions;
@@ -497,8 +497,8 @@ public final class OssFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.random.integer;
-     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
      * import com.pulumi.alicloud.oss.Bucket;
      * import com.pulumi.alicloud.oss.BucketArgs;
      * import com.pulumi.alicloud.oss.OssFunctions;
@@ -555,8 +555,8 @@ public final class OssFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.random.integer;
-     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
      * import com.pulumi.alicloud.oss.Bucket;
      * import com.pulumi.alicloud.oss.BucketArgs;
      * import com.pulumi.alicloud.oss.OssFunctions;
@@ -613,8 +613,8 @@ public final class OssFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.random.integer;
-     * import com.pulumi.random.integerArgs;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
      * import com.pulumi.alicloud.oss.Bucket;
      * import com.pulumi.alicloud.oss.BucketArgs;
      * import com.pulumi.alicloud.oss.OssFunctions;

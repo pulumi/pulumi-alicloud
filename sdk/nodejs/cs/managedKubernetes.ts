@@ -39,6 +39,268 @@ import * as utilities from "../utilities";
  * > **NOTE:** From version 1.212.0, `runtime`,`enableSsh`,`rdsInstances`,`excludeAutoscalerNodes`,`workerNumber`,`workerInstanceTypes`,`password`,`keyName`,`kmsEncryptedPassword`,`kmsEncryptionContext`,`workerInstanceChargeType`,`workerPeriod`,`workerPeriodUnit`,`workerAutoRenew`,`workerAutoRenewPeriod`,`workerDiskCategory`,`workerDiskSize`,`workerDataDisks`,`nodeNameMode`,`nodePortRange`,`osType`,`platform`,`imageId`,`cpuPolicy`,`userData`,`taints`,`workerDiskPerformanceLevel`,`workerDiskSnapshotPolicyId`,`installCloudMonitor`,`kubeConfig`,`availabilityZone` are removed.
  * Please use resource **`alicloud.cs.NodePool`** to manage your cluster worker nodes.
  *
+ * ## Example Usage
+ *
+ * ACK cluster
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * // Existing vpc id used to create several vswitches and other resources.
+ * const vpcId = config.get("vpcId") || "";
+ * // The cidr block used to launch a new vpc when 'vpc_id' is not specified.
+ * const vpcCidr = config.get("vpcCidr") || "10.0.0.0/8";
+ * // List of existing vswitch id.
+ * const vswitchIds = config.getObject<Array<string>>("vswitchIds") || [];
+ * // List of cidr blocks used to create several new vswitches when 'vswitch_ids' is not specified.
+ * const vswitchCidrs = config.getObject<Array<string>>("vswitchCidrs") || [
+ *     "10.1.0.0/16",
+ *     "10.2.0.0/16",
+ * ];
+ * // Proxy mode is option of kube-proxy.
+ * const proxyMode = config.get("proxyMode") || "ipvs";
+ * // The kubernetes service cidr block. It cannot be equals to vpc's or vswitch's or pod's and cannot be in them.
+ * const serviceCidr = config.get("serviceCidr") || "192.168.0.0/16";
+ * // List of existing vswitch ids for terway.
+ * const terwayVswitchIds = config.getObject<Array<string>>("terwayVswitchIds") || [];
+ * // List of cidr blocks used to create several new vswitches when 'terway_vswitch_cidrs' is not specified.
+ * const terwayVswitchCidrs = config.getObject<Array<string>>("terwayVswitchCidrs") || [
+ *     "10.4.0.0/16",
+ *     "10.5.0.0/16",
+ * ];
+ * const enhanced = alicloud.vpc.getEnhancedNatAvailableZones({});
+ * // If there is not specifying vpc_id, the module will launch a new vpc
+ * const vpc: alicloud.vpc.Network[] = [];
+ * for (const range = {value: 0}; range.value < (vpcId == "" ? 1 : 0); range.value++) {
+ *     vpc.push(new alicloud.vpc.Network(`vpc-${range.value}`, {cidrBlock: vpcCidr}));
+ * }
+ * // According to the vswitch cidr blocks to launch several vswitches
+ * const vswitches: alicloud.vpc.Switch[] = [];
+ * for (const range = {value: 0}; range.value < (vswitchIds.length > 0 ? 0 : vswitchCidrs.length); range.value++) {
+ *     vswitches.push(new alicloud.vpc.Switch(`vswitches-${range.value}`, {
+ *         vpcId: vpcId == "" ? std.joinOutput({
+ *             separator: "",
+ *             input: vpc.map(__item => __item.id),
+ *         }).apply(invoke => invoke.result) : vpcId,
+ *         cidrBlock: vswitchCidrs[range.value],
+ *         zoneId: enhanced.then(enhanced => enhanced.zones[range.value].zoneId),
+ *     }));
+ * }
+ * // According to the vswitch cidr blocks to launch several vswitches
+ * const terwayVswitches: alicloud.vpc.Switch[] = [];
+ * for (const range = {value: 0}; range.value < (terwayVswitchIds.length > 0 ? 0 : terwayVswitchCidrs.length); range.value++) {
+ *     terwayVswitches.push(new alicloud.vpc.Switch(`terway_vswitches-${range.value}`, {
+ *         vpcId: vpcId == "" ? std.joinOutput({
+ *             separator: "",
+ *             input: vpc.map(__item => __item.id),
+ *         }).apply(invoke => invoke.result) : vpcId,
+ *         cidrBlock: terwayVswitchCidrs[range.value],
+ *         zoneId: enhanced.then(enhanced => enhanced.zones[range.value].zoneId),
+ *     }));
+ * }
+ * const k8s = new alicloud.cs.ManagedKubernetes("k8s", {
+ *     name: name,
+ *     clusterSpec: "ack.pro.small",
+ *     vswitchIds: vswitchIds.length > 0 ? std.join({
+ *         separator: ",",
+ *         input: vswitchIds,
+ *     }).then(invoke => std.split({
+ *         separator: ",",
+ *         text: invoke.result,
+ *     })).then(invoke => invoke.result) : vswitchCidrs.length < 1 ? [] : std.joinOutput({
+ *         separator: ",",
+ *         input: vswitches.map(__item => __item.id),
+ *     }).apply(invoke => std.splitOutput({
+ *         separator: ",",
+ *         text: invoke.result,
+ *     })).apply(invoke => invoke.result),
+ *     podVswitchIds: terwayVswitchIds.length > 0 ? std.join({
+ *         separator: ",",
+ *         input: terwayVswitchIds,
+ *     }).then(invoke => std.split({
+ *         separator: ",",
+ *         text: invoke.result,
+ *     })).then(invoke => invoke.result) : terwayVswitchCidrs.length < 1 ? [] : std.joinOutput({
+ *         separator: ",",
+ *         input: terwayVswitches.map(__item => __item.id),
+ *     }).apply(invoke => std.splitOutput({
+ *         separator: ",",
+ *         text: invoke.result,
+ *     })).apply(invoke => invoke.result),
+ *     newNatGateway: true,
+ *     proxyMode: proxyMode,
+ *     serviceCidr: serviceCidr,
+ *     skipSetCertificateAuthority: true,
+ *     addons: [
+ *         {
+ *             name: "terway-eniip",
+ *         },
+ *         {
+ *             name: "csi-plugin",
+ *         },
+ *         {
+ *             name: "csi-provisioner",
+ *         },
+ *         {
+ *             name: "logtail-ds",
+ *             config: JSON.stringify({
+ *                 IngressDashboardEnabled: "true",
+ *             }),
+ *         },
+ *         {
+ *             name: "nginx-ingress-controller",
+ *             config: JSON.stringify({
+ *                 IngressSlbNetworkType: "internet",
+ *             }),
+ *         },
+ *         {
+ *             name: "arms-prometheus",
+ *         },
+ *         {
+ *             name: "ack-node-problem-detector",
+ *             config: JSON.stringify({}),
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ACK Cluster with Auto Mode
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "auto-mode";
+ * // Proxy mode is option of kube-proxy.
+ * const proxyMode = config.get("proxyMode") || "ipvs";
+ * // The kubernetes service cidr block.
+ * const serviceCidr = config.get("serviceCidr") || "192.168.0.0/16";
+ * const enhanced = alicloud.vpc.getEnhancedNatAvailableZones({});
+ * const auto_mode = new alicloud.cs.ManagedKubernetes("auto-mode", {
+ *     name: name,
+ *     clusterSpec: "ack.pro.small",
+ *     zoneIds: [enhanced.then(enhanced => enhanced.zones?.[0]?.zoneId)],
+ *     newNatGateway: true,
+ *     isEnterpriseSecurityGroup: true,
+ *     slbInternetEnabled: false,
+ *     skipSetCertificateAuthority: true,
+ *     proxyMode: proxyMode,
+ *     serviceCidr: serviceCidr,
+ *     ipStack: "ipv4",
+ *     autoMode: {
+ *         enabled: true,
+ *     },
+ *     maintenanceWindow: {
+ *         duration: "3h",
+ *         weeklyPeriod: "Monday",
+ *         enable: true,
+ *         maintenanceTime: "2025-07-07T00:00:00.000+08:00",
+ *     },
+ *     operationPolicy: {
+ *         clusterAutoUpgrade: {
+ *             channel: "stable",
+ *             enabled: true,
+ *         },
+ *     },
+ *     controlPlaneLogComponents: [
+ *         "apiserver",
+ *         "kcm",
+ *         "scheduler",
+ *         "ccm",
+ *         "controlplane-events",
+ *         "alb",
+ *         "ack-goatscaler",
+ *         "coredns",
+ *     ],
+ *     controlPlaneLogTtl: "30",
+ *     auditLogConfig: {
+ *         enabled: true,
+ *     },
+ *     addons: [
+ *         {
+ *             name: "managed-metrics-server",
+ *         },
+ *         {
+ *             name: "managed-coredns",
+ *         },
+ *         {
+ *             name: "managed-security-inspector",
+ *         },
+ *         {
+ *             name: "ack-cost-exporter",
+ *         },
+ *         {
+ *             name: "terway-controlplane",
+ *             config: JSON.stringify({
+ *                 ENITrunking: "true",
+ *             }),
+ *         },
+ *         {
+ *             name: "terway-eniip",
+ *             config: JSON.stringify({
+ *                 NetworkPolicy: "false",
+ *                 ENITrunking: "true",
+ *                 IPVlan: "false",
+ *             }),
+ *         },
+ *         {
+ *             name: "csi-plugin",
+ *         },
+ *         {
+ *             name: "managed-csiprovisioner",
+ *         },
+ *         {
+ *             name: "storage-operator",
+ *             config: JSON.stringify({
+ *                 CnfsOssEnable: "false",
+ *                 CnfsNasEnable: "false",
+ *             }),
+ *         },
+ *         {
+ *             name: "loongcollector",
+ *             config: JSON.stringify({
+ *                 IngressDashboardEnabled: "true",
+ *             }),
+ *         },
+ *         {
+ *             name: "ack-node-problem-detector",
+ *             config: JSON.stringify({
+ *                 sls_project_name: "",
+ *             }),
+ *         },
+ *         {
+ *             name: "nginx-ingress-controller",
+ *             disabled: true,
+ *         },
+ *         {
+ *             name: "alb-ingress-controller",
+ *             config: JSON.stringify({
+ *                 albIngress: {
+ *                     CreateDefaultALBConfig: false,
+ *                 },
+ *             }),
+ *         },
+ *         {
+ *             name: "arms-prometheus",
+ *             config: JSON.stringify({
+ *                 prometheusMode: "default",
+ *             }),
+ *         },
+ *         {
+ *             name: "alicloud-monitor-controller",
+ *         },
+ *         {
+ *             name: "managed-aliyun-acr-credential-helper",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Kubernetes managed cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
@@ -87,6 +349,10 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      * Audit log configuration. See `auditLogConfig` below.
      */
     declare public readonly auditLogConfig: pulumi.Output<outputs.cs.ManagedKubernetesAuditLogConfig>;
+    /**
+     * Auto mode cluster configuration. See `autoMode` below.
+     */
+    declare public readonly autoMode: pulumi.Output<outputs.cs.ManagedKubernetesAutoMode | undefined>;
     /**
      * (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      *
@@ -175,7 +441,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     declare public readonly loadBalancerSpec: pulumi.Output<string>;
     /**
-     * The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
+     * The cluster maintenance window. Managed node pool will use it. See `maintenanceWindow` below.
      */
     declare public readonly maintenanceWindow: pulumi.Output<outputs.cs.ManagedKubernetesMaintenanceWindow>;
     /**
@@ -196,7 +462,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     declare public readonly nodeCidrMask: pulumi.Output<number | undefined>;
     /**
-     * The cluster automatic operation policy. See `operationPolicy` below.
+     * The cluster automatic operation policy, only works when `maintenanceWindow` is enabled. See `operationPolicy` below.
      */
     declare public readonly operationPolicy: pulumi.Output<outputs.cs.ManagedKubernetesOperationPolicy>;
     /**
@@ -330,6 +596,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             resourceInputs["addons"] = state?.addons;
             resourceInputs["apiAudiences"] = state?.apiAudiences;
             resourceInputs["auditLogConfig"] = state?.auditLogConfig;
+            resourceInputs["autoMode"] = state?.autoMode;
             resourceInputs["certificateAuthority"] = state?.certificateAuthority;
             resourceInputs["clientCert"] = state?.clientCert;
             resourceInputs["clientKey"] = state?.clientKey;
@@ -384,6 +651,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             resourceInputs["addons"] = args?.addons;
             resourceInputs["apiAudiences"] = args?.apiAudiences;
             resourceInputs["auditLogConfig"] = args?.auditLogConfig;
+            resourceInputs["autoMode"] = args?.autoMode;
             resourceInputs["clientCert"] = args?.clientCert;
             resourceInputs["clientKey"] = args?.clientKey;
             resourceInputs["clusterCaCert"] = args?.clusterCaCert;
@@ -455,6 +723,10 @@ export interface ManagedKubernetesState {
      * Audit log configuration. See `auditLogConfig` below.
      */
     auditLogConfig?: pulumi.Input<inputs.cs.ManagedKubernetesAuditLogConfig>;
+    /**
+     * Auto mode cluster configuration. See `autoMode` below.
+     */
+    autoMode?: pulumi.Input<inputs.cs.ManagedKubernetesAutoMode>;
     /**
      * (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      *
@@ -543,7 +815,7 @@ export interface ManagedKubernetesState {
      */
     loadBalancerSpec?: pulumi.Input<string>;
     /**
-     * The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
+     * The cluster maintenance window. Managed node pool will use it. See `maintenanceWindow` below.
      */
     maintenanceWindow?: pulumi.Input<inputs.cs.ManagedKubernetesMaintenanceWindow>;
     /**
@@ -564,7 +836,7 @@ export interface ManagedKubernetesState {
      */
     nodeCidrMask?: pulumi.Input<number>;
     /**
-     * The cluster automatic operation policy. See `operationPolicy` below.
+     * The cluster automatic operation policy, only works when `maintenanceWindow` is enabled. See `operationPolicy` below.
      */
     operationPolicy?: pulumi.Input<inputs.cs.ManagedKubernetesOperationPolicy>;
     /**
@@ -700,6 +972,10 @@ export interface ManagedKubernetesArgs {
      */
     auditLogConfig?: pulumi.Input<inputs.cs.ManagedKubernetesAuditLogConfig>;
     /**
+     * Auto mode cluster configuration. See `autoMode` below.
+     */
+    autoMode?: pulumi.Input<inputs.cs.ManagedKubernetesAutoMode>;
+    /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      *
      * @deprecated Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
@@ -777,7 +1053,7 @@ export interface ManagedKubernetesArgs {
      */
     loadBalancerSpec?: pulumi.Input<string>;
     /**
-     * The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
+     * The cluster maintenance window. Managed node pool will use it. See `maintenanceWindow` below.
      */
     maintenanceWindow?: pulumi.Input<inputs.cs.ManagedKubernetesMaintenanceWindow>;
     /**
@@ -794,7 +1070,7 @@ export interface ManagedKubernetesArgs {
      */
     nodeCidrMask?: pulumi.Input<number>;
     /**
-     * The cluster automatic operation policy. See `operationPolicy` below.
+     * The cluster automatic operation policy, only works when `maintenanceWindow` is enabled. See `operationPolicy` below.
      */
     operationPolicy?: pulumi.Input<inputs.cs.ManagedKubernetesOperationPolicy>;
     /**

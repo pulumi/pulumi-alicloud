@@ -22,25 +22,25 @@ import * as utilities from "../utilities";
  * });
  * const defaultTemplate = new alicloud.oos.Template("default", {
  *     content: `  {
- *     "FormatVersion": "OOS-2019-06-01",
- *     "Description": "Update Describe instances of given status",
- *     "Parameters":{
- *       "Status":{
- *         "Type": "String",
- *         "Description": "(Required) The status of the Ecs instance."
+ *     \\"FormatVersion\\": \\"OOS-2019-06-01\\",
+ *     \\"Description\\": \\"Update Describe instances of given status\\",
+ *     \\"Parameters\\":{
+ *       \\"Status\\":{
+ *         \\"Type\\": \\"String\\",
+ *         \\"Description\\": \\"(Required) The status of the Ecs instance.\\"
  *       }
  *     },
- *     "Tasks": [
+ *     \\"Tasks\\": [
  *       {
- *         "Properties" :{
- *           "Parameters":{
- *             "Status": "{{ Status }}"
+ *         \\"Properties\\" :{
+ *           \\"Parameters\\":{
+ *             \\"Status\\": \\"{{ Status }}\\"
  *           },
- *           "API": "DescribeInstances",
- *           "Service": "Ecs"
+ *           \\"API\\": \\"DescribeInstances\\",
+ *           \\"Service\\": \\"Ecs\\"
  *         },
- *         "Name": "foo",
- *         "Action": "ACS::ExecuteApi"
+ *         \\"Name\\": \\"foo\\",
+ *         \\"Action\\": \\"ACS::ExecuteApi\\"
  *       }]
  *   }
  * `,
@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  * const example = new alicloud.oos.Execution("example", {
  *     templateName: defaultTemplate.templateName,
  *     description: "From TF Test",
- *     parameters: "\x09\x09\x09\x09{\"Status\":\"Running\"}\n",
+ *     parameters: "\\t\\t\\t\\t{\\\"Status\\\":\\\"Running\\\"}\n",
  * });
  * ```
  *

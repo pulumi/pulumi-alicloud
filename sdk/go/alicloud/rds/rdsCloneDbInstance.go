@@ -162,7 +162,7 @@ type RdsCloneDbInstance struct {
 	// The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
 	DbInstanceClass pulumi.StringOutput `pulumi:"dbInstanceClass"`
 	// The db instance description.
-	DbInstanceDescription pulumi.StringPtrOutput `pulumi:"dbInstanceDescription"`
+	DbInstanceDescription pulumi.StringOutput `pulumi:"dbInstanceDescription"`
 	// The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
 	//
 	// > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
@@ -173,6 +173,7 @@ type RdsCloneDbInstance struct {
 	// * **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
 	// * **cloud_essd2**: ESSDs of PL2
 	// * **cloud_essd3**: ESSDs of PL3
+	// * **general_essd**: general ESSDS Available since v1.258.0
 	DbInstanceStorageType pulumi.StringOutput `pulumi:"dbInstanceStorageType"`
 	// The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
 	//
@@ -407,6 +408,7 @@ type rdsCloneDbInstanceState struct {
 	// * **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
 	// * **cloud_essd2**: ESSDs of PL2
 	// * **cloud_essd3**: ESSDs of PL3
+	// * **general_essd**: general ESSDS Available since v1.258.0
 	DbInstanceStorageType *string `pulumi:"dbInstanceStorageType"`
 	// The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
 	//
@@ -603,6 +605,7 @@ type RdsCloneDbInstanceState struct {
 	// * **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
 	// * **cloud_essd2**: ESSDs of PL2
 	// * **cloud_essd3**: ESSDs of PL3
+	// * **general_essd**: general ESSDS Available since v1.258.0
 	DbInstanceStorageType pulumi.StringPtrInput
 	// The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
 	//
@@ -801,6 +804,7 @@ type rdsCloneDbInstanceArgs struct {
 	// * **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
 	// * **cloud_essd2**: ESSDs of PL2
 	// * **cloud_essd3**: ESSDs of PL3
+	// * **general_essd**: general ESSDS Available since v1.258.0
 	DbInstanceStorageType string `pulumi:"dbInstanceStorageType"`
 	// The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
 	//
@@ -996,6 +1000,7 @@ type RdsCloneDbInstanceArgs struct {
 	// * **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
 	// * **cloud_essd2**: ESSDs of PL2
 	// * **cloud_essd3**: ESSDs of PL3
+	// * **general_essd**: general ESSDS Available since v1.258.0
 	DbInstanceStorageType pulumi.StringInput
 	// The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
 	//
@@ -1309,8 +1314,8 @@ func (o RdsCloneDbInstanceOutput) DbInstanceClass() pulumi.StringOutput {
 }
 
 // The db instance description.
-func (o RdsCloneDbInstanceOutput) DbInstanceDescription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.DbInstanceDescription }).(pulumi.StringPtrOutput)
+func (o RdsCloneDbInstanceOutput) DbInstanceDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.DbInstanceDescription }).(pulumi.StringOutput)
 }
 
 // The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
@@ -1326,6 +1331,7 @@ func (o RdsCloneDbInstanceOutput) DbInstanceStorage() pulumi.IntOutput {
 // * **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
 // * **cloud_essd2**: ESSDs of PL2
 // * **cloud_essd3**: ESSDs of PL3
+// * **general_essd**: general ESSDS Available since v1.258.0
 func (o RdsCloneDbInstanceOutput) DbInstanceStorageType() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.DbInstanceStorageType }).(pulumi.StringOutput)
 }

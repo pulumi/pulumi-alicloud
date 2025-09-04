@@ -8,6 +8,7 @@ import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesState;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesAddon;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesAuditLogConfig;
+import com.pulumi.alicloud.cs.outputs.ManagedKubernetesAutoMode;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesCertificateAuthority;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesConnections;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesDeleteOption;
@@ -58,6 +59,342 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** From version 1.212.0, `runtime`,`enable_ssh`,`rds_instances`,`exclude_autoscaler_nodes`,`worker_number`,`worker_instance_types`,`password`,`key_name`,`kms_encrypted_password`,`kms_encryption_context`,`worker_instance_charge_type`,`worker_period`,`worker_period_unit`,`worker_auto_renew`,`worker_auto_renew_period`,`worker_disk_category`,`worker_disk_size`,`worker_data_disks`,`node_name_mode`,`node_port_range`,`os_type`,`platform`,`image_id`,`cpu_policy`,`user_data`,`taints`,`worker_disk_performance_level`,`worker_disk_snapshot_policy_id`,`install_cloud_monitor`,`kube_config`,`availability_zone` are removed.
  * Please use resource **`alicloud.cs.NodePool`** to manage your cluster worker nodes.
+ * 
+ * ## Example Usage
+ * 
+ * ACK cluster
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.JoinArgs;
+ * import com.pulumi.alicloud.cs.ManagedKubernetes;
+ * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+ * import com.pulumi.alicloud.cs.inputs.ManagedKubernetesAddonArgs;
+ * import com.pulumi.std.inputs.SplitArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf-example");
+ *         final var vpcId = config.get("vpcId").orElse("");
+ *         final var vpcCidr = config.get("vpcCidr").orElse("10.0.0.0/8");
+ *         final var vswitchIds = config.get("vswitchIds").orElse(List.of());
+ *         final var vswitchCidrs = config.get("vswitchCidrs").orElse(List.of(        
+ *             "10.1.0.0/16",
+ *             "10.2.0.0/16"));
+ *         final var proxyMode = config.get("proxyMode").orElse("ipvs");
+ *         final var serviceCidr = config.get("serviceCidr").orElse("192.168.0.0/16");
+ *         final var terwayVswitchIds = config.get("terwayVswitchIds").orElse(List.of());
+ *         final var terwayVswitchCidrs = config.get("terwayVswitchCidrs").orElse(List.of(        
+ *             "10.4.0.0/16",
+ *             "10.5.0.0/16"));
+ *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+ *             .build());
+ * 
+ *         // If there is not specifying vpc_id, the module will launch a new vpc
+ *         for (var i = 0; i < (vpcId == "" ? 1 : 0); i++) {
+ *             new Network("vpc-" + i, NetworkArgs.builder()
+ *                 .cidrBlock(vpcCidr)
+ *                 .build());
+ * 
+ *         
+ * }
+ *         // According to the vswitch cidr blocks to launch several vswitches
+ *         for (var i = 0; i < (vswitchIds.length() > 0 ? 0 : vswitchCidrs.length()); i++) {
+ *             new Switch("vswitches-" + i, SwitchArgs.builder()
+ *                 .vpcId(vpcId == "" ? StdFunctions.join(JoinArgs.builder()
+ *                     .separator("")
+ *                     .input(vpc.stream().map(element -> element.id()).collect(toList()))
+ *                     .build()).applyValue(_invoke -> _invoke.result()) : vpcId)
+ *                 .cidrBlock(vswitchCidrs[range.value()])
+ *                 .zoneId(enhanced.zones()[range.value()].zoneId())
+ *                 .build());
+ * 
+ *         
+ * }
+ *         // According to the vswitch cidr blocks to launch several vswitches
+ *         for (var i = 0; i < (terwayVswitchIds.length() > 0 ? 0 : terwayVswitchCidrs.length()); i++) {
+ *             new Switch("terwayVswitches-" + i, SwitchArgs.builder()
+ *                 .vpcId(vpcId == "" ? StdFunctions.join(JoinArgs.builder()
+ *                     .separator("")
+ *                     .input(vpc.stream().map(element -> element.id()).collect(toList()))
+ *                     .build()).applyValue(_invoke -> _invoke.result()) : vpcId)
+ *                 .cidrBlock(terwayVswitchCidrs[range.value()])
+ *                 .zoneId(enhanced.zones()[range.value()].zoneId())
+ *                 .build());
+ * 
+ *         
+ * }
+ *         var k8s = new ManagedKubernetes("k8s", ManagedKubernetesArgs.builder()
+ *             .name(name)
+ *             .clusterSpec("ack.pro.small")
+ *             .vswitchIds(vswitchIds.length() > 0 ? StdFunctions.split(SplitArgs.builder()
+ *                 .separator(",")
+ *                 .text(StdFunctions.join(JoinArgs.builder()
+ *                     .separator(",")
+ *                     .input(vswitchIds)
+ *                     .build()).result())
+ *                 .build()).result() : vswitchCidrs.length() < 1 ?  : StdFunctions.join(JoinArgs.builder()
+ *                 .separator(",")
+ *                 .input(vswitches.stream().map(element -> element.id()).collect(toList()))
+ *                 .build()).applyValue(_invoke -> StdFunctions.split(SplitArgs.builder()
+ *                 .separator(",")
+ *                 .text(_invoke.result())
+ *                 .build())).applyValue(_invoke -> _invoke.result()))
+ *             .podVswitchIds(terwayVswitchIds.length() > 0 ? StdFunctions.split(SplitArgs.builder()
+ *                 .separator(",")
+ *                 .text(StdFunctions.join(JoinArgs.builder()
+ *                     .separator(",")
+ *                     .input(terwayVswitchIds)
+ *                     .build()).result())
+ *                 .build()).result() : terwayVswitchCidrs.length() < 1 ?  : StdFunctions.join(JoinArgs.builder()
+ *                 .separator(",")
+ *                 .input(terwayVswitches.stream().map(element -> element.id()).collect(toList()))
+ *                 .build()).applyValue(_invoke -> StdFunctions.split(SplitArgs.builder()
+ *                 .separator(",")
+ *                 .text(_invoke.result())
+ *                 .build())).applyValue(_invoke -> _invoke.result()))
+ *             .newNatGateway(true)
+ *             .proxyMode(proxyMode)
+ *             .serviceCidr(serviceCidr)
+ *             .skipSetCertificateAuthority(true)
+ *             .addons(            
+ *                 ManagedKubernetesAddonArgs.builder()
+ *                     .name("terway-eniip")
+ *                     .build(),
+ *                 ManagedKubernetesAddonArgs.builder()
+ *                     .name("csi-plugin")
+ *                     .build(),
+ *                 ManagedKubernetesAddonArgs.builder()
+ *                     .name("csi-provisioner")
+ *                     .build(),
+ *                 ManagedKubernetesAddonArgs.builder()
+ *                     .name("logtail-ds")
+ *                     .config(serializeJson(
+ *                         jsonObject(
+ *                             jsonProperty("IngressDashboardEnabled", "true")
+ *                         )))
+ *                     .build(),
+ *                 ManagedKubernetesAddonArgs.builder()
+ *                     .name("nginx-ingress-controller")
+ *                     .config(serializeJson(
+ *                         jsonObject(
+ *                             jsonProperty("IngressSlbNetworkType", "internet")
+ *                         )))
+ *                     .build(),
+ *                 ManagedKubernetesAddonArgs.builder()
+ *                     .name("arms-prometheus")
+ *                     .build(),
+ *                 ManagedKubernetesAddonArgs.builder()
+ *                     .name("ack-node-problem-detector")
+ *                     .config(serializeJson(
+ *                         jsonObject(
+ * 
+ *                         )))
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ACK Cluster with Auto Mode
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+ * import com.pulumi.alicloud.cs.ManagedKubernetes;
+ * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+ * import com.pulumi.alicloud.cs.inputs.ManagedKubernetesAutoModeArgs;
+ * import com.pulumi.alicloud.cs.inputs.ManagedKubernetesMaintenanceWindowArgs;
+ * import com.pulumi.alicloud.cs.inputs.ManagedKubernetesOperationPolicyArgs;
+ * import com.pulumi.alicloud.cs.inputs.ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs;
+ * import com.pulumi.alicloud.cs.inputs.ManagedKubernetesAuditLogConfigArgs;
+ * import com.pulumi.alicloud.cs.inputs.ManagedKubernetesAddonArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("auto-mode");
+ *         final var proxyMode = config.get("proxyMode").orElse("ipvs");
+ *         final var serviceCidr = config.get("serviceCidr").orElse("192.168.0.0/16");
+ *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+ *             .build());
+ * 
+ *         var auto_mode = new ManagedKubernetes("auto-mode", ManagedKubernetesArgs.builder()
+ *             .name(name)
+ *             .clusterSpec("ack.pro.small")
+ *             .zoneIds(enhanced.zones()[0].zoneId())
+ *             .newNatGateway(true)
+ *             .isEnterpriseSecurityGroup(true)
+ *             .slbInternetEnabled(false)
+ *             .skipSetCertificateAuthority(true)
+ *             .proxyMode(proxyMode)
+ *             .serviceCidr(serviceCidr)
+ *             .ipStack("ipv4")
+ *             .autoMode(ManagedKubernetesAutoModeArgs.builder()
+ *                 .enabled(true)
+ *                 .build())
+ *             .maintenanceWindow(ManagedKubernetesMaintenanceWindowArgs.builder()
+ *                 .duration("3h")
+ *                 .weeklyPeriod("Monday")
+ *                 .enable(true)
+ *                 .maintenanceTime("2025-07-07T00:00:00.000+08:00")
+ *                 .build())
+ *             .operationPolicy(ManagedKubernetesOperationPolicyArgs.builder()
+ *                 .clusterAutoUpgrade(ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs.builder()
+ *                     .channel("stable")
+ *                     .enabled(true)
+ *                     .build())
+ *                 .build())
+ *             .controlPlaneLogComponents(            
+ *                 "apiserver",
+ *                 "kcm",
+ *                 "scheduler",
+ *                 "ccm",
+ *                 "controlplane-events",
+ *                 "alb",
+ *                 "ack-goatscaler",
+ *                 "coredns")
+ *             .controlPlaneLogTtl("30")
+ *             .auditLogConfig(ManagedKubernetesAuditLogConfigArgs.builder()
+ *                 .enabled(true)
+ *                 .build())
+ *             .addons(            
+ *                 ManagedKubernetesAddonArgs.builder()
+ *                     .name("managed-metrics-server")
+ *                     .build(),
+ *                 ManagedKubernetesAddonArgs.builder()
+ *                     .name("managed-coredns")
+ *                     .build(),
+ *                 ManagedKubernetesAddonArgs.builder()
+ *                     .name("managed-security-inspector")
+ *                     .build(),
+ *                 ManagedKubernetesAddonArgs.builder()
+ *                     .name("ack-cost-exporter")
+ *                     .build(),
+ *                 ManagedKubernetesAddonArgs.builder()
+ *                     .name("terway-controlplane")
+ *                     .config(serializeJson(
+ *                         jsonObject(
+ *                             jsonProperty("ENITrunking", "true")
+ *                         )))
+ *                     .build(),
+ *                 ManagedKubernetesAddonArgs.builder()
+ *                     .name("terway-eniip")
+ *                     .config(serializeJson(
+ *                         jsonObject(
+ *                             jsonProperty("NetworkPolicy", "false"),
+ *                             jsonProperty("ENITrunking", "true"),
+ *                             jsonProperty("IPVlan", "false")
+ *                         )))
+ *                     .build(),
+ *                 ManagedKubernetesAddonArgs.builder()
+ *                     .name("csi-plugin")
+ *                     .build(),
+ *                 ManagedKubernetesAddonArgs.builder()
+ *                     .name("managed-csiprovisioner")
+ *                     .build(),
+ *                 ManagedKubernetesAddonArgs.builder()
+ *                     .name("storage-operator")
+ *                     .config(serializeJson(
+ *                         jsonObject(
+ *                             jsonProperty("CnfsOssEnable", "false"),
+ *                             jsonProperty("CnfsNasEnable", "false")
+ *                         )))
+ *                     .build(),
+ *                 ManagedKubernetesAddonArgs.builder()
+ *                     .name("loongcollector")
+ *                     .config(serializeJson(
+ *                         jsonObject(
+ *                             jsonProperty("IngressDashboardEnabled", "true")
+ *                         )))
+ *                     .build(),
+ *                 ManagedKubernetesAddonArgs.builder()
+ *                     .name("ack-node-problem-detector")
+ *                     .config(serializeJson(
+ *                         jsonObject(
+ *                             jsonProperty("sls_project_name", "")
+ *                         )))
+ *                     .build(),
+ *                 ManagedKubernetesAddonArgs.builder()
+ *                     .name("nginx-ingress-controller")
+ *                     .disabled(true)
+ *                     .build(),
+ *                 ManagedKubernetesAddonArgs.builder()
+ *                     .name("alb-ingress-controller")
+ *                     .config(serializeJson(
+ *                         jsonObject(
+ *                             jsonProperty("albIngress", jsonObject(
+ *                                 jsonProperty("CreateDefaultALBConfig", false)
+ *                             ))
+ *                         )))
+ *                     .build(),
+ *                 ManagedKubernetesAddonArgs.builder()
+ *                     .name("arms-prometheus")
+ *                     .config(serializeJson(
+ *                         jsonObject(
+ *                             jsonProperty("prometheusMode", "default")
+ *                         )))
+ *                     .build(),
+ *                 ManagedKubernetesAddonArgs.builder()
+ *                     .name("alicloud-monitor-controller")
+ *                     .build(),
+ *                 ManagedKubernetesAddonArgs.builder()
+ *                     .name("managed-aliyun-acr-credential-helper")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -111,6 +448,20 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      */
     public Output<ManagedKubernetesAuditLogConfig> auditLogConfig() {
         return this.auditLogConfig;
+    }
+    /**
+     * Auto mode cluster configuration. See `auto_mode` below.
+     * 
+     */
+    @Export(name="autoMode", refs={ManagedKubernetesAutoMode.class}, tree="[0]")
+    private Output</* @Nullable */ ManagedKubernetesAutoMode> autoMode;
+
+    /**
+     * @return Auto mode cluster configuration. See `auto_mode` below.
+     * 
+     */
+    public Output<Optional<ManagedKubernetesAutoMode>> autoMode() {
+        return Codegen.optional(this.autoMode);
     }
     /**
      * (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
@@ -395,14 +746,14 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return this.loadBalancerSpec;
     }
     /**
-     * The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+     * The cluster maintenance window. Managed node pool will use it. See `maintenance_window` below.
      * 
      */
     @Export(name="maintenanceWindow", refs={ManagedKubernetesMaintenanceWindow.class}, tree="[0]")
     private Output<ManagedKubernetesMaintenanceWindow> maintenanceWindow;
 
     /**
-     * @return The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+     * @return The cluster maintenance window. Managed node pool will use it. See `maintenance_window` below.
      * 
      */
     public Output<ManagedKubernetesMaintenanceWindow> maintenanceWindow() {
@@ -471,14 +822,14 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.nodeCidrMask);
     }
     /**
-     * The cluster automatic operation policy. See `operation_policy` below.
+     * The cluster automatic operation policy, only works when `maintenance_window` is enabled. See `operation_policy` below.
      * 
      */
     @Export(name="operationPolicy", refs={ManagedKubernetesOperationPolicy.class}, tree="[0]")
     private Output<ManagedKubernetesOperationPolicy> operationPolicy;
 
     /**
-     * @return The cluster automatic operation policy. See `operation_policy` below.
+     * @return The cluster automatic operation policy, only works when `maintenance_window` is enabled. See `operation_policy` below.
      * 
      */
     public Output<ManagedKubernetesOperationPolicy> operationPolicy() {

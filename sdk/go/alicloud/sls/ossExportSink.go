@@ -20,6 +20,133 @@ import (
 //
 // > **NOTE:** Available since v1.237.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sls"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s1%s",
+//				Args: []interface{}{
+//					name,
+//					_default.Result,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaulteyHJsO, err := log.NewProject(ctx, "defaulteyHJsO", &log.ProjectArgs{
+//				Description: pulumi.String("terraform-oss-example-910"),
+//				ProjectName: pulumi.String(invokeFormat.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat1, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s1%s",
+//				Args: []interface{}{
+//					name,
+//					_default.Result,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultxeHfXC, err := log.NewStore(ctx, "defaultxeHfXC", &log.StoreArgs{
+//				HotTtl:          pulumi.Int(8),
+//				RetentionPeriod: pulumi.Int(30),
+//				ShardCount:      pulumi.Int(2),
+//				ProjectName:     defaulteyHJsO.ProjectName,
+//				LogstoreName:    pulumi.String(invokeFormat1.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat2, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s1%s",
+//				Args: []interface{}{
+//					name,
+//					_default.Result,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultiwj0xO, err := oss.NewBucket(ctx, "defaultiwj0xO", &oss.BucketArgs{
+//				Bucket:       pulumi.String(invokeFormat2.Result),
+//				StorageClass: pulumi.String("Standard"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"enableTag": false,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = sls.NewOssExportSink(ctx, "default", &sls.OssExportSinkArgs{
+//				Project: defaulteyHJsO.ProjectName,
+//				Configuration: &sls.OssExportSinkConfigurationArgs{
+//					Logstore: defaultxeHfXC.LogstoreName,
+//					RoleArn:  pulumi.String("acs:ram::12345678901234567:role/aliyunlogdefaultrole"),
+//					Sink: &sls.OssExportSinkConfigurationSinkArgs{
+//						Bucket:          defaultiwj0xO.Bucket,
+//						RoleArn:         pulumi.String("acs:ram::12345678901234567:role/aliyunlogdefaultrole"),
+//						TimeZone:        pulumi.String("+0700"),
+//						ContentType:     pulumi.String("json"),
+//						CompressionType: pulumi.String("none"),
+//						ContentDetail:   pulumi.String(json0),
+//						BufferInterval:  pulumi.String("300"),
+//						BufferSize:      pulumi.String("256"),
+//						Endpoint:        pulumi.String("https://oss-cn-shanghai-internal.aliyuncs.com"),
+//					},
+//					FromTime: pulumi.Int(1732165733),
+//					ToTime:   pulumi.Int(1732166733),
+//				},
+//				JobName:     pulumi.String("export-oss-1731404933-00001"),
+//				DisplayName: pulumi.String("exampleterraform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Log Service (SLS) Oss Export Sink can be imported using the id, e.g.

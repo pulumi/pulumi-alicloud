@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:actiontrail/advancedQueryTemplate:AdvancedQueryTemplate":
+		r = &AdvancedQueryTemplate{}
 	case "alicloud:actiontrail/globalEventsStorageRegion:GlobalEventsStorageRegion":
 		r = &GlobalEventsStorageRegion{}
 	case "alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob":
@@ -42,6 +44,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"actiontrail/advancedQueryTemplate",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"actiontrail/globalEventsStorageRegion",

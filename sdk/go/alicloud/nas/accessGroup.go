@@ -73,7 +73,7 @@ type AccessGroup struct {
 	AccessGroupName pulumi.StringOutput `pulumi:"accessGroupName"`
 	// Permission group types, including Vpc.
 	AccessGroupType pulumi.StringOutput `pulumi:"accessGroupType"`
-	// Creation time.
+	// (Available since v1.218.0) Creation time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Permission group description information.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -82,11 +82,13 @@ type AccessGroup struct {
 	// - extreme: extreme NAS
 	//   The following arguments will be discarded. Please use new fields as soon as possible:
 	FileSystemType pulumi.StringPtrOutput `pulumi:"fileSystemType"`
-	// . Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
+	// Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// . Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
+	// (Available since v1.256.0) The region ID.
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
+	// Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
 	//
 	// Deprecated: Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -126,7 +128,7 @@ type accessGroupState struct {
 	AccessGroupName *string `pulumi:"accessGroupName"`
 	// Permission group types, including Vpc.
 	AccessGroupType *string `pulumi:"accessGroupType"`
-	// Creation time.
+	// (Available since v1.218.0) Creation time.
 	CreateTime *string `pulumi:"createTime"`
 	// Permission group description information.
 	Description *string `pulumi:"description"`
@@ -135,11 +137,13 @@ type accessGroupState struct {
 	// - extreme: extreme NAS
 	//   The following arguments will be discarded. Please use new fields as soon as possible:
 	FileSystemType *string `pulumi:"fileSystemType"`
-	// . Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
+	// Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.
 	Name *string `pulumi:"name"`
-	// . Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
+	// (Available since v1.256.0) The region ID.
+	RegionId *string `pulumi:"regionId"`
+	// Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
 	//
 	// Deprecated: Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.
 	Type *string `pulumi:"type"`
@@ -150,7 +154,7 @@ type AccessGroupState struct {
 	AccessGroupName pulumi.StringPtrInput
 	// Permission group types, including Vpc.
 	AccessGroupType pulumi.StringPtrInput
-	// Creation time.
+	// (Available since v1.218.0) Creation time.
 	CreateTime pulumi.StringPtrInput
 	// Permission group description information.
 	Description pulumi.StringPtrInput
@@ -159,11 +163,13 @@ type AccessGroupState struct {
 	// - extreme: extreme NAS
 	//   The following arguments will be discarded. Please use new fields as soon as possible:
 	FileSystemType pulumi.StringPtrInput
-	// . Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
+	// Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.
 	Name pulumi.StringPtrInput
-	// . Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
+	// (Available since v1.256.0) The region ID.
+	RegionId pulumi.StringPtrInput
+	// Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
 	//
 	// Deprecated: Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.
 	Type pulumi.StringPtrInput
@@ -185,11 +191,11 @@ type accessGroupArgs struct {
 	// - extreme: extreme NAS
 	//   The following arguments will be discarded. Please use new fields as soon as possible:
 	FileSystemType *string `pulumi:"fileSystemType"`
-	// . Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
+	// Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.
 	Name *string `pulumi:"name"`
-	// . Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
+	// Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
 	//
 	// Deprecated: Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.
 	Type *string `pulumi:"type"`
@@ -208,11 +214,11 @@ type AccessGroupArgs struct {
 	// - extreme: extreme NAS
 	//   The following arguments will be discarded. Please use new fields as soon as possible:
 	FileSystemType pulumi.StringPtrInput
-	// . Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
+	// Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.
 	Name pulumi.StringPtrInput
-	// . Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
+	// Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
 	//
 	// Deprecated: Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.
 	Type pulumi.StringPtrInput
@@ -315,7 +321,7 @@ func (o AccessGroupOutput) AccessGroupType() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessGroup) pulumi.StringOutput { return v.AccessGroupType }).(pulumi.StringOutput)
 }
 
-// Creation time.
+// (Available since v1.218.0) Creation time.
 func (o AccessGroupOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessGroup) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -333,14 +339,19 @@ func (o AccessGroupOutput) FileSystemType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessGroup) pulumi.StringPtrOutput { return v.FileSystemType }).(pulumi.StringPtrOutput)
 }
 
-// . Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
+// Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
 //
 // Deprecated: Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.
 func (o AccessGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// . Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
+// (Available since v1.256.0) The region ID.
+func (o AccessGroupOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessGroup) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
 //
 // Deprecated: Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.
 func (o AccessGroupOutput) Type() pulumi.StringOutput {

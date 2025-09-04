@@ -18,7 +18,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Threat Detection Oss Scan Config resource. Oss detection configuration.
+ * Provides a Threat Detection Oss Scan Config resource.
+ * 
+ * Oss detection configuration.
  * 
  * For information about Threat Detection Oss Scan Config and how to use it, see [What is Oss Scan Config](https://www.alibabacloud.com/help/zh/security-center/developer-reference/api-sas-2018-12-03-createossscanconfig/).
  * 
@@ -36,8 +38,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.integer;
- * import com.pulumi.random.integerArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.threatdetection.OssScanConfig;
@@ -127,126 +129,182 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:threatdetection/ossScanConfig:OssScanConfig")
 public class OssScanConfig extends com.pulumi.resources.CustomResource {
     /**
-     * Match all prefixes.
+     * Indicates whether the prefixes of all objects are matched.
      * 
      */
     @Export(name="allKeyPrefix", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allKeyPrefix;
 
     /**
-     * @return Match all prefixes.
+     * @return Indicates whether the prefixes of all objects are matched.
      * 
      */
     public Output<Boolean> allKeyPrefix() {
         return this.allKeyPrefix;
     }
     /**
-     * Bucket List.
+     * The names of the buckets.
      * 
      */
     @Export(name="bucketNameLists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> bucketNameLists;
 
     /**
-     * @return Bucket List.
+     * @return The names of the buckets.
      * 
      */
     public Output<List<String>> bucketNameLists() {
         return this.bucketNameLists;
     }
     /**
-     * Enable configuration.
+     * The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+     * 
+     */
+    @Export(name="decompressMaxFileCount", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> decompressMaxFileCount;
+
+    /**
+     * @return The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+     * 
+     */
+    public Output<Optional<Integer>> decompressMaxFileCount() {
+        return Codegen.optional(this.decompressMaxFileCount);
+    }
+    /**
+     * The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+     * 
+     */
+    @Export(name="decompressMaxLayer", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> decompressMaxLayer;
+
+    /**
+     * @return The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+     * 
+     */
+    public Output<Optional<Integer>> decompressMaxLayer() {
+        return Codegen.optional(this.decompressMaxLayer);
+    }
+    /**
+     * The decryption methods.
+     * 
+     */
+    @Export(name="decryptionLists", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> decryptionLists;
+
+    /**
+     * @return The decryption methods.
+     * 
+     */
+    public Output<Optional<List<String>>> decryptionLists() {
+        return Codegen.optional(this.decryptionLists);
+    }
+    /**
+     * Indicates whether the check policy is enabled. Valid values:
      * 
      */
     @Export(name="enable", refs={Integer.class}, tree="[0]")
     private Output<Integer> enable;
 
     /**
-     * @return Enable configuration.
+     * @return Indicates whether the check policy is enabled. Valid values:
      * 
      */
     public Output<Integer> enable() {
         return this.enable;
     }
     /**
-     * End time, hours, minutes and seconds.
+     * The end time of the check. The time is in the HH:mm:ss format.
      * 
      */
     @Export(name="endTime", refs={String.class}, tree="[0]")
     private Output<String> endTime;
 
     /**
-     * @return End time, hours, minutes and seconds.
+     * @return The end time of the check. The time is in the HH:mm:ss format.
      * 
      */
     public Output<String> endTime() {
         return this.endTime;
     }
     /**
-     * File prefix list.
+     * The prefixes of the objects.
      * 
      */
     @Export(name="keyPrefixLists", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> keyPrefixLists;
 
     /**
-     * @return File prefix list.
+     * @return The prefixes of the objects.
      * 
      */
     public Output<Optional<List<String>>> keyPrefixLists() {
         return Codegen.optional(this.keyPrefixLists);
     }
     /**
-     * File Suffix List.
+     * The suffixes of the objects that are checked.
      * 
      */
     @Export(name="keySuffixLists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> keySuffixLists;
 
     /**
-     * @return File Suffix List.
+     * @return The suffixes of the objects that are checked.
      * 
      */
     public Output<List<String>> keySuffixLists() {
         return this.keySuffixLists;
     }
     /**
-     * Configuration Name.
+     * The timestamp when the object was last modified. The time must be later than the timestamp that you specify. Unit: milliseconds.
+     * 
+     */
+    @Export(name="lastModifiedStartTime", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> lastModifiedStartTime;
+
+    /**
+     * @return The timestamp when the object was last modified. The time must be later than the timestamp that you specify. Unit: milliseconds.
+     * 
+     */
+    public Output<Optional<Integer>> lastModifiedStartTime() {
+        return Codegen.optional(this.lastModifiedStartTime);
+    }
+    /**
+     * The policy name.
      * 
      */
     @Export(name="ossScanConfigName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ossScanConfigName;
 
     /**
-     * @return Configuration Name.
+     * @return The policy name.
      * 
      */
     public Output<Optional<String>> ossScanConfigName() {
         return Codegen.optional(this.ossScanConfigName);
     }
     /**
-     * Scan cycle.
+     * The days when the check is performed. The value indicates the days of the week.
      * 
      */
     @Export(name="scanDayLists", refs={List.class,Integer.class}, tree="[0,1]")
     private Output<List<Integer>> scanDayLists;
 
     /**
-     * @return Scan cycle.
+     * @return The days when the check is performed. The value indicates the days of the week.
      * 
      */
     public Output<List<Integer>> scanDayLists() {
         return this.scanDayLists;
     }
     /**
-     * Start time, hours, minutes and seconds.
+     * The start time of the check. The time is in the HH:mm:ss format.
      * 
      */
     @Export(name="startTime", refs={String.class}, tree="[0]")
     private Output<String> startTime;
 
     /**
-     * @return Start time, hours, minutes and seconds.
+     * @return The start time of the check. The time is in the HH:mm:ss format.
      * 
      */
     public Output<String> startTime() {

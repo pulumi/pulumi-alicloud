@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source Generates a RAM policy document of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available since v1.184.0+.
+ * > **NOTE:** Available since v1.184.0.
  *
  * ## Example Usage
  *
@@ -226,7 +226,7 @@ export interface GetPolicyDocumentResult {
 /**
  * This data source Generates a RAM policy document of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available since v1.184.0+.
+ * > **NOTE:** Available since v1.184.0.
  *
  * ## Example Usage
  *

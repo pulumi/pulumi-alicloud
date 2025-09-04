@@ -556,6 +556,1134 @@ func (o GetServiceHybridDoubleWritesHybridDoubleWriteArrayOutput) Index(i pulumi
 	}).(GetServiceHybridDoubleWritesHybridDoubleWriteOutput)
 }
 
+type GetServiceMetricAlarmRulesRule struct {
+	// The trigger conditions for multiple metrics.
+	CompositeExpression GetServiceMetricAlarmRulesRuleCompositeExpression `pulumi:"compositeExpression"`
+	// The alert contact group.
+	ContactGroups string `pulumi:"contactGroups"`
+	// The monitoring dimensions of the specified resource.
+	Dimensions string `pulumi:"dimensions"`
+	// The time period during which the alert rule is effective.
+	EffectiveInterval string `pulumi:"effectiveInterval"`
+	// The subject of the alert notification email.
+	EmailSubject string `pulumi:"emailSubject"`
+	// The conditions for triggering different levels of alerts.
+	Escalations GetServiceMetricAlarmRulesRuleEscalations `pulumi:"escalations"`
+	// The ID of the alert rule.
+	Id string `pulumi:"id"`
+	// The tags of the alert rule.
+	Labels []GetServiceMetricAlarmRulesRuleLabel `pulumi:"labels"`
+	// The name of the metric.
+	MetricName string `pulumi:"metricName"`
+	// The namespace of the cloud service.
+	Namespace string `pulumi:"namespace"`
+	// The method that is used to handle alerts when no monitoring data is found.
+	NoDataPolicy string `pulumi:"noDataPolicy"`
+	// The time period during which the alert rule is ineffective.
+	NoEffectiveInterval string `pulumi:"noEffectiveInterval"`
+	// The aggregation period of the metric.
+	Period string `pulumi:"period"`
+	// The Prometheus alerts.
+	Prometheus GetServiceMetricAlarmRulesRulePrometheus `pulumi:"prometheus"`
+	// The resources that are associated with the alert rule.
+	Resources string `pulumi:"resources"`
+	// The name of the alert rule.
+	RuleName string `pulumi:"ruleName"`
+	// The mute period during which new alert notifications are not sent even if the trigger conditions are met.
+	SilenceTime string `pulumi:"silenceTime"`
+	// The type of the alert rule.
+	SourceType string `pulumi:"sourceType"`
+	// Specifies whether to query enabled or disabled alert rules. Valid values: `true`, `false`.
+	Status bool `pulumi:"status"`
+	// The callback URL.
+	Webhook string `pulumi:"webhook"`
+}
+
+// GetServiceMetricAlarmRulesRuleInput is an input type that accepts GetServiceMetricAlarmRulesRuleArgs and GetServiceMetricAlarmRulesRuleOutput values.
+// You can construct a concrete instance of `GetServiceMetricAlarmRulesRuleInput` via:
+//
+//	GetServiceMetricAlarmRulesRuleArgs{...}
+type GetServiceMetricAlarmRulesRuleInput interface {
+	pulumi.Input
+
+	ToGetServiceMetricAlarmRulesRuleOutput() GetServiceMetricAlarmRulesRuleOutput
+	ToGetServiceMetricAlarmRulesRuleOutputWithContext(context.Context) GetServiceMetricAlarmRulesRuleOutput
+}
+
+type GetServiceMetricAlarmRulesRuleArgs struct {
+	// The trigger conditions for multiple metrics.
+	CompositeExpression GetServiceMetricAlarmRulesRuleCompositeExpressionInput `pulumi:"compositeExpression"`
+	// The alert contact group.
+	ContactGroups pulumi.StringInput `pulumi:"contactGroups"`
+	// The monitoring dimensions of the specified resource.
+	Dimensions pulumi.StringInput `pulumi:"dimensions"`
+	// The time period during which the alert rule is effective.
+	EffectiveInterval pulumi.StringInput `pulumi:"effectiveInterval"`
+	// The subject of the alert notification email.
+	EmailSubject pulumi.StringInput `pulumi:"emailSubject"`
+	// The conditions for triggering different levels of alerts.
+	Escalations GetServiceMetricAlarmRulesRuleEscalationsInput `pulumi:"escalations"`
+	// The ID of the alert rule.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The tags of the alert rule.
+	Labels GetServiceMetricAlarmRulesRuleLabelArrayInput `pulumi:"labels"`
+	// The name of the metric.
+	MetricName pulumi.StringInput `pulumi:"metricName"`
+	// The namespace of the cloud service.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// The method that is used to handle alerts when no monitoring data is found.
+	NoDataPolicy pulumi.StringInput `pulumi:"noDataPolicy"`
+	// The time period during which the alert rule is ineffective.
+	NoEffectiveInterval pulumi.StringInput `pulumi:"noEffectiveInterval"`
+	// The aggregation period of the metric.
+	Period pulumi.StringInput `pulumi:"period"`
+	// The Prometheus alerts.
+	Prometheus GetServiceMetricAlarmRulesRulePrometheusInput `pulumi:"prometheus"`
+	// The resources that are associated with the alert rule.
+	Resources pulumi.StringInput `pulumi:"resources"`
+	// The name of the alert rule.
+	RuleName pulumi.StringInput `pulumi:"ruleName"`
+	// The mute period during which new alert notifications are not sent even if the trigger conditions are met.
+	SilenceTime pulumi.StringInput `pulumi:"silenceTime"`
+	// The type of the alert rule.
+	SourceType pulumi.StringInput `pulumi:"sourceType"`
+	// Specifies whether to query enabled or disabled alert rules. Valid values: `true`, `false`.
+	Status pulumi.BoolInput `pulumi:"status"`
+	// The callback URL.
+	Webhook pulumi.StringInput `pulumi:"webhook"`
+}
+
+func (GetServiceMetricAlarmRulesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceMetricAlarmRulesRule)(nil)).Elem()
+}
+
+func (i GetServiceMetricAlarmRulesRuleArgs) ToGetServiceMetricAlarmRulesRuleOutput() GetServiceMetricAlarmRulesRuleOutput {
+	return i.ToGetServiceMetricAlarmRulesRuleOutputWithContext(context.Background())
+}
+
+func (i GetServiceMetricAlarmRulesRuleArgs) ToGetServiceMetricAlarmRulesRuleOutputWithContext(ctx context.Context) GetServiceMetricAlarmRulesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMetricAlarmRulesRuleOutput)
+}
+
+// GetServiceMetricAlarmRulesRuleArrayInput is an input type that accepts GetServiceMetricAlarmRulesRuleArray and GetServiceMetricAlarmRulesRuleArrayOutput values.
+// You can construct a concrete instance of `GetServiceMetricAlarmRulesRuleArrayInput` via:
+//
+//	GetServiceMetricAlarmRulesRuleArray{ GetServiceMetricAlarmRulesRuleArgs{...} }
+type GetServiceMetricAlarmRulesRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceMetricAlarmRulesRuleArrayOutput() GetServiceMetricAlarmRulesRuleArrayOutput
+	ToGetServiceMetricAlarmRulesRuleArrayOutputWithContext(context.Context) GetServiceMetricAlarmRulesRuleArrayOutput
+}
+
+type GetServiceMetricAlarmRulesRuleArray []GetServiceMetricAlarmRulesRuleInput
+
+func (GetServiceMetricAlarmRulesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceMetricAlarmRulesRule)(nil)).Elem()
+}
+
+func (i GetServiceMetricAlarmRulesRuleArray) ToGetServiceMetricAlarmRulesRuleArrayOutput() GetServiceMetricAlarmRulesRuleArrayOutput {
+	return i.ToGetServiceMetricAlarmRulesRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceMetricAlarmRulesRuleArray) ToGetServiceMetricAlarmRulesRuleArrayOutputWithContext(ctx context.Context) GetServiceMetricAlarmRulesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMetricAlarmRulesRuleArrayOutput)
+}
+
+type GetServiceMetricAlarmRulesRuleOutput struct{ *pulumi.OutputState }
+
+func (GetServiceMetricAlarmRulesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceMetricAlarmRulesRule)(nil)).Elem()
+}
+
+func (o GetServiceMetricAlarmRulesRuleOutput) ToGetServiceMetricAlarmRulesRuleOutput() GetServiceMetricAlarmRulesRuleOutput {
+	return o
+}
+
+func (o GetServiceMetricAlarmRulesRuleOutput) ToGetServiceMetricAlarmRulesRuleOutputWithContext(ctx context.Context) GetServiceMetricAlarmRulesRuleOutput {
+	return o
+}
+
+// The trigger conditions for multiple metrics.
+func (o GetServiceMetricAlarmRulesRuleOutput) CompositeExpression() GetServiceMetricAlarmRulesRuleCompositeExpressionOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRule) GetServiceMetricAlarmRulesRuleCompositeExpression {
+		return v.CompositeExpression
+	}).(GetServiceMetricAlarmRulesRuleCompositeExpressionOutput)
+}
+
+// The alert contact group.
+func (o GetServiceMetricAlarmRulesRuleOutput) ContactGroups() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRule) string { return v.ContactGroups }).(pulumi.StringOutput)
+}
+
+// The monitoring dimensions of the specified resource.
+func (o GetServiceMetricAlarmRulesRuleOutput) Dimensions() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRule) string { return v.Dimensions }).(pulumi.StringOutput)
+}
+
+// The time period during which the alert rule is effective.
+func (o GetServiceMetricAlarmRulesRuleOutput) EffectiveInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRule) string { return v.EffectiveInterval }).(pulumi.StringOutput)
+}
+
+// The subject of the alert notification email.
+func (o GetServiceMetricAlarmRulesRuleOutput) EmailSubject() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRule) string { return v.EmailSubject }).(pulumi.StringOutput)
+}
+
+// The conditions for triggering different levels of alerts.
+func (o GetServiceMetricAlarmRulesRuleOutput) Escalations() GetServiceMetricAlarmRulesRuleEscalationsOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRule) GetServiceMetricAlarmRulesRuleEscalations { return v.Escalations }).(GetServiceMetricAlarmRulesRuleEscalationsOutput)
+}
+
+// The ID of the alert rule.
+func (o GetServiceMetricAlarmRulesRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The tags of the alert rule.
+func (o GetServiceMetricAlarmRulesRuleOutput) Labels() GetServiceMetricAlarmRulesRuleLabelArrayOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRule) []GetServiceMetricAlarmRulesRuleLabel { return v.Labels }).(GetServiceMetricAlarmRulesRuleLabelArrayOutput)
+}
+
+// The name of the metric.
+func (o GetServiceMetricAlarmRulesRuleOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRule) string { return v.MetricName }).(pulumi.StringOutput)
+}
+
+// The namespace of the cloud service.
+func (o GetServiceMetricAlarmRulesRuleOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRule) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// The method that is used to handle alerts when no monitoring data is found.
+func (o GetServiceMetricAlarmRulesRuleOutput) NoDataPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRule) string { return v.NoDataPolicy }).(pulumi.StringOutput)
+}
+
+// The time period during which the alert rule is ineffective.
+func (o GetServiceMetricAlarmRulesRuleOutput) NoEffectiveInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRule) string { return v.NoEffectiveInterval }).(pulumi.StringOutput)
+}
+
+// The aggregation period of the metric.
+func (o GetServiceMetricAlarmRulesRuleOutput) Period() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRule) string { return v.Period }).(pulumi.StringOutput)
+}
+
+// The Prometheus alerts.
+func (o GetServiceMetricAlarmRulesRuleOutput) Prometheus() GetServiceMetricAlarmRulesRulePrometheusOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRule) GetServiceMetricAlarmRulesRulePrometheus { return v.Prometheus }).(GetServiceMetricAlarmRulesRulePrometheusOutput)
+}
+
+// The resources that are associated with the alert rule.
+func (o GetServiceMetricAlarmRulesRuleOutput) Resources() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRule) string { return v.Resources }).(pulumi.StringOutput)
+}
+
+// The name of the alert rule.
+func (o GetServiceMetricAlarmRulesRuleOutput) RuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRule) string { return v.RuleName }).(pulumi.StringOutput)
+}
+
+// The mute period during which new alert notifications are not sent even if the trigger conditions are met.
+func (o GetServiceMetricAlarmRulesRuleOutput) SilenceTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRule) string { return v.SilenceTime }).(pulumi.StringOutput)
+}
+
+// The type of the alert rule.
+func (o GetServiceMetricAlarmRulesRuleOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRule) string { return v.SourceType }).(pulumi.StringOutput)
+}
+
+// Specifies whether to query enabled or disabled alert rules. Valid values: `true`, `false`.
+func (o GetServiceMetricAlarmRulesRuleOutput) Status() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRule) bool { return v.Status }).(pulumi.BoolOutput)
+}
+
+// The callback URL.
+func (o GetServiceMetricAlarmRulesRuleOutput) Webhook() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRule) string { return v.Webhook }).(pulumi.StringOutput)
+}
+
+type GetServiceMetricAlarmRulesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceMetricAlarmRulesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceMetricAlarmRulesRule)(nil)).Elem()
+}
+
+func (o GetServiceMetricAlarmRulesRuleArrayOutput) ToGetServiceMetricAlarmRulesRuleArrayOutput() GetServiceMetricAlarmRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetServiceMetricAlarmRulesRuleArrayOutput) ToGetServiceMetricAlarmRulesRuleArrayOutputWithContext(ctx context.Context) GetServiceMetricAlarmRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetServiceMetricAlarmRulesRuleArrayOutput) Index(i pulumi.IntInput) GetServiceMetricAlarmRulesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceMetricAlarmRulesRule {
+		return vs[0].([]GetServiceMetricAlarmRulesRule)[vs[1].(int)]
+	}).(GetServiceMetricAlarmRulesRuleOutput)
+}
+
+type GetServiceMetricAlarmRulesRuleCompositeExpression struct {
+	// The relationship between the trigger conditions for multiple metrics.
+	ExpressionListJoin string `pulumi:"expressionListJoin"`
+	// The trigger conditions that are created in standard mode.
+	ExpressionLists []GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList `pulumi:"expressionLists"`
+	// The trigger conditions that are created by using expressions.
+	ExpressionRaw string `pulumi:"expressionRaw"`
+	// The alert level.
+	Level string `pulumi:"level"`
+	// The number of consecutive triggers.
+	Times int `pulumi:"times"`
+}
+
+// GetServiceMetricAlarmRulesRuleCompositeExpressionInput is an input type that accepts GetServiceMetricAlarmRulesRuleCompositeExpressionArgs and GetServiceMetricAlarmRulesRuleCompositeExpressionOutput values.
+// You can construct a concrete instance of `GetServiceMetricAlarmRulesRuleCompositeExpressionInput` via:
+//
+//	GetServiceMetricAlarmRulesRuleCompositeExpressionArgs{...}
+type GetServiceMetricAlarmRulesRuleCompositeExpressionInput interface {
+	pulumi.Input
+
+	ToGetServiceMetricAlarmRulesRuleCompositeExpressionOutput() GetServiceMetricAlarmRulesRuleCompositeExpressionOutput
+	ToGetServiceMetricAlarmRulesRuleCompositeExpressionOutputWithContext(context.Context) GetServiceMetricAlarmRulesRuleCompositeExpressionOutput
+}
+
+type GetServiceMetricAlarmRulesRuleCompositeExpressionArgs struct {
+	// The relationship between the trigger conditions for multiple metrics.
+	ExpressionListJoin pulumi.StringInput `pulumi:"expressionListJoin"`
+	// The trigger conditions that are created in standard mode.
+	ExpressionLists GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArrayInput `pulumi:"expressionLists"`
+	// The trigger conditions that are created by using expressions.
+	ExpressionRaw pulumi.StringInput `pulumi:"expressionRaw"`
+	// The alert level.
+	Level pulumi.StringInput `pulumi:"level"`
+	// The number of consecutive triggers.
+	Times pulumi.IntInput `pulumi:"times"`
+}
+
+func (GetServiceMetricAlarmRulesRuleCompositeExpressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceMetricAlarmRulesRuleCompositeExpression)(nil)).Elem()
+}
+
+func (i GetServiceMetricAlarmRulesRuleCompositeExpressionArgs) ToGetServiceMetricAlarmRulesRuleCompositeExpressionOutput() GetServiceMetricAlarmRulesRuleCompositeExpressionOutput {
+	return i.ToGetServiceMetricAlarmRulesRuleCompositeExpressionOutputWithContext(context.Background())
+}
+
+func (i GetServiceMetricAlarmRulesRuleCompositeExpressionArgs) ToGetServiceMetricAlarmRulesRuleCompositeExpressionOutputWithContext(ctx context.Context) GetServiceMetricAlarmRulesRuleCompositeExpressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMetricAlarmRulesRuleCompositeExpressionOutput)
+}
+
+type GetServiceMetricAlarmRulesRuleCompositeExpressionOutput struct{ *pulumi.OutputState }
+
+func (GetServiceMetricAlarmRulesRuleCompositeExpressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceMetricAlarmRulesRuleCompositeExpression)(nil)).Elem()
+}
+
+func (o GetServiceMetricAlarmRulesRuleCompositeExpressionOutput) ToGetServiceMetricAlarmRulesRuleCompositeExpressionOutput() GetServiceMetricAlarmRulesRuleCompositeExpressionOutput {
+	return o
+}
+
+func (o GetServiceMetricAlarmRulesRuleCompositeExpressionOutput) ToGetServiceMetricAlarmRulesRuleCompositeExpressionOutputWithContext(ctx context.Context) GetServiceMetricAlarmRulesRuleCompositeExpressionOutput {
+	return o
+}
+
+// The relationship between the trigger conditions for multiple metrics.
+func (o GetServiceMetricAlarmRulesRuleCompositeExpressionOutput) ExpressionListJoin() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRuleCompositeExpression) string { return v.ExpressionListJoin }).(pulumi.StringOutput)
+}
+
+// The trigger conditions that are created in standard mode.
+func (o GetServiceMetricAlarmRulesRuleCompositeExpressionOutput) ExpressionLists() GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArrayOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRuleCompositeExpression) []GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList {
+		return v.ExpressionLists
+	}).(GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArrayOutput)
+}
+
+// The trigger conditions that are created by using expressions.
+func (o GetServiceMetricAlarmRulesRuleCompositeExpressionOutput) ExpressionRaw() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRuleCompositeExpression) string { return v.ExpressionRaw }).(pulumi.StringOutput)
+}
+
+// The alert level.
+func (o GetServiceMetricAlarmRulesRuleCompositeExpressionOutput) Level() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRuleCompositeExpression) string { return v.Level }).(pulumi.StringOutput)
+}
+
+// The number of consecutive triggers.
+func (o GetServiceMetricAlarmRulesRuleCompositeExpressionOutput) Times() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRuleCompositeExpression) int { return v.Times }).(pulumi.IntOutput)
+}
+
+type GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList struct {
+	// The comparison operator that is used to compare the metric value with the threshold.
+	ComparisonOperator string `pulumi:"comparisonOperator"`
+	// The name of the metric.
+	MetricName string `pulumi:"metricName"`
+	// The aggregation period of the metric.
+	Period int `pulumi:"period"`
+	// The statistical methods for Warn-level alerts.
+	Statistics string `pulumi:"statistics"`
+	// The threshold for Warn-level alerts.
+	Threshold string `pulumi:"threshold"`
+}
+
+// GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListInput is an input type that accepts GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArgs and GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListOutput values.
+// You can construct a concrete instance of `GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListInput` via:
+//
+//	GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArgs{...}
+type GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListInput interface {
+	pulumi.Input
+
+	ToGetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListOutput() GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListOutput
+	ToGetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListOutputWithContext(context.Context) GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListOutput
+}
+
+type GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArgs struct {
+	// The comparison operator that is used to compare the metric value with the threshold.
+	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
+	// The name of the metric.
+	MetricName pulumi.StringInput `pulumi:"metricName"`
+	// The aggregation period of the metric.
+	Period pulumi.IntInput `pulumi:"period"`
+	// The statistical methods for Warn-level alerts.
+	Statistics pulumi.StringInput `pulumi:"statistics"`
+	// The threshold for Warn-level alerts.
+	Threshold pulumi.StringInput `pulumi:"threshold"`
+}
+
+func (GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList)(nil)).Elem()
+}
+
+func (i GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArgs) ToGetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListOutput() GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListOutput {
+	return i.ToGetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListOutputWithContext(context.Background())
+}
+
+func (i GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArgs) ToGetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListOutputWithContext(ctx context.Context) GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListOutput)
+}
+
+// GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArrayInput is an input type that accepts GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArray and GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArrayOutput values.
+// You can construct a concrete instance of `GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArrayInput` via:
+//
+//	GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArray{ GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArgs{...} }
+type GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArrayOutput() GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArrayOutput
+	ToGetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArrayOutputWithContext(context.Context) GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArrayOutput
+}
+
+type GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArray []GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListInput
+
+func (GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList)(nil)).Elem()
+}
+
+func (i GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArray) ToGetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArrayOutput() GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArrayOutput {
+	return i.ToGetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArray) ToGetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArrayOutputWithContext(ctx context.Context) GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArrayOutput)
+}
+
+type GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListOutput struct{ *pulumi.OutputState }
+
+func (GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList)(nil)).Elem()
+}
+
+func (o GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListOutput) ToGetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListOutput() GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListOutput {
+	return o
+}
+
+func (o GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListOutput) ToGetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListOutputWithContext(ctx context.Context) GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListOutput {
+	return o
+}
+
+// The comparison operator that is used to compare the metric value with the threshold.
+func (o GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListOutput) ComparisonOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList) string {
+		return v.ComparisonOperator
+	}).(pulumi.StringOutput)
+}
+
+// The name of the metric.
+func (o GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList) string { return v.MetricName }).(pulumi.StringOutput)
+}
+
+// The aggregation period of the metric.
+func (o GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListOutput) Period() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList) int { return v.Period }).(pulumi.IntOutput)
+}
+
+// The statistical methods for Warn-level alerts.
+func (o GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListOutput) Statistics() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList) string { return v.Statistics }).(pulumi.StringOutput)
+}
+
+// The threshold for Warn-level alerts.
+func (o GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListOutput) Threshold() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList) string { return v.Threshold }).(pulumi.StringOutput)
+}
+
+type GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList)(nil)).Elem()
+}
+
+func (o GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArrayOutput) ToGetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArrayOutput() GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArrayOutput {
+	return o
+}
+
+func (o GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArrayOutput) ToGetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArrayOutputWithContext(ctx context.Context) GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArrayOutput {
+	return o
+}
+
+func (o GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArrayOutput) Index(i pulumi.IntInput) GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList {
+		return vs[0].([]GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList)[vs[1].(int)]
+	}).(GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListOutput)
+}
+
+type GetServiceMetricAlarmRulesRuleEscalations struct {
+	// The conditions for triggering Critical-level alerts.
+	Critical GetServiceMetricAlarmRulesRuleEscalationsCritical `pulumi:"critical"`
+	// The conditions for triggering Info-level alerts.
+	Info GetServiceMetricAlarmRulesRuleEscalationsInfo `pulumi:"info"`
+	// The conditions for triggering Warn-level alerts.
+	Warn GetServiceMetricAlarmRulesRuleEscalationsWarn `pulumi:"warn"`
+}
+
+// GetServiceMetricAlarmRulesRuleEscalationsInput is an input type that accepts GetServiceMetricAlarmRulesRuleEscalationsArgs and GetServiceMetricAlarmRulesRuleEscalationsOutput values.
+// You can construct a concrete instance of `GetServiceMetricAlarmRulesRuleEscalationsInput` via:
+//
+//	GetServiceMetricAlarmRulesRuleEscalationsArgs{...}
+type GetServiceMetricAlarmRulesRuleEscalationsInput interface {
+	pulumi.Input
+
+	ToGetServiceMetricAlarmRulesRuleEscalationsOutput() GetServiceMetricAlarmRulesRuleEscalationsOutput
+	ToGetServiceMetricAlarmRulesRuleEscalationsOutputWithContext(context.Context) GetServiceMetricAlarmRulesRuleEscalationsOutput
+}
+
+type GetServiceMetricAlarmRulesRuleEscalationsArgs struct {
+	// The conditions for triggering Critical-level alerts.
+	Critical GetServiceMetricAlarmRulesRuleEscalationsCriticalInput `pulumi:"critical"`
+	// The conditions for triggering Info-level alerts.
+	Info GetServiceMetricAlarmRulesRuleEscalationsInfoInput `pulumi:"info"`
+	// The conditions for triggering Warn-level alerts.
+	Warn GetServiceMetricAlarmRulesRuleEscalationsWarnInput `pulumi:"warn"`
+}
+
+func (GetServiceMetricAlarmRulesRuleEscalationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceMetricAlarmRulesRuleEscalations)(nil)).Elem()
+}
+
+func (i GetServiceMetricAlarmRulesRuleEscalationsArgs) ToGetServiceMetricAlarmRulesRuleEscalationsOutput() GetServiceMetricAlarmRulesRuleEscalationsOutput {
+	return i.ToGetServiceMetricAlarmRulesRuleEscalationsOutputWithContext(context.Background())
+}
+
+func (i GetServiceMetricAlarmRulesRuleEscalationsArgs) ToGetServiceMetricAlarmRulesRuleEscalationsOutputWithContext(ctx context.Context) GetServiceMetricAlarmRulesRuleEscalationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMetricAlarmRulesRuleEscalationsOutput)
+}
+
+type GetServiceMetricAlarmRulesRuleEscalationsOutput struct{ *pulumi.OutputState }
+
+func (GetServiceMetricAlarmRulesRuleEscalationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceMetricAlarmRulesRuleEscalations)(nil)).Elem()
+}
+
+func (o GetServiceMetricAlarmRulesRuleEscalationsOutput) ToGetServiceMetricAlarmRulesRuleEscalationsOutput() GetServiceMetricAlarmRulesRuleEscalationsOutput {
+	return o
+}
+
+func (o GetServiceMetricAlarmRulesRuleEscalationsOutput) ToGetServiceMetricAlarmRulesRuleEscalationsOutputWithContext(ctx context.Context) GetServiceMetricAlarmRulesRuleEscalationsOutput {
+	return o
+}
+
+// The conditions for triggering Critical-level alerts.
+func (o GetServiceMetricAlarmRulesRuleEscalationsOutput) Critical() GetServiceMetricAlarmRulesRuleEscalationsCriticalOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRuleEscalations) GetServiceMetricAlarmRulesRuleEscalationsCritical {
+		return v.Critical
+	}).(GetServiceMetricAlarmRulesRuleEscalationsCriticalOutput)
+}
+
+// The conditions for triggering Info-level alerts.
+func (o GetServiceMetricAlarmRulesRuleEscalationsOutput) Info() GetServiceMetricAlarmRulesRuleEscalationsInfoOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRuleEscalations) GetServiceMetricAlarmRulesRuleEscalationsInfo {
+		return v.Info
+	}).(GetServiceMetricAlarmRulesRuleEscalationsInfoOutput)
+}
+
+// The conditions for triggering Warn-level alerts.
+func (o GetServiceMetricAlarmRulesRuleEscalationsOutput) Warn() GetServiceMetricAlarmRulesRuleEscalationsWarnOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRuleEscalations) GetServiceMetricAlarmRulesRuleEscalationsWarn {
+		return v.Warn
+	}).(GetServiceMetricAlarmRulesRuleEscalationsWarnOutput)
+}
+
+type GetServiceMetricAlarmRulesRuleEscalationsCritical struct {
+	// The comparison operator that is used to compare the metric value with the threshold.
+	ComparisonOperator string `pulumi:"comparisonOperator"`
+	// The additional conditions for triggering Warn-level alerts.
+	PreCondition string `pulumi:"preCondition"`
+	// The statistical methods for Warn-level alerts.
+	Statistics string `pulumi:"statistics"`
+	// The threshold for Warn-level alerts.
+	Threshold string `pulumi:"threshold"`
+	// The number of consecutive triggers.
+	Times int `pulumi:"times"`
+}
+
+// GetServiceMetricAlarmRulesRuleEscalationsCriticalInput is an input type that accepts GetServiceMetricAlarmRulesRuleEscalationsCriticalArgs and GetServiceMetricAlarmRulesRuleEscalationsCriticalOutput values.
+// You can construct a concrete instance of `GetServiceMetricAlarmRulesRuleEscalationsCriticalInput` via:
+//
+//	GetServiceMetricAlarmRulesRuleEscalationsCriticalArgs{...}
+type GetServiceMetricAlarmRulesRuleEscalationsCriticalInput interface {
+	pulumi.Input
+
+	ToGetServiceMetricAlarmRulesRuleEscalationsCriticalOutput() GetServiceMetricAlarmRulesRuleEscalationsCriticalOutput
+	ToGetServiceMetricAlarmRulesRuleEscalationsCriticalOutputWithContext(context.Context) GetServiceMetricAlarmRulesRuleEscalationsCriticalOutput
+}
+
+type GetServiceMetricAlarmRulesRuleEscalationsCriticalArgs struct {
+	// The comparison operator that is used to compare the metric value with the threshold.
+	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
+	// The additional conditions for triggering Warn-level alerts.
+	PreCondition pulumi.StringInput `pulumi:"preCondition"`
+	// The statistical methods for Warn-level alerts.
+	Statistics pulumi.StringInput `pulumi:"statistics"`
+	// The threshold for Warn-level alerts.
+	Threshold pulumi.StringInput `pulumi:"threshold"`
+	// The number of consecutive triggers.
+	Times pulumi.IntInput `pulumi:"times"`
+}
+
+func (GetServiceMetricAlarmRulesRuleEscalationsCriticalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceMetricAlarmRulesRuleEscalationsCritical)(nil)).Elem()
+}
+
+func (i GetServiceMetricAlarmRulesRuleEscalationsCriticalArgs) ToGetServiceMetricAlarmRulesRuleEscalationsCriticalOutput() GetServiceMetricAlarmRulesRuleEscalationsCriticalOutput {
+	return i.ToGetServiceMetricAlarmRulesRuleEscalationsCriticalOutputWithContext(context.Background())
+}
+
+func (i GetServiceMetricAlarmRulesRuleEscalationsCriticalArgs) ToGetServiceMetricAlarmRulesRuleEscalationsCriticalOutputWithContext(ctx context.Context) GetServiceMetricAlarmRulesRuleEscalationsCriticalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMetricAlarmRulesRuleEscalationsCriticalOutput)
+}
+
+type GetServiceMetricAlarmRulesRuleEscalationsCriticalOutput struct{ *pulumi.OutputState }
+
+func (GetServiceMetricAlarmRulesRuleEscalationsCriticalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceMetricAlarmRulesRuleEscalationsCritical)(nil)).Elem()
+}
+
+func (o GetServiceMetricAlarmRulesRuleEscalationsCriticalOutput) ToGetServiceMetricAlarmRulesRuleEscalationsCriticalOutput() GetServiceMetricAlarmRulesRuleEscalationsCriticalOutput {
+	return o
+}
+
+func (o GetServiceMetricAlarmRulesRuleEscalationsCriticalOutput) ToGetServiceMetricAlarmRulesRuleEscalationsCriticalOutputWithContext(ctx context.Context) GetServiceMetricAlarmRulesRuleEscalationsCriticalOutput {
+	return o
+}
+
+// The comparison operator that is used to compare the metric value with the threshold.
+func (o GetServiceMetricAlarmRulesRuleEscalationsCriticalOutput) ComparisonOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRuleEscalationsCritical) string { return v.ComparisonOperator }).(pulumi.StringOutput)
+}
+
+// The additional conditions for triggering Warn-level alerts.
+func (o GetServiceMetricAlarmRulesRuleEscalationsCriticalOutput) PreCondition() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRuleEscalationsCritical) string { return v.PreCondition }).(pulumi.StringOutput)
+}
+
+// The statistical methods for Warn-level alerts.
+func (o GetServiceMetricAlarmRulesRuleEscalationsCriticalOutput) Statistics() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRuleEscalationsCritical) string { return v.Statistics }).(pulumi.StringOutput)
+}
+
+// The threshold for Warn-level alerts.
+func (o GetServiceMetricAlarmRulesRuleEscalationsCriticalOutput) Threshold() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRuleEscalationsCritical) string { return v.Threshold }).(pulumi.StringOutput)
+}
+
+// The number of consecutive triggers.
+func (o GetServiceMetricAlarmRulesRuleEscalationsCriticalOutput) Times() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRuleEscalationsCritical) int { return v.Times }).(pulumi.IntOutput)
+}
+
+type GetServiceMetricAlarmRulesRuleEscalationsInfo struct {
+	// The comparison operator that is used to compare the metric value with the threshold.
+	ComparisonOperator string `pulumi:"comparisonOperator"`
+	// The additional conditions for triggering Warn-level alerts.
+	PreCondition string `pulumi:"preCondition"`
+	// The statistical methods for Warn-level alerts.
+	Statistics string `pulumi:"statistics"`
+	// The threshold for Warn-level alerts.
+	Threshold string `pulumi:"threshold"`
+	// The number of consecutive triggers.
+	Times int `pulumi:"times"`
+}
+
+// GetServiceMetricAlarmRulesRuleEscalationsInfoInput is an input type that accepts GetServiceMetricAlarmRulesRuleEscalationsInfoArgs and GetServiceMetricAlarmRulesRuleEscalationsInfoOutput values.
+// You can construct a concrete instance of `GetServiceMetricAlarmRulesRuleEscalationsInfoInput` via:
+//
+//	GetServiceMetricAlarmRulesRuleEscalationsInfoArgs{...}
+type GetServiceMetricAlarmRulesRuleEscalationsInfoInput interface {
+	pulumi.Input
+
+	ToGetServiceMetricAlarmRulesRuleEscalationsInfoOutput() GetServiceMetricAlarmRulesRuleEscalationsInfoOutput
+	ToGetServiceMetricAlarmRulesRuleEscalationsInfoOutputWithContext(context.Context) GetServiceMetricAlarmRulesRuleEscalationsInfoOutput
+}
+
+type GetServiceMetricAlarmRulesRuleEscalationsInfoArgs struct {
+	// The comparison operator that is used to compare the metric value with the threshold.
+	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
+	// The additional conditions for triggering Warn-level alerts.
+	PreCondition pulumi.StringInput `pulumi:"preCondition"`
+	// The statistical methods for Warn-level alerts.
+	Statistics pulumi.StringInput `pulumi:"statistics"`
+	// The threshold for Warn-level alerts.
+	Threshold pulumi.StringInput `pulumi:"threshold"`
+	// The number of consecutive triggers.
+	Times pulumi.IntInput `pulumi:"times"`
+}
+
+func (GetServiceMetricAlarmRulesRuleEscalationsInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceMetricAlarmRulesRuleEscalationsInfo)(nil)).Elem()
+}
+
+func (i GetServiceMetricAlarmRulesRuleEscalationsInfoArgs) ToGetServiceMetricAlarmRulesRuleEscalationsInfoOutput() GetServiceMetricAlarmRulesRuleEscalationsInfoOutput {
+	return i.ToGetServiceMetricAlarmRulesRuleEscalationsInfoOutputWithContext(context.Background())
+}
+
+func (i GetServiceMetricAlarmRulesRuleEscalationsInfoArgs) ToGetServiceMetricAlarmRulesRuleEscalationsInfoOutputWithContext(ctx context.Context) GetServiceMetricAlarmRulesRuleEscalationsInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMetricAlarmRulesRuleEscalationsInfoOutput)
+}
+
+type GetServiceMetricAlarmRulesRuleEscalationsInfoOutput struct{ *pulumi.OutputState }
+
+func (GetServiceMetricAlarmRulesRuleEscalationsInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceMetricAlarmRulesRuleEscalationsInfo)(nil)).Elem()
+}
+
+func (o GetServiceMetricAlarmRulesRuleEscalationsInfoOutput) ToGetServiceMetricAlarmRulesRuleEscalationsInfoOutput() GetServiceMetricAlarmRulesRuleEscalationsInfoOutput {
+	return o
+}
+
+func (o GetServiceMetricAlarmRulesRuleEscalationsInfoOutput) ToGetServiceMetricAlarmRulesRuleEscalationsInfoOutputWithContext(ctx context.Context) GetServiceMetricAlarmRulesRuleEscalationsInfoOutput {
+	return o
+}
+
+// The comparison operator that is used to compare the metric value with the threshold.
+func (o GetServiceMetricAlarmRulesRuleEscalationsInfoOutput) ComparisonOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRuleEscalationsInfo) string { return v.ComparisonOperator }).(pulumi.StringOutput)
+}
+
+// The additional conditions for triggering Warn-level alerts.
+func (o GetServiceMetricAlarmRulesRuleEscalationsInfoOutput) PreCondition() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRuleEscalationsInfo) string { return v.PreCondition }).(pulumi.StringOutput)
+}
+
+// The statistical methods for Warn-level alerts.
+func (o GetServiceMetricAlarmRulesRuleEscalationsInfoOutput) Statistics() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRuleEscalationsInfo) string { return v.Statistics }).(pulumi.StringOutput)
+}
+
+// The threshold for Warn-level alerts.
+func (o GetServiceMetricAlarmRulesRuleEscalationsInfoOutput) Threshold() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRuleEscalationsInfo) string { return v.Threshold }).(pulumi.StringOutput)
+}
+
+// The number of consecutive triggers.
+func (o GetServiceMetricAlarmRulesRuleEscalationsInfoOutput) Times() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRuleEscalationsInfo) int { return v.Times }).(pulumi.IntOutput)
+}
+
+type GetServiceMetricAlarmRulesRuleEscalationsWarn struct {
+	// The comparison operator that is used to compare the metric value with the threshold.
+	ComparisonOperator string `pulumi:"comparisonOperator"`
+	// The additional conditions for triggering Warn-level alerts.
+	PreCondition string `pulumi:"preCondition"`
+	// The statistical methods for Warn-level alerts.
+	Statistics string `pulumi:"statistics"`
+	// The threshold for Warn-level alerts.
+	Threshold string `pulumi:"threshold"`
+	// The number of consecutive triggers.
+	Times int `pulumi:"times"`
+}
+
+// GetServiceMetricAlarmRulesRuleEscalationsWarnInput is an input type that accepts GetServiceMetricAlarmRulesRuleEscalationsWarnArgs and GetServiceMetricAlarmRulesRuleEscalationsWarnOutput values.
+// You can construct a concrete instance of `GetServiceMetricAlarmRulesRuleEscalationsWarnInput` via:
+//
+//	GetServiceMetricAlarmRulesRuleEscalationsWarnArgs{...}
+type GetServiceMetricAlarmRulesRuleEscalationsWarnInput interface {
+	pulumi.Input
+
+	ToGetServiceMetricAlarmRulesRuleEscalationsWarnOutput() GetServiceMetricAlarmRulesRuleEscalationsWarnOutput
+	ToGetServiceMetricAlarmRulesRuleEscalationsWarnOutputWithContext(context.Context) GetServiceMetricAlarmRulesRuleEscalationsWarnOutput
+}
+
+type GetServiceMetricAlarmRulesRuleEscalationsWarnArgs struct {
+	// The comparison operator that is used to compare the metric value with the threshold.
+	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
+	// The additional conditions for triggering Warn-level alerts.
+	PreCondition pulumi.StringInput `pulumi:"preCondition"`
+	// The statistical methods for Warn-level alerts.
+	Statistics pulumi.StringInput `pulumi:"statistics"`
+	// The threshold for Warn-level alerts.
+	Threshold pulumi.StringInput `pulumi:"threshold"`
+	// The number of consecutive triggers.
+	Times pulumi.IntInput `pulumi:"times"`
+}
+
+func (GetServiceMetricAlarmRulesRuleEscalationsWarnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceMetricAlarmRulesRuleEscalationsWarn)(nil)).Elem()
+}
+
+func (i GetServiceMetricAlarmRulesRuleEscalationsWarnArgs) ToGetServiceMetricAlarmRulesRuleEscalationsWarnOutput() GetServiceMetricAlarmRulesRuleEscalationsWarnOutput {
+	return i.ToGetServiceMetricAlarmRulesRuleEscalationsWarnOutputWithContext(context.Background())
+}
+
+func (i GetServiceMetricAlarmRulesRuleEscalationsWarnArgs) ToGetServiceMetricAlarmRulesRuleEscalationsWarnOutputWithContext(ctx context.Context) GetServiceMetricAlarmRulesRuleEscalationsWarnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMetricAlarmRulesRuleEscalationsWarnOutput)
+}
+
+type GetServiceMetricAlarmRulesRuleEscalationsWarnOutput struct{ *pulumi.OutputState }
+
+func (GetServiceMetricAlarmRulesRuleEscalationsWarnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceMetricAlarmRulesRuleEscalationsWarn)(nil)).Elem()
+}
+
+func (o GetServiceMetricAlarmRulesRuleEscalationsWarnOutput) ToGetServiceMetricAlarmRulesRuleEscalationsWarnOutput() GetServiceMetricAlarmRulesRuleEscalationsWarnOutput {
+	return o
+}
+
+func (o GetServiceMetricAlarmRulesRuleEscalationsWarnOutput) ToGetServiceMetricAlarmRulesRuleEscalationsWarnOutputWithContext(ctx context.Context) GetServiceMetricAlarmRulesRuleEscalationsWarnOutput {
+	return o
+}
+
+// The comparison operator that is used to compare the metric value with the threshold.
+func (o GetServiceMetricAlarmRulesRuleEscalationsWarnOutput) ComparisonOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRuleEscalationsWarn) string { return v.ComparisonOperator }).(pulumi.StringOutput)
+}
+
+// The additional conditions for triggering Warn-level alerts.
+func (o GetServiceMetricAlarmRulesRuleEscalationsWarnOutput) PreCondition() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRuleEscalationsWarn) string { return v.PreCondition }).(pulumi.StringOutput)
+}
+
+// The statistical methods for Warn-level alerts.
+func (o GetServiceMetricAlarmRulesRuleEscalationsWarnOutput) Statistics() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRuleEscalationsWarn) string { return v.Statistics }).(pulumi.StringOutput)
+}
+
+// The threshold for Warn-level alerts.
+func (o GetServiceMetricAlarmRulesRuleEscalationsWarnOutput) Threshold() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRuleEscalationsWarn) string { return v.Threshold }).(pulumi.StringOutput)
+}
+
+// The number of consecutive triggers.
+func (o GetServiceMetricAlarmRulesRuleEscalationsWarnOutput) Times() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRuleEscalationsWarn) int { return v.Times }).(pulumi.IntOutput)
+}
+
+type GetServiceMetricAlarmRulesRuleLabel struct {
+	// The subject of the alert notificaThe key of the annotation.
+	Key string `pulumi:"key"`
+	// The value of the annotation.
+	Value string `pulumi:"value"`
+}
+
+// GetServiceMetricAlarmRulesRuleLabelInput is an input type that accepts GetServiceMetricAlarmRulesRuleLabelArgs and GetServiceMetricAlarmRulesRuleLabelOutput values.
+// You can construct a concrete instance of `GetServiceMetricAlarmRulesRuleLabelInput` via:
+//
+//	GetServiceMetricAlarmRulesRuleLabelArgs{...}
+type GetServiceMetricAlarmRulesRuleLabelInput interface {
+	pulumi.Input
+
+	ToGetServiceMetricAlarmRulesRuleLabelOutput() GetServiceMetricAlarmRulesRuleLabelOutput
+	ToGetServiceMetricAlarmRulesRuleLabelOutputWithContext(context.Context) GetServiceMetricAlarmRulesRuleLabelOutput
+}
+
+type GetServiceMetricAlarmRulesRuleLabelArgs struct {
+	// The subject of the alert notificaThe key of the annotation.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of the annotation.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetServiceMetricAlarmRulesRuleLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceMetricAlarmRulesRuleLabel)(nil)).Elem()
+}
+
+func (i GetServiceMetricAlarmRulesRuleLabelArgs) ToGetServiceMetricAlarmRulesRuleLabelOutput() GetServiceMetricAlarmRulesRuleLabelOutput {
+	return i.ToGetServiceMetricAlarmRulesRuleLabelOutputWithContext(context.Background())
+}
+
+func (i GetServiceMetricAlarmRulesRuleLabelArgs) ToGetServiceMetricAlarmRulesRuleLabelOutputWithContext(ctx context.Context) GetServiceMetricAlarmRulesRuleLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMetricAlarmRulesRuleLabelOutput)
+}
+
+// GetServiceMetricAlarmRulesRuleLabelArrayInput is an input type that accepts GetServiceMetricAlarmRulesRuleLabelArray and GetServiceMetricAlarmRulesRuleLabelArrayOutput values.
+// You can construct a concrete instance of `GetServiceMetricAlarmRulesRuleLabelArrayInput` via:
+//
+//	GetServiceMetricAlarmRulesRuleLabelArray{ GetServiceMetricAlarmRulesRuleLabelArgs{...} }
+type GetServiceMetricAlarmRulesRuleLabelArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceMetricAlarmRulesRuleLabelArrayOutput() GetServiceMetricAlarmRulesRuleLabelArrayOutput
+	ToGetServiceMetricAlarmRulesRuleLabelArrayOutputWithContext(context.Context) GetServiceMetricAlarmRulesRuleLabelArrayOutput
+}
+
+type GetServiceMetricAlarmRulesRuleLabelArray []GetServiceMetricAlarmRulesRuleLabelInput
+
+func (GetServiceMetricAlarmRulesRuleLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceMetricAlarmRulesRuleLabel)(nil)).Elem()
+}
+
+func (i GetServiceMetricAlarmRulesRuleLabelArray) ToGetServiceMetricAlarmRulesRuleLabelArrayOutput() GetServiceMetricAlarmRulesRuleLabelArrayOutput {
+	return i.ToGetServiceMetricAlarmRulesRuleLabelArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceMetricAlarmRulesRuleLabelArray) ToGetServiceMetricAlarmRulesRuleLabelArrayOutputWithContext(ctx context.Context) GetServiceMetricAlarmRulesRuleLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMetricAlarmRulesRuleLabelArrayOutput)
+}
+
+type GetServiceMetricAlarmRulesRuleLabelOutput struct{ *pulumi.OutputState }
+
+func (GetServiceMetricAlarmRulesRuleLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceMetricAlarmRulesRuleLabel)(nil)).Elem()
+}
+
+func (o GetServiceMetricAlarmRulesRuleLabelOutput) ToGetServiceMetricAlarmRulesRuleLabelOutput() GetServiceMetricAlarmRulesRuleLabelOutput {
+	return o
+}
+
+func (o GetServiceMetricAlarmRulesRuleLabelOutput) ToGetServiceMetricAlarmRulesRuleLabelOutputWithContext(ctx context.Context) GetServiceMetricAlarmRulesRuleLabelOutput {
+	return o
+}
+
+// The subject of the alert notificaThe key of the annotation.
+func (o GetServiceMetricAlarmRulesRuleLabelOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRuleLabel) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value of the annotation.
+func (o GetServiceMetricAlarmRulesRuleLabelOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRuleLabel) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetServiceMetricAlarmRulesRuleLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceMetricAlarmRulesRuleLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceMetricAlarmRulesRuleLabel)(nil)).Elem()
+}
+
+func (o GetServiceMetricAlarmRulesRuleLabelArrayOutput) ToGetServiceMetricAlarmRulesRuleLabelArrayOutput() GetServiceMetricAlarmRulesRuleLabelArrayOutput {
+	return o
+}
+
+func (o GetServiceMetricAlarmRulesRuleLabelArrayOutput) ToGetServiceMetricAlarmRulesRuleLabelArrayOutputWithContext(ctx context.Context) GetServiceMetricAlarmRulesRuleLabelArrayOutput {
+	return o
+}
+
+func (o GetServiceMetricAlarmRulesRuleLabelArrayOutput) Index(i pulumi.IntInput) GetServiceMetricAlarmRulesRuleLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceMetricAlarmRulesRuleLabel {
+		return vs[0].([]GetServiceMetricAlarmRulesRuleLabel)[vs[1].(int)]
+	}).(GetServiceMetricAlarmRulesRuleLabelOutput)
+}
+
+type GetServiceMetricAlarmRulesRulePrometheus struct {
+	// The annotations of the Prometheus alert rule.
+	Annotations []GetServiceMetricAlarmRulesRulePrometheusAnnotation `pulumi:"annotations"`
+	// The alert level.
+	Level string `pulumi:"level"`
+	// The PromQL query statement.
+	PromQl string `pulumi:"promQl"`
+	// The number of consecutive triggers.
+	Times int `pulumi:"times"`
+}
+
+// GetServiceMetricAlarmRulesRulePrometheusInput is an input type that accepts GetServiceMetricAlarmRulesRulePrometheusArgs and GetServiceMetricAlarmRulesRulePrometheusOutput values.
+// You can construct a concrete instance of `GetServiceMetricAlarmRulesRulePrometheusInput` via:
+//
+//	GetServiceMetricAlarmRulesRulePrometheusArgs{...}
+type GetServiceMetricAlarmRulesRulePrometheusInput interface {
+	pulumi.Input
+
+	ToGetServiceMetricAlarmRulesRulePrometheusOutput() GetServiceMetricAlarmRulesRulePrometheusOutput
+	ToGetServiceMetricAlarmRulesRulePrometheusOutputWithContext(context.Context) GetServiceMetricAlarmRulesRulePrometheusOutput
+}
+
+type GetServiceMetricAlarmRulesRulePrometheusArgs struct {
+	// The annotations of the Prometheus alert rule.
+	Annotations GetServiceMetricAlarmRulesRulePrometheusAnnotationArrayInput `pulumi:"annotations"`
+	// The alert level.
+	Level pulumi.StringInput `pulumi:"level"`
+	// The PromQL query statement.
+	PromQl pulumi.StringInput `pulumi:"promQl"`
+	// The number of consecutive triggers.
+	Times pulumi.IntInput `pulumi:"times"`
+}
+
+func (GetServiceMetricAlarmRulesRulePrometheusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceMetricAlarmRulesRulePrometheus)(nil)).Elem()
+}
+
+func (i GetServiceMetricAlarmRulesRulePrometheusArgs) ToGetServiceMetricAlarmRulesRulePrometheusOutput() GetServiceMetricAlarmRulesRulePrometheusOutput {
+	return i.ToGetServiceMetricAlarmRulesRulePrometheusOutputWithContext(context.Background())
+}
+
+func (i GetServiceMetricAlarmRulesRulePrometheusArgs) ToGetServiceMetricAlarmRulesRulePrometheusOutputWithContext(ctx context.Context) GetServiceMetricAlarmRulesRulePrometheusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMetricAlarmRulesRulePrometheusOutput)
+}
+
+type GetServiceMetricAlarmRulesRulePrometheusOutput struct{ *pulumi.OutputState }
+
+func (GetServiceMetricAlarmRulesRulePrometheusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceMetricAlarmRulesRulePrometheus)(nil)).Elem()
+}
+
+func (o GetServiceMetricAlarmRulesRulePrometheusOutput) ToGetServiceMetricAlarmRulesRulePrometheusOutput() GetServiceMetricAlarmRulesRulePrometheusOutput {
+	return o
+}
+
+func (o GetServiceMetricAlarmRulesRulePrometheusOutput) ToGetServiceMetricAlarmRulesRulePrometheusOutputWithContext(ctx context.Context) GetServiceMetricAlarmRulesRulePrometheusOutput {
+	return o
+}
+
+// The annotations of the Prometheus alert rule.
+func (o GetServiceMetricAlarmRulesRulePrometheusOutput) Annotations() GetServiceMetricAlarmRulesRulePrometheusAnnotationArrayOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRulePrometheus) []GetServiceMetricAlarmRulesRulePrometheusAnnotation {
+		return v.Annotations
+	}).(GetServiceMetricAlarmRulesRulePrometheusAnnotationArrayOutput)
+}
+
+// The alert level.
+func (o GetServiceMetricAlarmRulesRulePrometheusOutput) Level() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRulePrometheus) string { return v.Level }).(pulumi.StringOutput)
+}
+
+// The PromQL query statement.
+func (o GetServiceMetricAlarmRulesRulePrometheusOutput) PromQl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRulePrometheus) string { return v.PromQl }).(pulumi.StringOutput)
+}
+
+// The number of consecutive triggers.
+func (o GetServiceMetricAlarmRulesRulePrometheusOutput) Times() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRulePrometheus) int { return v.Times }).(pulumi.IntOutput)
+}
+
+type GetServiceMetricAlarmRulesRulePrometheusAnnotation struct {
+	// The subject of the alert notificaThe key of the annotation.
+	Key string `pulumi:"key"`
+	// The value of the annotation.
+	Value string `pulumi:"value"`
+}
+
+// GetServiceMetricAlarmRulesRulePrometheusAnnotationInput is an input type that accepts GetServiceMetricAlarmRulesRulePrometheusAnnotationArgs and GetServiceMetricAlarmRulesRulePrometheusAnnotationOutput values.
+// You can construct a concrete instance of `GetServiceMetricAlarmRulesRulePrometheusAnnotationInput` via:
+//
+//	GetServiceMetricAlarmRulesRulePrometheusAnnotationArgs{...}
+type GetServiceMetricAlarmRulesRulePrometheusAnnotationInput interface {
+	pulumi.Input
+
+	ToGetServiceMetricAlarmRulesRulePrometheusAnnotationOutput() GetServiceMetricAlarmRulesRulePrometheusAnnotationOutput
+	ToGetServiceMetricAlarmRulesRulePrometheusAnnotationOutputWithContext(context.Context) GetServiceMetricAlarmRulesRulePrometheusAnnotationOutput
+}
+
+type GetServiceMetricAlarmRulesRulePrometheusAnnotationArgs struct {
+	// The subject of the alert notificaThe key of the annotation.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of the annotation.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetServiceMetricAlarmRulesRulePrometheusAnnotationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceMetricAlarmRulesRulePrometheusAnnotation)(nil)).Elem()
+}
+
+func (i GetServiceMetricAlarmRulesRulePrometheusAnnotationArgs) ToGetServiceMetricAlarmRulesRulePrometheusAnnotationOutput() GetServiceMetricAlarmRulesRulePrometheusAnnotationOutput {
+	return i.ToGetServiceMetricAlarmRulesRulePrometheusAnnotationOutputWithContext(context.Background())
+}
+
+func (i GetServiceMetricAlarmRulesRulePrometheusAnnotationArgs) ToGetServiceMetricAlarmRulesRulePrometheusAnnotationOutputWithContext(ctx context.Context) GetServiceMetricAlarmRulesRulePrometheusAnnotationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMetricAlarmRulesRulePrometheusAnnotationOutput)
+}
+
+// GetServiceMetricAlarmRulesRulePrometheusAnnotationArrayInput is an input type that accepts GetServiceMetricAlarmRulesRulePrometheusAnnotationArray and GetServiceMetricAlarmRulesRulePrometheusAnnotationArrayOutput values.
+// You can construct a concrete instance of `GetServiceMetricAlarmRulesRulePrometheusAnnotationArrayInput` via:
+//
+//	GetServiceMetricAlarmRulesRulePrometheusAnnotationArray{ GetServiceMetricAlarmRulesRulePrometheusAnnotationArgs{...} }
+type GetServiceMetricAlarmRulesRulePrometheusAnnotationArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceMetricAlarmRulesRulePrometheusAnnotationArrayOutput() GetServiceMetricAlarmRulesRulePrometheusAnnotationArrayOutput
+	ToGetServiceMetricAlarmRulesRulePrometheusAnnotationArrayOutputWithContext(context.Context) GetServiceMetricAlarmRulesRulePrometheusAnnotationArrayOutput
+}
+
+type GetServiceMetricAlarmRulesRulePrometheusAnnotationArray []GetServiceMetricAlarmRulesRulePrometheusAnnotationInput
+
+func (GetServiceMetricAlarmRulesRulePrometheusAnnotationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceMetricAlarmRulesRulePrometheusAnnotation)(nil)).Elem()
+}
+
+func (i GetServiceMetricAlarmRulesRulePrometheusAnnotationArray) ToGetServiceMetricAlarmRulesRulePrometheusAnnotationArrayOutput() GetServiceMetricAlarmRulesRulePrometheusAnnotationArrayOutput {
+	return i.ToGetServiceMetricAlarmRulesRulePrometheusAnnotationArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceMetricAlarmRulesRulePrometheusAnnotationArray) ToGetServiceMetricAlarmRulesRulePrometheusAnnotationArrayOutputWithContext(ctx context.Context) GetServiceMetricAlarmRulesRulePrometheusAnnotationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceMetricAlarmRulesRulePrometheusAnnotationArrayOutput)
+}
+
+type GetServiceMetricAlarmRulesRulePrometheusAnnotationOutput struct{ *pulumi.OutputState }
+
+func (GetServiceMetricAlarmRulesRulePrometheusAnnotationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceMetricAlarmRulesRulePrometheusAnnotation)(nil)).Elem()
+}
+
+func (o GetServiceMetricAlarmRulesRulePrometheusAnnotationOutput) ToGetServiceMetricAlarmRulesRulePrometheusAnnotationOutput() GetServiceMetricAlarmRulesRulePrometheusAnnotationOutput {
+	return o
+}
+
+func (o GetServiceMetricAlarmRulesRulePrometheusAnnotationOutput) ToGetServiceMetricAlarmRulesRulePrometheusAnnotationOutputWithContext(ctx context.Context) GetServiceMetricAlarmRulesRulePrometheusAnnotationOutput {
+	return o
+}
+
+// The subject of the alert notificaThe key of the annotation.
+func (o GetServiceMetricAlarmRulesRulePrometheusAnnotationOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRulePrometheusAnnotation) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value of the annotation.
+func (o GetServiceMetricAlarmRulesRulePrometheusAnnotationOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesRulePrometheusAnnotation) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetServiceMetricAlarmRulesRulePrometheusAnnotationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceMetricAlarmRulesRulePrometheusAnnotationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceMetricAlarmRulesRulePrometheusAnnotation)(nil)).Elem()
+}
+
+func (o GetServiceMetricAlarmRulesRulePrometheusAnnotationArrayOutput) ToGetServiceMetricAlarmRulesRulePrometheusAnnotationArrayOutput() GetServiceMetricAlarmRulesRulePrometheusAnnotationArrayOutput {
+	return o
+}
+
+func (o GetServiceMetricAlarmRulesRulePrometheusAnnotationArrayOutput) ToGetServiceMetricAlarmRulesRulePrometheusAnnotationArrayOutputWithContext(ctx context.Context) GetServiceMetricAlarmRulesRulePrometheusAnnotationArrayOutput {
+	return o
+}
+
+func (o GetServiceMetricAlarmRulesRulePrometheusAnnotationArrayOutput) Index(i pulumi.IntInput) GetServiceMetricAlarmRulesRulePrometheusAnnotationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceMetricAlarmRulesRulePrometheusAnnotation {
+		return vs[0].([]GetServiceMetricAlarmRulesRulePrometheusAnnotation)[vs[1].(int)]
+	}).(GetServiceMetricAlarmRulesRulePrometheusAnnotationOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceGroupMonitoringAgentProcessAlertConfigInput)(nil)).Elem(), ServiceGroupMonitoringAgentProcessAlertConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceGroupMonitoringAgentProcessAlertConfigArrayInput)(nil)).Elem(), ServiceGroupMonitoringAgentProcessAlertConfigArray{})
@@ -565,6 +1693,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceGroupMonitoringAgentProcessMatchExpressArrayInput)(nil)).Elem(), ServiceGroupMonitoringAgentProcessMatchExpressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceHybridDoubleWritesHybridDoubleWriteInput)(nil)).Elem(), GetServiceHybridDoubleWritesHybridDoubleWriteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceHybridDoubleWritesHybridDoubleWriteArrayInput)(nil)).Elem(), GetServiceHybridDoubleWritesHybridDoubleWriteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMetricAlarmRulesRuleInput)(nil)).Elem(), GetServiceMetricAlarmRulesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMetricAlarmRulesRuleArrayInput)(nil)).Elem(), GetServiceMetricAlarmRulesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMetricAlarmRulesRuleCompositeExpressionInput)(nil)).Elem(), GetServiceMetricAlarmRulesRuleCompositeExpressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListInput)(nil)).Elem(), GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArrayInput)(nil)).Elem(), GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMetricAlarmRulesRuleEscalationsInput)(nil)).Elem(), GetServiceMetricAlarmRulesRuleEscalationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMetricAlarmRulesRuleEscalationsCriticalInput)(nil)).Elem(), GetServiceMetricAlarmRulesRuleEscalationsCriticalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMetricAlarmRulesRuleEscalationsInfoInput)(nil)).Elem(), GetServiceMetricAlarmRulesRuleEscalationsInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMetricAlarmRulesRuleEscalationsWarnInput)(nil)).Elem(), GetServiceMetricAlarmRulesRuleEscalationsWarnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMetricAlarmRulesRuleLabelInput)(nil)).Elem(), GetServiceMetricAlarmRulesRuleLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMetricAlarmRulesRuleLabelArrayInput)(nil)).Elem(), GetServiceMetricAlarmRulesRuleLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMetricAlarmRulesRulePrometheusInput)(nil)).Elem(), GetServiceMetricAlarmRulesRulePrometheusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMetricAlarmRulesRulePrometheusAnnotationInput)(nil)).Elem(), GetServiceMetricAlarmRulesRulePrometheusAnnotationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMetricAlarmRulesRulePrometheusAnnotationArrayInput)(nil)).Elem(), GetServiceMetricAlarmRulesRulePrometheusAnnotationArray{})
 	pulumi.RegisterOutputType(ServiceGroupMonitoringAgentProcessAlertConfigOutput{})
 	pulumi.RegisterOutputType(ServiceGroupMonitoringAgentProcessAlertConfigArrayOutput{})
 	pulumi.RegisterOutputType(ServiceGroupMonitoringAgentProcessAlertConfigTargetListOutput{})
@@ -573,4 +1715,18 @@ func init() {
 	pulumi.RegisterOutputType(ServiceGroupMonitoringAgentProcessMatchExpressArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceHybridDoubleWritesHybridDoubleWriteOutput{})
 	pulumi.RegisterOutputType(GetServiceHybridDoubleWritesHybridDoubleWriteArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceMetricAlarmRulesRuleOutput{})
+	pulumi.RegisterOutputType(GetServiceMetricAlarmRulesRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceMetricAlarmRulesRuleCompositeExpressionOutput{})
+	pulumi.RegisterOutputType(GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListOutput{})
+	pulumi.RegisterOutputType(GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceMetricAlarmRulesRuleEscalationsOutput{})
+	pulumi.RegisterOutputType(GetServiceMetricAlarmRulesRuleEscalationsCriticalOutput{})
+	pulumi.RegisterOutputType(GetServiceMetricAlarmRulesRuleEscalationsInfoOutput{})
+	pulumi.RegisterOutputType(GetServiceMetricAlarmRulesRuleEscalationsWarnOutput{})
+	pulumi.RegisterOutputType(GetServiceMetricAlarmRulesRuleLabelOutput{})
+	pulumi.RegisterOutputType(GetServiceMetricAlarmRulesRuleLabelArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceMetricAlarmRulesRulePrometheusOutput{})
+	pulumi.RegisterOutputType(GetServiceMetricAlarmRulesRulePrometheusAnnotationOutput{})
+	pulumi.RegisterOutputType(GetServiceMetricAlarmRulesRulePrometheusAnnotationArrayOutput{})
 }
