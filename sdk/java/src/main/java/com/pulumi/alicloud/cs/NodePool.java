@@ -526,6 +526,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * - `ContainerOS` : container-optimized image.
      * - `Ubuntu`: Ubuntu image.
      * - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
+     * - `Custom`: Custom image.
      * 
      */
     @Export(name="imageType", refs={String.class}, tree="[0]")
@@ -543,6 +544,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * - `ContainerOS` : container-optimized image.
      * - `Ubuntu`: Ubuntu image.
      * - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
+     * - `Custom`: Custom image.
      * 
      */
     public Output<String> imageType() {

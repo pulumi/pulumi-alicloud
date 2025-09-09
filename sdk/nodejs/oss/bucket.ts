@@ -414,7 +414,39 @@ import * as utilities from "../utilities";
  *
  * Set bucket redundancy type
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const _default = new random.index.Integer("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const bucket_redundancytype = new alicloud.oss.Bucket("bucket-redundancytype", {
+ *     bucket: `terraform-example-${_default.result}`,
+ *     redundancyType: "ZRS",
+ * });
+ * ```
+ *
  * Set bucket accelerate configuration
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const _default = new random.index.Integer("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const bucket_accelerate = new alicloud.oss.Bucket("bucket-accelerate", {
+ *     bucket: `terraform-example-${_default.result}`,
+ *     transferAcceleration: {
+ *         enabled: false,
+ *     },
+ * });
+ * ```
  *
  * Set bucket resource group id
  *

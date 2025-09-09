@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Resource Manager Shared Target resource.
  * 
- * For information about Resource Manager Shared Target and how to use it, see [What is Shared Target](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
+ * For information about Resource Manager Shared Target and how to use it, see [What is Shared Target](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/developer-reference/api-resourcesharing-2020-01-10-associateresourceshare).
  * 
  * &gt; **NOTE:** Available since v1.111.0.
  * 
@@ -34,6 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
  * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.resourcemanager.ResourceShare;
  * import com.pulumi.alicloud.resourcemanager.ResourceShareArgs;
  * import com.pulumi.alicloud.resourcemanager.SharedTarget;
@@ -52,16 +54,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tfexample");
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = ResourcemanagerFunctions.getAccounts(GetAccountsArgs.builder()
  *             .build());
  * 
- *         var example = new ResourceShare("example", ResourceShareArgs.builder()
- *             .resourceShareName(name)
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
  *             .build());
  * 
- *         var exampleSharedTarget = new SharedTarget("exampleSharedTarget", SharedTargetArgs.builder()
- *             .resourceShareId(example.id())
+ *         var defaultResourceShare = new ResourceShare("defaultResourceShare", ResourceShareArgs.builder()
+ *             .resourceShareName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .build());
+ * 
+ *         var defaultSharedTarget = new SharedTarget("defaultSharedTarget", SharedTargetArgs.builder()
+ *             .resourceShareId(defaultResourceShare.id())
  *             .targetId(default_.ids()[0])
  *             .build());
  * 
@@ -83,14 +90,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:resourcemanager/sharedTarget:SharedTarget")
 public class SharedTarget extends com.pulumi.resources.CustomResource {
     /**
-     * The resource share ID of resource manager.
+     * (Available since v1.259.0) The time when the association of the entity was created.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return (Available since v1.259.0) The time when the association of the entity was created.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * The ID of the resource share.
      * 
      */
     @Export(name="resourceShareId", refs={String.class}, tree="[0]")
     private Output<String> resourceShareId;
 
     /**
-     * @return The resource share ID of resource manager.
+     * @return The ID of the resource share.
      * 
      */
     public Output<String> resourceShareId() {
@@ -111,14 +132,14 @@ public class SharedTarget extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * The member account ID in resource directory.
+     * The ID of the principal.
      * 
      */
     @Export(name="targetId", refs={String.class}, tree="[0]")
     private Output<String> targetId;
 
     /**
-     * @return The member account ID in resource directory.
+     * @return The ID of the principal.
      * 
      */
     public Output<String> targetId() {

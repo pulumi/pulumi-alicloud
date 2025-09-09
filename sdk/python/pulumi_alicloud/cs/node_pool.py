@@ -122,6 +122,7 @@ class NodePoolArgs:
                - `ContainerOS` : container-optimized image.
                - `Ubuntu`: Ubuntu image.
                - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
+               - `Custom`: Custom image.
         :param pulumi.Input[_builtins.bool] install_cloud_monitor: Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types: In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
@@ -543,6 +544,7 @@ class NodePoolArgs:
         - `ContainerOS` : container-optimized image.
         - `Ubuntu`: Ubuntu image.
         - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
+        - `Custom`: Custom image.
         """
         return pulumi.get(self, "image_type")
 
@@ -1415,6 +1417,7 @@ class _NodePoolState:
                - `ContainerOS` : container-optimized image.
                - `Ubuntu`: Ubuntu image.
                - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
+               - `Custom`: Custom image.
         :param pulumi.Input[_builtins.bool] install_cloud_monitor: Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types: In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
@@ -1843,6 +1846,7 @@ class _NodePoolState:
         - `ContainerOS` : container-optimized image.
         - `Ubuntu`: Ubuntu image.
         - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
+        - `Custom`: Custom image.
         """
         return pulumi.get(self, "image_type")
 
@@ -2962,6 +2966,7 @@ class NodePool(pulumi.CustomResource):
                - `ContainerOS` : container-optimized image.
                - `Ubuntu`: Ubuntu image.
                - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
+               - `Custom`: Custom image.
         :param pulumi.Input[_builtins.bool] install_cloud_monitor: Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types: In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
@@ -3571,6 +3576,7 @@ class NodePool(pulumi.CustomResource):
                - `ContainerOS` : container-optimized image.
                - `Ubuntu`: Ubuntu image.
                - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
+               - `Custom`: Custom image.
         :param pulumi.Input[_builtins.bool] install_cloud_monitor: Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types: In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
@@ -3860,6 +3866,7 @@ class NodePool(pulumi.CustomResource):
         - `ContainerOS` : container-optimized image.
         - `Ubuntu`: Ubuntu image.
         - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
+        - `Custom`: Custom image.
         """
         return pulumi.get(self, "image_type")
 

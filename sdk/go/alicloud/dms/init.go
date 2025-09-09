@@ -33,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EnterpriseProxyAccess{}
 	case "alicloud:dms/enterpriseUser:EnterpriseUser":
 		r = &EnterpriseUser{}
+	case "alicloud:dms/enterpriseWorkspace:EnterpriseWorkspace":
+		r = &EnterpriseWorkspace{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -74,6 +76,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"dms/enterpriseUser",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"dms/enterpriseWorkspace",
 		&module{version},
 	)
 }

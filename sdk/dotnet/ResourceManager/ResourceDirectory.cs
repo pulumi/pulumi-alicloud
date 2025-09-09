@@ -10,17 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ResourceManager
 {
     /// <summary>
-    /// Provides a Resource Manager Resource Directory resource. Resource Directory enables you to establish an organizational structure for the resources used by applications of your enterprise. You can plan, build, and manage the resources in a centralized manner by using only one resource directory.
+    /// Provides a Resource Manager Resource Directory resource.
     /// 
-    /// For information about Resource Manager Resource Directory and how to use it, see [What is Resource Manager Resource Directory](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
+    /// For information about Resource Manager Resource Directory and how to use it, see [What is Resource Directory](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
     /// 
     /// &gt; **NOTE:** Available since v1.84.0.
-    /// 
-    /// &gt; **NOTE:** An account can only be used to enable a resource directory after it passes enterprise real-name verification. An account that only passed individual real-name verification cannot be used to enable a resource directory.
-    /// 
-    /// &gt; **NOTE:** Before you destroy the resource, make sure that the following requirements are met:
-    ///   - All member accounts must be removed from the resource directory.
-    ///   - All folders except the root folder must be deleted from the resource directory.
     /// 
     /// ## Example Usage
     /// 
@@ -53,38 +47,54 @@ namespace Pulumi.AliCloud.ResourceManager
     /// Resource Manager Resource Directory can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:resourcemanager/resourceDirectory:ResourceDirectory example rd-s3****
+    /// $ pulumi import alicloud:resourcemanager/resourceDirectory:ResourceDirectory example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:resourcemanager/resourceDirectory:ResourceDirectory")]
     public partial class ResourceDirectory : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the master account.
+        /// The time when the resource directory was created
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the master account
         /// </summary>
         [Output("masterAccountId")]
         public Output<string> MasterAccountId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the master account.
+        /// The name of the master account
         /// </summary>
         [Output("masterAccountName")]
         public Output<string> MasterAccountName { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+        /// The status of the Member Display Name Synchronization feature. Valid values:
+        /// - Enabled
+        /// - Disabled
+        /// </summary>
+        [Output("memberAccountDisplayNameSyncStatus")]
+        public Output<string> MemberAccountDisplayNameSyncStatus { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of the member deletion feature. Valid values:
+        /// - Enabled: The feature is enabled. You can call the DeleteAccount operation to delete members of the resource account type.
+        /// - Disabled: The feature is disabled. You cannot delete members of the resource account type.
         /// </summary>
         [Output("memberDeletionStatus")]
         public Output<string> MemberDeletionStatus { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the root folder.
+        /// The ID of the root folder
         /// </summary>
         [Output("rootFolderId")]
         public Output<string> RootFolderId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of control policy. Valid values:`Enabled` and `Disabled`.
+        /// ScpStatus
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -136,13 +146,23 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class ResourceDirectoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+        /// The status of the Member Display Name Synchronization feature. Valid values:
+        /// - Enabled
+        /// - Disabled
+        /// </summary>
+        [Input("memberAccountDisplayNameSyncStatus")]
+        public Input<string>? MemberAccountDisplayNameSyncStatus { get; set; }
+
+        /// <summary>
+        /// The status of the member deletion feature. Valid values:
+        /// - Enabled: The feature is enabled. You can call the DeleteAccount operation to delete members of the resource account type.
+        /// - Disabled: The feature is disabled. You cannot delete members of the resource account type.
         /// </summary>
         [Input("memberDeletionStatus")]
         public Input<string>? MemberDeletionStatus { get; set; }
 
         /// <summary>
-        /// The status of control policy. Valid values:`Enabled` and `Disabled`.
+        /// ScpStatus
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -156,31 +176,47 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class ResourceDirectoryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the master account.
+        /// The time when the resource directory was created
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The ID of the master account
         /// </summary>
         [Input("masterAccountId")]
         public Input<string>? MasterAccountId { get; set; }
 
         /// <summary>
-        /// The name of the master account.
+        /// The name of the master account
         /// </summary>
         [Input("masterAccountName")]
         public Input<string>? MasterAccountName { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+        /// The status of the Member Display Name Synchronization feature. Valid values:
+        /// - Enabled
+        /// - Disabled
+        /// </summary>
+        [Input("memberAccountDisplayNameSyncStatus")]
+        public Input<string>? MemberAccountDisplayNameSyncStatus { get; set; }
+
+        /// <summary>
+        /// The status of the member deletion feature. Valid values:
+        /// - Enabled: The feature is enabled. You can call the DeleteAccount operation to delete members of the resource account type.
+        /// - Disabled: The feature is disabled. You cannot delete members of the resource account type.
         /// </summary>
         [Input("memberDeletionStatus")]
         public Input<string>? MemberDeletionStatus { get; set; }
 
         /// <summary>
-        /// The ID of the root folder.
+        /// The ID of the root folder
         /// </summary>
         [Input("rootFolderId")]
         public Input<string>? RootFolderId { get; set; }
 
         /// <summary>
-        /// The status of control policy. Valid values:`Enabled` and `Disabled`.
+        /// ScpStatus
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

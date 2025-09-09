@@ -10,12 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ResourceManager
 {
     /// <summary>
-    /// Provides a Resource Manager Folder resource. A folder is an organizational unit in a resource directory. You can use folders to build an organizational structure for resources.
-    /// For information about Resource Manager Foler and how to use it, see [What is Resource Manager Folder](https://www.alibabacloud.com/help/en/doc-detail/111221.htm).
+    /// Provides a Resource Manager Folder resource.
+    /// 
+    /// The management unit of the organization account in the resource directory.
+    /// 
+    /// For information about Resource Manager Folder and how to use it, see [What is Folder](https://www.alibabacloud.com/help/en/resource-management/resource-directory/developer-reference/api-resourcedirectorymaster-2022-04-19-createfolder).
     /// 
     /// &gt; **NOTE:** Available since v1.82.0.
-    /// 
-    /// &gt; **NOTE:** A maximum of five levels of folders can be created under the root folder.
     /// 
     /// ## Example Usage
     /// 
@@ -31,7 +32,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Min = 10000,
@@ -51,23 +52,35 @@ namespace Pulumi.AliCloud.ResourceManager
     /// Resource Manager Folder can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:resourcemanager/folder:Folder example fd-u8B321****
+    /// $ pulumi import alicloud:resourcemanager/folder:Folder example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:resourcemanager/folder:Folder")]
     public partial class Folder : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
+        /// (Available since v1.259.0) The time when the folder was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the folder.
         /// </summary>
         [Output("folderName")]
         public Output<string> FolderName { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the parent folder. If not set, the system default value will be used.
+        /// The ID of the parent folder.
         /// </summary>
         [Output("parentFolderId")]
         public Output<string> ParentFolderId { get; private set; } = null!;
+
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -116,16 +129,28 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class FolderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
+        /// The name of the folder.
         /// </summary>
         [Input("folderName", required: true)]
         public Input<string> FolderName { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the parent folder. If not set, the system default value will be used.
+        /// The ID of the parent folder.
         /// </summary>
         [Input("parentFolderId")]
         public Input<string>? ParentFolderId { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         public FolderArgs()
         {
@@ -136,16 +161,34 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class FolderState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
+        /// (Available since v1.259.0) The time when the folder was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The name of the folder.
         /// </summary>
         [Input("folderName")]
         public Input<string>? FolderName { get; set; }
 
         /// <summary>
-        /// The ID of the parent folder. If not set, the system default value will be used.
+        /// The ID of the parent folder.
         /// </summary>
         [Input("parentFolderId")]
         public Input<string>? ParentFolderId { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         public FolderState()
         {

@@ -14,7 +14,7 @@ import (
 
 // Provides a Resource Manager Shared Target resource.
 //
-// For information about Resource Manager Shared Target and how to use it, see [What is Shared Target](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
+// For information about Resource Manager Shared Target and how to use it, see [What is Shared Target](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/developer-reference/api-resourcesharing-2020-01-10-associateresourceshare).
 //
 // > **NOTE:** Available since v1.111.0.
 //
@@ -27,7 +27,10 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -36,7 +39,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tfexample"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -44,14 +47,21 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			example, err := resourcemanager.NewResourceShare(ctx, "example", &resourcemanager.ResourceShareArgs{
-//				ResourceShareName: pulumi.String(name),
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = resourcemanager.NewSharedTarget(ctx, "example", &resourcemanager.SharedTargetArgs{
-//				ResourceShareId: example.ID(),
+//			defaultResourceShare, err := resourcemanager.NewResourceShare(ctx, "default", &resourcemanager.ResourceShareArgs{
+//				ResourceShareName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = resourcemanager.NewSharedTarget(ctx, "default", &resourcemanager.SharedTargetArgs{
+//				ResourceShareId: defaultResourceShare.ID(),
 //				TargetId:        pulumi.String(_default.Ids[0]),
 //			})
 //			if err != nil {
@@ -73,11 +83,13 @@ import (
 type SharedTarget struct {
 	pulumi.CustomResourceState
 
-	// The resource share ID of resource manager.
+	// (Available since v1.259.0) The time when the association of the entity was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The ID of the resource share.
 	ResourceShareId pulumi.StringOutput `pulumi:"resourceShareId"`
 	// The status of shared target.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The member account ID in resource directory.
+	// The ID of the principal.
 	TargetId pulumi.StringOutput `pulumi:"targetId"`
 }
 
@@ -117,20 +129,24 @@ func GetSharedTarget(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SharedTarget resources.
 type sharedTargetState struct {
-	// The resource share ID of resource manager.
+	// (Available since v1.259.0) The time when the association of the entity was created.
+	CreateTime *string `pulumi:"createTime"`
+	// The ID of the resource share.
 	ResourceShareId *string `pulumi:"resourceShareId"`
 	// The status of shared target.
 	Status *string `pulumi:"status"`
-	// The member account ID in resource directory.
+	// The ID of the principal.
 	TargetId *string `pulumi:"targetId"`
 }
 
 type SharedTargetState struct {
-	// The resource share ID of resource manager.
+	// (Available since v1.259.0) The time when the association of the entity was created.
+	CreateTime pulumi.StringPtrInput
+	// The ID of the resource share.
 	ResourceShareId pulumi.StringPtrInput
 	// The status of shared target.
 	Status pulumi.StringPtrInput
-	// The member account ID in resource directory.
+	// The ID of the principal.
 	TargetId pulumi.StringPtrInput
 }
 
@@ -139,17 +155,17 @@ func (SharedTargetState) ElementType() reflect.Type {
 }
 
 type sharedTargetArgs struct {
-	// The resource share ID of resource manager.
+	// The ID of the resource share.
 	ResourceShareId string `pulumi:"resourceShareId"`
-	// The member account ID in resource directory.
+	// The ID of the principal.
 	TargetId string `pulumi:"targetId"`
 }
 
 // The set of arguments for constructing a SharedTarget resource.
 type SharedTargetArgs struct {
-	// The resource share ID of resource manager.
+	// The ID of the resource share.
 	ResourceShareId pulumi.StringInput
-	// The member account ID in resource directory.
+	// The ID of the principal.
 	TargetId pulumi.StringInput
 }
 
@@ -240,7 +256,12 @@ func (o SharedTargetOutput) ToSharedTargetOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The resource share ID of resource manager.
+// (Available since v1.259.0) The time when the association of the entity was created.
+func (o SharedTargetOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *SharedTarget) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the resource share.
 func (o SharedTargetOutput) ResourceShareId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SharedTarget) pulumi.StringOutput { return v.ResourceShareId }).(pulumi.StringOutput)
 }
@@ -250,7 +271,7 @@ func (o SharedTargetOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *SharedTarget) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The member account ID in resource directory.
+// The ID of the principal.
 func (o SharedTargetOutput) TargetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SharedTarget) pulumi.StringOutput { return v.TargetId }).(pulumi.StringOutput)
 }

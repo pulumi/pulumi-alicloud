@@ -30,6 +30,26 @@ export const getEtls: typeof import("./getEtls").getEtls = null as any;
 export const getEtlsOutput: typeof import("./getEtls").getEtlsOutput = null as any;
 utilities.lazyLoad(exports, ["getEtls","getEtlsOutput"], () => require("./getEtls"));
 
+export { GetLogtailConfigsArgs, GetLogtailConfigsResult, GetLogtailConfigsOutputArgs } from "./getLogtailConfigs";
+export const getLogtailConfigs: typeof import("./getLogtailConfigs").getLogtailConfigs = null as any;
+export const getLogtailConfigsOutput: typeof import("./getLogtailConfigs").getLogtailConfigsOutput = null as any;
+utilities.lazyLoad(exports, ["getLogtailConfigs","getLogtailConfigsOutput"], () => require("./getLogtailConfigs"));
+
+export { GetMachineGroupsArgs, GetMachineGroupsResult, GetMachineGroupsOutputArgs } from "./getMachineGroups";
+export const getMachineGroups: typeof import("./getMachineGroups").getMachineGroups = null as any;
+export const getMachineGroupsOutput: typeof import("./getMachineGroups").getMachineGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getMachineGroups","getMachineGroupsOutput"], () => require("./getMachineGroups"));
+
+export { LogtailConfigArgs, LogtailConfigState } from "./logtailConfig";
+export type LogtailConfig = import("./logtailConfig").LogtailConfig;
+export const LogtailConfig: typeof import("./logtailConfig").LogtailConfig = null as any;
+utilities.lazyLoad(exports, ["LogtailConfig"], () => require("./logtailConfig"));
+
+export { MachineGroupArgs, MachineGroupState } from "./machineGroup";
+export type MachineGroup = import("./machineGroup").MachineGroup;
+export const MachineGroup: typeof import("./machineGroup").MachineGroup = null as any;
+utilities.lazyLoad(exports, ["MachineGroup"], () => require("./machineGroup"));
+
 export { OssExportSinkArgs, OssExportSinkState } from "./ossExportSink";
 export type OssExportSink = import("./ossExportSink").OssExportSink;
 export const OssExportSink: typeof import("./ossExportSink").OssExportSink = null as any;
@@ -51,6 +71,10 @@ const _module = {
                 return new CollectionPolicy(name, <any>undefined, { urn })
             case "alicloud:sls/etl:Etl":
                 return new Etl(name, <any>undefined, { urn })
+            case "alicloud:sls/logtailConfig:LogtailConfig":
+                return new LogtailConfig(name, <any>undefined, { urn })
+            case "alicloud:sls/machineGroup:MachineGroup":
+                return new MachineGroup(name, <any>undefined, { urn })
             case "alicloud:sls/ossExportSink:OssExportSink":
                 return new OssExportSink(name, <any>undefined, { urn })
             case "alicloud:sls/scheduledSql:ScheduledSql":
@@ -63,5 +87,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "sls/alert", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sls/collectionPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sls/etl", _module)
+pulumi.runtime.registerResourceModule("alicloud", "sls/logtailConfig", _module)
+pulumi.runtime.registerResourceModule("alicloud", "sls/machineGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sls/ossExportSink", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sls/scheduledSql", _module)

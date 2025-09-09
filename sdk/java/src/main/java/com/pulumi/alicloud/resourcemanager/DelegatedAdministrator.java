@@ -32,12 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.Integer;
- * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
- * import com.pulumi.alicloud.resourcemanager.inputs.GetFoldersArgs;
- * import com.pulumi.alicloud.resourcemanager.Account;
- * import com.pulumi.alicloud.resourcemanager.AccountArgs;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
  * import com.pulumi.alicloud.resourcemanager.DelegatedAdministrator;
  * import com.pulumi.alicloud.resourcemanager.DelegatedAdministratorArgs;
  * import java.util.List;
@@ -53,24 +49,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf-example");
- *         final var displayName = config.get("displayName").orElse("EAccount");
- *         var default_ = new Integer("default", IntegerArgs.builder()
- *             .min(10000)
- *             .max(99999)
+ *         final var default = ResourcemanagerFunctions.getAccounts(GetAccountsArgs.builder()
+ *             .status("CreateSuccess")
  *             .build());
  * 
- *         final var example = ResourcemanagerFunctions.getFolders(GetFoldersArgs.builder()
- *             .build());
- * 
- *         var exampleAccount = new Account("exampleAccount", AccountArgs.builder()
- *             .displayName(String.format("%s-%s", displayName,default_.result()))
- *             .folderId(example.ids()[0])
- *             .build());
- * 
- *         var exampleDelegatedAdministrator = new DelegatedAdministrator("exampleDelegatedAdministrator", DelegatedAdministratorArgs.builder()
- *             .accountId(exampleAccount.id())
+ *         var defaultDelegatedAdministrator = new DelegatedAdministrator("defaultDelegatedAdministrator", DelegatedAdministratorArgs.builder()
+ *             .accountId(default_.accounts()[0].accountId())
  *             .servicePrincipal("cloudfw.aliyuncs.com")
  *             .build());
  * 
@@ -92,28 +76,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:resourcemanager/delegatedAdministrator:DelegatedAdministrator")
 public class DelegatedAdministrator extends com.pulumi.resources.CustomResource {
     /**
-     * The ID of the member account in the resource directory.
+     * The Alibaba Cloud account ID of the member in the resource directory.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return The ID of the member account in the resource directory.
+     * @return The Alibaba Cloud account ID of the member in the resource directory.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * The identification of the trusted service. **NOTE:** Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://www.alibabacloud.com/help/en/resource-management/latest/manage-trusted-services-overview).
+     * The identifier of the trusted service.
      * 
      */
     @Export(name="servicePrincipal", refs={String.class}, tree="[0]")
     private Output<String> servicePrincipal;
 
     /**
-     * @return The identification of the trusted service. **NOTE:** Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://www.alibabacloud.com/help/en/resource-management/latest/manage-trusted-services-overview).
+     * @return The identifier of the trusted service.
      * 
      */
     public Output<String> servicePrincipal() {

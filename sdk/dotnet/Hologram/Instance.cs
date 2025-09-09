@@ -92,6 +92,7 @@ namespace Pulumi.AliCloud.Hologram
         /// - Follower: Read-only slave instance.
         /// - Warehouse: calculation group type.
         /// - Shared: Shared.
+        /// - Serverless: (Available since v1.259.0) Serverless.
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
@@ -116,6 +117,12 @@ namespace Pulumi.AliCloud.Hologram
         /// </summary>
         [Output("pricingCycle")]
         public Output<string?> PricingCycle { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.259.0) The region ID.
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the resource group.
@@ -274,6 +281,7 @@ namespace Pulumi.AliCloud.Hologram
         /// - Follower: Read-only slave instance.
         /// - Warehouse: calculation group type.
         /// - Shared: Shared.
+        /// - Serverless: (Available since v1.259.0) Serverless.
         /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
@@ -430,6 +438,7 @@ namespace Pulumi.AliCloud.Hologram
         /// - Follower: Read-only slave instance.
         /// - Warehouse: calculation group type.
         /// - Shared: Shared.
+        /// - Serverless: (Available since v1.259.0) Serverless.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -454,6 +463,12 @@ namespace Pulumi.AliCloud.Hologram
         /// </summary>
         [Input("pricingCycle")]
         public Input<string>? PricingCycle { get; set; }
+
+        /// <summary>
+        /// (Available since v1.259.0) The region ID.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
 
         /// <summary>
         /// The ID of the resource group.

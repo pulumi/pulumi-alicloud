@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eflo.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -105,6 +106,21 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> hpnZone() {
         return Optional.ofNullable(this.hpnZone);
+    }
+
+    /**
+     * Whether to buy PAI. default value `false`.
+     * 
+     */
+    @Import(name="installPai")
+    private @Nullable Output<Boolean> installPai;
+
+    /**
+     * @return Whether to buy PAI. default value `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> installPai() {
+        return Optional.ofNullable(this.installPai);
     }
 
     /**
@@ -240,14 +256,14 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the resource
+     * The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource
+     * @return The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
      * 
      */
     public Optional<Output<String>> status() {
@@ -293,6 +309,7 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
         this.createTime = $.createTime;
         this.discountLevel = $.discountLevel;
         this.hpnZone = $.hpnZone;
+        this.installPai = $.installPai;
         this.paymentRatio = $.paymentRatio;
         this.period = $.period;
         this.productForm = $.productForm;
@@ -448,6 +465,27 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder hpnZone(String hpnZone) {
             return hpnZone(Output.of(hpnZone));
+        }
+
+        /**
+         * @param installPai Whether to buy PAI. default value `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder installPai(@Nullable Output<Boolean> installPai) {
+            $.installPai = installPai;
+            return this;
+        }
+
+        /**
+         * @param installPai Whether to buy PAI. default value `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder installPai(Boolean installPai) {
+            return installPai(Output.of(installPai));
         }
 
         /**
@@ -631,7 +669,7 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource
+         * @param status The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
          * 
          * @return builder
          * 
@@ -642,7 +680,7 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource
+         * @param status The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
          * 
          * @return builder
          * 

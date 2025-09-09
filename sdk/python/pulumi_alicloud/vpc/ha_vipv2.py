@@ -28,14 +28,14 @@ class HaVipv2Args:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a HaVipv2 resource.
-        :param pulumi.Input[_builtins.str] vswitch_id: The switch ID to which the HaVip instance belongs.
+        :param pulumi.Input[_builtins.str] vswitch_id: The switch ID to which the HaVip instance belongs
                
                The following arguments will be discarded. Please use new fields as soon as possible:
-        :param pulumi.Input[_builtins.str] description: The description of the HaVip instance. The length is 2 to 256 characters.
-        :param pulumi.Input[_builtins.str] ha_vip_name: The name of the HaVip instance.
-        :param pulumi.Input[_builtins.str] havip_name: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
-        :param pulumi.Input[_builtins.str] ip_address: The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[_builtins.str] description: The description of the HAVIP. The description must be 1 to 255 characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[_builtins.str] ha_vip_name: The name of the HAVIP. The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
+        :param pulumi.Input[_builtins.str] havip_name: . Field 'havip_name' has been deprecated from provider version 1.259.0. New field 'ha_vip_name' instead.
+        :param pulumi.Input[_builtins.str] ip_address: The IP address of the HAVIP. The specified IP address must be an idle IP address that falls within the CIDR block of the vSwitch. If this parameter is not set, an idle IP address from the CIDR block of the vSwitch is randomly assigned to the HAVIP.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the HAVIP belongs.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of HaVip.
         """
         pulumi.set(__self__, "vswitch_id", vswitch_id)
@@ -59,7 +59,7 @@ class HaVipv2Args:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The switch ID to which the HaVip instance belongs.
+        The switch ID to which the HaVip instance belongs
 
         The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -73,7 +73,7 @@ class HaVipv2Args:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of the HaVip instance. The length is 2 to 256 characters.
+        The description of the HAVIP. The description must be 1 to 255 characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
@@ -85,7 +85,7 @@ class HaVipv2Args:
     @pulumi.getter(name="haVipName")
     def ha_vip_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the HaVip instance.
+        The name of the HAVIP. The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "ha_vip_name")
 
@@ -98,7 +98,7 @@ class HaVipv2Args:
     @_utilities.deprecated("""Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""")
     def havip_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
+        . Field 'havip_name' has been deprecated from provider version 1.259.0. New field 'ha_vip_name' instead.
         """
         return pulumi.get(self, "havip_name")
 
@@ -110,7 +110,7 @@ class HaVipv2Args:
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
+        The IP address of the HAVIP. The specified IP address must be an idle IP address that falls within the CIDR block of the vSwitch. If this parameter is not set, an idle IP address from the CIDR block of the vSwitch is randomly assigned to the HAVIP.
         """
         return pulumi.get(self, "ip_address")
 
@@ -122,7 +122,7 @@ class HaVipv2Args:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the resource group.
+        The ID of the resource group to which the HAVIP belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -163,21 +163,23 @@ class _HaVipv2State:
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HaVipv2 resources.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] associated_eip_addresses: EIP bound to HaVip.
-        :param pulumi.Input[_builtins.str] associated_instance_type: The type of the instance that is bound to the HaVip. Value:-**EcsInstance**: ECS instance.-**NetworkInterface**: ENI instance.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] associated_instances: An ECS instance that is bound to HaVip.
-        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
-        :param pulumi.Input[_builtins.str] description: The description of the HaVip instance. The length is 2 to 256 characters.
-        :param pulumi.Input[_builtins.str] ha_vip_id: The ID of the resource.
-        :param pulumi.Input[_builtins.str] ha_vip_name: The name of the HaVip instance.
-        :param pulumi.Input[_builtins.str] havip_name: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
-        :param pulumi.Input[_builtins.str] ip_address: The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
-        :param pulumi.Input[_builtins.str] master_instance_id: The primary instance ID bound to HaVip.
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] associated_eip_addresses: EIP bound to HaVip
+        :param pulumi.Input[_builtins.str] associated_instance_type: The type of the instance that is bound to the HaVip. Value:
+               - `EcsInstance`: ECS instance.
+               - `NetworkInterface`: ENI instance.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] associated_instances: The ID of the ECS instance to be associated with the HAVIP.
+        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
+        :param pulumi.Input[_builtins.str] description: The description of the HAVIP. The description must be 1 to 255 characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[_builtins.str] ha_vip_id: The ID of the HaVip instance.
+        :param pulumi.Input[_builtins.str] ha_vip_name: The name of the HAVIP. The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
+        :param pulumi.Input[_builtins.str] havip_name: . Field 'havip_name' has been deprecated from provider version 1.259.0. New field 'ha_vip_name' instead.
+        :param pulumi.Input[_builtins.str] ip_address: The IP address of the HAVIP. The specified IP address must be an idle IP address that falls within the CIDR block of the vSwitch. If this parameter is not set, an idle IP address from the CIDR block of the vSwitch is randomly assigned to the HAVIP.
+        :param pulumi.Input[_builtins.str] master_instance_id: The primary instance ID bound to HaVip
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the HAVIP belongs.
         :param pulumi.Input[_builtins.str] status: The status of this resource instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of HaVip.
-        :param pulumi.Input[_builtins.str] vpc_id: The VPC ID to which the HaVip instance belongs.
-        :param pulumi.Input[_builtins.str] vswitch_id: The switch ID to which the HaVip instance belongs.
+        :param pulumi.Input[_builtins.str] vpc_id: The VPC ID to which the HaVip instance belongs
+        :param pulumi.Input[_builtins.str] vswitch_id: The switch ID to which the HaVip instance belongs
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -219,7 +221,7 @@ class _HaVipv2State:
     @pulumi.getter(name="associatedEipAddresses")
     def associated_eip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        EIP bound to HaVip.
+        EIP bound to HaVip
         """
         return pulumi.get(self, "associated_eip_addresses")
 
@@ -231,7 +233,9 @@ class _HaVipv2State:
     @pulumi.getter(name="associatedInstanceType")
     def associated_instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The type of the instance that is bound to the HaVip. Value:-**EcsInstance**: ECS instance.-**NetworkInterface**: ENI instance.
+        The type of the instance that is bound to the HaVip. Value:
+        - `EcsInstance`: ECS instance.
+        - `NetworkInterface`: ENI instance.
         """
         return pulumi.get(self, "associated_instance_type")
 
@@ -243,7 +247,7 @@ class _HaVipv2State:
     @pulumi.getter(name="associatedInstances")
     def associated_instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        An ECS instance that is bound to HaVip.
+        The ID of the ECS instance to be associated with the HAVIP.
         """
         return pulumi.get(self, "associated_instances")
 
@@ -255,7 +259,7 @@ class _HaVipv2State:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The creation time of the resource.
+        The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
@@ -267,7 +271,7 @@ class _HaVipv2State:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of the HaVip instance. The length is 2 to 256 characters.
+        The description of the HAVIP. The description must be 1 to 255 characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
@@ -279,7 +283,7 @@ class _HaVipv2State:
     @pulumi.getter(name="haVipId")
     def ha_vip_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the resource.
+        The ID of the HaVip instance.
         """
         return pulumi.get(self, "ha_vip_id")
 
@@ -291,7 +295,7 @@ class _HaVipv2State:
     @pulumi.getter(name="haVipName")
     def ha_vip_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the HaVip instance.
+        The name of the HAVIP. The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "ha_vip_name")
 
@@ -304,7 +308,7 @@ class _HaVipv2State:
     @_utilities.deprecated("""Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""")
     def havip_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
+        . Field 'havip_name' has been deprecated from provider version 1.259.0. New field 'ha_vip_name' instead.
         """
         return pulumi.get(self, "havip_name")
 
@@ -316,7 +320,7 @@ class _HaVipv2State:
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
+        The IP address of the HAVIP. The specified IP address must be an idle IP address that falls within the CIDR block of the vSwitch. If this parameter is not set, an idle IP address from the CIDR block of the vSwitch is randomly assigned to the HAVIP.
         """
         return pulumi.get(self, "ip_address")
 
@@ -328,7 +332,7 @@ class _HaVipv2State:
     @pulumi.getter(name="masterInstanceId")
     def master_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The primary instance ID bound to HaVip.
+        The primary instance ID bound to HaVip
         """
         return pulumi.get(self, "master_instance_id")
 
@@ -340,7 +344,7 @@ class _HaVipv2State:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the resource group.
+        The ID of the resource group to which the HAVIP belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -376,7 +380,7 @@ class _HaVipv2State:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The VPC ID to which the HaVip instance belongs.
+        The VPC ID to which the HaVip instance belongs
         """
         return pulumi.get(self, "vpc_id")
 
@@ -388,7 +392,7 @@ class _HaVipv2State:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The switch ID to which the HaVip instance belongs.
+        The switch ID to which the HaVip instance belongs
 
         The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -414,9 +418,11 @@ class HaVipv2(pulumi.CustomResource):
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides a Vpc Ha Vip resource. Highly available virtual IP
+        Provides a VPC Ha Vip resource.
 
-        For information about Vpc Ha Vip and how to use it, see [What is Ha Vip](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createhavip).
+        Highly available virtual IP.
+
+        For information about VPC Ha Vip and how to use it, see [What is Ha Vip](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createhavip).
 
         > **NOTE:** Available since v1.205.0.
 
@@ -431,10 +437,10 @@ class HaVipv2(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-testacc-example"
+            name = "tf-example"
         default = alicloud.get_zones(available_resource_creation="VSwitch")
         default_vpc = alicloud.vpc.Network("defaultVpc",
-            description="tf-test-acc-vpc",
+            description=name,
             vpc_name=name,
             cidr_block="192.168.0.0/16")
         default_vswitch = alicloud.vpc.Switch("defaultVswitch",
@@ -442,15 +448,15 @@ class HaVipv2(pulumi.CustomResource):
             cidr_block="192.168.0.0/21",
             vswitch_name=f"{name}1",
             zone_id=default.zones[0].id,
-            description="tf-testacc-vswitch")
+            description=name)
         default_rg = alicloud.resourcemanager.ResourceGroup("defaultRg",
-            display_name="tf-testacc-rg819",
+            display_name="tf-example-defaultRg",
             resource_group_name=f"{name}2")
         change_rg = alicloud.resourcemanager.ResourceGroup("changeRg",
-            display_name="tf-testacc-changerg670",
+            display_name="tf-example-changeRg",
             resource_group_name=f"{name}3")
         default_ha_vipv2 = alicloud.vpc.HaVipv2("default",
-            description="test",
+            description=name,
             vswitch_id=default_vswitch.id,
             ha_vip_name=name,
             ip_address="192.168.1.101",
@@ -459,7 +465,7 @@ class HaVipv2(pulumi.CustomResource):
 
         ## Import
 
-        Vpc Ha Vip can be imported using the id, e.g.
+        VPC Ha Vip can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/haVipv2:HaVipv2 example <id>
@@ -467,13 +473,13 @@ class HaVipv2(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: The description of the HaVip instance. The length is 2 to 256 characters.
-        :param pulumi.Input[_builtins.str] ha_vip_name: The name of the HaVip instance.
-        :param pulumi.Input[_builtins.str] havip_name: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
-        :param pulumi.Input[_builtins.str] ip_address: The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[_builtins.str] description: The description of the HAVIP. The description must be 1 to 255 characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[_builtins.str] ha_vip_name: The name of the HAVIP. The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
+        :param pulumi.Input[_builtins.str] havip_name: . Field 'havip_name' has been deprecated from provider version 1.259.0. New field 'ha_vip_name' instead.
+        :param pulumi.Input[_builtins.str] ip_address: The IP address of the HAVIP. The specified IP address must be an idle IP address that falls within the CIDR block of the vSwitch. If this parameter is not set, an idle IP address from the CIDR block of the vSwitch is randomly assigned to the HAVIP.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the HAVIP belongs.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of HaVip.
-        :param pulumi.Input[_builtins.str] vswitch_id: The switch ID to which the HaVip instance belongs.
+        :param pulumi.Input[_builtins.str] vswitch_id: The switch ID to which the HaVip instance belongs
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -484,9 +490,11 @@ class HaVipv2(pulumi.CustomResource):
                  args: HaVipv2Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Vpc Ha Vip resource. Highly available virtual IP
+        Provides a VPC Ha Vip resource.
 
-        For information about Vpc Ha Vip and how to use it, see [What is Ha Vip](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createhavip).
+        Highly available virtual IP.
+
+        For information about VPC Ha Vip and how to use it, see [What is Ha Vip](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createhavip).
 
         > **NOTE:** Available since v1.205.0.
 
@@ -501,10 +509,10 @@ class HaVipv2(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-testacc-example"
+            name = "tf-example"
         default = alicloud.get_zones(available_resource_creation="VSwitch")
         default_vpc = alicloud.vpc.Network("defaultVpc",
-            description="tf-test-acc-vpc",
+            description=name,
             vpc_name=name,
             cidr_block="192.168.0.0/16")
         default_vswitch = alicloud.vpc.Switch("defaultVswitch",
@@ -512,15 +520,15 @@ class HaVipv2(pulumi.CustomResource):
             cidr_block="192.168.0.0/21",
             vswitch_name=f"{name}1",
             zone_id=default.zones[0].id,
-            description="tf-testacc-vswitch")
+            description=name)
         default_rg = alicloud.resourcemanager.ResourceGroup("defaultRg",
-            display_name="tf-testacc-rg819",
+            display_name="tf-example-defaultRg",
             resource_group_name=f"{name}2")
         change_rg = alicloud.resourcemanager.ResourceGroup("changeRg",
-            display_name="tf-testacc-changerg670",
+            display_name="tf-example-changeRg",
             resource_group_name=f"{name}3")
         default_ha_vipv2 = alicloud.vpc.HaVipv2("default",
-            description="test",
+            description=name,
             vswitch_id=default_vswitch.id,
             ha_vip_name=name,
             ip_address="192.168.1.101",
@@ -529,7 +537,7 @@ class HaVipv2(pulumi.CustomResource):
 
         ## Import
 
-        Vpc Ha Vip can be imported using the id, e.g.
+        VPC Ha Vip can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/haVipv2:HaVipv2 example <id>
@@ -615,21 +623,23 @@ class HaVipv2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] associated_eip_addresses: EIP bound to HaVip.
-        :param pulumi.Input[_builtins.str] associated_instance_type: The type of the instance that is bound to the HaVip. Value:-**EcsInstance**: ECS instance.-**NetworkInterface**: ENI instance.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] associated_instances: An ECS instance that is bound to HaVip.
-        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
-        :param pulumi.Input[_builtins.str] description: The description of the HaVip instance. The length is 2 to 256 characters.
-        :param pulumi.Input[_builtins.str] ha_vip_id: The ID of the resource.
-        :param pulumi.Input[_builtins.str] ha_vip_name: The name of the HaVip instance.
-        :param pulumi.Input[_builtins.str] havip_name: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
-        :param pulumi.Input[_builtins.str] ip_address: The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
-        :param pulumi.Input[_builtins.str] master_instance_id: The primary instance ID bound to HaVip.
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] associated_eip_addresses: EIP bound to HaVip
+        :param pulumi.Input[_builtins.str] associated_instance_type: The type of the instance that is bound to the HaVip. Value:
+               - `EcsInstance`: ECS instance.
+               - `NetworkInterface`: ENI instance.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] associated_instances: The ID of the ECS instance to be associated with the HAVIP.
+        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
+        :param pulumi.Input[_builtins.str] description: The description of the HAVIP. The description must be 1 to 255 characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[_builtins.str] ha_vip_id: The ID of the HaVip instance.
+        :param pulumi.Input[_builtins.str] ha_vip_name: The name of the HAVIP. The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
+        :param pulumi.Input[_builtins.str] havip_name: . Field 'havip_name' has been deprecated from provider version 1.259.0. New field 'ha_vip_name' instead.
+        :param pulumi.Input[_builtins.str] ip_address: The IP address of the HAVIP. The specified IP address must be an idle IP address that falls within the CIDR block of the vSwitch. If this parameter is not set, an idle IP address from the CIDR block of the vSwitch is randomly assigned to the HAVIP.
+        :param pulumi.Input[_builtins.str] master_instance_id: The primary instance ID bound to HaVip
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the HAVIP belongs.
         :param pulumi.Input[_builtins.str] status: The status of this resource instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of HaVip.
-        :param pulumi.Input[_builtins.str] vpc_id: The VPC ID to which the HaVip instance belongs.
-        :param pulumi.Input[_builtins.str] vswitch_id: The switch ID to which the HaVip instance belongs.
+        :param pulumi.Input[_builtins.str] vpc_id: The VPC ID to which the HaVip instance belongs
+        :param pulumi.Input[_builtins.str] vswitch_id: The switch ID to which the HaVip instance belongs
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -658,7 +668,7 @@ class HaVipv2(pulumi.CustomResource):
     @pulumi.getter(name="associatedEipAddresses")
     def associated_eip_addresses(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        EIP bound to HaVip.
+        EIP bound to HaVip
         """
         return pulumi.get(self, "associated_eip_addresses")
 
@@ -666,7 +676,9 @@ class HaVipv2(pulumi.CustomResource):
     @pulumi.getter(name="associatedInstanceType")
     def associated_instance_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of the instance that is bound to the HaVip. Value:-**EcsInstance**: ECS instance.-**NetworkInterface**: ENI instance.
+        The type of the instance that is bound to the HaVip. Value:
+        - `EcsInstance`: ECS instance.
+        - `NetworkInterface`: ENI instance.
         """
         return pulumi.get(self, "associated_instance_type")
 
@@ -674,7 +686,7 @@ class HaVipv2(pulumi.CustomResource):
     @pulumi.getter(name="associatedInstances")
     def associated_instances(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        An ECS instance that is bound to HaVip.
+        The ID of the ECS instance to be associated with the HAVIP.
         """
         return pulumi.get(self, "associated_instances")
 
@@ -682,7 +694,7 @@ class HaVipv2(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
         """
-        The creation time of the resource.
+        The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
@@ -690,7 +702,7 @@ class HaVipv2(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The description of the HaVip instance. The length is 2 to 256 characters.
+        The description of the HAVIP. The description must be 1 to 255 characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
@@ -698,7 +710,7 @@ class HaVipv2(pulumi.CustomResource):
     @pulumi.getter(name="haVipId")
     def ha_vip_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the resource.
+        The ID of the HaVip instance.
         """
         return pulumi.get(self, "ha_vip_id")
 
@@ -706,7 +718,7 @@ class HaVipv2(pulumi.CustomResource):
     @pulumi.getter(name="haVipName")
     def ha_vip_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the HaVip instance.
+        The name of the HAVIP. The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "ha_vip_name")
 
@@ -715,7 +727,7 @@ class HaVipv2(pulumi.CustomResource):
     @_utilities.deprecated("""Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""")
     def havip_name(self) -> pulumi.Output[_builtins.str]:
         """
-        Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
+        . Field 'havip_name' has been deprecated from provider version 1.259.0. New field 'ha_vip_name' instead.
         """
         return pulumi.get(self, "havip_name")
 
@@ -723,7 +735,7 @@ class HaVipv2(pulumi.CustomResource):
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> pulumi.Output[_builtins.str]:
         """
-        The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
+        The IP address of the HAVIP. The specified IP address must be an idle IP address that falls within the CIDR block of the vSwitch. If this parameter is not set, an idle IP address from the CIDR block of the vSwitch is randomly assigned to the HAVIP.
         """
         return pulumi.get(self, "ip_address")
 
@@ -731,7 +743,7 @@ class HaVipv2(pulumi.CustomResource):
     @pulumi.getter(name="masterInstanceId")
     def master_instance_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The primary instance ID bound to HaVip.
+        The primary instance ID bound to HaVip
         """
         return pulumi.get(self, "master_instance_id")
 
@@ -739,7 +751,7 @@ class HaVipv2(pulumi.CustomResource):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the resource group.
+        The ID of the resource group to which the HAVIP belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -763,7 +775,7 @@ class HaVipv2(pulumi.CustomResource):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The VPC ID to which the HaVip instance belongs.
+        The VPC ID to which the HaVip instance belongs
         """
         return pulumi.get(self, "vpc_id")
 
@@ -771,7 +783,7 @@ class HaVipv2(pulumi.CustomResource):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The switch ID to which the HaVip instance belongs.
+        The switch ID to which the HaVip instance belongs
 
         The following arguments will be discarded. Please use new fields as soon as possible:
         """

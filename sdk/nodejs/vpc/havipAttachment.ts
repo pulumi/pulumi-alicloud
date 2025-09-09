@@ -5,6 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a VPC Ha Vip Attachment resource.
+ *
+ * Attaching ECS instance to Havip.
+ *
+ * For information about VPC Ha Vip Attachment and how to use it, see [What is Ha Vip Attachment](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/AssociateHaVip).
+ *
+ * > **NOTE:** Available since v1.18.0.
+ *
  * ## Example Usage
  *
  * Basic Usage
@@ -101,10 +109,7 @@ export class HAVipAttachment extends pulumi.CustomResource {
     }
 
     /**
-     * Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
-     * - **True**: Force unbinding.
-     * - **False** (default): unbinding is not forced.
-     * > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+     * Specifies whether to force delete the snapshot.
      */
     declare public readonly force: pulumi.Output<boolean | undefined>;
     /**
@@ -112,7 +117,7 @@ export class HAVipAttachment extends pulumi.CustomResource {
      */
     declare public readonly haVipId: pulumi.Output<string>;
     /**
-     * . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+     * . Field 'havip_id' has been deprecated from provider version 1.259.0. New field 'ha_vip_id' instead.
      *
      * @deprecated Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.
      */
@@ -122,13 +127,11 @@ export class HAVipAttachment extends pulumi.CustomResource {
      */
     declare public readonly instanceId: pulumi.Output<string>;
     /**
-     * The type of the instance associated with the VIIP.
-     *
-     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * The type of the instance to be associated with the HAVIP. Valid values: * `EcsInstance`: an ECS instance * `NetworkInterface`: an ENI. If you want to associate the HAVIP with an ENI, this parameter is required.
      */
     declare public readonly instanceType: pulumi.Output<string>;
     /**
-     * The status of the resource.
+     * The status of the resource
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
 
@@ -173,10 +176,7 @@ export class HAVipAttachment extends pulumi.CustomResource {
  */
 export interface HAVipAttachmentState {
     /**
-     * Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
-     * - **True**: Force unbinding.
-     * - **False** (default): unbinding is not forced.
-     * > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+     * Specifies whether to force delete the snapshot.
      */
     force?: pulumi.Input<boolean>;
     /**
@@ -184,7 +184,7 @@ export interface HAVipAttachmentState {
      */
     haVipId?: pulumi.Input<string>;
     /**
-     * . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+     * . Field 'havip_id' has been deprecated from provider version 1.259.0. New field 'ha_vip_id' instead.
      *
      * @deprecated Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.
      */
@@ -194,13 +194,11 @@ export interface HAVipAttachmentState {
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * The type of the instance associated with the VIIP.
-     *
-     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * The type of the instance to be associated with the HAVIP. Valid values: * `EcsInstance`: an ECS instance * `NetworkInterface`: an ENI. If you want to associate the HAVIP with an ENI, this parameter is required.
      */
     instanceType?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource
      */
     status?: pulumi.Input<string>;
 }
@@ -210,10 +208,7 @@ export interface HAVipAttachmentState {
  */
 export interface HAVipAttachmentArgs {
     /**
-     * Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
-     * - **True**: Force unbinding.
-     * - **False** (default): unbinding is not forced.
-     * > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+     * Specifies whether to force delete the snapshot.
      */
     force?: pulumi.Input<boolean>;
     /**
@@ -221,7 +216,7 @@ export interface HAVipAttachmentArgs {
      */
     haVipId?: pulumi.Input<string>;
     /**
-     * . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+     * . Field 'havip_id' has been deprecated from provider version 1.259.0. New field 'ha_vip_id' instead.
      *
      * @deprecated Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.
      */
@@ -231,9 +226,7 @@ export interface HAVipAttachmentArgs {
      */
     instanceId: pulumi.Input<string>;
     /**
-     * The type of the instance associated with the VIIP.
-     *
-     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * The type of the instance to be associated with the HAVIP. Valid values: * `EcsInstance`: an ECS instance * `NetworkInterface`: an ENI. If you want to associate the HAVIP with an ENI, this parameter is required.
      */
     instanceType?: pulumi.Input<string>;
 }

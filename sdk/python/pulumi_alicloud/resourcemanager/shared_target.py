@@ -23,8 +23,8 @@ class SharedTargetArgs:
                  target_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a SharedTarget resource.
-        :param pulumi.Input[_builtins.str] resource_share_id: The resource share ID of resource manager.
-        :param pulumi.Input[_builtins.str] target_id: The member account ID in resource directory.
+        :param pulumi.Input[_builtins.str] resource_share_id: The ID of the resource share.
+        :param pulumi.Input[_builtins.str] target_id: The ID of the principal.
         """
         pulumi.set(__self__, "resource_share_id", resource_share_id)
         pulumi.set(__self__, "target_id", target_id)
@@ -33,7 +33,7 @@ class SharedTargetArgs:
     @pulumi.getter(name="resourceShareId")
     def resource_share_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The resource share ID of resource manager.
+        The ID of the resource share.
         """
         return pulumi.get(self, "resource_share_id")
 
@@ -45,7 +45,7 @@ class SharedTargetArgs:
     @pulumi.getter(name="targetId")
     def target_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The member account ID in resource directory.
+        The ID of the principal.
         """
         return pulumi.get(self, "target_id")
 
@@ -57,15 +57,19 @@ class SharedTargetArgs:
 @pulumi.input_type
 class _SharedTargetState:
     def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_share_id: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  target_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SharedTarget resources.
-        :param pulumi.Input[_builtins.str] resource_share_id: The resource share ID of resource manager.
+        :param pulumi.Input[_builtins.str] create_time: (Available since v1.259.0) The time when the association of the entity was created.
+        :param pulumi.Input[_builtins.str] resource_share_id: The ID of the resource share.
         :param pulumi.Input[_builtins.str] status: The status of shared target.
-        :param pulumi.Input[_builtins.str] target_id: The member account ID in resource directory.
+        :param pulumi.Input[_builtins.str] target_id: The ID of the principal.
         """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if resource_share_id is not None:
             pulumi.set(__self__, "resource_share_id", resource_share_id)
         if status is not None:
@@ -74,10 +78,22 @@ class _SharedTargetState:
             pulumi.set(__self__, "target_id", target_id)
 
     @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Available since v1.259.0) The time when the association of the entity was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create_time", value)
+
+    @_builtins.property
     @pulumi.getter(name="resourceShareId")
     def resource_share_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The resource share ID of resource manager.
+        The ID of the resource share.
         """
         return pulumi.get(self, "resource_share_id")
 
@@ -101,7 +117,7 @@ class _SharedTargetState:
     @pulumi.getter(name="targetId")
     def target_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The member account ID in resource directory.
+        The ID of the principal.
         """
         return pulumi.get(self, "target_id")
 
@@ -122,7 +138,7 @@ class SharedTarget(pulumi.CustomResource):
         """
         Provides a Resource Manager Shared Target resource.
 
-        For information about Resource Manager Shared Target and how to use it, see [What is Shared Target](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
+        For information about Resource Manager Shared Target and how to use it, see [What is Shared Target](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/developer-reference/api-resourcesharing-2020-01-10-associateresourceshare).
 
         > **NOTE:** Available since v1.111.0.
 
@@ -133,15 +149,19 @@ class SharedTarget(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tfexample"
+            name = "terraform-example"
         default = alicloud.resourcemanager.get_accounts()
-        example = alicloud.resourcemanager.ResourceShare("example", resource_share_name=name)
-        example_shared_target = alicloud.resourcemanager.SharedTarget("example",
-            resource_share_id=example.id,
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_resource_share = alicloud.resourcemanager.ResourceShare("default", resource_share_name=f"{name}-{default_integer['result']}")
+        default_shared_target = alicloud.resourcemanager.SharedTarget("default",
+            resource_share_id=default_resource_share.id,
             target_id=default.ids[0])
         ```
 
@@ -155,8 +175,8 @@ class SharedTarget(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] resource_share_id: The resource share ID of resource manager.
-        :param pulumi.Input[_builtins.str] target_id: The member account ID in resource directory.
+        :param pulumi.Input[_builtins.str] resource_share_id: The ID of the resource share.
+        :param pulumi.Input[_builtins.str] target_id: The ID of the principal.
         """
         ...
     @overload
@@ -167,7 +187,7 @@ class SharedTarget(pulumi.CustomResource):
         """
         Provides a Resource Manager Shared Target resource.
 
-        For information about Resource Manager Shared Target and how to use it, see [What is Shared Target](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
+        For information about Resource Manager Shared Target and how to use it, see [What is Shared Target](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/developer-reference/api-resourcesharing-2020-01-10-associateresourceshare).
 
         > **NOTE:** Available since v1.111.0.
 
@@ -178,15 +198,19 @@ class SharedTarget(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tfexample"
+            name = "terraform-example"
         default = alicloud.resourcemanager.get_accounts()
-        example = alicloud.resourcemanager.ResourceShare("example", resource_share_name=name)
-        example_shared_target = alicloud.resourcemanager.SharedTarget("example",
-            resource_share_id=example.id,
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_resource_share = alicloud.resourcemanager.ResourceShare("default", resource_share_name=f"{name}-{default_integer['result']}")
+        default_shared_target = alicloud.resourcemanager.SharedTarget("default",
+            resource_share_id=default_resource_share.id,
             target_id=default.ids[0])
         ```
 
@@ -230,6 +254,7 @@ class SharedTarget(pulumi.CustomResource):
             if target_id is None and not opts.urn:
                 raise TypeError("Missing required property 'target_id'")
             __props__.__dict__["target_id"] = target_id
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["status"] = None
         super(SharedTarget, __self__).__init__(
             'alicloud:resourcemanager/sharedTarget:SharedTarget',
@@ -241,6 +266,7 @@ class SharedTarget(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[_builtins.str]] = None,
             resource_share_id: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
             target_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'SharedTarget':
@@ -251,24 +277,34 @@ class SharedTarget(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] resource_share_id: The resource share ID of resource manager.
+        :param pulumi.Input[_builtins.str] create_time: (Available since v1.259.0) The time when the association of the entity was created.
+        :param pulumi.Input[_builtins.str] resource_share_id: The ID of the resource share.
         :param pulumi.Input[_builtins.str] status: The status of shared target.
-        :param pulumi.Input[_builtins.str] target_id: The member account ID in resource directory.
+        :param pulumi.Input[_builtins.str] target_id: The ID of the principal.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _SharedTargetState.__new__(_SharedTargetState)
 
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["resource_share_id"] = resource_share_id
         __props__.__dict__["status"] = status
         __props__.__dict__["target_id"] = target_id
         return SharedTarget(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since v1.259.0) The time when the association of the entity was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
     @pulumi.getter(name="resourceShareId")
     def resource_share_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The resource share ID of resource manager.
+        The ID of the resource share.
         """
         return pulumi.get(self, "resource_share_id")
 
@@ -284,7 +320,7 @@ class SharedTarget(pulumi.CustomResource):
     @pulumi.getter(name="targetId")
     def target_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The member account ID in resource directory.
+        The ID of the principal.
         """
         return pulumi.get(self, "target_id")
 

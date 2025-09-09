@@ -15,14 +15,14 @@ public final class DelegatedAdministratorArgs extends com.pulumi.resources.Resou
     public static final DelegatedAdministratorArgs Empty = new DelegatedAdministratorArgs();
 
     /**
-     * The ID of the member account in the resource directory.
+     * The Alibaba Cloud account ID of the member in the resource directory.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return The ID of the member account in the resource directory.
+     * @return The Alibaba Cloud account ID of the member in the resource directory.
      * 
      */
     public Output<String> accountId() {
@@ -30,14 +30,14 @@ public final class DelegatedAdministratorArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The identification of the trusted service. **NOTE:** Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://www.alibabacloud.com/help/en/resource-management/latest/manage-trusted-services-overview).
+     * The identifier of the trusted service.
      * 
      */
     @Import(name="servicePrincipal", required=true)
     private Output<String> servicePrincipal;
 
     /**
-     * @return The identification of the trusted service. **NOTE:** Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://www.alibabacloud.com/help/en/resource-management/latest/manage-trusted-services-overview).
+     * @return The identifier of the trusted service.
      * 
      */
     public Output<String> servicePrincipal() {
@@ -70,7 +70,7 @@ public final class DelegatedAdministratorArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param accountId The ID of the member account in the resource directory.
+         * @param accountId The Alibaba Cloud account ID of the member in the resource directory.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class DelegatedAdministratorArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param accountId The ID of the member account in the resource directory.
+         * @param accountId The Alibaba Cloud account ID of the member in the resource directory.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class DelegatedAdministratorArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param servicePrincipal The identification of the trusted service. **NOTE:** Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://www.alibabacloud.com/help/en/resource-management/latest/manage-trusted-services-overview).
+         * @param servicePrincipal The identifier of the trusted service.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class DelegatedAdministratorArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param servicePrincipal The identification of the trusted service. **NOTE:** Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://www.alibabacloud.com/help/en/resource-management/latest/manage-trusted-services-overview).
+         * @param servicePrincipal The identifier of the trusted service.
          * 
          * @return builder
          * 

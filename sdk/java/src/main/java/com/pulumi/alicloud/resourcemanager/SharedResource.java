@@ -34,6 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -56,30 +58,35 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tfexample");
- *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
- *             .vpcName(name)
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
  *             .cidrBlock("192.168.0.0/16")
  *             .build());
  * 
- *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
- *             .zoneId(example.zones()[0].id())
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .zoneId(default_.zones()[0].id())
  *             .cidrBlock("192.168.0.0/16")
- *             .vpcId(exampleNetwork.id())
- *             .vswitchName(name)
+ *             .vpcId(defaultNetwork.id())
+ *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
  *             .build());
  * 
- *         var exampleResourceShare = new ResourceShare("exampleResourceShare", ResourceShareArgs.builder()
- *             .resourceShareName(name)
+ *         var defaultResourceShare = new ResourceShare("defaultResourceShare", ResourceShareArgs.builder()
+ *             .resourceShareName(String.format("%s-%s", name,defaultInteger.result()))
  *             .build());
  * 
- *         var exampleSharedResource = new SharedResource("exampleSharedResource", SharedResourceArgs.builder()
- *             .resourceId(exampleSwitch.id())
- *             .resourceShareId(exampleResourceShare.id())
+ *         var defaultSharedResource = new SharedResource("defaultSharedResource", SharedResourceArgs.builder()
+ *             .resourceShareId(defaultResourceShare.id())
+ *             .resourceId(defaultSwitch.id())
  *             .resourceType("VSwitch")
  *             .build());
  * 
@@ -101,35 +108,49 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:resourcemanager/sharedResource:SharedResource")
 public class SharedResource extends com.pulumi.resources.CustomResource {
     /**
-     * The resource ID need shared.
+     * (Available since v1.259.0) The time when the shared resource was associated with the resource share.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return (Available since v1.259.0) The time when the shared resource was associated with the resource share.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * The ID of the shared resource.
      * 
      */
     @Export(name="resourceId", refs={String.class}, tree="[0]")
     private Output<String> resourceId;
 
     /**
-     * @return The resource ID need shared.
+     * @return The ID of the shared resource.
      * 
      */
     public Output<String> resourceId() {
         return this.resourceId;
     }
     /**
-     * The resource share ID of resource manager.
+     * The ID of the resource share.
      * 
      */
     @Export(name="resourceShareId", refs={String.class}, tree="[0]")
     private Output<String> resourceShareId;
 
     /**
-     * @return The resource share ID of resource manager.
+     * @return The ID of the resource share.
      * 
      */
     public Output<String> resourceShareId() {
         return this.resourceShareId;
     }
     /**
-     * The resource type of should shared. Valid values:
+     * The type of the shared resource. Valid values:
      * - `VSwitch`.
      * - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
      * - The following types are added after v1.192.0: `PrefixList` and `Image`.
@@ -143,7 +164,7 @@ public class SharedResource extends com.pulumi.resources.CustomResource {
     private Output<String> resourceType;
 
     /**
-     * @return The resource type of should shared. Valid values:
+     * @return The type of the shared resource. Valid values:
      * - `VSwitch`.
      * - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
      * - The following types are added after v1.192.0: `PrefixList` and `Image`.

@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Amqp Virtual Host.
+ *
  * Provides a RabbitMQ (AMQP) Virtual Host resource.
  *
  * For information about RabbitMQ (AMQP) Virtual Host and how to use it, see [What is Virtual Host](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createvirtualhost).
@@ -18,19 +20,29 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const _default = new alicloud.amqp.Instance("default", {
- *     instanceType: "professional",
- *     maxTps: "1000",
- *     queueCapacity: "50",
- *     supportEip: true,
- *     maxEipTps: "128",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const defaultInstance = new alicloud.amqp.Instance("default", {
+ *     instanceName: `${name}-${_default.result}`,
+ *     instanceType: "enterprise",
+ *     maxTps: "3000",
+ *     maxConnections: 2000,
+ *     queueCapacity: "200",
  *     paymentType: "Subscription",
- *     period: 1,
+ *     renewalStatus: "AutoRenewal",
+ *     renewalDuration: 1,
+ *     renewalDurationUnit: "Year",
+ *     supportEip: true,
  * });
  * const defaultVirtualHost = new alicloud.amqp.VirtualHost("default", {
- *     instanceId: _default.id,
- *     virtualHostName: "tf-example",
+ *     instanceId: defaultInstance.id,
+ *     virtualHostName: `${name}-${_default.result}`,
  * });
  * ```
  *

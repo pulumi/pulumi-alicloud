@@ -642,7 +642,58 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// Set bucket redundancy type
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var bucket_redundancytype = new AliCloud.Oss.Bucket("bucket-redundancytype", new()
+    ///     {
+    ///         BucketName = $"terraform-example-{@default.Result}",
+    ///         RedundancyType = "ZRS",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// Set bucket accelerate configuration
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var bucket_accelerate = new AliCloud.Oss.Bucket("bucket-accelerate", new()
+    ///     {
+    ///         BucketName = $"terraform-example-{@default.Result}",
+    ///         TransferAcceleration = new AliCloud.Oss.Inputs.BucketTransferAccelerationArgs
+    ///         {
+    ///             Enabled = false,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// Set bucket resource group id
     /// 

@@ -413,6 +413,8 @@ type Instance struct {
 	Spec pulumi.IntPtrOutput `pulumi:"spec"`
 	// Instance status.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
@@ -502,6 +504,8 @@ type instanceState struct {
 	Spec *int `pulumi:"spec"`
 	// Instance status.
 	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
 	VpcId *string `pulumi:"vpcId"`
 	// The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
@@ -553,6 +557,8 @@ type InstanceState struct {
 	Spec pulumi.IntPtrInput
 	// Instance status.
 	Status pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput
 	// The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
 	VpcId pulumi.StringPtrInput
 	// The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
@@ -600,6 +606,8 @@ type instanceArgs struct {
 	SecretNum *int `pulumi:"secretNum"`
 	// The computation performance level of the KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
 	Spec *int `pulumi:"spec"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
 	VpcId string `pulumi:"vpcId"`
 	// The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
@@ -644,6 +652,8 @@ type InstanceArgs struct {
 	SecretNum pulumi.IntPtrInput
 	// The computation performance level of the KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
 	Spec pulumi.IntPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput
 	// The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
 	VpcId pulumi.StringInput
 	// The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
@@ -833,6 +843,11 @@ func (o InstanceOutput) Spec() pulumi.IntPtrOutput {
 // Instance status.
 func (o InstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o InstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The ID of the virtual private cloud (VPC) that is associated with the KMS instance.

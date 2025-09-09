@@ -183,6 +183,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * - Follower: Read-only slave instance.
      * - Warehouse: calculation group type.
      * - Shared: Shared.
+     * - Serverless: (Available since v1.259.0) Serverless.
      * 
      */
     @Import(name="instanceType")
@@ -194,6 +195,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * - Follower: Read-only slave instance.
      * - Warehouse: calculation group type.
      * - Shared: Shared.
+     * - Serverless: (Available since v1.259.0) Serverless.
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -249,6 +251,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> pricingCycle() {
         return Optional.ofNullable(this.pricingCycle);
+    }
+
+    /**
+     * (Available since v1.259.0) The region ID.
+     * 
+     */
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    /**
+     * @return (Available since v1.259.0) The region ID.
+     * 
+     */
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
     }
 
     /**
@@ -365,6 +382,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.leaderInstanceId = $.leaderInstanceId;
         this.paymentType = $.paymentType;
         this.pricingCycle = $.pricingCycle;
+        this.regionId = $.regionId;
         this.resourceGroupId = $.resourceGroupId;
         this.scaleType = $.scaleType;
         this.status = $.status;
@@ -618,6 +636,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * - Follower: Read-only slave instance.
          * - Warehouse: calculation group type.
          * - Shared: Shared.
+         * - Serverless: (Available since v1.259.0) Serverless.
          * 
          * @return builder
          * 
@@ -633,6 +652,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * - Follower: Read-only slave instance.
          * - Warehouse: calculation group type.
          * - Shared: Shared.
+         * - Serverless: (Available since v1.259.0) Serverless.
          * 
          * @return builder
          * 
@@ -708,6 +728,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder pricingCycle(String pricingCycle) {
             return pricingCycle(Output.of(pricingCycle));
+        }
+
+        /**
+         * @param regionId (Available since v1.259.0) The region ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        /**
+         * @param regionId (Available since v1.259.0) The region ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
         }
 
         /**

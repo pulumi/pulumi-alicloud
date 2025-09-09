@@ -122,6 +122,21 @@ public final class ServiceSubscriptionArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * The STS RoleArn.
+     * 
+     */
+    @Import(name="stsRoleArn")
+    private @Nullable Output<String> stsRoleArn;
+
+    /**
+     * @return The STS RoleArn.
+     * 
+     */
+    public Optional<Output<String>> stsRoleArn() {
+        return Optional.ofNullable(this.stsRoleArn);
+    }
+
+    /**
      * Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
      * 
      */
@@ -160,6 +175,7 @@ public final class ServiceSubscriptionArgs extends com.pulumi.resources.Resource
         this.notifyContentFormat = $.notifyContentFormat;
         this.notifyStrategy = $.notifyStrategy;
         this.pushType = $.pushType;
+        this.stsRoleArn = $.stsRoleArn;
         this.subscriptionName = $.subscriptionName;
         this.topicName = $.topicName;
     }
@@ -320,6 +336,27 @@ public final class ServiceSubscriptionArgs extends com.pulumi.resources.Resource
          */
         public Builder pushType(String pushType) {
             return pushType(Output.of(pushType));
+        }
+
+        /**
+         * @param stsRoleArn The STS RoleArn.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stsRoleArn(@Nullable Output<String> stsRoleArn) {
+            $.stsRoleArn = stsRoleArn;
+            return this;
+        }
+
+        /**
+         * @param stsRoleArn The STS RoleArn.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stsRoleArn(String stsRoleArn) {
+            return stsRoleArn(Output.of(stsRoleArn));
         }
 
         /**

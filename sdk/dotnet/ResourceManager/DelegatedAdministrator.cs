@@ -25,30 +25,17 @@ namespace Pulumi.AliCloud.ResourceManager
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
-    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var displayName = config.Get("displayName") ?? "EAccount";
-    ///     var @default = new Random.Index.Integer("default", new()
+    ///     var @default = AliCloud.ResourceManager.GetAccounts.Invoke(new()
     ///     {
-    ///         Min = 10000,
-    ///         Max = 99999,
+    ///         Status = "CreateSuccess",
     ///     });
     /// 
-    ///     var example = AliCloud.ResourceManager.GetFolders.Invoke();
-    /// 
-    ///     var exampleAccount = new AliCloud.ResourceManager.Account("example", new()
+    ///     var defaultDelegatedAdministrator = new AliCloud.ResourceManager.DelegatedAdministrator("default", new()
     ///     {
-    ///         DisplayName = $"{displayName}-{@default.Result}",
-    ///         FolderId = example.Apply(getFoldersResult =&gt; getFoldersResult.Ids[0]),
-    ///     });
-    /// 
-    ///     var exampleDelegatedAdministrator = new AliCloud.ResourceManager.DelegatedAdministrator("example", new()
-    ///     {
-    ///         AccountId = exampleAccount.Id,
+    ///         AccountId = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.AccountId)),
     ///         ServicePrincipal = "cloudfw.aliyuncs.com",
     ///     });
     /// 
@@ -67,13 +54,13 @@ namespace Pulumi.AliCloud.ResourceManager
     public partial class DelegatedAdministrator : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the member account in the resource directory.
+        /// The Alibaba Cloud account ID of the member in the resource directory.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// The identification of the trusted service. **NOTE:** Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://www.alibabacloud.com/help/en/resource-management/latest/manage-trusted-services-overview).
+        /// The identifier of the trusted service.
         /// </summary>
         [Output("servicePrincipal")]
         public Output<string> ServicePrincipal { get; private set; } = null!;
@@ -125,13 +112,13 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class DelegatedAdministratorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the member account in the resource directory.
+        /// The Alibaba Cloud account ID of the member in the resource directory.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// The identification of the trusted service. **NOTE:** Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://www.alibabacloud.com/help/en/resource-management/latest/manage-trusted-services-overview).
+        /// The identifier of the trusted service.
         /// </summary>
         [Input("servicePrincipal", required: true)]
         public Input<string> ServicePrincipal { get; set; } = null!;
@@ -145,13 +132,13 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class DelegatedAdministratorState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the member account in the resource directory.
+        /// The Alibaba Cloud account ID of the member in the resource directory.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// The identification of the trusted service. **NOTE:** Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://www.alibabacloud.com/help/en/resource-management/latest/manage-trusted-services-overview).
+        /// The identifier of the trusted service.
         /// </summary>
         [Input("servicePrincipal")]
         public Input<string>? ServicePrincipal { get; set; }

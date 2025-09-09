@@ -318,7 +318,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Accounts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.86.0+.
+     * &gt; **NOTE:** Available since v1.86.0.
      * 
      * ## Example Usage
      * 
@@ -348,7 +348,7 @@ public final class ResourcemanagerFunctions {
      *         final var default = ResourcemanagerFunctions.getAccounts(GetAccountsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("firstAccountId", default_.accounts()[0].id());
+     *         ctx.export("resourceManagerAccountId0", default_.accounts()[0].id());
      *     }
      * }
      * }
@@ -362,7 +362,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Accounts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.86.0+.
+     * &gt; **NOTE:** Available since v1.86.0.
      * 
      * ## Example Usage
      * 
@@ -392,7 +392,7 @@ public final class ResourcemanagerFunctions {
      *         final var default = ResourcemanagerFunctions.getAccounts(GetAccountsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("firstAccountId", default_.accounts()[0].id());
+     *         ctx.export("resourceManagerAccountId0", default_.accounts()[0].id());
      *     }
      * }
      * }
@@ -406,7 +406,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Accounts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.86.0+.
+     * &gt; **NOTE:** Available since v1.86.0.
      * 
      * ## Example Usage
      * 
@@ -436,7 +436,7 @@ public final class ResourcemanagerFunctions {
      *         final var default = ResourcemanagerFunctions.getAccounts(GetAccountsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("firstAccountId", default_.accounts()[0].id());
+     *         ctx.export("resourceManagerAccountId0", default_.accounts()[0].id());
      *     }
      * }
      * }
@@ -450,7 +450,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Accounts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.86.0+.
+     * &gt; **NOTE:** Available since v1.86.0.
      * 
      * ## Example Usage
      * 
@@ -480,7 +480,7 @@ public final class ResourcemanagerFunctions {
      *         final var default = ResourcemanagerFunctions.getAccounts(GetAccountsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("firstAccountId", default_.accounts()[0].id());
+     *         ctx.export("resourceManagerAccountId0", default_.accounts()[0].id());
      *     }
      * }
      * }
@@ -494,7 +494,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Accounts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.86.0+.
+     * &gt; **NOTE:** Available since v1.86.0.
      * 
      * ## Example Usage
      * 
@@ -524,7 +524,7 @@ public final class ResourcemanagerFunctions {
      *         final var default = ResourcemanagerFunctions.getAccounts(GetAccountsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("firstAccountId", default_.accounts()[0].id());
+     *         ctx.export("resourceManagerAccountId0", default_.accounts()[0].id());
      *     }
      * }
      * }
@@ -538,7 +538,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Accounts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.86.0+.
+     * &gt; **NOTE:** Available since v1.86.0.
      * 
      * ## Example Usage
      * 
@@ -568,7 +568,7 @@ public final class ResourcemanagerFunctions {
      *         final var default = ResourcemanagerFunctions.getAccounts(GetAccountsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("firstAccountId", default_.accounts()[0].id());
+     *         ctx.export("resourceManagerAccountId0", default_.accounts()[0].id());
      *     }
      * }
      * }
@@ -582,7 +582,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Accounts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.86.0+.
+     * &gt; **NOTE:** Available since v1.86.0.
      * 
      * ## Example Usage
      * 
@@ -612,7 +612,7 @@ public final class ResourcemanagerFunctions {
      *         final var default = ResourcemanagerFunctions.getAccounts(GetAccountsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("firstAccountId", default_.accounts()[0].id());
+     *         ctx.export("resourceManagerAccountId0", default_.accounts()[0].id());
      *     }
      * }
      * }

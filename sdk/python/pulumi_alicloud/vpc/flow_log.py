@@ -34,8 +34,8 @@ class FlowLogArgs:
                  traffic_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a FlowLog resource.
-        :param pulumi.Input[_builtins.str] log_store_name: The name of the logstore.
-        :param pulumi.Input[_builtins.str] project_name: The name of the project.
+        :param pulumi.Input[_builtins.str] log_store_name: The Logstore that stores the captured traffic data.
+        :param pulumi.Input[_builtins.str] project_name: The project that manages the captured traffic data.
         :param pulumi.Input[_builtins.str] resource_id: The ID of the resource.
         :param pulumi.Input[_builtins.str] resource_type: The resource type of the traffic captured by the flow log:
                - `NetworkInterface`: ENI.
@@ -45,7 +45,7 @@ class FlowLogArgs:
                - *All**: All traffic.
                - *Allow**: Access control allowedtraffic.
                - *Drop**: Access control denied traffic.
-        :param pulumi.Input[_builtins.str] aggregation_interval: Data aggregation interval
+        :param pulumi.Input[_builtins.str] aggregation_interval: The sampling interval of the flow log. Unit: seconds. Valid values: 1, 5, and 10 (default).
         :param pulumi.Input[_builtins.str] description: The Description of the VPC Flow Log.
         :param pulumi.Input[_builtins.str] flow_log_name: The Name of the VPC Flow Log.
         :param pulumi.Input[_builtins.str] ip_version: The IP address type of the collected traffic.
@@ -82,7 +82,7 @@ class FlowLogArgs:
     @pulumi.getter(name="logStoreName")
     def log_store_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the logstore.
+        The Logstore that stores the captured traffic data.
         """
         return pulumi.get(self, "log_store_name")
 
@@ -94,7 +94,7 @@ class FlowLogArgs:
     @pulumi.getter(name="projectName")
     def project_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the project.
+        The project that manages the captured traffic data.
         """
         return pulumi.get(self, "project_name")
 
@@ -148,7 +148,7 @@ class FlowLogArgs:
     @pulumi.getter(name="aggregationInterval")
     def aggregation_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Data aggregation interval
+        The sampling interval of the flow log. Unit: seconds. Valid values: 1, 5, and 10 (default).
         """
         return pulumi.get(self, "aggregation_interval")
 
@@ -265,16 +265,16 @@ class _FlowLogState:
                  traffic_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FlowLog resources.
-        :param pulumi.Input[_builtins.str] aggregation_interval: Data aggregation interval
+        :param pulumi.Input[_builtins.str] aggregation_interval: The sampling interval of the flow log. Unit: seconds. Valid values: 1, 5, and 10 (default).
         :param pulumi.Input[_builtins.str] business_status: Business status
         :param pulumi.Input[_builtins.str] create_time: Creation time
         :param pulumi.Input[_builtins.str] description: The Description of the VPC Flow Log.
         :param pulumi.Input[_builtins.str] flow_log_id: The flow log ID.
         :param pulumi.Input[_builtins.str] flow_log_name: The Name of the VPC Flow Log.
         :param pulumi.Input[_builtins.str] ip_version: The IP address type of the collected traffic.
-        :param pulumi.Input[_builtins.str] log_store_name: The name of the logstore.
-        :param pulumi.Input[_builtins.str] project_name: The name of the project.
-        :param pulumi.Input[_builtins.str] region_id: (Available since v1.243.0) The region ID.
+        :param pulumi.Input[_builtins.str] log_store_name: The Logstore that stores the captured traffic data.
+        :param pulumi.Input[_builtins.str] project_name: The project that manages the captured traffic data.
+        :param pulumi.Input[_builtins.str] region_id: The region ID.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] resource_id: The ID of the resource.
         :param pulumi.Input[_builtins.str] resource_type: The resource type of the traffic captured by the flow log:
@@ -330,7 +330,7 @@ class _FlowLogState:
     @pulumi.getter(name="aggregationInterval")
     def aggregation_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Data aggregation interval
+        The sampling interval of the flow log. Unit: seconds. Valid values: 1, 5, and 10 (default).
         """
         return pulumi.get(self, "aggregation_interval")
 
@@ -414,7 +414,7 @@ class _FlowLogState:
     @pulumi.getter(name="logStoreName")
     def log_store_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the logstore.
+        The Logstore that stores the captured traffic data.
         """
         return pulumi.get(self, "log_store_name")
 
@@ -426,7 +426,7 @@ class _FlowLogState:
     @pulumi.getter(name="projectName")
     def project_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the project.
+        The project that manages the captured traffic data.
         """
         return pulumi.get(self, "project_name")
 
@@ -438,7 +438,7 @@ class _FlowLogState:
     @pulumi.getter(name="regionId")
     def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (Available since v1.243.0) The region ID.
+        The region ID.
         """
         return pulumi.get(self, "region_id")
 
@@ -624,12 +624,12 @@ class FlowLog(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] aggregation_interval: Data aggregation interval
+        :param pulumi.Input[_builtins.str] aggregation_interval: The sampling interval of the flow log. Unit: seconds. Valid values: 1, 5, and 10 (default).
         :param pulumi.Input[_builtins.str] description: The Description of the VPC Flow Log.
         :param pulumi.Input[_builtins.str] flow_log_name: The Name of the VPC Flow Log.
         :param pulumi.Input[_builtins.str] ip_version: The IP address type of the collected traffic.
-        :param pulumi.Input[_builtins.str] log_store_name: The name of the logstore.
-        :param pulumi.Input[_builtins.str] project_name: The name of the project.
+        :param pulumi.Input[_builtins.str] log_store_name: The Logstore that stores the captured traffic data.
+        :param pulumi.Input[_builtins.str] project_name: The project that manages the captured traffic data.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] resource_id: The ID of the resource.
         :param pulumi.Input[_builtins.str] resource_type: The resource type of the traffic captured by the flow log:
@@ -813,16 +813,16 @@ class FlowLog(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] aggregation_interval: Data aggregation interval
+        :param pulumi.Input[_builtins.str] aggregation_interval: The sampling interval of the flow log. Unit: seconds. Valid values: 1, 5, and 10 (default).
         :param pulumi.Input[_builtins.str] business_status: Business status
         :param pulumi.Input[_builtins.str] create_time: Creation time
         :param pulumi.Input[_builtins.str] description: The Description of the VPC Flow Log.
         :param pulumi.Input[_builtins.str] flow_log_id: The flow log ID.
         :param pulumi.Input[_builtins.str] flow_log_name: The Name of the VPC Flow Log.
         :param pulumi.Input[_builtins.str] ip_version: The IP address type of the collected traffic.
-        :param pulumi.Input[_builtins.str] log_store_name: The name of the logstore.
-        :param pulumi.Input[_builtins.str] project_name: The name of the project.
-        :param pulumi.Input[_builtins.str] region_id: (Available since v1.243.0) The region ID.
+        :param pulumi.Input[_builtins.str] log_store_name: The Logstore that stores the captured traffic data.
+        :param pulumi.Input[_builtins.str] project_name: The project that manages the captured traffic data.
+        :param pulumi.Input[_builtins.str] region_id: The region ID.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] resource_id: The ID of the resource.
         :param pulumi.Input[_builtins.str] resource_type: The resource type of the traffic captured by the flow log:
@@ -866,7 +866,7 @@ class FlowLog(pulumi.CustomResource):
     @pulumi.getter(name="aggregationInterval")
     def aggregation_interval(self) -> pulumi.Output[_builtins.str]:
         """
-        Data aggregation interval
+        The sampling interval of the flow log. Unit: seconds. Valid values: 1, 5, and 10 (default).
         """
         return pulumi.get(self, "aggregation_interval")
 
@@ -922,7 +922,7 @@ class FlowLog(pulumi.CustomResource):
     @pulumi.getter(name="logStoreName")
     def log_store_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the logstore.
+        The Logstore that stores the captured traffic data.
         """
         return pulumi.get(self, "log_store_name")
 
@@ -930,7 +930,7 @@ class FlowLog(pulumi.CustomResource):
     @pulumi.getter(name="projectName")
     def project_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the project.
+        The project that manages the captured traffic data.
         """
         return pulumi.get(self, "project_name")
 
@@ -938,7 +938,7 @@ class FlowLog(pulumi.CustomResource):
     @pulumi.getter(name="regionId")
     def region_id(self) -> pulumi.Output[_builtins.str]:
         """
-        (Available since v1.243.0) The region ID.
+        The region ID.
         """
         return pulumi.get(self, "region_id")
 

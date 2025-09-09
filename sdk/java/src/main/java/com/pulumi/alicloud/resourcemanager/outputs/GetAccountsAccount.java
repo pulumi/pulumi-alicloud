@@ -6,22 +6,23 @@ package com.pulumi.alicloud.resourcemanager.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 
 @CustomType
 public final class GetAccountsAccount {
     /**
-     * @return The ID of the account.
+     * @return The Alibaba Cloud account ID of the member.
      * 
      */
     private String accountId;
     /**
-     * @return (Available in v1.125.0+) The Alibaba Cloud account name of the member account.
+     * @return (Available since v1.125.0) The Alibaba Cloud account name of the member. **Note:** `account_name` takes effect only if `enable_details` is set to `true`.
      * 
      */
     private String accountName;
     /**
-     * @return The name of the member account.
+     * @return The display name of the member.
      * 
      */
     private String displayName;
@@ -31,27 +32,27 @@ public final class GetAccountsAccount {
      */
     private String folderId;
     /**
-     * @return The ID of the resource.
+     * @return The ID of the Account.
      * 
      */
     private String id;
     /**
-     * @return The way in which the member account joined the resource directory.
+     * @return The way in which the member joins the resource directory.
      * 
      */
     private String joinMethod;
     /**
-     * @return The time when the member account joined the resource directory.
+     * @return The time when the member joined the resource directory.
      * 
      */
     private String joinTime;
     /**
-     * @return The time when the member account was modified.
+     * @return The time when the member was modified.
      * 
      */
     private String modifyTime;
     /**
-     * @return (Available in v1.124.3+) Settlement account ID. If the value is empty, the current account will be used for settlement.
+     * @return (Available since v1.124.3) The ID of the settlement account. **Note:** `payer_account_id` takes effect only if `enable_details` is set to `true`.
      * 
      */
     private String payerAccountId;
@@ -61,33 +62,38 @@ public final class GetAccountsAccount {
      */
     private String resourceDirectoryId;
     /**
-     * @return The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
+     * @return The status of account. Valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, `PromoteVerifying`.
      * 
      */
     private String status;
     /**
-     * @return The type of the member account.
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    private Map<String,String> tags;
+    /**
+     * @return The type of the member.
      * 
      */
     private String type;
 
     private GetAccountsAccount() {}
     /**
-     * @return The ID of the account.
+     * @return The Alibaba Cloud account ID of the member.
      * 
      */
     public String accountId() {
         return this.accountId;
     }
     /**
-     * @return (Available in v1.125.0+) The Alibaba Cloud account name of the member account.
+     * @return (Available since v1.125.0) The Alibaba Cloud account name of the member. **Note:** `account_name` takes effect only if `enable_details` is set to `true`.
      * 
      */
     public String accountName() {
         return this.accountName;
     }
     /**
-     * @return The name of the member account.
+     * @return The display name of the member.
      * 
      */
     public String displayName() {
@@ -101,35 +107,35 @@ public final class GetAccountsAccount {
         return this.folderId;
     }
     /**
-     * @return The ID of the resource.
+     * @return The ID of the Account.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The way in which the member account joined the resource directory.
+     * @return The way in which the member joins the resource directory.
      * 
      */
     public String joinMethod() {
         return this.joinMethod;
     }
     /**
-     * @return The time when the member account joined the resource directory.
+     * @return The time when the member joined the resource directory.
      * 
      */
     public String joinTime() {
         return this.joinTime;
     }
     /**
-     * @return The time when the member account was modified.
+     * @return The time when the member was modified.
      * 
      */
     public String modifyTime() {
         return this.modifyTime;
     }
     /**
-     * @return (Available in v1.124.3+) Settlement account ID. If the value is empty, the current account will be used for settlement.
+     * @return (Available since v1.124.3) The ID of the settlement account. **Note:** `payer_account_id` takes effect only if `enable_details` is set to `true`.
      * 
      */
     public String payerAccountId() {
@@ -143,14 +149,21 @@ public final class GetAccountsAccount {
         return this.resourceDirectoryId;
     }
     /**
-     * @return The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
+     * @return The status of account. Valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, `PromoteVerifying`.
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return The type of the member account.
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Map<String,String> tags() {
+        return this.tags;
+    }
+    /**
+     * @return The type of the member.
      * 
      */
     public String type() {
@@ -177,6 +190,7 @@ public final class GetAccountsAccount {
         private String payerAccountId;
         private String resourceDirectoryId;
         private String status;
+        private Map<String,String> tags;
         private String type;
         public Builder() {}
         public Builder(GetAccountsAccount defaults) {
@@ -192,6 +206,7 @@ public final class GetAccountsAccount {
     	      this.payerAccountId = defaults.payerAccountId;
     	      this.resourceDirectoryId = defaults.resourceDirectoryId;
     	      this.status = defaults.status;
+    	      this.tags = defaults.tags;
     	      this.type = defaults.type;
         }
 
@@ -284,6 +299,14 @@ public final class GetAccountsAccount {
             return this;
         }
         @CustomType.Setter
+        public Builder tags(Map<String,String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetAccountsAccount", "tags");
+            }
+            this.tags = tags;
+            return this;
+        }
+        @CustomType.Setter
         public Builder type(String type) {
             if (type == null) {
               throw new MissingRequiredPropertyException("GetAccountsAccount", "type");
@@ -304,6 +327,7 @@ public final class GetAccountsAccount {
             _resultValue.payerAccountId = payerAccountId;
             _resultValue.resourceDirectoryId = resourceDirectoryId;
             _resultValue.status = status;
+            _resultValue.tags = tags;
             _resultValue.type = type;
             return _resultValue;
         }

@@ -24,6 +24,7 @@ class NodeArgs:
                  computing_server: Optional[pulumi.Input[_builtins.str]] = None,
                  discount_level: Optional[pulumi.Input[_builtins.str]] = None,
                  hpn_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 install_pai: Optional[pulumi.Input[_builtins.bool]] = None,
                  payment_ratio: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  product_form: Optional[pulumi.Input[_builtins.str]] = None,
@@ -42,6 +43,7 @@ class NodeArgs:
         :param pulumi.Input[_builtins.str] computing_server: Node Model
         :param pulumi.Input[_builtins.str] discount_level: Offer Information
         :param pulumi.Input[_builtins.str] hpn_zone: Cluster Number
+        :param pulumi.Input[_builtins.bool] install_pai: Whether to buy PAI. default value `false`.
         :param pulumi.Input[_builtins.str] payment_ratio: Down payment ratio
         :param pulumi.Input[_builtins.int] period: Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
         :param pulumi.Input[_builtins.str] product_form: Form
@@ -56,7 +58,7 @@ class NodeArgs:
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[_builtins.str] server_arch: Architecture
         :param pulumi.Input[_builtins.str] stage_num: Number of stages
-        :param pulumi.Input[_builtins.str] status: The status of the resource
+        :param pulumi.Input[_builtins.str] status: The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[_builtins.str] zone: Availability Zone
         """
@@ -70,6 +72,8 @@ class NodeArgs:
             pulumi.set(__self__, "discount_level", discount_level)
         if hpn_zone is not None:
             pulumi.set(__self__, "hpn_zone", hpn_zone)
+        if install_pai is not None:
+            pulumi.set(__self__, "install_pai", install_pai)
         if payment_ratio is not None:
             pulumi.set(__self__, "payment_ratio", payment_ratio)
         if period is not None:
@@ -152,6 +156,18 @@ class NodeArgs:
     @hpn_zone.setter
     def hpn_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "hpn_zone", value)
+
+    @_builtins.property
+    @pulumi.getter(name="installPai")
+    def install_pai(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to buy PAI. default value `false`.
+        """
+        return pulumi.get(self, "install_pai")
+
+    @install_pai.setter
+    def install_pai(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "install_pai", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentRatio")
@@ -259,7 +275,7 @@ class NodeArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The status of the resource
+        The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
         """
         return pulumi.get(self, "status")
 
@@ -301,6 +317,7 @@ class _NodeState:
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  discount_level: Optional[pulumi.Input[_builtins.str]] = None,
                  hpn_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 install_pai: Optional[pulumi.Input[_builtins.bool]] = None,
                  payment_ratio: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  product_form: Optional[pulumi.Input[_builtins.str]] = None,
@@ -320,6 +337,7 @@ class _NodeState:
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.str] discount_level: Offer Information
         :param pulumi.Input[_builtins.str] hpn_zone: Cluster Number
+        :param pulumi.Input[_builtins.bool] install_pai: Whether to buy PAI. default value `false`.
         :param pulumi.Input[_builtins.str] payment_ratio: Down payment ratio
         :param pulumi.Input[_builtins.int] period: Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
         :param pulumi.Input[_builtins.str] product_form: Form
@@ -334,7 +352,7 @@ class _NodeState:
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[_builtins.str] server_arch: Architecture
         :param pulumi.Input[_builtins.str] stage_num: Number of stages
-        :param pulumi.Input[_builtins.str] status: The status of the resource
+        :param pulumi.Input[_builtins.str] status: The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[_builtins.str] zone: Availability Zone
         """
@@ -350,6 +368,8 @@ class _NodeState:
             pulumi.set(__self__, "discount_level", discount_level)
         if hpn_zone is not None:
             pulumi.set(__self__, "hpn_zone", hpn_zone)
+        if install_pai is not None:
+            pulumi.set(__self__, "install_pai", install_pai)
         if payment_ratio is not None:
             pulumi.set(__self__, "payment_ratio", payment_ratio)
         if period is not None:
@@ -446,6 +466,18 @@ class _NodeState:
         pulumi.set(self, "hpn_zone", value)
 
     @_builtins.property
+    @pulumi.getter(name="installPai")
+    def install_pai(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to buy PAI. default value `false`.
+        """
+        return pulumi.get(self, "install_pai")
+
+    @install_pai.setter
+    def install_pai(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "install_pai", value)
+
+    @_builtins.property
     @pulumi.getter(name="paymentRatio")
     def payment_ratio(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -551,7 +583,7 @@ class _NodeState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The status of the resource
+        The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
         """
         return pulumi.get(self, "status")
 
@@ -595,6 +627,7 @@ class Node(pulumi.CustomResource):
                  computing_server: Optional[pulumi.Input[_builtins.str]] = None,
                  discount_level: Optional[pulumi.Input[_builtins.str]] = None,
                  hpn_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 install_pai: Optional[pulumi.Input[_builtins.bool]] = None,
                  payment_ratio: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  product_form: Optional[pulumi.Input[_builtins.str]] = None,
@@ -661,6 +694,7 @@ class Node(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] computing_server: Node Model
         :param pulumi.Input[_builtins.str] discount_level: Offer Information
         :param pulumi.Input[_builtins.str] hpn_zone: Cluster Number
+        :param pulumi.Input[_builtins.bool] install_pai: Whether to buy PAI. default value `false`.
         :param pulumi.Input[_builtins.str] payment_ratio: Down payment ratio
         :param pulumi.Input[_builtins.int] period: Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
         :param pulumi.Input[_builtins.str] product_form: Form
@@ -675,7 +709,7 @@ class Node(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[_builtins.str] server_arch: Architecture
         :param pulumi.Input[_builtins.str] stage_num: Number of stages
-        :param pulumi.Input[_builtins.str] status: The status of the resource
+        :param pulumi.Input[_builtins.str] status: The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[_builtins.str] zone: Availability Zone
         """
@@ -752,6 +786,7 @@ class Node(pulumi.CustomResource):
                  computing_server: Optional[pulumi.Input[_builtins.str]] = None,
                  discount_level: Optional[pulumi.Input[_builtins.str]] = None,
                  hpn_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 install_pai: Optional[pulumi.Input[_builtins.bool]] = None,
                  payment_ratio: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  product_form: Optional[pulumi.Input[_builtins.str]] = None,
@@ -777,6 +812,7 @@ class Node(pulumi.CustomResource):
             __props__.__dict__["computing_server"] = computing_server
             __props__.__dict__["discount_level"] = discount_level
             __props__.__dict__["hpn_zone"] = hpn_zone
+            __props__.__dict__["install_pai"] = install_pai
             __props__.__dict__["payment_ratio"] = payment_ratio
             __props__.__dict__["period"] = period
             __props__.__dict__["product_form"] = product_form
@@ -805,6 +841,7 @@ class Node(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             discount_level: Optional[pulumi.Input[_builtins.str]] = None,
             hpn_zone: Optional[pulumi.Input[_builtins.str]] = None,
+            install_pai: Optional[pulumi.Input[_builtins.bool]] = None,
             payment_ratio: Optional[pulumi.Input[_builtins.str]] = None,
             period: Optional[pulumi.Input[_builtins.int]] = None,
             product_form: Optional[pulumi.Input[_builtins.str]] = None,
@@ -829,6 +866,7 @@ class Node(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.str] discount_level: Offer Information
         :param pulumi.Input[_builtins.str] hpn_zone: Cluster Number
+        :param pulumi.Input[_builtins.bool] install_pai: Whether to buy PAI. default value `false`.
         :param pulumi.Input[_builtins.str] payment_ratio: Down payment ratio
         :param pulumi.Input[_builtins.int] period: Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
         :param pulumi.Input[_builtins.str] product_form: Form
@@ -843,7 +881,7 @@ class Node(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[_builtins.str] server_arch: Architecture
         :param pulumi.Input[_builtins.str] stage_num: Number of stages
-        :param pulumi.Input[_builtins.str] status: The status of the resource
+        :param pulumi.Input[_builtins.str] status: The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[_builtins.str] zone: Availability Zone
         """
@@ -857,6 +895,7 @@ class Node(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["discount_level"] = discount_level
         __props__.__dict__["hpn_zone"] = hpn_zone
+        __props__.__dict__["install_pai"] = install_pai
         __props__.__dict__["payment_ratio"] = payment_ratio
         __props__.__dict__["period"] = period
         __props__.__dict__["product_form"] = product_form
@@ -917,6 +956,14 @@ class Node(pulumi.CustomResource):
         Cluster Number
         """
         return pulumi.get(self, "hpn_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="installPai")
+    def install_pai(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to buy PAI. default value `false`.
+        """
+        return pulumi.get(self, "install_pai")
 
     @_builtins.property
     @pulumi.getter(name="paymentRatio")
@@ -992,7 +1039,7 @@ class Node(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the resource
+        The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
         """
         return pulumi.get(self, "status")
 

@@ -429,6 +429,12 @@ namespace Pulumi.AliCloud.Kms
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
         /// </summary>
         [Output("vpcId")]
@@ -592,6 +598,18 @@ namespace Pulumi.AliCloud.Kms
         [Input("spec")]
         public Input<int>? Spec { get; set; }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
         /// </summary>
@@ -753,6 +771,18 @@ namespace Pulumi.AliCloud.Kms
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The ID of the virtual private cloud (VPC) that is associated with the KMS instance.

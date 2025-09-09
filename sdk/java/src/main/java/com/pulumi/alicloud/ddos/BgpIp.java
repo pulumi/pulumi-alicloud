@@ -15,9 +15,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Ddos Bgp Ip resource.
+ * Provides a Anti-DDoS Pro (DdosBgp) Ip resource.
  * 
- * For information about Ddos Bgp Ip and how to use it, see [What is Ip](https://www.alibabacloud.com/help/en/ddos-protection/latest/addip).
+ * For information about Anti-DDoS Pro (DdosBgp) Ip and how to use it, see [What is Ip](https://www.alibabacloud.com/help/en/ddos-protection/latest/addip).
  * 
  * &gt; **NOTE:** Available since v1.180.0.
  * 
@@ -33,8 +33,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
- * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.ddos.DdosBgpInstance;
  * import com.pulumi.alicloud.ddos.DdosBgpInstanceArgs;
  * import com.pulumi.alicloud.ecs.EipAddress;
@@ -55,11 +54,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf-example");
- *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
- *             .build());
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
- *         var instance = new DdosBgpInstance("instance", DdosBgpInstanceArgs.builder()
+ *         var defaultDdosBgpInstance = new DdosBgpInstance("defaultDdosBgpInstance", DdosBgpInstanceArgs.builder()
  *             .name(name)
  *             .baseBandwidth(20)
  *             .bandwidth(-1)
@@ -74,9 +72,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultBgpIp = new BgpIp("defaultBgpIp", BgpIpArgs.builder()
- *             .instanceId(instance.id())
+ *             .instanceId(defaultDdosBgpInstance.id())
  *             .ip(defaultEipAddress.ipAddress())
- *             .resourceGroupId(default_.groups()[0].id())
+ *             .memberUid(default_.id())
  *             .build());
  * 
  *     }
@@ -87,7 +85,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Ddos Bgp Ip can be imported using the id, e.g.
+ * Anti-DDoS Pro (DdosBgp) Ip can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:ddos/bgpIp:BgpIp example &lt;instance_id&gt;:&lt;ip&gt;
@@ -97,70 +95,74 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ddos/bgpIp:BgpIp")
 public class BgpIp extends com.pulumi.resources.CustomResource {
     /**
-     * The ID of the native protection enterprise instance to be operated.
+     * The ID of the Anti-DDoS Origin instance.
      * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
-     * @return The ID of the native protection enterprise instance to be operated.
+     * @return The ID of the Anti-DDoS Origin instance.
      * 
      */
     public Output<String> instanceId() {
         return this.instanceId;
     }
     /**
-     * The IP address.
+     * The IP address that you want to add.
      * 
      */
     @Export(name="ip", refs={String.class}, tree="[0]")
     private Output<String> ip;
 
     /**
-     * @return The IP address.
+     * @return The IP address that you want to add.
      * 
      */
     public Output<String> ip() {
         return this.ip;
     }
     /**
-     * The member account id of the IP address.
+     * The member to which the asset belongs.
      * 
      */
     @Export(name="memberUid", refs={String.class}, tree="[0]")
     private Output<String> memberUid;
 
     /**
-     * @return The member account id of the IP address.
+     * @return The member to which the asset belongs.
      * 
      */
     public Output<String> memberUid() {
         return this.memberUid;
     }
     /**
-     * The ID of the resource group.
+     * Field `resource_group_id` has been deprecated from provider version 1.259.0.
+     * 
+     * @deprecated
+     * Field `resource_group_id` has been deprecated from provider version 1.259.0.
      * 
      */
+    @Deprecated /* Field `resource_group_id` has been deprecated from provider version 1.259.0. */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group.
+     * @return Field `resource_group_id` has been deprecated from provider version 1.259.0.
      * 
      */
     public Output<Optional<String>> resourceGroupId() {
         return Codegen.optional(this.resourceGroupId);
     }
     /**
-     * The current state of the IP address. Valid Value: `normal`, `hole_begin`.
+     * The status of the IP address.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The current state of the IP address. Valid Value: `normal`, `hole_begin`.
+     * @return The status of the IP address.
      * 
      */
     public Output<String> status() {

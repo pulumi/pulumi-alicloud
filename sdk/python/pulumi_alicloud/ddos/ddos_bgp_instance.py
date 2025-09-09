@@ -24,19 +24,27 @@ class DdosBgpInstanceArgs:
                  ip_type: pulumi.Input[_builtins.str],
                  normal_bandwidth: pulumi.Input[_builtins.int],
                  base_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
+                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DdosBgpInstance resource.
-        :param pulumi.Input[_builtins.int] bandwidth: Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 51,91,101,201,301. The unit is Gbps.
-        :param pulumi.Input[_builtins.int] ip_count: IP count of the instance. Valid values: 100.
-        :param pulumi.Input[_builtins.str] ip_type: IP version of the instance. Valid values: IPv4,IPv6.
-        :param pulumi.Input[_builtins.int] normal_bandwidth: Normal defend bandwidth of the instance. The unit is Gbps.
-        :param pulumi.Input[_builtins.int] base_bandwidth: Base defend bandwidth of the instance. Valid values: 20. The unit is Gbps. Default to `20`.
-        :param pulumi.Input[_builtins.str] name: Name of the instance. This name can have a string of 1 to 63 characters.
+        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the package configuration.
+        :param pulumi.Input[_builtins.int] ip_count: The number of IP addresses that can be protected by the Anti-DDoS Origin Enterprise instance.
+        :param pulumi.Input[_builtins.str] ip_type: The protection IP address type of the protection package. Valid values:
+               - `IPv4`
+               - `IPv6`
+        :param pulumi.Input[_builtins.int] normal_bandwidth: The normal clean bandwidth. Unit: Mbit/s.
+        :param pulumi.Input[_builtins.int] base_bandwidth: The basic protection bandwidth of the Anti-DDoS Origin Enterprise instance. Default value: `20`. Valid values: `20`.
+        :param pulumi.Input[_builtins.str] instance_name: The name of the instance.
+        :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
-        :param pulumi.Input[_builtins.str] type: Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
+        :param pulumi.Input[_builtins.str] resource_group_id: Resource Group ID
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key of the tag that is added to the Anti-DDoS Origin instance.
+        :param pulumi.Input[_builtins.str] type: The protection package type of the DDoS native protection instance. Default value: `Enterprise`. Valid values: `Enterprise`, `Professional`.
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "ip_count", ip_count)
@@ -44,10 +52,19 @@ class DdosBgpInstanceArgs:
         pulumi.set(__self__, "normal_bandwidth", normal_bandwidth)
         if base_bandwidth is not None:
             pulumi.set(__self__, "base_bandwidth", base_bandwidth)
+        if instance_name is not None:
+            pulumi.set(__self__, "instance_name", instance_name)
+        if name is not None:
+            warnings.warn("""Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -55,7 +72,7 @@ class DdosBgpInstanceArgs:
     @pulumi.getter
     def bandwidth(self) -> pulumi.Input[_builtins.int]:
         """
-        Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 51,91,101,201,301. The unit is Gbps.
+        The bandwidth of the package configuration.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -67,7 +84,7 @@ class DdosBgpInstanceArgs:
     @pulumi.getter(name="ipCount")
     def ip_count(self) -> pulumi.Input[_builtins.int]:
         """
-        IP count of the instance. Valid values: 100.
+        The number of IP addresses that can be protected by the Anti-DDoS Origin Enterprise instance.
         """
         return pulumi.get(self, "ip_count")
 
@@ -79,7 +96,9 @@ class DdosBgpInstanceArgs:
     @pulumi.getter(name="ipType")
     def ip_type(self) -> pulumi.Input[_builtins.str]:
         """
-        IP version of the instance. Valid values: IPv4,IPv6.
+        The protection IP address type of the protection package. Valid values:
+        - `IPv4`
+        - `IPv6`
         """
         return pulumi.get(self, "ip_type")
 
@@ -91,7 +110,7 @@ class DdosBgpInstanceArgs:
     @pulumi.getter(name="normalBandwidth")
     def normal_bandwidth(self) -> pulumi.Input[_builtins.int]:
         """
-        Normal defend bandwidth of the instance. The unit is Gbps.
+        The normal clean bandwidth. Unit: Mbit/s.
         """
         return pulumi.get(self, "normal_bandwidth")
 
@@ -103,7 +122,7 @@ class DdosBgpInstanceArgs:
     @pulumi.getter(name="baseBandwidth")
     def base_bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Base defend bandwidth of the instance. Valid values: 20. The unit is Gbps. Default to `20`.
+        The basic protection bandwidth of the Anti-DDoS Origin Enterprise instance. Default value: `20`. Valid values: `20`.
         """
         return pulumi.get(self, "base_bandwidth")
 
@@ -112,10 +131,23 @@ class DdosBgpInstanceArgs:
         pulumi.set(self, "base_bandwidth", value)
 
     @_builtins.property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the instance.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @instance_name.setter
+    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "instance_name", value)
+
+    @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.""")
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Name of the instance. This name can have a string of 1 to 63 characters.
+        Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -136,10 +168,34 @@ class DdosBgpInstanceArgs:
         pulumi.set(self, "period", value)
 
     @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Resource Group ID
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The key of the tag that is added to the Anti-DDoS Origin instance.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
+        The protection package type of the DDoS native protection instance. Default value: `Enterprise`. Valid values: `Enterprise`, `Professional`.
         """
         return pulumi.get(self, "type")
 
@@ -153,37 +209,58 @@ class _DdosBgpInstanceState:
     def __init__(__self__, *,
                  bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
                  base_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
+                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  ip_count: Optional[pulumi.Input[_builtins.int]] = None,
                  ip_type: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  normal_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DdosBgpInstance resources.
-        :param pulumi.Input[_builtins.int] bandwidth: Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 51,91,101,201,301. The unit is Gbps.
-        :param pulumi.Input[_builtins.int] base_bandwidth: Base defend bandwidth of the instance. Valid values: 20. The unit is Gbps. Default to `20`.
-        :param pulumi.Input[_builtins.int] ip_count: IP count of the instance. Valid values: 100.
-        :param pulumi.Input[_builtins.str] ip_type: IP version of the instance. Valid values: IPv4,IPv6.
-        :param pulumi.Input[_builtins.str] name: Name of the instance. This name can have a string of 1 to 63 characters.
-        :param pulumi.Input[_builtins.int] normal_bandwidth: Normal defend bandwidth of the instance. The unit is Gbps.
+        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the package configuration.
+        :param pulumi.Input[_builtins.int] base_bandwidth: The basic protection bandwidth of the Anti-DDoS Origin Enterprise instance. Default value: `20`. Valid values: `20`.
+        :param pulumi.Input[_builtins.str] instance_name: The name of the instance.
+        :param pulumi.Input[_builtins.int] ip_count: The number of IP addresses that can be protected by the Anti-DDoS Origin Enterprise instance.
+        :param pulumi.Input[_builtins.str] ip_type: The protection IP address type of the protection package. Valid values:
+               - `IPv4`
+               - `IPv6`
+        :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
+        :param pulumi.Input[_builtins.int] normal_bandwidth: The normal clean bandwidth. Unit: Mbit/s.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
-        :param pulumi.Input[_builtins.str] type: Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
+        :param pulumi.Input[_builtins.str] resource_group_id: Resource Group ID
+        :param pulumi.Input[_builtins.str] status: (Available since v1.259.0) The status of the Instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key of the tag that is added to the Anti-DDoS Origin instance.
+        :param pulumi.Input[_builtins.str] type: The protection package type of the DDoS native protection instance. Default value: `Enterprise`. Valid values: `Enterprise`, `Professional`.
         """
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
         if base_bandwidth is not None:
             pulumi.set(__self__, "base_bandwidth", base_bandwidth)
+        if instance_name is not None:
+            pulumi.set(__self__, "instance_name", instance_name)
         if ip_count is not None:
             pulumi.set(__self__, "ip_count", ip_count)
         if ip_type is not None:
             pulumi.set(__self__, "ip_type", ip_type)
+        if name is not None:
+            warnings.warn("""Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if normal_bandwidth is not None:
             pulumi.set(__self__, "normal_bandwidth", normal_bandwidth)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -191,7 +268,7 @@ class _DdosBgpInstanceState:
     @pulumi.getter
     def bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 51,91,101,201,301. The unit is Gbps.
+        The bandwidth of the package configuration.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -203,7 +280,7 @@ class _DdosBgpInstanceState:
     @pulumi.getter(name="baseBandwidth")
     def base_bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Base defend bandwidth of the instance. Valid values: 20. The unit is Gbps. Default to `20`.
+        The basic protection bandwidth of the Anti-DDoS Origin Enterprise instance. Default value: `20`. Valid values: `20`.
         """
         return pulumi.get(self, "base_bandwidth")
 
@@ -212,10 +289,22 @@ class _DdosBgpInstanceState:
         pulumi.set(self, "base_bandwidth", value)
 
     @_builtins.property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the instance.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @instance_name.setter
+    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "instance_name", value)
+
+    @_builtins.property
     @pulumi.getter(name="ipCount")
     def ip_count(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        IP count of the instance. Valid values: 100.
+        The number of IP addresses that can be protected by the Anti-DDoS Origin Enterprise instance.
         """
         return pulumi.get(self, "ip_count")
 
@@ -227,7 +316,9 @@ class _DdosBgpInstanceState:
     @pulumi.getter(name="ipType")
     def ip_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        IP version of the instance. Valid values: IPv4,IPv6.
+        The protection IP address type of the protection package. Valid values:
+        - `IPv4`
+        - `IPv6`
         """
         return pulumi.get(self, "ip_type")
 
@@ -237,9 +328,10 @@ class _DdosBgpInstanceState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.""")
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Name of the instance. This name can have a string of 1 to 63 characters.
+        Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -251,7 +343,7 @@ class _DdosBgpInstanceState:
     @pulumi.getter(name="normalBandwidth")
     def normal_bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Normal defend bandwidth of the instance. The unit is Gbps.
+        The normal clean bandwidth. Unit: Mbit/s.
         """
         return pulumi.get(self, "normal_bandwidth")
 
@@ -272,10 +364,46 @@ class _DdosBgpInstanceState:
         pulumi.set(self, "period", value)
 
     @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Resource Group ID
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Available since v1.259.0) The status of the Instance.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The key of the tag that is added to the Anti-DDoS Origin instance.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
+        The protection package type of the DDoS native protection instance. Default value: `Enterprise`. Valid values: `Enterprise`, `Professional`.
         """
         return pulumi.get(self, "type")
 
@@ -292,58 +420,40 @@ class DdosBgpInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
                  base_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
+                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  ip_count: Optional[pulumi.Input[_builtins.int]] = None,
                  ip_type: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  normal_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Anti-DDoS Advanced instance resource. "Ddosbgp" is the short term of this product.
-
-        > **NOTE:** Available since v1.183.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        instance = alicloud.ddos.DdosBgpInstance("instance",
-            name=name,
-            base_bandwidth=20,
-            bandwidth=-1,
-            ip_count=100,
-            ip_type="IPv4",
-            normal_bandwidth=100,
-            type="Enterprise")
-        ```
-
         ## Import
 
-        Ddosbgp instance can be imported using the id, e.g.
+        Anti-DDoS Pro (DdosBgp) Instance can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ddos/ddosBgpInstance:DdosBgpInstance example ddosbgp-abc123456
+        $ pulumi import alicloud:ddos/ddosBgpInstance:DdosBgpInstance example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] bandwidth: Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 51,91,101,201,301. The unit is Gbps.
-        :param pulumi.Input[_builtins.int] base_bandwidth: Base defend bandwidth of the instance. Valid values: 20. The unit is Gbps. Default to `20`.
-        :param pulumi.Input[_builtins.int] ip_count: IP count of the instance. Valid values: 100.
-        :param pulumi.Input[_builtins.str] ip_type: IP version of the instance. Valid values: IPv4,IPv6.
-        :param pulumi.Input[_builtins.str] name: Name of the instance. This name can have a string of 1 to 63 characters.
-        :param pulumi.Input[_builtins.int] normal_bandwidth: Normal defend bandwidth of the instance. The unit is Gbps.
+        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the package configuration.
+        :param pulumi.Input[_builtins.int] base_bandwidth: The basic protection bandwidth of the Anti-DDoS Origin Enterprise instance. Default value: `20`. Valid values: `20`.
+        :param pulumi.Input[_builtins.str] instance_name: The name of the instance.
+        :param pulumi.Input[_builtins.int] ip_count: The number of IP addresses that can be protected by the Anti-DDoS Origin Enterprise instance.
+        :param pulumi.Input[_builtins.str] ip_type: The protection IP address type of the protection package. Valid values:
+               - `IPv4`
+               - `IPv6`
+        :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
+        :param pulumi.Input[_builtins.int] normal_bandwidth: The normal clean bandwidth. Unit: Mbit/s.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
-        :param pulumi.Input[_builtins.str] type: Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
+        :param pulumi.Input[_builtins.str] resource_group_id: Resource Group ID
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key of the tag that is added to the Anti-DDoS Origin instance.
+        :param pulumi.Input[_builtins.str] type: The protection package type of the DDoS native protection instance. Default value: `Enterprise`. Valid values: `Enterprise`, `Professional`.
         """
         ...
     @overload
@@ -352,38 +462,12 @@ class DdosBgpInstance(pulumi.CustomResource):
                  args: DdosBgpInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Anti-DDoS Advanced instance resource. "Ddosbgp" is the short term of this product.
-
-        > **NOTE:** Available since v1.183.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        instance = alicloud.ddos.DdosBgpInstance("instance",
-            name=name,
-            base_bandwidth=20,
-            bandwidth=-1,
-            ip_count=100,
-            ip_type="IPv4",
-            normal_bandwidth=100,
-            type="Enterprise")
-        ```
-
         ## Import
 
-        Ddosbgp instance can be imported using the id, e.g.
+        Anti-DDoS Pro (DdosBgp) Instance can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ddos/ddosBgpInstance:DdosBgpInstance example ddosbgp-abc123456
+        $ pulumi import alicloud:ddos/ddosBgpInstance:DdosBgpInstance example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -403,11 +487,14 @@ class DdosBgpInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
                  base_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
+                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  ip_count: Optional[pulumi.Input[_builtins.int]] = None,
                  ip_type: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  normal_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -422,6 +509,7 @@ class DdosBgpInstance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'bandwidth'")
             __props__.__dict__["bandwidth"] = bandwidth
             __props__.__dict__["base_bandwidth"] = base_bandwidth
+            __props__.__dict__["instance_name"] = instance_name
             if ip_count is None and not opts.urn:
                 raise TypeError("Missing required property 'ip_count'")
             __props__.__dict__["ip_count"] = ip_count
@@ -433,7 +521,10 @@ class DdosBgpInstance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'normal_bandwidth'")
             __props__.__dict__["normal_bandwidth"] = normal_bandwidth
             __props__.__dict__["period"] = period
+            __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["type"] = type
+            __props__.__dict__["status"] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="alicloud:dns/ddosBgpInstance:DdosBgpInstance")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(DdosBgpInstance, __self__).__init__(
@@ -448,11 +539,15 @@ class DdosBgpInstance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
             base_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
+            instance_name: Optional[pulumi.Input[_builtins.str]] = None,
             ip_count: Optional[pulumi.Input[_builtins.int]] = None,
             ip_type: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             normal_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
             period: Optional[pulumi.Input[_builtins.int]] = None,
+            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+            status: Optional[pulumi.Input[_builtins.str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             type: Optional[pulumi.Input[_builtins.str]] = None) -> 'DdosBgpInstance':
         """
         Get an existing DdosBgpInstance resource's state with the given name, id, and optional extra
@@ -461,14 +556,20 @@ class DdosBgpInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] bandwidth: Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 51,91,101,201,301. The unit is Gbps.
-        :param pulumi.Input[_builtins.int] base_bandwidth: Base defend bandwidth of the instance. Valid values: 20. The unit is Gbps. Default to `20`.
-        :param pulumi.Input[_builtins.int] ip_count: IP count of the instance. Valid values: 100.
-        :param pulumi.Input[_builtins.str] ip_type: IP version of the instance. Valid values: IPv4,IPv6.
-        :param pulumi.Input[_builtins.str] name: Name of the instance. This name can have a string of 1 to 63 characters.
-        :param pulumi.Input[_builtins.int] normal_bandwidth: Normal defend bandwidth of the instance. The unit is Gbps.
+        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the package configuration.
+        :param pulumi.Input[_builtins.int] base_bandwidth: The basic protection bandwidth of the Anti-DDoS Origin Enterprise instance. Default value: `20`. Valid values: `20`.
+        :param pulumi.Input[_builtins.str] instance_name: The name of the instance.
+        :param pulumi.Input[_builtins.int] ip_count: The number of IP addresses that can be protected by the Anti-DDoS Origin Enterprise instance.
+        :param pulumi.Input[_builtins.str] ip_type: The protection IP address type of the protection package. Valid values:
+               - `IPv4`
+               - `IPv6`
+        :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
+        :param pulumi.Input[_builtins.int] normal_bandwidth: The normal clean bandwidth. Unit: Mbit/s.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
-        :param pulumi.Input[_builtins.str] type: Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
+        :param pulumi.Input[_builtins.str] resource_group_id: Resource Group ID
+        :param pulumi.Input[_builtins.str] status: (Available since v1.259.0) The status of the Instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key of the tag that is added to the Anti-DDoS Origin instance.
+        :param pulumi.Input[_builtins.str] type: The protection package type of the DDoS native protection instance. Default value: `Enterprise`. Valid values: `Enterprise`, `Professional`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -476,11 +577,15 @@ class DdosBgpInstance(pulumi.CustomResource):
 
         __props__.__dict__["bandwidth"] = bandwidth
         __props__.__dict__["base_bandwidth"] = base_bandwidth
+        __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["ip_count"] = ip_count
         __props__.__dict__["ip_type"] = ip_type
         __props__.__dict__["name"] = name
         __props__.__dict__["normal_bandwidth"] = normal_bandwidth
         __props__.__dict__["period"] = period
+        __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["type"] = type
         return DdosBgpInstance(resource_name, opts=opts, __props__=__props__)
 
@@ -488,7 +593,7 @@ class DdosBgpInstance(pulumi.CustomResource):
     @pulumi.getter
     def bandwidth(self) -> pulumi.Output[_builtins.int]:
         """
-        Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 51,91,101,201,301. The unit is Gbps.
+        The bandwidth of the package configuration.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -496,15 +601,23 @@ class DdosBgpInstance(pulumi.CustomResource):
     @pulumi.getter(name="baseBandwidth")
     def base_bandwidth(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Base defend bandwidth of the instance. Valid values: 20. The unit is Gbps. Default to `20`.
+        The basic protection bandwidth of the Anti-DDoS Origin Enterprise instance. Default value: `20`. Valid values: `20`.
         """
         return pulumi.get(self, "base_bandwidth")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> pulumi.Output[_builtins.str]:
+        """
+        The name of the instance.
+        """
+        return pulumi.get(self, "instance_name")
 
     @_builtins.property
     @pulumi.getter(name="ipCount")
     def ip_count(self) -> pulumi.Output[_builtins.int]:
         """
-        IP count of the instance. Valid values: 100.
+        The number of IP addresses that can be protected by the Anti-DDoS Origin Enterprise instance.
         """
         return pulumi.get(self, "ip_count")
 
@@ -512,15 +625,18 @@ class DdosBgpInstance(pulumi.CustomResource):
     @pulumi.getter(name="ipType")
     def ip_type(self) -> pulumi.Output[_builtins.str]:
         """
-        IP version of the instance. Valid values: IPv4,IPv6.
+        The protection IP address type of the protection package. Valid values:
+        - `IPv4`
+        - `IPv6`
         """
         return pulumi.get(self, "ip_type")
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.""")
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of the instance. This name can have a string of 1 to 63 characters.
+        Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -528,7 +644,7 @@ class DdosBgpInstance(pulumi.CustomResource):
     @pulumi.getter(name="normalBandwidth")
     def normal_bandwidth(self) -> pulumi.Output[_builtins.int]:
         """
-        Normal defend bandwidth of the instance. The unit is Gbps.
+        The normal clean bandwidth. Unit: Mbit/s.
         """
         return pulumi.get(self, "normal_bandwidth")
 
@@ -541,10 +657,34 @@ class DdosBgpInstance(pulumi.CustomResource):
         return pulumi.get(self, "period")
 
     @_builtins.property
-    @pulumi.getter
-    def type(self) -> pulumi.Output[Optional[_builtins.str]]:
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
+        Resource Group ID
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since v1.259.0) The status of the Instance.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        The key of the tag that is added to the Anti-DDoS Origin instance.
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The protection package type of the DDoS native protection instance. Default value: `Enterprise`. Valid values: `Enterprise`, `Professional`.
         """
         return pulumi.get(self, "type")
 

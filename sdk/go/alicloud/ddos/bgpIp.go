@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Ddos Bgp Ip resource.
+// Provides a Anti-DDoS Pro (DdosBgp) Ip resource.
 //
-// For information about Ddos Bgp Ip and how to use it, see [What is Ip](https://www.alibabacloud.com/help/en/ddos-protection/latest/addip).
+// For information about Anti-DDoS Pro (DdosBgp) Ip and how to use it, see [What is Ip](https://www.alibabacloud.com/help/en/ddos-protection/latest/addip).
 //
 // > **NOTE:** Available since v1.180.0.
 //
@@ -27,9 +27,9 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -38,15 +38,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-example"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{}, nil)
+//			_default, err := alicloud.GetAccount(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			instance, err := ddos.NewDdosBgpInstance(ctx, "instance", &ddos.DdosBgpInstanceArgs{
+//			defaultDdosBgpInstance, err := ddos.NewDdosBgpInstance(ctx, "default", &ddos.DdosBgpInstanceArgs{
 //				Name:            pulumi.String(name),
 //				BaseBandwidth:   pulumi.Int(20),
 //				Bandwidth:       pulumi.Int(-1),
@@ -65,9 +65,9 @@ import (
 //				return err
 //			}
 //			_, err = ddos.NewBgpIp(ctx, "default", &ddos.BgpIpArgs{
-//				InstanceId:      instance.ID(),
-//				Ip:              defaultEipAddress.IpAddress,
-//				ResourceGroupId: pulumi.String(_default.Groups[0].Id),
+//				InstanceId: defaultDdosBgpInstance.ID(),
+//				Ip:         defaultEipAddress.IpAddress,
+//				MemberUid:  pulumi.String(_default.Id),
 //			})
 //			if err != nil {
 //				return err
@@ -80,7 +80,7 @@ import (
 //
 // ## Import
 //
-// Ddos Bgp Ip can be imported using the id, e.g.
+// Anti-DDoS Pro (DdosBgp) Ip can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:ddos/bgpIp:BgpIp example <instance_id>:<ip>
@@ -88,15 +88,17 @@ import (
 type BgpIp struct {
 	pulumi.CustomResourceState
 
-	// The ID of the native protection enterprise instance to be operated.
+	// The ID of the Anti-DDoS Origin instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// The IP address.
+	// The IP address that you want to add.
 	Ip pulumi.StringOutput `pulumi:"ip"`
-	// The member account id of the IP address.
+	// The member to which the asset belongs.
 	MemberUid pulumi.StringOutput `pulumi:"memberUid"`
-	// The ID of the resource group.
+	// Field `resourceGroupId` has been deprecated from provider version 1.259.0.
+	//
+	// Deprecated: Field `resourceGroupId` has been deprecated from provider version 1.259.0.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
-	// The current state of the IP address. Valid Value: `normal`, `holeBegin`.
+	// The status of the IP address.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -136,28 +138,32 @@ func GetBgpIp(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BgpIp resources.
 type bgpIpState struct {
-	// The ID of the native protection enterprise instance to be operated.
+	// The ID of the Anti-DDoS Origin instance.
 	InstanceId *string `pulumi:"instanceId"`
-	// The IP address.
+	// The IP address that you want to add.
 	Ip *string `pulumi:"ip"`
-	// The member account id of the IP address.
+	// The member to which the asset belongs.
 	MemberUid *string `pulumi:"memberUid"`
-	// The ID of the resource group.
+	// Field `resourceGroupId` has been deprecated from provider version 1.259.0.
+	//
+	// Deprecated: Field `resourceGroupId` has been deprecated from provider version 1.259.0.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The current state of the IP address. Valid Value: `normal`, `holeBegin`.
+	// The status of the IP address.
 	Status *string `pulumi:"status"`
 }
 
 type BgpIpState struct {
-	// The ID of the native protection enterprise instance to be operated.
+	// The ID of the Anti-DDoS Origin instance.
 	InstanceId pulumi.StringPtrInput
-	// The IP address.
+	// The IP address that you want to add.
 	Ip pulumi.StringPtrInput
-	// The member account id of the IP address.
+	// The member to which the asset belongs.
 	MemberUid pulumi.StringPtrInput
-	// The ID of the resource group.
+	// Field `resourceGroupId` has been deprecated from provider version 1.259.0.
+	//
+	// Deprecated: Field `resourceGroupId` has been deprecated from provider version 1.259.0.
 	ResourceGroupId pulumi.StringPtrInput
-	// The current state of the IP address. Valid Value: `normal`, `holeBegin`.
+	// The status of the IP address.
 	Status pulumi.StringPtrInput
 }
 
@@ -166,25 +172,29 @@ func (BgpIpState) ElementType() reflect.Type {
 }
 
 type bgpIpArgs struct {
-	// The ID of the native protection enterprise instance to be operated.
+	// The ID of the Anti-DDoS Origin instance.
 	InstanceId string `pulumi:"instanceId"`
-	// The IP address.
+	// The IP address that you want to add.
 	Ip string `pulumi:"ip"`
-	// The member account id of the IP address.
+	// The member to which the asset belongs.
 	MemberUid *string `pulumi:"memberUid"`
-	// The ID of the resource group.
+	// Field `resourceGroupId` has been deprecated from provider version 1.259.0.
+	//
+	// Deprecated: Field `resourceGroupId` has been deprecated from provider version 1.259.0.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 }
 
 // The set of arguments for constructing a BgpIp resource.
 type BgpIpArgs struct {
-	// The ID of the native protection enterprise instance to be operated.
+	// The ID of the Anti-DDoS Origin instance.
 	InstanceId pulumi.StringInput
-	// The IP address.
+	// The IP address that you want to add.
 	Ip pulumi.StringInput
-	// The member account id of the IP address.
+	// The member to which the asset belongs.
 	MemberUid pulumi.StringPtrInput
-	// The ID of the resource group.
+	// Field `resourceGroupId` has been deprecated from provider version 1.259.0.
+	//
+	// Deprecated: Field `resourceGroupId` has been deprecated from provider version 1.259.0.
 	ResourceGroupId pulumi.StringPtrInput
 }
 
@@ -275,27 +285,29 @@ func (o BgpIpOutput) ToBgpIpOutputWithContext(ctx context.Context) BgpIpOutput {
 	return o
 }
 
-// The ID of the native protection enterprise instance to be operated.
+// The ID of the Anti-DDoS Origin instance.
 func (o BgpIpOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *BgpIp) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// The IP address.
+// The IP address that you want to add.
 func (o BgpIpOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v *BgpIp) pulumi.StringOutput { return v.Ip }).(pulumi.StringOutput)
 }
 
-// The member account id of the IP address.
+// The member to which the asset belongs.
 func (o BgpIpOutput) MemberUid() pulumi.StringOutput {
 	return o.ApplyT(func(v *BgpIp) pulumi.StringOutput { return v.MemberUid }).(pulumi.StringOutput)
 }
 
-// The ID of the resource group.
+// Field `resourceGroupId` has been deprecated from provider version 1.259.0.
+//
+// Deprecated: Field `resourceGroupId` has been deprecated from provider version 1.259.0.
 func (o BgpIpOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BgpIp) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
-// The current state of the IP address. Valid Value: `normal`, `holeBegin`.
+// The status of the IP address.
 func (o BgpIpOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *BgpIp) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

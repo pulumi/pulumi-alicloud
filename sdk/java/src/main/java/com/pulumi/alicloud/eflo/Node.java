@@ -10,6 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -178,6 +179,20 @@ public class Node extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.hpnZone);
     }
     /**
+     * Whether to buy PAI. default value `false`.
+     * 
+     */
+    @Export(name="installPai", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> installPai;
+
+    /**
+     * @return Whether to buy PAI. default value `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> installPai() {
+        return Codegen.optional(this.installPai);
+    }
+    /**
      * Down payment ratio
      * 
      */
@@ -302,14 +317,14 @@ public class Node extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.stageNum);
     }
     /**
-     * The status of the resource
+     * The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource
+     * @return The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
      * 
      */
     public Output<String> status() {

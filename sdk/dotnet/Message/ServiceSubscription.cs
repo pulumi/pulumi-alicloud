@@ -112,6 +112,12 @@ namespace Pulumi.AliCloud.Message
         public Output<string> PushType { get; private set; } = null!;
 
         /// <summary>
+        /// The STS RoleArn.
+        /// </summary>
+        [Output("stsRoleArn")]
+        public Output<string?> StsRoleArn { get; private set; } = null!;
+
+        /// <summary>
         /// Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
         /// </summary>
         [Output("subscriptionName")]
@@ -213,6 +219,12 @@ namespace Pulumi.AliCloud.Message
         public Input<string> PushType { get; set; } = null!;
 
         /// <summary>
+        /// The STS RoleArn.
+        /// </summary>
+        [Input("stsRoleArn")]
+        public Input<string>? StsRoleArn { get; set; }
+
+        /// <summary>
         /// Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
         /// </summary>
         [Input("subscriptionName", required: true)]
@@ -280,6 +292,12 @@ namespace Pulumi.AliCloud.Message
         /// </summary>
         [Input("pushType")]
         public Input<string>? PushType { get; set; }
+
+        /// <summary>
+        /// The STS RoleArn.
+        /// </summary>
+        [Input("stsRoleArn")]
+        public Input<string>? StsRoleArn { get; set; }
 
         /// <summary>
         /// Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.

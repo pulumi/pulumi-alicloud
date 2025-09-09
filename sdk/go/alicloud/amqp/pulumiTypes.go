@@ -334,9 +334,9 @@ func (o GetExchangesExchangeArrayOutput) Index(i pulumi.IntInput) GetExchangesEx
 }
 
 type GetInstancesInstance struct {
-	// OrderCreateTime.
+	// The timestamp that indicates when the order was created.
 	CreateTime string `pulumi:"createTime"`
-	// ExpireTime.
+	// The timestamp that indicates when the instance expires.
 	ExpireTime string `pulumi:"expireTime"`
 	// The ID of the Instance.
 	Id string `pulumi:"id"`
@@ -346,21 +346,21 @@ type GetInstancesInstance struct {
 	InstanceName string `pulumi:"instanceName"`
 	// The instance type.
 	InstanceType string `pulumi:"instanceType"`
-	// The Pay-as-You-Type Values Include: the Subscription of a Pre-Paid.
+	// The billing method of the instance. **Note:** `paymentType` takes effect only if `enableDetails` is set to `true`.
 	PaymentType string `pulumi:"paymentType"`
-	// The private endPoint.
+	// The virtual private cloud (VPC) endpoint of the instance.
 	PrivateEndPoint string `pulumi:"privateEndPoint"`
-	// The public dndpoint.
+	// The public endpoint of the instance.
 	PublicEndpoint string `pulumi:"publicEndpoint"`
-	// Renewal duration.
+	// Auto renewal period of an instance. **Note:** `renewalDuration` takes effect only if `enableDetails` is set to `true`.
 	RenewalDuration int `pulumi:"renewalDuration"`
-	// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
+	// Automatic renewal period unit. **Note:** `renewalDurationUnit` takes effect only if `enableDetails` is set to `true`.
 	RenewalDurationUnit string `pulumi:"renewalDurationUnit"`
-	// Renew status.
+	// Whether to renew an instance automatically or not. **Note:** `renewalStatus` takes effect only if `enableDetails` is set to `true`.
 	RenewalStatus string `pulumi:"renewalStatus"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `DEPLOYING`, `SERVING`, `EXPIRED`, `RELEASED`.
 	Status string `pulumi:"status"`
-	// Whether to support eip.
+	// Indicates whether the instance supports elastic IP addresses (EIPs).
 	SupportEip bool `pulumi:"supportEip"`
 }
 
@@ -376,9 +376,9 @@ type GetInstancesInstanceInput interface {
 }
 
 type GetInstancesInstanceArgs struct {
-	// OrderCreateTime.
+	// The timestamp that indicates when the order was created.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// ExpireTime.
+	// The timestamp that indicates when the instance expires.
 	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
 	// The ID of the Instance.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -388,21 +388,21 @@ type GetInstancesInstanceArgs struct {
 	InstanceName pulumi.StringInput `pulumi:"instanceName"`
 	// The instance type.
 	InstanceType pulumi.StringInput `pulumi:"instanceType"`
-	// The Pay-as-You-Type Values Include: the Subscription of a Pre-Paid.
+	// The billing method of the instance. **Note:** `paymentType` takes effect only if `enableDetails` is set to `true`.
 	PaymentType pulumi.StringInput `pulumi:"paymentType"`
-	// The private endPoint.
+	// The virtual private cloud (VPC) endpoint of the instance.
 	PrivateEndPoint pulumi.StringInput `pulumi:"privateEndPoint"`
-	// The public dndpoint.
+	// The public endpoint of the instance.
 	PublicEndpoint pulumi.StringInput `pulumi:"publicEndpoint"`
-	// Renewal duration.
+	// Auto renewal period of an instance. **Note:** `renewalDuration` takes effect only if `enableDetails` is set to `true`.
 	RenewalDuration pulumi.IntInput `pulumi:"renewalDuration"`
-	// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
+	// Automatic renewal period unit. **Note:** `renewalDurationUnit` takes effect only if `enableDetails` is set to `true`.
 	RenewalDurationUnit pulumi.StringInput `pulumi:"renewalDurationUnit"`
-	// Renew status.
+	// Whether to renew an instance automatically or not. **Note:** `renewalStatus` takes effect only if `enableDetails` is set to `true`.
 	RenewalStatus pulumi.StringInput `pulumi:"renewalStatus"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `DEPLOYING`, `SERVING`, `EXPIRED`, `RELEASED`.
 	Status pulumi.StringInput `pulumi:"status"`
-	// Whether to support eip.
+	// Indicates whether the instance supports elastic IP addresses (EIPs).
 	SupportEip pulumi.BoolInput `pulumi:"supportEip"`
 }
 
@@ -457,12 +457,12 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx 
 	return o
 }
 
-// OrderCreateTime.
+// The timestamp that indicates when the order was created.
 func (o GetInstancesInstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// ExpireTime.
+// The timestamp that indicates when the instance expires.
 func (o GetInstancesInstanceOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ExpireTime }).(pulumi.StringOutput)
 }
@@ -487,42 +487,42 @@ func (o GetInstancesInstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
-// The Pay-as-You-Type Values Include: the Subscription of a Pre-Paid.
+// The billing method of the instance. **Note:** `paymentType` takes effect only if `enableDetails` is set to `true`.
 func (o GetInstancesInstanceOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.PaymentType }).(pulumi.StringOutput)
 }
 
-// The private endPoint.
+// The virtual private cloud (VPC) endpoint of the instance.
 func (o GetInstancesInstanceOutput) PrivateEndPoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.PrivateEndPoint }).(pulumi.StringOutput)
 }
 
-// The public dndpoint.
+// The public endpoint of the instance.
 func (o GetInstancesInstanceOutput) PublicEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.PublicEndpoint }).(pulumi.StringOutput)
 }
 
-// Renewal duration.
+// Auto renewal period of an instance. **Note:** `renewalDuration` takes effect only if `enableDetails` is set to `true`.
 func (o GetInstancesInstanceOutput) RenewalDuration() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.RenewalDuration }).(pulumi.IntOutput)
 }
 
-// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
+// Automatic renewal period unit. **Note:** `renewalDurationUnit` takes effect only if `enableDetails` is set to `true`.
 func (o GetInstancesInstanceOutput) RenewalDurationUnit() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.RenewalDurationUnit }).(pulumi.StringOutput)
 }
 
-// Renew status.
+// Whether to renew an instance automatically or not. **Note:** `renewalStatus` takes effect only if `enableDetails` is set to `true`.
 func (o GetInstancesInstanceOutput) RenewalStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.RenewalStatus }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the resource. Valid values: `DEPLOYING`, `SERVING`, `EXPIRED`, `RELEASED`.
 func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Whether to support eip.
+// Indicates whether the instance supports elastic IP addresses (EIPs).
 func (o GetInstancesInstanceOutput) SupportEip() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstancesInstance) bool { return v.SupportEip }).(pulumi.BoolOutput)
 }

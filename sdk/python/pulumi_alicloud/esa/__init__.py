@@ -22,6 +22,7 @@ from .https_application_configuration import *
 from .https_basic_configuration import *
 from .image_transform import *
 from .kv import *
+from .kv_account import *
 from .kv_namespace import *
 from .list import *
 from .network_optimization import *
@@ -36,12 +37,14 @@ from .record import *
 from .redirect_rule import *
 from .rewrite_url_rule import *
 from .routine import *
+from .routine_related_record import *
 from .routine_route import *
 from .scheduled_preload_execution import *
 from .scheduled_preload_job import *
 from .site import *
 from .site_delivery_task import *
 from .site_origin_client_certificate import *
+from .url_observation import *
 from .version import *
 from .video_processing import *
 from .waiting_room import *

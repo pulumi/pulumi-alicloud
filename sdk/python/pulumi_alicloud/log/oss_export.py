@@ -864,6 +864,9 @@ class OssExport(pulumi.CustomResource):
         """
         Log service data delivery management, this service provides the function of delivering data in logstore to oss product storage. [Refer to details](https://www.alibabacloud.com/help/en/log-service/latest/ship-logs-to-oss-new-version).
 
+        > **NOTE:** This resource is no longer maintained. It is recommended to use the new resource alicloud_sls_oss_export_sink.
+        Refer to details.
+
         > **NOTE:** Available since v1.187.0.
 
         ## Example Usage
@@ -957,6 +960,9 @@ class OssExport(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Log service data delivery management, this service provides the function of delivering data in logstore to oss product storage. [Refer to details](https://www.alibabacloud.com/help/en/log-service/latest/ship-logs-to-oss-new-version).
+
+        > **NOTE:** This resource is no longer maintained. It is recommended to use the new resource alicloud_sls_oss_export_sink.
+        Refer to details.
 
         > **NOTE:** Available since v1.187.0.
 

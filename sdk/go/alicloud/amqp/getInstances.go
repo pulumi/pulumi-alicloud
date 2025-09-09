@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Amqp Instances of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.128.0+.
+// > **NOTE:** Available since v1.128.0.
 //
 // ## Example Usage
 //
@@ -26,28 +26,40 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/amqp"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := amqp.GetInstances(ctx, &amqp.GetInstancesArgs{
-//				Ids: []string{
-//					"amqp-abc12345",
-//					"amqp-abc34567",
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := amqp.NewInstance(ctx, "default", &amqp.InstanceArgs{
+//				InstanceName:        pulumi.String(name),
+//				InstanceType:        pulumi.String("enterprise"),
+//				MaxTps:              pulumi.String("3000"),
+//				MaxConnections:      pulumi.Int(2000),
+//				QueueCapacity:       pulumi.String("200"),
+//				PaymentType:         pulumi.String("Subscription"),
+//				RenewalStatus:       pulumi.String("AutoRenewal"),
+//				RenewalDuration:     pulumi.Int(1),
+//				RenewalDurationUnit: pulumi.String("Year"),
+//				SupportEip:          pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ids := amqp.GetInstancesOutput(ctx, amqp.GetInstancesOutputArgs{
+//				Ids: pulumi.StringArray{
+//					_default.ID(),
 //				},
 //			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("amqpInstanceId1", ids.Instances[0].Id)
-//			nameRegex, err := amqp.GetInstances(ctx, &amqp.GetInstancesArgs{
-//				NameRegex: pulumi.StringRef("^my-Instance"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("amqpInstanceId2", nameRegex.Instances[0].Id)
+//			ctx.Export("amqpInstanceId0", ids.ApplyT(func(ids amqp.GetInstancesResult) (*string, error) {
+//				return &ids.Instances[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}
@@ -65,7 +77,7 @@ func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getInstances.
 type GetInstancesArgs struct {
-	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	// Whether to query the detailed list of resource attributes. Default value: `false`.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Instance IDs.
 	Ids []string `pulumi:"ids"`
@@ -73,7 +85,7 @@ type GetInstancesArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the resource. Valid values: "DEPLOYING", "EXPIRED", "RELEASED", "SERVING".
+	// The status of the resource. Valid values: `DEPLOYING`, `SERVING`, `EXPIRED`, `RELEASED`.
 	Status *string `pulumi:"status"`
 }
 
@@ -81,13 +93,16 @@ type GetInstancesArgs struct {
 type GetInstancesResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                 `pulumi:"id"`
-	Ids        []string               `pulumi:"ids"`
-	Instances  []GetInstancesInstance `pulumi:"instances"`
-	NameRegex  *string                `pulumi:"nameRegex"`
-	Names      []string               `pulumi:"names"`
-	OutputFile *string                `pulumi:"outputFile"`
-	Status     *string                `pulumi:"status"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// A list of Amqp Instances. Each element contains the following attributes:
+	Instances []GetInstancesInstance `pulumi:"instances"`
+	NameRegex *string                `pulumi:"nameRegex"`
+	// A list of Instance names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The status of the instance.
+	Status *string `pulumi:"status"`
 }
 
 func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts ...pulumi.InvokeOption) GetInstancesResultOutput {
@@ -101,7 +116,7 @@ func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts .
 
 // A collection of arguments for invoking getInstances.
 type GetInstancesOutputArgs struct {
-	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	// Whether to query the detailed list of resource attributes. Default value: `false`.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Instance IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -109,7 +124,7 @@ type GetInstancesOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the resource. Valid values: "DEPLOYING", "EXPIRED", "RELEASED", "SERVING".
+	// The status of the resource. Valid values: `DEPLOYING`, `SERVING`, `EXPIRED`, `RELEASED`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -145,6 +160,7 @@ func (o GetInstancesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list of Amqp Instances. Each element contains the following attributes:
 func (o GetInstancesResultOutput) Instances() GetInstancesInstanceArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []GetInstancesInstance { return v.Instances }).(GetInstancesInstanceArrayOutput)
 }
@@ -153,6 +169,7 @@ func (o GetInstancesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Instance names.
 func (o GetInstancesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -161,6 +178,7 @@ func (o GetInstancesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the instance.
 func (o GetInstancesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

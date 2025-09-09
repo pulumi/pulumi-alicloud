@@ -14,6 +14,8 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * Amqp Virtual Host.
+ * 
  * Provides a RabbitMQ (AMQP) Virtual Host resource.
  * 
  * For information about RabbitMQ (AMQP) Virtual Host and how to use it, see [What is Virtual Host](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createvirtualhost).
@@ -32,6 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.amqp.Instance;
  * import com.pulumi.alicloud.amqp.InstanceArgs;
  * import com.pulumi.alicloud.amqp.VirtualHost;
@@ -49,19 +53,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Instance("default", InstanceArgs.builder()
- *             .instanceType("professional")
- *             .maxTps("1000")
- *             .queueCapacity("50")
- *             .supportEip(true)
- *             .maxEipTps("128")
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+ *             .instanceName(String.format("%s-%s", name,default_.result()))
+ *             .instanceType("enterprise")
+ *             .maxTps("3000")
+ *             .maxConnections(2000)
+ *             .queueCapacity("200")
  *             .paymentType("Subscription")
- *             .period(1)
+ *             .renewalStatus("AutoRenewal")
+ *             .renewalDuration(1)
+ *             .renewalDurationUnit("Year")
+ *             .supportEip(true)
  *             .build());
  * 
  *         var defaultVirtualHost = new VirtualHost("defaultVirtualHost", VirtualHostArgs.builder()
- *             .instanceId(default_.id())
- *             .virtualHostName("tf-example")
+ *             .instanceId(defaultInstance.id())
+ *             .virtualHostName(String.format("%s-%s", name,default_.result()))
  *             .build());
  * 
  *     }

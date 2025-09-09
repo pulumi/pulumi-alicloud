@@ -16,14 +16,29 @@ public final class SharedResourceState extends com.pulumi.resources.ResourceArgs
     public static final SharedResourceState Empty = new SharedResourceState();
 
     /**
-     * The resource ID need shared.
+     * (Available since v1.259.0) The time when the shared resource was associated with the resource share.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return (Available since v1.259.0) The time when the shared resource was associated with the resource share.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * The ID of the shared resource.
      * 
      */
     @Import(name="resourceId")
     private @Nullable Output<String> resourceId;
 
     /**
-     * @return The resource ID need shared.
+     * @return The ID of the shared resource.
      * 
      */
     public Optional<Output<String>> resourceId() {
@@ -31,14 +46,14 @@ public final class SharedResourceState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The resource share ID of resource manager.
+     * The ID of the resource share.
      * 
      */
     @Import(name="resourceShareId")
     private @Nullable Output<String> resourceShareId;
 
     /**
-     * @return The resource share ID of resource manager.
+     * @return The ID of the resource share.
      * 
      */
     public Optional<Output<String>> resourceShareId() {
@@ -46,7 +61,7 @@ public final class SharedResourceState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The resource type of should shared. Valid values:
+     * The type of the shared resource. Valid values:
      * - `VSwitch`.
      * - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
      * - The following types are added after v1.192.0: `PrefixList` and `Image`.
@@ -60,7 +75,7 @@ public final class SharedResourceState extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<String> resourceType;
 
     /**
-     * @return The resource type of should shared. Valid values:
+     * @return The type of the shared resource. Valid values:
      * - `VSwitch`.
      * - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
      * - The following types are added after v1.192.0: `PrefixList` and `Image`.
@@ -92,6 +107,7 @@ public final class SharedResourceState extends com.pulumi.resources.ResourceArgs
     private SharedResourceState() {}
 
     private SharedResourceState(SharedResourceState $) {
+        this.createTime = $.createTime;
         this.resourceId = $.resourceId;
         this.resourceShareId = $.resourceShareId;
         this.resourceType = $.resourceType;
@@ -117,7 +133,28 @@ public final class SharedResourceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param resourceId The resource ID need shared.
+         * @param createTime (Available since v1.259.0) The time when the shared resource was associated with the resource share.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime (Available since v1.259.0) The time when the shared resource was associated with the resource share.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param resourceId The ID of the shared resource.
          * 
          * @return builder
          * 
@@ -128,7 +165,7 @@ public final class SharedResourceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param resourceId The resource ID need shared.
+         * @param resourceId The ID of the shared resource.
          * 
          * @return builder
          * 
@@ -138,7 +175,7 @@ public final class SharedResourceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param resourceShareId The resource share ID of resource manager.
+         * @param resourceShareId The ID of the resource share.
          * 
          * @return builder
          * 
@@ -149,7 +186,7 @@ public final class SharedResourceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param resourceShareId The resource share ID of resource manager.
+         * @param resourceShareId The ID of the resource share.
          * 
          * @return builder
          * 
@@ -159,7 +196,7 @@ public final class SharedResourceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param resourceType The resource type of should shared. Valid values:
+         * @param resourceType The type of the shared resource. Valid values:
          * - `VSwitch`.
          * - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
          * - The following types are added after v1.192.0: `PrefixList` and `Image`.
@@ -177,7 +214,7 @@ public final class SharedResourceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param resourceType The resource type of should shared. Valid values:
+         * @param resourceType The type of the shared resource. Valid values:
          * - `VSwitch`.
          * - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
          * - The following types are added after v1.192.0: `PrefixList` and `Image`.

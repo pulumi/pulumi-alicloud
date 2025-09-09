@@ -93,6 +93,8 @@ type Node struct {
 	DiscountLevel pulumi.StringPtrOutput `pulumi:"discountLevel"`
 	// Cluster Number
 	HpnZone pulumi.StringPtrOutput `pulumi:"hpnZone"`
+	// Whether to buy PAI. default value `false`.
+	InstallPai pulumi.BoolPtrOutput `pulumi:"installPai"`
 	// Down payment ratio
 	PaymentRatio pulumi.StringPtrOutput `pulumi:"paymentRatio"`
 	// Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
@@ -115,7 +117,7 @@ type Node struct {
 	ServerArch pulumi.StringPtrOutput `pulumi:"serverArch"`
 	// Number of stages
 	StageNum pulumi.StringPtrOutput `pulumi:"stageNum"`
-	// The status of the resource
+	// The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tag of the resource
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -165,6 +167,8 @@ type nodeState struct {
 	DiscountLevel *string `pulumi:"discountLevel"`
 	// Cluster Number
 	HpnZone *string `pulumi:"hpnZone"`
+	// Whether to buy PAI. default value `false`.
+	InstallPai *bool `pulumi:"installPai"`
 	// Down payment ratio
 	PaymentRatio *string `pulumi:"paymentRatio"`
 	// Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
@@ -187,7 +191,7 @@ type nodeState struct {
 	ServerArch *string `pulumi:"serverArch"`
 	// Number of stages
 	StageNum *string `pulumi:"stageNum"`
-	// The status of the resource
+	// The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
 	Status *string `pulumi:"status"`
 	// The tag of the resource
 	Tags map[string]string `pulumi:"tags"`
@@ -208,6 +212,8 @@ type NodeState struct {
 	DiscountLevel pulumi.StringPtrInput
 	// Cluster Number
 	HpnZone pulumi.StringPtrInput
+	// Whether to buy PAI. default value `false`.
+	InstallPai pulumi.BoolPtrInput
 	// Down payment ratio
 	PaymentRatio pulumi.StringPtrInput
 	// Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
@@ -230,7 +236,7 @@ type NodeState struct {
 	ServerArch pulumi.StringPtrInput
 	// Number of stages
 	StageNum pulumi.StringPtrInput
-	// The status of the resource
+	// The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
 	Status pulumi.StringPtrInput
 	// The tag of the resource
 	Tags pulumi.StringMapInput
@@ -253,6 +259,8 @@ type nodeArgs struct {
 	DiscountLevel *string `pulumi:"discountLevel"`
 	// Cluster Number
 	HpnZone *string `pulumi:"hpnZone"`
+	// Whether to buy PAI. default value `false`.
+	InstallPai *bool `pulumi:"installPai"`
 	// Down payment ratio
 	PaymentRatio *string `pulumi:"paymentRatio"`
 	// Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
@@ -275,7 +283,7 @@ type nodeArgs struct {
 	ServerArch *string `pulumi:"serverArch"`
 	// Number of stages
 	StageNum *string `pulumi:"stageNum"`
-	// The status of the resource
+	// The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
 	Status *string `pulumi:"status"`
 	// The tag of the resource
 	Tags map[string]string `pulumi:"tags"`
@@ -295,6 +303,8 @@ type NodeArgs struct {
 	DiscountLevel pulumi.StringPtrInput
 	// Cluster Number
 	HpnZone pulumi.StringPtrInput
+	// Whether to buy PAI. default value `false`.
+	InstallPai pulumi.BoolPtrInput
 	// Down payment ratio
 	PaymentRatio pulumi.StringPtrInput
 	// Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
@@ -317,7 +327,7 @@ type NodeArgs struct {
 	ServerArch pulumi.StringPtrInput
 	// Number of stages
 	StageNum pulumi.StringPtrInput
-	// The status of the resource
+	// The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
 	Status pulumi.StringPtrInput
 	// The tag of the resource
 	Tags pulumi.StringMapInput
@@ -442,6 +452,11 @@ func (o NodeOutput) HpnZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringPtrOutput { return v.HpnZone }).(pulumi.StringPtrOutput)
 }
 
+// Whether to buy PAI. default value `false`.
+func (o NodeOutput) InstallPai() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Node) pulumi.BoolPtrOutput { return v.InstallPai }).(pulumi.BoolPtrOutput)
+}
+
 // Down payment ratio
 func (o NodeOutput) PaymentRatio() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringPtrOutput { return v.PaymentRatio }).(pulumi.StringPtrOutput)
@@ -488,7 +503,7 @@ func (o NodeOutput) StageNum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringPtrOutput { return v.StageNum }).(pulumi.StringPtrOutput)
 }
 
-// The status of the resource
+// The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
 func (o NodeOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

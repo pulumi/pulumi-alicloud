@@ -11,17 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Resource Manager Resource Directory resource. Resource Directory enables you to establish an organizational structure for the resources used by applications of your enterprise. You can plan, build, and manage the resources in a centralized manner by using only one resource directory.
+// Provides a Resource Manager Resource Directory resource.
 //
-// For information about Resource Manager Resource Directory and how to use it, see [What is Resource Manager Resource Directory](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
+// For information about Resource Manager Resource Directory and how to use it, see [What is Resource Directory](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
 //
 // > **NOTE:** Available since v1.84.0.
-//
-// > **NOTE:** An account can only be used to enable a resource directory after it passes enterprise real-name verification. An account that only passed individual real-name verification cannot be used to enable a resource directory.
-//
-// > **NOTE:** Before you destroy the resource, make sure that the following requirements are met:
-//   - All member accounts must be removed from the resource directory.
-//   - All folders except the root folder must be deleted from the resource directory.
 //
 // ## Example Usage
 //
@@ -74,20 +68,28 @@ import (
 // Resource Manager Resource Directory can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:resourcemanager/resourceDirectory:ResourceDirectory example rd-s3****
+// $ pulumi import alicloud:resourcemanager/resourceDirectory:ResourceDirectory example <id>
 // ```
 type ResourceDirectory struct {
 	pulumi.CustomResourceState
 
-	// The ID of the master account.
+	// The time when the resource directory was created
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The ID of the master account
 	MasterAccountId pulumi.StringOutput `pulumi:"masterAccountId"`
-	// The name of the master account.
+	// The name of the master account
 	MasterAccountName pulumi.StringOutput `pulumi:"masterAccountName"`
-	// Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+	// The status of the Member Display Name Synchronization feature. Valid values:
+	// - Enabled
+	// - Disabled
+	MemberAccountDisplayNameSyncStatus pulumi.StringOutput `pulumi:"memberAccountDisplayNameSyncStatus"`
+	// The status of the member deletion feature. Valid values:
+	// - Enabled: The feature is enabled. You can call the DeleteAccount operation to delete members of the resource account type.
+	// - Disabled: The feature is disabled. You cannot delete members of the resource account type.
 	MemberDeletionStatus pulumi.StringOutput `pulumi:"memberDeletionStatus"`
-	// The ID of the root folder.
+	// The ID of the root folder
 	RootFolderId pulumi.StringOutput `pulumi:"rootFolderId"`
-	// The status of control policy. Valid values:`Enabled` and `Disabled`.
+	// ScpStatus
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -121,28 +123,44 @@ func GetResourceDirectory(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ResourceDirectory resources.
 type resourceDirectoryState struct {
-	// The ID of the master account.
+	// The time when the resource directory was created
+	CreateTime *string `pulumi:"createTime"`
+	// The ID of the master account
 	MasterAccountId *string `pulumi:"masterAccountId"`
-	// The name of the master account.
+	// The name of the master account
 	MasterAccountName *string `pulumi:"masterAccountName"`
-	// Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+	// The status of the Member Display Name Synchronization feature. Valid values:
+	// - Enabled
+	// - Disabled
+	MemberAccountDisplayNameSyncStatus *string `pulumi:"memberAccountDisplayNameSyncStatus"`
+	// The status of the member deletion feature. Valid values:
+	// - Enabled: The feature is enabled. You can call the DeleteAccount operation to delete members of the resource account type.
+	// - Disabled: The feature is disabled. You cannot delete members of the resource account type.
 	MemberDeletionStatus *string `pulumi:"memberDeletionStatus"`
-	// The ID of the root folder.
+	// The ID of the root folder
 	RootFolderId *string `pulumi:"rootFolderId"`
-	// The status of control policy. Valid values:`Enabled` and `Disabled`.
+	// ScpStatus
 	Status *string `pulumi:"status"`
 }
 
 type ResourceDirectoryState struct {
-	// The ID of the master account.
+	// The time when the resource directory was created
+	CreateTime pulumi.StringPtrInput
+	// The ID of the master account
 	MasterAccountId pulumi.StringPtrInput
-	// The name of the master account.
+	// The name of the master account
 	MasterAccountName pulumi.StringPtrInput
-	// Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+	// The status of the Member Display Name Synchronization feature. Valid values:
+	// - Enabled
+	// - Disabled
+	MemberAccountDisplayNameSyncStatus pulumi.StringPtrInput
+	// The status of the member deletion feature. Valid values:
+	// - Enabled: The feature is enabled. You can call the DeleteAccount operation to delete members of the resource account type.
+	// - Disabled: The feature is disabled. You cannot delete members of the resource account type.
 	MemberDeletionStatus pulumi.StringPtrInput
-	// The ID of the root folder.
+	// The ID of the root folder
 	RootFolderId pulumi.StringPtrInput
-	// The status of control policy. Valid values:`Enabled` and `Disabled`.
+	// ScpStatus
 	Status pulumi.StringPtrInput
 }
 
@@ -151,17 +169,29 @@ func (ResourceDirectoryState) ElementType() reflect.Type {
 }
 
 type resourceDirectoryArgs struct {
-	// Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+	// The status of the Member Display Name Synchronization feature. Valid values:
+	// - Enabled
+	// - Disabled
+	MemberAccountDisplayNameSyncStatus *string `pulumi:"memberAccountDisplayNameSyncStatus"`
+	// The status of the member deletion feature. Valid values:
+	// - Enabled: The feature is enabled. You can call the DeleteAccount operation to delete members of the resource account type.
+	// - Disabled: The feature is disabled. You cannot delete members of the resource account type.
 	MemberDeletionStatus *string `pulumi:"memberDeletionStatus"`
-	// The status of control policy. Valid values:`Enabled` and `Disabled`.
+	// ScpStatus
 	Status *string `pulumi:"status"`
 }
 
 // The set of arguments for constructing a ResourceDirectory resource.
 type ResourceDirectoryArgs struct {
-	// Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+	// The status of the Member Display Name Synchronization feature. Valid values:
+	// - Enabled
+	// - Disabled
+	MemberAccountDisplayNameSyncStatus pulumi.StringPtrInput
+	// The status of the member deletion feature. Valid values:
+	// - Enabled: The feature is enabled. You can call the DeleteAccount operation to delete members of the resource account type.
+	// - Disabled: The feature is disabled. You cannot delete members of the resource account type.
 	MemberDeletionStatus pulumi.StringPtrInput
-	// The status of control policy. Valid values:`Enabled` and `Disabled`.
+	// ScpStatus
 	Status pulumi.StringPtrInput
 }
 
@@ -252,27 +282,41 @@ func (o ResourceDirectoryOutput) ToResourceDirectoryOutputWithContext(ctx contex
 	return o
 }
 
-// The ID of the master account.
+// The time when the resource directory was created
+func (o ResourceDirectoryOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceDirectory) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the master account
 func (o ResourceDirectoryOutput) MasterAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceDirectory) pulumi.StringOutput { return v.MasterAccountId }).(pulumi.StringOutput)
 }
 
-// The name of the master account.
+// The name of the master account
 func (o ResourceDirectoryOutput) MasterAccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceDirectory) pulumi.StringOutput { return v.MasterAccountName }).(pulumi.StringOutput)
 }
 
-// Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+// The status of the Member Display Name Synchronization feature. Valid values:
+// - Enabled
+// - Disabled
+func (o ResourceDirectoryOutput) MemberAccountDisplayNameSyncStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceDirectory) pulumi.StringOutput { return v.MemberAccountDisplayNameSyncStatus }).(pulumi.StringOutput)
+}
+
+// The status of the member deletion feature. Valid values:
+// - Enabled: The feature is enabled. You can call the DeleteAccount operation to delete members of the resource account type.
+// - Disabled: The feature is disabled. You cannot delete members of the resource account type.
 func (o ResourceDirectoryOutput) MemberDeletionStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceDirectory) pulumi.StringOutput { return v.MemberDeletionStatus }).(pulumi.StringOutput)
 }
 
-// The ID of the root folder.
+// The ID of the root folder
 func (o ResourceDirectoryOutput) RootFolderId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceDirectory) pulumi.StringOutput { return v.RootFolderId }).(pulumi.StringOutput)
 }
 
-// The status of control policy. Valid values:`Enabled` and `Disabled`.
+// ScpStatus
 func (o ResourceDirectoryOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceDirectory) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

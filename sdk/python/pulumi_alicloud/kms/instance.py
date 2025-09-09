@@ -38,6 +38,7 @@ class InstanceArgs:
                  renewal_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_num: Optional[pulumi.Input[_builtins.int]] = None,
                  spec: Optional[pulumi.Input[_builtins.int]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_num: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Instance resource.
@@ -62,6 +63,7 @@ class InstanceArgs:
                - `Y`: Year.
         :param pulumi.Input[_builtins.int] secret_num: Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.int] spec: The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.int] vpc_num: The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         """
         pulumi.set(__self__, "vpc_id", vpc_id)
@@ -95,6 +97,8 @@ class InstanceArgs:
             pulumi.set(__self__, "secret_num", secret_num)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if vpc_num is not None:
             pulumi.set(__self__, "vpc_num", vpc_num)
 
@@ -307,6 +311,18 @@ class InstanceArgs:
         pulumi.set(self, "spec", value)
 
     @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
     @pulumi.getter(name="vpcNum")
     def vpc_num(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -340,6 +356,7 @@ class _InstanceState:
                  secret_num: Optional[pulumi.Input[_builtins.int]] = None,
                  spec: Optional[pulumi.Input[_builtins.int]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  vpc_num: Optional[pulumi.Input[_builtins.int]] = None,
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -368,6 +385,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.int] secret_num: Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.int] spec: The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.str] status: Instance status.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
         :param pulumi.Input[_builtins.int] vpc_num: The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: Instance bind vswitches
@@ -409,6 +427,8 @@ class _InstanceState:
             pulumi.set(__self__, "spec", spec)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
         if vpc_num is not None:
@@ -639,6 +659,18 @@ class _InstanceState:
         pulumi.set(self, "status", value)
 
     @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -707,6 +739,7 @@ class Instance(pulumi.CustomResource):
                  renewal_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_num: Optional[pulumi.Input[_builtins.int]] = None,
                  spec: Optional[pulumi.Input[_builtins.int]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  vpc_num: Optional[pulumi.Input[_builtins.int]] = None,
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -920,6 +953,7 @@ class Instance(pulumi.CustomResource):
                - `Y`: Year.
         :param pulumi.Input[_builtins.int] secret_num: Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.int] spec: The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
         :param pulumi.Input[_builtins.int] vpc_num: The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: Instance bind vswitches
@@ -1148,6 +1182,7 @@ class Instance(pulumi.CustomResource):
                  renewal_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_num: Optional[pulumi.Input[_builtins.int]] = None,
                  spec: Optional[pulumi.Input[_builtins.int]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  vpc_num: Optional[pulumi.Input[_builtins.int]] = None,
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1175,6 +1210,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["renewal_period_unit"] = renewal_period_unit
             __props__.__dict__["secret_num"] = secret_num
             __props__.__dict__["spec"] = spec
+            __props__.__dict__["tags"] = tags
             if vpc_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_id'")
             __props__.__dict__["vpc_id"] = vpc_id
@@ -1217,6 +1253,7 @@ class Instance(pulumi.CustomResource):
             secret_num: Optional[pulumi.Input[_builtins.int]] = None,
             spec: Optional[pulumi.Input[_builtins.int]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
             vpc_num: Optional[pulumi.Input[_builtins.int]] = None,
             vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1250,6 +1287,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] secret_num: Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.int] spec: The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.str] status: Instance status.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
         :param pulumi.Input[_builtins.int] vpc_num: The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: Instance bind vswitches
@@ -1277,6 +1315,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["secret_num"] = secret_num
         __props__.__dict__["spec"] = spec
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vpc_num"] = vpc_num
         __props__.__dict__["vswitch_ids"] = vswitch_ids
@@ -1430,6 +1469,14 @@ class Instance(pulumi.CustomResource):
         Instance status.
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="vpcId")

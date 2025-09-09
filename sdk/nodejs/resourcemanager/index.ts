@@ -120,6 +120,11 @@ export type Handshake = import("./handshake").Handshake;
 export const Handshake: typeof import("./handshake").Handshake = null as any;
 utilities.lazyLoad(exports, ["Handshake"], () => require("./handshake"));
 
+export { MessageContactArgs, MessageContactState } from "./messageContact";
+export type MessageContact = import("./messageContact").MessageContact;
+export const MessageContact: typeof import("./messageContact").MessageContact = null as any;
+utilities.lazyLoad(exports, ["MessageContact"], () => require("./messageContact"));
+
 export { PolicyArgs, PolicyState } from "./policy";
 export type Policy = import("./policy").Policy;
 export const Policy: typeof import("./policy").Policy = null as any;
@@ -194,6 +199,8 @@ const _module = {
                 return new Folder(name, <any>undefined, { urn })
             case "alicloud:resourcemanager/handshake:Handshake":
                 return new Handshake(name, <any>undefined, { urn })
+            case "alicloud:resourcemanager/messageContact:MessageContact":
+                return new MessageContact(name, <any>undefined, { urn })
             case "alicloud:resourcemanager/policy:Policy":
                 return new Policy(name, <any>undefined, { urn })
             case "alicloud:resourcemanager/policyAttachment:PolicyAttachment":
@@ -228,6 +235,7 @@ pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/controlPolicy
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/delegatedAdministrator", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/folder", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/handshake", _module)
+pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/messageContact", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/policy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/policyAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/policyVersion", _module)

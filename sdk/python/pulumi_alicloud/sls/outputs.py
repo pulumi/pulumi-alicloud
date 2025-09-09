@@ -37,6 +37,8 @@ __all__ = [
     'CollectionPolicyResourceDirectory',
     'EtlConfiguration',
     'EtlConfigurationSink',
+    'LogtailConfigOutputDetail',
+    'MachineGroupGroupAttribute',
     'OssExportSinkConfiguration',
     'OssExportSinkConfigurationSink',
     'ScheduledSqlSchedule',
@@ -60,6 +62,8 @@ __all__ = [
     'GetEtlsEtlResult',
     'GetEtlsEtlConfigurationResult',
     'GetEtlsEtlConfigurationSinkResult',
+    'GetLogtailConfigsConfigResult',
+    'GetMachineGroupsGroupResult',
 ]
 
 @pulumi.output_type
@@ -1672,6 +1676,116 @@ class EtlConfigurationSink(dict):
         The ARN role that authorizes writing to the target Logstore.
         """
         return pulumi.get(self, "role_arn")
+
+
+@pulumi.output_type
+class LogtailConfigOutputDetail(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logstoreName":
+            suggest = "logstore_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LogtailConfigOutputDetail. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LogtailConfigOutputDetail.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LogtailConfigOutputDetail.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 endpoint: Optional[_builtins.str] = None,
+                 logstore_name: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str endpoint: The endpoint of the log project.
+        :param _builtins.str logstore_name: The name of the output target logstore.
+        :param _builtins.str region: Region
+        """
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if logstore_name is not None:
+            pulumi.set(__self__, "logstore_name", logstore_name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoint(self) -> Optional[_builtins.str]:
+        """
+        The endpoint of the log project.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="logstoreName")
+    def logstore_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the output target logstore.
+        """
+        return pulumi.get(self, "logstore_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        Region
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class MachineGroupGroupAttribute(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "externalName":
+            suggest = "external_name"
+        elif key == "groupTopic":
+            suggest = "group_topic"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MachineGroupGroupAttribute. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MachineGroupGroupAttribute.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MachineGroupGroupAttribute.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 external_name: Optional[_builtins.str] = None,
+                 group_topic: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str external_name: The external management system identification on which the machine group depends.
+        :param _builtins.str group_topic: The log topic of the machine group.
+        """
+        if external_name is not None:
+            pulumi.set(__self__, "external_name", external_name)
+        if group_topic is not None:
+            pulumi.set(__self__, "group_topic", group_topic)
+
+    @_builtins.property
+    @pulumi.getter(name="externalName")
+    def external_name(self) -> Optional[_builtins.str]:
+        """
+        The external management system identification on which the machine group depends.
+        """
+        return pulumi.get(self, "external_name")
+
+    @_builtins.property
+    @pulumi.getter(name="groupTopic")
+    def group_topic(self) -> Optional[_builtins.str]:
+        """
+        The log topic of the machine group.
+        """
+        return pulumi.get(self, "group_topic")
 
 
 @pulumi.output_type
@@ -3605,5 +3719,63 @@ class GetEtlsEtlConfigurationSinkResult(dict):
         The ARN role that authorizes writing to the target Logstore.
         """
         return pulumi.get(self, "role_arn")
+
+
+@pulumi.output_type
+class GetLogtailConfigsConfigResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 logtail_config_name: _builtins.str):
+        """
+        :param _builtins.str id: The ID of the resource supplied above.
+        :param _builtins.str logtail_config_name: The name of the resource
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "logtail_config_name", logtail_config_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="logtailConfigName")
+    def logtail_config_name(self) -> _builtins.str:
+        """
+        The name of the resource
+        """
+        return pulumi.get(self, "logtail_config_name")
+
+
+@pulumi.output_type
+class GetMachineGroupsGroupResult(dict):
+    def __init__(__self__, *,
+                 group_name: _builtins.str,
+                 id: _builtins.str):
+        """
+        :param _builtins.str group_name: Machine Group name
+        :param _builtins.str id: The ID of the resource supplied above.
+        """
+        pulumi.set(__self__, "group_name", group_name)
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter(name="groupName")
+    def group_name(self) -> _builtins.str:
+        """
+        Machine Group name
+        """
+        return pulumi.get(self, "group_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
 
 

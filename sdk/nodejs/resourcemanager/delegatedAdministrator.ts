@@ -18,22 +18,12 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * import * as random from "@pulumi/random";
  *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const displayName = config.get("displayName") || "EAccount";
- * const _default = new random.index.Integer("default", {
- *     min: 10000,
- *     max: 99999,
+ * const _default = alicloud.resourcemanager.getAccounts({
+ *     status: "CreateSuccess",
  * });
- * const example = alicloud.resourcemanager.getFolders({});
- * const exampleAccount = new alicloud.resourcemanager.Account("example", {
- *     displayName: `${displayName}-${_default.result}`,
- *     folderId: example.then(example => example.ids?.[0]),
- * });
- * const exampleDelegatedAdministrator = new alicloud.resourcemanager.DelegatedAdministrator("example", {
- *     accountId: exampleAccount.id,
+ * const defaultDelegatedAdministrator = new alicloud.resourcemanager.DelegatedAdministrator("default", {
+ *     accountId: _default.then(_default => _default.accounts?.[0]?.accountId),
  *     servicePrincipal: "cloudfw.aliyuncs.com",
  * });
  * ```
@@ -75,11 +65,11 @@ export class DelegatedAdministrator extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the member account in the resource directory.
+     * The Alibaba Cloud account ID of the member in the resource directory.
      */
     declare public readonly accountId: pulumi.Output<string>;
     /**
-     * The identification of the trusted service. **NOTE:** Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://www.alibabacloud.com/help/en/resource-management/latest/manage-trusted-services-overview).
+     * The identifier of the trusted service.
      */
     declare public readonly servicePrincipal: pulumi.Output<string>;
 
@@ -119,11 +109,11 @@ export class DelegatedAdministrator extends pulumi.CustomResource {
  */
 export interface DelegatedAdministratorState {
     /**
-     * The ID of the member account in the resource directory.
+     * The Alibaba Cloud account ID of the member in the resource directory.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * The identification of the trusted service. **NOTE:** Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://www.alibabacloud.com/help/en/resource-management/latest/manage-trusted-services-overview).
+     * The identifier of the trusted service.
      */
     servicePrincipal?: pulumi.Input<string>;
 }
@@ -133,11 +123,11 @@ export interface DelegatedAdministratorState {
  */
 export interface DelegatedAdministratorArgs {
     /**
-     * The ID of the member account in the resource directory.
+     * The Alibaba Cloud account ID of the member in the resource directory.
      */
     accountId: pulumi.Input<string>;
     /**
-     * The identification of the trusted service. **NOTE:** Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://www.alibabacloud.com/help/en/resource-management/latest/manage-trusted-services-overview).
+     * The identifier of the trusted service.
      */
     servicePrincipal: pulumi.Input<string>;
 }

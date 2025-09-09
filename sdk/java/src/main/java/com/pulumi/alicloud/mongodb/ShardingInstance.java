@@ -192,6 +192,20 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
         return this.backupPeriods;
     }
     /**
+     * The retention period of full backups.
+     * 
+     */
+    @Export(name="backupRetentionPeriod", refs={Integer.class}, tree="[0]")
+    private Output<Integer> backupRetentionPeriod;
+
+    /**
+     * @return The retention period of full backups.
+     * 
+     */
+    public Output<Integer> backupRetentionPeriod() {
+        return this.backupRetentionPeriod;
+    }
+    /**
      * The backup retention policy configured for the instance. Valid values:
      * 
      */
@@ -246,6 +260,22 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> dbInstanceReleaseProtection() {
         return Codegen.optional(this.dbInstanceReleaseProtection);
+    }
+    /**
+     * Specifies whether to enable the log backup feature. Valid values:
+     * - ` 1  `: The log backup feature is enabled.
+     * 
+     */
+    @Export(name="enableBackupLog", refs={Integer.class}, tree="[0]")
+    private Output<Integer> enableBackupLog;
+
+    /**
+     * @return Specifies whether to enable the log backup feature. Valid values:
+     * - ` 1  `: The log backup feature is enabled.
+     * 
+     */
+    public Output<Integer> enableBackupLog() {
+        return this.enableBackupLog;
     }
     /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
@@ -330,6 +360,48 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> kmsEncryptionContext() {
         return Codegen.optional(this.kmsEncryptionContext);
+    }
+    /**
+     * The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
+     * 
+     */
+    @Export(name="logBackupRetentionPeriod", refs={Integer.class}, tree="[0]")
+    private Output<Integer> logBackupRetentionPeriod;
+
+    /**
+     * @return The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
+     * 
+     */
+    public Output<Integer> logBackupRetentionPeriod() {
+        return this.logBackupRetentionPeriod;
+    }
+    /**
+     * The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+     * 
+     */
+    @Export(name="maintainEndTime", refs={String.class}, tree="[0]")
+    private Output<String> maintainEndTime;
+
+    /**
+     * @return The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+     * 
+     */
+    public Output<String> maintainEndTime() {
+        return this.maintainEndTime;
+    }
+    /**
+     * The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+     * 
+     */
+    @Export(name="maintainStartTime", refs={String.class}, tree="[0]")
+    private Output<String> maintainStartTime;
+
+    /**
+     * @return The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+     * 
+     */
+    public Output<String> maintainStartTime() {
+        return this.maintainStartTime;
     }
     /**
      * The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
@@ -536,6 +608,40 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> snapshotBackupType() {
         return this.snapshotBackupType;
+    }
+    /**
+     * Actions performed on SSL functions. Valid values:
+     * - `Open`: turn on SSL encryption.
+     * - `Close`: turn off SSL encryption.
+     * - `Update`: update SSL certificate.
+     * 
+     */
+    @Export(name="sslAction", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> sslAction;
+
+    /**
+     * @return Actions performed on SSL functions. Valid values:
+     * - `Open`: turn on SSL encryption.
+     * - `Close`: turn off SSL encryption.
+     * - `Update`: update SSL certificate.
+     * 
+     */
+    public Output<Optional<String>> sslAction() {
+        return Codegen.optional(this.sslAction);
+    }
+    /**
+     * (Available since v1.259.0) The status of the SSL feature.
+     * 
+     */
+    @Export(name="sslStatus", refs={String.class}, tree="[0]")
+    private Output<String> sslStatus;
+
+    /**
+     * @return (Available since v1.259.0) The status of the SSL feature.
+     * 
+     */
+    public Output<String> sslStatus() {
+        return this.sslStatus;
     }
     /**
      * The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.

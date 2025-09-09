@@ -14,149 +14,123 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Anti-DDoS Advanced instance resource. &#34;Ddosbgp&#34; is the short term of this product.
- * 
- * &gt; **NOTE:** Available since v1.183.0.
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.ddos.DdosBgpInstance;
- * import com.pulumi.alicloud.ddos.DdosBgpInstanceArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf-example");
- *         var instance = new DdosBgpInstance("instance", DdosBgpInstanceArgs.builder()
- *             .name(name)
- *             .baseBandwidth(20)
- *             .bandwidth(-1)
- *             .ipCount(100)
- *             .ipType("IPv4")
- *             .normalBandwidth(100)
- *             .type("Enterprise")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
- * Ddosbgp instance can be imported using the id, e.g.
+ * Anti-DDoS Pro (DdosBgp) Instance can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:ddos/ddosBgpInstance:DdosBgpInstance example ddosbgp-abc123456
+ * $ pulumi import alicloud:ddos/ddosBgpInstance:DdosBgpInstance example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:ddos/ddosBgpInstance:DdosBgpInstance")
 public class DdosBgpInstance extends com.pulumi.resources.CustomResource {
     /**
-     * Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 51,91,101,201,301. The unit is Gbps.
+     * The bandwidth of the package configuration.
      * 
      */
     @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> bandwidth;
 
     /**
-     * @return Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 51,91,101,201,301. The unit is Gbps.
+     * @return The bandwidth of the package configuration.
      * 
      */
     public Output<Integer> bandwidth() {
         return this.bandwidth;
     }
     /**
-     * Base defend bandwidth of the instance. Valid values: 20. The unit is Gbps. Default to `20`.
+     * The basic protection bandwidth of the Anti-DDoS Origin Enterprise instance. Default value: `20`. Valid values: `20`.
      * 
      */
     @Export(name="baseBandwidth", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> baseBandwidth;
 
     /**
-     * @return Base defend bandwidth of the instance. Valid values: 20. The unit is Gbps. Default to `20`.
+     * @return The basic protection bandwidth of the Anti-DDoS Origin Enterprise instance. Default value: `20`. Valid values: `20`.
      * 
      */
     public Output<Optional<Integer>> baseBandwidth() {
         return Codegen.optional(this.baseBandwidth);
     }
     /**
-     * IP count of the instance. Valid values: 100.
+     * The name of the instance.
+     * 
+     */
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
+    private Output<String> instanceName;
+
+    /**
+     * @return The name of the instance.
+     * 
+     */
+    public Output<String> instanceName() {
+        return this.instanceName;
+    }
+    /**
+     * The number of IP addresses that can be protected by the Anti-DDoS Origin Enterprise instance.
      * 
      */
     @Export(name="ipCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> ipCount;
 
     /**
-     * @return IP count of the instance. Valid values: 100.
+     * @return The number of IP addresses that can be protected by the Anti-DDoS Origin Enterprise instance.
      * 
      */
     public Output<Integer> ipCount() {
         return this.ipCount;
     }
     /**
-     * IP version of the instance. Valid values: IPv4,IPv6.
+     * The protection IP address type of the protection package. Valid values:
+     * - `IPv4`
+     * - `IPv6`
      * 
      */
     @Export(name="ipType", refs={String.class}, tree="[0]")
     private Output<String> ipType;
 
     /**
-     * @return IP version of the instance. Valid values: IPv4,IPv6.
+     * @return The protection IP address type of the protection package. Valid values:
+     * - `IPv4`
+     * - `IPv6`
      * 
      */
     public Output<String> ipType() {
         return this.ipType;
     }
     /**
-     * Name of the instance. This name can have a string of 1 to 63 characters.
+     * Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
+     * 
+     * @deprecated
+     * Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
      * 
      */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the instance. This name can have a string of 1 to 63 characters.
+     * @return Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Normal defend bandwidth of the instance. The unit is Gbps.
+     * The normal clean bandwidth. Unit: Mbit/s.
      * 
      */
     @Export(name="normalBandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> normalBandwidth;
 
     /**
-     * @return Normal defend bandwidth of the instance. The unit is Gbps.
+     * @return The normal clean bandwidth. Unit: Mbit/s.
      * 
      */
     public Output<Integer> normalBandwidth() {
@@ -177,18 +151,60 @@ public class DdosBgpInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.period);
     }
     /**
-     * Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
+     * Resource Group ID
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return Resource Group ID
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
+     * (Available since v1.259.0) The status of the Instance.
+     * 
+     */
+    @Export(name="status", refs={String.class}, tree="[0]")
+    private Output<String> status;
+
+    /**
+     * @return (Available since v1.259.0) The status of the Instance.
+     * 
+     */
+    public Output<String> status() {
+        return this.status;
+    }
+    /**
+     * The key of the tag that is added to the Anti-DDoS Origin instance.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return The key of the tag that is added to the Anti-DDoS Origin instance.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
+     * The protection package type of the DDoS native protection instance. Default value: `Enterprise`. Valid values: `Enterprise`, `Professional`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> type;
+    private Output<String> type;
 
     /**
-     * @return Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
+     * @return The protection package type of the DDoS native protection instance. Default value: `Enterprise`. Valid values: `Enterprise`, `Professional`.
      * 
      */
-    public Output<Optional<String>> type() {
-        return Codegen.optional(this.type);
+    public Output<String> type() {
+        return this.type;
     }
 
     /**

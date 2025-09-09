@@ -111,6 +111,10 @@ export class ServiceSubscription extends pulumi.CustomResource {
      */
     declare public readonly pushType: pulumi.Output<string>;
     /**
+     * The STS RoleArn.
+     */
+    declare public readonly stsRoleArn: pulumi.Output<string | undefined>;
+    /**
      * Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
      */
     declare public readonly subscriptionName: pulumi.Output<string>;
@@ -139,6 +143,7 @@ export class ServiceSubscription extends pulumi.CustomResource {
             resourceInputs["notifyContentFormat"] = state?.notifyContentFormat;
             resourceInputs["notifyStrategy"] = state?.notifyStrategy;
             resourceInputs["pushType"] = state?.pushType;
+            resourceInputs["stsRoleArn"] = state?.stsRoleArn;
             resourceInputs["subscriptionName"] = state?.subscriptionName;
             resourceInputs["topicName"] = state?.topicName;
         } else {
@@ -161,6 +166,7 @@ export class ServiceSubscription extends pulumi.CustomResource {
             resourceInputs["notifyContentFormat"] = args?.notifyContentFormat;
             resourceInputs["notifyStrategy"] = args?.notifyStrategy;
             resourceInputs["pushType"] = args?.pushType;
+            resourceInputs["stsRoleArn"] = args?.stsRoleArn;
             resourceInputs["subscriptionName"] = args?.subscriptionName;
             resourceInputs["topicName"] = args?.topicName;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -210,6 +216,10 @@ export interface ServiceSubscriptionState {
      */
     pushType?: pulumi.Input<string>;
     /**
+     * The STS RoleArn.
+     */
+    stsRoleArn?: pulumi.Input<string>;
+    /**
      * Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
      */
     subscriptionName?: pulumi.Input<string>;
@@ -254,6 +264,10 @@ export interface ServiceSubscriptionArgs {
      * The Push type of Subscription. The Valid values: `http`, `queue`, `mpush`, `alisms` and `email`.
      */
     pushType: pulumi.Input<string>;
+    /**
+     * The STS RoleArn.
+     */
+    stsRoleArn?: pulumi.Input<string>;
     /**
      * Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
      */

@@ -229,20 +229,22 @@ class GetAccountsAccountResult(dict):
                  payer_account_id: _builtins.str,
                  resource_directory_id: _builtins.str,
                  status: _builtins.str,
+                 tags: Mapping[str, _builtins.str],
                  type: _builtins.str):
         """
-        :param _builtins.str account_id: The ID of the account.
-        :param _builtins.str account_name: (Available in v1.125.0+) The Alibaba Cloud account name of the member account.
-        :param _builtins.str display_name: The name of the member account.
+        :param _builtins.str account_id: The Alibaba Cloud account ID of the member.
+        :param _builtins.str account_name: (Available since v1.125.0) The Alibaba Cloud account name of the member. **Note:** `account_name` takes effect only if `enable_details` is set to `true`.
+        :param _builtins.str display_name: The display name of the member.
         :param _builtins.str folder_id: The ID of the folder.
-        :param _builtins.str id: The ID of the resource.
-        :param _builtins.str join_method: The way in which the member account joined the resource directory.
-        :param _builtins.str join_time: The time when the member account joined the resource directory.
-        :param _builtins.str modify_time: The time when the member account was modified.
-        :param _builtins.str payer_account_id: (Available in v1.124.3+) Settlement account ID. If the value is empty, the current account will be used for settlement.
+        :param _builtins.str id: The ID of the Account.
+        :param _builtins.str join_method: The way in which the member joins the resource directory.
+        :param _builtins.str join_time: The time when the member joined the resource directory.
+        :param _builtins.str modify_time: The time when the member was modified.
+        :param _builtins.str payer_account_id: (Available since v1.124.3) The ID of the settlement account. **Note:** `payer_account_id` takes effect only if `enable_details` is set to `true`.
         :param _builtins.str resource_directory_id: The ID of the resource directory.
-        :param _builtins.str status: The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
-        :param _builtins.str type: The type of the member account.
+        :param _builtins.str status: The status of account. Valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, `PromoteVerifying`.
+        :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
+        :param _builtins.str type: The type of the member.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "account_name", account_name)
@@ -255,13 +257,14 @@ class GetAccountsAccountResult(dict):
         pulumi.set(__self__, "payer_account_id", payer_account_id)
         pulumi.set(__self__, "resource_directory_id", resource_directory_id)
         pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        The ID of the account.
+        The Alibaba Cloud account ID of the member.
         """
         return pulumi.get(self, "account_id")
 
@@ -269,7 +272,7 @@ class GetAccountsAccountResult(dict):
     @pulumi.getter(name="accountName")
     def account_name(self) -> _builtins.str:
         """
-        (Available in v1.125.0+) The Alibaba Cloud account name of the member account.
+        (Available since v1.125.0) The Alibaba Cloud account name of the member. **Note:** `account_name` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "account_name")
 
@@ -277,7 +280,7 @@ class GetAccountsAccountResult(dict):
     @pulumi.getter(name="displayName")
     def display_name(self) -> _builtins.str:
         """
-        The name of the member account.
+        The display name of the member.
         """
         return pulumi.get(self, "display_name")
 
@@ -293,7 +296,7 @@ class GetAccountsAccountResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The ID of the resource.
+        The ID of the Account.
         """
         return pulumi.get(self, "id")
 
@@ -301,7 +304,7 @@ class GetAccountsAccountResult(dict):
     @pulumi.getter(name="joinMethod")
     def join_method(self) -> _builtins.str:
         """
-        The way in which the member account joined the resource directory.
+        The way in which the member joins the resource directory.
         """
         return pulumi.get(self, "join_method")
 
@@ -309,7 +312,7 @@ class GetAccountsAccountResult(dict):
     @pulumi.getter(name="joinTime")
     def join_time(self) -> _builtins.str:
         """
-        The time when the member account joined the resource directory.
+        The time when the member joined the resource directory.
         """
         return pulumi.get(self, "join_time")
 
@@ -317,7 +320,7 @@ class GetAccountsAccountResult(dict):
     @pulumi.getter(name="modifyTime")
     def modify_time(self) -> _builtins.str:
         """
-        The time when the member account was modified.
+        The time when the member was modified.
         """
         return pulumi.get(self, "modify_time")
 
@@ -325,7 +328,7 @@ class GetAccountsAccountResult(dict):
     @pulumi.getter(name="payerAccountId")
     def payer_account_id(self) -> _builtins.str:
         """
-        (Available in v1.124.3+) Settlement account ID. If the value is empty, the current account will be used for settlement.
+        (Available since v1.124.3) The ID of the settlement account. **Note:** `payer_account_id` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "payer_account_id")
 
@@ -341,15 +344,23 @@ class GetAccountsAccountResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
+        The status of account. Valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, `PromoteVerifying`.
         """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        The type of the member account.
+        The type of the member.
         """
         return pulumi.get(self, "type")
 

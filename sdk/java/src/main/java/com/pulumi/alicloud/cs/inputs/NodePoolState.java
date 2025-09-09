@@ -245,6 +245,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
      * - `ContainerOS` : container-optimized image.
      * - `Ubuntu`: Ubuntu image.
      * - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
+     * - `Custom`: Custom image.
      * 
      */
     @Import(name="imageType")
@@ -262,6 +263,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
      * - `ContainerOS` : container-optimized image.
      * - `Ubuntu`: Ubuntu image.
      * - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
+     * - `Custom`: Custom image.
      * 
      */
     public Optional<Output<String>> imageType() {
@@ -1692,6 +1694,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
          * - `ContainerOS` : container-optimized image.
          * - `Ubuntu`: Ubuntu image.
          * - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
+         * - `Custom`: Custom image.
          * 
          * @return builder
          * 
@@ -1713,6 +1716,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
          * - `ContainerOS` : container-optimized image.
          * - `Ubuntu`: Ubuntu image.
          * - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
+         * - `Custom`: Custom image.
          * 
          * @return builder
          * 

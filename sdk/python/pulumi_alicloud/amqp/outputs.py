@@ -231,20 +231,20 @@ class GetInstancesInstanceResult(dict):
                  status: _builtins.str,
                  support_eip: _builtins.bool):
         """
-        :param _builtins.str create_time: OrderCreateTime.
-        :param _builtins.str expire_time: ExpireTime.
+        :param _builtins.str create_time: The timestamp that indicates when the order was created.
+        :param _builtins.str expire_time: The timestamp that indicates when the instance expires.
         :param _builtins.str id: The ID of the Instance.
         :param _builtins.str instance_id: THe instance Id.
         :param _builtins.str instance_name: THe instance name.
         :param _builtins.str instance_type: The instance type.
-        :param _builtins.str payment_type: The Pay-as-You-Type Values Include: the Subscription of a Pre-Paid.
-        :param _builtins.str private_end_point: The private endPoint.
-        :param _builtins.str public_endpoint: The public dndpoint.
-        :param _builtins.int renewal_duration: Renewal duration.
-        :param _builtins.str renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
-        :param _builtins.str renewal_status: Renew status.
-        :param _builtins.str status: The status of the resource.
-        :param _builtins.bool support_eip: Whether to support eip.
+        :param _builtins.str payment_type: The billing method of the instance. **Note:** `payment_type` takes effect only if `enable_details` is set to `true`.
+        :param _builtins.str private_end_point: The virtual private cloud (VPC) endpoint of the instance.
+        :param _builtins.str public_endpoint: The public endpoint of the instance.
+        :param _builtins.int renewal_duration: Auto renewal period of an instance. **Note:** `renewal_duration` takes effect only if `enable_details` is set to `true`.
+        :param _builtins.str renewal_duration_unit: Automatic renewal period unit. **Note:** `renewal_duration_unit` takes effect only if `enable_details` is set to `true`.
+        :param _builtins.str renewal_status: Whether to renew an instance automatically or not. **Note:** `renewal_status` takes effect only if `enable_details` is set to `true`.
+        :param _builtins.str status: The status of the resource. Valid values: `DEPLOYING`, `SERVING`, `EXPIRED`, `RELEASED`.
+        :param _builtins.bool support_eip: Indicates whether the instance supports elastic IP addresses (EIPs).
         """
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "expire_time", expire_time)
@@ -265,7 +265,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         """
-        OrderCreateTime.
+        The timestamp that indicates when the order was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -273,7 +273,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> _builtins.str:
         """
-        ExpireTime.
+        The timestamp that indicates when the instance expires.
         """
         return pulumi.get(self, "expire_time")
 
@@ -313,7 +313,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> _builtins.str:
         """
-        The Pay-as-You-Type Values Include: the Subscription of a Pre-Paid.
+        The billing method of the instance. **Note:** `payment_type` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "payment_type")
 
@@ -321,7 +321,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="privateEndPoint")
     def private_end_point(self) -> _builtins.str:
         """
-        The private endPoint.
+        The virtual private cloud (VPC) endpoint of the instance.
         """
         return pulumi.get(self, "private_end_point")
 
@@ -329,7 +329,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="publicEndpoint")
     def public_endpoint(self) -> _builtins.str:
         """
-        The public dndpoint.
+        The public endpoint of the instance.
         """
         return pulumi.get(self, "public_endpoint")
 
@@ -337,7 +337,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="renewalDuration")
     def renewal_duration(self) -> _builtins.int:
         """
-        Renewal duration.
+        Auto renewal period of an instance. **Note:** `renewal_duration` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "renewal_duration")
 
@@ -345,7 +345,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="renewalDurationUnit")
     def renewal_duration_unit(self) -> _builtins.str:
         """
-        Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
+        Automatic renewal period unit. **Note:** `renewal_duration_unit` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "renewal_duration_unit")
 
@@ -353,7 +353,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="renewalStatus")
     def renewal_status(self) -> _builtins.str:
         """
-        Renew status.
+        Whether to renew an instance automatically or not. **Note:** `renewal_status` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "renewal_status")
 
@@ -361,7 +361,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the resource.
+        The status of the resource. Valid values: `DEPLOYING`, `SERVING`, `EXPIRED`, `RELEASED`.
         """
         return pulumi.get(self, "status")
 
@@ -369,7 +369,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="supportEip")
     def support_eip(self) -> _builtins.bool:
         """
-        Whether to support eip.
+        Indicates whether the instance supports elastic IP addresses (EIPs).
         """
         return pulumi.get(self, "support_eip")
 

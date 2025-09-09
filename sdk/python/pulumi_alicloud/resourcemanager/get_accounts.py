@@ -27,7 +27,7 @@ class GetAccountsResult:
     """
     A collection of values returned by getAccounts.
     """
-    def __init__(__self__, accounts=None, enable_details=None, id=None, ids=None, output_file=None, status=None):
+    def __init__(__self__, accounts=None, enable_details=None, id=None, ids=None, output_file=None, status=None, tags=None):
         if accounts and not isinstance(accounts, list):
             raise TypeError("Expected argument 'accounts' to be a list")
         pulumi.set(__self__, "accounts", accounts)
@@ -46,6 +46,9 @@ class GetAccountsResult:
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
+        if tags and not isinstance(tags, dict):
+            raise TypeError("Expected argument 'tags' to be a dict")
+        pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter
@@ -71,9 +74,6 @@ class GetAccountsResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
-        """
-        A list of account IDs.
-        """
         return pulumi.get(self, "ids")
 
     @_builtins.property
@@ -85,9 +85,17 @@ class GetAccountsResult:
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
         """
-        The status of the member account.
+        The status of the member.
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        (Available since v1.259.0) The tags that are added to the member.
+        """
+        return pulumi.get(self, "tags")
 
 
 class AwaitableGetAccountsResult(GetAccountsResult):
@@ -101,18 +109,20 @@ class AwaitableGetAccountsResult(GetAccountsResult):
             id=self.id,
             ids=self.ids,
             output_file=self.output_file,
-            status=self.status)
+            status=self.status,
+            tags=self.tags)
 
 
 def get_accounts(enable_details: Optional[_builtins.bool] = None,
                  ids: Optional[Sequence[_builtins.str]] = None,
                  output_file: Optional[_builtins.str] = None,
                  status: Optional[_builtins.str] = None,
+                 tags: Optional[Mapping[str, _builtins.str]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountsResult:
     """
     This data source provides the Resource Manager Accounts of the current Alibaba Cloud user.
 
-    > **NOTE:**  Available in 1.86.0+.
+    > **NOTE:** Available since v1.86.0.
 
     ## Example Usage
 
@@ -121,20 +131,22 @@ def get_accounts(enable_details: Optional[_builtins.bool] = None,
     import pulumi_alicloud as alicloud
 
     default = alicloud.resourcemanager.get_accounts()
-    pulumi.export("firstAccountId", default.accounts[0].id)
+    pulumi.export("resourceManagerAccountId0", default.accounts[0].id)
     ```
 
 
-    :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
-    :param Sequence[_builtins.str] ids: A list of account IDs.
+    :param _builtins.bool enable_details: Whether to query the detailed list of resource attributes. Default value: `false`.
+    :param Sequence[_builtins.str] ids: A list of Account IDs.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param _builtins.str status: The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
+    :param _builtins.str status: The status of account. Valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, `PromoteVerifying`.
+    :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
     __args__['status'] = status
+    __args__['tags'] = tags
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('alicloud:resourcemanager/getAccounts:getAccounts', __args__, opts=opts, typ=GetAccountsResult).value
 
@@ -144,16 +156,18 @@ def get_accounts(enable_details: Optional[_builtins.bool] = None,
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         output_file=pulumi.get(__ret__, 'output_file'),
-        status=pulumi.get(__ret__, 'status'))
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'))
 def get_accounts_output(enable_details: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                         ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
                         output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                         status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                        tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountsResult]:
     """
     This data source provides the Resource Manager Accounts of the current Alibaba Cloud user.
 
-    > **NOTE:**  Available in 1.86.0+.
+    > **NOTE:** Available since v1.86.0.
 
     ## Example Usage
 
@@ -162,20 +176,22 @@ def get_accounts_output(enable_details: Optional[pulumi.Input[Optional[_builtins
     import pulumi_alicloud as alicloud
 
     default = alicloud.resourcemanager.get_accounts()
-    pulumi.export("firstAccountId", default.accounts[0].id)
+    pulumi.export("resourceManagerAccountId0", default.accounts[0].id)
     ```
 
 
-    :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
-    :param Sequence[_builtins.str] ids: A list of account IDs.
+    :param _builtins.bool enable_details: Whether to query the detailed list of resource attributes. Default value: `false`.
+    :param Sequence[_builtins.str] ids: A list of Account IDs.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param _builtins.str status: The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
+    :param _builtins.str status: The status of account. Valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, `PromoteVerifying`.
+    :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
     __args__['status'] = status
+    __args__['tags'] = tags
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:resourcemanager/getAccounts:getAccounts', __args__, opts=opts, typ=GetAccountsResult)
     return __ret__.apply(lambda __response__: GetAccountsResult(
@@ -184,4 +200,5 @@ def get_accounts_output(enable_details: Optional[pulumi.Input[Optional[_builtins
         id=pulumi.get(__response__, 'id'),
         ids=pulumi.get(__response__, 'ids'),
         output_file=pulumi.get(__response__, 'output_file'),
-        status=pulumi.get(__response__, 'status')))
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags')))

@@ -25,15 +25,18 @@ class BgpIpArgs:
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BgpIp resource.
-        :param pulumi.Input[_builtins.str] instance_id: The ID of the native protection enterprise instance to be operated.
-        :param pulumi.Input[_builtins.str] ip: The IP address.
-        :param pulumi.Input[_builtins.str] member_uid: The member account id of the IP address.
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the Anti-DDoS Origin instance.
+        :param pulumi.Input[_builtins.str] ip: The IP address that you want to add.
+        :param pulumi.Input[_builtins.str] member_uid: The member to which the asset belongs.
+        :param pulumi.Input[_builtins.str] resource_group_id: Field `resource_group_id` has been deprecated from provider version 1.259.0.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "ip", ip)
         if member_uid is not None:
             pulumi.set(__self__, "member_uid", member_uid)
+        if resource_group_id is not None:
+            warnings.warn("""Field `resource_group_id` has been deprecated from provider version 1.259.0.""", DeprecationWarning)
+            pulumi.log.warn("""resource_group_id is deprecated: Field `resource_group_id` has been deprecated from provider version 1.259.0.""")
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
 
@@ -41,7 +44,7 @@ class BgpIpArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID of the native protection enterprise instance to be operated.
+        The ID of the Anti-DDoS Origin instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -53,7 +56,7 @@ class BgpIpArgs:
     @pulumi.getter
     def ip(self) -> pulumi.Input[_builtins.str]:
         """
-        The IP address.
+        The IP address that you want to add.
         """
         return pulumi.get(self, "ip")
 
@@ -65,7 +68,7 @@ class BgpIpArgs:
     @pulumi.getter(name="memberUid")
     def member_uid(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The member account id of the IP address.
+        The member to which the asset belongs.
         """
         return pulumi.get(self, "member_uid")
 
@@ -75,9 +78,10 @@ class BgpIpArgs:
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
+    @_utilities.deprecated("""Field `resource_group_id` has been deprecated from provider version 1.259.0.""")
     def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the resource group.
+        Field `resource_group_id` has been deprecated from provider version 1.259.0.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -96,11 +100,11 @@ class _BgpIpState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BgpIp resources.
-        :param pulumi.Input[_builtins.str] instance_id: The ID of the native protection enterprise instance to be operated.
-        :param pulumi.Input[_builtins.str] ip: The IP address.
-        :param pulumi.Input[_builtins.str] member_uid: The member account id of the IP address.
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[_builtins.str] status: The current state of the IP address. Valid Value: `normal`, `hole_begin`.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the Anti-DDoS Origin instance.
+        :param pulumi.Input[_builtins.str] ip: The IP address that you want to add.
+        :param pulumi.Input[_builtins.str] member_uid: The member to which the asset belongs.
+        :param pulumi.Input[_builtins.str] resource_group_id: Field `resource_group_id` has been deprecated from provider version 1.259.0.
+        :param pulumi.Input[_builtins.str] status: The status of the IP address.
         """
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
@@ -108,6 +112,9 @@ class _BgpIpState:
             pulumi.set(__self__, "ip", ip)
         if member_uid is not None:
             pulumi.set(__self__, "member_uid", member_uid)
+        if resource_group_id is not None:
+            warnings.warn("""Field `resource_group_id` has been deprecated from provider version 1.259.0.""", DeprecationWarning)
+            pulumi.log.warn("""resource_group_id is deprecated: Field `resource_group_id` has been deprecated from provider version 1.259.0.""")
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if status is not None:
@@ -117,7 +124,7 @@ class _BgpIpState:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the native protection enterprise instance to be operated.
+        The ID of the Anti-DDoS Origin instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -129,7 +136,7 @@ class _BgpIpState:
     @pulumi.getter
     def ip(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The IP address.
+        The IP address that you want to add.
         """
         return pulumi.get(self, "ip")
 
@@ -141,7 +148,7 @@ class _BgpIpState:
     @pulumi.getter(name="memberUid")
     def member_uid(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The member account id of the IP address.
+        The member to which the asset belongs.
         """
         return pulumi.get(self, "member_uid")
 
@@ -151,9 +158,10 @@ class _BgpIpState:
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
+    @_utilities.deprecated("""Field `resource_group_id` has been deprecated from provider version 1.259.0.""")
     def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the resource group.
+        Field `resource_group_id` has been deprecated from provider version 1.259.0.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -165,7 +173,7 @@ class _BgpIpState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The current state of the IP address. Valid Value: `normal`, `hole_begin`.
+        The status of the IP address.
         """
         return pulumi.get(self, "status")
 
@@ -186,9 +194,9 @@ class BgpIp(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides a Ddos Bgp Ip resource.
+        Provides a Anti-DDoS Pro (DdosBgp) Ip resource.
 
-        For information about Ddos Bgp Ip and how to use it, see [What is Ip](https://www.alibabacloud.com/help/en/ddos-protection/latest/addip).
+        For information about Anti-DDoS Pro (DdosBgp) Ip and how to use it, see [What is Ip](https://www.alibabacloud.com/help/en/ddos-protection/latest/addip).
 
         > **NOTE:** Available since v1.180.0.
 
@@ -203,9 +211,9 @@ class BgpIp(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
-        default = alicloud.resourcemanager.get_resource_groups()
-        instance = alicloud.ddos.DdosBgpInstance("instance",
+            name = "terraform-example"
+        default = alicloud.get_account()
+        default_ddos_bgp_instance = alicloud.ddos.DdosBgpInstance("default",
             name=name,
             base_bandwidth=20,
             bandwidth=-1,
@@ -215,14 +223,14 @@ class BgpIp(pulumi.CustomResource):
             type="Enterprise")
         default_eip_address = alicloud.ecs.EipAddress("default", address_name=name)
         default_bgp_ip = alicloud.ddos.BgpIp("default",
-            instance_id=instance.id,
+            instance_id=default_ddos_bgp_instance.id,
             ip=default_eip_address.ip_address,
-            resource_group_id=default.groups[0].id)
+            member_uid=default.id)
         ```
 
         ## Import
 
-        Ddos Bgp Ip can be imported using the id, e.g.
+        Anti-DDoS Pro (DdosBgp) Ip can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:ddos/bgpIp:BgpIp example <instance_id>:<ip>
@@ -230,10 +238,10 @@ class BgpIp(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] instance_id: The ID of the native protection enterprise instance to be operated.
-        :param pulumi.Input[_builtins.str] ip: The IP address.
-        :param pulumi.Input[_builtins.str] member_uid: The member account id of the IP address.
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the Anti-DDoS Origin instance.
+        :param pulumi.Input[_builtins.str] ip: The IP address that you want to add.
+        :param pulumi.Input[_builtins.str] member_uid: The member to which the asset belongs.
+        :param pulumi.Input[_builtins.str] resource_group_id: Field `resource_group_id` has been deprecated from provider version 1.259.0.
         """
         ...
     @overload
@@ -242,9 +250,9 @@ class BgpIp(pulumi.CustomResource):
                  args: BgpIpArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Ddos Bgp Ip resource.
+        Provides a Anti-DDoS Pro (DdosBgp) Ip resource.
 
-        For information about Ddos Bgp Ip and how to use it, see [What is Ip](https://www.alibabacloud.com/help/en/ddos-protection/latest/addip).
+        For information about Anti-DDoS Pro (DdosBgp) Ip and how to use it, see [What is Ip](https://www.alibabacloud.com/help/en/ddos-protection/latest/addip).
 
         > **NOTE:** Available since v1.180.0.
 
@@ -259,9 +267,9 @@ class BgpIp(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
-        default = alicloud.resourcemanager.get_resource_groups()
-        instance = alicloud.ddos.DdosBgpInstance("instance",
+            name = "terraform-example"
+        default = alicloud.get_account()
+        default_ddos_bgp_instance = alicloud.ddos.DdosBgpInstance("default",
             name=name,
             base_bandwidth=20,
             bandwidth=-1,
@@ -271,14 +279,14 @@ class BgpIp(pulumi.CustomResource):
             type="Enterprise")
         default_eip_address = alicloud.ecs.EipAddress("default", address_name=name)
         default_bgp_ip = alicloud.ddos.BgpIp("default",
-            instance_id=instance.id,
+            instance_id=default_ddos_bgp_instance.id,
             ip=default_eip_address.ip_address,
-            resource_group_id=default.groups[0].id)
+            member_uid=default.id)
         ```
 
         ## Import
 
-        Ddos Bgp Ip can be imported using the id, e.g.
+        Anti-DDoS Pro (DdosBgp) Ip can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:ddos/bgpIp:BgpIp example <instance_id>:<ip>
@@ -343,11 +351,11 @@ class BgpIp(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] instance_id: The ID of the native protection enterprise instance to be operated.
-        :param pulumi.Input[_builtins.str] ip: The IP address.
-        :param pulumi.Input[_builtins.str] member_uid: The member account id of the IP address.
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[_builtins.str] status: The current state of the IP address. Valid Value: `normal`, `hole_begin`.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the Anti-DDoS Origin instance.
+        :param pulumi.Input[_builtins.str] ip: The IP address that you want to add.
+        :param pulumi.Input[_builtins.str] member_uid: The member to which the asset belongs.
+        :param pulumi.Input[_builtins.str] resource_group_id: Field `resource_group_id` has been deprecated from provider version 1.259.0.
+        :param pulumi.Input[_builtins.str] status: The status of the IP address.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -364,7 +372,7 @@ class BgpIp(pulumi.CustomResource):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the native protection enterprise instance to be operated.
+        The ID of the Anti-DDoS Origin instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -372,7 +380,7 @@ class BgpIp(pulumi.CustomResource):
     @pulumi.getter
     def ip(self) -> pulumi.Output[_builtins.str]:
         """
-        The IP address.
+        The IP address that you want to add.
         """
         return pulumi.get(self, "ip")
 
@@ -380,15 +388,16 @@ class BgpIp(pulumi.CustomResource):
     @pulumi.getter(name="memberUid")
     def member_uid(self) -> pulumi.Output[_builtins.str]:
         """
-        The member account id of the IP address.
+        The member to which the asset belongs.
         """
         return pulumi.get(self, "member_uid")
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
+    @_utilities.deprecated("""Field `resource_group_id` has been deprecated from provider version 1.259.0.""")
     def resource_group_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The ID of the resource group.
+        Field `resource_group_id` has been deprecated from provider version 1.259.0.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -396,7 +405,7 @@ class BgpIp(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The current state of the IP address. Valid Value: `normal`, `hole_begin`.
+        The status of the IP address.
         """
         return pulumi.get(self, "status")
 

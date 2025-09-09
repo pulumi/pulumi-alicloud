@@ -51,6 +51,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ImageTransform{}
 	case "alicloud:esa/kv:Kv":
 		r = &Kv{}
+	case "alicloud:esa/kvAccount:KvAccount":
+		r = &KvAccount{}
 	case "alicloud:esa/kvNamespace:KvNamespace":
 		r = &KvNamespace{}
 	case "alicloud:esa/list:List":
@@ -79,6 +81,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RewriteUrlRule{}
 	case "alicloud:esa/routine:Routine":
 		r = &Routine{}
+	case "alicloud:esa/routineRelatedRecord:RoutineRelatedRecord":
+		r = &RoutineRelatedRecord{}
 	case "alicloud:esa/routineRoute:RoutineRoute":
 		r = &RoutineRoute{}
 	case "alicloud:esa/scheduledPreloadExecution:ScheduledPreloadExecution":
@@ -91,6 +95,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SiteDeliveryTask{}
 	case "alicloud:esa/siteOriginClientCertificate:SiteOriginClientCertificate":
 		r = &SiteOriginClientCertificate{}
+	case "alicloud:esa/urlObservation:UrlObservation":
+		r = &UrlObservation{}
 	case "alicloud:esa/version:Version":
 		r = &Version{}
 	case "alicloud:esa/videoProcessing:VideoProcessing":
@@ -191,6 +197,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"esa/kvAccount",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"esa/kvNamespace",
 		&module{version},
 	)
@@ -261,6 +272,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"esa/routineRelatedRecord",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"esa/routineRoute",
 		&module{version},
 	)
@@ -287,6 +303,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"esa/siteOriginClientCertificate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/urlObservation",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -15,14 +15,14 @@ public final class SharedResourceArgs extends com.pulumi.resources.ResourceArgs 
     public static final SharedResourceArgs Empty = new SharedResourceArgs();
 
     /**
-     * The resource ID need shared.
+     * The ID of the shared resource.
      * 
      */
     @Import(name="resourceId", required=true)
     private Output<String> resourceId;
 
     /**
-     * @return The resource ID need shared.
+     * @return The ID of the shared resource.
      * 
      */
     public Output<String> resourceId() {
@@ -30,14 +30,14 @@ public final class SharedResourceArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The resource share ID of resource manager.
+     * The ID of the resource share.
      * 
      */
     @Import(name="resourceShareId", required=true)
     private Output<String> resourceShareId;
 
     /**
-     * @return The resource share ID of resource manager.
+     * @return The ID of the resource share.
      * 
      */
     public Output<String> resourceShareId() {
@@ -45,7 +45,7 @@ public final class SharedResourceArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The resource type of should shared. Valid values:
+     * The type of the shared resource. Valid values:
      * - `VSwitch`.
      * - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
      * - The following types are added after v1.192.0: `PrefixList` and `Image`.
@@ -59,7 +59,7 @@ public final class SharedResourceArgs extends com.pulumi.resources.ResourceArgs 
     private Output<String> resourceType;
 
     /**
-     * @return The resource type of should shared. Valid values:
+     * @return The type of the shared resource. Valid values:
      * - `VSwitch`.
      * - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
      * - The following types are added after v1.192.0: `PrefixList` and `Image`.
@@ -100,7 +100,7 @@ public final class SharedResourceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceId The resource ID need shared.
+         * @param resourceId The ID of the shared resource.
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class SharedResourceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceId The resource ID need shared.
+         * @param resourceId The ID of the shared resource.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class SharedResourceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceShareId The resource share ID of resource manager.
+         * @param resourceShareId The ID of the resource share.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class SharedResourceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceShareId The resource share ID of resource manager.
+         * @param resourceShareId The ID of the resource share.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class SharedResourceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceType The resource type of should shared. Valid values:
+         * @param resourceType The type of the shared resource. Valid values:
          * - `VSwitch`.
          * - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
          * - The following types are added after v1.192.0: `PrefixList` and `Image`.
@@ -160,7 +160,7 @@ public final class SharedResourceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceType The resource type of should shared. Valid values:
+         * @param resourceType The type of the shared resource. Valid values:
          * - `VSwitch`.
          * - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
          * - The following types are added after v1.192.0: `PrefixList` and `Image`.

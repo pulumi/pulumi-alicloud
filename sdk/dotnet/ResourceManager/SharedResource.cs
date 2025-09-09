@@ -25,39 +25,46 @@ namespace Pulumi.AliCloud.ResourceManager
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tfexample";
-    ///     var example = AliCloud.GetZones.Invoke(new()
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
     ///     {
-    ///         VpcName = name,
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         VpcName = $"{name}-{defaultInteger.Result}",
     ///         CidrBlock = "192.168.0.0/16",
     ///     });
     /// 
-    ///     var exampleSwitch = new AliCloud.Vpc.Switch("example", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
-    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///         CidrBlock = "192.168.0.0/16",
-    ///         VpcId = exampleNetwork.Id,
-    ///         VswitchName = name,
+    ///         VpcId = defaultNetwork.Id,
+    ///         VswitchName = $"{name}-{defaultInteger.Result}",
     ///     });
     /// 
-    ///     var exampleResourceShare = new AliCloud.ResourceManager.ResourceShare("example", new()
+    ///     var defaultResourceShare = new AliCloud.ResourceManager.ResourceShare("default", new()
     ///     {
-    ///         ResourceShareName = name,
+    ///         ResourceShareName = $"{name}-{defaultInteger.Result}",
     ///     });
     /// 
-    ///     var exampleSharedResource = new AliCloud.ResourceManager.SharedResource("example", new()
+    ///     var defaultSharedResource = new AliCloud.ResourceManager.SharedResource("default", new()
     ///     {
-    ///         ResourceId = exampleSwitch.Id,
-    ///         ResourceShareId = exampleResourceShare.Id,
+    ///         ResourceShareId = defaultResourceShare.Id,
+    ///         ResourceId = defaultSwitch.Id,
     ///         ResourceType = "VSwitch",
     ///     });
     /// 
@@ -76,19 +83,25 @@ namespace Pulumi.AliCloud.ResourceManager
     public partial class SharedResource : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The resource ID need shared.
+        /// (Available since v1.259.0) The time when the shared resource was associated with the resource share.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the shared resource.
         /// </summary>
         [Output("resourceId")]
         public Output<string> ResourceId { get; private set; } = null!;
 
         /// <summary>
-        /// The resource share ID of resource manager.
+        /// The ID of the resource share.
         /// </summary>
         [Output("resourceShareId")]
         public Output<string> ResourceShareId { get; private set; } = null!;
 
         /// <summary>
-        /// The resource type of should shared. Valid values:
+        /// The type of the shared resource. Valid values:
         /// - `VSwitch`.
         /// - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
         /// - The following types are added after v1.192.0: `PrefixList` and `Image`.
@@ -153,19 +166,19 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class SharedResourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The resource ID need shared.
+        /// The ID of the shared resource.
         /// </summary>
         [Input("resourceId", required: true)]
         public Input<string> ResourceId { get; set; } = null!;
 
         /// <summary>
-        /// The resource share ID of resource manager.
+        /// The ID of the resource share.
         /// </summary>
         [Input("resourceShareId", required: true)]
         public Input<string> ResourceShareId { get; set; } = null!;
 
         /// <summary>
-        /// The resource type of should shared. Valid values:
+        /// The type of the shared resource. Valid values:
         /// - `VSwitch`.
         /// - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
         /// - The following types are added after v1.192.0: `PrefixList` and `Image`.
@@ -186,19 +199,25 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class SharedResourceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The resource ID need shared.
+        /// (Available since v1.259.0) The time when the shared resource was associated with the resource share.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The ID of the shared resource.
         /// </summary>
         [Input("resourceId")]
         public Input<string>? ResourceId { get; set; }
 
         /// <summary>
-        /// The resource share ID of resource manager.
+        /// The ID of the resource share.
         /// </summary>
         [Input("resourceShareId")]
         public Input<string>? ResourceShareId { get; set; }
 
         /// <summary>
-        /// The resource type of should shared. Valid values:
+        /// The type of the shared resource. Valid values:
         /// - `VSwitch`.
         /// - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
         /// - The following types are added after v1.192.0: `PrefixList` and `Image`.

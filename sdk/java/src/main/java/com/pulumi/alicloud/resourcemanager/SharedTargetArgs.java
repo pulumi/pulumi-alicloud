@@ -15,14 +15,14 @@ public final class SharedTargetArgs extends com.pulumi.resources.ResourceArgs {
     public static final SharedTargetArgs Empty = new SharedTargetArgs();
 
     /**
-     * The resource share ID of resource manager.
+     * The ID of the resource share.
      * 
      */
     @Import(name="resourceShareId", required=true)
     private Output<String> resourceShareId;
 
     /**
-     * @return The resource share ID of resource manager.
+     * @return The ID of the resource share.
      * 
      */
     public Output<String> resourceShareId() {
@@ -30,14 +30,14 @@ public final class SharedTargetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The member account ID in resource directory.
+     * The ID of the principal.
      * 
      */
     @Import(name="targetId", required=true)
     private Output<String> targetId;
 
     /**
-     * @return The member account ID in resource directory.
+     * @return The ID of the principal.
      * 
      */
     public Output<String> targetId() {
@@ -70,7 +70,7 @@ public final class SharedTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceShareId The resource share ID of resource manager.
+         * @param resourceShareId The ID of the resource share.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class SharedTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceShareId The resource share ID of resource manager.
+         * @param resourceShareId The ID of the resource share.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class SharedTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetId The member account ID in resource directory.
+         * @param targetId The ID of the principal.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class SharedTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetId The member account ID in resource directory.
+         * @param targetId The ID of the principal.
          * 
          * @return builder
          * 

@@ -1619,6 +1619,9 @@
             "alicloud_cloud_sso_access_configuration_provisioning": {
                 "current": "alicloud:cloudsso/accessConfigurationProvisioning:AccessConfigurationProvisioning"
             },
+            "alicloud_cloud_sso_delegate_account": {
+                "current": "alicloud:cloudsso/delegateAccount:DelegateAccount"
+            },
             "alicloud_cloud_sso_directory": {
                 "current": "alicloud:cloudsso/directory:Directory",
                 "fields": {
@@ -3342,6 +3345,9 @@
                     }
                 }
             },
+            "alicloud_dms_enterprise_workspace": {
+                "current": "alicloud:dms/enterpriseWorkspace:EnterpriseWorkspace"
+            },
             "alicloud_dns": {
                 "current": "alicloud:dns/domain:Domain",
                 "fields": {
@@ -4683,6 +4689,9 @@
             "alicloud_esa_kv": {
                 "current": "alicloud:esa/kv:Kv"
             },
+            "alicloud_esa_kv_account": {
+                "current": "alicloud:esa/kvAccount:KvAccount"
+            },
             "alicloud_esa_kv_namespace": {
                 "current": "alicloud:esa/kvNamespace:KvNamespace"
             },
@@ -4755,6 +4764,9 @@
             "alicloud_esa_routine": {
                 "current": "alicloud:esa/routine:Routine"
             },
+            "alicloud_esa_routine_related_record": {
+                "current": "alicloud:esa/routineRelatedRecord:RoutineRelatedRecord"
+            },
             "alicloud_esa_routine_route": {
                 "current": "alicloud:esa/routineRoute:RoutineRoute"
             },
@@ -4803,6 +4815,9 @@
             },
             "alicloud_esa_site_origin_client_certificate": {
                 "current": "alicloud:esa/siteOriginClientCertificate:SiteOriginClientCertificate"
+            },
+            "alicloud_esa_url_observation": {
+                "current": "alicloud:esa/urlObservation:UrlObservation"
             },
             "alicloud_esa_version": {
                 "current": "alicloud:esa/version:Version"
@@ -8131,6 +8146,14 @@
             "alicloud_resource_manager_handshake": {
                 "current": "alicloud:resourcemanager/handshake:Handshake"
             },
+            "alicloud_resource_manager_message_contact": {
+                "current": "alicloud:resourcemanager/messageContact:MessageContact",
+                "fields": {
+                    "message_types": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "alicloud_resource_manager_policy": {
                 "current": "alicloud:resourcemanager/policy:Policy"
             },
@@ -9092,6 +9115,25 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "alicloud_sls_logtail_config": {
+                "current": "alicloud:sls/logtailConfig:LogtailConfig",
+                "fields": {
+                    "output_detail": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "alicloud_sls_machine_group": {
+                "current": "alicloud:sls/machineGroup:MachineGroup",
+                "fields": {
+                    "group_attribute": {
+                        "maxItemsOne": true
+                    },
+                    "machine_list": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -21581,6 +21623,31 @@
                                 }
                             }
                         }
+                    },
+                    "ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_sls_logtail_configs": {
+                "current": "alicloud:sls/getLogtailConfigs:getLogtailConfigs",
+                "fields": {
+                    "configs": {
+                        "maxItemsOne": false
+                    },
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "names": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_sls_machine_groups": {
+                "current": "alicloud:sls/getMachineGroups:getMachineGroups",
+                "fields": {
+                    "groups": {
+                        "maxItemsOne": false
                     },
                     "ids": {
                         "maxItemsOne": false
