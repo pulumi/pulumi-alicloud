@@ -5,12 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Resource Manager Folder resource. A folder is an organizational unit in a resource directory. You can use folders to build an organizational structure for resources.
- * For information about Resource Manager Foler and how to use it, see [What is Resource Manager Folder](https://www.alibabacloud.com/help/en/doc-detail/111221.htm).
+ * Provides a Resource Manager Folder resource.
+ *
+ * The management unit of the organization account in the resource directory.
+ *
+ * For information about Resource Manager Folder and how to use it, see [What is Folder](https://www.alibabacloud.com/help/en/resource-management/resource-directory/developer-reference/api-resourcedirectorymaster-2022-04-19-createfolder).
  *
  * > **NOTE:** Available since v1.82.0.
- *
- * > **NOTE:** A maximum of five levels of folders can be created under the root folder.
  *
  * ## Example Usage
  *
@@ -22,7 +23,7 @@ import * as utilities from "../utilities";
  * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
+ * const name = config.get("name") || "terraform-example";
  * const _default = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
@@ -35,7 +36,7 @@ import * as utilities from "../utilities";
  * Resource Manager Folder can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:resourcemanager/folder:Folder example fd-u8B321****
+ * $ pulumi import alicloud:resourcemanager/folder:Folder example <id>
  * ```
  */
 export class Folder extends pulumi.CustomResource {
@@ -67,13 +68,21 @@ export class Folder extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
+     * (Available since v1.259.0) The time when the folder was created.
+     */
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * The name of the folder.
      */
     declare public readonly folderName: pulumi.Output<string>;
     /**
-     * The ID of the parent folder. If not set, the system default value will be used.
+     * The ID of the parent folder.
      */
     declare public readonly parentFolderId: pulumi.Output<string>;
+    /**
+     * The tag of the resource.
+     */
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Folder resource with the given unique name, arguments, and options.
@@ -88,8 +97,10 @@ export class Folder extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FolderState | undefined;
+            resourceInputs["createTime"] = state?.createTime;
             resourceInputs["folderName"] = state?.folderName;
             resourceInputs["parentFolderId"] = state?.parentFolderId;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as FolderArgs | undefined;
             if (args?.folderName === undefined && !opts.urn) {
@@ -97,6 +108,8 @@ export class Folder extends pulumi.CustomResource {
             }
             resourceInputs["folderName"] = args?.folderName;
             resourceInputs["parentFolderId"] = args?.parentFolderId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Folder.__pulumiType, name, resourceInputs, opts);
@@ -108,13 +121,21 @@ export class Folder extends pulumi.CustomResource {
  */
 export interface FolderState {
     /**
-     * The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
+     * (Available since v1.259.0) The time when the folder was created.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * The name of the folder.
      */
     folderName?: pulumi.Input<string>;
     /**
-     * The ID of the parent folder. If not set, the system default value will be used.
+     * The ID of the parent folder.
      */
     parentFolderId?: pulumi.Input<string>;
+    /**
+     * The tag of the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -122,11 +143,15 @@ export interface FolderState {
  */
 export interface FolderArgs {
     /**
-     * The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
+     * The name of the folder.
      */
     folderName: pulumi.Input<string>;
     /**
-     * The ID of the parent folder. If not set, the system default value will be used.
+     * The ID of the parent folder.
      */
     parentFolderId?: pulumi.Input<string>;
+    /**
+     * The tag of the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

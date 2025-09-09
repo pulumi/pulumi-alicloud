@@ -21,14 +21,18 @@ public final class VpcEndpointArgs extends com.pulumi.resources.ResourceArgs {
     public static final VpcEndpointArgs Empty = new VpcEndpointArgs();
 
     /**
-     * The IP address version.
+     * The IP address version. Valid values:
+     * - `IPv4` (default): IPv4.
+     * - `DualStack`: dual-stack.
      * 
      */
     @Import(name="addressIpVersion")
     private @Nullable Output<String> addressIpVersion;
 
     /**
-     * @return The IP address version.
+     * @return The IP address version. Valid values:
+     * - `IPv4` (default): IPv4.
+     * - `DualStack`: dual-stack.
      * 
      */
     public Optional<Output<String>> addressIpVersion() {
@@ -276,7 +280,9 @@ public final class VpcEndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addressIpVersion The IP address version.
+         * @param addressIpVersion The IP address version. Valid values:
+         * - `IPv4` (default): IPv4.
+         * - `DualStack`: dual-stack.
          * 
          * @return builder
          * 
@@ -287,7 +293,9 @@ public final class VpcEndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addressIpVersion The IP address version.
+         * @param addressIpVersion The IP address version. Valid values:
+         * - `IPv4` (default): IPv4.
+         * - `DualStack`: dual-stack.
          * 
          * @return builder
          * 

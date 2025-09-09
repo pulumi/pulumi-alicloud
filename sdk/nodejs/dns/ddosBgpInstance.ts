@@ -5,37 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Anti-DDoS Advanced instance resource. "Ddosbgp" is the short term of this product.
- *
- * > **NOTE:** Available since v1.183.0.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const instance = new alicloud.ddos.DdosBgpInstance("instance", {
- *     name: name,
- *     baseBandwidth: 20,
- *     bandwidth: -1,
- *     ipCount: 100,
- *     ipType: "IPv4",
- *     normalBandwidth: 100,
- *     type: "Enterprise",
- * });
- * ```
- *
  * ## Import
  *
- * Ddosbgp instance can be imported using the id, e.g.
+ * Anti-DDoS Pro (DdosBgp) Instance can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:dns/ddosBgpInstance:DdosBgpInstance example ddosbgp-abc123456
+ * $ pulumi import alicloud:dns/ddosBgpInstance:DdosBgpInstance example <id>
  * ```
  *
  * @deprecated alicloud.dns.DdosBgpInstance has been deprecated in favor of alicloud.ddos.DdosBgpInstance
@@ -70,27 +45,35 @@ export class DdosBgpInstance extends pulumi.CustomResource {
     }
 
     /**
-     * Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 51,91,101,201,301. The unit is Gbps.
+     * The bandwidth of the package configuration.
      */
     declare public readonly bandwidth: pulumi.Output<number>;
     /**
-     * Base defend bandwidth of the instance. Valid values: 20. The unit is Gbps. Default to `20`.
+     * The basic protection bandwidth of the Anti-DDoS Origin Enterprise instance. Default value: `20`. Valid values: `20`.
      */
     declare public readonly baseBandwidth: pulumi.Output<number | undefined>;
     /**
-     * IP count of the instance. Valid values: 100.
+     * The name of the instance.
+     */
+    declare public readonly instanceName: pulumi.Output<string>;
+    /**
+     * The number of IP addresses that can be protected by the Anti-DDoS Origin Enterprise instance.
      */
     declare public readonly ipCount: pulumi.Output<number>;
     /**
-     * IP version of the instance. Valid values: IPv4,IPv6.
+     * The protection IP address type of the protection package. Valid values:
+     * - `IPv4`
+     * - `IPv6`
      */
     declare public readonly ipType: pulumi.Output<string>;
     /**
-     * Name of the instance. This name can have a string of 1 to 63 characters.
+     * Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead.
+     *
+     * @deprecated Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Normal defend bandwidth of the instance. The unit is Gbps.
+     * The normal clean bandwidth. Unit: Mbit/s.
      */
     declare public readonly normalBandwidth: pulumi.Output<number>;
     /**
@@ -98,9 +81,21 @@ export class DdosBgpInstance extends pulumi.CustomResource {
      */
     declare public readonly period: pulumi.Output<number | undefined>;
     /**
-     * Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
+     * Resource Group ID
      */
-    declare public readonly type: pulumi.Output<string | undefined>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
+    /**
+     * (Available since v1.259.0) The status of the Instance.
+     */
+    declare public /*out*/ readonly status: pulumi.Output<string>;
+    /**
+     * The key of the tag that is added to the Anti-DDoS Origin instance.
+     */
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * The protection package type of the DDoS native protection instance. Default value: `Enterprise`. Valid values: `Enterprise`, `Professional`.
+     */
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a DdosBgpInstance resource with the given unique name, arguments, and options.
@@ -120,11 +115,15 @@ export class DdosBgpInstance extends pulumi.CustomResource {
             const state = argsOrState as DdosBgpInstanceState | undefined;
             resourceInputs["bandwidth"] = state?.bandwidth;
             resourceInputs["baseBandwidth"] = state?.baseBandwidth;
+            resourceInputs["instanceName"] = state?.instanceName;
             resourceInputs["ipCount"] = state?.ipCount;
             resourceInputs["ipType"] = state?.ipType;
             resourceInputs["name"] = state?.name;
             resourceInputs["normalBandwidth"] = state?.normalBandwidth;
             resourceInputs["period"] = state?.period;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
             resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as DdosBgpInstanceArgs | undefined;
@@ -142,12 +141,16 @@ export class DdosBgpInstance extends pulumi.CustomResource {
             }
             resourceInputs["bandwidth"] = args?.bandwidth;
             resourceInputs["baseBandwidth"] = args?.baseBandwidth;
+            resourceInputs["instanceName"] = args?.instanceName;
             resourceInputs["ipCount"] = args?.ipCount;
             resourceInputs["ipType"] = args?.ipType;
             resourceInputs["name"] = args?.name;
             resourceInputs["normalBandwidth"] = args?.normalBandwidth;
             resourceInputs["period"] = args?.period;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["type"] = args?.type;
+            resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DdosBgpInstance.__pulumiType, name, resourceInputs, opts);
@@ -159,27 +162,35 @@ export class DdosBgpInstance extends pulumi.CustomResource {
  */
 export interface DdosBgpInstanceState {
     /**
-     * Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 51,91,101,201,301. The unit is Gbps.
+     * The bandwidth of the package configuration.
      */
     bandwidth?: pulumi.Input<number>;
     /**
-     * Base defend bandwidth of the instance. Valid values: 20. The unit is Gbps. Default to `20`.
+     * The basic protection bandwidth of the Anti-DDoS Origin Enterprise instance. Default value: `20`. Valid values: `20`.
      */
     baseBandwidth?: pulumi.Input<number>;
     /**
-     * IP count of the instance. Valid values: 100.
+     * The name of the instance.
+     */
+    instanceName?: pulumi.Input<string>;
+    /**
+     * The number of IP addresses that can be protected by the Anti-DDoS Origin Enterprise instance.
      */
     ipCount?: pulumi.Input<number>;
     /**
-     * IP version of the instance. Valid values: IPv4,IPv6.
+     * The protection IP address type of the protection package. Valid values:
+     * - `IPv4`
+     * - `IPv6`
      */
     ipType?: pulumi.Input<string>;
     /**
-     * Name of the instance. This name can have a string of 1 to 63 characters.
+     * Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead.
+     *
+     * @deprecated Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead.
      */
     name?: pulumi.Input<string>;
     /**
-     * Normal defend bandwidth of the instance. The unit is Gbps.
+     * The normal clean bandwidth. Unit: Mbit/s.
      */
     normalBandwidth?: pulumi.Input<number>;
     /**
@@ -187,7 +198,19 @@ export interface DdosBgpInstanceState {
      */
     period?: pulumi.Input<number>;
     /**
-     * Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
+     * Resource Group ID
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * (Available since v1.259.0) The status of the Instance.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The key of the tag that is added to the Anti-DDoS Origin instance.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The protection package type of the DDoS native protection instance. Default value: `Enterprise`. Valid values: `Enterprise`, `Professional`.
      */
     type?: pulumi.Input<string>;
 }
@@ -197,27 +220,35 @@ export interface DdosBgpInstanceState {
  */
 export interface DdosBgpInstanceArgs {
     /**
-     * Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 51,91,101,201,301. The unit is Gbps.
+     * The bandwidth of the package configuration.
      */
     bandwidth: pulumi.Input<number>;
     /**
-     * Base defend bandwidth of the instance. Valid values: 20. The unit is Gbps. Default to `20`.
+     * The basic protection bandwidth of the Anti-DDoS Origin Enterprise instance. Default value: `20`. Valid values: `20`.
      */
     baseBandwidth?: pulumi.Input<number>;
     /**
-     * IP count of the instance. Valid values: 100.
+     * The name of the instance.
+     */
+    instanceName?: pulumi.Input<string>;
+    /**
+     * The number of IP addresses that can be protected by the Anti-DDoS Origin Enterprise instance.
      */
     ipCount: pulumi.Input<number>;
     /**
-     * IP version of the instance. Valid values: IPv4,IPv6.
+     * The protection IP address type of the protection package. Valid values:
+     * - `IPv4`
+     * - `IPv6`
      */
     ipType: pulumi.Input<string>;
     /**
-     * Name of the instance. This name can have a string of 1 to 63 characters.
+     * Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead.
+     *
+     * @deprecated Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead.
      */
     name?: pulumi.Input<string>;
     /**
-     * Normal defend bandwidth of the instance. The unit is Gbps.
+     * The normal clean bandwidth. Unit: Mbit/s.
      */
     normalBandwidth: pulumi.Input<number>;
     /**
@@ -225,7 +256,15 @@ export interface DdosBgpInstanceArgs {
      */
     period?: pulumi.Input<number>;
     /**
-     * Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
+     * Resource Group ID
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The key of the tag that is added to the Anti-DDoS Origin instance.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The protection package type of the DDoS native protection instance. Default value: `Enterprise`. Valid values: `Enterprise`, `Professional`.
      */
     type?: pulumi.Input<string>;
 }

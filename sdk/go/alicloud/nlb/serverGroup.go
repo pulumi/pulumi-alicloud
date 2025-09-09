@@ -132,9 +132,10 @@ type ServerGroup struct {
 	// The scheduling algorithm. Valid values:
 	//
 	// - **Wrr:** The weighted round-robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
-	// - **rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
-	// - **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
-	// - **tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
+	// - **Rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+	// - **Sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+	// - **Tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
+	// - `Qch`: QUIC ID hashing. Requests that contain the same QUIC ID are forwarded to the same backend server.
 	Scheduler pulumi.StringOutput `pulumi:"scheduler"`
 	// The new name of the server group.
 	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
@@ -222,9 +223,10 @@ type serverGroupState struct {
 	// The scheduling algorithm. Valid values:
 	//
 	// - **Wrr:** The weighted round-robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
-	// - **rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
-	// - **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
-	// - **tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
+	// - **Rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+	// - **Sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+	// - **Tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
+	// - `Qch`: QUIC ID hashing. Requests that contain the same QUIC ID are forwarded to the same backend server.
 	Scheduler *string `pulumi:"scheduler"`
 	// The new name of the server group.
 	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
@@ -277,9 +279,10 @@ type ServerGroupState struct {
 	// The scheduling algorithm. Valid values:
 	//
 	// - **Wrr:** The weighted round-robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
-	// - **rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
-	// - **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
-	// - **tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
+	// - **Rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+	// - **Sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+	// - **Tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
+	// - `Qch`: QUIC ID hashing. Requests that contain the same QUIC ID are forwarded to the same backend server.
 	Scheduler pulumi.StringPtrInput
 	// The new name of the server group.
 	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
@@ -334,9 +337,10 @@ type serverGroupArgs struct {
 	// The scheduling algorithm. Valid values:
 	//
 	// - **Wrr:** The weighted round-robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
-	// - **rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
-	// - **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
-	// - **tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
+	// - **Rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+	// - **Sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+	// - **Tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
+	// - `Qch`: QUIC ID hashing. Requests that contain the same QUIC ID are forwarded to the same backend server.
 	Scheduler *string `pulumi:"scheduler"`
 	// The new name of the server group.
 	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
@@ -386,9 +390,10 @@ type ServerGroupArgs struct {
 	// The scheduling algorithm. Valid values:
 	//
 	// - **Wrr:** The weighted round-robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
-	// - **rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
-	// - **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
-	// - **tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
+	// - **Rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+	// - **Sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+	// - **Tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
+	// - `Qch`: QUIC ID hashing. Requests that contain the same QUIC ID are forwarded to the same backend server.
 	Scheduler pulumi.StringPtrInput
 	// The new name of the server group.
 	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
@@ -555,9 +560,10 @@ func (o ServerGroupOutput) ResourceGroupId() pulumi.StringOutput {
 // The scheduling algorithm. Valid values:
 //
 // - **Wrr:** The weighted round-robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
-// - **rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
-// - **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
-// - **tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
+// - **Rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+// - **Sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+// - **Tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
+// - `Qch`: QUIC ID hashing. Requests that contain the same QUIC ID are forwarded to the same backend server.
 func (o ServerGroupOutput) Scheduler() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.Scheduler }).(pulumi.StringOutput)
 }

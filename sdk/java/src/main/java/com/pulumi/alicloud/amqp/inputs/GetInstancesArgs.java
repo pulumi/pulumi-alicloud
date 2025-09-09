@@ -18,14 +18,14 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetInstancesArgs Empty = new GetInstancesArgs();
 
     /**
-     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      * 
      */
     @Import(name="enableDetails")
     private @Nullable Output<Boolean> enableDetails;
 
     /**
-     * @return Default to `false`. Set it to `true` can output more details about resource attributes.
+     * @return Whether to query the detailed list of resource attributes. Default value: `false`.
      * 
      */
     public Optional<Output<Boolean>> enableDetails() {
@@ -78,14 +78,14 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The status of the resource. Valid values: &#34;DEPLOYING&#34;, &#34;EXPIRED&#34;, &#34;RELEASED&#34;, &#34;SERVING&#34;.
+     * The status of the resource. Valid values: `DEPLOYING`, `SERVING`, `EXPIRED`, `RELEASED`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource. Valid values: &#34;DEPLOYING&#34;, &#34;EXPIRED&#34;, &#34;RELEASED&#34;, &#34;SERVING&#34;.
+     * @return The status of the resource. Valid values: `DEPLOYING`, `SERVING`, `EXPIRED`, `RELEASED`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -121,7 +121,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param enableDetails Default to `false`. Set it to `true` can output more details about resource attributes.
+         * @param enableDetails Whether to query the detailed list of resource attributes. Default value: `false`.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param enableDetails Default to `false`. Set it to `true` can output more details about resource attributes.
+         * @param enableDetails Whether to query the detailed list of resource attributes. Default value: `false`.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the resource. Valid values: &#34;DEPLOYING&#34;, &#34;EXPIRED&#34;, &#34;RELEASED&#34;, &#34;SERVING&#34;.
+         * @param status The status of the resource. Valid values: `DEPLOYING`, `SERVING`, `EXPIRED`, `RELEASED`.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the resource. Valid values: &#34;DEPLOYING&#34;, &#34;EXPIRED&#34;, &#34;RELEASED&#34;, &#34;SERVING&#34;.
+         * @param status The status of the resource. Valid values: `DEPLOYING`, `SERVING`, `EXPIRED`, `RELEASED`.
          * 
          * @return builder
          * 

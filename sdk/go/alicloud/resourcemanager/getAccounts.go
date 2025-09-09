@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Resource Manager Accounts of the current Alibaba Cloud user.
 //
-// > **NOTE:**  Available in 1.86.0+.
+// > **NOTE:** Available since v1.86.0.
 //
 // ## Example Usage
 //
@@ -33,7 +33,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstAccountId", _default.Accounts[0].Id)
+//			ctx.Export("resourceManagerAccountId0", _default.Accounts[0].Id)
 //			return nil
 //		})
 //	}
@@ -51,14 +51,16 @@ func GetAccounts(ctx *pulumi.Context, args *GetAccountsArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getAccounts.
 type GetAccountsArgs struct {
-	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	// Whether to query the detailed list of resource attributes. Default value: `false`.
 	EnableDetails *bool `pulumi:"enableDetails"`
-	// A list of account IDs.
+	// A list of Account IDs.
 	Ids []string `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
+	// The status of account. Valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, `PromoteVerifying`.
 	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getAccounts.
@@ -67,12 +69,13 @@ type GetAccountsResult struct {
 	Accounts      []GetAccountsAccount `pulumi:"accounts"`
 	EnableDetails *bool                `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// A list of account IDs.
+	Id         string   `pulumi:"id"`
 	Ids        []string `pulumi:"ids"`
 	OutputFile *string  `pulumi:"outputFile"`
-	// The status of the member account.
+	// The status of the member.
 	Status *string `pulumi:"status"`
+	// (Available since v1.259.0) The tags that are added to the member.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func GetAccountsOutput(ctx *pulumi.Context, args GetAccountsOutputArgs, opts ...pulumi.InvokeOption) GetAccountsResultOutput {
@@ -86,14 +89,16 @@ func GetAccountsOutput(ctx *pulumi.Context, args GetAccountsOutputArgs, opts ...
 
 // A collection of arguments for invoking getAccounts.
 type GetAccountsOutputArgs struct {
-	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	// Whether to query the detailed list of resource attributes. Default value: `false`.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
-	// A list of account IDs.
+	// A list of Account IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
+	// The status of account. Valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, `PromoteVerifying`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetAccountsOutputArgs) ElementType() reflect.Type {
@@ -129,7 +134,6 @@ func (o GetAccountsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of account IDs.
 func (o GetAccountsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAccountsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -138,9 +142,14 @@ func (o GetAccountsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccountsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
-// The status of the member account.
+// The status of the member.
 func (o GetAccountsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccountsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// (Available since v1.259.0) The tags that are added to the member.
+func (o GetAccountsResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetAccountsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

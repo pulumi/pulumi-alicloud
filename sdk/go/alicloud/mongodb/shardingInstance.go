@@ -127,6 +127,8 @@ type ShardingInstance struct {
 	BackupInterval pulumi.StringOutput `pulumi:"backupInterval"`
 	// MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
 	BackupPeriods pulumi.StringArrayOutput `pulumi:"backupPeriods"`
+	// The retention period of full backups.
+	BackupRetentionPeriod pulumi.IntOutput `pulumi:"backupRetentionPeriod"`
 	// The backup retention policy configured for the instance. Valid values:
 	BackupRetentionPolicyOnClusterDeletion pulumi.IntPtrOutput `pulumi:"backupRetentionPolicyOnClusterDeletion"`
 	// Sharding Instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
@@ -135,6 +137,9 @@ type ShardingInstance struct {
 	ConfigServerLists ShardingInstanceConfigServerListArrayOutput `pulumi:"configServerLists"`
 	// Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
 	DbInstanceReleaseProtection pulumi.BoolPtrOutput `pulumi:"dbInstanceReleaseProtection"`
+	// Specifies whether to enable the log backup feature. Valid values:
+	// - ` 1  `: The log backup feature is enabled.
+	EnableBackupLog pulumi.IntOutput `pulumi:"enableBackupLog"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
 	// The list of Global Security Group Ids.
@@ -147,6 +152,12 @@ type ShardingInstance struct {
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapOutput `pulumi:"kmsEncryptionContext"`
+	// The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `logBackupRetentionPeriod` is valid only when `enableBackupLog` is set to `1`.
+	LogBackupRetentionPeriod pulumi.IntOutput `pulumi:"logBackupRetentionPeriod"`
+	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+	MaintainEndTime pulumi.StringOutput `pulumi:"maintainEndTime"`
+	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+	MaintainStartTime pulumi.StringOutput `pulumi:"maintainStartTime"`
 	// The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
 	MongoLists ShardingInstanceMongoListArrayOutput `pulumi:"mongoLists"`
 	// The name of DB instance. It must be 2 to 256 characters in length.
@@ -180,6 +191,13 @@ type ShardingInstance struct {
 	// - `Standard`: Standard backup.
 	// - ` Flash  `: Single-digit second backup.
 	SnapshotBackupType pulumi.StringOutput `pulumi:"snapshotBackupType"`
+	// Actions performed on SSL functions. Valid values:
+	// - `Open`: turn on SSL encryption.
+	// - `Close`: turn off SSL encryption.
+	// - `Update`: update SSL certificate.
+	SslAction pulumi.StringPtrOutput `pulumi:"sslAction"`
+	// (Available since v1.259.0) The status of the SSL feature.
+	SslStatus pulumi.StringOutput `pulumi:"sslStatus"`
 	// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
 	StorageEngine pulumi.StringOutput `pulumi:"storageEngine"`
 	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
@@ -251,6 +269,8 @@ type shardingInstanceState struct {
 	BackupInterval *string `pulumi:"backupInterval"`
 	// MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
 	BackupPeriods []string `pulumi:"backupPeriods"`
+	// The retention period of full backups.
+	BackupRetentionPeriod *int `pulumi:"backupRetentionPeriod"`
 	// The backup retention policy configured for the instance. Valid values:
 	BackupRetentionPolicyOnClusterDeletion *int `pulumi:"backupRetentionPolicyOnClusterDeletion"`
 	// Sharding Instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
@@ -259,6 +279,9 @@ type shardingInstanceState struct {
 	ConfigServerLists []ShardingInstanceConfigServerList `pulumi:"configServerLists"`
 	// Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
 	DbInstanceReleaseProtection *bool `pulumi:"dbInstanceReleaseProtection"`
+	// Specifies whether to enable the log backup feature. Valid values:
+	// - ` 1  `: The log backup feature is enabled.
+	EnableBackupLog *int `pulumi:"enableBackupLog"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
 	EngineVersion *string `pulumi:"engineVersion"`
 	// The list of Global Security Group Ids.
@@ -271,6 +294,12 @@ type shardingInstanceState struct {
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
+	// The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `logBackupRetentionPeriod` is valid only when `enableBackupLog` is set to `1`.
+	LogBackupRetentionPeriod *int `pulumi:"logBackupRetentionPeriod"`
+	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+	MaintainEndTime *string `pulumi:"maintainEndTime"`
+	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+	MaintainStartTime *string `pulumi:"maintainStartTime"`
 	// The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
 	MongoLists []ShardingInstanceMongoList `pulumi:"mongoLists"`
 	// The name of DB instance. It must be 2 to 256 characters in length.
@@ -304,6 +333,13 @@ type shardingInstanceState struct {
 	// - `Standard`: Standard backup.
 	// - ` Flash  `: Single-digit second backup.
 	SnapshotBackupType *string `pulumi:"snapshotBackupType"`
+	// Actions performed on SSL functions. Valid values:
+	// - `Open`: turn on SSL encryption.
+	// - `Close`: turn off SSL encryption.
+	// - `Update`: update SSL certificate.
+	SslAction *string `pulumi:"sslAction"`
+	// (Available since v1.259.0) The status of the SSL feature.
+	SslStatus *string `pulumi:"sslStatus"`
 	// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
 	StorageEngine *string `pulumi:"storageEngine"`
 	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
@@ -330,6 +366,8 @@ type ShardingInstanceState struct {
 	BackupInterval pulumi.StringPtrInput
 	// MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
 	BackupPeriods pulumi.StringArrayInput
+	// The retention period of full backups.
+	BackupRetentionPeriod pulumi.IntPtrInput
 	// The backup retention policy configured for the instance. Valid values:
 	BackupRetentionPolicyOnClusterDeletion pulumi.IntPtrInput
 	// Sharding Instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
@@ -338,6 +376,9 @@ type ShardingInstanceState struct {
 	ConfigServerLists ShardingInstanceConfigServerListArrayInput
 	// Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
 	DbInstanceReleaseProtection pulumi.BoolPtrInput
+	// Specifies whether to enable the log backup feature. Valid values:
+	// - ` 1  `: The log backup feature is enabled.
+	EnableBackupLog pulumi.IntPtrInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
 	EngineVersion pulumi.StringPtrInput
 	// The list of Global Security Group Ids.
@@ -350,6 +391,12 @@ type ShardingInstanceState struct {
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapInput
+	// The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `logBackupRetentionPeriod` is valid only when `enableBackupLog` is set to `1`.
+	LogBackupRetentionPeriod pulumi.IntPtrInput
+	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+	MaintainEndTime pulumi.StringPtrInput
+	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+	MaintainStartTime pulumi.StringPtrInput
 	// The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
 	MongoLists ShardingInstanceMongoListArrayInput
 	// The name of DB instance. It must be 2 to 256 characters in length.
@@ -383,6 +430,13 @@ type ShardingInstanceState struct {
 	// - `Standard`: Standard backup.
 	// - ` Flash  `: Single-digit second backup.
 	SnapshotBackupType pulumi.StringPtrInput
+	// Actions performed on SSL functions. Valid values:
+	// - `Open`: turn on SSL encryption.
+	// - `Close`: turn off SSL encryption.
+	// - `Update`: update SSL certificate.
+	SslAction pulumi.StringPtrInput
+	// (Available since v1.259.0) The status of the SSL feature.
+	SslStatus pulumi.StringPtrInput
 	// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
 	StorageEngine pulumi.StringPtrInput
 	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
@@ -413,6 +467,8 @@ type shardingInstanceArgs struct {
 	BackupInterval *string `pulumi:"backupInterval"`
 	// MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
 	BackupPeriods []string `pulumi:"backupPeriods"`
+	// The retention period of full backups.
+	BackupRetentionPeriod *int `pulumi:"backupRetentionPeriod"`
 	// The backup retention policy configured for the instance. Valid values:
 	BackupRetentionPolicyOnClusterDeletion *int `pulumi:"backupRetentionPolicyOnClusterDeletion"`
 	// Sharding Instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
@@ -421,6 +477,9 @@ type shardingInstanceArgs struct {
 	ConfigServerLists []ShardingInstanceConfigServerList `pulumi:"configServerLists"`
 	// Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
 	DbInstanceReleaseProtection *bool `pulumi:"dbInstanceReleaseProtection"`
+	// Specifies whether to enable the log backup feature. Valid values:
+	// - ` 1  `: The log backup feature is enabled.
+	EnableBackupLog *int `pulumi:"enableBackupLog"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
 	EngineVersion string `pulumi:"engineVersion"`
 	// The list of Global Security Group Ids.
@@ -433,6 +492,12 @@ type shardingInstanceArgs struct {
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
+	// The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `logBackupRetentionPeriod` is valid only when `enableBackupLog` is set to `1`.
+	LogBackupRetentionPeriod *int `pulumi:"logBackupRetentionPeriod"`
+	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+	MaintainEndTime *string `pulumi:"maintainEndTime"`
+	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+	MaintainStartTime *string `pulumi:"maintainStartTime"`
 	// The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
 	MongoLists []ShardingInstanceMongoList `pulumi:"mongoLists"`
 	// The name of DB instance. It must be 2 to 256 characters in length.
@@ -464,6 +529,11 @@ type shardingInstanceArgs struct {
 	// - `Standard`: Standard backup.
 	// - ` Flash  `: Single-digit second backup.
 	SnapshotBackupType *string `pulumi:"snapshotBackupType"`
+	// Actions performed on SSL functions. Valid values:
+	// - `Open`: turn on SSL encryption.
+	// - `Close`: turn off SSL encryption.
+	// - `Update`: update SSL certificate.
+	SslAction *string `pulumi:"sslAction"`
 	// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
 	StorageEngine *string `pulumi:"storageEngine"`
 	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
@@ -491,6 +561,8 @@ type ShardingInstanceArgs struct {
 	BackupInterval pulumi.StringPtrInput
 	// MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
 	BackupPeriods pulumi.StringArrayInput
+	// The retention period of full backups.
+	BackupRetentionPeriod pulumi.IntPtrInput
 	// The backup retention policy configured for the instance. Valid values:
 	BackupRetentionPolicyOnClusterDeletion pulumi.IntPtrInput
 	// Sharding Instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
@@ -499,6 +571,9 @@ type ShardingInstanceArgs struct {
 	ConfigServerLists ShardingInstanceConfigServerListArrayInput
 	// Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
 	DbInstanceReleaseProtection pulumi.BoolPtrInput
+	// Specifies whether to enable the log backup feature. Valid values:
+	// - ` 1  `: The log backup feature is enabled.
+	EnableBackupLog pulumi.IntPtrInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
 	EngineVersion pulumi.StringInput
 	// The list of Global Security Group Ids.
@@ -511,6 +586,12 @@ type ShardingInstanceArgs struct {
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapInput
+	// The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `logBackupRetentionPeriod` is valid only when `enableBackupLog` is set to `1`.
+	LogBackupRetentionPeriod pulumi.IntPtrInput
+	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+	MaintainEndTime pulumi.StringPtrInput
+	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+	MaintainStartTime pulumi.StringPtrInput
 	// The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
 	MongoLists ShardingInstanceMongoListArrayInput
 	// The name of DB instance. It must be 2 to 256 characters in length.
@@ -542,6 +623,11 @@ type ShardingInstanceArgs struct {
 	// - `Standard`: Standard backup.
 	// - ` Flash  `: Single-digit second backup.
 	SnapshotBackupType pulumi.StringPtrInput
+	// Actions performed on SSL functions. Valid values:
+	// - `Open`: turn on SSL encryption.
+	// - `Close`: turn off SSL encryption.
+	// - `Update`: update SSL certificate.
+	SslAction pulumi.StringPtrInput
 	// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
 	StorageEngine pulumi.StringPtrInput
 	// The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
@@ -666,6 +752,11 @@ func (o ShardingInstanceOutput) BackupPeriods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.StringArrayOutput { return v.BackupPeriods }).(pulumi.StringArrayOutput)
 }
 
+// The retention period of full backups.
+func (o ShardingInstanceOutput) BackupRetentionPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.IntOutput { return v.BackupRetentionPeriod }).(pulumi.IntOutput)
+}
+
 // The backup retention policy configured for the instance. Valid values:
 func (o ShardingInstanceOutput) BackupRetentionPolicyOnClusterDeletion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.IntPtrOutput { return v.BackupRetentionPolicyOnClusterDeletion }).(pulumi.IntPtrOutput)
@@ -684,6 +775,12 @@ func (o ShardingInstanceOutput) ConfigServerLists() ShardingInstanceConfigServer
 // Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
 func (o ShardingInstanceOutput) DbInstanceReleaseProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.BoolPtrOutput { return v.DbInstanceReleaseProtection }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to enable the log backup feature. Valid values:
+// - ` 1  `: The log backup feature is enabled.
+func (o ShardingInstanceOutput) EnableBackupLog() pulumi.IntOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.IntOutput { return v.EnableBackupLog }).(pulumi.IntOutput)
 }
 
 // Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
@@ -714,6 +811,21 @@ func (o ShardingInstanceOutput) KmsEncryptedPassword() pulumi.StringPtrOutput {
 // An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 func (o ShardingInstanceOutput) KmsEncryptionContext() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.StringMapOutput { return v.KmsEncryptionContext }).(pulumi.StringMapOutput)
+}
+
+// The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `logBackupRetentionPeriod` is valid only when `enableBackupLog` is set to `1`.
+func (o ShardingInstanceOutput) LogBackupRetentionPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.IntOutput { return v.LogBackupRetentionPeriod }).(pulumi.IntOutput)
+}
+
+// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+func (o ShardingInstanceOutput) MaintainEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.MaintainEndTime }).(pulumi.StringOutput)
+}
+
+// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+func (o ShardingInstanceOutput) MaintainStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.MaintainStartTime }).(pulumi.StringOutput)
 }
 
 // The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
@@ -789,6 +901,19 @@ func (o ShardingInstanceOutput) ShardLists() ShardingInstanceShardListArrayOutpu
 // - ` Flash  `: Single-digit second backup.
 func (o ShardingInstanceOutput) SnapshotBackupType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.SnapshotBackupType }).(pulumi.StringOutput)
+}
+
+// Actions performed on SSL functions. Valid values:
+// - `Open`: turn on SSL encryption.
+// - `Close`: turn off SSL encryption.
+// - `Update`: update SSL certificate.
+func (o ShardingInstanceOutput) SslAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringPtrOutput { return v.SslAction }).(pulumi.StringPtrOutput)
+}
+
+// (Available since v1.259.0) The status of the SSL feature.
+func (o ShardingInstanceOutput) SslStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.SslStatus }).(pulumi.StringOutput)
 }
 
 // The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.

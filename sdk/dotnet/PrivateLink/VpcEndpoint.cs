@@ -105,7 +105,9 @@ namespace Pulumi.AliCloud.PrivateLink
     public partial class VpcEndpoint : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The IP address version.
+        /// The IP address version. Valid values:
+        /// - `IPv4` (default): IPv4.
+        /// - `DualStack`: dual-stack.
         /// </summary>
         [Output("addressIpVersion")]
         public Output<string> AddressIpVersion { get; private set; } = null!;
@@ -281,7 +283,9 @@ namespace Pulumi.AliCloud.PrivateLink
     public sealed class VpcEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The IP address version.
+        /// The IP address version. Valid values:
+        /// - `IPv4` (default): IPv4.
+        /// - `DualStack`: dual-stack.
         /// </summary>
         [Input("addressIpVersion")]
         public Input<string>? AddressIpVersion { get; set; }
@@ -389,7 +393,9 @@ namespace Pulumi.AliCloud.PrivateLink
     public sealed class VpcEndpointState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The IP address version.
+        /// The IP address version. Valid values:
+        /// - `IPv4` (default): IPv4.
+        /// - `DualStack`: dual-stack.
         /// </summary>
         [Input("addressIpVersion")]
         public Input<string>? AddressIpVersion { get; set; }

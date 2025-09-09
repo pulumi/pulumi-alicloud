@@ -83,6 +83,21 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The retention period of full backups.
+     * 
+     */
+    @Import(name="backupRetentionPeriod")
+    private @Nullable Output<Integer> backupRetentionPeriod;
+
+    /**
+     * @return The retention period of full backups.
+     * 
+     */
+    public Optional<Output<Integer>> backupRetentionPeriod() {
+        return Optional.ofNullable(this.backupRetentionPeriod);
+    }
+
+    /**
      * The backup retention policy configured for the instance. Valid values:
      * 
      */
@@ -140,6 +155,23 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<Boolean>> dbInstanceReleaseProtection() {
         return Optional.ofNullable(this.dbInstanceReleaseProtection);
+    }
+
+    /**
+     * Specifies whether to enable the log backup feature. Valid values:
+     * - ` 1  `: The log backup feature is enabled.
+     * 
+     */
+    @Import(name="enableBackupLog")
+    private @Nullable Output<Integer> enableBackupLog;
+
+    /**
+     * @return Specifies whether to enable the log backup feature. Valid values:
+     * - ` 1  `: The log backup feature is enabled.
+     * 
+     */
+    public Optional<Output<Integer>> enableBackupLog() {
+        return Optional.ofNullable(this.enableBackupLog);
     }
 
     /**
@@ -230,6 +262,51 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<Map<String,String>>> kmsEncryptionContext() {
         return Optional.ofNullable(this.kmsEncryptionContext);
+    }
+
+    /**
+     * The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
+     * 
+     */
+    @Import(name="logBackupRetentionPeriod")
+    private @Nullable Output<Integer> logBackupRetentionPeriod;
+
+    /**
+     * @return The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
+     * 
+     */
+    public Optional<Output<Integer>> logBackupRetentionPeriod() {
+        return Optional.ofNullable(this.logBackupRetentionPeriod);
+    }
+
+    /**
+     * The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+     * 
+     */
+    @Import(name="maintainEndTime")
+    private @Nullable Output<String> maintainEndTime;
+
+    /**
+     * @return The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+     * 
+     */
+    public Optional<Output<String>> maintainEndTime() {
+        return Optional.ofNullable(this.maintainEndTime);
+    }
+
+    /**
+     * The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+     * 
+     */
+    @Import(name="maintainStartTime")
+    private @Nullable Output<String> maintainStartTime;
+
+    /**
+     * @return The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+     * 
+     */
+    public Optional<Output<String>> maintainStartTime() {
+        return Optional.ofNullable(this.maintainStartTime);
     }
 
     /**
@@ -453,6 +530,42 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Actions performed on SSL functions. Valid values:
+     * - `Open`: turn on SSL encryption.
+     * - `Close`: turn off SSL encryption.
+     * - `Update`: update SSL certificate.
+     * 
+     */
+    @Import(name="sslAction")
+    private @Nullable Output<String> sslAction;
+
+    /**
+     * @return Actions performed on SSL functions. Valid values:
+     * - `Open`: turn on SSL encryption.
+     * - `Close`: turn off SSL encryption.
+     * - `Update`: update SSL certificate.
+     * 
+     */
+    public Optional<Output<String>> sslAction() {
+        return Optional.ofNullable(this.sslAction);
+    }
+
+    /**
+     * (Available since v1.259.0) The status of the SSL feature.
+     * 
+     */
+    @Import(name="sslStatus")
+    private @Nullable Output<String> sslStatus;
+
+    /**
+     * @return (Available since v1.259.0) The status of the SSL feature.
+     * 
+     */
+    public Optional<Output<String>> sslStatus() {
+        return Optional.ofNullable(this.sslStatus);
+    }
+
+    /**
      * The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
      * 
      */
@@ -566,16 +679,21 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         this.autoRenew = $.autoRenew;
         this.backupInterval = $.backupInterval;
         this.backupPeriods = $.backupPeriods;
+        this.backupRetentionPeriod = $.backupRetentionPeriod;
         this.backupRetentionPolicyOnClusterDeletion = $.backupRetentionPolicyOnClusterDeletion;
         this.backupTime = $.backupTime;
         this.configServerLists = $.configServerLists;
         this.dbInstanceReleaseProtection = $.dbInstanceReleaseProtection;
+        this.enableBackupLog = $.enableBackupLog;
         this.engineVersion = $.engineVersion;
         this.globalSecurityGroupLists = $.globalSecurityGroupLists;
         this.hiddenZoneId = $.hiddenZoneId;
         this.instanceChargeType = $.instanceChargeType;
         this.kmsEncryptedPassword = $.kmsEncryptedPassword;
         this.kmsEncryptionContext = $.kmsEncryptionContext;
+        this.logBackupRetentionPeriod = $.logBackupRetentionPeriod;
+        this.maintainEndTime = $.maintainEndTime;
+        this.maintainStartTime = $.maintainStartTime;
         this.mongoLists = $.mongoLists;
         this.name = $.name;
         this.networkType = $.networkType;
@@ -590,6 +708,8 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         this.securityIpLists = $.securityIpLists;
         this.shardLists = $.shardLists;
         this.snapshotBackupType = $.snapshotBackupType;
+        this.sslAction = $.sslAction;
+        this.sslStatus = $.sslStatus;
         this.storageEngine = $.storageEngine;
         this.storageType = $.storageType;
         this.tags = $.tags;
@@ -712,6 +832,27 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param backupRetentionPeriod The retention period of full backups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupRetentionPeriod(@Nullable Output<Integer> backupRetentionPeriod) {
+            $.backupRetentionPeriod = backupRetentionPeriod;
+            return this;
+        }
+
+        /**
+         * @param backupRetentionPeriod The retention period of full backups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupRetentionPeriod(Integer backupRetentionPeriod) {
+            return backupRetentionPeriod(Output.of(backupRetentionPeriod));
+        }
+
+        /**
          * @param backupRetentionPolicyOnClusterDeletion The backup retention policy configured for the instance. Valid values:
          * 
          * @return builder
@@ -803,6 +944,29 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
          */
         public Builder dbInstanceReleaseProtection(Boolean dbInstanceReleaseProtection) {
             return dbInstanceReleaseProtection(Output.of(dbInstanceReleaseProtection));
+        }
+
+        /**
+         * @param enableBackupLog Specifies whether to enable the log backup feature. Valid values:
+         * - ` 1  `: The log backup feature is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableBackupLog(@Nullable Output<Integer> enableBackupLog) {
+            $.enableBackupLog = enableBackupLog;
+            return this;
+        }
+
+        /**
+         * @param enableBackupLog Specifies whether to enable the log backup feature. Valid values:
+         * - ` 1  `: The log backup feature is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableBackupLog(Integer enableBackupLog) {
+            return enableBackupLog(Output.of(enableBackupLog));
         }
 
         /**
@@ -939,6 +1103,69 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
          */
         public Builder kmsEncryptionContext(Map<String,String> kmsEncryptionContext) {
             return kmsEncryptionContext(Output.of(kmsEncryptionContext));
+        }
+
+        /**
+         * @param logBackupRetentionPeriod The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logBackupRetentionPeriod(@Nullable Output<Integer> logBackupRetentionPeriod) {
+            $.logBackupRetentionPeriod = logBackupRetentionPeriod;
+            return this;
+        }
+
+        /**
+         * @param logBackupRetentionPeriod The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logBackupRetentionPeriod(Integer logBackupRetentionPeriod) {
+            return logBackupRetentionPeriod(Output.of(logBackupRetentionPeriod));
+        }
+
+        /**
+         * @param maintainEndTime The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintainEndTime(@Nullable Output<String> maintainEndTime) {
+            $.maintainEndTime = maintainEndTime;
+            return this;
+        }
+
+        /**
+         * @param maintainEndTime The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintainEndTime(String maintainEndTime) {
+            return maintainEndTime(Output.of(maintainEndTime));
+        }
+
+        /**
+         * @param maintainStartTime The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintainStartTime(@Nullable Output<String> maintainStartTime) {
+            $.maintainStartTime = maintainStartTime;
+            return this;
+        }
+
+        /**
+         * @param maintainStartTime The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintainStartTime(String maintainStartTime) {
+            return maintainStartTime(Output.of(maintainStartTime));
         }
 
         /**
@@ -1273,6 +1500,54 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
          */
         public Builder snapshotBackupType(String snapshotBackupType) {
             return snapshotBackupType(Output.of(snapshotBackupType));
+        }
+
+        /**
+         * @param sslAction Actions performed on SSL functions. Valid values:
+         * - `Open`: turn on SSL encryption.
+         * - `Close`: turn off SSL encryption.
+         * - `Update`: update SSL certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslAction(@Nullable Output<String> sslAction) {
+            $.sslAction = sslAction;
+            return this;
+        }
+
+        /**
+         * @param sslAction Actions performed on SSL functions. Valid values:
+         * - `Open`: turn on SSL encryption.
+         * - `Close`: turn off SSL encryption.
+         * - `Update`: update SSL certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslAction(String sslAction) {
+            return sslAction(Output.of(sslAction));
+        }
+
+        /**
+         * @param sslStatus (Available since v1.259.0) The status of the SSL feature.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslStatus(@Nullable Output<String> sslStatus) {
+            $.sslStatus = sslStatus;
+            return this;
+        }
+
+        /**
+         * @param sslStatus (Available since v1.259.0) The status of the SSL feature.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslStatus(String sslStatus) {
+            return sslStatus(Output.of(sslStatus));
         }
 
         /**

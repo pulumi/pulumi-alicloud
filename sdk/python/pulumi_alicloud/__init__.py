@@ -2047,6 +2047,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "cloudsso/delegateAccount",
+  "fqn": "pulumi_alicloud.cloudsso",
+  "classes": {
+   "alicloud:cloudsso/delegateAccount:DelegateAccount": "DelegateAccount"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "cloudsso/directory",
   "fqn": "pulumi_alicloud.cloudsso",
   "classes": {
@@ -2899,6 +2907,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.dms",
   "classes": {
    "alicloud:dms/enterpriseUser:EnterpriseUser": "EnterpriseUser"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "dms/enterpriseWorkspace",
+  "fqn": "pulumi_alicloud.dms",
+  "classes": {
+   "alicloud:dms/enterpriseWorkspace:EnterpriseWorkspace": "EnterpriseWorkspace"
   }
  },
  {
@@ -4247,6 +4263,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "esa/kvAccount",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/kvAccount:KvAccount": "KvAccount"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "esa/kvNamespace",
   "fqn": "pulumi_alicloud.esa",
   "classes": {
@@ -4359,6 +4383,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "esa/routineRelatedRecord",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/routineRelatedRecord:RoutineRelatedRecord": "RoutineRelatedRecord"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "esa/routineRoute",
   "fqn": "pulumi_alicloud.esa",
   "classes": {
@@ -4403,6 +4435,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.esa",
   "classes": {
    "alicloud:esa/siteOriginClientCertificate:SiteOriginClientCertificate": "SiteOriginClientCertificate"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "esa/urlObservation",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/urlObservation:UrlObservation": "UrlObservation"
   }
  },
  {
@@ -7319,6 +7359,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "resourcemanager/messageContact",
+  "fqn": "pulumi_alicloud.resourcemanager",
+  "classes": {
+   "alicloud:resourcemanager/messageContact:MessageContact": "MessageContact"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "resourcemanager/policy",
   "fqn": "pulumi_alicloud.resourcemanager",
   "classes": {
@@ -8051,6 +8099,22 @@ _utilities.register(
   "fqn": "pulumi_alicloud.sls",
   "classes": {
    "alicloud:sls/etl:Etl": "Etl"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "sls/logtailConfig",
+  "fqn": "pulumi_alicloud.sls",
+  "classes": {
+   "alicloud:sls/logtailConfig:LogtailConfig": "LogtailConfig"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "sls/machineGroup",
+  "fqn": "pulumi_alicloud.sls",
+  "classes": {
+   "alicloud:sls/machineGroup:MachineGroup": "MachineGroup"
   }
  },
  {

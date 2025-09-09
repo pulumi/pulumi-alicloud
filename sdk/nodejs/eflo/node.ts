@@ -103,6 +103,10 @@ export class Node extends pulumi.CustomResource {
      */
     declare public readonly hpnZone: pulumi.Output<string | undefined>;
     /**
+     * Whether to buy PAI. default value `false`.
+     */
+    declare public readonly installPai: pulumi.Output<boolean | undefined>;
+    /**
      * Down payment ratio
      */
     declare public readonly paymentRatio: pulumi.Output<string | undefined>;
@@ -141,7 +145,7 @@ export class Node extends pulumi.CustomResource {
      */
     declare public readonly stageNum: pulumi.Output<string | undefined>;
     /**
-     * The status of the resource
+     * The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
      */
     declare public readonly status: pulumi.Output<string>;
     /**
@@ -172,6 +176,7 @@ export class Node extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["discountLevel"] = state?.discountLevel;
             resourceInputs["hpnZone"] = state?.hpnZone;
+            resourceInputs["installPai"] = state?.installPai;
             resourceInputs["paymentRatio"] = state?.paymentRatio;
             resourceInputs["period"] = state?.period;
             resourceInputs["productForm"] = state?.productForm;
@@ -190,6 +195,7 @@ export class Node extends pulumi.CustomResource {
             resourceInputs["computingServer"] = args?.computingServer;
             resourceInputs["discountLevel"] = args?.discountLevel;
             resourceInputs["hpnZone"] = args?.hpnZone;
+            resourceInputs["installPai"] = args?.installPai;
             resourceInputs["paymentRatio"] = args?.paymentRatio;
             resourceInputs["period"] = args?.period;
             resourceInputs["productForm"] = args?.productForm;
@@ -237,6 +243,10 @@ export interface NodeState {
      */
     hpnZone?: pulumi.Input<string>;
     /**
+     * Whether to buy PAI. default value `false`.
+     */
+    installPai?: pulumi.Input<boolean>;
+    /**
      * Down payment ratio
      */
     paymentRatio?: pulumi.Input<string>;
@@ -275,7 +285,7 @@ export interface NodeState {
      */
     stageNum?: pulumi.Input<string>;
     /**
-     * The status of the resource
+     * The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
      */
     status?: pulumi.Input<string>;
     /**
@@ -313,6 +323,10 @@ export interface NodeArgs {
      */
     hpnZone?: pulumi.Input<string>;
     /**
+     * Whether to buy PAI. default value `false`.
+     */
+    installPai?: pulumi.Input<boolean>;
+    /**
      * Down payment ratio
      */
     paymentRatio?: pulumi.Input<string>;
@@ -351,7 +365,7 @@ export interface NodeArgs {
      */
     stageNum?: pulumi.Input<string>;
     /**
-     * The status of the resource
+     * The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
      */
     status?: pulumi.Input<string>;
     /**

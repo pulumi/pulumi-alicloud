@@ -16,14 +16,37 @@ public final class ResourceDirectoryArgs extends com.pulumi.resources.ResourceAr
     public static final ResourceDirectoryArgs Empty = new ResourceDirectoryArgs();
 
     /**
-     * Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+     * The status of the Member Display Name Synchronization feature. Valid values:
+     * - Enabled
+     * - Disabled
+     * 
+     */
+    @Import(name="memberAccountDisplayNameSyncStatus")
+    private @Nullable Output<String> memberAccountDisplayNameSyncStatus;
+
+    /**
+     * @return The status of the Member Display Name Synchronization feature. Valid values:
+     * - Enabled
+     * - Disabled
+     * 
+     */
+    public Optional<Output<String>> memberAccountDisplayNameSyncStatus() {
+        return Optional.ofNullable(this.memberAccountDisplayNameSyncStatus);
+    }
+
+    /**
+     * The status of the member deletion feature. Valid values:
+     * - Enabled: The feature is enabled. You can call the DeleteAccount operation to delete members of the resource account type.
+     * - Disabled: The feature is disabled. You cannot delete members of the resource account type.
      * 
      */
     @Import(name="memberDeletionStatus")
     private @Nullable Output<String> memberDeletionStatus;
 
     /**
-     * @return Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+     * @return The status of the member deletion feature. Valid values:
+     * - Enabled: The feature is enabled. You can call the DeleteAccount operation to delete members of the resource account type.
+     * - Disabled: The feature is disabled. You cannot delete members of the resource account type.
      * 
      */
     public Optional<Output<String>> memberDeletionStatus() {
@@ -31,14 +54,14 @@ public final class ResourceDirectoryArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The status of control policy. Valid values:`Enabled` and `Disabled`.
+     * ScpStatus
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of control policy. Valid values:`Enabled` and `Disabled`.
+     * @return ScpStatus
      * 
      */
     public Optional<Output<String>> status() {
@@ -48,6 +71,7 @@ public final class ResourceDirectoryArgs extends com.pulumi.resources.ResourceAr
     private ResourceDirectoryArgs() {}
 
     private ResourceDirectoryArgs(ResourceDirectoryArgs $) {
+        this.memberAccountDisplayNameSyncStatus = $.memberAccountDisplayNameSyncStatus;
         this.memberDeletionStatus = $.memberDeletionStatus;
         this.status = $.status;
     }
@@ -71,7 +95,34 @@ public final class ResourceDirectoryArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param memberDeletionStatus Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+         * @param memberAccountDisplayNameSyncStatus The status of the Member Display Name Synchronization feature. Valid values:
+         * - Enabled
+         * - Disabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memberAccountDisplayNameSyncStatus(@Nullable Output<String> memberAccountDisplayNameSyncStatus) {
+            $.memberAccountDisplayNameSyncStatus = memberAccountDisplayNameSyncStatus;
+            return this;
+        }
+
+        /**
+         * @param memberAccountDisplayNameSyncStatus The status of the Member Display Name Synchronization feature. Valid values:
+         * - Enabled
+         * - Disabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memberAccountDisplayNameSyncStatus(String memberAccountDisplayNameSyncStatus) {
+            return memberAccountDisplayNameSyncStatus(Output.of(memberAccountDisplayNameSyncStatus));
+        }
+
+        /**
+         * @param memberDeletionStatus The status of the member deletion feature. Valid values:
+         * - Enabled: The feature is enabled. You can call the DeleteAccount operation to delete members of the resource account type.
+         * - Disabled: The feature is disabled. You cannot delete members of the resource account type.
          * 
          * @return builder
          * 
@@ -82,7 +133,9 @@ public final class ResourceDirectoryArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param memberDeletionStatus Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+         * @param memberDeletionStatus The status of the member deletion feature. Valid values:
+         * - Enabled: The feature is enabled. You can call the DeleteAccount operation to delete members of the resource account type.
+         * - Disabled: The feature is disabled. You cannot delete members of the resource account type.
          * 
          * @return builder
          * 
@@ -92,7 +145,7 @@ public final class ResourceDirectoryArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status The status of control policy. Valid values:`Enabled` and `Disabled`.
+         * @param status ScpStatus
          * 
          * @return builder
          * 
@@ -103,7 +156,7 @@ public final class ResourceDirectoryArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status The status of control policy. Valid values:`Enabled` and `Disabled`.
+         * @param status ScpStatus
          * 
          * @return builder
          * 

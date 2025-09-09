@@ -19,23 +19,47 @@ __all__ = ['ResourceDirectoryArgs', 'ResourceDirectory']
 @pulumi.input_type
 class ResourceDirectoryArgs:
     def __init__(__self__, *,
+                 member_account_display_name_sync_status: Optional[pulumi.Input[_builtins.str]] = None,
                  member_deletion_status: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ResourceDirectory resource.
-        :param pulumi.Input[_builtins.str] member_deletion_status: Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
-        :param pulumi.Input[_builtins.str] status: The status of control policy. Valid values:`Enabled` and `Disabled`.
+        :param pulumi.Input[_builtins.str] member_account_display_name_sync_status: The status of the Member Display Name Synchronization feature. Valid values:
+               - Enabled
+               - Disabled
+        :param pulumi.Input[_builtins.str] member_deletion_status: The status of the member deletion feature. Valid values:
+               - Enabled: The feature is enabled. You can call the DeleteAccount operation to delete members of the resource account type.
+               - Disabled: The feature is disabled. You cannot delete members of the resource account type.
+        :param pulumi.Input[_builtins.str] status: ScpStatus
         """
+        if member_account_display_name_sync_status is not None:
+            pulumi.set(__self__, "member_account_display_name_sync_status", member_account_display_name_sync_status)
         if member_deletion_status is not None:
             pulumi.set(__self__, "member_deletion_status", member_deletion_status)
         if status is not None:
             pulumi.set(__self__, "status", status)
 
     @_builtins.property
+    @pulumi.getter(name="memberAccountDisplayNameSyncStatus")
+    def member_account_display_name_sync_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The status of the Member Display Name Synchronization feature. Valid values:
+        - Enabled
+        - Disabled
+        """
+        return pulumi.get(self, "member_account_display_name_sync_status")
+
+    @member_account_display_name_sync_status.setter
+    def member_account_display_name_sync_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "member_account_display_name_sync_status", value)
+
+    @_builtins.property
     @pulumi.getter(name="memberDeletionStatus")
     def member_deletion_status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+        The status of the member deletion feature. Valid values:
+        - Enabled: The feature is enabled. You can call the DeleteAccount operation to delete members of the resource account type.
+        - Disabled: The feature is disabled. You cannot delete members of the resource account type.
         """
         return pulumi.get(self, "member_deletion_status")
 
@@ -47,7 +71,7 @@ class ResourceDirectoryArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The status of control policy. Valid values:`Enabled` and `Disabled`.
+        ScpStatus
         """
         return pulumi.get(self, "status")
 
@@ -59,23 +83,35 @@ class ResourceDirectoryArgs:
 @pulumi.input_type
 class _ResourceDirectoryState:
     def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  master_account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  master_account_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 member_account_display_name_sync_status: Optional[pulumi.Input[_builtins.str]] = None,
                  member_deletion_status: Optional[pulumi.Input[_builtins.str]] = None,
                  root_folder_id: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ResourceDirectory resources.
-        :param pulumi.Input[_builtins.str] master_account_id: The ID of the master account.
-        :param pulumi.Input[_builtins.str] master_account_name: The name of the master account.
-        :param pulumi.Input[_builtins.str] member_deletion_status: Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
-        :param pulumi.Input[_builtins.str] root_folder_id: The ID of the root folder.
-        :param pulumi.Input[_builtins.str] status: The status of control policy. Valid values:`Enabled` and `Disabled`.
+        :param pulumi.Input[_builtins.str] create_time: The time when the resource directory was created
+        :param pulumi.Input[_builtins.str] master_account_id: The ID of the master account
+        :param pulumi.Input[_builtins.str] master_account_name: The name of the master account
+        :param pulumi.Input[_builtins.str] member_account_display_name_sync_status: The status of the Member Display Name Synchronization feature. Valid values:
+               - Enabled
+               - Disabled
+        :param pulumi.Input[_builtins.str] member_deletion_status: The status of the member deletion feature. Valid values:
+               - Enabled: The feature is enabled. You can call the DeleteAccount operation to delete members of the resource account type.
+               - Disabled: The feature is disabled. You cannot delete members of the resource account type.
+        :param pulumi.Input[_builtins.str] root_folder_id: The ID of the root folder
+        :param pulumi.Input[_builtins.str] status: ScpStatus
         """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if master_account_id is not None:
             pulumi.set(__self__, "master_account_id", master_account_id)
         if master_account_name is not None:
             pulumi.set(__self__, "master_account_name", master_account_name)
+        if member_account_display_name_sync_status is not None:
+            pulumi.set(__self__, "member_account_display_name_sync_status", member_account_display_name_sync_status)
         if member_deletion_status is not None:
             pulumi.set(__self__, "member_deletion_status", member_deletion_status)
         if root_folder_id is not None:
@@ -84,10 +120,22 @@ class _ResourceDirectoryState:
             pulumi.set(__self__, "status", status)
 
     @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The time when the resource directory was created
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create_time", value)
+
+    @_builtins.property
     @pulumi.getter(name="masterAccountId")
     def master_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the master account.
+        The ID of the master account
         """
         return pulumi.get(self, "master_account_id")
 
@@ -99,7 +147,7 @@ class _ResourceDirectoryState:
     @pulumi.getter(name="masterAccountName")
     def master_account_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the master account.
+        The name of the master account
         """
         return pulumi.get(self, "master_account_name")
 
@@ -108,10 +156,26 @@ class _ResourceDirectoryState:
         pulumi.set(self, "master_account_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="memberAccountDisplayNameSyncStatus")
+    def member_account_display_name_sync_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The status of the Member Display Name Synchronization feature. Valid values:
+        - Enabled
+        - Disabled
+        """
+        return pulumi.get(self, "member_account_display_name_sync_status")
+
+    @member_account_display_name_sync_status.setter
+    def member_account_display_name_sync_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "member_account_display_name_sync_status", value)
+
+    @_builtins.property
     @pulumi.getter(name="memberDeletionStatus")
     def member_deletion_status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+        The status of the member deletion feature. Valid values:
+        - Enabled: The feature is enabled. You can call the DeleteAccount operation to delete members of the resource account type.
+        - Disabled: The feature is disabled. You cannot delete members of the resource account type.
         """
         return pulumi.get(self, "member_deletion_status")
 
@@ -123,7 +187,7 @@ class _ResourceDirectoryState:
     @pulumi.getter(name="rootFolderId")
     def root_folder_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the root folder.
+        The ID of the root folder
         """
         return pulumi.get(self, "root_folder_id")
 
@@ -135,7 +199,7 @@ class _ResourceDirectoryState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The status of control policy. Valid values:`Enabled` and `Disabled`.
+        ScpStatus
         """
         return pulumi.get(self, "status")
 
@@ -150,21 +214,16 @@ class ResourceDirectory(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 member_account_display_name_sync_status: Optional[pulumi.Input[_builtins.str]] = None,
                  member_deletion_status: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides a Resource Manager Resource Directory resource. Resource Directory enables you to establish an organizational structure for the resources used by applications of your enterprise. You can plan, build, and manage the resources in a centralized manner by using only one resource directory.
+        Provides a Resource Manager Resource Directory resource.
 
-        For information about Resource Manager Resource Directory and how to use it, see [What is Resource Manager Resource Directory](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
+        For information about Resource Manager Resource Directory and how to use it, see [What is Resource Directory](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
 
         > **NOTE:** Available since v1.84.0.
-
-        > **NOTE:** An account can only be used to enable a resource directory after it passes enterprise real-name verification. An account that only passed individual real-name verification cannot be used to enable a resource directory.
-
-        > **NOTE:** Before you destroy the resource, make sure that the following requirements are met:
-          - All member accounts must be removed from the resource directory.
-          - All folders except the root folder must be deleted from the resource directory.
 
         ## Example Usage
 
@@ -188,13 +247,18 @@ class ResourceDirectory(pulumi.CustomResource):
         Resource Manager Resource Directory can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:resourcemanager/resourceDirectory:ResourceDirectory example rd-s3****
+        $ pulumi import alicloud:resourcemanager/resourceDirectory:ResourceDirectory example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] member_deletion_status: Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
-        :param pulumi.Input[_builtins.str] status: The status of control policy. Valid values:`Enabled` and `Disabled`.
+        :param pulumi.Input[_builtins.str] member_account_display_name_sync_status: The status of the Member Display Name Synchronization feature. Valid values:
+               - Enabled
+               - Disabled
+        :param pulumi.Input[_builtins.str] member_deletion_status: The status of the member deletion feature. Valid values:
+               - Enabled: The feature is enabled. You can call the DeleteAccount operation to delete members of the resource account type.
+               - Disabled: The feature is disabled. You cannot delete members of the resource account type.
+        :param pulumi.Input[_builtins.str] status: ScpStatus
         """
         ...
     @overload
@@ -203,17 +267,11 @@ class ResourceDirectory(pulumi.CustomResource):
                  args: Optional[ResourceDirectoryArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Resource Manager Resource Directory resource. Resource Directory enables you to establish an organizational structure for the resources used by applications of your enterprise. You can plan, build, and manage the resources in a centralized manner by using only one resource directory.
+        Provides a Resource Manager Resource Directory resource.
 
-        For information about Resource Manager Resource Directory and how to use it, see [What is Resource Manager Resource Directory](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
+        For information about Resource Manager Resource Directory and how to use it, see [What is Resource Directory](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
 
         > **NOTE:** Available since v1.84.0.
-
-        > **NOTE:** An account can only be used to enable a resource directory after it passes enterprise real-name verification. An account that only passed individual real-name verification cannot be used to enable a resource directory.
-
-        > **NOTE:** Before you destroy the resource, make sure that the following requirements are met:
-          - All member accounts must be removed from the resource directory.
-          - All folders except the root folder must be deleted from the resource directory.
 
         ## Example Usage
 
@@ -237,7 +295,7 @@ class ResourceDirectory(pulumi.CustomResource):
         Resource Manager Resource Directory can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:resourcemanager/resourceDirectory:ResourceDirectory example rd-s3****
+        $ pulumi import alicloud:resourcemanager/resourceDirectory:ResourceDirectory example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -255,6 +313,7 @@ class ResourceDirectory(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 member_account_display_name_sync_status: Optional[pulumi.Input[_builtins.str]] = None,
                  member_deletion_status: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -266,8 +325,10 @@ class ResourceDirectory(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ResourceDirectoryArgs.__new__(ResourceDirectoryArgs)
 
+            __props__.__dict__["member_account_display_name_sync_status"] = member_account_display_name_sync_status
             __props__.__dict__["member_deletion_status"] = member_deletion_status
             __props__.__dict__["status"] = status
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["master_account_id"] = None
             __props__.__dict__["master_account_name"] = None
             __props__.__dict__["root_folder_id"] = None
@@ -281,8 +342,10 @@ class ResourceDirectory(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[_builtins.str]] = None,
             master_account_id: Optional[pulumi.Input[_builtins.str]] = None,
             master_account_name: Optional[pulumi.Input[_builtins.str]] = None,
+            member_account_display_name_sync_status: Optional[pulumi.Input[_builtins.str]] = None,
             member_deletion_status: Optional[pulumi.Input[_builtins.str]] = None,
             root_folder_id: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None) -> 'ResourceDirectory':
@@ -293,28 +356,44 @@ class ResourceDirectory(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] master_account_id: The ID of the master account.
-        :param pulumi.Input[_builtins.str] master_account_name: The name of the master account.
-        :param pulumi.Input[_builtins.str] member_deletion_status: Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
-        :param pulumi.Input[_builtins.str] root_folder_id: The ID of the root folder.
-        :param pulumi.Input[_builtins.str] status: The status of control policy. Valid values:`Enabled` and `Disabled`.
+        :param pulumi.Input[_builtins.str] create_time: The time when the resource directory was created
+        :param pulumi.Input[_builtins.str] master_account_id: The ID of the master account
+        :param pulumi.Input[_builtins.str] master_account_name: The name of the master account
+        :param pulumi.Input[_builtins.str] member_account_display_name_sync_status: The status of the Member Display Name Synchronization feature. Valid values:
+               - Enabled
+               - Disabled
+        :param pulumi.Input[_builtins.str] member_deletion_status: The status of the member deletion feature. Valid values:
+               - Enabled: The feature is enabled. You can call the DeleteAccount operation to delete members of the resource account type.
+               - Disabled: The feature is disabled. You cannot delete members of the resource account type.
+        :param pulumi.Input[_builtins.str] root_folder_id: The ID of the root folder
+        :param pulumi.Input[_builtins.str] status: ScpStatus
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ResourceDirectoryState.__new__(_ResourceDirectoryState)
 
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["master_account_id"] = master_account_id
         __props__.__dict__["master_account_name"] = master_account_name
+        __props__.__dict__["member_account_display_name_sync_status"] = member_account_display_name_sync_status
         __props__.__dict__["member_deletion_status"] = member_deletion_status
         __props__.__dict__["root_folder_id"] = root_folder_id
         __props__.__dict__["status"] = status
         return ResourceDirectory(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        The time when the resource directory was created
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
     @pulumi.getter(name="masterAccountId")
     def master_account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the master account.
+        The ID of the master account
         """
         return pulumi.get(self, "master_account_id")
 
@@ -322,15 +401,27 @@ class ResourceDirectory(pulumi.CustomResource):
     @pulumi.getter(name="masterAccountName")
     def master_account_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the master account.
+        The name of the master account
         """
         return pulumi.get(self, "master_account_name")
+
+    @_builtins.property
+    @pulumi.getter(name="memberAccountDisplayNameSyncStatus")
+    def member_account_display_name_sync_status(self) -> pulumi.Output[_builtins.str]:
+        """
+        The status of the Member Display Name Synchronization feature. Valid values:
+        - Enabled
+        - Disabled
+        """
+        return pulumi.get(self, "member_account_display_name_sync_status")
 
     @_builtins.property
     @pulumi.getter(name="memberDeletionStatus")
     def member_deletion_status(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+        The status of the member deletion feature. Valid values:
+        - Enabled: The feature is enabled. You can call the DeleteAccount operation to delete members of the resource account type.
+        - Disabled: The feature is disabled. You cannot delete members of the resource account type.
         """
         return pulumi.get(self, "member_deletion_status")
 
@@ -338,7 +429,7 @@ class ResourceDirectory(pulumi.CustomResource):
     @pulumi.getter(name="rootFolderId")
     def root_folder_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the root folder.
+        The ID of the root folder
         """
         return pulumi.get(self, "root_folder_id")
 
@@ -346,7 +437,7 @@ class ResourceDirectory(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of control policy. Valid values:`Enabled` and `Disabled`.
+        ScpStatus
         """
         return pulumi.get(self, "status")
 

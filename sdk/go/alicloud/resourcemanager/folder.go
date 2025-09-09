@@ -12,12 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Resource Manager Folder resource. A folder is an organizational unit in a resource directory. You can use folders to build an organizational structure for resources.
-// For information about Resource Manager Foler and how to use it, see [What is Resource Manager Folder](https://www.alibabacloud.com/help/en/doc-detail/111221.htm).
+// Provides a Resource Manager Folder resource.
+//
+// The management unit of the organization account in the resource directory.
+//
+// For information about Resource Manager Folder and how to use it, see [What is Folder](https://www.alibabacloud.com/help/en/resource-management/resource-directory/developer-reference/api-resourcedirectorymaster-2022-04-19-createfolder).
 //
 // > **NOTE:** Available since v1.82.0.
-//
-// > **NOTE:** A maximum of five levels of folders can be created under the root folder.
 //
 // ## Example Usage
 //
@@ -40,7 +41,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-example"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -68,15 +69,19 @@ import (
 // Resource Manager Folder can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:resourcemanager/folder:Folder example fd-u8B321****
+// $ pulumi import alicloud:resourcemanager/folder:Folder example <id>
 // ```
 type Folder struct {
 	pulumi.CustomResourceState
 
-	// The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
+	// (Available since v1.259.0) The time when the folder was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The name of the folder.
 	FolderName pulumi.StringOutput `pulumi:"folderName"`
-	// The ID of the parent folder. If not set, the system default value will be used.
+	// The ID of the parent folder.
 	ParentFolderId pulumi.StringOutput `pulumi:"parentFolderId"`
+	// The tag of the resource.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewFolder registers a new resource with the given unique name, arguments, and options.
@@ -112,17 +117,25 @@ func GetFolder(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Folder resources.
 type folderState struct {
-	// The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
+	// (Available since v1.259.0) The time when the folder was created.
+	CreateTime *string `pulumi:"createTime"`
+	// The name of the folder.
 	FolderName *string `pulumi:"folderName"`
-	// The ID of the parent folder. If not set, the system default value will be used.
+	// The ID of the parent folder.
 	ParentFolderId *string `pulumi:"parentFolderId"`
+	// The tag of the resource.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type FolderState struct {
-	// The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
+	// (Available since v1.259.0) The time when the folder was created.
+	CreateTime pulumi.StringPtrInput
+	// The name of the folder.
 	FolderName pulumi.StringPtrInput
-	// The ID of the parent folder. If not set, the system default value will be used.
+	// The ID of the parent folder.
 	ParentFolderId pulumi.StringPtrInput
+	// The tag of the resource.
+	Tags pulumi.StringMapInput
 }
 
 func (FolderState) ElementType() reflect.Type {
@@ -130,18 +143,22 @@ func (FolderState) ElementType() reflect.Type {
 }
 
 type folderArgs struct {
-	// The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
+	// The name of the folder.
 	FolderName string `pulumi:"folderName"`
-	// The ID of the parent folder. If not set, the system default value will be used.
+	// The ID of the parent folder.
 	ParentFolderId *string `pulumi:"parentFolderId"`
+	// The tag of the resource.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Folder resource.
 type FolderArgs struct {
-	// The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
+	// The name of the folder.
 	FolderName pulumi.StringInput
-	// The ID of the parent folder. If not set, the system default value will be used.
+	// The ID of the parent folder.
 	ParentFolderId pulumi.StringPtrInput
+	// The tag of the resource.
+	Tags pulumi.StringMapInput
 }
 
 func (FolderArgs) ElementType() reflect.Type {
@@ -231,14 +248,24 @@ func (o FolderOutput) ToFolderOutputWithContext(ctx context.Context) FolderOutpu
 	return o
 }
 
-// The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
+// (Available since v1.259.0) The time when the folder was created.
+func (o FolderOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The name of the folder.
 func (o FolderOutput) FolderName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.FolderName }).(pulumi.StringOutput)
 }
 
-// The ID of the parent folder. If not set, the system default value will be used.
+// The ID of the parent folder.
 func (o FolderOutput) ParentFolderId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.ParentFolderId }).(pulumi.StringOutput)
+}
+
+// The tag of the resource.
+func (o FolderOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Folder) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type FolderArrayOutput struct{ *pulumi.OutputState }

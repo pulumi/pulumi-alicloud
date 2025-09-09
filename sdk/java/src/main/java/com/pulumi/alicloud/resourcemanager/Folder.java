@@ -11,15 +11,18 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Resource Manager Folder resource. A folder is an organizational unit in a resource directory. You can use folders to build an organizational structure for resources.
- * For information about Resource Manager Foler and how to use it, see [What is Resource Manager Folder](https://www.alibabacloud.com/help/en/doc-detail/111221.htm).
+ * Provides a Resource Manager Folder resource.
+ * 
+ * The management unit of the organization account in the resource directory.
+ * 
+ * For information about Resource Manager Folder and how to use it, see [What is Folder](https://www.alibabacloud.com/help/en/resource-management/resource-directory/developer-reference/api-resourcedirectorymaster-2022-04-19-createfolder).
  * 
  * &gt; **NOTE:** Available since v1.82.0.
- * 
- * &gt; **NOTE:** A maximum of five levels of folders can be created under the root folder.
  * 
  * ## Example Usage
  * 
@@ -51,7 +54,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf-example");
+ *         final var name = config.get("name").orElse("terraform-example");
  *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
@@ -72,39 +75,67 @@ import javax.annotation.Nullable;
  * Resource Manager Folder can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:resourcemanager/folder:Folder example fd-u8B321****
+ * $ pulumi import alicloud:resourcemanager/folder:Folder example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:resourcemanager/folder:Folder")
 public class Folder extends com.pulumi.resources.CustomResource {
     /**
-     * The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
+     * (Available since v1.259.0) The time when the folder was created.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return (Available since v1.259.0) The time when the folder was created.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * The name of the folder.
      * 
      */
     @Export(name="folderName", refs={String.class}, tree="[0]")
     private Output<String> folderName;
 
     /**
-     * @return The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
+     * @return The name of the folder.
      * 
      */
     public Output<String> folderName() {
         return this.folderName;
     }
     /**
-     * The ID of the parent folder. If not set, the system default value will be used.
+     * The ID of the parent folder.
      * 
      */
     @Export(name="parentFolderId", refs={String.class}, tree="[0]")
     private Output<String> parentFolderId;
 
     /**
-     * @return The ID of the parent folder. If not set, the system default value will be used.
+     * @return The ID of the parent folder.
      * 
      */
     public Output<String> parentFolderId() {
         return this.parentFolderId;
+    }
+    /**
+     * The tag of the resource.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
 
     /**

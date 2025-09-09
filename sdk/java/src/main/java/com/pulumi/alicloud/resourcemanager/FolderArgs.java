@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,14 +18,14 @@ public final class FolderArgs extends com.pulumi.resources.ResourceArgs {
     public static final FolderArgs Empty = new FolderArgs();
 
     /**
-     * The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
+     * The name of the folder.
      * 
      */
     @Import(name="folderName", required=true)
     private Output<String> folderName;
 
     /**
-     * @return The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
+     * @return The name of the folder.
      * 
      */
     public Output<String> folderName() {
@@ -32,18 +33,33 @@ public final class FolderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the parent folder. If not set, the system default value will be used.
+     * The ID of the parent folder.
      * 
      */
     @Import(name="parentFolderId")
     private @Nullable Output<String> parentFolderId;
 
     /**
-     * @return The ID of the parent folder. If not set, the system default value will be used.
+     * @return The ID of the parent folder.
      * 
      */
     public Optional<Output<String>> parentFolderId() {
         return Optional.ofNullable(this.parentFolderId);
+    }
+
+    /**
+     * The tag of the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     private FolderArgs() {}
@@ -51,6 +67,7 @@ public final class FolderArgs extends com.pulumi.resources.ResourceArgs {
     private FolderArgs(FolderArgs $) {
         this.folderName = $.folderName;
         this.parentFolderId = $.parentFolderId;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -72,7 +89,7 @@ public final class FolderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param folderName The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
+         * @param folderName The name of the folder.
          * 
          * @return builder
          * 
@@ -83,7 +100,7 @@ public final class FolderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param folderName The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
+         * @param folderName The name of the folder.
          * 
          * @return builder
          * 
@@ -93,7 +110,7 @@ public final class FolderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parentFolderId The ID of the parent folder. If not set, the system default value will be used.
+         * @param parentFolderId The ID of the parent folder.
          * 
          * @return builder
          * 
@@ -104,13 +121,34 @@ public final class FolderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parentFolderId The ID of the parent folder. If not set, the system default value will be used.
+         * @param parentFolderId The ID of the parent folder.
          * 
          * @return builder
          * 
          */
         public Builder parentFolderId(String parentFolderId) {
             return parentFolderId(Output.of(parentFolderId));
+        }
+
+        /**
+         * @param tags The tag of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tag of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         public FolderArgs build() {

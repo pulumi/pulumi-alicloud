@@ -12,39 +12,46 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworkAclEgressAclEntry {
     /**
-     * @return The description of the outbound rule.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+     * @return The description of the outbound rule.
+     * The description must be 1 to 256 characters in length and cannot start with http:// or https.
      * 
      */
     private @Nullable String description;
     /**
-     * @return The network of the destination address.
+     * @return The destination CIDR block.
      * 
      */
     private @Nullable String destinationCidrIp;
     /**
-     * @return The route entry type. The value can be `custom`, indicating custom.
+     * @return The route entry type. Value
+     * custom custom rule
+     * system system rules
+     * service Cloud service rules
      * 
      */
     private @Nullable String entryType;
     /**
-     * @return The IP protocol version of the route entry. Valid values: &#34;IPV4&#34; and &#34;IPV4&#39;.
+     * @return The IP protocol version of the route entry. Valid values: &#34;Ipv4&#34; and &#34;ipv6&#39;
      * 
      */
     private @Nullable String ipVersion;
     /**
-     * @return Name of the outbound rule entry.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+     * @return Name of the outbound rule entry.
+     * The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */
     private @Nullable String networkAclEntryName;
     /**
-     * @return Authorization policy. Value:
-     * - accept: Allow.
-     * - drop: Refused.
+     * @return The action to be performed on network traffic that matches the rule. Valid values:
+     * - accept
+     * - drop
      * 
      */
     private @Nullable String policy;
     /**
-     * @return The destination port range of the outbound rule.  When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted. When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+     * @return The destination port range of the outbound rule.
+     * When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.
+     * When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
      * 
      */
     private @Nullable String port;
@@ -61,51 +68,58 @@ public final class NetworkAclEgressAclEntry {
 
     private NetworkAclEgressAclEntry() {}
     /**
-     * @return The description of the outbound rule.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+     * @return The description of the outbound rule.
+     * The description must be 1 to 256 characters in length and cannot start with http:// or https.
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return The network of the destination address.
+     * @return The destination CIDR block.
      * 
      */
     public Optional<String> destinationCidrIp() {
         return Optional.ofNullable(this.destinationCidrIp);
     }
     /**
-     * @return The route entry type. The value can be `custom`, indicating custom.
+     * @return The route entry type. Value
+     * custom custom rule
+     * system system rules
+     * service Cloud service rules
      * 
      */
     public Optional<String> entryType() {
         return Optional.ofNullable(this.entryType);
     }
     /**
-     * @return The IP protocol version of the route entry. Valid values: &#34;IPV4&#34; and &#34;IPV4&#39;.
+     * @return The IP protocol version of the route entry. Valid values: &#34;Ipv4&#34; and &#34;ipv6&#39;
      * 
      */
     public Optional<String> ipVersion() {
         return Optional.ofNullable(this.ipVersion);
     }
     /**
-     * @return Name of the outbound rule entry.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+     * @return Name of the outbound rule entry.
+     * The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */
     public Optional<String> networkAclEntryName() {
         return Optional.ofNullable(this.networkAclEntryName);
     }
     /**
-     * @return Authorization policy. Value:
-     * - accept: Allow.
-     * - drop: Refused.
+     * @return The action to be performed on network traffic that matches the rule. Valid values:
+     * - accept
+     * - drop
      * 
      */
     public Optional<String> policy() {
         return Optional.ofNullable(this.policy);
     }
     /**
-     * @return The destination port range of the outbound rule.  When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted. When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+     * @return The destination port range of the outbound rule.
+     * When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.
+     * When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
      * 
      */
     public Optional<String> port() {

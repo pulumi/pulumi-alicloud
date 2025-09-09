@@ -125,7 +125,9 @@ import (
 type VpcEndpoint struct {
 	pulumi.CustomResourceState
 
-	// The IP address version.
+	// The IP address version. Valid values:
+	// - `IPv4` (default): IPv4.
+	// - `DualStack`: dual-stack.
 	AddressIpVersion pulumi.StringOutput `pulumi:"addressIpVersion"`
 	// The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.
 	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
@@ -206,7 +208,9 @@ func GetVpcEndpoint(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering VpcEndpoint resources.
 type vpcEndpointState struct {
-	// The IP address version.
+	// The IP address version. Valid values:
+	// - `IPv4` (default): IPv4.
+	// - `DualStack`: dual-stack.
 	AddressIpVersion *string `pulumi:"addressIpVersion"`
 	// The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.
 	Bandwidth *int `pulumi:"bandwidth"`
@@ -255,7 +259,9 @@ type vpcEndpointState struct {
 }
 
 type VpcEndpointState struct {
-	// The IP address version.
+	// The IP address version. Valid values:
+	// - `IPv4` (default): IPv4.
+	// - `DualStack`: dual-stack.
 	AddressIpVersion pulumi.StringPtrInput
 	// The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.
 	Bandwidth pulumi.IntPtrInput
@@ -308,7 +314,9 @@ func (VpcEndpointState) ElementType() reflect.Type {
 }
 
 type vpcEndpointArgs struct {
-	// The IP address version.
+	// The IP address version. Valid values:
+	// - `IPv4` (default): IPv4.
+	// - `DualStack`: dual-stack.
 	AddressIpVersion *string `pulumi:"addressIpVersion"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
@@ -344,7 +352,9 @@ type vpcEndpointArgs struct {
 
 // The set of arguments for constructing a VpcEndpoint resource.
 type VpcEndpointArgs struct {
-	// The IP address version.
+	// The IP address version. Valid values:
+	// - `IPv4` (default): IPv4.
+	// - `DualStack`: dual-stack.
 	AddressIpVersion pulumi.StringPtrInput
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	DryRun pulumi.BoolPtrInput
@@ -465,7 +475,9 @@ func (o VpcEndpointOutput) ToVpcEndpointOutputWithContext(ctx context.Context) V
 	return o
 }
 
-// The IP address version.
+// The IP address version. Valid values:
+// - `IPv4` (default): IPv4.
+// - `DualStack`: dual-stack.
 func (o VpcEndpointOutput) AddressIpVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringOutput { return v.AddressIpVersion }).(pulumi.StringOutput)
 }

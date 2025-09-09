@@ -20,7 +20,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a VPC Network Acl resource. Network Access Control List (ACL) is a Network Access Control function in VPC. You can customize the network ACL rules and bind the network ACL to the switch to control the traffic of ECS instances in the switch.
+ * Provides a VPC Network Acl resource.
+ * 
+ * Network Access Control List (ACL) is a Network Access Control function in VPC. You can customize the network ACL rules and bind the network ACL to the switch to control the traffic of ECS instances in the switch.
  * 
  * For information about VPC Network Acl and how to use it, see [What is Network Acl](https://www.alibabacloud.com/help/en/ens/latest/createnetworkacl).
  * 
@@ -138,14 +140,14 @@ public class NetworkAcl extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+     * The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+     * @return The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      * 
      */
     public Output<Optional<String>> description() {
@@ -198,14 +200,16 @@ public class NetworkAcl extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+     * The name of the network ACL.
+     * The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */
     @Export(name="networkAclName", refs={String.class}, tree="[0]")
     private Output<String> networkAclName;
 
     /**
-     * @return The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+     * @return The name of the network ACL.
+     * The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */
     public Output<String> networkAclName() {
@@ -226,14 +230,14 @@ public class NetworkAcl extends com.pulumi.resources.CustomResource {
         return this.resources;
     }
     /**
-     * SOURCE NetworkAcl specified by CopyNetworkAclEntries.
+     * SOURCE NetworkAcl specified by CopyNetworkAclEntries
      * 
      */
     @Export(name="sourceNetworkAclId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceNetworkAclId;
 
     /**
-     * @return SOURCE NetworkAcl specified by CopyNetworkAclEntries.
+     * @return SOURCE NetworkAcl specified by CopyNetworkAclEntries
      * 
      */
     public Output<Optional<String>> sourceNetworkAclId() {

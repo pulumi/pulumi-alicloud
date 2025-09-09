@@ -558,7 +558,7 @@ public final class AmqpFunctions {
     /**
      * This data source provides the Amqp Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.128.0+.
+     * &gt; **NOTE:** Available since v1.128.0.
      * 
      * ## Example Usage
      * 
@@ -572,6 +572,8 @@ public final class AmqpFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.Instance;
+     * import com.pulumi.alicloud.amqp.InstanceArgs;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetInstancesArgs;
      * import java.util.List;
@@ -587,18 +589,26 @@ public final class AmqpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Instance("default", InstanceArgs.builder()
+     *             .instanceName(name)
+     *             .instanceType("enterprise")
+     *             .maxTps("3000")
+     *             .maxConnections(2000)
+     *             .queueCapacity("200")
+     *             .paymentType("Subscription")
+     *             .renewalStatus("AutoRenewal")
+     *             .renewalDuration(1)
+     *             .renewalDurationUnit("Year")
+     *             .supportEip(true)
+     *             .build());
+     * 
      *         final var ids = AmqpFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(            
-     *                 "amqp-abc12345",
-     *                 "amqp-abc34567")
+     *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("amqpInstanceId1", ids.instances()[0].id());
-     *         final var nameRegex = AmqpFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex("^my-Instance")
-     *             .build());
-     * 
-     *         ctx.export("amqpInstanceId2", nameRegex.instances()[0].id());
+     *         ctx.export("amqpInstanceId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
      *     }
      * }
      * }
@@ -612,7 +622,7 @@ public final class AmqpFunctions {
     /**
      * This data source provides the Amqp Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.128.0+.
+     * &gt; **NOTE:** Available since v1.128.0.
      * 
      * ## Example Usage
      * 
@@ -626,6 +636,8 @@ public final class AmqpFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.Instance;
+     * import com.pulumi.alicloud.amqp.InstanceArgs;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetInstancesArgs;
      * import java.util.List;
@@ -641,18 +653,26 @@ public final class AmqpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Instance("default", InstanceArgs.builder()
+     *             .instanceName(name)
+     *             .instanceType("enterprise")
+     *             .maxTps("3000")
+     *             .maxConnections(2000)
+     *             .queueCapacity("200")
+     *             .paymentType("Subscription")
+     *             .renewalStatus("AutoRenewal")
+     *             .renewalDuration(1)
+     *             .renewalDurationUnit("Year")
+     *             .supportEip(true)
+     *             .build());
+     * 
      *         final var ids = AmqpFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(            
-     *                 "amqp-abc12345",
-     *                 "amqp-abc34567")
+     *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("amqpInstanceId1", ids.instances()[0].id());
-     *         final var nameRegex = AmqpFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex("^my-Instance")
-     *             .build());
-     * 
-     *         ctx.export("amqpInstanceId2", nameRegex.instances()[0].id());
+     *         ctx.export("amqpInstanceId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
      *     }
      * }
      * }
@@ -666,7 +686,7 @@ public final class AmqpFunctions {
     /**
      * This data source provides the Amqp Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.128.0+.
+     * &gt; **NOTE:** Available since v1.128.0.
      * 
      * ## Example Usage
      * 
@@ -680,6 +700,8 @@ public final class AmqpFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.Instance;
+     * import com.pulumi.alicloud.amqp.InstanceArgs;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetInstancesArgs;
      * import java.util.List;
@@ -695,18 +717,26 @@ public final class AmqpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Instance("default", InstanceArgs.builder()
+     *             .instanceName(name)
+     *             .instanceType("enterprise")
+     *             .maxTps("3000")
+     *             .maxConnections(2000)
+     *             .queueCapacity("200")
+     *             .paymentType("Subscription")
+     *             .renewalStatus("AutoRenewal")
+     *             .renewalDuration(1)
+     *             .renewalDurationUnit("Year")
+     *             .supportEip(true)
+     *             .build());
+     * 
      *         final var ids = AmqpFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(            
-     *                 "amqp-abc12345",
-     *                 "amqp-abc34567")
+     *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("amqpInstanceId1", ids.instances()[0].id());
-     *         final var nameRegex = AmqpFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex("^my-Instance")
-     *             .build());
-     * 
-     *         ctx.export("amqpInstanceId2", nameRegex.instances()[0].id());
+     *         ctx.export("amqpInstanceId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
      *     }
      * }
      * }
@@ -720,7 +750,7 @@ public final class AmqpFunctions {
     /**
      * This data source provides the Amqp Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.128.0+.
+     * &gt; **NOTE:** Available since v1.128.0.
      * 
      * ## Example Usage
      * 
@@ -734,6 +764,8 @@ public final class AmqpFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.Instance;
+     * import com.pulumi.alicloud.amqp.InstanceArgs;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetInstancesArgs;
      * import java.util.List;
@@ -749,18 +781,26 @@ public final class AmqpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Instance("default", InstanceArgs.builder()
+     *             .instanceName(name)
+     *             .instanceType("enterprise")
+     *             .maxTps("3000")
+     *             .maxConnections(2000)
+     *             .queueCapacity("200")
+     *             .paymentType("Subscription")
+     *             .renewalStatus("AutoRenewal")
+     *             .renewalDuration(1)
+     *             .renewalDurationUnit("Year")
+     *             .supportEip(true)
+     *             .build());
+     * 
      *         final var ids = AmqpFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(            
-     *                 "amqp-abc12345",
-     *                 "amqp-abc34567")
+     *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("amqpInstanceId1", ids.instances()[0].id());
-     *         final var nameRegex = AmqpFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex("^my-Instance")
-     *             .build());
-     * 
-     *         ctx.export("amqpInstanceId2", nameRegex.instances()[0].id());
+     *         ctx.export("amqpInstanceId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
      *     }
      * }
      * }
@@ -774,7 +814,7 @@ public final class AmqpFunctions {
     /**
      * This data source provides the Amqp Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.128.0+.
+     * &gt; **NOTE:** Available since v1.128.0.
      * 
      * ## Example Usage
      * 
@@ -788,6 +828,8 @@ public final class AmqpFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.Instance;
+     * import com.pulumi.alicloud.amqp.InstanceArgs;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetInstancesArgs;
      * import java.util.List;
@@ -803,18 +845,26 @@ public final class AmqpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Instance("default", InstanceArgs.builder()
+     *             .instanceName(name)
+     *             .instanceType("enterprise")
+     *             .maxTps("3000")
+     *             .maxConnections(2000)
+     *             .queueCapacity("200")
+     *             .paymentType("Subscription")
+     *             .renewalStatus("AutoRenewal")
+     *             .renewalDuration(1)
+     *             .renewalDurationUnit("Year")
+     *             .supportEip(true)
+     *             .build());
+     * 
      *         final var ids = AmqpFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(            
-     *                 "amqp-abc12345",
-     *                 "amqp-abc34567")
+     *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("amqpInstanceId1", ids.instances()[0].id());
-     *         final var nameRegex = AmqpFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex("^my-Instance")
-     *             .build());
-     * 
-     *         ctx.export("amqpInstanceId2", nameRegex.instances()[0].id());
+     *         ctx.export("amqpInstanceId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
      *     }
      * }
      * }
@@ -828,7 +878,7 @@ public final class AmqpFunctions {
     /**
      * This data source provides the Amqp Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.128.0+.
+     * &gt; **NOTE:** Available since v1.128.0.
      * 
      * ## Example Usage
      * 
@@ -842,6 +892,8 @@ public final class AmqpFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.Instance;
+     * import com.pulumi.alicloud.amqp.InstanceArgs;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetInstancesArgs;
      * import java.util.List;
@@ -857,18 +909,26 @@ public final class AmqpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Instance("default", InstanceArgs.builder()
+     *             .instanceName(name)
+     *             .instanceType("enterprise")
+     *             .maxTps("3000")
+     *             .maxConnections(2000)
+     *             .queueCapacity("200")
+     *             .paymentType("Subscription")
+     *             .renewalStatus("AutoRenewal")
+     *             .renewalDuration(1)
+     *             .renewalDurationUnit("Year")
+     *             .supportEip(true)
+     *             .build());
+     * 
      *         final var ids = AmqpFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(            
-     *                 "amqp-abc12345",
-     *                 "amqp-abc34567")
+     *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("amqpInstanceId1", ids.instances()[0].id());
-     *         final var nameRegex = AmqpFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex("^my-Instance")
-     *             .build());
-     * 
-     *         ctx.export("amqpInstanceId2", nameRegex.instances()[0].id());
+     *         ctx.export("amqpInstanceId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
      *     }
      * }
      * }
@@ -882,7 +942,7 @@ public final class AmqpFunctions {
     /**
      * This data source provides the Amqp Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.128.0+.
+     * &gt; **NOTE:** Available since v1.128.0.
      * 
      * ## Example Usage
      * 
@@ -896,6 +956,8 @@ public final class AmqpFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.amqp.Instance;
+     * import com.pulumi.alicloud.amqp.InstanceArgs;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetInstancesArgs;
      * import java.util.List;
@@ -911,18 +973,26 @@ public final class AmqpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Instance("default", InstanceArgs.builder()
+     *             .instanceName(name)
+     *             .instanceType("enterprise")
+     *             .maxTps("3000")
+     *             .maxConnections(2000)
+     *             .queueCapacity("200")
+     *             .paymentType("Subscription")
+     *             .renewalStatus("AutoRenewal")
+     *             .renewalDuration(1)
+     *             .renewalDurationUnit("Year")
+     *             .supportEip(true)
+     *             .build());
+     * 
      *         final var ids = AmqpFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(            
-     *                 "amqp-abc12345",
-     *                 "amqp-abc34567")
+     *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("amqpInstanceId1", ids.instances()[0].id());
-     *         final var nameRegex = AmqpFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex("^my-Instance")
-     *             .build());
-     * 
-     *         ctx.export("amqpInstanceId2", nameRegex.instances()[0].id());
+     *         ctx.export("amqpInstanceId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
      *     }
      * }
      * }

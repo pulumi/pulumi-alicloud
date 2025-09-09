@@ -392,6 +392,7 @@ type NodePool struct {
 	// - `ContainerOS` : container-optimized image.
 	// - `Ubuntu`: Ubuntu image.
 	// - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
+	// - `Custom`: Custom image.
 	ImageType pulumi.StringOutput `pulumi:"imageType"`
 	// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
 	InstallCloudMonitor pulumi.BoolPtrOutput `pulumi:"installCloudMonitor"`
@@ -634,6 +635,7 @@ type nodePoolState struct {
 	// - `ContainerOS` : container-optimized image.
 	// - `Ubuntu`: Ubuntu image.
 	// - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
+	// - `Custom`: Custom image.
 	ImageType *string `pulumi:"imageType"`
 	// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
 	InstallCloudMonitor *bool `pulumi:"installCloudMonitor"`
@@ -833,6 +835,7 @@ type NodePoolState struct {
 	// - `ContainerOS` : container-optimized image.
 	// - `Ubuntu`: Ubuntu image.
 	// - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
+	// - `Custom`: Custom image.
 	ImageType pulumi.StringPtrInput
 	// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
 	InstallCloudMonitor pulumi.BoolPtrInput
@@ -1036,6 +1039,7 @@ type nodePoolArgs struct {
 	// - `ContainerOS` : container-optimized image.
 	// - `Ubuntu`: Ubuntu image.
 	// - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
+	// - `Custom`: Custom image.
 	ImageType *string `pulumi:"imageType"`
 	// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
 	InstallCloudMonitor *bool `pulumi:"installCloudMonitor"`
@@ -1232,6 +1236,7 @@ type NodePoolArgs struct {
 	// - `ContainerOS` : container-optimized image.
 	// - `Ubuntu`: Ubuntu image.
 	// - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
+	// - `Custom`: Custom image.
 	ImageType pulumi.StringPtrInput
 	// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
 	InstallCloudMonitor pulumi.BoolPtrInput
@@ -1552,6 +1557,7 @@ func (o NodePoolOutput) ImageId() pulumi.StringOutput {
 // - `ContainerOS` : container-optimized image.
 // - `Ubuntu`: Ubuntu image.
 // - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
+// - `Custom`: Custom image.
 func (o NodePoolOutput) ImageType() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.ImageType }).(pulumi.StringOutput)
 }

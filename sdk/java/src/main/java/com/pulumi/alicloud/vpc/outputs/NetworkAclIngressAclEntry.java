@@ -12,34 +12,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworkAclIngressAclEntry {
     /**
-     * @return Description of the inbound rule.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+     * @return Description of the inbound rule.
+     * The description must be 1 to 256 characters in length and cannot start with http:// or https.
      * 
      */
     private @Nullable String description;
     /**
-     * @return The route entry type. The value can be `custom`, indicating custom.
+     * @return The route entry type. Value
      * 
      */
     private @Nullable String entryType;
     /**
-     * @return The IP protocol version of the route entry. Valid values: &#34;IPV4&#34; and &#34;IPV6&#39;.
+     * @return The IP protocol version of the route entry. Valid values: &#34;Ipv4&#34; and &#34;ipv6&#39;
      * 
      */
     private @Nullable String ipVersion;
     /**
-     * @return The name of the inbound rule entry.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+     * @return The name of the inbound rule entry.
+     * The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */
     private @Nullable String networkAclEntryName;
     /**
-     * @return Authorization policy. Value:
-     * - accept: Allow.
-     * - drop: Refused.
+     * @return The action to be performed on network traffic that matches the rule. Valid values:
+     * - accept
+     * - drop
      * 
      */
     private @Nullable String policy;
     /**
-     * @return The source port range of the inbound rule.  When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted. When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+     * @return The source port range of the inbound rule.
+     * When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.
+     * When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
      * 
      */
     private @Nullable String port;
@@ -54,51 +58,55 @@ public final class NetworkAclIngressAclEntry {
      */
     private @Nullable String protocol;
     /**
-     * @return Source address network segment.
+     * @return The source CIDR block.
      * 
      */
     private @Nullable String sourceCidrIp;
 
     private NetworkAclIngressAclEntry() {}
     /**
-     * @return Description of the inbound rule.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+     * @return Description of the inbound rule.
+     * The description must be 1 to 256 characters in length and cannot start with http:// or https.
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return The route entry type. The value can be `custom`, indicating custom.
+     * @return The route entry type. Value
      * 
      */
     public Optional<String> entryType() {
         return Optional.ofNullable(this.entryType);
     }
     /**
-     * @return The IP protocol version of the route entry. Valid values: &#34;IPV4&#34; and &#34;IPV6&#39;.
+     * @return The IP protocol version of the route entry. Valid values: &#34;Ipv4&#34; and &#34;ipv6&#39;
      * 
      */
     public Optional<String> ipVersion() {
         return Optional.ofNullable(this.ipVersion);
     }
     /**
-     * @return The name of the inbound rule entry.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+     * @return The name of the inbound rule entry.
+     * The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */
     public Optional<String> networkAclEntryName() {
         return Optional.ofNullable(this.networkAclEntryName);
     }
     /**
-     * @return Authorization policy. Value:
-     * - accept: Allow.
-     * - drop: Refused.
+     * @return The action to be performed on network traffic that matches the rule. Valid values:
+     * - accept
+     * - drop
      * 
      */
     public Optional<String> policy() {
         return Optional.ofNullable(this.policy);
     }
     /**
-     * @return The source port range of the inbound rule.  When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted. When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+     * @return The source port range of the inbound rule.
+     * When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.
+     * When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
      * 
      */
     public Optional<String> port() {
@@ -117,7 +125,7 @@ public final class NetworkAclIngressAclEntry {
         return Optional.ofNullable(this.protocol);
     }
     /**
-     * @return Source address network segment.
+     * @return The source CIDR block.
      * 
      */
     public Optional<String> sourceCidrIp() {

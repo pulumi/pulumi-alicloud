@@ -27,9 +27,12 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -38,41 +41,48 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tfexample"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			example, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				CidrBlock: pulumi.String("192.168.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
-//				ZoneId:      pulumi.String(example.Zones[0].Id),
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				CidrBlock:   pulumi.String("192.168.0.0/16"),
-//				VpcId:       exampleNetwork.ID(),
-//				VswitchName: pulumi.String(name),
+//				VpcId:       defaultNetwork.ID(),
+//				VswitchName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleResourceShare, err := resourcemanager.NewResourceShare(ctx, "example", &resourcemanager.ResourceShareArgs{
-//				ResourceShareName: pulumi.String(name),
+//			defaultResourceShare, err := resourcemanager.NewResourceShare(ctx, "default", &resourcemanager.ResourceShareArgs{
+//				ResourceShareName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = resourcemanager.NewSharedResource(ctx, "example", &resourcemanager.SharedResourceArgs{
-//				ResourceId:      exampleSwitch.ID(),
-//				ResourceShareId: exampleResourceShare.ID(),
+//			_, err = resourcemanager.NewSharedResource(ctx, "default", &resourcemanager.SharedResourceArgs{
+//				ResourceShareId: defaultResourceShare.ID(),
+//				ResourceId:      defaultSwitch.ID(),
 //				ResourceType:    pulumi.String("VSwitch"),
 //			})
 //			if err != nil {
@@ -94,11 +104,13 @@ import (
 type SharedResource struct {
 	pulumi.CustomResourceState
 
-	// The resource ID need shared.
+	// (Available since v1.259.0) The time when the shared resource was associated with the resource share.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The ID of the shared resource.
 	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
-	// The resource share ID of resource manager.
+	// The ID of the resource share.
 	ResourceShareId pulumi.StringOutput `pulumi:"resourceShareId"`
-	// The resource type of should shared. Valid values:
+	// The type of the shared resource. Valid values:
 	// - `VSwitch`.
 	// - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
 	// - The following types are added after v1.192.0: `PrefixList` and `Image`.
@@ -150,11 +162,13 @@ func GetSharedResource(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SharedResource resources.
 type sharedResourceState struct {
-	// The resource ID need shared.
+	// (Available since v1.259.0) The time when the shared resource was associated with the resource share.
+	CreateTime *string `pulumi:"createTime"`
+	// The ID of the shared resource.
 	ResourceId *string `pulumi:"resourceId"`
-	// The resource share ID of resource manager.
+	// The ID of the resource share.
 	ResourceShareId *string `pulumi:"resourceShareId"`
-	// The resource type of should shared. Valid values:
+	// The type of the shared resource. Valid values:
 	// - `VSwitch`.
 	// - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
 	// - The following types are added after v1.192.0: `PrefixList` and `Image`.
@@ -168,11 +182,13 @@ type sharedResourceState struct {
 }
 
 type SharedResourceState struct {
-	// The resource ID need shared.
+	// (Available since v1.259.0) The time when the shared resource was associated with the resource share.
+	CreateTime pulumi.StringPtrInput
+	// The ID of the shared resource.
 	ResourceId pulumi.StringPtrInput
-	// The resource share ID of resource manager.
+	// The ID of the resource share.
 	ResourceShareId pulumi.StringPtrInput
-	// The resource type of should shared. Valid values:
+	// The type of the shared resource. Valid values:
 	// - `VSwitch`.
 	// - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
 	// - The following types are added after v1.192.0: `PrefixList` and `Image`.
@@ -190,11 +206,11 @@ func (SharedResourceState) ElementType() reflect.Type {
 }
 
 type sharedResourceArgs struct {
-	// The resource ID need shared.
+	// The ID of the shared resource.
 	ResourceId string `pulumi:"resourceId"`
-	// The resource share ID of resource manager.
+	// The ID of the resource share.
 	ResourceShareId string `pulumi:"resourceShareId"`
-	// The resource type of should shared. Valid values:
+	// The type of the shared resource. Valid values:
 	// - `VSwitch`.
 	// - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
 	// - The following types are added after v1.192.0: `PrefixList` and `Image`.
@@ -207,11 +223,11 @@ type sharedResourceArgs struct {
 
 // The set of arguments for constructing a SharedResource resource.
 type SharedResourceArgs struct {
-	// The resource ID need shared.
+	// The ID of the shared resource.
 	ResourceId pulumi.StringInput
-	// The resource share ID of resource manager.
+	// The ID of the resource share.
 	ResourceShareId pulumi.StringInput
-	// The resource type of should shared. Valid values:
+	// The type of the shared resource. Valid values:
 	// - `VSwitch`.
 	// - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
 	// - The following types are added after v1.192.0: `PrefixList` and `Image`.
@@ -309,17 +325,22 @@ func (o SharedResourceOutput) ToSharedResourceOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The resource ID need shared.
+// (Available since v1.259.0) The time when the shared resource was associated with the resource share.
+func (o SharedResourceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *SharedResource) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the shared resource.
 func (o SharedResourceOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SharedResource) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
 }
 
-// The resource share ID of resource manager.
+// The ID of the resource share.
 func (o SharedResourceOutput) ResourceShareId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SharedResource) pulumi.StringOutput { return v.ResourceShareId }).(pulumi.StringOutput)
 }
 
-// The resource type of should shared. Valid values:
+// The type of the shared resource. Valid values:
 // - `VSwitch`.
 // - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
 // - The following types are added after v1.192.0: `PrefixList` and `Image`.

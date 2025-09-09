@@ -27,46 +27,21 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			displayName := "EAccount"
-//			if param := cfg.Get("displayName"); param != "" {
-//				displayName = param
-//			}
-//			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
-//				Min: 10000,
-//				Max: 99999,
-//			})
+//			_default, err := resourcemanager.GetAccounts(ctx, &resourcemanager.GetAccountsArgs{
+//				Status: pulumi.StringRef("CreateSuccess"),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			example, err := resourcemanager.GetFolders(ctx, &resourcemanager.GetFoldersArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleAccount, err := resourcemanager.NewAccount(ctx, "example", &resourcemanager.AccountArgs{
-//				DisplayName: pulumi.Sprintf("%v-%v", displayName, _default.Result),
-//				FolderId:    pulumi.String(example.Ids[0]),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = resourcemanager.NewDelegatedAdministrator(ctx, "example", &resourcemanager.DelegatedAdministratorArgs{
-//				AccountId:        exampleAccount.ID(),
+//			_, err = resourcemanager.NewDelegatedAdministrator(ctx, "default", &resourcemanager.DelegatedAdministratorArgs{
+//				AccountId:        pulumi.String(_default.Accounts[0].AccountId),
 //				ServicePrincipal: pulumi.String("cloudfw.aliyuncs.com"),
 //			})
 //			if err != nil {
@@ -88,9 +63,9 @@ import (
 type DelegatedAdministrator struct {
 	pulumi.CustomResourceState
 
-	// The ID of the member account in the resource directory.
+	// The Alibaba Cloud account ID of the member in the resource directory.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// The identification of the trusted service. **NOTE:** Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://www.alibabacloud.com/help/en/resource-management/latest/manage-trusted-services-overview).
+	// The identifier of the trusted service.
 	ServicePrincipal pulumi.StringOutput `pulumi:"servicePrincipal"`
 }
 
@@ -130,16 +105,16 @@ func GetDelegatedAdministrator(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DelegatedAdministrator resources.
 type delegatedAdministratorState struct {
-	// The ID of the member account in the resource directory.
+	// The Alibaba Cloud account ID of the member in the resource directory.
 	AccountId *string `pulumi:"accountId"`
-	// The identification of the trusted service. **NOTE:** Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://www.alibabacloud.com/help/en/resource-management/latest/manage-trusted-services-overview).
+	// The identifier of the trusted service.
 	ServicePrincipal *string `pulumi:"servicePrincipal"`
 }
 
 type DelegatedAdministratorState struct {
-	// The ID of the member account in the resource directory.
+	// The Alibaba Cloud account ID of the member in the resource directory.
 	AccountId pulumi.StringPtrInput
-	// The identification of the trusted service. **NOTE:** Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://www.alibabacloud.com/help/en/resource-management/latest/manage-trusted-services-overview).
+	// The identifier of the trusted service.
 	ServicePrincipal pulumi.StringPtrInput
 }
 
@@ -148,17 +123,17 @@ func (DelegatedAdministratorState) ElementType() reflect.Type {
 }
 
 type delegatedAdministratorArgs struct {
-	// The ID of the member account in the resource directory.
+	// The Alibaba Cloud account ID of the member in the resource directory.
 	AccountId string `pulumi:"accountId"`
-	// The identification of the trusted service. **NOTE:** Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://www.alibabacloud.com/help/en/resource-management/latest/manage-trusted-services-overview).
+	// The identifier of the trusted service.
 	ServicePrincipal string `pulumi:"servicePrincipal"`
 }
 
 // The set of arguments for constructing a DelegatedAdministrator resource.
 type DelegatedAdministratorArgs struct {
-	// The ID of the member account in the resource directory.
+	// The Alibaba Cloud account ID of the member in the resource directory.
 	AccountId pulumi.StringInput
-	// The identification of the trusted service. **NOTE:** Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://www.alibabacloud.com/help/en/resource-management/latest/manage-trusted-services-overview).
+	// The identifier of the trusted service.
 	ServicePrincipal pulumi.StringInput
 }
 
@@ -249,12 +224,12 @@ func (o DelegatedAdministratorOutput) ToDelegatedAdministratorOutputWithContext(
 	return o
 }
 
-// The ID of the member account in the resource directory.
+// The Alibaba Cloud account ID of the member in the resource directory.
 func (o DelegatedAdministratorOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DelegatedAdministrator) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The identification of the trusted service. **NOTE:** Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://www.alibabacloud.com/help/en/resource-management/latest/manage-trusted-services-overview).
+// The identifier of the trusted service.
 func (o DelegatedAdministratorOutput) ServicePrincipal() pulumi.StringOutput {
 	return o.ApplyT(func(v *DelegatedAdministrator) pulumi.StringOutput { return v.ServicePrincipal }).(pulumi.StringOutput)
 }

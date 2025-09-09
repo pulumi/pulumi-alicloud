@@ -130,14 +130,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/flowLog:FlowLog")
 public class FlowLog extends com.pulumi.resources.CustomResource {
     /**
-     * Data aggregation interval
+     * The sampling interval of the flow log. Unit: seconds. Valid values: 1, 5, and 10 (default).
      * 
      */
     @Export(name="aggregationInterval", refs={String.class}, tree="[0]")
     private Output<String> aggregationInterval;
 
     /**
-     * @return Data aggregation interval
+     * @return The sampling interval of the flow log. Unit: seconds. Valid values: 1, 5, and 10 (default).
      * 
      */
     public Output<String> aggregationInterval() {
@@ -228,42 +228,42 @@ public class FlowLog extends com.pulumi.resources.CustomResource {
         return this.ipVersion;
     }
     /**
-     * The name of the logstore.
+     * The Logstore that stores the captured traffic data.
      * 
      */
     @Export(name="logStoreName", refs={String.class}, tree="[0]")
     private Output<String> logStoreName;
 
     /**
-     * @return The name of the logstore.
+     * @return The Logstore that stores the captured traffic data.
      * 
      */
     public Output<String> logStoreName() {
         return this.logStoreName;
     }
     /**
-     * The name of the project.
+     * The project that manages the captured traffic data.
      * 
      */
     @Export(name="projectName", refs={String.class}, tree="[0]")
     private Output<String> projectName;
 
     /**
-     * @return The name of the project.
+     * @return The project that manages the captured traffic data.
      * 
      */
     public Output<String> projectName() {
         return this.projectName;
     }
     /**
-     * (Available since v1.243.0) The region ID.
+     * The region ID.
      * 
      */
     @Export(name="regionId", refs={String.class}, tree="[0]")
     private Output<String> regionId;
 
     /**
-     * @return (Available since v1.243.0) The region ID.
+     * @return The region ID.
      * 
      */
     public Output<String> regionId() {

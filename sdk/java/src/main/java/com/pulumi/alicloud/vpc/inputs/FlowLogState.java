@@ -18,14 +18,14 @@ public final class FlowLogState extends com.pulumi.resources.ResourceArgs {
     public static final FlowLogState Empty = new FlowLogState();
 
     /**
-     * Data aggregation interval
+     * The sampling interval of the flow log. Unit: seconds. Valid values: 1, 5, and 10 (default).
      * 
      */
     @Import(name="aggregationInterval")
     private @Nullable Output<String> aggregationInterval;
 
     /**
-     * @return Data aggregation interval
+     * @return The sampling interval of the flow log. Unit: seconds. Valid values: 1, 5, and 10 (default).
      * 
      */
     public Optional<Output<String>> aggregationInterval() {
@@ -123,14 +123,14 @@ public final class FlowLogState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the logstore.
+     * The Logstore that stores the captured traffic data.
      * 
      */
     @Import(name="logStoreName")
     private @Nullable Output<String> logStoreName;
 
     /**
-     * @return The name of the logstore.
+     * @return The Logstore that stores the captured traffic data.
      * 
      */
     public Optional<Output<String>> logStoreName() {
@@ -138,14 +138,14 @@ public final class FlowLogState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the project.
+     * The project that manages the captured traffic data.
      * 
      */
     @Import(name="projectName")
     private @Nullable Output<String> projectName;
 
     /**
-     * @return The name of the project.
+     * @return The project that manages the captured traffic data.
      * 
      */
     public Optional<Output<String>> projectName() {
@@ -153,14 +153,14 @@ public final class FlowLogState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available since v1.243.0) The region ID.
+     * The region ID.
      * 
      */
     @Import(name="regionId")
     private @Nullable Output<String> regionId;
 
     /**
-     * @return (Available since v1.243.0) The region ID.
+     * @return The region ID.
      * 
      */
     public Optional<Output<String>> regionId() {
@@ -329,7 +329,7 @@ public final class FlowLogState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aggregationInterval Data aggregation interval
+         * @param aggregationInterval The sampling interval of the flow log. Unit: seconds. Valid values: 1, 5, and 10 (default).
          * 
          * @return builder
          * 
@@ -340,7 +340,7 @@ public final class FlowLogState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aggregationInterval Data aggregation interval
+         * @param aggregationInterval The sampling interval of the flow log. Unit: seconds. Valid values: 1, 5, and 10 (default).
          * 
          * @return builder
          * 
@@ -476,7 +476,7 @@ public final class FlowLogState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logStoreName The name of the logstore.
+         * @param logStoreName The Logstore that stores the captured traffic data.
          * 
          * @return builder
          * 
@@ -487,7 +487,7 @@ public final class FlowLogState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logStoreName The name of the logstore.
+         * @param logStoreName The Logstore that stores the captured traffic data.
          * 
          * @return builder
          * 
@@ -497,7 +497,7 @@ public final class FlowLogState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectName The name of the project.
+         * @param projectName The project that manages the captured traffic data.
          * 
          * @return builder
          * 
@@ -508,7 +508,7 @@ public final class FlowLogState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectName The name of the project.
+         * @param projectName The project that manages the captured traffic data.
          * 
          * @return builder
          * 
@@ -518,7 +518,7 @@ public final class FlowLogState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param regionId (Available since v1.243.0) The region ID.
+         * @param regionId The region ID.
          * 
          * @return builder
          * 
@@ -529,7 +529,7 @@ public final class FlowLogState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param regionId (Available since v1.243.0) The region ID.
+         * @param regionId The region ID.
          * 
          * @return builder
          * 

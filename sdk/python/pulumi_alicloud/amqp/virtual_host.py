@@ -104,6 +104,8 @@ class VirtualHost(pulumi.CustomResource):
                  virtual_host_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Amqp Virtual Host.
+
         Provides a RabbitMQ (AMQP) Virtual Host resource.
 
         For information about RabbitMQ (AMQP) Virtual Host and how to use it, see [What is Virtual Host](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createvirtualhost).
@@ -117,18 +119,29 @@ class VirtualHost(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        default = alicloud.amqp.Instance("default",
-            instance_type="professional",
-            max_tps="1000",
-            queue_capacity="50",
-            support_eip=True,
-            max_eip_tps="128",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_instance = alicloud.amqp.Instance("default",
+            instance_name=f"{name}-{default['result']}",
+            instance_type="enterprise",
+            max_tps="3000",
+            max_connections=2000,
+            queue_capacity="200",
             payment_type="Subscription",
-            period=1)
+            renewal_status="AutoRenewal",
+            renewal_duration=1,
+            renewal_duration_unit="Year",
+            support_eip=True)
         default_virtual_host = alicloud.amqp.VirtualHost("default",
-            instance_id=default.id,
-            virtual_host_name="tf-example")
+            instance_id=default_instance.id,
+            virtual_host_name=f"{name}-{default['result']}")
         ```
 
         ## Import
@@ -151,6 +164,8 @@ class VirtualHost(pulumi.CustomResource):
                  args: VirtualHostArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Amqp Virtual Host.
+
         Provides a RabbitMQ (AMQP) Virtual Host resource.
 
         For information about RabbitMQ (AMQP) Virtual Host and how to use it, see [What is Virtual Host](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createvirtualhost).
@@ -164,18 +179,29 @@ class VirtualHost(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        default = alicloud.amqp.Instance("default",
-            instance_type="professional",
-            max_tps="1000",
-            queue_capacity="50",
-            support_eip=True,
-            max_eip_tps="128",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_instance = alicloud.amqp.Instance("default",
+            instance_name=f"{name}-{default['result']}",
+            instance_type="enterprise",
+            max_tps="3000",
+            max_connections=2000,
+            queue_capacity="200",
             payment_type="Subscription",
-            period=1)
+            renewal_status="AutoRenewal",
+            renewal_duration=1,
+            renewal_duration_unit="Year",
+            support_eip=True)
         default_virtual_host = alicloud.amqp.VirtualHost("default",
-            instance_id=default.id,
-            virtual_host_name="tf-example")
+            instance_id=default_instance.id,
+            virtual_host_name=f"{name}-{default['result']}")
         ```
 
         ## Import

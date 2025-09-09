@@ -336,6 +336,7 @@ export class NodePool extends pulumi.CustomResource {
      * - `ContainerOS` : container-optimized image.
      * - `Ubuntu`: Ubuntu image.
      * - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
+     * - `Custom`: Custom image.
      */
     declare public readonly imageType: pulumi.Output<string>;
     /**
@@ -871,6 +872,7 @@ export interface NodePoolState {
      * - `ContainerOS` : container-optimized image.
      * - `Ubuntu`: Ubuntu image.
      * - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
+     * - `Custom`: Custom image.
      */
     imageType?: pulumi.Input<string>;
     /**
@@ -1227,6 +1229,7 @@ export interface NodePoolArgs {
      * - `ContainerOS` : container-optimized image.
      * - `Ubuntu`: Ubuntu image.
      * - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
+     * - `Custom`: Custom image.
      */
     imageType?: pulumi.Input<string>;
     /**

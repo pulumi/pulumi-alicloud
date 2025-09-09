@@ -8,8 +8,14 @@ import com.pulumi.alicloud.sls.inputs.GetAlertsArgs;
 import com.pulumi.alicloud.sls.inputs.GetAlertsPlainArgs;
 import com.pulumi.alicloud.sls.inputs.GetEtlsArgs;
 import com.pulumi.alicloud.sls.inputs.GetEtlsPlainArgs;
+import com.pulumi.alicloud.sls.inputs.GetLogtailConfigsArgs;
+import com.pulumi.alicloud.sls.inputs.GetLogtailConfigsPlainArgs;
+import com.pulumi.alicloud.sls.inputs.GetMachineGroupsArgs;
+import com.pulumi.alicloud.sls.inputs.GetMachineGroupsPlainArgs;
 import com.pulumi.alicloud.sls.outputs.GetAlertsResult;
 import com.pulumi.alicloud.sls.outputs.GetEtlsResult;
+import com.pulumi.alicloud.sls.outputs.GetLogtailConfigsResult;
+import com.pulumi.alicloud.sls.outputs.GetMachineGroupsResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
@@ -1392,5 +1398,955 @@ public final class SlsFunctions {
      */
     public static CompletableFuture<GetEtlsResult> getEtlsPlain(GetEtlsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:sls/getEtls:getEtls", TypeShape.of(GetEtlsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Sls Logtail Config available to the user.[What is Logtail Config](https://next.api.alibabacloud.com/document/Sls/2020-12-30/CreateConfig)
+     * 
+     * &gt; **NOTE:** Available since v1.259.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.log.Project;
+     * import com.pulumi.alicloud.log.ProjectArgs;
+     * import com.pulumi.alicloud.sls.LogtailConfig;
+     * import com.pulumi.alicloud.sls.LogtailConfigArgs;
+     * import com.pulumi.alicloud.sls.inputs.LogtailConfigOutputDetailArgs;
+     * import com.pulumi.alicloud.sls.SlsFunctions;
+     * import com.pulumi.alicloud.sls.inputs.GetLogtailConfigsArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .max(99999)
+     *             .min(10000)
+     *             .build());
+     * 
+     *         final var name = config.get("name").orElse("tfaccsls62147");
+     *         final var projectName = config.get("projectName").orElse("project-for-logtail-terraform");
+     *         var defaultuA28zS = new Project("defaultuA28zS", ProjectArgs.builder()
+     *             .projectName(projectName)
+     *             .build());
+     * 
+     *         var defaultLogtailConfig = new LogtailConfig("defaultLogtailConfig", LogtailConfigArgs.builder()
+     *             .projectName(defaultuA28zS.projectName())
+     *             .outputDetail(LogtailConfigOutputDetailArgs.builder()
+     *                 .endpoint("cn-hangzhou-intranet.log.aliyuncs.com")
+     *                 .region("cn-hangzhou")
+     *                 .logstoreName("example")
+     *                 .build())
+     *             .outputType("LogService")
+     *             .inputDetail(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("adjustTimezone", false),
+     *                     jsonProperty("delayAlarmBytes", 0),
+     *                     jsonProperty("delaySkipBytes", 0),
+     *                     jsonProperty("discardNonUtf8", false),
+     *                     jsonProperty("discardUnmatch", true),
+     *                     jsonProperty("dockerFile", false),
+     *                     jsonProperty("enableRawLog", false),
+     *                     jsonProperty("enableTag", false),
+     *                     jsonProperty("fileEncoding", "utf8"),
+     *                     jsonProperty("filePattern", "access*.log"),
+     *                     jsonProperty("filterKey", jsonArray("key1")),
+     *                     jsonProperty("filterRegex", jsonArray("regex1")),
+     *                     jsonProperty("key", jsonArray(
+     *                         "key1", 
+     *                         "key2"
+     *                     )),
+     *                     jsonProperty("localStorage", true),
+     *                     jsonProperty("logBeginRegex", ".*"),
+     *                     jsonProperty("logPath", "/var/log/httpd"),
+     *                     jsonProperty("logTimezone", ""),
+     *                     jsonProperty("logType", "common_reg_log"),
+     *                     jsonProperty("maxDepth", 1000),
+     *                     jsonProperty("maxSendRate", -1),
+     *                     jsonProperty("mergeType", "topic"),
+     *                     jsonProperty("preserve", true),
+     *                     jsonProperty("preserveDepth", 0),
+     *                     jsonProperty("priority", 0),
+     *                     jsonProperty("regex", "(w+)(s+)"),
+     *                     jsonProperty("sendRateExpire", 0),
+     *                     jsonProperty("sensitive_keys", jsonArray(
+     *                     )),
+     *                     jsonProperty("tailExisted", false),
+     *                     jsonProperty("timeFormat", "%Y/%m/%d %H:%M:%S"),
+     *                     jsonProperty("timeKey", "time"),
+     *                     jsonProperty("topicFormat", "none")
+     *                 )))
+     *             .logtailConfigName("tfaccsls62147")
+     *             .inputType("file")
+     *             .build());
+     * 
+     *         final var default = defaultLogtailConfig.logtailConfigName().applyValue(_logtailConfigName -> SlsFunctions.getLogtailConfigs(GetLogtailConfigsArgs.builder()
+     *             .logtailConfigName(_logtailConfigName)
+     *             .logstoreName("example")
+     *             .projectName(projectName)
+     *             .offset(0)
+     *             .size(100)
+     *             .build()));
+     * 
+     *         ctx.export("alicloudSlsLogtailConfigExampleId", default_.applyValue(_default_ -> _default_.configs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetLogtailConfigsResult> getLogtailConfigs(GetLogtailConfigsArgs args) {
+        return getLogtailConfigs(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Sls Logtail Config available to the user.[What is Logtail Config](https://next.api.alibabacloud.com/document/Sls/2020-12-30/CreateConfig)
+     * 
+     * &gt; **NOTE:** Available since v1.259.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.log.Project;
+     * import com.pulumi.alicloud.log.ProjectArgs;
+     * import com.pulumi.alicloud.sls.LogtailConfig;
+     * import com.pulumi.alicloud.sls.LogtailConfigArgs;
+     * import com.pulumi.alicloud.sls.inputs.LogtailConfigOutputDetailArgs;
+     * import com.pulumi.alicloud.sls.SlsFunctions;
+     * import com.pulumi.alicloud.sls.inputs.GetLogtailConfigsArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .max(99999)
+     *             .min(10000)
+     *             .build());
+     * 
+     *         final var name = config.get("name").orElse("tfaccsls62147");
+     *         final var projectName = config.get("projectName").orElse("project-for-logtail-terraform");
+     *         var defaultuA28zS = new Project("defaultuA28zS", ProjectArgs.builder()
+     *             .projectName(projectName)
+     *             .build());
+     * 
+     *         var defaultLogtailConfig = new LogtailConfig("defaultLogtailConfig", LogtailConfigArgs.builder()
+     *             .projectName(defaultuA28zS.projectName())
+     *             .outputDetail(LogtailConfigOutputDetailArgs.builder()
+     *                 .endpoint("cn-hangzhou-intranet.log.aliyuncs.com")
+     *                 .region("cn-hangzhou")
+     *                 .logstoreName("example")
+     *                 .build())
+     *             .outputType("LogService")
+     *             .inputDetail(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("adjustTimezone", false),
+     *                     jsonProperty("delayAlarmBytes", 0),
+     *                     jsonProperty("delaySkipBytes", 0),
+     *                     jsonProperty("discardNonUtf8", false),
+     *                     jsonProperty("discardUnmatch", true),
+     *                     jsonProperty("dockerFile", false),
+     *                     jsonProperty("enableRawLog", false),
+     *                     jsonProperty("enableTag", false),
+     *                     jsonProperty("fileEncoding", "utf8"),
+     *                     jsonProperty("filePattern", "access*.log"),
+     *                     jsonProperty("filterKey", jsonArray("key1")),
+     *                     jsonProperty("filterRegex", jsonArray("regex1")),
+     *                     jsonProperty("key", jsonArray(
+     *                         "key1", 
+     *                         "key2"
+     *                     )),
+     *                     jsonProperty("localStorage", true),
+     *                     jsonProperty("logBeginRegex", ".*"),
+     *                     jsonProperty("logPath", "/var/log/httpd"),
+     *                     jsonProperty("logTimezone", ""),
+     *                     jsonProperty("logType", "common_reg_log"),
+     *                     jsonProperty("maxDepth", 1000),
+     *                     jsonProperty("maxSendRate", -1),
+     *                     jsonProperty("mergeType", "topic"),
+     *                     jsonProperty("preserve", true),
+     *                     jsonProperty("preserveDepth", 0),
+     *                     jsonProperty("priority", 0),
+     *                     jsonProperty("regex", "(w+)(s+)"),
+     *                     jsonProperty("sendRateExpire", 0),
+     *                     jsonProperty("sensitive_keys", jsonArray(
+     *                     )),
+     *                     jsonProperty("tailExisted", false),
+     *                     jsonProperty("timeFormat", "%Y/%m/%d %H:%M:%S"),
+     *                     jsonProperty("timeKey", "time"),
+     *                     jsonProperty("topicFormat", "none")
+     *                 )))
+     *             .logtailConfigName("tfaccsls62147")
+     *             .inputType("file")
+     *             .build());
+     * 
+     *         final var default = defaultLogtailConfig.logtailConfigName().applyValue(_logtailConfigName -> SlsFunctions.getLogtailConfigs(GetLogtailConfigsArgs.builder()
+     *             .logtailConfigName(_logtailConfigName)
+     *             .logstoreName("example")
+     *             .projectName(projectName)
+     *             .offset(0)
+     *             .size(100)
+     *             .build()));
+     * 
+     *         ctx.export("alicloudSlsLogtailConfigExampleId", default_.applyValue(_default_ -> _default_.configs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetLogtailConfigsResult> getLogtailConfigsPlain(GetLogtailConfigsPlainArgs args) {
+        return getLogtailConfigsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Sls Logtail Config available to the user.[What is Logtail Config](https://next.api.alibabacloud.com/document/Sls/2020-12-30/CreateConfig)
+     * 
+     * &gt; **NOTE:** Available since v1.259.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.log.Project;
+     * import com.pulumi.alicloud.log.ProjectArgs;
+     * import com.pulumi.alicloud.sls.LogtailConfig;
+     * import com.pulumi.alicloud.sls.LogtailConfigArgs;
+     * import com.pulumi.alicloud.sls.inputs.LogtailConfigOutputDetailArgs;
+     * import com.pulumi.alicloud.sls.SlsFunctions;
+     * import com.pulumi.alicloud.sls.inputs.GetLogtailConfigsArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .max(99999)
+     *             .min(10000)
+     *             .build());
+     * 
+     *         final var name = config.get("name").orElse("tfaccsls62147");
+     *         final var projectName = config.get("projectName").orElse("project-for-logtail-terraform");
+     *         var defaultuA28zS = new Project("defaultuA28zS", ProjectArgs.builder()
+     *             .projectName(projectName)
+     *             .build());
+     * 
+     *         var defaultLogtailConfig = new LogtailConfig("defaultLogtailConfig", LogtailConfigArgs.builder()
+     *             .projectName(defaultuA28zS.projectName())
+     *             .outputDetail(LogtailConfigOutputDetailArgs.builder()
+     *                 .endpoint("cn-hangzhou-intranet.log.aliyuncs.com")
+     *                 .region("cn-hangzhou")
+     *                 .logstoreName("example")
+     *                 .build())
+     *             .outputType("LogService")
+     *             .inputDetail(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("adjustTimezone", false),
+     *                     jsonProperty("delayAlarmBytes", 0),
+     *                     jsonProperty("delaySkipBytes", 0),
+     *                     jsonProperty("discardNonUtf8", false),
+     *                     jsonProperty("discardUnmatch", true),
+     *                     jsonProperty("dockerFile", false),
+     *                     jsonProperty("enableRawLog", false),
+     *                     jsonProperty("enableTag", false),
+     *                     jsonProperty("fileEncoding", "utf8"),
+     *                     jsonProperty("filePattern", "access*.log"),
+     *                     jsonProperty("filterKey", jsonArray("key1")),
+     *                     jsonProperty("filterRegex", jsonArray("regex1")),
+     *                     jsonProperty("key", jsonArray(
+     *                         "key1", 
+     *                         "key2"
+     *                     )),
+     *                     jsonProperty("localStorage", true),
+     *                     jsonProperty("logBeginRegex", ".*"),
+     *                     jsonProperty("logPath", "/var/log/httpd"),
+     *                     jsonProperty("logTimezone", ""),
+     *                     jsonProperty("logType", "common_reg_log"),
+     *                     jsonProperty("maxDepth", 1000),
+     *                     jsonProperty("maxSendRate", -1),
+     *                     jsonProperty("mergeType", "topic"),
+     *                     jsonProperty("preserve", true),
+     *                     jsonProperty("preserveDepth", 0),
+     *                     jsonProperty("priority", 0),
+     *                     jsonProperty("regex", "(w+)(s+)"),
+     *                     jsonProperty("sendRateExpire", 0),
+     *                     jsonProperty("sensitive_keys", jsonArray(
+     *                     )),
+     *                     jsonProperty("tailExisted", false),
+     *                     jsonProperty("timeFormat", "%Y/%m/%d %H:%M:%S"),
+     *                     jsonProperty("timeKey", "time"),
+     *                     jsonProperty("topicFormat", "none")
+     *                 )))
+     *             .logtailConfigName("tfaccsls62147")
+     *             .inputType("file")
+     *             .build());
+     * 
+     *         final var default = defaultLogtailConfig.logtailConfigName().applyValue(_logtailConfigName -> SlsFunctions.getLogtailConfigs(GetLogtailConfigsArgs.builder()
+     *             .logtailConfigName(_logtailConfigName)
+     *             .logstoreName("example")
+     *             .projectName(projectName)
+     *             .offset(0)
+     *             .size(100)
+     *             .build()));
+     * 
+     *         ctx.export("alicloudSlsLogtailConfigExampleId", default_.applyValue(_default_ -> _default_.configs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetLogtailConfigsResult> getLogtailConfigs(GetLogtailConfigsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:sls/getLogtailConfigs:getLogtailConfigs", TypeShape.of(GetLogtailConfigsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Sls Logtail Config available to the user.[What is Logtail Config](https://next.api.alibabacloud.com/document/Sls/2020-12-30/CreateConfig)
+     * 
+     * &gt; **NOTE:** Available since v1.259.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.log.Project;
+     * import com.pulumi.alicloud.log.ProjectArgs;
+     * import com.pulumi.alicloud.sls.LogtailConfig;
+     * import com.pulumi.alicloud.sls.LogtailConfigArgs;
+     * import com.pulumi.alicloud.sls.inputs.LogtailConfigOutputDetailArgs;
+     * import com.pulumi.alicloud.sls.SlsFunctions;
+     * import com.pulumi.alicloud.sls.inputs.GetLogtailConfigsArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .max(99999)
+     *             .min(10000)
+     *             .build());
+     * 
+     *         final var name = config.get("name").orElse("tfaccsls62147");
+     *         final var projectName = config.get("projectName").orElse("project-for-logtail-terraform");
+     *         var defaultuA28zS = new Project("defaultuA28zS", ProjectArgs.builder()
+     *             .projectName(projectName)
+     *             .build());
+     * 
+     *         var defaultLogtailConfig = new LogtailConfig("defaultLogtailConfig", LogtailConfigArgs.builder()
+     *             .projectName(defaultuA28zS.projectName())
+     *             .outputDetail(LogtailConfigOutputDetailArgs.builder()
+     *                 .endpoint("cn-hangzhou-intranet.log.aliyuncs.com")
+     *                 .region("cn-hangzhou")
+     *                 .logstoreName("example")
+     *                 .build())
+     *             .outputType("LogService")
+     *             .inputDetail(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("adjustTimezone", false),
+     *                     jsonProperty("delayAlarmBytes", 0),
+     *                     jsonProperty("delaySkipBytes", 0),
+     *                     jsonProperty("discardNonUtf8", false),
+     *                     jsonProperty("discardUnmatch", true),
+     *                     jsonProperty("dockerFile", false),
+     *                     jsonProperty("enableRawLog", false),
+     *                     jsonProperty("enableTag", false),
+     *                     jsonProperty("fileEncoding", "utf8"),
+     *                     jsonProperty("filePattern", "access*.log"),
+     *                     jsonProperty("filterKey", jsonArray("key1")),
+     *                     jsonProperty("filterRegex", jsonArray("regex1")),
+     *                     jsonProperty("key", jsonArray(
+     *                         "key1", 
+     *                         "key2"
+     *                     )),
+     *                     jsonProperty("localStorage", true),
+     *                     jsonProperty("logBeginRegex", ".*"),
+     *                     jsonProperty("logPath", "/var/log/httpd"),
+     *                     jsonProperty("logTimezone", ""),
+     *                     jsonProperty("logType", "common_reg_log"),
+     *                     jsonProperty("maxDepth", 1000),
+     *                     jsonProperty("maxSendRate", -1),
+     *                     jsonProperty("mergeType", "topic"),
+     *                     jsonProperty("preserve", true),
+     *                     jsonProperty("preserveDepth", 0),
+     *                     jsonProperty("priority", 0),
+     *                     jsonProperty("regex", "(w+)(s+)"),
+     *                     jsonProperty("sendRateExpire", 0),
+     *                     jsonProperty("sensitive_keys", jsonArray(
+     *                     )),
+     *                     jsonProperty("tailExisted", false),
+     *                     jsonProperty("timeFormat", "%Y/%m/%d %H:%M:%S"),
+     *                     jsonProperty("timeKey", "time"),
+     *                     jsonProperty("topicFormat", "none")
+     *                 )))
+     *             .logtailConfigName("tfaccsls62147")
+     *             .inputType("file")
+     *             .build());
+     * 
+     *         final var default = defaultLogtailConfig.logtailConfigName().applyValue(_logtailConfigName -> SlsFunctions.getLogtailConfigs(GetLogtailConfigsArgs.builder()
+     *             .logtailConfigName(_logtailConfigName)
+     *             .logstoreName("example")
+     *             .projectName(projectName)
+     *             .offset(0)
+     *             .size(100)
+     *             .build()));
+     * 
+     *         ctx.export("alicloudSlsLogtailConfigExampleId", default_.applyValue(_default_ -> _default_.configs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetLogtailConfigsResult> getLogtailConfigs(GetLogtailConfigsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:sls/getLogtailConfigs:getLogtailConfigs", TypeShape.of(GetLogtailConfigsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Sls Logtail Config available to the user.[What is Logtail Config](https://next.api.alibabacloud.com/document/Sls/2020-12-30/CreateConfig)
+     * 
+     * &gt; **NOTE:** Available since v1.259.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.log.Project;
+     * import com.pulumi.alicloud.log.ProjectArgs;
+     * import com.pulumi.alicloud.sls.LogtailConfig;
+     * import com.pulumi.alicloud.sls.LogtailConfigArgs;
+     * import com.pulumi.alicloud.sls.inputs.LogtailConfigOutputDetailArgs;
+     * import com.pulumi.alicloud.sls.SlsFunctions;
+     * import com.pulumi.alicloud.sls.inputs.GetLogtailConfigsArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .max(99999)
+     *             .min(10000)
+     *             .build());
+     * 
+     *         final var name = config.get("name").orElse("tfaccsls62147");
+     *         final var projectName = config.get("projectName").orElse("project-for-logtail-terraform");
+     *         var defaultuA28zS = new Project("defaultuA28zS", ProjectArgs.builder()
+     *             .projectName(projectName)
+     *             .build());
+     * 
+     *         var defaultLogtailConfig = new LogtailConfig("defaultLogtailConfig", LogtailConfigArgs.builder()
+     *             .projectName(defaultuA28zS.projectName())
+     *             .outputDetail(LogtailConfigOutputDetailArgs.builder()
+     *                 .endpoint("cn-hangzhou-intranet.log.aliyuncs.com")
+     *                 .region("cn-hangzhou")
+     *                 .logstoreName("example")
+     *                 .build())
+     *             .outputType("LogService")
+     *             .inputDetail(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("adjustTimezone", false),
+     *                     jsonProperty("delayAlarmBytes", 0),
+     *                     jsonProperty("delaySkipBytes", 0),
+     *                     jsonProperty("discardNonUtf8", false),
+     *                     jsonProperty("discardUnmatch", true),
+     *                     jsonProperty("dockerFile", false),
+     *                     jsonProperty("enableRawLog", false),
+     *                     jsonProperty("enableTag", false),
+     *                     jsonProperty("fileEncoding", "utf8"),
+     *                     jsonProperty("filePattern", "access*.log"),
+     *                     jsonProperty("filterKey", jsonArray("key1")),
+     *                     jsonProperty("filterRegex", jsonArray("regex1")),
+     *                     jsonProperty("key", jsonArray(
+     *                         "key1", 
+     *                         "key2"
+     *                     )),
+     *                     jsonProperty("localStorage", true),
+     *                     jsonProperty("logBeginRegex", ".*"),
+     *                     jsonProperty("logPath", "/var/log/httpd"),
+     *                     jsonProperty("logTimezone", ""),
+     *                     jsonProperty("logType", "common_reg_log"),
+     *                     jsonProperty("maxDepth", 1000),
+     *                     jsonProperty("maxSendRate", -1),
+     *                     jsonProperty("mergeType", "topic"),
+     *                     jsonProperty("preserve", true),
+     *                     jsonProperty("preserveDepth", 0),
+     *                     jsonProperty("priority", 0),
+     *                     jsonProperty("regex", "(w+)(s+)"),
+     *                     jsonProperty("sendRateExpire", 0),
+     *                     jsonProperty("sensitive_keys", jsonArray(
+     *                     )),
+     *                     jsonProperty("tailExisted", false),
+     *                     jsonProperty("timeFormat", "%Y/%m/%d %H:%M:%S"),
+     *                     jsonProperty("timeKey", "time"),
+     *                     jsonProperty("topicFormat", "none")
+     *                 )))
+     *             .logtailConfigName("tfaccsls62147")
+     *             .inputType("file")
+     *             .build());
+     * 
+     *         final var default = defaultLogtailConfig.logtailConfigName().applyValue(_logtailConfigName -> SlsFunctions.getLogtailConfigs(GetLogtailConfigsArgs.builder()
+     *             .logtailConfigName(_logtailConfigName)
+     *             .logstoreName("example")
+     *             .projectName(projectName)
+     *             .offset(0)
+     *             .size(100)
+     *             .build()));
+     * 
+     *         ctx.export("alicloudSlsLogtailConfigExampleId", default_.applyValue(_default_ -> _default_.configs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetLogtailConfigsResult> getLogtailConfigsPlain(GetLogtailConfigsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:sls/getLogtailConfigs:getLogtailConfigs", TypeShape.of(GetLogtailConfigsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Sls Machine Group available to the user.[What is Machine Group](https://next.api.alibabacloud.com/document/Sls/2020-12-30/CreateMachineGroup)
+     * 
+     * &gt; **NOTE:** Available since v1.259.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.Project;
+     * import com.pulumi.alicloud.log.ProjectArgs;
+     * import com.pulumi.alicloud.sls.MachineGroup;
+     * import com.pulumi.alicloud.sls.MachineGroupArgs;
+     * import com.pulumi.alicloud.sls.inputs.MachineGroupGroupAttributeArgs;
+     * import com.pulumi.alicloud.sls.SlsFunctions;
+     * import com.pulumi.alicloud.sls.inputs.GetMachineGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var projectName = config.get("projectName").orElse("project-for-machine-group-terraform");
+     *         var defaultyJqrue = new Project("defaultyJqrue", ProjectArgs.builder()
+     *             .description("for terraform example")
+     *             .name(projectName)
+     *             .build());
+     * 
+     *         var defaultMachineGroup = new MachineGroup("defaultMachineGroup", MachineGroupArgs.builder()
+     *             .groupName("group1")
+     *             .projectName(projectName)
+     *             .machineIdentifyType("ip")
+     *             .groupAttribute(MachineGroupGroupAttributeArgs.builder()
+     *                 .groupTopic("example")
+     *                 .externalName("example")
+     *                 .build())
+     *             .machineLists("192.168.1.1")
+     *             .build());
+     * 
+     *         final var default = SlsFunctions.getMachineGroups(GetMachineGroupsArgs.builder()
+     *             .ids(defaultMachineGroup.id())
+     *             .groupName("group1")
+     *             .projectName(projectName)
+     *             .build());
+     * 
+     *         ctx.export("alicloudSlsMachineGroupExampleId", default_.applyValue(_default_ -> _default_.groups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMachineGroupsResult> getMachineGroups(GetMachineGroupsArgs args) {
+        return getMachineGroups(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Sls Machine Group available to the user.[What is Machine Group](https://next.api.alibabacloud.com/document/Sls/2020-12-30/CreateMachineGroup)
+     * 
+     * &gt; **NOTE:** Available since v1.259.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.Project;
+     * import com.pulumi.alicloud.log.ProjectArgs;
+     * import com.pulumi.alicloud.sls.MachineGroup;
+     * import com.pulumi.alicloud.sls.MachineGroupArgs;
+     * import com.pulumi.alicloud.sls.inputs.MachineGroupGroupAttributeArgs;
+     * import com.pulumi.alicloud.sls.SlsFunctions;
+     * import com.pulumi.alicloud.sls.inputs.GetMachineGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var projectName = config.get("projectName").orElse("project-for-machine-group-terraform");
+     *         var defaultyJqrue = new Project("defaultyJqrue", ProjectArgs.builder()
+     *             .description("for terraform example")
+     *             .name(projectName)
+     *             .build());
+     * 
+     *         var defaultMachineGroup = new MachineGroup("defaultMachineGroup", MachineGroupArgs.builder()
+     *             .groupName("group1")
+     *             .projectName(projectName)
+     *             .machineIdentifyType("ip")
+     *             .groupAttribute(MachineGroupGroupAttributeArgs.builder()
+     *                 .groupTopic("example")
+     *                 .externalName("example")
+     *                 .build())
+     *             .machineLists("192.168.1.1")
+     *             .build());
+     * 
+     *         final var default = SlsFunctions.getMachineGroups(GetMachineGroupsArgs.builder()
+     *             .ids(defaultMachineGroup.id())
+     *             .groupName("group1")
+     *             .projectName(projectName)
+     *             .build());
+     * 
+     *         ctx.export("alicloudSlsMachineGroupExampleId", default_.applyValue(_default_ -> _default_.groups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetMachineGroupsResult> getMachineGroupsPlain(GetMachineGroupsPlainArgs args) {
+        return getMachineGroupsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Sls Machine Group available to the user.[What is Machine Group](https://next.api.alibabacloud.com/document/Sls/2020-12-30/CreateMachineGroup)
+     * 
+     * &gt; **NOTE:** Available since v1.259.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.Project;
+     * import com.pulumi.alicloud.log.ProjectArgs;
+     * import com.pulumi.alicloud.sls.MachineGroup;
+     * import com.pulumi.alicloud.sls.MachineGroupArgs;
+     * import com.pulumi.alicloud.sls.inputs.MachineGroupGroupAttributeArgs;
+     * import com.pulumi.alicloud.sls.SlsFunctions;
+     * import com.pulumi.alicloud.sls.inputs.GetMachineGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var projectName = config.get("projectName").orElse("project-for-machine-group-terraform");
+     *         var defaultyJqrue = new Project("defaultyJqrue", ProjectArgs.builder()
+     *             .description("for terraform example")
+     *             .name(projectName)
+     *             .build());
+     * 
+     *         var defaultMachineGroup = new MachineGroup("defaultMachineGroup", MachineGroupArgs.builder()
+     *             .groupName("group1")
+     *             .projectName(projectName)
+     *             .machineIdentifyType("ip")
+     *             .groupAttribute(MachineGroupGroupAttributeArgs.builder()
+     *                 .groupTopic("example")
+     *                 .externalName("example")
+     *                 .build())
+     *             .machineLists("192.168.1.1")
+     *             .build());
+     * 
+     *         final var default = SlsFunctions.getMachineGroups(GetMachineGroupsArgs.builder()
+     *             .ids(defaultMachineGroup.id())
+     *             .groupName("group1")
+     *             .projectName(projectName)
+     *             .build());
+     * 
+     *         ctx.export("alicloudSlsMachineGroupExampleId", default_.applyValue(_default_ -> _default_.groups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMachineGroupsResult> getMachineGroups(GetMachineGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:sls/getMachineGroups:getMachineGroups", TypeShape.of(GetMachineGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Sls Machine Group available to the user.[What is Machine Group](https://next.api.alibabacloud.com/document/Sls/2020-12-30/CreateMachineGroup)
+     * 
+     * &gt; **NOTE:** Available since v1.259.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.Project;
+     * import com.pulumi.alicloud.log.ProjectArgs;
+     * import com.pulumi.alicloud.sls.MachineGroup;
+     * import com.pulumi.alicloud.sls.MachineGroupArgs;
+     * import com.pulumi.alicloud.sls.inputs.MachineGroupGroupAttributeArgs;
+     * import com.pulumi.alicloud.sls.SlsFunctions;
+     * import com.pulumi.alicloud.sls.inputs.GetMachineGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var projectName = config.get("projectName").orElse("project-for-machine-group-terraform");
+     *         var defaultyJqrue = new Project("defaultyJqrue", ProjectArgs.builder()
+     *             .description("for terraform example")
+     *             .name(projectName)
+     *             .build());
+     * 
+     *         var defaultMachineGroup = new MachineGroup("defaultMachineGroup", MachineGroupArgs.builder()
+     *             .groupName("group1")
+     *             .projectName(projectName)
+     *             .machineIdentifyType("ip")
+     *             .groupAttribute(MachineGroupGroupAttributeArgs.builder()
+     *                 .groupTopic("example")
+     *                 .externalName("example")
+     *                 .build())
+     *             .machineLists("192.168.1.1")
+     *             .build());
+     * 
+     *         final var default = SlsFunctions.getMachineGroups(GetMachineGroupsArgs.builder()
+     *             .ids(defaultMachineGroup.id())
+     *             .groupName("group1")
+     *             .projectName(projectName)
+     *             .build());
+     * 
+     *         ctx.export("alicloudSlsMachineGroupExampleId", default_.applyValue(_default_ -> _default_.groups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMachineGroupsResult> getMachineGroups(GetMachineGroupsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:sls/getMachineGroups:getMachineGroups", TypeShape.of(GetMachineGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Sls Machine Group available to the user.[What is Machine Group](https://next.api.alibabacloud.com/document/Sls/2020-12-30/CreateMachineGroup)
+     * 
+     * &gt; **NOTE:** Available since v1.259.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.Project;
+     * import com.pulumi.alicloud.log.ProjectArgs;
+     * import com.pulumi.alicloud.sls.MachineGroup;
+     * import com.pulumi.alicloud.sls.MachineGroupArgs;
+     * import com.pulumi.alicloud.sls.inputs.MachineGroupGroupAttributeArgs;
+     * import com.pulumi.alicloud.sls.SlsFunctions;
+     * import com.pulumi.alicloud.sls.inputs.GetMachineGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var projectName = config.get("projectName").orElse("project-for-machine-group-terraform");
+     *         var defaultyJqrue = new Project("defaultyJqrue", ProjectArgs.builder()
+     *             .description("for terraform example")
+     *             .name(projectName)
+     *             .build());
+     * 
+     *         var defaultMachineGroup = new MachineGroup("defaultMachineGroup", MachineGroupArgs.builder()
+     *             .groupName("group1")
+     *             .projectName(projectName)
+     *             .machineIdentifyType("ip")
+     *             .groupAttribute(MachineGroupGroupAttributeArgs.builder()
+     *                 .groupTopic("example")
+     *                 .externalName("example")
+     *                 .build())
+     *             .machineLists("192.168.1.1")
+     *             .build());
+     * 
+     *         final var default = SlsFunctions.getMachineGroups(GetMachineGroupsArgs.builder()
+     *             .ids(defaultMachineGroup.id())
+     *             .groupName("group1")
+     *             .projectName(projectName)
+     *             .build());
+     * 
+     *         ctx.export("alicloudSlsMachineGroupExampleId", default_.applyValue(_default_ -> _default_.groups()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetMachineGroupsResult> getMachineGroupsPlain(GetMachineGroupsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:sls/getMachineGroups:getMachineGroups", TypeShape.of(GetMachineGroupsResult.class), args, Utilities.withVersion(options));
     }
 }

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Amqp
         /// <summary>
         /// This data source provides the Amqp Instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.128.0+.
+        /// &gt; **NOTE:** Available since v1.128.0.
         /// 
         /// ## Example Usage
         /// 
@@ -28,24 +28,33 @@ namespace Pulumi.AliCloud.Amqp
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = new AliCloud.Amqp.Instance("default", new()
+        ///     {
+        ///         InstanceName = name,
+        ///         InstanceType = "enterprise",
+        ///         MaxTps = "3000",
+        ///         MaxConnections = 2000,
+        ///         QueueCapacity = "200",
+        ///         PaymentType = "Subscription",
+        ///         RenewalStatus = "AutoRenewal",
+        ///         RenewalDuration = 1,
+        ///         RenewalDurationUnit = "Year",
+        ///         SupportEip = true,
+        ///     });
+        /// 
         ///     var ids = AliCloud.Amqp.GetInstances.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "amqp-abc12345",
-        ///             "amqp-abc34567",
+        ///             @default.Id,
         ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.Amqp.GetInstances.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-Instance",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["amqpInstanceId1"] = ids.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
-        ///         ["amqpInstanceId2"] = nameRegex.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///         ["amqpInstanceId0"] = ids.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -56,7 +65,7 @@ namespace Pulumi.AliCloud.Amqp
         /// <summary>
         /// This data source provides the Amqp Instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.128.0+.
+        /// &gt; **NOTE:** Available since v1.128.0.
         /// 
         /// ## Example Usage
         /// 
@@ -70,24 +79,33 @@ namespace Pulumi.AliCloud.Amqp
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = new AliCloud.Amqp.Instance("default", new()
+        ///     {
+        ///         InstanceName = name,
+        ///         InstanceType = "enterprise",
+        ///         MaxTps = "3000",
+        ///         MaxConnections = 2000,
+        ///         QueueCapacity = "200",
+        ///         PaymentType = "Subscription",
+        ///         RenewalStatus = "AutoRenewal",
+        ///         RenewalDuration = 1,
+        ///         RenewalDurationUnit = "Year",
+        ///         SupportEip = true,
+        ///     });
+        /// 
         ///     var ids = AliCloud.Amqp.GetInstances.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "amqp-abc12345",
-        ///             "amqp-abc34567",
+        ///             @default.Id,
         ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.Amqp.GetInstances.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-Instance",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["amqpInstanceId1"] = ids.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
-        ///         ["amqpInstanceId2"] = nameRegex.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///         ["amqpInstanceId0"] = ids.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -98,7 +116,7 @@ namespace Pulumi.AliCloud.Amqp
         /// <summary>
         /// This data source provides the Amqp Instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.128.0+.
+        /// &gt; **NOTE:** Available since v1.128.0.
         /// 
         /// ## Example Usage
         /// 
@@ -112,24 +130,33 @@ namespace Pulumi.AliCloud.Amqp
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = new AliCloud.Amqp.Instance("default", new()
+        ///     {
+        ///         InstanceName = name,
+        ///         InstanceType = "enterprise",
+        ///         MaxTps = "3000",
+        ///         MaxConnections = 2000,
+        ///         QueueCapacity = "200",
+        ///         PaymentType = "Subscription",
+        ///         RenewalStatus = "AutoRenewal",
+        ///         RenewalDuration = 1,
+        ///         RenewalDurationUnit = "Year",
+        ///         SupportEip = true,
+        ///     });
+        /// 
         ///     var ids = AliCloud.Amqp.GetInstances.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "amqp-abc12345",
-        ///             "amqp-abc34567",
+        ///             @default.Id,
         ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.Amqp.GetInstances.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-Instance",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["amqpInstanceId1"] = ids.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
-        ///         ["amqpInstanceId2"] = nameRegex.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+        ///         ["amqpInstanceId0"] = ids.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -142,7 +169,7 @@ namespace Pulumi.AliCloud.Amqp
     public sealed class GetInstancesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Whether to query the detailed list of resource attributes. Default value: `false`.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -172,7 +199,7 @@ namespace Pulumi.AliCloud.Amqp
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: "DEPLOYING", "EXPIRED", "RELEASED", "SERVING".
+        /// The status of the resource. Valid values: `DEPLOYING`, `SERVING`, `EXPIRED`, `RELEASED`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -186,7 +213,7 @@ namespace Pulumi.AliCloud.Amqp
     public sealed class GetInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Whether to query the detailed list of resource attributes. Default value: `false`.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -216,7 +243,7 @@ namespace Pulumi.AliCloud.Amqp
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: "DEPLOYING", "EXPIRED", "RELEASED", "SERVING".
+        /// The status of the resource. Valid values: `DEPLOYING`, `SERVING`, `EXPIRED`, `RELEASED`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -237,10 +264,19 @@ namespace Pulumi.AliCloud.Amqp
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// A list of Amqp Instances. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceResult> Instances;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Instance names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the instance.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

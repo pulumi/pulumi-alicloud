@@ -571,7 +571,7 @@ public final class FcFunctions {
     /**
      * Using this data source can open FC service automatically. If the service has been opened, it will return opened.
      * 
-     * For information about FC and how to use it, see [What is FC](https://www.alibabacloud.com/help/en/product/50980.htm).
+     * For information about FC and how to use it, see [What is FC](https://www.alibabacloud.com/help/en/functioncompute/fc/product-overview/what-is-function-compute).
      * 
      * &gt; **NOTE:** Available since v1.112.0+
      * 
@@ -617,7 +617,7 @@ public final class FcFunctions {
     /**
      * Using this data source can open FC service automatically. If the service has been opened, it will return opened.
      * 
-     * For information about FC and how to use it, see [What is FC](https://www.alibabacloud.com/help/en/product/50980.htm).
+     * For information about FC and how to use it, see [What is FC](https://www.alibabacloud.com/help/en/functioncompute/fc/product-overview/what-is-function-compute).
      * 
      * &gt; **NOTE:** Available since v1.112.0+
      * 
@@ -663,7 +663,7 @@ public final class FcFunctions {
     /**
      * Using this data source can open FC service automatically. If the service has been opened, it will return opened.
      * 
-     * For information about FC and how to use it, see [What is FC](https://www.alibabacloud.com/help/en/product/50980.htm).
+     * For information about FC and how to use it, see [What is FC](https://www.alibabacloud.com/help/en/functioncompute/fc/product-overview/what-is-function-compute).
      * 
      * &gt; **NOTE:** Available since v1.112.0+
      * 
@@ -709,7 +709,7 @@ public final class FcFunctions {
     /**
      * Using this data source can open FC service automatically. If the service has been opened, it will return opened.
      * 
-     * For information about FC and how to use it, see [What is FC](https://www.alibabacloud.com/help/en/product/50980.htm).
+     * For information about FC and how to use it, see [What is FC](https://www.alibabacloud.com/help/en/functioncompute/fc/product-overview/what-is-function-compute).
      * 
      * &gt; **NOTE:** Available since v1.112.0+
      * 
@@ -755,7 +755,7 @@ public final class FcFunctions {
     /**
      * Using this data source can open FC service automatically. If the service has been opened, it will return opened.
      * 
-     * For information about FC and how to use it, see [What is FC](https://www.alibabacloud.com/help/en/product/50980.htm).
+     * For information about FC and how to use it, see [What is FC](https://www.alibabacloud.com/help/en/functioncompute/fc/product-overview/what-is-function-compute).
      * 
      * &gt; **NOTE:** Available since v1.112.0+
      * 
@@ -801,7 +801,7 @@ public final class FcFunctions {
     /**
      * Using this data source can open FC service automatically. If the service has been opened, it will return opened.
      * 
-     * For information about FC and how to use it, see [What is FC](https://www.alibabacloud.com/help/en/product/50980.htm).
+     * For information about FC and how to use it, see [What is FC](https://www.alibabacloud.com/help/en/functioncompute/fc/product-overview/what-is-function-compute).
      * 
      * &gt; **NOTE:** Available since v1.112.0+
      * 
@@ -847,7 +847,7 @@ public final class FcFunctions {
     /**
      * Using this data source can open FC service automatically. If the service has been opened, it will return opened.
      * 
-     * For information about FC and how to use it, see [What is FC](https://www.alibabacloud.com/help/en/product/50980.htm).
+     * For information about FC and how to use it, see [What is FC](https://www.alibabacloud.com/help/en/functioncompute/fc/product-overview/what-is-function-compute).
      * 
      * &gt; **NOTE:** Available since v1.112.0+
      * 

@@ -14,33 +14,40 @@ namespace Pulumi.AliCloud.Vpc.Outputs
     public sealed class NetworkAclEgressAclEntry
     {
         /// <summary>
-        /// The description of the outbound rule.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+        /// The description of the outbound rule.
+        /// The description must be 1 to 256 characters in length and cannot start with http:// or https.
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// The network of the destination address.
+        /// The destination CIDR block.
         /// </summary>
         public readonly string? DestinationCidrIp;
         /// <summary>
-        /// The route entry type. The value can be `custom`, indicating custom.
+        /// The route entry type. Value
+        /// custom custom rule
+        /// system system rules
+        /// service Cloud service rules
         /// </summary>
         public readonly string? EntryType;
         /// <summary>
-        /// The IP protocol version of the route entry. Valid values: "IPV4" and "IPV4'.
+        /// The IP protocol version of the route entry. Valid values: "Ipv4" and "ipv6'
         /// </summary>
         public readonly string? IpVersion;
         /// <summary>
-        /// Name of the outbound rule entry.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+        /// Name of the outbound rule entry.
+        /// The name must be 1 to 128 characters in length and cannot start with http:// or https.
         /// </summary>
         public readonly string? NetworkAclEntryName;
         /// <summary>
-        /// Authorization policy. Value:
-        /// - accept: Allow.
-        /// - drop: Refused.
+        /// The action to be performed on network traffic that matches the rule. Valid values:
+        /// - accept
+        /// - drop
         /// </summary>
         public readonly string? Policy;
         /// <summary>
-        /// The destination port range of the outbound rule.  When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted. When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+        /// The destination port range of the outbound rule.
+        /// When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.
+        /// When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
         /// </summary>
         public readonly string? Port;
         /// <summary>

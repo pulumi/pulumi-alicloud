@@ -443,6 +443,7 @@ namespace Pulumi.AliCloud.CS
         /// - `ContainerOS` : container-optimized image.
         /// - `Ubuntu`: Ubuntu image.
         /// - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
+        /// - `Custom`: Custom image.
         /// </summary>
         [Output("imageType")]
         public Output<string> ImageType { get; private set; } = null!;
@@ -994,6 +995,7 @@ namespace Pulumi.AliCloud.CS
         /// - `ContainerOS` : container-optimized image.
         /// - `Ubuntu`: Ubuntu image.
         /// - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
+        /// - `Custom`: Custom image.
         /// </summary>
         [Input("imageType")]
         public Input<string>? ImageType { get; set; }
@@ -1576,6 +1578,7 @@ namespace Pulumi.AliCloud.CS
         /// - `ContainerOS` : container-optimized image.
         /// - `Ubuntu`: Ubuntu image.
         /// - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
+        /// - `Custom`: Custom image.
         /// </summary>
         [Input("imageType")]
         public Input<string>? ImageType { get; set; }

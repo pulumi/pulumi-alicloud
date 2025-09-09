@@ -3435,11 +3435,11 @@ export namespace amqp {
 
     export interface GetInstancesInstance {
         /**
-         * OrderCreateTime.
+         * The timestamp that indicates when the order was created.
          */
         createTime: string;
         /**
-         * ExpireTime.
+         * The timestamp that indicates when the instance expires.
          */
         expireTime: string;
         /**
@@ -3459,35 +3459,35 @@ export namespace amqp {
          */
         instanceType: string;
         /**
-         * The Pay-as-You-Type Values Include: the Subscription of a Pre-Paid.
+         * The billing method of the instance. **Note:** `paymentType` takes effect only if `enableDetails` is set to `true`.
          */
         paymentType: string;
         /**
-         * The private endPoint.
+         * The virtual private cloud (VPC) endpoint of the instance.
          */
         privateEndPoint: string;
         /**
-         * The public dndpoint.
+         * The public endpoint of the instance.
          */
         publicEndpoint: string;
         /**
-         * Renewal duration.
+         * Auto renewal period of an instance. **Note:** `renewalDuration` takes effect only if `enableDetails` is set to `true`.
          */
         renewalDuration: number;
         /**
-         * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
+         * Automatic renewal period unit. **Note:** `renewalDurationUnit` takes effect only if `enableDetails` is set to `true`.
          */
         renewalDurationUnit: string;
         /**
-         * Renew status.
+         * Whether to renew an instance automatically or not. **Note:** `renewalStatus` takes effect only if `enableDetails` is set to `true`.
          */
         renewalStatus: string;
         /**
-         * The status of the resource.
+         * The status of the resource. Valid values: `DEPLOYING`, `SERVING`, `EXPIRED`, `RELEASED`.
          */
         status: string;
         /**
-         * Whether to support eip.
+         * Indicates whether the instance supports elastic IP addresses (EIPs).
          */
         supportEip: boolean;
     }
@@ -49135,15 +49135,15 @@ export namespace resourcemanager {
 
     export interface GetAccountsAccount {
         /**
-         * The ID of the account.
+         * The Alibaba Cloud account ID of the member.
          */
         accountId: string;
         /**
-         * (Available in v1.125.0+) The Alibaba Cloud account name of the member account.
+         * (Available since v1.125.0) The Alibaba Cloud account name of the member. **Note:** `accountName` takes effect only if `enableDetails` is set to `true`.
          */
         accountName: string;
         /**
-         * The name of the member account.
+         * The display name of the member.
          */
         displayName: string;
         /**
@@ -49151,23 +49151,23 @@ export namespace resourcemanager {
          */
         folderId: string;
         /**
-         * The ID of the resource.
+         * The ID of the Account.
          */
         id: string;
         /**
-         * The way in which the member account joined the resource directory.
+         * The way in which the member joins the resource directory.
          */
         joinMethod: string;
         /**
-         * The time when the member account joined the resource directory.
+         * The time when the member joined the resource directory.
          */
         joinTime: string;
         /**
-         * The time when the member account was modified.
+         * The time when the member was modified.
          */
         modifyTime: string;
         /**
-         * (Available in v1.124.3+) Settlement account ID. If the value is empty, the current account will be used for settlement.
+         * (Available since v1.124.3) The ID of the settlement account. **Note:** `payerAccountId` takes effect only if `enableDetails` is set to `true`.
          */
         payerAccountId: string;
         /**
@@ -49175,11 +49175,15 @@ export namespace resourcemanager {
          */
         resourceDirectoryId: string;
         /**
-         * The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
+         * The status of account. Valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, `PromoteVerifying`.
          */
         status: string;
         /**
-         * The type of the member account.
+         * A mapping of tags to assign to the resource.
+         */
+        tags: {[key: string]: string};
+        /**
+         * The type of the member.
          */
         type: string;
     }
@@ -56034,6 +56038,54 @@ export namespace sls {
         roleArn: string;
     }
 
+    export interface GetLogtailConfigsConfig {
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * The name of the resource
+         */
+        logtailConfigName: string;
+    }
+
+    export interface GetMachineGroupsGroup {
+        /**
+         * Machine Group name
+         */
+        groupName: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+    }
+
+    export interface LogtailConfigOutputDetail {
+        /**
+         * The endpoint of the log project.
+         */
+        endpoint?: string;
+        /**
+         * The name of the output target logstore.
+         */
+        logstoreName?: string;
+        /**
+         * Region
+         */
+        region?: string;
+    }
+
+    export interface MachineGroupGroupAttribute {
+        /**
+         * The external management system identification on which the machine group depends.
+         */
+        externalName?: string;
+        /**
+         * The log topic of the machine group.
+         */
+        groupTopic?: string;
+    }
+
     export interface OssExportSinkConfiguration {
         /**
          * The beginning of the time range to ship data. The value 1 specifies that the data shipping job ships data from the first log in the Logstore. Example value: 1718380800
@@ -59266,33 +59318,40 @@ export namespace vpc {
 
     export interface NetworkAclEgressAclEntry {
         /**
-         * The description of the outbound rule.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+         * The description of the outbound rule.
+         * The description must be 1 to 256 characters in length and cannot start with http:// or https.
          */
         description?: string;
         /**
-         * The network of the destination address.
+         * The destination CIDR block.
          */
         destinationCidrIp?: string;
         /**
-         * The route entry type. The value can be `custom`, indicating custom.
+         * The route entry type. Value
+         * custom custom rule
+         * system system rules
+         * service Cloud service rules
          */
         entryType: string;
         /**
-         * The IP protocol version of the route entry. Valid values: "IPV4" and "IPV4'.
+         * The IP protocol version of the route entry. Valid values: "Ipv4" and "ipv6'
          */
         ipVersion: string;
         /**
-         * Name of the outbound rule entry.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+         * Name of the outbound rule entry.
+         * The name must be 1 to 128 characters in length and cannot start with http:// or https.
          */
         networkAclEntryName?: string;
         /**
-         * Authorization policy. Value:
-         * - accept: Allow.
-         * - drop: Refused.
+         * The action to be performed on network traffic that matches the rule. Valid values:
+         * - accept
+         * - drop
          */
         policy?: string;
         /**
-         * The destination port range of the outbound rule.  When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted. When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+         * The destination port range of the outbound rule.
+         * When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.
+         * When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
          */
         port?: string;
         /**
@@ -59334,29 +59393,33 @@ export namespace vpc {
 
     export interface NetworkAclIngressAclEntry {
         /**
-         * Description of the inbound rule.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+         * Description of the inbound rule.
+         * The description must be 1 to 256 characters in length and cannot start with http:// or https.
          */
         description?: string;
         /**
-         * The route entry type. The value can be `custom`, indicating custom.
+         * The route entry type. Value
          */
         entryType: string;
         /**
-         * The IP protocol version of the route entry. Valid values: "IPV4" and "IPV6'.
+         * The IP protocol version of the route entry. Valid values: "Ipv4" and "ipv6'
          */
         ipVersion: string;
         /**
-         * The name of the inbound rule entry.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+         * The name of the inbound rule entry.
+         * The name must be 1 to 128 characters in length and cannot start with http:// or https.
          */
         networkAclEntryName?: string;
         /**
-         * Authorization policy. Value:
-         * - accept: Allow.
-         * - drop: Refused.
+         * The action to be performed on network traffic that matches the rule. Valid values:
+         * - accept
+         * - drop
          */
         policy?: string;
         /**
-         * The source port range of the inbound rule.  When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted. When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+         * The source port range of the inbound rule.
+         * When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.
+         * When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
          */
         port?: string;
         /**
@@ -59369,7 +59432,7 @@ export namespace vpc {
          */
         protocol?: string;
         /**
-         * Source address network segment.
+         * The source CIDR block.
          */
         sourceCidrIp?: string;
     }

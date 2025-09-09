@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ddos
 {
     /// <summary>
-    /// Provides a Ddos Bgp Ip resource.
+    /// Provides a Anti-DDoS Pro (DdosBgp) Ip resource.
     /// 
-    /// For information about Ddos Bgp Ip and how to use it, see [What is Ip](https://www.alibabacloud.com/help/en/ddos-protection/latest/addip).
+    /// For information about Anti-DDoS Pro (DdosBgp) Ip and how to use it, see [What is Ip](https://www.alibabacloud.com/help/en/ddos-protection/latest/addip).
     /// 
     /// &gt; **NOTE:** Available since v1.180.0.
     /// 
@@ -29,10 +29,10 @@ namespace Pulumi.AliCloud.Ddos
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.GetAccount.Invoke();
     /// 
-    ///     var instance = new AliCloud.Ddos.DdosBgpInstance("instance", new()
+    ///     var defaultDdosBgpInstance = new AliCloud.Ddos.DdosBgpInstance("default", new()
     ///     {
     ///         Name = name,
     ///         BaseBandwidth = 20,
@@ -50,9 +50,9 @@ namespace Pulumi.AliCloud.Ddos
     /// 
     ///     var defaultBgpIp = new AliCloud.Ddos.BgpIp("default", new()
     ///     {
-    ///         InstanceId = instance.Id,
+    ///         InstanceId = defaultDdosBgpInstance.Id,
     ///         Ip = defaultEipAddress.IpAddress,
-    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id)),
+    ///         MemberUid = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
     ///     });
     /// 
     /// });
@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.Ddos
     /// 
     /// ## Import
     /// 
-    /// Ddos Bgp Ip can be imported using the id, e.g.
+    /// Anti-DDoS Pro (DdosBgp) Ip can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:ddos/bgpIp:BgpIp example &lt;instance_id&gt;:&lt;ip&gt;
@@ -70,31 +70,31 @@ namespace Pulumi.AliCloud.Ddos
     public partial class BgpIp : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the native protection enterprise instance to be operated.
+        /// The ID of the Anti-DDoS Origin instance.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The IP address.
+        /// The IP address that you want to add.
         /// </summary>
         [Output("ip")]
         public Output<string> Ip { get; private set; } = null!;
 
         /// <summary>
-        /// The member account id of the IP address.
+        /// The member to which the asset belongs.
         /// </summary>
         [Output("memberUid")]
         public Output<string> MemberUid { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the resource group.
+        /// Field `resource_group_id` has been deprecated from provider version 1.259.0.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string?> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The current state of the IP address. Valid Value: `normal`, `hole_begin`.
+        /// The status of the IP address.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -146,25 +146,25 @@ namespace Pulumi.AliCloud.Ddos
     public sealed class BgpIpArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the native protection enterprise instance to be operated.
+        /// The ID of the Anti-DDoS Origin instance.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// The IP address.
+        /// The IP address that you want to add.
         /// </summary>
         [Input("ip", required: true)]
         public Input<string> Ip { get; set; } = null!;
 
         /// <summary>
-        /// The member account id of the IP address.
+        /// The member to which the asset belongs.
         /// </summary>
         [Input("memberUid")]
         public Input<string>? MemberUid { get; set; }
 
         /// <summary>
-        /// The ID of the resource group.
+        /// Field `resource_group_id` has been deprecated from provider version 1.259.0.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -178,31 +178,31 @@ namespace Pulumi.AliCloud.Ddos
     public sealed class BgpIpState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the native protection enterprise instance to be operated.
+        /// The ID of the Anti-DDoS Origin instance.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The IP address.
+        /// The IP address that you want to add.
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
         /// <summary>
-        /// The member account id of the IP address.
+        /// The member to which the asset belongs.
         /// </summary>
         [Input("memberUid")]
         public Input<string>? MemberUid { get; set; }
 
         /// <summary>
-        /// The ID of the resource group.
+        /// Field `resource_group_id` has been deprecated from provider version 1.259.0.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The current state of the IP address. Valid Value: `normal`, `hole_begin`.
+        /// The status of the IP address.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

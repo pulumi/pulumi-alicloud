@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Ddos Bgp Ip resource.
+ * Provides a Anti-DDoS Pro (DdosBgp) Ip resource.
  *
- * For information about Ddos Bgp Ip and how to use it, see [What is Ip](https://www.alibabacloud.com/help/en/ddos-protection/latest/addip).
+ * For information about Anti-DDoS Pro (DdosBgp) Ip and how to use it, see [What is Ip](https://www.alibabacloud.com/help/en/ddos-protection/latest/addip).
  *
  * > **NOTE:** Available since v1.180.0.
  *
@@ -20,9 +20,9 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const _default = alicloud.resourcemanager.getResourceGroups({});
- * const instance = new alicloud.ddos.DdosBgpInstance("instance", {
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.getAccount({});
+ * const defaultDdosBgpInstance = new alicloud.ddos.DdosBgpInstance("default", {
  *     name: name,
  *     baseBandwidth: 20,
  *     bandwidth: -1,
@@ -33,15 +33,15 @@ import * as utilities from "../utilities";
  * });
  * const defaultEipAddress = new alicloud.ecs.EipAddress("default", {addressName: name});
  * const defaultBgpIp = new alicloud.ddos.BgpIp("default", {
- *     instanceId: instance.id,
+ *     instanceId: defaultDdosBgpInstance.id,
  *     ip: defaultEipAddress.ipAddress,
- *     resourceGroupId: _default.then(_default => _default.groups?.[0]?.id),
+ *     memberUid: _default.then(_default => _default.id),
  * });
  * ```
  *
  * ## Import
  *
- * Ddos Bgp Ip can be imported using the id, e.g.
+ * Anti-DDoS Pro (DdosBgp) Ip can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:ddos/bgpIp:BgpIp example <instance_id>:<ip>
@@ -76,23 +76,25 @@ export class BgpIp extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the native protection enterprise instance to be operated.
+     * The ID of the Anti-DDoS Origin instance.
      */
     declare public readonly instanceId: pulumi.Output<string>;
     /**
-     * The IP address.
+     * The IP address that you want to add.
      */
     declare public readonly ip: pulumi.Output<string>;
     /**
-     * The member account id of the IP address.
+     * The member to which the asset belongs.
      */
     declare public readonly memberUid: pulumi.Output<string>;
     /**
-     * The ID of the resource group.
+     * Field `resourceGroupId` has been deprecated from provider version 1.259.0.
+     *
+     * @deprecated Field `resourceGroupId` has been deprecated from provider version 1.259.0.
      */
     declare public readonly resourceGroupId: pulumi.Output<string | undefined>;
     /**
-     * The current state of the IP address. Valid Value: `normal`, `holeBegin`.
+     * The status of the IP address.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
 
@@ -138,23 +140,25 @@ export class BgpIp extends pulumi.CustomResource {
  */
 export interface BgpIpState {
     /**
-     * The ID of the native protection enterprise instance to be operated.
+     * The ID of the Anti-DDoS Origin instance.
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * The IP address.
+     * The IP address that you want to add.
      */
     ip?: pulumi.Input<string>;
     /**
-     * The member account id of the IP address.
+     * The member to which the asset belongs.
      */
     memberUid?: pulumi.Input<string>;
     /**
-     * The ID of the resource group.
+     * Field `resourceGroupId` has been deprecated from provider version 1.259.0.
+     *
+     * @deprecated Field `resourceGroupId` has been deprecated from provider version 1.259.0.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The current state of the IP address. Valid Value: `normal`, `holeBegin`.
+     * The status of the IP address.
      */
     status?: pulumi.Input<string>;
 }
@@ -164,19 +168,21 @@ export interface BgpIpState {
  */
 export interface BgpIpArgs {
     /**
-     * The ID of the native protection enterprise instance to be operated.
+     * The ID of the Anti-DDoS Origin instance.
      */
     instanceId: pulumi.Input<string>;
     /**
-     * The IP address.
+     * The IP address that you want to add.
      */
     ip: pulumi.Input<string>;
     /**
-     * The member account id of the IP address.
+     * The member to which the asset belongs.
      */
     memberUid?: pulumi.Input<string>;
     /**
-     * The ID of the resource group.
+     * Field `resourceGroupId` has been deprecated from provider version 1.259.0.
+     *
+     * @deprecated Field `resourceGroupId` has been deprecated from provider version 1.259.0.
      */
     resourceGroupId?: pulumi.Input<string>;
 }

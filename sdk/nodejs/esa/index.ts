@@ -85,6 +85,11 @@ export type Kv = import("./kv").Kv;
 export const Kv: typeof import("./kv").Kv = null as any;
 utilities.lazyLoad(exports, ["Kv"], () => require("./kv"));
 
+export { KvAccountArgs, KvAccountState } from "./kvAccount";
+export type KvAccount = import("./kvAccount").KvAccount;
+export const KvAccount: typeof import("./kvAccount").KvAccount = null as any;
+utilities.lazyLoad(exports, ["KvAccount"], () => require("./kvAccount"));
+
 export { KvNamespaceArgs, KvNamespaceState } from "./kvNamespace";
 export type KvNamespace = import("./kvNamespace").KvNamespace;
 export const KvNamespace: typeof import("./kvNamespace").KvNamespace = null as any;
@@ -155,6 +160,11 @@ export type Routine = import("./routine").Routine;
 export const Routine: typeof import("./routine").Routine = null as any;
 utilities.lazyLoad(exports, ["Routine"], () => require("./routine"));
 
+export { RoutineRelatedRecordArgs, RoutineRelatedRecordState } from "./routineRelatedRecord";
+export type RoutineRelatedRecord = import("./routineRelatedRecord").RoutineRelatedRecord;
+export const RoutineRelatedRecord: typeof import("./routineRelatedRecord").RoutineRelatedRecord = null as any;
+utilities.lazyLoad(exports, ["RoutineRelatedRecord"], () => require("./routineRelatedRecord"));
+
 export { RoutineRouteArgs, RoutineRouteState } from "./routineRoute";
 export type RoutineRoute = import("./routineRoute").RoutineRoute;
 export const RoutineRoute: typeof import("./routineRoute").RoutineRoute = null as any;
@@ -184,6 +194,11 @@ export { SiteOriginClientCertificateArgs, SiteOriginClientCertificateState } fro
 export type SiteOriginClientCertificate = import("./siteOriginClientCertificate").SiteOriginClientCertificate;
 export const SiteOriginClientCertificate: typeof import("./siteOriginClientCertificate").SiteOriginClientCertificate = null as any;
 utilities.lazyLoad(exports, ["SiteOriginClientCertificate"], () => require("./siteOriginClientCertificate"));
+
+export { UrlObservationArgs, UrlObservationState } from "./urlObservation";
+export type UrlObservation = import("./urlObservation").UrlObservation;
+export const UrlObservation: typeof import("./urlObservation").UrlObservation = null as any;
+utilities.lazyLoad(exports, ["UrlObservation"], () => require("./urlObservation"));
 
 export { VersionArgs, VersionState } from "./version";
 export type Version = import("./version").Version;
@@ -245,6 +260,8 @@ const _module = {
                 return new ImageTransform(name, <any>undefined, { urn })
             case "alicloud:esa/kv:Kv":
                 return new Kv(name, <any>undefined, { urn })
+            case "alicloud:esa/kvAccount:KvAccount":
+                return new KvAccount(name, <any>undefined, { urn })
             case "alicloud:esa/kvNamespace:KvNamespace":
                 return new KvNamespace(name, <any>undefined, { urn })
             case "alicloud:esa/list:List":
@@ -273,6 +290,8 @@ const _module = {
                 return new RewriteUrlRule(name, <any>undefined, { urn })
             case "alicloud:esa/routine:Routine":
                 return new Routine(name, <any>undefined, { urn })
+            case "alicloud:esa/routineRelatedRecord:RoutineRelatedRecord":
+                return new RoutineRelatedRecord(name, <any>undefined, { urn })
             case "alicloud:esa/routineRoute:RoutineRoute":
                 return new RoutineRoute(name, <any>undefined, { urn })
             case "alicloud:esa/scheduledPreloadExecution:ScheduledPreloadExecution":
@@ -285,6 +304,8 @@ const _module = {
                 return new SiteDeliveryTask(name, <any>undefined, { urn })
             case "alicloud:esa/siteOriginClientCertificate:SiteOriginClientCertificate":
                 return new SiteOriginClientCertificate(name, <any>undefined, { urn })
+            case "alicloud:esa/urlObservation:UrlObservation":
+                return new UrlObservation(name, <any>undefined, { urn })
             case "alicloud:esa/version:Version":
                 return new Version(name, <any>undefined, { urn })
             case "alicloud:esa/videoProcessing:VideoProcessing":
@@ -315,6 +336,7 @@ pulumi.runtime.registerResourceModule("alicloud", "esa/httpsApplicationConfigura
 pulumi.runtime.registerResourceModule("alicloud", "esa/httpsBasicConfiguration", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/imageTransform", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/kv", _module)
+pulumi.runtime.registerResourceModule("alicloud", "esa/kvAccount", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/kvNamespace", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/list", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/networkOptimization", _module)
@@ -329,12 +351,14 @@ pulumi.runtime.registerResourceModule("alicloud", "esa/record", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/redirectRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/rewriteUrlRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/routine", _module)
+pulumi.runtime.registerResourceModule("alicloud", "esa/routineRelatedRecord", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/routineRoute", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/scheduledPreloadExecution", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/scheduledPreloadJob", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/site", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/siteDeliveryTask", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/siteOriginClientCertificate", _module)
+pulumi.runtime.registerResourceModule("alicloud", "esa/urlObservation", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/version", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/videoProcessing", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/waitingRoom", _module)

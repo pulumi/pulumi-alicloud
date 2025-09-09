@@ -20,6 +20,11 @@ export type AccessManagement = import("./accessManagement").AccessManagement;
 export const AccessManagement: typeof import("./accessManagement").AccessManagement = null as any;
 utilities.lazyLoad(exports, ["AccessManagement"], () => require("./accessManagement"));
 
+export { DelegateAccountArgs, DelegateAccountState } from "./delegateAccount";
+export type DelegateAccount = import("./delegateAccount").DelegateAccount;
+export const DelegateAccount: typeof import("./delegateAccount").DelegateAccount = null as any;
+utilities.lazyLoad(exports, ["DelegateAccount"], () => require("./delegateAccount"));
+
 export { DirectoryArgs, DirectoryState } from "./directory";
 export type Directory = import("./directory").Directory;
 export const Directory: typeof import("./directory").Directory = null as any;
@@ -91,6 +96,8 @@ const _module = {
                 return new AccessConfigurationProvisioning(name, <any>undefined, { urn })
             case "alicloud:cloudsso/accessManagement:AccessManagement":
                 return new AccessManagement(name, <any>undefined, { urn })
+            case "alicloud:cloudsso/delegateAccount:DelegateAccount":
+                return new DelegateAccount(name, <any>undefined, { urn })
             case "alicloud:cloudsso/directory:Directory":
                 return new Directory(name, <any>undefined, { urn })
             case "alicloud:cloudsso/group:Group":
@@ -109,6 +116,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "cloudsso/accessConfiguration", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudsso/accessConfigurationProvisioning", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudsso/accessManagement", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cloudsso/delegateAccount", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudsso/directory", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudsso/group", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudsso/scimServerCredential", _module)

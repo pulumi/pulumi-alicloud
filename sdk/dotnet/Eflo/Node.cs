@@ -103,6 +103,12 @@ namespace Pulumi.AliCloud.Eflo
         public Output<string?> HpnZone { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to buy PAI. default value `false`.
+        /// </summary>
+        [Output("installPai")]
+        public Output<bool?> InstallPai { get; private set; } = null!;
+
+        /// <summary>
         /// Down payment ratio
         /// </summary>
         [Output("paymentRatio")]
@@ -157,7 +163,7 @@ namespace Pulumi.AliCloud.Eflo
         public Output<string?> StageNum { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource
+        /// The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -251,6 +257,12 @@ namespace Pulumi.AliCloud.Eflo
         public Input<string>? HpnZone { get; set; }
 
         /// <summary>
+        /// Whether to buy PAI. default value `false`.
+        /// </summary>
+        [Input("installPai")]
+        public Input<bool>? InstallPai { get; set; }
+
+        /// <summary>
         /// Down payment ratio
         /// </summary>
         [Input("paymentRatio")]
@@ -305,7 +317,7 @@ namespace Pulumi.AliCloud.Eflo
         public Input<string>? StageNum { get; set; }
 
         /// <summary>
-        /// The status of the resource
+        /// The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -373,6 +385,12 @@ namespace Pulumi.AliCloud.Eflo
         public Input<string>? HpnZone { get; set; }
 
         /// <summary>
+        /// Whether to buy PAI. default value `false`.
+        /// </summary>
+        [Input("installPai")]
+        public Input<bool>? InstallPai { get; set; }
+
+        /// <summary>
         /// Down payment ratio
         /// </summary>
         [Input("paymentRatio")]
@@ -427,7 +445,7 @@ namespace Pulumi.AliCloud.Eflo
         public Input<string>? StageNum { get; set; }
 
         /// <summary>
-        /// The status of the resource
+        /// The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

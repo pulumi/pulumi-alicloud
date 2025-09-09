@@ -12,6 +12,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a VPC Ha Vip Attachment resource.
+//
+// Attaching ECS instance to Havip.
+//
+// For information about VPC Ha Vip Attachment and how to use it, see [What is Ha Vip Attachment](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/AssociateHaVip).
+//
+// > **NOTE:** Available since v1.18.0.
+//
 // ## Example Usage
 //
 // # Basic Usage
@@ -128,24 +136,19 @@ import (
 type HAVipAttachment struct {
 	pulumi.CustomResourceState
 
-	// Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
-	// - **True**: Force unbinding.
-	// - **False** (default): unbinding is not forced.
-	// > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+	// Specifies whether to force delete the snapshot.
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
 	// The ID of the HaVip instance.
 	HaVipId pulumi.StringOutput `pulumi:"haVipId"`
-	// . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+	// . Field 'havip_id' has been deprecated from provider version 1.259.0. New field 'ha_vip_id' instead.
 	//
 	// Deprecated: Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.
 	HavipId pulumi.StringOutput `pulumi:"havipId"`
 	// The ID of the ECS instance bound to the HaVip instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// The type of the instance associated with the VIIP.
-	//
-	// The following arguments will be discarded. Please use new fields as soon as possible:
+	// The type of the instance to be associated with the HAVIP. Valid values: * `EcsInstance`: an ECS instance * `NetworkInterface`: an ENI. If you want to associate the HAVIP with an ENI, this parameter is required.
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
-	// The status of the resource.
+	// The status of the resource
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -182,46 +185,36 @@ func GetHAVipAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering HAVipAttachment resources.
 type havipAttachmentState struct {
-	// Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
-	// - **True**: Force unbinding.
-	// - **False** (default): unbinding is not forced.
-	// > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+	// Specifies whether to force delete the snapshot.
 	Force *bool `pulumi:"force"`
 	// The ID of the HaVip instance.
 	HaVipId *string `pulumi:"haVipId"`
-	// . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+	// . Field 'havip_id' has been deprecated from provider version 1.259.0. New field 'ha_vip_id' instead.
 	//
 	// Deprecated: Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.
 	HavipId *string `pulumi:"havipId"`
 	// The ID of the ECS instance bound to the HaVip instance.
 	InstanceId *string `pulumi:"instanceId"`
-	// The type of the instance associated with the VIIP.
-	//
-	// The following arguments will be discarded. Please use new fields as soon as possible:
+	// The type of the instance to be associated with the HAVIP. Valid values: * `EcsInstance`: an ECS instance * `NetworkInterface`: an ENI. If you want to associate the HAVIP with an ENI, this parameter is required.
 	InstanceType *string `pulumi:"instanceType"`
-	// The status of the resource.
+	// The status of the resource
 	Status *string `pulumi:"status"`
 }
 
 type HAVipAttachmentState struct {
-	// Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
-	// - **True**: Force unbinding.
-	// - **False** (default): unbinding is not forced.
-	// > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+	// Specifies whether to force delete the snapshot.
 	Force pulumi.BoolPtrInput
 	// The ID of the HaVip instance.
 	HaVipId pulumi.StringPtrInput
-	// . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+	// . Field 'havip_id' has been deprecated from provider version 1.259.0. New field 'ha_vip_id' instead.
 	//
 	// Deprecated: Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.
 	HavipId pulumi.StringPtrInput
 	// The ID of the ECS instance bound to the HaVip instance.
 	InstanceId pulumi.StringPtrInput
-	// The type of the instance associated with the VIIP.
-	//
-	// The following arguments will be discarded. Please use new fields as soon as possible:
+	// The type of the instance to be associated with the HAVIP. Valid values: * `EcsInstance`: an ECS instance * `NetworkInterface`: an ENI. If you want to associate the HAVIP with an ENI, this parameter is required.
 	InstanceType pulumi.StringPtrInput
-	// The status of the resource.
+	// The status of the resource
 	Status pulumi.StringPtrInput
 }
 
@@ -230,43 +223,33 @@ func (HAVipAttachmentState) ElementType() reflect.Type {
 }
 
 type havipAttachmentArgs struct {
-	// Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
-	// - **True**: Force unbinding.
-	// - **False** (default): unbinding is not forced.
-	// > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+	// Specifies whether to force delete the snapshot.
 	Force *bool `pulumi:"force"`
 	// The ID of the HaVip instance.
 	HaVipId *string `pulumi:"haVipId"`
-	// . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+	// . Field 'havip_id' has been deprecated from provider version 1.259.0. New field 'ha_vip_id' instead.
 	//
 	// Deprecated: Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.
 	HavipId *string `pulumi:"havipId"`
 	// The ID of the ECS instance bound to the HaVip instance.
 	InstanceId string `pulumi:"instanceId"`
-	// The type of the instance associated with the VIIP.
-	//
-	// The following arguments will be discarded. Please use new fields as soon as possible:
+	// The type of the instance to be associated with the HAVIP. Valid values: * `EcsInstance`: an ECS instance * `NetworkInterface`: an ENI. If you want to associate the HAVIP with an ENI, this parameter is required.
 	InstanceType *string `pulumi:"instanceType"`
 }
 
 // The set of arguments for constructing a HAVipAttachment resource.
 type HAVipAttachmentArgs struct {
-	// Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
-	// - **True**: Force unbinding.
-	// - **False** (default): unbinding is not forced.
-	// > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+	// Specifies whether to force delete the snapshot.
 	Force pulumi.BoolPtrInput
 	// The ID of the HaVip instance.
 	HaVipId pulumi.StringPtrInput
-	// . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+	// . Field 'havip_id' has been deprecated from provider version 1.259.0. New field 'ha_vip_id' instead.
 	//
 	// Deprecated: Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.
 	HavipId pulumi.StringPtrInput
 	// The ID of the ECS instance bound to the HaVip instance.
 	InstanceId pulumi.StringInput
-	// The type of the instance associated with the VIIP.
-	//
-	// The following arguments will be discarded. Please use new fields as soon as possible:
+	// The type of the instance to be associated with the HAVIP. Valid values: * `EcsInstance`: an ECS instance * `NetworkInterface`: an ENI. If you want to associate the HAVIP with an ENI, this parameter is required.
 	InstanceType pulumi.StringPtrInput
 }
 
@@ -357,10 +340,7 @@ func (o HAVipAttachmentOutput) ToHAVipAttachmentOutputWithContext(ctx context.Co
 	return o
 }
 
-// Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
-// - **True**: Force unbinding.
-// - **False** (default): unbinding is not forced.
-// > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+// Specifies whether to force delete the snapshot.
 func (o HAVipAttachmentOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *HAVipAttachment) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }
@@ -370,7 +350,7 @@ func (o HAVipAttachmentOutput) HaVipId() pulumi.StringOutput {
 	return o.ApplyT(func(v *HAVipAttachment) pulumi.StringOutput { return v.HaVipId }).(pulumi.StringOutput)
 }
 
-// . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+// . Field 'havip_id' has been deprecated from provider version 1.259.0. New field 'ha_vip_id' instead.
 //
 // Deprecated: Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.
 func (o HAVipAttachmentOutput) HavipId() pulumi.StringOutput {
@@ -382,14 +362,12 @@ func (o HAVipAttachmentOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *HAVipAttachment) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// The type of the instance associated with the VIIP.
-//
-// The following arguments will be discarded. Please use new fields as soon as possible:
+// The type of the instance to be associated with the HAVIP. Valid values: * `EcsInstance`: an ECS instance * `NetworkInterface`: an ENI. If you want to associate the HAVIP with an ENI, this parameter is required.
 func (o HAVipAttachmentOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *HAVipAttachment) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the resource
 func (o HAVipAttachmentOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *HAVipAttachment) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

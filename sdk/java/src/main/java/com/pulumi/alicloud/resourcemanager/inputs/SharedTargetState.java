@@ -16,14 +16,29 @@ public final class SharedTargetState extends com.pulumi.resources.ResourceArgs {
     public static final SharedTargetState Empty = new SharedTargetState();
 
     /**
-     * The resource share ID of resource manager.
+     * (Available since v1.259.0) The time when the association of the entity was created.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return (Available since v1.259.0) The time when the association of the entity was created.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * The ID of the resource share.
      * 
      */
     @Import(name="resourceShareId")
     private @Nullable Output<String> resourceShareId;
 
     /**
-     * @return The resource share ID of resource manager.
+     * @return The ID of the resource share.
      * 
      */
     public Optional<Output<String>> resourceShareId() {
@@ -46,14 +61,14 @@ public final class SharedTargetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The member account ID in resource directory.
+     * The ID of the principal.
      * 
      */
     @Import(name="targetId")
     private @Nullable Output<String> targetId;
 
     /**
-     * @return The member account ID in resource directory.
+     * @return The ID of the principal.
      * 
      */
     public Optional<Output<String>> targetId() {
@@ -63,6 +78,7 @@ public final class SharedTargetState extends com.pulumi.resources.ResourceArgs {
     private SharedTargetState() {}
 
     private SharedTargetState(SharedTargetState $) {
+        this.createTime = $.createTime;
         this.resourceShareId = $.resourceShareId;
         this.status = $.status;
         this.targetId = $.targetId;
@@ -87,7 +103,28 @@ public final class SharedTargetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceShareId The resource share ID of resource manager.
+         * @param createTime (Available since v1.259.0) The time when the association of the entity was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime (Available since v1.259.0) The time when the association of the entity was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param resourceShareId The ID of the resource share.
          * 
          * @return builder
          * 
@@ -98,7 +135,7 @@ public final class SharedTargetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceShareId The resource share ID of resource manager.
+         * @param resourceShareId The ID of the resource share.
          * 
          * @return builder
          * 
@@ -129,7 +166,7 @@ public final class SharedTargetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetId The member account ID in resource directory.
+         * @param targetId The ID of the principal.
          * 
          * @return builder
          * 
@@ -140,7 +177,7 @@ public final class SharedTargetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetId The member account ID in resource directory.
+         * @param targetId The ID of the principal.
          * 
          * @return builder
          * 

@@ -382,21 +382,28 @@ func (o NetworkAclAttachmentResourceArrayOutput) Index(i pulumi.IntInput) Networ
 }
 
 type NetworkAclEgressAclEntry struct {
-	// The description of the outbound rule.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+	// The description of the outbound rule.
+	// The description must be 1 to 256 characters in length and cannot start with http:// or https.
 	Description *string `pulumi:"description"`
-	// The network of the destination address.
+	// The destination CIDR block.
 	DestinationCidrIp *string `pulumi:"destinationCidrIp"`
-	// The route entry type. The value can be `custom`, indicating custom.
+	// The route entry type. Value
+	// custom custom rule
+	// system system rules
+	// service Cloud service rules
 	EntryType *string `pulumi:"entryType"`
-	// The IP protocol version of the route entry. Valid values: "IPV4" and "IPV4'.
+	// The IP protocol version of the route entry. Valid values: "Ipv4" and "ipv6'
 	IpVersion *string `pulumi:"ipVersion"`
-	// Name of the outbound rule entry.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+	// Name of the outbound rule entry.
+	// The name must be 1 to 128 characters in length and cannot start with http:// or https.
 	NetworkAclEntryName *string `pulumi:"networkAclEntryName"`
-	// Authorization policy. Value:
-	// - accept: Allow.
-	// - drop: Refused.
+	// The action to be performed on network traffic that matches the rule. Valid values:
+	// - accept
+	// - drop
 	Policy *string `pulumi:"policy"`
-	// The destination port range of the outbound rule.  When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted. When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+	// The destination port range of the outbound rule.
+	// When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.
+	// When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
 	Port *string `pulumi:"port"`
 	// The protocol type. Value:
 	// - icmp: Network Control Message Protocol.
@@ -419,21 +426,28 @@ type NetworkAclEgressAclEntryInput interface {
 }
 
 type NetworkAclEgressAclEntryArgs struct {
-	// The description of the outbound rule.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+	// The description of the outbound rule.
+	// The description must be 1 to 256 characters in length and cannot start with http:// or https.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The network of the destination address.
+	// The destination CIDR block.
 	DestinationCidrIp pulumi.StringPtrInput `pulumi:"destinationCidrIp"`
-	// The route entry type. The value can be `custom`, indicating custom.
+	// The route entry type. Value
+	// custom custom rule
+	// system system rules
+	// service Cloud service rules
 	EntryType pulumi.StringPtrInput `pulumi:"entryType"`
-	// The IP protocol version of the route entry. Valid values: "IPV4" and "IPV4'.
+	// The IP protocol version of the route entry. Valid values: "Ipv4" and "ipv6'
 	IpVersion pulumi.StringPtrInput `pulumi:"ipVersion"`
-	// Name of the outbound rule entry.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+	// Name of the outbound rule entry.
+	// The name must be 1 to 128 characters in length and cannot start with http:// or https.
 	NetworkAclEntryName pulumi.StringPtrInput `pulumi:"networkAclEntryName"`
-	// Authorization policy. Value:
-	// - accept: Allow.
-	// - drop: Refused.
+	// The action to be performed on network traffic that matches the rule. Valid values:
+	// - accept
+	// - drop
 	Policy pulumi.StringPtrInput `pulumi:"policy"`
-	// The destination port range of the outbound rule.  When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted. When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+	// The destination port range of the outbound rule.
+	// When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.
+	// When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
 	Port pulumi.StringPtrInput `pulumi:"port"`
 	// The protocol type. Value:
 	// - icmp: Network Control Message Protocol.
@@ -495,39 +509,46 @@ func (o NetworkAclEgressAclEntryOutput) ToNetworkAclEgressAclEntryOutputWithCont
 	return o
 }
 
-// The description of the outbound rule.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+// The description of the outbound rule.
+// The description must be 1 to 256 characters in length and cannot start with http:// or https.
 func (o NetworkAclEgressAclEntryOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEgressAclEntry) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The network of the destination address.
+// The destination CIDR block.
 func (o NetworkAclEgressAclEntryOutput) DestinationCidrIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEgressAclEntry) *string { return v.DestinationCidrIp }).(pulumi.StringPtrOutput)
 }
 
-// The route entry type. The value can be `custom`, indicating custom.
+// The route entry type. Value
+// custom custom rule
+// system system rules
+// service Cloud service rules
 func (o NetworkAclEgressAclEntryOutput) EntryType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEgressAclEntry) *string { return v.EntryType }).(pulumi.StringPtrOutput)
 }
 
-// The IP protocol version of the route entry. Valid values: "IPV4" and "IPV4'.
+// The IP protocol version of the route entry. Valid values: "Ipv4" and "ipv6'
 func (o NetworkAclEgressAclEntryOutput) IpVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEgressAclEntry) *string { return v.IpVersion }).(pulumi.StringPtrOutput)
 }
 
-// Name of the outbound rule entry.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+// Name of the outbound rule entry.
+// The name must be 1 to 128 characters in length and cannot start with http:// or https.
 func (o NetworkAclEgressAclEntryOutput) NetworkAclEntryName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEgressAclEntry) *string { return v.NetworkAclEntryName }).(pulumi.StringPtrOutput)
 }
 
-// Authorization policy. Value:
-// - accept: Allow.
-// - drop: Refused.
+// The action to be performed on network traffic that matches the rule. Valid values:
+// - accept
+// - drop
 func (o NetworkAclEgressAclEntryOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEgressAclEntry) *string { return v.Policy }).(pulumi.StringPtrOutput)
 }
 
-// The destination port range of the outbound rule.  When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted. When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+// The destination port range of the outbound rule.
+// When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.
+// When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
 func (o NetworkAclEgressAclEntryOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEgressAclEntry) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
@@ -829,19 +850,23 @@ func (o NetworkAclEntriesIngressArrayOutput) Index(i pulumi.IntInput) NetworkAcl
 }
 
 type NetworkAclIngressAclEntry struct {
-	// Description of the inbound rule.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+	// Description of the inbound rule.
+	// The description must be 1 to 256 characters in length and cannot start with http:// or https.
 	Description *string `pulumi:"description"`
-	// The route entry type. The value can be `custom`, indicating custom.
+	// The route entry type. Value
 	EntryType *string `pulumi:"entryType"`
-	// The IP protocol version of the route entry. Valid values: "IPV4" and "IPV6'.
+	// The IP protocol version of the route entry. Valid values: "Ipv4" and "ipv6'
 	IpVersion *string `pulumi:"ipVersion"`
-	// The name of the inbound rule entry.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+	// The name of the inbound rule entry.
+	// The name must be 1 to 128 characters in length and cannot start with http:// or https.
 	NetworkAclEntryName *string `pulumi:"networkAclEntryName"`
-	// Authorization policy. Value:
-	// - accept: Allow.
-	// - drop: Refused.
+	// The action to be performed on network traffic that matches the rule. Valid values:
+	// - accept
+	// - drop
 	Policy *string `pulumi:"policy"`
-	// The source port range of the inbound rule.  When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted. When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+	// The source port range of the inbound rule.
+	// When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.
+	// When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
 	Port *string `pulumi:"port"`
 	// The protocol type. Value:
 	// - icmp: Network Control Message Protocol.
@@ -850,7 +875,7 @@ type NetworkAclIngressAclEntry struct {
 	// - udp: User Datagram Protocol.
 	// - all: Supports all protocols.
 	Protocol *string `pulumi:"protocol"`
-	// Source address network segment.
+	// The source CIDR block.
 	SourceCidrIp *string `pulumi:"sourceCidrIp"`
 }
 
@@ -866,19 +891,23 @@ type NetworkAclIngressAclEntryInput interface {
 }
 
 type NetworkAclIngressAclEntryArgs struct {
-	// Description of the inbound rule.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+	// Description of the inbound rule.
+	// The description must be 1 to 256 characters in length and cannot start with http:// or https.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The route entry type. The value can be `custom`, indicating custom.
+	// The route entry type. Value
 	EntryType pulumi.StringPtrInput `pulumi:"entryType"`
-	// The IP protocol version of the route entry. Valid values: "IPV4" and "IPV6'.
+	// The IP protocol version of the route entry. Valid values: "Ipv4" and "ipv6'
 	IpVersion pulumi.StringPtrInput `pulumi:"ipVersion"`
-	// The name of the inbound rule entry.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+	// The name of the inbound rule entry.
+	// The name must be 1 to 128 characters in length and cannot start with http:// or https.
 	NetworkAclEntryName pulumi.StringPtrInput `pulumi:"networkAclEntryName"`
-	// Authorization policy. Value:
-	// - accept: Allow.
-	// - drop: Refused.
+	// The action to be performed on network traffic that matches the rule. Valid values:
+	// - accept
+	// - drop
 	Policy pulumi.StringPtrInput `pulumi:"policy"`
-	// The source port range of the inbound rule.  When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted. When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+	// The source port range of the inbound rule.
+	// When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.
+	// When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
 	Port pulumi.StringPtrInput `pulumi:"port"`
 	// The protocol type. Value:
 	// - icmp: Network Control Message Protocol.
@@ -887,7 +916,7 @@ type NetworkAclIngressAclEntryArgs struct {
 	// - udp: User Datagram Protocol.
 	// - all: Supports all protocols.
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
-	// Source address network segment.
+	// The source CIDR block.
 	SourceCidrIp pulumi.StringPtrInput `pulumi:"sourceCidrIp"`
 }
 
@@ -942,34 +971,38 @@ func (o NetworkAclIngressAclEntryOutput) ToNetworkAclIngressAclEntryOutputWithCo
 	return o
 }
 
-// Description of the inbound rule.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+// Description of the inbound rule.
+// The description must be 1 to 256 characters in length and cannot start with http:// or https.
 func (o NetworkAclIngressAclEntryOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclIngressAclEntry) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The route entry type. The value can be `custom`, indicating custom.
+// The route entry type. Value
 func (o NetworkAclIngressAclEntryOutput) EntryType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclIngressAclEntry) *string { return v.EntryType }).(pulumi.StringPtrOutput)
 }
 
-// The IP protocol version of the route entry. Valid values: "IPV4" and "IPV6'.
+// The IP protocol version of the route entry. Valid values: "Ipv4" and "ipv6'
 func (o NetworkAclIngressAclEntryOutput) IpVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclIngressAclEntry) *string { return v.IpVersion }).(pulumi.StringPtrOutput)
 }
 
-// The name of the inbound rule entry.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+// The name of the inbound rule entry.
+// The name must be 1 to 128 characters in length and cannot start with http:// or https.
 func (o NetworkAclIngressAclEntryOutput) NetworkAclEntryName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclIngressAclEntry) *string { return v.NetworkAclEntryName }).(pulumi.StringPtrOutput)
 }
 
-// Authorization policy. Value:
-// - accept: Allow.
-// - drop: Refused.
+// The action to be performed on network traffic that matches the rule. Valid values:
+// - accept
+// - drop
 func (o NetworkAclIngressAclEntryOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclIngressAclEntry) *string { return v.Policy }).(pulumi.StringPtrOutput)
 }
 
-// The source port range of the inbound rule.  When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted. When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+// The source port range of the inbound rule.
+// When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.
+// When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
 func (o NetworkAclIngressAclEntryOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclIngressAclEntry) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
@@ -984,7 +1017,7 @@ func (o NetworkAclIngressAclEntryOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclIngressAclEntry) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
-// Source address network segment.
+// The source CIDR block.
 func (o NetworkAclIngressAclEntryOutput) SourceCidrIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclIngressAclEntry) *string { return v.SourceCidrIp }).(pulumi.StringPtrOutput)
 }

@@ -56,6 +56,7 @@ type Instance struct {
 	// - Follower: Read-only slave instance.
 	// - Warehouse: calculation group type.
 	// - Shared: Shared.
+	// - Serverless: (Available since v1.259.0) Serverless.
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// The ID of the primary instance.
 	LeaderInstanceId pulumi.StringPtrOutput `pulumi:"leaderInstanceId"`
@@ -66,6 +67,8 @@ type Instance struct {
 	// - Hour: hourly billing
 	// > **NOTE:**  Subscription instances (PrePaid) only supports Month. PayAsYouGo instances (PostPaid) only supports Hour. The Shared type is automatically set to Hour without specifying it.
 	PricingCycle pulumi.StringPtrOutput `pulumi:"pricingCycle"`
+	// (Available since v1.259.0) The region ID.
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// Change matching type. Value:
@@ -160,6 +163,7 @@ type instanceState struct {
 	// - Follower: Read-only slave instance.
 	// - Warehouse: calculation group type.
 	// - Shared: Shared.
+	// - Serverless: (Available since v1.259.0) Serverless.
 	InstanceType *string `pulumi:"instanceType"`
 	// The ID of the primary instance.
 	LeaderInstanceId *string `pulumi:"leaderInstanceId"`
@@ -170,6 +174,8 @@ type instanceState struct {
 	// - Hour: hourly billing
 	// > **NOTE:**  Subscription instances (PrePaid) only supports Month. PayAsYouGo instances (PostPaid) only supports Hour. The Shared type is automatically set to Hour without specifying it.
 	PricingCycle *string `pulumi:"pricingCycle"`
+	// (Available since v1.259.0) The region ID.
+	RegionId *string `pulumi:"regionId"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Change matching type. Value:
@@ -223,6 +229,7 @@ type InstanceState struct {
 	// - Follower: Read-only slave instance.
 	// - Warehouse: calculation group type.
 	// - Shared: Shared.
+	// - Serverless: (Available since v1.259.0) Serverless.
 	InstanceType pulumi.StringPtrInput
 	// The ID of the primary instance.
 	LeaderInstanceId pulumi.StringPtrInput
@@ -233,6 +240,8 @@ type InstanceState struct {
 	// - Hour: hourly billing
 	// > **NOTE:**  Subscription instances (PrePaid) only supports Month. PayAsYouGo instances (PostPaid) only supports Hour. The Shared type is automatically set to Hour without specifying it.
 	PricingCycle pulumi.StringPtrInput
+	// (Available since v1.259.0) The region ID.
+	RegionId pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// Change matching type. Value:
@@ -288,6 +297,7 @@ type instanceArgs struct {
 	// - Follower: Read-only slave instance.
 	// - Warehouse: calculation group type.
 	// - Shared: Shared.
+	// - Serverless: (Available since v1.259.0) Serverless.
 	InstanceType string `pulumi:"instanceType"`
 	// The ID of the primary instance.
 	LeaderInstanceId *string `pulumi:"leaderInstanceId"`
@@ -350,6 +360,7 @@ type InstanceArgs struct {
 	// - Follower: Read-only slave instance.
 	// - Warehouse: calculation group type.
 	// - Shared: Shared.
+	// - Serverless: (Available since v1.259.0) Serverless.
 	InstanceType pulumi.StringInput
 	// The ID of the primary instance.
 	LeaderInstanceId pulumi.StringPtrInput
@@ -526,6 +537,7 @@ func (o InstanceOutput) InstanceName() pulumi.StringOutput {
 // - Follower: Read-only slave instance.
 // - Warehouse: calculation group type.
 // - Shared: Shared.
+// - Serverless: (Available since v1.259.0) Serverless.
 func (o InstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
 }
@@ -546,6 +558,11 @@ func (o InstanceOutput) PaymentType() pulumi.StringOutput {
 // > **NOTE:**  Subscription instances (PrePaid) only supports Month. PayAsYouGo instances (PostPaid) only supports Hour. The Shared type is automatically set to Hour without specifying it.
 func (o InstanceOutput) PricingCycle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.PricingCycle }).(pulumi.StringPtrOutput)
+}
+
+// (Available since v1.259.0) The region ID.
+func (o InstanceOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // The ID of the resource group.

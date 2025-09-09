@@ -10,81 +10,57 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ddos
 {
     /// <summary>
-    /// Anti-DDoS Advanced instance resource. "Ddosbgp" is the short term of this product.
-    /// 
-    /// &gt; **NOTE:** Available since v1.183.0.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var instance = new AliCloud.Ddos.DdosBgpInstance("instance", new()
-    ///     {
-    ///         Name = name,
-    ///         BaseBandwidth = 20,
-    ///         Bandwidth = -1,
-    ///         IpCount = 100,
-    ///         IpType = "IPv4",
-    ///         NormalBandwidth = 100,
-    ///         Type = "Enterprise",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
-    /// Ddosbgp instance can be imported using the id, e.g.
+    /// Anti-DDoS Pro (DdosBgp) Instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:ddos/ddosBgpInstance:DdosBgpInstance example ddosbgp-abc123456
+    /// $ pulumi import alicloud:ddos/ddosBgpInstance:DdosBgpInstance example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ddos/ddosBgpInstance:DdosBgpInstance")]
     public partial class DdosBgpInstance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 51,91,101,201,301. The unit is Gbps.
+        /// The bandwidth of the package configuration.
         /// </summary>
         [Output("bandwidth")]
         public Output<int> Bandwidth { get; private set; } = null!;
 
         /// <summary>
-        /// Base defend bandwidth of the instance. Valid values: 20. The unit is Gbps. Default to `20`.
+        /// The basic protection bandwidth of the Anti-DDoS Origin Enterprise instance. Default value: `20`. Valid values: `20`.
         /// </summary>
         [Output("baseBandwidth")]
         public Output<int?> BaseBandwidth { get; private set; } = null!;
 
         /// <summary>
-        /// IP count of the instance. Valid values: 100.
+        /// The name of the instance.
+        /// </summary>
+        [Output("instanceName")]
+        public Output<string> InstanceName { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of IP addresses that can be protected by the Anti-DDoS Origin Enterprise instance.
         /// </summary>
         [Output("ipCount")]
         public Output<int> IpCount { get; private set; } = null!;
 
         /// <summary>
-        /// IP version of the instance. Valid values: IPv4,IPv6.
+        /// The protection IP address type of the protection package. Valid values:
+        /// - `IPv4`
+        /// - `IPv6`
         /// </summary>
         [Output("ipType")]
         public Output<string> IpType { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the instance. This name can have a string of 1 to 63 characters.
+        /// Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Normal defend bandwidth of the instance. The unit is Gbps.
+        /// The normal clean bandwidth. Unit: Mbit/s.
         /// </summary>
         [Output("normalBandwidth")]
         public Output<int> NormalBandwidth { get; private set; } = null!;
@@ -96,10 +72,28 @@ namespace Pulumi.AliCloud.Ddos
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
+        /// Resource Group ID
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.259.0) The status of the Instance.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The key of the tag that is added to the Anti-DDoS Origin instance.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// The protection package type of the DDoS native protection instance. Default value: `Enterprise`. Valid values: `Enterprise`, `Professional`.
         /// </summary>
         [Output("type")]
-        public Output<string?> Type { get; private set; } = null!;
+        public Output<string> Type { get; private set; } = null!;
 
 
         /// <summary>
@@ -152,37 +146,45 @@ namespace Pulumi.AliCloud.Ddos
     public sealed class DdosBgpInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 51,91,101,201,301. The unit is Gbps.
+        /// The bandwidth of the package configuration.
         /// </summary>
         [Input("bandwidth", required: true)]
         public Input<int> Bandwidth { get; set; } = null!;
 
         /// <summary>
-        /// Base defend bandwidth of the instance. Valid values: 20. The unit is Gbps. Default to `20`.
+        /// The basic protection bandwidth of the Anti-DDoS Origin Enterprise instance. Default value: `20`. Valid values: `20`.
         /// </summary>
         [Input("baseBandwidth")]
         public Input<int>? BaseBandwidth { get; set; }
 
         /// <summary>
-        /// IP count of the instance. Valid values: 100.
+        /// The name of the instance.
+        /// </summary>
+        [Input("instanceName")]
+        public Input<string>? InstanceName { get; set; }
+
+        /// <summary>
+        /// The number of IP addresses that can be protected by the Anti-DDoS Origin Enterprise instance.
         /// </summary>
         [Input("ipCount", required: true)]
         public Input<int> IpCount { get; set; } = null!;
 
         /// <summary>
-        /// IP version of the instance. Valid values: IPv4,IPv6.
+        /// The protection IP address type of the protection package. Valid values:
+        /// - `IPv4`
+        /// - `IPv6`
         /// </summary>
         [Input("ipType", required: true)]
         public Input<string> IpType { get; set; } = null!;
 
         /// <summary>
-        /// Name of the instance. This name can have a string of 1 to 63 characters.
+        /// Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Normal defend bandwidth of the instance. The unit is Gbps.
+        /// The normal clean bandwidth. Unit: Mbit/s.
         /// </summary>
         [Input("normalBandwidth", required: true)]
         public Input<int> NormalBandwidth { get; set; } = null!;
@@ -194,7 +196,25 @@ namespace Pulumi.AliCloud.Ddos
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
+        /// Resource Group ID
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The key of the tag that is added to the Anti-DDoS Origin instance.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The protection package type of the DDoS native protection instance. Default value: `Enterprise`. Valid values: `Enterprise`, `Professional`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -208,37 +228,45 @@ namespace Pulumi.AliCloud.Ddos
     public sealed class DdosBgpInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 51,91,101,201,301. The unit is Gbps.
+        /// The bandwidth of the package configuration.
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
 
         /// <summary>
-        /// Base defend bandwidth of the instance. Valid values: 20. The unit is Gbps. Default to `20`.
+        /// The basic protection bandwidth of the Anti-DDoS Origin Enterprise instance. Default value: `20`. Valid values: `20`.
         /// </summary>
         [Input("baseBandwidth")]
         public Input<int>? BaseBandwidth { get; set; }
 
         /// <summary>
-        /// IP count of the instance. Valid values: 100.
+        /// The name of the instance.
+        /// </summary>
+        [Input("instanceName")]
+        public Input<string>? InstanceName { get; set; }
+
+        /// <summary>
+        /// The number of IP addresses that can be protected by the Anti-DDoS Origin Enterprise instance.
         /// </summary>
         [Input("ipCount")]
         public Input<int>? IpCount { get; set; }
 
         /// <summary>
-        /// IP version of the instance. Valid values: IPv4,IPv6.
+        /// The protection IP address type of the protection package. Valid values:
+        /// - `IPv4`
+        /// - `IPv6`
         /// </summary>
         [Input("ipType")]
         public Input<string>? IpType { get; set; }
 
         /// <summary>
-        /// Name of the instance. This name can have a string of 1 to 63 characters.
+        /// Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Normal defend bandwidth of the instance. The unit is Gbps.
+        /// The normal clean bandwidth. Unit: Mbit/s.
         /// </summary>
         [Input("normalBandwidth")]
         public Input<int>? NormalBandwidth { get; set; }
@@ -250,7 +278,31 @@ namespace Pulumi.AliCloud.Ddos
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
+        /// Resource Group ID
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// (Available since v1.259.0) The status of the Instance.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The key of the tag that is added to the Anti-DDoS Origin instance.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The protection package type of the DDoS native protection instance. Default value: `Enterprise`. Valid values: `Enterprise`, `Professional`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

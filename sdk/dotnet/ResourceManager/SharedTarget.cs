@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// <summary>
     /// Provides a Resource Manager Shared Target resource.
     /// 
-    /// For information about Resource Manager Shared Target and how to use it, see [What is Shared Target](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
+    /// For information about Resource Manager Shared Target and how to use it, see [What is Shared Target](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/developer-reference/api-resourcesharing-2020-01-10-associateresourceshare).
     /// 
     /// &gt; **NOTE:** Available since v1.111.0.
     /// 
@@ -25,21 +25,28 @@ namespace Pulumi.AliCloud.ResourceManager
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tfexample";
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = AliCloud.ResourceManager.GetAccounts.Invoke();
     /// 
-    ///     var example = new AliCloud.ResourceManager.ResourceShare("example", new()
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
     ///     {
-    ///         ResourceShareName = name,
+    ///         Min = 10000,
+    ///         Max = 99999,
     ///     });
     /// 
-    ///     var exampleSharedTarget = new AliCloud.ResourceManager.SharedTarget("example", new()
+    ///     var defaultResourceShare = new AliCloud.ResourceManager.ResourceShare("default", new()
     ///     {
-    ///         ResourceShareId = example.Id,
+    ///         ResourceShareName = $"{name}-{defaultInteger.Result}",
+    ///     });
+    /// 
+    ///     var defaultSharedTarget = new AliCloud.ResourceManager.SharedTarget("default", new()
+    ///     {
+    ///         ResourceShareId = defaultResourceShare.Id,
     ///         TargetId = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Ids[0])),
     ///     });
     /// 
@@ -58,7 +65,13 @@ namespace Pulumi.AliCloud.ResourceManager
     public partial class SharedTarget : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The resource share ID of resource manager.
+        /// (Available since v1.259.0) The time when the association of the entity was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the resource share.
         /// </summary>
         [Output("resourceShareId")]
         public Output<string> ResourceShareId { get; private set; } = null!;
@@ -70,7 +83,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The member account ID in resource directory.
+        /// The ID of the principal.
         /// </summary>
         [Output("targetId")]
         public Output<string> TargetId { get; private set; } = null!;
@@ -122,13 +135,13 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class SharedTargetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The resource share ID of resource manager.
+        /// The ID of the resource share.
         /// </summary>
         [Input("resourceShareId", required: true)]
         public Input<string> ResourceShareId { get; set; } = null!;
 
         /// <summary>
-        /// The member account ID in resource directory.
+        /// The ID of the principal.
         /// </summary>
         [Input("targetId", required: true)]
         public Input<string> TargetId { get; set; } = null!;
@@ -142,7 +155,13 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class SharedTargetState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The resource share ID of resource manager.
+        /// (Available since v1.259.0) The time when the association of the entity was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The ID of the resource share.
         /// </summary>
         [Input("resourceShareId")]
         public Input<string>? ResourceShareId { get; set; }
@@ -154,7 +173,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The member account ID in resource directory.
+        /// The ID of the principal.
         /// </summary>
         [Input("targetId")]
         public Input<string>? TargetId { get; set; }

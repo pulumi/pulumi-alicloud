@@ -17,9 +17,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Vpc Ha Vip resource. Highly available virtual IP
+ * Provides a VPC Ha Vip resource.
  * 
- * For information about Vpc Ha Vip and how to use it, see [What is Ha Vip](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createhavip).
+ * Highly available virtual IP.
+ * 
+ * For information about VPC Ha Vip and how to use it, see [What is Ha Vip](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createhavip).
  * 
  * &gt; **NOTE:** Available since v1.205.0.
  * 
@@ -59,13 +61,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf-testacc-example");
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
  *         var defaultVpc = new Network("defaultVpc", NetworkArgs.builder()
- *             .description("tf-test-acc-vpc")
+ *             .description(name)
  *             .vpcName(name)
  *             .cidrBlock("192.168.0.0/16")
  *             .build());
@@ -75,21 +77,21 @@ import javax.annotation.Nullable;
  *             .cidrBlock("192.168.0.0/21")
  *             .vswitchName(String.format("%s1", name))
  *             .zoneId(default_.zones()[0].id())
- *             .description("tf-testacc-vswitch")
+ *             .description(name)
  *             .build());
  * 
  *         var defaultRg = new ResourceGroup("defaultRg", ResourceGroupArgs.builder()
- *             .displayName("tf-testacc-rg819")
+ *             .displayName("tf-example-defaultRg")
  *             .resourceGroupName(String.format("%s2", name))
  *             .build());
  * 
  *         var changeRg = new ResourceGroup("changeRg", ResourceGroupArgs.builder()
- *             .displayName("tf-testacc-changerg670")
+ *             .displayName("tf-example-changeRg")
  *             .resourceGroupName(String.format("%s3", name))
  *             .build());
  * 
  *         var defaultHaVipv2 = new HaVipv2("defaultHaVipv2", HaVipv2Args.builder()
- *             .description("test")
+ *             .description(name)
  *             .vswitchId(defaultVswitch.id())
  *             .haVipName(name)
  *             .ipAddress("192.168.1.101")
@@ -104,7 +106,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Vpc Ha Vip can be imported using the id, e.g.
+ * VPC Ha Vip can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:vpc/haVipv2:HaVipv2 example &lt;id&gt;
@@ -114,105 +116,109 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/haVipv2:HaVipv2")
 public class HaVipv2 extends com.pulumi.resources.CustomResource {
     /**
-     * EIP bound to HaVip.
+     * EIP bound to HaVip
      * 
      */
     @Export(name="associatedEipAddresses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> associatedEipAddresses;
 
     /**
-     * @return EIP bound to HaVip.
+     * @return EIP bound to HaVip
      * 
      */
     public Output<List<String>> associatedEipAddresses() {
         return this.associatedEipAddresses;
     }
     /**
-     * The type of the instance that is bound to the HaVip. Value:-**EcsInstance**: ECS instance.-**NetworkInterface**: ENI instance.
+     * The type of the instance that is bound to the HaVip. Value:
+     * - `EcsInstance`: ECS instance.
+     * - `NetworkInterface`: ENI instance.
      * 
      */
     @Export(name="associatedInstanceType", refs={String.class}, tree="[0]")
     private Output<String> associatedInstanceType;
 
     /**
-     * @return The type of the instance that is bound to the HaVip. Value:-**EcsInstance**: ECS instance.-**NetworkInterface**: ENI instance.
+     * @return The type of the instance that is bound to the HaVip. Value:
+     * - `EcsInstance`: ECS instance.
+     * - `NetworkInterface`: ENI instance.
      * 
      */
     public Output<String> associatedInstanceType() {
         return this.associatedInstanceType;
     }
     /**
-     * An ECS instance that is bound to HaVip.
+     * The ID of the ECS instance to be associated with the HAVIP.
      * 
      */
     @Export(name="associatedInstances", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> associatedInstances;
 
     /**
-     * @return An ECS instance that is bound to HaVip.
+     * @return The ID of the ECS instance to be associated with the HAVIP.
      * 
      */
     public Output<List<String>> associatedInstances() {
         return this.associatedInstances;
     }
     /**
-     * The creation time of the resource.
+     * The creation time of the resource
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The creation time of the resource.
+     * @return The creation time of the resource
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * The description of the HaVip instance. The length is 2 to 256 characters.
+     * The description of the HAVIP. The description must be 1 to 255 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the HaVip instance. The length is 2 to 256 characters.
+     * @return The description of the HAVIP. The description must be 1 to 255 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The ID of the resource.
+     * The ID of the HaVip instance.
      * 
      */
     @Export(name="haVipId", refs={String.class}, tree="[0]")
     private Output<String> haVipId;
 
     /**
-     * @return The ID of the resource.
+     * @return The ID of the HaVip instance.
      * 
      */
     public Output<String> haVipId() {
         return this.haVipId;
     }
     /**
-     * The name of the HaVip instance.
+     * The name of the HAVIP. The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
      * 
      */
     @Export(name="haVipName", refs={String.class}, tree="[0]")
     private Output<String> haVipName;
 
     /**
-     * @return The name of the HaVip instance.
+     * @return The name of the HAVIP. The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
      * 
      */
     public Output<String> haVipName() {
         return this.haVipName;
     }
     /**
-     * Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
+     * . Field &#39;havip_name&#39; has been deprecated from provider version 1.259.0. New field &#39;ha_vip_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
@@ -223,49 +229,49 @@ public class HaVipv2 extends com.pulumi.resources.CustomResource {
     private Output<String> havipName;
 
     /**
-     * @return Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
+     * @return . Field &#39;havip_name&#39; has been deprecated from provider version 1.259.0. New field &#39;ha_vip_name&#39; instead.
      * 
      */
     public Output<String> havipName() {
         return this.havipName;
     }
     /**
-     * The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
+     * The IP address of the HAVIP. The specified IP address must be an idle IP address that falls within the CIDR block of the vSwitch. If this parameter is not set, an idle IP address from the CIDR block of the vSwitch is randomly assigned to the HAVIP.
      * 
      */
     @Export(name="ipAddress", refs={String.class}, tree="[0]")
     private Output<String> ipAddress;
 
     /**
-     * @return The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
+     * @return The IP address of the HAVIP. The specified IP address must be an idle IP address that falls within the CIDR block of the vSwitch. If this parameter is not set, an idle IP address from the CIDR block of the vSwitch is randomly assigned to the HAVIP.
      * 
      */
     public Output<String> ipAddress() {
         return this.ipAddress;
     }
     /**
-     * The primary instance ID bound to HaVip.
+     * The primary instance ID bound to HaVip
      * 
      */
     @Export(name="masterInstanceId", refs={String.class}, tree="[0]")
     private Output<String> masterInstanceId;
 
     /**
-     * @return The primary instance ID bound to HaVip.
+     * @return The primary instance ID bound to HaVip
      * 
      */
     public Output<String> masterInstanceId() {
         return this.masterInstanceId;
     }
     /**
-     * The ID of the resource group.
+     * The ID of the resource group to which the HAVIP belongs.
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group.
+     * @return The ID of the resource group to which the HAVIP belongs.
      * 
      */
     public Output<String> resourceGroupId() {
@@ -300,21 +306,21 @@ public class HaVipv2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * The VPC ID to which the HaVip instance belongs.
+     * The VPC ID to which the HaVip instance belongs
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
-     * @return The VPC ID to which the HaVip instance belongs.
+     * @return The VPC ID to which the HaVip instance belongs
      * 
      */
     public Output<String> vpcId() {
         return this.vpcId;
     }
     /**
-     * The switch ID to which the HaVip instance belongs.
+     * The switch ID to which the HaVip instance belongs
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
@@ -323,7 +329,7 @@ public class HaVipv2 extends com.pulumi.resources.CustomResource {
     private Output<String> vswitchId;
 
     /**
-     * @return The switch ID to which the HaVip instance belongs.
+     * @return The switch ID to which the HaVip instance belongs
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 

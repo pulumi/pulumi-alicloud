@@ -35,6 +35,11 @@ export type EnterpriseUser = import("./enterpriseUser").EnterpriseUser;
 export const EnterpriseUser: typeof import("./enterpriseUser").EnterpriseUser = null as any;
 utilities.lazyLoad(exports, ["EnterpriseUser"], () => require("./enterpriseUser"));
 
+export { EnterpriseWorkspaceArgs, EnterpriseWorkspaceState } from "./enterpriseWorkspace";
+export type EnterpriseWorkspace = import("./enterpriseWorkspace").EnterpriseWorkspace;
+export const EnterpriseWorkspace: typeof import("./enterpriseWorkspace").EnterpriseWorkspace = null as any;
+utilities.lazyLoad(exports, ["EnterpriseWorkspace"], () => require("./enterpriseWorkspace"));
+
 export { GetEnterpriseDatabasesArgs, GetEnterpriseDatabasesResult, GetEnterpriseDatabasesOutputArgs } from "./getEnterpriseDatabases";
 export const getEnterpriseDatabases: typeof import("./getEnterpriseDatabases").getEnterpriseDatabases = null as any;
 export const getEnterpriseDatabasesOutput: typeof import("./getEnterpriseDatabases").getEnterpriseDatabasesOutput = null as any;
@@ -87,6 +92,8 @@ const _module = {
                 return new EnterpriseProxyAccess(name, <any>undefined, { urn })
             case "alicloud:dms/enterpriseUser:EnterpriseUser":
                 return new EnterpriseUser(name, <any>undefined, { urn })
+            case "alicloud:dms/enterpriseWorkspace:EnterpriseWorkspace":
+                return new EnterpriseWorkspace(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -98,3 +105,4 @@ pulumi.runtime.registerResourceModule("alicloud", "dms/enterpriseLogicDatabase",
 pulumi.runtime.registerResourceModule("alicloud", "dms/enterpriseProxy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dms/enterpriseProxyAccess", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dms/enterpriseUser", _module)
+pulumi.runtime.registerResourceModule("alicloud", "dms/enterpriseWorkspace", _module)

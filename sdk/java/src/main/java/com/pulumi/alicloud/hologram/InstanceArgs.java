@@ -169,6 +169,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * - Follower: Read-only slave instance.
      * - Warehouse: calculation group type.
      * - Shared: Shared.
+     * - Serverless: (Available since v1.259.0) Serverless.
      * 
      */
     @Import(name="instanceType", required=true)
@@ -180,6 +181,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * - Follower: Read-only slave instance.
      * - Warehouse: calculation group type.
      * - Shared: Shared.
+     * - Serverless: (Available since v1.259.0) Serverless.
      * 
      */
     public Output<String> instanceType() {
@@ -582,6 +584,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * - Follower: Read-only slave instance.
          * - Warehouse: calculation group type.
          * - Shared: Shared.
+         * - Serverless: (Available since v1.259.0) Serverless.
          * 
          * @return builder
          * 
@@ -597,6 +600,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * - Follower: Read-only slave instance.
          * - Warehouse: calculation group type.
          * - Shared: Shared.
+         * - Serverless: (Available since v1.259.0) Serverless.
          * 
          * @return builder
          * 

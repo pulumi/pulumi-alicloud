@@ -3891,6 +3891,337 @@ func (o EtlConfigurationSinkArrayOutput) Index(i pulumi.IntInput) EtlConfigurati
 	}).(EtlConfigurationSinkOutput)
 }
 
+type LogtailConfigOutputDetail struct {
+	// The endpoint of the log project.
+	Endpoint *string `pulumi:"endpoint"`
+	// The name of the output target logstore.
+	LogstoreName *string `pulumi:"logstoreName"`
+	// Region
+	Region *string `pulumi:"region"`
+}
+
+// LogtailConfigOutputDetailInput is an input type that accepts LogtailConfigOutputDetailArgs and LogtailConfigOutputDetailOutput values.
+// You can construct a concrete instance of `LogtailConfigOutputDetailInput` via:
+//
+//	LogtailConfigOutputDetailArgs{...}
+type LogtailConfigOutputDetailInput interface {
+	pulumi.Input
+
+	ToLogtailConfigOutputDetailOutput() LogtailConfigOutputDetailOutput
+	ToLogtailConfigOutputDetailOutputWithContext(context.Context) LogtailConfigOutputDetailOutput
+}
+
+type LogtailConfigOutputDetailArgs struct {
+	// The endpoint of the log project.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// The name of the output target logstore.
+	LogstoreName pulumi.StringPtrInput `pulumi:"logstoreName"`
+	// Region
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (LogtailConfigOutputDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogtailConfigOutputDetail)(nil)).Elem()
+}
+
+func (i LogtailConfigOutputDetailArgs) ToLogtailConfigOutputDetailOutput() LogtailConfigOutputDetailOutput {
+	return i.ToLogtailConfigOutputDetailOutputWithContext(context.Background())
+}
+
+func (i LogtailConfigOutputDetailArgs) ToLogtailConfigOutputDetailOutputWithContext(ctx context.Context) LogtailConfigOutputDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogtailConfigOutputDetailOutput)
+}
+
+func (i LogtailConfigOutputDetailArgs) ToLogtailConfigOutputDetailPtrOutput() LogtailConfigOutputDetailPtrOutput {
+	return i.ToLogtailConfigOutputDetailPtrOutputWithContext(context.Background())
+}
+
+func (i LogtailConfigOutputDetailArgs) ToLogtailConfigOutputDetailPtrOutputWithContext(ctx context.Context) LogtailConfigOutputDetailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogtailConfigOutputDetailOutput).ToLogtailConfigOutputDetailPtrOutputWithContext(ctx)
+}
+
+// LogtailConfigOutputDetailPtrInput is an input type that accepts LogtailConfigOutputDetailArgs, LogtailConfigOutputDetailPtr and LogtailConfigOutputDetailPtrOutput values.
+// You can construct a concrete instance of `LogtailConfigOutputDetailPtrInput` via:
+//
+//	        LogtailConfigOutputDetailArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogtailConfigOutputDetailPtrInput interface {
+	pulumi.Input
+
+	ToLogtailConfigOutputDetailPtrOutput() LogtailConfigOutputDetailPtrOutput
+	ToLogtailConfigOutputDetailPtrOutputWithContext(context.Context) LogtailConfigOutputDetailPtrOutput
+}
+
+type logtailConfigOutputDetailPtrType LogtailConfigOutputDetailArgs
+
+func LogtailConfigOutputDetailPtr(v *LogtailConfigOutputDetailArgs) LogtailConfigOutputDetailPtrInput {
+	return (*logtailConfigOutputDetailPtrType)(v)
+}
+
+func (*logtailConfigOutputDetailPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogtailConfigOutputDetail)(nil)).Elem()
+}
+
+func (i *logtailConfigOutputDetailPtrType) ToLogtailConfigOutputDetailPtrOutput() LogtailConfigOutputDetailPtrOutput {
+	return i.ToLogtailConfigOutputDetailPtrOutputWithContext(context.Background())
+}
+
+func (i *logtailConfigOutputDetailPtrType) ToLogtailConfigOutputDetailPtrOutputWithContext(ctx context.Context) LogtailConfigOutputDetailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogtailConfigOutputDetailPtrOutput)
+}
+
+type LogtailConfigOutputDetailOutput struct{ *pulumi.OutputState }
+
+func (LogtailConfigOutputDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogtailConfigOutputDetail)(nil)).Elem()
+}
+
+func (o LogtailConfigOutputDetailOutput) ToLogtailConfigOutputDetailOutput() LogtailConfigOutputDetailOutput {
+	return o
+}
+
+func (o LogtailConfigOutputDetailOutput) ToLogtailConfigOutputDetailOutputWithContext(ctx context.Context) LogtailConfigOutputDetailOutput {
+	return o
+}
+
+func (o LogtailConfigOutputDetailOutput) ToLogtailConfigOutputDetailPtrOutput() LogtailConfigOutputDetailPtrOutput {
+	return o.ToLogtailConfigOutputDetailPtrOutputWithContext(context.Background())
+}
+
+func (o LogtailConfigOutputDetailOutput) ToLogtailConfigOutputDetailPtrOutputWithContext(ctx context.Context) LogtailConfigOutputDetailPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogtailConfigOutputDetail) *LogtailConfigOutputDetail {
+		return &v
+	}).(LogtailConfigOutputDetailPtrOutput)
+}
+
+// The endpoint of the log project.
+func (o LogtailConfigOutputDetailOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogtailConfigOutputDetail) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// The name of the output target logstore.
+func (o LogtailConfigOutputDetailOutput) LogstoreName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogtailConfigOutputDetail) *string { return v.LogstoreName }).(pulumi.StringPtrOutput)
+}
+
+// Region
+func (o LogtailConfigOutputDetailOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogtailConfigOutputDetail) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type LogtailConfigOutputDetailPtrOutput struct{ *pulumi.OutputState }
+
+func (LogtailConfigOutputDetailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogtailConfigOutputDetail)(nil)).Elem()
+}
+
+func (o LogtailConfigOutputDetailPtrOutput) ToLogtailConfigOutputDetailPtrOutput() LogtailConfigOutputDetailPtrOutput {
+	return o
+}
+
+func (o LogtailConfigOutputDetailPtrOutput) ToLogtailConfigOutputDetailPtrOutputWithContext(ctx context.Context) LogtailConfigOutputDetailPtrOutput {
+	return o
+}
+
+func (o LogtailConfigOutputDetailPtrOutput) Elem() LogtailConfigOutputDetailOutput {
+	return o.ApplyT(func(v *LogtailConfigOutputDetail) LogtailConfigOutputDetail {
+		if v != nil {
+			return *v
+		}
+		var ret LogtailConfigOutputDetail
+		return ret
+	}).(LogtailConfigOutputDetailOutput)
+}
+
+// The endpoint of the log project.
+func (o LogtailConfigOutputDetailPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogtailConfigOutputDetail) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the output target logstore.
+func (o LogtailConfigOutputDetailPtrOutput) LogstoreName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogtailConfigOutputDetail) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogstoreName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Region
+func (o LogtailConfigOutputDetailPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogtailConfigOutputDetail) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type MachineGroupGroupAttribute struct {
+	// The external management system identification on which the machine group depends.
+	ExternalName *string `pulumi:"externalName"`
+	// The log topic of the machine group.
+	GroupTopic *string `pulumi:"groupTopic"`
+}
+
+// MachineGroupGroupAttributeInput is an input type that accepts MachineGroupGroupAttributeArgs and MachineGroupGroupAttributeOutput values.
+// You can construct a concrete instance of `MachineGroupGroupAttributeInput` via:
+//
+//	MachineGroupGroupAttributeArgs{...}
+type MachineGroupGroupAttributeInput interface {
+	pulumi.Input
+
+	ToMachineGroupGroupAttributeOutput() MachineGroupGroupAttributeOutput
+	ToMachineGroupGroupAttributeOutputWithContext(context.Context) MachineGroupGroupAttributeOutput
+}
+
+type MachineGroupGroupAttributeArgs struct {
+	// The external management system identification on which the machine group depends.
+	ExternalName pulumi.StringPtrInput `pulumi:"externalName"`
+	// The log topic of the machine group.
+	GroupTopic pulumi.StringPtrInput `pulumi:"groupTopic"`
+}
+
+func (MachineGroupGroupAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineGroupGroupAttribute)(nil)).Elem()
+}
+
+func (i MachineGroupGroupAttributeArgs) ToMachineGroupGroupAttributeOutput() MachineGroupGroupAttributeOutput {
+	return i.ToMachineGroupGroupAttributeOutputWithContext(context.Background())
+}
+
+func (i MachineGroupGroupAttributeArgs) ToMachineGroupGroupAttributeOutputWithContext(ctx context.Context) MachineGroupGroupAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineGroupGroupAttributeOutput)
+}
+
+func (i MachineGroupGroupAttributeArgs) ToMachineGroupGroupAttributePtrOutput() MachineGroupGroupAttributePtrOutput {
+	return i.ToMachineGroupGroupAttributePtrOutputWithContext(context.Background())
+}
+
+func (i MachineGroupGroupAttributeArgs) ToMachineGroupGroupAttributePtrOutputWithContext(ctx context.Context) MachineGroupGroupAttributePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineGroupGroupAttributeOutput).ToMachineGroupGroupAttributePtrOutputWithContext(ctx)
+}
+
+// MachineGroupGroupAttributePtrInput is an input type that accepts MachineGroupGroupAttributeArgs, MachineGroupGroupAttributePtr and MachineGroupGroupAttributePtrOutput values.
+// You can construct a concrete instance of `MachineGroupGroupAttributePtrInput` via:
+//
+//	        MachineGroupGroupAttributeArgs{...}
+//
+//	or:
+//
+//	        nil
+type MachineGroupGroupAttributePtrInput interface {
+	pulumi.Input
+
+	ToMachineGroupGroupAttributePtrOutput() MachineGroupGroupAttributePtrOutput
+	ToMachineGroupGroupAttributePtrOutputWithContext(context.Context) MachineGroupGroupAttributePtrOutput
+}
+
+type machineGroupGroupAttributePtrType MachineGroupGroupAttributeArgs
+
+func MachineGroupGroupAttributePtr(v *MachineGroupGroupAttributeArgs) MachineGroupGroupAttributePtrInput {
+	return (*machineGroupGroupAttributePtrType)(v)
+}
+
+func (*machineGroupGroupAttributePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MachineGroupGroupAttribute)(nil)).Elem()
+}
+
+func (i *machineGroupGroupAttributePtrType) ToMachineGroupGroupAttributePtrOutput() MachineGroupGroupAttributePtrOutput {
+	return i.ToMachineGroupGroupAttributePtrOutputWithContext(context.Background())
+}
+
+func (i *machineGroupGroupAttributePtrType) ToMachineGroupGroupAttributePtrOutputWithContext(ctx context.Context) MachineGroupGroupAttributePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineGroupGroupAttributePtrOutput)
+}
+
+type MachineGroupGroupAttributeOutput struct{ *pulumi.OutputState }
+
+func (MachineGroupGroupAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineGroupGroupAttribute)(nil)).Elem()
+}
+
+func (o MachineGroupGroupAttributeOutput) ToMachineGroupGroupAttributeOutput() MachineGroupGroupAttributeOutput {
+	return o
+}
+
+func (o MachineGroupGroupAttributeOutput) ToMachineGroupGroupAttributeOutputWithContext(ctx context.Context) MachineGroupGroupAttributeOutput {
+	return o
+}
+
+func (o MachineGroupGroupAttributeOutput) ToMachineGroupGroupAttributePtrOutput() MachineGroupGroupAttributePtrOutput {
+	return o.ToMachineGroupGroupAttributePtrOutputWithContext(context.Background())
+}
+
+func (o MachineGroupGroupAttributeOutput) ToMachineGroupGroupAttributePtrOutputWithContext(ctx context.Context) MachineGroupGroupAttributePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MachineGroupGroupAttribute) *MachineGroupGroupAttribute {
+		return &v
+	}).(MachineGroupGroupAttributePtrOutput)
+}
+
+// The external management system identification on which the machine group depends.
+func (o MachineGroupGroupAttributeOutput) ExternalName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineGroupGroupAttribute) *string { return v.ExternalName }).(pulumi.StringPtrOutput)
+}
+
+// The log topic of the machine group.
+func (o MachineGroupGroupAttributeOutput) GroupTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineGroupGroupAttribute) *string { return v.GroupTopic }).(pulumi.StringPtrOutput)
+}
+
+type MachineGroupGroupAttributePtrOutput struct{ *pulumi.OutputState }
+
+func (MachineGroupGroupAttributePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MachineGroupGroupAttribute)(nil)).Elem()
+}
+
+func (o MachineGroupGroupAttributePtrOutput) ToMachineGroupGroupAttributePtrOutput() MachineGroupGroupAttributePtrOutput {
+	return o
+}
+
+func (o MachineGroupGroupAttributePtrOutput) ToMachineGroupGroupAttributePtrOutputWithContext(ctx context.Context) MachineGroupGroupAttributePtrOutput {
+	return o
+}
+
+func (o MachineGroupGroupAttributePtrOutput) Elem() MachineGroupGroupAttributeOutput {
+	return o.ApplyT(func(v *MachineGroupGroupAttribute) MachineGroupGroupAttribute {
+		if v != nil {
+			return *v
+		}
+		var ret MachineGroupGroupAttribute
+		return ret
+	}).(MachineGroupGroupAttributeOutput)
+}
+
+// The external management system identification on which the machine group depends.
+func (o MachineGroupGroupAttributePtrOutput) ExternalName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineGroupGroupAttribute) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The log topic of the machine group.
+func (o MachineGroupGroupAttributePtrOutput) GroupTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineGroupGroupAttribute) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupTopic
+	}).(pulumi.StringPtrOutput)
+}
+
 type OssExportSinkConfiguration struct {
 	// The beginning of the time range to ship data. The value 1 specifies that the data shipping job ships data from the first log in the Logstore. Example value: 1718380800
 	FromTime int `pulumi:"fromTime"`
@@ -7372,6 +7703,218 @@ func (o GetEtlsEtlConfigurationSinkArrayOutput) Index(i pulumi.IntInput) GetEtls
 	}).(GetEtlsEtlConfigurationSinkOutput)
 }
 
+type GetLogtailConfigsConfig struct {
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// The name of the resource
+	LogtailConfigName string `pulumi:"logtailConfigName"`
+}
+
+// GetLogtailConfigsConfigInput is an input type that accepts GetLogtailConfigsConfigArgs and GetLogtailConfigsConfigOutput values.
+// You can construct a concrete instance of `GetLogtailConfigsConfigInput` via:
+//
+//	GetLogtailConfigsConfigArgs{...}
+type GetLogtailConfigsConfigInput interface {
+	pulumi.Input
+
+	ToGetLogtailConfigsConfigOutput() GetLogtailConfigsConfigOutput
+	ToGetLogtailConfigsConfigOutputWithContext(context.Context) GetLogtailConfigsConfigOutput
+}
+
+type GetLogtailConfigsConfigArgs struct {
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the resource
+	LogtailConfigName pulumi.StringInput `pulumi:"logtailConfigName"`
+}
+
+func (GetLogtailConfigsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLogtailConfigsConfig)(nil)).Elem()
+}
+
+func (i GetLogtailConfigsConfigArgs) ToGetLogtailConfigsConfigOutput() GetLogtailConfigsConfigOutput {
+	return i.ToGetLogtailConfigsConfigOutputWithContext(context.Background())
+}
+
+func (i GetLogtailConfigsConfigArgs) ToGetLogtailConfigsConfigOutputWithContext(ctx context.Context) GetLogtailConfigsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLogtailConfigsConfigOutput)
+}
+
+// GetLogtailConfigsConfigArrayInput is an input type that accepts GetLogtailConfigsConfigArray and GetLogtailConfigsConfigArrayOutput values.
+// You can construct a concrete instance of `GetLogtailConfigsConfigArrayInput` via:
+//
+//	GetLogtailConfigsConfigArray{ GetLogtailConfigsConfigArgs{...} }
+type GetLogtailConfigsConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetLogtailConfigsConfigArrayOutput() GetLogtailConfigsConfigArrayOutput
+	ToGetLogtailConfigsConfigArrayOutputWithContext(context.Context) GetLogtailConfigsConfigArrayOutput
+}
+
+type GetLogtailConfigsConfigArray []GetLogtailConfigsConfigInput
+
+func (GetLogtailConfigsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLogtailConfigsConfig)(nil)).Elem()
+}
+
+func (i GetLogtailConfigsConfigArray) ToGetLogtailConfigsConfigArrayOutput() GetLogtailConfigsConfigArrayOutput {
+	return i.ToGetLogtailConfigsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetLogtailConfigsConfigArray) ToGetLogtailConfigsConfigArrayOutputWithContext(ctx context.Context) GetLogtailConfigsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLogtailConfigsConfigArrayOutput)
+}
+
+type GetLogtailConfigsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetLogtailConfigsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLogtailConfigsConfig)(nil)).Elem()
+}
+
+func (o GetLogtailConfigsConfigOutput) ToGetLogtailConfigsConfigOutput() GetLogtailConfigsConfigOutput {
+	return o
+}
+
+func (o GetLogtailConfigsConfigOutput) ToGetLogtailConfigsConfigOutputWithContext(ctx context.Context) GetLogtailConfigsConfigOutput {
+	return o
+}
+
+// The ID of the resource supplied above.
+func (o GetLogtailConfigsConfigOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLogtailConfigsConfig) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the resource
+func (o GetLogtailConfigsConfigOutput) LogtailConfigName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLogtailConfigsConfig) string { return v.LogtailConfigName }).(pulumi.StringOutput)
+}
+
+type GetLogtailConfigsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLogtailConfigsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLogtailConfigsConfig)(nil)).Elem()
+}
+
+func (o GetLogtailConfigsConfigArrayOutput) ToGetLogtailConfigsConfigArrayOutput() GetLogtailConfigsConfigArrayOutput {
+	return o
+}
+
+func (o GetLogtailConfigsConfigArrayOutput) ToGetLogtailConfigsConfigArrayOutputWithContext(ctx context.Context) GetLogtailConfigsConfigArrayOutput {
+	return o
+}
+
+func (o GetLogtailConfigsConfigArrayOutput) Index(i pulumi.IntInput) GetLogtailConfigsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLogtailConfigsConfig {
+		return vs[0].([]GetLogtailConfigsConfig)[vs[1].(int)]
+	}).(GetLogtailConfigsConfigOutput)
+}
+
+type GetMachineGroupsGroup struct {
+	// Machine Group name
+	GroupName string `pulumi:"groupName"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+}
+
+// GetMachineGroupsGroupInput is an input type that accepts GetMachineGroupsGroupArgs and GetMachineGroupsGroupOutput values.
+// You can construct a concrete instance of `GetMachineGroupsGroupInput` via:
+//
+//	GetMachineGroupsGroupArgs{...}
+type GetMachineGroupsGroupInput interface {
+	pulumi.Input
+
+	ToGetMachineGroupsGroupOutput() GetMachineGroupsGroupOutput
+	ToGetMachineGroupsGroupOutputWithContext(context.Context) GetMachineGroupsGroupOutput
+}
+
+type GetMachineGroupsGroupArgs struct {
+	// Machine Group name
+	GroupName pulumi.StringInput `pulumi:"groupName"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetMachineGroupsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMachineGroupsGroup)(nil)).Elem()
+}
+
+func (i GetMachineGroupsGroupArgs) ToGetMachineGroupsGroupOutput() GetMachineGroupsGroupOutput {
+	return i.ToGetMachineGroupsGroupOutputWithContext(context.Background())
+}
+
+func (i GetMachineGroupsGroupArgs) ToGetMachineGroupsGroupOutputWithContext(ctx context.Context) GetMachineGroupsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMachineGroupsGroupOutput)
+}
+
+// GetMachineGroupsGroupArrayInput is an input type that accepts GetMachineGroupsGroupArray and GetMachineGroupsGroupArrayOutput values.
+// You can construct a concrete instance of `GetMachineGroupsGroupArrayInput` via:
+//
+//	GetMachineGroupsGroupArray{ GetMachineGroupsGroupArgs{...} }
+type GetMachineGroupsGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetMachineGroupsGroupArrayOutput() GetMachineGroupsGroupArrayOutput
+	ToGetMachineGroupsGroupArrayOutputWithContext(context.Context) GetMachineGroupsGroupArrayOutput
+}
+
+type GetMachineGroupsGroupArray []GetMachineGroupsGroupInput
+
+func (GetMachineGroupsGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMachineGroupsGroup)(nil)).Elem()
+}
+
+func (i GetMachineGroupsGroupArray) ToGetMachineGroupsGroupArrayOutput() GetMachineGroupsGroupArrayOutput {
+	return i.ToGetMachineGroupsGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetMachineGroupsGroupArray) ToGetMachineGroupsGroupArrayOutputWithContext(ctx context.Context) GetMachineGroupsGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMachineGroupsGroupArrayOutput)
+}
+
+type GetMachineGroupsGroupOutput struct{ *pulumi.OutputState }
+
+func (GetMachineGroupsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMachineGroupsGroup)(nil)).Elem()
+}
+
+func (o GetMachineGroupsGroupOutput) ToGetMachineGroupsGroupOutput() GetMachineGroupsGroupOutput {
+	return o
+}
+
+func (o GetMachineGroupsGroupOutput) ToGetMachineGroupsGroupOutputWithContext(ctx context.Context) GetMachineGroupsGroupOutput {
+	return o
+}
+
+// Machine Group name
+func (o GetMachineGroupsGroupOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMachineGroupsGroup) string { return v.GroupName }).(pulumi.StringOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetMachineGroupsGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMachineGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetMachineGroupsGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMachineGroupsGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMachineGroupsGroup)(nil)).Elem()
+}
+
+func (o GetMachineGroupsGroupArrayOutput) ToGetMachineGroupsGroupArrayOutput() GetMachineGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetMachineGroupsGroupArrayOutput) ToGetMachineGroupsGroupArrayOutputWithContext(ctx context.Context) GetMachineGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetMachineGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetMachineGroupsGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMachineGroupsGroup {
+		return vs[0].([]GetMachineGroupsGroup)[vs[1].(int)]
+	}).(GetMachineGroupsGroupOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertConfigurationInput)(nil)).Elem(), AlertConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertConfigurationPtrInput)(nil)).Elem(), AlertConfigurationArgs{})
@@ -7415,6 +7958,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EtlConfigurationPtrInput)(nil)).Elem(), EtlConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EtlConfigurationSinkInput)(nil)).Elem(), EtlConfigurationSinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EtlConfigurationSinkArrayInput)(nil)).Elem(), EtlConfigurationSinkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogtailConfigOutputDetailInput)(nil)).Elem(), LogtailConfigOutputDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogtailConfigOutputDetailPtrInput)(nil)).Elem(), LogtailConfigOutputDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MachineGroupGroupAttributeInput)(nil)).Elem(), MachineGroupGroupAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MachineGroupGroupAttributePtrInput)(nil)).Elem(), MachineGroupGroupAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OssExportSinkConfigurationInput)(nil)).Elem(), OssExportSinkConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OssExportSinkConfigurationPtrInput)(nil)).Elem(), OssExportSinkConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OssExportSinkConfigurationSinkInput)(nil)).Elem(), OssExportSinkConfigurationSinkArgs{})
@@ -7450,6 +7997,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEtlsEtlConfigurationInput)(nil)).Elem(), GetEtlsEtlConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEtlsEtlConfigurationSinkInput)(nil)).Elem(), GetEtlsEtlConfigurationSinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEtlsEtlConfigurationSinkArrayInput)(nil)).Elem(), GetEtlsEtlConfigurationSinkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLogtailConfigsConfigInput)(nil)).Elem(), GetLogtailConfigsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLogtailConfigsConfigArrayInput)(nil)).Elem(), GetLogtailConfigsConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineGroupsGroupInput)(nil)).Elem(), GetMachineGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineGroupsGroupArrayInput)(nil)).Elem(), GetMachineGroupsGroupArray{})
 	pulumi.RegisterOutputType(AlertConfigurationOutput{})
 	pulumi.RegisterOutputType(AlertConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(AlertConfigurationAnnotationOutput{})
@@ -7492,6 +8043,10 @@ func init() {
 	pulumi.RegisterOutputType(EtlConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(EtlConfigurationSinkOutput{})
 	pulumi.RegisterOutputType(EtlConfigurationSinkArrayOutput{})
+	pulumi.RegisterOutputType(LogtailConfigOutputDetailOutput{})
+	pulumi.RegisterOutputType(LogtailConfigOutputDetailPtrOutput{})
+	pulumi.RegisterOutputType(MachineGroupGroupAttributeOutput{})
+	pulumi.RegisterOutputType(MachineGroupGroupAttributePtrOutput{})
 	pulumi.RegisterOutputType(OssExportSinkConfigurationOutput{})
 	pulumi.RegisterOutputType(OssExportSinkConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(OssExportSinkConfigurationSinkOutput{})
@@ -7527,4 +8082,8 @@ func init() {
 	pulumi.RegisterOutputType(GetEtlsEtlConfigurationOutput{})
 	pulumi.RegisterOutputType(GetEtlsEtlConfigurationSinkOutput{})
 	pulumi.RegisterOutputType(GetEtlsEtlConfigurationSinkArrayOutput{})
+	pulumi.RegisterOutputType(GetLogtailConfigsConfigOutput{})
+	pulumi.RegisterOutputType(GetLogtailConfigsConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetMachineGroupsGroupOutput{})
+	pulumi.RegisterOutputType(GetMachineGroupsGroupArrayOutput{})
 }

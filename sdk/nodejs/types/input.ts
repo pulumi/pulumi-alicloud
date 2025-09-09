@@ -18839,6 +18839,32 @@ export namespace sls {
         roleArn: pulumi.Input<string>;
     }
 
+    export interface LogtailConfigOutputDetail {
+        /**
+         * The endpoint of the log project.
+         */
+        endpoint?: pulumi.Input<string>;
+        /**
+         * The name of the output target logstore.
+         */
+        logstoreName?: pulumi.Input<string>;
+        /**
+         * Region
+         */
+        region?: pulumi.Input<string>;
+    }
+
+    export interface MachineGroupGroupAttribute {
+        /**
+         * The external management system identification on which the machine group depends.
+         */
+        externalName?: pulumi.Input<string>;
+        /**
+         * The log topic of the machine group.
+         */
+        groupTopic?: pulumi.Input<string>;
+    }
+
     export interface OssExportSinkConfiguration {
         /**
          * The beginning of the time range to ship data. The value 1 specifies that the data shipping job ships data from the first log in the Logstore. Example value: 1718380800
@@ -19219,33 +19245,40 @@ export namespace vpc {
 
     export interface NetworkAclEgressAclEntry {
         /**
-         * The description of the outbound rule.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+         * The description of the outbound rule.
+         * The description must be 1 to 256 characters in length and cannot start with http:// or https.
          */
         description?: pulumi.Input<string>;
         /**
-         * The network of the destination address.
+         * The destination CIDR block.
          */
         destinationCidrIp?: pulumi.Input<string>;
         /**
-         * The route entry type. The value can be `custom`, indicating custom.
+         * The route entry type. Value
+         * custom custom rule
+         * system system rules
+         * service Cloud service rules
          */
         entryType?: pulumi.Input<string>;
         /**
-         * The IP protocol version of the route entry. Valid values: "IPV4" and "IPV4'.
+         * The IP protocol version of the route entry. Valid values: "Ipv4" and "ipv6'
          */
         ipVersion?: pulumi.Input<string>;
         /**
-         * Name of the outbound rule entry.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+         * Name of the outbound rule entry.
+         * The name must be 1 to 128 characters in length and cannot start with http:// or https.
          */
         networkAclEntryName?: pulumi.Input<string>;
         /**
-         * Authorization policy. Value:
-         * - accept: Allow.
-         * - drop: Refused.
+         * The action to be performed on network traffic that matches the rule. Valid values:
+         * - accept
+         * - drop
          */
         policy?: pulumi.Input<string>;
         /**
-         * The destination port range of the outbound rule.  When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted. When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+         * The destination port range of the outbound rule.
+         * When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.
+         * When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
          */
         port?: pulumi.Input<string>;
         /**
@@ -19287,29 +19320,33 @@ export namespace vpc {
 
     export interface NetworkAclIngressAclEntry {
         /**
-         * Description of the inbound rule.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+         * Description of the inbound rule.
+         * The description must be 1 to 256 characters in length and cannot start with http:// or https.
          */
         description?: pulumi.Input<string>;
         /**
-         * The route entry type. The value can be `custom`, indicating custom.
+         * The route entry type. Value
          */
         entryType?: pulumi.Input<string>;
         /**
-         * The IP protocol version of the route entry. Valid values: "IPV4" and "IPV6'.
+         * The IP protocol version of the route entry. Valid values: "Ipv4" and "ipv6'
          */
         ipVersion?: pulumi.Input<string>;
         /**
-         * The name of the inbound rule entry.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+         * The name of the inbound rule entry.
+         * The name must be 1 to 128 characters in length and cannot start with http:// or https.
          */
         networkAclEntryName?: pulumi.Input<string>;
         /**
-         * Authorization policy. Value:
-         * - accept: Allow.
-         * - drop: Refused.
+         * The action to be performed on network traffic that matches the rule. Valid values:
+         * - accept
+         * - drop
          */
         policy?: pulumi.Input<string>;
         /**
-         * The source port range of the inbound rule.  When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted. When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+         * The source port range of the inbound rule.
+         * When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.
+         * When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
          */
         port?: pulumi.Input<string>;
         /**
@@ -19322,7 +19359,7 @@ export namespace vpc {
          */
         protocol?: pulumi.Input<string>;
         /**
-         * Source address network segment.
+         * The source CIDR block.
          */
         sourceCidrIp?: pulumi.Input<string>;
     }

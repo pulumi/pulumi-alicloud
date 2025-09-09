@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
     public sealed class GetAccountsAccountResult
     {
         /// <summary>
-        /// The ID of the account.
+        /// The Alibaba Cloud account ID of the member.
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// (Available in v1.125.0+) The Alibaba Cloud account name of the member account.
+        /// (Available since v1.125.0) The Alibaba Cloud account name of the member. **Note:** `account_name` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string AccountName;
         /// <summary>
-        /// The name of the member account.
+        /// The display name of the member.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
@@ -30,23 +30,23 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
         /// </summary>
         public readonly string FolderId;
         /// <summary>
-        /// The ID of the resource.
+        /// The ID of the Account.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The way in which the member account joined the resource directory.
+        /// The way in which the member joins the resource directory.
         /// </summary>
         public readonly string JoinMethod;
         /// <summary>
-        /// The time when the member account joined the resource directory.
+        /// The time when the member joined the resource directory.
         /// </summary>
         public readonly string JoinTime;
         /// <summary>
-        /// The time when the member account was modified.
+        /// The time when the member was modified.
         /// </summary>
         public readonly string ModifyTime;
         /// <summary>
-        /// (Available in v1.124.3+) Settlement account ID. If the value is empty, the current account will be used for settlement.
+        /// (Available since v1.124.3) The ID of the settlement account. **Note:** `payer_account_id` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string PayerAccountId;
         /// <summary>
@@ -54,11 +54,15 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
         /// </summary>
         public readonly string ResourceDirectoryId;
         /// <summary>
-        /// The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
+        /// The status of account. Valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, `PromoteVerifying`.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The type of the member account.
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Tags;
+        /// <summary>
+        /// The type of the member.
         /// </summary>
         public readonly string Type;
 
@@ -86,6 +90,8 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
 
             string status,
 
+            ImmutableDictionary<string, string> tags,
+
             string type)
         {
             AccountId = accountId;
@@ -99,6 +105,7 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
             PayerAccountId = payerAccountId;
             ResourceDirectoryId = resourceDirectoryId;
             Status = status;
+            Tags = tags;
             Type = type;
         }
     }

@@ -14,17 +14,11 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Resource Manager Resource Directory resource. Resource Directory enables you to establish an organizational structure for the resources used by applications of your enterprise. You can plan, build, and manage the resources in a centralized manner by using only one resource directory.
+ * Provides a Resource Manager Resource Directory resource.
  * 
- * For information about Resource Manager Resource Directory and how to use it, see [What is Resource Manager Resource Directory](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
+ * For information about Resource Manager Resource Directory and how to use it, see [What is Resource Directory](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
  * 
  * &gt; **NOTE:** Available since v1.84.0.
- * 
- * &gt; **NOTE:** An account can only be used to enable a resource directory after it passes enterprise real-name verification. An account that only passed individual real-name verification cannot be used to enable a resource directory.
- * 
- * &gt; **NOTE:** Before you destroy the resource, make sure that the following requirements are met:
- *   - All member accounts must be removed from the resource directory.
- *   - All folders except the root folder must be deleted from the resource directory.
  * 
  * ## Example Usage
  * 
@@ -77,77 +71,113 @@ import javax.annotation.Nullable;
  * Resource Manager Resource Directory can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:resourcemanager/resourceDirectory:ResourceDirectory example rd-s3****
+ * $ pulumi import alicloud:resourcemanager/resourceDirectory:ResourceDirectory example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:resourcemanager/resourceDirectory:ResourceDirectory")
 public class ResourceDirectory extends com.pulumi.resources.CustomResource {
     /**
-     * The ID of the master account.
+     * The time when the resource directory was created
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return The time when the resource directory was created
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * The ID of the master account
      * 
      */
     @Export(name="masterAccountId", refs={String.class}, tree="[0]")
     private Output<String> masterAccountId;
 
     /**
-     * @return The ID of the master account.
+     * @return The ID of the master account
      * 
      */
     public Output<String> masterAccountId() {
         return this.masterAccountId;
     }
     /**
-     * The name of the master account.
+     * The name of the master account
      * 
      */
     @Export(name="masterAccountName", refs={String.class}, tree="[0]")
     private Output<String> masterAccountName;
 
     /**
-     * @return The name of the master account.
+     * @return The name of the master account
      * 
      */
     public Output<String> masterAccountName() {
         return this.masterAccountName;
     }
     /**
-     * Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+     * The status of the Member Display Name Synchronization feature. Valid values:
+     * - Enabled
+     * - Disabled
+     * 
+     */
+    @Export(name="memberAccountDisplayNameSyncStatus", refs={String.class}, tree="[0]")
+    private Output<String> memberAccountDisplayNameSyncStatus;
+
+    /**
+     * @return The status of the Member Display Name Synchronization feature. Valid values:
+     * - Enabled
+     * - Disabled
+     * 
+     */
+    public Output<String> memberAccountDisplayNameSyncStatus() {
+        return this.memberAccountDisplayNameSyncStatus;
+    }
+    /**
+     * The status of the member deletion feature. Valid values:
+     * - Enabled: The feature is enabled. You can call the DeleteAccount operation to delete members of the resource account type.
+     * - Disabled: The feature is disabled. You cannot delete members of the resource account type.
      * 
      */
     @Export(name="memberDeletionStatus", refs={String.class}, tree="[0]")
     private Output<String> memberDeletionStatus;
 
     /**
-     * @return Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+     * @return The status of the member deletion feature. Valid values:
+     * - Enabled: The feature is enabled. You can call the DeleteAccount operation to delete members of the resource account type.
+     * - Disabled: The feature is disabled. You cannot delete members of the resource account type.
      * 
      */
     public Output<String> memberDeletionStatus() {
         return this.memberDeletionStatus;
     }
     /**
-     * The ID of the root folder.
+     * The ID of the root folder
      * 
      */
     @Export(name="rootFolderId", refs={String.class}, tree="[0]")
     private Output<String> rootFolderId;
 
     /**
-     * @return The ID of the root folder.
+     * @return The ID of the root folder
      * 
      */
     public Output<String> rootFolderId() {
         return this.rootFolderId;
     }
     /**
-     * The status of control policy. Valid values:`Enabled` and `Disabled`.
+     * ScpStatus
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of control policy. Valid values:`Enabled` and `Disabled`.
+     * @return ScpStatus
      * 
      */
     public Output<String> status() {

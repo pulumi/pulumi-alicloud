@@ -35,6 +35,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Folder{}
 	case "alicloud:resourcemanager/handshake:Handshake":
 		r = &Handshake{}
+	case "alicloud:resourcemanager/messageContact:MessageContact":
+		r = &MessageContact{}
 	case "alicloud:resourcemanager/policy:Policy":
 		r = &Policy{}
 	case "alicloud:resourcemanager/policyAttachment:PolicyAttachment":
@@ -103,6 +105,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"resourcemanager/handshake",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"resourcemanager/messageContact",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

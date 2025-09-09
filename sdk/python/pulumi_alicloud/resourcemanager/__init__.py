@@ -29,6 +29,7 @@ from .get_roles import *
 from .get_shared_resources import *
 from .get_shared_targets import *
 from .handshake import *
+from .message_contact import *
 from .policy import *
 from .policy_attachment import *
 from .policy_version import *

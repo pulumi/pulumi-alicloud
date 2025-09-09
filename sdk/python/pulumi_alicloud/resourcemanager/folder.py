@@ -20,21 +20,25 @@ __all__ = ['FolderArgs', 'Folder']
 class FolderArgs:
     def __init__(__self__, *,
                  folder_name: pulumi.Input[_builtins.str],
-                 parent_folder_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 parent_folder_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Folder resource.
-        :param pulumi.Input[_builtins.str] folder_name: The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
-        :param pulumi.Input[_builtins.str] parent_folder_id: The ID of the parent folder. If not set, the system default value will be used.
+        :param pulumi.Input[_builtins.str] folder_name: The name of the folder.
+        :param pulumi.Input[_builtins.str] parent_folder_id: The ID of the parent folder.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
         """
         pulumi.set(__self__, "folder_name", folder_name)
         if parent_folder_id is not None:
             pulumi.set(__self__, "parent_folder_id", parent_folder_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter(name="folderName")
     def folder_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
+        The name of the folder.
         """
         return pulumi.get(self, "folder_name")
 
@@ -46,7 +50,7 @@ class FolderArgs:
     @pulumi.getter(name="parentFolderId")
     def parent_folder_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the parent folder. If not set, the system default value will be used.
+        The ID of the parent folder.
         """
         return pulumi.get(self, "parent_folder_id")
 
@@ -54,27 +58,59 @@ class FolderArgs:
     def parent_folder_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "parent_folder_id", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _FolderState:
     def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  folder_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_folder_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 parent_folder_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Folder resources.
-        :param pulumi.Input[_builtins.str] folder_name: The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
-        :param pulumi.Input[_builtins.str] parent_folder_id: The ID of the parent folder. If not set, the system default value will be used.
+        :param pulumi.Input[_builtins.str] create_time: (Available since v1.259.0) The time when the folder was created.
+        :param pulumi.Input[_builtins.str] folder_name: The name of the folder.
+        :param pulumi.Input[_builtins.str] parent_folder_id: The ID of the parent folder.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
         """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if folder_name is not None:
             pulumi.set(__self__, "folder_name", folder_name)
         if parent_folder_id is not None:
             pulumi.set(__self__, "parent_folder_id", parent_folder_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Available since v1.259.0) The time when the folder was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="folderName")
     def folder_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
+        The name of the folder.
         """
         return pulumi.get(self, "folder_name")
 
@@ -86,13 +122,25 @@ class _FolderState:
     @pulumi.getter(name="parentFolderId")
     def parent_folder_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the parent folder. If not set, the system default value will be used.
+        The ID of the parent folder.
         """
         return pulumi.get(self, "parent_folder_id")
 
     @parent_folder_id.setter
     def parent_folder_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "parent_folder_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 @pulumi.type_token("alicloud:resourcemanager/folder:Folder")
@@ -103,14 +151,16 @@ class Folder(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  folder_name: Optional[pulumi.Input[_builtins.str]] = None,
                  parent_folder_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Provides a Resource Manager Folder resource. A folder is an organizational unit in a resource directory. You can use folders to build an organizational structure for resources.
-        For information about Resource Manager Foler and how to use it, see [What is Resource Manager Folder](https://www.alibabacloud.com/help/en/doc-detail/111221.htm).
+        Provides a Resource Manager Folder resource.
+
+        The management unit of the organization account in the resource directory.
+
+        For information about Resource Manager Folder and how to use it, see [What is Folder](https://www.alibabacloud.com/help/en/resource-management/resource-directory/developer-reference/api-resourcedirectorymaster-2022-04-19-createfolder).
 
         > **NOTE:** Available since v1.82.0.
-
-        > **NOTE:** A maximum of five levels of folders can be created under the root folder.
 
         ## Example Usage
 
@@ -124,7 +174,7 @@ class Folder(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         default = random.index.Integer("default",
             min=10000,
             max=99999)
@@ -136,13 +186,14 @@ class Folder(pulumi.CustomResource):
         Resource Manager Folder can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:resourcemanager/folder:Folder example fd-u8B321****
+        $ pulumi import alicloud:resourcemanager/folder:Folder example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] folder_name: The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
-        :param pulumi.Input[_builtins.str] parent_folder_id: The ID of the parent folder. If not set, the system default value will be used.
+        :param pulumi.Input[_builtins.str] folder_name: The name of the folder.
+        :param pulumi.Input[_builtins.str] parent_folder_id: The ID of the parent folder.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
         """
         ...
     @overload
@@ -151,12 +202,13 @@ class Folder(pulumi.CustomResource):
                  args: FolderArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Resource Manager Folder resource. A folder is an organizational unit in a resource directory. You can use folders to build an organizational structure for resources.
-        For information about Resource Manager Foler and how to use it, see [What is Resource Manager Folder](https://www.alibabacloud.com/help/en/doc-detail/111221.htm).
+        Provides a Resource Manager Folder resource.
+
+        The management unit of the organization account in the resource directory.
+
+        For information about Resource Manager Folder and how to use it, see [What is Folder](https://www.alibabacloud.com/help/en/resource-management/resource-directory/developer-reference/api-resourcedirectorymaster-2022-04-19-createfolder).
 
         > **NOTE:** Available since v1.82.0.
-
-        > **NOTE:** A maximum of five levels of folders can be created under the root folder.
 
         ## Example Usage
 
@@ -170,7 +222,7 @@ class Folder(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         default = random.index.Integer("default",
             min=10000,
             max=99999)
@@ -182,7 +234,7 @@ class Folder(pulumi.CustomResource):
         Resource Manager Folder can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:resourcemanager/folder:Folder example fd-u8B321****
+        $ pulumi import alicloud:resourcemanager/folder:Folder example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -202,6 +254,7 @@ class Folder(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  folder_name: Optional[pulumi.Input[_builtins.str]] = None,
                  parent_folder_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -215,6 +268,8 @@ class Folder(pulumi.CustomResource):
                 raise TypeError("Missing required property 'folder_name'")
             __props__.__dict__["folder_name"] = folder_name
             __props__.__dict__["parent_folder_id"] = parent_folder_id
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["create_time"] = None
         super(Folder, __self__).__init__(
             'alicloud:resourcemanager/folder:Folder',
             resource_name,
@@ -225,8 +280,10 @@ class Folder(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[_builtins.str]] = None,
             folder_name: Optional[pulumi.Input[_builtins.str]] = None,
-            parent_folder_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Folder':
+            parent_folder_id: Optional[pulumi.Input[_builtins.str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Folder':
         """
         Get an existing Folder resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -234,22 +291,34 @@ class Folder(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] folder_name: The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
-        :param pulumi.Input[_builtins.str] parent_folder_id: The ID of the parent folder. If not set, the system default value will be used.
+        :param pulumi.Input[_builtins.str] create_time: (Available since v1.259.0) The time when the folder was created.
+        :param pulumi.Input[_builtins.str] folder_name: The name of the folder.
+        :param pulumi.Input[_builtins.str] parent_folder_id: The ID of the parent folder.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _FolderState.__new__(_FolderState)
 
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["folder_name"] = folder_name
         __props__.__dict__["parent_folder_id"] = parent_folder_id
+        __props__.__dict__["tags"] = tags
         return Folder(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since v1.259.0) The time when the folder was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter(name="folderName")
     def folder_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
+        The name of the folder.
         """
         return pulumi.get(self, "folder_name")
 
@@ -257,7 +326,15 @@ class Folder(pulumi.CustomResource):
     @pulumi.getter(name="parentFolderId")
     def parent_folder_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the parent folder. If not set, the system default value will be used.
+        The ID of the parent folder.
         """
         return pulumi.get(self, "parent_folder_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
 

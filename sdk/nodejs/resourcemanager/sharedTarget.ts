@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a Resource Manager Shared Target resource.
  *
- * For information about Resource Manager Shared Target and how to use it, see [What is Shared Target](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
+ * For information about Resource Manager Shared Target and how to use it, see [What is Shared Target](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/developer-reference/api-resourcesharing-2020-01-10-associateresourceshare).
  *
  * > **NOTE:** Available since v1.111.0.
  *
@@ -18,13 +18,18 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tfexample";
+ * const name = config.get("name") || "terraform-example";
  * const _default = alicloud.resourcemanager.getAccounts({});
- * const example = new alicloud.resourcemanager.ResourceShare("example", {resourceShareName: name});
- * const exampleSharedTarget = new alicloud.resourcemanager.SharedTarget("example", {
- *     resourceShareId: example.id,
+ * const defaultInteger = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const defaultResourceShare = new alicloud.resourcemanager.ResourceShare("default", {resourceShareName: `${name}-${defaultInteger.result}`});
+ * const defaultSharedTarget = new alicloud.resourcemanager.SharedTarget("default", {
+ *     resourceShareId: defaultResourceShare.id,
  *     targetId: _default.then(_default => _default.ids?.[0]),
  * });
  * ```
@@ -66,7 +71,11 @@ export class SharedTarget extends pulumi.CustomResource {
     }
 
     /**
-     * The resource share ID of resource manager.
+     * (Available since v1.259.0) The time when the association of the entity was created.
+     */
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * The ID of the resource share.
      */
     declare public readonly resourceShareId: pulumi.Output<string>;
     /**
@@ -74,7 +83,7 @@ export class SharedTarget extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * The member account ID in resource directory.
+     * The ID of the principal.
      */
     declare public readonly targetId: pulumi.Output<string>;
 
@@ -91,6 +100,7 @@ export class SharedTarget extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SharedTargetState | undefined;
+            resourceInputs["createTime"] = state?.createTime;
             resourceInputs["resourceShareId"] = state?.resourceShareId;
             resourceInputs["status"] = state?.status;
             resourceInputs["targetId"] = state?.targetId;
@@ -104,6 +114,7 @@ export class SharedTarget extends pulumi.CustomResource {
             }
             resourceInputs["resourceShareId"] = args?.resourceShareId;
             resourceInputs["targetId"] = args?.targetId;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -116,7 +127,11 @@ export class SharedTarget extends pulumi.CustomResource {
  */
 export interface SharedTargetState {
     /**
-     * The resource share ID of resource manager.
+     * (Available since v1.259.0) The time when the association of the entity was created.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * The ID of the resource share.
      */
     resourceShareId?: pulumi.Input<string>;
     /**
@@ -124,7 +139,7 @@ export interface SharedTargetState {
      */
     status?: pulumi.Input<string>;
     /**
-     * The member account ID in resource directory.
+     * The ID of the principal.
      */
     targetId?: pulumi.Input<string>;
 }
@@ -134,11 +149,11 @@ export interface SharedTargetState {
  */
 export interface SharedTargetArgs {
     /**
-     * The resource share ID of resource manager.
+     * The ID of the resource share.
      */
     resourceShareId: pulumi.Input<string>;
     /**
-     * The member account ID in resource directory.
+     * The ID of the principal.
      */
     targetId: pulumi.Input<string>;
 }

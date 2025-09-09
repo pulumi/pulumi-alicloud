@@ -12,6 +12,7 @@ from .enterprise_logic_database import *
 from .enterprise_proxy import *
 from .enterprise_proxy_access import *
 from .enterprise_user import *
+from .enterprise_workspace import *
 from .get_enterprise_databases import *
 from .get_enterprise_instances import *
 from .get_enterprise_logic_databases import *

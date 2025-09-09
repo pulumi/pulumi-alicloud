@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Amqp.Outputs
     public sealed class GetInstancesInstanceResult
     {
         /// <summary>
-        /// OrderCreateTime.
+        /// The timestamp that indicates when the order was created.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// ExpireTime.
+        /// The timestamp that indicates when the instance expires.
         /// </summary>
         public readonly string ExpireTime;
         /// <summary>
@@ -38,35 +38,35 @@ namespace Pulumi.AliCloud.Amqp.Outputs
         /// </summary>
         public readonly string InstanceType;
         /// <summary>
-        /// The Pay-as-You-Type Values Include: the Subscription of a Pre-Paid.
+        /// The billing method of the instance. **Note:** `payment_type` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string PaymentType;
         /// <summary>
-        /// The private endPoint.
+        /// The virtual private cloud (VPC) endpoint of the instance.
         /// </summary>
         public readonly string PrivateEndPoint;
         /// <summary>
-        /// The public dndpoint.
+        /// The public endpoint of the instance.
         /// </summary>
         public readonly string PublicEndpoint;
         /// <summary>
-        /// Renewal duration.
+        /// Auto renewal period of an instance. **Note:** `renewal_duration` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly int RenewalDuration;
         /// <summary>
-        /// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
+        /// Automatic renewal period unit. **Note:** `renewal_duration_unit` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string RenewalDurationUnit;
         /// <summary>
-        /// Renew status.
+        /// Whether to renew an instance automatically or not. **Note:** `renewal_status` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string RenewalStatus;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `DEPLOYING`, `SERVING`, `EXPIRED`, `RELEASED`.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// Whether to support eip.
+        /// Indicates whether the instance supports elastic IP addresses (EIPs).
         /// </summary>
         public readonly bool SupportEip;
 

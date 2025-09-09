@@ -36,7 +36,9 @@ class VpcEndpointArgs:
         """
         The set of arguments for constructing a VpcEndpoint resource.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC to which the endpoint belongs.
-        :param pulumi.Input[_builtins.str] address_ip_version: The IP address version.
+        :param pulumi.Input[_builtins.str] address_ip_version: The IP address version. Valid values:
+               - `IPv4` (default): IPv4.
+               - `DualStack`: dual-stack.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         :param pulumi.Input[_builtins.str] endpoint_description: The description of the endpoint.
         :param pulumi.Input[_builtins.str] endpoint_type: The endpoint type.
@@ -98,7 +100,9 @@ class VpcEndpointArgs:
     @pulumi.getter(name="addressIpVersion")
     def address_ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The IP address version.
+        The IP address version. Valid values:
+        - `IPv4` (default): IPv4.
+        - `DualStack`: dual-stack.
         """
         return pulumi.get(self, "address_ip_version")
 
@@ -281,7 +285,9 @@ class _VpcEndpointState:
                  zone_private_ip_address_count: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering VpcEndpoint resources.
-        :param pulumi.Input[_builtins.str] address_ip_version: The IP address version.
+        :param pulumi.Input[_builtins.str] address_ip_version: The IP address version. Valid values:
+               - `IPv4` (default): IPv4.
+               - `DualStack`: dual-stack.
         :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.
         :param pulumi.Input[_builtins.str] connection_status: The state of the endpoint connection.
         :param pulumi.Input[_builtins.str] create_time: The time when the endpoint was created.
@@ -354,7 +360,9 @@ class _VpcEndpointState:
     @pulumi.getter(name="addressIpVersion")
     def address_ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The IP address version.
+        The IP address version. Valid values:
+        - `IPv4` (default): IPv4.
+        - `DualStack`: dual-stack.
         """
         return pulumi.get(self, "address_ip_version")
 
@@ -692,7 +700,9 @@ class VpcEndpoint(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] address_ip_version: The IP address version.
+        :param pulumi.Input[_builtins.str] address_ip_version: The IP address version. Valid values:
+               - `IPv4` (default): IPv4.
+               - `DualStack`: dual-stack.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         :param pulumi.Input[_builtins.str] endpoint_description: The description of the endpoint.
         :param pulumi.Input[_builtins.str] endpoint_type: The endpoint type.
@@ -878,7 +888,9 @@ class VpcEndpoint(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] address_ip_version: The IP address version.
+        :param pulumi.Input[_builtins.str] address_ip_version: The IP address version. Valid values:
+               - `IPv4` (default): IPv4.
+               - `DualStack`: dual-stack.
         :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.
         :param pulumi.Input[_builtins.str] connection_status: The state of the endpoint connection.
         :param pulumi.Input[_builtins.str] create_time: The time when the endpoint was created.
@@ -935,7 +947,9 @@ class VpcEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="addressIpVersion")
     def address_ip_version(self) -> pulumi.Output[_builtins.str]:
         """
-        The IP address version.
+        The IP address version. Valid values:
+        - `IPv4` (default): IPv4.
+        - `DualStack`: dual-stack.
         """
         return pulumi.get(self, "address_ip_version")
 

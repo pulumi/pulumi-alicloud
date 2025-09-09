@@ -200,6 +200,20 @@ public class ServiceSubscription extends com.pulumi.resources.CustomResource {
         return this.pushType;
     }
     /**
+     * The STS RoleArn.
+     * 
+     */
+    @Export(name="stsRoleArn", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> stsRoleArn;
+
+    /**
+     * @return The STS RoleArn.
+     * 
+     */
+    public Output<Optional<String>> stsRoleArn() {
+        return Codegen.optional(this.stsRoleArn);
+    }
+    /**
      * Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
      * 
      */

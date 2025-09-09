@@ -10,6 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
+    /// Provides a VPC Ha Vip Attachment resource.
+    /// 
+    /// Attaching ECS instance to Havip.
+    /// 
+    /// For information about VPC Ha Vip Attachment and how to use it, see [What is Ha Vip Attachment](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/AssociateHaVip).
+    /// 
+    /// &gt; **NOTE:** Available since v1.18.0.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -107,10 +115,7 @@ namespace Pulumi.AliCloud.Vpc
     public partial class HAVipAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
-        /// - **True**: Force unbinding.
-        /// - **False** (default): unbinding is not forced.
-        /// &gt; **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+        /// Specifies whether to force delete the snapshot.
         /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
@@ -122,7 +127,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> HaVipId { get; private set; } = null!;
 
         /// <summary>
-        /// . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+        /// . Field 'havip_id' has been deprecated from provider version 1.259.0. New field 'ha_vip_id' instead.
         /// </summary>
         [Output("havipId")]
         public Output<string> HavipId { get; private set; } = null!;
@@ -134,15 +139,13 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the instance associated with the VIIP.
-        /// 
-        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// The type of the instance to be associated with the HAVIP. Valid values: * `EcsInstance`: an ECS instance * `NetworkInterface`: an ENI. If you want to associate the HAVIP with an ENI, this parameter is required.
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -194,10 +197,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class HAVipAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
-        /// - **True**: Force unbinding.
-        /// - **False** (default): unbinding is not forced.
-        /// &gt; **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+        /// Specifies whether to force delete the snapshot.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
@@ -209,7 +209,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? HaVipId { get; set; }
 
         /// <summary>
-        /// . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+        /// . Field 'havip_id' has been deprecated from provider version 1.259.0. New field 'ha_vip_id' instead.
         /// </summary>
         [Input("havipId")]
         public Input<string>? HavipId { get; set; }
@@ -221,9 +221,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// The type of the instance associated with the VIIP.
-        /// 
-        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// The type of the instance to be associated with the HAVIP. Valid values: * `EcsInstance`: an ECS instance * `NetworkInterface`: an ENI. If you want to associate the HAVIP with an ENI, this parameter is required.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -237,10 +235,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class HAVipAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
-        /// - **True**: Force unbinding.
-        /// - **False** (default): unbinding is not forced.
-        /// &gt; **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+        /// Specifies whether to force delete the snapshot.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
@@ -252,7 +247,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? HaVipId { get; set; }
 
         /// <summary>
-        /// . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+        /// . Field 'havip_id' has been deprecated from provider version 1.259.0. New field 'ha_vip_id' instead.
         /// </summary>
         [Input("havipId")]
         public Input<string>? HavipId { get; set; }
@@ -264,15 +259,13 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The type of the instance associated with the VIIP.
-        /// 
-        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// The type of the instance to be associated with the HAVIP. Valid values: * `EcsInstance`: an ECS instance * `NetworkInterface`: an ENI. If you want to associate the HAVIP with an ENI, this parameter is required.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

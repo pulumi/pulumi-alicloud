@@ -14,29 +14,33 @@ namespace Pulumi.AliCloud.Vpc.Outputs
     public sealed class NetworkAclIngressAclEntry
     {
         /// <summary>
-        /// Description of the inbound rule.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+        /// Description of the inbound rule.
+        /// The description must be 1 to 256 characters in length and cannot start with http:// or https.
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// The route entry type. The value can be `custom`, indicating custom.
+        /// The route entry type. Value
         /// </summary>
         public readonly string? EntryType;
         /// <summary>
-        /// The IP protocol version of the route entry. Valid values: "IPV4" and "IPV6'.
+        /// The IP protocol version of the route entry. Valid values: "Ipv4" and "ipv6'
         /// </summary>
         public readonly string? IpVersion;
         /// <summary>
-        /// The name of the inbound rule entry.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+        /// The name of the inbound rule entry.
+        /// The name must be 1 to 128 characters in length and cannot start with http:// or https.
         /// </summary>
         public readonly string? NetworkAclEntryName;
         /// <summary>
-        /// Authorization policy. Value:
-        /// - accept: Allow.
-        /// - drop: Refused.
+        /// The action to be performed on network traffic that matches the rule. Valid values:
+        /// - accept
+        /// - drop
         /// </summary>
         public readonly string? Policy;
         /// <summary>
-        /// The source port range of the inbound rule.  When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted. When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+        /// The source port range of the inbound rule.
+        /// When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.
+        /// When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
         /// </summary>
         public readonly string? Port;
         /// <summary>
@@ -49,7 +53,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string? Protocol;
         /// <summary>
-        /// Source address network segment.
+        /// The source CIDR block.
         /// </summary>
         public readonly string? SourceCidrIp;
 

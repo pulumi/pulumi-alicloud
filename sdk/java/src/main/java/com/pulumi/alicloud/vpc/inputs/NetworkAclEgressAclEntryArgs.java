@@ -16,14 +16,16 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
     public static final NetworkAclEgressAclEntryArgs Empty = new NetworkAclEgressAclEntryArgs();
 
     /**
-     * The description of the outbound rule.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+     * The description of the outbound rule.
+     * The description must be 1 to 256 characters in length and cannot start with http:// or https.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the outbound rule.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+     * @return The description of the outbound rule.
+     * The description must be 1 to 256 characters in length and cannot start with http:// or https.
      * 
      */
     public Optional<Output<String>> description() {
@@ -31,14 +33,14 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The network of the destination address.
+     * The destination CIDR block.
      * 
      */
     @Import(name="destinationCidrIp")
     private @Nullable Output<String> destinationCidrIp;
 
     /**
-     * @return The network of the destination address.
+     * @return The destination CIDR block.
      * 
      */
     public Optional<Output<String>> destinationCidrIp() {
@@ -46,14 +48,20 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The route entry type. The value can be `custom`, indicating custom.
+     * The route entry type. Value
+     * custom custom rule
+     * system system rules
+     * service Cloud service rules
      * 
      */
     @Import(name="entryType")
     private @Nullable Output<String> entryType;
 
     /**
-     * @return The route entry type. The value can be `custom`, indicating custom.
+     * @return The route entry type. Value
+     * custom custom rule
+     * system system rules
+     * service Cloud service rules
      * 
      */
     public Optional<Output<String>> entryType() {
@@ -61,14 +69,14 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The IP protocol version of the route entry. Valid values: &#34;IPV4&#34; and &#34;IPV4&#39;.
+     * The IP protocol version of the route entry. Valid values: &#34;Ipv4&#34; and &#34;ipv6&#39;
      * 
      */
     @Import(name="ipVersion")
     private @Nullable Output<String> ipVersion;
 
     /**
-     * @return The IP protocol version of the route entry. Valid values: &#34;IPV4&#34; and &#34;IPV4&#39;.
+     * @return The IP protocol version of the route entry. Valid values: &#34;Ipv4&#34; and &#34;ipv6&#39;
      * 
      */
     public Optional<Output<String>> ipVersion() {
@@ -76,14 +84,16 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Name of the outbound rule entry.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+     * Name of the outbound rule entry.
+     * The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */
     @Import(name="networkAclEntryName")
     private @Nullable Output<String> networkAclEntryName;
 
     /**
-     * @return Name of the outbound rule entry.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+     * @return Name of the outbound rule entry.
+     * The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */
     public Optional<Output<String>> networkAclEntryName() {
@@ -91,18 +101,18 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Authorization policy. Value:
-     * - accept: Allow.
-     * - drop: Refused.
+     * The action to be performed on network traffic that matches the rule. Valid values:
+     * - accept
+     * - drop
      * 
      */
     @Import(name="policy")
     private @Nullable Output<String> policy;
 
     /**
-     * @return Authorization policy. Value:
-     * - accept: Allow.
-     * - drop: Refused.
+     * @return The action to be performed on network traffic that matches the rule. Valid values:
+     * - accept
+     * - drop
      * 
      */
     public Optional<Output<String>> policy() {
@@ -110,14 +120,18 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The destination port range of the outbound rule.  When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted. When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+     * The destination port range of the outbound rule.
+     * When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.
+     * When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
      * 
      */
     @Import(name="port")
     private @Nullable Output<String> port;
 
     /**
-     * @return The destination port range of the outbound rule.  When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted. When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+     * @return The destination port range of the outbound rule.
+     * When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.
+     * When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
      * 
      */
     public Optional<Output<String>> port() {
@@ -181,7 +195,8 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param description The description of the outbound rule.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+         * @param description The description of the outbound rule.
+         * The description must be 1 to 256 characters in length and cannot start with http:// or https.
          * 
          * @return builder
          * 
@@ -192,7 +207,8 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param description The description of the outbound rule.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+         * @param description The description of the outbound rule.
+         * The description must be 1 to 256 characters in length and cannot start with http:// or https.
          * 
          * @return builder
          * 
@@ -202,7 +218,7 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param destinationCidrIp The network of the destination address.
+         * @param destinationCidrIp The destination CIDR block.
          * 
          * @return builder
          * 
@@ -213,7 +229,7 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param destinationCidrIp The network of the destination address.
+         * @param destinationCidrIp The destination CIDR block.
          * 
          * @return builder
          * 
@@ -223,7 +239,10 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param entryType The route entry type. The value can be `custom`, indicating custom.
+         * @param entryType The route entry type. Value
+         * custom custom rule
+         * system system rules
+         * service Cloud service rules
          * 
          * @return builder
          * 
@@ -234,7 +253,10 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param entryType The route entry type. The value can be `custom`, indicating custom.
+         * @param entryType The route entry type. Value
+         * custom custom rule
+         * system system rules
+         * service Cloud service rules
          * 
          * @return builder
          * 
@@ -244,7 +266,7 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ipVersion The IP protocol version of the route entry. Valid values: &#34;IPV4&#34; and &#34;IPV4&#39;.
+         * @param ipVersion The IP protocol version of the route entry. Valid values: &#34;Ipv4&#34; and &#34;ipv6&#39;
          * 
          * @return builder
          * 
@@ -255,7 +277,7 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ipVersion The IP protocol version of the route entry. Valid values: &#34;IPV4&#34; and &#34;IPV4&#39;.
+         * @param ipVersion The IP protocol version of the route entry. Valid values: &#34;Ipv4&#34; and &#34;ipv6&#39;
          * 
          * @return builder
          * 
@@ -265,7 +287,8 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param networkAclEntryName Name of the outbound rule entry.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+         * @param networkAclEntryName Name of the outbound rule entry.
+         * The name must be 1 to 128 characters in length and cannot start with http:// or https.
          * 
          * @return builder
          * 
@@ -276,7 +299,8 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param networkAclEntryName Name of the outbound rule entry.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+         * @param networkAclEntryName Name of the outbound rule entry.
+         * The name must be 1 to 128 characters in length and cannot start with http:// or https.
          * 
          * @return builder
          * 
@@ -286,9 +310,9 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param policy Authorization policy. Value:
-         * - accept: Allow.
-         * - drop: Refused.
+         * @param policy The action to be performed on network traffic that matches the rule. Valid values:
+         * - accept
+         * - drop
          * 
          * @return builder
          * 
@@ -299,9 +323,9 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param policy Authorization policy. Value:
-         * - accept: Allow.
-         * - drop: Refused.
+         * @param policy The action to be performed on network traffic that matches the rule. Valid values:
+         * - accept
+         * - drop
          * 
          * @return builder
          * 
@@ -311,7 +335,9 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param port The destination port range of the outbound rule.  When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted. When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+         * @param port The destination port range of the outbound rule.
+         * When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.
+         * When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
          * 
          * @return builder
          * 
@@ -322,7 +348,9 @@ public final class NetworkAclEgressAclEntryArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param port The destination port range of the outbound rule.  When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted. When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+         * @param port The destination port range of the outbound rule.
+         * When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.
+         * When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
          * 
          * @return builder
          * 

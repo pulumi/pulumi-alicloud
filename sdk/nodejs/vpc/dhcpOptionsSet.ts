@@ -7,7 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a VPC Dhcp Options Set resource. DHCP option set.
+ * Provides a VPC Dhcp Options Set resource.
+ *
+ * DHCP option set.
  *
  * For information about VPC Dhcp Options Set and how to use it, see [What is Dhcp Options Set](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/dhcp-options-sets-overview).
  *
@@ -79,29 +81,34 @@ export class DhcpOptionsSet extends pulumi.CustomResource {
      */
     declare public readonly dhcpOptionsSetDescription: pulumi.Output<string | undefined>;
     /**
-     * The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
+     * The name of the DHCP options set.
+     * The name must be 1 to 128 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
      */
     declare public readonly dhcpOptionsSetName: pulumi.Output<string | undefined>;
     /**
-     * The root domain, for example, example.com. After a DHCP options set is associated with a Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS instances in the VPC network.
+     * The root domain. For example, you can set the value to example.com.
+     * After a DHCP options set is associated with a virtual private cloud (VPC), the root domain in the DHCP options set is automatically synchronized with the ECS instances in the VPC.
      */
     declare public readonly domainName: pulumi.Output<string | undefined>;
     /**
-     * The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are 100.100.2.136 and 100.100.2.138.
+     * The IP address of the DNS server. You can enter at most four DNS server IP addresses. Separate IP addresses with commas (,).
+     * If no IP address is specified, the Elastic Compute Service (ECS) instance uses the IP addresses 100.100.2.136 and 100.100.2.138, which are provided by Alibaba Cloud by default.
      */
     declare public readonly domainNameServers: pulumi.Output<string | undefined>;
     /**
      * Whether to PreCheck only this request, value:
-     * - **true**: sends a check request and does not delete the DHCP option set. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-     * - **false** (default): Sends a normal request and directly deletes the DHCP option set after checking.
      */
     declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
-     * The lease time of the IPv6 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+     * The lease time of the IPv6 DHCP option set.
+     * When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.
+     * When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 1d.
      */
     declare public readonly ipv6LeaseTime: pulumi.Output<string>;
     /**
-     * The lease time of the IPv4 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+     * The lease time of the IPv4 addresses for the DHCP options set.
+     * If you use hours as the unit, valid values are 24h to 1176h and 87600h to 175200h. Default value: 87600h.
+     * If you use days as the unit, valid values are 1d to 49d and 3650d to 7300d. Default value: 3650d.
      */
     declare public readonly leaseTime: pulumi.Output<string>;
     /**
@@ -109,7 +116,7 @@ export class DhcpOptionsSet extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly ownerId: pulumi.Output<number>;
     /**
-     * The ID of the resource group.
+     * The ID of the resource group to which the DHCP options set belongs.
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
@@ -181,29 +188,34 @@ export interface DhcpOptionsSetState {
      */
     dhcpOptionsSetDescription?: pulumi.Input<string>;
     /**
-     * The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
+     * The name of the DHCP options set.
+     * The name must be 1 to 128 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
      */
     dhcpOptionsSetName?: pulumi.Input<string>;
     /**
-     * The root domain, for example, example.com. After a DHCP options set is associated with a Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS instances in the VPC network.
+     * The root domain. For example, you can set the value to example.com.
+     * After a DHCP options set is associated with a virtual private cloud (VPC), the root domain in the DHCP options set is automatically synchronized with the ECS instances in the VPC.
      */
     domainName?: pulumi.Input<string>;
     /**
-     * The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are 100.100.2.136 and 100.100.2.138.
+     * The IP address of the DNS server. You can enter at most four DNS server IP addresses. Separate IP addresses with commas (,).
+     * If no IP address is specified, the Elastic Compute Service (ECS) instance uses the IP addresses 100.100.2.136 and 100.100.2.138, which are provided by Alibaba Cloud by default.
      */
     domainNameServers?: pulumi.Input<string>;
     /**
      * Whether to PreCheck only this request, value:
-     * - **true**: sends a check request and does not delete the DHCP option set. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-     * - **false** (default): Sends a normal request and directly deletes the DHCP option set after checking.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The lease time of the IPv6 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+     * The lease time of the IPv6 DHCP option set.
+     * When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.
+     * When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 1d.
      */
     ipv6LeaseTime?: pulumi.Input<string>;
     /**
-     * The lease time of the IPv4 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+     * The lease time of the IPv4 addresses for the DHCP options set.
+     * If you use hours as the unit, valid values are 24h to 1176h and 87600h to 175200h. Default value: 87600h.
+     * If you use days as the unit, valid values are 1d to 49d and 3650d to 7300d. Default value: 3650d.
      */
     leaseTime?: pulumi.Input<string>;
     /**
@@ -211,7 +223,7 @@ export interface DhcpOptionsSetState {
      */
     ownerId?: pulumi.Input<number>;
     /**
-     * The ID of the resource group.
+     * The ID of the resource group to which the DHCP options set belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
@@ -239,33 +251,38 @@ export interface DhcpOptionsSetArgs {
      */
     dhcpOptionsSetDescription?: pulumi.Input<string>;
     /**
-     * The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
+     * The name of the DHCP options set.
+     * The name must be 1 to 128 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
      */
     dhcpOptionsSetName?: pulumi.Input<string>;
     /**
-     * The root domain, for example, example.com. After a DHCP options set is associated with a Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS instances in the VPC network.
+     * The root domain. For example, you can set the value to example.com.
+     * After a DHCP options set is associated with a virtual private cloud (VPC), the root domain in the DHCP options set is automatically synchronized with the ECS instances in the VPC.
      */
     domainName?: pulumi.Input<string>;
     /**
-     * The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are 100.100.2.136 and 100.100.2.138.
+     * The IP address of the DNS server. You can enter at most four DNS server IP addresses. Separate IP addresses with commas (,).
+     * If no IP address is specified, the Elastic Compute Service (ECS) instance uses the IP addresses 100.100.2.136 and 100.100.2.138, which are provided by Alibaba Cloud by default.
      */
     domainNameServers?: pulumi.Input<string>;
     /**
      * Whether to PreCheck only this request, value:
-     * - **true**: sends a check request and does not delete the DHCP option set. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-     * - **false** (default): Sends a normal request and directly deletes the DHCP option set after checking.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The lease time of the IPv6 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+     * The lease time of the IPv6 DHCP option set.
+     * When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.
+     * When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 1d.
      */
     ipv6LeaseTime?: pulumi.Input<string>;
     /**
-     * The lease time of the IPv4 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+     * The lease time of the IPv4 addresses for the DHCP options set.
+     * If you use hours as the unit, valid values are 24h to 1176h and 87600h to 175200h. Default value: 87600h.
+     * If you use days as the unit, valid values are 1d to 49d and 3650d to 7300d. Default value: 3650d.
      */
     leaseTime?: pulumi.Input<string>;
     /**
-     * The ID of the resource group.
+     * The ID of the resource group to which the DHCP options set belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**

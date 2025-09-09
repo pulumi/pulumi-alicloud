@@ -323,6 +323,10 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
+     * A mapping of tags to assign to the resource.
+     */
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
      */
     declare public readonly vpcId: pulumi.Output<string>;
@@ -370,6 +374,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["secretNum"] = state?.secretNum;
             resourceInputs["spec"] = state?.spec;
             resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
             resourceInputs["vpcId"] = state?.vpcId;
             resourceInputs["vpcNum"] = state?.vpcNum;
             resourceInputs["vswitchIds"] = state?.vswitchIds;
@@ -399,6 +404,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["renewalPeriodUnit"] = args?.renewalPeriodUnit;
             resourceInputs["secretNum"] = args?.secretNum;
             resourceInputs["spec"] = args?.spec;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["vpcNum"] = args?.vpcNum;
             resourceInputs["vswitchIds"] = args?.vswitchIds;
@@ -494,6 +500,10 @@ export interface InstanceState {
      */
     status?: pulumi.Input<string>;
     /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
      */
     vpcId?: pulumi.Input<string>;
@@ -575,6 +585,10 @@ export interface InstanceArgs {
      * The computation performance level of the KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
     spec?: pulumi.Input<number>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
      */

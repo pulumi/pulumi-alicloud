@@ -58,14 +58,16 @@ public final class DhcpOptionsSetArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
+     * The name of the DHCP options set.
+     * The name must be 1 to 128 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
      * 
      */
     @Import(name="dhcpOptionsSetName")
     private @Nullable Output<String> dhcpOptionsSetName;
 
     /**
-     * @return The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
+     * @return The name of the DHCP options set.
+     * The name must be 1 to 128 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
      * 
      */
     public Optional<Output<String>> dhcpOptionsSetName() {
@@ -73,14 +75,16 @@ public final class DhcpOptionsSetArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The root domain, for example, example.com. After a DHCP options set is associated with a Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS instances in the VPC network.
+     * The root domain. For example, you can set the value to example.com.
+     * After a DHCP options set is associated with a virtual private cloud (VPC), the root domain in the DHCP options set is automatically synchronized with the ECS instances in the VPC.
      * 
      */
     @Import(name="domainName")
     private @Nullable Output<String> domainName;
 
     /**
-     * @return The root domain, for example, example.com. After a DHCP options set is associated with a Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS instances in the VPC network.
+     * @return The root domain. For example, you can set the value to example.com.
+     * After a DHCP options set is associated with a virtual private cloud (VPC), the root domain in the DHCP options set is automatically synchronized with the ECS instances in the VPC.
      * 
      */
     public Optional<Output<String>> domainName() {
@@ -88,14 +92,16 @@ public final class DhcpOptionsSetArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are 100.100.2.136 and 100.100.2.138.
+     * The IP address of the DNS server. You can enter at most four DNS server IP addresses. Separate IP addresses with commas (,).
+     * If no IP address is specified, the Elastic Compute Service (ECS) instance uses the IP addresses 100.100.2.136 and 100.100.2.138, which are provided by Alibaba Cloud by default.
      * 
      */
     @Import(name="domainNameServers")
     private @Nullable Output<String> domainNameServers;
 
     /**
-     * @return The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are 100.100.2.136 and 100.100.2.138.
+     * @return The IP address of the DNS server. You can enter at most four DNS server IP addresses. Separate IP addresses with commas (,).
+     * If no IP address is specified, the Elastic Compute Service (ECS) instance uses the IP addresses 100.100.2.136 and 100.100.2.138, which are provided by Alibaba Cloud by default.
      * 
      */
     public Optional<Output<String>> domainNameServers() {
@@ -104,8 +110,6 @@ public final class DhcpOptionsSetArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * Whether to PreCheck only this request, value:
-     * - **true**: sends a check request and does not delete the DHCP option set. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
-     * - **false** (default): Sends a normal request and directly deletes the DHCP option set after checking.
      * 
      */
     @Import(name="dryRun")
@@ -113,8 +117,6 @@ public final class DhcpOptionsSetArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return Whether to PreCheck only this request, value:
-     * - **true**: sends a check request and does not delete the DHCP option set. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
-     * - **false** (default): Sends a normal request and directly deletes the DHCP option set after checking.
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -122,14 +124,18 @@ public final class DhcpOptionsSetArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The lease time of the IPv6 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+     * The lease time of the IPv6 DHCP option set.
+     * When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.
+     * When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 1d.
      * 
      */
     @Import(name="ipv6LeaseTime")
     private @Nullable Output<String> ipv6LeaseTime;
 
     /**
-     * @return The lease time of the IPv6 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+     * @return The lease time of the IPv6 DHCP option set.
+     * When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.
+     * When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 1d.
      * 
      */
     public Optional<Output<String>> ipv6LeaseTime() {
@@ -137,14 +143,18 @@ public final class DhcpOptionsSetArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The lease time of the IPv4 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+     * The lease time of the IPv4 addresses for the DHCP options set.
+     * If you use hours as the unit, valid values are 24h to 1176h and 87600h to 175200h. Default value: 87600h.
+     * If you use days as the unit, valid values are 1d to 49d and 3650d to 7300d. Default value: 3650d.
      * 
      */
     @Import(name="leaseTime")
     private @Nullable Output<String> leaseTime;
 
     /**
-     * @return The lease time of the IPv4 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+     * @return The lease time of the IPv4 addresses for the DHCP options set.
+     * If you use hours as the unit, valid values are 24h to 1176h and 87600h to 175200h. Default value: 87600h.
+     * If you use days as the unit, valid values are 1d to 49d and 3650d to 7300d. Default value: 3650d.
      * 
      */
     public Optional<Output<String>> leaseTime() {
@@ -152,14 +162,14 @@ public final class DhcpOptionsSetArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The ID of the resource group.
+     * The ID of the resource group to which the DHCP options set belongs.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group.
+     * @return The ID of the resource group to which the DHCP options set belongs.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -279,7 +289,8 @@ public final class DhcpOptionsSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dhcpOptionsSetName The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
+         * @param dhcpOptionsSetName The name of the DHCP options set.
+         * The name must be 1 to 128 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
          * 
          * @return builder
          * 
@@ -290,7 +301,8 @@ public final class DhcpOptionsSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dhcpOptionsSetName The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
+         * @param dhcpOptionsSetName The name of the DHCP options set.
+         * The name must be 1 to 128 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
          * 
          * @return builder
          * 
@@ -300,7 +312,8 @@ public final class DhcpOptionsSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param domainName The root domain, for example, example.com. After a DHCP options set is associated with a Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS instances in the VPC network.
+         * @param domainName The root domain. For example, you can set the value to example.com.
+         * After a DHCP options set is associated with a virtual private cloud (VPC), the root domain in the DHCP options set is automatically synchronized with the ECS instances in the VPC.
          * 
          * @return builder
          * 
@@ -311,7 +324,8 @@ public final class DhcpOptionsSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param domainName The root domain, for example, example.com. After a DHCP options set is associated with a Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS instances in the VPC network.
+         * @param domainName The root domain. For example, you can set the value to example.com.
+         * After a DHCP options set is associated with a virtual private cloud (VPC), the root domain in the DHCP options set is automatically synchronized with the ECS instances in the VPC.
          * 
          * @return builder
          * 
@@ -321,7 +335,8 @@ public final class DhcpOptionsSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param domainNameServers The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are 100.100.2.136 and 100.100.2.138.
+         * @param domainNameServers The IP address of the DNS server. You can enter at most four DNS server IP addresses. Separate IP addresses with commas (,).
+         * If no IP address is specified, the Elastic Compute Service (ECS) instance uses the IP addresses 100.100.2.136 and 100.100.2.138, which are provided by Alibaba Cloud by default.
          * 
          * @return builder
          * 
@@ -332,7 +347,8 @@ public final class DhcpOptionsSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param domainNameServers The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are 100.100.2.136 and 100.100.2.138.
+         * @param domainNameServers The IP address of the DNS server. You can enter at most four DNS server IP addresses. Separate IP addresses with commas (,).
+         * If no IP address is specified, the Elastic Compute Service (ECS) instance uses the IP addresses 100.100.2.136 and 100.100.2.138, which are provided by Alibaba Cloud by default.
          * 
          * @return builder
          * 
@@ -343,8 +359,6 @@ public final class DhcpOptionsSetArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param dryRun Whether to PreCheck only this request, value:
-         * - **true**: sends a check request and does not delete the DHCP option set. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
-         * - **false** (default): Sends a normal request and directly deletes the DHCP option set after checking.
          * 
          * @return builder
          * 
@@ -356,8 +370,6 @@ public final class DhcpOptionsSetArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param dryRun Whether to PreCheck only this request, value:
-         * - **true**: sends a check request and does not delete the DHCP option set. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
-         * - **false** (default): Sends a normal request and directly deletes the DHCP option set after checking.
          * 
          * @return builder
          * 
@@ -367,7 +379,9 @@ public final class DhcpOptionsSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ipv6LeaseTime The lease time of the IPv6 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+         * @param ipv6LeaseTime The lease time of the IPv6 DHCP option set.
+         * When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.
+         * When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 1d.
          * 
          * @return builder
          * 
@@ -378,7 +392,9 @@ public final class DhcpOptionsSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ipv6LeaseTime The lease time of the IPv6 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+         * @param ipv6LeaseTime The lease time of the IPv6 DHCP option set.
+         * When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.
+         * When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 1d.
          * 
          * @return builder
          * 
@@ -388,7 +404,9 @@ public final class DhcpOptionsSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param leaseTime The lease time of the IPv4 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+         * @param leaseTime The lease time of the IPv4 addresses for the DHCP options set.
+         * If you use hours as the unit, valid values are 24h to 1176h and 87600h to 175200h. Default value: 87600h.
+         * If you use days as the unit, valid values are 1d to 49d and 3650d to 7300d. Default value: 3650d.
          * 
          * @return builder
          * 
@@ -399,7 +417,9 @@ public final class DhcpOptionsSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param leaseTime The lease time of the IPv4 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+         * @param leaseTime The lease time of the IPv4 addresses for the DHCP options set.
+         * If you use hours as the unit, valid values are 24h to 1176h and 87600h to 175200h. Default value: 87600h.
+         * If you use days as the unit, valid values are 1d to 49d and 3650d to 7300d. Default value: 3650d.
          * 
          * @return builder
          * 
@@ -409,7 +429,7 @@ public final class DhcpOptionsSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param resourceGroupId The ID of the resource group to which the DHCP options set belongs.
          * 
          * @return builder
          * 
@@ -420,7 +440,7 @@ public final class DhcpOptionsSetArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param resourceGroupId The ID of the resource group to which the DHCP options set belongs.
          * 
          * @return builder
          * 

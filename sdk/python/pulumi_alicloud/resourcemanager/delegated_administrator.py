@@ -23,8 +23,8 @@ class DelegatedAdministratorArgs:
                  service_principal: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a DelegatedAdministrator resource.
-        :param pulumi.Input[_builtins.str] account_id: The ID of the member account in the resource directory.
-        :param pulumi.Input[_builtins.str] service_principal: The identification of the trusted service. **NOTE:** Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://www.alibabacloud.com/help/en/resource-management/latest/manage-trusted-services-overview).
+        :param pulumi.Input[_builtins.str] account_id: The Alibaba Cloud account ID of the member in the resource directory.
+        :param pulumi.Input[_builtins.str] service_principal: The identifier of the trusted service.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "service_principal", service_principal)
@@ -33,7 +33,7 @@ class DelegatedAdministratorArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID of the member account in the resource directory.
+        The Alibaba Cloud account ID of the member in the resource directory.
         """
         return pulumi.get(self, "account_id")
 
@@ -45,7 +45,7 @@ class DelegatedAdministratorArgs:
     @pulumi.getter(name="servicePrincipal")
     def service_principal(self) -> pulumi.Input[_builtins.str]:
         """
-        The identification of the trusted service. **NOTE:** Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://www.alibabacloud.com/help/en/resource-management/latest/manage-trusted-services-overview).
+        The identifier of the trusted service.
         """
         return pulumi.get(self, "service_principal")
 
@@ -61,8 +61,8 @@ class _DelegatedAdministratorState:
                  service_principal: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DelegatedAdministrator resources.
-        :param pulumi.Input[_builtins.str] account_id: The ID of the member account in the resource directory.
-        :param pulumi.Input[_builtins.str] service_principal: The identification of the trusted service. **NOTE:** Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://www.alibabacloud.com/help/en/resource-management/latest/manage-trusted-services-overview).
+        :param pulumi.Input[_builtins.str] account_id: The Alibaba Cloud account ID of the member in the resource directory.
+        :param pulumi.Input[_builtins.str] service_principal: The identifier of the trusted service.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -73,7 +73,7 @@ class _DelegatedAdministratorState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the member account in the resource directory.
+        The Alibaba Cloud account ID of the member in the resource directory.
         """
         return pulumi.get(self, "account_id")
 
@@ -85,7 +85,7 @@ class _DelegatedAdministratorState:
     @pulumi.getter(name="servicePrincipal")
     def service_principal(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The identification of the trusted service. **NOTE:** Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://www.alibabacloud.com/help/en/resource-management/latest/manage-trusted-services-overview).
+        The identifier of the trusted service.
         """
         return pulumi.get(self, "service_principal")
 
@@ -117,24 +117,10 @@ class DelegatedAdministrator(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_random as random
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        display_name = config.get("displayName")
-        if display_name is None:
-            display_name = "EAccount"
-        default = random.index.Integer("default",
-            min=10000,
-            max=99999)
-        example = alicloud.resourcemanager.get_folders()
-        example_account = alicloud.resourcemanager.Account("example",
-            display_name=f"{display_name}-{default['result']}",
-            folder_id=example.ids[0])
-        example_delegated_administrator = alicloud.resourcemanager.DelegatedAdministrator("example",
-            account_id=example_account.id,
+        default = alicloud.resourcemanager.get_accounts(status="CreateSuccess")
+        default_delegated_administrator = alicloud.resourcemanager.DelegatedAdministrator("default",
+            account_id=default.accounts[0].account_id,
             service_principal="cloudfw.aliyuncs.com")
         ```
 
@@ -148,8 +134,8 @@ class DelegatedAdministrator(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: The ID of the member account in the resource directory.
-        :param pulumi.Input[_builtins.str] service_principal: The identification of the trusted service. **NOTE:** Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://www.alibabacloud.com/help/en/resource-management/latest/manage-trusted-services-overview).
+        :param pulumi.Input[_builtins.str] account_id: The Alibaba Cloud account ID of the member in the resource directory.
+        :param pulumi.Input[_builtins.str] service_principal: The identifier of the trusted service.
         """
         ...
     @overload
@@ -171,24 +157,10 @@ class DelegatedAdministrator(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_random as random
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        display_name = config.get("displayName")
-        if display_name is None:
-            display_name = "EAccount"
-        default = random.index.Integer("default",
-            min=10000,
-            max=99999)
-        example = alicloud.resourcemanager.get_folders()
-        example_account = alicloud.resourcemanager.Account("example",
-            display_name=f"{display_name}-{default['result']}",
-            folder_id=example.ids[0])
-        example_delegated_administrator = alicloud.resourcemanager.DelegatedAdministrator("example",
-            account_id=example_account.id,
+        default = alicloud.resourcemanager.get_accounts(status="CreateSuccess")
+        default_delegated_administrator = alicloud.resourcemanager.DelegatedAdministrator("default",
+            account_id=default.accounts[0].account_id,
             service_principal="cloudfw.aliyuncs.com")
         ```
 
@@ -251,8 +223,8 @@ class DelegatedAdministrator(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: The ID of the member account in the resource directory.
-        :param pulumi.Input[_builtins.str] service_principal: The identification of the trusted service. **NOTE:** Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://www.alibabacloud.com/help/en/resource-management/latest/manage-trusted-services-overview).
+        :param pulumi.Input[_builtins.str] account_id: The Alibaba Cloud account ID of the member in the resource directory.
+        :param pulumi.Input[_builtins.str] service_principal: The identifier of the trusted service.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -266,7 +238,7 @@ class DelegatedAdministrator(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the member account in the resource directory.
+        The Alibaba Cloud account ID of the member in the resource directory.
         """
         return pulumi.get(self, "account_id")
 
@@ -274,7 +246,7 @@ class DelegatedAdministrator(pulumi.CustomResource):
     @pulumi.getter(name="servicePrincipal")
     def service_principal(self) -> pulumi.Output[_builtins.str]:
         """
-        The identification of the trusted service. **NOTE:** Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://www.alibabacloud.com/help/en/resource-management/latest/manage-trusted-services-overview).
+        The identifier of the trusted service.
         """
         return pulumi.get(self, "service_principal")
 

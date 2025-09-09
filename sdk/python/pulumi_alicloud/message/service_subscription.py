@@ -28,7 +28,8 @@ class ServiceSubscriptionArgs:
                  dlq_policy: Optional[pulumi.Input['ServiceSubscriptionDlqPolicyArgs']] = None,
                  filter_tag: Optional[pulumi.Input[_builtins.str]] = None,
                  notify_content_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_strategy: Optional[pulumi.Input[_builtins.str]] = None):
+                 notify_strategy: Optional[pulumi.Input[_builtins.str]] = None,
+                 sts_role_arn: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServiceSubscription resource.
         :param pulumi.Input[_builtins.str] endpoint: The endpoint has three format. Available values format:
@@ -46,6 +47,7 @@ class ServiceSubscriptionArgs:
         :param pulumi.Input[_builtins.str] notify_strategy: The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. Default value: `BACKOFF_RETRY`. Valid values:
                - `BACKOFF_RETRY`: retries with a fixed backoff interval.
                - `EXPONENTIAL_DECAY_RETRY`: retries with exponential backoff.
+        :param pulumi.Input[_builtins.str] sts_role_arn: The STS RoleArn.
         """
         pulumi.set(__self__, "endpoint", endpoint)
         pulumi.set(__self__, "push_type", push_type)
@@ -59,6 +61,8 @@ class ServiceSubscriptionArgs:
             pulumi.set(__self__, "notify_content_format", notify_content_format)
         if notify_strategy is not None:
             pulumi.set(__self__, "notify_strategy", notify_strategy)
+        if sts_role_arn is not None:
+            pulumi.set(__self__, "sts_role_arn", sts_role_arn)
 
     @_builtins.property
     @pulumi.getter
@@ -163,6 +167,18 @@ class ServiceSubscriptionArgs:
     def notify_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "notify_strategy", value)
 
+    @_builtins.property
+    @pulumi.getter(name="stsRoleArn")
+    def sts_role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The STS RoleArn.
+        """
+        return pulumi.get(self, "sts_role_arn")
+
+    @sts_role_arn.setter
+    def sts_role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "sts_role_arn", value)
+
 
 @pulumi.input_type
 class _ServiceSubscriptionState:
@@ -174,6 +190,7 @@ class _ServiceSubscriptionState:
                  notify_content_format: Optional[pulumi.Input[_builtins.str]] = None,
                  notify_strategy: Optional[pulumi.Input[_builtins.str]] = None,
                  push_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 sts_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  subscription_name: Optional[pulumi.Input[_builtins.str]] = None,
                  topic_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -192,6 +209,7 @@ class _ServiceSubscriptionState:
                - `BACKOFF_RETRY`: retries with a fixed backoff interval.
                - `EXPONENTIAL_DECAY_RETRY`: retries with exponential backoff.
         :param pulumi.Input[_builtins.str] push_type: The Push type of Subscription. The Valid values: `http`, `queue`, `mpush`, `alisms` and `email`.
+        :param pulumi.Input[_builtins.str] sts_role_arn: The STS RoleArn.
         :param pulumi.Input[_builtins.str] subscription_name: Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
         :param pulumi.Input[_builtins.str] topic_name: The topic which The subscription belongs to was named with the name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
         """
@@ -209,6 +227,8 @@ class _ServiceSubscriptionState:
             pulumi.set(__self__, "notify_strategy", notify_strategy)
         if push_type is not None:
             pulumi.set(__self__, "push_type", push_type)
+        if sts_role_arn is not None:
+            pulumi.set(__self__, "sts_role_arn", sts_role_arn)
         if subscription_name is not None:
             pulumi.set(__self__, "subscription_name", subscription_name)
         if topic_name is not None:
@@ -306,6 +326,18 @@ class _ServiceSubscriptionState:
         pulumi.set(self, "push_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="stsRoleArn")
+    def sts_role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The STS RoleArn.
+        """
+        return pulumi.get(self, "sts_role_arn")
+
+    @sts_role_arn.setter
+    def sts_role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "sts_role_arn", value)
+
+    @_builtins.property
     @pulumi.getter(name="subscriptionName")
     def subscription_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -342,6 +374,7 @@ class ServiceSubscription(pulumi.CustomResource):
                  notify_content_format: Optional[pulumi.Input[_builtins.str]] = None,
                  notify_strategy: Optional[pulumi.Input[_builtins.str]] = None,
                  push_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 sts_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  subscription_name: Optional[pulumi.Input[_builtins.str]] = None,
                  topic_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -401,6 +434,7 @@ class ServiceSubscription(pulumi.CustomResource):
                - `BACKOFF_RETRY`: retries with a fixed backoff interval.
                - `EXPONENTIAL_DECAY_RETRY`: retries with exponential backoff.
         :param pulumi.Input[_builtins.str] push_type: The Push type of Subscription. The Valid values: `http`, `queue`, `mpush`, `alisms` and `email`.
+        :param pulumi.Input[_builtins.str] sts_role_arn: The STS RoleArn.
         :param pulumi.Input[_builtins.str] subscription_name: Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
         :param pulumi.Input[_builtins.str] topic_name: The topic which The subscription belongs to was named with the name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
         """
@@ -472,6 +506,7 @@ class ServiceSubscription(pulumi.CustomResource):
                  notify_content_format: Optional[pulumi.Input[_builtins.str]] = None,
                  notify_strategy: Optional[pulumi.Input[_builtins.str]] = None,
                  push_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 sts_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  subscription_name: Optional[pulumi.Input[_builtins.str]] = None,
                  topic_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -493,6 +528,7 @@ class ServiceSubscription(pulumi.CustomResource):
             if push_type is None and not opts.urn:
                 raise TypeError("Missing required property 'push_type'")
             __props__.__dict__["push_type"] = push_type
+            __props__.__dict__["sts_role_arn"] = sts_role_arn
             if subscription_name is None and not opts.urn:
                 raise TypeError("Missing required property 'subscription_name'")
             __props__.__dict__["subscription_name"] = subscription_name
@@ -517,6 +553,7 @@ class ServiceSubscription(pulumi.CustomResource):
             notify_content_format: Optional[pulumi.Input[_builtins.str]] = None,
             notify_strategy: Optional[pulumi.Input[_builtins.str]] = None,
             push_type: Optional[pulumi.Input[_builtins.str]] = None,
+            sts_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
             subscription_name: Optional[pulumi.Input[_builtins.str]] = None,
             topic_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServiceSubscription':
         """
@@ -540,6 +577,7 @@ class ServiceSubscription(pulumi.CustomResource):
                - `BACKOFF_RETRY`: retries with a fixed backoff interval.
                - `EXPONENTIAL_DECAY_RETRY`: retries with exponential backoff.
         :param pulumi.Input[_builtins.str] push_type: The Push type of Subscription. The Valid values: `http`, `queue`, `mpush`, `alisms` and `email`.
+        :param pulumi.Input[_builtins.str] sts_role_arn: The STS RoleArn.
         :param pulumi.Input[_builtins.str] subscription_name: Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
         :param pulumi.Input[_builtins.str] topic_name: The topic which The subscription belongs to was named with the name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
         """
@@ -554,6 +592,7 @@ class ServiceSubscription(pulumi.CustomResource):
         __props__.__dict__["notify_content_format"] = notify_content_format
         __props__.__dict__["notify_strategy"] = notify_strategy
         __props__.__dict__["push_type"] = push_type
+        __props__.__dict__["sts_role_arn"] = sts_role_arn
         __props__.__dict__["subscription_name"] = subscription_name
         __props__.__dict__["topic_name"] = topic_name
         return ServiceSubscription(resource_name, opts=opts, __props__=__props__)
@@ -620,6 +659,14 @@ class ServiceSubscription(pulumi.CustomResource):
         The Push type of Subscription. The Valid values: `http`, `queue`, `mpush`, `alisms` and `email`.
         """
         return pulumi.get(self, "push_type")
+
+    @_builtins.property
+    @pulumi.getter(name="stsRoleArn")
+    def sts_role_arn(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The STS RoleArn.
+        """
+        return pulumi.get(self, "sts_role_arn")
 
     @_builtins.property
     @pulumi.getter(name="subscriptionName")

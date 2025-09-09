@@ -122,14 +122,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:privatelink/vpcEndpoint:VpcEndpoint")
 public class VpcEndpoint extends com.pulumi.resources.CustomResource {
     /**
-     * The IP address version.
+     * The IP address version. Valid values:
+     * - `IPv4` (default): IPv4.
+     * - `DualStack`: dual-stack.
      * 
      */
     @Export(name="addressIpVersion", refs={String.class}, tree="[0]")
     private Output<String> addressIpVersion;
 
     /**
-     * @return The IP address version.
+     * @return The IP address version. Valid values:
+     * - `IPv4` (default): IPv4.
+     * - `DualStack`: dual-stack.
      * 
      */
     public Output<String> addressIpVersion() {

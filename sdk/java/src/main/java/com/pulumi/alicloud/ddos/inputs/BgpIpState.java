@@ -16,14 +16,14 @@ public final class BgpIpState extends com.pulumi.resources.ResourceArgs {
     public static final BgpIpState Empty = new BgpIpState();
 
     /**
-     * The ID of the native protection enterprise instance to be operated.
+     * The ID of the Anti-DDoS Origin instance.
      * 
      */
     @Import(name="instanceId")
     private @Nullable Output<String> instanceId;
 
     /**
-     * @return The ID of the native protection enterprise instance to be operated.
+     * @return The ID of the Anti-DDoS Origin instance.
      * 
      */
     public Optional<Output<String>> instanceId() {
@@ -31,14 +31,14 @@ public final class BgpIpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The IP address.
+     * The IP address that you want to add.
      * 
      */
     @Import(name="ip")
     private @Nullable Output<String> ip;
 
     /**
-     * @return The IP address.
+     * @return The IP address that you want to add.
      * 
      */
     public Optional<Output<String>> ip() {
@@ -46,14 +46,14 @@ public final class BgpIpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The member account id of the IP address.
+     * The member to which the asset belongs.
      * 
      */
     @Import(name="memberUid")
     private @Nullable Output<String> memberUid;
 
     /**
-     * @return The member account id of the IP address.
+     * @return The member to which the asset belongs.
      * 
      */
     public Optional<Output<String>> memberUid() {
@@ -61,29 +61,37 @@ public final class BgpIpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the resource group.
+     * Field `resource_group_id` has been deprecated from provider version 1.259.0.
+     * 
+     * @deprecated
+     * Field `resource_group_id` has been deprecated from provider version 1.259.0.
      * 
      */
+    @Deprecated /* Field `resource_group_id` has been deprecated from provider version 1.259.0. */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group.
+     * @return Field `resource_group_id` has been deprecated from provider version 1.259.0.
+     * 
+     * @deprecated
+     * Field `resource_group_id` has been deprecated from provider version 1.259.0.
      * 
      */
+    @Deprecated /* Field `resource_group_id` has been deprecated from provider version 1.259.0. */
     public Optional<Output<String>> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
 
     /**
-     * The current state of the IP address. Valid Value: `normal`, `hole_begin`.
+     * The status of the IP address.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The current state of the IP address. Valid Value: `normal`, `hole_begin`.
+     * @return The status of the IP address.
      * 
      */
     public Optional<Output<String>> status() {
@@ -119,7 +127,7 @@ public final class BgpIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId The ID of the native protection enterprise instance to be operated.
+         * @param instanceId The ID of the Anti-DDoS Origin instance.
          * 
          * @return builder
          * 
@@ -130,7 +138,7 @@ public final class BgpIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId The ID of the native protection enterprise instance to be operated.
+         * @param instanceId The ID of the Anti-DDoS Origin instance.
          * 
          * @return builder
          * 
@@ -140,7 +148,7 @@ public final class BgpIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ip The IP address.
+         * @param ip The IP address that you want to add.
          * 
          * @return builder
          * 
@@ -151,7 +159,7 @@ public final class BgpIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ip The IP address.
+         * @param ip The IP address that you want to add.
          * 
          * @return builder
          * 
@@ -161,7 +169,7 @@ public final class BgpIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memberUid The member account id of the IP address.
+         * @param memberUid The member to which the asset belongs.
          * 
          * @return builder
          * 
@@ -172,7 +180,7 @@ public final class BgpIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memberUid The member account id of the IP address.
+         * @param memberUid The member to which the asset belongs.
          * 
          * @return builder
          * 
@@ -182,28 +190,36 @@ public final class BgpIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param resourceGroupId Field `resource_group_id` has been deprecated from provider version 1.259.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `resource_group_id` has been deprecated from provider version 1.259.0.
+         * 
          */
+        @Deprecated /* Field `resource_group_id` has been deprecated from provider version 1.259.0. */
         public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
             $.resourceGroupId = resourceGroupId;
             return this;
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param resourceGroupId Field `resource_group_id` has been deprecated from provider version 1.259.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `resource_group_id` has been deprecated from provider version 1.259.0.
+         * 
          */
+        @Deprecated /* Field `resource_group_id` has been deprecated from provider version 1.259.0. */
         public Builder resourceGroupId(String resourceGroupId) {
             return resourceGroupId(Output.of(resourceGroupId));
         }
 
         /**
-         * @param status The current state of the IP address. Valid Value: `normal`, `hole_begin`.
+         * @param status The status of the IP address.
          * 
          * @return builder
          * 
@@ -214,7 +230,7 @@ public final class BgpIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The current state of the IP address. Valid Value: `normal`, `hole_begin`.
+         * @param status The status of the IP address.
          * 
          * @return builder
          * 

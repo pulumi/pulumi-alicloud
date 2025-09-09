@@ -105,7 +105,7 @@ namespace Pulumi.AliCloud.Vpc
     public partial class FlowLog : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Data aggregation interval
+        /// The sampling interval of the flow log. Unit: seconds. Valid values: 1, 5, and 10 (default).
         /// </summary>
         [Output("aggregationInterval")]
         public Output<string> AggregationInterval { get; private set; } = null!;
@@ -147,19 +147,19 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> IpVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the logstore.
+        /// The Logstore that stores the captured traffic data.
         /// </summary>
         [Output("logStoreName")]
         public Output<string> LogStoreName { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the project.
+        /// The project that manages the captured traffic data.
         /// </summary>
         [Output("projectName")]
         public Output<string> ProjectName { get; private set; } = null!;
 
         /// <summary>
-        /// (Available since v1.243.0) The region ID.
+        /// The region ID.
         /// </summary>
         [Output("regionId")]
         public Output<string> RegionId { get; private set; } = null!;
@@ -261,7 +261,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class FlowLogArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Data aggregation interval
+        /// The sampling interval of the flow log. Unit: seconds. Valid values: 1, 5, and 10 (default).
         /// </summary>
         [Input("aggregationInterval")]
         public Input<string>? AggregationInterval { get; set; }
@@ -285,13 +285,13 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? IpVersion { get; set; }
 
         /// <summary>
-        /// The name of the logstore.
+        /// The Logstore that stores the captured traffic data.
         /// </summary>
         [Input("logStoreName", required: true)]
         public Input<string> LogStoreName { get; set; } = null!;
 
         /// <summary>
-        /// The name of the project.
+        /// The project that manages the captured traffic data.
         /// </summary>
         [Input("projectName", required: true)]
         public Input<string> ProjectName { get; set; } = null!;
@@ -367,7 +367,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class FlowLogState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Data aggregation interval
+        /// The sampling interval of the flow log. Unit: seconds. Valid values: 1, 5, and 10 (default).
         /// </summary>
         [Input("aggregationInterval")]
         public Input<string>? AggregationInterval { get; set; }
@@ -409,19 +409,19 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? IpVersion { get; set; }
 
         /// <summary>
-        /// The name of the logstore.
+        /// The Logstore that stores the captured traffic data.
         /// </summary>
         [Input("logStoreName")]
         public Input<string>? LogStoreName { get; set; }
 
         /// <summary>
-        /// The name of the project.
+        /// The project that manages the captured traffic data.
         /// </summary>
         [Input("projectName")]
         public Input<string>? ProjectName { get; set; }
 
         /// <summary>
-        /// (Available since v1.243.0) The region ID.
+        /// The region ID.
         /// </summary>
         [Input("regionId")]
         public Input<string>? RegionId { get; set; }

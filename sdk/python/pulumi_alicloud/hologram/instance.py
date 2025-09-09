@@ -47,6 +47,7 @@ class InstanceArgs:
                - Follower: Read-only slave instance.
                - Warehouse: calculation group type.
                - Shared: Shared.
+               - Serverless: (Available since v1.259.0) Serverless.
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource.
         :param pulumi.Input[_builtins.str] zone_id: The zone Id. Refer to "Instructions for Use".
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically. The default value is true. Value:
@@ -136,6 +137,7 @@ class InstanceArgs:
         - Follower: Read-only slave instance.
         - Warehouse: calculation group type.
         - Shared: Shared.
+        - Serverless: (Available since v1.259.0) Serverless.
         """
         return pulumi.get(self, "instance_type")
 
@@ -370,6 +372,7 @@ class _InstanceState:
                  leader_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  payment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
+                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  scale_type: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
@@ -403,12 +406,14 @@ class _InstanceState:
                - Follower: Read-only slave instance.
                - Warehouse: calculation group type.
                - Shared: Shared.
+               - Serverless: (Available since v1.259.0) Serverless.
         :param pulumi.Input[_builtins.str] leader_instance_id: The ID of the primary instance.
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource.
         :param pulumi.Input[_builtins.str] pricing_cycle: Billing cycle. Value:
                - Month: monthly billing
                - Hour: hourly billing
                > **NOTE:**  Subscription instances (PrePaid) only supports Month. PayAsYouGo instances (PostPaid) only supports Hour. The Shared type is automatically set to Hour without specifying it.
+        :param pulumi.Input[_builtins.str] region_id: (Available since v1.259.0) The region ID.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] scale_type: Change matching type. Value:
                - UPGRADE: UPGRADE
@@ -446,6 +451,8 @@ class _InstanceState:
             pulumi.set(__self__, "payment_type", payment_type)
         if pricing_cycle is not None:
             pulumi.set(__self__, "pricing_cycle", pricing_cycle)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if scale_type is not None:
@@ -587,6 +594,7 @@ class _InstanceState:
         - Follower: Read-only slave instance.
         - Warehouse: calculation group type.
         - Shared: Shared.
+        - Serverless: (Available since v1.259.0) Serverless.
         """
         return pulumi.get(self, "instance_type")
 
@@ -632,6 +640,18 @@ class _InstanceState:
     @pricing_cycle.setter
     def pricing_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "pricing_cycle", value)
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Available since v1.259.0) The region ID.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
@@ -770,6 +790,7 @@ class Instance(pulumi.CustomResource):
                - Follower: Read-only slave instance.
                - Warehouse: calculation group type.
                - Shared: Shared.
+               - Serverless: (Available since v1.259.0) Serverless.
         :param pulumi.Input[_builtins.str] leader_instance_id: The ID of the primary instance.
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource.
         :param pulumi.Input[_builtins.str] pricing_cycle: Billing cycle. Value:
@@ -871,6 +892,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["region_id"] = None
         super(Instance, __self__).__init__(
             'alicloud:hologram/instance:Instance',
             resource_name,
@@ -894,6 +916,7 @@ class Instance(pulumi.CustomResource):
             leader_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
             payment_type: Optional[pulumi.Input[_builtins.str]] = None,
             pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
+            region_id: Optional[pulumi.Input[_builtins.str]] = None,
             resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             scale_type: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
@@ -932,12 +955,14 @@ class Instance(pulumi.CustomResource):
                - Follower: Read-only slave instance.
                - Warehouse: calculation group type.
                - Shared: Shared.
+               - Serverless: (Available since v1.259.0) Serverless.
         :param pulumi.Input[_builtins.str] leader_instance_id: The ID of the primary instance.
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource.
         :param pulumi.Input[_builtins.str] pricing_cycle: Billing cycle. Value:
                - Month: monthly billing
                - Hour: hourly billing
                > **NOTE:**  Subscription instances (PrePaid) only supports Month. PayAsYouGo instances (PostPaid) only supports Hour. The Shared type is automatically set to Hour without specifying it.
+        :param pulumi.Input[_builtins.str] region_id: (Available since v1.259.0) The region ID.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] scale_type: Change matching type. Value:
                - UPGRADE: UPGRADE
@@ -966,6 +991,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["leader_instance_id"] = leader_instance_id
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["pricing_cycle"] = pricing_cycle
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["scale_type"] = scale_type
         __props__.__dict__["status"] = status
@@ -1066,6 +1092,7 @@ class Instance(pulumi.CustomResource):
         - Follower: Read-only slave instance.
         - Warehouse: calculation group type.
         - Shared: Shared.
+        - Serverless: (Available since v1.259.0) Serverless.
         """
         return pulumi.get(self, "instance_type")
 
@@ -1095,6 +1122,14 @@ class Instance(pulumi.CustomResource):
         > **NOTE:**  Subscription instances (PrePaid) only supports Month. PayAsYouGo instances (PostPaid) only supports Hour. The Shared type is automatically set to Hour without specifying it.
         """
         return pulumi.get(self, "pricing_cycle")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since v1.259.0) The region ID.
+        """
+        return pulumi.get(self, "region_id")
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")

@@ -18,26 +18,31 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tfexample";
- * const example = alicloud.getZones({
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const exampleNetwork = new alicloud.vpc.Network("example", {
- *     vpcName: name,
+ * const defaultInteger = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: `${name}-${defaultInteger.result}`,
  *     cidrBlock: "192.168.0.0/16",
  * });
- * const exampleSwitch = new alicloud.vpc.Switch("example", {
- *     zoneId: example.then(example => example.zones?.[0]?.id),
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  *     cidrBlock: "192.168.0.0/16",
- *     vpcId: exampleNetwork.id,
- *     vswitchName: name,
+ *     vpcId: defaultNetwork.id,
+ *     vswitchName: `${name}-${defaultInteger.result}`,
  * });
- * const exampleResourceShare = new alicloud.resourcemanager.ResourceShare("example", {resourceShareName: name});
- * const exampleSharedResource = new alicloud.resourcemanager.SharedResource("example", {
- *     resourceId: exampleSwitch.id,
- *     resourceShareId: exampleResourceShare.id,
+ * const defaultResourceShare = new alicloud.resourcemanager.ResourceShare("default", {resourceShareName: `${name}-${defaultInteger.result}`});
+ * const defaultSharedResource = new alicloud.resourcemanager.SharedResource("default", {
+ *     resourceShareId: defaultResourceShare.id,
+ *     resourceId: defaultSwitch.id,
  *     resourceType: "VSwitch",
  * });
  * ```
@@ -79,15 +84,19 @@ export class SharedResource extends pulumi.CustomResource {
     }
 
     /**
-     * The resource ID need shared.
+     * (Available since v1.259.0) The time when the shared resource was associated with the resource share.
+     */
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * The ID of the shared resource.
      */
     declare public readonly resourceId: pulumi.Output<string>;
     /**
-     * The resource share ID of resource manager.
+     * The ID of the resource share.
      */
     declare public readonly resourceShareId: pulumi.Output<string>;
     /**
-     * The resource type of should shared. Valid values:
+     * The type of the shared resource. Valid values:
      * - `VSwitch`.
      * - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
      * - The following types are added after v1.192.0: `PrefixList` and `Image`.
@@ -115,6 +124,7 @@ export class SharedResource extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SharedResourceState | undefined;
+            resourceInputs["createTime"] = state?.createTime;
             resourceInputs["resourceId"] = state?.resourceId;
             resourceInputs["resourceShareId"] = state?.resourceShareId;
             resourceInputs["resourceType"] = state?.resourceType;
@@ -133,6 +143,7 @@ export class SharedResource extends pulumi.CustomResource {
             resourceInputs["resourceId"] = args?.resourceId;
             resourceInputs["resourceShareId"] = args?.resourceShareId;
             resourceInputs["resourceType"] = args?.resourceType;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -145,15 +156,19 @@ export class SharedResource extends pulumi.CustomResource {
  */
 export interface SharedResourceState {
     /**
-     * The resource ID need shared.
+     * (Available since v1.259.0) The time when the shared resource was associated with the resource share.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * The ID of the shared resource.
      */
     resourceId?: pulumi.Input<string>;
     /**
-     * The resource share ID of resource manager.
+     * The ID of the resource share.
      */
     resourceShareId?: pulumi.Input<string>;
     /**
-     * The resource type of should shared. Valid values:
+     * The type of the shared resource. Valid values:
      * - `VSwitch`.
      * - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
      * - The following types are added after v1.192.0: `PrefixList` and `Image`.
@@ -174,15 +189,15 @@ export interface SharedResourceState {
  */
 export interface SharedResourceArgs {
     /**
-     * The resource ID need shared.
+     * The ID of the shared resource.
      */
     resourceId: pulumi.Input<string>;
     /**
-     * The resource share ID of resource manager.
+     * The ID of the resource share.
      */
     resourceShareId: pulumi.Input<string>;
     /**
-     * The resource type of should shared. Valid values:
+     * The type of the shared resource. Valid values:
      * - `VSwitch`.
      * - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
      * - The following types are added after v1.192.0: `PrefixList` and `Image`.

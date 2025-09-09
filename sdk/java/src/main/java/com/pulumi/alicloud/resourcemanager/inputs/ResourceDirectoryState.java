@@ -16,14 +16,29 @@ public final class ResourceDirectoryState extends com.pulumi.resources.ResourceA
     public static final ResourceDirectoryState Empty = new ResourceDirectoryState();
 
     /**
-     * The ID of the master account.
+     * The time when the resource directory was created
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return The time when the resource directory was created
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * The ID of the master account
      * 
      */
     @Import(name="masterAccountId")
     private @Nullable Output<String> masterAccountId;
 
     /**
-     * @return The ID of the master account.
+     * @return The ID of the master account
      * 
      */
     public Optional<Output<String>> masterAccountId() {
@@ -31,14 +46,14 @@ public final class ResourceDirectoryState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The name of the master account.
+     * The name of the master account
      * 
      */
     @Import(name="masterAccountName")
     private @Nullable Output<String> masterAccountName;
 
     /**
-     * @return The name of the master account.
+     * @return The name of the master account
      * 
      */
     public Optional<Output<String>> masterAccountName() {
@@ -46,14 +61,37 @@ public final class ResourceDirectoryState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+     * The status of the Member Display Name Synchronization feature. Valid values:
+     * - Enabled
+     * - Disabled
+     * 
+     */
+    @Import(name="memberAccountDisplayNameSyncStatus")
+    private @Nullable Output<String> memberAccountDisplayNameSyncStatus;
+
+    /**
+     * @return The status of the Member Display Name Synchronization feature. Valid values:
+     * - Enabled
+     * - Disabled
+     * 
+     */
+    public Optional<Output<String>> memberAccountDisplayNameSyncStatus() {
+        return Optional.ofNullable(this.memberAccountDisplayNameSyncStatus);
+    }
+
+    /**
+     * The status of the member deletion feature. Valid values:
+     * - Enabled: The feature is enabled. You can call the DeleteAccount operation to delete members of the resource account type.
+     * - Disabled: The feature is disabled. You cannot delete members of the resource account type.
      * 
      */
     @Import(name="memberDeletionStatus")
     private @Nullable Output<String> memberDeletionStatus;
 
     /**
-     * @return Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+     * @return The status of the member deletion feature. Valid values:
+     * - Enabled: The feature is enabled. You can call the DeleteAccount operation to delete members of the resource account type.
+     * - Disabled: The feature is disabled. You cannot delete members of the resource account type.
      * 
      */
     public Optional<Output<String>> memberDeletionStatus() {
@@ -61,14 +99,14 @@ public final class ResourceDirectoryState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The ID of the root folder.
+     * The ID of the root folder
      * 
      */
     @Import(name="rootFolderId")
     private @Nullable Output<String> rootFolderId;
 
     /**
-     * @return The ID of the root folder.
+     * @return The ID of the root folder
      * 
      */
     public Optional<Output<String>> rootFolderId() {
@@ -76,14 +114,14 @@ public final class ResourceDirectoryState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The status of control policy. Valid values:`Enabled` and `Disabled`.
+     * ScpStatus
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of control policy. Valid values:`Enabled` and `Disabled`.
+     * @return ScpStatus
      * 
      */
     public Optional<Output<String>> status() {
@@ -93,8 +131,10 @@ public final class ResourceDirectoryState extends com.pulumi.resources.ResourceA
     private ResourceDirectoryState() {}
 
     private ResourceDirectoryState(ResourceDirectoryState $) {
+        this.createTime = $.createTime;
         this.masterAccountId = $.masterAccountId;
         this.masterAccountName = $.masterAccountName;
+        this.memberAccountDisplayNameSyncStatus = $.memberAccountDisplayNameSyncStatus;
         this.memberDeletionStatus = $.memberDeletionStatus;
         this.rootFolderId = $.rootFolderId;
         this.status = $.status;
@@ -119,7 +159,28 @@ public final class ResourceDirectoryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param masterAccountId The ID of the master account.
+         * @param createTime The time when the resource directory was created
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime The time when the resource directory was created
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param masterAccountId The ID of the master account
          * 
          * @return builder
          * 
@@ -130,7 +191,7 @@ public final class ResourceDirectoryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param masterAccountId The ID of the master account.
+         * @param masterAccountId The ID of the master account
          * 
          * @return builder
          * 
@@ -140,7 +201,7 @@ public final class ResourceDirectoryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param masterAccountName The name of the master account.
+         * @param masterAccountName The name of the master account
          * 
          * @return builder
          * 
@@ -151,7 +212,7 @@ public final class ResourceDirectoryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param masterAccountName The name of the master account.
+         * @param masterAccountName The name of the master account
          * 
          * @return builder
          * 
@@ -161,7 +222,34 @@ public final class ResourceDirectoryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param memberDeletionStatus Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+         * @param memberAccountDisplayNameSyncStatus The status of the Member Display Name Synchronization feature. Valid values:
+         * - Enabled
+         * - Disabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memberAccountDisplayNameSyncStatus(@Nullable Output<String> memberAccountDisplayNameSyncStatus) {
+            $.memberAccountDisplayNameSyncStatus = memberAccountDisplayNameSyncStatus;
+            return this;
+        }
+
+        /**
+         * @param memberAccountDisplayNameSyncStatus The status of the Member Display Name Synchronization feature. Valid values:
+         * - Enabled
+         * - Disabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memberAccountDisplayNameSyncStatus(String memberAccountDisplayNameSyncStatus) {
+            return memberAccountDisplayNameSyncStatus(Output.of(memberAccountDisplayNameSyncStatus));
+        }
+
+        /**
+         * @param memberDeletionStatus The status of the member deletion feature. Valid values:
+         * - Enabled: The feature is enabled. You can call the DeleteAccount operation to delete members of the resource account type.
+         * - Disabled: The feature is disabled. You cannot delete members of the resource account type.
          * 
          * @return builder
          * 
@@ -172,7 +260,9 @@ public final class ResourceDirectoryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param memberDeletionStatus Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
+         * @param memberDeletionStatus The status of the member deletion feature. Valid values:
+         * - Enabled: The feature is enabled. You can call the DeleteAccount operation to delete members of the resource account type.
+         * - Disabled: The feature is disabled. You cannot delete members of the resource account type.
          * 
          * @return builder
          * 
@@ -182,7 +272,7 @@ public final class ResourceDirectoryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param rootFolderId The ID of the root folder.
+         * @param rootFolderId The ID of the root folder
          * 
          * @return builder
          * 
@@ -193,7 +283,7 @@ public final class ResourceDirectoryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param rootFolderId The ID of the root folder.
+         * @param rootFolderId The ID of the root folder
          * 
          * @return builder
          * 
@@ -203,7 +293,7 @@ public final class ResourceDirectoryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param status The status of control policy. Valid values:`Enabled` and `Disabled`.
+         * @param status ScpStatus
          * 
          * @return builder
          * 
@@ -214,7 +304,7 @@ public final class ResourceDirectoryState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param status The status of control policy. Valid values:`Enabled` and `Disabled`.
+         * @param status ScpStatus
          * 
          * @return builder
          * 

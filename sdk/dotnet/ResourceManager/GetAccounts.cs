@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// <summary>
         /// This data source provides the Resource Manager Accounts of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:**  Available in 1.86.0+.
+        /// &gt; **NOTE:** Available since v1.86.0.
         /// 
         /// ## Example Usage
         /// 
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstAccountId"] = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.Id)),
+        ///         ["resourceManagerAccountId0"] = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// <summary>
         /// This data source provides the Resource Manager Accounts of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:**  Available in 1.86.0+.
+        /// &gt; **NOTE:** Available since v1.86.0.
         /// 
         /// ## Example Usage
         /// 
@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstAccountId"] = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.Id)),
+        ///         ["resourceManagerAccountId0"] = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// <summary>
         /// This data source provides the Resource Manager Accounts of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:**  Available in 1.86.0+.
+        /// &gt; **NOTE:** Available since v1.86.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstAccountId"] = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.Id)),
+        ///         ["resourceManagerAccountId0"] = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -97,7 +97,7 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class GetAccountsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Whether to query the detailed list of resource attributes. Default value: `false`.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.ResourceManager
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of account IDs.
+        /// A list of Account IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -121,10 +121,22 @@ namespace Pulumi.AliCloud.ResourceManager
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
+        /// The status of account. Valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, `PromoteVerifying`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
+
+        [Input("tags")]
+        private Dictionary<string, string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public Dictionary<string, string> Tags
+        {
+            get => _tags ?? (_tags = new Dictionary<string, string>());
+            set => _tags = value;
+        }
 
         public GetAccountsArgs()
         {
@@ -135,7 +147,7 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class GetAccountsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Whether to query the detailed list of resource attributes. Default value: `false`.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -144,7 +156,7 @@ namespace Pulumi.AliCloud.ResourceManager
         private InputList<string>? _ids;
 
         /// <summary>
-        /// A list of account IDs.
+        /// A list of Account IDs.
         /// </summary>
         public InputList<string> Ids
         {
@@ -159,10 +171,22 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
+        /// The status of account. Valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, `PromoteVerifying`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         public GetAccountsInvokeArgs()
         {
@@ -183,15 +207,16 @@ namespace Pulumi.AliCloud.ResourceManager
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// A list of account IDs.
-        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
         /// <summary>
-        /// The status of the member account.
+        /// The status of the member.
         /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// (Available since v1.259.0) The tags that are added to the member.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]
         private GetAccountsResult(
@@ -205,7 +230,9 @@ namespace Pulumi.AliCloud.ResourceManager
 
             string? outputFile,
 
-            string? status)
+            string? status,
+
+            ImmutableDictionary<string, string>? tags)
         {
             Accounts = accounts;
             EnableDetails = enableDetails;
@@ -213,6 +240,7 @@ namespace Pulumi.AliCloud.ResourceManager
             Ids = ids;
             OutputFile = outputFile;
             Status = status;
+            Tags = tags;
         }
     }
 }

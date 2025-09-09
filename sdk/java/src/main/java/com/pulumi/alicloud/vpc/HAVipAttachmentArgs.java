@@ -18,20 +18,14 @@ public final class HAVipAttachmentArgs extends com.pulumi.resources.ResourceArgs
     public static final HAVipAttachmentArgs Empty = new HAVipAttachmentArgs();
 
     /**
-     * Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
-     * - **True**: Force unbinding.
-     * - **False** (default): unbinding is not forced.
-     * &gt; **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+     * Specifies whether to force delete the snapshot.
      * 
      */
     @Import(name="force")
     private @Nullable Output<Boolean> force;
 
     /**
-     * @return Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
-     * - **True**: Force unbinding.
-     * - **False** (default): unbinding is not forced.
-     * &gt; **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+     * @return Specifies whether to force delete the snapshot.
      * 
      */
     public Optional<Output<Boolean>> force() {
@@ -54,7 +48,7 @@ public final class HAVipAttachmentArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * . Field &#39;havip_id&#39; has been deprecated from provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
+     * . Field &#39;havip_id&#39; has been deprecated from provider version 1.259.0. New field &#39;ha_vip_id&#39; instead.
      * 
      * @deprecated
      * Field &#39;havip_id&#39; has been deprecated since provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
@@ -65,7 +59,7 @@ public final class HAVipAttachmentArgs extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<String> havipId;
 
     /**
-     * @return . Field &#39;havip_id&#39; has been deprecated from provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
+     * @return . Field &#39;havip_id&#39; has been deprecated from provider version 1.259.0. New field &#39;ha_vip_id&#39; instead.
      * 
      * @deprecated
      * Field &#39;havip_id&#39; has been deprecated since provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
@@ -92,18 +86,14 @@ public final class HAVipAttachmentArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The type of the instance associated with the VIIP.
-     * 
-     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * The type of the instance to be associated with the HAVIP. Valid values: * `EcsInstance`: an ECS instance * `NetworkInterface`: an ENI. If you want to associate the HAVIP with an ENI, this parameter is required.
      * 
      */
     @Import(name="instanceType")
     private @Nullable Output<String> instanceType;
 
     /**
-     * @return The type of the instance associated with the VIIP.
-     * 
-     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * @return The type of the instance to be associated with the HAVIP. Valid values: * `EcsInstance`: an ECS instance * `NetworkInterface`: an ENI. If you want to associate the HAVIP with an ENI, this parameter is required.
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -139,10 +129,7 @@ public final class HAVipAttachmentArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param force Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
-         * - **True**: Force unbinding.
-         * - **False** (default): unbinding is not forced.
-         * &gt; **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+         * @param force Specifies whether to force delete the snapshot.
          * 
          * @return builder
          * 
@@ -153,10 +140,7 @@ public final class HAVipAttachmentArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param force Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
-         * - **True**: Force unbinding.
-         * - **False** (default): unbinding is not forced.
-         * &gt; **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+         * @param force Specifies whether to force delete the snapshot.
          * 
          * @return builder
          * 
@@ -187,7 +171,7 @@ public final class HAVipAttachmentArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param havipId . Field &#39;havip_id&#39; has been deprecated from provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
+         * @param havipId . Field &#39;havip_id&#39; has been deprecated from provider version 1.259.0. New field &#39;ha_vip_id&#39; instead.
          * 
          * @return builder
          * 
@@ -202,7 +186,7 @@ public final class HAVipAttachmentArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param havipId . Field &#39;havip_id&#39; has been deprecated from provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
+         * @param havipId . Field &#39;havip_id&#39; has been deprecated from provider version 1.259.0. New field &#39;ha_vip_id&#39; instead.
          * 
          * @return builder
          * 
@@ -237,9 +221,7 @@ public final class HAVipAttachmentArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param instanceType The type of the instance associated with the VIIP.
-         * 
-         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * @param instanceType The type of the instance to be associated with the HAVIP. Valid values: * `EcsInstance`: an ECS instance * `NetworkInterface`: an ENI. If you want to associate the HAVIP with an ENI, this parameter is required.
          * 
          * @return builder
          * 
@@ -250,9 +232,7 @@ public final class HAVipAttachmentArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param instanceType The type of the instance associated with the VIIP.
-         * 
-         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * @param instanceType The type of the instance to be associated with the HAVIP. Valid values: * `EcsInstance`: an ECS instance * `NetworkInterface`: an ENI. If you want to associate the HAVIP with an ENI, this parameter is required.
          * 
          * @return builder
          * 

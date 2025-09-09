@@ -1118,7 +1118,35 @@ class Bucket(pulumi.CustomResource):
 
         Set bucket redundancy type
 
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.index.Integer("default",
+            max=99999,
+            min=10000)
+        bucket_redundancytype = alicloud.oss.Bucket("bucket-redundancytype",
+            bucket=f"terraform-example-{default['result']}",
+            redundancy_type="ZRS")
+        ```
+
         Set bucket accelerate configuration
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.index.Integer("default",
+            max=99999,
+            min=10000)
+        bucket_accelerate = alicloud.oss.Bucket("bucket-accelerate",
+            bucket=f"terraform-example-{default['result']}",
+            transfer_acceleration={
+                "enabled": False,
+            })
+        ```
 
         Set bucket resource group id
 
@@ -1533,7 +1561,35 @@ class Bucket(pulumi.CustomResource):
 
         Set bucket redundancy type
 
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.index.Integer("default",
+            max=99999,
+            min=10000)
+        bucket_redundancytype = alicloud.oss.Bucket("bucket-redundancytype",
+            bucket=f"terraform-example-{default['result']}",
+            redundancy_type="ZRS")
+        ```
+
         Set bucket accelerate configuration
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.index.Integer("default",
+            max=99999,
+            min=10000)
+        bucket_accelerate = alicloud.oss.Bucket("bucket-accelerate",
+            bucket=f"terraform-example-{default['result']}",
+            transfer_acceleration={
+                "enabled": False,
+            })
+        ```
 
         Set bucket resource group id
 

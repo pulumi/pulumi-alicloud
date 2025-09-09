@@ -13,45 +13,52 @@ namespace Pulumi.AliCloud.Vpc.Inputs
     public sealed class NetworkAclEgressAclEntryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the outbound rule.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+        /// The description of the outbound rule.
+        /// The description must be 1 to 256 characters in length and cannot start with http:// or https.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The network of the destination address.
+        /// The destination CIDR block.
         /// </summary>
         [Input("destinationCidrIp")]
         public Input<string>? DestinationCidrIp { get; set; }
 
         /// <summary>
-        /// The route entry type. The value can be `custom`, indicating custom.
+        /// The route entry type. Value
+        /// custom custom rule
+        /// system system rules
+        /// service Cloud service rules
         /// </summary>
         [Input("entryType")]
         public Input<string>? EntryType { get; set; }
 
         /// <summary>
-        /// The IP protocol version of the route entry. Valid values: "IPV4" and "IPV4'.
+        /// The IP protocol version of the route entry. Valid values: "Ipv4" and "ipv6'
         /// </summary>
         [Input("ipVersion")]
         public Input<string>? IpVersion { get; set; }
 
         /// <summary>
-        /// Name of the outbound rule entry.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+        /// Name of the outbound rule entry.
+        /// The name must be 1 to 128 characters in length and cannot start with http:// or https.
         /// </summary>
         [Input("networkAclEntryName")]
         public Input<string>? NetworkAclEntryName { get; set; }
 
         /// <summary>
-        /// Authorization policy. Value:
-        /// - accept: Allow.
-        /// - drop: Refused.
+        /// The action to be performed on network traffic that matches the rule. Valid values:
+        /// - accept
+        /// - drop
         /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
 
         /// <summary>
-        /// The destination port range of the outbound rule.  When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted. When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+        /// The destination port range of the outbound rule.
+        /// When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.
+        /// When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }

@@ -5,9 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Vpc Ha Vip resource. Highly available virtual IP
+ * Provides a VPC Ha Vip resource.
  *
- * For information about Vpc Ha Vip and how to use it, see [What is Ha Vip](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createhavip).
+ * Highly available virtual IP.
+ *
+ * For information about VPC Ha Vip and how to use it, see [What is Ha Vip](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createhavip).
  *
  * > **NOTE:** Available since v1.205.0.
  *
@@ -20,12 +22,12 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testacc-example";
+ * const name = config.get("name") || "tf-example";
  * const _default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
  * const defaultVpc = new alicloud.vpc.Network("defaultVpc", {
- *     description: "tf-test-acc-vpc",
+ *     description: name,
  *     vpcName: name,
  *     cidrBlock: "192.168.0.0/16",
  * });
@@ -34,18 +36,18 @@ import * as utilities from "../utilities";
  *     cidrBlock: "192.168.0.0/21",
  *     vswitchName: `${name}1`,
  *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
- *     description: "tf-testacc-vswitch",
+ *     description: name,
  * });
  * const defaultRg = new alicloud.resourcemanager.ResourceGroup("defaultRg", {
- *     displayName: "tf-testacc-rg819",
+ *     displayName: "tf-example-defaultRg",
  *     resourceGroupName: `${name}2`,
  * });
  * const changeRg = new alicloud.resourcemanager.ResourceGroup("changeRg", {
- *     displayName: "tf-testacc-changerg670",
+ *     displayName: "tf-example-changeRg",
  *     resourceGroupName: `${name}3`,
  * });
  * const defaultHaVipv2 = new alicloud.vpc.HaVipv2("default", {
- *     description: "test",
+ *     description: name,
  *     vswitchId: defaultVswitch.id,
  *     haVipName: name,
  *     ipAddress: "192.168.1.101",
@@ -55,7 +57,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Vpc Ha Vip can be imported using the id, e.g.
+ * VPC Ha Vip can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:vpc/haVipv2:HaVipv2 example <id>
@@ -90,49 +92,51 @@ export class HaVipv2 extends pulumi.CustomResource {
     }
 
     /**
-     * EIP bound to HaVip.
+     * EIP bound to HaVip
      */
     declare public /*out*/ readonly associatedEipAddresses: pulumi.Output<string[]>;
     /**
-     * The type of the instance that is bound to the HaVip. Value:-**EcsInstance**: ECS instance.-**NetworkInterface**: ENI instance.
+     * The type of the instance that is bound to the HaVip. Value:
+     * - `EcsInstance`: ECS instance.
+     * - `NetworkInterface`: ENI instance.
      */
     declare public /*out*/ readonly associatedInstanceType: pulumi.Output<string>;
     /**
-     * An ECS instance that is bound to HaVip.
+     * The ID of the ECS instance to be associated with the HAVIP.
      */
     declare public /*out*/ readonly associatedInstances: pulumi.Output<string[]>;
     /**
-     * The creation time of the resource.
+     * The creation time of the resource
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * The description of the HaVip instance. The length is 2 to 256 characters.
+     * The description of the HAVIP. The description must be 1 to 255 characters in length and cannot start with `http://` or `https://`.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * The ID of the resource.
+     * The ID of the HaVip instance.
      */
     declare public /*out*/ readonly haVipId: pulumi.Output<string>;
     /**
-     * The name of the HaVip instance.
+     * The name of the HAVIP. The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
      */
     declare public readonly haVipName: pulumi.Output<string>;
     /**
-     * Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
+     * . Field 'havip_name' has been deprecated from provider version 1.259.0. New field 'ha_vip_name' instead.
      *
      * @deprecated Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
      */
     declare public readonly havipName: pulumi.Output<string>;
     /**
-     * The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
+     * The IP address of the HAVIP. The specified IP address must be an idle IP address that falls within the CIDR block of the vSwitch. If this parameter is not set, an idle IP address from the CIDR block of the vSwitch is randomly assigned to the HAVIP.
      */
     declare public readonly ipAddress: pulumi.Output<string>;
     /**
-     * The primary instance ID bound to HaVip.
+     * The primary instance ID bound to HaVip
      */
     declare public /*out*/ readonly masterInstanceId: pulumi.Output<string>;
     /**
-     * The ID of the resource group.
+     * The ID of the resource group to which the HAVIP belongs.
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
@@ -144,11 +148,11 @@ export class HaVipv2 extends pulumi.CustomResource {
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The VPC ID to which the HaVip instance belongs.
+     * The VPC ID to which the HaVip instance belongs
      */
     declare public /*out*/ readonly vpcId: pulumi.Output<string>;
     /**
-     * The switch ID to which the HaVip instance belongs.
+     * The switch ID to which the HaVip instance belongs
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
@@ -213,49 +217,51 @@ export class HaVipv2 extends pulumi.CustomResource {
  */
 export interface HaVipv2State {
     /**
-     * EIP bound to HaVip.
+     * EIP bound to HaVip
      */
     associatedEipAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The type of the instance that is bound to the HaVip. Value:-**EcsInstance**: ECS instance.-**NetworkInterface**: ENI instance.
+     * The type of the instance that is bound to the HaVip. Value:
+     * - `EcsInstance`: ECS instance.
+     * - `NetworkInterface`: ENI instance.
      */
     associatedInstanceType?: pulumi.Input<string>;
     /**
-     * An ECS instance that is bound to HaVip.
+     * The ID of the ECS instance to be associated with the HAVIP.
      */
     associatedInstances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The creation time of the resource.
+     * The creation time of the resource
      */
     createTime?: pulumi.Input<string>;
     /**
-     * The description of the HaVip instance. The length is 2 to 256 characters.
+     * The description of the HAVIP. The description must be 1 to 255 characters in length and cannot start with `http://` or `https://`.
      */
     description?: pulumi.Input<string>;
     /**
-     * The ID of the resource.
+     * The ID of the HaVip instance.
      */
     haVipId?: pulumi.Input<string>;
     /**
-     * The name of the HaVip instance.
+     * The name of the HAVIP. The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
      */
     haVipName?: pulumi.Input<string>;
     /**
-     * Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
+     * . Field 'havip_name' has been deprecated from provider version 1.259.0. New field 'ha_vip_name' instead.
      *
      * @deprecated Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
      */
     havipName?: pulumi.Input<string>;
     /**
-     * The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
+     * The IP address of the HAVIP. The specified IP address must be an idle IP address that falls within the CIDR block of the vSwitch. If this parameter is not set, an idle IP address from the CIDR block of the vSwitch is randomly assigned to the HAVIP.
      */
     ipAddress?: pulumi.Input<string>;
     /**
-     * The primary instance ID bound to HaVip.
+     * The primary instance ID bound to HaVip
      */
     masterInstanceId?: pulumi.Input<string>;
     /**
-     * The ID of the resource group.
+     * The ID of the resource group to which the HAVIP belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
@@ -267,11 +273,11 @@ export interface HaVipv2State {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The VPC ID to which the HaVip instance belongs.
+     * The VPC ID to which the HaVip instance belongs
      */
     vpcId?: pulumi.Input<string>;
     /**
-     * The switch ID to which the HaVip instance belongs.
+     * The switch ID to which the HaVip instance belongs
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
@@ -283,25 +289,25 @@ export interface HaVipv2State {
  */
 export interface HaVipv2Args {
     /**
-     * The description of the HaVip instance. The length is 2 to 256 characters.
+     * The description of the HAVIP. The description must be 1 to 255 characters in length and cannot start with `http://` or `https://`.
      */
     description?: pulumi.Input<string>;
     /**
-     * The name of the HaVip instance.
+     * The name of the HAVIP. The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
      */
     haVipName?: pulumi.Input<string>;
     /**
-     * Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
+     * . Field 'havip_name' has been deprecated from provider version 1.259.0. New field 'ha_vip_name' instead.
      *
      * @deprecated Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
      */
     havipName?: pulumi.Input<string>;
     /**
-     * The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
+     * The IP address of the HAVIP. The specified IP address must be an idle IP address that falls within the CIDR block of the vSwitch. If this parameter is not set, an idle IP address from the CIDR block of the vSwitch is randomly assigned to the HAVIP.
      */
     ipAddress?: pulumi.Input<string>;
     /**
-     * The ID of the resource group.
+     * The ID of the resource group to which the HAVIP belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
@@ -309,7 +315,7 @@ export interface HaVipv2Args {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The switch ID to which the HaVip instance belongs.
+     * The switch ID to which the HaVip instance belongs
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */

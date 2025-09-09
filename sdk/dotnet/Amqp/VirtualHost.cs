@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Amqp
 {
     /// <summary>
+    /// Amqp Virtual Host.
+    /// 
     /// Provides a RabbitMQ (AMQP) Virtual Host resource.
     /// 
     /// For information about RabbitMQ (AMQP) Virtual Host and how to use it, see [What is Virtual Host](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createvirtualhost).
@@ -25,24 +27,36 @@ namespace Pulumi.AliCloud.Amqp
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Amqp.Instance("default", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
-    ///         InstanceType = "professional",
-    ///         MaxTps = "1000",
-    ///         QueueCapacity = "50",
-    ///         SupportEip = true,
-    ///         MaxEipTps = "128",
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Amqp.Instance("default", new()
+    ///     {
+    ///         InstanceName = $"{name}-{@default.Result}",
+    ///         InstanceType = "enterprise",
+    ///         MaxTps = "3000",
+    ///         MaxConnections = 2000,
+    ///         QueueCapacity = "200",
     ///         PaymentType = "Subscription",
-    ///         Period = 1,
+    ///         RenewalStatus = "AutoRenewal",
+    ///         RenewalDuration = 1,
+    ///         RenewalDurationUnit = "Year",
+    ///         SupportEip = true,
     ///     });
     /// 
     ///     var defaultVirtualHost = new AliCloud.Amqp.VirtualHost("default", new()
     ///     {
-    ///         InstanceId = @default.Id,
-    ///         VirtualHostName = "tf-example",
+    ///         InstanceId = defaultInstance.Id,
+    ///         VirtualHostName = $"{name}-{@default.Result}",
     ///     });
     /// 
     /// });

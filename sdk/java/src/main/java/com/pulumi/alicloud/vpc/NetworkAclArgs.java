@@ -22,14 +22,14 @@ public final class NetworkAclArgs extends com.pulumi.resources.ResourceArgs {
     public static final NetworkAclArgs Empty = new NetworkAclArgs();
 
     /**
-     * The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+     * The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+     * @return The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> description() {
@@ -90,14 +90,16 @@ public final class NetworkAclArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+     * The name of the network ACL.
+     * The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */
     @Import(name="networkAclName")
     private @Nullable Output<String> networkAclName;
 
     /**
-     * @return The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+     * @return The name of the network ACL.
+     * The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */
     public Optional<Output<String>> networkAclName() {
@@ -120,14 +122,14 @@ public final class NetworkAclArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * SOURCE NetworkAcl specified by CopyNetworkAclEntries.
+     * SOURCE NetworkAcl specified by CopyNetworkAclEntries
      * 
      */
     @Import(name="sourceNetworkAclId")
     private @Nullable Output<String> sourceNetworkAclId;
 
     /**
-     * @return SOURCE NetworkAcl specified by CopyNetworkAclEntries.
+     * @return SOURCE NetworkAcl specified by CopyNetworkAclEntries
      * 
      */
     public Optional<Output<String>> sourceNetworkAclId() {
@@ -201,7 +203,7 @@ public final class NetworkAclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+         * @param description The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -212,7 +214,7 @@ public final class NetworkAclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+         * @param description The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -313,7 +315,8 @@ public final class NetworkAclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkAclName The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+         * @param networkAclName The name of the network ACL.
+         * The name must be 1 to 128 characters in length and cannot start with http:// or https.
          * 
          * @return builder
          * 
@@ -324,7 +327,8 @@ public final class NetworkAclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkAclName The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+         * @param networkAclName The name of the network ACL.
+         * The name must be 1 to 128 characters in length and cannot start with http:// or https.
          * 
          * @return builder
          * 
@@ -365,7 +369,7 @@ public final class NetworkAclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceNetworkAclId SOURCE NetworkAcl specified by CopyNetworkAclEntries.
+         * @param sourceNetworkAclId SOURCE NetworkAcl specified by CopyNetworkAclEntries
          * 
          * @return builder
          * 
@@ -376,7 +380,7 @@ public final class NetworkAclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceNetworkAclId SOURCE NetworkAcl specified by CopyNetworkAclEntries.
+         * @param sourceNetworkAclId SOURCE NetworkAcl specified by CopyNetworkAclEntries
          * 
          * @return builder
          * 

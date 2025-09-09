@@ -74,6 +74,9 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetInstancesInstanceResult']:
+        """
+        A list of Amqp Instances. Each element contains the following attributes:
+        """
         return pulumi.get(self, "instances")
 
     @_builtins.property
@@ -84,6 +87,9 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Instance names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -94,6 +100,9 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the instance.
+        """
         return pulumi.get(self, "status")
 
 
@@ -122,7 +131,7 @@ def get_instances(enable_details: Optional[_builtins.bool] = None,
     """
     This data source provides the Amqp Instances of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.128.0+.
+    > **NOTE:** Available since v1.128.0.
 
     ## Example Usage
 
@@ -132,21 +141,31 @@ def get_instances(enable_details: Optional[_builtins.bool] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    ids = alicloud.amqp.get_instances(ids=[
-        "amqp-abc12345",
-        "amqp-abc34567",
-    ])
-    pulumi.export("amqpInstanceId1", ids.instances[0].id)
-    name_regex = alicloud.amqp.get_instances(name_regex="^my-Instance")
-    pulumi.export("amqpInstanceId2", name_regex.instances[0].id)
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.amqp.Instance("default",
+        instance_name=name,
+        instance_type="enterprise",
+        max_tps="3000",
+        max_connections=2000,
+        queue_capacity="200",
+        payment_type="Subscription",
+        renewal_status="AutoRenewal",
+        renewal_duration=1,
+        renewal_duration_unit="Year",
+        support_eip=True)
+    ids = alicloud.amqp.get_instances_output(ids=[default.id])
+    pulumi.export("amqpInstanceId0", ids.instances[0].id)
     ```
 
 
-    :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param _builtins.bool enable_details: Whether to query the detailed list of resource attributes. Default value: `false`.
     :param Sequence[_builtins.str] ids: A list of Instance IDs.
     :param _builtins.str name_regex: A regex string to filter results by Instance name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param _builtins.str status: The status of the resource. Valid values: "DEPLOYING", "EXPIRED", "RELEASED", "SERVING".
+    :param _builtins.str status: The status of the resource. Valid values: `DEPLOYING`, `SERVING`, `EXPIRED`, `RELEASED`.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -175,7 +194,7 @@ def get_instances_output(enable_details: Optional[pulumi.Input[Optional[_builtin
     """
     This data source provides the Amqp Instances of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.128.0+.
+    > **NOTE:** Available since v1.128.0.
 
     ## Example Usage
 
@@ -185,21 +204,31 @@ def get_instances_output(enable_details: Optional[pulumi.Input[Optional[_builtin
     import pulumi
     import pulumi_alicloud as alicloud
 
-    ids = alicloud.amqp.get_instances(ids=[
-        "amqp-abc12345",
-        "amqp-abc34567",
-    ])
-    pulumi.export("amqpInstanceId1", ids.instances[0].id)
-    name_regex = alicloud.amqp.get_instances(name_regex="^my-Instance")
-    pulumi.export("amqpInstanceId2", name_regex.instances[0].id)
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.amqp.Instance("default",
+        instance_name=name,
+        instance_type="enterprise",
+        max_tps="3000",
+        max_connections=2000,
+        queue_capacity="200",
+        payment_type="Subscription",
+        renewal_status="AutoRenewal",
+        renewal_duration=1,
+        renewal_duration_unit="Year",
+        support_eip=True)
+    ids = alicloud.amqp.get_instances_output(ids=[default.id])
+    pulumi.export("amqpInstanceId0", ids.instances[0].id)
     ```
 
 
-    :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param _builtins.bool enable_details: Whether to query the detailed list of resource attributes. Default value: `false`.
     :param Sequence[_builtins.str] ids: A list of Instance IDs.
     :param _builtins.str name_regex: A regex string to filter results by Instance name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param _builtins.str status: The status of the resource. Valid values: "DEPLOYING", "EXPIRED", "RELEASED", "SERVING".
+    :param _builtins.str status: The status of the resource. Valid values: `DEPLOYING`, `SERVING`, `EXPIRED`, `RELEASED`.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details

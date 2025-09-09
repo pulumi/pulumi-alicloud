@@ -24,9 +24,9 @@ class SharedResourceArgs:
                  resource_type: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a SharedResource resource.
-        :param pulumi.Input[_builtins.str] resource_id: The resource ID need shared.
-        :param pulumi.Input[_builtins.str] resource_share_id: The resource share ID of resource manager.
-        :param pulumi.Input[_builtins.str] resource_type: The resource type of should shared. Valid values:
+        :param pulumi.Input[_builtins.str] resource_id: The ID of the shared resource.
+        :param pulumi.Input[_builtins.str] resource_share_id: The ID of the resource share.
+        :param pulumi.Input[_builtins.str] resource_type: The type of the shared resource. Valid values:
                - `VSwitch`.
                - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
                - The following types are added after v1.192.0: `PrefixList` and `Image`.
@@ -43,7 +43,7 @@ class SharedResourceArgs:
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The resource ID need shared.
+        The ID of the shared resource.
         """
         return pulumi.get(self, "resource_id")
 
@@ -55,7 +55,7 @@ class SharedResourceArgs:
     @pulumi.getter(name="resourceShareId")
     def resource_share_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The resource share ID of resource manager.
+        The ID of the resource share.
         """
         return pulumi.get(self, "resource_share_id")
 
@@ -67,7 +67,7 @@ class SharedResourceArgs:
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> pulumi.Input[_builtins.str]:
         """
-        The resource type of should shared. Valid values:
+        The type of the shared resource. Valid values:
         - `VSwitch`.
         - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
         - The following types are added after v1.192.0: `PrefixList` and `Image`.
@@ -86,15 +86,17 @@ class SharedResourceArgs:
 @pulumi.input_type
 class _SharedResourceState:
     def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_share_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_type: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SharedResource resources.
-        :param pulumi.Input[_builtins.str] resource_id: The resource ID need shared.
-        :param pulumi.Input[_builtins.str] resource_share_id: The resource share ID of resource manager.
-        :param pulumi.Input[_builtins.str] resource_type: The resource type of should shared. Valid values:
+        :param pulumi.Input[_builtins.str] create_time: (Available since v1.259.0) The time when the shared resource was associated with the resource share.
+        :param pulumi.Input[_builtins.str] resource_id: The ID of the shared resource.
+        :param pulumi.Input[_builtins.str] resource_share_id: The ID of the resource share.
+        :param pulumi.Input[_builtins.str] resource_type: The type of the shared resource. Valid values:
                - `VSwitch`.
                - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
                - The following types are added after v1.192.0: `PrefixList` and `Image`.
@@ -104,6 +106,8 @@ class _SharedResourceState:
                - For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](https://help.aliyun.com/zh/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing?spm=api-workbench.API%20Document.0.0.32fff3cdFveEud)
         :param pulumi.Input[_builtins.str] status: The status of the Shared Resource.
         """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if resource_id is not None:
             pulumi.set(__self__, "resource_id", resource_id)
         if resource_share_id is not None:
@@ -114,10 +118,22 @@ class _SharedResourceState:
             pulumi.set(__self__, "status", status)
 
     @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Available since v1.259.0) The time when the shared resource was associated with the resource share.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create_time", value)
+
+    @_builtins.property
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The resource ID need shared.
+        The ID of the shared resource.
         """
         return pulumi.get(self, "resource_id")
 
@@ -129,7 +145,7 @@ class _SharedResourceState:
     @pulumi.getter(name="resourceShareId")
     def resource_share_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The resource share ID of resource manager.
+        The ID of the resource share.
         """
         return pulumi.get(self, "resource_share_id")
 
@@ -141,7 +157,7 @@ class _SharedResourceState:
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The resource type of should shared. Valid values:
+        The type of the shared resource. Valid values:
         - `VSwitch`.
         - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
         - The following types are added after v1.192.0: `PrefixList` and `Image`.
@@ -193,24 +209,28 @@ class SharedResource(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tfexample"
-        example = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_network = alicloud.vpc.Network("example",
-            vpc_name=name,
+            name = "terraform-example"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=f"{name}-{default_integer['result']}",
             cidr_block="192.168.0.0/16")
-        example_switch = alicloud.vpc.Switch("example",
-            zone_id=example.zones[0].id,
+        default_switch = alicloud.vpc.Switch("default",
+            zone_id=default.zones[0].id,
             cidr_block="192.168.0.0/16",
-            vpc_id=example_network.id,
-            vswitch_name=name)
-        example_resource_share = alicloud.resourcemanager.ResourceShare("example", resource_share_name=name)
-        example_shared_resource = alicloud.resourcemanager.SharedResource("example",
-            resource_id=example_switch.id,
-            resource_share_id=example_resource_share.id,
+            vpc_id=default_network.id,
+            vswitch_name=f"{name}-{default_integer['result']}")
+        default_resource_share = alicloud.resourcemanager.ResourceShare("default", resource_share_name=f"{name}-{default_integer['result']}")
+        default_shared_resource = alicloud.resourcemanager.SharedResource("default",
+            resource_share_id=default_resource_share.id,
+            resource_id=default_switch.id,
             resource_type="VSwitch")
         ```
 
@@ -224,9 +244,9 @@ class SharedResource(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] resource_id: The resource ID need shared.
-        :param pulumi.Input[_builtins.str] resource_share_id: The resource share ID of resource manager.
-        :param pulumi.Input[_builtins.str] resource_type: The resource type of should shared. Valid values:
+        :param pulumi.Input[_builtins.str] resource_id: The ID of the shared resource.
+        :param pulumi.Input[_builtins.str] resource_share_id: The ID of the resource share.
+        :param pulumi.Input[_builtins.str] resource_type: The type of the shared resource. Valid values:
                - `VSwitch`.
                - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
                - The following types are added after v1.192.0: `PrefixList` and `Image`.
@@ -255,24 +275,28 @@ class SharedResource(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tfexample"
-        example = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_network = alicloud.vpc.Network("example",
-            vpc_name=name,
+            name = "terraform-example"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=f"{name}-{default_integer['result']}",
             cidr_block="192.168.0.0/16")
-        example_switch = alicloud.vpc.Switch("example",
-            zone_id=example.zones[0].id,
+        default_switch = alicloud.vpc.Switch("default",
+            zone_id=default.zones[0].id,
             cidr_block="192.168.0.0/16",
-            vpc_id=example_network.id,
-            vswitch_name=name)
-        example_resource_share = alicloud.resourcemanager.ResourceShare("example", resource_share_name=name)
-        example_shared_resource = alicloud.resourcemanager.SharedResource("example",
-            resource_id=example_switch.id,
-            resource_share_id=example_resource_share.id,
+            vpc_id=default_network.id,
+            vswitch_name=f"{name}-{default_integer['result']}")
+        default_resource_share = alicloud.resourcemanager.ResourceShare("default", resource_share_name=f"{name}-{default_integer['result']}")
+        default_shared_resource = alicloud.resourcemanager.SharedResource("default",
+            resource_share_id=default_resource_share.id,
+            resource_id=default_switch.id,
             resource_type="VSwitch")
         ```
 
@@ -320,6 +344,7 @@ class SharedResource(pulumi.CustomResource):
             if resource_type is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_type'")
             __props__.__dict__["resource_type"] = resource_type
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["status"] = None
         super(SharedResource, __self__).__init__(
             'alicloud:resourcemanager/sharedResource:SharedResource',
@@ -331,6 +356,7 @@ class SharedResource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[_builtins.str]] = None,
             resource_id: Optional[pulumi.Input[_builtins.str]] = None,
             resource_share_id: Optional[pulumi.Input[_builtins.str]] = None,
             resource_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -342,9 +368,10 @@ class SharedResource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] resource_id: The resource ID need shared.
-        :param pulumi.Input[_builtins.str] resource_share_id: The resource share ID of resource manager.
-        :param pulumi.Input[_builtins.str] resource_type: The resource type of should shared. Valid values:
+        :param pulumi.Input[_builtins.str] create_time: (Available since v1.259.0) The time when the shared resource was associated with the resource share.
+        :param pulumi.Input[_builtins.str] resource_id: The ID of the shared resource.
+        :param pulumi.Input[_builtins.str] resource_share_id: The ID of the resource share.
+        :param pulumi.Input[_builtins.str] resource_type: The type of the shared resource. Valid values:
                - `VSwitch`.
                - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
                - The following types are added after v1.192.0: `PrefixList` and `Image`.
@@ -358,6 +385,7 @@ class SharedResource(pulumi.CustomResource):
 
         __props__ = _SharedResourceState.__new__(_SharedResourceState)
 
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["resource_id"] = resource_id
         __props__.__dict__["resource_share_id"] = resource_share_id
         __props__.__dict__["resource_type"] = resource_type
@@ -365,10 +393,18 @@ class SharedResource(pulumi.CustomResource):
         return SharedResource(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since v1.259.0) The time when the shared resource was associated with the resource share.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The resource ID need shared.
+        The ID of the shared resource.
         """
         return pulumi.get(self, "resource_id")
 
@@ -376,7 +412,7 @@ class SharedResource(pulumi.CustomResource):
     @pulumi.getter(name="resourceShareId")
     def resource_share_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The resource share ID of resource manager.
+        The ID of the resource share.
         """
         return pulumi.get(self, "resource_share_id")
 
@@ -384,7 +420,7 @@ class SharedResource(pulumi.CustomResource):
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The resource type of should shared. Valid values:
+        The type of the shared resource. Valid values:
         - `VSwitch`.
         - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
         - The following types are added after v1.192.0: `PrefixList` and `Image`.

@@ -11,6 +11,10 @@ from .collection_policy import *
 from .etl import *
 from .get_alerts import *
 from .get_etls import *
+from .get_logtail_configs import *
+from .get_machine_groups import *
+from .logtail_config import *
+from .machine_group import *
 from .oss_export_sink import *
 from .scheduled_sql import *
 from ._inputs import *

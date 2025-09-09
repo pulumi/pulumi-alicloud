@@ -19,14 +19,14 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
     public static final FlowLogArgs Empty = new FlowLogArgs();
 
     /**
-     * Data aggregation interval
+     * The sampling interval of the flow log. Unit: seconds. Valid values: 1, 5, and 10 (default).
      * 
      */
     @Import(name="aggregationInterval")
     private @Nullable Output<String> aggregationInterval;
 
     /**
-     * @return Data aggregation interval
+     * @return The sampling interval of the flow log. Unit: seconds. Valid values: 1, 5, and 10 (default).
      * 
      */
     public Optional<Output<String>> aggregationInterval() {
@@ -79,14 +79,14 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the logstore.
+     * The Logstore that stores the captured traffic data.
      * 
      */
     @Import(name="logStoreName", required=true)
     private Output<String> logStoreName;
 
     /**
-     * @return The name of the logstore.
+     * @return The Logstore that stores the captured traffic data.
      * 
      */
     public Output<String> logStoreName() {
@@ -94,14 +94,14 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the project.
+     * The project that manages the captured traffic data.
      * 
      */
     @Import(name="projectName", required=true)
     private Output<String> projectName;
 
     /**
-     * @return The name of the project.
+     * @return The project that manages the captured traffic data.
      * 
      */
     public Output<String> projectName() {
@@ -266,7 +266,7 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aggregationInterval Data aggregation interval
+         * @param aggregationInterval The sampling interval of the flow log. Unit: seconds. Valid values: 1, 5, and 10 (default).
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aggregationInterval Data aggregation interval
+         * @param aggregationInterval The sampling interval of the flow log. Unit: seconds. Valid values: 1, 5, and 10 (default).
          * 
          * @return builder
          * 
@@ -350,7 +350,7 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logStoreName The name of the logstore.
+         * @param logStoreName The Logstore that stores the captured traffic data.
          * 
          * @return builder
          * 
@@ -361,7 +361,7 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logStoreName The name of the logstore.
+         * @param logStoreName The Logstore that stores the captured traffic data.
          * 
          * @return builder
          * 
@@ -371,7 +371,7 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectName The name of the project.
+         * @param projectName The project that manages the captured traffic data.
          * 
          * @return builder
          * 
@@ -382,7 +382,7 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectName The name of the project.
+         * @param projectName The project that manages the captured traffic data.
          * 
          * @return builder
          * 

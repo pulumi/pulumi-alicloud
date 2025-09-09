@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -26,17 +27,18 @@ public final class GetAccountsResult {
      * 
      */
     private String id;
-    /**
-     * @return A list of account IDs.
-     * 
-     */
     private List<String> ids;
     private @Nullable String outputFile;
     /**
-     * @return The status of the member account.
+     * @return The status of the member.
      * 
      */
     private @Nullable String status;
+    /**
+     * @return (Available since v1.259.0) The tags that are added to the member.
+     * 
+     */
+    private @Nullable Map<String,String> tags;
 
     private GetAccountsResult() {}
     /**
@@ -56,10 +58,6 @@ public final class GetAccountsResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return A list of account IDs.
-     * 
-     */
     public List<String> ids() {
         return this.ids;
     }
@@ -67,11 +65,18 @@ public final class GetAccountsResult {
         return Optional.ofNullable(this.outputFile);
     }
     /**
-     * @return The status of the member account.
+     * @return The status of the member.
      * 
      */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
+    }
+    /**
+     * @return (Available since v1.259.0) The tags that are added to the member.
+     * 
+     */
+    public Map<String,String> tags() {
+        return this.tags == null ? Map.of() : this.tags;
     }
 
     public static Builder builder() {
@@ -89,6 +94,7 @@ public final class GetAccountsResult {
         private List<String> ids;
         private @Nullable String outputFile;
         private @Nullable String status;
+        private @Nullable Map<String,String> tags;
         public Builder() {}
         public Builder(GetAccountsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -98,6 +104,7 @@ public final class GetAccountsResult {
     	      this.ids = defaults.ids;
     	      this.outputFile = defaults.outputFile;
     	      this.status = defaults.status;
+    	      this.tags = defaults.tags;
         }
 
         @CustomType.Setter
@@ -148,6 +155,12 @@ public final class GetAccountsResult {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
+        public Builder tags(@Nullable Map<String,String> tags) {
+
+            this.tags = tags;
+            return this;
+        }
         public GetAccountsResult build() {
             final var _resultValue = new GetAccountsResult();
             _resultValue.accounts = accounts;
@@ -156,6 +169,7 @@ public final class GetAccountsResult {
             _resultValue.ids = ids;
             _resultValue.outputFile = outputFile;
             _resultValue.status = status;
+            _resultValue.tags = tags;
             return _resultValue;
         }
     }

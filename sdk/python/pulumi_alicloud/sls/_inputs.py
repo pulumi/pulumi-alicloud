@@ -57,6 +57,10 @@ __all__ = [
     'EtlConfigurationArgsDict',
     'EtlConfigurationSinkArgs',
     'EtlConfigurationSinkArgsDict',
+    'LogtailConfigOutputDetailArgs',
+    'LogtailConfigOutputDetailArgsDict',
+    'MachineGroupGroupAttributeArgs',
+    'MachineGroupGroupAttributeArgsDict',
     'OssExportSinkConfigurationArgs',
     'OssExportSinkConfigurationArgsDict',
     'OssExportSinkConfigurationSinkArgs',
@@ -2236,6 +2240,130 @@ class EtlConfigurationSinkArgs:
     @role_arn.setter
     def role_arn(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "role_arn", value)
+
+
+if not MYPY:
+    class LogtailConfigOutputDetailArgsDict(TypedDict):
+        endpoint: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The endpoint of the log project.
+        """
+        logstore_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the output target logstore.
+        """
+        region: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Region
+        """
+elif False:
+    LogtailConfigOutputDetailArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class LogtailConfigOutputDetailArgs:
+    def __init__(__self__, *,
+                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 logstore_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] endpoint: The endpoint of the log project.
+        :param pulumi.Input[_builtins.str] logstore_name: The name of the output target logstore.
+        :param pulumi.Input[_builtins.str] region: Region
+        """
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if logstore_name is not None:
+            pulumi.set(__self__, "logstore_name", logstore_name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The endpoint of the log project.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="logstoreName")
+    def logstore_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the output target logstore.
+        """
+        return pulumi.get(self, "logstore_name")
+
+    @logstore_name.setter
+    def logstore_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "logstore_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Region
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+
+if not MYPY:
+    class MachineGroupGroupAttributeArgsDict(TypedDict):
+        external_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The external management system identification on which the machine group depends.
+        """
+        group_topic: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The log topic of the machine group.
+        """
+elif False:
+    MachineGroupGroupAttributeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MachineGroupGroupAttributeArgs:
+    def __init__(__self__, *,
+                 external_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 group_topic: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] external_name: The external management system identification on which the machine group depends.
+        :param pulumi.Input[_builtins.str] group_topic: The log topic of the machine group.
+        """
+        if external_name is not None:
+            pulumi.set(__self__, "external_name", external_name)
+        if group_topic is not None:
+            pulumi.set(__self__, "group_topic", group_topic)
+
+    @_builtins.property
+    @pulumi.getter(name="externalName")
+    def external_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The external management system identification on which the machine group depends.
+        """
+        return pulumi.get(self, "external_name")
+
+    @external_name.setter
+    def external_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "external_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="groupTopic")
+    def group_topic(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The log topic of the machine group.
+        """
+        return pulumi.get(self, "group_topic")
+
+    @group_topic.setter
+    def group_topic(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "group_topic", value)
 
 
 if not MYPY:

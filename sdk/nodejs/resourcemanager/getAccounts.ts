@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Resource Manager Accounts of the current Alibaba Cloud user.
  *
- * > **NOTE:**  Available in 1.86.0+.
+ * > **NOTE:** Available since v1.86.0.
  *
  * ## Example Usage
  *
@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const _default = alicloud.resourcemanager.getAccounts({});
- * export const firstAccountId = _default.then(_default => _default.accounts?.[0]?.id);
+ * export const resourceManagerAccountId0 = _default.then(_default => _default.accounts?.[0]?.id);
  * ```
  */
 export function getAccounts(args?: GetAccountsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountsResult> {
@@ -29,6 +29,7 @@ export function getAccounts(args?: GetAccountsArgs, opts?: pulumi.InvokeOptions)
         "ids": args.ids,
         "outputFile": args.outputFile,
         "status": args.status,
+        "tags": args.tags,
     }, opts);
 }
 
@@ -37,11 +38,11 @@ export function getAccounts(args?: GetAccountsArgs, opts?: pulumi.InvokeOptions)
  */
 export interface GetAccountsArgs {
     /**
-     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      */
     enableDetails?: boolean;
     /**
-     * A list of account IDs.
+     * A list of Account IDs.
      */
     ids?: string[];
     /**
@@ -49,9 +50,13 @@ export interface GetAccountsArgs {
      */
     outputFile?: string;
     /**
-     * The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
+     * The status of account. Valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, `PromoteVerifying`.
      */
     status?: string;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -67,20 +72,21 @@ export interface GetAccountsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * A list of account IDs.
-     */
     readonly ids: string[];
     readonly outputFile?: string;
     /**
-     * The status of the member account.
+     * The status of the member.
      */
     readonly status?: string;
+    /**
+     * (Available since v1.259.0) The tags that are added to the member.
+     */
+    readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the Resource Manager Accounts of the current Alibaba Cloud user.
  *
- * > **NOTE:**  Available in 1.86.0+.
+ * > **NOTE:** Available since v1.86.0.
  *
  * ## Example Usage
  *
@@ -89,7 +95,7 @@ export interface GetAccountsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const _default = alicloud.resourcemanager.getAccounts({});
- * export const firstAccountId = _default.then(_default => _default.accounts?.[0]?.id);
+ * export const resourceManagerAccountId0 = _default.then(_default => _default.accounts?.[0]?.id);
  * ```
  */
 export function getAccountsOutput(args?: GetAccountsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountsResult> {
@@ -100,6 +106,7 @@ export function getAccountsOutput(args?: GetAccountsOutputArgs, opts?: pulumi.In
         "ids": args.ids,
         "outputFile": args.outputFile,
         "status": args.status,
+        "tags": args.tags,
     }, opts);
 }
 
@@ -108,11 +115,11 @@ export function getAccountsOutput(args?: GetAccountsOutputArgs, opts?: pulumi.In
  */
 export interface GetAccountsOutputArgs {
     /**
-     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      */
     enableDetails?: pulumi.Input<boolean>;
     /**
-     * A list of account IDs.
+     * A list of Account IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -120,7 +127,11 @@ export interface GetAccountsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
+     * The status of account. Valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, `PromoteVerifying`.
      */
     status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

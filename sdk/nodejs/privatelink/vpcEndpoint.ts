@@ -96,7 +96,9 @@ export class VpcEndpoint extends pulumi.CustomResource {
     }
 
     /**
-     * The IP address version.
+     * The IP address version. Valid values:
+     * - `IPv4` (default): IPv4.
+     * - `DualStack`: dual-stack.
      */
     declare public readonly addressIpVersion: pulumi.Output<string>;
     /**
@@ -255,7 +257,9 @@ export class VpcEndpoint extends pulumi.CustomResource {
  */
 export interface VpcEndpointState {
     /**
-     * The IP address version.
+     * The IP address version. Valid values:
+     * - `IPv4` (default): IPv4.
+     * - `DualStack`: dual-stack.
      */
     addressIpVersion?: pulumi.Input<string>;
     /**
@@ -349,7 +353,9 @@ export interface VpcEndpointState {
  */
 export interface VpcEndpointArgs {
     /**
-     * The IP address version.
+     * The IP address version. Valid values:
+     * - `IPv4` (default): IPv4.
+     * - `DualStack`: dual-stack.
      */
     addressIpVersion?: pulumi.Input<string>;
     /**

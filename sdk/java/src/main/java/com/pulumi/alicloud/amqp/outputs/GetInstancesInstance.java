@@ -13,12 +13,12 @@ import java.util.Objects;
 @CustomType
 public final class GetInstancesInstance {
     /**
-     * @return OrderCreateTime.
+     * @return The timestamp that indicates when the order was created.
      * 
      */
     private String createTime;
     /**
-     * @return ExpireTime.
+     * @return The timestamp that indicates when the instance expires.
      * 
      */
     private String expireTime;
@@ -43,56 +43,56 @@ public final class GetInstancesInstance {
      */
     private String instanceType;
     /**
-     * @return The Pay-as-You-Type Values Include: the Subscription of a Pre-Paid.
+     * @return The billing method of the instance. **Note:** `payment_type` takes effect only if `enable_details` is set to `true`.
      * 
      */
     private String paymentType;
     /**
-     * @return The private endPoint.
+     * @return The virtual private cloud (VPC) endpoint of the instance.
      * 
      */
     private String privateEndPoint;
     /**
-     * @return The public dndpoint.
+     * @return The public endpoint of the instance.
      * 
      */
     private String publicEndpoint;
     /**
-     * @return Renewal duration.
+     * @return Auto renewal period of an instance. **Note:** `renewal_duration` takes effect only if `enable_details` is set to `true`.
      * 
      */
     private Integer renewalDuration;
     /**
-     * @return Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
+     * @return Automatic renewal period unit. **Note:** `renewal_duration_unit` takes effect only if `enable_details` is set to `true`.
      * 
      */
     private String renewalDurationUnit;
     /**
-     * @return Renew status.
+     * @return Whether to renew an instance automatically or not. **Note:** `renewal_status` takes effect only if `enable_details` is set to `true`.
      * 
      */
     private String renewalStatus;
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `DEPLOYING`, `SERVING`, `EXPIRED`, `RELEASED`.
      * 
      */
     private String status;
     /**
-     * @return Whether to support eip.
+     * @return Indicates whether the instance supports elastic IP addresses (EIPs).
      * 
      */
     private Boolean supportEip;
 
     private GetInstancesInstance() {}
     /**
-     * @return OrderCreateTime.
+     * @return The timestamp that indicates when the order was created.
      * 
      */
     public String createTime() {
         return this.createTime;
     }
     /**
-     * @return ExpireTime.
+     * @return The timestamp that indicates when the instance expires.
      * 
      */
     public String expireTime() {
@@ -127,56 +127,56 @@ public final class GetInstancesInstance {
         return this.instanceType;
     }
     /**
-     * @return The Pay-as-You-Type Values Include: the Subscription of a Pre-Paid.
+     * @return The billing method of the instance. **Note:** `payment_type` takes effect only if `enable_details` is set to `true`.
      * 
      */
     public String paymentType() {
         return this.paymentType;
     }
     /**
-     * @return The private endPoint.
+     * @return The virtual private cloud (VPC) endpoint of the instance.
      * 
      */
     public String privateEndPoint() {
         return this.privateEndPoint;
     }
     /**
-     * @return The public dndpoint.
+     * @return The public endpoint of the instance.
      * 
      */
     public String publicEndpoint() {
         return this.publicEndpoint;
     }
     /**
-     * @return Renewal duration.
+     * @return Auto renewal period of an instance. **Note:** `renewal_duration` takes effect only if `enable_details` is set to `true`.
      * 
      */
     public Integer renewalDuration() {
         return this.renewalDuration;
     }
     /**
-     * @return Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
+     * @return Automatic renewal period unit. **Note:** `renewal_duration_unit` takes effect only if `enable_details` is set to `true`.
      * 
      */
     public String renewalDurationUnit() {
         return this.renewalDurationUnit;
     }
     /**
-     * @return Renew status.
+     * @return Whether to renew an instance automatically or not. **Note:** `renewal_status` takes effect only if `enable_details` is set to `true`.
      * 
      */
     public String renewalStatus() {
         return this.renewalStatus;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `DEPLOYING`, `SERVING`, `EXPIRED`, `RELEASED`.
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return Whether to support eip.
+     * @return Indicates whether the instance supports elastic IP addresses (EIPs).
      * 
      */
     public Boolean supportEip() {

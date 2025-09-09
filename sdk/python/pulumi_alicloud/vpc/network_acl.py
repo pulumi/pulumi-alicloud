@@ -35,13 +35,14 @@ class NetworkAclArgs:
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the associated VPC.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
-        :param pulumi.Input[_builtins.str] description: The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+        :param pulumi.Input[_builtins.str] description: The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclEgressAclEntryArgs']]] egress_acl_entries: Out direction rule information. See `egress_acl_entries` below.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclIngressAclEntryArgs']]] ingress_acl_entries: Inward direction rule information. See `ingress_acl_entries` below.
         :param pulumi.Input[_builtins.str] name: . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
-        :param pulumi.Input[_builtins.str] network_acl_name: The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+        :param pulumi.Input[_builtins.str] network_acl_name: The name of the network ACL.
+               The name must be 1 to 128 characters in length and cannot start with http:// or https.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]] resources: The associated resource. See `resources` below.
-        :param pulumi.Input[_builtins.str] source_network_acl_id: SOURCE NetworkAcl specified by CopyNetworkAclEntries.
+        :param pulumi.Input[_builtins.str] source_network_acl_id: SOURCE NetworkAcl specified by CopyNetworkAclEntries
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of this resource.
         """
         pulumi.set(__self__, "vpc_id", vpc_id)
@@ -83,7 +84,7 @@ class NetworkAclArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+        The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
@@ -132,7 +133,8 @@ class NetworkAclArgs:
     @pulumi.getter(name="networkAclName")
     def network_acl_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+        The name of the network ACL.
+        The name must be 1 to 128 characters in length and cannot start with http:// or https.
         """
         return pulumi.get(self, "network_acl_name")
 
@@ -156,7 +158,7 @@ class NetworkAclArgs:
     @pulumi.getter(name="sourceNetworkAclId")
     def source_network_acl_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        SOURCE NetworkAcl specified by CopyNetworkAclEntries.
+        SOURCE NetworkAcl specified by CopyNetworkAclEntries
         """
         return pulumi.get(self, "source_network_acl_id")
 
@@ -194,13 +196,14 @@ class _NetworkAclState:
         """
         Input properties used for looking up and filtering NetworkAcl resources.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
-        :param pulumi.Input[_builtins.str] description: The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+        :param pulumi.Input[_builtins.str] description: The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclEgressAclEntryArgs']]] egress_acl_entries: Out direction rule information. See `egress_acl_entries` below.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclIngressAclEntryArgs']]] ingress_acl_entries: Inward direction rule information. See `ingress_acl_entries` below.
         :param pulumi.Input[_builtins.str] name: . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
-        :param pulumi.Input[_builtins.str] network_acl_name: The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+        :param pulumi.Input[_builtins.str] network_acl_name: The name of the network ACL.
+               The name must be 1 to 128 characters in length and cannot start with http:// or https.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]] resources: The associated resource. See `resources` below.
-        :param pulumi.Input[_builtins.str] source_network_acl_id: SOURCE NetworkAcl specified by CopyNetworkAclEntries.
+        :param pulumi.Input[_builtins.str] source_network_acl_id: SOURCE NetworkAcl specified by CopyNetworkAclEntries
         :param pulumi.Input[_builtins.str] status: The state of the network ACL.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of this resource.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the associated VPC.
@@ -249,7 +252,7 @@ class _NetworkAclState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+        The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
@@ -298,7 +301,8 @@ class _NetworkAclState:
     @pulumi.getter(name="networkAclName")
     def network_acl_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+        The name of the network ACL.
+        The name must be 1 to 128 characters in length and cannot start with http:// or https.
         """
         return pulumi.get(self, "network_acl_name")
 
@@ -322,7 +326,7 @@ class _NetworkAclState:
     @pulumi.getter(name="sourceNetworkAclId")
     def source_network_acl_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        SOURCE NetworkAcl specified by CopyNetworkAclEntries.
+        SOURCE NetworkAcl specified by CopyNetworkAclEntries
         """
         return pulumi.get(self, "source_network_acl_id")
 
@@ -386,7 +390,9 @@ class NetworkAcl(pulumi.CustomResource):
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides a VPC Network Acl resource. Network Access Control List (ACL) is a Network Access Control function in VPC. You can customize the network ACL rules and bind the network ACL to the switch to control the traffic of ECS instances in the switch.
+        Provides a VPC Network Acl resource.
+
+        Network Access Control List (ACL) is a Network Access Control function in VPC. You can customize the network ACL rules and bind the network ACL to the switch to control the traffic of ECS instances in the switch.
 
         For information about VPC Network Acl and how to use it, see [What is Network Acl](https://www.alibabacloud.com/help/en/ens/latest/createnetworkacl).
 
@@ -449,13 +455,14 @@ class NetworkAcl(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+        :param pulumi.Input[_builtins.str] description: The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEgressAclEntryArgs', 'NetworkAclEgressAclEntryArgsDict']]]] egress_acl_entries: Out direction rule information. See `egress_acl_entries` below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclIngressAclEntryArgs', 'NetworkAclIngressAclEntryArgsDict']]]] ingress_acl_entries: Inward direction rule information. See `ingress_acl_entries` below.
         :param pulumi.Input[_builtins.str] name: . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
-        :param pulumi.Input[_builtins.str] network_acl_name: The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+        :param pulumi.Input[_builtins.str] network_acl_name: The name of the network ACL.
+               The name must be 1 to 128 characters in length and cannot start with http:// or https.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclResourceArgs', 'NetworkAclResourceArgsDict']]]] resources: The associated resource. See `resources` below.
-        :param pulumi.Input[_builtins.str] source_network_acl_id: SOURCE NetworkAcl specified by CopyNetworkAclEntries.
+        :param pulumi.Input[_builtins.str] source_network_acl_id: SOURCE NetworkAcl specified by CopyNetworkAclEntries
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of this resource.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the associated VPC.
                
@@ -468,7 +475,9 @@ class NetworkAcl(pulumi.CustomResource):
                  args: NetworkAclArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a VPC Network Acl resource. Network Access Control List (ACL) is a Network Access Control function in VPC. You can customize the network ACL rules and bind the network ACL to the switch to control the traffic of ECS instances in the switch.
+        Provides a VPC Network Acl resource.
+
+        Network Access Control List (ACL) is a Network Access Control function in VPC. You can customize the network ACL rules and bind the network ACL to the switch to control the traffic of ECS instances in the switch.
 
         For information about VPC Network Acl and how to use it, see [What is Network Acl](https://www.alibabacloud.com/help/en/ens/latest/createnetworkacl).
 
@@ -604,13 +613,14 @@ class NetworkAcl(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
-        :param pulumi.Input[_builtins.str] description: The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+        :param pulumi.Input[_builtins.str] description: The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEgressAclEntryArgs', 'NetworkAclEgressAclEntryArgsDict']]]] egress_acl_entries: Out direction rule information. See `egress_acl_entries` below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclIngressAclEntryArgs', 'NetworkAclIngressAclEntryArgsDict']]]] ingress_acl_entries: Inward direction rule information. See `ingress_acl_entries` below.
         :param pulumi.Input[_builtins.str] name: . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
-        :param pulumi.Input[_builtins.str] network_acl_name: The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+        :param pulumi.Input[_builtins.str] network_acl_name: The name of the network ACL.
+               The name must be 1 to 128 characters in length and cannot start with http:// or https.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclResourceArgs', 'NetworkAclResourceArgsDict']]]] resources: The associated resource. See `resources` below.
-        :param pulumi.Input[_builtins.str] source_network_acl_id: SOURCE NetworkAcl specified by CopyNetworkAclEntries.
+        :param pulumi.Input[_builtins.str] source_network_acl_id: SOURCE NetworkAcl specified by CopyNetworkAclEntries
         :param pulumi.Input[_builtins.str] status: The state of the network ACL.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of this resource.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the associated VPC.
@@ -646,7 +656,7 @@ class NetworkAcl(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
+        The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
@@ -679,7 +689,8 @@ class NetworkAcl(pulumi.CustomResource):
     @pulumi.getter(name="networkAclName")
     def network_acl_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
+        The name of the network ACL.
+        The name must be 1 to 128 characters in length and cannot start with http:// or https.
         """
         return pulumi.get(self, "network_acl_name")
 
@@ -695,7 +706,7 @@ class NetworkAcl(pulumi.CustomResource):
     @pulumi.getter(name="sourceNetworkAclId")
     def source_network_acl_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        SOURCE NetworkAcl specified by CopyNetworkAclEntries.
+        SOURCE NetworkAcl specified by CopyNetworkAclEntries
         """
         return pulumi.get(self, "source_network_acl_id")
 

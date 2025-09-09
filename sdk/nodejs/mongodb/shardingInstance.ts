@@ -126,6 +126,10 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     declare public readonly backupPeriods: pulumi.Output<string[]>;
     /**
+     * The retention period of full backups.
+     */
+    declare public readonly backupRetentionPeriod: pulumi.Output<number>;
+    /**
      * The backup retention policy configured for the instance. Valid values:
      */
     declare public readonly backupRetentionPolicyOnClusterDeletion: pulumi.Output<number | undefined>;
@@ -141,6 +145,11 @@ export class ShardingInstance extends pulumi.CustomResource {
      * Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
      */
     declare public readonly dbInstanceReleaseProtection: pulumi.Output<boolean | undefined>;
+    /**
+     * Specifies whether to enable the log backup feature. Valid values:
+     * - `1 `: The log backup feature is enabled.
+     */
+    declare public readonly enableBackupLog: pulumi.Output<number>;
     /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
      */
@@ -165,6 +174,18 @@ export class ShardingInstance extends pulumi.CustomResource {
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
     declare public readonly kmsEncryptionContext: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `logBackupRetentionPeriod` is valid only when `enableBackupLog` is set to `1`.
+     */
+    declare public readonly logBackupRetentionPeriod: pulumi.Output<number>;
+    /**
+     * The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+     */
+    declare public readonly maintainEndTime: pulumi.Output<string>;
+    /**
+     * The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+     */
+    declare public readonly maintainStartTime: pulumi.Output<string>;
     /**
      * The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
      */
@@ -227,6 +248,17 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     declare public readonly snapshotBackupType: pulumi.Output<string>;
     /**
+     * Actions performed on SSL functions. Valid values:
+     * - `Open`: turn on SSL encryption.
+     * - `Close`: turn off SSL encryption.
+     * - `Update`: update SSL certificate.
+     */
+    declare public readonly sslAction: pulumi.Output<string | undefined>;
+    /**
+     * (Available since v1.259.0) The status of the SSL feature.
+     */
+    declare public /*out*/ readonly sslStatus: pulumi.Output<string>;
+    /**
      * The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
      */
     declare public readonly storageEngine: pulumi.Output<string>;
@@ -273,16 +305,21 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["autoRenew"] = state?.autoRenew;
             resourceInputs["backupInterval"] = state?.backupInterval;
             resourceInputs["backupPeriods"] = state?.backupPeriods;
+            resourceInputs["backupRetentionPeriod"] = state?.backupRetentionPeriod;
             resourceInputs["backupRetentionPolicyOnClusterDeletion"] = state?.backupRetentionPolicyOnClusterDeletion;
             resourceInputs["backupTime"] = state?.backupTime;
             resourceInputs["configServerLists"] = state?.configServerLists;
             resourceInputs["dbInstanceReleaseProtection"] = state?.dbInstanceReleaseProtection;
+            resourceInputs["enableBackupLog"] = state?.enableBackupLog;
             resourceInputs["engineVersion"] = state?.engineVersion;
             resourceInputs["globalSecurityGroupLists"] = state?.globalSecurityGroupLists;
             resourceInputs["hiddenZoneId"] = state?.hiddenZoneId;
             resourceInputs["instanceChargeType"] = state?.instanceChargeType;
             resourceInputs["kmsEncryptedPassword"] = state?.kmsEncryptedPassword;
             resourceInputs["kmsEncryptionContext"] = state?.kmsEncryptionContext;
+            resourceInputs["logBackupRetentionPeriod"] = state?.logBackupRetentionPeriod;
+            resourceInputs["maintainEndTime"] = state?.maintainEndTime;
+            resourceInputs["maintainStartTime"] = state?.maintainStartTime;
             resourceInputs["mongoLists"] = state?.mongoLists;
             resourceInputs["name"] = state?.name;
             resourceInputs["networkType"] = state?.networkType;
@@ -297,6 +334,8 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["securityIpLists"] = state?.securityIpLists;
             resourceInputs["shardLists"] = state?.shardLists;
             resourceInputs["snapshotBackupType"] = state?.snapshotBackupType;
+            resourceInputs["sslAction"] = state?.sslAction;
+            resourceInputs["sslStatus"] = state?.sslStatus;
             resourceInputs["storageEngine"] = state?.storageEngine;
             resourceInputs["storageType"] = state?.storageType;
             resourceInputs["tags"] = state?.tags;
@@ -319,16 +358,21 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["autoRenew"] = args?.autoRenew;
             resourceInputs["backupInterval"] = args?.backupInterval;
             resourceInputs["backupPeriods"] = args?.backupPeriods;
+            resourceInputs["backupRetentionPeriod"] = args?.backupRetentionPeriod;
             resourceInputs["backupRetentionPolicyOnClusterDeletion"] = args?.backupRetentionPolicyOnClusterDeletion;
             resourceInputs["backupTime"] = args?.backupTime;
             resourceInputs["configServerLists"] = args?.configServerLists;
             resourceInputs["dbInstanceReleaseProtection"] = args?.dbInstanceReleaseProtection;
+            resourceInputs["enableBackupLog"] = args?.enableBackupLog;
             resourceInputs["engineVersion"] = args?.engineVersion;
             resourceInputs["globalSecurityGroupLists"] = args?.globalSecurityGroupLists;
             resourceInputs["hiddenZoneId"] = args?.hiddenZoneId;
             resourceInputs["instanceChargeType"] = args?.instanceChargeType;
             resourceInputs["kmsEncryptedPassword"] = args?.kmsEncryptedPassword;
             resourceInputs["kmsEncryptionContext"] = args?.kmsEncryptionContext;
+            resourceInputs["logBackupRetentionPeriod"] = args?.logBackupRetentionPeriod;
+            resourceInputs["maintainEndTime"] = args?.maintainEndTime;
+            resourceInputs["maintainStartTime"] = args?.maintainStartTime;
             resourceInputs["mongoLists"] = args?.mongoLists;
             resourceInputs["name"] = args?.name;
             resourceInputs["networkType"] = args?.networkType;
@@ -342,6 +386,7 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["securityIpLists"] = args?.securityIpLists;
             resourceInputs["shardLists"] = args?.shardLists;
             resourceInputs["snapshotBackupType"] = args?.snapshotBackupType;
+            resourceInputs["sslAction"] = args?.sslAction;
             resourceInputs["storageEngine"] = args?.storageEngine;
             resourceInputs["storageType"] = args?.storageType;
             resourceInputs["tags"] = args?.tags;
@@ -350,6 +395,7 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["retentionPeriod"] = undefined /*out*/;
+            resourceInputs["sslStatus"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["accountPassword"] };
@@ -379,6 +425,10 @@ export interface ShardingInstanceState {
      */
     backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The retention period of full backups.
+     */
+    backupRetentionPeriod?: pulumi.Input<number>;
+    /**
      * The backup retention policy configured for the instance. Valid values:
      */
     backupRetentionPolicyOnClusterDeletion?: pulumi.Input<number>;
@@ -394,6 +444,11 @@ export interface ShardingInstanceState {
      * Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
      */
     dbInstanceReleaseProtection?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether to enable the log backup feature. Valid values:
+     * - `1 `: The log backup feature is enabled.
+     */
+    enableBackupLog?: pulumi.Input<number>;
     /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
      */
@@ -418,6 +473,18 @@ export interface ShardingInstanceState {
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `logBackupRetentionPeriod` is valid only when `enableBackupLog` is set to `1`.
+     */
+    logBackupRetentionPeriod?: pulumi.Input<number>;
+    /**
+     * The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+     */
+    maintainEndTime?: pulumi.Input<string>;
+    /**
+     * The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+     */
+    maintainStartTime?: pulumi.Input<string>;
     /**
      * The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
      */
@@ -480,6 +547,17 @@ export interface ShardingInstanceState {
      */
     snapshotBackupType?: pulumi.Input<string>;
     /**
+     * Actions performed on SSL functions. Valid values:
+     * - `Open`: turn on SSL encryption.
+     * - `Close`: turn off SSL encryption.
+     * - `Update`: update SSL certificate.
+     */
+    sslAction?: pulumi.Input<string>;
+    /**
+     * (Available since v1.259.0) The status of the SSL feature.
+     */
+    sslStatus?: pulumi.Input<string>;
+    /**
      * The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
      */
     storageEngine?: pulumi.Input<string>;
@@ -531,6 +609,10 @@ export interface ShardingInstanceArgs {
      */
     backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The retention period of full backups.
+     */
+    backupRetentionPeriod?: pulumi.Input<number>;
+    /**
      * The backup retention policy configured for the instance. Valid values:
      */
     backupRetentionPolicyOnClusterDeletion?: pulumi.Input<number>;
@@ -546,6 +628,11 @@ export interface ShardingInstanceArgs {
      * Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
      */
     dbInstanceReleaseProtection?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether to enable the log backup feature. Valid values:
+     * - `1 `: The log backup feature is enabled.
+     */
+    enableBackupLog?: pulumi.Input<number>;
     /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
      */
@@ -570,6 +657,18 @@ export interface ShardingInstanceArgs {
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `logBackupRetentionPeriod` is valid only when `enableBackupLog` is set to `1`.
+     */
+    logBackupRetentionPeriod?: pulumi.Input<number>;
+    /**
+     * The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+     */
+    maintainEndTime?: pulumi.Input<string>;
+    /**
+     * The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+     */
+    maintainStartTime?: pulumi.Input<string>;
     /**
      * The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
      */
@@ -627,6 +726,13 @@ export interface ShardingInstanceArgs {
      * - `Flash `: Single-digit second backup.
      */
     snapshotBackupType?: pulumi.Input<string>;
+    /**
+     * Actions performed on SSL functions. Valid values:
+     * - `Open`: turn on SSL encryption.
+     * - `Close`: turn off SSL encryption.
+     * - `Update`: update SSL certificate.
+     */
+    sslAction?: pulumi.Input<string>;
     /**
      * The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
      */

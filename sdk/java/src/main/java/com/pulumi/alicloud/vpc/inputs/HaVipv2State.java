@@ -18,14 +18,14 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
     public static final HaVipv2State Empty = new HaVipv2State();
 
     /**
-     * EIP bound to HaVip.
+     * EIP bound to HaVip
      * 
      */
     @Import(name="associatedEipAddresses")
     private @Nullable Output<List<String>> associatedEipAddresses;
 
     /**
-     * @return EIP bound to HaVip.
+     * @return EIP bound to HaVip
      * 
      */
     public Optional<Output<List<String>>> associatedEipAddresses() {
@@ -33,14 +33,18 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the instance that is bound to the HaVip. Value:-**EcsInstance**: ECS instance.-**NetworkInterface**: ENI instance.
+     * The type of the instance that is bound to the HaVip. Value:
+     * - `EcsInstance`: ECS instance.
+     * - `NetworkInterface`: ENI instance.
      * 
      */
     @Import(name="associatedInstanceType")
     private @Nullable Output<String> associatedInstanceType;
 
     /**
-     * @return The type of the instance that is bound to the HaVip. Value:-**EcsInstance**: ECS instance.-**NetworkInterface**: ENI instance.
+     * @return The type of the instance that is bound to the HaVip. Value:
+     * - `EcsInstance`: ECS instance.
+     * - `NetworkInterface`: ENI instance.
      * 
      */
     public Optional<Output<String>> associatedInstanceType() {
@@ -48,14 +52,14 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An ECS instance that is bound to HaVip.
+     * The ID of the ECS instance to be associated with the HAVIP.
      * 
      */
     @Import(name="associatedInstances")
     private @Nullable Output<List<String>> associatedInstances;
 
     /**
-     * @return An ECS instance that is bound to HaVip.
+     * @return The ID of the ECS instance to be associated with the HAVIP.
      * 
      */
     public Optional<Output<List<String>>> associatedInstances() {
@@ -63,14 +67,14 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The creation time of the resource.
+     * The creation time of the resource
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return The creation time of the resource.
+     * @return The creation time of the resource
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -78,14 +82,14 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description of the HaVip instance. The length is 2 to 256 characters.
+     * The description of the HAVIP. The description must be 1 to 255 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the HaVip instance. The length is 2 to 256 characters.
+     * @return The description of the HAVIP. The description must be 1 to 255 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> description() {
@@ -93,14 +97,14 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the resource.
+     * The ID of the HaVip instance.
      * 
      */
     @Import(name="haVipId")
     private @Nullable Output<String> haVipId;
 
     /**
-     * @return The ID of the resource.
+     * @return The ID of the HaVip instance.
      * 
      */
     public Optional<Output<String>> haVipId() {
@@ -108,14 +112,14 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the HaVip instance.
+     * The name of the HAVIP. The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="haVipName")
     private @Nullable Output<String> haVipName;
 
     /**
-     * @return The name of the HaVip instance.
+     * @return The name of the HAVIP. The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> haVipName() {
@@ -123,7 +127,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
+     * . Field &#39;havip_name&#39; has been deprecated from provider version 1.259.0. New field &#39;ha_vip_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
@@ -134,7 +138,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> havipName;
 
     /**
-     * @return Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
+     * @return . Field &#39;havip_name&#39; has been deprecated from provider version 1.259.0. New field &#39;ha_vip_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
@@ -146,14 +150,14 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
+     * The IP address of the HAVIP. The specified IP address must be an idle IP address that falls within the CIDR block of the vSwitch. If this parameter is not set, an idle IP address from the CIDR block of the vSwitch is randomly assigned to the HAVIP.
      * 
      */
     @Import(name="ipAddress")
     private @Nullable Output<String> ipAddress;
 
     /**
-     * @return The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
+     * @return The IP address of the HAVIP. The specified IP address must be an idle IP address that falls within the CIDR block of the vSwitch. If this parameter is not set, an idle IP address from the CIDR block of the vSwitch is randomly assigned to the HAVIP.
      * 
      */
     public Optional<Output<String>> ipAddress() {
@@ -161,14 +165,14 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The primary instance ID bound to HaVip.
+     * The primary instance ID bound to HaVip
      * 
      */
     @Import(name="masterInstanceId")
     private @Nullable Output<String> masterInstanceId;
 
     /**
-     * @return The primary instance ID bound to HaVip.
+     * @return The primary instance ID bound to HaVip
      * 
      */
     public Optional<Output<String>> masterInstanceId() {
@@ -176,14 +180,14 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the resource group.
+     * The ID of the resource group to which the HAVIP belongs.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group.
+     * @return The ID of the resource group to which the HAVIP belongs.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -221,14 +225,14 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The VPC ID to which the HaVip instance belongs.
+     * The VPC ID to which the HaVip instance belongs
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The VPC ID to which the HaVip instance belongs.
+     * @return The VPC ID to which the HaVip instance belongs
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -236,7 +240,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The switch ID to which the HaVip instance belongs.
+     * The switch ID to which the HaVip instance belongs
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
@@ -245,7 +249,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The switch ID to which the HaVip instance belongs.
+     * @return The switch ID to which the HaVip instance belongs
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
@@ -293,7 +297,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param associatedEipAddresses EIP bound to HaVip.
+         * @param associatedEipAddresses EIP bound to HaVip
          * 
          * @return builder
          * 
@@ -304,7 +308,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param associatedEipAddresses EIP bound to HaVip.
+         * @param associatedEipAddresses EIP bound to HaVip
          * 
          * @return builder
          * 
@@ -314,7 +318,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param associatedEipAddresses EIP bound to HaVip.
+         * @param associatedEipAddresses EIP bound to HaVip
          * 
          * @return builder
          * 
@@ -324,7 +328,9 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param associatedInstanceType The type of the instance that is bound to the HaVip. Value:-**EcsInstance**: ECS instance.-**NetworkInterface**: ENI instance.
+         * @param associatedInstanceType The type of the instance that is bound to the HaVip. Value:
+         * - `EcsInstance`: ECS instance.
+         * - `NetworkInterface`: ENI instance.
          * 
          * @return builder
          * 
@@ -335,7 +341,9 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param associatedInstanceType The type of the instance that is bound to the HaVip. Value:-**EcsInstance**: ECS instance.-**NetworkInterface**: ENI instance.
+         * @param associatedInstanceType The type of the instance that is bound to the HaVip. Value:
+         * - `EcsInstance`: ECS instance.
+         * - `NetworkInterface`: ENI instance.
          * 
          * @return builder
          * 
@@ -345,7 +353,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param associatedInstances An ECS instance that is bound to HaVip.
+         * @param associatedInstances The ID of the ECS instance to be associated with the HAVIP.
          * 
          * @return builder
          * 
@@ -356,7 +364,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param associatedInstances An ECS instance that is bound to HaVip.
+         * @param associatedInstances The ID of the ECS instance to be associated with the HAVIP.
          * 
          * @return builder
          * 
@@ -366,7 +374,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param associatedInstances An ECS instance that is bound to HaVip.
+         * @param associatedInstances The ID of the ECS instance to be associated with the HAVIP.
          * 
          * @return builder
          * 
@@ -376,7 +384,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime The creation time of the resource.
+         * @param createTime The creation time of the resource
          * 
          * @return builder
          * 
@@ -387,7 +395,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime The creation time of the resource.
+         * @param createTime The creation time of the resource
          * 
          * @return builder
          * 
@@ -397,7 +405,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the HaVip instance. The length is 2 to 256 characters.
+         * @param description The description of the HAVIP. The description must be 1 to 255 characters in length and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -408,7 +416,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the HaVip instance. The length is 2 to 256 characters.
+         * @param description The description of the HAVIP. The description must be 1 to 255 characters in length and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -418,7 +426,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param haVipId The ID of the resource.
+         * @param haVipId The ID of the HaVip instance.
          * 
          * @return builder
          * 
@@ -429,7 +437,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param haVipId The ID of the resource.
+         * @param haVipId The ID of the HaVip instance.
          * 
          * @return builder
          * 
@@ -439,7 +447,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param haVipName The name of the HaVip instance.
+         * @param haVipName The name of the HAVIP. The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -450,7 +458,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param haVipName The name of the HaVip instance.
+         * @param haVipName The name of the HAVIP. The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -460,7 +468,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param havipName Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
+         * @param havipName . Field &#39;havip_name&#39; has been deprecated from provider version 1.259.0. New field &#39;ha_vip_name&#39; instead.
          * 
          * @return builder
          * 
@@ -475,7 +483,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param havipName Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
+         * @param havipName . Field &#39;havip_name&#39; has been deprecated from provider version 1.259.0. New field &#39;ha_vip_name&#39; instead.
          * 
          * @return builder
          * 
@@ -489,7 +497,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipAddress The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
+         * @param ipAddress The IP address of the HAVIP. The specified IP address must be an idle IP address that falls within the CIDR block of the vSwitch. If this parameter is not set, an idle IP address from the CIDR block of the vSwitch is randomly assigned to the HAVIP.
          * 
          * @return builder
          * 
@@ -500,7 +508,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipAddress The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
+         * @param ipAddress The IP address of the HAVIP. The specified IP address must be an idle IP address that falls within the CIDR block of the vSwitch. If this parameter is not set, an idle IP address from the CIDR block of the vSwitch is randomly assigned to the HAVIP.
          * 
          * @return builder
          * 
@@ -510,7 +518,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param masterInstanceId The primary instance ID bound to HaVip.
+         * @param masterInstanceId The primary instance ID bound to HaVip
          * 
          * @return builder
          * 
@@ -521,7 +529,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param masterInstanceId The primary instance ID bound to HaVip.
+         * @param masterInstanceId The primary instance ID bound to HaVip
          * 
          * @return builder
          * 
@@ -531,7 +539,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param resourceGroupId The ID of the resource group to which the HAVIP belongs.
          * 
          * @return builder
          * 
@@ -542,7 +550,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param resourceGroupId The ID of the resource group to which the HAVIP belongs.
          * 
          * @return builder
          * 
@@ -594,7 +602,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The VPC ID to which the HaVip instance belongs.
+         * @param vpcId The VPC ID to which the HaVip instance belongs
          * 
          * @return builder
          * 
@@ -605,7 +613,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The VPC ID to which the HaVip instance belongs.
+         * @param vpcId The VPC ID to which the HaVip instance belongs
          * 
          * @return builder
          * 
@@ -615,7 +623,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The switch ID to which the HaVip instance belongs.
+         * @param vswitchId The switch ID to which the HaVip instance belongs
          * 
          * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
@@ -628,7 +636,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The switch ID to which the HaVip instance belongs.
+         * @param vswitchId The switch ID to which the HaVip instance belongs
          * 
          * The following arguments will be discarded. Please use new fields as soon as possible:
          * 

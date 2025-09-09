@@ -456,29 +456,31 @@ func (o GetAccountDeletionCheckTaskNotAllowReasonArrayOutput) Index(i pulumi.Int
 }
 
 type GetAccountsAccount struct {
-	// The ID of the account.
+	// The Alibaba Cloud account ID of the member.
 	AccountId string `pulumi:"accountId"`
-	// (Available in v1.125.0+) The Alibaba Cloud account name of the member account.
+	// (Available since v1.125.0) The Alibaba Cloud account name of the member. **Note:** `accountName` takes effect only if `enableDetails` is set to `true`.
 	AccountName string `pulumi:"accountName"`
-	// The name of the member account.
+	// The display name of the member.
 	DisplayName string `pulumi:"displayName"`
 	// The ID of the folder.
 	FolderId string `pulumi:"folderId"`
-	// The ID of the resource.
+	// The ID of the Account.
 	Id string `pulumi:"id"`
-	// The way in which the member account joined the resource directory.
+	// The way in which the member joins the resource directory.
 	JoinMethod string `pulumi:"joinMethod"`
-	// The time when the member account joined the resource directory.
+	// The time when the member joined the resource directory.
 	JoinTime string `pulumi:"joinTime"`
-	// The time when the member account was modified.
+	// The time when the member was modified.
 	ModifyTime string `pulumi:"modifyTime"`
-	// (Available in v1.124.3+) Settlement account ID. If the value is empty, the current account will be used for settlement.
+	// (Available since v1.124.3) The ID of the settlement account. **Note:** `payerAccountId` takes effect only if `enableDetails` is set to `true`.
 	PayerAccountId string `pulumi:"payerAccountId"`
 	// The ID of the resource directory.
 	ResourceDirectoryId string `pulumi:"resourceDirectoryId"`
-	// The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
+	// The status of account. Valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, `PromoteVerifying`.
 	Status string `pulumi:"status"`
-	// The type of the member account.
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the member.
 	Type string `pulumi:"type"`
 }
 
@@ -494,29 +496,31 @@ type GetAccountsAccountInput interface {
 }
 
 type GetAccountsAccountArgs struct {
-	// The ID of the account.
+	// The Alibaba Cloud account ID of the member.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// (Available in v1.125.0+) The Alibaba Cloud account name of the member account.
+	// (Available since v1.125.0) The Alibaba Cloud account name of the member. **Note:** `accountName` takes effect only if `enableDetails` is set to `true`.
 	AccountName pulumi.StringInput `pulumi:"accountName"`
-	// The name of the member account.
+	// The display name of the member.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
 	// The ID of the folder.
 	FolderId pulumi.StringInput `pulumi:"folderId"`
-	// The ID of the resource.
+	// The ID of the Account.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The way in which the member account joined the resource directory.
+	// The way in which the member joins the resource directory.
 	JoinMethod pulumi.StringInput `pulumi:"joinMethod"`
-	// The time when the member account joined the resource directory.
+	// The time when the member joined the resource directory.
 	JoinTime pulumi.StringInput `pulumi:"joinTime"`
-	// The time when the member account was modified.
+	// The time when the member was modified.
 	ModifyTime pulumi.StringInput `pulumi:"modifyTime"`
-	// (Available in v1.124.3+) Settlement account ID. If the value is empty, the current account will be used for settlement.
+	// (Available since v1.124.3) The ID of the settlement account. **Note:** `payerAccountId` takes effect only if `enableDetails` is set to `true`.
 	PayerAccountId pulumi.StringInput `pulumi:"payerAccountId"`
 	// The ID of the resource directory.
 	ResourceDirectoryId pulumi.StringInput `pulumi:"resourceDirectoryId"`
-	// The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
+	// The status of account. Valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, `PromoteVerifying`.
 	Status pulumi.StringInput `pulumi:"status"`
-	// The type of the member account.
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The type of the member.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -571,17 +575,17 @@ func (o GetAccountsAccountOutput) ToGetAccountsAccountOutputWithContext(ctx cont
 	return o
 }
 
-// The ID of the account.
+// The Alibaba Cloud account ID of the member.
 func (o GetAccountsAccountOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsAccount) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// (Available in v1.125.0+) The Alibaba Cloud account name of the member account.
+// (Available since v1.125.0) The Alibaba Cloud account name of the member. **Note:** `accountName` takes effect only if `enableDetails` is set to `true`.
 func (o GetAccountsAccountOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsAccount) string { return v.AccountName }).(pulumi.StringOutput)
 }
 
-// The name of the member account.
+// The display name of the member.
 func (o GetAccountsAccountOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsAccount) string { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -591,27 +595,27 @@ func (o GetAccountsAccountOutput) FolderId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsAccount) string { return v.FolderId }).(pulumi.StringOutput)
 }
 
-// The ID of the resource.
+// The ID of the Account.
 func (o GetAccountsAccountOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsAccount) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The way in which the member account joined the resource directory.
+// The way in which the member joins the resource directory.
 func (o GetAccountsAccountOutput) JoinMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsAccount) string { return v.JoinMethod }).(pulumi.StringOutput)
 }
 
-// The time when the member account joined the resource directory.
+// The time when the member joined the resource directory.
 func (o GetAccountsAccountOutput) JoinTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsAccount) string { return v.JoinTime }).(pulumi.StringOutput)
 }
 
-// The time when the member account was modified.
+// The time when the member was modified.
 func (o GetAccountsAccountOutput) ModifyTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsAccount) string { return v.ModifyTime }).(pulumi.StringOutput)
 }
 
-// (Available in v1.124.3+) Settlement account ID. If the value is empty, the current account will be used for settlement.
+// (Available since v1.124.3) The ID of the settlement account. **Note:** `payerAccountId` takes effect only if `enableDetails` is set to `true`.
 func (o GetAccountsAccountOutput) PayerAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsAccount) string { return v.PayerAccountId }).(pulumi.StringOutput)
 }
@@ -621,12 +625,17 @@ func (o GetAccountsAccountOutput) ResourceDirectoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsAccount) string { return v.ResourceDirectoryId }).(pulumi.StringOutput)
 }
 
-// The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
+// The status of account. Valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, `PromoteVerifying`.
 func (o GetAccountsAccountOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsAccount) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The type of the member account.
+// A mapping of tags to assign to the resource.
+func (o GetAccountsAccountOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetAccountsAccount) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The type of the member.
 func (o GetAccountsAccountOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsAccount) string { return v.Type }).(pulumi.StringOutput)
 }

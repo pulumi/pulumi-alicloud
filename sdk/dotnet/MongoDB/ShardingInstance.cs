@@ -132,6 +132,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<ImmutableArray<string>> BackupPeriods { get; private set; } = null!;
 
         /// <summary>
+        /// The retention period of full backups.
+        /// </summary>
+        [Output("backupRetentionPeriod")]
+        public Output<int> BackupRetentionPeriod { get; private set; } = null!;
+
+        /// <summary>
         /// The backup retention policy configured for the instance. Valid values:
         /// </summary>
         [Output("backupRetentionPolicyOnClusterDeletion")]
@@ -154,6 +160,13 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Output("dbInstanceReleaseProtection")]
         public Output<bool?> DbInstanceReleaseProtection { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to enable the log backup feature. Valid values:
+        /// - `1 `: The log backup feature is enabled.
+        /// </summary>
+        [Output("enableBackupLog")]
+        public Output<int> EnableBackupLog { get; private set; } = null!;
 
         /// <summary>
         /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
@@ -190,6 +203,24 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Output("kmsEncryptionContext")]
         public Output<ImmutableDictionary<string, string>?> KmsEncryptionContext { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
+        /// </summary>
+        [Output("logBackupRetentionPeriod")]
+        public Output<int> LogBackupRetentionPeriod { get; private set; } = null!;
+
+        /// <summary>
+        /// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+        /// </summary>
+        [Output("maintainEndTime")]
+        public Output<string> MaintainEndTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+        /// </summary>
+        [Output("maintainStartTime")]
+        public Output<string> MaintainStartTime { get; private set; } = null!;
 
         /// <summary>
         /// The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
@@ -279,6 +310,21 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Output("snapshotBackupType")]
         public Output<string> SnapshotBackupType { get; private set; } = null!;
+
+        /// <summary>
+        /// Actions performed on SSL functions. Valid values:
+        /// - `Open`: turn on SSL encryption.
+        /// - `Close`: turn off SSL encryption.
+        /// - `Update`: update SSL certificate.
+        /// </summary>
+        [Output("sslAction")]
+        public Output<string?> SslAction { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.259.0) The status of the SSL feature.
+        /// </summary>
+        [Output("sslStatus")]
+        public Output<string> SslStatus { get; private set; } = null!;
 
         /// <summary>
         /// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
@@ -414,6 +460,12 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
+        /// The retention period of full backups.
+        /// </summary>
+        [Input("backupRetentionPeriod")]
+        public Input<int>? BackupRetentionPeriod { get; set; }
+
+        /// <summary>
         /// The backup retention policy configured for the instance. Valid values:
         /// </summary>
         [Input("backupRetentionPolicyOnClusterDeletion")]
@@ -442,6 +494,13 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Input("dbInstanceReleaseProtection")]
         public Input<bool>? DbInstanceReleaseProtection { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable the log backup feature. Valid values:
+        /// - `1 `: The log backup feature is enabled.
+        /// </summary>
+        [Input("enableBackupLog")]
+        public Input<int>? EnableBackupLog { get; set; }
 
         /// <summary>
         /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
@@ -490,6 +549,24 @@ namespace Pulumi.AliCloud.MongoDB
             get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<string>());
             set => _kmsEncryptionContext = value;
         }
+
+        /// <summary>
+        /// The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
+        /// </summary>
+        [Input("logBackupRetentionPeriod")]
+        public Input<int>? LogBackupRetentionPeriod { get; set; }
+
+        /// <summary>
+        /// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+        /// </summary>
+        [Input("maintainEndTime")]
+        public Input<string>? MaintainEndTime { get; set; }
+
+        /// <summary>
+        /// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+        /// </summary>
+        [Input("maintainStartTime")]
+        public Input<string>? MaintainStartTime { get; set; }
 
         [Input("mongoLists", required: true)]
         private InputList<Inputs.ShardingInstanceMongoListArgs>? _mongoLists;
@@ -593,6 +670,15 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? SnapshotBackupType { get; set; }
 
         /// <summary>
+        /// Actions performed on SSL functions. Valid values:
+        /// - `Open`: turn on SSL encryption.
+        /// - `Close`: turn off SSL encryption.
+        /// - `Update`: update SSL certificate.
+        /// </summary>
+        [Input("sslAction")]
+        public Input<string>? SslAction { get; set; }
+
+        /// <summary>
         /// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         /// </summary>
         [Input("storageEngine")]
@@ -690,6 +776,12 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
+        /// The retention period of full backups.
+        /// </summary>
+        [Input("backupRetentionPeriod")]
+        public Input<int>? BackupRetentionPeriod { get; set; }
+
+        /// <summary>
         /// The backup retention policy configured for the instance. Valid values:
         /// </summary>
         [Input("backupRetentionPolicyOnClusterDeletion")]
@@ -718,6 +810,13 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Input("dbInstanceReleaseProtection")]
         public Input<bool>? DbInstanceReleaseProtection { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable the log backup feature. Valid values:
+        /// - `1 `: The log backup feature is enabled.
+        /// </summary>
+        [Input("enableBackupLog")]
+        public Input<int>? EnableBackupLog { get; set; }
 
         /// <summary>
         /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
@@ -766,6 +865,24 @@ namespace Pulumi.AliCloud.MongoDB
             get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<string>());
             set => _kmsEncryptionContext = value;
         }
+
+        /// <summary>
+        /// The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
+        /// </summary>
+        [Input("logBackupRetentionPeriod")]
+        public Input<int>? LogBackupRetentionPeriod { get; set; }
+
+        /// <summary>
+        /// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+        /// </summary>
+        [Input("maintainEndTime")]
+        public Input<string>? MaintainEndTime { get; set; }
+
+        /// <summary>
+        /// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+        /// </summary>
+        [Input("maintainStartTime")]
+        public Input<string>? MaintainStartTime { get; set; }
 
         [Input("mongoLists")]
         private InputList<Inputs.ShardingInstanceMongoListGetArgs>? _mongoLists;
@@ -873,6 +990,21 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Input("snapshotBackupType")]
         public Input<string>? SnapshotBackupType { get; set; }
+
+        /// <summary>
+        /// Actions performed on SSL functions. Valid values:
+        /// - `Open`: turn on SSL encryption.
+        /// - `Close`: turn off SSL encryption.
+        /// - `Update`: update SSL certificate.
+        /// </summary>
+        [Input("sslAction")]
+        public Input<string>? SslAction { get; set; }
+
+        /// <summary>
+        /// (Available since v1.259.0) The status of the SSL feature.
+        /// </summary>
+        [Input("sslStatus")]
+        public Input<string>? SslStatus { get; set; }
 
         /// <summary>
         /// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.

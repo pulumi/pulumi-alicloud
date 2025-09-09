@@ -16,6 +16,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a VPC Ha Vip Attachment resource.
+ * 
+ * Attaching ECS instance to Havip.
+ * 
+ * For information about VPC Ha Vip Attachment and how to use it, see [What is Ha Vip Attachment](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/AssociateHaVip).
+ * 
+ * &gt; **NOTE:** Available since v1.18.0.
+ * 
  * ## Example Usage
  * 
  * Basic Usage
@@ -134,20 +142,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/hAVipAttachment:HAVipAttachment")
 public class HAVipAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
-     * - **True**: Force unbinding.
-     * - **False** (default): unbinding is not forced.
-     * &gt; **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+     * Specifies whether to force delete the snapshot.
      * 
      */
     @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
-     * @return Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
-     * - **True**: Force unbinding.
-     * - **False** (default): unbinding is not forced.
-     * &gt; **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+     * @return Specifies whether to force delete the snapshot.
      * 
      */
     public Output<Optional<Boolean>> force() {
@@ -168,7 +170,7 @@ public class HAVipAttachment extends com.pulumi.resources.CustomResource {
         return this.haVipId;
     }
     /**
-     * . Field &#39;havip_id&#39; has been deprecated from provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
+     * . Field &#39;havip_id&#39; has been deprecated from provider version 1.259.0. New field &#39;ha_vip_id&#39; instead.
      * 
      * @deprecated
      * Field &#39;havip_id&#39; has been deprecated since provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
@@ -179,7 +181,7 @@ public class HAVipAttachment extends com.pulumi.resources.CustomResource {
     private Output<String> havipId;
 
     /**
-     * @return . Field &#39;havip_id&#39; has been deprecated from provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
+     * @return . Field &#39;havip_id&#39; has been deprecated from provider version 1.259.0. New field &#39;ha_vip_id&#39; instead.
      * 
      */
     public Output<String> havipId() {
@@ -200,32 +202,28 @@ public class HAVipAttachment extends com.pulumi.resources.CustomResource {
         return this.instanceId;
     }
     /**
-     * The type of the instance associated with the VIIP.
-     * 
-     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * The type of the instance to be associated with the HAVIP. Valid values: * `EcsInstance`: an ECS instance * `NetworkInterface`: an ENI. If you want to associate the HAVIP with an ENI, this parameter is required.
      * 
      */
     @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
-     * @return The type of the instance associated with the VIIP.
-     * 
-     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * @return The type of the instance to be associated with the HAVIP. Valid values: * `EcsInstance`: an ECS instance * `NetworkInterface`: an ENI. If you want to associate the HAVIP with an ENI, this parameter is required.
      * 
      */
     public Output<String> instanceType() {
         return this.instanceType;
     }
     /**
-     * The status of the resource.
+     * The status of the resource
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource
      * 
      */
     public Output<String> status() {

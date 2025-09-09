@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,14 +19,14 @@ public final class DdosBgpInstanceArgs extends com.pulumi.resources.ResourceArgs
     public static final DdosBgpInstanceArgs Empty = new DdosBgpInstanceArgs();
 
     /**
-     * Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 51,91,101,201,301. The unit is Gbps.
+     * The bandwidth of the package configuration.
      * 
      */
     @Import(name="bandwidth", required=true)
     private Output<Integer> bandwidth;
 
     /**
-     * @return Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 51,91,101,201,301. The unit is Gbps.
+     * @return The bandwidth of the package configuration.
      * 
      */
     public Output<Integer> bandwidth() {
@@ -33,14 +34,14 @@ public final class DdosBgpInstanceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Base defend bandwidth of the instance. Valid values: 20. The unit is Gbps. Default to `20`.
+     * The basic protection bandwidth of the Anti-DDoS Origin Enterprise instance. Default value: `20`. Valid values: `20`.
      * 
      */
     @Import(name="baseBandwidth")
     private @Nullable Output<Integer> baseBandwidth;
 
     /**
-     * @return Base defend bandwidth of the instance. Valid values: 20. The unit is Gbps. Default to `20`.
+     * @return The basic protection bandwidth of the Anti-DDoS Origin Enterprise instance. Default value: `20`. Valid values: `20`.
      * 
      */
     public Optional<Output<Integer>> baseBandwidth() {
@@ -48,14 +49,29 @@ public final class DdosBgpInstanceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * IP count of the instance. Valid values: 100.
+     * The name of the instance.
+     * 
+     */
+    @Import(name="instanceName")
+    private @Nullable Output<String> instanceName;
+
+    /**
+     * @return The name of the instance.
+     * 
+     */
+    public Optional<Output<String>> instanceName() {
+        return Optional.ofNullable(this.instanceName);
+    }
+
+    /**
+     * The number of IP addresses that can be protected by the Anti-DDoS Origin Enterprise instance.
      * 
      */
     @Import(name="ipCount", required=true)
     private Output<Integer> ipCount;
 
     /**
-     * @return IP count of the instance. Valid values: 100.
+     * @return The number of IP addresses that can be protected by the Anti-DDoS Origin Enterprise instance.
      * 
      */
     public Output<Integer> ipCount() {
@@ -63,14 +79,18 @@ public final class DdosBgpInstanceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * IP version of the instance. Valid values: IPv4,IPv6.
+     * The protection IP address type of the protection package. Valid values:
+     * - `IPv4`
+     * - `IPv6`
      * 
      */
     @Import(name="ipType", required=true)
     private Output<String> ipType;
 
     /**
-     * @return IP version of the instance. Valid values: IPv4,IPv6.
+     * @return The protection IP address type of the protection package. Valid values:
+     * - `IPv4`
+     * - `IPv6`
      * 
      */
     public Output<String> ipType() {
@@ -78,29 +98,37 @@ public final class DdosBgpInstanceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Name of the instance. This name can have a string of 1 to 63 characters.
+     * Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
+     * 
+     * @deprecated
+     * Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
      * 
      */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the instance. This name can have a string of 1 to 63 characters.
+     * @return Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
+     * 
+     * @deprecated
+     * Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
      * 
      */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
     /**
-     * Normal defend bandwidth of the instance. The unit is Gbps.
+     * The normal clean bandwidth. Unit: Mbit/s.
      * 
      */
     @Import(name="normalBandwidth", required=true)
     private Output<Integer> normalBandwidth;
 
     /**
-     * @return Normal defend bandwidth of the instance. The unit is Gbps.
+     * @return The normal clean bandwidth. Unit: Mbit/s.
      * 
      */
     public Output<Integer> normalBandwidth() {
@@ -123,14 +151,44 @@ public final class DdosBgpInstanceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
+     * Resource Group ID
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return Resource Group ID
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * The key of the tag that is added to the Anti-DDoS Origin instance.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return The key of the tag that is added to the Anti-DDoS Origin instance.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * The protection package type of the DDoS native protection instance. Default value: `Enterprise`. Valid values: `Enterprise`, `Professional`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
+     * @return The protection package type of the DDoS native protection instance. Default value: `Enterprise`. Valid values: `Enterprise`, `Professional`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -142,11 +200,14 @@ public final class DdosBgpInstanceArgs extends com.pulumi.resources.ResourceArgs
     private DdosBgpInstanceArgs(DdosBgpInstanceArgs $) {
         this.bandwidth = $.bandwidth;
         this.baseBandwidth = $.baseBandwidth;
+        this.instanceName = $.instanceName;
         this.ipCount = $.ipCount;
         this.ipType = $.ipType;
         this.name = $.name;
         this.normalBandwidth = $.normalBandwidth;
         this.period = $.period;
+        this.resourceGroupId = $.resourceGroupId;
+        this.tags = $.tags;
         this.type = $.type;
     }
 
@@ -169,7 +230,7 @@ public final class DdosBgpInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param bandwidth Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 51,91,101,201,301. The unit is Gbps.
+         * @param bandwidth The bandwidth of the package configuration.
          * 
          * @return builder
          * 
@@ -180,7 +241,7 @@ public final class DdosBgpInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param bandwidth Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 51,91,101,201,301. The unit is Gbps.
+         * @param bandwidth The bandwidth of the package configuration.
          * 
          * @return builder
          * 
@@ -190,7 +251,7 @@ public final class DdosBgpInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param baseBandwidth Base defend bandwidth of the instance. Valid values: 20. The unit is Gbps. Default to `20`.
+         * @param baseBandwidth The basic protection bandwidth of the Anti-DDoS Origin Enterprise instance. Default value: `20`. Valid values: `20`.
          * 
          * @return builder
          * 
@@ -201,7 +262,7 @@ public final class DdosBgpInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param baseBandwidth Base defend bandwidth of the instance. Valid values: 20. The unit is Gbps. Default to `20`.
+         * @param baseBandwidth The basic protection bandwidth of the Anti-DDoS Origin Enterprise instance. Default value: `20`. Valid values: `20`.
          * 
          * @return builder
          * 
@@ -211,7 +272,28 @@ public final class DdosBgpInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ipCount IP count of the instance. Valid values: 100.
+         * @param instanceName The name of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceName(@Nullable Output<String> instanceName) {
+            $.instanceName = instanceName;
+            return this;
+        }
+
+        /**
+         * @param instanceName The name of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceName(String instanceName) {
+            return instanceName(Output.of(instanceName));
+        }
+
+        /**
+         * @param ipCount The number of IP addresses that can be protected by the Anti-DDoS Origin Enterprise instance.
          * 
          * @return builder
          * 
@@ -222,7 +304,7 @@ public final class DdosBgpInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ipCount IP count of the instance. Valid values: 100.
+         * @param ipCount The number of IP addresses that can be protected by the Anti-DDoS Origin Enterprise instance.
          * 
          * @return builder
          * 
@@ -232,7 +314,9 @@ public final class DdosBgpInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ipType IP version of the instance. Valid values: IPv4,IPv6.
+         * @param ipType The protection IP address type of the protection package. Valid values:
+         * - `IPv4`
+         * - `IPv6`
          * 
          * @return builder
          * 
@@ -243,7 +327,9 @@ public final class DdosBgpInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ipType IP version of the instance. Valid values: IPv4,IPv6.
+         * @param ipType The protection IP address type of the protection package. Valid values:
+         * - `IPv4`
+         * - `IPv6`
          * 
          * @return builder
          * 
@@ -253,28 +339,36 @@ public final class DdosBgpInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name Name of the instance. This name can have a string of 1 to 63 characters.
+         * @param name Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
+         * 
          */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name Name of the instance. This name can have a string of 1 to 63 characters.
+         * @param name Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
+         * 
          */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
         /**
-         * @param normalBandwidth Normal defend bandwidth of the instance. The unit is Gbps.
+         * @param normalBandwidth The normal clean bandwidth. Unit: Mbit/s.
          * 
          * @return builder
          * 
@@ -285,7 +379,7 @@ public final class DdosBgpInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param normalBandwidth Normal defend bandwidth of the instance. The unit is Gbps.
+         * @param normalBandwidth The normal clean bandwidth. Unit: Mbit/s.
          * 
          * @return builder
          * 
@@ -316,7 +410,49 @@ public final class DdosBgpInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
+         * @param resourceGroupId Resource Group ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId Resource Group ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param tags The key of the tag that is added to the Anti-DDoS Origin instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The key of the tag that is added to the Anti-DDoS Origin instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param type The protection package type of the DDoS native protection instance. Default value: `Enterprise`. Valid values: `Enterprise`, `Professional`.
          * 
          * @return builder
          * 
@@ -327,7 +463,7 @@ public final class DdosBgpInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
+         * @param type The protection package type of the DDoS native protection instance. Default value: `Enterprise`. Valid values: `Enterprise`, `Professional`.
          * 
          * @return builder
          * 

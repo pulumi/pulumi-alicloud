@@ -97,6 +97,8 @@ type ServiceSubscription struct {
 	NotifyStrategy pulumi.StringOutput `pulumi:"notifyStrategy"`
 	// The Push type of Subscription. The Valid values: `http`, `queue`, `mpush`, `alisms` and `email`.
 	PushType pulumi.StringOutput `pulumi:"pushType"`
+	// The STS RoleArn.
+	StsRoleArn pulumi.StringPtrOutput `pulumi:"stsRoleArn"`
 	// Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
 	SubscriptionName pulumi.StringOutput `pulumi:"subscriptionName"`
 	// The topic which The subscription belongs to was named with the name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
@@ -166,6 +168,8 @@ type serviceSubscriptionState struct {
 	NotifyStrategy *string `pulumi:"notifyStrategy"`
 	// The Push type of Subscription. The Valid values: `http`, `queue`, `mpush`, `alisms` and `email`.
 	PushType *string `pulumi:"pushType"`
+	// The STS RoleArn.
+	StsRoleArn *string `pulumi:"stsRoleArn"`
 	// Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
 	SubscriptionName *string `pulumi:"subscriptionName"`
 	// The topic which The subscription belongs to was named with the name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
@@ -194,6 +198,8 @@ type ServiceSubscriptionState struct {
 	NotifyStrategy pulumi.StringPtrInput
 	// The Push type of Subscription. The Valid values: `http`, `queue`, `mpush`, `alisms` and `email`.
 	PushType pulumi.StringPtrInput
+	// The STS RoleArn.
+	StsRoleArn pulumi.StringPtrInput
 	// Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
 	SubscriptionName pulumi.StringPtrInput
 	// The topic which The subscription belongs to was named with the name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
@@ -224,6 +230,8 @@ type serviceSubscriptionArgs struct {
 	NotifyStrategy *string `pulumi:"notifyStrategy"`
 	// The Push type of Subscription. The Valid values: `http`, `queue`, `mpush`, `alisms` and `email`.
 	PushType string `pulumi:"pushType"`
+	// The STS RoleArn.
+	StsRoleArn *string `pulumi:"stsRoleArn"`
 	// Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
 	SubscriptionName string `pulumi:"subscriptionName"`
 	// The topic which The subscription belongs to was named with the name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
@@ -251,6 +259,8 @@ type ServiceSubscriptionArgs struct {
 	NotifyStrategy pulumi.StringPtrInput
 	// The Push type of Subscription. The Valid values: `http`, `queue`, `mpush`, `alisms` and `email`.
 	PushType pulumi.StringInput
+	// The STS RoleArn.
+	StsRoleArn pulumi.StringPtrInput
 	// Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
 	SubscriptionName pulumi.StringInput
 	// The topic which The subscription belongs to was named with the name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
@@ -384,6 +394,11 @@ func (o ServiceSubscriptionOutput) NotifyStrategy() pulumi.StringOutput {
 // The Push type of Subscription. The Valid values: `http`, `queue`, `mpush`, `alisms` and `email`.
 func (o ServiceSubscriptionOutput) PushType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceSubscription) pulumi.StringOutput { return v.PushType }).(pulumi.StringOutput)
+}
+
+// The STS RoleArn.
+func (o ServiceSubscriptionOutput) StsRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceSubscription) pulumi.StringPtrOutput { return v.StsRoleArn }).(pulumi.StringPtrOutput)
 }
 
 // Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Amqp Instances of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.128.0+.
+ * > **NOTE:** Available since v1.128.0.
  *
  * ## Example Usage
  *
@@ -19,17 +19,24 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const ids = alicloud.amqp.getInstances({
- *     ids: [
- *         "amqp-abc12345",
- *         "amqp-abc34567",
- *     ],
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.amqp.Instance("default", {
+ *     instanceName: name,
+ *     instanceType: "enterprise",
+ *     maxTps: "3000",
+ *     maxConnections: 2000,
+ *     queueCapacity: "200",
+ *     paymentType: "Subscription",
+ *     renewalStatus: "AutoRenewal",
+ *     renewalDuration: 1,
+ *     renewalDurationUnit: "Year",
+ *     supportEip: true,
  * });
- * export const amqpInstanceId1 = ids.then(ids => ids.instances?.[0]?.id);
- * const nameRegex = alicloud.amqp.getInstances({
- *     nameRegex: "^my-Instance",
+ * const ids = alicloud.amqp.getInstancesOutput({
+ *     ids: [_default.id],
  * });
- * export const amqpInstanceId2 = nameRegex.then(nameRegex => nameRegex.instances?.[0]?.id);
+ * export const amqpInstanceId0 = ids.apply(ids => ids.instances?.[0]?.id);
  * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
@@ -49,7 +56,7 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
  */
 export interface GetInstancesArgs {
     /**
-     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      */
     enableDetails?: boolean;
     /**
@@ -65,7 +72,7 @@ export interface GetInstancesArgs {
      */
     outputFile?: string;
     /**
-     * The status of the resource. Valid values: "DEPLOYING", "EXPIRED", "RELEASED", "SERVING".
+     * The status of the resource. Valid values: `DEPLOYING`, `SERVING`, `EXPIRED`, `RELEASED`.
      */
     status?: string;
 }
@@ -80,16 +87,25 @@ export interface GetInstancesResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * A list of Amqp Instances. Each element contains the following attributes:
+     */
     readonly instances: outputs.amqp.GetInstancesInstance[];
     readonly nameRegex?: string;
+    /**
+     * A list of Instance names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the instance.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Amqp Instances of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.128.0+.
+ * > **NOTE:** Available since v1.128.0.
  *
  * ## Example Usage
  *
@@ -99,17 +115,24 @@ export interface GetInstancesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const ids = alicloud.amqp.getInstances({
- *     ids: [
- *         "amqp-abc12345",
- *         "amqp-abc34567",
- *     ],
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.amqp.Instance("default", {
+ *     instanceName: name,
+ *     instanceType: "enterprise",
+ *     maxTps: "3000",
+ *     maxConnections: 2000,
+ *     queueCapacity: "200",
+ *     paymentType: "Subscription",
+ *     renewalStatus: "AutoRenewal",
+ *     renewalDuration: 1,
+ *     renewalDurationUnit: "Year",
+ *     supportEip: true,
  * });
- * export const amqpInstanceId1 = ids.then(ids => ids.instances?.[0]?.id);
- * const nameRegex = alicloud.amqp.getInstances({
- *     nameRegex: "^my-Instance",
+ * const ids = alicloud.amqp.getInstancesOutput({
+ *     ids: [_default.id],
  * });
- * export const amqpInstanceId2 = nameRegex.then(nameRegex => nameRegex.instances?.[0]?.id);
+ * export const amqpInstanceId0 = ids.apply(ids => ids.instances?.[0]?.id);
  * ```
  */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstancesResult> {
@@ -129,7 +152,7 @@ export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.
  */
 export interface GetInstancesOutputArgs {
     /**
-     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      */
     enableDetails?: pulumi.Input<boolean>;
     /**
@@ -145,7 +168,7 @@ export interface GetInstancesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the resource. Valid values: "DEPLOYING", "EXPIRED", "RELEASED", "SERVING".
+     * The status of the resource. Valid values: `DEPLOYING`, `SERVING`, `EXPIRED`, `RELEASED`.
      */
     status?: pulumi.Input<string>;
 }
