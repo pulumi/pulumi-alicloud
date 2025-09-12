@@ -2,6 +2,8 @@ provider: alicloud
 major-version: 3
 lint: false
 parallel: 1
+esc:
+  enabled: true
 env:
   ALICLOUD_ACCESS_KEY: ${{ secrets.ALICLOUD_ACCESS_KEY }}
   ALICLOUD_REGION: "us-west-1"
@@ -15,7 +17,7 @@ plugins:
   - name: std
     version: "2.2.0"
 
-  - name: random 
+  - name: random
     version: "4.3.1"
 team: ecosystem
 license:
