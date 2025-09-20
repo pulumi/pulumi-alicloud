@@ -138,6 +138,10 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     declare public readonly backupTime: pulumi.Output<string>;
     /**
+     * The ID of the encryption key.
+     */
+    declare public readonly cloudDiskEncryptionKey: pulumi.Output<string | undefined>;
+    /**
      * The ConfigServer nodes of the instance. See `configServerList` below.
      */
     declare public readonly configServerLists: pulumi.Output<outputs.mongodb.ShardingInstanceConfigServerList[]>;
@@ -150,6 +154,18 @@ export class ShardingInstance extends pulumi.CustomResource {
      * - `1 `: The log backup feature is enabled.
      */
     declare public readonly enableBackupLog: pulumi.Output<number>;
+    /**
+     * Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+     */
+    declare public readonly encrypted: pulumi.Output<boolean | undefined>;
+    /**
+     * The ID of the custom key.
+     */
+    declare public readonly encryptionKey: pulumi.Output<string>;
+    /**
+     * The encryption method. **NOTE:** `encryptorName` is valid only when `tdeStatus` is set to `enabled`.
+     */
+    declare public readonly encryptorName: pulumi.Output<string>;
     /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
      */
@@ -225,6 +241,10 @@ export class ShardingInstance extends pulumi.CustomResource {
      * (Available since v1.42.0) Instance data backup retention days.
      */
     declare public /*out*/ readonly retentionPeriod: pulumi.Output<number>;
+    /**
+     * The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
+     */
+    declare public readonly roleArn: pulumi.Output<string>;
     /**
      * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values.
      */
@@ -308,9 +328,13 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["backupRetentionPeriod"] = state?.backupRetentionPeriod;
             resourceInputs["backupRetentionPolicyOnClusterDeletion"] = state?.backupRetentionPolicyOnClusterDeletion;
             resourceInputs["backupTime"] = state?.backupTime;
+            resourceInputs["cloudDiskEncryptionKey"] = state?.cloudDiskEncryptionKey;
             resourceInputs["configServerLists"] = state?.configServerLists;
             resourceInputs["dbInstanceReleaseProtection"] = state?.dbInstanceReleaseProtection;
             resourceInputs["enableBackupLog"] = state?.enableBackupLog;
+            resourceInputs["encrypted"] = state?.encrypted;
+            resourceInputs["encryptionKey"] = state?.encryptionKey;
+            resourceInputs["encryptorName"] = state?.encryptorName;
             resourceInputs["engineVersion"] = state?.engineVersion;
             resourceInputs["globalSecurityGroupLists"] = state?.globalSecurityGroupLists;
             resourceInputs["hiddenZoneId"] = state?.hiddenZoneId;
@@ -329,6 +353,7 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["provisionedIops"] = state?.provisionedIops;
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
             resourceInputs["retentionPeriod"] = state?.retentionPeriod;
+            resourceInputs["roleArn"] = state?.roleArn;
             resourceInputs["secondaryZoneId"] = state?.secondaryZoneId;
             resourceInputs["securityGroupId"] = state?.securityGroupId;
             resourceInputs["securityIpLists"] = state?.securityIpLists;
@@ -361,9 +386,13 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["backupRetentionPeriod"] = args?.backupRetentionPeriod;
             resourceInputs["backupRetentionPolicyOnClusterDeletion"] = args?.backupRetentionPolicyOnClusterDeletion;
             resourceInputs["backupTime"] = args?.backupTime;
+            resourceInputs["cloudDiskEncryptionKey"] = args?.cloudDiskEncryptionKey;
             resourceInputs["configServerLists"] = args?.configServerLists;
             resourceInputs["dbInstanceReleaseProtection"] = args?.dbInstanceReleaseProtection;
             resourceInputs["enableBackupLog"] = args?.enableBackupLog;
+            resourceInputs["encrypted"] = args?.encrypted;
+            resourceInputs["encryptionKey"] = args?.encryptionKey;
+            resourceInputs["encryptorName"] = args?.encryptorName;
             resourceInputs["engineVersion"] = args?.engineVersion;
             resourceInputs["globalSecurityGroupLists"] = args?.globalSecurityGroupLists;
             resourceInputs["hiddenZoneId"] = args?.hiddenZoneId;
@@ -381,6 +410,7 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["protocolType"] = args?.protocolType;
             resourceInputs["provisionedIops"] = args?.provisionedIops;
             resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["roleArn"] = args?.roleArn;
             resourceInputs["secondaryZoneId"] = args?.secondaryZoneId;
             resourceInputs["securityGroupId"] = args?.securityGroupId;
             resourceInputs["securityIpLists"] = args?.securityIpLists;
@@ -437,6 +467,10 @@ export interface ShardingInstanceState {
      */
     backupTime?: pulumi.Input<string>;
     /**
+     * The ID of the encryption key.
+     */
+    cloudDiskEncryptionKey?: pulumi.Input<string>;
+    /**
      * The ConfigServer nodes of the instance. See `configServerList` below.
      */
     configServerLists?: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceConfigServerList>[]>;
@@ -449,6 +483,18 @@ export interface ShardingInstanceState {
      * - `1 `: The log backup feature is enabled.
      */
     enableBackupLog?: pulumi.Input<number>;
+    /**
+     * Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+     */
+    encrypted?: pulumi.Input<boolean>;
+    /**
+     * The ID of the custom key.
+     */
+    encryptionKey?: pulumi.Input<string>;
+    /**
+     * The encryption method. **NOTE:** `encryptorName` is valid only when `tdeStatus` is set to `enabled`.
+     */
+    encryptorName?: pulumi.Input<string>;
     /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
      */
@@ -524,6 +570,10 @@ export interface ShardingInstanceState {
      * (Available since v1.42.0) Instance data backup retention days.
      */
     retentionPeriod?: pulumi.Input<number>;
+    /**
+     * The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
+     */
+    roleArn?: pulumi.Input<string>;
     /**
      * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values.
      */
@@ -621,6 +671,10 @@ export interface ShardingInstanceArgs {
      */
     backupTime?: pulumi.Input<string>;
     /**
+     * The ID of the encryption key.
+     */
+    cloudDiskEncryptionKey?: pulumi.Input<string>;
+    /**
      * The ConfigServer nodes of the instance. See `configServerList` below.
      */
     configServerLists?: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceConfigServerList>[]>;
@@ -633,6 +687,18 @@ export interface ShardingInstanceArgs {
      * - `1 `: The log backup feature is enabled.
      */
     enableBackupLog?: pulumi.Input<number>;
+    /**
+     * Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+     */
+    encrypted?: pulumi.Input<boolean>;
+    /**
+     * The ID of the custom key.
+     */
+    encryptionKey?: pulumi.Input<string>;
+    /**
+     * The encryption method. **NOTE:** `encryptorName` is valid only when `tdeStatus` is set to `enabled`.
+     */
+    encryptorName?: pulumi.Input<string>;
     /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
      */
@@ -704,6 +770,10 @@ export interface ShardingInstanceArgs {
      * The ID of the Resource Group.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
+     */
+    roleArn?: pulumi.Input<string>;
     /**
      * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values.
      */

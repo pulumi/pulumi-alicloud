@@ -3062,6 +3062,7 @@ class V3FunctionInstanceLifecycleConfigArgs:
 
 if not MYPY:
     class V3FunctionInstanceLifecycleConfigInitializerArgsDict(TypedDict):
+        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         handler: NotRequired[pulumi.Input[_builtins.str]]
         """
         Function Handler: the call entry for the function compute system to run your function.
@@ -3076,16 +3077,28 @@ elif False:
 @pulumi.input_type
 class V3FunctionInstanceLifecycleConfigInitializerArgs:
     def __init__(__self__, *,
+                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  handler: Optional[pulumi.Input[_builtins.str]] = None,
                  timeout: Optional[pulumi.Input[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] handler: Function Handler: the call entry for the function compute system to run your function.
         :param pulumi.Input[_builtins.int] timeout: The maximum running time of the function, in seconds.
         """
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
         if handler is not None:
             pulumi.set(__self__, "handler", handler)
         if timeout is not None:
             pulumi.set(__self__, "timeout", timeout)
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "commands", value)
 
     @_builtins.property
     @pulumi.getter

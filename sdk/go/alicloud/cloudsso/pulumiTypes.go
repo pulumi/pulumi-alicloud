@@ -1463,6 +1463,112 @@ func (o DirectoryUserProvisioningConfigurationPtrOutput) SessionDuration() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+type UserProvisioningUserProvisioningStatistic struct {
+	// Number of failed events
+	FailedEventCount *int `pulumi:"failedEventCount"`
+	// Last Provisioning time
+	GmtLatestSync *string `pulumi:"gmtLatestSync"`
+}
+
+// UserProvisioningUserProvisioningStatisticInput is an input type that accepts UserProvisioningUserProvisioningStatisticArgs and UserProvisioningUserProvisioningStatisticOutput values.
+// You can construct a concrete instance of `UserProvisioningUserProvisioningStatisticInput` via:
+//
+//	UserProvisioningUserProvisioningStatisticArgs{...}
+type UserProvisioningUserProvisioningStatisticInput interface {
+	pulumi.Input
+
+	ToUserProvisioningUserProvisioningStatisticOutput() UserProvisioningUserProvisioningStatisticOutput
+	ToUserProvisioningUserProvisioningStatisticOutputWithContext(context.Context) UserProvisioningUserProvisioningStatisticOutput
+}
+
+type UserProvisioningUserProvisioningStatisticArgs struct {
+	// Number of failed events
+	FailedEventCount pulumi.IntPtrInput `pulumi:"failedEventCount"`
+	// Last Provisioning time
+	GmtLatestSync pulumi.StringPtrInput `pulumi:"gmtLatestSync"`
+}
+
+func (UserProvisioningUserProvisioningStatisticArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserProvisioningUserProvisioningStatistic)(nil)).Elem()
+}
+
+func (i UserProvisioningUserProvisioningStatisticArgs) ToUserProvisioningUserProvisioningStatisticOutput() UserProvisioningUserProvisioningStatisticOutput {
+	return i.ToUserProvisioningUserProvisioningStatisticOutputWithContext(context.Background())
+}
+
+func (i UserProvisioningUserProvisioningStatisticArgs) ToUserProvisioningUserProvisioningStatisticOutputWithContext(ctx context.Context) UserProvisioningUserProvisioningStatisticOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserProvisioningUserProvisioningStatisticOutput)
+}
+
+// UserProvisioningUserProvisioningStatisticArrayInput is an input type that accepts UserProvisioningUserProvisioningStatisticArray and UserProvisioningUserProvisioningStatisticArrayOutput values.
+// You can construct a concrete instance of `UserProvisioningUserProvisioningStatisticArrayInput` via:
+//
+//	UserProvisioningUserProvisioningStatisticArray{ UserProvisioningUserProvisioningStatisticArgs{...} }
+type UserProvisioningUserProvisioningStatisticArrayInput interface {
+	pulumi.Input
+
+	ToUserProvisioningUserProvisioningStatisticArrayOutput() UserProvisioningUserProvisioningStatisticArrayOutput
+	ToUserProvisioningUserProvisioningStatisticArrayOutputWithContext(context.Context) UserProvisioningUserProvisioningStatisticArrayOutput
+}
+
+type UserProvisioningUserProvisioningStatisticArray []UserProvisioningUserProvisioningStatisticInput
+
+func (UserProvisioningUserProvisioningStatisticArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserProvisioningUserProvisioningStatistic)(nil)).Elem()
+}
+
+func (i UserProvisioningUserProvisioningStatisticArray) ToUserProvisioningUserProvisioningStatisticArrayOutput() UserProvisioningUserProvisioningStatisticArrayOutput {
+	return i.ToUserProvisioningUserProvisioningStatisticArrayOutputWithContext(context.Background())
+}
+
+func (i UserProvisioningUserProvisioningStatisticArray) ToUserProvisioningUserProvisioningStatisticArrayOutputWithContext(ctx context.Context) UserProvisioningUserProvisioningStatisticArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserProvisioningUserProvisioningStatisticArrayOutput)
+}
+
+type UserProvisioningUserProvisioningStatisticOutput struct{ *pulumi.OutputState }
+
+func (UserProvisioningUserProvisioningStatisticOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserProvisioningUserProvisioningStatistic)(nil)).Elem()
+}
+
+func (o UserProvisioningUserProvisioningStatisticOutput) ToUserProvisioningUserProvisioningStatisticOutput() UserProvisioningUserProvisioningStatisticOutput {
+	return o
+}
+
+func (o UserProvisioningUserProvisioningStatisticOutput) ToUserProvisioningUserProvisioningStatisticOutputWithContext(ctx context.Context) UserProvisioningUserProvisioningStatisticOutput {
+	return o
+}
+
+// Number of failed events
+func (o UserProvisioningUserProvisioningStatisticOutput) FailedEventCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v UserProvisioningUserProvisioningStatistic) *int { return v.FailedEventCount }).(pulumi.IntPtrOutput)
+}
+
+// Last Provisioning time
+func (o UserProvisioningUserProvisioningStatisticOutput) GmtLatestSync() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserProvisioningUserProvisioningStatistic) *string { return v.GmtLatestSync }).(pulumi.StringPtrOutput)
+}
+
+type UserProvisioningUserProvisioningStatisticArrayOutput struct{ *pulumi.OutputState }
+
+func (UserProvisioningUserProvisioningStatisticArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserProvisioningUserProvisioningStatistic)(nil)).Elem()
+}
+
+func (o UserProvisioningUserProvisioningStatisticArrayOutput) ToUserProvisioningUserProvisioningStatisticArrayOutput() UserProvisioningUserProvisioningStatisticArrayOutput {
+	return o
+}
+
+func (o UserProvisioningUserProvisioningStatisticArrayOutput) ToUserProvisioningUserProvisioningStatisticArrayOutputWithContext(ctx context.Context) UserProvisioningUserProvisioningStatisticArrayOutput {
+	return o
+}
+
+func (o UserProvisioningUserProvisioningStatisticArrayOutput) Index(i pulumi.IntInput) UserProvisioningUserProvisioningStatisticOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserProvisioningUserProvisioningStatistic {
+		return vs[0].([]UserProvisioningUserProvisioningStatistic)[vs[1].(int)]
+	}).(UserProvisioningUserProvisioningStatisticOutput)
+}
+
 type GetAccessAssignmentsAssignment struct {
 	// Access configuration ID.
 	AccessConfigurationId string `pulumi:"accessConfigurationId"`
@@ -3138,6 +3244,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DirectorySamlServiceProviderPtrInput)(nil)).Elem(), DirectorySamlServiceProviderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryUserProvisioningConfigurationInput)(nil)).Elem(), DirectoryUserProvisioningConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryUserProvisioningConfigurationPtrInput)(nil)).Elem(), DirectoryUserProvisioningConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserProvisioningUserProvisioningStatisticInput)(nil)).Elem(), UserProvisioningUserProvisioningStatisticArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserProvisioningUserProvisioningStatisticArrayInput)(nil)).Elem(), UserProvisioningUserProvisioningStatisticArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessAssignmentsAssignmentInput)(nil)).Elem(), GetAccessAssignmentsAssignmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessAssignmentsAssignmentArrayInput)(nil)).Elem(), GetAccessAssignmentsAssignmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessConfigurationsConfigurationInput)(nil)).Elem(), GetAccessConfigurationsConfigurationArgs{})
@@ -3172,6 +3280,8 @@ func init() {
 	pulumi.RegisterOutputType(DirectorySamlServiceProviderPtrOutput{})
 	pulumi.RegisterOutputType(DirectoryUserProvisioningConfigurationOutput{})
 	pulumi.RegisterOutputType(DirectoryUserProvisioningConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(UserProvisioningUserProvisioningStatisticOutput{})
+	pulumi.RegisterOutputType(UserProvisioningUserProvisioningStatisticArrayOutput{})
 	pulumi.RegisterOutputType(GetAccessAssignmentsAssignmentOutput{})
 	pulumi.RegisterOutputType(GetAccessAssignmentsAssignmentArrayOutput{})
 	pulumi.RegisterOutputType(GetAccessConfigurationsConfigurationOutput{})

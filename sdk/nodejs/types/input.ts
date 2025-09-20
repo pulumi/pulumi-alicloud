@@ -3893,6 +3893,16 @@ export namespace cloudsso {
         sessionDuration?: pulumi.Input<string>;
     }
 
+    export interface UserProvisioningUserProvisioningStatistic {
+        /**
+         * Number of failed events
+         */
+        failedEventCount?: pulumi.Input<number>;
+        /**
+         * Last Provisioning time
+         */
+        gmtLatestSync?: pulumi.Input<string>;
+    }
 }
 
 export namespace cloudstoragegateway {
@@ -10731,6 +10741,48 @@ export namespace esa {
         slsRegion?: pulumi.Input<string>;
     }
 
+    export interface TransportLayerApplicationRule {
+        /**
+         * Client IP pass-through protocol, supporting:
+         */
+        clientIpPassThroughMode: pulumi.Input<string>;
+        /**
+         * Comment information for the rule (optional).
+         */
+        comment?: pulumi.Input<string>;
+        /**
+         * Edge port. Supports:
+         * - A single port, such as 80.
+         * - Port range, such as 81-85, representing ports 81, 82, 83, 84, and 85.
+         * - Combination of ports and port ranges, separated by commas, such as 80,81-85,90, representing ports 80, 81, 82, 83, 84, 85, and 90.
+         *
+         * Edge ports within a single rule and between multiple rules must not overlap.
+         */
+        edgePort: pulumi.Input<string>;
+        /**
+         * Forwarding rule protocol, with values:
+         * - `TCP`: TCP protocol.
+         * - `UDP`: UDP protocol.
+         */
+        protocol: pulumi.Input<string>;
+        /**
+         * Rule ID
+         */
+        ruleId?: pulumi.Input<number>;
+        /**
+         * Specific value of the origin, which needs to match the origin type.
+         */
+        source: pulumi.Input<string>;
+        /**
+         * Source Port
+         */
+        sourcePort: pulumi.Input<string>;
+        /**
+         * Origin type, supporting:
+         */
+        sourceType: pulumi.Input<string>;
+    }
+
     export interface WaitingRoomHostNameAndPath {
         /**
          * The domain name.
@@ -12339,6 +12391,7 @@ export namespace fc {
     }
 
     export interface V3FunctionInstanceLifecycleConfigInitializer {
+        commands?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Function Handler: the call entry for the function compute system to run your function.
          */
@@ -13503,6 +13556,94 @@ export namespace kvstore {
 }
 
 export namespace lindorm {
+    export interface InstanceV2EngineList {
+        /**
+         * Connect Address List
+         */
+        connectAddressLists?: pulumi.Input<pulumi.Input<inputs.lindorm.InstanceV2EngineListConnectAddressList>[]>;
+        /**
+         * Engine
+         */
+        engineType: pulumi.Input<string>;
+        /**
+         * Whether it is the latest version
+         */
+        isLastVersion?: pulumi.Input<boolean>;
+        /**
+         * Latest Version
+         */
+        latestVersion?: pulumi.Input<string>;
+        /**
+         * Node Group List See `nodeGroup` below.
+         */
+        nodeGroups?: pulumi.Input<pulumi.Input<inputs.lindorm.InstanceV2EngineListNodeGroup>[]>;
+        /**
+         * Engine Version
+         */
+        version?: pulumi.Input<string>;
+    }
+
+    export interface InstanceV2EngineListConnectAddressList {
+        /**
+         * Connect Address
+         */
+        address?: pulumi.Input<string>;
+        /**
+         * Connect Port
+         */
+        port?: pulumi.Input<string>;
+        /**
+         * Connect Type:
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface InstanceV2EngineListNodeGroup {
+        /**
+         * Node Type
+         */
+        category?: pulumi.Input<string>;
+        /**
+         * Number of CPU cores
+         */
+        cpuCoreCount?: pulumi.Input<number>;
+        /**
+         * Whether to mount  local cloud disks
+         */
+        enableAttachLocalDisk?: pulumi.Input<boolean>;
+        /**
+         * Node memory size
+         */
+        memorySizeGiB?: pulumi.Input<number>;
+        /**
+         * Number of nodes
+         */
+        nodeCount: pulumi.Input<number>;
+        /**
+         * Local cloud disk storage capacity
+         */
+        nodeDiskSize?: pulumi.Input<number>;
+        /**
+         * Node Disk Type
+         */
+        nodeDiskType?: pulumi.Input<string>;
+        /**
+         * Node Specifications
+         */
+        nodeSpec: pulumi.Input<string>;
+        /**
+         * Resource group name
+         */
+        resourceGroupName: pulumi.Input<string>;
+        /**
+         * Spec Id
+         */
+        specId?: pulumi.Input<string>;
+        /**
+         * Node Status
+         */
+        status?: pulumi.Input<string>;
+    }
 }
 
 export namespace log {
@@ -18837,6 +18978,29 @@ export namespace sls {
          * The ARN role that authorizes writing to the target Logstore.
          */
         roleArn: pulumi.Input<string>;
+    }
+
+    export interface IndexLine {
+        /**
+         * Is case sensitive
+         */
+        caseSensitive: pulumi.Input<boolean>;
+        /**
+         * Does it include Chinese
+         */
+        chn: pulumi.Input<boolean>;
+        /**
+         * List of excluded fields
+         */
+        excludeKeys?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Include field list
+         */
+        includeKeys?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Delimiter
+         */
+        tokens: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface LogtailConfigOutputDetail {

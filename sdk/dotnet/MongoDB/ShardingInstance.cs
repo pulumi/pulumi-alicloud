@@ -150,6 +150,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> BackupTime { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the encryption key.
+        /// </summary>
+        [Output("cloudDiskEncryptionKey")]
+        public Output<string?> CloudDiskEncryptionKey { get; private set; } = null!;
+
+        /// <summary>
         /// The ConfigServer nodes of the instance. See `config_server_list` below.
         /// </summary>
         [Output("configServerLists")]
@@ -167,6 +173,24 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Output("enableBackupLog")]
         public Output<int> EnableBackupLog { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+        /// </summary>
+        [Output("encrypted")]
+        public Output<bool?> Encrypted { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the custom key.
+        /// </summary>
+        [Output("encryptionKey")]
+        public Output<string> EncryptionKey { get; private set; } = null!;
+
+        /// <summary>
+        /// The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+        /// </summary>
+        [Output("encryptorName")]
+        public Output<string> EncryptorName { get; private set; } = null!;
 
         /// <summary>
         /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
@@ -278,6 +302,12 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Output("retentionPeriod")]
         public Output<int> RetentionPeriod { get; private set; } = null!;
+
+        /// <summary>
+        /// The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
+        /// </summary>
+        [Output("roleArn")]
+        public Output<string> RoleArn { get; private set; } = null!;
 
         /// <summary>
         /// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
@@ -477,6 +507,12 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("backupTime")]
         public Input<string>? BackupTime { get; set; }
 
+        /// <summary>
+        /// The ID of the encryption key.
+        /// </summary>
+        [Input("cloudDiskEncryptionKey")]
+        public Input<string>? CloudDiskEncryptionKey { get; set; }
+
         [Input("configServerLists")]
         private InputList<Inputs.ShardingInstanceConfigServerListArgs>? _configServerLists;
 
@@ -501,6 +537,24 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Input("enableBackupLog")]
         public Input<int>? EnableBackupLog { get; set; }
+
+        /// <summary>
+        /// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+        /// </summary>
+        [Input("encrypted")]
+        public Input<bool>? Encrypted { get; set; }
+
+        /// <summary>
+        /// The ID of the custom key.
+        /// </summary>
+        [Input("encryptionKey")]
+        public Input<string>? EncryptionKey { get; set; }
+
+        /// <summary>
+        /// The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+        /// </summary>
+        [Input("encryptorName")]
+        public Input<string>? EncryptorName { get; set; }
 
         /// <summary>
         /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
@@ -624,6 +678,12 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
+        /// </summary>
+        [Input("roleArn")]
+        public Input<string>? RoleArn { get; set; }
 
         /// <summary>
         /// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
@@ -793,6 +853,12 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("backupTime")]
         public Input<string>? BackupTime { get; set; }
 
+        /// <summary>
+        /// The ID of the encryption key.
+        /// </summary>
+        [Input("cloudDiskEncryptionKey")]
+        public Input<string>? CloudDiskEncryptionKey { get; set; }
+
         [Input("configServerLists")]
         private InputList<Inputs.ShardingInstanceConfigServerListGetArgs>? _configServerLists;
 
@@ -817,6 +883,24 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Input("enableBackupLog")]
         public Input<int>? EnableBackupLog { get; set; }
+
+        /// <summary>
+        /// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+        /// </summary>
+        [Input("encrypted")]
+        public Input<bool>? Encrypted { get; set; }
+
+        /// <summary>
+        /// The ID of the custom key.
+        /// </summary>
+        [Input("encryptionKey")]
+        public Input<string>? EncryptionKey { get; set; }
+
+        /// <summary>
+        /// The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+        /// </summary>
+        [Input("encryptorName")]
+        public Input<string>? EncryptorName { get; set; }
 
         /// <summary>
         /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
@@ -946,6 +1030,12 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Input("retentionPeriod")]
         public Input<int>? RetentionPeriod { get; set; }
+
+        /// <summary>
+        /// The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
+        /// </summary>
+        [Input("roleArn")]
+        public Input<string>? RoleArn { get; set; }
 
         /// <summary>
         /// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.

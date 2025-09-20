@@ -12,7 +12,6 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +19,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a CEN Transit Router VPC Attachment resource that associate the VPC with the CEN instance. [What is Cen Transit Router VPC Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervpcattachment)
+ * Provides a Cen Transit Router Vpc Attachment resource.
+ * 
+ * For information about Cen Transit Router Vpc Attachment and how to use it, see [What is Transit Router Vpc Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervpcattachment)
  * 
  * &gt; **NOTE:** Available since v1.126.0.
  * 
@@ -123,7 +124,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * CEN Transit Router Vpc Attachment can be imported using the id, e.g.
+ * Cen Transit Router Vpc Attachment can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example &lt;id&gt;
@@ -217,6 +218,20 @@ public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResou
      */
     public Output<String> paymentType() {
         return this.paymentType;
+    }
+    /**
+     * (Available since v1.260.0).The ID of the region where the VPC is deployed.
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return (Available since v1.260.0).The ID of the region where the VPC is deployed.
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
     }
     /**
      * The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
@@ -315,21 +330,21 @@ public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.transitRouterAttachmentDescription);
     }
     /**
-     * The ID of the Transit Router Attachment.
+     * The ID of the VPC connection.
      * 
      */
     @Export(name="transitRouterAttachmentId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterAttachmentId;
 
     /**
-     * @return The ID of the Transit Router Attachment.
+     * @return The ID of the VPC connection.
      * 
      */
     public Output<String> transitRouterAttachmentId() {
         return this.transitRouterAttachmentId;
     }
     /**
-     * . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
+     * Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
@@ -340,7 +355,7 @@ public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResou
     private Output<String> transitRouterAttachmentName;
 
     /**
-     * @return . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
+     * @return Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
      * 
      */
     public Output<String> transitRouterAttachmentName() {
@@ -410,14 +425,14 @@ public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResou
      * VpcOwnerId
      * 
      */
-    @Export(name="vpcOwnerId", refs={Integer.class}, tree="[0]")
-    private Output<Integer> vpcOwnerId;
+    @Export(name="vpcOwnerId", refs={String.class}, tree="[0]")
+    private Output<String> vpcOwnerId;
 
     /**
      * @return VpcOwnerId
      * 
      */
-    public Output<Integer> vpcOwnerId() {
+    public Output<String> vpcOwnerId() {
         return this.vpcOwnerId;
     }
     /**

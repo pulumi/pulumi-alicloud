@@ -163,6 +163,7 @@ public final class EcsLaunchTemplateState extends com.pulumi.resources.ResourceA
      * Whether to enable access to instance metadata. Valid values:
      * - enabled: Enabled.
      * - disabled: Disabled.
+     *   **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
      * 
      */
     @Import(name="httpEndpoint")
@@ -172,6 +173,7 @@ public final class EcsLaunchTemplateState extends com.pulumi.resources.ResourceA
      * @return Whether to enable access to instance metadata. Valid values:
      * - enabled: Enabled.
      * - disabled: Disabled.
+     *   **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
      * 
      */
     public Optional<Output<String>> httpEndpoint() {
@@ -179,14 +181,14 @@ public final class EcsLaunchTemplateState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The HTTP PUT response hop limit required for instance metadata requests.
+     * The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
      * 
      */
     @Import(name="httpPutResponseHopLimit")
     private @Nullable Output<Integer> httpPutResponseHopLimit;
 
     /**
-     * @return The HTTP PUT response hop limit required for instance metadata requests.
+     * @return The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
      * 
      */
     public Optional<Output<Integer>> httpPutResponseHopLimit() {
@@ -197,6 +199,7 @@ public final class EcsLaunchTemplateState extends com.pulumi.resources.ResourceA
      * Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
      * - optional: Not mandatory.
      * - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
+     *   **NOTE:** From version 1.260.0, `http_tokens` can be modified.
      * 
      */
     @Import(name="httpTokens")
@@ -206,6 +209,7 @@ public final class EcsLaunchTemplateState extends com.pulumi.resources.ResourceA
      * @return Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
      * - optional: Not mandatory.
      * - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
+     *   **NOTE:** From version 1.260.0, `http_tokens` can be modified.
      * 
      */
     public Optional<Output<String>> httpTokens() {
@@ -1198,6 +1202,7 @@ public final class EcsLaunchTemplateState extends com.pulumi.resources.ResourceA
          * @param httpEndpoint Whether to enable access to instance metadata. Valid values:
          * - enabled: Enabled.
          * - disabled: Disabled.
+         *   **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
          * 
          * @return builder
          * 
@@ -1211,6 +1216,7 @@ public final class EcsLaunchTemplateState extends com.pulumi.resources.ResourceA
          * @param httpEndpoint Whether to enable access to instance metadata. Valid values:
          * - enabled: Enabled.
          * - disabled: Disabled.
+         *   **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
          * 
          * @return builder
          * 
@@ -1220,7 +1226,7 @@ public final class EcsLaunchTemplateState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param httpPutResponseHopLimit The HTTP PUT response hop limit required for instance metadata requests.
+         * @param httpPutResponseHopLimit The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
          * 
          * @return builder
          * 
@@ -1231,7 +1237,7 @@ public final class EcsLaunchTemplateState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param httpPutResponseHopLimit The HTTP PUT response hop limit required for instance metadata requests.
+         * @param httpPutResponseHopLimit The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
          * 
          * @return builder
          * 
@@ -1244,6 +1250,7 @@ public final class EcsLaunchTemplateState extends com.pulumi.resources.ResourceA
          * @param httpTokens Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
          * - optional: Not mandatory.
          * - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
+         *   **NOTE:** From version 1.260.0, `http_tokens` can be modified.
          * 
          * @return builder
          * 
@@ -1257,6 +1264,7 @@ public final class EcsLaunchTemplateState extends com.pulumi.resources.ResourceA
          * @param httpTokens Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
          * - optional: Not mandatory.
          * - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
+         *   **NOTE:** From version 1.260.0, `http_tokens` can be modified.
          * 
          * @return builder
          * 

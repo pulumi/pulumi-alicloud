@@ -13,6 +13,450 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type InstanceV2EngineList struct {
+	// Connect Address List
+	ConnectAddressLists []InstanceV2EngineListConnectAddressList `pulumi:"connectAddressLists"`
+	// Engine
+	EngineType string `pulumi:"engineType"`
+	// Whether it is the latest version
+	IsLastVersion *bool `pulumi:"isLastVersion"`
+	// Latest Version
+	LatestVersion *string `pulumi:"latestVersion"`
+	// Node Group List See `nodeGroup` below.
+	NodeGroups []InstanceV2EngineListNodeGroup `pulumi:"nodeGroups"`
+	// Engine Version
+	Version *string `pulumi:"version"`
+}
+
+// InstanceV2EngineListInput is an input type that accepts InstanceV2EngineListArgs and InstanceV2EngineListOutput values.
+// You can construct a concrete instance of `InstanceV2EngineListInput` via:
+//
+//	InstanceV2EngineListArgs{...}
+type InstanceV2EngineListInput interface {
+	pulumi.Input
+
+	ToInstanceV2EngineListOutput() InstanceV2EngineListOutput
+	ToInstanceV2EngineListOutputWithContext(context.Context) InstanceV2EngineListOutput
+}
+
+type InstanceV2EngineListArgs struct {
+	// Connect Address List
+	ConnectAddressLists InstanceV2EngineListConnectAddressListArrayInput `pulumi:"connectAddressLists"`
+	// Engine
+	EngineType pulumi.StringInput `pulumi:"engineType"`
+	// Whether it is the latest version
+	IsLastVersion pulumi.BoolPtrInput `pulumi:"isLastVersion"`
+	// Latest Version
+	LatestVersion pulumi.StringPtrInput `pulumi:"latestVersion"`
+	// Node Group List See `nodeGroup` below.
+	NodeGroups InstanceV2EngineListNodeGroupArrayInput `pulumi:"nodeGroups"`
+	// Engine Version
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (InstanceV2EngineListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceV2EngineList)(nil)).Elem()
+}
+
+func (i InstanceV2EngineListArgs) ToInstanceV2EngineListOutput() InstanceV2EngineListOutput {
+	return i.ToInstanceV2EngineListOutputWithContext(context.Background())
+}
+
+func (i InstanceV2EngineListArgs) ToInstanceV2EngineListOutputWithContext(ctx context.Context) InstanceV2EngineListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceV2EngineListOutput)
+}
+
+// InstanceV2EngineListArrayInput is an input type that accepts InstanceV2EngineListArray and InstanceV2EngineListArrayOutput values.
+// You can construct a concrete instance of `InstanceV2EngineListArrayInput` via:
+//
+//	InstanceV2EngineListArray{ InstanceV2EngineListArgs{...} }
+type InstanceV2EngineListArrayInput interface {
+	pulumi.Input
+
+	ToInstanceV2EngineListArrayOutput() InstanceV2EngineListArrayOutput
+	ToInstanceV2EngineListArrayOutputWithContext(context.Context) InstanceV2EngineListArrayOutput
+}
+
+type InstanceV2EngineListArray []InstanceV2EngineListInput
+
+func (InstanceV2EngineListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceV2EngineList)(nil)).Elem()
+}
+
+func (i InstanceV2EngineListArray) ToInstanceV2EngineListArrayOutput() InstanceV2EngineListArrayOutput {
+	return i.ToInstanceV2EngineListArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceV2EngineListArray) ToInstanceV2EngineListArrayOutputWithContext(ctx context.Context) InstanceV2EngineListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceV2EngineListArrayOutput)
+}
+
+type InstanceV2EngineListOutput struct{ *pulumi.OutputState }
+
+func (InstanceV2EngineListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceV2EngineList)(nil)).Elem()
+}
+
+func (o InstanceV2EngineListOutput) ToInstanceV2EngineListOutput() InstanceV2EngineListOutput {
+	return o
+}
+
+func (o InstanceV2EngineListOutput) ToInstanceV2EngineListOutputWithContext(ctx context.Context) InstanceV2EngineListOutput {
+	return o
+}
+
+// Connect Address List
+func (o InstanceV2EngineListOutput) ConnectAddressLists() InstanceV2EngineListConnectAddressListArrayOutput {
+	return o.ApplyT(func(v InstanceV2EngineList) []InstanceV2EngineListConnectAddressList { return v.ConnectAddressLists }).(InstanceV2EngineListConnectAddressListArrayOutput)
+}
+
+// Engine
+func (o InstanceV2EngineListOutput) EngineType() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceV2EngineList) string { return v.EngineType }).(pulumi.StringOutput)
+}
+
+// Whether it is the latest version
+func (o InstanceV2EngineListOutput) IsLastVersion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceV2EngineList) *bool { return v.IsLastVersion }).(pulumi.BoolPtrOutput)
+}
+
+// Latest Version
+func (o InstanceV2EngineListOutput) LatestVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceV2EngineList) *string { return v.LatestVersion }).(pulumi.StringPtrOutput)
+}
+
+// Node Group List See `nodeGroup` below.
+func (o InstanceV2EngineListOutput) NodeGroups() InstanceV2EngineListNodeGroupArrayOutput {
+	return o.ApplyT(func(v InstanceV2EngineList) []InstanceV2EngineListNodeGroup { return v.NodeGroups }).(InstanceV2EngineListNodeGroupArrayOutput)
+}
+
+// Engine Version
+func (o InstanceV2EngineListOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceV2EngineList) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type InstanceV2EngineListArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceV2EngineListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceV2EngineList)(nil)).Elem()
+}
+
+func (o InstanceV2EngineListArrayOutput) ToInstanceV2EngineListArrayOutput() InstanceV2EngineListArrayOutput {
+	return o
+}
+
+func (o InstanceV2EngineListArrayOutput) ToInstanceV2EngineListArrayOutputWithContext(ctx context.Context) InstanceV2EngineListArrayOutput {
+	return o
+}
+
+func (o InstanceV2EngineListArrayOutput) Index(i pulumi.IntInput) InstanceV2EngineListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceV2EngineList {
+		return vs[0].([]InstanceV2EngineList)[vs[1].(int)]
+	}).(InstanceV2EngineListOutput)
+}
+
+type InstanceV2EngineListConnectAddressList struct {
+	// Connect Address
+	Address *string `pulumi:"address"`
+	// Connect Port
+	Port *string `pulumi:"port"`
+	// Connect Type:
+	Type *string `pulumi:"type"`
+}
+
+// InstanceV2EngineListConnectAddressListInput is an input type that accepts InstanceV2EngineListConnectAddressListArgs and InstanceV2EngineListConnectAddressListOutput values.
+// You can construct a concrete instance of `InstanceV2EngineListConnectAddressListInput` via:
+//
+//	InstanceV2EngineListConnectAddressListArgs{...}
+type InstanceV2EngineListConnectAddressListInput interface {
+	pulumi.Input
+
+	ToInstanceV2EngineListConnectAddressListOutput() InstanceV2EngineListConnectAddressListOutput
+	ToInstanceV2EngineListConnectAddressListOutputWithContext(context.Context) InstanceV2EngineListConnectAddressListOutput
+}
+
+type InstanceV2EngineListConnectAddressListArgs struct {
+	// Connect Address
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// Connect Port
+	Port pulumi.StringPtrInput `pulumi:"port"`
+	// Connect Type:
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (InstanceV2EngineListConnectAddressListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceV2EngineListConnectAddressList)(nil)).Elem()
+}
+
+func (i InstanceV2EngineListConnectAddressListArgs) ToInstanceV2EngineListConnectAddressListOutput() InstanceV2EngineListConnectAddressListOutput {
+	return i.ToInstanceV2EngineListConnectAddressListOutputWithContext(context.Background())
+}
+
+func (i InstanceV2EngineListConnectAddressListArgs) ToInstanceV2EngineListConnectAddressListOutputWithContext(ctx context.Context) InstanceV2EngineListConnectAddressListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceV2EngineListConnectAddressListOutput)
+}
+
+// InstanceV2EngineListConnectAddressListArrayInput is an input type that accepts InstanceV2EngineListConnectAddressListArray and InstanceV2EngineListConnectAddressListArrayOutput values.
+// You can construct a concrete instance of `InstanceV2EngineListConnectAddressListArrayInput` via:
+//
+//	InstanceV2EngineListConnectAddressListArray{ InstanceV2EngineListConnectAddressListArgs{...} }
+type InstanceV2EngineListConnectAddressListArrayInput interface {
+	pulumi.Input
+
+	ToInstanceV2EngineListConnectAddressListArrayOutput() InstanceV2EngineListConnectAddressListArrayOutput
+	ToInstanceV2EngineListConnectAddressListArrayOutputWithContext(context.Context) InstanceV2EngineListConnectAddressListArrayOutput
+}
+
+type InstanceV2EngineListConnectAddressListArray []InstanceV2EngineListConnectAddressListInput
+
+func (InstanceV2EngineListConnectAddressListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceV2EngineListConnectAddressList)(nil)).Elem()
+}
+
+func (i InstanceV2EngineListConnectAddressListArray) ToInstanceV2EngineListConnectAddressListArrayOutput() InstanceV2EngineListConnectAddressListArrayOutput {
+	return i.ToInstanceV2EngineListConnectAddressListArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceV2EngineListConnectAddressListArray) ToInstanceV2EngineListConnectAddressListArrayOutputWithContext(ctx context.Context) InstanceV2EngineListConnectAddressListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceV2EngineListConnectAddressListArrayOutput)
+}
+
+type InstanceV2EngineListConnectAddressListOutput struct{ *pulumi.OutputState }
+
+func (InstanceV2EngineListConnectAddressListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceV2EngineListConnectAddressList)(nil)).Elem()
+}
+
+func (o InstanceV2EngineListConnectAddressListOutput) ToInstanceV2EngineListConnectAddressListOutput() InstanceV2EngineListConnectAddressListOutput {
+	return o
+}
+
+func (o InstanceV2EngineListConnectAddressListOutput) ToInstanceV2EngineListConnectAddressListOutputWithContext(ctx context.Context) InstanceV2EngineListConnectAddressListOutput {
+	return o
+}
+
+// Connect Address
+func (o InstanceV2EngineListConnectAddressListOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceV2EngineListConnectAddressList) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// Connect Port
+func (o InstanceV2EngineListConnectAddressListOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceV2EngineListConnectAddressList) *string { return v.Port }).(pulumi.StringPtrOutput)
+}
+
+// Connect Type:
+func (o InstanceV2EngineListConnectAddressListOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceV2EngineListConnectAddressList) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type InstanceV2EngineListConnectAddressListArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceV2EngineListConnectAddressListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceV2EngineListConnectAddressList)(nil)).Elem()
+}
+
+func (o InstanceV2EngineListConnectAddressListArrayOutput) ToInstanceV2EngineListConnectAddressListArrayOutput() InstanceV2EngineListConnectAddressListArrayOutput {
+	return o
+}
+
+func (o InstanceV2EngineListConnectAddressListArrayOutput) ToInstanceV2EngineListConnectAddressListArrayOutputWithContext(ctx context.Context) InstanceV2EngineListConnectAddressListArrayOutput {
+	return o
+}
+
+func (o InstanceV2EngineListConnectAddressListArrayOutput) Index(i pulumi.IntInput) InstanceV2EngineListConnectAddressListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceV2EngineListConnectAddressList {
+		return vs[0].([]InstanceV2EngineListConnectAddressList)[vs[1].(int)]
+	}).(InstanceV2EngineListConnectAddressListOutput)
+}
+
+type InstanceV2EngineListNodeGroup struct {
+	// Node Type
+	Category *string `pulumi:"category"`
+	// Number of CPU cores
+	CpuCoreCount *int `pulumi:"cpuCoreCount"`
+	// Whether to mount  local cloud disks
+	EnableAttachLocalDisk *bool `pulumi:"enableAttachLocalDisk"`
+	// Node memory size
+	MemorySizeGiB *int `pulumi:"memorySizeGiB"`
+	// Number of nodes
+	NodeCount int `pulumi:"nodeCount"`
+	// Local cloud disk storage capacity
+	NodeDiskSize *int `pulumi:"nodeDiskSize"`
+	// Node Disk Type
+	NodeDiskType *string `pulumi:"nodeDiskType"`
+	// Node Specifications
+	NodeSpec string `pulumi:"nodeSpec"`
+	// Resource group name
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Spec Id
+	SpecId *string `pulumi:"specId"`
+	// Node Status
+	Status *string `pulumi:"status"`
+}
+
+// InstanceV2EngineListNodeGroupInput is an input type that accepts InstanceV2EngineListNodeGroupArgs and InstanceV2EngineListNodeGroupOutput values.
+// You can construct a concrete instance of `InstanceV2EngineListNodeGroupInput` via:
+//
+//	InstanceV2EngineListNodeGroupArgs{...}
+type InstanceV2EngineListNodeGroupInput interface {
+	pulumi.Input
+
+	ToInstanceV2EngineListNodeGroupOutput() InstanceV2EngineListNodeGroupOutput
+	ToInstanceV2EngineListNodeGroupOutputWithContext(context.Context) InstanceV2EngineListNodeGroupOutput
+}
+
+type InstanceV2EngineListNodeGroupArgs struct {
+	// Node Type
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	// Number of CPU cores
+	CpuCoreCount pulumi.IntPtrInput `pulumi:"cpuCoreCount"`
+	// Whether to mount  local cloud disks
+	EnableAttachLocalDisk pulumi.BoolPtrInput `pulumi:"enableAttachLocalDisk"`
+	// Node memory size
+	MemorySizeGiB pulumi.IntPtrInput `pulumi:"memorySizeGiB"`
+	// Number of nodes
+	NodeCount pulumi.IntInput `pulumi:"nodeCount"`
+	// Local cloud disk storage capacity
+	NodeDiskSize pulumi.IntPtrInput `pulumi:"nodeDiskSize"`
+	// Node Disk Type
+	NodeDiskType pulumi.StringPtrInput `pulumi:"nodeDiskType"`
+	// Node Specifications
+	NodeSpec pulumi.StringInput `pulumi:"nodeSpec"`
+	// Resource group name
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+	// Spec Id
+	SpecId pulumi.StringPtrInput `pulumi:"specId"`
+	// Node Status
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (InstanceV2EngineListNodeGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceV2EngineListNodeGroup)(nil)).Elem()
+}
+
+func (i InstanceV2EngineListNodeGroupArgs) ToInstanceV2EngineListNodeGroupOutput() InstanceV2EngineListNodeGroupOutput {
+	return i.ToInstanceV2EngineListNodeGroupOutputWithContext(context.Background())
+}
+
+func (i InstanceV2EngineListNodeGroupArgs) ToInstanceV2EngineListNodeGroupOutputWithContext(ctx context.Context) InstanceV2EngineListNodeGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceV2EngineListNodeGroupOutput)
+}
+
+// InstanceV2EngineListNodeGroupArrayInput is an input type that accepts InstanceV2EngineListNodeGroupArray and InstanceV2EngineListNodeGroupArrayOutput values.
+// You can construct a concrete instance of `InstanceV2EngineListNodeGroupArrayInput` via:
+//
+//	InstanceV2EngineListNodeGroupArray{ InstanceV2EngineListNodeGroupArgs{...} }
+type InstanceV2EngineListNodeGroupArrayInput interface {
+	pulumi.Input
+
+	ToInstanceV2EngineListNodeGroupArrayOutput() InstanceV2EngineListNodeGroupArrayOutput
+	ToInstanceV2EngineListNodeGroupArrayOutputWithContext(context.Context) InstanceV2EngineListNodeGroupArrayOutput
+}
+
+type InstanceV2EngineListNodeGroupArray []InstanceV2EngineListNodeGroupInput
+
+func (InstanceV2EngineListNodeGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceV2EngineListNodeGroup)(nil)).Elem()
+}
+
+func (i InstanceV2EngineListNodeGroupArray) ToInstanceV2EngineListNodeGroupArrayOutput() InstanceV2EngineListNodeGroupArrayOutput {
+	return i.ToInstanceV2EngineListNodeGroupArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceV2EngineListNodeGroupArray) ToInstanceV2EngineListNodeGroupArrayOutputWithContext(ctx context.Context) InstanceV2EngineListNodeGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceV2EngineListNodeGroupArrayOutput)
+}
+
+type InstanceV2EngineListNodeGroupOutput struct{ *pulumi.OutputState }
+
+func (InstanceV2EngineListNodeGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceV2EngineListNodeGroup)(nil)).Elem()
+}
+
+func (o InstanceV2EngineListNodeGroupOutput) ToInstanceV2EngineListNodeGroupOutput() InstanceV2EngineListNodeGroupOutput {
+	return o
+}
+
+func (o InstanceV2EngineListNodeGroupOutput) ToInstanceV2EngineListNodeGroupOutputWithContext(ctx context.Context) InstanceV2EngineListNodeGroupOutput {
+	return o
+}
+
+// Node Type
+func (o InstanceV2EngineListNodeGroupOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceV2EngineListNodeGroup) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// Number of CPU cores
+func (o InstanceV2EngineListNodeGroupOutput) CpuCoreCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceV2EngineListNodeGroup) *int { return v.CpuCoreCount }).(pulumi.IntPtrOutput)
+}
+
+// Whether to mount  local cloud disks
+func (o InstanceV2EngineListNodeGroupOutput) EnableAttachLocalDisk() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceV2EngineListNodeGroup) *bool { return v.EnableAttachLocalDisk }).(pulumi.BoolPtrOutput)
+}
+
+// Node memory size
+func (o InstanceV2EngineListNodeGroupOutput) MemorySizeGiB() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceV2EngineListNodeGroup) *int { return v.MemorySizeGiB }).(pulumi.IntPtrOutput)
+}
+
+// Number of nodes
+func (o InstanceV2EngineListNodeGroupOutput) NodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceV2EngineListNodeGroup) int { return v.NodeCount }).(pulumi.IntOutput)
+}
+
+// Local cloud disk storage capacity
+func (o InstanceV2EngineListNodeGroupOutput) NodeDiskSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceV2EngineListNodeGroup) *int { return v.NodeDiskSize }).(pulumi.IntPtrOutput)
+}
+
+// Node Disk Type
+func (o InstanceV2EngineListNodeGroupOutput) NodeDiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceV2EngineListNodeGroup) *string { return v.NodeDiskType }).(pulumi.StringPtrOutput)
+}
+
+// Node Specifications
+func (o InstanceV2EngineListNodeGroupOutput) NodeSpec() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceV2EngineListNodeGroup) string { return v.NodeSpec }).(pulumi.StringOutput)
+}
+
+// Resource group name
+func (o InstanceV2EngineListNodeGroupOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceV2EngineListNodeGroup) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+// Spec Id
+func (o InstanceV2EngineListNodeGroupOutput) SpecId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceV2EngineListNodeGroup) *string { return v.SpecId }).(pulumi.StringPtrOutput)
+}
+
+// Node Status
+func (o InstanceV2EngineListNodeGroupOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceV2EngineListNodeGroup) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type InstanceV2EngineListNodeGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceV2EngineListNodeGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceV2EngineListNodeGroup)(nil)).Elem()
+}
+
+func (o InstanceV2EngineListNodeGroupArrayOutput) ToInstanceV2EngineListNodeGroupArrayOutput() InstanceV2EngineListNodeGroupArrayOutput {
+	return o
+}
+
+func (o InstanceV2EngineListNodeGroupArrayOutput) ToInstanceV2EngineListNodeGroupArrayOutputWithContext(ctx context.Context) InstanceV2EngineListNodeGroupArrayOutput {
+	return o
+}
+
+func (o InstanceV2EngineListNodeGroupArrayOutput) Index(i pulumi.IntInput) InstanceV2EngineListNodeGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceV2EngineListNodeGroup {
+		return vs[0].([]InstanceV2EngineListNodeGroup)[vs[1].(int)]
+	}).(InstanceV2EngineListNodeGroupOutput)
+}
+
 type GetInstancesInstance struct {
 	// AutoRenew.
 	AutoRenew string `pulumi:"autoRenew"`
@@ -408,8 +852,20 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceV2EngineListInput)(nil)).Elem(), InstanceV2EngineListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceV2EngineListArrayInput)(nil)).Elem(), InstanceV2EngineListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceV2EngineListConnectAddressListInput)(nil)).Elem(), InstanceV2EngineListConnectAddressListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceV2EngineListConnectAddressListArrayInput)(nil)).Elem(), InstanceV2EngineListConnectAddressListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceV2EngineListNodeGroupInput)(nil)).Elem(), InstanceV2EngineListNodeGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceV2EngineListNodeGroupArrayInput)(nil)).Elem(), InstanceV2EngineListNodeGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
+	pulumi.RegisterOutputType(InstanceV2EngineListOutput{})
+	pulumi.RegisterOutputType(InstanceV2EngineListArrayOutput{})
+	pulumi.RegisterOutputType(InstanceV2EngineListConnectAddressListOutput{})
+	pulumi.RegisterOutputType(InstanceV2EngineListConnectAddressListArrayOutput{})
+	pulumi.RegisterOutputType(InstanceV2EngineListNodeGroupOutput{})
+	pulumi.RegisterOutputType(InstanceV2EngineListNodeGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 }

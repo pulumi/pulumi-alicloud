@@ -133,6 +133,8 @@ type ShardingInstance struct {
 	BackupRetentionPolicyOnClusterDeletion pulumi.IntPtrOutput `pulumi:"backupRetentionPolicyOnClusterDeletion"`
 	// Sharding Instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime pulumi.StringOutput `pulumi:"backupTime"`
+	// The ID of the encryption key.
+	CloudDiskEncryptionKey pulumi.StringPtrOutput `pulumi:"cloudDiskEncryptionKey"`
 	// The ConfigServer nodes of the instance. See `configServerList` below.
 	ConfigServerLists ShardingInstanceConfigServerListArrayOutput `pulumi:"configServerLists"`
 	// Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
@@ -140,6 +142,12 @@ type ShardingInstance struct {
 	// Specifies whether to enable the log backup feature. Valid values:
 	// - ` 1  `: The log backup feature is enabled.
 	EnableBackupLog pulumi.IntOutput `pulumi:"enableBackupLog"`
+	// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+	Encrypted pulumi.BoolPtrOutput `pulumi:"encrypted"`
+	// The ID of the custom key.
+	EncryptionKey pulumi.StringOutput `pulumi:"encryptionKey"`
+	// The encryption method. **NOTE:** `encryptorName` is valid only when `tdeStatus` is set to `enabled`.
+	EncryptorName pulumi.StringOutput `pulumi:"encryptorName"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
 	// The list of Global Security Group Ids.
@@ -179,6 +187,8 @@ type ShardingInstance struct {
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// (Available since v1.42.0) Instance data backup retention days.
 	RetentionPeriod pulumi.IntOutput `pulumi:"retentionPeriod"`
+	// The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
+	RoleArn pulumi.StringOutput `pulumi:"roleArn"`
 	// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values.
 	SecondaryZoneId pulumi.StringPtrOutput `pulumi:"secondaryZoneId"`
 	// The Security Group ID of ECS.
@@ -275,6 +285,8 @@ type shardingInstanceState struct {
 	BackupRetentionPolicyOnClusterDeletion *int `pulumi:"backupRetentionPolicyOnClusterDeletion"`
 	// Sharding Instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime *string `pulumi:"backupTime"`
+	// The ID of the encryption key.
+	CloudDiskEncryptionKey *string `pulumi:"cloudDiskEncryptionKey"`
 	// The ConfigServer nodes of the instance. See `configServerList` below.
 	ConfigServerLists []ShardingInstanceConfigServerList `pulumi:"configServerLists"`
 	// Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
@@ -282,6 +294,12 @@ type shardingInstanceState struct {
 	// Specifies whether to enable the log backup feature. Valid values:
 	// - ` 1  `: The log backup feature is enabled.
 	EnableBackupLog *int `pulumi:"enableBackupLog"`
+	// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+	Encrypted *bool `pulumi:"encrypted"`
+	// The ID of the custom key.
+	EncryptionKey *string `pulumi:"encryptionKey"`
+	// The encryption method. **NOTE:** `encryptorName` is valid only when `tdeStatus` is set to `enabled`.
+	EncryptorName *string `pulumi:"encryptorName"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
 	EngineVersion *string `pulumi:"engineVersion"`
 	// The list of Global Security Group Ids.
@@ -321,6 +339,8 @@ type shardingInstanceState struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// (Available since v1.42.0) Instance data backup retention days.
 	RetentionPeriod *int `pulumi:"retentionPeriod"`
+	// The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
+	RoleArn *string `pulumi:"roleArn"`
 	// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values.
 	SecondaryZoneId *string `pulumi:"secondaryZoneId"`
 	// The Security Group ID of ECS.
@@ -372,6 +392,8 @@ type ShardingInstanceState struct {
 	BackupRetentionPolicyOnClusterDeletion pulumi.IntPtrInput
 	// Sharding Instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime pulumi.StringPtrInput
+	// The ID of the encryption key.
+	CloudDiskEncryptionKey pulumi.StringPtrInput
 	// The ConfigServer nodes of the instance. See `configServerList` below.
 	ConfigServerLists ShardingInstanceConfigServerListArrayInput
 	// Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
@@ -379,6 +401,12 @@ type ShardingInstanceState struct {
 	// Specifies whether to enable the log backup feature. Valid values:
 	// - ` 1  `: The log backup feature is enabled.
 	EnableBackupLog pulumi.IntPtrInput
+	// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+	Encrypted pulumi.BoolPtrInput
+	// The ID of the custom key.
+	EncryptionKey pulumi.StringPtrInput
+	// The encryption method. **NOTE:** `encryptorName` is valid only when `tdeStatus` is set to `enabled`.
+	EncryptorName pulumi.StringPtrInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
 	EngineVersion pulumi.StringPtrInput
 	// The list of Global Security Group Ids.
@@ -418,6 +446,8 @@ type ShardingInstanceState struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// (Available since v1.42.0) Instance data backup retention days.
 	RetentionPeriod pulumi.IntPtrInput
+	// The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
+	RoleArn pulumi.StringPtrInput
 	// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values.
 	SecondaryZoneId pulumi.StringPtrInput
 	// The Security Group ID of ECS.
@@ -473,6 +503,8 @@ type shardingInstanceArgs struct {
 	BackupRetentionPolicyOnClusterDeletion *int `pulumi:"backupRetentionPolicyOnClusterDeletion"`
 	// Sharding Instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime *string `pulumi:"backupTime"`
+	// The ID of the encryption key.
+	CloudDiskEncryptionKey *string `pulumi:"cloudDiskEncryptionKey"`
 	// The ConfigServer nodes of the instance. See `configServerList` below.
 	ConfigServerLists []ShardingInstanceConfigServerList `pulumi:"configServerLists"`
 	// Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
@@ -480,6 +512,12 @@ type shardingInstanceArgs struct {
 	// Specifies whether to enable the log backup feature. Valid values:
 	// - ` 1  `: The log backup feature is enabled.
 	EnableBackupLog *int `pulumi:"enableBackupLog"`
+	// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+	Encrypted *bool `pulumi:"encrypted"`
+	// The ID of the custom key.
+	EncryptionKey *string `pulumi:"encryptionKey"`
+	// The encryption method. **NOTE:** `encryptorName` is valid only when `tdeStatus` is set to `enabled`.
+	EncryptorName *string `pulumi:"encryptorName"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
 	EngineVersion string `pulumi:"engineVersion"`
 	// The list of Global Security Group Ids.
@@ -517,6 +555,8 @@ type shardingInstanceArgs struct {
 	ProvisionedIops *int `pulumi:"provisionedIops"`
 	// The ID of the Resource Group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
+	RoleArn *string `pulumi:"roleArn"`
 	// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values.
 	SecondaryZoneId *string `pulumi:"secondaryZoneId"`
 	// The Security Group ID of ECS.
@@ -567,6 +607,8 @@ type ShardingInstanceArgs struct {
 	BackupRetentionPolicyOnClusterDeletion pulumi.IntPtrInput
 	// Sharding Instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime pulumi.StringPtrInput
+	// The ID of the encryption key.
+	CloudDiskEncryptionKey pulumi.StringPtrInput
 	// The ConfigServer nodes of the instance. See `configServerList` below.
 	ConfigServerLists ShardingInstanceConfigServerListArrayInput
 	// Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
@@ -574,6 +616,12 @@ type ShardingInstanceArgs struct {
 	// Specifies whether to enable the log backup feature. Valid values:
 	// - ` 1  `: The log backup feature is enabled.
 	EnableBackupLog pulumi.IntPtrInput
+	// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+	Encrypted pulumi.BoolPtrInput
+	// The ID of the custom key.
+	EncryptionKey pulumi.StringPtrInput
+	// The encryption method. **NOTE:** `encryptorName` is valid only when `tdeStatus` is set to `enabled`.
+	EncryptorName pulumi.StringPtrInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
 	EngineVersion pulumi.StringInput
 	// The list of Global Security Group Ids.
@@ -611,6 +659,8 @@ type ShardingInstanceArgs struct {
 	ProvisionedIops pulumi.IntPtrInput
 	// The ID of the Resource Group.
 	ResourceGroupId pulumi.StringPtrInput
+	// The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
+	RoleArn pulumi.StringPtrInput
 	// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values.
 	SecondaryZoneId pulumi.StringPtrInput
 	// The Security Group ID of ECS.
@@ -767,6 +817,11 @@ func (o ShardingInstanceOutput) BackupTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.BackupTime }).(pulumi.StringOutput)
 }
 
+// The ID of the encryption key.
+func (o ShardingInstanceOutput) CloudDiskEncryptionKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringPtrOutput { return v.CloudDiskEncryptionKey }).(pulumi.StringPtrOutput)
+}
+
 // The ConfigServer nodes of the instance. See `configServerList` below.
 func (o ShardingInstanceOutput) ConfigServerLists() ShardingInstanceConfigServerListArrayOutput {
 	return o.ApplyT(func(v *ShardingInstance) ShardingInstanceConfigServerListArrayOutput { return v.ConfigServerLists }).(ShardingInstanceConfigServerListArrayOutput)
@@ -781,6 +836,21 @@ func (o ShardingInstanceOutput) DbInstanceReleaseProtection() pulumi.BoolPtrOutp
 // - ` 1  `: The log backup feature is enabled.
 func (o ShardingInstanceOutput) EnableBackupLog() pulumi.IntOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.IntOutput { return v.EnableBackupLog }).(pulumi.IntOutput)
+}
+
+// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+func (o ShardingInstanceOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.BoolPtrOutput { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the custom key.
+func (o ShardingInstanceOutput) EncryptionKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.EncryptionKey }).(pulumi.StringOutput)
+}
+
+// The encryption method. **NOTE:** `encryptorName` is valid only when `tdeStatus` is set to `enabled`.
+func (o ShardingInstanceOutput) EncryptorName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.EncryptorName }).(pulumi.StringOutput)
 }
 
 // Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
@@ -874,6 +944,11 @@ func (o ShardingInstanceOutput) ResourceGroupId() pulumi.StringOutput {
 // (Available since v1.42.0) Instance data backup retention days.
 func (o ShardingInstanceOutput) RetentionPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.IntOutput { return v.RetentionPeriod }).(pulumi.IntOutput)
+}
+
+// The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
+func (o ShardingInstanceOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.RoleArn }).(pulumi.StringOutput)
 }
 
 // Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values.

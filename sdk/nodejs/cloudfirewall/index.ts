@@ -110,6 +110,11 @@ export type PolicyAdvancedConfig = import("./policyAdvancedConfig").PolicyAdvanc
 export const PolicyAdvancedConfig: typeof import("./policyAdvancedConfig").PolicyAdvancedConfig = null as any;
 utilities.lazyLoad(exports, ["PolicyAdvancedConfig"], () => require("./policyAdvancedConfig"));
 
+export { ThreatIntelligenceSwitchArgs, ThreatIntelligenceSwitchState } from "./threatIntelligenceSwitch";
+export type ThreatIntelligenceSwitch = import("./threatIntelligenceSwitch").ThreatIntelligenceSwitch;
+export const ThreatIntelligenceSwitch: typeof import("./threatIntelligenceSwitch").ThreatIntelligenceSwitch = null as any;
+utilities.lazyLoad(exports, ["ThreatIntelligenceSwitch"], () => require("./threatIntelligenceSwitch"));
+
 export { VpcCenTrFirewallArgs, VpcCenTrFirewallState } from "./vpcCenTrFirewall";
 export type VpcCenTrFirewall = import("./vpcCenTrFirewall").VpcCenTrFirewall;
 export const VpcCenTrFirewall: typeof import("./vpcCenTrFirewall").VpcCenTrFirewall = null as any;
@@ -144,6 +149,8 @@ const _module = {
                 return new NatFirewallControlPolicy(name, <any>undefined, { urn })
             case "alicloud:cloudfirewall/policyAdvancedConfig:PolicyAdvancedConfig":
                 return new PolicyAdvancedConfig(name, <any>undefined, { urn })
+            case "alicloud:cloudfirewall/threatIntelligenceSwitch:ThreatIntelligenceSwitch":
+                return new ThreatIntelligenceSwitch(name, <any>undefined, { urn })
             case "alicloud:cloudfirewall/vpcCenTrFirewall:VpcCenTrFirewall":
                 return new VpcCenTrFirewall(name, <any>undefined, { urn })
             default:
@@ -163,4 +170,5 @@ pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/ipsConfig", _mo
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/natFirewall", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/natFirewallControlPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/policyAdvancedConfig", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/threatIntelligenceSwitch", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/vpcCenTrFirewall", _module)

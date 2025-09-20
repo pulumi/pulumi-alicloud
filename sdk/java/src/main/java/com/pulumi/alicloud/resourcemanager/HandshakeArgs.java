@@ -17,14 +17,16 @@ public final class HandshakeArgs extends com.pulumi.resources.ResourceArgs {
     public static final HandshakeArgs Empty = new HandshakeArgs();
 
     /**
-     * Remarks. The maximum length is 1024 characters.
+     * The description of the invitation.
+     * The description can be up to 1,024 characters in length.
      * 
      */
     @Import(name="note")
     private @Nullable Output<String> note;
 
     /**
-     * @return Remarks. The maximum length is 1024 characters.
+     * @return The description of the invitation.
+     * The description can be up to 1,024 characters in length.
      * 
      */
     public Optional<Output<String>> note() {
@@ -32,14 +34,14 @@ public final class HandshakeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Invited account ID or login email.
+     * The ID or logon email address of the account that you want to invite.
      * 
      */
     @Import(name="targetEntity", required=true)
     private Output<String> targetEntity;
 
     /**
-     * @return Invited account ID or login email.
+     * @return The ID or logon email address of the account that you want to invite.
      * 
      */
     public Output<String> targetEntity() {
@@ -47,14 +49,20 @@ public final class HandshakeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of account being invited. Valid values: `Account`, `Email`.
+     * The type of the invited account. Valid values:
+     * 
+     * - Account: indicates the ID of the account.
+     * - Email: indicates the logon email address of the account.
      * 
      */
     @Import(name="targetType", required=true)
     private Output<String> targetType;
 
     /**
-     * @return Type of account being invited. Valid values: `Account`, `Email`.
+     * @return The type of the invited account. Valid values:
+     * 
+     * - Account: indicates the ID of the account.
+     * - Email: indicates the logon email address of the account.
      * 
      */
     public Output<String> targetType() {
@@ -88,7 +96,8 @@ public final class HandshakeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param note Remarks. The maximum length is 1024 characters.
+         * @param note The description of the invitation.
+         * The description can be up to 1,024 characters in length.
          * 
          * @return builder
          * 
@@ -99,7 +108,8 @@ public final class HandshakeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param note Remarks. The maximum length is 1024 characters.
+         * @param note The description of the invitation.
+         * The description can be up to 1,024 characters in length.
          * 
          * @return builder
          * 
@@ -109,7 +119,7 @@ public final class HandshakeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetEntity Invited account ID or login email.
+         * @param targetEntity The ID or logon email address of the account that you want to invite.
          * 
          * @return builder
          * 
@@ -120,7 +130,7 @@ public final class HandshakeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetEntity Invited account ID or login email.
+         * @param targetEntity The ID or logon email address of the account that you want to invite.
          * 
          * @return builder
          * 
@@ -130,7 +140,10 @@ public final class HandshakeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetType Type of account being invited. Valid values: `Account`, `Email`.
+         * @param targetType The type of the invited account. Valid values:
+         * 
+         * - Account: indicates the ID of the account.
+         * - Email: indicates the logon email address of the account.
          * 
          * @return builder
          * 
@@ -141,7 +154,10 @@ public final class HandshakeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetType Type of account being invited. Valid values: `Account`, `Email`.
+         * @param targetType The type of the invited account. Valid values:
+         * 
+         * - Account: indicates the ID of the account.
+         * - Email: indicates the logon email address of the account.
          * 
          * @return builder
          * 

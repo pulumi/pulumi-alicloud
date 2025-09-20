@@ -31,9 +31,13 @@ class ShardingInstanceArgs:
                  backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
                  backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[_builtins.int]] = None,
                  backup_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 cloud_disk_encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
                  config_server_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]]] = None,
                  db_instance_release_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_backup_log: Optional[pulumi.Input[_builtins.int]] = None,
+                 encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
+                 encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryptor_name: Optional[pulumi.Input[_builtins.str]] = None,
                  global_security_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  hidden_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -49,6 +53,7 @@ class ShardingInstanceArgs:
                  protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
                  provisioned_iops: Optional[pulumi.Input[_builtins.int]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 role_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  secondary_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -73,10 +78,14 @@ class ShardingInstanceArgs:
         :param pulumi.Input[_builtins.int] backup_retention_period: The retention period of full backups.
         :param pulumi.Input[_builtins.int] backup_retention_policy_on_cluster_deletion: The backup retention policy configured for the instance. Valid values:
         :param pulumi.Input[_builtins.str] backup_time: Sharding Instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
+        :param pulumi.Input[_builtins.str] cloud_disk_encryption_key: The ID of the encryption key.
         :param pulumi.Input[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]] config_server_lists: The ConfigServer nodes of the instance. See `config_server_list` below.
         :param pulumi.Input[_builtins.bool] db_instance_release_protection: Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.int] enable_backup_log: Specifies whether to enable the log backup feature. Valid values:
                - `1 `: The log backup feature is enabled.
+        :param pulumi.Input[_builtins.bool] encrypted: Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.str] encryption_key: The ID of the custom key.
+        :param pulumi.Input[_builtins.str] encryptor_name: The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] global_security_group_lists: The list of Global Security Group Ids.
         :param pulumi.Input[_builtins.str] hidden_zone_id: Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
         :param pulumi.Input[_builtins.str] instance_charge_type: The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
@@ -95,6 +104,7 @@ class ShardingInstanceArgs:
         :param pulumi.Input[_builtins.str] protocol_type: The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
         :param pulumi.Input[_builtins.int] provisioned_iops: The provisioned IOPS. Valid values: `0` to `50000`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the Resource Group.
+        :param pulumi.Input[_builtins.str] role_arn: The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
         :param pulumi.Input[_builtins.str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
         :param pulumi.Input[_builtins.str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
@@ -131,12 +141,20 @@ class ShardingInstanceArgs:
             pulumi.set(__self__, "backup_retention_policy_on_cluster_deletion", backup_retention_policy_on_cluster_deletion)
         if backup_time is not None:
             pulumi.set(__self__, "backup_time", backup_time)
+        if cloud_disk_encryption_key is not None:
+            pulumi.set(__self__, "cloud_disk_encryption_key", cloud_disk_encryption_key)
         if config_server_lists is not None:
             pulumi.set(__self__, "config_server_lists", config_server_lists)
         if db_instance_release_protection is not None:
             pulumi.set(__self__, "db_instance_release_protection", db_instance_release_protection)
         if enable_backup_log is not None:
             pulumi.set(__self__, "enable_backup_log", enable_backup_log)
+        if encrypted is not None:
+            pulumi.set(__self__, "encrypted", encrypted)
+        if encryption_key is not None:
+            pulumi.set(__self__, "encryption_key", encryption_key)
+        if encryptor_name is not None:
+            pulumi.set(__self__, "encryptor_name", encryptor_name)
         if global_security_group_lists is not None:
             pulumi.set(__self__, "global_security_group_lists", global_security_group_lists)
         if hidden_zone_id is not None:
@@ -167,6 +185,8 @@ class ShardingInstanceArgs:
             pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
         if secondary_zone_id is not None:
             pulumi.set(__self__, "secondary_zone_id", secondary_zone_id)
         if security_group_id is not None:
@@ -313,6 +333,18 @@ class ShardingInstanceArgs:
         pulumi.set(self, "backup_time", value)
 
     @_builtins.property
+    @pulumi.getter(name="cloudDiskEncryptionKey")
+    def cloud_disk_encryption_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the encryption key.
+        """
+        return pulumi.get(self, "cloud_disk_encryption_key")
+
+    @cloud_disk_encryption_key.setter
+    def cloud_disk_encryption_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cloud_disk_encryption_key", value)
+
+    @_builtins.property
     @pulumi.getter(name="configServerLists")
     def config_server_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]]]:
         """
@@ -348,6 +380,42 @@ class ShardingInstanceArgs:
     @enable_backup_log.setter
     def enable_backup_log(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "enable_backup_log", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def encrypted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "encrypted")
+
+    @encrypted.setter
+    def encrypted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "encrypted", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionKey")
+    def encryption_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the custom key.
+        """
+        return pulumi.get(self, "encryption_key")
+
+    @encryption_key.setter
+    def encryption_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "encryption_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptorName")
+    def encryptor_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+        """
+        return pulumi.get(self, "encryptor_name")
+
+    @encryptor_name.setter
+    def encryptor_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "encryptor_name", value)
 
     @_builtins.property
     @pulumi.getter(name="globalSecurityGroupLists")
@@ -533,6 +601,18 @@ class ShardingInstanceArgs:
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
+        """
+        return pulumi.get(self, "role_arn")
+
+    @role_arn.setter
+    def role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "role_arn", value)
+
+    @_builtins.property
     @pulumi.getter(name="secondaryZoneId")
     def secondary_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -693,9 +773,13 @@ class _ShardingInstanceState:
                  backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
                  backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[_builtins.int]] = None,
                  backup_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 cloud_disk_encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
                  config_server_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]]] = None,
                  db_instance_release_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_backup_log: Optional[pulumi.Input[_builtins.int]] = None,
+                 encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
+                 encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryptor_name: Optional[pulumi.Input[_builtins.str]] = None,
                  engine_version: Optional[pulumi.Input[_builtins.str]] = None,
                  global_security_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  hidden_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -714,6 +798,7 @@ class _ShardingInstanceState:
                  provisioned_iops: Optional[pulumi.Input[_builtins.int]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  retention_period: Optional[pulumi.Input[_builtins.int]] = None,
+                 role_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  secondary_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -737,10 +822,14 @@ class _ShardingInstanceState:
         :param pulumi.Input[_builtins.int] backup_retention_period: The retention period of full backups.
         :param pulumi.Input[_builtins.int] backup_retention_policy_on_cluster_deletion: The backup retention policy configured for the instance. Valid values:
         :param pulumi.Input[_builtins.str] backup_time: Sharding Instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
+        :param pulumi.Input[_builtins.str] cloud_disk_encryption_key: The ID of the encryption key.
         :param pulumi.Input[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]] config_server_lists: The ConfigServer nodes of the instance. See `config_server_list` below.
         :param pulumi.Input[_builtins.bool] db_instance_release_protection: Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.int] enable_backup_log: Specifies whether to enable the log backup feature. Valid values:
                - `1 `: The log backup feature is enabled.
+        :param pulumi.Input[_builtins.bool] encrypted: Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.str] encryption_key: The ID of the custom key.
+        :param pulumi.Input[_builtins.str] encryptor_name: The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
         :param pulumi.Input[_builtins.str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] global_security_group_lists: The list of Global Security Group Ids.
         :param pulumi.Input[_builtins.str] hidden_zone_id: Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
@@ -762,6 +851,7 @@ class _ShardingInstanceState:
         :param pulumi.Input[_builtins.int] provisioned_iops: The provisioned IOPS. Valid values: `0` to `50000`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[_builtins.int] retention_period: (Available since v1.42.0) Instance data backup retention days.
+        :param pulumi.Input[_builtins.str] role_arn: The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
         :param pulumi.Input[_builtins.str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
         :param pulumi.Input[_builtins.str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
@@ -797,12 +887,20 @@ class _ShardingInstanceState:
             pulumi.set(__self__, "backup_retention_policy_on_cluster_deletion", backup_retention_policy_on_cluster_deletion)
         if backup_time is not None:
             pulumi.set(__self__, "backup_time", backup_time)
+        if cloud_disk_encryption_key is not None:
+            pulumi.set(__self__, "cloud_disk_encryption_key", cloud_disk_encryption_key)
         if config_server_lists is not None:
             pulumi.set(__self__, "config_server_lists", config_server_lists)
         if db_instance_release_protection is not None:
             pulumi.set(__self__, "db_instance_release_protection", db_instance_release_protection)
         if enable_backup_log is not None:
             pulumi.set(__self__, "enable_backup_log", enable_backup_log)
+        if encrypted is not None:
+            pulumi.set(__self__, "encrypted", encrypted)
+        if encryption_key is not None:
+            pulumi.set(__self__, "encryption_key", encryption_key)
+        if encryptor_name is not None:
+            pulumi.set(__self__, "encryptor_name", encryptor_name)
         if engine_version is not None:
             pulumi.set(__self__, "engine_version", engine_version)
         if global_security_group_lists is not None:
@@ -839,6 +937,8 @@ class _ShardingInstanceState:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if retention_period is not None:
             pulumi.set(__self__, "retention_period", retention_period)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
         if secondary_zone_id is not None:
             pulumi.set(__self__, "secondary_zone_id", secondary_zone_id)
         if security_group_id is not None:
@@ -953,6 +1053,18 @@ class _ShardingInstanceState:
         pulumi.set(self, "backup_time", value)
 
     @_builtins.property
+    @pulumi.getter(name="cloudDiskEncryptionKey")
+    def cloud_disk_encryption_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the encryption key.
+        """
+        return pulumi.get(self, "cloud_disk_encryption_key")
+
+    @cloud_disk_encryption_key.setter
+    def cloud_disk_encryption_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cloud_disk_encryption_key", value)
+
+    @_builtins.property
     @pulumi.getter(name="configServerLists")
     def config_server_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]]]:
         """
@@ -988,6 +1100,42 @@ class _ShardingInstanceState:
     @enable_backup_log.setter
     def enable_backup_log(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "enable_backup_log", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def encrypted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "encrypted")
+
+    @encrypted.setter
+    def encrypted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "encrypted", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionKey")
+    def encryption_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the custom key.
+        """
+        return pulumi.get(self, "encryption_key")
+
+    @encryption_key.setter
+    def encryption_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "encryption_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptorName")
+    def encryptor_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+        """
+        return pulumi.get(self, "encryptor_name")
+
+    @encryptor_name.setter
+    def encryptor_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "encryptor_name", value)
 
     @_builtins.property
     @pulumi.getter(name="engineVersion")
@@ -1209,6 +1357,18 @@ class _ShardingInstanceState:
         pulumi.set(self, "retention_period", value)
 
     @_builtins.property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
+        """
+        return pulumi.get(self, "role_arn")
+
+    @role_arn.setter
+    def role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "role_arn", value)
+
+    @_builtins.property
     @pulumi.getter(name="secondaryZoneId")
     def secondary_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -1396,9 +1556,13 @@ class ShardingInstance(pulumi.CustomResource):
                  backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
                  backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[_builtins.int]] = None,
                  backup_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 cloud_disk_encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
                  config_server_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceConfigServerListArgs', 'ShardingInstanceConfigServerListArgsDict']]]]] = None,
                  db_instance_release_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_backup_log: Optional[pulumi.Input[_builtins.int]] = None,
+                 encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
+                 encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryptor_name: Optional[pulumi.Input[_builtins.str]] = None,
                  engine_version: Optional[pulumi.Input[_builtins.str]] = None,
                  global_security_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  hidden_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1416,6 +1580,7 @@ class ShardingInstance(pulumi.CustomResource):
                  protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
                  provisioned_iops: Optional[pulumi.Input[_builtins.int]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 role_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  secondary_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1513,10 +1678,14 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] backup_retention_period: The retention period of full backups.
         :param pulumi.Input[_builtins.int] backup_retention_policy_on_cluster_deletion: The backup retention policy configured for the instance. Valid values:
         :param pulumi.Input[_builtins.str] backup_time: Sharding Instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
+        :param pulumi.Input[_builtins.str] cloud_disk_encryption_key: The ID of the encryption key.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceConfigServerListArgs', 'ShardingInstanceConfigServerListArgsDict']]]] config_server_lists: The ConfigServer nodes of the instance. See `config_server_list` below.
         :param pulumi.Input[_builtins.bool] db_instance_release_protection: Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.int] enable_backup_log: Specifies whether to enable the log backup feature. Valid values:
                - `1 `: The log backup feature is enabled.
+        :param pulumi.Input[_builtins.bool] encrypted: Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.str] encryption_key: The ID of the custom key.
+        :param pulumi.Input[_builtins.str] encryptor_name: The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
         :param pulumi.Input[_builtins.str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] global_security_group_lists: The list of Global Security Group Ids.
         :param pulumi.Input[_builtins.str] hidden_zone_id: Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
@@ -1537,6 +1706,7 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] protocol_type: The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
         :param pulumi.Input[_builtins.int] provisioned_iops: The provisioned IOPS. Valid values: `0` to `50000`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the Resource Group.
+        :param pulumi.Input[_builtins.str] role_arn: The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
         :param pulumi.Input[_builtins.str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
         :param pulumi.Input[_builtins.str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
@@ -1659,9 +1829,13 @@ class ShardingInstance(pulumi.CustomResource):
                  backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
                  backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[_builtins.int]] = None,
                  backup_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 cloud_disk_encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
                  config_server_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceConfigServerListArgs', 'ShardingInstanceConfigServerListArgsDict']]]]] = None,
                  db_instance_release_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_backup_log: Optional[pulumi.Input[_builtins.int]] = None,
+                 encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
+                 encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryptor_name: Optional[pulumi.Input[_builtins.str]] = None,
                  engine_version: Optional[pulumi.Input[_builtins.str]] = None,
                  global_security_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  hidden_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1679,6 +1853,7 @@ class ShardingInstance(pulumi.CustomResource):
                  protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
                  provisioned_iops: Optional[pulumi.Input[_builtins.int]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 role_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  secondary_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1708,9 +1883,13 @@ class ShardingInstance(pulumi.CustomResource):
             __props__.__dict__["backup_retention_period"] = backup_retention_period
             __props__.__dict__["backup_retention_policy_on_cluster_deletion"] = backup_retention_policy_on_cluster_deletion
             __props__.__dict__["backup_time"] = backup_time
+            __props__.__dict__["cloud_disk_encryption_key"] = cloud_disk_encryption_key
             __props__.__dict__["config_server_lists"] = config_server_lists
             __props__.__dict__["db_instance_release_protection"] = db_instance_release_protection
             __props__.__dict__["enable_backup_log"] = enable_backup_log
+            __props__.__dict__["encrypted"] = encrypted
+            __props__.__dict__["encryption_key"] = encryption_key
+            __props__.__dict__["encryptor_name"] = encryptor_name
             if engine_version is None and not opts.urn:
                 raise TypeError("Missing required property 'engine_version'")
             __props__.__dict__["engine_version"] = engine_version
@@ -1732,6 +1911,7 @@ class ShardingInstance(pulumi.CustomResource):
             __props__.__dict__["protocol_type"] = protocol_type
             __props__.__dict__["provisioned_iops"] = provisioned_iops
             __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["role_arn"] = role_arn
             __props__.__dict__["secondary_zone_id"] = secondary_zone_id
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["security_ip_lists"] = security_ip_lists
@@ -1768,9 +1948,13 @@ class ShardingInstance(pulumi.CustomResource):
             backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
             backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[_builtins.int]] = None,
             backup_time: Optional[pulumi.Input[_builtins.str]] = None,
+            cloud_disk_encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
             config_server_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceConfigServerListArgs', 'ShardingInstanceConfigServerListArgsDict']]]]] = None,
             db_instance_release_protection: Optional[pulumi.Input[_builtins.bool]] = None,
             enable_backup_log: Optional[pulumi.Input[_builtins.int]] = None,
+            encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
+            encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
+            encryptor_name: Optional[pulumi.Input[_builtins.str]] = None,
             engine_version: Optional[pulumi.Input[_builtins.str]] = None,
             global_security_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             hidden_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1789,6 +1973,7 @@ class ShardingInstance(pulumi.CustomResource):
             provisioned_iops: Optional[pulumi.Input[_builtins.int]] = None,
             resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             retention_period: Optional[pulumi.Input[_builtins.int]] = None,
+            role_arn: Optional[pulumi.Input[_builtins.str]] = None,
             secondary_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
             security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1817,10 +2002,14 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] backup_retention_period: The retention period of full backups.
         :param pulumi.Input[_builtins.int] backup_retention_policy_on_cluster_deletion: The backup retention policy configured for the instance. Valid values:
         :param pulumi.Input[_builtins.str] backup_time: Sharding Instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
+        :param pulumi.Input[_builtins.str] cloud_disk_encryption_key: The ID of the encryption key.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceConfigServerListArgs', 'ShardingInstanceConfigServerListArgsDict']]]] config_server_lists: The ConfigServer nodes of the instance. See `config_server_list` below.
         :param pulumi.Input[_builtins.bool] db_instance_release_protection: Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.int] enable_backup_log: Specifies whether to enable the log backup feature. Valid values:
                - `1 `: The log backup feature is enabled.
+        :param pulumi.Input[_builtins.bool] encrypted: Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.str] encryption_key: The ID of the custom key.
+        :param pulumi.Input[_builtins.str] encryptor_name: The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
         :param pulumi.Input[_builtins.str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] global_security_group_lists: The list of Global Security Group Ids.
         :param pulumi.Input[_builtins.str] hidden_zone_id: Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
@@ -1842,6 +2031,7 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] provisioned_iops: The provisioned IOPS. Valid values: `0` to `50000`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[_builtins.int] retention_period: (Available since v1.42.0) Instance data backup retention days.
+        :param pulumi.Input[_builtins.str] role_arn: The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
         :param pulumi.Input[_builtins.str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
         :param pulumi.Input[_builtins.str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
@@ -1874,9 +2064,13 @@ class ShardingInstance(pulumi.CustomResource):
         __props__.__dict__["backup_retention_period"] = backup_retention_period
         __props__.__dict__["backup_retention_policy_on_cluster_deletion"] = backup_retention_policy_on_cluster_deletion
         __props__.__dict__["backup_time"] = backup_time
+        __props__.__dict__["cloud_disk_encryption_key"] = cloud_disk_encryption_key
         __props__.__dict__["config_server_lists"] = config_server_lists
         __props__.__dict__["db_instance_release_protection"] = db_instance_release_protection
         __props__.__dict__["enable_backup_log"] = enable_backup_log
+        __props__.__dict__["encrypted"] = encrypted
+        __props__.__dict__["encryption_key"] = encryption_key
+        __props__.__dict__["encryptor_name"] = encryptor_name
         __props__.__dict__["engine_version"] = engine_version
         __props__.__dict__["global_security_group_lists"] = global_security_group_lists
         __props__.__dict__["hidden_zone_id"] = hidden_zone_id
@@ -1895,6 +2089,7 @@ class ShardingInstance(pulumi.CustomResource):
         __props__.__dict__["provisioned_iops"] = provisioned_iops
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["retention_period"] = retention_period
+        __props__.__dict__["role_arn"] = role_arn
         __props__.__dict__["secondary_zone_id"] = secondary_zone_id
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["security_ip_lists"] = security_ip_lists
@@ -1968,6 +2163,14 @@ class ShardingInstance(pulumi.CustomResource):
         return pulumi.get(self, "backup_time")
 
     @_builtins.property
+    @pulumi.getter(name="cloudDiskEncryptionKey")
+    def cloud_disk_encryption_key(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the encryption key.
+        """
+        return pulumi.get(self, "cloud_disk_encryption_key")
+
+    @_builtins.property
     @pulumi.getter(name="configServerLists")
     def config_server_lists(self) -> pulumi.Output[Sequence['outputs.ShardingInstanceConfigServerList']]:
         """
@@ -1991,6 +2194,30 @@ class ShardingInstance(pulumi.CustomResource):
         - `1 `: The log backup feature is enabled.
         """
         return pulumi.get(self, "enable_backup_log")
+
+    @_builtins.property
+    @pulumi.getter
+    def encrypted(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "encrypted")
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionKey")
+    def encryption_key(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the custom key.
+        """
+        return pulumi.get(self, "encryption_key")
+
+    @_builtins.property
+    @pulumi.getter(name="encryptorName")
+    def encryptor_name(self) -> pulumi.Output[_builtins.str]:
+        """
+        The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+        """
+        return pulumi.get(self, "encryptor_name")
 
     @_builtins.property
     @pulumi.getter(name="engineVersion")
@@ -2138,6 +2365,14 @@ class ShardingInstance(pulumi.CustomResource):
         (Available since v1.42.0) Instance data backup retention days.
         """
         return pulumi.get(self, "retention_period")
+
+    @_builtins.property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> pulumi.Output[_builtins.str]:
+        """
+        The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
+        """
+        return pulumi.get(self, "role_arn")
 
     @_builtins.property
     @pulumi.getter(name="secondaryZoneId")

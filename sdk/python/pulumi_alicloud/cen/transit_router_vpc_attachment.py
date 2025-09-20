@@ -37,7 +37,7 @@ class TransitRouterVpcAttachmentArgs:
                  transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
                  transit_router_vpc_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
                  transit_router_vpc_attachment_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_owner_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 vpc_owner_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TransitRouterVpcAttachment resource.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
@@ -57,13 +57,13 @@ class TransitRouterVpcAttachmentArgs:
         :param pulumi.Input[_builtins.str] transit_router_attachment_description: The description of the VPC connection.
                
                The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
-        :param pulumi.Input[_builtins.str] transit_router_attachment_name: . Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
+        :param pulumi.Input[_builtins.str] transit_router_attachment_name: Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
         :param pulumi.Input[_builtins.str] transit_router_id: The ID of the Enterprise Edition transit router.
         :param pulumi.Input[_builtins.str] transit_router_vpc_attachment_name: The name of the VPC connection.
                
                The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). It must start with a letter.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] transit_router_vpc_attachment_options: TransitRouterVpcAttachmentOptions
-        :param pulumi.Input[_builtins.int] vpc_owner_id: VpcOwnerId
+        :param pulumi.Input[_builtins.str] vpc_owner_id: VpcOwnerId
         """
         pulumi.set(__self__, "vpc_id", vpc_id)
         pulumi.set(__self__, "zone_mappings", zone_mappings)
@@ -263,7 +263,7 @@ class TransitRouterVpcAttachmentArgs:
     @_utilities.deprecated("""Field 'transit_router_attachment_name' has been deprecated since provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.""")
     def transit_router_attachment_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        . Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
+        Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
         """
         return pulumi.get(self, "transit_router_attachment_name")
 
@@ -311,14 +311,14 @@ class TransitRouterVpcAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="vpcOwnerId")
-    def vpc_owner_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vpc_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         VpcOwnerId
         """
         return pulumi.get(self, "vpc_owner_id")
 
     @vpc_owner_id.setter
-    def vpc_owner_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vpc_owner_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "vpc_owner_id", value)
 
 
@@ -331,6 +331,7 @@ class _TransitRouterVpcAttachmentState:
                  dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
                  force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  payment_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_type: Optional[pulumi.Input[_builtins.str]] = None,
                  route_table_association_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  route_table_propagation_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -343,7 +344,7 @@ class _TransitRouterVpcAttachmentState:
                  transit_router_vpc_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
                  transit_router_vpc_attachment_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_owner_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 vpc_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]]] = None):
         """
         Input properties used for looking up and filtering TransitRouterVpcAttachment resources.
@@ -354,6 +355,7 @@ class _TransitRouterVpcAttachmentState:
         :param pulumi.Input[_builtins.bool] dry_run: Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
         :param pulumi.Input[_builtins.bool] force_delete: Whether to forcibly delete the VPC connection. The value is:
         :param pulumi.Input[_builtins.str] payment_type: The billing method. The default value is `PayAsYouGo`, which specifies the pay-as-you-go billing method.
+        :param pulumi.Input[_builtins.str] region_id: (Available since v1.260.0).The ID of the region where the VPC is deployed.
         :param pulumi.Input[_builtins.str] resource_type: The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
         :param pulumi.Input[_builtins.bool] route_table_association_enabled: Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
         :param pulumi.Input[_builtins.bool] route_table_propagation_enabled: Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
@@ -362,15 +364,15 @@ class _TransitRouterVpcAttachmentState:
         :param pulumi.Input[_builtins.str] transit_router_attachment_description: The description of the VPC connection.
                
                The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
-        :param pulumi.Input[_builtins.str] transit_router_attachment_id: The ID of the Transit Router Attachment.
-        :param pulumi.Input[_builtins.str] transit_router_attachment_name: . Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
+        :param pulumi.Input[_builtins.str] transit_router_attachment_id: The ID of the VPC connection.
+        :param pulumi.Input[_builtins.str] transit_router_attachment_name: Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
         :param pulumi.Input[_builtins.str] transit_router_id: The ID of the Enterprise Edition transit router.
         :param pulumi.Input[_builtins.str] transit_router_vpc_attachment_name: The name of the VPC connection.
                
                The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). It must start with a letter.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] transit_router_vpc_attachment_options: TransitRouterVpcAttachmentOptions
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
-        :param pulumi.Input[_builtins.int] vpc_owner_id: VpcOwnerId
+        :param pulumi.Input[_builtins.str] vpc_owner_id: VpcOwnerId
         :param pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]] zone_mappings: ZoneMappingss See `zone_mappings` below.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
@@ -387,6 +389,8 @@ class _TransitRouterVpcAttachmentState:
             pulumi.set(__self__, "force_delete", force_delete)
         if payment_type is not None:
             pulumi.set(__self__, "payment_type", payment_type)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if resource_type is not None:
             pulumi.set(__self__, "resource_type", resource_type)
         if route_table_association_enabled is not None:
@@ -499,6 +503,18 @@ class _TransitRouterVpcAttachmentState:
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Available since v1.260.0).The ID of the region where the VPC is deployed.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -578,7 +594,7 @@ class _TransitRouterVpcAttachmentState:
     @pulumi.getter(name="transitRouterAttachmentId")
     def transit_router_attachment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the Transit Router Attachment.
+        The ID of the VPC connection.
         """
         return pulumi.get(self, "transit_router_attachment_id")
 
@@ -591,7 +607,7 @@ class _TransitRouterVpcAttachmentState:
     @_utilities.deprecated("""Field 'transit_router_attachment_name' has been deprecated since provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.""")
     def transit_router_attachment_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        . Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
+        Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
         """
         return pulumi.get(self, "transit_router_attachment_name")
 
@@ -651,14 +667,14 @@ class _TransitRouterVpcAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="vpcOwnerId")
-    def vpc_owner_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vpc_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         VpcOwnerId
         """
         return pulumi.get(self, "vpc_owner_id")
 
     @vpc_owner_id.setter
-    def vpc_owner_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vpc_owner_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "vpc_owner_id", value)
 
     @_builtins.property
@@ -697,11 +713,13 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
                  transit_router_vpc_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
                  transit_router_vpc_attachment_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_owner_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 vpc_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpcAttachmentZoneMappingArgs', 'TransitRouterVpcAttachmentZoneMappingArgsDict']]]]] = None,
                  __props__=None):
         """
-        Provides a CEN Transit Router VPC Attachment resource that associate the VPC with the CEN instance. [What is Cen Transit Router VPC Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervpcattachment)
+        Provides a Cen Transit Router Vpc Attachment resource.
+
+        For information about Cen Transit Router Vpc Attachment and how to use it, see [What is Transit Router Vpc Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervpcattachment)
 
         > **NOTE:** Available since v1.126.0.
 
@@ -759,7 +777,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
 
         ## Import
 
-        CEN Transit Router Vpc Attachment can be imported using the id, e.g.
+        Cen Transit Router Vpc Attachment can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example <id>
@@ -780,14 +798,14 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] transit_router_attachment_description: The description of the VPC connection.
                
                The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
-        :param pulumi.Input[_builtins.str] transit_router_attachment_name: . Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
+        :param pulumi.Input[_builtins.str] transit_router_attachment_name: Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
         :param pulumi.Input[_builtins.str] transit_router_id: The ID of the Enterprise Edition transit router.
         :param pulumi.Input[_builtins.str] transit_router_vpc_attachment_name: The name of the VPC connection.
                
                The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). It must start with a letter.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] transit_router_vpc_attachment_options: TransitRouterVpcAttachmentOptions
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
-        :param pulumi.Input[_builtins.int] vpc_owner_id: VpcOwnerId
+        :param pulumi.Input[_builtins.str] vpc_owner_id: VpcOwnerId
         :param pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpcAttachmentZoneMappingArgs', 'TransitRouterVpcAttachmentZoneMappingArgsDict']]]] zone_mappings: ZoneMappingss See `zone_mappings` below.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
@@ -799,7 +817,9 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
                  args: TransitRouterVpcAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a CEN Transit Router VPC Attachment resource that associate the VPC with the CEN instance. [What is Cen Transit Router VPC Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervpcattachment)
+        Provides a Cen Transit Router Vpc Attachment resource.
+
+        For information about Cen Transit Router Vpc Attachment and how to use it, see [What is Transit Router Vpc Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervpcattachment)
 
         > **NOTE:** Available since v1.126.0.
 
@@ -857,7 +877,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
 
         ## Import
 
-        CEN Transit Router Vpc Attachment can be imported using the id, e.g.
+        Cen Transit Router Vpc Attachment can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example <id>
@@ -893,7 +913,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
                  transit_router_vpc_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
                  transit_router_vpc_attachment_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_owner_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 vpc_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpcAttachmentZoneMappingArgs', 'TransitRouterVpcAttachmentZoneMappingArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -926,6 +946,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
                 raise TypeError("Missing required property 'zone_mappings'")
             __props__.__dict__["zone_mappings"] = zone_mappings
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["region_id"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["transit_router_attachment_id"] = None
         super(TransitRouterVpcAttachment, __self__).__init__(
@@ -944,6 +965,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
             dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
             force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
             payment_type: Optional[pulumi.Input[_builtins.str]] = None,
+            region_id: Optional[pulumi.Input[_builtins.str]] = None,
             resource_type: Optional[pulumi.Input[_builtins.str]] = None,
             route_table_association_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             route_table_propagation_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -956,7 +978,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
             transit_router_vpc_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
             transit_router_vpc_attachment_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_owner_id: Optional[pulumi.Input[_builtins.int]] = None,
+            vpc_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
             zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpcAttachmentZoneMappingArgs', 'TransitRouterVpcAttachmentZoneMappingArgsDict']]]]] = None) -> 'TransitRouterVpcAttachment':
         """
         Get an existing TransitRouterVpcAttachment resource's state with the given name, id, and optional extra
@@ -972,6 +994,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] dry_run: Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
         :param pulumi.Input[_builtins.bool] force_delete: Whether to forcibly delete the VPC connection. The value is:
         :param pulumi.Input[_builtins.str] payment_type: The billing method. The default value is `PayAsYouGo`, which specifies the pay-as-you-go billing method.
+        :param pulumi.Input[_builtins.str] region_id: (Available since v1.260.0).The ID of the region where the VPC is deployed.
         :param pulumi.Input[_builtins.str] resource_type: The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
         :param pulumi.Input[_builtins.bool] route_table_association_enabled: Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
         :param pulumi.Input[_builtins.bool] route_table_propagation_enabled: Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
@@ -980,15 +1003,15 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] transit_router_attachment_description: The description of the VPC connection.
                
                The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
-        :param pulumi.Input[_builtins.str] transit_router_attachment_id: The ID of the Transit Router Attachment.
-        :param pulumi.Input[_builtins.str] transit_router_attachment_name: . Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
+        :param pulumi.Input[_builtins.str] transit_router_attachment_id: The ID of the VPC connection.
+        :param pulumi.Input[_builtins.str] transit_router_attachment_name: Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
         :param pulumi.Input[_builtins.str] transit_router_id: The ID of the Enterprise Edition transit router.
         :param pulumi.Input[_builtins.str] transit_router_vpc_attachment_name: The name of the VPC connection.
                
                The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). It must start with a letter.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] transit_router_vpc_attachment_options: TransitRouterVpcAttachmentOptions
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
-        :param pulumi.Input[_builtins.int] vpc_owner_id: VpcOwnerId
+        :param pulumi.Input[_builtins.str] vpc_owner_id: VpcOwnerId
         :param pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpcAttachmentZoneMappingArgs', 'TransitRouterVpcAttachmentZoneMappingArgsDict']]]] zone_mappings: ZoneMappingss See `zone_mappings` below.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
@@ -1003,6 +1026,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["force_delete"] = force_delete
         __props__.__dict__["payment_type"] = payment_type
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["resource_type"] = resource_type
         __props__.__dict__["route_table_association_enabled"] = route_table_association_enabled
         __props__.__dict__["route_table_propagation_enabled"] = route_table_propagation_enabled
@@ -1069,6 +1093,14 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         return pulumi.get(self, "payment_type")
 
     @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since v1.260.0).The ID of the region where the VPC is deployed.
+        """
+        return pulumi.get(self, "region_id")
+
+    @_builtins.property
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> pulumi.Output[_builtins.str]:
         """
@@ -1124,7 +1156,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
     @pulumi.getter(name="transitRouterAttachmentId")
     def transit_router_attachment_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the Transit Router Attachment.
+        The ID of the VPC connection.
         """
         return pulumi.get(self, "transit_router_attachment_id")
 
@@ -1133,7 +1165,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
     @_utilities.deprecated("""Field 'transit_router_attachment_name' has been deprecated since provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.""")
     def transit_router_attachment_name(self) -> pulumi.Output[_builtins.str]:
         """
-        . Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
+        Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
         """
         return pulumi.get(self, "transit_router_attachment_name")
 
@@ -1173,7 +1205,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="vpcOwnerId")
-    def vpc_owner_id(self) -> pulumi.Output[_builtins.int]:
+    def vpc_owner_id(self) -> pulumi.Output[_builtins.str]:
         """
         VpcOwnerId
         """

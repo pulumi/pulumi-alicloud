@@ -22,5 +22,6 @@ from .group import *
 from .scim_server_credential import *
 from .user import *
 from .user_attachment import *
+from .user_provisioning import *
 from ._inputs import *
 from . import outputs

@@ -27,6 +27,7 @@ from .ips_config import *
 from .nat_firewall import *
 from .nat_firewall_control_policy import *
 from .policy_advanced_config import *
+from .threat_intelligence_switch import *
 from .vpc_cen_tr_firewall import *
 from ._inputs import *
 from . import outputs

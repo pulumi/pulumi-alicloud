@@ -232,6 +232,20 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
         return this.backupTime;
     }
     /**
+     * The ID of the encryption key.
+     * 
+     */
+    @Export(name="cloudDiskEncryptionKey", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> cloudDiskEncryptionKey;
+
+    /**
+     * @return The ID of the encryption key.
+     * 
+     */
+    public Output<Optional<String>> cloudDiskEncryptionKey() {
+        return Codegen.optional(this.cloudDiskEncryptionKey);
+    }
+    /**
      * The ConfigServer nodes of the instance. See `config_server_list` below.
      * 
      */
@@ -274,6 +288,48 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> enableBackupLog() {
         return this.enableBackupLog;
+    }
+    /**
+     * Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+     * 
+     */
+    @Export(name="encrypted", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> encrypted;
+
+    /**
+     * @return Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> encrypted() {
+        return Codegen.optional(this.encrypted);
+    }
+    /**
+     * The ID of the custom key.
+     * 
+     */
+    @Export(name="encryptionKey", refs={String.class}, tree="[0]")
+    private Output<String> encryptionKey;
+
+    /**
+     * @return The ID of the custom key.
+     * 
+     */
+    public Output<String> encryptionKey() {
+        return this.encryptionKey;
+    }
+    /**
+     * The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+     * 
+     */
+    @Export(name="encryptorName", refs={String.class}, tree="[0]")
+    private Output<String> encryptorName;
+
+    /**
+     * @return The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+     * 
+     */
+    public Output<String> encryptorName() {
+        return this.encryptorName;
     }
     /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
@@ -532,6 +588,20 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> retentionPeriod() {
         return this.retentionPeriod;
+    }
+    /**
+     * The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
+     * 
+     */
+    @Export(name="roleArn", refs={String.class}, tree="[0]")
+    private Output<String> roleArn;
+
+    /**
+     * @return The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
+     * 
+     */
+    public Output<String> roleArn() {
+        return this.roleArn;
     }
     /**
      * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.

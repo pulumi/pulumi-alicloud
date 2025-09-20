@@ -19,16 +19,17 @@ public final class GetSaslUsersResult {
      * 
      */
     private String id;
+    private List<String> ids;
     private String instanceId;
     private @Nullable String nameRegex;
     /**
-     * @return A list of sasl usernames.
+     * @return A list of Sasl User names.
      * 
      */
     private List<String> names;
     private @Nullable String outputFile;
     /**
-     * @return A list of sasl users. Each element contains the following attributes:
+     * @return A list of Sasl Users. Each element contains the following attributes:
      * 
      */
     private List<GetSaslUsersUser> users;
@@ -41,6 +42,9 @@ public final class GetSaslUsersResult {
     public String id() {
         return this.id;
     }
+    public List<String> ids() {
+        return this.ids;
+    }
     public String instanceId() {
         return this.instanceId;
     }
@@ -48,7 +52,7 @@ public final class GetSaslUsersResult {
         return Optional.ofNullable(this.nameRegex);
     }
     /**
-     * @return A list of sasl usernames.
+     * @return A list of Sasl User names.
      * 
      */
     public List<String> names() {
@@ -58,7 +62,7 @@ public final class GetSaslUsersResult {
         return Optional.ofNullable(this.outputFile);
     }
     /**
-     * @return A list of sasl users. Each element contains the following attributes:
+     * @return A list of Sasl Users. Each element contains the following attributes:
      * 
      */
     public List<GetSaslUsersUser> users() {
@@ -75,6 +79,7 @@ public final class GetSaslUsersResult {
     @CustomType.Builder
     public static final class Builder {
         private String id;
+        private List<String> ids;
         private String instanceId;
         private @Nullable String nameRegex;
         private List<String> names;
@@ -84,6 +89,7 @@ public final class GetSaslUsersResult {
         public Builder(GetSaslUsersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
+    	      this.ids = defaults.ids;
     	      this.instanceId = defaults.instanceId;
     	      this.nameRegex = defaults.nameRegex;
     	      this.names = defaults.names;
@@ -98,6 +104,17 @@ public final class GetSaslUsersResult {
             }
             this.id = id;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ids(List<String> ids) {
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetSaslUsersResult", "ids");
+            }
+            this.ids = ids;
+            return this;
+        }
+        public Builder ids(String... ids) {
+            return ids(List.of(ids));
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
@@ -144,6 +161,7 @@ public final class GetSaslUsersResult {
         public GetSaslUsersResult build() {
             final var _resultValue = new GetSaslUsersResult();
             _resultValue.id = id;
+            _resultValue.ids = ids;
             _resultValue.instanceId = instanceId;
             _resultValue.nameRegex = nameRegex;
             _resultValue.names = names;

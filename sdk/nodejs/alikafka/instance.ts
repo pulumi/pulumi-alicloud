@@ -44,8 +44,7 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
-     * * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
+     * The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
      */
     declare public readonly config: pulumi.Output<string>;
     /**
@@ -117,7 +116,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly isPartitionBuy: pulumi.Output<number>;
     /**
-     * The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+     * The ID of the key that is used to encrypt data on standard SSDs in the region of the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-updateinstanceconfig).
      */
     declare public readonly kmsKeyId: pulumi.Output<string | undefined>;
     /**
@@ -157,7 +156,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly securityGroup: pulumi.Output<string>;
     /**
-     * The zones among which you want to deploy the instance.
+     * The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
      */
     declare public readonly selectedZones: pulumi.Output<string[] | undefined>;
     /**
@@ -226,6 +225,7 @@ export class Instance extends pulumi.CustomResource {
     declare public readonly vswitchId: pulumi.Output<string>;
     /**
      * The IDs of the vSwitches with which the instance is associated.
+     * > **NOTE:** If `instanceType` is set to `alikafka` or `alikafkaServerless`, `vswitchIds` is required. When `instanceType` is set to `alikafkaConfluent`, you must specify at least one of the `vswitchId` and `vswitchIds`, and if you specify both `vswitchId` and `vswitchIds`, only the `vswitchIds` takes effect.
      */
     declare public readonly vswitchIds: pulumi.Output<string[]>;
     /**
@@ -348,8 +348,7 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
-     * The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
-     * * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
+     * The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
      */
     config?: pulumi.Input<string>;
     /**
@@ -421,7 +420,7 @@ export interface InstanceState {
      */
     isPartitionBuy?: pulumi.Input<number>;
     /**
-     * The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+     * The ID of the key that is used to encrypt data on standard SSDs in the region of the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-updateinstanceconfig).
      */
     kmsKeyId?: pulumi.Input<string>;
     /**
@@ -461,7 +460,7 @@ export interface InstanceState {
      */
     securityGroup?: pulumi.Input<string>;
     /**
-     * The zones among which you want to deploy the instance.
+     * The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
      */
     selectedZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -530,6 +529,7 @@ export interface InstanceState {
     vswitchId?: pulumi.Input<string>;
     /**
      * The IDs of the vSwitches with which the instance is associated.
+     * > **NOTE:** If `instanceType` is set to `alikafka` or `alikafkaServerless`, `vswitchIds` is required. When `instanceType` is set to `alikafkaConfluent`, you must specify at least one of the `vswitchId` and `vswitchIds`, and if you specify both `vswitchId` and `vswitchIds`, only the `vswitchIds` takes effect.
      */
     vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -543,8 +543,7 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
-     * The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
-     * * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
+     * The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
      */
     config?: pulumi.Input<string>;
     /**
@@ -596,7 +595,7 @@ export interface InstanceArgs {
      */
     ioMaxSpec?: pulumi.Input<string>;
     /**
-     * The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+     * The ID of the key that is used to encrypt data on standard SSDs in the region of the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-updateinstanceconfig).
      */
     kmsKeyId?: pulumi.Input<string>;
     /**
@@ -624,7 +623,7 @@ export interface InstanceArgs {
      */
     securityGroup?: pulumi.Input<string>;
     /**
-     * The zones among which you want to deploy the instance.
+     * The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
      */
     selectedZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -669,6 +668,7 @@ export interface InstanceArgs {
     vswitchId?: pulumi.Input<string>;
     /**
      * The IDs of the vSwitches with which the instance is associated.
+     * > **NOTE:** If `instanceType` is set to `alikafka` or `alikafkaServerless`, `vswitchIds` is required. When `instanceType` is set to `alikafkaConfluent`, you must specify at least one of the `vswitchId` and `vswitchIds`, and if you specify both `vswitchId` and `vswitchIds`, only the `vswitchIds` takes effect.
      */
     vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**

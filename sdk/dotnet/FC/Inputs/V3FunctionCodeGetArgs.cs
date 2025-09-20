@@ -12,11 +12,21 @@ namespace Pulumi.AliCloud.FC.Inputs
 
     public sealed class V3FunctionCodeGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("checksum")]
+        private Input<string>? _checksum;
+
         /// <summary>
         /// The CRC-64 value of the function code package.
         /// </summary>
-        [Input("checksum")]
-        public Input<string>? Checksum { get; set; }
+        public Input<string>? Checksum
+        {
+            get => _checksum;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _checksum = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The name of the OSS Bucket that stores the function code ZIP package.

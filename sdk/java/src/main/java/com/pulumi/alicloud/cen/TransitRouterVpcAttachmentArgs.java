@@ -8,7 +8,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -194,7 +193,7 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
     }
 
     /**
-     * . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
+     * Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
@@ -205,7 +204,7 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
     private @Nullable Output<String> transitRouterAttachmentName;
 
     /**
-     * @return . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
+     * @return Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
@@ -285,13 +284,13 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
      * 
      */
     @Import(name="vpcOwnerId")
-    private @Nullable Output<Integer> vpcOwnerId;
+    private @Nullable Output<String> vpcOwnerId;
 
     /**
      * @return VpcOwnerId
      * 
      */
-    public Optional<Output<Integer>> vpcOwnerId() {
+    public Optional<Output<String>> vpcOwnerId() {
         return Optional.ofNullable(this.vpcOwnerId);
     }
 
@@ -587,7 +586,7 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param transitRouterAttachmentName . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
+         * @param transitRouterAttachmentName Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
          * 
          * @return builder
          * 
@@ -602,7 +601,7 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param transitRouterAttachmentName . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
+         * @param transitRouterAttachmentName Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
          * 
          * @return builder
          * 
@@ -709,7 +708,7 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
          * @return builder
          * 
          */
-        public Builder vpcOwnerId(@Nullable Output<Integer> vpcOwnerId) {
+        public Builder vpcOwnerId(@Nullable Output<String> vpcOwnerId) {
             $.vpcOwnerId = vpcOwnerId;
             return this;
         }
@@ -720,7 +719,7 @@ public final class TransitRouterVpcAttachmentArgs extends com.pulumi.resources.R
          * @return builder
          * 
          */
-        public Builder vpcOwnerId(Integer vpcOwnerId) {
+        public Builder vpcOwnerId(String vpcOwnerId) {
             return vpcOwnerId(Output.of(vpcOwnerId));
         }
 

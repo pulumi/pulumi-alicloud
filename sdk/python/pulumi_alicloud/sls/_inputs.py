@@ -57,6 +57,8 @@ __all__ = [
     'EtlConfigurationArgsDict',
     'EtlConfigurationSinkArgs',
     'EtlConfigurationSinkArgsDict',
+    'IndexLineArgs',
+    'IndexLineArgsDict',
     'LogtailConfigOutputDetailArgs',
     'LogtailConfigOutputDetailArgsDict',
     'MachineGroupGroupAttributeArgs',
@@ -2240,6 +2242,115 @@ class EtlConfigurationSinkArgs:
     @role_arn.setter
     def role_arn(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "role_arn", value)
+
+
+if not MYPY:
+    class IndexLineArgsDict(TypedDict):
+        case_sensitive: pulumi.Input[_builtins.bool]
+        """
+        Is case sensitive
+        """
+        chn: pulumi.Input[_builtins.bool]
+        """
+        Does it include Chinese
+        """
+        tokens: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+        """
+        Delimiter
+        """
+        exclude_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of excluded fields
+        """
+        include_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Include field list
+        """
+elif False:
+    IndexLineArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class IndexLineArgs:
+    def __init__(__self__, *,
+                 case_sensitive: pulumi.Input[_builtins.bool],
+                 chn: pulumi.Input[_builtins.bool],
+                 tokens: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 exclude_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 include_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] case_sensitive: Is case sensitive
+        :param pulumi.Input[_builtins.bool] chn: Does it include Chinese
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tokens: Delimiter
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_keys: List of excluded fields
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] include_keys: Include field list
+        """
+        pulumi.set(__self__, "case_sensitive", case_sensitive)
+        pulumi.set(__self__, "chn", chn)
+        pulumi.set(__self__, "tokens", tokens)
+        if exclude_keys is not None:
+            pulumi.set(__self__, "exclude_keys", exclude_keys)
+        if include_keys is not None:
+            pulumi.set(__self__, "include_keys", include_keys)
+
+    @_builtins.property
+    @pulumi.getter(name="caseSensitive")
+    def case_sensitive(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Is case sensitive
+        """
+        return pulumi.get(self, "case_sensitive")
+
+    @case_sensitive.setter
+    def case_sensitive(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "case_sensitive", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def chn(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Does it include Chinese
+        """
+        return pulumi.get(self, "chn")
+
+    @chn.setter
+    def chn(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "chn", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tokens(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        Delimiter
+        """
+        return pulumi.get(self, "tokens")
+
+    @tokens.setter
+    def tokens(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "tokens", value)
+
+    @_builtins.property
+    @pulumi.getter(name="excludeKeys")
+    def exclude_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of excluded fields
+        """
+        return pulumi.get(self, "exclude_keys")
+
+    @exclude_keys.setter
+    def exclude_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "exclude_keys", value)
+
+    @_builtins.property
+    @pulumi.getter(name="includeKeys")
+    def include_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Include field list
+        """
+        return pulumi.get(self, "include_keys")
+
+    @include_keys.setter
+    def include_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "include_keys", value)
 
 
 if not MYPY:

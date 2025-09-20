@@ -309,6 +309,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * Whether to enable access to instance metadata. Valid values:
      * - enabled: Enabled.
      * - disabled: Disabled.
+     *   **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
      * 
      */
     @Export(name="httpEndpoint", refs={String.class}, tree="[0]")
@@ -318,20 +319,21 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * @return Whether to enable access to instance metadata. Valid values:
      * - enabled: Enabled.
      * - disabled: Disabled.
+     *   **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
      * 
      */
     public Output<String> httpEndpoint() {
         return this.httpEndpoint;
     }
     /**
-     * The HTTP PUT response hop limit required for instance metadata requests.
+     * The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
      * 
      */
     @Export(name="httpPutResponseHopLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> httpPutResponseHopLimit;
 
     /**
-     * @return The HTTP PUT response hop limit required for instance metadata requests.
+     * @return The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
      * 
      */
     public Output<Integer> httpPutResponseHopLimit() {
@@ -341,6 +343,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
      * - optional: Not mandatory.
      * - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
+     *   **NOTE:** From version 1.260.0, `http_tokens` can be modified.
      * 
      */
     @Export(name="httpTokens", refs={String.class}, tree="[0]")
@@ -350,6 +353,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * @return Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
      * - optional: Not mandatory.
      * - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
+     *   **NOTE:** From version 1.260.0, `http_tokens` can be modified.
      * 
      */
     public Output<String> httpTokens() {

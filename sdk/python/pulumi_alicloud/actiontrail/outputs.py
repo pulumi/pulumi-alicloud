@@ -757,14 +757,24 @@ class GetSaslAclsAclResult(dict):
 @pulumi.output_type
 class GetSaslUsersUserResult(dict):
     def __init__(__self__, *,
+                 id: _builtins.str,
                  password: _builtins.str,
+                 type: _builtins.str,
                  username: _builtins.str):
         """
         :param _builtins.str password: The password of the user.
+        :param _builtins.str type: (Available since v1.260.0) The type of the user.
         :param _builtins.str username: The username of the user.
         """
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -773,6 +783,14 @@ class GetSaslUsersUserResult(dict):
         The password of the user.
         """
         return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        (Available since v1.260.0) The type of the user.
+        """
+        return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter

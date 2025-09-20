@@ -129,6 +129,21 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The ID of the encryption key.
+     * 
+     */
+    @Import(name="cloudDiskEncryptionKey")
+    private @Nullable Output<String> cloudDiskEncryptionKey;
+
+    /**
+     * @return The ID of the encryption key.
+     * 
+     */
+    public Optional<Output<String>> cloudDiskEncryptionKey() {
+        return Optional.ofNullable(this.cloudDiskEncryptionKey);
+    }
+
+    /**
      * The ConfigServer nodes of the instance. See `config_server_list` below.
      * 
      */
@@ -173,6 +188,51 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<Integer>> enableBackupLog() {
         return Optional.ofNullable(this.enableBackupLog);
+    }
+
+    /**
+     * Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+     * 
+     */
+    @Import(name="encrypted")
+    private @Nullable Output<Boolean> encrypted;
+
+    /**
+     * @return Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> encrypted() {
+        return Optional.ofNullable(this.encrypted);
+    }
+
+    /**
+     * The ID of the custom key.
+     * 
+     */
+    @Import(name="encryptionKey")
+    private @Nullable Output<String> encryptionKey;
+
+    /**
+     * @return The ID of the custom key.
+     * 
+     */
+    public Optional<Output<String>> encryptionKey() {
+        return Optional.ofNullable(this.encryptionKey);
+    }
+
+    /**
+     * The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+     * 
+     */
+    @Import(name="encryptorName")
+    private @Nullable Output<String> encryptorName;
+
+    /**
+     * @return The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+     * 
+     */
+    public Optional<Output<String>> encryptorName() {
+        return Optional.ofNullable(this.encryptorName);
     }
 
     /**
@@ -437,6 +497,21 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
+     * 
+     */
+    @Import(name="roleArn")
+    private @Nullable Output<String> roleArn;
+
+    /**
+     * @return The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
+     * 
+     */
+    public Optional<Output<String>> roleArn() {
+        return Optional.ofNullable(this.roleArn);
+    }
+
+    /**
      * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
      * 
      */
@@ -653,9 +728,13 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         this.backupRetentionPeriod = $.backupRetentionPeriod;
         this.backupRetentionPolicyOnClusterDeletion = $.backupRetentionPolicyOnClusterDeletion;
         this.backupTime = $.backupTime;
+        this.cloudDiskEncryptionKey = $.cloudDiskEncryptionKey;
         this.configServerLists = $.configServerLists;
         this.dbInstanceReleaseProtection = $.dbInstanceReleaseProtection;
         this.enableBackupLog = $.enableBackupLog;
+        this.encrypted = $.encrypted;
+        this.encryptionKey = $.encryptionKey;
+        this.encryptorName = $.encryptorName;
         this.engineVersion = $.engineVersion;
         this.globalSecurityGroupLists = $.globalSecurityGroupLists;
         this.hiddenZoneId = $.hiddenZoneId;
@@ -673,6 +752,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         this.protocolType = $.protocolType;
         this.provisionedIops = $.provisionedIops;
         this.resourceGroupId = $.resourceGroupId;
+        this.roleArn = $.roleArn;
         this.secondaryZoneId = $.secondaryZoneId;
         this.securityGroupId = $.securityGroupId;
         this.securityIpLists = $.securityIpLists;
@@ -864,6 +944,27 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param cloudDiskEncryptionKey The ID of the encryption key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudDiskEncryptionKey(@Nullable Output<String> cloudDiskEncryptionKey) {
+            $.cloudDiskEncryptionKey = cloudDiskEncryptionKey;
+            return this;
+        }
+
+        /**
+         * @param cloudDiskEncryptionKey The ID of the encryption key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudDiskEncryptionKey(String cloudDiskEncryptionKey) {
+            return cloudDiskEncryptionKey(Output.of(cloudDiskEncryptionKey));
+        }
+
+        /**
          * @param configServerLists The ConfigServer nodes of the instance. See `config_server_list` below.
          * 
          * @return builder
@@ -936,6 +1037,69 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder enableBackupLog(Integer enableBackupLog) {
             return enableBackupLog(Output.of(enableBackupLog));
+        }
+
+        /**
+         * @param encrypted Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encrypted(@Nullable Output<Boolean> encrypted) {
+            $.encrypted = encrypted;
+            return this;
+        }
+
+        /**
+         * @param encrypted Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encrypted(Boolean encrypted) {
+            return encrypted(Output.of(encrypted));
+        }
+
+        /**
+         * @param encryptionKey The ID of the custom key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionKey(@Nullable Output<String> encryptionKey) {
+            $.encryptionKey = encryptionKey;
+            return this;
+        }
+
+        /**
+         * @param encryptionKey The ID of the custom key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionKey(String encryptionKey) {
+            return encryptionKey(Output.of(encryptionKey));
+        }
+
+        /**
+         * @param encryptorName The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptorName(@Nullable Output<String> encryptorName) {
+            $.encryptorName = encryptorName;
+            return this;
+        }
+
+        /**
+         * @param encryptorName The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptorName(String encryptorName) {
+            return encryptorName(Output.of(encryptorName));
         }
 
         /**
@@ -1319,6 +1483,27 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder resourceGroupId(String resourceGroupId) {
             return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param roleArn The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roleArn(@Nullable Output<String> roleArn) {
+            $.roleArn = roleArn;
+            return this;
+        }
+
+        /**
+         * @param roleArn The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roleArn(String roleArn) {
+            return roleArn(Output.of(roleArn));
         }
 
         /**

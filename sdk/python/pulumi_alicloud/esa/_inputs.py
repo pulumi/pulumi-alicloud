@@ -39,6 +39,8 @@ __all__ = [
     'SiteDeliveryTaskS3DeliveryArgsDict',
     'SiteDeliveryTaskSlsDeliveryArgs',
     'SiteDeliveryTaskSlsDeliveryArgsDict',
+    'TransportLayerApplicationRuleArgs',
+    'TransportLayerApplicationRuleArgsDict',
     'WaitingRoomHostNameAndPathArgs',
     'WaitingRoomHostNameAndPathArgsDict',
 ]
@@ -1517,6 +1519,193 @@ class SiteDeliveryTaskSlsDeliveryArgs:
     @sls_region.setter
     def sls_region(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "sls_region", value)
+
+
+if not MYPY:
+    class TransportLayerApplicationRuleArgsDict(TypedDict):
+        client_ip_pass_through_mode: pulumi.Input[_builtins.str]
+        """
+        Client IP pass-through protocol, supporting:
+        """
+        edge_port: pulumi.Input[_builtins.str]
+        """
+        Edge port. Supports:
+        - A single port, such as 80.
+        - Port range, such as 81-85, representing ports 81, 82, 83, 84, and 85.
+        - Combination of ports and port ranges, separated by commas, such as 80,81-85,90, representing ports 80, 81, 82, 83, 84, 85, and 90.
+
+        Edge ports within a single rule and between multiple rules must not overlap.
+        """
+        protocol: pulumi.Input[_builtins.str]
+        """
+        Forwarding rule protocol, with values:
+        - `TCP`: TCP protocol.
+        - `UDP`: UDP protocol.
+        """
+        source: pulumi.Input[_builtins.str]
+        """
+        Specific value of the origin, which needs to match the origin type.
+        """
+        source_port: pulumi.Input[_builtins.str]
+        """
+        Source Port
+        """
+        source_type: pulumi.Input[_builtins.str]
+        """
+        Origin type, supporting:
+        """
+        comment: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Comment information for the rule (optional).
+        """
+        rule_id: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Rule ID
+        """
+elif False:
+    TransportLayerApplicationRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TransportLayerApplicationRuleArgs:
+    def __init__(__self__, *,
+                 client_ip_pass_through_mode: pulumi.Input[_builtins.str],
+                 edge_port: pulumi.Input[_builtins.str],
+                 protocol: pulumi.Input[_builtins.str],
+                 source: pulumi.Input[_builtins.str],
+                 source_port: pulumi.Input[_builtins.str],
+                 source_type: pulumi.Input[_builtins.str],
+                 comment: Optional[pulumi.Input[_builtins.str]] = None,
+                 rule_id: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] client_ip_pass_through_mode: Client IP pass-through protocol, supporting:
+        :param pulumi.Input[_builtins.str] edge_port: Edge port. Supports:
+               - A single port, such as 80.
+               - Port range, such as 81-85, representing ports 81, 82, 83, 84, and 85.
+               - Combination of ports and port ranges, separated by commas, such as 80,81-85,90, representing ports 80, 81, 82, 83, 84, 85, and 90.
+               
+               Edge ports within a single rule and between multiple rules must not overlap.
+        :param pulumi.Input[_builtins.str] protocol: Forwarding rule protocol, with values:
+               - `TCP`: TCP protocol.
+               - `UDP`: UDP protocol.
+        :param pulumi.Input[_builtins.str] source: Specific value of the origin, which needs to match the origin type.
+        :param pulumi.Input[_builtins.str] source_port: Source Port
+        :param pulumi.Input[_builtins.str] source_type: Origin type, supporting:
+        :param pulumi.Input[_builtins.str] comment: Comment information for the rule (optional).
+        :param pulumi.Input[_builtins.int] rule_id: Rule ID
+        """
+        pulumi.set(__self__, "client_ip_pass_through_mode", client_ip_pass_through_mode)
+        pulumi.set(__self__, "edge_port", edge_port)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "source", source)
+        pulumi.set(__self__, "source_port", source_port)
+        pulumi.set(__self__, "source_type", source_type)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if rule_id is not None:
+            pulumi.set(__self__, "rule_id", rule_id)
+
+    @_builtins.property
+    @pulumi.getter(name="clientIpPassThroughMode")
+    def client_ip_pass_through_mode(self) -> pulumi.Input[_builtins.str]:
+        """
+        Client IP pass-through protocol, supporting:
+        """
+        return pulumi.get(self, "client_ip_pass_through_mode")
+
+    @client_ip_pass_through_mode.setter
+    def client_ip_pass_through_mode(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "client_ip_pass_through_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="edgePort")
+    def edge_port(self) -> pulumi.Input[_builtins.str]:
+        """
+        Edge port. Supports:
+        - A single port, such as 80.
+        - Port range, such as 81-85, representing ports 81, 82, 83, 84, and 85.
+        - Combination of ports and port ranges, separated by commas, such as 80,81-85,90, representing ports 80, 81, 82, 83, 84, 85, and 90.
+
+        Edge ports within a single rule and between multiple rules must not overlap.
+        """
+        return pulumi.get(self, "edge_port")
+
+    @edge_port.setter
+    def edge_port(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "edge_port", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> pulumi.Input[_builtins.str]:
+        """
+        Forwarding rule protocol, with values:
+        - `TCP`: TCP protocol.
+        - `UDP`: UDP protocol.
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "protocol", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def source(self) -> pulumi.Input[_builtins.str]:
+        """
+        Specific value of the origin, which needs to match the origin type.
+        """
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "source", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sourcePort")
+    def source_port(self) -> pulumi.Input[_builtins.str]:
+        """
+        Source Port
+        """
+        return pulumi.get(self, "source_port")
+
+    @source_port.setter
+    def source_port(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "source_port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceType")
+    def source_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Origin type, supporting:
+        """
+        return pulumi.get(self, "source_type")
+
+    @source_type.setter
+    def source_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "source_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Comment information for the rule (optional).
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "comment", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ruleId")
+    def rule_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Rule ID
+        """
+        return pulumi.get(self, "rule_id")
+
+    @rule_id.setter
+    def rule_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "rule_id", value)
 
 
 if not MYPY:

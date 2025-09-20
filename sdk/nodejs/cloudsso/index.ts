@@ -85,6 +85,11 @@ export type UserAttachment = import("./userAttachment").UserAttachment;
 export const UserAttachment: typeof import("./userAttachment").UserAttachment = null as any;
 utilities.lazyLoad(exports, ["UserAttachment"], () => require("./userAttachment"));
 
+export { UserProvisioningArgs, UserProvisioningState } from "./userProvisioning";
+export type UserProvisioning = import("./userProvisioning").UserProvisioning;
+export const UserProvisioning: typeof import("./userProvisioning").UserProvisioning = null as any;
+utilities.lazyLoad(exports, ["UserProvisioning"], () => require("./userProvisioning"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -108,6 +113,8 @@ const _module = {
                 return new User(name, <any>undefined, { urn })
             case "alicloud:cloudsso/userAttachment:UserAttachment":
                 return new UserAttachment(name, <any>undefined, { urn })
+            case "alicloud:cloudsso/userProvisioning:UserProvisioning":
+                return new UserProvisioning(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -122,3 +129,4 @@ pulumi.runtime.registerResourceModule("alicloud", "cloudsso/group", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudsso/scimServerCredential", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudsso/user", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudsso/userAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cloudsso/userProvisioning", _module)

@@ -16,14 +16,29 @@ public final class HandshakeState extends com.pulumi.resources.ResourceArgs {
     public static final HandshakeState Empty = new HandshakeState();
 
     /**
-     * The expiration time of the invitation.
+     * The time when the invitation was created. The time is displayed in UTC.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return The time when the invitation was created. The time is displayed in UTC.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * The time when the invitation expires. The time is displayed in UTC.
      * 
      */
     @Import(name="expireTime")
     private @Nullable Output<String> expireTime;
 
     /**
-     * @return The expiration time of the invitation.
+     * @return The time when the invitation expires. The time is displayed in UTC.
      * 
      */
     public Optional<Output<String>> expireTime() {
@@ -31,14 +46,14 @@ public final class HandshakeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Resource account master account ID.
+     * The ID of the management account of the resource directory.
      * 
      */
     @Import(name="masterAccountId")
     private @Nullable Output<String> masterAccountId;
 
     /**
-     * @return Resource account master account ID.
+     * @return The ID of the management account of the resource directory.
      * 
      */
     public Optional<Output<String>> masterAccountId() {
@@ -46,14 +61,14 @@ public final class HandshakeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the main account of the resource directory.
+     * The name of the management account of the resource directory.
      * 
      */
     @Import(name="masterAccountName")
     private @Nullable Output<String> masterAccountName;
 
     /**
-     * @return The name of the main account of the resource directory.
+     * @return The name of the management account of the resource directory.
      * 
      */
     public Optional<Output<String>> masterAccountName() {
@@ -61,14 +76,14 @@ public final class HandshakeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The modification time of the invitation.
+     * The time when the invitation was modified. The time is displayed in UTC.
      * 
      */
     @Import(name="modifyTime")
     private @Nullable Output<String> modifyTime;
 
     /**
-     * @return The modification time of the invitation.
+     * @return The time when the invitation was modified. The time is displayed in UTC.
      * 
      */
     public Optional<Output<String>> modifyTime() {
@@ -76,14 +91,16 @@ public final class HandshakeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Remarks. The maximum length is 1024 characters.
+     * The description of the invitation.
+     * The description can be up to 1,024 characters in length.
      * 
      */
     @Import(name="note")
     private @Nullable Output<String> note;
 
     /**
-     * @return Remarks. The maximum length is 1024 characters.
+     * @return The description of the invitation.
+     * The description can be up to 1,024 characters in length.
      * 
      */
     public Optional<Output<String>> note() {
@@ -91,14 +108,14 @@ public final class HandshakeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Resource directory ID.
+     * The ID of the resource directory.
      * 
      */
     @Import(name="resourceDirectoryId")
     private @Nullable Output<String> resourceDirectoryId;
 
     /**
-     * @return Resource directory ID.
+     * @return The ID of the resource directory.
      * 
      */
     public Optional<Output<String>> resourceDirectoryId() {
@@ -106,14 +123,14 @@ public final class HandshakeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Invitation status. Valid values: `Pending` waiting for confirmation, `Accepted`, `Cancelled`, `Declined`, `Expired`.
+     * The status of the invitation.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Invitation status. Valid values: `Pending` waiting for confirmation, `Accepted`, `Cancelled`, `Declined`, `Expired`.
+     * @return The status of the invitation.
      * 
      */
     public Optional<Output<String>> status() {
@@ -121,14 +138,14 @@ public final class HandshakeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Invited account ID or login email.
+     * The ID or logon email address of the account that you want to invite.
      * 
      */
     @Import(name="targetEntity")
     private @Nullable Output<String> targetEntity;
 
     /**
-     * @return Invited account ID or login email.
+     * @return The ID or logon email address of the account that you want to invite.
      * 
      */
     public Optional<Output<String>> targetEntity() {
@@ -136,14 +153,20 @@ public final class HandshakeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of account being invited. Valid values: `Account`, `Email`.
+     * The type of the invited account. Valid values:
+     * 
+     * - Account: indicates the ID of the account.
+     * - Email: indicates the logon email address of the account.
      * 
      */
     @Import(name="targetType")
     private @Nullable Output<String> targetType;
 
     /**
-     * @return Type of account being invited. Valid values: `Account`, `Email`.
+     * @return The type of the invited account. Valid values:
+     * 
+     * - Account: indicates the ID of the account.
+     * - Email: indicates the logon email address of the account.
      * 
      */
     public Optional<Output<String>> targetType() {
@@ -153,6 +176,7 @@ public final class HandshakeState extends com.pulumi.resources.ResourceArgs {
     private HandshakeState() {}
 
     private HandshakeState(HandshakeState $) {
+        this.createTime = $.createTime;
         this.expireTime = $.expireTime;
         this.masterAccountId = $.masterAccountId;
         this.masterAccountName = $.masterAccountName;
@@ -183,7 +207,28 @@ public final class HandshakeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param expireTime The expiration time of the invitation.
+         * @param createTime The time when the invitation was created. The time is displayed in UTC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime The time when the invitation was created. The time is displayed in UTC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param expireTime The time when the invitation expires. The time is displayed in UTC.
          * 
          * @return builder
          * 
@@ -194,7 +239,7 @@ public final class HandshakeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param expireTime The expiration time of the invitation.
+         * @param expireTime The time when the invitation expires. The time is displayed in UTC.
          * 
          * @return builder
          * 
@@ -204,7 +249,7 @@ public final class HandshakeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param masterAccountId Resource account master account ID.
+         * @param masterAccountId The ID of the management account of the resource directory.
          * 
          * @return builder
          * 
@@ -215,7 +260,7 @@ public final class HandshakeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param masterAccountId Resource account master account ID.
+         * @param masterAccountId The ID of the management account of the resource directory.
          * 
          * @return builder
          * 
@@ -225,7 +270,7 @@ public final class HandshakeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param masterAccountName The name of the main account of the resource directory.
+         * @param masterAccountName The name of the management account of the resource directory.
          * 
          * @return builder
          * 
@@ -236,7 +281,7 @@ public final class HandshakeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param masterAccountName The name of the main account of the resource directory.
+         * @param masterAccountName The name of the management account of the resource directory.
          * 
          * @return builder
          * 
@@ -246,7 +291,7 @@ public final class HandshakeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modifyTime The modification time of the invitation.
+         * @param modifyTime The time when the invitation was modified. The time is displayed in UTC.
          * 
          * @return builder
          * 
@@ -257,7 +302,7 @@ public final class HandshakeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modifyTime The modification time of the invitation.
+         * @param modifyTime The time when the invitation was modified. The time is displayed in UTC.
          * 
          * @return builder
          * 
@@ -267,7 +312,8 @@ public final class HandshakeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param note Remarks. The maximum length is 1024 characters.
+         * @param note The description of the invitation.
+         * The description can be up to 1,024 characters in length.
          * 
          * @return builder
          * 
@@ -278,7 +324,8 @@ public final class HandshakeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param note Remarks. The maximum length is 1024 characters.
+         * @param note The description of the invitation.
+         * The description can be up to 1,024 characters in length.
          * 
          * @return builder
          * 
@@ -288,7 +335,7 @@ public final class HandshakeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceDirectoryId Resource directory ID.
+         * @param resourceDirectoryId The ID of the resource directory.
          * 
          * @return builder
          * 
@@ -299,7 +346,7 @@ public final class HandshakeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceDirectoryId Resource directory ID.
+         * @param resourceDirectoryId The ID of the resource directory.
          * 
          * @return builder
          * 
@@ -309,7 +356,7 @@ public final class HandshakeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Invitation status. Valid values: `Pending` waiting for confirmation, `Accepted`, `Cancelled`, `Declined`, `Expired`.
+         * @param status The status of the invitation.
          * 
          * @return builder
          * 
@@ -320,7 +367,7 @@ public final class HandshakeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Invitation status. Valid values: `Pending` waiting for confirmation, `Accepted`, `Cancelled`, `Declined`, `Expired`.
+         * @param status The status of the invitation.
          * 
          * @return builder
          * 
@@ -330,7 +377,7 @@ public final class HandshakeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetEntity Invited account ID or login email.
+         * @param targetEntity The ID or logon email address of the account that you want to invite.
          * 
          * @return builder
          * 
@@ -341,7 +388,7 @@ public final class HandshakeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetEntity Invited account ID or login email.
+         * @param targetEntity The ID or logon email address of the account that you want to invite.
          * 
          * @return builder
          * 
@@ -351,7 +398,10 @@ public final class HandshakeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetType Type of account being invited. Valid values: `Account`, `Email`.
+         * @param targetType The type of the invited account. Valid values:
+         * 
+         * - Account: indicates the ID of the account.
+         * - Email: indicates the logon email address of the account.
          * 
          * @return builder
          * 
@@ -362,7 +412,10 @@ public final class HandshakeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetType Type of account being invited. Valid values: `Account`, `Email`.
+         * @param targetType The type of the invited account. Valid values:
+         * 
+         * - Account: indicates the ID of the account.
+         * - Email: indicates the logon email address of the account.
          * 
          * @return builder
          * 

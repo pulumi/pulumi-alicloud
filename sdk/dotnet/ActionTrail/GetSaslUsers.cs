@@ -12,11 +12,13 @@ namespace Pulumi.AliCloud.ActionTrail
     public static class GetSaslUsers
     {
         /// <summary>
-        /// This data source provides a list of ALIKAFKA Sasl users in an Alibaba Cloud account according to the specified filters.
+        /// This data source provides the Alikafka Sasl Users of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in 1.66.0+
+        /// &gt; **NOTE:** Available since v1.66.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -26,16 +28,69 @@ namespace Pulumi.AliCloud.ActionTrail
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var saslUsersDs = AliCloud.ActionTrail.GetSaslUsers.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.GetZones.Invoke(new()
         ///     {
-        ///         InstanceId = "xxx",
-        ///         NameRegex = "username",
-        ///         OutputFile = "saslUsers.txt",
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+        ///     {
+        ///         VpcName = name,
+        ///         CidrBlock = "10.4.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VswitchName = name,
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "10.4.0.0/24",
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///     });
+        /// 
+        ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
+        ///     {
+        ///         VpcId = defaultNetwork.Id,
+        ///     });
+        /// 
+        ///     var defaultInstance = new AliCloud.AliKafka.Instance("default", new()
+        ///     {
+        ///         Name = name,
+        ///         PartitionNum = 50,
+        ///         DiskType = 1,
+        ///         DiskSize = 500,
+        ///         DeployType = 5,
+        ///         IoMax = 20,
+        ///         SpecType = "professional",
+        ///         ServiceVersion = "2.2.0",
+        ///         VswitchId = defaultSwitch.Id,
+        ///         SecurityGroup = defaultSecurityGroup.Id,
+        ///         Config = @"  {
+        ///     \""enable.acl\"": \""true\""
+        ///   }
+        /// ",
+        ///     });
+        /// 
+        ///     var defaultSaslUser = new AliCloud.AliKafka.SaslUser("default", new()
+        ///     {
+        ///         InstanceId = defaultInstance.Id,
+        ///         Username = name,
+        ///         Password = "YourPassword1234!",
+        ///     });
+        /// 
+        ///     var ids = AliCloud.ActionTrail.GetSaslUsers.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultSaslUser.Id,
+        ///         },
+        ///         InstanceId = defaultSaslUser.InstanceId,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstSaslUsername"] = saslUsersDs.Apply(getSaslUsersResult =&gt; getSaslUsersResult.Users[0]?.Username),
+        ///         ["alikafkaSaslUsersId0"] = ids.Apply(getSaslUsersResult =&gt; getSaslUsersResult.Users[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -44,11 +99,13 @@ namespace Pulumi.AliCloud.ActionTrail
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSaslUsersResult>("alicloud:actiontrail/getSaslUsers:getSaslUsers", args ?? new GetSaslUsersArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides a list of ALIKAFKA Sasl users in an Alibaba Cloud account according to the specified filters.
+        /// This data source provides the Alikafka Sasl Users of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in 1.66.0+
+        /// &gt; **NOTE:** Available since v1.66.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -58,16 +115,69 @@ namespace Pulumi.AliCloud.ActionTrail
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var saslUsersDs = AliCloud.ActionTrail.GetSaslUsers.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.GetZones.Invoke(new()
         ///     {
-        ///         InstanceId = "xxx",
-        ///         NameRegex = "username",
-        ///         OutputFile = "saslUsers.txt",
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+        ///     {
+        ///         VpcName = name,
+        ///         CidrBlock = "10.4.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VswitchName = name,
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "10.4.0.0/24",
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///     });
+        /// 
+        ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
+        ///     {
+        ///         VpcId = defaultNetwork.Id,
+        ///     });
+        /// 
+        ///     var defaultInstance = new AliCloud.AliKafka.Instance("default", new()
+        ///     {
+        ///         Name = name,
+        ///         PartitionNum = 50,
+        ///         DiskType = 1,
+        ///         DiskSize = 500,
+        ///         DeployType = 5,
+        ///         IoMax = 20,
+        ///         SpecType = "professional",
+        ///         ServiceVersion = "2.2.0",
+        ///         VswitchId = defaultSwitch.Id,
+        ///         SecurityGroup = defaultSecurityGroup.Id,
+        ///         Config = @"  {
+        ///     \""enable.acl\"": \""true\""
+        ///   }
+        /// ",
+        ///     });
+        /// 
+        ///     var defaultSaslUser = new AliCloud.AliKafka.SaslUser("default", new()
+        ///     {
+        ///         InstanceId = defaultInstance.Id,
+        ///         Username = name,
+        ///         Password = "YourPassword1234!",
+        ///     });
+        /// 
+        ///     var ids = AliCloud.ActionTrail.GetSaslUsers.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultSaslUser.Id,
+        ///         },
+        ///         InstanceId = defaultSaslUser.InstanceId,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstSaslUsername"] = saslUsersDs.Apply(getSaslUsersResult =&gt; getSaslUsersResult.Users[0]?.Username),
+        ///         ["alikafkaSaslUsersId0"] = ids.Apply(getSaslUsersResult =&gt; getSaslUsersResult.Users[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -76,11 +186,13 @@ namespace Pulumi.AliCloud.ActionTrail
             => global::Pulumi.Deployment.Instance.Invoke<GetSaslUsersResult>("alicloud:actiontrail/getSaslUsers:getSaslUsers", args ?? new GetSaslUsersInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides a list of ALIKAFKA Sasl users in an Alibaba Cloud account according to the specified filters.
+        /// This data source provides the Alikafka Sasl Users of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in 1.66.0+
+        /// &gt; **NOTE:** Available since v1.66.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -90,16 +202,69 @@ namespace Pulumi.AliCloud.ActionTrail
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var saslUsersDs = AliCloud.ActionTrail.GetSaslUsers.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.GetZones.Invoke(new()
         ///     {
-        ///         InstanceId = "xxx",
-        ///         NameRegex = "username",
-        ///         OutputFile = "saslUsers.txt",
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+        ///     {
+        ///         VpcName = name,
+        ///         CidrBlock = "10.4.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VswitchName = name,
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "10.4.0.0/24",
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///     });
+        /// 
+        ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
+        ///     {
+        ///         VpcId = defaultNetwork.Id,
+        ///     });
+        /// 
+        ///     var defaultInstance = new AliCloud.AliKafka.Instance("default", new()
+        ///     {
+        ///         Name = name,
+        ///         PartitionNum = 50,
+        ///         DiskType = 1,
+        ///         DiskSize = 500,
+        ///         DeployType = 5,
+        ///         IoMax = 20,
+        ///         SpecType = "professional",
+        ///         ServiceVersion = "2.2.0",
+        ///         VswitchId = defaultSwitch.Id,
+        ///         SecurityGroup = defaultSecurityGroup.Id,
+        ///         Config = @"  {
+        ///     \""enable.acl\"": \""true\""
+        ///   }
+        /// ",
+        ///     });
+        /// 
+        ///     var defaultSaslUser = new AliCloud.AliKafka.SaslUser("default", new()
+        ///     {
+        ///         InstanceId = defaultInstance.Id,
+        ///         Username = name,
+        ///         Password = "YourPassword1234!",
+        ///     });
+        /// 
+        ///     var ids = AliCloud.ActionTrail.GetSaslUsers.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultSaslUser.Id,
+        ///         },
+        ///         InstanceId = defaultSaslUser.InstanceId,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstSaslUsername"] = saslUsersDs.Apply(getSaslUsersResult =&gt; getSaslUsersResult.Users[0]?.Username),
+        ///         ["alikafkaSaslUsersId0"] = ids.Apply(getSaslUsersResult =&gt; getSaslUsersResult.Users[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -111,14 +276,26 @@ namespace Pulumi.AliCloud.ActionTrail
 
     public sealed class GetSaslUsersArgs : global::Pulumi.InvokeArgs
     {
+        [Input("ids")]
+        private List<string>? _ids;
+
         /// <summary>
-        /// ID of the ALIKAFKA Instance that owns the sasl users.
+        /// A list of Sasl User IDs.
+        /// </summary>
+        public List<string> Ids
+        {
+            get => _ids ?? (_ids = new List<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The ID of the instance.
         /// </summary>
         [Input("instanceId", required: true)]
         public string InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// A regex string to filter results by the username.
+        /// A regex string to filter results by Sasl User name.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
@@ -137,14 +314,26 @@ namespace Pulumi.AliCloud.ActionTrail
 
     public sealed class GetSaslUsersInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("ids")]
+        private InputList<string>? _ids;
+
         /// <summary>
-        /// ID of the ALIKAFKA Instance that owns the sasl users.
+        /// A list of Sasl User IDs.
+        /// </summary>
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
+
+        /// <summary>
+        /// The ID of the instance.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// A regex string to filter results by the username.
+        /// A regex string to filter results by Sasl User name.
         /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
@@ -169,21 +358,24 @@ namespace Pulumi.AliCloud.ActionTrail
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<string> Ids;
         public readonly string InstanceId;
         public readonly string? NameRegex;
         /// <summary>
-        /// A list of sasl usernames.
+        /// A list of Sasl User names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         /// <summary>
-        /// A list of sasl users. Each element contains the following attributes:
+        /// A list of Sasl Users. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSaslUsersUserResult> Users;
 
         [OutputConstructor]
         private GetSaslUsersResult(
             string id,
+
+            ImmutableArray<string> ids,
 
             string instanceId,
 
@@ -196,6 +388,7 @@ namespace Pulumi.AliCloud.ActionTrail
             ImmutableArray<Outputs.GetSaslUsersUserResult> users)
         {
             Id = id;
+            Ids = ids;
             InstanceId = instanceId;
             NameRegex = nameRegex;
             Names = names;

@@ -14,6 +14,8 @@ import (
 
 // Provides a Resource Manager Control Policy Attachment resource.
 //
+// Control Policy Attachment.
+//
 // For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/resource-directory/developer-reference/api-resourcemanager-2020-03-31-attachcontrolpolicy).
 //
 // > **NOTE:** Available since v1.120.0.
@@ -107,7 +109,11 @@ type ControlPolicyAttachment struct {
 
 	// The ID of the access control policy.
 	PolicyId pulumi.StringOutput `pulumi:"policyId"`
-	// The ID of the object to which you want to attach the access control policy.
+	// The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
+	//
+	// - Root folder
+	// - Subfolders of the Root folder
+	// - Members
 	TargetId pulumi.StringOutput `pulumi:"targetId"`
 }
 
@@ -149,14 +155,22 @@ func GetControlPolicyAttachment(ctx *pulumi.Context,
 type controlPolicyAttachmentState struct {
 	// The ID of the access control policy.
 	PolicyId *string `pulumi:"policyId"`
-	// The ID of the object to which you want to attach the access control policy.
+	// The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
+	//
+	// - Root folder
+	// - Subfolders of the Root folder
+	// - Members
 	TargetId *string `pulumi:"targetId"`
 }
 
 type ControlPolicyAttachmentState struct {
 	// The ID of the access control policy.
 	PolicyId pulumi.StringPtrInput
-	// The ID of the object to which you want to attach the access control policy.
+	// The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
+	//
+	// - Root folder
+	// - Subfolders of the Root folder
+	// - Members
 	TargetId pulumi.StringPtrInput
 }
 
@@ -167,7 +181,11 @@ func (ControlPolicyAttachmentState) ElementType() reflect.Type {
 type controlPolicyAttachmentArgs struct {
 	// The ID of the access control policy.
 	PolicyId string `pulumi:"policyId"`
-	// The ID of the object to which you want to attach the access control policy.
+	// The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
+	//
+	// - Root folder
+	// - Subfolders of the Root folder
+	// - Members
 	TargetId string `pulumi:"targetId"`
 }
 
@@ -175,7 +193,11 @@ type controlPolicyAttachmentArgs struct {
 type ControlPolicyAttachmentArgs struct {
 	// The ID of the access control policy.
 	PolicyId pulumi.StringInput
-	// The ID of the object to which you want to attach the access control policy.
+	// The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
+	//
+	// - Root folder
+	// - Subfolders of the Root folder
+	// - Members
 	TargetId pulumi.StringInput
 }
 
@@ -271,7 +293,11 @@ func (o ControlPolicyAttachmentOutput) PolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ControlPolicyAttachment) pulumi.StringOutput { return v.PolicyId }).(pulumi.StringOutput)
 }
 
-// The ID of the object to which you want to attach the access control policy.
+// The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
+//
+// - Root folder
+// - Subfolders of the Root folder
+// - Members
 func (o ControlPolicyAttachmentOutput) TargetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ControlPolicyAttachment) pulumi.StringOutput { return v.TargetId }).(pulumi.StringOutput)
 }

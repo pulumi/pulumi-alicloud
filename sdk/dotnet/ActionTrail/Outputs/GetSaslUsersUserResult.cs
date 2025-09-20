@@ -13,10 +13,15 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
     [OutputType]
     public sealed class GetSaslUsersUserResult
     {
+        public readonly string Id;
         /// <summary>
         /// The password of the user.
         /// </summary>
         public readonly string Password;
+        /// <summary>
+        /// (Available since v1.260.0) The type of the user.
+        /// </summary>
+        public readonly string Type;
         /// <summary>
         /// The username of the user.
         /// </summary>
@@ -24,11 +29,17 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
 
         [OutputConstructor]
         private GetSaslUsersUserResult(
+            string id,
+
             string password,
+
+            string type,
 
             string username)
         {
+            Id = id;
             Password = password;
+            Type = type;
             Username = username;
         }
     }

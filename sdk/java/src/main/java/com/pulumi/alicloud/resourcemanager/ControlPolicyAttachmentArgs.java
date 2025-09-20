@@ -30,14 +30,22 @@ public final class ControlPolicyAttachmentArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The ID of the object to which you want to attach the access control policy.
+     * The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
+     * 
+     * - Root folder
+     * - Subfolders of the Root folder
+     * - Members
      * 
      */
     @Import(name="targetId", required=true)
     private Output<String> targetId;
 
     /**
-     * @return The ID of the object to which you want to attach the access control policy.
+     * @return The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
+     * 
+     * - Root folder
+     * - Subfolders of the Root folder
+     * - Members
      * 
      */
     public Output<String> targetId() {
@@ -91,7 +99,11 @@ public final class ControlPolicyAttachmentArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param targetId The ID of the object to which you want to attach the access control policy.
+         * @param targetId The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
+         * 
+         * - Root folder
+         * - Subfolders of the Root folder
+         * - Members
          * 
          * @return builder
          * 
@@ -102,7 +114,11 @@ public final class ControlPolicyAttachmentArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param targetId The ID of the object to which you want to attach the access control policy.
+         * @param targetId The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
+         * 
+         * - Root folder
+         * - Subfolders of the Root folder
+         * - Members
          * 
          * @return builder
          * 

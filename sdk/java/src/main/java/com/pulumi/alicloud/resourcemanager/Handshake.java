@@ -15,12 +15,15 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Resource Manager handshake resource. You can invite accounts to join a resource directory for unified management.
- * For information about Resource Manager handshake and how to use it, see [What is Resource Manager handshake](https://www.alibabacloud.com/help/en/doc-detail/135287.htm).
+ * Provides a Resource Manager Handshake resource.
  * 
- * &gt; **NOTE:** Available in v1.82.0+.
+ * For information about Resource Manager Handshake and how to use it, see [What is Handshake](https://www.alibabacloud.com/help/en/doc-detail/135287.htm).
+ * 
+ * &gt; **NOTE:** Available since v1.82.0.
  * 
  * ## Example Usage
+ * 
+ * Basic Usage
  * 
  * <pre>
  * {@code
@@ -58,136 +61,158 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Resource Manager handshake can be imported using the id, e.g.
+ * Resource Manager Handshake can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:resourcemanager/handshake:Handshake example h-QmdexeFm1kE*****
+ * $ pulumi import alicloud:resourcemanager/handshake:Handshake example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:resourcemanager/handshake:Handshake")
 public class Handshake extends com.pulumi.resources.CustomResource {
     /**
-     * The expiration time of the invitation.
+     * The time when the invitation was created. The time is displayed in UTC.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return The time when the invitation was created. The time is displayed in UTC.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * The time when the invitation expires. The time is displayed in UTC.
      * 
      */
     @Export(name="expireTime", refs={String.class}, tree="[0]")
     private Output<String> expireTime;
 
     /**
-     * @return The expiration time of the invitation.
+     * @return The time when the invitation expires. The time is displayed in UTC.
      * 
      */
     public Output<String> expireTime() {
         return this.expireTime;
     }
     /**
-     * Resource account master account ID.
+     * The ID of the management account of the resource directory.
      * 
      */
     @Export(name="masterAccountId", refs={String.class}, tree="[0]")
     private Output<String> masterAccountId;
 
     /**
-     * @return Resource account master account ID.
+     * @return The ID of the management account of the resource directory.
      * 
      */
     public Output<String> masterAccountId() {
         return this.masterAccountId;
     }
     /**
-     * The name of the main account of the resource directory.
+     * The name of the management account of the resource directory.
      * 
      */
     @Export(name="masterAccountName", refs={String.class}, tree="[0]")
     private Output<String> masterAccountName;
 
     /**
-     * @return The name of the main account of the resource directory.
+     * @return The name of the management account of the resource directory.
      * 
      */
     public Output<String> masterAccountName() {
         return this.masterAccountName;
     }
     /**
-     * The modification time of the invitation.
+     * The time when the invitation was modified. The time is displayed in UTC.
      * 
      */
     @Export(name="modifyTime", refs={String.class}, tree="[0]")
     private Output<String> modifyTime;
 
     /**
-     * @return The modification time of the invitation.
+     * @return The time when the invitation was modified. The time is displayed in UTC.
      * 
      */
     public Output<String> modifyTime() {
         return this.modifyTime;
     }
     /**
-     * Remarks. The maximum length is 1024 characters.
+     * The description of the invitation.
+     * The description can be up to 1,024 characters in length.
      * 
      */
     @Export(name="note", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> note;
 
     /**
-     * @return Remarks. The maximum length is 1024 characters.
+     * @return The description of the invitation.
+     * The description can be up to 1,024 characters in length.
      * 
      */
     public Output<Optional<String>> note() {
         return Codegen.optional(this.note);
     }
     /**
-     * Resource directory ID.
+     * The ID of the resource directory.
      * 
      */
     @Export(name="resourceDirectoryId", refs={String.class}, tree="[0]")
     private Output<String> resourceDirectoryId;
 
     /**
-     * @return Resource directory ID.
+     * @return The ID of the resource directory.
      * 
      */
     public Output<String> resourceDirectoryId() {
         return this.resourceDirectoryId;
     }
     /**
-     * Invitation status. Valid values: `Pending` waiting for confirmation, `Accepted`, `Cancelled`, `Declined`, `Expired`.
+     * The status of the invitation.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Invitation status. Valid values: `Pending` waiting for confirmation, `Accepted`, `Cancelled`, `Declined`, `Expired`.
+     * @return The status of the invitation.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * Invited account ID or login email.
+     * The ID or logon email address of the account that you want to invite.
      * 
      */
     @Export(name="targetEntity", refs={String.class}, tree="[0]")
     private Output<String> targetEntity;
 
     /**
-     * @return Invited account ID or login email.
+     * @return The ID or logon email address of the account that you want to invite.
      * 
      */
     public Output<String> targetEntity() {
         return this.targetEntity;
     }
     /**
-     * Type of account being invited. Valid values: `Account`, `Email`.
+     * The type of the invited account. Valid values:
+     * 
+     * - Account: indicates the ID of the account.
+     * - Email: indicates the logon email address of the account.
      * 
      */
     @Export(name="targetType", refs={String.class}, tree="[0]")
     private Output<String> targetType;
 
     /**
-     * @return Type of account being invited. Valid values: `Account`, `Email`.
+     * @return The type of the invited account. Valid values:
+     * 
+     * - Account: indicates the ID of the account.
+     * - Email: indicates the logon email address of the account.
      * 
      */
     public Output<String> targetType() {

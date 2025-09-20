@@ -7,27 +7,66 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides a list of ALIKAFKA Sasl users in an Alibaba Cloud account according to the specified filters.
+ * This data source provides the Alikafka Sasl Users of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in 1.66.0+
+ * > **NOTE:** Available since v1.66.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const saslUsersDs = alicloud.actiontrail.getSaslUsers({
- *     instanceId: "xxx",
- *     nameRegex: "username",
- *     outputFile: "saslUsers.txt",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
  * });
- * export const firstSaslUsername = saslUsersDs.then(saslUsersDs => saslUsersDs.users?.[0]?.username);
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "10.4.0.0/24",
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {vpcId: defaultNetwork.id});
+ * const defaultInstance = new alicloud.alikafka.Instance("default", {
+ *     name: name,
+ *     partitionNum: 50,
+ *     diskType: 1,
+ *     diskSize: 500,
+ *     deployType: 5,
+ *     ioMax: 20,
+ *     specType: "professional",
+ *     serviceVersion: "2.2.0",
+ *     vswitchId: defaultSwitch.id,
+ *     securityGroup: defaultSecurityGroup.id,
+ *     config: `  {
+ *     \\"enable.acl\\": \\"true\\"
+ *   }
+ * `,
+ * });
+ * const defaultSaslUser = new alicloud.alikafka.SaslUser("default", {
+ *     instanceId: defaultInstance.id,
+ *     username: name,
+ *     password: "YourPassword1234!",
+ * });
+ * const ids = alicloud.actiontrail.getSaslUsersOutput({
+ *     ids: [defaultSaslUser.id],
+ *     instanceId: defaultSaslUser.instanceId,
+ * });
+ * export const alikafkaSaslUsersId0 = ids.apply(ids => ids.users?.[0]?.id);
  * ```
  */
 export function getSaslUsers(args: GetSaslUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetSaslUsersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:actiontrail/getSaslUsers:getSaslUsers", {
+        "ids": args.ids,
         "instanceId": args.instanceId,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
@@ -39,11 +78,15 @@ export function getSaslUsers(args: GetSaslUsersArgs, opts?: pulumi.InvokeOptions
  */
 export interface GetSaslUsersArgs {
     /**
-     * ID of the ALIKAFKA Instance that owns the sasl users.
+     * A list of Sasl User IDs.
+     */
+    ids?: string[];
+    /**
+     * The ID of the instance.
      */
     instanceId: string;
     /**
-     * A regex string to filter results by the username.
+     * A regex string to filter results by Sasl User name.
      */
     nameRegex?: string;
     /**
@@ -60,40 +103,80 @@ export interface GetSaslUsersResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly ids: string[];
     readonly instanceId: string;
     readonly nameRegex?: string;
     /**
-     * A list of sasl usernames.
+     * A list of Sasl User names.
      */
     readonly names: string[];
     readonly outputFile?: string;
     /**
-     * A list of sasl users. Each element contains the following attributes:
+     * A list of Sasl Users. Each element contains the following attributes:
      */
     readonly users: outputs.actiontrail.GetSaslUsersUser[];
 }
 /**
- * This data source provides a list of ALIKAFKA Sasl users in an Alibaba Cloud account according to the specified filters.
+ * This data source provides the Alikafka Sasl Users of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in 1.66.0+
+ * > **NOTE:** Available since v1.66.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const saslUsersDs = alicloud.actiontrail.getSaslUsers({
- *     instanceId: "xxx",
- *     nameRegex: "username",
- *     outputFile: "saslUsers.txt",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
  * });
- * export const firstSaslUsername = saslUsersDs.then(saslUsersDs => saslUsersDs.users?.[0]?.username);
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "10.4.0.0/24",
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {vpcId: defaultNetwork.id});
+ * const defaultInstance = new alicloud.alikafka.Instance("default", {
+ *     name: name,
+ *     partitionNum: 50,
+ *     diskType: 1,
+ *     diskSize: 500,
+ *     deployType: 5,
+ *     ioMax: 20,
+ *     specType: "professional",
+ *     serviceVersion: "2.2.0",
+ *     vswitchId: defaultSwitch.id,
+ *     securityGroup: defaultSecurityGroup.id,
+ *     config: `  {
+ *     \\"enable.acl\\": \\"true\\"
+ *   }
+ * `,
+ * });
+ * const defaultSaslUser = new alicloud.alikafka.SaslUser("default", {
+ *     instanceId: defaultInstance.id,
+ *     username: name,
+ *     password: "YourPassword1234!",
+ * });
+ * const ids = alicloud.actiontrail.getSaslUsersOutput({
+ *     ids: [defaultSaslUser.id],
+ *     instanceId: defaultSaslUser.instanceId,
+ * });
+ * export const alikafkaSaslUsersId0 = ids.apply(ids => ids.users?.[0]?.id);
  * ```
  */
 export function getSaslUsersOutput(args: GetSaslUsersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSaslUsersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:actiontrail/getSaslUsers:getSaslUsers", {
+        "ids": args.ids,
         "instanceId": args.instanceId,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
@@ -105,11 +188,15 @@ export function getSaslUsersOutput(args: GetSaslUsersOutputArgs, opts?: pulumi.I
  */
 export interface GetSaslUsersOutputArgs {
     /**
-     * ID of the ALIKAFKA Instance that owns the sasl users.
+     * A list of Sasl User IDs.
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the instance.
      */
     instanceId: pulumi.Input<string>;
     /**
-     * A regex string to filter results by the username.
+     * A regex string to filter results by Sasl User name.
      */
     nameRegex?: pulumi.Input<string>;
     /**

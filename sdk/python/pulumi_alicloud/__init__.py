@@ -1935,6 +1935,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "cloudfirewall/threatIntelligenceSwitch",
+  "fqn": "pulumi_alicloud.cloudfirewall",
+  "classes": {
+   "alicloud:cloudfirewall/threatIntelligenceSwitch:ThreatIntelligenceSwitch": "ThreatIntelligenceSwitch"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "cloudfirewall/vpcCenTrFirewall",
   "fqn": "pulumi_alicloud.cloudfirewall",
   "classes": {
@@ -2091,6 +2099,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.cloudsso",
   "classes": {
    "alicloud:cloudsso/userAttachment:UserAttachment": "UserAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cloudsso/userProvisioning",
+  "fqn": "pulumi_alicloud.cloudsso",
+  "classes": {
+   "alicloud:cloudsso/userProvisioning:UserProvisioning": "UserProvisioning"
   }
  },
  {
@@ -2859,6 +2875,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.directmail",
   "classes": {
    "alicloud:directmail/tag:Tag": "Tag"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "dms/airflow",
+  "fqn": "pulumi_alicloud.dms",
+  "classes": {
+   "alicloud:dms/airflow:Airflow": "Airflow"
   }
  },
  {
@@ -4439,6 +4463,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "esa/transportLayerApplication",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/transportLayerApplication:TransportLayerApplication": "TransportLayerApplication"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "esa/urlObservation",
   "fqn": "pulumi_alicloud.esa",
   "classes": {
@@ -4459,6 +4491,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.esa",
   "classes": {
    "alicloud:esa/videoProcessing:VideoProcessing": "VideoProcessing"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "esa/wafRuleset",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/wafRuleset:WafRuleset": "WafRuleset"
   }
  },
  {
@@ -5643,6 +5683,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.lindorm",
   "classes": {
    "alicloud:lindorm/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "lindorm/instanceV2",
+  "fqn": "pulumi_alicloud.lindorm",
+  "classes": {
+   "alicloud:lindorm/instanceV2:InstanceV2": "InstanceV2"
   }
  },
  {
@@ -8099,6 +8147,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.sls",
   "classes": {
    "alicloud:sls/etl:Etl": "Etl"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "sls/index",
+  "fqn": "pulumi_alicloud.sls",
+  "classes": {
+   "alicloud:sls/index:Index": "Index"
   }
  },
  {

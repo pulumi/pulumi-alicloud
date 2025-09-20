@@ -348,6 +348,21 @@ public final class V3FunctionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Resource Group ID.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return Resource Group ID.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
      * The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
      * 
      */
@@ -363,14 +378,14 @@ public final class V3FunctionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Function runtime type
+     * Function runtime type.
      * 
      */
     @Import(name="runtime", required=true)
     private Output<String> runtime;
 
     /**
-     * @return Function runtime type
+     * @return Function runtime type.
      * 
      */
     public Output<String> runtime() {
@@ -476,6 +491,7 @@ public final class V3FunctionArgs extends com.pulumi.resources.ResourceArgs {
         this.memorySize = $.memorySize;
         this.nasConfig = $.nasConfig;
         this.ossMountConfig = $.ossMountConfig;
+        this.resourceGroupId = $.resourceGroupId;
         this.role = $.role;
         this.runtime = $.runtime;
         this.sessionAffinity = $.sessionAffinity;
@@ -955,6 +971,27 @@ public final class V3FunctionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param resourceGroupId Resource Group ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId Resource Group ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
          * @param role The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
          * 
          * @return builder
@@ -976,7 +1013,7 @@ public final class V3FunctionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param runtime Function runtime type
+         * @param runtime Function runtime type.
          * 
          * @return builder
          * 
@@ -987,7 +1024,7 @@ public final class V3FunctionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param runtime Function runtime type
+         * @param runtime Function runtime type.
          * 
          * @return builder
          * 

@@ -15,6 +15,11 @@ export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
 utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
 
+export { InstanceV2Args, InstanceV2State } from "./instanceV2";
+export type InstanceV2 = import("./instanceV2").InstanceV2;
+export const InstanceV2: typeof import("./instanceV2").InstanceV2 = null as any;
+utilities.lazyLoad(exports, ["InstanceV2"], () => require("./instanceV2"));
+
 export { PublicNetworkArgs, PublicNetworkState } from "./publicNetwork";
 export type PublicNetwork = import("./publicNetwork").PublicNetwork;
 export const PublicNetwork: typeof import("./publicNetwork").PublicNetwork = null as any;
@@ -27,6 +32,8 @@ const _module = {
         switch (type) {
             case "alicloud:lindorm/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "alicloud:lindorm/instanceV2:InstanceV2":
+                return new InstanceV2(name, <any>undefined, { urn })
             case "alicloud:lindorm/publicNetwork:PublicNetwork":
                 return new PublicNetwork(name, <any>undefined, { urn })
             default:
@@ -35,4 +42,5 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "lindorm/instance", _module)
+pulumi.runtime.registerResourceModule("alicloud", "lindorm/instanceV2", _module)
 pulumi.runtime.registerResourceModule("alicloud", "lindorm/publicNetwork", _module)

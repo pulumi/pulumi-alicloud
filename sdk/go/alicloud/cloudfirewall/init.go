@@ -45,6 +45,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NatFirewallControlPolicy{}
 	case "alicloud:cloudfirewall/policyAdvancedConfig:PolicyAdvancedConfig":
 		r = &PolicyAdvancedConfig{}
+	case "alicloud:cloudfirewall/threatIntelligenceSwitch:ThreatIntelligenceSwitch":
+		r = &ThreatIntelligenceSwitch{}
 	case "alicloud:cloudfirewall/vpcCenTrFirewall:VpcCenTrFirewall":
 		r = &VpcCenTrFirewall{}
 	default:
@@ -118,6 +120,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cloudfirewall/policyAdvancedConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cloudfirewall/threatIntelligenceSwitch",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

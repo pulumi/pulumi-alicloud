@@ -10,12 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ResourceManager
 {
     /// <summary>
-    /// Provides a Resource Manager handshake resource. You can invite accounts to join a resource directory for unified management.
-    /// For information about Resource Manager handshake and how to use it, see [What is Resource Manager handshake](https://www.alibabacloud.com/help/en/doc-detail/135287.htm).
+    /// Provides a Resource Manager Handshake resource.
     /// 
-    /// &gt; **NOTE:** Available in v1.82.0+.
+    /// For information about Resource Manager Handshake and how to use it, see [What is Handshake](https://www.alibabacloud.com/help/en/doc-detail/135287.htm).
+    /// 
+    /// &gt; **NOTE:** Available since v1.82.0.
     /// 
     /// ## Example Usage
+    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -38,65 +41,75 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// ## Import
     /// 
-    /// Resource Manager handshake can be imported using the id, e.g.
+    /// Resource Manager Handshake can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:resourcemanager/handshake:Handshake example h-QmdexeFm1kE*****
+    /// $ pulumi import alicloud:resourcemanager/handshake:Handshake example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:resourcemanager/handshake:Handshake")]
     public partial class Handshake : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The expiration time of the invitation.
+        /// The time when the invitation was created. The time is displayed in UTC.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The time when the invitation expires. The time is displayed in UTC.
         /// </summary>
         [Output("expireTime")]
         public Output<string> ExpireTime { get; private set; } = null!;
 
         /// <summary>
-        /// Resource account master account ID.
+        /// The ID of the management account of the resource directory.
         /// </summary>
         [Output("masterAccountId")]
         public Output<string> MasterAccountId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the main account of the resource directory.
+        /// The name of the management account of the resource directory.
         /// </summary>
         [Output("masterAccountName")]
         public Output<string> MasterAccountName { get; private set; } = null!;
 
         /// <summary>
-        /// The modification time of the invitation.
+        /// The time when the invitation was modified. The time is displayed in UTC.
         /// </summary>
         [Output("modifyTime")]
         public Output<string> ModifyTime { get; private set; } = null!;
 
         /// <summary>
-        /// Remarks. The maximum length is 1024 characters.
+        /// The description of the invitation.
+        /// The description can be up to 1,024 characters in length.
         /// </summary>
         [Output("note")]
         public Output<string?> Note { get; private set; } = null!;
 
         /// <summary>
-        /// Resource directory ID.
+        /// The ID of the resource directory.
         /// </summary>
         [Output("resourceDirectoryId")]
         public Output<string> ResourceDirectoryId { get; private set; } = null!;
 
         /// <summary>
-        /// Invitation status. Valid values: `Pending` waiting for confirmation, `Accepted`, `Cancelled`, `Declined`, `Expired`.
+        /// The status of the invitation.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Invited account ID or login email.
+        /// The ID or logon email address of the account that you want to invite.
         /// </summary>
         [Output("targetEntity")]
         public Output<string> TargetEntity { get; private set; } = null!;
 
         /// <summary>
-        /// Type of account being invited. Valid values: `Account`, `Email`.
+        /// The type of the invited account. Valid values:
+        /// 
+        /// - Account: indicates the ID of the account.
+        /// - Email: indicates the logon email address of the account.
         /// </summary>
         [Output("targetType")]
         public Output<string> TargetType { get; private set; } = null!;
@@ -148,19 +161,23 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class HandshakeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Remarks. The maximum length is 1024 characters.
+        /// The description of the invitation.
+        /// The description can be up to 1,024 characters in length.
         /// </summary>
         [Input("note")]
         public Input<string>? Note { get; set; }
 
         /// <summary>
-        /// Invited account ID or login email.
+        /// The ID or logon email address of the account that you want to invite.
         /// </summary>
         [Input("targetEntity", required: true)]
         public Input<string> TargetEntity { get; set; } = null!;
 
         /// <summary>
-        /// Type of account being invited. Valid values: `Account`, `Email`.
+        /// The type of the invited account. Valid values:
+        /// 
+        /// - Account: indicates the ID of the account.
+        /// - Email: indicates the logon email address of the account.
         /// </summary>
         [Input("targetType", required: true)]
         public Input<string> TargetType { get; set; } = null!;
@@ -174,55 +191,65 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class HandshakeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The expiration time of the invitation.
+        /// The time when the invitation was created. The time is displayed in UTC.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The time when the invitation expires. The time is displayed in UTC.
         /// </summary>
         [Input("expireTime")]
         public Input<string>? ExpireTime { get; set; }
 
         /// <summary>
-        /// Resource account master account ID.
+        /// The ID of the management account of the resource directory.
         /// </summary>
         [Input("masterAccountId")]
         public Input<string>? MasterAccountId { get; set; }
 
         /// <summary>
-        /// The name of the main account of the resource directory.
+        /// The name of the management account of the resource directory.
         /// </summary>
         [Input("masterAccountName")]
         public Input<string>? MasterAccountName { get; set; }
 
         /// <summary>
-        /// The modification time of the invitation.
+        /// The time when the invitation was modified. The time is displayed in UTC.
         /// </summary>
         [Input("modifyTime")]
         public Input<string>? ModifyTime { get; set; }
 
         /// <summary>
-        /// Remarks. The maximum length is 1024 characters.
+        /// The description of the invitation.
+        /// The description can be up to 1,024 characters in length.
         /// </summary>
         [Input("note")]
         public Input<string>? Note { get; set; }
 
         /// <summary>
-        /// Resource directory ID.
+        /// The ID of the resource directory.
         /// </summary>
         [Input("resourceDirectoryId")]
         public Input<string>? ResourceDirectoryId { get; set; }
 
         /// <summary>
-        /// Invitation status. Valid values: `Pending` waiting for confirmation, `Accepted`, `Cancelled`, `Declined`, `Expired`.
+        /// The status of the invitation.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Invited account ID or login email.
+        /// The ID or logon email address of the account that you want to invite.
         /// </summary>
         [Input("targetEntity")]
         public Input<string>? TargetEntity { get; set; }
 
         /// <summary>
-        /// Type of account being invited. Valid values: `Account`, `Email`.
+        /// The type of the invited account. Valid values:
+        /// 
+        /// - Account: indicates the ID of the account.
+        /// - Email: indicates the logon email address of the account.
         /// </summary>
         [Input("targetType")]
         public Input<string>? TargetType { get; set; }

@@ -2393,16 +2393,24 @@ class V3FunctionInstanceLifecycleConfig(dict):
 @pulumi.output_type
 class V3FunctionInstanceLifecycleConfigInitializer(dict):
     def __init__(__self__, *,
+                 commands: Optional[Sequence[_builtins.str]] = None,
                  handler: Optional[_builtins.str] = None,
                  timeout: Optional[_builtins.int] = None):
         """
         :param _builtins.str handler: Function Handler: the call entry for the function compute system to run your function.
         :param _builtins.int timeout: The maximum running time of the function, in seconds.
         """
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
         if handler is not None:
             pulumi.set(__self__, "handler", handler)
         if timeout is not None:
             pulumi.set(__self__, "timeout", timeout)
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "commands")
 
     @_builtins.property
     @pulumi.getter

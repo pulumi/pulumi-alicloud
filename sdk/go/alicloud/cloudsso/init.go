@@ -39,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &User{}
 	case "alicloud:cloudsso/userAttachment:UserAttachment":
 		r = &UserAttachment{}
+	case "alicloud:cloudsso/userProvisioning:UserProvisioning":
+		r = &UserProvisioning{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -95,6 +97,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cloudsso/userAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cloudsso/userProvisioning",
 		&module{version},
 	)
 }
