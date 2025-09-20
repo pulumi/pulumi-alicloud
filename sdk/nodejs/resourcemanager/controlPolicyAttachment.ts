@@ -7,6 +7,8 @@ import * as utilities from "../utilities";
 /**
  * Provides a Resource Manager Control Policy Attachment resource.
  *
+ * Control Policy Attachment.
+ *
  * For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/resource-directory/developer-reference/api-resourcemanager-2020-03-31-attachcontrolpolicy).
  *
  * > **NOTE:** Available since v1.120.0.
@@ -95,7 +97,11 @@ export class ControlPolicyAttachment extends pulumi.CustomResource {
      */
     declare public readonly policyId: pulumi.Output<string>;
     /**
-     * The ID of the object to which you want to attach the access control policy.
+     * The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
+     *
+     * - Root folder
+     * - Subfolders of the Root folder
+     * - Members
      */
     declare public readonly targetId: pulumi.Output<string>;
 
@@ -139,7 +145,11 @@ export interface ControlPolicyAttachmentState {
      */
     policyId?: pulumi.Input<string>;
     /**
-     * The ID of the object to which you want to attach the access control policy.
+     * The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
+     *
+     * - Root folder
+     * - Subfolders of the Root folder
+     * - Members
      */
     targetId?: pulumi.Input<string>;
 }
@@ -153,7 +163,11 @@ export interface ControlPolicyAttachmentArgs {
      */
     policyId: pulumi.Input<string>;
     /**
-     * The ID of the object to which you want to attach the access control policy.
+     * The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
+     *
+     * - Root folder
+     * - Subfolders of the Root folder
+     * - Members
      */
     targetId: pulumi.Input<string>;
 }

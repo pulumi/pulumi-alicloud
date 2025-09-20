@@ -3891,6 +3891,219 @@ func (o EtlConfigurationSinkArrayOutput) Index(i pulumi.IntInput) EtlConfigurati
 	}).(EtlConfigurationSinkOutput)
 }
 
+type IndexLine struct {
+	// Is case sensitive
+	CaseSensitive bool `pulumi:"caseSensitive"`
+	// Does it include Chinese
+	Chn bool `pulumi:"chn"`
+	// List of excluded fields
+	ExcludeKeys []string `pulumi:"excludeKeys"`
+	// Include field list
+	IncludeKeys []string `pulumi:"includeKeys"`
+	// Delimiter
+	Tokens []string `pulumi:"tokens"`
+}
+
+// IndexLineInput is an input type that accepts IndexLineArgs and IndexLineOutput values.
+// You can construct a concrete instance of `IndexLineInput` via:
+//
+//	IndexLineArgs{...}
+type IndexLineInput interface {
+	pulumi.Input
+
+	ToIndexLineOutput() IndexLineOutput
+	ToIndexLineOutputWithContext(context.Context) IndexLineOutput
+}
+
+type IndexLineArgs struct {
+	// Is case sensitive
+	CaseSensitive pulumi.BoolInput `pulumi:"caseSensitive"`
+	// Does it include Chinese
+	Chn pulumi.BoolInput `pulumi:"chn"`
+	// List of excluded fields
+	ExcludeKeys pulumi.StringArrayInput `pulumi:"excludeKeys"`
+	// Include field list
+	IncludeKeys pulumi.StringArrayInput `pulumi:"includeKeys"`
+	// Delimiter
+	Tokens pulumi.StringArrayInput `pulumi:"tokens"`
+}
+
+func (IndexLineArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IndexLine)(nil)).Elem()
+}
+
+func (i IndexLineArgs) ToIndexLineOutput() IndexLineOutput {
+	return i.ToIndexLineOutputWithContext(context.Background())
+}
+
+func (i IndexLineArgs) ToIndexLineOutputWithContext(ctx context.Context) IndexLineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexLineOutput)
+}
+
+func (i IndexLineArgs) ToIndexLinePtrOutput() IndexLinePtrOutput {
+	return i.ToIndexLinePtrOutputWithContext(context.Background())
+}
+
+func (i IndexLineArgs) ToIndexLinePtrOutputWithContext(ctx context.Context) IndexLinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexLineOutput).ToIndexLinePtrOutputWithContext(ctx)
+}
+
+// IndexLinePtrInput is an input type that accepts IndexLineArgs, IndexLinePtr and IndexLinePtrOutput values.
+// You can construct a concrete instance of `IndexLinePtrInput` via:
+//
+//	        IndexLineArgs{...}
+//
+//	or:
+//
+//	        nil
+type IndexLinePtrInput interface {
+	pulumi.Input
+
+	ToIndexLinePtrOutput() IndexLinePtrOutput
+	ToIndexLinePtrOutputWithContext(context.Context) IndexLinePtrOutput
+}
+
+type indexLinePtrType IndexLineArgs
+
+func IndexLinePtr(v *IndexLineArgs) IndexLinePtrInput {
+	return (*indexLinePtrType)(v)
+}
+
+func (*indexLinePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IndexLine)(nil)).Elem()
+}
+
+func (i *indexLinePtrType) ToIndexLinePtrOutput() IndexLinePtrOutput {
+	return i.ToIndexLinePtrOutputWithContext(context.Background())
+}
+
+func (i *indexLinePtrType) ToIndexLinePtrOutputWithContext(ctx context.Context) IndexLinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexLinePtrOutput)
+}
+
+type IndexLineOutput struct{ *pulumi.OutputState }
+
+func (IndexLineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IndexLine)(nil)).Elem()
+}
+
+func (o IndexLineOutput) ToIndexLineOutput() IndexLineOutput {
+	return o
+}
+
+func (o IndexLineOutput) ToIndexLineOutputWithContext(ctx context.Context) IndexLineOutput {
+	return o
+}
+
+func (o IndexLineOutput) ToIndexLinePtrOutput() IndexLinePtrOutput {
+	return o.ToIndexLinePtrOutputWithContext(context.Background())
+}
+
+func (o IndexLineOutput) ToIndexLinePtrOutputWithContext(ctx context.Context) IndexLinePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IndexLine) *IndexLine {
+		return &v
+	}).(IndexLinePtrOutput)
+}
+
+// Is case sensitive
+func (o IndexLineOutput) CaseSensitive() pulumi.BoolOutput {
+	return o.ApplyT(func(v IndexLine) bool { return v.CaseSensitive }).(pulumi.BoolOutput)
+}
+
+// Does it include Chinese
+func (o IndexLineOutput) Chn() pulumi.BoolOutput {
+	return o.ApplyT(func(v IndexLine) bool { return v.Chn }).(pulumi.BoolOutput)
+}
+
+// List of excluded fields
+func (o IndexLineOutput) ExcludeKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IndexLine) []string { return v.ExcludeKeys }).(pulumi.StringArrayOutput)
+}
+
+// Include field list
+func (o IndexLineOutput) IncludeKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IndexLine) []string { return v.IncludeKeys }).(pulumi.StringArrayOutput)
+}
+
+// Delimiter
+func (o IndexLineOutput) Tokens() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IndexLine) []string { return v.Tokens }).(pulumi.StringArrayOutput)
+}
+
+type IndexLinePtrOutput struct{ *pulumi.OutputState }
+
+func (IndexLinePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IndexLine)(nil)).Elem()
+}
+
+func (o IndexLinePtrOutput) ToIndexLinePtrOutput() IndexLinePtrOutput {
+	return o
+}
+
+func (o IndexLinePtrOutput) ToIndexLinePtrOutputWithContext(ctx context.Context) IndexLinePtrOutput {
+	return o
+}
+
+func (o IndexLinePtrOutput) Elem() IndexLineOutput {
+	return o.ApplyT(func(v *IndexLine) IndexLine {
+		if v != nil {
+			return *v
+		}
+		var ret IndexLine
+		return ret
+	}).(IndexLineOutput)
+}
+
+// Is case sensitive
+func (o IndexLinePtrOutput) CaseSensitive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IndexLine) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.CaseSensitive
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Does it include Chinese
+func (o IndexLinePtrOutput) Chn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IndexLine) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Chn
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of excluded fields
+func (o IndexLinePtrOutput) ExcludeKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IndexLine) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+// Include field list
+func (o IndexLinePtrOutput) IncludeKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IndexLine) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+// Delimiter
+func (o IndexLinePtrOutput) Tokens() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IndexLine) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Tokens
+	}).(pulumi.StringArrayOutput)
+}
+
 type LogtailConfigOutputDetail struct {
 	// The endpoint of the log project.
 	Endpoint *string `pulumi:"endpoint"`
@@ -7958,6 +8171,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EtlConfigurationPtrInput)(nil)).Elem(), EtlConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EtlConfigurationSinkInput)(nil)).Elem(), EtlConfigurationSinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EtlConfigurationSinkArrayInput)(nil)).Elem(), EtlConfigurationSinkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexLineInput)(nil)).Elem(), IndexLineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexLinePtrInput)(nil)).Elem(), IndexLineArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LogtailConfigOutputDetailInput)(nil)).Elem(), LogtailConfigOutputDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LogtailConfigOutputDetailPtrInput)(nil)).Elem(), LogtailConfigOutputDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MachineGroupGroupAttributeInput)(nil)).Elem(), MachineGroupGroupAttributeArgs{})
@@ -8043,6 +8258,8 @@ func init() {
 	pulumi.RegisterOutputType(EtlConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(EtlConfigurationSinkOutput{})
 	pulumi.RegisterOutputType(EtlConfigurationSinkArrayOutput{})
+	pulumi.RegisterOutputType(IndexLineOutput{})
+	pulumi.RegisterOutputType(IndexLinePtrOutput{})
 	pulumi.RegisterOutputType(LogtailConfigOutputDetailOutput{})
 	pulumi.RegisterOutputType(LogtailConfigOutputDetailPtrOutput{})
 	pulumi.RegisterOutputType(MachineGroupGroupAttributeOutput{})

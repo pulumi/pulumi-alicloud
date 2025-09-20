@@ -6,6 +6,7 @@ package com.pulumi.alicloud.actiontrail.inputs;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,14 +17,29 @@ public final class GetSaslUsersPlainArgs extends com.pulumi.resources.InvokeArgs
     public static final GetSaslUsersPlainArgs Empty = new GetSaslUsersPlainArgs();
 
     /**
-     * ID of the ALIKAFKA Instance that owns the sasl users.
+     * A list of Sasl User IDs.
+     * 
+     */
+    @Import(name="ids")
+    private @Nullable List<String> ids;
+
+    /**
+     * @return A list of Sasl User IDs.
+     * 
+     */
+    public Optional<List<String>> ids() {
+        return Optional.ofNullable(this.ids);
+    }
+
+    /**
+     * The ID of the instance.
      * 
      */
     @Import(name="instanceId", required=true)
     private String instanceId;
 
     /**
-     * @return ID of the ALIKAFKA Instance that owns the sasl users.
+     * @return The ID of the instance.
      * 
      */
     public String instanceId() {
@@ -31,14 +47,14 @@ public final class GetSaslUsersPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * A regex string to filter results by the username.
+     * A regex string to filter results by Sasl User name.
      * 
      */
     @Import(name="nameRegex")
     private @Nullable String nameRegex;
 
     /**
-     * @return A regex string to filter results by the username.
+     * @return A regex string to filter results by Sasl User name.
      * 
      */
     public Optional<String> nameRegex() {
@@ -63,6 +79,7 @@ public final class GetSaslUsersPlainArgs extends com.pulumi.resources.InvokeArgs
     private GetSaslUsersPlainArgs() {}
 
     private GetSaslUsersPlainArgs(GetSaslUsersPlainArgs $) {
+        this.ids = $.ids;
         this.instanceId = $.instanceId;
         this.nameRegex = $.nameRegex;
         this.outputFile = $.outputFile;
@@ -87,7 +104,28 @@ public final class GetSaslUsersPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param instanceId ID of the ALIKAFKA Instance that owns the sasl users.
+         * @param ids A list of Sasl User IDs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ids(@Nullable List<String> ids) {
+            $.ids = ids;
+            return this;
+        }
+
+        /**
+         * @param ids A list of Sasl User IDs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ids(String... ids) {
+            return ids(List.of(ids));
+        }
+
+        /**
+         * @param instanceId The ID of the instance.
          * 
          * @return builder
          * 
@@ -98,7 +136,7 @@ public final class GetSaslUsersPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param nameRegex A regex string to filter results by the username.
+         * @param nameRegex A regex string to filter results by Sasl User name.
          * 
          * @return builder
          * 

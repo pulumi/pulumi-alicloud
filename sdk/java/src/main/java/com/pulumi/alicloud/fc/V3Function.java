@@ -567,6 +567,20 @@ public class V3Function extends com.pulumi.resources.CustomResource {
         return this.ossMountConfig;
     }
     /**
+     * Resource Group ID.
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return Resource Group ID.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
      * The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
      * 
      */
@@ -581,14 +595,14 @@ public class V3Function extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.role);
     }
     /**
-     * Function runtime type
+     * Function runtime type.
      * 
      */
     @Export(name="runtime", refs={String.class}, tree="[0]")
     private Output<String> runtime;
 
     /**
-     * @return Function runtime type
+     * @return Function runtime type.
      * 
      */
     public Output<String> runtime() {

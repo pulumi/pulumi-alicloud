@@ -7,7 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a CEN Transit Router VPC Attachment resource that associate the VPC with the CEN instance. [What is Cen Transit Router VPC Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervpcattachment)
+ * Provides a Cen Transit Router Vpc Attachment resource.
+ *
+ * For information about Cen Transit Router Vpc Attachment and how to use it, see [What is Transit Router Vpc Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervpcattachment)
  *
  * > **NOTE:** Available since v1.126.0.
  *
@@ -69,7 +71,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * CEN Transit Router Vpc Attachment can be imported using the id, e.g.
+ * Cen Transit Router Vpc Attachment can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example <id>
@@ -129,6 +131,10 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
      */
     declare public readonly paymentType: pulumi.Output<string>;
     /**
+     * (Available since v1.260.0).The ID of the region where the VPC is deployed.
+     */
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
+    /**
      * The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
      */
     declare public readonly resourceType: pulumi.Output<string>;
@@ -159,11 +165,11 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
      */
     declare public readonly transitRouterAttachmentDescription: pulumi.Output<string | undefined>;
     /**
-     * The ID of the Transit Router Attachment.
+     * The ID of the VPC connection.
      */
     declare public /*out*/ readonly transitRouterAttachmentId: pulumi.Output<string>;
     /**
-     * . Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
+     * Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
      *
      * @deprecated Field 'transit_router_attachment_name' has been deprecated since provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
      */
@@ -189,7 +195,7 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
     /**
      * VpcOwnerId
      */
-    declare public readonly vpcOwnerId: pulumi.Output<number>;
+    declare public readonly vpcOwnerId: pulumi.Output<string>;
     /**
      * ZoneMappingss See `zoneMappings` below.
      *
@@ -216,6 +222,7 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
             resourceInputs["dryRun"] = state?.dryRun;
             resourceInputs["forceDelete"] = state?.forceDelete;
             resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["regionId"] = state?.regionId;
             resourceInputs["resourceType"] = state?.resourceType;
             resourceInputs["routeTableAssociationEnabled"] = state?.routeTableAssociationEnabled;
             resourceInputs["routeTablePropagationEnabled"] = state?.routeTablePropagationEnabled;
@@ -256,6 +263,7 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
             resourceInputs["vpcOwnerId"] = args?.vpcOwnerId;
             resourceInputs["zoneMappings"] = args?.zoneMappings;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["transitRouterAttachmentId"] = undefined /*out*/;
         }
@@ -294,6 +302,10 @@ export interface TransitRouterVpcAttachmentState {
      */
     paymentType?: pulumi.Input<string>;
     /**
+     * (Available since v1.260.0).The ID of the region where the VPC is deployed.
+     */
+    regionId?: pulumi.Input<string>;
+    /**
      * The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
      */
     resourceType?: pulumi.Input<string>;
@@ -324,11 +336,11 @@ export interface TransitRouterVpcAttachmentState {
      */
     transitRouterAttachmentDescription?: pulumi.Input<string>;
     /**
-     * The ID of the Transit Router Attachment.
+     * The ID of the VPC connection.
      */
     transitRouterAttachmentId?: pulumi.Input<string>;
     /**
-     * . Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
+     * Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
      *
      * @deprecated Field 'transit_router_attachment_name' has been deprecated since provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
      */
@@ -354,7 +366,7 @@ export interface TransitRouterVpcAttachmentState {
     /**
      * VpcOwnerId
      */
-    vpcOwnerId?: pulumi.Input<number>;
+    vpcOwnerId?: pulumi.Input<string>;
     /**
      * ZoneMappingss See `zoneMappings` below.
      *
@@ -415,7 +427,7 @@ export interface TransitRouterVpcAttachmentArgs {
      */
     transitRouterAttachmentDescription?: pulumi.Input<string>;
     /**
-     * . Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
+     * Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
      *
      * @deprecated Field 'transit_router_attachment_name' has been deprecated since provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
      */
@@ -441,7 +453,7 @@ export interface TransitRouterVpcAttachmentArgs {
     /**
      * VpcOwnerId
      */
-    vpcOwnerId?: pulumi.Input<number>;
+    vpcOwnerId?: pulumi.Input<string>;
     /**
      * ZoneMappingss See `zoneMappings` below.
      *

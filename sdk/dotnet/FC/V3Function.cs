@@ -306,13 +306,19 @@ namespace Pulumi.AliCloud.FC
         public Output<Outputs.V3FunctionOssMountConfig> OssMountConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Resource Group ID.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
         /// </summary>
         [Output("role")]
         public Output<string?> Role { get; private set; } = null!;
 
         /// <summary>
-        /// Function runtime type
+        /// Function runtime type.
         /// </summary>
         [Output("runtime")]
         public Output<string> Runtime { get; private set; } = null!;
@@ -556,13 +562,19 @@ namespace Pulumi.AliCloud.FC
         public Input<Inputs.V3FunctionOssMountConfigArgs>? OssMountConfig { get; set; }
 
         /// <summary>
+        /// Resource Group ID.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
         /// The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
         /// <summary>
-        /// Function runtime type
+        /// Function runtime type.
         /// </summary>
         [Input("runtime", required: true)]
         public Input<string> Runtime { get; set; } = null!;
@@ -798,13 +810,19 @@ namespace Pulumi.AliCloud.FC
         public Input<Inputs.V3FunctionOssMountConfigGetArgs>? OssMountConfig { get; set; }
 
         /// <summary>
+        /// Resource Group ID.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
         /// The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
         /// <summary>
-        /// Function runtime type
+        /// Function runtime type.
         /// </summary>
         [Input("runtime")]
         public Input<string>? Runtime { get; set; }

@@ -37,6 +37,7 @@ __all__ = [
     'CollectionPolicyResourceDirectory',
     'EtlConfiguration',
     'EtlConfigurationSink',
+    'IndexLine',
     'LogtailConfigOutputDetail',
     'MachineGroupGroupAttribute',
     'OssExportSinkConfiguration',
@@ -1676,6 +1677,91 @@ class EtlConfigurationSink(dict):
         The ARN role that authorizes writing to the target Logstore.
         """
         return pulumi.get(self, "role_arn")
+
+
+@pulumi.output_type
+class IndexLine(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caseSensitive":
+            suggest = "case_sensitive"
+        elif key == "excludeKeys":
+            suggest = "exclude_keys"
+        elif key == "includeKeys":
+            suggest = "include_keys"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IndexLine. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IndexLine.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IndexLine.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 case_sensitive: _builtins.bool,
+                 chn: _builtins.bool,
+                 tokens: Sequence[_builtins.str],
+                 exclude_keys: Optional[Sequence[_builtins.str]] = None,
+                 include_keys: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.bool case_sensitive: Is case sensitive
+        :param _builtins.bool chn: Does it include Chinese
+        :param Sequence[_builtins.str] tokens: Delimiter
+        :param Sequence[_builtins.str] exclude_keys: List of excluded fields
+        :param Sequence[_builtins.str] include_keys: Include field list
+        """
+        pulumi.set(__self__, "case_sensitive", case_sensitive)
+        pulumi.set(__self__, "chn", chn)
+        pulumi.set(__self__, "tokens", tokens)
+        if exclude_keys is not None:
+            pulumi.set(__self__, "exclude_keys", exclude_keys)
+        if include_keys is not None:
+            pulumi.set(__self__, "include_keys", include_keys)
+
+    @_builtins.property
+    @pulumi.getter(name="caseSensitive")
+    def case_sensitive(self) -> _builtins.bool:
+        """
+        Is case sensitive
+        """
+        return pulumi.get(self, "case_sensitive")
+
+    @_builtins.property
+    @pulumi.getter
+    def chn(self) -> _builtins.bool:
+        """
+        Does it include Chinese
+        """
+        return pulumi.get(self, "chn")
+
+    @_builtins.property
+    @pulumi.getter
+    def tokens(self) -> Sequence[_builtins.str]:
+        """
+        Delimiter
+        """
+        return pulumi.get(self, "tokens")
+
+    @_builtins.property
+    @pulumi.getter(name="excludeKeys")
+    def exclude_keys(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of excluded fields
+        """
+        return pulumi.get(self, "exclude_keys")
+
+    @_builtins.property
+    @pulumi.getter(name="includeKeys")
+    def include_keys(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Include field list
+        """
+        return pulumi.get(self, "include_keys")
 
 
 @pulumi.output_type

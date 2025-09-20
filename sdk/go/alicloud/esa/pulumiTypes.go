@@ -2573,6 +2573,187 @@ func (o SiteDeliveryTaskSlsDeliveryPtrOutput) SlsRegion() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+type TransportLayerApplicationRule struct {
+	// Client IP pass-through protocol, supporting:
+	ClientIpPassThroughMode string `pulumi:"clientIpPassThroughMode"`
+	// Comment information for the rule (optional).
+	Comment *string `pulumi:"comment"`
+	// Edge port. Supports:
+	// - A single port, such as 80.
+	// - Port range, such as 81-85, representing ports 81, 82, 83, 84, and 85.
+	// - Combination of ports and port ranges, separated by commas, such as 80,81-85,90, representing ports 80, 81, 82, 83, 84, 85, and 90.
+	//
+	// Edge ports within a single rule and between multiple rules must not overlap.
+	EdgePort string `pulumi:"edgePort"`
+	// Forwarding rule protocol, with values:
+	// - `TCP`: TCP protocol.
+	// - `UDP`: UDP protocol.
+	Protocol string `pulumi:"protocol"`
+	// Rule ID
+	RuleId *int `pulumi:"ruleId"`
+	// Specific value of the origin, which needs to match the origin type.
+	Source string `pulumi:"source"`
+	// Source Port
+	SourcePort string `pulumi:"sourcePort"`
+	// Origin type, supporting:
+	SourceType string `pulumi:"sourceType"`
+}
+
+// TransportLayerApplicationRuleInput is an input type that accepts TransportLayerApplicationRuleArgs and TransportLayerApplicationRuleOutput values.
+// You can construct a concrete instance of `TransportLayerApplicationRuleInput` via:
+//
+//	TransportLayerApplicationRuleArgs{...}
+type TransportLayerApplicationRuleInput interface {
+	pulumi.Input
+
+	ToTransportLayerApplicationRuleOutput() TransportLayerApplicationRuleOutput
+	ToTransportLayerApplicationRuleOutputWithContext(context.Context) TransportLayerApplicationRuleOutput
+}
+
+type TransportLayerApplicationRuleArgs struct {
+	// Client IP pass-through protocol, supporting:
+	ClientIpPassThroughMode pulumi.StringInput `pulumi:"clientIpPassThroughMode"`
+	// Comment information for the rule (optional).
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// Edge port. Supports:
+	// - A single port, such as 80.
+	// - Port range, such as 81-85, representing ports 81, 82, 83, 84, and 85.
+	// - Combination of ports and port ranges, separated by commas, such as 80,81-85,90, representing ports 80, 81, 82, 83, 84, 85, and 90.
+	//
+	// Edge ports within a single rule and between multiple rules must not overlap.
+	EdgePort pulumi.StringInput `pulumi:"edgePort"`
+	// Forwarding rule protocol, with values:
+	// - `TCP`: TCP protocol.
+	// - `UDP`: UDP protocol.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// Rule ID
+	RuleId pulumi.IntPtrInput `pulumi:"ruleId"`
+	// Specific value of the origin, which needs to match the origin type.
+	Source pulumi.StringInput `pulumi:"source"`
+	// Source Port
+	SourcePort pulumi.StringInput `pulumi:"sourcePort"`
+	// Origin type, supporting:
+	SourceType pulumi.StringInput `pulumi:"sourceType"`
+}
+
+func (TransportLayerApplicationRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransportLayerApplicationRule)(nil)).Elem()
+}
+
+func (i TransportLayerApplicationRuleArgs) ToTransportLayerApplicationRuleOutput() TransportLayerApplicationRuleOutput {
+	return i.ToTransportLayerApplicationRuleOutputWithContext(context.Background())
+}
+
+func (i TransportLayerApplicationRuleArgs) ToTransportLayerApplicationRuleOutputWithContext(ctx context.Context) TransportLayerApplicationRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransportLayerApplicationRuleOutput)
+}
+
+// TransportLayerApplicationRuleArrayInput is an input type that accepts TransportLayerApplicationRuleArray and TransportLayerApplicationRuleArrayOutput values.
+// You can construct a concrete instance of `TransportLayerApplicationRuleArrayInput` via:
+//
+//	TransportLayerApplicationRuleArray{ TransportLayerApplicationRuleArgs{...} }
+type TransportLayerApplicationRuleArrayInput interface {
+	pulumi.Input
+
+	ToTransportLayerApplicationRuleArrayOutput() TransportLayerApplicationRuleArrayOutput
+	ToTransportLayerApplicationRuleArrayOutputWithContext(context.Context) TransportLayerApplicationRuleArrayOutput
+}
+
+type TransportLayerApplicationRuleArray []TransportLayerApplicationRuleInput
+
+func (TransportLayerApplicationRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransportLayerApplicationRule)(nil)).Elem()
+}
+
+func (i TransportLayerApplicationRuleArray) ToTransportLayerApplicationRuleArrayOutput() TransportLayerApplicationRuleArrayOutput {
+	return i.ToTransportLayerApplicationRuleArrayOutputWithContext(context.Background())
+}
+
+func (i TransportLayerApplicationRuleArray) ToTransportLayerApplicationRuleArrayOutputWithContext(ctx context.Context) TransportLayerApplicationRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransportLayerApplicationRuleArrayOutput)
+}
+
+type TransportLayerApplicationRuleOutput struct{ *pulumi.OutputState }
+
+func (TransportLayerApplicationRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransportLayerApplicationRule)(nil)).Elem()
+}
+
+func (o TransportLayerApplicationRuleOutput) ToTransportLayerApplicationRuleOutput() TransportLayerApplicationRuleOutput {
+	return o
+}
+
+func (o TransportLayerApplicationRuleOutput) ToTransportLayerApplicationRuleOutputWithContext(ctx context.Context) TransportLayerApplicationRuleOutput {
+	return o
+}
+
+// Client IP pass-through protocol, supporting:
+func (o TransportLayerApplicationRuleOutput) ClientIpPassThroughMode() pulumi.StringOutput {
+	return o.ApplyT(func(v TransportLayerApplicationRule) string { return v.ClientIpPassThroughMode }).(pulumi.StringOutput)
+}
+
+// Comment information for the rule (optional).
+func (o TransportLayerApplicationRuleOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransportLayerApplicationRule) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// Edge port. Supports:
+// - A single port, such as 80.
+// - Port range, such as 81-85, representing ports 81, 82, 83, 84, and 85.
+// - Combination of ports and port ranges, separated by commas, such as 80,81-85,90, representing ports 80, 81, 82, 83, 84, 85, and 90.
+//
+// Edge ports within a single rule and between multiple rules must not overlap.
+func (o TransportLayerApplicationRuleOutput) EdgePort() pulumi.StringOutput {
+	return o.ApplyT(func(v TransportLayerApplicationRule) string { return v.EdgePort }).(pulumi.StringOutput)
+}
+
+// Forwarding rule protocol, with values:
+// - `TCP`: TCP protocol.
+// - `UDP`: UDP protocol.
+func (o TransportLayerApplicationRuleOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v TransportLayerApplicationRule) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Rule ID
+func (o TransportLayerApplicationRuleOutput) RuleId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TransportLayerApplicationRule) *int { return v.RuleId }).(pulumi.IntPtrOutput)
+}
+
+// Specific value of the origin, which needs to match the origin type.
+func (o TransportLayerApplicationRuleOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v TransportLayerApplicationRule) string { return v.Source }).(pulumi.StringOutput)
+}
+
+// Source Port
+func (o TransportLayerApplicationRuleOutput) SourcePort() pulumi.StringOutput {
+	return o.ApplyT(func(v TransportLayerApplicationRule) string { return v.SourcePort }).(pulumi.StringOutput)
+}
+
+// Origin type, supporting:
+func (o TransportLayerApplicationRuleOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v TransportLayerApplicationRule) string { return v.SourceType }).(pulumi.StringOutput)
+}
+
+type TransportLayerApplicationRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (TransportLayerApplicationRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransportLayerApplicationRule)(nil)).Elem()
+}
+
+func (o TransportLayerApplicationRuleArrayOutput) ToTransportLayerApplicationRuleArrayOutput() TransportLayerApplicationRuleArrayOutput {
+	return o
+}
+
+func (o TransportLayerApplicationRuleArrayOutput) ToTransportLayerApplicationRuleArrayOutputWithContext(ctx context.Context) TransportLayerApplicationRuleArrayOutput {
+	return o
+}
+
+func (o TransportLayerApplicationRuleArrayOutput) Index(i pulumi.IntInput) TransportLayerApplicationRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TransportLayerApplicationRule {
+		return vs[0].([]TransportLayerApplicationRule)[vs[1].(int)]
+	}).(TransportLayerApplicationRuleOutput)
+}
+
 type WaitingRoomHostNameAndPath struct {
 	// The domain name.
 	Domain string `pulumi:"domain"`
@@ -2900,6 +3081,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SiteDeliveryTaskS3DeliveryPtrInput)(nil)).Elem(), SiteDeliveryTaskS3DeliveryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SiteDeliveryTaskSlsDeliveryInput)(nil)).Elem(), SiteDeliveryTaskSlsDeliveryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SiteDeliveryTaskSlsDeliveryPtrInput)(nil)).Elem(), SiteDeliveryTaskSlsDeliveryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransportLayerApplicationRuleInput)(nil)).Elem(), TransportLayerApplicationRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransportLayerApplicationRuleArrayInput)(nil)).Elem(), TransportLayerApplicationRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WaitingRoomHostNameAndPathInput)(nil)).Elem(), WaitingRoomHostNameAndPathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WaitingRoomHostNameAndPathArrayInput)(nil)).Elem(), WaitingRoomHostNameAndPathArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSitesSiteInput)(nil)).Elem(), GetSitesSiteArgs{})
@@ -2928,6 +3111,8 @@ func init() {
 	pulumi.RegisterOutputType(SiteDeliveryTaskS3DeliveryPtrOutput{})
 	pulumi.RegisterOutputType(SiteDeliveryTaskSlsDeliveryOutput{})
 	pulumi.RegisterOutputType(SiteDeliveryTaskSlsDeliveryPtrOutput{})
+	pulumi.RegisterOutputType(TransportLayerApplicationRuleOutput{})
+	pulumi.RegisterOutputType(TransportLayerApplicationRuleArrayOutput{})
 	pulumi.RegisterOutputType(WaitingRoomHostNameAndPathOutput{})
 	pulumi.RegisterOutputType(WaitingRoomHostNameAndPathArrayOutput{})
 	pulumi.RegisterOutputType(GetSitesSiteOutput{})

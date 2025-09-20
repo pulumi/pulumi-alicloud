@@ -5,12 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Resource Manager handshake resource. You can invite accounts to join a resource directory for unified management.
- * For information about Resource Manager handshake and how to use it, see [What is Resource Manager handshake](https://www.alibabacloud.com/help/en/doc-detail/135287.htm).
+ * Provides a Resource Manager Handshake resource.
  *
- * > **NOTE:** Available in v1.82.0+.
+ * For information about Resource Manager Handshake and how to use it, see [What is Handshake](https://www.alibabacloud.com/help/en/doc-detail/135287.htm).
+ *
+ * > **NOTE:** Available since v1.82.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,10 +29,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Resource Manager handshake can be imported using the id, e.g.
+ * Resource Manager Handshake can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:resourcemanager/handshake:Handshake example h-QmdexeFm1kE*****
+ * $ pulumi import alicloud:resourcemanager/handshake:Handshake example <id>
  * ```
  */
 export class Handshake extends pulumi.CustomResource {
@@ -61,39 +64,47 @@ export class Handshake extends pulumi.CustomResource {
     }
 
     /**
-     * The expiration time of the invitation.
+     * The time when the invitation was created. The time is displayed in UTC.
+     */
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * The time when the invitation expires. The time is displayed in UTC.
      */
     declare public /*out*/ readonly expireTime: pulumi.Output<string>;
     /**
-     * Resource account master account ID.
+     * The ID of the management account of the resource directory.
      */
     declare public /*out*/ readonly masterAccountId: pulumi.Output<string>;
     /**
-     * The name of the main account of the resource directory.
+     * The name of the management account of the resource directory.
      */
     declare public /*out*/ readonly masterAccountName: pulumi.Output<string>;
     /**
-     * The modification time of the invitation.
+     * The time when the invitation was modified. The time is displayed in UTC.
      */
     declare public /*out*/ readonly modifyTime: pulumi.Output<string>;
     /**
-     * Remarks. The maximum length is 1024 characters.
+     * The description of the invitation.
+     * The description can be up to 1,024 characters in length.
      */
     declare public readonly note: pulumi.Output<string | undefined>;
     /**
-     * Resource directory ID.
+     * The ID of the resource directory.
      */
     declare public /*out*/ readonly resourceDirectoryId: pulumi.Output<string>;
     /**
-     * Invitation status. Valid values: `Pending` waiting for confirmation, `Accepted`, `Cancelled`, `Declined`, `Expired`.
+     * The status of the invitation.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * Invited account ID or login email.
+     * The ID or logon email address of the account that you want to invite.
      */
     declare public readonly targetEntity: pulumi.Output<string>;
     /**
-     * Type of account being invited. Valid values: `Account`, `Email`.
+     * The type of the invited account. Valid values:
+     *
+     * - Account: indicates the ID of the account.
+     * - Email: indicates the logon email address of the account.
      */
     declare public readonly targetType: pulumi.Output<string>;
 
@@ -110,6 +121,7 @@ export class Handshake extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HandshakeState | undefined;
+            resourceInputs["createTime"] = state?.createTime;
             resourceInputs["expireTime"] = state?.expireTime;
             resourceInputs["masterAccountId"] = state?.masterAccountId;
             resourceInputs["masterAccountName"] = state?.masterAccountName;
@@ -130,6 +142,7 @@ export class Handshake extends pulumi.CustomResource {
             resourceInputs["note"] = args?.note;
             resourceInputs["targetEntity"] = args?.targetEntity;
             resourceInputs["targetType"] = args?.targetType;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["expireTime"] = undefined /*out*/;
             resourceInputs["masterAccountId"] = undefined /*out*/;
             resourceInputs["masterAccountName"] = undefined /*out*/;
@@ -147,39 +160,47 @@ export class Handshake extends pulumi.CustomResource {
  */
 export interface HandshakeState {
     /**
-     * The expiration time of the invitation.
+     * The time when the invitation was created. The time is displayed in UTC.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * The time when the invitation expires. The time is displayed in UTC.
      */
     expireTime?: pulumi.Input<string>;
     /**
-     * Resource account master account ID.
+     * The ID of the management account of the resource directory.
      */
     masterAccountId?: pulumi.Input<string>;
     /**
-     * The name of the main account of the resource directory.
+     * The name of the management account of the resource directory.
      */
     masterAccountName?: pulumi.Input<string>;
     /**
-     * The modification time of the invitation.
+     * The time when the invitation was modified. The time is displayed in UTC.
      */
     modifyTime?: pulumi.Input<string>;
     /**
-     * Remarks. The maximum length is 1024 characters.
+     * The description of the invitation.
+     * The description can be up to 1,024 characters in length.
      */
     note?: pulumi.Input<string>;
     /**
-     * Resource directory ID.
+     * The ID of the resource directory.
      */
     resourceDirectoryId?: pulumi.Input<string>;
     /**
-     * Invitation status. Valid values: `Pending` waiting for confirmation, `Accepted`, `Cancelled`, `Declined`, `Expired`.
+     * The status of the invitation.
      */
     status?: pulumi.Input<string>;
     /**
-     * Invited account ID or login email.
+     * The ID or logon email address of the account that you want to invite.
      */
     targetEntity?: pulumi.Input<string>;
     /**
-     * Type of account being invited. Valid values: `Account`, `Email`.
+     * The type of the invited account. Valid values:
+     *
+     * - Account: indicates the ID of the account.
+     * - Email: indicates the logon email address of the account.
      */
     targetType?: pulumi.Input<string>;
 }
@@ -189,15 +210,19 @@ export interface HandshakeState {
  */
 export interface HandshakeArgs {
     /**
-     * Remarks. The maximum length is 1024 characters.
+     * The description of the invitation.
+     * The description can be up to 1,024 characters in length.
      */
     note?: pulumi.Input<string>;
     /**
-     * Invited account ID or login email.
+     * The ID or logon email address of the account that you want to invite.
      */
     targetEntity: pulumi.Input<string>;
     /**
-     * Type of account being invited. Valid values: `Account`, `Email`.
+     * The type of the invited account. Valid values:
+     *
+     * - Account: indicates the ID of the account.
+     * - Email: indicates the logon email address of the account.
      */
     targetType: pulumi.Input<string>;
 }

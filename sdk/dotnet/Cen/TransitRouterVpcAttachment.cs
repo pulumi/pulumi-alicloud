@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cen
 {
     /// <summary>
-    /// Provides a CEN Transit Router VPC Attachment resource that associate the VPC with the CEN instance. [What is Cen Transit Router VPC Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervpcattachment)
+    /// Provides a Cen Transit Router Vpc Attachment resource.
+    /// 
+    /// For information about Cen Transit Router Vpc Attachment and how to use it, see [What is Transit Router Vpc Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervpcattachment)
     /// 
     /// &gt; **NOTE:** Available since v1.126.0.
     /// 
@@ -95,7 +97,7 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// ## Import
     /// 
-    /// CEN Transit Router Vpc Attachment can be imported using the id, e.g.
+    /// Cen Transit Router Vpc Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment example &lt;id&gt;
@@ -142,6 +144,12 @@ namespace Pulumi.AliCloud.Cen
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v1.260.0).The ID of the region where the VPC is deployed.
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
+
+        /// <summary>
         /// The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
         /// </summary>
         [Output("resourceType")]
@@ -180,13 +188,13 @@ namespace Pulumi.AliCloud.Cen
         public Output<string?> TransitRouterAttachmentDescription { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Transit Router Attachment.
+        /// The ID of the VPC connection.
         /// </summary>
         [Output("transitRouterAttachmentId")]
         public Output<string> TransitRouterAttachmentId { get; private set; } = null!;
 
         /// <summary>
-        /// . Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
+        /// Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
         /// </summary>
         [Output("transitRouterAttachmentName")]
         public Output<string> TransitRouterAttachmentName { get; private set; } = null!;
@@ -221,7 +229,7 @@ namespace Pulumi.AliCloud.Cen
         /// VpcOwnerId
         /// </summary>
         [Output("vpcOwnerId")]
-        public Output<int> VpcOwnerId { get; private set; } = null!;
+        public Output<string> VpcOwnerId { get; private set; } = null!;
 
         /// <summary>
         /// ZoneMappingss See `zone_mappings` below.
@@ -347,7 +355,7 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? TransitRouterAttachmentDescription { get; set; }
 
         /// <summary>
-        /// . Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
+        /// Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
         /// </summary>
         [Input("transitRouterAttachmentName")]
         public Input<string>? TransitRouterAttachmentName { get; set; }
@@ -388,7 +396,7 @@ namespace Pulumi.AliCloud.Cen
         /// VpcOwnerId
         /// </summary>
         [Input("vpcOwnerId")]
-        public Input<int>? VpcOwnerId { get; set; }
+        public Input<string>? VpcOwnerId { get; set; }
 
         [Input("zoneMappings", required: true)]
         private InputList<Inputs.TransitRouterVpcAttachmentZoneMappingArgs>? _zoneMappings;
@@ -450,6 +458,12 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
+        /// (Available since v1.260.0).The ID of the region where the VPC is deployed.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
+
+        /// <summary>
         /// The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
         /// </summary>
         [Input("resourceType")]
@@ -494,13 +508,13 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? TransitRouterAttachmentDescription { get; set; }
 
         /// <summary>
-        /// The ID of the Transit Router Attachment.
+        /// The ID of the VPC connection.
         /// </summary>
         [Input("transitRouterAttachmentId")]
         public Input<string>? TransitRouterAttachmentId { get; set; }
 
         /// <summary>
-        /// . Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
+        /// Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
         /// </summary>
         [Input("transitRouterAttachmentName")]
         public Input<string>? TransitRouterAttachmentName { get; set; }
@@ -541,7 +555,7 @@ namespace Pulumi.AliCloud.Cen
         /// VpcOwnerId
         /// </summary>
         [Input("vpcOwnerId")]
-        public Input<int>? VpcOwnerId { get; set; }
+        public Input<string>? VpcOwnerId { get; set; }
 
         [Input("zoneMappings")]
         private InputList<Inputs.TransitRouterVpcAttachmentZoneMappingGetArgs>? _zoneMappings;

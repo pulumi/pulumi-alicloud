@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AirflowArgs, AirflowState } from "./airflow";
+export type Airflow = import("./airflow").Airflow;
+export const Airflow: typeof import("./airflow").Airflow = null as any;
+utilities.lazyLoad(exports, ["Airflow"], () => require("./airflow"));
+
 export { EnterpriseAuthorityTemplateArgs, EnterpriseAuthorityTemplateState } from "./enterpriseAuthorityTemplate";
 export type EnterpriseAuthorityTemplate = import("./enterpriseAuthorityTemplate").EnterpriseAuthorityTemplate;
 export const EnterpriseAuthorityTemplate: typeof import("./enterpriseAuthorityTemplate").EnterpriseAuthorityTemplate = null as any;
@@ -80,6 +85,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:dms/airflow:Airflow":
+                return new Airflow(name, <any>undefined, { urn })
             case "alicloud:dms/enterpriseAuthorityTemplate:EnterpriseAuthorityTemplate":
                 return new EnterpriseAuthorityTemplate(name, <any>undefined, { urn })
             case "alicloud:dms/enterpriseInstance:EnterpriseInstance":
@@ -99,6 +106,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "dms/airflow", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dms/enterpriseAuthorityTemplate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dms/enterpriseInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "dms/enterpriseLogicDatabase", _module)

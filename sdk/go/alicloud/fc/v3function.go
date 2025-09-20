@@ -198,9 +198,11 @@ type V3Function struct {
 	NasConfig V3FunctionNasConfigOutput `pulumi:"nasConfig"`
 	// OSS mount configuration See `ossMountConfig` below.
 	OssMountConfig V3FunctionOssMountConfigOutput `pulumi:"ossMountConfig"`
+	// Resource Group ID.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
 	Role pulumi.StringPtrOutput `pulumi:"role"`
-	// Function runtime type
+	// Function runtime type.
 	Runtime pulumi.StringOutput `pulumi:"runtime"`
 	// The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
 	SessionAffinity pulumi.StringPtrOutput `pulumi:"sessionAffinity"`
@@ -316,9 +318,11 @@ type v3functionState struct {
 	NasConfig *V3FunctionNasConfig `pulumi:"nasConfig"`
 	// OSS mount configuration See `ossMountConfig` below.
 	OssMountConfig *V3FunctionOssMountConfig `pulumi:"ossMountConfig"`
+	// Resource Group ID.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
 	Role *string `pulumi:"role"`
-	// Function runtime type
+	// Function runtime type.
 	Runtime *string `pulumi:"runtime"`
 	// The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
 	SessionAffinity *string `pulumi:"sessionAffinity"`
@@ -399,9 +403,11 @@ type V3FunctionState struct {
 	NasConfig V3FunctionNasConfigPtrInput
 	// OSS mount configuration See `ossMountConfig` below.
 	OssMountConfig V3FunctionOssMountConfigPtrInput
+	// Resource Group ID.
+	ResourceGroupId pulumi.StringPtrInput
 	// The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
 	Role pulumi.StringPtrInput
-	// Function runtime type
+	// Function runtime type.
 	Runtime pulumi.StringPtrInput
 	// The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
 	SessionAffinity pulumi.StringPtrInput
@@ -470,9 +476,11 @@ type v3functionArgs struct {
 	NasConfig *V3FunctionNasConfig `pulumi:"nasConfig"`
 	// OSS mount configuration See `ossMountConfig` below.
 	OssMountConfig *V3FunctionOssMountConfig `pulumi:"ossMountConfig"`
+	// Resource Group ID.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
 	Role *string `pulumi:"role"`
-	// Function runtime type
+	// Function runtime type.
 	Runtime string `pulumi:"runtime"`
 	// The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
 	SessionAffinity *string `pulumi:"sessionAffinity"`
@@ -530,9 +538,11 @@ type V3FunctionArgs struct {
 	NasConfig V3FunctionNasConfigPtrInput
 	// OSS mount configuration See `ossMountConfig` below.
 	OssMountConfig V3FunctionOssMountConfigPtrInput
+	// Resource Group ID.
+	ResourceGroupId pulumi.StringPtrInput
 	// The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
 	Role pulumi.StringPtrInput
-	// Function runtime type
+	// Function runtime type.
 	Runtime pulumi.StringInput
 	// The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
 	SessionAffinity pulumi.StringPtrInput
@@ -778,12 +788,17 @@ func (o V3FunctionOutput) OssMountConfig() V3FunctionOssMountConfigOutput {
 	return o.ApplyT(func(v *V3Function) V3FunctionOssMountConfigOutput { return v.OssMountConfig }).(V3FunctionOssMountConfigOutput)
 }
 
+// Resource Group ID.
+func (o V3FunctionOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *V3Function) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
 // The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
 func (o V3FunctionOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V3Function) pulumi.StringPtrOutput { return v.Role }).(pulumi.StringPtrOutput)
 }
 
-// Function runtime type
+// Function runtime type.
 func (o V3FunctionOutput) Runtime() pulumi.StringOutput {
 	return o.ApplyT(func(v *V3Function) pulumi.StringOutput { return v.Runtime }).(pulumi.StringOutput)
 }

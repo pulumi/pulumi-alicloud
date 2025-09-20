@@ -23,6 +23,7 @@ __all__ = [
     'DirectorySamlIdentityProviderConfiguration',
     'DirectorySamlServiceProvider',
     'DirectoryUserProvisioningConfiguration',
+    'UserProvisioningUserProvisioningStatistic',
     'GetAccessAssignmentsAssignmentResult',
     'GetAccessConfigurationsConfigurationResult',
     'GetAccessConfigurationsConfigurationPermissionPolicyResult',
@@ -689,6 +690,56 @@ class DirectoryUserProvisioningConfiguration(dict):
         The duration of the Session after the user logs in.
         """
         return pulumi.get(self, "session_duration")
+
+
+@pulumi.output_type
+class UserProvisioningUserProvisioningStatistic(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failedEventCount":
+            suggest = "failed_event_count"
+        elif key == "gmtLatestSync":
+            suggest = "gmt_latest_sync"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UserProvisioningUserProvisioningStatistic. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UserProvisioningUserProvisioningStatistic.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UserProvisioningUserProvisioningStatistic.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 failed_event_count: Optional[_builtins.int] = None,
+                 gmt_latest_sync: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int failed_event_count: Number of failed events
+        :param _builtins.str gmt_latest_sync: Last Provisioning time
+        """
+        if failed_event_count is not None:
+            pulumi.set(__self__, "failed_event_count", failed_event_count)
+        if gmt_latest_sync is not None:
+            pulumi.set(__self__, "gmt_latest_sync", gmt_latest_sync)
+
+    @_builtins.property
+    @pulumi.getter(name="failedEventCount")
+    def failed_event_count(self) -> Optional[_builtins.int]:
+        """
+        Number of failed events
+        """
+        return pulumi.get(self, "failed_event_count")
+
+    @_builtins.property
+    @pulumi.getter(name="gmtLatestSync")
+    def gmt_latest_sync(self) -> Optional[_builtins.str]:
+        """
+        Last Provisioning time
+        """
+        return pulumi.get(self, "gmt_latest_sync")
 
 
 @pulumi.output_type

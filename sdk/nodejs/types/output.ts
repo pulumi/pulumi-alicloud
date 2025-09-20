@@ -597,10 +597,15 @@ export namespace actiontrail {
     }
 
     export interface GetSaslUsersUser {
+        id: string;
         /**
          * The password of the user.
          */
         password: string;
+        /**
+         * (Available since v1.260.0) The type of the user.
+         */
+        type: string;
         /**
          * The username of the user.
          */
@@ -11635,6 +11640,17 @@ export namespace cloudsso {
          * The Effective Time of MFA Device.
          */
         effectiveTime: string;
+    }
+
+    export interface UserProvisioningUserProvisioningStatistic {
+        /**
+         * Number of failed events
+         */
+        failedEventCount: number;
+        /**
+         * Last Provisioning time
+         */
+        gmtLatestSync: string;
     }
 
 }
@@ -32025,6 +32041,48 @@ export namespace esa {
         slsRegion?: string;
     }
 
+    export interface TransportLayerApplicationRule {
+        /**
+         * Client IP pass-through protocol, supporting:
+         */
+        clientIpPassThroughMode: string;
+        /**
+         * Comment information for the rule (optional).
+         */
+        comment?: string;
+        /**
+         * Edge port. Supports:
+         * - A single port, such as 80.
+         * - Port range, such as 81-85, representing ports 81, 82, 83, 84, and 85.
+         * - Combination of ports and port ranges, separated by commas, such as 80,81-85,90, representing ports 80, 81, 82, 83, 84, 85, and 90.
+         *
+         * Edge ports within a single rule and between multiple rules must not overlap.
+         */
+        edgePort: string;
+        /**
+         * Forwarding rule protocol, with values:
+         * - `TCP`: TCP protocol.
+         * - `UDP`: UDP protocol.
+         */
+        protocol: string;
+        /**
+         * Rule ID
+         */
+        ruleId: number;
+        /**
+         * Specific value of the origin, which needs to match the origin type.
+         */
+        source: string;
+        /**
+         * Source Port
+         */
+        sourcePort: string;
+        /**
+         * Origin type, supporting:
+         */
+        sourceType: string;
+    }
+
     export interface WaitingRoomHostNameAndPath {
         /**
          * The domain name.
@@ -35435,6 +35493,7 @@ export namespace fc {
     }
 
     export interface V3FunctionInstanceLifecycleConfigInitializer {
+        commands?: string[];
         /**
          * Function Handler: the call entry for the function compute system to run your function.
          */
@@ -40404,6 +40463,95 @@ export namespace lindorm {
          * The zone ID of the instance.
          */
         zoneId: string;
+    }
+
+    export interface InstanceV2EngineList {
+        /**
+         * Connect Address List
+         */
+        connectAddressLists: outputs.lindorm.InstanceV2EngineListConnectAddressList[];
+        /**
+         * Engine
+         */
+        engineType: string;
+        /**
+         * Whether it is the latest version
+         */
+        isLastVersion: boolean;
+        /**
+         * Latest Version
+         */
+        latestVersion: string;
+        /**
+         * Node Group List See `nodeGroup` below.
+         */
+        nodeGroups?: outputs.lindorm.InstanceV2EngineListNodeGroup[];
+        /**
+         * Engine Version
+         */
+        version: string;
+    }
+
+    export interface InstanceV2EngineListConnectAddressList {
+        /**
+         * Connect Address
+         */
+        address: string;
+        /**
+         * Connect Port
+         */
+        port: string;
+        /**
+         * Connect Type:
+         */
+        type: string;
+    }
+
+    export interface InstanceV2EngineListNodeGroup {
+        /**
+         * Node Type
+         */
+        category: string;
+        /**
+         * Number of CPU cores
+         */
+        cpuCoreCount: number;
+        /**
+         * Whether to mount  local cloud disks
+         */
+        enableAttachLocalDisk: boolean;
+        /**
+         * Node memory size
+         */
+        memorySizeGiB: number;
+        /**
+         * Number of nodes
+         */
+        nodeCount: number;
+        /**
+         * Local cloud disk storage capacity
+         */
+        nodeDiskSize?: number;
+        /**
+         * Node Disk Type
+         */
+        nodeDiskType?: string;
+        /**
+         * Node Specifications
+         */
+        nodeSpec: string;
+        /**
+         * Resource group name
+         */
+        resourceGroupName: string;
+        /**
+         * Spec Id
+         */
+        specId: string;
+        /**
+         * Node Status
+         */
+        status: string;
     }
 
 }
@@ -56058,6 +56206,29 @@ export namespace sls {
          * The ID of the resource supplied above.
          */
         id: string;
+    }
+
+    export interface IndexLine {
+        /**
+         * Is case sensitive
+         */
+        caseSensitive: boolean;
+        /**
+         * Does it include Chinese
+         */
+        chn: boolean;
+        /**
+         * List of excluded fields
+         */
+        excludeKeys?: string[];
+        /**
+         * Include field list
+         */
+        includeKeys?: string[];
+        /**
+         * Delimiter
+         */
+        tokens: string[];
     }
 
     export interface LogtailConfigOutputDetail {

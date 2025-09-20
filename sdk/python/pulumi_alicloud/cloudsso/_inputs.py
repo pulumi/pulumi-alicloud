@@ -29,6 +29,8 @@ __all__ = [
     'DirectorySamlServiceProviderArgsDict',
     'DirectoryUserProvisioningConfigurationArgs',
     'DirectoryUserProvisioningConfigurationArgsDict',
+    'UserProvisioningUserProvisioningStatisticArgs',
+    'UserProvisioningUserProvisioningStatisticArgsDict',
 ]
 
 MYPY = False
@@ -833,5 +835,57 @@ class DirectoryUserProvisioningConfigurationArgs:
     @session_duration.setter
     def session_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "session_duration", value)
+
+
+if not MYPY:
+    class UserProvisioningUserProvisioningStatisticArgsDict(TypedDict):
+        failed_event_count: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of failed events
+        """
+        gmt_latest_sync: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Last Provisioning time
+        """
+elif False:
+    UserProvisioningUserProvisioningStatisticArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class UserProvisioningUserProvisioningStatisticArgs:
+    def __init__(__self__, *,
+                 failed_event_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 gmt_latest_sync: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] failed_event_count: Number of failed events
+        :param pulumi.Input[_builtins.str] gmt_latest_sync: Last Provisioning time
+        """
+        if failed_event_count is not None:
+            pulumi.set(__self__, "failed_event_count", failed_event_count)
+        if gmt_latest_sync is not None:
+            pulumi.set(__self__, "gmt_latest_sync", gmt_latest_sync)
+
+    @_builtins.property
+    @pulumi.getter(name="failedEventCount")
+    def failed_event_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of failed events
+        """
+        return pulumi.get(self, "failed_event_count")
+
+    @failed_event_count.setter
+    def failed_event_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "failed_event_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gmtLatestSync")
+    def gmt_latest_sync(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Last Provisioning time
+        """
+        return pulumi.get(self, "gmt_latest_sync")
+
+    @gmt_latest_sync.setter
+    def gmt_latest_sync(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "gmt_latest_sync", value)
 
 

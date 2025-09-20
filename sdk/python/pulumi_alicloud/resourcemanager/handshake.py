@@ -24,9 +24,13 @@ class HandshakeArgs:
                  note: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Handshake resource.
-        :param pulumi.Input[_builtins.str] target_entity: Invited account ID or login email.
-        :param pulumi.Input[_builtins.str] target_type: Type of account being invited. Valid values: `Account`, `Email`.
-        :param pulumi.Input[_builtins.str] note: Remarks. The maximum length is 1024 characters.
+        :param pulumi.Input[_builtins.str] target_entity: The ID or logon email address of the account that you want to invite.
+        :param pulumi.Input[_builtins.str] target_type: The type of the invited account. Valid values:
+               
+               - Account: indicates the ID of the account.
+               - Email: indicates the logon email address of the account.
+        :param pulumi.Input[_builtins.str] note: The description of the invitation.
+               The description can be up to 1,024 characters in length.
         """
         pulumi.set(__self__, "target_entity", target_entity)
         pulumi.set(__self__, "target_type", target_type)
@@ -37,7 +41,7 @@ class HandshakeArgs:
     @pulumi.getter(name="targetEntity")
     def target_entity(self) -> pulumi.Input[_builtins.str]:
         """
-        Invited account ID or login email.
+        The ID or logon email address of the account that you want to invite.
         """
         return pulumi.get(self, "target_entity")
 
@@ -49,7 +53,10 @@ class HandshakeArgs:
     @pulumi.getter(name="targetType")
     def target_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Type of account being invited. Valid values: `Account`, `Email`.
+        The type of the invited account. Valid values:
+
+        - Account: indicates the ID of the account.
+        - Email: indicates the logon email address of the account.
         """
         return pulumi.get(self, "target_type")
 
@@ -61,7 +68,8 @@ class HandshakeArgs:
     @pulumi.getter
     def note(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Remarks. The maximum length is 1024 characters.
+        The description of the invitation.
+        The description can be up to 1,024 characters in length.
         """
         return pulumi.get(self, "note")
 
@@ -73,6 +81,7 @@ class HandshakeArgs:
 @pulumi.input_type
 class _HandshakeState:
     def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  expire_time: Optional[pulumi.Input[_builtins.str]] = None,
                  master_account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  master_account_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -84,16 +93,23 @@ class _HandshakeState:
                  target_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Handshake resources.
-        :param pulumi.Input[_builtins.str] expire_time: The expiration time of the invitation.
-        :param pulumi.Input[_builtins.str] master_account_id: Resource account master account ID.
-        :param pulumi.Input[_builtins.str] master_account_name: The name of the main account of the resource directory.
-        :param pulumi.Input[_builtins.str] modify_time: The modification time of the invitation.
-        :param pulumi.Input[_builtins.str] note: Remarks. The maximum length is 1024 characters.
-        :param pulumi.Input[_builtins.str] resource_directory_id: Resource directory ID.
-        :param pulumi.Input[_builtins.str] status: Invitation status. Valid values: `Pending` waiting for confirmation, `Accepted`, `Cancelled`, `Declined`, `Expired`.
-        :param pulumi.Input[_builtins.str] target_entity: Invited account ID or login email.
-        :param pulumi.Input[_builtins.str] target_type: Type of account being invited. Valid values: `Account`, `Email`.
+        :param pulumi.Input[_builtins.str] create_time: The time when the invitation was created. The time is displayed in UTC.
+        :param pulumi.Input[_builtins.str] expire_time: The time when the invitation expires. The time is displayed in UTC.
+        :param pulumi.Input[_builtins.str] master_account_id: The ID of the management account of the resource directory.
+        :param pulumi.Input[_builtins.str] master_account_name: The name of the management account of the resource directory.
+        :param pulumi.Input[_builtins.str] modify_time: The time when the invitation was modified. The time is displayed in UTC.
+        :param pulumi.Input[_builtins.str] note: The description of the invitation.
+               The description can be up to 1,024 characters in length.
+        :param pulumi.Input[_builtins.str] resource_directory_id: The ID of the resource directory.
+        :param pulumi.Input[_builtins.str] status: The status of the invitation.
+        :param pulumi.Input[_builtins.str] target_entity: The ID or logon email address of the account that you want to invite.
+        :param pulumi.Input[_builtins.str] target_type: The type of the invited account. Valid values:
+               
+               - Account: indicates the ID of the account.
+               - Email: indicates the logon email address of the account.
         """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if expire_time is not None:
             pulumi.set(__self__, "expire_time", expire_time)
         if master_account_id is not None:
@@ -114,10 +130,22 @@ class _HandshakeState:
             pulumi.set(__self__, "target_type", target_type)
 
     @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The time when the invitation was created. The time is displayed in UTC.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create_time", value)
+
+    @_builtins.property
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The expiration time of the invitation.
+        The time when the invitation expires. The time is displayed in UTC.
         """
         return pulumi.get(self, "expire_time")
 
@@ -129,7 +157,7 @@ class _HandshakeState:
     @pulumi.getter(name="masterAccountId")
     def master_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Resource account master account ID.
+        The ID of the management account of the resource directory.
         """
         return pulumi.get(self, "master_account_id")
 
@@ -141,7 +169,7 @@ class _HandshakeState:
     @pulumi.getter(name="masterAccountName")
     def master_account_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the main account of the resource directory.
+        The name of the management account of the resource directory.
         """
         return pulumi.get(self, "master_account_name")
 
@@ -153,7 +181,7 @@ class _HandshakeState:
     @pulumi.getter(name="modifyTime")
     def modify_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The modification time of the invitation.
+        The time when the invitation was modified. The time is displayed in UTC.
         """
         return pulumi.get(self, "modify_time")
 
@@ -165,7 +193,8 @@ class _HandshakeState:
     @pulumi.getter
     def note(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Remarks. The maximum length is 1024 characters.
+        The description of the invitation.
+        The description can be up to 1,024 characters in length.
         """
         return pulumi.get(self, "note")
 
@@ -177,7 +206,7 @@ class _HandshakeState:
     @pulumi.getter(name="resourceDirectoryId")
     def resource_directory_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Resource directory ID.
+        The ID of the resource directory.
         """
         return pulumi.get(self, "resource_directory_id")
 
@@ -189,7 +218,7 @@ class _HandshakeState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Invitation status. Valid values: `Pending` waiting for confirmation, `Accepted`, `Cancelled`, `Declined`, `Expired`.
+        The status of the invitation.
         """
         return pulumi.get(self, "status")
 
@@ -201,7 +230,7 @@ class _HandshakeState:
     @pulumi.getter(name="targetEntity")
     def target_entity(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Invited account ID or login email.
+        The ID or logon email address of the account that you want to invite.
         """
         return pulumi.get(self, "target_entity")
 
@@ -213,7 +242,10 @@ class _HandshakeState:
     @pulumi.getter(name="targetType")
     def target_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Type of account being invited. Valid values: `Account`, `Email`.
+        The type of the invited account. Valid values:
+
+        - Account: indicates the ID of the account.
+        - Email: indicates the logon email address of the account.
         """
         return pulumi.get(self, "target_type")
 
@@ -233,12 +265,15 @@ class Handshake(pulumi.CustomResource):
                  target_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides a Resource Manager handshake resource. You can invite accounts to join a resource directory for unified management.
-        For information about Resource Manager handshake and how to use it, see [What is Resource Manager handshake](https://www.alibabacloud.com/help/en/doc-detail/135287.htm).
+        Provides a Resource Manager Handshake resource.
 
-        > **NOTE:** Available in v1.82.0+.
+        For information about Resource Manager Handshake and how to use it, see [What is Handshake](https://www.alibabacloud.com/help/en/doc-detail/135287.htm).
+
+        > **NOTE:** Available since v1.82.0.
 
         ## Example Usage
+
+        Basic Usage
 
         ```python
         import pulumi
@@ -253,17 +288,21 @@ class Handshake(pulumi.CustomResource):
 
         ## Import
 
-        Resource Manager handshake can be imported using the id, e.g.
+        Resource Manager Handshake can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:resourcemanager/handshake:Handshake example h-QmdexeFm1kE*****
+        $ pulumi import alicloud:resourcemanager/handshake:Handshake example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] note: Remarks. The maximum length is 1024 characters.
-        :param pulumi.Input[_builtins.str] target_entity: Invited account ID or login email.
-        :param pulumi.Input[_builtins.str] target_type: Type of account being invited. Valid values: `Account`, `Email`.
+        :param pulumi.Input[_builtins.str] note: The description of the invitation.
+               The description can be up to 1,024 characters in length.
+        :param pulumi.Input[_builtins.str] target_entity: The ID or logon email address of the account that you want to invite.
+        :param pulumi.Input[_builtins.str] target_type: The type of the invited account. Valid values:
+               
+               - Account: indicates the ID of the account.
+               - Email: indicates the logon email address of the account.
         """
         ...
     @overload
@@ -272,12 +311,15 @@ class Handshake(pulumi.CustomResource):
                  args: HandshakeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Resource Manager handshake resource. You can invite accounts to join a resource directory for unified management.
-        For information about Resource Manager handshake and how to use it, see [What is Resource Manager handshake](https://www.alibabacloud.com/help/en/doc-detail/135287.htm).
+        Provides a Resource Manager Handshake resource.
 
-        > **NOTE:** Available in v1.82.0+.
+        For information about Resource Manager Handshake and how to use it, see [What is Handshake](https://www.alibabacloud.com/help/en/doc-detail/135287.htm).
+
+        > **NOTE:** Available since v1.82.0.
 
         ## Example Usage
+
+        Basic Usage
 
         ```python
         import pulumi
@@ -292,10 +334,10 @@ class Handshake(pulumi.CustomResource):
 
         ## Import
 
-        Resource Manager handshake can be imported using the id, e.g.
+        Resource Manager Handshake can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:resourcemanager/handshake:Handshake example h-QmdexeFm1kE*****
+        $ pulumi import alicloud:resourcemanager/handshake:Handshake example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -332,6 +374,7 @@ class Handshake(pulumi.CustomResource):
             if target_type is None and not opts.urn:
                 raise TypeError("Missing required property 'target_type'")
             __props__.__dict__["target_type"] = target_type
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["expire_time"] = None
             __props__.__dict__["master_account_id"] = None
             __props__.__dict__["master_account_name"] = None
@@ -348,6 +391,7 @@ class Handshake(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[_builtins.str]] = None,
             expire_time: Optional[pulumi.Input[_builtins.str]] = None,
             master_account_id: Optional[pulumi.Input[_builtins.str]] = None,
             master_account_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -364,20 +408,26 @@ class Handshake(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] expire_time: The expiration time of the invitation.
-        :param pulumi.Input[_builtins.str] master_account_id: Resource account master account ID.
-        :param pulumi.Input[_builtins.str] master_account_name: The name of the main account of the resource directory.
-        :param pulumi.Input[_builtins.str] modify_time: The modification time of the invitation.
-        :param pulumi.Input[_builtins.str] note: Remarks. The maximum length is 1024 characters.
-        :param pulumi.Input[_builtins.str] resource_directory_id: Resource directory ID.
-        :param pulumi.Input[_builtins.str] status: Invitation status. Valid values: `Pending` waiting for confirmation, `Accepted`, `Cancelled`, `Declined`, `Expired`.
-        :param pulumi.Input[_builtins.str] target_entity: Invited account ID or login email.
-        :param pulumi.Input[_builtins.str] target_type: Type of account being invited. Valid values: `Account`, `Email`.
+        :param pulumi.Input[_builtins.str] create_time: The time when the invitation was created. The time is displayed in UTC.
+        :param pulumi.Input[_builtins.str] expire_time: The time when the invitation expires. The time is displayed in UTC.
+        :param pulumi.Input[_builtins.str] master_account_id: The ID of the management account of the resource directory.
+        :param pulumi.Input[_builtins.str] master_account_name: The name of the management account of the resource directory.
+        :param pulumi.Input[_builtins.str] modify_time: The time when the invitation was modified. The time is displayed in UTC.
+        :param pulumi.Input[_builtins.str] note: The description of the invitation.
+               The description can be up to 1,024 characters in length.
+        :param pulumi.Input[_builtins.str] resource_directory_id: The ID of the resource directory.
+        :param pulumi.Input[_builtins.str] status: The status of the invitation.
+        :param pulumi.Input[_builtins.str] target_entity: The ID or logon email address of the account that you want to invite.
+        :param pulumi.Input[_builtins.str] target_type: The type of the invited account. Valid values:
+               
+               - Account: indicates the ID of the account.
+               - Email: indicates the logon email address of the account.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _HandshakeState.__new__(_HandshakeState)
 
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["expire_time"] = expire_time
         __props__.__dict__["master_account_id"] = master_account_id
         __props__.__dict__["master_account_name"] = master_account_name
@@ -390,10 +440,18 @@ class Handshake(pulumi.CustomResource):
         return Handshake(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        The time when the invitation was created. The time is displayed in UTC.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> pulumi.Output[_builtins.str]:
         """
-        The expiration time of the invitation.
+        The time when the invitation expires. The time is displayed in UTC.
         """
         return pulumi.get(self, "expire_time")
 
@@ -401,7 +459,7 @@ class Handshake(pulumi.CustomResource):
     @pulumi.getter(name="masterAccountId")
     def master_account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Resource account master account ID.
+        The ID of the management account of the resource directory.
         """
         return pulumi.get(self, "master_account_id")
 
@@ -409,7 +467,7 @@ class Handshake(pulumi.CustomResource):
     @pulumi.getter(name="masterAccountName")
     def master_account_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the main account of the resource directory.
+        The name of the management account of the resource directory.
         """
         return pulumi.get(self, "master_account_name")
 
@@ -417,7 +475,7 @@ class Handshake(pulumi.CustomResource):
     @pulumi.getter(name="modifyTime")
     def modify_time(self) -> pulumi.Output[_builtins.str]:
         """
-        The modification time of the invitation.
+        The time when the invitation was modified. The time is displayed in UTC.
         """
         return pulumi.get(self, "modify_time")
 
@@ -425,7 +483,8 @@ class Handshake(pulumi.CustomResource):
     @pulumi.getter
     def note(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Remarks. The maximum length is 1024 characters.
+        The description of the invitation.
+        The description can be up to 1,024 characters in length.
         """
         return pulumi.get(self, "note")
 
@@ -433,7 +492,7 @@ class Handshake(pulumi.CustomResource):
     @pulumi.getter(name="resourceDirectoryId")
     def resource_directory_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Resource directory ID.
+        The ID of the resource directory.
         """
         return pulumi.get(self, "resource_directory_id")
 
@@ -441,7 +500,7 @@ class Handshake(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        Invitation status. Valid values: `Pending` waiting for confirmation, `Accepted`, `Cancelled`, `Declined`, `Expired`.
+        The status of the invitation.
         """
         return pulumi.get(self, "status")
 
@@ -449,7 +508,7 @@ class Handshake(pulumi.CustomResource):
     @pulumi.getter(name="targetEntity")
     def target_entity(self) -> pulumi.Output[_builtins.str]:
         """
-        Invited account ID or login email.
+        The ID or logon email address of the account that you want to invite.
         """
         return pulumi.get(self, "target_entity")
 
@@ -457,7 +516,10 @@ class Handshake(pulumi.CustomResource):
     @pulumi.getter(name="targetType")
     def target_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Type of account being invited. Valid values: `Account`, `Email`.
+        The type of the invited account. Valid values:
+
+        - Account: indicates the ID of the account.
+        - Email: indicates the logon email address of the account.
         """
         return pulumi.get(self, "target_type")
 

@@ -10,11 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSaslUsersUser {
+    private String id;
     /**
      * @return The password of the user.
      * 
      */
     private String password;
+    /**
+     * @return (Available since v1.260.0) The type of the user.
+     * 
+     */
+    private String type;
     /**
      * @return The username of the user.
      * 
@@ -22,12 +28,22 @@ public final class GetSaslUsersUser {
     private String username;
 
     private GetSaslUsersUser() {}
+    public String id() {
+        return this.id;
+    }
     /**
      * @return The password of the user.
      * 
      */
     public String password() {
         return this.password;
+    }
+    /**
+     * @return (Available since v1.260.0) The type of the user.
+     * 
+     */
+    public String type() {
+        return this.type;
     }
     /**
      * @return The username of the user.
@@ -46,21 +62,41 @@ public final class GetSaslUsersUser {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String id;
         private String password;
+        private String type;
         private String username;
         public Builder() {}
         public Builder(GetSaslUsersUser defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.id = defaults.id;
     	      this.password = defaults.password;
+    	      this.type = defaults.type;
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSaslUsersUser", "id");
+            }
+            this.id = id;
+            return this;
+        }
         @CustomType.Setter
         public Builder password(String password) {
             if (password == null) {
               throw new MissingRequiredPropertyException("GetSaslUsersUser", "password");
             }
             this.password = password;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder type(String type) {
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetSaslUsersUser", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
@@ -73,7 +109,9 @@ public final class GetSaslUsersUser {
         }
         public GetSaslUsersUser build() {
             final var _resultValue = new GetSaslUsersUser();
+            _resultValue.id = id;
             _resultValue.password = password;
+            _resultValue.type = type;
             _resultValue.username = username;
             return _resultValue;
         }

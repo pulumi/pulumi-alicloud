@@ -1347,8 +1347,11 @@ func (o GetSaslAclsAclArrayOutput) Index(i pulumi.IntInput) GetSaslAclsAclOutput
 }
 
 type GetSaslUsersUser struct {
+	Id string `pulumi:"id"`
 	// The password of the user.
 	Password string `pulumi:"password"`
+	// (Available since v1.260.0) The type of the user.
+	Type string `pulumi:"type"`
 	// The username of the user.
 	Username string `pulumi:"username"`
 }
@@ -1365,8 +1368,11 @@ type GetSaslUsersUserInput interface {
 }
 
 type GetSaslUsersUserArgs struct {
+	Id pulumi.StringInput `pulumi:"id"`
 	// The password of the user.
 	Password pulumi.StringInput `pulumi:"password"`
+	// (Available since v1.260.0) The type of the user.
+	Type pulumi.StringInput `pulumi:"type"`
 	// The username of the user.
 	Username pulumi.StringInput `pulumi:"username"`
 }
@@ -1422,9 +1428,18 @@ func (o GetSaslUsersUserOutput) ToGetSaslUsersUserOutputWithContext(ctx context.
 	return o
 }
 
+func (o GetSaslUsersUserOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSaslUsersUser) string { return v.Id }).(pulumi.StringOutput)
+}
+
 // The password of the user.
 func (o GetSaslUsersUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSaslUsersUser) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// (Available since v1.260.0) The type of the user.
+func (o GetSaslUsersUserOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSaslUsersUser) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // The username of the user.

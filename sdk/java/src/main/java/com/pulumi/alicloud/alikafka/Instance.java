@@ -33,16 +33,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:alikafka/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
-     * The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
-     * * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
+     * The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
      * 
      */
     @Export(name="config", refs={String.class}, tree="[0]")
     private Output<String> config;
 
     /**
-     * @return The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
-     * * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
+     * @return The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
      * 
      */
     public Output<String> config() {
@@ -281,14 +279,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.isPartitionBuy;
     }
     /**
-     * The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+     * The ID of the key that is used to encrypt data on standard SSDs in the region of the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-updateinstanceconfig).
      * 
      */
     @Export(name="kmsKeyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsKeyId;
 
     /**
-     * @return The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+     * @return The ID of the key that is used to encrypt data on standard SSDs in the region of the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-updateinstanceconfig).
      * 
      */
     public Output<Optional<String>> kmsKeyId() {
@@ -421,14 +419,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.securityGroup;
     }
     /**
-     * The zones among which you want to deploy the instance.
+     * The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
      * 
      */
     @Export(name="selectedZones", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> selectedZones;
 
     /**
-     * @return The zones among which you want to deploy the instance.
+     * @return The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
      * 
      */
     public Output<Optional<List<String>>> selectedZones() {
@@ -642,6 +640,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The IDs of the vSwitches with which the instance is associated.
+     * &gt; **NOTE:** If `instance_type` is set to `alikafka` or `alikafka_serverless`, `vswitch_ids` is required. When `instance_type` is set to `alikafka_confluent`, you must specify at least one of the `vswitch_id` and `vswitch_ids`, and if you specify both `vswitch_id` and `vswitch_ids`, only the `vswitch_ids` takes effect.
      * 
      */
     @Export(name="vswitchIds", refs={List.class,String.class}, tree="[0,1]")
@@ -649,6 +648,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The IDs of the vSwitches with which the instance is associated.
+     * &gt; **NOTE:** If `instance_type` is set to `alikafka` or `alikafka_serverless`, `vswitch_ids` is required. When `instance_type` is set to `alikafka_confluent`, you must specify at least one of the `vswitch_id` and `vswitch_ids`, and if you specify both `vswitch_id` and `vswitch_ids`, only the `vswitch_ids` takes effect.
      * 
      */
     public Output<List<String>> vswitchIds() {

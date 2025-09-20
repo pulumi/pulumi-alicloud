@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.ResourceManager
     /// <summary>
     /// Provides a Resource Manager Control Policy Attachment resource.
     /// 
+    /// Control Policy Attachment.
+    /// 
     /// For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/resource-directory/developer-reference/api-resourcemanager-2020-03-31-attachcontrolpolicy).
     /// 
     /// &gt; **NOTE:** Available since v1.120.0.
@@ -92,7 +94,11 @@ namespace Pulumi.AliCloud.ResourceManager
         public Output<string> PolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the object to which you want to attach the access control policy.
+        /// The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
+        /// 
+        /// - Root folder
+        /// - Subfolders of the Root folder
+        /// - Members
         /// </summary>
         [Output("targetId")]
         public Output<string> TargetId { get; private set; } = null!;
@@ -150,7 +156,11 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string> PolicyId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the object to which you want to attach the access control policy.
+        /// The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
+        /// 
+        /// - Root folder
+        /// - Subfolders of the Root folder
+        /// - Members
         /// </summary>
         [Input("targetId", required: true)]
         public Input<string> TargetId { get; set; } = null!;
@@ -170,7 +180,11 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string>? PolicyId { get; set; }
 
         /// <summary>
-        /// The ID of the object to which you want to attach the access control policy.
+        /// The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
+        /// 
+        /// - Root folder
+        /// - Subfolders of the Root folder
+        /// - Members
         /// </summary>
         [Input("targetId")]
         public Input<string>? TargetId { get; set; }

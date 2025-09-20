@@ -210,12 +210,13 @@ namespace Pulumi.AliCloud.Ecs
         /// Whether to enable access to instance metadata. Valid values:
         /// - enabled: Enabled.
         /// - disabled: Disabled.
+        /// **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
         /// </summary>
         [Output("httpEndpoint")]
         public Output<string> HttpEndpoint { get; private set; } = null!;
 
         /// <summary>
-        /// The HTTP PUT response hop limit required for instance metadata requests.
+        /// The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
         /// </summary>
         [Output("httpPutResponseHopLimit")]
         public Output<int> HttpPutResponseHopLimit { get; private set; } = null!;
@@ -224,6 +225,7 @@ namespace Pulumi.AliCloud.Ecs
         /// Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
         /// - optional: Not mandatory.
         /// - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
+        /// **NOTE:** From version 1.260.0, `http_tokens` can be modified.
         /// </summary>
         [Output("httpTokens")]
         public Output<string> HttpTokens { get; private set; } = null!;
@@ -602,12 +604,13 @@ namespace Pulumi.AliCloud.Ecs
         /// Whether to enable access to instance metadata. Valid values:
         /// - enabled: Enabled.
         /// - disabled: Disabled.
+        /// **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
         /// </summary>
         [Input("httpEndpoint")]
         public Input<string>? HttpEndpoint { get; set; }
 
         /// <summary>
-        /// The HTTP PUT response hop limit required for instance metadata requests.
+        /// The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
         /// </summary>
         [Input("httpPutResponseHopLimit")]
         public Input<int>? HttpPutResponseHopLimit { get; set; }
@@ -616,6 +619,7 @@ namespace Pulumi.AliCloud.Ecs
         /// Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
         /// - optional: Not mandatory.
         /// - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
+        /// **NOTE:** From version 1.260.0, `http_tokens` can be modified.
         /// </summary>
         [Input("httpTokens")]
         public Input<string>? HttpTokens { get; set; }
@@ -968,12 +972,13 @@ namespace Pulumi.AliCloud.Ecs
         /// Whether to enable access to instance metadata. Valid values:
         /// - enabled: Enabled.
         /// - disabled: Disabled.
+        /// **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
         /// </summary>
         [Input("httpEndpoint")]
         public Input<string>? HttpEndpoint { get; set; }
 
         /// <summary>
-        /// The HTTP PUT response hop limit required for instance metadata requests.
+        /// The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
         /// </summary>
         [Input("httpPutResponseHopLimit")]
         public Input<int>? HttpPutResponseHopLimit { get; set; }
@@ -982,6 +987,7 @@ namespace Pulumi.AliCloud.Ecs
         /// Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
         /// - optional: Not mandatory.
         /// - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
+        /// **NOTE:** From version 1.260.0, `http_tokens` can be modified.
         /// </summary>
         [Input("httpTokens")]
         public Input<string>? HttpTokens { get; set; }

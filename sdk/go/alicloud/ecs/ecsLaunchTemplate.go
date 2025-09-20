@@ -182,12 +182,14 @@ type EcsLaunchTemplate struct {
 	// Whether to enable access to instance metadata. Valid values:
 	// - enabled: Enabled.
 	// - disabled: Disabled.
+	//   **NOTE:** From version 1.260.0, `httpEndpoint` can be modified.
 	HttpEndpoint pulumi.StringOutput `pulumi:"httpEndpoint"`
-	// The HTTP PUT response hop limit required for instance metadata requests.
+	// The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
 	HttpPutResponseHopLimit pulumi.IntOutput `pulumi:"httpPutResponseHopLimit"`
 	// Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
 	// - optional: Not mandatory.
 	// - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
+	//   **NOTE:** From version 1.260.0, `httpTokens` can be modified.
 	HttpTokens pulumi.StringOutput `pulumi:"httpTokens"`
 	// The Image ID.
 	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
@@ -346,12 +348,14 @@ type ecsLaunchTemplateState struct {
 	// Whether to enable access to instance metadata. Valid values:
 	// - enabled: Enabled.
 	// - disabled: Disabled.
+	//   **NOTE:** From version 1.260.0, `httpEndpoint` can be modified.
 	HttpEndpoint *string `pulumi:"httpEndpoint"`
-	// The HTTP PUT response hop limit required for instance metadata requests.
+	// The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
 	HttpPutResponseHopLimit *int `pulumi:"httpPutResponseHopLimit"`
 	// Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
 	// - optional: Not mandatory.
 	// - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
+	//   **NOTE:** From version 1.260.0, `httpTokens` can be modified.
 	HttpTokens *string `pulumi:"httpTokens"`
 	// The Image ID.
 	ImageId *string `pulumi:"imageId"`
@@ -481,12 +485,14 @@ type EcsLaunchTemplateState struct {
 	// Whether to enable access to instance metadata. Valid values:
 	// - enabled: Enabled.
 	// - disabled: Disabled.
+	//   **NOTE:** From version 1.260.0, `httpEndpoint` can be modified.
 	HttpEndpoint pulumi.StringPtrInput
-	// The HTTP PUT response hop limit required for instance metadata requests.
+	// The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
 	HttpPutResponseHopLimit pulumi.IntPtrInput
 	// Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
 	// - optional: Not mandatory.
 	// - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
+	//   **NOTE:** From version 1.260.0, `httpTokens` can be modified.
 	HttpTokens pulumi.StringPtrInput
 	// The Image ID.
 	ImageId pulumi.StringPtrInput
@@ -620,12 +626,14 @@ type ecsLaunchTemplateArgs struct {
 	// Whether to enable access to instance metadata. Valid values:
 	// - enabled: Enabled.
 	// - disabled: Disabled.
+	//   **NOTE:** From version 1.260.0, `httpEndpoint` can be modified.
 	HttpEndpoint *string `pulumi:"httpEndpoint"`
-	// The HTTP PUT response hop limit required for instance metadata requests.
+	// The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
 	HttpPutResponseHopLimit *int `pulumi:"httpPutResponseHopLimit"`
 	// Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
 	// - optional: Not mandatory.
 	// - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
+	//   **NOTE:** From version 1.260.0, `httpTokens` can be modified.
 	HttpTokens *string `pulumi:"httpTokens"`
 	// The Image ID.
 	ImageId *string `pulumi:"imageId"`
@@ -754,12 +762,14 @@ type EcsLaunchTemplateArgs struct {
 	// Whether to enable access to instance metadata. Valid values:
 	// - enabled: Enabled.
 	// - disabled: Disabled.
+	//   **NOTE:** From version 1.260.0, `httpEndpoint` can be modified.
 	HttpEndpoint pulumi.StringPtrInput
-	// The HTTP PUT response hop limit required for instance metadata requests.
+	// The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
 	HttpPutResponseHopLimit pulumi.IntPtrInput
 	// Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
 	// - optional: Not mandatory.
 	// - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
+	//   **NOTE:** From version 1.260.0, `httpTokens` can be modified.
 	HttpTokens pulumi.StringPtrInput
 	// The Image ID.
 	ImageId pulumi.StringPtrInput
@@ -998,20 +1008,22 @@ func (o EcsLaunchTemplateOutput) HostName() pulumi.StringPtrOutput {
 }
 
 // Whether to enable access to instance metadata. Valid values:
-// - enabled: Enabled.
-// - disabled: Disabled.
+//   - enabled: Enabled.
+//   - disabled: Disabled.
+//     **NOTE:** From version 1.260.0, `httpEndpoint` can be modified.
 func (o EcsLaunchTemplateOutput) HttpEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringOutput { return v.HttpEndpoint }).(pulumi.StringOutput)
 }
 
-// The HTTP PUT response hop limit required for instance metadata requests.
+// The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
 func (o EcsLaunchTemplateOutput) HttpPutResponseHopLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.IntOutput { return v.HttpPutResponseHopLimit }).(pulumi.IntOutput)
 }
 
 // Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
-// - optional: Not mandatory.
-// - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
+//   - optional: Not mandatory.
+//   - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
+//     **NOTE:** From version 1.260.0, `httpTokens` can be modified.
 func (o EcsLaunchTemplateOutput) HttpTokens() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringOutput { return v.HttpTokens }).(pulumi.StringOutput)
 }

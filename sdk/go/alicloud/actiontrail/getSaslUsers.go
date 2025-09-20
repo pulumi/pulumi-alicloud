@@ -11,33 +11,97 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides a list of ALIKAFKA Sasl users in an Alibaba Cloud account according to the specified filters.
+// This data source provides the Alikafka Sasl Users of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in 1.66.0+
+// > **NOTE:** Available since v1.66.0.
 //
 // ## Example Usage
+//
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/actiontrail"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alikafka"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			saslUsersDs, err := actiontrail.GetSaslUsers(ctx, &actiontrail.GetSaslUsersArgs{
-//				InstanceId: "xxx",
-//				NameRegex:  pulumi.StringRef("username"),
-//				OutputFile: pulumi.StringRef("saslUsers.txt"),
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstSaslUsername", saslUsersDs.Users[0].Username)
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := alikafka.NewInstance(ctx, "default", &alikafka.InstanceArgs{
+//				Name:           pulumi.String(name),
+//				PartitionNum:   pulumi.Int(50),
+//				DiskType:       pulumi.Int(1),
+//				DiskSize:       pulumi.Int(500),
+//				DeployType:     pulumi.Int(5),
+//				IoMax:          pulumi.Int(20),
+//				SpecType:       pulumi.String("professional"),
+//				ServiceVersion: pulumi.String("2.2.0"),
+//				VswitchId:      defaultSwitch.ID(),
+//				SecurityGroup:  defaultSecurityGroup.ID(),
+//				Config:         pulumi.String("  {\n    \\\"enable.acl\\\": \\\"true\\\"\n  }\n"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSaslUser, err := alikafka.NewSaslUser(ctx, "default", &alikafka.SaslUserArgs{
+//				InstanceId: defaultInstance.ID(),
+//				Username:   pulumi.String(name),
+//				Password:   pulumi.String("YourPassword1234!"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ids := actiontrail.GetSaslUsersOutput(ctx, actiontrail.GetSaslUsersOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultSaslUser.ID(),
+//				},
+//				InstanceId: defaultSaslUser.InstanceId,
+//			}, nil)
+//			ctx.Export("alikafkaSaslUsersId0", ids.ApplyT(func(ids actiontrail.GetSaslUsersResult) (*string, error) {
+//				return &ids.Users[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}
@@ -55,9 +119,11 @@ func GetSaslUsers(ctx *pulumi.Context, args *GetSaslUsersArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getSaslUsers.
 type GetSaslUsersArgs struct {
-	// ID of the ALIKAFKA Instance that owns the sasl users.
+	// A list of Sasl User IDs.
+	Ids []string `pulumi:"ids"`
+	// The ID of the instance.
 	InstanceId string `pulumi:"instanceId"`
-	// A regex string to filter results by the username.
+	// A regex string to filter results by Sasl User name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
@@ -66,13 +132,14 @@ type GetSaslUsersArgs struct {
 // A collection of values returned by getSaslUsers.
 type GetSaslUsersResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string  `pulumi:"id"`
-	InstanceId string  `pulumi:"instanceId"`
-	NameRegex  *string `pulumi:"nameRegex"`
-	// A list of sasl usernames.
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	InstanceId string   `pulumi:"instanceId"`
+	NameRegex  *string  `pulumi:"nameRegex"`
+	// A list of Sasl User names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	// A list of sasl users. Each element contains the following attributes:
+	// A list of Sasl Users. Each element contains the following attributes:
 	Users []GetSaslUsersUser `pulumi:"users"`
 }
 
@@ -87,9 +154,11 @@ func GetSaslUsersOutput(ctx *pulumi.Context, args GetSaslUsersOutputArgs, opts .
 
 // A collection of arguments for invoking getSaslUsers.
 type GetSaslUsersOutputArgs struct {
-	// ID of the ALIKAFKA Instance that owns the sasl users.
+	// A list of Sasl User IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The ID of the instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// A regex string to filter results by the username.
+	// A regex string to filter results by Sasl User name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
@@ -119,6 +188,10 @@ func (o GetSaslUsersResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSaslUsersResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+func (o GetSaslUsersResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSaslUsersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
 func (o GetSaslUsersResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSaslUsersResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -127,7 +200,7 @@ func (o GetSaslUsersResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSaslUsersResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
-// A list of sasl usernames.
+// A list of Sasl User names.
 func (o GetSaslUsersResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSaslUsersResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -136,7 +209,7 @@ func (o GetSaslUsersResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSaslUsersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
-// A list of sasl users. Each element contains the following attributes:
+// A list of Sasl Users. Each element contains the following attributes:
 func (o GetSaslUsersResultOutput) Users() GetSaslUsersUserArrayOutput {
 	return o.ApplyT(func(v GetSaslUsersResult) []GetSaslUsersUser { return v.Users }).(GetSaslUsersUserArrayOutput)
 }

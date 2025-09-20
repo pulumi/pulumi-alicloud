@@ -22,8 +22,7 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
-	// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
-	// * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
+	// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
 	Config pulumi.StringOutput `pulumi:"config"`
 	// The configurations of Confluent. See `confluentConfig` below.
 	// > **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `confluentConfig` is required.
@@ -61,7 +60,7 @@ type Instance struct {
 	IoMaxSpec pulumi.StringOutput `pulumi:"ioMaxSpec"`
 	// (Available since v1.214.1) The method that you use to purchase partitions.
 	IsPartitionBuy pulumi.IntOutput `pulumi:"isPartitionBuy"`
-	// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+	// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-updateinstanceconfig).
 	KmsKeyId pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -81,7 +80,7 @@ type Instance struct {
 	SaslDomainEndpoint pulumi.StringOutput `pulumi:"saslDomainEndpoint"`
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup pulumi.StringOutput `pulumi:"securityGroup"`
-	// The zones among which you want to deploy the instance.
+	// The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
 	SelectedZones pulumi.StringArrayOutput `pulumi:"selectedZones"`
 	// The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverlessConfig` below.
 	// > **NOTE:** If `instanceType` is set to `alikafkaServerless`, `serverlessConfig` is required.
@@ -122,6 +121,7 @@ type Instance struct {
 	// The ID of attaching vswitch to instance.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 	// The IDs of the vSwitches with which the instance is associated.
+	// > **NOTE:** If `instanceType` is set to `alikafka` or `alikafkaServerless`, `vswitchIds` is required. When `instanceType` is set to `alikafkaConfluent`, you must specify at least one of the `vswitchId` and `vswitchIds`, and if you specify both `vswitchId` and `vswitchIds`, only the `vswitchIds` takes effect.
 	VswitchIds pulumi.StringArrayOutput `pulumi:"vswitchIds"`
 	// The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -160,8 +160,7 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
-	// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
-	// * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
+	// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
 	Config *string `pulumi:"config"`
 	// The configurations of Confluent. See `confluentConfig` below.
 	// > **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `confluentConfig` is required.
@@ -199,7 +198,7 @@ type instanceState struct {
 	IoMaxSpec *string `pulumi:"ioMaxSpec"`
 	// (Available since v1.214.1) The method that you use to purchase partitions.
 	IsPartitionBuy *int `pulumi:"isPartitionBuy"`
-	// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+	// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-updateinstanceconfig).
 	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
 	Name *string `pulumi:"name"`
@@ -219,7 +218,7 @@ type instanceState struct {
 	SaslDomainEndpoint *string `pulumi:"saslDomainEndpoint"`
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup *string `pulumi:"securityGroup"`
-	// The zones among which you want to deploy the instance.
+	// The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
 	SelectedZones []string `pulumi:"selectedZones"`
 	// The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverlessConfig` below.
 	// > **NOTE:** If `instanceType` is set to `alikafkaServerless`, `serverlessConfig` is required.
@@ -260,14 +259,14 @@ type instanceState struct {
 	// The ID of attaching vswitch to instance.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The IDs of the vSwitches with which the instance is associated.
+	// > **NOTE:** If `instanceType` is set to `alikafka` or `alikafkaServerless`, `vswitchIds` is required. When `instanceType` is set to `alikafkaConfluent`, you must specify at least one of the `vswitchId` and `vswitchIds`, and if you specify both `vswitchId` and `vswitchIds`, only the `vswitchIds` takes effect.
 	VswitchIds []string `pulumi:"vswitchIds"`
 	// The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type InstanceState struct {
-	// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
-	// * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
+	// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
 	Config pulumi.StringPtrInput
 	// The configurations of Confluent. See `confluentConfig` below.
 	// > **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `confluentConfig` is required.
@@ -305,7 +304,7 @@ type InstanceState struct {
 	IoMaxSpec pulumi.StringPtrInput
 	// (Available since v1.214.1) The method that you use to purchase partitions.
 	IsPartitionBuy pulumi.IntPtrInput
-	// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+	// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-updateinstanceconfig).
 	KmsKeyId pulumi.StringPtrInput
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
 	Name pulumi.StringPtrInput
@@ -325,7 +324,7 @@ type InstanceState struct {
 	SaslDomainEndpoint pulumi.StringPtrInput
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup pulumi.StringPtrInput
-	// The zones among which you want to deploy the instance.
+	// The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
 	SelectedZones pulumi.StringArrayInput
 	// The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverlessConfig` below.
 	// > **NOTE:** If `instanceType` is set to `alikafkaServerless`, `serverlessConfig` is required.
@@ -366,6 +365,7 @@ type InstanceState struct {
 	// The ID of attaching vswitch to instance.
 	VswitchId pulumi.StringPtrInput
 	// The IDs of the vSwitches with which the instance is associated.
+	// > **NOTE:** If `instanceType` is set to `alikafka` or `alikafkaServerless`, `vswitchIds` is required. When `instanceType` is set to `alikafkaConfluent`, you must specify at least one of the `vswitchId` and `vswitchIds`, and if you specify both `vswitchId` and `vswitchIds`, only the `vswitchIds` takes effect.
 	VswitchIds pulumi.StringArrayInput
 	// The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
 	ZoneId pulumi.StringPtrInput
@@ -376,8 +376,7 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
-	// * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
+	// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
 	Config *string `pulumi:"config"`
 	// The configurations of Confluent. See `confluentConfig` below.
 	// > **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `confluentConfig` is required.
@@ -405,7 +404,7 @@ type instanceArgs struct {
 	// - You should specify one of the `ioMax` and `ioMaxSpec` parameters, and `ioMaxSpec` is recommended.
 	// - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
 	IoMaxSpec *string `pulumi:"ioMaxSpec"`
-	// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+	// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-updateinstanceconfig).
 	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
 	Name *string `pulumi:"name"`
@@ -419,7 +418,7 @@ type instanceArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup *string `pulumi:"securityGroup"`
-	// The zones among which you want to deploy the instance.
+	// The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
 	SelectedZones []string `pulumi:"selectedZones"`
 	// The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverlessConfig` below.
 	// > **NOTE:** If `instanceType` is set to `alikafkaServerless`, `serverlessConfig` is required.
@@ -448,6 +447,7 @@ type instanceArgs struct {
 	// The ID of attaching vswitch to instance.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The IDs of the vSwitches with which the instance is associated.
+	// > **NOTE:** If `instanceType` is set to `alikafka` or `alikafkaServerless`, `vswitchIds` is required. When `instanceType` is set to `alikafkaConfluent`, you must specify at least one of the `vswitchId` and `vswitchIds`, and if you specify both `vswitchId` and `vswitchIds`, only the `vswitchIds` takes effect.
 	VswitchIds []string `pulumi:"vswitchIds"`
 	// The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
 	ZoneId *string `pulumi:"zoneId"`
@@ -455,8 +455,7 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
-	// * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
+	// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
 	Config pulumi.StringPtrInput
 	// The configurations of Confluent. See `confluentConfig` below.
 	// > **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `confluentConfig` is required.
@@ -484,7 +483,7 @@ type InstanceArgs struct {
 	// - You should specify one of the `ioMax` and `ioMaxSpec` parameters, and `ioMaxSpec` is recommended.
 	// - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
 	IoMaxSpec pulumi.StringPtrInput
-	// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+	// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-updateinstanceconfig).
 	KmsKeyId pulumi.StringPtrInput
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
 	Name pulumi.StringPtrInput
@@ -498,7 +497,7 @@ type InstanceArgs struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup pulumi.StringPtrInput
-	// The zones among which you want to deploy the instance.
+	// The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
 	SelectedZones pulumi.StringArrayInput
 	// The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverlessConfig` below.
 	// > **NOTE:** If `instanceType` is set to `alikafkaServerless`, `serverlessConfig` is required.
@@ -527,6 +526,7 @@ type InstanceArgs struct {
 	// The ID of attaching vswitch to instance.
 	VswitchId pulumi.StringPtrInput
 	// The IDs of the vSwitches with which the instance is associated.
+	// > **NOTE:** If `instanceType` is set to `alikafka` or `alikafkaServerless`, `vswitchIds` is required. When `instanceType` is set to `alikafkaConfluent`, you must specify at least one of the `vswitchId` and `vswitchIds`, and if you specify both `vswitchId` and `vswitchIds`, only the `vswitchIds` takes effect.
 	VswitchIds pulumi.StringArrayInput
 	// The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
 	ZoneId pulumi.StringPtrInput
@@ -619,8 +619,7 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
-// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
-// * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
+// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
 func (o InstanceOutput) Config() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Config }).(pulumi.StringOutput)
 }
@@ -709,7 +708,7 @@ func (o InstanceOutput) IsPartitionBuy() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.IsPartitionBuy }).(pulumi.IntOutput)
 }
 
-// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-updateinstanceconfig).
 func (o InstanceOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
@@ -759,7 +758,7 @@ func (o InstanceOutput) SecurityGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SecurityGroup }).(pulumi.StringOutput)
 }
 
-// The zones among which you want to deploy the instance.
+// The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
 func (o InstanceOutput) SelectedZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SelectedZones }).(pulumi.StringArrayOutput)
 }
@@ -842,6 +841,7 @@ func (o InstanceOutput) VswitchId() pulumi.StringOutput {
 }
 
 // The IDs of the vSwitches with which the instance is associated.
+// > **NOTE:** If `instanceType` is set to `alikafka` or `alikafkaServerless`, `vswitchIds` is required. When `instanceType` is set to `alikafkaConfluent`, you must specify at least one of the `vswitchId` and `vswitchIds`, and if you specify both `vswitchId` and `vswitchIds`, only the `vswitchIds` takes effect.
 func (o InstanceOutput) VswitchIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.VswitchIds }).(pulumi.StringArrayOutput)
 }

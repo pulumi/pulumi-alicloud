@@ -95,12 +95,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SiteDeliveryTask{}
 	case "alicloud:esa/siteOriginClientCertificate:SiteOriginClientCertificate":
 		r = &SiteOriginClientCertificate{}
+	case "alicloud:esa/transportLayerApplication:TransportLayerApplication":
+		r = &TransportLayerApplication{}
 	case "alicloud:esa/urlObservation:UrlObservation":
 		r = &UrlObservation{}
 	case "alicloud:esa/version:Version":
 		r = &Version{}
 	case "alicloud:esa/videoProcessing:VideoProcessing":
 		r = &VideoProcessing{}
+	case "alicloud:esa/wafRuleset:WafRuleset":
+		r = &WafRuleset{}
 	case "alicloud:esa/waitingRoom:WaitingRoom":
 		r = &WaitingRoom{}
 	case "alicloud:esa/waitingRoomEvent:WaitingRoomEvent":
@@ -307,6 +311,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"esa/transportLayerApplication",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"esa/urlObservation",
 		&module{version},
 	)
@@ -318,6 +327,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"esa/videoProcessing",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/wafRuleset",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

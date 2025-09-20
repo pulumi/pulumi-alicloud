@@ -243,11 +243,15 @@ export class V3Function extends pulumi.CustomResource {
      */
     declare public readonly ossMountConfig: pulumi.Output<outputs.fc.V3FunctionOssMountConfig>;
     /**
+     * Resource Group ID.
+     */
+    declare public readonly resourceGroupId: pulumi.Output<string>;
+    /**
      * The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
      */
     declare public readonly role: pulumi.Output<string | undefined>;
     /**
-     * Function runtime type
+     * Function runtime type.
      */
     declare public readonly runtime: pulumi.Output<string>;
     /**
@@ -329,6 +333,7 @@ export class V3Function extends pulumi.CustomResource {
             resourceInputs["memorySize"] = state?.memorySize;
             resourceInputs["nasConfig"] = state?.nasConfig;
             resourceInputs["ossMountConfig"] = state?.ossMountConfig;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
             resourceInputs["role"] = state?.role;
             resourceInputs["runtime"] = state?.runtime;
             resourceInputs["sessionAffinity"] = state?.sessionAffinity;
@@ -369,6 +374,7 @@ export class V3Function extends pulumi.CustomResource {
             resourceInputs["memorySize"] = args?.memorySize;
             resourceInputs["nasConfig"] = args?.nasConfig;
             resourceInputs["ossMountConfig"] = args?.ossMountConfig;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
             resourceInputs["role"] = args?.role;
             resourceInputs["runtime"] = args?.runtime;
             resourceInputs["sessionAffinity"] = args?.sessionAffinity;
@@ -515,11 +521,15 @@ export interface V3FunctionState {
      */
     ossMountConfig?: pulumi.Input<inputs.fc.V3FunctionOssMountConfig>;
     /**
+     * Resource Group ID.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
      * The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
      */
     role?: pulumi.Input<string>;
     /**
-     * Function runtime type
+     * Function runtime type.
      */
     runtime?: pulumi.Input<string>;
     /**
@@ -649,11 +659,15 @@ export interface V3FunctionArgs {
      */
     ossMountConfig?: pulumi.Input<inputs.fc.V3FunctionOssMountConfig>;
     /**
+     * Resource Group ID.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
      * The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
      */
     role?: pulumi.Input<string>;
     /**
-     * Function runtime type
+     * Function runtime type.
      */
     runtime: pulumi.Input<string>;
     /**

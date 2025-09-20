@@ -22,8 +22,7 @@ namespace Pulumi.AliCloud.AliKafka
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
-        /// * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
+        /// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
         /// </summary>
         [Output("config")]
         public Output<string> Config { get; private set; } = null!;
@@ -129,7 +128,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<int> IsPartitionBuy { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+        /// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-updateinstanceconfig).
         /// </summary>
         [Output("kmsKeyId")]
         public Output<string?> KmsKeyId { get; private set; } = null!;
@@ -189,7 +188,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<string> SecurityGroup { get; private set; } = null!;
 
         /// <summary>
-        /// The zones among which you want to deploy the instance.
+        /// The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
         /// </summary>
         [Output("selectedZones")]
         public Output<ImmutableArray<string>> SelectedZones { get; private set; } = null!;
@@ -284,6 +283,7 @@ namespace Pulumi.AliCloud.AliKafka
 
         /// <summary>
         /// The IDs of the vSwitches with which the instance is associated.
+        /// &gt; **NOTE:** If `instance_type` is set to `alikafka` or `alikafka_serverless`, `vswitch_ids` is required. When `instance_type` is set to `alikafka_confluent`, you must specify at least one of the `vswitch_id` and `vswitch_ids`, and if you specify both `vswitch_id` and `vswitch_ids`, only the `vswitch_ids` takes effect.
         /// </summary>
         [Output("vswitchIds")]
         public Output<ImmutableArray<string>> VswitchIds { get; private set; } = null!;
@@ -341,8 +341,7 @@ namespace Pulumi.AliCloud.AliKafka
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
-        /// * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
+        /// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
         /// </summary>
         [Input("config")]
         public Input<string>? Config { get; set; }
@@ -418,7 +417,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string>? IoMaxSpec { get; set; }
 
         /// <summary>
-        /// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+        /// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-updateinstanceconfig).
         /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
@@ -463,7 +462,7 @@ namespace Pulumi.AliCloud.AliKafka
         private InputList<string>? _selectedZones;
 
         /// <summary>
-        /// The zones among which you want to deploy the instance.
+        /// The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
         /// </summary>
         public InputList<string> SelectedZones
         {
@@ -534,6 +533,7 @@ namespace Pulumi.AliCloud.AliKafka
 
         /// <summary>
         /// The IDs of the vSwitches with which the instance is associated.
+        /// &gt; **NOTE:** If `instance_type` is set to `alikafka` or `alikafka_serverless`, `vswitch_ids` is required. When `instance_type` is set to `alikafka_confluent`, you must specify at least one of the `vswitch_id` and `vswitch_ids`, and if you specify both `vswitch_id` and `vswitch_ids`, only the `vswitch_ids` takes effect.
         /// </summary>
         public InputList<string> VswitchIds
         {
@@ -556,8 +556,7 @@ namespace Pulumi.AliCloud.AliKafka
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
-        /// * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
+        /// The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
         /// </summary>
         [Input("config")]
         public Input<string>? Config { get; set; }
@@ -663,7 +662,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<int>? IsPartitionBuy { get; set; }
 
         /// <summary>
-        /// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+        /// The ID of the key that is used to encrypt data on standard SSDs in the region of the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-updateinstanceconfig).
         /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
@@ -726,7 +725,7 @@ namespace Pulumi.AliCloud.AliKafka
         private InputList<string>? _selectedZones;
 
         /// <summary>
-        /// The zones among which you want to deploy the instance.
+        /// The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
         /// </summary>
         public InputList<string> SelectedZones
         {
@@ -833,6 +832,7 @@ namespace Pulumi.AliCloud.AliKafka
 
         /// <summary>
         /// The IDs of the vSwitches with which the instance is associated.
+        /// &gt; **NOTE:** If `instance_type` is set to `alikafka` or `alikafka_serverless`, `vswitch_ids` is required. When `instance_type` is set to `alikafka_confluent`, you must specify at least one of the `vswitch_id` and `vswitch_ids`, and if you specify both `vswitch_id` and `vswitch_ids`, only the `vswitch_ids` takes effect.
         /// </summary>
         public InputList<string> VswitchIds
         {

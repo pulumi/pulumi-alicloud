@@ -13,6 +13,7 @@ namespace Pulumi.AliCloud.FC.Outputs
     [OutputType]
     public sealed class V3FunctionInstanceLifecycleConfigInitializer
     {
+        public readonly ImmutableArray<string> Commands;
         /// <summary>
         /// Function Handler: the call entry for the function compute system to run your function.
         /// </summary>
@@ -24,10 +25,13 @@ namespace Pulumi.AliCloud.FC.Outputs
 
         [OutputConstructor]
         private V3FunctionInstanceLifecycleConfigInitializer(
+            ImmutableArray<string> commands,
+
             string? handler,
 
             int? timeout)
         {
+            Commands = commands;
             Handler = handler;
             Timeout = timeout;
         }

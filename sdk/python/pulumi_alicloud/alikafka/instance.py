@@ -53,8 +53,7 @@ class InstanceArgs:
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[_builtins.int] deploy_type: The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
-        :param pulumi.Input[_builtins.str] config: The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
-               * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
+        :param pulumi.Input[_builtins.str] config: The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
         :param pulumi.Input['InstanceConfluentConfigArgs'] confluent_config: The configurations of Confluent. See `confluent_config` below.
                > **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
         :param pulumi.Input[_builtins.int] default_topic_partition_num: The number of partitions in a topic that is automatically created.
@@ -69,14 +68,14 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] io_max_spec: The traffic specification of the instance. We recommend that you configure this parameter.
                - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
                - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
-        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the key that is used to encrypt data on standard SSDs in the region of the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-updateinstanceconfig).
         :param pulumi.Input[_builtins.str] name: Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
         :param pulumi.Input[_builtins.str] paid_type: The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
         :param pulumi.Input[_builtins.int] partition_num: The number of partitions.
         :param pulumi.Input[_builtins.str] password: The instance password. **NOTE:** If `instance_type` is set to `alikafka_confluent`, `password` is required.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         :param pulumi.Input[_builtins.str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] selected_zones: The zones among which you want to deploy the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] selected_zones: The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
         :param pulumi.Input['InstanceServerlessConfigArgs'] serverless_config: The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
                > **NOTE:** If `instance_type` is set to `alikafka_serverless`, `serverless_config` is required.
         :param pulumi.Input[_builtins.str] service_version: The version of the Instance. Valid values:
@@ -95,6 +94,7 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of attaching vswitch to instance.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The IDs of the vSwitches with which the instance is associated.
+               > **NOTE:** If `instance_type` is set to `alikafka` or `alikafka_serverless`, `vswitch_ids` is required. When `instance_type` is set to `alikafka_confluent`, you must specify at least one of the `vswitch_id` and `vswitch_ids`, and if you specify both `vswitch_id` and `vswitch_ids`, only the `vswitch_ids` takes effect.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
         """
         pulumi.set(__self__, "deploy_type", deploy_type)
@@ -174,8 +174,7 @@ class InstanceArgs:
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
-        * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
+        The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
         """
         return pulumi.get(self, "config")
 
@@ -311,7 +310,7 @@ class InstanceArgs:
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+        The ID of the key that is used to encrypt data on standard SSDs in the region of the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-updateinstanceconfig).
         """
         return pulumi.get(self, "kms_key_id")
 
@@ -395,7 +394,7 @@ class InstanceArgs:
     @pulumi.getter(name="selectedZones")
     def selected_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The zones among which you want to deploy the instance.
+        The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
         """
         return pulumi.get(self, "selected_zones")
 
@@ -503,6 +502,7 @@ class InstanceArgs:
     def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IDs of the vSwitches with which the instance is associated.
+        > **NOTE:** If `instance_type` is set to `alikafka` or `alikafka_serverless`, `vswitch_ids` is required. When `instance_type` is set to `alikafka_confluent`, you must specify at least one of the `vswitch_id` and `vswitch_ids`, and if you specify both `vswitch_id` and `vswitch_ids`, only the `vswitch_ids` takes effect.
         """
         return pulumi.get(self, "vswitch_ids")
 
@@ -571,8 +571,7 @@ class _InstanceState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-        :param pulumi.Input[_builtins.str] config: The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
-               * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
+        :param pulumi.Input[_builtins.str] config: The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
         :param pulumi.Input['InstanceConfluentConfigArgs'] confluent_config: The configurations of Confluent. See `confluent_config` below.
                > **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
         :param pulumi.Input[_builtins.int] default_topic_partition_num: The number of partitions in a topic that is automatically created.
@@ -593,7 +592,7 @@ class _InstanceState:
                - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
                - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
         :param pulumi.Input[_builtins.int] is_partition_buy: (Available since v1.214.1) The method that you use to purchase partitions.
-        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the key that is used to encrypt data on standard SSDs in the region of the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-updateinstanceconfig).
         :param pulumi.Input[_builtins.str] name: Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
         :param pulumi.Input[_builtins.str] paid_type: The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
         :param pulumi.Input[_builtins.int] partition_left: (Available since v1.214.1) The number of available partitions.
@@ -603,7 +602,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         :param pulumi.Input[_builtins.str] sasl_domain_endpoint: (Available since v1.234.0) The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode.
         :param pulumi.Input[_builtins.str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] selected_zones: The zones among which you want to deploy the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] selected_zones: The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
         :param pulumi.Input['InstanceServerlessConfigArgs'] serverless_config: The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
                > **NOTE:** If `instance_type` is set to `alikafka_serverless`, `serverless_config` is required.
         :param pulumi.Input[_builtins.str] service_version: The version of the Instance. Valid values:
@@ -628,6 +627,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of attaching vswitch to instance.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The IDs of the vSwitches with which the instance is associated.
+               > **NOTE:** If `instance_type` is set to `alikafka` or `alikafka_serverless`, `vswitch_ids` is required. When `instance_type` is set to `alikafka_confluent`, you must specify at least one of the `vswitch_id` and `vswitch_ids`, and if you specify both `vswitch_id` and `vswitch_ids`, only the `vswitch_ids` takes effect.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
         """
         if config is not None:
@@ -724,8 +724,7 @@ class _InstanceState:
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
-        * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
+        The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
         """
         return pulumi.get(self, "config")
 
@@ -933,7 +932,7 @@ class _InstanceState:
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+        The ID of the key that is used to encrypt data on standard SSDs in the region of the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-updateinstanceconfig).
         """
         return pulumi.get(self, "kms_key_id")
 
@@ -1053,7 +1052,7 @@ class _InstanceState:
     @pulumi.getter(name="selectedZones")
     def selected_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The zones among which you want to deploy the instance.
+        The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
         """
         return pulumi.get(self, "selected_zones")
 
@@ -1233,6 +1232,7 @@ class _InstanceState:
     def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IDs of the vSwitches with which the instance is associated.
+        > **NOTE:** If `instance_type` is set to `alikafka` or `alikafka_serverless`, `vswitch_ids` is required. When `instance_type` is set to `alikafka_confluent`, you must specify at least one of the `vswitch_id` and `vswitch_ids`, and if you specify both `vswitch_id` and `vswitch_ids`, only the `vswitch_ids` takes effect.
         """
         return pulumi.get(self, "vswitch_ids")
 
@@ -1300,8 +1300,7 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] config: The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
-               * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
+        :param pulumi.Input[_builtins.str] config: The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
         :param pulumi.Input[Union['InstanceConfluentConfigArgs', 'InstanceConfluentConfigArgsDict']] confluent_config: The configurations of Confluent. See `confluent_config` below.
                > **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
         :param pulumi.Input[_builtins.int] default_topic_partition_num: The number of partitions in a topic that is automatically created.
@@ -1317,14 +1316,14 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] io_max_spec: The traffic specification of the instance. We recommend that you configure this parameter.
                - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
                - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
-        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the key that is used to encrypt data on standard SSDs in the region of the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-updateinstanceconfig).
         :param pulumi.Input[_builtins.str] name: Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
         :param pulumi.Input[_builtins.str] paid_type: The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
         :param pulumi.Input[_builtins.int] partition_num: The number of partitions.
         :param pulumi.Input[_builtins.str] password: The instance password. **NOTE:** If `instance_type` is set to `alikafka_confluent`, `password` is required.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         :param pulumi.Input[_builtins.str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] selected_zones: The zones among which you want to deploy the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] selected_zones: The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
         :param pulumi.Input[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict']] serverless_config: The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
                > **NOTE:** If `instance_type` is set to `alikafka_serverless`, `serverless_config` is required.
         :param pulumi.Input[_builtins.str] service_version: The version of the Instance. Valid values:
@@ -1343,6 +1342,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of attaching vswitch to instance.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The IDs of the vSwitches with which the instance is associated.
+               > **NOTE:** If `instance_type` is set to `alikafka` or `alikafka_serverless`, `vswitch_ids` is required. When `instance_type` is set to `alikafka_confluent`, you must specify at least one of the `vswitch_id` and `vswitch_ids`, and if you specify both `vswitch_id` and `vswitch_ids`, only the `vswitch_ids` takes effect.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
         """
         ...
@@ -1518,8 +1518,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] config: The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
-               * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
+        :param pulumi.Input[_builtins.str] config: The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
         :param pulumi.Input[Union['InstanceConfluentConfigArgs', 'InstanceConfluentConfigArgsDict']] confluent_config: The configurations of Confluent. See `confluent_config` below.
                > **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
         :param pulumi.Input[_builtins.int] default_topic_partition_num: The number of partitions in a topic that is automatically created.
@@ -1540,7 +1539,7 @@ class Instance(pulumi.CustomResource):
                - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
                - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
         :param pulumi.Input[_builtins.int] is_partition_buy: (Available since v1.214.1) The method that you use to purchase partitions.
-        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the key that is used to encrypt data on standard SSDs in the region of the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-updateinstanceconfig).
         :param pulumi.Input[_builtins.str] name: Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
         :param pulumi.Input[_builtins.str] paid_type: The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
         :param pulumi.Input[_builtins.int] partition_left: (Available since v1.214.1) The number of available partitions.
@@ -1550,7 +1549,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         :param pulumi.Input[_builtins.str] sasl_domain_endpoint: (Available since v1.234.0) The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode.
         :param pulumi.Input[_builtins.str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] selected_zones: The zones among which you want to deploy the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] selected_zones: The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
         :param pulumi.Input[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict']] serverless_config: The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
                > **NOTE:** If `instance_type` is set to `alikafka_serverless`, `serverless_config` is required.
         :param pulumi.Input[_builtins.str] service_version: The version of the Instance. Valid values:
@@ -1575,6 +1574,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of attaching vswitch to instance.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The IDs of the vSwitches with which the instance is associated.
+               > **NOTE:** If `instance_type` is set to `alikafka` or `alikafka_serverless`, `vswitch_ids` is required. When `instance_type` is set to `alikafka_confluent`, you must specify at least one of the `vswitch_id` and `vswitch_ids`, and if you specify both `vswitch_id` and `vswitch_ids`, only the `vswitch_ids` takes effect.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1630,8 +1630,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def config(self) -> pulumi.Output[_builtins.str]:
         """
-        The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. The `config` supports the following parameters:
-        * `enable.vpc_sasl_ssl`: Specifies whether to enable VPC transmission encryption. Default value: `false`. Valid values:
+        The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
         """
         return pulumi.get(self, "config")
 
@@ -1771,7 +1770,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The ID of the key that is used to encrypt data on standard SSDs in the region of the instance.
+        The ID of the key that is used to encrypt data on standard SSDs in the region of the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-updateinstanceconfig).
         """
         return pulumi.get(self, "kms_key_id")
 
@@ -1851,7 +1850,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="selectedZones")
     def selected_zones(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        The zones among which you want to deploy the instance.
+        The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
         """
         return pulumi.get(self, "selected_zones")
 
@@ -1975,6 +1974,7 @@ class Instance(pulumi.CustomResource):
     def vswitch_ids(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
         The IDs of the vSwitches with which the instance is associated.
+        > **NOTE:** If `instance_type` is set to `alikafka` or `alikafka_serverless`, `vswitch_ids` is required. When `instance_type` is set to `alikafka_confluent`, you must specify at least one of the `vswitch_id` and `vswitch_ids`, and if you specify both `vswitch_id` and `vswitch_ids`, only the `vswitch_ids` takes effect.
         """
         return pulumi.get(self, "vswitch_ids")
 

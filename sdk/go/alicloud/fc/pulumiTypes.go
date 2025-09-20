@@ -7124,6 +7124,7 @@ func (o V3FunctionInstanceLifecycleConfigPtrOutput) PreStop() V3FunctionInstance
 }
 
 type V3FunctionInstanceLifecycleConfigInitializer struct {
+	Commands []string `pulumi:"commands"`
 	// Function Handler: the call entry for the function compute system to run your function.
 	Handler *string `pulumi:"handler"`
 	// The maximum running time of the function, in seconds.
@@ -7142,6 +7143,7 @@ type V3FunctionInstanceLifecycleConfigInitializerInput interface {
 }
 
 type V3FunctionInstanceLifecycleConfigInitializerArgs struct {
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
 	// Function Handler: the call entry for the function compute system to run your function.
 	Handler pulumi.StringPtrInput `pulumi:"handler"`
 	// The maximum running time of the function, in seconds.
@@ -7225,6 +7227,10 @@ func (o V3FunctionInstanceLifecycleConfigInitializerOutput) ToV3FunctionInstance
 	}).(V3FunctionInstanceLifecycleConfigInitializerPtrOutput)
 }
 
+func (o V3FunctionInstanceLifecycleConfigInitializerOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v V3FunctionInstanceLifecycleConfigInitializer) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
 // Function Handler: the call entry for the function compute system to run your function.
 func (o V3FunctionInstanceLifecycleConfigInitializerOutput) Handler() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3FunctionInstanceLifecycleConfigInitializer) *string { return v.Handler }).(pulumi.StringPtrOutput)
@@ -7257,6 +7263,15 @@ func (o V3FunctionInstanceLifecycleConfigInitializerPtrOutput) Elem() V3Function
 		var ret V3FunctionInstanceLifecycleConfigInitializer
 		return ret
 	}).(V3FunctionInstanceLifecycleConfigInitializerOutput)
+}
+
+func (o V3FunctionInstanceLifecycleConfigInitializerPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *V3FunctionInstanceLifecycleConfigInitializer) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
 }
 
 // Function Handler: the call entry for the function compute system to run your function.

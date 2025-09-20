@@ -12,6 +12,14 @@ namespace Pulumi.AliCloud.FC.Inputs
 
     public sealed class V3FunctionInstanceLifecycleConfigInitializerGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("commands")]
+        private InputList<string>? _commands;
+        public InputList<string> Commands
+        {
+            get => _commands ?? (_commands = new InputList<string>());
+            set => _commands = value;
+        }
+
         /// <summary>
         /// Function Handler: the call entry for the function compute system to run your function.
         /// </summary>

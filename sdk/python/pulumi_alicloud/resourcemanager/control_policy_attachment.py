@@ -24,7 +24,11 @@ class ControlPolicyAttachmentArgs:
         """
         The set of arguments for constructing a ControlPolicyAttachment resource.
         :param pulumi.Input[_builtins.str] policy_id: The ID of the access control policy.
-        :param pulumi.Input[_builtins.str] target_id: The ID of the object to which you want to attach the access control policy.
+        :param pulumi.Input[_builtins.str] target_id: The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
+               
+               - Root folder
+               - Subfolders of the Root folder
+               - Members
         """
         pulumi.set(__self__, "policy_id", policy_id)
         pulumi.set(__self__, "target_id", target_id)
@@ -45,7 +49,11 @@ class ControlPolicyAttachmentArgs:
     @pulumi.getter(name="targetId")
     def target_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID of the object to which you want to attach the access control policy.
+        The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
+
+        - Root folder
+        - Subfolders of the Root folder
+        - Members
         """
         return pulumi.get(self, "target_id")
 
@@ -62,7 +70,11 @@ class _ControlPolicyAttachmentState:
         """
         Input properties used for looking up and filtering ControlPolicyAttachment resources.
         :param pulumi.Input[_builtins.str] policy_id: The ID of the access control policy.
-        :param pulumi.Input[_builtins.str] target_id: The ID of the object to which you want to attach the access control policy.
+        :param pulumi.Input[_builtins.str] target_id: The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
+               
+               - Root folder
+               - Subfolders of the Root folder
+               - Members
         """
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
@@ -85,7 +97,11 @@ class _ControlPolicyAttachmentState:
     @pulumi.getter(name="targetId")
     def target_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the object to which you want to attach the access control policy.
+        The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
+
+        - Root folder
+        - Subfolders of the Root folder
+        - Members
         """
         return pulumi.get(self, "target_id")
 
@@ -105,6 +121,8 @@ class ControlPolicyAttachment(pulumi.CustomResource):
                  __props__=None):
         """
         Provides a Resource Manager Control Policy Attachment resource.
+
+        Control Policy Attachment.
 
         For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/resource-directory/developer-reference/api-resourcemanager-2020-03-31-attachcontrolpolicy).
 
@@ -163,7 +181,11 @@ class ControlPolicyAttachment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] policy_id: The ID of the access control policy.
-        :param pulumi.Input[_builtins.str] target_id: The ID of the object to which you want to attach the access control policy.
+        :param pulumi.Input[_builtins.str] target_id: The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
+               
+               - Root folder
+               - Subfolders of the Root folder
+               - Members
         """
         ...
     @overload
@@ -173,6 +195,8 @@ class ControlPolicyAttachment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Resource Manager Control Policy Attachment resource.
+
+        Control Policy Attachment.
 
         For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/resource-directory/developer-reference/api-resourcemanager-2020-03-31-attachcontrolpolicy).
 
@@ -280,7 +304,11 @@ class ControlPolicyAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] policy_id: The ID of the access control policy.
-        :param pulumi.Input[_builtins.str] target_id: The ID of the object to which you want to attach the access control policy.
+        :param pulumi.Input[_builtins.str] target_id: The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
+               
+               - Root folder
+               - Subfolders of the Root folder
+               - Members
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -302,7 +330,11 @@ class ControlPolicyAttachment(pulumi.CustomResource):
     @pulumi.getter(name="targetId")
     def target_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the object to which you want to attach the access control policy.
+        The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
+
+        - Root folder
+        - Subfolders of the Root folder
+        - Members
         """
         return pulumi.get(self, "target_id")
 

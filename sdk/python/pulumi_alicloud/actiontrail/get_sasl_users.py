@@ -27,10 +27,13 @@ class GetSaslUsersResult:
     """
     A collection of values returned by getSaslUsers.
     """
-    def __init__(__self__, id=None, instance_id=None, name_regex=None, names=None, output_file=None, users=None):
+    def __init__(__self__, id=None, ids=None, instance_id=None, name_regex=None, names=None, output_file=None, users=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if ids and not isinstance(ids, list):
+            raise TypeError("Expected argument 'ids' to be a list")
+        pulumi.set(__self__, "ids", ids)
         if instance_id and not isinstance(instance_id, str):
             raise TypeError("Expected argument 'instance_id' to be a str")
         pulumi.set(__self__, "instance_id", instance_id)
@@ -56,6 +59,11 @@ class GetSaslUsersResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter
+    def ids(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "ids")
+
+    @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
         return pulumi.get(self, "instance_id")
@@ -69,7 +77,7 @@ class GetSaslUsersResult:
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
         """
-        A list of sasl usernames.
+        A list of Sasl User names.
         """
         return pulumi.get(self, "names")
 
@@ -82,7 +90,7 @@ class GetSaslUsersResult:
     @pulumi.getter
     def users(self) -> Sequence['outputs.GetSaslUsersUserResult']:
         """
-        A list of sasl users. Each element contains the following attributes:
+        A list of Sasl Users. Each element contains the following attributes:
         """
         return pulumi.get(self, "users")
 
@@ -94,6 +102,7 @@ class AwaitableGetSaslUsersResult(GetSaslUsersResult):
             yield self
         return GetSaslUsersResult(
             id=self.id,
+            ids=self.ids,
             instance_id=self.instance_id,
             name_regex=self.name_regex,
             names=self.names,
@@ -101,33 +110,70 @@ class AwaitableGetSaslUsersResult(GetSaslUsersResult):
             users=self.users)
 
 
-def get_sasl_users(instance_id: Optional[_builtins.str] = None,
+def get_sasl_users(ids: Optional[Sequence[_builtins.str]] = None,
+                   instance_id: Optional[_builtins.str] = None,
                    name_regex: Optional[_builtins.str] = None,
                    output_file: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSaslUsersResult:
     """
-    This data source provides a list of ALIKAFKA Sasl users in an Alibaba Cloud account according to the specified filters.
+    This data source provides the Alikafka Sasl Users of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in 1.66.0+
+    > **NOTE:** Available since v1.66.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    sasl_users_ds = alicloud.actiontrail.get_sasl_users(instance_id="xxx",
-        name_regex="username",
-        output_file="saslUsers.txt")
-    pulumi.export("firstSaslUsername", sasl_users_ds.users[0].username)
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.get_zones(available_resource_creation="VSwitch")
+    default_network = alicloud.vpc.Network("default",
+        vpc_name=name,
+        cidr_block="10.4.0.0/16")
+    default_switch = alicloud.vpc.Switch("default",
+        vswitch_name=name,
+        vpc_id=default_network.id,
+        cidr_block="10.4.0.0/24",
+        zone_id=default.zones[0].id)
+    default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default_network.id)
+    default_instance = alicloud.alikafka.Instance("default",
+        name=name,
+        partition_num=50,
+        disk_type=1,
+        disk_size=500,
+        deploy_type=5,
+        io_max=20,
+        spec_type="professional",
+        service_version="2.2.0",
+        vswitch_id=default_switch.id,
+        security_group=default_security_group.id,
+        config=\"\"\"  {
+        \\"enable.acl\\": \\"true\\"
+      }
+    \"\"\")
+    default_sasl_user = alicloud.alikafka.SaslUser("default",
+        instance_id=default_instance.id,
+        username=name,
+        password="YourPassword1234!")
+    ids = alicloud.actiontrail.get_sasl_users_output(ids=[default_sasl_user.id],
+        instance_id=default_sasl_user.instance_id)
+    pulumi.export("alikafkaSaslUsersId0", ids.users[0].id)
     ```
 
 
-    :param _builtins.str instance_id: ID of the ALIKAFKA Instance that owns the sasl users.
-    :param _builtins.str name_regex: A regex string to filter results by the username.
+    :param Sequence[_builtins.str] ids: A list of Sasl User IDs.
+    :param _builtins.str instance_id: The ID of the instance.
+    :param _builtins.str name_regex: A regex string to filter results by Sasl User name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
+    __args__['ids'] = ids
     __args__['instanceId'] = instance_id
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
@@ -136,38 +182,76 @@ def get_sasl_users(instance_id: Optional[_builtins.str] = None,
 
     return AwaitableGetSaslUsersResult(
         id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
         instance_id=pulumi.get(__ret__, 'instance_id'),
         name_regex=pulumi.get(__ret__, 'name_regex'),
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         users=pulumi.get(__ret__, 'users'))
-def get_sasl_users_output(instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_sasl_users_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+                          instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                           name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                           output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSaslUsersResult]:
     """
-    This data source provides a list of ALIKAFKA Sasl users in an Alibaba Cloud account according to the specified filters.
+    This data source provides the Alikafka Sasl Users of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in 1.66.0+
+    > **NOTE:** Available since v1.66.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    sasl_users_ds = alicloud.actiontrail.get_sasl_users(instance_id="xxx",
-        name_regex="username",
-        output_file="saslUsers.txt")
-    pulumi.export("firstSaslUsername", sasl_users_ds.users[0].username)
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.get_zones(available_resource_creation="VSwitch")
+    default_network = alicloud.vpc.Network("default",
+        vpc_name=name,
+        cidr_block="10.4.0.0/16")
+    default_switch = alicloud.vpc.Switch("default",
+        vswitch_name=name,
+        vpc_id=default_network.id,
+        cidr_block="10.4.0.0/24",
+        zone_id=default.zones[0].id)
+    default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default_network.id)
+    default_instance = alicloud.alikafka.Instance("default",
+        name=name,
+        partition_num=50,
+        disk_type=1,
+        disk_size=500,
+        deploy_type=5,
+        io_max=20,
+        spec_type="professional",
+        service_version="2.2.0",
+        vswitch_id=default_switch.id,
+        security_group=default_security_group.id,
+        config=\"\"\"  {
+        \\"enable.acl\\": \\"true\\"
+      }
+    \"\"\")
+    default_sasl_user = alicloud.alikafka.SaslUser("default",
+        instance_id=default_instance.id,
+        username=name,
+        password="YourPassword1234!")
+    ids = alicloud.actiontrail.get_sasl_users_output(ids=[default_sasl_user.id],
+        instance_id=default_sasl_user.instance_id)
+    pulumi.export("alikafkaSaslUsersId0", ids.users[0].id)
     ```
 
 
-    :param _builtins.str instance_id: ID of the ALIKAFKA Instance that owns the sasl users.
-    :param _builtins.str name_regex: A regex string to filter results by the username.
+    :param Sequence[_builtins.str] ids: A list of Sasl User IDs.
+    :param _builtins.str instance_id: The ID of the instance.
+    :param _builtins.str name_regex: A regex string to filter results by Sasl User name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
+    __args__['ids'] = ids
     __args__['instanceId'] = instance_id
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
@@ -175,6 +259,7 @@ def get_sasl_users_output(instance_id: Optional[pulumi.Input[_builtins.str]] = N
     __ret__ = pulumi.runtime.invoke_output('alicloud:actiontrail/getSaslUsers:getSaslUsers', __args__, opts=opts, typ=GetSaslUsersResult)
     return __ret__.apply(lambda __response__: GetSaslUsersResult(
         id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
         instance_id=pulumi.get(__response__, 'instance_id'),
         name_regex=pulumi.get(__response__, 'name_regex'),
         names=pulumi.get(__response__, 'names'),

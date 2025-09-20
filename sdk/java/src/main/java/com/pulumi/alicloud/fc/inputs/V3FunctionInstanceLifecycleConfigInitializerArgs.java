@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,6 +16,13 @@ import javax.annotation.Nullable;
 public final class V3FunctionInstanceLifecycleConfigInitializerArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final V3FunctionInstanceLifecycleConfigInitializerArgs Empty = new V3FunctionInstanceLifecycleConfigInitializerArgs();
+
+    @Import(name="commands")
+    private @Nullable Output<List<String>> commands;
+
+    public Optional<Output<List<String>>> commands() {
+        return Optional.ofNullable(this.commands);
+    }
 
     /**
      * Function Handler: the call entry for the function compute system to run your function.
@@ -49,6 +57,7 @@ public final class V3FunctionInstanceLifecycleConfigInitializerArgs extends com.
     private V3FunctionInstanceLifecycleConfigInitializerArgs() {}
 
     private V3FunctionInstanceLifecycleConfigInitializerArgs(V3FunctionInstanceLifecycleConfigInitializerArgs $) {
+        this.commands = $.commands;
         this.handler = $.handler;
         this.timeout = $.timeout;
     }
@@ -69,6 +78,19 @@ public final class V3FunctionInstanceLifecycleConfigInitializerArgs extends com.
 
         public Builder(V3FunctionInstanceLifecycleConfigInitializerArgs defaults) {
             $ = new V3FunctionInstanceLifecycleConfigInitializerArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder commands(@Nullable Output<List<String>> commands) {
+            $.commands = commands;
+            return this;
+        }
+
+        public Builder commands(List<String> commands) {
+            return commands(Output.of(commands));
+        }
+
+        public Builder commands(String... commands) {
+            return commands(List.of(commands));
         }
 
         /**

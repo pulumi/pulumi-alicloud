@@ -43,6 +43,7 @@ class V3FunctionArgs:
                  memory_size: Optional[pulumi.Input[_builtins.int]] = None,
                  nas_config: Optional[pulumi.Input['V3FunctionNasConfigArgs']] = None,
                  oss_mount_config: Optional[pulumi.Input['V3FunctionOssMountConfigArgs']] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  role: Optional[pulumi.Input[_builtins.str]] = None,
                  session_affinity: Optional[pulumi.Input[_builtins.str]] = None,
                  session_affinity_config: Optional[pulumi.Input[_builtins.str]] = None,
@@ -52,7 +53,7 @@ class V3FunctionArgs:
         """
         The set of arguments for constructing a V3Function resource.
         :param pulumi.Input[_builtins.str] handler: Function Handler: the call entry for the function compute system to run your function.
-        :param pulumi.Input[_builtins.str] runtime: Function runtime type
+        :param pulumi.Input[_builtins.str] runtime: Function runtime type.
         :param pulumi.Input['V3FunctionCodeArgs'] code: Function code ZIP package. code and customContainerConfig. See `code` below.
         :param pulumi.Input[_builtins.float] cpu: The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
         :param pulumi.Input['V3FunctionCustomContainerConfigArgs'] custom_container_config: The configuration of the custom container runtime. After the configuration is successful, the function can use the custom container image to execute the function. code and customContainerConfig. See `custom_container_config` below.
@@ -73,6 +74,7 @@ class V3FunctionArgs:
         :param pulumi.Input[_builtins.int] memory_size: The memory specification of the function. The unit is MB. The memory size is a multiple of 64MB. The minimum value is 128MB and the maximum value is 32GB. At the same time, the ratio of cpu to memorySize (calculated by GB) should be between 1:1 and 1:4.
         :param pulumi.Input['V3FunctionNasConfigArgs'] nas_config: NAS configuration. After this parameter is configured, the function can access the specified NAS resource. See `nas_config` below.
         :param pulumi.Input['V3FunctionOssMountConfigArgs'] oss_mount_config: OSS mount configuration See `oss_mount_config` below.
+        :param pulumi.Input[_builtins.str] resource_group_id: Resource Group ID.
         :param pulumi.Input[_builtins.str] role: The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
         :param pulumi.Input[_builtins.str] session_affinity: The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
         :param pulumi.Input[_builtins.str] session_affinity_config: When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
@@ -122,6 +124,8 @@ class V3FunctionArgs:
             pulumi.set(__self__, "nas_config", nas_config)
         if oss_mount_config is not None:
             pulumi.set(__self__, "oss_mount_config", oss_mount_config)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if role is not None:
             pulumi.set(__self__, "role", role)
         if session_affinity is not None:
@@ -151,7 +155,7 @@ class V3FunctionArgs:
     @pulumi.getter
     def runtime(self) -> pulumi.Input[_builtins.str]:
         """
-        Function runtime type
+        Function runtime type.
         """
         return pulumi.get(self, "runtime")
 
@@ -400,6 +404,18 @@ class V3FunctionArgs:
         pulumi.set(self, "oss_mount_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Resource Group ID.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -504,6 +520,7 @@ class _V3FunctionState:
                  memory_size: Optional[pulumi.Input[_builtins.int]] = None,
                  nas_config: Optional[pulumi.Input['V3FunctionNasConfigArgs']] = None,
                  oss_mount_config: Optional[pulumi.Input['V3FunctionOssMountConfigArgs']] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  role: Optional[pulumi.Input[_builtins.str]] = None,
                  runtime: Optional[pulumi.Input[_builtins.str]] = None,
                  session_affinity: Optional[pulumi.Input[_builtins.str]] = None,
@@ -546,8 +563,9 @@ class _V3FunctionState:
         :param pulumi.Input[_builtins.int] memory_size: The memory specification of the function. The unit is MB. The memory size is a multiple of 64MB. The minimum value is 128MB and the maximum value is 32GB. At the same time, the ratio of cpu to memorySize (calculated by GB) should be between 1:1 and 1:4.
         :param pulumi.Input['V3FunctionNasConfigArgs'] nas_config: NAS configuration. After this parameter is configured, the function can access the specified NAS resource. See `nas_config` below.
         :param pulumi.Input['V3FunctionOssMountConfigArgs'] oss_mount_config: OSS mount configuration See `oss_mount_config` below.
+        :param pulumi.Input[_builtins.str] resource_group_id: Resource Group ID.
         :param pulumi.Input[_builtins.str] role: The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
-        :param pulumi.Input[_builtins.str] runtime: Function runtime type
+        :param pulumi.Input[_builtins.str] runtime: Function runtime type.
         :param pulumi.Input[_builtins.str] session_affinity: The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
         :param pulumi.Input[_builtins.str] session_affinity_config: When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
         :param pulumi.Input[_builtins.str] state: Function Status
@@ -616,6 +634,8 @@ class _V3FunctionState:
             pulumi.set(__self__, "nas_config", nas_config)
         if oss_mount_config is not None:
             pulumi.set(__self__, "oss_mount_config", oss_mount_config)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if role is not None:
             pulumi.set(__self__, "role", role)
         if runtime is not None:
@@ -988,6 +1008,18 @@ class _V3FunctionState:
         pulumi.set(self, "oss_mount_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Resource Group ID.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -1003,7 +1035,7 @@ class _V3FunctionState:
     @pulumi.getter
     def runtime(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Function runtime type
+        Function runtime type.
         """
         return pulumi.get(self, "runtime")
 
@@ -1147,6 +1179,7 @@ class V3Function(pulumi.CustomResource):
                  memory_size: Optional[pulumi.Input[_builtins.int]] = None,
                  nas_config: Optional[pulumi.Input[Union['V3FunctionNasConfigArgs', 'V3FunctionNasConfigArgsDict']]] = None,
                  oss_mount_config: Optional[pulumi.Input[Union['V3FunctionOssMountConfigArgs', 'V3FunctionOssMountConfigArgsDict']]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  role: Optional[pulumi.Input[_builtins.str]] = None,
                  runtime: Optional[pulumi.Input[_builtins.str]] = None,
                  session_affinity: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1270,8 +1303,9 @@ class V3Function(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] memory_size: The memory specification of the function. The unit is MB. The memory size is a multiple of 64MB. The minimum value is 128MB and the maximum value is 32GB. At the same time, the ratio of cpu to memorySize (calculated by GB) should be between 1:1 and 1:4.
         :param pulumi.Input[Union['V3FunctionNasConfigArgs', 'V3FunctionNasConfigArgsDict']] nas_config: NAS configuration. After this parameter is configured, the function can access the specified NAS resource. See `nas_config` below.
         :param pulumi.Input[Union['V3FunctionOssMountConfigArgs', 'V3FunctionOssMountConfigArgsDict']] oss_mount_config: OSS mount configuration See `oss_mount_config` below.
+        :param pulumi.Input[_builtins.str] resource_group_id: Resource Group ID.
         :param pulumi.Input[_builtins.str] role: The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
-        :param pulumi.Input[_builtins.str] runtime: Function runtime type
+        :param pulumi.Input[_builtins.str] runtime: Function runtime type.
         :param pulumi.Input[_builtins.str] session_affinity: The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
         :param pulumi.Input[_builtins.str] session_affinity_config: When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
@@ -1412,6 +1446,7 @@ class V3Function(pulumi.CustomResource):
                  memory_size: Optional[pulumi.Input[_builtins.int]] = None,
                  nas_config: Optional[pulumi.Input[Union['V3FunctionNasConfigArgs', 'V3FunctionNasConfigArgsDict']]] = None,
                  oss_mount_config: Optional[pulumi.Input[Union['V3FunctionOssMountConfigArgs', 'V3FunctionOssMountConfigArgsDict']]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  role: Optional[pulumi.Input[_builtins.str]] = None,
                  runtime: Optional[pulumi.Input[_builtins.str]] = None,
                  session_affinity: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1451,6 +1486,7 @@ class V3Function(pulumi.CustomResource):
             __props__.__dict__["memory_size"] = memory_size
             __props__.__dict__["nas_config"] = nas_config
             __props__.__dict__["oss_mount_config"] = oss_mount_config
+            __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["role"] = role
             if runtime is None and not opts.urn:
                 raise TypeError("Missing required property 'runtime'")
@@ -1511,6 +1547,7 @@ class V3Function(pulumi.CustomResource):
             memory_size: Optional[pulumi.Input[_builtins.int]] = None,
             nas_config: Optional[pulumi.Input[Union['V3FunctionNasConfigArgs', 'V3FunctionNasConfigArgsDict']]] = None,
             oss_mount_config: Optional[pulumi.Input[Union['V3FunctionOssMountConfigArgs', 'V3FunctionOssMountConfigArgsDict']]] = None,
+            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             role: Optional[pulumi.Input[_builtins.str]] = None,
             runtime: Optional[pulumi.Input[_builtins.str]] = None,
             session_affinity: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1558,8 +1595,9 @@ class V3Function(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] memory_size: The memory specification of the function. The unit is MB. The memory size is a multiple of 64MB. The minimum value is 128MB and the maximum value is 32GB. At the same time, the ratio of cpu to memorySize (calculated by GB) should be between 1:1 and 1:4.
         :param pulumi.Input[Union['V3FunctionNasConfigArgs', 'V3FunctionNasConfigArgsDict']] nas_config: NAS configuration. After this parameter is configured, the function can access the specified NAS resource. See `nas_config` below.
         :param pulumi.Input[Union['V3FunctionOssMountConfigArgs', 'V3FunctionOssMountConfigArgsDict']] oss_mount_config: OSS mount configuration See `oss_mount_config` below.
+        :param pulumi.Input[_builtins.str] resource_group_id: Resource Group ID.
         :param pulumi.Input[_builtins.str] role: The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
-        :param pulumi.Input[_builtins.str] runtime: Function runtime type
+        :param pulumi.Input[_builtins.str] runtime: Function runtime type.
         :param pulumi.Input[_builtins.str] session_affinity: The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
         :param pulumi.Input[_builtins.str] session_affinity_config: When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
         :param pulumi.Input[_builtins.str] state: Function Status
@@ -1603,6 +1641,7 @@ class V3Function(pulumi.CustomResource):
         __props__.__dict__["memory_size"] = memory_size
         __props__.__dict__["nas_config"] = nas_config
         __props__.__dict__["oss_mount_config"] = oss_mount_config
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["role"] = role
         __props__.__dict__["runtime"] = runtime
         __props__.__dict__["session_affinity"] = session_affinity
@@ -1849,6 +1888,14 @@ class V3Function(pulumi.CustomResource):
         return pulumi.get(self, "oss_mount_config")
 
     @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Resource Group ID.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @_builtins.property
     @pulumi.getter
     def role(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
@@ -1860,7 +1907,7 @@ class V3Function(pulumi.CustomResource):
     @pulumi.getter
     def runtime(self) -> pulumi.Output[_builtins.str]:
         """
-        Function runtime type
+        Function runtime type.
         """
         return pulumi.get(self, "runtime")
 

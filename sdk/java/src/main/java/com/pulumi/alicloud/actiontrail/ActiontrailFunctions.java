@@ -1696,11 +1696,13 @@ public final class ActiontrailFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:actiontrail/getSaslAcls:getSaslAcls", TypeShape.of(GetSaslAclsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides a list of ALIKAFKA Sasl users in an Alibaba Cloud account according to the specified filters.
+     * This data source provides the Alikafka Sasl Users of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.66.0+
+     * &gt; **NOTE:** Available since v1.66.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -1709,6 +1711,18 @@ public final class ActiontrailFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.alikafka.Instance;
+     * import com.pulumi.alicloud.alikafka.InstanceArgs;
+     * import com.pulumi.alicloud.alikafka.SaslUser;
+     * import com.pulumi.alicloud.alikafka.SaslUserArgs;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetSaslUsersArgs;
      * import java.util.List;
@@ -1724,13 +1738,58 @@ public final class ActiontrailFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var saslUsersDs = ActiontrailFunctions.getSaslUsers(GetSaslUsersArgs.builder()
-     *             .instanceId("xxx")
-     *             .nameRegex("username")
-     *             .outputFile("saslUsers.txt")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         ctx.export("firstSaslUsername", saslUsersDs.users()[0].username());
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("10.4.0.0/24")
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .name(name)
+     *             .partitionNum(50)
+     *             .diskType(1)
+     *             .diskSize(500)
+     *             .deployType(5)
+     *             .ioMax(20)
+     *             .specType("professional")
+     *             .serviceVersion("2.2.0")
+     *             .vswitchId(defaultSwitch.id())
+     *             .securityGroup(defaultSecurityGroup.id())
+     *             .config("""
+     *   {
+     *     \"enable.acl\": \"true\"
+     *   }
+     *             """)
+     *             .build());
+     * 
+     *         var defaultSaslUser = new SaslUser("defaultSaslUser", SaslUserArgs.builder()
+     *             .instanceId(defaultInstance.id())
+     *             .username(name)
+     *             .password("YourPassword1234!")
+     *             .build());
+     * 
+     *         final var ids = ActiontrailFunctions.getSaslUsers(GetSaslUsersArgs.builder()
+     *             .ids(defaultSaslUser.id())
+     *             .instanceId(defaultSaslUser.instanceId())
+     *             .build());
+     * 
+     *         ctx.export("alikafkaSaslUsersId0", ids.applyValue(_ids -> _ids.users()[0].id()));
      *     }
      * }
      * }
@@ -1741,11 +1800,13 @@ public final class ActiontrailFunctions {
         return getSaslUsers(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides a list of ALIKAFKA Sasl users in an Alibaba Cloud account according to the specified filters.
+     * This data source provides the Alikafka Sasl Users of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.66.0+
+     * &gt; **NOTE:** Available since v1.66.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -1754,6 +1815,18 @@ public final class ActiontrailFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.alikafka.Instance;
+     * import com.pulumi.alicloud.alikafka.InstanceArgs;
+     * import com.pulumi.alicloud.alikafka.SaslUser;
+     * import com.pulumi.alicloud.alikafka.SaslUserArgs;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetSaslUsersArgs;
      * import java.util.List;
@@ -1769,13 +1842,58 @@ public final class ActiontrailFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var saslUsersDs = ActiontrailFunctions.getSaslUsers(GetSaslUsersArgs.builder()
-     *             .instanceId("xxx")
-     *             .nameRegex("username")
-     *             .outputFile("saslUsers.txt")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         ctx.export("firstSaslUsername", saslUsersDs.users()[0].username());
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("10.4.0.0/24")
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .name(name)
+     *             .partitionNum(50)
+     *             .diskType(1)
+     *             .diskSize(500)
+     *             .deployType(5)
+     *             .ioMax(20)
+     *             .specType("professional")
+     *             .serviceVersion("2.2.0")
+     *             .vswitchId(defaultSwitch.id())
+     *             .securityGroup(defaultSecurityGroup.id())
+     *             .config("""
+     *   {
+     *     \"enable.acl\": \"true\"
+     *   }
+     *             """)
+     *             .build());
+     * 
+     *         var defaultSaslUser = new SaslUser("defaultSaslUser", SaslUserArgs.builder()
+     *             .instanceId(defaultInstance.id())
+     *             .username(name)
+     *             .password("YourPassword1234!")
+     *             .build());
+     * 
+     *         final var ids = ActiontrailFunctions.getSaslUsers(GetSaslUsersArgs.builder()
+     *             .ids(defaultSaslUser.id())
+     *             .instanceId(defaultSaslUser.instanceId())
+     *             .build());
+     * 
+     *         ctx.export("alikafkaSaslUsersId0", ids.applyValue(_ids -> _ids.users()[0].id()));
      *     }
      * }
      * }
@@ -1786,11 +1904,13 @@ public final class ActiontrailFunctions {
         return getSaslUsersPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides a list of ALIKAFKA Sasl users in an Alibaba Cloud account according to the specified filters.
+     * This data source provides the Alikafka Sasl Users of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.66.0+
+     * &gt; **NOTE:** Available since v1.66.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -1799,6 +1919,18 @@ public final class ActiontrailFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.alikafka.Instance;
+     * import com.pulumi.alicloud.alikafka.InstanceArgs;
+     * import com.pulumi.alicloud.alikafka.SaslUser;
+     * import com.pulumi.alicloud.alikafka.SaslUserArgs;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetSaslUsersArgs;
      * import java.util.List;
@@ -1814,13 +1946,58 @@ public final class ActiontrailFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var saslUsersDs = ActiontrailFunctions.getSaslUsers(GetSaslUsersArgs.builder()
-     *             .instanceId("xxx")
-     *             .nameRegex("username")
-     *             .outputFile("saslUsers.txt")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         ctx.export("firstSaslUsername", saslUsersDs.users()[0].username());
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("10.4.0.0/24")
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .name(name)
+     *             .partitionNum(50)
+     *             .diskType(1)
+     *             .diskSize(500)
+     *             .deployType(5)
+     *             .ioMax(20)
+     *             .specType("professional")
+     *             .serviceVersion("2.2.0")
+     *             .vswitchId(defaultSwitch.id())
+     *             .securityGroup(defaultSecurityGroup.id())
+     *             .config("""
+     *   {
+     *     \"enable.acl\": \"true\"
+     *   }
+     *             """)
+     *             .build());
+     * 
+     *         var defaultSaslUser = new SaslUser("defaultSaslUser", SaslUserArgs.builder()
+     *             .instanceId(defaultInstance.id())
+     *             .username(name)
+     *             .password("YourPassword1234!")
+     *             .build());
+     * 
+     *         final var ids = ActiontrailFunctions.getSaslUsers(GetSaslUsersArgs.builder()
+     *             .ids(defaultSaslUser.id())
+     *             .instanceId(defaultSaslUser.instanceId())
+     *             .build());
+     * 
+     *         ctx.export("alikafkaSaslUsersId0", ids.applyValue(_ids -> _ids.users()[0].id()));
      *     }
      * }
      * }
@@ -1831,11 +2008,13 @@ public final class ActiontrailFunctions {
         return Deployment.getInstance().invoke("alicloud:actiontrail/getSaslUsers:getSaslUsers", TypeShape.of(GetSaslUsersResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides a list of ALIKAFKA Sasl users in an Alibaba Cloud account according to the specified filters.
+     * This data source provides the Alikafka Sasl Users of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.66.0+
+     * &gt; **NOTE:** Available since v1.66.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -1844,6 +2023,18 @@ public final class ActiontrailFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.alikafka.Instance;
+     * import com.pulumi.alicloud.alikafka.InstanceArgs;
+     * import com.pulumi.alicloud.alikafka.SaslUser;
+     * import com.pulumi.alicloud.alikafka.SaslUserArgs;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetSaslUsersArgs;
      * import java.util.List;
@@ -1859,13 +2050,58 @@ public final class ActiontrailFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var saslUsersDs = ActiontrailFunctions.getSaslUsers(GetSaslUsersArgs.builder()
-     *             .instanceId("xxx")
-     *             .nameRegex("username")
-     *             .outputFile("saslUsers.txt")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         ctx.export("firstSaslUsername", saslUsersDs.users()[0].username());
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("10.4.0.0/24")
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .name(name)
+     *             .partitionNum(50)
+     *             .diskType(1)
+     *             .diskSize(500)
+     *             .deployType(5)
+     *             .ioMax(20)
+     *             .specType("professional")
+     *             .serviceVersion("2.2.0")
+     *             .vswitchId(defaultSwitch.id())
+     *             .securityGroup(defaultSecurityGroup.id())
+     *             .config("""
+     *   {
+     *     \"enable.acl\": \"true\"
+     *   }
+     *             """)
+     *             .build());
+     * 
+     *         var defaultSaslUser = new SaslUser("defaultSaslUser", SaslUserArgs.builder()
+     *             .instanceId(defaultInstance.id())
+     *             .username(name)
+     *             .password("YourPassword1234!")
+     *             .build());
+     * 
+     *         final var ids = ActiontrailFunctions.getSaslUsers(GetSaslUsersArgs.builder()
+     *             .ids(defaultSaslUser.id())
+     *             .instanceId(defaultSaslUser.instanceId())
+     *             .build());
+     * 
+     *         ctx.export("alikafkaSaslUsersId0", ids.applyValue(_ids -> _ids.users()[0].id()));
      *     }
      * }
      * }
@@ -1876,11 +2112,13 @@ public final class ActiontrailFunctions {
         return Deployment.getInstance().invoke("alicloud:actiontrail/getSaslUsers:getSaslUsers", TypeShape.of(GetSaslUsersResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides a list of ALIKAFKA Sasl users in an Alibaba Cloud account according to the specified filters.
+     * This data source provides the Alikafka Sasl Users of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.66.0+
+     * &gt; **NOTE:** Available since v1.66.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -1889,6 +2127,18 @@ public final class ActiontrailFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.alikafka.Instance;
+     * import com.pulumi.alicloud.alikafka.InstanceArgs;
+     * import com.pulumi.alicloud.alikafka.SaslUser;
+     * import com.pulumi.alicloud.alikafka.SaslUserArgs;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetSaslUsersArgs;
      * import java.util.List;
@@ -1904,13 +2154,58 @@ public final class ActiontrailFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var saslUsersDs = ActiontrailFunctions.getSaslUsers(GetSaslUsersArgs.builder()
-     *             .instanceId("xxx")
-     *             .nameRegex("username")
-     *             .outputFile("saslUsers.txt")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         ctx.export("firstSaslUsername", saslUsersDs.users()[0].username());
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("10.4.0.0/24")
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .name(name)
+     *             .partitionNum(50)
+     *             .diskType(1)
+     *             .diskSize(500)
+     *             .deployType(5)
+     *             .ioMax(20)
+     *             .specType("professional")
+     *             .serviceVersion("2.2.0")
+     *             .vswitchId(defaultSwitch.id())
+     *             .securityGroup(defaultSecurityGroup.id())
+     *             .config("""
+     *   {
+     *     \"enable.acl\": \"true\"
+     *   }
+     *             """)
+     *             .build());
+     * 
+     *         var defaultSaslUser = new SaslUser("defaultSaslUser", SaslUserArgs.builder()
+     *             .instanceId(defaultInstance.id())
+     *             .username(name)
+     *             .password("YourPassword1234!")
+     *             .build());
+     * 
+     *         final var ids = ActiontrailFunctions.getSaslUsers(GetSaslUsersArgs.builder()
+     *             .ids(defaultSaslUser.id())
+     *             .instanceId(defaultSaslUser.instanceId())
+     *             .build());
+     * 
+     *         ctx.export("alikafkaSaslUsersId0", ids.applyValue(_ids -> _ids.users()[0].id()));
      *     }
      * }
      * }

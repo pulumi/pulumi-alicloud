@@ -195,6 +195,11 @@ export type SiteOriginClientCertificate = import("./siteOriginClientCertificate"
 export const SiteOriginClientCertificate: typeof import("./siteOriginClientCertificate").SiteOriginClientCertificate = null as any;
 utilities.lazyLoad(exports, ["SiteOriginClientCertificate"], () => require("./siteOriginClientCertificate"));
 
+export { TransportLayerApplicationArgs, TransportLayerApplicationState } from "./transportLayerApplication";
+export type TransportLayerApplication = import("./transportLayerApplication").TransportLayerApplication;
+export const TransportLayerApplication: typeof import("./transportLayerApplication").TransportLayerApplication = null as any;
+utilities.lazyLoad(exports, ["TransportLayerApplication"], () => require("./transportLayerApplication"));
+
 export { UrlObservationArgs, UrlObservationState } from "./urlObservation";
 export type UrlObservation = import("./urlObservation").UrlObservation;
 export const UrlObservation: typeof import("./urlObservation").UrlObservation = null as any;
@@ -209,6 +214,11 @@ export { VideoProcessingArgs, VideoProcessingState } from "./videoProcessing";
 export type VideoProcessing = import("./videoProcessing").VideoProcessing;
 export const VideoProcessing: typeof import("./videoProcessing").VideoProcessing = null as any;
 utilities.lazyLoad(exports, ["VideoProcessing"], () => require("./videoProcessing"));
+
+export { WafRulesetArgs, WafRulesetState } from "./wafRuleset";
+export type WafRuleset = import("./wafRuleset").WafRuleset;
+export const WafRuleset: typeof import("./wafRuleset").WafRuleset = null as any;
+utilities.lazyLoad(exports, ["WafRuleset"], () => require("./wafRuleset"));
 
 export { WaitingRoomArgs, WaitingRoomState } from "./waitingRoom";
 export type WaitingRoom = import("./waitingRoom").WaitingRoom;
@@ -304,12 +314,16 @@ const _module = {
                 return new SiteDeliveryTask(name, <any>undefined, { urn })
             case "alicloud:esa/siteOriginClientCertificate:SiteOriginClientCertificate":
                 return new SiteOriginClientCertificate(name, <any>undefined, { urn })
+            case "alicloud:esa/transportLayerApplication:TransportLayerApplication":
+                return new TransportLayerApplication(name, <any>undefined, { urn })
             case "alicloud:esa/urlObservation:UrlObservation":
                 return new UrlObservation(name, <any>undefined, { urn })
             case "alicloud:esa/version:Version":
                 return new Version(name, <any>undefined, { urn })
             case "alicloud:esa/videoProcessing:VideoProcessing":
                 return new VideoProcessing(name, <any>undefined, { urn })
+            case "alicloud:esa/wafRuleset:WafRuleset":
+                return new WafRuleset(name, <any>undefined, { urn })
             case "alicloud:esa/waitingRoom:WaitingRoom":
                 return new WaitingRoom(name, <any>undefined, { urn })
             case "alicloud:esa/waitingRoomEvent:WaitingRoomEvent":
@@ -358,9 +372,11 @@ pulumi.runtime.registerResourceModule("alicloud", "esa/scheduledPreloadJob", _mo
 pulumi.runtime.registerResourceModule("alicloud", "esa/site", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/siteDeliveryTask", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/siteOriginClientCertificate", _module)
+pulumi.runtime.registerResourceModule("alicloud", "esa/transportLayerApplication", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/urlObservation", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/version", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/videoProcessing", _module)
+pulumi.runtime.registerResourceModule("alicloud", "esa/wafRuleset", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/waitingRoom", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/waitingRoomEvent", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/waitingRoomRule", _module)

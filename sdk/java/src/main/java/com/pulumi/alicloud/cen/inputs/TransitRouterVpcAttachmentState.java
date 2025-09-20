@@ -7,7 +7,6 @@ import com.pulumi.alicloud.cen.inputs.TransitRouterVpcAttachmentZoneMappingArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -110,6 +109,21 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
      */
     public Optional<Output<String>> paymentType() {
         return Optional.ofNullable(this.paymentType);
+    }
+
+    /**
+     * (Available since v1.260.0).The ID of the region where the VPC is deployed.
+     * 
+     */
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    /**
+     * @return (Available since v1.260.0).The ID of the region where the VPC is deployed.
+     * 
+     */
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
     }
 
     /**
@@ -223,14 +237,14 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The ID of the Transit Router Attachment.
+     * The ID of the VPC connection.
      * 
      */
     @Import(name="transitRouterAttachmentId")
     private @Nullable Output<String> transitRouterAttachmentId;
 
     /**
-     * @return The ID of the Transit Router Attachment.
+     * @return The ID of the VPC connection.
      * 
      */
     public Optional<Output<String>> transitRouterAttachmentId() {
@@ -238,7 +252,7 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
+     * Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
@@ -249,7 +263,7 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
     private @Nullable Output<String> transitRouterAttachmentName;
 
     /**
-     * @return . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
+     * @return Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
@@ -329,13 +343,13 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
      * 
      */
     @Import(name="vpcOwnerId")
-    private @Nullable Output<Integer> vpcOwnerId;
+    private @Nullable Output<String> vpcOwnerId;
 
     /**
      * @return VpcOwnerId
      * 
      */
-    public Optional<Output<Integer>> vpcOwnerId() {
+    public Optional<Output<String>> vpcOwnerId() {
         return Optional.ofNullable(this.vpcOwnerId);
     }
 
@@ -367,6 +381,7 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         this.dryRun = $.dryRun;
         this.forceDelete = $.forceDelete;
         this.paymentType = $.paymentType;
+        this.regionId = $.regionId;
         this.resourceType = $.resourceType;
         this.routeTableAssociationEnabled = $.routeTableAssociationEnabled;
         this.routeTablePropagationEnabled = $.routeTablePropagationEnabled;
@@ -530,6 +545,27 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
+         * @param regionId (Available since v1.260.0).The ID of the region where the VPC is deployed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        /**
+         * @param regionId (Available since v1.260.0).The ID of the region where the VPC is deployed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
+        }
+
+        /**
          * @param resourceType The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
          * 
          * @return builder
@@ -676,7 +712,7 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterAttachmentId The ID of the Transit Router Attachment.
+         * @param transitRouterAttachmentId The ID of the VPC connection.
          * 
          * @return builder
          * 
@@ -687,7 +723,7 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterAttachmentId The ID of the Transit Router Attachment.
+         * @param transitRouterAttachmentId The ID of the VPC connection.
          * 
          * @return builder
          * 
@@ -697,7 +733,7 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterAttachmentName . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
+         * @param transitRouterAttachmentName Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
          * 
          * @return builder
          * 
@@ -712,7 +748,7 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterAttachmentName . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
+         * @param transitRouterAttachmentName Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.230.1. New field &#39;transit_router_vpc_attachment_name&#39; instead.
          * 
          * @return builder
          * 
@@ -819,7 +855,7 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder vpcOwnerId(@Nullable Output<Integer> vpcOwnerId) {
+        public Builder vpcOwnerId(@Nullable Output<String> vpcOwnerId) {
             $.vpcOwnerId = vpcOwnerId;
             return this;
         }
@@ -830,7 +866,7 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder vpcOwnerId(Integer vpcOwnerId) {
+        public Builder vpcOwnerId(String vpcOwnerId) {
             return vpcOwnerId(Output.of(vpcOwnerId));
         }
 

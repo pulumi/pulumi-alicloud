@@ -12,12 +12,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Resource Manager handshake resource. You can invite accounts to join a resource directory for unified management.
-// For information about Resource Manager handshake and how to use it, see [What is Resource Manager handshake](https://www.alibabacloud.com/help/en/doc-detail/135287.htm).
+// Provides a Resource Manager Handshake resource.
 //
-// > **NOTE:** Available in v1.82.0+.
+// For information about Resource Manager Handshake and how to use it, see [What is Handshake](https://www.alibabacloud.com/help/en/doc-detail/135287.htm).
+//
+// > **NOTE:** Available since v1.82.0.
 //
 // ## Example Usage
+//
+// # Basic Usage
 //
 // ```go
 // package main
@@ -48,31 +51,37 @@ import (
 //
 // ## Import
 //
-// Resource Manager handshake can be imported using the id, e.g.
+// Resource Manager Handshake can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:resourcemanager/handshake:Handshake example h-QmdexeFm1kE*****
+// $ pulumi import alicloud:resourcemanager/handshake:Handshake example <id>
 // ```
 type Handshake struct {
 	pulumi.CustomResourceState
 
-	// The expiration time of the invitation.
+	// The time when the invitation was created. The time is displayed in UTC.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The time when the invitation expires. The time is displayed in UTC.
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
-	// Resource account master account ID.
+	// The ID of the management account of the resource directory.
 	MasterAccountId pulumi.StringOutput `pulumi:"masterAccountId"`
-	// The name of the main account of the resource directory.
+	// The name of the management account of the resource directory.
 	MasterAccountName pulumi.StringOutput `pulumi:"masterAccountName"`
-	// The modification time of the invitation.
+	// The time when the invitation was modified. The time is displayed in UTC.
 	ModifyTime pulumi.StringOutput `pulumi:"modifyTime"`
-	// Remarks. The maximum length is 1024 characters.
+	// The description of the invitation.
+	// The description can be up to 1,024 characters in length.
 	Note pulumi.StringPtrOutput `pulumi:"note"`
-	// Resource directory ID.
+	// The ID of the resource directory.
 	ResourceDirectoryId pulumi.StringOutput `pulumi:"resourceDirectoryId"`
-	// Invitation status. Valid values: `Pending` waiting for confirmation, `Accepted`, `Cancelled`, `Declined`, `Expired`.
+	// The status of the invitation.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Invited account ID or login email.
+	// The ID or logon email address of the account that you want to invite.
 	TargetEntity pulumi.StringOutput `pulumi:"targetEntity"`
-	// Type of account being invited. Valid values: `Account`, `Email`.
+	// The type of the invited account. Valid values:
+	//
+	// - Account: indicates the ID of the account.
+	// - Email: indicates the logon email address of the account.
 	TargetType pulumi.StringOutput `pulumi:"targetType"`
 }
 
@@ -112,44 +121,56 @@ func GetHandshake(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Handshake resources.
 type handshakeState struct {
-	// The expiration time of the invitation.
+	// The time when the invitation was created. The time is displayed in UTC.
+	CreateTime *string `pulumi:"createTime"`
+	// The time when the invitation expires. The time is displayed in UTC.
 	ExpireTime *string `pulumi:"expireTime"`
-	// Resource account master account ID.
+	// The ID of the management account of the resource directory.
 	MasterAccountId *string `pulumi:"masterAccountId"`
-	// The name of the main account of the resource directory.
+	// The name of the management account of the resource directory.
 	MasterAccountName *string `pulumi:"masterAccountName"`
-	// The modification time of the invitation.
+	// The time when the invitation was modified. The time is displayed in UTC.
 	ModifyTime *string `pulumi:"modifyTime"`
-	// Remarks. The maximum length is 1024 characters.
+	// The description of the invitation.
+	// The description can be up to 1,024 characters in length.
 	Note *string `pulumi:"note"`
-	// Resource directory ID.
+	// The ID of the resource directory.
 	ResourceDirectoryId *string `pulumi:"resourceDirectoryId"`
-	// Invitation status. Valid values: `Pending` waiting for confirmation, `Accepted`, `Cancelled`, `Declined`, `Expired`.
+	// The status of the invitation.
 	Status *string `pulumi:"status"`
-	// Invited account ID or login email.
+	// The ID or logon email address of the account that you want to invite.
 	TargetEntity *string `pulumi:"targetEntity"`
-	// Type of account being invited. Valid values: `Account`, `Email`.
+	// The type of the invited account. Valid values:
+	//
+	// - Account: indicates the ID of the account.
+	// - Email: indicates the logon email address of the account.
 	TargetType *string `pulumi:"targetType"`
 }
 
 type HandshakeState struct {
-	// The expiration time of the invitation.
+	// The time when the invitation was created. The time is displayed in UTC.
+	CreateTime pulumi.StringPtrInput
+	// The time when the invitation expires. The time is displayed in UTC.
 	ExpireTime pulumi.StringPtrInput
-	// Resource account master account ID.
+	// The ID of the management account of the resource directory.
 	MasterAccountId pulumi.StringPtrInput
-	// The name of the main account of the resource directory.
+	// The name of the management account of the resource directory.
 	MasterAccountName pulumi.StringPtrInput
-	// The modification time of the invitation.
+	// The time when the invitation was modified. The time is displayed in UTC.
 	ModifyTime pulumi.StringPtrInput
-	// Remarks. The maximum length is 1024 characters.
+	// The description of the invitation.
+	// The description can be up to 1,024 characters in length.
 	Note pulumi.StringPtrInput
-	// Resource directory ID.
+	// The ID of the resource directory.
 	ResourceDirectoryId pulumi.StringPtrInput
-	// Invitation status. Valid values: `Pending` waiting for confirmation, `Accepted`, `Cancelled`, `Declined`, `Expired`.
+	// The status of the invitation.
 	Status pulumi.StringPtrInput
-	// Invited account ID or login email.
+	// The ID or logon email address of the account that you want to invite.
 	TargetEntity pulumi.StringPtrInput
-	// Type of account being invited. Valid values: `Account`, `Email`.
+	// The type of the invited account. Valid values:
+	//
+	// - Account: indicates the ID of the account.
+	// - Email: indicates the logon email address of the account.
 	TargetType pulumi.StringPtrInput
 }
 
@@ -158,21 +179,29 @@ func (HandshakeState) ElementType() reflect.Type {
 }
 
 type handshakeArgs struct {
-	// Remarks. The maximum length is 1024 characters.
+	// The description of the invitation.
+	// The description can be up to 1,024 characters in length.
 	Note *string `pulumi:"note"`
-	// Invited account ID or login email.
+	// The ID or logon email address of the account that you want to invite.
 	TargetEntity string `pulumi:"targetEntity"`
-	// Type of account being invited. Valid values: `Account`, `Email`.
+	// The type of the invited account. Valid values:
+	//
+	// - Account: indicates the ID of the account.
+	// - Email: indicates the logon email address of the account.
 	TargetType string `pulumi:"targetType"`
 }
 
 // The set of arguments for constructing a Handshake resource.
 type HandshakeArgs struct {
-	// Remarks. The maximum length is 1024 characters.
+	// The description of the invitation.
+	// The description can be up to 1,024 characters in length.
 	Note pulumi.StringPtrInput
-	// Invited account ID or login email.
+	// The ID or logon email address of the account that you want to invite.
 	TargetEntity pulumi.StringInput
-	// Type of account being invited. Valid values: `Account`, `Email`.
+	// The type of the invited account. Valid values:
+	//
+	// - Account: indicates the ID of the account.
+	// - Email: indicates the logon email address of the account.
 	TargetType pulumi.StringInput
 }
 
@@ -263,47 +292,56 @@ func (o HandshakeOutput) ToHandshakeOutputWithContext(ctx context.Context) Hands
 	return o
 }
 
-// The expiration time of the invitation.
+// The time when the invitation was created. The time is displayed in UTC.
+func (o HandshakeOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Handshake) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The time when the invitation expires. The time is displayed in UTC.
 func (o HandshakeOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Handshake) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
 }
 
-// Resource account master account ID.
+// The ID of the management account of the resource directory.
 func (o HandshakeOutput) MasterAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Handshake) pulumi.StringOutput { return v.MasterAccountId }).(pulumi.StringOutput)
 }
 
-// The name of the main account of the resource directory.
+// The name of the management account of the resource directory.
 func (o HandshakeOutput) MasterAccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Handshake) pulumi.StringOutput { return v.MasterAccountName }).(pulumi.StringOutput)
 }
 
-// The modification time of the invitation.
+// The time when the invitation was modified. The time is displayed in UTC.
 func (o HandshakeOutput) ModifyTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Handshake) pulumi.StringOutput { return v.ModifyTime }).(pulumi.StringOutput)
 }
 
-// Remarks. The maximum length is 1024 characters.
+// The description of the invitation.
+// The description can be up to 1,024 characters in length.
 func (o HandshakeOutput) Note() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Handshake) pulumi.StringPtrOutput { return v.Note }).(pulumi.StringPtrOutput)
 }
 
-// Resource directory ID.
+// The ID of the resource directory.
 func (o HandshakeOutput) ResourceDirectoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Handshake) pulumi.StringOutput { return v.ResourceDirectoryId }).(pulumi.StringOutput)
 }
 
-// Invitation status. Valid values: `Pending` waiting for confirmation, `Accepted`, `Cancelled`, `Declined`, `Expired`.
+// The status of the invitation.
 func (o HandshakeOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Handshake) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Invited account ID or login email.
+// The ID or logon email address of the account that you want to invite.
 func (o HandshakeOutput) TargetEntity() pulumi.StringOutput {
 	return o.ApplyT(func(v *Handshake) pulumi.StringOutput { return v.TargetEntity }).(pulumi.StringOutput)
 }
 
-// Type of account being invited. Valid values: `Account`, `Email`.
+// The type of the invited account. Valid values:
+//
+// - Account: indicates the ID of the account.
+// - Email: indicates the logon email address of the account.
 func (o HandshakeOutput) TargetType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Handshake) pulumi.StringOutput { return v.TargetType }).(pulumi.StringOutput)
 }

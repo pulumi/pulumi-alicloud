@@ -40,6 +40,11 @@ export const getMachineGroups: typeof import("./getMachineGroups").getMachineGro
 export const getMachineGroupsOutput: typeof import("./getMachineGroups").getMachineGroupsOutput = null as any;
 utilities.lazyLoad(exports, ["getMachineGroups","getMachineGroupsOutput"], () => require("./getMachineGroups"));
 
+export { IndexArgs, IndexState } from "./index_";
+export type Index = import("./index_").Index;
+export const Index: typeof import("./index_").Index = null as any;
+utilities.lazyLoad(exports, ["Index"], () => require("./index_"));
+
 export { LogtailConfigArgs, LogtailConfigState } from "./logtailConfig";
 export type LogtailConfig = import("./logtailConfig").LogtailConfig;
 export const LogtailConfig: typeof import("./logtailConfig").LogtailConfig = null as any;
@@ -71,6 +76,8 @@ const _module = {
                 return new CollectionPolicy(name, <any>undefined, { urn })
             case "alicloud:sls/etl:Etl":
                 return new Etl(name, <any>undefined, { urn })
+            case "alicloud:sls/index:Index":
+                return new Index(name, <any>undefined, { urn })
             case "alicloud:sls/logtailConfig:LogtailConfig":
                 return new LogtailConfig(name, <any>undefined, { urn })
             case "alicloud:sls/machineGroup:MachineGroup":
@@ -87,6 +94,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "sls/alert", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sls/collectionPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sls/etl", _module)
+pulumi.runtime.registerResourceModule("alicloud", "sls/index", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sls/logtailConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sls/machineGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sls/ossExportSink", _module)

@@ -6,12 +6,14 @@ package com.pulumi.alicloud.fc.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class V3FunctionInstanceLifecycleConfigInitializer {
+    private @Nullable List<String> commands;
     /**
      * @return Function Handler: the call entry for the function compute system to run your function.
      * 
@@ -24,6 +26,9 @@ public final class V3FunctionInstanceLifecycleConfigInitializer {
     private @Nullable Integer timeout;
 
     private V3FunctionInstanceLifecycleConfigInitializer() {}
+    public List<String> commands() {
+        return this.commands == null ? List.of() : this.commands;
+    }
     /**
      * @return Function Handler: the call entry for the function compute system to run your function.
      * 
@@ -48,15 +53,26 @@ public final class V3FunctionInstanceLifecycleConfigInitializer {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> commands;
         private @Nullable String handler;
         private @Nullable Integer timeout;
         public Builder() {}
         public Builder(V3FunctionInstanceLifecycleConfigInitializer defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.commands = defaults.commands;
     	      this.handler = defaults.handler;
     	      this.timeout = defaults.timeout;
         }
 
+        @CustomType.Setter
+        public Builder commands(@Nullable List<String> commands) {
+
+            this.commands = commands;
+            return this;
+        }
+        public Builder commands(String... commands) {
+            return commands(List.of(commands));
+        }
         @CustomType.Setter
         public Builder handler(@Nullable String handler) {
 
@@ -71,6 +87,7 @@ public final class V3FunctionInstanceLifecycleConfigInitializer {
         }
         public V3FunctionInstanceLifecycleConfigInitializer build() {
             final var _resultValue = new V3FunctionInstanceLifecycleConfigInitializer();
+            _resultValue.commands = commands;
             _resultValue.handler = handler;
             _resultValue.timeout = timeout;
             return _resultValue;

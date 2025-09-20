@@ -44,9 +44,11 @@ from .scheduled_preload_job import *
 from .site import *
 from .site_delivery_task import *
 from .site_origin_client_certificate import *
+from .transport_layer_application import *
 from .url_observation import *
 from .version import *
 from .video_processing import *
+from .waf_ruleset import *
 from .waiting_room import *
 from .waiting_room_event import *
 from .waiting_room_rule import *
