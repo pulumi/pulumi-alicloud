@@ -731,6 +731,9 @@
                     },
                     "zone_config": {
                         "maxItemsOne": true
+                    },
+                    "zones": {
+                        "maxItemsOne": false
                     }
                 }
             },
